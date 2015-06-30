@@ -15,6 +15,7 @@
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 
 #include "server/zone/objects/guild/RenameGuildTask.h"
 #include "server/zone/objects/guild/UpdateWarStatusTask.h"
@@ -297,14 +298,14 @@ void GuildManagerImplementation::destroyGuild(GuildObject* guild, StringIdChatPa
 
 void GuildManagerImplementation::sendGuildCreateNameTo(CreatureObject* player, GuildTerminal* terminal) {
 	if (player->isInGuild()) {
-		player->sendSystemMessage("@guild:create_fail_in_guild"); //You cannot create a guild while already in a guild.
+		player->sendSystemMessage("@guild:create_fail_in_guild"); // You cannot create a guild while already in a guild.
 		return;
 	}
 
 	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::GUILD_CREATE_NAME);
 	inputBox->setCallback(new GuildCreateNameResponseSuiCallback(server));
-	inputBox->setPromptTitle("@guild:create_name_title"); //Guild Name
-	inputBox->setPromptText("@guild:create_name_prompt");
+	inputBox->setPromptTitle("@guild:create_name_title"); // Guild Name
+	inputBox->setPromptText("@guild:create_name_prompt"); // Enter a name for your guild. Guild names must be between 1 and 25 characters in length.
 	inputBox->setMaxInputSize(24);
 	inputBox->setUsingObject(terminal);
 	inputBox->setForceCloseDistance(32);
@@ -346,16 +347,16 @@ bool GuildManagerImplementation::validateGuildName(CreatureObject* player, const
 
 	if (validate != NameManagerResult::ACCEPTED) {
 		if (validate == NameManagerResult::DECLINED_GUILD_LENGTH)
-			player->sendSystemMessage("@guild:create_fail_name_bad_length"); //Guild names must be 1-25 characters in length.
+			player->sendSystemMessage("@guild:create_fail_name_bad_length"); // Guild names must be 1-25 characters in length.
 		else
-			player->sendSystemMessage("@guild:create_fail_name_not_allowed"); //That guild name is not allowed.
+			player->sendSystemMessage("@guild:create_fail_name_not_allowed"); // That guild name is not allowed.
 
 		return false;
 	}
 
 	if (guildNameExists(guildName)) {
 		if (guild == NULL || guildName != guild->getGuildName()) {
-			player->sendSystemMessage("@guild:create_fail_name_in_use"); //That guild name is already in use.
+			player->sendSystemMessage("@guild:create_fail_name_in_use"); // That guild name is already in use.
 			return false;
 		}
 	}
@@ -382,8 +383,8 @@ bool GuildManagerImplementation::guildNameExists(const String& guildName) {
 void GuildManagerImplementation::sendGuildCreateAbbrevTo(CreatureObject* player, GuildTerminal* terminal) {
 	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::GUILD_CREATE_ABBREV);
 	inputBox->setCallback(new GuildCreateAbbrevResponseSuiCallback(server));
-	inputBox->setPromptTitle("@guild:create_abbrev_title"); //Guild Abbreviation
-	inputBox->setPromptText("@guild:create_abbrev_prompt");
+	inputBox->setPromptTitle("@guild:create_abbrev_title"); // Guild Abbreviation
+	inputBox->setPromptText("@guild:create_abbrev_prompt"); // Enter an abbreviation for your guild. Guild abbreviations must be 1-5 characters in length.
 	inputBox->setMaxInputSize(4);
 	inputBox->setUsingObject(terminal);
 	inputBox->setForceCloseDistance(32);
@@ -412,16 +413,16 @@ bool GuildManagerImplementation::validateGuildAbbrev(CreatureObject* player, con
 
 	if (validate != NameManagerResult::ACCEPTED) {
 		if (validate == NameManagerResult::DECLINED_GUILD_LENGTH)
-			player->sendSystemMessage("@guild:create_fail_abbrev_bad_length"); //Guild abbreviations must be 1-5 characters in length.
+			player->sendSystemMessage("@guild:create_fail_abbrev_bad_length"); // Guild abbreviations must be 1-5 characters in length.
 		else
-			player->sendSystemMessage("@guild:create_fail_abbrev_not_allowed"); //That guild abbreviation is not allowed.
+			player->sendSystemMessage("@guild:create_fail_abbrev_not_allowed"); // That guild abbreviation is not allowed.
 
 		return false;
 	}
 
 	if (guildAbbrevExists(guildAbbrev)) {
 		if (guild == NULL || guildAbbrev != guild->getGuildAbbrev()) {
-			player->sendSystemMessage("@guild:create_fail_abbrev_in_use"); //That guild abbreviation is already in use.
+			player->sendSystemMessage("@guild:create_fail_abbrev_in_use"); // That guild abbreviation is already in use.
 			return false;
 		}
 	}
@@ -447,7 +448,7 @@ bool GuildManagerImplementation::guildAbbrevExists(const String& guildAbbrev) {
 
 GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, const String& guildName, const String& guildAbbrev) {
 	if (player->isInGuild()) {
-		player->sendSystemMessage("@guild:create_fail_in_guild"); //You cannot create a guild while already in a guild.
+		player->sendSystemMessage("@guild:create_fail_in_guild"); // You cannot create a guild while already in a guild.
 		return NULL;
 	}
 
@@ -612,7 +613,7 @@ void GuildManagerImplementation::sendGuildInformationTo(CreatureObject* player, 
 	Locker _lock(guild);
 
 	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, 0x00);
-	suiBox->setPromptTitle("@guild:info_title"); //Guild Information
+	suiBox->setPromptTitle("@guild:info_title"); // Guild Information
 	suiBox->setUsingObject(guildTerminal);
 	suiBox->setForceCloseDistance(32);
 
@@ -640,14 +641,14 @@ void GuildManagerImplementation::sendGuildDisbandConfirmTo(CreatureObject* playe
 	Locker _lock(guild);
 
 	if (!guild->hasDisbandPermission(player->getObjectID())) {
-		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
 		return;
 	}
 
 	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, SuiWindowType::GUILD_DISBAND);
 	suiBox->setCallback(new GuildDisbandSuiCallback(server));
-	suiBox->setPromptTitle("@guild:disband_title"); //Disband Guild
-	suiBox->setPromptText("@guild:disband_prompt"); //Are you sure you wish to disband your guild?
+	suiBox->setPromptTitle("@guild:disband_title"); // Disband Guild
+	suiBox->setPromptText("@guild:disband_prompt"); // Are you sure you wish to disband your guild?
 	suiBox->setUsingObject(guildTerminal);
 	suiBox->setForceCloseDistance(32);
 	suiBox->setCancelButton(true, "@no");
@@ -663,12 +664,12 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObjec
 		return false;
 
 	if (!guild->hasDisbandPermission(player->getObjectID())) {
-		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
 		return false;
 	}
 
 	StringIdChatParameter params;
-	params.setStringId("@guildmail:disband_text"); //The guild has been disbanded by %TU
+	params.setStringId("@guildmail:disband_text"); // The guild has been disbanded by %TU
 	params.setTU(player->getFirstName());
 
 	destroyGuild(guild, params);
@@ -684,7 +685,7 @@ void GuildManagerImplementation::sendGuildTransferTo(CreatureObject* player, Gui
 
 		ManagedReference<SuiInputBox*> suiBox = new SuiInputBox(player, SuiWindowType::GUILD_TRANSFER_LEADER);
 		suiBox->setCallback(new GuildTransferLeadershipSuiCallback(server));
-		suiBox->setPromptTitle("@guild:make_leader_t"); //Transfer PA Leadership
+		suiBox->setPromptTitle("@guild:make_leader_t"); // Transfer PA Leadership
 		suiBox->setPromptText("@guild:make_leader_d"); // You are about to transfer leadership of this Player Association!  Once you take this action you will be made a normal member and your leader permissions will be revoked.
 		suiBox->setCancelButton(true, "@cancel");
 		suiBox->setUsingObject(guildTerminal);
@@ -756,7 +757,7 @@ void GuildManagerImplementation::sendTransferAckTo(CreatureObject* player, const
 	if ( !target->getPlayerObject()->hasSuiBoxWindowType(SuiWindowType::GUILD_TRANSFER_LEADER_CONFIRM) ) {
 		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(target, SuiWindowType::GUILD_TRANSFER_LEADER_CONFIRM);
 		suiBox->setCallback(new GuildTransferLeaderAckSuiCallback(server));
-		suiBox->setPromptTitle("@guild:make_leader_t"); //Transfer PA leadership
+		suiBox->setPromptTitle("@guild:make_leader_t"); // Transfer PA leadership
 		suiBox->setPromptText("@guild:make_leader_p");  // The leader of this PA wants to transfer leadership to you. Do you accept?
 		suiBox->setUsingObject(sceoTerminal);
 		suiBox->setForceCloseDistance(32);
@@ -804,7 +805,7 @@ void GuildManagerImplementation::transferLeadership(CreatureObject* newLeader, C
 
 	// Send emails to guild
 	StringIdChatParameter params;
-	params.setStringId("@guildmail:leaderchange_text"); //%TU is the new guild leader.
+	params.setStringId("@guildmail:leaderchange_text"); // %TU is the new guild leader.
 	params.setTU(newLeader->getFirstName());
 
 	sendGuildMail("@guildmail:leaderchange_subject", params, guild);
@@ -838,7 +839,7 @@ bool GuildManagerImplementation::transferGuildHall(CreatureObject* newOwner, Sce
 				}
 
 			} else {
-				newOwner->sendSystemMessage("@player_structure:already_owner"); //You are already the owner.
+				newOwner->sendSystemMessage("@player_structure:already_owner"); // You are already the owner.
 			}
 		}
 
@@ -850,7 +851,7 @@ void GuildManagerImplementation::sendAcceptLotsTo(CreatureObject* newOwner, Guil
 	if ( !newOwner->getPlayerObject()->hasSuiBoxWindowType(SuiWindowType::GUILD_TAKE_LOTS)) {
 		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(newOwner, SuiWindowType::GUILD_TAKE_LOTS);
 		suiBox->setCallback(new GuildTransferLotsSuiCallback(server));
-		suiBox->setPromptTitle("@guild:accept_pa_hall_t"); //Accept PA Hall LOts
+		suiBox->setPromptTitle("@guild:accept_pa_hall_t"); // Accept PA Hall Lots
 		suiBox->setPromptText("@guild:accept_pa_hall_p"); // The current owner of this PA hall has not logged in for 28 days. As guild leader, you may transfer ownership of the PA hall to yourself. You must have enough lots free to accept PA Hall ownership. Once you own the PA hall you may transfer it to another owner if you so desire.
 		suiBox->setUsingObject(guildTerminal);
 		suiBox->setForceCloseDistance(32);
@@ -904,23 +905,21 @@ void GuildManagerImplementation::sendGuildMemberOptionsTo(CreatureObject* player
 	Locker _locker(player);
 	Locker _lock(guild, player);
 
-	GuildMemberList* memberList = guild->getGuildMemberList();
-
-	if (memberList == NULL)
+	if (!guild->hasMember(player->getObjectID()))
 		return;
 
-	if (!memberList->contains(player->getObjectID()))
-		return;
-
-	GuildMemberInfo* gmi = &memberList->get(player->getObjectID());
-
-	if (gmi == NULL)
+	ManagedReference<SceneObject*> playObj = server->getObject(memberID);
+	if (playObj == NULL || !playObj->isPlayerCreature())
 		return;
 
 	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::GUILD_MEMBER_OPTIONS);
 	suiBox->setCallback(new GuildMemberOptionsSuiCallback(server));
 	suiBox->setPromptTitle("@guild:member_options_title"); // Member Options
-	suiBox->setPromptText("@guild:member_options_prompt"); // Select an operation from the list to perform on %TU and press Ok.
+
+	UnicodeString text = StringIdManager::instance()->getStringId("@guild:member_options_prompt"); // Select an operation from the list to perform on %TU and press Ok.
+	text = text.replaceFirst("%TU", playObj->getDisplayedName());
+
+	suiBox->setPromptText(text.toString());
 	suiBox->setUsingObject(guildTerminal);
 	suiBox->setForceCloseDistance(32);
 	suiBox->setCancelButton(true, "@cancel");
@@ -944,7 +943,11 @@ void GuildManagerImplementation::sendGuildSetTitleTo(CreatureObject* player, Cre
 	ManagedReference<SuiInputBox*> suiBox = new SuiInputBox(player, SuiWindowType::GUILD_MEMBER_TITLE);
 	suiBox->setCallback(new GuildTitleResponseSuiCallback(server));
 	suiBox->setPromptTitle("@guild:title_title"); // Guild Member Title
-	suiBox->setPromptText("@guild:title_prompt"); // Enter a title to set for %TU.
+
+	UnicodeString text = StringIdManager::instance()->getStringId("@guild:title_prompt"); // Enter a title to set for %TU.
+	text = text.replaceFirst("%TU", target->getDisplayedName());
+
+	suiBox->setPromptText(text.toString());
 	suiBox->setUsingObject(target);
 	suiBox->setForceCloseDistance(32);
 	suiBox->setMaxInputSize(24);
@@ -1002,7 +1005,11 @@ void GuildManagerImplementation::sendGuildKickPromptTo(CreatureObject* player, C
 	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(target, SuiWindowType::GUILD_MEMBER_REMOVE);
 	suiBox->setCallback(new GuildMemberRemoveSuiCallback(server));
 	suiBox->setPromptTitle("@guild:kick_title"); // Kick From Guild
-	suiBox->setPromptText("@guild:kick_prompt"); // Are you sure you want to kick %TU out of the guild?
+
+	UnicodeString text = StringIdManager::instance()->getStringId("@guild:kick_prompt"); // Are you sure you want to kick %TU out of the guild?
+	text = text.replaceFirst("%TU", target->getDisplayedName());
+
+	suiBox->setPromptText(text.toString());
 	suiBox->setUsingObject(target);
 	suiBox->setForceCloseDisabled();
 	suiBox->setCancelButton(true, "@no");
@@ -1025,7 +1032,6 @@ void GuildManagerImplementation::kickMember(CreatureObject* player, CreatureObje
 	Locker glocker(guild, player);
 
 	if (!guild->hasMember(targetID)) {
-		//Isn't in this guild...
 		return;
 	}
 
@@ -1080,17 +1086,25 @@ void GuildManagerImplementation::sendMemberPermissionsTo(CreatureObject* player,
 	ManagedReference<GuildObject*> guild = player->getGuildObject();
 
 	if (guild == NULL || !guild->isGuildLeader(player)) {
-		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
 		return;
 	}
 
 	if (!guild->hasMember(targetID))
 		return;
 
+	ManagedReference<SceneObject*> target = server->getObject(targetID);
+	if (target == NULL || !target->isPlayerCreature())
+		return;
+
 	ManagedReference<SuiListBox*> listBox = new SuiListBox(player, SuiWindowType::GUILD_MEMBER_PERMISSIONS);
 	listBox->setCallback(new GuildMemberPermissionsResponseSuiCallback(server));
 	listBox->setPromptTitle("@guild:permissions_title"); // Guild Member Permissions
-	listBox->setPromptText("@guild:permissions_prompt"); // These are the current permissions set for %TU. Permissions preceded by '+' are currently allowed, and those preceded by '-' are not. Select a permission and press Ok to toggle it.
+
+	UnicodeString text = StringIdManager::instance()->getStringId("@guild:permissions_prompt"); // These are the current permissions set for %TU. Permissions preceded by '+' are currently allowed, and those preceded by '-' are not. Select a permission and press Ok to toggle it.
+	text = text.replaceFirst("%TU", target->getDisplayedName());
+
+	listBox->setPromptText(text.toString());
 	listBox->setUsingObject(guildTerminal);
 	listBox->setForceCloseDistance(32);
 	listBox->setCancelButton(true, "@cancel");
@@ -1113,7 +1127,7 @@ void GuildManagerImplementation::toggleGuildPermission(CreatureObject* player, u
 	ManagedReference<GuildObject*> guild = player->getGuildObject();
 
 	if (guild == NULL || !guild->isGuildLeader(player) || player->getObjectID() == targetID) {
-		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
 		return;
 	}
 
@@ -1155,31 +1169,134 @@ void GuildManagerImplementation::toggleGuildPermission(CreatureObject* player, u
 	sendMemberPermissionsTo(player, targetID, guildTerminal);
 }
 
-void GuildManagerImplementation::sendGuildSponsoredOptionsTo(CreatureObject* player, GuildObject* guild, uint64 playerID, GuildTerminal* guildTerminal) {
-	if (guild == NULL) {
+void GuildManagerImplementation::sendGuildSponsorTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
+	if (guild == NULL)
 		return;
-	}
 
 	Locker _lock(guild);
 
-	if (!guild->hasAcceptPermission(player->getObjectID())) {
-		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
+	if (!guild->hasSponsorPermission(player->getObjectID())) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
 		return;
 	}
 
-	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::GUILD_SPONSORED_OPTIONS);
-	suiBox->setCallback(new GuildSponsoredOptionsSuiCallback(server));
-	suiBox->setPromptTitle("@guild:sponsored_options_title"); //Sponsored For Membership
-	suiBox->setPromptText("@guild:sponsored_options_prompt");
+	ManagedReference<SuiInputBox*> suiBox = new SuiInputBox(player, SuiWindowType::GUILD_SPONSOR);
+	suiBox->setCallback(new GuildSponsorSuiCallback(server));
+	suiBox->setPromptTitle("@guild:sponsor_title"); // Sponsor for Membership
+	suiBox->setPromptText("@guild:sponsor_prompt"); // Enter the name of the person to sponsor for membership. The person must be nearby.
 	suiBox->setUsingObject(guildTerminal);
 	suiBox->setForceCloseDistance(32);
 	suiBox->setCancelButton(true, "@cancel");
 
-	suiBox->addMenuItem("@guild:accept", playerID); //Accept
-	suiBox->addMenuItem("@guild:decline", 0); //Decline
-
 	player->getPlayerObject()->addSuiBox(suiBox);
 	player->sendMessage(suiBox->generateMessage());
+}
+
+void GuildManagerImplementation::sponsorPlayer(CreatureObject* player, const String& playerName) {
+	ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+
+	ManagedReference<GuildObject*> guild = player->getGuildObject();
+
+	if (guild == NULL)
+		return;
+
+	if (!guild->hasSponsorPermission(player->getObjectID())) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
+		return;
+	}
+
+	if (guild->getTotalMembers() >= maximumMembers) {
+		player->sendSystemMessage("@guild:sponsor_fail_full"); // No more members may be sponsored, as the guild is already full.
+		return;
+	}
+
+	ManagedReference<CreatureObject*> target = playerManager->getPlayer(playerName);
+
+	if (target == NULL) {
+		player->sendSystemMessage("@guild:sponsor_not_found"); // The specified person to sponsor could not be found nearby.
+		return;
+	}
+
+	Locker _lock(target, player);
+
+	if (!target->isOnline() || !player->isInRange(target, 32)) {
+		player->sendSystemMessage("@guild:sponsor_not_found"); // The specified person to sponsor could not be found nearby.
+		return;
+	}
+
+	if (target->isInGuild()) {
+		StringIdChatParameter params;
+		params.setTU(target);
+		params.setStringId("@guild:sponsor_already_in_guild"); // %TU is already in a guild.
+		player->sendSystemMessage(params);
+		return;
+	}
+
+	StringIdChatParameter params;
+	params.setStringId("@guild:sponsor_self"); // You sponsor %TU for membership in %TT.
+	params.setTU(target);
+	params.setTT(guild->getGuildName());
+	player->sendSystemMessage(params);
+
+	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(target, SuiWindowType::GUILD_SPONSOR_VERIFY);
+	suiBox->setCallback(new GuildSponsorVerifySuiCallback(server));
+	suiBox->setPromptTitle("@guild:sponsor_verify_title"); // Sponsored For Guild Membership
+
+	UnicodeString text = StringIdManager::instance()->getStringId("@guild:sponsor_verify_prompt"); // %TU wishes to sponsor you for membership in %TT. Accepting this will cancel your sponsorship for any other guilds. Do you accept sponsorship?
+	text = text.replaceFirst("%TU", player->getDisplayedName());
+	text = text.replaceFirst("%TT", guild->getGuildName());
+
+	suiBox->setPromptText(text.toString());
+	suiBox->setUsingObject(player);
+	suiBox->setForceCloseDistance(32);
+	suiBox->setCancelButton(true, "@no");
+	suiBox->setOkButton(true, "@yes");
+
+	target->getPlayerObject()->addSuiBox(suiBox);
+	target->sendMessage(suiBox->generateMessage());
+}
+
+void GuildManagerImplementation::acceptSponsorshipRequest(CreatureObject* player, CreatureObject* target) {
+	Locker _lock(player, target);
+
+	ManagedReference<GuildObject*> guild = player->getGuildObject();
+
+	if (guild == NULL)
+		return;
+
+	uint64 targetID = target->getObjectID();
+
+	StringIdChatParameter params;
+	params.setStringId("@guild:sponsor_accept"); // %TU has accepted your sponsorship
+	params.setTU(targetID);
+	player->sendSystemMessage(params);
+
+	params.clear();
+
+	params.setStringId("@guild:sponsor_target"); // %TU has sponsored you for membership in %TT.
+	params.setTU(player->getObjectID());
+	params.setTT(guild->getGuildName());
+	target->sendSystemMessage(params);
+
+	if (isSponsoredPlayer(targetID)) {
+		ManagedReference<GuildObject*> oldGuild = getSponsoredGuild(targetID);
+
+		if (oldGuild != NULL) {
+			oldGuild->removeSponsoredPlayer(targetID);
+		}
+
+		removeSponsoredPlayer(targetID);
+	}
+
+	addSponsoredPlayer(targetID, guild);
+	guild->addSponsoredPlayer(targetID);
+
+	//Send emails
+	params.setStringId("@guildmail:sponsor_text"); // %TU has sponsored %TT for membership in the guild.
+	params.setTU(player->getDisplayedName());
+	params.setTT(target->getDisplayedName());
+
+	sendGuildMail("@guildmail:sponsor_subject", params, guild);
 }
 
 void GuildManagerImplementation::sendGuildSponsoredListTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
@@ -1190,8 +1307,8 @@ void GuildManagerImplementation::sendGuildSponsoredListTo(CreatureObject* player
 
 	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::GUILD_SPONSORED_LIST);
 	suiBox->setCallback(new GuildSponsoredListSuiCallback(server));
-	suiBox->setPromptTitle("@guild:sponsored_title"); //Sponsored for Membership
-	suiBox->setPromptText("@guild:sponsored_prompt");
+	suiBox->setPromptTitle("@guild:sponsored_title"); // Sponsored for Membership
+	suiBox->setPromptText("@guild:sponsored_prompt"); // These are the people currently sponsored for membership in the guild. If you have permission, you may select them from the list and press Ok to accept or decline their membership.
 	suiBox->setUsingObject(guildTerminal);
 	suiBox->setForceCloseDistance(32);
 	suiBox->setCancelButton(true, "@cancel");
@@ -1213,27 +1330,142 @@ void GuildManagerImplementation::sendGuildSponsoredListTo(CreatureObject* player
 	player->sendMessage(suiBox->generateMessage());
 }
 
-void GuildManagerImplementation::sendGuildSponsorTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
-	if (guild == NULL)
+void GuildManagerImplementation::sendGuildSponsoredOptionsTo(CreatureObject* player, GuildObject* guild, uint64 playerID, GuildTerminal* guildTerminal) {
+	if (guild == NULL) {
+		return;
+	}
+
+	ManagedReference<SceneObject*> target = server->getObject(playerID);
+
+	if (target == NULL || !target->isPlayerCreature())
 		return;
 
 	Locker _lock(guild);
 
-	if (!guild->hasSponsorPermission(player->getObjectID())) {
-		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
+	if (!guild->hasAcceptPermission(player->getObjectID()) || !guild->hasSponsoredPlayer(playerID)) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
 		return;
 	}
 
-	ManagedReference<SuiInputBox*> suiBox = new SuiInputBox(player, SuiWindowType::GUILD_SPONSOR);
-	suiBox->setCallback(new GuildSponsorSuiCallback(server));
-	suiBox->setPromptTitle("@guild:sponsor_title"); //Sponsor for Membership
-	suiBox->setPromptText("@guild:sponsor_prompt");
+	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::GUILD_SPONSORED_OPTIONS);
+	suiBox->setCallback(new GuildSponsoredOptionsSuiCallback(server));
+	suiBox->setPromptTitle("@guild:sponsored_options_title"); // Sponsored For Membership
+
+	UnicodeString text = StringIdManager::instance()->getStringId("@guild:sponsored_options_prompt"); // Sponsored for membership: %TU. You may accept them into the guild, decline their membership, or cancel to leave them unchanged for now.
+	text = text.replaceFirst("%TU", target->getDisplayedName());
+
+	suiBox->setPromptText(text.toString());
 	suiBox->setUsingObject(guildTerminal);
 	suiBox->setForceCloseDistance(32);
 	suiBox->setCancelButton(true, "@cancel");
 
+	suiBox->addMenuItem("@guild:accept", playerID); // Accept
+	suiBox->addMenuItem("@guild:decline", playerID); // Decline
+
 	player->getPlayerObject()->addSuiBox(suiBox);
 	player->sendMessage(suiBox->generateMessage());
+}
+
+void GuildManagerImplementation::acceptSponsoredPlayer(CreatureObject* player, uint64 targetID) {
+	ManagedReference<GuildObject*> guild = player->getGuildObject();
+
+	if (guild == NULL || !guild->hasAcceptPermission(player->getObjectID())) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
+		return;
+	}
+
+	ManagedReference<SceneObject*> obj = server->getObject(targetID);
+
+	if (obj == NULL || !obj->isPlayerCreature())
+		return;
+
+	CreatureObject* target = cast<CreatureObject*>( obj.get());
+
+	Locker _lock(target, player);
+
+	if (target->isInGuild()) {
+		player->sendSystemMessage("@guild:sponsor_already_in_guild"); // %TU is already in a guild.
+		return;
+	}
+
+	StringIdChatParameter params;
+	params.setStringId("@guild:accept_self"); // You accept %TU for membership in %TT.
+	params.setTU(target->getDisplayedName());
+	params.setTT(guild->getGuildName());
+	player->sendSystemMessage(params);
+
+	params.setStringId("@guildmail:accept_text"); // %TU has accepted %TT into the guild as a member.
+	params.setTU(player->getDisplayedName());
+	params.setTT(target->getDisplayedName());
+	sendGuildMail("@guildmail:accept_subject", params, guild);
+
+	params.setTT(guild->getGuildName());
+
+	guild->addMember(targetID);
+	target->setGuildObject(guild);
+
+	if (target->isOnline()) {
+		params.setStringId("@guild:accept_target"); // %TU has accepted you for membership in %TT.
+		target->sendSystemMessage(params);
+
+		CreatureObjectDeltaMessage6* creod6 = new CreatureObjectDeltaMessage6(target);
+		creod6->updateGuildID();
+		creod6->close();
+		target->broadcastMessage(creod6, true);
+
+		ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
+
+		if (guildChat != NULL) {
+			guildChat->sendTo(target);
+			guildChat->addPlayer(target);
+		}
+
+		PlayerObject* targetGhost = target->getPlayerObject();
+
+		if (targetGhost != NULL) {
+			targetGhost->updateInRangeBuildingPermissions();
+		}
+	}
+
+	params.setStringId("@guildmail:accept_target_text"); // %TU has accepted you into %TT as a member.
+	chatManager->sendMail(guild->getGuildName(), "@guildmail:accept_target_subject", params, target->getFirstName());
+}
+
+void GuildManagerImplementation::declineSponsoredPlayer(CreatureObject* player, uint64 targetID) {
+	ManagedReference<GuildObject*> guild = player->getGuildObject();
+
+	if (guild == NULL || !guild->hasAcceptPermission(player->getObjectID())) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
+		return;
+	}
+
+	ManagedReference<SceneObject*> obj = server->getObject(targetID);
+
+	if (obj == NULL || !obj->isPlayerCreature())
+		return;
+
+	CreatureObject* target = cast<CreatureObject*>( obj.get());
+
+	StringIdChatParameter params;
+	params.setStringId("@guild:decline_self"); // You decline %TU for membership in %TT.
+	params.setTU(target->getDisplayedName());
+	params.setTT(guild->getGuildName());
+	player->sendSystemMessage(params);
+
+	params.setStringId("@guildmail:decline_text"); // %TU has turned down %TT for membership in the guild.
+	params.setTU(player->getDisplayedName());
+	params.setTT(target->getDisplayedName());
+	sendGuildMail("@guildmail:decline_subject", params, guild);
+
+	params.setTT(guild->getGuildName());
+
+	if (target->isOnline()) {
+		params.setStringId("@guild:decline_target"); // %TU has declined your membership in %TT.
+		target->sendSystemMessage(params);
+	}
+
+	params.setStringId("@guildmail:decline_target_text"); // %TU has declined your sponsorship for %TT.
+	chatManager->sendMail(guild->getGuildName(), "@guildmail:decline_target_subject", params, target->getFirstName());
 }
 
 void GuildManagerImplementation::sendBaselinesTo(CreatureObject* player) {
@@ -1267,162 +1499,6 @@ void GuildManagerImplementation::sendBaselinesTo(CreatureObject* player) {
 
 	guildChat->sendTo(player);
 	guildChat->addPlayer(player);*/
-}
-
-void GuildManagerImplementation::sponsorPlayer(CreatureObject* player, const String& playerName) {
-	ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
-
-	ManagedReference<GuildObject*> guild = player->getGuildObject();
-
-	if (guild == NULL)
-		return;
-
-	if (guild->getTotalMembers() >= maximumMembers) {
-		player->sendSystemMessage("@guild:sponsor_fail_full"); //No more members may be sponsored, as the guild is already full.
-		return;
-	}
-
-	ManagedReference<CreatureObject*> target = playerManager->getPlayer(playerName);
-
-	if (target == NULL) {
-		player->sendSystemMessage("@guild:sponsor_not_found"); //The specified person to sponsor could not be found nearby.
-		return;
-	}
-
-	Locker _lock(target, player);
-
-	if (!target->isOnline() || !player->isInRange(target, 32)) {
-		player->sendSystemMessage("@guild:sponsor_not_found"); //The specified person to sponsor could not be found nearby.
-		return;
-	}
-
-	if (target->isInGuild()) {
-		StringIdChatParameter params;
-		params.setTU(target);
-		params.setStringId("@guild:sponsor_already_in_guild"); //%TU is already in a guild.
-		player->sendSystemMessage(params);
-		return;
-	}
-
-	StringIdChatParameter params;
-	params.setStringId("@guild:sponsor_target"); //%TU has sponsored you for membership in %TT.
-	params.setTU(player->getObjectID());
-	params.setTT(guild->getGuildName());
-	target->sendSystemMessage(params);
-
-	//Here we need to send a confirmation box to the target player.
-	sendGuildSponsorVerifyTo(player, target);
-}
-
-void GuildManagerImplementation::sendGuildSponsorVerifyTo(CreatureObject* player, CreatureObject* target) {
-	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(target, SuiWindowType::GUILD_SPONSOR_VERIFY);
-	suiBox->setCallback(new GuildSponsorVerifySuiCallback(server));
-	suiBox->setPromptTitle("@guild:sponsor_verify_title"); //Sponsored For Guild Membership
-	suiBox->setPromptText("@guild:sponsor_verify_prompt");
-	suiBox->setUsingObject(player);
-	suiBox->setForceCloseDistance(32);
-	suiBox->setCancelButton(true, "@no");
-	suiBox->setOkButton(true, "@yes");
-
-	target->getPlayerObject()->addSuiBox(suiBox);
-	target->sendMessage(suiBox->generateMessage());
-}
-
-void GuildManagerImplementation::acceptSponsorshipRequest(CreatureObject* player, CreatureObject* target) {
-	Locker _lock(player, target);
-
-	ManagedReference<GuildObject*> guild = player->getGuildObject();
-
-	if (guild == NULL)
-		return;
-
-	StringIdChatParameter params;
-	params.setStringId("@guild:sponsor_accept"); //%TU has accepted your sponsorship
-	params.setTU(target->getObjectID());
-
-	player->sendSystemMessage(params);
-
-	params.clear();
-
-	params.setStringId("@guild:sponsor_self"); //You sponsor %TU for membership in %TT.
-	params.setTT(guild->getGuildName());
-
-	player->sendSystemMessage(params);
-
-	addSponsoredPlayer(target->getObjectID(), guild);
-	guild->addSponsoredPlayer(target->getObjectID());
-
-	//Send emails
-	params.setStringId("@guildmail:sponsor_text"); //%TU has sponsored %TT for membership in the guild.
-	params.setTU(player->getDisplayedName());
-	params.setTT(target->getDisplayedName());
-
-	sendGuildMail("@guildmail:sponsor_subject", params, guild);
-}
-
-void GuildManagerImplementation::acceptSponsoredPlayer(CreatureObject* player, uint64 targetID) {
-	ManagedReference<GuildObject*> guild = player->getGuildObject();
-
-	if (guild == NULL || !guild->hasAcceptPermission(player->getObjectID())) {
-		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
-		return;
-	}
-
-	ManagedReference<SceneObject*> obj = server->getObject(targetID);
-
-	if (obj == NULL || !obj->isPlayerCreature())
-		return;
-
-	CreatureObject* target = cast<CreatureObject*>( obj.get());
-
-	Locker _lock(target, player);
-
-	if (target->isInGuild()) {
-		player->sendSystemMessage("@guild:sponsor_already_in_guild"); //%TU is already in a guild.
-		return;
-	}
-
-	StringIdChatParameter params;
-	params.setStringId("@guild:accept_self"); //You accept %TU for membership in %TT.
-	params.setTU(target->getDisplayedName());
-	params.setTT(guild->getGuildName());
-	player->sendSystemMessage(params);
-
-	params.setStringId("@guildmail:accept_text"); //%TU has accepted %TT into the guild as a member.
-	params.setTU(player->getDisplayedName());
-	params.setTT(target->getDisplayedName());
-	sendGuildMail("@guildmail:accept_subject", params, guild);
-
-	params.setTT(guild->getGuildName());
-
-	guild->addMember(targetID);
-	target->setGuildObject(guild);
-
-	if (target->isOnline()) {
-		params.setStringId("@guild:accept_target"); // %TU has accepted you for membership in %TT.
-		target->sendSystemMessage(params);
-
-		CreatureObjectDeltaMessage6* creod6 = new CreatureObjectDeltaMessage6(target);
-		creod6->updateGuildID();
-		creod6->close();
-		target->broadcastMessage(creod6, true);
-
-		ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
-
-		if (guildChat != NULL) {
-			guildChat->sendTo(target);
-			guildChat->addPlayer(target);
-		}
-
-		PlayerObject* targetGhost = target->getPlayerObject();
-
-		if (targetGhost != NULL) {
-			targetGhost->updateInRangeBuildingPermissions();
-		}
-	}
-
-	params.setStringId("@guildmail:accept_target_text"); //%TU has accepted you into %TT as a member.
-	chatManager->sendMail(guild->getGuildName(), "@guildmail:accept_target_subject", params, target->getFirstName());
 }
 
 void GuildManagerImplementation::sendGuildListTo(CreatureObject* player, const String& guildFilter) {
