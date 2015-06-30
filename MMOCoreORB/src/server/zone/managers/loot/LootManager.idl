@@ -168,6 +168,8 @@ class LootManager extends ManagedService implements Logger {
 	public native boolean createLootFromCollection(SceneObject container, LootGroupCollection collection, int level);
 	
 	public native boolean createLoot(SceneObject container, final string lootGroup, int level = -1, boolean maxCondition = false);
+
+	public native boolean createLootSet(SceneObject container, final string lootGroup, int level, boolean maxCondition,int setSize);	
 	
 	//public native void generateStats(final string lootTemplate, CraftingValues)
 	
