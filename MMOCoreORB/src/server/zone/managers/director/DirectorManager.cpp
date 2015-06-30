@@ -279,6 +279,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 
 	// call for createLoot(SceneObject* container, const String& lootGroup, int level)
 	lua_register(luaEngine->getLuaState(), "createLoot", createLoot);
+	lua_register(luaEngine->getLuaState(), "createLootSet", createLootSet);
 	lua_register(luaEngine->getLuaState(), "createLootFromCollection", createLootFromCollection);
 
 	lua_register(luaEngine->getLuaState(), "getRegion", getRegion);
@@ -639,6 +640,28 @@ int DirectorManager::createLoot(lua_State* L) {
 
 	LootManager* lootManager = ServerCore::getZoneServer()->getLootManager();
 	lootManager->createLoot(container, lootGroup, level, maxCondition);
+
+	return 0;
+}
+
+int DirectorManager::createLootSet(lua_State* L) {
+	if (checkArgumentCount(L,5) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::createLootSet");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	SceneObject* container = (SceneObject*)lua_touserdata(L, -5);
+	String lootGroup = lua_tostring(L, -4);
+	int level = lua_tonumber(L, -3);
+	bool maxCondition = lua_toboolean(L, -2);
+	int setSize = lua_tonumber(L, -1);
+
+	if (container == NULL || lootGroup == "")
+		return 0;
+
+	LootManager* lootManager = ServerCore::getZoneServer()->getLootManager();
+	lootManager->createLootSet(container, lootGroup, level, maxCondition, setSize);
 
 	return 0;
 }

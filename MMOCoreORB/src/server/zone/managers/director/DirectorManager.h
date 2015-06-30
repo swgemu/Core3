@@ -103,7 +103,9 @@ namespace server {
 		static int spawnBuilding(lua_State* L);
 		static int destroyBuilding(lua_State* L);
 		static int createLoot(lua_State* L);
+		static int createLootSet(lua_State* L);
 		static int createLootFromCollection(lua_State* L);
+
 		static int getRandomNumber(lua_State* L);
 		static int spatialChat(lua_State* L);
 		static int spatialMoodChat(lua_State* L);

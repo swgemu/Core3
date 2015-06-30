@@ -1588,6 +1588,8 @@ function ThemeParkLogic:handleMissionReward(pConversingPlayer)
 			self:giveFaction(pConversingPlayer, reward.faction, reward.amount)
 		elseif reward.rewardType == "loot" then
 			self:giveLoot(pConversingPlayer, reward.lootGroup)
+		elseif reward.rewardType == "loot_set" then
+			self:giveLootSet(pConversingPlayer, reward.lootGroup, reward.setSize)
 		elseif reward.rewardType == "badge" then
 			self:giveBadge(pConversingPlayer, reward.badge)
 		elseif reward.rewardType == "permission" then
@@ -1622,6 +1624,21 @@ function ThemeParkLogic:giveLoot(pConversingPlayer, lootGroup)
 	end
 
 	createLoot(pInventory, lootGroup, 0, true)
+	CreatureObject(pConversingPlayer):sendSystemMessage("@theme_park/messages:theme_park_reward")
+end
+
+function ThemeParkLogic:giveLootSet(pConversingPlayer, lootGroup, setSize)
+	if (pConversingPlayer == nil) then
+		return
+	end
+
+	local pInventory = CreatureObject(pConversingPlayer):getSlottedObject("inventory")
+
+	if pInventory == nil then
+		return
+	end
+
+	createLootSet(pInventory, lootGroup, 0, true, setSize)
 	CreatureObject(pConversingPlayer):sendSystemMessage("@theme_park/messages:theme_park_reward")
 end
 

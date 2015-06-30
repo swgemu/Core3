@@ -124,8 +124,7 @@ fightmaster_jorak_missions =
 		rewards =
 		{
 			{ rewardType = "credits", amount = 40 },
-			{ rewardType = "loot",  lootGroup = "theme_park_reward_marauder_armor_bracer_l" },
-			{ rewardType = "loot",  lootGroup = "theme_park_reward_marauder_armor_bracer_r" }
+			{ rewardType = "loot_set",  lootGroup = "theme_park_reward_marauder_armor_bracer", setSize = 2 }
 		}
 	}
 }
@@ -338,8 +337,7 @@ king_terak_missions =
 		rewards =
 		{
 			{ rewardType = "credits", amount = 300 },
-			{ rewardType = "loot",  lootGroup = "theme_park_reward_marauder_armor_bicep_l" },
-			{ rewardType = "loot",  lootGroup = "theme_park_reward_marauder_armor_bicep_r" }
+			{ rewardType = "loot_set",  lootGroup = "theme_park_reward_marauder_armor_bicep", setSize = 2 }
 		}
 	},
 	{
