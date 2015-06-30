@@ -47,16 +47,34 @@ public:
 
 		for (int i = 0; i < entryMap.size(); ++i) {
 			VectorMapEntry<String, int>* entry = &entryMap.elementAt(i);
+			int weight = entry->getValue();
 
-			totalChance += entry->getValue();
+			totalChance += weight;
 
-			if (totalChance >= roll)
+			if (totalChance >= roll && weight > 0)
 				return entry->getKey();
 		}
 
 		//Should never get here unless the scripts didn't add up to 10000000.
 		return "";
 	}
+
+	int getLootGroupIntEntryForRoll ( int roll ) {
+		int totalChance = 0;
+
+		for (int i = 0; i < entryMap.size(); ++i) {
+			VectorMapEntry<String, int>* entry = &entryMap.elementAt(i);
+			int weight = entry->getValue();
+			totalChance += weight;
+
+			if (totalChance >= roll && weight > 0 )
+				return i;
+		}
+
+		//Should never get here unless the scripts didn't add up to 10000000.
+		return -1;
+	}
+
 
 	int size(){
 		return entryMap.size();
@@ -74,6 +92,7 @@ public:
 		return entry->getKey();
 
 	}
+
 
 	void readObject(LuaObject* lua) {
 		LuaObject lootItems = lua->getObjectField("lootItems");
