@@ -52,7 +52,7 @@ public:
 			return GENERALERROR;
 		}
 
-		if (structure->isBuildingObject() && creature->getRootParent() != structure) {
+		if (structure->isBuildingObject()) {
 
 			BuildingObject* building = cast<BuildingObject*>(structure);
 
