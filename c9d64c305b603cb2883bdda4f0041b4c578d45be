@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_a1a93826",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/components/PlayerContainerComponent.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-02T12:30:49Z",
+      "side": 1,
+      "message": "Put this within the robeObject-\u003egetSkillRequired() !\u003d \"\" check.",
+      "revId": "c9d64c305b603cb2883bdda4f0041b4c578d45be",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_c1a6c453",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/components/PlayerContainerComponent.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-02T12:30:49Z",
+      "side": 1,
+      "message": "You don\u0027t need this. force power max will only change when a robe is equipped or unequipped.",
+      "revId": "c9d64c305b603cb2883bdda4f0041b4c578d45be",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_8168bcf6",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/components/PlayerContainerComponent.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-02T12:30:49Z",
+      "side": 1,
+      "message": "Move this just like above.",
+      "revId": "c9d64c305b603cb2883bdda4f0041b4c578d45be",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_6163301b",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/components/PlayerContainerComponent.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-02T12:30:49Z",
+      "side": 1,
+      "message": "You don\u0027t need this.",
+      "revId": "c9d64c305b603cb2883bdda4f0041b4c578d45be",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_216d2805",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/components/PlayerContainerComponent.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-02T12:30:49Z",
+      "side": 1,
+      "message": "This should set regen to their skill mod minus the amount on the robe.",
+      "revId": "c9d64c305b603cb2883bdda4f0041b4c578d45be",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
