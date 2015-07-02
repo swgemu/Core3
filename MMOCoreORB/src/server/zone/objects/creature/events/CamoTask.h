@@ -80,8 +80,6 @@ public:
 			ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
 			playerManager->awardExperience(creature, "scout", (target->getLevel() * 2), true);
 		}
-
-		target->getCooldownTimerMap()->updateToCurrentAndAddMili("camo_" + String::valueOf(creature->getObjectID()), 300000); // 5 minute cooldown
 	}
 };
 
