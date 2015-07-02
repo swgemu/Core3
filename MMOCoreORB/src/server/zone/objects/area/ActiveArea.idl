@@ -88,6 +88,9 @@ class ActiveArea extends SceneObject {
 	}
 
 	@dirty
+	public native boolean containsPoint(float x, float y, unsigned long cellid);
+
+	@dirty
 	public native boolean containsPoint(float x, float y);
 
 	@dirty
@@ -174,4 +177,6 @@ class ActiveArea extends SceneObject {
 	public void attachScenery(SceneObject scene) {
 		attachedScenery.add(scene);
 	}
+
+	public native void initializeChildObject(SceneObject controllerObject);
 }
