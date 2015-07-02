@@ -29,6 +29,13 @@ public:
 
 		uint32 crc = STRING_HASHCODE("skill_buff_mask_scent_self");
 
+		if (!creature->checkCooldownRecovery("camo_" + String::valueOf(crc))) {
+			StringIdChatParameter delayMsg("skl_use", "sys_scentmask_delay");
+			delayMsg.setDI(creature->getCooldownTime("camo_" + String::valueOf(crc))->miliDifference()/1000);
+			creature->sendSystemMessage(delayMsg);
+			return GENERALERROR;
+		}
+
 		if (creature->hasBuff(crc)) {
 			creature->sendSystemMessage("@skl_use:sys_scentmask_already"); // You are already masking your scent.
 			return GENERALERROR;
