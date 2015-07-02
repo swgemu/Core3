@@ -790,6 +790,8 @@ void GuildManagerImplementation::sendGuildInformationTo(CreatureObject* player, 
 	guildInfo << "Members: " << guild->getTotalMembers() << "\n";
 
 	suiBox->setPromptText(guildInfo.toString());
+
+	player->getPlayerObject()->addSuiBox(suiBox);
 	player->sendMessage(suiBox->generateMessage());
 }
 
