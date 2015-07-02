@@ -52,6 +52,15 @@ void GuildObjectImplementation::addMember(uint64 playerID) {
 
 void GuildObjectImplementation::removeMember(uint64 playerID) {
 	guildMembers.drop(playerID);
+
+	if (candidates.contains(playerID)) {
+		removeCandidate(playerID);
+	}
+
+	if (votes.contains(playerID)) {
+		setVote(playerID, 0);
+		votes.drop(playerID);
+	}
 }
 
 bool GuildObjectImplementation::hasMember(uint64 playerID) {
@@ -208,4 +217,36 @@ void GuildObjectImplementation::toggleMemberPermission(uint64 playerID, uint8 pe
 		return;
 
 	gmi->togglePermission(permission);
+}
+
+void GuildObjectImplementation::removeCandidate(uint64 candidateoid) {
+	candidates.drop(candidateoid);
+
+	// Remove votes for the candidate
+	for (int i = votes.size() - 1; i >= 0; --i) {
+		if (votes.get(i) == candidateoid) {
+			votes.drop(votes.elementAt(i).getKey());
+		}
+	}
+}
+
+uint64 GuildObjectImplementation::getMemberWithHighestPermission() {
+	uint64 highestMember = 0;
+	uint8 highestPerm = 0;
+
+	for (int i = 0; i < guildMembers.size(); i++) {
+		GuildMemberInfo* gmi = &guildMembers.get(i);
+
+		if (gmi == NULL)
+			continue;
+
+		uint8 perm = gmi->getPermissions();
+
+		if (perm > highestPerm) {
+			highestPerm = perm;
+			highestMember = gmi->getPlayerID();
+		}
+	}
+
+	return highestMember;
 }

@@ -50,6 +50,14 @@ class GuildObject extends SceneObject {
 
 	protected unsigned long guildLeaderID;
 
+	protected byte electionState;
+
+	@dereferenced
+	protected VectorMap<unsigned long, int> candidates; // candidateID, # of votes
+
+	@dereferenced
+	protected VectorMap<unsigned long, unsigned long> votes; // voterID, candidateID
+
 	public static final byte PERMISSION_NONE = 0x00;
 	public static final byte PERMISSION_MAIL = 0x01;
 	public static final byte PERMISSION_SPONSOR = 0x02;
@@ -66,6 +74,10 @@ class GuildObject extends SceneObject {
 	public static final byte WAR_IN = 0x3C; //'<'
 	public static final byte WAR_OUT = 0x3E; //'>'
 
+	public static final byte ELECTION_DISABLED = 0;
+	public static final byte ELECTION_FIRST_WEEK = 1;
+	public static final byte ELECTION_SECOND_WEEK = 2;
+
 	public GuildObject() {
 		Logger.setLoggingName("GuildObject");
 
@@ -80,6 +92,14 @@ class GuildObject extends SceneObject {
 		sponsoredPlayers.setNoDuplicateInsertPlan();
 		guildMembers.setNoDuplicateInsertPlan();
 		nextUpdateTime.addMiliTime((3600 + System.random(601200)) * 1000); // 1 hour to 1 week
+
+		electionState = ELECTION_DISABLED;
+
+		candidates.setAllowOverwriteInsertPlan();
+		candidates.setNullValue(0);
+
+		votes.setAllowOverwriteInsertPlan();
+		votes.setNullValue(0);
 	}
 
 	/**
@@ -348,4 +368,66 @@ class GuildObject extends SceneObject {
 	public boolean isTransferPending() {
 		return transferPending;
 	}
+
+	@dirty
+	public boolean isElectionEnabled() {
+		return electionState > ELECTION_DISABLED;
+	}
+
+	@read
+	public byte getElectionState() {
+		return electionState;
+	}
+
+	@preLocked
+	public void setElectionState(byte state) {
+		electionState = state;
+	}
+
+	@preLocked
+	public void addCandidate(unsigned long candidateoid) {
+		candidates.put(candidateoid, 0);
+	}
+
+	@preLocked
+	public void setVote(unsigned long voteroid, unsigned long candidateoid) {
+		unsigned long currentoid = votes.get(voteroid);
+
+		//Check if they are voting for same person
+		if (currentoid == candidateoid)
+			return;
+
+		//Remove the current vote for the current candidate
+		if (currentoid != 0 && candidates.contains(currentoid))
+			candidates.put(currentoid, candidates.get(currentoid) - 1);
+
+		votes.put(voteroid, candidateoid);
+		candidates.put(candidateoid, candidates.get(candidateoid) + 1);
+	}
+
+	@local
+	public VectorMap<unsigned long, int> getCandidates() {
+		return candidates;
+	}
+
+	@preLocked
+	public void resetElection(boolean disable) {
+		votes.removeAll();
+		candidates.removeAll();
+
+		if (disable) {
+			electionState = ELECTION_DISABLED;
+		}
+	}
+
+	@preLocked
+	public native void removeCandidate(unsigned long candidateoid);
+
+	@dirty
+	public boolean isCandidate(unsigned long candidateoid) {
+		return candidates.contains(candidateoid);
+	}
+
+	@preLocked
+	public native unsigned long getMemberWithHighestPermission();
 }

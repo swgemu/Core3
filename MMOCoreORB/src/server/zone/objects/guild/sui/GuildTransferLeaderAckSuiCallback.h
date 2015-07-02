@@ -67,7 +67,7 @@ public:
 				// transfer structure to new leader
 				if (guildManager_p->transferGuildHall(newOwner_p, sceoTerminal_p)) {
 					// change leadership of guild
-					guildManager_p->transferLeadership(newOwner_p, owner_p, sceoTerminal_p);
+					guildManager_p->transferLeadership(newOwner_p, owner_p, false);
 				}
 			});
 

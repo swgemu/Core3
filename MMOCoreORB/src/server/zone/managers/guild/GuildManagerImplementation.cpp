@@ -48,6 +48,7 @@
 #include "server/zone/objects/guild/sui/GuildTransferLeadershipSuiCallback.h"
 #include "server/zone/objects/guild/sui/GuildTransferLeaderAckSuiCallback.h"
 #include "server/zone/objects/guild/sui/GuildTransferLotsSuiCallback.h"
+#include "server/zone/objects/guild/sui/GuildVoteSuiCallback.h"
 #include "server/zone/objects/creature/commands/sui/ListGuildsResponseSuiCallback.h"
 
 #include "server/zone/packets/scene/SceneObjectCreateMessage.h"
@@ -223,9 +224,122 @@ void GuildManagerImplementation::processGuildUpdate(GuildObject* guild) {
 		task->execute();
 	}
 
-	//TODO: kick off elections for guilds without a leader
+	if (guild->isElectionEnabled()) {
+		if (guild->getElectionState() == GuildObject::ELECTION_FIRST_WEEK) {
+			guild->setElectionState(GuildObject::ELECTION_SECOND_WEEK);
+		} else {
+			processGuildElection(guild);
+		}
+	}
+
+	if (!guild->isElectionEnabled()) {
+		uint64 leaderID = guild->getGuildLeaderID();
+		bool startElections = false;
+
+		ManagedReference<SceneObject*> leader = server->getObject(leaderID);
+
+		if (leader == NULL || !leader->isPlayerCreature()) {
+			startElections = true;
+		} else {
+			CreatureObject* leaderCreo = leader.castTo<CreatureObject*>();
+
+			if (leaderCreo->getPlayerObject()->getDaysSinceLastLogout() >= 30)
+				startElections = true;
+		}
+
+		if (startElections) {
+			guild->resetElection(false);
+			guild->setElectionState(GuildObject::ELECTION_FIRST_WEEK);
+
+			StringIdChatParameter params;
+			params.setStringId("@guild:open_elections_absent_email_body"); // Your guild leader has not logged in for an extended period of time. In order to enable your guild to continue to operate efficiently, the guild leader voting system has been enabled. You may vote at the guild terminal in your PA Hall. If you are a full member of the guild, you may opt to run for the position of guild leader by registering at the guild terminal. A new guild leader will be elected in exactly two weeks. The guild member with the most votes at that time will become guild leader.
+			sendGuildMail("@guild:open_elections_absent_email_subject", params, guild); // Guild Leader Elections Open!
+		}
+	}
 
 	guild->rescheduleUpdateEvent(guildUpdateInterval * 60);
+}
+
+void GuildManagerImplementation::processGuildElection(GuildObject* guild) {
+	VectorMap<uint64, int>* candidates = guild->getCandidates();
+	uint64 oldLeaderID = guild->getGuildLeaderID();
+	uint64 topCandidate = oldLeaderID; // old leader defaults as the top candidate.
+	int topVotes = 0;
+
+	ManagedReference<SceneObject*> oldLeader = server->getObject(oldLeaderID);
+	CreatureObject* oldLeaderCreo = NULL;
+	if (oldLeader != NULL && oldLeader->isPlayerCreature()) {
+		oldLeaderCreo = oldLeader.castTo<CreatureObject*>();
+	}
+
+	//Loop through the candidate votes.
+	for (int i = 0; i < candidates->size(); ++i) {
+		VectorMapEntry<uint64, int> entry = candidates->elementAt(i);
+
+		uint64 candidateID = entry.getKey();
+		int votes = entry.getValue();
+
+		// Ensure that each vote is for a valid candidate who is a current guild member.
+		if (!guild->hasMember(candidateID) || !guild->isCandidate(candidateID)) {
+			continue;
+		}
+
+		ManagedReference<SceneObject*> candidateObj = server->getObject(candidateID);
+
+		if (candidateObj != NULL && candidateObj->isPlayerCreature()) {
+
+			if (votes > topVotes || (votes == topVotes && candidateID == oldLeaderID)) {
+				topCandidate = candidateID;
+				topVotes = votes;
+			}
+		}
+	}
+
+	guild->resetElection(true);
+
+	ManagedReference<SceneObject*> obj = server->getObject(topCandidate);
+	ManagedReference<CreatureObject*> newLeader = NULL;
+	if (obj != NULL && obj->isPlayerCreature()) {
+		newLeader = obj.castTo<CreatureObject*>();
+	}
+
+	// If there was no old leader and no one voted, elect the player with the highest permission
+	if (newLeader == NULL) {
+		uint64 memberID = guild->getMemberWithHighestPermission();
+
+		// No member had any permissions, elect the first member
+		if (memberID == 0) {
+			memberID = guild->getMember(0);
+		}
+
+		newLeader = server->getObject(memberID).castTo<CreatureObject*>();
+	}
+
+	// This shouldn't happen since we cleanup the member list before processing the election
+	if (newLeader == NULL)
+		return;
+
+	// transfer leadership
+	transferLeadership(newLeader, oldLeaderCreo, true);
+
+	// send mail to all guild members
+	String winnerName = newLeader->getFirstName();
+	StringIdChatParameter emailbody;
+	String subject;
+
+	if (topCandidate == oldLeaderID) {
+		emailbody.setStringId("@guild:public_election_inc_body"); // The elections for %TT have been held. The incumbent guild leader is victorious! Please congratulate %TO on retaining their office. The voting system will now be disabled. The new leader can enable it if they wish to run new elections.
+		subject = "@guild:public_election_inc_subject"; // Election Results!
+	} else {
+		emailbody.setStringId("@guild:public_election_body"); // The leader elections for %TT have been held. The incumbent guild leader has lost the election! The new guild leader is %TO. Please congratulate the new guild leader! The voting system will now be disabled. The new leader can enable it if they wish to run new elections.
+		subject = "@guild:public_election_subject"; // Election Results!
+	}
+
+	emailbody.setTT(guild->getGuildName());
+	emailbody.setTO(winnerName);
+
+	sendGuildMail(subject, emailbody, guild);
+
 }
 
 void GuildManagerImplementation::destroyGuild(GuildObject* guild, StringIdChatParameter& mailbody) {
@@ -337,6 +451,8 @@ void GuildManagerImplementation::sendGuildCreateNameTo(CreatureObject* player, G
 		return;
 	}
 
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_CREATE_NAME);
+
 	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::GUILD_CREATE_NAME);
 	inputBox->setCallback(new GuildCreateNameResponseSuiCallback(server));
 	inputBox->setPromptTitle("@guild:create_name_title"); // Guild Name
@@ -362,6 +478,8 @@ void GuildManagerImplementation::sendGuildChangeNameTo(CreatureObject* player, G
 		player->sendSystemMessage("A guild rename is already pending.");
 		return;
 	}
+
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_CHANGE_NAME);
 
 	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::GUILD_CHANGE_NAME);
 	inputBox->setCallback(new GuildChangeNameResponseSuiCallback(server, guild));
@@ -416,6 +534,8 @@ bool GuildManagerImplementation::guildNameExists(const String& guildName) {
 }
 
 void GuildManagerImplementation::sendGuildCreateAbbrevTo(CreatureObject* player, GuildTerminal* terminal) {
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_CREATE_ABBREV);
+
 	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::GUILD_CREATE_ABBREV);
 	inputBox->setCallback(new GuildCreateAbbrevResponseSuiCallback(server));
 	inputBox->setPromptTitle("@guild:create_abbrev_title"); // Guild Abbreviation
@@ -429,6 +549,8 @@ void GuildManagerImplementation::sendGuildCreateAbbrevTo(CreatureObject* player,
 }
 
 void GuildManagerImplementation::sendGuildChangeAbbrevTo(CreatureObject* player, GuildObject* guild, GuildTerminal* terminal) {
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_CHANGE_ABBREV);
+
 	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::GUILD_CHANGE_ABBREV);
 	inputBox->setCallback(new GuildChangeAbbrevResponseSuiCallback(server, guild));
 	inputBox->setPromptTitle("@guild:namechange_abbrev_title"); // Change Guild Abbreviation
@@ -647,7 +769,9 @@ void GuildManagerImplementation::sendGuildInformationTo(CreatureObject* player, 
 
 	Locker _lock(guild);
 
-	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, 0x00);
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_INFORMATION);
+
+	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, SuiWindowType::GUILD_INFORMATION);
 	suiBox->setPromptTitle("@guild:info_title"); // Guild Information
 	suiBox->setUsingObject(guildTerminal);
 	suiBox->setForceCloseDistance(32);
@@ -679,6 +803,8 @@ void GuildManagerImplementation::sendGuildDisbandConfirmTo(CreatureObject* playe
 		player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
 		return;
 	}
+
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_DISBAND);
 
 	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, SuiWindowType::GUILD_DISBAND);
 	suiBox->setCallback(new GuildDisbandSuiCallback(server));
@@ -716,19 +842,18 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObjec
 
 void GuildManagerImplementation::sendGuildTransferTo(CreatureObject* player, GuildTerminal* guildTerminal) {
 
-	if ( !player->getPlayerObject()->hasSuiBoxWindowType( SuiWindowType::GUILD_TRANSFER_LEADER)) {
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_TRANSFER_LEADER);
 
-		ManagedReference<SuiInputBox*> suiBox = new SuiInputBox(player, SuiWindowType::GUILD_TRANSFER_LEADER);
-		suiBox->setCallback(new GuildTransferLeadershipSuiCallback(server));
-		suiBox->setPromptTitle("@guild:make_leader_t"); // Transfer PA Leadership
-		suiBox->setPromptText("@guild:make_leader_d"); // You are about to transfer leadership of this Player Association!  Once you take this action you will be made a normal member and your leader permissions will be revoked.
-		suiBox->setCancelButton(true, "@cancel");
-		suiBox->setUsingObject(guildTerminal);
-		suiBox->setForceCloseDistance(32);
-		player->getPlayerObject()->addSuiBox(suiBox);
-		player->sendMessage(suiBox->generateMessage());
+	ManagedReference<SuiInputBox*> suiBox = new SuiInputBox(player, SuiWindowType::GUILD_TRANSFER_LEADER);
+	suiBox->setCallback(new GuildTransferLeadershipSuiCallback(server));
+	suiBox->setPromptTitle("@guild:make_leader_t"); // Transfer PA Leadership
+	suiBox->setPromptText("@guild:make_leader_d"); // You are about to transfer leadership of this Player Association!  Once you take this action you will be made a normal member and your leader permissions will be revoked.
+	suiBox->setCancelButton(true, "@cancel");
+	suiBox->setUsingObject(guildTerminal);
+	suiBox->setForceCloseDistance(32);
 
-	}
+	player->getPlayerObject()->addSuiBox(suiBox);
+	player->sendMessage(suiBox->generateMessage());
 }
 
 void GuildManagerImplementation::sendTransferAckTo(CreatureObject* player, const String& newOwnerName, SceneObject* sceoTerminal){
@@ -789,25 +914,22 @@ void GuildManagerImplementation::sendTransferAckTo(CreatureObject* player, const
 
 	Locker _clocker(target, player);
 
-	if ( !target->getPlayerObject()->hasSuiBoxWindowType(SuiWindowType::GUILD_TRANSFER_LEADER_CONFIRM) ) {
-		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(target, SuiWindowType::GUILD_TRANSFER_LEADER_CONFIRM);
-		suiBox->setCallback(new GuildTransferLeaderAckSuiCallback(server));
-		suiBox->setPromptTitle("@guild:make_leader_t"); // Transfer PA leadership
-		suiBox->setPromptText("@guild:make_leader_p");  // The leader of this PA wants to transfer leadership to you. Do you accept?
-		suiBox->setUsingObject(sceoTerminal);
-		suiBox->setForceCloseDistance(32);
-		suiBox->setCancelButton(true, "@no");
-		suiBox->setOkButton(true, "@yes");
+	target->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_TRANSFER_LEADER_CONFIRM);
 
-		target->getPlayerObject()->addSuiBox(suiBox);
-		target->sendMessage(suiBox->generateMessage());
+	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(target, SuiWindowType::GUILD_TRANSFER_LEADER_CONFIRM);
+	suiBox->setCallback(new GuildTransferLeaderAckSuiCallback(server));
+	suiBox->setPromptTitle("@guild:make_leader_t"); // Transfer PA leadership
+	suiBox->setPromptText("@guild:make_leader_p");  // The leader of this PA wants to transfer leadership to you. Do you accept?
+	suiBox->setUsingObject(sceoTerminal);
+	suiBox->setForceCloseDistance(32);
+	suiBox->setCancelButton(true, "@no");
+	suiBox->setOkButton(true, "@yes");
 
-	} else {
-		player->sendSystemMessage("A transfer confirmation for " + target->getFirstName() + " is already pending");
-	}
+	target->getPlayerObject()->addSuiBox(suiBox);
+	target->sendMessage(suiBox->generateMessage());
 }
 
-void GuildManagerImplementation::transferLeadership(CreatureObject* newLeader, CreatureObject* oldLeader, SceneObject* sceoTerminal){
+void GuildManagerImplementation::transferLeadership(CreatureObject* newLeader, CreatureObject* oldLeader, bool election) {
 	GuildObject* guild = newLeader->getGuildObject();
 
 	Locker glock(guild);
@@ -831,6 +953,9 @@ void GuildManagerImplementation::transferLeadership(CreatureObject* newLeader, C
 	}
 
 	glock.release();
+
+	if (election)
+		return;
 
 	if (oldLeader != NULL) {
 		oldLeader->sendSystemMessage("@guild:ml_success");  // PA leadership transferred.  YOu are now a normal member of the PA.
@@ -882,19 +1007,18 @@ bool GuildManagerImplementation::transferGuildHall(CreatureObject* newOwner, Sce
 }
 
 void GuildManagerImplementation::sendAcceptLotsTo(CreatureObject* newOwner, GuildTerminal* guildTerminal) {
+	newOwner->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_TAKE_LOTS);
 
-	if ( !newOwner->getPlayerObject()->hasSuiBoxWindowType(SuiWindowType::GUILD_TAKE_LOTS)) {
-		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(newOwner, SuiWindowType::GUILD_TAKE_LOTS);
-		suiBox->setCallback(new GuildTransferLotsSuiCallback(server));
-		suiBox->setPromptTitle("@guild:accept_pa_hall_t"); // Accept PA Hall Lots
-		suiBox->setPromptText("@guild:accept_pa_hall_p"); // The current owner of this PA hall has not logged in for 28 days. As guild leader, you may transfer ownership of the PA hall to yourself. You must have enough lots free to accept PA Hall ownership. Once you own the PA hall you may transfer it to another owner if you so desire.
-		suiBox->setUsingObject(guildTerminal);
-		suiBox->setForceCloseDistance(32);
-		suiBox->setCancelButton(true, "@cancel");
-		newOwner->getPlayerObject()->addSuiBox(suiBox);
-		newOwner->sendMessage(suiBox->generateMessage());
+	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(newOwner, SuiWindowType::GUILD_TAKE_LOTS);
+	suiBox->setCallback(new GuildTransferLotsSuiCallback(server));
+	suiBox->setPromptTitle("@guild:accept_pa_hall_t"); // Accept PA Hall Lots
+	suiBox->setPromptText("@guild:accept_pa_hall_p"); // The current owner of this PA hall has not logged in for 28 days. As guild leader, you may transfer ownership of the PA hall to yourself. You must have enough lots free to accept PA Hall ownership. Once you own the PA hall you may transfer it to another owner if you so desire.
+	suiBox->setUsingObject(guildTerminal);
+	suiBox->setForceCloseDistance(32);
+	suiBox->setCancelButton(true, "@cancel");
 
-	}
+	newOwner->getPlayerObject()->addSuiBox(suiBox);
+	newOwner->sendMessage(suiBox->generateMessage());
 }
 
 void GuildManagerImplementation::sendGuildMemberListTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
@@ -902,6 +1026,8 @@ void GuildManagerImplementation::sendGuildMemberListTo(CreatureObject* player, G
 		return;
 
 	Locker _lock(guild);
+
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_MEMBER_LIST);
 
 	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::GUILD_MEMBER_LIST);
 	suiBox->setCallback(new GuildMemberListSuiCallback(server));
@@ -947,6 +1073,8 @@ void GuildManagerImplementation::sendGuildMemberOptionsTo(CreatureObject* player
 	if (playObj == NULL || !playObj->isPlayerCreature())
 		return;
 
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_MEMBER_OPTIONS);
+
 	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::GUILD_MEMBER_OPTIONS);
 	suiBox->setCallback(new GuildMemberOptionsSuiCallback(server));
 	suiBox->setPromptTitle("@guild:member_options_title"); // Member Options
@@ -974,6 +1102,8 @@ void GuildManagerImplementation::sendGuildSetTitleTo(CreatureObject* player, Cre
 		player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
 		return;
 	}
+
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_MEMBER_TITLE);
 
 	ManagedReference<SuiInputBox*> suiBox = new SuiInputBox(player, SuiWindowType::GUILD_MEMBER_TITLE);
 	suiBox->setCallback(new GuildTitleResponseSuiCallback(server));
@@ -1037,6 +1167,8 @@ void GuildManagerImplementation::setMemberTitle(CreatureObject* player, Creature
 }
 
 void GuildManagerImplementation::sendGuildKickPromptTo(CreatureObject* player, CreatureObject* target) {
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_MEMBER_REMOVE);
+
 	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(target, SuiWindowType::GUILD_MEMBER_REMOVE);
 	suiBox->setCallback(new GuildMemberRemoveSuiCallback(server));
 	suiBox->setPromptTitle("@guild:kick_title"); // Kick From Guild
@@ -1132,6 +1264,8 @@ void GuildManagerImplementation::sendMemberPermissionsTo(CreatureObject* player,
 	if (target == NULL || !target->isPlayerCreature())
 		return;
 
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_MEMBER_PERMISSIONS);
+
 	ManagedReference<SuiListBox*> listBox = new SuiListBox(player, SuiWindowType::GUILD_MEMBER_PERMISSIONS);
 	listBox->setCallback(new GuildMemberPermissionsResponseSuiCallback(server));
 	listBox->setPromptTitle("@guild:permissions_title"); // Guild Member Permissions
@@ -1215,6 +1349,8 @@ void GuildManagerImplementation::sendGuildSponsorTo(CreatureObject* player, Guil
 		return;
 	}
 
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_SPONSOR);
+
 	ManagedReference<SuiInputBox*> suiBox = new SuiInputBox(player, SuiWindowType::GUILD_SPONSOR);
 	suiBox->setCallback(new GuildSponsorSuiCallback(server));
 	suiBox->setPromptTitle("@guild:sponsor_title"); // Sponsor for Membership
@@ -1272,6 +1408,8 @@ void GuildManagerImplementation::sponsorPlayer(CreatureObject* player, const Str
 	params.setTU(target);
 	params.setTT(guild->getGuildName());
 	player->sendSystemMessage(params);
+
+	target->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_SPONSOR_VERIFY);
 
 	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(target, SuiWindowType::GUILD_SPONSOR_VERIFY);
 	suiBox->setCallback(new GuildSponsorVerifySuiCallback(server));
@@ -1340,6 +1478,8 @@ void GuildManagerImplementation::sendGuildSponsoredListTo(CreatureObject* player
 
 	Locker _lock(guild);
 
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_SPONSORED_LIST);
+
 	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::GUILD_SPONSORED_LIST);
 	suiBox->setCallback(new GuildSponsoredListSuiCallback(server));
 	suiBox->setPromptTitle("@guild:sponsored_title"); // Sponsored for Membership
@@ -1381,6 +1521,8 @@ void GuildManagerImplementation::sendGuildSponsoredOptionsTo(CreatureObject* pla
 		player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
 		return;
 	}
+
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_SPONSORED_OPTIONS);
 
 	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::GUILD_SPONSORED_OPTIONS);
 	suiBox->setCallback(new GuildSponsoredOptionsSuiCallback(server));
@@ -1507,6 +1649,8 @@ void GuildManagerImplementation::sendGuildWarStatusTo(CreatureObject* player, Gu
 	if (guild == NULL)
 		return;
 
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_WAR_LIST);
+
 	ManagedReference<SuiListBox*> listbox = new SuiListBox(player, SuiWindowType::GUILD_WAR_LIST);
 	listbox->setPromptTitle("@guild:enemies_title"); // Guild Enemies
 	listbox->setPromptText("@guild:enemies_prompt");
@@ -1551,6 +1695,8 @@ void GuildManagerImplementation::promptAddNewEnemy(CreatureObject* creature, Gui
 		creature->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
 		return;
 	}
+
+	creature->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_WAR_ENTER_NAME);
 
 	ManagedReference<SuiInputBox*> box = new SuiInputBox(creature, SuiWindowType::GUILD_WAR_ENTER_NAME);
 	box->setPromptTitle("@guild:war_enemy_name_title"); // Declare War
@@ -1658,6 +1804,8 @@ void GuildManagerImplementation::sendGuildListTo(CreatureObject* player, const S
 		return;
 	}
 
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::ADMIN_GUILDLIST);
+
 	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 	ManagedReference<SuiListBox*> listBox = new SuiListBox(player, SuiWindowType::ADMIN_GUILDLIST);
@@ -1706,7 +1854,7 @@ void GuildManagerImplementation::sendAdminGuildInfoTo(CreatureObject* player, Gu
 
 	Locker locker(guild);
 
-	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(player, 0);
+	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(player, SuiWindowType::ADMIN_GUILDINFO);
 
 	box->setPromptTitle("Guild Info");
 
@@ -1913,4 +2061,166 @@ GuildObject* GuildManagerImplementation::getGuildFromAbbrev(const String& guildA
 	}
 
 	return NULL;
+}
+
+void GuildManagerImplementation::toggleElection(GuildObject* guild, CreatureObject* player) {
+	Locker locker(guild);
+
+	StringIdChatParameter params;
+
+	if (guild->isElectionEnabled()) {
+		guild->resetElection(true);
+
+		player->sendSystemMessage("@guild:vote_elections_closed"); // Elections for the position of guild leader are now closed.
+
+		params.setStringId("@guild:closed_elections_email_body"); // Your guild's election for a new guild leader has been closed by the current guild leader.
+		sendGuildMail("@guild:closed_elections_email_subject", params, guild); // Guild Leader Elections Closed!
+	} else {
+		guild->resetElection(false);
+		guild->setElectionState(GuildObject::ELECTION_FIRST_WEEK);
+
+		player->sendSystemMessage("@guild:vote_elections_open"); // Elections for the position of guild leader are now open.
+
+		params.setStringId("@guild:open_elections_email_body"); // Your guild has started an election for a new guild leader! You may vote at the guild terminal in your PA Hall. If you are a full member of the guild, you may opt to run for the position of guild leader by registering at the guild terminal. A new guild leader will be elected in exactly two weeks. The guild member with the most votes at that time will become guild leader.
+		sendGuildMail("@guild:open_elections_email_subject", params, guild); // Guild Leader Elections Open!
+	}
+
+}
+
+void GuildManagerImplementation::resetElection(GuildObject* guild, CreatureObject* player) {
+	Locker locker(guild);
+
+	guild->resetElection(false);
+}
+
+void GuildManagerImplementation::registerForElection(GuildObject* guild, CreatureObject* player) {
+	Locker locker(guild);
+
+	uint64 playerID = player->getObjectID();
+
+	if (guild->isCandidate(playerID)) {
+		player->sendSystemMessage("@guild:vote_register_dupe"); // You are already registered for the guild leader election.
+		return;
+	}
+
+	guild->addCandidate(playerID);
+
+	player->sendSystemMessage("@guild:vote_register_congrats"); // Congratulations, you are now listed on the ballot for the position of guild leader!
+}
+
+void GuildManagerImplementation::unregisterFromElection(GuildObject* guild, CreatureObject* player) {
+	Locker locker(guild);
+
+	uint64 playerID = player->getObjectID();
+
+	if (!guild->isCandidate(playerID)) {
+		player->sendSystemMessage("@guild:vote_not_registered"); // You aren't registered to run, so you can't unregister.
+		return;
+	}
+
+	guild->removeCandidate(playerID);
+
+	player->sendSystemMessage("@guild:vote_unregistered"); // You have unregistered from the race.
+}
+
+void GuildManagerImplementation::promptCastVote(GuildObject* guild, CreatureObject* player, GuildTerminal* terminal) {
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_VOTE);
+
+	Locker locker(guild);
+
+	VectorMap<uint64, int>* candidates = guild->getCandidates();
+
+	if (candidates->isEmpty()) {
+		player->sendSystemMessage("@guild:vote_no_candidates"); // No one has registered to run for guild leader.
+		return;
+	}
+
+	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::GUILD_VOTE);
+	suiBox->setCallback(new GuildVoteSuiCallback(server));
+	suiBox->setPromptTitle("@guild:leader_vote_t"); // Place Vote
+	suiBox->setPromptText("@guild:leader_vote_d"); // Select your desired candidate from the list below. You may change your vote at any time.
+	suiBox->setUsingObject(terminal);
+	suiBox->setForceCloseDistance(32);
+	suiBox->setCancelButton(true, "@cancel");
+	suiBox->addMenuItem("@city/city:null", 0); // None
+
+	for (int i = 0; i < candidates->size(); ++i) {
+		VectorMapEntry<uint64, int> entry = candidates->elementAt(i);
+
+		uint64 candidateID = entry.getKey();
+
+		ManagedReference<SceneObject*> obj = server->getObject(candidateID);
+
+		if (obj == NULL || !obj->isPlayerCreature())
+			continue;
+
+		CreatureObject* candidateCreo = obj.castTo<CreatureObject*>();
+
+		suiBox->addMenuItem(candidateCreo->getDisplayedName(), candidateID);
+	}
+
+	player->getPlayerObject()->addSuiBox(suiBox);
+	player->sendMessage(suiBox->generateMessage());
+}
+
+void GuildManagerImplementation::castVote(GuildObject* guild, CreatureObject* player, uint64 candidateID) {
+	Locker locker(guild);
+
+	if (!guild->isElectionEnabled())
+		return;
+
+	uint64 playerID = player->getObjectID();
+
+	if (!guild->hasMember(playerID))
+		return;
+
+	if (candidateID != 0 && (!guild->hasMember(candidateID) || !guild->isCandidate(candidateID)))
+		return;
+
+	guild->setVote(playerID, candidateID);
+
+	if (candidateID == 0) {
+		player->sendSystemMessage("@guild:vote_abstain"); // You have chosen to abstain in this election.
+	} else {
+		StringIdChatParameter params;
+		params.setStringId("@guild:vote_placed"); // Your vote for %TO has been recorded.
+		params.setTO(candidateID);
+		player->sendSystemMessage(params);
+	}
+}
+
+void GuildManagerImplementation::viewElectionStandings(GuildObject* guild, CreatureObject* player, GuildTerminal* terminal) {
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_ELECTION_STANDING);
+
+	Locker locker(guild);
+
+	VectorMap<uint64, int>* candidates = guild->getCandidates();
+
+	if (candidates->size() == 0) {
+		player->sendSystemMessage("@guild:vote_no_candidates"); // No one has registered to run for guild leader.
+		return;
+	}
+
+	ManagedReference<SuiListBox*> listbox = new SuiListBox(player, SuiWindowType::GUILD_ELECTION_STANDING);
+	listbox->setPromptText("@guild:leader_standings_d"); // A complete list of current guild leader candidates and their vote standing follows.
+	listbox->setPromptTitle("@guild:leader_standings_t"); // Guild Leader Race Standings
+	listbox->setUsingObject(terminal);
+	listbox->setForceCloseDistance(32);
+	listbox->setCancelButton(true, "@cancel");
+
+	for (int i = 0; i < candidates->size(); ++i) {
+		VectorMapEntry<uint64, int>* entry = &candidates->elementAt(i);
+
+		uint64 candidateID = entry->getKey();
+
+		ManagedReference<SceneObject*> candidate = server->getObject(candidateID);
+
+		if (candidate == NULL || !candidate->isPlayerCreature())
+			continue;
+
+		listbox->addMenuItem(candidate->getDisplayedName() + " -- Votes: " + String::valueOf(entry->getValue()));
+	}
+
+	player->getPlayerObject()->addSuiBox(listbox);
+	player->sendMessage(listbox->generateMessage());
 }

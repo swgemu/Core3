@@ -45,6 +45,8 @@ public:
 		GUILD_WAR_LIST                     = 38,
 		GUILD_WAR_ENTER_NAME               = 39,
 		GUILD_TAKE_LOTS                    = 40,
+		GUILD_VOTE                         = 41,
+		GUILD_ELECTION_STANDING            = 42,
 
 
 		//Travel 51 - 60
@@ -131,6 +133,7 @@ public:
 		ADMIN_UNBAN_SUMMARY                = 180,
 		ADMIN_PLAYER_CREDITS               = 181,
 		ADMIN_FIND_OBJECT                  = 182,
+		ADMIN_GUILDINFO                    = 183,
 
 		//Teach 221 - 230
 		TEACH_SKILL                        = 221,

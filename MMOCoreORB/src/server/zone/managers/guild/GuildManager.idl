@@ -63,6 +63,7 @@ class GuildManager extends ManagedService implements Logger {
 
 	private native void scheduleGuildUpdates();
 	public native void processGuildUpdate(GuildObject guild);
+	private native void processGuildElection(GuildObject guild);
 	private native void destroyGuild(GuildObject guild, @dereferenced StringIdChatParameter mailbody);
 
 	public native void sendGuildListTo(CreatureObject player, final string guildFilter);
@@ -181,7 +182,7 @@ class GuildManager extends ManagedService implements Logger {
 
 	public native void sendTransferAckTo(CreatureObject player,  final string newOwnerName, SceneObject guildTerminal);
 
-	public native void transferLeadership(CreatureObject newOwner, CreatureObject oldOwner, SceneObject guildTerminal);  
+	public native void transferLeadership(CreatureObject newOwner, CreatureObject oldOwner, boolean election);  
 
 	public native void sendAcceptLotsTo(CreatureObject newOwner, GuildTerminal guildTerminal);
 
@@ -191,4 +192,18 @@ class GuildManager extends ManagedService implements Logger {
 	public native void sendGuildMail(final string subject, @dereferenced StringIdChatParameter body, GuildObject guild);
 
 	public native GuildObject getGuildFromAbbrev(final string guildAbbrev);
+
+	public native void toggleElection(GuildObject guild, CreatureObject player);
+
+	public native void resetElection(GuildObject guild, CreatureObject player);
+
+	public native void registerForElection(GuildObject guild, CreatureObject player);
+
+	public native void unregisterFromElection(GuildObject guild, CreatureObject player);
+
+	public native void promptCastVote(GuildObject guild, CreatureObject player, GuildTerminal terminal);
+
+	public native void castVote(GuildObject guild, CreatureObject player, unsigned long candidateID);
+
+	public native void viewElectionStandings(GuildObject guild, CreatureObject player, GuildTerminal terminal);
 }
