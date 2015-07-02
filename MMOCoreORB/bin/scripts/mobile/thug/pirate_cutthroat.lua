@@ -1,6 +1,6 @@
 pirate_cutthroat = Creature:new {
 	objectName = "",
-	costumName = "a Pirate Cutthroat",
+	customName = "a Pirate Cutthroat",
 	socialGroup = "pirate",
 	faction = "",
 	level = 8,
