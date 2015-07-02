@@ -533,8 +533,10 @@ bool AiAgentImplementation::runAwarenessLogicCheck(SceneObject* pObject) {
 	if (pObject->isPlayerCreature())
 		radius = radius * 2;
 
-	if (!isInRange(creoObject, radius * 1.2))
+	if (!isInRange(creoObject, radius * 1.2)) {
+		camouflagedObjects.removeElement(creoObject->getTargetID());
 		return false;
+	}
 
 	if (creoObject->getPvpStatusBitmask() == CreatureFlag::NONE || creoObject->isDead() || creoObject->isIncapacitated())
 		return false;
@@ -2066,7 +2068,7 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 
 	// Check masked scent
 	if (target->isVehicleObject() || target->isMount()) {
-		effectiveTarget = target->getLinkedCreature().get();
+		effectiveTarget = target->getSlottedObject("rider").castTo<CreatureObject*>();
 	}
 
 	if (effectiveTarget == NULL)
@@ -2075,16 +2077,15 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 	uint64 effectiveTargetID = effectiveTarget->getObjectID();
 
 	if (!effectiveTarget->hasBuff(STRING_HASHCODE("skill_buff_mask_scent_self"))) {
-		if (camouflagedObjects.contains(effectiveTargetID)) camouflagedObjects.removeElement(effectiveTargetID);
-		getCooldownTimerMap()->updateToCurrentTime("camo_" + String::valueOf(effectiveTargetID));
+		camouflagedObjects.removeElement(effectiveTargetID);
 		return false;
 	}
 
 	if (isNonPlayerCreatureObject() || isDroidObject())
 		return false;
 
-	// Don't check more than once every 5 minutes
-	if (camouflagedObjects.contains(effectiveTargetID) && !checkCooldownRecovery("camo_" + String::valueOf(effectiveTargetID)))
+	// Don't check if it's already been checked
+	if (camouflagedObjects.contains(effectiveTargetID))
 		return true;
 
 	// Step 1. Check for break
@@ -2109,7 +2110,7 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 	else if (success)
 		camouflagedObjects.add(effectiveTargetID); // add to award
 	else
-		if(camouflagedObjects.contains(effectiveTargetID)) camouflagedObjects.removeElement(effectiveTargetID);
+		camouflagedObjects.removeElement(effectiveTargetID);
 
 	Reference<Task*> ct = new CamoTask(effectiveTarget, asAiAgent(), true, success, awardXp);
 	ct->execute();
@@ -2123,7 +2124,7 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 
 	// Check masked scent
 	if (target->isVehicleObject() || target->isMount()) {
-		effectiveTarget = target->getLinkedCreature().get();
+		effectiveTarget = target->getSlottedObject("rider").castTo<CreatureObject*>();
 	}
 
 	if (effectiveTarget == NULL)
@@ -2132,16 +2133,15 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 	uint64 effectiveTargetID = effectiveTarget->getObjectID();
 
 	if (!effectiveTarget->hasBuff(STRING_HASHCODE("skill_buff_mask_scent"))) {
-		if(camouflagedObjects.contains(effectiveTargetID)) camouflagedObjects.removeElement(effectiveTargetID);
-		getCooldownTimerMap()->updateToCurrentTime("camo_" + String::valueOf(effectiveTargetID));
+		camouflagedObjects.removeElement(effectiveTargetID);
 		return false;
 	}
 
 	if (isDroidObject())
 		return false;
 
-	// Don't check more than once every 5 minutes
-	if (camouflagedObjects.contains(effectiveTargetID) && !checkCooldownRecovery("camo_" + String::valueOf(effectiveTargetID)))
+	// Don't check if it's already been checked
+	if (camouflagedObjects.contains(effectiveTargetID))
 		return true;
 
 	bool success = false;
@@ -2168,7 +2168,7 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 	else if (success){
 		camouflagedObjects.add(effectiveTargetID); // add to award
 	} else {
-		if(camouflagedObjects.contains(effectiveTargetID)) camouflagedObjects.removeElement(effectiveTargetID);
+		camouflagedObjects.removeElement(effectiveTargetID);
 	}
 
 	Reference<Task*> ct = new CamoTask(effectiveTarget, asAiAgent(), false, success, awardXp);
