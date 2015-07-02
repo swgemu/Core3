@@ -10,6 +10,7 @@
 #include "FactionStatus.h"
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
+#include "server/zone/objects/tangible/eventperk/Jukebox.h"
 
 const char LuaPlayerObject::className[] = "LuaPlayerObject";
 
@@ -471,18 +472,25 @@ int LuaPlayerObject::getEventPerkCount(lua_State* L) {
 }
 
 int LuaPlayerObject::addEventPerk(lua_State* L) {
-	EventPerkDeed* perk = (EventPerkDeed*) lua_touserdata(L, -1);
+	SceneObject* item = (SceneObject*) lua_touserdata(L, -1);
 
-	if (perk == NULL) {
+	if (item == NULL) {
 		return 0;
 	}
 
 	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(realObject->getParent().get().get());
-	if (creature != NULL) {
-		perk->setOwner(creature);
+
+	if (item->isEventPerkDeed() && creature != NULL) {
+		EventPerkDeed* deed = cast<EventPerkDeed*>(item);
+		deed->setOwner(creature);
+	} else if (item->isEventPerkItem() && creature != NULL) {
+		if (item->getServerObjectCRC() == 0x46BD798B) { // Jukebox
+			Jukebox* jbox = cast<Jukebox*>(item);
+			jbox->setOwner(creature);
+		}
 	}
 
-	realObject->addEventPerk(perk);
+	realObject->addEventPerk(item);
 
 	return 0;
 }

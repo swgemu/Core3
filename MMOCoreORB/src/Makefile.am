@@ -97,7 +97,9 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/intangible/TheaterObject.cpp \
+core3_IDLS =	autogen/server/zone/objects/tangible/eventperk/JukeboxObserver.cpp \
+				autogen/server/zone/objects/tangible/eventperk/Jukebox.cpp \
+				autogen/server/zone/objects/intangible/TheaterObject.cpp \
 				autogen/server/zone/objects/building/PoiBuilding.cpp \
 				autogen/server/zone/objects/creature/conversation/PetTrainingConversationObserver.cpp \
 				autogen/server/zone/objects/tangible/components/droid/DroidPersonalityObserver.cpp \
@@ -585,6 +587,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/intangible/PetControlDeviceImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/InstrumentImplementation.cpp \
+		server/zone/objects/tangible/eventperk/JukeboxImplementation.cpp \
+		server/zone/objects/tangible/eventperk/JukeboxObserverImplementation.cpp \
 		server/zone/objects/tangible/components/droid/DroidPlaybackObserverImplementation.cpp \
 		server/zone/objects/tangible/components/droid/DroidHarvestObserverImplementation.cpp \
 		server/zone/objects/tangible/components/droid/DroidPersonalityObserverImplementation.cpp \

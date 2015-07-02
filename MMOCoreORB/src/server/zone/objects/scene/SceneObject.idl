@@ -1901,6 +1901,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	public native abstract void createChildObjects();
 
+	@preLocked
+	public native void destroyChildObjects();
+
 	public void addChildObject(SceneObject obj) {
 		childObjects.put(obj);
 	}
@@ -1969,7 +1972,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dirty
 	public abstract boolean isEventPerkDeed() {
 		return false;
-	}	
+	}
+	
+	@dirty
+	public abstract boolean isEventPerkItem() {
+		return false;
+	}
 	
 	@dirty
 	public native boolean isDataPad();

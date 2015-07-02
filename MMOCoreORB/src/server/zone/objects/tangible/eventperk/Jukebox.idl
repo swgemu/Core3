@@ -1,0 +1,113 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.eventperk;
+
+import server.zone.objects.tangible.terminal.Terminal;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.tangible.tasks.RemoveEventPerkItemTask;
+import server.zone.Zone;
+
+class Jukebox extends Terminal {	
+	@weakReference
+	protected CreatureObject owner;
+
+	protected float radius;
+	
+	protected string curSong;
+
+	protected boolean isPlaying;
+
+	@dereferenced
+	protected Time purchaseTime;
+
+	@dereferenced
+	protected transient Reference<RemoveEventPerkItemTask> removeEventPerkItemTask;
+
+	public Jukebox() {
+		Logger.setLoggingName("Jukebox");
+
+		isPlaying = false;
+
+		purchaseTime.updateToCurrentTime();
+
+		curSong = "";
+		radius = 0;
+
+		owner = null;
+	}
+
+	public native void initializeTransientMembers();
+
+	@preLocked
+	@arg1preLocked
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+
+	@local
+	@dirty
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+
+	public void createChildObjects() {
+		super.createChildObjects();
+	}
+
+	@preLocked
+	public native void setRadius(float radius);
+
+	public native void notifyInsertToZone(Zone zone);
+
+	@preLocked
+	@arg1preLocked
+	public native void doMusicSelection(CreatureObject player);
+
+	public native void playMusicToPlayer(CreatureObject player, final string song);
+
+	@preLocked
+	public native void changeMusic(final string song);
+
+	@preLocked
+	public native void startPlaying(final string song);
+
+	@preLocked
+	public native void stopPlaying();
+
+	@preLocked
+	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+
+	@preLocked
+	public native void activateRemoveEvent(boolean immediate = false);
+
+	@read
+	public boolean isSongPlaying() {
+		return isPlaying;
+	}
+
+	@read
+	public string getCurSong() {
+		return curSong;
+	}
+
+	@dirty
+	public boolean isEventPerkItem() {
+		return true;
+	}
+
+	@preLocked
+	public void setOwner(CreatureObject player) {
+		owner = player;
+	}
+
+	@weakReference
+	@read
+	public CreatureObject getOwner() {
+		return owner;
+	}
+
+	@local
+	public Time getPurchaseTime() {
+		return purchaseTime;
+	}
+
+}
