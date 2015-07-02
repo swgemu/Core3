@@ -38,6 +38,7 @@
 #include "server/zone/objects/player/sessions/ProposeUnitySession.h"
 #include "server/zone/objects/player/sessions/VeteranRewardSession.h"
 #include "server/zone/objects/tangible/OptionBitmask.h"
+#include "server/zone/managers/player/JukeboxSong.h"
 
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/objects/ship/ShipObject.h"
@@ -215,6 +216,28 @@ void PlayerManagerImplementation::loadLuaConfig() {
 	rewardsListLua.pop();
 
 	info("Loaded " + String::valueOf(veteranRewards.size()) + " veteran rewards.", true);
+
+	LuaObject jboxSongs = lua->getGlobalObject("jukeboxSongs");
+
+	if (jboxSongs.isValidTable()) {
+		for (int i = 1; i <= jboxSongs.getTableSize(); ++i) {
+			LuaObject songData = jboxSongs.getObjectAt(i);
+
+			if (songData.isValidTable()) {
+				String songStringID = songData.getStringAt(1);
+				String songPath = songData.getStringAt(2);
+
+				Reference<JukeboxSong*> data = new JukeboxSong(songStringID, songPath);
+
+				jukeboxSongs.add(data);
+			}
+
+			songData.pop();
+		}
+
+	}
+
+	jboxSongs.pop();
 
 	delete lua;
 	lua = NULL;
