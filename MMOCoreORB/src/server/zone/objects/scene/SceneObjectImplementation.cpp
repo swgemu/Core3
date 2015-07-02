@@ -1213,7 +1213,11 @@ void SceneObjectImplementation::createChildObjects() {
 			}
 		} else {
 			//Create the object outdoors in relation to its parent.
-			Vector3 position = getPosition();
+			Vector3 position;
+			if (obj->isActiveArea())
+				position = getWorldPosition();
+			else
+				position = getPosition();
 
 			float angle = direction.getRadians();
 
@@ -1246,6 +1250,23 @@ void SceneObjectImplementation::createChildObjects() {
 		permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 
 		obj->initializeChildObject(asSceneObject());
+	}
+}
+
+void SceneObjectImplementation::destroyChildObjects() {
+	int size = childObjects.size();
+
+	for (int i = 0; i < size; i++) {
+		ManagedReference<SceneObject*> child = childObjects.get(0);
+
+		if (child == NULL)
+			continue;
+
+		Locker clocker(child, asSceneObject());
+
+		childObjects.drop(child);
+		child->destroyObjectFromDatabase(true);
+		child->destroyObjectFromWorld(true);
 	}
 }
 

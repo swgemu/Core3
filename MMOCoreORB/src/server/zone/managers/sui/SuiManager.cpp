@@ -58,6 +58,7 @@
 #include "server/zone/objects/tangible/sign/SignObject.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
+#include "server/zone/objects/tangible/eventperk/Jukebox.h"
 
 SuiManager::SuiManager() : Logger("SuiManager") {
 	server = NULL;
@@ -607,6 +608,14 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 				EventPerkDeed* deed = cast<EventPerkDeed*>(item.get());
 				deed->setOwner(player);
 				ghost->addEventPerk(deed);
+			}
+
+			if (item->isEventPerkItem()) {
+				if (item->getServerObjectCRC() == 0x46BD798B) { // Jukebox
+					Jukebox* jbox = cast<Jukebox*>(item.get());
+					jbox->setOwner(player);
+				}
+				ghost->addEventPerk(item);
 			}
 
 			if (inventory->transferObject(item, -1, true)) {

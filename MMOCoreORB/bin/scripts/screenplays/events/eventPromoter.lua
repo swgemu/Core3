@@ -127,7 +127,13 @@ function eventPromoterScreenplay:giveItem(pPlayer, deedData)
 
 		player:subtractCashCredits(deedData.cost)
 
-		local templatePath = "object/tangible/deed/event_perk/" .. deedData.template .. ".iff"
+		local templatePath
+		if string.find(deedData.template, ".iff") then
+			templatePath = deedData.template
+		else
+			templatePath = "object/tangible/deed/event_perk/" .. deedData.template .. ".iff"
+		end
+
 		local pItem = giveItem(pInventory, templatePath, -1)
 
 		if (pItem ~= nil) then
