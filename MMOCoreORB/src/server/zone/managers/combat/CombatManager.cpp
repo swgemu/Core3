@@ -2087,8 +2087,9 @@ void CombatManager::requestEndDuel(CreatureObject* player, CreatureObject* targe
 			ManagedReference<AiAgent*> pet = ghost->getActivePet(i);
 
 			if (pet != NULL) {
-				pet->sendPvpStatusTo(targetPlayer);
 				targetPlayer->removeDefender(pet);
+				pet->removeDefender(targetPlayer);
+				pet->sendPvpStatusTo(targetPlayer);
 			}
 		}
 
@@ -2102,8 +2103,9 @@ void CombatManager::requestEndDuel(CreatureObject* player, CreatureObject* targe
 			ManagedReference<AiAgent*> pet = targetGhost->getActivePet(i);
 
 			if (pet != NULL) {
-				pet->sendPvpStatusTo(player);
 				player->removeDefender(pet);
+				pet->removeDefender(player);
+				pet->sendPvpStatusTo(player);
 			}
 		}
 
@@ -2141,6 +2143,16 @@ void CombatManager::freeDuelList(CreatureObject* player, bool spam) {
 
 					player->sendPvpStatusTo(targetPlayer);
 
+					for (int i = 0; i < ghost->getActivePetsSize(); i++) {
+						ManagedReference<AiAgent*> pet = ghost->getActivePet(i);
+
+						if (pet != NULL) {
+							targetPlayer->removeDefender(pet);
+							pet->removeDefender(targetPlayer);
+							pet->sendPvpStatusTo(targetPlayer);
+						}
+					}
+
 					if (spam) {
 						StringIdChatParameter stringId("duel", "end_self");
 						stringId.setTT(targetPlayer->getObjectID());
@@ -2148,6 +2160,16 @@ void CombatManager::freeDuelList(CreatureObject* player, bool spam) {
 					}
 
 					targetPlayer->sendPvpStatusTo(player);
+
+					for (int i = 0; i < targetGhost->getActivePetsSize(); i++) {
+						ManagedReference<AiAgent*> pet = targetGhost->getActivePet(i);
+
+						if (pet != NULL) {
+							player->removeDefender(pet);
+							pet->removeDefender(player);
+							pet->sendPvpStatusTo(player);
+						}
+					}
 
 					if (spam) {
 						StringIdChatParameter stringId2("duel", "end_target");
