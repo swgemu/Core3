@@ -11,7 +11,10 @@
 #include "server/zone/Zone.h"
 #include "server/zone/objects/area/areashapes/AreaShape.h"
 
-bool ActiveAreaImplementation::containsPoint(float px, float py) {
+bool ActiveAreaImplementation::containsPoint(float px, float py, uint64 cellid) {
+	if (cellObjectID != 0 && cellObjectID != cellid)
+		return false;
+
 	if (areaShape == NULL) {
 		return QuadTreeEntryImplementation::containsPoint(px, py);
 	}
@@ -59,7 +62,7 @@ void ActiveAreaImplementation::notifyEnter(SceneObject* obj) {
 }
 
 void ActiveAreaImplementation::notifyExit(SceneObject* obj) {
-	if (cellObjectID == 0 || cellObjectID == obj->getParentID())
+	if (cellObjectID == 0 || cellObjectID != obj->getParentID())
 		notifyObservers(ObserverEventType::EXITEDAREA, obj);
 
 	if (obj->isPlayerCreature() && attachedScenery.size() > 0) {
@@ -83,4 +86,12 @@ bool ActiveAreaImplementation::intersectsWith(ActiveArea* area) {
 	}
 
 	return areaShape->intersectsWith(area->getAreaShape());
+}
+
+void ActiveAreaImplementation::initializeChildObject(SceneObject* controllerObject) {
+	ManagedReference<SceneObject*> objectParent = controllerObject->getParent();
+
+	if (objectParent != NULL && objectParent->isCellObject()) {
+		setCellObjectID(objectParent->getObjectID());
+	}
 }

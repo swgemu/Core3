@@ -7,7 +7,7 @@ package server.zone.objects.tangible.deed.eventperk;
 import server.zone.objects.tangible.deed.Deed;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.tangible.tasks.RemoveEventPerkTask;
+import server.zone.objects.tangible.tasks.RemoveEventPerkDeedTask;
 
 class EventPerkDeed extends Deed {
 
@@ -23,7 +23,7 @@ class EventPerkDeed extends Deed {
 	protected TangibleObject generatedObject;
 
 	@dereferenced
-	protected transient Reference<RemoveEventPerkTask> removeEventPerkTask;
+	protected transient Reference<RemoveEventPerkDeedTask> removeEventPerkDeedTask;
 
 	public EventPerkDeed() {
 		Logger.setLoggingName("EventPerkDeed");
