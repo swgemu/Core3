@@ -317,7 +317,7 @@ void ZoneImplementation::updateActiveAreas(TangibleObject* tano) {
 
 //			Locker locker(area, object);
 
-			if (!area->containsPoint(worldPos.getX(), worldPos.getY())) {
+			if (!area->containsPoint(worldPos.getX(), worldPos.getY(), tano->getParentID())) {
 				tano->dropActiveArea(area);
 				area->enqueueExitEvent(tano);
 //				area->notifyExit(object);
@@ -331,7 +331,7 @@ void ZoneImplementation::updateActiveAreas(TangibleObject* tano) {
 			//update in new ones
 			ActiveArea* activeArea = dynamic_cast<ActiveArea*>(entryObjects.get(i).get());
 
-			if (!tano->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
+			if (!tano->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY(), tano->getParentID())) {
 				//Locker lockerO(object);
 
 				//Locker locker(activeArea, object);

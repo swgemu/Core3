@@ -181,6 +181,7 @@ public:
 	const static int CITYTERMINAL = 0x4015;
 	const static int CITYVOTETERMINAL = 0x4016;
 	const static int GAMBLINGTERMINAL = 0x4017;
+	const static int JUKEBOX = 0x4018;
 	/// end not in client ***************
 
 	const static int TOOL = 0x8000;

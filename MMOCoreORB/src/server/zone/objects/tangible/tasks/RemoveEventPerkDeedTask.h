@@ -1,6 +1,6 @@
 
-#ifndef REMOVEEVENTPERKTASK_H_
-#define REMOVEEVENTPERKTASK_H_
+#ifndef REMOVEEVENTPERKDEEDTASK_H_
+#define REMOVEEVENTPERKDEEDTASK_H_
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
@@ -12,11 +12,11 @@ namespace objects {
 namespace tangible {
 namespace tasks {
 
-class RemoveEventPerkTask : public Task {
+class RemoveEventPerkDeedTask : public Task {
 	ManagedReference<EventPerkDeed*> deed;
 
 public:
-	RemoveEventPerkTask(EventPerkDeed* de) {
+	RemoveEventPerkDeedTask(EventPerkDeed* de) {
 		deed = de;
 	}
 
@@ -52,4 +52,4 @@ public:
 
 using namespace server::zone::objects::tangible::tasks;
 
-#endif /* REMOVEEVENTPERKTASK_H_ */
+#endif /* REMOVEEVENTPERKDEEDTASK_H_ */

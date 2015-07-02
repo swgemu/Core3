@@ -41,6 +41,7 @@ import system.thread.ReadWriteLock;
 import engine.util.u3d.CloseObjectsVector;
 include server.zone.managers.collision.IntersectionResults;
 include server.zone.managers.player.VeteranRewardList;
+include server.zone.managers.player.JukeboxSong;
 
 class PlayerManager extends Observer implements Logger {
 	transient ZoneProcessServer processor;
@@ -79,6 +80,9 @@ class PlayerManager extends Observer implements Logger {
 
 	@dereferenced
 	private transient ReadWriteLock onlineMapMutex;
+
+	@dereferenced
+	protected transient Vector<Reference<JukeboxSong> > jukeboxSongs;
 
 	@dereferenced
 	private transient OnlineZoneClientMap onlineZoneClientMap;
@@ -459,5 +463,14 @@ class PlayerManager extends Observer implements Logger {
 
 	public int getVeteranRewardMilestone( int index ){
 		return veteranRewardMilestones.get(index);
+	}
+
+	@local
+	public native JukeboxSong getJukeboxSong( int index ){
+		return jukeboxSongs.get(index);
+	}
+
+	public int getNumJukeboxSongs(){
+		return jukeboxSongs.size();
 	}
 }

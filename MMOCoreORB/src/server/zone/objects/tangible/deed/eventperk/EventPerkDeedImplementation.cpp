@@ -1,6 +1,6 @@
 
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
-#include "server/zone/objects/tangible/tasks/RemoveEventPerkTask.h"
+#include "server/zone/objects/tangible/tasks/RemoveEventPerkDeedTask.h"
 #include "server/zone/objects/tangible/components/EventPerkDataComponent.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -250,22 +250,22 @@ void EventPerkDeedImplementation::destroyObjectFromDatabase(bool destroyContaine
 }
 
 void EventPerkDeedImplementation::activateRemoveEvent(bool immediate) {
-	if (removeEventPerkTask == NULL) {
-		removeEventPerkTask = new RemoveEventPerkTask(_this.getReferenceUnsafeStaticCast());
+	if (removeEventPerkDeedTask == NULL) {
+		removeEventPerkDeedTask = new RemoveEventPerkDeedTask(_this.getReferenceUnsafeStaticCast());
 
 		Time currentTime;
 		uint64 timeDelta = currentTime.getMiliTime() - purchaseTime.getMiliTime();
 
 		if (timeDelta >= EventPerkDeedTemplate::TIME_TO_LIVE || immediate) {
-			removeEventPerkTask->execute();
+			removeEventPerkDeedTask->execute();
 		} else {
-			removeEventPerkTask->schedule(EventPerkDeedTemplate::TIME_TO_LIVE - timeDelta);
+			removeEventPerkDeedTask->schedule(EventPerkDeedTemplate::TIME_TO_LIVE - timeDelta);
 		}
 	} else if (immediate) {
-		if (removeEventPerkTask->isScheduled()) {
-			removeEventPerkTask->reschedule(1);
+		if (removeEventPerkDeedTask->isScheduled()) {
+			removeEventPerkDeedTask->reschedule(1);
 		} else {
-			removeEventPerkTask->execute();
+			removeEventPerkDeedTask->execute();
 		}
 	}
 }
