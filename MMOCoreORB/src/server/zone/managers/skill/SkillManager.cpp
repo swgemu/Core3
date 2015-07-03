@@ -299,8 +299,18 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 
 
 		// Update Force Power Max and Regen.
-		ghost->setForcePowerMax(creature->getSkillMod("jedi_force_power_max"), true);
-		ghost->setForcePowerRegen(creature->getSkillMod("jedi_force_power_regen"));
+		int robeBonusMax = 0;
+		int robeBonusRegen = 0;
+		SceneObject* item = creo->getSlottedObject("chest1");
+		if (item != NULL && item->isRobeObject()) {
+			RobeObject* robeObject = cast<RobeObject*>(item);
+			if (robeObject->getSkillRequired() != "") {
+				robeBonusMax = robeObject->getTemplateSkillMods()->get("jedi_force_power_max");
+				robeBonusRegen = robeObject->getTemplateSkillMods()->get("jedi_force_power_regen");
+			}
+		}
+		ghost->setForcePowerMax(creature->getSkillMod("jedi_force_power_max") +  robeBonusMax, true);
+		ghost->setForcePowerRegen(creature->getSkillMod("jedi_force_power_regen") + robeBonusRegen);
 
 		if (skillName.contains("master")) {
 			uint32 badge = Badge::getID(skillName);
@@ -405,8 +415,19 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 		updateXpLimits(ghost);
 
 		/// Update Force Power Max and Regen
-		ghost->setForcePowerMax(creature->getSkillMod("jedi_force_power_max"), true);
-		ghost->setForcePowerRegen(creature->getSkillMod("jedi_force_power_regen"));
+		// Update Force Power Max and Regen.
+		int robeBonusMax = 0;
+		int robeBonusRegen = 0;
+		SceneObject* item = creo->getSlottedObject("chest1");
+		if (item != NULL && item->isRobeObject()) {
+			RobeObject* robeObject = cast<RobeObject*>(item);
+			if (robeObject->getSkillRequired() != "") {
+				robeBonusMax = robeObject->getTemplateSkillMods()->get("jedi_force_power_max");
+				robeBonusRegen = robeObject->getTemplateSkillMods()->get("jedi_force_power_regen");
+			}
+		}
+		ghost->setForcePowerMax(creature->getSkillMod("jedi_force_power_max") +  robeBonusMax, true);
+		ghost->setForcePowerRegen(creature->getSkillMod("jedi_force_power_regen") + robeBonusRegen);
 
 		SkillList* list = creature->getSkillList();
 
