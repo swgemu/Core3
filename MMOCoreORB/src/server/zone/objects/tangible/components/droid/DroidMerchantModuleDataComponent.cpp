@@ -47,6 +47,9 @@ void DroidMerchantModuleDataComponent::fillObjectMenuResponse(SceneObject* droid
 }
 void DroidMerchantModuleDataComponent::setWaypoint(ManagedReference<WaypointObject*> wp) {
 	waypoint = ( getParent()->getZoneServer()->createObject(0xc456e788, 0)).castTo<WaypointObject*>();
+
+	Locker locker(waypoint);
+
 	waypoint->setPlanetCRC(wp->getPlanetCRC());
 	waypoint->setPosition(wp->getPositionX(), wp->getPositionZ(), wp->getPositionY());
 	waypoint->setActive(true);
