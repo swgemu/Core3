@@ -2088,8 +2088,15 @@ void CombatManager::requestEndDuel(CreatureObject* player, CreatureObject* targe
 
 			if (pet != NULL) {
 				targetPlayer->removeDefender(pet);
-				pet->removeDefender(targetPlayer);
 				pet->sendPvpStatusTo(targetPlayer);
+
+				ManagedReference<CreatureObject*> target = targetPlayer;
+
+				EXECUTE_TASK_2(pet, target, {
+					Locker locker(pet_p);
+
+					pet_p->removeDefender(target_p);
+				});
 			}
 		}
 
@@ -2104,8 +2111,15 @@ void CombatManager::requestEndDuel(CreatureObject* player, CreatureObject* targe
 
 			if (pet != NULL) {
 				player->removeDefender(pet);
-				pet->removeDefender(player);
 				pet->sendPvpStatusTo(player);
+
+				ManagedReference<CreatureObject*> play = player;
+
+				EXECUTE_TASK_2(pet, play, {
+					Locker locker(pet_p);
+
+					pet_p->removeDefender(play_p);
+				});
 			}
 		}
 
@@ -2148,8 +2162,13 @@ void CombatManager::freeDuelList(CreatureObject* player, bool spam) {
 
 						if (pet != NULL) {
 							targetPlayer->removeDefender(pet);
-							pet->removeDefender(targetPlayer);
 							pet->sendPvpStatusTo(targetPlayer);
+
+							EXECUTE_TASK_2(pet, targetPlayer, {
+								Locker locker(pet_p);
+
+								pet_p->removeDefender(targetPlayer_p);
+							});
 						}
 					}
 
@@ -2166,8 +2185,15 @@ void CombatManager::freeDuelList(CreatureObject* player, bool spam) {
 
 						if (pet != NULL) {
 							player->removeDefender(pet);
-							pet->removeDefender(player);
 							pet->sendPvpStatusTo(player);
+
+							ManagedReference<CreatureObject*> play = player;
+
+							EXECUTE_TASK_2(pet, play, {
+								Locker locker(pet_p);
+
+								pet_p->removeDefender(play_p);
+							});
 						}
 					}
 
