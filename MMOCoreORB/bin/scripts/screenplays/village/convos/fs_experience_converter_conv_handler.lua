@@ -1,4 +1,4 @@
-local ExperienceConverter = require("screenplays.village.experience_converter")
+local ExperienceConverter = require("screenplays.village.convos.convohelpers.experience_converter")
 local Logger = require("utils.logger")
 require("utils.helpers")
 local ObjectManager = require("managers.object.object_manager")
