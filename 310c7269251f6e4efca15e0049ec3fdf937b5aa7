@@ -1,0 +1,327 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_c45ed212",
+        "filename": "MMOCoreORB/bin/scripts/object/tangible/terminal/terminal_jukebox.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-03T08:58:35Z",
+      "side": 1,
+      "message": "Should this be no trade?",
+      "revId": "310c7269251f6e4efca15e0049ec3fdf937b5aa7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_c447b24a",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-03T08:58:35Z",
+      "side": 1,
+      "message": "This should not be encapsulated within the isValidTable check.",
+      "revId": "310c7269251f6e4efca15e0049ec3fdf937b5aa7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_64e9fe19",
+        "filename": "MMOCoreORB/src/server/zone/objects/area/ActiveArea.idl",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-03T08:58:35Z",
+      "side": 1,
+      "message": "Currently this overrides the method in QuadTreeEntry. Since you are adding a new arg to this one, it will no longer do so. That should be fine but you should make it abstract and then you need to check all the child classes and see if any of them overrode it and add the arg to their method as well.\n\nYou will also need to update all the calls to this to use 3 args or they will be calling the qte method and not this one. Because of that, having a default value is probably not a good idea since people might think they can leave it off and inadvertently end up calling the wrong method.\n\nThe best solution may be to chat with TA about adding the third arg to qte. It would certainly make things simpler.",
+      "revId": "310c7269251f6e4efca15e0049ec3fdf937b5aa7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_247c5672",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/sui/JukeboxSelectionSuiCallback.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-03T08:58:35Z",
+      "side": 1,
+      "message": "Locker clocker(jukebox, player);",
+      "revId": "310c7269251f6e4efca15e0049ec3fdf937b5aa7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_e4ae6ee7",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/Jukebox.idl",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-03T08:58:35Z",
+      "side": 1,
+      "message": "@preLocked\n@arg1preLocked",
+      "revId": "310c7269251f6e4efca15e0049ec3fdf937b5aa7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_44aac2d5",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/Jukebox.idl",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-03T08:58:35Z",
+      "side": 1,
+      "message": "@preLocked",
+      "revId": "310c7269251f6e4efca15e0049ec3fdf937b5aa7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_84876a61",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/Jukebox.idl",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-03T08:58:35Z",
+      "side": 1,
+      "message": "@preLocked\n@arg1preLocked",
+      "revId": "310c7269251f6e4efca15e0049ec3fdf937b5aa7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_c48c9282",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/Jukebox.idl",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-03T08:58:35Z",
+      "side": 1,
+      "message": "@preLocked",
+      "revId": "310c7269251f6e4efca15e0049ec3fdf937b5aa7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_44816249",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/Jukebox.idl",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-03T08:58:35Z",
+      "side": 1,
+      "message": "@preLocked",
+      "revId": "310c7269251f6e4efca15e0049ec3fdf937b5aa7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_e4950e89",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/Jukebox.idl",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-03T08:58:35Z",
+      "side": 1,
+      "message": "@preLocked",
+      "revId": "310c7269251f6e4efca15e0049ec3fdf937b5aa7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_24a53604",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/Jukebox.idl",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-03T08:58:35Z",
+      "side": 1,
+      "message": "@preLocked",
+      "revId": "310c7269251f6e4efca15e0049ec3fdf937b5aa7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_04935aa4",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/Jukebox.idl",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-03T08:58:35Z",
+      "side": 1,
+      "message": "@preLocked",
+      "revId": "310c7269251f6e4efca15e0049ec3fdf937b5aa7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_84a0caf5",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/Jukebox.idl",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-03T08:58:35Z",
+      "side": 1,
+      "message": "@preLocked",
+      "revId": "310c7269251f6e4efca15e0049ec3fdf937b5aa7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_04acbaec",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/JukeboxImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-03T08:58:35Z",
+      "side": 1,
+      "message": "Since you\u0027re allowing privileged non-owners to pick up, you may want to change this check.",
+      "revId": "310c7269251f6e4efca15e0049ec3fdf937b5aa7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_a4b8662b",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/JukeboxImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-03T08:58:35Z",
+      "side": 1,
+      "message": "Locker clocker(area, jbox);",
+      "revId": "310c7269251f6e4efca15e0049ec3fdf937b5aa7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_c4b57232",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/JukeboxImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-03T08:58:35Z",
+      "side": 1,
+      "message": "Should it have a force close distance?",
+      "revId": "310c7269251f6e4efca15e0049ec3fdf937b5aa7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_64825e54",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/JukeboxImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-03T08:58:35Z",
+      "side": 1,
+      "message": "JukeboxSong* song \u003d NULL;",
+      "revId": "310c7269251f6e4efca15e0049ec3fdf937b5aa7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_a48f0675",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/JukeboxImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-03T08:58:35Z",
+      "side": 1,
+      "message": "I don\u0027t see that you\u0027re using this method at all.",
+      "revId": "310c7269251f6e4efca15e0049ec3fdf937b5aa7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_a46146d5",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/JukeboxObserverImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-03T08:58:35Z",
+      "side": 1,
+      "message": "Put this at the start and then change the null check to check jbox.",
+      "revId": "310c7269251f6e4efca15e0049ec3fdf937b5aa7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
