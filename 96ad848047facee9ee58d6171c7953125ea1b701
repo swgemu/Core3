@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_642c9e4b",
+        "filename": "MMOCoreORB/src/server/zone/managers/skill/SkillManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-03T22:51:49Z",
+      "side": 1,
+      "message": "The robe bonus will already be included in the creo\u0027s skill mod if it\u0027s equipped. What you really should be doing here is checking if the player has a robe and not a lightsaber equipped. If so, set regen to the creo\u0027s skill mod minus the robe\u0027s. Any other scenario should have the regen set to the creo\u0027s skill mod. The same applies for the other method below.",
+      "revId": "96ad848047facee9ee58d6171c7953125ea1b701",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

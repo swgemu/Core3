@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_a402a6b2",
+        "filename": "MMOCoreORB/src/server/zone/managers/skill/SkillManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-03T22:51:49Z",
+      "side": 0,
+      "message": "You should leave this bit. Force power max should always be set to the creo\u0027s skill mod. The same goes for the other method below.",
+      "revId": "d114f0cf5a9b26caaf140957a721c7213e2c9b10",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
