@@ -439,7 +439,7 @@ public:
 	bool hasArrangementDescriptor(const String& s) {
 		bool foundIt = false;
 
-		Vector < Vector <String> >* hAD = getArrangementDescriptors();
+		const Vector < Vector <String> >* hAD = getArrangementDescriptors();
 
 		for (int i = 0; i < hAD->size() && !foundIt; ++i) {
 			Vector <String>& slotItems = hAD->get(i);
