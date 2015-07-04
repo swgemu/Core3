@@ -687,7 +687,7 @@ TEST_F(LuaMobileTest, LuaSpawnManagerTest) {
 			}
 
 			if (tier & SpawnAreaMap::SPAWNAREA) {
-				String group = region.getStringAt(7);
+				String group = region.getStringAt(6);
 				EXPECT_TRUE( CreatureTemplateManager::instance()->getSpawnGroup(group.hashCode()) != NULL ) << "Spawn group " << std::string(group.toCharArray()) << " for spawn area " << std::string(area.toCharArray()) << " on planet " << std::string(zoneNames.get(i).toCharArray()) << " does not exist.";
 			}
 

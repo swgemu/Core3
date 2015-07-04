@@ -36,7 +36,6 @@ class SpawnArea extends ActiveArea {
 	protected Vector<SpawnArea> noSpawnAreas;
 
 	protected int tier;
-	protected int spawnConstant;
 
 	public final static int MINSPAWNINTERVAL = 2000; //msec
 
@@ -46,7 +45,6 @@ class SpawnArea extends ActiveArea {
 		maxSpawnLimit = 0;
 		spawnTypes.setNullValue(0);
 		exitObserver = null;
-		spawnConstant = 0;
 		Logger.setLoggingName("SpawnArea");
 	}
 
@@ -65,11 +63,6 @@ class SpawnArea extends ActiveArea {
 	@preLocked
 	public void setTier(int n) {
 		tier = n;
-	}
-
-	@preLocked
-	public void setSpawnConstant(int n) {
-		spawnConstant = n;
 	}
 
 	@preLocked
