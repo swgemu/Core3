@@ -1152,13 +1152,6 @@ void CreatureObjectImplementation::setWounds(int type, int value,
 		wounds.set(type, value, NULL);
 	}
 
-	int maxHamValue = maxHamList.get(type) - wounds.get(type);
-
-	if (getHAM(type) > maxHamValue) {
-		setHAM(type, maxHamValue, notifyClient);
-	} else if (type % 3 != 0) { //update secondary stats to the max
-		setHAM(type, maxHamValue, notifyClient);
-	}
 }
 
 int CreatureObjectImplementation::addWounds(int type, int value, bool notifyClient, bool doShockWounds) {
@@ -1183,6 +1176,55 @@ int CreatureObjectImplementation::addWounds(int type, int value, bool notifyClie
 
 	if (doShockWounds)
 		addShockWounds(1, true);
+
+	int maxHamValue = maxHamList.get(type) - wounds.get(type);
+
+	if (getHAM(type) > maxHamValue) {
+		setHAM(type, maxHamValue, notifyClient);
+	} else if (type % 3 != 0) { //update secondary stats to the max
+		setHAM(type, maxHamValue, notifyClient);
+	}
+
+	return returnValue;
+}
+
+int CreatureObjectImplementation::addWounds(TangibleObject* attacker, int type, int value, bool notifyClient) {
+	if (type < 0 || type >= wounds.size()) {
+		error("unknown wound type in addWounds");
+		return 0;
+	}
+
+	int returnValue = value;
+
+	int currentValue = wounds.get(type);
+
+	int newValue = currentValue + value;
+
+	if (newValue < 0)
+		returnValue = value - newValue;
+
+	if (value > 0 && asCreatureObject()->isPlayerCreature())
+		sendStateCombatSpam("cbt_spam", "wounded", 1, value, false);
+
+	setWounds(type, newValue, notifyClient);
+	int maxHamValue = maxHamList.get(type) - wounds.get(type);
+	int newHam = getHAM(type) - value;
+
+	// incap the player when appropriate
+	if(maxHamValue == 1) {
+		newHam = 1;
+	} else if(newHam <= 0) 	{
+		notifyObjectDestructionObservers(attacker, newHam);
+		newHam = 0;
+	}
+
+	//if it is a secondary stat, set to the max
+	if (type % 3 != 0) {
+		setHAM(type, maxHamValue, notifyClient);
+	// reduce HAM bar by wound amount ( left shift the HAM bar )
+	} else {
+		setHAM(type,newHam,notifyClient);
+	}
 
 	return returnValue;
 }
