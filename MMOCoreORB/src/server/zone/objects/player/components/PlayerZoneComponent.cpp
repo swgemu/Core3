@@ -49,10 +49,10 @@ void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* 
 	if (scno == sceneObject)
 		return;
 
-	if (scno->isPlayerCreature()) {
-		CreatureObject* player = scno->asCreatureObject();
+	if (scno->isTangibleObject()) {
+		TangibleObject* tano = scno->asTangibleObject();
 
-		if (player->isInvisible())
+		if (tano->isInvisible())
 			return;
 	}
 

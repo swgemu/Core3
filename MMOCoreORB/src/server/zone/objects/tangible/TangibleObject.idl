@@ -36,6 +36,8 @@ class TangibleObject extends SceneObject {
 	protected int volume;
 	
 	protected unsigned int faction;
+
+	protected boolean invisible;
 	
 	@dereferenced
 	protected CustomizationVariables customizationVariables;
@@ -87,6 +89,8 @@ class TangibleObject extends SceneObject {
 		Logger.setLoggingName("TangibleObject");
 		
 		initializeMembers();
+
+		invisible = false;
 
 		antiDecayKitObject = null;
 	}
@@ -785,5 +789,15 @@ class TangibleObject extends SceneObject {
 	public native boolean isCityStreetLamp();
 	public native boolean isCityStatue();
 	public native boolean isCityFountain();
+
+	@read
+	public boolean isInvisible() {
+		return invisible;
+	}
+
+	@preLocked
+	public void setInvisible(boolean invis) {
+		invisible = invis;
+	}
 }
 
