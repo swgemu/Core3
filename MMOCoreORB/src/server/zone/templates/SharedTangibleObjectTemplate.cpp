@@ -29,6 +29,8 @@ SharedTangibleObjectTemplate::SharedTangibleObjectTemplate() {
 
 	maxCondition = 0;
 
+	invisible = false;
+
 	optionsBitmask = 0;
 	pvpStatusBitmask = 0;
 
@@ -124,6 +126,8 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 	} else if (varName == "faction") {
 		String factionString = Lua::getStringParameter(state);
 		faction = factionString.toLowerCase().hashCode();
+	} else if (varName == "invisible") {
+		invisible = (bool) Lua::getByteParameter(state);
 	} else if (varName == "playerRaces") {
 		LuaObject races(state);
 

@@ -51,6 +51,7 @@ SharedObjectTemplate::SharedObjectTemplate() {
 	inheritPermissionsFromParent = false;
 
 	noTrade = false;
+
 }
 
 void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* templateData) {

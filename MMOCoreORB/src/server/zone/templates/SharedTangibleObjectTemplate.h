@@ -42,6 +42,8 @@ protected:
 
 	bool sliceable;
 
+	bool invisible;
+
 	int faction;
 
 	VectorMap<String, int> skillMods;
@@ -103,6 +105,10 @@ public:
 
 	inline int getLevel() const {
 		return level;
+	}
+
+	inline bool isInvisible() {
+		return invisible;
 	}
 
 	inline int getUseCount() const {
