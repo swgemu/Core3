@@ -26,7 +26,7 @@ desert_razorback = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/zucca_boar_hue.iff"},
-	controlDeviceTemplate = "object/intangible/pet/zucca_boar_hue.iff",
+	controlDeviceTemplate = "object/intangible/pet/pet_control.iff", -- zucca_boar_hue.iff bugged in client
 	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
