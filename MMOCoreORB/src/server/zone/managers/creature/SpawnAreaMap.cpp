@@ -185,7 +185,6 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	float x = areaObj.getFloatAt(2);
 	float y = areaObj.getFloatAt(3);
 	int tier = areaObj.getIntAt(5);
-	int constant = areaObj.getIntAt(6);
 
 	if (tier == UNDEFINEDAREA)
 		return;
@@ -259,11 +258,9 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 
 	area->setTier(tier);
 
-	area->setSpawnConstant(constant);
-
 	if (tier & SPAWNAREA) {
-		area->setTemplate(areaObj.getStringAt(7).hashCode());
-		area->setMaxSpawnLimit(areaObj.getIntAt(8));
+		area->setTemplate(areaObj.getStringAt(6).hashCode());
+		area->setMaxSpawnLimit(areaObj.getIntAt(7));
 	}
 
 	if ((radius != -1) && !(tier & WORLDSPAWNAREA)) {
