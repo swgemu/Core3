@@ -216,11 +216,8 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 
 		bool isInvis = false;
 
-		if (sceneObject->isCreatureObject()) {
-			CreatureObject* creo = sceneObject->asCreatureObject();
-
-			if(creo->isInvisible())
-				isInvis = true;
+		if (sceneObject->isInvisible()) {
+			isInvis = true;
 		}
 
 
@@ -314,10 +311,8 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 
 		bool isInvis = false;
 
-		if (sceneObject->isCreatureObject()) {
-			CreatureObject* creo = sceneObject->asCreatureObject();
-			if(creo->isInvisible())
-				isInvis = true;
+		if (sceneObject->isInvisible()) {
+			isInvis = true;
 		}
 
 		if (sendPackets && !isInvis) {
@@ -375,13 +370,8 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 
 	sceneObject->destroyObjectFromWorld(false);
 
-	if (toggleInvisibility) {
-		CreatureObject* creo = sceneObject->asCreatureObject();
-
-		if (creo != NULL) {
-			creo->setInvisible(!creo->isInvisible());
-		}
-	}
+	if (toggleInvisibility)
+		sceneObject->setInvisible(!sceneObject->isInvisible());
 
 	Locker locker(newZone);
 

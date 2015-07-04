@@ -84,6 +84,8 @@ void SceneObjectImplementation::initializeTransientMembers() {
 
 	movementCounter = 0;
 
+	invisible = false;
+
 	setGlobalLogging(true);
 	setLogging(false);
 
@@ -105,6 +107,8 @@ void SceneObjectImplementation::initializePrivateData() {
 	sendToClient = true;
 
 	movementCounter = 0;
+
+	invisible = false;
 
 	serverObjectCRC = 0;
 	clientObjectCRC = 0;

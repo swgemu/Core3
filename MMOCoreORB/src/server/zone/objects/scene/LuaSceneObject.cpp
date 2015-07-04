@@ -77,6 +77,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "isASubChildOf", &LuaSceneObject::isASubChildOf },
 		{ "isOwned", &LuaSceneObject::isOwned },
 		{ "playEffect", &LuaSceneObject::playEffect },
+		{ "isInvisible", &LuaSceneObject::isInvisible },
 		{ 0, 0 }
 
 };
@@ -695,3 +696,11 @@ int LuaSceneObject::isOwned(lua_State* L) {
 
 	return 1;
 }
+
+int LuaSceneObject::isInvisible(lua_State* L) {
+	bool retVal = realObject->isInvisible();
+	lua_pushboolean(L, retVal);
+
+	return 1;
+}
+

@@ -74,6 +74,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	protected transient SharedObjectTemplate templateObject;
 	
 	protected boolean sendToClient;
+
+	protected boolean invisible;
 	
 	@dereferenced
 	protected ZoneReference zone;
@@ -1983,5 +1985,15 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public native boolean isDataPad();
 
 	public native abstract float getTemplateRadius();
+
+	@read
+	public boolean isInvisible() {
+		return invisible || templateObject.isInvisible();
+	}
+
+	@preLocked
+	public void setInvisible(boolean invis) {
+		invisible = invis;
+	}
 }
 

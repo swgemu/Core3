@@ -49,12 +49,8 @@ void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* 
 	if (scno == sceneObject)
 		return;
 
-	if (scno->isPlayerCreature()) {
-		CreatureObject* player = scno->asCreatureObject();
-
-		if (player->isInvisible())
-			return;
-	}
+	if (scno->isPlayerCreature() && scno->isInvisible())
+		return;
 
 	ManagedReference<SceneObject*> parent = scno->getParent().get();
 

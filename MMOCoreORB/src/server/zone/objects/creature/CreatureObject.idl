@@ -61,8 +61,6 @@ class CreatureObject extends TangibleObject {
 	protected byte locomotion;
 	protected byte factionRank;
 
-	protected boolean invisible;
-
 	@weakReference
 	protected CreatureObject linkedCreature;
 
@@ -2062,16 +2060,6 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	@arg1preLocked
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-
-	@read
-	public boolean isInvisible() {
-		return invisible;
-	}
-
-	@preLocked
-	public void setInvisible(boolean invis) {
-		invisible = invis;
-	}
 
 	public string getAlternateAppearance() {
 		return alternateAppearance;

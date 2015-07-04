@@ -93,6 +93,7 @@ namespace scene {
 		int isASubChildOf(lua_State* L);
 		int isOwned(lua_State* L);
 		int playEffect(lua_State* L);
+		int isInvisible(lua_State* L);
 
 	protected:
 		SceneObject* _getRealSceneObject() {
