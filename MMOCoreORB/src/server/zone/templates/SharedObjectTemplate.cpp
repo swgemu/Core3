@@ -51,6 +51,8 @@ SharedObjectTemplate::SharedObjectTemplate() {
 	inheritPermissionsFromParent = false;
 
 	noTrade = false;
+
+	invisible = false;
 }
 
 void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* templateData) {
@@ -252,6 +254,8 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 		inheritPermissionsFromParent = Lua::getBooleanParameter(state);
 	} else if (varName == "noTrade") {
 		noTrade = (bool) Lua::getByteParameter(state);
+	} else if (varName == "invisible") {
+		invisible = (bool) Lua::getByteParameter(state);
 	} else if (varName == "groupPermissions") {
 		groupPermissions.removeAll();
 

@@ -100,6 +100,8 @@ protected:
 
 	bool noTrade;
 
+	bool invisible;
+
 public:
 	const static int SHOT = 'SHOT';
 	const static int STOT = 'STOT';
@@ -335,6 +337,10 @@ public:
 
 	inline bool isNoTrade() {
 		return noTrade;
+	}
+
+	inline bool isInvisible() {
+		return invisible;
 	}
 
 	inline float getScaleThresholdBeforeExtentTest() const {
