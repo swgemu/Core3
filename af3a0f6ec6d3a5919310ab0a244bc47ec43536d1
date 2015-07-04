@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_04e4ba0b",
+        "filename": "MMOCoreORB/src/server/zone/objects/area/ActiveAreaImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-04T02:12:16Z",
+      "side": 1,
+      "message": "Instead of duplicating the contents of the other containsPoint, after the cellid checks just return a call to the other containsPoint.",
+      "revId": "af3a0f6ec6d3a5919310ab0a244bc47ec43536d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_a4f066ca",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/JukeboxImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-04T02:12:16Z",
+      "side": 1,
+      "message": "Fix your comment.",
+      "revId": "af3a0f6ec6d3a5919310ab0a244bc47ec43536d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
