@@ -64,6 +64,8 @@ void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 	maxCondition = tanoData->getMaxCondition();
 
+	invisible = tanoData->isInvisible();
+
 	useCount = tanoData->getUseCount();
 
 	optionsBitmask = tanoData->getOptionsBitmask();
