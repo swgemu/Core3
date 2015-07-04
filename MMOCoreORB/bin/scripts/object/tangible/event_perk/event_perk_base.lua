@@ -41,36 +41,8 @@
 --this exception also makes it possible to release a modified version 
 
 
+object_tangible_event_perk_event_perk_base = object_tangible_poi_base_shared_poi_base:new {
+	invisible = 1
+}
 
---Children folder includes
-
--- Server Objects
-includeFile("tangible/event_perk/banner_generic_s01.lua")
-includeFile("tangible/event_perk/banner_generic_s02.lua")
-includeFile("tangible/event_perk/banner_imperial_style_01.lua")
-includeFile("tangible/event_perk/banner_rebel_style_01.lua")
-includeFile("tangible/event_perk/banner_tatooine_style_01.lua")
-includeFile("tangible/event_perk/camp_pavilion_s1.lua")
-includeFile("tangible/event_perk/camp_pavilion_s2.lua")
-includeFile("tangible/event_perk/corl_banner_govt_tall_s01.lua")
-includeFile("tangible/event_perk/corl_imprv_flagpole_s01.lua")
-includeFile("tangible/event_perk/dant_imprv_flagpole_s01.lua")
-includeFile("tangible/event_perk/dath_imprv_flagpole_s01.lua")
-includeFile("tangible/event_perk/endr_imprv_flagpole_s01.lua")
-includeFile("tangible/event_perk/event_perk_base.lua")
-includeFile("tangible/event_perk/filler_building_naboo_theed_style_9.lua")
-includeFile("tangible/event_perk/garden_gazebo_lg_s01.lua")
-includeFile("tangible/event_perk/guild_banner_free_style_01.lua")
-includeFile("tangible/event_perk/lambda_shuttle.lua")
-includeFile("tangible/event_perk/lok_imprv_flagpole_s01.lua")
-includeFile("tangible/event_perk/military_outpost_guard_tower_1.lua")
-includeFile("tangible/event_perk/nboo_imprv_flagpole_s01.lua")
-includeFile("tangible/event_perk/player_shuttle.lua")
-includeFile("tangible/event_perk/rori_imprv_flagpole_s01.lua")
-includeFile("tangible/event_perk/sandcrawler.lua")
-includeFile("tangible/event_perk/talus_imprv_flagpole_s01.lua")
-includeFile("tangible/event_perk/tato_imprv_flagpole_s01.lua")
-includeFile("tangible/event_perk/tie_bomber.lua")
-includeFile("tangible/event_perk/web_tree.lua")
-includeFile("tangible/event_perk/xwing.lua")
-includeFile("tangible/event_perk/yavn_imprv_flagpole_s01.lua")
+ObjectTemplates:addTemplate(object_tangible_event_perk_event_perk_base, "object/tangible/event_perk/event_perk_base.iff")
