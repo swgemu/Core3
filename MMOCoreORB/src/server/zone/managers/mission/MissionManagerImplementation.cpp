@@ -1623,13 +1623,7 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 			return NULL;
 		}
 
-		SpawnGroup* spawnGroup = spawnArea->getSpawnGroup();
-
-		if (spawnGroup == NULL) {
-			return NULL;
-		}
-
-		availableLairList = spawnGroup->getSpawnList();
+		availableLairList = spawnArea->getSpawnList();
 	}
 
 	if (availableLairList == NULL || availableLairList->size() == 0) {
