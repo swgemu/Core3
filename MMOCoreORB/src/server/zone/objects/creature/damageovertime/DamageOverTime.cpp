@@ -217,7 +217,7 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attack
 			Locker crossLocker(attackerRef_p, victimRef_p);
 
 			if ((int)strength_p > 0) {
-				victimRef_p->addWounds(attribute_p, woundsToApply_p, true, false);
+				victimRef_p->addWounds(victimRef_p,attribute_p, woundsToApply_p, true);
 				victimRef_p->addShockWounds((int)(woundsToApply_p * 0.075f));
 			}
 
@@ -256,7 +256,7 @@ uint32 DamageOverTime::doPoisonTick(CreatureObject* victim, CreatureObject* atta
 
 			Locker crossLocker(attackerRef_p, victimRef_p);
 
-			victimRef_p->inflictDamage(attackerRef_p, attribute_p, damage_p, false);
+			victimRef_p->inflictDamage(attackerRef_p, attribute_p, damage_p, true);
 			if (victimRef_p->hasAttackDelay())
 				victimRef_p->removeAttackDelay();
 
@@ -284,7 +284,7 @@ uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim) {
 			Locker locker(victimRef_p);
 
 			if ((int)damage_p > 0) {
-				victimRef_p->addWounds(attribute_p, damage_p, true, false);
+				victimRef_p->addWounds(victimRef_p,attribute_p, damage_p, true);
 				if (victimRef_p->hasAttackDelay())
 					victimRef_p->removeAttackDelay();
 			}

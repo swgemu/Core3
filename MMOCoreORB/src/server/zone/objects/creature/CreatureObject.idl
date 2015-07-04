@@ -533,6 +533,16 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	public native abstract int addWounds(int type, int value, boolean notifyClient = true, boolean doShockWounds = true);
 
+
+	/**
+	 * adds wounds for dots and incaps when appropriate
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns wounds added
+	 */
+	@preLocked
+	public native abstract int addWounds(TangibleObject attacker,int type, int value, boolean notifyClient = true);
+
 	/**
 	 * Updates a specific type of the Max HAM
 	 * @pre { this object is locked }
