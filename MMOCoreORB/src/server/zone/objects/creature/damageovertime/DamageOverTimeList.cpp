@@ -14,10 +14,10 @@ uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 
 	Locker guardLocker(&guard);
 
-	for (int i = 0; i < size(); ++i) {
+	for (int i = size() - 1; i >= 0 ; --i) {
 		Vector<DamageOverTime>* vector = &elementAt(i).getValue();
 
-		for (int j = 0; j < vector->size(); ++j) {
+		for (int j = vector->size() - 1; j >= 0 ; --j) {
 			DamageOverTime* dot = &vector->elementAt(j);
 			statesBefore |= dot->getType();
 
@@ -43,13 +43,11 @@ uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 			if (!dot->isPast()) {
 				states |= dot->getType();
 			} else {
-				vector->remove(j);
-				--j;
-
-				// Since the vector only seems to ever be of size one, this should always be true
-				if (vector->size() == 0) {
+				if (vector->size() == 1) {
+					vector->remove(j);
 					remove(i);
-					--i;
+				} else {
+					vector->remove(j);
 				}
 			}
 		}
