@@ -562,6 +562,9 @@ void BuildingObjectImplementation::addCell(CellObject* cell, uint32 cellNumber) 
 		info(buf.toString(), true);
 	}
 #endif
+
+	Locker clocker(cell, asBuildingObject());
+
 	cell->setCellNumber(cellNumber);
 }
 

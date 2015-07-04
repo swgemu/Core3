@@ -330,6 +330,9 @@ Reference<SceneObject*> PlanetManagerImplementation::loadSnapshotObject(WorldSna
 	if (parentObject != NULL && parentObject->isBuildingObject() && object->isCellObject()) {
 		CellObject* cell = cast<CellObject*>(object.get());
 		BuildingObject* building = cast<BuildingObject*>(parentObject.get());
+
+		Locker locker(building);
+
 		building->addCell(cell, node->getCellID());
 	}
 

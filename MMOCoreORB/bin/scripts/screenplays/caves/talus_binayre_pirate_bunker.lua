@@ -1,5 +1,5 @@
 TalusBinayrePirateBunkerScreenPlay = ScreenPlay:new {
-	numberOfActs = 1, 
+	numberOfActs = 1,
 
 	screenplayName = "TalusBinayrePirateBunkerScreenPlay",
 
@@ -9,28 +9,24 @@ TalusBinayrePirateBunkerScreenPlay = ScreenPlay:new {
 		8095744,
 		178364,
 		8095603,
-	   
-	  
-        },
-        
-        lootLevel = 20, 
- 
-        lootGroups = {
-                {
-                        groups = {
-                                {group = "color_crystals", chance = 160000},
-                                {group = "junk", chance = 7740000},
-				{group = "heavy_weapons_consumable", chance = 500000},
-                                {group = "melee_weapons", chance = 500000},
-				{group = "ranged_weapons", chance = 500000},
-                                {group = "clothing_attachments", chance = 300000},
-                                {group = "armor_attachments", chance = 300000}
-                        },
-                        lootChance = 8000000
-                }                                       
-        },
-        
-        lootContainerRespawn = 1800
+	},
+
+	lootLevel = 20,
+
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 160000},
+				{group = "junk", chance = 7740000},
+				{group = "weapons_all", chance = 1500000},
+				{group = "clothing_attachments", chance = 300000},
+				{group = "armor_attachments", chance = 300000}
+			},
+			lootChance = 8000000
+		}
+	},
+
+	lootContainerRespawn = 1800
 }
  
 registerScreenPlay("TalusBinayrePirateBunkerScreenPlay", true)

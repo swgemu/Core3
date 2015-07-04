@@ -1,33 +1,31 @@
 EndorOrphanedMarauderCaveScreenPlay = ScreenPlay:new {
-	numberOfActs = 1, 
+	numberOfActs = 1,
 
 	screenplayName = "EndorOrphanedMarauderCaveScreenPlay",
 
 
 	lootContainers = {
-           	733413,
+		733413,
 		733416,
 		733422
-        },
-        
-        lootLevel = 26, 
- 
-        lootGroups = {
-                {
-                        groups = {
-                                {group = "color_crystals", chance = 160000},
-                                {group = "junk", chance = 6240000},
-				{group = "heavy_weapons_consumable", chance = 1000000},
-                                {group = "melee_weapons", chance = 1000000},
-				{group = "ranged_weapons", chance = 1000000},
-                                {group = "clothing_attachments", chance = 300000},
-                                {group = "armor_attachments", chance = 300000}
-                        },
-                        lootChance = 8000000
-                }                                       
-        },
-        
-        lootContainerRespawn = 1800
+	},
+
+	lootLevel = 26,
+
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 160000},
+				{group = "junk", chance = 6240000},
+				{group = "weapons_all", chance = 3000000},
+				{group = "clothing_attachments", chance = 300000},
+				{group = "armor_attachments", chance = 300000}
+			},
+			lootChance = 8000000
+		}
+	},
+
+	lootContainerRespawn = 1800
 }
  
 registerScreenPlay("EndorOrphanedMarauderCaveScreenPlay", true)

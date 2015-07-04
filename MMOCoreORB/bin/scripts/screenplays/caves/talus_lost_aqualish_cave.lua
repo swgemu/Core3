@@ -1,5 +1,5 @@
 TalusLostAqualishScreenPlay = ScreenPlay:new {
-	numberOfActs = 1, 
+	numberOfActs = 1,
 
 	screenplayName = "TalusLostAqualishScreenPlay",
 
@@ -9,25 +9,24 @@ TalusLostAqualishScreenPlay = ScreenPlay:new {
 		6075912,
 		6075913,
 		6075914
-        },
-        
-        lootLevel = 25, 
- 
-        lootGroups = {
-                {
-                        groups = {
-                                {group = "color_crystals", chance = 160000},
-                                {group = "junk", chance = 8240000},
-                                {group = "melee_weapons", chance = 500000},
-				{group = "ranged_weapons", chance = 500000},
-                                {group = "clothing_attachments", chance = 300000},
-                                {group = "armor_attachments", chance = 300000}
-                        },
-                        lootChance = 8000000
-                }                                       
-        },
-        
-        lootContainerRespawn = 1800
+	},
+
+	lootLevel = 25,
+
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 160000},
+				{group = "junk", chance = 8240000},
+				{group = "weapons_all", chance = 1000000},
+				{group = "clothing_attachments", chance = 300000},
+				{group = "armor_attachments", chance = 300000}
+			},
+			lootChance = 8000000
+		}
+	},
+
+	lootContainerRespawn = 1800
 }
  
 registerScreenPlay("TalusLostAqualishScreenPlay", true)

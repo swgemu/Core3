@@ -1,32 +1,29 @@
 TalusChunkerBunkerScreenPlay = ScreenPlay:new {
-	numberOfActs = 1, 
+	numberOfActs = 1,
 
 	screenplayName = "TalusChunkerBunkerScreenPlay",
-
 
 	lootContainers = {
 		7955606,
 		7955613
-        },
-        
-        lootLevel = 15, 
- 
-        lootGroups = {
-                {
-                        groups = {
-                                {group = "color_crystals", chance = 160000},
-                                {group = "junk", chance = 7740000},
-				{group = "heavy_weapons_consumable", chance = 500000},
-                                {group = "melee_weapons", chance = 500000},
-				{group = "ranged_weapons", chance = 500000},
-                                {group = "clothing_attachments", chance = 300000},
-                                {group = "armor_attachments", chance = 300000}
-                        },
-                        lootChance = 8000000
-                }                                       
-        },
-        
-        lootContainerRespawn = 1800
+	},
+
+	lootLevel = 15,
+
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 160000},
+				{group = "junk", chance = 7740000},
+				{group = "weapons_all", chance = 1500000},
+				{group = "clothing_attachments", chance = 300000},
+				{group = "armor_attachments", chance = 300000}
+			},
+			lootChance = 8000000
+		}
+	},
+
+	lootContainerRespawn = 1800
 }
  
 registerScreenPlay("TalusChunkerBunkerScreenPlay", true)
