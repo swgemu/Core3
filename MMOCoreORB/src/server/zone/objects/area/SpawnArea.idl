@@ -8,14 +8,19 @@ import server.zone.objects.area.ActiveArea;
 import system.util.SortedVector;
 import system.util.HashTable;
 import engine.core.ManagedObject;
-import server.zone.managers.creature.SpawnGroup;
+import server.zone.managers.creature.LairSpawn;
 import server.zone.objects.area.SpawnAreaObserver;
 import engine.util.Observable;
 import server.zone.objects.scene.SceneObject;
 import system.lang.Time;
 
 class SpawnArea extends ActiveArea {
-	protected transient SpawnGroup spawnGroup;
+	@dereferenced
+	@rawTemplate(value = "Reference<LairSpawn*>")
+	protected transient Vector possibleSpawns;
+
+	protected int totalWeighting;
+
 	protected int totalSpawnCount;
 	protected int maxSpawnLimit;
 
@@ -30,8 +35,6 @@ class SpawnArea extends ActiveArea {
 
 	protected SpawnAreaObserver exitObserver;
 
-	protected unsigned int spawnGroupTemplateCRC;
-
 	@dereferenced
 	protected Vector<SpawnArea> noSpawnAreas;
 
@@ -40,7 +43,6 @@ class SpawnArea extends ActiveArea {
 	public final static int MINSPAWNINTERVAL = 2000; //msec
 
 	public SpawnArea() {
-		spawnGroupTemplateCRC = 0;
 		totalSpawnCount = 0;
 		maxSpawnLimit = 0;
 		spawnTypes.setNullValue(0);
@@ -55,9 +57,14 @@ class SpawnArea extends ActiveArea {
 
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 
+	@local
 	@preLocked
-	public void setTemplate(unsigned int tempCRC) {
-		spawnGroupTemplateCRC = tempCRC;
+	public native void buildSpawnList(Vector<unsigned int> groupCRCs);
+
+	@local
+	@rawTemplate(value = "Reference<LairSpawn*>")
+	public Vector getSpawnList() {
+		return possibleSpawns;
 	}
 
 	@preLocked
@@ -75,16 +82,6 @@ class SpawnArea extends ActiveArea {
 		noSpawnAreas.add(area);
 	}
 
-	@local
-	@preLocked
-	public void setSpawnGroup(SpawnGroup group) {
-		spawnGroup = group;
-	}
-
-	@local
-	@dirty
-	public native SpawnGroup getSpawnGroup();
-
 	public void enqueueEnterEvent(SceneObject obj) {
 		notifyEnter(obj);
 	}
@@ -95,5 +92,5 @@ class SpawnArea extends ActiveArea {
 	@dirty
 	public native void notifyPositionUpdate(QuadTreeEntry obj);
 
-	public native int tryToSpawn(SceneObject object);
+	public native void tryToSpawn(SceneObject object);
 }

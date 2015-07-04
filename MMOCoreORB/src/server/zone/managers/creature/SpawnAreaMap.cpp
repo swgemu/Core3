@@ -259,8 +259,20 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	area->setTier(tier);
 
 	if (tier & SPAWNAREA) {
-		area->setTemplate(areaObj.getStringAt(6).hashCode());
 		area->setMaxSpawnLimit(areaObj.getIntAt(7));
+		LuaObject spawnGroups = areaObj.getObjectAt(6);
+
+		if (spawnGroups.isValidTable()) {
+			Vector<uint32> groups;
+
+			for (int i = 1; i <= spawnGroups.getTableSize(); i++) {
+				groups.add(spawnGroups.getStringAt(i).hashCode());
+			}
+
+			area->buildSpawnList(&groups);
+		}
+
+		spawnGroups.pop();
 	}
 
 	if ((radius != -1) && !(tier & WORLDSPAWNAREA)) {

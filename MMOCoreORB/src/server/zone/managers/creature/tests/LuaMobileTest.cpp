@@ -687,8 +687,17 @@ TEST_F(LuaMobileTest, LuaSpawnManagerTest) {
 			}
 
 			if (tier & SpawnAreaMap::SPAWNAREA) {
-				String group = region.getStringAt(6);
-				EXPECT_TRUE( CreatureTemplateManager::instance()->getSpawnGroup(group.hashCode()) != NULL ) << "Spawn group " << std::string(group.toCharArray()) << " for spawn area " << std::string(area.toCharArray()) << " on planet " << std::string(zoneNames.get(i).toCharArray()) << " does not exist.";
+				LuaObject spawnGroups = region.getObjectAt(6);
+
+				ASSERT_TRUE( spawnGroups.isValidTable() ) << "Invalid spawnGroups table in spawn area " << std::string(area.toCharArray()) << " in " << zoneNames.get(i).toCharArray() << "_regions.";
+
+				for (int k = 1; k <= spawnGroups.getTableSize(); k++) {
+					String group = spawnGroups.getStringAt(k);
+
+					EXPECT_TRUE( CreatureTemplateManager::instance()->getSpawnGroup(group.hashCode()) != NULL ) << "Spawn group " << std::string(group.toCharArray()) << " for spawn area " << std::string(area.toCharArray()) << " on planet " << std::string(zoneNames.get(i).toCharArray()) << " does not exist.";
+				}
+
+				spawnGroups.pop();
 			}
 
 			region.pop();
