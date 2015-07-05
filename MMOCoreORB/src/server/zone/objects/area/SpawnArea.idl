@@ -43,6 +43,7 @@ class SpawnArea extends ActiveArea {
 	public final static int MINSPAWNINTERVAL = 2000; //msec
 
 	public SpawnArea() {
+		totalWeighting = 0;
 		totalSpawnCount = 0;
 		maxSpawnLimit = 0;
 		spawnTypes.setNullValue(0);
