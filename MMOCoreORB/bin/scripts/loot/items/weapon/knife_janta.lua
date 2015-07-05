@@ -27,7 +27,7 @@ knife_janta = {
 	randomDotChance = 600,
 
 	-- staticDotChance: The chance of this weapon object dropping with a static dot on it. Higher number means less chance. Set to 0 to always have a static dot.
-	staticDotChance = 50, -- not a true static dot on this weapon, just a higher chance of having a mind poison in addition to any other dots
+	staticDotChance = 0,
 
 	-- staticDotType: 1 = Poison, 2 = Disease, 3 = Fire, 4 = Bleed
 	staticDotType = 1,
@@ -35,10 +35,10 @@ knife_janta = {
 	-- staticDotValues: Object map that can randomly or statically generate a dot (used for weapon objects.)
 	staticDotValues = {
 		{"attribute", 6, 6}, -- See CreatureAttributes.h in src for numbers.
-		{"strength", 110, 250}, --because of the system random in the strength calculation, setting at 110, 250 will always produce a strength between 110 and 140 + % increase based on level of mob looted from.
-		{"duration", 30, 240},
-		{"potency", 10, 99},
-		{"uses", 2000, 9999}
+		{"strength", 110, 110},
+		{"duration", 150, 150},
+		{"potency", 60, 60},
+		{"uses", 650, 650}
 	},
 
 	junkDealerTypeNeeded = JUNKWEAPONS,
