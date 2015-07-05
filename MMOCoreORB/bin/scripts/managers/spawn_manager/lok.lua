@@ -186,7 +186,7 @@ lok_regions = {
 	{"western_mountains",0,0,{1,0},UNDEFINEDAREA},
 	{"western_plains",0,0,{1,0},UNDEFINEDAREA},
         {"wind_farm",-2883,-236,{1,75},NOSPAWNAREA + NOBUILDZONEAREA},
-	{"world_spawner",0,0,{1,-1},SPAWNAREA + WORLDSPAWNAREA,{"lok_world"},2048},
+	{"world_spawner",0,0,{1,-1},SPAWNAREA + WORLDSPAWNAREA,{"lok_world","global_hard"},2048},
 }
 
 lok_static_spawns = {
