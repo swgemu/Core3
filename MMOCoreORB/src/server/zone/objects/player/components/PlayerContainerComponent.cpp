@@ -121,6 +121,27 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 		tano->applySkillModsTo(creo);
 	}
 
+	if (object->isInstrument() && creo->isEntertaining())
+		creo->stopEntertaining();
+
+	//this it to update the equipment list
+	//we need a DeltaVector with all the slotted objects it seems
+	/*CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(creo);
+	creo->broadcastMessage(msg6, true, true);*/
+
+	if (object->isTangibleObject() && object->getArrangementDescriptorSize() != 0 && object->getArrangementDescriptor(0)->size() != 0) {
+		const String& arrangement = object->getArrangementDescriptor(0)->get(0);
+
+		if (arrangement != "mission_bag" && arrangement != "ghost" && arrangement != "bank") {
+			creo->addWearableObject(object->asTangibleObject(), true);
+		}
+	}
+
+	if (object->isTangibleObject()) {
+		ManagedReference<TangibleObject*> tano = object->asTangibleObject();
+		tano->addTemplateSkillMods(creo);
+	}
+
 	// Jedi stuff below.
 	PlayerObject* ghost = creo->getPlayerObject();
 
@@ -149,27 +170,6 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 		}
 	}
 
-	if (object->isInstrument() && creo->isEntertaining())
-		creo->stopEntertaining();
-
-	//this it to update the equipment list
-	//we need a DeltaVector with all the slotted objects it seems
-	/*CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(creo);
-	creo->broadcastMessage(msg6, true, true);*/
-
-	if (object->isTangibleObject() && object->getArrangementDescriptorSize() != 0 && object->getArrangementDescriptor(0)->size() != 0) {
-		const String& arrangement = object->getArrangementDescriptor(0)->get(0);
-
-		if (arrangement != "mission_bag" && arrangement != "ghost" && arrangement != "bank") {
-			creo->addWearableObject(object->asTangibleObject(), true);
-		}
-	}
-
-	if (object->isTangibleObject()) {
-		ManagedReference<TangibleObject*> tano = object->asTangibleObject();
-		tano->addTemplateSkillMods(creo);
-	}
-
 	return ContainerComponent::notifyObjectInserted(sceneObject, object);
 }
 
@@ -193,6 +193,24 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 	if (object->isInstrument()) {
 		if (creo->isPlayingMusic())
 			creo->stopEntertaining();
+	}
+
+	//this it to update the equipment list
+	//we need a DeltaVector with all the slotted objects it seems
+	/*CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(creo);
+	creo->broadcastMessage(msg6, true, true);*/
+
+	if (object->isTangibleObject() && object->getArrangementDescriptorSize() != 0 && object->getArrangementDescriptor(0)->size() != 0) {
+		const String& arrangement = object->getArrangementDescriptor(0)->get(0); //CHK
+
+		if (arrangement != "mission_bag" && arrangement != "ghost" && arrangement != "bank") {
+			creo->removeWearableObject(object->asTangibleObject(), true);
+		}
+	}
+
+	if (object->isTangibleObject()) {
+		ManagedReference<TangibleObject*> tano = object->asTangibleObject();
+		tano->removeTemplateSkillMods(creo);
 	}
 
 	// Jedi stuff below.
@@ -221,24 +239,6 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 				VisibilityManager::instance()->increaseVisibility(creo);
 			}
 		}
-	}
-
-	//this it to update the equipment list
-	//we need a DeltaVector with all the slotted objects it seems
-	/*CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(creo);
-	creo->broadcastMessage(msg6, true, true);*/
-
-	if (object->isTangibleObject() && object->getArrangementDescriptorSize() != 0 && object->getArrangementDescriptor(0)->size() != 0) {
-		const String& arrangement = object->getArrangementDescriptor(0)->get(0); //CHK
-
-		if (arrangement != "mission_bag" && arrangement != "ghost" && arrangement != "bank") {
-			creo->removeWearableObject(object->asTangibleObject(), true);
-		}
-	}
-
-	if (object->isTangibleObject()) {
-		ManagedReference<TangibleObject*> tano = object->asTangibleObject();
-		tano->removeTemplateSkillMods(creo);
 	}
 
 	return ContainerComponent::notifyObjectRemoved(sceneObject, object, destination);
