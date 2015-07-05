@@ -106,7 +106,7 @@ endor_regions = {
         {"three_huts",2047,4316,{1,50},NOSPAWNAREA + NOBUILDZONEAREA},
         {"tree_stand",-1876,-1474,{1,50},NOSPAWNAREA + NOBUILDZONEAREA},
 	{"western_mountains",0,0,{1,0},UNDEFINEDAREA},
-	{"world_spawner",0,0,{1,-1},SPAWNAREA + WORLDSPAWNAREA,{"endor_world"},2048},
+	{"world_spawner",0,0,{1,-1},SPAWNAREA + WORLDSPAWNAREA,{"endor_world","global_hard"},2048},
 	{"yawari_cliffs_1",0,0,{1,0},UNDEFINEDAREA},
 	{"yawari_cliffs_10",0,0,{1,0},UNDEFINEDAREA},
 	{"yawari_cliffs_11",0,0,{1,0},UNDEFINEDAREA},
