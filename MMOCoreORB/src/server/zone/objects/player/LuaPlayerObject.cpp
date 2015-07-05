@@ -478,6 +478,8 @@ int LuaPlayerObject::addEventPerk(lua_State* L) {
 		return 0;
 	}
 
+	Locker locker(item);
+
 	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(realObject->getParent().get().get());
 
 	if (item->isEventPerkDeed() && creature != NULL) {
