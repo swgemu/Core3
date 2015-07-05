@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_04f59a82",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/TangibleObject.idl",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-05T00:23:18Z",
+      "side": 1,
+      "message": "Put this directly in the constructor instead to make sure that existing objects have it\u0027s value initialized properly.",
+      "revId": "bab8f1fe37f6dc7625d19a6208ad21eb63ab9dfe",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_e4f74e8b",
+        "filename": "MMOCoreORB/src/server/zone/templates/SharedObjectTemplate.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-05T00:23:18Z",
+      "side": 1,
+      "message": "This should be in SharedTangibleObjectTemplate",
+      "revId": "bab8f1fe37f6dc7625d19a6208ad21eb63ab9dfe",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
