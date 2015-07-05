@@ -239,7 +239,7 @@ void FireworkObjectImplementation::beginShowLaunch(CreatureObject* player) {
 	int x = player->getPositionX() + sin(angle) * (distance);
 	int y = player->getPositionY() + cos(angle) * (distance);
 	int z = player->getZone()->getHeight(x, y);
-
+	Locker locker(showLauncherObject);
 	showLauncherObject->initializePosition(x, z, y);
 	player->getZone()->transferObject(showLauncherObject, -1, true);
 
