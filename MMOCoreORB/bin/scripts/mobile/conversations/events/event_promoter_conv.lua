@@ -157,7 +157,7 @@ explain_jukebox = ConvoScreen:new {
 		{"@conversation/event_promoter:s_30", "sale_games_supplies"}, -- Rent Games and Supplies
 		{"@conversation/event_promoter:s_50", "explain_capture_the_flag_game"}, -- What is the Capture the Flag Game?
 		{"@conversation/event_promoter:s_58", "explain_lottery_droid"}, -- What is the Lottery Droid?
-		{"@conversation/event_promoter:s_64", "explain_scavenger_hunt_droid"}, -- What is the Scavenger Hunt Droid?
+		{"@conversation/event_promoter:s_62", "explain_scavenger_hunt_droid"}, -- What is the Scavenger Hunt Droid?
 		{"@conversation/event_promoter:s_66", "explain_treasure_chest"}, -- What is the Treasure Chest?
 		{"@conversation/event_promoter:s_70", "explain_shuttle_beacon"}, -- What is the Shuttle Beacon?
 	}

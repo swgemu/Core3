@@ -45,7 +45,8 @@ object_tangible_deed_event_perk_fruit_stand = object_tangible_deed_event_perk_sh
 	templateType = EVENTPERKDEED,
 	gameObjectType = 8388615,
 	noTrade = 1,
-
+	generatedObjectTemplate = "object/tangible/furniture/tatooine/frn_tato_fruit_stand_small_style_01.iff",
+	perkType = STATIC,
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_event_perk_fruit_stand, "object/tangible/deed/event_perk/fruit_stand.iff")

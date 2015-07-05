@@ -45,7 +45,8 @@ object_tangible_deed_event_perk_meat_rack = object_tangible_deed_event_perk_shar
 	templateType = EVENTPERKDEED,
 	gameObjectType = 8388615,
 	noTrade = 1,
-
+	generatedObjectTemplate = "object/tangible/furniture/tatooine/frn_tato_meat_rack.iff",
+	perkType = STATIC,
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_event_perk_meat_rack, "object/tangible/deed/event_perk/meat_rack.iff")
