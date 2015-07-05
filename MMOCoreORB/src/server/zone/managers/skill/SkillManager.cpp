@@ -18,6 +18,8 @@
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage4.h"
 #include "../../packets/creature/CreatureObjectDeltaMessage6.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/objects/tangible/wearables/RobeObject.h"
 
 SkillManager::SkillManager()
 : Logger("SkillManager") {
@@ -301,6 +303,15 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 		// Update Force Power Max and Regen.
 		ghost->setForcePowerMax(creature->getSkillMod("jedi_force_power_max"), true);
 		ghost->setForcePowerRegen(creature->getSkillMod("jedi_force_power_regen"));
+		SceneObject* item = creature->getSlottedObject("chest1");
+		if (item != NULL && item->isRobeObject()) {
+			RobeObject* robeObject = cast<RobeObject*>(item);
+			if (robeObject->getSkillRequired() != "") {
+				if (!creature->getWeapon()->isJediWeapon()) {
+					ghost->setForcePowerRegen(creature->getSkillMod("jedi_force_power_regen") - robeObject->getTemplateSkillMods()->get("jedi_force_power_regen"));
+				}
+			}
+		}
 
 		if (skillName.contains("master")) {
 			uint32 badge = Badge::getID(skillName);
@@ -407,6 +418,15 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 		/// Update Force Power Max and Regen
 		ghost->setForcePowerMax(creature->getSkillMod("jedi_force_power_max"), true);
 		ghost->setForcePowerRegen(creature->getSkillMod("jedi_force_power_regen"));
+		SceneObject* item = creature->getSlottedObject("chest1");
+		if (item != NULL && item->isRobeObject()) {
+			RobeObject* robeObject = cast<RobeObject*>(item);
+			if (robeObject->getSkillRequired() != "") {
+				if (!creature->getWeapon()->isJediWeapon()) {
+					ghost->setForcePowerRegen(creature->getSkillMod("jedi_force_power_regen") - robeObject->getTemplateSkillMods()->get("jedi_force_power_regen"));
+				}
+			}
+		}
 
 		SkillList* list = creature->getSkillList();
 
