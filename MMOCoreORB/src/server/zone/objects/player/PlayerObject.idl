@@ -1731,33 +1731,6 @@ class PlayerObject extends IntangibleObject {
 			chosenVeteranRewards.drop( milestone );
 	}
 
-	@local
-	public Vector<string> getForceSensitiveElegibleBranches() {
-		return fsEligibleBranches;
-	}
-
-	public void addForceSensitiveElegibleBranch(string branch){
-		fsEligibleBranches.add(branch);
-	}
-
-	public void removeForceSensitiveElegibleBranches(){
-		fsEligibleBranches.removeAll();
-	}
-
-	public native void updateForceSensitiveElegibleExperiences(int type);
-
-	@local
-	public Vector<string> getForceSensitiveElegibleExperiences() {
-		return fsEligibleExperiences;
-	}
-
-	@dirty
-	public string getForceSensitiveElegibleExperienceType(int type) {
-		return fsEligibleExperiences.get(type);
-	}
-	
-	public native string getForceSensitiveExperienceRatio(final string type);
-
 	public void addEventPerk(SceneObject deed) {
 		currentEventPerks.put(deed.getObjectID());
 	}
