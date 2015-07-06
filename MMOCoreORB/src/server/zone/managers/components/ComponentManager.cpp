@@ -119,6 +119,8 @@
 #include "server/zone/objects/creature/components/FactionRecruiterContainerComponent.h"
 #include "server/zone/objects/tangible/components/EventPerkDataComponent.h"
 #include "server/zone/objects/tangible/components/EventPerkMenuComponent.h"
+#include "server/zone/objects/tangible/components/FlagGameDataComponent.h"
+#include "server/zone/objects/tangible/components/FlagGameMenuComponent.h"
 #include "server/zone/objects/tangible/components/EventPerkAttributeListComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidMaintenanceModuleDataComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidEffectsModuleDataComponent.h"
@@ -304,6 +306,10 @@ ComponentManager::ComponentManager() {
 	components.put("EventPerkDataComponent", new EventPerkDataComponent() );
 	components.put("EventPerkAttributeListComponent", new EventPerkAttributeListComponent() );
 	dataObjectFactory.registerObject<EventPerkDataComponent>("EventPerkDataComponent");
+
+	components.put("FlagGameMenuComponent", new FlagGameMenuComponent() );
+	components.put("FlagGameDataComponent", new FlagGameDataComponent() );
+	dataObjectFactory.registerObject<FlagGameDataComponent>("FlagGameDataComponent");
 	// Droid components
 	dataObjectFactory.registerObject<DroidMaintenanceModuleDataComponent>("DroidMaintenanceModuleDataComponent");
 	dataObjectFactory.registerObject<DroidEffectsModuleDataComponent>("DroidEffectsModuleDataComponent");

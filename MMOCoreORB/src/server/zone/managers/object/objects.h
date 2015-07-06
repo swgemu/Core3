@@ -60,6 +60,7 @@
 #include "server/zone/objects/installation/garage/GarageInstallation.h"
 #include "server/zone/objects/installation/generator/GeneratorObject.h"
 #include "server/zone/objects/installation/harvester/HarvesterObject.h"
+#include "server/zone/objects/tangible/eventperk/FlagGame.h"
 #include "server/zone/objects/tangible/eventperk/Jukebox.h"
 #include "server/zone/objects/tangible/component/Component.h"
 #include "server/zone/objects/tangible/component/armor/ArmorComponent.h"

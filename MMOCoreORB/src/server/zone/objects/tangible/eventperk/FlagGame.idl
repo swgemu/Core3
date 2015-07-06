@@ -1,0 +1,123 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.eventperk;
+
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.Zone;
+import server.zone.objects.tangible.tasks.FlagGamePulseTask;
+
+class FlagGame extends TangibleObject {	
+	@weakReference
+	protected CreatureObject owner;
+
+	@weakReference
+	protected TangibleObject curFlag;
+
+	@dereferenced
+	protected Time lastFlagChange;
+
+	@dereferenced
+	protected Time gameStartTime;
+
+	protected unsigned long timeLimit;
+
+	protected int gameStatus;
+
+	protected int impScore;
+	protected int rebScore;
+	
+	protected unsigned int factionControl;
+
+	@dereferenced
+	protected transient Reference<FlagGamePulseTask> gamePulse;
+
+	public FlagGame() {
+		Logger.setLoggingName("FlagGame");
+
+		timeLimit = 0;
+
+		impScore = 0;
+		rebScore = 0;
+
+		gameStatus = 0;
+
+		factionControl = 0;
+
+		owner = null;
+
+		curFlag = null;
+
+	}
+
+	public native void initializeTransientMembers();
+
+	public native void notifyInsertToZone(Zone zone);
+
+	public native unsigned int getFlagTemplate(unsigned int faction);
+	
+	public native void doVictoryEffects(unsigned int faction);
+
+	@preLocked
+	public native void changeFlag(unsigned int faction);
+
+	public native void tryFlagChange(CreatureObject player);
+
+	public native void showScores(CreatureObject player);
+
+	public native void removeCurFlag();
+
+	public native boolean canUseFlag(CreatureObject player);
+
+	@preLocked
+	public native void startGame();
+
+	@preLocked
+	public native void activateGamePulse();
+
+	@preLocked
+	public native void endGame();
+
+	public native void announceToPlayers(final string message);
+
+	@preLocked
+	public void setTimeLimit(unsigned long limit) {
+		timeLimit = limit;
+	}
+
+	@read
+	public unsigned long getTimeLimit() {
+		return timeLimit;
+	}
+
+	public boolean isGameStarted() {
+		return gameStatus == 1;
+	}
+
+	public boolean isGameEnded() {
+		return gameStatus == 2;
+	}
+
+	@preLocked
+	public void increaseRebelScore() {
+		rebScore = rebScore + 1;
+	}
+
+	@preLocked
+	public void increaseImperialScore() {
+		impScore = impScore + 1;
+	}
+
+	@read
+	public unsigned int getFactionControl() {
+		return factionControl;
+	}
+
+	@local
+	public Time getGameStartTime() {
+		return gameStartTime;
+	}
+}
