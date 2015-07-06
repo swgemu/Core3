@@ -41,13 +41,11 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_tangible_deed_event_perk_game_flag_deed = object_tangible_deed_event_perk_shared_game_flag_deed:new {
-	templateType = EVENTPERKDEED,
-	gameObjectType = 8388615,
-	noTrade = 1,
-	generatedObjectTemplate = "object/tangible/event_perk/flag_game.iff",
-	perkType = GAME,
-
+object_tangible_event_perk_flag_game = object_tangible_poi_base_shared_poi_base:new {
+	invisible = 1,
+	gameObjectType = 16409,
+	dataObjectComponent = "EventPerkDataComponent",
+	attributeListComponent = "EventPerkAttributeListComponent",
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_game_flag_deed, "object/tangible/deed/event_perk/game_flag_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_event_perk_flag_game, "object/tangible/event_perk/flag_game.iff")

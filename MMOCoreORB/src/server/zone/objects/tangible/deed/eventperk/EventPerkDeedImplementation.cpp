@@ -190,7 +190,7 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			return 1;
 		}
 
-		if (perkType != EventPerkDeedTemplate::STATIC) {
+		if (perkType != EventPerkDeedTemplate::STATIC && perkType != EventPerkDeedTemplate::GAME) {
 			player->sendSystemMessage("This type of event perk deed is not functional yet.");
 			return 1;
 		}

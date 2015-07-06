@@ -42,7 +42,8 @@
 
 
 object_tangible_furniture_all_event_flag_game_reb_banner = object_tangible_furniture_all_shared_event_flag_game_reb_banner:new {
-
+	objectMenuComponent = {"cpp", "FlagGameMenuComponent"},
+	dataObjectComponent = "FlagGameDataComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_event_flag_game_reb_banner, "object/tangible/furniture/all/event_flag_game_reb_banner.iff")

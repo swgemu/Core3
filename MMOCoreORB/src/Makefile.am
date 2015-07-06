@@ -99,6 +99,7 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 
 core3_IDLS =	autogen/server/zone/objects/tangible/eventperk/JukeboxObserver.cpp \
 				autogen/server/zone/objects/tangible/eventperk/Jukebox.cpp \
+				autogen/server/zone/objects/tangible/eventperk/FlagGame.cpp \
 				autogen/server/zone/objects/intangible/TheaterObject.cpp \
 				autogen/server/zone/objects/building/PoiBuilding.cpp \
 				autogen/server/zone/objects/creature/conversation/PetTrainingConversationObserver.cpp \
@@ -380,6 +381,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/SurveyDroidMenuComponent.cpp \
 		server/zone/objects/tangible/components/ThrowGrenadeMenuComponent.cpp \
 		server/zone/objects/tangible/components/EventPerkMenuComponent.cpp \
+		server/zone/objects/tangible/components/FlagGameMenuComponent.cpp \
 		server/zone/objects/tangible/powerup/PowerupObjectImplementation.cpp \
 		server/zone/objects/tangible/firework/components/FireworkMenuComponent.cpp \
 		server/zone/objects/tangible/firework/components/FireworkShowMenuComponent.cpp \
@@ -587,6 +589,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/intangible/PetControlDeviceImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/InstrumentImplementation.cpp \
+		server/zone/objects/tangible/eventperk/FlagGameImplementation.cpp \
 		server/zone/objects/tangible/eventperk/JukeboxImplementation.cpp \
 		server/zone/objects/tangible/eventperk/JukeboxObserverImplementation.cpp \
 		server/zone/objects/tangible/components/droid/DroidPlaybackObserverImplementation.cpp \
