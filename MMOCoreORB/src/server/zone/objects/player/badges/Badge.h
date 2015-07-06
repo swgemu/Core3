@@ -174,12 +174,12 @@ public:
 
 	//Types
 	enum {
-		MISC,
-		QUEST,
+		ACCUMULATION,
+		INTEREST,
 		EXPLORATION,
-		PROFESSION,
-		EVENT,
-		DUNGION 
+		MASTER,
+		EVENTS,
+		CONTENT
 	};
 
 public:
