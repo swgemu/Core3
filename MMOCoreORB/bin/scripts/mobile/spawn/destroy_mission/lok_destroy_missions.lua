@@ -1,4 +1,6 @@
 lok_destroy_missions = {
+	minLevelCeiling = 35,
+
 	lairSpawns = {
 		{
 			lairTemplateName = "lok_pharple_lair_neutral_medium",

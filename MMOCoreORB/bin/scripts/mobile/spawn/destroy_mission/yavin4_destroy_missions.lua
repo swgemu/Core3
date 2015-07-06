@@ -1,4 +1,6 @@
 yavin4_destroy_missions = {
+	minLevelCeiling = 25,
+
 	lairSpawns = {
 		{
 			lairTemplateName = "yavin4_tanc_mite_lair_neutral_medium",

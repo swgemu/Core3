@@ -1,4 +1,6 @@
 dathomir_destroy_missions = {
+	minLevelCeiling = 45,
+
 	lairSpawns = {
 		{
 			lairTemplateName = "dathomir_kwi_lair_neutral_small",

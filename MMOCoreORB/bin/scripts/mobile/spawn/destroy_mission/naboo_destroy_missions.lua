@@ -1,4 +1,6 @@
 naboo_destroy_missions = {
+	minLevelCeiling = 25,
+
 	lairSpawns = {
 		{
 			lairTemplateName = "naboo_plasma_thief_camp_neutral_large_theater",

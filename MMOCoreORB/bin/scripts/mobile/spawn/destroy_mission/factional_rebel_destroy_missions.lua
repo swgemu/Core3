@@ -1,4 +1,6 @@
 factional_rebel_destroy_missions = {
+	minLevelCeiling = 20,
+
 	lairSpawns = {
 		{
 			lairTemplateName = "global_imperial_civil_patrolman_camp_imperial_small_theater",

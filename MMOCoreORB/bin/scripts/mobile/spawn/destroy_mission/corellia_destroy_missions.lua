@@ -1,4 +1,6 @@
 corellia_destroy_missions = {
+	minLevelCeiling = 25,
+
 	lairSpawns = {
 		{
 			lairTemplateName = "corellia_meatlump_camp_neutral_medium_theater",

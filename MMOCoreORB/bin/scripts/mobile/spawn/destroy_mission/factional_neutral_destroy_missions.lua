@@ -1,4 +1,6 @@
 factional_neutral_destroy_missions = {
+	minLevelCeiling = 15,
+
 	lairSpawns = {
 		{
 			lairTemplateName = "global_bothan_information_broker_camp_neutral_small_theater",

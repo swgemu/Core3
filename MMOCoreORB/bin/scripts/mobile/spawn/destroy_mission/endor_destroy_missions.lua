@@ -1,4 +1,6 @@
 endor_destroy_missions = {
+	minLevelCeiling = 40,
+
 	lairSpawns = {
 		{
 			lairTemplateName = "endor_squall_rabid_neutral_small",

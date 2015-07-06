@@ -1571,6 +1571,7 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 		return NULL;
 
 	Vector<Reference<LairSpawn*> >* availableLairList = NULL;
+	int minLevelCeiling = 20;
 
 	if (type == MissionObject::DESTROY) {
 		String missionGroup;
@@ -1604,6 +1605,7 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 		}
 
 		availableLairList = destroyMissionGroup->getSpawnList();
+		minLevelCeiling = destroyMissionGroup->getMinLevelCeiling();
 
 	} else if (type == MissionObject::HUNTING) {
 		CreatureManager* creatureManager = zone->getCreatureManager();
@@ -1638,8 +1640,8 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 
 	LairSpawn* lairSpawn = NULL;
 
-	//Ensure that the minimum is low enough to get missions on any planet
-	int minLevel = MIN(playerLevel - 5, 20);
+	//Cap the minLevel to prevent a group from being too high to get missions on a planet
+	int minLevel = MIN(playerLevel - 5, minLevelCeiling);
 
 	//Try to pick random lair within playerLevel +-5;
 	while (counter > 0 && !foundLair) {

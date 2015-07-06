@@ -1,4 +1,6 @@
 talus_destroy_missions = {
+	minLevelCeiling = 25,
+
 	lairSpawns = {
 		{
 			lairTemplateName = "talus_fynock_youth_lair_neutral_small",

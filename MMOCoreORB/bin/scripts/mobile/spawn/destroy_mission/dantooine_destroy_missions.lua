@@ -1,4 +1,6 @@
 dantooine_destroy_missions = {
+	minLevelCeiling = 45,
+
 	lairSpawns = {
 		{
 			lairTemplateName = "dantooine_bol_pigmy_neutral_small",

@@ -1,4 +1,6 @@
 rori_destroy_missions = {
+	minLevelCeiling = 25,
+
 	lairSpawns = {
 		{
 			lairTemplateName = "rori_capper_spineflap_hive_neutral_large",
