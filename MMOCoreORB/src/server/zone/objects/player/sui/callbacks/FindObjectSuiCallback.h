@@ -67,6 +67,9 @@ public:
 		} else {
 			Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 			ManagedReference<WaypointObject*> obj = server->createObject(0xc456e788, 1).castTo<WaypointObject*>();
+
+			Locker locker(obj);
+
 			obj->setPlanetCRC(object->getPlanetCRC());
 			obj->setPosition(object->getWorldPositionX(), 0, object->getWorldPositionY());
 
