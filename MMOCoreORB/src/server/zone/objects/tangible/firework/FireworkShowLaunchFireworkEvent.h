@@ -55,7 +55,7 @@ public:
 			if (fireworkObject == NULL)
 				return;
 
-
+			Locker fireworkObjectLocker(fireworkObject);
 			int x = worldFireworkShow->getPositionX();
 			int y = worldFireworkShow->getPositionY();
 			int z = worldFireworkShow->getZone()->getHeight(x, y);
