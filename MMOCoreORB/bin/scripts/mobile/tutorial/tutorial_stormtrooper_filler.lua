@@ -27,7 +27,7 @@ tutorial_stormtrooper_filler = Creature:new {
 
 	templates = {"object/mobile/dressed_stormtrooper_m.iff"},
 	lootGroups = {},
-	weapons = {"imperial_weapons_medium"},
+	weapons = {"stormtrooper_weapons"},
 	attacks = {},
 	conversationTemplate = "stormtrooperFillerConvoTemplate",
 }
