@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_a7b8682b",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/FlagGameMenuComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T08:21:57Z",
+      "side": 1,
+      "message": "Locker locker(flagGame);",
+      "revId": "a60baa9db83d2a9e1fc3b42c2a86f87c3948193e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_67826054",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/FlagGameMenuComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T08:21:57Z",
+      "side": 1,
+      "message": "Instead of all of these standalone ifs, string them together into an if/else if chain.",
+      "revId": "a60baa9db83d2a9e1fc3b42c2a86f87c3948193e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_c7b57432",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/FlagGameMenuComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T08:21:57Z",
+      "side": 1,
+      "message": "Put the two flagGame calls first followed by locker.release();\n\nThen Locker deedLocker(deed); followed by the other three calls in this block.",
+      "revId": "a60baa9db83d2a9e1fc3b42c2a86f87c3948193e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_c75ed412",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/FlagGameImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T08:21:57Z",
+      "side": 1,
+      "message": "Locker locker(flag);",
+      "revId": "a60baa9db83d2a9e1fc3b42c2a86f87c3948193e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_679b40ca",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/FlagGameImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T08:21:57Z",
+      "side": 1,
+      "message": "ManagedReference\u003cTangibleObject*\u003e flag \u003d curFlag.get();",
+      "revId": "a60baa9db83d2a9e1fc3b42c2a86f87c3948193e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_87a0ccf5",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/FlagGameImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T08:21:57Z",
+      "side": 1,
+      "message": "if (flag !\u003d NULL) {",
+      "revId": "a60baa9db83d2a9e1fc3b42c2a86f87c3948193e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_27a53804",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/FlagGameImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T08:21:57Z",
+      "side": 1,
+      "message": "remove this",
+      "revId": "a60baa9db83d2a9e1fc3b42c2a86f87c3948193e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_47aac4d5",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/FlagGameImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T08:21:57Z",
+      "side": 1,
+      "message": "Should you limit the effects to play on overts only since only they could participate?",
+      "revId": "a60baa9db83d2a9e1fc3b42c2a86f87c3948193e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_e7ae70e7",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tasks/FlagGamePulseTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T08:21:57Z",
+      "side": 1,
+      "message": "Please remove your debug statements",
+      "revId": "a60baa9db83d2a9e1fc3b42c2a86f87c3948193e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_07acbcec",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tasks/FlagGamePulseTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T08:21:57Z",
+      "side": 1,
+      "message": "Locker locker(game);",
+      "revId": "a60baa9db83d2a9e1fc3b42c2a86f87c3948193e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
