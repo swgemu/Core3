@@ -227,6 +227,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<TravelTerminal>(SceneObjectType::TRAVELTERMINAL);
 	objectFactory.registerObject<GuildTerminal>(SceneObjectType::GUILDTERMINAL);
 	objectFactory.registerObject<Jukebox>(SceneObjectType::JUKEBOX);
+	objectFactory.registerObject<FlagGame>(SceneObjectType::FLAGGAME);
 	objectFactory.registerObject<GamblingTerminal>(SceneObjectType::GAMBLINGTERMINAL);
 	objectFactory.registerObject<Terminal>(SceneObjectType::CLONING);
 

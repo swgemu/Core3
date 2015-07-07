@@ -76,7 +76,7 @@ eventPerkRebelVenueDeeds = {
 
 eventPerkGamesSuppliesDeeds = {
 	{ template = "object/tangible/terminal/terminal_jukebox.iff", cost = 25000, displayName = "@event_perk:pro_jukebox" },
-	--{ template = "game_flag_deed", cost = 25000, displayName = "@event_perk:pro_flag_game" },
+	{ template = "game_flag_deed", cost = 25000, displayName = "@event_perk:pro_flag_game" },
 	--{ template = "lottery_droid_deed", cost = 25000, displayName = "@event_perk:pro_lottery_droid_game" },
 	--{ template = "race_droid_deed", cost = 10000, displayName = "@event_perk:pro_race_droid_game" },
 	--{ template = "scavenger_droid_deed", cost = 25000, displayName = "@event_perk:pro_scavenger_droid_game" },
