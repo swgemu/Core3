@@ -279,17 +279,19 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 	end
 
 	-- ** ROOM FOURTEEN (BETWEEN SEVEN AND EIGHT) **
-	pCell = BuildingObject(pBuilding):getNamedCell("r14")
+	if (not self:isRoomComplete(pPlayer, "r14")) then
+		pCell = BuildingObject(pBuilding):getNamedCell("r14")
 
-	if (pCell ~= nil) then
-		cellID = SceneObject(pCell):getObjectID()
+		if (pCell ~= nil) then
+			cellID = SceneObject(pCell):getObjectID()
 
-		-- Destroyable debris blocking hallway
-		local pDebris = spawnSceneObject("tutorial", "object/tangible/newbie_tutorial/debris.iff", 77, -4, -109, cellID, 0, 0, 0, 0)
+			-- Destroyable debris blocking hallway
+			local pDebris = spawnSceneObject("tutorial", "object/tangible/newbie_tutorial/debris.iff", 77, -4, -109, cellID, 0, 0, 0, 0)
 
-		if (pDebris ~= nil) then
-			createObserver(OBJECTDESTRUCTION, "TutorialScreenPlay", "debrisDestroyed", pDebris)
-			TangibleObject(pDebris):setMaxCondition(100)
+			if (pDebris ~= nil) then
+				createObserver(OBJECTDESTRUCTION, "TutorialScreenPlay", "debrisDestroyed", pDebris)
+				TangibleObject(pDebris):setMaxCondition(100)
+			end
 		end
 	end
 
@@ -508,10 +510,8 @@ function TutorialScreenPlay:changedRoomEvent(pPlayer, pNewParent)
 			end
 		end
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:part_6")
-		self:markRoomComplete(pPlayer, "r14")
 		createEvent(500, "TutorialScreenPlay", "handleRoomEight", pPlayer)
 	elseif (self:isInRoom(pPlayer, "r9") and not self:isRoomComplete(pPlayer, "r9")) then
-		self:markRoomComplete(pPlayer, "r8")
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:part_7")
 		createEvent(500, "TutorialScreenPlay", "handleRoomNine", pPlayer)
 	elseif (self:isInRoom(pPlayer, "r10") and not self:isRoomComplete(pPlayer, "r10")) then
@@ -538,17 +538,16 @@ function TutorialScreenPlay:initializeHudElements(pPlayer)
 	CreatureObject(pPlayer):sendNewbieTutorialEnableHudElement("buttonbar", 1, 0)
 
 	if (self:isRoomComplete(pPlayer, "r1")) then
-		CreatureObject(pPlayer):sendNewbieTutorialEnableHudElement("chatbox", 1, 3)
+		CreatureObject(pPlayer):sendNewbieTutorialEnableHudElement("chatbox", 1, 0)
 	end
 
 	if (self:isRoomComplete(pPlayer, "r2")) then
-		CreatureObject(pPlayer):sendNewbieTutorialEnableHudElement("toolbar", 1, 3)
+		CreatureObject(pPlayer):sendNewbieTutorialEnableHudElement("toolbar", 1, 0)
 	end
 
 	if (self:isRoomComplete(pPlayer, "r6")) then
-		CreatureObject(pPlayer):sendNewbieTutorialEnableHudElement("radar", 1, 3)
+		CreatureObject(pPlayer):sendNewbieTutorialEnableHudElement("radar", 1, 0)
 	end
-
 end
 
 -- ROOM ONE
@@ -1497,6 +1496,12 @@ end
 
 -- Triggered when debris is destroyed, schedules event to remove debris from world
 function TutorialScreenPlay:debrisDestroyed(pDebris, pAttacker)
+	if (pAttacker == nil) then
+		return 1
+	end
+
+	self:markRoomComplete(pAttacker, "r14")
+
 	if (pDebris == nil) then
 		return 1
 	end
@@ -1607,7 +1612,6 @@ function TutorialScreenPlay:notifyEnteredPirateArea(pArea, pPlayer)
 	end
 
 	AiAgent(pPirate):addDefender(pPlayer)
-	createEvent(10000, "TutorialScreenPlay", "handlePirateGrenade", pPlayer)
 	return 1
 end
 
@@ -1617,6 +1621,7 @@ function TutorialScreenPlay:pirateDefenderAdded(pPirate, pPlayer)
 		return 1
 	end
 
+	createEvent(10000, "TutorialScreenPlay", "handlePirateGrenade", pPlayer)
 	spatialMoodChat(pPirate, "@newbie_tutorial/newbie_convo:pirate_attack", 4, 0)
 
 	return 1
@@ -1627,6 +1632,8 @@ function TutorialScreenPlay:pirateKilled(pPirate, pPlayer)
 	if (pPlayer == nil) then
 		return 1
 	end
+
+	self:markRoomComplete(pPlayer, "r8")
 
 	self:pirateCongrats(pPlayer)
 
@@ -1767,7 +1774,7 @@ function TutorialScreenPlay:finishedTrainerConvo(pOfficer, pPlayer)
 
 	CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:tut_50")
 	CreatureObject(pPlayer):playMusicMessage("sound/tut_50_skillbrowser.snd")
-	createEvent(20000, "TutorialScreenPlay", "handleRoomNine", pPlayer)
+	createEvent(25000, "TutorialScreenPlay", "handleRoomNine", pPlayer)
 	return 1
 end
 
@@ -1994,7 +2001,7 @@ function TutorialScreenPlay:isRoomComplete(pPlayer, roomName)
 		return false
 	end
 
-	return readScreenPlayData(pPlayer, "tutorial", roomName .. "Complete") == 1
+	return tonumber(readScreenPlayData(pPlayer, "tutorial", roomName .. "Complete")) == 1
 end
 
 -- Checks if player is in a room
