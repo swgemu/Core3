@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_e740b037",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/convohelpers/experience_converter.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T00:42:06Z",
+      "side": 0,
+      "message": "You can remove this ObjectManager call since you no longer use playerObject",
+      "revId": "0ea3e110e72d002340c6d87b23357ccaba845210",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_e73990d9",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObject.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 1756,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T00:42:06Z",
+      "side": 0,
+      "message": "In addition to removing the methods, you should also remove the vectors as they\u0027ll no longer be used.",
+      "revId": "0ea3e110e72d002340c6d87b23357ccaba845210",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

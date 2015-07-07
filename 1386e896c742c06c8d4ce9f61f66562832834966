@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_a73388f5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/convohelpers/experience_converter.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T00:42:06Z",
+      "side": 1,
+      "message": "Don\u0027t you need separate entries for crafting_clothing_general (Tailoring) and crafting_clothing_armor (Armor Crafting)? or do they have the same rate so it doesn\u0027t matter?",
+      "revId": "1386e896c742c06c8d4ce9f61f66562832834966",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_c73014eb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/convohelpers/experience_converter.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T00:42:06Z",
+      "side": 1,
+      "message": "Why you are changing the name of this? It\u0027s obviously a string and not a pointer to an object. You should only use pSomething naming convention when the var is a pointer.",
+      "revId": "1386e896c742c06c8d4ce9f61f66562832834966",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_27577804",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/convohelpers/experience_converter.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T00:42:06Z",
+      "side": 1,
+      "message": "Don\u0027t you need to use the same string.find check as in containsKey above?",
+      "revId": "1386e896c742c06c8d4ce9f61f66562832834966",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_475c0426",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/convohelpers/experience_converter.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T00:42:06Z",
+      "side": 1,
+      "message": "Your tables don\u0027t nest this deep, so how can this work? If you are trying to return the ratio, wouldn\u0027t you want to return table[i][2]?",
+      "revId": "1386e896c742c06c8d4ce9f61f66562832834966",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_073efcb8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T00:42:06Z",
+      "side": 1,
+      "message": "Don\u0027t rename that. It\u0027s not a pointer.",
+      "revId": "1386e896c742c06c8d4ce9f61f66562832834966",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_a74aa853",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T00:42:06Z",
+      "side": 1,
+      "message": "Just use CreatureObject(pCreature):getObjectID() instead of nesting within the ObjectManager call.",
+      "revId": "1386e896c742c06c8d4ce9f61f66562832834966",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_c747b44a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T00:42:06Z",
+      "side": 1,
+      "message": "Same here, just get and set in one line.",
+      "revId": "1386e896c742c06c8d4ce9f61f66562832834966",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_6774a09c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T00:42:06Z",
+      "side": 1,
+      "message": "Get and set in one line.",
+      "revId": "1386e896c742c06c8d4ce9f61f66562832834966",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_8779ac95",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T00:42:06Z",
+      "side": 1,
+      "message": "just use objId instead of calling getObjectID() again",
+      "revId": "1386e896c742c06c8d4ce9f61f66562832834966",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_276e98ca",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T00:42:06Z",
+      "side": 1,
+      "message": "objId",
+      "revId": "1386e896c742c06c8d4ce9f61f66562832834966",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_4773a4b1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T00:42:06Z",
+      "side": 1,
+      "message": "objId",
+      "revId": "1386e896c742c06c8d4ce9f61f66562832834966",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_e76750e9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-07T00:42:06Z",
+      "side": 1,
+      "message": "\u003e\u003d\n\nAlso, shouldn\u0027t you somehow handle if the transfer would put the player over the cap? ex: If they are at 499000 and are trying to gain another 5000 via the transfer, what happens? what should happen?",
+      "revId": "1386e896c742c06c8d4ce9f61f66562832834966",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
