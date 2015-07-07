@@ -29,7 +29,9 @@ cities = {
 	{ "tatooine", "Mos Espa", -2878, 2226, 435 },
 	{ "tatooine", "Mos Eisley", 3693, -4788, 688 },
 	{ "tatooine", "Mos Entha", 1344, 3149, 516 },
+	{ "tatooine", "Mos Taike", 3847, 2336, 150 },
 	{ "tatooine", "Anchorhead", 40, -5348, 330 },
+	{ "tatooine", "Wayfar", -5176, -6574, 165 },
 	{ "yavin4", "Yavin IV Mining Outpost", -312, 4865, 100 },
 	{ "yavin4", "Yavin IV Labor Outpost", -6925, -5707, 130 }
 }

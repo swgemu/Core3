@@ -564,7 +564,6 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 		float cityBonus = 1.f + player->getSkillMod("private_spec_missions") / 100.f;
 		mission->setRewardCredits(mission->getRewardCredits() * cityBonus);
 
-	//	randomizeHuntingMission(player, mission);
 		mission->setRefreshCounter(counter, true);
 	}
 
@@ -1051,7 +1050,7 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 	Locker missionSpawnLocker(&missionNpcSpawnMap);
 
 	//Find a spawn point in current city.
-	float minDistance = 0.0f;
+	float minDistance = 10.0f;
 	float maxDistance = 300.0f;
 	Reference<NpcSpawnPoint*> startNpc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetName.hashCode(), startPosition, getDeliverMissionSpawnType(faction), minDistance, maxDistance);
 
@@ -1068,7 +1067,7 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 
 	}
 	//Search in all parts of the city for the end spawn.
-	minDistance = 5.0f;
+	minDistance = 15.0f;
 	maxDistance = 1500.0f;
 
 	Reference<NpcSpawnPoint*> endNpc;
@@ -1102,8 +1101,8 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 
 	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(STRING_HASHCODE("object/tangible/mission/mission_datadisk.iff")));
 
-	int baseCredits = 50;
-	int deliverDistanceCredits = startNpc->getPosition()->distanceTo(*(endNpc->getPosition())) / 10;
+	int baseCredits = 40;
+	int deliverDistanceCredits = (playerPosition.distanceTo(*(startNpc->getPosition())) + startNpc->getPosition()->distanceTo(*(endNpc->getPosition()))) / 10;
 
 	mission->setRewardCredits(baseCredits + deliverDistanceCredits);
 
@@ -1611,7 +1610,7 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 		CreatureManager* creatureManager = zone->getCreatureManager();
 		Vector<ManagedReference<SpawnArea* > >* worldAreas = creatureManager->getWorldSpawnAreas();
 
-		ManagedReference<SpawnArea*> spawnArea;
+		ManagedReference<SpawnArea*> spawnArea = NULL;
 
 		if (worldAreas == NULL || worldAreas->size() == 0) {
 			return NULL;
