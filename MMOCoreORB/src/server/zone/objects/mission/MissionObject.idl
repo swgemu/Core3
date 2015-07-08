@@ -110,6 +110,8 @@ class MissionObject extends IntangibleObject {
 
 		startPositionX = 0;
 		startPositionY = 0;
+		endPositionX = 0;
+		endPositionY = 0;
 
 		missionTarget = null;
 		missionTargetDest = null;
@@ -117,6 +119,9 @@ class MissionObject extends IntangibleObject {
 		targetObjectId = 0;
 
 		faction = FACTIONNEUTRAL;
+
+		missionNumber = 0;
+		missionLevel = 0;
 
 		Logger.setLoggingName("MissionObject");
 	}
@@ -193,11 +198,6 @@ class MissionObject extends IntangibleObject {
 	}
 
 	@preLocked
-	public void setStartPlanet(final string planet) {
-		startPlanet = planet;
-	}
-
-	@preLocked
 	public void setRewardFactionPointsRebel(int points) {
 		rewardFactionPointsRebel = points;
 	}
@@ -205,11 +205,6 @@ class MissionObject extends IntangibleObject {
 	@preLocked
 	public void setRewardFactionPointsImperial(int points) {
 		rewardFactionPointsImperial = points;
-	}
-
-	@preLocked
-	public void setEndPlanet(string planetName) {
-		endPlanet = planetName;
 	}
 
 	@local
