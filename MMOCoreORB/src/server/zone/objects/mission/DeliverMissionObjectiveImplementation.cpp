@@ -106,7 +106,7 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 
 	//Target NPC
 	//Find a free spawn point.
-	targetSpawnPoint = missionManager->getRandomFreeNpcSpawnPoint(mission->getStartPlanetCRC(), mission->getStartPositionX(), mission->getStartPositionY(), spawnType);
+	targetSpawnPoint = missionManager->getFreeNpcSpawnPoint(mission->getStartPlanetCRC(), mission->getStartPositionX(), mission->getStartPositionY(), spawnType);
 	if (targetSpawnPoint == NULL) {
 		return false;
 	}
@@ -120,7 +120,7 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 	int retries = 10;
 	destinationSpawnPoint = NULL;
 	while (retries > 0 && (destinationSpawnPoint == NULL || destinationSpawnPoint == targetSpawnPoint)) {
-		destinationSpawnPoint = missionManager->getRandomFreeNpcSpawnPoint(mission->getEndPlanet().hashCode(), mission->getEndPositionX(), mission->getEndPositionY(), spawnType);
+		destinationSpawnPoint = missionManager->getFreeNpcSpawnPoint(mission->getEndPlanet().hashCode(), mission->getEndPositionX(), mission->getEndPositionY(), spawnType);
 		retries--;
 	}
 	if (destinationSpawnPoint == NULL || destinationSpawnPoint == targetSpawnPoint) {

@@ -38,13 +38,13 @@ public:
 		insertInt(0);
 
 		//Difficulty
-		insertInt(mi->getDifficultyLevel());
+		insertInt(mi->getDifficultyDisplay());
 
-		insertFloat(mi->getStartPositionX());//insertFloat(mi->getTargetX()); //x
+		insertFloat(mi->getEndPositionX()); //x
 		insertFloat(0); //z
-		insertFloat(mi->getStartPositionY());//insertFloat(mi->getTargetY()); //y
-		insertLong(0); //Start obj id
-		insertInt(mi->getStartPlanet().hashCode());//
+		insertFloat(mi->getEndPositionY()); //y
+		insertLong(0); //obj id
+		insertInt(mi->getEndPlanet().hashCode());//planet crc
 
 		//Creator Name
 		insertUnicode(mi->getCreatorName());
@@ -53,11 +53,11 @@ public:
 		insertInt(mi->getRewardCredits());
 
 		//Dest Location
-		insertFloat(mi->getEndPositionX());//insertFloat(mi->getTargetX()); //x
+		insertFloat(mi->getStartPositionX()); //x
 		insertFloat(0); //z
-		insertFloat(mi->getEndPositionY());//insertFloat(mi->getTargetY()); //y
+		insertFloat(mi->getStartPositionY()); //y
 		insertLong(0); //Start obj id
-		insertInt(mi->getEndPlanet().hashCode());//insertInt(mi->getDestPlanetCrc()); //Start Planet Crc
+		insertInt(mi->getStartPlanet().hashCode()); //Start Planet Crc
 
 		//Target Object IFF crc
 		SharedObjectTemplate* templateObject = mi->getTargetTemplate();

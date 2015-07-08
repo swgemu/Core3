@@ -667,8 +667,6 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 		return;
 	}
 
-	//mission->setMissionTarget(lairObjectTemplate->getObjectName());
-	mission->setStartPlanet(player->getZone()->getZoneName());
 	mission->setStartPosition(startPos.getX(), startPos.getY(), player->getZone()->getZoneName());
 	mission->setCreatorName(nm->makeCreatureName());
 
@@ -841,7 +839,6 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 		}
 	}
 
-	mission->setStartPlanet(playerZone->getZoneName());
 	mission->setStartPosition(player->getPositionX(), player->getPositionY(), playerZone->getZoneName());
 
 	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(STRING_HASHCODE("object/tangible/mission/mission_bounty_target.iff")));
@@ -1095,7 +1092,6 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 	mission->setMissionTargetName(TemplateManager::instance()->getTemplate(STRING_HASHCODE("object/tangible/mission/mission_datadisk.iff"))->getObjectName());
 
 	String planet = zone->getZoneName();
-	mission->setStartPlanet(planet);
 	mission->setStartPosition(startNpc->getPosition()->getX(), startNpc->getPosition()->getY(), planet, true);
 	mission->setEndPosition(endNpc->getPosition()->getX(), endNpc->getPosition()->getY(), planet);
 
@@ -1131,21 +1127,28 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 	return true;
 }
 
-NpcSpawnPoint* MissionManagerImplementation::getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType) {
+NpcSpawnPoint* MissionManagerImplementation::getFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType) {
+	Locker missionSpawnLocker(&missionNpcSpawnMap);
+
+	Vector3 pos(x, y, 0);
+
+	//First try for an exact match
+	Reference<NpcSpawnPoint* > npc = missionNpcSpawnMap.findSpawnAt(planetCRC, &pos);
+
+	if (npc != NULL && npc->getInUse() == 0) {
+		return npc;
+	}
+
+	//Next try to find a free NPC spawn point in a circle with a radius of max.
 	float min = 0.0f;
 	float max = 50.0f;
 
-	Locker missionSpawnLocker(&missionNpcSpawnMap);
-
-	//Try to find a free NPC spawn point in a circle with a radius of max.
-	Vector3 pos(x, y, 0);
-
 	while (max <= 1600.0f) {
-		Reference<NpcSpawnPoint* > npc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetCRC, &pos, spawnType, min, max);
-		if (npc != NULL) {
+		npc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetCRC, &pos, spawnType, min, max);
+		if (npc != NULL && npc->getInUse() == 0) {
 			return npc;
 		} else {
-			//No NPC spawn point found, double the search area radius.
+			//No free NPC spawn point found, double the search area radius.
 			max *= 2;
 		}
 	}
@@ -1235,7 +1238,6 @@ void MissionManagerImplementation::randomizeGenericEntertainerMission(CreatureOb
 	mission->setMissionNumber(randTexts);
 	mission->setCreatorName(nm->makeCreatureName());
 
-	mission->setStartPlanet(zone->getZoneName());
 	mission->setStartPosition(target->getPositionX(), target->getPositionY(), zone->getZoneName());
 
 	if (missionType == MissionObject::DANCER) {
@@ -1349,7 +1351,6 @@ void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject
 	mission->setMissionNumber(randTexts);
 	mission->setCreatorName(creatorName);
 
-	mission->setStartPlanet(playerZone->getZoneName());
 	mission->setStartPosition(player->getPositionX(), player->getPositionY(), playerZone->getZoneName());
 
 	mission->setMissionTargetName(creatureTemplate->getObjectName());
@@ -1417,7 +1418,6 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 	mission->setMissionTargetName(TemplateManager::instance()->getTemplate(STRING_HASHCODE("object/tangible/mission/mission_recon_target.iff"))->getObjectName());
 	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(STRING_HASHCODE("object/tangible/mission/mission_recon_target.iff")));
 
-	mission->setStartPlanet(playerZone->getZoneName());
 	mission->setStartPosition(position.getX(), position.getY(), playerZone->getZoneName());
 
 	int reward = position.distanceTo(player->getWorldPosition()) / 5;
