@@ -43,6 +43,9 @@
 
 ForceCurePoisonCommand = {
         name = "forcecurepoison",
+	healDisease = 450,
+	range = 32,
+	forceCost = 75
 }
 
 AddCommand(ForceCurePoisonCommand)
