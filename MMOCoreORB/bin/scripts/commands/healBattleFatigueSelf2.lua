@@ -43,6 +43,10 @@
 
 HealBattleFatigueSelf2Command = {
         name = "healbattlefatigueself2",
+	forceCost = 150,
+	healWoundAmount= 300,
+	healWoundAttributes = BATTLEFATIGUE_ATTRIBUTE,
+	speed = 4
 }
 
 AddCommand(HealBattleFatigueSelf2Command)
