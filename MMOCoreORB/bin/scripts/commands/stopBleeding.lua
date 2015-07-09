@@ -43,6 +43,10 @@
 
 StopBleedingCommand = {
         name = "stopbleeding",
+	range = 32,
+	healBleeding = 30,
+	forceCost = 75,
+	forceCostDivisor = 0
 }
 
 AddCommand(StopBleedingCommand)

@@ -473,6 +473,10 @@ void CommandConfigManager::registerGlobals() {
 	// attack types
 	setGlobalInt("WEAPONATTACK", CombatManager::WEAPONATTACK);
 	setGlobalInt("FORCEATTACK", CombatManager::FORCEATTACK);
+
+	// force heal targets
+	setGlobalInt("FORCE_HEAL_TARGET_SELF", ForceHealQueueCommand::TARGET_SELF);
+	setGlobalInt("FORCE_HEAL_TARGET_OTHER", ForceHealQueueCommand::TARGET_OTHER);
 }
 
 int CommandConfigManager::runSlashCommandsFile(lua_State* L) {
@@ -626,14 +630,6 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			Logger::console.error("unknown variable " + varName + " in combat queue command " + slashCommand->getQueueCommandName());
 			command.pop();
 		}
-	} else if (slashCommand->isForceHealCommand()) {
-		ForceHealQueueCommand* healCommand = cast<ForceHealQueueCommand*>(slashCommand);
-		if (varName == "forceCost")
-			healCommand->setForceCost(Lua::getIntParameter(L));
-		else {
-			Logger::console.error("unknown variable " + varName + " in force healing command " + slashCommand->getQueueCommandName());
-			command.pop();
-		}
 	} else if (slashCommand->isJediQueueCommand()) {
 		JediQueueCommand* jediCommand = cast<JediQueueCommand*>(slashCommand);
 		if (varName == "forceCost")
@@ -646,7 +642,41 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			jediCommand->setClientEffect(Lua::getStringParameter(L));
 		else if (varName == "speedMod")
 			jediCommand->setSpeedMod(Lua::getFloatParameter(L));
-		else {
+		else if (jediCommand->isForceHealCommand()) {
+			ForceHealQueueCommand* healCommand = cast<ForceHealQueueCommand*>(jediCommand);
+			if (varName == "healAmount")
+				healCommand->setHealAmount(Lua::getIntParameter(L));
+			else if (varName == "healWoundAmount") 
+				healCommand->setHealWoundAmount(Lua::getIntParameter(L));
+			else if (varName == "healAttributes")
+				healCommand->setHealAttributes(Lua::getUnsignedIntParameter(L));
+			else if (varName == "healWoundAttributes")
+				healCommand->setHealWoundAttributes(Lua::getUnsignedIntParameter(L));
+			else if (varName == "forceCostDivisor")
+				healCommand->setForceCostDivisor(Lua::getFloatParameter(L));
+			else if (varName == "range")
+				healCommand->setRange(Lua::getIntParameter(L));
+			else if (varName == "healBleeding")
+				healCommand->setHealBleeding(Lua::getUnsignedIntParameter(L));
+			else if (varName == "healFire")
+				healCommand->setHealFire(Lua::getUnsignedIntParameter(L));
+			else if (varName == "healDisease")
+				healCommand->setHealDisease(Lua::getUnsignedIntParameter(L));
+			else if (varName == "healPoison")
+				healCommand->setHealPoison(Lua::getUnsignedIntParameter(L));
+			else if (varName == "healBattleFatigue")
+				healCommand->setHealBattleFatigue(Lua::getUnsignedIntParameter(L));
+			else if (varName == "healStates")
+				healCommand->setHealStates(Lua::getUnsignedIntParameter(L));
+			else if (varName == "speed")
+				healCommand->setSpeed(Lua::getUnsignedIntParameter(L));
+			else if (varName == "allowedTarget")
+				healCommand->setAllowedTarget(Lua::getUnsignedIntParameter(L));
+			else {
+				Logger::console.error("unknown variable " + varName + " in force healing command " + slashCommand->getQueueCommandName());
+				command.pop();
+			}
+		} else {
 			Logger::console.error("unknown variable " + varName + " in jedi queue command " + slashCommand->getQueueCommandName());
 			command.pop();
 		}
