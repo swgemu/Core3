@@ -74,6 +74,7 @@ void FlagGameImplementation::removeCurFlag() {
 	ManagedReference<TangibleObject*> flag = curFlag.get();
 
 	if (flag != NULL) {
+		Locker locker(flag);
 		flag->destroyObjectFromWorld(true);
 		flag->destroyObjectFromDatabase();
 	}
