@@ -44,6 +44,10 @@
 HealActionSelf2Command = {
         name = "healactionself2",
 	forceCost = 100,
+	healAmount = 1500,
+	forceCostDivisor = 15.0,
+	healAttributes = ACTION_ATTRIBUTE,
+	range = 0
 }
 
 AddCommand(HealActionSelf2Command)
