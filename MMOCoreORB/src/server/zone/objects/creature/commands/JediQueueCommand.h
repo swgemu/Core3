@@ -75,6 +75,18 @@ public:
 		return SUCCESS;
 	}
 
+	int doJediForceCostCheck(CreatureObject* creature) const {
+		//Check for Force Cost..
+		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+
+		if (playerObject && playerObject->getForcePower() < forceCost) {
+			creature->sendSystemMessage("@jedi_spam:no_force_power"); //"You do not have enough Force Power to peform that action.
+			return GENERALERROR;
+		}
+
+		return SUCCESS;
+	}
+
 	int doCommonJediSelfChecks(CreatureObject* creature) const {
 		int res = doCommonMedicalCommandChecks(creature);
 
@@ -84,13 +96,9 @@ public:
 		if (isWearingArmor(creature))
 			return NOJEDIARMOR;
 
-		//Check for Force Cost..
-		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-
-		if (playerObject && playerObject->getForcePower() <= forceCost) {
-			creature->sendSystemMessage("@jedi_spam:no_force_power"); //"You do not have enough Force Power to peform that action.
-			return GENERALERROR;
-		}
+		res = doJediForceCostCheck(creature);
+		if (res != SUCCESS)
+			return res;
 
 		return SUCCESS;
 	}
