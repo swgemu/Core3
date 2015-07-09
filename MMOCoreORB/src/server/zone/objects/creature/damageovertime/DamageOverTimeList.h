@@ -49,6 +49,7 @@ public:
 	void sendDecreaseMessage(CreatureObject* victim, uint64 type);
 
 	int getStrength(uint8 pool, uint64 dotType);
+	int getStrength(uint64 dotType);
 
 	uint64 generateKey(uint64 dotType, uint8 pool, uint64 parentObjectID)
 	{
