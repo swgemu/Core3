@@ -5,27 +5,15 @@
 #ifndef HEALBATTLEFATIGUEOTHER2COMMAND_H_
 #define HEALBATTLEFATIGUEOTHER2COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
+#include "ForceHealQueueCommand.h"
 
-class HealBattleFatigueOther2Command : public QueueCommand {
+class HealBattleFatigueOther2Command : public ForceHealQueueCommand {
 public:
 
 	HealBattleFatigueOther2Command(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: ForceHealQueueCommand(name, server) {
 
 	}
-
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
-
-		return SUCCESS;
-	}
-
 };
 
 #endif //HEALBATTLEFATIGUEOTHER2COMMAND_H_

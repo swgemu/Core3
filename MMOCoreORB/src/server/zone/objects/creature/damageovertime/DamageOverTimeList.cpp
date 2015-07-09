@@ -90,7 +90,7 @@ int DamageOverTimeList::getStrength(uint8 pool, uint64 dotType) {
 		for(int j = 0; j < vector->size(); j++)
 		{
 			DamageOverTime* currentDot = &vector->elementAt(j);
-			if(currentDot->getType() == dotType && (currentDot->getAttribute() == pool))
+			if(currentDot->getType() == dotType && (currentDot->getAttribute() == pool || pool == 0xFF))
 			{
 				if (!currentDot->isPast()) {
 					strength+=currentDot->getStrength();
