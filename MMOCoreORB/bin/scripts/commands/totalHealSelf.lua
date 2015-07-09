@@ -43,6 +43,21 @@
 
 TotalHealSelfCommand = {
         name = "totalhealself",
+	healStates = STUNNED_STATE + DIZZY_STATE + BLINDED_STATE + INTIMIDATED_STATE,
+	healDisease = 600,
+	healPoison = 600,
+	healBleeding = 600,
+	healFire = 600,
+	forceCost = 325,
+	healAmount = 6000,
+	healAttributes = HEALTH_ATTRIBUTE + MIND_ATTRIBUTE + ACTION_ATTRIBUTE,
+	healWoundAttributes = HEALTH_ATTRIBUTE + MIND_ATTRIBUTE + ACTION_ATTRIBUTE,
+	healBattleFatigue = 600,
+	healWoundAmount = 6000,
+	forceCostDivisor = 20,
+	range = 0,
+	speed = 4
+
 }
 
 AddCommand(TotalHealSelfCommand)
