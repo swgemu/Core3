@@ -716,6 +716,13 @@ void CityManagerImplementation::assessCitizens(CityRegion* city) {
 void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 	info("Processing city update: " + city->getRegionName(), true);
 
+	ManagedReference<StructureObject*> ch = city->getCityHall();
+
+	if (ch == NULL) {
+		destroyCity(city);
+		return;
+	}
+
 	int cityRank = 0;
 	float radius = 0;
 
