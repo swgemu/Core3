@@ -44,6 +44,10 @@
 HealMindSelf2Command = {
         name = "healmindself2",
 	forceCost = 100,
+	healAmount = 1500,
+	forceCostDivisor = 14.0,
+	healAttributes = MIND_ATTRIBUTE,
+	range = 0
 }
 
 AddCommand(HealMindSelf2Command)

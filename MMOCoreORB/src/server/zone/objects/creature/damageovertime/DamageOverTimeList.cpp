@@ -101,6 +101,30 @@ int DamageOverTimeList::getStrength(uint8 pool, uint64 dotType) {
 	return strength;
 }
 
+int DamageOverTimeList::getStrength(uint64 dotType) {
+	Locker locker(&guard);
+
+	Vector<DamageOverTime>* vector;
+	int strength = 0;
+
+	for(int i = 0; i < size(); i++)
+	{
+		vector = &elementAt(i).getValue();
+		for(int j = 0; j < vector->size(); j++)
+		{
+			DamageOverTime* currentDot = &vector->elementAt(j);
+			if(currentDot->getType() == dotType)
+			{
+				if (!currentDot->isPast()) {
+					strength+=currentDot->getStrength();
+				}
+			}
+		}
+	}
+	return strength;
+
+}
+
 uint32 DamageOverTimeList::addDot(CreatureObject* victim, CreatureObject* attacker, uint64 objectID, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense, int secondaryStrength) {
 	Locker locker(&guard);
 
