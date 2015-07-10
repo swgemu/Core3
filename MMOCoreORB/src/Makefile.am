@@ -531,6 +531,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/planet/MapLocationTable.cpp \
 		server/zone/managers/planet/MapLocationEntry.cpp \
 		server/zone/managers/player/PlayerManagerImplementation.cpp \
+		server/zone/managers/badge/BadgeManager.cpp \
+		server/zone/managers/badge/BadgeList.cpp \
 		server/zone/managers/collision/PathFinderManager.cpp \
 		server/zone/managers/collision/CollisionManager.cpp \
 		server/zone/managers/guild/GuildManagerImplementation.cpp \

@@ -81,6 +81,7 @@
 #include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
+#include "server/zone/packets/player/PlayMusicMessage.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage6.h"
 #include "server/zone/packets/object/StartingLocationListMessage.h"
 
@@ -124,6 +125,8 @@
 #include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/tangible/components/droid/DroidPlaybackModuleDataComponent.h"
 
+#include "server/zone/objects/player/badges/Badge.h"
+
 #include <iostream>
 
 int PlayerManagerImplementation::MAX_CHAR_ONLINE_COUNT = 2;
@@ -140,7 +143,6 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 
 	loadLuaConfig();
 	loadStartingLocations();
-	loadBadgeMap();
 	loadPermissionLevels();
 
 	setGlobalLogging(true);
@@ -258,39 +260,6 @@ void PlayerManagerImplementation::loadStartingLocations() {
 	delete iffStream;
 
 	info("Loaded " + String::valueOf(startingLocationList.getTotalLocations()) + " starting locations.", true);
-}
-
-void PlayerManagerImplementation::loadBadgeMap() {
-	info("Loading badges.");
-
-	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/badge/badge_map.iff");
-
-	if (iffStream == NULL) {
-		info("Couldn't load badge map.", true);
-		return;
-	}
-
-	DataTableIff dtiff;
-	dtiff.readObject(iffStream);
-
-	highestBadgeIndex = 0;
-
-	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
-		int idx = 0;
-		String key;
-
-		DataTableRow* row = dtiff.getRow(i);
-		row->getCell(0)->getValue(idx);
-		row->getCell(1)->getValue(key);
-		badgeMap.put(idx, key);
-
-		if (idx > highestBadgeIndex)
-			highestBadgeIndex = idx;
-	}
-
-	info("Loaded " + String::valueOf(badgeMap.size()) + " badges.", true);
-
-	delete iffStream;
 }
 
 void PlayerManagerImplementation::loadPermissionLevels() {
@@ -1332,70 +1301,83 @@ void PlayerManagerImplementation::removeEncumbrancies(CreatureObject* player, Ar
 	player->healDamage(player, CreatureAttribute::WILLPOWER, mindEncumb, true);
 }
 
+void PlayerManagerImplementation::awardBadge(PlayerObject* ghost, uint32 badgeId) {
+	const Badge* badge = BadgeManager::instance()->get(badgeId);
+	if (badge != NULL)
+		awardBadge(ghost, badge);
+}
 
-void PlayerManagerImplementation::awardBadge(PlayerObject* ghost, uint32 badge) {
-	if (!Badge::exists(badge))
+void PlayerManagerImplementation::awardBadge(PlayerObject* ghost, const Badge* badge) {
+	if (badge == NULL) {
+		ghost->error("Failed to award null badge.");	
 		return;
+	}
 
 	StringIdChatParameter stringId("badge_n", "");
-	stringId.setTO("badge_n", Badge::getName(badge));
+	stringId.setTO("badge_n", badge->getKey());
 
 	ManagedReference<CreatureObject*> player = dynamic_cast<CreatureObject*>(ghost->getParent().get().get());
-
-	if (ghost->hasBadge(badge)) {
+	const unsigned int badgeId = badge->getIndex();
+	if (ghost->hasBadge(badgeId)) {
 		stringId.setStringId("badge_n", "prose_hasbadge");
 		player->sendSystemMessage(stringId);
 		return;
 	}
 
-	ghost->setBadge(badge);
+	ghost->setBadge(badgeId);
 	stringId.setStringId("badge_n", "prose_grant");
 	player->sendSystemMessage(stringId);
+	
+	if (badge->getHasMusic()) {
+		String music = badge->getMusic();
+		PlayMusicMessage* musicMessage = new PlayMusicMessage(music);
+		player->sendMessage(musicMessage);
+	}
 
-	player->notifyObservers(ObserverEventType::BADGEAWARDED, player, badge);
-
+	player->notifyObservers(ObserverEventType::BADGEAWARDED, player, badgeId);
+	BadgeManager* badgeManager = BadgeManager::instance();
 	switch (ghost->getNumBadges()) {
 	case 5:
-		awardBadge(ghost, Badge::COUNT_5);
+		awardBadge(ghost, badgeManager->get("count_5"));
 		break;
 	case 10:
-		awardBadge(ghost, Badge::COUNT_10);
+		awardBadge(ghost, badgeManager->get("count_10"));
 		break;
 	case 25:
-		awardBadge(ghost, Badge::COUNT_25);
+		awardBadge(ghost, badgeManager->get("count_25"));
 		break;
 	case 50:
-		awardBadge(ghost, Badge::COUNT_50);
+		awardBadge(ghost, badgeManager->get("count_50"));
 		break;
 	case 75:
-		awardBadge(ghost, Badge::COUNT_75);
+		awardBadge(ghost, badgeManager->get("count_75"));
 		break;
 	case 100:
-		awardBadge(ghost, Badge::COUNT_100);
+		awardBadge(ghost, badgeManager->get("count_100"));
 		break;
 	case 125:
-		awardBadge(ghost, Badge::COUNT_125);
+		awardBadge(ghost, badgeManager->get("count_125"));
 		break;
 	default:
 		break;
 	}
 
-	if (Badge::getType(badge) == Badge::EXPLORATION) {
-		switch (ghost->getBadgeTypeCount(Badge::EXPLORATION)) {
+	if (badge->getType() == Badge::EXPLORATION) {
+		switch (ghost->getBadgeTypeCount(static_cast<uint8>(Badge::EXPLORATION))) {
 		case 10:
-			awardBadge(ghost, Badge::BDG_EXP_10_BADGES);
+			awardBadge(ghost, badgeManager->get("bdg_exp_10_badges"));
 			break;
 		case 20:
-			awardBadge(ghost, Badge::BDG_EXP_20_BADGES);
+			awardBadge(ghost, badgeManager->get("bdg_exp_20_badges"));
 			break;
 		case 30:
-			awardBadge(ghost, Badge::BDG_EXP_30_BADGES);
+			awardBadge(ghost, badgeManager->get("bdg_exp_30_badges"));
 			break;
 		case 40:
-			awardBadge(ghost, Badge::BDG_EXP_40_BADGES);
+			awardBadge(ghost, badgeManager->get("bdg_exp_40_badges"));
 			break;
 		case 45:
-			awardBadge(ghost, Badge::BDG_EXP_45_BADGES);
+			awardBadge(ghost, badgeManager->get("bdg_exp_45_badges"));
 			break;
 		default:
 			break;
@@ -3047,12 +3029,6 @@ int PlayerManagerImplementation::calculatePlayerLevel(CreatureObject* player, St
 	int level = MIN(25, player->getSkillMod("private_" + weaponType + "_combat_difficulty") / 100 + 1);
 
 	return level;
-}
-
-String PlayerManagerImplementation::getBadgeKey(int idx) {
-	VectorMapEntry<int, String> entry = badgeMap.elementAt(idx);
-
-	return entry.getValue();
 }
 
 CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureObject* player, int type) {
