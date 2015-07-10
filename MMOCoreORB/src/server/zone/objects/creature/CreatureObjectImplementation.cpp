@@ -511,6 +511,12 @@ void CreatureObjectImplementation::setLevel(int level, bool randomHam) {
 	msg->close();
 
 	broadcastMessage(msg, true);
+
+	if (isGrouped()) {
+		Locker clocker(group, asCreatureObject());
+
+		group->calcGroupLevel();
+	}
 }
 
 void CreatureObjectImplementation::setInstrumentID(int instrumentid,

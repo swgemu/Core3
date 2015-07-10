@@ -558,7 +558,7 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 		}
 
 		if (missionTerminal->isSlicer(player)) {
-			mission->setRewardCredits(mission->getRewardCredits() * 2);
+			mission->setRewardCredits(mission->getRewardCredits() * 1.5);
 		}
 
 		float cityBonus = 1.f + player->getSkillMod("private_spec_missions") / 100.f;
@@ -606,7 +606,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	if (difficulty == 5)
 		difficulty = 4;
 
-	int diffDisplay = difficultyLevel + playerLevel + 7;
+	int diffDisplay = difficultyLevel + 7;
 	if (player->isGrouped())
 		diffDisplay += player->getGroup()->getGroupLevel();
 	else
@@ -673,7 +673,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	mission->setMissionTargetName("@lair_n:" + lairTemplateObject->getName());
 	mission->setTargetTemplate(templateObject);
 	mission->setTargetOptionalTemplate(lairTemplate);
-	mission->setRewardCredits(System::random(difficultyLevel * 100) + (difficultyLevel * (player->isGrouped() ? 275 : 200)));
+	mission->setRewardCredits(System::random(diffDisplay * 15) + (difficultyLevel * 375));
 	mission->setMissionDifficulty(difficultyLevel, diffDisplay, difficulty);
 	mission->setSize(randomLairSpawn->getSize());
 	mission->setFaction(faction);

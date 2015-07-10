@@ -407,19 +407,28 @@ float GroupObjectImplementation::getGroupHarvestModifier(CreatureObject* player)
 }
 
 void GroupObjectImplementation::calcGroupLevel() {
+	int highestPlayer = 0;
 	groupLevel = 0;
 
 	for (int i = 0; i < getGroupSize(); i++) {
 		SceneObject* member = getGroupMember(i);
 
-		if (member->isCreatureObject()) {
+		if (member->isPet()) {
 			CreatureObject* creature = cast<CreatureObject*>(member);
 
-			int currentlevel = groupLevel - getGroupSize();
-			int memberlevel = creature->getLevel();
+			groupLevel += creature->getLevel() / 5;
 
-			if (memberlevel > currentlevel)
-				groupLevel = memberlevel + getGroupSize();
+		} else if (member->isPlayerCreature()) {
+			CreatureObject* creature = cast<CreatureObject*>(member);
+
+			int memberLevel = creature->getLevel();
+
+			if (memberLevel > highestPlayer) {
+				groupLevel += (memberLevel - highestPlayer + (highestPlayer / 5));
+				highestPlayer = memberLevel;
+			} else {
+				groupLevel += memberLevel / 5;
+			}
 		}
 	}
 
