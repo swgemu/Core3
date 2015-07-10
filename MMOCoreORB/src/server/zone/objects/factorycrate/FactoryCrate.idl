@@ -101,7 +101,7 @@ class FactoryCrate extends TangibleObject {
 	@dirty
 	public native string getSerialNumber();
 
-	public native boolean extractObjectToParent();
+	public native boolean extractObjectToInventory(CreatureObject player);
 
 	@reference
 	public native TangibleObject extractObject(int count = 1);
