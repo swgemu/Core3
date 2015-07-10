@@ -16,7 +16,7 @@ global_hard = {
 			minDifficulty = 261,
 			maxDifficulty = 270,
 			numberToSpawn = 0,
-			weighting = 2,
+			weighting = 1,
 			size = 20
 		},
 		{
@@ -25,7 +25,7 @@ global_hard = {
 			minDifficulty = 261,
 			maxDifficulty = 270,
 			numberToSpawn = 0,
-			weighting = 2,
+			weighting = 1,
 			size = 25
 		},
 		{

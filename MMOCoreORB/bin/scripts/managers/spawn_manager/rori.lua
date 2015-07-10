@@ -182,7 +182,7 @@ rori_regions = {
 	{"western_mountains_3",0,0,{1,0},UNDEFINEDAREA},
 	{"western_mountains_4",0,0,{1,0},UNDEFINEDAREA},
 	{"western_peak",0,0,{1,0},UNDEFINEDAREA},
-	{"world_spawner",0,0,{1,-1},SPAWNAREA + WORLDSPAWNAREA,{"rori_world"},2048},
+	{"world_spawner",0,0,{1,-1},SPAWNAREA + WORLDSPAWNAREA,{"rori_world","global"},2048},
         {"wrecked_outpost",5085,4674,{1,50},NOSPAWNAREA + NOBUILDZONEAREA},
 }
 

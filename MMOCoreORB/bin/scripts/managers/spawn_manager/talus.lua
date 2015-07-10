@@ -237,7 +237,7 @@ talus_regions = {
         {"weapons_depot",-4935,-3112,{1,150},NOSPAWNAREA + NOBUILDZONEAREA},
 	{"western_mountains",0,0,{1,0},UNDEFINEDAREA},
 	{"western_plains",0,0,{1,0},UNDEFINEDAREA},
-	{"world_spawner",0,0,{1,-1},SPAWNAREA + WORLDSPAWNAREA,{"talus_world"},2048},
+	{"world_spawner",0,0,{1,-1},SPAWNAREA + WORLDSPAWNAREA,{"talus_world","global"},2048},
 	{"yitsarin_river_canyon_1",0,0,{1,0},UNDEFINEDAREA},
 	{"yitsarin_river_canyon_2",0,0,{1,0},UNDEFINEDAREA},
 	{"yitsarin_river_canyon_3",0,0,{1,0},UNDEFINEDAREA},
