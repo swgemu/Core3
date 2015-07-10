@@ -75,7 +75,7 @@ int DroidMerchantModuleDataComponent::handleObjectMenuSelect(CreatureObject* pla
 		ghost->addWaypoint(tway,true,true);
 		player->sendSystemMessage("@pet/droid_modules:waypoint_sent");
 	}
-	else if (selectedID == BARKER_RECORD_MESSAGE) {
+	else if (selectedID == BARKER_RECORD_MESSAGE && getDroidObject()->getLinkedCreature().get() == player) {
 		// record the emssage
 		if(waitingOnMessage == false) {
 			player->sendSystemMessage("@pet/droid_modules:recording_message_on");
@@ -85,7 +85,7 @@ int DroidMerchantModuleDataComponent::handleObjectMenuSelect(CreatureObject* pla
 			waitingOnMessage = false;
 		}
 	}
-	else if( selectedID == BARKER_TOGGLE ){
+	else if( selectedID == BARKER_TOGGLE && getDroidObject()->getLinkedCreature().get() == player){
 		// handle toggle
 		if(active) {
 			player->sendSystemMessage("@pet/droid_modules:barking_off");
@@ -121,7 +121,7 @@ int DroidMerchantModuleDataComponent::handleObjectMenuSelect(CreatureObject* pla
 			active = true;
 		}
 	}
-	else if (selectedID == BARKER_STORE_WAYPOINT) {
+	else if (selectedID == BARKER_STORE_WAYPOINT && getDroidObject()->getLinkedCreature().get() == player) {
 		// Handle the waypoint input
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 		int waypointsSize = ghost->getWaypointListSize();
