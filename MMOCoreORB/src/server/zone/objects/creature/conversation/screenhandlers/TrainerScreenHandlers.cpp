@@ -87,14 +87,6 @@ ConversationScreen* TrainerTrainableSkillsScreenHandler::handleScreen(CreatureOb
 
 	PlayerObject* ghost = conversingPlayer->getPlayerObject();
 
-	if (ghost != NULL) {
-		Vector<String>* fsBranches = ghost->getForceSensitiveElegibleBranches();
-		for (int i = 0; i < fsBranches->size(); i++) {
-			Skill* skill = SkillManager::instance()->getSkill(fsBranches->get(i));
-			getTrainableSkillsList(conversingPlayer, &trainableSkills, skill);
-		}
-	}
-
 	if (masterSkills.size() <= 0)
 		masterSkills.add(startingMasterSkill);
 
