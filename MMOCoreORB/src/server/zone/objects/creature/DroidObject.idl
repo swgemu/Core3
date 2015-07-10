@@ -442,7 +442,8 @@ class DroidObject extends AiAgent {
 			return super.getChanceHit();
 		}
 	}
-
+	@dirty
+	public native boolean isMerchantBarker();
 	@dirty
 	public native string getPersonalityStf();
 

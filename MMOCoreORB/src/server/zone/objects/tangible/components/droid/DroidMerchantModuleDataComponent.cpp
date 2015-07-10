@@ -38,7 +38,7 @@ void DroidMerchantModuleDataComponent::fillObjectMenuResponse(SceneObject* droid
 	//if(player != getDroidObject()->getLinkedCreature()) was this shown to the owner?
 	menuResponse->addRadialMenuItem(70,3,"@pet/droid_modules:merchant_barker"); // Get Waypoint
 	// Novice Musician or Novice Dancer required to utilize this module
-	if (player->hasSkill("crafting_merchant_advertising_04")){
+	if (player->hasSkill("crafting_merchant_advertising_04") && getDroidObject()->getLinkedCreature().get() == player){
 		menuResponse->addRadialMenuItemToRadialID(132,BARKER_RECORD_MESSAGE,3, "@pet/droid_modules:record_message"); // Record
 		menuResponse->addRadialMenuItemToRadialID(132,BARKER_STORE_WAYPOINT,3, "@pet/droid_modules:store_waypoint"); // Store a Way point
 		menuResponse->addRadialMenuItemToRadialID(132,BARKER_TOGGLE,3, "@pet/droid_modules:barker_on_off"); // Toggle

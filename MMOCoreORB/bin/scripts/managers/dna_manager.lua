@@ -42,6 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 --]]
 
+-- level, dps, hit, ham, armor, regen
 DNACharacteristics = {
   {0,0,0.0,0,0,0},
   {1,8,0.21,75,0, 7},
