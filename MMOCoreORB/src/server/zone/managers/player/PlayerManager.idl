@@ -42,6 +42,7 @@ import engine.util.u3d.CloseObjectsVector;
 include server.zone.managers.collision.IntersectionResults;
 include server.zone.managers.player.VeteranRewardList;
 include server.zone.managers.player.JukeboxSong;
+include server.zone.objects.player.badges.Badge;
 
 class PlayerManager extends Observer implements Logger {
 	transient ZoneProcessServer processor;
@@ -66,11 +67,6 @@ class PlayerManager extends Observer implements Logger {
 	@dereferenced 
 	private VeteranRewardList veteranRewards;
 
-	@dereferenced
-	private transient VectorMap<int, string> badgeMap;
-
-	private int highestBadgeIndex;
-
 	private ZoneServer server;
 
 	transient PlayerMap playerMap;
@@ -94,12 +90,7 @@ class PlayerManager extends Observer implements Logger {
 
 	private native void loadLuaConfig();
 	private native void loadStartingLocations();
-	private native void loadBadgeMap();
 	private native void loadPermissionLevels();
-
-	public int getHighestBadgeIndex() {
-		return highestBadgeIndex;
-	}
 
 	public native void finalize();
 
@@ -161,6 +152,8 @@ class PlayerManager extends Observer implements Logger {
 	public native void applyEncumbrancies(CreatureObject player, ArmorObject armor);
 	public native void removeEncumbrancies(CreatureObject player, ArmorObject armor);
 	public native void awardBadge(PlayerObject ghost, unsigned int badge);
+	@local
+	public native void awardBadge(PlayerObject ghost, final Badge badge);
 
 	public native void setExperienceMultiplier(float globalMultiplier);
 	public native void awardExperience(CreatureObject player, final string xpType, int amount, boolean sendSystemMessage = true, float localMultiplier = 1.0f);
@@ -357,8 +350,6 @@ class PlayerManager extends Observer implements Logger {
 		nameMap.remove(playerName);
 	}
 	
-	public native string getBadgeKey(int idx);
-
 	public native CraftingStation getNearbyCraftingStation(CreatureObject player, int type);
 
 	public native void finishHologrind(CreatureObject player);

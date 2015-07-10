@@ -34,6 +34,7 @@ import system.util.SynchronizedSortedVector;
 include server.zone.objects.creature.variables.Skill;
 include server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.objects.manufactureschematic.ManufactureSchematic;
+include server.zone.objects.player.badges.Badge;
 include server.zone.objects.player.badges.Badges;
 include server.zone.objects.player.events.BountyHunterTefRemovalTaskMap;
 include server.zone.objects.player.sui.SuiBox;
@@ -49,7 +50,6 @@ include server.zone.objects.player.variables.PlayerQuestData;
 include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.scene.variables.DeltaBitArray;
-
 
 class PlayerObject extends IntangibleObject {	
 	protected unsigned int characterBitmask;
@@ -1163,7 +1163,7 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	@dirty
-	public int getBadgeTypeCount(byte type) {
+	public int getBadgeTypeCount(unsigned int type) {
 		return badges.getTypeCount(type);
 	}
 	
