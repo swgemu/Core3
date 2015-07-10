@@ -130,7 +130,7 @@ String FactoryCrateImplementation::getSerialNumber() {
 	return prototype->getSerialNumber();
 }
 
-bool FactoryCrateImplementation::extractObjectToParent() {
+bool FactoryCrateImplementation::extractObjectToInventory(CreatureObject* player) {
 
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
@@ -140,10 +140,10 @@ bool FactoryCrateImplementation::extractObjectToParent() {
 	}
 
 	Reference<TangibleObject*> prototype = getPrototype();
-	ManagedReference<SceneObject*> strongParent = getParent().get();
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory").get();
 
-	if (prototype == NULL || !prototype->isTangibleObject() || strongParent == NULL) {
-		error("FactoryCrateImplementation::extractObject has a NULL or non-tangible item");
+	if (prototype == NULL || !prototype->isTangibleObject() || inventory == NULL) {
+		error("FactoryCrateImplementation::extractObjectToInventory has a NULL or non-tangible item");
 		return false;
 	}
 
@@ -162,22 +162,20 @@ bool FactoryCrateImplementation::extractObjectToParent() {
 		String errorDescription;
 		int errorNumber = 0;
 
-		if ((errorNumber = strongParent->canAddObject(protoclone, -1, errorDescription)) != 0) {
+		if ((errorNumber = inventory->canAddObject(protoclone, -1, errorDescription)) != 0) {
 			if (errorDescription.length() > 1) {
-				ManagedReference<SceneObject*> player = strongParent->getParentRecursively(SceneObjectType::PLAYERCREATURE);
-
-				if (player != NULL)
 					player->sendMessage(new ChatSystemMessage(errorDescription));
-			} else
-				strongParent->error("cannot extratObjectToParent " + String::valueOf(errorNumber));
+			} else {
+				inventory->error("cannot extratObjectToInventory " + String::valueOf(errorNumber));
+			}
 
 			protoclone->destroyObjectFromDatabase(true);
 
 			return false;
 		}
 
-		strongParent->transferObject(protoclone, -1, true);
-		strongParent->broadcastObject(protoclone, true);
+		inventory->transferObject(protoclone, -1, true);
+		inventory->broadcastObject(protoclone, true);
 
 		setUseCount(getUseCount() - 1);
 
