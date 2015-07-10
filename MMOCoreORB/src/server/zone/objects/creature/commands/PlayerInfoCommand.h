@@ -14,6 +14,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/managers/player/BadgeList.h"
 
 class PlayerInfoCommand {
 public:
@@ -82,12 +83,18 @@ public:
 			promptText << endl;
 			promptText << "Hologrind professions:\n";
 
-			for (int i = 0; i < holoProfessions->size(); ++i) {
-				byte prof = holoProfessions->get(i);
-
-				String stringKey = creature->getZoneServer()->getPlayerManager()->getBadgeKey(prof);
-
-				promptText << "@skl_n:" + stringKey << endl;
+			BadgeList* badgeList = BadgeList::instance();
+			if (badgeList != NULL) {
+				for (int i = 0; i < holoProfessions->size(); ++i) {
+					byte prof = holoProfessions->get(i);
+					const Badge* badge = badgeList->get(prof);
+					if (prof) {
+						String stringKey = badge->getKey();
+						promptText << "@skl_n:" + stringKey << " badgeid: " << String::valueOf(prof)<<  endl;
+					} else {
+						promptText << "unknown profession " << String::valueOf(prof) << endl;
+					}
+				}
 			}
 
 			promptText << endl << "Visibility = " << ghost->getVisibility() << endl;
