@@ -312,18 +312,17 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 				}
 			}
 		}
-
+		
 		if (skillName.contains("master")) {
-			uint32 badge = Badge::getID(skillName);
+			ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
+			if (playerManager != NULL) {
+				const Badge* badge = BadgeList::instance()->get(skillName);
 
-			if (badge == -1 && skillName == "crafting_shipwright_master") {
-				badge = Badge::getID("crafting_shipwright");
-			}
+				if (badge == NULL && skillName == "crafting_shipwright_master") {
+					badge = BadgeList::instance()->get("crafting_shipwright");
+				}
 
-			if (badge != -1) {
-				ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
-
-				if (playerManager != NULL) {
+				if (badge != NULL) {
 					playerManager->awardBadge(ghost, badge);
 				}
 			}

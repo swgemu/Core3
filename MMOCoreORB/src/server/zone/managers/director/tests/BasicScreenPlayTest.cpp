@@ -10,12 +10,14 @@
 
 #include "gtest/gtest.h"
 #include "server/zone/managers/director/DirectorManager.h"
+#include "server/conf/ConfigManager.h"
 
 class BasicScreenPlayTest : public ::testing::Test {
 public:
 
 	BasicScreenPlayTest() {
 		// Perform creation setup here.
+		ConfigManager::instance()->loadConfigData();
 	}
 
 	~BasicScreenPlayTest() {
