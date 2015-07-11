@@ -101,6 +101,10 @@ public:
 		playerManager->removePlayer(oldFirstName);
 		playerManager->addPlayer(targetCreature);
 
+		// Remove the old name from other people's friends lists
+		PlayerObject* targetGhost = targetCreature->getPlayerObject();
+		targetGhost->removeAllReverseFriends(oldFirstName);
+
 		String creatureFirstName = targetCreature->getFirstName();
 		Database::escapeString(creatureFirstName);
 

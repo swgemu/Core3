@@ -1117,12 +1117,37 @@ void PlayerObjectImplementation::removeAllFriends() {
 		ManagedReference<CreatureObject*> playerToRemove = zoneServer->getObject(objID).castTo<CreatureObject*>();
 
 		if (playerToRemove != NULL && playerToRemove->isPlayerCreature()) {
-			EXECUTE_TASK_2(playerToRemove, name, {
+			EXECUTE_TASK_2(playerToRemove, playerName, {
 					Locker locker(playerToRemove_p);
 
 					PlayerObject* ghost = playerToRemove_p->getPlayerObject();
 					if (ghost != NULL) {
-						ghost->removeFriend(name_p, false);
+						ghost->removeFriend(playerName_p, false);
+					}
+			});
+		}
+
+		removeReverseFriend(name);
+	}
+}
+
+void PlayerObjectImplementation::removeAllReverseFriends(const String& oldName) {
+	PlayerManager* playerManager = server->getPlayerManager();
+	ZoneServer* zoneServer = server->getZoneServer();
+
+	while (friendList.reversePlayerCount() > 0) {
+		String name = friendList.getReversePlayer(0).toLowerCase();
+		uint64 objID = playerManager->getObjectID(name);
+
+		ManagedReference<CreatureObject*> reverseFriend = zoneServer->getObject(objID).castTo<CreatureObject*>();
+
+		if (reverseFriend != NULL && reverseFriend->isPlayerCreature()) {
+			EXECUTE_TASK_2(reverseFriend, oldName, {
+					Locker locker(reverseFriend_p);
+
+					PlayerObject* ghost = reverseFriend_p->getPlayerObject();
+					if (ghost != NULL) {
+						ghost->removeFriend(oldName_p, false);
 					}
 			});
 		}

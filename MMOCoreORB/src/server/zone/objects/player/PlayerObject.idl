@@ -632,6 +632,9 @@ class PlayerObject extends IntangibleObject {
 	// Used when character is deleted
 	public native void removeAllFriends();
 
+	//Used when a character is renamed
+	public native void removeAllReverseFriends(final string oldName);
+
 	/**
 	 * Adds a player to the ignore list
 	 * @pre { this is locked}
@@ -1186,7 +1189,7 @@ class PlayerObject extends IntangibleObject {
 	public void removeReverseFriend(final string name) {
 		friendList.removeReversePlayer(name);
 	}
-	
+
 	public native void sendFriendLists();
 
 	/**
