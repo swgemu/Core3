@@ -549,7 +549,7 @@ void ZoneServerImplementation::printInfo() {
 	lock();
 
 	StringBuffer msg;
-	msg << Core::getTaskManager()->getInfo(false) << endl;;
+	msg << Core::getTaskManager()->getInfo(false) << endl;
 	//msg << "MessageQueue - size = " << processor->getMessageQueue()->size() << endl;
 
 	float packetloss;
@@ -597,7 +597,7 @@ String ZoneServerImplementation::getInfo() {
 	lock();
 
 	StringBuffer msg;
-	msg << Core::getTaskManager()->getInfo(false) << endl;;
+	msg << Core::getTaskManager()->getInfo(false) << endl;
 	//msg << "MessageQueue - size = " << processor->getMessageQueue()->size() << endl;
 
 	float packetloss;

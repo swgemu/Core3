@@ -134,7 +134,7 @@ public:
 
 		buff->setSpeedMultiplierMod(1.822f);
 		buff->setAccelerationMultiplierMod(1.822f);
-		buff->setStartMessage(startStringId);;
+		buff->setStartMessage(startStringId);
 		buff->setEndMessage(endStringId);		
 
 		player->addBuff(buff);

@@ -113,7 +113,7 @@ public:
 	}
 
 	SortedVector<String>* getPlayerDefaultGroupPermissions() {
-		return &playerDefaultGroupPermissions;;
+		return &playerDefaultGroupPermissions;
 	}
 
 };

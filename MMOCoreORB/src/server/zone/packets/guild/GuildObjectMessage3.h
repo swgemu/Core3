@@ -16,7 +16,7 @@ public:
 		insertFloat(1);
 		insertAscii("String_id_table");
 		insertInt(0);
-		insertAscii("");;
+		insertAscii("");
 		insertUnicode("");
 		insertInt(0);
 

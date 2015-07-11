@@ -1389,7 +1389,7 @@ void PlayerObjectImplementation::increaseFactionStanding(const String& factionNa
 	else if (player->getFaction() == factionName.hashCode())
 		newAmount = MIN(FactionManager::instance()->getFactionPointsCap(player->getFactionRank()), newAmount);
 	else
-		newAmount = MIN(1000, newAmount);;
+		newAmount = MIN(1000, newAmount);
 
 	factionStandingList.put(factionName, newAmount);
 

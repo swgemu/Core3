@@ -792,7 +792,7 @@ int LuaCreatureObject::getPerformanceName(lua_State* L) {
 	ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*> (facade.get());
 
 	if (session == NULL) {
-		lua_pushnil(L);;
+		lua_pushnil(L);
 		return 1;
 	}
 
