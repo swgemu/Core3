@@ -89,7 +89,7 @@ public:
 		flavorMax = templateData->getIntField("flavorMax");
 		nutritionMin = templateData->getIntField("nutritionMin");
 		nutritionMax = templateData->getIntField("nutritionMax");
-		quantityMin = templateData->getIntField("quantityMin");;
+		quantityMin = templateData->getIntField("quantityMin");
 		quantityMax = templateData->getIntField("quantityMax");
 
 		modifiers.removeAll();

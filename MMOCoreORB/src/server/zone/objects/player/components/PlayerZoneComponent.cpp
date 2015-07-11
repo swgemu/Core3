@@ -105,7 +105,7 @@ void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX,
 	CreatureObject* player = NULL;
 
 	if (sceneObject->isPlayerCreature()) {
-		player = sceneObject->asCreatureObject();;
+		player = sceneObject->asCreatureObject();
 	}
 
 	if (player != NULL && sceneObject->getParent() != NULL && parentID != 0) {

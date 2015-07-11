@@ -272,7 +272,7 @@ void ManufactureSchematicImplementation::initializeIngredientSlots() {
 	slotOIDs.removeAll(NULL);
 	slotQuantities.removeAll(NULL);
 	slotQualities.removeAll(NULL);
-	slotClean.removeAll(NULL);;
+	slotClean.removeAll(NULL);
 	slotIndexes.removeAll(NULL);
 	craftingValues->clearAll();
 

@@ -48,7 +48,7 @@ public:
 		Reference<PlayerObject*> ghost = player->getPlayerObject();
 
 		if (ghost == NULL)
-			return GENERALERROR;;
+			return GENERALERROR;
 
 		StringTokenizer args(arguments.toString());
 

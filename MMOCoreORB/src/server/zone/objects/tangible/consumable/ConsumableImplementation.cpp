@@ -283,7 +283,7 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 
 	StringIdChatParameter stringId("base_player", "prose_consume_item");
 	stringId.setTT(getObjectID());
-	player->sendSystemMessage(stringId);//player->sendSystemMessage("base_player", "prose_consume_item", objectID);;
+	player->sendSystemMessage(stringId);//player->sendSystemMessage("base_player", "prose_consume_item", objectID);
 
 	// Play the client effect sound depending on species/gender.
 
@@ -378,7 +378,7 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 		}
 
 		for (int i = 0; i < modifiers.size(); ++i) {
-			VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);;
+			VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
 			alm->insertAttribute(entry->getKey() + "_heal", nutrition);
 		}
 
