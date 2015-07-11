@@ -448,7 +448,7 @@ veers_missions =
 				{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
 				{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
 				{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
-				{ npcTemplate = "mercenary_aggro", planetName = "naboo", npcName = "a Mercenary" },
+				{ npcTemplate = "theme_park_imperial_mercenary", planetName = "naboo", npcName = "a Mercenary" },
 			},
 			secondarySpawns = {
 			},
