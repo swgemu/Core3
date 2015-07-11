@@ -402,7 +402,7 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 		cellID = SceneObject(pCell):getObjectID()
 
 		-- Warp terminal, gives player ability to choose starting city, only accessable after speaking to quartermaster with release documents
-		local pTravelTerm = spawnSceneObject("tutorial", "object/tangible/beta/beta_terminal_warp.iff", 27.55, -3.5, -167.8, cellID, 0, 0, 0, 0)
+		local pTravelTerm = spawnSceneObject("tutorial", "object/tangible/terminal/terminal_travel_tutorial.iff", 27.55, -3.5, -167.8, cellID, 0, 0, 0, 0)
 
 		if (pTravelTerm ~= nil) then
 			if (not self:isRoomComplete(pPlayer, "r11")) then
