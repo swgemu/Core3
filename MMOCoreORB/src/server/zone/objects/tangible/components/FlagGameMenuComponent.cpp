@@ -101,7 +101,7 @@ int FlagGameMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 			flagGame->startGame();
 			return 0;
 		case 69:
-			flagGame->setTimeLimit(10 * 60 * 1000); // 10 Minutes
+			flagGame->setTimeLimit(1 * 60 * 1000); // 10 Minutes
 			player->sendSystemMessage("@event_perk:flag_game_set_time_10");
 			return 0;
 		case 70:
@@ -154,7 +154,6 @@ int FlagGameMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 			return 1;
 		}
 
-		flagGame->removeCurFlag();
 		flagGame->destroyObjectFromWorld(true);
 		locker.release();
 
