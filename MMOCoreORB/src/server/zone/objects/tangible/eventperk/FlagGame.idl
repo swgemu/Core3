@@ -83,6 +83,8 @@ class FlagGame extends TangibleObject {
 
 	public native void announceToPlayers(final string message);
 
+	public native void destroyObjectFromWorld(boolean sendSelfDestroy);
+
 	@preLocked
 	public void setTimeLimit(unsigned long limit) {
 		timeLimit = limit;

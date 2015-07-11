@@ -192,7 +192,7 @@ jukeboxSongs = {
 	{ "@event_perk_jukebox_songs:max_rebo_1", "sound/music_max_rebo_1_loop.snd" },
 	{ "@event_perk_jukebox_songs:max_rebo_2", "sound/music_max_rebo_2_loop.snd" },
 	{ "@event_perk_jukebox_songs:romance_1", "sound/music_romance_a_loop.snd" },
-	{ "@event_perk_jukebox_songs:romance_2", "sound/music_theme_han_leia.snd" },
+	{ "@event_perk_jukebox_songs:romance_2", "sound/music_romance_b_loop.snd" },
 	{ "@event_perk_jukebox_songs:romance_3", "sound/music_romance_c_loop.snd" },
 	{ "@event_perk_jukebox_songs:satisfaction_1", "sound/music_satisfaction_a_loop.snd" },
 	{ "@event_perk_jukebox_songs:satisfaction_2", "sound/music_satisfaction_b_loop.snd" },

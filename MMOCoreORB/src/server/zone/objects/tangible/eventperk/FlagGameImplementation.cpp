@@ -198,3 +198,9 @@ void FlagGameImplementation::doVictoryEffects(uint32 faction) {
 		}
 	}
 }
+
+void FlagGameImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
+	removeCurFlag();
+
+	TangibleObjectImplementation::destroyObjectFromWorld(sendSelfDestroy);
+}

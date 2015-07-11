@@ -154,7 +154,6 @@ int FlagGameMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 			return 1;
 		}
 
-		flagGame->removeCurFlag();
 		flagGame->destroyObjectFromWorld(true);
 		locker.release();
 
