@@ -445,9 +445,9 @@ veers_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
-				{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
-				{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+				{ npcTemplate = "theme_park_jabba_thug", planetName = "naboo", npcName = "a Thug" },
+				{ npcTemplate = "theme_park_jabba_thug", planetName = "naboo", npcName = "a Thug" },
+				{ npcTemplate = "theme_park_jabba_thug", planetName = "naboo", npcName = "a Thug" },
 				{ npcTemplate = "mercenary_aggro", planetName = "naboo", npcName = "a Mercenary" },
 			},
 			secondarySpawns = {
