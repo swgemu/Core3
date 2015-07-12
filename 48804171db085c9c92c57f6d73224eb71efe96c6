@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_a780688c",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/weapon/WeaponObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-12T09:08:29Z",
+      "side": 1,
+      "message": "This check already exists at the start of the method.... therefore this one is redundant and won\u0027t do anything.",
+      "revId": "48804171db085c9c92c57f6d73224eb71efe96c6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
