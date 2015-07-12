@@ -91,18 +91,12 @@ class PlayerObject extends IntangibleObject {
 	protected string mutedReason;
 
 	@dereferenced
-	protected Vector<string> fsEligibleBranches;
-
-	@dereferenced
 	protected SortedVector<unsigned long> ownedStructures;
 	
 	@dereferenced
 	protected SortedVector<unsigned long> ownedVendors;
 	
 	protected byte maximumLots;
-
-	@dereferenced
-	protected Vector<string> fsEligibleExperiences;
 	
 	protected int jediState;
 	protected unsigned int adminLevel;
@@ -1734,33 +1728,6 @@ class PlayerObject extends IntangibleObject {
 			chosenVeteranRewards.drop( milestone );
 	}
 
-	@local
-	public Vector<string> getForceSensitiveElegibleBranches() {
-		return fsEligibleBranches;
-	}
-
-	public void addForceSensitiveElegibleBranch(string branch){
-		fsEligibleBranches.add(branch);
-	}
-
-	public void removeForceSensitiveElegibleBranches(){
-		fsEligibleBranches.removeAll();
-	}
-
-	public native void updateForceSensitiveElegibleExperiences(int type);
-
-	@local
-	public Vector<string> getForceSensitiveElegibleExperiences() {
-		return fsEligibleExperiences;
-	}
-
-	@dirty
-	public string getForceSensitiveElegibleExperienceType(int type) {
-		return fsEligibleExperiences.get(type);
-	}
-	
-	public native string getForceSensitiveExperienceRatio(final string type);
-
 	public void addEventPerk(SceneObject deed) {
 		currentEventPerks.put(deed.getObjectID());
 	}
@@ -1803,6 +1770,10 @@ class PlayerObject extends IntangibleObject {
 	@local
 	public Time getReactionFineMailTimestamp() {
 		return reactionFineMailTimestamp;
+	}
+
+	public int getXpCap(final string type) {
+		return xpTypeCapList.get(type);
 	}
 }
 

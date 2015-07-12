@@ -55,17 +55,14 @@ public:
 	int setCompletedQuestsBit(lua_State* L);
 	int clearCompletedQuestsBit(lua_State* L);
 	int hasAbility(lua_State* L);
-	int getForceSensitiveUnlockedBranches(lua_State* L);
-	int setForceSensitiveUnlockedBranches(lua_State* L);
 	int getExperience(lua_State* L);
-	int getExperienceForType(lua_State* L);
-	int getExperienceType(lua_State* L);
 	int addEventPerk(lua_State* L);
 	int getEventPerkCount(lua_State* L);
 	int getCharacterAgeInDays(lua_State* L);
 	int isPrivileged(lua_State* L);
-	int getExperienceRatio(lua_State* L);
 	int closeSuiWindowType(lua_State* L);
+	int getExperienceList(lua_State* L);
+	int getExperienceCap(lua_State* L);
 
 private:
 	// The pointer to the 'real object' defined in object.cc
