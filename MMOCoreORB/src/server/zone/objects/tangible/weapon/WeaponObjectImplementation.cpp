@@ -732,6 +732,8 @@ void WeaponObjectImplementation::decay(CreatureObject* user) {
 
 	if (roll < chance) {
 		if (isJediWeapon()) {
+			if (hasAntiDecayKit())
+				return;
 			ManagedReference<SceneObject*> saberInv = getSlottedObject("saber_inv");
 
 			// TODO: is this supposed to be every crystal, or random crystal(s)?
