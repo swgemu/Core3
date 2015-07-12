@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_27445873",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-12T10:08:01Z",
+      "side": 1,
+      "message": "Rather than hard code this cap, I think that you should add a method to PlayerObject (and expose it to Lua) that gets the player\u0027s current cap of a specific xp type. Use that method here to get their cap.\n\nIt won\u0027t really matter for our use, but if another server wants to alter the caps, and even have them tiered like normal skills, it would be nice for this to just work after they modify their datatable.\n\nOh, and the second compare here should just be \u003e. \u003d should be fine since you\u0027re comparing the value it will be set to with the cap (and it\u0027s ok to set to the cap).",
+      "revId": "3d877ba19c52929f6cf38a1c361889b16ce8303e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_e75d104a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-12T10:08:01Z",
+      "side": 1,
+      "message": "What value does the transfer box send for arg0? I\u0027m trying to understand what you are doing here but it doesn\u0027t make much sense to me.\n\nFrom above it seems obvious that arg1 is the amount of fs xp that the player will gain, and that\u0027s what you award to them below. That\u0027s straightforward.\n\nBased on what I see here, I don\u0027t see anything straightforward about arg0. I can\u0027t figure out any value it could have where your comparison makes sense. What value could the transfer box possibly be sending that it has to be at least double the original xp amount to be valid?",
+      "revId": "3d877ba19c52929f6cf38a1c361889b16ce8303e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
