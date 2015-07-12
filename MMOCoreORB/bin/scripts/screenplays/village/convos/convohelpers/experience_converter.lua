@@ -24,6 +24,49 @@ local unlockableFSBranches = {
 	FSHeightenedSenses4 = {state = "FSHeightenedSenses4", unlockString =	"Heightened Senses -- Luck", topBox = "force_sensitive_heightened_senses_luck_04"}
 }
 
+-- These are the 3 types of FS experience for regex searches, full strings not needed for each type, just least specific.
+local XpCombat =
+	{
+		{"combat_general", 3},
+		{"squadleader", 90},
+		{"bountyhunter", 1},
+		{"combat_melee", 30},
+		{"combat_ranged", 30}
+	}
+
+local XpSenses =
+	{
+		{"bio_engineer_dna_harvesting", 3},
+		{"political", 3},
+		{"slicing",  3},
+		{"merchant",  4},
+		{"resource_harvesting_inorganic",  5},
+		{"imagedesigner", 7},
+		{"scout",  8},
+		{"creaturehandler",  9},
+		{"dance",  10},
+		{"music",  10},
+		{"entertainer_healing",  10},
+		{"camp",  10},
+		{"medical",  10},
+		{"trapping",  25},
+	}
+
+local XpCrafting =
+	{
+		{"crafting_bio_engineer_creature",  4},
+		{"crafting_bio_engineer_tissue",  5},
+		{"crafting_c", 5},
+		{"crafting_d", 5},
+		{"crafting_f", 5},
+		{"crafting_m", 5},
+		{"crafting_sc", 5},
+		{"crafting_sp", 5},
+		{"crafting_w", 5},
+		{"crafting_general", 8},
+		{"crafting_structure_general", 35}
+	}
+
 ExperienceConverter = Object:new {}
 
 -- Since the logic flow of the conversation calls set always before get, it should work, but just in case...
@@ -44,14 +87,33 @@ function ExperienceConverter:deleteSuiTransferExperienceSelection(oid)
 	return deleteStringData("suiTransferExperienceSelection:"  .. oid)
 end
 
+
+function ExperienceConverter:setSuiTransferExperienceType(var, oid)
+	if (readData("suiTransferExperienceType:" .. oid) ~= nil) then
+		deleteData("suiTransferExperienceType:"  .. oid)
+	end
+	if (var ~= nil) then
+		writeData("suiTransferExperienceType:"  .. oid, var)
+	end
+end
+
+function ExperienceConverter:getSuiTransferExperienceType(oid)
+	return readData("suiTransferExperienceType:"  .. oid)
+end
+
+function ExperienceConverter:deleteSuiTransferExperienceType(oid)
+	return deleteData("suiTransferExperienceType:"  .. oid)
+end
+
 -- See if the player qualifies for the conversion.
 -- @param pPlayerObject pointer to the player object of the player.
 -- @return a boolean.
 function ExperienceConverter.qualifiesForConversation(pCreatureObject)
+	-- TODO: Research why Paemos wouldn't converse with player.
 	if (pCreatureObject == nil) then
 		return false
 	end
-	-- TODO: Research why Paemos wouldn't converse with player.
+
 	return true
 end
 
@@ -66,14 +128,12 @@ function ExperienceConverter:getNextUnlockableBranches(pCreatureObject)
 	local trees = {}
 	local insertion = nil
 
-	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-		local checkTrees = playerObject:getForceSensitiveUnlockedBranches()
-		foreach(unlockableFSBranches, function(theTable)
-			local state = ExperienceConverter:getHighestScreenPlayState(pCreatureObject, theTable.state)
-			if ((state) and (not ExperienceConverter:contains(checkTrees, theTable.topBox))) then
-				table.insert(trees, theTable.unlockString)
-			end
-		end)
+
+	foreach(unlockableFSBranches, function(theTable)
+		local checkTrees = getQuestStatus(CreatureObject(pCreatureObject):getObjectID() .. ":" .. theTable.state)
+		if (checkTrees ~= nil and checkTrees ~= "trained") then
+			table.insert(trees, theTable.unlockString)
+		end
 	end)
 
 	if (table.getn(trees) > 0) then
@@ -81,54 +141,14 @@ function ExperienceConverter:getNextUnlockableBranches(pCreatureObject)
 	else
 		return nil
 	end
-
 end
 
--- Get the screenplay states specified.
--- @param pCreatureObject pointer to the creature object of the player.
--- @param state string of screenplay state requested.
--- @param pUnlockNumber int pointer to the number unlocked (1-4).
--- @return an boolean that it is unlockable.
-function ExperienceConverter:getHighestScreenPlayState(pCreatureObject, state)
-	return CreatureObject(pCreatureObject):hasScreenPlayState(1, state)
-end
-
-function ExperienceConverter:getExperienceForConversion(pPlayer, type)
-	local baseString = {}
-	local ufString = nil
-
-	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
-		ufString = playerObject:getExperienceForType(type)
-		foreach(ufString, function(formattedString)
-			local insertionStringFormatted = "@exp_n:" .. formattedString
-			table.insert(baseString, insertionStringFormatted)
-		end)
+function ExperienceConverter:setBranchTrained(oid, branchBox)
+	foreach(unlockableFSBranches, function(theTable)
+		if (theTable.topBox == branchBox) then
+			setQuestStatus(oid .. ":" .. theTable.state, "trained")
+		end
 	end)
-
-	return baseString
-end
-
--- Get the experience amount for the selected experience type.
-function ExperienceConverter:getExperienceAmount(pPlayer, selection)
-	local amount = nil
-	-- Unformat string for retrieval.
-	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
-		local experienceType = playerObject:getExperienceType(selection)
-		amount = playerObject:getExperience(experienceType)
-	end)
-
-	return amount
-end
-
-function ExperienceConverter:getExperienceRatio(pPlayer, selection)
-	local experienceType = nil
-	local ratio = nil
-	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
-		experienceType = playerObject:getExperienceType(selection)
-		ratio = playerObject:getExperienceRatio(experienceType)
-	end)
-
-	return ratio
 end
 
 -- Get the highest box from the tables above for the trainer.
@@ -145,28 +165,86 @@ function ExperienceConverter:getHighestBoxForTrainer(selection)
 	return boxName
 end
 
--- Remove corresponding state they just learned the branch for.
-function ExperienceConverter:removeScreenPlayState(pCreature, pNameForState)
-	if (pCreautre == nil) then
-		return
+function ExperienceConverter:getExperienceForConversion(pCreature, theType)
+
+	if (pCreature == nil) then
+		return nil
 	end
 
-	foreach(unlockableFSBranches, function(theTable)
-		if (theTable.unlockString == pNameForState) then
-			CreatureObject(pCreatureObject):setScreenPlayState(0, theTable.state)
-		end
+	local returnTable = {}
+
+	local inputTable = {}
+
+	if (theType == 0 or theType == 3) then
+		inputTable = XpCombat
+	elseif (theType == 1) then
+		inputTable = XpSenses
+	elseif (theType == 2) then
+		inputTable = XpCrafting
+	end
+
+	local expList = {}
+
+	ObjectManager.withCreaturePlayerObject(pCreature, function(playerObject)
+		expList = playerObject:getExperienceList()
 	end)
+
+	if (expList == nil) then
+		return nil
+	end
+
+	for i = 1, #expList do
+		if (self:containsKey(inputTable, expList[i])) then
+			table.insert(returnTable, "@exp_n:" .. expList[i])
+		end
+	end
+
+	return returnTable
 
 end
 
--- Generic search function.
-function ExperienceConverter:contains(table, element)
-	for _, value in pairs(table) do
-		if value == element then
+function ExperienceConverter:getExperienceRatio(experienceType, theType)
+
+	local returnAmount = nil
+
+	local inputTable = {}
+
+	if (theType == 0 or theType == 3) then
+		inputTable = XpCombat
+	elseif (theType == 1) then
+		inputTable = XpSenses
+	elseif (theType == 2) then
+		inputTable = XpCrafting
+	end
+
+
+	returnAmount = self:getValue(inputTable, experienceType)
+
+	if (returnAmount == nil) then
+		return 0
+	end
+
+	return returnAmount
+end
+
+
+-- Generic search function for the strings in the tables above.
+function ExperienceConverter:containsKey(table, element)
+	for i = 1, #table do
+		if (string.find(element, table[i][1]) ~= nil) then
 			return true
 		end
 	end
 	return false
+end
+
+-- Generic search function for the ratio in the tables above.
+function ExperienceConverter:getValue(table, element)
+	for i = 1, #table do
+		if (string.find(element, table[i][1]) ~= nil) then
+			return table[i][2]
+		end
+	end
 end
 
 return ExperienceConverter
