@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_87652c47",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/convohelpers/experience_converter.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-12T00:31:11Z",
+      "side": 1,
+      "message": "I would rename this function to getValue.",
+      "revId": "10b613d9f411fd2b32f25e17cd26cbf5deeea9aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_475f2473",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-12T00:31:11Z",
+      "side": 1,
+      "message": "Just get their current xp once and store in a local var before the comparisons.\n\nAlso, you last patch set had the cap at 500000, Why is it now 510000? Seems like an odd cap.",
+      "revId": "10b613d9f411fd2b32f25e17cd26cbf5deeea9aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_e753d06a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-12T00:31:11Z",
+      "side": 1,
+      "message": "Again, just get their current xp once and store it in a local var before using it.",
+      "revId": "10b613d9f411fd2b32f25e17cd26cbf5deeea9aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
