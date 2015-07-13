@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_47408456",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-13T04:23:46Z",
+      "side": 1,
+      "message": "This isn\u0027t correct because arg0 isn\u0027t the amount to lose. It\u0027s the amount left over.\n\nJust remove this check. It\u0027s not needed. We don\u0027t need to use arg0 at all. If their normal xp increased between the transfer box being sent and used, no biggie. If it decreased, we have another check to make sure they don\u0027t go negative.",
+      "revId": "e6f04a067c7619a313ecd2faab0ffabc721e5c8f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_e72430c8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-13T04:23:46Z",
+      "side": 1,
+      "message": "Just use xpToLose * -1 here.",
+      "revId": "e6f04a067c7619a313ecd2faab0ffabc721e5c8f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_273bf8ec",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-13T04:23:46Z",
+      "side": 1,
+      "message": "Just use xpToLose here.",
+      "revId": "e6f04a067c7619a313ecd2faab0ffabc721e5c8f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
