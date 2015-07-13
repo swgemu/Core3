@@ -14,7 +14,7 @@ end
 
 function LokNymStrongholdScreenPlay:spawnMobiles()
 	--thugs
-	spawnMobile("lok", "nym_surveyer",300,484.493,11.9154,5091.56,180.005,0)
+	spawnMobile("lok", "nym_surveyor",300,484.493,11.9154,5091.56,180.005,0)
 	spawnMobile("lok", "nym_guard_weak",300,551.4,12,5169.8,200,0)
 	spawnMobile("lok", "nym_guard_weak",300,535.7,11.9,5105.3,90,0)
 	spawnMobile("lok", "nym_guard_weak",300,331.611,11.9777,4898.94,14.0896,0)
@@ -52,16 +52,16 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	spawnMobile("lok", "nym_guard",300,1.98,8.9,-30.5,0,6595511)
 	spawnMobile("lok", "nym_guard",300,-1.91,8.9,-30.5,360.011,6595511)
 	spawnMobile("lok", "nym_destroyer",300,-1.79,1.3,3.94,267.008,6595511)
-	spawnMobile("lok", "nym_surveyer",300,-8.05,1.3,-2.3,7.00022,6595511)
-	spawnMobile("lok", "nym_surveyer",300,4.39,1.3,-3.87,149.004,6595511)
+	spawnMobile("lok", "nym_surveyor",300,-8.05,1.3,-2.3,7.00022,6595511)
+	spawnMobile("lok", "nym_surveyor",300,4.39,1.3,-3.87,149.004,6595511)
 
 	spawnMobile("lok", "nym_bodyguard",300,-29.1,2.3,1.5,200,6595515)
 
 	spawnMobile("lok", "nym_pirate_elite",300,37.49,2.29422,-1.17,88.0026,6595518)
 	spawnMobile("lok", "nym_pirate_elite",300,36.71,2.29422,-2.92,88.0026,6595518)
 
-	spawnMobile("lok", "nym_surveyer",300,1.83273,-0.894992,-14.2461,180.009,8145381)
-	spawnMobile("lok", "nym_surveyer",300,-2.13049,-0.894991,6.9956,360.011,8145378)
+	spawnMobile("lok", "nym_surveyor",300,1.83273,-0.894992,-14.2461,180.009,8145381)
+	spawnMobile("lok", "nym_surveyor",300,-2.13049,-0.894991,6.9956,360.011,8145378)
 
 	--misc
 	spawnMobile("lok", "informant_npc_lvl_3",60,369,11.89,5087,90,0)
