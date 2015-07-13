@@ -1,5 +1,5 @@
 lok_blood_razor_camp_neutral_easy_theater = Lair:new {
-	mobiles = {{"blood_razor_strong_pirate", 1},{"blood_razor_berzerker", 1},{"blood_razor_weak_pirate", 1}},
+	mobiles = {{"blood_razor_weak_pirate", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
 	buildingsEasy = {"object/building/poi/anywhere_misc_camp_small_1.iff"},

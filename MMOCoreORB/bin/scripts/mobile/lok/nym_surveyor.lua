@@ -1,4 +1,4 @@
-nym_surveyer = Creature:new {
+nym_surveyor = Creature:new {
 	objectName = "@mob/creature_names:nym_surveyer",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "nym",
@@ -47,4 +47,4 @@ nym_surveyer = Creature:new {
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(nym_surveyer, "nym_surveyer")
+CreatureTemplates:addCreatureTemplate(nym_surveyor, "nym_surveyor")

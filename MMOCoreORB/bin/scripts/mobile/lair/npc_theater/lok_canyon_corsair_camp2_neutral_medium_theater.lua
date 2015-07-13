@@ -1,5 +1,5 @@
 lok_canyon_corsair_camp2_neutral_medium_theater = Lair:new {
-	mobiles = {{"canyon_corsair_elite_pirate", 1},{"canyon_corsair_destroyer", 1}},
+	mobiles = {{"canyon_corsair_captain", 1},{"elite_canyon_corsair", 1}},
 	spawnLimit = 12,
 	buildingsVeryEasy = {"object/building/poi/tatooine_hutt_businessmen_camp_medium.iff","object/building/poi/tatooine_hutt_businessmen_camp_medium2.iff"},
 	buildingsEasy = {"object/building/poi/tatooine_hutt_businessmen_camp_medium.iff","object/building/poi/tatooine_hutt_businessmen_camp_medium2.iff"},

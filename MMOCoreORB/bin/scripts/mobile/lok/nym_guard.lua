@@ -1,17 +1,17 @@
-nym_guard_strong = Creature:new {
-	objectName = "@mob/creature_names:nym_guard_strong",
+nym_guard = Creature:new {
+	objectName = "@mob/creature_names:nym_guard",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "nym",
 	faction = "nym",
-	level = 36,
-	chanceHit = 0.41,
-	damageMin = 315,
-	damageMax = 340,
-	baseXp = 3642,
-	baseHAM = 9000,
-	baseHAMmax = 11000,
-	armor = 1,
-	resists = {135,135,15,15,140,-1,-1,-1,-1},
+	level = 9,
+	chanceHit = 0.27,
+	damageMin = 80,
+	damageMax = 90,
+	baseXp = 356,
+	baseHAM = 675,
+	baseHAMmax = 825,
+	armor = 0,
+	resists = {0,0,0,0,0,0,115,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -41,10 +41,10 @@ nym_guard_strong = Creature:new {
 			}
 		}
 	},
-	weapons = {"pirate_weapons_heavy"},
+	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/slang",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 
-CreatureTemplates:addCreatureTemplate(nym_guard_strong, "nym_guard_strong")
+CreatureTemplates:addCreatureTemplate(nym_guard, "nym_guard")

@@ -1,5 +1,5 @@
 naboo_rsf_patrol_neutral_none = Lair:new {
-	mobiles = {{"rsf_security_guard",1},{"rsf_security_officer",1}},
+	mobiles = {{"rsf_security_guard",1}},
 	spawnLimit = 9,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

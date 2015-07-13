@@ -3,15 +3,15 @@ nym_guard_weak = Creature:new {
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "nym",
 	faction = "nym",
-	level = 36,
-	chanceHit = 0.410000,
-	damageMin = 315,
-	damageMax = 340,
-	baseXp = 3642,
-	baseHAM = 9000,
-	baseHAMmax = 11000,
+	level = 31,
+	chanceHit = 0.39,
+	damageMin = 290,
+	damageMax = 300,
+	baseXp = 3188,
+	baseHAM = 8600,
+	baseHAMmax = 10600,
 	armor = 0,
-	resists = {35,35,0,0,40,-1,-1,-1,-1},
+	resists = {0,140,0,0,140,-1,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -40,7 +40,7 @@ nym_guard_weak = Creature:new {
 			}
 		}
 	},
-	weapons = {"pirate_weapons_heavy"},
+	weapons = {"ranged_weapons"},
 	reactionStf = "@npc_reaction/slang",
 	attacks = merge(bountyhuntermaster,marksmanmaster,brawlermaster)
 }

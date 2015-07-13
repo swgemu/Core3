@@ -1,5 +1,5 @@
 lok_blood_razor_camp_neutral_medium_theater = Lair:new {
-	mobiles = {{"blood_razor_captain", 1},{"blood_razor_officer", 1},{"blood_razor_guard", 1},{"blood_razor_elite_pirate", 1}},
+	mobiles = {{"blood_razor_captain", 1},{"blood_razor_officer", 1},{"blood_razor_guard", 1}},
 	spawnLimit = 8,
 	buildingsVeryEasy = {"object/building/poi/tatooine_swoop_medium.iff","object/building/poi/tatooine_swoop_medium2.iff"},
 	buildingsEasy = {"object/building/poi/tatooine_swoop_medium.iff","object/building/poi/tatooine_swoop_medium2.iff"},

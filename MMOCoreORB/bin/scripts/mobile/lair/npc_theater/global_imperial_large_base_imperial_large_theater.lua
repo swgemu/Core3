@@ -2,8 +2,7 @@ global_imperial_large_base_imperial_large_theater = Lair:new {
 	mobiles = {
 		{"imperial_colonel",1},
 		{"imperial_major",1},
-		{"imperial_first_lieutenant",2},
-		{"imperial_sergeant",3}
+		{"imperial_second_lieutenant",2},
 	},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/building/poi/lok_imperial_large2.iff","object/building/poi/anywhere_imperial_base_large_1.iff"},

@@ -2,7 +2,6 @@ endor_marauder_frenzied_neutral_medium_theater = Lair:new {
 	mobiles = {
 		{"frenzied_marauder",1},
 		{"feral_marauder",1},
-		{"berserk_marauder",1},
 		{"marauder",1},
 	},
 	spawnLimit = 12,

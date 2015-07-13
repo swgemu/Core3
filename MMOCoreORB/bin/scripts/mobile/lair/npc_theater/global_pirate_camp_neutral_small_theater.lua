@@ -1,6 +1,7 @@
 global_pirate_camp_neutral_small_theater = Lair:new {
 	mobiles = {
-		{"pirate_squab",1}
+		{"pirate",2},
+		{"pirate_lieutenant",1}
 	},
 	spawnLimit = 9,
 	buildingsVeryEasy = {"object/building/poi/naboo_gunrunners_small2.iff","object/building/poi/tatooine_hutt_businessmen_camp_small1.iff","object/building/poi/tatooine_hutt_businessmen_camp_small2.iff"},

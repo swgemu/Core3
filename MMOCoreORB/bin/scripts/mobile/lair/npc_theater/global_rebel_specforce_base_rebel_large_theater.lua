@@ -2,7 +2,6 @@ global_rebel_specforce_base_rebel_large_theater = Lair:new {
 	mobiles = {
 		{"rebel_specforce_captain",1},
 		{"rebel_specforce_sergeant",2},
-		{"rebel_specforce_urban_guerrilla",3},
 		{"senior_specforce_urban_guerrilla",2}
 	},
 	spawnLimit = 15,

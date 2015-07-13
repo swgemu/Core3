@@ -1,13 +1,11 @@
 naboo_gungan_war_troop_neutral_none = Lair:new {
 	mobiles = {
 		{"gungan_scout", 2},
-		{"gungan_bomber", 2},
-		{"gungan_grand_army_soldier", 2},
+		{"gungan_war_chief", 1},
+		{"gungan_guard", 2},
 		{"gungan_fambaa", 1},
-		{"gungan_kaadu", 1},
-		{"gungan_kaadu_rider", 1},
 	},
-	spawnLimit = 12,
+	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},
 	buildingsMedium = {},

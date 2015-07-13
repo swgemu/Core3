@@ -1,9 +1,9 @@
 global_imperial_major_camp_imperial_medium_theater = Lair:new {
 	mobiles = {
 		{"imperial_major",1},
-		{"imperial_first_lieutenant",2},
+		{"imperial_first_lieutenant",1},
 		{"imperial_sergeant",2},
-		{"imperial_trooper",3}
+		{"imperial_corporal",2}
 	},
 	spawnLimit = 12,
 	buildingsVeryEasy = {"object/building/poi/lok_imperial_medium4.iff","object/building/poi/lok_imperial_medium5.iff"},

@@ -1,5 +1,5 @@
 naboo_borvos_fort_neutral_large_theater = Lair:new {
-	mobiles = {{"borvos_champion",1},{"borvos_soldier",1},{"borvos_mercenary",1}},
+	mobiles = {{"borvos_champion",1},{"borvos_thief",1},{"borvos_thug",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/building/poi/naboo_borvos_large1.iff","object/building/poi/naboo_borvos_large2.iff","object/building/poi/naboo_borvos_large3.iff"},
 	buildingsEasy = {"object/building/poi/naboo_borvos_large1.iff","object/building/poi/naboo_borvos_large2.iff","object/building/poi/naboo_borvos_large3.iff"},

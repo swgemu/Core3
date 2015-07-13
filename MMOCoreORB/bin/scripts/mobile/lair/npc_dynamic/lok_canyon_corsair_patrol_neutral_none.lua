@@ -1,5 +1,5 @@
 lok_canyon_corsair_patrol_neutral_none = Lair:new {
-	mobiles = {{"canyon_corsair_destroyer",1},{"canyon_corsair_weak_pirate",1}},
+	mobiles = {{"canyon_corsair_scout",1},{"canyon_corsair_weak_pirate",1}},
 	spawnLimit = 9,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

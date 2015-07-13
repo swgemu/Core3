@@ -1,5 +1,5 @@
 lok_nym_camp2_neutral_medium_theater = Lair:new {
-	mobiles = {{"nym_destroyer",1},{"nym_guard_elite",1},{"nym_droideka",1}},
+	mobiles = {{"nym_bodyguard",1},{"nym_pirate_strong",1}},
 	spawnLimit = 12,
 	buildingsVeryEasy = {"object/building/poi/lok_nymshenchman_small3.iff","object/building/poi/lok_nymshenchman_small4.iff"},
 	buildingsEasy = {"object/building/poi/lok_nymshenchman_small3.iff","object/building/poi/lok_nymshenchman_small4.iff"},

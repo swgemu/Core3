@@ -1,8 +1,6 @@
 naboo_rsf_outpost_neutral_large_theater = Lair:new {
 	mobiles = {
 		{"rsf_captain",1},
-		{"rsf_commando",1},
-		{"rsf_security_guard",1},
 		{"rsf_security_officer",1}
 	},
 	spawnLimit = 15,

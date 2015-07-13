@@ -1,5 +1,5 @@
 lok_mercenary_camp2_neutral_medium_theater = Lair:new {
-	mobiles = {{"mercenary_elite",1},{"mercenary_commander",1},{"strong_mercenary",1}},
+	mobiles = {{"mercenary_destroyer",1},{"mercenary_warlord",1}},
 	spawnLimit = 12,
 	buildingsVeryEasy = {"object/building/poi/tatooine_hutt_businessmen_camp_medium.iff","object/building/poi/tatooine_hutt_businessmen_camp_medium2.iff"},
 	buildingsEasy = {"object/building/poi/tatooine_hutt_businessmen_camp_medium.iff","object/building/poi/tatooine_hutt_businessmen_camp_medium2.iff"},

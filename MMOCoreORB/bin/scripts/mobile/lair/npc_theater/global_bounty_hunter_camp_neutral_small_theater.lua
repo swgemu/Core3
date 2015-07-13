@@ -1,6 +1,6 @@
 global_bounty_hunter_camp_neutral_small_theater = Lair:new {
 	mobiles = {{"bounty_hunter_thug",1}},
-	spawnLimit = 6,
+	spawnLimit = 12,
 	buildingsVeryEasy = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
 	buildingsEasy = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
 	buildingsMedium = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
