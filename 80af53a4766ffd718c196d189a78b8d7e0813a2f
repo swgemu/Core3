@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "7a96c907_72ff8002",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-07-13T07:36:44Z",
+      "side": 0,
+      "message": "I should mention that this if check here already prevents anyone from getting their entire HAM bar wounded, so anytime after this, you can simply do inflictDamage() after calculating the appropriate amount to damage.",
+      "revId": "80af53a4766ffd718c196d189a78b8d7e0813a2f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a96c907_47172452",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
         "patchSetId": 3
