@@ -247,6 +247,18 @@ int LuaCreatureObject::sendSystemMessageWithTO(lua_State* L) {
 	return 0;
 }
 
+int LuaCreatureObject::sendSystemMessageWithTT(lua_State* L) {
+	String text = lua_tostring(L, -2);
+	String value = lua_tostring(L, -1);
+
+	StringIdChatParameter param(text);
+	param.setTT(value);
+
+	realObject->sendSystemMessage(param);
+
+	return 0;
+}
+
 int LuaCreatureObject::sendGroupMessage(lua_State* L) {
 	String value = lua_tostring(L, -1);
 
