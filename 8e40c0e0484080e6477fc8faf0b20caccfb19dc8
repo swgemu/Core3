@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_3209f82c",
+        "filename": "MMOCoreORB/src/server/zone/managers/objectcontroller/command/CommandConfigManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-07-13T07:58:28Z",
+      "side": 1,
+      "message": "reading force cost twice!",
+      "revId": "8e40c0e0484080e6477fc8faf0b20caccfb19dc8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_520e0436",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-07-13T07:58:28Z",
+      "side": 1,
+      "message": "can just return the check result here, save 3 lines!",
+      "revId": "8e40c0e0484080e6477fc8faf0b20caccfb19dc8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_f212b057",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTimeList.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-07-13T07:58:28Z",
+      "side": 1,
+      "message": "could just pass 0xFF (and handle it) as pool and not copy all this code.",
+      "revId": "8e40c0e0484080e6477fc8faf0b20caccfb19dc8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
