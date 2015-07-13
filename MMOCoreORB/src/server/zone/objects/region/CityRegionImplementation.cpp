@@ -350,11 +350,15 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 			BuildingObject* building = cast<BuildingObject*>(object);
 			uint64 ownerID = structure->getOwnerObjectID();
 
-			ManagedReference<CreatureObject*> owner = zone->getZoneServer()->getObject(ownerID).castTo<CreatureObject*>();
+			ZoneServer* zoneServer = building->getZoneServer();
 
-			if(owner != NULL && owner->isPlayerCreature() && building->isResidence() && isCitizen(ownerID)) {
-				CityManager* cityManager = getZone()->getZoneServer()->getCityManager();
-				cityManager->unregisterCitizen(_this.getReferenceUnsafeStaticCast(), owner);
+			if (zoneServer != NULL) {
+				ManagedReference<CreatureObject*> owner = zoneServer->getObject(ownerID).castTo<CreatureObject*>();
+
+				if(owner != NULL && owner->isPlayerCreature() && building->isResidence() && isCitizen(ownerID)) {
+					CityManager* cityManager = zoneServer->getCityManager();
+					cityManager->unregisterCitizen(_this.getReferenceUnsafeStaticCast(), owner);
+				}
 			}
 		}
 
