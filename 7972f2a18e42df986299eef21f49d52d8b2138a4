@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_e70bd029",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1190,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-07-13T07:33:46Z",
+      "side": 1,
+      "message": "I\u0027m not sure why you have a second function here. Is there any case where addWounds shouldn\u0027t function like this? This just adds a lot of duplicate code that can be completely avoided.",
+      "revId": "7972f2a18e42df986299eef21f49d52d8b2138a4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_07091c31",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1216,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-07-13T07:33:46Z",
+      "side": 1,
+      "message": "Instead of doing it this way, use inflictDamage(). It takes care of everything for you. You can even use the destroy bool to have it not incap when appropriate.",
+      "revId": "7972f2a18e42df986299eef21f49d52d8b2138a4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_a705c815",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-07-13T07:33:46Z",
+      "side": 1,
+      "message": "Move all this back into setWounds and have it use inflictDamage() instead of setHAM. That\u0027s a much cleaner way to handle it. Keep using the old addWounds function, this new one isn\u0027t necessary (because there\u0027s no case where you wouldn\u0027t want wounding to incap that isn\u0027t universal, ie, max HAM \u003d\u003d 1).",
+      "revId": "7972f2a18e42df986299eef21f49d52d8b2138a4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

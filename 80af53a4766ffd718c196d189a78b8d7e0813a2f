@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_47172452",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-07-13T07:33:46Z",
+      "side": 0,
+      "message": "This code doesn\u0027t need to be moved out of here",
+      "revId": "80af53a4766ffd718c196d189a78b8d7e0813a2f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
