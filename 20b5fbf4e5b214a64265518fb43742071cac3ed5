@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_3257b804",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceAbsorb1Command.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-13T10:17:59Z",
+      "side": 0,
+      "message": "The above two calls are redundant and you can remove them as well.",
+      "revId": "20b5fbf4e5b214a64265518fb43742071cac3ed5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_525cc425",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceAbsorb1Command.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-13T10:17:59Z",
+      "side": 0,
+      "message": "Is this method still used?",
+      "revId": "20b5fbf4e5b214a64265518fb43742071cac3ed5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
