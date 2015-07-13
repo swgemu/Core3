@@ -945,7 +945,7 @@ void GuildManagerImplementation::transferLeadership(CreatureObject* newLeader, C
 		gmiLeader->setPermissions(GuildObject::PERMISSION_ALL);
 	}
 
-	if ( oldLeader != NULL) {
+	if (oldLeader != NULL && oldLeader != newLeader) {
 	
 		GuildMemberInfo* gmiOldLeader = guild->getMember(oldLeader->getObjectID());
 		
