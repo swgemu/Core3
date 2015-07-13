@@ -3156,6 +3156,8 @@ void CreatureObjectImplementation::destroyPlayerCreatureFromDatabase(bool destro
 	if (isInGuild()) {
 		GuildObject* guild = getGuildObject();
 
+		Locker clocker(guild, asCreatureObject());
+
 		guild->removeMember(oid);
 	}
 }
