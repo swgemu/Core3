@@ -66,6 +66,7 @@ int DroidMerchantModuleDataComponent::handleObjectMenuSelect(CreatureObject* pla
 		}
 		// create a way point and give to player
 		ManagedReference<WaypointObject*> tway = ( player->getZoneServer()->createObject(0xc456e788, 1)).castTo<WaypointObject*>();
+		Locker locker(tway);
 		tway->setPlanetCRC(waypoint->getPlanetCRC());
 		tway->setPosition(waypoint->getPositionX(), waypoint->getPositionZ(), waypoint->getPositionY());
 		tway->setActive(true);
