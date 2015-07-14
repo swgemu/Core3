@@ -113,9 +113,15 @@ public:
 	virtual bool isDataStorageUnitData() {
 		return false;
 	}
+
 	virtual bool isDroidModuleData() {
 		return false;
 	}
+
+	virtual bool isGamblingTerminalData() {
+		return false;
+	}
+
 };
 
 
