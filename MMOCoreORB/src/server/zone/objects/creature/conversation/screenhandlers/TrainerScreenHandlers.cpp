@@ -6,6 +6,7 @@
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/objects/player/sessions/TrainerConversationSession.h"
 #include "server/zone/Zone.h"
+#include "DirectorManager.h"
 
 const String TrainerScreenHandlers::STARTSCREENHANDLERID = "convoscreenstart";
 const String TrainerScreenHandlers::INFOSCREENHANDLERID = "convoscreentrainerinfo";
@@ -54,6 +55,18 @@ ConversationScreen* TrainerInfoScreenHandler::handleScreen(CreatureObject* conve
 		session->addAdditionalMasterSkill(jedi3);
 		session->addAdditionalMasterSkill(jedi4);
 		session->addAdditionalMasterSkill(jedi5);
+	}
+
+	if (conversingNPC->getObjectNameStringIdName().contains("trainer_fs")) {
+		String fs1 = "force_sensitive_combat_prowess_master";
+		String fs2 = "force_sensitive_enhanced_reflexes_master";
+		String fs3 = "force_sensitive_crafting_mastery_master";
+		String fs4 = "force_sensitive_heightened_senses_master";
+
+		session->addAdditionalMasterSkill(fs1);
+		session->addAdditionalMasterSkill(fs2);
+		session->addAdditionalMasterSkill(fs3);
+		session->addAdditionalMasterSkill(fs4);
 	}
 
 	if (conversingPlayer->hasSkill(session->getMasterSkill())) {
@@ -105,6 +118,18 @@ ConversationScreen* TrainerTrainableSkillsScreenHandler::handleScreen(CreatureOb
 	if (trainableSkills.size() > 0) {
 		//Fill in text.
 		for (int i = 0; i < trainableSkills.size(); ++i) {
+			if (nextSkills.get(i).contains("force_sensitive")) {
+				Skill* skillCheck = SkillManager::instance()->getSkill(nextSkills.get(i));
+				Skill* skillCheckFour = NULL;
+				for (int j=0; j < 4; ++j) {
+					if (!skillCheck->getParentName().contains("master")) { // Get up to the fourth box.
+						skillCheckFour = skillCheck->getParent();
+					}
+				}
+				if (DirectorManager::instance()->getQuestStatus(String::valueOf(conversingPlayer->getObjectID()) + ":" + skillCheckFour->getSkillName()) != "unlocked") {
+					continue;
+				}
+			}
 			conversationScreen->addOption("@skl_n:" + trainableSkills.get(i), TrainerScreenHandlers::CANLEARNSKILLSCREENHANDLERID);
 			session->addTrainableSkill(trainableSkills.get(i));
 		}
@@ -175,8 +200,21 @@ ConversationScreen* TrainerNextSkillsScreenHandler::handleScreen(CreatureObject*
 	if (nextSkills.size() > 0) {
 		//Fill in text.
 		for (int i = 0; i < nextSkills.size(); ++i) {
+			if (nextSkills.get(i).contains("force_sensitive")) {
+				Skill* skillCheck = SkillManager::instance()->getSkill(nextSkills.get(i));
+				Skill* skillCheckFour = NULL;
+				for (int j=0; j < 4; ++j) {
+					if (!skillCheck->getParentName().contains("master")) { // Get up to the fourth box.
+						skillCheckFour = skillCheck->getParent();
+					}
+				}
+				if (DirectorManager::instance()->getQuestStatus(String::valueOf(conversingPlayer->getObjectID()) + ":" + skillCheckFour->getSkillName()) != "unlocked") {
+					continue;
+				}
+			}
 			conversationScreen->addOption("@skl_n:" + nextSkills.get(i), TrainerScreenHandlers::SKILLINFOSCREENHANDLERID);
 			session->addNextSkill(nextSkills.get(i));
+
 		}
 		conversationScreen->addOption("@skill_teacher:back", TrainerScreenHandlers::STARTSCREENHANDLERID);
 	} else {
@@ -333,6 +371,27 @@ ConversationScreen* TrainerTrainSkillScreenHandler::handleScreen(CreatureObject*
 			//Mastered profession.
 			nextScreenId = TrainerScreenHandlers::TRAINEDMASTERSCREENHANDLERID;
 			conversationScreen = NULL;
+		}
+
+		// Set the quest status if they mastered a fourth-tier box.
+		if (skill->getSkillName().contains("force_sensitive")) {
+			if (skill->getSkillName().contains("_04")) {
+				DirectorManager::instance()->setQuestStatus(String::valueOf(conversingPlayer->getObjectID()) + ":" + skill->getSkillName(), "trained");
+			}
+
+			int treesMastered = 0;
+			// If they have trained the 6th tree's 4th box, finish village.
+			SkillList* skills = conversingPlayer->getSkillList();
+			for (int i=0; i < skills->size(); ++i) {
+				String skillName = skills->get(i)->getSkillName();
+				if (skillName.contains("force_sensitive") && skillName.contains("_04")) {
+					treesMastered += 1;
+				}
+			}
+
+			if (treesMastered >= 6) { // Six trees to access village. State matches that in jedi manager.
+				conversingPlayer->setScreenPlayState("VillageJediProgression", 8);
+			}
 		}
 
 	} else {
