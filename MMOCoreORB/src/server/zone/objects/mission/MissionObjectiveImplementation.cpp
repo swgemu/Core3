@@ -170,8 +170,12 @@ void MissionObjectiveImplementation::awardReward() {
 
 	ManagedReference<GroupObject*> group = owner->getGroup();
 
+	int playerCount = 1;
+
 	if (group != NULL) {
 		Locker lockerGroup(group, _this.getReferenceUnsafeStaticCast());
+
+		playerCount = group->getNumberOfPlayerMembers();
 
 		for(int i = 0; i < group->getGroupSize(); i++) {
 			Reference<CreatureObject*> groupMember = group->getGroupMember(i)->isPlayerCreature() ? (group->getGroupMember(i)).castTo<CreatureObject*>() : NULL;
@@ -199,7 +203,19 @@ void MissionObjectiveImplementation::awardReward() {
 
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
-	int dividedReward = mission->getRewardCredits() / players.size();
+	int divisor = mission->getRewardCreditsDivisor();
+	bool expanded = false;
+
+	if (playerCount > divisor) {
+		divisor = playerCount;
+		expanded = true;
+	}
+
+	if (playerCount > players.size()) {
+		owner->sendSystemMessage("@mission/mission_generic:group_too_far"); // Mission Alert! Some group members are too far away from the group to receive their reward and and are not eligible for reward.
+	}
+
+	int dividedReward = mission->getRewardCredits() / divisor;
 
 	for (int i = 0; i < players.size(); i++) {
 		ManagedReference<CreatureObject*> player = players.get(i);
@@ -211,7 +227,17 @@ void MissionObjectiveImplementation::awardReward() {
 		player->addBankCredits(dividedReward, true);
 	}
 
-	StatisticsManager::instance()->completeMission(mission->getTypeCRC() ,mission->getRewardCredits());
+	if (group != NULL) {
+		if (expanded) {
+			owner->sendSystemMessage("@mission/mission_generic:group_expanded"); // Group Mission Success! Reward credits have been transmitted to the bank account of all group members in the immediate area. They have been recalculated to reflect the newly added members.
+		} else {
+			owner->sendSystemMessage("@mission/mission_generic:group_success"); // Group Mission Success! Reward credits have been transmitted to the bank account of all group members in the immediate area.
+		}
+	}
+
+	int creditsDistributed = dividedReward * players.size();
+
+	StatisticsManager::instance()->completeMission(mission->getTypeCRC(), creditsDistributed);
 }
 
 Vector3 MissionObjectiveImplementation::getEndPosition() {

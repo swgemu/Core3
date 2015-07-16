@@ -411,15 +411,15 @@ void GroupObjectImplementation::calcGroupLevel() {
 	groupLevel = 0;
 
 	for (int i = 0; i < getGroupSize(); i++) {
-		SceneObject* member = getGroupMember(i);
+		Reference<SceneObject*> member = getGroupMember(i);
 
 		if (member->isPet()) {
-			CreatureObject* creature = cast<CreatureObject*>(member);
+			CreatureObject* creature = cast<CreatureObject*>(member.get());
 
 			groupLevel += creature->getLevel() / 5;
 
 		} else if (member->isPlayerCreature()) {
-			CreatureObject* creature = cast<CreatureObject*>(member);
+			CreatureObject* creature = cast<CreatureObject*>(member.get());
 
 			int memberLevel = creature->getLevel();
 
@@ -438,6 +438,20 @@ void GroupObjectImplementation::calcGroupLevel() {
 	msg->close();
 
 	broadcastMessage(msg);
+}
+
+int GroupObjectImplementation::getNumberOfPlayerMembers() {
+	int playerCount = 0;
+
+	for (int i = 0; i < getGroupSize(); i++) {
+		Reference<SceneObject*> member = getGroupMember(i);
+
+		if (member->isPlayerCreature()) {
+			playerCount++;
+		}
+	}
+
+	return playerCount;
 }
 
 void GroupObjectImplementation::sendSystemMessage(StringIdChatParameter& param, bool sendLeader) {
