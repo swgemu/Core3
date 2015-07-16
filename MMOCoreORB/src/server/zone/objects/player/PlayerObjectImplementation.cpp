@@ -77,6 +77,7 @@
 #include "events/ForceRegenerationEvent.h"
 #include "server/login/account/Account.h"
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
+#include "server/zone/managers/player/QuestInfo.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -2144,6 +2145,64 @@ void PlayerObjectImplementation::setJediState(int state, bool notifyClient) {
 
 	sendMessage(delta);
 }
+
+bool PlayerObjectImplementation::canActivateQuest(int questID) {
+	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
+	if (creature == NULL)
+		return false;
+
+	PlayerManager* playerManager = creature->getZoneServer()->getPlayerManager();
+
+	if (playerManager == NULL)
+		return false;
+
+	// Invalid quest id
+	if (questID < 0 || questID > playerManager->getTotalPlayerQuests())
+		return false;
+
+	// Quest is active or already completed
+	if (hasActiveQuestBitSet(questID) || hasCompletedQuestsBitSet(questID))
+		return false;
+
+	String parentQuest = playerManager->getPlayerQuestParent(questID);
+
+	// Quest has a parent quest that has not been completed
+	if (parentQuest != "") {
+		int parentQuestID = playerManager->getPlayerQuestID(parentQuest);
+
+		if (!hasCompletedQuestsBitSet(parentQuestID))
+			return false;
+	}
+
+	return true;
+}
+
+void PlayerObjectImplementation::activateQuest(int questID) {
+	if (!canActivateQuest(questID))
+		return;
+
+	CreatureObject* creature = cast<CreatureObject*>(getParent().get().get());
+
+	if (creature == NULL)
+		return;
+
+	PlayerManager* playerManager = creature->getZoneServer()->getPlayerManager();
+
+	if (playerManager == NULL)
+		return;
+
+	ManagedReference<QuestInfo*> questInfo = playerManager->getQuestInfo(questID);
+
+	if (questInfo == NULL)
+		return;
+
+	setActiveQuestsBit(questID, 1);
+
+	if (questInfo->shouldSendSystemMessage())
+		creature->sendSystemMessage("@quest/quests:quest_journal_updated");
+}
+
 
 void PlayerObjectImplementation::setActiveQuestsBit(int bitIndex, byte value, bool notifyClient) {
 	activeQuests.setBit(bitIndex, value);
