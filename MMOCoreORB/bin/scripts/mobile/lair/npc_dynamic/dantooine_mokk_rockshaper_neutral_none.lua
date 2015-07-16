@@ -1,5 +1,5 @@
 dantooine_mokk_rockshaper_neutral_none = Lair:new {
-	mobiles = {{"mokk_rockshaper",1}},
+	mobiles = {{"mokk_rockshaper",1},{"mokk_harvester",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

@@ -218,7 +218,7 @@ tatooine_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "tatooine_jawa_troop_neutral_none",
+			lairTemplateName = "tatooine_jawa_squad_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 6,
 			maxDifficulty = 10,
