@@ -42,6 +42,7 @@ import engine.util.u3d.CloseObjectsVector;
 include server.zone.managers.collision.IntersectionResults;
 include server.zone.managers.player.VeteranRewardList;
 include server.zone.managers.player.JukeboxSong;
+include server.zone.managers.player.QuestInfo;
 include server.zone.objects.player.badges.Badge;
 
 class PlayerManager extends Observer implements Logger {
@@ -81,6 +82,9 @@ class PlayerManager extends Observer implements Logger {
 	protected transient Vector<Reference<JukeboxSong> > jukeboxSongs;
 
 	@dereferenced
+	protected transient Vector<Reference<QuestInfo> > questInfo;
+
+	@dereferenced
 	private transient OnlineZoneClientMap onlineZoneClientMap;
 
 	public transient static int MAX_CHAR_ONLINE_COUNT;
@@ -91,6 +95,7 @@ class PlayerManager extends Observer implements Logger {
 	private native void loadLuaConfig();
 	private native void loadStartingLocations();
 	private native void loadPermissionLevels();
+	private native void loadQuestInfo();
 
 	public native void finalize();
 
@@ -374,6 +379,18 @@ class PlayerManager extends Observer implements Logger {
 
 	public native void fixHAM(CreatureObject player);
 	public native void fixBuffSkillMods(CreatureObject player);
+
+	public native int getPlayerQuestID(final string name);
+	public native string getPlayerQuestParent(int questID);
+
+	public int getTotalPlayerQuests(){
+		return questInfo.size();
+	}
+
+	@local
+	public native QuestInfo getQuestInfo(int questID) {
+		return questInfo.get(questID);
+	}
 
 	/**
 	 * Sends a confirmation box to the student asking if they want to learn the skill.
