@@ -345,7 +345,7 @@ int PlayerManagerImplementation::getPlayerQuestID(const String& name) {
 			return i;
 	}
 
-	return NULL;
+	return -1;
 }
 
 String PlayerManagerImplementation::getPlayerQuestParent(int questID) {

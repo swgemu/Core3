@@ -2171,7 +2171,7 @@ bool PlayerObjectImplementation::canActivateQuest(int questID) {
 	if (parentQuest != "") {
 		int parentQuestID = playerManager->getPlayerQuestID(parentQuest);
 
-		if (!hasCompletedQuestsBitSet(parentQuestID))
+		if (parentQuestID < 0 || !hasCompletedQuestsBitSet(parentQuestID))
 			return false;
 	}
 
