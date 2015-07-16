@@ -1793,12 +1793,12 @@ function ThemeParkLogic:followPlayer(pConversingNpc, pConversingPlayer)
 	ObjectManager.withCreatureAndPlayerObject(pConversingPlayer, function(playerCreo, player)
 		local npc = AiAgent(pConversingNpc)
 		npc:setFollowObject(pConversingPlayer)
-		if playerCreo:getFaction() == FACTIONREBEL or playerCreo:getFaction() == FACTIONIMPERIAL then
+		if (playerCreo:getFaction() == FACTIONREBEL or playerCreo:getFaction() == FACTIONIMPERIAL) and not player:isOnLeave() then
 			local npcCreo = LuaCreatureObject(pConversingNpc)
 			npcCreo:setFaction(playerCreo:getFaction())
-			if (player:isOvert() == true) then
+			if player:isOvert() then
 				npcCreo:setPvpStatusBitmask(5)
-			else
+			elseif player:isCovert() then
 				npcCreo:setPvpStatusBitmask(1)
 			end
 		end
