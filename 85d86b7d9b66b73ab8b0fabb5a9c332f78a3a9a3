@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_b26bc884",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/QuestInfo.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-16T10:40:07Z",
+      "side": 1,
+      "message": "questName",
+      "revId": "85d86b7d9b66b73ab8b0fabb5a9c332f78a3a9a3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
