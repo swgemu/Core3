@@ -56,6 +56,8 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "closeSuiWindowType", &LuaPlayerObject::closeSuiWindowType},
 		{ "getExperienceList", &LuaPlayerObject::getExperienceList},
 		{ "getExperienceCap", &LuaPlayerObject::getExperienceCap},
+		{ "activateQuest", &LuaPlayerObject::activateQuest },
+		{ "canActivateQuest", &LuaPlayerObject::canActivateQuest },
 		{ 0, 0 }
 };
 
@@ -382,6 +384,23 @@ int LuaPlayerObject::clearCompletedQuestsBit(lua_State* L) {
 
 	return 0;
 }
+
+int LuaPlayerObject::activateQuest(lua_State* L) {
+	int quest = lua_tointeger(L, -1);
+
+	realObject->activateQuest(quest);
+
+	return 0;
+}
+
+int LuaPlayerObject::canActivateQuest(lua_State* L) {
+	int quest = lua_tointeger(L, -1);
+
+	lua_pushboolean(L, realObject->canActivateQuest(quest));
+
+	return 1;
+}
+
 
 int LuaPlayerObject::hasAbility(lua_State* L) {
 	String value = lua_tostring(L, -1);

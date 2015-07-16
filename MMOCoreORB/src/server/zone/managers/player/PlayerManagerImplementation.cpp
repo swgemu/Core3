@@ -39,6 +39,7 @@
 #include "server/zone/objects/player/sessions/VeteranRewardSession.h"
 #include "server/zone/objects/tangible/OptionBitmask.h"
 #include "server/zone/managers/player/JukeboxSong.h"
+#include "server/zone/managers/player/QuestInfo.h"
 
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/objects/ship/ShipObject.h"
@@ -143,6 +144,7 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 
 	loadLuaConfig();
 	loadStartingLocations();
+	loadQuestInfo();
 	loadPermissionLevels();
 
 	setGlobalLogging(true);
@@ -262,6 +264,32 @@ void PlayerManagerImplementation::loadStartingLocations() {
 	info("Loaded " + String::valueOf(startingLocationList.getTotalLocations()) + " starting locations.", true);
 }
 
+void PlayerManagerImplementation::loadQuestInfo() {
+	TemplateManager* templateManager = TemplateManager::instance();
+
+	IffStream* iffStream = templateManager->openIffFile("datatables/player/quests.iff");
+
+	if (iffStream == NULL) {
+		info("quests.iff could not be found.", true);
+		return;
+	}
+
+	DataTableIff dtable;
+	dtable.readObject(iffStream);
+
+	delete iffStream;
+
+	for (int i = 0; i < dtable.getTotalRows(); ++i) {
+		DataTableRow* row = dtable.getRow(i);
+
+		QuestInfo* quest = new QuestInfo();
+		quest->parseDataTableRow(row);
+		questInfo.add(quest);
+	}
+
+	info("Loaded " + String::valueOf(questInfo.size()) + " quests.", true);
+}
+
 void PlayerManagerImplementation::loadPermissionLevels() {
 	try {
 		permissionLevelList = PermissionLevelList::instance();
@@ -307,6 +335,26 @@ void PlayerManagerImplementation::loadNameMap() {
 	StringBuffer msg;
 	msg << "loaded " << nameMap->size() << " character names in memory";
 	info(msg.toString(), true);
+}
+
+int PlayerManagerImplementation::getPlayerQuestID(const String& name) {
+	for (int i = 0; i < questInfo.size(); ++i) {
+		QuestInfo* quest = questInfo.get(i);
+
+		if (quest != NULL && quest->getQuestName().hashCode() == name.hashCode())
+			return i;
+	}
+
+	return NULL;
+}
+
+String PlayerManagerImplementation::getPlayerQuestParent(int questID) {
+	QuestInfo* quest = questInfo.get(questID);
+
+	if (quest != NULL)
+		return quest->getQuestParent();
+	else
+		return "";
 }
 
 bool PlayerManagerImplementation::existsName(const String& name) {

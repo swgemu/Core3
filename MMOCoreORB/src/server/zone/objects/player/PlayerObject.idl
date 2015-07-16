@@ -717,6 +717,11 @@ class PlayerObject extends IntangibleObject {
 	public void clearActiveQuestsBit(int bitIndex, boolean notifyClient = true) {
 		setActiveQuestsBit(bitIndex, (byte)0, notifyClient);
 	}
+
+	@dirty
+	public native boolean canActivateQuest(int questID);
+
+	public native void activateQuest(int questID);
 	
 	@dirty
 	public boolean hasActiveQuestBitSet(int bitIndex) {
