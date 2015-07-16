@@ -2,28 +2,28 @@ rori_easy = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "rori_gundark_raider_camp_neutral_medium_theater",
+			lairTemplateName = "rori_gundark_hooligan_camp_neutral_medium_theater",
+			spawnLimit = -1,
+			minDifficulty = 4,
+			maxDifficulty = 8,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "rori_narmle_guard_camp_neutral_medium_theater",
+			spawnLimit = -1,
+			minDifficulty = 4,
+			maxDifficulty = 8,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "rori_brigade_scout_camp_neutral_medium_theater",
 			spawnLimit = -1,
 			minDifficulty = 5,
 			maxDifficulty = 9,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "rori_narmle_patrol_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 5,
-			maxDifficulty = 14,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "rori_gundark_hooligan_camp_neutral_medium_theater",
-			spawnLimit = -1,
-			minDifficulty = 6,
-			maxDifficulty = 10,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
@@ -101,6 +101,24 @@ rori_easy = {
 			size = 25
 		},
 		{
+			lairTemplateName = "rori_gundark_raider_camp_neutral_medium_theater",
+			spawnLimit = -1,
+			minDifficulty = 7,
+			maxDifficulty = 11,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "rori_kobola_miner_base_neutral_large_theater",
+			spawnLimit = -1,
+			minDifficulty = 7,
+			maxDifficulty = 11,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
 			lairTemplateName = "rori_nightspider_pack_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 7,
@@ -172,7 +190,6 @@ rori_easy = {
 			weighting = 15,
 			size = 20
 		},
-
 	}
 }
 

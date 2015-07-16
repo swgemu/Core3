@@ -1,6 +1,6 @@
 talus_binayre_smuggler_patrol_neutral_none = Lair:new {
-	mobiles = {{"binayre_swindler",1},{"binayre_smuggler",1},{"binayre_hooligan",1}},
-	spawnLimit = 9,
+	mobiles = {{"binayre_smuggler",1}},
+	spawnLimit = 12,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},
 	buildingsMedium = {},

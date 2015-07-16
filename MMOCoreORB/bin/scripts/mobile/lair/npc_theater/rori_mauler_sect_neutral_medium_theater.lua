@@ -1,10 +1,6 @@
 rori_mauler_sect_neutral_medium_theater = Lair:new {
-	mobiles = {
-		{"mauler_acolyte",1},
-		{"mauler",1},
-		{"mauler_apprentice",1}
-	},
-	spawnLimit = 12,
+	mobiles = {{"mauler_apprentice",1}},
+	spawnLimit = 15,
 	buildingsVeryEasy = {"object/building/poi/naboo_mauler_medium.iff"},
 	buildingsEasy = {"object/building/poi/naboo_mauler_medium.iff"},
 	buildingsMedium = {"object/building/poi/naboo_mauler_medium.iff"},

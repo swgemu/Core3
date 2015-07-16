@@ -1,5 +1,5 @@
 talus_chunker_goon_camp_neutral_small_theater = Lair:new {
-	mobiles = {{"chunker_goon",1},{"chunker_creep",1},{"chunker_mooch",1},{"chunker_pest",1},{"chunker_swindler",1}},
+	mobiles = {{"chunker_goon",1},{"chunker_mooch",1},{"chunker_pest",1},{"chunker_nitwit",1},{"chunker_punk",1}},
 	spawnLimit = 9,
 	buildingsVeryEasy = {"object/building/poi/corellia_smashball_small1.iff","object/building/poi/corellia_smashball_small2.iff"},
 	buildingsEasy = {"object/building/poi/corellia_smashball_small1.iff","object/building/poi/corellia_smashball_small2.iff"},

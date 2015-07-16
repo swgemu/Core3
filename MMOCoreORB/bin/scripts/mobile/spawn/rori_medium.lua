@@ -2,25 +2,43 @@ rori_medium = {
 
 	lairSpawns = {
 		{
+			lairTemplateName = "rori_cobral_mugger_camp_neutral_medium_theater",
+			spawnLimit = -1,
+			minDifficulty = 8,
+			maxDifficulty = 12,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
 			lairTemplateName = "rori_brigade_squad_neutral_none",
 			spawnLimit = -1,
-			minDifficulty = 6,
-			maxDifficulty = 15,
+			minDifficulty = 8,
+			maxDifficulty = 12,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
 		},
 		{
-			lairTemplateName = "rori_brigade_scout_camp_neutral_medium_theater",
+			lairTemplateName = "rori_narmle_camp_neutral_large_theater",
 			spawnLimit = -1,
-			minDifficulty = 7,
-			maxDifficulty = 16,
+			minDifficulty = 8,
+			maxDifficulty = 12,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
 		},
 		{
-			lairTemplateName = "rori_spice_collective_mineral_scouts_neutral_none",
+			lairTemplateName = "rori_spice_collective_courier_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 8,
+			maxDifficulty = 12,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 30
+		},
+		{
+			lairTemplateName = "rori_garyn_raiders_camp_neutral_medium_theater",
 			spawnLimit = -1,
 			minDifficulty = 9,
 			maxDifficulty = 13,
@@ -38,7 +56,7 @@ rori_medium = {
 			size = 25
 		},
 		{
-			lairTemplateName = "rori_cobral_mugger_camp_neutral_medium_theater",
+			lairTemplateName = "rori_trade_federation_camp_neutral_large_theater",
 			spawnLimit = -1,
 			minDifficulty = 9,
 			maxDifficulty = 13,
@@ -63,15 +81,6 @@ rori_medium = {
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 20
-		},
-		{
-			lairTemplateName = "rori_spice_collective_miner_base_neutral_large_theater",
-			spawnLimit = -1,
-			minDifficulty = 9,
-			maxDifficulty = 18,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 30
 		},
 		{
 			lairTemplateName = "rori_kobola_assasin_neutral_none",
@@ -164,7 +173,7 @@ rori_medium = {
 			size = 25
 		},
 		{
-			lairTemplateName = "rori_mauler_sect_neutral_medium_theater",
+			lairTemplateName = "rori_rorgungan_town_neutral_large_theater",
 			spawnLimit = -1,
 			minDifficulty = 12,
 			maxDifficulty = 16,
@@ -173,7 +182,7 @@ rori_medium = {
 			size = 25
 		},
 		{
-			lairTemplateName = "rori_mauler_roamers_neutral_none",
+			lairTemplateName = "rori_mauler_sect_neutral_medium_theater",
 			spawnLimit = -1,
 			minDifficulty = 12,
 			maxDifficulty = 16,
@@ -247,8 +256,8 @@ rori_medium = {
 		{
 			lairTemplateName = "rori_cobral_runner_neutral_none",
 			spawnLimit = -1,
-			minDifficulty = 13,
-			maxDifficulty = 17,
+			minDifficulty = 12,
+			maxDifficulty = 16,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25

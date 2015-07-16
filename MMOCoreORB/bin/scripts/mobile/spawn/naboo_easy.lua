@@ -2,15 +2,6 @@ naboo_easy = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "naboo_plasma_thief_camp_neutral_large_theater",
-			spawnLimit = -1,
-			minDifficulty = 3,
-			maxDifficulty = 12,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 30
-		},
-		{
 			lairTemplateName = "naboo_philosopher_camp_neutral_large_theater",
 			spawnLimit = -1,
 			minDifficulty = 4,
@@ -90,6 +81,15 @@ naboo_easy = {
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 15
+		},
+		{
+			lairTemplateName = "naboo_plasma_thief_camp_neutral_large_theater",
+			spawnLimit = -1,
+			minDifficulty = 6,
+			maxDifficulty = 10,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 30
 		},
 		{
 			lairTemplateName = "naboo_krevol_lair_neutral_small_03",
@@ -398,6 +398,15 @@ naboo_easy = {
 			size = 15
 		},
 		{
+			lairTemplateName = "naboo_gungan_hermit_neutral_small_theater",
+			spawnLimit = -1,
+			minDifficulty = 7,
+			maxDifficulty = 11,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 20
+		},
+		{
 			lairTemplateName = "naboo_ankura_gungan_camp_neutral_large_theater",
 			spawnLimit = -1,
 			minDifficulty = 8,
@@ -435,6 +444,15 @@ naboo_easy = {
 		},
 		{
 			lairTemplateName = "naboo_kaadu_domesticated_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 8,
+			maxDifficulty = 12,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 20
+		},
+		{
+			lairTemplateName = "naboo_rsf_patrol_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 8,
 			maxDifficulty = 12,

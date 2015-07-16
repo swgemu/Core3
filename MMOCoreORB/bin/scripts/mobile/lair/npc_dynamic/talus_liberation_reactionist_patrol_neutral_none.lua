@@ -1,6 +1,6 @@
 talus_liberation_reactionist_patrol_neutral_none = Lair:new {
-	mobiles = {{"talus_liberation_party_reactionist",1},{"talus_liberation_party_volunteer",1}},
-	spawnLimit = 9,
+	mobiles = {{"talus_liberation_party_reactionist",1}},
+	spawnLimit = 12,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},
 	buildingsMedium = {},

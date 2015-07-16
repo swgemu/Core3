@@ -1,5 +1,5 @@
 rori_cobral_overlord_camp_neutral_large_theater = Lair:new {
-	mobiles = {{"neo_cobral_overlord",1},{"neo_cobral_bandit",1}},
+	mobiles = {{"neo_cobral_overlord",1},{"neo_cobral_hitman",1}},
 	spawnLimit = 12,
 	buildingsVeryEasy = {"object/building/poi/naboo_gunrunners_medium.iff"},
 	buildingsEasy = {"object/building/poi/naboo_gunrunners_medium.iff"},

@@ -1,5 +1,5 @@
 rori_brigade_base_neutral_large_theater = Lair:new {
-	mobiles = {{"first_brigade_general",1},{"first_brigade_officer",1},{"first_brigade_captain",1},{"first_brigade_technician",1}},
+	mobiles = {{"first_brigade_general",1},{"first_brigade_captain",1}},
 	spawnLimit = 12,
 	buildingsVeryEasy = {"object/building/poi/naboo_borvos_large1.iff","object/building/poi/naboo_borvos_large2.iff","object/building/poi/naboo_borvos_large3.iff"},
 	buildingsEasy = {"object/building/poi/naboo_borvos_large1.iff","object/building/poi/naboo_borvos_large2.iff","object/building/poi/naboo_borvos_large3.iff"},

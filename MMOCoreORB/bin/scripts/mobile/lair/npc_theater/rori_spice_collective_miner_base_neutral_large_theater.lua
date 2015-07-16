@@ -1,5 +1,5 @@
 rori_spice_collective_miner_base_neutral_large_theater = Lair:new {
-	mobiles = {{"spice_collective_workchief",1},{"spice_collective_miner",1},{"spice_collective_foreman",1},{"spice_collective_sentry",1}},
+	mobiles = {{"spice_collective_heavy_guard",1},{"spice_collective_elite_guard",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/building/poi/naboo_gungtrad_large1.iff","object/building/poi/naboo_gungtrad_large2.iff"},
 	buildingsEasy = {"object/building/poi/naboo_gungtrad_large1.iff","object/building/poi/naboo_gungtrad_large2.iff"},

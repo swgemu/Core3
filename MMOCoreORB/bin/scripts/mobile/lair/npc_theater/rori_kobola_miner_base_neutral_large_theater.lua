@@ -1,6 +1,6 @@
 rori_kobola_miner_base_neutral_large_theater = Lair:new {
-	mobiles = {{"kobola_miner", 1},{"kobola_foreman", 1},{"kobola_pitboss", 1}},
-	spawnLimit = 8,
+	mobiles = {{"kobola_miner", 1},{"kobola_thief",1}},
+	spawnLimit = 15,
 	buildingsVeryEasy = {"object/building/poi/naboo_borvos_large1.iff","object/building/poi/naboo_borvos_large2.iff","object/building/poi/naboo_borvos_large3.iff"},
 	buildingsEasy = {"object/building/poi/naboo_borvos_large1.iff","object/building/poi/naboo_borvos_large2.iff","object/building/poi/naboo_borvos_large3.iff"},
 	buildingsMedium = {"object/building/poi/naboo_borvos_large1.iff","object/building/poi/naboo_borvos_large2.iff","object/building/poi/naboo_borvos_large3.iff"},

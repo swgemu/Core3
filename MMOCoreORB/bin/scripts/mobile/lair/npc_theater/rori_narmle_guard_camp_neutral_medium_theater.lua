@@ -1,5 +1,5 @@
 rori_narmle_guard_camp_neutral_medium_theater = Lair:new {
-	mobiles = {{"narmle_militia_major",1},{"narmle_militia_guard",1}},
+	mobiles = {{"narmle_militia_ensign",1},{"narmle_militia_guard",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/building/poi/naboo_gunrunners_medium.iff"},
 	buildingsEasy = {"object/building/poi/naboo_gunrunners_medium.iff"},

@@ -1,6 +1,6 @@
 rori_cobral_assasin_neutral_none = Lair:new {
 	mobiles = {{"neo_cobral_assassin",1}},
-	spawnLimit = 6,
+	spawnLimit = 9,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},
 	buildingsMedium = {},

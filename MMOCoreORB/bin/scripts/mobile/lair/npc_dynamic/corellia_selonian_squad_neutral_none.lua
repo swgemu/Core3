@@ -1,5 +1,5 @@
 corellia_selonian_squad_neutral_none = Lair:new {
-	mobiles = {{"selonian_raider",1},{"selonian_warrior",1},{"selonian_captain",1}},
+	mobiles = {{"selonian_separatist",3},{"selonian_separatist_general",1},{"selonian_separatist_soldier",3},{"selonian_separatist_recruit",3},{"selonian_separatist_captain",2}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

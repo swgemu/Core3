@@ -74,15 +74,6 @@ corellia_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "corellia_greck_base_neutral_large_theater",
-			spawnLimit = -1,
-			minDifficulty = 6,
-			maxDifficulty = 10,
-			numberToSpawn = 0,
-			weighting = 10,
-			size = 30
-		},
-		{
 			lairTemplateName = "corellia_vrelt_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 6,
@@ -217,27 +208,8 @@ corellia_easy = {
 			weighting = 7,
 			size = 25
 		},
-
-		{
-			lairTemplateName = "corellia_swooper_camp_neutral_small_theater",
-			spawnLimit = -1,
-			minDifficulty = 8,
-			maxDifficulty = 12,
-			numberToSpawn = 0,
-			weighting = 10,
-			size = 15
-		},
 		{
 			lairTemplateName = "corellia_selonian_assasin_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 8,
-			maxDifficulty = 12,
-			numberToSpawn = 0,
-			weighting = 10,
-			size = 25
-		},
-		{
-			lairTemplateName = "corellia_meatlump_outpost_neutral_medium_theater",
 			spawnLimit = -1,
 			minDifficulty = 8,
 			maxDifficulty = 12,

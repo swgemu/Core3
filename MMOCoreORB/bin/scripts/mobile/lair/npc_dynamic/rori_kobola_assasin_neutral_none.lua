@@ -1,6 +1,6 @@
 rori_kobola_assasin_neutral_none = Lair:new {
-	mobiles = {{"kobola_assassin",1},{"kobola_thief",1}},
-	spawnLimit = 9,
+	mobiles = {{"kobola_assassin",1},{"kobola_foreman", 1}},
+	spawnLimit = 12,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},
 	buildingsMedium = {},

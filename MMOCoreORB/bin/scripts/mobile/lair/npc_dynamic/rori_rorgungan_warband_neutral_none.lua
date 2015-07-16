@@ -1,6 +1,6 @@
 rori_rorgungan_warband_neutral_none = Lair:new {
-	mobiles = {{"rorgungan_warchief",1},{"rorgungan_warrior",2}},
-	spawnLimit = 9,
+	mobiles = {{"rorgungan_warchief",1},{"rorgungan_warrior",2},{"rorgungan_boss",1}},
+	spawnLimit = 12,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},
 	buildingsMedium = {},

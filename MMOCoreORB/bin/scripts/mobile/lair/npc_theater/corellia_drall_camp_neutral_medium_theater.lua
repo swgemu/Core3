@@ -1,5 +1,5 @@
 corellia_drall_camp_neutral_medium_theater = Lair:new {
-	mobiles = {{"drall_abbot",2},{"drall_chieftain",1},{"drall_guard",3},{"drall_master",1},{"drall_monk",2},{"drall_sentry",3}},
+	mobiles = {{"drall_abbot",2},{"drall_chieftain",1},{"drall_master",1},{"drall_monk",2}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/building/poi/corellia_drall_abbots_camp_small1.iff"},
 	buildingsEasy = {"object/building/poi/corellia_drall_abbots_camp_small1.iff"},

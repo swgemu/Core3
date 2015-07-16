@@ -2,15 +2,6 @@ corellia_medium = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "corellia_selonian_base_neutral_large_theater",
-			spawnLimit = -1,
-			minDifficulty = 6,
-			maxDifficulty = 15,
-			numberToSpawn = 0,
-			weighting = 10,
-			size = 30
-		},
-		{
 			lairTemplateName = "corellia_vrelt_pack_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 6,
@@ -20,15 +11,59 @@ corellia_medium = {
 			size = 20
 		},
 		{
-			lairTemplateName = "corellia_lord_nyax_chapel_neutral_medium_theater",
+			lairTemplateName = "corellia_selonian_squad_neutral_none",
 			spawnLimit = -1,
-			minDifficulty = 8,
-			maxDifficulty = 17,
+			minDifficulty = 6,
+			maxDifficulty = 16,
 			numberToSpawn = 0,
 			weighting = 10,
 			size = 25
 		},
-
+		{
+			lairTemplateName = "corellia_drall_patriot_camp_neutral_medium_theater",
+			spawnLimit = -1,
+			minDifficulty = 8,
+			maxDifficulty = 12,
+			numberToSpawn = 0,
+			weighting = 10,
+			size = 20
+		},
+		{
+			lairTemplateName = "corellia_lord_nyax_chapel_neutral_medium_theater",
+			spawnLimit = -1,
+			minDifficulty = 8,
+			maxDifficulty = 12,
+			numberToSpawn = 0,
+			weighting = 10,
+			size = 25
+		},
+		{
+			lairTemplateName = "corellia_meatlump_outpost_neutral_medium_theater",
+			spawnLimit = -1,
+			minDifficulty = 8,
+			maxDifficulty = 12,
+			numberToSpawn = 0,
+			weighting = 10,
+			size = 25
+		},
+		{
+			lairTemplateName = "corellia_swooper_camp_neutral_small_theater",
+			spawnLimit = -1,
+			minDifficulty = 8,
+			maxDifficulty = 12,
+			numberToSpawn = 0,
+			weighting = 10,
+			size = 15
+		},
+		{
+			lairTemplateName = "corellia_greck_base_neutral_large_theater",
+			spawnLimit = -1,
+			minDifficulty = 9,
+			maxDifficulty = 13,
+			numberToSpawn = 0,
+			weighting = 10,
+			size = 30
+		},
 		{
 			lairTemplateName = "corellia_hidden_daggers_camp_neutral_medium_theater",
 			spawnLimit = -1,
@@ -100,15 +135,6 @@ corellia_medium = {
 			numberToSpawn = 0,
 			weighting = 5,
 			size = 20
-		},
-		{
-			lairTemplateName = "corellia_hidden_daggers_outpost_neutral_medium_theater",
-			spawnLimit = -1,
-			minDifficulty = 9,
-			maxDifficulty = 18,
-			numberToSpawn = 0,
-			weighting = 10,
-			size = 25
 		},
 		{
 			lairTemplateName = "corellia_dalyrake_pack_neutral_none",
@@ -310,15 +336,6 @@ corellia_medium = {
 			size = 30
 		},
 		{
-			lairTemplateName = "corellia_selonian_squad_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 11,
-			maxDifficulty = 15,
-			numberToSpawn = 0,
-			weighting = 10,
-			size = 25
-		},
-		{
 			lairTemplateName = "corellia_monumenter_base_neutral_medium_theater",
 			spawnLimit = -1,
 			minDifficulty = 11,
@@ -326,15 +343,6 @@ corellia_medium = {
 			numberToSpawn = 0,
 			weighting = 10,
 			size = 25
-		},
-		{
-			lairTemplateName = "corellia_drall_patriot_camp_neutral_medium_theater",
-			spawnLimit = -1,
-			minDifficulty = 11,
-			maxDifficulty = 15,
-			numberToSpawn = 0,
-			weighting = 10,
-			size = 20
 		},
 		{
 			lairTemplateName = "corellia_afarathu_cult_patrol_neutral_none",
@@ -346,6 +354,15 @@ corellia_medium = {
 			size = 25
 		},
 		{
+			lairTemplateName = "corellia_selonian_outpost_neutral_large_theater",
+			spawnLimit = -1,
+			minDifficulty = 11,
+			maxDifficulty = 15,
+			numberToSpawn = 0,
+			weighting = 10,
+			size = 30
+		},
+		{
 			lairTemplateName = "corellia_tabage_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 11,
@@ -354,7 +371,6 @@ corellia_medium = {
 			weighting = 10,
 			size = 25
 		},
-
 		{
 			lairTemplateName = "corellia_monumenter_smuggler_patrol_neutral_none",
 			spawnLimit = -1,

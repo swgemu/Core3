@@ -1,6 +1,6 @@
 talus_fed_dub_patrolman_patrol_neutral_none = Lair:new {
-	mobiles = {{"fed_dub_patrolman",1}},
-	spawnLimit = 9,
+	mobiles = {{"fed_dub_patrolman",1},{"fed_dub_supporter",1}},
+	spawnLimit = 12,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},
 	buildingsMedium = {},

@@ -2,15 +2,6 @@ naboo_medium = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "naboo_gungan_hermit_neutral_small_theater",
-			spawnLimit = -1,
-			minDifficulty = 7,
-			maxDifficulty = 16,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 20
-		},
-		{
 			lairTemplateName = "naboo_sharupat_pack_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 7,
@@ -20,25 +11,16 @@ naboo_medium = {
 			size = 25
 		},
 		{
-			lairTemplateName = "naboo_rsf_outpost_neutral_large_theater",
+			lairTemplateName = "naboo_veermok_camp_neutral_medium",
 			spawnLimit = -1,
-			minDifficulty = 8,
-			maxDifficulty = 17,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 30
-		},
-		{
-			lairTemplateName = "naboo_rsf_camp_neutral_medium_theater",
-			spawnLimit = -1,
-			minDifficulty = 8,
-			maxDifficulty = 17,
+			minDifficulty = 9,
+			maxDifficulty = 13,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
 		},
 		{
-			lairTemplateName = "naboo_veermok_camp_neutral_medium",
+			lairTemplateName = "naboo_trade_federation_camp_neutral_large_theater",
 			spawnLimit = -1,
 			minDifficulty = 9,
 			maxDifficulty = 13,
@@ -153,6 +135,15 @@ naboo_medium = {
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 30
+		},
+		{
+			lairTemplateName = "naboo_borvos_camp_neutral_small_theater",
+			spawnLimit = -1,
+			minDifficulty = 10,
+			maxDifficulty = 14,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 20
 		},
 		{
 			lairTemplateName = "naboo_nuna_lair_neutral_medium",
@@ -353,7 +344,7 @@ naboo_medium = {
 			size = 20
 		},
 		{
-			lairTemplateName = "naboo_mauler_sect_neutral_medium_theater",
+			lairTemplateName = "naboo_rsf_camp_neutral_medium_theater",
 			spawnLimit = -1,
 			minDifficulty = 12,
 			maxDifficulty = 16,
@@ -362,7 +353,7 @@ naboo_medium = {
 			size = 25
 		},
 		{
-			lairTemplateName = "naboo_mauler_roamers_neutral_none",
+			lairTemplateName = "naboo_mauler_sect_neutral_medium_theater",
 			spawnLimit = -1,
 			minDifficulty = 12,
 			maxDifficulty = 16,

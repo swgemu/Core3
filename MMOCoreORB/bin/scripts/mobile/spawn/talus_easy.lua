@@ -38,22 +38,13 @@ talus_easy = {
 			size = 20
 		},
 		{
-			lairTemplateName = "talus_chunker_bruiser_camp_neutral_medium_theater",
+			lairTemplateName = "talus_chunker_goon_camp_neutral_small_theater",
 			spawnLimit = -1,
 			minDifficulty = 5,
-			maxDifficulty = 14,
+			maxDifficulty = 9,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "talus_sleemo_vandal_camp_neutral_medium_theater",
-			spawnLimit = -1,
-			minDifficulty = 6,
-			maxDifficulty = 10,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
+			size = 15
 		},
 		{
 			lairTemplateName = "talus_sleemo_delinquent_camp_neutral_medium_theater",
@@ -63,15 +54,6 @@ talus_easy = {
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
-		},
-		{
-			lairTemplateName = "talus_chunker_goon_camp_neutral_small_theater",
-			spawnLimit = -1,
-			minDifficulty = 6,
-			maxDifficulty = 10,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 15
 		},
 		{
 			lairTemplateName = "talus_paralope_lair_neutral_medium",
@@ -164,15 +146,6 @@ talus_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "talus_liberation_partisan_patrol_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 8,
-			maxDifficulty = 12,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "talus_liberation_loyalist_camp_neutral_medium_theater",
 			spawnLimit = -1,
 			minDifficulty = 8,
@@ -182,13 +155,13 @@ talus_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "talus_fed_dub_constable_camp_neutral_large_theater",
+			lairTemplateName = "talus_fed_dub_patrolman_patrol_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 8,
 			maxDifficulty = 12,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "talus_rasp_flite_large_neutral_none",
@@ -198,6 +171,15 @@ talus_easy = {
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 20
+		},
+		{
+			lairTemplateName = "talus_sleemo_vandal_camp_neutral_medium_theater",
+			spawnLimit = -1,
+			minDifficulty = 8,
+			maxDifficulty = 12,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
 		},
 	}
 }
