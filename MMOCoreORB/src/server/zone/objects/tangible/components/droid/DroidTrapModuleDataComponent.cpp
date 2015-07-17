@@ -149,6 +149,7 @@ int DroidTrapModuleDataComponent::handleObjectMenuSelect(CreatureObject* player,
 		if( controller == NULL )
 			return 0;
 
+		Locker locker(controller);
 		controller->setTrainingCommand( PetManager::THROWTRAP );
 		return 0;
 	}
