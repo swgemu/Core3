@@ -540,7 +540,6 @@ int PlayerObjectImplementation::addExperience(const String& xpType, int xp, bool
 		if (xp <= 0 && xpType != "jedi_general") {
 			removeExperience(xpType, notifyClient);
 			return 0;
-		// -10 million experience cap for Jedi experience loss
 		} else if(xp < -10000000 && xpType == "jedi_general") {
 			xp = -10000000;
 		}
@@ -2144,6 +2143,39 @@ void PlayerObjectImplementation::setJediState(int state, bool notifyClient) {
 	delta->close();
 
 	sendMessage(delta);
+}
+
+int PlayerObjectImplementation::getSpentJediSkillPoints() {
+	if (jediState <= 2)
+		return 0;
+
+	ZoneServer* zoneServer = server->getZoneServer();
+
+	if (zoneServer == NULL)
+		return 0;
+
+	SkillManager* skillManager = zoneServer->getSkillManager();
+
+	if (skillManager == NULL)
+		 return 0;
+
+	ManagedReference<CreatureObject*> player = cast<CreatureObject*>( getParentRecursively(SceneObjectType::PLAYERCREATURE).get().get());
+
+	if(player == NULL)
+		return 0;
+
+	int jediSkillPoints = 0;
+
+	SkillList* skillList = player->getSkillList();
+
+	for(int i = 0; i < skillList->size(); ++i) {
+		Skill* jediSkill = skillList->get(i);
+
+		if (jediSkill->getSkillName().indexOf("force_discipline") != -1)
+			jediSkillPoints += jediSkill->getSkillPointsRequired();
+	}
+
+	return jediSkillPoints;
 }
 
 bool PlayerObjectImplementation::canActivateQuest(int questID) {

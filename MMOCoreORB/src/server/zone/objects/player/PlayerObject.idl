@@ -1780,5 +1780,8 @@ class PlayerObject extends IntangibleObject {
 	public int getXpCap(final string type) {
 		return xpTypeCapList.get(type);
 	}
+
+	@dirty
+	public native int getSpentJediSkillPoints();
 }
 

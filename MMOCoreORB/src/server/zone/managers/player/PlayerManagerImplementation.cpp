@@ -973,69 +973,19 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 
 	// Jedi experience loss.
-	// If player is a Jedi Initiate
-	if(ghost->getJediState()  == 2) {
-		awardExperience(player, "jedi_general", -4500, true);
+	if(ghost->getJediState() >= 2) {
+		int jediXpCap = ghost->getXpCap("jedi_general");
+		int xpLoss = (int)(jediXpCap * -0.05);
+		int curExp = ghost->getExperience("jedi_general");
+
+		int negXpCap = -10000000; // Cap on negative jedi experience
+
+		if ((curExp + xpLoss) < negXpCap)
+			xpLoss = negXpCap - curExp;
+
+		awardExperience(player, "jedi_general", xpLoss, true);
 		StringIdChatParameter message("base_player","prose_revoke_xp");
-		message.setDI(4500);
-		message.setTO("exp_n", "jedi_general");
-		player->sendSystemMessage(message);
-
-	} else if (ghost->getJediState() > 2) {
-		SkillList* skillList = player->getSkillList();
-		int highestLevel = -1;
-
-
-		for(int i=0;i < skillList->size(); ++i) {
-			Skill* skill = skillList->get(i);
-			String skillName = skill->getSkillName();
-
-			if(skillName.contains("force_discipline") && skillName.contains("4")) {
-				highestLevel = 4;
-				break;
-			} else if(highestLevel < 3 && (skillName.contains("force_discipline") && skillName.contains("3"))) {
-				highestLevel = 3;
-			} else if(highestLevel < 2 && (skillName.contains("force_discipline") && skillName.contains("2"))) {
-				highestLevel = 2;
-			} else if(highestLevel < 1 && (skillName.contains("force_discipline") && skillName.contains("1"))) {
-				highestLevel = 1;
-			} else if(highestLevel < 0 && (skillName.contains("force_discipline") && skillName.contains("novice"))) {
-				highestLevel = 0;
-			}
-
-		}
-		int expRemoved = 0;
-
-		switch(highestLevel) {
-		// If player has any level 4 box in any discipline
-		case 4:
-			expRemoved = 200000;
-			break;
-		// If player has any level 3 box in any discipline
-		case 3:
-			expRemoved =  100000;
-			break;
-		// If player has any level 2 box in any discipline
-		case 2:
-			expRemoved =  50000;
-			break;
-		// If player has any level 1 box in any discipline
-		case 1:
-			expRemoved = 30000;
-			break;
-		// If player has any novice box in any discipline
-		case 0:
-			expRemoved =  15000;
-			break;
-		// If player has no novice boxes (new Padawan)
-		case -1:
-			expRemoved = 5000;
-			break;
-		}
-
-		awardExperience(player, "jedi_general", 0-expRemoved, true);
-		StringIdChatParameter message("base_player","prose_revoke_xp");
-		message.setDI(expRemoved);
+		message.setDI(xpLoss);
 		message.setTO("exp_n", "jedi_general");
 		player->sendSystemMessage(message);
 	}
