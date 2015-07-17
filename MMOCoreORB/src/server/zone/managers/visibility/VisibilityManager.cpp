@@ -26,13 +26,22 @@ void VisibilityManager::removePlayerFromBountyList(CreatureObject* creature) {
 }
 
 int VisibilityManager::calculateReward(CreatureObject* creature) {
-	//Minimum reward = 25k
-	int reward = 25000;
+	int minReward = 25000; // Minimum reward for a player bounty
+	int maxReward = 250000; // Maximum reward for a player bounty
 
-	// Skills... Max amount for a padawan is 250000, Max jedi_difficulty is 2800.
-	int jediDifficulty = creature->getSkillMod("private_jedi_difficulty");
-	if (jediDifficulty > 0) {
-		reward += MIN((jediDifficulty * 100), 225000);
+	int reward = minReward;
+
+	Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
+
+	if (ghost != NULL) {
+		int skillPoints = ghost->getSpentJediSkillPoints();
+
+		reward = skillPoints * 1000;
+
+		if (reward < minReward)
+			reward = minReward;
+		else if (reward > maxReward)
+			reward = maxReward;
 	}
 
 	return reward;
