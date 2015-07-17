@@ -426,7 +426,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	const int vectorSize = badges->size();
 	for (int i = 0; i < vectorSize;i++) {
 		const Badge* badge = badges->get(i);
-		String val = badge->getKey().toLowerCase();
+		String val = badge->getKey().toUpperCase();
 		luaEngine->setGlobalInt(val, badge->getIndex());
 	}
 
