@@ -15,16 +15,10 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
 void RobeObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
-
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
-
 }
 
 
 int RobeObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
-
-		// TODO: Add visibility increase.
-
 	return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
-
 }
