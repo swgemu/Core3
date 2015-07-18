@@ -130,6 +130,7 @@ namespace creature {
 		int addPatrolPoint(lua_State* L);
 		int runAwarenessLogicCheck(lua_State* L);
 		int setConvoTemplate(lua_State* L);
+		int setHomeLocation(lua_State* L);
 	private:
 		AiAgent* realObject;
 	};
