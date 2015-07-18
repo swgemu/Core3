@@ -20,6 +20,7 @@
 #include "../../packets/creature/CreatureObjectDeltaMessage6.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/tangible/wearables/RobeObject.h"
+#include "server/zone/managers/director/DirectorManager.h"
 
 SkillManager::SkillManager()
 : Logger("SkillManager") {
@@ -646,6 +647,12 @@ bool SkillManager::fullfillsSkillPrerequisites(const String& skillName, Creature
 			}
 		}
 		if (!foundSpecies) {
+			return false;
+		}
+	}
+
+	if (skillName.contains("force_sensitive")) { // Check for Force Sensitive boxes.
+		if (DirectorManager::instance()->getQuestStatus(String::valueOf(creature->getObjectID()) + ":" + skillName) != "unlocked") {
 			return false;
 		}
 	}
