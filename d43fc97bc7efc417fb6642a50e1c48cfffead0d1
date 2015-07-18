@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_f2c9505b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/conversation/screenhandlers/TrainerScreenHandlers.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-18T05:43:31Z",
+      "side": 1,
+      "message": "I don\u0027t understand this for loop. You\u0027re doing the same check 4 times. Why? Nothing changes with each iteration.",
+      "revId": "d43fc97bc7efc417fb6642a50e1c48cfffead0d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_12c71c47",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/conversation/screenhandlers/TrainerScreenHandlers.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-18T05:43:31Z",
+      "side": 1,
+      "message": "Same here. You\u0027re doing the same check 4 times. Isn\u0027t once enough?",
+      "revId": "d43fc97bc7efc417fb6642a50e1c48cfffead0d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
