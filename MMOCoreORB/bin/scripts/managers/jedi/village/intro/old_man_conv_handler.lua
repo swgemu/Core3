@@ -1,70 +1,53 @@
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
 local OldManEncounter = require("managers.jedi.village.intro.old_man_encounter")
 
-old_man_conv_handler = Object:new {
-}
+oldManIntroConvoHandler = Object:new {}
 
-function old_man_conv_handler:getNextConversationScreen(pConversationTemplate, pConversingPlayer, selectedOption)
-	local convosession = CreatureObject(pConversingPlayer):getConversationSession()
+function oldManIntroConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
+	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
 
-	local lastConversationScreen = nil
+	local pLastConversationScreen = nil
 
-	if (convosession ~= nil) then
-		local session = LuaConversationSession(convosession)
-		lastConversationScreen = session:getLastConversationScreen()
+	if (pConversationSession ~= nil) then
+		local conversationSession = LuaConversationSession(pConversationSession)
+		pLastConversationScreen = conversationSession:getLastConversationScreen()
 	end
 
-	local conversation = LuaConversationTemplate(pConversationTemplate)
+	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
 
-	local nextConversationScreen
+	if (pLastConversationScreen ~= nil) then
+		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
+		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
 
-	if (lastConversationScreen ~= nil) then
-		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
-
-		--Get the linked screen for the selected option.
-		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
-
-		nextConversationScreen = conversation:getScreen(optionLink)
-
-		if nextConversationScreen ~= nil then
-			local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
-		else
-			nextConversationScreen = conversation:getScreen("init")
-		end
-	else
-		nextConversationScreen = conversation:getScreen("init")
+		return conversationTemplate:getScreen(optionLink)
 	end
-	return nextConversationScreen
+
+	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
 end
 
-function old_man_conv_handler:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+function oldManIntroConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
+	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+	if OldManEncounter:doesOldManBelongToThePlayer(pPlayer, pNpc) then
+		return convoTemplate:getScreen("intro")
+	else
+		return convoTemplate:getScreen("nothing_to_discuss")
+	end
+end
+
+
+function oldManIntroConvoHandler:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	local screen = LuaConversationScreen(pConversationScreen)
 
 	local screenID = screen:getScreenID()
 
-	if screenID == "init" then
-		pConversationScreen = old_man_conv_handler.handleInit(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	elseif screenID == "village_another_time" or screenID == "village_another_time2" or screenID == "mellichae_later" then
+	if screenID == "perhaps_meet_again" or screenID == "perhaps_another_time" then
 		OldManEncounter:scheduleDespawnOfOldMan(pConversingPlayer)
-	elseif screenID == "village_give_crystal" then
+		CreatureObject(pConversingNpc):setOptionsBitmask(128)
+	elseif screenID == "here_is_the_crystal" then
 		OldManEncounter:scheduleDespawnOfOldMan(pConversingPlayer)
 		OldManEncounter:giveForceCrystalToPlayer(pConversingPlayer)
+		CreatureObject(pConversingNpc):setOptionsBitmask(128)
 	end
 
 	return pConversationScreen
-end
-
-function old_man_conv_handler.handleInit(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	local nextScreen = "not_you"
-
-	if OldManEncounter:doesOldManBelongToThePlayer(pConversingPlayer, pConversingNpc) then
-		if VillageJediManagerCommon.hasJediProgressionScreenPlayState(pConversingPlayer, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE) then
-			nextScreen = "mellichae_intro"
-		elseif VillageJediManagerCommon.hasJediProgressionScreenPlayState(pConversingPlayer, VILLAGE_JEDI_PROGRESSION_GLOWING) then
-			nextScreen = "village_intro"
-		end
-	end
-
-	return conversationTemplate:getScreen(nextScreen)
 end
