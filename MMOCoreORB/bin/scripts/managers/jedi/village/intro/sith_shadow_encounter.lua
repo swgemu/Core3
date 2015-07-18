@@ -136,6 +136,12 @@ function SithShadowEncounter:onEncounterClosingIn(pCreatureObject, spawnedObject
 	threatenString:setTT(CreatureObject(pCreatureObject):getFirstName())
 	spatialChat(spawnedObjects[1], threatenString:_getObject())
 	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1)
+	
+	foreach(spawnedObjects, function(pMobile)
+		if (pMobile ~= nil) then
+			AiAgent(pMobile):setDefender(pCreatureObject)
+		end
+	end)
 end
 
 -- Check if the sith shadow encounter is finished or not.

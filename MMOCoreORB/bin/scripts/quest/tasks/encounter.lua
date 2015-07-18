@@ -141,6 +141,12 @@ function Encounter:handleEncounterAtPlayer(pCreatureObject)
 	local spawnedObjects = SpawnMobiles.getSpawnedMobiles(pCreatureObject, self.taskName)
 	self:setSpawnedObjectsToFollow(spawnedObjects, nil)
 	self:callFunctionIfNotNil(self.onEncounterAtPlayer, nil, pCreatureObject, spawnedObjects)
+	
+	for i = 1, table.getn(spawnedObjects), 1 do
+		if (spawnedObjects[i] ~= nil) then
+			AiAgent(spawnedObjects[i]):setHomeLocation(CreatureObject(spawnedObjects[i]):getPositionX(), CreatureObject(spawnedObjects[i]):getPositionZ(), CreatureObject(spawnedObjects[i]):getPositionY(), nil)
+		end
+	end
 end
 
 -- Create the events for the encounter.
