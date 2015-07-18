@@ -2146,6 +2146,29 @@ void PlayerObjectImplementation::setJediState(int state, bool notifyClient) {
 	sendMessage(delta);
 }
 
+int PlayerObjectImplementation::getSpentJediSkillPoints() {
+	if (jediState < 2)
+		return 0;
+
+	ManagedReference<CreatureObject*> player = cast<CreatureObject*>( getParentRecursively(SceneObjectType::PLAYERCREATURE).get().get());
+
+	if(player == NULL)
+		return 0;
+
+	int jediSkillPoints = 0;
+
+	SkillList* skillList = player->getSkillList();
+
+	for(int i = 0; i < skillList->size(); ++i) {
+		Skill* jediSkill = skillList->get(i);
+
+		if (jediSkill->getSkillName().indexOf("force_discipline") != -1)
+			jediSkillPoints += jediSkill->getSkillPointsRequired();
+	}
+
+	return jediSkillPoints;
+}
+
 bool PlayerObjectImplementation::canActivateQuest(int questID) {
 	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
 

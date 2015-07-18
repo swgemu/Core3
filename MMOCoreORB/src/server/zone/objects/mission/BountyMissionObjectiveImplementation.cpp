@@ -592,8 +592,18 @@ void BountyMissionObjectiveImplementation::handlePlayerKilled(ManagedObject* arg
 			if (zoneServer != NULL) {
 				ManagedReference<CreatureObject*> target = zoneServer->getObject(mission->getTargetObjectId()).castTo<CreatureObject*>();
 				if (target != NULL) {
+					int minXpLoss = -50000;
+					int maxXpLoss = -500000;
+
 					VisibilityManager::instance()->clearVisibility(target);
-					owner->getZoneServer()->getPlayerManager()->awardExperience(target, "jedi_general", -30000, true);
+					int xpLoss = mission->getRewardCredits() * -2;
+
+					if (xpLoss > minXpLoss)
+						xpLoss = minXpLoss;
+					else if (xpLoss < maxXpLoss)
+						xpLoss = maxXpLoss;
+
+					owner->getZoneServer()->getPlayerManager()->awardExperience(target, "jedi_general", xpLoss, true);
 
 				}
 			}
