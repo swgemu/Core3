@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_d2c0d42c",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2150,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-18T06:08:55Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be \u003c ? 2 is a padawan, right?",
+      "revId": "7f909c2649ca026730fb8dd28d3866a8f1655a1d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_72dd4014",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2158,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-18T06:08:55Z",
+      "side": 1,
+      "message": "I don\u0027t see you use this beyond the null check. Is there a reason for getting it?",
+      "revId": "7f909c2649ca026730fb8dd28d3866a8f1655a1d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
