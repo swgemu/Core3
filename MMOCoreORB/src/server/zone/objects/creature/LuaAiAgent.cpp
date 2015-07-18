@@ -136,6 +136,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "addPatrolPoint", &LuaAiAgent::addPatrolPoint },
 		{ "runAwarenessLogicCheck", &LuaAiAgent::runAwarenessLogicCheck },
 		{ "setConvoTemplate", &LuaAiAgent::setConvoTemplate },
+		{ "setHomeLocation", &LuaAiAgent::setHomeLocation },
 		{ 0, 0 }
 };
 
@@ -1010,6 +1011,19 @@ int LuaAiAgent::setConvoTemplate(lua_State* L) {
 	Locker locker(realObject);
 
 	realObject->setConvoTemplate(templateName);
+
+	return 0;
+}
+
+int LuaAiAgent::setHomeLocation(lua_State* L) {
+	SceneObject* cell = static_cast<SceneObject*>(lua_touserdata(L, -1));
+	float y = lua_tonumber(L, -2);
+	float z = lua_tonumber(L, -3);
+	float x = lua_tonumber(L, -4);
+
+	Locker locker(realObject);
+
+	realObject->setHomeLocation(x, z, y, cell);
 
 	return 0;
 }

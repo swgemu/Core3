@@ -28,7 +28,7 @@ old_man = Creature:new {
 	templates = {"object/mobile/dressed_fs_village_oldman.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "old_man_convotemplate",
+	conversationTemplate = "oldManIntroConvoTemplate",
 	attacks = brawlermid
 }
 
