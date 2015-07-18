@@ -163,10 +163,7 @@ end
 -- Check if the player is glowing or not.
 -- @param pCreatureObject pointer to the creature object of the player.
 function Glowing:isGlowing(pCreatureObject)
-	if self:countBadges(pCreatureObject) >= TOTALNUMBEROFBADGESREQUIRED then
-		VillageJediManagerCommon.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_GLOWING)
-		OldManEncounter:start(pCreatureObject)
-	end
+	return VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_GLOWING)
 end
 
 -- Event handler for the BADGEAWARDED event.
@@ -179,7 +176,10 @@ function Glowing:badgeAwardedEventHandler(pCreatureObject, pCreatureObject2, bad
 		return 0
 	end
 
-	self:isGlowing(pCreatureObject)
+	if self:countBadges(pCreatureObject) >= TOTALNUMBEROFBADGESREQUIRED then
+		VillageJediManagerCommon.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_GLOWING)
+		OldManEncounter:start(pCreatureObject)
+	end
 
 	return 0
 end

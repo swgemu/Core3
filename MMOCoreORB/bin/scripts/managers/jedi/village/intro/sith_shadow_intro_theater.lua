@@ -86,7 +86,7 @@ function SithShadowIntroTheater:onEnteredActiveArea(pCreatureObject, spawnedSith
 
 	foreach(spawnedSithShadowsList, function(pMobile)
 		if (pMobile ~= nil) then
-			AiAgent(pMobile):setFollowObject(pCreatureObject)
+			AiAgent(pMobile):setDefender(pCreatureObject)
 		end
 	end)
 	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_2)
