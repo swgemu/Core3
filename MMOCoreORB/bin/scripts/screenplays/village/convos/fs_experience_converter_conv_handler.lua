@@ -102,7 +102,7 @@ function fs_experience_converter_conv_handler:notifyBranchUnlocked(pCreature, pS
 	CreatureObject(pCreature):sendSystemMessageWithTO("@quest/force_sensitive/utils:branch_selected_unlock", tier4Selection)
 
 	-- Set it as trained.
-	ExperienceConverter:setBranchTrained(CreatureObject(pCreature):getObjectID(), branchTier4)
+	ExperienceConverter:setBranchUnlocked(CreatureObject(pCreature):getObjectID(), branchTier4)
 end
 
 function fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pCreature, experienceType)
@@ -260,6 +260,13 @@ function fs_experience_converter_conv_handler.handleInit(pConversationTemplate, 
 
 	-- Paemos - "beckon" animation.
 	CreatureObject(pConversingNpc):doAnimation("beckon")
+
+
+	-- PUT IN FOR NOVA TESTING, PLEASE REMOVE BELOW!!!!!
+	if (getQuestStatus(CreatureObject(pConversingPlayer):getObjectID() .. ":" .. "force_sensitive_combat_prowess_ranged_accuracy_04") == nil) then
+		setQuestStatus(CreatureObject(pConversingPlayer):getObjectID() .. ":" .. "force_sensitive_combat_prowess_ranged_accuracy_04", "unlocked")
+	end
+	-- PUT IN FOR NOVA TESTING, PLEASE REMOVE ABOVE!!!!
 
 	-- See if they have a quest to unlock, or having XP to convert.
 	if (ExperienceConverter.qualifiesForConversation(pConversingPlayer) == true) then

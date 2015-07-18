@@ -20,6 +20,7 @@
 #include "../../packets/creature/CreatureObjectDeltaMessage6.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/tangible/wearables/RobeObject.h"
+#include "server/zone/managers/director/DirectorManager.h"
 
 SkillManager::SkillManager()
 : Logger("SkillManager") {
@@ -312,7 +313,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 				}
 			}
 		}
-		
+
 		if (skillName.contains("master")) {
 			ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
 			if (playerManager != NULL) {
@@ -663,6 +664,21 @@ bool SkillManager::fullfillsSkillPrerequisites(const String& skillName, Creature
 
 		if (!creature->hasSkill(requiredSkillName)) {
 			return false;
+		}
+	}
+
+	if (skillName.contains("force_sensitive")) { // Check for Force Sensitive boxes.
+		PlayerObject* ghost = creature->getPlayerObject();
+		if (ghost == NULL || ghost->getJediState() < 1) {
+			return false;
+		}
+
+		int index = skillName.indexOf("0");
+		if (index != -1) {
+			String skillNameFinal = skillName.subString(0, index) + "4";
+			if (DirectorManager::instance()->getQuestStatus(String::valueOf(creature->getObjectID()) + ":" + skillNameFinal) != "unlocked") {
+				return false;
+			}
 		}
 	}
 
