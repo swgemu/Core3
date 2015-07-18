@@ -53,6 +53,7 @@ public:
 			Locker locker(target, droid);
 
 			if(buff != NULL) {
+				Locker locker(buff);
 				target->addBuff(buff);
 			}
 
