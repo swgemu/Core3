@@ -336,7 +336,7 @@ bib_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "sennex_slaver", planetName = "tatooine", npcName = "Hizram Riean" }
+				{ npcTemplate = "theme_park_jabba_sennex_slaver", planetName = "tatooine", npcName = "Hizram Riean" }
 			},
 			secondarySpawns =
 			{
