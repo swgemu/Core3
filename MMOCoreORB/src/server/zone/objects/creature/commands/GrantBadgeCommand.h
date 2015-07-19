@@ -32,8 +32,10 @@ public:
 		StringTokenizer args(arguments.toString());
 
 		bool area = false;
+		bool multiple = false;
 		float range = 64;
 		float badgeId = 0;
+		float endBadge = 0;
 
 		if (args.hasMoreTokens()) {
 
@@ -43,11 +45,11 @@ public:
 
 			if (arg.charAt(0) == '-') {
 				if (arg.toLowerCase() == "-help" || arg.toLowerCase() == "-h") {
+					creature->sendSystemMessage("Syntax: /grantBadge [badge id]");
 					creature->sendSystemMessage("Syntax: /grantBadge [-area [range]] [badge id]");
+					creature->sendSystemMessage("Syntax: /grantBadge [-multiple] [start badge] [end badge]");
 					return GENERALERROR;
-				}
-
-				if (arg.toLowerCase() == "-area" || arg.toLowerCase() == "-a") {
+				} else if (arg.toLowerCase() == "-area" || arg.toLowerCase() == "-a") {
 					validOption = true;
 					area = true;
 
@@ -67,6 +69,30 @@ public:
 							return INVALIDPARAMETERS;
 						}
 					}
+				} else if (arg.toLowerCase() == "-multiple" || arg.toLowerCase() == "-m") {
+					validOption = true;
+					multiple = true;
+
+					if (!args.hasMoreTokens()) {
+						creature->sendSystemMessage("Syntax: /grantBadge [-multiple] [start badge] [end badge]");
+						return GENERALERROR;
+					}
+
+					badgeId = args.getFloatToken();
+
+					if (!args.hasMoreTokens()) {
+						creature->sendSystemMessage("Syntax: /grantBadge [-multiple] [start badge] [end badge]");
+						return GENERALERROR;
+					}
+
+					endBadge = args.getFloatToken();
+
+					if (endBadge <= 0 || endBadge < badgeId) {
+						creature->sendSystemMessage("End badge must be greater than 0 and greater than the start badge.");
+						return INVALIDPARAMETERS;
+					}
+
+
 				}
 
 				if (!validOption) {
@@ -117,9 +143,16 @@ public:
 
 				if (player != NULL) {
 					Locker crossLocker(player, creature);
-					server->getPlayerManager()->awardBadge(player->getPlayerObject(), badgeId);
-					creature->sendSystemMessage("Granted badge " + String::valueOf(badgeId) + " to " + player->getDisplayedName() + ".");
-					return SUCCESS;
+
+					if (multiple) {
+						for (int i = (int)badgeId; i <= endBadge; i++)
+							server->getPlayerManager()->awardBadge(player->getPlayerObject(), i);
+						creature->sendSystemMessage("Granted badges from " + String::valueOf(badgeId) + " to " + String::valueOf(endBadge) + " to " + player->getDisplayedName() + ".");
+					} else {
+						server->getPlayerManager()->awardBadge(player->getPlayerObject(), badgeId);
+						creature->sendSystemMessage("Granted badge " + String::valueOf(badgeId) + " to " + player->getDisplayedName() + ".");
+						return SUCCESS;
+					}
 				}
 			}
 		}
