@@ -985,7 +985,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 		awardExperience(player, "jedi_general", xpLoss, true);
 		StringIdChatParameter message("base_player","prose_revoke_xp");
-		message.setDI(xpLoss);
+		message.setDI(xpLoss * -1);
 		message.setTO("exp_n", "jedi_general");
 		player->sendSystemMessage(message);
 	}
