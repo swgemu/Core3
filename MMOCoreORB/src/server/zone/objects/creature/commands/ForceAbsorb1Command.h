@@ -78,12 +78,6 @@ public:
 	}
 
 	void handleBuff(SceneObject* creature, ManagedObject* object, int64 param) {
-		ManagedReference<CreatureObject*> creo = cast<CreatureObject*>(creature);
-		if (creo == NULL)
-			return;
-
-		// Client Effect upon hit (needed)
-		creo->playEffect("clienteffect/pl_force_absorb_hit.cef", "");
 	}
 
 };
