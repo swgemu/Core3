@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_f26cf038",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GrantBadgeCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-20T00:29:56Z",
+      "side": 1,
+      "message": "bust me?",
+      "revId": "c1d0ad602a5b24bf03106c47360599685e4bd449",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
