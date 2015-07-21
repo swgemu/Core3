@@ -93,16 +93,14 @@ function fs_experience_converter_conv_handler:notifyBranchUnlocked(pCreature, pS
 	if (pCreature == nil or cancelPressed) then
 		return
 	end
-
-	local arguement = arg0 + 1
 	local options = ExperienceConverter:getNextUnlockableBranches(pCreature)
-	local tier4Selection = options[arguement]
+	local tier4Selection = options[tonumber(arg0) + 1]
 	local branchTier4 = ExperienceConverter:getHighestBoxForTrainer(tier4Selection)
 
 	CreatureObject(pCreature):sendSystemMessageWithTO("@quest/force_sensitive/utils:branch_selected_unlock", tier4Selection)
 
 	-- Set it as trained.
-	ExperienceConverter:setBranchTrained(CreatureObject(pCreature):getObjectID(), branchTier4)
+	CreatureObject(pCreature):setScreenPlayState(2, "VillageUnlockScreenPlay:" .. branchTier4)
 end
 
 function fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pCreature, experienceType)
@@ -260,6 +258,14 @@ function fs_experience_converter_conv_handler.handleInit(pConversationTemplate, 
 
 	-- Paemos - "beckon" animation.
 	CreatureObject(pConversingNpc):doAnimation("beckon")
+
+	-- PUT IN FOR NOVA TESTING, PLEASE REMOVE BELOW!!!!!
+	local branch = "force_sensitive_combat_prowess_ranged_accuracy_04"
+	local questStatusTemp = CreatureObject(pConversingPlayer):getScreenPlayState("VillageUnlockScreenPlay:" .. branch)
+	if (questStatusTemp == 0) then
+		CreatureObject(pConversingPlayer):setScreenPlayState(1, "VillageUnlockScreenPlay:" .. branch)
+	end
+	-- PUT IN FOR NOVA TESTING, PLEASE REMOVE ABOVE!!!!
 
 	-- See if they have a quest to unlock, or having XP to convert.
 	if (ExperienceConverter.qualifiesForConversation(pConversingPlayer) == true) then

@@ -3,25 +3,31 @@ local Logger = require("utils.logger")
 require("utils.helpers")
 require("screenplays.screenplay")
 
+-- The valid screenPlayState val's for branch unlock are as follows:
+-- 0: Does NOT qualify for branch unlock.
+-- 1: Qualifies for branch unlock, not unlocked.
+-- 2: Branch Unlocked.
+-- 4: Branch Mastered.
+
 
 -- Pulled from "quest/force_sensitive/utils.stf"
 local unlockableFSBranches = {
-	FSCombatProwess1 = {state = "FSCombatProwess1", unlockString = "Combat Prowess -- Ranged Accuracy", topBox = "force_sensitive_combat_prowess_ranged_accuracy_04"},
-	FSCombatProwess2 = {state = "FSCombatProwess2", unlockString = "Combat Prowess -- Ranged Speed", topBox = "force_sensitive_combat_prowess_ranged_speed_04"},
-	FSCombatProwess3 = {state = "FSCombatProwess3", unlockString = "Combat Prowess -- Melee Accuracy", topBox = "force_sensitive_combat_prowess_melee_accuracy_04"},
-	FSCombatProwess4 = {state = "FSCombatProwess4", unlockString = "Combat Prowess -- Melee Speed", topBox = "force_sensitive_combat_prowess_melee_speed_04"},
-	FSCraftingMastery1 = {state = "FSCraftingMastery1", unlockString = "Crafting Mastery -- Experimentation", topBox = "force_sensitive_crafting_mastery_experimentation_04"},
-	FSCraftingMastery2 = {state = "FSCraftingMastery2", unlockString = "Crafting Mastery -- Assembly", topBox = "force_sensitive_crafting_mastery_assembly_04"},
-	FSCraftingMastery3 = {state = "FSCraftingMastery3", unlockString = "Crafting Mastery -- Repair", topBox = "force_sensitive_crafting_mastery_repair_04"},
-	FSCraftingMastery4 = {state = "FSCraftingMastery4", unlockString = "Crafting Mastery -- Technique", topBox = "force_sensitive_crafting_mastery_technique_04"},
-	FSEnhancedReflexes1 = {state = "FSEnhancedReflexes1", unlockString = "Enhanced Reflexes -- Ranged Defense", topBox = "force_sensitive_enhanced_reflexes_ranged_defense_04"},
-	FSEnhancedReflexes2 = {state = "FSEnhancedReflexes2", unlockString = "Enhanced Reflexes -- Melee Defense", topBox = "force_sensitive_enhanced_reflexes_melee_defense_04"},
-	FSEnhancedReflexes3 = {state = "FSEnhancedReflexes3", unlockString = "Enhanced Reflexes -- Vehicle Control", topBox = "force_sensitive_enhanced_reflexes_vehicle_control_04"},
-	FSEnhancedReflexes4 = {state = "FSEnhancedReflexes4", unlockString = "Enhanced Reflexes -- Survival", topBox = "force_sensitive_enhanced_reflexes_survival_04"},
-	FSHeightenedSenses1 = {state = "FSHeightenedSenses1", unlockString = "Heightened Senses -- Healing", topBox = "force_sensitive_heightened_senses_healing_04"},
-	FSHeightenedSenses2 = {state = "FSHeightenedSenses2", unlockString = "Heightened Senses -- Surveying", topBox = "force_sensitive_heightened_senses_surveying_04"},
-	FSHeightenedSenses3 = {state = "FSHeightenedSenses3", unlockString =	"Heightened Senses -- Persuasion", topBox = "force_sensitive_heightened_senses_persuasion_04"},
-	FSHeightenedSenses4 = {state = "FSHeightenedSenses4", unlockString =	"Heightened Senses -- Luck", topBox = "force_sensitive_heightened_senses_luck_04"}
+	FSCombatProwess1 = {unlockString = "Combat Prowess -- Ranged Accuracy", topBox = "force_sensitive_combat_prowess_ranged_accuracy_04"},
+	FSCombatProwess2 = {unlockString = "Combat Prowess -- Ranged Speed", topBox = "force_sensitive_combat_prowess_ranged_speed_04"},
+	FSCombatProwess3 = {unlockString = "Combat Prowess -- Melee Accuracy", topBox = "force_sensitive_combat_prowess_melee_accuracy_04"},
+	FSCombatProwess4 = {unlockString = "Combat Prowess -- Melee Speed", topBox = "force_sensitive_combat_prowess_melee_speed_04"},
+	FSCraftingMastery1 = {unlockString = "Crafting Mastery -- Experimentation", topBox = "force_sensitive_crafting_mastery_experimentation_04"},
+	FSCraftingMastery2 = {unlockString = "Crafting Mastery -- Assembly", topBox = "force_sensitive_crafting_mastery_assembly_04"},
+	FSCraftingMastery3 = {unlockString = "Crafting Mastery -- Repair", topBox = "force_sensitive_crafting_mastery_repair_04"},
+	FSCraftingMastery4 = {unlockString = "Crafting Mastery -- Technique", topBox = "force_sensitive_crafting_mastery_technique_04"},
+	FSEnhancedReflexes1 = {unlockString = "Enhanced Reflexes -- Ranged Defense", topBox = "force_sensitive_enhanced_reflexes_ranged_defense_04"},
+	FSEnhancedReflexes2 = {unlockString = "Enhanced Reflexes -- Melee Defense", topBox = "force_sensitive_enhanced_reflexes_melee_defense_04"},
+	FSEnhancedReflexes3 = {unlockString = "Enhanced Reflexes -- Vehicle Control", topBox = "force_sensitive_enhanced_reflexes_vehicle_control_04"},
+	FSEnhancedReflexes4 = {unlockString = "Enhanced Reflexes -- Survival", topBox = "force_sensitive_enhanced_reflexes_survival_04"},
+	FSHeightenedSenses1 = {unlockString = "Heightened Senses -- Healing", topBox = "force_sensitive_heightened_senses_healing_04"},
+	FSHeightenedSenses2 = {unlockString = "Heightened Senses -- Surveying", topBox = "force_sensitive_heightened_senses_surveying_04"},
+	FSHeightenedSenses3 = {unlockString =	"Heightened Senses -- Persuasion", topBox = "force_sensitive_heightened_senses_persuasion_04"},
+	FSHeightenedSenses4 = {unlockString =	"Heightened Senses -- Luck", topBox = "force_sensitive_heightened_senses_luck_04"}
 }
 
 -- These are the 3 types of FS experience for regex searches, full strings not needed for each type, just least specific.
@@ -130,8 +136,8 @@ function ExperienceConverter:getNextUnlockableBranches(pCreatureObject)
 
 
 	foreach(unlockableFSBranches, function(theTable)
-		local checkTrees = getQuestStatus(CreatureObject(pCreatureObject):getObjectID() .. ":" .. theTable.state)
-		if (checkTrees ~= nil and checkTrees ~= "trained") then
+		local checkTrees = CreatureObject(pCreatureObject):getScreenPlayState("VillageUnlockScreenPlay:" .. theTable.topBox)
+		if (checkTrees == 1) then
 			table.insert(trees, theTable.unlockString)
 		end
 	end)
@@ -141,14 +147,6 @@ function ExperienceConverter:getNextUnlockableBranches(pCreatureObject)
 	else
 		return nil
 	end
-end
-
-function ExperienceConverter:setBranchTrained(oid, branchBox)
-	foreach(unlockableFSBranches, function(theTable)
-		if (theTable.topBox == branchBox) then
-			setQuestStatus(oid .. ":" .. theTable.state, "trained")
-		end
-	end)
 end
 
 -- Get the highest box from the tables above for the trainer.
