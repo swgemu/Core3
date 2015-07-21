@@ -71,7 +71,7 @@ function SithShadowEncounter:onLoot(pLootedCreature, pLooter, nothing)
 		if self:isTheFirstSithShadowOfThePlayer(pLootedCreature, pLooter) then
 			self:addWaypointDatapadAsLoot(pLootedCreature)
 			QuestManager.completeQuest(pLooter, QuestManager.quests.TwO_MILITARY)
-			QuestManager.completeQuest(pLooter, QuestManager.quests.GOT_DATAPAD_1)
+			QuestManager.completeQuest(pLooter, QuestManager.quests.GOT_DATAPAD)
 			CreatureObject(pLooter):sendSystemMessage("@quest/quests:quest_journal_updated")
 			return 1
 		end
