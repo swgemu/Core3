@@ -73,15 +73,6 @@ public:
 		return SUCCESS;
 	}
 
-	void handleBuff(SceneObject* creature, ManagedObject* object, int64 param) {
-		ManagedReference<CreatureObject*> creo = cast<CreatureObject*>( creature);
-		if (creo == NULL)
-			return;
-
-		// Client Effect upon hit (needed)
-		creo->playEffect("clienteffect/pl_force_feedback_block.cef", "");
-	}
-
 };
 
 #endif //FORCEFEEDBACK1COMMAND_H_

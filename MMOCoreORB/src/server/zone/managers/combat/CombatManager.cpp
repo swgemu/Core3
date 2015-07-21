@@ -1085,10 +1085,15 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 
 		// Force Feedback
 		int forceFeedback = defender->getSkillMod("force_feedback");
-		if (forceFeedback > 0) {
-			float feedbackDmg = rawDamage - (damage * (1.f - (forceFeedback / 100.f)));
-			attacker->inflictDamage(defender, System::random(2) * 3, feedbackDmg, true);
+		if ((defender->hasBuff(BuffCRC::JEDI_FORCE_FEEDBACK_1) || defender->hasBuff(BuffCRC::JEDI_FORCE_FEEDBACK_2)) && forceFeedback > 0) {
+			float feedbackDmg = rawDamage * (forceFeedback / 100.f);
+			float splitDmg = feedbackDmg / 3;
+
+			attacker->inflictDamage(defender, CreatureAttribute::HEALTH, splitDmg, true);
+			attacker->inflictDamage(defender, CreatureAttribute::ACTION, splitDmg, true);
+			attacker->inflictDamage(defender, CreatureAttribute::MIND, splitDmg, true);
 			broadcastCombatSpam(defender, attacker, NULL, feedbackDmg, "cbt_spam", "forcefeedback_hit", 1);
+			defender->playEffect("clienteffect/pl_force_feedback_block.cef", "");
 		}
 
 		// Force Absorb
@@ -1097,6 +1102,7 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 			if (playerObject != NULL) {
 				playerObject->setForcePower(playerObject->getForcePower() + (damage * 0.5));
 				sendMitigationCombatSpam(defender, NULL, (int)damage * 0.5, FORCEABSORB);
+				defender->playEffect("clienteffect/pl_force_absorb_hit.cef", "");
 			}
 		}
 
@@ -1453,7 +1459,7 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 
 		// saber block is special because it's just a % chance to block based on the skillmod
 		if (def == "saber_block") {
-			if ((weapon->getAttackType() == WeaponObject::RANGEDATTACK) && ((System::random(100)) < targetCreature->getSkillMod(def)))
+			if (!attacker->isTurret() && (weapon->getAttackType() == WeaponObject::RANGEDATTACK) && ((System::random(100)) < targetCreature->getSkillMod(def)))
 				return RICOCHET;
 			else return HIT;
 		}
