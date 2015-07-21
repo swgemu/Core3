@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_52bb6472",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceAbsorb1Command.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-21T10:52:54Z",
+      "side": 0,
+      "message": "Just remove the whole method. There\u0027s no reason to override an empty method with another empty method. Do the same for the other 3 commands.",
+      "revId": "3b9ce4e7179624694f2e4608aed4e53bebbb6ccc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

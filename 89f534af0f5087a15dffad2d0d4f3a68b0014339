@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_b2a98826",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-21T10:52:54Z",
+      "side": 1,
+      "message": "A player should only have this skill mod if one of those buffs are active, correct? The hasBuff checks seem extraneous.",
+      "revId": "89f534af0f5087a15dffad2d0d4f3a68b0014339",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
