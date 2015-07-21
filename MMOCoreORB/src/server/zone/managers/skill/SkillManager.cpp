@@ -312,7 +312,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 				}
 			}
 		}
-		
+
 		if (skillName.contains("master")) {
 			ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
 			if (playerManager != NULL) {
@@ -663,6 +663,21 @@ bool SkillManager::fullfillsSkillPrerequisites(const String& skillName, Creature
 
 		if (!creature->hasSkill(requiredSkillName)) {
 			return false;
+		}
+	}
+
+	if (skillName.contains("force_sensitive")) { // Check for Force Sensitive boxes.
+		PlayerObject* ghost = creature->getPlayerObject();
+		if (ghost == NULL || ghost->getJediState() < 1) {
+			return false;
+		}
+
+		int index = skillName.indexOf("0");
+		if (index != -1) {
+			String skillNameFinal = skillName.subString(0, index + 1) + "4";
+			if (creature->getScreenPlayState("VillageUnlockScreenPlay:" + skillNameFinal) < 2) {
+				return false;
+			}
 		}
 	}
 
