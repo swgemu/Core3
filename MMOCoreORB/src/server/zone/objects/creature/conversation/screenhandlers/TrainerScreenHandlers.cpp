@@ -56,6 +56,18 @@ ConversationScreen* TrainerInfoScreenHandler::handleScreen(CreatureObject* conve
 		session->addAdditionalMasterSkill(jedi5);
 	}
 
+	if (conversingNPC->getObjectNameStringIdName().contains("trainer_fs")) {
+		String fs1 = "force_sensitive_combat_prowess_master";
+		String fs2 = "force_sensitive_enhanced_reflexes_master";
+		String fs3 = "force_sensitive_crafting_mastery_master";
+		String fs4 = "force_sensitive_heightened_senses_master";
+
+		session->addAdditionalMasterSkill(fs1);
+		session->addAdditionalMasterSkill(fs2);
+		session->addAdditionalMasterSkill(fs3);
+		session->addAdditionalMasterSkill(fs4);
+	}
+
 	if (conversingPlayer->hasSkill(session->getMasterSkill())) {
 		nextScreenId = TrainerScreenHandlers::TRAINEDMASTERSCREENHANDLERID;
 		return NULL;
@@ -177,6 +189,7 @@ ConversationScreen* TrainerNextSkillsScreenHandler::handleScreen(CreatureObject*
 		for (int i = 0; i < nextSkills.size(); ++i) {
 			conversationScreen->addOption("@skl_n:" + nextSkills.get(i), TrainerScreenHandlers::SKILLINFOSCREENHANDLERID);
 			session->addNextSkill(nextSkills.get(i));
+
 		}
 		conversationScreen->addOption("@skill_teacher:back", TrainerScreenHandlers::STARTSCREENHANDLERID);
 	} else {
@@ -333,6 +346,27 @@ ConversationScreen* TrainerTrainSkillScreenHandler::handleScreen(CreatureObject*
 			//Mastered profession.
 			nextScreenId = TrainerScreenHandlers::TRAINEDMASTERSCREENHANDLERID;
 			conversationScreen = NULL;
+		}
+
+		// Set the screen play state if they mastered a fourth-tier box.
+		if (skill->getSkillName().contains("force_sensitive")) {
+			if (skill->getSkillName().contains("_04")) {
+				conversingPlayer->setScreenPlayState("VillageUnlockScreenPlay:" + skill->getSkillName(), 4);
+			}
+
+			int treesMastered = 0;
+			// If they have trained the 6th tree's 4th box, finish village.
+			SkillList* skills = conversingPlayer->getSkillList();
+			for (int i=0; i < skills->size(); ++i) {
+				String skillName = skills->get(i)->getSkillName();
+				if (skillName.contains("force_sensitive") && skillName.contains("_04")) {
+					treesMastered += 1;
+				}
+			}
+
+			if (treesMastered >= 6) { // Six trees to access village. State matches that in jedi manager.
+				conversingPlayer->setScreenPlayState("VillageJediProgression", 8);
+			}
 		}
 
 	} else {
