@@ -19,6 +19,7 @@
 #include "server/zone/objects/tangible/components/vendor/VendorMenuComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 #include "server/zone/objects/tangible/terminal/components/SecurityTerminalDataComponent.h"
+#include "server/zone/objects/tangible/terminal/components/GamblingTerminalDataComponent.h"
 #include "server/zone/objects/tangible/terminal/components/TurretControlTerminalDataComponent.h"
 #include "server/zone/objects/installation/components/TurretDataComponent.h"
 #include "server/zone/objects/installation/components/MinefieldDataComponent.h"
@@ -223,6 +224,7 @@ ComponentManager::ComponentManager() {
 	dataObjectFactory.registerObject<VendorDataComponent>("VendorDataComponent");
 	dataObjectFactory.registerObject<AuctionTerminalDataComponent>("AuctionTerminalDataComponent");
 	dataObjectFactory.registerObject<SecurityTerminalDataComponent>("SecurityTerminalDataComponent");
+	dataObjectFactory.registerObject<GamblingTerminalDataComponent>("GamblingTerminalDataComponent");
 	dataObjectFactory.registerObject<TurretControlTerminalDataComponent>("TurretControlTerminalDataComponent");
 
 	components.put("CityManagementMenuComponent", new CityManagementMenuComponent());
