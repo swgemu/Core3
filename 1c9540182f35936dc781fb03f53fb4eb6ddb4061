@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_f224f0c7",
+        "filename": "MMOCoreORB/bin/scripts/mobile/misc/lesser_prophet.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1520
+      },
+      "writtenOn": "2015-07-21T17:52:59Z",
+      "side": 1,
+      "message": "change this line to:\nCreatureTemplates:addCreatureTemplate(lesser_prophet, \"lesser_prophet\")",
+      "range": {
+        "startLine": 52,
+        "startChar": 38,
+        "endLine": 52,
+        "endChar": 54
+      },
+      "revId": "1c9540182f35936dc781fb03f53fb4eb6ddb4061",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
