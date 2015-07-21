@@ -123,7 +123,7 @@ function SithShadowIntroTheater:onPlayerKilled(pCreatureObject, pKiller, nothing
 		OldManEncounter:start(pCreatureObject)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.TWO_MILITARY)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1)
-		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD_1)
+		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.FS_THEATER_CAMP)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_2)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD_2)

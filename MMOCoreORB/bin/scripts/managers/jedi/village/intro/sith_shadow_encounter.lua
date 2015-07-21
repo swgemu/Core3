@@ -71,7 +71,7 @@ function SithShadowEncounter:onLoot(pLootedCreature, pLooter, nothing)
 		if self:isTheFirstSithShadowOfThePlayer(pLootedCreature, pLooter) then
 			self:addWaypointDatapadAsLoot(pLootedCreature)
 			QuestManager.completeQuest(pLooter, QuestManager.quests.TwO_MILITARY)
-			QuestManager.completeQuest(pLooter, QuestManager.quests.GOT_DATAPAD_1)
+			QuestManager.completeQuest(pLooter, QuestManager.quests.GOT_DATAPAD)
 			CreatureObject(pLooter):sendSystemMessage("@quest/quests:quest_journal_updated")
 			return 1
 		end
@@ -97,7 +97,7 @@ function SithShadowEncounter:onPlayerKilled(pCreatureObject, pKiller, nothing)
 		OldManEncounter:start(pCreatureObject)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.TwO_MILITARY)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1)
-		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD_1)
+		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD)
 
 		CreatureObject(pCreatureObject):sendSystemMessage("@quest/quests:task_failure")
 		CreatureObject(pCreatureObject):sendSystemMessage("@quest/quests:quest_journal_updated")
@@ -152,7 +152,7 @@ function SithShadowEncounter:isEncounterFinished(pCreatureObject)
 		return false
 	end
 
-	return QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD_1)
+	return QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD)
 end
 
 -- Handling of the activation of the looted datapad.
@@ -160,7 +160,7 @@ end
 -- @param pCreatureObject pointer to the creature object who activated the datapad.
 function SithShadowEncounter:useWaypointDatapad(pSceneObject, pCreatureObject)
 	Logger:log("Player used the looted waypoint datapad.", LT_INFO)
-	if QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD_1) then
+	if QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD) then
 		SithShadowIntroTheater:start(pCreatureObject)
 
 		CreatureObject(pCreatureObject):sendSystemMessage(READ_DISK_1_STRING)
