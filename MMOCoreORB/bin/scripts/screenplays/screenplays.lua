@@ -365,3 +365,6 @@ includeFile("space/space_chassis_dealer_conv_handler.lua")
 -- Record Keepers
 includeFile("record_keepers/record_keepers.lua")
 
+-- Naboo
+includeFile("tests/lesser_prophet_spawn.lua")
+
