@@ -33,7 +33,7 @@ function NabooStaticSpawnsSouthScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "commoner_naboo", 180, 1014.5, 185.3, -3461.2, -145.0, 0)
 
 		--Statues + Fire (-1637,-4032)
-	spawnMobile("naboo", "gungan_priest", 300, -1638.6, 14.0, -4033.7, 90, 0)
+	spawnMobile("naboo", "lesser_prophet_of_the_dark_side", 300, -1638.6, 14.0, -4033.7, 90, 0)
 
 		--Small Rebel Outpost (-4767,-3975)
 	spawnMobile("naboo", "rebel_warrant_officer_i", 300, -4773.3, 333.3, -3985.2, -90.0, 0)
