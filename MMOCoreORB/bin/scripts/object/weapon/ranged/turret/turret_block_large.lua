@@ -68,7 +68,7 @@ object_weapon_ranged_turret_turret_block_large = object_weapon_ranged_turret_sha
 	maxRangeAccuracy = 0,
 	minDamage = 300,
 	maxDamage = 675,
-	attackSpeed = 5,
+	attackSpeed = 1,
 	woundsRatio = 9,
 }
 
