@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_ed409137",
+        "filename": "MMOCoreORB/src/server/zone/managers/skill/SkillManager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-22T01:55:03Z",
+      "side": 1,
+      "message": "If a player trains the 4th tier box this state gets set to 4. If they then surrender that box, they won\u0027t be able to retrain it. You need to either change the screenplay state back to 2 if they surrender a 4th tier box or change this check to \u003e\u003d 2.",
+      "revId": "288b9a1b8fe99c943fcc6459363413fedf31ed7a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
