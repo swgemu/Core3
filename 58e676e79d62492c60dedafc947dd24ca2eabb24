@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_6d37a1b1",
+        "filename": "MMOCoreORB/bin/scripts/object/installation/faction_perk/turret/block_lg.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-22T12:49:13Z",
+      "side": 1,
+      "message": "The correct syntax is:\n\nvulnerability \u003d BLAST + LIGHTSABER,",
+      "revId": "58e676e79d62492c60dedafc947dd24ca2eabb24",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
