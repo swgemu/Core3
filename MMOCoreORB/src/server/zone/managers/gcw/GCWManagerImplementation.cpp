@@ -2396,6 +2396,13 @@ uint64 GCWManagerImplementation::addChildInstallationFromDeed(BuildingObject* bu
 	Quaternion dir = child->getDirection();
 
 	ManagedReference<SceneObject*> obj = zone->getZoneServer()->createObject(deed->getGeneratedObjectTemplate().hashCode(), 1);
+
+	if (obj == NULL) {
+		return 0;
+	}
+
+	Locker locker(obj);
+
 	obj->initializePosition(x, z, y);
 	obj->setDirection(dir.rotate(Vector3(0, 1, 0), degrees));
 
