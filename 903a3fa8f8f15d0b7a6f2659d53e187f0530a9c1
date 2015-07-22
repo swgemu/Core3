@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_cd3035eb",
+        "filename": "MMOCoreORB/bin/scripts/mobile/misc/lesser_prophet.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-22T01:00:26Z",
+      "side": 1,
+      "message": "I realize that there is conflicting evidence in the mantis report. Instead of creating a new mob named lesser prophet of the dark side and giving it the stats of a djm, figure out whether the mob should be a djm or a lesser prophet of the dark side and use the existing mobile.",
+      "revId": "903a3fa8f8f15d0b7a6f2659d53e187f0530a9c1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_6d4d6172",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tests/lesser_prophet_spawn.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-22T01:00:26Z",
+      "side": 1,
+      "message": "Don\u0027t create a new screenplay for this. Just add it to one of the naboo_static_spawns_ screenplays.",
+      "revId": "903a3fa8f8f15d0b7a6f2659d53e187f0530a9c1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
