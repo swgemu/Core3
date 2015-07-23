@@ -48,7 +48,7 @@ object_installation_turret_turret_tower_sm = object_installation_turret_shared_t
 	zoneComponent = "TurretZoneComponent",
 	dataObjectComponent = "TurretDataComponent",
 	-- Damagetypes in WeaponObject
-	vulnerability = BLAST,
+	vulnerability = BLAST + LIGHTSABER,
 
 	-- LIGHT, MEDIUM, HEAVY
 	rating = HEAVY,
@@ -63,7 +63,7 @@ object_installation_turret_turret_tower_sm = object_installation_turret_shared_t
 	acid = 90,
 	lightSaber =100,
 	chanceHit = 4,
-	weapon = "object/weapon/ranged/turret/turret_block_large.iff",
+	weapon = "object/weapon/ranged/turret/turret_tower_large.iff",
 }
 
 ObjectTemplates:addTemplate(object_installation_turret_turret_tower_sm, "object/installation/turret/turret_tower_sm.iff")
