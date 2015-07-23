@@ -1085,15 +1085,10 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 
 		// Force Feedback
 		int forceFeedback = defender->getSkillMod("force_feedback");
-		if ((defender->hasBuff(BuffCRC::JEDI_FORCE_FEEDBACK_1) || defender->hasBuff(BuffCRC::JEDI_FORCE_FEEDBACK_2)) && forceFeedback > 0) {
-			float feedbackDmg = rawDamage * (forceFeedback / 100.f);
-			float splitDmg = feedbackDmg / 3;
-
-			attacker->inflictDamage(defender, CreatureAttribute::HEALTH, splitDmg, true);
-			attacker->inflictDamage(defender, CreatureAttribute::ACTION, splitDmg, true);
-			attacker->inflictDamage(defender, CreatureAttribute::MIND, splitDmg, true);
+		if (forceFeedback > 0) {
+			float feedbackDmg = rawDamage - (damage * (1.f - (forceFeedback / 100.f)));
+			attacker->inflictDamage(defender, System::random(2) * 3, feedbackDmg, true);
 			broadcastCombatSpam(defender, attacker, NULL, feedbackDmg, "cbt_spam", "forcefeedback_hit", 1);
-			defender->playEffect("clienteffect/pl_force_feedback_block.cef", "");
 		}
 
 		// Force Absorb
@@ -1102,7 +1097,6 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 			if (playerObject != NULL) {
 				playerObject->setForcePower(playerObject->getForcePower() + (damage * 0.5));
 				sendMitigationCombatSpam(defender, NULL, (int)damage * 0.5, FORCEABSORB);
-				defender->playEffect("clienteffect/pl_force_absorb_hit.cef", "");
 			}
 		}
 
@@ -1324,9 +1318,10 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data, Vector<int>& foodMitigation) {
 	float damage = 0;
 
-	if (data.getDamage() > 0) { // this is a special attack (force, heavy weapon, etc)
-		damage = data.getDamage();
-		damage -= System::random(damage / 4);
+	if (data.getDamageMin() > 0) { // this is a special attack (force, heavy weapon, etc)
+		int minDamage = data.getDamageMin();
+		int maxDamage = data.getDamageMax();
+		damage = System::random(maxDamage - minDamage) + minDamage;
 	} else {
 		int diff = calculateDamageRange(attacker, defender, weapon);
 		float minDamage = weapon->getMinDamage();
@@ -1459,7 +1454,7 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 
 		// saber block is special because it's just a % chance to block based on the skillmod
 		if (def == "saber_block") {
-			if (!attacker->isTurret() && (weapon->getAttackType() == WeaponObject::RANGEDATTACK) && ((System::random(100)) < targetCreature->getSkillMod(def)))
+			if ((weapon->getAttackType() == WeaponObject::RANGEDATTACK) && ((System::random(100)) < targetCreature->getSkillMod(def)))
 				return RICOCHET;
 			else return HIT;
 		}
@@ -1564,6 +1559,7 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, WeaponObjec
 				return false;
 			} else {
 				playerObject->setForcePower(playerObject->getForcePower() - force);
+				VisibilityManager::instance()->increaseVisibility(attacker); // Give visibility
 			}
 		}
 	}
