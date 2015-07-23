@@ -204,7 +204,7 @@ naboo_static_spawns = {
 	{"naboo_holy_man",300,-22.6115,1.6,-11.4739,0,1677400, "conversation", "", "stationary"},
 	{"naboo_nomad",300,16.6641,1.28309,-3.47071,360.011,1677395, "conversation", "", "stationary"},
 	{"noble",60,-16.4118,1.02908,39.5837,179.999,5475485, "conversation", "", "stationary"},
-	{"noble",60,2432.4,292,-3887.3,-125,0, "npc_use_terminal_high", "", "stationary"},
+	{"noble",60,2443.42,292,-3893.91,18,0, "conversation", "", "stationary"},
 	{"official",300,-5886.59,6,4368.23,0,0, "conversation", "", "stationary"},
 	{"philosopher",300,-11.7266,1.6,-15.4722,180.001,1677399, "conversation", "", "stationary"},
 	{"rsf_palace_guard",300,18.5394,0.664266,43.5491,134.79,5475485, "conversation", "", "stationary"},
