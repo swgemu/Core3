@@ -110,13 +110,13 @@ function EmperorsRetreatScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "stormtrooper", 450, 2367.7, 325, -4095.5, 0, 0)
 
 	--By the emperors retreat
-	spawnMobile("naboo", "at_st", 900, 2436.4, 292, -3912.1, 167, 0)
-	spawnMobile("naboo", "at_st", 900, 2429.9, 292, -3913.1, 167, 0)
-	spawnMobile("naboo", "stormtrooper", 450, 2433.3, 292, -3968.4, 4, 0)
-	spawnMobile("naboo", "stormtrooper", 450, 2435.3, 292, -3968.4, 4, 0)
-	spawnMobile("naboo", "imperial_corporal", 450, 2434.4, 292, -3967.1, 4, 0)
-	spawnMobile("naboo", "stormtrooper", 450, 2452, 292, -3912.8, -170, 0)
-	spawnMobile("naboo", "stormtrooper", 450, 2454, 292, -3912.8, -170, 0)
-	spawnMobile("naboo", "imperial_corporal", 450, 2452.9, 292, -3914.1, -170, 0)
+	spawnMobile("naboo", "at_st", 900, 2452.61, 292, -3961.49, 108, 0)
+	spawnMobile("naboo", "at_st", 900, 2463.18, 292.089, -3929.16, -105, 0)
+	spawnMobile("naboo", "dark_trooper", 450, 2433.3, 292, -3968.4, 4, 0)
+	spawnMobile("naboo", "dark_trooper", 450, 2452, 292, -3912.8, -170, 0)
+	spawnMobile("naboo", "dark_trooper", 450, 2434.47, 292, -3932.06, 90, 0)
+	spawnMobile("naboo", "dark_trooper", 450, 2437.01, 292, -3947.8, 147, 0)
+	spawnMobile("naboo", "dark_trooper", 450, 2411.91, 292, -3986.99, -115, 0)
+	spawnMobile("naboo", "imperial_pilot", 450, 2432.33, 292, -3887.25, -131, 0)
 
 end
