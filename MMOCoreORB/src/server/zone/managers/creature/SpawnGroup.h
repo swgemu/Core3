@@ -67,6 +67,7 @@ public:
 
 		templateName = gr.templateName;
 		spawnList = gr.spawnList;
+		minLevelCeiling = gr.minLevelCeiling;
 
 		return *this;
 	}
