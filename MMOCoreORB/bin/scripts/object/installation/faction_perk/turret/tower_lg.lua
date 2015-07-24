@@ -48,8 +48,8 @@ object_installation_faction_perk_turret_tower_lg = object_installation_faction_p
 	maxCondition = 300000,
 	zoneComponent = "TurretZoneComponent",
 	dataObjectComponent = "TurretDataComponent",
-	-- Damagetypes in WeaponObject
 	vulnerability = BLAST + LIGHTSABER,
+	damageType = KINETIC,	
 
 	-- LIGHT, MEDIUM, HEAVY
 	rating = HEAVY,
