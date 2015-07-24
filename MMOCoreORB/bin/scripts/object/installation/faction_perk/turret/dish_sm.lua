@@ -65,7 +65,7 @@ object_installation_faction_perk_turret_dish_sm = object_installation_faction_pe
 	acid = 75,
 	lightSaber = -1,
 	chanceHit = 4,
-	weapon = "object/weapon/ranged/turret/turret_block_large.iff",
+	weapon = "object/weapon/ranged/turret/turret_dish_large.iff",
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_turret_dish_sm, "object/installation/faction_perk/turret/dish_sm.iff")

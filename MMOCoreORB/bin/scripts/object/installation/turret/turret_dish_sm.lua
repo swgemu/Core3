@@ -49,7 +49,7 @@ object_installation_turret_turret_dish_sm = object_installation_turret_shared_tu
 	dataObjectComponent = "TurretDataComponent",
 
 	-- Damagetypes in WeaponObject
-	vulnerability = BLAST,
+	vulnerability = BLAST + LIGHTSABER,
 
 	-- LIGHT, MEDIUM, HEAVY
 	rating = HEAVY,
@@ -64,7 +64,7 @@ object_installation_turret_turret_dish_sm = object_installation_turret_shared_tu
 	acid = 75,
 	lightSaber =100,
 	chanceHit = 4,
-	weapon = "object/weapon/ranged/turret/turret_block_large.iff",
+	weapon = "object/weapon/ranged/turret/turret_dish_large.iff",
 }
 
 ObjectTemplates:addTemplate(object_installation_turret_turret_dish_sm, "object/installation/turret/turret_dish_sm.iff")
