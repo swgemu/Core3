@@ -48,8 +48,8 @@ object_installation_faction_perk_turret_tower_sm = object_installation_faction_p
 	maxCondition = 75000,
 	zoneComponent = "TurretZoneComponent",
 	dataObjectComponent = "TurretDataComponent",
-	-- Damagetypes in WeaponObject
 	vulnerability = BLAST + LIGHTSABER,
+	damageType = KINETIC,
 
 	-- LIGHT, MEDIUM, HEAVY
 	rating = HEAVY,
@@ -65,6 +65,7 @@ object_installation_faction_perk_turret_tower_sm = object_installation_faction_p
 	lightSaber = -1,
 	chanceHit = 4,
 	weapon = "object/weapon/ranged/turret/turret_block_large.iff",
+
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_turret_tower_sm, "object/installation/faction_perk/turret/tower_sm.iff")

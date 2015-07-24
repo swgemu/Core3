@@ -48,9 +48,9 @@ object_installation_faction_perk_turret_dish_lg = object_installation_faction_pe
 	maxCondition = 300000,
 	zoneComponent = "TurretZoneComponent",
 	dataObjectComponent = "TurretDataComponent",
-		-- Damagetypes in WeaponObject
 	vulnerability = BLAST + LIGHTSABER,
-
+	damageType = ENERGY,
+	
 	-- LIGHT, MEDIUM, HEAVY
 	rating = HEAVY,
 
