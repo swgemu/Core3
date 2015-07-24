@@ -48,9 +48,36 @@ object_installation_faction_perk_turret_dish_sm = object_installation_faction_pe
 	maxCondition = 75000,
 	zoneComponent = "TurretZoneComponent",
 	dataObjectComponent = "TurretDataComponent",
-
-	-- Damagetypes in WeaponObject
 	vulnerability = BLAST + LIGHTSABER,
+
+	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
+	attackType = RANGEDATTACK,
+	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	damageType = ENERGY,
+	-- NONE, LIGHT, MEDIUM, HEAVY
+	armorPiercing = HEAVY,
+	-- See http://www.ocdsoft.com/files/accuracy.xls
+	creatureAccuracyModifiers = { "rifle_accuracy" },
+	creatureAimModifiers = { "rifle_aim", "aim" },
+	-- See http://www.ocdsoft.com/files/defense.xls
+	defenderDefenseModifiers = { "ranged_defense" },
+	-- Leave as "dodge" for now, may have additions later
+	defenderSecondaryDefenseModifiers = { "block" },
+	-- See http://www.ocdsoft.com/files/speed.xls
+	speedModifiers = { "rifle_speed" },
+	-- Leave blank for now
+	damageModifiers = { },
+	
+	pointBlankRange = 0,
+	pointBlankAccuracy = 0,
+	idealRange = 40,
+	idealAccuracy = 70,
+	maxRange = 80,
+	maxRangeAccuracy = 0,
+	minDamage = 300,
+	maxDamage = 675,
+	attackSpeed = 1,
+	woundsRatio = 9,
 
 	-- LIGHT, MEDIUM, HEAVY
 	rating = HEAVY,
@@ -65,7 +92,6 @@ object_installation_faction_perk_turret_dish_sm = object_installation_faction_pe
 	acid = 75,
 	lightSaber = -1,
 	chanceHit = 4,
-	weapon = "object/weapon/ranged/turret/turret_block_large.iff",
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_turret_dish_sm, "object/installation/faction_perk/turret/dish_sm.iff")

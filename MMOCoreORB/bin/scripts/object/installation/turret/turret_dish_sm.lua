@@ -47,9 +47,36 @@ object_installation_turret_turret_dish_sm = object_installation_turret_shared_tu
 	maxCondition = 75000,
 	zoneComponent = "TurretZoneComponent",
 	dataObjectComponent = "TurretDataComponent",
+	vulnerability = BLAST + LIGHTSABER,
 
-	-- Damagetypes in WeaponObject
-	vulnerability = BLAST,
+	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
+	attackType = RANGEDATTACK,
+	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	damageType = ENERGY,
+	-- NONE, LIGHT, MEDIUM, HEAVY
+	armorPiercing = HEAVY,
+	-- See http://www.ocdsoft.com/files/accuracy.xls
+	creatureAccuracyModifiers = { "rifle_accuracy" },
+	creatureAimModifiers = { "rifle_aim", "aim" },
+	-- See http://www.ocdsoft.com/files/defense.xls
+	defenderDefenseModifiers = { "ranged_defense" },
+	-- Leave as "dodge" for now, may have additions later
+	defenderSecondaryDefenseModifiers = { "block" },
+	-- See http://www.ocdsoft.com/files/speed.xls
+	speedModifiers = { "rifle_speed" },
+	-- Leave blank for now
+	damageModifiers = { },
+	
+	pointBlankRange = 0,
+	pointBlankAccuracy = 0,
+	idealRange = 40,
+	idealAccuracy = 70,
+	maxRange = 80,
+	maxRangeAccuracy = 0,
+	minDamage = 300,
+	maxDamage = 675,
+	attackSpeed = 1,
+	woundsRatio = 9,
 
 	-- LIGHT, MEDIUM, HEAVY
 	rating = HEAVY,
@@ -62,9 +89,8 @@ object_installation_turret_turret_dish_sm = object_installation_turret_shared_tu
 	heat = 75,
 	cold = 75,
 	acid = 75,
-	lightSaber =100,
+	lightSaber = -1,
 	chanceHit = 4,
-	weapon = "object/weapon/ranged/turret/turret_block_large.iff",
 }
 
 ObjectTemplates:addTemplate(object_installation_turret_turret_dish_sm, "object/installation/turret/turret_dish_sm.iff")
