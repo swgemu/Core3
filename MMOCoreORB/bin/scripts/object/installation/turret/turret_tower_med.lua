@@ -48,7 +48,7 @@ object_installation_turret_turret_tower_med = object_installation_turret_shared_
 	zoneComponent = "TurretZoneComponent",
 	dataObjectComponent = "TurretDataComponent",
 		-- Damagetypes in WeaponObject
-	vulnerability = BLAST,
+	vulnerability = BLAST + LIGHTSABER,
 
 	-- LIGHT, MEDIUM, HEAVY
 	rating = HEAVY,
