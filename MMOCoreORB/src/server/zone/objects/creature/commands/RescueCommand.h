@@ -31,17 +31,22 @@ public:
 		ManagedReference<CreatureObject* > targetCreature =
 				server->getZoneServer()->getObject(target).castTo<CreatureObject*>();
 
-		if(targetCreature == NULL || !targetCreature->isInCombat())
+		if(targetCreature == NULL)
+			return INVALIDTARGET;
+
+		Locker crossLocker(targetCreature, creature);
+
+		if(!targetCreature->isInCombat())
 			return INVALIDTARGET;
 
 		Locker clocker(targetCreature, creature);
 
-		if(targetCreature->getMainDefender() == NULL)
+		ManagedReference<SceneObject*> mainDefender = targetCreature->getMainDefender();
+
+		if(mainDefender == NULL || !mainDefender->isCreatureObject())
 			return INVALIDTARGET;
 
-		uint64 rescuedPlayerId = targetCreature->getMainDefender()->getObjectID();
-		ManagedReference<CreatureObject* > rescuedPlayer =
-				server->getZoneServer()->getObject(rescuedPlayerId).castTo<CreatureObject*>();
+		ManagedReference<CreatureObject*> rescuedPlayer = mainDefender->asCreatureObject();
 
 		if(rescuedPlayer == NULL)
 			return INVALIDTARGET;
