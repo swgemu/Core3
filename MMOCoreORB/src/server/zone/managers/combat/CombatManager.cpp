@@ -1324,9 +1324,10 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data, Vector<int>& foodMitigation) {
 	float damage = 0;
 
-	if (data.getDamage() > 0) { // this is a special attack (force, heavy weapon, etc)
-		damage = data.getDamage();
-		damage -= System::random(damage / 4);
+	if (data.getDamageMin() > 0) { // this is a special attack (force, heavy weapon, etc)
+		int minDamage = data.getDamageMin();
+		int maxDamage = data.getDamageMax();
+		damage = System::random(maxDamage - minDamage) + minDamage;
 	} else {
 		int diff = calculateDamageRange(attacker, defender, weapon);
 		float minDamage = weapon->getMinDamage();

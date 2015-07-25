@@ -53,7 +53,7 @@ public:
 		if (!creature->isInRange(targetCreature, range + targetCreature->getTemplateRadius() + creature->getTemplateRadius()))
 			return TOOFAR;
 			
-		int maxTransfer = damage; //Value set in command lua
+		int maxTransfer = 200;
 		if (playerGhost->getForcePower() < maxTransfer) {
 			creature->sendSystemMessage("@jedi_spam:no_force_power"); //You do not have enough force to do that.
 			return GENERALERROR;
@@ -78,7 +78,7 @@ public:
 	}
 
 	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) const {
-		return defaultTime * 3.0;
+		return defaultTime * 5.0;
 	}
 
 };

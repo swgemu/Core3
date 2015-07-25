@@ -7,9 +7,15 @@
 
 #include "CreatureAttackData.h"
 #include "server/zone/objects/creature/commands/CombatQueueCommand.h"
+#include "server/zone/objects/creature/commands/ForcePowersQueueCommand.h"
 
 CreatureAttackData::CreatureAttackData(const UnicodeString& dataString, const CombatQueueCommand* base) {
-	baseCommand = base;
+	if (base->isCombatCommand()) {
+		baseCommand = base;
+	} else if (base->isForcePowersCommand()) {
+		baseFPCommand = cast<const ForcePowersQueueCommand*>(base);
+	}
+
 	fillFromBase();
 
 	StringTokenizer data(dataString.toString());
@@ -33,12 +39,13 @@ CreatureAttackData::CreatureAttackData(const UnicodeString& dataString, const Co
 
 CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 	baseCommand = data.baseCommand;
+	baseFPCommand = data.baseFPCommand;
 
+	// Combat Queue Commands.
 	damageMultiplier = data.damageMultiplier;
 	healthDamageMultiplier = data.healthDamageMultiplier;
 	actionDamageMultiplier = data.actionDamageMultiplier;
 	mindDamageMultiplier = data.mindDamageMultiplier;
-	damage = data.damage;
 	accuracyBonus = data.accuracyBonus;
 	speedMultiplier = data.speedMultiplier;
 	poolsToDamage = data.poolsToDamage;
@@ -63,11 +70,14 @@ CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 	combatSpam = data.combatSpam;
 
 	stateAccuracyBonus = data.stateAccuracyBonus;
+
+	// Force Powers specific.
+	damageMin = data.damageMin;
+	damageMax = data.damageMax;
 }
 
 void CreatureAttackData::fillFromBase() {
 	damageMultiplier = baseCommand->getDamageMultiplier();
-	damage = baseCommand->getDamage();
 	accuracyBonus = baseCommand->getAccuracyBonus();
 	speedMultiplier = baseCommand->getSpeedMultiplier();
 	healthCostMultiplier = baseCommand->getHealthCostMultiplier();
@@ -85,6 +95,9 @@ void CreatureAttackData::fillFromBase() {
 	trails = baseCommand->getTrails();
 	combatSpam = baseCommand->getCombatSpam();
 
+	damageMin = baseFPCommand->getDamageMin();
+	damageMax = baseFPCommand->getDamageMax();
+
 	stateAccuracyBonus = 0;
 
 	healthDamageMultiplier = 1.f;
@@ -95,8 +108,11 @@ void CreatureAttackData::fillFromBase() {
 void CreatureAttackData::setVariable(const String& var, const String& val) {
 	uint32 crc = var.hashCode();
 	switch(crc) {
-	case 0x9E64852D: // STRING_HASHCODE("damage"):
-		damage = Float::valueOf(val);
+	case 0x13929379: // damageMin
+		damageMin = Float::valueOf(val);
+		break;
+	case 0xCF4D46E9: // damageMax
+		damageMax = Float::valueOf(val);
 		break;
 	case 0xA82FB287: // STRING_HASHCODE("damageMultiplier"):
 		damageMultiplier = Float::valueOf(val);

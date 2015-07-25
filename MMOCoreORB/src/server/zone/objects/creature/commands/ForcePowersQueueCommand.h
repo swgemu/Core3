@@ -8,25 +8,20 @@
 #ifndef FORCEPOWERSQUEUECOMMAND_H_
 #define FORCEPOWERSQUEUECOMMAND_H_
 
-#include"server/zone/ZoneServer.h"
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/combat/CombatManager.h"
-#include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/managers/combat/CreatureAttackData.h"
-#include "server/zone/managers/collision/CollisionManager.h"
-#include "server/zone/objects/creature/CreatureAttribute.h"
-#include "server/zone/objects/creature/CreatureState.h"
-#include "server/zone/objects/creature/commands/effect/StateEffect.h"
-#include "server/zone/objects/creature/commands/effect/DotEffect.h"
-#include "server/zone/objects/creature/commands/effect/CommandEffect.h"
+
 #include "CombatQueueCommand.h"
-#include "server/zone/managers/collision/PathFinderManager.h"
+
 #include "server/zone/managers/visibility/VisibilityManager.h"
 
 class ForcePowersQueueCommand : public CombatQueueCommand {
+protected:
+	float damageMin;
+	float damageMax;
 public:
-
-	ForcePowersQueueCommand(const String& name, ZoneProcessServer* server) : CombatQueueCommand(name, server) {}
+	ForcePowersQueueCommand(const String& name, ZoneProcessServer* server) : CombatQueueCommand(name, server) {
+		damageMin = 0;
+		damageMax = 0;
+	}
 
 	int doCombatAction(CreatureObject* creature, const uint64& target, const UnicodeString& arguments = "") const {
 			ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
@@ -57,6 +52,7 @@ public:
 			}
 
 			CombatManager* combatManager = CombatManager::instance();
+			UnicodeString args = "";
 
 			try {
 				int res = combatManager->doCombatAction(creature, creature->getWeapon(), cast<TangibleObject*>(targetObject.get()), CreatureAttackData(arguments, this));
@@ -82,7 +78,27 @@ public:
 		}
 
 	float getCommandDuration(CreatureObject *object, const UnicodeString& arguments) const {
-		return defaultTime * speed;
+		return speed;
+	}
+
+	bool isForcePowersCommand() {
+		return true;
+	}
+
+	void setDamageMin(float dmgmin) {
+		damageMin = dmgmin;
+	}
+
+	void setDamageMax(float dmgmx) {
+		damageMax = dmgmx;
+	}
+
+	inline float getDamageMin() const {
+		return damageMin;
+	}
+
+	inline float getDamageMax() const {
+		return damageMax;
 	}
 
 };
