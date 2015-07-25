@@ -63,7 +63,7 @@ public:
 			if (forceSpace <= 0) //Cannot Force Drain if attacker can't hold any more Force.
 				return GENERALERROR;
 
-			int maxDrain = damage; //Value set in command lua.
+			int maxDrain = 100;
 
 			int targetForce = targetGhost->getForcePower();
 			if (targetForce <= 0) {
@@ -89,7 +89,7 @@ public:
 	}
 
 	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) const {
-		return defaultTime * 3.0;
+		return defaultTime * 5.0;
 	}
 
 };

@@ -13,12 +13,13 @@
 #include "server/zone/objects/creature/commands/effect/DotEffect.h"
 
 class CombatQueueCommand;
+class ForcePowersQueueCommand;
 
 class CreatureAttackData {
 protected:
 	const CombatQueueCommand* baseCommand;
+	const ForcePowersQueueCommand* baseFPCommand;
 
-	float damage;
 	float damageMultiplier;
 	float healthDamageMultiplier;
 	float actionDamageMultiplier;
@@ -32,14 +33,14 @@ protected:
 	float mindCostMultiplier;
 	float forceCostMultiplier;
 
-    int range;
-    int coneAngle;
-    int areaRange;
+	int range;
+	int coneAngle;
+	int areaRange;
 
-    uint32 animationCRC;
+	uint32 animationCRC;
 
-    VectorMap<uint8, StateEffect>* stateEffects;
-    VectorMap<uint64, DotEffect>* dotEffects;
+	VectorMap<uint8, StateEffect>* stateEffects;
+	VectorMap<uint64, DotEffect>* dotEffects;
 
 	uint8 attackType;
 	uint8 trails;
@@ -48,16 +49,19 @@ protected:
 
 	int stateAccuracyBonus;
 
+	float damageMin;
+	float damageMax;
+
 public:
-    CreatureAttackData(const UnicodeString & dataString, const CombatQueueCommand *base);
-    CreatureAttackData(const CreatureAttackData& data);
-    virtual ~CreatureAttackData() {}
+	CreatureAttackData(const UnicodeString & dataString, const CombatQueueCommand *base);
+	CreatureAttackData(const CreatureAttackData& data);
+	virtual ~CreatureAttackData() {}
 
-    void fillFromBase();
-    void setVariable(const String& var, const String& val);
+	void fillFromBase();
+	void setVariable(const String& var, const String& val);
 
-    String getCommandName() const;
-    uint32 getCommandCRC() const;
+	String getCommandName() const;
+	uint32 getCommandCRC() const;
 
 	float getActionDamageMultiplier() const {
 		return actionDamageMultiplier;
@@ -83,19 +87,19 @@ public:
 		this->mindDamageMultiplier = mindDamageMultiplier;
 	}
 
-    const CombatQueueCommand* getCommand() const {
-    	return baseCommand;
-    }
+	const CombatQueueCommand* getCommand() const {
+		return baseCommand;
+	}
 
-    float getDamage() const {
-    	return damage;
-    }
+	const ForcePowersQueueCommand* getFPCommand() const {
+		return baseFPCommand;
+	}
 
-    int getAccuracyBonus() const {
-    	return accuracyBonus;
-    }
+	int getAccuracyBonus() const {
+		return accuracyBonus;
+	}
 
-    float getActionCostMultiplier() const {
+	float getActionCostMultiplier() const {
 		return actionCostMultiplier;
 	}
 
@@ -185,6 +189,14 @@ public:
 
 	void setStateAccuracyBonus(int stateAccuracyBonus) {
 		this->stateAccuracyBonus = stateAccuracyBonus;
+	}
+
+	float getDamageMin() const {
+		return damageMin;
+	}
+
+	float getDamageMax() const {
+		return damageMax;
 	}
 };
 

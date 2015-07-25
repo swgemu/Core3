@@ -551,8 +551,6 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			combatCommand->setAccuracyBonus(Lua::getIntParameter(L));
 		else if (varName == "speedMultiplier")
 			combatCommand->setSpeedMultiplier(Lua::getFloatParameter(L));
-		else if (varName == "damage")
-			combatCommand->setDamage(Lua::getFloatParameter(L));
 		else if (varName == "speed")
 			combatCommand->setSpeed(Lua::getFloatParameter(L));
 		else if (varName == "poolsToDamage")
@@ -614,6 +612,16 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			}
 
 			dots.pop();
+		} else if (combatCommand->isForcePowersCommand()) {
+			ForcePowersQueueCommand* fpCommand = cast<ForcePowersQueueCommand*>(combatCommand);
+			if (varName == "damageMin")
+				fpCommand->setDamageMin(Lua::getFloatParameter(L));
+			else if (varName == "damageMax")
+				fpCommand->setDamageMax(Lua::getFloatParameter(L));
+			else {
+				Logger::console.error("unknown variable " + varName + " in force powers command " + slashCommand->getQueueCommandName());
+				command.pop();
+			}
 		} else if (combatCommand->isSquadLeaderCommand()) {
 			SquadLeaderCommand* slCommand = cast<SquadLeaderCommand*>(combatCommand);
 			if (varName == "action")
