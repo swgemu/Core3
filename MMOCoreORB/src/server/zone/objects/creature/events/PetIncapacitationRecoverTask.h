@@ -64,7 +64,7 @@ public:
 
 				if (device != NULL && owner != NULL) {
 					Locker clocker(owner, pet);
-
+					Locker deviceLocker(device);
 					device->storeObject(owner, true);
 				}
 			}
