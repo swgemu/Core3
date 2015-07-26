@@ -41,17 +41,31 @@
 --this exception also makes it possible to release a modified version 
 
 
+object_installation_turret_turret_dish_sm_rebel = object_installation_turret_shared_turret_dish_sm:new {
+	pvpStatusBitmask = AGGRESSIVE + ATTACKABLE,
+	socialGroup = "rebel",
+	faction = "rebel",
+	optionsBitmask = 0,
+	maxCondition = 75000,
+	zoneComponent = "TurretZoneComponent",
+	dataObjectComponent = "TurretDataComponent",
+	-- Damagetypes in WeaponObject
+	vulnerability = BLAST + LIGHTSABER,
+	-- LIGHT, MEDIUM, HEAVY
+	rating = HEAVY,
 
---Children folder includes
-includeFile("installation/turret/base/serverobjects.lua")
+	kinetic = 75,
+	energy = 95,
+	electricity = 75,
+	stun = 100,
+	blast = -1,
+	heat = 75,
+	cold = 75,
+	acid = 75,
+	lightSaber = -1,
+	chanceHit = 4,
+	weapon = "object/weapon/ranged/turret/turret_dish_large.iff",
 
--- Server Objects
-includeFile("installation/turret/turret_block_large.lua")
-includeFile("installation/turret/turret_block_med.lua")
-includeFile("installation/turret/turret_block_sm.lua")
-includeFile("installation/turret/turret_dish_large.lua")
-includeFile("installation/turret/turret_dish_sm.lua")
-includeFile("installation/turret/turret_tower_large.lua")
-includeFile("installation/turret/turret_tower_med.lua")
-includeFile("installation/turret/turret_tower_sm.lua")
-includeFile("installation/turret/turret_dish_sm_rebel.lua")
+}
+
+ObjectTemplates:addTemplate(object_installation_turret_turret_dish_sm_rebel, "object/installation/turret/turret_dish_sm_rebel.iff")
