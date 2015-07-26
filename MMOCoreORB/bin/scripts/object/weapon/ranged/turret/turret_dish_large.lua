@@ -41,29 +41,35 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_installation_faction_perk_turret_block_med = object_installation_faction_perk_turret_shared_block_med:new {
-	lotSize = 1,
-	pvpStatusBitmask = ATTACKABLE,
-	optionsBitmask = 0,
-	maxCondition = 200000,
-	zoneComponent = "TurretZoneComponent",
-	dataObjectComponent = "TurretDataComponent",
-	-- Damagetypes in WeaponObject
-	vulnerability = BLAST + LIGHTSABER,
-	-- LIGHT, MEDIUM, HEAVY
-	rating = HEAVY,
+object_weapon_ranged_turret_turret_dish_large = object_weapon_ranged_turret_shared_turret_block_large:new {
+	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
+	attackType = RANGEDATTACK,
+	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	damageType = ENERGY,
+	-- NONE, LIGHT, MEDIUM, HEAVY
+	armorPiercing = HEAVY,
+	-- See http://www.ocdsoft.com/files/accuracy.xls
+	creatureAccuracyModifiers = { "rifle_accuracy" },
+	creatureAimModifiers = { "rifle_aim", "aim" },
+	-- See http://www.ocdsoft.com/files/defense.xls
+	defenderDefenseModifiers = { "ranged_defense" },
+	-- Leave blank since research says turrets didn't have
+	defenderSecondaryDefenseModifiers = { },
+	-- See http://www.ocdsoft.com/files/speed.xls
+	speedModifiers = { "rifle_speed" },
+	-- Leave blank for now
+	damageModifiers = { },
 
-	kinetic = 80,
-	energy = 95,
-	electricity = 80,
-	stun = 100,
-	blast = -1,
-	heat = 80,
-	cold = 80,
-	acid = 80,
-	lightSaber = -1,
-	chanceHit = 4,
-	weapon = "object/weapon/ranged/turret/turret_block_large.iff",
+	pointBlankRange = 0,
+	pointBlankAccuracy = 0,
+	idealRange = 40,
+	idealAccuracy = 70,
+	maxRange = 80,
+	maxRangeAccuracy = 0,
+	minDamage = 800,
+	maxDamage = 1600,
+	attackSpeed = 1,
+	woundsRatio = 9,
 }
 
-ObjectTemplates:addTemplate(object_installation_faction_perk_turret_block_med, "object/installation/faction_perk/turret/block_med.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_turret_turret_dish_large, "object/weapon/ranged/turret/turret_dish_large.iff")
