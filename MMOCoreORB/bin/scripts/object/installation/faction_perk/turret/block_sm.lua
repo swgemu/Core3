@@ -50,6 +50,7 @@ object_installation_faction_perk_turret_block_sm = object_installation_faction_p
 	dataObjectComponent = "TurretDataComponent",
 	-- Damagetypes in WeaponObject
 	vulnerability = BLAST + LIGHTSABER,
+
 	-- LIGHT, MEDIUM, HEAVY
 	rating = HEAVY,
 

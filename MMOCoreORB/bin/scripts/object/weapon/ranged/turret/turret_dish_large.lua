@@ -41,29 +41,35 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_installation_turret_turret_block_large = object_installation_turret_shared_turret_block_large:new {
-	pvpStatusBitmask = ATTACKABLE,
-	optionsBitmask = 0,
-	maxCondition = 300000,
-	zoneComponent = "TurretZoneComponent",
-	dataObjectComponent = "TurretDataComponent",
-	-- Damagetypes in WeaponObject
-	vulnerability = BLAST + LIGHTSABER,
-
-	-- LIGHT, MEDIUM, HEAVY
-	rating = HEAVY,
-
-	kinetic = 80,
-	energy = 95,
-	electricity = 80,
-	stun = 100,
-	blast = -1,
-	heat = 80,
-	cold = 80,
-	acid = 80,
-	lightSaber = -1,
-	chanceHit = 4,
-	weapon = "object/weapon/ranged/turret/turret_block_large.iff",
+object_weapon_ranged_turret_turret_dish_large = object_weapon_ranged_turret_shared_turret_block_large:new {
+	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
+	attackType = RANGEDATTACK,
+	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	damageType = ENERGY,
+	-- NONE, LIGHT, MEDIUM, HEAVY
+	armorPiercing = HEAVY,
+	-- See http://www.ocdsoft.com/files/accuracy.xls
+	creatureAccuracyModifiers = { "rifle_accuracy" },
+	creatureAimModifiers = { "rifle_aim", "aim" },
+	-- See http://www.ocdsoft.com/files/defense.xls
+	defenderDefenseModifiers = { "ranged_defense" },
+	-- Leave as "dodge" for now, may have additions later
+	defenderSecondaryDefenseModifiers = { "block" },
+	-- See http://www.ocdsoft.com/files/speed.xls
+	speedModifiers = { "rifle_speed" },
+	-- Leave blank for now
+	damageModifiers = { },
+	
+	pointBlankRange = 0,
+	pointBlankAccuracy = 0,
+	idealRange = 40,
+	idealAccuracy = 70,
+	maxRange = 80,
+	maxRangeAccuracy = 0,
+	minDamage = 600,
+	maxDamage = 1350,
+	attackSpeed = 1,
+	woundsRatio = 9,
 }
 
-ObjectTemplates:addTemplate(object_installation_turret_turret_block_large, "object/installation/turret/turret_block_large.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_turret_turret_dish_large, "object/weapon/ranged/turret/turret_dish_large.iff")
