@@ -19,6 +19,7 @@ function CorelliaStaticSpawnsScreenPlay:spawnMobiles()
 	--Need to add the rest of static spawns (Incomplete).
 
 	--Rebels vs Imps (4112 -1252) Smoking small Rebel base
+	spawnSceneObject("object/installation/turret/turret_dish_sm.iff", 240,4109.42,24,-1282.06,175,0)
 	spawnMobile("corellia", "rebel_army_captain", 30,5.2,0.1,-3.6,-93,6036092)
 	spawnMobile("corellia", "rebel_medic", 30,-4.4,0.1,-1.2,-11,6036093)
 
