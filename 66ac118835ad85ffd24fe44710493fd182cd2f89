@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_6ddd6114",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/PetIncapacitationRecoverTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-07-26T18:28:17Z",
+      "side": 1,
+      "message": "This can cause deadlocks. Unfortunately, we don\u0027t have support for 3-way crosslocking.",
+      "range": {
+        "startLine": 67,
+        "startChar": 12,
+        "endLine": 67,
+        "endChar": 24
+      },
+      "revId": "66ac118835ad85ffd24fe44710493fd182cd2f89",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
