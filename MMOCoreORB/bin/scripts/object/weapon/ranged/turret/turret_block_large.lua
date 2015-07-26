@@ -45,7 +45,7 @@ object_weapon_ranged_turret_turret_block_large = object_weapon_ranged_turret_sha
 	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
 	attackType = RANGEDATTACK,
 	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
-	damageType = ENERGY,
+	damageType = BLAST,
 	-- NONE, LIGHT, MEDIUM, HEAVY
 	armorPiercing = HEAVY,
 	-- See http://www.ocdsoft.com/files/accuracy.xls
@@ -66,8 +66,8 @@ object_weapon_ranged_turret_turret_block_large = object_weapon_ranged_turret_sha
 	idealAccuracy = 70,
 	maxRange = 80,
 	maxRangeAccuracy = 0,
-	minDamage = 300,
-	maxDamage = 675,
+	minDamage = 600,
+	maxDamage = 1350,
 	attackSpeed = 1,
 	woundsRatio = 9,
 }
