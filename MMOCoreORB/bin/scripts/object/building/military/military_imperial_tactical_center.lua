@@ -43,6 +43,15 @@
 
 object_building_military_military_imperial_tactical_center = object_building_military_shared_military_imperial_tactical_center:new {
 
+skillMods = {
+		{"private_medical_rating", 100},
+		{"private_med_wound_health", 100},
+		{"private_med_wound_action", 100},
+		{"private_med_wound_mind", 100},
+		{"private_buff_mind", 100},
+		{"private_med_battle_fatigue", 5}
+	}
+
 }
 
 ObjectTemplates:addTemplate(object_building_military_military_imperial_tactical_center, "object/building/military/military_imperial_tactical_center.iff")

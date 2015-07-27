@@ -47,7 +47,8 @@ object_building_military_military_rebel_field_hospital = object_building_militar
 		{"private_medical_rating", 100},
 		{"private_med_wound_health", 100},
 		{"private_med_wound_action", 100}
-	}
+	},
+	planetMapCategory = "medicalcenter"
 }
 
 ObjectTemplates:addTemplate(object_building_military_military_rebel_field_hospital, "object/building/military/military_rebel_field_hospital.iff")

@@ -43,9 +43,15 @@
 
 object_building_military_military_imperial_detachment_hq = object_building_military_shared_military_imperial_detachment_hq:new {
 
-
-
-
+skillMods = {
+		{"private_medical_rating", 125},
+		{"private_med_wound_health", 125},
+		{"private_med_wound_action", 125},
+		{"private_med_wound_mind", 110},
+		{"private_buff_mind", 125},
+		{"private_med_battle_fatigue", 10}
+	},
+	planetMapCategory = "medicalcenter", "cantina"
 
 }
 
