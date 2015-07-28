@@ -40,7 +40,6 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 
-
 object_building_faction_perk_hq_hq_s01_imp = object_building_faction_perk_hq_shared_hq_s01_imp:new {
 		lotSize = 0,
 		containerComponent = "GCWBaseContainerComponent",
@@ -86,18 +85,19 @@ object_building_faction_perk_hq_hq_s01_imp = object_building_faction_perk_hq_sha
 			{templateFile = "object/static/structure/military/military_column_med_imperial_style_01.iff", x=4, z=0, y=-11, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column
 			{templateFile = "object/static/structure/military/military_column_med_imperial_style_01.iff", x=-4, z=0, y=-11, ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1},
 
-				-- turret
+			-- turret
 			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-17, z=0, y=9, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- left turret front
 			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=17, z=0, y=9,  ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1},
 
 			--minefield
 			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=0, z=0, y=12,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1},
 
-			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-1.5, z=0, y=-1.8, ow=.7, ox=0, oz=0, oy=.7, cellid=3, containmentType=-1},
-			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-1.5, z=0, y=-.5, ow=.7, ox=0, oz=0, oy=.7, cellid=3, containmentType=-1},
+			{templateFile = "object/static/structure/corellia/corl_power_transformer_s01.iff", x=-14, z=0, y=2,  ox=0, oy=0, oz=0, ow=0, cellid=-1, containmentType=-1},
+			{templateFile = "object/static/structure/military/bunker_crate_style_01.iff", x=-14, z=0, y=-3,  ox=0, oy=0, oz=0, ow=0, cellid=-1, containmentType=-1}, -- left side statics
+			{templateFile = "object/static/structure/corellia/corl_power_bubble_node.iff", x=14, z=0, y=2,  ox=0, oy=0, oz=0, ow=0, cellid=-1, containmentType=-1},
+			{templateFile = "object/static/structure/corellia/corl_power_transformer_s02.iff", x=14, z=0, y=-3,  ox=0, oy=0, oz=0, ow=0, cellid=-1, containmentType=-1},
 
 			{templateFile="object/tangible/terminal/terminal_mission_imperial.iff", x=-1, z=0, y=3, ow=1, ox=0, oz=0, oy=0, cellid=1, containmentType=-1},
-
 
 			 {templateFile = "object/tangible/terminal/terminal_hq_imperial.iff", x = 0, z = 0, y = -6, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 3, containmentType = -1 },
 			 {templateFile = "object/tangible/hq_destructible/uplink_terminal.iff", x = 4, z = 0, y = -5.5, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 5, containmentType = -1 },
@@ -105,7 +105,6 @@ object_building_faction_perk_hq_hq_s01_imp = object_building_faction_perk_hq_sha
 			  {templateFile = "object/tangible/hq_destructible/power_regulator.iff", x = -4, z = 0, y = -.5, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 6, containmentType = -1 },
 			  {templateFile = "object/tangible/hq_destructible/override_terminal.iff", x = 1, z = 0, y = -1, ow =-.685, ox =0, oz = 0, oy =.728, cellid = 3, containmentType = -1},
 		},
-
 
 		childCreatureObjects = {
 		 	{ mobile="dark_trooper", x=4, z=0, y=50, cellid=-1, respawn=300, containmentType=-1, heading=0},
