@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_cda6f553",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/static_spawns/corellia_static_spawns.lua",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-28T13:34:35Z",
+      "side": 1,
+      "message": "You don\u0027t need this since there\u0027s only 1 turret.",
+      "revId": "19c92a595efcf3fc74044bd06397e3ede762c86c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_6d63211b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/static_spawns/corellia_static_spawns.lua",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-28T13:34:35Z",
+      "side": 1,
+      "message": "You don\u0027t need this.",
+      "revId": "19c92a595efcf3fc74044bd06397e3ede762c86c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_8d68edf6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/static_spawns/corellia_static_spawns.lua",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-07-28T13:34:35Z",
+      "side": 1,
+      "message": "You don\u0027t need this.",
+      "revId": "19c92a595efcf3fc74044bd06397e3ede762c86c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
