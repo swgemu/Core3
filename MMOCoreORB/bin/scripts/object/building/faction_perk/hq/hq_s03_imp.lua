@@ -102,8 +102,8 @@ object_building_faction_perk_hq_hq_s03_imp = object_building_faction_perk_hq_sha
 
 			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-18, z=0, y=32, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- left turret front
 			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=18, z=0, y=32,  ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1},
-			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-13, z=0, y=-5, ox=0, oy=.7,  oz=0, ow=-.7, cellid=-1, containmentType=-1}, -- back turret front
-			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=13, z=0, y=-5,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1},
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-13, z=0, y=-5, ox=0, oy=1,  oz=0, ow=-0, cellid=-1, containmentType=-1}, -- back turret front
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=13, z=0, y=-5,  ox=0, oy=1, oz=0, ow=0, cellid=-1, containmentType=-1},
 
 			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-5, z=.25, y=1.5, ow=.7, ox=0, oz=0, oy=.7, cellid=2, containmentType=-1},
 			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-5, z=.25, y=0, ow=.7, ox=0, oz=0, oy=.7, cellid=2, containmentType=-1},

@@ -107,8 +107,8 @@ object_building_faction_perk_hq_hq_s03_rebel = object_building_faction_perk_hq_s
 			-- turret
 			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-14, z=0, y=31, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- left turret front
 			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=14, z=0, y=31,  ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1},
-			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-16, z=0, y=-13, ox=0, oy=.7,  oz=0, ow=-.7, cellid=-1, containmentType=-1}, -- back turret front
-			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=16, z=0, y=-13,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1},
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-16, z=0, y=-13, ox=0, oy=1,  oz=0, ow=-0, cellid=-1, containmentType=-1}, -- back turret front
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=16, z=0, y=-13,  ox=0, oy=1, oz=0, ow=0, cellid=-1, containmentType=-1},
 
 			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=5, z=0, y=23,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1},
 			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=-5, z=0, y=23,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1},
