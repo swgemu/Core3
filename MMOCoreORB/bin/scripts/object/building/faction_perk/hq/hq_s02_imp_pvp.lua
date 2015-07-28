@@ -62,8 +62,10 @@ object_building_faction_perk_hq_hq_s02_imp_pvp = object_building_faction_perk_hq
 		skillMods = {
 			{"private_medical_rating", 100},
 			{"private_med_wound_health", 100},
-		    {"private_med_wound_action", 100},
+			{"private_med_wound_action", 100},
 		},
+
+--Make register with location function for Docs later
 
 		childObjects = {
 									
@@ -101,9 +103,10 @@ object_building_faction_perk_hq_hq_s02_imp_pvp = object_building_faction_perk_hq
 			{templateFile = "object/static/structure/military/military_wall_med_imperial_style_01.iff", x=8.4, z=0, y=-16.6, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, 
 			
 			
-			-- turret
+			--turret
 			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-14.5, z=0, y=16, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- left turret front
-			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=14.5, z=0, y=16,  ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1}, 
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=14.5, z=0, y=16,  ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- right turret front
+	{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=0, z=0, y=-21,  ox=0, oy=1, oz=0, ow=0, cellid=-1, containmentType=-1 },
 
 			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=0, z=0, y=20,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
 				

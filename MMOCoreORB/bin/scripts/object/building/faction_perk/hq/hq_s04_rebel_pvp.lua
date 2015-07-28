@@ -59,10 +59,17 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 		factionBaseType = 1,
 
 		skillMods = {
-			{"private_buff_mind", 100},
-			{"private_med_battle_fatigue", 5},
-			{"private_medical_rating", 100},
+
+			{"private_medical_rating", 125},
+			{"private_med_wound_health", 125},
+			{"private_med_wound_action", 125},
+			{"private_med_wound_mind", 110},
+			{"private_buff_mind", 125},
+			{"private_med_battle_fatigue", 10}
+
 		},
+
+--Make register with location function for Docs Mus Danc later
 		
 		childObjects = {
 
@@ -110,8 +117,8 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 			-- turret
 			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-11.5, z=0, y=33, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- left turret front
 			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=11.5, z=0, y=33,  ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1}, 
-			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-22, z=0, y=-5.5, ox=0, oy=.7,  oz=0, ow=-.7, cellid=-1, containmentType=-1}, -- back turret front
-			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=22, z=0, y=-5.5,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-22, z=0, y=-5.5, ox=0, oy=1,  oz=0, ow=-0, cellid=-1, containmentType=-1}, -- back turret left
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=22, z=0, y=-5.5,  ox=0, oy=1, oz=0, ow=0, cellid=-1, containmentType=-1}, 
 					
 			--[[ DO NOT DELETE
 			TEMP WAlls may need angled walls for turrets

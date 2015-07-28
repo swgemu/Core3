@@ -63,6 +63,7 @@ object_building_faction_perk_hq_hq_s02_imp = object_building_faction_perk_hq_sha
 			{"private_med_wound_health", 100},
 			{"private_med_wound_action", 100},
 		},
+--Make register with location function for Docs later
 
 		childObjects = {
 
@@ -102,7 +103,8 @@ object_building_faction_perk_hq_hq_s02_imp = object_building_faction_perk_hq_sha
 
 			-- turret
 			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-14.5, z=0, y=16, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- left turret front
-			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=14.5, z=0, y=16,  ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1},
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=14.5, z=0, y=16,  ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- right turret front
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=0, z=0, y=-21,  ox=0, oy=1, oz=0, ow=0, cellid=-1, containmentType=-1 },
 
 			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-4.75, z=.25, y=1, ow=.7, ox=0, oz=0, oy=.7, cellid=2, containmentType=-1},
 			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-4.75, z=.25, y=-.5, ow=.7, ox=0, oz=0, oy=.7, cellid=2, containmentType=-1},
