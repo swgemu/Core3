@@ -170,7 +170,9 @@ int ForceHealQueueCommand::checkHAMAttributes(CreatureObject* creature, Creature
 }
 int ForceHealQueueCommand::doHealHAM(CreatureObject* creature, CreatureObject* target, int healableHAM, healedAttributes_t& attrs) const {
 	if (target == NULL) return GENERALERROR;
-	creature->sendSystemMessage("Healable HAM:" + String::valueOf(healableHAM));
+#ifdef DEBUG_FORCE_HEALS
+	creature->sendSystemMessage("[doHealHAM] Healable HAM:" + String::valueOf(healableHAM));
+#endif
 	if (healableHAM & HEALTH) {
 		attrs.healedHealth = target->healDamage(creature, CreatureAttribute::HEALTH, healAmount);
 	}
@@ -191,7 +193,7 @@ int ForceHealQueueCommand::checkStates(CreatureObject* creature, CreatureObject*
 	if (creature == NULL || target == NULL || healStates == 0) return 0;
 
 #ifdef DEBUG_FORCE_HEALS
-	creature->sendSystemMessage("[checkStates] healStates = " + String::valueOf(healStates)); 
+	creature->sendSystemMessage("[checkStates] healStates = " + String::valueOf(healStates));
 	creature->sendSystemMessage("[checkStates] healStates & CS::STUNNED = " + dbg_fh_bool2s(healStates & CreatureState::STUNNED));
 	creature->sendSystemMessage("[checkStates] healStates & CS::DIZZY = " + dbg_fh_bool2s(healStates & CreatureState::DIZZY));
 	creature->sendSystemMessage("[checkStates] healStates & CS::BLINDED = " + dbg_fh_bool2s(healStates & CreatureState::BLINDED));
@@ -229,7 +231,6 @@ int ForceHealQueueCommand::checkStates(CreatureObject* creature, CreatureObject*
 	creature->sendSystemMessage("[checkStates] result & BLIND = " + dbg_fh_bool2s(retval & BLIND));
 	creature->sendSystemMessage("[checkStates] result & INTIMIDATE = " + dbg_fh_bool2s(retval & INTIMIDATE));
 #endif
-
 
 	return retval;
 }
@@ -327,7 +328,6 @@ int ForceHealQueueCommand::checkDots(CreatureObject* creature, CreatureObject* t
 	creature->sendSystemMessage("[checkDots] result & ONFIRE = " + dbg_fh_bool2s(retval & ONFIRE));
 #endif
 
-
 	return retval;
 }
 
@@ -344,8 +344,6 @@ int ForceHealQueueCommand::calculateForceCost(CreatureObject* creature, Creature
 
 
 	if (forceCostDivisor != 0) { //forceCostDivisor < 0 || forceCostDivisor > 0
-		
-	
 		// HAM
 		int amountHealed = attrs.sumHAM();
 		// Wounds
@@ -361,7 +359,6 @@ int ForceHealQueueCommand::calculateForceCost(CreatureObject* creature, Creature
 #ifdef DEBUG_FORCE_HEALS
 		creature->sendSystemMessage("[calculatedForceCost] amountHealed = " + String::valueOf(amountHealed));
 #endif
-
 
 		if (forceCostDivisor < 0)
 			calculatedForceCost = amountHealed;
@@ -609,7 +606,7 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 	// keep the information about what will be healed and what has been healed so we can make the code a bit cleaner
 	healedAttributes_t healedAttributes = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 	bool didHeal = false;
-	
+
 	if (healAttributes != 0 && healAmount != 0) {
 		// create a bitset so we can probe which attributes need healing and are allowed to be healed
 		const int healableHAMAttributes = checkHAMAttributes(creature, targetCreature);
@@ -625,7 +622,7 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 			didHeal = true;
 		}
 	}
-	
+
 	if (healWoundAttributes != 0 && healWoundAmount != 0) {
 		const int healableWounds = checkWoundAttributes(creature, targetCreature);
 		if (healableWounds != 0) {
