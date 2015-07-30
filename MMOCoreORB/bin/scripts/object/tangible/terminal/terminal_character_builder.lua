@@ -56,6 +56,8 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 
 	templateType = CHARACTERBUILDERTERMINAL,
 
+	glowyBadgeIds = {12, 14, 15, 16, 17, 19, 20, 21, 23, 30, 38, 39, 71, 105, 106, 107},
+
 	itemList = {
 		"Character Options",
 		{
@@ -1512,6 +1514,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			"Apply DOTs", "apply_dots",
 			"Clear DOTs", "clear_dots",
 			"Max XP", "max_xp",
+			"Become Glowy", "become_glowy",
 			"Faction Points",
 			{
 				"Imperial", "faction_imperial",
