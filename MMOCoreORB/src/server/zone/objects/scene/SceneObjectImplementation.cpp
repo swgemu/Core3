@@ -626,7 +626,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 	}
 
 	SortedVector<ManagedReference<QuadTreeEntry*> >* closeSceneObjects = NULL;
-	SortedVector<ManagedReference<QuadTreeEntry*> >* closeNoneReference = NULL;
+	SortedVector<QuadTreeEntry*>* closeNoneReference = NULL;
 	int maxInRangeObjectCount = 0;
 	bool deleteVector = true;
 
@@ -639,7 +639,8 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 			maxInRangeObjectCount = closeSceneObjects->size();
 			deleteVector = true;
 		} else {
-			closeNoneReference = new SortedVector<ManagedReference<QuadTreeEntry*> >(maxInRangeObjectCount, 50);
+			maxInRangeObjectCount = closeobjects->size();
+			closeNoneReference = new SortedVector<QuadTreeEntry*>(maxInRangeObjectCount, 50);
 
 			closeobjects->safeCopyTo(*closeNoneReference);
 			maxInRangeObjectCount = closeNoneReference->size();
@@ -665,7 +666,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 		if (closeSceneObjects != NULL)
 			scno = static_cast<SceneObject*>(closeSceneObjects->get(i).get());
 		else
-			scno = static_cast<SceneObject*>(closeNoneReference->get(i).get());
+			scno = static_cast<SceneObject*>(closeNoneReference->get(i));
 
 		ManagedReference<ZoneClientSession*> client = scno->getClient();
 
