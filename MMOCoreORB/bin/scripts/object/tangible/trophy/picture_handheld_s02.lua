@@ -43,6 +43,8 @@
 
 object_tangible_trophy_picture_handheld_s02 = object_tangible_trophy_shared_picture_handheld_s02:new {
 
+	customName = "a Handheld Picture"
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_trophy_picture_handheld_s02, "object/tangible/trophy/picture_handheld_s02.iff")
