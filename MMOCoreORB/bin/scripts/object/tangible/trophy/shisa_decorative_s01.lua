@@ -43,6 +43,8 @@
 
 object_tangible_trophy_shisa_decorative_s01 = object_tangible_trophy_shared_shisa_decorative_s01:new {
 
+	customName = "a Decorative Shisa"
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_trophy_shisa_decorative_s01, "object/tangible/trophy/shisa_decorative_s01.iff")
