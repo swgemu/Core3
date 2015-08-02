@@ -118,7 +118,7 @@ void MissionObjectiveImplementation::awardFactionPoints() {
 	if (creatureOwner != NULL) {
 		ManagedReference<PlayerObject*> ghost = creatureOwner->getPlayerObject();
 		if (ghost != NULL) {
-			Locker ghostLocker(creatureOwner);
+			Locker lockerGroup(creatureOwner, _this.getReferenceUnsafeStaticCast());
 
 			//Switch to get the correct order.
 			switch (mission->getFaction()) {
