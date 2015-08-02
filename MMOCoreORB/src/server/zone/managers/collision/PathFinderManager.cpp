@@ -564,7 +564,12 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	Vector<PathNode*>* nodes = portalLayout->getPath(source, target);
 
 	if (nodes == NULL) {
-		error("NODES NULL");
+		StringBuffer str;
+		str << "Could not find path from node: " << source->getID()
+				<< " to node: " << target->getID() << " in building: "
+				<< templateObject->getFullTemplateString();
+
+		error(str.toString());
 
 		delete path;
 		return NULL;

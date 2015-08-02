@@ -451,18 +451,21 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	float heightOrigin = 1.f;
 	float heightEnd = 1.f;
 
-	Reference<SortedVector<ManagedReference<QuadTreeEntry*> >*> closeObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
-	// = object1->getCloseObjects();
+	Reference<SortedVector<QuadTreeEntry*>* > closeObjectsNonReference = NULL;/* new SortedVector<QuadTreeEntry* >();*/
+	Reference<SortedVector<ManagedReference<QuadTreeEntry*> >*> closeObjects = NULL;/*new SortedVector<ManagedReference<QuadTreeEntry*> >();*/
 
 	int maxInRangeObjectCount = 0;
 
 	if (object1->getCloseObjects() == NULL) {
-		object1->info("Null closeobjects vector in CollisionManager::checkLineOfSight", true);
-//		closeObjectsCopy = new SortedVector<ManagedReference<QuadTreeEntry*> >();
+		object1->info("Null closeobjects vector in CollisionManager::checkLineOfSight for " + object1->getDisplayedName(), true);
+
+		closeObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
 		zone->getInRangeObjects(object1->getPositionX(), object1->getPositionY(), 512, closeObjects, true);
 	} else {
+		closeObjectsNonReference = new SortedVector<QuadTreeEntry* >();
+
 		CloseObjectsVector* vec = (CloseObjectsVector*) object1->getCloseObjects();
-		vec->safeCopyTo(*closeObjects);		
+		vec->safeCopyTo(*closeObjectsNonReference.get());
 	}
 
 	if (object1->isCreatureObject())
@@ -481,10 +484,16 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	Triangle* triangle = NULL;
 
 	try {
-		for (int i = 0; i < closeObjects->size(); ++i) {
+		for (int i = 0; i < (closeObjects != NULL ? closeObjects->size() : closeObjectsNonReference->size()); ++i) {
 			AABBTree* aabbTree = NULL;
 
-			SceneObject* scno = cast<SceneObject*>(closeObjects->get(i).get());
+			SceneObject* scno;
+
+			if (closeObjects != NULL) {
+				scno = static_cast<SceneObject*>(closeObjects->get(i).get());
+			} else {
+				scno = static_cast<SceneObject*>(closeObjectsNonReference->get(i));
+			}
 
 			try {
 				aabbTree = getAABBTree(scno, 255);
