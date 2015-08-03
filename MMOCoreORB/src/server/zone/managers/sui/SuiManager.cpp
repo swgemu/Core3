@@ -558,6 +558,17 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 			} else if (templatePath == "max_xp") {
 				ghost->maximizeExperience();
 				player->sendSystemMessage("You have maximized all xp types.");
+			} else if (templatePath == "become_glowy") {
+
+				ManagedReference<SceneObject*> scob = cbSui->getUsingObject();
+				if (scob != NULL) {
+
+					if (scob->getGameObjectType() == SceneObjectType::CHARACTERBUILDERTERMINAL) {
+						CharacterBuilderTerminal* bluefrog = cast<CharacterBuilderTerminal*>( scob.get());
+						bluefrog->grantGlowyBadges(player);
+					}
+				}
+
 			} else {
 
 				if (templatePath.length() > 0) {

@@ -13,14 +13,10 @@
 
 class CharacterBuilderTerminalTemplate : public SharedTangibleObjectTemplate {
 	Reference<CharacterBuilderMenuNode*> rootNode;
-	int performanceBuff;
-	int medicalBuff;
-	int	performanceDuration;
-	int	medicalDuration;
+	Vector<int> glowyBadgeIds;
 
 public:
-	CharacterBuilderTerminalTemplate() : rootNode(NULL), performanceBuff(0),
-		medicalBuff(0), performanceDuration(0), medicalDuration(0) {
+	CharacterBuilderTerminalTemplate() : rootNode(NULL) {
 	}
 
 	~CharacterBuilderTerminalTemplate() {
@@ -33,10 +29,13 @@ public:
 	void readObject(LuaObject* templateData) {
 		SharedTangibleObjectTemplate::readObject(templateData);
 
-		performanceBuff = templateData->getIntField("performanceBuff");
-		medicalBuff = templateData->getIntField("medicalBuff");
-		performanceDuration = templateData->getIntField("performanceDuration");
-		medicalDuration = templateData->getIntField("medicalDuration");
+		LuaObject luaGlowyBadges = templateData->getObjectField("glowyBadgeIds");
+
+		for (int i = 1; i <= luaGlowyBadges.getTableSize(); ++i) {
+			glowyBadgeIds.add(luaGlowyBadges.getIntAt(i));
+		}
+
+		luaGlowyBadges.pop();
 
 		LuaObject luaItemList = templateData->getObjectField("itemList");
 
@@ -57,22 +56,9 @@ public:
         return rootNode;
     }
 
-    inline int getPerformanceBuff() const {
-    	return performanceBuff;
+    inline Vector<int> getGlowyBadgeIds() const {
+        return glowyBadgeIds;
     }
-
-    inline int getMedicalBuff() const {
-    	return medicalBuff;
-    }
-
-    inline int getPerformanceDuration() const {
-    	return performanceDuration;
-    }
-
-    inline int getMedicalDuration() const {
-    	return medicalDuration;
-    }
-
 };
 
 

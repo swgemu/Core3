@@ -100,3 +100,21 @@ void CharacterBuilderTerminalImplementation::giveLanguages(CreatureObject* playe
 	skillManager->awardSkill("social_language_sullustan_speak", player, true, true, true);
 	skillManager->awardSkill("social_language_sullustan_comprehend", player, true, true, true);
 }
+
+void CharacterBuilderTerminalImplementation::grantGlowyBadges(CreatureObject* player) {
+	CharacterBuilderTerminalTemplate* terminalTemplate = dynamic_cast<CharacterBuilderTerminalTemplate*>(templateObject.get());
+
+	if (terminalTemplate == NULL)
+		return;
+
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	Vector<int> ids = terminalTemplate->getGlowyBadgeIds();
+
+	for (int i = 0; i < ids.size(); i++) {
+		ghost->awardBadge(ids.get(i));
+	}
+}
