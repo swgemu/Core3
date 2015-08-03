@@ -91,11 +91,8 @@ npcNode:addChildNode(zabrakNode)
 --Aqualish (Male Only - Female model is bugged. Is not in game on live)
 npcNode:addChildNode(VendorSelectionNode("@player_structure:race_aqualish", "aqualish_male.iff", "", 60))
 
---Bith
-bithNode = VendorSelectionNode("@player_structure:race_bith", "bith_", "@player_structure:gender_", 60)
-bithNode:addChildNode(maleNode)
-bithNode:addChildNode(femaleNode)
-npcNode:addChildNode(bithNode)
+--Bith (Male only - Female version is bugged redundant/identical as male and also doesn't accept ANY clothing/armor drag & drop customizations)
+npcNode:addChildNode(VendorSelectionNode("@player_structure:race_bith", "bith_male.iff", "", 60))
 
 --Devaronian
 npcNode:addChildNode(VendorSelectionNode("@player_structure:race_devaronian", "devaronian_male.iff", "", 60))
