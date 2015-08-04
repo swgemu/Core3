@@ -9,7 +9,16 @@ registerScreenPlay("NabooTheedScreenPlay", true)
 function NabooTheedScreenPlay:start()
 	if (isZoneEnabled("naboo")) then
 		self:spawnMobiles()
+		self:spawnSceneObjects()
 	end
+end
+
+function NabooTheedScreenPlay:spawnSceneObjects()
+
+	--outside starport
+	spawnSceneObject("naboo", "object/tangible/crafting/station/public_space_station.iff", -4830.96, 6, 4141.53, 0, 186 )
+	spawnSceneObject("naboo", "object/tangible/crafting/station/public_space_station.iff", -4886.07, 6, 4188.23, 0, 186 )
+
 end
 
 function NabooTheedScreenPlay:spawnMobiles()

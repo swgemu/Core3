@@ -6,7 +6,6 @@ NabooStaticSpawnsNorthScreenPlay = ScreenPlay:new {
 
 	lootContainers = {
 		
-
 	},
 
 	lootLevel = 19,
@@ -27,17 +26,12 @@ NabooStaticSpawnsNorthScreenPlay = ScreenPlay:new {
 	},
 
 	lootContainerRespawn = 1800 -- 30 minutes
-}
 
+}
 registerScreenPlay("NabooStaticSpawnsNorthScreenPlay", true)
 
 function NabooStaticSpawnsNorthScreenPlay:start()
 	if (isZoneEnabled("naboo")) then
-		self:spawnMobiles()
 		self:initializeLootContainers()
 	end
-end
-
-function NabooStaticSpawnsNorthScreenPlay:spawnMobiles()
-
 end
