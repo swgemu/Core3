@@ -201,7 +201,7 @@ public:
 					ownerGhost->updateLastPvpCombatActionTimestamp();
 				}
 			}
-		} else if (creature->isPlayerCreature() && targetObject->isPet()) {
+		} else if (creature->isPlayerCreature() && (targetObject->isPet() || targetObject->isVehicleObject())) {
 			ManagedReference<CreatureObject*> targetOwner = targetObject.castTo<CreatureObject*>()->getLinkedCreature().get();
 
 			if (targetOwner != NULL && targetOwner->isPlayerCreature()) {
