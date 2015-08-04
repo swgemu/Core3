@@ -134,12 +134,6 @@ public:
 
 		data->setNumber(System::random(20) + 1);
 
-		inventory->transferObject(assembledMessage, -1, true);
-
-		assembledMessage->sendTo(player, true);
-
-		player->sendSystemMessage("@encoded_disk/message_fragment:sys_message_assembled"); // You successfully assemble the fragments into a single file.
-
 		partOne->destroyObjectFromWorld(true);
 		partOne->destroyObjectFromDatabase();
 		partTwo->destroyObjectFromWorld(true);
@@ -148,6 +142,12 @@ public:
 		partThree->destroyObjectFromDatabase();
 		partFour->destroyObjectFromWorld(true);
 		partFour->destroyObjectFromDatabase();
+
+		inventory->transferObject(assembledMessage, -1, true);
+
+		assembledMessage->sendTo(player, true);
+
+		player->sendSystemMessage("@encoded_disk/message_fragment:sys_message_assembled"); // You successfully assemble the fragments into a single file.
 	}
 };
 
