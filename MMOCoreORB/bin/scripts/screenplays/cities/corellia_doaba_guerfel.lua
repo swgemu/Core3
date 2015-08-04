@@ -9,7 +9,15 @@ registerScreenPlay("CorelliaDoabaGuerfelScreenPlay", true)
 function CorelliaDoabaGuerfelScreenPlay:start()
 	if (isZoneEnabled("corellia")) then
 		self:spawnMobiles()
+		self:spawnSceneObjects()
 	end
+end
+
+function CorelliaDoabaGuerfelScreenPlay:spawnSceneObjects()
+
+	--outside starport
+	spawnSceneObject("corellia", "object/tangible/crafting/station/public_space_station.iff", 3327.89, 308, 5534.89, 0, 60 )
+
 end
 
 function CorelliaDoabaGuerfelScreenPlay:spawnMobiles()

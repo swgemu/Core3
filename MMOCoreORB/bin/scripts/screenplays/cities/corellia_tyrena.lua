@@ -9,7 +9,15 @@ registerScreenPlay("CorelliaTyrenaScreenPlay", true)
 function CorelliaTyrenaScreenPlay:start()
 	if (isZoneEnabled("corellia")) then
 		self:spawnMobiles()
+		self:spawnSceneObjects()
 	end
+end
+
+function CorelliaTyrenaScreenPlay:spawnSceneObjects()
+
+	--outside starport
+	spawnSceneObject("corellia", "object/tangible/crafting/station/public_space_station.iff", -5032.14, 21, -2317.33, 0, 0 )
+
 end
 
 function CorelliaTyrenaScreenPlay:spawnMobiles()

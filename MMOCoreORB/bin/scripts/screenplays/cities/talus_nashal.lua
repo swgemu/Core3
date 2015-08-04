@@ -9,7 +9,15 @@ registerScreenPlay("TalusNashalScreenPlay", true)
 function TalusNashalScreenPlay:start()
 	if (isZoneEnabled("talus")) then
 		self:spawnMobiles()
+    		self:spawnSceneObjects()
 	end
+end
+
+function TalusNashalScreenPlay:spawnSceneObjects()
+
+	--outside starport
+	spawnSceneObject("talus", "object/tangible/crafting/station/public_space_station.iff", 4433.46, 2, 5300.02, 0, 170 )
+
 end
 
 function TalusNashalScreenPlay:spawnMobiles()
