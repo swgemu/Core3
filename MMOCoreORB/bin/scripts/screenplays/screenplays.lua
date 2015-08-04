@@ -341,7 +341,7 @@ includeFile("static_spawns/dathomir_static_spawns_se.lua")
 includeFile("static_spawns/dathomir_static_spawns_sw.lua")
 includeFile("static_spawns/endor_static_spawns.lua")
 includeFile("static_spawns/lok_static_spawns.lua")
---includeFile("static_spawns/naboo_static_spawns_north.lua")
+includeFile("static_spawns/naboo_static_spawns_north.lua")
 includeFile("static_spawns/naboo_static_spawns_south.lua")
 includeFile("static_spawns/rori_static_spawns.lua")
 includeFile("static_spawns/talus_static_spawns_north.lua")
@@ -364,4 +364,3 @@ includeFile("space/space_chassis_dealer_conv_handler.lua")
 
 -- Record Keepers
 includeFile("record_keepers/record_keepers.lua")
-
