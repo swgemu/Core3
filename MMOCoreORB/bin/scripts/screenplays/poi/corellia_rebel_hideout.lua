@@ -53,9 +53,14 @@ function RebelHideoutScreenPlay:notifyTurretDestroyed(pTurret, pPlayer)
 end
 
 function RebelHideoutScreenPlay:respawnTurret(pTurret)
+	if pTurret == nil then return end
+
 	TangibleObject(pTurret):setConditionDamage(0, false)
 	local turretData = self.turrets[readData(SceneObject(pTurret):getObjectID() .. ":rebel_hideout:turret_index")]
 	local pZone = getZoneByName("corellia")
+
+	if pZone == nil then return end
+
 	SceneObject(pZone):transferObject(pTurret, -1, true)
 end
 
