@@ -155,6 +155,8 @@ void MissionObjectImplementation::setRewardCredits(int creds, bool notifyClient)
 			Reference<GroupObject*> group = player->getGroup();
 
 			rewardCreditsDivisor = group->getNumberOfPlayerMembers();
+		} else {
+			rewardCreditsDivisor = 1;
 		}
 
 		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this.getReferenceUnsafeStaticCast());
