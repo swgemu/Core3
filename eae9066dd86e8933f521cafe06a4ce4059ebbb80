@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_9dbd8305",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DrainForceCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-05T06:37:52Z",
+      "side": 1,
+      "message": "defaultTime for this command is 1.5. You are changing it from a 4.5s delay to a 7.5s delay. The mantis report claims a 5s delay and since a 4.5s delay can easily look like a 5s delay in the combat log, I think this should be left alone without more definitive evidence.",
+      "revId": "eae9066dd86e8933f521cafe06a4ce4059ebbb80",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
