@@ -9,7 +9,16 @@ registerScreenPlay("TatooineMosEspaScreenPlay", true)
 function TatooineMosEspaScreenPlay:start()
 	if (isZoneEnabled("tatooine")) then
 		self:spawnMobiles()
+		self:spawnSceneObjects()
 	end
+end
+
+function TatooineMosEspaScreenPlay:spawnSceneObjects()
+
+	--outside starport
+	spawnSceneObject("tatooine", "object/tangible/crafting/station/public_space_station.iff", -2930.39, 5, 2134.35, 0, 55 )
+	spawnSceneObject("tatooine", "object/tangible/crafting/station/public_space_station.iff", -2879.34, 5, 2164.2, 0, 10 )
+
 end
 
 function TatooineMosEspaScreenPlay:spawnMobiles()

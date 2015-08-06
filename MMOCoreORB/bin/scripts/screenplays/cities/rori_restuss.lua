@@ -9,7 +9,15 @@ registerScreenPlay("RoriRestussScreenPlay",  true)
 function RoriRestussScreenPlay:start()
 	if (isZoneEnabled("rori")) then
 		self:spawnMobiles()
+    		self:spawnSceneObjects()
 	end
+end
+
+function RoriRestussScreenPlay:spawnSceneObjects()
+
+	--outside starport
+	spawnSceneObject("rori", "object/tangible/crafting/station/public_space_station.iff", 5376.78, 80, 5666.8, 0, 240 )
+
 end
 
 function RoriRestussScreenPlay:spawnMobiles()
