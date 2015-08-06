@@ -857,7 +857,7 @@ int DirectorManager::createEvent(lua_State* L) {
 	if (parameterCount > 4) {
 		bool save = lua_toboolean(L, -5);
 
-		if (save) {
+		if (save && obj != NULL) {
 			Time expireTime;
 			uint64 currentTime = expireTime.getMiliTime();
 
