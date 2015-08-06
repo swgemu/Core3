@@ -50,48 +50,46 @@ MindBlast1Command = {
 	accuracySkillMod = "mindblast_accuracy";
 
 	stateEffects = {
-	  StateEffect( 
-		STUN_EFFECT, 
-		{}, 
-		{ "jedi_state_defense" }, 
-		{}, 
-		55, 
-		0, 
-		10 
+	  StateEffect(
+		STUN_EFFECT,
+		{},
+		{ "jedi_state_defense" },
+		{},
+		55,
+		0,
+		10
 	  ),
-	  
-	  StateEffect( 
-		BLIND_EFFECT, 
-		{}, 
-		{ "jedi_state_defense" }, 
-		{}, 
-		55, 
-		0, 
-		10 
+
+	  StateEffect(
+		BLIND_EFFECT,
+		{},
+		{ "jedi_state_defense" },
+		{},
+		55,
+		0,
+		10
 	  ),
-	  
-	  StateEffect( 
-		DIZZY_EFFECT, 
-		{}, 
-		{ "jedi_state_defense" }, 
-		{}, 
-		55, 
-		0, 
-		10 
+
+	  StateEffect(
+		DIZZY_EFFECT,
+		{},
+		{ "jedi_state_defense" },
+		{},
+		55,
+		0,
+		10
 	  )
-	},	
-	
-	
+	},
+
 	animationCRC = hashCode("force_mind_blast_1_particle_level_1_light"),
 
 	combatSpam = "mindblast1",
-	
+
 	poolsToDamage = RANDOM_ATTRIBUTE,
-	
+
 	attackType = FORCEATTACK,
 
 	range = 32
-}	
+}
 
 AddCommand(MindBlast1Command)
-
