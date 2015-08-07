@@ -43,6 +43,7 @@
 
 object_mobile_darth_vader = object_mobile_shared_darth_vader:new {
 
+
 }
 
 ObjectTemplates:addTemplate(object_mobile_darth_vader, "object/mobile/darth_vader.iff")

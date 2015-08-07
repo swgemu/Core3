@@ -24,6 +24,7 @@ desert_squill = Creature:new {
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
+	scale = 1.15,
 
 	templates = {"object/mobile/squill_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/squill_hue.iff",

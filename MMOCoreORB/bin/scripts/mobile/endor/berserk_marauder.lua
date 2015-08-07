@@ -25,6 +25,7 @@ berserk_marauder = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	scale = 1.35,
 
 	templates = {"object/mobile/dressed_feral_marauder.iff"},
 	lootGroups = {
