@@ -24,6 +24,7 @@ bombardier = Creature:new {
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	scale = 1.05,
 
 	templates = {"object/mobile/dressed_imperial_gunner_m.iff"},
 	lootGroups = {

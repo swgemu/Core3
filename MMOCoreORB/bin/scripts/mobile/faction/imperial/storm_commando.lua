@@ -25,6 +25,7 @@ storm_commando = Creature:new {
 	creatureBitmask = PACK + KILLER + STALKER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	scale = 1.05,
 
 	templates = {"object/mobile/dressed_stormtrooper_commando1_m.iff"},
 	lootGroups = {

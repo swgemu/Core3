@@ -25,6 +25,7 @@ marauder = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	scale = 1.35,
 
 	templates = {
 		"object/mobile/dressed_marauder.iff"},

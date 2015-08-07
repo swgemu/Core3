@@ -24,6 +24,7 @@ darth_vader = Creature:new {
 	creatureBitmask = PACK,
 	optionsBitmask = 264,
 	diet = HERBIVORE,
+  	scale = 1.25,
 
 	templates = {"object/mobile/darth_vader.iff"},
 	lootGroups = {
