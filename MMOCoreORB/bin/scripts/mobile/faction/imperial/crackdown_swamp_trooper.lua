@@ -25,6 +25,7 @@ crackdown_swamp_trooper = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	scale = 1.05,
 
 	templates = {"object/mobile/dressed_swamp_trooper.iff"},
 	lootGroups = {},

@@ -24,6 +24,7 @@ ig_88 = Creature:new {
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	scale = 1.35,
 
 	templates = {"object/mobile/ig_88.iff"},
 	lootGroups = {},

@@ -25,6 +25,7 @@ crackdown_stormtrooper_captain = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 136,
 	diet = HERBIVORE,
+	scale = 1.05,
 
 	templates = {"object/mobile/dressed_stormtrooper_captain_white_white.iff",
 				"object/mobile/dressed_stormtrooper_groupleader_m.iff"

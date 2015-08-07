@@ -25,6 +25,7 @@ crackdown_stormtrooper_bombardier = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	scale = 1.05,
 
 	templates = {"object/mobile/dressed_stormtrooper_bombardier_m.iff"},
 	lootGroups = {

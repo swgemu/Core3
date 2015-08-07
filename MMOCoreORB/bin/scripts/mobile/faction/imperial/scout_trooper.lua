@@ -25,6 +25,7 @@ scout_trooper = Creature:new {
 	creatureBitmask = NONE,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	scale = 1.05,
 
 	templates = {"object/mobile/dressed_scout_trooper_white_white.iff"},
 	lootGroups = {

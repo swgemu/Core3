@@ -24,6 +24,7 @@ death_watch_battle_droid = Creature:new {
 	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	scale = 1.15,
 
 	templates = {
 		"object/mobile/death_watch_battle_droid.iff",

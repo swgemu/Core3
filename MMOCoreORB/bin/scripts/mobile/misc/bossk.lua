@@ -24,6 +24,7 @@ bossk = Creature:new {
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	scale = 1.15,
 
 	templates = {"object/mobile/bossk.iff"},
 	lootGroups = {},

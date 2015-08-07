@@ -25,6 +25,7 @@ black_sun_assassin = Creature:new {
 	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	scale = 1.15,
 
 	templates = {"object/mobile/dressed_black_sun_assassin.iff"},
 	lootGroups = {
