@@ -78,6 +78,7 @@
 #include "server/login/account/Account.h"
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/managers/player/QuestInfo.h"
+#include "server/zone/objects/player/events/ForceMeditateTask.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -1847,9 +1848,12 @@ void PlayerObjectImplementation::doForceRegen() {
 
 	uint32 modifier = 1;
 
-	// TODO: Re-factor Force Meditate so TKA meditate doesn't effect.
-	if (creature->isMeditating())
-		modifier = 3;
+	if (creature->isMeditating()) {
+		Reference<ForceMeditateTask*> medTask = creature->getPendingTask("forcemeditate").castTo<ForceMeditateTask*>();
+
+		if (medTask != NULL)
+			modifier = 3;
+	}
 
 	uint32 forceTick = tick * modifier;
 
