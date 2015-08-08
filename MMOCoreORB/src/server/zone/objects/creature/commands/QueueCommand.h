@@ -127,7 +127,8 @@ public:
 	 * Checks all states at once with a bitwise operation
 	 */
 	bool checkStateMask(CreatureObject* creature) const {
-		return (creature->getStateBitmask() & stateMask) == 0;
+		const uint64 stateBitmask = creature->getStateBitmask() & (~CreatureState::GLOWINGJEDI);
+		return (stateBitmask & stateMask) == 0;
 	}
 
 	/**

@@ -42,9 +42,11 @@ public:
 				player->switchZone(zone->getZoneName(), player->getPositionX(), player->getPositionZ(), player->getPositionY(), player->getParentID(), true);
 
 				if (player->isInvisible()) {
+					player->setState(CreatureState::GLOWINGJEDI);
 					player->sendSystemMessage("You are now invisible to other players and creatures.");
 
 				} else {
+					player->clearState(CreatureState::GLOWINGJEDI);
 					player->sendSystemMessage("You are now visible to all players and creatures.");
 				}
 
