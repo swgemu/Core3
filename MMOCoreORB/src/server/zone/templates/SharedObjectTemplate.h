@@ -202,6 +202,7 @@ public:
 	const static int DROIDMODULESTIMPACK = 0x4000055;
 	const static int DROIDMODULESTRUCTURE = 0x4000056;
 	const static int DROIDMODULEPERSONALITY = 0x4000057;
+	const static int VEHICLE = 0x4000058;
 public:
 	SharedObjectTemplate();
 
@@ -727,6 +728,9 @@ public:
 	}
 	virtual bool isDroidEffectsModuleTemplate() {
 	    	return false;
+	}
+	virtual bool isVehicleObjectTemplate() {
+		return false;
 	}
 };
 
