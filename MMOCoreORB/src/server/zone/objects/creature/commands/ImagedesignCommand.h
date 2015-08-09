@@ -52,6 +52,11 @@ public:
 			return GENERALERROR;
 		}
 
+		if (playerTarget->isInvisible()) {
+			designer->sendSystemMessage("You can't image design an invisible player.");
+			return GENERALERROR;
+		}
+
 		// --- GROUP CHECKING
 		if (designer != playerTarget) {
 			StringIdChatParameter stringIdNotGrp;
