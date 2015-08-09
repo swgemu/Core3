@@ -10,6 +10,7 @@
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/VehicleObject.h"
+#include "server/zone/objects/creature/events/VehicleDecayTask.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
@@ -154,14 +155,13 @@ void VehicleControlDeviceImplementation::spawnObject(CreatureObject* player) {
 
 	//controlledObject->insertToZone(player->getZone());
 	zone->transferObject(controlledObject, -1, true);
-	controlledObject->inflictDamage(player, 0, System::random(50), true);
-	
+	Reference<VehicleDecayTask*> decayTask = new VehicleDecayTask(controlledObject);
+	decayTask->execute();
+
 	if (vehicle != NULL && controlledObject->getServerObjectCRC() == 0x32F87A54) // Jetpack
 	{
-	
 		controlledObject->setCustomizationVariable("/private/index_hover_height", 40, true); // Illusion of flying.
 		player->executeObjectControllerAction(STRING_HASHCODE("mount"), controlledObject->getObjectID(), ""); // Auto mount.
-		
 	}
 
 	updateStatus(1);
@@ -203,6 +203,13 @@ void VehicleControlDeviceImplementation::storeObject(CreatureObject* player, boo
 	}
 
 	Locker crossLocker(controlledObject, player);
+
+	Reference<Task*> decayTask = controlledObject->getPendingTask("decay");
+
+	if (decayTask != NULL) {
+		decayTask->cancel();
+		controlledObject->removePendingTask("decay");
+	}
 
 	controlledObject->destroyObjectFromWorld(true);
 
