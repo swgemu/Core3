@@ -22,16 +22,27 @@ void ForceShrineMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, 
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
-	menuResponse->addRadialMenuItem(213, 3, "@jedi_trials:meditate"); // Meditate
+	if (player->hasSkill("force_title_jedi_novice"))
+		menuResponse->addRadialMenuItem(213, 3, "@jedi_trials:meditate"); // Meditate
+
 }
 
 int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) {
 	if (selectedID != 213)
 		return 0;
 
+	if (!creature->hasSkill("force_title_jedi_novice"))
+		return 0;
+
 	if (creature->getPosture() != CreaturePosture::CROUCHED){
 		creature->sendSystemMessage("@jedi_trials:show_respect"); // Must show respect
 		return 0;
+	} else {
+		int rand = System::random(14) + 1;
+		StringBuffer sysmsg;
+		sysmsg << "@jedi_trials:force_shrine_wisdom_" << rand;
+
+		creature->sendSystemMessage(sysmsg.toString());
 	}
 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
@@ -94,16 +105,6 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 		} else {
 			padawanRobe->destroyObjectFromDatabase(true);
 		}
-
-	} else if (!creature->hasSkill("force_title_jedi_novice")) {
-
-		int rand = System::random(14) + 1;
-
-		StringBuffer sysmsg;
-
-		sysmsg << "@jedi_trials:force_shrine_wisdom_" << rand;
-
-		creature->sendSystemMessage(sysmsg.toString());
 
 	} else if (creature->hasSkill("force_title_jedi_rank_02")) {
 
