@@ -66,60 +66,58 @@ object_building_faction_perk_hq_hq_s03_rebel = object_building_faction_perk_hq_s
 
 		childObjects = {
 
-			{templateFile = "object/tangible/terminal/terminal_hq_rebel.iff", x = 0, z = 0, y = -6, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 3, containmentType = -1 },
-
 			-- left side columns
-
 			{templateFile = "object/static/structure/military/military_column_med_rebel_style_01.iff", x=-5.5, z=0, y=30.75, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 1
 			{templateFile = "object/static/structure/military/military_column_med_rebel_style_01.iff", x=-12.5, z=0, y=26.75, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 2
 			{templateFile = "object/static/structure/military/military_column_med_rebel_style_01.iff", x=-19.5, z=0, y=22.75, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 3
-			{templateFile = "object/static/structure/military/military_column_med_rebel_style_01.iff", x=-19.5, z=0, y=-9.25, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 4
-			{templateFile = "object/static/structure/military/military_column_med_rebel_style_01.iff", x=-11.5, z=0, y=-9.25, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 5
-			{templateFile = "object/static/structure/military/military_column_med_rebel_style_01.iff", x=-3.5, z=0, y=-9.25, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 6
+			{templateFile = "object/static/structure/military/military_column_med_rebel_style_01.iff", x=-11.5, z=0, y=-10, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 5
+			{templateFile = "object/static/structure/military/military_column_med_rebel_style_01.iff", x=-3.5, z=0, y=-10, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 6
 
 			-- right columns
 			{templateFile = "object/static/structure/military/military_column_med_rebel_style_01.iff", x=5.5, z=0, y=30.75, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- right column 1
 			{templateFile = "object/static/structure/military/military_column_med_rebel_style_01.iff", x=12.5, z=0, y=26.75, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- right column 2
 			{templateFile = "object/static/structure/military/military_column_med_rebel_style_01.iff", x=19.5, z=0, y=22.75, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- right column 3
-			{templateFile = "object/static/structure/military/military_column_med_rebel_style_01.iff", x=19.5, z=0, y=-9.25, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- right column 4
-		    {templateFile = "object/static/structure/military/military_column_med_rebel_style_01.iff", x=11.5, z=0, y=-9.25, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- right column 5
-			{templateFile = "object/static/structure/military/military_column_med_rebel_style_01.iff", x=3.5, z=0, y=-9.25, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- right column 6
+			{templateFile = "object/static/structure/military/military_column_med_rebel_style_01.iff", x=11.5, z=0, y=-10, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- right column 5
+			{templateFile = "object/static/structure/military/military_column_med_rebel_style_01.iff", x=3.5, z=0, y=-10, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- right column 6
 
+			-- new walls top
+			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=-5.5, z=0, y=34.75, ox=0, oy=-.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, -- left wall 2
+			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=5.5, z=0, y=34.75, ox=0, oy=-.7, oz=0, ow=.7, cellid=-1, containmentType=-1},
 
-			-- wall1
-			--{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=-5.5, z=0, y=34.75, ox=0, oy=-.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, -- left wall 2
-			--{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=5.5, z=0, y=34.75, ox=0, oy=-.7, oz=0, ow=.7, cellid=-1, containmentType=-1},
-
-
-			-- wall 2
+			-- walls 2
 			{templateFile = "object/static/structure/military/military_wall_med_rebl_16_style_01.iff", x=-12.5, z=0, y=26.75, oy=-.27, oz=0, ow=.965, cellid=-1, containmentType=-1}, -- left wall 2
 			{templateFile = "object/static/structure/military/military_wall_med_rebl_16_style_01.iff", x=12.5, z=0, y=26.75, oy=.27, oz=0, ow=.965, cellid=-1, containmentType=-1},
 
-			-- wall 3
-			{templateFile = "object/static/structure/military/military_wall_med_rebl_32_style_01.iff", x=-19.5, z=0, y=6.75, ox=0, oy=.711424, oz=0, ow=-.702763, cellid=-1, containmentType=-1}, -- left wall 3
-			{templateFile = "object/static/structure/military/military_wall_med_rebl_32_style_01.iff", x=19.5, z=0, y=6.75, ox=0, oy=-.711424, oz=0, ow=-.702763, cellid=-1, containmentType=-1}, -- right wall 3
+			-- middle wall 3
+			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=-19.5, z=0, y=18.25, ox=0, oy=.711424, oz=0, ow=-.702763, cellid=-1, containmentType=-1}, -- left wall 3
+			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=19.5, z=0, y=18.25, ox=0, oy=-.711424, oz=0, ow=-.702763, cellid=-1, containmentType=-1}, -- right wall 3
+			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=-19.5, z=0, y=12.25, ox=0, oy=.711424, oz=0, ow=-.702763, cellid=-1, containmentType=-1}, -- left wall 3a
+			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=19.5, z=0, y=12.25, ox=0, oy=-.711424, oz=0, ow=-.702763, cellid=-1, containmentType=-1}, -- right wall 3a
+			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=-19.5, z=0, y=4.75, ox=0, oy=.711424, oz=0, ow=-.702763, cellid=-1, containmentType=-1}, -- left wall 3b
+			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=19.5, z=0, y=4.75, ox=0, oy=-.711424, oz=0, ow=-.702763, cellid=-1, containmentType=-1}, -- right wall 3b
+
+			--slanted back walls
+			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=16.5, z=0, y=-1, oy=-.27, oz=0, ow=.965, cellid=-1, containmentType=-1}, -- left wall 2
+			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=-16.5, z=0, y=-1, oy=.27, oz=0, ow=.965, cellid=-1, containmentType=-1},
+			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=-12.5, z=0, y=-5, ox=0, oy=-.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, -- left wall 2b straight
+			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=12.5, z=0, y=-5, ox=0, oy=-.7, oz=0, ow=.7, cellid=-1, containmentType=-1},
 
 			-- back walls
-			{templateFile = "object/static/structure/military/military_wall_med_rebl_16_style_01.iff", x=-11.5, z=0, y=-9.25, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1},
-			{templateFile = "object/static/structure/military/military_wall_med_rebl_16_style_01.iff", x=11.5, z=0, y=-9.25, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1},
-			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=0, z=0, y=-9.25, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1},
+			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=-8.5, z=0, y=-10, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1},
+			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=8.5, z=0, y=-10, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1},
+			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=0, z=0, y=-10, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1},
 
-			-- turret
-			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-14, z=0, y=31, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- left turret front
-			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=14, z=0, y=31,  ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1},
-			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-16, z=0, y=-13, ox=0, oy=.7,  oz=0, ow=-.7, cellid=-1, containmentType=-1}, -- back turret front
-			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=16, z=0, y=-13,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1},
+			-- turrets
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-14.5, z=0, y=30.5, ox=0, oy=0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- left turret front
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=14.5, z=0, y=30.5,  ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1},
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-17, z=0, y=-5.5, ox=0, oy=1,  oz=0, ow=-.27, cellid=-1, containmentType=-1}, -- back turret left
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=17, z=0, y=-5.5,  ox=0, oy=1, oz=0, ow=.27, cellid=-1, containmentType=-1},
 
 			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=5, z=0, y=23,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1},
 			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=-5, z=0, y=23,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1},
 
 			{templateFile = "object/installation/faction_perk/covert_detector/detector_base.iff", x=15, z=0, y=45,  ox=0, oy=-.3, oz=0, ow=1, cellid=-1, containmentType=-1},
 			{templateFile = "object/installation/faction_perk/covert_detector/detector_base.iff", x=-15, z=0, y=45,  ox=0, oy=-.3, oz=0, ow=1, cellid=-1, containmentType=-1},
-
-			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-5, z=.25, y=1.5, ow=.7, ox=0, oz=0, oy=.7, cellid=2, containmentType=-1},
-			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-5, z=.25, y=0, ow=.7, ox=0, oz=0, oy=.7, cellid=2, containmentType=-1},
-			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-5, z=.25, y=-1.5, ow=.7, ox=0, oz=0, oy=.7, cellid=2, containmentType=-1},
-			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-5, z=.25, y=-3, ow=.7, ox=0, oz=0, oy=.7, cellid=2, containmentType=-1},
 
 			{templateFile = "object/tangible/terminal/terminal_hq_rebel.iff", x = .38, z = .25, y = 1.75, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
 
@@ -135,7 +133,7 @@ object_building_faction_perk_hq_hq_s03_rebel = object_building_faction_perk_hq_s
 
 		},
 
-	childCreatureObjects = {
+		childCreatureObjects = {
 
 		 	{ mobile="specforce_marine", x=10, z=0, y=4, cellid=-1, respawn=360, containmentType=-1, heading=0},
 		 	{ mobile="rebel_specforce_urban_guerrilla", x=10, z=0, y=10, cellid=-1, respawn=360, containmentType=-1, heading=0},
@@ -168,11 +166,9 @@ object_building_faction_perk_hq_hq_s03_rebel = object_building_faction_perk_hq_s
 			{ mobile="rebel_commando", x=28, z=0, y=5, cellid=-1, respawn=360, containmentType=-1, heading=0},
 			{ mobile="rebel_medic", x=33, z=0, y=5, cellid=-1, respawn=360, containmentType=-1, heading=0},
 
-
 		 	{ mobile="rebel_trooper", x=-24.5, z=0, y=34.5, cellid=-1, respawn=360, containmentType=-1, heading=0},
 			{ mobile="rebel_commando", x=-22, z=0, y=37, cellid=-1, respawn=360, containmentType=-1, heading=0},
 			{ mobile="rebel_medic", x=-27, z=0, y=37, cellid=-1, respawn=360, containmentType=-1, heading=0},
-
 
 		 	{ mobile="rebel_trooper", x=24.5, z=0, y=34.5, cellid=-1, respawn=360, containmentType=-1, heading=0},
 			{ mobile="rebel_commando", x=22, z=0, y=37, cellid=-1, respawn=360, containmentType=-1, heading=0},
@@ -182,7 +178,6 @@ object_building_faction_perk_hq_hq_s03_rebel = object_building_faction_perk_hq_s
 			{ mobile="rebel_corporal", x=-4.5, z=0, y=0.9, cellid=2, respawn=300, containmentType=-1, heading=4.71},
 
 			{ mobile="specforce_marine", x=4, z=-3.25, y=5, cellid=4, respawn=300, containmentType=-1, heading=3.14},
-
 		 	{ mobile="specforce_marine", x=-5, z=-10.25, y=-6, cellid=5, respawn=300, containmentType=-1, heading=0},
 
 			{ mobile="specforce_marine", x=-2.7, z=-13.75, y=7, cellid=7, respawn=300, containmentType=-1, heading=1.57},
@@ -201,6 +196,7 @@ object_building_faction_perk_hq_hq_s03_rebel = object_building_faction_perk_hq_s
 			{ mobile="rebel_colonel", x=5.5, z=-20.75, y=35, cellid=10, containmentType=-1, respawn=600, heading=3.14},
 
 			{ mobile="rebel_recruiter", x=-2, z=-20.75, y=34, cellid=10, containmentType=-1, respawn=60, heading=3.14},
+
 		},
 }
 
