@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "5a93c517_5d637b1a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/VehicleDecayTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2015-08-09T16:23:32Z",
+      "side": 1,
+      "message": "ManagedWeakReference",
+      "revId": "8efd4138233b6ecf9b9126c4f787337b4678a96b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_dd88ebc8",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/events/VehicleDecayTask.h",
         "patchSetId": 1
@@ -13,6 +30,23 @@
       "writtenOn": "2015-08-09T15:11:52Z",
       "side": 1,
       "message": "floor is unnecessary. You\u0027re dividing two integers.",
+      "revId": "8efd4138233b6ecf9b9126c4f787337b4678a96b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_7d68b7f5",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/VehicleDecayTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2015-08-09T16:23:32Z",
+      "side": 1,
+      "message": "why not store the value in the templates?",
       "revId": "8efd4138233b6ecf9b9126c4f787337b4678a96b",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
