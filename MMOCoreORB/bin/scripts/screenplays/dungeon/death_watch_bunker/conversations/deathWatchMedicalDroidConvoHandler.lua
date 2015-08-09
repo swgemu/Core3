@@ -37,7 +37,7 @@ function deathWatchMedicalDroidConvoHandler:runScreenHandlers(conversationTempla
 			if (player:hasScreenPlayState(2, "death_watch_foreman_stage") and not player:hasScreenPlayState(4, "death_watch_foreman_stage")) then
 				local pInventory = player:getSlottedObject("inventory")
 				if (pInventory ~= nil) then
-					if (SceneObject(pInventory):hasFullContainerObjects()) then
+					if (SceneObject(pInventory):isContainerFullRecursive()) then
 						clonedConversation:addOption("@conversation/death_watch_medical_droid:s_ab36bcfc", "inventory_full")
 					else
 						clonedConversation:addOption("@conversation/death_watch_medical_droid:s_ab36bcfc", "cure_issued")

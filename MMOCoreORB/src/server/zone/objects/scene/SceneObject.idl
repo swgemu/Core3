@@ -1038,12 +1038,17 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public int getSlottedObjectsSize() {
 		return slottedObjects.size();
 	}
-	
+
 	@dirty
-	public boolean hasFullContainerObjects() {
-		return containerObjects.size() > containerVolumeLimit || containerObjects.size() == containerVolumeLimit;
+	public boolean isContainerFull() {
+		return containerVolumeLimit <= containerObjects.size();
 	}
-	
+
+	@dirty
+	public boolean isContainerFullRecursive() {
+		return containerVolumeLimit <= getCountableObjectsRecursive();
+	}
+
 	@read
 	public unsigned int getContainerVolumeLimit() {
 		return containerVolumeLimit;
@@ -1327,12 +1332,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public boolean isNoTrade() {
 		return templateObject.isNoTrade();
 	}
-	
-	@dirty
-	public boolean isContainerFull() {
-		return containerVolumeLimit <= containerObjects.size();
-	}
-	
+
 	@read
 	public boolean isShuttleInstallation() {
 		return gameObjectType == SceneObjectType.SHUTTLEINSTALLATION;

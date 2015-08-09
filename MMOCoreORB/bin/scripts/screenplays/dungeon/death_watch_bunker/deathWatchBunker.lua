@@ -867,7 +867,7 @@ function DeathWatchBunkerScreenPlay:haldoKilled(pHaldo, pPlayer)
 			if (pInventory == nil) then
 				creature:sendSystemMessage("Error: Unable to find player inventory.")
 			else
-				if (SceneObject(pInventory):hasFullContainerObjects() == true) then
+				if (SceneObject(pInventory):isContainerFullRecursive() == true) then
 					creature:sendSystemMessage("@error_message:inv_full")
 					return 1
 				else

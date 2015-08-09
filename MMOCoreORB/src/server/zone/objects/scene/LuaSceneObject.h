@@ -50,8 +50,12 @@ namespace scene {
 		int getDistanceTo(lua_State* L);
 		int getDistanceToPosition(lua_State* L);
 		int getContainerObject(lua_State* L);
+		int getContainerObjectById(lua_State* L);
 		int getContainerObjectsSize(lua_State* L);
+		int getCountableObjectsRecursive(lua_State* L);
 		int getContainerVolumeLimit(lua_State* L);
+		int isContainerFull(lua_State* L);
+		int isContainerFullRecursive(lua_State* L);
 		int getSlottedObject(lua_State* L);
 		int transferObject(lua_State* L);
 		//int removeObject(lua_State* L);
@@ -73,8 +77,6 @@ namespace scene {
 		int setCustomObjectName(lua_State* L);
 		int getDisplayedName(lua_State* L);
 		int getObjectName(lua_State* L);
-		int getContainerObjectById(lua_State* L);
-		int hasFullContainerObjects(lua_State* L);
 		int setDirectionalHeading(lua_State* L);
 		int getTemplateObjectPath(lua_State* L);
 		int teleport(lua_State* L);

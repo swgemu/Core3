@@ -701,7 +701,7 @@ FishingBaitObject* FishingManagerImplementation::getBait(CreatureObject* player)
 	ManagedReference<FishingPoleObject*> pole = getPole(player);
 
 	if (pole != NULL) {
-		if (pole->isFishingPoleObject() && pole->hasFullContainerObjects()) {
+		if (pole->isFishingPoleObject() && pole->isContainerFull()) {
 			ManagedReference<FishingBaitObject*> bait = pole->getContainerObject(0).castTo<FishingBaitObject*>();
 
 			if (bait != NULL) {
@@ -804,7 +804,7 @@ void FishingManagerImplementation::freeBait(CreatureObject* player) {
 
 		ManagedReference<FishingPoleObject*> pole = getPole(player);
 
-		if ((pole != NULL) && (!pole->hasFullContainerObjects())) {
+		if ((pole != NULL) && (!pole->isContainerFull())) {
 			pole->transferObject(baitObject, -1, true);
 		}
 	}
@@ -948,7 +948,7 @@ bool FishingManagerImplementation::loseBait(CreatureObject* player) {
 	ManagedReference<SceneObject*> pole = player->getSlottedObject("hold_r");
 
 	if (pole != NULL) {
-		if (pole->isFishingPoleObject() && pole->hasFullContainerObjects()) {
+		if (pole->isFishingPoleObject() && pole->isContainerFull()) {
 			if (pole->getContainerObject(0) != NULL) {
 				ManagedReference<SceneObject*> bait = pole->getContainerObject(0);
 

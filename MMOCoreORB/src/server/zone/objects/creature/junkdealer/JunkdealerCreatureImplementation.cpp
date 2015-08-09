@@ -686,7 +686,7 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 		if (found) {
 			sendConversationTerminate(player,stffile,"s_3df21ea0");
 
-		} else if (inventory->hasFullContainerObjects()) {
+		} else if (inventory->isContainerFullRecursive()) {
 			sendConversationTerminate(player,stffile,"s_5b10c0b9");
 
 		} else {

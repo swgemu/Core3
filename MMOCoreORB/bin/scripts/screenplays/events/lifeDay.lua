@@ -111,9 +111,7 @@ function lifeDayScreenplay:giveRandomGift(pPlayer)
 		return
 	end
 
-	local slotsRemaining = SceneObject(pInventory):getContainerVolumeLimit() - SceneObject(pInventory):getContainerObjectsSize()
-
-	if slotsRemaining <= 0 then
+	if SceneObject(pInventory):isContainerFullRecursive() then
 		CreatureObject(pPlayer):sendSystemMessage("@quest/lifeday/lifeday:full_inv") -- Your inventory is full. Please make some room and speak to the NPC again to receive your gift.
 		return
 	end
@@ -138,9 +136,7 @@ function lifeDayScreenplay:giveRobe(pPlayer)
 		return
 	end
 
-	local slotsRemaining = SceneObject(pInventory):getContainerVolumeLimit() - SceneObject(pInventory):getContainerObjectsSize()
-
-	if slotsRemaining <= 0 then
+	if SceneObject(pInventory):isContainerFullRecursive() then
 		CreatureObject(pPlayer):sendSystemMessage("@quest/lifeday/lifeday:full_inv") -- Your inventory is full. Please make some room and speak to the NPC again to receive your gift.
 		return
 	end

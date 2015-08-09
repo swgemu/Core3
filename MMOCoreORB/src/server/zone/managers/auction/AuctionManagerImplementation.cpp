@@ -922,12 +922,12 @@ int AuctionManagerImplementation::checkRetrieve(CreatureObject* player, uint64 o
 	int size = item->getSize();
 	if(saleItem->isIntangibleObject()) {
 		ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
-		if (datapad->getCountableObjectsRecursive() + size >= datapad->getContainerVolumeLimit())
+		if (datapad->getCountableObjectsRecursive() + size > datapad->getContainerVolumeLimit())
 			return RetrieveAuctionItemResponseMessage::FULLINVENTORY;
 	} else {
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-		if (inventory->getCountableObjectsRecursive() + size >= inventory->getContainerVolumeLimit())
+		if (inventory->getCountableObjectsRecursive() + size > inventory->getContainerVolumeLimit())
 			return RetrieveAuctionItemResponseMessage::FULLINVENTORY;
 	}
 

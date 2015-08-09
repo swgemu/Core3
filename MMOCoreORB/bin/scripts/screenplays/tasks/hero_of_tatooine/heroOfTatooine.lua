@@ -421,7 +421,7 @@ function HeroOfTatooineScreenPlay:handleSuiImplication(pPlayer, pSui, cancelPres
 				return
 			end
 
-			if (SceneObject(pInventory):hasFullContainerObjects()) then
+			if (SceneObject(pInventory):isContainerFullRecursive()) then
 				player:setScreenPlayState(2, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor
 				player:sendSystemMessage("@quest/hero_of_tatooine/system_messages:intellect_inv_full")
 			else
@@ -717,7 +717,7 @@ function HeroOfTatooineScreenPlay:completeEscort(pPlayer)
 			return 0
 		end
 
-		if (SceneObject(pInventory):hasFullContainerObjects()) then
+		if (SceneObject(pInventory):isContainerFullRecursive()) then
 			player:setScreenPlayState(1, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor
 			player:sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_inv_full")
 		else
@@ -1035,7 +1035,7 @@ function HeroOfTatooineScreenPlay:doSuccessHonorPhase(pPlayer)
 			return
 		end
 
-		if (SceneObject(pInventory):hasFullContainerObjects()) then
+		if (SceneObject(pInventory):isContainerFullRecursive()) then
 			player:setScreenPlayState(8, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor
 			player:sendSystemMessage("@quest/hero_of_tatooine/system_messages:honor_inv_full")
 		else

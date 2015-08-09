@@ -359,7 +359,7 @@ void ResourceManagerImplementation::givePlayerResource(CreatureObject* playerCre
 
 	ManagedReference<SceneObject*> inventory = playerCreature->getSlottedObject("inventory");
 
-	if(inventory != NULL && !inventory->hasFullContainerObjects()) {
+	if(inventory != NULL && !inventory->isContainerFullRecursive()) {
 		Locker locker(spawn);
 
 		Reference<ResourceContainer*> newResource = spawn->createResource(quantity);

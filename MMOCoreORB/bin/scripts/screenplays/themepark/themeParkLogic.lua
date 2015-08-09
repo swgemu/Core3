@@ -135,7 +135,7 @@ function ThemeParkLogic:hasFullInventory(pPlayer)
 		return true
 	end
 
-	return SceneObject(pInventory):hasFullContainerObjects()
+	return SceneObject(pInventory):isContainerFullRecursive()
 end
 
 function ThemeParkLogic:hasPermission(conditions, pCreature)

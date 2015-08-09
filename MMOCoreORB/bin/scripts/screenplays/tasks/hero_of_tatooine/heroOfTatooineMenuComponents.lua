@@ -32,7 +32,7 @@ function squillLairMenuComponent:handleObjectMenuSelect(pObject, pPlayer, select
 				return 0
 			end
 
-			if (SceneObject(pInventory):hasFullContainerObjects()) then
+			if (SceneObject(pInventory):isContainerFullRecursive()) then
 				creature:sendSystemMessage("@quest/hero_of_tatooine/system_messages:inventory")
 				return 0
 			end
@@ -85,7 +85,7 @@ function explosivesCrateMenuComponent:handleObjectMenuSelect(pObject, pPlayer, s
 				return 0
 			end
 
-			if (SceneObject(pInventory):hasFullContainerObjects()) then
+			if (SceneObject(pInventory):isContainerFullRecursive()) then
 				creature:sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_inventory_full")
 				return 0
 			end

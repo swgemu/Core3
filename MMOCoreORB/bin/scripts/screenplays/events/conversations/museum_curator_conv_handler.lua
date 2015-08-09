@@ -100,7 +100,7 @@ function MuseumCuratorConvoHandler:runScreenHandlers(conversationTemplate, conve
 		if(CreatureObject(conversingPlayer):getCashCredits() >= 48000) then
 			local pInventory = SceneObject(conversingPlayer):getSlottedObject("inventory")
 
-			if (pInventory == nil or SceneObject(pInventory):hasFullContainerObjects()) then
+			if (pInventory == nil or SceneObject(pInventory):isContainerFullRecursive()) then
 				clonedConversation:addOption("@conversation/lilas_dinhint:s_90b0871f", "full_inventory")
 			else
 				clonedConversation:addOption("@conversation/lilas_dinhint:s_90b0871f", "schematic_purchased")

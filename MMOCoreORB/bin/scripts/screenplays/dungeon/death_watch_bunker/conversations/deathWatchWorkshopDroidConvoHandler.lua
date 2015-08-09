@@ -72,7 +72,7 @@ function deathWatchWorkshopDroidConvoHandler:runScreenHandlers(conversationTempl
 				SceneObject(pBatt):destroyObjectFromWorld()
 				SceneObject(pBatt):destroyObjectFromDatabase()
 
-				if (SceneObject(pInventory):hasFullContainerObjects() == true) then
+				if (SceneObject(pInventory):isContainerFullRecursive() == true) then
 					player:sendSystemMessage("@error_message:inv_full")
 				else
 					local pCleanBatt = giveItem(pInventory, "object/tangible/dungeon/death_watch_bunker/drill_battery_clean.iff", -1)

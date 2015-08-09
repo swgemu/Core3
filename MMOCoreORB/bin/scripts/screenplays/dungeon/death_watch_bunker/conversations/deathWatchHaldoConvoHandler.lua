@@ -73,7 +73,7 @@ function deathWatchHaldoConvoHandler:runScreenHandlers(conversationTemplate, con
 					SceneObject(pCure):destroyObjectFromWorld()
 					SceneObject(pCure):destroyObjectFromDatabase()
 
-					if (SceneObject(pInventory):hasFullContainerObjects() == true) then
+					if (SceneObject(pInventory):isContainerFullRecursive() == true) then
 						player:sendSystemMessage("@error_message:inv_full")
 						return 0
 					else

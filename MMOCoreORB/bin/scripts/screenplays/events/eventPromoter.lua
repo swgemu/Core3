@@ -112,12 +112,10 @@ function eventPromoterScreenplay:giveItem(pPlayer, deedData)
 			return
 		end
 
-		local slotsRemaining = SceneObject(pInventory):getContainerVolumeLimit() - SceneObject(pInventory):getContainerObjectsSize()
-
 		if (player:getCashCredits() < deedData.cost) then
 			player:sendSystemMessage("@dispenser:insufficient_funds")
 			return
-		elseif (slotsRemaining <= 0) then
+		elseif (SceneObject(pInventory):isContainerFullRecursive()) then
 			player:sendSystemMessage("@event_perk:promoter_full_inv")
 			return
 		elseif (playerObject:getEventPerkCount() >= 5) then

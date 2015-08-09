@@ -739,7 +739,7 @@ int StructureManager::redeedStructure(CreatureObject* creature) {
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject(
 				"inventory");
 
-		if (inventory == NULL || inventory->isContainerFull()) {
+		if (inventory == NULL || inventory->isContainerFullRecursive()) {
 			creature->sendSystemMessage("@player_structure:inventory_full"); //This installation can not be redeeded because your inventory does not have room to put the deed.
 			creature->sendSystemMessage(
 					"@player_structure:deed_reclaimed_failed"); //Structure destroy and deed reclaimed FAILED!

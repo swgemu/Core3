@@ -119,7 +119,7 @@ public:
 
 				inso->updateResourceContainerQuantity(container, newQuantity, true);
 			} else if (byte1 == 0) {
-				if (inventory->getCountableObjectsRecursive() < inventory->getContainerVolumeLimit()) {
+				if (!inventory->isContainerFullRecursive()) {
 					Reference<ResourceSpawn*> resSpawn = container->getSpawnObject();
 					Locker locker(resSpawn);
 

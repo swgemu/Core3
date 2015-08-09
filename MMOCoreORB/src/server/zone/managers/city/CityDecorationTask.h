@@ -143,7 +143,7 @@ public:
 		if(inv == NULL)
 			return;
 
-		if(inv->isContainerFull()) {
+		if(inv->isContainerFullRecursive()) {
 			//mayor->sendSystemMessage("@error_message:inv_full"); // You inventory is full
 			mayor->sendSystemMessage("@event_perk:promoter_full_inv"); //"Your inventory is full. Please make some room and try again.");
 			return;

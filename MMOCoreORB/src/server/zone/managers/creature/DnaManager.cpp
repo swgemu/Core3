@@ -113,7 +113,7 @@ void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player,int qu
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-	if (inventory->hasFullContainerObjects()) {
+	if (inventory->isContainerFullRecursive()) {
 		StringIdChatParameter err("survey", "no_inv_space");
 		player->sendSystemMessage(err);
 		player->setPosture(CreaturePosture::UPRIGHT, true);
@@ -195,7 +195,7 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-	if (inventory->hasFullContainerObjects()) {
+	if (inventory->isContainerFullRecursive()) {
 		StringIdChatParameter err("survey", "no_inv_space");
 		player->sendSystemMessage(err);
 		player->setPosture(CreaturePosture::UPRIGHT, true);

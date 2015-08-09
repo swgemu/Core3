@@ -85,7 +85,7 @@ public:
 						return GENERALERROR;
 					}
 
-					if(inventory->getContainerVolumeLimit() < (inventory->getCountableObjectsRecursive() + 1)){
+					if(inventory->isContainerFullRecursive()){
 						creature->sendSystemMessage("@veteran_new:inventory_full"); // The item can not be deleted because it has Anti Decay applied to it but you do not have room in your inventory to retrieve the Anti Decay Kit that will be created after destroying this item.
 						return GENERALERROR;
 					}

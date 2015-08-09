@@ -56,7 +56,7 @@ function villageElderConvoHandler:runScreenHandlers(pConversationTemplate, pConv
 			local pItem = getContainerObjectByTemplate(pInventory, CRYSTAL_OBJECT, true)
 
 			if (pItem == nil) then
-				if (SceneObject(pInventory):hasFullContainerObjects()) then
+				if (SceneObject(pInventory):isContainerFullRecursive()) then
 					CreatureObject(pConversingPlayer):sendSystemMessage("@error_message:inv_full")
 				else
 					pItem = giveItem(pInventory, CRYSTAL_OBJECT, -1)

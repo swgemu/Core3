@@ -19,7 +19,7 @@ int SarlaccMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creat
 
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-		if (inventory->hasFullContainerObjects()) {
+		if (inventory->isContainerFullRecursive()) {
 			player->sendSystemMessage("@error_message:inv_full"); // Your inventory is full.
 			return 0;
 		}

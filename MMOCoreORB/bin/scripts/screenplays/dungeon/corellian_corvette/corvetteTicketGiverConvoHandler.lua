@@ -106,7 +106,7 @@ function CorvetteTicketGiverConvoHandler:handleScreenReward(pConversationTemplat
 		return pConversationScreen
 	end
 
-	if SceneObject(pInventory):hasFullContainerObjects() then
+	if SceneObject(pInventory):isContainerFullRecursive() then
 		local text = clonedScreen:getOptionText(0)
 		clonedScreen:removeAllOptions()
 		clonedScreen:addOption(text, "cant_give_reward")

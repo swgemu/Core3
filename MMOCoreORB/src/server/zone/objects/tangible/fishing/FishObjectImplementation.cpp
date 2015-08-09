@@ -38,7 +38,7 @@ void FishObjectImplementation::filet(CreatureObject* player) {
 	if (getContainerObjectsSize() > 0) {
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-		if ((inventory->hasFullContainerObjects()) || ((inventory->getContainerObjectsSize() + getContainerObjectsSize()) > 80)) {
+		if ((inventory->isContainerFullRecursive()) || ((inventory->getCountableObjectsRecursive() + getContainerObjectsSize()) > 80)) {
 			StringIdChatParameter body("fishing","units_inventory");
 			body.setDI(getContainerObjectsSize());
 			player->sendSystemMessage(body);

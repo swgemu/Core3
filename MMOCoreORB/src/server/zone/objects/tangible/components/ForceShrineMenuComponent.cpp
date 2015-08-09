@@ -80,7 +80,7 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
 		//Check if inventory is full.
-		if (inventory->hasFullContainerObjects()) {
+		if (inventory->isContainerFullRecursive()) {
 			creature->sendSystemMessage("@jedi_spam:inventory_full_jedi_robe"); //	You have too many items in your inventory. In order to get your Padawan Robe you must clear out at least one free slot.
 			return 0;
 		}
@@ -110,7 +110,7 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
 		//Check if inventory is full.
-		if (inventory->hasFullContainerObjects()) {
+		if (inventory->isContainerFullRecursive()) {
 			creature->sendSystemMessage("@jedi_spam:inventory_full_jedi_robe"); //	You have too many items in your inventory. In order to get your Padawan Robe you must clear out at least one free slot.
 			return 0;
 		}

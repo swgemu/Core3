@@ -138,7 +138,7 @@ int LootkitObjectImplementation::canAddObject(SceneObject* object, int containme
 		if (!components.get(object->getServerObjectCRC()) && player != NULL) {
 			ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-			if (inventory->hasFullContainerObjects()) {
+			if (inventory->isContainerFullRecursive()) {
 				errorDescription = "@error_message:inv_full";
 				return 5;
 			}

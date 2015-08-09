@@ -36,9 +36,12 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getServerObjectCRC", &LuaSceneObject::getServerObjectCRC },
 		{ "showFlyText", &LuaSceneObject::showFlyText },
 		{ "getContainerObject", &LuaSceneObject::getContainerObject },
-		{ "hasFullContainerObjects", &LuaSceneObject::hasFullContainerObjects },
+		{ "getContainerObjectById", &LuaSceneObject::getContainerObjectById },
 		{ "getContainerObjectsSize", &LuaSceneObject::getContainerObjectsSize },
+		{ "getCountableObjectsRecursive", &LuaSceneObject::getCountableObjectsRecursive },
 		{ "getContainerVolumeLimit", &LuaSceneObject::getContainerVolumeLimit },
+		{ "isContainerFull", &LuaSceneObject::isContainerFull },
+		{ "isContainerFullRecursive", &LuaSceneObject::isContainerFullRecursive },
 		{ "getSlottedObject", &LuaSceneObject::getSlottedObject },
 		{ "transferObject", &LuaSceneObject::transferObject },
 //		{ "removeObject", &LuaSceneObject::removeObject },
@@ -57,7 +60,6 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getCustomObjectName", &LuaSceneObject::getCustomObjectName },
 		{ "getDisplayedName", &LuaSceneObject::getDisplayedName },
 		{ "getObjectName", &LuaSceneObject::getObjectName },
-		{ "getContainerObjectById", &LuaSceneObject::getContainerObjectById },
 		{ "setDirectionalHeading", &LuaSceneObject::setDirectionalHeading },
 		{ "getZoneName", &LuaSceneObject::getZoneName },
 		{ "getTemplateObjectPath", &LuaSceneObject::getTemplateObjectPath },
@@ -374,6 +376,46 @@ int LuaSceneObject::getContainerObjectById(lua_State* L) {
     return 1;
 }
 
+int LuaSceneObject::getContainerObjectsSize(lua_State* L) {
+	int num = realObject->getContainerObjectsSize();
+
+	lua_pushnumber(L, num);
+
+	return 1;
+}
+
+int LuaSceneObject::getCountableObjectsRecursive(lua_State* L) {
+	int num = realObject->getCountableObjectsRecursive();
+
+	lua_pushnumber(L, num);
+
+	return 1;
+}
+
+int LuaSceneObject::getContainerVolumeLimit(lua_State* L) {
+	int num = realObject->getContainerVolumeLimit();
+
+	lua_pushnumber(L, num);
+
+	return 1;
+}
+
+int LuaSceneObject::isContainerFull(lua_State* L) {
+	bool full = realObject->isContainerFull();
+
+	lua_pushboolean(L, full);
+
+	return 1;
+}
+
+int LuaSceneObject::isContainerFullRecursive(lua_State* L) {
+	bool full = realObject->isContainerFullRecursive();
+
+	lua_pushboolean(L, full);
+
+	return 1;
+}
+
 int LuaSceneObject::getSlottedObject(lua_State* L) {
 	String slot = lua_tostring(L, -1);
 
@@ -411,31 +453,6 @@ int LuaSceneObject::transferObject(lua_State* L) {
 
 	return 0;
 }*/
-
-int LuaSceneObject::getContainerObjectsSize(lua_State* L) {
-	int num = realObject->getContainerObjectsSize();
-
-	lua_pushnumber(L, num);
-
-	return 1;
-}
-
-int LuaSceneObject::getContainerVolumeLimit(lua_State* L) {
-	int num = realObject->getContainerVolumeLimit();
-
-	lua_pushnumber(L, num);
-
-	return 1;
-}
-
-
-int LuaSceneObject::hasFullContainerObjects(lua_State* L) {
-	bool full = realObject->hasFullContainerObjects();
-
-	lua_pushboolean(L, full);
-
-	return 1;
-}
 
 int LuaSceneObject::showFlyText(lua_State* L) {
 	//final string file, final string uax, byte red, byte green, byte blue

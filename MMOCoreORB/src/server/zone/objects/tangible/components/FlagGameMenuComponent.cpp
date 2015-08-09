@@ -144,7 +144,7 @@ int FlagGameMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 		PlayerObject* ghost = player->getPlayerObject();
 
-		if (inventory == NULL || inventory->isContainerFull()) {
+		if (inventory == NULL || inventory->isContainerFullRecursive()) {
 			player->sendSystemMessage("@event_perk:redeed_failed"); // The rental could not be re-deeded.
 			return 1;
 		}

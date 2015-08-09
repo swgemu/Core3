@@ -37,7 +37,7 @@ public:
 
 		ManagedReference<SceneObject*> inventory = crafter->getSlottedObject("inventory");
 
-		if (inventory != NULL && !inventory->isContainerFull()) {
+		if (inventory != NULL && !inventory->isContainerFullRecursive()) {
 
 			if(inventory->transferObject(prototype, -1, true)) {
 				crafter->sendSystemMessage("@system_msg:prototype_transferred");

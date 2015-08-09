@@ -381,7 +381,7 @@ function recruiterScreenplay:awardItem(pPlayer, faction, itemString)
 			return self.errorCodes.NOTENOUGHFACTION
 		end
 
-		local slotsremaining = SceneObject(pInventory):getContainerVolumeLimit() - SceneObject(pInventory):getContainerObjectsSize()
+		local slotsremaining = SceneObject(pInventory):getContainerVolumeLimit() - SceneObject(pInventory):getCountableObjectsRecursive()
 
 		local bonusItemCount = self:getBonusItemCount(faction, itemString)
 
@@ -443,7 +443,7 @@ function recruiterScreenplay:awardData(pPlayer, faction, itemString)
 			return self.errorCodes.NOTENOUGHFACTION
 		end
 
-		local slotsRemaining = SceneObject(pDatapad):getContainerVolumeLimit() - SceneObject(pDatapad):getContainerObjectsSize()
+		local slotsRemaining = SceneObject(pDatapad):getContainerVolumeLimit() - SceneObject(pDatapad):getCountableObjectsRecursive()
 		local bonusItemCount = self:getBonusItemCount(faction, itemString)
 
 		if (slotsRemaining < (1 + bonusItemCount)) then

@@ -106,7 +106,7 @@ function deathWatchForemanConvoHandler:getInitialScreen(pPlayer, pNpc, pConversa
 			local pInventory = player:getSlottedObject("inventory")
 			if (pInventory == nil) then
 				return convoTemplate:getScreen("no_ore_yet")
-			elseif (SceneObject(pInventory):hasFullContainerObjects()) then
+			elseif (SceneObject(pInventory):isContainerFullRecursive()) then
 				return convoTemplate:getScreen("more_ore_inv_full")
 			else
 				return convoTemplate:getScreen("more_ore")
@@ -213,7 +213,7 @@ function deathWatchForemanConvoHandler:runScreenHandlers(conversationTemplate, c
 				return 0
 			end
 
-			if (SceneObject(pInventory):hasFullContainerObjects()) then
+			if (SceneObject(pInventory):isContainerFullRecursive()) then
 				if (screenID == "pump_success_haldo_kill") then
 					clonedConversation:addOption("@conversation/death_watch_foreman:s_c04f0d0d", "ore_inv_full")
 				else

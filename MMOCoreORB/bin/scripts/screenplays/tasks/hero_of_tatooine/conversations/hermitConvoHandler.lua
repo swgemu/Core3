@@ -60,7 +60,7 @@ function heroOfTatHermitConvoHandler:runScreenHandlers(conversationTemplate, con
 		elseif (screenID == "you_have_returned_missing_marks") then
 			local pInventory = player:getSlottedObject("inventory")
 
-			if (pInventory == nil or SceneObject(pInventory):hasFullContainerObjects()) then
+			if (pInventory == nil or SceneObject(pInventory):isContainerFullRecursive()) then
 				clonedConversation:addOption("@conversation/quest_hero_of_tatooine_hermit:s_6441a2a6", "inv_full")
 			else
 				if (HeroOfTatooineScreenPlay:giveMissingMarks(conversingPlayer)) then
@@ -84,7 +84,7 @@ function heroOfTatHermitConvoHandler:runScreenHandlers(conversationTemplate, con
 				return
 			end
 
-			if (SceneObject(pInventory):hasFullContainerObjects()) then
+			if (SceneObject(pInventory):isContainerFullRecursive()) then
 				player:setScreenPlayState(16, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor, 16 - Ring
 				player:sendSystemMessage("@quest/hero_of_tatooine/system_messages:hero_inv_full")
 			else

@@ -58,7 +58,7 @@ public:
 
 				ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
-				if (inventory == NULL || inventory->getContainerVolumeLimit() < (inventory->getCountableObjectsRecursive() + 1)) {
+				if (inventory == NULL || inventory->isContainerFullRecursive()) {
 					creature->sendSystemMessage("Your inventory is full, so the item could not be created.");
 					return INVALIDPARAMETERS;
 				}
@@ -123,7 +123,7 @@ public:
 
 				ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
-				if (inventory == NULL || inventory->getContainerVolumeLimit() < (inventory->getCountableObjectsRecursive() + 1)) {
+				if (inventory == NULL || inventory->isContainerFullRecursive()) {
 					creature->sendSystemMessage("Your inventory is full, so the item could not be created.");
 					return INVALIDPARAMETERS;
 				}
