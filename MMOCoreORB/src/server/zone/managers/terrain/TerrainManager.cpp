@@ -11,12 +11,58 @@
 #include "server/zone/objects/terrain/ProceduralTerrainAppearance.h"
 #include "server/zone/objects/terrain/SpaceTerrainAppearance.h"
 
+#define USE_CACHED_HEIGHT
+#define CACHE_CAPACITY 1024 * 1024
+#define CACHE_MIN_ACCESS_COUNT 25
+
+class HeightCacheFunction : public LRUFunction2<uint64, float, float, float> {
+	TerrainManager* terrainData;
+
+public:
+	HeightCacheFunction(TerrainManager* app) : terrainData(app) {
+
+	}
+
+	float run(const float& k, const float& k2) {
+		return terrainData->getUnCachedHeight(k , k2);
+	}
+
+	uint64 hash(const float& k, const float& k2) {
+		union {
+			uint32 uval;
+			float fval;
+		} v;
+
+		v.fval = k ;
+
+		uint32 val1 = v.uval;
+
+		v.fval = k2;
+
+		uint32 val2 = v.uval;
+
+		uint64 hash = val1;
+
+		return (hash << 32) | val2;
+	}
+};
+
 TerrainManager::TerrainManager(Zone* planet) : Logger("TerrainManager") {
 	zone = planet;
+
+	heightCache = new SynchronizedLRUCache2<uint64, float, float, float>(new HeightCacheFunction(this),
+			CACHE_CAPACITY, CACHE_MIN_ACCESS_COUNT);
 }
 
 TerrainManager::TerrainManager(ManagedWeakReference<Zone*> planet) : Logger("TerrainManager") {
 	zone = planet.get();
+
+	heightCache = new SynchronizedLRUCache2<uint64, float, float, float>(new HeightCacheFunction(this),
+			CACHE_CAPACITY, CACHE_MIN_ACCESS_COUNT);
+}
+
+TerrainManager::~TerrainManager() {
+	delete heightCache;
 }
 
 bool TerrainManager::initialize(const String& terrainFile) {
@@ -120,6 +166,8 @@ void TerrainManager::addTerrainModification(float x, float y, const String& terr
 	}
 
 	delete stream;
+
+	heightCache->clear();
 }
 
 void TerrainManager::removeTerrainModification(uint64 objectid) {
@@ -129,8 +177,29 @@ void TerrainManager::removeTerrainModification(uint64 objectid) {
 		return;
 
 	ptat->removeTerrainModification(objectid);
+
+	heightCache->clear();
 }
 
 ProceduralTerrainAppearance* TerrainManager::getProceduralTerrainAppearance() {
 	return dynamic_cast<ProceduralTerrainAppearance*>(terrainData.get());
+}
+
+float TerrainManager::getUnCachedHeight(float x, float y) {
+	return terrainData->getHeight(x, y);
+}
+
+float TerrainManager::getCachedHeight(float x, float y) {
+	return (*heightCache)(x, y);
+}
+
+float TerrainManager::getHeight(float x, float y) {
+#ifdef USE_CACHED_HEIGHT
+	x = floor(x * 10) / 10.f;
+	y = floor(y * 10) / 10.f;
+
+	return getCachedHeight(x, y);
+#else
+	return getUnCachedHeight(x, y);
+#endif
 }
