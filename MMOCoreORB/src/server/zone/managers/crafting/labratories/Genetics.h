@@ -260,8 +260,8 @@ public:
 
 	// convert diet to value
 	static int dietToValue(int diet, int quality) {
-		int min = 0.1;
-		int max = 9.3;
+		/*int min = 0.1;
+		int max = 9.3;*///these are not used, also 9.3 is not an int
 		int base = 0;
 		double level = 0;
 		if (diet != CreatureFlag::HERBIVORE) {
