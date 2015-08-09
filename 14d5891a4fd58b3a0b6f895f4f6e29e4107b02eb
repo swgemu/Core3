@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_dd5d4b4a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DumpZoneInformationCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-09T17:50:15Z",
+      "side": 1,
+      "message": "Should be hit + miss, right?",
+      "revId": "14d5891a4fd58b3a0b6f895f4f6e29e4107b02eb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_fd5a874f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DumpZoneInformationCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-09T17:50:15Z",
+      "side": 1,
+      "message": "miss count is showing hit count.",
+      "revId": "14d5891a4fd58b3a0b6f895f4f6e29e4107b02eb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
