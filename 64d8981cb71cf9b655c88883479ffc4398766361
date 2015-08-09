@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_fdc60749",
+        "filename": "MMOCoreORB/bin/scripts/object/building/faction_perk/hq/hq_s01_imp.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-09T04:42:23Z",
+      "side": 0,
+      "message": "Shouldn\u0027t you remove these turret control terminals since this is a pve base? You didn\u0027t include the s01 rebel bases in this patch at all but you should remove the turret control terminals from that pve one as well.",
+      "revId": "64d8981cb71cf9b655c88883479ffc4398766361",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_9dc34338",
+        "filename": "MMOCoreORB/bin/scripts/object/building/faction_perk/hq/hq_s02_imp_pvp.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-09T04:42:23Z",
+      "side": 0,
+      "message": "Since you are adding a third turret, don\u0027t you also need to add a third turret control terminal?",
+      "revId": "64d8981cb71cf9b655c88883479ffc4398766361",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_5dddbb13",
+        "filename": "MMOCoreORB/bin/scripts/object/building/faction_perk/hq/hq_s02_rebel.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-09T04:42:23Z",
+      "side": 0,
+      "message": ".. and this one.",
+      "revId": "64d8981cb71cf9b655c88883479ffc4398766361",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_7de2f7d6",
+        "filename": "MMOCoreORB/bin/scripts/object/building/faction_perk/hq/hq_s02_rebel_pvp.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-09T04:42:23Z",
+      "side": 0,
+      "message": "With 4 turrets you need 4 turret control terminals.",
+      "revId": "64d8981cb71cf9b655c88883479ffc4398766361",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_3dec6fc7",
+        "filename": "MMOCoreORB/bin/scripts/object/building/faction_perk/hq/hq_s03_rebel.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-09T04:42:23Z",
+      "side": 0,
+      "message": "Why does it have 2 HQ terminals?",
+      "revId": "64d8981cb71cf9b655c88883479ffc4398766361",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_ddd0ebf9",
+        "filename": "MMOCoreORB/bin/scripts/object/building/faction_perk/hq/hq_s03_rebel_pvp.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-09T04:42:23Z",
+      "side": 0,
+      "message": "Again, why 2 HQ terminals?",
+      "revId": "64d8981cb71cf9b655c88883479ffc4398766361",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_fdcda75e",
+        "filename": "MMOCoreORB/bin/scripts/object/building/faction_perk/hq/hq_s04_imp_pvp.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-09T04:42:23Z",
+      "side": 0,
+      "message": "You added a 5th turret. You need a 5th turret control terminal.",
+      "revId": "64d8981cb71cf9b655c88883479ffc4398766361",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_9dda6316",
+        "filename": "MMOCoreORB/bin/scripts/object/building/faction_perk/hq/hq_s04_rebel.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-09T04:42:23Z",
+      "side": 0,
+      "message": "Again, why 2 HQ terminals?",
+      "revId": "64d8981cb71cf9b655c88883479ffc4398766361",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_5d04db7d",
+        "filename": "MMOCoreORB/bin/scripts/object/building/faction_perk/hq/hq_s04_rebel_pvp.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-09T04:42:23Z",
+      "side": 0,
+      "message": "Again, why 2 HQ terminals?",
+      "revId": "64d8981cb71cf9b655c88883479ffc4398766361",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

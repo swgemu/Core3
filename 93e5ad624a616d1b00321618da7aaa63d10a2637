@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_bdc07f2b",
+        "filename": "MMOCoreORB/bin/scripts/object/building/faction_perk/hq/hq_s02_rebel.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-09T04:42:23Z",
+      "side": 1,
+      "message": "Why does this base have 2 HQ terminals? This one...",
+      "revId": "93e5ad624a616d1b00321618da7aaa63d10a2637",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_1de733e6",
+        "filename": "MMOCoreORB/bin/scripts/object/building/faction_perk/hq/hq_s02_rebel_pvp.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-09T04:42:23Z",
+      "side": 1,
+      "message": "You have 2 HQ terminals again. Why?",
+      "revId": "93e5ad624a616d1b00321618da7aaa63d10a2637",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_bdd71fed",
+        "filename": "MMOCoreORB/bin/scripts/object/building/faction_perk/hq/hq_s04_rebel.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-09T04:42:23Z",
+      "side": 1,
+      "message": "Why are you changing this? That will break this base. Did you copy the mobiles from s03 or something and just copy too much?",
+      "revId": "93e5ad624a616d1b00321618da7aaa63d10a2637",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_7d099794",
+        "filename": "MMOCoreORB/bin/scripts/object/building/faction_perk/hq/hq_s04_rebel_pvp.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-09T04:42:23Z",
+      "side": 1,
+      "message": "Again, this will totally break this base.",
+      "revId": "93e5ad624a616d1b00321618da7aaa63d10a2637",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
