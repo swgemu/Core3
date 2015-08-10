@@ -90,7 +90,8 @@ public:
 
 		int total = MAX(heightCacheHitCount + heightCacheMissCount, 1);
 
-		msg << "height cache hit count = " << heightCacheHitCount << ", miss count = " << heightCacheMissCount << ", hit rate = " << ((float)heightCacheHitCount / (float)total) * 100 << "%" << endl;
+		msg << "height cache hit count = " << heightCacheHitCount << ", miss count = " << heightCacheMissCount
+				<< ", hit rate = " << ((float)heightCacheHitCount / (float)total) * 100 << "% clear count = " << terrainManager->getCacheClearCount() << endl;
 
 		creature->sendSystemMessage(msg.toString());
 

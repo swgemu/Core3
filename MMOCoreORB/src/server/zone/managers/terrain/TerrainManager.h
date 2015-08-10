@@ -32,6 +32,7 @@ class TerrainManager : public Logger, public Object {
 	Zone* zone;
 
 	SynchronizedLRUCache2<uint64, float, float, float>* heightCache;
+	AtomicInteger cacheClearCount;
 
 public:
 	TerrainManager(Zone* planet);
@@ -86,6 +87,10 @@ public:
 
 	int getCacheMissCount() {
 		return heightCache->getMissCount();
+	}
+
+	int getCacheClearCount() {
+		return cacheClearCount.get();
 	}
 };
 
