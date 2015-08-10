@@ -19,6 +19,12 @@
 #include <limits>
 #include <float.h>
 
+PathFinderManager::PathFinderManager() : Logger("PathFinderManager") {
+	setFileLogger("log/pathfinder.log");
+
+	setLogging(true);
+}
+
 Vector<WorldCoordinates>* PathFinderManager::findPath(const WorldCoordinates& pointA, const WorldCoordinates& pointB) {
 	if (isnan(pointA.getX()) || isnan(pointA.getY()) || isnan(pointA.getZ()))
 		return NULL;
@@ -569,7 +575,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 				<< " to node: " << target->getID() << " in building: "
 				<< templateObject->getFullTemplateString();
 
-		error(str.toString());
+		log(str.toString());
 
 		delete path;
 		return NULL;
