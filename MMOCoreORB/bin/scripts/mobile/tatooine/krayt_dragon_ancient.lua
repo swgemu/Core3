@@ -24,6 +24,7 @@ krayt_dragon_ancient = Creature:new {
 	creatureBitmask = PACK + KILLER + STALKER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
+	scale = 1.5,
 
 	templates = {"object/mobile/krayt_dragon.iff"},
 	lootGroups = {
