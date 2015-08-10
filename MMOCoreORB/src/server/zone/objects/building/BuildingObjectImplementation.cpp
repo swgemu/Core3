@@ -1013,6 +1013,18 @@ bool BuildingObjectImplementation::canPlayerRegisterWithin() {
 	if (categoryName == "medicalcenter" || categoryName == "hotel" || categoryName == "cantina" || categoryName == "theater" || categoryName == "guild_theater" || categoryName == "tavern")
 		return true;
 
+	if (categoryName == "imperial_hq" || categoryName == "rebel_hq") {
+		SharedBuildingObjectTemplate* buildingTemplate = cast<SharedBuildingObjectTemplate*>(getObjectTemplate());
+
+		if (buildingTemplate == NULL) {
+			return false;
+		}
+
+		if (buildingTemplate->getSkillMod("private_medical_rating") > 0 || buildingTemplate->getSkillMod("private_med_battle_fatigue") > 0) {
+			return true;
+		}
+	}
+
 	return false;
 }
 

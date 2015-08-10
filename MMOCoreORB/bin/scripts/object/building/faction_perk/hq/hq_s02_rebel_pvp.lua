@@ -62,6 +62,7 @@ object_building_faction_perk_hq_hq_s02_rebel_pvp = object_building_faction_perk_
 			{"private_medical_rating", 100},
 			{"private_med_wound_health", 100},
 			{"private_med_wound_action", 100},
+			{"private_faction_medical_rating", 25},
 		},
 
 		childObjects = {

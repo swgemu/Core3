@@ -62,9 +62,11 @@ object_building_faction_perk_hq_hq_s03_imp_pvp = object_building_faction_perk_hq
 
 		skillMods = {
 			{"private_buff_mind", 100},
+			{"private_faction_buff_mind", 25},
 			{"private_med_battle_fatigue", 5},
+			{"private_faction_mind_heal", 10},
 			{"private_medical_rating", 100},
-		--Will need to revisit the elite skill mod bonus functionality later
+			{"private_faction_medical_rating", 25},
 		},
 
 		childObjects = {

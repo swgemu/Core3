@@ -404,6 +404,10 @@ class BuildingObject extends StructureObject {
 	@dirty
 	public native boolean canPlayerRegisterWithin();
 
+	public boolean isPlayerRegisteredWithin(unsigned long id) {
+		return registeredPlayerIdList.contains(id);
+	}
+
 	public native void createChildObjects();
 
 	@local

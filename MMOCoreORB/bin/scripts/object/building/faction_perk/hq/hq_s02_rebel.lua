@@ -54,7 +54,6 @@ object_building_faction_perk_hq_hq_s02_rebel = object_building_faction_perk_hq_s
 		length = 7,
 		width = 6,
 		containerComponent = {"cpp", "GCWBaseContainerComponent"},
-		planetMapCategory = "rebel_hq",
 		factionBaseType = 1,
 
 		skillMods = {

@@ -26,28 +26,29 @@ public:
 		if (!player->isPlayerCreature())
 			return GENERALERROR;
 
-		// If outside don't bother doing anything ...
-		if(player->getParentID() != 0) {
-			bool flagDoc = isNoviceDoctor(player);
-			bool flagEnt = isNoviceEntertainer(player);
+		ManagedReference<BuildingObject*> building = player->getRootParent().get().castTo<BuildingObject*>();
 
-			if ( flagDoc || flagEnt ) {
-				if (flagDoc && isInMedicalBuilding(player)) {
-						addPlayerToBuilding(player);
-						return SUCCESS;
-				}
-				// NOT else if! (Char is both a doctor and an entertainer, etc.)
-				if (flagEnt && isInEntertainingBuilding(player)) {
-						addPlayerToBuilding(player);
-						return SUCCESS;
-				}
-				// Right profession, wrong place ...
-				player->sendSystemMessage("This building is not a valid registration location for your profession.");
+		// If outside don't bother doing anything ...
+		if(building == NULL) {
+			player->sendSystemMessage("@faction/faction_hq/faction_hq_response:cannot_register"); // "You cannot register at a location that is not registered with the planetary map."
+			return GENERALERROR;
+		}
+
+		bool flagDoc = isNoviceDoctor(player);
+		bool flagEnt = isNoviceEntertainer(player);
+
+		if ( flagDoc || flagEnt ) {
+			if (flagDoc && isInMedicalBuilding(player, building)) {
+					addPlayerToBuilding(player);
+					return SUCCESS;
 			}
-			//  Client handles the 'else' scenario
-		} else {
-			// "You cannot register at a location that is not registered with the planetary map."
-			player->sendSystemMessage("@faction/faction_hq/faction_hq_response:cannot_register");
+			// NOT else if! (Char is both a doctor and an entertainer, etc.)
+			if (flagEnt && isInEntertainingBuilding(player, building)) {
+					addPlayerToBuilding(player);
+					return SUCCESS;
+			}
+			// Right profession, wrong place ...
+			player->sendSystemMessage("This building is not a valid registration location for your profession.");
 		}
 
 		return SUCCESS;
@@ -70,39 +71,49 @@ public:
 				player->hasSkill("social_dancer_novice"));
 	}
 
-	bool isInMedicalBuilding(CreatureObject* player) const {
-		ManagedReference<BuildingObject*> building = player->getRootParent().get().castTo<BuildingObject*>();
-		if (building != NULL) {
-			PlanetMapCategory* pmc = building->getPlanetMapSubCategory();
+	bool isInMedicalBuilding(CreatureObject* player, BuildingObject* building) const {
+		PlanetMapCategory* pmc = building->getPlanetMapSubCategory();
 
-			if (pmc == NULL)
-				pmc = building->getPlanetMapCategory();
+		if (pmc == NULL)
+			pmc = building->getPlanetMapCategory();
 
-			if (pmc == NULL)
-				return false;
+		if (pmc == NULL)
+			return false;
 
-			String categoryName = pmc->getName();
-			if (categoryName == "medicalcenter" || categoryName == "tavern")
+		String categoryName = pmc->getName();
+		if (categoryName == "medicalcenter" || categoryName == "tavern")
+			return true;
+
+		if (categoryName == "imperial_hq" || categoryName == "rebel_hq") {
+			SharedBuildingObjectTemplate* buildingTemplate = cast<SharedBuildingObjectTemplate*>(building->getObjectTemplate());
+
+			if (buildingTemplate != NULL && buildingTemplate->getSkillMod("private_medical_rating") > 0) {
 				return true;
+			}
 		}
 
 		return false;
 	}
 
-	bool isInEntertainingBuilding(CreatureObject* player) const {
-		ManagedReference<BuildingObject*> building = player->getRootParent().get().castTo<BuildingObject*>();
-		if (building != NULL) {
-			PlanetMapCategory* pmc = building->getPlanetMapSubCategory();
+	bool isInEntertainingBuilding(CreatureObject* player, BuildingObject* building) const {
+		PlanetMapCategory* pmc = building->getPlanetMapSubCategory();
 
-			if (pmc == NULL)
-				pmc = building->getPlanetMapCategory();
+		if (pmc == NULL)
+			pmc = building->getPlanetMapCategory();
 
-			if (pmc == NULL)
-				return false;
+		if (pmc == NULL)
+			return false;
 
-			String categoryName = pmc->getName();
-			if (categoryName == "hotel" || categoryName == "cantina" || categoryName == "theater" || categoryName == "guild_theater" || categoryName == "tavern")
+		String categoryName = pmc->getName();
+		if (categoryName == "hotel" || categoryName == "cantina" || categoryName == "theater" || categoryName == "guild_theater" || categoryName == "tavern")
+			return true;
+
+		if (categoryName == "imperial_hq" || categoryName == "rebel_hq") {
+			SharedBuildingObjectTemplate* buildingTemplate = cast<SharedBuildingObjectTemplate*>(building->getObjectTemplate());
+
+			if (buildingTemplate != NULL && buildingTemplate->getSkillMod("private_med_battle_fatigue") > 0) {
 				return true;
+			}
 		}
 
 		return false;

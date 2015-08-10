@@ -55,7 +55,6 @@ object_building_faction_perk_hq_hq_s04_imp = object_building_faction_perk_hq_sha
 		constructionMarker = "object/building/player/construction/construction_player_house_generic_medium_style_01.iff",
 		length = 7,
 		width = 6,
-		planetMapCategory = "imperial_hq",
 		alwaysPublic = 1,
 		factionBaseType = 1,
 
@@ -63,8 +62,6 @@ object_building_faction_perk_hq_hq_s04_imp = object_building_faction_perk_hq_sha
 			{"private_buff_mind", 100},
 			{"private_med_battle_fatigue", 5},
 			{"private_medical_rating", 100},
-			{"private_med_wound_health", 100},
-			{"private_med_wound_action", 100}
 		},
 
 		childObjects = {

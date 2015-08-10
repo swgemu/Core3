@@ -31,8 +31,10 @@ void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 	if (creo == NULL)
 		return;
 
+	if (performanceName == "")
+		return;
+
 	Locker locker(creo);
-	//info("EntertainingSessionImplementation::doEntertainerPatronEffects() begin");
 
 	//**DECLARATIONS**
 	VectorMap<ManagedReference<CreatureObject*>, EntertainingData>* patrons = NULL;
@@ -42,32 +44,22 @@ void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 	PerformanceManager* performanceManager = skillManager->getPerformanceManager();
 	Performance* performance = NULL;
 
-	float enhancementSkill = 0.0f;
+	ManagedReference<Instrument*> instrument = getInstrument(creo);
+
 	float woundHealingSkill = 0.0f;
 	float playerShockHealingSkill = 0.0f;
 	float buildingShockHealingSkill = creo->getSkillMod("private_med_battle_fatigue");
-	int campModtemp = 100;
-
-	/*if (entertainer->isInCamp()) {
-			campModtemp = getCampModifier();
-		}*/
-
-	if (performanceName == "")
-		return;
-
-	ManagedReference<Instrument*> instrument = getInstrument(creo);
+	float factionPerkSkill = creo->getSkillMod("private_faction_mind_heal");
 
 	//**LOAD PATRONS, GET THE PERFORMANCE AND ENT'S HEALING SKILL.**
 	if (dancing) {
 		patrons = &watchers;
 		performance = performanceManager->getDance(performanceName);
-		enhancementSkill = (float) creo->getSkillMod("healing_dance_mind");
 		woundHealingSkill = (float) creo->getSkillMod("healing_dance_wound");
 		playerShockHealingSkill = (float) creo->getSkillMod("healing_dance_shock");
 	} else if (playingMusic && instrument != NULL) {
 		patrons = &listeners;
 		performance = performanceManager->getSong(performanceName, instrument->getInstrumentType());
-		enhancementSkill = (float) creo->getSkillMod("healing_music_mind");
 		woundHealingSkill = (float) creo->getSkillMod("healing_music_wound");
 		playerShockHealingSkill = (float) creo->getSkillMod("healing_music_shock");
 
@@ -78,6 +70,19 @@ void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 
 	if (performance == NULL) {
 		return;
+	}
+
+	ManagedReference<BuildingObject*> building = creo->getRootParent().get().castTo<BuildingObject*>();
+
+	if (building != NULL && factionPerkSkill > 0 && building->isPlayerRegisteredWithin(creo->getObjectID())) {
+		unsigned int buildingFaction = building->getFaction();
+		unsigned int healerFaction = creo->getFaction();
+		PlayerObject* ghost = creo->getPlayerObject();
+
+		if (ghost != NULL && healerFaction != 0 && healerFaction == buildingFaction && ghost->getFactionStatus() == FactionStatus::OVERT) {
+			woundHealingSkill += factionPerkSkill;
+			playerShockHealingSkill += factionPerkSkill;
+		}
 	}
 
 	//**DETERMINE WOUND HEAL AMOUNTS.**
@@ -649,6 +654,20 @@ void EntertainingSessionImplementation::addEntertainerBuffStrength(CreatureObjec
 
 	if(maxBuffStrength > 125.0f)
 		maxBuffStrength = 125.0f;	//cap at 125% power
+
+	float factionPerkStrength = entertainer->getSkillMod("private_faction_buff_mind");
+
+	ManagedReference<BuildingObject*> building = entertainer->getRootParent().get().castTo<BuildingObject*>();
+
+	if (building != NULL && factionPerkStrength > 0 && building->isPlayerRegisteredWithin(entertainer->getObjectID())) {
+		unsigned int buildingFaction = building->getFaction();
+		unsigned int entFaction = entertainer->getFaction();
+		PlayerObject* ghost = entertainer->getPlayerObject();
+
+		if (ghost != NULL && entFaction != 0 && entFaction == buildingFaction && ghost->getFactionStatus() == FactionStatus::OVERT) {
+			maxBuffStrength += factionPerkStrength;
+		}
+	}
 
 	//add xp based on % added to buff strength
 	if (newBuffStrength  < maxBuffStrength) {
