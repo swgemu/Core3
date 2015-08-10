@@ -167,7 +167,15 @@ void TerrainManager::addTerrainModification(float x, float y, const String& terr
 
 	delete stream;
 
+	clearCache();
+}
+
+void TerrainManager::clearCache() {
+	totalHitCount.add(getCurrentCacheHitCount());
+	totalMissCount.add(getCurrentCacheMissCount());
+
 	heightCache->clear();
+
 	cacheClearCount.increment();
 }
 
@@ -179,8 +187,7 @@ void TerrainManager::removeTerrainModification(uint64 objectid) {
 
 	ptat->removeTerrainModification(objectid);
 
-	heightCache->clear();
-	cacheClearCount.increment();
+	clearCache();
 }
 
 ProceduralTerrainAppearance* TerrainManager::getProceduralTerrainAppearance() {

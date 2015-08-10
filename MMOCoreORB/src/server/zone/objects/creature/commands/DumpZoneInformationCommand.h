@@ -85,13 +85,22 @@ public:
 
 		msg << "active areas size = " << player->getActiveAreasSize() << endl;
 
-		int heightCacheHitCount = terrainManager->getCacheHitCount();
-		int heightCacheMissCount = terrainManager->getCacheMissCount();
+		int heightTotalCacheHitCount = terrainManager->getTotalCacheHitCount();
+		int heightTotalCacheMissCount = terrainManager->getTotalCacheMissCount();
 
-		int total = MAX(heightCacheHitCount + heightCacheMissCount, 1);
+		int heightCurrentCacheHitCount = terrainManager->getCurrentCacheHitCount();
+		int heightCurrentCacheMissCount = terrainManager->getCurrentCacheMissCount();
 
-		msg << "height cache hit count = " << heightCacheHitCount << ", miss count = " << heightCacheMissCount
-				<< ", hit rate = " << ((float)heightCacheHitCount / (float)total) * 100 << "% clear count = " << terrainManager->getCacheClearCount() << endl;
+		int total = MAX(heightTotalCacheHitCount + heightTotalCacheMissCount, 1);
+
+		int totalCurrent = MAX(heightCurrentCacheHitCount + heightCurrentCacheMissCount, 1);
+
+		msg << "height cache total hit count = " << heightTotalCacheHitCount << ", total miss count = " << heightTotalCacheMissCount
+				<< ", total hit rate = " << ((float)heightTotalCacheHitCount / (float)total) * 100 << "% "
+						", clear count = " << terrainManager->getCacheClearCount() << ", "
+						", current hit count = " << heightCurrentCacheHitCount << ", "
+						", current miss count = " << heightCurrentCacheMissCount << ","
+						", current hit rate = " << ((float)heightCurrentCacheHitCount / (float)totalCurrent) * 100 << "%" << endl;
 
 		creature->sendSystemMessage(msg.toString());
 
