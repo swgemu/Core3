@@ -33,6 +33,10 @@ public:
 
 		SuiListBox* suiListBox = cast<SuiListBox*>( suiBox);
 		int index = Integer::valueOf(args->get(0).toString());
+
+		if (index < 0)
+			return;
+
 		String suiItem = suiListBox->getMenuItemName(index);
 
 		StructureObject* structure = cast<StructureObject*>(object.get());
