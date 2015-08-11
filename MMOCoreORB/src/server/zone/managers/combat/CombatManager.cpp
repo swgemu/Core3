@@ -78,38 +78,42 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) {
 	DeltaVector<ManagedReference<SceneObject*> >* defenderList = attacker->getDefenderList();
 
 	for (int i = defenderList->size() - 1; i >= 0; --i) {
-		ManagedReference<SceneObject*> object = defenderList->get(i);
-
-		TangibleObject* defender = cast<TangibleObject*>( object.get());
-
-		if (defender == NULL)
-			continue;
-
 		try {
-			Locker clocker(defender, attacker);
+			ManagedReference<SceneObject*> object = defenderList->get(i);
 
-			if (defender->hasDefender(attacker)) {
+			TangibleObject* defender = cast<TangibleObject*>( object.get());
 
-				if (defender->isCreatureObject()) {
-					CreatureObject* creature = defender->asCreatureObject();
+			if (defender == NULL)
+				continue;
 
-					if (creature->getMainDefender() != attacker || creature->hasState(CreatureState::PEACE) || creature->isDead() || attacker->isDead() || !creature->isInRange(attacker, 128.f)) {
+			try {
+				Locker clocker(defender, attacker);
+
+				if (defender->hasDefender(attacker)) {
+
+					if (defender->isCreatureObject()) {
+						CreatureObject* creature = defender->asCreatureObject();
+
+						if (creature->getMainDefender() != attacker || creature->hasState(CreatureState::PEACE) || creature->isDead() || attacker->isDead() || !creature->isInRange(attacker, 128.f)) {
+							attacker->removeDefender(defender);
+							defender->removeDefender(attacker);
+						}
+					} else {
 						attacker->removeDefender(defender);
 						defender->removeDefender(attacker);
 					}
 				} else {
 					attacker->removeDefender(defender);
-					defender->removeDefender(attacker);
 				}
-			} else {
-				attacker->removeDefender(defender);
+
+				clocker.release();
+
+			} catch (Exception& e) {
+				error(e.getMessage());
+				e.printStackTrace();
 			}
+		} catch (ArrayIndexOutOfBoundsException& exc) {
 
-			clocker.release();
-
-		} catch (Exception& e) {
-			error(e.getMessage());
-			e.printStackTrace();
 		}
 	}
 
