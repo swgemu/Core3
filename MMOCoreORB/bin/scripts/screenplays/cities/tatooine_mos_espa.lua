@@ -16,8 +16,8 @@ end
 function TatooineMosEspaScreenPlay:spawnSceneObjects()
 
 	--outside starport
-	spawnSceneObject("tatooine", "object/tangible/crafting/station/public_space_station.iff", -2930.39, 5, 2134.35, 0, 55 )
-	spawnSceneObject("tatooine", "object/tangible/crafting/station/public_space_station.iff", -2879.34, 5, 2164.2, 0, 10 )
+	spawnSceneObject("tatooine", "object/tangible/crafting/station/public_space_station.iff", -2930.39, 5, 2134.35, 0, math.rad(130) )
+	spawnSceneObject("tatooine", "object/tangible/crafting/station/public_space_station.iff", -2879.34, 5, 2164.2, 0, math.rad(-140) )
 
 end
 

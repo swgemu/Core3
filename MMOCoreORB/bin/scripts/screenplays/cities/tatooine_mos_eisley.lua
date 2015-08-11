@@ -15,7 +15,7 @@ end
 
 function TatooineMosEisleyScreenPlay:spawnSceneObjects()
 	--just outside starport
-	spawnSceneObject("tatooine", "object/tangible/crafting/station/public_space_station.iff", 3520.67, 5, -4822.73, 0, 150 )
+	spawnSceneObject("tatooine", "object/tangible/crafting/station/public_space_station.iff", 3520.67, 5, -4822.73, 0, math.rad(40) )
 	--Lower Floor
 	spawnSceneObject("tatooine", "object/tangible/terminal/terminal_elevator_down.iff", -3.5, 9, -21.4, 1076970, 1, 0, 0, 0) --Middle
 	spawnSceneObject("tatooine", "object/tangible/terminal/terminal_elevator_up.iff", -3.5, 0, -21.4, 1076970, 1, 0, 0, 0)

@@ -16,7 +16,7 @@ end
 function CorelliaDoabaGuerfelScreenPlay:spawnSceneObjects()
 
 	--outside starport
-	spawnSceneObject("corellia", "object/tangible/crafting/station/public_space_station.iff", 3327.89, 308, 5534.89, 0, 60 )
+	spawnSceneObject("corellia", "object/tangible/crafting/station/public_space_station.iff", 3327.89, 308, 5534.89, 0, math.rad(-150) )
 
 end
 

@@ -16,7 +16,7 @@ end
 function TalusDearicScreenPlay:spawnSceneObjects()
 
 	--outside starport
-	spawnSceneObject("talus", "object/tangible/crafting/station/public_space_station.iff", 318.301, 6, -2896.49, 0, 60 )
+	spawnSceneObject("talus", "object/tangible/crafting/station/public_space_station.iff", 318.301, 6, -2896.49, 0, math.rad(95) )
 
 end
 

@@ -16,8 +16,8 @@ end
 function NabooKerenScreenPlay:spawnSceneObjects()
 
 	--outside starport
-	spawnSceneObject("naboo", "object/tangible/crafting/station/public_space_station.iff", 1437.02, 13, 2763.06, 0, 90 )
-	spawnSceneObject("naboo", "object/tangible/crafting/station/public_space_station.iff", 1436.71, 13, 2778.92, 0, 90 )
+	spawnSceneObject("naboo", "object/tangible/crafting/station/public_space_station.iff", 1437.02, 13, 2763.06, 0, math.rad(90) )
+	spawnSceneObject("naboo", "object/tangible/crafting/station/public_space_station.iff", 1436.71, 13, 2778.92, 0, math.rad(90) )
 
 end
 
