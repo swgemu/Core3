@@ -15,7 +15,7 @@ end
 
 function TatooineMosEnthaScreenPlay:spawnSceneObjects()
 	--just outside starport
-	spawnSceneObject("tatooine", "object/tangible/crafting/station/public_space_station.iff", 1304.5, 7, 3098.54, 0, 120 )
+	spawnSceneObject("tatooine", "object/tangible/crafting/station/public_space_station.iff", 1304.5, 7, 3098.54, 0, math.rad(80) )
 	--Lower Floor
 	spawnSceneObject("tatooine", "object/tangible/terminal/terminal_elevator_down.iff", -3.5, 9, -21.4, 1153524, 1, 0, 0, 0) --Middle
 	spawnSceneObject("tatooine", "object/tangible/terminal/terminal_elevator_up.iff", -3.5, 0, -21.4, 1153524, 1, 0, 0, 0)

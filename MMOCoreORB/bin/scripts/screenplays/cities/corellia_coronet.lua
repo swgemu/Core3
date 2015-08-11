@@ -16,7 +16,7 @@ end
 function CorelliaCoronetScreenPlay:spawnSceneObjects()
 
 	--outside starport
-	spawnSceneObject("corellia", "object/tangible/crafting/station/public_space_station.iff", -178.575, 28, -4689.35, 0, 110 )
+	spawnSceneObject("corellia", "object/tangible/crafting/station/public_space_station.iff", -178.575, 28, -4689.35, 0, math.rad(180) )
 
 end
 
