@@ -193,9 +193,7 @@ class PlayerObject extends IntangibleObject {
 	protected int pvpRating;
 
 	protected int factionStatus;
-	
-	protected transient boolean spawnedBlueFrog; //TODO: Remove when admin permissions are implemented.
-	
+
 	@dereferenced
 	protected Vector<byte> hologrindProfessions;
 	
@@ -335,9 +333,7 @@ class PlayerObject extends IntangibleObject {
 		maximumLots = 10;
 		
 		debugOutput = false;
-		
-		spawnedBlueFrog = false;
-		
+
 		adminLevel = 0;
 		
 		languageID = 0;
@@ -1488,15 +1484,6 @@ class PlayerObject extends IntangibleObject {
 		serverLastMovementStamp.updateToCurrentTime();
 	}
 
-	public void setSpawnedBlueFrog() {
-		spawnedBlueFrog = true;
-	}
-	
-	@read
-	public boolean hasSpawnedBlueFrog() {
-		return spawnedBlueFrog;
-	}
-	
 	@read
 	public unsigned int getAccountID() {
 		return accountID;
