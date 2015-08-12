@@ -100,7 +100,7 @@ void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) {
 		parentCloseObjectsVector->safeCopyTo(parentCloseObjects);
 
 		//remove old ones
-		float rangesq = 192.f * 192.f;
+		float rangesq = ZoneServer::CLOSEOBJECTRANGE * ZoneServer::CLOSEOBJECTRANGE;
 
 		float x = sceneObject->getPositionX();
 		float y = sceneObject->getPositionY();
@@ -194,7 +194,7 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 			zoneUnlocked = true;
 
 			try {
-				zone->inRange(sceneObject, 192);
+				zone->inRange(sceneObject, ZoneServer::CLOSEOBJECTRANGE);
 			} catch (Exception& e) {
 				sceneObject->error(e.getMessage());
 				e.printStackTrace();
@@ -504,7 +504,7 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 				templateName = sceneObject->getObjectTemplate()->getTemplateFileName();
 			sceneObject->info("Null closeobjects vector in ZoneComponent::destroyObjectFromWorld with template: " + templateName + " and OID: " + String::valueOf(sceneObject->getObjectID()), true);
 
-			rootZone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionY(), 256, &closeSceneObjects, false);
+			rootZone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionY(), ZoneServer::CLOSEOBJECTRANGE + 64, &closeSceneObjects, false);
 
 			for (int i = 0; i < closeSceneObjects.size(); ++i) {
 				QuadTreeEntry* obj = closeSceneObjects.get(i);

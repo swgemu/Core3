@@ -2878,7 +2878,7 @@ void AiAgentImplementation::broadcastInterrupt(int64 msg) {
 			try {
 				if (closeobjects == NULL) {
 					aiAgent_p->info("Null closeobjects vector in AiAgentImplementation::broadcastInterrupt", true);
-					zone->getInRangeObjects(aiAgent_p->getPositionX(), aiAgent_p->getPositionY(), 192, &closeAiAgents, true);
+					zone->getInRangeObjects(aiAgent_p->getPositionX(), aiAgent_p->getPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeAiAgents, true);
 				} else {
 					closeAiAgents.removeAll(closeobjects->size(), 10);
 					closeobjects->safeCopyTo(closeAiAgents);

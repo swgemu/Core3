@@ -119,7 +119,11 @@ class ZoneServer extends ManagedService implements Logger {
 	public static final int LOADING = 1;
 	public static final int ONLINE = 2;
 	public static final int LOCKED = 3;
-	
+
+	// The range of objects kept within closeObjects vectors.
+	// Changing this will have a large impact on performance.
+	public static final float CLOSEOBJECTRANGE = 192;
+
 	public native ZoneServer(ConfigManager config);
 		
 	public native void initializeTransientMembers();

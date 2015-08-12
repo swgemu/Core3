@@ -792,7 +792,7 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 
 					if (closeobjects == NULL) {
 						info("Null closeobjects vector in CreatureObjectImplementation::setState", true);
-						thisZone->getInRangeObjects(getWorldPositionX(), getWorldPositionY(), 192, &closeSceneObjects, true);
+						thisZone->getInRangeObjects(getWorldPositionX(), getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeSceneObjects, true);
 						maxInRangeObjects = closeSceneObjects.size();
 					} else {
 						closeobjects->safeCopyTo(closeSceneObjects);
