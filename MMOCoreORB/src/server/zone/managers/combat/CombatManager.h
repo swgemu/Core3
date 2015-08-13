@@ -214,11 +214,11 @@ protected:
 	int getDefenderSecondaryDefenseModifier(CreatureObject* defender);
 	float getDefenderToughnessModifier(CreatureObject* defender, int attackType, int damType, float damage, Vector<int>& foodMitigation);
 	int calculateDamageRange(TangibleObject* attacker, CreatureObject* defender, WeaponObject* weapon);
-	float applyDamageModifiers(CreatureObject* attacker, WeaponObject* weapon, float damage);
+	float applyDamageModifiers(CreatureObject* attacker, WeaponObject* weapon, float damage, const CreatureAttackData& data);
 	int getSpeedModifier(CreatureObject* attacker, WeaponObject* weapon);
 	float calculateDamage(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data, Vector<int>& foodMitigation);
 	float calculateDamage(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data, Vector<int>& foodMitigation);
-	float calculateDamage(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defender);
+	float calculateDamage(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defender, const CreatureAttackData& data);
 	bool checkConeAngle(SceneObject* targetCreature, float angle, float creatureVectorX, float creatureVectorY, float directionVectorX, float directionVectorY);
 
 	void doMiss(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage);
