@@ -19,6 +19,8 @@ public:
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
+		creature->clearQueueActions();
+
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
