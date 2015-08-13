@@ -44,7 +44,7 @@
 ForceLightningCone2Command = {
         name = "forcelightningcone2",
         
-	damage = 2500,
+	damage = 2000,
 	speed = 4.0,
 	forceCost = 250,
 	accuracySkillMod = "forcelightning_accuracy";
@@ -69,7 +69,7 @@ ForceLightningCone2Command = {
 	
 	poolsToDamage = RANDOM_ATTRIBUTE,
 	
-	attackType = FORCEATTACK,
+	attackType = ELECTRICITY,
 
 	range = 32
 }
