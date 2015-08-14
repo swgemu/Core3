@@ -42,9 +42,9 @@
 --true = 1, false = 0
 
 ForceChokeCommand = {
-	name = "forcechoke",
+        name = "forcechoke",
 
-	damage = 750,
+   	damage = 900,
 	speed = 6.0,
 	forceCost = 400,
 	attackType = FORCEATTACK,

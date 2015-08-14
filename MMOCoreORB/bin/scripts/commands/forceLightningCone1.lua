@@ -44,7 +44,7 @@
 ForceLightningCone1Command = {
         name = "forcelightningcone1",
 
-    	damage = 400,
+    	damage = 800,
 	speed = 4.0,
 	forceCost = 125,
 	accuracySkillMod = "forcelightning_accuracy";
