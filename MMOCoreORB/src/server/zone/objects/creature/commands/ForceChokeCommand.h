@@ -29,6 +29,12 @@ public:
 			return NOJEDIARMOR;
 		}
 
+		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
+
+		if (targetObject == NULL || !targetObject->isCreatureObject()) {
+			return INVALIDTARGET;
+		}
+
 		int res = doCombatAction(creature, target);
 
 		//if (creature->isAiAgent()) { // If they are NPC, don't get past here.
@@ -39,8 +45,7 @@ public:
 
 			// Setup task, if choke attack was successful (5 tick amount.), AND if they don't already have one.
 
-			Reference<SceneObject*> object = server->getZoneServer()->getObject(target);
-			ManagedReference<CreatureObject*> creatureTarget = cast<CreatureObject*>( object.get());
+			ManagedReference<CreatureObject*> creatureTarget = targetObject.castTo<CreatureObject*>();
 
 			if (creatureTarget == NULL)
 				return GENERALERROR;

@@ -49,6 +49,8 @@ ForceIntimidate2Command = {
 	forceCost = 500,
 	accuracySkillMod = "forceintimidate_accuracy",
 	attackType = FORCEATTACK,
+	areaAction = true,
+	areaRange = 15,
 
 	stateEffects = {
 	  StateEffect(
@@ -62,7 +64,7 @@ ForceIntimidate2Command = {
 	  )
 	},
 
-	animationCRC = hashCode("force_intimidate"),
+	animationCRC = hashCode("force_intimidate_chain"),
 
 	combatSpam = "forceintimidate2",
 

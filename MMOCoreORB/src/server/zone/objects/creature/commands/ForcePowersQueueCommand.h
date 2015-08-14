@@ -11,7 +11,6 @@
 #include"server/zone/ZoneServer.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
-#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/combat/CreatureAttackData.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
@@ -30,7 +29,6 @@ public:
 
 	int doCombatAction(CreatureObject* creature, const uint64& target, const UnicodeString& arguments = "") const {
 			ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
-			PlayerManager* playerManager = server->getPlayerManager();
 
 			if (targetObject == NULL || !targetObject->isTangibleObject() || targetObject == creature)
 				return INVALIDTARGET;
@@ -50,7 +48,7 @@ public:
 
 			ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
-			if (playerObject != NULL && playerObject->getForcePower() <= forceCost) {
+			if (playerObject != NULL && playerObject->getForcePower() < forceCost) {
 				creature->sendSystemMessage("@jedi_spam:no_force_power"); //"You do not have enough Force Power to peform that action.
 
 				return GENERALERROR;
@@ -76,6 +74,7 @@ public:
 				error(e.getMessage());
 				e.printStackTrace();
 			}
+
 			// Increase Visibility for Force Power.
 			VisibilityManager::instance()->increaseVisibility(creature);
 			return SUCCESS;

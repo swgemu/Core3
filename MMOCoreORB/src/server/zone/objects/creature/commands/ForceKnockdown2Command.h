@@ -28,6 +28,12 @@ public:
 			return NOJEDIARMOR;
 		}
 
+		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
+
+		if (targetObject == NULL || !targetObject->isCreatureObject()) {
+			return INVALIDTARGET;
+		}
+
 		return doCombatAction(creature, target);
 	}
 
