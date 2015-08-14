@@ -42,18 +42,18 @@
 --true = 1, false = 0
 
 ForceWeaken1Command = {
-        name = "forceweaken1",
-        
-    damage = 0,
+	name = "forceweaken1",
+
+	damage = 0,
 	speed = 4.0,
 	forceCost = 400,
-	accuracySkillMod = "forceweaken_accuracy";
-	
-	
+	accuracySkillMod = "forceweaken_accuracy",
+	attackType = FORCEATTACK,
+
 	animationCRC = hashCode("force_weaken_1_particle_level_1_light"),
 
 	combatSpam = "forceweaken1",
-	
+
 	poolsToDamage = NONE,
 
 	range = 32
