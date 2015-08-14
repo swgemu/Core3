@@ -44,7 +44,7 @@
 ForceThrow2Command = {
         name = "forcethrow2",
 
-    damage = 420, -- NOT CORRECT, Need data.
+   	damage = 1000,
 	speed = 4.0,
 	forceCost = 56,
 	accuracySkillMod = "forcethrow_accuracy";
