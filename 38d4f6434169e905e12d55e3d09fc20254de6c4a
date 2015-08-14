@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_00e4a80b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/PeaceCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2015-08-14T02:25:58Z",
+      "side": 1,
+      "message": "any reason why this is not after the state checks and locomotion checks?",
+      "revId": "38d4f6434169e905e12d55e3d09fc20254de6c4a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
