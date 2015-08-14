@@ -7,7 +7,6 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "ForcePowersQueueCommand.h"
-#include "server/zone/objects/player/events/ForceChokeTickTask.h"
 
 class ForceChokeCommand : public ForcePowersQueueCommand {
 public:
@@ -35,30 +34,7 @@ public:
 			return INVALIDTARGET;
 		}
 
-		int res = doCombatAction(creature, target);
-
-		//if (creature->isAiAgent()) { // If they are NPC, don't get past here.
-		//	return SUCCESS;
-		//}
-
-		if (res == SUCCESS) {
-
-			// Setup task, if choke attack was successful (5 tick amount.), AND if they don't already have one.
-
-			ManagedReference<CreatureObject*> creatureTarget = targetObject.castTo<CreatureObject*>();
-
-			if (creatureTarget == NULL)
-				return GENERALERROR;
-
-			Reference<ForceChokeTickTask*> chokeCheck = creatureTarget->getPendingTask("forceChokeTickTask").castTo<ForceChokeTickTask*>();
-
-			if (chokeCheck != NULL) {
-				return SUCCESS;
-			}
-
-			Reference<ForceChokeTickTask*> fctTask = new ForceChokeTickTask(creature, creatureTarget);
-			creatureTarget->addPendingTask("forceChokeTickTask", fctTask, 6000);
-		}
+		doCombatAction(creature, target);
 
 		return SUCCESS;
 	}

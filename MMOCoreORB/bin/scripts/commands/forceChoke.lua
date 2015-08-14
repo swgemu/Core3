@@ -55,7 +55,20 @@ ForceChokeCommand = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	range = 32
+	range = 32,
+
+	dotEffects = {
+	  DotEffect( 
+		FORCECHOKE, 
+		{ "", "" },
+		0,
+		false,
+		100,
+		100,
+		500, 
+		35
+	  )
+	},
 }
 
 AddCommand(ForceChokeCommand)
