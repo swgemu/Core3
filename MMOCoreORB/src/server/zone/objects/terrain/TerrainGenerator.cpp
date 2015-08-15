@@ -16,6 +16,71 @@ void TerrainGenerator::processLayers() {
 	}
 }
 
+bool TerrainGenerator::getFullBoundaryCircle(float& centerX, float& centerY, float& radius) {
+	Vector<Layer*>* layerVector = layers.getLayers();
+
+	float minX = FLT_MAX;
+	float minY = minX;
+
+	float maxX = FLT_MIN;
+	float maxY = maxX;
+
+	for (int i = 0; i < layerVector->size(); ++i) {
+		getFullBoundaryCircle(layerVector->get(i), minX, minY, maxX, maxY);
+	}
+
+	if (minX == FLT_MAX || minY == FLT_MAX || maxX == FLT_MIN || maxY == FLT_MIN)
+		return false;
+
+	Vector3 boxmin(minX, minY, 0);
+	Vector3 boxmax(maxX, maxY, 0);
+
+	AABB box(boxmin, boxmax);
+
+	Vector3 center = box.center();
+	Vector3 extents = box.extents();
+
+	radius = extents.length();
+	centerX = center.getX();
+	centerY = center.getY();
+
+	return true;
+}
+
+void TerrainGenerator::getFullBoundaryCircle(Layer* layer, float& minX, float& minY, float& maxX, float& maxY) {
+	Vector<Boundary*>* boundaries = layer->getBoundaries();
+
+	for (int i = 0; i < boundaries->size(); ++i) {
+		Boundary* boundary = boundaries->get(i);
+
+		if (!boundary->isEnabled())
+			continue;
+
+		float boundaryMinX = boundary->getMinX();
+		float boundaryMinY = boundary->getMinY();
+
+		float boundaryMaxX = boundary->getMaxX();
+		float boundaryMaxY = boundary->getMaxY();
+
+		if (boundaryMinX < minX)
+			minX = boundaryMinX;
+
+		if (boundaryMinY < minY)
+			minY = boundaryMinY;
+
+		if (boundaryMaxX > maxX)
+			maxX = boundaryMaxX;
+
+		if (boundaryMaxY > maxY)
+			maxY = boundaryMaxY;
+	}
+
+	Vector<Layer*>* childrenLayers = layer->getChildren();
+
+	for (int i = 0; i < childrenLayers->size(); ++i)
+		getFullBoundaryCircle(childrenLayers->get(i), minX, minY, maxX, maxY);
+}
+
 void TerrainGenerator::processLayer(Layer* layer) {
 	Vector<Boundary*>* terrainRules = layer->getBoundaries();
 
