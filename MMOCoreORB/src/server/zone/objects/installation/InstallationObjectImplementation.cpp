@@ -395,7 +395,7 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 
 	Time currentTime = workingTime;
 
-	Time spawnExpireTimestamp(currentSpawn->getDespawned());
+	Time spawnExpireTimestamp((uint32)currentSpawn->getDespawned());
 	// if (t1 < t2) return 1 - if spawnTime is sooner currentTime, use spawnTime, else use spawn time
 	uint32 harvestUntil = (spawnExpireTimestamp.compareTo(currentTime) > 0) ? spawnExpireTimestamp.getTime() : currentTime.getTime();
 	uint32 lastHopperUpdate = resourceHopperTimestamp.getTime();

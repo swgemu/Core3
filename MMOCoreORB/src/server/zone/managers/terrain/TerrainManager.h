@@ -16,6 +16,8 @@
 
 #include "engine/util/lru/SynchronizedLRUCache.h"
 
+#include "TerrainCache.h"
+
 namespace server {
  namespace zone {
   class Zone;
@@ -31,11 +33,10 @@ class TerrainManager : public Logger, public Object {
 
 	Zone* zone;
 
-	SynchronizedLRUCache2<uint64, float, float, float>* heightCache;
-	AtomicInteger totalHitCount, totalMissCount, cacheClearCount;
+	TerrainCache* heightCache;
 
 protected:
-	void clearCache();
+	void clearCache(TerrainGenerator* generator);
 
 public:
 	TerrainManager(Zone* planet);
@@ -73,35 +74,43 @@ public:
 	float getHeight(float x, float y);
 
 	float getMin() {
-		return terrainData->getSize() / 2 * -1;
+		if (terrainData) {
+			return terrainData->getSize() / 2 * -1;
+		} else {
+			return -256;
+		}
 	}
 
 	float getMax() {
-		return terrainData->getSize() / 2;
+		if (terrainData) {
+			return terrainData->getSize() / 2;
+		} else {
+			return 256;
+		}
 	}
 
 	float getSize() {
 		return terrainData->getSize();
 	}
 
-	int getTotalCacheHitCount() {
-		return totalHitCount.get() + getCurrentCacheHitCount();
-	}
-
-	int getTotalCacheMissCount() {
-		return totalMissCount.get() + getCurrentCacheMissCount();
-	}
-
-	int getCurrentCacheHitCount() {
+	int getCacheHitCount() {
 		return heightCache->getHitCount();
 	}
 
-	int getCurrentCacheMissCount() {
+	int getCacheMissCount() {
 		return heightCache->getMissCount();
 	}
 
 	int getCacheClearCount() {
-		return cacheClearCount.get();
+		return heightCache->getClearCount();
+	}
+
+	int getCacheClearHeightsCount() {
+		return heightCache->getClearHeightsCount();
+	}
+
+	int getCachedValuesCount() {
+		return heightCache->getSize();
 	}
 };
 

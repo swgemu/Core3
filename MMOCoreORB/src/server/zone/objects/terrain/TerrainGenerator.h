@@ -45,6 +45,10 @@ public:
 	void addLayer(Layer* layer);
 	void removeLayer(Layer* layer);
 
+	bool getFullBoundaryCircle(float& centerX, float& centerY, float& radius);
+
+	void getFullBoundaryCircle(Layer* layer, float& minX, float& minY, float& maxX, float& maxY);
+
 	inline MapGroup* getMapGroup() {
 		return &mapGroup;
 	}

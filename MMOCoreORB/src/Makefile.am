@@ -772,6 +772,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp \
 		server/zone/managers/objectcontroller/command/CommandConfigManager.cpp \
 		server/zone/managers/terrain/TerrainManager.cpp \
+		server/zone/managers/terrain/TerrainCache.cpp \
 		server/zone/managers/templates/TemplateManager.cpp \
 		server/zone/managers/templates/DataArchiveStore.cpp \
 		server/zone/managers/mission/MissionManagerImplementation.cpp \
