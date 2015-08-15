@@ -7,7 +7,7 @@
 
 #include "../DeltaMessage.h"
 
-#include "server/zone/objects/tangible/resource/ResourceContainer.h"
+#include "server/zone/objects/resource/ResourceContainer.h"
 
 class ResourceContainerObjectDeltaMessage6 : public DeltaMessage {
 public:
