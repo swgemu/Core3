@@ -8,7 +8,7 @@
 
 #include "../../packets/DeltaMessage.h"
 
-#include "../../objects/building/cell/CellObject.h"
+#include "server/zone/objects/cell/CellObject.h"
 
 class CellObjectDeltaMessage3 : public DeltaMessage {
 	CellObject* cell;
