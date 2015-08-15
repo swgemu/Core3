@@ -133,7 +133,7 @@ void InstallationObjectImplementation::setOperating(bool value, bool notifyClien
 			return;
 		}
 
-		if (basePowerRate != 0 && surplusPower <= 0) {
+		if (getBasePowerRate() != 0 && surplusPower <= 0) {
 			StringIdChatParameter stringId("player_structure", "power_deposit_incomplete");
 			ChatSystemMessage* msg = new ChatSystemMessage(stringId);
 
@@ -342,12 +342,12 @@ bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 	addMaintenance(-1.0f * payAmount);
 
 	if (isOperating()) {
-		float energyAmount = (elapsedTime / 3600.0) * basePowerRate;
+		float energyAmount = (elapsedTime / 3600.0) * getBasePowerRate();
 
 		if (energyAmount > surplusPower) {
 			energyAmount = surplusPower;
 
-			float workPowerPermitted = (surplusPower / basePowerRate) * 3600;
+			float workPowerPermitted = (surplusPower / getBasePowerRate()) * 3600;
 
 			if (workPowerPermitted < elapsedTime) {
 				Time workTill(lastMaintenanceTime.getTime() + (int) workPowerPermitted);

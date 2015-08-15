@@ -547,7 +547,7 @@ void FactoryObjectImplementation::createNewObject() {
 
 		float elapsedTime = (currentTime.getTime() - lastMaintenanceTime.getTime());
 
-		float energyAmount = (elapsedTime / 3600.0) * basePowerRate;
+		float energyAmount = (elapsedTime / 3600.0) * getBasePowerRate();
 		if (energyAmount > surplusPower) {
 			stopFactory("manf_no_power", getDisplayedName(), "", -1);
 			return;

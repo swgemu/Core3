@@ -12,8 +12,6 @@ class HarvesterObject extends InstallationObject {
 		Logger.setLoggingName("HarvesterObject");
 	}
 
-	public native void notifyLoadFromDatabase();
-
 	/**
 	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }

@@ -530,7 +530,7 @@ void ZoneImplementation::updateCityRegions() {
 		city->setLoaded();
 
 		city->cleanupCitizens();
-		city->cleanupDuplicateCityStructures();
+		//city->cleanupDuplicateCityStructures();
 
 		city->rescheduleUpdateEvent(seconds);
 

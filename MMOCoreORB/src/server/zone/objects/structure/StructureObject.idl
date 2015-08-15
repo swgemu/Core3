@@ -21,25 +21,22 @@ include server.zone.objects.structure.StructurePermissionList;
 class StructureObject extends TangibleObject {
 	protected transient StructureMaintenanceTask structureMaintenanceTask;
 	//protected transient StructurePowerTask structurePowerTask;
-	
+
 	@dereferenced
 	protected StructurePermissionList structurePermissionList;
-	
+
 	@dereferenced
 	protected Time lastMaintenanceTime;
-	
+
 	@dereferenced
 	protected Time maintenanceExpires;
-	
+
 	@dereferenced
 	protected Time powerExpires;
-	
+
 	protected unsigned long ownerObjectID;
 	protected unsigned long deedObjectID;
-	
-	protected int baseMaintenanceRate;//TODO: Move to template
-	protected int basePowerRate; //TODO: Move to template
-	
+
 	protected float surplusMaintenance;
 	protected float surplusPower;
 
@@ -49,28 +46,24 @@ class StructureObject extends TangibleObject {
 
 	public StructureObject() {
 		Logger.setLoggingName("StructureObject");
-		
+
 		super.staticObject = false;
-		
+
 		ownerObjectID = 0;
-		
+
 		deedObjectID = 0;
-		
-		baseMaintenanceRate = 0;
-		
-		basePowerRate = 0;
-		
+
 		surplusMaintenance = 0;
-		
+
 		surplusPower = 0;
-		
+
 		structureMaintenanceTask = null;
 
 		maintenanceReduced = false;
 
 		permissionsFixed = false;
 	}
-	
+
 	public native void initializeTransientMembers();
 	
 	public native void finalize();
@@ -329,16 +322,6 @@ class StructureObject extends TangibleObject {
 	@preLocked
 	public void setDeedObjectID(unsigned long deedID) {
 		deedObjectID = deedID;
-	}
-
-	@preLocked
-	public void setBaseMaintenanceRate(int rate) { //TODO: Move to template
-		baseMaintenanceRate = rate;
-	}
-
-	@preLocked
-	public void setBasePowerRate(int rate) { //TODO: Move to template
-		basePowerRate = rate;
 	}
 
 	@preLocked

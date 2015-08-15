@@ -37,10 +37,6 @@ void StructureObjectImplementation::loadTemplateData(SharedObjectTemplate* templ
 
 	SharedStructureObjectTemplate* structureTemplate = dynamic_cast<SharedStructureObjectTemplate*>(templateData);
 
-	baseMaintenanceRate = structureTemplate->getBaseMaintenanceRate();
-
-	basePowerRate = structureTemplate->getBasePowerRate();
-
 	structureTemplate->getPortalLayout();
 	structureTemplate->getAppearanceTemplate();
 }
@@ -103,9 +99,9 @@ void StructureObjectImplementation::notifyInsertToZone(Zone* zone) {
 			structurePermissionList.dropList("VENDOR");
 	}
 
-	if (!staticObject && baseMaintenanceRate != 0 && !isTurret() && !isMinefield()) {
+	if (!staticObject && getBaseMaintenanceRate() != 0 && !isTurret() && !isMinefield()) {
 		//Decay is 4 weeks.
-		maxCondition = baseMaintenanceRate * 24 * 7 * 4;
+		maxCondition = getBaseMaintenanceRate() * 24 * 7 * 4;
 
 		scheduleMaintenanceExpirationEvent();
 	}

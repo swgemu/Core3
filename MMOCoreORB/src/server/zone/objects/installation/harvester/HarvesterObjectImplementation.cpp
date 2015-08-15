@@ -17,16 +17,6 @@
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
 
-void HarvesterObjectImplementation::notifyLoadFromDatabase() {
-	InstallationObjectImplementation::notifyLoadFromDatabase();
-
-	Reference<SharedStructureObjectTemplate*> ssot = cast<SharedStructureObjectTemplate*>(templateObject.get());
-
-	//Fix for the errored harvesters.
-	if (ssot != NULL)
-		setBasePowerRate(ssot->getBasePowerRate());
-}
-
 void HarvesterObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (!isOnAdminList(player))
 		return;
