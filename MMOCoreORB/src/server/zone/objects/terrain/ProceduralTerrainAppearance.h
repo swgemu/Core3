@@ -104,8 +104,12 @@ public:
 	float getHeight(float x, float y);
 	int getEnvironmentID(float x, float y);
 
+	ReadWriteLock* getGuard() {
+		return &guard;
+	}
+
 	TerrainGenerator* addTerrainModification(engine::util::IffStream* terrainGeneratorIffStream, float x, float y, uint64 objectid);
-	void removeTerrainModification(uint64 objectid);
+	TerrainGenerator* removeTerrainModification(uint64 objectid);
 
 };
 

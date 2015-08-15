@@ -1,6 +1,8 @@
 #ifndef GETAUCTIONDETAILSRESPONSEMESSAGE_H_
 #define GETAUCTIONDETAILSRESPONSEMESSAGE_H_
 
+#include "../BaseMessage.h"
+
 class GetAuctionDetailsResponse : public BaseMessage {
 public:
 	GetAuctionDetailsResponse(uint64 objectID, const UnicodeString& description) {

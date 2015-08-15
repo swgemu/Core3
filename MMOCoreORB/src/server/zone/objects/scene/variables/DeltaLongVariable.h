@@ -8,12 +8,12 @@
 #ifndef DELTALONGVARIABLE_H_
 #define DELTALONGVARIABLE_H_
 
-#include "DeltaVariable.h"
+#include "DeltaBasicVariable.h"
 
 template<int BaselineName, uint8 Type, int DeltaID>
 class DeltaLongVariable : public DeltaBasicVariable<uint64> {
 public:
-	void update(int newValue, bool broadcastStandalone = false, SceneObject* obj = NULL) {
+	void update(int newValue, bool broadcastStandalone = false, server::zone::objects::scene::SceneObject* obj = NULL) {
 		set(newValue);
 
 		if (broadcastStandalone) {
@@ -21,7 +21,7 @@ public:
 		}
 	}
 
-	void broadcastStandaloneDeltaMessage(SceneObject* obj) {
+	void broadcastStandaloneDeltaMessage(server::zone::objects::scene::SceneObject* obj) {
 		DeltaMessage* msg = new DeltaMessage(obj->getObjectID(), BaselineName, Type);
 		addToDeltaMessage(msg);
 		msg->close();
