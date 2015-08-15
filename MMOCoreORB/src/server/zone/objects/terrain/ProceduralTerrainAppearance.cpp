@@ -492,15 +492,15 @@ TerrainGenerator* ProceduralTerrainAppearance::addTerrainModification(engine::ut
 	return terrain;
 }
 
-void ProceduralTerrainAppearance::removeTerrainModification(uint64 objectid) {
+TerrainGenerator* ProceduralTerrainAppearance::removeTerrainModification(uint64 objectid) {
 	Locker locker(&guard);
 
 	TerrainGenerator* layer = terrainModifications.remove(objectid);
 
 	if (layer == NULL)
-		return;
+		return NULL;
 
 	customTerrain.removeElement(layer);
 
-	delete layer;
+	return layer;
 }

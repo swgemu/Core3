@@ -9,56 +9,21 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/objects/terrain/ProceduralTerrainAppearance.h"
+#include "server/zone/objects/terrain/TerrainGenerator.h"
 #include "server/zone/objects/terrain/SpaceTerrainAppearance.h"
 
-#define USE_CACHED_HEIGHT
-#define CACHE_CAPACITY 1024 * 1024
-#define CACHE_MIN_ACCESS_COUNT 25
-
-class HeightCacheFunction : public LRUFunction2<uint64, float, float, float> {
-	TerrainManager* terrainData;
-
-public:
-	HeightCacheFunction(TerrainManager* app) : terrainData(app) {
-
-	}
-
-	float run(const float& k, const float& k2) {
-		return terrainData->getUnCachedHeight(k , k2);
-	}
-
-	uint64 hash(const float& k, const float& k2) {
-		union {
-			uint32 uval;
-			float fval;
-		} v;
-
-		v.fval = k ;
-
-		uint32 val1 = v.uval;
-
-		v.fval = k2;
-
-		uint32 val2 = v.uval;
-
-		uint64 hash = val1;
-
-		return (hash << 32) | val2;
-	}
-};
+//#define USE_CACHED_HEIGHT
 
 TerrainManager::TerrainManager(Zone* planet) : Logger("TerrainManager") {
 	zone = planet;
 
-	heightCache = new SynchronizedLRUCache2<uint64, float, float, float>(new HeightCacheFunction(this),
-			CACHE_CAPACITY, CACHE_MIN_ACCESS_COUNT);
+	heightCache = new TerrainCache(this);
 }
 
 TerrainManager::TerrainManager(ManagedWeakReference<Zone*> planet) : Logger("TerrainManager") {
 	zone = planet.get();
 
-	heightCache = new SynchronizedLRUCache2<uint64, float, float, float>(new HeightCacheFunction(this),
-			CACHE_CAPACITY, CACHE_MIN_ACCESS_COUNT);
+	heightCache = new TerrainCache(this);
 }
 
 TerrainManager::~TerrainManager() {
@@ -161,22 +126,28 @@ void TerrainManager::addTerrainModification(float x, float y, const String& terr
 		return;
 	}
 
-	if (ptat->addTerrainModification(stream, x, y, objectid) == NULL) {
+	//to be safe that the generator is not deleted when we clear the cache
+	Locker locker(ptat->getGuard());
+
+	TerrainGenerator* generator = ptat->addTerrainModification(stream, x, y, objectid);
+	if (generator == NULL) {
 		error("could not add custom terrain file: " + terrainModificationFilename);
+
+		return;
 	}
 
-	delete stream;
+	clearCache(generator);
 
-	clearCache();
+	locker.release();
+
+	delete stream;
 }
 
-void TerrainManager::clearCache() {
-	totalHitCount.add(getCurrentCacheHitCount());
-	totalMissCount.add(getCurrentCacheMissCount());
+void TerrainManager::clearCache(TerrainGenerator* generator) {
+/*	totalHitCount.add(getCurrentCacheHitCount());
+	totalMissCount.add(getCurrentCacheMissCount());*/
 
-	heightCache->clear();
-
-	cacheClearCount.increment();
+	heightCache->clear(generator);
 }
 
 void TerrainManager::removeTerrainModification(uint64 objectid) {
@@ -185,9 +156,11 @@ void TerrainManager::removeTerrainModification(uint64 objectid) {
 	if (ptat == NULL)
 		return;
 
-	ptat->removeTerrainModification(objectid);
+	TerrainGenerator* generator = ptat->removeTerrainModification(objectid);
 
-	clearCache();
+	clearCache(generator);
+
+	delete generator;
 }
 
 ProceduralTerrainAppearance* TerrainManager::getProceduralTerrainAppearance() {
@@ -199,7 +172,7 @@ float TerrainManager::getUnCachedHeight(float x, float y) {
 }
 
 float TerrainManager::getCachedHeight(float x, float y) {
-	return (*heightCache)(x, y);
+	return heightCache->getHeight(x, y);
 }
 
 float TerrainManager::getHeight(float x, float y) {
