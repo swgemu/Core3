@@ -1592,7 +1592,7 @@ void PlayerObjectImplementation::doRecovery() {
 
 	if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced()
 			&& (commandQueue->size() == 0) && creature->isNextActionPast() && !creature->isDead() && !creature->isIncapacitated()) {
-		creature->sendCommand(STRING_HASHCODE("attack"), "", creature->getTargetID());
+		creature->executeObjectControllerAction(STRING_HASHCODE("attack"), creature->getTargetID(), "");
 	}
 
 	if (!getZoneServer()->isServerLoading()) {
