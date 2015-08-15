@@ -261,8 +261,8 @@ function TalusNashalScreenPlay:spawnMobiles()
 	spawnMobile("talus", "eg6_power_droid",60,4465.98,2,5278.48,300.387,0)
 
 	--Cloner
-	--{"miner",60,1.8,-4.8,0,180,4265616, "conversation", ""},
-	--{"scientist",60,1.6,-5.5,-4.8,0,4265616, "conversation", ""},
+	--spawnMobile("talus", "farmer",60,1.8,-4.8,0,180,4265616, "conversation", ""),
+	--spawnMobile("talus", "scientist",60,1.6,-5.5,-4.8,0,4265616, "conversation", ""),
 
 	--Med Center
 	spawnMobile("talus", "surgical_droid_21b",60,-1.19,0.184067,-1.89,27.0574,4265477)

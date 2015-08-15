@@ -35,7 +35,7 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	--Guild Hall -1239 -3580
 	--{"coa3_tactical_imperial",60,9.74537,1.13306,0.300803,93.0077,1028549, "npc_imperial", ""},
 	spawnMobile("tatooine", "trainer_scout",0,-13,1.1,4.8,180,1028550)
-	spawnMobile("tatooine", "hunter",300,-14.01,1.13306,-8.53,120.004,1028553)
+	spawnMobile("tatooine", "brawler",300,-14.01,1.13306,-8.53,120.004,1028553)
 	spawnMobile("tatooine", "trainer_brawler",0,-11,1.1,-14,0,1028553)
 	spawnMobile("tatooine", "trainer_marksman",0,0,1.13306,-13,0,1028552)
 	spawnMobile("tatooine", "businessman",60,3.32,1.13306,-8.49,228.007,1028552)
