@@ -34,7 +34,7 @@ void BuffImplementation::initializeTransientMembers() {
 void BuffImplementation::loadBuffDurationEvent(CreatureObject* creo) {
 	if(nextExecutionTime.getTime() - time(0) > buffDuration) {
 		error("Buff timer was f'ed in the a!  Serialized Time:" + String::valueOf((int)(nextExecutionTime.getTime() - time(0))) + " Duration: " + String::valueOf(buffDuration));
-		nextExecutionTime = time(0) + (int)buffDuration;
+		nextExecutionTime = (uint32)(time(0) + (int)buffDuration);
 	}
 
 	if (nextExecutionTime.isPast()) {
