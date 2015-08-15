@@ -24,6 +24,7 @@ theme_park_rebel_big_creature_cage = Creature:new {
 	creatureBitmask = PACK + HERD,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
+	scale = 1.5,
 
 	templates = {"object/mobile/mawgax_hue.iff"},
 	lootGroups = {
