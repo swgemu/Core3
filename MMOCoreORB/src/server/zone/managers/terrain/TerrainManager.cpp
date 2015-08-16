@@ -158,9 +158,11 @@ void TerrainManager::removeTerrainModification(uint64 objectid) {
 
 	TerrainGenerator* generator = ptat->removeTerrainModification(objectid);
 
-	clearCache(generator);
+	if (generator != NULL) {
+		clearCache(generator);
 
-	delete generator;
+		delete generator;
+	}
 }
 
 ProceduralTerrainAppearance* TerrainManager::getProceduralTerrainAppearance() {
