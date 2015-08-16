@@ -12,7 +12,7 @@
 #include "server/zone/objects/terrain/TerrainGenerator.h"
 #include "server/zone/objects/terrain/SpaceTerrainAppearance.h"
 
-//#define USE_CACHED_HEIGHT
+#define USE_CACHED_HEIGHT
 
 TerrainManager::TerrainManager(Zone* planet) : Logger("TerrainManager") {
 	zone = planet;
