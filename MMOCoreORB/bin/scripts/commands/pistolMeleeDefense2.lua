@@ -51,6 +51,18 @@ PistolMeleeDefense2Command = {
 	mindCostMultiplier = 0.5,
         accuracyBonus = 50,
 
+	stateEffects = {
+	  StateEffect(
+		KNOCKDOWN_EFFECT,
+		{ "knockdownRecovery", "lastKnockdown" },
+		{ "knockdown_defense" },
+		{},
+		30,
+		100,
+		0
+	  )
+	},
+
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
 	animationCRC = hashCode("ranged_melee_light"),

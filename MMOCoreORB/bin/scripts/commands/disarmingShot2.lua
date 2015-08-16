@@ -54,18 +54,6 @@ DisarmingShot2Command = {
 	coneAngle = 15,
 	coneAction = true,
 
-	stateEffects = {
-	  StateEffect( 
-		KNOCKDOWN_EFFECT, 
-		{ "knockdownRecovery", "lastKnockdown" }, 
-		{ "knockdown_defense" }, 
-		{}, 
-		100, 
-		0, 
-		0 
-	  )
-	},
-
 	animationCRC = hashCode("fire_3_single_light_face"),
 
 	combatSpam = "disarmblast",
