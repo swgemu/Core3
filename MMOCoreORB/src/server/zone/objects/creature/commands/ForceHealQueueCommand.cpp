@@ -51,7 +51,7 @@ void ForceHealQueueCommand::doAnimations(CreatureObject* creature, CreatureObjec
 int ForceHealQueueCommand::doHealBF(CreatureObject* creature, CreatureObject* target, healedAttributes_t& attrs) const {
 	if (creature == NULL || target == NULL) return GENERALERROR;
 
-	int currentValue = creature->getShockWounds();
+	int currentValue = target->getShockWounds();
 #ifdef DEBUG_FORCE_HEALS
 	creature->sendSystemMessage("[doHealBF] currentValue = " + String::valueOf(currentValue));
 	creature->sendSystemMessage("[doHealBF] healBattleFatigue = " + String::valueOf(healBattleFatigue));
@@ -127,7 +127,7 @@ int ForceHealQueueCommand::doHealWounds(CreatureObject* creature, CreatureObject
 	if (healableWounds & ACTION) {
 		attrs.healedActionWounds = targetCreature->healWound(creature, CreatureAttribute::ACTION, healWoundAmount, true);
 		attrs.healedQuicknessWounds = targetCreature->healWound(creature, CreatureAttribute::QUICKNESS, healWoundAmount, true);
-		attrs.healedWillpowerWounds = targetCreature->healWound(creature, CreatureAttribute::STAMINA, healWoundAmount, true);
+		attrs.healedStaminaWounds = targetCreature->healWound(creature, CreatureAttribute::STAMINA, healWoundAmount, true);
 	}
 
 	if (healableWounds & MIND) {
@@ -262,24 +262,34 @@ int ForceHealQueueCommand::doHealStates(CreatureObject* creature, CreatureObject
 	return SUCCESS;
 }
 
-int ForceHealQueueCommand::doHealDots(CreatureObject* creature, CreatureObject* target, int healableDots, healedAttributes_t& attrs) const {
+int ForceHealQueueCommand::doHealDots(CreatureObject* creature, CreatureObject* target, const int healableDots, healedAttributes_t& attrs) const {
 	if (creature == NULL || target == NULL)  return GENERALERROR;
-	
+
+#ifdef DEBUG_FORCE_HEALS
+	creature->sendSystemMessage("[doHealDots] healableDots = " + String::valueOf(healableDots));
+	creature->sendSystemMessage("[doHealDots] healableDots & DISEASED = " + dbg_fh_bool2s(healableDots & DISEASED));
+	creature->sendSystemMessage("[doHealDots] healableDots & POISONED = " + dbg_fh_bool2s(healableDots & POISONED));
+	creature->sendSystemMessage("[doHealDots] healableDots & ONFIRE = " + dbg_fh_bool2s(healableDots & ONFIRE));
+	creature->sendSystemMessage("[doHealDots] healableDots & BLEEDING = " + dbg_fh_bool2s(healableDots & BLEEDING));
+#endif
+
 	if (healableDots & DISEASED) {
-		attrs.healedDisease = target->healDot(CreatureState::DISEASED, healDisease); 
+		target->healDot(CreatureState::DISEASED, healDisease);
 	}
 
 	if (healableDots & POISONED) {
-		attrs.healedPoison = target->healDot(CreatureState::POISONED, healPoison);
+		target->healDot(CreatureState::POISONED, healPoison);
 	}
 
 	if (healableDots & ONFIRE) {
-		attrs.healedFire = target->healDot(CreatureState::ONFIRE, healFire);
+		target->healDot(CreatureState::ONFIRE, healFire);
 	}
 
 	if (healableDots & BLEEDING) {
-		attrs.healedBleeding = target->healDot(CreatureState::BLEEDING, healBleeding);
+		target->healDot(CreatureState::BLEEDING, healBleeding);
 	}
+
+	attrs.healedDots = healableDots;
 
 	return SUCCESS;
 }
@@ -348,8 +358,6 @@ int ForceHealQueueCommand::calculateForceCost(CreatureObject* creature, Creature
 		int amountHealed = attrs.sumHAM();
 		// Wounds
 		amountHealed += attrs.sumWounds();
-		// Dots
-		amountHealed += attrs.sumDots();
 		/*
 		 * Is BF being charged for?
 		 *
@@ -432,138 +440,70 @@ void ForceHealQueueCommand::sendHealMessage(CreatureObject* creature, CreatureOb
 
 }
 
-void ForceHealQueueCommand::sendSystemMessage(CreatureObject* creature, CreatureObject* target, healedAttributes_t& attrs) const {
+void ForceHealQueueCommand::sendDefaultSystemMessage(CreatureObject* creature, CreatureObject* target, healedAttributes_t& attrs) const {
 	const bool didHealTarget = creature != target;
 
-	// check if we did any healing at all, if not respond
-	// with "No damage of that type"
-	const int dots = attrs.sumDots();
-	const int ham = attrs.sumHAM();
-	const int wounds = attrs.sumWounds();
-
-#ifdef DEBUG_FORCE_HEALS
-	creature->sendSystemMessage("[sendSystemMessage] dots = " + String::valueOf(dots) + " ham = " + String::valueOf(ham) +
-			"wounds = " + String::valueOf(wounds));
-	creature->sendSystemMessage("[sendSystemMessage] didHealTarget = " + dbg_fh_bool2s(didHealTarget));
-#endif
-
-	if (wounds + dots + ham + attrs.healedStates + attrs.healedBF == 0) {
-		if (healAttributes != 0 || healBattleFatigue != 0) {
-			if (!didHealTarget) {
-				// You have no damage of that type.
-				creature->sendSystemMessage("@jedi_spam:no_damage_heal_self");
-			} else {
-				// Your target has no damage of that type to heal.
-				creature->sendSystemMessage("@jedi_spam:no_damage_heal_other");
-			}
-		} else if (healStates != 0) {
-			// was supposed to heal states but there werent any
-			if (!didHealTarget) {
-				// You have no state of that type to heal.
-				creature->sendSystemMessage("@healing_response:healing_response_72");
-			} else {
-				// %NI has no state of that type to heal.
-				StringIdChatParameter msg("healing_response", "healing_response_74");
-				msg.setTT(target->getObjectID());
-				creature->sendSystemMessage(msg);
-			}
-		} else if (healBleeding != 0) {
-			// was supposed to heal bleeding
-			if (!didHealTarget) {
-				// You are not bleeding.
-				creature->sendSystemMessage("@healing_response:healing_response_78");
-			} else {
-				// %NT is not bleeding.
-				StringIdChatParameter msg("healing_response", "healing_response_80");
-				msg.setTT(target->getObjectID());
-				creature->sendSystemMessage(msg);
-			}
-		} else  if (healFire != 0) {
-			// there is no such message in case there wasn't fire to heal..
-			return;
-		} else if (healPoison != 0) {
-			// couldn't heal any poison
-			if (!didHealTarget) {
-				// You are not poisoned.
-				creature->sendSystemMessage("@healing_response:healing_response_82");
-			} else {
-				// %NT is not poisoned
-				StringIdChatParameter msg("healing_response", "healing_response_84");
-				msg.setTT(target->getObjectID());
-				creature->sendSystemMessage(msg);
-			}
-		} else if (healDisease != 0) {
-			if (!didHealTarget) {
-				// You are not diseased.
-				creature->sendSystemMessage("@healing_response:healing_response_90");
-			} else {
-				// %NT is nto diseased.
-				StringIdChatParameter msg("healing_response", "healing_response_92");
-				msg.setTT(target->getObjectID());
-				creature->sendSystemMessage(msg);
-			}
-		} else if (healWoundAttributes != 0) {
-			if (!didHealTarget) {
-				// You have no wounds of that type to heal.
-				creature->sendSystemMessage("@healing_response:healing_response_67");
-			} else {
-				// Unable to find any wounds which you can heal.
-				creature->sendSystemMessage("@healing_response:healing_response_64");
-			}
+	if (healAttributes != 0 || healBattleFatigue != 0) {
+		if (!didHealTarget) {
+			// You have no damage of that type.
+			creature->sendSystemMessage("@jedi_spam:no_damage_heal_self");
+		} else {
+			// Your target has no damage of that type to heal.
+			creature->sendSystemMessage("@jedi_spam:no_damage_heal_other");
 		}
+	} else if (healStates != 0) {
+		// was supposed to heal states but there werent any
+		if (!didHealTarget) {
+			// You have no state of that type to heal.
+			creature->sendSystemMessage("@healing_response:healing_response_72");
+		} else {
+			// %NI has no state of that type to heal.
+			StringIdChatParameter msg("healing_response", "healing_response_74");
+			msg.setTT(target->getObjectID());
+			creature->sendSystemMessage(msg);
+		}
+	} else if (healBleeding != 0) {
+		// was supposed to heal bleeding
+		if (!didHealTarget) {
+			// You are not bleeding.
+			creature->sendSystemMessage("@healing_response:healing_response_78");
+		} else {
+			// %NT is not bleeding.
+			StringIdChatParameter msg("healing_response", "healing_response_80");
+			msg.setTT(target->getObjectID());
+			creature->sendSystemMessage(msg);
+		}
+	} else if (healFire != 0) {
+		// there is no such message in case there wasn't fire to heal..
 		return;
-	} else {
-		if (ham != 0) {
-			sendHealMessage(creature, target, HEALTH, attrs.healedHealth);
-			sendHealMessage(creature, target, ACTION, attrs.healedAction);
-			sendHealMessage(creature, target, MIND, attrs.healedMind);
+	} else if (healPoison != 0) {
+		// couldn't heal any poison
+		if (!didHealTarget) {
+			// You are not poisoned.
+			creature->sendSystemMessage("@healing_response:healing_response_82");
+		} else {
+			// %NT is not poisoned
+			StringIdChatParameter msg("healing_response", "healing_response_84");
+			msg.setTT(target->getObjectID());
+			creature->sendSystemMessage(msg);
 		}
-		if (dots != 0) {
-			if (attrs.healedBleeding) {
-				sendHealDotMessage(creature, target, attrs.healedBleeding,
-						"stop_bleeding_other", "staunch_bleeding_other", CreatureState::BLEEDING);
-			}
-
-			if (attrs.healedPoison) {
-				sendHealDotMessage(creature, target, attrs.healedPoison,
-						"stop_poison_other", "staunch_poison_other", CreatureState::POISONED);
-			}
-
-			/* FIXME: is there an STF entry for this case?
-			if (attrs.healedFire) {
-				sendHealDotMessage(creature, target, attrs.healedFire,
-						"stop_fire_other", "staunch_fire_other", CreatureState::ONFIRE);
-			}*/
-			
-			if (attrs.healedDisease) {
-				sendHealDotMessage(creature, target, attrs.healedDisease,
-						"stop_disease_other", "staunch_disease_other", CreatureState::DISEASED);
-			}
+	} else if (healDisease != 0) {
+		if (!didHealTarget) {
+			// You are not diseased.
+			creature->sendSystemMessage("@healing_response:healing_response_90");
+		} else {
+			// %NT is nto diseased.
+			StringIdChatParameter msg("healing_response", "healing_response_92");
+			msg.setTT(target->getObjectID());
+			creature->sendSystemMessage(msg);
 		}
-
-		if (wounds != 0) {
-			sendHealMessage(creature, target, HEALTH, attrs.healedHealthWounds, true);
-			sendHealMessage(creature, target, STRENGTH, attrs.healedStrengthWounds, true);
-			sendHealMessage(creature, target, CONSTITUTION, attrs.healedConstitutionWounds, true);
-
-			sendHealMessage(creature, target, ACTION, attrs.healedActionWounds, true);
-			sendHealMessage(creature, target, QUICKNESS, attrs.healedActionWounds, true);
-			sendHealMessage(creature, target, STAMINA, attrs.healedStaminaWounds, true);
-
-			sendHealMessage(creature, target, MIND, attrs.healedMindWounds, true);
-			sendHealMessage(creature, target, FOCUS, attrs.healedFocusWounds, true);
-			sendHealMessage(creature, target, WILLPOWER, attrs.healedWillpowerWounds, true);
-		}
-
-		if (attrs.healedStates != 0) {
-			StringIdChatParameter healedStatesMessage("jedi_spam", "stop_states_other");
-			if (creature != target) {
-				healedStatesMessage.setTT(target->getFirstName());
-			} else {
-				//TODO: whats the message for self healing?
-				healedStatesMessage.setTT("you"); // You cure all negative states on >you<.
-			}
-			creature->sendSystemMessage(healedStatesMessage);
+	} else if (healWoundAttributes != 0) {
+		if (!didHealTarget) {
+			// You have no wounds of that type to heal.
+			creature->sendSystemMessage("@healing_response:healing_response_67");
+		} else {
+			// Unable to find any wounds which you can heal.
+			creature->sendSystemMessage("@healing_response:healing_response_64");
 		}
 	}
 }
@@ -604,8 +544,27 @@ int ForceHealQueueCommand::runCommandWithTarget(CreatureObject* creature, Creatu
 
 int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* targetCreature) const {
 	// keep the information about what will be healed and what has been healed so we can make the code a bit cleaner
-	healedAttributes_t healedAttributes = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	healedAttributes_t healedAttributes = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 	bool didHeal = false;
+
+	if (healWoundAttributes != 0 && healWoundAmount != 0) {
+		const int healableWounds = checkWoundAttributes(creature, targetCreature);
+		if (healableWounds != 0) {
+			int retval = doHealWounds(creature, targetCreature, healableWounds, healedAttributes);
+			if (retval != SUCCESS) {
+				return retval;
+			}
+			const int healedWounds = healedAttributes.sumWounds();
+
+			if (healedWounds != 0) {
+#ifdef DEBUG_FORCE_HEALS
+				creature->sendSystemMessage("[runCommand] healWounds sets didHeal = true, healableWounds = " + String::valueOf(healableWounds));
+#endif
+				sendWoundHealMessages(creature, targetCreature, healedAttributes);
+				didHeal = true;
+			}
+		}
+	}
 
 	if (healAttributes != 0 && healAmount != 0) {
 		// create a bitset so we can probe which attributes need healing and are allowed to be healed
@@ -615,56 +574,14 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 			if (retval != SUCCESS) {
 				return retval;
 			}
+
+			if (healedAttributes.sumHAM() > 0) {
 #ifdef DEBUG_FORCE_HEALS
-			creature->sendSystemMessage("[runCommand] healAttributes sets didHeal = true");
+				creature->sendSystemMessage("[runCommand] healAttributes sets didHeal = true");
 #endif
-
-			didHeal = true;
-		}
-	}
-
-	if (healWoundAttributes != 0 && healWoundAmount != 0) {
-		const int healableWounds = checkWoundAttributes(creature, targetCreature);
-		if (healableWounds != 0) {
-			int retval = doHealWounds(creature, targetCreature, healableWounds, healedAttributes);
-			if (retval != SUCCESS) {
-				return retval;
+				sendHAMHealMessages(creature, targetCreature, healedAttributes);
+				didHeal = true;
 			}
-#ifdef DEBUG_FORCE_HEALS
-			creature->sendSystemMessage("[runCommand] healWounds sets didHeal = true, healableWounds = " + String::valueOf(healableWounds));
-#endif
-
-			didHeal = true;
-		}
-		
-	}
-
-	if (healStates != 0) {
-		const int healableStates = checkStates(creature, targetCreature);
-		if (healableStates != 0) {
-			int retval = doHealStates(creature, targetCreature, healableStates, healedAttributes);
-			if (retval != SUCCESS) {
-				return retval;
-			}
-#ifdef DEBUG_FORCE_HEALS
-			creature->sendSystemMessage("[runCommand] healStates sets didHeal = true");
-#endif
-
-			didHeal = true;
-		}
-	}
-
-	if (healDisease + healPoison + healFire + healBleeding > 0) {
-		const bool healableDots = checkDots(creature, targetCreature);
-		if (healableDots != 0) {
-			int retval = doHealDots(creature, targetCreature, healableDots, healedAttributes);
-			if (retval != SUCCESS) {
-				return retval;
-			}
-#ifdef DEBUG_FORCE_HEALS
-			creature->sendSystemMessage("[runCommand] healDots sets didHeal = true");
-#endif
-			didHeal = true;
 		}
 	}
 
@@ -681,23 +598,61 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 			if (retval != SUCCESS) {
 				return retval;
 			}
+
+			if (healedAttributes.healedBF > 0) {
 #ifdef DEBUG_FORCE_HEALS
-			creature->sendSystemMessage("[runCommand] healBattleFatigue sets didHeal = true");
+				creature->sendSystemMessage("[runCommand] healBattleFatigue sets didHeal = true");
 #endif
-			didHeal = true;
+				sendHealMessage(creature, targetCreature, BATTLE_FATIGUE, healedAttributes.healedBF);
+				didHeal = true;
+			}
 		}
 	}
 
+	if (healStates != 0) {
+		const int healableStates = checkStates(creature, targetCreature);
+		if (healableStates != 0) {
+			int retval = doHealStates(creature, targetCreature, healableStates, healedAttributes);
+			if (retval != SUCCESS) {
+				return retval;
+			}
+			if (healedAttributes.healedStates != 0) {
 #ifdef DEBUG_FORCE_HEALS
-		creature->sendSystemMessage("[runCommand] didHeal = " + String::valueOf(didHeal));
+				creature->sendSystemMessage("[runCommand] healStates sets didHeal = true");
+#endif
+				sendStateHealMessages(creature, targetCreature, healedAttributes);
+				didHeal = true;
+			}
+		}
+	}
+
+	if (healDisease + healPoison + healFire + healBleeding > 0) {
+		const int healableDots = checkDots(creature, targetCreature);
+		if (healableDots != 0) {
+			int retval = doHealDots(creature, targetCreature, healableDots, healedAttributes);
+			if (retval != SUCCESS) {
+				return retval;
+			}
+			if (healedAttributes.healedDots != 0) {
+#ifdef DEBUG_FORCE_HEALS
+				creature->sendSystemMessage("[runCommand] healDots sets didHeal = true");
+#endif
+				sendDotHealMessages(creature, targetCreature, healedAttributes);
+				didHeal = true;
+			}
+		}
+	}
+
+
+#ifdef DEBUG_FORCE_HEALS
+	creature->sendSystemMessage("[runCommand] didHeal = " + String::valueOf(didHeal));
 #endif
 	if (didHeal) {
 		int calculatedForceCost = calculateForceCost(creature, targetCreature, healedAttributes);
 		applyForceCost(creature, calculatedForceCost);
 		doAnimations(creature, targetCreature, healedAttributes);
-		sendSystemMessage(creature, targetCreature, healedAttributes);
 	} else {
-		sendSystemMessage(creature, targetCreature, healedAttributes);
+		sendDefaultSystemMessage(creature, targetCreature, healedAttributes);
 		return GENERALERROR;
 	}
 
@@ -714,8 +669,11 @@ int ForceHealQueueCommand::doQueueCommand(CreatureObject* creature, const uint64
 	if (playerObject == NULL)
 		return GENERALERROR;
 
+	if (!checkInvalidLocomotions(creature)) {
+		return INVALIDLOCOMOTION;
+	}
+
 	// do the common stuff
-//	int comResult = doCommonMedicalCommandChecks(creature);
 	int comResult = doCommonJediSelfChecks(creature);
 
 	if (comResult != SUCCESS) {
@@ -731,7 +689,7 @@ int ForceHealQueueCommand::doQueueCommand(CreatureObject* creature, const uint64
 #ifdef DEBUG_FORCE_HEALS
 	creature->sendSystemMessage("[doQueueCommand] isRemotHeal = " + dbg_fh_bool2s(isRemoteHeal));
 #endif
-	if (isRemoteHeal) {
+	if (isRemoteHeal && target != creature->getObjectID()) {
 		targetCreature = NULL;
 		// we are healing someone else
 		if (target != 0) {
