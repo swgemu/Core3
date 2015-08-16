@@ -27,7 +27,7 @@ mammoth_bearded_jax = Creature:new {
 
 	templates = {"object/mobile/mammoth_bearded_jax.iff"},
 	controlDeviceTemplate = "object/intangible/pet/bearded_jax_hue.iff",
-	scale = 1.4,
+	scale = 2.8,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
