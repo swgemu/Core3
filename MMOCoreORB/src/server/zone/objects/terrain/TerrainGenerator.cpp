@@ -22,14 +22,14 @@ bool TerrainGenerator::getFullBoundaryCircle(float& centerX, float& centerY, flo
 	float minX = FLT_MAX;
 	float minY = minX;
 
-	float maxX = FLT_MIN;
+	float maxX = -FLT_MAX;
 	float maxY = maxX;
 
 	for (int i = 0; i < layerVector->size(); ++i) {
 		getFullBoundaryCircle(layerVector->get(i), minX, minY, maxX, maxY);
 	}
 
-	if (minX == FLT_MAX || minY == FLT_MAX || maxX == FLT_MIN || maxY == FLT_MIN)
+	if (minX == FLT_MAX || minY == FLT_MAX || maxX == -FLT_MAX || maxY == -FLT_MAX)
 		return false;
 
 	Vector3 boxmin(minX, minY, 0);

@@ -151,11 +151,6 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 		else
 			object->setParent(NULL);
 
-		if (object->getParent() != NULL && parent->containsChildObject(object))
-			return false;
-		else
-			object->setParent(NULL);
-
 		if (parent->isCellObject()) {
 			ManagedReference<BuildingObject*> build = cast<BuildingObject*>(parent->getParent().get().get());
 
