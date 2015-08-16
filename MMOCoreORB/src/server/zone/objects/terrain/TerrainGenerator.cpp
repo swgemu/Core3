@@ -26,7 +26,11 @@ bool TerrainGenerator::getFullBoundaryCircle(float& centerX, float& centerY, flo
 	float maxY = maxX;
 
 	for (int i = 0; i < layerVector->size(); ++i) {
-		getFullBoundaryCircle(layerVector->get(i), minX, minY, maxX, maxY);
+		Layer* layer = layerVector->get(i);
+
+		if (layer->isEnabled()) {
+			getFullBoundaryCircle(layer, minX, minY, maxX, maxY);
+		}
 	}
 
 	if (minX == FLT_MAX || minY == FLT_MAX || maxX == -FLT_MAX || maxY == -FLT_MAX)
@@ -77,8 +81,13 @@ void TerrainGenerator::getFullBoundaryCircle(Layer* layer, float& minX, float& m
 
 	Vector<Layer*>* childrenLayers = layer->getChildren();
 
-	for (int i = 0; i < childrenLayers->size(); ++i)
-		getFullBoundaryCircle(childrenLayers->get(i), minX, minY, maxX, maxY);
+	for (int i = 0; i < childrenLayers->size(); ++i) {
+		Layer* child = childrenLayers->get(i);
+
+		if (child->isEnabled()) {
+			getFullBoundaryCircle(child, minX, minY, maxX, maxY);
+		}
+	}
 }
 
 void TerrainGenerator::processLayer(Layer* layer) {

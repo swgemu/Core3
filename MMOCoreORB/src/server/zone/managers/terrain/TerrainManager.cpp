@@ -17,13 +17,13 @@
 TerrainManager::TerrainManager(Zone* planet) : Logger("TerrainManager") {
 	zone = planet;
 
-	heightCache = new TerrainCache(this);
+	heightCache = NULL;
 }
 
 TerrainManager::TerrainManager(ManagedWeakReference<Zone*> planet) : Logger("TerrainManager") {
 	zone = planet.get();
 
-	heightCache = new TerrainCache(this);
+	heightCache = NULL;
 }
 
 TerrainManager::~TerrainManager() {
@@ -45,6 +45,12 @@ bool TerrainManager::initialize(const String& terrainFile) {
 	bool val = terrainData->load(iffStream);
 
 	delete iffStream;
+
+	if (heightCache != NULL) {
+		delete heightCache;
+	}
+
+	heightCache = new TerrainCache(this);
 
 	return val;
 }

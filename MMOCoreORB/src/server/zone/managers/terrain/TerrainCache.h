@@ -18,7 +18,7 @@
 class TerrainManager;
 class TerrainGenerator;
 
-class TerrainCache : public SynchronizedLRUCache2<uint64, float, float, std::pair<QuadTreeEntryInterface*, float> > {
+class TerrainCache : public SynchronizedLRUCache2<uint64, float, float, std::pair<QuadTreeEntryInterface*, float> >, public Logger {
 public:
 	typedef std::pair<QuadTreeEntryInterface*, float> lru_value_t;
 	typedef SynchronizedLRUCache2<uint64, float, float, lru_value_t > lru_cache_t;
@@ -28,6 +28,8 @@ protected:
 
 	int clearCount;
 	int clearHeightsCount;
+
+	const float max, min;
 
 public:
 	TerrainCache(TerrainManager* terrainManager);

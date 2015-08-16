@@ -86,10 +86,12 @@ public:
 
 TerrainCache::TerrainCache(TerrainManager* terrainManager) :
 		SynchronizedLRUCache2<uint64, float, float, std::pair<QuadTreeEntryInterface*, float> >(new HeightCacheFunction(terrainManager),
-				CACHE_CAPACITY, CACHE_MIN_ACCESS_COUNT),
+				CACHE_CAPACITY, CACHE_MIN_ACCESS_COUNT), Logger("TerrainCache"),
 		quadTree(terrainManager->getMin(), terrainManager->getMin(),
 				terrainManager->getMax(), terrainManager->getMax(), QT_MIN_SQUARE),
-				clearCount(0), clearHeightsCount(0) {
+				clearCount(0), clearHeightsCount(0), max(terrainManager->getMax()),
+				min(terrainManager->getMin()) {
+
 }
 
 bool TerrainCache::insert(const float& k, const float& k2, const lru_value_t& v) {
@@ -103,7 +105,16 @@ bool TerrainCache::insert(const float& k, const float& k2, const lru_value_t& v)
 		return result;
 	}
 
-	quadTree.insert(v.first);
+	if (k >= max || k2 >= max
+			|| k <= min || k2 <= min) {
+		StringBuffer message;
+		message << "position  (" << k << ", " << k2 << ") out of planet/cache bounds: ["
+				<< min << ", " << max << "]";
+
+		warning(message.toString());
+	} else {
+		quadTree.insert(v.first);
+	}
 
 	return true;
 }
