@@ -132,4 +132,25 @@ give_new_crystal = ConvoScreen:new {
 }
 villageElderPhase1ConvoTemplate:addScreen(give_new_crystal);
 
+
+-- Initial conversation screens below.
+greetings = ConvoScreen:new {
+	id = "greetings",
+	leftDialog = "@conversation/village_elder:s_688b65", -- Hello, I am Elgin Seropf, elder of this village. What brings you to our home?
+	stopConversation = "false",
+	options = {
+		{"@conversation/village_elder:s_fb95fc83", "yes_you_might"} -- I was sent here by an old man that seemed to think I had some kind of destiny here.
+	}
+}
+villageElderPhase1ConvoTemplate:addScreen(greetings);
+
+yes_you_might = ConvoScreen:new {
+	id = "yes_you_might",
+	leftDialog = "@conversation/village_elder:s_4dfe3937", -- Yes, you might at that. Do you have any skills we might be in need of?
+	stopConversation = "true", -- Change???
+	options = {
+	}
+}
+villageElderPhase1ConvoTemplate:addScreen(yes_you_might);
+
 addConversationTemplate("villageElderPhase1ConvoTemplate", villageElderPhase1ConvoTemplate);
