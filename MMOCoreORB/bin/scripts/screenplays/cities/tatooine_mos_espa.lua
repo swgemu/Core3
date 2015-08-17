@@ -19,6 +19,14 @@ function TatooineMosEspaScreenPlay:spawnSceneObjects()
 	spawnSceneObject("tatooine", "object/tangible/crafting/station/public_space_station.iff", -2930.39, 5, 2134.35, 0, math.rad(130) )
 	spawnSceneObject("tatooine", "object/tangible/crafting/station/public_space_station.iff", -2879.34, 5, 2164.2, 0, math.rad(-140) )
 
+	--inside Tavern, north of starport
+	spawnSceneObject("tatooine", "object/static/structure/general/droid_droideka_powerdown.iff", -6.40696, -3.96617, -6.78822, 3065455, 0.958853, 0, 0, 0.283905)
+	spawnSceneObject("tatooine", "object/tangible/furniture/decorative/microphone_s02.iff", 6.89479, -3.36756, 8.70603, 3065456, 0, 0, 0, 0)
+	spawnSceneObject("tatooine", "object/tangible/furniture/decorative/park_bench.iff", -10.1908, -3.96617, 6.0145, 3065456, math.rad(90) )
+	spawnSceneObject("tatooine", "object/tangible/furniture/all/frn_all_bed_lg_s2.iff", -7.40007, -9.99298, -8.64868, 3065459, 0, 0, 0, 0)
+	spawnSceneObject("tatooine", "object/tangible/furniture/decorative/pitcher_full.iff", -11.1833, -9.99311, -10.1457, 3065459, 0, 0, 0, 0)
+	spawnSceneObject("tatooine", "object/tangible/furniture/modern/rug_oval_sml_s01.iff", -7.13995, -9.9929, -7.33483, 3065459, math.rad(90) )
+
 end
 
 function TatooineMosEspaScreenPlay:spawnMobiles()
@@ -32,6 +40,22 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	--{"awwaschlu_witubrarq",60,-29.0928,1.63942,51.3406,0,1261660, "conversation", "Awwaschlu Witubrarq"},
 	--{"farmer",60,-50.0859,2.63942,33.6967,135.008,1261663, "conversation", ""},
 	--{"tatooine_militiaman",300,-48.9859,2.63942,33.6967,180.011,1261663, "conversation", ""},
+
+	--Tavern -2888 2281
+	spawnMobile("tatooine", "scientist",60,-2.1,1,9.1,-26,3065452)
+	spawnMobile("tatooine", "r5",60,1.5,1,7.5,-82,3065452)
+	spawnMobile("tatooine", "info_broker",60,5.7,1,4.2,0,3065450)
+	spawnMobile("tatooine", "patron_chiss",60,9.7,0.4,-3.2,1,3065451)
+	spawnMobile("tatooine", "patron_devaronian",60,9.6,0.4,-1.4,172,3065451)
+	spawnMobile("tatooine", "commoner_fat",60,4.3,0.4,-9.8,-12,3065451)
+	spawnMobile("tatooine", "rancher",60,-2.5,0.4,-9.8,-177,3065451)
+	spawnMobile("tatooine", "judge",60,-10.6,0.4,-2.1,71,3065451)
+	spawnMobile("tatooine", "entertainer",60,4.3,-3.4,4.4,-100,3065456)
+	spawnMobile("tatooine", "patron_ithorian",60,1.5,-4,4.3,86,3065456)
+	spawnMobile("tatooine", "imperial_recruiter",60,-9.3,-9.5,-3.2,-15,3065458)
+	spawnMobile("tatooine", "twilek_slave",60,-4.2,-10,-6.5,-94,3065459)
+	spawnMobile("tatooine", "farmer_rancher",60,-4.3,-10,-8.2,-78,3065459)
+	spawnMobile("tatooine", "businessman",60,-5.8,-10,-7.1,73,3065459)
 
 	--Guild Hall -2857 1987
 	spawnMobile("tatooine", "contractor",60,-3.69,1.13306,-6,11.0003,1256306)
