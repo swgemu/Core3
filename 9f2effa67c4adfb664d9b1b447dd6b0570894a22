@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_e340a637",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/village/phase1/elder_phase1_conv.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-17T08:24:40Z",
+      "side": 1,
+      "message": "Please put comments with the dialogue like above. It makes it easier to follow the flow of the conversation when looking at the template.",
+      "revId": "9f2effa67c4adfb664d9b1b447dd6b0570894a22",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
