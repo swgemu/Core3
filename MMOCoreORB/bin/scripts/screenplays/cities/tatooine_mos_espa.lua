@@ -19,6 +19,55 @@ function TatooineMosEspaScreenPlay:spawnSceneObjects()
 	spawnSceneObject("tatooine", "object/tangible/crafting/station/public_space_station.iff", -2930.39, 5, 2134.35, 0, math.rad(130) )
 	spawnSceneObject("tatooine", "object/tangible/crafting/station/public_space_station.iff", -2879.34, 5, 2164.2, 0, math.rad(-140) )
 
+	--inside Tavern, north of starport
+	spawnSceneObject("tatooine", "object/static/structure/general/droid_droideka_powerdown.iff", -6.40696, -3.96617, -6.78822, 3065455, 0.958853, 0, 0, 0.283905)
+	spawnSceneObject("tatooine", "object/tangible/furniture/decorative/microphone_s02.iff", 6.89479, -3.36756, 8.70603, 3065456, 0, 0, 0, 0)
+	spawnSceneObject("tatooine", "object/tangible/furniture/decorative/park_bench.iff", -10.1908, -3.96617, 6.0145, 3065456, math.rad(90) )
+	spawnSceneObject("tatooine", "object/tangible/furniture/all/frn_all_bed_lg_s2.iff", -7.40007, -9.99298, -8.64868, 3065459, 0, 0, 0, 0)
+	spawnSceneObject("tatooine", "object/tangible/furniture/decorative/pitcher_full.iff", -11.1833, -9.99311, -10.1457, 3065459, 0, 0, 0, 0)
+	spawnSceneObject("tatooine", "object/tangible/furniture/modern/rug_oval_sml_s01.iff", -7.13995, -9.9929, -7.33483, 3065459, math.rad(90) )
+
+	--inside Large Tatooine House with Krayt skull above door
+	spawnSceneObject("tatooine", "object/tangible/furniture/all/frn_all_desk_radar_topology_screen.iff", 0.211172, 0.512662, -10.9995, 1261454, 0, 0, 0, 0)
+	spawnSceneObject("tatooine", "object/tangible/painting/painting_luke_wanted.iff", 4.34762, 0.512662, -10.997, 1261454, 0, 0, 0, 0)
+	spawnSceneObject("tatooine", "object/tangible/painting/painting_leia_wanted.iff", -4.34762, 0.512662, -10.997, 1261454, 0, 0, 0, 0)
+	spawnSceneObject("tatooine", "object/tangible/furniture/imperial/data_terminal_s2.iff", 2.31777, 0.512662, -11.0014, 1261454, 0, 0, 0, 0)
+	spawnSceneObject("tatooine", "object/tangible/furniture/imperial/data_terminal_s2.iff", -2.31777, 0.512662, -11.0014, 1261454, 0, 0, 0, 0)
+	spawnSceneObject("tatooine", "object/mobile/dressed_bounty_hunter_zabrak_female_01.iff", 2.3, 0.512662, -10.0014, 1261454, math.rad(180) )
+	spawnSceneObject("tatooine", "object/mobile/dressed_imperial_exterminator.iff", -2.3, 0.512662, -10.0014, 1261454, math.rad(180) )
+	spawnSceneObject("tatooine", "object/tangible/furniture/all/frn_all_rug_rectangle_large_style_05.iff", -0.0, 0.5, -3.1, 1261454, math.rad(90) )
+	spawnSceneObject("tatooine", "object/tangible/furniture/modern/dining_table_modern_style_01.iff", -0.0, 0.5, -3.1, 1261454, math.rad(0) )
+	spawnSceneObject("tatooine", "object/tangible/furniture/all/frn_all_chair_upholstered_s1.iff", -0.0, 1.0, 7.5, 1261454, math.rad(180) )
+	spawnSceneObject("tatooine", "object/static/structure/tatooine/skeleton_greater_krayt_head.iff", -2.6, 1.0, 6.5, 1261454, math.rad(130) )
+	spawnSceneObject("tatooine", "object/static/structure/tatooine/skeleton_greater_krayt_head.iff", 2.6, 1.0, 6.5, 1261454, math.rad(-130) )
+	spawnSceneObject("tatooine", "object/tangible/furniture/all/frn_all_tiki_torch_s1.iff", -0.5, 1.0, 7.5, 1261454, 0, 0, 0, 0)
+	spawnSceneObject("tatooine", "object/tangible/furniture/all/frn_all_tiki_torch_s1.iff", 0.5, 1.0, 7.5, 1261454, 0, 0, 0, 0)
+	spawnSceneObject("tatooine", "object/tangible/furniture/tatooine/frn_tatt_cantina_droid_detector.iff", -14.5, 1.0, -3.3, 1261454, math.rad(90) )
+	spawnSceneObject("tatooine", "object/tangible/furniture/tatooine/frn_tatt_cantina_droid_detector.iff", 12.5, 1.0, -3.3, 1261454, math.rad(-90) )
+	spawnSceneObject("tatooine", "object/tangible/furniture/all/bestine_quest_imp_banner.iff", 0, 2.0, 8.5, 1261453, math.rad(90) )
+	spawnSceneObject("tatooine", "object/static/structure/general/droid_probedroid_powerdown.iff", 1.0, -4.0, -7.9, 1718407, math.rad(-90) )
+
+	--southwest Tavern
+	spawnSceneObject("tatooine", "object/mobile/jawa_male.iff", -1.1, 1.0, 9.5, 1261583, 0, 0, 0, 0)
+	spawnSceneObject("tatooine", "object/tangible/furniture/all/frn_all_professor_desk.iff", -7.0, -4.0, -6.5, 1261586, math.rad(90) )
+	spawnSceneObject("tatooine", "object/tangible/furniture/all/bestine_quest_statue.iff", 0.2, -4.0, -10.4, 1261586, math.rad(-50) )
+
+	--west Tavern
+	spawnSceneObject("tatooine", "object/static/structure/general/banner_tatooine_style_01.iff", -11.0, 0.4, -1.5, 1261569, math.rad(90) )
+	spawnSceneObject("tatooine", "object/tangible/furniture/all/frn_all_tiki_torch_s1.iff", -10.6, -1.4, -10.2, 1261572, math.rad(43) )
+	spawnSceneObject("tatooine", "object/tangible/furniture/all/frn_all_tiki_torch_s1.iff", 0.2, -4.0, -10.4, 1261573, math.rad(-53) )
+	spawnSceneObject("tatooine", "object/tangible/furniture/all/frn_all_tiki_torch_s1.iff", -11.2, -9.5, 1.8, 1261576, math.rad(130) )
+	spawnSceneObject("tatooine", "object/tangible/furniture/all/frn_all_tiki_torch_s1.iff", -1.0, -9.5, 1.8, 1261576, math.rad(36) )
+	spawnSceneObject("tatooine", "object/tangible/item/quest/force_sensitive/bacta_tank.iff", -1.9, -9.5, -4.3, 1261579, math.rad(90) )
+	spawnSceneObject("tatooine", "object/tangible/item/quest/force_sensitive/bacta_tank.iff", -1.9, -9.5, -8.6, 1261579, math.rad(90) )
+	spawnSceneObject("tatooine", "object/tangible/item/quest/force_sensitive/bacta_tank.iff", 9.7, -9.5, -10.0, 1261579, math.rad(-45) )
+	spawnSceneObject("tatooine", "object/mobile/mouse_droid.iff", 8.3, -9.5, -7.3, 1261579, math.rad(135) )
+	spawnSceneObject("tatooine", "object/tangible/furniture/technical/armoire_s01.iff", 5.5, -9.5, -11.0, 1261579, math.rad(0) )
+
+end
+
+function TatooineMosEspaScreenPlay:setMoodString(pNpc, mood)
+		npc:setMoodString(mood)
 end
 
 function TatooineMosEspaScreenPlay:spawnMobiles()
@@ -32,6 +81,67 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	--{"awwaschlu_witubrarq",60,-29.0928,1.63942,51.3406,0,1261660, "conversation", "Awwaschlu Witubrarq"},
 	--{"farmer",60,-50.0859,2.63942,33.6967,135.008,1261663, "conversation", ""},
 	--{"tatooine_militiaman",300,-48.9859,2.63942,33.6967,180.011,1261663, "conversation", ""},
+
+	--Tavern -2888 2281
+	local pNpc = spawnMobile("tatooine", "scientist",60,-2.1,1,9.1,-26,3065452)
+	TatooineMosEspaScreenPlay:setMoodString(pNpc, "calm")
+	spawnMobile("tatooine", "r5",60,1.5,1,7.5,-82,3065452)
+	pNpc = spawnMobile("tatooine", "info_broker",60,5.7,1,4.2,0,3065450)
+	TatooineMosEspaScreenPlay:setMoodString(pNpc, "happy")
+	spawnMobile("tatooine", "patron_chiss",60,9.7,0.4,-3.2,1,3065451)
+	pNpc = spawnMobile("tatooine", "patron_devaronian",60,9.6,0.4,-1.4,172,3065451)
+	TatooineMosEspaScreenPlay:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("tatooine", "commoner_fat",60,4.3,0.4,-9.8,-12,3065451)
+	TatooineMosEspaScreenPlay:setMoodString(pNpc, "bored")
+	spawnMobile("tatooine", "rancher",60,-2.5,0.4,-9.8,-177,3065451)
+	pNpc = spawnMobile("tatooine", "judge",60,-10.6,0.4,-2.1,71,3065451)
+	TatooineMosEspaScreenPlay:setMoodString(pNpc, "npc_accusing")
+	spawnMobile("tatooine", "entertainer",60,4.3,-3.4,4.4,-100,3065456)
+	pNpc = spawnMobile("tatooine", "patron_ithorian",60,1.5,-4,4.3,86,3065456)
+	TatooineMosEspaScreenPlay:setMoodString(pNpc, "entertained")
+	spawnMobile("tatooine", "imperial_recruiter",60,-9.3,-9.5,-3.2,-15,3065458)
+	pNpc = spawnMobile("tatooine", "twilek_slave",60,-4.2,-10,-6.5,-94,3065459)
+	TatooineMosEspaScreenPlay:setMoodString(pNpc, "nervous")
+	spawnMobile("tatooine", "farmer_rancher",60,-4.3,-10,-8.2,-78,3065459)
+	pNpc = spawnMobile("tatooine", "businessman",60,-5.8,-10,-7.1,73,3065459)
+	TatooineMosEspaScreenPlay:setMoodString(pNpc, "npc_consoling")
+
+	--large Tatooine house with Krayt skull above door
+	pNpc = spawnMobile("tatooine", "shadowy_figure",60,0,0.5,-6.9,180,1261454)
+	TatooineMosEspaScreenPlay:setMoodString(pNpc, "npc_angry")
+	spawnMobile("tatooine", "r4",60,-1.9,1.0,5.9,130,1261454)
+	spawnMobile("tatooine", "r4",60,1.9,1.0,5.9,-130,1261454)
+	pNpc = spawnMobile("tatooine", "mercenary",60,-6.9,2.0,10,100,1261453)
+	TatooineMosEspaScreenPlay:setMoodString(pNpc, "threaten")
+	pNpc = spawnMobile("tatooine", "mercenary",60,6.9,2.0,10,-100,1261453)
+	TatooineMosEspaScreenPlay:setMoodString(pNpc, "threaten")
+
+	--southwest Tavern
+	pNpc = spawnMobile("tatooine", "vendor",60,10,0.4,-5.5,85,1261582)
+	TatooineMosEspaScreenPlay:setMoodString(pNpc, "npc_use_terminal_high")
+	spawnMobile("tatooine", "scientist",60,4.6,0.4,1.7,0,1261582)
+	spawnMobile("tatooine", "patron_ishitib",60,-4.5,0.4,-5.5,-40,1261582)
+	pNpc = spawnMobile("tatooine", "patron_klaatu",60,-5.1,0.4,-4.3,149,1261582)
+	TatooineMosEspaScreenPlay:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("tatooine", "contractor",60,-6.5,-4.0,-6.8,-90,1261586)
+	TatooineMosEspaScreenPlay:setMoodString(pNpc, "worried")
+	pNpc = spawnMobile("tatooine", "commoner_technician",60,-6.3,-4.0,-5.9,-112,1261586)
+	TatooineMosEspaScreenPlay:setMoodString(pNpc, "npc_use_terminal_low")
+
+	--west Tavern
+	spawnMobile("tatooine", "commoner_naboo",60,-3.6,1.0,9.3,0,1261570)
+	spawnMobile("tatooine", "commoner_tatooine",60,6.9,0.4,-9.1,180,1261569)
+	pNpc = spawnMobile("tatooine", "agriculturalist",60,-2.7,0.4,-1.7,75,1261569)
+	TatooineMosEspaScreenPlay:setMoodString(pNpc, "conversation")
+	spawnMobile("tatooine", "rancher",60,-1.0,0.4,-1.6,-90,1261569)
+	spawnMobile("tatooine", "farmer_rancher",60,-2.2,0.4,-0.9,171,1261569)
+	spawnMobile("tatooine", "farmer",60,-2.0,0.4,-2.3,0,1261569)
+	spawnMobile("tatooine", "chiss_female",60,9.7,-9.5,-10.0,-45,1261579)
+	spawnMobile("tatooine", "noble",60,3.8,-9.5,1.4,-100,1261579)
+	spawnMobile("tatooine", "surgical_droid_21b",60,-1.9,-9.5,-6.5,90,1261579)
+	spawnMobile("tatooine", "surgical_droid_21b",60,7.5,-9.5,-10.1,102,1261579)
+	pNpc = spawnMobile("tatooine", "chiss_male",60,8.8,-9.5,-6.7,145,1261579)
+	TatooineMosEspaScreenPlay:setMoodString(pNpc, "npc_sad")
 
 	--Guild Hall -2857 1987
 	spawnMobile("tatooine", "contractor",60,-3.69,1.13306,-6,11.0003,1256306)
