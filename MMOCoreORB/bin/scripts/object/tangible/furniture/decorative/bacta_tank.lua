@@ -41,7 +41,7 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_tangible_furniture_decorative_bacta_tank = object_tangible_furniture_decorative_shared_bacta_tank:new {
+object_tangible_furniture_decorative_bacta_tank = object_tangible_item_quest_force_sensitive_shared_bacta_tank:new {
 
 }
 
