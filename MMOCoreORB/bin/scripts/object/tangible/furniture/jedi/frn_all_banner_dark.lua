@@ -43,6 +43,8 @@
 
 object_tangible_furniture_jedi_frn_all_banner_dark = object_tangible_furniture_jedi_shared_frn_all_banner_dark:new {
 
+	customName = "Dark Jedi Tapestry"
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_jedi_frn_all_banner_dark, "object/tangible/furniture/jedi/frn_all_banner_dark.iff")
