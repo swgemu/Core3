@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_63e9f619",
+        "filename": "MMOCoreORB/bin/scripts/object/tangible/furniture/decorative/bacta_tank.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1526
+      },
+      "writtenOn": "2015-08-18T22:34:49Z",
+      "side": 1,
+      "message": "Don\u0027t change this, this line is intended to match the file path of the lua file. The object you\u0027re changing it to is already in  object/tangible/item/quest/force_sensitive/bacta_tank.lua. However, you shouldn\u0027t use it regardless, as that particular bacta tank item is a quest reward for one of the village phase quests and was added specifically for that. This item is set to the model it\u0027s intended to have.",
+      "range": {
+        "startLine": 44,
+        "startChar": 50,
+        "endLine": 44,
+        "endChar": 110
+      },
+      "revId": "d13f877feda637ac8cc46166af0df6ecc34aee1a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
