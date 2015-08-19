@@ -355,7 +355,7 @@ void CityRegionImplementation::cleanupCitizens() {
 	for (int i = 0; i < completeStructureList.size(); ++i) {
 		uint64 oid = completeStructureList.get(i);
 
-		ManagedReference<BuildingObject*> building = zone->getZoneServer()->getObject(oid).castTo<BuildingObject*>();
+		ManagedReference<BuildingObject*> building = Core::getObjectBroker()->lookUp(oid).castTo<BuildingObject*>();
 
 		if (building != NULL) {
 			if (building->isResidence()) {
