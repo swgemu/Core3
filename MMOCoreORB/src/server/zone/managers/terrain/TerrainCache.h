@@ -28,6 +28,7 @@ protected:
 
 	int clearCount;
 	int clearHeightsCount;
+	int evictCount;
 
 	const float max, min;
 
@@ -50,6 +51,10 @@ public:
 
 	int getClearHeightsCount() {
 		return clearHeightsCount;
+	}
+
+	int getEvictCount() {
+		return evictCount;
 	}
 };
 

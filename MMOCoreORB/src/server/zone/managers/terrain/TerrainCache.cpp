@@ -13,7 +13,7 @@
 #include "system/util/Vector.h"
 
 #define CACHE_CAPACITY 1024 * 1024
-#define CACHE_MIN_ACCESS_COUNT 25
+#define CACHE_MIN_ACCESS_COUNT 5
 #define QT_MIN_SQUARE 16
 
 uint64 hashPosition(float x, float y) {
@@ -89,7 +89,7 @@ TerrainCache::TerrainCache(TerrainManager* terrainManager) :
 				CACHE_CAPACITY, CACHE_MIN_ACCESS_COUNT), Logger("TerrainCache"),
 		quadTree(terrainManager->getMin(), terrainManager->getMin(),
 				terrainManager->getMax(), terrainManager->getMax(), QT_MIN_SQUARE),
-				clearCount(0), clearHeightsCount(0), max(terrainManager->getMax()),
+				clearCount(0), clearHeightsCount(0), evictCount(0), max(terrainManager->getMax()),
 				min(terrainManager->getMin()) {
 
 }
@@ -125,6 +125,8 @@ TerrainCache::lru_value_t TerrainCache::evict() {
 	quadTree.remove(value.first);
 
 	delete value.first;
+
+	++evictCount;
 
 	return value;
 }
