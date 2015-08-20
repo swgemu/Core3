@@ -90,14 +90,16 @@ public:
 		int cacheClearCount = terrainManager->getCacheClearCount();
 		int cacheClearHeightCount = terrainManager->getCacheClearHeightsCount();
 		int cacheSize = terrainManager->getCachedValuesCount();
+		int evictCount = terrainManager->getCacheEvictCount();
 
 		int total = MAX(heightCacheHitCount + heightCacheMissCount, 1);
 
 		msg << "height cache total hit count = " << heightCacheHitCount << ", total miss count = " << heightCacheMissCount
 				<< ", total hit rate = " << ((float)heightCacheHitCount / (float)total) * 100 << "% "
-						", clear count = " << cacheClearCount << ", "
-						"clear hit count = " << cacheClearHeightCount << ", "
-						"cache size = " << cacheSize << endl;
+						", clear count = " << cacheClearCount <<
+						", clear hit count = " << cacheClearHeightCount <<
+						", evict count = " << evictCount <<
+						", cache size = " << cacheSize << endl;
 
 		creature->sendSystemMessage(msg.toString());
 

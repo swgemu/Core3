@@ -112,6 +112,10 @@ public:
 	int getCachedValuesCount() {
 		return heightCache->getSize();
 	}
+
+	int getCacheEvictCount() {
+		return heightCache->getEvictCount();
+	}
 };
 
 
