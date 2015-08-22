@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_83bf62d0",
+        "filename": "MMOCoreORB/bin/scripts/object/draft_schematic/furniture/furniture_bubble_tank.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-22T10:14:53Z",
+      "side": 1,
+      "message": "The craft_furniture_ingredients_n file does not have an entry called stand.",
+      "revId": "dc7c654f077540923919b3c342f9e4fa5772cd32",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
