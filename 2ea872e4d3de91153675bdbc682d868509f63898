@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_a3f05eca",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/tatooine_anchorhead.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-22T10:12:21Z",
+      "side": 1,
+      "message": "Instead of adding this function to each screenplay, just add it to screenplay.lua and they will all be able to use it (like the loot container functions).",
+      "revId": "2ea872e4d3de91153675bdbc682d868509f63898",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
