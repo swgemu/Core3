@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_43b07af4",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/tasks/theater_manager_conv.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-22T12:30:18Z",
+      "side": 1,
+      "message": "I know it\u0027s just a comment and will be handled in the handler, but for readability shouldn\u0027t this be starts_in_two_min instead of first_show_advertising?",
+      "revId": "0511744a8bc88b4a3a677696c48375eed64921a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_e3942646",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/tasks/theater_manager_conv.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-22T12:30:18Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "0511744a8bc88b4a3a677696c48375eed64921a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_03927257",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/theater_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-22T12:30:18Z",
+      "side": 1,
+      "message": "15,000 seconds is a long time",
+      "revId": "0511744a8bc88b4a3a677696c48375eed64921a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_a39e1e62",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/theater_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-22T12:30:18Z",
+      "side": 1,
+      "message": "Be sure to fix this before we use it.",
+      "revId": "0511744a8bc88b4a3a677696c48375eed64921a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_63881623",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/theater_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-22T12:30:18Z",
+      "side": 1,
+      "message": "Is there a reason that these tables don\u0027t include every song/dance?",
+      "revId": "0511744a8bc88b4a3a677696c48375eed64921a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_0379122f",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/theater_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-22T12:30:18Z",
+      "side": 1,
+      "message": "I would probably just return with an error if the area is nil. There\u0027s no point in sending the start message and creating the begin event if it\u0027s nil.",
+      "revId": "0511744a8bc88b4a3a677696c48375eed64921a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_83944238",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/theater_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-22T12:30:18Z",
+      "side": 1,
+      "message": "Should these two have :theater_manager in them like on lines 309-310 above?",
+      "revId": "0511744a8bc88b4a3a677696c48375eed64921a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_23abee8a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/conversations/theater_manager_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-22T12:30:18Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "0511744a8bc88b4a3a677696c48375eed64921a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

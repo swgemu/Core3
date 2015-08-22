@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_838d2234",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/theater_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-22T12:30:18Z",
+      "side": 0,
+      "message": "You should probably move this check to inside spawnMobiles so that when you have more than one spawning, you can check each planet before spawning.",
+      "revId": "4ee652732f9582758ae05ede11de1bfafae716f0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_23820e01",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/conversations/theater_manager_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-22T12:30:18Z",
+      "side": 0,
+      "message": "You need to get the theater id as it\u0027s part of the key you need to read.",
+      "revId": "4ee652732f9582758ae05ede11de1bfafae716f0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
