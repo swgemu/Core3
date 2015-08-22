@@ -43,6 +43,8 @@
 
 object_tangible_furniture_jedi_frn_all_banner_light = object_tangible_furniture_jedi_shared_frn_all_banner_light:new {
 
+	customName = "Light Jedi Tapestry"
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_jedi_frn_all_banner_light, "object/tangible/furniture/jedi/frn_all_banner_light.iff")

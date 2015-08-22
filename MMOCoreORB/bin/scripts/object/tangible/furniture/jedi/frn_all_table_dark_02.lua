@@ -43,6 +43,8 @@
 
 object_tangible_furniture_jedi_frn_all_table_dark_02 = object_tangible_furniture_jedi_shared_frn_all_table_dark_02:new {
 
+	customName = "Diamond Dark Jedi Table"
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_jedi_frn_all_table_dark_02, "object/tangible/furniture/jedi/frn_all_table_dark_02.iff")
