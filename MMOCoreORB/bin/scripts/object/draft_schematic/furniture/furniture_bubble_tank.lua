@@ -48,26 +48,26 @@ object_draft_schematic_furniture_furniture_bubble_tank = object_draft_schematic_
    customObjectName = "Bubble Tank Draft Schematic",
 
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
-   complexity = 15, 
-   size = 1, 
+   complexity = 15,
+   size = 1,
 
-   xpType = "crafting_spice", 
-   xp = 250, 
+   xpType = "crafting_spice",
+   xp = 250,
 
-   assemblySkill = "spice_assembly", 
-   experimentingSkill = "spice_experimentation", 
-   customizationSkill = "spice_customization", 
+   assemblySkill = "spice_assembly",
+   experimentingSkill = "spice_experimentation",
+   customizationSkill = "spice_customization",
 
    customizationOptions = {},
    customizationStringNames = {},
    customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"tank", "filler_liquid"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"gemstone_crystalline", "petrochem_inert_polymer"},
-   resourceQuantities = {35, 30},
-   contribution = {100, 100},
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"tank", "filler_liquid", "stand"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"gemstone_crystalline", "petrochem_inert_polymer", "gemstone_crystalline"},
+   resourceQuantities = {35, 30, 15},
+   contribution = {100, 100, 100},
 
 
    targetTemplate = "object/tangible/furniture/decorative/bubble_tank.iff",
