@@ -29,7 +29,8 @@ public:
 		STAMINA = 32,
 		MIND = 64,
 		FOCUS = 128,
-		WILLPOWER = 256
+		WILLPOWER = 256,
+		BATTLE_FATIGUE = 512
 	};
 
 	enum {
@@ -101,11 +102,8 @@ protected:
 
 		int healedBF;
 
-		int healedDisease;
-		int healedPoison;
-		int healedFire;
-		int healedBleeding;
-
+		int healedDots;
+	
 		int healedStates;
 
 		inline int sumWounds() const {
@@ -123,9 +121,6 @@ protected:
 		}
 		inline int sumHAM() const {
 			return healedHealth + healedAction + healedMind;
-		}
-		inline int sumDots() const {
-			return healedDisease + healedPoison + healedFire + healedBleeding;
 		}
 	} healedAttributes_t;
 
@@ -168,8 +163,8 @@ public:
 	 * @param staunch: the jedi_spam stf entry for the staunch case
 	 * @param attribute: the CreatureState enum value for the attribute that we are after
 	 */
-	static inline void sendHealDotMessage(CreatureObject* creature, CreatureObject* target, int amount, const char* stopped, const char* staunch, uint64 attribute) {
-		if (creature == NULL || creature == target || amount <= 0) return;
+	static inline void sendHealDotMessage(CreatureObject* creature, CreatureObject* target, const char* stopped, const char* staunch, uint64 attribute) {
+		if (creature == NULL || creature == target) return;
 		
 		const int dotRemaining = creature->getDamageOverTimeList()->getStrength(0xFF, attribute);
 		StringIdChatParameter message("jedi_spam", (dotRemaining > 0) ? staunch : stopped);
@@ -237,6 +232,8 @@ public:
 				case WILLPOWER:
 					message.setTO("@jedi_spam:willpower_wounds");
 					break;
+				case BATTLE_FATIGUE:
+					message.setTO("@jedi_spam:battle_fatigue");
 				default:
 					return false;
 			}
@@ -252,10 +249,70 @@ public:
 
 
 	/**
+	 * sends wound heal messages
+	 */
+	inline void sendWoundHealMessages(CreatureObject* creature, CreatureObject* target, healedAttributes_t& attrs) const {
+		sendHealMessage(creature, target, HEALTH, attrs.healedHealthWounds, true);
+		sendHealMessage(creature, target, STRENGTH, attrs.healedStrengthWounds, true);
+		sendHealMessage(creature, target, CONSTITUTION, attrs.healedConstitutionWounds, true);
+
+		sendHealMessage(creature, target, ACTION, attrs.healedActionWounds, true);
+		sendHealMessage(creature, target, QUICKNESS, attrs.healedQuicknessWounds, true);
+		sendHealMessage(creature, target, STAMINA, attrs.healedStaminaWounds, true);
+
+		sendHealMessage(creature, target, MIND, attrs.healedMindWounds, true);
+		sendHealMessage(creature, target, FOCUS, attrs.healedFocusWounds, true);
+		sendHealMessage(creature, target, WILLPOWER, attrs.healedWillpowerWounds, true);
+	}
+
+	/**
+	 * sends HAM heal messages
+	 */
+	inline void sendHAMHealMessages(CreatureObject* creature, CreatureObject* target, healedAttributes_t& attrs) const {
+		sendHealMessage(creature, target, HEALTH, attrs.healedHealth);
+		sendHealMessage(creature, target, ACTION, attrs.healedAction);
+		sendHealMessage(creature, target, MIND, attrs.healedMind);
+	}
+
+	/**
+	 * sends state heal messages
+	 */
+	inline void sendStateHealMessages(CreatureObject* creature, CreatureObject* target, healedAttributes_t& attrs) const {
+		StringIdChatParameter healedStatesMessage("jedi_spam", "stop_states_other");
+		if (creature != target) {
+			healedStatesMessage.setTT(target->getFirstName());
+		} else {
+			//TODO: whats the message for self healing?
+			healedStatesMessage.setTT("you"); // You cure all negative states on >you<.
+		}
+		creature->sendSystemMessage(healedStatesMessage);
+	}
+
+	/**
+	 * sends dot heal messages
+	 */
+	inline void sendDotHealMessages(CreatureObject* creature, CreatureObject* target, healedAttributes_t& attrs) const {
+		if (attrs.healedDots & BLEEDING)
+			sendHealDotMessage(creature, target, "stop_bleeding_other", "staunch_bleeding_other", CreatureState::BLEEDING);
+
+		if (attrs.healedDots & POISONED)
+			sendHealDotMessage(creature, target, "stop_poison_other", "staunch_poison_other", CreatureState::POISONED);
+
+		/* FIXME: is there an STF entry for this case?
+		if (attrs.healedFire)
+			sendHealDotMessage(creature, target, attrs.healedFire,
+					"stop_fire_other", "staunch_fire_other", CreatureState::ONFIRE);
+		*/
+		
+		if (attrs.healedDots & DISEASED)
+			sendHealDotMessage(creature, target, "stop_disease_other", "staunch_disease_other", CreatureState::DISEASED);
+	}
+
+	/**
 	 * Send the healing system messages
 	 * Dispatches each messages depending on the actual healing done
 	 */
-	void sendSystemMessage(CreatureObject* creature, CreatureObject* target, healedAttributes_t& attrs) const;
+	void sendDefaultSystemMessage(CreatureObject* creature, CreatureObject* target, healedAttributes_t& attrs) const;
 
 	int runCommandWithTarget(CreatureObject* creature, CreatureObject* targetCreature) const; 
 
