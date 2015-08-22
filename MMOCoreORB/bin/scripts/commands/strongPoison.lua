@@ -50,7 +50,7 @@ StrongPoisonCommand = {
 		{ "resistance_poison", "poison_disease_resist" },
 		HEALTH,
 		true,
-		125, 
+		0, 
 		60,  
 		80, 
 		60,

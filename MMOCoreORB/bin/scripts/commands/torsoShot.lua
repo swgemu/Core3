@@ -62,7 +62,7 @@ TorsoShotCommand = {
 		{ "resistance_fire", "fire_resist" },
 		HEALTH,
 		true,
-		125,
+		0,
 		100,
 		30, 
 		30,

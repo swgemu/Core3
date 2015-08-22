@@ -476,8 +476,14 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 				damageToApply = unmitDamage;
 		}
 
+		int potency = effect.getDotPotency();
+
+		if (potency == 0) {
+			potency = 150;
+		}
+
 		//info("entering addDotState", true);
-		defender->addDotState(attacker, effect.getDotType(), data.getCommand()->getNameCRC(), effect.isDotDamageofHit() ? damageToApply * effect.getPrimaryPercent() / 100.0f : effect.getDotStrength(), effect.getDotPool(), effect.getDotDuration(), 150, resist,
+		defender->addDotState(attacker, effect.getDotType(), data.getCommand()->getNameCRC(), effect.isDotDamageofHit() ? damageToApply * effect.getPrimaryPercent() / 100.0f : effect.getDotStrength(), effect.getDotPool(), effect.getDotDuration(), potency, resist,
 				effect.isDotDamageofHit() ? damageToApply * effect.getSecondaryPercent() / 100.0f : effect.getDotStrength());
 	}
 }

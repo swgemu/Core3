@@ -18,7 +18,7 @@ protected:
 	bool dotDamageofHit;
 	uint32 dotDuration;
 	uint32 dotStrength;
-	uint32 dotPotency;
+	int dotPotency;
     uint32 dotChance;
     byte primaryPercent;
     byte secondaryPercent;
@@ -125,7 +125,7 @@ public:
         return dotPool;
     }
 
-    uint32 getDotPotency() const
+    int getDotPotency() const
     {
         return dotPotency;
     }
@@ -165,7 +165,7 @@ public:
         this->dotPool = dotPool;
     }
 
-    void setDotPotency(uint32 dotPotency)
+    void setDotPotency(int dotPotency)
     {
         this->dotPotency = dotPotency;
     }

@@ -50,7 +50,7 @@ CreatureAreaPoisonCommand = {
 		{ "resistance_poison", "poison_disease_resist" },
 		HEALTH,
 		true,
-		125,
+		0,
 		50,
 		50, 
 		120

@@ -61,7 +61,7 @@ PolearmActionHit1Command = {
 		{ "resistance_bleeding", "bleed_resist" },
 		ACTION,
 		true,
-		125,
+		0,
 		100,
 		30, 
 		30

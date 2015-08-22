@@ -54,7 +54,7 @@ SaberSlash1Command = {
 		{ "resistance_bleeding", "bleed_resist" },
 		HEALTH,
 		true,
-		25,
+		0,
 		25,
 		50, 
 		30
@@ -65,7 +65,7 @@ SaberSlash1Command = {
 		{ "resistance_bleeding", "bleed_resist" },
 		ACTION,
 		true,
-		25,
+		0,
 		25,
 		50, 
 		30
@@ -76,7 +76,7 @@ SaberSlash1Command = {
 		{ "resistance_bleeding", "bleed_resist" },
 		MIND,
 		true,
-		25,
+		0,
 		25,
 		50, 
 		30

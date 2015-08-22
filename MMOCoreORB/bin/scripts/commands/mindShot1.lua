@@ -63,7 +63,7 @@ MindShot1Command = {
 		{ "resistance_bleeding", "bleed_resist" },
 		MIND,
 		true,
-		125,
+		0,
 		100,
 		60, 
 		60

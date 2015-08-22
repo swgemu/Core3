@@ -60,7 +60,7 @@ BleedingShotCommand = {
 		{ "resistance_bleeding", "bleed_resist" },
 		MIND,
 		true,
-		125,
+		0,
 		100,
 		30, 
 		30

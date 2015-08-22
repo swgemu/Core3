@@ -50,7 +50,7 @@ MediumPoisonCommand = {
 		{ "resistance_poison", "poison_disease_resist" },
 		HEALTH,
 		true,
-		100,
+		0,
 		40,
 		50, 
 		45,
