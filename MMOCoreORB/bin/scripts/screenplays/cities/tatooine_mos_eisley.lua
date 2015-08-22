@@ -149,7 +149,7 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "neutral")
 
 	--western Tavern A
-	pNpc = spawnMobile("tatooine", "protocal_droid_3po",60,5.3,1.0,4.2,0,1188033)
+	pNpc = spawnMobile("tatooine", "protocol_droid_3po",60,5.3,1.0,4.2,0,1188033)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("tatooine", "eg6_power_droid",60,-0.7,0.4,-0.8,-90,1188034)
 	self:setMoodString(pNpc, "scared")

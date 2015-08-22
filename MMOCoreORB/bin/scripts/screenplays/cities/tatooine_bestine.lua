@@ -359,8 +359,8 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	--{"imperial_army_captain",400,-1307.46,12,-3662.44,218.566,0, "npc_imperial", ""},
 	spawnMobile("tatooine", "imperial_recruiter",60,-1072.7,12,-3594,220,0)
 	spawnMobile("tatooine", "imperial_recruiter",60,-1275.75,12,-3594.28,-73,0)
-	pNpc = spawnMobile("tatooine", "lt_sabol",60,-1291.67,12,-3539,118,0)
-	self:setMoodString(pNpc, "npc_imperial")
+	--pNpc = spawnMobile("tatooine", "lt_sabol",60,-1291.67,12,-3539,118,0)
+	--self:setMoodString(pNpc, "npc_imperial")
 	pNpc = spawnMobile("tatooine", "tk_471",400,-1048.04,12,-3699.53,275.497,0)
 	self:setMoodString(pNpc, "npc_imperial")
 
