@@ -423,6 +423,7 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("HEALTH", CreatureAttribute::HEALTH);
 	setGlobalInt("ACTION", CreatureAttribute::ACTION);
 	setGlobalInt("MIND", CreatureAttribute::MIND);
+	setGlobalInt("ATTACK_POOL", CreatureAttribute::UNKNOWN);
 
 	// weapons
 	setGlobalInt("ANYWEAPON", CombatManager::ANYWEAPON);

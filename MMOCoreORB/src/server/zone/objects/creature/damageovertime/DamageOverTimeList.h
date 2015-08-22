@@ -39,6 +39,7 @@ public:
 
 	uint64 activateDots(CreatureObject* victim);
 	uint32 addDot(CreatureObject* victim, CreatureObject* attacker, uint64 parentObjectID, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense, int secondaryStrength = 0);
+	uint8 getRandomPool(uint64 dotType);
 	bool healState(CreatureObject* victim, uint64 dotType, float reduction);
 	void clear(CreatureObject* creature);
 	bool hasDot(uint64 dotType);

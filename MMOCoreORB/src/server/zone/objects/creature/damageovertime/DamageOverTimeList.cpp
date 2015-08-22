@@ -8,6 +8,7 @@
 #include "DamageOverTimeList.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
+#include "server/zone/objects/creature/CreatureAttribute.h"
 
 uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 	uint64 states = 0;
@@ -112,6 +113,10 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim, CreatureObject* attack
 	if (potency > 0 && System::random(100) >= MAX(5.f, MIN(potency * (80.f / (100.f + defense)), 95.f)))
 		return 0;
 
+	if (pool == CreatureAttribute::UNKNOWN) {
+		pool = getRandomPool(dotType);
+	}
+
 	int oldStrength = getStrength(pool, dotType);
 
 	int durationMod = 0;
@@ -192,6 +197,25 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim, CreatureObject* attack
 		victim->setState(dotType);
 
 	return dotPower;
+}
+
+uint8 DamageOverTimeList::getRandomPool(uint64 dotType) {
+	uint8 pool = 0;
+
+	switch (dotType) {
+	case CreatureState::POISONED:
+	case CreatureState::ONFIRE:
+	case CreatureState::BLEEDING:
+		pool = System::random(2) * 3;
+		break;
+	case CreatureState::DISEASED:
+		pool = System::random(8);
+		break;
+	default:
+		break;
+	}
+
+	return pool;
 }
 
 bool DamageOverTimeList::healState(CreatureObject* victim, uint64 dotType, float reduction) {

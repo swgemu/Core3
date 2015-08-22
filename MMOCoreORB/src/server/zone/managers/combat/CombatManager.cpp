@@ -342,7 +342,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		int unmitDamage = damage;
 		damage = applyDamage(attacker, weapon, defender, damage, damageMultiplier, poolsToDamage, data);
 
-		applyDots(attacker, defender, data, damage, unmitDamage);
+		applyDots(attacker, defender, data, damage, unmitDamage, poolsToDamage);
 		applyWeaponDots(attacker, defender, weapon);
 	}
 
@@ -451,7 +451,7 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 	return damage;
 }
 
-void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data, int appliedDamage, int unmitDamage) {
+void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data, int appliedDamage, int unmitDamage, int poolsToDamage) {
 	VectorMap<uint64, DotEffect>* dotEffects = data.getDotEffects();
 
 	if (defender->isPlayerCreature() && defender->getPvpStatusBitmask() == CreatureFlag::NONE)
@@ -470,9 +470,11 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 			resist += defender->getSkillMod(defenseMods.get(j));
 
 		int damageToApply = appliedDamage;
+		uint32 dotType = effect.getDotType();
+
 		if (effect.isDotDamageofHit()) {
 			// determine if we should use unmitigated damage
-			if (effect.getDotType() != CreatureState::BLEEDING)
+			if (dotType != CreatureState::BLEEDING)
 				damageToApply = unmitDamage;
 		}
 
@@ -482,8 +484,14 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 			potency = 150;
 		}
 
+		uint8 pool = effect.getDotPool();
+
+		if (pool == CreatureAttribute::UNKNOWN) {
+			pool = getPoolForDot(dotType, poolsToDamage);
+		}
+
 		//info("entering addDotState", true);
-		defender->addDotState(attacker, effect.getDotType(), data.getCommand()->getNameCRC(), effect.isDotDamageofHit() ? damageToApply * effect.getPrimaryPercent() / 100.0f : effect.getDotStrength(), effect.getDotPool(), effect.getDotDuration(), potency, resist,
+		defender->addDotState(attacker, dotType, data.getCommand()->getNameCRC(), effect.isDotDamageofHit() ? damageToApply * effect.getPrimaryPercent() / 100.0f : effect.getDotStrength(), pool, effect.getDotDuration(), potency, resist,
 				effect.isDotDamageofHit() ? damageToApply * effect.getSecondaryPercent() / 100.0f : effect.getDotStrength());
 	}
 }
@@ -526,6 +534,37 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 		if (weapon->getDotPotency(i)*(1.f-resist/100.f) > System::random(100) && defender->addDotState(attacker, type, weapon->getObjectID(), weapon->getDotStrength(i), weapon->getDotAttribute(i), weapon->getDotDuration(i), -1, 0, weapon->getDotStrength(i)) > 0) // Unresisted, reduce use count.
 			if (weapon->getDotUses(i) > 0) weapon->setDotUses(weapon->getDotUses(i) - 1, i);
 	}
+}
+
+uint8 CombatManager::getPoolForDot(uint64 dotType, int poolsToDamage) {
+	uint8 pool = 0;
+
+	switch (dotType) {
+	case CreatureState::POISONED:
+	case CreatureState::ONFIRE:
+	case CreatureState::BLEEDING:
+		if (poolsToDamage & HEALTH) {
+			pool = CreatureAttribute::HEALTH;
+		} else if (poolsToDamage & ACTION) {
+			pool = CreatureAttribute::ACTION;
+		} else if (poolsToDamage & MIND) {
+			pool = CreatureAttribute::MIND;
+		}
+		break;
+	case CreatureState::DISEASED:
+		if (poolsToDamage & HEALTH) {
+			pool = CreatureAttribute::HEALTH + System::random(2);
+		} else if (poolsToDamage & ACTION) {
+			pool = CreatureAttribute::ACTION + System::random(2);
+		} else if (poolsToDamage & MIND) {
+			pool = CreatureAttribute::MIND + System::random(2);
+		}
+		break;
+	default:
+		break;
+	}
+
+	return pool;
 }
 
 float CombatManager::getWeaponRangeModifier(float currentRange, WeaponObject* weapon) {

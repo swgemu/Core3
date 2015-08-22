@@ -48,7 +48,7 @@ CreatureAreaDiseaseCommand = {
 	  DotEffect( 
 		DISEASED, 
 		{ "resistance_disease", "poison_disease_resist" },
-		HEALTH,
+		ATTACK_POOL,
 		true,
 		0,
 		50,
