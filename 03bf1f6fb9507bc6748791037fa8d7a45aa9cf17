@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_a3193e24",
+        "filename": "MMOCoreORB/bin/scripts/object/draft_schematic/furniture/furniture_bubble_tank.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-22T09:53:57Z",
+      "side": 0,
+      "message": "This table should have the same number of entries as the rest.",
+      "revId": "03bf1f6fb9507bc6748791037fa8d7a45aa9cf17",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
