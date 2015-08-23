@@ -18,12 +18,16 @@ TerrainManager::TerrainManager(Zone* planet) : Logger("TerrainManager") {
 	zone = planet;
 
 	heightCache = NULL;
+
+	min = max = 0;
 }
 
 TerrainManager::TerrainManager(ManagedWeakReference<Zone*> planet) : Logger("TerrainManager") {
 	zone = planet.get();
 
 	heightCache = NULL;
+
+	min = max = 0;
 }
 
 TerrainManager::~TerrainManager() {
@@ -51,6 +55,9 @@ bool TerrainManager::initialize(const String& terrainFile) {
 	}
 
 	heightCache = new TerrainCache(this);
+
+	min = getMin();
+	max = getMax();
 
 	return val;
 }
@@ -184,6 +191,18 @@ float TerrainManager::getCachedHeight(float x, float y) {
 }
 
 float TerrainManager::getHeight(float x, float y) {
+	if (x <= min || x >= max || y <= min || y >= max) {
+		StringBuffer message;
+		message << "position  (" << x << ", " << y << ") out of planet/cache bounds: ["
+				<< min << ", " << max << "]";
+
+		warning(message.toString());
+
+		StackTrace::printStackTrace();
+
+		return 0.f;
+	}
+
 #ifdef USE_CACHED_HEIGHT
 	x = floor(x * 10) / 10.f;
 	y = floor(y * 10) / 10.f;

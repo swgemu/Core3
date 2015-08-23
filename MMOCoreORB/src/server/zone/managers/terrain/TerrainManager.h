@@ -35,6 +35,8 @@ class TerrainManager : public Logger, public Object {
 
 	TerrainCache* heightCache;
 
+	float min, max;
+
 protected:
 	void clearCache(TerrainGenerator* generator);
 
