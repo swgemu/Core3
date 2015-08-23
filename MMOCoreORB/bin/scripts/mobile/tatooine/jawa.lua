@@ -39,7 +39,7 @@ jawa = Creature:new {
 			}
 		}
 	},
-	weapons = {"rebel_weapons_light"},
+	weapons = {"jawa_weaker_weapons"},
 	conversationTemplate = "",
 	attacks = merge(marksmannovice,brawlernovice)
 }
