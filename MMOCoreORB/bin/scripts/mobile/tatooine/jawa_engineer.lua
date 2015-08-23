@@ -39,7 +39,7 @@ jawa_engineer = Creature:new {
 			}
 		}
 	},
-	weapons = {"jawa_warlord_weapons"},
+	weapons = {"jawa_weaker_weapons"},
 	conversationTemplate = "",
 	attacks = merge(marksmannovice,brawlernovice)
 }
