@@ -75,7 +75,11 @@ function villageElderConvoHandler:runScreenHandlers(pConversationTemplate, pConv
 	elseif (screenID == "yes_you_might") then
 		CreatureObject(pConversingPlayer):setScreenPlayState(1, "VillageElderScreenPlay")
 		local pGhost = CreatureObject(pConversingPlayer):getPlayerObject()
-		PlayerObject(pGhost):setJediState(1)
+
+		if (not PlayerObject(pGhost):isJedi()) then
+			PlayerObject(pGhost):setJediState(1)
+		end
+
 		awardSkill(pConversingPlayer, "force_title_jedi_novice")
 	end
 
