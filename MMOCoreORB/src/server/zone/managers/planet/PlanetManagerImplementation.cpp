@@ -724,14 +724,14 @@ bool PlanetManagerImplementation::isInRangeWithPoi(float x, float y, float range
 }
 
 bool PlanetManagerImplementation::isInObjectsNoBuildZone(float x, float y, float extraMargin) {
-	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
+	SortedVector<QuadTreeEntry*> closeObjects;
 
 	Vector3 targetPos(x, y, zone->getHeight(x, y));
 
 	zone->getInRangeObjects(x, y, 512, &closeObjects, true);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
-		SceneObject* obj = cast<SceneObject*>(closeObjects.get(i).get());
+		SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
 
 		SharedObjectTemplate* objectTemplate = obj->getObjectTemplate();
 
