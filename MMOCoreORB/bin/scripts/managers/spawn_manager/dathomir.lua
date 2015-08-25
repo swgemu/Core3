@@ -141,8 +141,6 @@ dathomir_regions = {
 }
 
 dathomir_static_spawns = {
-	{"arnecio_ulvaw_op",60,4.06465,0.624999,2.34456,30.9406,2835570, "neutral", "", "stationary"},
-	{"nirame_sakute",60,-2.1912,0.624999,-6.92293,24.0649,6955369, "neutral", "", "stationary"},
 	{"r3",60,-78.3142,18,-1629.93,144.919,0, "calm", "R3-O0", "stationary"},
 	{"r4",60,620.654,6,3085.98,191.123,0, "calm", "R4-W3", "stationary"},
 	{"r4",60,619.822,6,3097.36,339.758,0, "calm", "R4-L1", "stationary"},

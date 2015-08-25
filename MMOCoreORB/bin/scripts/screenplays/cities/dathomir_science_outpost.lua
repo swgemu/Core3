@@ -1,6 +1,6 @@
 DathomirScienceOutpostScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
-	
+
 	screenplayName = "DathomirScienceOutpostScreenPlay"
 }
 
@@ -15,7 +15,10 @@ end
 function DathomirScienceOutpostScreenPlay:spawnMobiles()
 
 	--In a building
-	spawnMobile("dathomir", "criminal", 300, -3.46893, 0.624996, -1.80359, 9.95605, 2835552)
+	local pNpc = spawnMobile("dathomir", "medic",60,5.1,0.6,-2.2,-51,2835552)
+	self:setMoodString(pNpc, "npc_use_terminal_low")
+	pNpc = spawnMobile("dathomir", "contractor",60,6.3,0.6,-6.4,-133,2835573)
+	self:setMoodString(pNpc, "bored")
 
 	--Outside
 	spawnMobile("dathomir", "businessman", 60, -70.8878, 18, -1646.08, 315.408, 0)
@@ -34,8 +37,9 @@ function DathomirScienceOutpostScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "scientist", 60, -136.034, 18, -1592.07, 62.5196, 0)
 	spawnMobile("dathomir", "informant_npc_lvl_3", 0,-68,18,-1565,270,0)
 
-		--Left these in dathomir.lua 
-	--{"arnecio_ulvaw_op",60,4.06465,0.624999,2.34456,30.9406,2835570, "neutral", ""},
+		--Left these in dathomir.lua
+	pNpc = spawnMobile("dathomir", "arnecio_ulvaw_op",60,4.06465,0.624999,2.34456,30.9406,2835570)
+	self:setMoodString(pNpc, "neutral")
 	--{"r3",60,-78.3142,18,-1629.93,144.919,0, "calm", "R3-O0"},
 	--{"r4",60,-134.195,18,-1599.14,45.5678,0, "calm", "R4-J5"},
 	--{"shibb_nisshil",60,-71.1537,18,-1639.84,66.4233,0, "", "Shibb Nisshil"},

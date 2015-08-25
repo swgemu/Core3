@@ -1,6 +1,6 @@
 DathomirTradeOutpostScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
-	
+
 	screenplayName = "DathomirTradeOutpostScreenPlay"
 }
 
@@ -13,12 +13,13 @@ function DathomirTradeOutpostScreenPlay:start()
 end
 
 function DathomirTradeOutpostScreenPlay:spawnMobiles()
-	
+
 	--In buildings
-	spawnMobile("dathomir", "noble", 60, 3.00888, 0.125266, -2.92449, 279.334, 1392894)
+	local pNpc = spawnMobile("dathomir", "scientist",60,5.7,0.6,-6.3-132,6955370)
+	self:setMoodString(pNpc, "conversation")
+	spawnMobile("dathomir", "noble", 60, 3.00888, 0.125266, -2.92449, -90, 1392894)
 	spawnMobile("dathomir", "businessman", 60, 6.94935, 0.624998, 2.6394, 198.079, 6955367)
 	spawnMobile("dathomir", "businessman", 60, -8.09806, 0.625, 4.31086, 153.675, 6955368)
-	spawnMobile("dathomir", "scientist", 60, 8.38532, 0.625, -5.44432, 228.681, 6955370)
 
 	--Outside
 	spawnMobile("dathomir", "businessman", 60, 590.176, 6, 3058.45, 264.528, 0)
