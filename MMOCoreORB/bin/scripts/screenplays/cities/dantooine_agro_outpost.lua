@@ -15,8 +15,15 @@ end
 function DantooineAgroOutpostScreenPlay:spawnMobiles()
 
 	--In the Cantina
+	local pNpc = spawnMobile("dantooine", "chiss_male",60,3.0,0.6,0.8,-42,6205496)
+	self:setMoodString(pNpc, "npc_sitting_chair")
+	pNpc = spawnMobile("dantooine", "patron_devaronian",60,-7.5,0.6,5.7,-95,6205497)
+	self:setMoodString(pNpc, "npc_standing_drinking")
+	pNpc = spawnMobile("dantooine", "bartender",60,-9.1,0.6,5.3,85,6205497)
+	self:setMoodString(pNpc, "conversation")
 	spawnMobile("dantooine", "businessman", 60, 8.90672, 0.625, -2.94252, 244, 6205499)
-	spawnMobile("dantooine", "businessman", 60, -7.77368, 0.624999, -5.2158, 188, 6205498)
+	pNpc = spawnMobile("dantooine", "entertainer",60,-7.77368,0.624999,-5.2158,188,6205498)
+	self:setMoodString(pNpc, "happy")
 
 	--Outside
 	spawnMobile("dantooine", "businessman", 60, 1580, 4,-6439, 200, 0)
@@ -44,7 +51,8 @@ function DantooineAgroOutpostScreenPlay:spawnMobiles()
 	--{"r2",60,1583.12,4,-6407.59,69.2539,0, "calm", "R2-Y8"},
 	--{"r3",60,1592.98,4,-6400.58,80.56,0, "calm", "R3-M0"}
 	--{"ytzosh",60,1636.98,4,-6402.56,321.838,0, "calm", "Ytzosh"}
-	--{"yras_shen_jen",60,1572.26,4,-6417.06,75.0582,0, "neutral", ""},
+	pNpc = spawnMobile("dantooine", "yras_shen_jen",60,1572.26,4,-6417.06,75.0582,0)
+	self:setMoodString(pNpc, "neutral")
 	--{"ussox",60,1635.07,4,-6402.37,321.844,0, "calm", "Ussox"},
 	--{"daiv_dekven",60,1603.42,4,-6434.54,102.877,0, "calm", "Daiv Dekven"},
 	--{"quich_marae",60,1579.04,4,-6374.52,48.4898,0, "calm", "Quich Marae",JUNKJEDI,JUNKCONVQUICHDANTOOINE},
