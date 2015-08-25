@@ -233,7 +233,7 @@ function NabooKaadaraScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "trainer_scout", 1, 5192.38, -192, 6614.09, 5, 0)
 	spawnMobile("naboo", "trainer_scout", 1, -10.8899, 1.13306, 4.89649, 204, 1741459)
 	spawnMobile("naboo", "trainer_weaponsmith", 1, -2.5, 1.13306, -8.4, 91, 1741471)
-	pNpc = spawnMobile("naboo", "trainer_shipwright",5.1,0.6,66.6,119,1741539)
+	pNpc = spawnMobile("naboo", "trainer_shipwright",1,5.1,0.6,66.6,119,1741539)
 	self:setMoodString(pNpc, "conversation")
 
 	--misc

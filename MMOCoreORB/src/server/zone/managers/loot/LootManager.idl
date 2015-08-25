@@ -116,8 +116,7 @@ class LootManager extends ManagedService implements Logger {
 		skillModChance = 0.0;
 
 		Logger.setLoggingName("LootManager");
-		
-		Logger.setLogging(true);
+
 		Logger.setGlobalLogging(true);
 	}
 	

@@ -15,7 +15,7 @@ end
 function DathomirTradeOutpostScreenPlay:spawnMobiles()
 
 	--In buildings
-	local pNpc = spawnMobile("dathomir", "scientist",60,5.7,0.6,-6.3-132,6955370)
+	local pNpc = spawnMobile("dathomir", "scientist",60,5.7,0.6,-6.3,-132,6955370)
 	self:setMoodString(pNpc, "conversation")
 	spawnMobile("dathomir", "noble", 60, 3.00888, 0.125266, -2.92449, -90, 1392894)
 	spawnMobile("dathomir", "businessman", 60, 6.94935, 0.624998, 2.6394, 198.079, 6955367)

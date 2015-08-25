@@ -35,22 +35,22 @@ void LootManagerImplementation::initialize() {
 	lootGroupMap = LootGroupMap::instance();
 	lootGroupMap->initialize();
 
-	info("Loaded " + String::valueOf(lootableArmorAttachmentMods.size()) + " lootable armor attachment stat mods.", true);
-	info("Loaded " + String::valueOf(lootableClothingAttachmentMods.size()) + " lootable clothing attachment stat mods.", true);
-	info("Loaded " + String::valueOf(lootableArmorMods.size()) + " lootable armor stat mods.", true);
-	info("Loaded " + String::valueOf(lootableClothingMods.size()) + " lootable clothing stat mods.", true);
-	info("Loaded " + String::valueOf(lootableOneHandedMeleeMods.size()) + " lootable one handed melee stat mods.", true);
-	info("Loaded " + String::valueOf(lootableTwoHandedMeleeMods.size()) + " lootable two handed melee stat mods.", true);
-	info("Loaded " + String::valueOf(lootableUnarmedMods.size()) + " lootable unarmed stat mods.", true);
-	info("Loaded " + String::valueOf(lootablePistolMods.size()) + " lootable pistol stat mods.", true);
-	info("Loaded " + String::valueOf(lootableRifleMods.size()) + " lootable rifle stat mods.", true);
-	info("Loaded " + String::valueOf(lootableCarbineMods.size()) + " lootable carbine stat mods.", true);
-	info("Loaded " + String::valueOf(lootablePolearmMods.size()) + " lootable polearm stat mods.", true);
-	info("Loaded " + String::valueOf(lootableHeavyWeaponMods.size()) + " lootable heavy weapon stat mods.", true);
-	info("Loaded " + String::valueOf(lootGroupMap->countLootItemTemplates()) + " loot items.", true);
-	info("Loaded " + String::valueOf(lootGroupMap->countLootGroupTemplates()) + " loot groups.", true);
+	info("Loaded " + String::valueOf(lootableArmorAttachmentMods.size()) + " lootable armor attachment stat mods.");
+	info("Loaded " + String::valueOf(lootableClothingAttachmentMods.size()) + " lootable clothing attachment stat mods.");
+	info("Loaded " + String::valueOf(lootableArmorMods.size()) + " lootable armor stat mods.");
+	info("Loaded " + String::valueOf(lootableClothingMods.size()) + " lootable clothing stat mods.");
+	info("Loaded " + String::valueOf(lootableOneHandedMeleeMods.size()) + " lootable one handed melee stat mods.");
+	info("Loaded " + String::valueOf(lootableTwoHandedMeleeMods.size()) + " lootable two handed melee stat mods.");
+	info("Loaded " + String::valueOf(lootableUnarmedMods.size()) + " lootable unarmed stat mods.");
+	info("Loaded " + String::valueOf(lootablePistolMods.size()) + " lootable pistol stat mods.");
+	info("Loaded " + String::valueOf(lootableRifleMods.size()) + " lootable rifle stat mods.");
+	info("Loaded " + String::valueOf(lootableCarbineMods.size()) + " lootable carbine stat mods.");
+	info("Loaded " + String::valueOf(lootablePolearmMods.size()) + " lootable polearm stat mods.");
+	info("Loaded " + String::valueOf(lootableHeavyWeaponMods.size()) + " lootable heavy weapon stat mods.");
+	info("Loaded " + String::valueOf(lootGroupMap->countLootItemTemplates()) + " loot items.");
+	info("Loaded " + String::valueOf(lootGroupMap->countLootGroupTemplates()) + " loot groups.");
 
-	info("Initialized.");
+	info("Initialized.", true);
 }
 
 bool LootManagerImplementation::loadConfigFile() {
