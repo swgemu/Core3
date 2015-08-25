@@ -228,14 +228,8 @@ dantooine_regions = {
 }
 
 dantooine_static_spawns = {
-	{"adwan_turoldine",60,-9.37871,0.625,2.98841,82.9313,6205565, "neutral", "", "stationary"},
 	{"dark_jedi_master",3600,-738.2,1.7,2103.9,55,0, "", "", "stationary"},
-	{"fern_yarrow",60,-625.684,3,2481.19,119.665,0, "neutral", "", "stationary"},
-	{"insurgent",60,0,0,-5.7,0,1365878, "npc_imperial", "", "stationary"},
-	{"kess_yarrow",60,-623.484,3,2481.77,149.192,0, "neutral", "", "stationary"},
-	{"noble",60,-4223.6,3,-2409.3,345,0, "npc_use_terminal_high", "", "stationary"},
 	{"quich_marae",60,1579.04,4,-6374.52,48.4898,0, "calm", "Quich Marae", "stationary",JUNKJEDI,JUNKCONVQUICHDANTOOINE},
-	{"rane_yarrow",60,-625.457,3,2479.41,86.8842,0, "neutral", "", "stationary"},
 	{"r2",60,-635.747,3,2503.81,353.861,0, "calm", "R2-H5", "stationary"},
 	{"r2",60,1583.12,4,-6407.59,69.2539,0, "calm", "R2-Y8", "stationary"},
 	{"r3",60,1592.98,4,-6400.58,80.56,0, "calm", "R3-M0", "stationary"},
@@ -245,7 +239,6 @@ dantooine_static_spawns = {
 	{"r5",60,-4228.33,3,-2367.11,48.8478,0, "calm", "R5-L5", "stationary"},
 	{"record_keeper_planet_dantooine",60,-604.016,3,2538.15,200.426,0, "calm", "Lt Nilsson (a Planet record keeper)", "stationary"},
 	{"ussox",60,1635.07,4,-6402.37,321.844,0, "calm", "Ussox", "stationary"},
-	{"yras_shen_jen",60,1572.26,4,-6417.06,75.0582,0, "neutral", "", "stationary"},	
 	{"ytzosh",60,1636.98,4,-6402.56,321.838,0, "calm", "Ytzosh", "stationary"},
 }
 

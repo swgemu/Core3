@@ -15,6 +15,8 @@ end
 function DantooineMiningOutpostScreenPlay:spawnMobiles()
 
 	--In The Cantina
+	local pNpc = spawnMobile("dantooine", "artisan",60,8.8,0.6,-4.9,-93,6205567)
+	self:setMoodString(pNpc, "npc_use_terminal_low")
 	spawnMobile("dantooine", "businessman", 60, -8, 0.6, -6, 83, 6205566)
 
 	--Outside
@@ -46,14 +48,17 @@ function DantooineMiningOutpostScreenPlay:spawnMobiles()
 	spawnMobile("dantooine", "mercenary", 300, -665, 3, 2465, 120, 0)
 	
 	--Left these in dantooine.lua because of the custom name etc
-	--{"adwan_turoldine",60,-9.37871,0.625,2.98841,82.9313,6205565, "neutral", ""},
+	pNpc = spawnMobile("dantooine", "adwan_turoldine",60,-9.37871,0.625,2.98841,82.9313,6205565)
+	self:setMoodString(pNpc, "neutral")
 	--{"quich_marae",60,1579.04,4,-6374.52,48.4898,0, "calm", "Quich Marae",JUNKJEDI,JUNKCONVQUICHDANTOOINE},
-	--{"kess_yarrow",60,-623.484,3,2481.77,149.192,0, "neutral", ""},
-	--{"rane_yarrow",60,-625.457,3,2479.41,86.8842,0, "neutral", ""},
-	--{"fern_yarrow",60,-625.684,3,2481.19,119.665,0, "neutral", ""},
+	pNpc = spawnMobile("dantooine", "kess_yarrow",60,-623.484,3,2481.77,149.192,0)
+	self:setMoodString(pNpc, "neutral")
+	pNpc = spawnMobile("dantooine", "rane_yarrow",60,-625.457,3,2479.41,86.8842,0)
+	self:setMoodString(pNpc, "neutral")
+	pNpc = spawnMobile("dantooine", "fern_yarrow",60,-625.684,3,2481.19,119.665,0)
+	self:setMoodString(pNpc, "neutral")
 	--{"r2",60,-635.747,3,2503.81,353.861,0, "calm", "R2-H5"},
 	--{"r4",60,-643.739,3,2506.86,129.211,0, "calm", "R4-Y9"},
 	--{"r4",60,-666.582,3,2494.33,121.479,0, "calm", "R4-A2"},
-
 
 end
