@@ -128,10 +128,6 @@ endor_regions = {
 }
 
 endor_static_spawns = {
-	{"kilnstrider",60,-3.44448,0.624999,-6.82681,331.362,9925367, "npc_imperial", "", "stationary"},
-	{"r3",60,3250.85,24,-3464.83,263.893,0, "calm", "R3-E5", "stationary"},
-	{"r3",60,-950.705,73,1542.69,331.775,0, "calm", "R3-R1", "stationary"},
-	{"r5",60,3249.85,24,-3464.83,180.771,0, "calm", "R5-J0", "stationary"},
 }
 
 endor_badges = {
