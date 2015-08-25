@@ -23,6 +23,21 @@ end
 
 function NabooKaadaraScreenPlay:spawnMobiles()
 
+	--Hotel
+	local pNpc = spawnMobile("naboo", "info_broker",60,-2.1,1.0,12.6,90,1741477)
+	self:setMoodString(pNpc, "happy")
+	pNpc = spawnMobile("naboo", "patron_devaronian",60,2.1,1.0,-4.5,-24,1741477)
+	self:setMoodString(pNpc, "entertained")
+	pNpc = spawnMobile("naboo", "entertainer",60,1.2,1.0,-1.9,78,1741477)
+	self:setMoodString(pNpc, "happy")
+	pNpc = spawnMobile("naboo", "chiss_female",60,2.6,1.0,-0.5,-115,1741477)
+	self:setMoodString(pNpc, "npc_standing_drinking")
+	pNpc = spawnMobile("naboo", "contractor",60,4.0,1.0,4.3,-165,1741477)
+	self:setMoodString(pNpc, "npc_accusing")
+	--cantina
+	pNpc = spawnMobile("naboo", "bartender",60,2.9,-0.9,3.4,2,64)
+	self:setMoodString(pNpc, "neutral")
+
 	--imperial garrison
 	spawnMobile("naboo", "stormtrooper", 300, 0, 0.3, 7.7, 0, 1259939)
 	spawnMobile("naboo", "stormtrooper", 300, 0, 0.3, 6.2, 0, 1259939)
@@ -58,7 +73,6 @@ function NabooKaadaraScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "stormtrooper", 300, 5290.5, -192, 6582.2, -90, 0)
 	spawnMobile("naboo", "stormtrooper", 300, 5294.5, -192, 6582.2, -90, 0)
 	spawnMobile("naboo", "stormtrooper", 300, 5298.5, -192, 6582.2, -90, 0)
-
 	spawnMobile("naboo", "stormtrooper", 300, getRandomNumber(20) + 5189.5, -192, getRandomNumber(28) + 6624.5, getRandomNumber(360), 0)
 	spawnMobile("naboo", "stormtrooper_medic", 300, getRandomNumber(20) + 5189.5, -192, getRandomNumber(28) + 6624.5, getRandomNumber(360), 0)
 	spawnMobile("naboo", "stormtrooper_rifleman", 300, getRandomNumber(20) + 5189.5, -192, getRandomNumber(28) + 6624.5, getRandomNumber(360), 0)
@@ -86,16 +100,13 @@ function NabooKaadaraScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "skaak_tipper_bandit", 300, 5202.0, -192, 6560.6, 83, 0)
 	spawnMobile("naboo", "skaak_tipper_bandit", 300, 5205.0, -192, 6558.6, 3, 0)
 	spawnMobile("naboo", "skaak_tipper_bandit", 300, 5204.0, -192, 6559.3, -53, 0)
-
 	spawnMobile("naboo", "skaak_tipper_crook", 300, getRandomNumber(20) + 5347.0, -192, getRandomNumber(12) + 6805, getRandomNumber(180) + -90, 0)
 	spawnMobile("naboo", "skaak_tipper_crook", 300, getRandomNumber(20) + 5347.0, -192, getRandomNumber(12) + 6805, getRandomNumber(180) + -90, 0)
 	spawnMobile("naboo", "skaak_tipper_crook", 300, getRandomNumber(20) + 5347.0, -192, getRandomNumber(12) + 6805, getRandomNumber(180) + -90, 0)
 	spawnMobile("naboo", "skaak_tipper_crook", 300, getRandomNumber(20) + 5347.0, -192, getRandomNumber(12) + 6805, getRandomNumber(180) + -90, 0)
-
 	spawnMobile("naboo", "skaak_tipper_mugger", 300, 4917.3, -192, 6740.5, -90, 0)
 	spawnMobile("naboo", "skaak_tipper_mugger", 300, 4914.0, -192, 6743.7, -136, 0)
 	spawnMobile("naboo", "skaak_tipper_mugger", 300, 4912.2, -192, 6737.5, 76, 0)
-
 	spawnMobile("naboo", "skaak_tipper_crook", 300, getRandomNumber(20) + 5018, -191.4, getRandomNumber(20) + 6591, getRandomNumber(180) + 90, 0)
 	spawnMobile("naboo", "skaak_tipper_crook", 300, getRandomNumber(20) + 5018, -191.4, getRandomNumber(20) + 6591, getRandomNumber(180) + 90, 0)
 	spawnMobile("naboo", "skaak_tipper_crook", 300, getRandomNumber(20) + 5018, -191.4, getRandomNumber(20) + 6591, getRandomNumber(180) + 90, 0)
@@ -184,8 +195,8 @@ function NabooKaadaraScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "patron_ishitib", 1, 5299.3, -191.4, 6757.1, -80, 0)
 	spawnMobile("naboo", "patron_ishitib", 1, 5298.0, -191.4, 6757.1, 100, 0)
 	spawnMobile("naboo", "official", 120, 5236.8, -192, 6759.5, 87, 0)
-	spawnMobile("naboo", "official", 120, -23.6, 1.6, -4.2, -172, 1741483)
-	spawnMobile("naboo", "naboo_gunrunner", 120, -24.5, 1.6, -7.3, 17, 1741483)
+	spawnMobile("naboo", "commoner_tatooine", 120, -23.6, 1.6, -4.2, -172, 1741483)
+	spawnMobile("naboo", "commoner_naboo", 120, -24.5, 1.6, -7.3, 17, 1741483)
 	spawnMobile("naboo", "bartender", 1, 19.5, 1.6, 12.6, 180, 1741478)
 	spawnMobile("naboo", "commoner_naboo", 1, 5180.9, -192, 6782.7, 45, 0)
 	spawnMobile("naboo", "commoner_naboo", 1, 5080.9, -191.7, 6714.0, -155, 0)
@@ -222,10 +233,11 @@ function NabooKaadaraScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "trainer_scout", 1, 5192.38, -192, 6614.09, 5, 0)
 	spawnMobile("naboo", "trainer_scout", 1, -10.8899, 1.13306, 4.89649, 204, 1741459)
 	spawnMobile("naboo", "trainer_weaponsmith", 1, -2.5, 1.13306, -8.4, 91, 1741471)
-	--{"trainer_shipwright",5.1,0.6,66.6,119,1741539, "", "a shipwright trainer"},
+	pNpc = spawnMobile("naboo", "trainer_shipwright",5.1,0.6,66.6,119,1741539)
+	self:setMoodString(pNpc, "conversation")
 
 	--misc
-	spawnMobile("naboo", "informant_npc_lvl_1", 1, 5042, -188, 6734, 0, 0) --this one
+	spawnMobile("naboo", "informant_npc_lvl_1", 1, 5042, -188, 6734, 0, 0)
 	spawnMobile("naboo", "informant_npc_lvl_1", 1, 5199, -192, 6546, 0, 0)
 	spawnMobile("naboo", "informant_npc_lvl_2", 1, 5410, -192, 6672, 225, 0)
 	spawnMobile("naboo", "informant_npc_lvl_2", 1, 5075, -192, 6784, 0, 0)
@@ -235,6 +247,5 @@ function NabooKaadaraScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "informant_npc_lvl_3", 1, 6.37977, -0.894992, 6.05897, 225, 64)
 	spawnMobile("naboo", "informant_npc_lvl_3", 1, 5009, -192, 6652, 315, 0)
 	spawnMobile("naboo", "informant_npc_lvl_3", 1, 5277, -192, 6560, 0, 0)
-
 
 end

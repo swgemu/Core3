@@ -26,10 +26,13 @@ function NabooTheedScreenPlay:spawnMobiles()
 	--Anything dashed out will need to be added here and removed from spawn manager once the spawnMobiles command is extended.
 
 	--Outside
-	--{"agriculturalist",60,-5827.81,6,4173.98,180.005,0, "conversation", ""},
-	--{"bodyguard",300,-5258.93,6,4187.17,180.005,0, "conversation", ""},
+	local pNpc = spawnMobile("naboo", "agriculturalist",60,-5827.81,6,4173.98,180.005,0)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("naboo", "noble",300,-5258.93,6,4187.17,180.005,0)
+	self:setMoodString(pNpc, "conversation")
 	spawnMobile("naboo", "bounty_hunter",300,-5082.41,6,4261.15,180.005,0)
-	--{"coa2_imperial_coordinator",0,-5431.8,6,4168.58,145.531,0, "npc_imperial", ""},
+	pNpc = spawnMobile("naboo", "coa2_imperial_coordinator",0,-5431.8,6,4168.58,145.531,0)
+	self:setMoodString(pNpc, "npc_imperial")
 	spawnMobile("naboo", "commoner",60,-5394.06,6,4519.32,169.904,0)
 	spawnMobile("naboo", "commoner",60,-5384.95,6,4283.38,71.1905,0)
 	spawnMobile("naboo", "commoner",60,-5256.72,6,4254.43,243.769,0)
@@ -156,11 +159,13 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "commoner",60,-5497.13,6,4148.57,166.606,0)
 	spawnMobile("naboo", "commoner",60,-5404.2,6,4199.59,80.6257,0)
 	spawnMobile("naboo", "commoner",60,-5437.58,6,4301.41,199.461,0)
-	--{"commoner",60,-5778.43,6,4397.54,180.005,0, "conversation", ""},
+	pNpc = spawnMobile("naboo", "commoner_naboo",60,-5778.43,6,4397.54,180.005,0)
+	self:setMoodString(pNpc, "bored")
 	spawnMobile("naboo", "explorer",60,-5127.71,6,4336.34,0,0)
 	spawnMobile("naboo", "explorer",60,-4870.86,6,4179.63,0,0)
 	spawnMobile("naboo", "gungan_hunter",300,-5138.49,6,4229.36,180.005,0)
-	--{"gungan_outcast",300,-5827.81,6,4172.98,0,0, "conversation", ""},
+	pNpc = spawnMobile("naboo", "gungan_outcast",300,-5827.81,6,4172.98,0,0)
+	self:setMoodString(pNpc, "conversation")
 	spawnMobile("naboo", "imperial_recruiter",0,-4928,6,4231,174,0)
 	spawnMobile("naboo", "imperial_recruiter",0,-4936,6,4231,174,0)
 	spawnMobile("naboo", "informant_npc_lvl_1",0,-4833,6,4134,0,0)
@@ -175,10 +180,12 @@ function NabooTheedScreenPlay:spawnMobiles()
 	--{"junk_dealer",0,-5222.4,6,4217.4,-137,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 	--{"junk_dealer",0,-5885.3,6,4214.7,83,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 	spawnMobile("naboo", "miner",60,-4965.4,6,4194.15,180.005,0)
-	--{"miner",60,-5886.59,6,4369.23,180.005,0, "conversation", ""},
+	pNpc = spawnMobile("naboo", "miner",60,-5886.59,6,4369.23,180.005,0)
+	self:setMoodString(pNpc, "conversation")
 	spawnMobile("naboo", "naboo_police",300,-5138.49,6,4228.36,0,0)
 	spawnMobile("naboo", "naboo_police",300,-4911.53,6,4089.7,127.784,0)
-	--{"official",300,-5886.59,6,4368.23,0,0, "conversation", ""},
+	pNpc = spawnMobile("naboo", "official",300,-5886.59,6,4368.23,0,0)
+	self:setMoodString(pNpc, "conversation")
 	spawnMobile("naboo", "stormtrooper",400,-5206.32,6,4182.8,329.254,0)
 	spawnMobile("naboo", "stormtrooper",400,-4800,6,4113,121.097,0)
 	spawnMobile("naboo", "stormtrooper",400,-5126.48,6.52214,4130.79,184.164,0)
@@ -187,7 +194,8 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "stormtrooper",400,-4848.1,6.55806,4172.25,222.445,0)
 	spawnMobile("naboo", "stormtrooper",400,-4933.43,6,4233.84,32.6463,0)
 	spawnMobile("naboo", "stormtrooper_groupleader",400,-4857.84,6.43289,4178.31,222.445,0)
-	--{"stormtrooper_groupleader",400,-5969.83,6,4246.76,173.432,0, "", "VK-481"},
+	pNpc = spawnMobile("naboo", "stormtrooper_groupleader",400,-5969.83,6,4246.76,173.432,0)
+	self:setMoodString(pNpc, "npc_imperial")
 	spawnMobile("naboo", "stormtrooper_rifleman",400,-5160.99,6.52214,4159.54,216.801,0)
 	spawnMobile("naboo", "stormtrooper_rifleman",400,-4845.17,6.43094,4167.68,222.445,0)
 	spawnMobile("naboo", "trainer_1hsword",0,-5565,6,4304,84,0)
@@ -295,39 +303,41 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "trainer_medic",0,-17.1613,0.26,-0.82884,167,1697364)
 	spawnMobile("naboo", "comm_operator",300,-32.8,0.3,13.892,92,1697365)
 	spawnMobile("naboo", "commoner_technician",60,-5041.71,13.3,4193.94,180.005,0)
-	spawnMobile("naboo", "commoner",60,-5041.71,13.3,4192.84,0,0)
+	spawnMobile("naboo", "medic",60,-5041.71,13.3,4192.84,0,0)
 
 	--Hotel
-	spawnMobile("naboo", "commoner",60,2.04307,0.999959,21.6541,270.005,1697375)
+	spawnMobile("naboo", "commoner_tatooine",60,2.04307,0.999959,21.6541,270.005,1697375)
 	spawnMobile("naboo", "commoner",60,0.043072,0.999959,21.6541,89.9998,1697375)
 	spawnMobile("naboo", "commoner",60,-21.2681,1.59776,11.3505,270.004,1697379)
 	spawnMobile("naboo", "commoner",60,-23.2681,1.6,11.3505,90.0019,1697379)
 	spawnMobile("naboo", "commoner_technician",60,-1.60874,0.999962,6.25947,360.011,1697377)
-	spawnMobile("naboo", "explorer",60,-23.0798,1.59166,3.00121,180.006,1697379)
-	spawnMobile("naboo", "gungan_hermit",300,-1.60874,0.999952,7.35947,180,1697377)
-	spawnMobile("naboo", "naboo_monk",300,18.9004,1.28309,-6.40631,0,1697378)
-	spawnMobile("naboo", "otolla_gungan",300,7.0973,1.00001,8.95992,0,1697377)
-	spawnMobile("naboo", "otolla_gungan",300,-24.1798,1.5815,3.00112,135.006,1697379)
+	spawnMobile("naboo", "artisan",60,-23.0798,1.59166,3.00121,180.006,1697379)
+	spawnMobile("naboo", "sullustan_male",300,-1.60874,0.999952,7.35947,180,1697377)
+	spawnMobile("naboo", "commoner_naboo",300,18.9004,1.28309,-6.40631,0,1697378)
+	spawnMobile("naboo", "chiss_male",300,7.0973,1.00001,8.95992,0,1697377)
+	spawnMobile("naboo", "chiss_female",300,-24.1798,1.5815,3.00112,135.006,1697379)
 	--{"commoner",60,-24,1.6,-4,77.8869,1697383, "calm", "An Event Promoter"},
 	spawnMobile("naboo", "explorer",60,-21.5772,1.6,-14.1795,180.023,1697383)
 	spawnMobile("naboo", "explorer",60,-7.0383,1.6,-12.1532,360.011,1697381)
 	spawnMobile("naboo", "miner",60,-7.0383,1.6,-11.0532,179.988,1697381)
 
 	--Guild Hall -5450 4267
-	--{"rsf_security_guard",300,6.3,1.2,-3.9,-89,1305892, "conversation", ""},
-	--{"rsf_security_officer",300,5.4,1.2,-3.9,87,1305892, "conversation", ""},
-	--{"bodyguard",300,11.7898,1.75,-1.89849,180.002,1305892, "conversation", ""},
-	--{"commoner",60,-17.0001,2.25,17.4832,270.003,1305888, "conversation", ""},
-	--{"commoner",60,-19.0001,2.25,17.4832,90.0053,1305888, "conversation", ""},
-
+	pNpc = spawnMobile("naboo", "mercenary",300,6.3,1.2,-3.9,-89,1305892)
+	self:setMoodString(pNpc, "bored")
+	pNpc = spawnMobile("naboo", "businessman",300,5.4,1.2,-3.9,87,1305892)
+	self:setMoodString(pNpc, "happy")
+	pNpc = spawnMobile("naboo", "contractor",300,11.7898,1.75,-1.89849,180.002,1305892)
+	self:setMoodString(pNpc, "worried")
+	pNpc = spawnMobile("naboo", "commoner_old",60,-17.0001,2.25,17.4832,270.003,1305888)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("naboo", "commoner",60,-19.0001,2.25,17.4832,90.0053,1305888)
+	self:setMoodString(pNpc, "neutral")
 	--Guild Hall -5457 4122
 	spawnMobile("naboo", "trainer_brawler",0,-11,1,-13,0,1692075)
 	spawnMobile("naboo", "trainer_marksman",0,0,1.13306,-13,0,1692074)
 	spawnMobile("naboo", "trainer_scout",0,-14.0781,1.13306,3.79797,142,1692072)
-
 	--Guild Hall -5368 4138
 	spawnMobile("naboo", "trainer_artisan",0,0.0417929,1.13306,-13.5584,2,1692084)
-
 	--Guild Hall -5452 4014
 	spawnMobile("naboo", "trainer_architect",0,11,1.133,-14.5,0,1692093)
 	spawnMobile("naboo", "trainer_armorsmith",0,-15,1.1,0,90,1692092)
@@ -336,43 +346,71 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "trainer_weaponsmith",0,-3.1,1.1,-8.2,91,1692094)
 
 	--Hotel
-	--{"businessman",60,15.5641,1.28309,-2.37071,135.005,1677395, "conversation", ""},
-	--{"businessman",60,-4.2087,0.999986,2.15452,179.993,1677394, "conversation", ""},
-	--{"gambler",60,4.2931,1,-7.62435,360.011,1677394, "conversation", ""},
-	--{"gambler",60,-11.7266,1.6,-16.4722,0,1677399, "conversation", ""},
-	--{"naboo_nomad",300,16.6641,1.28309,-3.47071,360.011,1677395, "conversation", ""},
-	--{"philosopher",300,-11.7266,1.6,-15.4722,180.001,1677399, "conversation", ""},
-	spawnMobile("naboo", "scout_trooper",300,16.6641,1.28309,-2.37071,180.007,1677395)
-	--{"scoundrel",300,-4.2087,0.999986,1.15452,0,1677394, "conversation", ""},
-	--{"ysnide_omewror",60,4.2931,1.00001,-6.52435,180.012,1677394, "conversation", ""},
+	pNpc = spawnMobile("naboo", "businessman",60,15.5641,1.28309,-2.37071,135.005,1677395)
+	self:setMoodString(pNpc, "worried")
+	pNpc = spawnMobile("naboo", "businessman",60,-4.2087,0.999986,2.15452,179.993,1677394)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("naboo", "mercenary",60,4.2931,1,-7.62435,360.011,1677394)
+	self:setMoodString(pNpc, "angry")
+	pNpc = spawnMobile("naboo", "mercenary",60,-11.7266,1.6,-16.4722,0,1677399)
+	self:setMoodString(pNpc, "bored")
+	pNpc = spawnMobile("naboo", "noble",300,16.6641,1.28309,-3.47071,360.011,1677395)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("naboo", "corellia_times_investigator",300,-11.7266,1.6,-15.4722,180.001,1677399)
+	self:setMoodString(pNpc, "conversation")
+	spawnMobile("naboo", "comm_operator",300,16.6641,1.28309,-2.37071,180.007,1677395)
+	pNpc = spawnMobile("naboo", "bounty_hunter",300,-4.2087,0.999986,1.15452,0,1677394)
+	self:setMoodString(pNpc, "calm")
+	pNpc = spawnMobile("naboo", "ysnide_omewror",60,4.2931,1.00001,-6.52435,180.012,1677394)
+	self:setMoodString(pNpc, "conversation")
 	--{"event_perk_vendor",0,-24,1.6,-4,240.351,1677400, "calm", "Pex (a storyteller vendor)"},
-	--{"gungan_hermit",300,-22.6115,1.6,-10.3739,179.996,1677400, "conversation", ""},
-	--{"naboo_holy_man",300,-22.6115,1.6,-11.4739,0,1677400, "conversation", ""},
+	pNpc = spawnMobile("naboo", "commoner_old",300,-22.6115,1.6,-10.3739,179.996,1677400)
+	self:setMoodString(pNpc, "sad")
+	pNpc = spawnMobile("naboo", "noble",300,-22.6115,1.6,-11.4739,0,1677400)
+	self:setMoodString(pNpc, "conversation")
 
 	--Guild Hall/Theater
-	--{"mercenary",60,-6.34119,0.6,-9.37965,360.011,5475480, "conversation", ""},
-	--{"rsf_palace_guard",300,-6.34119,0.6,-8.27965,180.012,5475480, "conversation", ""},
-	--{"brawler",60,19.6394,0.764492,42.4583,354.768,5475485, "conversation", ""},
-	--{"commoner_technician",60,-22.5486,1.61223,33.2294,354.768,5475485, "conversation", ""},
-	--{"entertainer",60,19.6394,0.664388,43.5491,180.018,5475485, "conversation", ""},
-	--{"etheli_drenel",60,12.4716,2.31216,25.6024,180.001,5475485, "conversation", ""},
-	--{"gungan_guard",300,12.4716,2.41226,24.5116,5.24304,5475485, "conversation", ""},
-	--{"noble",60,-16.4118,1.02908,39.5837,179.999,5475485, "conversation", ""},
-	--{"rsf_palace_guard",300,18.5394,0.664266,43.5491,134.79,5475485, "conversation", ""},
-	--{"rsf_pilot",300,-16.4118,1.12919,38.4929,5.24439,5475485, "conversation", ""},
-	--{"rsf_pilot",300,-22.5486,1.52122,34.221,180.016,5475485, "conversation", ""},
-	--{"explorer",60,3.05224,2.12878,72.5469,180.005,5475487, "conversation", ""},
-	--{"fringer",300,3.05224,2.12878,71.4469,0,5475487, "conversation", ""},
-	--{"medic",60,-11.5446,2.12878,75.9709,0,5475487, "conversation", ""},
+	pNpc = spawnMobile("naboo", "mercenary",60,-6.34119,0.6,-9.37965,360.011,5475480)
+	self:setMoodString(pNpc, "neutral")
+	pNpc = spawnMobile("naboo", "comm_operator",300,-6.34119,0.6,-8.27965,180.012,5475480)
+	self:setMoodString(pNpc, "neutral")
+	pNpc = spawnMobile("naboo", "brawler",60,19.6394,0.764492,42.4583,354.768,5475485)
+	self:setMoodString(pNpc, "angry")
+	pNpc = spawnMobile("naboo", "commoner_technician",60,-22.5486,1.61223,33.2294,354.768,5475485)
+	self:setMoodString(pNpc, "worried")
+	pNpc = spawnMobile("naboo", "entertainer",60,19.6394,0.664388,43.5491,180.018,5475485)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("naboo", "etheli_drenel",60,12.4716,2.31216,25.6024,180.001,5475485)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("naboo", "sullustan_male",300,12.4716,2.41226,24.5116,5.24304,5475485)
+	self:setMoodString(pNpc, "neutral")
+	pNpc = spawnMobile("naboo", "noble",60,-16.4118,1.02908,39.5837,179.999,5475485)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("naboo", "agriculturalist",300,18.5394,0.664266,43.5491,134.79,5475485)
+	self:setMoodString(pNpc, "neutral")
+	pNpc = spawnMobile("naboo", "pilot",300,-16.4118,1.12919,38.4929,5.24439,5475485)
+	self:setMoodString(pNpc, "neutral")
+	pNpc = spawnMobile("naboo", "pilot",300,-22.5486,1.52122,34.221,180.016,5475485)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("naboo", "chiss_female",60,3.05224,2.12878,72.5469,180.005,5475487)
+	self:setMoodString(pNpc, "npc_consoling")
+	pNpc = spawnMobile("naboo", "chiss_male",300,3.05224,2.12878,71.4469,0,5475487)
+	self:setMoodString(pNpc, "nervous")
+	pNpc = spawnMobile("naboo", "medic",60,-11.5446,2.12878,75.9709,0,5475487)
+	self:setMoodString(pNpc, "conversation")
 	spawnMobile("naboo", "trainer_dancer",0,18.2374,2.12871,53.9343,6,5475487)
 	spawnMobile("naboo", "trainer_entertainer",0,28.3235,2.12854,73.5353,90,5475487)
 	spawnMobile("naboo", "trainer_musician",0,28.3,2.12801,54,-39,5475486)
-	--{"vendor",60,-11.5446,2.12878,76.8966,179.996,5475487, "conversation", ""},
+	pNpc = spawnMobile("naboo", "vendor",60,-11.5446,2.12878,76.8966,179.996,5475487)
+	self:setMoodString(pNpc, "happy")
 	spawnMobile("naboo", "trainer_imagedesigner",0,-22.9,2.1287,74.7,121,5475488)
 
 	--Starport
-	--{"trainer_shipwright",0,0.2,0.7,-71.4,-177,1692101, "", "a shipwright trainer"},
-	--{"bodyguard",300,-29.8622,7.9418,10.8957,180.008,1692104, "conversation", ""},
-	--{"bodyguard",300,-37.5788,7.9418,22.3791,0,1692104, "conversation", ""},
+	pNpc = spawnMobile("naboo", "trainer_shipwright",0,0.2,0.7,-71.4,-177,1692101)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("naboo", "pilot",300,-29.8622,7.9418,10.8957,180.008,1692104)
+	self:setMoodString(pNpc, "calm")
+	pNpc = spawnMobile("naboo", "commoner_technician",300,-37.5788,7.9418,22.3791,0,1692104)
+	self:setMoodString(pNpc, "conversation")
 
 end
