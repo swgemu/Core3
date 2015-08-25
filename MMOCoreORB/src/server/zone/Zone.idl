@@ -14,6 +14,7 @@ import engine.core.ManagedObject;
 
 import server.zone.ZoneProcessServer;
 include server.zone.ZoneServer;
+include server.zone.InRangeObjectsVector;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.area.ActiveArea;
 import server.zone.managers.planet.PlanetManager;
@@ -94,6 +95,9 @@ class Zone extends SceneObject {
 
 	@local
 	public native int getInRangeObjects(float x, float y, float range, SortedVector<QuadTreeEntry> objects, boolean readLockZone);
+	
+	@local
+	public native int getInRangeObjects(float x, float y, float range, InRangeObjectsVector objects, boolean readLockZone);
 
 	public native void createContainerComponent();
 
