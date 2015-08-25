@@ -25,6 +25,10 @@ function NabooMoeniaScreenPlay:spawnMobiles()
 
 	--Anything dashed out will need to be added here and removed from spawn manager once the spawnMobiles command is extended.
 
+	--starport interior
+	local pNpc = spawnMobile("naboo", "pilot",60,-5.7,0.6,67.4,0,4215410)
+	self:setMoodString(pNpc, "npc_use_terminal_low")
+
 	--Outside
 	spawnMobile("naboo", "informant_npc_lvl_1",0,4652,3.8,-4749,0,0)
 	spawnMobile("naboo", "informant_npc_lvl_1",0,4744,3.8,-4847,0,0)
@@ -55,13 +59,17 @@ function NabooMoeniaScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "trainer_merchant",0,4819,4.17,-4704,81,0)
 	spawnMobile("naboo", "trainer_musician",0,4740,3.8,-4886,0,0)
 	spawnMobile("naboo", "trainer_scout",0,4836.08,4.17,-4703.96,94,0)
-	--{"trainer_shipwright",0,4727,4.3,-4649,0,0, "", "a shipwright trainer"},
+	pNpc = spawnMobile("naboo", "trainer_shipwright",0,4727,4.3,-4649,0,0)
+	self:setMoodString(pNpc, "neutral")
 	spawnMobile("naboo", "trainer_squadleader",0,4701,3.75,-4939,0,0)
 	spawnMobile("naboo", "trainer_tailor",0,4858,3.8,-4799,180,0)
 
 	--Cantina
 	spawnMobile("naboo", "rebel_recruiter",0,-29,-0.89,-1.2,74,119)
 	spawnMobile("naboo", "informant_npc_lvl_2",0,-2.2226,-0.894992,5.90785,90,111)
+	--hotel
+	pNpc = spawnMobile("naboo", "bartender",60,20.2,1.6,12.3,-180,1717470)
+	self:setMoodString(pNpc, "conversation")
 
 	--Guild Hall 4923 -4783
 	spawnMobile("naboo", "trainer_artisan",0,-0.0177415,1.13306,-13.3088,0,1717546)
