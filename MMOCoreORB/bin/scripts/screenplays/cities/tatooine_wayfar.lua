@@ -25,7 +25,7 @@ function TatooineWayfarScreenPlay:spawnMobiles()
 
 	--Tavern -5106 -6615
 	local pNpc = spawnMobile("tatooine", "info_broker",60,4.7,1.0,4.6,-148,1499418)
-	self:setMoodString(pNpc, "npc_use_terminal_low")
+	self:setMoodString(pNpc, "sad")
 	pNpc = spawnMobile("tatooine", "entertainer",60,6.82411,0.40827,-8.7422,0,1499419)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("tatooine", "brawler",300,6.82411,0.408269,-7.6422,180,1499419)
@@ -39,7 +39,7 @@ function TatooineWayfarScreenPlay:spawnMobiles()
 	pNpc = spawnMobile("tatooine", "commoner_fat",60,-8.9,0.4,2.2,179,1499419)
 	self:setMoodString(pNpc, "npc_sitting_chair")
 	pNpc = spawnMobile("tatooine", "entertainer",60,-10.2,-4.0,6.5,-90,1499424)
-	self:setMoodString(pNpc, "npc_use_terminal_low")
+	self:setMoodString(pNpc, "sad")
 
 	--Guild Hall
 	pNpc = spawnMobile("tatooine", "artisan",60,11.9085,0.991253,-0.950462,0,1134533)
@@ -54,7 +54,7 @@ function TatooineWayfarScreenPlay:spawnMobiles()
 	pNpc = spawnMobile("tatooine", "chiss_female",300,14.8335,-3.99038,5.61296,180.016,1718360)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("tatooine", "mercenary",60,14.8335,-3.99038,4.51296,0,1718360)
-	self:setMoodString(pNpc, "threaten")
+	self:setMoodString(pNpc, "npc_accusing")
 
 	--Cantina
 	pNpc = spawnMobile("tatooine", "artisan",60,34.4931,0.104999,-6.47601,180,1134559)
