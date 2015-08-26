@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_a3a93e26",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/conversations/theater_manager_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-26T03:12:10Z",
+      "side": 0,
+      "message": "These two lines are duplicates and should be removed.",
+      "revId": "f95c30a5cb2f47ec3abccbbf142d74cbd510caf1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

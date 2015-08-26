@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_e3af462a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/conversations/theater_manager_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-26T03:12:10Z",
+      "side": 1,
+      "message": "You need to return conversationScreen",
+      "revId": "000f3d7af19b26c11287412147368265674df288",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_c3a6ca53",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/conversations/theater_manager_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-08-26T03:12:10Z",
+      "side": 1,
+      "message": "This function needs to return a screen.",
+      "revId": "000f3d7af19b26c11287412147368265674df288",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
