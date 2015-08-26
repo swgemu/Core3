@@ -23,6 +23,14 @@ end
 
 function RoriNarmleScreenPlay:spawnMobiles()
 
+	--starport added
+	local pNpc = spawnMobile("rori", "commoner_fat",60,-31.3,1.6,66.1,-98,4635442)
+	self:setMoodString(pNpc, "npc_sitting_table_eating")
+	pNpc = spawnMobile("rori", "trainer_shipwright",60,6.2,0.6,67.0,-138,4635437)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("rori", "chassis_dealer",60,4.1,0.6,66.2,69,4635437)
+	self:setMoodString(pNpc, "conversation")
+
 	--Creatures
 	spawnMobile("rori", "scorched_krevol", 300,getRandomNumber(10) + -5286.7, 80.1,getRandomNumber(10) + -1915.4, getRandomNumber(360), 0)
 	spawnMobile("rori", "scorched_krevol", 300,getRandomNumber(10) + -5286.7, 80.1,getRandomNumber(10) + -1915.4, getRandomNumber(360), 0)
@@ -107,8 +115,8 @@ function RoriNarmleScreenPlay:spawnMobiles()
 	spawnMobile("rori", "gundark_desperado", 300, -5087.8, 80.0, -2521.7, 2, 0)
 	spawnMobile("rori", "gundark_hooligan", 300, -5085.4, 80.0, -2435.9, -145, 0)
 	spawnMobile("rori", "gundark_hooligan", 300, -5137.1, 80.0, -2412.0, 40, 0)
-	spawnMobile("rori", "scoundrel", 300, 18.1, 1.3, 10.3, 18, 4635492)
-	spawnMobile("rori", "scoundrel", 300, 22.0, 1.3, 10.3, -27, 4635492)
+	spawnMobile("rori", "mercenary", 300, 18.1, 1.3, 10.3, 18, 4635492)
+	spawnMobile("rori", "mercenary", 300, 22.0, 1.3, 10.3, -27, 4635492)
 	spawnMobile("rori", "gundark_desperado", 300, -5086.5, 80.0, -2276.6, -41, 0)
 	spawnMobile("rori", "gundark_hooligan", 300, -5048.0, 80.0, -2225.5, 125, 0)
 	spawnMobile("rori", "gundark_desperado", 300, -5030.7, 80.0, -2249.5, -87, 0)
@@ -157,8 +165,8 @@ function RoriNarmleScreenPlay:spawnMobiles()
 	spawnMobile("rori", "narmle_militia_guard", 300, -5262.0, 80.2, -2207.4, -170, 0)
 	spawnMobile("rori", "narmle_militia_guard", 300, -5323.4, 80.1, -2231.5, 125, 0)
 	spawnMobile("rori", "narmle_militia_guard", 300, -5300.6, 80.1, -2209.6, 125, 0)
-	spawnMobile("rori", "narmle_militia_commander", 300, 7.9, 0.6, 65.0, 160, 4635437)
-	spawnMobile("rori", "narmle_militia_ensign", 300, 36.0, 0.6, 38.5, 90, 4635440)
+	spawnMobile("rori", "comm_operator", 300, 7.9, 0.6, 65.0, 160, 4635437)
+	spawnMobile("rori", "bounty_hunter", 300, 36.0, 0.6, 38.5, 90, 4635440)
 	spawnMobile("rori", "narmle_militia_commando", 300, -5285.3, 80.0, -2260.8, 0, 0)
 	spawnMobile("rori", "narmle_militia_ensign", 300, -5282.3, 80.0, -2256.8, 0, 0)
 	spawnMobile("rori", "narmle_militia_colonel", 300, -5279.3, 80.0, -2252.8, 0, 0)
@@ -205,7 +213,6 @@ function RoriNarmleScreenPlay:spawnMobiles()
 	spawnMobile("rori", "informant_npc_lvl_1", 1, -5120, 80, -2269, 0, 0)
 	spawnMobile("rori", "informant_npc_lvl_1", 1, -5127, 80, -2266, 45, 0)
 	spawnMobile("rori", "informant_npc_lvl_1", 1, -5331, 80, -2233, 180, 0)
-
 
 	--trainers
 	spawnMobile("rori", "trainer_1hsword", 1, -5219, 80.6094, -2164, 0, 0)
