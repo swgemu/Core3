@@ -70,7 +70,7 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	--Anything dashed out will need to be added here and removed from spawn manager once the spawnMobiles command is extended.
 
 	--Starport
-	local pNpc = spawnMobile("tatooine", "chassis_broker",60,2.29774,0.639422,67.5349,157.943,1261655)
+	local pNpc = spawnMobile("tatooine", "chassis_dealer",60,2.29774,0.639422,67.5349,157.943,1261655)
 	self:setMoodString(pNpc, "neutral")
 	pNpc = spawnMobile("tatooine", "ecoospoo",60,1.1,0.639421,66.3,33.001,1261655)
 	self:setMoodString(pNpc, "conversation")
@@ -84,6 +84,8 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("tatooine", "farmer_rancher",60,-49.1,2.6,32.5,-36,1261663)
 	self:setMoodString(pNpc, "happy")
+	pNpc = spawnMobile("tatooine", "trainer_shipwright",60,-3.2,0.6,67.7,177,1261655)
+	self:setMoodString(pNpc, "neutral")
 
 	--Tavern -2888 2281
 	pNpc = spawnMobile("tatooine", "scientist",60,-2.1,1,9.1,-26,3065452)
@@ -95,7 +97,7 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	pNpc = spawnMobile("tatooine", "patron_devaronian",60,9.6,0.4,-1.4,172,3065451)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("tatooine", "commoner_fat",60,4.3,0.4,-9.8,-12,3065451)
-	self:setMoodString(pNpc, "bored")
+	self:setMoodString(pNpc, "nervous")
 	spawnMobile("tatooine", "rancher",60,-2.5,0.4,-9.8,-177,3065451)
 	pNpc = spawnMobile("tatooine", "judge",60,-10.6,0.4,-2.1,71,3065451)
 	self:setMoodString(pNpc, "npc_accusing")
@@ -111,13 +113,13 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 
 	--large Tatooine house with Krayt skull above door
 	pNpc = spawnMobile("tatooine", "shadowy_figure",60,0,0.5,-6.9,180,1261454)
-	self:setMoodString(pNpc, "npc_angry")
+	self:setMoodString(pNpc, "angry")
 	spawnMobile("tatooine", "r4",60,-1.9,1.0,5.9,130,1261454)
 	spawnMobile("tatooine", "r4",60,1.9,1.0,5.9,-130,1261454)
 	pNpc = spawnMobile("tatooine", "mercenary",60,-6.9,2.0,10,100,1261453)
-	self:setMoodString(pNpc, "threaten")
+	self:setMoodString(pNpc, "npc_accusing")
 	pNpc = spawnMobile("tatooine", "mercenary",60,6.9,2.0,10,-100,1261453)
-	self:setMoodString(pNpc, "threaten")
+	self:setMoodString(pNpc, "npc_accusing")
 
 	--southwest Tavern
 	pNpc = spawnMobile("tatooine", "vendor",60,10,0.4,-5.5,85,1261582)
@@ -129,7 +131,7 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	pNpc = spawnMobile("tatooine", "contractor",60,-6.5,-4.0,-6.8,-90,1261586)
 	self:setMoodString(pNpc, "worried")
 	pNpc = spawnMobile("tatooine", "commoner_technician",60,-6.3,-4.0,-5.9,-112,1261586)
-	self:setMoodString(pNpc, "npc_use_terminal_low")
+	self:setMoodString(pNpc, "sad")
 	--west Tavern
 	spawnMobile("tatooine", "commoner_naboo",60,-3.6,1.0,9.3,0,1261570)
 	spawnMobile("tatooine", "commoner_tatooine",60,6.9,0.4,-9.1,180,1261569)
@@ -143,7 +145,7 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "surgical_droid_21b",60,-1.9,-9.5,-6.5,90,1261579)
 	spawnMobile("tatooine", "surgical_droid_21b",60,7.5,-9.5,-10.1,102,1261579)
 	pNpc = spawnMobile("tatooine", "chiss_male",60,8.8,-9.5,-6.7,145,1261579)
-	self:setMoodString(pNpc, "npc_sad")
+	self:setMoodString(pNpc, "sad")
 
 	--Guild Hall -2857 1987
 	spawnMobile("tatooine", "contractor",60,-3.69,1.13306,-6,11.0003,1256306)

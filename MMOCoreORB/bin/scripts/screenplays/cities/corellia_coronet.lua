@@ -25,7 +25,7 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	--Anything dashed out will need to be added here and removed from spawn manager once the spawnMobiles command is extended.
 
 	--Starport
-	local pNpc = spawnMobile("corellia", "info_broker",60,8.5,0.6,74.4,-93,1855672)
+	local pNpc = spawnMobile("corellia", "info_broker",60,8.5,0.6,74.4,-77,1855672)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("corellia", "noble",60,56.669,-0.521137,33.7689,180.017,1855678)
 	self:setMoodString(pNpc, "conversation")
@@ -45,6 +45,8 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("corellia", "mercenary",300,-62.7673,2.63942,41.7604,179.995,1855683)
 	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("corellia", "trainer_shipwright",60,-0.1,0.6,67.1,-179,1855675)
+	self:setMoodString(pNpc, "neutral")
 
 	--Guild Hall -275 -4700
 	pNpc = spawnMobile("corellia", "sullustan_male",300,-9.42234,1.75,-18.7259,180.005,1855484)
@@ -71,7 +73,7 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	pNpc = spawnMobile("corellia", "agriculturalist",300,7.44572,1.00001,-6.90652,179.997,1855548)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("corellia", "artisan",60,17.2826,1.28309,-11.8404,179.994,1855549)
-	self:setMoodString(pNpc, "conversation")
+	self:setMoodString(pNpc, "nervous")
 	pNpc = spawnMobile("corellia", "farmer_rancher",300,24.3471,1.28309,10.0336,180.007,1855549)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("corellia", "entertainer",300,24.3471,1.28309,8.93357,360.011,1855549)
@@ -107,7 +109,7 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "trainer_scout",0,-12,1.13306,5.5,180,1855505)
 	--{"junk_dealer",0,-14.5,1.1,2.5,88,1855505, "", "",JUNKWEAPONS,JUNKCONVARMS},
 
-	--Guilg Hall -177 -4390
+	--Guild Hall -177 -4390
 	spawnMobile("corellia", "trainer_artisan",0,0,1.13306,-14,0,1855517)
 
 	--Med Center
@@ -192,7 +194,7 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("corellia", "scientist",60,-7.22488,2.6,14.1431,135.008,2365397)
 	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile("corellia", "slave",60,-18.6041,0.887072,41.0759,134.784,2365397)
+	pNpc = spawnMobile("corellia", "twilek_slave",60,-18.6041,0.887072,41.0759,134.784,2365397)
 	self:setMoodString(pNpc, "conversation")
 	spawnMobile("corellia", "noble",60,28.93,2.12878,58.19,222.007,2365398)
 	spawnMobile("corellia", "noble",60,19.26,2.12847,56.13,266.008,2365399)
@@ -359,7 +361,7 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "stormtrooper_squad_leader",400,-12.4,28.6,-4404.7,181.005,0)
 	pNpc = spawnMobile("corellia", "stormtrooper_squad_leader",400,-175.938,28,-4767.14,86.307,0)
 	self:setMoodString(pNpc, "npc_imperial")
-	--More Misc	
+	--More Misc
 	spawnMobile("corellia", "gadget_specialist",60,19.7425,28,-4775.49,27.4957,0)
 	spawnMobile("corellia", "informant_npc_lvl_1",0,-33,28,-4825,45,0)
 	spawnMobile("corellia", "informant_npc_lvl_1",0,-86,28,-4829,0,0)
@@ -466,7 +468,7 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "trainer_politician",0,-218,28,-4500,0,0)
 	spawnMobile("corellia", "trainer_ranger",0,-505,28,-4633,180,0)
 	spawnMobile("corellia", "trainer_scout",0,-169.45,28,-4712.58,134,0)
-	
+
 	-- Chassis dealer.
 	spawnMobile("corellia", "chassis_dealer", 0, 0.1, 0.6, 72.9, -4, 1855672)
 end
