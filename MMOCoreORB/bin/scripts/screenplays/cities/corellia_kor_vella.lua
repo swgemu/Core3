@@ -24,7 +24,7 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 
 	--side starport room
 	local pNpc = spawnMobile("corellia", "bounty_hunter",60,-33.5,1.6,49.2,-88,4255428)
-	self:setMoodString(pNpc, "npc_use_terminal_low")
+	self:setMoodString(pNpc, "sad")
 	--imperial base near starport
 	spawnMobile("corellia", "stormtrooper", 360, -3003.5, 31.0, 2930.4, 180, 0)
 	spawnMobile("corellia", "stormtrooper", 360, -3007.5, 31.0, 2930.4, 180, 0)

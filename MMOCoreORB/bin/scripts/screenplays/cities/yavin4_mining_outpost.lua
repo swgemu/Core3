@@ -18,7 +18,7 @@ function Yavin4MiningOutpostScreenPlay:spawnMobiles()
 	local pNpc = spawnMobile("yavin4", "sullustan_male",60,3.1,0.7,2.4,0,7925478)
 	self:setMoodString(pNpc, "npc_sitting_chair")
 	pNpc = spawnMobile("yavin4", "medic",60,2.3,0.7,6.5,-5,7925478)
-	self:setMoodString(pNpc, "npc_use_terminal_low")
+	self:setMoodString(pNpc, "sad")
 	pNpc = spawnMobile("yavin4", "surgical_droid_21b",60,-1.9,0.7,2.5,175,7925478)
 	self:setMoodString(pNpc, "neutral")
 	--tavern b
