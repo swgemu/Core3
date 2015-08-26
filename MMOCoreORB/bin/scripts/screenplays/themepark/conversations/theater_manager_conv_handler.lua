@@ -66,6 +66,11 @@ function TheaterManagerConvoHandler:runScreenHandlers(conversationTemplate, conv
 		TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
 		writeData(playerID .. ":theater_manager:acceptedAudition", 0)
 		TheaterManagerScreenPlay:startAudition(conversingPlayer)
+	elseif (screenID == "go_entertain_ten") then -- Accepted promo one
+		TheaterManagerScreenPlay:startPromotion(conversingPlayer)
+		TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
+	elseif (screenID == "init_entertained_ten") then -- Completed promo one
+		TheaterManagerScreenPlay:completePromotionPhase(conversingPlayer)
 	end
 
 	return conversationScreen
@@ -95,16 +100,26 @@ function TheaterManagerConvoHandler:getInitialScreen(pPlayer, pNpc, pConversatio
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local currentStep = TheaterManagerScreenPlay:getCurrentStep(pPlayer)
 
-	if (TheaterManagerScreenPlay:isOnFailureTimer(pPlayer)) then
-		if (currentStep == 2) then
-			return convoTemplate:getScreen("init_failed_audition_timer")
-		end
-	elseif (readData(SceneObject(pPlayer):getObjectID() .. ":theater_manager:acceptedAudition") == 1) then -- Accepted audition, has not started yet
+	if (readData(playerID .. ":theater_manager:acceptedAudition") == 1) then -- Accepted audition, has not started yet
 		return convoTemplate:getScreen("init_start_audition")
 	elseif (currentStep == 0) then -- Has not started a series
 		return convoTemplate:getScreen("init_first_time")
+	elseif (currentStep == 2) then
+		if (TheaterManagerScreenPlay:isOnFailureTimer(pPlayer)) then
+			return convoTemplate:getScreen("init_failed_audition_timer")
+		else
+			return convoTemplate:getScreen("init_start_audition")
+		end
 	elseif (currentStep == 3) then -- Completed audition
 		return convoTemplate:getScreen("init_passed_audition")
+	elseif (currentStep == 4) then -- Has not started first promo
+		return convoTemplate:getScreen("init_first_advertising")
+	elseif (currentStep == 5) then -- Started first promotion
+		if (TheaterManagerScreenPlay:hasPromotedEnough(pPlayer)) then
+			return convoTemplate:getScreen("init_entertained_ten")
+		else
+			return convoTemplate:getScreen("init_hasnt_entertained_ten")
+		end
 	end
 
 	return convoTemplate:getScreen("init_event_in_progress") -- Temporary until future phases are added

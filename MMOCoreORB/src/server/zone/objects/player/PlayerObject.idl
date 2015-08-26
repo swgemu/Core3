@@ -663,6 +663,10 @@ class PlayerObject extends IntangibleObject {
 		screenPlayData.put(screenPlay + "_" + variable, data);
 	}
 	
+	public void deleteScreenPlayData(final string screenPlay, final string variable) {
+		screenPlayData.drop(screenPlay + "_" + variable);
+	}
+
 	@dirty
 	public string getScreenPlayData(final string screenPlay, final string variable) {
 		return screenPlayData.get(screenPlay + "_" + variable);
