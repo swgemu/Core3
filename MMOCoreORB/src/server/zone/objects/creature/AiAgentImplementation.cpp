@@ -1573,7 +1573,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	while (!found && getPatrolPointSize() != 0) {
 		// the first position in patrolPoints is where we want to move to
 		PatrolPoint targetPosition = getNextPosition();
-		ManagedReference<SceneObject*> targetCoordinateCell = targetPosition.getCell();
+		SceneObject* targetCoordinateCell = targetPosition.getCell();
 
 		/*
 		 * PRE-STEP: calculate z if we need to for our target location
@@ -1894,7 +1894,7 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 	clearPatrolPoints();
 	clearSavedPatrolPoints();
 
-	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+	SortedVector<QuadTreeEntry*> closeObjects;
 
 	Zone* zone = getZone();
 
@@ -2037,6 +2037,7 @@ int AiAgentImplementation::setDestination() {
 			setOblivious();
 			return setDestination();
 		}
+		/* no break */
 	case AiAgent::FOLLOWING:
 		if (followCopy == NULL) {
 			setOblivious();
@@ -2867,7 +2868,7 @@ void AiAgentImplementation::broadcastInterrupt(int64 msg) {
 	Reference<AiAgent*> aiAgent = asAiAgent();
 
 	EXECUTE_TASK_2(aiAgent, msg, {
-			SortedVector<ManagedReference<QuadTreeEntry*> > closeAiAgents;
+			SortedVector<QuadTreeEntry*> closeAiAgents;
 
 			CloseObjectsVector* closeobjects = (CloseObjectsVector*) aiAgent_p->getCloseObjects();
 			Zone* zone = aiAgent_p->getZone();
@@ -2888,7 +2889,7 @@ void AiAgentImplementation::broadcastInterrupt(int64 msg) {
 			}
 
 			for (int i = 0; i < closeAiAgents.size(); ++i) {
-				AiAgent* agent = cast<AiAgent*>(closeAiAgents.get(i).get());
+				AiAgent* agent = cast<AiAgent*>(closeAiAgents.get(i));
 
 				if (aiAgent_p == agent || agent == NULL)
 					continue;

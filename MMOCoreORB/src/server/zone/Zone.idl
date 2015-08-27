@@ -15,6 +15,7 @@ import engine.core.ManagedObject;
 import server.zone.ZoneProcessServer;
 include server.zone.ZoneServer;
 include server.zone.InRangeObjectsVector;
+include server.zone.ActiveAreasVector;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.area.ActiveArea;
 import server.zone.managers.planet.PlanetManager;
@@ -103,10 +104,14 @@ class Zone extends SceneObject {
 
 	@local
 	public native int getInRangeActiveAreas(float x, float y, SortedVector<ActiveArea> objects, boolean readLockZone);
+	@local
+	public native int getInRangeActiveAreas(float x, float y, ActiveAreasVector objects, boolean readLockZone);
 
 	/* gets active areas whose center is within the given range */
 	@local
 	public native int getInRangeActiveAreas(float x, float y, float range, SortedVector<ActiveArea> objects, boolean readLockZone);
+	@local
+	public native int getInRangeActiveAreas(float x, float y, float range, ActiveAreasVector objects, boolean readLockZone);
 
 	@local
 	@dereferenced
