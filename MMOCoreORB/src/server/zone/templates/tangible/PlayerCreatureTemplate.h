@@ -56,6 +56,10 @@ public:
 	void parseVariableData(const String& varName, LuaObject* templateData);
 
 	void readObject(LuaObject* templateData);
+
+	bool isPlayerCreatureTemplate() {
+		return true;
+	}
 };
 
 #endif /* PLAYERCREATURETEMPLATE_H_ */
