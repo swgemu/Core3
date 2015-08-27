@@ -16,7 +16,7 @@ function EndorResearchOutpostScreenPlay:spawnMobiles()
 
 	--mission term building
 	local pNpc = spawnMobile("endor", "commoner_technician",60,3.5,0.1,3.9,0,3605972)
-	self:setMoodString(pNpc, "npc_use_terminal_low")
+	self:setMoodString(pNpc, "sad")
 
 	--outside
 	spawnMobile("endor", "businessman", 60, -899.977, 78, 1548.09, 107.809, 0)
@@ -39,6 +39,6 @@ function EndorResearchOutpostScreenPlay:spawnMobiles()
 	pNpc = spawnMobile("endor", "kilnstrider",60,-3.44448,0.624999,-6.82681,331.362,9925367)
 	self:setMoodString(pNpc, "npc_imperial")
 	pNpc = spawnMobile("endor", "r3",60,-950.705,73,1542.69,331.775,0)
-	self:setMoodString(pNpc, "calm")
+	self:setMoodString(pNpc, "neutral")
 
 end

@@ -26,7 +26,7 @@ function TatooineAnchorheadScreenPlay:spawnMobiles()
 
 	--Tavern
 	local pNpc = spawnMobile("tatooine", "borra_setas",60,9.51111,0.408271,-0.736723,320.12,1213345)
-	self:setMoodString(pNpc, "scared")
+	self:setMoodString(pNpc, "worried")
 	pNpc = spawnMobile("tatooine", "commoner_tatooine",60,-9.58703,0.408271,0.574718,94,1213345)
 	self:setMoodString(pNpc, "npc_standing_drinking")
 	--{"nitra_vendallan",60,-2.95305,0.40827,-9.30713,12.2342,1213345, "calm", "Nitra Vendallan"},
@@ -34,7 +34,7 @@ function TatooineAnchorheadScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "rebel_recruiter",60,-6.22005,-3.96617,-6.58904,194.653,1213349)
 	--Tavern west
 	pNpc = spawnMobile("tatooine", "bounty_hunter",60,7.7,-4.0,-4.0,138,3355393)
-	self:setMoodString(pNpc, "calm")
+	self:setMoodString(pNpc, "angry")
 	pNpc = spawnMobile("tatooine", "businessman",60,8.5,-4.0,-5.3,-37,3355393)
 	self:setMoodString(pNpc, "worried")
 	pNpc = spawnMobile("tatooine", "commoner_technician",60,8.4,0.4,-9.5,126,3355387)

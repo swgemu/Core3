@@ -16,7 +16,7 @@ function DantooineMiningOutpostScreenPlay:spawnMobiles()
 
 	--In The Cantina
 	local pNpc = spawnMobile("dantooine", "artisan",60,8.8,0.6,-4.9,-93,6205567)
-	self:setMoodString(pNpc, "npc_use_terminal_low")
+	self:setMoodString(pNpc, "sad")
 	spawnMobile("dantooine", "businessman", 60, -8, 0.6, -6, 83, 6205566)
 
 	--Outside

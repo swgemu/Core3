@@ -37,6 +37,9 @@ function NabooKaadaraScreenPlay:spawnMobiles()
 	--cantina
 	pNpc = spawnMobile("naboo", "bartender",60,2.9,-0.9,3.4,2,64)
 	self:setMoodString(pNpc, "neutral")
+	--starport interior
+	pNpc = spawnMobile("naboo", "chassis_dealer",60,6.3,0.6,65.8,-60,1741539)
+	self:setMoodString(pNpc, "neutral")
 
 	--imperial garrison
 	spawnMobile("naboo", "stormtrooper", 300, 0, 0.3, 7.7, 0, 1259939)
@@ -234,7 +237,7 @@ function NabooKaadaraScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "trainer_scout", 1, -10.8899, 1.13306, 4.89649, 204, 1741459)
 	spawnMobile("naboo", "trainer_weaponsmith", 1, -2.5, 1.13306, -8.4, 91, 1741471)
 	pNpc = spawnMobile("naboo", "trainer_shipwright",1,5.1,0.6,66.6,119,1741539)
-	self:setMoodString(pNpc, "conversation")
+	self:setMoodString(pNpc, "neutral")
 
 	--misc
 	spawnMobile("naboo", "informant_npc_lvl_1", 1, 5042, -188, 6734, 0, 0)
