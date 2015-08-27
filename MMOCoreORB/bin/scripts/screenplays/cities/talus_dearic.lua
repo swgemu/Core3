@@ -21,6 +21,15 @@ function TalusDearicScreenPlay:spawnSceneObjects()
 end
 
 function TalusDearicScreenPlay:spawnMobiles()
+
+	--added Capitol building
+	local pNpc = spawnMobile("talus", "seeker",60,-3.5,7.9,-30.5,4,6255457)
+	self:setMoodString(pNpc, "neutral")
+	pNpc = spawnMobile("talus", "judge",60,24.5,3.2,19.3,-89,6255473)
+	self:setMoodString(pNpc, "npc_sitting_chair")
+	pNpc = spawnMobile("talus", "chiss_female",60,-20.4,3.2,21.7,90,6255472)
+	self:setMoodString(pNpc, "npc_consoling")
+
 	--thugs
 	spawnMobile("talus", "chunker_nitwit", 300, 152, 6, -3013, 146, 0)
 	spawnMobile("talus", "chunker_nitwit", 300, 157, 6, -3017, 192, 0)
@@ -81,7 +90,6 @@ function TalusDearicScreenPlay:spawnMobiles()
 	spawnMobile("talus", "fed_dub_patrolman", 300, 635, 6, -3182, 85, 0)
 	spawnMobile("talus", "fed_dub_patrolman", 300, 715, 6, -2844, 180, 0)
 	spawnMobile("talus", "fed_dub_patrolman", 300, 716, 6, -2866, 318, 0)
-
 	--misc
 	spawnMobile("talus", "informant_npc_lvl_1",0,286,6,-3101,180,0)
 	spawnMobile("talus", "informant_npc_lvl_1",0,342,6,-2896,270,0)
@@ -101,7 +109,6 @@ function TalusDearicScreenPlay:spawnMobiles()
 	--spawnMobile("talus", "junk_dealer",0,183.6,6,-3065.1,87,0)
 	spawnMobile("talus", "rebel_recruiter",60,-26,0,0,90,3175399)
 	spawnMobile("talus", "rebel_recruiter",60,17,3,-36,0,6255475)
-
 	--trainers
 	spawnMobile("talus", "trainer_1hsword",1,549,6,-2865,180,0)
 	spawnMobile("talus", "trainer_2hsword",1,552,6,-2865,180,0)
@@ -139,7 +146,6 @@ function TalusDearicScreenPlay:spawnMobiles()
 	spawnMobile("talus", "trainer_weaponsmith",1,519,6,-2913.5,180,0)
 
 	--Anything dashed out will need to be added here and removed from spawn manager once the spawnMobiles command is extended.
-
 	--More Outside Misc
 	spawnMobile("talus", "businessman",60,168.921,6,-2923.67,107.531,0)
 	spawnMobile("talus", "businessman",60,212.446,6,-2833.26,295.679,0)
@@ -239,55 +245,110 @@ function TalusDearicScreenPlay:spawnMobiles()
 	--{"r5",60,407.095,6,-3036.31,310.529,0, "calm", "R5-R2"},
 
 	--Starport
-	--{"commoner",60,0.904988,0.639421,56.083,180.007,3175356, "conversation", ""},
-	--{"farmer",60,-1.32019,0.639422,60.6488,180.001,3175356, "conversation", ""},
-	--{"gambler",60,-0.186001,0.639421,56.083,135.241,3175356, "conversation", ""},
-	--{"gambler",60,-1.32019,0.639422,59.6488,0,3175356, "conversation", ""},
-	--{"scoundrel",60,0.904988,0.639421,54.983,360.011,3175356, "conversation", ""},
-	--{"businessman",60,-32.0259,1.63942,62.9678,180.006,3175361, "conversation", ""},
-	--{"farmer",60,-32.0259,1.63942,61.8678,360.011,3175361, "conversation", ""},
-	--{"noble",60,-61.2565,2.63942,40.4022,0,3175364, "conversation", ""},
-	--{"vendor",60,-61.2565,2.63942,41.5022,180.005,3175364, "conversation", ""},
-	--{"explorer",60,-62.3565,2.63942,41.5022,135.004,3175364, "conversation", ""},
-	--{"chassis_broker",60,-56.7086,0.974563,8.24108,43.5461,3175366, "neutral", ""},
+	pNpc = spawnMobile("talus", "commoner",60,0.904988,0.639421,56.083,180.007,3175356)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "farmer",60,-1.32019,0.639422,60.6488,180.001,3175356)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "mercenary",60,-0.186001,0.639421,56.083,135.241,3175356)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "devaronian_male",60,-1.32019,0.639422,59.6488,0,3175356)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "shadowy_figure",60,0.904988,0.639421,54.983,360.011,3175356)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "businessman",60,-32.0259,1.63942,62.9678,180.006,3175361)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "farmer",60,-32.0259,1.63942,61.8678,360.011,3175361)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "noble",60,-61.2565,2.63942,40.4022,0,3175364)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "vendor",60,-61.2565,2.63942,41.5022,180.005,3175364)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "commoner_naboo",60,-62.3565,2.63942,41.5022,135.004,3175364)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "chassis_dealer",60,-56.7086,0.974563,8.24108,43.5461,3175366)
+	self:setMoodString(pNpc, "neutral")
+	pNpc = spawnMobile("talus", "trainer_shipwright",60,0.1,0.6,73.0,0,3175353)
+	self:setMoodString(pNpc, "neutral")
 
 	--Cantina
 	spawnMobile("talus", "bartender",60,7.8,-0.9,-1.4,119,3175391)
 	spawnMobile("talus", "businessman",60,-5.0724,-0.894996,21.4966,284.21,3175397)
-	--{"medic",60,-44.5373,0.105009,-20.8963,0,3175403, "conversation", ""},
-	--{"pilot",60,-44.5373,0.104709,-19.7963,180.005,3175403, "conversation", ""},
-	--{"agriculturalist",60,12.85,-0.894992,1.20077,360.011,3175391, "conversation", ""},
-	--{"scoundrel",300,12.85,-0.894992,2.30077,180.005,3175391, "conversation", ""},
-	--{"slicer",60,18.5617,-0.894992,17.5882,360.011,3175393, "conversation", ""},
-	--{"vendor",60,18.5617,-0.894992,18.6882,180.006,3175393, "conversation", ""},
-	--{"bounty_hunter",60,34.3579,0.105,2.70668,135.004,3175390, "conversation", ""},
-	--{"businessman",60,35.4579,0.105,2.70668,180.005,3175390, "conversation", ""},
-	--{"farmer",60,43.6156,0.104999,0.752079,0,3175389, "conversation", ""},
-	--{"smuggler",300,43.6156,0.104999,1.85208,180.005,3175389, "conversation", ""},
+	pNpc = spawnMobile("talus", "medic",60,-44.5373,0.105009,-20.8963,0,3175403)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "pilot",60,-44.5373,0.104709,-19.7963,180.005,3175403)
+	self:setMoodString(pNpc, "npc_consoling")
+	pNpc = spawnMobile("talus", "agriculturalist",60,12.85,-0.894992,1.20077,360.011,3175391)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "mercenary",300,12.85,-0.894992,2.30077,180.005,3175391)
+	self:setMoodString(pNpc, "npc_accusing")
+	pNpc = spawnMobile("talus", "commoner_technician",60,18.5617,-0.894992,17.5882,360.011,3175393)
+	self:setMoodString(pNpc, "nervous")
+	pNpc = spawnMobile("talus", "vendor",60,18.5617,-0.894992,18.6882,180.006,3175393)
+	self:setMoodString(pNpc, "npc_consoling")
+	pNpc = spawnMobile("talus", "bounty_hunter",60,34.3579,0.105,2.70668,135.004,3175390)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "businessman",60,35.4579,0.105,2.70668,180.005,3175390)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "farmer",60,43.6156,0.104999,0.752079,0,3175389)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "ithorian_male",300,43.6156,0.104999,1.85208,180.005,3175389)
+	self:setMoodString(pNpc, "conversation")
 
 	--Guild Hall
-	--{"bothan_information_broker",60,-2.33557,1.75,-12.7738,180.008,3175434, "conversation", ""},
-	--{"brawler",60,-2.33557,1.75,-13.8738,360.011,3175434, "conversation", ""},
-	--{"farmer",60,-1.18159,2.25,6.74,180.013,3175434, "conversation", ""},
+	pNpc = spawnMobile("talus", "info_broker",60,-2.33557,1.75,-12.7738,180.008,3175434)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "brawler",60,-2.33557,1.75,-13.8738,360.011,3175434)
+	self:setMoodString(pNpc, "angry")
+	pNpc = spawnMobile("talus", "farmer",60,-1.18159,2.25,6.74,180.013,3175434)
+	self:setMoodString(pNpc, "conversation")
 
 	--Guild Hall/Theater
-	--{"explorer",60,-2.83063,2.6,9.88899,180.005,3175570, "conversation", ""},
+	pNpc = spawnMobile("talus", "chiss_male",60,-2.83063,2.6,9.88899,180.005,3175570)
+	self:setMoodString(pNpc, "conversation")
 	spawnMobile("talus", "noble",60,28.93,2.12878,58.19,222.007,3175571)
 	spawnMobile("talus", "noble",60,19.26,2.12847,56.13,266.008,3175572)
 
 	--Hotel
-	--{"bodyguard",300,-10.227,1.00006,-2.52106,360.011,3175594, "conversation", ""},
-	--{"brawler",60,-10.227,1.00005,-1.42106,180.007,3175594, "conversation", ""},
-	--{"commoner",60,25.6926,1.28309,6.24509,0,3175593, "conversation", ""},
-	--{"miner",60,21.574,1.28309,-2.39703,0,3175593, "conversation", ""},
-	--{"miner",60,21.574,1.28309,-1.29703,180.005,3175593, "conversation", ""},
-	--{"pilot",60,20.474,1.28309,-1.29703,135.003,3175593, "conversation", ""},
-	--{"scientist",60,25.6926,1.28309,7.24509,180.001,3175593, "conversation", ""},
+	pNpc = spawnMobile("talus", "bounty_hunter",300,-10.227,1.00006,-2.52106,360.011,3175594)
+	self:setMoodString(pNpc, "npc_accusing")
+	pNpc = spawnMobile("talus", "brawler",60,-10.227,1.00005,-1.42106,180.007,3175594)
+	self:setMoodString(pNpc, "worried")
+	pNpc = spawnMobile("talus", "commoner",60,25.6926,1.28309,6.24509,0,3175593)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "contractor",60,21.574,1.28309,-2.39703,0,3175593)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "commoner_tatooine",60,21.574,1.28309,-1.29703,180.005,3175593)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "pilot",60,20.474,1.28309,-1.29703,135.003,3175593)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "scientist",60,25.6926,1.28309,7.24509,180.001,3175593)
+	self:setMoodString(pNpc, "conversation")
 
 	--Capital
-	--{"bothan_diplomat",60,9.32783,0.3,-0.595898,180.007,6255467, "conversation", ""},
-	--{"businessman",60,8.22783,0.3,-0.595898,135.005,6255467, "conversation", ""},
-	--{"fringer",300,9.32783,0.3,-1.6959,360.011,6255467, "conversation", ""},
+	pNpc = spawnMobile("talus", "farmer_rancher",60,9.32783,0.3,-0.595898,180.007,6255467)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "businessman",60,8.22783,0.3,-0.595898,135.005,6255467)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "sullustan_male",300,9.32783,0.3,-1.6959,360.011,6255467)
+	self:setMoodString(pNpc, "conversation")
 	spawnMobile("talus", "noble",60,22.4751,3.22324,19.4502,107.651,6255473)
 	spawnMobile("talus", "businessman",60,-18.8153,3.22324,21.6509,252.41,6255472)
+
+	--newb grind starter spawns
+	spawnMobile("talus", "clipped_fynock", 300, getRandomNumber(10) + 58.0, 6.0, getRandomNumber(10) + -2967, getRandomNumber(360), 0)
+	spawnMobile("talus", "clipped_fynock", 300, getRandomNumber(10) + 58.0, 6.0, getRandomNumber(10) + -2967, getRandomNumber(360), 0)
+	spawnMobile("talus", "clipped_fynock", 300, getRandomNumber(10) + 58.0, 6.0, getRandomNumber(10) + -2967, getRandomNumber(360), 0)
+	spawnMobile("talus", "clipped_fynock", 300, getRandomNumber(10) + 58.0, 6.0, getRandomNumber(10) + -2967, getRandomNumber(360), 0)
+	spawnMobile("talus", "clipped_fynock", 300, getRandomNumber(10) + 58.0, 6.0, getRandomNumber(10) + -2967, getRandomNumber(360), 0)
+
+	spawnMobile("talus", "song_rasp", 300, getRandomNumber(10) + 78.7, 5.9, getRandomNumber(10) + -3059, getRandomNumber(360), 0)
+	spawnMobile("talus", "song_rasp", 300, getRandomNumber(10) + 78.7, 5.9, getRandomNumber(10) + -3059, getRandomNumber(360), 0)
+	spawnMobile("talus", "song_rasp", 300, getRandomNumber(10) + 78.7, 5.9, getRandomNumber(10) + -3059, getRandomNumber(360), 0)
+	spawnMobile("talus", "song_rasp", 300, getRandomNumber(10) + 78.7, 5.9, getRandomNumber(10) + -3059, getRandomNumber(360), 0)
+
+	spawnMobile("talus", "docile_kahmurra", 300, getRandomNumber(10) + 225.8, 6.0, getRandomNumber(10) + -3157, getRandomNumber(360), 0)
+	spawnMobile("talus", "docile_kahmurra", 300, getRandomNumber(10) + 225.8, 6.0, getRandomNumber(10) + -3157, getRandomNumber(360), 0)
+	spawnMobile("talus", "docile_kahmurra", 300, getRandomNumber(10) + 225.8, 6.0, getRandomNumber(10) + -3157, getRandomNumber(360), 0)
+	spawnMobile("talus", "docile_kahmurra", 300, getRandomNumber(10) + 225.8, 6.0, getRandomNumber(10) + -3157, getRandomNumber(360), 0)
+
 end

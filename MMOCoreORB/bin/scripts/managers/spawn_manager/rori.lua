@@ -33,7 +33,6 @@ JUNKCONVJAWATUSKEN = 18
 -- That means that it is not possible to have both a spawn area and a no spawn area in the same region, but
 -- a spawn area that is also a no build zone is possible.
 
-
 UNDEFINEDAREA       = 0x0000
 SPAWNAREA           = 0x0001
 NOSPAWNAREA         = 0x0002
@@ -189,15 +188,6 @@ rori_regions = {
 rori_static_spawns = {
 
 	--Rebel Outpost
-	{"vordin_sildor", 60, 4.2, 0.1, 0.8, 196, 4505667, "npc_sitting_chair", "", "stationary"},
-	{"entertainer", 360, 10, 0, 3.6, 270, 4505634, "happy", "", "stationary"},
-	{"commoner", 360, 3.7, 0.6, 0.7, 90, 4505634, "npc_sitting_chair", "", "stationary"},
-	{"patron", 360, 6.1, 0.6, 0.7, 270, 4505634, "npc_sitting_chair","", "stationary"},
-	{"patron", 360, 1.8, 0.6, 1.8, 69, 4505634, "npc_standing_drinking", "", "stationary"},
-	{"businessman", 60, 3702.3, 96, -6439.5, 330, 0, "bored", "", "stationary"},
-	{"businessman", 60, 3645.7, 96, -6439, 80, 0, "happy", "", "stationary"},
-	{"noble", 60, 3640.8, 96, -6439.1, 71, 0, "npc_sitting_chair", "", "stationary"},
-	{"commoner", 60, 3702.6, 96, -6434.3, 94, 0, "npc_use_terminal_high", "", "stationary"},
 	{"junk_dender",60,-5428.2,80,-2244.2,10,0, "", "Dender", "stationary",JUNKGUNGAN,JUNKCONVDENDERRORI},
 	{"junk_dealer",60,5353.8,80,5665.9,180,0, "", "", "stationary",JUNKGENERIC,JUNKCONVGENERIC},
 	{"junk_dealer",60,5350.2,81.3,5484.8,-50,0, "", "", "stationary",JUNKGENERIC,JUNKCONVGENERIC},

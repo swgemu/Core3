@@ -22,6 +22,18 @@ end
 
 function RoriRestussScreenPlay:spawnMobiles()
 
+	--starport added
+	local pNpc = spawnMobile("rori", "pilot",60,-27.0,1.6,53.2,128,4635675)
+	self:setMoodString(pNpc, "npc_standing_drinking")
+	pNpc = spawnMobile("rori", "chiss_female",60,-27.6,1.6,52.3,29,4635675)
+	self:setMoodString(pNpc, "npc_accusing")
+	pNpc = spawnMobile("rori", "shadowy_figure",60,-69.1,2.6,38.5,70,4635678)
+	self:setMoodString(pNpc, "angry")
+	pNpc = spawnMobile("rori", "trainer_shipwright",60,6.3,0.6,67.3,-90,4635670)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("rori", "chassis_dealer",60,4.3,0.6,66.9,80,4635670)
+	self:setMoodString(pNpc, "conversation")
+
 	--Creatures
 	spawnMobile("rori", "nightspider", 300,getRandomNumber(10) + 4980.2, 76.9,getRandomNumber(10) + 5535.3, getRandomNumber(360), 0)
 	spawnMobile("rori", "nightspider", 300,getRandomNumber(10) + 4980.2, 76.9,getRandomNumber(10) + 5535.3, getRandomNumber(360), 0)
@@ -190,7 +202,6 @@ function RoriRestussScreenPlay:spawnMobiles()
 	spawnMobile("rori", "first_brigade_trooper", 300, 5450.4, 80.0, 5848.2, -90, 0)
 	spawnMobile("rori", "first_brigade_trooper", 300, 5419.4, 80.0, 5845.2, 180, 0)
 	spawnMobile("rori", "first_brigade_trooper", 300, 5414.4, 80.0, 5845.2, 180, 0)
-
 	spawnMobile("rori", "first_brigade_sergeant", 300, 5292.2, 80.0, 5854.8, 180, 0)
 	spawnMobile("rori", "first_brigade_gunner", 300, 5283.2, 80.0, 5854.8, 180, 0)
 	spawnMobile("rori", "first_brigade_sergeant", 300, 5212.4, 80.0, 5778.7, 0, 0)
@@ -201,27 +212,23 @@ function RoriRestussScreenPlay:spawnMobiles()
 	spawnMobile("rori", "first_brigade_trooper", 300, 5315.2, 80.2, 5523.5, 180, 0)
 	spawnMobile("rori", "first_brigade_marine", 300, 5339.0, 80.2, 5523.5, 180, 0)
 	spawnMobile("rori", "first_brigade_trooper", 300, 5342.0, 80.2, 5523.5, 180, 0)
-
 	spawnMobile("rori", "first_brigade_marine", 300, 5206.5, 80.2, 5603.2, 0, 0)
 	spawnMobile("rori", "first_brigade_marine", 300, 5199.5, 80.2, 5609.3, 90, 0)
 	spawnMobile("rori", "first_brigade_marine", 300, 5154.5, 80.2, 5603.2, 0, 0)
 	spawnMobile("rori", "first_brigade_marine", 300, 5161.5, 80.2, 5609.3, -90, 0)
 	spawnMobile("rori", "first_brigade_marine", 300, 5128.7, 80.0, 5535.5, -75, 0)
 	spawnMobile("rori", "first_brigade_marine", 300, 5125.1, 80.2, 5542.4, 145, 0)
-
 	spawnMobile("rori", "first_brigade_officer", 300, 0.0, 1.7, -21.7, 0, 4635710)
 
 	--misc
 	spawnMobile("rori", "cll8_binary_load_lifter", 1, 5117.8, 80.0, 5696.8, 90, 0)
 	spawnMobile("rori", "cll8_binary_load_lifter", 1, 5240.1, 80.0, 5616.5, -90, 0)
 	spawnMobile("rori", "r5", 1, 5443.7, 80.0, 5674.9, 33, 0)
-
 	spawnMobile("rori", "commoner_old", 1, 5437.1, 80.0, 5876.9, 90, 0)
 	spawnMobile("rori", "commoner_fat", 1, 5439.3, 80.0, 5880.3, 135, 0)
 	spawnMobile("rori", "commoner", 1, 5442.3, 80.0, 5876.9, -75, 0)
 	spawnMobile("rori", "commoner_old", 1, 5314.8, 80.0, 5793.8, -105, 0)
 	spawnMobile("rori", "commoner_old", 1, 5389.9, 80.0, 5674.2, -135, 0)
-
 	spawnMobile("rori", "imperial_recruiter", 1, 5348, 80, 5618, 0, 0)
 	spawnMobile("rori", "informant_npc_lvl_1", 1, 5401, 80, 5857, 45, 0)
 	spawnMobile("rori", "informant_npc_lvl_3", 1, 5102, 79.98, 5652, 30, 0)

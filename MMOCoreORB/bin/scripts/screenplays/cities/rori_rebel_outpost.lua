@@ -13,7 +13,27 @@ function RoriRebelOutpostScreenPlay:start()
 end
 
 function RoriRebelOutpostScreenPlay:spawnMobiles()
-	--mobs
+
+		--buildings interior
+	local pNpc = spawnMobile("rori", "entertainer", 360, 10, 0, 3.6, 270, 4505634)
+	self:setMoodString(pNpc, "happy")
+	pNpc = spawnMobile("rori", "commoner", 360, 3.7, 0.6, 0.7, 90, 4505634)
+	self:setMoodString(pNpc, "npc_sitting_chair")
+	pNpc = spawnMobile("rori", "patron", 360, 6.1, 0.6, 0.7, 270, 4505634)
+	self:setMoodString(pNpc, "npc_sitting_chair")
+	pNpc = spawnMobile("rori", "patron", 360, 1.8, 0.6, 1.8, 69, 4505634)
+	self:setMoodString(pNpc, "npc_standing_drinking")
+	pNpc = spawnMobile("rori", "vordin_sildor", 60, 4.2, 0.1, 0.8, 196, 4505667)
+	self:setMoodString(pNpc, "npc_sitting_chair")
+		--misc exterior
+	pNpc = spawnMobile("rori", "businessman", 60, 3702.3, 96, -6439.5, 330, 0)
+	self:setMoodString(pNpc, "bored")
+	pNpc = spawnMobile("rori", "businessman", 60, 3645.7, 96, -6439, 80, 0)
+	self:setMoodString(pNpc, "happy")
+	pNpc = spawnMobile("rori", "noble", 60, 3640.8, 96, -6439.1, 71, 0)
+	self:setMoodString(pNpc, "npc_sitting_chair")
+	pNpc = spawnMobile("rori", "commoner", 60, 3702.6, 96, -6434.3, 94, 0)
+	self:setMoodString(pNpc, "npc_use_terminal_high")
 
 		--Patrols outside the walls
 	spawnMobile("rori", "rebel_army_captain", 360, getRandomNumber(16) + 3618.3, 96.1, getRandomNumber(24) + -6469.6, getRandomNumber(360), 0)
@@ -29,12 +49,10 @@ function RoriRebelOutpostScreenPlay:spawnMobiles()
 	spawnMobile("rori", "rebel_trooper", 360, getRandomNumber(16) + 3708.4, 96.1, getRandomNumber(24) + -6429.6, getRandomNumber(360), 0)
 	spawnMobile("rori", "rebel_trooper", 360, getRandomNumber(16) + 3708.4, 96.1, getRandomNumber(24) + -6429.6, getRandomNumber(360), 0)
 	spawnMobile("rori", "rebel_trooper", 360, getRandomNumber(16) + 3708.4, 96.1, getRandomNumber(24) + -6429.6, getRandomNumber(360), 0)
-
 	spawnMobile("rori", "specforce_wilderness_operative", 360, 3696.0, 85.0, -6566.6, -110, 0)
 	spawnMobile("rori", "specforce_wilderness_operative", 360, 3685.3, 86.8, -6573.1, 10, 0)
 	spawnMobile("rori", "specforce_wilderness_operative", 360, 3664.1, 86.4, -6574.7, 160, 0)
 	spawnMobile("rori", "specforce_wilderness_operative", 360, 3629.9, 83.8, -6570.1, -90, 0)
-
 	spawnMobile("rori", "specforce_marine", 360, 3654.9, 96.0, -6499.0, 180, 0)
 	spawnMobile("rori", "specforce_marine", 360, 3674.4, 96.0, -6499.0, 180, 0)
 
@@ -77,10 +95,8 @@ function RoriRebelOutpostScreenPlay:spawnMobiles()
 		--Right Storage Shed (Cloner)
 	spawnMobile("rori", "rebel_medic", 360, 5.3, 0.1, 0.9, 270, 4505609)
 	spawnMobile("rori", "rebel_colonel", 360, 0, 0.1, -6.0, 0, 4505608)
-
 	--misc
 	spawnMobile("rori", "rebel_recruiter", 0, 3683, 96, -6460, -101, 0)
-
 	--trainer
 	spawnMobile("rori", "trainer_architect", 60, 3677, 96, -6418, 90, 0)
 	spawnMobile("rori", "trainer_armorsmith", 60, 3676, 96, -6432, 90, 0)
