@@ -76,9 +76,11 @@ int ResourceManagerImplementation::notifyObserverEvent(uint32 eventType, Observa
 
 			creature->sendSystemMessage("@survey:sample_cancel");
 		}
+
+		return 1;
 	}
 
-	return 1;
+	return 0;
 }
 
 bool ResourceManagerImplementation::loadConfigData() {

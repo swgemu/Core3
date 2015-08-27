@@ -184,7 +184,7 @@ class FishingManager extends Observer implements Logger {
 			return notifyCloseContainer((CreatureObject)arg1, (SceneObject)observable);
 		}
 		
-		return 1;
+		return 0;
 	}
 	
 	/**

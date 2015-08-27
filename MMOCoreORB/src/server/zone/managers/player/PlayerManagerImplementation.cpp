@@ -1957,9 +1957,11 @@ int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observabl
 		if(logoutTask != NULL) {
 			logoutTask->cancelLogout();
 		}
+
+		return 1;
 	}
 
-	return 1;
+	return 0;
 }
 
 void PlayerManagerImplementation::sendBattleFatigueMessage(CreatureObject* player, CreatureObject* target) {

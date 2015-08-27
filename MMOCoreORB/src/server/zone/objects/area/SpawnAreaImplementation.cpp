@@ -64,7 +64,7 @@ Vector3 SpawnAreaImplementation::getRandomPosition(SceneObject* player) {
 
 int SpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	if (eventType != ObserverEventType::OBJECTREMOVEDFROMZONE)
-		return 1;
+		return 0;
 
 	SceneObject* sceno = dynamic_cast<SceneObject*>(observable);
 

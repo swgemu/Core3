@@ -136,7 +136,7 @@ int CampSiteActiveAreaImplementation::notifyHealEvent(int64 quantity) {
 
 	// Increase XP Pool for heals
 	currentXp += (campStructureData->getExperience() / 180);
-	return 1;
+	return 0;
 }
 
 int CampSiteActiveAreaImplementation::notifyCombatEvent() {

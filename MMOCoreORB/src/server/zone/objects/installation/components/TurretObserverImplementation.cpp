@@ -20,6 +20,8 @@ int TurretObserverImplementation::notifyObserverEvent(uint32 eventType, Observab
 			DestroyFactionInstallationTask* task = new DestroyFactionInstallationTask(installation);
 			task->execute();
 		}
+
+		return 1;
 	}
 
 	return 0;

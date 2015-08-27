@@ -12,7 +12,7 @@
 
 int InstrumentObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	if (eventType != ObserverEventType::POSITIONCHANGED && eventType != ObserverEventType::OBJECTREMOVEDFROMZONE) {
-		return 1;
+		return 0;
 	}
 
 	SceneObject* creature = cast<SceneObject*>( observable);

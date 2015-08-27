@@ -22,7 +22,6 @@
 #include "server/zone/managers/creature/DisseminateExperienceTask.h"
 
 int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	int ret = 1;
 	int i = 0;
 
 	Reference<LairAggroTask*> task = NULL;

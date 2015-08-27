@@ -29,6 +29,6 @@ class CampSiteObserver extends Observer implements Logger {
 		if(strongRef != null && eventType == ObserverEventType.STARTCOMBAT)
 			return strongRef.notifyCombatEvent();
 		
-		return 1;
+		return 0;
 	}
 }
