@@ -77,7 +77,7 @@ public:
 		return pois.contains(name);
 	}
 
-	Vector<Reference<PoiData*> > getPois(const String& planetName) {
+	const Vector<Reference<PoiData*> >& getPois(const String& planetName) {
 		return pois.get(planetName);
 	}
 
