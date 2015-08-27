@@ -45,13 +45,13 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 	//regionTree->inRange(activeArea, 512);
 
 	// lets update area to the in range players
-	SortedVector<ManagedReference<QuadTreeEntry*> > objects;
+	SortedVector<QuadTreeEntry*> objects;
 	float range = activeArea->getRadius() + 64;
 
 	newZone->getInRangeObjects(activeArea->getPositionX(), activeArea->getPositionY(), range, &objects, false);
 
 	for (int i = 0; i < objects.size(); ++i) {
-		SceneObject* object = cast<SceneObject*>(objects.get(i).get());
+		SceneObject* object = cast<SceneObject*>(objects.get(i));
 
 		if (!object->isTangibleObject()) {
 			continue;
@@ -84,7 +84,7 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 	regionTree->remove(activeArea);
 
 	// lets remove the in range active areas of players
-	SortedVector<ManagedReference<QuadTreeEntry*> > objects;
+	SortedVector<QuadTreeEntry*> objects;
 	float range = activeArea->getRadius() + 64;
 
 	zone->getInRangeObjects(activeArea->getPositionX(), activeArea->getPositionY(), range, &objects, false);
@@ -94,7 +94,7 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 	zoneLocker.release();
 
 	for (int i = 0; i < objects.size(); ++i) {
-		SceneObject* object = cast<SceneObject*>(objects.get(i).get());
+		SceneObject* object = cast<SceneObject*>(objects.get(i));
 
 	//	Locker olocker(object);
 
