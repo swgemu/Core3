@@ -130,7 +130,13 @@ void DroidMaintenanceModuleDataComponent::getStructureList(Vector<ManagedReferen
 			StructureObject* structureObject = cast<StructureObject*>(obj.get());
 			if( structureObject != NULL ){
 				// is it on this planet?
-				if (structureObject->getZone()->getZoneCRC() == planet) {
+				Zone* zone = structureObject->getZone();
+
+				if (zone == NULL) {
+					continue;
+				}
+
+				if (zone->getZoneCRC() == planet) {
 					list->add(structureObject);
 				} else {
 					if (moduleRating >= 12) // ratign 12 min for interplanetary
