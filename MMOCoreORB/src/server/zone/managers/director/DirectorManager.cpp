@@ -286,6 +286,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getRegion", getRegion);
 	lua_register(luaEngine->getLuaState(), "writeScreenPlayData", writeScreenPlayData);
 	lua_register(luaEngine->getLuaState(), "readScreenPlayData", readScreenPlayData);
+	lua_register(luaEngine->getLuaState(), "deleteScreenPlayData", deleteScreenPlayData);
 	lua_register(luaEngine->getLuaState(), "clearScreenPlayData", clearScreenPlayData);
 	lua_register(luaEngine->getLuaState(), "getObjectTemplatePathByCRC", getObjectTemplatePathByCRC);
 	lua_register(luaEngine->getLuaState(), "getTimestamp", getTimestamp);
@@ -606,6 +607,29 @@ int DirectorManager::readScreenPlayData(lua_State* L) {
 	lua_pushstring(L, ghost->getScreenPlayData(screenPlay, variable).toCharArray());
 
 	return 1;
+}
+
+int DirectorManager::deleteScreenPlayData(lua_State* L) {
+	if (checkArgumentCount(L, 3) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::deleteScreenPlayData");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String variable = lua_tostring(L, -1);
+	String screenPlay = lua_tostring(L, -2);
+	SceneObject* player = (SceneObject*) lua_touserdata(L, -3);
+
+	if (player == NULL || !player->isPlayerCreature()) {
+		DirectorManager::instance()->error("Attempted to delete screen play data from a non-player Scene Object in screen play: " + screenPlay + ".");
+		return 0;
+	}
+
+	Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
+
+	ghost->deleteScreenPlayData(screenPlay, variable);
+
+	return 0;
 }
 
 int DirectorManager::clearScreenPlayData(lua_State* L) {

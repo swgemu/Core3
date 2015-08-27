@@ -24,6 +24,11 @@ Theater Manager Steps:
 20 - Started final show
 21 - Completed final show
 
+Series legend:
+0 - No current series
+1 - Dance
+2 - Music
+
 ]]
 
 TheaterManagerScreenPlay = ScreenPlay:new {
@@ -61,7 +66,7 @@ function TheaterManagerScreenPlay:spawnMobiles()
 end
 
 function TheaterManagerScreenPlay:getCurrentStep(pPlayer)
-	local totalSteps = 8
+	local totalSteps = 21
 	local curSeries = self:getCurrentSeries(pPlayer)
 
 	local stateName
@@ -105,7 +110,7 @@ end
 function TheaterManagerScreenPlay:getCurrentSeries(pPlayer)
 	local curSeries = readScreenPlayData(pPlayer, "theaterManager", "currentSeries")
 
-	if (curSeries == "") then
+	if (curSeries == nil or curSeries == "") then
 		curSeries = 0
 	end
 
@@ -231,7 +236,7 @@ function TheaterManagerScreenPlay:notifyEnteredAuditionArea(pActiveArea, pPlayer
 	if pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature() then
 		return 0
 	end
-
+	
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local areaOwnerID = readData(SceneObject(pActiveArea):getObjectID() .. ":ownerID")
 
@@ -275,6 +280,10 @@ function TheaterManagerScreenPlay:beginAudition(pPlayer)
 end
 
 function TheaterManagerScreenPlay:runAuditionPhase(pPlayer)
+	if (self:isOnFailureTimer(pPlayer)) then
+		return
+	end
+
 	local pTheater = self:getTheaterBuilding(pPlayer)
 
 	if (pTheater == nil) then
@@ -405,7 +414,7 @@ end
 
 function TheaterManagerScreenPlay:failAudition(pPlayer, reason)
 	self:auditionCleanup(pPlayer)
-	createEvent(5 * 1000, "TheaterManagerScreenPlay", "auditionJudgeCleanup", pPlayer)
+	createEvent(2 * 1000, "TheaterManagerScreenPlay", "auditionJudgeCleanup", pPlayer)
 	CreatureObject(pPlayer):sendSystemMessage("@quest/crowd_pleaser/system_messages:" .. reason)
 	self:setFailedStep(pPlayer)
 end
@@ -424,6 +433,8 @@ function TheaterManagerScreenPlay:auditionCleanup(pPlayer)
 	dropObserver(STARTENTERTAIN, pPlayer)
 	dropObserver(CHANGEENTERTAIN, pPlayer)
 	dropObserver(FLOURISH, pPlayer)
+	
+	writeData(theaterID .. ":theater_manager:show_running", 0)
 
 	local auditionAreaID = readData(playerID .. ":theater_manager:auditionAreaID")
 	local pAuditionArea = getSceneObject(auditionAreaID)
@@ -431,6 +442,7 @@ function TheaterManagerScreenPlay:auditionCleanup(pPlayer)
 	if (pAuditionArea ~= nil) then
 		SceneObject(pAuditionArea):destroyObjectFromWorld()
 	end
+	
 	deleteData(playerID .. ":theater_manager:auditionAreaID")
 
 	deleteData(playerID .. ":theater_manager:auditionPhase")
@@ -475,8 +487,6 @@ function TheaterManagerScreenPlay:auditionJudgeCleanup(pPlayer)
 		end
 		deleteData(theaterID .. ":theater_manager:judgeChair" .. i .. "ID")
 	end
-
-	writeData(theaterID .. "theater_manager:show_running", 0)
 end
 
 function TheaterManagerScreenPlay:getPerformanceKey(type, performance)
@@ -496,6 +506,10 @@ function TheaterManagerScreenPlay:getPerformanceKey(type, performance)
 end
 
 function TheaterManagerScreenPlay:checkPerformanceStatus(pPlayer)
+	if (self:isOnFailureTimer(pPlayer)) then
+		return
+	end
+
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local performanceCompleted = readData(playerID .. ":theater_manager:performanceCompleted")
 
@@ -566,4 +580,170 @@ function TheaterManagerScreenPlay:getTheaterBuilding(pPlayer)
 	end
 
 	return SceneObject(pCell):getParent()
+end
+
+function TheaterManagerScreenPlay:startPromotion(pPlayer)
+	dropObserver(WASWATCHED, pPlayer)
+	dropObserver(WASLISTENEDTO, pPlayer)
+
+	local series = self:getCurrentSeries(pPlayer)
+
+	if (series == 0) then
+		return
+	end
+
+	local currentStep = self:getCurrentStep(pPlayer)
+	local requiredPromotions = self:getRequiredPromotions(currentStep)
+
+	self:setCurrentPromotions(pPlayer, 0)
+
+	local messageString = LuaStringIdChatParameter("@quest/crowd_pleaser/system_messages:popularity_starting_message")
+	messageString:setDI(requiredPromotions)
+	CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject())
+
+	if (series == 2) then
+		createObserver(WASLISTENEDTO, "TheaterManagerScreenPlay", "notifyPromotionObserver", pPlayer, 1)
+	elseif (series == 1) then
+		createObserver(WASWATCHED, "TheaterManagerScreenPlay", "notifyPromotionObserver", pPlayer, 1)
+	end
+end
+
+function TheaterManagerScreenPlay:getRequiredPromotions(step)
+	if (step == 5) then
+		return self.requiredPromotions[1]
+	elseif (step == 11) then
+		return self.requiredPromotions[2]
+	elseif (step == 17) then
+		return self.requiredPromotions[3]
+	end
+end
+
+function TheaterManagerScreenPlay:setCurrentPromotions(pPlayer, promotions)
+	writeScreenPlayData(pPlayer, "theaterManager", "currentPromotions", promotions)
+end
+
+function TheaterManagerScreenPlay:eraseCurrentPromotions(pPlayer)
+	deleteScreenPlayData(pPlayer, "theaterManager", "currentPromotions")
+end
+
+function TheaterManagerScreenPlay:getCurrentPromotions(pPlayer)
+	local curPromos = readScreenPlayData(pPlayer, "theaterManager", "currentPromotions")
+
+	if (curPromos == nil or curPromos == "") then
+		curPromos = 0
+	end
+
+	return tonumber(curPromos)
+end
+
+function TheaterManagerScreenPlay:notifyPromotionObserver(pPlayer, pEntertained)
+	if (pPlayer == nil or pEntertained == nil) then
+		return 1
+	end
+
+	local currentStep = self:getCurrentStep(pPlayer)
+	local requiredPromotions = self:getRequiredPromotions(currentStep)
+	local currentPromotions = self:getCurrentPromotions(pPlayer)
+
+	local entertainedID = SceneObject(pEntertained):getObjectID()
+
+	if (currentPromotions == requiredPromotions) then
+		return 1
+	elseif (self:isInPlayersEntertainedList(pPlayer, entertainedID)) then
+		return 0
+	end
+
+	currentPromotions = currentPromotions + 1
+	self:setCurrentPromotions(pPlayer, currentPromotions)
+
+	self:writeToPlayersEntertainedList(pPlayer, entertainedID)
+	
+	local popStep = 1
+	
+	if (currentStep == 11) then
+		popStep = 2
+	elseif (currentStep == 17) then
+		popStep = 3
+	end
+
+	if (requiredPromotions == currentPromotions) then
+		CreatureObject(pPlayer):sendSystemMessage("@quest/crowd_pleaser/system_messages:popularity_" .. popStep .. "_complete")
+	else
+		local messageString = LuaStringIdChatParameter("@quest/crowd_pleaser/system_messages:popularity_" .. popStep .. "_remaining")
+		messageString:setDI(requiredPromotions - currentPromotions)
+		messageString:setTO(CreatureObject(pEntertained):getFirstName())
+		CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject())
+	end
+
+	return 0
+end
+
+
+function TheaterManagerScreenPlay:getPlayersEntertainedList(pPlayer)
+	local list = readScreenPlayData(pPlayer, "theaterManager", "currentPromotionList")
+
+	if (list == nil or list == "") then
+		return nil
+	end
+
+	return self:splitString(list, ",")
+end
+
+function TheaterManagerScreenPlay:writeToPlayersEntertainedList(pPlayer, playerID)
+	local list = readScreenPlayData(pPlayer, "theaterManager", "currentPromotionList")
+
+	if (list == nil or list == "") then
+		list = playerID
+	else
+		list = list .. "," .. playerID
+	end
+
+	writeScreenPlayData(pPlayer, "theaterManager", "currentPromotionList", list)
+end
+
+function TheaterManagerScreenPlay:resetPlayersEntertainedList(pPlayer)
+	deleteScreenPlayData(pPlayer, "theaterManager", "currentPromotionList")
+end
+
+function TheaterManagerScreenPlay:isInPlayersEntertainedList(pPlayer, playerID)
+	local playersEntertained = self:getPlayersEntertainedList(pPlayer)
+
+	if (playersEntertained == nil) then
+		return false
+	end
+
+	for i = 1, table.getn(playersEntertained), 1 do
+		if tonumber(playersEntertained[i]) == playerID then
+			return true
+		end
+	end
+
+	return false
+end
+
+function TheaterManagerScreenPlay:hasPromotedEnough(pPlayer)
+	local currentStep = self:getCurrentStep(pPlayer)
+	local requiredPromotions = self:getRequiredPromotions(currentStep)
+	local currentPromotions = self:getCurrentPromotions(pPlayer)
+
+	return requiredPromotions == currentPromotions
+end
+
+function TheaterManagerScreenPlay:completePromotionPhase(pPlayer)
+	self:resetPlayersEntertainedList(pPlayer)
+	self:eraseCurrentPromotions(pPlayer)
+	self:completeCurrentStep(pPlayer)
+end
+
+function TheaterManagerScreenPlay:splitString(string, delimiter)
+	local outResults = { }
+	local start = 1
+	local splitStart, splitEnd = string.find( string, delimiter, start )
+	while splitStart do
+		table.insert( outResults, string.sub( string, start, splitStart-1 ) )
+		start = splitEnd + 1
+		splitStart, splitEnd = string.find( string, delimiter, start )
+	end
+	table.insert( outResults, string.sub( string, start ) )
+	return outResults
 end
