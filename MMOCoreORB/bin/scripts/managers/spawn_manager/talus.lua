@@ -260,7 +260,6 @@ talus_static_spawns = {
 	{"r4",60,4531.97,2,5111.71,209.78,0, "calm", "R4-T7", "stationary"},
 	{"r5",60,411.254,6,-2862.25,208.889,0, "calm", "R5-D8", "stationary"},
 	{"r5",60,407.095,6,-3036.31,310.529,0, "calm", "R5-R2", "stationary"},
-	{"scientist",60,1.6,-5.5,-4.8,0,4265616, "conversation", "", "stationary"},
 
 }
 
