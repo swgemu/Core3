@@ -48,6 +48,12 @@ void ClientCreateCharacterCallback::parse(Message* message) {
 }
 
 void ClientCreateCharacterCallback::run() {
+	if (client->getAccountID() == 0) {
+		client->error("character create attempt with account id 0");
+
+		return;
+	}
+
 	client->info("ClientCreateCharacterCallback::run()");
 
 	PlayerManager* playerManager = server->getPlayerManager();
