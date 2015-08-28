@@ -1,17 +1,17 @@
-rebel_research_attacker_1_coa3 = Creature:new {
+coa3_rebel_research_attacker_2 = Creature:new {
 	objectName = "",
-	customName = "a Rebel Research Attacker",
+	customName = "an Imperial Research Attacker",
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 35,
-	chanceHit = 0.41,
-	damageMin = 320,
-	damageMax = 350,
-	baseXp = 3551,
-	baseHAM = 8800,
-	baseHAMmax = 10800,
+	level = 45,
+	chanceHit = 0.46,
+	damageMin = 365,
+	damageMax = 440,
+	baseXp = 4461,
+	baseHAM = 9600,
+	baseHAMmax = 11800,
 	armor = 0,
-	resists = {0,35,0,0,0,0,0,-1,-1},
+	resists = {0,45,0,0,0,0,0,0,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,7 +26,7 @@ rebel_research_attacker_1_coa3 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_stormtrooper_m.iff"},
+	templates = {"object/mobile/dressed_stormtrooper_commando_m.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -44,4 +44,4 @@ rebel_research_attacker_1_coa3 = Creature:new {
 	attacks = merge(riflemanmaster,carbineermaster,marksmanmaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(rebel_research_attacker_1_coa3, "rebel_research_attacker_1_coa3")
+CreatureTemplates:addCreatureTemplate(coa3_rebel_research_attacker_2, "coa3_rebel_research_attacker_2")

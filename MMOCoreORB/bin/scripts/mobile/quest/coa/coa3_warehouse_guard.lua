@@ -1,15 +1,15 @@
-warehouse_captain_coa3 = Creature:new {
+coa3_warehouse_guard = Creature:new {
 	objectName = "",
-	customName = "a Warehouse Captain",
+	customName = "a Warehouse Guard",
 	socialGroup = "warehouse",
 	faction = "jabba",
-	level = 35,
-	chanceHit = 0.41,
-	damageMin = 320,
-	damageMax = 350,
-	baseXp = 3551,
-	baseHAM = 8800,
-	baseHAMmax = 10800,
+	level = 25,
+	chanceHit = 0.36,
+	damageMin = 240,
+	damageMax = 250,
+	baseXp = 2543,
+	baseHAM = 7200,
+	baseHAMmax = 8800,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",
@@ -22,11 +22,11 @@ warehouse_captain_coa3 = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
-	creatureBitmask = PACK + HERD + KILLER,
+	creatureBitmask = PACK + HERD,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_jabba_enforcer.iff"},
+	templates = {"object/mobile/dressed_tatooine_jabba_henchman.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -44,4 +44,4 @@ warehouse_captain_coa3 = Creature:new {
 	attacks = merge(pistoleermaster,marksmanmaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(warehouse_captain_coa3, "warehouse_captain_coa3")
+CreatureTemplates:addCreatureTemplate(coa3_warehouse_guard, "coa3_warehouse_guard")

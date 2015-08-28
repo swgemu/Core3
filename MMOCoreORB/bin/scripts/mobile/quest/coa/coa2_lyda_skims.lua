@@ -1,15 +1,15 @@
-rebel_vacca_coa3 = Creature:new {
+coa2_lyda_skims = Creature:new {
 	objectName = "",
-	customName = "Vacca",
+	costumName = "Lyda",
 	socialGroup = "rebel",
 	faction = "rebel",
-	level = 35,
-	chanceHit = 0.41,
-	damageMin = 320,
-	damageMax = 350,
-	baseXp = 3370,
-	baseHAM = 8800,
-	baseHAMmax = 10800,
+	level = 15,
+	chanceHit = 0.31,
+	damageMin = 160,
+	damageMax = 170,
+	baseXp = 831,
+	baseHAM = 2400,
+	baseHAMmax = 3000,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",
@@ -22,15 +22,15 @@ rebel_vacca_coa3 = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = NONE,
+	creatureBitmask = PACK + STALKER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_dr_vacca.iff"},
+	templates = {"object/mobile/dressed_lyda_skims.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(rebel_vacca_coa3, "rebel_vacca_coa3")
+CreatureTemplates:addCreatureTemplate(coa2_lyda_skims, "coa2_lyda_skims")

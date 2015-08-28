@@ -1,4 +1,4 @@
-rebel_research_guard_coa3 = Creature:new {
+coa3_rebel_research_guard = Creature:new {
 	objectName = "",
 	customName = "a Rebel Research Guard",
 	socialGroup = "rebel",
@@ -49,4 +49,4 @@ rebel_research_guard_coa3 = Creature:new {
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(rebel_research_guard_coa3, "rebel_research_guard_coa3")
+CreatureTemplates:addCreatureTemplate(coa3_rebel_research_guard, "coa3_rebel_research_guard")

@@ -1,13 +1,13 @@
-drall_guard_coa2 = Creature:new {
-	objectName = "@mob/creature_names:drall_guard",
-	randomNameType = NAME_GENERIC_TAG,
-	socialGroup = "rebel",
-	faction = "rebel",
+coa2_relay_guard = Creature:new {
+	objectName = "",
+	customName = "a Relay Guard",
+	socialGroup = "imperial",
+	faction = "imperial",
 	level = 27,
 	chanceHit = 0.37,
 	damageMin = 260,
 	damageMax = 270,
-	baseXp = 2730,
+	baseXp = 2822,
 	baseHAM = 8100,
 	baseHAMmax = 9900,
 	armor = 0,
@@ -22,11 +22,11 @@ drall_guard_coa2 = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + STALKER,
+	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/drall_male.iff"},
+	templates = {"object/mobile/dressed_imperial_soldier_m.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -39,9 +39,9 @@ drall_guard_coa2 = Creature:new {
 			}
 		}
 	},
-	weapons = {"rebel_weapons_heavy"},
+	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
-	attacks = merge(commandomaster,marksmanmaster,brawlermaster)
+	attacks = merge(riflemanmaster,carbineermaster,marksmanmaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(drall_guard_coa2, "drall_guard_coa2")
+CreatureTemplates:addCreatureTemplate(coa2_relay_guard, "coa2_relay_guard")

@@ -1,17 +1,17 @@
-imperial_slicer_coa2 = Creature:new {
+coa2_imperial_slicer_gang = Creature:new {
 	objectName = "@mob/creature_names:slicer",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 14,
-	chanceHit = 0.3,
-	damageMin = 150,
-	damageMax = 160,
-	baseXp = 831,
-	baseHAM = 2000,
-	baseHAMmax = 2400,
+	level = 11,
+	chanceHit = 0.29,
+	damageMin = 120,
+	damageMax = 130,
+	baseXp = 514,
+	baseHAM = 1000,
+	baseHAMmax = 12000,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -28,17 +28,14 @@ imperial_slicer_coa2 = Creature:new {
 
 	templates = {"object/mobile/dressed_criminal_assassin_human_female_01.iff",
 		"object/mobile/dressed_criminal_pirate_human_male_01.iff",
-		"object/mobile/dressed_criminal_slicer_human_female_01.iff"
-	},
+		"object/mobile/dressed_criminal_slicer_human_female_01.iff" },
 	lootGroups = {
 		{
 			groups = {
 				{group = "junk", chance = 4000000},
-				{group = "wearables_common", chance = 2000000},
-				{group = "rifles", chance = 1000000},
-				{group = "pistols", chance = 1000000},
-				{group = "melee_weapons", chance = 1000000},
-				{group = "carbines", chance = 1000000},
+				{group = "wearables_common", chance = 3000000},
+				{group = "loot_kit_parts", chance = 2000000},
+				{group = "tailor_components", chance = 1000000},
 			}
 		}
 	},
@@ -47,4 +44,4 @@ imperial_slicer_coa2 = Creature:new {
 	attacks = merge(brawlermid,marksmanmid)
 }
 
-CreatureTemplates:addCreatureTemplate(imperial_slicer_coa2, "imperial_slicer_coa2")
+CreatureTemplates:addCreatureTemplate(coa2_imperial_slicer_gang, "coa2_imperial_slicer_gang")

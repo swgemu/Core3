@@ -1,4 +1,4 @@
-warehouse_thug_coa3 = Creature:new {
+coa3_warehouse_thug = Creature:new {
 	objectName = "",
 	customName = "a Warehouse Thug",
 	socialGroup = "warehouse",
@@ -43,4 +43,4 @@ warehouse_thug_coa3 = Creature:new {
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(warehouse_thug_coa3, "warehouse_thug_coa3")
+CreatureTemplates:addCreatureTemplate(coa3_warehouse_thug, "coa3_warehouse_thug")

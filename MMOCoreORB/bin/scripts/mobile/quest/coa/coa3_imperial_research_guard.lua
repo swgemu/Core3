@@ -1,17 +1,17 @@
-lookout_coa3 = Creature:new {
+coa3_imperial_research_guard = Creature:new {
 	objectName = "",
-	customName = "a Lookout",
-	socialGroup = "self",
-	faction = "jabba",
-	level = 12,
-	chanceHit = 0.29,
-	damageMin = 130,
-	damageMax = 140,
-	baseXp = 514,
-	baseHAM = 1200,
-	baseHAMmax = 1400,
+	customName = "Imperial Research Guard",
+	socialGroup = "imperial",
+	faction = "imperial",
+	level = 35,
+	chanceHit = 0.41,
+	damageMin = 320,
+	damageMax = 350,
+	baseXp = 3460,
+	baseHAM = 8800,
+	baseHAMmax = 10800,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -22,11 +22,11 @@ lookout_coa3 = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = KILLER,
+	creatureBitmask = PACK + HERD,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_jabba_henchman.iff"},
+	templates = {"object/mobile/dressed_imperial_soldier_m.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -39,9 +39,9 @@ lookout_coa3 = Creature:new {
 			}
 		}
 	},
-	weapons = {"pirate_weapons_heavy"},
+	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(brawlermid,marksmanmid)
+	attacks = merge(commandomaster,marksmanmaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(lookout_coa3, "lookout_coa3")
+CreatureTemplates:addCreatureTemplate(coa3_imperial_research_guard, "coa3_imperial_research_guard")

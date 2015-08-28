@@ -1,6 +1,6 @@
 chassis_dealer = Creature:new {
-	objectName = "",
-	customName = "Chassis Dealer",
+	objectName = "@chassis_npc:npc_name",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -36,8 +36,7 @@ chassis_dealer = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "chassis_dealer_convotemplate",
-	attacks = {
-	}
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(chassis_dealer, "chassis_dealer")

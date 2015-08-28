@@ -1,15 +1,15 @@
-imperial_slicer_gang_coa2 = Creature:new {
-	objectName = "@mob/creature_names:slicer",
+coa2_lyda_thug = Creature:new {
+	objectName = "@mob/creature_names:thug",
 	randomNameType = NAME_GENERIC_TAG,
-	socialGroup = "imperial",
-	faction = "imperial",
+	socialGroup = "thug",
+	faction = "thug",
 	level = 11,
 	chanceHit = 0.29,
 	damageMin = 120,
 	damageMax = 130,
 	baseXp = 514,
 	baseHAM = 1000,
-	baseHAMmax = 12000,
+	baseHAMmax = 1200,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
@@ -21,14 +21,12 @@ imperial_slicer_gang_coa2 = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_criminal_assassin_human_female_01.iff",
-		"object/mobile/dressed_criminal_pirate_human_male_01.iff",
-		"object/mobile/dressed_criminal_slicer_human_female_01.iff" },
+	templates = {"object/mobile/dressed_lyda_skims.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -39,9 +37,9 @@ imperial_slicer_gang_coa2 = Creature:new {
 			}
 		}
 	},
-	weapons = {"pirate_weapons_heavy"},
+	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = merge(brawlermid,marksmanmid)
 }
 
-CreatureTemplates:addCreatureTemplate(imperial_slicer_gang_coa2, "imperial_slicer_gang_coa2")
+CreatureTemplates:addCreatureTemplate(coa2_lyda_thug, "coa2_lyda_thug")

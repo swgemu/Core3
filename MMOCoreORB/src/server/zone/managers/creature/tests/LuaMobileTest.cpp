@@ -68,6 +68,7 @@ public:
 		files.add("string/en/bestine.stf");
 		files.add("string/en/theme_park/warren/warren_system_messages.stf");
 		files.add("string/en/newbie_tutorial/system_messages.stf");
+		files.add("string/en/chassis_npc.stf");
 
 		int count = 0;
 

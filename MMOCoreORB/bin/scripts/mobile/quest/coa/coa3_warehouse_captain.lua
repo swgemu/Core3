@@ -1,15 +1,15 @@
-relay_captain_coa2 = Creature:new {
+coa3_warehouse_captain = Creature:new {
 	objectName = "",
-	customName = "a Relay Captain",
-	socialGroup = "imperial",
-	faction = "imperial",
-	level = 29,
-	chanceHit = 0.38,
-	damageMin = 280,
-	damageMax = 290,
-	baseXp = 3005,
-	baseHAM = 8300,
-	baseHAMmax = 10100,
+	customName = "a Warehouse Captain",
+	socialGroup = "warehouse",
+	faction = "jabba",
+	level = 35,
+	chanceHit = 0.41,
+	damageMin = 320,
+	damageMax = 350,
+	baseXp = 3551,
+	baseHAM = 8800,
+	baseHAMmax = 10800,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",
@@ -21,12 +21,12 @@ relay_captain_coa2 = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
+	creatureBitmask = PACK + HERD + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_captain_m.iff"},
+	templates = {"object/mobile/dressed_tatooine_jabba_enforcer.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -39,9 +39,9 @@ relay_captain_coa2 = Creature:new {
 			}
 		}
 	},
-	weapons = {"imperial_weapons_heavy"},
+	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster,marksmanmaster,brawlermaster)
+	attacks = merge(pistoleermaster,marksmanmaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(relay_captain_coa2, "relay_captain_coa2")
+CreatureTemplates:addCreatureTemplate(coa3_warehouse_captain, "coa3_warehouse_captain")

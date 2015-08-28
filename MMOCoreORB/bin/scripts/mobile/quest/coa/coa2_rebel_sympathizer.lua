@@ -1,4 +1,4 @@
-rebel_sympathizer_coa2 = Creature:new {
+coa2_rebel_sympathizer = Creature:new {
 	objectName = "",
 	customName = "a Rebel Sympathizer",
 	socialGroup = "rebel",
@@ -40,4 +40,4 @@ rebel_sympathizer_coa2 = Creature:new {
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(rebel_sympathizer_coa2, "rebel_sympathizer_coa2")
+CreatureTemplates:addCreatureTemplate(coa2_rebel_sympathizer, "coa2_rebel_sympathizer")

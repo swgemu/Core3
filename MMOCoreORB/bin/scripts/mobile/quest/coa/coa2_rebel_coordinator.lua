@@ -28,7 +28,7 @@ coa2_rebel_coordinator = Creature:new {
 
 	templates = {"object/mobile/dressed_rebel_brigadier_general_sullustan_male.iff"},
 	lootGroups = {},
-	weapons = {"imperial_weapons_heavy"},
+	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }

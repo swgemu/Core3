@@ -1,4 +1,4 @@
-caravan_thug_coa3 = Creature:new {
+coa3_caravan_thug = Creature:new {
 	objectName = "",
 	customName = "Caravan Thug",
 	socialGroup = "caravan",
@@ -61,4 +61,4 @@ caravan_thug_coa3 = Creature:new {
 	attacks = merge(brawlermid,marksmanmid)
 }
 
-CreatureTemplates:addCreatureTemplate(caravan_thug_coa3, "caravan_thug_coa3")
+CreatureTemplates:addCreatureTemplate(coa3_caravan_thug, "coa3_caravan_thug")

@@ -1,4 +1,4 @@
-imperial_research_captain_coa3 = Creature:new {
+coa3_imperial_research_captain = Creature:new {
 	objectName = "@mob/creature_names:crackdown_imperial_army_captain",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
@@ -44,4 +44,4 @@ imperial_research_captain_coa3 = Creature:new {
 	attacks = merge(commandomaster,marksmanmaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(imperial_research_captain_coa3, "imperial_research_captain_coa3")
+CreatureTemplates:addCreatureTemplate(coa3_imperial_research_captain, "coa3_imperial_research_captain")

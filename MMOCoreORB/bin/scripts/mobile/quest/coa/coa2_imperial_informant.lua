@@ -1,4 +1,4 @@
-imperial_informant_coa2 = Creature:new {
+coa2_imperial_informant = Creature:new {
 	objectName = "",
 	customName = "Imperial Informant",
 	socialGroup = "imperial",
@@ -33,4 +33,4 @@ imperial_informant_coa2 = Creature:new {
 	attacks = merge(riflemanmaster,carbineermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(imperial_informant_coa2, "imperial_informant_coa2")
+CreatureTemplates:addCreatureTemplate(coa2_imperial_informant, "coa2_imperial_informant")

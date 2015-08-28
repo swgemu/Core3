@@ -1,15 +1,15 @@
-rebel_research_captain_coa3 = Creature:new {
+coa3_caravan_leader = Creature:new {
 	objectName = "",
-	customName = "a Rebel Research Captain",
-	socialGroup = "rebel",
-	faction = "rebel",
-	level = 23,
-	chanceHit = 0.35,
-	damageMin = 220,
-	damageMax = 230,
-	baseXp = 2443,
-	baseHAM = 6300,
-	baseHAMmax = 7700,
+	customName = "Caravan Leader",
+	socialGroup = "caravan",
+	faction = "jabba",
+	level = 19,
+	chanceHit = 0.33,
+	damageMin = 180,
+	damageMax = 190,
+	baseXp = 1609,
+	baseHAM = 4500,
+	baseHAMmax = 5500,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",
@@ -26,7 +26,8 @@ rebel_research_captain_coa3 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_stormtrooper_groupleader_m.iff"},
+	templates = {"object/mobile/dressed_gran_thug_male_01.iff",
+		"object/mobile/dressed_gran_thug_male_02.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -37,9 +38,9 @@ rebel_research_captain_coa3 = Creature:new {
 			}
 		}
 	},
-	weapons = {"rebel_weapons_light"},
+	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(rebel_research_captain_coa3, "rebel_research_captain_coa3")
+CreatureTemplates:addCreatureTemplate(coa3_caravan_leader, "coa3_caravan_leader")

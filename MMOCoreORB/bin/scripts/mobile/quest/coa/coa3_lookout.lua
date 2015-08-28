@@ -1,15 +1,15 @@
-warehouse_guard_coa3 = Creature:new {
+coa3_lookout = Creature:new {
 	objectName = "",
-	customName = "a Warehouse Guard",
-	socialGroup = "warehouse",
+	customName = "a Lookout",
+	socialGroup = "self",
 	faction = "jabba",
-	level = 25,
-	chanceHit = 0.36,
-	damageMin = 240,
-	damageMax = 250,
-	baseXp = 2543,
-	baseHAM = 7200,
-	baseHAMmax = 8800,
+	level = 12,
+	chanceHit = 0.29,
+	damageMin = 130,
+	damageMax = 140,
+	baseXp = 514,
+	baseHAM = 1200,
+	baseHAMmax = 1400,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",
@@ -21,8 +21,8 @@ warehouse_guard_coa3 = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
-	creatureBitmask = PACK + HERD,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
@@ -39,9 +39,9 @@ warehouse_guard_coa3 = Creature:new {
 			}
 		}
 	},
-	weapons = {"pirate_weapons_light"},
+	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(pistoleermaster,marksmanmaster,brawlermaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
-CreatureTemplates:addCreatureTemplate(warehouse_guard_coa3, "warehouse_guard_coa3")
+CreatureTemplates:addCreatureTemplate(coa3_lookout, "coa3_lookout")
