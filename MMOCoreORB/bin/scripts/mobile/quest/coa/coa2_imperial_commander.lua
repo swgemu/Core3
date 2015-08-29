@@ -23,13 +23,13 @@ coa2_imperial_commander = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_commander_m.iff"},
 	lootGroups = {},
-	weapons = {"imperial_weapons_medium"},
-	conversationTemplate = "",
+	weapons = {},
+	conversationTemplate = "imperialCommanderConvoTemplate",
 	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
 
 }

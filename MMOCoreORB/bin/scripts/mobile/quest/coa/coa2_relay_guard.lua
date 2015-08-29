@@ -1,6 +1,6 @@
 coa2_relay_guard = Creature:new {
-	objectName = "",
-	customName = "a Relay Guard",
+	objectName = "@mob/creature_names:stormtrooper",
+	randomNameType = NAME_STORMTROOPER,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 27,
@@ -26,21 +26,20 @@ coa2_relay_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_soldier_m.iff"},
+	templates = {"object/mobile/dressed_stormtrooper_m.iff"},
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 5000000},
-				{group = "rifles", chance = 1000000},
-				{group = "pistols", chance = 1000000},
-				{group = "melee_weapons", chance = 1000000},
-				{group = "carbines", chance = 1000000},
-				{group = "wearables_common", chance = 1000000}
+				{group = "junk", chance = 4000000},
+				{group = "weapons_all", chance = 2000000},
+				{group = "armor_all", chance = 2000000},
+				{group = "wearables_all", chance = 2000000}
 			}
 		}
 	},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/stormtrooper",
 	attacks = merge(riflemanmaster,carbineermaster,marksmanmaster,brawlermaster)
 }
 

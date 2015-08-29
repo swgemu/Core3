@@ -306,8 +306,6 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "neutral")
 
 	--Imperial Npc's Outside
-	pNpc = spawnMobile("tatooine", "coa2_imperial_coordinator",60,-1131.72,12,-3660.15,18.1873,0)
-	self:setMoodString(pNpc, "npc_imperial")
 	--{"commander_dkrn",60,-1157.74,12,-3525.5,200.331,0, "npc_imperial", "Commander D`krn"},
 	spawnMobile("tatooine", "command_security_guard",400,-1278.5,12.5279,-3643.1,165.005,0)
 	spawnMobile("tatooine", "command_security_guard",400,-1243.9,12,-3550.55,301.01,0)
