@@ -16,6 +16,8 @@ endor_regions = {
 	{"central_desert",0,0,{1,0},UNDEFINEDAREA},
 	{"central_forest",0,0,{1,0},UNDEFINEDAREA},
 	{"central_peak",0,0,{1,0},UNDEFINEDAREA},
+        {"coa_imperial_outpost",-1953,1052,{1,60},NOSPAWNAREA + NOBUILDZONEAREA},
+        {"coa_rebel_outpost",4008,2985,{1,60},NOSPAWNAREA + NOBUILDZONEAREA},
 	{"death_watch_bunker",-4655,4330,{1,256},NOSPAWNAREA + NOBUILDZONEAREA},
 	{"desert_one",0,0,{1,0},UNDEFINEDAREA},
 	{"desert_two",0,0,{1,0},UNDEFINEDAREA},

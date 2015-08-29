@@ -9,6 +9,8 @@ function imperialCommanderConvoHandler:getInitialScreen(pPlayer, npc, pConversat
 
 	if TangibleObject(pPlayer):isRebel() then
 		return convoTemplate:getScreen("begin_wrong_faction")
+	elseif state == nil or state < 5 then
+		return convoTemplate:getScreen("m4_finish_incomplete")
 	elseif state == 5 then
 		return convoTemplate:getScreen("m4_finish")
 	elseif state == 6 then
@@ -21,9 +23,9 @@ function imperialCommanderConvoHandler:getInitialScreen(pPlayer, npc, pConversat
 		return convoTemplate:getScreen("m5_active")
 	elseif state > 7 then
 		return convoTemplate:getScreen("m5_finish")
-	else
-		return convoTemplate:getScreen("m4_finish_incomplete")
 	end
+
+	return convoTemplate:getScreen("m4_finish_incomplete")
 end
 
 function imperialCommanderConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
@@ -32,20 +34,20 @@ function imperialCommanderConvoHandler:runScreenHandlers(conversationTemplate, c
 
 	if screenID == "m4_finish" then
 		writeScreenPlayData(conversingPlayer, "imperial_coa2", "state", 6)
-		coa2ScreenPlay:finishMission(conversingPlayer, "imperial", 4)
+		Coa2Screenplay:finishMission(conversingPlayer, "imperial", 4)
 	elseif screenID == "m5_begin_yes" then
 		writeScreenPlayData(conversingPlayer, "imperial_coa2", "state", 7)
-		coa2ScreenPlay:startMission(conversingPlayer, "imperial", 5)
+		Coa2Screenplay:startMission(conversingPlayer, "imperial", 5)
 	elseif screenID == "m5_active_abort" then
 		writeScreenPlayData(conversingPlayer, "imperial_coa2", "state", 6)
-		coa2ScreenPlay:cleanupMission(conversingPlayer, "imperial", 5)
+		Coa2Screenplay:cleanupMission(conversingPlayer, "imperial", 5)
 	elseif screenID == "m5_active_restart" then
-		coa2ScreenPlay:cleanupMission(conversingPlayer, "imperial", 5)
-		coa2ScreenPlay:startMission(conversingPlayer, "imperial", 5)
+		Coa2Screenplay:cleanupMission(conversingPlayer, "imperial", 5)
+		Coa2Screenplay:startMission(conversingPlayer, "imperial", 5)
 	elseif screenID == "m5_finish" then
 		if readScreenPlayData(conversingPlayer, "imperial_coa2", "state") == "8" then
 			writeScreenPlayData(conversingPlayer, "imperial_coa2", "state", 9)
-			coa2ScreenPlay:finishMission(conversingPlayer, "imperial", 5)
+			Coa2Screenplay:finishMission(conversingPlayer, "imperial", 5)
 		end
 	end
 

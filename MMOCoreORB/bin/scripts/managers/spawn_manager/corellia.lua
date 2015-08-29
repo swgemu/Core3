@@ -202,8 +202,6 @@ corellia_regions = {
 corellia_static_spawns = {
 	{"acun_solari",60,19.8219,-0.894996,-19.5533,0,2625356, "calm", "Acun Solari", "stationary"},
 	{"adar",60,-5448.03,21,-2674.92,253.163,0, "calm", "Adar Tallon", "stationary"},
-	{"coa2_rebel_coordinator",60,94.8749,28,-4519.08,121.279,0, "calm", "", "stationary"},
-	{"coa2_rebel_coordinator",60,-5218.4,21,-2602.17,331.695,0, "calm", "", "stationary"},
 	{"commoner",60,-51.7918,28,-4662.65,360.011,0, "calm", "Hunter Javeezo", "stationary"},
 	{"commoner",60,15.2091,0.639422,56.8933,284.328,1935687, "calm", "Amarent Loren", "stationary"},
 	{"corsec_sergeant",300,-5410.17,20.9418,-2789.21,215.169,0, "", "", "stationary"},
