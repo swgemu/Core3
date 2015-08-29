@@ -1,6 +1,6 @@
 coa2_lyda_skims = Creature:new {
 	objectName = "",
-	costumName = "Lyda",
+	costumName = "Lyda Skims",
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 15,

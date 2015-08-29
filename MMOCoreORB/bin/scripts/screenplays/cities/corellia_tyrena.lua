@@ -223,7 +223,6 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "angry")
 	spawnMobile("corellia", "businessman", 60,-5091.15,21,-2315.33,227.834,0)
 	spawnMobile("corellia", "cll_8", 60,-5050.13,21,-2288.73,145.718,0)
-	--{"coa2_rebel_coordinator",60,-5218.4,21,-2602.17,331.695,0, "calm", ""},
 	pNpc = spawnMobile("corellia", "comm_operator",300,-5467.56,21,-2792.59,0,0)
 	self:setMoodString(pNpc, "npc_imperial")
 	spawnMobile("corellia", "commoner", 60,-5633.73,21,-2757.46,93.1038,0)

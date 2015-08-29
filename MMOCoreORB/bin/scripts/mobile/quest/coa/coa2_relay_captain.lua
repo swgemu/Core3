@@ -1,6 +1,5 @@
 coa2_relay_captain = Creature:new {
-	objectName = "",
-	customName = "a Relay Captain",
+	randomNameType = NAME_GENERIC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 29,
@@ -30,17 +29,16 @@ coa2_relay_captain = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 5000000},
-				{group = "rifles", chance = 1000000},
-				{group = "pistols", chance = 1000000},
-				{group = "melee_weapons", chance = 1000000},
-				{group = "carbines", chance = 1000000},
-				{group = "wearables_common", chance = 1000000}
+				{group = "junk", chance = 4000000},
+				{group = "weapons_all", chance = 2000000},
+				{group = "armor_all", chance = 2000000},
+				{group = "wearables_all", chance = 2000000}
 			}
 		}
 	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(riflemanmaster,carbineermaster,marksmanmaster,brawlermaster)
 }
 

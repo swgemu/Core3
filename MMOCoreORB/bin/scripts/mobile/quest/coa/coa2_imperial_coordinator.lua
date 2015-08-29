@@ -23,13 +23,13 @@ coa2_imperial_coordinator = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_officer_m_3.iff"},
 	lootGroups = {},
-	weapons = {"imperial_weapons_heavy"},
-	conversationTemplate = "",
+	weapons = {},
+	conversationTemplate = "imperialCoordinatorConvoTemplate",
 	attacks = {}
 }
 

@@ -1,6 +1,5 @@
 coa2_drall_guard = Creature:new {
-	objectName = "@mob/creature_names:drall_guard",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 27,
@@ -26,16 +25,20 @@ coa2_drall_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/drall_male.iff"},
+	templates = {
+		"object/mobile/dressed_rebel_specforce_pathfinder_human_male_01.iff",
+		"object/mobile/dressed_rebel_specforce_pathfinder_moncal_female_01.iff",
+		"object/mobile/dressed_rebel_specforce_pathfinder_rodian_female_01.iff",
+		"object/mobile/dressed_rebel_specforce_pathfinder_twk_female_01.iff",
+		"object/mobile/dressed_rebel_specforce_pathfinder_twk_male_01.iff",
+		"object/mobile/dressed_rebel_specforce_pathfinder_zabrak_female_fat_01.iff"},
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 5000000},
-				{group = "rifles", chance = 1000000},
-				{group = "pistols", chance = 1000000},
-				{group = "melee_weapons", chance = 1000000},
-				{group = "carbines", chance = 1000000},
-				{group = "wearables_common", chance = 1000000}
+				{group = "junk", chance = 4000000},
+				{group = "weapons_all", chance = 2000000},
+				{group = "armor_all", chance = 2000000},
+				{group = "wearables_all", chance = 2000000}
 			}
 		}
 	},
