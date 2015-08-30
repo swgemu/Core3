@@ -1,6 +1,6 @@
 coa2_imperial_informant = Creature:new {
 	objectName = "",
-	customName = "Imperial Informant",
+	randomNameType = NAME_GENERIC,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 20,
@@ -23,13 +23,24 @@ coa2_imperial_informant = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_officer_m_3.iff"},
+	templates = {	"object/mobile/dressed_commoner_fat_human_male_01.iff",
+			"object/mobile/dressed_commoner_fat_human_male_02.iff",
+			"object/mobile/dressed_commoner_naboo_human_male_01.iff",
+			"object/mobile/dressed_commoner_naboo_human_male_02.iff",
+			"object/mobile/dressed_commoner_naboo_human_male_03.iff",
+			"object/mobile/dressed_commoner_naboo_human_male_04.iff",
+			"object/mobile/dressed_commoner_naboo_human_male_05.iff",
+			"object/mobile/dressed_commoner_naboo_human_male_06.iff",
+			"object/mobile/dressed_commoner_naboo_human_male_07.iff",
+			"object/mobile/dressed_commoner_naboo_human_male_08.iff",
+			"object/mobile/dressed_commoner_old_human_male_01.iff",
+			"object/mobile/dressed_commoner_old_human_male_02.iff",},
 	lootGroups = {},
-	weapons = {"imperial_weapons_medium"},
-	conversationTemplate = "",
+	weapons = {},
+	conversationTemplate = "imperialInformantConvoTemplate",
 	attacks = merge(riflemanmaster,carbineermaster)
 }
 

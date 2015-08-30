@@ -227,7 +227,7 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 
 	StringId nameID(zone->getZoneName() + "_region_names", name);
 
-	area->setObjectName(nameID);
+	area->setObjectName(nameID, false);
 
 	if (height > 0 && width > 0) {
 		ManagedReference<RectangularAreaShape*> rectangularAreaShape = new RectangularAreaShape();

@@ -30,21 +30,12 @@ public:
 		addFloatUpdate(0, tano->getComplexity());
 	}
 
-	/*void updateName(const UnicodeString& name) {
-		if (tano->isPlayerCreature()) {
-			CreatureObject* player = cast<CreatureObject*>( tano);
+	void updateObjectName(StringId& name) {
 
-			if (player->getPlayerObject()->isPrivileged()) {
-				String customName = name.toString() + " \\#ffff00[SWGEmu-Staff]\\#.";
-				addUnicodeUpdate(2, customName);
-				return;
-			}
-		}
+		addStringIdUpdate(1, name);
+	}
 
-		addUnicodeUpdate(2, name);
-	}*/
-
-	void updateName(const UnicodeString& name, const UnicodeString& tag = "") {
+	void updateCustomName(const UnicodeString& name, const UnicodeString& tag = "") {
 		if (tano->isPlayerCreature()) {
 			CreatureObject* player = cast<CreatureObject*>( tano.get());
 

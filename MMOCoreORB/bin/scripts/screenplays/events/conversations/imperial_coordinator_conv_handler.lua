@@ -9,19 +9,19 @@ function imperialCoordinatorConvoHandler:getInitialScreen(pPlayer, npc, pConvers
 
 	if TangibleObject(pPlayer):isRebel() then
 		return convoTemplate:getScreen("begin_wrong_faction")
-	elseif state == nil then
+	elseif state == nil or state == 1 then
 		return convoTemplate:getScreen("m1_begin")
-	elseif state == 1 then
-		return convoTemplate:getScreen("m1_active")
 	elseif state == 2 then
+		return convoTemplate:getScreen("m1_active")
+	elseif state == 3 or state == 4 or state == 5 then
 		return convoTemplate:getScreen("m2_begin")
-	elseif state == 3 then
+	elseif state == 6 then
 		return convoTemplate:getScreen("m2_active")
-	elseif state == 4 then
+	elseif state == 7 or state == 8 then
 		return convoTemplate:getScreen("m3_begin")
-	elseif state == 5 then
+	elseif state == 9 then
 		return convoTemplate:getScreen("m3_active")
-	elseif state > 5 then
+	elseif state > 9 then
 		return convoTemplate:getScreen("m3_finish")
 	end
 
@@ -32,33 +32,37 @@ function imperialCoordinatorConvoHandler:runScreenHandlers(conversationTemplate,
 	local screen = LuaConversationScreen(conversationScreen)
 	local screenID = screen:getScreenID()
 
+	local state = tonumber(readScreenPlayData(conversingPlayer, "imperial_coa2", "state"))
+
 	if screenID == "m1_begin_yes" then
-		writeScreenPlayData(conversingPlayer, "imperial_coa2", "state", 1)
-		Coa2Screenplay:startMission(conversingPlayer, "imperial", 1)
+		Coa2Screenplay:startMissionOne(conversingPlayer, conversingNPC, "imperial")
 	elseif screenID == "m1_active_abort" then
-		writeScreenPlayData(conversingPlayer, "imperial_coa2", "state", 0)
-		Coa2Screenplay:cleanupMission(conversingPlayer, "imperial", 1)
+		writeScreenPlayData(conversingPlayer, "imperial_coa2", "state", 1)
+		Coa2Screenplay:cleanupMission(conversingPlayer, 1)
 	elseif screenID == "m1_active_restart" then
-		Coa2Screenplay:cleanupMission(conversingPlayer, "imperial", 1)
-		Coa2Screenplay:startMission(conversingPlayer, "imperial", 1)
-	elseif screenID == "m2_begin_yes" then
-		writeScreenPlayData(conversingPlayer, "imperial_coa2", "state", 3)
-		Coa2Screenplay:startMission(conversingPlayer, "imperial", 2)
-	elseif screenID == "m2_active_abort" then
-		writeScreenPlayData(conversingPlayer, "imperial_coa2", "state", 2)
-		Coa2Screenplay:cleanupMission(conversingPlayer, "imperial", 2)
-	elseif screenID == "m2_active_restart" then
-		Coa2Screenplay:cleanupMission(conversingPlayer, "imperial", 2)
-		Coa2Screenplay:startMission(conversingPlayer, "imperial", 2)
-	elseif screenID == "m3_begin_yes" then
-		writeScreenPlayData(conversingPlayer, "imperial_coa2", "state", 5)
-		Coa2Screenplay:startMission(conversingPlayer, "imperial", 3)
-	elseif screenID == "m3_active_abort" then
+		Coa2Screenplay:cleanupMission(conversingPlayer, 1)
+		Coa2Screenplay:startMissionOne(conversingPlayer, conversingNPC, "imperial")
+	elseif screenID == "m2_begin" and state == 3 then
 		writeScreenPlayData(conversingPlayer, "imperial_coa2", "state", 4)
-		Coa2Screenplay:cleanupMission(conversingPlayer, "imperial", 3)
+		Coa2Screenplay:cleanupMission(conversingPlayer, 1)
+	elseif screenID == "m2_begin_yes" then
+		Coa2Screenplay:startMissionTwo(conversingPlayer, conversingNPC, "imperial")
+	elseif screenID == "m2_active_abort" then
+		writeScreenPlayData(conversingPlayer, "imperial_coa2", "state", 5)
+		Coa2Screenplay:cleanupMission(conversingPlayer, 2)
+	elseif screenID == "m2_active_restart" then
+		Coa2Screenplay:cleanupMission(conversingPlayer, 2)
+		Coa2Screenplay:startMissionTwo(conversingPlayer, conversingNPC, "imperial")
+	elseif screenID == "m3_begin" and state == 7 then
+		Coa2Screenplay:finishMissionTwo(conversingPlayer, "imperial")
+	elseif screenID == "m3_begin_yes" then
+		Coa2Screenplay:startMissionThree(conversingPlayer, conversingNPC, "imperial")
+	elseif screenID == "m3_active_abort" then
+		writeScreenPlayData(conversingPlayer, "imperial_coa2", "state", 8)
+		Coa2Screenplay:cleanupMission(conversingPlayer, 3)
 	elseif screenID == "m3_active_restart" then
-		Coa2Screenplay:cleanupMission(conversingPlayer, "imperial", 3)
-		Coa2Screenplay:startMission(conversingPlayer, "imperial", 3)
+		Coa2Screenplay:cleanupMission(conversingPlayer, 3)
+		Coa2Screenplay:startMissionThree(conversingPlayer, conversingNPC, "imperial")
 	end
 
 	return conversationScreen

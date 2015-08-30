@@ -42,7 +42,8 @@
 
 
 object_tangible_encoded_disk_encoded_disk_base = object_tangible_encoded_disk_shared_encoded_disk_base:new {
-
+	objectMenuComponent = {"cpp", "CoaEncodedDiskMenuComponent"},
+	noTrade = 1
 }
 
 ObjectTemplates:addTemplate(object_tangible_encoded_disk_encoded_disk_base, "object/tangible/encoded_disk/encoded_disk_base.iff")

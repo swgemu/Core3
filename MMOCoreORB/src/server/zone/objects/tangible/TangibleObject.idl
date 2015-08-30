@@ -28,6 +28,7 @@ import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.tangible.threat.ThreatMap;
 import server.zone.objects.tangible.weapon.WeaponObject;
 include server.zone.objects.scene.variables.AutoDeltaSet;
+include server.zone.objects.scene.variables.StringId;
 
 class TangibleObject extends SceneObject {
 	protected boolean targetable;
@@ -177,6 +178,14 @@ class TangibleObject extends SceneObject {
 	 * @post { this locked }
 	 */
 	public native void notifyLoadFromDatabase();
+
+	/**
+	 * Updates the object name of the object
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	@local
+	public native void setObjectName(@dereferenced StringId stringID, boolean notifyClient);
 
 	/**
 	 * Updates the custom name of the object

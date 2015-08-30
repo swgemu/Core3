@@ -689,12 +689,13 @@ int LuaSceneObject::setContainerOwnerID(lua_State* L) {
 }
 
 int LuaSceneObject::setObjectName(lua_State* L) {
-	String file = lua_tostring(L, -2);
-	String key = lua_tostring(L, -1);
+	String file = lua_tostring(L, -3);
+	String key = lua_tostring(L, -2);
+	bool notifyClient = lua_toboolean(L, -1);
 
 	StringId stringid(file, key);
 
-	realObject->setObjectName(stringid);
+	realObject->setObjectName(stringid, notifyClient);
 
 	return 0;
 }

@@ -1067,7 +1067,7 @@ int SceneObjectImplementation::handleObjectMenuSelect(CreatureObject* player, by
 	return objectMenuComponent->handleObjectMenuSelect(asSceneObject(), player, selectedID);
 }
 
-void SceneObjectImplementation::setObjectName(StringId& stringID) {
+void SceneObjectImplementation::setObjectName(StringId& stringID, bool notifyClient) {
 	objectName = stringID;
 }
 

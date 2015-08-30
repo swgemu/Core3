@@ -23,7 +23,7 @@ coa2_rebel_sympathizer = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK + STALKER,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {	"object/mobile/dressed_commoner_fat_human_female_01.iff",
@@ -78,8 +78,8 @@ coa2_rebel_sympathizer = Creature:new {
 			"object/mobile/dressed_commoner_tatooine_trandoshan_female_04.iff",
 	},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
-	conversationTemplate = "",
+	weapons = {},
+	conversationTemplate = "rebelSympathizerConvoTemplate",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 

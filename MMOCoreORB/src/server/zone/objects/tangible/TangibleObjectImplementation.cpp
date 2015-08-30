@@ -589,6 +589,19 @@ int TangibleObjectImplementation::healDamage(TangibleObject* healer, int damageT
 	return returnValue;
 }
 
+void TangibleObjectImplementation::setObjectName(StringId& stringID, bool notifyClient) {
+	objectName = stringID;
+
+	if (!notifyClient)
+		return;
+
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(asTangibleObject());
+	dtano3->updateObjectName(stringID);
+	dtano3->close();
+
+	broadcastMessage(dtano3, true);
+}
+
 void TangibleObjectImplementation::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
 	customName = name;
 
@@ -596,7 +609,7 @@ void TangibleObjectImplementation::setCustomObjectName(const UnicodeString& name
 		return;
 
 	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(asTangibleObject());
-	dtano3->updateName(name);
+	dtano3->updateCustomName(name);
 	dtano3->close();
 
 	broadcastMessage(dtano3, true);

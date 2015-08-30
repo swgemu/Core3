@@ -1129,7 +1129,7 @@ void CraftingSessionImplementation::customization(const String& name, byte templ
 
 	TangibleObjectDeltaMessage3* dtano3 =
 			new TangibleObjectDeltaMessage3(prototype);
-	dtano3->updateName(newName);
+	dtano3->updateCustomName(newName);
 	dtano3->updateCustomizationString();
 	dtano3->close();
 

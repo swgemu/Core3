@@ -5,10 +5,10 @@ imperialInformantConvoHandler = Object:new {}
 function imperialInformantConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 
-	local playerID = SceneObject(pPlayer):getObjectID()
-	local ownerID = readData(SceneObject(npc):getObjectID() .. ":ownerID")
+	local npcID = SceneObject(npc):getObjectID()
+	local playersNpcID = readData(SceneObject(pPlayer):getObjectID() .. ":coaNpcID")
 
-	if ownerID == playerID then
+	if npcID == playersNpcID then
 		return convoTemplate:getScreen("m1_informant")
 	else
 		return convoTemplate:getScreen("m1_informant_invalid")
@@ -20,8 +20,7 @@ function imperialInformantConvoHandler:runScreenHandlers(conversationTemplate, c
 	local screenID = screen:getScreenID()
 
 	if screenID == "m1_informant_report" then
-		writeScreenPlayData(conversingPlayer, "imperial_coa2", "state", 2)
-		coa2ScreenPlay:finishMission(conversingPlayer, "imperial", 1)
+		Coa2Screenplay:progressMissionOne(conversingPlayer, "imperial")
 	end
 
 	return conversationScreen

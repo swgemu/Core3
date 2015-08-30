@@ -6,6 +6,7 @@
 #define DELTAMESSAGE_H_
 
 #include "engine/engine.h"
+#include "server/zone/objects/scene/variables/StringId.h"
 
 class DeltaMessage : public BaseMessage {
 	int updateCount;
@@ -92,7 +93,14 @@ public:
 		startUpdate(type);
 		insertAscii(val.toCharArray());
 	}
-	
+
+	inline void addStringIdUpdate(uint16 type, StringId& val) {
+		startUpdate(type);
+		insertAscii(val.getFile());
+		insertInt(0);
+		insertAscii(val.getStringID());
+	}
+
 	inline void addUnicodeUpdate(uint16 type, const String& val) {
 		startUpdate(type);
 		UnicodeString v = UnicodeString(val);

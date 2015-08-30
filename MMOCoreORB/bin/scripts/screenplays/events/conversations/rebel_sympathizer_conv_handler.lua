@@ -5,10 +5,10 @@ rebelSympathizerConvoHandler = Object:new {}
 function rebelSympathizerConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 
-	local playerID = SceneObject(pPlayer):getObjectID()
-	local ownerID = readData(SceneObject(npc):getObjectID() .. ":ownerID")
+	local npcID = SceneObject(npc):getObjectID()
+	local playersNpcID = readData(SceneObject(pPlayer):getObjectID() .. ":coaNpcID")
 
-	if ownerID == playerID then
+	if npcID == playersNpcID then
 		local state = tonumber(readScreenPlayData(pPlayer, "rebel_coa2", "state"))
 
 		if state == 3 then
@@ -26,8 +26,7 @@ function rebelSympathizerConvoHandler:runScreenHandlers(conversationTemplate, co
 	local screenID = screen:getScreenID()
 
 	if screenID == "m1_sympathizer_greeting" then
-		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 3)
-		coa2ScreenPlay:progressMission(conversingPlayer, "rebel", 1)
+		Coa2Screenplay:progressMissionOne(conversingPlayer, "rebel")
 	end
 
 	return conversationScreen

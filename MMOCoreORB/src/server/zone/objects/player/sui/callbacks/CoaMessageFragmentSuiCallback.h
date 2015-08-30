@@ -125,11 +125,11 @@ public:
 		if (usingObjectFaction == "Imperial") {
 			data->setFaction("Imperial");
 			StringId stringId("encoded_disk/message_fragment", "name_eventimp1");
-			assembledMessage->setObjectName(stringId);
+			assembledMessage->setObjectName(stringId, false);
 		} else if (usingObjectFaction == "Rebel") {
 			data->setFaction("Rebel");
 			StringId stringId("encoded_disk/message_fragment", "name_eventreb1");
-			assembledMessage->setObjectName(stringId);
+			assembledMessage->setObjectName(stringId, false);
 		}
 
 		data->setNumber(System::random(20) + 1);

@@ -221,7 +221,7 @@ void LootManagerImplementation::setCustomObjectName(TangibleObject* object, Loot
 		if (customName.charAt(0) == '@') {
 			StringId stringId(customName);
 
-			object->setObjectName(stringId);
+			object->setObjectName(stringId, false);
 		} else {
 			object->setCustomObjectName(customName, false);
 		}

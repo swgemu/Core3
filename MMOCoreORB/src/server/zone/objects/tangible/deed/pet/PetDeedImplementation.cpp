@@ -474,7 +474,7 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		StringId s;
 		s.setStringId(pet->getObjectName()->getFullPath());
 		controlDevice->setControlledObject(pet);
-		controlDevice->setObjectName(s);
+		controlDevice->setObjectName(s, false);
 		controlDevice->setPetType(PetManager::CREATUREPET);
 		controlDevice->setMaxVitality(100);
 		controlDevice->setVitality(100);
