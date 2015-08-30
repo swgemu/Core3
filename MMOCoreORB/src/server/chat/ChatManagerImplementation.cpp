@@ -1309,7 +1309,10 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 		}
 	}
 
-	if (receiver->getPlayerObject()->isIgnoring(sendername) && !privileged)
+	PlayerObject* ghost = receiver->getPlayerObject();
+
+	if (ghost == NULL ||
+			(ghost->isIgnoring(sendername) && !privileged))
 		return IM_IGNORED;
 
 	ManagedReference<PersistentMessage*> mail = new PersistentMessage();
