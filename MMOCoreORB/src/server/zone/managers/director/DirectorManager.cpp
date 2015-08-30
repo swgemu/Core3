@@ -487,6 +487,12 @@ int DirectorManager::writeScreenPlayData(lua_State* L) {
 	}
 
 	Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
+
+	if (ghost == NULL) {
+		DirectorManager::instance()->error("Attempted to write screen play data for a null ghost in screen play: " + screenPlay + ".");
+		return 0;
+	}
+
 	ghost->setScreenPlayData(screenPlay, variable, data);
 
 	return 0;
@@ -597,10 +603,21 @@ int DirectorManager::readScreenPlayData(lua_State* L) {
 
 	if (player == NULL || !player->isPlayerCreature()) {
 		DirectorManager::instance()->error("Attempted to read screen play data from a non-player Scene Object in screen play: " + screenPlay + ".");
-		return 0;
+
+		lua_pushstring(L, "");
+
+		return 1;
 	}
 
 	Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
+
+	if (ghost == NULL) {
+		DirectorManager::instance()->error("Attempted to read screen play data for a null ghost in screen play: " + screenPlay + ".");
+
+		lua_pushstring(L, "");
+
+		return 1;
+	}
 
 	//readScreenPlayData(player, screenPlay, variable)
 
@@ -627,6 +644,11 @@ int DirectorManager::deleteScreenPlayData(lua_State* L) {
 
 	Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
 
+	if (ghost == NULL) {
+		DirectorManager::instance()->error("Attempted to delete screen play data for a null ghost in screen play: " + screenPlay + ".");
+		return 0;
+	}
+
 	ghost->deleteScreenPlayData(screenPlay, variable);
 
 	return 0;
@@ -648,6 +670,11 @@ int DirectorManager::clearScreenPlayData(lua_State* L) {
 	}
 
 	Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
+
+	if (ghost == NULL) {
+		DirectorManager::instance()->error("Attempted to clear screen play data for a null ghost in screen play: " + screenPlay + ".");
+		return 0;
+	}
 
 	ghost->clearScreenPlayData(screenPlay);
 
