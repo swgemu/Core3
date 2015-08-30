@@ -751,13 +751,13 @@ void CreatureManagerImplementation::droidHarvest(Creature* creature, CreatureObj
 
 	String creatureHealth = "";
 
-	if (density > 0.80f) {
+	if (density > 0.75f) {
 		quantityExtracted = int(quantityExtracted * 1.25f);
 		creatureHealth = "creature_quality_fat";
-	} else if (density > 0.60f) {
+	} else if (density > 0.50f) {
 		quantityExtracted = int(quantityExtracted * 1.00f);
 		creatureHealth = "creature_quality_medium";
-	} else if (density > 0.40f) {
+	} else if (density > 0.25f) {
 		quantityExtracted = int(quantityExtracted * 0.75f);
 		creatureHealth = "creature_quality_scrawny";
 	} else {
@@ -916,13 +916,13 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 
 	String creatureHealth = "";
 
-	if (density > 0.80f) {
+	if (density > 0.75f) {
 		quantityExtracted = int(quantityExtracted * 1.25f);
 		creatureHealth = "creature_quality_fat";
-	} else if (density > 0.60f) {
+	} else if (density > 0.50f) {
 		quantityExtracted = int(quantityExtracted * 1.00f);
 		creatureHealth = "creature_quality_medium";
-	} else if (density > 0.40f) {
+	} else if (density > 0.25f) {
 		quantityExtracted = int(quantityExtracted * 0.75f);
 		creatureHealth = "creature_quality_scrawny";
 	} else {
