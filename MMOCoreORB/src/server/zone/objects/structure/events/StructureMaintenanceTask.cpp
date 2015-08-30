@@ -40,6 +40,14 @@ void StructureMaintenanceTask::run() {
 
 	ManagedReference<PlayerObject*> ghost = owner->getPlayerObject();
 
+	if (ghost == NULL) {
+		info("Player structure has NULL owner ghost, destroying.", true);
+
+		StructureManager::instance()->destroyStructure(strongRef);
+
+		return;
+	}
+
 	if (!ghost->isOwnedStructure(strongRef)) {
 		info("Removing orphaned structure.", true);
 		StructureManager::instance()->destroyStructure(strongRef);
