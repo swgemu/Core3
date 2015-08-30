@@ -520,7 +520,7 @@ function recruiterScreenplay:transferItem(pPlayer, pInventory, faction, itemStri
 	end
 
 	if (self:isInstallation(faction, itemString)) then
-		SceneObject(pItem):setObjectName("deed", itemString)
+		SceneObject(pItem):setObjectName("deed", itemString, true)
 		local deed = LuaDeed(pItem)
 		local genPath = self:getGeneratedObjectTemplate(faction, itemString)
 

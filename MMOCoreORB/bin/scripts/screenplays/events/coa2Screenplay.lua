@@ -1,31 +1,20 @@
 
 --[[
-Rebel Quest states:
-1 - m1 refused
+Quest states:
+1 - m1 refused/aborted
 2 - m1 active
 3 - m1 return
 4 - m1 complete
-5 - m2 refused
+5 - m2 refused/aborted
 6 - m2 active
 7 - m2 return
 8 - m2 complete
 9 - m3/4 active
 10 - m3/4 complete
-11 - m5 refused
+11 - m5 refused/aborted
 12 - m5 active
 13 - m5 return
 14 - m5 complete
-
-Imperial Quest states:
-1 - m1 active
-2 - m1 complete
-3 - m2 active
-4 - m2 complete
-5 - m3/4 active
-6 - m3/4 complete
-7 - m5 active
-8 - m5 return
-9 - m5 complete
 ]]
 
 Coa2Screenplay = ScreenPlay:new {
@@ -94,25 +83,226 @@ function Coa2Screenplay:spawnStaticNpcs()
 end
 
 function Coa2Screenplay:hasDecodedDisk(pPlayer)
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+
+	if (pInventory == nil) then
+		return false
+	end
+
+	local pItem = getContainerObjectByTemplate(pInventory, "object/tangible/encoded_disk/encoded_disk_base.iff", false)
+
+	if pItem == nil then
+		return false
+	end
+
+	local name = SceneObject(pItem):getObjectName()
+
+	if string.find(name, "decoded") ~= nil then
+		return true
+	end
+
 	return false
 end
 
 function Coa2Screenplay:hasEncodedDisk(pPlayer)
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+
+	if (pInventory == nil) then
+		return false
+	end
+
+	local pItem = getContainerObjectByTemplate(pInventory, "object/tangible/encoded_disk/encoded_disk_base.iff", false)
+
+	if pItem == nil then
+		return false
+	end
+
+	local name = SceneObject(pItem):getObjectName()
+
+	if string.find(name, "encoded") ~= nil then
+		return true
+	end
+
 	return false
 end
 
-function Coa2Screenplay:startMission(pPlayer, faction, number)
+function Coa2Screenplay:giveWaypoint(pPlayer, planet, name, desc, x, y, commander)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
+	if pGhost == nil then
+		return 0
+	end
+
+	local wayID = PlayerObject(pGhost):addWaypoint(planet, name, desc, x, y, 2, true, true, 0, commander)
+
+	return wayID
 end
 
-function Coa2Screenplay:progressMission(pPlayer, faction, number)
+function Coa2Screenplay:removeWaypoint(pPlayer)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
+	if pGhost == nil then
+		return
+	end
+
+	local playerID = SceneObject(pPlayer):getObjectID()
+	local wayID = readData(playerID .. ":coaWayID")
+
+	PlayerObject(pGhost):removeWaypoint(wayID, true)
+	deleteData(playerID .. ":coaWayID")
 end
 
-function Coa2Screenplay:cleanupMission(pPlayer, faction, number)
+function Coa2Screenplay:startMissionOne(pPlayer, conversingNPC, faction)
+	if pPlayer == nil or conversingNPC == nil or not SceneObject(pPlayer):isPlayerCreature() then
+		return
+	end
 
+	local playerX = SceneObject(pPlayer):getWorldPositionX()
+	local playerY = SceneObject(pPlayer):getWorldPositionY()
+	local planet = SceneObject(pPlayer):getZoneName()
+	local playerID = SceneObject(pPlayer):getObjectID()
+	local file = "@theme_park/alderaan/act2/shared_" .. faction .. "_missions"
+
+	local spawnPoint = getSpawnPoint(pPlayer, playerX, playerY, 1000, 1500)
+
+	local pNpc
+
+	if faction == "imperial" then
+		pNpc = spawnMobile(planet, "coa2_imperial_informant", 0, spawnPoint[1], spawnPoint[2], spawnPoint[3], getRandomNumber(360) - 180, spawnPoint[4])
+	elseif faction == "rebel" then
+		pNpc = spawnMobile(planet, "coa2_rebel_sympathizer", 0, spawnPoint[1], spawnPoint[2], spawnPoint[3], getRandomNumber(360) - 180, spawnPoint[4])
+	end
+
+	if pNpc == nil then
+		CreatureObject(pPlayer):sendSystemMessage(file .. ":m1_init_failure")
+		return
+	end
+
+	local wayName = file .. ":waypoint_name_1"
+	local wayDesc = file .. ":waypoint_desc_1"
+	local x = SceneObject(pNpc):getWorldPositionX()
+	local y = SceneObject(pNpc):getWorldPositionY()
+	local wayID = self:giveWaypoint(pPlayer, planet, wayName, wayDesc, x, y, 0)
+
+	if wayID == 0 then
+		CreatureObject(pPlayer):sendSystemMessage(file .. ":waypoint_failure")
+		self:cleanupMission(pPlayer, 1)
+		return
+	end
+
+	writeData(playerID .. ":coaNpcID", SceneObject(pNpc):getObjectID())
+	writeData(playerID .. ":coaCoordinatorID", SceneObject(conversingNPC):getObjectID())
+	writeData(playerID .. ":coaWayID", wayID)
+	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 2)
 end
 
-function Coa2Screenplay:finishMission(pPlayer, faction, number)
+function Coa2Screenplay:progressMissionOne(pPlayer, faction)
+	if pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature() then
+		return
+	end
 
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+
+	if (pInventory == nil) then
+		return
+	end
+
+	local file = "@theme_park/alderaan/act2/shared_" .. faction .. "_missions"
+
+	if faction == "rebel" and SceneObject(pInventory):isContainerFullRecursive() then
+		CreatureObject(pPlayer):sendSystemMessage(file .. ":m1_data_disk_denied")
+		return
+	end
+
+	local playerID = SceneObject(pPlayer):getObjectID()
+	local coordinatorID = readData(playerID .. ":coaCoordinatorID")
+	local pNpc = getSceneObject(coordinatorID)
+
+	if pNpc == nil then
+		return
+	end
+
+	self:removeWaypoint(pPlayer)
+
+	local wayName = file .. ":waypoint_return_name_1"
+	local wayDesc = file .. ":waypoint_return_desc_1"
+	local x = SceneObject(pNpc):getWorldPositionX()
+	local y = SceneObject(pNpc):getWorldPositionY()
+	local planet = SceneObject(pNpc):getZoneName()
+	local wayID = self:giveWaypoint(pPlayer, planet, wayName, wayDesc, x, y, 0)
+
+	if wayID == 0 then
+		CreatureObject(pPlayer):sendSystemMessage(file .. ":waypoint_failure")
+		return
+	end
+
+	if faction == "rebel" then
+		local pItem = giveItem(pInventory, "object/tangible/encoded_disk/encoded_disk_base.iff", -1)
+
+		if pItem == nil then
+			return
+		end
+
+		SceneObject(pItem):setObjectName("theme_park/alderaan/act2/shared_rebel_missions", "disk_name_encoded", true)
+		CreatureObject(pPlayer):sendSystemMessage(file .. ":m1_data_disk_received")
+	end
+
+	writeData(playerID .. ":coaWayID", wayID)
+	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 3)
+end
+
+function Coa2Screenplay:finishMissionOne(pPlayer, faction)
+	self:cleanupMission(pPlayer, 1)
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if pGhost == nil then
+		return
+	end
+
+	PlayerObject(pGhost):addRewardedSchematic("object/draft_schematic/item/theme_park/alderaan/act2/dead_eye_decoder.iff", 2, 1, true)
+
+	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 4)
+end
+
+function Coa2Screenplay:startMissionTwo(pPlayer, conversingNPC, faction)
+	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 6)
+end
+
+function Coa2Screenplay:finishMissionTwo(pPlayer, faction)
+	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 8)
+end
+
+function Coa2Screenplay:startMissionThree(pPlayer, conversingNPC, faction)
+	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 9)
+end
+
+function Coa2Screenplay:finishMissionFour(pPlayer, faction)
+	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 10)
+end
+
+function Coa2Screenplay:startMissionFive(pPlayer, conversingNPC, faction)
+	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 12)
+end
+
+function Coa2Screenplay:finishMissionFive(pPlayer, faction)
+	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 14)
+end
+
+function Coa2Screenplay:cleanupMission(pPlayer, number)
+	if pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature() then
+		return
+	end
+
+	self:removeWaypoint(pPlayer)
+
+	local playerID = SceneObject(pPlayer):getObjectID()
+	local npcID = readData(playerID .. ":coaNpcID")
+	local pNpc = getSceneObject(npcID)
+
+	if pNpc ~= nil then
+		SceneObject(pNpc):destroyObjectFromWorld()
+	end
+
+	deleteData(playerID .. ":coaNpcID")
 end

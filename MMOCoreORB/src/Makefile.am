@@ -469,6 +469,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/generic/CreatureHabitatMenuComponent.cpp \
 		server/zone/objects/tangible/components/generic/CoaMessageFragmentMenuComponent.cpp \
 		server/zone/objects/tangible/components/generic/CoaMessageMenuComponent.cpp \
+		server/zone/objects/tangible/components/generic/CoaEncodedDiskMenuComponent.cpp \
 		server/zone/objects/scene/components/LuaObjectMenuComponent.cpp \
 		server/zone/objects/scene/components/LuaContainerComponent.cpp \
 		server/zone/objects/scene/components/LuaObjectMenuResponse.cpp \

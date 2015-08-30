@@ -156,6 +156,12 @@ includeFile("items/armor/ubese_armor_pants.lua")
 includeFile("items/armor/ubese_armor_shirt.lua")
 
 --coa sub-folder
+includeFile("items/coa/coa_decoder_housing.lua")
+includeFile("items/coa/coa_decoder_power.lua")
+includeFile("items/coa/coa_decoder_processor.lua")
+includeFile("items/coa/coa_decoder_reader.lua")
+includeFile("items/coa/coa_decoder_screen.lua")
+includeFile("items/coa/coa_decoder_translation.lua")
 includeFile("items/coa/coa_imp_1.lua")
 includeFile("items/coa/coa_imp_2.lua")
 includeFile("items/coa/coa_imp_3.lua")

@@ -1737,7 +1737,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public native void setZone(Zone zone);
 	
 	@local
-	public native void setObjectName(@dereferenced StringId stringID);
+	public abstract native void setObjectName(@dereferenced StringId stringID, boolean notifyClient);
 
 	public void setDirection(float fw, float fx, float fy, float fz) {
 		direction.set(fw, fx, fy, fz);

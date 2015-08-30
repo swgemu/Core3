@@ -42,7 +42,35 @@
 
 
 object_draft_schematic_item_theme_park_alderaan_act2_dead_eye_decoder = object_draft_schematic_item_theme_park_alderaan_act2_shared_dead_eye_decoder:new {
+	templateType = DRAFTSCHEMATIC,
 
+	customObjectName = "Dead Eye Decoder",
+
+	craftingToolTab = 524288, -- (See DraftSchemticObjectTemplate.h)
+	complexity = 12,
+	size = 1,
+
+	xpType = "crafting_general",
+	xp = 0,
+
+	assemblySkill = "general_assembly",
+	experimentingSkill = "general_experimentation",
+	customizationSkill = "general_customization",
+
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
+
+	ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"decoder_housing", "decoder_power", "decoder_processor", "decoder_translation", "decoder_reader", "decoder_screen"},
+	ingredientSlotType = {1, 1, 1, 1, 1, 1},
+	resourceTypes = {"object/tangible/theme_park/alderaan/act2/shared_decoder_comp_housing.iff", "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_power.iff", "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_processor.iff", "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_translation.iff", "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_reader.iff", "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_screen.iff"},
+	resourceQuantities = {1, 1, 1, 1, 1, 1},
+	contribution = {100, 100, 100, 100, 100, 100},
+
+	targetTemplate = "object/tangible/encoded_disk/dead_eye_decoder.iff",
+
+	additionalTemplates = {}
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_theme_park_alderaan_act2_dead_eye_decoder, "object/draft_schematic/item/theme_park/alderaan/act2/dead_eye_decoder.iff")

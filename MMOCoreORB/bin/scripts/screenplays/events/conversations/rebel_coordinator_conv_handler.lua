@@ -53,44 +53,41 @@ function rebelCoordinatorConvoHandler:runScreenHandlers(conversationTemplate, co
 	if screenID == "m1_begin_no" then
 		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 1)
 	elseif screenID == "m1_begin_yes" or screenID == "m1_refused_yes" then
-		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 2)
-		Coa2Screenplay:startMission(conversingPlayer, "rebel", 1)
+		Coa2Screenplay:startMissionOne(conversingPlayer, conversingNPC, "rebel")
 	elseif screenID == "m1_active_abort" then
 		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 1)
-		Coa2Screenplay:cleanupMission(conversingPlayer, "rebel", 1)
+		Coa2Screenplay:cleanupMission(conversingPlayer, 1)
 	elseif screenID == "m1_active_restart" then
-		Coa2Screenplay:cleanupMission(conversingPlayer, "rebel", 1)
-		Coa2Screenplay:startMission(conversingPlayer, "rebel", 1)
-	elseif screenID == "m1_finish_encoded" or screenID == "m1_finish_decoded" then
+		Coa2Screenplay:cleanupMission(conversingPlayer, 1)
+		Coa2Screenplay:startMissionOne(conversingPlayer, conversingNPC, "rebel")
+	elseif screenID == "m1_finish_encoded" then
+		Coa2Screenplay:finishMissionOne(conversingPlayer, "rebel")
+	elseif screenID == "m1_finish_decoded" then
 		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 4)
-		Coa2Screenplay:finishMission(conversingPlayer, "rebel", 1)
+		Coa2Screenplay:cleanupMission(conversingPlayer, 1)
 	elseif screenID == "m2_begin_no" then
 		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 5)
 	elseif screenID == "m2_begin_yes" or screenID == "m2_refused_yes" then
-		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 6)
-		Coa2Screenplay:startMission(conversingPlayer, "rebel", 2)
+		Coa2Screenplay:startMissionTwo(conversingPlayer, conversingNPC, "rebel")
 	elseif screenID == "m2_active_abort" then
 		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 5)
-		Coa2Screenplay:cleanupMission(conversingPlayer, "rebel", 2)
+		Coa2Screenplay:cleanupMission(conversingPlayer, 2)
 	elseif screenID == "m2_active_restart" then
-		Coa2Screenplay:cleanupMission(conversingPlayer, "rebel", 2)
-		Coa2Screenplay:startMission(conversingPlayer, "rebel", 2)
+		Coa2Screenplay:cleanupMission(conversingPlayer, 2)
+		Coa2Screenplay:startMissionTwo(conversingPlayer, conversingNPC, "rebel")
 	elseif screenID == "m2_finish_no" then
-		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 8)
-		Coa2Screenplay:finishMission(conversingPlayer, "rebel", 2)
+		Coa2Screenplay:finishMissionTwo(conversingPlayer, "rebel")
 	elseif screenID == "m2_finish_yes" then
-		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 9)
-		Coa2Screenplay:finishMission(conversingPlayer, "rebel", 2)
-		Coa2Screenplay:startMission(conversingPlayer, "rebel", 3)
+		Coa2Screenplay:finishMissionTwo(conversingPlayer, "rebel")
+		Coa2Screenplay:startMissionThree(conversingPlayer, conversingNPC, "rebel")
 	elseif screenID == "m3_begin_yes" then
-		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 9)
-		Coa2Screenplay:startMission(conversingPlayer, "rebel", 3)
+		Coa2Screenplay:startMissionThree(conversingPlayer, conversingNPC, "rebel")
 	elseif screenID == "m3_active_abort" then
 		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 8)
-		Coa2Screenplay:cleanupMission(conversingPlayer, "rebel", 3)
+		Coa2Screenplay:cleanupMission(conversingPlayer, 3)
 	elseif screenID == "m3_active_restart" then
-		Coa2Screenplay:cleanupMission(conversingPlayer, "rebel", 3)
-		Coa2Screenplay:startMission(conversingPlayer, "rebel", 3)
+		Coa2Screenplay:cleanupMission(conversingPlayer, 3)
+		Coa2Screenplay:startMissionThree(conversingPlayer, conversingNPC, "rebel")
 	end
 
 	return conversationScreen

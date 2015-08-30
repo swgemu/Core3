@@ -20,7 +20,11 @@ function rebelCommanderConvoHandler:getInitialScreen(pPlayer, npc, pConversation
 			return convoTemplate:getScreen("m5_begin")
 		end
 	elseif state == 11 then
-		return convoTemplate:getScreen("m5_refused")
+		if TangibleObject(pPlayer):isNeutral() then
+			return convoTemplate:getScreen("m5_begin_undeclared")
+		else
+			return convoTemplate:getScreen("m5_refused")
+		end
 	elseif state == 12 then
 		return convoTemplate:getScreen("m5_active")
 	elseif state > 12 then
@@ -35,23 +39,20 @@ function rebelCommanderConvoHandler:runScreenHandlers(conversationTemplate, conv
 	local screenID = screen:getScreenID()
 
 	if screenID == "m4_finish" then
-		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 10)
-		Coa2Screenplay:finishMission(conversingPlayer, "rebel", 4)
+		Coa2Screenplay:finishMissionFour(conversingPlayer, "rebel")
 	elseif screenID == "m5_begin_no" then
 		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 11)
 	elseif screenID == "m5_begin_yes" or screenID == "m5_refused_yes" then
-		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 12)
-		Coa2Screenplay:startMission(conversingPlayer, "rebel", 5)
+		Coa2Screenplay:startMissionFive(conversingPlayer, conversingNPC, "rebel")
 	elseif screenID == "m5_active_abort" then
 		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 11)
 		Coa2Screenplay:cleanupMission(conversingPlayer, "rebel", 5)
 	elseif screenID == "m5_active_restart" then
 		Coa2Screenplay:cleanupMission(conversingPlayer, "rebel", 5)
-		Coa2Screenplay:startMission(conversingPlayer, "rebel", 5)
+		Coa2Screenplay:startMissionFive(conversingPlayer, conversingNPC, "rebel")
 	elseif screenID == "m5_finish" then
 		if readScreenPlayData(conversingPlayer, "rebel_coa2", "state") == "13" then
-			writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 14)
-			Coa2Screenplay:finishMission(conversingPlayer, "rebel", 5)
+			Coa2Screenplay:finishMissionFive(conversingPlayer, "rebel")
 		end
 	end
 
