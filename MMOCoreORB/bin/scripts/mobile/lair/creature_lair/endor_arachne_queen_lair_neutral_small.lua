@@ -1,5 +1,5 @@
 endor_arachne_queen_lair_neutral_small = Lair:new {
-	mobiles = {{"arachne_queen",1}},
+	mobiles = {{"arachne_queen",1},{"arachne_widow",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large_evil_fire_green.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large_evil_fire_green.iff"},
