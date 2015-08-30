@@ -71,16 +71,8 @@ public:
 
 		if (obj != NULL && obj->isPlayerCreature()) {
 			CreatureObject* player = cast<CreatureObject*>( obj.get());
-			PlayerObject* ghost = player->getPlayerObject();
 
 			Locker _locker(player);
-
-			if (player->getPlayerObject() == NULL) {
-				_locker.release();
-
-				//oldClient->disconnect(),
-				return;
-			}
 
 			ManagedReference<ZoneClientSession*> oldClient = player->getClient();
 
@@ -95,7 +87,13 @@ public:
 
 				return;
 			}
-			
+
+			PlayerObject* ghost = player->getPlayerObject();
+
+			if (ghost == NULL) {
+				return;
+			}
+
 			if (ghost->getAdminLevel() == 0 && (zoneServer->getConnectionCount() >= zoneServer->getServerCap())) {
 				client->sendMessage(new ErrorMessage("Login Error", "Server cap reached, please try again later", 0));
 				return;				
