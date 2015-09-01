@@ -740,7 +740,10 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 
 		if (mayor != NULL && mayor->isPlayerCreature()) {
 			Reference<PlayerObject*> ghost = mayor->getSlottedObject("ghost").castTo<PlayerObject*> ();
-			ghost->addExperience("political", 750, true);
+
+			if (ghost != NULL) {
+				ghost->addExperience("political", 750, true);
+			}
 		}
 
 		updateCityVoting(city);
@@ -1136,7 +1139,10 @@ void CityManagerImplementation::updateCityVoting(CityRegion* city, bool override
 			}
 
 			Reference<PlayerObject*> ghost = mayorObject->getSlottedObject("ghost").castTo<PlayerObject*>();
-			ghost->addExperience("political", votes * 300, true);
+
+			if (ghost != NULL) {
+				ghost->addExperience("political", votes * 300, true);
+			}
 
 			if (votes > topVotes || (votes == topVotes && candidateID == incumbentID)) {
 				topCandidate = candidateID;
