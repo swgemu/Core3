@@ -14,7 +14,7 @@
 class TameCreatureTask : public Task {
 
 private:
-	enum Phase { INITIAL, SECOND, THIRD, FOURTH, FINAL} currentPhase;
+	enum Phase { INITIAL, SECOND, THIRD, FOURTH, FIFTH, FINAL} currentPhase;
 	int originalMask;
 	ManagedReference<Creature*> creature;
 	ManagedReference<CreatureObject*> player;
@@ -60,22 +60,27 @@ public:
 
 		switch (currentPhase) {
 		case INITIAL:
-			chatManager->broadcastMessage(player, "@hireling/hireling:taming_2"); // Steady.
+			chatManager->broadcastMessage(player, "@hireling/hireling:taming_1"); // Easy.
 			player->doAnimation("");
 			currentPhase = SECOND;
 			player->addPendingTask("tame_pet", this, 8000);
 			break;
 		case SECOND:
-			chatManager->broadcastMessage(player, "@hireling/hireling:taming_3"); // Don't be scared.
+			chatManager->broadcastMessage(player, "@hireling/hireling:taming_2"); // Steady.
 			currentPhase = THIRD;
 			player->addPendingTask("tame_pet", this, 8000);
 			break;
 		case THIRD:
-			chatManager->broadcastMessage(player, "@hireling/hireling:taming_4"); // Don't bite me.
+			chatManager->broadcastMessage(player, "@hireling/hireling:taming_3"); // Don't be scared.
 			currentPhase = FOURTH;
 			player->addPendingTask("tame_pet", this, 8000);
 			break;
 		case FOURTH:
+			chatManager->broadcastMessage(player, "@hireling/hireling:taming_4"); // Don't bite me.
+			currentPhase = FIFTH;
+			player->addPendingTask("tame_pet", this, 8000);
+			break;
+		case FIFTH:
 			chatManager->broadcastMessage(player, "@hireling/hireling:taming_5"); // Good... er... boy?
 			currentPhase = FINAL;
 			player->addPendingTask("tame_pet", this, 8000);
@@ -133,7 +138,7 @@ public:
 		StringId s;
 		s.setStringId(creature->getObjectName()->getFullPath());
 
-		controlDevice->setObjectName(s, false);
+		controlDevice->setObjectName(s);
 		controlDevice->setPetType(PetManager::CREATUREPET);
 		controlDevice->setMaxVitality(100);
 		controlDevice->setVitality(100);
