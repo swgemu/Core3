@@ -14,7 +14,7 @@
 class TameCreatureTask : public Task {
 
 private:
-	enum Phase { INITIAL, SECOND, THIRD, FOURTH, FINAL} currentPhase;
+	enum Phase { INITIAL, SECOND, FINAL} currentPhase;
 	int originalMask;
 	ManagedReference<Creature*> creature;
 	ManagedReference<CreatureObject*> player;
@@ -60,25 +60,15 @@ public:
 
 		switch (currentPhase) {
 		case INITIAL:
-			chatManager->broadcastMessage(player, "@hireling/hireling:taming_2"); // Steady.
+			chatManager->broadcastMessage(player, "@hireling/hireling:taming_" + String::valueOf(System::random(4) + 1));
 			player->doAnimation("");
 			currentPhase = SECOND;
-			player->addPendingTask("tame_pet", this, 8000);
+			player->addPendingTask("tame_pet", this, 10000);
 			break;
 		case SECOND:
-			chatManager->broadcastMessage(player, "@hireling/hireling:taming_3"); // Don't be scared.
-			currentPhase = THIRD;
-			player->addPendingTask("tame_pet", this, 8000);
-			break;
-		case THIRD:
-			chatManager->broadcastMessage(player, "@hireling/hireling:taming_4"); // Don't bite me.
-			currentPhase = FOURTH;
-			player->addPendingTask("tame_pet", this, 8000);
-			break;
-		case FOURTH:
-			chatManager->broadcastMessage(player, "@hireling/hireling:taming_5"); // Good... er... boy?
+			chatManager->broadcastMessage(player, "@hireling/hireling:taming_" + String::valueOf(System::random(4) + 1));
 			currentPhase = FINAL;
-			player->addPendingTask("tame_pet", this, 8000);
+			player->addPendingTask("tame_pet", this, 10000);
 			break;
 		case FINAL:
 			float tamingChance = creature->getChanceToTame(player);
