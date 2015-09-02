@@ -2086,6 +2086,19 @@ void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContained
 				if (structure->isCivicStructure()) {
 					StructureSetOwnerTask* task = new StructureSetOwnerTask(structure, 0);
 					task->execute();
+
+					if (structure->isCityHall()) {
+						ManagedReference<CityRegion*> city = structure->getCityRegion().get();
+
+						if (city != NULL) {
+							EXECUTE_TASK_1(city, {
+									Locker locker(city_p);
+
+									city_p->setMayorID(0);
+							});
+						}
+					}
+
 					continue;
 				}
 
