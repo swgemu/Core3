@@ -39,7 +39,10 @@ public:
 	}
 
 	void run() {
-		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer().get().get());
+		ManagedReference<CreatureObject*> player = client->getPlayer().get().castTo<CreatureObject*>();
+
+		if (player == NULL)
+			return;
 
 		ManagedReference<SceneObject*> terminal = server->getZoneServer()->getObject(terminalObjectID);
 
