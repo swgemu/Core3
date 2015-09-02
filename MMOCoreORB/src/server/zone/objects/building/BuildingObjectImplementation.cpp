@@ -1095,6 +1095,9 @@ void BuildingObjectImplementation::promptPayAccessFee(CreatureObject* player) {
 
 	PlayerObject* ghost = player->getPlayerObject();
 
+	if (ghost == NULL)
+		return;
+
 	if (ghost->hasSuiBoxWindowType(SuiWindowType::STRUCTURE_CONSENT_PAY_ACCESS_FEE))
 		return;
 
@@ -1146,7 +1149,11 @@ void BuildingObjectImplementation::payAccessFee(CreatureObject* player) {
 
 	if(owner != NULL && owner->isPlayerCreature()) {
 		Locker clocker(owner, player);
-		owner->getPlayerObject()->addExperience("merchant", 50, true);
+
+		PlayerObject* ghost = owner->getPlayerObject();
+
+		if (ghost != NULL)
+			ghost->addExperience("merchant", 50, true);
 	}
 
 	updatePaidAccessList();
