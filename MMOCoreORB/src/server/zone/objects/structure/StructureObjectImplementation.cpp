@@ -252,6 +252,18 @@ void StructureObjectImplementation::scheduleMaintenanceTask(int timeFromNow) {
 	}
 }
 
+void StructureObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
+	if (structureMaintenanceTask != NULL) {
+		if (structureMaintenanceTask->isScheduled()) {
+			structureMaintenanceTask->cancel();
+		}
+
+		structureMaintenanceTask = NULL;
+	}
+
+	TangibleObjectImplementation::destroyObjectFromWorld(sendSelfDestroy);
+}
+
 bool StructureObjectImplementation::isOwnerOf(SceneObject* obj) {
 	if (obj == NULL || !obj->isPlayerCreature()) {
 		return false;
