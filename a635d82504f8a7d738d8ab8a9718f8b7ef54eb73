@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3aa0d159_3cb0f1f3",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4851,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2015-09-03T21:33:06Z",
+      "side": 1,
+      "message": "not thread safe on the nameMap",
+      "revId": "a635d82504f8a7d738d8ab8a9718f8b7ef54eb73",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
