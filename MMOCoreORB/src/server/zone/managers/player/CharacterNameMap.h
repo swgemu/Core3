@@ -55,6 +55,10 @@ public:
 	int size() {
 		return names.size();
 	}
+
+	HashTableIterator<String, uint64> iterator() {
+		return names.iterator();
+	}
 };
 
 #endif /* CHARACTERNAMEMAP_H_ */

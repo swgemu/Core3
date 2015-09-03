@@ -30,7 +30,7 @@ public:
 		methodFactory.registerMethod<VendorInfoCommand>("vendorinfo");
 		methodFactory.registerMethod<RevisionInfoCommand>("revision");
 		methodFactory.registerMethod<ServerInfoCommand>("info");
-		methodFactory.registerMethod<PlayerManagerCommand>("PlayerManagerCommand");
+		methodFactory.registerMethod<PlayerManagerCommand>("playermanager");
 		methodFactory.registerMethod<PlayerInfoCommand>("playerinfo");
 		methodFactory.registerMethod<DebugCommand>("debug");
 		methodFactory.registerMethod<MarketCommand>("market");

@@ -4842,3 +4842,38 @@ void PlayerManagerImplementation::enhanceCharacter(CreatureObject* player) {
 	if (message && player->isPlayerCreature())
 		player->sendSystemMessage("An unknown force strengthens you for battles yet to come.");
 }
+
+int PlayerManagerImplementation::sendAdminJediList(CreatureObject* player) {
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::ADMIN_JEDILIST);
+
+	HashTableIterator<String, uint64> iter = nameMap->iterator();
+	Vector<String> jedi;
+
+	while (iter.hasNext()) {
+		uint64 id = iter.next();
+
+		ManagedReference<CreatureObject*> creo = server->getObject(id).castTo<CreatureObject*>();
+
+		if (creo != NULL && creo->isPlayerCreature()) {
+			PlayerObject* ghost = creo->getPlayerObject();
+
+			if (ghost != NULL && ghost->getJediState() > 1) {
+				jedi.add(creo->getFirstName());
+			}
+		}
+	}
+
+	ManagedReference<SuiListBox*> listBox = new SuiListBox(player, SuiWindowType::ADMIN_JEDILIST);
+	listBox->setPromptTitle("Jedi List");
+	listBox->setPromptText("This is a list of all characters with a jedi state of 2 or greater.");
+	listBox->setCancelButton(true, "@cancel");
+
+	for (int i = 0; i < jedi.size(); i++) {
+		listBox->addMenuItem(jedi.get(i));
+	}
+
+	player->getPlayerObject()->addSuiBox(listBox);
+	player->sendMessage(listBox->generateMessage());
+
+	return 0;
+}
