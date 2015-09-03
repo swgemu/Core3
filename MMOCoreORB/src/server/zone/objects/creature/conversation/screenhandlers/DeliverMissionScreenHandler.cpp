@@ -128,7 +128,7 @@ ConversationScreen* DeliverMissionScreenHandler::handleScreen(CreatureObject* co
 		//NPC is related to a mission for this player.
 		DeliverMissionObjective* objective = cast<DeliverMissionObjective*>(mission->getMissionObjective());
 		if (objective != NULL) {
-			Locker locker(objective);
+			Locker locker(objective, conversingPlayer);
 
 			//Run mission logic.
 
