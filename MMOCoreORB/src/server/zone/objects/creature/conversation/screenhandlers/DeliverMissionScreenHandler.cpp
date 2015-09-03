@@ -126,9 +126,9 @@ ConversationScreen* DeliverMissionScreenHandler::handleScreen(CreatureObject* co
 		conversationScreen->setDialogText("@mission/mission_generic:deliver_incorrect_player_" + String::valueOf(randomAnswer));
 	} else {
 		//NPC is related to a mission for this player.
-		DeliverMissionObjective* objective = cast<DeliverMissionObjective*>(mission->getMissionObjective());
+		Reference<DeliverMissionObjective*> objective = cast<DeliverMissionObjective*>(mission->getMissionObjective());
 		if (objective != NULL) {
-			Locker locker(objective);
+			Locker locker(objective, conversingPlayer);
 
 			//Run mission logic.
 
