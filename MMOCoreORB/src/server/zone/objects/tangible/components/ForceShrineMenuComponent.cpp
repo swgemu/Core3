@@ -31,7 +31,7 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 	if (selectedID != 213)
 		return 0;
 
-	if (!creature->hasSkill("force_title_jedi_novice"))
+	if (!creature->hasSkill("force_title_jedi_rank_01"))
 		return 0;
 
 	if (creature->getPosture() != CreaturePosture::CROUCHED){
