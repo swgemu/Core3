@@ -112,7 +112,7 @@ init_start_audition = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		{"@conversation/quest_crowd_pleaser_manager:s_4a1d2431", "what_type_of_audition"}, -- Yes, I'm ready.
-		{"@conversation/quest_crowd_pleaser_manager:s_f3d46f0b", "come_back_when_ready"}, -- No, not quite yet.
+		{"@conversation/quest_crowd_pleaser_manager:s_f3d46f0b", "alright_come_back_when_ready"}, -- No, not quite yet.
 	}
 }
 theaterManagerConvoTemplate:addScreen(init_start_audition);
