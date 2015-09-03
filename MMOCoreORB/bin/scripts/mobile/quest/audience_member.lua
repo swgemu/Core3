@@ -24,8 +24,7 @@ audience_member = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	--optionsBitmask = 392,
-	optionsBitmask = 128,
+	optionsBitmask = 392,
 	diet = HERBIVORE,
 
 	templates = {
@@ -77,8 +76,7 @@ audience_member = Creature:new {
 	},
 	lootGroups = {},
 	weapons = {},
-	--conversationTemplate = "theaterManagerAudienceMemberConvoTemplate",
-	conversationTemplate = "",
+	conversationTemplate = "audienceMemberConvoTemplate",
 	attacks = {
 	}
 }
