@@ -60,6 +60,30 @@ function TatooineMosTaikeScreenPlay:spawnMobiles()
 	pNpc = spawnMobile("tatooine", "commoner_naboo",60,1.7,1.0,4.8,-85,1154123)
 	self:setMoodString(pNpc, "entertained")
 
+	--imperial spawns that will need to be added again with planet-swap function
+
+	--spawnMobile("tatooine", "stormtrooper",300,3732.4,5.6,2387.5,90,0)
+	--spawnMobile("tatooine", "stormtrooper",300,3732.2,5.5,2382.8,90,0)
+	--spawnMobile("tatooine", "stormtrooper",300,3759.3,8.4,2309.4,180,0)
+	--spawnMobile("tatooine", "stormtrooper",300,3788.5,8.4,2309.9,180,0)
+	--spawnMobile("tatooine", "scout_trooper",300,3792.3,11.6,2379.2,180,0)
+	--spawnMobile("tatooine", "stormtrooper_sniper",300,3813.2,16.1,2315.6,-137,0)
+	--spawnMobile("tatooine", "stormtrooper_bombardier",300,3855.6,27.5,2325.3,-50,0)
+	--spawnMobile("tatooine", "assault_trooper_squad_leader",400,3858.4,27.5,2328.6,-50,0)
+	--spawnMobile("tatooine", "assault_trooper",400,3951.7,53.5,2265.1,-114,0)
+
+	--Rebel spawns that will also need to be added again with planet-swap function
+
+	--spawnMobile("tatooine", "rebel_crewman",300,3730.4,5.6,2389.5,90,0)
+	--spawnMobile("tatooine", "rebel_crewman",300,3730.2,5.5,2384.8,90,0)
+	--spawnMobile("tatooine", "rebel_trooper",300,3757.3,8.4,2311.4,180,0)
+	--spawnMobile("tatooine", "rebel_trooper",300,3786.5,8.4,2311.9,180,0)
+	--spawnMobile("tatooine", "rebel_scout",300,3790.3,11.6,2381.2,180,0)
+	--spawnMobile("tatooine", "rebel_resistance_separatist",300,3811.2,16.1,2317.6,-137,0)
+	--spawnMobile("tatooine", "rebel_surface_marshall",300,3853.6,27.5,2327.3,-50,0)
+	--spawnMobile("tatooine", "alliance_intelligence_case_officer",400,3856.4,27.5,2330.6,-50,0)
+	--spawnMobile("tatooine", "rebel_major_general",400,3949.7,53.5,2267.1,-114,0)
+
 		--misc
 	--spawnMobile("tatooine", "junk_dealer", 1, 3905.3, 33, 2362.9, -90, 0)
 	--spawnMobile("tatooine", "junk_nathan", 1, 3817.7, 16.2, 2340.5, 0, 0)

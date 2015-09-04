@@ -160,4 +160,33 @@ function TatooineWayfarScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "trainer_scout",0,-5051.46,75,-6629.48,7,0)
 	pNpc = spawnMobile("tatooine", "trainer_unarmed",0,-5055,75,-6633,310,0)
 	self:setMoodString(pNpc, "npc_sitting_ground")
+
+	--imperial spawns that will need to be added again with planet-swap function
+	
+	--spawnMobile("tatooine", "sand_trooper",300,-5033.0,75.0,-6623.2,90,0)
+	--spawnMobile("tatooine", "sand_trooper",300,-5030.3,75.0,-6605.0,90,0)
+	--spawnMobile("tatooine", "stormtrooper_squad_leader",300,-5031.1,75.0,-6610.1,90,0)
+	--spawnMobile("tatooine", "dark_trooper",300,-5102.9,75.0,-6617.5,90,0)
+	--spawnMobile("tatooine", "dark_trooper",300,-5125.8,75.0,-6576.9,125,0)
+	--spawnMobile("tatooine", "scout_trooper",300,-5211.3,75.0,-6611.2,-130,0)
+	--spawnMobile("tatooine", "stormtrooper_bombardier",300,-5207.2,75.0,-6603.6,111,0)
+	--spawnMobile("tatooine", "dark_trooper",400,-5221.7,75.0,-6595.2,-60,0)
+	--spawnMobile("tatooine", "stormtrooper_medic",300,-5248.3,75.0,-6529.9,0,0)
+	--spawnMobile("tatooine", "stormtrooper_groupleader",300,-5287.5,75.0,-6594.4,-145,0)
+	--spawnMobile("tatooine", "sand_trooper",300,-5295.0,75.0,-6590.2,-145,0)
+
+	--Rebel spawns that will also need to be added again with planet-swap function
+	
+	--spawnMobile("tatooine", "rebel_trooper",300,-5031.0,75.0,-6625.2,90,0)
+	--spawnMobile("tatooine", "rebel_trooper",300,-5028.3,75.0,-6607.0,90,0)
+	--spawnMobile("tatooine", "rebel_lieutenant_general",300,-5029.1,75.0,-6612.1,90,0)
+	--spawnMobile("tatooine", "rebel_sergeant_major",300,-5100.9,75.0,-6619.5,90,0)
+	--spawnMobile("tatooine", "rebel_sergeant_major",300,-5123.8,75.0,-6578.9,125,0)
+	--spawnMobile("tatooine", "rebel_trooper",300,-5209.3,75.0,-6613.2,-130,0)
+	--spawnMobile("tatooine", "rebel_surface_marshall",300,-5205.2,75.0,-6605.6,111,0)
+	--spawnMobile("tatooine", "rebel_scout",400,-5219.7,75.0,-6597.2,-60,0)
+	--spawnMobile("tatooine", "rebel_medic",300,-5246.3,75.0,-6531.9,0,0)
+	--spawnMobile("tatooine", "rebel_high_general",300,-5285.5,75.0,-6596.4,-145,0)
+	--spawnMobile("tatooine", "rebel_trooper",300,-5293.0,75.0,-6592.2,-145,0)
+
 end
