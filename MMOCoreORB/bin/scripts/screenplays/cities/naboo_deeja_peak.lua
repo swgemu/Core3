@@ -156,10 +156,13 @@ function NabooDeejaPeakScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "trainer_weaponsmith", 0,-2.5,1.13306,-8.4,91,1685239)
 
 	--Guild Hall/Theater 4963 -1475
+	pNpc = spawnMobile("naboo", "shadowy_figure",60,-22.5,2.1,71.5,18,2725361)
+	self:setMoodString(pNpc, "sad")
 	spawnMobile("naboo", "trainer_dancer", 0,17.8577,2.12873,53.8179,2,2725360)
 	spawnMobile("naboo", "trainer_entertainer", 0,28.1,2.1,73.1,-138,2725360)
 	spawnMobile("naboo", "trainer_imagedesigner", 0,-22.2396,2.12878,72.4933,181,2725361)
-	spawnMobile("naboo", "trainer_musician", 0,21.8956,2.12814,63.5,0,2725360)
+	spawnMobile("naboo", "trainer_musician", 0,21.7,2.1,76.3,180,2725360)
+	spawnMobile("naboo", "theater_manager", 0,21.8956,2.12814,63.5,0,2725360)
 
 	--Outside
 	spawnMobile("naboo", "imperial_recruiter", 0,5307,326,-1584,74,0)
@@ -172,5 +175,30 @@ function NabooDeejaPeakScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "trainer_artisan", 0,4715,330,-1393,77,0)
 	spawnMobile("naboo", "trainer_politician", 0,4702,330,-1368,84,0)
 	spawnMobile("naboo", "trainer_marksman", 0,4980,360,-1425,-100,0)
+	--imperial 'stronghold' spawns
+	spawnMobile("naboo", "stormtrooper",300,5177.5,326.0,-1553.6,-75,0)
+	spawnMobile("naboo", "stormtrooper",300,5179.1,326.3,-1547.4,-75,0)
+	spawnMobile("naboo", "civil_patrol_sergeant",300,5180.9,346.5,-1491.2,-170,0)
+	spawnMobile("naboo", "stormtrooper",300,5177.4,346.5,-1489.7,-170,0)
+	spawnMobile("naboo", "dark_trooper",300,5152.0,346.5,-1501.9,140,0)
+	spawnMobile("naboo", "dark_trooper",300,5145.1,346.5,-1506.9,140,0)
+	spawnMobile("naboo", "stormtrooper",300,5146.5,350.0,-1467.6,-165,0)
+	spawnMobile("naboo", "stormtrooper",300,5122.7,350.0,-1460.4,-165,0)
+	spawnMobile("naboo", "dark_trooper",300,5060.3,350.0,-1532.1,58,0)
+	spawnMobile("naboo", "dark_trooper",300,5056.3,350.0,-1525.3,62,0)
+	spawnMobile("naboo", "stormtrooper_rifleman",300,5028.5,360.0,-1541.3,-117,0)
+	spawnMobile("naboo", "stormtrooper_rifleman",300,5032.6,360.0,-1547.6,-81,0)
+	spawnMobile("naboo", "stormtrooper",300,4840.2,360.0,-1384.0,10,0)
+	spawnMobile("naboo", "stormtrooper",300,4833.0,360.0,-1377.5,170,0)
+	spawnMobile("naboo", "civil_patrol_commander",300,4796.4,336.6,-1467.6,-64,0)
+	spawnMobile("naboo", "dark_trooper",300,4788.8,335.6,-1481.4,8,0)
+	spawnMobile("naboo", "stormtrooper",300,4763.2,329.8,-1339.5,0,0)
+	spawnMobile("naboo", "stormtrooper",300,4747.0,330.0,-1343.2,0,0)
+	spawnMobile("naboo", "dark_trooper",300,4702.0,330.0,-1371.9,65,0)
+	spawnMobile("naboo", "dark_trooper",300,4709.0,330.0,-1387.9,65,0)
+	spawnMobile("naboo", "stormtrooper_sniper",300,4733.7,329.8,-1426.3,172,0)
+	spawnMobile("naboo", "stormtrooper_sniper",300,4742.9,329.8,-1424.7,-177,0)
+
+
 
 end
