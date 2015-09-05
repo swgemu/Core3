@@ -500,7 +500,7 @@ void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building,
 		block.release();
 
 		Reference<Task*> newTask = new BaseDestructionTask(_this.getReferenceUnsafeStaticCast(), building);
-		newTask->schedule(60000);
+		newTask->schedule(this->destructionTimer * 1000);
 		this->addDestroyTask(building->getObjectID(),newTask);
 
 	}
