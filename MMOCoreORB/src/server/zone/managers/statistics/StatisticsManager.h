@@ -33,7 +33,7 @@ public:
 		reset();
 	}
 
-	void completeMission(unsigned int missionType, int reward) {
+	void completeMission(uint32 missionType, int reward) {
 		switch (missionType) {
 		case MissionObject::BOUNTY:
 			numberOfCompletedMissionsBounty.increment();
