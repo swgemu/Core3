@@ -120,6 +120,34 @@ namespace zone {
 			server = srv;
 		}
 
+		template<typename ClassType> void getPersistentObjectsSerializedVariable(const uint32& variableHashCode, ClassType* address, uint64 objectID) {
+			uint16 tableID = (uint16)(objectID >> 48);
+
+			LocalDatabase* db = databaseManager->getDatabase(tableID);
+
+			if (db == NULL || !db->isObjectDatabase())
+				return;
+
+			ObjectDatabase* database = cast<ObjectDatabase*>( db);
+
+			ObjectInputStream objectData(500);
+
+			if (database->getData(objectID, &objectData)) {
+				return;
+			}
+
+			Locker _locker(this);
+
+			try {
+				if (!Serializable::getVariable<ClassType>(variableHashCode, address, &objectData)) {
+					error("could not get object variable from database, unknown variable hashcode: " + String::valueOf(variableHashCode));
+				}
+			} catch (...) {
+				error("could not find object in database");
+
+				throw;
+			}
+		}
 	};
 
 }
