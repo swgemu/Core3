@@ -2043,6 +2043,9 @@ bool CityManagerImplementation::isCityInRange(Zone* zone, float x, float y) {
 }
 
 void CityManagerImplementation::sendMayoralStandings(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	if (!city->isCitizen(creature->getObjectID()) && !creature->getPlayerObject()->isPrivileged())
+			return;
+
 	VectorMap<uint64, int>* candidates = city->getCandidates();
 
 	if (candidates->size() == 0) {

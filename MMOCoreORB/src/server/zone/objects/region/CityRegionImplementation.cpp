@@ -767,6 +767,12 @@ void CityRegionImplementation::transferCivicStructuresToMayor() {
 			Locker clock(newMayor, _this.getReferenceUnsafeStaticCast());
 
 			mayorPlayer->setDeclaredResidence(cityBuilding);
+
+			clock.release();
+
+			Locker blocker(cityBuilding, _this.getReferenceUnsafeStaticCast());
+
+			cityBuilding->setResidence(true);
 		}
 	}
 
