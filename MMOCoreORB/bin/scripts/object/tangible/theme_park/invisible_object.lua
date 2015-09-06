@@ -42,7 +42,7 @@
 
 
 object_tangible_theme_park_invisible_object = object_tangible_theme_park_shared_invisible_object:new {
-
+	invisible = 1
 }
 
 ObjectTemplates:addTemplate(object_tangible_theme_park_invisible_object, "object/tangible/theme_park/invisible_object.iff")
