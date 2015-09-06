@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3aa0d159_5c793dfb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/corellia_coronet.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-06T01:01:07Z",
+      "side": 1,
+      "message": "You\u0027re missing the planet from this line",
+      "revId": "5c2e70b29977f3dfab660b280d1727c91b0021fa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_7c7e79e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/corellia_coronet.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-06T01:01:07Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "5c2e70b29977f3dfab660b280d1727c91b0021fa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_1c83b5cd",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/corellia_kor_vella.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-06T01:01:07Z",
+      "side": 1,
+      "message": "Shouldn\u0027t these also change sides depending on planetary control?",
+      "revId": "5c2e70b29977f3dfab660b280d1727c91b0021fa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_3c88f1e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/naboo_kaadara.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-06T01:01:07Z",
+      "side": 1,
+      "message": "Shouldn\u0027t these also change sides depending on planetary control?",
+      "revId": "5c2e70b29977f3dfab660b280d1727c91b0021fa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
