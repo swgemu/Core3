@@ -408,6 +408,7 @@ class BuildingObject extends StructureObject {
 		return registeredPlayerIdList.contains(id);
 	}
 
+	@preLocked
 	public native void createChildObjects();
 
 	@local

@@ -219,6 +219,7 @@ class CreatureObject extends TangibleObject {
 
 	public native void finalize();
 
+	@preLocked
 	public native void createChildObjects();
 
 	/**

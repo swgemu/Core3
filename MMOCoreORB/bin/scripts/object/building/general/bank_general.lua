@@ -42,7 +42,7 @@
 
 
 object_building_general_bank_general = object_building_general_shared_bank_general:new {
-	planetMapCategory = "bank"
+
 }
 
 ObjectTemplates:addTemplate(object_building_general_bank_general, "object/building/general/bank_general.iff")

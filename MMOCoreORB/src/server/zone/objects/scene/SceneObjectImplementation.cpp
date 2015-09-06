@@ -1180,7 +1180,7 @@ void SceneObjectImplementation::createChildObjects() {
 		if (obj == NULL)
 			continue;
 
-		Locker objLocker(obj);
+		Locker objLocker(obj, asSceneObject());
 
 		Vector3 childPosition = child->getPosition();
 		childObjects.put(obj);

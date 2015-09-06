@@ -86,7 +86,8 @@ class CraftingStation extends ToolTangibleObject {
 	
 	@dirty
 	public native SceneObject findCraftingTool(CreatureObject player);
-	
+
+	@preLocked
 	public native void createChildObjects();
 	
 	public void setEffectiveness(float newValue) {

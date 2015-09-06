@@ -88,6 +88,7 @@ class StructureObject extends TangibleObject {
 
 	public native void notifyInsertToZone(Zone zone);
 
+	@preLocked
 	public void createChildObjects() {
 		super.createChildObjects();
 	}

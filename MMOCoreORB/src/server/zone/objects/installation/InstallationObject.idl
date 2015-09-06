@@ -264,6 +264,7 @@ class InstallationObject extends StructureObject {
 	@dirty
 	public native boolean isAttackableBy(CreatureObject object);
 
+	@preLocked
 	public native void createChildObjects();
 
 	@dirty

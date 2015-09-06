@@ -63,6 +63,7 @@ class FactoryObject extends InstallationObject {
 	/**
 	 * Handles creating the hoppers
 	 */
+	@preLocked
 	public native void createChildObjects();
 
 	/**

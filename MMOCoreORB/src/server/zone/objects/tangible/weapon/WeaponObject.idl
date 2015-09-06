@@ -173,6 +173,7 @@ class WeaponObject extends TangibleObject {
 	/**
 	 * Handles creating the Saber inventory.
 	 */
+	@preLocked
 	public native void createChildObjects();
 	
 	/**
