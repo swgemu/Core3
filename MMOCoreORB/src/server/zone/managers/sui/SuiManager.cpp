@@ -446,6 +446,8 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 					return;
 				}
 
+				Locker locker(apron);
+
 				apron->createChildObjects();
 
 				if (apron->isWearableObject()) {
@@ -612,6 +614,8 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 				error("could not create frog item: " + node->getDisplayName());
 				return;
 			}
+
+			Locker locker(item);
 
 			item->createChildObjects();
 

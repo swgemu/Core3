@@ -49,6 +49,7 @@ class Jukebox extends Terminal {
 	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 
+	@preLocked
 	public void createChildObjects() {
 		super.createChildObjects();
 	}

@@ -1443,8 +1443,6 @@ void BuildingObjectImplementation::spawnChildSceneObject(String& templatePath, f
 		zone->transferObject(object, -1, true);
 	}
 
-	objLocker.release();
-
 	object->createChildObjects();
 
 	childObjects.put(object);
@@ -1481,7 +1479,7 @@ void BuildingObjectImplementation::spawnChildCreaturesFromTemplate(){
 					}
 
 				} catch (Exception& e) {
-						error("unreported exception caught in void SceneObjectImplementation::createChildObjects()!");
+						error("unreported exception caught in void BuildingObjectImplementation::spawnChildCreaturesFromTemplate()!");
 						e.printStackTrace();
 				}
 

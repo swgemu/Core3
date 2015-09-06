@@ -489,7 +489,7 @@ void ZoneImplementation::updateActiveAreas(TangibleObject* tano) {
 
 void ZoneImplementation::addSceneObject(SceneObject* object) {
 	SceneObject* old = objectMap->put(object->getObjectID(), object);
-	
+
 	//Civic and commercial structures map registration will be handled by their city
 	if (object->isStructureObject()) {
 		StructureObject* structure = cast<StructureObject*>(object);
@@ -508,7 +508,7 @@ void ZoneImplementation::addSceneObject(SceneObject* object) {
 	} else if (old == NULL && object->isAiAgent()) {
 		spawnedAiAgents.increment();
 	}
-	
+
 	registerObjectWithPlanetaryMap(object);
 }
 

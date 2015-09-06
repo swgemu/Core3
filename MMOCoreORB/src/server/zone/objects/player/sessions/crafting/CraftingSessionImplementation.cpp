@@ -365,10 +365,14 @@ bool CraftingSessionImplementation::createPrototypeObject(DraftSchematic* drafts
 		return false;
 	}
 
-	prototype.get()->createChildObjects();
+	ManagedReference<TangibleObject*> strongPrototype = prototype.get();
 
-	craftingTool->transferObject(prototype.get(), -1, false);
-	prototype.get()->sendTo(crafter.get(), true);
+	Locker locker(strongPrototype);
+
+	strongPrototype->createChildObjects();
+
+	craftingTool->transferObject(strongPrototype, -1, false);
+	strongPrototype->sendTo(crafter.get(), true);
 
 	if(crafterGhost != NULL && crafterGhost.get()->getDebug()) {
 		crafter.get()->sendSystemMessage("Prototype Created");

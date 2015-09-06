@@ -77,8 +77,6 @@ public:
 				return GENERALERROR;
 			}
 
-			manuSchematic->createChildObjects();
-
 			int quantity = 1;
 
 			if(tokenizer.hasMoreTokens())
