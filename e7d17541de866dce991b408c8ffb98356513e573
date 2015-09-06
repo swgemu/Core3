@@ -1,0 +1,242 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3aa0d159_9cf10598",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/theater_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-06T00:46:49Z",
+      "side": 1,
+      "message": "Will later steps have a heartbeat with a different duration? I\u0027m curious why you need a separate heartbeat for the performance and audition if the value is the same.",
+      "revId": "e7d17541de866dce991b408c8ffb98356513e573",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_bcee41b3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/theater_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-06T00:46:49Z",
+      "side": 1,
+      "message": "return",
+      "revId": "e7d17541de866dce991b408c8ffb98356513e573",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_5c2b7deb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/theater_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-06T00:46:49Z",
+      "side": 1,
+      "message": "exiting",
+      "revId": "e7d17541de866dce991b408c8ffb98356513e573",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_7c30b956",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/theater_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-06T00:46:49Z",
+      "side": 1,
+      "message": "Is there a reason you aren\u0027t just using the pControl that\u0027s a function arg?",
+      "revId": "e7d17541de866dce991b408c8ffb98356513e573",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_1c35f545",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/theater_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-06T00:46:49Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like you are using theaterID anymore.",
+      "revId": "e7d17541de866dce991b408c8ffb98356513e573",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_5c129db5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/theater_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-06T00:46:49Z",
+      "side": 1,
+      "message": "return",
+      "revId": "e7d17541de866dce991b408c8ffb98356513e573",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_7c1759a4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/theater_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-06T00:46:49Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like you are using this.",
+      "revId": "e7d17541de866dce991b408c8ffb98356513e573",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_1c0c1594",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/theater_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-06T00:46:49Z",
+      "side": 1,
+      "message": "You\u0027re already adding 5 above. Are you sure you want to add 5 again here?",
+      "revId": "e7d17541de866dce991b408c8ffb98356513e573",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_3c11d1ac",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/theater_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1093,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-06T00:46:49Z",
+      "side": 1,
+      "message": "Since you spawn 5 per wave, wouldn\u0027t multiples of 5 be acceptable?",
+      "revId": "e7d17541de866dce991b408c8ffb98356513e573",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_dc254d0b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/theater_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1095,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-06T00:46:49Z",
+      "side": 1,
+      "message": "Rather than putting these values here why not put them in a table in the ScreenPlay:new block at the top? You could then just return self.audienceSize[1], etc. (or whatever). Keeping the adjustable values up top is nicer.",
+      "revId": "e7d17541de866dce991b408c8ffb98356513e573",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_fc228900",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/theater_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1106,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-06T00:46:49Z",
+      "side": 1,
+      "message": "Do the same for these values.",
+      "revId": "e7d17541de866dce991b408c8ffb98356513e573",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_9c1fc5b7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/theater_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-06T00:46:49Z",
+      "side": 1,
+      "message": "and these",
+      "revId": "e7d17541de866dce991b408c8ffb98356513e573",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_3c031175",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/conversations/theater_manager_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-06T00:46:49Z",
+      "side": 1,
+      "message": "Changing the tabbing here will lead to confusion.",
+      "revId": "e7d17541de866dce991b408c8ffb98356513e573",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa0d159_dcf78d8b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/conversations/theater_manager_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-06T00:46:49Z",
+      "side": 1,
+      "message": "The above 3 lines need an extra tab.",
+      "revId": "e7d17541de866dce991b408c8ffb98356513e573",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

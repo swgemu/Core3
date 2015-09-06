@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3aa0d159_fcf4c988",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/tasks/theater_manager_conv.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-06T00:46:49Z",
+      "side": 0,
+      "message": "Is this no longer used then? Seems to me the one in the handler was just missing the when.",
+      "revId": "295a9a99ee7fc32e0f2df9c17e3e9c86fc2d73a0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
