@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3aa0d159_9c4d85c7",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/GCWManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-06T04:30:50Z",
+      "side": 1,
+      "message": "This is not correct. The task is scheduled every minute in order to do the countdown. If you look at BaseDestructionTask, destructionTimer is used to determine how many times to reschedule the task (i.e how many minutes) before destruction.\n\nChanging this value will only delay how long it takes from the initial warning to the first countdown message. At default values, and with your change, you would get the \u0027COUNTDOWN INITIATED: estimated time to detonation: 10 minutes.\u0027 message right away and then the 9 minute warning wouldn\u0027t be displayed until 10 minutes later.",
+      "revId": "0d4db437814a929ea19a7451cdfb51aff566a26a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
