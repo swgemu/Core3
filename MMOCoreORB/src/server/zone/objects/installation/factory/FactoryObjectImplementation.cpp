@@ -75,12 +75,12 @@ void FactoryObjectImplementation::initializeTransientMembers() {
 void FactoryObjectImplementation::createChildObjects() {
 
 	String ingredientHopperName = "object/tangible/hopper/manufacture_installation_ingredient_hopper_1.iff";
-	ManagedReference<SceneObject*> ingredientHopper = server->getZoneServer()->createObject(ingredientHopperName.hashCode(), 1);
+	ManagedReference<SceneObject*> ingredientHopper = server->getZoneServer()->createObject(ingredientHopperName.hashCode(), getPersistenceLevel());
 
 	transferObject(ingredientHopper, 4);
 
 	String outputHopperName = "object/tangible/hopper/manufacture_installation_output_hopper_1.iff";
-	ManagedReference<SceneObject*> outputHopper = server->getZoneServer()->createObject(outputHopperName.hashCode(), 1);
+	ManagedReference<SceneObject*> outputHopper = server->getZoneServer()->createObject(outputHopperName.hashCode(), getPersistenceLevel());
 
 	transferObject(outputHopper, 4);
 

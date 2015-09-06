@@ -18,7 +18,7 @@ void GarageInstallationImplementation::createChildObjects() {
 	float positionZ = coordinates.getPositionZ();
 
 	uint32 garageAreaTemplateCRC = STRING_HASHCODE("object/garage_area.iff");
-	ManagedReference<SceneObject*> obj = server->getZoneServer()->createObject(garageAreaTemplateCRC, 1);
+	ManagedReference<SceneObject*> obj = server->getZoneServer()->createObject(garageAreaTemplateCRC, getPersistenceLevel());
 
 	if (obj == NULL)
 		return;

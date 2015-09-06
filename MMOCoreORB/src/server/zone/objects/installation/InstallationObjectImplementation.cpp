@@ -733,7 +733,7 @@ void InstallationObjectImplementation::createChildObjects(){
 
 			uint32 defaultWeaponCRC = inso->getWeapon().hashCode();
 			if(getZoneServer() != NULL) {
-					Reference<WeaponObject*> defaultWeapon = (getZoneServer()->createObject(defaultWeaponCRC, 1)).castTo<WeaponObject*>();
+					Reference<WeaponObject*> defaultWeapon = (getZoneServer()->createObject(defaultWeaponCRC, getPersistenceLevel())).castTo<WeaponObject*>();
 
 					if (defaultWeapon == NULL) {
 							return;

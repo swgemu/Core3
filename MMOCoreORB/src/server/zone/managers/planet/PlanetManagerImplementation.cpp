@@ -237,6 +237,12 @@ void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
 			float ow = planetObject.getFloatField("ow");
 			uint64 parentID = planetObject.getLongField("parent");
 
+			if (obj->isBuildingObject()) {
+				BuildingObject* building = obj->asBuildingObject();
+
+				building->createCellObjects();
+			}
+
 			obj->initializePosition(x, z, y);
 			obj->setDirection(ow, ox, oy, oz);
 
@@ -246,6 +252,8 @@ void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
 				parent->transferObject(obj, -1, true);
 			else
 				zone->transferObject(obj, -1, true);
+
+			obj->createChildObjects();
 		}
 
 		planetObject.pop();

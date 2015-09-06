@@ -2931,7 +2931,7 @@ void CreatureObjectImplementation::createChildObjects() {
 			continue;
 
 		ManagedReference<SceneObject*> obj = zoneServer->createObject(
-				child->getTemplateFile().hashCode(), 1);
+				child->getTemplateFile().hashCode(), getPersistenceLevel());
 
 		if (obj == NULL)
 			continue;

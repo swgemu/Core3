@@ -1175,7 +1175,7 @@ void SceneObjectImplementation::createChildObjects() {
 		if (child == NULL)
 			continue;
 
-		ManagedReference<SceneObject*> obj = zoneServer->createObject(child->getTemplateFile().hashCode(), 1);
+		ManagedReference<SceneObject*> obj = zoneServer->createObject(child->getTemplateFile().hashCode(), getPersistenceLevel());
 
 		if (obj == NULL)
 			continue;
