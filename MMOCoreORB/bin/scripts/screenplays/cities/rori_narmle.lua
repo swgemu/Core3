@@ -252,4 +252,7 @@ function RoriNarmleScreenPlay:spawnMobiles()
 	spawnMobile("rori", "trainer_unarmed", 1, -5288, 79.0383, -2508, 0, 0)
 	spawnMobile("rori", "trainer_weaponsmith", 1, -5274, 80, -2424, 0, 0)
 	spawnMobile("rori", "trainer_weaponsmith", 1, 0, 1, -13, 0, 4635414)
+	spawnMobile("rori", "trainer_dancer", 0, 18.0876, 2.12874, 53.6634, 1, 4635403)
+	spawnMobile("rori", "theater_manager", 0, 21.5522, 2.12797, 63.5137, 0, 4635403)
+	spawnMobile("rori", "trainer_musician", 0, 21.8, 2.1, 76.4, 180, 4635403)
 end
