@@ -55,6 +55,16 @@ public:
 	int size() {
 		return names.size();
 	}
+
+	HashTableIterator<String, uint64> iterator() {
+		ReadLocker locker(&guard);
+
+		return names.iterator();
+	}
+
+	ReadWriteLock* getReadWriteLock() {
+		return &guard;
+	}
 };
 
 #endif /* CHARACTERNAMEMAP_H_ */

@@ -42,7 +42,10 @@ public:
 		tokenizer.getStringToken(command);
 		command = command.toLowerCase();
 
-		if (command == "setxpmodifier") {
+		if (command == "listjedi") {
+			return playerManager->sendAdminJediList(player);
+
+		} else if (command == "setxpmodifier") {
 			if (!tokenizer.hasMoreTokens()) {
 				sendSyntax(player);
 				return 1;
@@ -67,10 +70,11 @@ public:
 	}
 
 	static void sendSyntax(CreatureObject* player) {
-		if (player != NULL)
+		if (player != NULL) {
 			player->sendSystemMessage("Syntax: /server playermanager [setxpmodifier] [value]");
+			player->sendSystemMessage("Syntax: /server playermanager [listjedi]");
+		}
 	}
-
 };
 
 #endif /* PLAYERMANAGERCOMMAND_H_ */

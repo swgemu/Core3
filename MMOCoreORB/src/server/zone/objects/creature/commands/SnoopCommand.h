@@ -396,6 +396,9 @@ public:
 			}
 		}
 
+		body << "Force Power:\t" << ghost->getForcePower() << " / " << ghost->getForcePowerMax() << endl;
+		body << "Force Regen:\t" << ghost->getForcePowerRegen() << endl;
+
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, 0);
 		box->setPromptTitle("Player HAM");
 		box->setPromptText(body.toString());
