@@ -448,6 +448,11 @@ class TangibleObject extends SceneObject {
 		return false;
 	}
 	
+	@dirty
+	public abstract boolean isFsPuzzlePack() {
+		return false;
+	}
+	
 	@local
 	@dirty
 	public CustomizationVariables getCustomizationVariables() {

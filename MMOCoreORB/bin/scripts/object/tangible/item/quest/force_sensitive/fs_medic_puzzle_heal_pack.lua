@@ -42,7 +42,17 @@
 
 
 object_tangible_item_quest_force_sensitive_fs_medic_puzzle_heal_pack = object_tangible_item_quest_force_sensitive_shared_fs_medic_puzzle_heal_pack:new {
+	gameObjectType = 8246,
 
+	numberExperimentalProperties = {1, 1, 2, 2, 2},
+	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE"},
+	experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1},
+	experimentalGroupTitles = {"null", "null", "fs_exp_cure_one", "fs_exp_cure_two", "fs_exp_side_effect_one"},
+	experimentalSubGroupTitles = {"null", "null", "curesymptomone", "curesymptomtwo", "givesymptomone"},
+	experimentalMin = {0, 0, 0, 0, 0},
+	experimentalMax = {0, 0, 11, 11, 11},
+	experimentalPrecision = {0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_fs_medic_puzzle_heal_pack, "object/tangible/item/quest/force_sensitive/fs_medic_puzzle_heal_pack.iff")
