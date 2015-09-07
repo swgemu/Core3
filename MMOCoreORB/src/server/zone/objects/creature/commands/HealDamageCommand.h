@@ -104,7 +104,7 @@ public:
 			if (tano->isPharmaceuticalObject()) {
 				PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>( tano);
 
-				if (melee && pharma->isStimPack() && !pharma->isPetStimPack() && !pharma->isDroidRepairKit()) {
+				if (melee && pharma->isStimPack() && !pharma->isRangedStimPack() && !pharma->isPetStimPack() && !pharma->isDroidRepairKit()) {
 					StimPack* stimPack = cast<StimPack*>(pharma);
 
 					if (stimPack->getMedicineUseRequired() <= medicineUse)
