@@ -47,7 +47,7 @@ object_draft_schematic_armor_component_deflector_shield_emitter_assembly = objec
 
    customObjectName = "Deflector Shield Emitter Assembly",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 4, 
 

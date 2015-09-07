@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_speed_limiter_upgrade_mk1 = object_draft_sch
 
    customObjectName = "Speed Limiter Upgrade - Mark I",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 19, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_space_capacitor_quick_recharge_battery_mk1 = object_draft
 
    customObjectName = "Quick Recharge Battery - Mark I",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 19, 
    size = 1, 
 

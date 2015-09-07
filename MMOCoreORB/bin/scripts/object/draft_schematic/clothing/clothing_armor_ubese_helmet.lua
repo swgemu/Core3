@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_armor_ubese_helmet = object_draft_schem
 
    customObjectName = "Ubese Armor Helmet",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 35, 
    size = 4, 
 

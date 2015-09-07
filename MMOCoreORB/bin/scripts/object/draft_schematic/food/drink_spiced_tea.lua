@@ -47,7 +47,7 @@ object_draft_schematic_food_drink_spiced_tea = object_draft_schematic_food_share
 
    customObjectName = "Spiced Tea",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 3, 
    size = 1, 
 

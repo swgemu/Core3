@@ -47,7 +47,7 @@ object_draft_schematic_weapon_component_chemical_dispersion_mechanism = object_d
 
    customObjectName = "Chemical-dispersion Mechanism",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 2, 
 

@@ -48,7 +48,7 @@ object_draft_schematic_bio_engineer_creature_creature_kusak = object_draft_schem
 
    customObjectName = "Kusak",
 
-   craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 256, -- (See DraftSchematicObjectTemplate.h)
    complexity = 22, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_weapon_pistol_blaster_short_range_combat = object_draft_s
 
    customObjectName = "SR Combat Pistol",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 3, 
 

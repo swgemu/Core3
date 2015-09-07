@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_merchant_barker = object_draft_schematic_
 
    customObjectName = "Get Merchant Waypoint",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 19, 
    size = 1, 
 

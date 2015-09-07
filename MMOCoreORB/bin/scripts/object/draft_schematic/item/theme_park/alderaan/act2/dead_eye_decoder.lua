@@ -46,7 +46,7 @@ object_draft_schematic_item_theme_park_alderaan_act2_dead_eye_decoder = object_d
 
 	customObjectName = "Dead Eye Decoder",
 
-	craftingToolTab = 524288, -- (See DraftSchemticObjectTemplate.h)
+	craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 12,
 	size = 1,
 

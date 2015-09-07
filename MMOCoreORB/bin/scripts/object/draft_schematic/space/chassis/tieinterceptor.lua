@@ -47,7 +47,7 @@ object_draft_schematic_space_chassis_tieinterceptor = object_draft_schematic_spa
 
    customObjectName = "TIE Interceptor Chassis Blueprints",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 35, 
    size = 1, 
 

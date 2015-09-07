@@ -47,7 +47,7 @@ object_draft_schematic_instrument_instrument_mandoviol = object_draft_schematic_
 
    customObjectName = "a Mandoviol",
 
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 0, 
 

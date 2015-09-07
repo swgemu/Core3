@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_medpack_revive = object_draft_schematic_chemist
 
    customObjectName = "Resuscitation Kit",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 32, 
    size = 1, 
 

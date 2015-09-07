@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_medpack_disease_area_mind_b = object_draft_sche
 
    customObjectName = "Mind Area Disease Delivery Unit - B",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 35, 
    size = 3, 
 

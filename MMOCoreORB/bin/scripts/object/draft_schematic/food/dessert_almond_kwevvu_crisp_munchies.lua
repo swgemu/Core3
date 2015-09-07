@@ -47,7 +47,7 @@ object_draft_schematic_food_dessert_almond_kwevvu_crisp_munchies = object_draft_
 
    customObjectName = "Almond-Kwevvu Crisp Munchies",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 5, 
    size = 1, 
 

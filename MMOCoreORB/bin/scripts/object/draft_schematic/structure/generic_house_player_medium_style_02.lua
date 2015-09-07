@@ -47,7 +47,7 @@ object_draft_schematic_structure_generic_house_player_medium_style_02 = object_d
 
    customObjectName = "Deed for: Medium Generic Planet House (Style 2)",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 35, 
    size = 12, 
 

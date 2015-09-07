@@ -47,7 +47,7 @@ object_draft_schematic_structure_city_hospital_tatooine = object_draft_schematic
 
    customObjectName = "Deed for: Tatooine Hospital",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 26, 
    size = 14, 
 

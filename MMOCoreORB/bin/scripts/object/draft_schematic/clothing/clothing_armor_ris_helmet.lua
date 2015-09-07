@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_armor_ris_helmet = object_draft_schemat
 
    customObjectName = "R.I.S Armor Helmet",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 45, 
    size = 1, 
 

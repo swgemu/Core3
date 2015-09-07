@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_min_damage_intensifier_mk3 = object_draft_sc
 
    customObjectName = "Min Damage Intensifier - Mark III",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 27, 
    size = 1, 
 

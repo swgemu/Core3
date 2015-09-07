@@ -47,7 +47,7 @@ object_draft_schematic_weapon_knuckler_vibro = object_draft_schematic_weapon_sha
 
    customObjectName = "Vibro Knuckler",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 2, 
 

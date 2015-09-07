@@ -47,7 +47,7 @@ object_draft_schematic_weapon_component_blade_vibro_unit = object_draft_schemati
 
    customObjectName = "Blade Vibro Unit",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 3, 
 

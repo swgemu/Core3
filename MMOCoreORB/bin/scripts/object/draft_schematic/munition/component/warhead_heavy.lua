@@ -47,7 +47,7 @@ object_draft_schematic_munition_component_warhead_heavy = object_draft_schematic
 
    customObjectName = "Heavy Warhead Mechanism",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 40, 
    size = 4, 
 

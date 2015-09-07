@@ -48,7 +48,7 @@ object_draft_schematic_bio_engineer_creature_creature_durni = object_draft_schem
 
    customObjectName = "Durni",
 
-   craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 256, -- (See DraftSchematicObjectTemplate.h)
    complexity = 10, 
    size = 1, 
 

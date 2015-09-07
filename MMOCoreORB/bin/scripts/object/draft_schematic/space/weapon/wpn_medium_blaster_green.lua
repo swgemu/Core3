@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_wpn_medium_blaster_green = object_draft_sche
 
    customObjectName = "Mid-Grade Blaster (Green)",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 1, 
 

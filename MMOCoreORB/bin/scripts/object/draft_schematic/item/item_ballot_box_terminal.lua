@@ -47,7 +47,7 @@ object_draft_schematic_item_item_ballot_box_terminal = object_draft_schematic_it
 
    customObjectName = "Ballot Box Terminal",
 
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 1, 
 

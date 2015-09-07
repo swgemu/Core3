@@ -47,7 +47,7 @@ object_draft_schematic_food_dessert_bofa_treat = object_draft_schematic_food_sha
 
    customObjectName = "Bofa Treat",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 3, 
    size = 1, 
 

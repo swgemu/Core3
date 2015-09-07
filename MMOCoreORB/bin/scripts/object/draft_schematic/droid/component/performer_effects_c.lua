@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_performer_effects_c = object_draft_schema
 
    customObjectName = "Type C Lighting Effects",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 1, 
 

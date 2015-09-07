@@ -47,7 +47,7 @@ object_draft_schematic_clothing_component_clothing_synthetic_cloth = object_draf
 
    customObjectName = "Synthetic Cloth",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 2, 
 

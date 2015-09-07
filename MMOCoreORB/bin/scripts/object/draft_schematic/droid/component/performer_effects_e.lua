@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_performer_effects_e = object_draft_schema
 
    customObjectName = "Effects Module (Dancing Jawa)",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 22, 
    size = 1, 
 

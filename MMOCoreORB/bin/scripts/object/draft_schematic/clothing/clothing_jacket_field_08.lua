@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_jacket_field_08 = object_draft_schemati
 
    customObjectName = "Rugged Jacket",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 3, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_weapon_staff_reinforced = object_draft_schematic_weapon_s
 
    customObjectName = "Reinforced Combat Staff",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 5, 
    size = 3, 
 

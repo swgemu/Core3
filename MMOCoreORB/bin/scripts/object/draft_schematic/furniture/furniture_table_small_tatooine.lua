@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_table_small_tatooine = object_draft_s
 
    customObjectName = "Small Table",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 14, 
    size = 2, 
 

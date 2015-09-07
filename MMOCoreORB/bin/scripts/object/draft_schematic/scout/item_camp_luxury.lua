@@ -47,7 +47,7 @@ object_draft_schematic_scout_item_camp_luxury = object_draft_schematic_scout_sha
 
    customObjectName = "High Tech Field Base Kit",
 
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 1, 
 

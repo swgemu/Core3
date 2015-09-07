@@ -47,7 +47,7 @@ object_draft_schematic_item_item_parrot_cage = object_draft_schematic_item_share
 
    customObjectName = "Nemoidian Bird Cage",
 
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 6, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_food_drink_caf = object_draft_schematic_food_shared_drink
 
    customObjectName = "Caf",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 3, 
    size = 1, 
 

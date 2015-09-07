@@ -47,7 +47,7 @@ object_draft_schematic_structure_component_structure_turbo_fluidic_drilling_pump
 
    customObjectName = "Turbo Fluidic Drilling Pump Unit",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 17, 
    size = 6, 
 

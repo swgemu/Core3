@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_bandolier_field_03 = object_draft_schem
 
    customObjectName = "Two-Strap Bandolier",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 2, 
 

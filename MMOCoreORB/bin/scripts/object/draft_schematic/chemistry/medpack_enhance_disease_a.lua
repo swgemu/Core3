@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_medpack_enhance_disease_a = object_draft_schema
 
    customObjectName = "Enhance Disease Resist Medpack - A",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 27, 
    size = 1, 
 

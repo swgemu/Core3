@@ -47,7 +47,7 @@ object_draft_schematic_vehicle_vehicle_customization_kit = object_draft_schemati
 
    customObjectName = "Vehicle Customization Kit",
 
-   craftingToolTab = 16, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 16, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 1, 
 

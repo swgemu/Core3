@@ -47,7 +47,7 @@ object_draft_schematic_furniture_city_furniture_statue = object_draft_schematic_
 
    customObjectName = "Gungan Head Statue",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 21, 
    size = 2, 
 

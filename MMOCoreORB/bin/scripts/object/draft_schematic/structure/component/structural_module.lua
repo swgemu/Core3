@@ -47,7 +47,7 @@ object_draft_schematic_structure_component_structural_module = object_draft_sche
 
    customObjectName = "Structural Module",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 8, 
    size = 3, 
 

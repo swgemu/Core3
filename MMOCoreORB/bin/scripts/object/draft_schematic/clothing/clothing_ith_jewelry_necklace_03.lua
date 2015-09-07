@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_ith_jewelry_necklace_03 = object_draft_
 
    customObjectName = "Ithorian Crested Neckpiece",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 2, 
 

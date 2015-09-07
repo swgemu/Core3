@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_lamp_table_s02_on = object_draft_sche
 
    customObjectName = "Table-top Lamp \'Corellia\'",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 16, 
    size = 1, 
 

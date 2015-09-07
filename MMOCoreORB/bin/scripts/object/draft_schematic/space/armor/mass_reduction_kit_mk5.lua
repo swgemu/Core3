@@ -47,7 +47,7 @@ object_draft_schematic_space_armor_mass_reduction_kit_mk5 = object_draft_schemat
 
    customObjectName = "Mass Reduction Kit - Mark V",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 34, 
    size = 1, 
 

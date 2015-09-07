@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_medpack_disease_constitution_a = object_draft_s
 
    customObjectName = "Constitution Disease Delivery Unit - A",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 3, 
 

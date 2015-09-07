@@ -47,7 +47,7 @@ object_draft_schematic_food_dish_synthsteak = object_draft_schematic_food_shared
 
    customObjectName = "Synthsteak",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 6, 
    size = 1, 
 

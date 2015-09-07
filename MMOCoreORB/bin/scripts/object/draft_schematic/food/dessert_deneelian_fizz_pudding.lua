@@ -47,7 +47,7 @@ object_draft_schematic_food_dessert_deneelian_fizz_pudding = object_draft_schema
 
    customObjectName = "Deneelian Fizz Pudding",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 1, 
 

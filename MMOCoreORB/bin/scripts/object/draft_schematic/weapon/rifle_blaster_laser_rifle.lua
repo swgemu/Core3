@@ -47,7 +47,7 @@ object_draft_schematic_weapon_rifle_blaster_laser_rifle = object_draft_schematic
 
    customObjectName = "Laser Rifle",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 3, 
 

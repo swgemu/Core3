@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_armor_bone_bracer_r = object_draft_sche
 
    customObjectName = "Bone Armor Right Bracer",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 14, 
    size = 3, 
 

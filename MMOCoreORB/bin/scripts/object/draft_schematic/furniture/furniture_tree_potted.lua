@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_tree_potted = object_draft_schematic_
 
    customObjectName = "Potted Tree, Style One",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 1, 
 

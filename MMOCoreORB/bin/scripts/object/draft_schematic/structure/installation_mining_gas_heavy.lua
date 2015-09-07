@@ -47,7 +47,7 @@ object_draft_schematic_structure_installation_mining_gas_heavy = object_draft_sc
 
    customObjectName = "Deed for: Heavy Natural Gas Processor",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 10, 
 

@@ -48,7 +48,7 @@ object_draft_schematic_bio_engineer_creature_creature_hermit_spider = object_dra
 
    customObjectName = "Hermit Spider",
 
-   craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 256, -- (See DraftSchematicObjectTemplate.h)
    complexity = 26, 
    size = 1, 
 

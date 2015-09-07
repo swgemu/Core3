@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_personality_module_prissy = object_draft_
 
    customObjectName = "Prissy Droid Personality Chip",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 2, 
 

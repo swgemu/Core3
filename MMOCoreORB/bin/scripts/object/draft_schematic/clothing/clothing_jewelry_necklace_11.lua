@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_jewelry_necklace_11 = object_draft_sche
 
    customObjectName = "Striped Pendant",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 22, 
    size = 2, 
 

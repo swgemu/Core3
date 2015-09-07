@@ -47,7 +47,7 @@ object_draft_schematic_scout_item_camokit_dathomir = object_draft_schematic_scou
 
    customObjectName = "Camo Kit: Dathomir",
 
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 2, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_table_coffee_cheap = object_draft_sch
 
    customObjectName = "Cheap Cafe Table",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 2, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_apron_field_01_quest_02 = object_draft_
 
    customObjectName = "Crafter\'s Apron",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 1, 
 

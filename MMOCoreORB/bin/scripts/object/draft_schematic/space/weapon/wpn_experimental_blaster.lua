@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_wpn_experimental_blaster = object_draft_sche
 
    customObjectName = "Experimental Blaster (Red)",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 36, 
    size = 0, 
 

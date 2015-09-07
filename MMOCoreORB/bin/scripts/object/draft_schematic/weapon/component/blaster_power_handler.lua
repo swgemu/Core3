@@ -47,7 +47,7 @@ object_draft_schematic_weapon_component_blaster_power_handler = object_draft_sch
 
    customObjectName = "Blaster Power-handler",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 3, 
 

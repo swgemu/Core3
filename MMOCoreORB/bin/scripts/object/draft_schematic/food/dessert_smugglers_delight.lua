@@ -47,7 +47,7 @@ object_draft_schematic_food_dessert_smugglers_delight = object_draft_schematic_f
 
    customObjectName = "Smuggler\\\'s Delight",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 1, 
 

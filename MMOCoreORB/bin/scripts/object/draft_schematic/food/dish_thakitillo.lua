@@ -47,7 +47,7 @@ object_draft_schematic_food_dish_thakitillo = object_draft_schematic_food_shared
 
    customObjectName = "Thakitillo",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 1, 
 

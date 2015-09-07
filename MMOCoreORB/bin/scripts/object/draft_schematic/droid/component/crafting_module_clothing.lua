@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_crafting_module_clothing = object_draft_s
 
    customObjectName = "Clothing Droid Crafting Station Module",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 28, 
    size = 1, 
 

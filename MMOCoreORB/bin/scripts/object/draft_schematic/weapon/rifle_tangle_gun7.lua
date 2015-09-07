@@ -47,7 +47,7 @@ object_draft_schematic_weapon_rifle_tangle_gun7 = object_draft_schematic_weapon_
 
    customObjectName = "Tangle Pistol",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 2, 
 

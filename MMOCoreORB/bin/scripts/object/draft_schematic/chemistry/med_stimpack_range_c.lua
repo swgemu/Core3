@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_med_stimpack_range_c = object_draft_schematic_c
 
    customObjectName = "Ranged Stimpack - C",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 3, 
 

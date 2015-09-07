@@ -47,7 +47,7 @@ object_draft_schematic_weapon_lance_nightsister = object_draft_schematic_weapon_
 
    customObjectName = "Nightsister Energy Lance Schematic",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 35, 
    size = 1, 
 

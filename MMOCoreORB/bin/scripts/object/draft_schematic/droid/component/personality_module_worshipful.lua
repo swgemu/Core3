@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_personality_module_worshipful = object_dr
 
    customObjectName = "Worshipful Droid Personality Chip",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 2, 
 

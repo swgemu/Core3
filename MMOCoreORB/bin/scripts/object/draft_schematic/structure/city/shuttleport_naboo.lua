@@ -47,7 +47,7 @@ object_draft_schematic_structure_city_shuttleport_naboo = object_draft_schematic
 
    customObjectName = "Deed for: Naboo Shuttleport",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 22, 
    size = 1, 
 

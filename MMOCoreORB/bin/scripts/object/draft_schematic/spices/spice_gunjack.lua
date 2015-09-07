@@ -47,7 +47,7 @@ object_draft_schematic_spices_spice_gunjack = object_draft_schematic_spices_shar
 
    customObjectName = "Gunjack",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 1, 
 

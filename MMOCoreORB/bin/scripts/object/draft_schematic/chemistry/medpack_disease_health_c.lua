@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_medpack_disease_health_c = object_draft_schemat
 
    customObjectName = "Health Disease Delivery Unit - C",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 50, 
    size = 3, 
 

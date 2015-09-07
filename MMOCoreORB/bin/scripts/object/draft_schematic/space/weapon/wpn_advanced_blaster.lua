@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_wpn_advanced_blaster = object_draft_schemati
 
    customObjectName = "Advanced Blaster (Red)",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 32, 
    size = 0, 
 

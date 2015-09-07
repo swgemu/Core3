@@ -48,7 +48,7 @@ object_draft_schematic_bio_engineer_creature_creature_squall = object_draft_sche
 
    customObjectName = "Squall",
 
-   craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 256, -- (See DraftSchematicObjectTemplate.h)
    complexity = 14, 
    size = 1, 
 

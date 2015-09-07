@@ -47,7 +47,7 @@ object_draft_schematic_food_dish_crispic = object_draft_schematic_food_shared_di
 
    customObjectName = "Crispic",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 3, 
    size = 1, 
 

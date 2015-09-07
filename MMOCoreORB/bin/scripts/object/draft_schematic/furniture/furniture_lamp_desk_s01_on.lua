@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_lamp_desk_s01_on = object_draft_schem
 
    customObjectName = "Desk Lamp \'Bantha\'",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 1, 
 

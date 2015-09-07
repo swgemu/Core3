@@ -47,7 +47,7 @@ object_draft_schematic_droid_navicomputer_4 = object_draft_schematic_droid_share
 
    customObjectName = "v4 Flight Computer",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 21, 
    size = 1, 
 

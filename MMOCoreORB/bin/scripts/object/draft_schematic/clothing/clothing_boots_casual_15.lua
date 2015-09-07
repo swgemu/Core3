@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_boots_casual_15 = object_draft_schemati
 
    customObjectName = "Standard Boots",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 23, 
    size = 3, 
 

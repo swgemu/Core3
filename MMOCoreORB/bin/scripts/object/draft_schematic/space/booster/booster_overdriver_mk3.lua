@@ -47,7 +47,7 @@ object_draft_schematic_space_booster_booster_overdriver_mk3 = object_draft_schem
 
    customObjectName = "Booster Overdriver - Mark III",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 27, 
    size = 1, 
 

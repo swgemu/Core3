@@ -47,7 +47,7 @@ object_draft_schematic_armor_armor_segment_bone = object_draft_schematic_armor_s
 
    customObjectName = "Bone Armor Segment",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 8, 
    size = 4, 
 

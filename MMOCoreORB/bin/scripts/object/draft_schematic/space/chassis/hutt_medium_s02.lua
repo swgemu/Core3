@@ -47,7 +47,7 @@ object_draft_schematic_space_chassis_hutt_medium_s02 = object_draft_schematic_sp
 
    customObjectName = "Dunelizard Chassis Blueprints, Style 2",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 27, 
    size = 1, 
 

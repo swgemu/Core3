@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_combat_socket_bank = object_draft_schemat
 
    customObjectName = "Combat-Capable Socket Cluster",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 16, 
    size = 1, 
 

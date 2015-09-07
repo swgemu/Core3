@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_robe_field_27 = object_draft_schematic_
 
    customObjectName = "Gunmans Duster",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 23, 
    size = 2, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_space_chassis_blacksun_medium_s03 = object_draft_schemati
 
    customObjectName = "Ixiyen Fast Attack Craft Chassis Blueprints, Style 3",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 35, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_spices_spice_muon_gold = object_draft_schematic_spices_sh
 
    customObjectName = "Muon Gold",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 13, 
    size = 1, 
 

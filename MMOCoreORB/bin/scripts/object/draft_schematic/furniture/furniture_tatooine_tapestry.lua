@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_tatooine_tapestry = object_draft_sche
 
    customObjectName = "Tapestry (Tatooine) Draft Schematic",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 1, 
 

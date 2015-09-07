@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_bandolier_field_04 = object_draft_schem
 
    customObjectName = "Multipocket Bandolier",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 2, 
 

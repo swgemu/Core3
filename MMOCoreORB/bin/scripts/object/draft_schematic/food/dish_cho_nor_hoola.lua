@@ -47,7 +47,7 @@ object_draft_schematic_food_dish_cho_nor_hoola = object_draft_schematic_food_sha
 
    customObjectName = "Cho-Nor-Hoola",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 6, 
    size = 1, 
 

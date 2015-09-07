@@ -47,7 +47,7 @@ object_draft_schematic_food_dessert_cavaellin_creams = object_draft_schematic_fo
 
    customObjectName = "Cavaellin Creams",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 1, 
 

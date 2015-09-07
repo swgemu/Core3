@@ -47,7 +47,7 @@ object_draft_schematic_food_dessert_sweet_cake_mix = object_draft_schematic_food
 
    customObjectName = "Sweet Cake Mix",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 8, 
    size = 1, 
 

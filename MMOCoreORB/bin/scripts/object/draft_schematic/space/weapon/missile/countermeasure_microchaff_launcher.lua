@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_missile_countermeasure_microchaff_launcher =
 
    customObjectName = "Micro-Chaff Launcher",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_space_capacitor_energy_saver_battery_mk1 = object_draft_s
 
    customObjectName = "Energy Saver Battery - Mark I",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 19, 
    size = 1, 
 

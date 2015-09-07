@@ -47,7 +47,7 @@ object_draft_schematic_instrument_instrument_kloo_horn = object_draft_schematic_
 
    customObjectName = "a Kloo Horn",
 
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_chassis_droid_binary_load_lifter = object
 
    customObjectName = "Binary Load Lifter ADV Droid Chassis",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 1, 
 

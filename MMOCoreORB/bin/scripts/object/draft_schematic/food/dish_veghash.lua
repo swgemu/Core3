@@ -47,7 +47,7 @@ object_draft_schematic_food_dish_veghash = object_draft_schematic_food_shared_di
 
    customObjectName = "Veghash",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 8, 
    size = 1, 
 

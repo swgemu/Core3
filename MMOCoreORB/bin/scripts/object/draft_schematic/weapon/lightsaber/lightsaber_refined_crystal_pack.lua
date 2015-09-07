@@ -47,7 +47,7 @@ object_draft_schematic_weapon_lightsaber_lightsaber_refined_crystal_pack = objec
 
    customObjectName = "A Refined Crystal Pack",
 
-   craftingToolTab = 2048, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2048, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 1, 
 

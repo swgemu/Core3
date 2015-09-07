@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_performer_effects_aa = object_draft_schem
 
    customObjectName = "Effects Module (Avian)",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 17, 
    size = 1, 
 

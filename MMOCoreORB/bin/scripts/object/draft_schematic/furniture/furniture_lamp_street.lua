@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_lamp_street = object_draft_schematic_
 
    customObjectName = "Streetlamp",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 16, 
    size = 1, 
 

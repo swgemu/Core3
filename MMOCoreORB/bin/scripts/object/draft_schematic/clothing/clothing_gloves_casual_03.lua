@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_gloves_casual_03 = object_draft_schemat
 
    customObjectName = "Cold Weather Gloves",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 17, 
    size = 2, 
 

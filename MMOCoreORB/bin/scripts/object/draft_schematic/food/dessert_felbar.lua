@@ -47,7 +47,7 @@ object_draft_schematic_food_dessert_felbar = object_draft_schematic_food_shared_
 
    customObjectName = "Felbar",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_item_item_jedi_tool = object_draft_schematic_item_shared_
 
    customObjectName = "Lightsaber Crafting Toolkit",
 
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 10, 
    size = 1, 
 

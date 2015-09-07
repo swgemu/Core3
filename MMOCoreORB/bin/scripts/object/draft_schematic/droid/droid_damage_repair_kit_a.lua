@@ -47,7 +47,7 @@ object_draft_schematic_droid_droid_damage_repair_kit_a = object_draft_schematic_
 
    customObjectName = "Droid Repair Kit - A",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 1, 
 

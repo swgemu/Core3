@@ -47,7 +47,7 @@ object_draft_schematic_item_item_food_tool = object_draft_schematic_item_shared_
 
    customObjectName = "Food and Chemical Crafting Tool",
 
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 10, 
    size = 2, 
 

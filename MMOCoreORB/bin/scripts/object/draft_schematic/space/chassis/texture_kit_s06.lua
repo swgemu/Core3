@@ -47,7 +47,7 @@ object_draft_schematic_space_chassis_texture_kit_s06 = object_draft_schematic_sp
 
    customObjectName = "Starship Texture Kit, Style 6",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 1, 
 

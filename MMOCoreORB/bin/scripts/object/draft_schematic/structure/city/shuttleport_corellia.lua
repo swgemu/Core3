@@ -47,7 +47,7 @@ object_draft_schematic_structure_city_shuttleport_corellia = object_draft_schema
 
    customObjectName = "Deed for: Corellia Shuttleport",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 22, 
    size = 1, 
 

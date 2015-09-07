@@ -47,7 +47,7 @@ object_draft_schematic_weapon_lightsaber_lightsaber_training = object_draft_sche
 
    customObjectName = "A Training Lightsaber",
 
-   craftingToolTab = 2048, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2048, -- (See DraftSchematicObjectTemplate.h)
    complexity = 16, 
    size = 1, 
 

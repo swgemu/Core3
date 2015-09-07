@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_stimpack_dispensor = object_draft_schemat
 
    customObjectName = "Stimpack Dispensor Module",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 17, 
    size = 1, 
 

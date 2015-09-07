@@ -47,7 +47,7 @@ object_draft_schematic_food_drink_starshine_surprise = object_draft_schematic_fo
 
    customObjectName = "Starshine Surprise",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 5, 
    size = 1, 
 

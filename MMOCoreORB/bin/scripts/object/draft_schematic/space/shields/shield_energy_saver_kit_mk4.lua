@@ -47,7 +47,7 @@ object_draft_schematic_space_shields_shield_energy_saver_kit_mk4 = object_draft_
 
    customObjectName = "Shield Energy Saver Kit - Mark IV",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 1, 
 

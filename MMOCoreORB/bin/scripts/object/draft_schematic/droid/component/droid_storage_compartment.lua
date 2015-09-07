@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_droid_storage_compartment = object_draft_
 
    customObjectName = "Droid Storage Compartment",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 13, 
    size = 2, 
 

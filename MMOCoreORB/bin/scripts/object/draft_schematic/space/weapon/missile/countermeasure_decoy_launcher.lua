@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_missile_countermeasure_decoy_launcher = obje
 
    customObjectName = "Sensor Decoy Launcher",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 13, 
    size = 1, 
 

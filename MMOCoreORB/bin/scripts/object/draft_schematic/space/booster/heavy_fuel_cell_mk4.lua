@@ -47,7 +47,7 @@ object_draft_schematic_space_booster_heavy_fuel_cell_mk4 = object_draft_schemati
 
    customObjectName = "Heavy Fuel Cell - Mark IV",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 1, 
 

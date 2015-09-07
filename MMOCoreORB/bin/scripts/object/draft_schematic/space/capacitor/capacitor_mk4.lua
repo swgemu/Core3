@@ -47,7 +47,7 @@ object_draft_schematic_space_capacitor_capacitor_mk4 = object_draft_schematic_sp
 
    customObjectName = "Mark IV Weapons Capacitor",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 32, 
    size = 1, 
 

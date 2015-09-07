@@ -47,7 +47,7 @@ object_draft_schematic_space_chassis_hutt_turret_ship = object_draft_schematic_s
 
    customObjectName = "M22-T \"Krayt\" Chassis Blueprints",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 43, 
    size = 1, 
 

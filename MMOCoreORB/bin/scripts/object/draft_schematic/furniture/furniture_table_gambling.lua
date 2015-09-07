@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_table_gambling = object_draft_schemat
 
    customObjectName = "Gaming Table Draft Schematic",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 1, 
 

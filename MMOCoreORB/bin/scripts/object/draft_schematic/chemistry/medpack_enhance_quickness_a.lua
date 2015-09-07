@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_medpack_enhance_quickness_a = object_draft_sche
 
    customObjectName = "Enhance Quickness Medpack - A",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 22, 
    size = 1, 
 

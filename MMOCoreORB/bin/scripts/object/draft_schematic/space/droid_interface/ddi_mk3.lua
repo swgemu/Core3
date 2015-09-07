@@ -47,7 +47,7 @@ object_draft_schematic_space_droid_interface_ddi_mk3 = object_draft_schematic_sp
 
    customObjectName = "Mark III Droid Interface",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 29, 
    size = 1, 
 

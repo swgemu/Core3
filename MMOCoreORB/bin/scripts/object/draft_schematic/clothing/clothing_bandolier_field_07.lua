@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_bandolier_field_07 = object_draft_schem
 
    customObjectName = "Shoulder Strap",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 13, 
    size = 2, 
 

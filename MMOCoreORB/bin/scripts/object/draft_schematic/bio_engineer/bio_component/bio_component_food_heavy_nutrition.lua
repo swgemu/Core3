@@ -47,7 +47,7 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_heavy_nutri
 
    customObjectName = "Intelligent Nanonutrients",
 
-   craftingToolTab = 128, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 128, -- (See DraftSchematicObjectTemplate.h)
    complexity = 26, 
    size = 1, 
 

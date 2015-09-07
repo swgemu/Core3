@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_ith_skirt_formal_03 = object_draft_sche
 
    customObjectName = "Ithorian Patterned Skirt",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 19, 
    size = 4, 
 

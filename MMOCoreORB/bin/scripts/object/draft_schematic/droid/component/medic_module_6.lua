@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_medic_module_6 = object_draft_schematic_d
 
    customObjectName = "Level 6 Droid Medical Module",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 2, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_space_droid_interface_maintenance_reduction_kit_mk2 = obj
 
    customObjectName = "Maintenance Reduction Kit - Mark II",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 23, 
    size = 1, 
 

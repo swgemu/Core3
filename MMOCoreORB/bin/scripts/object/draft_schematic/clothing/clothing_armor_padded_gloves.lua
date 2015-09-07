@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_armor_padded_gloves = object_draft_sche
 
    customObjectName = "Padded Armor Gloves",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 40, 
    size = 4, 
 

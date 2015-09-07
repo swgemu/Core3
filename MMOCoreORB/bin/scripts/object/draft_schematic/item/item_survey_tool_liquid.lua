@@ -47,7 +47,7 @@ object_draft_schematic_item_item_survey_tool_liquid = object_draft_schematic_ite
 
    customObjectName = "Chemical Survey Device",
 
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 7, 
    size = 1, 
 

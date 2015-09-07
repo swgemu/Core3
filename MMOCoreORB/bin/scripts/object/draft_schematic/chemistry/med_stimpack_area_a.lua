@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_med_stimpack_area_a = object_draft_schematic_ch
 
    customObjectName = "Area Stimpack - A",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 3, 
 

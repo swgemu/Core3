@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_item_storage_module_6 = object_draft_sche
 
    customObjectName = "Level 6 Droid Item Storage Module",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 2, 
 

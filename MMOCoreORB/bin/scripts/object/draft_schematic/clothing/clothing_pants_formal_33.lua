@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_pants_formal_33 = object_draft_schemati
 
    customObjectName = "Lined Shorts",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 17, 
    size = 4, 
 

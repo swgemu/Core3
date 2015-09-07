@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_missile_wpn_launcher_concussion_mk1 = object
 
    customObjectName = "Mark I Concussion Launcher",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_casual_
 
    customObjectName = "Passive Biosensors",
 
-   craftingToolTab = 128, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 128, -- (See DraftSchematicObjectTemplate.h)
    complexity = 21, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_armor_armor_segment_bone_acklay = object_draft_schematic_
 
    customObjectName = "Interwoven Bone Segment",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 1, 
 

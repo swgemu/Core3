@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_belt_formal_12 = object_draft_schematic
 
    customObjectName = "Suit Belt",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 3, 
 

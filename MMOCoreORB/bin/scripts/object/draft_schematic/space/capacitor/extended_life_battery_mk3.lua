@@ -47,7 +47,7 @@ object_draft_schematic_space_capacitor_extended_life_battery_mk3 = object_draft_
 
    customObjectName = "Extended Life Battery - Mark III",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 27, 
    size = 1, 
 

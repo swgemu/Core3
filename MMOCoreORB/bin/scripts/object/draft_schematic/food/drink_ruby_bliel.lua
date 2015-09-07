@@ -47,7 +47,7 @@ object_draft_schematic_food_drink_ruby_bliel = object_draft_schematic_food_share
 
    customObjectName = "Ruby Bliel",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 4, 
    size = 1, 
 

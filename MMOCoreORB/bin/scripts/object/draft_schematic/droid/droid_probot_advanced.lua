@@ -47,7 +47,7 @@ object_draft_schematic_droid_droid_probot_advanced = object_draft_schematic_droi
 
    customObjectName = "Deed for: Probot, Advanced Model",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 35, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_item_item_configurable_sided_dice = object_draft_schemati
 
    customObjectName = "Configurable Dice",
 
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 6, 
    size = 1, 
 

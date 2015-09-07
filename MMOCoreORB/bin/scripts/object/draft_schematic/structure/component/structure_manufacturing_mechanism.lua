@@ -47,7 +47,7 @@ object_draft_schematic_structure_component_structure_manufacturing_mechanism = o
 
    customObjectName = "Manufacturing Mechanism",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 10, 
 

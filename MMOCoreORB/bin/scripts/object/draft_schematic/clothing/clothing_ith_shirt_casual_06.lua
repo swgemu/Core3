@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_ith_shirt_casual_06 = object_draft_sche
 
    customObjectName = "Ithorian Two Pocket Shirt",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 9, 
    size = 3, 
 

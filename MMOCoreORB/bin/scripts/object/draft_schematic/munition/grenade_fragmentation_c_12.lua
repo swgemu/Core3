@@ -47,7 +47,7 @@ object_draft_schematic_munition_grenade_fragmentation_c_12 = object_draft_schema
 
    customObjectName = "C12 Fragmentation Grenade",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 2, 
 

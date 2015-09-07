@@ -47,7 +47,7 @@ object_draft_schematic_weapon_razor_knuckler = object_draft_schematic_weapon_sha
 
    customObjectName = "Blacksun Razor Knuckler Schematic",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_missile_wpn_launcher_spacebomb_mk2 = object_
 
    customObjectName = "Mark II Spacebomb Launcher",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_space_reactor_reactor_overcharger_mk1 = object_draft_sche
 
    customObjectName = "Reactor Overcharger - Mark I",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 19, 
    size = 1, 
 

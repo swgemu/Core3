@@ -47,7 +47,7 @@ object_draft_schematic_armor_armor_segment_ris_acklay = object_draft_schematic_a
 
    customObjectName = "Interwoven R. I. S. Segment",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 33, 
    size = 1, 
 

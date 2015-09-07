@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_bodysuit_field_13 = object_draft_schema
 
    customObjectName = "Reinforced Jumpsuit",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 24, 
    size = 3, 
 

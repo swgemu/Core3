@@ -48,7 +48,7 @@ object_draft_schematic_bio_engineer_creature_creature_roba = object_draft_schema
 
    customObjectName = "Roba",
 
-   craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 256, -- (See DraftSchematicObjectTemplate.h)
    complexity = 19, 
    size = 1, 
 

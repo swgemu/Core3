@@ -47,7 +47,7 @@ object_draft_schematic_space_booster_fast_charge_fuel_cell_mk2 = object_draft_sc
 
    customObjectName = "Fast Charge Fuel Cell - Mark II",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 23, 
    size = 1, 
 

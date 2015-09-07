@@ -47,7 +47,7 @@ object_draft_schematic_instrument_instrument_fizz = object_draft_schematic_instr
 
    customObjectName = "a Fizzz",
 
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 11, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_space_reactor_reactor_limiter_mk2 = object_draft_schemati
 
    customObjectName = "Reactor Limiter - Mark II",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 23, 
    size = 1, 
 

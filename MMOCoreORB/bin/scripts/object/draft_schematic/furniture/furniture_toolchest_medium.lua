@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_toolchest_medium = object_draft_schem
 
    customObjectName = "Toolchest",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 2, 
 

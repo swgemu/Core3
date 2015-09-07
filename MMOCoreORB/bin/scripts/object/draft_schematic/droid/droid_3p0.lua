@@ -47,7 +47,7 @@ object_draft_schematic_droid_droid_3p0 = object_draft_schematic_droid_shared_dro
 
    customObjectName = "Deed for: Protocol Droid",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 32, 
    size = 1, 
 

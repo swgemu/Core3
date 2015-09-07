@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_armor_kashyyykian_black_mtn_leggings = 
 
    customObjectName = "Kashyyykian Black Mountain Leggings",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 40, 
    size = 4, 
 

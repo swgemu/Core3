@@ -47,7 +47,7 @@ object_draft_schematic_droid_droid_power_advanced = object_draft_schematic_droid
 
    customObjectName = "Deed for: Power Droid, Advanced Model",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 1, 
 

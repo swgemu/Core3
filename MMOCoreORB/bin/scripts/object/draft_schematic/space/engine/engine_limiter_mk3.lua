@@ -47,7 +47,7 @@ object_draft_schematic_space_engine_engine_limiter_mk3 = object_draft_schematic_
 
    customObjectName = "Engine Limiter - Mark III",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 27, 
    size = 1, 
 

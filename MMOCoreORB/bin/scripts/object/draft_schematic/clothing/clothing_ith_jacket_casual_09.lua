@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_ith_jacket_casual_09 = object_draft_sch
 
    customObjectName = "Ithorian Overshirt",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 3, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_space_chassis_tie_in = object_draft_schematic_space_chass
 
    customObjectName = "TIE/In Chassis Blueprints",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 31, 
    size = 1, 
 

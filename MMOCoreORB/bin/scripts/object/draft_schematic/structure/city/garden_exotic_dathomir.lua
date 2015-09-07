@@ -47,7 +47,7 @@ object_draft_schematic_structure_city_garden_exotic_dathomir = object_draft_sche
 
    customObjectName = "Deed for: Dathomir Obelisk (Garden)",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 27, 
    size = 12, 
 

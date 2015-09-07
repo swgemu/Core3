@@ -47,7 +47,7 @@ object_draft_schematic_structure_naboo_house_player_small_style_02 = object_draf
 
    customObjectName = "Deed for: Small Naboo House (Style 2)",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 16, 
    size = 10, 
 

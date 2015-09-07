@@ -47,7 +47,7 @@ object_draft_schematic_space_droid_interface_droid_brain_upgrade_mk5 = object_dr
 
    customObjectName = "Droid Brain Upgrade - Mark V",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 34, 
    size = 1, 
 

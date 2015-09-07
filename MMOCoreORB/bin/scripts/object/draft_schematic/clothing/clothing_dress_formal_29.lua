@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_dress_formal_29 = object_draft_schemati
 
    customObjectName = "Sleeveless Dress",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 24, 
    size = 4, 
 

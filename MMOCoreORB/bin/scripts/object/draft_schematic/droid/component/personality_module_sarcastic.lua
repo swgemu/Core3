@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_personality_module_sarcastic = object_dra
 
    customObjectName = "Sarcastic Droid Personality Chip",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 16, 
    size = 2, 
 

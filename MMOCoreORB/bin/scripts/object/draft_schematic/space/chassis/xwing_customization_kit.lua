@@ -47,7 +47,7 @@ object_draft_schematic_space_chassis_xwing_customization_kit = object_draft_sche
 
    customObjectName = "Starship Paint Kit",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_gloves_field_14 = object_draft_schemati
 
    customObjectName = "Link-Steel Reinforced Gloves",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 2, 
 

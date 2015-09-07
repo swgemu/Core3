@@ -47,7 +47,7 @@ object_draft_schematic_structure_installation_generator_wind = object_draft_sche
 
    customObjectName = "Deed for: Wind Power Generator",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 13, 
    size = 10, 
 

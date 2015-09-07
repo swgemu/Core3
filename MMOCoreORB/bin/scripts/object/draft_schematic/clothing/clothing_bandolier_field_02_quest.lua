@@ -46,7 +46,7 @@ object_draft_schematic_clothing_clothing_bandolier_field_02_quest = object_draft
 
    customObjectName = "Droidsmith\'s Tool Set",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 1, 
 

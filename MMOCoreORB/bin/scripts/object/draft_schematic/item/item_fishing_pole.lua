@@ -47,7 +47,7 @@ object_draft_schematic_item_item_fishing_pole = object_draft_schematic_item_shar
 
    customObjectName = "Fishing Pole",
 
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 8, 
    size = 1, 
 

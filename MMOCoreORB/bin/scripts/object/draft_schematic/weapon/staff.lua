@@ -47,7 +47,7 @@ object_draft_schematic_weapon_staff = object_draft_schematic_weapon_shared_staff
 
    customObjectName = "Wood Staff",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 2, 
    size = 3, 
 

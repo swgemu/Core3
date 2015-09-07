@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_stove = object_draft_schematic_furnit
 
    customObjectName = "Portable Stove",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 1, 
 

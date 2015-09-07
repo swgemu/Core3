@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_bustier_casual_01 = object_draft_schema
 
    customObjectName = "Light Bustier",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 19, 
    size = 3, 
 

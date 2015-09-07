@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_data_storage_module_4 = object_draft_sche
 
    customObjectName = "Level 4 Droid Data Module",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 22, 
    size = 8, 
 

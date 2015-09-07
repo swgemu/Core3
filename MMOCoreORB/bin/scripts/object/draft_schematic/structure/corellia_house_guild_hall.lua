@@ -47,7 +47,7 @@ object_draft_schematic_structure_corellia_house_guild_hall = object_draft_schema
 
    customObjectName = "Deed for: Corellian Guild Hall",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 45, 
    size = 14, 
 

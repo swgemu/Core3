@@ -47,7 +47,7 @@ object_draft_schematic_droid_droid_surgical = object_draft_schematic_droid_share
 
    customObjectName = "Deed for: Surgical Droid",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 1, 
 

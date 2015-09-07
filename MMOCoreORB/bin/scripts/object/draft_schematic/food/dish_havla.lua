@@ -47,7 +47,7 @@ object_draft_schematic_food_dish_havla = object_draft_schematic_food_shared_dish
 
    customObjectName = "Havla",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 10, 
    size = 1, 
 

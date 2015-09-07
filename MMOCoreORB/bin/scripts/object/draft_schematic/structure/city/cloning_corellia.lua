@@ -47,7 +47,7 @@ object_draft_schematic_structure_city_cloning_corellia = object_draft_schematic_
 
    customObjectName = "Deed for: Corellia Cloning Facility",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 23, 
    size = 14, 
 

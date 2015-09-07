@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_med_stimpack_state_blinded_a = object_draft_sch
 
    customObjectName = "Blinded State Medpack - A",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 3, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_bookcase_elegant = object_draft_schem
 
    customObjectName = "Bookcase",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 3, 
 

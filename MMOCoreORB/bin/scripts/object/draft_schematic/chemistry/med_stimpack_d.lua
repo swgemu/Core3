@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_med_stimpack_d = object_draft_schematic_chemist
 
    customObjectName = "Small Stimpack - D",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 28, 
    size = 3, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_table_endtable_small_modern = object_
 
    customObjectName = "Small Modern End Table",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 24, 
    size = 2, 
 

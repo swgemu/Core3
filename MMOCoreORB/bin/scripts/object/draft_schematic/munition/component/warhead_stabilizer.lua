@@ -47,7 +47,7 @@ object_draft_schematic_munition_component_warhead_stabilizer = object_draft_sche
 
    customObjectName = "Warhead Stabilizing Device",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 8, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_component_liquid_delivery_suspension_advanced =
 
    customObjectName = "Advanced Liquid Suspension",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 2, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_ith_jewelry_necklace_10 = object_draft_
 
    customObjectName = "Ithorian Heavy Crystal Symbol",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 21, 
    size = 2, 
 

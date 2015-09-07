@@ -47,7 +47,7 @@ object_draft_schematic_spices_spice_sweetblossom = object_draft_schematic_spices
 
    customObjectName = "Sweetblossom",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 10, 
    size = 1, 
 

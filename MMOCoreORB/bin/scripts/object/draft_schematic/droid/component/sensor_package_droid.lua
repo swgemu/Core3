@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_sensor_package_droid = object_draft_schem
 
    customObjectName = "Droid Sensor Package",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 19, 
    size = 6, 
 

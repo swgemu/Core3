@@ -47,7 +47,7 @@ object_draft_schematic_food_dish_rations = object_draft_schematic_food_shared_di
 
    customObjectName = "K-18 Rations",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 3, 
    size = 1, 
 

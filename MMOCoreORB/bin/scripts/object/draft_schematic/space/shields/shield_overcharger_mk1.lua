@@ -47,7 +47,7 @@ object_draft_schematic_space_shields_shield_overcharger_mk1 = object_draft_schem
 
    customObjectName = "Shield Overcharger - Mark I",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 19, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_lamp_free_s02_on = object_draft_schem
 
    customObjectName = "Free-standing Lamp \'Razorcoil\'",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 1, 
 

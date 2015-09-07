@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_plants_potted_large = object_draft_sc
 
    customObjectName = "Large Potted Plant, Style One",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 2, 
 

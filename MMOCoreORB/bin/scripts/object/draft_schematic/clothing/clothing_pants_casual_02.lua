@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_pants_casual_02 = object_draft_schemati
 
    customObjectName = "Winged Hawtpants",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 3, 
 

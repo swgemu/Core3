@@ -47,7 +47,7 @@ object_draft_schematic_item_item_agitator_motor = object_draft_schematic_item_sh
 
    customObjectName = "Agitator Motor",
 
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 1, 
 

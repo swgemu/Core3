@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_capacitor_high_discharge = object_draft_s
 
    customObjectName = "Advanced Capacitor Discharge Unit",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 1, 
 

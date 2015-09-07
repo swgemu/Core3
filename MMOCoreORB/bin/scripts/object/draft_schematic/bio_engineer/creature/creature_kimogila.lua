@@ -48,7 +48,7 @@ object_draft_schematic_bio_engineer_creature_creature_kimogila = object_draft_sc
 
    customObjectName = "Kimogila",
 
-   craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 256, -- (See DraftSchematicObjectTemplate.h)
    complexity = 32, 
    size = 1, 
 

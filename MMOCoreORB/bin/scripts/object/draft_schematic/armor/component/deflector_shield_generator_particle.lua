@@ -47,7 +47,7 @@ object_draft_schematic_armor_component_deflector_shield_generator_particle = obj
 
    customObjectName = "Deflector Shield Generator - Particle",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 4, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_vest_casual_11 = object_draft_schematic
 
    customObjectName = "Long Vest",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 2, 
 

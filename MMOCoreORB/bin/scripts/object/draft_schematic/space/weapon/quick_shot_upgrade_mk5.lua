@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_quick_shot_upgrade_mk5 = object_draft_schema
 
    customObjectName = "Quick Shot Upgrade - Mark V",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 34, 
    size = 1, 
 

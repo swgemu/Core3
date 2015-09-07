@@ -47,7 +47,7 @@ object_draft_schematic_structure_installation_generator_solar = object_draft_sch
 
    customObjectName = "Deed for: Solar Power Generator",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 10, 
 

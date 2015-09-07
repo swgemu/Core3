@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_chassis_droid_3p0 = object_draft_schemati
 
    customObjectName = "Protocol ADV Droid Chassis",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 32, 
    size = 6, 
 

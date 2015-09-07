@@ -47,7 +47,7 @@ object_draft_schematic_space_reverse_engineering_analysis_tool = object_draft_sc
 
    customObjectName = "Component Analysis Tool",
 
-   craftingToolTab = 262144, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 262144, -- (See DraftSchematicObjectTemplate.h)
    complexity = 11, 
    size = 1, 
 

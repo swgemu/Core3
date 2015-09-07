@@ -47,7 +47,7 @@ object_draft_schematic_space_chassis_yt1300 = object_draft_schematic_space_chass
 
    customObjectName = "YT-1300 Chassis Blueprints",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 43, 
    size = 1, 
 

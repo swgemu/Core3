@@ -47,7 +47,7 @@ object_draft_schematic_armor_armor_segment_ubese = object_draft_schematic_armor_
 
    customObjectName = "Ubese Armor Segment",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 6, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_diagnostic_circuit = object_draft_schemat
 
    customObjectName = "Diagnostic Circuit",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 10, 
    size = 1, 
 

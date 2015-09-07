@@ -47,7 +47,7 @@ object_draft_schematic_space_reactor_fusion_reactor_mk2 = object_draft_schematic
 
    customObjectName = "Mark II Fusion Reactor",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 1, 
 

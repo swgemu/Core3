@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_armor_tantel_helmet = object_draft_sche
 
    customObjectName = "Tantel Armor Helmet",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 3, 
 

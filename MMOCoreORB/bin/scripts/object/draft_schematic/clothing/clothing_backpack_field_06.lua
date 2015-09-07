@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_backpack_field_06 = object_draft_schema
 
    customObjectName = "Spec-Ops Pack",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 23, 
    size = 2, 
 

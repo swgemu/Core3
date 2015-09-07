@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_wpn_experimental_disruptor = object_draft_sc
 
    customObjectName = "Experimental Disruptor",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 36, 
    size = 1, 
 

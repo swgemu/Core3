@@ -47,7 +47,7 @@ object_draft_schematic_weapon_lightsaber_lightsaber_polearm_gen3 = object_draft_
 
    customObjectName = "Double-Bladed Third Generation Lightsaber",
 
-   craftingToolTab = 2048, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2048, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 1, 
 

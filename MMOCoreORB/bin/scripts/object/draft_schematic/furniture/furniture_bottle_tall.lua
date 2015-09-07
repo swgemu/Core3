@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_bottle_tall = object_draft_schematic_
 
    customObjectName = "Tall Bottle Draft Schematic",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 9, 
    size = 1, 
 

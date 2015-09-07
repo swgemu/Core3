@@ -47,7 +47,7 @@ object_draft_schematic_weapon_component_reinforcement_core_advanced = object_dra
 
    customObjectName = "Advanced Reinforcement Core",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 5, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_food_dish_blood_chowder = object_draft_schematic_food_sha
 
    customObjectName = "Blood Chowder",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 6, 
    size = 1, 
 

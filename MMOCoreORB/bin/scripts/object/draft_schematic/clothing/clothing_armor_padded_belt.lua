@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_armor_padded_belt = object_draft_schema
 
    customObjectName = "Padded Armor Belt",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 40, 
    size = 4, 
 

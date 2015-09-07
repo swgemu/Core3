@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_candle_free_s01_on = object_draft_sch
 
    customObjectName = "Candle \'Bestine\'",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 1, 
 

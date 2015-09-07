@@ -47,7 +47,7 @@ object_draft_schematic_structure_city_bank_naboo = object_draft_schematic_struct
 
    customObjectName = "Deed for: Naboo Bank",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 16, 
    size = 12, 
 

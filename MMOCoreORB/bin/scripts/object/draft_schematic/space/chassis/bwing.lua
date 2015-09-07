@@ -47,7 +47,7 @@ object_draft_schematic_space_chassis_bwing = object_draft_schematic_space_chassi
 
    customObjectName = "B-Wing Chassis Blueprints",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 43, 
    size = 1, 
 

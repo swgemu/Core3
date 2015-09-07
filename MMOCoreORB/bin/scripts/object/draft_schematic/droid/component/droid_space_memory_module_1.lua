@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_droid_space_memory_module_1 = object_draf
 
    customObjectName = "Unprogrammed Droid Command Module",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 22, 
    size = 1, 
 

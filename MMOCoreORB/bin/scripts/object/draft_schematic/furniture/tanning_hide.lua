@@ -47,7 +47,7 @@ object_draft_schematic_furniture_tanning_hide = object_draft_schematic_furniture
 
    customObjectName = "Tanned Hide Draft Schematic",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 1, 
 

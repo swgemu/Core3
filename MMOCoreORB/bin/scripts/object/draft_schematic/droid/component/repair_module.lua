@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_repair_module = object_draft_schematic_dr
 
    customObjectName = "Repair Module",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 19, 
    size = 2, 
 

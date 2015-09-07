@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_component_resilience_compound = object_draft_sc
 
    customObjectName = "Resilience Compound",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 2, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_advanced_droid_frame = object_draft_schem
 
    customObjectName = "Advanced Droid Frame Unit",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 10, 
 

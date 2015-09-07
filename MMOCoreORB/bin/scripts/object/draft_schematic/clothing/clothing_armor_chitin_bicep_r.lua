@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_armor_chitin_bicep_r = object_draft_sch
 
    customObjectName = "Chitin Armor Right Bicep",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 3, 
 

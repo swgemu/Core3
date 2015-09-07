@@ -47,7 +47,7 @@ object_draft_schematic_food_dessert_pastebread = object_draft_schematic_food_sha
 
    customObjectName = "Pastebread",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 6, 
    size = 1, 
 

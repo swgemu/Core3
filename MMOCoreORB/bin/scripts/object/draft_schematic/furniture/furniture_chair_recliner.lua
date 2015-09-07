@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_chair_recliner = object_draft_schemat
 
    customObjectName = "Reclining Chair",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 19, 
    size = 2, 
 

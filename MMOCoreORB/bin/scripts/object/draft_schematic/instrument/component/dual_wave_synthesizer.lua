@@ -47,7 +47,7 @@ object_draft_schematic_instrument_component_dual_wave_synthesizer = object_draft
 
    customObjectName = "Dual Wave Synthesizer",
 
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 1, 
 

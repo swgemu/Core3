@@ -47,7 +47,7 @@ object_draft_schematic_structure_corellia_house_player_small_style_02_floorplan_
 
    customObjectName = "Deed for: Small Corellia House (Style 2, Floorplan 2)",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 10, 
 

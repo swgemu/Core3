@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_medpack_poison_action_c = object_draft_schemati
 
    customObjectName = "Action Poison Delivery Unit - C",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 35, 
    size = 3, 
 

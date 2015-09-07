@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_bottle_pear = object_draft_schematic_
 
    customObjectName = "Pear-shaped Bottle Draft Schematic",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 9, 
    size = 1, 
 

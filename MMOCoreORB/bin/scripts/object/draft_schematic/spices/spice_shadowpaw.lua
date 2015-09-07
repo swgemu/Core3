@@ -47,7 +47,7 @@ object_draft_schematic_spices_spice_shadowpaw = object_draft_schematic_spices_sh
 
    customObjectName = "Shadowpaw",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 10, 
    size = 1, 
 

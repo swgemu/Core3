@@ -48,7 +48,7 @@ object_draft_schematic_bio_engineer_creature_creature_swirl_prong = object_draft
 
    customObjectName = "Swirl Prong",
 
-   craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 256, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_weapon_heavy_rocket_launcher = object_draft_schematic_wea
 
    customObjectName = "Rocket Launcher",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 50, 
    size = 4, 
 

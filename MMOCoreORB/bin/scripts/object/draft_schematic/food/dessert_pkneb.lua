@@ -47,7 +47,7 @@ object_draft_schematic_food_dessert_pkneb = object_draft_schematic_food_shared_d
 
    customObjectName = "Caramelized Pkneb",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 4, 
    size = 1, 
 

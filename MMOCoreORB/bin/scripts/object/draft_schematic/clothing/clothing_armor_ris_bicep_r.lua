@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_armor_ris_bicep_r = object_draft_schema
 
    customObjectName = "R.I.S. Armor Right Bicep",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 45, 
    size = 1, 
 

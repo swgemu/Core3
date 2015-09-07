@@ -47,7 +47,7 @@ object_draft_schematic_droid_droid_le_repair_advanced = object_draft_schematic_d
 
    customObjectName = "Deed for: LE Repair Droid, Advanced Model",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 35, 
    size = 1, 
 

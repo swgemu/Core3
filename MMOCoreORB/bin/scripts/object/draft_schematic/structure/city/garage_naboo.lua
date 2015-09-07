@@ -47,7 +47,7 @@ object_draft_schematic_structure_city_garage_naboo = object_draft_schematic_stru
 
    customObjectName = "Deed for: Naboo Garage",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 24, 
    size = 1, 
 

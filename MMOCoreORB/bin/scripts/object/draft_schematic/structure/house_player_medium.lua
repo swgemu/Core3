@@ -47,7 +47,7 @@ object_draft_schematic_structure_house_player_medium = object_draft_schematic_st
 
    customObjectName = "Deed for: Medium Tatooine House",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 12, 
 

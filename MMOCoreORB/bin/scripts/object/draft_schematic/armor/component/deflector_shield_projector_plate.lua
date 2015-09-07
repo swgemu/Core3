@@ -47,7 +47,7 @@ object_draft_schematic_armor_component_deflector_shield_projector_plate = object
 
    customObjectName = "Deflector Shield Projector Plate",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 2, 
 

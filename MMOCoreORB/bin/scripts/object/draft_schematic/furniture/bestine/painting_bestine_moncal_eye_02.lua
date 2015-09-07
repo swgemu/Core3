@@ -46,7 +46,7 @@ object_draft_schematic_furniture_bestine_painting_bestine_moncal_eye_02 = object
 
 	customObjectName = "Painting of a Mon Calamari Eye 2",
 
-	craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 15,
 	size = 2,
 

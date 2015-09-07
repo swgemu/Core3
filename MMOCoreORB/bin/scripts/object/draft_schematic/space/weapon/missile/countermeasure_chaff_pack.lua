@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_missile_countermeasure_chaff_pack = object_d
 
    customObjectName = "Chaff Pack",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 11, 
    size = 1, 
 

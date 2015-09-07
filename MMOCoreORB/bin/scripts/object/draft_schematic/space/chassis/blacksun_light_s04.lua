@@ -47,7 +47,7 @@ object_draft_schematic_space_chassis_blacksun_light_s04 = object_draft_schematic
 
    customObjectName = "Kihraxz Light Fighter Chassis Blueprints, Style 4",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 31, 
    size = 1, 
 

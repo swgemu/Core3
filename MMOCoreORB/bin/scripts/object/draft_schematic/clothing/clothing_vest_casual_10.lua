@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_vest_casual_10 = object_draft_schematic
 
    customObjectName = "Mangy Vest",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 2, 
 

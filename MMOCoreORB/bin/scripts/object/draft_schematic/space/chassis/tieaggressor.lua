@@ -47,7 +47,7 @@ object_draft_schematic_space_chassis_tieaggressor = object_draft_schematic_space
 
    customObjectName = "TIE Aggressor Chassis Blueprints",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 39, 
    size = 1, 
 

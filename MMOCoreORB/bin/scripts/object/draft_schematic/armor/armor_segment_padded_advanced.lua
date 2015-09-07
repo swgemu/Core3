@@ -47,7 +47,7 @@ object_draft_schematic_armor_armor_segment_padded_advanced = object_draft_schema
 
    customObjectName = "Advanced Padded Armor Segment",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 6, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_wke_shoulder_pad_s02 = object_draft_sch
 
    customObjectName = "Wookiee Shoulder Pad",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 3, 
 

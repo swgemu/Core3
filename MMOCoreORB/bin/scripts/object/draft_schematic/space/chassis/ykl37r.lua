@@ -47,7 +47,7 @@ object_draft_schematic_space_chassis_ykl37r = object_draft_schematic_space_chass
 
    customObjectName = "YKL-37R Nova Courier Chassis Blueprints",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 43, 
    size = 1, 
 

@@ -48,7 +48,7 @@ object_draft_schematic_bio_engineer_creature_creature_graul = object_draft_schem
 
    customObjectName = "Graul",
 
-   craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 256, -- (See DraftSchematicObjectTemplate.h)
    complexity = 38, 
    size = 1, 
 

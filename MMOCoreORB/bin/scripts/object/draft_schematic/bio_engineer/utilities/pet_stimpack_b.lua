@@ -47,7 +47,7 @@ object_draft_schematic_bio_engineer_utilities_pet_stimpack_b = object_draft_sche
 
    customObjectName = "Pet Stimpack - B",
 
-   craftingToolTab = 128, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 128, -- (See DraftSchematicObjectTemplate.h)
    complexity = 24, 
    size = 3, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_bio_engineer_dna_template_dna_template_generic = object_d
 
    customObjectName = "Generic DNA Template",
 
-   craftingToolTab = 8192, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8192, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 1, 
 

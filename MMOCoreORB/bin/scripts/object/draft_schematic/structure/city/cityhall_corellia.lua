@@ -47,7 +47,7 @@ object_draft_schematic_structure_city_cityhall_corellia = object_draft_schematic
 
    customObjectName = "Deed for: Corellia City Hall",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 50, 
    size = 14, 
 

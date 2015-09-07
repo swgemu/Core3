@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_component_solid_delivery_shell_advanced = objec
 
    customObjectName = "Advanced Solid Delivery Shell",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 3, 
 

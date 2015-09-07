@@ -47,7 +47,7 @@ object_draft_schematic_space_engine_eng_mk3 = object_draft_schematic_space_engin
 
    customObjectName = "Mark III Starfighter Engine",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 29, 
    size = 1, 
 

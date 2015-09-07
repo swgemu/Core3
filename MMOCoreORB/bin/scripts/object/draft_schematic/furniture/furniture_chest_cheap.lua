@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_chest_cheap = object_draft_schematic_
 
    customObjectName = "Chest",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 11, 
    size = 2, 
 

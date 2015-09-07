@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_armor_composite_chest = object_draft_sc
 
    customObjectName = "Composite Armor Chest Plate",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 45, 
    size = 4, 
 

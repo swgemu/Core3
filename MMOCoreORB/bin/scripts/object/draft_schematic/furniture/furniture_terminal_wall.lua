@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_terminal_wall = object_draft_schemati
 
    customObjectName = "Data Terminal",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 39, 
    size = 4, 
 

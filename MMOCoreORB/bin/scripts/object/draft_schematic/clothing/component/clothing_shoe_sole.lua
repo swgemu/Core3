@@ -47,7 +47,7 @@ object_draft_schematic_clothing_component_clothing_shoe_sole = object_draft_sche
 
    customObjectName = "Shoe Sole",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 10, 
    size = 1, 
 

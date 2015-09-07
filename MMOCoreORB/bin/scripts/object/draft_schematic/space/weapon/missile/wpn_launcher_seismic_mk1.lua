@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_missile_wpn_launcher_seismic_mk1 = object_dr
 
    customObjectName = "Mark I Seismic Launcher",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 17, 
    size = 1, 
 

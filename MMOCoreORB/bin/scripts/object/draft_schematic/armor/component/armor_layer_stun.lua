@@ -47,7 +47,7 @@ object_draft_schematic_armor_component_armor_layer_stun = object_draft_schematic
 
    customObjectName = "Stun Protection Armor Layer",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 40, 
    size = 3, 
 

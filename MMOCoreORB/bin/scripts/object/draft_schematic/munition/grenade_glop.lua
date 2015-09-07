@@ -47,7 +47,7 @@ object_draft_schematic_munition_grenade_glop = object_draft_schematic_munition_s
 
    customObjectName = "Glop Grenade",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 3, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_food_dish_soypro = object_draft_schematic_food_shared_dis
 
    customObjectName = "Soypro",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 5, 
    size = 1, 
 

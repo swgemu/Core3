@@ -46,7 +46,7 @@ object_draft_schematic_furniture_bestine_painting_bestine_raventhorn = object_dr
 
 	customObjectName = "Painting of a Raventhorn Plant",
 
-	craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+	craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 15,
 	size = 2,
 

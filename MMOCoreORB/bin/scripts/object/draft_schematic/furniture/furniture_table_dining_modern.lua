@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_table_dining_modern = object_draft_sc
 
    customObjectName = "Dining Table",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 26, 
    size = 2, 
 

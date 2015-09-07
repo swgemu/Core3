@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_crafting_module_space = object_draft_sche
 
    customObjectName = "Ship Component Crafting Module",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 28, 
    size = 1, 
 

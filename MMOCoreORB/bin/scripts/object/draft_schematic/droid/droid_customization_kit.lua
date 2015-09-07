@@ -47,7 +47,7 @@ object_draft_schematic_droid_droid_customization_kit = object_draft_schematic_dr
 
    customObjectName = "Droid Customization Kit",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 1, 
 

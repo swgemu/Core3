@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_bed_large = object_draft_schematic_fu
 
    customObjectName = "Large Bed",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 28, 
    size = 2, 
 

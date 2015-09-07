@@ -47,7 +47,7 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_casual_
 
    customObjectName = "Myoflex Cloth Treatment",
 
-   craftingToolTab = 128, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 128, -- (See DraftSchematicObjectTemplate.h)
    complexity = 19, 
    size = 1, 
 

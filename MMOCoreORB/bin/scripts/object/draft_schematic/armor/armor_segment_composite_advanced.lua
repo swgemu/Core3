@@ -47,7 +47,7 @@ object_draft_schematic_armor_armor_segment_composite_advanced = object_draft_sch
 
    customObjectName = "Advanced Composite Armor Segment",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 6, 
 

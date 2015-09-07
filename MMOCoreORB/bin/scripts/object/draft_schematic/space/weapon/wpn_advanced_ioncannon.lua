@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_wpn_advanced_ioncannon = object_draft_schema
 
    customObjectName = "Advanced Ion Cannon",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 32, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_weapon_poleaxe_vibro = object_draft_schematic_weapon_shar
 
    customObjectName = "Long Vibro Axe",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 4, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_food_drink_vasarian_brandy = object_draft_schematic_food_
 
    customObjectName = "Vasarian Brandy",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 10, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_droid_bounty_probot_transmitter = object_draft_schematic_
 
    customObjectName = "Arakyd Probe Droid",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 1, 
 

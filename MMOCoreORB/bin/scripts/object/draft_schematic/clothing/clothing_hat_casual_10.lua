@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_hat_casual_10 = object_draft_schematic_
 
    customObjectName = "Sunguard",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 19, 
    size = 3, 
 

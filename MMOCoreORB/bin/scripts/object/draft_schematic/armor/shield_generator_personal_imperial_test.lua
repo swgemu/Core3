@@ -47,7 +47,7 @@ object_draft_schematic_armor_shield_generator_personal_imperial_test = object_dr
 
    customObjectName = "Imperial Personal Shield Generator",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 60, 
    size = 14, 
 

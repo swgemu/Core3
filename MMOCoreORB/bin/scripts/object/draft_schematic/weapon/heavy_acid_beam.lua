@@ -47,7 +47,7 @@ object_draft_schematic_weapon_heavy_acid_beam = object_draft_schematic_weapon_sh
 
    customObjectName = "Acid Stream Launcher",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 50, 
    size = 1, 
 

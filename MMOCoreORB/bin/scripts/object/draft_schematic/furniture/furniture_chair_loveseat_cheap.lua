@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_chair_loveseat_cheap = object_draft_s
 
    customObjectName = "Loveseat",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 14, 
    size = 2, 
 

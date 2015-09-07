@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_manipulator_arm = object_draft_schematic_
 
    customObjectName = "Manipulator Arm",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 4, 
 

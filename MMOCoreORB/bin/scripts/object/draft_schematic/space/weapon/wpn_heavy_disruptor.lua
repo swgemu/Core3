@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_wpn_heavy_disruptor = object_draft_schematic
 
    customObjectName = "Heavy Disruptor",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 29, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_armor_ithorian_sentinel_boots = object_
 
    customObjectName = "Ithorian Sentinel Boots",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 45, 
    size = 4, 
 

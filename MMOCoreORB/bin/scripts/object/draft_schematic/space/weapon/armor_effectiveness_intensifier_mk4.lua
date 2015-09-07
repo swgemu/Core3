@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_armor_effectiveness_intensifier_mk4 = object
 
    customObjectName = "Armor Effectiveness Intensifier - Mark IV",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 1, 
 

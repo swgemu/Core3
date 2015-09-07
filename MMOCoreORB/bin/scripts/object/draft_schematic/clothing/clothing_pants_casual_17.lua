@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_pants_casual_17 = object_draft_schemati
 
    customObjectName = "Shorts",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 6, 
    size = 3, 
 

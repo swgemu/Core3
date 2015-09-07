@@ -48,7 +48,7 @@ object_draft_schematic_bio_engineer_creature_creature_slice_hound = object_draft
 
    customObjectName = "Slice Hound",
 
-   craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 256, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 1, 
 

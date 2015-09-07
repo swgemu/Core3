@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_armor_bone_leggings = object_draft_sche
 
    customObjectName = "Bone Armor Leggings",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 16, 
    size = 3, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_wke_skirt_s01 = object_draft_schematic_
 
    customObjectName = "Decorative Waist Wrap",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 3, 
 

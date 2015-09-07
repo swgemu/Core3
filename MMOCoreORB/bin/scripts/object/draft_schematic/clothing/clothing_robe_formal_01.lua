@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_robe_formal_01 = object_draft_schematic
 
    customObjectName = "Robe of Honor",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 23, 
    size = 4, 
 

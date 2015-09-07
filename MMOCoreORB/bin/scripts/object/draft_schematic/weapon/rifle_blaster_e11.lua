@@ -47,7 +47,7 @@ object_draft_schematic_weapon_rifle_blaster_e11 = object_draft_schematic_weapon_
 
    customObjectName = "E11 Rifle",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 22, 
    size = 3, 
 

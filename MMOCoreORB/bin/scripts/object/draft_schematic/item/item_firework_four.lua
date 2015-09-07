@@ -47,7 +47,7 @@ object_draft_schematic_item_item_firework_four = object_draft_schematic_item_sha
 
    customObjectName = "Type 4 Firework",
 
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 11, 
    size = 1, 
 

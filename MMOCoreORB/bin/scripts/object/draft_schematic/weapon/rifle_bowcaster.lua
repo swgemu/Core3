@@ -47,7 +47,7 @@ object_draft_schematic_weapon_rifle_bowcaster = object_draft_schematic_weapon_sh
 
    customObjectName = "Bowcaster",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 28, 
    size = 3, 
 

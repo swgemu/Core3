@@ -47,7 +47,7 @@ object_draft_schematic_armor_armor_segment_kashyyykian_black_mtn = object_draft_
 
    customObjectName = "Kashyyykian Black Mountain Armor Segment",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 1, 
 

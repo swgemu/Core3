@@ -47,7 +47,7 @@ object_draft_schematic_food_dish_gruuvan_shaal = object_draft_schematic_food_sha
 
    customObjectName = "Gruuvan Shaal",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 10, 
    size = 1, 
 

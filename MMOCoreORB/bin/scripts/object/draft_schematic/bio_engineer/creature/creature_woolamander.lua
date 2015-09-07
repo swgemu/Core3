@@ -48,7 +48,7 @@ object_draft_schematic_bio_engineer_creature_creature_woolamander = object_draft
 
    customObjectName = "Woolamander",
 
-   craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 256, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_personality_module_geek = object_draft_sc
 
    customObjectName = "Geeky Droid Personality Chip",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 2, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_medpack_enhance_poison_c = object_draft_schemat
 
    customObjectName = "Enhance Poison Resist Medpack - C",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 37, 
    size = 3, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_spices_spice_giggledust = object_draft_schematic_spices_s
 
    customObjectName = "Giggledust",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 10, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_instrument_instrument_bandfill = object_draft_schematic_i
 
    customObjectName = "a Bandfill",
 
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 1, 
 

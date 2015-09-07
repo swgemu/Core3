@@ -47,7 +47,7 @@ object_draft_schematic_droid_droid_interplanetary_survey = object_draft_schemati
 
    customObjectName = "Interplanetary Survey Droid",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 1, 
 

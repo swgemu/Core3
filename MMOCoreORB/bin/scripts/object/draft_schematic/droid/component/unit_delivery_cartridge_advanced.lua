@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_unit_delivery_cartridge_advanced = object
 
    customObjectName = "Advanced Unit Delivery Cartridge",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 1, 
 

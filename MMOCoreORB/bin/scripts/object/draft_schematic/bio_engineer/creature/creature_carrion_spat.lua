@@ -48,7 +48,7 @@ object_draft_schematic_bio_engineer_creature_creature_carrion_spat = object_draf
 
    customObjectName = "Carrion Spat",
 
-   craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 256, -- (See DraftSchematicObjectTemplate.h)
    complexity = 24, 
    size = 1, 
 

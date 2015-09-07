@@ -47,7 +47,7 @@ object_draft_schematic_structure_component_wall_module = object_draft_schematic_
 
    customObjectName = "Wall Module",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 6, 
 

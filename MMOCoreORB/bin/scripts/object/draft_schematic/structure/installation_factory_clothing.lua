@@ -47,7 +47,7 @@ object_draft_schematic_structure_installation_factory_clothing = object_draft_sc
 
    customObjectName = "Deed for: Wearables Factory",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 16, 
 

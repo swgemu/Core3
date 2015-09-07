@@ -47,7 +47,7 @@ object_draft_schematic_weapon_component_projectile_rifle_barrel_advanced = objec
 
    customObjectName = "Advanced Projectile Rifle Barrel",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 5, 
    size = 1, 
 

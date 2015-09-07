@@ -47,7 +47,7 @@ object_draft_schematic_spices_spice_sedative_h4b = object_draft_schematic_spices
 
    customObjectName = "Sedative H4b",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 11, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_weapon_pistol_republic_blaster = object_draft_schematic_w
 
    customObjectName = "Republic Blaster",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 22, 
    size = 3, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_item_item_clothing_station = object_draft_schematic_item_
 
    customObjectName = "Clothing and Armor Crafting Station",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 5, 
 

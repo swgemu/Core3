@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_medpack_enhance_constitution_d = object_draft_s
 
    customObjectName = "Enhance Constitution Medpack - D",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 37, 
    size = 3, 
 

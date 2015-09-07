@@ -47,7 +47,7 @@ object_draft_schematic_armor_armor_segment = object_draft_schematic_armor_shared
 
    customObjectName = "Armor Segment",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 6, 
 

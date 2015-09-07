@@ -47,7 +47,7 @@ object_draft_schematic_scout_item_camp_elite = object_draft_schematic_scout_shar
 
    customObjectName = "Field Base Kit",
 
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 13, 
    size = 1, 
 

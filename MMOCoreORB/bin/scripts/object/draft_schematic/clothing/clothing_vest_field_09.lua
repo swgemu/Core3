@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_vest_field_09 = object_draft_schematic_
 
    customObjectName = "Cargo Vest",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 3, 
 

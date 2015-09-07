@@ -47,7 +47,7 @@ object_draft_schematic_food_component_container_cask = object_draft_schematic_fo
 
    customObjectName = "Cask",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 8, 
    size = 1, 
 

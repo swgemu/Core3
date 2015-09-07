@@ -47,7 +47,7 @@ object_draft_schematic_food_dish_rakririan_burnout_sauce = object_draft_schemati
 
    customObjectName = "Rakririan Burnout Sauce",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 1, 
 

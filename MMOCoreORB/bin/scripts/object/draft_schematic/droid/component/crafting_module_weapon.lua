@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_crafting_module_weapon = object_draft_sch
 
    customObjectName = "Weapon Droid Crafting Station Module",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 17, 
    size = 1, 
 

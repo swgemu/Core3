@@ -47,7 +47,7 @@ object_draft_schematic_food_dessert_citros_snow_cake = object_draft_schematic_fo
 
    customObjectName = "Citros Snow Cake",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 10, 
    size = 1, 
 

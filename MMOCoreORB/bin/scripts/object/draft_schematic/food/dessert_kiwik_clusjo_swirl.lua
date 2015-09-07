@@ -47,7 +47,7 @@ object_draft_schematic_food_dessert_kiwik_clusjo_swirl = object_draft_schematic_
 
    customObjectName = "Kiwik Clusjo Swirl",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 10, 
    size = 1, 
 

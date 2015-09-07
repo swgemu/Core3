@@ -47,7 +47,7 @@ object_draft_schematic_weapon_lightsaber_lightsaber_one_hand_gen1 = object_draft
 
    customObjectName = "First Generation Lightsaber",
 
-   craftingToolTab = 2048, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2048, -- (See DraftSchematicObjectTemplate.h)
    complexity = 16, 
    size = 1, 
 

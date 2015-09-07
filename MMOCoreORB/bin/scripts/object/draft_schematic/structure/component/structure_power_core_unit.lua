@@ -47,7 +47,7 @@ object_draft_schematic_structure_component_structure_power_core_unit = object_dr
 
    customObjectName = "Power Core Unit",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 10, 
 

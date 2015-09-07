@@ -47,7 +47,7 @@ object_draft_schematic_structure_installation_mining_liquid_vapor_light = object
 
    customObjectName = "Deed for: Personal Moisture Vaporator",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 8, 
 

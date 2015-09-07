@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_shirt_formal_12 = object_draft_schemati
 
    customObjectName = "Flared Cuff Shirt",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 4, 
 

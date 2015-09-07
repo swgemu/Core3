@@ -47,7 +47,7 @@ object_draft_schematic_food_drink_vayerbok = object_draft_schematic_food_shared_
 
    customObjectName = "Vayerbok",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 1, 
 

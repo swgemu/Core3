@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_armor_ubese_bandolier = object_draft_sc
 
    customObjectName = "Ubese Armor Bandolier",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 35, 
    size = 4, 
 

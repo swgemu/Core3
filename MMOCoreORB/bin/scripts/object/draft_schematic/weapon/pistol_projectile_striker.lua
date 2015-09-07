@@ -47,7 +47,7 @@ object_draft_schematic_weapon_pistol_projectile_striker = object_draft_schematic
 
    customObjectName = "Striker Pistol",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 2, 
 

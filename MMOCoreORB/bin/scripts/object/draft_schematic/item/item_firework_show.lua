@@ -47,7 +47,7 @@ object_draft_schematic_item_item_firework_show = object_draft_schematic_item_sha
 
    customObjectName = "Fireworks Show Package",
 
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 1, 
 

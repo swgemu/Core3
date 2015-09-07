@@ -47,7 +47,7 @@ object_draft_schematic_munition_mine_anti_vehicle = object_draft_schematic_munit
 
    customObjectName = "Anti-Vehicular Mine",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 35, 
    size = 3, 
 

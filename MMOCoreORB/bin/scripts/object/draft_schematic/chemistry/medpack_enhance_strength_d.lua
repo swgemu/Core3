@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_medpack_enhance_strength_d = object_draft_schem
 
    customObjectName = "Enhance Strength Medpack - D",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 37, 
    size = 3, 
 

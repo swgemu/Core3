@@ -47,7 +47,7 @@ object_draft_schematic_structure_city_cityhall_naboo = object_draft_schematic_st
 
    customObjectName = "Deed for: Naboo City Hall",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 50, 
    size = 14, 
 

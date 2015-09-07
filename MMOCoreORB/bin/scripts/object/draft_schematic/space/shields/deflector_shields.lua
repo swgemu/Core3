@@ -47,7 +47,7 @@ object_draft_schematic_space_shields_deflector_shields = object_draft_schematic_
 
    customObjectName = "Mark II Deflector Shield Generator",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 1, 
 

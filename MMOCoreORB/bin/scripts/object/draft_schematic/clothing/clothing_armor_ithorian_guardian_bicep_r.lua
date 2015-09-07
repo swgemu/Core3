@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_armor_ithorian_guardian_bicep_r = objec
 
    customObjectName = "Ithorian Guardian Bicep (Right)",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 3, 
 

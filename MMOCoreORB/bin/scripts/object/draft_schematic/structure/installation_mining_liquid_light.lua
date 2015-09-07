@@ -47,7 +47,7 @@ object_draft_schematic_structure_installation_mining_liquid_light = object_draft
 
    customObjectName = "Deed for: Personal Chemical Extractor",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 10, 
 

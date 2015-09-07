@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_medpack_wound_stamina_b = object_draft_schemati
 
    customObjectName = "Stamina Wound Medpack - B",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 10, 
    size = 3, 
 

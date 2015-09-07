@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_medpack_disease_area_strength_a = object_draft_
 
    customObjectName = "Strength Area Disease Delivery Unit - A",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 3, 
 

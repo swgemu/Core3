@@ -47,7 +47,7 @@ object_draft_schematic_food_drink_deuterium_pyro = object_draft_schematic_food_s
 
    customObjectName = "Deuterium-pyro",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 1, 
 

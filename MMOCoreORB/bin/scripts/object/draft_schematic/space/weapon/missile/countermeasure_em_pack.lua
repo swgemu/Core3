@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_missile_countermeasure_em_pack = object_draf
 
    customObjectName = "EM Emitter Pack",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 17, 
    size = 1, 
 

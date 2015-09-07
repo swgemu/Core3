@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_missile_wpn_concussion_missile_mk2 = object_
 
    customObjectName = "Mark II Concussion Missile Pack",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 19, 
    size = 0, 
 

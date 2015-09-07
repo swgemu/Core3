@@ -47,7 +47,7 @@ object_draft_schematic_space_shields_light_deflector_shields = object_draft_sche
 
    customObjectName = "Mark I Shield Generator",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 21, 
    size = 1, 
 

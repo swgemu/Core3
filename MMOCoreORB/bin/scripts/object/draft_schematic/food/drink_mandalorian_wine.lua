@@ -47,7 +47,7 @@ object_draft_schematic_food_drink_mandalorian_wine = object_draft_schematic_food
 
    customObjectName = "Mandalorian Wine",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 1, 
 

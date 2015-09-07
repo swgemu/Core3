@@ -47,7 +47,7 @@ object_draft_schematic_weapon_component_blaster_power_handler_advanced = object_
 
    customObjectName = "Advanced Blaster Power Handler",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 3, 
 

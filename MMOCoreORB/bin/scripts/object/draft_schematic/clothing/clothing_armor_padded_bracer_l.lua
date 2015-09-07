@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_armor_padded_bracer_l = object_draft_sc
 
    customObjectName = "Padded Armor Left Bracer",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 40, 
    size = 4, 
 

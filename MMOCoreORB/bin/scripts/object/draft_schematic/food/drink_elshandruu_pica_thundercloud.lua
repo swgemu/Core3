@@ -47,7 +47,7 @@ object_draft_schematic_food_drink_elshandruu_pica_thundercloud = object_draft_sc
 
    customObjectName = "Elshandruu Pica Thundercloud",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 1, 
 

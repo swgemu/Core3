@@ -47,7 +47,7 @@ object_draft_schematic_food_component_ingredient_carbosyrup = object_draft_schem
 
    customObjectName = "Carbosyrup",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 3, 
    size = 1, 
 

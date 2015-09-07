@@ -47,7 +47,7 @@ object_draft_schematic_weapon_pistol_de_10 = object_draft_schematic_weapon_share
 
    customObjectName = "DE-10 Pistol Schematic",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 32, 
    size = 1, 
 

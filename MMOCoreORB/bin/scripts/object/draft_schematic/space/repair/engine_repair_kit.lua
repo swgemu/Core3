@@ -47,7 +47,7 @@ object_draft_schematic_space_repair_engine_repair_kit = object_draft_schematic_s
 
    customObjectName = "Engine Repair Kit",
 
-   craftingToolTab = 262144, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 262144, -- (See DraftSchematicObjectTemplate.h)
    complexity = 11, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_scout_item_camokit_naboo = object_draft_schematic_scout_s
 
    customObjectName = "Camo Kit: Naboo",
 
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 2, 
    size = 1, 
 

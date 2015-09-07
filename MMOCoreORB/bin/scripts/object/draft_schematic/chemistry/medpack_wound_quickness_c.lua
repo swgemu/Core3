@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_medpack_wound_quickness_c = object_draft_schema
 
    customObjectName = "Quickness Wound Medpack - C",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 1, 
 

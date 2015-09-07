@@ -47,7 +47,7 @@ object_draft_schematic_weapon_lance_vibro = object_draft_schematic_weapon_shared
 
    customObjectName = "Vibro Lance",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 4, 
 

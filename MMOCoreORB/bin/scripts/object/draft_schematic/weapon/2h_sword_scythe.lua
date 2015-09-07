@@ -47,7 +47,7 @@ object_draft_schematic_weapon_2h_sword_scythe = object_draft_schematic_weapon_sh
 
    customObjectName = "Scythe Blade Schematic",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 35, 
    size = 1, 
 

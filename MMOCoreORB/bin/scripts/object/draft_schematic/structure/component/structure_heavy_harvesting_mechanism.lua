@@ -47,7 +47,7 @@ object_draft_schematic_structure_component_structure_heavy_harvesting_mechanism 
 
    customObjectName = "Heavy Harvesting Mechanism",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 16, 
    size = 8, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_structure_installation_mining_ore = object_draft_schemati
 
    customObjectName = "Deed for: Mineral Mining Installation",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 10, 
 

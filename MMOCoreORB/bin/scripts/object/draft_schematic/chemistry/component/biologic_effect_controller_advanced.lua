@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_component_biologic_effect_controller_advanced =
 
    customObjectName = "Advanced Biological Effect Controller",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 2, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_wke_hat_s01 = object_draft_schematic_cl
 
    customObjectName = "Wookiee Traveller\'s Helm",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 19, 
    size = 3, 
 

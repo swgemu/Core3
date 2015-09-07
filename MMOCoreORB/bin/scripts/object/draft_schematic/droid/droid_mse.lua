@@ -47,7 +47,7 @@ object_draft_schematic_droid_droid_mse = object_draft_schematic_droid_shared_dro
 
    customObjectName = "Deed for: MSE Droid",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 1, 
 

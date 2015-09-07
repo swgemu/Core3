@@ -47,7 +47,7 @@ object_draft_schematic_weapon_component_stock = object_draft_schematic_weapon_co
 
    customObjectName = "Rifle Stock",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 3, 
    size = 1, 
 

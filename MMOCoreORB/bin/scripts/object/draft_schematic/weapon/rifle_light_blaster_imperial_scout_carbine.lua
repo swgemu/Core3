@@ -47,7 +47,7 @@ object_draft_schematic_weapon_rifle_light_blaster_imperial_scout_carbine = objec
 
    customObjectName = "Elite Carbine",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 24, 
    size = 3, 
 

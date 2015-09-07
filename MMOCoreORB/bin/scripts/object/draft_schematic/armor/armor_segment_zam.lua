@@ -47,7 +47,7 @@ object_draft_schematic_armor_armor_segment_zam = object_draft_schematic_armor_sh
 
    customObjectName = "Armorweave Segment",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 4, 
 

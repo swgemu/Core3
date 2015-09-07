@@ -47,7 +47,7 @@ object_draft_schematic_food_drink_veronian_berry_wine = object_draft_schematic_f
 
    customObjectName = "Veronian Berry Wine",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 8, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_droid_droid_r3_advanced = object_draft_schematic_droid_sh
 
    customObjectName = "Deed for: R3 Droid, Advanced Model",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 45, 
    size = 1, 
 

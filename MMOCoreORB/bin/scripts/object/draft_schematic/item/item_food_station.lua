@@ -47,7 +47,7 @@ object_draft_schematic_item_item_food_station = object_draft_schematic_item_shar
 
    customObjectName = "Food and Chemical Crafting Station",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 5, 
 

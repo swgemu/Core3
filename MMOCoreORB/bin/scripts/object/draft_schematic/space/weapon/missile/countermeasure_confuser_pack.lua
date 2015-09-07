@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_missile_countermeasure_confuser_pack = objec
 
    customObjectName = "IFF Confuser Pack",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 19, 
    size = 1, 
 

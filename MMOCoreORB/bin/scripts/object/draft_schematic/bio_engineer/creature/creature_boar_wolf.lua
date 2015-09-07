@@ -48,7 +48,7 @@ object_draft_schematic_bio_engineer_creature_creature_boar_wolf = object_draft_s
 
    customObjectName = "Boar Wolf",
 
-   craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 256, -- (See DraftSchematicObjectTemplate.h)
    complexity = 23, 
    size = 1, 
 

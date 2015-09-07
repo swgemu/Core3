@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_armor_module_1 = object_draft_schematic_d
 
    customObjectName = "Droid Armor Module 1",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 9, 
    size = 2, 
 

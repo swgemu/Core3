@@ -47,7 +47,7 @@ object_draft_schematic_space_chassis_blacksun_heavy_s02 = object_draft_schematic
 
    customObjectName = "Rihkxyrk Attack Ship Chassis Blueprints, Style 2",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 39, 
    size = 1, 
 

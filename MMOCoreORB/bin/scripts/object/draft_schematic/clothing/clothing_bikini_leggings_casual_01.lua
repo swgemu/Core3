@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_bikini_leggings_casual_01 = object_draf
 
    customObjectName = "Bikini Leggings",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 3, 
 

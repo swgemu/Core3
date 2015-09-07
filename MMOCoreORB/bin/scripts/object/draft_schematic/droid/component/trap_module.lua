@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_trap_module = object_draft_schematic_droi
 
    customObjectName = "Scout Trap Projectile Unit",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 1, 
 

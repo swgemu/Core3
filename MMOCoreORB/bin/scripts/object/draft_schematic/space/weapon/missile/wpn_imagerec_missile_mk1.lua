@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_missile_wpn_imagerec_missile_mk1 = object_dr
 
    customObjectName = "Mark I Image-Rec Missile Pack",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 17, 
    size = 0, 
 

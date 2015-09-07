@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_ith_jewelry_necklace_02 = object_draft_
 
    customObjectName = "Ithorian Stately Necklace",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 2, 
 

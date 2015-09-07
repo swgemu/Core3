@@ -47,7 +47,7 @@ object_draft_schematic_space_armor_heavy_durasteel_plating = object_draft_schema
 
    customObjectName = "Mark III Durasteel Plating",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 29, 
    size = 1, 
 

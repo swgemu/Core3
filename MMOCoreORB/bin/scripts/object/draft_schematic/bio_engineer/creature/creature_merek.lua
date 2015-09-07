@@ -48,7 +48,7 @@ object_draft_schematic_bio_engineer_creature_creature_merek = object_draft_schem
 
    customObjectName = "Merek",
 
-   craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 256, -- (See DraftSchematicObjectTemplate.h)
    complexity = 29, 
    size = 1, 
 

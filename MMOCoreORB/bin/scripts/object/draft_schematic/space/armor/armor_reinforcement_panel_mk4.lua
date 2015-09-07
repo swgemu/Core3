@@ -47,7 +47,7 @@ object_draft_schematic_space_armor_armor_reinforcement_panel_mk4 = object_draft_
 
    customObjectName = "Armor Reinforcement Panel - Mark IV",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 1, 
 

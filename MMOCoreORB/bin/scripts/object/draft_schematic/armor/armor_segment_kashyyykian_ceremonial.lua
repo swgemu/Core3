@@ -47,7 +47,7 @@ object_draft_schematic_armor_armor_segment_kashyyykian_ceremonial = object_draft
 
    customObjectName = "Kashyyykian Ceremonial Armor Segment",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 4, 
 

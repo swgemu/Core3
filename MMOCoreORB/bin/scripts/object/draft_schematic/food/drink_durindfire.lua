@@ -47,7 +47,7 @@ object_draft_schematic_food_drink_durindfire = object_draft_schematic_food_share
 
    customObjectName = "Durindfire",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 8, 
    size = 1, 
 

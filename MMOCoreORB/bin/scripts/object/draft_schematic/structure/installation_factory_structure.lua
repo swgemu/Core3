@@ -47,7 +47,7 @@ object_draft_schematic_structure_installation_factory_structure = object_draft_s
 
    customObjectName = "Deed for: Structure Factory",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 16, 
 

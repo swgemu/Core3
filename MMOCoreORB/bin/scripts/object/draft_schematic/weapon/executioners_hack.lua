@@ -47,7 +47,7 @@ object_draft_schematic_weapon_executioners_hack = object_draft_schematic_weapon_
 
    customObjectName = "Executioner\\\\\\\'s Hack Schematic",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 35, 
    size = 1, 
 

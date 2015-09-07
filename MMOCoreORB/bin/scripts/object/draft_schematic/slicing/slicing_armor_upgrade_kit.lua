@@ -47,7 +47,7 @@ object_draft_schematic_slicing_slicing_armor_upgrade_kit = object_draft_schemati
 
    customObjectName = "Armor Upgrade Kit",
 
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 1, 
 

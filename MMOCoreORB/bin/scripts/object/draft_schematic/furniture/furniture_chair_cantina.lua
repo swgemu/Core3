@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_chair_cantina = object_draft_schemati
 
    customObjectName = "Small Cantina Seat",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 1, 
 

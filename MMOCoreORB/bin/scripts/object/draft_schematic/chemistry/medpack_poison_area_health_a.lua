@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_medpack_poison_area_health_a = object_draft_sch
 
    customObjectName = "Health Area Poison Delivery Unit - A",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 3, 
 

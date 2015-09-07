@@ -46,7 +46,7 @@ object_draft_schematic_furniture_furniture_technical_console_s01 = object_draft_
 
    customObjectName = "Technical Console",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 36, 
    size = 1, 
 

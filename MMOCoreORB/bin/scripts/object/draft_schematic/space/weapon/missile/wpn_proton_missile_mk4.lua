@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_missile_wpn_proton_missile_mk4 = object_draf
 
    customObjectName = "Mark IV Proton Missile Pack",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 23, 
    size = 1, 
 

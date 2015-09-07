@@ -47,7 +47,7 @@ object_draft_schematic_space_weapon_missile_wpn_seismic_missile_mk2 = object_dra
 
    customObjectName = "Mark II Seismic Missile Pack",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 21, 
    size = 1, 
 

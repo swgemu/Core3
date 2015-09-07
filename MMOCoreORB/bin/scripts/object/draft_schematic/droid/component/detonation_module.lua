@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_detonation_module = object_draft_schemati
 
    customObjectName = "Detonation Module",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 21, 
    size = 1, 
 

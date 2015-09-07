@@ -47,7 +47,7 @@ object_draft_schematic_droid_droid_wound_repair_kit_b = object_draft_schematic_d
 
    customObjectName = "Droid Reconstruction Kit - B",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 24, 
    size = 1, 
 

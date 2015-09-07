@@ -47,7 +47,7 @@ object_draft_schematic_structure_city_garden_small = object_draft_schematic_stru
 
    customObjectName = "Deed for: Small Garden",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 21, 
    size = 12, 
 

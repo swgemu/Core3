@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_armor_chitin_helmet = object_draft_sche
 
    customObjectName = "Chitin Armor Helmet",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 3, 
 

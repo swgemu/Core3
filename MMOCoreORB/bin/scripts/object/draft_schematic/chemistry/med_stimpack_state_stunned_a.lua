@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_med_stimpack_state_stunned_a = object_draft_sch
 
    customObjectName = "Stun State Stimpack - A",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 3, 
 

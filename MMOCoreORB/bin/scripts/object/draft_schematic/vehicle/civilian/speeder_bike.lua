@@ -47,7 +47,7 @@ object_draft_schematic_vehicle_civilian_speeder_bike = object_draft_schematic_ve
 
    customObjectName = "Speederbike",
 
-   craftingToolTab = 16, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 16, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 1, 
 

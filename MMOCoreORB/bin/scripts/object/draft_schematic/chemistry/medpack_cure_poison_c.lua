@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_medpack_cure_poison_c = object_draft_schematic_
 
    customObjectName = "Cure Poison Medpack - C",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 1, 
 

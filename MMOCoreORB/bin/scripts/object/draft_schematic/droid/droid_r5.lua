@@ -47,7 +47,7 @@ object_draft_schematic_droid_droid_r5 = object_draft_schematic_droid_shared_droi
 
    customObjectName = "Deed for: R5 Droid",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 16, 
    size = 1, 
 

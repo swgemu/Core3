@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_medpack_poison_mind_a = object_draft_schematic_
 
    customObjectName = "Mind Poison Delivery Unit - A",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 3, 
 

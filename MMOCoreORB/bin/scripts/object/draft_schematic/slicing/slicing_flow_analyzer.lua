@@ -47,7 +47,7 @@ object_draft_schematic_slicing_slicing_flow_analyzer = object_draft_schematic_sl
 
    customObjectName = "Flow Analyzer Node",
 
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
    complexity = 7, 
    size = 1, 
 

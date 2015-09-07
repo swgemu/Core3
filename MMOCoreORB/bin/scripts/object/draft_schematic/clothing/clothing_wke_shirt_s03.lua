@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_wke_shirt_s03 = object_draft_schematic_
 
    customObjectName = "Wookiee Battle Padding",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 3, 
 

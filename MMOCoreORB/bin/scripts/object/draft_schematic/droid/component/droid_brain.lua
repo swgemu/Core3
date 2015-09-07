@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_droid_brain = object_draft_schematic_droi
 
    customObjectName = "Droid Brain",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 21, 
    size = 8, 
 

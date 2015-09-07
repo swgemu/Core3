@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_component_release_mechanism_duration = object_d
 
    customObjectName = "Chemical Release Duration Mechanism",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 17, 
    size = 4, 
 

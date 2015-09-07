@@ -47,7 +47,7 @@ object_draft_schematic_munition_component_warhead_chemical = object_draft_schema
 
    customObjectName = "Chemical Warhead",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 35, 
    size = 3, 
 

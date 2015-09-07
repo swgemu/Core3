@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_chassis_droid_le_repair = object_draft_sc
 
    customObjectName = "LE Repair ADV Droid Chassis",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 6, 
 

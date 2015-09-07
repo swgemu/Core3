@@ -47,7 +47,7 @@ object_draft_schematic_space_engine_engine_overdriver_mk4 = object_draft_schemat
 
    customObjectName = "Engine Overdriver - Mark IV",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 1, 
 

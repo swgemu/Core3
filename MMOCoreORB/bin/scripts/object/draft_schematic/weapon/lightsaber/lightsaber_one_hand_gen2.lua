@@ -47,7 +47,7 @@ object_draft_schematic_weapon_lightsaber_lightsaber_one_hand_gen2 = object_draft
 
    customObjectName = "Second Generation Lightsaber",
 
-   craftingToolTab = 2048, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2048, -- (See DraftSchematicObjectTemplate.h)
    complexity = 17, 
    size = 1, 
 

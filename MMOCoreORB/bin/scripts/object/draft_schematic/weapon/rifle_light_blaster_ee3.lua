@@ -47,7 +47,7 @@ object_draft_schematic_weapon_rifle_light_blaster_ee3 = object_draft_schematic_w
 
    customObjectName = "EE3 Carbine",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 22, 
    size = 3, 
 

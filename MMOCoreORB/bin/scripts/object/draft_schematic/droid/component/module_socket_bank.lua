@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_module_socket_bank = object_draft_schemat
 
    customObjectName = "General Droid Module Socket Cluster",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 1, 
 

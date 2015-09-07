@@ -47,7 +47,7 @@ object_draft_schematic_armor_armor_segment_kashyyykian_hunting_advanced = object
 
    customObjectName = "Advanced Kashyyykian Hunting Armor Segment",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 30, 
    size = 1, 
 

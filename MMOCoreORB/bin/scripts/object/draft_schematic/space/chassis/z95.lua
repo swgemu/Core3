@@ -47,7 +47,7 @@ object_draft_schematic_space_chassis_z95 = object_draft_schematic_space_chassis_
 
    customObjectName = "Z-95 Chassis Blueprints",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 23, 
    size = 1, 
 

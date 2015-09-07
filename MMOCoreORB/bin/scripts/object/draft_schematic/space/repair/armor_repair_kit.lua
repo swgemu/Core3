@@ -47,7 +47,7 @@ object_draft_schematic_space_repair_armor_repair_kit = object_draft_schematic_sp
 
    customObjectName = "Armor Repair Kit",
 
-   craftingToolTab = 262144, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 262144, -- (See DraftSchematicObjectTemplate.h)
    complexity = 11, 
    size = 1, 
 

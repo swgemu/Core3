@@ -47,7 +47,7 @@ object_draft_schematic_weapon_pistol_blaster_power5 = object_draft_schematic_wea
 
    customObjectName = "Power5 Pistol",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 22, 
    size = 3, 
 

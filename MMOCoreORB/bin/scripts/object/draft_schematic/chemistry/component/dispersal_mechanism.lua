@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_component_dispersal_mechanism = object_draft_sc
 
    customObjectName = "Dispersal Mechanism",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 15, 
    size = 2, 
 

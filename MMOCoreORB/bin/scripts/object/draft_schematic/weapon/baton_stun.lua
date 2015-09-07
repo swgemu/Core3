@@ -47,7 +47,7 @@ object_draft_schematic_weapon_baton_stun = object_draft_schematic_weapon_shared_
 
    customObjectName = "Stun Baton",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 20, 
    size = 3, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_food_component_container_large_glass = object_draft_schem
 
    customObjectName = "Large Glass",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 5, 
    size = 1, 
 

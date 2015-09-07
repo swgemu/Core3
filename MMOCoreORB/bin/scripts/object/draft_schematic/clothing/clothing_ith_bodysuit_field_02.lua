@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_ith_bodysuit_field_02 = object_draft_sc
 
    customObjectName = "Ithorian Technical Suit",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 24, 
    size = 3, 
 

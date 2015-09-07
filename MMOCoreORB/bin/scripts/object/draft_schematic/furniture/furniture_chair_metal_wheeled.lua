@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_chair_metal_wheeled = object_draft_sc
 
    customObjectName = "Metal Chair",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 2, 
 

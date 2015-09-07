@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_droid_motive_system_advanced = object_dra
 
    customObjectName = "Advanced Droid Motive System",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 28, 
    size = 6, 
 

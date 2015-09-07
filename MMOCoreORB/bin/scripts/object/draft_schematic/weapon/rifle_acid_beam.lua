@@ -47,7 +47,7 @@ object_draft_schematic_weapon_rifle_acid_beam = object_draft_schematic_weapon_sh
 
    customObjectName = "Heavy Acid Rifle",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 24, 
    size = 3, 
 

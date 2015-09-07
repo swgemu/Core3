@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_chassis_droid_r3 = object_draft_schematic
 
    customObjectName = "R3 ADV Droid Chassis",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 35, 
    size = 8, 
 

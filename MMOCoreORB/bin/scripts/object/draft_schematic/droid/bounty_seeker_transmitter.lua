@@ -47,7 +47,7 @@ object_draft_schematic_droid_bounty_seeker_transmitter = object_draft_schematic_
 
    customObjectName = "Seeker Droid",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 16, 
    size = 1, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_structure_merchant_tent = object_draft_schematic_structur
 
    customObjectName = "Deed for: Merchant Tent",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 13, 
    size = 10, 
 

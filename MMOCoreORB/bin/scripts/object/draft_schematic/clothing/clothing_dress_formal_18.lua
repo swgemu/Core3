@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_dress_formal_18 = object_draft_schemati
 
    customObjectName = "Administrator\'s Robe",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 16, 
    size = 4, 
 

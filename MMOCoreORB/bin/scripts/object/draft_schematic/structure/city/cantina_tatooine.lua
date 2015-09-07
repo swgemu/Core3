@@ -47,7 +47,7 @@ object_draft_schematic_structure_city_cantina_tatooine = object_draft_schematic_
 
    customObjectName = "Deed for: Tatooine Cantina",
 
-   craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1024, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 14, 
 

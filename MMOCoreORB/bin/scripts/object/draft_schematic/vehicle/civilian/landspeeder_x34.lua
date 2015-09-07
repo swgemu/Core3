@@ -47,7 +47,7 @@ object_draft_schematic_vehicle_civilian_landspeeder_x34 = object_draft_schematic
 
    customObjectName = "X34 Landspeeder",
 
-   craftingToolTab = 16, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 16, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 1, 
 

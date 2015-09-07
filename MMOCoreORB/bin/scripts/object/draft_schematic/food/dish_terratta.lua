@@ -47,7 +47,7 @@ object_draft_schematic_food_dish_terratta = object_draft_schematic_food_shared_d
 
    customObjectName = "Terratta",
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 4, -- (See DraftSchematicObjectTemplate.h)
    complexity = 12, 
    size = 1, 
 

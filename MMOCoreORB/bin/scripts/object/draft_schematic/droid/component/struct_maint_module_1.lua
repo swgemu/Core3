@@ -47,7 +47,7 @@ object_draft_schematic_droid_component_struct_maint_module_1 = object_draft_sche
 
    customObjectName = "Level 1 Droid Structure Maintenance Module",
 
-   craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 2, 
 

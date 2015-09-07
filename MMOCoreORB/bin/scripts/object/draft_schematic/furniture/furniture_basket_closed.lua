@@ -47,7 +47,7 @@ object_draft_schematic_furniture_furniture_basket_closed = object_draft_schemati
 
    customObjectName = "Closed Basket Draft Schematic",
 
-   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 512, -- (See DraftSchematicObjectTemplate.h)
    complexity = 18, 
    size = 1, 
 

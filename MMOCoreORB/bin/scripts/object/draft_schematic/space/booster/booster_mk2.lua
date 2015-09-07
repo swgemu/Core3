@@ -47,7 +47,7 @@ object_draft_schematic_space_booster_booster_mk2 = object_draft_schematic_space_
 
    customObjectName = "Mark II Booster",
 
-   craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 131072, -- (See DraftSchematicObjectTemplate.h)
    complexity = 25, 
    size = 0, 
 

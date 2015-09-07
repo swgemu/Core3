@@ -47,7 +47,7 @@ object_draft_schematic_chemistry_medpack_wound_constitution_e = object_draft_sch
 
    customObjectName = "Constitution Wound Medpack - E",
 
-   craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
    complexity = 40, 
    size = 3, 
 

@@ -47,7 +47,7 @@ object_draft_schematic_armor_shield_generator_personal_c = object_draft_schemati
 
    customObjectName = "Personal Shield Generator Mk.3",
 
-   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 2, -- (See DraftSchematicObjectTemplate.h)
    complexity = 60, 
    size = 14, 
 

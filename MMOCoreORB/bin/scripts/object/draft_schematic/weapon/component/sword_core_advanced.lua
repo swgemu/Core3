@@ -47,7 +47,7 @@ object_draft_schematic_weapon_component_sword_core_advanced = object_draft_schem
 
    customObjectName = "Advanced Sword Core",
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
    complexity = 5, 
    size = 1, 
 

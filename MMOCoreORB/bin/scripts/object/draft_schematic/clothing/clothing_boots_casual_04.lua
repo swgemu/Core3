@@ -47,7 +47,7 @@ object_draft_schematic_clothing_clothing_boots_casual_04 = object_draft_schemati
 
    customObjectName = "Hide Boots",
 
-   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   craftingToolTab = 8, -- (See DraftSchematicObjectTemplate.h)
    complexity = 7, 
    size = 3, 
 
