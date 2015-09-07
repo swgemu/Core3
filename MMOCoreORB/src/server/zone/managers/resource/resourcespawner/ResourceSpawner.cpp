@@ -830,18 +830,10 @@ void ResourceSpawner::sendSample(CreatureObject* player, const String& resname,
 
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-	/*if (player->getHAM(CreatureAttribute::ACTION) < 200) {
-		player->setPosture(CreaturePosture::UPRIGHT, true);
-		player->sendSystemMessage("@error_message:survey_mind"); //You are exhausted. You nee to clear your head before you can survey again.
-		return;
-	}*/
-
 	//Adjust cost based upon player's quickness
 	int actionCost = 124 - (int)(player->getHAM(CreatureAttribute::QUICKNESS)/12.5f);
-	int mindCost = 124 - (int)(player->getHAM(CreatureAttribute::FOCUS)/12.5f);
 
 	player->inflictDamage(player, CreatureAttribute::ACTION, actionCost, false, true);
-	player->inflictDamage(player, CreatureAttribute::MIND, mindCost, false, true);
 
 	PlayClientEffectLoc* effect = new PlayClientEffectLoc(sampleAnimation,
 			player->getZone()->getZoneName(), player->getPositionX(),
