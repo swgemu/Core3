@@ -58,9 +58,11 @@ void ResourceManagerImplementation::loadSurveyData() {
 	info(String::valueOf(i) + " surveys loaded.", true);
 }
 int ResourceManagerImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	if (eventType == ObserverEventType::POSTURECHANGED) {
-		CreatureObject* creature = cast<CreatureObject*>( observable);
-		// Cancel Sampling on posture change
+	CreatureObject* creature = cast<CreatureObject*>(observable);
+
+	// Cancel sampling if the player is either changes posture or begins moving while on a mount or standing.
+	if ((eventType == ObserverEventType::POSTURECHANGED || eventType == ObserverEventType::POSITIONCHANGED)
+			&& !creature->isKneeling()) {
 		Reference<SampleTask*> task = creature->getPendingTask("sample").castTo<SampleTask*>( );
 		Reference<SampleResultsTask*> sampleResultsTask = creature->getPendingTask("sampleresults").castTo<SampleResultsTask*>( );
 
@@ -72,9 +74,8 @@ int ResourceManagerImplementation::notifyObserverEvent(uint32 eventType, Observa
 			if(sampleResultsTask != NULL) {
 				sampleResultsTask->cancel();
 				creature->removePendingTask("sampleresults");
+				creature->sendSystemMessage("@survey:sample_cancel");
 			}
-
-			creature->sendSystemMessage("@survey:sample_cancel");
 		}
 
 		return 1;
@@ -205,6 +206,7 @@ void ResourceManagerImplementation::sendSurvey(CreatureObject* playerCreature, c
 void ResourceManagerImplementation::sendSample(CreatureObject* playerCreature, const String& resname, const String& sampleAnimation) {
 	resourceSpawner->sendSample(playerCreature, resname, sampleAnimation);
 
+	playerCreature->registerObserver(ObserverEventType::POSITIONCHANGED, _this.getReferenceUnsafeStaticCast());
 	playerCreature->registerObserver(ObserverEventType::POSTURECHANGED, _this.getReferenceUnsafeStaticCast());
 }
 

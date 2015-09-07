@@ -176,24 +176,8 @@ void SurveySessionImplementation::startSample(const String& resname) {
 		return;
 	}
 
-	if (surveyer->isSwimming()) {
-		surveyer->sendSystemMessage("@error_message:survey_swimming");
-		return;
-	}
-
-	if (surveyer->getParent() != NULL && surveyer->getParent().get()->isVehicleObject() ) {
-		surveyer->sendSystemMessage("You cannot perform that action while driving a vehicle.");
-		return;
-	}
-
-	// Force dismount from creature pets
-	if (surveyer->getParent() != NULL && surveyer->getParent().get()->isPet() ) {
-		surveyer->executeObjectControllerAction(STRING_HASHCODE("dismount"));
-	}
-
-	// Verify dismount was successful
-	if( surveyer->isRidingMount() ){
-		surveyer->sendSystemMessage("@error_message:survey_on_mount"); // "You cannot perform that action while mounted on a creature or driving a vehicle."
+	if (surveyer->isSwimming() || (surveyer->isRidingMount() && surveyer->isInWater())) {
+		surveyer->sendSystemMessage("@error_message:survey_swimming"); // You cannot perform that action while swimming.
 		return;
 	}
 
@@ -221,8 +205,8 @@ void SurveySessionImplementation::startSample(const String& resname) {
 		}
 	}
 
-	// Player must be kneeling to sample
-	if (!surveyer->isKneeling() ) {
+	// Player must be kneeling to sample unless they are on a mount
+	if (!surveyer->isKneeling() && !surveyer->isRidingMount()) {
 		surveyer->setPosture(CreaturePosture::CROUCHED, true);
 	}
 
