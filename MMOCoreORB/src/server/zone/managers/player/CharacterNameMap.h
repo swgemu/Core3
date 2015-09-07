@@ -56,14 +56,10 @@ public:
 		return names.size();
 	}
 
-	HashTableIterator<String, uint64> iterator() {
+	HashTable<String, uint64> getNames() {
 		ReadLocker locker(&guard);
 
-		return names.iterator();
-	}
-
-	ReadWriteLock* getReadWriteLock() {
-		return &guard;
+		return names;
 	}
 };
 

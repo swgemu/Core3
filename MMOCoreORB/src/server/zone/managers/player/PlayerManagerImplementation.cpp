@@ -4843,14 +4843,11 @@ void PlayerManagerImplementation::enhanceCharacter(CreatureObject* player) {
 		player->sendSystemMessage("An unknown force strengthens you for battles yet to come.");
 }
 
-int PlayerManagerImplementation::sendAdminJediList(CreatureObject* player) {
-	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::ADMIN_JEDILIST);
-
+void PlayerManagerImplementation::sendAdminJediList(CreatureObject* player) {
 	Reference<ObjectManager*> objectManager = player->getZoneServer()->getObjectManager();
 
-	HashTableIterator<String, uint64> iter = nameMap->iterator();
-
-	ReadLocker locker(nameMap->getReadWriteLock());
+	HashTable<String, uint64> names = nameMap->getNames();
+	HashTableIterator<String, uint64> iter = names.iterator();
 
 	VectorMap<UnicodeString, int> players;
 	uint32 a = STRING_HASHCODE("SceneObject.slottedObjects");
@@ -4888,8 +4885,10 @@ int PlayerManagerImplementation::sendAdminJediList(CreatureObject* player) {
 		listBox->addMenuItem(players.elementAt(i).getKey().toString() + " - " + String::valueOf(players.get(i)));
 	}
 
+	Locker locker(player);
+
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::ADMIN_JEDILIST);
+
 	player->getPlayerObject()->addSuiBox(listBox);
 	player->sendMessage(listBox->generateMessage());
-
-	return 0;
 }

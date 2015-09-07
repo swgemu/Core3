@@ -43,7 +43,13 @@ public:
 		command = command.toLowerCase();
 
 		if (command == "listjedi") {
-			return playerManager->sendAdminJediList(player);
+			player->sendSystemMessage("Please wait. This may take a while.");
+
+			EXECUTE_TASK_2(playerManager, player, {
+				playerManager_p->sendAdminJediList(player_p);
+			});
+
+			return 0;
 
 		} else if (command == "setxpmodifier") {
 			if (!tokenizer.hasMoreTokens()) {

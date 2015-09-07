@@ -355,7 +355,7 @@ class PlayerManager extends Observer implements Logger {
 		nameMap.remove(playerName);
 	}
 
-	public native int sendAdminJediList(CreatureObject player);
+	public native void sendAdminJediList(CreatureObject player);
 
 	public native CraftingStation getNearbyCraftingStation(CreatureObject player, int type);
 
