@@ -77,7 +77,7 @@ void ContainerPermissions::setDenyPermission(const String& group, uint16 permiss
 }
 
 void ContainerPermissions::clearAllowPermission(const String& group, uint16 permission) {
-	clearAllowPermission(group, permission);
+	clearAllowPermission(group.hashCode(), permission);
 }
 
 void ContainerPermissions::clearDenyPermission(const String& group, uint16 permission) {
