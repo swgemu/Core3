@@ -1,0 +1,100 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.fspuzzlepack;
+
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.Zone;
+import engine.lua.LuaObject;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.ZoneServer;
+import system.lang.String;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+
+@lua
+class FsPuzzlePack extends TangibleObject {
+	protected int cureSymptomOne;
+	protected int cureSymptomTwo;
+	protected int giveSymptomOne;
+	
+	public FsPuzzlePack() {
+		setLoggingName("FsPuzzlePack");
+		
+		cureSymptomOne = -1;
+		cureSymptomTwo = -1;
+		giveSymptomOne = -1;
+	}
+	
+	@local
+	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
+		cureSymptomOne = values.getCurrentValue("curesymptomone");
+		cureSymptomTwo = values.getCurrentValue("curesymptomtwo");
+		giveSymptomOne = values.getCurrentValue("givesymptomone");
+		
+		if (cureSymptomOne == cureSymptomTwo)
+			cureSymptomTwo = -1;
+
+		if (giveSymptomOne == cureSymptomOne || giveSymptomOne == cureSymptomTwo)
+			giveSymptomOne = -1;
+	}
+	
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	@dirty
+	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
+		super.fillAttributeList(msg, object);
+	
+		msg.insertAttribute("fs_medic_pack_cure_one", "@quest/force_sensitive/fs_medic:symptom" + String.valueOf(cureSymptomOne));
+
+		if (cureSymptomTwo >= 0)
+			msg.insertAttribute("fs_medic_pack_cure_two", "@quest/force_sensitive/fs_medic:symptom" + String.valueOf(cureSymptomTwo));
+		
+		if (giveSymptomOne >= 0)
+			msg.insertAttribute("fs_medic_pack_symptom_one", "@quest/force_sensitive/fs_medic:symptom" + String.valueOf(giveSymptomOne));
+	}
+	
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
+	public int handleObjectMenuSelect(CreatureObject player, byte selectedID) {
+		if (!isASubChildOf(player))
+			return 0;
+		
+		return 1;
+	}
+
+	@dirty
+	public float getCureSymptomOne() {
+		return cureSymptomOne;
+	}
+
+	@dirty
+	public float getCureSymptomTwo() {
+		return cureSymptomTwo;
+	}
+
+	@dirty
+	public float getGiveSymptomOne() {
+		return giveSymptomOne;
+	}
+
+	@dirty
+	public boolean isFsPuzzlePack() {
+		return true;
+	}
+}

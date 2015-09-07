@@ -252,6 +252,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<StatePack>(SceneObjectType::STATEPACK);
 	objectFactory.registerObject<RevivePack>(SceneObjectType::REVIVEPACK);
 	objectFactory.registerObject<VitalityPack>(SceneObjectType::PETMEDECINE);
+	objectFactory.registerObject<FsPuzzlePack>(SceneObjectType::FSPUZZLEPACK);
 
 	//clothing
 	objectFactory.registerObject<ClothingObject>(SceneObjectType::CLOTHING);
