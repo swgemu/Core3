@@ -209,7 +209,7 @@ first_show_advertising = ConvoScreen:new {
 theaterManagerConvoTemplate:addScreen(first_show_advertising);
 
 come_back_whenever = ConvoScreen:new {
-	id = "come_back_when_you_are",
+	id = "come_back_whenever",
 	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_f72be127", -- Alright. Come back whenever you're ready.
 	stopConversation = "true",
 	options = {}
@@ -293,7 +293,7 @@ theaterManagerConvoTemplate:addScreen(take_your_time);
 
 stomach_of_steel = ConvoScreen:new {
 	id = "stomach_of_steel",
-	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_b5131941", -- Sure, sure. You've got a stomach of pure steel. So, are you ready to get started?
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_85b97ed7", -- Sure, sure. You've got a stomach of pure steel. So, are you ready to get started?
 	stopConversation = "false",
 	options = {
 		-- Handled by convo handler in case someone is on stage
