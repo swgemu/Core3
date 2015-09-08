@@ -76,8 +76,8 @@ function TheaterManagerConvoHandler:runScreenHandlers(conversationTemplate, conv
 		TheaterManagerScreenPlay:startAudition(conversingPlayer)
 	elseif (screenID == "go_entertain_ten") then
 		-- Accepted promo one
-		TheaterManagerScreenPlay:startPromotion(conversingPlayer)
 		TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
+		TheaterManagerScreenPlay:startPromotion(conversingPlayer)
 	elseif (screenID == "init_entertained_ten") then
 		-- Completed promo one
 		TheaterManagerScreenPlay:completePromotionPhase(conversingPlayer)
@@ -96,7 +96,7 @@ function TheaterManagerConvoHandler:runScreenHandlers(conversationTemplate, conv
 		clonedConversation:addOption("@conversation/quest_crowd_pleaser_manager:s_d730c5dd", "take_your_time")
 	elseif (screenID == "starts_in_two_min") then
 		-- Started first show
-		if (currentStep == 7) then
+		if (currentStep ~= 7) then
 			TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
 		end
 		TheaterManagerScreenPlay:beginPerformance(conversingPlayer)

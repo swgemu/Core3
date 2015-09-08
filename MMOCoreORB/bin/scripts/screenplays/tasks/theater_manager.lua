@@ -70,13 +70,13 @@ TheaterManagerScreenPlay = ScreenPlay:new {
 		minPositive = 2, -- Minimum rating a performance can reach if it's a positive interest
 		minNegative = -10 -- Minimum rating a performance can reach if its a negative interest
 	},
-	
+
 	-- Number of audience members spawned per performance, must be in multiples of 5
 	performanceAudienceSize = { 10, 20, 30 },
-	
+
 	-- Length of player performance in seconds
 	performanceLength = { 120, 210, 300 },
-	
+
 	-- Length of countdown prior to a player's performance.
 	-- Note: The default values match the client string files
 	performanceCountdownLength = { 120, 150, 180 },
@@ -1228,7 +1228,6 @@ function TheaterManagerScreenPlay:determineAudienceInterests(pPlayer)
 	local interestTable = self.audienceInterests[curStep]
 	local performTable
 
-
 	if (curSeries == 0) then
 		printf("Error in TheaterManagerScreenPlay:determineAudienceInterests(), invalid series type.\n")
 		return
@@ -1438,7 +1437,7 @@ function TheaterManagerScreenPlay:doPerformanceHeartbeat(pControl)
 
 	satisfactionLevel = satisfactionLevel + rating
 	rating = rating - 1
-	
+
 	if (rating > 0 and rating < self.performanceRatings.minPositive) then
 		rating = self.performanceRatings.minPositive
 	elseif (rating < 0 and rating < self.performanceRatings.minNegative) then
