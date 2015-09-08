@@ -813,7 +813,15 @@ void EntertainingSessionImplementation::setEntertainerBuffStrength(CreatureObjec
 }
 
 void EntertainingSessionImplementation::sendEntertainmentUpdate(CreatureObject* creature, uint64 entid, const String& mood, bool updateEntValue) {
-	creature->setListenToID(entid, true);
+	CreatureObject* entertainer = this->entertainer.get();
+		if (entertainer != NULL) {
+			if (entertainer->isPlayingMusic()) {
+				creature->setListenToID(entid, true);
+			}
+			else if (entertainer->isDancing()) {
+				creature->setWatchToID(entid);
+			}
+		}
 
 	/*if (updateEntValue)
 		creature->setTerrainNegotiation(0.8025000095f, true);*/
