@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_bb5e4711",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/sivarra_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-09T23:30:30Z",
+      "side": 1,
+      "message": "Where\u0027s the skill check for master medic?",
+      "revId": "691fae6bcccff2e6b04b949a90878f4bccf07891",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_5b9b83c9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/sivarra_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-09T23:30:30Z",
+      "side": 1,
+      "message": "Surely there\u0027s a something different that the npc would say after the quest has been accepted. Get the entire convo template added and hooked up to the handler. It doesn\u0027t look to be very large.",
+      "revId": "691fae6bcccff2e6b04b949a90878f4bccf07891",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
