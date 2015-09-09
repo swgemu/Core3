@@ -146,12 +146,12 @@ void TangibleObjectImplementation::broadcastPvpStatusBitmask() {
 
 		CreatureObject* thisCreo = asCreatureObject();
 
-		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects(closeobjects->size(), 10);
+		SortedVector<QuadTreeEntry*> closeObjects(closeobjects->size(), 10);
 
 		closeobjects->safeCopyTo(closeObjects);
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
-			SceneObject* obj = cast<SceneObject*>(closeObjects.get(i).get());
+			SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
 
 			if (obj != NULL && obj->isCreatureObject()) {
 				CreatureObject* creo = obj->asCreatureObject();
