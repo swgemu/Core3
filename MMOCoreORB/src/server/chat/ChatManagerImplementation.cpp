@@ -421,7 +421,7 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 
 	CloseObjectsVector* vec = (CloseObjectsVector*) sender->getCloseObjects();
 
-	SortedVector<ManagedReference<QuadTreeEntry*> > closeEntryObjects(200, 50);
+	SortedVector<QuadTreeEntry* > closeEntryObjects(200, 50);
 
 	if (vec != NULL) {
 		vec->safeCopyTo(closeEntryObjects);
@@ -433,7 +433,7 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 	float range = defaultSpatialChatDistance;
 
 	for (int i = 0; i < closeEntryObjects.size(); ++i) {
-		SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i).get());
+		SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i));
 
 		if (object->isPlayerCreature()) {
 			CreatureObject* creature = cast<CreatureObject*>(object);
@@ -588,7 +588,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 
 	CloseObjectsVector* closeObjects = (CloseObjectsVector*) player->getCloseObjects();
 
-	SortedVector<ManagedReference<QuadTreeEntry*> > closeEntryObjects(200, 50);
+	SortedVector<QuadTreeEntry*> closeEntryObjects(200, 50);
 
 	if (closeObjects != NULL) {
 		closeObjects->safeCopyTo(closeEntryObjects);
@@ -606,7 +606,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 
 	try {
 		for (int i = 0; i < closeEntryObjects.size(); ++i) {
-			SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i).get());
+			SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i));
 
 			if (player->isInRange(object, range)) {
 
@@ -720,7 +720,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, StringI
 
 	CloseObjectsVector* closeObjects = (CloseObjectsVector*) player->getCloseObjects();
 
-	SortedVector<ManagedReference<QuadTreeEntry*> > closeEntryObjects(200, 50);
+	SortedVector<QuadTreeEntry*> closeEntryObjects(200, 50);
 
 	if (closeObjects != NULL) {
 		closeObjects->safeCopyTo(closeEntryObjects);
@@ -731,7 +731,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, StringI
 
 	try {
 		for (int i = 0; i < closeEntryObjects.size(); ++i) {
-			SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i).get());
+			SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i));
 
 			if (player->isInRange(object, 128)) {
 
