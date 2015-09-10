@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_dbaeb3e7",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2137,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-10T00:05:42Z",
+      "side": 1,
+      "message": "There must be a better way to get the CRC than to instantiate a new buff.",
+      "revId": "9f96c8e9e694cc50d7c7ad818e2b79fbd888be6b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
