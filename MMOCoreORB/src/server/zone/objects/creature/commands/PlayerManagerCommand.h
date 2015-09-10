@@ -51,6 +51,15 @@ public:
 
 			return 0;
 
+		} else if (command == "listadmins") {
+			player->sendSystemMessage("Please wait. This may take a while.");
+
+			EXECUTE_TASK_2(playerManager, player, {
+					playerManager_p->sendAdminList(player_p);
+			});
+
+			return 0;
+
 		} else if (command == "setxpmodifier") {
 			if (!tokenizer.hasMoreTokens()) {
 				sendSyntax(player);
