@@ -91,6 +91,10 @@ public:
 		return SUCCESS;
 	}
 
+	bool requiresAdmin() const {
+		return true;
+	}
+
 };
 
 #endif //SETGODMODECOMMAND_H_
