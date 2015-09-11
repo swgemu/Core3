@@ -30,8 +30,7 @@ nightsister_spell_weaver = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "nightsister_rare", chance = 10000},
-				{group = "crystals_quality", chance = 500000},
+				{group = "crystals_quality", chance = 510000},
 				{group = "color_crystals", chance = 500000},
 				{group = "nightsister_common", chance = 2290000},
 				{group = "armor_attachments", chance = 300000},
