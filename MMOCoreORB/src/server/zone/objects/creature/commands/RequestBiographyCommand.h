@@ -37,6 +37,11 @@ public:
 
 		CreatureObject* playerCreature = cast<CreatureObject*>( object.get());
 
+		PlayerObject* ghost = playerCreature->getPlayerObject();
+
+		if (ghost == NULL)
+			return GENERALERROR;
+
 		Biography* bio = new Biography(creature, playerCreature);
 		creature->sendMessage(bio);
 
