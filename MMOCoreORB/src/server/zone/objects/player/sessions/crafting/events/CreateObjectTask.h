@@ -33,7 +33,8 @@ public:
 			return;
 		}
 
-		prototype->setPersistent(1);
+		ObjectManager* objectManager = crafter->getZoneServer()->getObjectManager();
+		objectManager->persistSceneObjectsRecursively(prototype, 1);
 
 		ManagedReference<SceneObject*> inventory = crafter->getSlottedObject("inventory");
 
