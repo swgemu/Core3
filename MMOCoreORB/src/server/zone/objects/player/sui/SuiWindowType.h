@@ -184,6 +184,9 @@ public:
 		// Reaction Fines
 		REACTION_FINE                      = 331,
 
+		// Growable Plant
+		GROWABLE_PLANT					   = 341,
+
 		// Ranger 400 - 401
 		RANGER_TRACK_OPTIONS               = 400,
 		RANGER_TRACK_RESULTS               = 401,

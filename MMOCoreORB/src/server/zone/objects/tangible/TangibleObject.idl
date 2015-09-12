@@ -453,6 +453,11 @@ class TangibleObject extends SceneObject {
 		return false;
 	}
 	
+	@dirty
+	public abstract boolean isPlantObject() {
+		return false;
+	}
+	
 	@local
 	@dirty
 	public CustomizationVariables getCustomizationVariables() {
