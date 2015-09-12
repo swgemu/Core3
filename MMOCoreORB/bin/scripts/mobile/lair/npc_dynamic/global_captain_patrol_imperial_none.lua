@@ -1,6 +1,6 @@
 global_captain_patrol_imperial_none = Lair:new {
 	mobiles = {
-		{"imperial_captain",1},
+		{"imperial_army_captain",1},
 		{"imperial_major",1},
 		{"imperial_sergeant",2},
 		{"imperial_trooper",3}
