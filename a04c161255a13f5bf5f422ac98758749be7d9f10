@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_dbcd5388",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2136,
+      "author": {
+        "id": 1520
+      },
+      "writtenOn": "2015-09-12T23:56:27Z",
+      "side": 1,
+      "message": "I\u0027m not 100% sure on this but I think we are using the macro expansion STRING_HASHCODE for this now.\n\nExample: STRING_HASHCODE(CreatureState::DIZZY);\n\nBut maybe Ivo can say for certain.",
+      "range": {
+        "startLine": 2136,
+        "startChar": 33,
+        "endLine": 2136,
+        "endChar": 46
+      },
+      "revId": "a04c161255a13f5bf5f422ac98758749be7d9f10",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
