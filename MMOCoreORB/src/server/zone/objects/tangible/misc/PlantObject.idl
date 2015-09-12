@@ -1,0 +1,210 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.misc;
+
+import server.zone.objects.tangible.TangibleObject;
+import engine.lua.LuaObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.Zone;
+import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.tangible.tasks.GrowablePlantPulseTask;
+
+class PlantObject extends TangibleObject {
+	public static final int PULSERATE = 21600;
+	
+	protected int waterLevel;
+	protected int nutrientLevel;
+	protected int idealWaterLevel;
+	protected int idealNutrientLevel;
+	protected int waterQuality;
+	protected int nutrientQuality;
+	protected int health;
+	protected int fruitCount;
+	protected int growth;
+	protected int growthRate;
+	protected int plantSize;
+	protected int criticalAttribOne;
+	protected int criticalAttribTwo;
+
+	@dereferenced
+	protected Time lastPulse;
+
+	@dereferenced
+	protected transient Reference<GrowablePlantPulseTask> pulseTask;
+	
+	public PlantObject() {
+		Logger.setLoggingName("PlantObject");
+
+		waterLevel = 51;
+		nutrientLevel = 51;
+		idealWaterLevel = 0;
+		idealNutrientLevel = 0;
+		waterQuality = 500;
+		nutrientQuality = 500;
+		health = 50;
+		fruitCount = 0;
+		growth = 0;
+		growthRate = 0;
+		plantSize = 1;
+		criticalAttribOne = 0;
+		criticalAttribTwo = 0;
+
+		initializePlant(1);
+	}
+	
+	public void initializeTransientMembers() {
+		super.initializeTransientMembers();
+		startPulse();
+	}
+
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+	
+	@preLocked
+	@arg1preLocked
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+
+	@local
+	@dirty
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+
+	@preLocked
+	public native void initializePlant(int size = 1);
+
+	public native void sendResourceSUI(CreatureObject player, int type = 1);
+
+	public native int getCriticalAttribute(int index);
+
+	@preLocked
+	public native void changeSize(int size);
+
+	@preLocked
+	public void updateLastPulse() {
+		lastPulse.updateToCurrentTime();
+	}
+
+	@read
+	public int getWaterLevel() {
+		return waterLevel;
+	}
+
+	@read
+	public int getIdealWaterLevel() {
+		return idealWaterLevel;
+	}
+
+	@read
+	public int getIdealNutrientLevel() {
+		return idealNutrientLevel;
+	}
+
+	@read
+	public int getNutrientLevel() {
+		return nutrientLevel;
+	}
+
+	@read
+	public int getNutrientQuality() {
+		return nutrientQuality;
+	}
+
+	@read
+	public int getWaterQuality() {
+		return waterQuality;
+	}
+
+	@read
+	public int getPlantHealth() {
+		return health;
+	}
+
+	@read
+	public int getGrowth() {
+		return growth;
+	}
+
+	@read
+	public int getSize() {
+		return plantSize;
+	}
+
+	@read
+	public int getFruit() {
+		return fruitCount;
+	}
+
+	@read
+	public int getCriticalAttributeOne() {
+		return criticalAttribOne;
+	}
+
+	@read
+	public int getCriticalAttributeTwo() {
+		return criticalAttribTwo;
+	}
+
+	@preLocked
+	public void setNutrientLevel(int level) {
+		nutrientLevel = level;
+	}
+
+	@preLocked
+	public void setNutrientQuality(int qual) {
+		nutrientQuality = qual;
+	}
+
+	@preLocked
+	public void setWaterLevel(int level) {
+		waterLevel = level;
+	}
+
+	@preLocked
+	public void setWaterQuality(int qual) {
+		waterQuality = qual;
+	}
+	
+	@preLocked
+	public void setPlantHealth(int hp) {
+		health = hp;
+	}
+
+	@preLocked
+	public void setFruit(int count) {
+		fruitCount = count;
+	}
+
+	@dirty
+	public boolean isPlantObject() {
+		return true;
+	}
+
+	@local
+	public Time getLastPulse() {
+		return lastPulse;
+	}
+
+	@preLocked
+	public void setGrowthRate(int rate) {
+		growthRate = rate;
+	}
+
+	@preLocked
+	public void setGrowth(int gr) {
+		growth = gr;
+	}
+
+	@preLocked
+	public native void startPulse();
+}
