@@ -181,13 +181,8 @@ void SurveySessionImplementation::startSample(const String& resname) {
 		return;
 	}
 
-	if (surveyer->getParent() != NULL && surveyer->getParent().get()->isVehicleObject() ) {
-		surveyer->sendSystemMessage("You cannot perform that action while driving a vehicle.");
-		return;
-	}
-
 	// Force dismount from creature pets
-	if (surveyer->getParent() != NULL && surveyer->getParent().get()->isPet() ) {
+	if (surveyer->isRidingMount()) {
 		surveyer->executeObjectControllerAction(STRING_HASHCODE("dismount"));
 	}
 
