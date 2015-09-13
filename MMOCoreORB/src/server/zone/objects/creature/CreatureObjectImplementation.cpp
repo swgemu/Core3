@@ -2489,8 +2489,11 @@ void CreatureObjectImplementation::activateHAMRegeneration() {
 		return;
 
 	if (!isPlayerCreature())
-		modifier *= 3.f;
+		modifier *= 2.f; // AI has 2 sec recoveries (this might need to increase to account for large HAM)
+	else
+		modifier *= 3.f; // players have 3 second recoveries
 
+	// this formula gives the amount of regen per second
 	uint32 healthTick = (uint32) ceil((float) MAX(0, getHAM(
 			CreatureAttribute::CONSTITUTION)) * 13.0f / 2100.0f * modifier);
 	uint32 actionTick = (uint32) ceil((float) MAX(0, getHAM(
