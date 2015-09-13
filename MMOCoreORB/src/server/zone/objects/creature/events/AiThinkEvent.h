@@ -20,10 +20,12 @@ namespace events {
 
 class AiThinkEvent : public Task {
 	ManagedWeakReference<AiAgent*> creature;
+	Time startTime;
 
 public:
 	AiThinkEvent(AiAgent* pl) : Task(1000) {
 		creature = pl;
+		startTime.updateToCurrentTime();
 		AiMap::instance()->activeRecoveryEvents.increment();
 	}
 
@@ -38,7 +40,7 @@ public:
 			return;
 
 		Locker locker(strongRef);
-		strongRef->doRecovery();
+		strongRef->doRecovery(startTime.miliDifference());
 	}
 
 };

@@ -678,7 +678,7 @@ class PlayerObject extends IntangibleObject {
 
 	public native void activateForcePowerRegen();
 	
-	public native void doRecovery();
+	public native void doRecovery(int latency);
 	
 	public native void disconnect(boolean closeClient, boolean doLock);
 	

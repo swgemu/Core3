@@ -1266,7 +1266,7 @@ class CreatureObject extends TangibleObject {
 	public native void setMeditateState();
 
 	@preLocked
-	public abstract native void activateHAMRegeneration();
+	public abstract native void activateHAMRegeneration(int latency);
 
 	@preLocked
 	public abstract native void activatePassiveWoundRegeneration();

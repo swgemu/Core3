@@ -256,9 +256,10 @@ class AiAgent extends CreatureObject {
 	 * Does a recovery tick
 	 * @pre { this is locked }
 	 * @post { this is locked }
+	 * @param latency The amount of time since the last recovery event
 	 */
 	@preLocked
-	public native void doRecovery();
+	public native void doRecovery(int latency);
 
 	/**
 	 * Does the main AI update tick

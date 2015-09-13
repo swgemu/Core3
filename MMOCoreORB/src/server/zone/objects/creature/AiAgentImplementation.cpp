@@ -692,11 +692,11 @@ void AiAgentImplementation::doAwarenessCheck() {
 	}
 }
 
-void AiAgentImplementation::doRecovery() {
+void AiAgentImplementation::doRecovery(int latency) {
 	if (isDead() || getZone() == NULL)
 		return;
 
-	activateHAMRegeneration();
+	activateHAMRegeneration(latency);
 	activateStateRecovery();
 	activatePostureRecovery();
 

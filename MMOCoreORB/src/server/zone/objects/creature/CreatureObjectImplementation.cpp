@@ -2474,23 +2474,21 @@ void CreatureObjectImplementation::notifySelfPositionUpdate() {
 	TangibleObjectImplementation::notifySelfPositionUpdate();
 }
 
-void CreatureObjectImplementation::activateHAMRegeneration() {
+void CreatureObjectImplementation::activateHAMRegeneration(int latency) {
 	if (isIncapacitated() || isDead())
 		return;
 
-	float modifier = 1.f;// (isInCombat()) ? 1.f : 1.f;
+	if (!isPlayerCreature() && isInCombat())
+		return;
+
+	float modifier = (float)latency/1000.f;
 
 	if (isKneeling())
 		modifier *= 1.25f;
 	else if (isSitting())
 		modifier *= 1.75f;
 
-	if (!isPlayerCreature() && isInCombat())
-		return;
-
-	if (!isPlayerCreature())
-		modifier *= 3.f;
-
+	// this formula gives the amount of regen per second
 	uint32 healthTick = (uint32) ceil((float) MAX(0, getHAM(
 			CreatureAttribute::CONSTITUTION)) * 13.0f / 2100.0f * modifier);
 	uint32 actionTick = (uint32) ceil((float) MAX(0, getHAM(
@@ -2511,12 +2509,10 @@ void CreatureObjectImplementation::activateHAMRegeneration() {
 	healDamage(asCreatureObject(), CreatureAttribute::ACTION, actionTick, true, false);
 	healDamage(asCreatureObject(), CreatureAttribute::MIND, mindTick, true, false);
 
-
 	activatePassiveWoundRegeneration();
 }
 
 void CreatureObjectImplementation::activatePassiveWoundRegeneration() {
-
 	/// Health wound regen
 	int healthRegen = getSkillMod("private_med_wound_health");
 
