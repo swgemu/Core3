@@ -220,7 +220,7 @@ public:
 		return stateMask;
 	}
 
-	virtual bool requiresAdmin() const {
+	inline bool requiresAdmin() const {
 		return admin == true;
 	}
 

@@ -5,10 +5,11 @@
 #ifndef SETGODMODECOMMAND_H_
 #define SETGODMODECOMMAND_H_
 
+#include "server/zone/managers/objectcontroller/ObjectController.h"
+
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage6.h"
-
 
 class SetGodModeCommand : public QueueCommand {
 public:
@@ -30,7 +31,7 @@ public:
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 		if (ghost == NULL) {
-			return INSUFFICIENTPERMISSION;
+			return GENERALERROR;
 		}
 
 		int ghostPermissionLevel = ghost->getAdminLevel();
@@ -38,6 +39,9 @@ public:
 		if (!creature->hasSkill("admin_base")) {
 			return INSUFFICIENTPERMISSION;
 		}
+
+		ObjectController* controller = creature->getZoneServer()->getObjectController();
+		controller->logAdminCommand(creature, this, target, arguments);
 
 		String targetName;
 		String param;
@@ -89,10 +93,6 @@ public:
 		}
 
 		return SUCCESS;
-	}
-
-	bool requiresAdmin() const {
-		return true;
 	}
 
 };
