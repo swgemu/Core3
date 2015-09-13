@@ -162,7 +162,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 	infoMsg << "activating queue command 0x" << hex << actionCRC << " " << queueCommand->getQueueCommandName() << " arguments='" << arguments.toString() << "'";
 	object->info(infoMsg.toString(), true);*/
 
-	String characterAbility = queueCommand->getCharacterAbility();
+	const String& characterAbility = queueCommand->getCharacterAbility();
 
 	if (characterAbility.length() > 1) {
 		object->info("activating characterAbility " + characterAbility);
@@ -190,15 +190,12 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 		}
 	}
 
-
-	if(queueCommand->requiresAdmin()) {
-
+	if (queueCommand->requiresAdmin()) {
 		try {
-
 			if(object->isPlayerCreature()) {
 				Reference<PlayerObject*> ghost =  object->getSlottedObject("ghost").castTo<PlayerObject*>();
-				if (ghost == NULL || !ghost->isPrivileged() || !ghost->hasAbility(queueCommand->getQueueCommandName())) {
 
+				if (ghost == NULL || !ghost->isPrivileged() || !ghost->hasAbility(queueCommand->getQueueCommandName())) {
 					StringBuffer logEntry;
 					logEntry << object->getDisplayedName() << " attempted to use the '/" << queueCommand->getQueueCommandName()
 							<< "' command without permissions";
@@ -211,24 +208,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 				return 0.f;
 			}
 
-
-			String name = "unknown";
-
-			Reference<SceneObject*> targetObject = Core::getObjectBroker()->lookUp(targetID).castTo<SceneObject*>();
-			if(targetObject != NULL) {
-				name = targetObject->getDisplayedName();
-				if(targetObject->isPlayerCreature())
-					name += "(Player)";
-				else
-					name += "(NPC)";
-			} else {
-				name = "(null)";
-			}
-
-			StringBuffer logEntry;
-			logEntry << object->getDisplayedName() << " used '/" << queueCommand->getQueueCommandName()
-					<< "' on " << name << " with params '" << arguments.toString() << "'";
-			adminLog.info(logEntry.toString());
+			logAdminCommand(object, queueCommand, targetID, arguments);
 		} catch (Exception& e) {
 			Logger::error("Unhandled Exception logging admin commands" + e.getMessage());
 		}
@@ -240,7 +220,6 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 		int value = queueCommand->getSkillMod(i, skillMod);
 		object->addSkillMod(SkillModManager::ABILITYBONUS, skillMod, value, false);
 	}
-
 
 	int errorNumber = queueCommand->doQueueCommand(object, targetID, arguments);
 
@@ -261,20 +240,6 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 		queueCommand->onComplete(actionCount, object, durationTime);
 	}
 
-	/*if (actionCRC == STRING_HASHCODE("stand")) {
-		Time start;
-
-		for (int i = 0; i < 10000; ++i) {
-			LuaFunction func(L, "runScript", 0);
-			func << object;
-
-			callFunction(&func);
-			//int cred = object->getBankCredits();
-		}
-
-		info("time elapsed " + String::valueOf(start.miliDifference()), true);
-	}*/
-
 	return durationTime;
 }
 
@@ -288,4 +253,26 @@ QueueCommand* ObjectControllerImplementation::getQueueCommand(const String& name
 
 QueueCommand* ObjectControllerImplementation::getQueueCommand(uint32 crc) {
 	return queueCommands->getSlashCommand(crc);
+}
+
+void ObjectControllerImplementation::logAdminCommand(SceneObject* object, const QueueCommand* queueCommand, uint64 targetID, const UnicodeString& arguments) {
+	String name = "unknown";
+
+	Reference<SceneObject*> targetObject = Core::getObjectBroker()->lookUp(targetID).castTo<SceneObject*>();
+
+	if(targetObject != NULL) {
+		name = targetObject->getDisplayedName();
+
+		if(targetObject->isPlayerCreature())
+			name += "(Player)";
+		else
+			name += "(NPC)";
+	} else {
+		name = "(null)";
+	}
+
+	StringBuffer logEntry;
+	logEntry << object->getDisplayedName() << " used '/" << queueCommand->getQueueCommandName()
+								<< "' on " << name << " with params '" << arguments.toString() << "'";
+	adminLog.info(logEntry.toString());
 }
