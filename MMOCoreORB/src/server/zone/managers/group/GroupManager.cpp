@@ -83,9 +83,10 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* target)
 
 		return;
 	} else if (target->getGroupInviterID() != 0) {
-		StringBuffer msg;
-		msg << target->getCreatureName().toString() << " is considering joining another group.";
-		leader->sendSystemMessage(msg.toString());
+		StringIdChatParameter stringId;
+		stringId.setStringId("group", "considering_other_group"); // %TT is considering joining another group.
+		stringId.setTT(target);
+		leader->sendSystemMessage(stringId);
 
 		return;
 	}
@@ -525,14 +526,15 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 				firstNameLeader= playerLeader->getFirstName();
 		}
 
-		StringBuffer message;
-		message << firstNameLeader << " is now the group leader.\n";
+		StringIdChatParameter message;
+		message.setStringId("group", "new_leader"); // %TU is now the group leader.
+		message.setTU(newLeader);
 
 		for (int i = 0; i < group->getGroupSize(); i++) {
 			Reference<CreatureObject*> play = ( group->getGroupMember(i)).castTo<CreatureObject*>();
 
 			if (play->isPlayerCreature())
-				play->sendSystemMessage(message.toString());
+				play->sendSystemMessage(message);
 		}
 
 		group->unlock();

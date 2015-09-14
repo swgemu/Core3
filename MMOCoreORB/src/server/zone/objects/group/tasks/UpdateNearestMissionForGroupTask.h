@@ -159,7 +159,7 @@ private:
 
 			Locker locker(waypoint);
 
-			waypoint->setCustomObjectName(UnicodeString("Nearest mission for group"), false);
+			waypoint->setCustomObjectName("@group:groupwaypoint", false); // Nearest mission for group
 			waypoint->setSpecialTypeID(WaypointObject::SPECIALTYPE_NEARESTMISSIONFORGROUP);
 			waypoint->setPlanetCRC(crc);
 			waypoint->setPosition(nearestMissionForGroup->getWaypointToMission()->getPositionX(),
