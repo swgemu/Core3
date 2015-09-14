@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_bbd727ed",
+        "filename": "MMOCoreORB/src/server/zone/managers/skill/SkillManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-14T23:14:34Z",
+      "side": 1,
+      "message": "I would encapsulate lines 410-428 within an if (skillAbilities-\u003esize() \u003e 0) check. There\u0027s no point in looping through the player\u0027s entire skill list if the skill they are surrendering has no abilities.",
+      "revId": "db0eaf19936247a960b1b7bdf3f29f8d6d8c9f54",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
