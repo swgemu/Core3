@@ -16,6 +16,23 @@
       "revId": "db0eaf19936247a960b1b7bdf3f29f8d6d8c9f54",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_3b031775",
+        "filename": "MMOCoreORB/src/server/zone/managers/skill/SkillManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2015-09-14T23:21:40Z",
+      "side": 1,
+      "message": "I would use SortedVector instead and use SortedVector::put instead of ::add for insertion, and ::drop instead of removeElement to speed up things",
+      "revId": "db0eaf19936247a960b1b7bdf3f29f8d6d8c9f54",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
