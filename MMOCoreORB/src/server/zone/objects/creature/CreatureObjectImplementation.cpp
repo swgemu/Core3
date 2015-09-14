@@ -2749,11 +2749,16 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object) {
 	return true;
 
 }
+
 bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
+	return isAttackableBy(object, false);
+}
+
+bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool bypassDeadCheck) {
 	if (object == asCreatureObject())
 		return false;
 
-	if (isDead() || isInvisible())
+	if ((!bypassDeadCheck && isDead()) || isInvisible())
 		return false;
 
 	if (object->getZone() != getZone())
@@ -2780,7 +2785,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 			if (owner == NULL)
 				return false;
 
-			return isAttackableBy(owner);
+			return isAttackableBy(owner, true);
 		}
 
 		if(!object->isRebel() && !object->isImperial())
