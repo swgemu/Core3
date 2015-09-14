@@ -1237,8 +1237,9 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 	}
 
 	CreatureObject* receiver = cast<CreatureObject*>(obj.get());
+	PlayerObject* receiverPlayerObject = receiver->getPlayerObject();
 
-	if (receiver->getPlayerObject()->isIgnoring(sendername) && !privileged)
+	if ((receiverPlayerObject == NULL) || (receiverPlayerObject->isIgnoring(sendername) && !privileged))
 		return IM_IGNORED;
 
 	ManagedReference<PersistentMessage*> mail = new PersistentMessage();

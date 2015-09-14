@@ -7,6 +7,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "server/zone/managers/collision/CollisionManager.h"
+
 class DragIncapacitatedPlayerCommand : public QueueCommand {
 	float maxRange, maxMovement;
 	bool needsConsent;
@@ -202,6 +204,24 @@ public:
 		if (!targetPlayer->isHealableBy(creature)) {
 			player->sendSystemMessage("@healing:pvp_no_help"); //It would be unwise to help such a patient.
 			return GENERALERROR;
+		}
+
+		if (!CollisionManager::checkLineOfSight(creature, targetPlayer)) {
+			creature->sendSystemMessage("@container_error_message:container18");
+			return GENERALERROR;
+		}
+
+		Reference<CellObject*> targetCell = creature->getParent().castTo<CellObject*>();
+
+		if (targetCell != NULL) {
+			ContainerPermissions* perms = targetCell->getContainerPermissions();
+
+			if (!perms->hasInheritPermissionsFromParent()) {
+				if (!targetCell->checkContainerPermission(targetPlayer, ContainerPermissions::WALKIN)) {
+					creature->sendSystemMessage("@container_error_message:container18");
+					return GENERALERROR;
+				}
+			}
 		}
 
 		//Attempt to drag the target player.
