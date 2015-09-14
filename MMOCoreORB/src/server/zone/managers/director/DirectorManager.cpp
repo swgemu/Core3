@@ -1873,6 +1873,12 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 		object->initializePosition(x, z, y);
 		object->setDirection(dw, dx, dy, dz);
 
+		if (object->isBuildingObject()) {
+			BuildingObject* building = object->asBuildingObject();
+
+			building->createCellObjects();
+		}
+
 		Reference<SceneObject*> cellParent = NULL;
 
 		if (parentID != 0) {
@@ -1886,8 +1892,9 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 
 		if (cellParent != NULL) {
 			cellParent->transferObject(object, -1);
-		} else
+		} else {
 			zone->transferObject(object, -1, true);
+		}
 
 		object->createChildObjects();
 
