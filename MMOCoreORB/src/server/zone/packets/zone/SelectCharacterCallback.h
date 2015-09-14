@@ -110,9 +110,6 @@ public:
 			client->setPlayer(obj);
 
 			String zoneName = ghost->getSavedTerrainName();
-			uint64 savedParentID = ghost->getSavedParentID();
-			ManagedReference<SceneObject*> playerParent = zoneServer->getObject(savedParentID, true);
-
 			Zone* zone = zoneServer->getZone(zoneName);
 
 			if (zone == NULL) {
@@ -122,14 +119,16 @@ public:
 				return;
 			}
 
+			ghost->setTeleporting(true);
+			ghost->setOnLoadScreen(true);
+			player->setMovementCounter(0);
+			ghost->setClientLastMovementStamp(0);
+
+			uint64 savedParentID = ghost->getSavedParentID();
+			ManagedReference<SceneObject*> playerParent = zoneServer->getObject(savedParentID, true);
 			ManagedReference<SceneObject*> currentParent = player->getParent();
 
 			if ((playerParent != NULL && currentParent == NULL) || (currentParent != NULL && currentParent->isCellObject())) {
-				ghost->setTeleporting(true);
-				ghost->setOnLoadScreen(true);
-				player->setMovementCounter(0);
-				ghost->setClientLastMovementStamp(0);
-
 				playerParent = playerParent == NULL ? currentParent : playerParent;
 
 				ManagedReference<SceneObject*> root = playerParent->getRootParent();
@@ -158,6 +157,7 @@ public:
 				}
 
 			} else if (currentParent == NULL) {
+				player->removeAllSkillModsOfType(SkillModManager::STRUCTURE);
 				zone->transferObject(player, -1, true);
 			} else {
 				if (player->getZone() == NULL) {
