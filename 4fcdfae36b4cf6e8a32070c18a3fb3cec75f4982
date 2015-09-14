@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_fbf4cf88",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2788,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-14T23:27:02Z",
+      "side": 1,
+      "message": "This would allow pets to attack dead players. There\u0027s no check in this method for if the attacker is dead so you should not need to change this call.",
+      "revId": "4fcdfae36b4cf6e8a32070c18a3fb3cec75f4982",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
