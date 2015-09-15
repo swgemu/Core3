@@ -1,0 +1,480 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_7b651f44",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/GrowablePlantSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "Locker clocker(plant, player);",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_fb228f00",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/GrowablePlantSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "You already cast it to a ResourceContainer, so the isResourceContainer() check is unnecessary.\n\nYou should, however, make sure that the resource container is still in the player\u0027s inventory.",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_db6c7339",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/GrowablePlantSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "Since these are only used for one type or the other, I would get them after checking the type.",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_9b1fcbb7",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/GrowablePlantSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "should that be \u003e\u003d ?",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_bb1c07c3",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/GrowablePlantSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "remove your debug statement.",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_5b7943fb",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/GrowablePlantSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "Your comment is off.",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_7b7e7fe6",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/GrowablePlantSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "\u003e\u003d ?",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_1b83bbcd",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/GrowablePlantSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "wrong comment",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_3b88f7e6",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/GrowablePlantSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "wrong comment",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_1b5adb83",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/GrowablePlantSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "All you need here is the setQuantity() call. It will destroy the container if the new quantity is less than 1.",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_3b3a3737",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/misc/PlantObject.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "@preLocked",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_fb3b6f36",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/misc/PlantObject.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "@preLocked",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_5b12a3b5",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/misc/PlantObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "I\u0027m curious why the plant would reset back to size 1 each time the server restarts. Is that intentional?",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_7b175fa4",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/misc/PlantObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "What if the plant is in a container inside the building? How about if it\u0027s a sub child of another player? It may be better to just make sure that the root parent is a building and the parent is a cell.",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_1b0c1b94",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/misc/PlantObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "Send this message after the fruit is transferred into inventory.",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_3b11d7ac",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/misc/PlantObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "Should there be a force close distance?",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_db25530b",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/misc/PlantObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "You may want to close an already open box before sending a new one.",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_db3eb329",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/misc/PlantObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "Locker clocker(obj, _this.getReferenceUnsafeStaticCast());",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_bb45e7b4",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/misc/PlantObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "move this to after line 253.",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_9b482bce",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/misc/PlantObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "clocker.release();",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_1b35fb45",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/misc/PlantObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "I don\u0027t see anywhere that this is called. When/how is this task supposed to get started?",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_fb504f60",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/misc/PlantObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "schedule, not reschedule",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_db53136b",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tasks/GrowablePlantPulseTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "ManagedWeakReference",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_bb4ac7aa",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tasks/GrowablePlantPulseTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "What about if it\u0027s parent isn\u0027t a cell?",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_9b4d8bc7",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tasks/GrowablePlantPulseTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "Why reschedule? Are you intending to have this task active for every plant at all times regardless of whether it\u0027s in a building or not?",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_5bc70313",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tasks/GrowablePlantPulseTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "Why not put this before the parent check. You\u0027re still calling anyway if that fails.",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_1bd17bcd",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tasks/GrowablePlantPulseTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "do you want to abs these diffs?",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_7bcc3f36",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tasks/GrowablePlantPulseTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T00:53:31Z",
+      "side": 1,
+      "message": "should one of those waterDiffs be nutrientDiff?",
+      "revId": "192e6055325c5674130c1952e845a4fa13065e50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
