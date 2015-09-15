@@ -97,7 +97,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/tangible/misc/FsPuzzlePack.cpp \
+core3_IDLS =	autogen/server/zone/objects/tangible/misc/PlantObject.cpp \
+				autogen/server/zone/objects/tangible/misc/FsPuzzlePack.cpp \
 				autogen/server/zone/objects/tangible/eventperk/JukeboxObserver.cpp \
 				autogen/server/zone/objects/tangible/eventperk/Jukebox.cpp \
 				autogen/server/zone/objects/tangible/eventperk/FlagGame.cpp \
@@ -471,6 +472,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/generic/CoaMessageFragmentMenuComponent.cpp \
 		server/zone/objects/tangible/components/generic/CoaMessageMenuComponent.cpp \
 		server/zone/objects/tangible/components/generic/CoaEncodedDiskMenuComponent.cpp \
+		server/zone/objects/tangible/misc/PlantObjectImplementation.cpp \
 		server/zone/objects/scene/components/LuaObjectMenuComponent.cpp \
 		server/zone/objects/scene/components/LuaContainerComponent.cpp \
 		server/zone/objects/scene/components/LuaObjectMenuResponse.cpp \
