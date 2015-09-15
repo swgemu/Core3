@@ -382,7 +382,7 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 			return false;
 	}
 
-	//If they already have the skill, then return true.
+	//If they have already surrendered the skill, then return true.
 	if (!creature->hasSkill(skill->getSkillName()))
 		return true;
 
@@ -403,9 +403,31 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 		//Give the player the used skill points back.
 		ghost->addSkillPoints(skill->getSkillPointsRequired());
 
-		//Remove abilities
-		Vector<String>* abilityNames = skill->getAbilities();
-		removeAbilities(ghost, *abilityNames, notifyClient);
+		//Remove abilities but only if the creature doesn't still have a skill that grants the
+		//ability.  Some abilities are granted by multiple skills. For example Dazzle for dancers
+		//and musicians.
+		Vector<String>* skillAbilities = skill->getAbilities();
+		if (skillAbilities->size() > 0) {
+			SortedVector<String> abilitiesLost;
+			for (int i = 0; i < skillAbilities->size(); i++) {
+				abilitiesLost.put(skillAbilities->get(i));
+			}
+			for (int i = 0; i < skillList->size(); i++) {
+				Skill* remainingSkill = skillList->get(i);
+				Vector<String>* remainingAbilities = remainingSkill->getAbilities();
+				for(int j = 0; j < remainingAbilities->size(); j++) {
+					if (abilitiesLost.contains(remainingAbilities->get(j))) {
+						abilitiesLost.drop(remainingAbilities->get(j));
+						if (abilitiesLost.size() == 0) {
+							break;
+						}
+					}
+				}
+			}
+			if (abilitiesLost.size() > 0) {
+				removeAbilities(ghost, abilitiesLost, notifyClient);
+			}
+		}
 
 		//Remove draft schematic groups
 		Vector<String>* schematicsGranted = skill->getSchematicsGranted();
