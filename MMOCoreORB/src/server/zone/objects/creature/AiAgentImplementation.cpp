@@ -3000,7 +3000,7 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 			return false;
 		}
 
-		return owner->isAttackableBy(object);
+		return owner->isAttackableBy(object, true);
 	}
 
 	if (object->isPet() || object->isVehicleObject()) {

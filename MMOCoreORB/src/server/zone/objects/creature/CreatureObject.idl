@@ -1046,6 +1046,9 @@ class CreatureObject extends TangibleObject {
 	public native boolean isAttackableBy(CreatureObject object);
 
 	@dirty
+	public native boolean isAttackableBy(CreatureObject object, boolean bypassDeadCheck);
+
+	@dirty
 	public native boolean isAttackableBy(TangibleObject attacker);
 
 	@dirty
