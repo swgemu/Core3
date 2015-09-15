@@ -38,14 +38,17 @@ public:
 
 		Locker _locker(strongParent);
 
-		player->clearRecoveryEvent();
-
 		if (player->isOnline() || player->isLinkDead())
 			player->doRecovery(startTime.miliDifference());
 
 
 	}
 
+	void schedule(uint64 delay = 0)
+	{
+		startTime.updateToCurrentTime();
+		Task::reschedule(delay);
+	}
 };
 
 }

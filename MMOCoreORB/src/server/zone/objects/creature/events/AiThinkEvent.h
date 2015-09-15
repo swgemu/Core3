@@ -43,6 +43,11 @@ public:
 		strongRef->doRecovery(startTime.miliDifference());
 	}
 
+	void schedule(uint64 delay = 0)
+	{
+		startTime.updateToCurrentTime();
+		Task::schedule(delay);
+	}
 };
 
 }
