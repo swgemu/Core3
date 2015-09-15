@@ -41,7 +41,6 @@ public:
 		currentPosition.setY(mission->getEndPositionY());
 		currentPosition.setZ(0);
 		nextPosition = player->getZoneServer()->getMissionManager()->getRandomBountyTargetPosition(player, zoneName);
-		nextPosition.setZ(0);
 
 		if (mission->getMissionLevel() > 1) {
 			move = true;
@@ -119,7 +118,6 @@ private:
 		} else {
 			currentPosition = nextPosition;
 			nextPosition = player->getZoneServer()->getMissionManager()->getRandomBountyTargetPosition(player, zoneName);
-			nextPosition.setZ(0);
 		}
 	}
 
