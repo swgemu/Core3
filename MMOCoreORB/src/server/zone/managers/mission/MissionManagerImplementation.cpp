@@ -1721,13 +1721,15 @@ Vector3 MissionManagerImplementation::getRandomBountyTargetPosition(CreatureObje
 	}
 
 	bool found = false;
-	float radiusX = targetZone->getMaxX() - targetZone->getMinX();
-	float radiusY = targetZone->getMaxY() - targetZone->getMinY();
-	float radius = radiusX > radiusY ? radiusX : radiusY;
+	float minX = targetZone->getMinX(), maxX = targetZone->getMaxX();
+	float minY = targetZone->getMinY(), maxY = targetZone->getMaxY();
+	float diameterX = maxX - minX;
+	float diameterY = maxY - minY;
 	int retries = 20;
 
 	while (!found && retries > 0) {
-		position = player->getWorldCoordinate(System::random(radius), System::random(360));
+		position.setX(System::random(diameterX) + minX);
+		position.setY(System::random(diameterY) + minY);
 
 		found = targetZone->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL);
 
