@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_1b441b73",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/misc/PlantObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-15T10:44:41Z",
+      "side": 1,
+      "message": "Instead of calling startPulse() here, I would call it in initializeTransientMembers(). The way you have it, the pulse task will not get started after a server reboot.",
+      "revId": "b7539a2dc124499eae48c2b361495820f57fee21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
