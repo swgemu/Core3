@@ -149,6 +149,30 @@ void ResourceSpawner::loadResourceSpawns() {
 			continue;
 		}
 
+		// Create spawn maps for zones that were disabled when the resource spawned
+		if (resourceSpawn->inShift()) {
+			ResourceTreeEntry* resourceEntry = resourceTree->getEntry(resourceSpawn->getType());
+
+			if (resourceEntry != NULL) {
+				int minPool = resourceEntry->getMinpool();
+				int spawnMapSize = resourceSpawn->getSpawnMapSize();
+
+				if (spawnMapSize < minPool) {
+					Vector<String> activeZones;
+					activeResourceZones.clone(activeZones);
+
+					for (int i = 0; i < spawnMapSize; i++) {
+						activeZones.removeElement(resourceSpawn->getSpawnMapZone(i));
+					}
+
+					Locker locker(resourceSpawn);
+
+					resourceSpawn->createSpawnMaps(resourceEntry->isJTL(), minPool - spawnMapSize,
+							resourceEntry->getMaxpool() - spawnMapSize, resourceEntry->getZoneRestriction(), activeZones);
+				}
+			}
+		}
+
 		resourceMap->add(resourceSpawn->getName(), resourceSpawn);
 
 		if (!resourceSpawn->inShift()) {
