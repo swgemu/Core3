@@ -47,7 +47,7 @@ public:
 	void schedule(uint64 delay = 0)
 	{
 		startTime.updateToCurrentTime();
-		Task::reschedule(delay);
+		Task::schedule(delay);
 	}
 };
 
