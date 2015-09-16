@@ -629,6 +629,7 @@ float ZoneImplementation::getMaxY() {
 
 void ZoneImplementation::updateCityRegions() {
 	info("scheduling updates for " + String::valueOf(cityRegionUpdateVector.size()) + " cities", true);
+	bool anyPerformanaceLocations = false;
 
 	for (int i = 0; i < cityRegionUpdateVector.size(); ++i) {
 		CityRegion* city = cityRegionUpdateVector.get(i);
@@ -674,16 +675,35 @@ void ZoneImplementation::updateCityRegions() {
 			ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
 			unregisterObjectWithPlanetaryMap(structure);
 			registerObjectWithPlanetaryMap(structure);
+
+			if (!anyPerformanaceLocations && structure->getPlanetMapCategory() != NULL) {
+				String categoryName = structure->getPlanetMapCategory()->getName();
+				if (categoryName == "hotel" || categoryName == "guild_theater" || categoryName == "cantina") {
+					anyPerformanaceLocations = true;
+				}
+			}
 		}
 
 		for(int i = 0; i < city->getCommercialStructuresCount(); i++){
 			ManagedReference<StructureObject*> structure = city->getCommercialStructure(i);
 			unregisterObjectWithPlanetaryMap(structure);
 			registerObjectWithPlanetaryMap(structure);
+
+			if (!anyPerformanaceLocations && structure->getPlanetMapCategory() != NULL) {
+				String categoryName = structure->getPlanetMapCategory()->getName();
+				if (categoryName == "hotel" || categoryName == "guild_theater" || categoryName == "cantina") {
+					anyPerformanaceLocations = true;
+				}
+			}
 		}
 	}
 
 	cityRegionUpdateVector.removeAll();
+
+	// Include city performance locations for entertainer missions.
+	if (anyPerformanaceLocations && getPlanetManager() != NULL) {
+		getPlanetManager()->loadPerformanceLocations();
+	}
 }
 
 bool ZoneImplementation::isWithinBoundaries(const Vector3& position) {

@@ -692,7 +692,11 @@ void PlanetManagerImplementation::loadBadgeAreas() {
 }
 
 void PlanetManagerImplementation::loadPerformanceLocations() {
-	info("loading performance locations...", true);
+	SortedVector<uint64> performanceLocationOIDs;
+	for(int i = 0; i < getPerformanceLocations()->size(); i++) {
+		SceneObject* obj = getPerformanceLocations()->get(i);
+		performanceLocationOIDs.put(obj->getObjectID());
+	}
 
 	SortedVector<ManagedReference<SceneObject*> > planetaryLocs;
 	planetaryLocs.setNoDuplicateInsertPlan();
@@ -701,23 +705,30 @@ void PlanetManagerImplementation::loadPerformanceLocations() {
 	planetaryLocs = zone->getPlanetaryObjectList("hotel");
 	for (int j = 0; j < planetaryLocs.size(); j++) {
 		SceneObject* obj = planetaryLocs.get(j);
-		addPerformanceLocation(obj);
+		if (!performanceLocationOIDs.contains(obj->getObjectID())) {
+			addPerformanceLocation(obj);
+		}
 	}
 
 	// get theaters
 	planetaryLocs = zone->getPlanetaryObjectList("guild_theater");
 	for (int j = 0; j < planetaryLocs.size(); j++) {
 		SceneObject* obj = planetaryLocs.get(j);
-		addPerformanceLocation(obj);
+		if (!performanceLocationOIDs.contains(obj->getObjectID())) {
+			addPerformanceLocation(obj);
+		}
 	}
 
 	// get cantinas
-	planetaryLocs.removeAll();
 	planetaryLocs = zone->getPlanetaryObjectList("cantina");
 	for (int j = 0; j < planetaryLocs.size(); j++) {
 		SceneObject* obj = planetaryLocs.get(j);
-		addPerformanceLocation(obj);
+		if (!performanceLocationOIDs.contains(obj->getObjectID())) {
+			addPerformanceLocation(obj);
+		}
 	}
+
+	info("loaded " + String::valueOf(getPerformanceLocations()->size()) + " performance locations", true);
 }
 
 bool PlanetManagerImplementation::isInRangeWithPoi(float x, float y, float range) {
