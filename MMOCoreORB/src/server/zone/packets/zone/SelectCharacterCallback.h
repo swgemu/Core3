@@ -152,6 +152,7 @@ public:
 					if (player->getParent() == NULL) {
 						zone->transferObject(player, -1, false);
 					} else if (root->getZone() == NULL) {
+						Locker clocker(root, player);
 						zone->transferObject(root, -1, false);
 					}
 
@@ -167,6 +168,7 @@ public:
 					if (objectToInsert == NULL)
 						objectToInsert = player;
 
+					Locker clocker(objectToInsert, player);
 					zone->transferObject(objectToInsert, -1, false);
 				}
 
