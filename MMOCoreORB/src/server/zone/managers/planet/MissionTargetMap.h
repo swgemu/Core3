@@ -32,6 +32,10 @@ public:
 		return missions.size();
 	}
 
+	SceneObject* get(int index) {
+		return missions.get(index);
+	}
+
 	SceneObject* getRandomTarget(SceneObject* origin, int diff) {
 		SceneObject* result = NULL;
 		Zone* zone = origin->getZone();
