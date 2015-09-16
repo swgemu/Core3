@@ -45,6 +45,121 @@ init_event_in_progress = ConvoScreen:new {
 }
 theaterManagerConvoTemplate:addScreen(init_event_in_progress);
 
+init_completed_one = ConvoScreen:new {
+	id = "init_completed_one",
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_95037778", -- Oh, hello! Welcome back, friend. Are you looking to participate in another performance?
+	stopConversation = "false",
+	options = {
+	-- Handled by convo handler
+	--{"@conversation/quest_crowd_pleaser_manager:s_dda95847", "full_on_dance/music"}, -- Is that possible?
+	--{"@conversation/quest_crowd_pleaser_manager:s_c5a66e82", "come_see_me"}, -- No, not really.
+	}
+}
+theaterManagerConvoTemplate:addScreen(init_completed_one);
+
+come_see_me = ConvoScreen:new {
+	id = "come_see_me",
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_67e4d556", -- OK... Well, if you ever need any more work, just come see me.
+	stopConversation = "true",
+	options = {}
+}
+theaterManagerConvoTemplate:addScreen(come_see_me);
+
+full_on_dance = ConvoScreen:new {
+	id = "full_on_dance",
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_919f9d5a", -- Well, I'll be honest with you. Ever since your show, every hack that thinks he can dance a step has come here to perform. So we're all full on dance shows, but we still have a few spots open for a musical show if you're interested.
+	stopConversation = "false",
+	options = {
+		{"@conversation/quest_crowd_pleaser_manager:s_499afb89", "still_must_audition_dance"}, -- Sure, I can give it a try.
+		{"@conversation/quest_crowd_pleaser_manager:s_2883b989", "ill_be_here"}, -- No, that's not really something I want to do.
+	}
+}
+theaterManagerConvoTemplate:addScreen(full_on_dance);
+
+full_on_music = ConvoScreen:new {
+	id = "full_on_music",
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_a84a3743", -- Well, I'll be honest with you. Ever since your show, every hack that thinks he can play a note has come here to perform. So we're all full on musical shows, but we still have a few spots open for a dance show if you're interested.
+	stopConversation = "false",
+	options = {
+		{"@conversation/quest_crowd_pleaser_manager:s_499afb89", "still_must_audition_music"}, -- Sure, I can give it a try.
+		{"@conversation/quest_crowd_pleaser_manager:s_2883b989", "ill_be_here"}, -- No, that's not really something I want to do.
+	}
+}
+theaterManagerConvoTemplate:addScreen(full_on_music);
+
+ill_be_here = ConvoScreen:new {
+	id = "ill_be_here",
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_1b58131a", -- Alright. If you change your mind, I'll be here.
+	stopConversation = "true",
+	options = {}
+}
+theaterManagerConvoTemplate:addScreen(ill_be_here);
+
+still_must_audition_dance = ConvoScreen:new {
+	id = "still_must_audition_dance",
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_70da1c6a", -- OK. You'll still need to audition though. Is that acceptable?
+	stopConversation = "false",
+	options = {
+		{"@conversation/quest_crowd_pleaser_manager:s_499afb89", "prep_second_audition_dance"}, -- Yes, that's fine.
+		{"@conversation/quest_crowd_pleaser_manager:s_2883b989", "i_understand"}, -- No way. I don't want to go through that again.
+	}
+}
+theaterManagerConvoTemplate:addScreen(still_must_audition_dance);
+
+still_must_audition_music = ConvoScreen:new {
+	id = "still_must_audition_music",
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_70da1c6a", -- OK. You'll still need to audition though. Is that acceptable?
+	stopConversation = "false",
+	options = {
+		{"@conversation/quest_crowd_pleaser_manager:s_499afb89", "prep_second_audition_music"}, -- Yes, that's fine.
+		{"@conversation/quest_crowd_pleaser_manager:s_2883b989", "i_understand"}, -- No way. I don't want to go through that again.
+	}
+}
+theaterManagerConvoTemplate:addScreen(still_must_audition_music);
+
+prep_second_audition_dance = ConvoScreen:new {
+	id = "prep_second_audition_dance",
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_14556b51", -- OK. Go ahead and make your preparations. You know the drill. Just come back and talk with me when you're ready to audition.
+	stopConversation = "true",
+	options = {}
+}
+theaterManagerConvoTemplate:addScreen(prep_second_audition_dance);
+
+prep_second_audition_music = ConvoScreen:new {
+	id = "prep_second_audition_music",
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_14556b51", -- OK. Go ahead and make your preparations. You know the drill. Just come back and talk with me when you're ready to audition.
+	stopConversation = "true",
+	options = {}
+}
+theaterManagerConvoTemplate:addScreen(prep_second_audition_music);
+
+i_understand = ConvoScreen:new {
+	id = "i_understand",
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_56d2a81f", -- I understand. Come back if you change your mind.
+	stopConversation = "true",
+	options = {}
+}
+theaterManagerConvoTemplate:addScreen(i_understand);
+
+init_start_second_audition = ConvoScreen:new {
+	id = "init_start_second_audition",
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_472f2a5e", -- You're here for an audition, yes? Are you ready to get started now?
+	stopConversation = "false",
+	options = {
+		{"@conversation/quest_crowd_pleaser_manager:s_4a1d2431", "second_audition_starts_in_30"}, -- Yes, I'm ready.
+		{"@conversation/quest_crowd_pleaser_manager:s_f3d46f0b", "come_back_when_ready"}, -- No, not quite yet.
+	}
+}
+theaterManagerConvoTemplate:addScreen(init_start_second_audition);
+
+second_audition_starts_in_30 = ConvoScreen:new {
+	id = "second_audition_starts_in_30",
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_274a8930", -- Alright, I'll go ahead and get things set up. You'd better hurry up and get onstage. The audition will start in thirty seconds.
+	stopConversation = "true",
+	options = {}
+}
+theaterManagerConvoTemplate:addScreen(second_audition_starts_in_30);
+
 init_first_time = ConvoScreen:new {
 	id = "init_first_time",
 	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_37b822c1", -- Hello there! You're a member of the entertainment industry are you not? I've got an offer for you if you're interested.
@@ -130,10 +245,10 @@ what_type_of_audition = ConvoScreen:new {
 	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_1204a0c6", -- I see. Now, do you want to audition as a musician or a dancer?
 	stopConversation = "false",
 	options = {
-		-- Handled in convo handler, checks to see if player has skills needed
-		--{"@conversation/quest_crowd_pleaser_manager:s_183e8ee4", ""}, -- As a musician.
-		--{"@conversation/quest_crowd_pleaser_manager:s_9172f29c", ""}, -- As a dancer.
-		--{"@conversation/quest_crowd_pleaser_manager:s_c73756f7", "come_back_when_ready"}, -- On second thought, I'm not quite ready yet.
+	-- Handled in convo handler, checks to see if player has skills needed
+	--{"@conversation/quest_crowd_pleaser_manager:s_183e8ee4", ""}, -- As a musician.
+	--{"@conversation/quest_crowd_pleaser_manager:s_9172f29c", ""}, -- As a dancer.
+	--{"@conversation/quest_crowd_pleaser_manager:s_c73756f7", "come_back_when_ready"}, -- On second thought, I'm not quite ready yet.
 	}
 }
 theaterManagerConvoTemplate:addScreen(what_type_of_audition);
@@ -275,10 +390,10 @@ init_first_show = ConvoScreen:new {
 	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_b5131941", -- Ready to start the show, are you? Don't worry if you're nervous. Everybody gets like that the first time they're on stage.
 	stopConversation = "false",
 	options = {
-		-- Handled by convo handler in case someone is on stage
-		--{"@conversation/quest_crowd_pleaser_manager:s_1377703a", "starts_in_two_min"}, -- Yes, I'm ready. Let's get this show on the road.
-		--{"@conversation/quest_crowd_pleaser_manager:s_4365b273", "stomach_of_steel"}, -- I'm not nervous.
-		--{"@conversation/quest_crowd_pleaser_manager:s_d730c5dd", "take_your_time"}, -- No, I'm not quite ready yet.
+	-- Handled by convo handler in case someone is on stage
+	--{"@conversation/quest_crowd_pleaser_manager:s_1377703a", "starts_in_two_min"}, -- Yes, I'm ready. Let's get this show on the road.
+	--{"@conversation/quest_crowd_pleaser_manager:s_4365b273", "stomach_of_steel"}, -- I'm not nervous.
+	--{"@conversation/quest_crowd_pleaser_manager:s_d730c5dd", "take_your_time"}, -- No, I'm not quite ready yet.
 	}
 }
 theaterManagerConvoTemplate:addScreen(init_first_show);
@@ -296,9 +411,9 @@ stomach_of_steel = ConvoScreen:new {
 	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_85b97ed7", -- Sure, sure. You've got a stomach of pure steel. So, are you ready to get started?
 	stopConversation = "false",
 	options = {
-		-- Handled by convo handler in case someone is on stage
-		--{"@conversation/quest_crowd_pleaser_manager:s_1377703a", "starts_in_two_min"}, -- Yes, I'm ready. Let's get this show on the road.
-		--{"@conversation/quest_crowd_pleaser_manager:s_d730c5dd", "take_your_time"}, -- No, I'm not quite ready yet.
+	-- Handled by convo handler in case someone is on stage
+	--{"@conversation/quest_crowd_pleaser_manager:s_1377703a", "starts_in_two_min"}, -- Yes, I'm ready. Let's get this show on the road.
+	--{"@conversation/quest_crowd_pleaser_manager:s_d730c5dd", "take_your_time"}, -- No, I'm not quite ready yet.
 	}
 }
 theaterManagerConvoTemplate:addScreen(stomach_of_steel);
@@ -426,9 +541,9 @@ open_slot_coming_up = ConvoScreen:new {
 	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_250ebca6", -- Oh yes, I see, I see. Yes, we do have an open slot coming up here very shortly. Are you ready to get started with your show now?
 	stopConversation = "false",
 	options = {
-		-- Handled by convo handler in case someone is on stage
-		--{"@conversation/quest_crowd_pleaser_manager:s_1dc24a1", ""}, -- As ready as I'll ever be.
-		--{"@conversation/quest_crowd_pleaser_manager:s_fb55e1c0", "nervous_come_back"}, -- Actually I'm not quite ready yet.
+	-- Handled by convo handler in case someone is on stage
+	--{"@conversation/quest_crowd_pleaser_manager:s_59a59142", ""}, -- As ready as I'll ever be.
+	--{"@conversation/quest_crowd_pleaser_manager:s_fb55e1c0", "nervous_come_back"}, -- Actually I'm not quite ready yet.
 	}
 }
 theaterManagerConvoTemplate:addScreen(open_slot_coming_up);
@@ -570,9 +685,9 @@ set_up_if_ready = ConvoScreen:new {
 	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_b751f222", -- If you're ready now, I'll go ahead and start getting things set up. What do you say?
 	stopConversation = "false",
 	options = {
-		-- Handled by convo handler in case someone is on stage
-		--{"@conversation/quest_crowd_pleaser_manager:s_dd4bb16d", "]"}, -- Let's do it!
-		--{"@conversation/quest_crowd_pleaser_manager:s_d730c5dd", "take_your_time"}, -- No, I'm not quite ready yet.
+	-- Handled by convo handler in case someone is on stage
+	--{"@conversation/quest_crowd_pleaser_manager:s_dd4bb16d", "starts_in_three"}, -- Let's do it!
+	--{"@conversation/quest_crowd_pleaser_manager:s_d730c5dd", "take_your_time"}, -- No, I'm not quite ready yet.
 	}
 }
 theaterManagerConvoTemplate:addScreen(set_up_if_ready);

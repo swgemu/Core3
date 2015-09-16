@@ -55,6 +55,7 @@ public:
 	int setCompletedQuestsBit(lua_State* L);
 	int clearCompletedQuestsBit(lua_State* L);
 	int hasAbility(lua_State* L);
+	int addAbility(lua_State* L);
 	int getExperience(lua_State* L);
 	int addEventPerk(lua_State* L);
 	int getEventPerkCount(lua_State* L);

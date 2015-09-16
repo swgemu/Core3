@@ -11,6 +11,7 @@
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/objects/tangible/eventperk/Jukebox.h"
+#include "server/zone/managers/skill/SkillManager.h"
 
 const char LuaPlayerObject::className[] = "LuaPlayerObject";
 
@@ -48,6 +49,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "setCompletedQuestsBit", &LuaPlayerObject::setCompletedQuestsBit },
 		{ "clearCompletedQuestsBit", &LuaPlayerObject::clearCompletedQuestsBit },
 		{ "hasAbility", &LuaPlayerObject::hasAbility},
+		{ "addAbility", &LuaPlayerObject::addAbility},
 		{ "getExperience", &LuaPlayerObject::getExperience },
 		{ "addEventPerk", &LuaPlayerObject::addEventPerk},
 		{ "getEventPerkCount", &LuaPlayerObject::getEventPerkCount},
@@ -408,6 +410,18 @@ int LuaPlayerObject::hasAbility(lua_State* L) {
 	bool check = realObject->hasAbility(value);
 
 	lua_pushboolean(L, check);
+
+	return 1;
+
+}
+
+int LuaPlayerObject::addAbility(lua_State* L) {
+	String value = lua_tostring(L, -1);
+
+	SkillManager* skillManager = SkillManager::instance();
+
+	if (!realObject->hasAbility(value))
+		skillManager->addAbility(realObject, value);
 
 	return 1;
 
