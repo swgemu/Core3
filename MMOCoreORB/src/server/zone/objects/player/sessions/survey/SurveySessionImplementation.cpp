@@ -176,7 +176,7 @@ void SurveySessionImplementation::startSample(const String& resname) {
 		return;
 	}
 
-	if (surveyer->isSwimming()) {
+	if (surveyer->isSwimming() || (surveyer->isRidingMount() && surveyer->isInWater())) {
 		surveyer->sendSystemMessage("@error_message:survey_swimming");
 		return;
 	}
