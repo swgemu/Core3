@@ -155,7 +155,12 @@ void GroupObjectImplementation::removeMember(SceneObject* member) {
 			PlayerObject* ghost = playerCreature->getPlayerObject();
 			ghost->removeWaypointBySpecialType(WaypointObject::SPECIALTYPE_NEARESTMISSIONFORGROUP);
 		}
-		scheduleUpdateNearestMissionForGroup(playerCreature->getPlanetCRC());
+
+		Zone* zone = playerCreature->getZone();
+
+		if (zone != NULL) {
+			scheduleUpdateNearestMissionForGroup(zone->getPlanetCRC());
+		}
 	}
 
 	calcGroupLevel();
