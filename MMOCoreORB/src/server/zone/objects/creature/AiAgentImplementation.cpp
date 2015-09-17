@@ -1477,6 +1477,21 @@ void AiAgentImplementation::activatePostureRecovery() {
 		executeObjectControllerAction(0xA8A25C79); // stand
 }
 
+void AiAgentImplementation::activateHAMRegeneration(int latency) {
+    if (isIncapacitated() || isDead() || isInCombat())
+        return;
+
+    uint32 healthTick = MAX(1, ceil(getMaxHAM(CreatureAttribute::HEALTH) / 300000.f * latency));
+    uint32 actionTick = MAX(1, ceil(getMaxHAM(CreatureAttribute::ACTION) / 300000.f * latency));
+    uint32 mindTick   = MAX(1, ceil(getMaxHAM(CreatureAttribute::MIND)   / 300000.f * latency));
+
+    healDamage(asCreatureObject(), CreatureAttribute::HEALTH, healthTick, true, false);
+    healDamage(asCreatureObject(), CreatureAttribute::ACTION, actionTick, true, false);
+    healDamage(asCreatureObject(), CreatureAttribute::MIND,   mindTick,   true, false);
+
+    activatePassiveWoundRegeneration();
+}
+
 void AiAgentImplementation::updateCurrentPosition(PatrolPoint* pos) {
 	PatrolPoint* nextPosition = pos;
 

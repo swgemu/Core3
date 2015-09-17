@@ -518,6 +518,9 @@ class AiAgent extends CreatureObject {
 	public native void activatePostureRecovery();
 
 	@preLocked
+	public abstract native void activateHAMRegeneration(int latency);
+
+	@preLocked
 	public native void queueDizzyFallEvent();
 
 	/**
