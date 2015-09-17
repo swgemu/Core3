@@ -29,8 +29,6 @@ public:
 
 		Locker _locker(strongParent);
 
-		player->clearForceRegenerationEvent();
-
 		if (player->isOnline() || player->isLinkDead()) {
 			if (player->getForcePowerMax() > 0  && (player->getForcePowerMax() - player->getForcePower() > 0)){
 				player->doForceRegen();

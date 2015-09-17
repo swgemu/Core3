@@ -42,6 +42,12 @@ public:
 		try {
 			Locker playerLocker(player);
 
+			PlayerObject* ghost = player->getPlayerObject();
+
+			if (ghost == NULL) {
+				return;
+			}
+
 			if (!deadRecovery)
 				player->removePendingTask("incapacitationRecovery");
 
@@ -67,10 +73,14 @@ public:
 
 			player->setPosture(CreaturePosture::UPRIGHT);
 
+			if (ghost->getForcePowerMax() > 0 && ghost->getForcePower() < ghost->getForcePowerMax()) {
+				ghost->activateForcePowerRegen();
+			}
+
 			if (deadRecovery) {
 				player->playEffect("clienteffect/player_clone_compile.cef");
-				player->getPlayerObject()->resetIncapacitationCounter();
-				player->getPlayerObject()->resetFirstIncapacitationTime();
+				ghost->resetIncapacitationCounter();
+				ghost->resetFirstIncapacitationTime();
 				player->notifyObservers(ObserverEventType::PLAYERCLONED, player, 0);
 				player->broadcastPvpStatusBitmask();
 			}

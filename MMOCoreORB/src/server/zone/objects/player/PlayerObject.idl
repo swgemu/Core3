@@ -1419,11 +1419,7 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public native void clearDisconnectEvent();
-	
-	public native void clearRecoveryEvent();
 
-	public native void clearForceRegenerationEvent();
-	
 	@read
 	public boolean isOnline() {
 		return onlineStatus != OFFLINE && onlineStatus != LINKDEAD;
