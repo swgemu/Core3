@@ -8,7 +8,12 @@ huff_quest_tusken_king_rifle = {
 	customizationValues = {},
 	skillMods = {
 
-	}
+	},
+
+	randomDotChance = 800,
+	junkDealerTypeNeeded = JUNKWEAPONS,
+	junkMinValue = 30,
+	junkMaxValue = 55
 }
 
 addLootItemTemplate("huff_quest_tusken_king_rifle", huff_quest_tusken_king_rifle)
