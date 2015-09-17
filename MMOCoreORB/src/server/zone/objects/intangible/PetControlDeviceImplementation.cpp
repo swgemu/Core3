@@ -553,6 +553,8 @@ bool PetControlDeviceImplementation::growPet(CreatureObject* player, bool force,
 	growthStage = newStage;
 	lastGrowth.updateToCurrentTime();
 
+	setVitality(getVitality());
+
 	return true;
 }
 
@@ -1156,3 +1158,50 @@ bool PetControlDeviceImplementation::isValidPet(AiAgent* pet) {
 
 	return true;
 }
+
+void PetControlDeviceImplementation::setVitality(int vit) {
+	vitality = vit;
+
+	if (petType == PetManager::CREATUREPET) {
+		ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+		if (controlledObject == NULL || !controlledObject->isCreatureObject())
+			return;
+
+		CreatureObject* pet = cast<CreatureObject*>(controlledObject.get());
+		if(pet == NULL )
+			return;
+
+		float hamPenaltyModifier = 0;
+		if (vitality <= 75 && vitality > 50) {
+			hamPenaltyModifier = 0.25f;
+		}
+		else if (vitality <= 50 && vitality > 25) {
+			hamPenaltyModifier = 0.5f;
+		}
+		else if (vitality <= 25) {
+			hamPenaltyModifier = 0.75f;
+		}
+
+		int newVitalityHealthPenalty = pet->getBaseHAM(0) * hamPenaltyModifier;
+		int newVitalityActionPenalty = pet->getBaseHAM(3) * hamPenaltyModifier;
+		int newVitalityMindPenalty = pet->getBaseHAM(6) * hamPenaltyModifier;
+
+		if (newVitalityHealthPenalty != vitalityHealthPenalty) {
+			int change = vitalityHealthPenalty - newVitalityHealthPenalty;
+			pet->setMaxHAM(0, pet->getMaxHAM(0) + change, true);
+			vitalityHealthPenalty = newVitalityHealthPenalty;
+		}
+		if (newVitalityActionPenalty != vitalityActionPenalty) {
+			int change = vitalityActionPenalty - newVitalityActionPenalty;
+			pet->setMaxHAM(3, pet->getMaxHAM(3) + change, true);
+			vitalityActionPenalty = newVitalityActionPenalty;
+		}
+		if (newVitalityMindPenalty != vitalityMindPenalty) {
+			int change = vitalityMindPenalty - newVitalityMindPenalty;
+			pet->setMaxHAM(6, pet->getMaxHAM(6) + change, true);
+			vitalityMindPenalty = newVitalityMindPenalty;
+		}
+	}
+}
+
+
