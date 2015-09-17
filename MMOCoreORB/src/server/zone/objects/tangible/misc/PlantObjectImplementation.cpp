@@ -34,14 +34,13 @@ int PlantObjectImplementation::handleObjectMenuSelect(CreatureObject* player, by
 	ManagedReference<SceneObject*> rootParent = getRootParent();
 	ManagedReference<SceneObject*> parent = getParent();
 
-	if (rootParent == NULL || parent == NULL || !rootParent->isBuildingObject() || !parent->isCellObject()) {
-		player->sendSystemMessage("@plant_grow:must_be_in_building"); // The plant must be in a building which you administrate.
+	if (rootParent == NULL || parent == NULL) {
 		return 0;
 	}
 
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>( rootParent.get());
 
-	if (!building->isOnAdminList(player) && selectedID >= 69 && selectedID <= 74) {
+	if ((building == NULL || !building->isOnAdminList(player) || !parent->isCellObject()) && selectedID >= 69 && selectedID <= 74) {
 		player->sendSystemMessage("@plant_grow:must_be_in_building"); // The plant must be in a building which you administrate.
 		return 0;
 	}
