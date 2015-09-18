@@ -208,10 +208,10 @@ void ResourceManagerImplementation::sendSample(CreatureObject* playerCreature, c
 	playerCreature->registerObserver(ObserverEventType::POSTURECHANGED, _this.getReferenceUnsafeStaticCast());
 }
 
-void ResourceManagerImplementation::createResourceSpawn(CreatureObject* playerCreature, const String& restype) {
+void ResourceManagerImplementation::createResourceSpawn(CreatureObject* playerCreature, const UnicodeString& args) {
 	Locker _locker(_this.getReferenceUnsafeStaticCast());
 
-	ResourceSpawn* resourceSpawn = resourceSpawner->manualCreateResourceSpawn(restype);
+	ResourceSpawn* resourceSpawn = resourceSpawner->manualCreateResourceSpawn(playerCreature, args);
 
 	if (resourceSpawn != NULL) {
 		StringBuffer buffer;
@@ -219,7 +219,7 @@ void ResourceManagerImplementation::createResourceSpawn(CreatureObject* playerCr
 
 		playerCreature->sendSystemMessage(buffer.toString());
 	} else {
-		playerCreature->sendSystemMessage("Could not create spawn " + restype);
+		playerCreature->sendSystemMessage("Could not create resource spawn, invalid arguments");
 	}
 
 }

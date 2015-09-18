@@ -418,11 +418,60 @@ ResourceSpawn* ResourceSpawner::createRecycledResourceSpawn(ResourceTreeEntry* e
 	return newSpawn;
 }
 
-ResourceSpawn* ResourceSpawner::manualCreateResourceSpawn(const String& type) {
+ResourceSpawn* ResourceSpawner::manualCreateResourceSpawn(CreatureObject* player, const UnicodeString& args) {
+	StringTokenizer tokenizer(args.toString());
+	tokenizer.setDelimeter(" ");
+
+	if (!tokenizer.hasMoreTokens()) {
+		return NULL;
+	}
+
+	String type;
+	tokenizer.getStringToken(type);
+	VectorMap<String, int> attributes;
+
+	try {
+		while(tokenizer.hasMoreTokens()) {
+			String token;
+			tokenizer.getStringToken(token);
+
+			StringTokenizer izer(token);
+			izer.setDelimeter(",");
+
+			String att;
+			izer.getStringToken(att);
+
+			if (!izer.hasMoreTokens()) {
+				throw Exception();
+			}
+
+			int value = izer.getIntToken();
+
+			if (value < 1) {
+				value = 1;
+			} else if (value > 1000) {
+				value = 1000;
+			}
+
+			attributes.put(att, value);
+		}
+	} catch (Exception& e) {
+		player->sendSystemMessage("Invalid arguments for /gmCreateSpecificResource: type <attribute,value> ..");
+		return NULL;
+	}
+
 	ResourceSpawn* resourceSpawn = createResourceSpawn(type);
 
 	if (resourceSpawn != NULL) {
 		Locker locker(resourceSpawn);
+
+		for (int i = 0; i < attributes.size(); i++) {
+			String key = attributes.elementAt(i).getKey();
+			if (resourceSpawn->getValueOf(key) > 0) {
+				resourceSpawn->addAttribute(key, attributes.get(i));
+			}
+		}
+
 		manualPool->addResource(resourceSpawn, "any");
 	}
 

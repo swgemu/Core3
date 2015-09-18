@@ -105,7 +105,7 @@ public:
 
 	void despawn(ResourceSpawn* spawn);
 
-	ResourceSpawn* manualCreateResourceSpawn(const String& type);
+	ResourceSpawn* manualCreateResourceSpawn(CreatureObject* player, const UnicodeString& args);
 
 	ResourceSpawn* createRecycledResourceSpawn(ResourceTreeEntry* entry);
 

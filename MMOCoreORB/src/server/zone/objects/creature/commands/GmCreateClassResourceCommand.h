@@ -24,16 +24,8 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		StringTokenizer tokenizer(arguments.toString());
-
-		if(!tokenizer.hasMoreTokens())
-			return INVALIDPARAMETERS;
-
-		String restype;
-		tokenizer.getStringToken(restype);
-
 		ManagedReference<ResourceManager* > resourceManager = server->getZoneServer()->getResourceManager();
-		resourceManager->createResourceSpawn(creature, restype);
+		resourceManager->createResourceSpawn(creature, arguments);
 
 		return SUCCESS;
 	}

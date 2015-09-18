@@ -88,6 +88,10 @@ int ResourceSpawnImplementation::getValueOf(int stat) {
 		break;
 	}
 
+	return getValueOf(attribute);
+}
+
+int ResourceSpawnImplementation::getValueOf(const String& attribute) {
 	if(spawnAttributes.contains(attribute))
 		return spawnAttributes.get(attribute);
 

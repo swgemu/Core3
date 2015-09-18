@@ -78,7 +78,7 @@ class ResourceManager extends Observer implements Logger {
 	@local
 	public native void getResourceListByType(@dereferenced Vector<ResourceSpawn> list, int type, final string zoneName);
 	
-	public native void createResourceSpawn(CreatureObject playerCreature, final string restype);
+	public native void createResourceSpawn(CreatureObject playerCreature, final unicode args);
 	public native void givePlayerResource(CreatureObject playerCreature, final string restype, final int quantity);
 
 	public native ResourceSpawn getCurrentSpawn(final string restype, final string zoneName);
