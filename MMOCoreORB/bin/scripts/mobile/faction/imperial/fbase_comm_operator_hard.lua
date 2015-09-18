@@ -1,16 +1,16 @@
-comm_operator = Creature:new {
-	objectName = "@mob/creature_names:comm_operator",
+fbase_comm_operator_hard = Creature:new {
+	objectName = "@mob/creature_names:fbase_comm_operator_hard",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 14,
-	chanceHit = 0.3,
-	damageMin = 150,
-	damageMax = 160,
-	baseXp = 714,
-	baseHAM = 2000,
-	baseHAMmax = 2400,
-	armor = 0,
+	level = 48,
+	chanceHit = 0.49,
+	damageMin = 385,
+	damageMax = 480,
+	baseXp = 4800,
+	baseHAM = 10100,
+	baseHAMmax = 12300,
+	armor = 1,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",
 	meatAmount = 0,
@@ -40,19 +40,18 @@ comm_operator = Creature:new {
 			groups = {
 				{group = "color_crystals", chance = 200000},
 				{group = "junk", chance = 6900000},
-				{group = "rifles", chance = 800000},
-				{group = "pistols", chance = 800000},
+				{group = "weapons_all", chance = 800000},
+				{group = "armor_all", chance = 800000},
 				{group = "clothing_attachments", chance = 150000},
 				{group = "armor_attachments", chance = 150000},
-				{group = "wearables_common", chance = 1000000}
+				{group = "wearables_all", chance = 1000000}
 			}
 		}
 	},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",
-	attacks = merge(brawlermid,marksmanmid)
+	attacks = merge(brawlermaster,marksmanmaster,pistoleernovice)
 }
 
-CreatureTemplates:addCreatureTemplate(comm_operator, "comm_operator")
+CreatureTemplates:addCreatureTemplate(fbase_comm_operator_hard, "fbase_comm_operator_hard")

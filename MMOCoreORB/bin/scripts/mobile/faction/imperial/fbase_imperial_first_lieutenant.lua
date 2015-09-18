@@ -1,17 +1,17 @@
-imperial_colonel = Creature:new {
-	objectName = "@mob/creature_names:imperial_colonel",
+fbase_imperial_first_lieutenant = Creature:new {
+	objectName = "@mob/creature_names:fbase_imperial_first_lieutenant",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 23,
-	chanceHit = 0.35,
-	damageMin = 220,
-	damageMax = 230,
-	baseXp = 2443,
-	baseHAM = 6300,
-	baseHAMmax = 7700,
+	level = 30,
+	chanceHit = 0.4,
+	damageMin = 290,
+	damageMax = 300,
+	baseXp = 3000,
+	baseHAM = 8400,
+	baseHAMmax = 10400,
 	armor = 0,
-	resists = {115,115,10,10,10,-1,10,-1,-1},
+	resists = {10,10,10,10,10,10,10,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,28 +26,25 @@ imperial_colonel = Creature:new {
 	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_colonel_m.iff"},
+	templates = {"object/mobile/dressed_imperial_lieutenant_m.iff"},
 	lootGroups = {
 		{
 			groups = {
 				{group = "color_crystals", chance = 100000},
 				{group = "junk", chance = 6200000},
-				{group = "rifles", chance = 550000},
-				{group = "pistols", chance = 550000},
-				{group = "melee_weapons", chance = 550000},
-				{group = "carbines", chance = 550000},
+				{group = "weapons_all", chance = 1100000},
+				{group = "armor_all", chance = 1100000},
 				{group = "clothing_attachments", chance = 25000},
 				{group = "armor_attachments", chance = 25000},
 				{group = "imperial_officer_common", chance = 450000},
-				{group = "wearables_common", chance = 1000000}
+				{group = "wearables_all", chance = 1000000}
 			}
 		}
 	},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "imperialRecruiterConvoTemplate",
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",
-	attacks = merge(brawlermaster,carbineermaster)
+	attacks = merge(brawlermaster,marksmanmaster,carbineermid,riflemanmid)
 }
 
-CreatureTemplates:addCreatureTemplate(imperial_colonel, "imperial_colonel")
+CreatureTemplates:addCreatureTemplate(fbase_imperial_first_lieutenant, "fbase_imperial_first_lieutenant")

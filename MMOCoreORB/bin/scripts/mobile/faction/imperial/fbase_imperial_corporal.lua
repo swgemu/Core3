@@ -1,17 +1,17 @@
-comm_operator = Creature:new {
-	objectName = "@mob/creature_names:comm_operator",
+fbase_imperial_corporal = Creature:new {
+	objectName = "@mob/creature_names:fbase_imperial_corporal",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 14,
-	chanceHit = 0.3,
-	damageMin = 150,
-	damageMax = 160,
-	baseXp = 714,
-	baseHAM = 2000,
-	baseHAMmax = 2400,
+	level = 26,
+	chanceHit = 0.38,
+	damageMin = 250,
+	damageMax = 260,
+	baseXp = 2600,
+	baseHAM = 7700,
+	baseHAMmax = 9400,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {5,5,5,5,5,5,5,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -40,19 +40,18 @@ comm_operator = Creature:new {
 			groups = {
 				{group = "color_crystals", chance = 200000},
 				{group = "junk", chance = 6900000},
-				{group = "rifles", chance = 800000},
-				{group = "pistols", chance = 800000},
+				{group = "weapons_all", chance = 800000},
+				{group = "armor_all", chance = 800000},
 				{group = "clothing_attachments", chance = 150000},
 				{group = "armor_attachments", chance = 150000},
-				{group = "wearables_common", chance = 1000000}
+				{group = "wearables_all", chance = 1000000}
 			}
 		}
 	},
-	weapons = {"imperial_weapons_light"},
+	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",
-	attacks = merge(brawlermid,marksmanmid)
+	attacks = merge(brawlermaster,marksmanmaster,riflemannovice)
 }
 
-CreatureTemplates:addCreatureTemplate(comm_operator, "comm_operator")
+CreatureTemplates:addCreatureTemplate(fbase_imperial_corporal, "fbase_imperial_corporal")

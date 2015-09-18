@@ -1,16 +1,16 @@
-imperial_colonel = Creature:new {
-	objectName = "@mob/creature_names:imperial_colonel",
+fbase_imperial_colonel_hard = Creature:new {
+	objectName = "@mob/creature_names:fbase_imperial_colonel_hard",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 23,
-	chanceHit = 0.35,
-	damageMin = 220,
-	damageMax = 230,
-	baseXp = 2443,
-	baseHAM = 6300,
-	baseHAMmax = 7700,
-	armor = 0,
+	level = 65,
+	chanceHit = 0.65,
+	damageMin = 470,
+	damageMax = 650,
+	baseXp = 6500,
+	baseHAM = 12500,
+	baseHAMmax = 17500,
+	armor = 1,
 	resists = {115,115,10,10,10,-1,10,-1,-1},
 	meatType = "",
 	meatAmount = 0,
@@ -32,22 +32,19 @@ imperial_colonel = Creature:new {
 			groups = {
 				{group = "color_crystals", chance = 100000},
 				{group = "junk", chance = 6200000},
-				{group = "rifles", chance = 550000},
-				{group = "pistols", chance = 550000},
-				{group = "melee_weapons", chance = 550000},
-				{group = "carbines", chance = 550000},
+				{group = "weapons_all", chance = 1100000},
+				{group = "armor_all", chance = 1100000},
 				{group = "clothing_attachments", chance = 25000},
 				{group = "armor_attachments", chance = 25000},
 				{group = "imperial_officer_common", chance = 450000},
-				{group = "wearables_common", chance = 1000000}
+				{group = "wearables_all", chance = 1000000}
 			}
 		}
 	},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "imperialRecruiterConvoTemplate",
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",
-	attacks = merge(brawlermaster,carbineermaster)
+	attacks = merge(brawlermaster,marksmanmaster,carbineermid,riflemanmid)
 }
 
-CreatureTemplates:addCreatureTemplate(imperial_colonel, "imperial_colonel")
+CreatureTemplates:addCreatureTemplate(fbase_imperial_colonel_hard, "fbase_imperial_colonel_hard")
