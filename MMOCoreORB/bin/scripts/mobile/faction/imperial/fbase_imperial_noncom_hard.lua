@@ -1,16 +1,16 @@
-comm_operator = Creature:new {
-	objectName = "@mob/creature_names:comm_operator",
+fbase_imperial_noncom_hard = Creature:new {
+	objectName = "@mob/creature_names:fbase_imperial_noncom_hard",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 14,
-	chanceHit = 0.3,
-	damageMin = 150,
-	damageMax = 160,
-	baseXp = 714,
-	baseHAM = 2000,
-	baseHAMmax = 2400,
-	armor = 0,
+	level = 47,
+	chanceHit = 0.49,
+	damageMin = 380,
+	damageMax = 470,
+	baseXp = 4700,
+	baseHAM = 10000,
+	baseHAMmax = 12200,
+	armor = 1,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",
 	meatAmount = 0,
@@ -22,8 +22,7 @@ comm_operator = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	creatureBitmask = PACK + STALKER,
 	diet = HERBIVORE,
 
 	templates = {
@@ -34,25 +33,26 @@ comm_operator = Creature:new {
 		"object/mobile/dressed_imperial_officer_m_4.iff",
 		"object/mobile/dressed_imperial_officer_m_5.iff",
 		"object/mobile/dressed_imperial_officer_m_6.iff"
-		},
+	},
 	lootGroups = {
 		{
 			groups = {
-				{group = "color_crystals", chance = 200000},
-				{group = "junk", chance = 6900000},
-				{group = "rifles", chance = 800000},
-				{group = "pistols", chance = 800000},
-				{group = "clothing_attachments", chance = 150000},
-				{group = "armor_attachments", chance = 150000},
+				{group = "color_crystals", chance = 100000},
+				{group = "junk", chance = 6650000},
+				{group = "rifles", chance = 550000},
+				{group = "pistols", chance = 550000},
+				{group = "melee_weapons", chance = 550000},
+				{group = "carbines", chance = 550000},
+				{group = "clothing_attachments", chance = 25000},
+				{group = "armor_attachments", chance = 25000},
 				{group = "wearables_common", chance = 1000000}
 			}
 		}
 	},
 	weapons = {"imperial_weapons_light"},
-	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
 	personalityStf = "@hireling/hireling_military",
-	attacks = merge(brawlermid,marksmanmid)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(comm_operator, "comm_operator")
+CreatureTemplates:addCreatureTemplate(fbase_imperial_noncom_hard, "fbase_imperial_noncom_hard")

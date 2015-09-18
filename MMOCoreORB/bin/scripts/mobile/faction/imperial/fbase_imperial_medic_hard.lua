@@ -1,17 +1,17 @@
-imperial_medic = Creature:new {
-	objectName = "@mob/creature_names:imperial_medic",
+fbase_imperial_medic_hard = Creature:new {
+	objectName = "@mob/creature_names:fbase_imperial_medic_hard",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 16,
-	chanceHit = 0.31,
-	damageMin = 170,
-	damageMax = 180,
-	baseXp = 960,
-	baseHAM = 2900,
-	baseHAMmax = 3500,
-	armor = 0,
-	resists = {0,0,0,0,0,0,0,-1,-1},
+	level = 51,
+	chanceHit = 0.51,
+	damageMin = 400,
+	damageMax = 510,
+	baseXp = 5100,
+	baseHAM = 10000,
+	baseHAMmax = 13000,
+	armor = 1,
+	resists = {5,5,5,5,5,5,5,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -22,13 +22,13 @@ imperial_medic = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK,
+	creatureBitmask = PACK + HEALER,
 	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {
 		"object/mobile/dressed_imperial_medic1_human_male_01.iff",
-		"object/mobile/dressed_imperial_medic2_21b_01.iff"},
+		"object/mobile/dressed_imperial_officer_f.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -47,7 +47,7 @@ imperial_medic = Creature:new {
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "imperialRecruiterConvoTemplate",
 	reactionStf = "@npc_reaction/military",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
-CreatureTemplates:addCreatureTemplate(imperial_medic, "imperial_medic")
+CreatureTemplates:addCreatureTemplate(fbase_imperial_medic_hard, "fbase_imperial_medic_hard")

@@ -1,17 +1,17 @@
-comm_operator = Creature:new {
-	objectName = "@mob/creature_names:comm_operator",
+fbase_imperial_corporal_hard = Creature:new {
+	objectName = "@mob/creature_names:fbase_imperial_corporal_hard",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 14,
-	chanceHit = 0.3,
-	damageMin = 150,
-	damageMax = 160,
-	baseXp = 714,
-	baseHAM = 2000,
-	baseHAMmax = 2400,
-	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	level = 52,
+	chanceHit = 0.52,
+	damageMin = 405,
+	damageMax = 520,
+	baseXp = 5200,
+	baseHAM = 10500,
+	baseHAMmax = 13000,
+	armor = 1,
+	resists = {5,5,5,5,5,5,5,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -38,21 +38,23 @@ comm_operator = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "color_crystals", chance = 200000},
-				{group = "junk", chance = 6900000},
-				{group = "rifles", chance = 800000},
-				{group = "pistols", chance = 800000},
-				{group = "clothing_attachments", chance = 150000},
-				{group = "armor_attachments", chance = 150000},
+				{group = "color_crystals", chance = 100000},
+				{group = "junk", chance = 6650000},
+				{group = "rifles", chance = 550000},
+				{group = "pistols", chance = 550000},
+				{group = "melee_weapons", chance = 550000},
+				{group = "carbines", chance = 550000},
+				{group = "clothing_attachments", chance = 25000},
+				{group = "armor_attachments", chance = 25000},
 				{group = "wearables_common", chance = 1000000}
 			}
 		}
 	},
-	weapons = {"imperial_weapons_light"},
+	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
 	personalityStf = "@hireling/hireling_military",
-	attacks = merge(brawlermid,marksmanmid)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(comm_operator, "comm_operator")
+CreatureTemplates:addCreatureTemplate(fbase_imperial_corporal_hard, "fbase_imperial_corporal_hard")

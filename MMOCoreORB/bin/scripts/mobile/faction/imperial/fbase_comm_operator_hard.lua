@@ -1,16 +1,16 @@
-comm_operator = Creature:new {
-	objectName = "@mob/creature_names:comm_operator",
+fbase_comm_operator_hard = Creature:new {
+	objectName = "@mob/creature_names:fbase_comm_operator_hard",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 14,
-	chanceHit = 0.3,
-	damageMin = 150,
-	damageMax = 160,
-	baseXp = 714,
-	baseHAM = 2000,
-	baseHAMmax = 2400,
-	armor = 0,
+	level = 48,
+	chanceHit = 0.49,
+	damageMin = 385,
+	damageMax = 480,
+	baseXp = 4800,
+	baseHAM = 10100,
+	baseHAMmax = 12300,
+	armor = 1,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",
 	meatAmount = 0,
@@ -55,4 +55,4 @@ comm_operator = Creature:new {
 	attacks = merge(brawlermid,marksmanmid)
 }
 
-CreatureTemplates:addCreatureTemplate(comm_operator, "comm_operator")
+CreatureTemplates:addCreatureTemplate(fbase_comm_operator_hard, "fbase_comm_operator_hard")

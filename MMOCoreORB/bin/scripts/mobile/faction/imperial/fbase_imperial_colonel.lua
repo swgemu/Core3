@@ -1,15 +1,15 @@
-imperial_colonel = Creature:new {
-	objectName = "@mob/creature_names:imperial_colonel",
+fbase_imperial_colonel = Creature:new {
+	objectName = "@mob/creature_names:fbase_imperial_colonel",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 23,
-	chanceHit = 0.35,
-	damageMin = 220,
-	damageMax = 230,
-	baseXp = 2443,
-	baseHAM = 6300,
-	baseHAMmax = 7700,
+	level = 33,
+	chanceHit = 0.41,
+	damageMin = 310,
+	damageMax = 330,
+	baseXp = 3300,
+	baseHAM = 8700,
+	baseHAMmax = 10700,
 	armor = 0,
 	resists = {115,115,10,10,10,-1,10,-1,-1},
 	meatType = "",
@@ -47,7 +47,7 @@ imperial_colonel = Creature:new {
 	conversationTemplate = "imperialRecruiterConvoTemplate",
 	reactionStf = "@npc_reaction/military",
 	personalityStf = "@hireling/hireling_military",
-	attacks = merge(brawlermaster,carbineermaster)
+	attacks = merge(brawlermaster,carbineermid)
 }
 
-CreatureTemplates:addCreatureTemplate(imperial_colonel, "imperial_colonel")
+CreatureTemplates:addCreatureTemplate(fbase_imperial_colonel, "fbase_imperial_colonel")

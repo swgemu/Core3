@@ -1,17 +1,17 @@
-imperial_colonel = Creature:new {
-	objectName = "@mob/creature_names:imperial_colonel",
+fbase_imperial_warrant_officer_ii_hard = Creature:new {
+	objectName = "@mob/creature_names:fbase_imperial_warrant_officer_ii_hard",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 23,
-	chanceHit = 0.35,
-	damageMin = 220,
-	damageMax = 230,
-	baseXp = 2443,
-	baseHAM = 6300,
-	baseHAMmax = 7700,
-	armor = 0,
-	resists = {115,115,10,10,10,-1,10,-1,-1},
+	level = 56,
+	chanceHit = 0.56,
+	damageMin = 425,
+	damageMax = 560,
+	baseXp = 5600,
+	baseHAM = 11000,
+	baseHAMmax = 14500,
+	armor = 1,
+	resists = {5,5,5,5,5,5,5,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,19 +26,25 @@ imperial_colonel = Creature:new {
 	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_colonel_m.iff"},
+	templates = {
+		"object/mobile/dressed_imperial_officer_f.iff",
+		"object/mobile/dressed_imperial_officer_m.iff",
+		"object/mobile/dressed_imperial_officer_m_2.iff",
+		"object/mobile/dressed_imperial_officer_m_3.iff",
+		"object/mobile/dressed_imperial_officer_m_4.iff",
+		"object/mobile/dressed_imperial_officer_m_5.iff",
+		"object/mobile/dressed_imperial_officer_m_6.iff"},
 	lootGroups = {
 		{
 			groups = {
 				{group = "color_crystals", chance = 100000},
-				{group = "junk", chance = 6200000},
+				{group = "junk", chance = 6650000},
 				{group = "rifles", chance = 550000},
 				{group = "pistols", chance = 550000},
 				{group = "melee_weapons", chance = 550000},
 				{group = "carbines", chance = 550000},
 				{group = "clothing_attachments", chance = 25000},
 				{group = "armor_attachments", chance = 25000},
-				{group = "imperial_officer_common", chance = 450000},
 				{group = "wearables_common", chance = 1000000}
 			}
 		}
@@ -46,8 +52,7 @@ imperial_colonel = Creature:new {
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "imperialRecruiterConvoTemplate",
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",
-	attacks = merge(brawlermaster,carbineermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(imperial_colonel, "imperial_colonel")
+CreatureTemplates:addCreatureTemplate(fbase_imperial_warrant_officer_ii_hard, "fbase_imperial_warrant_officer_ii_hard")

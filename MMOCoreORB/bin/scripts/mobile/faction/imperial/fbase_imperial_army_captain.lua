@@ -1,17 +1,17 @@
-imperial_colonel = Creature:new {
-	objectName = "@mob/creature_names:imperial_colonel",
+fbase_imperial_army_captain = Creature:new {
+	objectName = "@mob/creature_names:fbase_imperial_army_captain",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 23,
-	chanceHit = 0.35,
-	damageMin = 220,
-	damageMax = 230,
-	baseXp = 2443,
-	baseHAM = 6300,
-	baseHAMmax = 7700,
+	level = 31,
+	chanceHit = 0.4,
+	damageMin = 300,
+	damageMax = 310,
+	baseXp = 3100,
+	baseHAM = 8500,
+	baseHAMmax = 10500,
 	armor = 0,
-	resists = {115,115,10,10,10,-1,10,-1,-1},
+	resists = {10,10,10,10,10,10,10,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,7 +26,7 @@ imperial_colonel = Creature:new {
 	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_colonel_m.iff"},
+	templates = {"object/mobile/dressed_imperial_captain_m.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -43,11 +43,11 @@ imperial_colonel = Creature:new {
 			}
 		}
 	},
-	weapons = {"imperial_weapons_medium"},
+	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "imperialRecruiterConvoTemplate",
 	reactionStf = "@npc_reaction/military",
 	personalityStf = "@hireling/hireling_military",
-	attacks = merge(brawlermaster,carbineermaster)
+	attacks = merge(brawlermid,marksmanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(imperial_colonel, "imperial_colonel")
+CreatureTemplates:addCreatureTemplate(fbase_imperial_army_captain, "fbase_imperial_army_captain")

@@ -1,15 +1,15 @@
-comm_operator = Creature:new {
-	objectName = "@mob/creature_names:comm_operator",
+fbase_comm_operator = Creature:new {
+	objectName = "@mob/creature_names:fbase_comm_operator",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 14,
-	chanceHit = 0.3,
-	damageMin = 150,
-	damageMax = 160,
-	baseXp = 714,
-	baseHAM = 2000,
-	baseHAMmax = 2400,
+	level = 24,
+	chanceHit = 0.37,
+	damageMin = 230,
+	damageMax = 240,
+	baseXp = 2400,
+	baseHAM = 6800,
+	baseHAMmax = 8300,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",
@@ -52,7 +52,7 @@ comm_operator = Creature:new {
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
 	personalityStf = "@hireling/hireling_military",
-	attacks = merge(brawlermid,marksmanmid)
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
-CreatureTemplates:addCreatureTemplate(comm_operator, "comm_operator")
+CreatureTemplates:addCreatureTemplate(fbase_comm_operator, "fbase_comm_operator")

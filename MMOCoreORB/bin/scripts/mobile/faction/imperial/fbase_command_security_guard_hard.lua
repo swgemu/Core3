@@ -1,16 +1,16 @@
-comm_operator = Creature:new {
-	objectName = "@mob/creature_names:comm_operator",
+fbase_command_security_guard_hard = Creature:new {
+	objectName = "@mob/creature_names:fbase_command_security_guard_hard",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 14,
-	chanceHit = 0.3,
-	damageMin = 150,
-	damageMax = 160,
-	baseXp = 714,
-	baseHAM = 2000,
-	baseHAMmax = 2400,
-	armor = 0,
+	level = 50,
+	chanceHit = 0.5,
+	damageMin = 395,
+	damageMax = 500,
+	baseXp = 5000,
+	baseHAM = 10000,
+	baseHAMmax = 12500,
+	armor = 1,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",
 	meatAmount = 0,
@@ -26,15 +26,7 @@ comm_operator = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {
-		"object/mobile/dressed_imperial_officer_f.iff",
-		"object/mobile/dressed_imperial_officer_m.iff",
-		"object/mobile/dressed_imperial_officer_m_2.iff",
-		"object/mobile/dressed_imperial_officer_m_3.iff",
-		"object/mobile/dressed_imperial_officer_m_4.iff",
-		"object/mobile/dressed_imperial_officer_m_5.iff",
-		"object/mobile/dressed_imperial_officer_m_6.iff"
-		},
+	templates = {"object/mobile/dressed_imperial_soldier_m.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -45,7 +37,8 @@ comm_operator = Creature:new {
 				{group = "clothing_attachments", chance = 150000},
 				{group = "armor_attachments", chance = 150000},
 				{group = "wearables_common", chance = 1000000}
-			}
+			},
+			lootChance = 2300000
 		}
 	},
 	weapons = {"imperial_weapons_light"},
@@ -55,4 +48,4 @@ comm_operator = Creature:new {
 	attacks = merge(brawlermid,marksmanmid)
 }
 
-CreatureTemplates:addCreatureTemplate(comm_operator, "comm_operator")
+CreatureTemplates:addCreatureTemplate(fbase_command_security_guard_hard, "fbase_command_security_guard_hard")
