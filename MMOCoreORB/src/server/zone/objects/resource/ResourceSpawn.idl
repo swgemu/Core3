@@ -58,7 +58,7 @@ class ResourceSpawn extends SceneObject {
 		spawnType = "";
 		spawnPool = 0;
 		poolSlot = "";
-		spawnAttributes.setNoDuplicateInsertPlan();
+		spawnAttributes.setAllowOverwriteInsertPlan();
 
 		containerReferenceCount = 0;
 		unitsInCirculation = 0;
@@ -323,6 +323,9 @@ class ResourceSpawn extends SceneObject {
 
 	@dirty
 	public native int getValueOf(int index);
+
+	@dirty
+	public native int getValueOf(final string attribute);
 
 	public native void addStatsToDeedListBox(SuiListBox suil);
 
