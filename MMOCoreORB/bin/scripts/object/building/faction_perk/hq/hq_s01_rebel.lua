@@ -65,21 +65,12 @@ object_building_faction_perk_hq_hq_s01_rebel = object_building_faction_perk_hq_s
 			{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=-13, z=0, y=14, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 2
 			{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=-13, z=0, y=5, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 3
 			{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=-7.34, z=0, y=-.66, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 4
-			--{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=-21, z=0, y=-10, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 5
-			--{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=-4.5, z=0, y=-11, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 6
 
 			-- right side columns
 			{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=5, z=0, y=14, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 1
 			{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=13, z=0, y=14, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 2
 			{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=13, z=0, y=5, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 3
 			{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=7.34, z=0, y=-.66, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 4
-		--	{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=15.34, z=0, y=-10, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 5
-		--	{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=4.5, z=0, y=-11, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 6
-
-
-				-- back columns
-			--{templateFile = "object/static/structure/military/military_column_weak_rebl_style_01.iff", x=4, z=0, y=-11, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column
-			--{templateFile = "object/static/structure/military/military_column_weak_rebl_style_01.iff", x=-4, z=0, y=-11, ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1},
 
 			-- wall 1
 			{templateFile = "object/static/structure/military/military_wall_weak_rebl_style_01.iff", x=-9.5, z=0, y=14, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left wall 1
@@ -115,28 +106,23 @@ object_building_faction_perk_hq_hq_s01_rebel = object_building_faction_perk_hq_s
 			{ mobile="rebel_sergeant", x=2.5, z=0, y=30, cellid=-1, respawn=300, containmentType=-1, heading=0},
 			{ mobile="rebel_medic", x=-2.5, z=0, y=35, cellid=-1, respawn=300, containmentType=-1, heading=0},
 		 	{ mobile="rebel_commando", x=2.5, z=0, y=35, cellid=-1, respawn=300, containmentType=-1, heading=0},
-
 			{ mobile="specforce_marine", x=27, z=0, y=12, cellid=-1, respawn=300, containmentType=-1, heading=0},
 		 	{ mobile="specforce_heavy_weapons_specialist", x=32, z=0, y=12, cellid=-1, respawn=300, containmentType=-1, heading=0},
 			{ mobile="rebel_sergeant", x=29.5, z=0, y=14.5, cellid=-1, respawn=300, containmentType=-1, heading=0},
 			{ mobile="rebel_medic", x=27, z=0, y=17, cellid=-1, respawn=300, containmentType=-1, heading=0},
 		 	{ mobile="rebel_commando", x=32, z=0, y=17, cellid=-1, respawn=300, containmentType=-1, heading=0},
-
 			{ mobile="specforce_marine", x=-27, z=0, y=12, cellid=-1, respawn=300, containmentType=-1, heading=0},
 		 	{ mobile="specforce_heavy_weapons_specialist", x=-32, z=0, y=12, cellid=-1, respawn=300, containmentType=-1, heading=0},
 			{ mobile="rebel_sergeant", x=-29.5, z=0, y=14.5, cellid=-1, respawn=300, containmentType=-1, heading=0},
 			{ mobile="rebel_medic", x=-27, z=0, y=17, cellid=-1, respawn=300, containmentType=-1, heading=0},
 		 	{ mobile="rebel_commando", x=-32, z=0, y=17, cellid=-1, respawn=300, containmentType=-1, heading=0},
-
 			{ mobile="specforce_marine", x=-9, z=0, y=10, cellid=-1, respawn=300, containmentType=-1, heading=0},
 			{ mobile="specforce_marine", x=9, z=0, y=10, cellid=-1, respawn=300, containmentType=-1, heading=0},
 			{ mobile="specforce_marine", x=-2, z=0, y=10, cellid=-1, respawn=300, containmentType=-1, heading=0},
-
 			{ mobile="rebel_first_lieutenant", x=3.6, z=0, y=1.8, cellid=4, respawn=300, containmentType=-1, heading=0},
 			{ mobile="rebel_medic", x=-3.8, z=0, y=-2.3, cellid=6, respawn=300, containmentType=-1, heading=0},
 			{ mobile="rebel_recruiter", x=-1, z=0, y=-5.5, cellid=3, containmentType=-1, respawn=60, heading=0},
 		},
-
 
 }
 
