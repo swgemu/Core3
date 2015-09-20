@@ -111,7 +111,13 @@ void ThreatMap::removeAll() {
 		ManagedReference<TangibleObject*> selfStrong = self.get();
 
 		// these checks will determine if we should store the damage from the dropped aggressor
-		if (key == NULL || selfStrong == NULL || key->isDead() || !key->isOnline() || key->getPlanetCRC() != selfStrong->getPlanetCRC()) {
+		Zone* keyZone = (key != NULL ? key->getZone() : NULL);
+		Zone* selfZone = (selfStrong != NULL ? selfStrong->getZone() : NULL);
+
+		uint32 keyPlanetCRC = (keyZone != NULL ? keyZone->getPlanetCRC() : 0);
+		uint32 selfPlanetCRC = (selfZone != NULL ? selfZone->getPlanetCRC() : 0);
+
+		if (key == NULL || selfStrong == NULL || key->isDead() || !key->isOnline() || keyPlanetCRC != selfPlanetCRC) {
 			remove(i);
 
 			if (threatMapObserver != NULL)
