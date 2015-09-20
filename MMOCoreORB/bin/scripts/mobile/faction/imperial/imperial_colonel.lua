@@ -11,7 +11,7 @@ imperial_colonel = Creature:new {
 	baseHAM = 6300,
 	baseHAMmax = 7700,
 	armor = 0,
-	resists = {15,15,15,-1,15,-1,15,-1,-1},
+	resists = {115,115,10,10,10,-1,10,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -47,7 +47,7 @@ imperial_colonel = Creature:new {
 	conversationTemplate = "imperialRecruiterConvoTemplate",
 	reactionStf = "@npc_reaction/military",
 	personalityStf = "@hireling/hireling_military",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_colonel, "imperial_colonel")
