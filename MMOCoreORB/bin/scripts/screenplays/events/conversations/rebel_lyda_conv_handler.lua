@@ -5,10 +5,10 @@ rebelLydaConvoHandler = Object:new {}
 function rebelLydaConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 
-	local playerID = SceneObject(pPlayer):getObjectID()
-	local ownerID = readData(SceneObject(npc):getObjectID() .. ":ownerID")
+	local npcID = SceneObject(npc):getObjectID()
+	local playersNpcID = readData(SceneObject(pPlayer):getObjectID() .. ":coaNpcID")
 
-	if ownerID == playerID then
+	if playersNpcID == npcID then
 		local state = tonumber(readScreenPlayData(pPlayer, "rebel_coa2", "state"))
 
 		if state == 7 then
@@ -29,8 +29,7 @@ function rebelLydaConvoHandler:runScreenHandlers(conversationTemplate, conversin
 		local state = tonumber(readScreenPlayData(conversingPlayer, "rebel_coa2", "state"))
 
 		if state == 6 then
-			writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 7)
-			coa2ScreenPlay:progressMission(conversingPlayer, "rebel", 2)
+			Coa2Screenplay:progressMissionTwo(conversingPlayer, "rebel")
 		end
 	end
 

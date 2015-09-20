@@ -1,8 +1,8 @@
 coa2_imperial_slicer = Creature:new {
 	objectName = "@mob/creature_names:slicer",
 	randomNameType = NAME_GENERIC_TAG,
-	socialGroup = "imperial",
-	faction = "imperial",
+	socialGroup = "rebel",
+	faction = "rebel",
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,
@@ -33,11 +33,9 @@ coa2_imperial_slicer = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 4000000},
-				{group = "weapons_all", chance = 2000000},
-				{group = "armor_all", chance = 2000000},
-				{group = "wearables_all", chance = 2000000}
-			}
+				{group = "coa2_rebel_message", chance = 10000000},
+			},
+			lootChance = 10000000
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},

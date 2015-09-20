@@ -46,9 +46,9 @@ function rebelCommanderConvoHandler:runScreenHandlers(conversationTemplate, conv
 		Coa2Screenplay:startMissionFive(conversingPlayer, conversingNPC, "rebel")
 	elseif screenID == "m5_active_abort" then
 		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 11)
-		Coa2Screenplay:cleanupMission(conversingPlayer, "rebel", 5)
+		Coa2Screenplay:cleanupMission(conversingPlayer, "rebel")
 	elseif screenID == "m5_active_restart" then
-		Coa2Screenplay:cleanupMission(conversingPlayer, "rebel", 5)
+		Coa2Screenplay:cleanupMission(conversingPlayer, "rebel")
 		Coa2Screenplay:startMissionFive(conversingPlayer, conversingNPC, "rebel")
 	elseif screenID == "m5_finish" then
 		if readScreenPlayData(conversingPlayer, "rebel_coa2", "state") == "13" then

@@ -5,6 +5,15 @@ rebelCoordinatorConvoTemplate = ConvoTemplate:new {
 	screens = {}
 }
 
+act1_not_complete = ConvoScreen:new {
+	id = "act1_not_complete",
+	leftDialog = "@recruiting/rebel_recruit:rr13", -- Hello friend. What can I do for you?
+	stopConversation = "true",
+	options = {}
+}
+
+rebelCoordinatorConvoTemplate:addScreen(act1_not_complete);
+
 begin_wrong_faction = ConvoScreen:new {
 	id = "begin_wrong_faction",
 	leftDialog = "@theme_park/alderaan/act2/rebel_missions:coordinator_imperial_response", -- You seem to be more interested in helping the Empire. Why don't you come back when you've come to your senses.
