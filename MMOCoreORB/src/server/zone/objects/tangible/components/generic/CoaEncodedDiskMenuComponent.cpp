@@ -34,7 +34,12 @@ int CoaEncodedDiskMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 		return 0;
 	}
 
-	if (!sceneObject->isASubChildOf(player)) {
+	SceneObject* inventory = player->getSlottedObject("inventory");
+	if (inventory == NULL) {
+		return 0;
+	}
+
+	if (!inventory->hasObjectInContainer(sceneObject->getObjectID())) {
 		player->sendSystemMessage("@encoded_disk/message_fragment:sys_not_in_inv"); // The disk can't be used unless it is in your inventory!
 		return 0;
 	}
@@ -87,11 +92,30 @@ int CoaEncodedDiskMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 		}
 
 		String file = "@theme_park/alderaan/act2/shared_" + faction + "_missions";
+		uint32 decoderCRC = STRING_HASHCODE("object/tangible/encoded_disk/dead_eye_decoder.iff");
+		bool hasDecoder = false;
 
-		//TODO: check for decoder and decode if present
+		for (int i=0; i< inventory->getContainerObjectsSize(); i++) {
+			SceneObject* sco = inventory->getContainerObject(i);
 
-		player->sendSystemMessage(file + ":decode_failed"); // You do not have the required decoder to decode this message.
-		return 0;
+			if (sco->getServerObjectCRC() == decoderCRC) {
+				hasDecoder = true;
+				break;
+			}
+		}
+
+		if (hasDecoder) {
+			String key = "disk_name_decoded";
+			StringId stringid("theme_park/alderaan/act2/shared_rebel_missions", key);
+
+			Locker locker(disk);
+			disk->setObjectName(stringid, true);
+			player->sendSystemMessage(file + ":decoded_data_disk"); // Using the old Imperial Decoder you were able to decode the Dead Eye message.
+			return 0;
+		} else {
+			player->sendSystemMessage(file + ":decode_failed"); // You do not have the required decoder to decode this message.
+			return 0;
+		}
 	}
 
 	return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);

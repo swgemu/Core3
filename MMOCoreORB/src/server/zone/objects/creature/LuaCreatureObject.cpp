@@ -654,10 +654,15 @@ int LuaCreatureObject::isGroupedWith(lua_State* L) {
 int LuaCreatureObject::setLootRights(lua_State* L) {
 	CreatureObject* player = (CreatureObject*) lua_touserdata(L, -1);
 
-	if (realObject == NULL || player == NULL)
+	if (realObject == NULL)
 		return 0;
 
-	uint64 ownerID = player->getObjectID();
+	uint64 ownerID = 0;
+
+	if (player != NULL) {
+		ownerID = player->getObjectID();
+	}
+
 	SceneObject* inventory = realObject->getSlottedObject("inventory");
 
 	if (inventory == NULL)

@@ -39,9 +39,9 @@ function imperialCommanderConvoHandler:runScreenHandlers(conversationTemplate, c
 		Coa2Screenplay:startMissionFive(conversingPlayer, conversingNPC, "imperial")
 	elseif screenID == "m5_active_abort" then
 		writeScreenPlayData(conversingPlayer, "imperial_coa2", "state", 11)
-		Coa2Screenplay:cleanupMission(conversingPlayer, "imperial", 5)
+		Coa2Screenplay:cleanupMission(conversingPlayer, "imperial")
 	elseif screenID == "m5_active_restart" then
-		Coa2Screenplay:cleanupMission(conversingPlayer, "imperial", 5)
+		Coa2Screenplay:cleanupMission(conversingPlayer, "imperial")
 		Coa2Screenplay:startMissionFive(conversingPlayer, conversingNPC, "imperial")
 	elseif screenID == "m5_finish" then
 		if readScreenPlayData(conversingPlayer, "imperial_coa2", "state") == "13" then

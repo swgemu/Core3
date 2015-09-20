@@ -110,6 +110,8 @@ bool FactionRecruiterContainerComponent::transferObject(SceneObject* sceneObject
 	if (!hasBadge) {
 		ghost->awardBadge(badge->getIndex());
 		ghost->increaseFactionStanding(recruiterFaction, 500);
+		String mailPrefix = "@theme_park/alderaan/act2/rebel_missions:email_";
+		zoneServer->getChatManager()->sendMail(mailPrefix + "subject", mailPrefix + "subject", mailPrefix + "body", player->getFirstName());
 	}
 
 	return true;

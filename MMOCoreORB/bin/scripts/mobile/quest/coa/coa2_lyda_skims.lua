@@ -1,6 +1,6 @@
 coa2_lyda_skims = Creature:new {
 	objectName = "",
-	costumName = "Lyda Skims",
+	customName = "Lyda Skims",
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 15,
@@ -23,14 +23,14 @@ coa2_lyda_skims = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK + STALKER,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lyda_skims.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
-	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	conversationTemplate = "rebelLydaConvoTemplate",
+	attacks = merge(pistoleermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(coa2_lyda_skims, "coa2_lyda_skims")

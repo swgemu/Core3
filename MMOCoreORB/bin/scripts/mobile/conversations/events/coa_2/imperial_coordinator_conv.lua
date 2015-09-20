@@ -5,6 +5,15 @@ imperialCoordinatorConvoTemplate = ConvoTemplate:new {
 	screens = {}
 }
 
+act1_not_complete = ConvoScreen:new {
+	id = "act1_not_complete",
+	leftDialog = "@recruiting/imperial_recruit:ir13", -- Good day, and what can I do for you?
+	stopConversation = "true",
+	options = {}
+}
+
+imperialCoordinatorConvoTemplate:addScreen(act1_not_complete);
+
 begin_wrong_faction = ConvoScreen:new {
 	id = "begin_wrong_faction",
 	leftDialog = "@theme_park/alderaan/act2/imperial_missions:coordinator_rebel_response", -- I have nothing to say to those who have dealings with rebel scum. I suggest you move along before you find yourself in a hail of blaster fire!
