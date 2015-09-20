@@ -31,7 +31,6 @@ include server.zone.managers.player.StartingLocation;
 include server.zone.objects.player.ValidatedPosition;
 import server.zone.objects.tangible.threat.ThreatMap;
 include server.zone.objects.creature.CreatureObject;
-include server.zone.managers.player.PlayerMap;
 include server.zone.managers.player.CharacterNameMap;
 include server.zone.managers.player.PermissionLevelList;
 import server.login.account.Account;
@@ -70,7 +69,6 @@ class PlayerManager extends Observer implements Logger {
 
 	private ZoneServer server;
 
-	transient PlayerMap playerMap;
 	transient CharacterNameMap nameMap;
 	private float globalExpMultiplier;
 	private float groupExpMultiplier;
