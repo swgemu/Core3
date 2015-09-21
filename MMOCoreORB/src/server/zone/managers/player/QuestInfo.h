@@ -6,7 +6,7 @@
 class QuestInfo : public Object {
 
 protected:
-	String questName, questParent;
+	String questName, questParent, journalSummary;
 	bool sendSystemMessage;
 
 public:
@@ -22,6 +22,10 @@ public:
 		return questParent;
 	}
 
+	String getJournalSummary() {
+		return journalSummary;
+	}
+
 	bool shouldSendSystemMessage() {
 		return sendSystemMessage;
 	}
@@ -29,6 +33,7 @@ public:
 	void parseDataTableRow(DataTableRow* row) {
 		row->getValue(0, questName);
 		row->getValue(1, questParent);
+		row->getValue(3, journalSummary);
 
 		int sendMsg = 1;
 		row->getValue(12, sendMsg);
