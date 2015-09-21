@@ -27,6 +27,9 @@ class PetControlDevice extends ControlDevice {
 
 	protected int vitality;
 	protected int maxVitality;
+	protected int vitalityHealthPenalty;
+	protected int vitalityActionPenalty;
+	protected int vitalityMindPenalty;
 
 	protected int petType;
 
@@ -73,6 +76,9 @@ class PetControlDevice extends ControlDevice {
 		Logger.setGlobalLogging(true);
 		vitality = 1;
 		maxVitality = 1;
+		vitalityHealthPenalty = 0;
+		vitalityActionPenalty = 0;
+		vitalityMindPenalty = 0;
 		petType = 0;
 		trainingCommand = 0;
 		lastCommand = 0;
@@ -281,9 +287,7 @@ class PetControlDevice extends ControlDevice {
 	}
 
 	@preLocked
-	public void setVitality(int vit) {
-		vitality = vit;
-	}
+	native public void setVitality(int vit);
 
 	@preLocked
 	public void setMaxVitality(int vit) {
