@@ -25,7 +25,11 @@ public:
 	}*/
 
 	bool add(SceneObject* mission) {
-		return missions.add(mission);
+		return missions.put(mission);
+	}
+
+	bool remove(SceneObject* mission) {
+		return missions.drop(mission);
 	}
 
 	int size() {

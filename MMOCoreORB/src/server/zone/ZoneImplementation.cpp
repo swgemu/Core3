@@ -518,6 +518,17 @@ void ZoneImplementation::registerObjectWithPlanetaryMap(SceneObject* object) {
 	Locker locker(mapLocations);
 #endif
 	mapLocations->transferObject(object);
+
+	// If the object is a valid location for entertainer missions then add it
+	// to the planet's mission map.
+	if (object->getPlanetMapCategory() != NULL) {
+		String planetMapCategory = object->getPlanetMapCategory()->getName();
+		if (planetMapCategory == "cantina" || planetMapCategory == "guild_theater" || planetMapCategory == "hotel") {
+			if (object->asBuildingObject() != NULL && object->asBuildingObject()->isPublicStructure() && getPlanetManager() != NULL) {
+				getPlanetManager()->addPerformanceLocation(object);
+			}
+		}
+	}
 }
 
 void ZoneImplementation::unregisterObjectWithPlanetaryMap(SceneObject* object) {
@@ -525,6 +536,17 @@ void ZoneImplementation::unregisterObjectWithPlanetaryMap(SceneObject* object) {
 	Locker locker(mapLocations);
 #endif
 	mapLocations->dropObject(object);
+
+	// If the object is a valid location for entertainer missions then remove it
+	// from the planet's mission map.
+	if (object->getPlanetMapCategory() != NULL) {
+		String planetMapCategory = object->getPlanetMapCategory()->getName();
+		if (planetMapCategory == "cantina" || planetMapCategory == "guild_theater" || planetMapCategory == "hotel") {
+			if (getPlanetManager() != NULL) {
+				getPlanetManager()->removePerformanceLocation(object);
+			}
+		}
+	}
 }
 
 bool ZoneImplementation::isObjectRegisteredWithPlanetaryMap(SceneObject* object) {
