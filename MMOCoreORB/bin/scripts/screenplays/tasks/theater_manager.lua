@@ -822,11 +822,13 @@ end
 function TheaterManagerScreenPlay:getRequiredPromotions(step)
 	if (step == 5) then
 		return self.requiredPromotions[1]
-	elseif (step == 11) then
+	elseif (step == 10) then
 		return self.requiredPromotions[2]
-	elseif (step == 17) then
+	elseif (step == 15) then
 		return self.requiredPromotions[3]
 	end
+
+	return 0
 end
 
 -- Sets the player's currently completed promotions
@@ -875,9 +877,9 @@ function TheaterManagerScreenPlay:notifyPromotionObserver(pPlayer, pEntertained)
 
 	local popStep = 1
 
-	if (currentStep == 11) then
+	if (currentStep == 10) then
 		popStep = 2
-	elseif (currentStep == 17) then
+	elseif (currentStep == 15) then
 		popStep = 3
 	end
 
