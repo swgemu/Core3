@@ -822,9 +822,9 @@ end
 function TheaterManagerScreenPlay:getRequiredPromotions(step)
 	if (step == 5) then
 		return self.requiredPromotions[1]
-	elseif (step == 11) then
+	elseif (step == 10) then
 		return self.requiredPromotions[2]
-	elseif (step == 17) then
+	elseif (step == 15) then
 		return self.requiredPromotions[3]
 	end
 end
