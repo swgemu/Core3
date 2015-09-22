@@ -2123,7 +2123,7 @@ ConversationScreen* DirectorManager::runScreenHandlers(const String& luaClass, C
 }
 
 void DirectorManager::activateEvent(ScreenPlayTask* task) {
-	Reference<SceneObject*> obj = task->getSceneObject();
+	ManagedWeakReference<SceneObject*> obj = task->getSceneObject();
 	String play = task->getScreenPlay();
 	String key = task->getTaskKey();
 
@@ -2146,7 +2146,7 @@ void DirectorManager::activateEvent(ScreenPlayTask* task) {
 
 	try {
 		LuaFunction startScreenPlay(lua->getLuaState(), play, key, 0);
-		startScreenPlay << obj;
+		startScreenPlay << obj.get();
 
 		startScreenPlay.callFunction();
 	} catch (Exception& e) {
