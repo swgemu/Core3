@@ -145,9 +145,9 @@ object_building_faction_perk_hq_hq_s02_imp_pvp = object_building_faction_perk_hq
 			{ mobile="fbase_imperial_corporal_hard", x=-5.5, z=-13.75, y=-3, cellid=9, respawn=300, containmentType=-1, heading=0},
 			{ mobile="fbase_swamp_trooper_hard", x=.5, z=-13.75, y=-3, cellid=9, respawn=300, containmentType=-1, heading=0},
 			{ mobile="fbase_imperial_medic_hard", x=.5, z=-13.75, y=-6.6, cellid=9, respawn=300, containmentType=-1, heading=0},
-			{ mobile="fbase_imperial_comm_operator_hard", x=-5.5, z=-13.75, y=-6.6, cellid=9, respawn=300, containmentType=-1, heading=0},
+			{ mobile="fbase_comm_operator_hard", x=-5.5, z=-13.75, y=-6.6, cellid=9, respawn=300, containmentType=-1, heading=0},
 			{ mobile="fbase_imperial_noncom_hard", x=1.8, z=-13.75, y=-12.6, cellid=9, respawn=300, containmentType=-1, heading=0},
-			{ mobile="fbase_imperial_specialist_noncom_hard", x=-7.6, z=-13.75, y=-12.6, cellid=9, respawn=300, containmentType=-1, heading=0},
+			{ mobile="fbase_specialist_noncom_hard", x=-7.6, z=-13.75, y=-12.6, cellid=9, respawn=300, containmentType=-1, heading=0},
 			{ mobile="fbase_imperial_first_lieutenant_hard", x=-2.5, z=-13.75, y=-14.9, cellid=9, respawn=300, containmentType=-1, heading=0},
 			{ mobile="imperial_recruiter", x=0, z=-13.75, y=-17, cellid=9, containmentType=-1, respawn=60, heading=0},
 

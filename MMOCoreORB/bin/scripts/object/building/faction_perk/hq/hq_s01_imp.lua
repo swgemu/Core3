@@ -114,7 +114,7 @@ object_building_faction_perk_hq_hq_s01_imp = object_building_faction_perk_hq_sha
 		 	{ mobile="fbase_command_security_guard", x=-25, z=0, y=14, cellid=-1, respawn=300, containmentType=-1, heading=0},
 		 	{ mobile="fbase_command_security_guard", x=-30, z=0, y=14, cellid=-1, respawn=300, containmentType=-1, heading=0},
 			{ mobile="fbase_swamp_trooper", x=-27.5, z=0, y=16.5, cellid=-1, respawn=300, containmentType=-1, heading=0},
-			{ mobile="fbase_imperial_specialist_noncom", x=-25, z=0, y=19, cellid=-1, respawn=300, containmentType=-1, heading=0},
+			{ mobile="fbase_specialist_noncom", x=-25, z=0, y=19, cellid=-1, respawn=300, containmentType=-1, heading=0},
 		 	{ mobile="fbase_imperial_noncom", x=-30, z=0, y=19, cellid=-1, respawn=300, containmentType=-1, heading=0},
 
 			{ mobile="fbase_command_security_guard", x=25, z=0, y=14, cellid=-1, respawn=300, containmentType=-1, heading=0},
@@ -124,7 +124,7 @@ object_building_faction_perk_hq_hq_s01_imp = object_building_faction_perk_hq_sha
 		 	{ mobile="fbase_imperial_sergeant", x=30, z=0, y=19, cellid=-1, respawn=300, containmentType=-1, heading=0},
 
 			{ mobile="fbase_imperial_sharpshooter", x=-8, z=0, y=10, cellid=-1, respawn=300, containmentType=-1, heading=1.571},
-			{ mobile="fbase_imperial_comm_operator", x=8, z=0, y=10, cellid=-1, respawn=300, containmentType=-1, heading=-1.571},
+			{ mobile="fbase_comm_operator", x=8, z=0, y=10, cellid=-1, respawn=300, containmentType=-1, heading=-1.571},
 		 	{ mobile="fbase_imperial_warrant_officer_ii", x=15, z=0, y=0, cellid=-1, respawn=300, containmentType=-1, heading=0},
 			{ mobile="fbase_imperial_master_sergeant", x=0, z=0, y=9, cellid=-1, respawn=300, containmentType=-1, heading=0},
 

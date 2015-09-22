@@ -187,7 +187,7 @@ object_building_faction_perk_hq_hq_s04_imp = object_building_faction_perk_hq_sha
 			{ mobile="fbase_dark_trooper_hard", x=3.5, z=-6.75, y=-5, cellid=5, respawn=300, containmentType=-1, heading=0},
 			{ mobile="fbase_dark_trooper_hard", x=5, z=-6.75, y=-5, cellid=5, respawn=300, containmentType=-1, heading=0},
 
-			{ mobile="fbase_stormtrooper_captain_hard", x=-0.35, z=-13.75, y=-3.65, cellid=7, respawn=300, containmentType=-1, heading=4.71},
+			{ mobile="fbase_storm_commando_hard", x=-0.35, z=-13.75, y=-3.65, cellid=7, respawn=300, containmentType=-1, heading=4.71},
 			{ mobile="fbase_dark_trooper_hard", x=-6.5, z=-13.75, y=5.5,cellid=7, respawn=300, containmentType=-1, heading=3.14},
 			{ mobile="fbase_dark_trooper_hard", x=-3.4, z=-13.75, y=3,cellid=7, respawn=300, containmentType=-1, heading=3.14},
 
