@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_fecd9d5e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/caves/tatooine_squill_cave.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-22T04:36:03Z",
+      "side": 1,
+      "message": "That z coord should be negative, right?",
+      "revId": "c8c656a9b7d8b404d78e14292d95187dca0aa78f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
