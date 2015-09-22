@@ -2123,7 +2123,7 @@ ConversationScreen* DirectorManager::runScreenHandlers(const String& luaClass, C
 }
 
 void DirectorManager::activateEvent(ScreenPlayTask* task) {
-	Reference<SceneObject*> obj = task->getSceneObject();
+	ManagedReference<SceneObject*> obj = task->getSceneObject();
 	String play = task->getScreenPlay();
 	String key = task->getTaskKey();
 
