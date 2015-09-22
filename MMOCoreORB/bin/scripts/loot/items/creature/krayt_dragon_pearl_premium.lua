@@ -14,7 +14,7 @@ krayt_dragon_pearl_premium = {
 		{"attackhealthcost",0,9,0},
 		{"attackactioncost",0,9,0},
 		{"attackmindcost",0,9,0},
-		{"forcecost",0,9,0},
+		{"forcecost",0,9.9,0},
 		{"color",31,31,0},
 		{"quality",5,5,0},
 	},
