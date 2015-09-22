@@ -143,28 +143,26 @@ object_building_faction_perk_hq_hq_s03_imp_pvp = object_building_faction_perk_hq
 
 		childCreatureObjects = {
 
-			{ mobile="imperial_warrant_officer_i", x=-4.4, z=0, y=-2.1, cellid=2, respawn=300, containmentType=-1, heading=4.7},
-			{ mobile="imperial_warrant_officer_i", x=-4.4, z=0, y=0.9, cellid=2, respawn=300, containmentType=-1, heading=4.7},
+			{ mobile="fbase_dark_trooper_hard", x=-4.4, z=0, y=-2.1, cellid=2, respawn=300, containmentType=-1, heading=4.7},
+			{ mobile="fbase_dark_trooper_hard", x=-4.4, z=0, y=0.9, cellid=2, respawn=300, containmentType=-1, heading=4.7},
+			{ mobile="fbase_stormtrooper_hard", x=4, z=-3.25, y=5, cellid=4, respawn=300, containmentType=-1, heading=3.14},
+		 	{ mobile="fbase_imperial_exterminator_hard", x=-4, z=-10.25, y=-6, cellid=5, respawn=300, containmentType=-1, heading=1.57},
 
-			{ mobile="dark_trooper", x=4, z=-3.25, y=5, cellid=4, respawn=300, containmentType=-1, heading=3.14},
+			{ mobile="fbase_sand_trooper_hard", x=-2.7, z=-13.75, y=7, cellid=7, respawn=300, containmentType=-1, heading=1.57},
+			{ mobile="fbase_stormtrooper_rifleman_hard", x=-5, z=-13.75, y=7, cellid=7, respawn=300, containmentType=-1, heading=1.57},
 
-		 	{ mobile="dark_trooper", x=-4, z=-10.25, y=-6, cellid=5, respawn=300, containmentType=-1, heading=1.57},
+			{ mobile="fbase_stormtrooper_sniper_hard", x=4, z=-20.75, y=6, cellid=9, respawn=300, containmentType=-1, heading=4.7},
+			{ mobile="fbase_stormtrooper_bombardier_hard", x=-1.5, z=-20.75, y=6, cellid=9, respawn=300, containmentType=-1, heading=1.57},
+			{ mobile="fbase_stormtrooper_medic_hard", x=-1.1, z=-20.75, y=10.2, cellid=9, respawn=300, containmentType=-1, heading=1.57},
 
-			{ mobile="stormtrooper", x=-2.7, z=-13.75, y=7, cellid=7, respawn=300, containmentType=-1, heading=1.57},
-			{ mobile="dark_trooper", x=-5, z=-13.75, y=7, cellid=7, respawn=300, containmentType=-1, heading=1.57},
-
-			{ mobile="dark_trooper", x=4, z=-20.75, y=6, cellid=9, respawn=300, containmentType=-1, heading=4.7},
-			{ mobile="dark_trooper", x=-1.5, z=-20.75, y=6, cellid=9, respawn=300, containmentType=-1, heading=1.57},
-			{ mobile="stormtrooper_medic", x=-1.1, z=-20.75, y=10.2, cellid=9, respawn=300, containmentType=-1, heading=1.57},
-
-			{ mobile="stormtrooper", x=4.5, z=-20.75, y=15.8, cellid=10, respawn=300, containmentType=-1, heading=4.7},
-			{ mobile="dark_trooper", x=-2, z=-20.75, y=15.8, cellid=10, respawn=300, containmentType=-1, heading=1.57},
-			{ mobile="dark_trooper", x=1.5, z=-20.75, y=24.7, cellid=10, respawn=300, containmentType=-1, heading=0},
-			{ mobile="imperial_general", x=5.5, z=-20.75, y=35.5, cellid=10, respawn=300, containmentType=-1, heading=3.14},
-			{ mobile="imperial_major", x=-2.3, z=-20.75, y=35.5, cellid=10, respawn=300, containmentType=-1, heading=3.14},
-		 	{ mobile="imperial_colonel", x=1.7, z=-20.75, y=32.45, cellid=10, respawn=300, containmentType=-1, heading=3.14},
-
+			{ mobile="fbase_scout_trooper_hard", x=4.5, z=-20.75, y=15.8, cellid=10, respawn=300, containmentType=-1, heading=4.7},
+			{ mobile="fbase_storm_commando_hard", x=-2, z=-20.75, y=15.8, cellid=10, respawn=300, containmentType=-1, heading=1.57},
+			{ mobile="fbase_storm_commando_hard", x=1.5, z=-20.75, y=24.7, cellid=10, respawn=300, containmentType=-1, heading=0},
+			{ mobile="fbase_imperial_army_captain_hard", x=5.5, z=-20.75, y=35.5, cellid=10, respawn=300, containmentType=-1, heading=3.14},
+			{ mobile="fbase_stormtrooper_squad_leader_hard", x=-2.3, z=-20.75, y=35.5, cellid=10, respawn=300, containmentType=-1, heading=3.14},
+		 	{ mobile="fbase_imperial_colonel_hard", x=1.7, z=-20.75, y=32.45, cellid=10, respawn=300, containmentType=-1, heading=3.14},
 			{ mobile="imperial_recruiter", x=-4.9, z=-20.75, y=31.5, cellid=10, containmentType=-1, respawn=60, heading=1.57},
+
 		},
 
 }

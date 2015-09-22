@@ -65,21 +65,12 @@ object_building_faction_perk_hq_hq_s01_rebel_pvp = object_building_faction_perk_
 			{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=-13, z=0, y=14, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 2
 			{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=-13, z=0, y=5, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 3
 			{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=-7.34, z=0, y=-.66, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 4
-			--{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=-21, z=0, y=-10, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 5
-			--{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=-4.5, z=0, y=-11, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 6
 
 			-- right side columns
 			{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=5, z=0, y=14, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 1
 			{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=13, z=0, y=14, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 2
 			{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=13, z=0, y=5, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 3
 			{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=7.34, z=0, y=-.66, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 4
-		--	{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=15.34, z=0, y=-10, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 5
-		--	{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=4.5, z=0, y=-11, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 6
-
-
-				-- back columns
-			--{templateFile = "object/static/structure/military/military_column_weak_rebl_style_01.iff", x=4, z=0, y=-11, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column
-			--{templateFile = "object/static/structure/military/military_column_weak_rebl_style_01.iff", x=-4, z=0, y=-11, ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1}, 
 
 			-- wall 1
 			{templateFile = "object/static/structure/military/military_wall_weak_rebl_style_01.iff", x=-9.5, z=0, y=14, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left wall 1
@@ -114,12 +105,11 @@ object_building_faction_perk_hq_hq_s01_rebel_pvp = object_building_faction_perk_
 
 		childCreatureObjects = {
 
-			{ mobile="rebel_first_lieutenant", x=3.6, z=0, y=1.8, cellid=4, respawn=300, containmentType=-1, heading=4.71},
-			{ mobile="rebel_medic", x=-3.8, z=0, y=-2.3, cellid=6, respawn=300, containmentType=-1, heading=3.14},
-			{ mobile="rebel_trooper", x=-5.2, z=0, y=1, cellid=2, respawn=300, containmentType=-1, heading=0},
-			{ mobile="senior_specforce_marine", x=0, z=0, y=-2.4, cellid=3, respawn=300, containmentType=-1, heading=0},
-			{ mobile="senior_specforce_technician", x=5.4, z=0, y=-5.4, cellid=5, respawn=300, containmentType=-1, heading=0},
-
+			{ mobile="fbase_rebel_cadet", x=3.6, z=0, y=1.8, cellid=4, respawn=300, containmentType=-1, heading=4.71},
+			{ mobile="fbase_rebel_medic", x=-3.8, z=0, y=-2.3, cellid=6, respawn=300, containmentType=-1, heading=3.14},
+			{ mobile="fbase_rebel_squad_leader", x=-5.2, z=0, y=1, cellid=2, respawn=300, containmentType=-1, heading=0},
+			{ mobile="fbase_rebel_soldier", x=0, z=0, y=-2.4, cellid=3, respawn=300, containmentType=-1, heading=0},
+			{ mobile="fbase_rebel_guard_captain", x=5.4, z=0, y=-5.4, cellid=5, respawn=300, containmentType=-1, heading=0},
 			{ mobile="rebel_recruiter", x=-1, z=0, y=-5.5, cellid=3, containmentType=-1, respawn=60, heading=0},
 		},
 
