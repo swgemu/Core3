@@ -35,23 +35,37 @@ void LightsaberCrystalComponentImplementation::loadTemplateData(SharedObjectTemp
 	}
 }
 
+void LightsaberCrystalComponentImplementation::notifyLoadFromDatabase() {
+	if (forceCost != 0) {
+		floatForceCost = forceCost;
+		forceCost = 0;
+	}
+
+	TangibleObjectImplementation::notifyLoadFromDatabase();
+}
+
 void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 
 	TangibleObjectImplementation::fillAttributeList(alm, object);
 
 	PlayerObject* player = object->getPlayerObject();
-	if (player->getJediState() > 1 || player->isPrivileged()){
-		if (owner == ""){
+	if (player->getJediState() > 1 || player->isPrivileged()) {
+		if (ownerID == 0) {
 			StringBuffer str;
 			str << "\\#FF6600" << "UNTUNED" ;
 			alm->insertAttribute("crystal_owner", str);
 		} else {
-			alm->insertAttribute("crystal_owner", owner);
+			ManagedReference<CreatureObject*> crystalOwner = object->getZoneServer()->getObject(ownerID).castTo<CreatureObject*>();
+
+			if (crystalOwner != NULL)
+				alm->insertAttribute("crystal_owner", crystalOwner->getDisplayedName());
+			else
+				alm->insertAttribute("crystal_owner", "");
 		}
 	}
 
 	if (getColor() != 31){
-		if (owner == ""){
+		if (ownerID == 0) {
 			StringBuffer str2;
 			str2 << "@jedi_spam:saber_color_" << getColor();
 			alm->insertAttribute("color", str2);
@@ -62,29 +76,26 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 		}
 	}
 
-	if (player->getJediState() > 1 || player->isPrivileged()){
-		if (getColor() == 31){
-			if (owner != ""){
-				alm->insertAttribute("mindamage", minimumDamage);
-				alm->insertAttribute("maxdamage", maximumDamage);
-				alm->insertAttribute("wpn_attack_speed", attackSpeed);
-				alm->insertAttribute("wpn_wound_chance", woundChance);
-				alm->insertAttribute("wpn_attack_cost_health", sacHealth);
-				alm->insertAttribute("wpn_attack_cost_action", sacAction);
-				alm->insertAttribute("wpn_attack_cost_mind", sacMind);
-				alm->insertAttribute("forcecost", forceCost);
-			} else {
-				StringBuffer str;
-				str << "@jedi_spam:crystal_quality_" << getQuality();
-				alm->insertAttribute("quality", str);
-			}
+	if ((player->getJediState() > 1 || player->isPrivileged()) && getColor() == 31) {
+		if (ownerID != 0) {
+			alm->insertAttribute("mindamage", minimumDamage);
+			alm->insertAttribute("maxdamage", maximumDamage);
+			alm->insertAttribute("wpn_attack_speed", attackSpeed);
+			alm->insertAttribute("wpn_wound_chance", woundChance);
+			alm->insertAttribute("wpn_attack_cost_health", sacHealth);
+			alm->insertAttribute("wpn_attack_cost_action", sacAction);
+			alm->insertAttribute("wpn_attack_cost_mind", sacMind);
+			alm->insertAttribute("forcecost", (int)getForceCost());
+		} else {
+			StringBuffer str;
+			str << "@jedi_spam:crystal_quality_" << getQuality();
+			alm->insertAttribute("quality", str);
 		}
 	}
 }
 
 void LightsaberCrystalComponentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-
-	if ((owner == "") && player->hasSkill("force_title_jedi_rank_01") && hasPlayerAsParent(player)) {
+	if (ownerID == 0 && player->hasSkill("force_title_jedi_rank_01") && hasPlayerAsParent(player)) {
 		String text = "@jedi_spam:tune_crystal";
 		menuResponse->addRadialMenuItem(128, 3, text);
 	}
@@ -93,9 +104,8 @@ void LightsaberCrystalComponentImplementation::fillObjectMenuResponse(ObjectMenu
 }
 
 int LightsaberCrystalComponentImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-
 	if (selectedID == 128 && player->hasSkill("force_title_jedi_rank_01") && hasPlayerAsParent(player)) {
-		if(owner == "") {
+		if(ownerID == 0) {
 			ManagedReference<SuiMessageBox*> suiMessageBox = new SuiMessageBox(player, SuiWindowType::TUNE_CRYSTAL);
 
 			suiMessageBox->setPromptTitle("@jedi_spam:confirm_tune_title");
@@ -106,8 +116,6 @@ int LightsaberCrystalComponentImplementation::handleObjectMenuSelect(CreatureObj
 
 			player->getPlayerObject()->addSuiBox(suiMessageBox);
 			player->sendMessage(suiMessageBox->generateMessage());
-		} else {
-			player->sendSystemMessage("This crystal has already been tuned.");
 		}
 	}
 
@@ -140,14 +148,12 @@ bool LightsaberCrystalComponentImplementation::hasPlayerAsParent(CreatureObject*
 }
 
 void LightsaberCrystalComponentImplementation::tuneCrystal(CreatureObject* player) {
-
 	if(!player->hasSkill("force_title_jedi_rank_01") || !hasPlayerAsParent(player)) {
 		return;
 	}
 
-	if ((owner == "")){
-		String name = player->getDisplayedName();
-		setOwner(name);
+	if (ownerID == 0){
+		setOwnerID(player->getObjectID());
 
 		// Color code is lime green.
 		String tuneName;
@@ -160,8 +166,6 @@ void LightsaberCrystalComponentImplementation::tuneCrystal(CreatureObject* playe
 
 		setCustomObjectName(tuneName, true);
 		player->sendSystemMessage("@jedi_spam:crystal_tune_success");
-	} else {
-		player->sendSystemMessage("This crystal has already been tuned.");
 	}
 }
 
@@ -201,7 +205,7 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 		setSacHealth(MIN(values->getCurrentValue("attackhealthcost"), 9) * -1);
 		setSacAction(MIN(values->getCurrentValue("attackactioncost"), 9) * -1);
 		setSacMind(MIN(values->getCurrentValue("attackmindcost"), 9) * -1);
-		setForceCost(MIN(values->getCurrentValue("forcecost"), 9) * -1);
+		setForceCost(Math::getPrecision(values->getCurrentValue("forcecost"), 1) * -1);
 	}
 
 	ComponentImplementation::updateCraftingValues(values, firstUpdate);

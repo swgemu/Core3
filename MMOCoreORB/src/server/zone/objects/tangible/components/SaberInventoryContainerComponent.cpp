@@ -18,9 +18,10 @@ int SaberInventoryContainerComponent::canAddObject(SceneObject* sceneObject, Sce
 
 	if (p != NULL){
 		int containment = p->getContainmentType();
-		if (containment == 4){
-		errorDescription = "@jedi_spam:saber_not_while_equpped";
-		return TransferErrorCode::INVALIDTYPE;
+
+		if (containment == 4) {
+			errorDescription = "@jedi_spam:saber_not_while_equpped";
+			return TransferErrorCode::INVALIDTYPE;
 		}
 	}
 
@@ -31,14 +32,14 @@ int SaberInventoryContainerComponent::canAddObject(SceneObject* sceneObject, Sce
 
 	LightsaberCrystalComponent* crystal = cast<LightsaberCrystalComponent*> (object);
 
-	if (crystal->getOwner() == ""){
+	if (crystal->getOwnerID() == 0) {
 		errorDescription = "@jedi_spam:saber_crystal_not_tuned";
 		return TransferErrorCode::INVALIDTYPE;
 	}
 
-	ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(object->getParent().get().get());
+	ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(crystal->getParentRecursively(SceneObjectType::PLAYERCREATURE).get().get());
 
-	if (creature != NULL && crystal->getOwner() != creature->getDisplayedName()){
+	if (creature == NULL || crystal->getOwnerID() != creature->getObjectID()){
 		errorDescription = "@jedi_spam:saber_crystal_not_owner";
 		return TransferErrorCode::INVALIDTYPE;
 	}
