@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_9ec33938",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/PetControlDeviceImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-22T04:22:48Z",
+      "side": 1,
+      "message": "You should do the same thing inside arrestGrowth() after the setPetLevel() call.",
+      "revId": "c00e3e5225903d83fd08c83f51e2a829e7302ab5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_5eddb113",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/PetControlDeviceImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1165,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-22T04:22:48Z",
+      "side": 1,
+      "message": "This should apply to droid pets as well.",
+      "revId": "c00e3e5225903d83fd08c83f51e2a829e7302ab5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
