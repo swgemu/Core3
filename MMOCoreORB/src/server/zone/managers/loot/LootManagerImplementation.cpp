@@ -313,11 +313,7 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 		if (min == max)
 			continue;
 
-		if (subtitle != "useCount" &&
-				subtitle != "quantity" &&
-				subtitle != "charges" &&
-				subtitle != "uses" &&
-				subtitle != "charge") {
+		if (subtitle != "forcecost" && subtitle != "useCount" && subtitle != "quantity" && subtitle != "charges" && subtitle != "uses" && subtitle != "charge") {
 
 			float minMod = (max > min) ? 2000.f : -2000.f;
 			float maxMod = (max > min) ? 500.f : -500.f;
@@ -359,7 +355,7 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 			}
 		}
 
-		if (excMod == 1.0 && (yellowChance == 0 || System::random(yellowChance) == 0)) {
+		if (subtitle != "forcecost" && excMod == 1.0 && (yellowChance == 0 || System::random(yellowChance) == 0)) {
 			if (max > min && min >= 0) {
 				min *= yellowModifier;
 				max *= yellowModifier;

@@ -19,24 +19,26 @@ class LightsaberCrystalComponent extends Component {
 	
 	protected int color;
 	protected int quality;
-	protected string owner;
 	protected float attackSpeed;
 	protected int minimumDamage;	
 	protected int maximumDamage;
-	protected int forceCost;
 	protected int sacHealth;
 	protected int sacAction;
 	protected int sacMind;
 	protected int woundChance;
 	protected string crystalType;
-
+	
+	// TODO: Remove this after a server wipe
+	protected int forceCost;
+	
+	protected float floatForceCost;
+	protected unsigned long ownerID;
 
 	public LightsaberCrystalComponent() {
 
 		attackSpeed = 0.0;
 		minimumDamage = 0;	
 		maximumDamage = 0;
-		forceCost = 0;
 		sacHealth = 0;
 		sacAction = 0;
 		sacMind = 0;
@@ -45,6 +47,11 @@ class LightsaberCrystalComponent extends Component {
 		quality = 0;
 		postTuneName = "";
 		
+		forceCost = 0;
+
+		floatForceCost = 0.0;
+		ownerID = 0;
+
 		Logger.setLoggingName("LightsaberCrystal");
 	}
 	
@@ -58,6 +65,8 @@ class LightsaberCrystalComponent extends Component {
 	 */
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	public native void notifyLoadFromDatabase();
 	
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
@@ -84,42 +93,52 @@ class LightsaberCrystalComponent extends Component {
 
 	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
 
+	@read
 	public int getMinimumDamage() {
 		return minimumDamage;
 	}
 
+	@read
 	public int getMaximumDamage() {
 		return maximumDamage;
 	}
 
-	public int getForceCost() {
-		return forceCost;
+	@read
+	public float getForceCost() {
+		return floatForceCost;
 	}
 
+	@read
 	public int getSacHealth() {
 		return sacHealth;
 	}
 
+	@read
 	public float getAttackSpeed() {
 		return attackSpeed;
 	}
 	
+	@read
 	public int getSacAction() {
 		return sacAction;
 	}
 	
+	@read
 	public int getSacMind() {
 		return sacMind;
 	}
 	
+	@read
 	public int getWoundChance() {
 		return woundChance;
 	}
 
-	public string getOwner() {
-		return owner;
+	@read
+	public unsigned long getOwnerID() {
+		return ownerID;
 	}
 	
+	@read
 	public int getQuality() {
 		return quality;
 	}
@@ -128,6 +147,7 @@ class LightsaberCrystalComponent extends Component {
 		quality = qual;
 	}
 	
+	@read
 	public int getColor() {
 		return color;
 	}
@@ -136,8 +156,8 @@ class LightsaberCrystalComponent extends Component {
 		color = value;
 	}
 
-	public void setOwner(string value) {
-		owner = value;
+	public void setOwnerID(unsigned long value) {
+		ownerID = value;
 	}
 
 	public void setMinimumDamage(int value) {
@@ -148,8 +168,8 @@ class LightsaberCrystalComponent extends Component {
 		maximumDamage = value;
 	}
 
-	public void setForceCost(int value) {
-		forceCost = value;
+	public void setForceCost(float value) {
+		floatForceCost = value;
 	}
 
 	public void setSacHealth(int value) {
@@ -171,7 +191,8 @@ class LightsaberCrystalComponent extends Component {
 	public void setWoundChance(int value) {
 		woundChance = value;
 	}
-		
+	
+	@dirty
 	public boolean isLightsaberCrystalObject() {
 		return true; 
 	}
