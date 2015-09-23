@@ -14,9 +14,11 @@ class PersistentEvent extends ManagedObject {
 	protected unsigned long curTime;
 	protected string key;
 	protected string play;
-	protected SceneObject obj;
 	protected string eventName;
 	protected boolean eventExecuted;
+
+	@weakReference
+	protected SceneObject obj;
 	
 	public PersistentEvent() {
 		eventExecuted = false;
@@ -37,6 +39,7 @@ class PersistentEvent extends ManagedObject {
 		return play;
 	}
 	
+	@weakReference
 	@read
 	public SceneObject getObject() {
 		return obj;
