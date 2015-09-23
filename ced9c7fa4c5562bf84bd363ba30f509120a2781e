@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_7ef3cd73",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/ScreenPlayTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-23T23:32:12Z",
+      "side": 0,
+      "message": "I would make the return type be ManagedReference\u003cSceneObject*\u003e and return obj.get().\n\nThe only place this is even called is DirectorManager::activateEvent where you\u0027re getting a strong ref anyway.",
+      "revId": "ced9c7fa4c5562bf84bd363ba30f509120a2781e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
