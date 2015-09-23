@@ -143,11 +143,11 @@ int LuaConversationScreen::setDialogTextStringId(lua_State* L)
 	return 0;
 }
 
-void LuaConversationScreen::setDialogText(StringIdParameter* param, lua_State* L) {
+void LuaConversationScreen::setDialogText(StringIdParameter* param, lua_State* L, bool forceString) {
 	if (lua_gettop(L) == 0)
 		return;
 
-	if (lua_isnumber(L, -1)) {
+	if (!forceString && lua_isnumber(L, -1)) {
 		uint64 integer = lua_tointeger(L, -1);
 
 		param->set(integer);
@@ -179,7 +179,7 @@ int LuaConversationScreen::setDialogTextTT(lua_State* L) {
 int LuaConversationScreen::setDialogTextTO(lua_State* L) {
 	StringIdChatParameter* param = realObject->getDialogText();
 
-	setDialogText(param->getTO(), L);
+	setDialogText(param->getTO(), L, true);
 
 	return 0;
 }
