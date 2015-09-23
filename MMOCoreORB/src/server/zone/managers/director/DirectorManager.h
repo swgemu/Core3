@@ -159,6 +159,7 @@ namespace server {
 		static int removeQuestStatus(lua_State* L);
 		static int getControllingFaction(lua_State* L);
 		static int playClientEffectLoc(lua_State* L);
+		static int getQuestInfo(lua_State* L);
 
 	private:
 		void setupLuaPackagePath(Lua* luaEngine);
