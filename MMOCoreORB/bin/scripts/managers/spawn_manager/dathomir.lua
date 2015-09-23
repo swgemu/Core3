@@ -148,7 +148,7 @@ dathomir_static_spawns = {
 	{"r4",60,-134.195,18,-1599.14,45.5678,0, "calm", "R4-J5", "stationary"},
 	{"r5",60,627.744,6,3086.77,278.522,0, "calm", "R5-O6", "stationary"},
 	{"shaki_hamachil",60,-101.049,18,-1542.62,293.515,0, "calm", "Shaki Hamachil", "stationary"},
-	{"shibb_nisshil",60,-71.1537,18,-1639.84,66.4233,0, "", "Shibb Nisshil", "stationary"},
+	--{"shibb_nisshil",60,-71.1537,18,-1639.84,66.4233,0, "", "Shibb Nisshil", "stationary"},
 }
 
 dathomir_badges = {

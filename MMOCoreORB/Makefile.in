@@ -79,11 +79,11 @@ target_triplet = @target@
 subdir = .
 DIST_COMMON = README $(am__configure_deps) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/config.h.in \
-	$(top_srcdir)/configure AUTHORS COPYING.LESSER ChangeLog \
-	INSTALL NEWS build/unix/config/compile \
-	build/unix/config/config.guess build/unix/config/config.sub \
-	build/unix/config/depcomp build/unix/config/install-sh \
-	build/unix/config/missing config.guess config.sub install-sh
+	$(top_srcdir)/configure AUTHORS COPYING ChangeLog INSTALL NEWS \
+	build/unix/config/compile build/unix/config/config.guess \
+	build/unix/config/config.sub build/unix/config/depcomp \
+	build/unix/config/install-sh build/unix/config/missing \
+	config.guess config.sub install-sh
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
@@ -198,6 +198,7 @@ SYSTEM_INCLUDES = @SYSTEM_INCLUDES@
 SYSTEM_LIBS = @SYSTEM_LIBS@
 USER_INCLUDES_PATH = @USER_INCLUDES_PATH@
 USER_LIBS_PATH = @USER_LIBS_PATH@
+USING_HOMEBREW = @USING_HOMEBREW@
 VERSION = @VERSION@
 abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
@@ -567,7 +568,7 @@ distcheck: dist
 	*.zip*) \
 	  unzip $(distdir).zip ;;\
 	esac
-	chmod -R a-w $(distdir); chmod a+w $(distdir)
+	chmod -R a-w $(distdir); chmod u+w $(distdir)
 	mkdir $(distdir)/_build
 	mkdir $(distdir)/_inst
 	chmod a-w $(distdir)

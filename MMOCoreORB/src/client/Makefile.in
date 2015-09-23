@@ -192,6 +192,7 @@ SYSTEM_INCLUDES = @SYSTEM_INCLUDES@
 SYSTEM_LIBS = @SYSTEM_LIBS@
 USER_INCLUDES_PATH = @USER_INCLUDES_PATH@
 USER_LIBS_PATH = @USER_LIBS_PATH@
+USING_HOMEBREW = @USING_HOMEBREW@
 VERSION = @VERSION@
 abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
@@ -248,12 +249,15 @@ target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-AM_CXXFLAGS = -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare
+AM_CXXFLAGS = -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-unused-parameter
 ENGINE3_PATH = ../../../../../MMOEngine
+
+#CC = clang
+#CXX = clang++
 INCLUDES = $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
 	    -I$(ENGINE3_PATH)/include -I$(ENGINE3_PATH)/src -I/usr/include/lua5.1 -I/usr/include/mysql \
-	   	-I/usr/local/BerkeleyDB.5.0/include
+	   	-I/usr/local/BerkeleyDB.5.0/include -I../../../../utils
 
 core3client_SOURCES = \
 		ClientCore.cpp \
@@ -672,7 +676,7 @@ distcheck: dist
 	*.zip*) \
 	  unzip $(distdir).zip ;;\
 	esac
-	chmod -R a-w $(distdir); chmod a+w $(distdir)
+	chmod -R a-w $(distdir); chmod u+w $(distdir)
 	mkdir $(distdir)/_build
 	mkdir $(distdir)/_inst
 	chmod a-w $(distdir)

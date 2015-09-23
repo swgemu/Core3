@@ -79,11 +79,11 @@ target_triplet = x86_64-unknown-linux-gnu
 subdir = .
 DIST_COMMON = README $(am__configure_deps) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/config.h.in \
-	$(top_srcdir)/configure AUTHORS COPYING.LESSER ChangeLog \
-	INSTALL NEWS build/unix/config/compile \
-	build/unix/config/config.guess build/unix/config/config.sub \
-	build/unix/config/depcomp build/unix/config/install-sh \
-	build/unix/config/missing config.guess config.sub install-sh
+	$(top_srcdir)/configure AUTHORS COPYING ChangeLog INSTALL NEWS \
+	build/unix/config/compile build/unix/config/config.guess \
+	build/unix/config/config.sub build/unix/config/depcomp \
+	build/unix/config/install-sh build/unix/config/missing \
+	config.guess config.sub install-sh
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
@@ -147,11 +147,11 @@ DIST_ARCHIVES = $(distdir).tar.gz
 GZIP_ENV = --best
 distuninstallcheck_listfiles = find . -type f -print
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /home/swgemu/workspace/Core3/MMOCoreORB/build/unix/config/missing --run aclocal-1.11
-AMTAR = ${SHELL} /home/swgemu/workspace/Core3/MMOCoreORB/build/unix/config/missing --run tar
-AUTOCONF = ${SHELL} /home/swgemu/workspace/Core3/MMOCoreORB/build/unix/config/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/swgemu/workspace/Core3/MMOCoreORB/build/unix/config/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/swgemu/workspace/Core3/MMOCoreORB/build/unix/config/missing --run automake-1.11
+ACLOCAL = ${SHELL} /home/swgemu/workspace/MMOCoreORB/build/unix/config/missing --run aclocal-1.11
+AMTAR = ${SHELL} /home/swgemu/workspace/MMOCoreORB/build/unix/config/missing --run tar
+AUTOCONF = ${SHELL} /home/swgemu/workspace/MMOCoreORB/build/unix/config/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/swgemu/workspace/MMOCoreORB/build/unix/config/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/swgemu/workspace/MMOCoreORB/build/unix/config/missing --run automake-1.11
 AWK = mawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -179,7 +179,7 @@ LDFLAGS =
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/swgemu/workspace/Core3/MMOCoreORB/build/unix/config/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/swgemu/workspace/MMOCoreORB/build/unix/config/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 OBJEXT = o
 PACKAGE = core3
@@ -198,11 +198,12 @@ SYSTEM_INCLUDES =
 SYSTEM_LIBS = -lrt -ldl -pthread
 USER_INCLUDES_PATH = /usr/local/include
 USER_LIBS_PATH = /usr/local/lib
+USING_HOMEBREW = 
 VERSION = 1.0
-abs_builddir = /home/swgemu/workspace/Core3/MMOCoreORB/build/unix
-abs_srcdir = /home/swgemu/workspace/Core3/MMOCoreORB/build/unix/../..
-abs_top_builddir = /home/swgemu/workspace/Core3/MMOCoreORB/build/unix
-abs_top_srcdir = /home/swgemu/workspace/Core3/MMOCoreORB/build/unix/../..
+abs_builddir = /home/swgemu/workspace/MMOCoreORB/build/unix
+abs_srcdir = /home/swgemu/workspace/MMOCoreORB/build/unix/../..
+abs_top_builddir = /home/swgemu/workspace/MMOCoreORB/build/unix
+abs_top_srcdir = /home/swgemu/workspace/MMOCoreORB/build/unix/../..
 ac_ct_CC = gcc
 ac_ct_CXX = g++
 am__include = include
@@ -230,7 +231,7 @@ host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/swgemu/workspace/Core3/MMOCoreORB/build/unix/config/install-sh
+install_sh = ${SHELL} /home/swgemu/workspace/MMOCoreORB/build/unix/config/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -567,7 +568,7 @@ distcheck: dist
 	*.zip*) \
 	  unzip $(distdir).zip ;;\
 	esac
-	chmod -R a-w $(distdir); chmod a+w $(distdir)
+	chmod -R a-w $(distdir); chmod u+w $(distdir)
 	mkdir $(distdir)/_build
 	mkdir $(distdir)/_inst
 	chmod a-w $(distdir)

@@ -1,5 +1,11 @@
 /* config.h.in.  Generated from configure.ac by autoheader.  */
 
+/* "Using Homebrew" */
+#undef HAS_HOMEBREW
+
+/* "Using Macports" */
+#undef HAS_MACPORTS
+
 /* Name of package */
 #undef PACKAGE
 

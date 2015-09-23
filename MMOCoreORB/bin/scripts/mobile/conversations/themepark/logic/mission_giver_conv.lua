@@ -299,6 +299,7 @@ createMissionGiverConvoTemplate("dolac_legasi_mission_giver_convotemplate", "dol
 createMissionGiverConvoTemplate("singular_nak_mission_giver_convotemplate", "singular_nak_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("wallaw_loowobbli_mission_giver_convotemplate", "wallaw_loowobbli_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("xarot_korlin_mission_giver_convotemplate", "xarot_korlin_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("shibb_nisshil_mission_giver_convotemplate", "shibb_nisshil_mission_giver_conv_handler")
 
 -- Naboo
 createMissionGiverConvoTemplate("arven_wendik_mission_giver_convotemplate", "arven_wendik_mission_giver_conv_handler")
