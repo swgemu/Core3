@@ -63,15 +63,19 @@ function TheaterManagerConvoHandler:runScreenHandlers(conversationTemplate, conv
 	elseif (screenID == "audition_starts_in_30_music") then
 		-- Started audition
 		TheaterManagerScreenPlay:setCurrentSeries(conversingPlayer, 2)
-		TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
-		TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
+		if (currentStep == 0) then
+			TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
+			TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
+		end
 		writeData(playerID .. ":theater_manager:acceptedAudition", 0)
 		TheaterManagerScreenPlay:startAudition(conversingPlayer)
 	elseif (screenID == "audition_starts_in_30_dance") then
 		-- Started audition
 		TheaterManagerScreenPlay:setCurrentSeries(conversingPlayer, 1)
-		TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
-		TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
+		if (currentStep == 0) then
+			TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
+			TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
+		end
 		writeData(playerID .. ":theater_manager:acceptedAudition", 0)
 		TheaterManagerScreenPlay:startAudition(conversingPlayer)
 	elseif (screenID == "go_entertain_ten") then
@@ -197,7 +201,7 @@ function TheaterManagerConvoHandler:getInitialScreen(pPlayer, pNpc, pConversatio
 
 	local showRunning = readData(theaterID .. ":theater_manager:show_running")
 
-	if (TheaterManagerScreenPlay.enabled == 0 or showRunning == 1) then
+	if (TheaterManagerScreenPlay.enabled == 0 or showRunning ~= 0) then
 		return convoTemplate:getScreen("init_event_in_progress")
 	elseif (not CreatureObject(pPlayer):hasSkill("social_entertainer_novice")) then
 		return convoTemplate:getScreen("init_not_entertainer")
