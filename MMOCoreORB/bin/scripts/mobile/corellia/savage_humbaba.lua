@@ -26,9 +26,9 @@ savage_humbaba = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/savage_humbaba.iff"},
+	templates = {"object/mobile/falumpaset_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/falumpaset_hue.iff",
-	scale = 1.25,
+	scale = 2.0,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
