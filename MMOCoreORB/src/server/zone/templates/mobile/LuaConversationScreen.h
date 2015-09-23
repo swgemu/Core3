@@ -44,7 +44,7 @@ private:
 	//removed Reference<> because we are cloning in lua and returning
 	ConversationScreen* realObject;
 
-	static void setDialogText(StringIdParameter* param, lua_State* L);
+	static void setDialogText(StringIdParameter* param, lua_State* L, bool forceString = false);
 };
 
 

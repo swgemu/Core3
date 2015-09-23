@@ -37,7 +37,7 @@ TheaterManagerScreenPlay = ScreenPlay:new {
 
 	-- Number of promotions required for each promotional phase (strings match values 10, 20, 30)
 	--requiredPromotions = { 10, 20, 30 },
-	requiredPromotions = { 2, 2, 2 },
+	requiredPromotions = { 1, 2, 2 },
 
 	-- Time in miliseconds between steps of audition
 	auditionHeartbeat = 15 * 1000, -- 15 seconds
@@ -1213,6 +1213,7 @@ function TheaterManagerScreenPlay:setupAudienceMember(pNpc, pPlayer, pTheater)
 			return
 		else
 			local rand = getRandomNumber(1,5)
+			printf("Setting flourish comment for audience member to " .. interest .. "\n")
 			writeStringData(npcID .. ":theater_manager:convoResponse", "negative_" .. rand .. "_f")
 			writeStringData(npcID .. ":theater_manager:convoResponseTO", tostring(interest))
 		end
@@ -1236,6 +1237,7 @@ function TheaterManagerScreenPlay:setupAudienceMember(pNpc, pPlayer, pTheater)
 		else
 			local rand = getRandomNumber(1,5)
 			writeStringData(npcID .. ":theater_manager:convoResponse", "positive_" .. rand .. "_f")
+			printf("Setting flourish comment for audience member to " .. interest .. "\n")
 			writeStringData(npcID .. ":theater_manager:convoResponseTO", tostring(interest))
 		end
 	else
