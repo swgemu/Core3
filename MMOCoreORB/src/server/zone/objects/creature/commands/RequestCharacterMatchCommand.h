@@ -74,8 +74,10 @@ public:
 							continue;
 
 						guildName = "";
-						if (playerCreature->isInGuild())
-							guildName = playerCreature->getGuildObject()->getGuildName().toLowerCase();
+						if (playerCreature->isInGuild()) {
+							ManagedReference<GuildObject*> guild = playerCreature->getGuildObject().get();
+							guildName = guild->getGuildName().toLowerCase();
+						}
 
 						charName = playerCreature->getDisplayedName().toLowerCase();
 

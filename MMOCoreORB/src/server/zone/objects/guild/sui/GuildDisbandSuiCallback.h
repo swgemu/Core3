@@ -35,7 +35,7 @@ public:
 		if (!terminal->isGuildTerminal())
 			return;
 
-		ManagedReference<GuildObject*> guild = player->getGuildObject();
+		ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 		if (guild == NULL)
 			return;

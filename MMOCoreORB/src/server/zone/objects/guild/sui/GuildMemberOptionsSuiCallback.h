@@ -51,7 +51,7 @@ public:
 
 		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
 
-		ManagedReference<GuildObject*> guild = player->getGuildObject();
+		ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 		if (guild == NULL)
 			return;

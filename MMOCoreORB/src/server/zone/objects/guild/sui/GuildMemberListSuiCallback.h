@@ -48,7 +48,7 @@ public:
 
 		uint64 memberID = listBox->getMenuObjectID(index);
 
-		ManagedReference<GuildObject*> guild = player->getGuildObject();
+		ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 		if (guild == NULL)
 			return;
 

@@ -109,7 +109,10 @@ class CreatureObject extends TangibleObject {
 	protected GroupObject group;
 	protected unsigned long groupInviterID;
 	protected unsigned long groupInviteCounter;
+
+	@weakReference
 	protected GuildObject guild;
+
 	protected unsigned long targetID;
 	protected byte moodID;
 	protected int performanceCounter;
@@ -1655,7 +1658,7 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	public native WeaponObject getWeapon();
 
-	@reference
+	@weakReference
 	@read
 	public GuildObject getGuildObject() {
 		return guild;
@@ -1663,15 +1666,19 @@ class CreatureObject extends TangibleObject {
 
 	@read
 	public int getGuildID() {
-		if (guild == null)
+		GuildObject strongRef = guild;
+
+		if (strongRef != null)
+			return strongRef.getGuildID();
+		else
 			return 0;
-		
-		return guild.getGuildID();
 	}
 
 	@read
 	public boolean isInGuild() {
-		return guild != null;
+		GuildObject strongRef = guild;
+
+		return strongRef != null;
 	}
 
 	@preLocked

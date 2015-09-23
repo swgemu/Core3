@@ -96,7 +96,7 @@ String GuildObjectImplementation::getGuildMemberTitle(uint64 playerID) {
 }
 
 bool GuildObjectImplementation::isInWaringGuild(CreatureObject* creature) {
-	ManagedReference<GuildObject*> attackerGuild = creature->getGuildObject();
+	ManagedReference<GuildObject*> attackerGuild = creature->getGuildObject().get();
 
 	if (attackerGuild != NULL) {
 

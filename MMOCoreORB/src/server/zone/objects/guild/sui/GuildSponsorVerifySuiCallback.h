@@ -42,7 +42,7 @@ public:
 			return;
 		}
 
-		ManagedReference<GuildObject*> guild = sponsor->getGuildObject();
+		ManagedReference<GuildObject*> guild = sponsor->getGuildObject().get();
 
 		if (guild == NULL || !guild->hasSponsorPermission(sponsor->getObjectID())) {
 			sponsor->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.

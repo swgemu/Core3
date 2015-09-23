@@ -1032,7 +1032,7 @@ void ChatManagerImplementation::handleGuildChat(CreatureObject* sender, const Un
 		}
 	}
 
-	ManagedReference<GuildObject*> guild = sender->getGuildObject();
+	ManagedReference<GuildObject*> guild = sender->getGuildObject().get();
 	if (guild == NULL) {
 		sender->sendSystemMessage("@error_message:not_in_guild"); // You are not in a guild.
 		return;
