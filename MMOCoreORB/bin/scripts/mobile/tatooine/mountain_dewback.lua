@@ -25,7 +25,7 @@ mountain_dewback = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/mountain_dewback.iff"},
+	templates = {"object/mobile/dewback_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/dewback_hue.iff",
 	scale = 1.05,
 	lootGroups = {},
