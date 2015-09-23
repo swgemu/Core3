@@ -496,7 +496,7 @@ bool StructureObjectImplementation::isOnAdminList(CreatureObject* player) {
 	else if (structurePermissionList.isOnPermissionList("ADMIN", player->getObjectID()))
 		return true;
 	else {
-		GuildObject* guild = player->getGuildObject();
+		ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 		if (guild != NULL && structurePermissionList.isOnPermissionList("ADMIN", guild->getObjectID()))
 			return true;
@@ -515,7 +515,7 @@ bool StructureObjectImplementation::isOnEntryList(CreatureObject* player) {
 			|| structurePermissionList.isOnPermissionList("VENDOR", player->getObjectID()))
 		return true;
 	else {
-		GuildObject* guild = player->getGuildObject();
+		ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 		if (guild != NULL && (structurePermissionList.isOnPermissionList("ADMIN", guild->getObjectID())
 				|| structurePermissionList.isOnPermissionList("ENTRY", guild->getObjectID())
@@ -534,7 +534,7 @@ bool StructureObjectImplementation::isOnBanList(CreatureObject* player) {
 	else if (structurePermissionList.isOnPermissionList("BAN", player->getObjectID()))
 		return true;
 	else {
-		GuildObject* guild = player->getGuildObject();
+		ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 		if (guild != NULL && structurePermissionList.isOnPermissionList("BAN", guild->getObjectID()))
 			return true;
@@ -552,7 +552,7 @@ bool StructureObjectImplementation::isOnHopperList(CreatureObject* player) {
 			|| structurePermissionList.isOnPermissionList("ADMIN", player->getObjectID()))
 		return true;
 	else {
-		GuildObject* guild = player->getGuildObject();
+		ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 		if (guild != NULL && (structurePermissionList.isOnPermissionList("HOPPER", guild->getObjectID())
 				|| structurePermissionList.isOnPermissionList("ADMIN", guild->getObjectID())))
@@ -573,7 +573,7 @@ bool StructureObjectImplementation::isOnPermissionList(const String& listName, C
 	} else if (structurePermissionList.isOnPermissionList(listName, player->getObjectID()))
 		return true;
 	else {
-		GuildObject* guild = player->getGuildObject();
+		ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 		if (guild != NULL && structurePermissionList.isOnPermissionList(listName, guild->getObjectID()))
 			return true;

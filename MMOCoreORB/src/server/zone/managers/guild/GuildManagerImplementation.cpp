@@ -932,7 +932,7 @@ void GuildManagerImplementation::sendTransferAckTo(CreatureObject* player, const
 }
 
 void GuildManagerImplementation::transferLeadership(CreatureObject* newLeader, CreatureObject* oldLeader, bool election) {
-	GuildObject* guild = newLeader->getGuildObject();
+	GuildObject* guild = newLeader->getGuildObject().get();
 
 	Locker glock(guild);
 	guild->setGuildLeaderID(newLeader->getObjectID());
@@ -1098,7 +1098,7 @@ void GuildManagerImplementation::sendGuildMemberOptionsTo(CreatureObject* player
 }
 
 void GuildManagerImplementation::sendGuildSetTitleTo(CreatureObject* player, CreatureObject* target) {
-	ManagedReference<GuildObject*> guild = player->getGuildObject();
+	ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 	if (guild == NULL || !guild->hasTitlePermission(player->getObjectID())) {
 		player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
@@ -1125,7 +1125,7 @@ void GuildManagerImplementation::sendGuildSetTitleTo(CreatureObject* player, Cre
 }
 
 void GuildManagerImplementation::setMemberTitle(CreatureObject* player, CreatureObject* target, const String& title) {
-	ManagedReference<GuildObject*> guild = player->getGuildObject();
+	ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 	if (guild == NULL || !guild->hasTitlePermission(player->getObjectID())) {
 		player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
@@ -1189,7 +1189,7 @@ void GuildManagerImplementation::sendGuildKickPromptTo(CreatureObject* player, C
 }
 
 void GuildManagerImplementation::kickMember(CreatureObject* player, CreatureObject* target) {
-	ManagedReference<GuildObject*> guild = player->getGuildObject();
+	ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 	uint64 targetID = target->getObjectID();
 
@@ -1252,7 +1252,7 @@ void GuildManagerImplementation::kickMember(CreatureObject* player, CreatureObje
 }
 
 void GuildManagerImplementation::sendMemberPermissionsTo(CreatureObject* player, uint64 targetID, GuildTerminal* guildTerminal) {
-	ManagedReference<GuildObject*> guild = player->getGuildObject();
+	ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 	if (guild == NULL || !guild->isGuildLeader(player)) {
 		player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
@@ -1295,7 +1295,7 @@ void GuildManagerImplementation::sendMemberPermissionsTo(CreatureObject* player,
 
 void GuildManagerImplementation::toggleGuildPermission(CreatureObject* player, uint64 targetID, int permissionIndex, GuildTerminal* guildTerminal) {
 
-	ManagedReference<GuildObject*> guild = player->getGuildObject();
+	ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 	if (guild == NULL || !guild->isGuildLeader(player) || player->getObjectID() == targetID) {
 		player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
@@ -1368,7 +1368,7 @@ void GuildManagerImplementation::sendGuildSponsorTo(CreatureObject* player, Guil
 void GuildManagerImplementation::sponsorPlayer(CreatureObject* player, const String& playerName) {
 	ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
-	ManagedReference<GuildObject*> guild = player->getGuildObject();
+	ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 	if (guild == NULL)
 		return;
@@ -1434,7 +1434,7 @@ void GuildManagerImplementation::sponsorPlayer(CreatureObject* player, const Str
 void GuildManagerImplementation::acceptSponsorshipRequest(CreatureObject* player, CreatureObject* target) {
 	Locker _lock(player, target);
 
-	ManagedReference<GuildObject*> guild = player->getGuildObject();
+	ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 	if (guild == NULL)
 		return;
@@ -1546,7 +1546,7 @@ void GuildManagerImplementation::sendGuildSponsoredOptionsTo(CreatureObject* pla
 }
 
 void GuildManagerImplementation::acceptSponsoredPlayer(CreatureObject* player, uint64 targetID) {
-	ManagedReference<GuildObject*> guild = player->getGuildObject();
+	ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 	if (guild == NULL || !guild->hasAcceptPermission(player->getObjectID())) {
 		player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
@@ -1611,7 +1611,7 @@ void GuildManagerImplementation::acceptSponsoredPlayer(CreatureObject* player, u
 }
 
 void GuildManagerImplementation::declineSponsoredPlayer(CreatureObject* player, uint64 targetID) {
-	ManagedReference<GuildObject*> guild = player->getGuildObject();
+	ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 	if (guild == NULL || !guild->hasAcceptPermission(player->getObjectID())) {
 		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
@@ -1862,6 +1862,7 @@ void GuildManagerImplementation::sendAdminGuildInfoTo(CreatureObject* player, Gu
 
 	StringBuffer promptText;
 	promptText << "Guild Name: " << guild->getGuildName() << " <" << guild->getGuildAbbrev() << ">" << endl;
+	promptText << "Guild OID: " << guild->getObjectID() << endl;
 	promptText << "Guild ID: " << guild->getGuildID() << endl;
 
 	uint64 leaderID = guild->getGuildLeaderID();

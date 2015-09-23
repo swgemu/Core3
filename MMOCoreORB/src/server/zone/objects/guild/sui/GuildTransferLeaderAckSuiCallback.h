@@ -47,7 +47,7 @@ public:
 
 		Locker clocker(guild, newLeader);
 
-		if (guild->getGuildLeaderID() != owner->getObjectID() || guild != newLeader->getGuildObject()) {
+		if (guild->getGuildLeaderID() != owner->getObjectID() || guild != newLeader->getGuildObject().get()) {
 			guild->setTransferPending(false);
 			return;
 		}

@@ -67,7 +67,7 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<GuildObject*> guild = targetCreature->getGuildObject();
+		ManagedReference<GuildObject*> guild = targetCreature->getGuildObject().get();
 		uint64 objid = targetCreature->getObjectID();
 
 		if (guild == NULL)

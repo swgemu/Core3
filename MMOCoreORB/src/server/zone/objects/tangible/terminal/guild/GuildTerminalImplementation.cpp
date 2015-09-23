@@ -108,7 +108,7 @@ void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 		menuResponse->addRadialMenuItemToRadialID(70, 75, 3, "@guild:menu_enable_elections"); // Enable Elections
 	}
 
-	if (isLeader && playerGhost->isPrivileged())
+	if (playerGhost->isPrivileged())
 		menuResponse->addRadialMenuItemToRadialID(193, 76, 3, "Process Guild Update"); //TODO: Remove this temporary ability
 
 	return;
@@ -197,7 +197,7 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		}
 		break;
 	case 76:
-		if (isLeader && playerGhost->isPrivileged()) {
+		if (playerGhost->isPrivileged()) {
 			Locker locker(guildObject);
 			guildManager->processGuildUpdate(guildObject);
 		}

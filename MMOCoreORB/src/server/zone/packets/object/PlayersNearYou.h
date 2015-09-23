@@ -61,8 +61,10 @@ public:
 
 		String guildName = "";
 
-		if (player->isInGuild())
-			guildName = player->getGuildObject()->getGuildName();
+		if (player->isInGuild()) {
+			ManagedReference<GuildObject*> guild = player->getGuildObject().get();
+			guildName = guild->getGuildName();
+		}
 
 		insertAscii(guildName);
 
