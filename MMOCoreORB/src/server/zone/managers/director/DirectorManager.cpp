@@ -71,6 +71,7 @@
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/managers/player/BadgeList.h"
+#include "server/zone/managers/player/LuaQuestInfo.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -277,6 +278,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getContainerObjectByTemplate", getContainerObjectByTemplate);
 	lua_register(luaEngine->getLuaState(), "updateCellPermission", updateCellPermission);
 	lua_register(luaEngine->getLuaState(), "updateCellPermissionGroup", updateCellPermissionGroup);
+	lua_register(luaEngine->getLuaState(), "getQuestInfo", getQuestInfo);
 
 	// call for createLoot(SceneObject* container, const String& lootGroup, int level)
 	lua_register(luaEngine->getLuaState(), "createLoot", createLoot);
@@ -454,6 +456,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaCityRegion>::Register(luaEngine->getLuaState());
 	Luna<LuaStringIdChatParameter>::Register(luaEngine->getLuaState());
 	Luna<LuaTicketObject>::Register(luaEngine->getLuaState());
+	Luna<LuaQuestInfo>::Register(luaEngine->getLuaState());
 }
 
 int DirectorManager::loadScreenPlays(Lua* luaEngine) {
@@ -2704,6 +2707,25 @@ int DirectorManager::playClientEffectLoc(lua_State* L) {
 
 	PlayClientEffectLoc* effectLoc = new PlayClientEffectLoc(effect, zone, x, z, y, cell);
 	creature->broadcastMessage(effectLoc, true);
+
+	return 1;
+}
+
+int DirectorManager::getQuestInfo(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getQuestInfo");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	int questID = lua_tointeger(L, -1);
+	ManagedReference<PlayerManager*> playerManager = ServerCore::getZoneServer()->getPlayerManager();
+	QuestInfo* questInfo = playerManager->getQuestInfo(questID);
+
+	if (questInfo == NULL)
+		lua_pushnil(L);
+	else
+		lua_pushlightuserdata(L, questInfo);
 
 	return 1;
 }

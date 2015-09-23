@@ -696,6 +696,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/LuaAiAgent.cpp \
 		server/zone/objects/scene/LuaSceneObject.cpp \
 		server/zone/managers/sui/LuaSuiManager.cpp \
+		server/zone/managers/player/LuaQuestInfo.cpp \
 		server/zone/objects/player/sui/LuaSuiBox.cpp \
 		server/zone/objects/creature/DroidObjectImplementation.cpp \
 		server/zone/objects/creature/VehicleObjectImplementation.cpp \
