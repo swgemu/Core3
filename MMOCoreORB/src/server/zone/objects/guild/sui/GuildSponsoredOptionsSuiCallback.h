@@ -42,7 +42,7 @@ public:
 
 		uint64 playerID = listBox->getMenuObjectID(index);
 
-		ManagedReference<GuildObject*> guild = player->getGuildObject();
+		ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 		if (guild == NULL || !guild->hasAcceptPermission(player->getObjectID()) || !guild->hasSponsoredPlayer(playerID)) {
 			player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.

@@ -279,7 +279,7 @@ void PlayerObjectImplementation::notifySceneReady() {
 
 	creature->sendBuffsTo(creature);
 
-	GuildObject* guild = creature->getGuildObject();
+	ManagedReference<GuildObject*> guild = creature->getGuildObject().get();
 
 	if (guild != NULL) {
 		ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();

@@ -45,7 +45,7 @@ public:
 
 		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
 
-		ManagedReference<GuildObject*> guild = player->getGuildObject();
+		ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 

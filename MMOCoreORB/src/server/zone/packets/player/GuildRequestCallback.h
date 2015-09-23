@@ -33,8 +33,6 @@ public:
 
 		CreatureObject* creature = cast<CreatureObject*>( obj.get());
 
-		//ManagedReference<GuildObject*> guild = creature->getGuildObject();
-
 		GuildResponseMessage* msg = new GuildResponseMessage(creature);
 		client->sendMessage(msg);
 	}

@@ -17,7 +17,7 @@ public:
         
 		insertLong(creo->getObjectID()); //Object Id to set guild for
 
-		ManagedReference<GuildObject*> guild = creo->getGuildObject();
+		ManagedReference<GuildObject*> guild = creo->getGuildObject().get();
 		
 		if (guild == NULL)
 			insertAscii("");

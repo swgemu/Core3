@@ -2728,7 +2728,8 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 		return true;
 	}
 
-	if (guild != NULL && guild->isInWaringGuild(object))
+	ManagedReference<GuildObject*> guildObject = guild.get();
+	if (guildObject != NULL && guildObject->isInWaringGuild(object))
 		return true;
 
 	return false;
@@ -2853,7 +2854,8 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 		return true;
 	}
 
-	if (guild != NULL && guild->isInWaringGuild(object))
+	ManagedReference<GuildObject*> guildObject = guild.get();
+	if (guildObject != NULL && guildObject->isInWaringGuild(object))
 		return true;
 
 	return false;
@@ -3181,7 +3183,7 @@ void CreatureObjectImplementation::destroyPlayerCreatureFromDatabase(bool destro
 	}
 
 	if (isInGuild()) {
-		GuildObject* guild = getGuildObject();
+		ManagedReference<GuildObject*> guild = getGuildObject().get();
 
 		Locker clocker(guild, asCreatureObject());
 
@@ -3270,6 +3272,10 @@ void CreatureObjectImplementation::updateVehiclePosition(bool sendPackets) {
 	}
 
 	TangibleObjectImplementation::updateVehiclePosition(sendPackets);
+}
+
+bool CreatureObjectImplementation::isInGuild() {
+	return guild.get() != NULL;
 }
 
 CreatureObject* CreatureObjectImplementation::asCreatureObject() {

@@ -84,7 +84,7 @@ public:
 	int sendMail(const String& recipient) {
 		if (recipient == "guild") {
 			ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer().get().get());
-			ManagedReference<GuildObject*> guild = player->getGuildObject();
+			ManagedReference<GuildObject*> guild = player->getGuildObject().get();
 
 			if (guild == NULL)
 				return 0;
