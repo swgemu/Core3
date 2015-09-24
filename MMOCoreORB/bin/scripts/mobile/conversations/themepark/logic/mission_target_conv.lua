@@ -138,6 +138,7 @@ createMissionTargetConvoTemplate("xaan_talmaron_mission_target_convotemplate","x
 
 -- Dathomir
 createMissionTargetConvoTemplate("dolac_legasi_mission_target_convotemplate", "dolac_legasi_mission_target_conv_handler")
+createMissionTargetConvoTemplate("shibb_nisshil_mission_target_convotemplate", "shibb_nisshil_mission_target_conv_handler")
 createMissionTargetConvoTemplate("singular_nak_mission_target_convotemplate", "singular_nak_mission_target_conv_handler")
 createMissionTargetConvoTemplate("wallaw_loowobbli_mission_target_convotemplate", "wallaw_loowobbli_mission_target_conv_handler")
 createMissionTargetConvoTemplate("xarot_korlin_mission_target_convotemplate", "xarot_korlin_mission_target_conv_handler")
