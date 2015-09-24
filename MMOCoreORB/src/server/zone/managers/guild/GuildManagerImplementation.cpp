@@ -235,24 +235,26 @@ void GuildManagerImplementation::processGuildUpdate(GuildObject* guild) {
 	if (!guild->isElectionEnabled()) {
 		uint64 leaderID = guild->getGuildLeaderID();
 		bool startElections = false;
+		StringIdChatParameter params;
 
 		ManagedReference<SceneObject*> leader = server->getObject(leaderID);
 
 		if (leader == NULL || !leader->isPlayerCreature()) {
 			startElections = true;
+			params.setStringId("@guild:open_elections_email_body"); // Your guild has started an election for a new guild leader! You may vote at the guild terminal in your PA Hall. If you are a full member of the guild, you may opt to run for the position of guild leader by registering at the guild terminal. A new guild leader will be elected in exactly two weeks. The guild member with the most votes at that time will become guild leader.
 		} else {
 			CreatureObject* leaderCreo = leader.castTo<CreatureObject*>();
 
-			if (leaderCreo->getPlayerObject()->getDaysSinceLastLogout() >= 30)
+			if (leaderCreo->getPlayerObject()->getDaysSinceLastLogout() >= 30) {
 				startElections = true;
+				params.setStringId("@guild:open_elections_absent_email_body"); // Your guild leader has not logged in for an extended period of time. In order to enable your guild to continue to operate efficiently, the guild leader voting system has been enabled. You may vote at the guild terminal in your PA Hall. If you are a full member of the guild, you may opt to run for the position of guild leader by registering at the guild terminal. A new guild leader will be elected in exactly two weeks. The guild member with the most votes at that time will become guild leader.
+			}
 		}
 
 		if (startElections) {
 			guild->resetElection(false);
 			guild->setElectionState(GuildObject::ELECTION_FIRST_WEEK);
 
-			StringIdChatParameter params;
-			params.setStringId("@guild:open_elections_absent_email_body"); // Your guild leader has not logged in for an extended period of time. In order to enable your guild to continue to operate efficiently, the guild leader voting system has been enabled. You may vote at the guild terminal in your PA Hall. If you are a full member of the guild, you may opt to run for the position of guild leader by registering at the guild terminal. A new guild leader will be elected in exactly two weeks. The guild member with the most votes at that time will become guild leader.
 			sendGuildMail("@guild:open_elections_absent_email_subject", params, guild); // Guild Leader Elections Open!
 		}
 	}
@@ -2038,6 +2040,10 @@ void GuildManagerImplementation::leaveGuild(CreatureObject* player, GuildObject*
 	params.setTU(player->getDisplayedName());
 
 	sendGuildMail("@guildmail:leave_subject", params, guild);
+
+	if (guild->getGuildLeaderID() == 0 && !guild->isElectionEnabled()) {
+		toggleElection(guild, NULL);
+	}
 }
 
 void GuildManagerImplementation::sendGuildMail(const String& subject, StringIdChatParameter& body, GuildObject* guild) {
@@ -2074,7 +2080,9 @@ void GuildManagerImplementation::toggleElection(GuildObject* guild, CreatureObje
 	if (guild->isElectionEnabled()) {
 		guild->resetElection(true);
 
-		player->sendSystemMessage("@guild:vote_elections_closed"); // Elections for the position of guild leader are now closed.
+		if (player != NULL) {
+			player->sendSystemMessage("@guild:vote_elections_closed"); // Elections for the position of guild leader are now closed.
+		}
 
 		params.setStringId("@guild:closed_elections_email_body"); // Your guild's election for a new guild leader has been closed by the current guild leader.
 		sendGuildMail("@guild:closed_elections_email_subject", params, guild); // Guild Leader Elections Closed!
@@ -2082,7 +2090,9 @@ void GuildManagerImplementation::toggleElection(GuildObject* guild, CreatureObje
 		guild->resetElection(false);
 		guild->setElectionState(GuildObject::ELECTION_FIRST_WEEK);
 
-		player->sendSystemMessage("@guild:vote_elections_open"); // Elections for the position of guild leader are now open.
+		if (player != NULL) {
+			player->sendSystemMessage("@guild:vote_elections_open"); // Elections for the position of guild leader are now open.
+		}
 
 		params.setStringId("@guild:open_elections_email_body"); // Your guild has started an election for a new guild leader! You may vote at the guild terminal in your PA Hall. If you are a full member of the guild, you may opt to run for the position of guild leader by registering at the guild terminal. A new guild leader will be elected in exactly two weeks. The guild member with the most votes at that time will become guild leader.
 		sendGuildMail("@guild:open_elections_email_subject", params, guild); // Guild Leader Elections Open!

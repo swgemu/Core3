@@ -73,11 +73,7 @@ public:
 			guildManager->sendGuildKickPromptTo(player, playerToKick);
 
 		} else {
-			// TODO: Allow leader to leave guild once guild elections are enabled
-			if(guild->getGuildLeaderID() == player->getObjectID())
-				player->sendSystemMessage("Guild leader cannot leave the guild");
-			else
-				guildManager->leaveGuild(player, guild);
+			guildManager->leaveGuild(player, guild);
 		}
 
 		return SUCCESS;

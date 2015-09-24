@@ -61,6 +61,10 @@ void GuildObjectImplementation::removeMember(uint64 playerID) {
 		setVote(playerID, 0);
 		votes.drop(playerID);
 	}
+
+	if (playerID == guildLeaderID) {
+		guildLeaderID = 0;
+	}
 }
 
 bool GuildObjectImplementation::hasMember(uint64 playerID) {
