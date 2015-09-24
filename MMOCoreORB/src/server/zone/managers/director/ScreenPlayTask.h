@@ -37,8 +37,10 @@ public:
 			return;
 		}
 
+		ManagedReference<SceneObject*> obj = this->obj.get();
+
 		if (obj != NULL) {
-			Locker locker(obj.get());
+			Locker locker(obj);
 
 			DirectorManager::instance()->activateEvent(this);
 		} else {
