@@ -68,7 +68,7 @@ ForceKnockdown3Command = {
 
 	combatSpam = "forceknockdown3",
 	
-	poolsToDamage = NONE,
+	poolsToDamage = NO_ATTRIBUTE,
 	
 	attackType = FORCEATTACK,
 

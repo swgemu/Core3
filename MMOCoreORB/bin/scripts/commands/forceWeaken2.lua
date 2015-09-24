@@ -54,7 +54,7 @@ ForceWeaken2Command = {
 
 	combatSpam = "forceweaken2",
 
-	poolsToDamage = NONE,
+	poolsToDamage = NO_ATTRIBUTE,
 
 	range = 32
 }

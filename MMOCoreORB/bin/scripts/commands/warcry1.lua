@@ -72,7 +72,7 @@ Warcry1Command = {
 	coneAction = true,
 	coneAngle = 15,
 
-	poolsToDamage = 0
+	poolsToDamage = NO_ATTRIBUTE
 }
 
 AddCommand(Warcry1Command)

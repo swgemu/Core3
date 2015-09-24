@@ -68,7 +68,7 @@ ForceIntimidate1Command = {
 
 	combatSpam = "forceintimidate1",
 
-	poolsToDamage = NONE,
+	poolsToDamage = NO_ATTRIBUTE,
 
 	range = 32
 }

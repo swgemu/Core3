@@ -47,6 +47,7 @@ public:
 	const static int WEAPONTRAIL = 0x10;
 	const static int DEFAULTTRAIL = 0xFF;
 
+	const static int NONE = 0;
 	const static int HEALTH = 1;
 	const static int ACTION = 2;
 	const static int MIND = 4;

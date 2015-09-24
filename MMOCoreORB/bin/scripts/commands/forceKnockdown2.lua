@@ -42,7 +42,7 @@
 --true = 1, false = 0
 
 ForceKnockdown2Command = {
-        name = "forceknockdown2",
+	name = "forceknockdown2",
 
     damage = 0,
 	speed = 4.0,
@@ -68,7 +68,7 @@ ForceKnockdown2Command = {
 
 	combatSpam = "forceknockdown2",
 	
-	poolsToDamage = NONE,
+	poolsToDamage = NO_ATTRIBUTE,
 	
 	attackType = FORCEATTACK,
 

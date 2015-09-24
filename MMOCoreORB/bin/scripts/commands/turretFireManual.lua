@@ -54,7 +54,7 @@ TurretFireManualCommand = {
 
 	trails = NOTRAIL,
 
-	poolsToDamage = random_attribute
+	poolsToDamage = RANDOM_ATTRIBUTE
 }
 
 AddCommand(TurretFireManualCommand)

@@ -415,6 +415,7 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("BLOCKING_LOCOMOTION", CreatureLocomotion::BLOCKING);
 
 	// attributes
+	setGlobalInt("NO_ATTRIBUTE", CombatManager::NONE);
 	setGlobalInt("HEALTH_ATTRIBUTE", CombatManager::HEALTH);
 	setGlobalInt("ACTION_ATTRIBUTE", CombatManager::ACTION);
 	setGlobalInt("MIND_ATTRIBUTE", CombatManager::MIND);

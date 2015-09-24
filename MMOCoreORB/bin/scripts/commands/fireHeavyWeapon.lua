@@ -42,7 +42,7 @@
 --true = 1, false = 0
 
 FireHeavyWeaponCommand = {
-        name = "fireheavyweapon",
+	name = "fireheavyweapon",
 
 	damageMultiplier = 1.0,
 	speedMultiplier = 1.0,
@@ -54,7 +54,7 @@ FireHeavyWeaponCommand = {
 	areaAction = true,
 	areaRange = 10,
 
-	poolsToDamage = RANDOM,
+	poolsToDamage = RANDOM_ATTRIBUTE,
 }
 
 AddCommand(FireHeavyWeaponCommand)

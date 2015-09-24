@@ -69,7 +69,7 @@ Intimidate1Command = {
 	effectString = "clienteffect/combat_special_attacker_intimidate.cef",
 	range = 24,
 
-	poolsToDamage = 0
+	poolsToDamage = NO_ATTRIBUTE
 }
 
 AddCommand(Intimidate1Command)
