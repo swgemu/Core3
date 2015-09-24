@@ -37,6 +37,10 @@ public:
 
 		StructureObject* structure = cast<StructureObject*>( obj.get());
 
+		if (structure->isCivicStructure()) {
+			return INVALIDTARGET;
+		}
+
 		if (!structure->isOwnerOf(creature)) {
 			creature->sendSystemMessage("@player_structure:not_owner"); //You are not the owner of this structure.
 			return GENERALERROR;
