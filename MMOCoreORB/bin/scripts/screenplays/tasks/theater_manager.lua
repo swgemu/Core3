@@ -1189,7 +1189,7 @@ function TheaterManagerScreenPlay:setupAudienceMember(pNpc, pPlayer, pTheater)
 	local randChance = getRandomNumber(1,100)
 	local npcID = SceneObject(pNpc):getObjectID()
 
-	if (randChance > 40) then
+	if (randChance > 60) then
 		writeStringData(npcID .. ":theater_manager:convoResponse", "neutral_" .. getRandomNumber(0, 40))
 		return
 	end
@@ -1205,7 +1205,7 @@ function TheaterManagerScreenPlay:setupAudienceMember(pNpc, pPlayer, pTheater)
 
 	local theaterID = SceneObject(pTheater):getObjectID()
 
-	if (randChance <= 5) then
+	if (randChance <= 10) then
 		local interest = self:getRandomInterest(4, pPlayer, controlID)
 
 		if (interest == nil) then
@@ -1216,7 +1216,7 @@ function TheaterManagerScreenPlay:setupAudienceMember(pNpc, pPlayer, pTheater)
 			writeStringData(npcID .. ":theater_manager:convoResponse", "negative_" .. rand .. "_f")
 			writeStringData(npcID .. ":theater_manager:convoResponseTO", tostring(interest))
 		end
-	elseif (randChance > 5 and randChance <= 10) then
+	elseif (randChance > 10 and randChance <= 20) then
 		local interest = self:getRandomInterest(2, pPlayer, controlID)
 
 		if (interest == nil) then
@@ -1227,7 +1227,7 @@ function TheaterManagerScreenPlay:setupAudienceMember(pNpc, pPlayer, pTheater)
 			writeStringData(npcID .. ":theater_manager:convoResponse", "negative_" .. rand .. suffix)
 			writeStringData(npcID .. ":theater_manager:convoResponseTO", interest)
 		end
-	elseif (randChance > 10 and randChance <= 25) then
+	elseif (randChance > 20 and randChance <= 40) then
 		local interest = self:getRandomInterest(3, pPlayer, controlID)
 
 		if (interest == nil) then
