@@ -34,6 +34,19 @@ public:
 		if(!creature->isMeditating()) {
 			creature->sendSystemMessage("@teraskasi:powerboost_fail"); // You must be meditating to perform that command.
 			return GENERALERROR;
+
+			Reference<ForceMeditateTask*> medTask = creature->getPendingTask("forcemeditate").castTo<ForceMeditateTask*>();
+
+					if (medTask != NULL) {
+						creature->sendSystemMessage("@error_message:wrong_state"); // You cannot complete that action while in your current state.
+						return GENERALERROR;
+					}
+
+		}
+
+		// check if user is FORCE meditating as Jedi instead of just regular TK meditate.
+		if (creature->isMeditating()) {
+
 		}
 
 		CreatureObject* player = cast<CreatureObject*>(creature);
