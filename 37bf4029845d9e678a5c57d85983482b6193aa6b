@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_41aab6d5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/dathomir/shibb_nisshil.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-25T02:55:29Z",
+      "side": 1,
+      "message": "I\u0027d still like you to fix the tabbing here.",
+      "revId": "37bf4029845d9e678a5c57d85983482b6193aa6b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_81a0bef5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/dathomir/shibb_nisshil.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-25T02:55:29Z",
+      "side": 1,
+      "message": "Your link mentions that these should be terrorists and that there should be 3 of them.",
+      "revId": "37bf4029845d9e678a5c57d85983482b6193aa6b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_e1ae62e7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/dathomir/shibb_nisshil.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-25T02:55:29Z",
+      "side": 1,
+      "message": "I\u0027d still like you to remove this comment.",
+      "revId": "37bf4029845d9e678a5c57d85983482b6193aa6b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_21a52a04",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/dathomir/shibb_nisshil.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-25T02:55:29Z",
+      "side": 1,
+      "message": "Your link mentions that this quest should be imperial only. You can make it so by adding a faction here (see other imperial only quests for examples).",
+      "revId": "37bf4029845d9e678a5c57d85983482b6193aa6b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
