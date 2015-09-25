@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_216e8aca",
+        "filename": "MMOCoreORB/src/server/zone/ZoneImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-25T02:39:05Z",
+      "side": 1,
+      "message": "Instead of all of the inline getters, store in local vars, null check, and then use. Do the same throughout your patch.",
+      "revId": "6f7545416ea1280625a201ac9078dead6e6a7358",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_9e4819ce",
+        "filename": "MMOCoreORB/src/server/zone/ZoneImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-25T02:39:05Z",
+      "side": 1,
+      "message": "guild_theater is a planet map subcategory and not a category.",
+      "revId": "6f7545416ea1280625a201ac9078dead6e6a7358",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_417396b1",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1688,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-25T02:39:05Z",
+      "side": 1,
+      "message": "While technically ok, you don\u0027t need to use this while in implementation classes. I\u0027d prefer that you just use members directly.",
+      "revId": "6f7545416ea1280625a201ac9078dead6e6a7358",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
