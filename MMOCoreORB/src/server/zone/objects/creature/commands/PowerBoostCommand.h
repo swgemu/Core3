@@ -35,7 +35,11 @@ public:
 			creature->sendSystemMessage("@teraskasi:powerboost_fail"); // You must be meditating to perform that command.
 			return GENERALERROR;
 		}
-
+		// check if user is FORCE meditating as Jedi instead of just regular TK meditate
+		if(creature->isMeditating() && "forcemeditate") {
+		   creature->sendSystemMessage("@error_message:wrong_state"); // You cannot complete that action while in your current state.
+		   return GENERALERROR;
+		}
 		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		uint32 buffcrc = BuffCRC::SKILL_BUFF_POWERBOOST;
