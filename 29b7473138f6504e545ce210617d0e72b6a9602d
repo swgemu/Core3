@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_614d7272",
+        "filename": "MMOCoreORB/bin/scripts/managers/spawn_manager/dathomir.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-25T02:22:39Z",
+      "side": 1,
+      "message": "Go ahead and remove. No need to leave it here.",
+      "revId": "29b7473138f6504e545ce210617d0e72b6a9602d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_8152fe11",
+        "filename": "MMOCoreORB/bin/scripts/mobile/dathomir/serverobjects.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-25T02:22:39Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "29b7473138f6504e545ce210617d0e72b6a9602d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_21576a04",
+        "filename": "MMOCoreORB/bin/scripts/mobile/dathomir/shibb_nisshil.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-25T02:22:39Z",
+      "side": 1,
+      "message": "You should just delete this file. We don\u0027t need a duplicate.",
+      "revId": "29b7473138f6504e545ce210617d0e72b6a9602d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_e140a237",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/dathomir/shibb_nisshil.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-25T02:22:39Z",
+      "side": 1,
+      "message": "Please fix your tabbing throughout this file.",
+      "revId": "29b7473138f6504e545ce210617d0e72b6a9602d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_415cf625",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/dathomir/shibb_nisshil.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-25T02:22:39Z",
+      "side": 1,
+      "message": "This comment is unnecessary. Please remove it.",
+      "revId": "29b7473138f6504e545ce210617d0e72b6a9602d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
