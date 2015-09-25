@@ -660,7 +660,7 @@ void AiAgentImplementation::doAwarenessCheck() {
 	if (vec == NULL)
 		return;
 
-	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
+	SortedVector<QuadTreeEntry*> closeObjects;
 	vec->safeCopyTo(closeObjects);
 
 	Behavior* current = behaviors.get(currentBehaviorID);
@@ -669,7 +669,7 @@ void AiAgentImplementation::doAwarenessCheck() {
 		AiAgent* thisObject = asAiAgent();
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
-			SceneObject* scene = static_cast<SceneObject*>(closeObjects.get(i).get());
+			SceneObject* scene = static_cast<SceneObject*>(closeObjects.get(i));
 
 			CreatureObject* target = scene->asCreatureObject();
 
@@ -1909,7 +1909,7 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 	clearPatrolPoints();
 	clearSavedPatrolPoints();
 
-	SortedVector<QuadTreeEntry*> closeObjects;
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 
 	Zone* zone = getZone();
 
@@ -2883,7 +2883,7 @@ void AiAgentImplementation::broadcastInterrupt(int64 msg) {
 	Reference<AiAgent*> aiAgent = asAiAgent();
 
 	EXECUTE_TASK_2(aiAgent, msg, {
-			SortedVector<QuadTreeEntry*> closeAiAgents;
+			SortedVector<ManagedReference<QuadTreeEntry*> > closeAiAgents;
 
 			CloseObjectsVector* closeobjects = (CloseObjectsVector*) aiAgent_p->getCloseObjects();
 			Zone* zone = aiAgent_p->getZone();
@@ -2904,7 +2904,7 @@ void AiAgentImplementation::broadcastInterrupt(int64 msg) {
 			}
 
 			for (int i = 0; i < closeAiAgents.size(); ++i) {
-				AiAgent* agent = cast<AiAgent*>(closeAiAgents.get(i));
+				AiAgent* agent = cast<AiAgent*>(closeAiAgents.get(i).get());
 
 				if (aiAgent_p == agent || agent == NULL)
 					continue;

@@ -1115,7 +1115,7 @@ void GCWManagerImplementation::generateTurretControlBoxTo(CreatureObject* creatu
 
 	CloseObjectsVector* vec = (CloseObjectsVector*)turret->getCloseObjects();
 
-	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
+	SortedVector<QuadTreeEntry*> closeObjects;
 
 	vec->safeCopyTo(closeObjects);
 	Reference<WeaponObject*> weapon = turret->getSlottedObject("hold_r").castTo<WeaponObject*>();
@@ -1126,7 +1126,7 @@ void GCWManagerImplementation::generateTurretControlBoxTo(CreatureObject* creatu
 	int targetTotal = 0;
 
 	for(int i = 0; i < closeObjects.size(); ++i){
-		CreatureObject* creo = closeObjects.get(i).castTo<CreatureObject*>();
+		CreatureObject* creo = cast<CreatureObject*>(closeObjects.get(i));
 
 		if(creo != NULL && creo->isAttackableBy(turret)){
 			if(!CollisionManager::checkLineOfSight(creo, turret)){

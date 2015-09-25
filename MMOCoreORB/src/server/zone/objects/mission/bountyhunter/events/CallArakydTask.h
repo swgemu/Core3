@@ -132,11 +132,11 @@ public:
 		if (vec == NULL)
 			return true;
 
-		SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
+		SortedVector<QuadTreeEntry*> closeObjects;
 		vec->safeCopyTo(closeObjects);
 
 		for (int j = 0; j < closeObjects.size(); j++) {
-			SceneObject* obj = cast<SceneObject*>(closeObjects.get(j).get());
+			SceneObject* obj = cast<SceneObject*>(closeObjects.get(j));
 
 			SharedObjectTemplate* objectTemplate = obj->getObjectTemplate();
 
