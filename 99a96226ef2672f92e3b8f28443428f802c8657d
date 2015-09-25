@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_21f3ea0b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/dathomir/shibb_nisshil.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-25T04:42:52Z",
+      "side": 1,
+      "message": "There\u0027s a terrorist mobile template. I think you should use that instead of using thug and calling them terrorists.",
+      "revId": "99a96226ef2672f92e3b8f28443428f802c8657d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_81ee7e21",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/dathomir/shibb_nisshil.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-25T04:42:52Z",
+      "side": 1,
+      "message": "You haven\u0027t defined a permission map so you don\u0027t need this line. Permission maps are used to set cell permissions to allow or restrict entrance to parts of buildings (like at the emperor\u0027s retreat or jabba\u0027s palace). I doubt that\u0027s needed here.",
+      "revId": "99a96226ef2672f92e3b8f28443428f802c8657d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
