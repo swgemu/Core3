@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_615ed2eb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/dathomir/shaki_hamachil.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-25T23:04:17Z",
+      "side": 1,
+      "message": "For both items, you should leave itemName empty so that it will use the item\u0027s object name instead of a custom name. You only need to include an itemName when you want to specify a custom name (the same is true for spawn\u0027s npcName).",
+      "revId": "a06b6002ca4e4cf4adef3fdc040784364a7d6f7d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_2158caf9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/dathomir/shaki_hamachil.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-25T23:04:17Z",
+      "side": 1,
+      "message": "It doesn\u0027t really matter, but worldPosition is only necessary to include when the mission giver is indoors.",
+      "revId": "a06b6002ca4e4cf4adef3fdc040784364a7d6f7d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_8163deb0",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/dathomir/shaki_hamachil.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-25T23:04:17Z",
+      "side": 1,
+      "message": "400 seems a rather short distance for quest objectives to spawn. Your links don\u0027t specify a distance so I\u0027d use something more standard (800 - 1200 range).",
+      "revId": "a06b6002ca4e4cf4adef3fdc040784364a7d6f7d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
