@@ -33,6 +33,24 @@
       "revId": "a3da8f850207458611bec035b4416ebda6c64b6b",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_81319ea4",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/PowerBoostCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1809
+      },
+      "writtenOn": "2015-09-26T01:04:22Z",
+      "side": 1,
+      "message": "What exactly does \"encapsulate\" mean, in regards to this specific case?",
+      "parentUuid": "1a9dcd25_c1ffa6a9",
+      "revId": "a3da8f850207458611bec035b4416ebda6c64b6b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
