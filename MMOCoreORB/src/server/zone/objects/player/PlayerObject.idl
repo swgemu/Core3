@@ -206,9 +206,7 @@ class PlayerObject extends IntangibleObject {
 	protected ValidatedPosition lastValidatedPosition;
 	
 	protected unsigned int accountID;
-	
-	protected byte raceID; //TODO: Deprecate. This should be referenced from the ObjectTemplate instead.
-	
+
 	@dereferenced
 	protected VectorMap<string, string> screenPlayData;
 	
@@ -321,9 +319,7 @@ class PlayerObject extends IntangibleObject {
 		accountID = 0;		
 		
 		factionStatus = 0;
-		
-		raceID = 0;
-		
+
 		clientLastMovementStamp = 0;
 		
 		maximumLots = 10;
@@ -1528,16 +1524,7 @@ class PlayerObject extends IntangibleObject {
 	public Vector<byte> getHologrindProfessions() {
 		return hologrindProfessions;
 	}
-	
-	@read
-	public byte getRaceID() {
-		return raceID;
-	}
-	
-	public void setRaceID(byte race) {
-		raceID = race;
-	}
-	
+
 	public void setMaximumLots(byte lots) {
 		maximumLots = lots;
 	}

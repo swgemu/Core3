@@ -374,9 +374,6 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 		return false;
 	}
 
-	int raceID = playerTemplate->getRace();
-
-
 	String fileName = playerTemplate->getTemplateFileName();
 	String clientTemplate = templateManager->getTemplateFile(
 			playerTemplate->getClientObjectCRC());
@@ -570,7 +567,6 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 		lastValidatedPosition->update(playerCreature);
 
 		ghost->setBiography(bio);
-		ghost->setRaceID(raceID);
 
 		ghost->setLanguageID(playerTemplate->getDefaultLanguage());
 	}
@@ -584,6 +580,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 	String firstName = playerCreature->getFirstName();
 	String lastName = playerCreature->getLastName();
+	int raceID = playerTemplate->getRace();
 
 	try {
 		StringBuffer query;
