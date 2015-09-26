@@ -384,6 +384,14 @@ bool CityManagerImplementation::validateCityName(const String& name) {
 }
 
 void CityManagerImplementation::promptCitySpecialization(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
+	PlayerObject* ghost = mayor->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	if (!city->isMayor(mayor->getObjectID()) && ghost->getAdminLevel() != 15) {
+		return;
+	}
 
 	ManagedReference<CitySpecializationSession*> session = new CitySpecializationSession(mayor, city, terminal);
 	mayor->addActiveSession(SessionFacadeType::CITYSPEC, session);
@@ -1431,7 +1439,16 @@ void CityManagerImplementation::sendManageMilitia(CityRegion* city, CreatureObje
 	if (ghost == NULL)
 		return;
 
-	if (!ghost->hasAbility("manage_militia")) {
+	bool isAdmin = false;
+
+	if ((ghost->getAdminLevel() == 15))
+		isAdmin = true;
+
+	if (!city->isMayor(creature->getObjectID()) && !isAdmin) {
+		return;
+	}
+
+	if (!ghost->hasAbility("manage_militia") && !isAdmin) {
 		creature->sendSystemMessage("@city/city:cant_militia"); //You lack the skill to manage the city militia.
 		return;
 	}
@@ -1478,7 +1495,12 @@ void CityManagerImplementation::promptAddMilitiaMember(CityRegion* city, Creatur
 void CityManagerImplementation::addMilitiaMember(CityRegion* city, CreatureObject* mayor, const String& playerName) {
 	Locker clocker(city, mayor);
 
-	if (!city->isMayor(mayor->getObjectID()))
+	PlayerObject* ghost = mayor->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	if (!city->isMayor(mayor->getObjectID()) && ghost->getAdminLevel() != 15)
 		return;
 
 	PlayerManager* playerManager = zoneServer->getPlayerManager();
@@ -1515,7 +1537,12 @@ void CityManagerImplementation::addMilitiaMember(CityRegion* city, CreatureObjec
 void CityManagerImplementation::removeMilitiaMember(CityRegion* city, CreatureObject* mayor, uint64 militiaid) {
 	Locker clocker(city, mayor);
 
-	if (!city->isMayor(mayor->getObjectID()))
+	PlayerObject* ghost = mayor->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	if (!city->isMayor(mayor->getObjectID()) && ghost->getAdminLevel() != 15)
 		return;
 
 	ManagedReference<SceneObject*> obj = zoneServer->getObject(militiaid);
@@ -1666,10 +1693,15 @@ void CityManagerImplementation::promptRegisterCity(CityRegion* city, CreatureObj
 	if (ghost == NULL)
 		return;
 
-	if (!city->isMayor(creature->getObjectID()))
+	bool isAdmin = false;
+
+	if ((ghost->getAdminLevel() == 15))
+		isAdmin = true;
+
+	if (!city->isMayor(creature->getObjectID()) && !isAdmin)
 		return;
 
-	if (!ghost->hasAbility("city_map")) {
+	if (!ghost->hasAbility("city_map") && !isAdmin) {
 		creature->sendSystemMessage("@city/city:cant_register"); //You lack the ability to register your city!
 		return;
 	}
@@ -1696,7 +1728,7 @@ void CityManagerImplementation::promptUnregisterCity(CityRegion* city, CreatureO
 	if (ghost == NULL)
 		return;
 
-	if (!city->isMayor(creature->getObjectID()))
+	if (!city->isMayor(creature->getObjectID()) && ghost->getAdminLevel() != 15)
 		return;
 
 	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::CITY_REGISTER);
@@ -2357,11 +2389,21 @@ void CityManagerImplementation::sendAddStructureMails(CityRegion* city, Structur
 }
 
 void CityManagerImplementation::promptToggleZoningEnabled(CityRegion* city, CreatureObject* mayor) {
-	if (!city->isMayor(mayor->getObjectID())) {
+	PlayerObject* ghost = mayor->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	bool isAdmin = false;
+
+	if ((ghost->getAdminLevel() == 15))
+		isAdmin = true;
+
+	if (!city->isMayor(mayor->getObjectID()) && !isAdmin) {
 		return;
 	}
 
-	if (!mayor->hasSkill("social_politician_novice")) {
+	if (!mayor->hasSkill("social_politician_novice") && !isAdmin) {
 		mayor->sendSystemMessage("@city/city:zoning_skill"); // You must be a Politician to enable city zoning.
 		return;
 	}
@@ -2372,8 +2414,6 @@ void CityManagerImplementation::promptToggleZoningEnabled(CityRegion* city, Crea
 		toggleZoningEnabled(city, mayor);
 		return;
 	}
-
-	PlayerObject* ghost = mayor->getPlayerObject();
 
 	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(mayor, SuiWindowType::CITY_ENABLE_ZONING);
 	box->setPromptTitle("@city/city:zoning_t"); // Zoning
