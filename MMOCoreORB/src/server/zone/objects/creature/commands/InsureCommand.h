@@ -26,12 +26,13 @@ public:
 
 		SceneObject* term = NULL;
 
-		SortedVector<ManagedReference<QuadTreeEntry*> >* closeSceneObjects = creature->getCloseObjects();
+		CloseObjectsVector* closeSceneObjects = (CloseObjectsVector*) creature->getCloseObjects();
 
-		info(String::valueOf(closeSceneObjects->size()));
+		SortedVector<QuadTreeEntry*> closeObjects;
+		closeSceneObjects->safeCopyTo(closeObjects);
 
-		for (int i=0; i < closeSceneObjects->size(); i++) {
-			SceneObject* scno = cast<SceneObject*>(closeSceneObjects->get(i).get());
+		for (int i=0; i < closeObjects.size(); i++) {
+			SceneObject* scno = cast<SceneObject*>(closeObjects.get(i));
 
 			if (scno == NULL)
 				continue;

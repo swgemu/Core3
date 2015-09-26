@@ -105,7 +105,7 @@ public:
 		}
 
 		if (area) {
-			SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+			SortedVector<QuadTreeEntry*> closeObjects;
 			Zone* zone = creature->getZone();
 
 			if (creature->getCloseObjects() == NULL) {
@@ -120,7 +120,7 @@ public:
 			int numGranted = 0;
 
 			for (int i = 0; i < closeObjects.size(); i++) {
-				SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i).get());
+				SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i));
 				if (targetObject != NULL && targetObject->isPlayerCreature()) {
 					ManagedReference<CreatureObject*> player = cast<CreatureObject*>(targetObject);
 

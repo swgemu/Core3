@@ -92,7 +92,7 @@ public:
 							args.getStringToken(faction);
 						}
 
-						SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+						SortedVector<QuadTreeEntry*> closeObjects;
 						Zone* zone = creature->getZone();
 
 						if (creature->getCloseObjects() == NULL) {
@@ -104,7 +104,7 @@ public:
 						}
 
 						for (int i = 0; i < closeObjects.size(); ++i) {
-							SceneObject* sceneObject = cast<SceneObject*>(closeObjects.get(i).get());
+							SceneObject* sceneObject = cast<SceneObject*>(closeObjects.get(i));
 
 							if ((sceneObject->isPlayerCreature() || sceneObject->isPet()) && creature->isInRange(sceneObject, range)) {
 								ManagedReference<CreatureObject*> patientObject = cast<CreatureObject*>(sceneObject);

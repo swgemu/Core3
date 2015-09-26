@@ -50,7 +50,7 @@ public:
 		}
 
 		/// Check if anything is attackable in range
-		SortedVector<ManagedReference<QuadTreeEntry*> > objects(512, 512);
+		SortedVector<QuadTreeEntry*> objects(512, 512);
 		CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) creature->getCloseObjects();
 
 		if (closeObjectsVector == NULL) {
@@ -60,7 +60,7 @@ public:
 		}
 
 		for (int i = 0; i < objects.size(); ++i) {
-			SceneObject* object = cast<SceneObject*>(objects.get(i).get());
+			SceneObject* object = cast<SceneObject*>(objects.get(i));
 
 			if (object->isCreatureObject() && creature->isInRange(object, 32)) {
 				CreatureObject* creo = cast<CreatureObject*>(object);

@@ -287,11 +287,11 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 
 	assert(vec != NULL);
 
-	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
+	SortedVector<QuadTreeEntry*> closeObjects;
 	vec->safeCopyTo(closeObjects);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
-		SceneObject* obj = cast<SceneObject*> (closeObjects.get(i).get());
+		SceneObject* obj = cast<SceneObject*> (closeObjects.get(i));
 
 		if (obj != asCreatureObject()) {
 			if (obj != grandParent) {

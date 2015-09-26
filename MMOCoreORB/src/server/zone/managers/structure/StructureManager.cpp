@@ -690,7 +690,7 @@ Reference<SceneObject*> StructureManager::getInRangeParkingGarage(SceneObject* o
 	if (zone == NULL)
 		return NULL;
 
-	SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
+	SortedVector<QuadTreeEntry*> closeSceneObjects;
 	CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) obj->getCloseObjects();
 
 	if (closeObjectsVector == NULL) {
@@ -700,9 +700,9 @@ Reference<SceneObject*> StructureManager::getInRangeParkingGarage(SceneObject* o
 	}
 
 	for (int i = 0; i < closeSceneObjects.size(); ++i) {
-		SceneObject* scno = cast<SceneObject*>(closeSceneObjects.get(i).get());
+		SceneObject* scno = cast<SceneObject*>(closeSceneObjects.get(i));
 
-		if (scno == obj)
+		if (scno == NULL || scno == obj)
 			continue;
 
 		if (scno->isGarage() && scno->isInRange(obj, range))

@@ -73,7 +73,7 @@ public:
 		}
 		// Get nearby people and bark
 		CloseObjectsVector* vec = (CloseObjectsVector*) droid->getCloseObjects();
-		SortedVector<ManagedReference<QuadTreeEntry*> > closeEntryObjects(200, 50);
+		SortedVector<QuadTreeEntry*> closeEntryObjects(200, 50);
 		if (vec != NULL) {
 			vec->safeCopyTo(closeEntryObjects);
 		} else {
@@ -82,7 +82,7 @@ public:
 		}
 		bool speak = false;
 		for (int i = 0; i < closeEntryObjects.size(); ++i) {
-			SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i).get());
+			SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i));
 			if (object->isPlayerCreature() && object->isInRange(droid,15)) {
 				speak = true;
 				break;

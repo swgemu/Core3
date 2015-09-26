@@ -160,7 +160,7 @@ public:
 		//Deal area damage if specified
 		if (area) {
 			//Retrieve nearby objects
-			SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+			SortedVector<QuadTreeEntry*> closeObjects;
 			Zone* zone = creature->getZone();
 
 			if (creature->getCloseObjects() == NULL) {
@@ -177,7 +177,7 @@ public:
 			//Deal area damage if specified
 			if (damage) {
 				for (int i = 0; i < closeObjects.size(); i++) {
-					SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i).get());
+					SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i));
 					if (targetObject->isPlayerCreature() || targetObject->isPet()) {
 						targetPlayer = cast<CreatureObject*>(targetObject);
 
@@ -214,7 +214,7 @@ public:
 			//Kill players in area
 			else {
 				for (int i = 0; i < closeObjects.size(); i++) {
-					SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i).get());
+					SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i));
 					if (targetObject->isPlayerCreature() || targetObject->isPet()) {
 						targetPlayer = cast<CreatureObject*>(targetObject);
 

@@ -145,7 +145,7 @@ public:
 
 		//Send to players near the leader and not in group.
 		CloseObjectsVector* vec = (CloseObjectsVector*) leader->getCloseObjects();
-		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+		SortedVector<QuadTreeEntry*> closeObjects;
 		if (vec != NULL) {
 			closeObjects.removeAll(vec->size(), 10);
 			vec->safeCopyTo(closeObjects);
@@ -155,7 +155,7 @@ public:
 		}
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
-			SceneObject* object = cast<SceneObject*>( closeObjects.get(i).get());
+			SceneObject* object = cast<SceneObject*>( closeObjects.get(i));
 			if (object == NULL || !object->isPlayerCreature() || !leader->isInRange(object, 70) || group->hasMember(object))
 				continue;
 

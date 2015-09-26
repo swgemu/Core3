@@ -1115,7 +1115,7 @@ void GCWManagerImplementation::generateTurretControlBoxTo(CreatureObject* creatu
 
 	CloseObjectsVector* vec = (CloseObjectsVector*)turret->getCloseObjects();
 
-	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
+	SortedVector<QuadTreeEntry*> closeObjects;
 
 	vec->safeCopyTo(closeObjects);
 	Reference<WeaponObject*> weapon = turret->getSlottedObject("hold_r").castTo<WeaponObject*>();
@@ -1126,7 +1126,7 @@ void GCWManagerImplementation::generateTurretControlBoxTo(CreatureObject* creatu
 	int targetTotal = 0;
 
 	for(int i = 0; i < closeObjects.size(); ++i){
-		CreatureObject* creo = closeObjects.get(i).castTo<CreatureObject*>();
+		CreatureObject* creo = cast<CreatureObject*>(closeObjects.get(i));
 
 		if(creo != NULL && creo->isAttackableBy(turret)){
 			if(!CollisionManager::checkLineOfSight(creo, turret)){
@@ -2584,7 +2584,7 @@ void GCWManagerImplementation::broadcastBuilding(BuildingObject* building, Strin
 	if(zone == NULL)
 		return;
 
-	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+	SortedVector<QuadTreeEntry*> closeObjects;
 	if (building->getCloseObjects() == NULL) {
 		building->info("Null closeobjects vector in GCWManagerImplementation::broadcastBuilding", true);
 		zone->getInRangeObjects(building->getPositionX(), building->getPositionY(), range, &closeObjects, true);
@@ -2595,7 +2595,7 @@ void GCWManagerImplementation::broadcastBuilding(BuildingObject* building, Strin
 
 	// send message to all the players in range
 	for (int i = 0; i < closeObjects.size(); i++) {
-		SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i).get());
+		SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i));
 
 		if (targetObject->isPlayerCreature() && building->isInRange(targetObject, range)) {
 			CreatureObject* targetPlayer = cast<CreatureObject*>(targetObject);

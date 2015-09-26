@@ -41,7 +41,7 @@ public:
 		ManagedReference<Zone*> zone = creature->getZone();
 
 		if (zone != NULL) {
-			SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+			SortedVector<QuadTreeEntry*> closeObjects;
 			CloseObjectsVector* actualCloseObjects = (CloseObjectsVector*) creature->getCloseObjects();
 
 			if (actualCloseObjects != NULL) {
@@ -56,7 +56,7 @@ public:
 			if (!closeObjects.isEmpty()) {
 				String guildName, charName;
 				for (int i = 0; i < closeObjects.size(); ++i) {
-					SceneObject* obj = cast<SceneObject*>(closeObjects.get(i).get());
+					SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
 					if (obj != NULL && (obj->isPlayerCreature() || (obj->isMount() || obj->isVehicleObject()))) {
 						ManagedReference<CreatureObject*> playerCreature;
 						if (obj->isMount() || obj->isVehicleObject()) {

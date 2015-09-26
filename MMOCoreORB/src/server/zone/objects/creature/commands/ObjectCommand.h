@@ -172,7 +172,7 @@ public:
 					return GENERALERROR;
 
 				// Find all objects in range
-				SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+				SortedVector<QuadTreeEntry*> closeObjects;
 				CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) creature->getCloseObjects();
 				if (closeObjectsVector == NULL) {
 					zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
@@ -182,7 +182,7 @@ public:
 
 				// Award loot group to all players in range
 				for (int i = 0; i < closeObjects.size(); i++) {
-					SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i).get());
+					SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i));
 
 					if (targetObject->isPlayerCreature() && creature->isInRange(targetObject, range)) {
 

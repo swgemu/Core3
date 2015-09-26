@@ -54,10 +54,13 @@ string/en/error_message.stf	122	sys_eject_fail_move	The ejection attempt failed 
 		ManagedReference<BuildingObject*> closestBuilding = NULL;
 		float minRange = 16000.f;
 
-		SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = creature->getCloseObjects();
+		CloseObjectsVector* vec = (CloseObjectsVector*) creature->getCloseObjects();
 
-		for (int i = 0; i < closeObjects->size(); ++i) {
-			ManagedReference<SceneObject*> obj = cast<SceneObject*>( closeObjects->get(i).get());
+		SortedVector<QuadTreeEntry*> closeObjects;
+		vec->safeCopyTo(closeObjects);
+
+		for (int i = 0; i < closeObjects.size(); ++i) {
+			ManagedReference<SceneObject*> obj = cast<SceneObject*>( closeObjects.get(i));
 
 			if (obj == NULL || !obj->isBuildingObject())
 				continue;

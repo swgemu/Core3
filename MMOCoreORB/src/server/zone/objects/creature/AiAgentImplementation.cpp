@@ -660,7 +660,7 @@ void AiAgentImplementation::doAwarenessCheck() {
 	if (vec == NULL)
 		return;
 
-	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
+	SortedVector<QuadTreeEntry*> closeObjects;
 	vec->safeCopyTo(closeObjects);
 
 	Behavior* current = behaviors.get(currentBehaviorID);
@@ -669,7 +669,7 @@ void AiAgentImplementation::doAwarenessCheck() {
 		AiAgent* thisObject = asAiAgent();
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
-			SceneObject* scene = static_cast<SceneObject*>(closeObjects.get(i).get());
+			SceneObject* scene = static_cast<SceneObject*>(closeObjects.get(i));
 
 			CreatureObject* target = scene->asCreatureObject();
 

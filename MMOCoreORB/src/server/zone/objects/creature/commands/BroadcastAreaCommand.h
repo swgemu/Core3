@@ -74,7 +74,7 @@ public:
 		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 		Zone* zone = creature->getZone();
 
-		if (creature->getCloseObjects() == NULL) {
+		if (creature->getCloseObjects() == NULL || range > ZoneServer::CLOSEOBJECTRANGE) {
 			creature->info("Null closeobjects vector in BroadcastAreaCommand::doQueueCommand", true);
 			zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
 		}
