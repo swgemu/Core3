@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_a1029ab2",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/PowerBoostCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-26T00:48:03Z",
+      "side": 1,
+      "message": "This check is redundant. The check on line 34 already established that the player is meditating.",
+      "revId": "a3da8f850207458611bec035b4416ebda6c64b6b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_c1ffa6a9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/PowerBoostCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-26T00:48:03Z",
+      "side": 1,
+      "message": "You need to encapsulate the above two lines within the check or you will always return here.",
+      "revId": "a3da8f850207458611bec035b4416ebda6c64b6b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
