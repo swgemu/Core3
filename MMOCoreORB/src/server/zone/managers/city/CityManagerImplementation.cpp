@@ -384,6 +384,14 @@ bool CityManagerImplementation::validateCityName(const String& name) {
 }
 
 void CityManagerImplementation::promptCitySpecialization(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
+	PlayerObject* ghost = mayor->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	if (!city->isMayor(mayor->getObjectID()) && !ghost->isAdmin()) {
+		return;
+	}
 
 	ManagedReference<CitySpecializationSession*> session = new CitySpecializationSession(mayor, city, terminal);
 	mayor->addActiveSession(SessionFacadeType::CITYSPEC, session);
@@ -1431,7 +1439,11 @@ void CityManagerImplementation::sendManageMilitia(CityRegion* city, CreatureObje
 	if (ghost == NULL)
 		return;
 
-	if (!ghost->hasAbility("manage_militia")) {
+	if (!city->isMayor(creature->getObjectID()) && !ghost->isAdmin()) {
+		return;
+	}
+
+	if (!ghost->hasAbility("manage_militia") && !ghost->isAdmin()) {
 		creature->sendSystemMessage("@city/city:cant_militia"); //You lack the skill to manage the city militia.
 		return;
 	}
@@ -1478,7 +1490,12 @@ void CityManagerImplementation::promptAddMilitiaMember(CityRegion* city, Creatur
 void CityManagerImplementation::addMilitiaMember(CityRegion* city, CreatureObject* mayor, const String& playerName) {
 	Locker clocker(city, mayor);
 
-	if (!city->isMayor(mayor->getObjectID()))
+	PlayerObject* ghost = mayor->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	if (!city->isMayor(mayor->getObjectID()) && !ghost->isAdmin())
 		return;
 
 	PlayerManager* playerManager = zoneServer->getPlayerManager();
@@ -1515,7 +1532,12 @@ void CityManagerImplementation::addMilitiaMember(CityRegion* city, CreatureObjec
 void CityManagerImplementation::removeMilitiaMember(CityRegion* city, CreatureObject* mayor, uint64 militiaid) {
 	Locker clocker(city, mayor);
 
-	if (!city->isMayor(mayor->getObjectID()))
+	PlayerObject* ghost = mayor->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	if (!city->isMayor(mayor->getObjectID()) && !ghost->isAdmin())
 		return;
 
 	ManagedReference<SceneObject*> obj = zoneServer->getObject(militiaid);
@@ -1666,10 +1688,10 @@ void CityManagerImplementation::promptRegisterCity(CityRegion* city, CreatureObj
 	if (ghost == NULL)
 		return;
 
-	if (!city->isMayor(creature->getObjectID()))
+	if (!city->isMayor(creature->getObjectID()) && !ghost->isAdmin())
 		return;
 
-	if (!ghost->hasAbility("city_map")) {
+	if (!ghost->hasAbility("city_map") && !ghost->isAdmin()) {
 		creature->sendSystemMessage("@city/city:cant_register"); //You lack the ability to register your city!
 		return;
 	}
@@ -1696,7 +1718,7 @@ void CityManagerImplementation::promptUnregisterCity(CityRegion* city, CreatureO
 	if (ghost == NULL)
 		return;
 
-	if (!city->isMayor(creature->getObjectID()))
+	if (!city->isMayor(creature->getObjectID()) && !ghost->isAdmin())
 		return;
 
 	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::CITY_REGISTER);
@@ -2307,10 +2329,10 @@ void CityManagerImplementation::sendChangeCityName(CityRegion* city, CreatureObj
 	if(ghost->hasSuiBoxWindowType(SuiWindowType::CITY_RENAME))
 		return;
 
-	if (!ghost->isPrivileged() && !city->isMayor(mayor->getObjectID()))
+	if (!ghost->isStaff() && !city->isMayor(mayor->getObjectID()))
 		return;
 
-	if(!mayor->checkCooldownRecovery("rename_city_cooldown") && !ghost->isPrivileged()) {
+	if(!mayor->checkCooldownRecovery("rename_city_cooldown") && !ghost->isStaff()) {
 		mayor->sendSystemMessage("You can't change the city name now");
 		return;
 	}
@@ -2357,11 +2379,16 @@ void CityManagerImplementation::sendAddStructureMails(CityRegion* city, Structur
 }
 
 void CityManagerImplementation::promptToggleZoningEnabled(CityRegion* city, CreatureObject* mayor) {
-	if (!city->isMayor(mayor->getObjectID())) {
+	PlayerObject* ghost = mayor->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	if (!city->isMayor(mayor->getObjectID()) && !ghost->isAdmin()) {
 		return;
 	}
 
-	if (!mayor->hasSkill("social_politician_novice")) {
+	if (!mayor->hasSkill("social_politician_novice") && !ghost->isAdmin()) {
 		mayor->sendSystemMessage("@city/city:zoning_skill"); // You must be a Politician to enable city zoning.
 		return;
 	}
@@ -2372,8 +2399,6 @@ void CityManagerImplementation::promptToggleZoningEnabled(CityRegion* city, Crea
 		toggleZoningEnabled(city, mayor);
 		return;
 	}
-
-	PlayerObject* ghost = mayor->getPlayerObject();
 
 	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(mayor, SuiWindowType::CITY_ENABLE_ZONING);
 	box->setPromptTitle("@city/city:zoning_t"); // Zoning

@@ -37,6 +37,10 @@ public:
 		if (zone == NULL)
 			return;
 
+		PlayerObject* ghost = creature->getPlayerObject();
+		if (ghost == NULL)
+			return;
+
 		String cityName = args->get(0).toString();
 
 		NameManager* nameManager = NameManager::instance();
@@ -70,7 +74,7 @@ public:
 			return;
 		}
 
-		if(cityObject->getMayorID() != creature->getObjectID())
+		if(cityObject->getMayorID() != creature->getObjectID() && !ghost->isStaff())
 			return;
 
 		Locker mlock(cityManager, creature);

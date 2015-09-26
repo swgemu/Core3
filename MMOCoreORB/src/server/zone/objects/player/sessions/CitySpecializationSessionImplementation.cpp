@@ -25,7 +25,7 @@ int CitySpecializationSessionImplementation::initializeSession() {
 	if (ghost == NULL)
 		return cancelSession();
 
-	if (!cityRegion->isMayor(creatureObject->getObjectID()))
+	if (!cityRegion->isMayor(creatureObject->getObjectID()) && !ghost->isAdmin())
 		return cancelSession();
 
 	ManagedReference<SuiListBox*> sui = new SuiListBox(creatureObject, SuiWindowType::CITY_SPEC, 0x00);
@@ -35,7 +35,21 @@ int CitySpecializationSessionImplementation::initializeSession() {
 	sui->setUsingObject(terminalObject);
 	sui->setForceCloseDistance(16.f);
 
-	AbilityList* abilityList = ghost->getAbilityList();
+	AbilityList* abilityList;
+
+	if (cityRegion->isMayor(creatureObject->getObjectID())) {
+		abilityList = ghost->getAbilityList();
+	} else {
+		ManagedReference<CreatureObject*> mayor = creatureObject->getZoneServer()->getObject(cityRegion->getMayorID()).castTo<CreatureObject*>();
+
+		if (mayor != NULL) {
+			PlayerObject* mayorGhost = mayor->getPlayerObject();
+
+			if (mayorGhost != NULL) {
+				abilityList = mayorGhost->getAbilityList();
+			}
+		}
+	}
 
 	for (int i = 0; i < abilityList->size(); ++i) {
 		Reference<Ability*> ability = abilityList->get(i);

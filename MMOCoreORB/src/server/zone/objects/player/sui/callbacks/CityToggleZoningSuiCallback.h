@@ -36,11 +36,16 @@ public:
 			return;
 		}
 
-		if (!city->isMayor(player->getObjectID())) {
+		PlayerObject* ghost = player->getPlayerObject();
+
+		if (ghost == NULL)
+			return;
+
+		if (!city->isMayor(player->getObjectID()) && !ghost->isAdmin()) {
 			return;
 		}
 
-		if (!player->hasSkill("social_politician_novice")) {
+		if (!player->hasSkill("social_politician_novice") && !ghost->isAdmin()) {
 			player->sendSystemMessage("@city/city:zoning_skill"); // You must be a Politician to enable city zoning.
 			return;
 		}

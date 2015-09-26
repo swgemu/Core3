@@ -26,7 +26,7 @@ int CityRemoveMilitiaSessionImplementation::initializeSession() {
 	if (ghost == NULL)
 		return cancelSession();
 
-	if (!cityRegion.get()->isMayor(creature->getObjectID()))
+	if (!cityRegion.get()->isMayor(creature->getObjectID()) && !ghost->isAdmin())
 		return cancelSession();
 
 	ManagedReference<SceneObject*> militiaMember = creature->getZoneServer()->getObject(militiaID);

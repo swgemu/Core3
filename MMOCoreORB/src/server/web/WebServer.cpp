@@ -421,7 +421,7 @@ bool WebServer::authorize(HttpSession* session) {
 		return false;
 	}
 
-	if(account->getAdminLevel() == PlayerObject::NORMALPLAYER ||
+	if(account->getAdminLevel() == 0 ||
 			!authorizedUsers.contains(session->getUserName())) {
 
 		error("User is not authorized for web access: " + session->getUserName());

@@ -268,11 +268,7 @@ class PlayerObject extends IntangibleObject {
 	public static final int LD = 0x100;
 	public static final int FACTIONRANK = 0x200;
 	public static final int ANONYMOUS = 0x80000000;
-	
-	public static final int NORMALPLAYER = 0;
-	public static final int CSR = 1;
-	public static final int DEV = 2;
-	
+
 	public static final int ONLINE = 1;
 	public static final int OFFLINE = 2;
 	public static final int LINKDEAD = 3;
@@ -1229,20 +1225,20 @@ class PlayerObject extends IntangibleObject {
 	public void setBiography(final unicode bio) {
 		biography = bio;
 	}
-	
-	@read
-	public boolean isDeveloper() {
-		return adminLevel == DEV;
-	}
-	
-	@read
-	public boolean isCSR() {
-		return adminLevel == CSR;
-	}
 
 	@dirty
 	public boolean isPrivileged() {
 		return (adminLevel > 0 && hasAbility("admin"));
+	}
+
+	@dirty
+	public boolean isStaff() {
+		return (adminLevel > 10 && hasAbility("admin"));
+	}
+
+	@dirty
+	public boolean isAdmin() {
+		return (adminLevel == 15 && hasAbility("admin"));
 	}
 
 	public void setCharacterBitmask(unsigned int bitmask) {
