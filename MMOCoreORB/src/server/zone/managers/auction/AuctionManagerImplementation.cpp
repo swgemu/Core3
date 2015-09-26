@@ -224,15 +224,15 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 	String vendorUID = getVendorUID(vendor);
 	bool stockroomSale = false;
 
-	if (objectToSell == NULL) {
+	if (objectToSell == NULL || objectToSell->isNoTrade() || objectToSell->containsNoTradeObjectRecursive()) {
 		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::INVALIDITEM);
 		player->sendMessage(soldMessage);
 		return;
 	}
 
 	if(oldItem == NULL) {
-		if (objectToSell == NULL || !objectToSell->isASubChildOf(player) || objectToSell->isNoTrade()) {
-			if(objectToSell != NULL && !objectToSell->isNoTrade())
+		if (objectToSell == NULL || !objectToSell->isASubChildOf(player)) {
+			if(objectToSell != NULL)
 				error("trying to add invalid object");
 			ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::INVALIDITEM);
 			player->sendMessage(soldMessage);
