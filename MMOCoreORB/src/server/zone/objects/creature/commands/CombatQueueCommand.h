@@ -161,6 +161,30 @@ public:
 
 		CombatManager* combatManager = CombatManager::instance();
 
+		bool shouldTef = false;
+
+		if (creature->isPlayerCreature() && targetObject->isPlayerCreature()) {
+			if (!combatManager->areInDuel(creature, targetObject.castTo<CreatureObject*>())) {
+				shouldTef = true;
+			}
+		} else if (creature->isPet() && targetObject->isPlayerCreature()) {
+			ManagedReference<CreatureObject*> owner = creature->getLinkedCreature().get();
+
+			if (owner != NULL && owner->isPlayerCreature()) {
+				if (!combatManager->areInDuel(owner, targetObject.castTo<CreatureObject*>())) {
+					shouldTef = true;
+				}
+			}
+		} else if (creature->isPlayerCreature() && (targetObject->isPet() || targetObject->isVehicleObject())) {
+			ManagedReference<CreatureObject*> targetOwner = targetObject.castTo<CreatureObject*>()->getLinkedCreature().get();
+
+			if (targetOwner != NULL && targetOwner->isPlayerCreature()) {
+				if (!combatManager->areInDuel(creature, targetOwner)) {
+					shouldTef = true;
+				}
+			}
+		}
+
 		try {
 			int res = combatManager->doCombatAction(creature, weapon, cast<TangibleObject*>(targetObject.get()), CreatureAttackData(arguments, this));
 
@@ -184,31 +208,21 @@ public:
 		creature->removeBuff(STRING_HASHCODE("steadyaim"));
 
 		// Update PvP TEF Duration
-		if (creature->isPlayerCreature() && targetObject->isPlayerCreature()) {
+		if (shouldTef && creature->isPlayerCreature()) {
 			PlayerObject* ghost = creature->getPlayerObject().get();
 
-			if (ghost != NULL && !combatManager->areInDuel(creature, targetObject.castTo<CreatureObject*>())) {
+			if (ghost != NULL) {
 				ghost->updateLastPvpCombatActionTimestamp();
 			}
-		} else if (creature->isPet() && targetObject->isPlayerCreature()) {
+		} else if (shouldTef && creature->isPet()) {
 			ManagedReference<CreatureObject*> owner = creature->getLinkedCreature().get();
 
 			if (owner != NULL && owner->isPlayerCreature()) {
 				PlayerObject* ownerGhost = owner->getPlayerObject().get();
 
-				if (ownerGhost != NULL && !combatManager->areInDuel(owner, targetObject.castTo<CreatureObject*>())) {
+				if (ownerGhost != NULL) {
 					Locker olocker(owner, creature);
 					ownerGhost->updateLastPvpCombatActionTimestamp();
-				}
-			}
-		} else if (creature->isPlayerCreature() && (targetObject->isPet() || targetObject->isVehicleObject())) {
-			ManagedReference<CreatureObject*> targetOwner = targetObject.castTo<CreatureObject*>()->getLinkedCreature().get();
-
-			if (targetOwner != NULL && targetOwner->isPlayerCreature()) {
-				PlayerObject* ghost = creature->getPlayerObject().get();
-
-				if (ghost != NULL && !combatManager->areInDuel(creature, targetOwner)) {
-					ghost->updateLastPvpCombatActionTimestamp();
 				}
 			}
 		}
