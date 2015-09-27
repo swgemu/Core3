@@ -136,6 +136,7 @@ public:
 		ADMIN_GUILDINFO                    = 183,
 		ADMIN_JEDILIST                     = 184,
 		ADMIN_LIST                     	   = 185,
+		ADMIN_FIND_PLAYER                  = 186,
 
 		//Teach 221 - 230
 		TEACH_SKILL                        = 221,
