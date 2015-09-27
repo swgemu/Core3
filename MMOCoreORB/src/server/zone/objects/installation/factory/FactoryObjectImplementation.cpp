@@ -48,32 +48,31 @@ void FactoryObjectImplementation::loadTemplateData(SharedObjectTemplate* templat
 	craftingTabsSupported = factory->getCraftingTabsSupported();
 }
 
-void FactoryObjectImplementation::initializeTransientMembers() {
-	InstallationObjectImplementation::initializeTransientMembers();
-
-	/*if(operating)
-		startFactory();*/
+void FactoryObjectImplementation::notifyLoadFromDatabase() {
+	InstallationObjectImplementation::notifyLoadFromDatabase();
 
 	setLoggingName("FactoryObject");
 
+	if (operating) {
+		startFactory();
+	}
 
+	hopperObserver = new FactoryHopperObserver(_this.getReferenceUnsafeStaticCast());
 	ManagedReference<SceneObject*> inputHopper = getSlottedObject("ingredient_hopper");
 	ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
 
-	if(inputHopper != NULL && outputHopper != NULL) {
-		hopperObserver = new FactoryHopperObserver(_this.getReferenceUnsafeStaticCast());
+	if(inputHopper != NULL) {
 		inputHopper->registerObserver(ObserverEventType::OPENCONTAINER, hopperObserver);
 		inputHopper->registerObserver(ObserverEventType::CLOSECONTAINER, hopperObserver);
+	}
 
+	 if (outputHopper != NULL) {
 		outputHopper->registerObserver(ObserverEventType::OPENCONTAINER, hopperObserver);
 		outputHopper->registerObserver(ObserverEventType::CLOSECONTAINER, hopperObserver);
-	} else {
-		createChildObjects();
 	}
 }
 
 void FactoryObjectImplementation::createChildObjects() {
-
 	String ingredientHopperName = "object/tangible/hopper/manufacture_installation_ingredient_hopper_1.iff";
 	ManagedReference<SceneObject*> ingredientHopper = server->getZoneServer()->createObject(ingredientHopperName.hashCode(), getPersistenceLevel());
 

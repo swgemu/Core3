@@ -29,20 +29,12 @@ class FactoryObject extends InstallationObject {
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 
-	public native void initializeTransientMembers();
-
 	/**
 	 * Gets called when this objects is loaded from database
 	 * @pre { this locked }
 	 * @post { this locked }
 	 */
-	public void notifyLoadFromDatabase() {
-		super.notifyLoadFromDatabase();
-
-		if (super.operating) {
-			startFactory();
-		}
-	}
+	public native void notifyLoadFromDatabase();
 
 	/**
 	 * Fills the attribute list message options that are sent to player creature
