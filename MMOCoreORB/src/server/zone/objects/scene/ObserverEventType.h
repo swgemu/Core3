@@ -76,6 +76,8 @@ public:
 	const static int FLEEING					= 64; // ManagedObject arg1 = creature, long arg2 = 0
 	const static int PEACE						= 65; // ManagedObject arg1 = null, long arg2 = 0
 	const static int PARENTCHANGED				= 66; // ManagedObject arg1 = newParent, long arg2 = 0
+	const static int LOGGEDIN					= 67; // ManagedObject arg1 = player, long arg2 = 0
+	const static int LOGGEDOUT					= 68; // ManagedObject arg1 = player, long arg2 = 0
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */
