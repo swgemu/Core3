@@ -33,4 +33,21 @@ function VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObj
 	return CreatureObject(pCreatureObject):hasScreenPlayState(state, VILLAGE_JEDI_PROGRESSION_SCREEN_PLAY_STATE_STRING)
 end
 
+function VillageJediManagerCommon.unlockBranch(pPlayer, branch)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	local questStatusTemp = CreatureObject(pPlayer):getScreenPlayState("VillageUnlockScreenPlay:" .. branch)
+	if (questStatusTemp == 0) then
+		CreatureObject(pPlayer):setScreenPlayState(1, "VillageUnlockScreenPlay:" .. branch)
+	end
+
+	local stringTO = "@quest/force_sensitive/utils:" .. branch
+
+	local messageString = LuaStringIdChatParameter("@quest/force_sensitive/utils:branch_selected_unlock")
+	messageString:setTO(stringTO)
+	CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject())
+end
+
 return VillageJediManagerCommon

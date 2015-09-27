@@ -359,6 +359,8 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("WASLISTENEDTO", ObserverEventType::WASLISTENEDTO);
 	luaEngine->setGlobalInt("WASWATCHED", ObserverEventType::WASWATCHED);
 	luaEngine->setGlobalInt("PARENTCHANGED", ObserverEventType::PARENTCHANGED);
+	luaEngine->setGlobalInt("LOGGEDIN", ObserverEventType::LOGGEDIN);
+	luaEngine->setGlobalInt("LOGGEDOUT", ObserverEventType::LOGGEDOUT);
 
 	luaEngine->setGlobalInt("UPRIGHT", CreaturePosture::UPRIGHT);
 	luaEngine->setGlobalInt("PRONE", CreaturePosture::PRONE);
@@ -1470,15 +1472,28 @@ int DirectorManager::addStartingWeaponsInto(lua_State* L) {
 }
 
 int DirectorManager::giveItem(lua_State* L) {
-	if (checkArgumentCount(L, 3) == 1) {
+	int numberOfArguments = lua_gettop(L);
+	if (numberOfArguments != 3 && numberOfArguments != 4) {
 		instance()->error("incorrect number of arguments passed to DirectorManager::giveItem");
 		ERROR_CODE = INCORRECT_ARGUMENTS;
 		return 0;
 	}
 
-	SceneObject* obj = (SceneObject*) lua_touserdata(L, -3);
-	String objectString = lua_tostring(L, -2);
-	int slot = lua_tointeger(L, -1);
+	SceneObject* obj;
+	String objectString;
+	int slot = -1;
+	bool overload = false;
+
+	if (numberOfArguments == 3) {
+		obj = (SceneObject*) lua_touserdata(L, -3);
+		objectString = lua_tostring(L, -2);
+		slot = lua_tointeger(L, -1);
+	} else {
+		obj = (SceneObject*) lua_touserdata(L, -4);
+		objectString = lua_tostring(L, -3);
+		slot = lua_tointeger(L, -2);
+		bool overload = lua_toboolean(L, -1);
+	}
 
 	if (obj == NULL)
 		return 0;
@@ -1488,7 +1503,7 @@ int DirectorManager::giveItem(lua_State* L) {
 	ManagedReference<SceneObject*> item = zoneServer->createObject(objectString.hashCode(), 1);
 
 	if (item != NULL && obj != NULL) {
-		if (obj->transferObject(item, slot, true)) {
+		if (obj->transferObject(item, slot, true, overload)) {
 			item->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 
 			ManagedReference<SceneObject*> parent = item->getParentRecursively(SceneObjectType::PLAYERCREATURE);
