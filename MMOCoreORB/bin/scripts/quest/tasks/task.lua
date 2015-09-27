@@ -13,25 +13,19 @@ local TASK_STARTED = 0xABCD
 -- Check if the task has been started for the player.
 -- @param pCreatureObject pointer to the creature object of the player.
 function Task:hasTaskStarted(pCreatureObject)
-	return ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		return creatureObject:getScreenPlayState(self.taskName) == TASK_STARTED
-	end) == true
+	return CreatureObject(pCreatureObject):getScreenPlayState(self.taskName) == TASK_STARTED
 end
 
 -- Set the task started screen play state for the player.
 -- @param pCreatureObject pointer to the creature object of the player.
 function Task:setTaskStarted(pCreatureObject)
-	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		creatureObject:setScreenPlayState(TASK_STARTED, self.taskName)
-	end)
+	CreatureObject(pCreatureObject):setScreenPlayState(TASK_STARTED, self.taskName)
 end
 
 -- Set the task finished screen play state for the player.
 -- @param pCreatureObject pointer to the creature object of the player.
 function Task:setTaskFinished(pCreatureObject)
-	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		creatureObject:removeScreenPlayState(TASK_STARTED, self.taskName)
-	end)
+	CreatureObject(pCreatureObject):removeScreenPlayState(TASK_STARTED, self.taskName)
 end
 
 -- Call the supplied function with the argument if the function is not nil.
@@ -73,6 +67,10 @@ function Task:finish(pCreatureObject)
 	else
 		Logger:log("Task " .. self.taskName .. " is not started.", LT_INFO)
 	end
+end
+
+function Task:calculateDistance(x1, y1, x2, y2)
+	return math.abs(x1 - x2) + math.abs(y1 - y2)
 end
 
 return Task
