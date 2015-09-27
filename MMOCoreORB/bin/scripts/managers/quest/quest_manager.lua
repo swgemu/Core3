@@ -52,6 +52,38 @@ function QuestManager.resetQuest(pCreatureObject, quest)
 	end)
 end
 
+function QuestManager.getQuestName(questID)
+	local pQuest = getQuestInfo(questID)
+
+	if (pQuest == nil) then
+		return ""
+	end
+	
+	return LuaQuestInfo(pQuest):getQuestName()
+end
+
+function QuestManager.getCurrentQuestID(pPlayer)
+	local id = tonumber(readScreenPlayData(pPlayer, "VillageJediProgression", "CurrentQuestID"))
+	
+	if (id == nil) then
+		id = -1
+	end
+	
+	return id
+end
+
+function QuestManager.setCurrentQuestID(pPlayer, qid)
+	return writeScreenPlayData(pPlayer, "VillageJediProgression", "CurrentQuestID", qid)
+end
+
+function QuestManager.getStoredVillageValue(pPlayer, key)
+	return readScreenPlayData(pPlayer, "VillageJediProgression", "CurrentQuestID")
+end
+
+function QuestManager.setStoredVillageValue(pPlayer, key, value)
+	return writeScreenPlayData(pPlayer, "VillageJediProgression", key, value)
+end
+
 QuestManager.quests = {}
 
 QuestManager.quests.TEST_SIMPLE 					= 0

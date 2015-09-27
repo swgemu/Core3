@@ -133,6 +133,7 @@ includeFile("conversations/village/fs_village_convo7_conv.lua")
 includeFile("conversations/village/old_man_conv.lua")
 includeFile("conversations/village/paemos_conv.lua")
 includeFile("conversations/village/phase1/elder_phase1_conv.lua")
+includeFile("conversations/village/phase1/sarguillo_phase1_conv.lua")
 
 -- Race Tracks
 includeFile("conversations/racetracks/agrilatswampconversation.lua")
