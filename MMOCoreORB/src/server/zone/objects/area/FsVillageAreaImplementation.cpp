@@ -32,14 +32,15 @@ void FsVillageAreaImplementation::notifyEnter(SceneObject* player) {
 
 	// Those who aren't a valid player, do not currently have or have had the Village elder quest cannot enter.
 	if (ghost != NULL) {
-		if (!ghost->hasActiveQuestBitSet(PlayerQuestData::FS_VILLAGE_ELDER)) {
-			if (!ghost->hasCompletedQuestsBitSet(PlayerQuestData::FS_VILLAGE_ELDER)){
-				if (ghost->isPrivileged())
-					return;
+		if (ghost->isPrivileged())
+			return;
 
-				playerCreature->teleport(newPosX, getZone()->getHeight(newPosX, newPosY), newPosY, 0);
-				playerCreature->sendSystemMessage("@fs_quest_village:expel_shield");
-			}
+		if (!ghost->hasActiveQuestBitSet(PlayerQuestData::FS_VILLAGE_ELDER) && !ghost->hasCompletedQuestsBitSet(PlayerQuestData::FS_VILLAGE_ELDER)) {
+			playerCreature->teleport(newPosX, getZone()->getHeight(newPosX, newPosY), newPosY, 0);
+			playerCreature->sendSystemMessage("@base_player:fs_village_unavailable");
+		} else if (playerCreature->isInCombat()) {
+			playerCreature->teleport(newPosX, getZone()->getHeight(newPosX, newPosY), newPosY, 0);
+			playerCreature->sendSystemMessage("@base_player:fs_village_no_combat");
 		}
 	}
 }
