@@ -38,8 +38,14 @@ void FsVillageAreaImplementation::notifyEnter(SceneObject* player) {
 					return;
 
 				playerCreature->teleport(newPosX, getZone()->getHeight(newPosX, newPosY), newPosY, 0);
-				playerCreature->sendSystemMessage("@fs_quest_village:expel_shield");
+				playerCreature->sendSystemMessage("@base_player:fs_village_unavailable");
 			}
+		} else if (playerCreature->isInCombat()) {
+			if (ghost->isPrivileged())
+				return;
+
+			playerCreature->teleport(newPosX, getZone()->getHeight(newPosX, newPosY), newPosY, 0);
+			playerCreature->sendSystemMessage("@base_player:fs_village_no_combat");
 		}
 	}
 }
