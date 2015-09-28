@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_c14566b4",
+        "filename": "MMOCoreORB/src/server/zone/ZoneImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-28T07:59:30Z",
+      "side": 1,
+      "message": "I would reorder this method somewhat. Cast as a building first and return false if null. That will save the majority of objects from having to go through the category checks.",
+      "revId": "1996383d30f2b249a1ce2481af4245f98dac1c3b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_a1485acd",
+        "filename": "MMOCoreORB/src/server/zone/ZoneImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-28T07:59:30Z",
+      "side": 1,
+      "message": "Instead of instantiating a new pointer here, go ahead and reuse the one from above.",
+      "revId": "1996383d30f2b249a1ce2481af4245f98dac1c3b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_413ab637",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1692,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-28T07:59:30Z",
+      "side": 1,
+      "message": "planetManager",
+      "revId": "1996383d30f2b249a1ce2481af4245f98dac1c3b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_e13e6229",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1695,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-09-28T07:59:30Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "1996383d30f2b249a1ce2481af4245f98dac1c3b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
