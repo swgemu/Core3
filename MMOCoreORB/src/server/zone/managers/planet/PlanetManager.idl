@@ -132,7 +132,6 @@ class PlanetManager extends ManagedService implements Logger {
 	public native void loadClientRegions();
 	public native void loadClientPoiData();
 	public native void loadBadgeAreas();
-	public native void loadPerformanceLocations();
 	protected native void loadStaticTangibleObjects();
 	
 	/**
@@ -236,6 +235,10 @@ class PlanetManager extends ManagedService implements Logger {
 	
 	public void addPerformanceLocation(SceneObject obj) {
 		performanceLocations.add(obj);
+	}
+
+	public void removePerformanceLocation(SceneObject obj) {
+		performanceLocations.remove(obj);
 	}
 	
 	@local
