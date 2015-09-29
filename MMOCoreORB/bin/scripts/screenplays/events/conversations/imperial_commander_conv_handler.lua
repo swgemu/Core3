@@ -34,7 +34,6 @@ function imperialCommanderConvoHandler:runScreenHandlers(conversationTemplate, c
 
 	if screenID == "m4_finish" then
 		writeScreenPlayData(conversingPlayer, "imperial_coa2", "state", 10)
-		Coa2Screenplay:finishMission(conversingPlayer, "imperial", 4)
 	elseif screenID == "m5_begin_yes" then
 		Coa2Screenplay:startMissionFive(conversingPlayer, conversingNPC, "imperial")
 	elseif screenID == "m5_active_abort" then
@@ -43,10 +42,6 @@ function imperialCommanderConvoHandler:runScreenHandlers(conversationTemplate, c
 	elseif screenID == "m5_active_restart" then
 		Coa2Screenplay:cleanupMission(conversingPlayer, "imperial")
 		Coa2Screenplay:startMissionFive(conversingPlayer, conversingNPC, "imperial")
-	elseif screenID == "m5_finish" then
-		if readScreenPlayData(conversingPlayer, "imperial_coa2", "state") == "13" then
-			Coa2Screenplay:finishMissionFive(conversingPlayer, "imperial")
-		end
 	end
 
 	return conversationScreen

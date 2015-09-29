@@ -13,8 +13,7 @@ Quest states:
 10 - m3/4 complete
 11 - m5 refused/aborted
 12 - m5 active
-13 - m5 return
-14 - m5 complete
+13 - m5 complete
 ]]
 
 Coa2Screenplay = ScreenPlay:new {
@@ -70,15 +69,19 @@ function Coa2Screenplay:spawnStaticNpcs()
 		if isZoneEnabled(npc[2]) then
 			spawnMobile(npc[2], npc[1], 0, npc[3], npc[4], npc[5], npc[6], 0)
 		end
-
 	end
 
 	for i = 1, # self.commanders do
 		local npc = self.commanders[i]
 		if isZoneEnabled(npc[2]) then
-			spawnMobile(npc[2], npc[1], 0, npc[3], npc[4], npc[5], npc[6], 0)
-		end
+			local pNpc = spawnMobile(npc[2], npc[1], 0, npc[3], npc[4], npc[5], npc[6], 0)
 
+			if pNpc ~= nil then
+				writeData("coaCommanderID_" .. i, SceneObject(pNpc):getObjectID())
+			else
+				writeData("coaCommanderID_" .. i, 0)
+			end
+		end
 	end
 end
 
@@ -144,6 +147,28 @@ function Coa2Screenplay:spawnNpc(pSource, template, minDist, maxDist)
 	local pNpc = spawnMobile(planet, template, 0, spawnPoint[1], spawnPoint[2], spawnPoint[3], getRandomNumber(360) - 180, spawnPoint[4])
 
 	return pNpc
+end
+
+function Coa2Screenplay:getRandomCommander(faction)
+	local options = {}
+
+	for i = 1, # self.commanders do
+		local commanderID = readData("coaCommanderID_" .. i)
+
+		if commanderID ~= nil and commanderID ~= 0 then
+			local npc = self.commanders[i]
+			if string.find(npc[1], faction) ~= nil and isZoneEnabled(npc[2]) then
+				table.insert(options, commanderID)
+			end
+		end
+	end
+
+	if # options > 0 then
+		local option = options[getRandomNumber(1, # options)]
+		return option
+	else
+		return 0
+	end
 end
 
 function Coa2Screenplay:startMissionOne(pPlayer, conversingNPC, faction)
@@ -398,19 +423,33 @@ function Coa2Screenplay:progressMissionTwo(pPlayer, faction)
 end
 
 function Coa2Screenplay:startMissionThree(pPlayer, conversingNPC, faction)
-	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 9)
-end
+	if pPlayer == nil or conversingNPC == nil or not SceneObject(pPlayer):isPlayerCreature() then
+		return
+	end
 
-function Coa2Screenplay:finishMissionFour(pPlayer, faction)
-	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 10)
+	local commanderID = self:getRandomCommander(faction)
+	local pNpc = getSceneObject(commanderID)
+
+	if pNpc == nil then
+		CreatureObject(pPlayer):sendSystemMessage("Error: cannot find a commander")
+		return
+	end
+
+	local file = "@theme_park/alderaan/act2/shared_" .. faction .. "_missions"
+	local wayName = file .. ":waypoint_name_4"
+	local wayDesc = file .. ":waypoint_desc_4"
+	local wayID = self:giveWaypoint(pPlayer, pNpc, wayName, wayDesc, 1)
+
+	if wayID == 0 then
+		CreatureObject(pPlayer):sendSystemMessage(file .. ":waypoint_failure")
+		return
+	end
+
+	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 9)
 end
 
 function Coa2Screenplay:startMissionFive(pPlayer, conversingNPC, faction)
 	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 12)
-end
-
-function Coa2Screenplay:finishMissionFive(pPlayer, faction)
-	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 14)
 end
 
 function Coa2Screenplay:cleanupMission(pPlayer)
