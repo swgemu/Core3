@@ -31,16 +31,19 @@ void UplinkTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 
 	Zone* zone = building->getZone();
 
-	if(zone == NULL)
+	if (zone == NULL)
 		return;
 
 	GCWManager* gcwMan = zone->getGCWManager();
 
-	if(!gcwMan->canUseTerminals(player, building, sceneObject))
+	if (gcwMan == NULL)
 		return;
 
-	if(building->getFaction() != player->getFaction()) {
-		if( gcwMan->isBaseVulnerable(building) && !gcwMan->isUplinkJammed(building)) {
+	if (!gcwMan->canUseTerminals(player, building, sceneObject))
+		return;
+
+	if (building->getFaction() != player->getFaction()) {
+		if (gcwMan->isBaseVulnerable(building) && !gcwMan->isUplinkJammed(building)) {
 			menuResponse->addRadialMenuItem(227, 3, "@hq:mnu_jam");
 		}
 	}
@@ -54,27 +57,26 @@ int UplinkTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
 	ManagedReference<TangibleObject*> uplinkTerminal = cast<TangibleObject*>(sceneObject);
 
-	if(building == NULL)
+	if (building == NULL)
 		return 1;
 
 	Zone* zone = sceneObject->getZone();
 
-	if(zone == NULL)
+	if (zone == NULL)
 		return 1;
 
 	ManagedReference<GCWManager*> gcwMan = zone->getGCWManager();
 
-	if(gcwMan == NULL)
+	if (gcwMan == NULL)
 		return 1;
 
-	if(!gcwMan->canUseTerminals(player, building, sceneObject))
+	if (!gcwMan->canUseTerminals(player, building, sceneObject))
 		return 1;
 
-	if ( selectedID == 227 || selectedID == 20) {
-		if(player->getFaction() != building->getFaction()) {
+	if (selectedID == 227 || selectedID == 20) {
+		if (player->getFaction() != building->getFaction()) {
 
-
-			if(player->hasSkill("combat_bountyhunter_investigation_02"))
+			if (player->hasSkill("combat_bountyhunter_investigation_02"))
 				gcwMan->sendJamUplinkMenu(player, building, uplinkTerminal);
 			else
 				player->sendSystemMessage("Only an experienced Bounty Hunter with Investigation experience could expect to jam the uplink");

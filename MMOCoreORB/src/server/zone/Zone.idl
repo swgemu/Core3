@@ -54,8 +54,6 @@ class Zone extends SceneObject {
 
 	private transient CreatureManager creatureManager;
 
-	private transient GCWManager gcwManager;
-
 	private ChatRoom chatRoom;
 
 	@dereferenced
@@ -170,6 +168,10 @@ class Zone extends SceneObject {
 		return creatureManager;
 	}
 
+	public GCWManager getGCWManager() {
+		return planetManager.getGCWManager();
+	}
+
 	public unsigned long getGalacticTime() {
 		return galacticTime.miliDifference() / 1000;
 	}
@@ -225,10 +227,6 @@ class Zone extends SceneObject {
 	@dirty
 	public unsigned int getZoneCRC() {
 		return zoneCRC;
-	}
-
-	public native GCWManager getGCWManager(){
-		return gcwManager;
 	}
 
 	public void setChatRoom(ChatRoom room) {

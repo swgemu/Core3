@@ -13,7 +13,6 @@
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/templates/SharedObjectTemplate.h"
 #include "server/zone/packets/player/GetMapLocationsResponseMessage.h"
-#include "server/zone/managers/gcw/GCWManager.h"
 
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/region/Region.h"
@@ -50,8 +49,6 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& na
 
 	planetManager = NULL;
 
-	gcwManager = NULL;
-
 	setLoggingName("Zone " + name);
 }
 
@@ -69,8 +66,6 @@ void ZoneImplementation::initializePrivateData() {
 	creatureManager = new CreatureManager(_this.getReferenceUnsafeStaticCast());
 	creatureManager->deploy("CreatureManager " + zoneName);
 	creatureManager->setZoneProcessor(processor);
-
-	gcwManager = new GCWManager(_this.getReferenceUnsafeStaticCast());
 }
 
 void ZoneImplementation::finalize() {
@@ -86,8 +81,6 @@ void ZoneImplementation::initializeTransientMembers() {
 }
 
 void ZoneImplementation::startManagers() {
-	gcwManager->start();
-
 	planetManager->initialize();
 
 	creatureManager->initialize();

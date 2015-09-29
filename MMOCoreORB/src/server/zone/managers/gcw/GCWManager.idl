@@ -97,8 +97,8 @@ class GCWManager extends ManagedService implements Logger {
 		rebelBases = 0;
 		rebelScore = 0;
 
-		Logger.setLoggingName("GCWManager");
-		Logger.info("GCWManager instantiated for " + zne.getZoneName(),true);
+		Logger.setLoggingName("GCWManager " + zne.getZoneName());
+		Logger.info("instantiated", true);
 		gcwBaseList.setNoDuplicateInsertPlan();
 		zone = zne;
 

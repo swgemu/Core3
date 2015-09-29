@@ -26,20 +26,23 @@ void PowerRegulatorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	if (building == NULL)
 		return;
 
-	if ( player  == NULL || player->isDead() || player->isIncapacitated())
+	if (player  == NULL || player->isDead() || player->isIncapacitated())
 		return;
 
 	Zone* zone = building->getZone();
 
-	if(zone == NULL)
+	if (zone == NULL)
 		return;
 
 	GCWManager* gcwMan = zone->getGCWManager();
 
-	if(!gcwMan->canUseTerminals(player, building, sceneObject))
+	if (gcwMan == NULL)
 		return;
 
-	if( gcwMan->isDNASampled(building) && !gcwMan->isPowerOverloaded(building) &&  player->getFaction() != building->getFaction() ) {
+	if (!gcwMan->canUseTerminals(player, building, sceneObject))
+		return;
+
+	if (gcwMan->isDNASampled(building) && !gcwMan->isPowerOverloaded(building) &&  player->getFaction() != building->getFaction()) {
 		menuResponse->addRadialMenuItem(228, 3, "@hq:mnu_set_overload"); // Set to overload
 	}
 
@@ -57,20 +60,20 @@ int PowerRegulatorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 
 	Zone* zone = building->getZone();
 
-	if(zone == NULL)
+	if (zone == NULL)
 		return 1;
 
 	GCWManager* gcwMan = zone->getGCWManager();
 
-	if(gcwMan == NULL)
+	if (gcwMan == NULL)
 		return 1;
 
-	if(!gcwMan->canUseTerminals(player, building, sceneObject))
+	if (!gcwMan->canUseTerminals(player, building, sceneObject))
 		return 1;
 
-	if(player->getFaction() != building->getFaction()) {
-		if(selectedID == 228 || selectedID == 20){
-			if(player->hasSkill("combat_commando_heavyweapon_speed_02"))
+	if (player->getFaction() != building->getFaction()) {
+		if (selectedID == 228 || selectedID == 20) {
+			if (player->hasSkill("combat_commando_heavyweapon_speed_02"))
 				gcwMan->sendPowerRegulatorControls(player, building, powerRegulator);
 			else
 				player->sendSystemMessage("@faction/faction_hq/faction_hq_response:commando_only"); // Only an experienced commando with heavy weapons training could expect to rig the regulators for overload
