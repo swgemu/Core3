@@ -86,17 +86,16 @@ void StructureManager::loadPlayerStructures(const String& zoneName) {
 			if (object != NULL) {
 				++i;
 
-				if(object->isGCWBase()){
+				if (object->isGCWBase()) {
 					Zone* zone = object->getZone();
 
-					if(zone == NULL)
-						return;
+					if (zone != NULL) {
+						GCWManager* gcwMan = zone->getGCWManager();
 
-					GCWManager* gcwMan = zone->getGCWManager();
-					if(gcwMan == NULL)
-						return;
-
-					gcwMan->registerGCWBase(cast<BuildingObject*>(object.get()),false);
+						if (gcwMan != NULL) {
+							gcwMan->registerGCWBase(cast<BuildingObject*>(object.get()),false);
+						}
+					}
 
 				}
 

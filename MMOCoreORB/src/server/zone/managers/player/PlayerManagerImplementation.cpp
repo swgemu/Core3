@@ -1029,10 +1029,14 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 	int baseXp = 0;
 
 	Zone* zone = destructedObject->getZone();
-	if(zone != NULL){
+
+	if (zone != NULL) {
 		GCWManager* gcwMan = zone->getGCWManager();
-		gcwBonus += (gcwMan->getGCWXPBonus() / 100.0f);
-		winningFaction = gcwMan->getWinningFaction();
+
+		if (gcwMan != NULL) {
+			gcwBonus += (gcwMan->getGCWXPBonus() / 100.0f);
+			winningFaction = gcwMan->getWinningFaction();
+		}
 	}
 
 	if (!destructedObject->isCreatureObject() && spawnedCreatures != NULL) {

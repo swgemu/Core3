@@ -40,19 +40,22 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 
 	Zone* zone = building->getZone();
 
-	if(zone == NULL)
+	if (zone == NULL)
 		return;
 
 	GCWManager* gcwMan = zone->getGCWManager();
 
-	if(!gcwMan->canUseTerminals(player, building, sceneObject))
+	if (gcwMan == NULL)
 		return;
 
-	if(building->getFaction() == player->getFaction()) {
+	if (!gcwMan->canUseTerminals(player, building, sceneObject))
+		return;
+
+	if (building->getFaction() == player->getFaction()) {
 
 		menuResponse->addRadialMenuItem(228, 3, "@hq:mnu_defense_status");
 
-		if(gcwMan->isShutdownSequenceStarted(building) && (building->getPvpStatusBitmask() & CreatureFlag::OVERT)){
+		if (gcwMan->isShutdownSequenceStarted(building) && (building->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
 			menuResponse->addRadialMenuItem(231, 3, "@hq:mnu_shutdown");  // Shutdown facility
 		}
 
@@ -61,13 +64,13 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 		//menuResponse->addRadialMenuItemToRadialID(37, 225, 3,  "@hq:mnu_donate_money"); // Donate MOney
 		menuResponse->addRadialMenuItemToRadialID(37, 226, 3, "@hq:mnu_donate_deed"); // donate defense
 
-		if((building->getOwnerCreatureObject() == player) && (building->getPvpStatusBitmask() & CreatureFlag::OVERT)){
+		if ((building->getOwnerCreatureObject() == player) && (building->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
 			menuResponse->addRadialMenuItem(38, 3, "@hq:mnu_reset_vulnerability"); // Reset Vulnerability
 		}
 
 	} else {
 
-		if(gcwMan->isPowerOverloaded(building) && !gcwMan->isShutdownSequenceStarted(building)){
+		if (gcwMan->isPowerOverloaded(building) && !gcwMan->isShutdownSequenceStarted(building)) {
 			menuResponse->addRadialMenuItem(230, 3, "@hq:mnu_overload");  // activate overload
 		}
 	}
@@ -91,47 +94,48 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) {
 	if (creature->isDead() || creature->isIncapacitated())
 		return 1;
+
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
 
-	if(building == NULL)
+	if (building == NULL)
 		return 1;
 
 	Zone* zone = building->getZone();
 
-	if(zone == NULL)
+	if (zone == NULL)
 		return 1;
 
 	ManagedReference<GCWManager*> gcwMan = zone->getGCWManager();
 
-	if(gcwMan == NULL)
+	if (gcwMan == NULL)
 		return 1;
 
-	if(!gcwMan->canUseTerminals(creature, building, sceneObject))
+	if (!gcwMan->canUseTerminals(creature, building, sceneObject))
 		return 1;
 
-	if(creature->getFaction() == building->getFaction()) {
+	if (creature->getFaction() == building->getFaction()) {
 		if (selectedID == 20){
 			gcwMan->sendStatus(building,creature);
-		} else if( selectedID == 228 || selectedID == 20){
+		} else if (selectedID == 228 || selectedID == 20){
 				gcwMan->sendBaseDefenseStatus(creature, building);
-		} else if ( selectedID == 38) {
+		} else if (selectedID == 38) {
 				gcwMan->sendResetVerification(creature, building);
-		} else if(selectedID == 231) {
+		} else if (selectedID == 231) {
 			ShutdownSequenceTask* task = new ShutdownSequenceTask(gcwMan, building, creature, false);
 			task->execute();
 		} else if (selectedID == 226)
 				gcwMan->sendSelectDeedToDonate(building,creature,0);
 	} else {
-		if ( selectedID == 230 ) {
-			if(creature->hasSkill("outdoors_squadleader_novice")) {
+		if (selectedID == 230) {
+			if (creature->hasSkill("outdoors_squadleader_novice")) {
 				ShutdownSequenceTask* task = new ShutdownSequenceTask(gcwMan, building, creature, true);
 				task->execute();
 			} else
 				creature->sendSystemMessage(("@faction/faction_hq/faction_hq_response:terminal_response03")); // only an experienced squad leader could expect to coordinate a reactor overload
 
-		} else if ( selectedID == 20) {
+		} else if (selectedID == 20) {
 
-			if(creature->getFactionRank() >= 9) {
+			if (creature->getFactionRank() >= 9) {
 				gcwMan->sendStatus(building,creature);
 			} else {
 				creature->sendSystemMessage("You must be at least a Warrant Officer in order to use this terminal");

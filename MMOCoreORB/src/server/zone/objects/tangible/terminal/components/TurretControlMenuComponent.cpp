@@ -26,25 +26,29 @@ void TurretControlMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject
 	ManagedReference<PlayerObject*> thisPlayer = player->getPlayerObject();
 
 
-	if ( thisPlayer == NULL || building == NULL || player->isDead() || player->isIncapacitated())
+	if (thisPlayer == NULL || building == NULL || player->isDead() || player->isIncapacitated())
 		return;
 
 
-	if(player->getFaction() == 0)
+	if (player->getFaction() == 0) {
 		player->sendSystemMessage("@faction_recruiter:must_be_declared_use"); // Your faction affiliation must be delcared in order to use that item.
+		return;
+	}
 
 	Zone* zone = building->getZone();
 
-	if(zone == NULL)
+	if (zone == NULL)
 		return;
 
 	GCWManager* gcwMan = zone->getGCWManager();
 
-
-	if(!gcwMan->canUseTerminals(player, building, sceneObject))
+	if (gcwMan == NULL)
 		return;
 
-	if(building->getFaction() == player->getFaction() && player->getFaction() != 0) {
+	if (!gcwMan->canUseTerminals(player, building, sceneObject))
+		return;
+
+	if (building->getFaction() == player->getFaction()) {
 		menuResponse->addRadialMenuItem(222, 3, "@hq:mnu_turret_control"); // "Turret Control"
 	}
 
@@ -61,23 +65,23 @@ int TurretControlMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
 
-	if(building == NULL)
+	if (building == NULL)
 		return 1;
 
 	Zone* zone = building->getZone();
 
-	if(zone == NULL)
+	if (zone == NULL)
 		return 1;
 
 	ManagedReference<GCWManager*> gcwMan = zone->getGCWManager();
 
-	if(gcwMan == NULL)
+	if (gcwMan == NULL)
 		return 1;
 
-	if(!gcwMan->canUseTerminals(player, building, sceneObject))
+	if (!gcwMan->canUseTerminals(player, building, sceneObject))
 		return 1;
 
-	if(selectedID == 222){
+	if (selectedID == 222) {
 		gcwMan->sendTurretAttackListTo(player,sceneObject);
 	}
 

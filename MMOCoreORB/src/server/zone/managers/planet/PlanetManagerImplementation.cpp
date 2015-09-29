@@ -138,6 +138,12 @@ void PlanetManagerImplementation::loadLuaConfig() {
 			info("Weather Disabled", true);
 		}
 
+		bool gcwEnabled = luaObject.getIntField("gcwEnabled");
+		if(gcwEnabled) {
+			gcwManager = new GCWManager(zone);
+			gcwManager->start();
+		}
+
 		LuaObject planetTravelPointsTable = luaObject.getObjectField("planetTravelPoints");
 		planetTravelPointList->readLuaObject(&planetTravelPointsTable);
 		planetTravelPointsTable.pop();
@@ -579,13 +585,18 @@ void PlanetManagerImplementation::loadClientRegions() {
 
 			region->setMunicipalZone(true);
 
-			int strongholdFaction = zone->getGCWManager()->isStrongholdCity(regionName);
 			ManagedReference<SceneObject*> scenery = NULL;
 
-			if (strongholdFaction == GCWManager::IMPERIALHASH || regionName.contains("imperial")) {
-				scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships_imperial.iff"), 0);
-			} else if (strongholdFaction == GCWManager::REBELHASH || regionName.contains("rebel")) {
-				scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships_rebel.iff"), 0);
+			if (gcwManager != NULL) {
+				int strongholdFaction = gcwManager->isStrongholdCity(regionName);
+
+				if (strongholdFaction == GCWManager::IMPERIALHASH || regionName.contains("imperial")) {
+					scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships_imperial.iff"), 0);
+				} else if (strongholdFaction == GCWManager::REBELHASH || regionName.contains("rebel")) {
+					scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships_rebel.iff"), 0);
+				} else {
+					scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships.iff"), 0);
+				}
 			} else {
 				scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships.iff"), 0);
 			}

@@ -2505,13 +2505,15 @@ int DirectorManager::getGCWDiscount(lua_State* L){
 	}
 
 	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -1);
-
-	if(creature == NULL || creature->getZone() == NULL)
+	if (creature == NULL)
 		return 0;
 
-	GCWManager* gcwMan = creature->getZone()->getGCWManager();
+	Zone* zone = creature->getZone();
+	if (zone == NULL)
+		return 0;
 
-	if(gcwMan == 0)
+	GCWManager* gcwMan = zone->getGCWManager();
+	if (gcwMan == NULL)
 		return 0;
 
 	lua_pushnumber(L, gcwMan->getGCWDiscount(creature));
@@ -2674,18 +2676,18 @@ int DirectorManager::getControllingFaction(lua_State* L) {
 	String zoneName = lua_tostring(L, -1);
 
 	Zone* zone = ServerCore::getZoneServer()->getZone(zoneName);
-
 	if (zone == NULL) {
 		lua_pushnil(L);
-	} else {
-		GCWManager* gcwMan = zone->getGCWManager();
-
-		if (gcwMan == NULL) {
-			lua_pushnil(L);
-		} else {
-			lua_pushinteger(L, gcwMan->getWinningFaction());
-		}
+		return 1;
 	}
+
+	GCWManager* gcwMan = zone->getGCWManager();
+	if (gcwMan == NULL) {
+		lua_pushnil(L);
+	} else {
+		lua_pushinteger(L, gcwMan->getWinningFaction());
+	}
+
 	return 1;
 }
 

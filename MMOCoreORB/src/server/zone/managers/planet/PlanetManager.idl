@@ -18,6 +18,7 @@ import server.zone.objects.region.CityRegion;
 import server.zone.objects.scene.variables.StringId;
 import server.zone.managers.weather.WeatherManager;
 import server.zone.managers.objectcontroller.ObjectController;
+import server.zone.managers.gcw.GCWManager;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 include server.zone.managers.planet.RegionMap;
@@ -65,7 +66,9 @@ class PlanetManager extends ManagedService implements Logger {
 	public static final int STARPORT = 1;
 
 	protected WeatherManager weatherManager;
-	
+
+	protected transient GCWManager gcwManager;
+
 	protected int numberOfCities;
 		
 	protected transient ZoneProcessServer server;
@@ -107,6 +110,7 @@ class PlanetManager extends ManagedService implements Logger {
 		starportLandingTime = 14;
 
 		weatherManager = null;
+		gcwManager = null;
 		
 		travelFares.setNoDuplicateInsertPlan();
 		
@@ -192,7 +196,11 @@ class PlanetManager extends ManagedService implements Logger {
 	public WeatherManager getWeatherManager() {
 		return weatherManager;
 	}
-	
+
+	public GCWManager getGCWManager() {
+		return gcwManager;
+	}
+
 	@local
 	public TerrainManager getTerrainManager() {
 		return terrainManager;

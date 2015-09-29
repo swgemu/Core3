@@ -26,20 +26,23 @@ void OverrideTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObj
 	if (building == NULL)
 		return;
 
-	if ( player  == NULL || player->isDead() || player->isIncapacitated())
+	if (player  == NULL || player->isDead() || player->isIncapacitated())
 			return;
 
 	Zone* zone = building->getZone();
 
-	if(zone == NULL)
+	if (zone == NULL)
 		return;
 
 	GCWManager* gcwMan = zone->getGCWManager();
 
-	if(!gcwMan->canUseTerminals(player, building, sceneObject))
+	if (gcwMan == NULL)
 		return;
 
-	if( gcwMan->isSecurityTermSliced(building) && !gcwMan->isDNASampled(building) ) {
+	if (!gcwMan->canUseTerminals(player, building, sceneObject))
+		return;
+
+	if (gcwMan->isSecurityTermSliced(building) && !gcwMan->isDNASampled(building)) {
 		menuResponse->addRadialMenuItem(228, 3, "@hq:mnu_dna"); // Slice
 	}
 
@@ -57,17 +60,20 @@ int OverrideTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 
 	Zone* zone = building->getZone();
 
-	if(zone == NULL)
+	if (zone == NULL)
 		return 1;
 
 	GCWManager* gcwMan = zone->getGCWManager();
 
-	if(!gcwMan->canUseTerminals(player, building, sceneObject))
+	if (gcwMan == NULL)
 		return 1;
 
-	if(player->getFaction() != building->getFaction()) {
-		if(selectedID == 228 || selectedID == 20){
-			if(player->hasSkill("outdoors_bio_engineer_novice"))
+	if (!gcwMan->canUseTerminals(player, building, sceneObject))
+		return 1;
+
+	if (player->getFaction() != building->getFaction()) {
+		if (selectedID == 228 || selectedID == 20) {
+			if (player->hasSkill("outdoors_bio_engineer_novice"))
 				gcwMan->sendDNASampleMenu(player, building, overrideTerminal);
 			else
 				player->sendSystemMessage("Only an experience Bio Engineer can be expected to access the Override Terminal");
