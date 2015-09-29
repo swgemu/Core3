@@ -2509,32 +2509,60 @@ void GCWManagerImplementation::verifyTurrets(BuildingObject* building){
 	baseData->setDefense(turrets);
 }
 
-bool GCWManagerImplementation::canPlaceMoreBases(CreatureObject* creature){
-	if(creature == NULL || !creature->isPlayerCreature())
+bool GCWManagerImplementation::canPlaceMoreBases(CreatureObject* creature) {
+	if (creature == NULL || !creature->isPlayerCreature())
 		return false;
 
 	PlayerObject* ghost = creature->getPlayerObject();
-	if(ghost == NULL)
+	if (ghost == NULL)
 		return false;
-	if(zone == NULL || zone->getZoneServer() == NULL)
+
+	if (zone == NULL)
 		return false;
 
 	ZoneServer* server = zone->getZoneServer();
-	int baseCount = 0;
-	for(int i =0; i < ghost->getTotalOwnedStructureCount(); ++i){
-		ManagedReference<SceneObject*> structure = server->getObject(ghost->getOwnedStructure(i));
-		if(structure != NULL && structure->isGCWBase())
-			baseCount++;
+	if (server == NULL)
+		return false;
 
+	int baseCount = 0;
+	for (int i =0; i < ghost->getTotalOwnedStructureCount(); ++i) {
+		ManagedReference<SceneObject*> structure = server->getObject(ghost->getOwnedStructure(i));
+
+		if (structure != NULL && structure->isGCWBase())
+			baseCount++;
 	}
 
-	if(baseCount >= maxBasesPerPlayer){
+	if (baseCount >= maxBasesPerPlayer) {
 		creature->sendSystemMessage("You own " + String::valueOf(baseCount) + " bases.  The maximum amount is " + String::valueOf(maxBasesPerPlayer));
 		return false;
 	}
 
 	return true;
 
+}
+
+bool GCWManagerImplementation::hasTooManyBasesNearby(int x, int y) {
+	if (zone == NULL)
+		return true;
+
+	SortedVector<QuadTreeEntry*> inRangeObjects;
+	zone->getInRangeObjects(x, y, 600, &inRangeObjects, true);
+	int count = 0;
+
+	for (int i = 0; i < inRangeObjects.size(); ++i) {
+		SceneObject* scene = cast<SceneObject*>(inRangeObjects.get(i));
+
+		if (scene == NULL)
+			continue;
+
+		if (scene->isGCWBase())
+			count++;
+	}
+
+	if (count >= 3)
+		return true;
+
+	return false;
 }
 
 bool GCWManagerImplementation::canUseTerminals(CreatureObject* creature, BuildingObject* building, SceneObject* terminal){

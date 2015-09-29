@@ -29,9 +29,19 @@ int PlaceGCWBaseComponent::placeStructure(StructureDeed* deed, CreatureObject* c
 	//Check the gcwmanager to make sure more are allowed on this planet
 	GCWManager* gcwMan = zone->getGCWManager();
 
+	if (gcwMan == NULL)
+		return 1;
 
-	if(gcwMan->isPlanetCapped()){
-		creature->sendSystemMessage("Planet is capped for player bases");
+	if (gcwMan->isPlanetCapped()) {
+		creature->sendSystemMessage("This planet is capped for player faction bases.");
+		return 1;
+	}
+
+	if (!gcwMan->canPlaceMoreBases(creature))
+		return 1;
+
+	if (gcwMan->hasTooManyBasesNearby(x, y)) {
+		creature->sendSystemMessage("You cannot place a faction base here. There are already too many near this location.");
 		return 1;
 	}
 
