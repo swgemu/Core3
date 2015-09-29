@@ -346,6 +346,8 @@ class GCWManager extends ManagedService implements Logger {
 
 	public native boolean canPlaceMoreBases(CreatureObject creature);
 
+	public native boolean hasTooManyBasesNearby(int x, int y);
+
 	public int getImperialBaseCount(){
 		return imperialBases;
 	}
