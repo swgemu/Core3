@@ -59,7 +59,7 @@ public:
 	inline uint32 doBleedingTick(CreatureObject* victim, CreatureObject* attacker);
 	inline uint32 doFireTick(CreatureObject* victim, CreatureObject* attacker);
 	inline uint32 doPoisonTick(CreatureObject* victim, CreatureObject* attacker);
-	inline uint32 doDiseaseTick(CreatureObject* victim);
+	inline uint32 doDiseaseTick(CreatureObject* victim, CreatureObject* attacker);
 	inline uint32 doForceChokeTick(CreatureObject* victim, CreatureObject* attacker);
 
 	// Setters

@@ -1174,7 +1174,10 @@ int CreatureObjectImplementation::addWounds(int type, int value, bool notifyClie
 	int newValue = currentValue + value;
 
 	if (newValue < 0)
-		returnValue = value - newValue;
+		returnValue = -currentValue;
+
+	if (newValue >= baseHAM.get(type))
+		returnValue = baseHAM.get(type) - 1 - currentValue;
 
 	if (value > 0 && asCreatureObject()->isPlayerCreature())
 		sendStateCombatSpam("cbt_spam", "wounded", 1, value, false);
