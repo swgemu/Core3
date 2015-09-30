@@ -53,6 +53,7 @@ public:
 	uint32 applyDot(CreatureObject* victim);
 	uint32 initDot(CreatureObject* victim, CreatureObject* attacker);
 	float reduceTick(float reduction);
+	void expireTick() { expires.updateToCurrentTime(); }
 
 	// damage methods
 	inline uint32 doBleedingTick(CreatureObject* victim, CreatureObject* attacker);

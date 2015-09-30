@@ -23,7 +23,12 @@ DamageOverTime::DamageOverTime() {
 	addSerializableVariables();
 }
 
-DamageOverTime::DamageOverTime(CreatureObject* attacker, uint64 tp, uint8 attrib, uint32 str, uint32 dur, int secondaryStrength) {
+DamageOverTime::DamageOverTime(CreatureObject* attacker,
+							   uint64 tp,
+							   uint8 attrib,
+							   uint32 str,
+							   uint32 dur,
+							   int secondaryStrength) {
 
 	if (attacker != NULL)
 		setAttackerID(attacker->getObjectID());
@@ -341,19 +346,17 @@ uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* 
 
 float DamageOverTime::reduceTick(float reduction) {
 	//System::out << "reducing tick with reduction " << reduction << endl;
-	if (reduction < 0)
+	if (reduction < 0.f) // this ensures we can't increse a dot strength
 		return reduction;
 
-	float effReduction = (strength - (float)reduction);
-	float reductionLeft = (float)reduction - strength;
-
-	if (reductionLeft >= 0.0f) {
-		expires.updateToCurrentTime();
+	if (reduction >= strength) {
+		expireTick();
+		return reduction - strength;
 	} else {
 		//System::out << "strength before dotRed " << strength << endl;
-		strength = effReduction;
+		strength -= reduction;
 		//System::out << "strength after dotRed " << strength << endl;
 	}
 
-	return reductionLeft;
+	return 0.f;
 }
