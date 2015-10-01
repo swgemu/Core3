@@ -54,8 +54,9 @@ void ThreatMatrix::clear() {
 
 void ThreatMatrix::add(CreatureObject* creature, ThreatMapEntry* entry) {
 	// TODO: Should total autonomous AI be able to hold threat as well?
-	if(!creature->isPlayerCreature() && !creature->isPet())
-		return;
+	// Commenting out these lines below will need testing and might be reverted if problems arise.
+	//if(!creature->isPlayerCreature() && !creature->isPet())
+		//return;
 
 	// Get Total Damage
 	uint32 totalDamage = entry->getTotalDamage() - entry->getNonAggroDamage();
