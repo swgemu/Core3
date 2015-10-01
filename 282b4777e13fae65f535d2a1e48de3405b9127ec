@@ -1,0 +1,344 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_6163321b",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase1/fs_patrol.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-01T08:06:32Z",
+      "side": 1,
+      "message": "This radius doesn\u0027t appear to get used.",
+      "revId": "282b4777e13fae65f535d2a1e48de3405b9127ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_e1af422a",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase1/fs_patrol.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-01T08:06:32Z",
+      "side": 1,
+      "message": "You should delete the \"ownerID\" data when they despawn.",
+      "revId": "282b4777e13fae65f535d2a1e48de3405b9127ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_01ad8e31",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase1/fs_patrol.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-01T08:06:32Z",
+      "side": 1,
+      "message": "You should delete the \"ownerID\" data here.",
+      "revId": "282b4777e13fae65f535d2a1e48de3405b9127ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_a1a93a26",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase1/fs_patrol.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-01T08:06:32Z",
+      "side": 1,
+      "message": "You should delete the \"ownerID\" data here.",
+      "revId": "282b4777e13fae65f535d2a1e48de3405b9127ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_41bb9672",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase1/fs_patrol.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-01T08:06:32Z",
+      "side": 1,
+      "message": "Don\u0027t you want to delete \":completedCurrentPoint\" when you fail?",
+      "revId": "282b4777e13fae65f535d2a1e48de3405b9127ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_a1929af4",
+        "filename": "MMOCoreORB/bin/scripts/managers/quest/quest_manager.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-01T08:06:32Z",
+      "side": 1,
+      "message": "Shouldn\u0027t that be key instead of \"CurrentQuestID\"?",
+      "revId": "282b4777e13fae65f535d2a1e48de3405b9127ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_c1a6c653",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/patrol.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-01T08:06:32Z",
+      "side": 1,
+      "message": "You may want to have the waypoint names be configurable instead of hard coded for all patrols",
+      "revId": "282b4777e13fae65f535d2a1e48de3405b9127ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_21b68a8b",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/patrol.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-01T08:06:32Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you delete \":PatrolWaypointsReached\" when you fail the patrol?",
+      "revId": "282b4777e13fae65f535d2a1e48de3405b9127ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_c18fa6cb",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/patrol.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-01T08:06:32Z",
+      "side": 1,
+      "message": "Where you write this, it doesn\u0027t have \"Village\" in it.",
+      "revId": "282b4777e13fae65f535d2a1e48de3405b9127ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_61bc926d",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/patrol.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-01T08:06:32Z",
+      "side": 1,
+      "message": "Where you write this, you use a capital F",
+      "revId": "282b4777e13fae65f535d2a1e48de3405b9127ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_81c19ee6",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/patrol.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-01T08:06:32Z",
+      "side": 1,
+      "message": "I don\u0027t see this being written in this file. It\u0027s written in fs_patrol and should be deleted from there.",
+      "revId": "282b4777e13fae65f535d2a1e48de3405b9127ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_0186eeb9",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/task.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-01T08:06:32Z",
+      "side": 1,
+      "message": "I don\u0027t see you using this, and if you were, it\u0027s not an accurate way to calculate distance.",
+      "revId": "282b4777e13fae65f535d2a1e48de3405b9127ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_c17d66b3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase1/sarguillo_phase1_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-01T08:06:32Z",
+      "side": 1,
+      "message": "You aren\u0027t currently handling when the player has another npc\u0027s quest (\"intro_hasotherquest\").",
+      "revId": "282b4777e13fae65f535d2a1e48de3405b9127ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_a1805a8c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase1/sarguillo_phase1_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-01T08:06:32Z",
+      "side": 1,
+      "message": "Shouldn\u0027t \"intro_noteligible\" also be for if they\u0027ve completed someone else\u0027s quest this phase?",
+      "revId": "282b4777e13fae65f535d2a1e48de3405b9127ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_8168bef6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase1/sarguillo_phase1_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-01T08:06:32Z",
+      "side": 1,
+      "message": "The string file has a string for failure on death. You should set up a death observer on the player when you start.",
+      "revId": "282b4777e13fae65f535d2a1e48de3405b9127ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_216d2a05",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase1/sarguillo_phase1_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-01T08:06:32Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you be incrementing this here and not setting it to zero?",
+      "revId": "282b4777e13fae65f535d2a1e48de3405b9127ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_e17662d8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase1/sarguillo_phase1_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-01T08:06:32Z",
+      "side": 1,
+      "message": "Don\u0027t you need to increment \"FsPatrolCompletedCount\" here?",
+      "revId": "282b4777e13fae65f535d2a1e48de3405b9127ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_0174aecd",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase1/sarguillo_phase1_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-01T08:06:32Z",
+      "side": 1,
+      "message": "and here?",
+      "revId": "282b4777e13fae65f535d2a1e48de3405b9127ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_814f5e92",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase1/sarguillo_phase1_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-01T08:06:32Z",
+      "side": 1,
+      "message": "Just go ahead and allow the item to overflow inventory. Otherwise, you\u0027d need to check inventory before completing the quest or the player will miss out on getting the item.",
+      "revId": "282b4777e13fae65f535d2a1e48de3405b9127ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_614a5285",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase1/sarguillo_phase1_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-01T08:06:32Z",
+      "side": 1,
+      "message": "pCleanBatt? heh",
+      "revId": "282b4777e13fae65f535d2a1e48de3405b9127ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
