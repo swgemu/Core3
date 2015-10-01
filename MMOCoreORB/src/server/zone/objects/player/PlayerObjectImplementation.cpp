@@ -1483,7 +1483,7 @@ void PlayerObjectImplementation::addIncapacitationTime() {
 	for (int i = incapacitationTimes.size() - 1; i >= 0; i--) {
 		uint32 incapTime = incapacitationTimes.get(i);
 
-		if ((now - incapTime) >= 900) {
+		if ((now - incapTime) >= 600) {
 			incapacitationTimes.removeElementAt(i);
 		}
 	}

@@ -79,7 +79,6 @@ public:
 
 			if (deadRecovery) {
 				player->playEffect("clienteffect/player_clone_compile.cef");
-				ghost->resetIncapacitationTimes();
 				player->notifyObservers(ObserverEventType::PLAYERCLONED, player, 0);
 				player->broadcastPvpStatusBitmask();
 			}

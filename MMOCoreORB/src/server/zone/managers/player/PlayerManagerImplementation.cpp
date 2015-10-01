@@ -721,6 +721,11 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 	player->updateTimeOfDeath();
 	player->clearBuffs(true);
 
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost != NULL)
+		ghost->resetIncapacitationTimes();
+
 	if (attacker->getFaction() != 0) {
 		if (attacker->isPlayerCreature() || attacker->isPet()) {
 			CreatureObject* attackerCreature = cast<CreatureObject*>(attacker);
@@ -744,9 +749,6 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 	CombatManager::instance()->freeDuelList(player, false);
 
 	player->notifyObjectKillObservers(attacker);
-
-	/*Reference<Task*> task = new PlayerIncapacitationRecoverTask(player, true);
-	task->schedule(10 * 1000);*/
 }
 
 void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* player, int typeofdeath) {
