@@ -129,8 +129,9 @@ class PlayerObject extends IntangibleObject {
 	
 	@dereferenced
 	protected SchematicList schematicList;
-	
-	protected byte incapacitationCounter; //TODO: Convert this to a session!
+
+	@dereferenced
+	protected Vector<unsigned int> incapacitationTimes;
 	
 	protected unsigned int suiBoxNextID;
 	
@@ -352,8 +353,7 @@ class PlayerObject extends IntangibleObject {
 		
 		drinkFilling = 0;
 		drinkFillingMax = 0;
-		
-		incapacitationCounter = 0;
+
 		suiBoxNextID = 0;
 		
 		reactionFines = 0;
@@ -1041,33 +1041,18 @@ class PlayerObject extends IntangibleObject {
 	public SortedVector<string> getPermissionGroups() {
 		return permissionGroups;
 	}
-	
-	@dirty
-	public native boolean isFirstIncapacitationExpired();
 
-	public void resetIncapacitationCounter() {
-		incapacitationCounter = 0;
-	}
-
-	public native void resetFirstIncapacitationTime();
-
-	public void updateIncapacitationCounter() {
-		incapacitationCounter++;
-
-		if (isFirstIncapacitation() || isFirstIncapacitationExpired())
-			resetFirstIncapacitationTime();
-	}
-
-	@read
-	public boolean isFirstIncapacitation() {
-		return incapacitationCounter == 1;
-	}
+	public native void addIncapacitationTime();
 
 	@read
 	public byte getIncapacitationCounter() {
-		return incapacitationCounter;
+		return incapacitationTimes.size();
 	}
-	
+
+	public void resetIncapacitationTimes() {
+		incapacitationTimes.removeAll();
+	}
+
 	//Duel list manipulation methods
 	public void addToDuelList(CreatureObject targetPlayer) {
 		duelList.put(targetPlayer);

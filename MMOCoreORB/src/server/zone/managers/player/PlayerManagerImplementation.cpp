@@ -650,7 +650,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 
 	PlayerObject* ghost = playerCreature->getPlayerObject();
 
-	ghost->updateIncapacitationCounter();
+	ghost->addIncapacitationTime();
 
 	DeltaVector<ManagedReference<SceneObject*> >* defenderList = destructor->getDefenderList();
 
@@ -661,7 +661,9 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		destructor->removeDefender(destructedObject);
 	}
 
-	if ((!destructor->isKiller() || !isDefender) && ghost->getIncapacitationCounter() < 3) {
+	if ((destructor->isKiller() && isDefender) || ghost->getIncapacitationCounter() >= 3) {
+		killPlayer(destructor, playerCreature, 0);
+	} else {
 		playerCreature->setCurrentSpeed(0);
 		playerCreature->setPosture(CreaturePosture::INCAPACITATED, true);
 		playerCreature->updateLocomotion();
@@ -685,11 +687,6 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		stringId.setTT(destructor->getObjectID());
 
 		playerCreature->sendSystemMessage(stringId);
-
-	} else {
-		if (destructor->isKiller() || !ghost->isFirstIncapacitationExpired()) {
-			killPlayer(destructor, playerCreature, 0);
-		}
 	}
 
 	return 0;
