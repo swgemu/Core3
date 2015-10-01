@@ -61,7 +61,7 @@ public:
 				ManagedReference<CreatureObject*> player = playerMap->getNextValue(false);
 				String name = player->getDisplayedName();
 
-				if (filter.isEmpty() || name.contains(filter)) {
+				if (filter.isEmpty() || name.toLowerCase().contains(filter.toLowerCase())) {
 					findResults->addMenuItem(name, player->getObjectID());
 				}
 			}
