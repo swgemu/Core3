@@ -112,7 +112,7 @@ public:
 
 		do {
 			for (int i = 0; i < 10; i++) {
-				position = player->getWorldCoordinate(distance + System::random(20), angle - System::random(2 * angle));
+				position = player->getWorldCoordinate(distance + System::random(20), angle - System::random(2 * angle), true);
 
 				if (noInterferingObjects(player, position)) {
 					return position;

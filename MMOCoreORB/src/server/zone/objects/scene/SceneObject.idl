@@ -885,12 +885,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@local
 	@dereferenced
 	@dirty
-	public native Vector3 getCoordinate(float distance, float angleDegrees);
+	public native Vector3 getCoordinate(float distance, float angleDegrees, boolean includeZ);
 	
 	@local
 	@dereferenced
 	@dirty
-	public native Vector3 getWorldCoordinate(float distance, float angleDegrees);
+	public native Vector3 getWorldCoordinate(float distance, float angleDegrees, boolean includeZ);
 	
 	@mock
 	@dirty

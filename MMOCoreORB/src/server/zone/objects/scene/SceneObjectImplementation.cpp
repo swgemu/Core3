@@ -1092,24 +1092,30 @@ Vector3 SceneObjectImplementation::getWorldPosition() {
 	return position;
 }
 
-Vector3 SceneObjectImplementation::getCoordinate(float distance, float angleDegrees) {
+Vector3 SceneObjectImplementation::getCoordinate(float distance, float angleDegrees, bool includeZ) {
 	float angleRads = angleDegrees * (M_PI / 180.0f);
 	float newAngle = angleRads + (M_PI / 2) - direction.getRadians();
 
 	float newX = getPositionX() + (cos(newAngle) * distance); // client has x/y inverted
 	float newY = getPositionY() + (sin(newAngle) * distance);
-	float newZ = getZone()->getHeight(newX, newY);
+	float newZ = 0.0f;
+
+	if (includeZ)
+		newZ = getZone()->getHeight(newX, newY);
 
 	return Vector3(newX, newY, newZ);
 }
 
-Vector3 SceneObjectImplementation::getWorldCoordinate(float distance, float angleDegrees) {
+Vector3 SceneObjectImplementation::getWorldCoordinate(float distance, float angleDegrees, bool includeZ) {
 	float angleRads = angleDegrees * (M_PI / 180.0f);
 	float newAngle = angleRads + (M_PI / 2) - direction.getRadians();
 
 	float newX = getWorldPositionX() + (cos(newAngle) * distance); // client has x/y inverted
 	float newY = getWorldPositionY() + (sin(newAngle) * distance);
-	float newZ = getZone()->getHeight(newX, newY);
+	float newZ = 0.0f;
+
+	if (includeZ)
+		newZ = getZone()->getHeight(newX, newY);
 
 	return Vector3(newX, newY, newZ);
 }

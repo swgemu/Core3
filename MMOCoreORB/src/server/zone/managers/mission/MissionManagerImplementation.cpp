@@ -578,7 +578,9 @@ void MissionManagerImplementation::randomizeDestroyMission(CreatureObject* playe
 }
 
 void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject* player, MissionObject* mission, const int faction) {
-	if (player->getZone() == NULL) {
+	Zone* zone = player->getZone();
+
+	if (zone == NULL) {
 		return;
 	}
 
@@ -633,7 +635,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 
 	mission->setMissionNumber(randTexts);
 
-	TerrainManager* terrain = player->getZone()->getPlanetManager()->getTerrainManager();
+	TerrainManager* terrain = zone->getPlanetManager()->getTerrainManager();
 
 	Vector3 startPos;
 
@@ -642,21 +644,24 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	while (!foundPosition && maximumNumberOfTries-- > 0) {
 		foundPosition = true;
 
-		startPos = player->getWorldCoordinate(System::random(1000) + 1000, (float)System::random(360));
+		startPos = player->getWorldCoordinate(System::random(1000) + 1000, (float)System::random(360), false);
 
-		float height = player->getZone()->getHeight(startPos.getX(), startPos.getY());
-		float waterHeight = height * 2;
-		bool result = terrain->getWaterHeight(startPos.getX(), startPos.getY(), waterHeight);
+		if (zone->isWithinBoundaries(startPos)) {
+			float height = zone->getHeight(startPos.getX(), startPos.getY());
+			float waterHeight = height * 2;
+			bool result = terrain->getWaterHeight(startPos.getX(), startPos.getY(), waterHeight);
 
-		if (player->getZone()->isWithinBoundaries(startPos) &&
-				(!result || waterHeight <= height)) {
-			//Check that the position is outside cities.
-			SortedVector<ManagedReference<ActiveArea* > > activeAreas;
-			player->getZone()->getInRangeActiveAreas(startPos.getX(), startPos.getY(), &activeAreas, true);
-			for (int i = 0; i < activeAreas.size(); ++i) {
-				if (activeAreas.get(i)->isMunicipalZone()) {
-					foundPosition = false;
+			if (!result || waterHeight <= height) {
+				//Check that the position is outside cities.
+				SortedVector<ManagedReference<ActiveArea* > > activeAreas;
+				zone->getInRangeActiveAreas(startPos.getX(), startPos.getY(), &activeAreas, true);
+				for (int i = 0; i < activeAreas.size(); ++i) {
+					if (activeAreas.get(i)->isMunicipalZone()) {
+						foundPosition = false;
+					}
 				}
+			} else {
+				foundPosition = false;
 			}
 		} else {
 			foundPosition = false;
@@ -667,7 +672,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 		return;
 	}
 
-	mission->setStartPosition(startPos.getX(), startPos.getY(), player->getZone()->getZoneName());
+	mission->setStartPosition(startPos.getX(), startPos.getY(), zone->getZoneName());
 	mission->setCreatorName(nm->makeCreatureName());
 
 	mission->setMissionTargetName("@lair_n:" + lairTemplateObject->getName());
@@ -1392,7 +1397,7 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 
 	int maximumNumberOfTries = 20;
 	while (!foundPosition && maximumNumberOfTries-- > 0) {
-		position = player->getWorldCoordinate(System::random(3000) + 1000, (float)System::random(360));
+		position = player->getWorldCoordinate(System::random(3000) + 1000, (float)System::random(360), false);
 
 		//Check if it is a position where you can build and away from any travel points.
 		if (playerZone->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL)) {
