@@ -2731,8 +2731,12 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 }
 
 bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object) {
+	return isAttackableBy(object, false);
+}
+
+bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object, bool bypassDeadCheck) {
 	if(object->isCreatureObject())
-		return isAttackableBy(object->asCreatureObject());
+		return isAttackableBy(object->asCreatureObject(), bypassDeadCheck);
 
 	PlayerObject* ghost = getPlayerObject();
 
@@ -2742,7 +2746,7 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object) {
 	if (ghost->isOnLoadScreen())
 		return false;
 
-	if (isDead() || isIncapacitated() || isInvisible())
+	if ((!bypassDeadCheck && (isDead() || isIncapacitated())) || isInvisible())
 		return false;
 
 	if (getPvpStatusBitmask() == CreatureFlag::NONE)

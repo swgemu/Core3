@@ -616,13 +616,15 @@ class AiAgent extends CreatureObject {
 	}
 
 	/**
-	 * Evaluates if this object can be attacket by the passed creature object
+	 * Evaluates if this can be attacket by object
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
-	 * @return returns true if the creature object can attack this 
+	 * @return returns true if object can attack this 
 	 */
 	@dirty
 	public native boolean isAttackableBy(CreatureObject object);
+	@dirty
+	public native boolean isAttackableBy(TangibleObject object);
 
 	/**
 	 * Evaluates if this creature is aggresive to the object
