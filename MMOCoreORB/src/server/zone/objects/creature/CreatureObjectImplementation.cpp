@@ -2742,11 +2742,6 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object) {
 	if(object->isCreatureObject())
 		return isAttackableBy(object->asCreatureObject());
 
-	// TODO (dannuic): this will prevent TANOs from attacking mobs (turrets, minefields, etc)
-	if(this->isAiAgent()) {
-		return false;
-	}
-
 	PlayerObject* ghost = getPlayerObject();
 
 	if(ghost == NULL)
