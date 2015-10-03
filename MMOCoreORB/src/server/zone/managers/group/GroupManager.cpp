@@ -20,6 +20,8 @@
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/callbacks/GroupLootChangedSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/GroupLootPickLooterSuiCallback.h"
+#include "server/zone/packets/object/OpenLotteryWindow.h"
+#include "server/zone/objects/player/sessions/LootLotterySession.h"
 
 
 GroupManager::GroupManager() {
@@ -585,6 +587,12 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 		group->setLootRule(newRule);
 		group->updateLootRules(); //Send update packet to all members.
 
+		//Notify group leader of the new rule with a system message.
+		StringIdChatParameter leaderMsg(promptText);
+		ManagedReference<CreatureObject*> leader = group->getLeader().castTo<CreatureObject*>();
+		if (leader != NULL)
+			leader->sendSystemMessage(leaderMsg);
+
 		//Notify group members of the new rule with an SUI box.
 		for (int i = 0; i < group->getGroupSize(); ++i) {
 			ManagedReference<CreatureObject*> member = (group->getGroupMember(i)).castTo<CreatureObject*>();
@@ -693,6 +701,68 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 			notificationOther.setTT(group->getMasterLooterID());
 			group->sendSystemMessage(notificationOther, false);
 		}
+
+	}
+
+	void GroupManager::createLottery(GroupObject* group, AiAgent* corpse) {
+		//Pre: Group and corpse are locked.
+		//Post: Group and corpse are locked.
+
+		if (group == NULL || corpse == NULL)
+			return;
+
+		//Create new Lottery session.
+		ManagedReference<LootLotterySession*> session = new LootLotterySession(group->getObjectID(), corpse);
+		session->initializeSession();
+		corpse->addActiveSession(SessionFacadeType::LOOTLOTTERY, session);
+
+		//Get the corpse's inventory.
+		SceneObject* lootContainer = corpse->getSlottedObject("inventory");
+		if (lootContainer == NULL)
+			return;
+
+		//Set permissions on all loot items to block theft.
+		for (int i = 0; i < lootContainer->getContainerObjectsSize(); ++i) {
+			SceneObject* lootItem = lootContainer->getContainerObject(i);
+			if (lootItem == NULL)
+				continue;
+
+			ContainerPermissions* itemPerms = lootItem->getContainerPermissions();
+			if (itemPerms == NULL)
+				continue;
+
+			itemPerms->setInheritPermissionsFromParent(false);
+			itemPerms->setDenyPermission("player", ContainerPermissions::OPEN);
+			itemPerms->setDenyPermission("player", ContainerPermissions::MOVECONTAINER);
+		}
+
+		//Add group members within range to the Lottery.
+		for (int i = 0; i < group->getGroupSize(); ++i) {
+			ManagedReference<SceneObject*> object = group->getGroupMember(i);
+			if (object == NULL || !object->isPlayerCreature())
+				continue;
+
+			CreatureObject* member = cast<CreatureObject*>(object.get());
+			if (!member->isInRange(corpse, 128.f)) {
+				StringIdChatParameter tooFar("group","too_far_away_for_lottery__");
+				member->sendSystemMessage(tooFar); //"You are too far away from the creature to participate in the lottery."
+				continue;
+			}
+
+			session->addEligiblePlayer(member);
+
+			//Send Lottery window.
+			OpenLotteryWindow* packet = new OpenLotteryWindow(member, lootContainer);
+			member->sendMessage(packet);
+		}
+	}
+
+	void GroupManager::doRandomLoot(GroupObject* group, AiAgent* corpse) {
+		//Pre: Group and corpse are locked.
+		//Post: Group and corpse are locked.
+
+
+
 
 	}
 

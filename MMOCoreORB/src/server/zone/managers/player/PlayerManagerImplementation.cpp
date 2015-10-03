@@ -2864,12 +2864,6 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject
 	if (creatureInventory == NULL)
 		return;
 
-	if (creatureInventory->getContainerPermissions()->getOwnerID() != player->getObjectID() && creatureInventory->getContainerPermissions()->getOwnerID() != player->getGroupID()) {
-		player->sendSystemMessage("@error_message:no_corpse_permission"); //You do not have permission to access this corpse.
-
-		return;
-	}
-
 	int cashCredits = ai->getCashCredits();
 
 	if (cashCredits > 0) {

@@ -8,7 +8,10 @@
 #ifndef GROUPLOOTTASK_H_
 #define GROUPLOOTTASK_H_
 #include "engine/engine.h"
+#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/managers/group/GroupManager.h"
+#include "server/zone/objects/player/sessions/LootLotterySession.h"
 
 class GroupLootTask : public Task {
 	ManagedReference<GroupObject*> group;
@@ -23,19 +26,23 @@ public:
 		player = pl;
 		corpse = ai;
 		lootAll = all;
-
 	}
 
 	void run() {
 		if (group == NULL || player == NULL || corpse == NULL)
 			return;
 
-		Locker plocker(player);
-		Locker glocker(group, player);
+		Locker clocker(corpse);
+		Locker gclocker(group, corpse);
+
+		//Get the corpse's inventory.
+		SceneObject* lootContainer = corpse->getSlottedObject("inventory");
+		if (lootContainer == NULL)
+			return;
 
 		switch (group->getLootRule()) {
 		case GroupManager::FREEFORALL:
-			//We allow the ninja to loot.
+			//GO GET 'EM, NINJA! YEEEHAW!!!
 			break;
 		case GroupManager::MASTERLOOTER:
 			if (!group->checkMasterLooter(player)) {
@@ -46,34 +53,154 @@ public:
 			}
 			break;
 		case GroupManager::LOTTERY:
-			//TODO: Send player and corpse to Lottery rule handler.
-			break;
+			//Allow player to open corpse if there is nothing in it.
+			if (lootContainer->getContainerObjectsSize() < 1)
+				break;
+
+			//Stop player looting corpse if lottery in progress, otherwise open corpse to player.
+			if (corpse->containsActiveSession(SessionFacadeType::LOOTLOTTERY)) {
+				ManagedReference<LootLotterySession*> session = cast<LootLotterySession*>(corpse->getActiveSession(SessionFacadeType::LOOTLOTTERY).get());
+				if (session == NULL)
+					return;
+
+				if (!session->isLotteryFinished()) {
+					StringIdChatParameter msg("group","still_waiting"); //"Still waiting for your group members..."
+					player->sendSystemMessage(msg);
+				} else
+					break; //Allow player to open the corpse.
+
+				return;
+			}
+
+			//Corpse doesn't have an existing lottery, so check if we should make one.
+			if (!membersInRange())
+				break; //If no other group members in range, function as if free for all.
+			splitCredits();
+			GroupManager::instance()->createLottery(group, corpse);
+			return;
 		case GroupManager::RANDOM:
-			//TODO: Send player and corpse to Random rule handler.
-			break;
+			splitCredits();
+			GroupManager::instance()->doRandomLoot(group, corpse);
+			return;
 		default:
 			return;
 		}
 
-		glocker.release();
-
-		Locker clocker(corpse, player);
-
-		//Get the corpse's inventory.
-		SceneObject* creatureInventory = corpse->getSlottedObject("inventory");
-		if (creatureInventory == NULL)
-			return;
-
-		//Allow player to loot the corpse.
+		//At this point, allow player to loot the corpse.
 		if (lootAll) {
-			PlayerManager* playerManager = player->getZoneServer()->getPlayerManager();
-			playerManager->lootAll(player, corpse);
+			splitCredits();
+			gclocker.release();
+
+			Locker lootAllLocker(player, corpse);
+			player->getZoneServer()->getPlayerManager()->lootAll(player, corpse);
+			lootAllLocker.release();
+
+			Locker groupLocker(group, corpse);
+			if (group->getLootRule() == GroupManager::MASTERLOOTER && lootContainer->getContainerObjectsSize() <= 0) {
+				StringIdChatParameter msg("group","master_loot_all"); //"The master looter has looted all items from the corpse."
+				group->sendSystemMessage(msg, false);
+			}
 		} else {
+			gclocker.release();
+			Locker lootlocker(player, corpse);
 			corpse->notifyObservers(ObserverEventType::LOOTCREATURE, player, 0);
-			creatureInventory->openContainerTo(player);
+			lootContainer->openContainerTo(player);
 		}
 
 	}
+
+	void splitCredits() {
+		//Pre: Group and corpse are locked.
+		//Post: Group and corpse are locked.
+
+		int lootCredits = corpse->getCashCredits();
+
+		if (lootCredits < 1)
+			return;
+
+		//Send initial system message to the looter.
+		StringIdChatParameter lootSelf("base_player", "prose_coin_loot"); //"You loot %DI credits from %TT."
+		lootSelf.setDI(lootCredits);
+		lootSelf.setTT(corpse);
+		player->sendSystemMessage(lootSelf);
+
+		//Send initial system message to everyone in group except the looter.
+		StringIdChatParameter lootMember("group", "notify_coin_loot_int"); //"[GROUP] %TU looted %DI credits from %TT."
+		lootMember.setTU(player);
+		lootMember.setDI(lootCredits);
+		lootMember.setTT(corpse);
+		group->sendSystemMessage(lootMember, player);
+
+		//Determine eligible group members to give credits.
+		Vector<CreatureObject*> payees;
+		for (int i = 0; i < group->getGroupSize(); ++i) {
+			ManagedReference<SceneObject*> object = group->getGroupMember(i);
+			if (object == NULL || !object->isPlayerCreature())
+				continue;
+
+			ManagedReference<CreatureObject*> member = cast<CreatureObject*>(object.get());
+			if (member == NULL || !member->isInRange(corpse, 128.f))
+				continue;
+			payees.add(member);
+		}
+
+		//Figure out how many credits each member gets.
+		int memberBaseCredits = lootCredits / payees.size();
+		int memberOddCredits = lootCredits % payees.size();
+
+		//Create one cash payout per payee.
+		Vector<int> cashPayouts;
+		for (int i = 0; i < payees.size(); ++i) {
+			int payout = memberBaseCredits;
+			if (memberOddCredits > 0) {
+				payout += 1;
+				memberOddCredits -= 1;
+			}
+			cashPayouts.add(payout);
+		}
+
+		//Hand out the payouts randomly since some may be larger.
+		for (int i = 0; i < payees.size(); ++i) {
+			CreatureObject* payee = payees.get(i);
+			int random = System::random(cashPayouts.size() - 1);
+			int payout = cashPayouts.get(random);
+			cashPayouts.remove(random);
+
+			payee->addCashCredits(payout, true);
+
+			//Send credit split system message.
+			if (payee == player) {
+				StringIdChatParameter splitLooter("group", "prose_split_coins_self"); //"[GROUP] You split %TU credits and receive %TT credits as your share."
+				String totalCredits;
+				splitLooter.setTU(totalCredits.valueOf(lootCredits));
+				String selfCredits;
+				splitLooter.setTT(selfCredits.valueOf(payout));
+
+				player->sendSystemMessage(splitLooter);
+			} else {
+				StringIdChatParameter splitMember("group", "prose_split"); //"[GROUP] You receive %DI credits as your share."
+				splitMember.setDI(payout);
+				payee->sendSystemMessage(splitMember);
+			}
+		}
+
+		corpse->setCashCredits(0);
+
+	}
+
+	bool membersInRange() {
+		for (int i = 0; i < group->getGroupSize(); ++i) {
+			ManagedReference<SceneObject*> member = group->getGroupMember(i);
+			if (member == NULL || !member->isPlayerCreature())
+				continue;
+
+			if (member->isInRange(corpse, 128.f) && member != player)
+				return true;
+		}
+
+		return false;
+	}
+
 };
 
 

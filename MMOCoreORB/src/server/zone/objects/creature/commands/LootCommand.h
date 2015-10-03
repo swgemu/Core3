@@ -32,7 +32,7 @@ public:
 
 		Locker locker(ai, creature);
 
-		if (!ai->isDead())
+		if (!ai->isDead() || creature->isDead())
 			return GENERALERROR;
 
 		if (ai->getDistanceTo(creature) > 16) {
@@ -41,18 +41,23 @@ public:
 		}
 
 		//Get the corpse's inventory.
-		SceneObject* creatureInventory = ai->getSlottedObject("inventory");
-		if (creatureInventory == NULL)
+		SceneObject* lootContainer = ai->getSlottedObject("inventory");
+		if (lootContainer == NULL)
 			return GENERALERROR;
 
 		//Determine the loot rights.
-		bool looterIsOwner = (creatureInventory->getContainerPermissions()->getOwnerID() == creature->getObjectID());
-		bool groupIsOwner = (creatureInventory->getContainerPermissions()->getOwnerID() == creature->getGroupID());
+		bool looterIsOwner = (lootContainer->getContainerPermissions()->getOwnerID() == creature->getObjectID());
+		bool groupIsOwner = (lootContainer->getContainerPermissions()->getOwnerID() == creature->getGroupID());
 
 		if (!looterIsOwner && !groupIsOwner) {
-			StringIdChatParameter noPermission("error_message","no_corpse_permission"); //You do not have permission to access this corpse.
-			creature->sendSystemMessage(noPermission);
-			return GENERALERROR;
+			//Check if player owns an item inside the container. This can happen after a Loot Lottery if inventory was full.
+			if (!pickupOwnedItems(creature, lootContainer)) {
+				StringIdChatParameter noPermission("error_message","no_corpse_permission"); //You do not have permission to access this corpse.
+				creature->sendSystemMessage(noPermission);
+				return GENERALERROR;
+			}
+
+			return SUCCESS;
 		}
 
 		bool lootAll = arguments.toString().beginsWith("all");
@@ -74,10 +79,50 @@ public:
 			playerManager->lootAll(creature, ai);
 		} else {
 			ai->notifyObservers(ObserverEventType::LOOTCREATURE, creature, 0);
-			creatureInventory->openContainerTo(creature);
+			lootContainer->openContainerTo(creature);
 		}
 
 		return SUCCESS;
+	}
+
+	bool pickupOwnedItems(CreatureObject* creature, SceneObject* lootContainer) const {
+		bool pickedUpItem = false;
+
+		ContainerPermissions* contPerms = lootContainer->getContainerPermissions();
+		if (contPerms == NULL) return false;
+
+		//Check each loot item to see if the player owns it.
+		int totalItems = lootContainer->getContainerObjectsSize();
+		for (int i = totalItems - 1; i >= 0; --i) {
+			SceneObject* object = lootContainer->getContainerObject(i);
+			if (object == NULL) continue;
+
+			ContainerPermissions* itemPerms = object->getContainerPermissions();
+			if (itemPerms == NULL) continue;
+
+			//If player owns the loot item, transfer it to them.
+			if (itemPerms->getOwnerID() == creature->getObjectID()) {
+				//Transfer the item to the player.
+				SceneObject* playerInventory = creature->getSlottedObject("inventory");
+				if (playerInventory == NULL) return true;
+
+				if (playerInventory->isContainerFullRecursive()) {
+				StringIdChatParameter full("group", "you_are_full"); //"Your Inventory is full."
+				creature->sendSystemMessage(full);
+				return true;
+				}
+
+				uint64 originalOwner = contPerms->getOwnerID();
+				contPerms->setOwner(creature->getObjectID());
+
+				creature->getZoneServer()->getObjectController()->transferObject(object, playerInventory, -1, true);
+
+				contPerms->setOwner(originalOwner);
+				pickedUpItem = true;
+			}
+		}
+
+		return pickedUpItem;
 	}
 
 };

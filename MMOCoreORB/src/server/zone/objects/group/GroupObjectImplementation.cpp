@@ -491,6 +491,22 @@ void GroupObjectImplementation::sendSystemMessage(const String& fullPath, bool s
 	}
 }
 
+void GroupObjectImplementation::sendSystemMessage(StringIdChatParameter& param, CreatureObject* excluded) {
+	Locker lock(_this.get());
+
+	for (int i = 0; i < groupMembers.size(); ++i) {
+		GroupMember* member = &groupMembers.get(i);
+
+		ManagedReference<SceneObject*> obj = member->get();
+
+		if (obj == NULL || !obj->isPlayerCreature() || obj == excluded)
+			continue;
+
+		CreatureObject* creature = cast<CreatureObject*>(obj.get());
+		creature->sendSystemMessage(param);
+	}
+}
+
 bool GroupObjectImplementation::isOtherMemberPlayingMusic(CreatureObject* player) {
 	for (int i = 0; i < getGroupSize(); ++i) {
 		Reference<CreatureObject*> groupMember = (getGroupMember(i)).castTo<CreatureObject*>();
