@@ -248,13 +248,6 @@ void CreatureObjectImplementation::finalize() {
 
 }
 
-void CreatureObjectImplementation::sendTo(SceneObject* player, bool doClose) {
-	if (isInvisible() && player != asCreatureObject())
-		return;
-
-	TangibleObjectImplementation::sendTo(player, doClose);
-}
-
 void CreatureObjectImplementation::sendToOwner(bool doClose) {
 	if (owner == NULL)
 		return;
@@ -994,8 +987,7 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 
 int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {
 	if (damageType < 0 || damageType >= hamList.size()) {
-		error(
-				"incorrect damage type in CreatureObjectImplementation::inflictDamage");
+		error("incorrect damage type in CreatureObjectImplementation::inflictDamage");
 		return 0;
 	}
 
@@ -1009,7 +1001,7 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 	if (!destroy && newValue <= 0)
 		newValue = 1;
 
-	if (getSkillMod("avoid_incapacitation") > 0)
+	if (getSkillMod("avoid_incapacitation") > 0 && newValue <= 0)
 		newValue = 1;
 
 	if (damageType % 3 != 0 && newValue < 0) // secondaries never should go negative
