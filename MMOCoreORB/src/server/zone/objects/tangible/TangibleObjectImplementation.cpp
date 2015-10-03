@@ -944,6 +944,13 @@ void TangibleObjectImplementation::addActiveArea(ActiveArea* area) {
 	activeAreas.put(area);
 }
 
+void TangibleObjectImplementation::sendTo(SceneObject* player, bool doClose) {
+	if (isInvisible() && player != asTangibleObject())
+		return;
+
+	SceneObjectImplementation::sendTo(player, doClose);
+}
+
 bool TangibleObjectImplementation::isCityStreetLamp(){
 	return (templateObject != NULL && templateObject->getFullTemplateString().contains("object/tangible/furniture/city/streetlamp"));
 }

@@ -229,11 +229,7 @@ function TheaterManagerScreenPlay:spawnControl(pPlayer)
 	local cellID = SceneObject(pCell):getObjectID()
 	local planetName = SceneObject(pTheater):getZoneName()
 
-	local areaX = SceneObject(pCell):getWorldPositionX() + 0
-	local areaY = SceneObject(pCell):getWorldPositionY() + 51
-	local areaZ = getTerrainHeight(pCell, areaX, areaY) + 2
-
-	local pControl = spawnSceneObject(planetName, "object/tangible/theme_park/invisible_object.iff", areaX, areaZ, areaY, cellID, 0)
+	local pControl = spawnSceneObject(planetName, "object/tangible/theme_park/invisible_object.iff", 0.58, 2.13, 58.7, cellID, 0)
 
 	if (pControl == nil) then
 		return nil
@@ -312,11 +308,11 @@ function TheaterManagerScreenPlay:startAudition(pPlayer)
 
 	self:spawnJudges(pTheater)
 
-	local areaX = SceneObject(pCell):getWorldPositionX() + 0
-	local areaY = SceneObject(pCell):getWorldPositionY() + 51
-	local areaZ = getTerrainHeight(pCell, areaX, areaY) + 2
+	local areaX = SceneObject(pControl):getWorldPositionX()
+	local areaY = SceneObject(pControl):getWorldPositionY()
+	local areaZ = getTerrainHeight(pControl, areaX, areaY)
 
-	local pAuditionArea = spawnActiveArea(SceneObject(pTheater):getZoneName(), "object/active_area.iff", areaX, areaZ, areaY, 7, 0)
+	local pAuditionArea = spawnActiveArea(SceneObject(pTheater):getZoneName(), "object/active_area.iff", areaX, areaZ, areaY, 10, SceneObject(pCell):getObjectID())
 
 	if (pAuditionArea == nil) then
 		printf("Error in TheaterManagerScreenPlay:startAudition, unable to create activeArea.\n")
@@ -447,7 +443,7 @@ function TheaterManagerScreenPlay:beginAudition(pControl)
 	end
 
 	if (readData(playerID .. ":theater_manager:inAuditionArea") == 0) then
-		self:failAudition(pControl, "fail_left_audition_area")
+		self:failAudition(pControl, "fail_not_in_audition_area")
 	else
 		CreatureObject(pPlayer):sendSystemMessage("@quest/crowd_pleaser/system_messages:audition_begin")
 		writeData(playerID .. ":theater_manager:auditionPhase", 1)
@@ -1004,11 +1000,11 @@ function TheaterManagerScreenPlay:beginPerformance(pPlayer)
 
 	self:determineAudienceInterests(pPlayer)
 
-	local areaX = SceneObject(pCell):getWorldPositionX() + 0
-	local areaY = SceneObject(pCell):getWorldPositionY() + 51
-	local areaZ = getTerrainHeight(pCell, areaX, areaY) + 2
+	local areaX = SceneObject(pControl):getWorldPositionX()
+	local areaY = SceneObject(pControl):getWorldPositionY()
+	local areaZ = getTerrainHeight(pControl, areaX, areaY)
 
-	local pPerformanceArea = spawnActiveArea(SceneObject(pCell):getZoneName(), "object/active_area.iff", areaX, areaZ, areaY, 10, 0)
+	local pPerformanceArea = spawnActiveArea(SceneObject(pCell):getZoneName(), "object/active_area.iff", areaX, areaZ, areaY, 10, SceneObject(pCell):getObjectID())
 
 	if (pPerformanceArea == nil) then
 		printf("Error in TheaterManagerScreenPlay:beginPerformance, unable to create activeArea.\n")
