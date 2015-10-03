@@ -10,6 +10,7 @@
 
 
 #include "server/zone/packets/MessageCallback.h"
+#include "server/zone/objects/player/sessions/LootLotterySession.h"
 
 class LotteryWindowCallback : public MessageCallback {
 	uint64 containerID;
@@ -35,6 +36,40 @@ public:
 	}
 
 	void run() {
+		//Get the player sending the loot selections.
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(client->getPlayer().get().get());
+		if (player == NULL)
+			return;
+
+		//Get the corpse the lottery is for.
+		ManagedReference<AiAgent*> corpse = server->getZoneServer()->getObject(containerID)->getParent().castTo<AiAgent*>();
+		if (corpse == NULL)
+			return;
+
+		Locker locker(corpse);
+
+		//Make sure there is an active lottery in progress.
+		if (corpse->containsActiveSession(SessionFacadeType::LOOTLOTTERY)) {
+			Reference<LootLotterySession*> session = corpse->getActiveSession(SessionFacadeType::LOOTLOTTERY).castTo<LootLotterySession*>();
+			if (session == NULL || session->isLotteryFinished())
+				return;
+
+			if (!session->containsEligiblePlayer(player))
+				return;
+
+			//If player made no selections, remove them from the Lottery.
+			if (listSize < 1) {
+				session->removeEligiblePlayer(player);
+				return;
+			}
+
+			//Create a new Lottery Ballot with the player's item selections.
+			LootLotteryBallot* ballot = new LootLotteryBallot(player, lootIDs);
+			session->addPlayerSelections(player, ballot);
+
+		} else
+			return;
+
 	}
 };
 

@@ -65,7 +65,10 @@ class GroupObject extends SceneObject {
 	public native void sendSystemMessage(@dereferenced StringIdChatParameter param, boolean sendLeader = true);
 	@dirty
 	public native void sendSystemMessage(final string fullPath, boolean sendLeader = true);
-
+	@local
+	@dirty
+	public native void sendSystemMessage(@dereferenced StringIdChatParameter param, CreatureObject excluded);
+	
 	public native void addMember(SceneObject newMember);
 	@preLocked
 	public native void removeMember(SceneObject member);
