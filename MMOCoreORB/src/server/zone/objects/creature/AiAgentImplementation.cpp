@@ -2994,6 +2994,52 @@ bool AiAgentImplementation::hasSpecialAttack(int num) {
 	return true;
 }
 
+bool AiAgentImplementation::isAttackableBy(TangibleObject* object) {
+	if (object == NULL) {
+		return false;
+	}
+
+	if (object->isCreatureObject()) {
+		return isAttackableBy(object->asCreatureObject());
+	}
+
+	if (isDead() || isIncapacitated() || getFollowState() == AiAgent::LEASHING) {
+		return false;
+	}
+
+	if (isPet()) {
+		ManagedReference<PetControlDevice*> pcd = getControlDevice().get().castTo<PetControlDevice*>();
+		if (pcd != NULL && pcd->getPetType() == PetManager::FACTIONPET && object->isNeutral()) {
+			return false;
+		}
+
+		ManagedReference<CreatureObject*> owner = getLinkedCreature().get();
+
+		if (owner == NULL) {
+			return false;
+		}
+
+		return owner->isAttackableBy(object, true);
+	}
+
+	if (pvpStatusBitmask == 0) {
+		return false;
+	}
+
+	unsigned int targetFaction = object->getFaction();
+
+	if (targetFaction != 0 && getFaction() != 0) {
+		if (targetFaction == getFaction()) {
+			return false;
+		}
+
+	} else if (targetFaction == 0 && getFaction() != 0) {
+		return false;
+	}
+
+	return true;
+}
+
 bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 	if (object == NULL || object == asAiAgent()) {
 		return false;
