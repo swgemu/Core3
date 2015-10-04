@@ -50,7 +50,7 @@ public:
 		bool groupIsOwner = (lootContainer->getContainerPermissions()->getOwnerID() == creature->getGroupID());
 
 		if (!looterIsOwner && !groupIsOwner) {
-			//Check if player owns an item inside the container. This can happen after a Loot Lottery if inventory was full.
+			//Handle picking up items when full inventory and group is disbanded.
 			if (!pickupOwnedItems(creature, lootContainer)) {
 				StringIdChatParameter noPermission("error_message","no_corpse_permission"); //You do not have permission to access this corpse.
 				creature->sendSystemMessage(noPermission);
@@ -60,11 +60,23 @@ public:
 			return SUCCESS;
 		}
 
+		//Handle picking up items when full inventory in RANDOM loot mode.
+		ManagedReference<GroupObject*> group = creature->getGroup();
+		int lootRule = -1;
+		if (group != NULL)
+			lootRule = group->getLootRule();
+
+		if (lootRule == GroupManager::RANDOM) {
+			if (pickupOwnedItems(creature, lootContainer)) {
+				creature->getZoneServer()->getPlayerManager()->rescheduleCorpseDestruction(creature, ai);
+				return SUCCESS;
+			}
+		}
+
 		bool lootAll = arguments.toString().beginsWith("all");
 
-		//Handle group looting rules.
+		//Handle group looting rules if looter is in a group.
 		if (groupIsOwner) {
-			ManagedReference<GroupObject*> group = creature->getGroup();
 			if (group == NULL)
 				return GENERALERROR;
 
@@ -73,7 +85,7 @@ public:
 			return SUCCESS;
 		}
 
-		//Allow player to loot the corpse.
+		//Allow player to loot the corpse if looter is not in a group.
 		if (lootAll) {
 			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 			playerManager->lootAll(creature, ai);
@@ -88,11 +100,13 @@ public:
 	bool pickupOwnedItems(CreatureObject* creature, SceneObject* lootContainer) const {
 		bool pickedUpItem = false;
 
+		int totalItems = lootContainer->getContainerObjectsSize();
+		if (totalItems < 1) return false;
+
 		ContainerPermissions* contPerms = lootContainer->getContainerPermissions();
 		if (contPerms == NULL) return false;
 
 		//Check each loot item to see if the player owns it.
-		int totalItems = lootContainer->getContainerObjectsSize();
 		for (int i = totalItems - 1; i >= 0; --i) {
 			SceneObject* object = lootContainer->getContainerObject(i);
 			if (object == NULL) continue;
