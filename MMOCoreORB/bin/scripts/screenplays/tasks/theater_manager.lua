@@ -145,7 +145,7 @@ end
 function TheaterManagerScreenPlay:teachSkills(pPlayer)
 	local curSeries = self:getCurrentSeries(pPlayer)
 
-	ObjectManager.withCreaturePlayerObject(pPlayer, function(player, playerObject)
+	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
 		if (curSeries == 1) then
 			playerObject:addAbility("startDance+theatrical")
 			playerObject:addAbility("startDance+theatrical2")
