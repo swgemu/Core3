@@ -1397,6 +1397,10 @@ void PlayerManagerImplementation::awardExperience(CreatureObject* player, const 
 		int amount, bool sendSystemMessage, float localMultiplier) {
 
 	PlayerObject* playerObject = player->getPlayerObject();
+
+	if (playerObject == NULL)
+		return;
+
 	int xp = playerObject->addExperience(xpType, (int) (amount * localMultiplier * globalExpMultiplier));
 
 	player->notifyObservers(ObserverEventType::XPAWARDED, player, xp);

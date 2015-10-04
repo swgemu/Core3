@@ -103,11 +103,6 @@ void VendorDataComponent::runVendorUpdate() {
 	if (strongParent == NULL || strongParent->getZoneServer() == NULL)
 		return;
 
-	if(vendorCheckTask == NULL)
-		vendorCheckTask = new UpdateVendorTask(strongParent);
-
-	vendorCheckTask->reschedule(1000 * 60 * VENDORCHECKINTERVAL);
-
 	ManagedReference<CreatureObject*> owner = strongParent->getZoneServer()->getObject(getOwnerId()).castTo<CreatureObject*>();
 	ManagedReference<PlayerManager*> playerManager = strongParent->getZoneServer()->getPlayerManager();
 	ManagedReference<TangibleObject*> vendor = cast<TangibleObject*>(strongParent.get());
@@ -115,6 +110,11 @@ void VendorDataComponent::runVendorUpdate() {
 	if (owner == NULL || !owner->isPlayerCreature() || playerManager == NULL || vendor == NULL) {
 		return;
 	}
+
+	if(vendorCheckTask == NULL)
+		vendorCheckTask = new UpdateVendorTask(strongParent);
+
+	vendorCheckTask->reschedule(1000 * 60 * VENDORCHECKINTERVAL);
 
 	vendorBarks.removeAll();
 
