@@ -40,6 +40,16 @@ namespace server {
 
 using namespace server::zone::objects::creature;
 
+namespace server {
+ namespace zone {
+  namespace objects {
+   namespace creature {
+	   class AiAgent;
+   }
+  }
+ }
+}
+
 class GroupManager : public Singleton<GroupManager>, public Object {
 
 public:
@@ -67,6 +77,9 @@ public:
 	void changeMasterLooter(GroupObject* group, CreatureObject* newLooter, bool enableRule);
 	void sendMasterLooterList(GroupObject* group, CreatureObject* leader);
 	void notifyMasterLooter(GroupObject* group);
+
+	void createLottery(GroupObject* group, AiAgent* corpse);
+	void doRandomLoot(GroupObject* group, AiAgent* corpse);
 
 	void disbandGroup(ManagedReference<GroupObject*> group, CreatureObject* player);
 

@@ -1,0 +1,103 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.player.sessions;
+
+include engine.core.ManagedObject;
+
+import engine.log.Logger;
+import engine.core.ManagedReference;
+import system.lang.ref.Reference;
+
+import engine.util.Facade;
+import system.util.SortedVector;
+import system.util.VectorMap;
+
+
+include server.zone.objects.scene.SceneObject;
+include server.zone.objects.group.GroupObject;
+include server.zone.objects.creature.CreatureObject;
+
+include server.zone.objects.creature.AiAgent;
+include server.zone.objects.player.sessions.LootLotteryBallot;
+include server.zone.objects.scene.SessionFacadeType;
+
+
+class LootLotterySession extends Facade {
+	protected AiAgent corpse;
+
+	protected boolean lotteryFinished;
+
+	protected unsigned long groupID; 
+
+	@dereferenced
+	protected SortedVector<CreatureObject> eligiblePlayers; 
+
+	@dereferenced
+	protected SortedVector<LootLotteryBallot> playerSelections; 
+	
+	public LootLotterySession(unsigned long id, AiAgent ai) {
+		groupID = id;		
+		corpse = ai;
+		lotteryFinished = false;
+
+		eligiblePlayers.removeAll();
+		playerSelections.removeAll();
+
+		Logger.setLoggingName("LootLotterySession");
+		Logger.setLogging(true);
+	}
+	
+	public native int initializeSession();
+	
+	public int cancelSession() {
+		//corpse.dropActiveSession(SessionFacadeType.LOOTLOTTERY);
+		
+		return 0;
+	}
+	
+	public int clearSession() {
+		return 0;
+	}
+
+	public void addEligiblePlayer(CreatureObject player) {
+		eligiblePlayers.put(player);
+	}
+
+	//Once we receive their item selections, player is removed from eligible entrants list.
+	//If there are no eligible entrants left (everyone has made selections), start the draw.
+	public void removeEligiblePlayer(CreatureObject player) {
+		eligiblePlayers.drop(player);
+		if (eligiblePlayers.size() < 1)
+			doLotteryDraw();
+	}
+
+	public boolean containsEligiblePlayer(CreatureObject player) {
+		return eligiblePlayers.contains(player);
+	}
+
+	public boolean isLotteryFinished() {
+		return lotteryFinished;
+	}
+
+	public void setLotteryFinished(boolean value) {
+		lotteryFinished = value;
+	}
+
+	public AiAgent getCorpse() {
+		return corpse;
+	}
+
+	@local
+	public native void addPlayerSelections(CreatureObject player, LootLotteryBallot ballot);
+
+	public native void doLotteryDraw();
+
+	public native void transferLoot(GroupObject group, CreatureObject winner, SceneObject object, boolean stillGrouped);
+
+
+
+
+}
+

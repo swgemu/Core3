@@ -81,8 +81,8 @@ public:
 
 		sui->addMenuItem("Free For All"); //No string in client?
 		sui->addMenuItem("Master Looter"); //No string in client?
-		//sui->addMenuItem("@ui_lottery:title"); //"Lottery" *WIP, disabled for now*
-		//sui->addMenuItem("@ui:random"); //"Random" *WIP, disabled for now*
+		sui->addMenuItem("@ui_lottery:title"); //"Lottery"
+		//sui->addMenuItem("@ui:random"); //"Random" **Not Implemented yet**
 
 		//Send group leader the SUI box.
 		ghost->addSuiBox(sui);

@@ -102,6 +102,7 @@ core3_IDLS =	autogen/server/zone/objects/tangible/misc/PlantObject.cpp \
 				autogen/server/zone/objects/tangible/eventperk/JukeboxObserver.cpp \
 				autogen/server/zone/objects/tangible/eventperk/Jukebox.cpp \
 				autogen/server/zone/objects/tangible/eventperk/FlagGame.cpp \
+				autogen/server/zone/objects/player/sessions/LootLotterySession.cpp \
 				autogen/server/zone/objects/intangible/TheaterObject.cpp \
 				autogen/server/zone/objects/building/PoiBuilding.cpp \
 				autogen/server/zone/objects/creature/conversation/PetTrainingConversationObserver.cpp \
@@ -755,6 +756,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sessions/vendor/VendorAdBarkingSessionImplementation.cpp \
 		server/zone/objects/player/sessions/PlaceStructureSessionImplementation.cpp \
 		server/zone/objects/player/sessions/DestroyStructureSessionImplementation.cpp \
+		server/zone/objects/player/sessions/LootLotterySessionImplementation.cpp \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
 		server/zone/objects/player/sui/keypadbox/SuiKeypadBoxImplementation.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
