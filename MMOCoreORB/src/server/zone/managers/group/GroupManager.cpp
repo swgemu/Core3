@@ -10,12 +10,14 @@
 #include "server/chat/room/ChatRoom.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-
 #include "server/zone/objects/group/GroupObject.h"
-#include "server/chat/StringIdChatParameter.h"
+
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/callbacks/GroupLootChangedSuiCallback.h"
@@ -760,11 +762,110 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 	}
 
 	void GroupManager::doRandomLoot(GroupObject* group, AiAgent* corpse) {
-		//Pre: Corpse are locked.
-		//Post: Corpse are locked.
+		//Pre: Corpse is locked.
+		//Post: Corpse is locked.
 
+		if (group == NULL || corpse == NULL)
+			return;
 
+		Locker glocker(group, corpse);
 
+		//Get the corpse's inventory.
+		SceneObject* lootContainer = corpse->getSlottedObject("inventory");
+		if (lootContainer == NULL)
+			return;
+		int totalItems = lootContainer->getContainerObjectsSize();
+
+		//Determine members eligible to receive loot.
+		Vector<CreatureObject*> candidates;
+		for (int i = 0; i < group->getGroupSize(); ++i) {
+			ManagedReference<SceneObject*> object = group->getGroupMember(i);
+			if (object == NULL || !object->isPlayerCreature())
+				continue;
+
+			ManagedReference<CreatureObject*> member = cast<CreatureObject*>(object.get());
+			if (member == NULL || !member->isInRange(corpse, 16.f)) //TODO: change this to 128.f
+				continue;
+
+			candidates.add(member);
+		}
+
+		glocker.release();
+
+		if (candidates.size() < 1) //Should not happen.
+			return;
+
+		//Loop through each item and attempt to transfer it to a random member.
+		for (int i = totalItems - 1; i >= 0; --i) {
+			//Get the loot item.
+			SceneObject* object = lootContainer->getContainerObject(i);
+				if (object == NULL)
+					continue;
+
+			//Make sure the item is not left on the corpse for another member.
+			ContainerPermissions* itemPerms = object->getContainerPermissions();
+			if (itemPerms == NULL || itemPerms->getOwnerID() != 0)
+				continue;
+
+			//Pick a winner for the item.
+			ManagedReference<CreatureObject*> winner = candidates.get(System::random(candidates.size() - 1));
+			if (winner == NULL)
+				continue;
+
+			Locker wclocker(winner, corpse);
+
+			//Transfer the item to the winner.
+			transferLoot(group, winner, object, true);
+		}
+
+		//Reschedule corpse destruction.
+		ManagedReference<CreatureObject*> leader = group->getLeader().castTo<CreatureObject*>();
+		if (leader != NULL) {
+			Locker lclocker(leader, corpse);
+			leader->getZoneServer()->getPlayerManager()->rescheduleCorpseDestruction(leader, corpse);
+			return;
+		}
+	}
+
+	void GroupManager::transferLoot(GroupObject* group, CreatureObject* winner, SceneObject* object, bool stillGrouped) {
+		//Pre: winner and corpse are locked.
+		//Post: winner and corpse are locked.
+
+		if (winner == NULL || object == NULL)
+			return;
+
+		//Set the winner as owner of the item.
+		ContainerPermissions* itemPerms = object->getContainerPermissions();
+		if (itemPerms == NULL)
+			return;
+
+		itemPerms->setOwner(winner->getObjectID());
+
+		//Stop other players being able to take the items if left on the corpse (full inventory).
+		itemPerms->setInheritPermissionsFromParent(false);
+		itemPerms->setDenyPermission("player", ContainerPermissions::OPEN);
+		itemPerms->setDenyPermission("player", ContainerPermissions::MOVECONTAINER);
+
+		//Transfer the item to the winner.
+		SceneObject* winnerInventory = winner->getSlottedObject("inventory");
+		if (winnerInventory == NULL)
+			return;
+
+		if (winnerInventory->isContainerFullRecursive()) {
+			StringIdChatParameter full("group", "you_are_full"); //"Your Inventory is full."
+			winner->sendSystemMessage(full);
+			StringIdChatParameter problem("group", "problem_transferring"); //"There was a problem transferring items to your inventory.  You may pick them up from the corpse."
+			winner->sendSystemMessage(problem);
+
+			if (stillGrouped && group != NULL) {
+				StringIdChatParameter unable("group", "unable_to_transfer"); //"Unable to transfer %TO to %TT.  The item is available on the corpse for %TT to retrieve.
+				unable.setTO(object);
+				unable.setTT(winner);
+				group->sendSystemMessage(unable, winner);
+			}
+
+		} else
+			winner->getZoneServer()->getObjectController()->transferObject(object, winnerInventory, -1, true);
 
 	}
 

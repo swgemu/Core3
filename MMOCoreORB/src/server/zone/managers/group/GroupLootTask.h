@@ -81,6 +81,12 @@ public:
 		case GroupManager::RANDOM:
 			gclocker.release();
 			splitCredits();
+			if (lootContainer->getContainerObjectsSize() < 1) {
+				StringIdChatParameter noItems("group", "corpse_empty");
+				player->sendSystemMessage(noItems); //"This corpse has no items in its inventory."
+				player->getZoneServer()->getPlayerManager()->rescheduleCorpseDestruction(player, corpse);
+				return;
+			}
 			GroupManager::instance()->doRandomLoot(group, corpse);
 			return;
 		default:

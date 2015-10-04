@@ -10,6 +10,7 @@
 #include "server/zone/objects/player/sessions/LootLotterySession.h"
 #include "server/zone/objects/player/sessions/LootLotteryBallot.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/group/GroupManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
@@ -114,7 +115,7 @@ void LootLotterySessionImplementation::doLotteryDraw() {
 		contPerms->setOwner(winner->getObjectID());
 
 		//Transfer the item to the winner.
-		transferLoot(group, winner, object, stillGrouped);
+		GroupManager::instance()->transferLoot(group, winner, object, stillGrouped);
 	}
 
 	//Reset the owner of the loot container.
@@ -131,39 +132,3 @@ void LootLotterySessionImplementation::doLotteryDraw() {
 		}
 	}
 }
-
-void LootLotterySessionImplementation::transferLoot(GroupObject* group, CreatureObject* winner, SceneObject* object, bool stillGrouped) {
-	//Set the winner as owner of the item.
-	ContainerPermissions* itemPerms = object->getContainerPermissions();
-	if (itemPerms == NULL)
-		return;
-
-	itemPerms->setOwner(winner->getObjectID());
-
-	//Transfer the item to the winner.
-	SceneObject* winnerInventory = winner->getSlottedObject("inventory");
-	if (winnerInventory == NULL)
-		return;
-
-	if (winnerInventory->isContainerFullRecursive()) {
-		StringIdChatParameter full("group", "you_are_full"); //"Your Inventory is full."
-		winner->sendSystemMessage(full);
-		StringIdChatParameter problem("group", "problem_transferring"); //"There was a problem transferring items to your inventory.  You may pick them up from the corpse."
-		winner->sendSystemMessage(problem);
-
-		if (stillGrouped) {
-			StringIdChatParameter unable("group", "unable_to_transfer"); //"Unable to transfer %TO to %TT.  The item is available on the corpse for %TT to retrieve.
-			unable.setTO(object);
-			unable.setTT(winner);
-			group->sendSystemMessage(unable, winner);
-		}
-
-	} else
-		winner->getZoneServer()->getObjectController()->transferObject(object, winnerInventory, -1, true);
-
-}
-
-
-
-
-
