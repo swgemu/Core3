@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_84ee8c21",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/GroupObject.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-04T01:35:03Z",
+      "side": 0,
+      "message": "Don\u0027t worry about it for this patch, but I think we can consolidate this method into the new one you created. Each place this is called we can just have it send the leader as the excluded arg.",
+      "revId": "1212c4cffcd6aafa65eb0daa452d9072e3839358",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
