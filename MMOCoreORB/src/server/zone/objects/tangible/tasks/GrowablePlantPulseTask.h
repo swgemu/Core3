@@ -24,6 +24,11 @@ public:
 		if (strongRef == NULL)
 			return;
 
+		if (strongRef->getZoneServer()->isServerLoading()) {
+			reschedule(1800 * 1000);
+			return;
+		}
+
 		Locker locker(strongRef);
 
 		Time currentTime;
