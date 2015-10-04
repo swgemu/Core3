@@ -705,8 +705,8 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 	}
 
 	void GroupManager::createLottery(GroupObject* group, AiAgent* corpse) {
-		//Pre: Group and corpse are locked.
-		//Post: Group and corpse are locked.
+		//Pre: Corpse is locked.
+		//Post: Corpse is locked.
 
 		if (group == NULL || corpse == NULL)
 			return;
@@ -736,6 +736,8 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 			itemPerms->setDenyPermission("player", ContainerPermissions::MOVECONTAINER);
 		}
 
+		Locker clocker(group, corpse);
+
 		//Add group members within range to the Lottery.
 		for (int i = 0; i < group->getGroupSize(); ++i) {
 			ManagedReference<SceneObject*> object = group->getGroupMember(i);
@@ -758,8 +760,8 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 	}
 
 	void GroupManager::doRandomLoot(GroupObject* group, AiAgent* corpse) {
-		//Pre: Group and corpse are locked.
-		//Post: Group and corpse are locked.
+		//Pre: Corpse are locked.
+		//Post: Corpse are locked.
 
 
 

@@ -73,10 +73,13 @@ public:
 			//Corpse doesn't have an existing lottery, so check if we should make one.
 			if (!membersInRange())
 				break; //If no other group members in range, function as if free for all.
+
+			gclocker.release();
 			splitCredits();
 			GroupManager::instance()->createLottery(group, corpse);
 			return;
 		case GroupManager::RANDOM:
+			gclocker.release();
 			splitCredits();
 			GroupManager::instance()->doRandomLoot(group, corpse);
 			return;
@@ -86,8 +89,8 @@ public:
 
 		//At this point, allow player to loot the corpse.
 		if (lootAll) {
-			splitCredits();
 			gclocker.release();
+			splitCredits();
 
 			Locker lootAllLocker(player, corpse);
 			player->getZoneServer()->getPlayerManager()->lootAll(player, corpse);
@@ -108,13 +111,15 @@ public:
 	}
 
 	void splitCredits() {
-		//Pre: Group and corpse are locked.
-		//Post: Group and corpse are locked.
+		//Pre: Corpse is locked.
+		//Post: Corpse is locked.
 
 		int lootCredits = corpse->getCashCredits();
 
 		if (lootCredits < 1)
 			return;
+
+		Locker clocker(group, corpse);
 
 		//Send initial system message to the looter.
 		StringIdChatParameter lootSelf("base_player", "prose_coin_loot"); //"You loot %DI credits from %TT."
@@ -142,6 +147,8 @@ public:
 			payees.add(member);
 		}
 
+		clocker.release();
+
 		//Figure out how many credits each member gets.
 		int memberBaseCredits = lootCredits / payees.size();
 		int memberOddCredits = lootCredits % payees.size();
@@ -163,6 +170,8 @@ public:
 			int random = System::random(cashPayouts.size() - 1);
 			int payout = cashPayouts.get(random);
 			cashPayouts.remove(random);
+
+			Locker plocker(payee, corpse);
 
 			payee->addCashCredits(payout, true);
 
