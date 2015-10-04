@@ -52,7 +52,11 @@ class WeaponObject extends TangibleObject {
 	protected int healthAttackCost;
 	protected int actionAttackCost;
 	protected int mindAttackCost;
+
+	// TODO: Remove after server wipe
 	protected int forceCost;
+
+	protected float saberForceCost;
 	
 	protected int bladeColor;
 	
@@ -114,6 +118,8 @@ class WeaponObject extends TangibleObject {
 		actionAttackCost = 0;
 		mindAttackCost = 0;
 		forceCost = 0;
+
+		saberForceCost = 0.0;
 		
 		pointBlankAccuracy = 0;
 		pointBlankRange = 0;
@@ -348,12 +354,12 @@ class WeaponObject extends TangibleObject {
 	}
 	
 	@dirty
-	public int getForceCost() {
-		return forceCost;
+	public float getForceCost() {
+		return saberForceCost;
 	}
 	
-	public void setForceCost(int value) {
-		forceCost = value;
+	public void setForceCost(float value) {
+		saberForceCost = value;
 	}
 	
 	@dirty

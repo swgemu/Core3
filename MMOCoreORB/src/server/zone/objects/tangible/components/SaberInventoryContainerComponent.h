@@ -43,6 +43,8 @@ public:
 	 */
 	virtual int canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription);
 
+	virtual bool checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission);
+
 	/**
 	 * Is called when this object has been inserted with an object
 	 * @param object object that has been inserted

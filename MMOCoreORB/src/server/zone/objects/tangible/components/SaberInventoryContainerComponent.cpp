@@ -135,3 +135,24 @@ int SaberInventoryContainerComponent::notifyObjectRemoved(SceneObject* sceneObje
 
 	return sceneObject->notifyObjectRemoved(object);
 }
+
+bool SaberInventoryContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) {
+	ManagedReference<WeaponObject*> saber = cast<WeaponObject*>( sceneObject->getParent().get().get());
+
+	if (saber == NULL)
+		return false;
+
+
+	if (saber->isJediWeapon() && saber->isEquipped()) {
+		CreatureObject* player = saber->getParentRecursively(SceneObjectType::PLAYERCREATURE).get().castTo<CreatureObject*>();
+
+		if (player == NULL)
+			return false;
+
+		player->sendSystemMessage("@jedi_spam:saber_not_while_equpped"); // You cannot modify the crystals in this lightsaber while it is equipped.
+
+		return false;
+	}
+
+	return ContainerComponent::checkContainerPermission(sceneObject, creature, permission);
+}
