@@ -42,7 +42,7 @@ function villageSarguilloPhase1ConvoHandler:runScreenHandlers(conversationTempla
 
 	local playerID = SceneObject(conversingPlayer):getObjectID()
 	local completedLastPoint = readData(playerID .. ":completedCurrentPoint") == 1
-	local completedCount = tonumber(QuestManager.getStoredVillageValue(pPlayer, "FsPatrolCompletedCount"))
+	local completedCount = tonumber(QuestManager.getStoredVillageValue(conversingPlayer, "FsPatrolCompletedCount"))
 	local failedPatrol = readData(playerID .. ":failedPatrol") == 1
 	local reachedAllWaypoints = readData(playerID .. ":patrolWaypointsReached") == 8
 
