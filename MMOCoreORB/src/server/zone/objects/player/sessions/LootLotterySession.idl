@@ -94,10 +94,6 @@ class LootLotterySession extends Facade {
 
 	public native void doLotteryDraw();
 
-	public native void transferLoot(GroupObject group, CreatureObject winner, SceneObject object, boolean stillGrouped);
-
-
-
-
 }
+
 
