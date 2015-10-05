@@ -116,6 +116,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getOwner", &LuaCreatureObject::getOwner },
 		{ "getCurrentSpeed", &LuaCreatureObject::getCurrentSpeed },
 		{ "isInvisible", &LuaTangibleObject::isInvisible },
+		{ "healDamage", &LuaCreatureObject::healDamage },
 		{ 0, 0 }
 };
 
@@ -654,15 +655,10 @@ int LuaCreatureObject::isGroupedWith(lua_State* L) {
 int LuaCreatureObject::setLootRights(lua_State* L) {
 	CreatureObject* player = (CreatureObject*) lua_touserdata(L, -1);
 
-	if (realObject == NULL)
+	if (realObject == NULL || player == NULL)
 		return 0;
 
-	uint64 ownerID = 0;
-
-	if (player != NULL) {
-		ownerID = player->getObjectID();
-	}
-
+	uint64 ownerID = player->getObjectID();
 	SceneObject* inventory = realObject->getSlottedObject("inventory");
 
 	if (inventory == NULL)
@@ -884,4 +880,13 @@ int LuaCreatureObject::getCurrentSpeed(lua_State* L) {
 	lua_pushnumber(L, currentSpeed);
 
 	return 1;
+}
+
+int LuaCreatureObject::healDamage(lua_State* L) {
+	int damageHealed = lua_tointeger(L, -2);
+	int pool = lua_tointeger(L, -1);
+
+	realObject->healDamage(realObject, pool, damageHealed, true, true);
+
+	return 0;
 }

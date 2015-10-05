@@ -1,6 +1,7 @@
 local ObjectManager = require("managers.object.object_manager")
 local OldManEncounter = require("managers.jedi.village.intro.old_man_encounter")
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
+local OldManOutro = require("managers.jedi.village.outro.old_man_encounter")
 
 Glowing = Object:new {}
 
@@ -184,17 +185,41 @@ function Glowing:badgeAwardedEventHandler(pCreatureObject, pCreatureObject2, bad
 	return 0
 end
 
+function Glowing:screenPlayStateChangedEventHandler(pCreatureObject, arg0, arg1)
+	if (pCreatureObject == nil) then
+		return 0
+	end
+
+	if (not VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE)) then
+		return 0
+	end
+	
+	local stateChanged = CreatureObject(pCreatureObject):getScreenPlayState("VillageJediProgression")
+	
+	if (stateChanged == 8 and stateChanged ~= 16) then
+				OldManOutro:start(pCreatureObject)
+	end
+
+end
+
 -- Register observer on the player for observing badge awards.
 -- @param pCreatureObject pointer to the creature object of the player to register observers on.
-function Glowing:registerObservers(pCreatureObject)
-	createObserver(BADGEAWARDED, "Glowing", "badgeAwardedEventHandler", pCreatureObject)
+function Glowing:registerObservers(pCreatureObject, type)
+	if (type == 1) then
+		createObserver(BADGEAWARDED, "Glowing", "badgeAwardedEventHandler", pCreatureObject)
+	elseif (type == 2) then
+		createObserver(SCREENPLAYSTATECHANGED, "Glowing", "screenPlayStateChangedEventHandler", pCreatureObject)
+	end
 end
 
 -- Handling of the onPlayerLoggedIn event. The progression of the player will be checked and observers will be registered.
 -- @param pCreatureObject pointer to the creature object of the player who logged in.
 function Glowing:onPlayerLoggedIn(pCreatureObject)
 	if not self:isGlowing(pCreatureObject) then
-		self:registerObservers(pCreatureObject)
+		self:registerObservers(pCreatureObject, 1)
+	end
+	if not VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE) then
+		self:registerObservers(pCreatureObject, 2)
 	end
 end
 
