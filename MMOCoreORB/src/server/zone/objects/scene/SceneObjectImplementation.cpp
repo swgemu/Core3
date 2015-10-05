@@ -1243,6 +1243,14 @@ void SceneObjectImplementation::createChildObjects() {
 			obj->initializePosition(x, z, y);
 			obj->setDirection(dir.rotate(Vector3(0, 1, 0), degrees));
 
+			if (obj->isBuildingObject()) {
+				BuildingObject* building = obj->asBuildingObject();
+
+				if (building != NULL) {
+					building->createCellObjects();
+				}
+			}
+
 			if (!getZone()->transferObject(obj, -1, false)) {
 				obj->destroyObjectFromDatabase(true);
 				continue;

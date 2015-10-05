@@ -12,6 +12,7 @@
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/managers/director/ScreenPlayTask.h"
 
 const char LuaSceneObject::className[] = "LuaSceneObject";
 
@@ -79,6 +80,9 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "isASubChildOf", &LuaSceneObject::isASubChildOf },
 		{ "isOwned", &LuaSceneObject::isOwned },
 		{ "playEffect", &LuaSceneObject::playEffect },
+		{ "addPendingTask", &LuaSceneObject::addPendingTask },
+		{ "cancelPendingTask", &LuaSceneObject::cancelPendingTask },
+		{ "getChildObject", &LuaSceneObject::getChildObject },
 		{ 0, 0 }
 
 };
@@ -710,6 +714,54 @@ int LuaSceneObject::isASubChildOf(lua_State* L) {
 
 int LuaSceneObject::isOwned(lua_State* L) {
 	lua_pushboolean(L, realObject->isPet() || realObject->isVehicleObject());
+
+	return 1;
+}
+
+int LuaSceneObject::addPendingTask(lua_State* L) {
+	uint32 mili = lua_tonumber(L, -3);
+	String play = lua_tostring(L, -2);
+	String key = lua_tostring(L, -1);
+
+	Reference<ScreenPlayTask*> task = new ScreenPlayTask(realObject, key, play);
+
+	String name = play + ":" + key;
+
+	realObject->addPendingTask(name, task, mili);
+
+	return 0;
+}
+
+int LuaSceneObject::cancelPendingTask(lua_State* L) {
+	String play = lua_tostring(L, -2);
+	String key = lua_tostring(L, -1);
+
+	String name = play + ":" + key;
+
+	if (realObject->containsPendingTask(name)) {
+		Reference<ScreenPlayTask*> task = realObject->getPendingTask(name).castTo<ScreenPlayTask*>();
+
+		if (task != NULL && task->isScheduled()) {
+			task->cancel();
+		}
+
+		realObject->removePendingTask(name);
+	}
+
+	return 0;
+}
+
+int LuaSceneObject::getChildObject(lua_State* L) {
+	int index = lua_tonumber(L, -1);
+
+	SceneObject* obj = realObject->getChildObjects()->get(index);
+
+	if (obj == NULL) {
+		lua_pushnil(L);
+	} else {
+		obj->_setUpdated(true);
+		lua_pushlightuserdata(L, obj);
+	}
 
 	return 1;
 }

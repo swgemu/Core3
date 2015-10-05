@@ -39,7 +39,7 @@ function rebelCommanderConvoHandler:runScreenHandlers(conversationTemplate, conv
 	local screenID = screen:getScreenID()
 
 	if screenID == "m4_finish" then
-		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 10)
+		Coa2Screenplay:finishMissionFour(conversingPlayer, "rebel")
 	elseif screenID == "m5_begin_no" then
 		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 11)
 	elseif screenID == "m5_begin_yes" or screenID == "m5_refused_yes" then

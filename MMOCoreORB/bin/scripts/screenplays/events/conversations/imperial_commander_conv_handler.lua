@@ -33,7 +33,7 @@ function imperialCommanderConvoHandler:runScreenHandlers(conversationTemplate, c
 	local screenID = screen:getScreenID()
 
 	if screenID == "m4_finish" then
-		writeScreenPlayData(conversingPlayer, "imperial_coa2", "state", 10)
+		Coa2Screenplay:finishMissionFour(conversingPlayer, "imperial")
 	elseif screenID == "m5_begin_yes" then
 		Coa2Screenplay:startMissionFive(conversingPlayer, conversingNPC, "imperial")
 	elseif screenID == "m5_active_abort" then

@@ -42,7 +42,7 @@
 
 
 object_tangible_theme_park_alderaan_act2_interface_override_device = object_tangible_theme_park_alderaan_act2_shared_interface_override_device:new {
-
+	noTrade = 1
 }
 
 ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_interface_override_device, "object/tangible/theme_park/alderaan/act2/interface_override_device.iff")
