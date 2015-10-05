@@ -176,6 +176,8 @@ class WeaponObject extends TangibleObject {
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 
+	public native void notifyLoadFromDatabase();
+
 	/**
 	 * Handles creating the Saber inventory.
 	 */
