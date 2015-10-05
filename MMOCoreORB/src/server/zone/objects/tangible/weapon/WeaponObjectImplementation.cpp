@@ -40,6 +40,15 @@ void WeaponObjectImplementation::initializeTransientMembers() {
 	}
 }
 
+void WeaponObjectImplementation::notifyLoadFromDatabase() {
+	if (forceCost != 0) {
+		saberForceCost = forceCost;
+		forceCost = 0;
+	}
+
+	TangibleObjectImplementation::notifyLoadFromDatabase();
+}
+
 void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
 
