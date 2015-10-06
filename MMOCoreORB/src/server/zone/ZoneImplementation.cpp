@@ -511,6 +511,15 @@ void ZoneImplementation::registerObjectWithPlanetaryMap(SceneObject* object) {
 	Locker locker(mapLocations);
 #endif
 	mapLocations->transferObject(object);
+
+	// If the object is a valid location for entertainer missions then add it
+	// to the planet's mission map.
+	if (objectIsValidPlanetaryMapPerformanceLocation(object)) {
+		PlanetManager* planetManager = getPlanetManager();
+		if (planetManager != NULL) {
+			planetManager->addPerformanceLocation(object);
+		}
+	}
 }
 
 void ZoneImplementation::unregisterObjectWithPlanetaryMap(SceneObject* object) {
@@ -518,6 +527,50 @@ void ZoneImplementation::unregisterObjectWithPlanetaryMap(SceneObject* object) {
 	Locker locker(mapLocations);
 #endif
 	mapLocations->dropObject(object);
+
+	// If the object is a valid location for entertainer missions then remove it
+	// from the planet's mission map.
+	if (objectIsValidPlanetaryMapPerformanceLocation(object)) {
+		PlanetManager* planetManager = getPlanetManager();
+		if (planetManager != NULL) {
+			planetManager->removePerformanceLocation(object);
+		}
+	}
+}
+
+bool ZoneImplementation::objectIsValidPlanetaryMapPerformanceLocation(SceneObject* object) {
+	BuildingObject* building = object->asBuildingObject();
+	if (building == NULL) {
+		return false;
+	}
+
+	bool hasPerformanceLocationCategory = false;
+
+	PlanetMapCategory* planetMapCategory = object->getPlanetMapCategory();
+	if (planetMapCategory != NULL) {
+		String category = planetMapCategory->getName();
+		if (category == "cantina" || category == "hotel") {
+			hasPerformanceLocationCategory = true;
+		}
+	}
+
+	if (!hasPerformanceLocationCategory) {
+		planetMapCategory = object->getPlanetMapSubCategory();
+		if (planetMapCategory != NULL) {
+			String subCategory = planetMapCategory->getName();
+			if (subCategory == "guild_theater") {
+				hasPerformanceLocationCategory = true;
+			}
+		}
+	}
+
+	if (hasPerformanceLocationCategory) {
+		if (building->isPublicStructure()) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 bool ZoneImplementation::isObjectRegisteredWithPlanetaryMap(SceneObject* object) {

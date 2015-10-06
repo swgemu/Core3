@@ -217,6 +217,8 @@ class Zone extends SceneObject {
 	 */
 	public native void unregisterObjectWithPlanetaryMap(SceneObject object);
 
+	public native boolean objectIsValidPlanetaryMapPerformanceLocation(SceneObject object);
+
 	public native boolean isObjectRegisteredWithPlanetaryMap(SceneObject object);
 	public native void updatePlanetaryMapIcon(SceneObject object, byte icon);
 

@@ -64,7 +64,6 @@ void PlanetManagerImplementation::initialize() {
 	loadTravelFares();
 
 	loadBadgeAreas();
-	loadPerformanceLocations();
 
 	loadStaticTangibleObjects();
 
@@ -700,35 +699,6 @@ void PlanetManagerImplementation::finalize() {
 }
 
 void PlanetManagerImplementation::loadBadgeAreas() {
-}
-
-void PlanetManagerImplementation::loadPerformanceLocations() {
-	info("loading performance locations...", true);
-
-	SortedVector<ManagedReference<SceneObject*> > planetaryLocs;
-	planetaryLocs.setNoDuplicateInsertPlan();
-
-	// get hotels
-	planetaryLocs = zone->getPlanetaryObjectList("hotel");
-	for (int j = 0; j < planetaryLocs.size(); j++) {
-		SceneObject* obj = planetaryLocs.get(j);
-		addPerformanceLocation(obj);
-	}
-
-	// get theaters
-	planetaryLocs = zone->getPlanetaryObjectList("guild_theater");
-	for (int j = 0; j < planetaryLocs.size(); j++) {
-		SceneObject* obj = planetaryLocs.get(j);
-		addPerformanceLocation(obj);
-	}
-
-	// get cantinas
-	planetaryLocs.removeAll();
-	planetaryLocs = zone->getPlanetaryObjectList("cantina");
-	for (int j = 0; j < planetaryLocs.size(); j++) {
-		SceneObject* obj = planetaryLocs.get(j);
-		addPerformanceLocation(obj);
-	}
 }
 
 bool PlanetManagerImplementation::isInRangeWithPoi(float x, float y, float range) {
