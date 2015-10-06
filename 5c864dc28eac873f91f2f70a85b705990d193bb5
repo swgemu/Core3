@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_64b6e0de",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/wearables/necklace/dark_jedi_medallion.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-06T03:47:05Z",
+      "side": 1,
+      "message": "Is it object/tangible/loot/misc/medallion_dark_jedi_s01.iff ? There\u0027s already a loot item for it (medallion_dark_jedi) though I didn\u0027t look at what uses it.",
+      "revId": "5c864dc28eac873f91f2f70a85b705990d193bb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_44b5e4cb",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-06T03:47:05Z",
+      "side": 1,
+      "message": "Just get the zone name once and store it in a local var.",
+      "revId": "5c864dc28eac873f91f2f70a85b705990d193bb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_e4c9905b",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-06T03:47:05Z",
+      "side": 1,
+      "message": "Are 1 \u0026 3 and 2 \u0026 4 supposed to be on top of each other?",
+      "revId": "5c864dc28eac873f91f2f70a85b705990d193bb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_24b0d8dc",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/old_man_encounter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-06T03:47:05Z",
+      "side": 1,
+      "message": "Sure seems to be a lot in this file that is a duplicate of what\u0027s in the old man intro. I think you should take the common parts and put them in their own encounter that the intro and outro can then each inherit.",
+      "revId": "5c864dc28eac873f91f2f70a85b705990d193bb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_84bbecc3",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/LuaCreatureObject.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-06T03:47:05Z",
+      "side": 1,
+      "message": "Don\u0027t revert this change.",
+      "revId": "5c864dc28eac873f91f2f70a85b705990d193bb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
