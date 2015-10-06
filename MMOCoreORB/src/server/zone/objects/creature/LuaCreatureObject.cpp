@@ -116,6 +116,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getOwner", &LuaCreatureObject::getOwner },
 		{ "getCurrentSpeed", &LuaCreatureObject::getCurrentSpeed },
 		{ "isInvisible", &LuaTangibleObject::isInvisible },
+		{ "healDamage", &LuaCreatureObject::healDamage },
 		{ 0, 0 }
 };
 
@@ -884,4 +885,13 @@ int LuaCreatureObject::getCurrentSpeed(lua_State* L) {
 	lua_pushnumber(L, currentSpeed);
 
 	return 1;
+}
+
+int LuaCreatureObject::healDamage(lua_State* L) {
+	int damageHealed = lua_tointeger(L, -2);
+	int pool = lua_tointeger(L, -1);
+
+	realObject->healDamage(realObject, pool, damageHealed, true, true);
+
+	return 0;
 }
