@@ -29,6 +29,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "removeWaypoint", &LuaPlayerObject::removeWaypoint },
 		{ "removeWaypointBySpecialType", &LuaPlayerObject::removeWaypointBySpecialType },
 		{ "addRewardedSchematic", &LuaPlayerObject::addRewardedSchematic },
+		{ "removeRewardedSchematic", &LuaPlayerObject::removeRewardedSchematic },
 		{ "addPermissionGroup", &LuaPlayerObject::addPermissionGroup },
 		{ "removePermissionGroup", &LuaPlayerObject::removePermissionGroup },
 		{ "hasPermissionGroup", &LuaPlayerObject::hasPermissionGroup },
@@ -229,6 +230,18 @@ int LuaPlayerObject::addRewardedSchematic(lua_State* L){
 
 	if (schematic != NULL)
 		realObject->addRewardedSchematic(schematic, type, quantity, notifyClient);
+
+	return 0;
+}
+
+int LuaPlayerObject::removeRewardedSchematic(lua_State* L){
+	String templateString = lua_tostring(L, -2);
+	bool notifyClient = lua_toboolean(L, -1);
+
+	DraftSchematic* schematic = SchematicMap::instance()->get(templateString.hashCode());
+
+	if (schematic != NULL)
+		realObject->removeRewardedSchematic(schematic, notifyClient);
 
 	return 0;
 }
