@@ -259,14 +259,6 @@ function fs_experience_converter_conv_handler.handleInit(pConversationTemplate, 
 	-- Paemos - "beckon" animation.
 	CreatureObject(pConversingNpc):doAnimation("beckon")
 
-	-- PUT IN FOR NOVA TESTING, PLEASE REMOVE BELOW!!!!!
-	local branch = "force_sensitive_combat_prowess_ranged_accuracy_04"
-	local questStatusTemp = CreatureObject(pConversingPlayer):getScreenPlayState("VillageUnlockScreenPlay:" .. branch)
-	if (questStatusTemp == 0) then
-		CreatureObject(pConversingPlayer):setScreenPlayState(1, "VillageUnlockScreenPlay:" .. branch)
-	end
-	-- PUT IN FOR NOVA TESTING, PLEASE REMOVE ABOVE!!!!
-
 	-- See if they have a quest to unlock, or having XP to convert.
 	if (ExperienceConverter.qualifiesForConversation(pConversingPlayer) == true) then
 		nextScreen = "cs_jsPlumb_1_5"

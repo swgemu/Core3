@@ -1,5 +1,6 @@
 local ObjectManager = require("managers.object.object_manager")
 local ScreenPlay = require("screenplays.screenplay")
+local FsMedicPuzzle = require("managers.jedi.village.phase1.fs_medic_puzzle")
 
 require("screenplays.village.village_spawn_table")
 
@@ -227,6 +228,72 @@ function VillageJediManagerTownship:doWoundedVillager(pNpc)
 	end
 
 	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doWoundedVillager", pNpc) -- 2-5 minute delay
+end
+
+function VillageJediManagerTownship.initMedDroid(pNpc)
+	if (pNpc ~= nil) then
+		SceneObject(pNpc):setContainerComponent("MedDroidContainerComponent")
+	end
+end
+
+MedDroidContainerComponent = {}
+
+function MedDroidContainerComponent:transferObject(pContainer, pObj, slot)
+	local pPlayer = VillageJediManagerTownship:getObjOwner(pObj)
+
+	if (pPlayer == nil or pContainer == nil) then
+		return 0
+	end
+
+	FsMedicPuzzle:cureSymptoms(pPlayer, pContainer, pObj)
+
+	return 1
+end
+
+function MedDroidContainerComponent:canAddObject(pContainer, pObj, slot)
+	local pPlayer = VillageJediManagerTownship:getObjOwner(pObj)
+
+	if (pPlayer == nil or pContainer == nil) then
+		return -1
+	end
+
+	if (SceneObject(pObj):getTemplateObjectPath() ~= "object/tangible/item/quest/force_sensitive/fs_medic_puzzle_heal_pack.iff") then
+		return -1
+	end
+
+	if FsMedicPuzzle:hasAnySymptoms(pPlayer, pContainer) then
+		return true
+	else
+		return -1
+	end
+end
+
+function MedDroidContainerComponent:removeObject(pContainer, pObj, slot)
+	return -1
+end
+
+function VillageJediManagerTownship:getObjOwner(pObj)
+	if (pObj == nil) then
+		return nil
+	end
+
+	local pPlayerInv = SceneObject(pObj):getParent()
+
+	if (pPlayerInv == nil) then
+		return nil
+	end
+
+	local parent = SceneObject(pPlayerInv):getParent()
+
+	if (parent == nil) then
+		return nil
+	end
+
+	if (SceneObject(parent):isCreatureObject()) then
+		return parent
+	end
+
+	return nil
 end
 
 registerScreenPlay("VillageJediManagerTownship", true)
