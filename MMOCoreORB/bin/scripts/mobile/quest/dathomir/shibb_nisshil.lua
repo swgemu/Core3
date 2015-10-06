@@ -30,8 +30,7 @@ shibb_nisshil = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "shibb_nisshil_mission_giver_convotemplate",
-	attacks = {
-	}
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(shibb_nisshil, "shibb_nisshil")
