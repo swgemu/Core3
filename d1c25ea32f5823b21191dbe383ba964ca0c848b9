@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_642b40ec",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase1/fs_medic_puzzle.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-06T09:43:27Z",
+      "side": 1,
+      "message": "I would change this to expect the oids as args, instead of the pointers.",
+      "revId": "d1c25ea32f5823b21191dbe383ba964ca0c848b9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_8430cc57",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase1/fs_medic_puzzle.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-06T09:43:27Z",
+      "side": 1,
+      "message": "Get the oids before the loop and then just call hasSpecificSymptom here.",
+      "revId": "d1c25ea32f5823b21191dbe383ba964ca0c848b9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_441164ab",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/village/phase1/med_droid_phase1_conv.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-06T09:43:27Z",
+      "side": 1,
+      "message": "I think you meant for this to be pleasure_to_assist",
+      "revId": "d1c25ea32f5823b21191dbe383ba964ca0c848b9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_043cbc2e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase1/sivarra_phase1_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-06T09:43:27Z",
+      "side": 1,
+      "message": "Put this check before the quest status checks. If a player completes the first step then drops master medic, it shouldn\u0027t let them start the second set.",
+      "revId": "d1c25ea32f5823b21191dbe383ba964ca0c848b9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_84176ca3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase1/sivarra_phase1_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-06T09:43:27Z",
+      "side": 1,
+      "message": "pPole? nice copy/paste",
+      "revId": "d1c25ea32f5823b21191dbe383ba964ca0c848b9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_240c5894",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase1/sivarra_phase1_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-06T09:43:27Z",
+      "side": 1,
+      "message": "and again",
+      "revId": "d1c25ea32f5823b21191dbe383ba964ca0c848b9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
