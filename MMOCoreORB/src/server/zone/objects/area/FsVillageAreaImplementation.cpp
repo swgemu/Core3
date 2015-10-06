@@ -12,6 +12,8 @@
 #include "server/zone/objects/player/variables/PlayerQuestData.h"
 
 void FsVillageAreaImplementation::notifyEnter(SceneObject* player) {
+	ActiveAreaImplementation::notifyEnter(player);
+
 	if (!player->isPlayerCreature()) {
 		return;
 	}

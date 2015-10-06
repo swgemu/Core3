@@ -139,7 +139,7 @@ dathomir_regions = {
 	--{"tarpits_spawner",645,-4890,{1,1250},SPAWNAREA,{"dathomir_sarlacc_mutant"},256},
 	{"worship_shrine",-6949,-3034,{1,30},NOSPAWNAREA + NOBUILDZONEAREA},
 	{"yumaou_risoath",0,0,{1,0},UNDEFINEDAREA},
-	{"fs_village",5306,-4145,{1,512},NOSPAWNAREA + NOBUILDZONEAREA},
+	{"fs_village",5306,-4145,{1,768},NOSPAWNAREA + NOBUILDZONEAREA},
 }
 
 dathomir_static_spawns = {
