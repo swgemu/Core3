@@ -72,6 +72,8 @@ includeFile("village/convos/elder_conv_handler.lua")
 includeFile("village/convos/fs_village_convo6_m_conv_handler.lua")
 includeFile("village/convos/fs_village_convo7_conv_handler.lua")
 includeFile("village/convos/phase1/sarguillo_phase1_conv_handler.lua")
+includeFile("village/convos/phase1/sivarra_phase1_conv_handler.lua")
+includeFile("village/convos/phase1/med_droid_phase1_conv_handler.lua")
 
 -- Events
 includeFile("events/conversations/bestine_artist_conv_handler.lua")
