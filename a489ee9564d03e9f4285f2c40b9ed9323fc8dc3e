@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_a41f08b7",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/intro/glowing.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-06T10:07:47Z",
+      "side": 1,
+      "message": "Looks like you removed this",
+      "revId": "a489ee9564d03e9f4285f2c40b9ed9323fc8dc3e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_c41c94c4",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/intro/glowing.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-06T10:07:47Z",
+      "side": 1,
+      "message": "This should be OldManEncounter now, right? Oh, and fix the tabbing please.",
+      "revId": "a489ee9564d03e9f4285f2c40b9ed9323fc8dc3e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_04235c06",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/intro/glowing.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-06T10:07:47Z",
+      "side": 1,
+      "message": "Change this to an elseif. We don\u0027t need this observer registered on players that aren\u0027t even glowing.",
+      "revId": "a489ee9564d03e9f4285f2c40b9ed9323fc8dc3e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_647900fc",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-06T10:07:47Z",
+      "side": 1,
+      "message": "Looks like you copy/pasted without updating the comments",
+      "revId": "a489ee9564d03e9f4285f2c40b9ed9323fc8dc3e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_448884e7",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-06T10:07:47Z",
+      "side": 1,
+      "message": "I\u0027d still rather you just get the zone name once.",
+      "revId": "a489ee9564d03e9f4285f2c40b9ed9323fc8dc3e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_e46c3039",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-06T10:07:47Z",
+      "side": 1,
+      "message": "Should the amount of damage healed depend on the number of crystals left?",
+      "revId": "a489ee9564d03e9f4285f2c40b9ed9323fc8dc3e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
