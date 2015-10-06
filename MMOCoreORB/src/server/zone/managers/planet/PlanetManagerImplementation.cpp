@@ -63,8 +63,6 @@ void PlanetManagerImplementation::initialize() {
 	loadLuaConfig();
 	loadTravelFares();
 
-	loadBadgeAreas();
-
 	if (zone->getZoneName() == "dathomir") {
 		Reference<ActiveArea*> area = zone->getZoneServer()->createObject(STRING_HASHCODE("object/fs_village_area.iff"), 0).castTo<ActiveArea*>();
 
@@ -157,6 +155,11 @@ void PlanetManagerImplementation::loadLuaConfig() {
 		LuaObject planetObjectsTable = luaObject.getObjectField("planetObjects");
 		loadPlanetObjects(&planetObjectsTable);
 		planetObjectsTable.pop();
+
+		LuaObject badges = luaObject.getObjectField("badgeAreas");
+		loadBadgeAreas(&badges);
+		badges.pop();
+
 	} else {
 		warning("Configuration settings not found.");
 	}
@@ -182,40 +185,6 @@ void PlanetManagerImplementation::loadLuaConfig() {
 
 	if ((starportLandingTime = lua->getGlobalInt("starportLandingTime")) <= 0)
 	  starportLandingTime = 120;
-
-	lua->runFile("scripts/managers/spawn_manager/" + zone->getZoneName() + ".lua");
-
-	LuaObject badges = lua->getGlobalObject(zone->getZoneName() + "_badges");
-
-	if (badges.isValidTable()) {
-		uint32 hashCode = STRING_HASHCODE("object/badge_area.iff");
-
-		for (int i = 1; i <= badges.getTableSize(); ++i) {
-			lua_rawgeti(lua->getLuaState(), -1, i);
-
-			LuaObject badge(lua->getLuaState());
-
-			String badgeName = badge.getStringAt(1);
-			float x = badge.getFloatAt(2);
-			float y = badge.getFloatAt(3);
-			float radius = badge.getFloatAt(4);
-			int badgeID = badge.getIntAt(5);
-
-			ManagedReference<BadgeActiveArea*> obj = server->getZoneServer()->createObject(hashCode, 0).castTo<BadgeActiveArea*>();
-
-			Locker objLocker(obj);			
-
-			obj->setRadius(radius);
-			obj->setBadge(badgeID);
-			obj->initializePosition(x, 0, y);
-
-			zone->transferObject(obj, -1, false);
-
-			badge.pop();
-		}
-	}
-
-	badges.pop();
 
 	delete lua;
 	lua = NULL;
@@ -267,6 +236,38 @@ void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
 		}
 
 		planetObject.pop();
+	}
+}
+
+void PlanetManagerImplementation::loadBadgeAreas(LuaObject* badges) {
+	if (!badges->isValidTable())
+		return;
+
+	uint32 hashCode = STRING_HASHCODE("object/badge_area.iff");
+
+	for (int i = 1; i <= badges->getTableSize(); ++i) {
+		lua_State* L = badges->getLuaState();
+		lua_rawgeti(L, -1, i);
+
+		LuaObject badge(L);
+
+		String badgeName = badge.getStringAt(1);
+		float x = badge.getFloatAt(2);
+		float y = badge.getFloatAt(3);
+		float radius = badge.getFloatAt(4);
+		int badgeID = badge.getIntAt(5);
+
+		ManagedReference<BadgeActiveArea*> obj = server->getZoneServer()->createObject(hashCode, 0).castTo<BadgeActiveArea*>();
+
+		Locker objLocker(obj);
+
+		obj->setRadius(radius);
+		obj->setBadge(badgeID);
+		obj->initializePosition(x, 0, y);
+
+		zone->transferObject(obj, -1, false);
+
+		badge.pop();
 	}
 }
 
@@ -697,9 +698,6 @@ void PlanetManagerImplementation::initializeTransientMembers() {
 void PlanetManagerImplementation::finalize() {
 	delete terrainManager;
 	terrainManager = NULL;
-}
-
-void PlanetManagerImplementation::loadBadgeAreas() {
 }
 
 bool PlanetManagerImplementation::isInRangeWithPoi(float x, float y, float range) {

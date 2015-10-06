@@ -204,9 +204,3 @@ lok_static_spawns = {
 	{"rorha_wahe",60,7.54821,-0.894991,-8.57564,0,8145378, "conversation", "Rorha Wahe", "stationary"},
 	{"vixur_webb",60,-13.2,-0.9,-20.2,22,8145383, "npc_sitting_chair", "Vixur Webb (a musician)", "stationary"},
 }
-
-lok_badges = {
-	{"badge_imp_outpost",-1814,-3086,10,98},
-	{"badge_kimogila_skeleton",4562,-1156,10,99},
-	{"badge_volcano",3091,-4638,10,24},
-}

@@ -725,24 +725,5 @@ TEST_F(LuaMobileTest, LuaSpawnManagerTest) {
 		}
 
 		spawns.pop();
-
-		// Verify badges
-		BadgeList* badgeList = BadgeList::instance();
-		LuaObject badges = lua->getGlobalObject(zoneNames.get(i) + "_badges");
-
-		ASSERT_TRUE( badges.isValidTable() ) << "Badges table in " << zoneNames.get(i).toCharArray() << " spawn manager is invalid.";
-
-		for (int j = 1; j <= badges.getTableSize(); ++j) {
-			lua_rawgeti(badges.getLuaState(), -1, j);
-			LuaObject badge(badges.getLuaState());
-
-			ASSERT_TRUE( badge.isValidTable() ) << "Invalid badge table #" << String::valueOf(j).toCharArray() << " in " << zoneNames.get(i).toCharArray() << "_badges.";
-
-			uint8 id = badge.getIntAt(5);
-			EXPECT_TRUE( badgeList->get(id) != NULL ) << "Badge id #" << String::valueOf(id).toCharArray() << " does not exist.";
-			badge.pop();
-		}
-
-		badges.pop();
 	}
 }

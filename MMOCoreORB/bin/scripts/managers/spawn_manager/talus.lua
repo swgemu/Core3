@@ -260,12 +260,4 @@ talus_static_spawns = {
 	{"r4",60,4531.97,2,5111.71,209.78,0, "calm", "R4-T7", "stationary"},
 	{"r5",60,411.254,6,-2862.25,208.889,0, "calm", "R5-D8", "stationary"},
 	{"r5",60,407.095,6,-3036.31,310.529,0, "calm", "R5-R2", "stationary"},
-
-}
-
-talus_badges = {
-	{"badge_aqualish_cave",-4425,-1414,30,93},
-	{"badge_creature_village",4300,1020,30,90},
-	{"badge_imp_base",-2185,2383,30,91},
-	{"badge_imp_vs_reb_battle",-2595,3724,30,92},
 }

@@ -177,12 +177,4 @@ naboo_static_spawns = {
 	{"junk_lila",0,4809.5,4.2,-4663,112,0, "", "Lila Rawlkiss", "stationary",JUNKWEAPONS,JUNKCONVLILABORVO},
 	{"junk_dealer",0,-5885.3,6,4214.7,83,0, "", "", "stationary",JUNKGENERIC,JUNKCONVGENERIC},
 	{"noble",60,2443.42,292,-3893.91,18,0, "conversation", "", "stationary"},
-
-}
-
-naboo_badges = {
-	{"badge_amidalas_sandy_beach",-5828,-93,10,77},
-	{"badge_deeja_falls_top",5161,-1627,10,76},
-	{"badge_gungan_sacred_place",-2000,-5429,10,19},
-	{"badge_theed_falls_bottom",-4614,4261,10,75},
 }

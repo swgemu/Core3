@@ -186,16 +186,8 @@ rori_regions = {
 }
 
 rori_static_spawns = {
-
 	--Rebel Outpost
 	{"junk_dender",60,-5428.2,80,-2244.2,10,0, "", "Dender", "stationary",JUNKGUNGAN,JUNKCONVDENDERRORI},
 	{"junk_dealer",60,5353.8,80,5665.9,180,0, "", "", "stationary",JUNKGENERIC,JUNKCONVGENERIC},
 	{"junk_dealer",60,5350.2,81.3,5484.8,-50,0, "", "", "stationary",JUNKGENERIC,JUNKCONVGENERIC},
-}
-
-rori_badges = {
-	{"badge_imp_camp",-5633,-5661,10,96},
-	{"badge_imp_hyperdrive_fac",-1130,4544,10,97},
-	{"badge_kobala_spice_mine",7304,63,10,94},
-	{"badge_rebel_outpost",3664,-6501,10,95}
 }
