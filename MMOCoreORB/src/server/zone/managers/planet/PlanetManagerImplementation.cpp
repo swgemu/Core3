@@ -65,16 +65,21 @@ void PlanetManagerImplementation::initialize() {
 
 	loadBadgeAreas();
 
-	loadStaticTangibleObjects();
-
 	if (zone->getZoneName() == "dathomir") {
 		Reference<ActiveArea*> area = zone->getZoneServer()->createObject(STRING_HASHCODE("object/fs_village_area.iff"), 0).castTo<ActiveArea*>();
 
 		Locker locker(area);
-		area->setRadius(512.f);
+		area->setRadius(768.f);
 		area->initializePosition(5306, 0, -4145);
 		zone->transferObject(area, -1, true);
 
+		ManagedReference<SceneObject*> scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/structure/general/fs_village_nobuild_768m.iff"), 0);
+
+		Locker slocker(scenery, area);
+		scenery->initializePosition(5306, zone->getHeight(5306, -4145), -4145);
+		area->attachScenery(scenery);
+
+		slocker.release();
 		locker.release();
 
 		Reference<ActiveArea*> sarlaccArea = zone->getZoneServer()->createObject(STRING_HASHCODE("object/sarlacc_area.iff"), 0).castTo<ActiveArea*>();
@@ -500,10 +505,6 @@ PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(cons
 	}
 
 	return planetTravelPoint;
-}
-
-void PlanetManagerImplementation::loadStaticTangibleObjects() {
-	//TODO: Deprecate this to load from lua files.
 }
 
 void PlanetManagerImplementation::loadClientPoiData() {
