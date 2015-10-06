@@ -242,10 +242,3 @@ dantooine_static_spawns = {
 	{"ussox",60,1635.07,4,-6402.37,321.844,0, "calm", "Ussox", "stationary"},
 	{"ytzosh",60,1636.98,4,-6402.56,321.838,0, "calm", "Ytzosh", "stationary"},
 }
-
-dantooine_badges = {
-	{"badge_dantari_village1",-3929,-5632,30,84},
-	{"badge_dantari_village2",-7185,-883,30,85},
-	{"badge_jedi_temple",4195,5203,30,30},
-	{"badge_rebel_base",-6836,5520,30,31},
-}

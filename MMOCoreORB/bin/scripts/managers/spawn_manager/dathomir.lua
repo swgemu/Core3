@@ -148,15 +148,4 @@ dathomir_static_spawns = {
 	{"r4",60,619.822,6,3097.36,339.758,0, "calm", "R4-L1", "stationary"},
 	{"r4",60,-134.195,18,-1599.14,45.5678,0, "calm", "R4-J5", "stationary"},
 	{"r5",60,627.744,6,3086.77,278.522,0, "calm", "R5-O6", "stationary"},
-
-}
-
-dathomir_badges = {
-	{"badge_crashed_ship",5676,1901,30,82},
-	{"badge_escape_pod",-4427,586,30,27},
-	{"badge_imperial_prison",-6141,973,30,83},
-	{"badge_misty_falls_1",3558,1554,30,28},
-	{"badge_misty_falls_2",3021,1289,30,29},
-	{"badge_sarlacc",-2101,3165,30,26},
-	{"badge_tarpit",652,-4888,30,25},
 }

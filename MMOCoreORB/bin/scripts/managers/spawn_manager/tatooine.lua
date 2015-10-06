@@ -389,13 +389,3 @@ tatooine_static_spawns = {
 	{"sy_snootles",60,-9,2,37,350.547,1177487, "themepark_music_3", "","stationary"},
 	{"trainer_imagedesigner",0,-20.9956,2.12878,73.874,90,1105854, "", "","stationary"},
 }
-
-tatooine_badges = {
-	{"badge_bens_hut",-4512,-2270,10,12},
-	{"badge_escape_pod",-3930,-4425,10,15},
-	{"badge_krayt_graveyard",7396,4478,10,18},
-	{"badge_krayt_skeleton",-4650,-4363,10,14},
-	{"badge_lars_homestead",-2579,-5500,10,17},
-	{"badge_sarlacc_pit",-6176,-3372,10,16},
-	{"badge_tusken_pool",-3969,6267,10,13},
-}

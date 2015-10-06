@@ -240,13 +240,4 @@ corellia_static_spawns = {
 	{"r5",60,-5400.32,21,-2614.17,236.816,0, "calm", "R5-S7", "stationary"},
 	{"r5",60,-4954.81,21,-2379.55,166.051,0, "calm", "R5-C7", "stationary"},
 	{"ulaire_roye",60,-5048.68,21,-2291.24,122.799,0, "neutral", "", "stationary"},
-
-}
-
-corellia_badges = {
-	{"badge_agrilat_swap",1387,3749,30,20},
-	{"badge_bela_vistal_fountain",6767,-5617,30,81},
-	{"badge_rebel_hideout",-6530,5967,30,78},
-	{"badge_rogue_corsec_base",5291,1494,30,79},
-	{"badge_tyrena_theater",-5418,-6248,30,80},
 }
