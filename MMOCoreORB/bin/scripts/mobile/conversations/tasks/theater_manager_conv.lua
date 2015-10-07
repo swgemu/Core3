@@ -70,7 +70,7 @@ full_on_dance = ConvoScreen:new {
 	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_919f9d5a", -- Well, I'll be honest with you. Ever since your show, every hack that thinks he can dance a step has come here to perform. So we're all full on dance shows, but we still have a few spots open for a musical show if you're interested.
 	stopConversation = "false",
 	options = {
-		{"@conversation/quest_crowd_pleaser_manager:s_499afb89", "still_must_audition_dance"}, -- Sure, I can give it a try.
+		{"@conversation/quest_crowd_pleaser_manager:s_39aa9593", "still_must_audition_music"}, -- Sure, I can give it a try.
 		{"@conversation/quest_crowd_pleaser_manager:s_2883b989", "ill_be_here"}, -- No, that's not really something I want to do.
 	}
 }
@@ -81,7 +81,7 @@ full_on_music = ConvoScreen:new {
 	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_a84a3743", -- Well, I'll be honest with you. Ever since your show, every hack that thinks he can play a note has come here to perform. So we're all full on musical shows, but we still have a few spots open for a dance show if you're interested.
 	stopConversation = "false",
 	options = {
-		{"@conversation/quest_crowd_pleaser_manager:s_499afb89", "still_must_audition_music"}, -- Sure, I can give it a try.
+		{"@conversation/quest_crowd_pleaser_manager:s_39aa9593", "still_must_audition_dance"}, -- Sure, I can give it a try.
 		{"@conversation/quest_crowd_pleaser_manager:s_2883b989", "ill_be_here"}, -- No, that's not really something I want to do.
 	}
 }
@@ -100,7 +100,7 @@ still_must_audition_dance = ConvoScreen:new {
 	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_70da1c6a", -- OK. You'll still need to audition though. Is that acceptable?
 	stopConversation = "false",
 	options = {
-		{"@conversation/quest_crowd_pleaser_manager:s_499afb89", "prep_second_audition_dance"}, -- Yes, that's fine.
+		{"@conversation/quest_crowd_pleaser_manager:s_9739cb4c", "prep_second_audition_dance"}, -- Yes, that's fine.
 		{"@conversation/quest_crowd_pleaser_manager:s_2883b989", "i_understand"}, -- No way. I don't want to go through that again.
 	}
 }
@@ -111,7 +111,7 @@ still_must_audition_music = ConvoScreen:new {
 	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_70da1c6a", -- OK. You'll still need to audition though. Is that acceptable?
 	stopConversation = "false",
 	options = {
-		{"@conversation/quest_crowd_pleaser_manager:s_499afb89", "prep_second_audition_music"}, -- Yes, that's fine.
+		{"@conversation/quest_crowd_pleaser_manager:s_9739cb4c", "prep_second_audition_music"}, -- Yes, that's fine.
 		{"@conversation/quest_crowd_pleaser_manager:s_2883b989", "i_understand"}, -- No way. I don't want to go through that again.
 	}
 }
