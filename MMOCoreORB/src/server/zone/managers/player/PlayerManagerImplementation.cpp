@@ -1064,153 +1064,141 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 			baseXp = ai->getBaseXp();
 	}
 
-	// first loop and combine pet's damage with their owner's, keyed by the appropriate exp
-	// we can just use the original threatmap since the mob is dead anyway
-	for (int i = 0; i < threatMap->size(); i++) {
-		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
-		CreatureObject* attacker = threatMap->elementAt(i).getKey();
-		if (entry == NULL || attacker == NULL) {
-			threatMap->drop(attacker);
-			continue;
-		}
-
-		// only worried about pets at this stage
-		if (!attacker->isPet())
-			continue;
-
-		PetControlDevice* pcd = attacker->getControlDevice().get().castTo<PetControlDevice*>();
-
-		// only creature pets will award exp, so discard anything else
-		if (pcd == NULL || pcd->getPetType() != PetManager::CREATUREPET) {
-			threatMap->drop(attacker);
-			continue;
-		}
-
-		CreatureObject* owner = attacker->getLinkedCreature().get();
-		if (owner == NULL || !owner->isPlayerCreature() || !owner->hasSkill("outdoors_creaturehandler_novice") || !destructedObject->isInRange(owner, 80)) {
-			threatMap->drop(attacker);
-			continue;
-		}
-
-		PlayerObject* ownerGhost = owner->getPlayerObject();
-		if (ownerGhost == NULL) {
-			threatMap->drop(attacker);
-			continue;
-		}
-
-		int totalPets = 1;
-
-		for (int i = 0; i < ownerGhost->getActivePetsSize(); i++) {
-			ManagedReference<AiAgent*> object = ownerGhost->getActivePet(i);
-
-			if (object != NULL && object->isCreature()) {
-				if (object == attacker)
-					continue;
-
-				PetControlDevice* petControlDevice = object->getControlDevice().get().castTo<PetControlDevice*>();
-				if (petControlDevice != NULL && petControlDevice->getPetType() == PetManager::CREATUREPET)
-					totalPets++;
-			}
-		}
-
-		// TODO: Find a more correct CH xp formula
-		float levelRatio = (float)destructedObject->getLevel() / (float)attacker->getLevel();
-
-		float xpAmount = levelRatio * 500.f;
-
-		xpAmount = MIN(xpAmount, (float)attacker->getLevel() * 50.f);
-
-		xpAmount /= totalPets;
-
-		if (levelRatio <= 0.5)
-			xpAmount = 1;
-
-		threatMap->addDamage(owner, xpAmount, "creaturehandler");
-		threatMap->drop(attacker);
-	}
-
 	for (int i = 0; i < threatMap->size(); ++i) {
 		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
-
-		uint32 entryTotalDamage = entry->getTotalDamage();
-
 		CreatureObject* attacker = threatMap->elementAt(i).getKey();
-		if (attacker == NULL || !attacker->isPlayerCreature())
+
+		if (entry == NULL || attacker == NULL) {
 			continue;
+		}
 
-		if (!destructedObject->isInRange(attacker, 80))
-			continue;
+		if (attacker->isPet()) {
+			PetControlDevice* pcd = attacker->getControlDevice().get().castTo<PetControlDevice*>();
 
-		ManagedReference<GroupObject*> group = attacker->getGroup();
+			// only creature pets will award exp, so discard anything else
+			if (pcd == NULL || pcd->getPetType() != PetManager::CREATUREPET) {
+				continue;
+			}
 
-		uint32 combatXp = 0;
+			CreatureObject* owner = attacker->getLinkedCreature().get();
+			if (owner == NULL || !owner->isPlayerCreature()) {
+				continue;
+			}
 
-		Locker crossLocker(attacker, destructedObject);
+			Locker crossLocker(owner, destructedObject);
 
-		for (int j = 0; j < entry->size(); ++j) {
-			uint32 damage = entry->elementAt(j).getValue();
-			String xpType = entry->elementAt(j).getKey();
-			float xpAmount = baseXp;
+			PlayerObject* ownerGhost = owner->getPlayerObject();
+			if (ownerGhost == NULL || !owner->hasSkill("outdoors_creaturehandler_novice") || !destructedObject->isInRange(owner, 80)) {
+				continue;
+			}
 
-			if (xpType == "creaturehandler")
-				xpAmount = damage; // this was pre-calculated in the previous loop
-			else {
+			int totalPets = 1;
+
+			for (int i = 0; i < ownerGhost->getActivePetsSize(); i++) {
+				ManagedReference<AiAgent*> object = ownerGhost->getActivePet(i);
+
+				if (object != NULL && object->isCreature()) {
+					if (object == attacker)
+						continue;
+
+					PetControlDevice* petControlDevice = object->getControlDevice().get().castTo<PetControlDevice*>();
+					if (petControlDevice != NULL && petControlDevice->getPetType() == PetManager::CREATUREPET)
+						totalPets++;
+				}
+			}
+
+			// TODO: Find a more correct CH xp formula
+			float levelRatio = (float)destructedObject->getLevel() / (float)attacker->getLevel();
+
+			float xpAmount = levelRatio * 500.f;
+
+			if (levelRatio <= 0.5) {
+				xpAmount = 1;
+			} else {
+				xpAmount = MIN(xpAmount, (float)attacker->getLevel() * 50.f);
+				xpAmount /= totalPets;
+
+				if (winningFaction == attacker->getFaction())
+					xpAmount *= gcwBonus;
+			}
+
+			awardExperience(owner, "creaturehandler", xpAmount);
+
+		} else if (attacker->isPlayerCreature()) {
+			if (!destructedObject->isInRange(attacker, 80))
+				continue;
+
+			ManagedReference<GroupObject*> group = attacker->getGroup();
+
+			uint32 combatXp = 0;
+
+			Locker crossLocker(attacker, destructedObject);
+
+			for (int j = 0; j < entry->size(); ++j) {
+				uint32 damage = entry->elementAt(j).getValue();
+				String xpType = entry->elementAt(j).getKey();
+				float xpAmount = baseXp;
+
 				xpAmount *= (float) damage / totalDamage;
 
 				//Cap xp based on level
 				xpAmount = MIN(xpAmount, calculatePlayerLevel(attacker, xpType) * 300.f);
+
+				//Apply group bonus if in group
+				if (group != NULL)
+					xpAmount *= groupExpMultiplier;
+
+				if (winningFaction == attacker->getFaction())
+					xpAmount *= gcwBonus;
+
+				//Jedi experience doesn't count towards combat experience supposedly.
+				if (xpType != "jedi_general")
+					combatXp += xpAmount;
+
+				//Award individual expType
+				awardExperience(attacker, xpType, xpAmount);
 			}
 
-			//Apply group bonus if in group
-			if (group != NULL && xpType != "creaturehandler")
-				xpAmount *= groupExpMultiplier;
+			combatXp /= 10.f;
 
-			if( winningFaction == attacker->getFaction())
-				xpAmount *= gcwBonus;
+			awardExperience(attacker, "combat_general", combatXp);
 
-			//Jedi experience doesn't count towards combat experience supposedly.
-			if (xpType != "jedi_general" && xpType != "creaturehandler")
-				combatXp += xpAmount;
+			//Check if the group leader is a squad leader
+			if (group == NULL)
+				continue;
 
-			//Award individual expType
-			awardExperience(attacker, xpType, xpAmount);
-		}
+			Vector3 pos(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 0);
 
-		combatXp /= 10.f;
+			crossLocker.release();
 
-		awardExperience(attacker, "combat_general", combatXp);
+			ManagedReference<SceneObject*> groupLeader = group->getLeader();
 
-		//Check if the group leader is a squad leader
-		if (group == NULL)
-			continue;
+			if (groupLeader == NULL || !groupLeader->isPlayerCreature())
+				continue;
 
-		Vector3 pos(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 0);
+			CreatureObject* squadLeader = groupLeader.castTo<CreatureObject*>();
 
-		crossLocker.release();
+			Locker squadLock(squadLeader, destructedObject);
 
-		ManagedReference<SceneObject*> groupLeader = group->getLeader();
-
-		if (groupLeader == NULL || !groupLeader->isPlayerCreature())
-			continue;
-
-		CreatureObject* squadLeader = groupLeader.castTo<CreatureObject*>();
-
-		Locker squadLock(squadLeader, destructedObject);
-
-		//If he is a squad leader, and is in range of this player, then add the combat exp for him to use.
-		if (squadLeader->hasSkill("outdoors_squadleader_novice") && pos.distanceTo(attacker->getWorldPosition()) <= ZoneServer::CLOSEOBJECTRANGE) {
-			int v = slExperience.get(squadLeader) + combatXp;
-			slExperience.put(squadLeader, v);
+			//If he is a squad leader, and is in range of this player, then add the combat exp for him to use.
+			if (squadLeader->hasSkill("outdoors_squadleader_novice") && pos.distanceTo(attacker->getWorldPosition()) <= ZoneServer::CLOSEOBJECTRANGE) {
+				int v = slExperience.get(squadLeader) + combatXp;
+				slExperience.put(squadLeader, v);
+			}
 		}
 	}
 
 	//Send out squad leader experience.
 	for (int i = 0; i < slExperience.size(); ++i) {
 		VectorMapEntry<ManagedReference<CreatureObject*>, int>* entry = &slExperience.elementAt(i);
+		CreatureObject* leader = entry->getKey();
 
-		Locker clock(entry->getKey(), destructedObject);
+		if (leader == NULL)
+			continue;
 
-		awardExperience(entry->getKey(), "squadleader", entry->getValue() * 2.f);
+		Locker clock(leader, destructedObject);
+
+		awardExperience(leader, "squadleader", entry->getValue() * 2.f);
 	}
 
 	threatMap->removeAll();
