@@ -1,0 +1,36 @@
+herosk_balfar = Creature:new {
+	objectName = "@mob/creature_names:bothan_diplomat",
+	randomNameType = NAME_GENERIC_TAG,
+	socialGroup = "rebel",
+	faction = "rebel",
+	level = 3,
+	chanceHit = 0.23,
+	damageMin = 35,
+	damageMax = 45,
+	baseXp = 45,
+	baseHAM = 1500,
+	baseHAMmax = 2000,
+	armor = 0,
+	resists = {0,0,0,0,0,0,0,-1,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = NONE,
+	optionsBitmask = 136,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/dressed_noble_bothan_male_01.iff"},
+	lootGroups = {},
+	conversationTemplate = "pooja_naberrie_mission_target_convotemplate",
+	weapons = {"pirate_weapons_light"},
+	attacks = merge(marksmannovice,brawlernovice)
+}
+
+CreatureTemplates:addCreatureTemplate(herosk_balfar, "herosk_balfar")
