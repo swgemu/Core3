@@ -1,5 +1,4 @@
-require("ai.ai")
-require("ai.interrupts")
+require("ai.actions.selectweaponbase")
 
 SelectWeaponBase = createClass(Ai)
 
