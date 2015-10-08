@@ -55,6 +55,11 @@ function FsPatrol:destroyMobile(pMobile)
 		return
 	end
 	
+	if (CreatureObject(pMobile):isInCombat()) then
+		createEvent(60 * 1000, self.taskName, "destroyMobile", pMobile)
+		return
+	end
+	
 	deleteData(SceneObject(pMobile):getObjectID() .. self.taskName .. "ownerID")
 	SceneObject(pMobile):destroyObjectFromWorld()
 end
