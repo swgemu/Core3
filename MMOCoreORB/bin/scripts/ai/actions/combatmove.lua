@@ -1,29 +1,4 @@
-require("ai.actions.move")
-require("ai.interrupts")
-
-CombatMoveBase = createClass(MoveBase)
-
-function CombatMoveBase:doAction(pAgent)
-	if (pAgent ~= nil) then
-		local agent = AiAgent(pAgent)
-		
-		if (agent:getCurrentSpeed() > 0) then 
-			agent:completeMove()
-		end
-		
-		self:findNextPosition(pAgent)
-		
-		agent = AiAgent(pAgent) --reset our pointer to agent
-		if agent:getTargetOfTargetID() == agent:getObjectID() then agent:broadcastInterrupt(STARTCOMBAT) end
-		return BEHAVIOR_SUCCESS
-	end
-	return BEHAVIOR_FAILURE
-end
-
-CombatMove = createClass(CombatMoveBase, Interrupt)
-CombatMoveCreaturePet = createClass(CombatMoveBase, CreaturePetInterrupt)
-CombatMoveDroidPet = createClass(CombatMoveBase, DroidPetInterrupt)
-CombatMoveFactionPet = createClass(CombatMoveBase, FactionPetInterrupt)
+require("ai.actions.movebase")
 
 function CombatMoveCreaturePet:checkConditions(pAgent)
 	if (pAgent ~= nil) then
