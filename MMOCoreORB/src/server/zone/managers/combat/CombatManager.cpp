@@ -298,6 +298,8 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		data.getCommand()->sendAttackCombatSpam(attacker, defender, hitVal, damage, data);
 	}
 
+	broadcastCombatAction(attacker, defender, weapon, data, hitVal);
+
 	switch (hitVal) {
 	case MISS:
 		doMiss(attacker, weapon, defender, damage);
@@ -332,7 +334,6 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 
 	// Return if it's a state only attack (intimidate, warcry, wookiee roar) so they don't apply dots or break combat delays
 	if (data.isStateOnlyAttack()) {
-		broadcastCombatAction(attacker, defender, weapon, data, hitVal);
 		return 0;
 	}
 
@@ -347,8 +348,6 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		applyDots(attacker, defender, data, damage, unmitDamage, poolsToDamage);
 		applyWeaponDots(attacker, defender, weapon);
 	}
-
-	broadcastCombatAction(attacker, defender, weapon, data, hitVal);
 
 	//Send defensive buff combat spam last.
 	if (!foodMitigation.isEmpty())
