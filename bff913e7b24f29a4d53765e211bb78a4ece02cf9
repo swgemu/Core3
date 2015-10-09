@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_e40bd029",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/dathomir/shibb_bounty_hunter_thug.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-09T01:39:04Z",
+      "side": 1,
+      "message": "I see no reason for you to create a custom template for this mob. What\u0027s wrong with using the standard one?",
+      "revId": "bff913e7b24f29a4d53765e211bb78a4ece02cf9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_64182085",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/dathomir/shibb_gnarled_rancor.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-09T01:39:04Z",
+      "side": 1,
+      "message": "I understand the reason for making this mobile template (to set the desired faction / social group). I don\u0027t think you should make it aggressive, however. The themepark logic will make it attack the player whose mission it is already when they enter the breech area. By making it aggressive, it then might attack other mobs or players that wander nearby before the player can show up.",
+      "revId": "bff913e7b24f29a4d53765e211bb78a4ece02cf9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_24121863",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/dathomir/shibb_rancor_thief.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-09T01:39:04Z",
+      "side": 1,
+      "message": "I don\u0027t see why you are making a new mobile template for this. Why not just use the standard brigand_leader template?",
+      "revId": "bff913e7b24f29a4d53765e211bb78a4ece02cf9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_841d2c76",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/dathomir/shibb_thug.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-09T01:39:04Z",
+      "side": 1,
+      "message": "Again, I wouldn\u0027t make this aggressive. I would just use the standard thug template instead of creating a new one.",
+      "revId": "bff913e7b24f29a4d53765e211bb78a4ece02cf9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_44172452",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/dathomir/shibb_nisshil.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-09T01:39:04Z",
+      "side": 1,
+      "message": "According to the link you had provided before, there shouldn\u0027t be a rancor on this step, just the brigands.",
+      "revId": "bff913e7b24f29a4d53765e211bb78a4ece02cf9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
