@@ -20,7 +20,7 @@ class FsPuzzlePack extends TangibleObject {
 	protected int cureSymptomOne;
 	protected int cureSymptomTwo;
 	protected int giveSymptomOne;
-	
+
 	public FsPuzzlePack() {
 		setLoggingName("FsPuzzlePack");
 		
@@ -31,10 +31,10 @@ class FsPuzzlePack extends TangibleObject {
 	
 	@local
 	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
-		cureSymptomOne = values.getCurrentValue("curesymptomone");
-		cureSymptomTwo = values.getCurrentValue("curesymptomtwo");
-		giveSymptomOne = values.getCurrentValue("givesymptomone");
-		
+		cureSymptomOne = (int)values.getCurrentValue("curesymptomone");
+		cureSymptomTwo = (int)values.getCurrentValue("curesymptomtwo");
+		giveSymptomOne = (int)values.getCurrentValue("givesymptomone");
+
 		if (cureSymptomOne == cureSymptomTwo)
 			cureSymptomTwo = -1;
 
@@ -53,7 +53,7 @@ class FsPuzzlePack extends TangibleObject {
 	@dirty
 	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
 		super.fillAttributeList(msg, object);
-	
+
 		msg.insertAttribute("fs_medic_pack_cure_one", "@quest/force_sensitive/fs_medic:symptom" + String.valueOf(cureSymptomOne));
 
 		if (cureSymptomTwo >= 0)
