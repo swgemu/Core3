@@ -35,7 +35,7 @@ function SquillCaveScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "young_mountain_squill", 300, -28.8, -30.5, -14.9, -108, 7125561)
 	spawnMobile("tatooine", "mountain_squill", 300, -4.9, -30.0, -47.2, -108, 7125561)
 	spawnMobile("tatooine", "female_mountain_squill", 300, -11.6, -30.7, -45.9, 141, 7125561)
-	
+
 	--Cell [7125578]
 	spawnMobile("tatooine", "mountain_squill_hunter", 300, 18.3, -21.2, -16.8, -175, 7125578)
 	spawnMobile("tatooine", "mountain_squill", 300, 15.7, -28.0, -41.1, 20, 7125578)
@@ -57,7 +57,7 @@ function SquillCaveScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "mountain_squill", 300, 7.4, -35.6, -83.4, 24, 7125579)
 	spawnMobile("tatooine", "young_mountain_squill", 300, 2.2, -35.6, -82.9, 55, 7125579)
 	spawnMobile("tatooine", "female_mountain_squill", 300, -12.0, -34.9, -78.5, 114, 7125579)
-	
+
 	--Cell [7125581]
 	spawnMobile("tatooine", "mountain_squill_hunter", 300, -18.3, -43.9, -107.5, 48, 7125581)
 	spawnMobile("tatooine", "female_mountain_squill", 300, -15.0,-43.5, -107.7, 3, 7125581)
@@ -72,12 +72,12 @@ function SquillCaveScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "young_mountain_squill", 300, -52.5, -48.8, -95.4, -141, 7125581)
 	spawnMobile("tatooine", "mountain_squill", 300, -53.5, -49.6, -99.6, -47, 7125581)
 	spawnMobile("tatooine", "female_mountain_squill", 300, -53.4, -49.4, -114.6, -27, 7125581)
-	
+
 	--Cell [7125568]
 	spawnMobile("tatooine", "mountain_squill_hunter", 300, -114.2, -69.8, -116.7, 32, 7125568)
-	spawnMobile("tatooine", "mountain_squill", 300, -113.6, -69.7, -112.4, 159, 7125568)
+        spawnMobile("tatooine", "mountain_squill", 300, -113.6, -69.7, -112.4, 159, 7125568)
 	spawnMobile("tatooine", "female_mountain_squill", 300, -110.7, -69.6, -107.9, 163, 7125568)
-	spawnMobile("tatooine", "mountain_squill", 300, -103.6, -69.6, 103.4, 66, 7125568)
+	spawnMobile("tatooine", "mountain_squill", 300, -103.8, -69.6, -103.5, -170, 7125568)
 	spawnMobile("tatooine", "young_mountain_squill", 300, -97.4, -70.4, -103.4, -85, 7125568)
 	spawnMobile("tatooine", "young_mountain_squill", 300, -89.3, -71.6, -106.5, 174, 7125568)
 	spawnMobile("tatooine", "female_mountain_squill", 300, -89.0, -71.6, -111.2, -5, 7125568)
@@ -94,18 +94,18 @@ function SquillCaveScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "female_mountain_squill", 300, -49.5, -66.1, -189.1, -12, 7125587)
 	spawnMobile("tatooine", "young_mountain_squill", 300, -55.3, -65.7, -187.0, 25, 7125587)
 	spawnMobile("tatooine", "female_mountain_squill", 300, -57.6, -66.0, -181.7, 81, 7125587)
-	spawnMobile("tatooine", "mountain_squill", 300, -54.0, -65.8, -175.4, 128, 7125587) 
+	spawnMobile("tatooine", "mountain_squill", 300, -54.0, -65.8, -175.4, 128, 7125587)
 	spawnMobile("tatooine", "mountain_squill_hunter", 300, -68.3, -66.3, -165.7, 20, 7125587)
 	spawnMobile("tatooine", "female_mountain_squill", 300, -61.2, -65.8, -165.7, -24, 7125587)
 	spawnMobile("tatooine", "young_mountain_squill", 300, -80.2, -65.0, -160.7, -43, 7125587)
-	spawnMobile("tatooine", "mountain_squill_hunter", 300, -87.8, -66.2, -160.6, 51, 7125587)  
+	spawnMobile("tatooine", "mountain_squill_hunter", 300, -87.8, -66.2, -160.6, 51, 7125587)
 	spawnMobile("tatooine", "female_mountain_squill", 300, -87.4, -65.1, -199.0, 44, 7125587)
 	spawnMobile("tatooine", "young_mountain_squill", 300, -87.1, -65.5, -191.8, 98, 7125587)
 	spawnMobile("tatooine", "mountain_squill", 300, -78.8, -66.0, -196.7, -103, 7125587)
 	spawnMobile("tatooine", "mountain_squill_hunter", 300, -84.4, -66.4, -176.7, 132, 7125587)
 	spawnMobile("tatooine", "female_mountain_squill", 300, -73.9, -65.6, -174.3, -162, 7125587)
 	spawnMobile("tatooine", "mountain_squill", 300, -80.7, -66.3, -185.9, -27, 7125587)
-	
+
 	--Cell [7125588] (primary king chamber)
 	spawnMobile("tatooine", "mountain_squill_guardian", 300, -57.7, -66.6, -207.2, 10, 7125588)
 	spawnMobile("tatooine", "mountain_squill_guardian", 300, -50.5, -66.6, -214.0, -94, 7125588)
@@ -115,7 +115,7 @@ function SquillCaveScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "mountain_squill_guardian", 300, -66.4, -65.9, -239.1, 67, 7125588)
 	spawnMobile("tatooine", "malignant_squill", 300, -55.4, -66.0, -238.9, -37, 7125588)
 	spawnMobile("tatooine", "mountain_squill_guardian", 300, -55.2, -65.7, -232.7, -122, 7125588)
-	
+
 	--Cell [7125585]
 	spawnMobile("tatooine", "mountain_squill_hunter", 300, -17.1, -67.7, -115.7, 45, 7125585)
 	spawnMobile("tatooine", "young_mountain_squill", 300, -16.1, -67.6, -102.7, -130, 7125585)
@@ -127,7 +127,7 @@ function SquillCaveScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "mountain_squill_hunter", 300, -1.6, -68.2, -91.1, 118, 7125585)
 	spawnMobile("tatooine", "female_mountain_squill", 300, 9.8, -66.8, -79.8, -154, 7125585)
 	spawnMobile("tatooine", "mountain_squill", 300, 8.5, -67.2, -82.7, 25, 7125585)
-	
+
 	--Cell [7125564]
 	spawnMobile("tatooine", "female_mountain_squill", 300, -63.1, -46.8, -71.2, -91, 7125564)
 	spawnMobile("tatooine", "mountain_squill_hunter", 300, -62.9, -46.6, -74.6, -63, 7125564)
@@ -137,7 +137,7 @@ function SquillCaveScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "young_mountain_squill", 300, -83.3, -47.3, -67.2, 57, 7125564)
 	spawnMobile("tatooine", "mountain_squill_hunter", 300, -81.8, -46.5, -41.4, 159, 7125564)
 	spawnMobile("tatooine", "mountain_squill", 300, -77.7, -46.9, -47.7, -55, 7125564)
-	
+
 	spawnMobile("tatooine", "female_mountain_squill", 300, -73.8, -29.9, -40.5, -90, 7125564)
 	spawnMobile("tatooine", "young_mountain_squill", 300, -75.4, -29.9, -43.3, -49, 7125564)
 	spawnMobile("tatooine", "mountain_squill_hunter", 300, -80.4, -31.0, -43.7, -11, 7125564)
@@ -179,7 +179,7 @@ function SquillCaveScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "mountain_squill", 300, -159.8, -50.0, -80.6, 29, 7125569)
 	spawnMobile("tatooine", "mountain_squill_guardian", 300, -163.8, -49.4, -86.8, 32, 7125569)
 	spawnMobile("tatooine", "mountain_squill", 300, -161.8, -49.7, -83.5, -152, 7125569)
-	
+
 	--Cell [7125565]
 	spawnMobile("tatooine", "mountain_squill", 300, -135.0,  -49.7, -60.2,    128, 7125565)
 	spawnMobile("tatooine", "young_mountain_squill", 300, -132.6,  -49.9, -59.7,   -168, 7125565)
@@ -189,15 +189,16 @@ function SquillCaveScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "mountain_squill", 300,  -89.9,  -49.6, -60.9,     84, 7125565)
 	spawnMobile("tatooine", "young_mountain_squill", 300, -100.6,  -51.6, -64.8,    -34, 7125565)
 	spawnMobile("tatooine", "mountain_squill", 300,  -95.4,  -50.6, -54.7,   -141, 7125565)
-	
+
 	--Cell [7125571]
 	spawnMobile("tatooine", "female_mountain_squill", 300,  -176.7, -53.8, -122.5, 54, 7125571)
+	spawnMobile("tatooine","female_mountain_squill", 300, -168.3 , -54.3, -116.4, -144, 7125571)
 	spawnMobile("tatooine", "mountain_squill", 300,  -167.5, -54.9, -123.2, 9, 7125571)
 	spawnMobile("tatooine", "young_mountain_squill", 300,  -177.1, -52.7, -109.3, 118, 7125571)
-	
-	
+
+
 	--Cell [7125576]
-	spawnMobile("tatooine", "young_mountain_squill", 300,  -104.6, -42.4, -9.1, 179, 7125571)
-	spawnMobile("tatooine", "female_mountain_squill", 300,  -107.1, -42.0, -21.1, 9, 7125571)
-	spawnMobile("tatooine", "mountain_squill", 300,  -123.1, -47.9, -11.7, 66, 7125571)
+	spawnMobile("tatooine", "young_mountain_squill", 300,  -104.6, -42.4, -9.1, 179, 7125576)
+	spawnMobile("tatooine", "female_mountain_squill", 300,  -107.1, -42.0, -21.1, 9, 7125576)
+	spawnMobile("tatooine", "mountain_squill", 300,  -123.1, -47.9, -11.7, 66, 7125576)
 end
