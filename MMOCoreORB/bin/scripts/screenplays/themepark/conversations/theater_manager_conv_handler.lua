@@ -159,7 +159,7 @@ function TheaterManagerConvoHandler:runScreenHandlers(conversationTemplate, conv
 	elseif (screenID == "init_completed_third_show") then
 		-- completed third show
 		TheaterManagerScreenPlay:doPayout(conversingPlayer, 2000)
-		TheaterManagerScreenPlay:teachSkills(conversingPlayer)
+		TheaterManagerScreenPlay:giveSkillScroll(conversingPlayer)
 		TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
 		TheaterManagerScreenPlay:completeCurrentSeries(conversingPlayer)
 	elseif (screenID == "init_completed_one") then

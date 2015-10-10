@@ -142,17 +142,23 @@ function TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
 end
 
 -- Teaches the player the skills for completing a series
-function TheaterManagerScreenPlay:teachSkills(pPlayer)
+function TheaterManagerScreenPlay:giveSkillScroll(pPlayer)
 	local curSeries = self:getCurrentSeries(pPlayer)
+	local templatePath
 
-	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
-		if (curSeries == 1) then
-			playerObject:addAbility("startDance+theatrical")
-			playerObject:addAbility("startDance+theatrical2")
-		elseif (curSeries == 2) then
-			playerObject:addAbility("startMusic+western")
-		end
-	end)
+	if (curSeries == 1) then
+		templatePath = "object/tangible/item/quest/crowd_pleaser/dance_reward.iff"
+	elseif (curSeries == 2) then
+		templatePath = "object/tangible/item/quest/crowd_pleaser/music_reward.iff"
+	end
+
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+
+	local pScroll = giveItem(pInventory, templatePath, -1, true)
+
+	if (pScroll == nil) then
+		CreatureObject(pPlayer):sendSystemMessage("Error creating reward scroll. Please file a bug report.")
+	end
 end
 
 -- Completes the player's current series

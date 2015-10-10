@@ -1738,5 +1738,10 @@ class PlayerObject extends IntangibleObject {
 
 	@dirty
 	public native int getSpentJediSkillPoints();
+
+	@dirty
+	public native boolean hasSchematic(DraftSchematic schematic) {
+		return schematicList.contains(schematic);
+	}
 }
 
