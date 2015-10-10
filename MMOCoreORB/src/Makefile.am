@@ -447,6 +447,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/generic/DataStorageUnitMenuComponent.cpp \
 		server/zone/objects/tangible/components/LairMenuComponent.cpp \
 		server/zone/objects/tangible/components/generic/LootSchematicMenuComponent.cpp \
+		server/zone/objects/tangible/components/generic/XpPurchaseMenuComponent.cpp \
 		server/zone/objects/tangible/components/BountyHunterDroidMenuComponent.cpp \
 		server/zone/objects/tangible/components/CampKitMenuComponent.cpp \
 		server/zone/objects/tangible/components/CampTerminalMenuComponent.cpp \
