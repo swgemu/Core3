@@ -13,6 +13,7 @@ FsPatrol = Patrol:new {
 	areaSize = 48,
 	originX = 5313,
 	originY = -4161,
+	forceSpawn = true,
 	enemyList = { "sith_shadow_mercenary", "sith_shadow_thug", "sith_shadow_pirate", "sith_shadow_outlaw" }
 }
 
@@ -54,12 +55,12 @@ function FsPatrol:destroyMobile(pMobile)
 	if (pMobile == nil) then
 		return
 	end
-	
+
 	if (CreatureObject(pMobile):isInCombat()) then
 		createEvent(60 * 1000, self.taskName, "destroyMobile", pMobile)
 		return
 	end
-	
+
 	deleteData(SceneObject(pMobile):getObjectID() .. self.taskName .. "ownerID")
 	SceneObject(pMobile):destroyObjectFromWorld()
 end
@@ -94,7 +95,7 @@ end
 function FsPatrol:onPlayerKilled(pPlayer)
 	local completedCount = tonumber(QuestManager.getStoredVillageValue(pPlayer, "FsPatrolCompletedCount"))
 	local playerID = SceneObject(pPlayer):getObjectID()
-	
+
 	if (completedCount >= 0 and completedCount < 20 and readData(playerID .. ":failedPatrol") ~= 1) then
 		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_patrol:failed_death")
 		self:failPatrol(pPlayer)

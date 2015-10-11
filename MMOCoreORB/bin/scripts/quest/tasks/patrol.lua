@@ -12,6 +12,7 @@ Patrol = Task:new {
 	areaSize = 0,
 	originX = 0,
 	originY = 0,
+	forceSpawn = false,
 	
 	onPlayerKilled = nil,
 	onEnteredActiveArea = nil
@@ -39,7 +40,7 @@ function Patrol:setupPatrolPoints(pCreature)
 		local x = (self.originX + offsetX) + (radius * math.cos(theta))
 		local y = (self.originY + offsetY) + (radius * math.sin(theta))
 
-		local spawnPoint = getSpawnPoint(pCreature, x, y, 0, 200)
+		local spawnPoint = getSpawnPoint(pCreature, x, y, 0, 200, self.forceSpawn)
 		local planetName = SceneObject(pCreature):getZoneName()
 
 		local pActiveArea = spawnActiveArea(planetName, "object/active_area.iff", spawnPoint[1], spawnPoint[2], spawnPoint[3], self.areaSize, 0)
