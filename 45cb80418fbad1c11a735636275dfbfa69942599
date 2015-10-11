@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_6fd0f953",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/naboo/gizda_ramani.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-11T03:15:01Z",
+      "side": 1,
+      "message": "Please make escort targets ATTACKABLE.",
+      "revId": "45cb80418fbad1c11a735636275dfbfa69942599",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_afbda104",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/naboo/pooja_naberrie.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-11T03:15:01Z",
+      "side": 1,
+      "message": "I see that you are re-arranging the secondary spawns from what the guide says, which is fine since it\u0027s likely they were messed up along with the primary spawns. I would probably go with the 2 imperial troopers, 2 stormtroopers for this step.",
+      "revId": "45cb80418fbad1c11a735636275dfbfa69942599",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_cfba6d0a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/naboo/pooja_naberrie.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-11T03:15:01Z",
+      "side": 1,
+      "message": "I would use 4 stormtroopers for this step.",
+      "revId": "45cb80418fbad1c11a735636275dfbfa69942599",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_6f3799b1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/naboo/pooja_naberrie.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-11T03:15:01Z",
+      "side": 1,
+      "message": "This step is fine except that the guide said staff sergeant instead of staff corporal.",
+      "revId": "45cb80418fbad1c11a735636275dfbfa69942599",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_0fc13580",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/naboo/pooja_naberrie.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-11T03:15:01Z",
+      "side": 1,
+      "message": "The string file for this step mentions he was meeting as many as 4 or 5 storm commandos",
+      "revId": "45cb80418fbad1c11a735636275dfbfa69942599",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
