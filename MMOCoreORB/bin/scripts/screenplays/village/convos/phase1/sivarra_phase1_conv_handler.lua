@@ -91,7 +91,7 @@ function villageSivarraPhase1ConvoHandler:runScreenHandlers(conversationTemplate
 	elseif (screenID == "talk_droids_again") then
 		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_02)
 	elseif (screenID == "talk_droids_round_three") then
-		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_02)
+		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_03)
 	elseif (screenID == "intro_in_progress") then
 		local count = tostring(FsMedicPuzzle:getPatientsLeftToTreat(conversingPlayer))
 		clonedConversation:setDialogTextTO(count)
