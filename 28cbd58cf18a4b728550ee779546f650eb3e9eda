@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_2ff3d10b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/naboo/kima_nazith.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-11T02:50:56Z",
+      "side": 1,
+      "message": "This template seems rather weak compared to it\u0027s escort. I would probably create a custom template for this.",
+      "revId": "28cbd58cf18a4b728550ee779546f650eb3e9eda",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_8feea521",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/naboo/kima_nazith.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-11T02:50:56Z",
+      "side": 1,
+      "message": "The link in the mantis report says the escort on this step is 2 imperial troopers and 2 stormtroopers.",
+      "revId": "28cbd58cf18a4b728550ee779546f650eb3e9eda",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_4ff89de5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/naboo/kima_nazith.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-11T02:50:56Z",
+      "side": 1,
+      "message": "This template seems too strong for this. I would create a custom one.",
+      "revId": "28cbd58cf18a4b728550ee779546f650eb3e9eda",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

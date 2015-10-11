@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_6fe9d919",
+        "filename": "MMOCoreORB/bin/scripts/mobile/naboo/serverobjects.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-11T02:50:56Z",
+      "side": 0,
+      "message": "You need to also remove the file, not just it\u0027s include.",
+      "revId": "7455386cb5418e3c9057680e48b94b128ed0ba2e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
