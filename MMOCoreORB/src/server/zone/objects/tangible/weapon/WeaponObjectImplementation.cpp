@@ -67,7 +67,7 @@ void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 	healthAttackCost = weaponTemplate->getHealthAttackCost();
 	actionAttackCost = weaponTemplate->getActionAttackCost();
 	mindAttackCost = weaponTemplate->getMindAttackCost();
-	forceCost = weaponTemplate->getForceCost();
+	saberForceCost = weaponTemplate->getForceCost();
 
 	pointBlankAccuracy = weaponTemplate->getPointBlankAccuracy();
 	pointBlankRange = weaponTemplate->getPointBlankRange();
