@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_af8fe174",
+        "filename": "MMOCoreORB/bin/scripts/object/tangible/item/quest/crowd_pleaser/dance_reward.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-11T02:35:58Z",
+      "side": 1,
+      "message": "Did you add this for testing or was it supposed to not be consumed when used?",
+      "revId": "ef8293b11b7baf0de75ffaf15614ff5030999522",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_ef95e988",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/generic/XpPurchaseMenuComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-11T02:35:58Z",
+      "side": 1,
+      "message": "you should null check ghost",
+      "revId": "ef8293b11b7baf0de75ffaf15614ff5030999522",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_0f9375a4",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/generic/XpPurchaseMenuComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-11T02:35:58Z",
+      "side": 1,
+      "message": "Instead of putting this inside an else, I would just put it at the end of the method since you\u0027re returning inside the if anyway.",
+      "revId": "ef8293b11b7baf0de75ffaf15614ff5030999522",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_6f823954",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/generic/XpPurchaseMenuComponent.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-11T02:35:58Z",
+      "side": 1,
+      "message": "Don\u0027t use relative paths in includes.",
+      "revId": "ef8293b11b7baf0de75ffaf15614ff5030999522",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_cfb58d32",
+        "filename": "MMOCoreORB/src/server/zone/templates/tangible/XpPurchaseTemplate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-11T02:35:58Z",
+      "side": 1,
+      "message": "Don\u0027t use relative paths in includes",
+      "revId": "ef8293b11b7baf0de75ffaf15614ff5030999522",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
