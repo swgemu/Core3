@@ -6,7 +6,7 @@ function rebelLydaConvoHandler:getInitialScreen(pPlayer, npc, pConversationTempl
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 
 	local npcID = SceneObject(npc):getObjectID()
-	local playersNpcID = readData(SceneObject(pPlayer):getObjectID() .. ":coaNpcID")
+	local playersNpcID = readData(SceneObject(pPlayer):getObjectID() .. ":coaTargetID")
 
 	if playersNpcID == npcID then
 		local state = tonumber(readScreenPlayData(pPlayer, "rebel_coa2", "state"))

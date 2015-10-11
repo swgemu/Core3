@@ -6,7 +6,7 @@ function imperialInformantConvoHandler:getInitialScreen(pPlayer, npc, pConversat
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 
 	local npcID = SceneObject(npc):getObjectID()
-	local playersNpcID = readData(SceneObject(pPlayer):getObjectID() .. ":coaNpcID")
+	local playersNpcID = readData(SceneObject(pPlayer):getObjectID() .. ":coaTargetID")
 
 	if npcID == playersNpcID then
 		return convoTemplate:getScreen("m1_informant")

@@ -6,7 +6,7 @@ function rebelSympathizerConvoHandler:getInitialScreen(pPlayer, npc, pConversati
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 
 	local npcID = SceneObject(npc):getObjectID()
-	local playersNpcID = readData(SceneObject(pPlayer):getObjectID() .. ":coaNpcID")
+	local playersNpcID = readData(SceneObject(pPlayer):getObjectID() .. ":coaTargetID")
 
 	if npcID == playersNpcID then
 		local state = tonumber(readScreenPlayData(pPlayer, "rebel_coa2", "state"))
