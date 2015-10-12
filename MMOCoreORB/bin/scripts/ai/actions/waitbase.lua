@@ -1,5 +1,4 @@
 require("ai.ai")
-require("ai.interrupts")
 
 WaitBase = createClass(Ai)
 
@@ -36,9 +35,11 @@ function WaitBase:setWait(pAgent)
 	end
 end
 
-Wait = createClass(WaitBase, Interrupt)
-WaitDefault = createClass(WaitBase, DefaultInterrupt)
-WaitPack = createClass(WaitBase, PackInterrupt)
-WaitCreaturePet = createClass(WaitBase, CreaturePetInterrupt)
-WaitDroidPet = createClass(WaitBase, DroidPetInterrupt)
-WaitFactionPet = createClass(WaitBase, FactionPetInterrupt)
+Wait10Base = createClass(WaitBase)
+
+function Wait10Base:setWait(pAgent)
+	if (pAgent ~= nil) then
+		local agent = AiAgent(pAgent)
+		agent:setWait(getRandomNumber(10) + 5)
+	end
+end

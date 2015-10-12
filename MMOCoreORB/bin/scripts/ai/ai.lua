@@ -46,7 +46,7 @@ Ai = { }
 end]]
 
 function Ai:checkConditions(pAgent)
-	return true
+	return pAgent ~= nil
 end
 
 function Ai:start(pAgent)

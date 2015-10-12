@@ -1,5 +1,4 @@
 require("ai.ai")
-require("ai.interrupts")
 
 GeneratePatrolBase = createClass(Ai)
 
@@ -14,7 +13,3 @@ function GeneratePatrolBase:doAction(pAgent)
 	end
 	return BEHAVIOR_FAILURE
 end
-
-GeneratePatrol = createClass(GeneratePatrolBase, Interrupt)
-GeneratePatrolDefault = createClass(GeneratePatrolBase, DefaultInterrupt)
-GeneratePatrolPack = createClass(GeneratePatrolBase, PackInterrupt)
