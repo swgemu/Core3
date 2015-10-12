@@ -222,7 +222,9 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 		float initialValue = Genetics::initialValue(craftingValues->getMaxValue(title));
 		// determine max percentage
 		craftingValues->setMaxPercentage(title, maxValue/1000.0f);
-		craftingValues->setMaxValue(title,1000);
+		craftingValues->setMaxValue(title,maxValue);
+		// set initial value as the starting value
+		craftingValues->setMinValue(title,initialValue);
 		// using assembly to accoutn for a 1 +% increase
 		currentPercentage = getAssemblyPercentage(initialValue) * modifier;
 		//craftingValues->setMaxPercentage(title, maxPercentage);
