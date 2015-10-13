@@ -51,7 +51,7 @@ object_installation_faction_perk_turret_dish_sm = object_installation_faction_pe
 	-- Damagetypes in WeaponObject
 	vulnerability = BLAST + LIGHTSABER,
 	-- LIGHT, MEDIUM, HEAVY
-	rating = HEAVY,
+	rating = LIGHT,
 
 	kinetic = 75,
 	energy = 95,

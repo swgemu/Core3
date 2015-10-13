@@ -1107,8 +1107,8 @@ void GCWManagerImplementation::generateTurretControlBoxTo(CreatureObject* creatu
 	StringBuffer msg;
 	msg << "Turret is now targeting: ";
 
-	if(turretData->getTarget() != NULL){
-		msg << turretData->getTarget()->getFirstName();
+	if(turretData->getManualTarget() != NULL){
+		msg << turretData->getManualTarget()->getFirstName();
 	}
 
 	status->setPromptText(msg.toString());
@@ -1173,13 +1173,13 @@ bool GCWManagerImplementation::canUseTurret(TurretDataComponent* turretData, Tur
 		PlayerObject* controllerGhost = controllerCreature->getPlayerObject();
 
 		// if there is no manual target, give it to the new guy, close it from the old guy
-		if(turretData->getTarget() == NULL) {
+		if(turretData->getManualTarget() == NULL) {
 			// try to close it from the old controller if it's still up
 			controllerGhost->closeSuiWindowType(SuiWindowType::HQ_TURRET_TERMINAL);
 		}else if(controllerGhost != NULL){
 
 			// if the controller creatures has the same window up
-			if(turretData->getTarget() != NULL) {
+			if(turretData->getManualTarget() != NULL) {
 				int controllingSuiBoxID = controlData->getSuiBoxID();
 
 				if(controllingSuiBoxID >= 0){

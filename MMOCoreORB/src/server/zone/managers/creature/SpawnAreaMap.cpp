@@ -30,6 +30,8 @@ void SpawnAreaMap::loadMap(Zone* z) {
 		LuaObject obj = lua->getGlobalObject(planetName + "_regions");
 
 		if (obj.isValidTable()) {
+			info("loading spawn areas...", true);
+
 			lua_State* s = obj.getLuaState();
 
 			for (int i = 1; i <= obj.getTableSize(); ++i) {

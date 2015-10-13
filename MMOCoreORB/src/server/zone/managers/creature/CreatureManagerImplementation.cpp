@@ -581,7 +581,6 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 }
 
 void CreatureManagerImplementation::loadSpawnAreas() {
-	info("loading spawn areas...", true);
 	spawnAreaMap.loadMap(zone);
 }
 

@@ -51,7 +51,7 @@ object_installation_faction_perk_turret_block_med = object_installation_faction_
 	-- Damagetypes in WeaponObject
 	vulnerability = BLAST + LIGHTSABER,
 	-- LIGHT, MEDIUM, HEAVY
-	rating = HEAVY,
+	rating = MEDIUM,
 
 	kinetic = 80,
 	energy = 95,

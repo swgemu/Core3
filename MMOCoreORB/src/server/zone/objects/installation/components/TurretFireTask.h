@@ -43,18 +43,25 @@ public:
 
 		Locker lock(sceneObject);
 
-		if (turretData->getTarget() == NULL && target != NULL)
-			turretData->setTarget(target);
-		else
-			target = turretData->getTarget();
+		if (isManual) {
+			if (turretData->getManualTarget() == NULL && target != NULL)
+				turretData->setManualTarget(target);
+			else
+				target = turretData->getManualTarget();
+
+			if(!checkTarget(turretData)) {
+				turretData->setManualTarget(NULL);
+				turretData->setFireTask(NULL);
+				return;
+			}
+		} else {
+			target = turretData->selectTarget();
+
+			if (target == NULL)
+				return;
+		}
 
 		turretData->setFireTask(this);
-
-		if(!checkTarget(turretData)) {
-			turretData->setTarget(NULL);
-			turretData->setFireTask(NULL);
-			return;
-		}
 
 		ManagedReference<ObjectController*> objectController = sceneObject->getZoneServer()->getObjectController();
 
@@ -91,14 +98,13 @@ public:
 	void doAutoFire(TurretDataComponent* turretData, WeaponObject* weapon) {
 		turretData->updateAutoCooldown(weapon->getAttackSpeed());
 		turretData->updateManualCooldown(weapon->getAttackSpeed());
-		turretData->setTarget(target);
 		turretData->rescheduleFireTask(weapon->getAttackSpeed(), false);
 	}
 
 	void handleManualFire(TurretDataComponent* turretData, WeaponObject* weapon) {
 		turretData->updateAutoCooldown(GCWManagerImplementation::turretAutoFireTimeout);
 		turretData->updateManualCooldown(weapon->getAttackSpeed());
-		turretData->setTarget(target);
+		turretData->setManualTarget(target);
 		turretData->rescheduleFireTask(weapon->getAttackSpeed(), true);
 	}
 
@@ -143,13 +149,20 @@ public:
 	}
 
 	bool checkTarget(TurretDataComponent* turretData) {
-		ManagedReference<CreatureObject*> attacker = turretData->getController();
-
-		ManagedReference<WeaponObject*> weapon = sceneObject->getSlottedObject("hold_r").castTo<WeaponObject*>();
-
-		if (weapon == NULL || target == NULL)
+		if (target == NULL)
 			return false;
 
+		ManagedReference<CreatureObject*> attacker = turretData->getController();
+
+		if (target->isDead() || target->isIncapacitated() || !sceneObject->isInRange(target, turretData->getMaxRange())) {
+
+			closeControls(attacker);
+
+			if (attacker)
+				attacker->sendSystemMessage("@hq:invalid_target"); // That target has become unavailable. Please refresh terminal for latest target information.
+
+			return false;
+		}
 
 		if (!CollisionManager::checkLineOfSight(target, sceneObject)) {
 			closeControls(attacker);
@@ -159,14 +172,6 @@ public:
 
 			return false;
 
-		} else if (target->isDead() || target->isIncapacitated() || !sceneObject->isInRange(target, weapon->getMaxRange(false))) {
-
-			closeControls(attacker);
-
-			if (attacker)
-				attacker->sendSystemMessage("@hq:invalid_target"); // That target has become unavailable. Please refresh terminal for latest target information.
-
-			return false;
 		}
 
 		return true;
