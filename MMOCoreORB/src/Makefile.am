@@ -40,8 +40,8 @@
 # this exception also makes it possible to release a modified version
 # which carries forward this exception.
 
-DEFAULT_FLAGS = $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11 -march=native
-AM_CXXFLAGS = $(DEFAULT_FLAGS) -O0
+DEFAULT_FLAGS = $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Wno-null-dereference -Wno-dynamic-class-memaccess -Werror -std=c++11 -march=native
+AM_CXXFLAGS = $(DEFAULT_FLAGS) -O0 -fno-lto
 
 ENGINE3_PATH=../../../../MMOEngine
 ENGINE3_MOCK_PATH=../../../utils
@@ -52,18 +52,19 @@ GMOCK_PATH=../../../utils/gmock-1.6.0
 
 AUTOGEN_PATH=../../../src/autogen
 
-#CC = clang
-#CXX = clang++
+CC = clang
+CXX = clang++
 
 INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
-            -I$(ENGINE3_PATH)/include -I$(ENGINE3_PATH)/src -I$(ENGINE3_MOCK_PATH) -I/usr/local/include -I/usr/include/mysql \
+	    -I$(ENGINE3_PATH)/include -I$(ENGINE3_PATH)/src -I$(ENGINE3_MOCK_PATH) -I/usr/local/include -I/usr/include/mysql \
 	    -I/usr/local/BerkeleyDB.5.3/include \
 	    -I/usr/include/db5.3 \
+	    -I/usr/include/lua5.3 \
 	    -I$(GTEST_PATH)/include \
 	    -I$(GMOCK_PATH)/include \
 	    -I$(AUTOGEN_PATH)
-			
+
 LIBS =	$(SYSTEM_LIBS)  \
 	$(USER_LD_FLAGS) \
 	-L../../../build/unix/src/client \
@@ -98,15 +99,16 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/managers/creature/tests/LuaMobileTest.cpp \
 			  	server/zone/managers/jedi/tests/JediManagerTest.cpp \
 			  	terrain/manager/tests/TerrainManagerTest.cpp \
-			  	server/zone/objects/creature/ai/bt/tests/BehaviorTest.cpp \
 			  	server/zone/objects/area/areashapes/tests/RectangularAreaShapeTest.cpp \
 			  	server/zone/objects/area/areashapes/tests/RingAreaShapeTest.cpp \
 			  	server/zone/tests/DeadlockTestBase.cpp \
+			  	server/zone/objects/creature/ai/bt/tests/BehaviorTreeTest.cpp \
 			  	terrain/tests/BasicTerrainTest.cpp \
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/managers/frs/FrsManager.cpp \
+core3_IDLS =	autogen/server/zone/objects/mission/PlayerBounty.cpp \
+				autogen/server/zone/managers/frs/FrsManager.cpp \
 				autogen/server/zone/objects/tangible/misc/ContractCrate.cpp \
 				autogen/server/zone/objects/tangible/misc/FsBuffItem.cpp \
 				autogen/server/zone/objects/tangible/misc/FsCsObject.cpp \
@@ -745,14 +747,10 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/VehicleObjectImplementation.cpp \
 		server/zone/objects/creature/variables/SkillList.cpp \
 		server/zone/objects/creature/ai/bt/Behavior.cpp \
-		server/zone/objects/creature/ai/bt/CompositeBehavior.cpp \
-		server/zone/objects/creature/ai/bt/SequenceBehavior.cpp \
-		server/zone/objects/creature/ai/bt/SelectorBehavior.cpp \
-		server/zone/objects/creature/ai/bt/NonDeterministicBehavior.cpp \
-		server/zone/objects/creature/ai/bt/ParallelBehavior.cpp \
-		server/zone/objects/creature/ai/bt/ParallelSequenceBehavior.cpp \
-		server/zone/objects/creature/ai/bt/ParallelSelectorBehavior.cpp \
-		server/zone/objects/creature/ai/bt/LuaBehavior.cpp \
+		server/zone/objects/creature/ai/bt/leaf/Checks.cpp \
+		server/zone/objects/creature/ai/bt/node/Composite.cpp \
+		server/zone/objects/creature/ai/bt/node/Sequence.cpp \
+		server/zone/objects/creature/ai/bt/node/Selector.cpp \
 		server/zone/objects/creature/conversation/ConversationObserverImplementation.cpp \
 		server/zone/objects/creature/conversation/DeliverMissionConversationObserverImplementation.cpp \
 		server/zone/objects/creature/conversation/PetTrainingConversationObserverImplementation.cpp \
