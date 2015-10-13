@@ -37,7 +37,6 @@ public:
 
 		String objName = "", tempName = "object/mobile/boba_fett.iff";
 		bool baby = false;
-		String aiTemplate = "";
 		bool event = false;
 		int level = -1;
 
@@ -53,8 +52,6 @@ public:
 				creature->sendSystemMessage("Current number of scheduled AiMoveEvents: " + String::valueOf(AiMap::instance()->scheduledMoveEvents.get()));
 				creature->sendSystemMessage("Current number of scheduled AiMoveEvents with followObject: " + String::valueOf(AiMap::instance()->moveEventsWithFollowObject.get()));
 				creature->sendSystemMessage("Current number of scheduled AiMoveEvents retreating: " + String::valueOf(AiMap::instance()->moveEventsRetreating.get()));
-				creature->sendSystemMessage("Current number of AiAwarenessEvents: " + String::valueOf(AiMap::instance()->activeAwarenessEvents.get()));
-				creature->sendSystemMessage("Current number of scheduled AiAwarenessEvents: " + String::valueOf(AiMap::instance()->scheduledAwarenessEvents.get()));
 				creature->sendSystemMessage("Current number of AiRecoveryEvents: " + String::valueOf(AiMap::instance()->activeRecoveryEvents.get()));
 				creature->sendSystemMessage("Current number of AiWaitEvents: " + String::valueOf(AiMap::instance()->activeWaitEvents.get()));
 
@@ -120,8 +117,6 @@ public:
 			if (!objName.isEmpty() && objName.indexOf("object") == -1 && !baby && !event) {
 				if (objName.length() < 6)
 					posX = Float::valueOf(objName);
-				else
-					aiTemplate = objName;
 
 				objName = "";
 			} else if (tokenizer.hasMoreTokens()) {
@@ -161,7 +156,7 @@ public:
 		else {
 			npc = cast<AiAgent*>(creatureManager->spawnCreature(templ, objTempl, posX, posZ, posY, parID));
 			if (npc != NULL)
-				npc->activateLoad("");
+				npc->setAITemplate();
 		}
 
 		if (baby && npc == NULL) {
@@ -170,10 +165,6 @@ public:
 		} else if (npc == NULL) {
 			creature->sendSystemMessage("could not spawn " + arguments.toString());
 			return GENERALERROR;
-		}
-
-		if (!aiTemplate.isEmpty()) {
-			npc->activateLoad(aiTemplate);
 		}
 
 		npc->updateDirection(Math::deg2rad(creature->getDirectionAngle()));

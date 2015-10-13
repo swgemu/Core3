@@ -9,6 +9,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/CreatureFlag.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/junkdealer/JunkdealerCreature.h"
 #include "server/conf/ConfigManager.h"
@@ -23,6 +24,23 @@ void SpawnAreaMap::loadMap(Zone* z) {
 	setLoggingName("SpawnAreaMap " + planetName);
 
 	lua->init();
+	lua->setGlobalInt("NPC", CreatureFlag::NPC);
+	lua->setGlobalInt("PACK", CreatureFlag::PACK);
+	lua->setGlobalInt("HERD", CreatureFlag::HERD);
+	lua->setGlobalInt("KILLER", CreatureFlag::KILLER);
+	lua->setGlobalInt("STALKER", CreatureFlag::STALKER);
+	lua->setGlobalInt("BABY", CreatureFlag::BABY);
+	lua->setGlobalInt("LAIR", CreatureFlag::LAIR);
+	lua->setGlobalInt("HEALER", CreatureFlag::HEALER);
+	lua->setGlobalInt("SCOUT", CreatureFlag::SCOUT);
+	lua->setGlobalInt("PET", CreatureFlag::PET);
+	lua->setGlobalInt("DROID_PET", CreatureFlag::DROID_PET);
+	lua->setGlobalInt("FACTION_PET", CreatureFlag::FACTION_PET);
+	lua->setGlobalInt("ESCORT", CreatureFlag::ESCORT);
+	lua->setGlobalInt("FOLLOW", CreatureFlag::FOLLOW);
+	lua->setGlobalInt("STATIC", CreatureFlag::STATIC);
+	lua->setGlobalInt("STATIONARY", CreatureFlag::STATIONARY);
+	lua->setGlobalInt("NOAIAGGRO", CreatureFlag::NOAIAGGRO);
 
 	try {
 		lua->runFile("scripts/managers/spawn_manager/" + planetName + ".lua");
@@ -102,9 +120,9 @@ void SpawnAreaMap::loadStaticSpawns() {
 			uint64 parentID = obj.getLongAt(7);
 			String moodString;
 			UnicodeString customName;
-			String aiString;
-			int junkDealerBuyingType =0;
-			int junkDealerConversationType =0;
+			int aiMask = -1;
+			int junkDealerBuyingType = 0;
+			int junkDealerConversationType = 0;
 			if (obj.getTableSize() > 7)
 				moodString = obj.getStringAt(8);
 
@@ -112,7 +130,7 @@ void SpawnAreaMap::loadStaticSpawns() {
 				customName = obj.getStringAt(9);
 
 			if (obj.getTableSize() > 9)
-				aiString = obj.getStringAt(10);
+				aiMask = obj.getIntAt(10);
 
 			if (obj.getTableSize() > 10)
 				junkDealerBuyingType = obj.getIntAt(11);
@@ -152,8 +170,9 @@ void SpawnAreaMap::loadStaticSpawns() {
 				if (creatureObject->isAiAgent()) {
 					AiAgent* ai = cast<AiAgent*>( creatureObject.get());
 					ai->setRespawnTimer(respawn);
-					if (!aiString.isEmpty()) {
-						ai->activateLoad(aiString);
+					if (aiMask >= 0) {
+						ai->setCreatureBitmask(aiMask);
+						ai->setAITemplate();
 					}
 				}
 			} else {

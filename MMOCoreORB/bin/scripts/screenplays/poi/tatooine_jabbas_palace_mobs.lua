@@ -189,7 +189,9 @@ function TatooineJabbasPalaceMobsScreenPlay:spawnMobiles()
 			CreatureObject(pMobile):setCustomObjectName(v[8])
 			createEvent(getRandomNumber(250,450) * 100, "TatooineJabbasPalaceMobsScreenPlay", "JabbaPatrol", pMobile, "")
 			createObserver(DESTINATIONREACHED, "TatooineJabbasPalaceMobsScreenPlay", "jabbaPatrolDestReached", pMobile)
-			AiAgent(pMobile):setAiTemplate("manualescortwalk")
+			AiAgent(pMobile):addCreatureFlag(AI_NOAIAGGRO)
+			AiAgent(pMobile):addCreatureFlag(AI_ESCORT)
+			AiAgent(pMobile):setAITemplate()
 			AiAgent(pMobile):setFollowState(4)
 		end
 	end
@@ -202,7 +204,9 @@ function TatooineJabbasPalaceMobsScreenPlay:spawnMobiles()
 			CreatureObject(pMobile):setCustomObjectName(v[8])
 			createEvent(getRandomNumber(250,450) * 100, "TatooineJabbasPalaceMobsScreenPlay", "JabbaPatrol", pMobile, "")
 			createObserver(DESTINATIONREACHED, "TatooineJabbasPalaceMobsScreenPlay", "jabbaPatrolDestReached", pMobile)
-			AiAgent(pMobile):setAiTemplate("manualescortwalk")
+			AiAgent(pMobile):addCreatureFlag(AI_NOAIAGGRO)
+			AiAgent(pMobile):addCreatureFlag(AI_ESCORT)
+			AiAgent(pMobile):setAITemplate()
 			AiAgent(pMobile):setFollowState(4)
 		end
 	end
@@ -215,7 +219,9 @@ function TatooineJabbasPalaceMobsScreenPlay:spawnMobiles()
 			CreatureObject(pMobile):setCustomObjectName(v[8])
 			createEvent(getRandomNumber(350,450) * 100, "TatooineJabbasPalaceMobsScreenPlay", "JabbaPatrol", pMobile, "")
 			createObserver(DESTINATIONREACHED, "TatooineJabbasPalaceMobsScreenPlay", "jabbaPatrolDestReached", pMobile)
-			AiAgent(pMobile):setAiTemplate("manualescortwalk")
+			AiAgent(pMobile):addCreatureFlag(AI_NOAIAGGRO)
+			AiAgent(pMobile):addCreatureFlag(AI_ESCORT)
+			AiAgent(pMobile):setAITemplate()
 			AiAgent(pMobile):setFollowState(4)
 		end
 	end

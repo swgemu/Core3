@@ -30,6 +30,7 @@ import server.zone.objects.tangible.weapon.WeaponObject;
 include server.zone.objects.scene.variables.AutoDeltaSet;
 include server.zone.objects.scene.variables.StringId;
 
+@mock
 class TangibleObject extends SceneObject {
 	protected boolean targetable;
 	
@@ -332,9 +333,10 @@ class TangibleObject extends SceneObject {
 	 * @post { this object is locked }
 	 * @return returns true if SceneObject defender exists in the defender vector
 	 */
+	@mock
 	@preLocked
 	@dirty
-	public boolean hasDefender(SceneObject defender) {
+	public abstract boolean hasDefender(SceneObject defender) {
 		for (int i = 0; i < defenderList.size(); ++i) {
 			if (defenderList.get(i) == defender)
 				return true;
@@ -349,6 +351,7 @@ class TangibleObject extends SceneObject {
 	 * @post { }
 	 * @return returns true if the creature object can attack this 
 	 */
+	@mock
 	@dirty
 	public native abstract boolean isAttackableBy(CreatureObject object);
 
@@ -533,9 +536,10 @@ class TangibleObject extends SceneObject {
 		if (magicBits.decrement() == 0)
 			clearOptionBit(OptionBitmask.YELLOW, notifyClient);
 	}
-	
+
+	@mock
 	@dirty
-	public int getLevel() {
+	public abstract int getLevel() {
 		return level;
 	}
 	
@@ -570,17 +574,19 @@ class TangibleObject extends SceneObject {
 	public AutoDeltaSet<int> getVisibleComponents() {
 		return visibleComponents;
 	}
-	
+
+	@mock
 	@dirty
-	public SceneObject getMainDefender() {
+	public abstract SceneObject getMainDefender() {
 		if(defenderList.size() > 0)
 			return defenderList.get(0);
 		
 		return null;
 	}
-	
-	@read
-	public boolean isDestroyed() {
+
+	@mock
+	@dirty
+	public abstract boolean isDestroyed() {
 		return conditionDamage >= maxCondition;
 	}
 	
@@ -688,9 +694,10 @@ class TangibleObject extends SceneObject {
 		return objectSerial;
 	}
 
+	@mock
 	@local
 	@preLocked
-	public native ThreatMap getThreatMap();
+	public abstract native ThreatMap getThreatMap();
 	
 	/*
 	 * Creates a factory crate for this object, can insert this object or a clone

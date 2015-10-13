@@ -1811,7 +1811,9 @@ function ThemeParkLogic:followPlayer(pConversingNpc, pConversingPlayer)
 				npcCreo:setPvpStatusBitmask(1)
 			end
 		end
-		npc:setAiTemplate("follow")
+		npc:addCreatureFlag(AI_NOAIAGGRO)
+		npc:addCreatureFlag(AI_FOLLOW)
+		npc:setAITemplate()
 	end)
 end
 
