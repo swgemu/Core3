@@ -228,7 +228,7 @@ void DroidObjectImplementation::initDroidModules() {
 
 void DroidObjectImplementation::initDroidWeapons() {
 	//Set weapon stats
-	WeaponObject* weapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
+	WeaponObject* weapon = asAiAgent()->getDefaultWeapon();
 
 	if (weapon != NULL) {
 		Locker locker(weapon);

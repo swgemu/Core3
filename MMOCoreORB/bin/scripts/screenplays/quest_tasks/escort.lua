@@ -101,7 +101,9 @@ function Escort:setEscortFollow(pCreatureObject, pEscort)
 	local playerID = SceneObject(pCreatureObject):getObjectID()
 	local escortID = SceneObject(pEscort):getObjectID()
 	
-	AiAgent(pEscort):setAiTemplate("follow")
+	AiAgent(pEscort):addCreatureFlag(AI_NOAIAGGRO)
+	AiAgent(pEscort):addCreatureFlag(AI_FOLLOW)
+	AiAgent(pEscort):setAITemplate()
 	AiAgent(pEscort):setFollowObject(pCreatureObject)
 
 	writeData(playerID .. self.taskName .. "escortID", escortID)

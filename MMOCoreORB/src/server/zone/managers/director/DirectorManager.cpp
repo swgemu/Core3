@@ -8,6 +8,7 @@
 #include "DirectorManager.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/creature/LuaCreatureObject.h"
+#include "templates/params/creature/CreatureFlag.h"
 #include "server/zone/objects/scene/LuaSceneObject.h"
 #include "server/zone/objects/building/LuaBuildingObject.h"
 #include "server/zone/objects/intangible/LuaIntangibleObject.h"
@@ -469,6 +470,25 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalLong("FACTIONNEUTRAL", Factions::FACTIONNEUTRAL);
 	luaEngine->setGlobalLong("FACTIONIMPERIAL", Factions::FACTIONIMPERIAL);
 	luaEngine->setGlobalLong("FACTIONREBEL", Factions::FACTIONREBEL);
+
+	// AI/creature bitmasks
+	luaEngine->setGlobalInt("AI_NPC", CreatureFlag::NPC);
+	luaEngine->setGlobalInt("AI_PACK", CreatureFlag::PACK);
+	luaEngine->setGlobalInt("AI_HERD", CreatureFlag::HERD);
+	luaEngine->setGlobalInt("AI_KILLER", CreatureFlag::KILLER);
+	luaEngine->setGlobalInt("AI_STALKER", CreatureFlag::STALKER);
+	luaEngine->setGlobalInt("AI_BABY", CreatureFlag::BABY);
+	luaEngine->setGlobalInt("AI_LAIR", CreatureFlag::LAIR);
+	luaEngine->setGlobalInt("AI_HEALER", CreatureFlag::HEALER);
+	luaEngine->setGlobalInt("AI_SCOUT", CreatureFlag::SCOUT);
+	luaEngine->setGlobalInt("AI_PET", CreatureFlag::PET);
+	luaEngine->setGlobalInt("AI_DROID_PET", CreatureFlag::DROID_PET);
+	luaEngine->setGlobalInt("AI_FACTION_PET", CreatureFlag::FACTION_PET);
+	luaEngine->setGlobalInt("AI_ESCORT", CreatureFlag::ESCORT);
+	luaEngine->setGlobalInt("AI_FOLLOW", CreatureFlag::FOLLOW);
+	luaEngine->setGlobalInt("AI_STATIC", CreatureFlag::STATIC);
+	luaEngine->setGlobalInt("AI_STATIONARY", CreatureFlag::STATIONARY);
+	luaEngine->setGlobalInt("AI_NOAIAGGRO", CreatureFlag::NOAIAGGRO);
 
 	// Badges
 	VectorMap<unsigned int, const Badge*>* badges = BadgeList::instance()->getMap();
@@ -1835,8 +1855,8 @@ int DirectorManager::spawnMobile(lua_State* L) {
 			if (randomRespawn)
 				ai->setRandomRespawn(true);
 
-			// TODO (dannuic): this is a temporary measure until we add an AI setting method to DirectorManager -- make stationary the default
-			ai->activateLoad("stationary");
+			ai->addCreatureFlag(CreatureFlag::STATIC);
+			ai->setAITemplate();
 		}
 
 		creature->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
@@ -2223,9 +2243,6 @@ Lua* DirectorManager::getLuaInstance() {
 		initializeLuaEngine(lua);
 		loadScreenPlays(lua);
 		JediManager::instance()->loadConfiguration(lua);
-		AiMap::instance()->initialize(lua);
-		if (!AiMap::instance()->isLoaded())
-			AiMap::instance()->loadTemplates(lua);
 
 		localLua.set(lua);
 	}
@@ -2242,9 +2259,6 @@ int DirectorManager::runScreenPlays() {
 		initializeLuaEngine(lua);
 		ret = loadScreenPlays(lua);
 		JediManager::instance()->loadConfiguration(lua);
-		AiMap::instance()->initialize(lua);
-		if (!AiMap::instance()->isLoaded())
-			AiMap::instance()->loadTemplates(lua);
 
 		localLua.set(lua);
 	}
