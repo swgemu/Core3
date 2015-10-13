@@ -1,0 +1,98 @@
+example = {
+	{id="root",       name="Selector",                     pid="none"},
+	{id="attack",     name="Sequence",                     pid="root"},
+	{id="wander",     name="Sequence",                     pid="root"},
+	{id="wander0",    name="Sequence",                     pid="wander"}, -- add an extra level here for runningChain tests
+	{id="patrol",     name="GeneratePatrol",               pid="root",      args="numPoints=5:distFromHome=10"},
+	{id="gettar0",    name="Selector",                     pid="attack"},
+	{id="gettar1",    name="Sequence",                     pid="gettar0"},
+	{id="gettar2",    name="ExitCombat",                   pid="gettar0",   args="clearDefenders=true"},
+	{id="gettar3",    name="Sequence",                     pid="gettar1"},
+	{id="gettar4",    name="AlwaysSucceed",                pid="gettar1"},
+	{id="gettar5",    name="UntilSuccess",                 pid="gettar3"},
+	{id="gettar6",    name="Selector",                     pid="gettar3"},
+	{id="gettar7",    name="SetDefenderFromFollow",        pid="gettar3"},
+	{id="gettar8",    name="Sequence",                     pid="gettar5"},
+	{id="gettar9",    name="AlwaysSucceed",                pid="gettar8"},
+	{id="gettar10",   name="Selector",                     pid="gettar8"},
+	{id="gettar11",   name="Selector",                     pid="gettar9"},
+	{id="gettar12",   name="GetFollowFromThreatMap",       pid="gettar11"},
+	{id="gettar13",   name="GetFollowFromDefenders",       pid="gettar11"},
+	{id="gettar14",   name="Not",                          pid="gettar10"},
+	{id="gettar15",   name="Sequence",                     pid="gettar10"},
+	{id="gettar16",   name="AlwaysFail",                   pid="gettar10"},
+	{id="gettar17",   name="CheckHasFollow",               pid="gettar14"},
+	{id="gettar18",   name="CheckFollowInRange",           pid="gettar15",  args="condition=128"},
+	{id="gettar19",   name="CheckFollowAttackable",        pid="gettar15"},
+	{id="gettar20",   name="Not",                          pid="gettar15"},
+	{id="gettar21",   name="Selector",                     pid="gettar20"},
+	{id="gettar22",   name="CheckFollowPosture",           pid="gettar21",  args="condition=14"}, -- TODO: parse posture enums (DEAD)
+	{id="gettar23",   name="CheckFollowPosture",           pid="gettar21",  args="condition=13"}, -- TODO: parse posture enums (INCAPACITATED)
+	{id="gettar25",   name="Sequence",                     pid="gettar16"},
+	{id="gettar26",   name="DropFollowFromDefenders",      pid="gettar25"},
+	{id="gettar27",   name="RestoreFollow",                pid="gettar25"},
+	{id="gettar28",   name="CheckHasFollow",               pid="gettar6"},
+	{id="gettar29",   name="AlwaysFail",                   pid="gettar6"},
+	{id="gettar30",   name="RestoreFollow",                pid="gettar29"},
+	{id="gettar31",   name="Sequence",                     pid="gettar4"},
+	{id="gettar32",   name="CheckFollowHasState",          pid="gettar31",  args="condition=4"}, -- TODO: Need to parse PEACE            and  other         enums
+	{id="gettar33",   name="CheckRandomLevel",             pid="gettar31",  args="condition=1"},
+	{id="gettar34",   name="Not",                          pid="gettar31"},
+	{id="gettar35",   name="ExitCombat",                   pid="gettar31",  args="clearDefenders=true"},
+	{id="gettar36",   name="CheckFollowAggression",        pid="gettar34"},
+	{id="selwep0",    name="ParallelSequence",             pid="attack"},
+	{id="selwep1",    name="Sequence",                     pid="selwep0"},
+	{id="selwep2",    name="EraseBlackboard",              pid="selwep0",   args="param=stagedWeapon"},
+	{id="selwep3",    name="EraseBlackboard",              pid="selwep0",   args="param=followRange"},
+	{id="selwep4",    name="UpdateRangeToFollow",          pid="selwep1"},
+	{id="selwep5",    name="Selector",                     pid="selwep1"},
+	{id="selwep6",    name="EquipStagedWeapon",            pid="selwep1"},
+	{id="selwep7",    name="Sequence",                     pid="selwep5"},
+	{id="selwep8",    name="Sequence",                     pid="selwep5"},
+	{id="selwep9",    name="CheckFollowInWeaponRange",     pid="selwep7",   args="condition=1"}, -- TODO: parse weapon enums (WEAPONRANGED)
+	{id="selwep10",   name="CheckFollowClosestIdealRange", pid="selwep7",   args="condition=1"}, -- TODO: parse weapon enums (WEAPONRANGED)
+	{id="selwep11",   name="StageWeapon",                  pid="selwep7",   args="weaponType=1"}, -- TODO: parse weapon enums (WEAPONRANGED)
+	{id="selwep12",   name="CheckFollowInWeaponRange",     pid="selwep8",   args="condition=2"}, -- TODO: parse weapon enums (WEAPONMELEE)
+	{id="selwep13",   name="CheckFollowClosestIdealRange", pid="selwep8",   args="condition=2"}, -- TODO: parse weapon enums (WEAPONMELEE)
+	{id="selwep14",   name="StageWeapon",                  pid="selwep8",   args="weaponType=2"}, -- TODO: parse weapon enums (WEAPONMELEE)
+	{id="selatt0",    name="Sequence",                     pid="attack"},
+	{id="selatt1",    name="NonDeterministicSelector",     pid="selatt0"},
+	{id="selatt2",    name="Selector",                     pid="selatt0"},
+	{id="selatt3",    name="SelectAttack",                 pid="selatt1",   args="attackNum=-2"}, -- TODO: -2 means default attack, is there a better arg?
+	{id="selatt4",    name="SelectAttack",                 pid="selatt1",   args="attackNum=-1"},
+	{id="selatt5",    name="SelectAttack",                 pid="selatt1",   args="attackNum=-1"},
+	{id="selatt6",    name="SelectAttack",                 pid="selatt1",   args="attackNum=-1"},
+	{id="selatt7",    name="SelectAttack",                 pid="selatt1",   args="attackNum=-1"},
+	{id="selatt8",    name="Sequence",                     pid="selatt2"},
+	{id="selatt9",    name="SelectAttack",                 pid="selatt2",   args="attackNum=-2"},
+	{id="selatt10",   name="CheckAttackInRange",           pid="selatt8"},
+	{id="selatt11",   name="CheckAttackIsValid",           pid="selatt8"},
+	{id="commove0",   name="Selector",                     pid="attack"}, -- TODO: the move logic can be moved more into the btrees...
+	{id="commove1",   name="Not",                          pid="commove0"},
+	{id="commove2",   name="Sequence",                     pid="commove0"},
+	{id="commove3",   name="AlwaysFail",                   pid="commove0"},
+	{id="commove4",   name="FindNextPosition",             pid="commove0",  args="mode=run"},
+	{id="commove5",   name="Sequence",                     pid="commove1"},
+	{id="commove6",   name="CheckRetreat",                 pid="commove2",  args="condition=256"},
+	{id="commove7",   name="Leash",                        pid="commove2"},
+	{id="commove8",   name="Sequence",                     pid="commove3"},
+	{id="commove9",   name="CheckPosture",                 pid="commove5",  args="condition=0"}, -- TODO: parse posture enums (UPRIGHT)
+	{id="commove10",  name="CheckDestination",             pid="commove5",  args="condition=0"},
+	{id="commove11",  name="CheckSpeed",                   pid="commove8",  args="condition=0"},
+	{id="commove12",  name="CompleteMove",                 pid="commove8"},
+	{id="walkmove0",  name="Selector",                     pid="wander0"}, -- TODO: the move logic can be moved more into the btrees...
+	{id="walkmove1",  name="Not",                          pid="walkmove0"},
+	{id="walkmove2",  name="Sequence",                     pid="walkmove0"},
+	{id="walkmove3",  name="AlwaysFail",                   pid="walkmove0"},
+	{id="walkmove4",  name="FindNextPosition",             pid="walkmove0", args="mode=walk"},
+	{id="walkmove5",  name="Sequence",                     pid="walkmove1"},
+	{id="walkmove6",  name="CheckRetreat",                 pid="walkmove2", args="condition=256"},
+	{id="walkmove7",  name="Leash",                        pid="walkmove2"},
+	{id="walkmove8",  name="Sequence",                     pid="walkmove3"},
+	{id="walkmove9",  name="CheckPosture",                 pid="walkmove5", args="condition=0"}, -- TODO: parse posture enums (UPRIGHT)
+	{id="walkmove10", name="CheckDestination",             pid="walkmove5", args="condition=0"},
+	{id="walkmove11", name="CheckSpeed",                   pid="walkmove8", args="condition=0"},
+	{id="walkmove12", name="CompleteMove",                 pid="walkmove8"},
+	{id="wait0",      name="Wait",                         pid="wander0",   args="duration=10"},
+}
+addAiTemplate("example",  example)
