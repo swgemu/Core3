@@ -22,6 +22,7 @@ import server.zone.objects.tangible.threat.ThreatMap;
 include server.zone.objects.scene.variables.AutoDeltaSet;
 include server.zone.objects.scene.variables.StringId;
 
+@mock
 class TangibleObject extends SceneObject {
 	protected boolean targetable;
 
@@ -347,6 +348,7 @@ class TangibleObject extends SceneObject {
 	 * @post { }
 	 * @return returns true if the creature object can attack this
 	 */
+	@mock
 	@dirty
 	public native abstract boolean isAttackableBy(CreatureObject object);
 
@@ -537,8 +539,9 @@ class TangibleObject extends SceneObject {
 			clearOptionBit(OptionBitmask.YELLOW, notifyClient);
 	}
 
+	@mock
 	@dirty
-	public int getLevel() {
+	public abstract int getLevel() {
 		return level;
 	}
 
@@ -582,8 +585,9 @@ class TangibleObject extends SceneObject {
 		return null;
 	}
 
-	@read
-	public boolean isDestroyed() {
+	@mock
+	@dirty
+	public abstract boolean isDestroyed() {
 		return conditionDamage >= maxCondition;
 	}
 
@@ -707,9 +711,10 @@ class TangibleObject extends SceneObject {
 		return objectSerial;
 	}
 
+	@mock
 	@local
 	@preLocked
-	public native ThreatMap getThreatMap();
+	public abstract native ThreatMap getThreatMap();
 
 	/*
 	 * Creates a factory crate for this object, can insert this object or a clone
@@ -871,7 +876,7 @@ class TangibleObject extends SceneObject {
 	public string getLuaStringData(final string key) {
 		return luaStringData.get(key);
 	}
-	
+
 	public native void setDisabled(boolean disabled);
 	public native boolean isDisabled();
 
