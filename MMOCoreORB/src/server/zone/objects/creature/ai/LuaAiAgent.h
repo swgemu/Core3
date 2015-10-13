@@ -107,9 +107,6 @@ namespace ai {
 		int checkLineOfSight(lua_State* L);
 		int activateRecovery(lua_State* L);
 		int activateAwareness(lua_State* L);
-		int setBehaviorStatus(lua_State* L);
-		int getBehaviorStatus(lua_State* L);
-		int resetBehaviorList(lua_State* L);
 		int executeBehavior(lua_State* L);
 		int info(lua_State* L);
 		int spatialChat(lua_State* L);

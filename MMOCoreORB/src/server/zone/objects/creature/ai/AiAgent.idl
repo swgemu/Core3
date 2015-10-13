@@ -38,8 +38,6 @@ include server.zone.objects.creature.ai.variables.CreatureTemplateReference;
 include system.thread.ReadWriteLock;
 include server.zone.objects.creature.ai.variables.CurrentFoundPath;
 import server.zone.objects.creature.ai.bt.Behavior;
-import server.zone.objects.creature.ai.bt.CompositeBehavior;
-include server.zone.templates.AiTemplate;
 import server.zone.objects.intangible.ControlDevice;
 import server.zone.objects.creature.ai.events.AiTrackingTask;
 import system.thread.atomic.AtomicInteger;
@@ -131,9 +129,12 @@ class AiAgent extends CreatureObject {
 	protected PetDeed petDeed;
 
 	// AI bit
-	protected unsigned int currentBehaviorID;
+	@local
+	private transient Behavior rootBehavior;
 	@dereferenced
-	protected VectorMap<unsigned int, Behavior> behaviors;
+	private transient Vector<unsigned int> runningChain;
+	@dereferenced
+	private string aiTemplate;
 
 	@dereferenced
 	protected transient string templateName;
@@ -187,10 +188,11 @@ class AiAgent extends CreatureObject {
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 
-		behaviors.setNoDuplicateInsertPlan();
 		waitTime = 0;
 		waiting = false;
 		fleeRange = 192;
+		
+		aiTemplate = "";
 	}
 
 	/**
@@ -202,7 +204,6 @@ class AiAgent extends CreatureObject {
 
 	public void finalize() {
 		//Logger.info("deleting from ram", true);
-		clearBehaviorList();
 	}
 
 	/**
@@ -245,13 +246,6 @@ class AiAgent extends CreatureObject {
 	public native void activateInterrupt(SceneObject source, long msg);
 
 	/**
-	 * Schedules the loading
-	 * @pre { }
-	 * @post { }
-	 */
-	public native void activateLoad(final string temp);
-
-	/**
 	 * Does a recovery tick
 	 * @pre { this is locked }
 	 * @post { this is locked }
@@ -267,6 +261,13 @@ class AiAgent extends CreatureObject {
 	 */
 	@preLocked
 	public native void doMovement();
+	
+	public native boolean isRunningBehavior(unsigned int id);
+	public native void addRunningID(unsigned int id);
+	public native void popRunningChain();
+	public native unsigned int peekRunningChain();
+	public native void clearRunningChain();
+	public native void setAITemplate(final string tempName);
 
 	@preLocked
 	public native void setLevel(int lvl, boolean randomHam = true);
@@ -1149,95 +1150,7 @@ class AiAgent extends CreatureObject {
 	}
 
 	/**
-	 * Pull an AI template from AiMap and set up the tree using the rules from the template. Then 
-	 * store the root behavior in the trees Map.
-	 *
-	 * TODO: Should we store the active (instead of root) node in the trees map? I like that idea -- dannuic
-	 *
-	 * Maintain an unsorted vector of Behaviors for reference (TODO: needed? -- dannuic)
-	 *
-	 * TODO: Do we actually need a map, or is one tree just fine? Only implement one AI per AiAgent for now,
-	 * we can implement a multi-AI system later if it's appropriate -- dannuic
-	 *
-	 * Status is passed to the parent upon execution of doAction, which then sets the next Behavior
-	 * to the tree and runs it.
-	 */
 
-	/**
-	 * Sets up the behavior based on the creature bitmask
-	 * @pre { this is locked }
-	 * @post { this is locked }
-	 */
-	@local
-	@preLocked
-	public native void setupBehaviorTree();
-
-	/**
-	 * Sets up the behavior tree by forcing a template into it
-	 * @pre { this is locked }
-	 * @post { this is locked }
-	 * @param aiTemplate the template to load
-	 */
-	@local
-	@preLocked
-	public native void setupBehaviorTree(AiTemplate aiTemplate);
-
-	/**
-	 * Helper function for setting up the behavior tree from bitmask
-	 * @pre { this is locked }
-	 * @post { this is locked }
-	 * @param getTarget Template for target selection
-	 * @param selectAttack Template for attack selection
-	 * @param combatMove Template for movement when in combat
-	 * @param idle Template for idle behavior
-	 */
-	@local
-	@preLocked
-	public native void setupBehaviorTree(AiTemplate getTarget, AiTemplate selectAttack, AiTemplate combatMove, AiTemplate idle);
-
-	/**
-	 * Sets the behavior in the tree
-	 * @pre { this is locked }
-	 * @post { this is locked, behavior is set }
-	 * @param b the id of the behavior in the tree
-	 */
-	@local
-	@preLocked
-	public native void setCurrentBehavior(unsigned int b);
-
-	@read
-	public unsigned int getCurrentBehavior() {
-		return currentBehaviorID;
-	}
-
-	@local
-	@dirty
-	public native int getBehaviorStatus();
-
-	@local
-	@preLocked
-	public native void setBehaviorStatus(int status);
-
-	@local
-	private native void addBehaviorToTree(Behavior b, CompositeBehavior parent);
-
-	@local
-	private native void addCurrentBehaviorToTree(CompositeBehavior parent);
-
-	/**
-	 * Resets the behavior list to the default position
-	 * @pre { this is locked }
-	 * @post { this is locked }
-	 */
-	@local
-	@preLocked
-	public native void resetBehaviorList();
-
-	@local
-	@preLocked
-	public native void clearBehaviorList();
-
-	/**
 	 * Executes an interrupt called from a new thread
 	 * @pre { this is locked, source is locked }
 	 * @post { this is locked, source is locked }
