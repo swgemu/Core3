@@ -94,7 +94,7 @@ public:
 		controlDevice->setLastCommandTarget(targetTano);
 
 		if (!pet->isInCombat()) {
-			pet->activateInterrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
+			pet->notifyObservers(ObserverEventType::STARTCOMBAT, pet->getLinkedCreature().get());
 		} else if (targetTano != pet->getFollowObject().get()) {
 			pet->setDefender(targetTano);
 		}
