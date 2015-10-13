@@ -3142,7 +3142,7 @@ float CreatureObjectImplementation::calculateCostAdjustment(uint8 stat, float ba
 	return cost;
 }
 
-Reference<WeaponObject*> CreatureObjectImplementation::getWeapon() {
+WeaponObject* CreatureObjectImplementation::getWeapon() {
 	if (weapon == NULL) {
 		return TangibleObjectImplementation::getSlottedObject("default_weapon").castTo<WeaponObject*>();
 	} else
