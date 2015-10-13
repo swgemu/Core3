@@ -63,8 +63,6 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "validateTarget", &LuaAiAgent::validateTarget },
 		{ "validateFollow", &LuaAiAgent::validateFollow },
 		{ "followHasState", &LuaAiAgent::followHasState },
-		{ "selectWeapon", &LuaAiAgent::selectWeapon },
-		{ "selectDefaultWeapon", &LuaAiAgent::selectDefaultWeapon },
 		{ "selectSpecialAttack", &LuaAiAgent::selectSpecialAttack },
 		{ "selectDefaultAttack", &LuaAiAgent::selectDefaultAttack },
 		{ "validateStateAttack", &LuaAiAgent::validateStateAttack },
@@ -112,9 +110,6 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "checkLineOfSight", &LuaAiAgent::checkLineOfSight },
 		{ "activateRecovery", &LuaAiAgent::activateRecovery },
 		{ "activateAwareness", &LuaAiAgent::activateAwareness },
-		{ "setBehaviorStatus", &LuaAiAgent::setBehaviorStatus },
-		{ "getBehaviorStatus", &LuaAiAgent::getBehaviorStatus },
-		{ "resetBehaviorList", &LuaAiAgent::resetBehaviorList },
 		{ "executeBehavior", &LuaAiAgent::executeBehavior },
 		{ "info", &LuaAiAgent::info },
 		{ "spatialChat", &LuaAiAgent::spatialChat },
@@ -171,7 +166,7 @@ int LuaAiAgent::_setObject(lua_State* L) {
 int LuaAiAgent::setAiTemplate(lua_State* L) {
 	String tempName = lua_tostring(L, -1);
 
-	realObject->activateLoad(tempName);
+	realObject->setAITemplate(tempName);
 
 	return 0;
 }
@@ -449,16 +444,6 @@ int LuaAiAgent::followHasState(lua_State* L) {
 	lua_pushboolean(L, retVal);
 
 	return 1;
-}
-
-int LuaAiAgent::selectWeapon(lua_State* L) {
-	realObject->selectWeapon();
-	return 0;
-}
-
-int LuaAiAgent::selectDefaultWeapon(lua_State* L) {
-	realObject->selectDefaultWeapon();
-	return 0;
 }
 
 int LuaAiAgent::selectSpecialAttack(lua_State* L) {
@@ -763,27 +748,6 @@ int LuaAiAgent::activateRecovery(lua_State* L) {
 int LuaAiAgent::activateAwareness(lua_State* L) {
 	realObject->activateAwarenessEvent();
 
-	return 0;
-}
-
-int LuaAiAgent::setBehaviorStatus(lua_State* L) {
-	uint8 status = (uint8) lua_tointeger(L, -1);
-
-	realObject->setBehaviorStatus(status);
-
-	return 0;
-}
-
-int LuaAiAgent::getBehaviorStatus(lua_State* L) {
-	lua_pushnumber(L, realObject->getBehaviorStatus());
-
-	return 1;
-}
-
-int LuaAiAgent::resetBehaviorList(lua_State* L) {
-	Locker locker(realObject);
-
-	realObject->resetBehaviorList();
 	return 0;
 }
 

@@ -1783,7 +1783,7 @@ int DirectorManager::spawnMobile(lua_State* L) {
 				ai->setRandomRespawn(true);
 
 			// TODO (dannuic): this is a temporary measure until we add an AI setting method to DirectorManager -- make stationary the default
-			ai->activateLoad("stationary");
+			ai->setAITemplate("stationary");
 		}
 
 		creature->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
@@ -2117,9 +2117,6 @@ Lua* DirectorManager::getLuaInstance() {
 		initializeLuaEngine(lua);
 		loadScreenPlays(lua);
 		JediManager::instance()->loadConfiguration(lua);
-		AiMap::instance()->initialize(lua);
-		if (!AiMap::instance()->isLoaded())
-			AiMap::instance()->loadTemplates(lua);
 
 		localLua.set(lua);
 	}
@@ -2136,9 +2133,6 @@ int DirectorManager::runScreenPlays() {
 		initializeLuaEngine(lua);
 		ret = loadScreenPlays(lua);
 		JediManager::instance()->loadConfiguration(lua);
-		AiMap::instance()->initialize(lua);
-		if (!AiMap::instance()->isLoaded())
-			AiMap::instance()->loadTemplates(lua);
 
 		localLua.set(lua);
 	}

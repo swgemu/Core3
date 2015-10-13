@@ -60,8 +60,6 @@ namespace ai {
 		int validateTarget(lua_State* L);
 		int validateFollow(lua_State* L);
 		int followHasState(lua_State* L);
-		int selectWeapon(lua_State* L);
-		int selectDefaultWeapon(lua_State* L);
 		int selectSpecialAttack(lua_State* L);
 		int selectDefaultAttack(lua_State* L);
 		int validateStateAttack(lua_State* L);
@@ -107,9 +105,6 @@ namespace ai {
 		int checkLineOfSight(lua_State* L);
 		int activateRecovery(lua_State* L);
 		int activateAwareness(lua_State* L);
-		int setBehaviorStatus(lua_State* L);
-		int getBehaviorStatus(lua_State* L);
-		int resetBehaviorList(lua_State* L);
 		int executeBehavior(lua_State* L);
 		int info(lua_State* L);
 		int spatialChat(lua_State* L);
