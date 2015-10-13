@@ -9,8 +9,18 @@
 #define BEHAVIOR_H_
 
 #include "engine/engine.h"
-#include "server/zone/objects/creature/ai/AiAgent.h"
-#include "server/zone/objects/creature/ai/bt/LuaBehavior.h"
+#include <cassert>
+
+// TODO: implement load-time string-to-bigT lookups so the user can use common-
+// language values when defining arguments in the lua
+#define _ARGPAIR(bigT, converter) \
+template <> \
+struct getArg<bigT> { \
+    bigT operator()(const String& val) { \
+        return converter::valueOf(val); \
+    } \
+};
+
 
 namespace server {
 namespace zone {
@@ -27,173 +37,157 @@ class AiAgent;
 
 namespace bt {
 
-class CompositeBehavior;
+template <typename T> struct getArg {};
+_ARGPAIR(int32, Integer)
+_ARGPAIR(uint32, UnsignedInteger)
+_ARGPAIR(int64, Long)
+_ARGPAIR(uint64, UnsignedLong)
+_ARGPAIR(float, Float)
+_ARGPAIR(double, Double)
+_ARGPAIR(bool, Bool)
 
-class Behavior {
+namespace node {
+class Composite;
+}
+
+class Behavior : public Object {
 protected:
-	WeakReference<AiAgent*> agent; // this is like the blackboard
-	uint8 result;
-	Behavior* parent; // the parent must be a composite
-	Reference<LuaBehavior*> interface;
+	String className;
 	uint32 id;
+	Reference<Behavior*> parent; // the parent must be a Composite or a Decorator
 
 public:
+	enum Status {
+		INVALID,   // finished without result
+		SUCCESS,   // finished with success
+		FAILURE,   // finished with failure
+		RUNNING,   // running and not finished
+		SUSPEND,   // not yet started, or temporarily paused
+	};
+	
 	/**
 	 * Creates a new instance of the Behavior class
 	 * @param _agent Reference to the AI agent (as a blackboard)
 	 */
-	Behavior(AiAgent* _agent, const String& className);
+	Behavior(const String& className, const uint32 id, const String& argString = "")
+		: Object(), className(className), id(id), parent(NULL) {}
 
-	Behavior(const Behavior& b) {
-		agent = b.agent;
-		result = b.result;
-		parent = b.parent;
-		interface = b.interface;
-		id = b.id;
-	}
+	Behavior(const Behavior& b) 
+		: Object(), className(b.className), id(b.id), parent(b.parent) {}
 
 	Behavior& operator=(const Behavior& b) {
 		if (this == &b)
 			return *this;
 
-		agent = b.agent;
-		result = b.result;
-		parent = b.parent;
-		interface = b.interface;
+		className = b.className;
 		id = b.id;
+		parent = b.parent;
 
 		return *this;
 	}
 
-	virtual ~Behavior() {
-	}
+	virtual ~Behavior() {}
 
-	inline void setID(uint32 _id) {
-		this->id = _id;
+	virtual String print() const {
+		return className;
 	}
-
-	virtual bool isComposite() {
+	
+	virtual bool isComposite() const {
 		return false;
 	}
-
-	LuaBehavior* getInterface() {
-		return interface;
+	
+	virtual bool isDecorator() const {
+		return false;
+	}
+	
+	void setParent(Behavior* parent_) {
+		assert(parent_ != NULL && (parent_->isComposite() || parent_->isDecorator()));
+		parent = parent_;
+	}
+	
+	uint32 getID() const {
+		return id;
 	}
 
-	virtual String print() {
-		return interface->print();
+	Behavior* getParent() const {
+		return parent;
+	}
+
+protected:
+	/**
+	 * Parses an argument string to set the arguments at initialization
+	 * @pre {}
+	 * @post {}
+	 * @param argString colon-delimited string of =-delimited argument pairs
+	 * @return a vectormap of keyed string arguments.
+	 */
+	static VectorMap<String, String> fillArgs(const String& argString) {
+		StringTokenizer argTokens(argString);
+		argTokens.setDelimeter(":");
+		
+		VectorMap<String, String> args;
+		args.setNullValue("");
+		
+		while (argTokens.hasMoreTokens()) {
+			String arg;
+			argTokens.getStringToken(arg);
+			
+			int eqPos = arg.indexOf("=");
+			if (eqPos == -1) continue;
+			
+			String argKey = arg.subString(0, eqPos).trim();
+			String argVal = arg.subString(eqPos + 1, arg.length()).trim();
+			
+			args.put(argKey, argVal);
+		}
+		
+		return args;
 	}
 
 	/**
 	 * Virtual to check to see if the behavior can be updated
 	 * @pre { agent is locked }
 	 * @post { agent is locked }
+	 * @param agent The agent performing the action
 	 * @return true if we can update, false if not
 	 */
-	virtual bool checkConditions() {
-		if (interface != NULL) {
-			Reference<AiAgent*> strongReference = agent.get();
-
-			if (strongReference != NULL) {
-				return interface->checkConditions(strongReference);
-			}
-		}
-
-		return false;
-	}
+	virtual bool checkConditions(AiAgent* agent) const;
 
 	/**
 	 * Virtual to provide startup logic
 	 * @pre { agent is locked }
 	 * @post { agent is locked }
+	 * @param agent The agent performing the action
 	 */
-	virtual void start();
+	virtual void start(AiAgent* agent) const {}
+
+	/**
+	 * Virtual to provide execution logic
+	 * @pre { agent is locked }
+	 * @post { agent is locked }
+	 * @param agent The agent performing the action
+	 * @param startIdx The start index for children (unused for leafs)
+	 * @return The result of the execution
+	 */
+	virtual Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const = 0;
 
 	/**
 	 * Virtual to provide termination logic
 	 * @pre { agent is locked }
 	 * @post { agent is locked }
+	 * @param agent The agent performing the action
 	 */
-	virtual void end();
+	virtual void end(AiAgent* agent) const {}
 
+public:
 	/**
 	 * Virtual to provide logic for each update
 	 * @pre { agent is locked }
-	 * @post { agent is locked, action is exectued }
-	 * @param directlyExecuted boolean that is true if the parent is to be executed immediately after this finishes
+	 * @post { agent is locked, action is executed }
+	 * @param agent The agent performing the action
+	 * @return The result of the execution
 	 */
-	virtual void doAction(bool directlyExecuted = false);
-
-	virtual int interrupt(SceneObject* source, int64 msg) {
-		Reference<AiAgent*> strongReference = agent.get();
-
-		return interface->interrupt(strongReference, source, msg);
-	}
-
-	/**
-	 * Virtual to ensure that we should do an awareness check
-	 */
-	virtual bool doAwarenessCheck(SceneObject* target) {
-		if (interface != NULL) {
-			Reference<AiAgent*> strongReference = agent.get();
-
-			return interface->doAwarenessCheck(strongReference, target);
-		}
-
-		return false;
-	}
-
-	/**
-	 * End the behavior with success
-	 * @pre { agent is locked }
-	 * @post { agent is locked }
-	 */
-	void endWithSuccess();
-
-	/**
-	 * End the behavior with failure
-	 * @pre { agent is locked }
-	 * @post { agent is locked }
-	 */
-	void endWithFailure();
-
-	/**
-	 * End the behavior with an error
-	 * @pre { agent is locked }
-	 * @post { agent is locked }
-	 */
-	void endWithError();
-
-	/**
-	 * setter and getter for the parent (to set up the actual tree)
-	 */
-	void setParent(Behavior* _parent) {
-		this->parent = _parent;
-	}
-
-	Behavior* getParent() {
-		return parent;
-	}
-
-	uint8 getStatus() {
-		return result;
-	}
-
-	void setStatus(uint8 s) {
-		this->result = s;
-	}
-
-	/**
-	 * Status getters
-	 */
-	bool succeeded();
-
-	bool failed();
-
-	bool finished();
-
-	bool started();
-
+	virtual Behavior::Status doAction(Reference<AiAgent*> agent) const;
 };
 
 }
@@ -203,5 +197,4 @@ public:
 }
 }
 
-using namespace server::zone::objects::creature::ai::bt;
 #endif /* BEHAVIOR_H_ */
