@@ -67,8 +67,6 @@
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
 #include "server/zone/packets/scene/UpdateTransformMessage.h"
 #include "server/zone/packets/scene/UpdateTransformWithParentMessage.h"
-#include "templates/AiTemplate.h"
-#include "server/zone/templates/tangible/SharedCreatureObjectTemplate.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/templates/mobile/MobileOutfit.h"
 #include "server/zone/templates/mobile/MobileOutfitGroup.h"
@@ -80,18 +78,14 @@
 #include "server/zone/objects/scene/variables/StringId.h"
 #include "server/zone/objects/scene/WorldCoordinates.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
-#include "server/zone/objects/creature/ai/bt/CompositeBehavior.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-#include "server/zone/objects/creature/ai/events/AiAwarenessEvent.h"
 #include "server/zone/objects/creature/ai/events/AiMoveEvent.h"
 #include "server/zone/objects/creature/ai/events/AiThinkEvent.h"
 #include "server/zone/objects/creature/ai/events/AiWaitEvent.h"
-#include "server/zone/objects/creature/ai/events/AiInterruptTask.h"
-#include "server/zone/objects/creature/ai/events/AiLoadTask.h"
 #include "server/zone/objects/creature/events/CamoTask.h"
 #include "server/zone/objects/creature/events/DespawnCreatureOnPlayerDissappear.h"
 #include "server/zone/objects/creature/events/DespawnCreatureTask.h"
@@ -482,6 +476,8 @@ void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
 
 void AiAgentImplementation::initializeTransientMembers() {
 	CreatureObjectImplementation::initializeTransientMembers();
+	
+	setAITemplate();
 
 	if (npcTemplate != NULL)
 		setupAttackMaps();
@@ -495,113 +491,9 @@ void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 	SceneObject* object = static_cast<SceneObject*>(entry);
 
 	CreatureObject* creo = object->asCreatureObject();
-
-	if (creo != NULL && creo->isPlayerCreature() && !creo->isInvisible()) {
-		activateAwarenessEvent();
-	}
 }
 
-bool AiAgentImplementation::runAwarenessLogicCheck(SceneObject* pObject) {
-	if (pObject == NULL)
-		return false;
-
-	if (asAiAgent() == pObject)
-		return false;
-
-	if (getPvpStatusBitmask() == 0 || isDead() || isIncapacitated()) {
-		if (isDead())
-			return false;
-
-		if (isIncapacitated())
-			return false;
-
-		if (getPvpStatusBitmask() == 0 && !(isDroidObject() && isPet()))
-			return false;
-	}
-
-	if (getNumberOfPlayersInRange() <= 0 || isRetreating() || isFleeing() || isInCombat())
-		return false;
-
-	if (!pObject->isCreatureObject())
-		return false;
-
-	CreatureObject* creoObject = pObject->asCreatureObject();
-
-	if (creoObject->isInvisible())
-		return false;
-
-//	then return false end
-//	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed target invisible check") end
-
-	checkForReactionChat(pObject);
-
-	Reference<SceneObject*> follow = getFollowObject().get();
-
-	if (follow != NULL && follow != pObject)
-		return false;
-
-	int radius = getAggroRadius();
-
-	if (radius == 0)
-		radius = DEFAULTAGGRORADIUS;
-
-	if (pObject->isPlayerCreature())
-		radius = radius * 2;
-
-	if (!isInRange(creoObject, radius * 1.2)) {
-		camouflagedObjects.removeElement(creoObject->getTargetID());
-		return false;
-	}
-
-	if (creoObject->getPvpStatusBitmask() == CreatureFlag::NONE || creoObject->isDead() || creoObject->isIncapacitated())
-		return false;
-
-	//-- if not in combat, ignore creatures in different cells
-
-
-	//uint64 agentParentID = getBuildingParentID();
-
-	//local targetParentID = creoObject:getBuildingParentID()
-
-	ManagedReference<SceneObject*> root = getRootParent();
-
-	ManagedReference<SceneObject*> rootObject = pObject->getRootParent();
-
-	uint64 agentParentID = 0;
-	uint64 targetParentID = 0;
-
-	if (root != NULL && root->isBuildingObject()) {
-		agentParentID = root->getObjectID();
-	}
-
-	if (rootObject != NULL && rootObject->isBuildingObject()) {
-		targetParentID = rootObject->getObjectID();
-	}
-
-	if (agentParentID != targetParentID)
-		return false;
-
-
-	if (isCamouflaged(creoObject) || !isAttackableBy(creoObject) || !creoObject->isAttackableBy(asAiAgent()))
-		return false;
-
-	if (pObject->isAiAgent()) {
-		AiAgent* agentObject = pObject->asAiAgent();
-
-		if (!agentObject->isAttackableBy(asAiAgent()))
-			return false;
-
-		uint32 creatureFaction = getFaction();
-		uint32 creatureTargetFaction = creoObject->getFaction();
-
-		if (((creatureFaction != 0) && (creatureTargetFaction == 0))
-				|| ((creatureFaction == 0) && (creatureTargetFaction != 0)))
-			return false;
-	}
-
-	return true;
-}
-
+// TODO: tie this in (or replace with) btrees
 int AiAgentImplementation::checkForReactionChat(SceneObject* pObject) {
 	if (!pObject->isPlayerCreature())
 		return 1;
@@ -667,58 +559,6 @@ int AiAgentImplementation::checkForReactionChat(SceneObject* pObject) {
 	return 0;
 }
 
-void AiAgentImplementation::doAwarenessCheck() {
-	int oldCount = numberOfPlayersInRange.get();
-
-	int newPlayerCount = -1;
-
-	CloseObjectsVector* vec = (CloseObjectsVector*) getCloseObjects();
-	if (vec == NULL)
-		return;
-
-	SortedVector<QuadTreeEntry*> closeObjects;
-	vec->safeCopyTo(closeObjects);
-
-	Behavior* current = behaviors.get(currentBehaviorID);
-
-	if (current != NULL) {
-		AiAgent* thisObject = asAiAgent();
-		newPlayerCount = 0;
-
-		for (int i = 0; i < closeObjects.size(); ++i) {
-			SceneObject* scene = static_cast<SceneObject*>(closeObjects.get(i));
-
-			CreatureObject* target = scene->asCreatureObject();
-
-			if (thisObject == target || target == NULL)
-				continue;
-
-			if (target->isVehicleObject() || target->hasRidingCreature())
-				continue;
-
-			//Locker crossLocker(target, thisObject); lets do dirty reads
-
-			if (target->isPlayerCreature() && !target->isInvisible())
-				++newPlayerCount;
-
-			if (current->doAwarenessCheck(target)) {
-				interrupt(target, ObserverEventType::OBJECTINRANGEMOVED);
-			}
-		}
-	}
-
-	if (newPlayerCount != -1) {
-		bool success = numberOfPlayersInRange.compareAndSet(oldCount, newPlayerCount);
-
-		if (success && !newPlayerCount) {
-			return;
-		}
-	}
-
-	if (numberOfPlayersInRange.get() > 0)
-		activateAwarenessEvent();
-}
-
 void AiAgentImplementation::doRecovery(int latency) {
 	if (isDead() || getZone() == NULL)
 		return;
@@ -738,65 +578,64 @@ void AiAgentImplementation::doRecovery(int latency) {
 		activateRecovery();
 }
 
-void AiAgentImplementation::selectSpecialAttack() {
-	CreatureAttackMap* attackMap = getAttackMap();
-
-	if (attackMap == NULL) {
-		selectDefaultAttack();
-		return;
-	}
-
-	selectSpecialAttack(attackMap->getRandomAttackNumber());
+bool AiAgentImplementation::selectSpecialAttack() {
+	return selectSpecialAttack(attackMap->getRandomAttackNumber());
 }
 
-void AiAgentImplementation::selectSpecialAttack(int attackNum) {
+bool AiAgentImplementation::selectSpecialAttack(int attackNum) {
 	CreatureAttackMap* attackMap = getAttackMap();
-	if (attackMap == NULL) {
-		selectDefaultAttack();
-		return;
-	}
+	if (attackMap == NULL)
+		return false;
 
-	if (attackNum >= 0 && attackNum < attackMap->size()) {
-		String cmd = attackMap->getCommand(attackNum);
+    if (attackNum < 0)
+        return selectSpecialAttack();
 
-		if (cmd.isEmpty()) {
-			selectDefaultAttack();
-		} else {
-			nextActionCRC = cmd.hashCode();
-			nextActionArgs = attackMap->getArguments(attackNum);
+	if (attackNum >= attackMap->size())
+        return false;
 
-			ZoneServer* zoneServer = getZoneServer();
-			if (zoneServer == NULL) {
-				selectDefaultAttack();
-				return;
-			}
+    String cmd = attackMap->getCommand(attackNum);
 
-			ObjectController* objectController = zoneServer->getObjectController();
-			if (objectController == NULL) {
-				selectDefaultAttack();
-				return;
-			}
+    if (cmd.isEmpty())
+        return false;
 
-			QueueCommand* queueCommand = getZoneServer()->getObjectController()->getQueueCommand(nextActionCRC);
-			ManagedReference<SceneObject*> followCopy = getFollowObject().get();
-			if (queueCommand == NULL || followCopy == NULL
-					|| (queueCommand->getMaxRange() > 0 && !followCopy->isInRange(asAiAgent(), queueCommand->getMaxRange() + getTemplateRadius() + followCopy->getTemplateRadius()))
-					|| (queueCommand->getMaxRange() <= 0 && !followCopy->isInRange(asAiAgent(), getWeapon()->getMaxRange() + getTemplateRadius() + followCopy->getTemplateRadius()))) {
-				selectDefaultAttack();
-			}
-		}
-	} else {
-		selectDefaultAttack();
-	}
+    nextActionCRC = cmd.hashCode();
+    nextActionArgs = attackMap->getArguments(attackNum);
+
+    ZoneServer* zoneServer = getZoneServer();
+    if (zoneServer == NULL)
+        return false;
+
+    ObjectController* objectController = zoneServer->getObjectController();
+    if (objectController == NULL)
+        return false;
+
+    QueueCommand* queueCommand = getZoneServer()->getObjectController()->getQueueCommand(nextActionCRC);
+    ManagedReference<SceneObject*> followCopy = getFollowObject().get();
+    if (queueCommand == NULL || followCopy == NULL
+            || (queueCommand->getMaxRange() > 0 && !followCopy->isInRange(asAiAgent(), queueCommand->getMaxRange() + getTemplateRadius() + followCopy->getTemplateRadius()))
+            || (queueCommand->getMaxRange() <= 0 && !followCopy->isInRange(asAiAgent(), getWeapon()->getMaxRange() + getTemplateRadius() + followCopy->getTemplateRadius()))) {
+        selectDefaultAttack();
+    }
+
+    return true;
 }
 
-void AiAgentImplementation::selectDefaultAttack() {
+bool AiAgentImplementation::selectDefaultAttack() {
 	if (npcTemplate == NULL)
 		nextActionCRC = STRING_HASHCODE("defaultattack");
 	else
 		nextActionCRC = npcTemplate->getDefaultAttack().hashCode();
 
 	nextActionArgs = "";
+
+    return true;
+}
+
+QueueCommand* AiAgentImplementation::getNextAction() {
+    if (getZoneServer() == NULL || getZoneServer()->getObjectController() == NULL)
+        return NULL;
+
+    return getZoneServer()->getObjectController()->getQueueCommand(nextActionCRC);
 }
 
 void AiAgentImplementation::enqueueAttack(int priority) {
@@ -883,7 +722,7 @@ SceneObject* AiAgentImplementation::getTargetFromTargetsDefenders() {
 			if (tarObj != NULL && tarObj->isCreatureObject()) {
 				CreatureObject* targetCreature = tarObj->asCreatureObject();
 
-				if (!targetCreature->isDead() && !targetCreature->isIncapacitated() && targetCreature->getDistanceTo(asAiAgent()) < 128.f && targetCreature->isAttackableBy(asAiAgent())) {
+				if (!targetCreature->isDead() && !targetCreature->isIncapacitated() && targetCreature->isInRange(asAiAgent(), 128.f) && targetCreature->isAttackableBy(asAiAgent())) {
 					newTarget = targetCreature;
 
 					break;
@@ -903,7 +742,7 @@ SceneObject* AiAgentImplementation::getTargetFromTargetsDefenders() {
 }
 
 bool AiAgentImplementation::validateTarget() {
-	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
+	ManagedReference<SceneObject*> followCopy = asAiAgent()->getFollowObject().get();
 
 	return validateTarget(followCopy);
 }
@@ -955,70 +794,28 @@ int AiAgentImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 	return CreatureObjectImplementation::handleObjectMenuSelect(player, selectedID);
 }
 
-void AiAgentImplementation::selectWeapon() {
-	WeaponObject* finalWeap = NULL;
+void AiAgentImplementation::setWeapon(const uint32 weaponType) {
 	ManagedReference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
+    WeaponObject* finalWeap = defaultWeapon;
 
-	if (getUseRanged()) {
-		if (readyWeapon != NULL && readyWeapon->isRangedWeapon()) {
-			finalWeap = readyWeapon;
-		} else if (defaultWeapon != NULL && defaultWeapon->isRangedWeapon()) {
-			finalWeap = defaultWeapon;
-		}
+    // TODO: turn this into separate ranged and melee weapons
+    if (weaponType == static_cast<uint32>(DataVal::WEAPON))
+        finalWeap = readyWeapon;
 
-	} else {
-		ManagedReference<SceneObject*> followCopy = getFollowObject().get();
-		float dist = 5.f;
-
-		if (followCopy != NULL)
-			dist = getDistanceTo(followCopy) - followCopy->getTemplateRadius() - getTemplateRadius();
-
-		float readyWeaponRangeDiff = -1.f;
-		float defaultWeaponRangeDiff = 100.f;
-
-		if (readyWeapon != NULL) {
-			finalWeap = readyWeapon;
-			readyWeaponRangeDiff = fabs(readyWeapon->getIdealRange() - dist);
-		}
-
-		if (defaultWeapon != NULL && defaultWeapon->getMaxRange() >= dist) {
-			defaultWeaponRangeDiff = fabs(defaultWeapon->getIdealRange() - dist);
-		}
-
-		if (finalWeap == NULL || readyWeaponRangeDiff > defaultWeaponRangeDiff)
-			finalWeap = defaultWeapon;
-	}
-
-	ManagedReference<WeaponObject*> currentWeapon = getWeapon();
-
-	if (currentWeapon != finalWeap) {
-		if (currentWeapon != NULL && currentWeapon != defaultWeapon) {
-			Locker locker(currentWeapon);
-
-			currentWeapon->destroyObjectFromWorld(false);
-
-			//info("removed weapon " + currentWeapon->getDisplayedName(), true);
+    WeaponObject* currentWeap = getWeapon();
+    if (currentWeap != finalWeap) {
+		if (currentWeap != defaultWeapon) {
+			Locker locker(currentWeap, _this.getReferenceUnsafeStaticCast());
+			currentWeap->destroyObjectFromWorld(false);
 		}
 
 		if (finalWeap != NULL && finalWeap != defaultWeapon) {
-
-			//info("selected weapon " + finalWeap->getDisplayedName(), true);
-			Locker locker(finalWeap);
+			Locker locker(finalWeap, _this.getReferenceUnsafeStaticCast());
 
 			transferObject(finalWeap, 4, false);
 			broadcastObject(finalWeap, false);
 		}
-	}
-
-	//setWeapon(finalWeap, true);
-}
-
-void AiAgentImplementation::selectDefaultWeapon() {
-	ManagedReference<WeaponObject*> currentWeapon = getWeapon();
-	ManagedReference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
-
-	if (currentWeapon != NULL && currentWeapon != defaultWeapon)
-		currentWeapon->destroyObjectFromWorld(false);
+    }
 }
 
 bool AiAgentImplementation::validateStateAttack(CreatureObject* target, unsigned int actionCRC) {
@@ -1101,7 +898,7 @@ void AiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
 
 void AiAgentImplementation::runAway(CreatureObject* target, float range) {
 	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
-	if (target == NULL || getZone() == NULL || followCopy == NULL) {
+	if (target == NULL || asAiAgent()->getZone() == NULL || followCopy == NULL) {
 		setOblivious();
 		return;
 	}
@@ -1122,7 +919,8 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range) {
 	setFollowState(AiAgent::FLEEING);
 	fleeRange = range;
 
-	if (!homeLocation.isInRange(asAiAgent(), 128)) {
+	// TODO: undo this abstraction (it's for mocks)
+	if (!asAiAgent()->getHomeLocation()->isInRange(asAiAgent(), 128)) {
 		homeLocation.setReached(false);
 		setNextPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY(), homeLocation.getCell());
 	} else {
@@ -1240,11 +1038,6 @@ void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
 	if (creo != NULL && !creo->isInvisible() && creo->isPlayerCreature()) {
 		int newValue = (int) numberOfPlayersInRange.increment();
 		activateMovementEvent();
-
-		if (newValue == 1) {
-			uint64 delay = 500 + System::random(1000);
-			activateAwarenessEvent(delay);
-		}
 	}
 }
 
@@ -1295,7 +1088,7 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 		setLevel(level);
 	}
 
-	resetBehaviorList();
+	clearRunningChain();
 	clearCombatState(true);
 
 	initializePosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY());
@@ -1465,47 +1258,12 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 					despawnEvent = new DespawnCreatureOnPlayerDissappear(asAiAgent());
 					despawnEvent->schedule(30000);
 				}
-
-				/*Locker locker(&awarenessEventMutex);
-				if (awarenessEvent != NULL) {
-					awarenessEvent->cancel();
-					awarenessEvent = NULL;
-				}*/
 			} else if (newValue < 0) {
 				error("numberOfPlayersInRange below 0");
 			}
 
 			activateMovementEvent();
 		}
-	}
-}
-
-void AiAgentImplementation::activateAwarenessEvent(uint64 delay) {
-
-#ifdef DEBUG
-	info("Starting activateAwarenessEvent check", true);
-#endif
-	CloseObjectsVector* vec = (CloseObjectsVector*) getCloseObjects();
-
-	if (vec == NULL)
-		return;
-
-	Locker locker(&awarenessEventMutex);
-
-	if (awarenessEvent == NULL) {
-		awarenessEvent = new AiAwarenessEvent(asAiAgent());
-
-#ifdef DEBUG
-		info("Creating new Awareness Event", true);
-#endif
-	}
-
-	if (!awarenessEvent->isScheduled()) {
-		awarenessEvent->schedule(delay);
-
-#ifdef DEBUG
-		info("Scheduling awareness event", true);
-#endif
 	}
 }
 
@@ -1894,6 +1652,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	return getFollowState() == AiAgent::WATCHING || getFollowState() == AiAgent::FLEEING || found;
 }
 
+bool AiAgentImplementation::checkLineOfSight(SceneObject* obj) {
+	return CollisionManager::checkLineOfSight(asAiAgent(), obj);
+}
+
 float AiAgentImplementation::getWorldZ(const Vector3& position) {
 	float ret = 0.f;
 
@@ -1927,12 +1689,14 @@ float AiAgentImplementation::getWorldZ(const Vector3& position) {
 	return ret;
 }
 
-// TODO (dannuic): All of the AI goes into the movement cycle, the recovery cycle is only for HAM/status recovery
 void AiAgentImplementation::doMovement() {
 	//info("doMovement", true);
+	const Behavior* rootBehavior = getBehaviorTree(BehaviorTreeSlot::NONE);
+	assert(rootBehavior != NULL);
 
 	// Do pre-checks (these should remain hard-coded)
-	if (isDead() || isIncapacitated() || (getZone() == NULL)) {
+	// Use _this.get() for testing to call these methods from AiAgent.
+	if (_this.get()->isDead() || _this.get()->isIncapacitated() || (_this.get()->getZone() == NULL)) {
 		setFollowObject(NULL);
 		return;
 	}
@@ -1945,14 +1709,78 @@ void AiAgentImplementation::doMovement() {
 
 	//info("Performing action ID: " + currentBehaviorID, true);
 	// activate AI
-	Behavior* current = behaviors.get(currentBehaviorID);
-	if (current != NULL)
-		current->doAction(true);
+	Behavior::Status actionStatus = rootBehavior->doAction(_this.get());
+	if (actionStatus == Behavior::RUNNING)
+		popRunningChain(); // don't keep root in the running chain
+
+	if (actionStatus == Behavior::RUNNING) {
+		std::cout << "Running chain: (" << runningChain.size() << ")" << std::endl;
+		for (int i = 0; i < runningChain.size(); ++i) {
+			std::cout << "0x" << std::hex << runningChain.get(i) << std::endl;;
+		}
+	}
 
 /*	Time endTime;
 	endTime.updateToCurrentTime();*/
 
 	//info("doMovement took " + String::valueOf(endTime.getMiliTime() - startTime.getMiliTime()) + "ms to complete.", true);
+}
+	
+bool AiAgentImplementation::isRunningBehavior(unsigned int id) {
+	return runningChain.contains(id);
+}
+
+void AiAgentImplementation::addRunningID(unsigned int id) {
+	runningChain.add(id); // this adds to the back
+}
+
+void AiAgentImplementation::popRunningChain() {
+	// pop_back
+	runningChain.remove(runningChain.size() - 1);
+}
+
+uint32 AiAgentImplementation::peekRunningChain() {
+	return runningChain.get(runningChain.size() - 1);
+}
+
+void AiAgentImplementation::clearRunningChain() {
+	runningChain.removeAll();
+}
+
+void AiAgentImplementation::setAITemplate() {
+	btreeMap.removeAll();
+
+	for (const auto& slot : BehaviorTreeSlot()) {
+		Behavior* btree = AiMap::instance()->getTemplate(creatureBitmask, slot);
+
+		if (btree == NULL)
+			continue;
+
+		setTree(btree, slot);
+	}
+}
+
+const Behavior* AiAgentImplementation::getBehaviorTree(const BehaviorTreeSlot& slot) {
+	return btreeMap.get(slot);
+}
+
+void AiAgentImplementation::setTree(Behavior* subRoot, const BehaviorTreeSlot& slot) {
+	if (subRoot == NULL) {
+		btreeMap.drop(slot);
+		return;
+	}
+
+	btreeMap.put(slot, subRoot);
+}
+
+void AiAgentImplementation::removeTree(const BehaviorTreeSlot& slot) {
+	setTree(NULL, slot);
+}
+
+void AiAgentImplementation::loadCreatureBitmask() {
+}
+
+void AiAgentImplementation::unloadCreatureBitmask() {
 }
 
 bool AiAgentImplementation::generatePatrol(int num, float dist) {
@@ -2363,7 +2191,8 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 			getThreatMap()->addDamage(creature, damage);
 		}
 	}
-	activateInterrupt(attacker, ObserverEventType::DAMAGERECEIVED);
+
+	notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker);
 	return CreatureObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient, isCombatAction);
 }
 
@@ -2379,7 +2208,8 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 			getThreatMap()->addDamage(creature, damage, xp);
 		}
 	}
-	activateInterrupt(attacker, ObserverEventType::DAMAGERECEIVED);
+	
+	notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker);
 	return CreatureObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient, isCombatAction);
 }
 
@@ -2718,271 +2548,6 @@ bool AiAgentImplementation::isEventMob() {
 	return false;
 }
 
-void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
-	if (aiTemplate == NULL) {
-		error("Invalid aiTemplate in AiAgent::setupBehaviorTree");
-		return;
-	}
-
-	Vector<Reference<LuaAiTemplate*> >* treeTemplate = aiTemplate->getTree();
-
-	stopWaiting();
-	setWait(0);
-
-	behaviors.put(0, NULL);
-
-	VectorMap<uint32, Vector<uint32> > parents; // id's keyed by parents
-	parents.setAllowOverwriteInsertPlan();
-
-	// first build the maps
-	for (int i=0; i < treeTemplate->size(); i++) {
-		LuaAiTemplate* temp = treeTemplate->get(i).get();
-		if (temp == NULL) {
-			error("Null AI template, contact dannuic if this occurs"); // FIXME (dannuic): Is this still happening?
-			continue;
-		}
-
-		Behavior* behavior = AiMap::createNewInstance(asAiAgent(), temp->className, temp->classType);
-		behavior->setID(temp->id);
-		behaviors.put(temp->id, behavior);
-
-		Vector<uint32> ids = parents.get(temp->parent);
-		ids.add(temp->id);
-		parents.put(temp->parent, ids);
-	}
-
-	// now set parents
-	for (int i = 0; i < parents.size(); i++) {
-		VectorMapEntry<uint32, Vector<uint32> >& element = parents.elementAt(i);
-		if (element.getKey() == STRING_HASHCODE("none")) // this is the parent of the root node, just skip it.
-			continue;
-
-		Behavior* b = behaviors.get(element.getKey());
-
-		if (b == NULL || !b->isComposite()) { // parent is not composite, this will probably break the tree
-			error("Failed to load " + String::valueOf(element.getKey()) + " as a parent in tree: " + aiTemplate->getTemplateName());
-			continue;
-		}
-
-		CompositeBehavior* par = cast<CompositeBehavior*>(b);
-
-		Vector<uint32>& ids = element.getValue();
-
-		for (int j = 0; j < ids.size(); j++) {
-			Behavior* child = behaviors.get(ids.get(j));
-
-			if (child == NULL) {
-				error("Failed to load " + String::valueOf(ids.get(i)) + " as a child in tree: " + aiTemplate->getTemplateName());
-				continue;
-			}
-
-			addBehaviorToTree(child, par);
-		}
-	}
-
-	// now tree is complete, set the root node as the current node
-	Vector<uint32>& roots = parents.get(STRING_HASHCODE("none"));
-	if (roots.size() > 1) {
-		error("Multiple root nodes in tree: " + aiTemplate->getTemplateName());
-		return; // all References will be lost here
-	} else if (roots.size() <= 0) {
-		error("No root nodes in tree: " + aiTemplate->getTemplateName());
-		return;
-	}
-
-	uint32 rootID = roots.get(0);
-	Behavior* rootBehavior = behaviors.get(rootID);
-	if (rootBehavior == NULL) {
-		error("Failed to get root instance in " + aiTemplate->getTemplateName());
-		return;
-	}
-
-	setCurrentBehavior(rootID);
-}
-
-void AiAgentImplementation::setupBehaviorTree() {
-	AiTemplate* getTarget = AiMap::instance()->getGetTargetTemplate(creatureBitmask);
-	AiTemplate* selectAttack = AiMap::instance()->getSelectAttackTemplate(creatureBitmask);
-	AiTemplate* combatMove = AiMap::instance()->getCombatMoveTemplate(creatureBitmask);
-	AiTemplate* idle = AiMap::instance()->getIdleTemplate(creatureBitmask);
-
-	setupBehaviorTree(getTarget, selectAttack, combatMove, idle);
-}
-
-void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate* selectAttack, AiTemplate* combatMove, AiTemplate* idle) {
-	String name = "CompositeDefault";
-	if (creatureBitmask & CreatureFlag::DROID_PET)
-		name = "CompositeDroidPet";
-	else if (creatureBitmask & CreatureFlag::FACTION_PET)
-		name = "CompositeFactionPet";
-	else if (creatureBitmask & CreatureFlag::PET)
-		name = "CompositeCreaturePet";
-	else if (creatureBitmask & CreatureFlag::PACK)
-		name = "CompositePack";
-
-	CompositeBehavior* rootSelector = cast<CompositeBehavior*>(AiMap::instance()->createNewInstance(asAiAgent(), name, AiMap::SELECTORBEHAVIOR));
-	CompositeBehavior* attackSequence = cast<CompositeBehavior*>(AiMap::instance()->createNewInstance(asAiAgent(), name, AiMap::SEQUENCEBEHAVIOR));
-	rootSelector->setID(STRING_HASHCODE("root"));
-	attackSequence->setID(STRING_HASHCODE("attackSequence"));
-
-	addBehaviorToTree(attackSequence, rootSelector);
-
-	setupBehaviorTree(getTarget);
-	addCurrentBehaviorToTree(attackSequence);
-
-	setupBehaviorTree(selectAttack);
-	addCurrentBehaviorToTree(attackSequence);
-
-	setupBehaviorTree(combatMove);
-	addCurrentBehaviorToTree(attackSequence);
-
-	setupBehaviorTree(idle);
-	addCurrentBehaviorToTree(rootSelector);
-
-	behaviors.put(STRING_HASHCODE("root"), rootSelector);
-	behaviors.put(STRING_HASHCODE("attackSequence"), attackSequence);
-
-	resetBehaviorList();
-
-	//info(behaviors.get(currentBehaviorID)->print(), true);
-}
-
-void AiAgentImplementation::setCurrentBehavior(uint32 b) {
-	currentBehaviorID = b;
-	if (behaviors.get(currentBehaviorID) != NULL) {
-		//activateMovementEvent();
-
-		//info(currentBehaviorID, true);
-		// This is for debugging:
-/*		ZoneServer* zoneServer = ServerCore::getZoneServer();
-		ChatManager* chatManager = zoneServer->getChatManager();
-
-		chatManager->broadcastMessage(asAiAgent(), currentBehaviorID, 0, 0, 0);*/
-	} else
-		error("Null Behavior in " + String::valueOf(currentBehaviorID));
-}
-
-int AiAgentImplementation::getBehaviorStatus() {
-	Behavior* b = behaviors.get(currentBehaviorID);
-	if (b == NULL)
-		return AiMap::INVALID;
-
-	return b->getStatus();
-}
-
-void AiAgentImplementation::setBehaviorStatus(int status) {
-	Behavior* b = behaviors.get(currentBehaviorID);
-	if (b != NULL) {
-		b->setStatus((uint8)status);
-
-		// This is for debugging:
-/*		ZoneServer* zoneServer = ServerCore::getZoneServer();
-		ChatManager* chatManager = zoneServer->getChatManager();
-
-		chatManager->broadcastMessage(asAiAgent(), String::valueOf(status), 0, 0, 0);*/
-	}
-}
-
-void AiAgentImplementation::addBehaviorToTree(Behavior* b, CompositeBehavior* par) {
-	if (b)
-		b->setParent(par);
-	if (par)
-		par->addChild(b);
-}
-
-void AiAgentImplementation::addCurrentBehaviorToTree(CompositeBehavior* par) {
-	Behavior* b = behaviors.get(currentBehaviorID);
-	addBehaviorToTree(b, par);
-}
-
-/**
- * move the tree back to the root node
- */
-void AiAgentImplementation::resetBehaviorList() {
-	Behavior* b = behaviors.get(currentBehaviorID);
-	if (b != NULL)
-		b->end();
-
-	currentBehaviorID = STRING_HASHCODE("root");
-	b = behaviors.get(currentBehaviorID);
-	if (b == NULL)
-		return;
-
-	b->setStatus(AiMap::SUSPEND);
-
-	stopWaiting();
-	setWait(0);
-
-	if (moveEvent != NULL)
-		moveEvent->cancel();
-	//info(root->print(), true);
-}
-
-void AiAgentImplementation::clearBehaviorList() {
-	for (int i = 0; i < behaviors.size(); i++) {
-		Behavior* b = behaviors.get(i);
-		if (b != NULL) {
-			delete b;
-			b = NULL;
-		}
-	}
-
-	currentBehaviorID = 0;
-	behaviors.removeAll();
-}
-
-int AiAgentImplementation::interrupt(SceneObject* source, int64 msg) {
-	Behavior* b = behaviors.get(currentBehaviorID);
-
-	if (b == NULL)
-		return 1;
-
-	return b->interrupt(source, msg);
-}
-
-void AiAgentImplementation::broadcastInterrupt(int64 msg) {
-	if (zone == NULL)
-		return;
-
-	Reference<AiAgent*> aiAgent = asAiAgent();
-
-	EXECUTE_TASK_2(aiAgent, msg, {
-			SortedVector<QuadTreeEntry*> closeAiAgents;
-
-			CloseObjectsVector* closeobjects = (CloseObjectsVector*) aiAgent_p->getCloseObjects();
-			Zone* zone = aiAgent_p->getZone();
-
-			if (zone == NULL)
-				return;
-
-			try {
-				if (closeobjects == NULL) {
-					aiAgent_p->info("Null closeobjects vector in AiAgentImplementation::broadcastInterrupt", true);
-					zone->getInRangeObjects(aiAgent_p->getPositionX(), aiAgent_p->getPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeAiAgents, true);
-				} else {
-					closeAiAgents.removeAll(closeobjects->size(), 10);
-					closeobjects->safeCopyTo(closeAiAgents);
-				}
-			} catch (Exception& e) {
-
-			}
-
-			for (int i = 0; i < closeAiAgents.size(); ++i) {
-				AiAgent* agent = cast<AiAgent*>(closeAiAgents.get(i));
-
-				if (aiAgent_p == agent || agent == NULL)
-					continue;
-
-				Locker locker(agent);
-
-				Locker crossLocker(aiAgent_p, agent);
-
-				agent->interrupt(aiAgent_p, msg_p);
-			}
-	});
-
-}
-
 void AiAgentImplementation::setCombatState() {
 	CreatureObjectImplementation::setCombatState();
 
@@ -2990,6 +2555,8 @@ void AiAgentImplementation::setCombatState() {
 
 	if (home != NULL)
 		home->notifyObservers(ObserverEventType::AIMESSAGE, asAiAgent(), ObserverEventType::STARTCOMBAT);
+	
+	notifyObservers(ObserverEventType::STARTCOMBAT, asAiAgent());
 
 	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 	if (followCopy != NULL && followCopy->isTangibleObject()) {
@@ -3005,20 +2572,6 @@ void AiAgentImplementation::setCombatState() {
 		});
 
 	}
-
-	//broadcastInterrupt(ObserverEventType::STARTCOMBAT);
-
-	activateInterrupt(asAiAgent(), ObserverEventType::STARTCOMBAT);
-}
-
-void AiAgentImplementation::activateInterrupt(SceneObject* source, int64 msg) {
-	AiInterruptTask* task = new AiInterruptTask(asAiAgent(), source, msg);
-	task->execute();
-}
-
-void AiAgentImplementation::activateLoad(const String& temp) {
-	AiLoadTask* task = new AiLoadTask(asAiAgent(), temp);
-	task->execute();
 }
 
 bool AiAgentImplementation::hasRangedWeapon() {
@@ -3274,3 +2827,9 @@ void AiAgentImplementation::setConvoTemplate(const String& templateString) {
 
 	convoTemplateCRC = templateCRC;
 }
+
+void AiAgentImplementation::writeBlackboard(const String& key, const BlackboardData& data) {
+	blackboard.drop(key);
+	blackboard.put(key, data);
+}
+

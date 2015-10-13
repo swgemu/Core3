@@ -32,7 +32,7 @@ namespace ai {
 		~LuaAiAgent();
 
 		int _setObject(lua_State* L);
-		int setAiTemplate(lua_State* L);
+		int setAITemplate(lua_State* L);
 		int setFollowObject(lua_State* L);
 		int setOblivious(lua_State* L);
 		int setWatchObject(lua_State* L);
@@ -60,8 +60,6 @@ namespace ai {
 		int validateTarget(lua_State* L);
 		int validateFollow(lua_State* L);
 		int followHasState(lua_State* L);
-		int selectWeapon(lua_State* L);
-		int selectDefaultWeapon(lua_State* L);
 		int selectSpecialAttack(lua_State* L);
 		int selectDefaultAttack(lua_State* L);
 		int validateStateAttack(lua_State* L);
@@ -106,10 +104,6 @@ namespace ai {
 		int clearCombatState(lua_State* L);
 		int checkLineOfSight(lua_State* L);
 		int activateRecovery(lua_State* L);
-		int activateAwareness(lua_State* L);
-		int setBehaviorStatus(lua_State* L);
-		int getBehaviorStatus(lua_State* L);
-		int resetBehaviorList(lua_State* L);
 		int executeBehavior(lua_State* L);
 		int info(lua_State* L);
 		int spatialChat(lua_State* L);
@@ -117,7 +111,6 @@ namespace ai {
 		int addDefender(lua_State* L);
 		int assist(lua_State* L);
 		int checkRange(lua_State* L);
-		int broadcastInterrupt(lua_State* L);
 		int getSocialGroup(lua_State* L);
 		int getLastCommand(lua_State* L);
 		int getLastCommandTarget(lua_State* L);
@@ -128,12 +121,13 @@ namespace ai {
 		int hasReactionChatMessages(lua_State* L);
 		int sendReactionChat(lua_State* L);
 		int addPatrolPoint(lua_State* L);
-		int runAwarenessLogicCheck(lua_State* L);
 		int setConvoTemplate(lua_State* L);
 		int setHomeLocation(lua_State* L);
 		int setNoAiAggro(lua_State* L);
 		int doDespawn(lua_State* L);
 		int getCreatureTemplateName(lua_State* L);
+		int addCreatureFlag(lua_State* L);
+		int removeCreatureFlag(lua_State* L);
 	private:
 		AiAgent* realObject;
 	};
