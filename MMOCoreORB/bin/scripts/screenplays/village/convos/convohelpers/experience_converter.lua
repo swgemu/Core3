@@ -5,7 +5,7 @@ require("screenplays.screenplay")
 
 -- The valid screenPlayState val's for branch unlock are as follows:
 -- 0: Does NOT qualify for branch unlock.
--- 1: Qualifies for branch unlock, not unlocked.
+-- 1: Qualifies for branch unlock, not unlocked. NOTE: This only applies to Hologrinder boxes.
 -- 2: Branch Unlocked.
 -- 4: Branch Mastered.
 
@@ -136,7 +136,7 @@ function ExperienceConverter:getNextUnlockableBranches(pCreatureObject)
 
 
 	foreach(unlockableFSBranches, function(theTable)
-		local checkTrees = CreatureObject(pCreatureObject):getScreenPlayState("VillageUnlockScreenPlay:" .. theTable.topBox)
+		local checkTrees = CreatureObject(pCreatureObject):getScreenPlayState("VillageFreeUnlockScreenPlay:" .. string.sub(theTable.topBox, 0, (string.len(theTable.topBox) - 3)))
 		if (checkTrees == 1) then
 			table.insert(trees, theTable.unlockString)
 		end

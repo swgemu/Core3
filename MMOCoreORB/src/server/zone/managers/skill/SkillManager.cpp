@@ -696,7 +696,7 @@ bool SkillManager::fullfillsSkillPrerequisites(const String& skillName, Creature
 
 		int index = skillName.indexOf("0");
 		if (index != -1) {
-			String skillNameFinal = skillName.subString(0, index + 1) + "4";
+			String skillNameFinal = skillName.subString(0, skillName.length() - 3);
 			if (creature->getScreenPlayState("VillageUnlockScreenPlay:" + skillNameFinal) < 2) {
 				return false;
 			}
