@@ -1,6 +1,9 @@
 GTEST_DIR = .
 GMOCK_DIR = ../gmock-1.6.0
 
+#CC=clang
+#CXX=clang++
+
 gtest-all.o: ${GTEST_DIR}/src/gtest-all.cc
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -I${GTEST_DIR}/include -I${GTEST_DIR} -I${GMOCK_DIR}/include -I${GMOCK_DIR} -c ${GTEST_DIR}/src/gtest-all.cc -o lib/gtest-all.o
 	
