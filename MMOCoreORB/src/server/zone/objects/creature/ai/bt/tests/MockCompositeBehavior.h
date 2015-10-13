@@ -10,7 +10,7 @@
 #include "gmock/gmock.h"
 #include "server/zone/objects/creature/ai/bt/Behavior.h"
 #include "MockBehavior.h"
-#include "server/zone/objects/creature/ai/bt/CompositeBehavior.h"
+#include "server/zone/objects/creature/ai/bt/node/CompositeBehavior.h"
 
 
 namespace server {

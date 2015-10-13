@@ -5,134 +5,51 @@
  *      Author: swgemu
  */
 
-#include "Behavior.h"
-#include "CompositeBehavior.h"
-#include "server/zone/managers/creature/AiMap.h"
-#include "LuaBehavior.h"
+#include "server/zone/objects/creature/ai/bt/Behavior.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 
-Behavior::Behavior(AiAgent* _agent, const String& className) {
-	agent = _agent;
-	result = AiMap::SUSPEND;
-	parent = NULL;
-	interface = AiMap::instance()->getBehavior(className);
-	id = 0;
+using namespace server::zone::objects::creature::ai::bt;
 
-	if (interface == NULL) {
-		_agent->error("Null interface in Behavior: " + className);
-	}
+bool Behavior::checkConditions(AiAgent* agent) const {
+	// placeholder for more robust checkConditions
+	return agent != NULL &&
+		   !agent->isDead() &&
+		   !agent->isIncapacitated() &&
+		   agent->getZone() != NULL;
 }
 
-void Behavior::start() {
-	if (!checkConditions()) {
-		endWithFailure();
-		return;
-	}
-
-	result = AiMap::RUNNING;
-
-	if (interface != NULL) {
-		Reference<AiAgent*> strongReference = agent.get();
-
-		interface->start(strongReference);
-	}
-}
-
-void Behavior::end() {
-	if (interface != NULL) {
-		Reference<AiAgent*> strongReference = agent.get();
-
-		interface->end(strongReference);
-	}
-}
-
-void Behavior::doAction(bool directlyExecuted) {
-	Reference<AiAgent*> agent = this->agent.get();
-
-	if (agent->isDead() || agent->isIncapacitated() || (agent->getZone() == NULL)) {
-		agent->setFollowObject(NULL);
-		return;
-	}
-
+Status Behavior::doAction(Reference<AiAgent*> agent) const {
 	//agent->info(id, true);
-	agent->setCurrentBehavior(id);
-
-	if (!started())
-		this->start();
-	else if (!this->checkConditions())
-		endWithFailure();
-
-	agent = this->agent.get();
-
-	if (finished()) {
-		if (parent == NULL) {
-			this->end();
-			result = AiMap::SUSPEND;
-			agent->activateMovementEvent(); // this is an automatic recycle decorator for the root node
-		} else if (directlyExecuted) {
-			agent->setCurrentBehavior(parent->id);
-			parent->doAction(true);
-		}
-
-		return;
-	}
-
-	int res = AiMap::INVALID;
-	if (interface != NULL)
-		res = interface->doAction(agent);
-
-	switch(res) {
-	case AiMap::SUCCESS:
-		endWithSuccess();
-		break;
-	case AiMap::FAILURE:
-		endWithFailure();
-		break;
-	case AiMap::INVALID:
-		if (agent == NULL)
-			return;
-
-		agent->resetBehaviorList();
-		break;
-	default:
-		if (agent == NULL)
-			return;
-
-		break;
-	}
-
-	if (!finished() || parent == NULL)
-		agent->activateMovementEvent();
-	else if (directlyExecuted) {
-		agent->setCurrentBehavior(parent->id);
-
-		parent->doAction(true);
-	}
-}
-
-void Behavior::endWithFailure() {
-	this->result = AiMap::FAILURE;
-}
-
-void Behavior::endWithSuccess() {
-	this->result = AiMap::SUCCESS;
-}
-
-void Behavior::endWithError() {
-	this->result = AiMap::INVALID;
-}
-
-bool Behavior::succeeded() {
-	return result == AiMap::SUCCESS;
-}
-
-bool Behavior::failed() {
-	return result == AiMap::FAILURE;
-}
-
-bool Behavior::finished() {
-	return result == AiMap::SUCCESS || result == AiMap::FAILURE || result == AiMap::INVALID;
-}
-
-bool Behavior::started() {
-	return result != AiMap::SUSPEND;
+	
+	if (!this->checkConditions(agent))
+		return INVALID; // TODO: should this be FAILURE?
+	
+	// Step 1:	check if this behavior is in the running chain
+	//			If it isn't, call start()
+	//			We can assume here that if we are running here, that this is the
+	//			leaf that is actually running because all other running states
+	//			will be composites and would have a different reaction to being
+	//			in the running vector
+	if (!agent->isRunningBehavior(id))
+		this->start(agent);
+	else
+		agent->popRunningChain();
+		
+	// Step 2:	evaluate the action result (method to do this will be abstract
+	//			and implemented in the concrete behaviors)
+	Status result = this->execute(agent);
+	
+	// Step 3:	If the result is RUNNING, clear the agent's run chain and and
+	//			add this->id to the front. As the chain unwinds, the composite
+	//			parents will push_front to the chain until the root node
+	if (result == RUNNING) {
+		agent->clearRunningChain();
+		agent->addRunningID(id);
+	} else
+		this->end(agent);
+	
+	// Step 4:	If the result is anything else (TODO: SUSPEND?) just return that
+	//			value; the parent will deal with the next action based on the
+	//			type of parent.
+	return result;
 }

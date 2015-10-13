@@ -706,14 +706,9 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/VehicleObjectImplementation.cpp \
 		server/zone/objects/creature/variables/SkillList.cpp \
 		server/zone/objects/creature/ai/bt/Behavior.cpp \
-		server/zone/objects/creature/ai/bt/CompositeBehavior.cpp \
-		server/zone/objects/creature/ai/bt/SequenceBehavior.cpp \
-		server/zone/objects/creature/ai/bt/SelectorBehavior.cpp \
-		server/zone/objects/creature/ai/bt/NonDeterministicBehavior.cpp \
-		server/zone/objects/creature/ai/bt/ParallelBehavior.cpp \
-		server/zone/objects/creature/ai/bt/ParallelSequenceBehavior.cpp \
-		server/zone/objects/creature/ai/bt/ParallelSelectorBehavior.cpp \
-		server/zone/objects/creature/ai/bt/LuaBehavior.cpp \
+		server/zone/objects/creature/ai/bt/node/Composite.cpp \
+		server/zone/objects/creature/ai/bt/node/Sequence.cpp \
+		server/zone/objects/creature/ai/bt/node/Selector.cpp \
 		server/zone/objects/creature/conversation/ConversationObserverImplementation.cpp \
 		server/zone/objects/creature/conversation/TrainerConversationObserverImplementation.cpp \
 		server/zone/objects/creature/conversation/DeliverMissionConversationObserverImplementation.cpp \

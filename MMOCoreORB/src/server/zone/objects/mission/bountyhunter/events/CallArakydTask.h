@@ -76,7 +76,7 @@ public:
 				objectiveRef->setArakydDroid(droid);
 				olocker.release();
 
-				droid->activateLoad("stationary");
+				droid->setAITemplate("stationary");
 				time -= 1;
 				reschedule(300 * 1000);
 		}
