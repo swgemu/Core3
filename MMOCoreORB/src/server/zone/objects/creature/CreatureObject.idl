@@ -1476,8 +1476,9 @@ class CreatureObject extends TangibleObject {
 		return encumbrances;
 	}
 
+	@mock
 	@read
-	public byte getPosture() {
+	public abstract byte getPosture() {
 		return posture;
 	}
 
@@ -1522,8 +1523,9 @@ class CreatureObject extends TangibleObject {
 		return stateBitmask;
 	}
 
+	@mock
 	@read
-	public boolean hasState(unsigned long state) {
+	public abstract boolean hasState(unsigned long state) {
 		return stateBitmask & state;
 	}
 
@@ -1557,8 +1559,9 @@ class CreatureObject extends TangibleObject {
 		return speedMultiplierMod;
 	}
 
+	@mock
 	@read
-	public float getCurrentSpeed() {
+	public abstract float getCurrentSpeed() {
 		return currentSpeed;
 	}
 
@@ -1907,8 +1910,9 @@ class CreatureObject extends TangibleObject {
 		return stateBitmask & CreatureState.RALLIED;
 	}
 
+	@mock
 	@read
-	public boolean isInCombat() {
+	public abstract boolean isInCombat() {
 		return stateBitmask & CreatureState.COMBAT;
 	}
 
