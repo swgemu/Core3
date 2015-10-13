@@ -15,7 +15,6 @@ import server.zone.objects.area.SpawnArea;
 import system.util.Vector;
 include server.zone.managers.creature.CreatureMap;
 include server.zone.managers.creature.SpawnAreaMap;
-include server.zone.managers.creature.AiMap;
 include server.zone.managers.creature.AiSpeciesData;
 import engine.util.u3d.Vector3;
 import system.thread.Mutex;

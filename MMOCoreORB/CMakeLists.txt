@@ -8,6 +8,9 @@ project(core3)
 # Set cmake paths
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/build/unix/cmake/Modules/")
 
+# Set compile output
+set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
+
 # Add lua includes and libraries
 include_directories(/usr/include/lua5.1)
 link_directories(/usr/local/lib)

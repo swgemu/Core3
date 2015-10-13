@@ -28,6 +28,7 @@
 #include "server/zone/managers/minigames/GamblingManager.h"
 #include "server/zone/managers/minigames/ForageManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/managers/creature/AiMap.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/DnaManager.h"
 #include "server/zone/managers/creature/PetManager.h"
@@ -146,6 +147,8 @@ void ZoneServerImplementation::initialize() {
 
 	creatureTemplateManager = CreatureTemplateManager::instance();
 	creatureTemplateManager->loadTemplates();
+
+	AiMap::instance()->loadTemplates();
 
 	dnaManager = DnaManager::instance();
 	dnaManager->loadSampleData();

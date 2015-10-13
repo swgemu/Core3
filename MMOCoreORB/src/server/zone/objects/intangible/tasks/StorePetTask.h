@@ -9,6 +9,7 @@
 #include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/managers/group/GroupManager.h"
+#include "server/zone/managers/creature/PetManager.h"
 
 class StorePetTask : public Task {
 	ManagedWeakReference<CreatureObject*> play;
