@@ -368,29 +368,29 @@ void MissionManagerImplementation::createMissionObjectives(MissionObject* missio
 	uint32 missionType = mission->getTypeCRC();
 
 	switch (missionType) {
-	case MissionObject::SURVEY:
+	case static_cast<unsigned int>(MissionObject::SURVEY):
 		createSurveyMissionObjectives(mission, missionTerminal, player);
 		break;
-	case MissionObject::DESTROY:
+	case static_cast<unsigned int>(MissionObject::DESTROY):
 		createDestroyMissionObjectives(mission, missionTerminal, player);
 		break;
-	case MissionObject::DELIVER:
+	case static_cast<unsigned int>(MissionObject::DELIVER):
 		createDeliverMissionObjectives(mission, missionTerminal, player);
 		break;
-	case MissionObject::HUNTING:
+	case static_cast<unsigned int>(MissionObject::HUNTING):
 		createHuntingMissionObjectives(mission, missionTerminal, player);
 		break;
-	case MissionObject::RECON:
+	case static_cast<unsigned int>(MissionObject::RECON):
 		createReconMissionObjectives(mission, missionTerminal, player);
 		break;
-	case MissionObject::BOUNTY:
+	case static_cast<unsigned int>(MissionObject::BOUNTY):
 		createBountyMissionObjectives(mission, missionTerminal, player);
 		break;
-	case MissionObject::CRAFTING:
+	case static_cast<unsigned int>(MissionObject::CRAFTING):
 		createCraftingMissionObjectives(mission, missionTerminal, player);
 		break;
-	case MissionObject::DANCER:
-	case MissionObject::MUSICIAN:
+	case static_cast<unsigned int>(MissionObject::DANCER):
+	case static_cast<unsigned int>(MissionObject::MUSICIAN):
 		createEntertainerMissionObjectives(mission, missionTerminal, player);
 		break;
 	default:

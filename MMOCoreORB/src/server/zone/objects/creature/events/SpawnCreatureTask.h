@@ -51,7 +51,7 @@ public:
 			if (randomRespawn)
 				ai->setRandomRespawn(true);
 
-			ai->activateLoad("stationary");
+			ai->setAITemplate("stationary");
 		}
 	}
 };
