@@ -40,7 +40,7 @@ function VillageJediManagerCommon.unlockBranch(pPlayer, branch)
 
 	local questStatusTemp = CreatureObject(pPlayer):getScreenPlayState("VillageUnlockScreenPlay:" .. branch)
 	if (questStatusTemp == 0) then
-		CreatureObject(pPlayer):setScreenPlayState(1, "VillageUnlockScreenPlay:" .. branch)
+		CreatureObject(pPlayer):setScreenPlayState(2, "VillageUnlockScreenPlay:" .. branch)
 	end
 
 	local stringTO = "@quest/force_sensitive/utils:" .. branch
