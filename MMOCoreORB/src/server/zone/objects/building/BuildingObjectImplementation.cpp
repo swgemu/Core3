@@ -592,12 +592,12 @@ void BuildingObjectImplementation::destroyObjectFromDatabase(
 
 		if (child == NULL)
 			continue;
-          
+
           	Locker locker(child);
 
 		if (child->isAiAgent()) {
 			AiAgent* ai = child->asAiAgent();
-                  
+
 			ai->setRespawnTimer(0);
 		}
 
@@ -1651,7 +1651,7 @@ Vector<Reference<MeshData*> > BuildingObjectImplementation::getTransformedMeshDa
 				const CellPortal* portal = tmpl->getPortal(i);
 				const MeshData* mesh = pl->getPortalGeometry(portal->getGeometryIndex());
 
-				data.emplace(std::move(MeshData::makeCopyNegateZ(mesh, fullTransform)));
+				data.emplace(MeshData::makeCopyNegateZ(mesh, fullTransform));
 			}
 
 #ifdef RENDER_EXTERNAL_FLOOR_MESHES_ONLY
