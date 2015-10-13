@@ -43,11 +43,14 @@ function VillageJediManagerCommon.unlockBranch(pPlayer, branch)
 		CreatureObject(pPlayer):setScreenPlayState(1, "VillageUnlockScreenPlay:" .. branch)
 	end
 
-	local stringTO = "@quest/force_sensitive/utils:" .. branch
+ -- The below is handled by Paemos... The Quest Journal notifies players they can unlock it through him.
+ 
+	--[[local stringTO = "@quest/force_sensitive/utils:" .. branch
 
 	local messageString = LuaStringIdChatParameter("@quest/force_sensitive/utils:branch_selected_unlock")
 	messageString:setTO(stringTO)
 	CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject())
+	]]
 end
 
 return VillageJediManagerCommon

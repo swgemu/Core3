@@ -9,6 +9,9 @@ require("screenplays.screenplay")
 -- 2: Branch Unlocked.
 -- 4: Branch Mastered.
 
+-- For Paemos to qualify unlocking a branch, call the VillageJediManagerCommon's unlockBranch. 
+-- The 2nd argument should be the name of the tree WITHOUT "_04" at the end, e.g. "force_sensitive_combat_prowess_ranged_accuracy".
+
 
 -- Pulled from "quest/force_sensitive/utils.stf"
 local unlockableFSBranches = {
@@ -136,7 +139,7 @@ function ExperienceConverter:getNextUnlockableBranches(pCreatureObject)
 
 
 	foreach(unlockableFSBranches, function(theTable)
-		local checkTrees = CreatureObject(pCreatureObject):getScreenPlayState("VillageUnlockScreenPlay:" .. theTable.topBox)
+		local checkTrees = CreatureObject(pCreatureObject):getScreenPlayState("VillageUnlockScreenPlay:" .. string.sub(theTable.topBox, 0, (string.len(theTable.topBox) - 3)))
 		if (checkTrees == 1) then
 			table.insert(trees, theTable.unlockString)
 		end
