@@ -161,7 +161,7 @@ public:
 		else {
 			npc = cast<AiAgent*>(creatureManager->spawnCreature(templ, objTempl, posX, posZ, posY, parID));
 			if (npc != NULL)
-				npc->activateLoad("");
+				npc->setAITemplate("");
 		}
 
 		if (baby && npc == NULL) {
@@ -173,7 +173,7 @@ public:
 		}
 
 		if (!aiTemplate.isEmpty()) {
-			npc->activateLoad(aiTemplate);
+			npc->setAITemplate(aiTemplate);
 		}
 
 		npc->updateDirection(Math::deg2rad(creature->getDirectionAngle()));
