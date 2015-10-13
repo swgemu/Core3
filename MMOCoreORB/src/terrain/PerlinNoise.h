@@ -90,7 +90,7 @@ public:
 		double rx0, rx1, ry0, ry1;
 		float *q;
 		double t, sx, sy, a, b, u, v;
-		register int i, j;
+		int i, j;
 
 		if (start) {
 			start = 0;
