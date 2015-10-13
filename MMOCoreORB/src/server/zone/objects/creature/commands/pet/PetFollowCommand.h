@@ -92,7 +92,7 @@ public:
 		Locker clocker(controlDevice, creature);
 		controlDevice->setLastCommand(PetManager::FOLLOW);
 
-		pet->activateInterrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
+		pet->notifyObservers(ObserverEventType::STARTCOMBAT, pet->getLinkedCreature().get());
 
 		return SUCCESS;
 	}

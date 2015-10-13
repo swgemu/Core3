@@ -52,7 +52,6 @@ public:
 		pet->setFollowState(AiAgent::PATROLLING);
 		pet->clearSavedPatrolPoints();
 		pet->stopWaiting();
-		pet->setWait(0);
 
 		for (int i = 0; i < controlDevice->getPatrolPointSize(); i++) {
 			PatrolPoint point = controlDevice->getPatrolPoint(i);

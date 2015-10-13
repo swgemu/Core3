@@ -61,7 +61,7 @@ public:
 		controlDevice->setLastCommand(PetManager::GUARD);
 		controlDevice->setLastCommandTarget(targetObject);
 
-		pet->activateInterrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
+		pet->notifyObservers(ObserverEventType::STARTCOMBAT, pet->getLinkedCreature().get());
 
 		return SUCCESS;
 	}

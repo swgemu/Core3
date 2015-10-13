@@ -83,7 +83,7 @@ public:
 		controlDevice->setLastCommand(PetManager::ATTACK);
 		controlDevice->setLastCommandTarget(targetTano);
 
-		pet->activateInterrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
+		pet->notifyObservers(ObserverEventType::STARTCOMBAT, pet->getLinkedCreature().get());
 
 		pet->selectDefaultAttack();
 		pet->enqueueAttack(QueueCommand::FRONT);
