@@ -458,7 +458,9 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 			writeData(SceneObject(pMobile):getObjectID() .. ":currentLoc", 1)
 			createEvent(45000, "TutorialScreenPlay", "doRoomElevenTrooperPathing", pMobile, "")
 			createObserver(DESTINATIONREACHED, "TutorialScreenPlay", "trooperDestReached", pMobile)
-			AiAgent(pMobile):setAiTemplate("manualescortwalk") -- Don't move unless patrol point is added to list, walking speed
+			AiAgent(pMobile):addCreatureFlag(AI_NOAIAGGRO)
+			AiAgent(pMobile):addCreatureFlag(AI_ESCORT)
+			AiAgent(pMobile):setAITemplate() -- Don't move unless patrol point is added to list, walking speed
 			AiAgent(pMobile):setFollowState(4) -- Patrolling
 		end
 	end
@@ -1389,10 +1391,11 @@ function TutorialScreenPlay:doStartPanic(pPanicNpc)
 
 	self:doPanicYelling(pPanicNpc)
 
-	AiAgent(pPanicNpc):setAiTemplate("manualescort") -- Don't move unless patrol point is added to list, walking speed
+	AiAgent(pPanicNpc):addCreatureFlag(AI_NOAIAGGRO)
+	AiAgent(pPanicNpc):addCreatureFlag(AI_ESCORT)
+	AiAgent(pPanicNpc):setAITemplate() -- Don't move unless patrol point is added to list, walking speed
 	AiAgent(pPanicNpc):setFollowState(4) -- Patrolling
 	AiAgent(pPanicNpc):stopWaiting()
-	AiAgent(pPanicNpc):setWait(0)
 	AiAgent(pPanicNpc):setNextPosition(47.1, -7, -51.5, cellID)
 	AiAgent(pPanicNpc):executeBehavior()
 end
@@ -1881,7 +1884,6 @@ function TutorialScreenPlay:doRoomElevenTrooperPathing(pMobile)
 	local cellID = SceneObject(pCell):getObjectID()
 
 	AiAgent(pMobile):stopWaiting()
-	AiAgent(pMobile):setWait(0)
 	AiAgent(pMobile):setNextPosition(nextLoc[1], nextLoc[2], nextLoc[3], cellID)
 	AiAgent(pMobile):executeBehavior()
 end

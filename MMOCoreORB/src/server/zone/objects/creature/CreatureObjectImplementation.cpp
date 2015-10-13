@@ -55,6 +55,7 @@
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/objects/creature/events/DizzyFallDownEvent.h"
 #include "server/zone/packets/ui/ExecuteConsoleCommand.h"
@@ -479,7 +480,7 @@ void CreatureObjectImplementation::clearQueueActions(bool combatOnly) {
 void CreatureObjectImplementation::setWeapon(WeaponObject* weao,
 		bool notifyClient) {
 	if (weao == NULL)
-		weao = TangibleObjectImplementation::getSlottedObject("default_weapon").castTo<WeaponObject*>();
+		weao = asCreatureObject()->getDefaultWeapon();
 
 	weapon = weao;
 
@@ -1538,10 +1539,17 @@ float CreatureObjectImplementation::calculateSpeed() {
 void CreatureObjectImplementation::updateLocomotion() {
 	// 0: stationary, 0-walk: slow, walk-run+; fast
 	// the movement table does not seem to want scaling factors...
-	if (currentSpeed <= walkSpeed / 10.f)
+
+	// This is a "good enough" hysteresis to allow for more fluid transition
+	// between locomotions. It breaks down on posture changes, but it's not
+	// worth accounting for that for something this simple.
+	uint8 oldSpeed = CreaturePosture::instance()->getSpeed(posture, locomotion);
+	float hysteresis = walkSpeed / 10.f * (oldSpeed == CreatureLocomotion::FAST ? -1.f : 1.f);
+
+	if (currentSpeed <= abs(hysteresis))
 		locomotion = CreaturePosture::instance()->getLocomotion(posture,
 				CreatureLocomotion::STATIONARY);
-	else if (currentSpeed <= walkSpeed + walkSpeed / 10.0f)
+	else if (currentSpeed <= walkSpeed + hysteresis)
 		locomotion = CreaturePosture::instance()->getLocomotion(posture,
 				CreatureLocomotion::SLOW);
 	else
@@ -1818,6 +1826,10 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 		unsigned int actionCount, uint64 targetID,
 		const UnicodeString& arguments, int priority,
 		int compareCounter) {
+	if (getZoneServer() == NULL) { /* for unit tests */
+		return;
+	}
+
 	ManagedReference<ObjectController*> objectController =
 			getZoneServer()->getObjectController();
 
@@ -3197,11 +3209,15 @@ float CreatureObjectImplementation::calculateCostAdjustment(uint8 stat, float ba
 	return cost;
 }
 
-Reference<WeaponObject*> CreatureObjectImplementation::getWeapon() {
+WeaponObject* CreatureObjectImplementation::getWeapon() {
 	if (weapon == NULL) {
-		return TangibleObjectImplementation::getSlottedObject("default_weapon").castTo<WeaponObject*>();
+		return asCreatureObject()->getDefaultWeapon();
 	} else
 		return weapon;
+}
+
+WeaponObject* CreatureObjectImplementation::getDefaultWeapon() {
+		return getSlottedObject("default_weapon").castTo<WeaponObject*>();
 }
 
 void CreatureObjectImplementation::setFaction(unsigned int crc) {
