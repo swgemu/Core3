@@ -20,6 +20,7 @@ import system.util.Vector;
 import system.lang.String;
 include server.zone.objects.tangible.Container;
 
+@mock
 class WeaponObject extends TangibleObject {
 	protected int attackType;
 	protected string weaponEffect;
@@ -236,18 +237,39 @@ class WeaponObject extends TangibleObject {
 		pointBlankAccuracy = value;
 	}
 	
+	@mock
 	@dirty
-	public native int getPointBlankRange(boolean withPup = true);
+	public abstract native int getPointBlankRange(boolean withPup);
+
+	@mock
+	@dirty
+	public abstract int getPointBlankRange() {
+		return getPointBlankRange(true);
+	}
+
+	@mock
+	@dirty
+	public abstract native int getIdealRange(boolean withPup);
 	
+	@mock
 	@dirty
-	public native int getIdealRange(boolean withPup = true);
+	public abstract int getIdealRange() {
+		return getIdealRange(true);
+	}
 	
 	public void setIdealRange(int value) {
 		idealRange = value;
 	}
-	
+
+	@mock
 	@dirty
-	public native int getMaxRange(boolean withPup = true);
+	public abstract native int getMaxRange(boolean withPup);
+
+	@mock
+	@dirty
+	public abstract int getMaxRange() {
+		return getMaxRange(true);
+	}
 	
 	public void setMaxRange(int value) {
 		maxRange = value;
