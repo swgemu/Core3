@@ -5,7 +5,7 @@
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
-#include "server/zone/objects/creature/Creature.h"
+#include "server/zone/objects/creature/ai/Creature.h"
 #include "server/zone/managers/creature/LairAggroTask.h"
 
 void DestroyMissionLairObserverImplementation::checkForHeal(TangibleObject* lair, TangibleObject* attacker, bool forceNewUpdate) {

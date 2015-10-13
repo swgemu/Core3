@@ -5,7 +5,7 @@
 #ifndef DESPAWNMISSIONNPCTASK_H_
 #define DESPAWNMISSIONNPCTASK_H_
 
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/managers/mission/spawnmaps/NpcSpawnPoint.h"
 #include "server/zone/managers/mission/MissionManager.h"
 

@@ -2,11 +2,11 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
-package server.zone.objects.creature;
+package server.zone.objects.creature.ai;
 
 import engine.core.ManagedObject;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.AiAgent;
+import server.zone.objects.creature.ai.AiAgent;
 import server.zone.objects.area.ActiveArea;
 import engine.util.u3d.Coordinate;
 

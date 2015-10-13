@@ -4,7 +4,7 @@
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
-#include "server/zone/objects/creature/Creature.h"
+#include "server/zone/objects/creature/ai/Creature.h"
 
 int DynamicSpawnObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 

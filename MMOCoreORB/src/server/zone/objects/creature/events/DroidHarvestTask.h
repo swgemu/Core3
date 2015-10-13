@@ -5,9 +5,9 @@
 #ifndef DROIDHARVESTTASK_H_
 #define DROIDHARVESTTASK_H_
 
-#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/Creature.h"
+#include "server/zone/objects/creature/ai/Creature.h"
 #include "server/zone/objects/tangible/components/droid/DroidHarvestModuleDataComponent.h"
 #include "server/zone/objects/group/GroupObject.h"
 

@@ -25,7 +25,7 @@
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/chat/PersistentMessage.h"

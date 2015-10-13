@@ -19,7 +19,7 @@ include server.zone.objects.scene.SceneObject;
 include server.zone.objects.group.GroupObject;
 include server.zone.objects.creature.CreatureObject;
 
-include server.zone.objects.creature.AiAgent;
+include server.zone.objects.creature.ai.AiAgent;
 include server.zone.objects.player.sessions.LootLotteryBallot;
 include server.zone.objects.scene.SessionFacadeType;
 

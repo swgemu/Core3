@@ -9,7 +9,7 @@
 #define BEHAVIOR_H_
 
 #include "engine/engine.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/ai/bt/LuaBehavior.h"
 
 namespace server {
@@ -21,10 +21,10 @@ class SceneObject;
 }
 
 namespace creature {
+namespace ai {
 
 class AiAgent;
 
-namespace ai {
 namespace bt {
 
 class CompositeBehavior;

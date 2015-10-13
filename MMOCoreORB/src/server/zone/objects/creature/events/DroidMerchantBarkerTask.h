@@ -5,7 +5,7 @@
 #ifndef DROIDMERCHANTBARKERTASK_H_
 #define DROIDMERCHANTBARKERTASK_H_
 
-#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/tangible/components/droid/DroidMerchantModuleDataComponent.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/Zone.h"

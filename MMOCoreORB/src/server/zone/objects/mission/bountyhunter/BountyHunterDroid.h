@@ -11,7 +11,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "engine/log/Logger.h"
 #include "server/zone/objects/mission/bountyhunter/events/FindTargetTask.h"
 #include "server/zone/objects/mission/bountyhunter/events/CallArakydTask.h"

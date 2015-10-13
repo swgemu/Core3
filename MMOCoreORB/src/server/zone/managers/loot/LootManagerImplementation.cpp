@@ -10,7 +10,7 @@
 #include "server/zone/managers/loot/LootManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/templates/LootItemTemplate.h"

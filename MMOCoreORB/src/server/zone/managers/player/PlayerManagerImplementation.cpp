@@ -112,9 +112,9 @@
 
 #include "server/zone/objects/creature/buffs/PowerBoostBuff.h"
 
-#include "server/zone/objects/creature/Creature.h"
+#include "server/zone/objects/creature/ai/Creature.h"
 #include "server/zone/objects/creature/events/DespawnCreatureTask.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 
 #include "server/zone/managers/creature/LairObserver.h"
@@ -122,7 +122,7 @@
 #include "server/zone/managers/creature/PetManager.h"
 
 #include "server/zone/objects/creature/events/BurstRunNotifyAvailableEvent.h"
-#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/tangible/components/droid/DroidPlaybackModuleDataComponent.h"
 

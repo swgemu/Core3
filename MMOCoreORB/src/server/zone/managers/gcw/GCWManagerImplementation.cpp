@@ -34,7 +34,7 @@
 #include "server/zone/managers/structure/StructureManager.h"
 
 #include "server/zone/managers/creature/CreatureManager.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 
 #include "server/zone/objects/installation/InstallationObject.h"
 

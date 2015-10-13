@@ -6,7 +6,7 @@
 #define HEALDROIDDAMAGECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/tangible/pharmaceutical/StimPack.h"
 
 class HealDroidDamageCommand : public QueueCommand {

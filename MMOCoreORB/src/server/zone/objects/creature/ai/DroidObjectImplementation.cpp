@@ -2,7 +2,7 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions. */
 
-#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/object/StartNpcConversation.h"

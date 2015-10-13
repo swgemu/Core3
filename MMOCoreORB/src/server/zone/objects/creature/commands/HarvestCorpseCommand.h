@@ -6,7 +6,7 @@
 #define HARVESTCORPSECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/Creature.h"
+#include "server/zone/objects/creature/ai/Creature.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/Zone.h"
 

@@ -12,12 +12,13 @@
 #include "engine/engine.h"
 
 #include "server/zone/objects/creature/LuaCreatureObject.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace creature {
+namespace ai {
 	class AiAgent;
 
 	class LuaAiAgent : public LuaCreatureObject {
@@ -133,6 +134,7 @@ namespace creature {
 	private:
 		AiAgent* realObject;
 	};
+}
 }
 }
 }

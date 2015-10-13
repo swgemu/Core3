@@ -9,7 +9,7 @@ import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.managers.creature.SpawnObserver;
 import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.creature.AiAgent;
+import server.zone.objects.creature.ai.AiAgent;
 include server.zone.templates.mobile.LairTemplate;
 
 class DynamicSpawnObserver extends SpawnObserver {

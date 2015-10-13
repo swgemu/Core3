@@ -16,7 +16,7 @@
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/mission/MissionObserver.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"

@@ -4,7 +4,7 @@
 #include "SharedLabratory.h"
 #include "engine/engine.h"
 #include "server/zone/managers/creature/DnaManager.h"
-#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 
 namespace server {
 namespace zone {

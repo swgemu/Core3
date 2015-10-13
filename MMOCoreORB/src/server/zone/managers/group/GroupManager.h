@@ -56,11 +56,15 @@ namespace server {
  namespace zone {
   namespace objects {
    namespace creature {
-	   class AiAgent;
+    namespace ai {
+	    class AiAgent;
+    }
    }
   }
  }
 }
+
+using namespace server::zone::objects::creature::ai;
 
 class GroupManager : public Singleton<GroupManager>, public Object {
 

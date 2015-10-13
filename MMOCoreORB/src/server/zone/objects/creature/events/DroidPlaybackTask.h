@@ -5,7 +5,7 @@
 #ifndef DROIDPOWERTASK_H_
 #define DROIDPOWERTASK_H_
 
-#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/tangible/components/droid/DroidPlaybackModuleDataComponent.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
 #include "server/zone/managers/skill/Performance.h"

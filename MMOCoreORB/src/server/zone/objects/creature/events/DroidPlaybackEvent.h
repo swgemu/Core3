@@ -5,7 +5,7 @@
 #ifndef DROIDPLAYBACKEVENT_H_
 #define DROIDPLAYBACKEVENT_H_
 
-#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/tangible/components/droid/DroidPlaybackModuleDataComponent.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
 

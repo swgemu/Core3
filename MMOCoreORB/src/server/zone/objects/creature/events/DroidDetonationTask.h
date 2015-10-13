@@ -5,7 +5,7 @@
 #ifndef DROIDEFFECTSTASK_H_
 #define DROIDEFFECTSTASK_H_
 
-#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/tangible/components/droid/DroidDetonationModuleDataComponent.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"

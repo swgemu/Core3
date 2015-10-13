@@ -8,13 +8,14 @@
 #ifndef AIINTERRUPTTASK_H_
 #define AIINTERRUPTTASK_H_
 
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/scene/SceneObject.h"
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace creature {
+namespace ai {
 namespace events {
 
 class AiInterruptTask : public Task {
@@ -47,6 +48,7 @@ public:
 	}
 };
 
+}
 }
 }
 }

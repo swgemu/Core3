@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "server/zone/objects/creature/NonPlayerCreatureObject.h"
+#include "server/zone/objects/creature/ai/NonPlayerCreatureObject.h"
 #include "server/zone/packets/object/StartNpcConversation.h"
 #include "server/zone/packets/object/StopNpcConversation.h"
 #include "server/zone/templates/mobile/ConversationScreen.h"

@@ -8,7 +8,7 @@ import engine.lua.LuaObject;
 import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.intangible.ControlDevice;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.AiAgent;
+import server.zone.objects.creature.ai.AiAgent;
 import server.zone.objects.player.PlayerObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
@@ -17,8 +17,8 @@ import server.zone.Zone;
 import system.lang.System;
 import system.util.VectorMap;
 include server.zone.managers.radial.RadialOptions;
-include server.zone.objects.creature.PatrolPointsVector;
-include server.zone.objects.creature.PatrolPoint;
+include server.zone.objects.creature.ai.PatrolPointsVector;
+include server.zone.objects.creature.ai.PatrolPoint;
 import server.zone.objects.intangible.PetControlObserver;
 
 class PetControlDevice extends ControlDevice {

@@ -11,7 +11,7 @@
 #include "SharedCreatureObjectTemplate.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
-#include "server/zone/objects/creature/variables/CreatureAttackMap.h"
+#include "server/zone/objects/creature/ai/variables/CreatureAttackMap.h"
 
 class NonPlayerCreatureObjectTemplate : public SharedCreatureObjectTemplate {
 

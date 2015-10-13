@@ -122,7 +122,7 @@ core3_IDLS =	autogen/server/zone/objects/tangible/misc/PlantObject.cpp \
 				autogen/server/zone/objects/tangible/pharmaceutical/VitalityPack.cpp \
 				autogen/server/zone/objects/creature/buffs/GallopBuff.cpp \
 				autogen/server/zone/managers/creature/PetManager.cpp \
-				autogen/server/zone/objects/creature/DroidObject.cpp \
+				autogen/server/zone/objects/creature/ai/DroidObject.cpp \
 				autogen/server/zone/objects/tangible/deed/droid/DroidDeed.cpp \
 				autogen/server/zone/objects/intangible/PetControlObserver.cpp \
 				autogen/server/zone/objects/intangible/PetControlDevice.cpp \
@@ -188,9 +188,9 @@ core3_IDLS =	autogen/server/zone/objects/tangible/misc/PlantObject.cpp \
 				autogen/server/zone/objects/creature/CreatureObject.cpp \
 				autogen/server/zone/objects/creature/junkdealer/JunkdealerCreature.cpp \
 				autogen/server/zone/objects/creature/VehicleObject.cpp \
-				autogen/server/zone/objects/creature/NonPlayerCreatureObject.cpp \
-				autogen/server/zone/objects/creature/Creature.cpp \
-				autogen/server/zone/objects/creature/AiAgent.cpp \
+				autogen/server/zone/objects/creature/ai/NonPlayerCreatureObject.cpp \
+				autogen/server/zone/objects/creature/ai/Creature.cpp \
+				autogen/server/zone/objects/creature/ai/AiAgent.cpp \
 				autogen/server/zone/objects/creature/buffs/Buff.cpp \
 				autogen/server/zone/objects/creature/buffs/DelayedBuff.cpp \
 				autogen/server/zone/objects/creature/buffs/SpiceBuff.cpp \
@@ -375,7 +375,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/components/SarlaccMenuComponent.cpp \
 		server/zone/objects/creature/components/PetMenuComponent.cpp \
 		server/zone/objects/creature/components/FactionRecruiterContainerComponent.cpp \
-		server/zone/objects/creature/variables/CreatureTemplateReference.cpp \
+		server/zone/objects/creature/ai/variables/CreatureTemplateReference.cpp \
 		server/zone/objects/player/sessions/ImageDesignPositionObserverImplementation.cpp \
 		server/zone/objects/building/components/CityHallZoneComponent.cpp \
 		server/zone/objects/building/components/DestructibleBuildingDataComponent.cpp \
@@ -649,9 +649,9 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/group/GroupObjectImplementation.cpp \
 		server/zone/objects/guild/GuildObjectImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
-		server/zone/objects/creature/CreatureImplementation.cpp \
-		server/zone/objects/creature/NonPlayerCreatureObjectImplementation.cpp \
-		server/zone/objects/creature/AiAgentImplementation.cpp \
+		server/zone/objects/creature/ai/CreatureImplementation.cpp \
+		server/zone/objects/creature/ai/NonPlayerCreatureObjectImplementation.cpp \
+		server/zone/objects/creature/ai/AiAgentImplementation.cpp \
 		server/zone/objects/tangible/threat/ThreatMap.cpp \
 		server/zone/objects/tangible/threat/ThreatMatrix.cpp \
 		server/zone/objects/creature/damageovertime/DamageOverTime.cpp \
@@ -695,12 +695,12 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/commands/QueueCommand.cpp \
 		server/zone/objects/creature/commands/ForceHealQueueCommand.cpp \
 		server/zone/objects/creature/LuaCreatureObject.cpp \
-		server/zone/objects/creature/LuaAiAgent.cpp \
+		server/zone/objects/creature/ai/LuaAiAgent.cpp \
 		server/zone/objects/scene/LuaSceneObject.cpp \
 		server/zone/managers/sui/LuaSuiManager.cpp \
 		server/zone/managers/player/LuaQuestInfo.cpp \
 		server/zone/objects/player/sui/LuaSuiBox.cpp \
-		server/zone/objects/creature/DroidObjectImplementation.cpp \
+		server/zone/objects/creature/ai/DroidObjectImplementation.cpp \
 		server/zone/objects/creature/VehicleObjectImplementation.cpp \
 		server/zone/objects/creature/variables/SkillList.cpp \
 		server/zone/objects/creature/ai/bt/Behavior.cpp \

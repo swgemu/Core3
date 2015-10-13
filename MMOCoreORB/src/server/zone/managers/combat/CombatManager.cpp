@@ -26,7 +26,7 @@
 #include "server/zone/managers/creature/LairObserver.h"
 #include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/objects/installation/components/TurretDataComponent.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 
 #define COMBAT_SPAM_RANGE 85
 

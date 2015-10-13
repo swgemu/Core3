@@ -60,7 +60,7 @@ import system.thread.ReadWriteLock;
 import system.thread.Mutex;
 include server.zone.objects.scene.variables.ContainerObjectsMap;
 import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.creature.AiAgent;
+import server.zone.objects.creature.ai.AiAgent;
 
 @mock
 class SceneObject extends QuadTreeEntry implements Logger {

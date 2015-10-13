@@ -2,12 +2,12 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
-package server.zone.objects.creature;
+package server.zone.objects.creature.ai;
 
 import engine.core.ManagedObject;
 import engine.util.u3d.Coordinate;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.AiAgent;
+import server.zone.objects.creature.ai.AiAgent;
 import server.zone.objects.group.GroupObject;
 import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.packets.scene.AttributeListMessage;

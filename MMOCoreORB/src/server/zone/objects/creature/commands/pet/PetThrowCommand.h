@@ -3,8 +3,8 @@
 #define PETTHROWCOMMAND_H_
 
 #include "server/zone/objects/creature/commands/QueueCommand.h"
-#include "server/zone/objects/creature/AiAgent.h"
-#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/components/droid/DroidTrapModuleDataComponent.h"
 #include "server/zone/templates/tangible/TrapTemplate.h"

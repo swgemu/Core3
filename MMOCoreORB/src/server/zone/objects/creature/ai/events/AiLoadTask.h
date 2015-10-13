@@ -9,13 +9,14 @@
 #define AILOADTASK_H_
 
 #include "server/zone/managers/creature/AiMap.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace creature {
+namespace ai {
 namespace events {
 
 class AiLoadTask : public Task {
@@ -57,6 +58,7 @@ public:
 	}
 };
 
+}
 }
 }
 }

@@ -10,7 +10,7 @@
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/managers/creature/PetManager.h"
 
