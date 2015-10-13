@@ -11,7 +11,7 @@
 
 #include "engine/engine.h"
 
-#include "../conf/ConfigManager.h"
+#include "conf/ConfigManager.h"
 
 class MantisDatabase {
 	static Vector<Database*>* databases;

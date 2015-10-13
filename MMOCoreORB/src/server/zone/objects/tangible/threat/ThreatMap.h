@@ -173,8 +173,7 @@ public:
 	}
 
 
-	~ThreatMap() {
-	}
+	virtual ~ThreatMap() {}
 
 	void removeAll(bool forceRemoveAll = false);
 
@@ -192,7 +191,7 @@ public:
 	CreatureObject* getHighestDamagePlayer();
 	CreatureObject* getHighestDamageGroupLeader();
 
-	CreatureObject* getHighestThreatCreature();
+	virtual CreatureObject* getHighestThreatCreature();
 	uint32 getTotalDamage();
 
 	void addAggro(CreatureObject* target, int value, uint64 duration = 0);

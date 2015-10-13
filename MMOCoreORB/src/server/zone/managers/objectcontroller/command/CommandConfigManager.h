@@ -123,6 +123,8 @@ public:
 	void registerFunctions();
 	void registerGlobals();
 	void registerCommands();
+	void registerCommands2();
+	void registerCommands3();
 
 	void registerSpecialCommands(CommandList* sCommands);
 
