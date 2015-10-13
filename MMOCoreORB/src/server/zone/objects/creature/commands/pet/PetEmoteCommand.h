@@ -129,7 +129,7 @@ public:
 
 				controlDevice->setLastCommand(PetManager::FOLLOW);
 
-				pet->activateInterrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
+				pet->notifyObservers(ObserverEventType::STARTCOMBAT, pet->getLinkedCreature().get());
 			} else {
 				pet->doAnimation("confused");
 				pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
