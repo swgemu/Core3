@@ -1046,17 +1046,6 @@ bool SceneObjectImplementation::isASubChildOf(SceneObject* object) {
 	return false;
 }
 
-Zone* SceneObjectImplementation::getZone() {
-	auto root = getRootParent();
-
-	if (root != NULL) {
-		return root->getZone();
-	} else {
-		return zone;
-	}
-}
-
-
 Zone* SceneObjectImplementation::getZoneUnsafe() {
 	auto root = getRootParentUnsafe();
 
@@ -1757,27 +1746,11 @@ bool SceneObject::isPlayerCreature() {
 	return false;
 }
 
-bool SceneObjectImplementation::isAiAgent() {
-	return false;
-}
-
-bool SceneObject::isAiAgent() {
-	return false;
-}
-
 bool SceneObjectImplementation::isVehicleObject() {
 	return false;
 }
 
 bool SceneObject::isVehicleObject() {
-	return false;
-}
-
-bool SceneObjectImplementation::isCreatureObject() {
-	return false;
-}
-
-bool SceneObject::isCreatureObject() {
 	return false;
 }
 
@@ -1789,28 +1762,12 @@ bool SceneObject::isBuildingObject() {
 	return false;
 }
 
-AiAgent* SceneObjectImplementation::asAiAgent() {
-	return nullptr;
-}
-
-AiAgent* SceneObject::asAiAgent() {
-	return nullptr;
-}
-
 SceneObject* SceneObjectImplementation::asSceneObject() {
 	return _this.getReferenceUnsafeStaticCast();
 }
 
 SceneObject* SceneObject::asSceneObject() {
 	return this;
-}
-
-CreatureObject* SceneObjectImplementation::asCreatureObject() {
-	return nullptr;
-}
-
-CreatureObject* SceneObject::asCreatureObject() {
-	return nullptr;
 }
 
 Vector<Reference<MeshData*> > SceneObjectImplementation::getTransformedMeshData(const Matrix4* parentTransform) {

@@ -16,8 +16,10 @@ AC_PROG_RANLIB
 AC_PROG_MAKE_SET
 
 # checking for library dependencies.
-AC_CHECK_HEADER(lua.h, [], [AC_MSG_ERROR([*** lua.h is required, install lua header files])])	 AC_CHECK_HEADER([mysql/mysql.h], [], [AC_MSG_ERROR([*** mysql.h is required, install mysql header files])])
-AC_CHECK_HEADER(mysql/mysql.h, [], [AC_MSG_ERROR([*** mysql.h is required, install mysql header files])])	 AC_CHECK_HEADER([mysql/mysql.h], [], [AC_MSG_ERROR([*** mysql.h is required, install mysql header files])])
+#AC_CHECK_HEADER(lua.h, [], [AC_MSG_ERROR([*** lua.h is required, install lua header files])])
+AC_CHECK_HEADERS([lua.h lua/lua.h lua5.3/lua.h], [found_lua_header=yes; break;])
+AS_IF([test "x$found_lua_header" != "xyes"], [AC_MSG_ERROR([*** lua.h is required, install lua header files])])
+AC_CHECK_HEADER([mysql/mysql.h], [], [AC_MSG_ERROR([*** mysql.h is required, install mysql header files])])
 #AC_CHECK_HEADER(db_cxx.h, [], [AC_MSG_ERROR([*** db_cxx.h is required, install berkleydb header files])])	 AC_CHECK_HEADER([mysql/mysql.h], [], [AC_MSG_ERROR([*** mysql.h is required, install mysql header files])])
 AC_CHECK_PROG([USING_HOMEBREW],[brew],[yes])
 #AC_CHECK_LIB(liblua, lua_open, [], [AC_MSG_ERROR([*** libblua.a is required, install lua library files])])
