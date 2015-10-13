@@ -33,6 +33,8 @@ public:
 		FACTION_PET         = 0x400,
 		WANDER				= 0x800,
 		NOAIAGGRO			= 0x1000,
+		TEST				= 0x2000,
+		LASTAIMASK			= 0x4000, // keep this updated so we can loop through the masks
 
 		CARNIVORE           = 0x01,
 		HERBIVORE           = 0x02
