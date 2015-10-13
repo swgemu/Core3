@@ -63,8 +63,6 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "validateTarget", &LuaAiAgent::validateTarget },
 		{ "validateFollow", &LuaAiAgent::validateFollow },
 		{ "followHasState", &LuaAiAgent::followHasState },
-		{ "selectWeapon", &LuaAiAgent::selectWeapon },
-		{ "selectDefaultWeapon", &LuaAiAgent::selectDefaultWeapon },
 		{ "selectSpecialAttack", &LuaAiAgent::selectSpecialAttack },
 		{ "selectDefaultAttack", &LuaAiAgent::selectDefaultAttack },
 		{ "validateStateAttack", &LuaAiAgent::validateStateAttack },
@@ -111,10 +109,6 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "isInCombat", &LuaCreatureObject::isInCombat },
 		{ "checkLineOfSight", &LuaAiAgent::checkLineOfSight },
 		{ "activateRecovery", &LuaAiAgent::activateRecovery },
-		{ "activateAwareness", &LuaAiAgent::activateAwareness },
-		{ "setBehaviorStatus", &LuaAiAgent::setBehaviorStatus },
-		{ "getBehaviorStatus", &LuaAiAgent::getBehaviorStatus },
-		{ "resetBehaviorList", &LuaAiAgent::resetBehaviorList },
 		{ "executeBehavior", &LuaAiAgent::executeBehavior },
 		{ "info", &LuaAiAgent::info },
 		{ "spatialChat", &LuaAiAgent::spatialChat },
@@ -122,7 +116,6 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "addDefender", &LuaAiAgent::addDefender },
 		{ "assist", &LuaAiAgent::assist },
 		{ "checkRange", &LuaAiAgent::checkRange },
-		{ "broadcastInterrupt", &LuaAiAgent::broadcastInterrupt },
 		{ "getSocialGroup", &LuaAiAgent::getSocialGroup },
 		{ "getOwner", &LuaCreatureObject::getOwner },
 		{ "getLastCommand", &LuaAiAgent::getLastCommand },
@@ -134,7 +127,6 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "hasReactionChatMessages", &LuaAiAgent::hasReactionChatMessages },
 		{ "sendReactionChat", &LuaAiAgent::sendReactionChat },
 		{ "addPatrolPoint", &LuaAiAgent::addPatrolPoint },
-		{ "runAwarenessLogicCheck", &LuaAiAgent::runAwarenessLogicCheck },
 		{ "setConvoTemplate", &LuaAiAgent::setConvoTemplate },
 		{ "setHomeLocation", &LuaAiAgent::setHomeLocation },
 		{ "setNoAiAggro", &LuaAiAgent::setNoAiAggro },
@@ -174,7 +166,8 @@ int LuaAiAgent::_setObject(lua_State* L) {
 int LuaAiAgent::setAiTemplate(lua_State* L) {
 	String tempName = lua_tostring(L, -1);
 
-	realObject->activateLoad(tempName);
+	realObject->setBitmaskFromString(tempName);
+	realObject->setAITemplate();
 
 	return 0;
 }
@@ -452,16 +445,6 @@ int LuaAiAgent::followHasState(lua_State* L) {
 	lua_pushboolean(L, retVal);
 
 	return 1;
-}
-
-int LuaAiAgent::selectWeapon(lua_State* L) {
-	realObject->selectWeapon();
-	return 0;
-}
-
-int LuaAiAgent::selectDefaultWeapon(lua_State* L) {
-	realObject->selectDefaultWeapon();
-	return 0;
 }
 
 int LuaAiAgent::selectSpecialAttack(lua_State* L) {
@@ -763,33 +746,6 @@ int LuaAiAgent::activateRecovery(lua_State* L) {
 	return 0;
 }
 
-int LuaAiAgent::activateAwareness(lua_State* L) {
-	realObject->activateAwarenessEvent();
-
-	return 0;
-}
-
-int LuaAiAgent::setBehaviorStatus(lua_State* L) {
-	uint8 status = (uint8) lua_tointeger(L, -1);
-
-	realObject->setBehaviorStatus(status);
-
-	return 0;
-}
-
-int LuaAiAgent::getBehaviorStatus(lua_State* L) {
-	lua_pushnumber(L, realObject->getBehaviorStatus());
-
-	return 1;
-}
-
-int LuaAiAgent::resetBehaviorList(lua_State* L) {
-	Locker locker(realObject);
-
-	realObject->resetBehaviorList();
-	return 0;
-}
-
 int LuaAiAgent::executeBehavior(lua_State* L) {
 	realObject->activateMovementEvent();
 	return 0;
@@ -879,14 +835,6 @@ int LuaAiAgent::checkRange(lua_State* L) {
 
 	lua_pushboolean(L, retVal);
 	return 1;
-}
-
-int LuaAiAgent::broadcastInterrupt(lua_State* L) {
-	int msg = lua_tointeger(L, -1);
-
-	realObject->broadcastInterrupt(msg);
-
-	return 0;
 }
 
 int LuaAiAgent::getSocialGroup(lua_State* L) {
@@ -988,16 +936,6 @@ int LuaAiAgent::addPatrolPoint(lua_State* L) {
 	realObject->addPatrolPoint(newPoint);
 
 	return 0;
-}
-
-int LuaAiAgent::runAwarenessLogicCheck(lua_State* L) {
-	SceneObject* target = static_cast<SceneObject*>(lua_touserdata(L, -1));
-
-	bool ret = realObject->runAwarenessLogicCheck(target);
-
-	lua_pushboolean(L, ret);
-
-	return 1;
 }
 
 int LuaAiAgent::setConvoTemplate(lua_State* L) {
