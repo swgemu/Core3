@@ -47,7 +47,7 @@
 
 void StructureManager::loadPlayerStructures(const String& zoneName) {
 
-	info("Loading player structures from playerstructures.db");
+	info("Loading player structures from playerstructures.db for zone: " + zoneName);
 
 	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
 	ObjectDatabase* playerStructuresDatabase =
@@ -96,15 +96,12 @@ void StructureManager::loadPlayerStructures(const String& zoneName) {
 							gcwMan->registerGCWBase(cast<BuildingObject*>(object.get()),false);
 						}
 					}
-
 				}
 
 				if (ConfigManager::instance()->isProgressMonitorActivated())
 					printf("\r\tLoading player structures [%d] / [?]\t", i);
 			} else {
-				error(
-						"Failed to deserialize structure with objectID: "
-								+ String::valueOf(objectID));
+				error("Failed to deserialize structure with objectID: " + String::valueOf(objectID));
 			}
 
 			objectData->clear();
@@ -112,14 +109,11 @@ void StructureManager::loadPlayerStructures(const String& zoneName) {
 
 		delete objectData;
 	} catch (DatabaseException& e) {
-		error(
-				"Database exception in StructureManager::loadPlayerStructures(): "
-						+ e.getMessage());
+		error("Database exception in StructureManager::loadPlayerStructures(): " + e.getMessage());
 	}
 
-	info(String::valueOf(i) + " player structures loaded for " + zoneName + ".",
-			true);
-
+	bool log = i > 0;
+	info(String::valueOf(i) + " player structures loaded for " + zoneName + ".", log);
 }
 
 int StructureManager::getStructureFootprint(SharedObjectTemplate* objectTemplate, int angle, float& l0, float& w0, float& l1, float& w1) {

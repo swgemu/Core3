@@ -24,7 +24,8 @@ protected:
 	int attackSpeed;
 	SharedInstallationObjectTemplate* templateData;
 	ManagedReference<CreatureObject*> controller;
-	ManagedReference<CreatureObject*> target;
+	ManagedReference<CreatureObject*> manualTarget;
+	Vector<ManagedReference<CreatureObject*> > availableTargets;
 	Reference<Task*> turretFireTask;
 
 public:
@@ -36,68 +37,77 @@ public:
 		attackSpeed = 5;
 		templateData = NULL;
 		controller = NULL;
-		target = NULL;
+		manualTarget = NULL;
 		turretFireTask = NULL;
 	}
 
-	~TurretDataComponent(){
+	~TurretDataComponent() {
 
 	}
 
 	void initializeTransientMembers();
+	void setWeapon(WeaponObject* weapon);
 
-	bool canAutoFire(){
+	bool canAutoFire() {
 		return (attackSpeed > 0 && nextFireTime.isPast()) ;
 	}
 
-	bool canManualFire(){
+	bool canManualFire() {
 		return (attackSpeed > 0 && nextManualFireTime.isPast());
 	}
 
-	void refreshControlTimer(int seconds){
+	void refreshControlTimer(int seconds) {
 		controlTimeout = Time();
 		controlTimeout.addMiliTime(seconds * 1000);
 	}
 
-	bool hasControlTimedOut(){
+	bool hasControlTimedOut() {
 		return controlTimeout.isPast();
 	}
+
+	bool isTurretData() {
+		return true;
+	}
+
+	void setController(CreatureObject* creature) {
+		controller = creature;
+	}
+
+	CreatureObject* getController() {
+		return controller;
+	}
+
+	void setManualTarget(CreatureObject* creature) {
+		manualTarget = creature;
+	}
+
+	CreatureObject* getManualTarget() {
+		return manualTarget;
+	}
+
+	int getMaxRange () {
+		return maxrange;
+	}
+
+	void setFireTask(Task* newTask) {
+		turretFireTask = newTask;
+	}
+
+	Task* getFireTask() {
+		return turretFireTask;
+	}
+
+	void addTarget(CreatureObject* creature);
+	CreatureObject* selectTarget();
+	bool checkTarget(CreatureObject* creature);
 
 	void updateAutoCooldown(float secondsToAdd);
 	void updateManualCooldown(float secondsToAdd);
 
-	bool isTurretData(){
-		return true;
-	}
-
-
-	void setController(CreatureObject* creature){
-		controller = creature;
-	}
-
-	CreatureObject* getController(){
-		return controller;
-	}
-
-	void setTarget(CreatureObject* creature){
-		target = creature;
-	}
-
-	CreatureObject* getTarget(){
-		return target;
-	}
-
-	void setFireTask(Task* newTask){
-		turretFireTask = newTask;
-	}
-
-	Task* getFireTask(){
-		return turretFireTask;
-	}
-
-	void rescheduleManualFireTask(float secondsToWait);
 	void rescheduleFireTask(float secondsToWait, bool manual);
-	void setWeapon(WeaponObject* weapon);
+
+	void fillAttributeList(AttributeListMessage* alm);
+
 	unsigned int getArmorRating();
 	float getKinetic();
 	float getEnergy();
@@ -109,18 +119,6 @@ public:
 	float getAcid();
 	float getLightSaber();
 	float getChanceHit();
-
-	String getWeaponString();
-
-	void fillAttributeList(AttributeListMessage* alm);
-
-
-private:
-	void addSerializableVariables(){
-	}
 };
-
-
-
 
 #endif /* TURRETDATACOMPONENT_H_ */

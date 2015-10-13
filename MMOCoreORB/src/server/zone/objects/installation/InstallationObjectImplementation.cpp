@@ -724,45 +724,41 @@ bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object) {
 	return true;
 }
 
-void InstallationObjectImplementation::createChildObjects(){
-	if( isTurret()) {
-
+void InstallationObjectImplementation::createChildObjects() {
+	if (isTurret()) {
 		SharedInstallationObjectTemplate* inso = dynamic_cast<SharedInstallationObjectTemplate*>(getObjectTemplate());
 
-		if(inso != NULL){
-
+		if (inso != NULL) {
 			uint32 defaultWeaponCRC = inso->getWeapon().hashCode();
-			if(getZoneServer() != NULL) {
-					Reference<WeaponObject*> defaultWeapon = (getZoneServer()->createObject(defaultWeaponCRC, getPersistenceLevel())).castTo<WeaponObject*>();
 
-					if (defaultWeapon == NULL) {
-							return;
-					} else {
+			if (getZoneServer() != NULL) {
+				Reference<WeaponObject*> defaultWeapon = (getZoneServer()->createObject(defaultWeaponCRC, getPersistenceLevel())).castTo<WeaponObject*>();
 
-						if (!transferObject(defaultWeapon, 4)) {
-							defaultWeapon->destroyObjectFromDatabase(true);
-							return;
-						}
+				if (defaultWeapon == NULL) {
+					return;
+				}
 
-						if(dataObjectComponent != NULL){
-							TurretDataComponent* turretData = cast<TurretDataComponent*>(dataObjectComponent.get());
+				if (!transferObject(defaultWeapon, 4)) {
+					defaultWeapon->destroyObjectFromDatabase(true);
+					return;
+				}
 
-							if(turretData != NULL) {
-								turretData->setWeapon(defaultWeapon);
-							}
-						}
+				if (dataObjectComponent != NULL) {
+					TurretDataComponent* turretData = cast<TurretDataComponent*>(dataObjectComponent.get());
+
+					if (turretData != NULL) {
+						turretData->setWeapon(defaultWeapon);
 					}
+				}
 			}
 		}
-	} else if (isMinefield()){
+	} else if (isMinefield()) {
 		this->setContainerDefaultAllowPermission(ContainerPermissions::MOVEIN);
 		this->setContainerDefaultDenyPermission(ContainerPermissions::MOVEOUT);
 		this->setContainerDefaultAllowPermission(ContainerPermissions::OPEN);
 
-
 	} else {
 		StructureObjectImplementation::createChildObjects();
-
 	}
 }
 

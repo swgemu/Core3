@@ -35,7 +35,6 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 	}
 
 	ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(sceneObject);
-
 	DataObjectComponentReference* data = sceneObject->getDataObjectComponent();
 
 	if (data == NULL || tano == NULL) {
@@ -44,24 +43,17 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 
 	TurretDataComponent* turretData = cast<TurretDataComponent*>(data->get());
 
-	if (turretData == NULL || !turretData->canAutoFire()) {
+	if (turretData == NULL) {
 		return;
 	}
 
-	Reference<WeaponObject*> weapon = sceneObject->getSlottedObject("hold_r").castTo<WeaponObject*>();
-
-	if (weapon == NULL) {
-		return;
-	}
-
-	if (sceneObject->isInRange(target, weapon->getMaxRange(false))) {
+	if (sceneObject->isInRange(target, turretData->getMaxRange())) {
 		ManagedReference<CreatureObject*> targetCreo = cast<CreatureObject*>(entry);
 
 		if (targetCreo == NULL || !targetCreo->isAttackableBy(tano))
 			return;
 
-		Reference<TurretFireTask*> task = new TurretFireTask(tano, targetCreo, false);
-		task->execute();
+		turretData->addTarget(targetCreo);
 	}
 }
 
