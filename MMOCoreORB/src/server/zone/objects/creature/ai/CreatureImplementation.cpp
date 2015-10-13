@@ -446,7 +446,7 @@ void CreatureImplementation::setPetLevel(int newLevel) {
 	float minDmg = calculateAttackMinDamage(baseLevel);
 	float maxDmg = calculateAttackMaxDamage(baseLevel);
 
-	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
+	Reference<WeaponObject*> defaultWeapon = asAiAgent()->getDefaultWeapon();
 
 	float ratio = ((float)newLevel) / (float)baseLevel;
 	minDmg *= ratio;
