@@ -7,6 +7,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "server/zone/objects/creature/commands/StartMusicCommand.h"
+
 class StartBandCommand : public QueueCommand {
 public:
 

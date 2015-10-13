@@ -8,7 +8,12 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/player/PlayerManager.h"
+
 #include "server/zone/objects/creature/buffs/PrivateBuff.h"
+#include "server/zone/objects/creature/buffs/PrivateSkillMultiplierBuff.h"
+
+#include "server/zone/objects/creature/commands/JediQueueCommand.h"
+
 class RegainConsciousnessCommand : public JediQueueCommand {
 public:
 

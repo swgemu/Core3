@@ -7,7 +7,7 @@
 
 #include "engine/engine.h"
 
-#include "../conf/ConfigManager.h"
+#include "conf/ConfigManager.h"
 
 class ServerDatabase {
 	static Vector<Database*>* databases;
