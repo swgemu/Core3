@@ -49,10 +49,14 @@ function heroOfTatMotherConvoHandler:runScreenHandlers(conversationTemplate, con
 			end
 
 			AiAgent(pDaughter):setFollowObject(conversingNPC)
-			AiAgent(pDaughter):setAiTemplate("follow")
+			AiAgent(pDaughter):addCreatureFlag(AI_NOAIAGGRO)
+			AiAgent(pDaughter):addCreatureFlag(AI_FOLLOW)
+			AiAgent(pDaughter):setAITemplate()
 			CreatureObject(conversingNPC):clearOptionBit(CONVERSABLE)
 			AiAgent(conversingNPC):setFollowObject(conversingPlayer)
-			AiAgent(conversingNPC):setAiTemplate("follow")
+			AiAgent(conversingNPC):addCreatureFlag(AI_NOAIAGGRO)
+			AiAgent(conversingNPC):addCreatureFlag(AI_FOLLOW)
+			AiAgent(conversingNPC):setAITemplate()
 			writeData("hero_of_tat:altruismEscortStatus", 1)
 			writeData("hero_of_tat:altruismEscorterID", SceneObject(conversingPlayer):getObjectID())
 			createEvent(2000, "HeroOfTatooineScreenPlay", "escortRangeCheckEvent", conversingPlayer, "")
