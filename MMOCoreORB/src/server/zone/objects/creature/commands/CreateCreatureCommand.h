@@ -53,8 +53,6 @@ public:
 				creature->sendSystemMessage("Current number of scheduled AiMoveEvents: " + String::valueOf(AiMap::instance()->scheduledMoveEvents.get()));
 				creature->sendSystemMessage("Current number of scheduled AiMoveEvents with followObject: " + String::valueOf(AiMap::instance()->moveEventsWithFollowObject.get()));
 				creature->sendSystemMessage("Current number of scheduled AiMoveEvents retreating: " + String::valueOf(AiMap::instance()->moveEventsRetreating.get()));
-				creature->sendSystemMessage("Current number of AiAwarenessEvents: " + String::valueOf(AiMap::instance()->activeAwarenessEvents.get()));
-				creature->sendSystemMessage("Current number of scheduled AiAwarenessEvents: " + String::valueOf(AiMap::instance()->scheduledAwarenessEvents.get()));
 				creature->sendSystemMessage("Current number of AiRecoveryEvents: " + String::valueOf(AiMap::instance()->activeRecoveryEvents.get()));
 				creature->sendSystemMessage("Current number of AiWaitEvents: " + String::valueOf(AiMap::instance()->activeWaitEvents.get()));
 
@@ -161,7 +159,7 @@ public:
 		else {
 			npc = cast<AiAgent*>(creatureManager->spawnCreature(templ, objTempl, posX, posZ, posY, parID));
 			if (npc != NULL)
-				npc->activateLoad("");
+				npc->setAITemplate();
 		}
 
 		if (baby && npc == NULL) {
@@ -173,7 +171,8 @@ public:
 		}
 
 		if (!aiTemplate.isEmpty()) {
-			npc->activateLoad(aiTemplate);
+			npc->setBitmaskFromString(aiTemplate);
+			npc->setAITemplate();
 		}
 
 		npc->updateDirection(Math::deg2rad(creature->getDirectionAngle()));
