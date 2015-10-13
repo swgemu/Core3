@@ -241,7 +241,7 @@ public:
 		return nameCRC;
 	}
 
-	inline float getMaxRange() const {
+	inline virtual float getMaxRange() const {
 		return maxRangeToTarget;
 	}
 
