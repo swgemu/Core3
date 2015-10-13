@@ -187,7 +187,7 @@ public:
 			agent->clearPatrolPoints();
 
 			agent->setCreatureBitmask(CreatureFlag::PET);
-			agent->activateLoad("");
+			agent->setAITemplate("");
 		}
 
 		creature->getZone()->broadcastObject(creature, true);
@@ -211,7 +211,7 @@ public:
 		creature->setPvpStatusBitmask(originalMask, true);
 		if (creature->isAiAgent()) {
 			AiAgent* agent = cast<AiAgent*>(creature.get());
-			agent->activateLoad("");
+			agent->setAITemplate("");
 		}
 	}
 };

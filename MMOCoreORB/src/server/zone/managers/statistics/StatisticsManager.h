@@ -35,39 +35,39 @@ public:
 
 	void completeMission(unsigned int missionType, int reward) {
 		switch (missionType) {
-		case MissionObject::BOUNTY:
+		case static_cast<unsigned int>(MissionObject::BOUNTY):
 			numberOfCompletedMissionsBounty.increment();
 			creditsGeneratedFromMissionsBounty.add(reward);
 			break;
-		case MissionObject::CRAFTING:
+		case static_cast<unsigned int>(MissionObject::CRAFTING):
 			numberOfCompletedMissionsCrafting.increment();
 			creditsGeneratedFromMissionsCrafting.add(reward);
 			break;
-		case MissionObject::DANCER:
+		case static_cast<unsigned int>(MissionObject::DANCER):
 			numberOfCompletedMissionsDancer.increment();
 			creditsGeneratedFromMissionsDancer.add(reward);
 			break;
-		case MissionObject::DELIVER:
+		case static_cast<unsigned int>(MissionObject::DELIVER):
 			numberOfCompletedMissionsDeliver.increment();
 			creditsGeneratedFromMissionsDeliver.add(reward);
 			break;
-		case MissionObject::DESTROY:
+		case static_cast<unsigned int>(MissionObject::DESTROY):
 			numberOfCompletedMissionsDestroy.increment();
 			creditsGeneratedFromMissionsDestroy.add(reward);
 			break;
-		case MissionObject::HUNTING:
+		case static_cast<unsigned int>(MissionObject::HUNTING):
 			numberOfCompletedMissionsHunting.increment();
 			creditsGeneratedFromMissionsHunting.add(reward);
 			break;
-		case MissionObject::MUSICIAN:
+		case static_cast<unsigned int>(MissionObject::MUSICIAN):
 			numberOfCompletedMissionsMusician.increment();
 			creditsGeneratedFromMissionsMusician.add(reward);
 			break;
-		case MissionObject::RECON:
+		case static_cast<unsigned int>(MissionObject::RECON):
 			numberOfCompletedMissionsRecon.increment();
 			creditsGeneratedFromMissionsRecon.add(reward);
 			break;
-		case MissionObject::SURVEY:
+		case static_cast<unsigned int>(MissionObject::SURVEY):
 			numberOfCompletedMissionsSurvey.increment();
 			creditsGeneratedFromMissionsSurvey.add(reward);
 			break;
