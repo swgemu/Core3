@@ -387,7 +387,7 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 			pet->setOptionBit(OptionBitmask::CONVERSE,true);
 		**/
 	}
-	pet->activateLoad("");
+	pet->setAITemplate("");
 	pet->activateRecovery();
 	// Not training any commands
 	trainingCommand = 0;
