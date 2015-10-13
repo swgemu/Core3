@@ -801,7 +801,6 @@ function DeathWatchBunkerScreenPlay:doBombDroidAction(pBombDroid)
 	end
 
 	AiAgent(pBombDroid):stopWaiting()
-	AiAgent(pBombDroid):setWait(0)
 	AiAgent(pBombDroid):setNextPosition(droidLoc.x, droidLoc.z, droidLoc.y, droidLoc.cell)
 	AiAgent(pBombDroid):executeBehavior()
 end
@@ -1802,7 +1801,9 @@ function DeathWatchBunkerScreenPlay:doVentDroidStep(pDroid)
 		SceneObject(pDroid):setCustomObjectName("Ventilation Repair Droid")
 		CreatureObject(pDroid):setPvpStatusBitmask(0)
 		createObserver(DESTINATIONREACHED, "DeathWatchBunkerScreenPlay", "ventDroidDestinationReached", pDroid)
-		AiAgent(pDroid):setAiTemplate("manualescortwalk") -- Don't move unless patrol point is added to list, walking speed
+		AiAgent(pDroid):addCreatureFlag(AI_NOAIAGGRO)
+		AiAgent(pDroid):addCreatureFlag(AI_FOLLOW)
+		AiAgent(pDroid):setAITemplate() -- Don't move unless patrol point is added to list, walking speed
 		AiAgent(pDroid):setFollowState(4) -- Patrolling
 		createEvent(10 * 1000, "DeathWatchBunkerScreenPlay", "doVentDroidStep", pDroid, "")
 		writeData("dwb:ventDroidStep", curStep + 1)
@@ -1893,7 +1894,6 @@ function DeathWatchBunkerScreenPlay:doVentDroidMove(pDroid)
 	local nextPoint = patrolPoints[onCurrentPoint + 1]
 
 	AiAgent(pDroid):stopWaiting()
-	AiAgent(pDroid):setWait(0)
 	AiAgent(pDroid):setNextPosition(nextPoint[1], nextPoint[2], nextPoint[3], nextPoint[4])
 	AiAgent(pDroid):executeBehavior()
 
