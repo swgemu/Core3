@@ -11,7 +11,7 @@
 #include "server/zone/objects/tangible/pharmaceutical/StimPack.h"
 #include "server/zone/objects/tangible/components/droid/DroidStimpackModuleDataComponent.h"
 #include "server/zone/objects/tangible/component/droid/DroidComponent.h"
-#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 
 class LoadStimpackSuiCallback : public SuiCallback {
 public:

@@ -10,7 +10,7 @@ import server.zone.objects.mission.MissionObject;
 import server.zone.objects.mission.MissionObjective;
 import server.zone.objects.mission.MissionObserver;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.creature.AiAgent;
+import server.zone.objects.creature.ai.AiAgent;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.TangibleObject;
 include server.zone.templates.TemplateReference;

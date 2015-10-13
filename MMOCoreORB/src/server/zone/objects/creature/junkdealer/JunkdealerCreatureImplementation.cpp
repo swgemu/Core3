@@ -19,7 +19,7 @@
 #include "server/zone/objects/tangible/loot/LootkitObject.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/creature/junkdealer/sui/JunkDealerSellListSuiCallback.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 
 
 bool JunkdealerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {

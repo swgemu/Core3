@@ -8,14 +8,15 @@
 #ifndef AiMoveEvent_H_
 #define AiMoveEvent_H_
 
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/managers/creature/AiMap.h"
-#include "../PatrolPoint.h"
+#include "server/zone/objects/creature/ai/PatrolPoint.h"
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace creature {
+namespace ai {
 namespace events {
 
 class AiMoveEvent : public Task {
@@ -131,6 +132,7 @@ public:
 
 };
 
+}
 }
 }
 }

@@ -5,7 +5,7 @@
 #ifndef DROIDPOWERTASK_H_
 #define DROIDPOWERTASK_H_
 
-#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 
 namespace server {
 namespace zone {

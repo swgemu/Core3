@@ -8,7 +8,7 @@
 #ifndef AITRACKINGTASK_H_
 #define AITRACKINGTASK_H_
 
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
@@ -27,6 +27,7 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace creature {
+namespace ai {
 namespace events {
 
 #ifdef AI_DEBUG
@@ -156,6 +157,7 @@ public:
 	}
 };
 
+}
 }
 }
 }

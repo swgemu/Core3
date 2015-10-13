@@ -6,7 +6,7 @@
 #define BANDFLOURISHCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/tangible/Instrument.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"

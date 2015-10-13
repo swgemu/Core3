@@ -17,7 +17,7 @@
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/mission/MissionObserver.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/mission/bountyhunter/BountyHunterDroid.h"
 #include "server/zone/objects/mission/bountyhunter/events/BountyHunterTargetTask.h"

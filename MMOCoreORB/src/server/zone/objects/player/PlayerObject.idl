@@ -13,7 +13,7 @@ import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.objects.building.BuildingObject;
 import server.zone.objects.creature.commands.QueueCommand;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.AiAgent;
+import server.zone.objects.creature.ai.AiAgent;
 import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.player.events.PlayerDisconnectEvent;
 import server.zone.objects.player.events.PlayerRecoveryEvent;

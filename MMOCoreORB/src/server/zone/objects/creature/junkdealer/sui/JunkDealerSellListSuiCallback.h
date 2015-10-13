@@ -10,7 +10,7 @@
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 
 class JunkDealerSellListSuiCallback : public SuiCallback {
 

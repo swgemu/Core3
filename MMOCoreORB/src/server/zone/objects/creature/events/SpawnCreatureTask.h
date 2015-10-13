@@ -10,7 +10,7 @@
 
 #include "server/zone/Zone.h"
 #include "server/ServerCore.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 
 class SpawnCreatureTask : public Task {

@@ -9,7 +9,7 @@
 #include "engine/core/ManagedReference.h"
 #include "system/util/Vector.h"
 #include "system/util/VectorMap.h"
-#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 
 namespace server {
 namespace zone {

@@ -1,7 +1,7 @@
 
 #include "PetMenuComponent.h"
-#include "server/zone/objects/creature/AiAgent.h"
-#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"

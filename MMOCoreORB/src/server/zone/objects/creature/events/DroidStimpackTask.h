@@ -5,7 +5,7 @@
 #ifndef DROIDSTIMPACKTASK_H_
 #define DROIDSTIMPACKTASK_H_
 
-#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/tangible/components/droid/DroidStimpackModuleDataComponent.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/tangible/pharmaceutical/StimPack.h"

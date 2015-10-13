@@ -8,7 +8,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/events/DroidStimpackTask.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 

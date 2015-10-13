@@ -10,7 +10,7 @@ import engine.lua.Lua;
 import server.zone.ZoneServer;
 import server.zone.Zone;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.AiAgent;
+import server.zone.objects.creature.ai.AiAgent;
 import server.zone.objects.scene.SceneObject;
 import system.util.VectorMap;
 import system.util.Vector;

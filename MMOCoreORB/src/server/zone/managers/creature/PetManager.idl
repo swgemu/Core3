@@ -5,7 +5,7 @@
 package server.zone.managers.creature;
 
 import engine.core.ManagedService;
-import server.zone.objects.creature.AiAgent;
+import server.zone.objects.creature.ai.AiAgent;
 import server.zone.objects.intangible.PetControlDevice;
 import server.zone.ZoneServer;
 import server.zone.objects.creature.CreatureObject;

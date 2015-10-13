@@ -5,8 +5,8 @@
 
 #include "server/zone/managers/creature/LairObserver.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
-#include "server/zone/objects/creature/NonPlayerCreatureObject.h"
-#include "server/zone/objects/creature/Creature.h"
+#include "server/zone/objects/creature/ai/NonPlayerCreatureObject.h"
+#include "server/zone/objects/creature/ai/Creature.h"
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/managers/player/PlayerManager.h"

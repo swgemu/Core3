@@ -6,8 +6,8 @@
  */
 
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/Creature.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/Creature.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"

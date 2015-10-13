@@ -16,7 +16,7 @@
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidStimpackModuleDataComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidTrapModuleDataComponent.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 
 class GiveItemCommand : public QueueCommand {
 public:

@@ -9,7 +9,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/junkdealer/JunkdealerCreature.h"
 #include "server/conf/ConfigManager.h"
 #include "server/zone/objects/area/areashapes/CircularAreaShape.h"

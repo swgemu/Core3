@@ -10,7 +10,7 @@ import engine.core.ManagedService;
 import system.thread.atomic.AtomicInteger;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.AiAgent;
+import server.zone.objects.creature.ai.AiAgent;
 import server.zone.managers.crafting.CraftingManager;
 import server.zone.managers.object.ObjectManager;
 import engine.lua.Lua;

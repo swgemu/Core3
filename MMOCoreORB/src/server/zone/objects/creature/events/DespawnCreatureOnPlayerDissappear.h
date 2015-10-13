@@ -8,7 +8,7 @@
 #ifndef DESPAWNCREATUREONPLAYERDISSAPPEAR_H_
 #define DESPAWNCREATUREONPLAYERDISSAPPEAR_H_
 
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 
 namespace server {
  namespace zone {

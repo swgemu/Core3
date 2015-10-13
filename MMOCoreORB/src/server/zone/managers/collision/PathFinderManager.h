@@ -20,7 +20,9 @@ namespace server {
    }
 
    namespace creature {
+    namespace ai {
     	class AiAgent;
+    }
    }
   }
  }

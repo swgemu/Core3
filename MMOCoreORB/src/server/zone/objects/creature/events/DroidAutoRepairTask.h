@@ -5,7 +5,7 @@
 #ifndef DROIDAUTOREPAIRTASK_H_
 #define DROIDAUTOREPAIRTASK_H_
 
-#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/tangible/components/droid/DroidAutoRepairModuleDataComponent.h"
 #include "server/zone/objects/group/GroupObject.h"
 

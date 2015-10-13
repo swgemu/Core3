@@ -25,7 +25,7 @@
 #include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 
-//#include "server/zone/objects/creature/AiAgent.h"
+//#include "server/zone/objects/creature/ai/AiAgent.h"
 
 const char LuaAiAgent::className[] = "LuaAiAgent";
 

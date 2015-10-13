@@ -43,7 +43,7 @@
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
-#include "server/zone/objects/creature/LuaAiAgent.h"
+#include "server/zone/objects/creature/ai/LuaAiAgent.h"
 #include "server/zone/objects/creature/ai/bt/Behavior.h"
 #include "server/zone/objects/area/LuaActiveArea.h"
 #include "server/zone/templates/mobile/ConversationScreen.h"

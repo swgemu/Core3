@@ -11,7 +11,7 @@
 #include "engine/engine.h"
 
 #include "server/zone/templates/AiTemplate.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/ai/bt/Behavior.h"
 #include "server/zone/objects/creature/ai/bt/SequenceBehavior.h"
 #include "server/zone/objects/creature/ai/bt/SelectorBehavior.h"

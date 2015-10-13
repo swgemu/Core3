@@ -12,7 +12,7 @@ import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
-include server.zone.objects.creature.variables.CreatureAttackMap;
+include server.zone.objects.creature.ai.variables.CreatureAttackMap;
 import server.zone.templates.SharedObjectTemplate;
 
 class PetDeed extends Deed {

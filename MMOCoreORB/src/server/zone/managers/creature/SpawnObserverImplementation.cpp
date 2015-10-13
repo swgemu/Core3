@@ -1,6 +1,6 @@
 
 #include "server/zone/managers/creature/SpawnObserver.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 
 void SpawnObserverImplementation::despawnSpawns() {
 	for (int i = 0; i < spawnedCreatures.size(); ++i) {

@@ -8,14 +8,15 @@
 #ifndef AIWAITEVENT_H_
 #define AIWAITEVENT_H_
 
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/managers/creature/AiMap.h"
-#include "../PatrolPoint.h"
+#include "server/zone/objects/creature/ai/PatrolPoint.h"
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace creature {
+namespace ai {
 namespace events {
 
 class AiWaitEvent : public Task {
@@ -44,6 +45,7 @@ public:
 
 };
 
+}
 }
 }
 }

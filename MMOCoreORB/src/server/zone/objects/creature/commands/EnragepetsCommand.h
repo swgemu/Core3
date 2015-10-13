@@ -8,7 +8,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/managers/creature/PetManager.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
 class EnragepetsCommand : public QueueCommand {

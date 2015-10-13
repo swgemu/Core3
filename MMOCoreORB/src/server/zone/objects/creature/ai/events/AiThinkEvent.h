@@ -9,13 +9,14 @@
 #define AiThinkEvent_H_
 
 
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/managers/creature/AiMap.h"
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace creature {
+namespace ai {
 namespace events {
 
 class AiThinkEvent : public Task {
@@ -50,6 +51,7 @@ public:
 	}
 };
 
+}
 }
 }
 }

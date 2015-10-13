@@ -8,7 +8,7 @@ import engine.core.ManagedObject;
 import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.AiAgent;
+import server.zone.objects.creature.ai.AiAgent;
 include server.zone.templates.mobile.LairTemplate;
 
 class SpawnObserver extends Observer implements Logger {

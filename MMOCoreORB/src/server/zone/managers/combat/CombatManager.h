@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/NonPlayerCreatureObject.h"
+#include "server/zone/objects/creature/ai/NonPlayerCreatureObject.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"

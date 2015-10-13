@@ -3,7 +3,7 @@
 #define PETHARVESTCOMMAND_H_
 
 #include "server/zone/objects/creature/commands/QueueCommand.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/objects/tangible/components/droid/DroidHarvestModuleDataComponent.h"

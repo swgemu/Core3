@@ -7,7 +7,7 @@
 
 #include "LuaCreatureObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/player/sessions/ConversationSession.h"
 #include "server/zone/ZoneServer.h"

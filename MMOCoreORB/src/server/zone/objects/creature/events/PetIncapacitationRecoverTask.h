@@ -3,7 +3,7 @@
 #define PETINCAPACITATIONRECOVERTASK_H_
 
 #include "server/zone/objects/creature/CreatureAttribute.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 
 namespace server {

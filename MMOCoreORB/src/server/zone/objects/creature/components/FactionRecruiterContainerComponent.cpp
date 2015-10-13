@@ -1,7 +1,7 @@
 
 #include "FactionRecruiterContainerComponent.h"
 #include "server/chat/ChatManager.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/components/generic/CoaMessageDataComponent.h"
 #include "server/zone/managers/player/BadgeList.h"

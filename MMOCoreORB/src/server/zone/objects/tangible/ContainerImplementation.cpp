@@ -12,7 +12,7 @@
 #include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
 #include "server/zone/templates/tangible/ContainerTemplate.h"
 #include "server/zone/Zone.h"
-#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 
 void ContainerImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();

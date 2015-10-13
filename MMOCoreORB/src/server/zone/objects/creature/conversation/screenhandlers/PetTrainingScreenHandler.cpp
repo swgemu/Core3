@@ -3,7 +3,7 @@
 		See file COPYING for copying conditions.*/
 
 #include "PetTrainingScreenHandler.h"
-#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/objects/group/GroupObject.h"
 

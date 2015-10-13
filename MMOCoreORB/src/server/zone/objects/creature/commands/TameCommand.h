@@ -6,7 +6,7 @@
 #define TAMECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/Creature.h"
+#include "server/zone/objects/creature/ai/Creature.h"
 
 class TameCommand : public QueueCommand {
 public:
