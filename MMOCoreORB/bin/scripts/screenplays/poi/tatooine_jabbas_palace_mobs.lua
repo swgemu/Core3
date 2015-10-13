@@ -463,7 +463,6 @@ function TatooineJabbasPalaceMobsScreenPlay:JabbaPatrol(pMobile)
 	end
 
 	AiAgent(pMobile):stopWaiting()
-	AiAgent(pMobile):setWait(0)
 	AiAgent(pMobile):setNextPosition(nextLoc[1], nextLoc[2], nextLoc[3], nextLoc[4])
 	AiAgent(pMobile):executeBehavior()
 end
