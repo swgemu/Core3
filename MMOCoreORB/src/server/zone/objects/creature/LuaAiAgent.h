@@ -103,7 +103,6 @@ namespace creature {
 		int shouldRetreat(lua_State* L);
 		int leash(lua_State* L);
 		int clearCombatState(lua_State* L);
-		int isInCombat(lua_State* L);
 		int checkLineOfSight(lua_State* L);
 		int activateRecovery(lua_State* L);
 		int activateAwareness(lua_State* L);

@@ -116,6 +116,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getOwner", &LuaCreatureObject::getOwner },
 		{ "getCurrentSpeed", &LuaCreatureObject::getCurrentSpeed },
 		{ "isInvisible", &LuaTangibleObject::isInvisible },
+		{ "isInCombat", &LuaCreatureObject::isInCombat },
 		{ 0, 0 }
 };
 
@@ -882,6 +883,14 @@ int LuaCreatureObject::getCurrentSpeed(lua_State* L) {
 	float currentSpeed = realObject->getCurrentSpeed();
 
 	lua_pushnumber(L, currentSpeed);
+
+	return 1;
+}
+
+int LuaCreatureObject::isInCombat(lua_State* L) {
+	bool retVal = realObject->isInCombat();
+
+	lua_pushboolean(L, retVal);
 
 	return 1;
 }

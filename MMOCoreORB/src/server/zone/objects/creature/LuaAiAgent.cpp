@@ -108,7 +108,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "shouldRetreat", &LuaAiAgent::shouldRetreat },
 		{ "leash", &LuaAiAgent::leash },
 		{ "clearCombatState", &LuaAiAgent::clearCombatState },
-		{ "isInCombat", &LuaAiAgent::isInCombat },
+		{ "isInCombat", &LuaCreatureObject::isInCombat },
 		{ "checkLineOfSight", &LuaAiAgent::checkLineOfSight },
 		{ "activateRecovery", &LuaAiAgent::activateRecovery },
 		{ "activateAwareness", &LuaAiAgent::activateAwareness },
@@ -741,14 +741,6 @@ int LuaAiAgent::clearCombatState(lua_State* L) {
 	realObject->clearCombatState(clearDefenders);
 
 	return 0;
-}
-
-int LuaAiAgent::isInCombat(lua_State* L) {
-	bool retVal = realObject->isInCombat();
-
-	lua_pushboolean(L, retVal);
-
-	return 1;
 }
 
 int LuaAiAgent::checkLineOfSight(lua_State* L) {
