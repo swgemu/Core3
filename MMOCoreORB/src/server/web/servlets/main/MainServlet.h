@@ -8,7 +8,7 @@
 #ifndef MAINSERVLET_H_
 #define MAINSERVLET_H_
 
-#include "../Servlet.h"
+#include "server/web/servlets/Servlet.h"
 
 class MainServlet: public Servlet {
 public:
