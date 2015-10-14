@@ -207,7 +207,9 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 	int dps = ceil((ceil(15.0 + (775.0 * ( ((float)power)/1000.0))))/3.5);
 	speed = 2.5-((ceil(((float)courage)/10)*10)/1000);
 	maxDam = round(((float)dps * speed) * 1.5);
-	minDam = round(((float)dps * speed) * 0.5);
+	//minDam = round(((float)dps * speed) * 0.5);
+	maxDam = maxDam - (maxDam % 5);
+	minDam = maxDam - ((System::random(1) + 1) * 5);
 }
 String GeneticComponentImplementation::convertSpecialAttack(String &attackName) {
 	if (attackName == "defaultattack" || attackName == "")
