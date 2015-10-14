@@ -894,3 +894,12 @@ int LuaCreatureObject::isInCombat(lua_State* L) {
 
 	return 1;
 }
+
+int LuaCreatureObject::healDamage(lua_State* L) {
+	int damageHealed = lua_tointeger(L, -2);
+	int pool = lua_tointeger(L, -1);
+
+	realObject->healDamage(realObject, pool, damageHealed, true, true);
+
+	return 0;
+}
