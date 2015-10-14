@@ -34,11 +34,6 @@ public:
 
 		uint32 buffcrc = BuffCRC::JEDI_RESIST_STATES;
 
-		if(creature->hasBuff(buffcrc)) {
-			creature->sendSystemMessage("@jedi_spam:force_buff_present");
-			return GENERALERROR;
-		}
-
 		// Force cost of skill.
 		int forceCost = 250;
 

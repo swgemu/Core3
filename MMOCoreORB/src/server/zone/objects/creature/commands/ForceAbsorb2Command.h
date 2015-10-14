@@ -31,11 +31,9 @@ public:
 		uint32 buffcrc1 = BuffCRC::JEDI_FORCE_ABSORB_1;
 		uint32 buffcrc2 = BuffCRC::JEDI_FORCE_ABSORB_2;
 
-		if(creature->hasBuff(buffcrc1) || creature->hasBuff(buffcrc2)) {
-			creature->sendSystemMessage("@jedi_spam:force_buff_present");
-			return GENERALERROR;
+		if (creature->hasBuff(buffcrc1)) {
+			creature->removeBuff(buffcrc1);
 		}
-
 
 		// Force cost of skill.
 		int forceCost = 100;
