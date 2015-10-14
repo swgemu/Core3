@@ -10,6 +10,8 @@ local OLD_MAN_DESPAWN_TIME = 10 * 1000
 local OLD_MAN_FORCE_CRYSTAL_STRING = "object/tangible/loot/quest/force_sensitive/force_crystal.iff"
 local OLD_MAN_FORCE_CRYSTAL_ID_STRING = "force_crystal_id"
 
+local OLD_MAN_GREETING_STRING_EXIT = "@quest/force_sensitive/exit:oldman_greeting"
+
 OldManEncounter = Encounter:new {
 	-- Task properties
 	taskName = "OldManEncounter",
@@ -29,28 +31,13 @@ OldManEncounter = Encounter:new {
 	onEncounterAtPlayer = nil
 }
 
--- Get the first name of the player.
--- @param pCreatureObject pointer to the creature object of the player.
--- @return the first name of the player.
-function OldManEncounter:getPlayerFirstName(pCreatureObject)
-	local firstName = CreatureObject(pCreatureObject):getFirstName()
-
-	if firstName == nil then
-		return ""
+-- Figure out if we're the intro or exit...
+function OldManEncounter:isPostVillage(pCreatureObject)
+	if (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE)) then
+		return true
+	else
+		return false
 	end
-
-	return firstName
-end
-
--- Send the greeting string to the player.
--- @param pOldMan pointer to the old man.
--- @param pCreatureObject pointer to the creature object of the player.
-function OldManEncounter:sendGreetingString(pOldMan, pCreatureObject)
-	Logger:log("Sending greeting string.", LT_INFO)
-	local greetingString = LuaStringIdChatParameter(OLD_MAN_GREETING_STRING)
-	local firstName = self:getPlayerFirstName(pCreatureObject)
-	greetingString:setTT(firstName)
-	spatialChat(pOldMan, greetingString:_getObject())
 end
 
 -- Handling of the encounter closing in event.
@@ -62,8 +49,13 @@ function OldManEncounter:onEncounterClosingIn(pCreatureObject, oldManPointerList
 		return
 	end
 
-	self:sendGreetingString(oldManPointerList[1], pCreatureObject)
-	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.OLD_MAN_INITIAL)
+	if (self:isPostVillage(pCreatureObject)) then
+		QuestManager.activateQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FINAL)
+		VillageJediManagerCommon:sendGreetingString(oldManPointerList[1], pCreatureObject, OLD_MAN_GREETING_STRING_EXIT)
+	else
+		QuestManager.activateQuest(pCreatureObject, QuestManager.quests.OLD_MAN_INITIAL)
+		VillageJediManagerCommon:sendGreetingString(oldManPointerList[1], pCreatureObject, OLD_MAN_GREETING_STRING)
+	end
 end
 
 -- Event handler for the scheduled despawn of the old man when the player has finished the conversation.
@@ -165,7 +157,12 @@ function OldManEncounter:isEncounterFinished(pCreatureObject)
 		return
 	end
 
-	return QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)
+	if (not self:isPostVillage(pCreatureObject)) then
+		return QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)
+	else
+		return QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FINAL)
+	end
+
 end
 
 -- Handling of finishing the encounter.
@@ -175,8 +172,13 @@ function OldManEncounter:taskFinish(pCreatureObject)
 		return
 	end
 
-	Logger:log("Finishing " .. self.taskName .. " and starting SithShadowEncounter.", LT_INFO)
-	SithShadowEncounter:start(pCreatureObject)
+	Logger:log("Finishing " .. self.taskName .. " and starting next task.", LT_INFO)
+
+	if (not self:isPostVillage(pCreatureObject)) then
+		SithShadowEncounter:start(pCreatureObject)
+	else
+		MellichaeOutroTheater:start(pCreatureObject)
+	end
 end
 
 return OldManEncounter
