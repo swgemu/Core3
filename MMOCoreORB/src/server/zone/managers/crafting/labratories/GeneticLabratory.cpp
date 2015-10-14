@@ -162,39 +162,39 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	// lets clear the special bit if it moved to effective range.
 	if(saberMax == 0) {
 		spSaber = false;
-		saberMax = 100;
+		saberMax = 100.0f;
 	}
 	if (blastMax == 0) {
 		spBlast = false;
-		blastMax = 100;
+		blastMax = 100.0f;
 	}
 	if (kineticMax == 0) {
 		spKinetic = false;
-		kineticMax = 60;
+		kineticMax = 60.0f;
 	}
 	if (energyMax == 0) {
 		spEnergy = false;
-		energyMax = 60;
+		energyMax = 60.0f;
 	}
 	if (heatMax == 0) {
 		spHeat = false;
-		heatMax = 100;
+		heatMax = 100.0f;
 	}
 	if (coldMax == 0) {
 		spCold = false;
-		coldMax = 100;
+		coldMax = 100.0f;
 	}
 	if (electricMax == 0) {
 		spElectric = false;
-		electricMax = 100;
+		electricMax = 100.0f;
 	}
 	if(acidMax == 0) {
 		spAcid = false;
-		acidMax = 100;
+		acidMax = 100.0f;
 	}
 	if(stunMax == 0) {
 		spStun = false;
-		stunMax = 100;
+		stunMax = 100.0f;
 	}
 
 	// Step 2. At this point we know the max values for all stats and we have calculated any armor specials needed
@@ -219,10 +219,15 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 			continue;
 		// We need to accoutn for assembly percentage. do some swapping around as well.
 		float maxValue = craftingValues->getMaxValue(title);
-		float initialValue = Genetics::initialValue(craftingValues->getMaxValue(title));
-		// determine max percentage
-		craftingValues->setMaxPercentage(title, maxValue/1000.0f);
+		float initialValue = Genetics::initialValue(maxValue);
+		// determine max percentage using either the remaing percentage from initialValue to maxValue
+		// or use the max percent to maxValue
+		float initialPercent = 1-(initialValue/maxValue);
+		float maxPercent = initialPercent < (maxValue/1000.0f) ? initialPercent : maxValue/1000.0f;
+		craftingValues->setMaxPercentage(title,maxPercent);
 		craftingValues->setMaxValue(title,1000);
+		// set the min value to the initial value
+		craftingValues->setMinValue(title, initialValue);
 		// using assembly to accoutn for a 1 +% increase
 		currentPercentage = getAssemblyPercentage(initialValue) * modifier;
 		//craftingValues->setMaxPercentage(title, maxPercentage);
