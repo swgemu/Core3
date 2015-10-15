@@ -1171,9 +1171,14 @@ void GuildManagerImplementation::setMemberTitle(CreatureObject* player, Creature
 }
 
 void GuildManagerImplementation::sendGuildKickPromptTo(CreatureObject* player, CreatureObject* target) {
-	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_MEMBER_REMOVE);
+	PlayerObject* ghost = player->getPlayerObject();
 
-	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(target, SuiWindowType::GUILD_MEMBER_REMOVE);
+	if (ghost == NULL)
+		return;
+
+	ghost->closeSuiWindowType(SuiWindowType::GUILD_MEMBER_REMOVE);
+
+	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, SuiWindowType::GUILD_MEMBER_REMOVE);
 	suiBox->setCallback(new GuildMemberRemoveSuiCallback(server));
 	suiBox->setPromptTitle("@guild:kick_title"); // Kick From Guild
 
@@ -1186,7 +1191,7 @@ void GuildManagerImplementation::sendGuildKickPromptTo(CreatureObject* player, C
 	suiBox->setCancelButton(true, "@no");
 	suiBox->setOkButton(true, "@yes");
 
-	player->getPlayerObject()->addSuiBox(suiBox);
+	ghost->addSuiBox(suiBox);
 	player->sendMessage(suiBox->generateMessage());
 }
 
