@@ -125,6 +125,7 @@
 #include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/tangible/components/droid/DroidPlaybackModuleDataComponent.h"
+#include "server/zone/objects/tangible/components/ForceShrineMenuComponent.h"
 
 #include "server/zone/objects/player/badges/Badge.h"
 
@@ -4946,3 +4947,62 @@ void PlayerManagerImplementation::sendAdminList(CreatureObject* player) {
 	player->sendMessage(listBox->generateMessage());
 }
 
+void PlayerManagerImplementation::startJediPadawanTrial(CreatureObject* creature, int trialNumber) {
+
+	if (creature == NULL)
+		return;
+
+	switch (trialNumber) {
+	case ForceShrineMenuComponent::PADAWAN_TRIAL_ARCHITECT:
+		 DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialArchitechScreenPlay");
+		break;
+	case ForceShrineMenuComponent::PADAWAN_TRIAL_ARTIST:
+		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialArtistScreenPlay");
+		break;
+	case ForceShrineMenuComponent::PADAWAN_TRIAL_BADCAT:
+		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialBadCatScreenPlay");
+		break;
+	case ForceShrineMenuComponent::PADAWAN_TRIAL_CHEF:
+		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialChefScreenPlay");
+		break;
+	case ForceShrineMenuComponent::PADAWAN_TRIAL_OLD_MUSICIAN:
+		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialOldMusicianScreenPlay");
+		break;
+	case ForceShrineMenuComponent::PADAWAN_TRIAL_PANNAQA:
+		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialPannaqaScreenPlay");
+		break;
+	case ForceShrineMenuComponent::PADAWAN_TRIAL_PEOPLES_SOLDIER:
+		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialPeoplesSoldierScreenPlay");
+		break;
+	case ForceShrineMenuComponent::PADAWAN_TRIAL_SOB_STORY:
+		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialSobStoryScreenPlay");
+		break;
+	case ForceShrineMenuComponent::PADAWAN_TRIAL_SPICE_MOM:
+		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialSpiceMomScreenPlay");
+		break;
+	case ForceShrineMenuComponent::PADAWAN_TRIAL_SURVEYOR:
+		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialSurveyorScreenPlay");
+		break;
+	case ForceShrineMenuComponent::PADAWAN_TRIAL_POLITICIAN:
+		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialPoliticianScreenPlay");
+		break;
+	case ForceShrineMenuComponent::PADAWAN_TRIAL_THE_RING:
+		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialTheRingScreenPlay");
+		break;
+	case ForceShrineMenuComponent::PADAWAN_TRIAL_BAZ_NITCH:
+		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialBazNitchScreenPlay");
+		break;
+	case ForceShrineMenuComponent::PADAWAN_TRIAL_SLUDGE_PANTHER:
+		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialSludgePantherScreenPlay");
+		break;
+	case ForceShrineMenuComponent::PADAWAN_TRIAL_FALUMPASET:
+		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialFalumpasetScreenPlay");
+		break;
+	case ForceShrineMenuComponent::PADAWAN_TRIAL_CRAFT_LIGHTSABER:
+		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialCraftLightsaberScreenPlay");
+		break;
+	default:
+		return;
+		break;
+	}
+}
