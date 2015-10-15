@@ -68,23 +68,56 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 		ghost->setJediState(2);
 
 		// Trainer number. Pick a random trainer, there are at least 600 in the galaxy.
+		ZoneServer* zserv = creature->getZoneServer();
+		Vector<String> trainerTypes;
 
-		ZoneServer* zoneServer = ghost->getZoneServer();
-		int randomZone = System::random(zoneServer->getZoneCount() - 1);
+		// Map categories defined here.
+		trainerTypes.add("trainer_brawler");
+		trainerTypes.add("trainer_artisan");
+		trainerTypes.add("trainer_scout");
+		trainerTypes.add("trainer_marksman");
+		trainerTypes.add("trainer_entertainer");
+		trainerTypes.add("trainer_medic");
 
-		ManagedReference<Zone*> zone = zoneServer->getZone(randomZone);
-		Vector3 randomTrainer = zone->getCreatureManager()->getRandomJediTrainer();
+		bool found = false;
+		Vector3 coords;
+		String zoneName = "";
 
-		if ((randomTrainer.getX() == 0) && (randomTrainer.getY() == 0)) { // No trainers on the zone.
-			ManagedReference<Zone*> zone = zoneServer->getZone(0);
-			Vector3 randomTrainer = zone->getCreatureManager()->getRandomJediTrainer();
+		while (!found) {
+
+			ManagedReference<Zone*> zone = zserv->getZone(System::random(zserv->getZoneCount() - 1));
+
+			if (zone == NULL || zone->getZoneName() == "tutorial") {
+				found = false;
+			}
+
+			SortedVector<ManagedReference<SceneObject*> > trainers = zone->getPlanetaryObjectList(trainerTypes.get(System::random(trainerTypes.size() - 1)));
+
+			int size = trainers.size();
+
+			if (size <= 0) {
+				found = false;
+			}
+
+			ManagedReference<SceneObject*> trainer = trainers.get(System::random(size - 1));
+
+			if (trainer == NULL) {
+				found = false;
+			}
+
+			ManagedReference<CreatureObject*> trainerCreo = trainer.castTo<CreatureObject*>();
+
+			if (!trainerCreo->isTrainerCreature()) {
+				found = false;
+			}
+
+			zoneName = trainerCreo.get()->getZone()->getZoneName();
+			coords = trainerCreo.get()->getWorldPosition();
+			found = true;
+
 		}
 
-		Vector3 trainerPositionFinal(randomTrainer.getX(), randomTrainer.getY(), 0);
-
-		String zoneName = zone->getZoneName();
-
-		ghost->setTrainerCoordinates(trainerPositionFinal);
+		ghost->setTrainerCoordinates(coords);
 		ghost->setTrainerZoneName(zoneName); // For the Waypoint.
 
 
@@ -95,8 +128,6 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 			creature->sendSystemMessage("@jedi_spam:inventory_full_jedi_robe"); //	You have too many items in your inventory. In order to get your Padawan Robe you must clear out at least one free slot.
 			return 0;
 		}
-
-		ZoneServer* zserv = creature->getZoneServer();
 
 		String PadawanRobe = "object/tangible/wearables/robe/robe_jedi_padawan.iff";
 		ManagedReference<SceneObject*> padawanRobe = zserv->createObject(PadawanRobe.hashCode(), 1);
