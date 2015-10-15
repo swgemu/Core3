@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_af1fe1b6",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/ForceShrineMenuComponent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1526
+      },
+      "writtenOn": "2015-10-15T08:14:57Z",
+      "side": 1,
+      "message": "Setting found to false in these if statements isn\u0027t necessary, as it\u0027s already set false above. You also don\u0027t want it to continue running the rest of the block in any of these cases, so replace the found \u003d false; statements with a continue; so that it restart\u0027s the while block from the beginning. Also, I\u0027d recommend adding limit on the number of times the while will run and fail if for some reason it runs into an issue.",
+      "revId": "0203359e370ce388219a13e30ad7715102cf99ce",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
