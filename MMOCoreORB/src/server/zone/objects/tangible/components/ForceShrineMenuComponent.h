@@ -34,11 +34,29 @@ namespace creature {
 
 using namespace server::zone::objects::creature;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+	class PlayerObject;
+}
+}
+}
+}
+
+using namespace server::zone::objects::player;
+
 class ForceShrineMenuComponent : public TangibleObjectMenuComponent {
+protected:
+	const static int TRAINER_FIND_RETRIES = 20;
+
 public:
 	virtual int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID);
 
 	virtual void fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
+
+	// This finds a trainer for jedi unlocks.
+	virtual void findTrainerObject(CreatureObject* player, int retriesCounter, PlayerObject* ghost);
 
 };
 
