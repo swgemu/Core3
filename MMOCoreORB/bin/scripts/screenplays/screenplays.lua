@@ -75,6 +75,9 @@ includeFile("village/convos/phase1/sarguillo_phase1_conv_handler.lua")
 includeFile("village/convos/phase1/sivarra_phase1_conv_handler.lua")
 includeFile("village/convos/phase1/med_droid_phase1_conv_handler.lua")
 
+-- Jedi Trials: Padawan
+includeFile("jedi/padawan/trial_architect.lua")
+
 -- Events
 includeFile("events/conversations/bestine_artist_conv_handler.lua")
 includeFile("events/conversations/imperial_commander_conv_handler.lua")

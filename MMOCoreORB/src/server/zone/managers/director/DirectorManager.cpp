@@ -362,6 +362,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("PARENTCHANGED", ObserverEventType::PARENTCHANGED);
 	luaEngine->setGlobalInt("LOGGEDIN", ObserverEventType::LOGGEDIN);
 	luaEngine->setGlobalInt("LOGGEDOUT", ObserverEventType::LOGGEDOUT);
+	luaEngine->setGlobalInt("ZONECHANGED", ObserverEventType::ZONECHANGED);
 
 	luaEngine->setGlobalInt("UPRIGHT", CreaturePosture::UPRIGHT);
 	luaEngine->setGlobalInt("PRONE", CreaturePosture::PRONE);

@@ -390,6 +390,8 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	} else {
 		newZone->transferObject(sceneObject, -1, true);
 	}
+
+	sceneObject->notifyObservers(ObserverEventType::ZONECHANGED, NULL, 0);
 }
 
 void ZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) {
