@@ -1,42 +1,45 @@
 local GoToLocation = require("quest.tasks.go_to_location")
 local ObjectManager = require("managers.object.object_manager")
 local QuestManager = require("managers.quest.quest_manager")
+local FsReflex1Theater = require("managers.jedi.village.phase1.fs_reflex1_theater")
 require("utils.helpers")
 
-GoToDathomir = GoToLocation:new {
+FsReflex1Goto = GoToLocation:new {
 	-- Task properties
-	taskName = "GoToDathomir",
+	taskName = "FsReflex1Goto",
 	-- GoToLocation properties
-	waypointDescription = "@quest/force_sensitive/intro:goto_dath_sum",
-	spawnPoint = { x = 5306, y = -4145 },
+	waypointDescription = "@quest/quest_journal/fs_quests_reflex1:s_01",
+	randomLocation = true,
+	randomMinDistance = 100,
+	randomMaxDistance = 200,
 	spawnPlanet = "dathomir",
-	spawnRadius = 128,
-	onFailedSpawn = nil,
-	onSuccessfulSpawn = nil,
-	onEnteredActiveArea = nil
+	spawnRadius = 8,
 }
 
 -- Event handler for the enter active area event.
 -- The event will complete the task.
 -- @param pCreatureObject pointer to the creature object of the player.
-function GoToDathomir:onEnteredActiveArea(pCreatureObject)
+function FsReflex1Goto:onEnteredActiveArea(pCreatureObject)
 	if (pCreatureObject == nil) then
-		return
+		return 1
 	end
 
-	QuestManager.completeQuest(pCreatureObject, QuestManager.quests.FS_VILLAGE_ELDER)
+	CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_01_find_theater_waypoint")
 	self:finish(pCreatureObject)
+	FsReflex1Theater:start(pCreatureObject)
+
+	return 1
 end
 
 -- Event handler for the onSuccessfulSpawn.
 -- The event will activate the quest.
 -- @param pCreatureObject pointer to the creature object of the player.
-function GoToDathomir:onSuccessfulSpawn(pCreatureObject)
+function FsReflex1Goto:onSuccessfulSpawn(pCreatureObject)
 	if (pCreatureObject == nil) then
 		return
 	end
 
-	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.FS_VILLAGE_ELDER)
+	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_01)
 end
 
-return GoToDathomir
+return FsReflex1Goto
