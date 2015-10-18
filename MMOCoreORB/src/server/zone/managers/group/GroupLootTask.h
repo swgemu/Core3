@@ -127,19 +127,6 @@ public:
 
 		Locker clocker(group, corpse);
 
-		//Send initial system message to the looter.
-		StringIdChatParameter lootSelf("base_player", "prose_coin_loot"); //"You loot %DI credits from %TT."
-		lootSelf.setDI(lootCredits);
-		lootSelf.setTT(corpse);
-		player->sendSystemMessage(lootSelf);
-
-		//Send initial system message to everyone in group except the looter.
-		StringIdChatParameter lootMember("group", "notify_coin_loot_int"); //"[GROUP] %TU looted %DI credits from %TT."
-		lootMember.setTU(player);
-		lootMember.setDI(lootCredits);
-		lootMember.setTT(corpse);
-		group->sendSystemMessage(lootMember, player);
-
 		//Determine eligible group members to give credits.
 		Vector<CreatureObject*> payees;
 		for (int i = 0; i < group->getGroupSize(); ++i) {
@@ -152,6 +139,22 @@ public:
 				continue;
 			payees.add(member);
 		}
+
+		if (payees.size() == 0)
+			return;
+
+		//Send initial system message to the looter.
+		StringIdChatParameter lootSelf("base_player", "prose_coin_loot"); //"You loot %DI credits from %TT."
+		lootSelf.setDI(lootCredits);
+		lootSelf.setTT(corpse);
+		player->sendSystemMessage(lootSelf);
+
+		//Send initial system message to everyone in group except the looter.
+		StringIdChatParameter lootMember("group", "notify_coin_loot_int"); //"[GROUP] %TU looted %DI credits from %TT."
+		lootMember.setTU(player);
+		lootMember.setDI(lootCredits);
+		lootMember.setTT(corpse);
+		group->sendSystemMessage(lootMember, player);
 
 		clocker.release();
 
