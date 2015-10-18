@@ -52,6 +52,10 @@ function villageSarguilloPhase1ConvoHandler:runScreenHandlers(conversationTempla
 		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.FS_PATROL_QUEST_1)
 		QuestManager.setStoredVillageValue(conversingPlayer, "FsPatrolCompletedCount", 0)
 		FsPatrol:start(conversingPlayer)
+	elseif (screenID == "you_know_the_drill") then
+		QuestManager.setCurrentQuestID(conversingPlayer, QuestManager.quests.FS_PATROL_QUEST_11)
+		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.FS_PATROL_QUEST_11)
+		FsPatrol:start(conversingPlayer)
 	elseif (screenID == "intro_firstsetinprogress") then
 		if (reachedAllWaypoints and completedLastPoint and not failedPatrol) then
 			clonedConversation:addOption("@conversation/fs_patrol_quest_start:s_6d3ed33b", "you_know_routine")
