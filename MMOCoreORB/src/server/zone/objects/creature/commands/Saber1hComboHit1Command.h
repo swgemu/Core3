@@ -28,6 +28,9 @@ public:
 			return NOJEDIARMOR;
 		}
 
+		// Divide the damage by number of pools hit, 3.
+		setDamageMultiplier(getDamageMultiplier() / 3.0f);
+
 		return doCombatAction(creature, target);
 	}
 
