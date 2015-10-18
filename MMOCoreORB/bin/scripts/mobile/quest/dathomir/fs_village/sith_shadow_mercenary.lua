@@ -9,7 +9,7 @@ sith_shadow_mercenary = Creature:new {
 	baseXp = 6655,
 	baseHAM = 11000,
 	baseHAMmax = 13500,
-	armor = 0,
+	armor = 1,
 	resists = {60,60,60,60,60,60,60,60,-1},
 	meatType = "",
 	meatAmount = 0,
@@ -21,7 +21,7 @@ sith_shadow_mercenary = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
-	creatureBitmask = KILLER,
+	creatureBitmask = KILLER + PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 

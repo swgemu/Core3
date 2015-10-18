@@ -53,7 +53,7 @@ sith_shadow_mercenary_nonaggro = Creature:new {
 		"object/mobile/dressed_sith_shadow_zab_m_02.iff",
 		"object/mobile/dressed_sith_shadow_zab_m_03.iff"},
 	lootGroups = {
-	    {}				
+		{}
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

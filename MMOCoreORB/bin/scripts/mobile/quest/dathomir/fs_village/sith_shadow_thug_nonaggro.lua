@@ -1,16 +1,16 @@
-sith_shadow_thug = Creature:new {
+sith_shadow_thug_nonaggro = Creature:new {
 	objectName = "@mob/creature_names:shadow_thug",
 	socialGroup = "sith_shadow",
-	faction = "sith_shadow",
-	level = 51,
-	chanceHit = 0.47,
-	damageMin = 395,
-	damageMax = 500,
-	baseXp = 9700,
-	baseHAM = 11000,
-	baseHAMmax = 11900,
+	faction = "sith_shadow_nonaggro",
+	level = 127,
+	chanceHit = 4,
+	damageMin = 770,
+	damageMax = 1250,
+	baseXp = 2503,
+	baseHAM = 44300,
+	baseHAMmax = 54300,
 	armor = 1,
-	resists = {45,45,45,45,45,45,45,45,-1},
+	resists = {75,85,80,65,80,80,80,80,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -20,7 +20,7 @@ sith_shadow_thug = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + ENEMY + AGGRESSIVE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -53,11 +53,11 @@ sith_shadow_thug = Creature:new {
 		"object/mobile/dressed_sith_shadow_zab_m_02.iff",
 		"object/mobile/dressed_sith_shadow_zab_m_03.iff"},
 	lootGroups = {
-	    {}				
+		{}
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,marksmanmaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(sith_shadow_thug, "sith_shadow_thug")
+CreatureTemplates:addCreatureTemplate(sith_shadow_thug_nonaggro, "sith_shadow_thug_nonaggro")
