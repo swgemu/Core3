@@ -16,8 +16,8 @@ SithShadowIntroTheater = GoToTheater:new {
 	theater = "object/building/poi/anywhere_fs_intro_camp.iff",
 	waypointDescription = "@quest/force_sensitive/intro:theater_sum",
 	mobileList = {
-		{ template = "sith_shadow", minimumDistance = 12, maximumDistance = 24, referencePoint = 0 },
-		{ template = "sith_shadow", minimumDistance = 12, maximumDistance = 24, referencePoint = 0 }
+		{ template = "sith_shadow_outlaw_mission", minimumDistance = 12, maximumDistance = 24, referencePoint = 0 },
+		{ template = "sith_shadow_outlaw_mission", minimumDistance = 12, maximumDistance = 24, referencePoint = 0 }
 	},
 	despawnTime = 2 * 60* 60* 1000, -- 2 hours
 	activeAreaRadius = 64,
