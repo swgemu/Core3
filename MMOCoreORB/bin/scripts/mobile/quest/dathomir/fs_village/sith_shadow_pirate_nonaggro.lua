@@ -1,16 +1,16 @@
-sith_shadow_mercenary = Creature:new {
-	objectName = "@mob/creature_names:shadow_mercenary",
+sith_shadow_pirate_nonaggro = Creature:new {
+	objectName = "@mob/creature_names:shadow_pirate",
 	socialGroup = "sith_shadow",
-	faction = "sith_shadow",
-	level = 69,
-	chanceHit = 0.6,
-	damageMin = 495,
-	damageMax = 700,
-	baseXp = 6655,
-	baseHAM = 11000,
-	baseHAMmax = 13500,
+	faction = "sith_shadow_nonaggro",
+	level = 90,
+	chanceHit = 0.85,
+	damageMin = 570,
+	damageMax = 850,
+	baseXp = 1864,
+	baseHAM = 13300,
+	baseHAMmax = 16300,
 	armor = 1,
-	resists = {60,60,60,60,60,60,60,60,-1},
+	resists = {65,65,50,75,75,70,70,65,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -20,8 +20,8 @@ sith_shadow_mercenary = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
-	creatureBitmask = KILLER + PACK,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
@@ -52,10 +52,12 @@ sith_shadow_mercenary = Creature:new {
 		"object/mobile/dressed_sith_shadow_zab_m_01.iff",
 		"object/mobile/dressed_sith_shadow_zab_m_02.iff",
 		"object/mobile/dressed_sith_shadow_zab_m_03.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{}
+	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,marksmanmaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(sith_shadow_mercenary, "sith_shadow_mercenary")
+CreatureTemplates:addCreatureTemplate(sith_shadow_pirate_nonaggro, "sith_shadow_pirate_nonaggro")
