@@ -126,10 +126,8 @@ public:
 			return strName;
 		}
 
-		CreatureObject* creature = NULL;
-
 		if (target->isPlayerCreature()) {
-			strName = creature->getFirstName();
+			strName = target->getFirstName();
 		} else {
 			strName = target->getObjectNameStringIdName();
 		}
