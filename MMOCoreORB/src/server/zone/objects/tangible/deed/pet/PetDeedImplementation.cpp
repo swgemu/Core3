@@ -524,7 +524,7 @@ void PetDeedImplementation::adjustPetLevel(CreatureObject* player, CreatureObjec
 	player->sendSystemMessage("@bio_engineer:pet_sui_level_fixed");
 }
 void PetDeedImplementation::adjustPetStats(CreatureObject* player, CreatureObject *pet) {
-	int oldLevel = pet->getLevel();
+	int oldLevel = level;
 	if (oldLevel < 1) {
 		player->sendSystemMessage("@bio_engineer:pet_sui_fix_error");
 		return;
