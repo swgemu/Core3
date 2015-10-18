@@ -5,6 +5,7 @@
 #include "server/zone/managers/crafting/CraftingManager.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
 #include "server/zone/objects/manufactureschematic/ingredientslots/ResourceSlot.h"
+#include "server/zone/objects/tangible/misc/CustomIngredient.h"
 #include "server/zone/managers/crafting/labratories/SharedLabratory.h"
 #include "server/zone/managers/crafting/labratories/ResourceLabratory.h"
 #include "server/zone/managers/crafting/labratories/GeneticLabratory.h"
