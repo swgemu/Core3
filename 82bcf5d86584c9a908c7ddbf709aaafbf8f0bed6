@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_6a9b07ca",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/ForceShrineMenuComponent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-19T03:25:08Z",
+      "side": 1,
+      "message": "I would move this whole process to it\u0027s own method and have it return a creo pointer. You can then just get the coords and zoneName from the creo.",
+      "revId": "82bcf5d86584c9a908c7ddbf709aaafbf8f0bed6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_ca5edb12",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/ForceShrineMenuComponent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-19T03:25:08Z",
+      "side": 1,
+      "message": "You should probably add some kind of artificial end to this loop (like maybe a counter) to prevent an infinite loop if someone happens to remove all trainers from their server.",
+      "revId": "82bcf5d86584c9a908c7ddbf709aaafbf8f0bed6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_ea6717e9",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/ForceShrineMenuComponent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-19T03:25:08Z",
+      "side": 1,
+      "message": "You don\u0027t need ManagedReference for this since ZoneServer stores them as ManagedRefs already.",
+      "revId": "82bcf5d86584c9a908c7ddbf709aaafbf8f0bed6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
