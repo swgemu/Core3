@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_aa4a6f53",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceAbsorb2Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-19T02:46:46Z",
+      "side": 1,
+      "message": "Put this after the forceCost check. You don\u0027t want to have this removed if the player doesn\u0027t have enough force.",
+      "revId": "d678d7b59da21b8178356aff36defea50316af61",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_ca47bb4a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceFeedback2Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-19T02:46:46Z",
+      "side": 1,
+      "message": "Put this after the forceCost check.",
+      "revId": "d678d7b59da21b8178356aff36defea50316af61",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_6a74679c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceShield2Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-19T02:46:46Z",
+      "side": 1,
+      "message": "Put this after the forceCost check.",
+      "revId": "d678d7b59da21b8178356aff36defea50316af61",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
