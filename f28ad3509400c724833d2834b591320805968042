@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_6ad0e753",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/PetFixSuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-19T11:07:41Z",
+      "side": 1,
+      "message": "Locker locker(device);\n\ndevice needs to be locked before calling growPet",
+      "revId": "f28ad3509400c724833d2834b591320805968042",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
