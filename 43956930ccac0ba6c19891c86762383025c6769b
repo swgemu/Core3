@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_ea407737",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/pet/PetDeedImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-19T02:26:08Z",
+      "side": 1,
+      "message": "I see why this would cause an issue with pets that aren\u0027t fully grown. If you make only this change, however, adjusting stats on a pet that isn\u0027t fully grown will set it\u0027s stats temporarily to adult levels. We need to ensure that the correct stats are set for the current growth stage after stats are fixed.\n\nSince we don\u0027t have the control device here, we need to get it from the pet and call growPet(player, true) after the reloadTemplate() call. Another option would be to add that call to PetFixSuiCallback right after the deed-\u003eadjustPetStats(player, pet) call. For that option, though, we might want to change the return of adjustPetStats to a bool and only call it if the stats were actually adjusted.",
+      "revId": "43956930ccac0ba6c19891c86762383025c6769b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
