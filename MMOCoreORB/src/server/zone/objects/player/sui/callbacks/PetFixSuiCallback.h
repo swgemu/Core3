@@ -52,7 +52,9 @@ public:
 			deed->adjustPetLevel(player,pet);
 		}
 		else {
-			deed->adjustPetStats(player,pet);
+			if(deed->adjustPetStats(player,pet)){
+				device->growPet(player, true);
+			}
 		}
 
 		device->sendAttributeListTo(player);

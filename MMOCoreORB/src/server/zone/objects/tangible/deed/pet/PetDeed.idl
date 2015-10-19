@@ -335,5 +335,5 @@ class PetDeed extends Deed {
 	@local
 	public native void adjustPetLevel(CreatureObject player, CreatureObject pet);
 	@local
-	public native void adjustPetStats(CreatureObject player, CreatureObject pet);
+	public native boolean adjustPetStats(CreatureObject player, CreatureObject pet);
 }
