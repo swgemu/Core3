@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_2a589ff9",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/ForceShrineMenuComponent.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-19T23:27:16Z",
+      "side": 1,
+      "message": "You need to initialize counter.",
+      "revId": "9e5a02ec01e9ce5a1af720b37064ca437e5138b8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_4a5debe8",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/ForceShrineMenuComponent.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-19T23:27:16Z",
+      "side": 1,
+      "message": "You either need to null check trainerCreo here before using it or add an isCreatureObject check to trainer before casting it as a creo.",
+      "revId": "9e5a02ec01e9ce5a1af720b37064ca437e5138b8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_6a5ea7eb",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/ForceShrineMenuComponent.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-19T23:27:16Z",
+      "side": 1,
+      "message": "You don\u0027t need this. You can just instantiate a var inside your new method.",
+      "revId": "9e5a02ec01e9ce5a1af720b37064ca437e5138b8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_8a63f3b0",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/ForceShrineMenuComponent.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-19T23:27:16Z",
+      "side": 1,
+      "message": "You don\u0027t need the retriesCounter arg.",
+      "revId": "9e5a02ec01e9ce5a1af720b37064ca437e5138b8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
