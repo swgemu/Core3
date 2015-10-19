@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_0ac12380",
+        "filename": "MMOCoreORB/src/server/zone/managers/crafting/labratories/GeneticLabratory.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1537
+      },
+      "writtenOn": "2015-10-19T19:10:05Z",
+      "side": 1,
+      "message": "this is wrong, as if initial percent is say 70% and max is 75% the most anyone can experiment is 70%\nx \u003d 70\u003c75 ? 70 : 75\nx \u003d 70",
+      "revId": "89f408c54ea6827cf61aff8b9f3c112b437cd1d9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_caba5b0a",
+        "filename": "MMOCoreORB/src/server/zone/managers/crafting/labratories/GeneticLabratory.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1537
+      },
+      "writtenOn": "2015-10-19T19:10:05Z",
+      "side": 1,
+      "message": "this value will be overriden by the recalculateCraftingValues(true) call below. Not sure what you were trying to adjust here.",
+      "revId": "89f408c54ea6827cf61aff8b9f3c112b437cd1d9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_2acadfa1",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/component/genetic/GeneticComponentImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1537
+      },
+      "writtenOn": "2015-10-19T19:10:05Z",
+      "side": 1,
+      "message": "why are you randomizing these values? the above calculations are correct to determine min and max",
+      "revId": "89f408c54ea6827cf61aff8b9f3c112b437cd1d9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
