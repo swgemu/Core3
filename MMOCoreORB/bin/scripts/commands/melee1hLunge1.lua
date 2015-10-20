@@ -56,21 +56,20 @@ Melee1hLunge1Command = {
 	combatSpam = "lungestab",
 
 	range = 20,
-	
+
 	weaponType = ONEHANDMELEEWEAPON,
 
 	stateEffects = {
-	  StateEffect( 
-		POSTUREDOWN_EFFECT, 
-		{ "postureDownRecovery" }, 
-		{ "posture_change_down_defense" }, 
-		{}, 
-		100, 
-		0, 
-		0 
+	  StateEffect(
+		POSTUREDOWN_EFFECT,
+		{ "postureDownRecovery" },
+		{ "posture_change_down_defense" },
+		{},
+		100,
+		0,
+		0
 	  )
 	}
 }
 
 AddCommand(Melee1hLunge1Command)
-
