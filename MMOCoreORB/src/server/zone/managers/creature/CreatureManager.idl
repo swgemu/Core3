@@ -146,10 +146,6 @@ class CreatureManager extends ZoneManager {
 	}
 	
 	@local
-	@dereferenced
-	public native Vector3 getRandomJediTrainer();
-	
-	@local
 	public Vector<SpawnArea> getWorldSpawnAreas() {
 		return spawnAreaMap.getWorldSpawnAreas();
 	}
