@@ -44,7 +44,7 @@
 Saber1hComboHit3Command = {
         name = "saber1hcombohit3",
         
-    damageMultiplier = 3.5,
+    damageMultiplier = 1.167, -- Divided by pool amount.
 	speedMultiplier = 3,
 	forceCostMultiplier = 2.25,
 
