@@ -1,5 +1,5 @@
 nyaxs_weapons = {
-	"object/weapon/melee/2h_sword/2h_sword_scythe.iff"
+	"object/weapon/ranged/rifle/rifle_e11.iff"
 	
 }
 
