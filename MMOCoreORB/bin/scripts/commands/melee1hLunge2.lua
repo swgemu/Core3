@@ -51,7 +51,7 @@ Melee1hLunge2Command = {
 	mindCostMultiplier = 1.5,
         accuracyBonus = 25,
 
-	animationCRC = hashCode("lower_posture_1hmelee_1"),
+	animationCRC = hashCode("knockdown_1hmelee_1"),
 
 	combatSpam = "lungestab",
 
@@ -74,4 +74,3 @@ Melee1hLunge2Command = {
 }
 
 AddCommand(Melee1hLunge2Command)
-
