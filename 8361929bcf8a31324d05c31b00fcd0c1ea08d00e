@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_8a09b397",
+        "filename": "MMOCoreORB/bin/scripts/mobile/dathomir/nightsister_protector.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-21T07:23:40Z",
+      "side": 1,
+      "message": "Might as well fix the 100s to be special resists while you\u0027re at it.",
+      "revId": "8361929bcf8a31324d05c31b00fcd0c1ea08d00e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
