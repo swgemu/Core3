@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_aaacaf8d",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_theater.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-21T07:10:58Z",
+      "side": 0,
+      "message": "It looks like you had started to change things to remove this, but then only got half way and didn\u0027t actually remove it.",
+      "revId": "a8c005ab13d8fe1f9c5a5ceb41f64e17970138c6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_6ab6a7de",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_theater.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-21T07:10:58Z",
+      "side": 0,
+      "message": "you can use playerID here.",
+      "revId": "a8c005ab13d8fe1f9c5a5ceb41f64e17970138c6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

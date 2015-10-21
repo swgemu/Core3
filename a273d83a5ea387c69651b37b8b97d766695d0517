@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_aac34f37",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase1/fs_reflex1_escort.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-21T07:10:58Z",
+      "side": 1,
+      "message": "Is something supposed to happen here?",
+      "revId": "a273d83a5ea387c69651b37b8b97d766695d0517",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_6add4714",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/escort.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-21T07:10:58Z",
+      "side": 1,
+      "message": "This is in milliseconds, not seconds.",
+      "revId": "a273d83a5ea387c69651b37b8b97d766695d0517",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_0ac7e346",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/escort.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-21T07:10:58Z",
+      "side": 1,
+      "message": "return nil",
+      "revId": "a273d83a5ea387c69651b37b8b97d766695d0517",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_cac01b2d",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/escort.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-21T07:10:58Z",
+      "side": 1,
+      "message": "You should check this at the start since this first thing you do in this function is use pEscort to get it\u0027s oid.",
+      "revId": "a273d83a5ea387c69651b37b8b97d766695d0517",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_8ae213d4",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/escort.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-21T07:10:58Z",
+      "side": 1,
+      "message": "Do you have a plan for this? You don\u0027t have an onFinish in fs_reflex1_escort",
+      "revId": "a273d83a5ea387c69651b37b8b97d766695d0517",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_2a997f6e",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_location.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-21T07:10:58Z",
+      "side": 1,
+      "message": "What if pActiveArea is nil?",
+      "revId": "a273d83a5ea387c69651b37b8b97d766695d0517",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_caa9fb7c",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_theater.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-21T07:10:58Z",
+      "side": 1,
+      "message": "you can use zoneName here.",
+      "revId": "a273d83a5ea387c69651b37b8b97d766695d0517",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_4aec0bc8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase1/fs_reflex1_prisoner_conv_handler.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-21T07:10:58Z",
+      "side": 1,
+      "message": "Quest 3 says to keep the villager alive yet you have it set as unattackable. I would think that it should be attackable with a death observer that fails the quest if it dies before it makes it back to the escort active area. You may need to up it\u0027s level to make the quest more forgiving.\n\nYou probably want to set it attackable once the player has talked to them and begun the actual escorting. It\u0027s a prisoner of the sith shadows so it wouldn\u0027t make sense for them to be attacking it before the player shows up and you\u0027re also not starting the keep it alive quest step until the player talks to it.",
+      "revId": "a273d83a5ea387c69651b37b8b97d766695d0517",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_2ae73fe6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase1/whip_phase1_conv_handler.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-21T07:10:58Z",
+      "side": 1,
+      "message": "Where are the inprogress, aborted, and failed intros?",
+      "revId": "a273d83a5ea387c69651b37b8b97d766695d0517",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_0aa0438f",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2439,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-21T07:10:58Z",
+      "side": 1,
+      "message": "You should initialize this pointer to NULL.",
+      "revId": "a273d83a5ea387c69651b37b8b97d766695d0517",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_eaa2b799",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2473,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-21T07:10:58Z",
+      "side": 1,
+      "message": "Did you mean to use forceSpawn here?",
+      "revId": "a273d83a5ea387c69651b37b8b97d766695d0517",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
