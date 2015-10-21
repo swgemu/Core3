@@ -16,6 +16,7 @@
 #include "server/zone/packets/player/PlayMusicMessage.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/player/sui/callbacks/JediTrialsQueryCallback.h"
 
 #include "server/zone/ZoneServer.h"
 
@@ -32,7 +33,7 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 	if (selectedID != 213)
 		return 0;
 
-	if (!creature->hasSkill("force_title_jedi_rank_01"))
+	if (!creature->hasSkill("force_title_jedi_novice"))
 		return 0;
 
 	if (creature->getPosture() != CreaturePosture::CROUCHED){
@@ -56,7 +57,7 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 	if (zserv == NULL)
 		return 0;
 
-	if (!creature->hasSkill("force_title_jedi_rank_02")) {
+	if (!creature->hasSkill("force_title_jedi_rank_02") && (creature->getScreenPlayState("VillageJediProgression") == 32)) {
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::NONE);
 		box->setPromptTitle("@jedi_trials:padawan_trials_title"); // Jedi Trials
 		box->setPromptText("@jedi_trials:padawan_trials_completed");
@@ -92,7 +93,19 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 			padawanRobe->destroyObjectFromDatabase(true);
 		}
 
-	} else {
+	} else if (creature->getScreenPlayState("VillageJediProgression") == 16) {
+
+		ZoneServer* zserv = creature->getZoneServer();
+		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::NONE);
+		box->setPromptTitle("@jedi_trials:force_shrine_title"); // Meditating at a Force Shrine...
+		box->setPromptText("@jedi_trials:padawan_trials_start_query"); // You are eligible to undertake the Jedi Padawan trials. Would you like to start them?
+		box->setCallback(new JediTrialsQuerySuiCallback(zserv));
+
+		ghost->addSuiBox(box);
+		creature->sendMessage(box->generateMessage());
+
+
+	} else if (creature->hasSkill("force_title_jedi_rank_02")) {
 
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
@@ -172,7 +185,7 @@ void ForceShrineMenuComponent::findTrainerObject(CreatureObject* player, PlayerO
 			continue;
 		}
 
-                ManagedReference<CityRegion*> city = trainerCreo->getCityRegion();
+		ManagedReference<CityRegion*> city = trainerCreo->getCityRegion();
 
 		// Make sure it's not a player-city trainer.
 		if (city != NULL && !city->isClientRegion()){
