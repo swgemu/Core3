@@ -280,6 +280,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "updateCellPermission", updateCellPermission);
 	lua_register(luaEngine->getLuaState(), "updateCellPermissionGroup", updateCellPermissionGroup);
 	lua_register(luaEngine->getLuaState(), "getQuestInfo", getQuestInfo);
+	lua_register(luaEngine->getLuaState(), "getPlayerQuestID", getPlayerQuestID);
 
 	// call for createLoot(SceneObject* container, const String& lootGroup, int level)
 	lua_register(luaEngine->getLuaState(), "createLoot", createLoot);
@@ -462,6 +463,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaTicketObject>::Register(luaEngine->getLuaState());
 	Luna<LuaQuestInfo>::Register(luaEngine->getLuaState());
 	Luna<LuaFsPuzzlePack>::Register(luaEngine->getLuaState());
+	Luna<LuaResourceSpawn>::Register(luaEngine->getLuaState());
 }
 
 int DirectorManager::loadScreenPlays(Lua* luaEngine) {
@@ -2379,7 +2381,7 @@ Vector3 DirectorManager::generateSpawnPoint(String zoneName, float x, float y, f
 int DirectorManager::getSpawnPoint(lua_State* L) {
     int numberOfArguments = lua_gettop(L);
     if (numberOfArguments != 5 && numberOfArguments != 6) {
-		instance()->error("incorrect number of arguments passed to DirectorManager::getSpawnArea");
+		instance()->error("incorrect number of arguments passed to DirectorManager::getSpawnPoint");
 		ERROR_CODE = INCORRECT_ARGUMENTS;
 		return 0;
 	}
@@ -2435,19 +2437,18 @@ int DirectorManager::getSpawnArea(lua_State* L) {
 
     float maximumHeightDifference, areaSize, maximumDistance, minimumDistance, y, x;
     Zone* zone = NULL;
+    bool forceSpawn = false;
+    CreatureObject* creatureObject = NULL;
 
     if (numberOfArguments == 8) {
-    	String zoneName = lua_tostring(L, -1);
+    	forceSpawn = lua_toboolean(L, -1);
     	maximumHeightDifference = lua_tonumber(L, -2);
     	areaSize = lua_tonumber(L, -3);
     	maximumDistance = lua_tonumber(L, -4);
     	minimumDistance = lua_tonumber(L, -5);
     	y = lua_tonumber(L, -6);
     	x = lua_tonumber(L, -7);
-    	CreatureObject* creatureObject = (CreatureObject*) lua_touserdata(L, -8);
-
-    	ZoneServer* zoneServer = ServerCore::getZoneServer();
-    	zone = zoneServer->getZone(zoneName);
+    	creatureObject = (CreatureObject*) lua_touserdata(L, -8);
     } else {
     	maximumHeightDifference = lua_tonumber(L, -1);
     	areaSize = lua_tonumber(L, -2);
@@ -2455,25 +2456,23 @@ int DirectorManager::getSpawnArea(lua_State* L) {
     	minimumDistance = lua_tonumber(L, -4);
     	y = lua_tonumber(L, -5);
     	x = lua_tonumber(L, -6);
-    	CreatureObject* creatureObject = (CreatureObject*) lua_touserdata(L, -7);
-
-    	if (creatureObject == NULL) {
-    		return 0;
-    	}
-
-    	zone = creatureObject->getZone();
+    	creatureObject = (CreatureObject*) lua_touserdata(L, -7);
     }
 
-	if (zone == NULL) {
+	if (creatureObject == NULL)
 		return 0;
-	}
+
+	zone = creatureObject->getZone();
+
+	if (zone == NULL)
+		return 0;
 
 	bool found = false;
 	Vector3 position;
 	int retries = 40;
 
 	while (!found && retries > 0) {
-		position = generateSpawnPoint(zone->getZoneName(), x, y, minimumDistance, maximumDistance, areaSize + 5.0, areaSize + 20);
+		position = generateSpawnPoint(zone->getZoneName(), x, y, minimumDistance, maximumDistance, areaSize + 5.0, areaSize + 20, forceSpawn);
 
 		int x0 = position.getX() - areaSize;
 		int x1 = position.getX() + areaSize;
@@ -2732,6 +2731,25 @@ int DirectorManager::playClientEffectLoc(lua_State* L) {
 	return 1;
 }
 
+int DirectorManager::getPlayerQuestID(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getQuestInfo");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	ManagedReference<PlayerManager*> playerManager = ServerCore::getZoneServer()->getPlayerManager();
+	String questName = lua_tostring(L, -1);
+	int questID = playerManager->getPlayerQuestID(questName);
+
+	if (questID >= 0)
+		lua_pushinteger(L, questID);
+	else
+		lua_pushnil(L);
+
+	return 1;
+}
+
 int DirectorManager::getQuestInfo(lua_State* L) {
 	if (checkArgumentCount(L, 1) == 1) {
 		instance()->error("incorrect number of arguments passed to DirectorManager::getQuestInfo");
@@ -2739,8 +2757,16 @@ int DirectorManager::getQuestInfo(lua_State* L) {
 		return 0;
 	}
 
-	int questID = lua_tointeger(L, -1);
+	int questID = 0;
 	ManagedReference<PlayerManager*> playerManager = ServerCore::getZoneServer()->getPlayerManager();
+
+	if (lua_isnumber(L, -1)) {
+		questID = lua_tointeger(L, -1);
+	} else {
+		String questName = lua_tostring(L, -1);
+		questID = playerManager->getPlayerQuestID(questName);
+	}
+
 	QuestInfo* questInfo = playerManager->getQuestInfo(questID);
 
 	if (questInfo == NULL)
