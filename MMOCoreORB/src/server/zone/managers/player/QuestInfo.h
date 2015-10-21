@@ -61,11 +61,7 @@ public:
 		row->getValue(6, taskOnFail);
 		row->getValue(7, questTarget);
 		row->getValue(8, questParameter);
-
-		int sendMsg = 1;
-		row->getValue(12, sendMsg);
-
-		sendSystemMessage = sendMsg == 1;
+		row->getValue(11, sendSystemMessage);
 	}
 };
 
