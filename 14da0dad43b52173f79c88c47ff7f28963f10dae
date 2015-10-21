@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_0ace035b",
+        "filename": "MMOCoreORB/bin/scripts/commands/melee1hLunge2.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-21T07:17:16Z",
+      "side": 1,
+      "message": "It looks like the 2h lunges also have the same animation. Maybe you should check the others while you\u0027re at it.",
+      "revId": "14da0dad43b52173f79c88c47ff7f28963f10dae",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
