@@ -8,12 +8,13 @@ villageMobileSpawns = {
 		{ "noldan", 5243, 78, -4224, 0, "", "" },
 		{ "quharek", 5373.7, 78.5, -4181.4, -69, "", "" },
 		{ "fs_villager_farmer", 5291.31, 78.5, -4037.8, 164, "", "" },
+		{ "eozlin", 5200.15, 78.5, -4141.37, 164, "", "" },
 	},
 
 	[1] = {
 		{ "captain_sarguillo", 5313.9, 78.5, -4161.5, -72, "", "villageSarguilloPhase1ConvoTemplate" },
 		{ "rohak_village_elder", 5306, 78, -4145, 0, "", "villageElderPhase1ConvoTemplate" },
-		{ "whip", 5283.66, 78.5, -4226.31, -143, "", "" },
+		{ "whip", 5283.66, 78.5, -4226.31, -143, "", "villageWhipPhase1ConvoTemplate" },
 		{ "sivarra_mechaux", 5391.5, 78.5, -4075.7, -110, "", "villageSivarraPhase1ConvoTemplate" },
 		{ "fs_surgical_droid_21b", 5392.1, 78.5, -4072.5, 101, "initMedDroid", "villageMedicalDroidPhase1ConvoTemplate" },
 		{ "fs_surgical_droid_21b", 5396.4, 78.5, -4074.7, -104, "initMedDroid", "villageMedicalDroidPhase1ConvoTemplate" },

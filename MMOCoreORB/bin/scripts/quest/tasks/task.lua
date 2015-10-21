@@ -45,10 +45,10 @@ end
 
 -- Start the task.
 -- @param pCreatureObject pointer to the creature object of the player who should get the task started.
-function Task:start(pCreatureObject)
+function Task:start(pCreatureObject, ...)
 	if not self:hasTaskStarted(pCreatureObject) then
 		Logger:log("Starting task " .. self.taskName, LT_INFO)
-		if self:callFunctionIfNotNil(self.taskStart, true, pCreatureObject) then
+		if self:callFunctionIfNotNil(self.taskStart, true, pCreatureObject, unpack({...})) then
 			Logger:log(self.taskName .. " started.", LT_INFO)
 			self:setTaskStarted(pCreatureObject)
 		end
