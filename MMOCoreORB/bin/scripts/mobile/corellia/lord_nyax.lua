@@ -42,7 +42,7 @@ lord_nyax = Creature:new {
 	weapons = {"nyaxs_weapons"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/fancy",
-	attacks = merge(marksmanmaster,riflemanmaster)
+	attacks = merge(marksmanmaster,riflemanmaster,carbineermid,brawlermaster,swordsmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(lord_nyax, "lord_nyax")
