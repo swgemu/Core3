@@ -105,7 +105,7 @@ function NabooDeejaPeakScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "neutral")
 	pNpc = spawnMobile("naboo", "twilek_slave",60,-10.7,-4.9,-10.7,35,1714787)
 	self:setMoodString(pNpc, "worried")
-	pNpc = spawnMobile("naboo", "dark_jedi_knight",4321,-10.8,-4.9,-7.5,-180,1714787)
+	pNpc = spawnMobile("naboo", "bounty_hunter",4321,-10.8,-4.9,-7.5,-180,1714787)
 	self:setMoodString(pNpc, "npc_accusing")
 	pNpc = spawnMobile("naboo", "surgical_droid_21b",60,-3.5,-4.9,-7.6,-95,1714787)
 	self:setMoodString(pNpc, "neutral")
@@ -198,7 +198,5 @@ function NabooDeejaPeakScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "dark_trooper",300,4709.0,330.0,-1387.9,65,0)
 	spawnMobile("naboo", "stormtrooper_sniper",300,4733.7,329.8,-1426.3,172,0)
 	spawnMobile("naboo", "stormtrooper_sniper",300,4742.9,329.8,-1424.7,-177,0)
-
-
 
 end
