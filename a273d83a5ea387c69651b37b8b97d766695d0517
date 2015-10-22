@@ -87,6 +87,24 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_4a888be7",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/escort.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2015-10-22T04:58:31Z",
+      "side": 1,
+      "message": "As this file is intended to be a generic escort framework, I added it in case any other quests that may use it needed to call a function. I won\u0027t be using it for reflex1.",
+      "parentUuid": "1a9dcd25_8ae213d4",
+      "revId": "a273d83a5ea387c69651b37b8b97d766695d0517",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_2a997f6e",
         "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_location.lua",
         "patchSetId": 3
@@ -138,6 +156,24 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_ea6cf738",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase1/fs_reflex1_prisoner_conv_handler.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2015-10-22T04:58:31Z",
+      "side": 1,
+      "message": "I\u0027m still deciding how I want to handle this, so I\u0027m going to hold off on changing it until it starts getting tested.",
+      "parentUuid": "1a9dcd25_4aec0bc8",
+      "revId": "a273d83a5ea387c69651b37b8b97d766695d0517",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_2ae73fe6",
         "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase1/whip_phase1_conv_handler.lua",
         "patchSetId": 3
@@ -149,6 +185,24 @@
       "writtenOn": "2015-10-21T07:10:58Z",
       "side": 1,
       "message": "Where are the inprogress, aborted, and failed intros?",
+      "revId": "a273d83a5ea387c69651b37b8b97d766695d0517",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_0a6a831a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase1/whip_phase1_conv_handler.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2015-10-22T04:58:31Z",
+      "side": 1,
+      "message": "I haven\u0027t figured out how the aborted functionality works yet, so I haven\u0027t implemented that yet. The failed portion likely ties into the escort dying, the player dying or logging out/logging back in mid escort. Since I haven\u0027t fleshed out that functionality yet for the village in general, I haven\u0027t implemented it here yet.",
+      "parentUuid": "1a9dcd25_2ae73fe6",
       "revId": "a273d83a5ea387c69651b37b8b97d766695d0517",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
