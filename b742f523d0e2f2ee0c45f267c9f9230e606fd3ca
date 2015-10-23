@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_2a9f3f05",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/escort.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-23T23:43:02Z",
+      "side": 1,
+      "message": "This finish call is redundant. It\u0027ll get called if this function returns nil.",
+      "revId": "b742f523d0e2f2ee0c45f267c9f9230e606fd3ca",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_8a9a1313",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_location.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-23T23:43:02Z",
+      "side": 1,
+      "message": "This finish call is redundant. It\u0027s going to get called if this function returns nil.",
+      "revId": "b742f523d0e2f2ee0c45f267c9f9230e606fd3ca",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
