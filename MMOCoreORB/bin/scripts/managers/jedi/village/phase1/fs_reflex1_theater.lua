@@ -57,8 +57,10 @@ function FsReflex1Theater:onPlayerKilled(pCreatureObject, pKiller, nothing)
 		return 1
 	end
 
+	CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_01_quest_fail_incap");
 	Logger:log("Player was killed.", LT_INFO)
-	FsReflex1:resetQuest(pCreatureObject)
+	self:finish(pCreatureObject)
+	FsReflex1:failQuest(pCreatureObject)
 
 	return 1
 end
