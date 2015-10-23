@@ -57,8 +57,10 @@ function FsReflex1Theater:onPlayerKilled(pCreatureObject, pKiller, nothing)
 		return 1
 	end
 
+	CreatureObject(pCreatureObject):sendSystemMessage();
 	Logger:log("Player was killed.", LT_INFO)
-	FsReflex1:resetQuest(pCreatureObject)
+	self:finish(pCreatureObject)
+	FsReflex1:failQuest(pCreatureObject)
 
 	return 1
 end

@@ -8,6 +8,8 @@ function villageWhipPhase1ConvoHandler:getInitialScreen(pPlayer, pNpc, pConversa
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 	if (VillageJediManagerTownship:getCurrentPhase() ~= 1) then
 		return convoTemplate:getScreen("intro_not_eligible")
+	elseif (readData(SceneObject(pPlayer):getObjectID() .. ":failedWhipPhase1") == 1) then
+		return convoTemplate:getScreen("intro_quest_failed")
 	elseif (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_00) and not QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_05)) then
 		return convoTemplate:getScreen("intro_quest_inprogress")
 	elseif (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_05)) then
@@ -27,6 +29,8 @@ function villageWhipPhase1ConvoHandler:runScreenHandlers(conversationTemplate, c
 	if (screenID == "good_place_to_start") then
 		FsReflex1:setRescueCount(conversingPlayer, 0)
 		FsReflex1:startQuest(conversingPlayer)
+	elseif (screenID == "intro_quest_failed") then
+		FsReflex1:restartQuest(conversingPlayer)
 	elseif (screenID == "intro_quest_continue") then
 		clonedConversation:setDialogTextDI(5 - FsReflex1:getRescueCount(conversingPlayer))
 		FsReflex1:startNextRescue(conversingPlayer)

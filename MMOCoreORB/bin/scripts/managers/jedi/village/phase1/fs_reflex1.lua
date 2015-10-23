@@ -16,6 +16,11 @@ function FsReflex1:startNextRescue(pCreature)
 	FsReflex1Goto:start(pCreature)
 end
 
+function FsReflex1:restartQuest(pCreature)
+	QuestManager.activateQuest(pCreature, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_00)
+	FsReflex1Goto:start(pCreature)
+end
+
 function FsReflex1:failQuest(pCreature)
 	writeData(SceneObject(pCreature):getObjectID() .. ":failedWhipPhase1", 1)
 	QuestManager.resetQuest(pCreature, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_00)
