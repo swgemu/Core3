@@ -18,9 +18,14 @@ GoToLocation = Task:new {
 	-- GoToLocation properties
 	waypointDescription = "",
 	spawnPoint = {},
+
+	randomLocation = false,
+	randomMinDistance = 0,
+	randomMaxDistance = 0,
+
 	spawnPlanet = "",
 	spawnRadius = nil,
-    onFailedSpawn = nil,
+	onFailedSpawn = nil,
 	onSuccessfulSpawn = nil,
 	onEnteredActiveArea = nil
 }
@@ -32,15 +37,14 @@ GoToLocation = Task:new {
 -- @param spawnPointPlanet planet to spawn it on.
 -- @return true if setup was successful, false otherwise.
 function GoToLocation:setupActiveArea(pCreatureObject, spawnPoint, spawnPlanet, spawnRadius)
-	return ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		local pActiveArea = spawnActiveArea(spawnPlanet, ACTIVE_AREA_IFF, spawnPoint.x, 0, spawnPoint.y, spawnRadius, 0)
+	local pActiveArea = spawnActiveArea(spawnPlanet, ACTIVE_AREA_IFF, spawnPoint.x, 0, spawnPoint.y, spawnRadius, 0)
 
-		return ObjectManager.withActiveArea(pActiveArea, function(activeArea)
-			writeData(creatureObject:getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING, activeArea:getObjectID())
-			createObserver(ENTEREDAREA, self.taskName, "handleEnteredAreaEvent", pActiveArea)
-			return pActiveArea
-		end)
-	end)
+	if (pActiveArea ~= nil) then
+		writeData(SceneObject(pCreatureObject):getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING, SceneObject(pActiveArea):getObjectID())
+		createObserver(ENTEREDAREA, self.taskName, "handleEnteredAreaEvent", pActiveArea)
+	end
+
+	return pActiveArea
 end
 
 -- Handle the entered active area event.
@@ -52,41 +56,45 @@ function GoToLocation:handleEnteredAreaEvent(pActiveArea, pCreatureObject, nothi
 		return 0
 	end
 
-	return ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		local storedActiveAreaId = readData(creatureObject:getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING)
-		return ObjectManager.withSceneObject(pActiveArea, function(activeArea)
-			if storedActiveAreaId == activeArea:getObjectID() then
-				self:onEnteredActiveArea(pCreatureObject)
-				return 1
-			end
+	local storedActiveAreaId = readData(SceneObject(pCreatureObject):getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING)
 
-			return 0
-		end)
-	end)
+	if storedActiveAreaId == SceneObject(pActiveArea):getObjectID() then
+		self:onEnteredActiveArea(pCreatureObject)
+		return 1
+	end
+
+	return 0
 end
 
 -- Start the GoToLocation.
 -- @param pCreatureObject pointer to the creature object of the player.
 function GoToLocation:taskStart(pCreatureObject)
 	Logger:log("Spawning " .. self.taskName .. " active area location.", LT_INFO)
-	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		local pActiveArea = self:setupActiveArea(pCreatureObject, self.spawnPoint, self.spawnPlanet, self.spawnRadius)
-		if pActiveArea ~= nil then
-			local waypointId = ObjectManager.withPlayerObject(creatureObject:getPlayerObject(), function(playerObject)
-				return playerObject:addWaypoint(self.spawnPlanet, self.waypointDescription, "", self.spawnPoint.x, self.spawnPoint.y, WAYPOINTORANGE, true, true, 0)
-			end)
 
-			if waypointId ~= nil then
-				writeData(creatureObject:getObjectID() .. self.taskName .. WAYPOINT_ID_STRING, waypointId)
-				self:onSuccessfulSpawn(pCreatureObject, pActiveArea)
-				return true
-			end
+	local point = self.spawnPoint
+
+	if (self.randomLocation) then
+		local tempPoint = getSpawnPoint(pCreatureObject, SceneObject(pCreatureObject):getWorldPositionX(), SceneObject(pCreatureObject):getWorldPositionY(), self.randomMinDistance, self.randomMaxDistance, true)
+		point.x = tempPoint[1]
+		point.y = tempPoint[3]
+	end
+
+	local pActiveArea = self:setupActiveArea(pCreatureObject, point, self.spawnPlanet, self.spawnRadius)
+	if pActiveArea ~= nil then
+		local waypointId = ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
+			return playerObject:addWaypoint(self.spawnPlanet, self.waypointDescription, "", point.x, point.y, WAYPOINTORANGE, true, true, 0)
+		end)
+
+		if waypointId ~= nil then
+			writeData(SceneObject(pCreatureObject):getObjectID() .. self.taskName .. WAYPOINT_ID_STRING, waypointId)
+			self:onSuccessfulSpawn(pCreatureObject, pActiveArea)
+			return true
 		end
+	end
 
-		-- Something failed above, clean up and end the task.
-		Logger:log("Failed to spawn " .. self.taskName .. " location.", LT_ERROR)
-		self:finish(pCreatureObject)
-	end)
+	-- Something failed above, clean up and end the task.
+	Logger:log("Failed to spawn " .. self.taskName .. " location.", LT_ERROR)
+	self:finish(pCreatureObject)
 
 	return false
 end
@@ -95,17 +103,19 @@ end
 -- @param pCreatureObject pointer to the creature object of the player that the event was triggered for.
 function GoToLocation:taskFinish(pCreatureObject)
 	Logger:log("Despawning " .. self.taskName .. " location.", LT_INFO)
-	ObjectManager.withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject)
-		local waypointId = readData(creatureObject:getObjectID() .. self.taskName .. WAYPOINT_ID_STRING)
+	local playerID = SceneObject(pCreatureObject):getObjectID()
+	local waypointId = readData(playerID .. self.taskName .. WAYPOINT_ID_STRING)
+
+	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
 		playerObject:removeWaypoint(waypointId, true)
-
-		local activeAreaId = readData(creatureObject:getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING)
-		ObjectManager.withSceneObjectFromId(activeAreaId, function(activeArea)
-			activeArea:destroyObjectFromWorld()
-		end)
-
-		self:finish(pCreatureObject)
 	end)
+
+	local areaID = readData(playerID .. self.taskName .. ACTIVE_AREA_ID_STRING)
+	local pArea = getSceneObject(areaID)
+
+	if (pArea ~= nil) then
+		SceneObject(pArea):destroyObjectFromWorld()
+	end
 
 	return true
 end
