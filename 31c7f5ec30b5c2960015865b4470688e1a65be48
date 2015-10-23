@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_ea8877c8",
+        "filename": "MMOCoreORB/bin/scripts/mobile/corellia/lord_nyax.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-23T23:44:42Z",
+      "side": 1,
+      "message": "Why are you giving him carbine skills when he doesn\u0027t have any carbines in his weapon group?",
+      "revId": "31c7f5ec30b5c2960015865b4470688e1a65be48",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
