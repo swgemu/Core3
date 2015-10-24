@@ -94,10 +94,14 @@ public:
 		// However each exp point will move it up by a chunk. soooooo good = 1 point in the given formula
 		// we should now have the run to the max for both a and b, so determine the highest
 		// if we say 14 rounds needed the max percentage would be: 14/10 = 1.4 or 140% or 100% normalized
+		
+		// Now that the maxPercent is being used for the attributes, the max percentage is set individually 
+		// for each attribute
 		float maxACount = aCount/10.0f;
-		float maxBCount = bCount/10.0f;
-		float maxCount = maxACount > maxBCount ? maxACount : maxBCount;
-		return maxCount > 1 ? 1 : maxCount;
+		//float maxBCount = bCount/10.0f;
+		//float maxCount = maxACount > maxBCount ? maxACount : maxBCount;
+		//return maxCount > 1 ? 1 : maxCount;
+		return maxACount > 1 ? 1 : maxACount; 
 	}
 
 	/**
