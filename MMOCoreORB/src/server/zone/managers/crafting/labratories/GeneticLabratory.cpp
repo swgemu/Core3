@@ -210,25 +210,44 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	craftingValues->addExperimentalProperty("expPsychologicalProfile","courage",0,couMax,0,false,CraftingManager::LINEARCOMBINE);
 	craftingValues->addExperimentalProperty("expAggressionProfile","fierceness",0,fieMax,0,false,CraftingManager::LINEARCOMBINE);
 	craftingValues->addExperimentalProperty("expAggressionProfile","power",0,powMax,0,false,CraftingManager::LINEARCOMBINE);
-	String title;
+	String subtitle1, subtitle2, subtitlesTitle1, subtitlesTitle2;
 	int armorBase = 0;
 	int effectiveness = 0;
 	for(int i=0;i<craftingValues->getExperimentalPropertySubtitleSize();i++) {
-		title = craftingValues->getExperimentalPropertySubtitle(i);
-		if (craftingValues->isHidden(title))
+		subtitlesTitle1 = craftingValues->getExperimentalPropertySubtitlesTitle(i);
+		subtitle1 = craftingValues->getExperimentalPropertySubtitle(i);
+		
+		if (craftingValues->isHidden(subtitle1))
 			continue;
-		// We need to accoutn for assembly percentage. do some swapping around as well.
-		float maxValue = craftingValues->getMaxValue(title);
-		float initialValue = Genetics::initialValue(craftingValues->getMaxValue(title));
-		// determine max percentage
-		craftingValues->setMaxPercentage(title, maxValue/1000.0f);
-		craftingValues->setMaxValue(title,1000);
-		// using assembly to accoutn for a 1 +% increase
-		currentPercentage = getAssemblyPercentage(initialValue) * modifier;
-		//craftingValues->setMaxPercentage(title, maxPercentage);
-		craftingValues->setCurrentPercentage(title, currentPercentage);
-		if (title == "fortitude") {
-			armorBase = craftingValues->getCurrentValue(title);
+		// find the other expermental property with the matching title
+		for (int j = 0; j < craftingValues->getExperimentalPropertySubtitleSize(); j++) {
+			subtitlesTitle2 = craftingValues->getExperimentalPropertySubtitlesTitle(j);
+			subtitle2 = craftingValues->getExperimentalPropertySubtitle(j);
+			
+			if(subtitlesTitle2 == subtitlesTitle1 && subtitle1 != subtitle2){
+				// We need to account for assembly percentage. do some swapping around as well.
+				float maxValue = craftingValues->getMaxValue(subtitle1);
+				float maxValue2 = craftingValues->getMaxValue(subtitle2);
+				float initialValue = Genetics::initialValue(maxValue);
+				float initialValue2 = Genetics::initialValue(maxValue2);
+				// Determine what the max percentage should be for this attribute
+				float maxPercentage = Genetics::maxExperimentationPercentage(initialValue, initialValue2, maxValue, maxValue2);
+				// Using the difference between our max value and initial value we can set the crafting value to a max value 
+				// that will give us the the correct max value for the attribute when multiplied by the calculated max percentage
+				float initMaxDiffValue = maxValue - initialValue;
+				float newMaxValue = (initMaxDiffValue / maxPercentage) + initialValue;
+				craftingValues->setMaxPercentage(subtitle1, maxPercentage);
+				craftingValues->setMaxValue(subtitle1, newMaxValue);
+				craftingValues->setMinValue(subtitle1, initialValue);
+				// using assembly to accoutn for a 1 +% increase
+				currentPercentage = getAssemblyPercentage(initialValue) * modifier;
+				//craftingValues->setMaxPercentage(subtitle1, maxPercentage);
+				craftingValues->setCurrentPercentage(subtitle1, currentPercentage);
+			}
+		}
+		
+		if (subtitle1 == "fortitude") {
+			armorBase = craftingValues->getCurrentValue(subtitle1);
 		}
 	}
 	int armorValue = armorBase/500;
