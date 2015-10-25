@@ -222,3 +222,7 @@ bool ZoneClientSessionImplementation::hasCharacter(uint64 cid, unsigned int gala
 
 	return false;
 }
+
+Reference<SceneObject*> ZoneClientSessionImplementation::getPlayer() {
+	return player.get();
+}
