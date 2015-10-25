@@ -4,6 +4,7 @@
 
 #include "SharedLabratory.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
+#include "server/zone/objects/tangible/misc/CustomIngredient.h"
 
 SharedLabratory::SharedLabratory() : Logger("SharedLabratory"){
 }
@@ -81,6 +82,33 @@ float SharedLabratory::getWeightedValue(ManufactureSchematic* manufactureSchemat
 
 		Reference<IngredientSlot* > ingredientslot = manufactureSchematic->getSlot(i);
 		Reference<DraftSlot* > draftslot = manufactureSchematic->getDraftSchematic()->getDraftSlot(i);
+
+		if (ingredientslot->isComponentSlot()) {
+			ComponentSlot* compSlot = cast<ComponentSlot*>(ingredientslot.get());
+
+			if (compSlot == NULL)
+				continue;
+
+			ManagedReference<TangibleObject*> tano = compSlot->getPrototype();
+
+			if (tano == NULL || !tano->isCustomIngredient())
+				continue;
+
+			ManagedReference<CustomIngredient*> component = cast<CustomIngredient*>( tano.get());
+
+			if (component == NULL)
+				continue;
+
+			n = draftslot->getQuantity();
+			stat = component->getValueOf(type);
+
+			if (stat != 0) {
+				nsum += n;
+				weightedAverage += (stat * n);
+			}
+
+			continue;
+		}
 
 		/// If resource slot, continue
 		if(!ingredientslot->isResourceSlot())
