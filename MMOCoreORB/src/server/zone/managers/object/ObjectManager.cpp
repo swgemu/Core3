@@ -309,7 +309,8 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ResourceContainer>(SceneObjectType::ORGANICFOOD);
 	objectFactory.registerObject<ResourceContainer>(SceneObjectType::ORGANICHIDE);
 	objectFactory.registerObject<ResourceContainer>(SceneObjectType::ORGANICSTRUCTURAL);
-	objectFactory.registerObject<ResourceContainer>(SceneObjectType::QUESTREOURCE);
+
+	objectFactory.registerObject<CustomIngredient>(SceneObjectType::QUESTRESOURCE);
 
 	objectFactory.registerObject<DraftSchematic>(SceneObjectType::DRAFTSCHEMATIC);
 	objectFactory.registerObject<ManufactureSchematic>(SceneObjectType::MANUFACTURINGSCHEMATIC);

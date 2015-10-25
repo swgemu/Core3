@@ -6,6 +6,7 @@ local Logger = require("utils.logger")
 local SithShadowEncounter = require("managers.jedi.village.intro.sith_shadow_encounter")
 local SithShadowIntroTheater = require("managers.jedi.village.intro.sith_shadow_intro_theater")
 require("managers.jedi.village.village_jedi_manager_township")
+require("managers.jedi.village.phase1.fs_survey")
 
 jediManagerName = "VillageJediManager"
 

@@ -836,8 +836,7 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 	for (int i = 0; i < points; i++) {
 		for (int j = 0; j < points; j++) {
 
-			float density = resourceMap->getDensityAt(resname, zoneName, posX,
-					posY);
+			float density = resourceMap->getDensityAt(resname, zoneName, posX, posY);
 
 			if (density > maxDensity) {
 				maxDensity = density;
@@ -883,8 +882,9 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 	player->sendMessage(sysMessage);
 
 	ManagedReference<ResourceSpawn*> resourceSpawn = resourceMap->get(resname.toLowerCase());
+	float playerDensity = resourceSpawn->getDensityAt(zoneName, player->getPositionX(), player->getPositionY());
 
-	session->rescheduleSurvey(surveyMessage, waypoint, maxDensity, resourceSpawn);
+	session->rescheduleSurvey(surveyMessage, waypoint, playerDensity, resourceSpawn);
 }
 
 void ResourceSpawner::sendSample(CreatureObject* player, const String& resname,
