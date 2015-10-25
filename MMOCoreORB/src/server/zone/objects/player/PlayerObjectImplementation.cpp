@@ -1286,7 +1286,7 @@ void PlayerObjectImplementation::notifyOnline() {
 	//Login to jedi manager
 	JediManager::instance()->onPlayerLoggedIn(playerCreature);
 
-	notifyObservers(ObserverEventType::LOGGEDIN);
+	playerCreature->notifyObservers(ObserverEventType::LOGGEDIN);
 
 	if (getForcePowerMax() > 0 && getForcePower() < getForcePowerMax())
 		activateForcePowerRegen();
@@ -1319,7 +1319,7 @@ void PlayerObjectImplementation::notifyOffline() {
 	//Logout from visibility manager
 	VisibilityManager::instance()->logout(playerCreature);
 
-	notifyObservers(ObserverEventType::LOGGEDOUT);
+	playerCreature->notifyObservers(ObserverEventType::LOGGEDOUT);
 
 	//Logout from jedi manager
 	JediManager::instance()->onPlayerLoggedOut(playerCreature);

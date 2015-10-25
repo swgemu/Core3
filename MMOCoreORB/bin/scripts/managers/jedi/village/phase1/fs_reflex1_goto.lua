@@ -42,4 +42,16 @@ function FsReflex1Goto:onSuccessfulSpawn(pCreatureObject)
 	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_01)
 end
 
+function FsReflex1Goto:onLoggedIn(pCreatureObject)
+	if (not self:hasTaskStarted(pCreatureObject)) then
+		return 1
+	end
+
+	CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_01_quest_fail_logout");
+	self:finish(pCreatureObject)
+	FsReflex1:failQuest(pCreatureObject)
+
+	return 1
+end
+
 return FsReflex1Goto
