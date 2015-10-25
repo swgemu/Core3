@@ -59,7 +59,7 @@ int LuaActiveArea::getRadius(lua_State* L) {
 
 int LuaActiveArea::setRadius(lua_State* L) {
 	int radius = lua_tonumber(L, -1);
-
+    Locker realObjectLocker(realObject);
 	realObject->setRadius(radius);
 
 	return 0;
