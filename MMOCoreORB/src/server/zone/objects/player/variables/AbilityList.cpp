@@ -32,11 +32,13 @@ bool AbilityList::contains(const String& element) {
 }
 
 void AbilityList::insertToMessage(BaseMessage* msg) {
+	ReadLocker locker(getLock());
+
 	msg->insertInt(size());
 	msg->insertInt(updateCounter);
 
 	for (int i = 0; i < size(); ++i) {
-		Reference<Ability*> ability = get(i);
+		Ability* ability = get(i);
 
 		msg->insertAscii(ability->getAbilityName());
 	}
