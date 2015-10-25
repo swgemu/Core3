@@ -25,7 +25,12 @@ public:
 	}
 
 	void run() {
-		ManagedReference<CreatureObject*> object = cast<CreatureObject*>( client->getPlayer().get().get());
+		ManagedReference<SceneObject*> scene = client->getPlayer();
+
+		if (scene == NULL)
+			return;
+
+		CreatureObject* object = cast<CreatureObject*>(scene.get());
 
 		if (object == NULL)
 			return;

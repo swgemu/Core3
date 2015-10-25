@@ -100,9 +100,9 @@ class ZoneClientSession extends ManagedObject {
 	@local
 	public native BaseClientProxy getSession();
 	
-	@weakReference
+	@reference
 	public SceneObject getPlayer() {
-		return player;
+		return player.get();
 	}
 
 	public unsigned int getSessionID() {

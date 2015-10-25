@@ -42,10 +42,19 @@ public:
 	}
 
 	void run() {
-		ManagedReference<CreatureObject*> player = client->getPlayer().get().castTo<CreatureObject*>();
+		ManagedReference<SceneObject*> scene = client->getPlayer();
+
+		if (scene == NULL)
+			return;
+
+		CreatureObject* player = cast<CreatureObject*>(scene.get());
+
+		if (player == NULL)
+			return;
+
 		ManagedReference<TangibleObject*> vendor = server->getZoneServer()->getObject(vendorID).castTo<TangibleObject*>();
 
-		if (player == NULL || vendor == NULL || (!vendor->isVendor() && !vendor->isBazaarTerminal()))
+		if (vendor == NULL || (!vendor->isVendor() && !vendor->isBazaarTerminal()))
 			return;
 
 		Locker locker(player);
