@@ -227,6 +227,8 @@ function Coa2Screenplay:startMissionOne(pPlayer, conversingNPC, faction)
 	writeData(playerID .. ":coaCoordinatorID", SceneObject(conversingNPC):getObjectID())
 	writeData(playerID .. ":coaWayID", wayID)
 	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 2)
+
+	SceneObject(pPlayer):addPendingTask(1800000, "Coa2Screenplay", "timeoutMission")
 end
 
 function Coa2Screenplay:progressMissionOne(pPlayer, faction)
@@ -279,8 +281,6 @@ function Coa2Screenplay:progressMissionOne(pPlayer, faction)
 
 	writeData(playerID .. ":coaWayID", wayID)
 	writeScreenPlayData(pPlayer, faction .. "_coa2", "state", 3)
-
-	SceneObject(pPlayer):addPendingTask(1800000, "Coa2Screenplay", "timeoutMission")
 end
 
 function Coa2Screenplay:finishMissionOne(pPlayer, faction)
