@@ -97,6 +97,8 @@ public:
 	 */
 	bool fullfillsSkillPrerequisitesAndXp(const String& skillName, CreatureObject* creature);
 
+	bool knightPrereqsMet(CreatureObject* creature, const String* skillNameBeingDropped);
+
 	/**
 	 * Checks if the player fullfills the skill prerequisites.
 	 * @param skillName the name of the skill to check.
