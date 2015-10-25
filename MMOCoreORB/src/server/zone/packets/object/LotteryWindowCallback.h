@@ -37,7 +37,13 @@ public:
 
 	void run() {
 		//Get the player sending the loot selections.
-		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(client->getPlayer().get().get());
+		ManagedReference<SceneObject*> scene = client->getPlayer();
+
+		if (scene == NULL)
+			return;
+
+		CreatureObject* player = cast<CreatureObject*>(scene.get());
+
 		if (player == NULL)
 			return;
 

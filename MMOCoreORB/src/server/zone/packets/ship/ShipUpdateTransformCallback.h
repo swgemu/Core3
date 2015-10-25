@@ -88,7 +88,12 @@ public:
 		msg << "velA:" << velA << " velB:" << velB;
 		info(msg.toString(), true);*/
 
-		CreatureObject* object = cast<CreatureObject*>( client->getPlayer().get().get());
+		ManagedReference<SceneObject*> scene = client->getPlayer();
+
+		if (scene == NULL)
+			return;
+
+		CreatureObject* object = cast<CreatureObject*>(scene.get());
 
 		if (object == NULL)
 			return;
