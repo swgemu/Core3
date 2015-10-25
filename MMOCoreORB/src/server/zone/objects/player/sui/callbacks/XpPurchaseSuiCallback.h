@@ -93,8 +93,10 @@ public:
 			SkillManager* skillManager = SkillManager::instance();
 			Ability* grantAbility = skillManager->getAbility(grantName);
 
-			if (grantAbility == NULL)
-				grantAbility = new Ability(grantName);
+			if (grantAbility == NULL) {
+				player->error("Unable to learn ability: " + grantName);
+				return;
+			}
 
 			ghost->addAbility(grantAbility, true);
 			ghost->addExperience(xpType, -xpAmount, true);

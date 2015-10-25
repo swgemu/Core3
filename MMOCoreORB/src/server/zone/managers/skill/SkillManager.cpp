@@ -111,6 +111,14 @@ void SkillManager::loadClientData() {
 	if (!abilityMap.containsKey("admin"))
 		abilityMap.put("admin", new Ability("admin"));
 
+	// These are not listed in skills.iff and need to be added manually
+	if (!abilityMap.containsKey("startMusic+western"))
+		abilityMap.put("startMusic+western", new Ability("startMusic+western"));
+	if (!abilityMap.containsKey("startDance+theatrical"))
+		abilityMap.put("startDance+theatrical", new Ability("startDance+theatrical"));
+	if (!abilityMap.containsKey("startDance+theatrical2"))
+		abilityMap.put("startDance+theatrical2", new Ability("startDance+theatrical2"));
+
 	loadXpLimits();
 
 	info("Successfully loaded " + String::valueOf(skillMap.size()) + " skills and " + String::valueOf(abilityMap.size()) + " abilities.", true);
