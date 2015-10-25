@@ -73,12 +73,12 @@ public:
 		if (client == NULL)
 			return;
 
-		ManagedReference<CreatureObject*> sceneObject = dynamic_cast<CreatureObject*>(client->getPlayer().get().get());
+		ManagedReference<SceneObject*> sceneObject = client->getPlayer();
 
 		if (sceneObject == NULL)
 			return;
 
-		CreatureObject* player = dynamic_cast<CreatureObject*>(sceneObject.get());
+		CreatureObject* player = cast<CreatureObject*>(sceneObject.get());
 
 		if (player == NULL)
 			return;
