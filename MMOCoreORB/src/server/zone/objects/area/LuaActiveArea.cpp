@@ -59,7 +59,7 @@ int LuaActiveArea::getRadius(lua_State* L) {
 
 int LuaActiveArea::setRadius(lua_State* L) {
 	int radius = lua_tonumber(L, -1);
-
+	Locker realObjectLocker(realObject);
 	realObject->setRadius(radius);
 
 	return 0;
@@ -67,7 +67,7 @@ int LuaActiveArea::setRadius(lua_State* L) {
 
 int LuaActiveArea::setNoBuildArea(lua_State* L) {
 	bool val = lua_toboolean(L, -1);
-
+	Locker realObjectLocker(realObject);
 	realObject->setNoBuildArea(val);
 
 	return 0;
@@ -83,7 +83,7 @@ int LuaActiveArea::isNoBuildArea(lua_State* L) {
 
 int LuaActiveArea::setCellObjectID(lua_State* L) {
 	uint64 val = lua_tointeger(L, -1);
-
+	Locker realObjectLocker(realObject);
 	realObject->setCellObjectID(val);
 
 	return 0;
@@ -99,7 +99,7 @@ int LuaActiveArea::getCellObjectID(lua_State* L) {
 
 int LuaActiveArea::setNoSpawnArea(lua_State* L) {
 	bool val = lua_toboolean(L, -1);
-
+	Locker realObjectLocker(realObject);
 	realObject->setNoSpawnArea(val);
 
 	return 0;
