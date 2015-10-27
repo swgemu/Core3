@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_95a6b4c0",
+        "filename": "MMOCoreORB/src/server/zone/managers/skill/SkillManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-27T23:19:21Z",
+      "side": 1,
+      "message": "I think you should separate each of these because they each should require a different jedi state yet we\u0027re only currently checking if the state \u003c 1. Get the ghost and null check it first, then do each of these separately with the appropriate jedi state check within.",
+      "revId": "22d232845b1177e86df6a22bb03627c49f54c575",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_35ab208b",
+        "filename": "MMOCoreORB/src/server/zone/managers/skill/SkillManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-27T23:19:21Z",
+      "side": 1,
+      "message": "Instead of passing NULL here you should pass an empty string.",
+      "revId": "22d232845b1177e86df6a22bb03627c49f54c575",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_55b02cf4",
+        "filename": "MMOCoreORB/src/server/zone/managers/skill/SkillManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-27T23:19:21Z",
+      "side": 1,
+      "message": "Change to if (!skillNameBeingDropped.isEmpty())",
+      "revId": "22d232845b1177e86df6a22bb03627c49f54c575",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_f594d845",
+        "filename": "MMOCoreORB/src/server/zone/managers/skill/SkillManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-27T23:19:21Z",
+      "side": 1,
+      "message": "Please remove your debug statements before committing.",
+      "revId": "22d232845b1177e86df6a22bb03627c49f54c575",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_1592a457",
+        "filename": "MMOCoreORB/src/server/zone/managers/skill/SkillManager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-27T23:19:21Z",
+      "side": 1,
+      "message": "Use String\u0026 and not String*",
+      "revId": "22d232845b1177e86df6a22bb03627c49f54c575",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
