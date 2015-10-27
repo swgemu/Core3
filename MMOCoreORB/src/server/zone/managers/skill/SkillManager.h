@@ -105,6 +105,8 @@ public:
 	 */
 	bool fullfillsSkillPrerequisites(const String& skillName, CreatureObject* creature);
 
+	bool knightPrereqsMet(CreatureObject* creature, const String& skillNameBeingDropped);
+
 	int getForceSensitiveSkillCount(CreatureObject* creature, bool includeNoviceMasterBoxes);
 
 	void updateXpLimits(PlayerObject* ghost);

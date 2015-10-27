@@ -399,6 +399,10 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 			return false;
 	}
 
+	if(creature->hasSkill("force_title_jedi_rank_03") && skillName.contains("force_discipline_") && !knightPrereqsMet(creature, skillName)) {
+		return false;
+	}
+
 	//If they have already surrendered the skill, then return true.
 	if (!creature->hasSkill(skill->getSkillName()))
 		return true;
@@ -704,25 +708,27 @@ bool SkillManager::fullfillsSkillPrerequisites(const String& skillName, Creature
 		}
 	}
 
-	if(skillName.contains("force_sensitive") || skillName == "force_title_jedi_rank_01") {
-		PlayerObject* ghost = creature->getPlayerObject();
-		if (ghost == NULL || ghost->getJediState() < 1) {
-			return false;
-		}
+	PlayerObject* ghost = creature->getPlayerObject();
+	if(ghost == NULL || ghost->getJediState() < skill->getJediStateRequired()) {
+		return false;
+	}
 
-		if (skillName.contains("force_sensitive")) { // Check for Force Sensitive boxes.
-			int index = skillName.indexOf("0");
-			if (index != -1) {
-				String skillNameFinal = skillName.subString(0, skillName.length() - 3);
-				if (creature->getScreenPlayState("VillageUnlockScreenPlay:" + skillNameFinal) < 2) {
-					return false;
-				}
+	if (skillName.beginsWith("force_sensitive")) { // Check for Force Sensitive boxes.
+		int index = skillName.indexOf("0");
+		if (index != -1) {
+			String skillNameFinal = skillName.subString(0, skillName.length() - 3);
+			if (creature->getScreenPlayState("VillageUnlockScreenPlay:" + skillNameFinal) < 2) {
+				return false;
 			}
 		}
+	}
 
-		if(skillName == "force_title_jedi_rank_01" && getForceSensitiveSkillCount(creature, false) < 24) {
-			return false;
-		}
+	if(skillName == "force_title_jedi_rank_01" && getForceSensitiveSkillCount(creature, false) < 24) {
+		return false;
+	}
+
+	if(skillName == "force_title_jedi_rank_03" && !knightPrereqsMet(creature, "")) {
+		return false;
 	}
 
 	return true;
@@ -733,11 +739,44 @@ int SkillManager::getForceSensitiveSkillCount(CreatureObject* creature, bool inc
 	int forceSensitiveSkillCount = 0;
 
 	for(int i = 0; i < skills->size(); ++i) {
-		String skillName = skills->get(i)->skillName;
+		String skillName = skills->get(i)->getSkillName();
 		if(skillName.contains("force_sensitive") && (includeNoviceMasterBoxes || skillName.indexOf("0") != -1)) {
 			forceSensitiveSkillCount++;
 		}
 	}
 
 	return forceSensitiveSkillCount;
+}
+
+bool SkillManager::knightPrereqsMet(CreatureObject* creature, const String& skillNameBeingDropped) {
+	SkillList* skillList = creature->getSkillList();
+
+	int fullTrees = 0;
+	int totalJediPoints = 0;
+
+	for(int i = 0; i < skillList->size(); ++i) {
+		Skill* skill = skillList->get(i);
+
+		String skillName = skill->getSkillName();
+		if(skillName.contains("force_discipline_") &&
+			(skillName.indexOf("0") != -1 || skillName.contains("novice") || skillName.contains("master") )) {
+			totalJediPoints += skill->getSkillPointsRequired();
+
+			if(skillName.indexOf("4") != -1) {
+				fullTrees++;
+			}
+		}
+	}
+
+	if(!skillNameBeingDropped.isEmpty()) {
+		Skill* skillBeingDropped = skillMap.get(skillNameBeingDropped.hashCode());
+
+		if(skillNameBeingDropped.indexOf("4") != -1) {
+			fullTrees--;
+		}
+
+		totalJediPoints -= skillBeingDropped->getSkillPointsRequired();
+	}
+
+	return fullTrees >= 2 && totalJediPoints >= 206;
 }
