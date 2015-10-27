@@ -77,6 +77,12 @@ includeFile("village/convos/phase1/med_droid_phase1_conv_handler.lua")
 includeFile("village/convos/phase1/whip_phase1_conv_handler.lua")
 includeFile("village/convos/phase1/fs_reflex1_prisoner_conv_handler.lua")
 
+-- Jedi Padawan Trials
+includeFile("jedi/padawan/jedi_padawan_trial.lua")
+includeFile("jedi/padawan/trials/trial_architect.lua")
+includeFile("jedi/padawan/convos/trials_padawan_architect_01.lua")
+includeFile("jedi/padawan/convos/trials_padawan_architect_02.lua")
+
 -- Events
 includeFile("events/conversations/bestine_artist_conv_handler.lua")
 includeFile("events/conversations/imperial_commander_conv_handler.lua")
