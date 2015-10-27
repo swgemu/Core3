@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_d5c43c61",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ChannelForceCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-27T22:57:21Z",
+      "side": 1,
+      "message": "What are you trying to accomplish here? The player\u0027s current ham isn\u0027t affected by this command, so what will checking it do? The player\u0027s max ham, however, is temporarily reduced when using this command so checking that makes sense.",
+      "revId": "7ffa9977b8701a9aa014eecd085c4887f5b8dcf3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
