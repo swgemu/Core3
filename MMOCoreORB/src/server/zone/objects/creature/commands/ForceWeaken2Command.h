@@ -53,6 +53,18 @@ public:
 				buff->setAttributeModifier(CreatureAttribute::ACTION, -600);
 				buff->setAttributeModifier(CreatureAttribute::MIND, -600);
 
+				creatureTarget->getHAM(CreatureAttribute::HEALTH);{
+					if (health < 0)
+						setHAM(CreatureAttribute::HEALTH, 1);
+				}
+				creatureTarget->getHAM(CreatureAttribute::ACTION);{
+					if (action < 0)
+						setHAM(CreatureAttribute::ACTION, 1);
+				}
+				creatureTarget->getHAM(CreatureAttribute::MIND);{
+					if (mind < 0)
+						setHAM(CreatureAttribute::MIND, 1);
+				}
 				creatureTarget->addBuff(buff);
 			}
 

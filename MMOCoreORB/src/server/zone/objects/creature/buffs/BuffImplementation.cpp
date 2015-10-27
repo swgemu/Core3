@@ -263,6 +263,11 @@ void BuffImplementation::applyAttributeModifiers() {
 
 			creature.get()->setMaxHAM(attribute, attributemax);
 
+			if (value <= 0)
+				creature.get()->inflictDamage(creature.get(), attributeval, false);
+			else if (value >= 0)
+				creature.get()->healDamage(creature.get(), attribute, attributeval);
+
 			if (!creature.get()->isDead() && !creature.get()->isIncapacitated()) {
 				if (fillAttributesOnBuff) {
 					//creature.get()->setHAM(attribute, attributeval - creature.get()->getWounds(attribute));
