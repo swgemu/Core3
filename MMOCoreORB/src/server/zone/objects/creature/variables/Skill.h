@@ -220,6 +220,10 @@ public:
 		return skillName;
 	}
 
+	inline int getJediStateRequired() {
+		return jediStateRequired;
+	}
+
 	inline bool isGodOnly() {
 		return godOnly;
 	}
