@@ -24,6 +24,9 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (creature->hasAttackDelay())
+			return GENERALERROR;
+
 		if (isWearingArmor(creature)) {
 			return NOJEDIARMOR;
 		}
@@ -33,9 +36,9 @@ public:
 		int rand = System::random(10);
 		int forceBonus = 200 + (rand * 10); // Needs to be divisible by amount of ticks.
 
-		if ((creature->getMaxHAM(CreatureAttribute::HEALTH) <= forceBonus) || (creature->getMaxHAM(CreatureAttribute::ACTION) <= forceBonus) || (creature->getMaxHAM(CreatureAttribute::MIND) <= forceBonus)) {
+		if ((creature->getHAM(CreatureAttribute::HEALTH) <= forceBonus) || (creature->getHAM(CreatureAttribute::ACTION) <= forceBonus) || (creature->getHAM(CreatureAttribute::MIND) <= forceBonus)) {
 			creature->sendSystemMessage("@jedi_spam:channel_ham_too_low"); // Your body is too weakened to perform that action.
-			return GENERALERROR;
+			return INSUFFICIENTHAM;
 		}
 
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
