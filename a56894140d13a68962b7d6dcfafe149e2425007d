@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_35824001",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase1/fs_patrol.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-27T23:50:51Z",
+      "side": 1,
+      "message": "If I\u0027m reading things correctly, I think this patch would only partially fix the problem. Yes, if a player logs off and then back on the quest will fail. It won\u0027t fix cases where the server goes down while a player has a quest active since the observer isn\u0027t persistent.\n\nAlso, I see where the observers are created in Task:start but they don\u0027t seem to ever be dropped. We should probably be dropping them in Task:finish.",
+      "revId": "a56894140d13a68962b7d6dcfafe149e2425007d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
