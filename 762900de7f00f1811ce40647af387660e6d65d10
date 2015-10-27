@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_d59bdc70",
+        "filename": "MMOCoreORB/src/server/zone/managers/skill/SkillManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-27T23:23:05Z",
+      "side": 1,
+      "message": "Is this really desirable? A privileged character can grant the force progression skills again as needed, but this surrender all skills option is on the blue frog for everyone to use. If a regular player surrenders all skills and loses their force progression skills, do they have a way to get them back?",
+      "revId": "762900de7f00f1811ce40647af387660e6d65d10",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
