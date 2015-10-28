@@ -265,11 +265,13 @@ void BuffImplementation::applyAttributeModifiers() {
 
 			if (!creature.get()->isDead() && !creature.get()->isIncapacitated()) {
 				if (fillAttributesOnBuff) {
-					//creature.get()->setHAM(attribute, attributeval - creature.get()->getWounds(attribute));
 					creature.get()->healDamage(creature.get(), attribute, attributeval, true);
 				} else if (value >= 0)
 					creature.get()->healDamage(creature.get(), attribute, value);
-			}
+                          else {
+                            creature.get()->inflictDamage(creature.get(), attribute, value, false);
+                          }
+                        }
 		} catch (Exception& e) {
 			error(e.getMessage());
 			e.printStackTrace();
