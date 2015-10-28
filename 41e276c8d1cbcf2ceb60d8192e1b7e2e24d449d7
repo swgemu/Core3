@@ -1,0 +1,310 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_f5a29899",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/intro/glowing.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T03:21:59Z",
+      "side": 1,
+      "message": "You must return either 0 or 1 in any observer event function.",
+      "revId": "41e276c8d1cbcf2ceb60d8192e1b7e2e24d449d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_95bb14c4",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/intro/old_man_encounter.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T03:21:59Z",
+      "side": 1,
+      "message": "MellichaeOutroTheater isn\u0027t defined here. You need to require it like you do in the old man convo handler.",
+      "revId": "41e276c8d1cbcf2ceb60d8192e1b7e2e24d449d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_55b58ccb",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T03:21:59Z",
+      "side": 1,
+      "message": "The sith_shadow mobile doesn\u0027t seem to be the correct one to use here as it\u0027s very low level. In fact, I think Miztah was planning to delete it as it\u0027s not an actual mobile from live.",
+      "revId": "41e276c8d1cbcf2ceb60d8192e1b7e2e24d449d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_f5c9385b",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T03:21:59Z",
+      "side": 1,
+      "message": "You don\u0027t really need to include the above three lines. You only need to override members of GoToTheater that you are changing the value of. In these cases, they are functions that you may be defining below.",
+      "revId": "41e276c8d1cbcf2ceb60d8192e1b7e2e24d449d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_15c70447",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T03:21:59Z",
+      "side": 1,
+      "message": "You may want to fix the spelling in this function name.",
+      "revId": "41e276c8d1cbcf2ceb60d8192e1b7e2e24d449d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_b5dad015",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T03:21:59Z",
+      "side": 1,
+      "message": "I don\u0027t really like having the quest completion tied to looting the mob. Was it actually this way on live? I think it would be better to change the loot observer to a death observer and on death, set the owner of the corpse to the one whose quest it is (so only they can loot it). You can then have the loot just be standard on the mob and complete the quest when it dies rather than when it\u0027s looted.",
+      "revId": "41e276c8d1cbcf2ceb60d8192e1b7e2e24d449d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_7504487e",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T03:21:59Z",
+      "side": 1,
+      "message": "You should nil check spawnedSithShadowsList[2] before you use it.",
+      "revId": "41e276c8d1cbcf2ceb60d8192e1b7e2e24d449d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_9509d497",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T03:21:59Z",
+      "side": 1,
+      "message": "Why not put this at the start? You use spawnedSithShadowsList[1] several times before this.",
+      "revId": "41e276c8d1cbcf2ceb60d8192e1b7e2e24d449d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_35fec06c",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T03:21:59Z",
+      "side": 1,
+      "message": "This seems unnecessary. You can just put the 2 in the for loop since that\u0027s the only place you use it.",
+      "revId": "41e276c8d1cbcf2ceb60d8192e1b7e2e24d449d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_55034c73",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T03:21:59Z",
+      "side": 1,
+      "message": "Why would you want to keep the observer?",
+      "revId": "41e276c8d1cbcf2ceb60d8192e1b7e2e24d449d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_9530f457",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T03:21:59Z",
+      "side": 1,
+      "message": "What if more than one player in the group are doing this fight separately but at the same time? Things will get messy. It would be better to just write data when the shrine is spawned so that you can get the correct player from the shrine\u0027s oid.",
+      "revId": "41e276c8d1cbcf2ceb60d8192e1b7e2e24d449d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_d5ee7cb4",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T03:21:59Z",
+      "side": 1,
+      "message": "Why do you need this to be a separate function? You could just have one function for both. You can know which color the shrine is by the template name and just decrement the correct data. As far as I can tell, that\u0027s the only difference.",
+      "revId": "41e276c8d1cbcf2ceb60d8192e1b7e2e24d449d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_35356046",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T03:21:59Z",
+      "side": 1,
+      "message": "Just like I mentioned for the shrines, when you spawn the two mobs you create this observer on, write data so that you can get the correct player\u0027s oid from the mob\u0027s oid. That will save having to loop through the group and also prevent the chance of getting the wrong player.\n\nYou can format the data\u0027s key such that it doesn\u0027t matter if it\u0027s a mob or a shrine that the observer is on, you can get the oid.",
+      "revId": "41e276c8d1cbcf2ceb60d8192e1b7e2e24d449d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_f53e1829",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T03:21:59Z",
+      "side": 1,
+      "message": "Please fix your tabbing. I was confused at first thinking that you were setting conditionDamage to 0 if damage wasn\u0027t \u003e 0.",
+      "revId": "41e276c8d1cbcf2ceb60d8192e1b7e2e24d449d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_153ce42e",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T03:21:59Z",
+      "side": 1,
+      "message": "Are you sure you want to return 1 here?",
+      "revId": "41e276c8d1cbcf2ceb60d8192e1b7e2e24d449d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_b5f17097",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T03:21:59Z",
+      "side": 1,
+      "message": "Is this necessary? I thought you set this on the template. Same for the green.",
+      "revId": "41e276c8d1cbcf2ceb60d8192e1b7e2e24d449d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_553a6c37",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T03:21:59Z",
+      "side": 1,
+      "message": "Are DAMAGERECEIVED observers even notified when a tano is damaged? It doesn\u0027t look to me like they are.",
+      "revId": "41e276c8d1cbcf2ceb60d8192e1b7e2e24d449d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_b54890cd",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T03:21:59Z",
+      "side": 1,
+      "message": "This doesn\u0027t look right. num is always 1 so when you spawn the first red shrine you write 2 and then when you spawn the second red shrine you write 2 again. Why not just write it once in onSuccessfulSpawn after you spawn them both and remove the num arg? Same for the green.",
+      "revId": "41e276c8d1cbcf2ceb60d8192e1b7e2e24d449d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
