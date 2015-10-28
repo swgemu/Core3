@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_75ee888d",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase1/fs_reflex1_goto.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T07:57:10Z",
+      "side": 1,
+      "message": "Remove your debug statements.",
+      "revId": "45a4bf83f6fcc0f9fe6a5326e80e983665c72ffc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_95f31473",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase1/fs_reflex1_goto.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T07:57:10Z",
+      "side": 1,
+      "message": "Here\u0027s another one.",
+      "revId": "45a4bf83f6fcc0f9fe6a5326e80e983665c72ffc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_35e8007c",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2051,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T07:57:10Z",
+      "side": 1,
+      "message": "Here you use lua_tonumber...",
+      "revId": "45a4bf83f6fcc0f9fe6a5326e80e983665c72ffc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_55ed8c8a",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2070,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T07:57:10Z",
+      "side": 1,
+      "message": "and lua_tointeger here. Consistentcy would be nice.",
+      "revId": "45a4bf83f6fcc0f9fe6a5326e80e983665c72ffc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
