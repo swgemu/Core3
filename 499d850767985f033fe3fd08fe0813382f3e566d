@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_d5a67c53",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/BuffImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2015-10-28T15:22:48Z",
+      "side": 1,
+      "message": "You should remove the above lines",
+      "revId": "499d850767985f033fe3fd08fe0813382f3e566d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
