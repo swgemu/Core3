@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_350c8094",
+        "filename": "MMOCoreORB/src/server/zone/managers/skill/SkillManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T03:38:12Z",
+      "side": 0,
+      "message": "Please remove a tab from this line and the next few so that they line up better.",
+      "revId": "3d6511fc4a222891f75254c95e4d7ea13e3f1abd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_951794a3",
+        "filename": "MMOCoreORB/src/server/zone/managers/skill/SkillManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T03:38:12Z",
+      "side": 0,
+      "message": "I missed it in your previous patch, but change this to getSkillName()",
+      "revId": "3d6511fc4a222891f75254c95e4d7ea13e3f1abd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

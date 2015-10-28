@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_751208b6",
+        "filename": "MMOCoreORB/src/server/zone/managers/skill/SkillManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-28T03:38:12Z",
+      "side": 1,
+      "message": "Remove the \u0026 here. You want a copy of the string, not a reference to it.",
+      "revId": "7528e39c16f32bd8d39fdc01fe4d198649c149e4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
