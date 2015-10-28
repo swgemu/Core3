@@ -16,6 +16,24 @@
       "revId": "3d6511fc4a222891f75254c95e4d7ea13e3f1abd",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_9568f4f6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/BuffImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2015-10-28T15:23:43Z",
+      "side": 0,
+      "message": "uhh it should be value, not the attributeval \n\nelse {\n    creature.get()-\u003einflictDamage(creature.get(), attribute, value\nl, false);\n}",
+      "parentUuid": "1a9dcd25_b5a97026",
+      "revId": "3d6511fc4a222891f75254c95e4d7ea13e3f1abd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
