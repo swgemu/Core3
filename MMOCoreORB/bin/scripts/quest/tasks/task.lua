@@ -62,10 +62,10 @@ function Task:start(pCreatureObject, ...)
 		end
 
 		if self.onLoggedIn ~= nil then
-			createObserver(LOGGEDIN, self.taskName, "onLoggedIn", pCreatureObject)
+			createObserver(LOGGEDIN, self.taskName, "onLoggedIn", pCreatureObject, 1)
 		end
 		if self.onLoggedOut ~= nil then
-			createObserver(LOGGEDOUT, self.taskName, "onLoggedOut", pCreatureObject)
+			createObserver(LOGGEDOUT, self.taskName, "onLoggedOut", pCreatureObject, 1)
 		end
 	else
 		Logger:log("Task " .. self.taskName .. " is already started.", LT_INFO)
@@ -84,6 +84,9 @@ function Task:finish(pCreatureObject)
 		if self:callFunctionIfNotNil(self.taskFinish, true, pCreatureObject) == true then
 			Logger:log(self.taskName .. " finished.", LT_INFO)
 			self:setTaskFinished(pCreatureObject)
+
+			dropObserver(LOGGEDIN, self.taskName, "onLoggedIn", pCreatureObject)
+			dropObserver(LOGGEDIN, self.taskName, "onLoggedOut", pCreatureObject)
 		end
 	else
 		Logger:log("Task " .. self.taskName .. " is not started.", LT_INFO)
