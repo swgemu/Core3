@@ -536,7 +536,7 @@ class CreatureObject extends TangibleObject {
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	@preLocked
-	public native void setMaxHAM(int type, int value, boolean notifyClient = true);
+	public native abstract void setMaxHAM(int type, int value, boolean notifyClient = true);
 	@preLocked
 	public native void addMaxHAM(int type, int value, boolean notifyClient = true);
 

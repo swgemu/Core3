@@ -1365,6 +1365,12 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().getBaseHAM();
 	}
 
+	@preLocked
+	public void setMaxHAM(int attribute, int value, boolean notifyClient = true) {
+		super.setMaxHAM(attribute, value, notifyClient);
+		activateRecovery();
+	}
+
 	/**
 	 * Reset the aiagent back to it's initial creation state.
 	 * this resets the HAM, Damage, Size and Weapons of the AiAgent. Used for Pet adjustments.
