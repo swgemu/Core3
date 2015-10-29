@@ -258,18 +258,29 @@ void BuffImplementation::applyAttributeModifiers() {
 			continue;
 
 		try {
-			int attributemax = creature.get()->getMaxHAM(attribute) + value;
-			int attributeval = MAX(attributemax, creature.get()->getHAM(attribute) + value);
+			int currentMaxHAM = creature.get()->getMaxHAM(attribute);
 
-			creature.get()->setMaxHAM(attribute, attributemax);
+			int newMaxHAM = currentMaxHAM + value;
+			if (newMaxHAM < 1)
+					newMaxHAM = 1;
+
+			int buffAmount = newMaxHAM - currentMaxHAM;
+			attributeModifiers.drop(attribute);
+			attributeModifiers.put(attribute, buffAmount);
+
+			creature.get()->setMaxHAM(attribute, newMaxHAM);
+
+			if (creature.get()->getHAM(attribute) > newMaxHAM)
+				creature.get()->setHAM(attribute, newMaxHAM);
 
 			if (!creature.get()->isDead() && !creature.get()->isIncapacitated()) {
 				if (fillAttributesOnBuff) {
-					//creature.get()->setHAM(attribute, attributeval - creature.get()->getWounds(attribute));
+					int attributeval = MAX(newMaxHAM, creature.get()->getHAM(attribute) + value);
 					creature.get()->healDamage(creature.get(), attribute, attributeval, true);
 				} else if (value >= 0)
 					creature.get()->healDamage(creature.get(), attribute, value);
 			}
+
 		} catch (Exception& e) {
 			error(e.getMessage());
 			e.printStackTrace();
