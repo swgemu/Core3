@@ -52,6 +52,8 @@ public:
 				buff->setAttributeModifier(System::random(2) * 3, -300);
 
 				creatureTarget->addBuff(buff);
+
+				CombatManager::instance()->broadcastCombatSpam(creature, creatureTarget, NULL, 0, "cbt_spam", combatSpam + "_hit", 1);
 			}
 
 		}
