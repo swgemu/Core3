@@ -904,10 +904,7 @@ int CombatManager::getSpeedModifier(CreatureObject* attacker, WeaponObject* weap
 
 
 
-int CombatManager::getArmorObjectReduction(WeaponObject* weapon, ArmorObject* armor) {
-
-	int damageType = weapon->getDamageType();
-
+int CombatManager::getArmorObjectReduction(ArmorObject* armor, int damageType) {
 	float resist = 0;
 
 	switch (damageType) {
@@ -938,13 +935,9 @@ int CombatManager::getArmorObjectReduction(WeaponObject* weapon, ArmorObject* ar
 	case WeaponObject::LIGHTSABER:
 		resist = armor->getLightSaber();
 		break;
-	case WeaponObject::FORCE:
-		resist = 0;
-		break;
 	}
 
 	return MAX(0, (int)resist);
-
 }
 
 ArmorObject* CombatManager::getHealthArmor(CreatureObject* defender) {
@@ -992,9 +985,7 @@ ArmorObject* CombatManager::getPSGArmor(CreatureObject* defender) {
 	return NULL;
 }
 
-int CombatManager::getArmorNpcReduction(AiAgent* defender, WeaponObject* weapon) {
-	int damageType = weapon->getDamageType();
-
+int CombatManager::getArmorNpcReduction(AiAgent* defender, int damageType) {
 	float resist = 0;
 
 	switch (damageType) {
@@ -1025,17 +1016,12 @@ int CombatManager::getArmorNpcReduction(AiAgent* defender, WeaponObject* weapon)
 	case WeaponObject::LIGHTSABER:
 		resist = defender->getLightSaber();
 		break;
-	case WeaponObject::FORCE:
-		resist = 0;
-		break;
 	}
 
 	return (int)resist;
 }
 
-int CombatManager::getArmorVehicleReduction(VehicleObject* defender, WeaponObject* weapon) {
-	int damageType = weapon->getDamageType();
-
+int CombatManager::getArmorVehicleReduction(VehicleObject* defender, int damageType) {
 	float resist = 0;
 
 	switch (damageType) {
@@ -1066,16 +1052,55 @@ int CombatManager::getArmorVehicleReduction(VehicleObject* defender, WeaponObjec
 	case WeaponObject::LIGHTSABER:
 		resist = defender->getLightSaber();
 		break;
-	case WeaponObject::FORCE:
-		resist = 0;
-		break;
 	}
 
 	return (int)resist;
 }
 
-int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, float damage, int poolToDamage, const CreatureAttackData& data){
-	if (data.getAttackType() == CombatManager::FORCEATTACK) {
+int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, float damage, int poolToDamage, const CreatureAttackData& data) {
+	int damageType = 0, armorPiercing = 1;
+
+	if (data.getAttackType() == CombatManager::WEAPONATTACK) {
+		damageType = weapon->getDamageType();
+		armorPiercing = weapon->getArmorPiercing();
+
+		if (weapon->isBroken())
+			armorPiercing = 0;
+	} else {
+		damageType = data.getDamageType();
+	}
+
+	if (defender->isAiAgent()) {
+		float armorReduction = getArmorNpcReduction(cast<AiAgent*>(defender), damageType);
+
+		if (armorReduction >= 0)
+			damage *= getArmorPiercing(cast<AiAgent*>(defender), armorPiercing);
+
+		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
+
+		return damage;
+	} else if (defender->isVehicleObject()) {
+		float armorReduction = getArmorVehicleReduction(cast<VehicleObject*>(defender), damageType);
+
+		if (armorReduction >= 0)
+			damage *= getArmorPiercing(cast<VehicleObject*>(defender), armorPiercing);
+
+		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
+
+		return damage;
+	}
+
+	if (data.getAttackType() == CombatManager::WEAPONATTACK) {
+		// Force Armor
+		float rawDamage = damage;
+
+		int forceArmor = defender->getSkillMod("force_armor");
+		if (forceArmor > 0) {
+			float dmgAbsorbed = rawDamage - (damage *= 1.f - (forceArmor / 100.f));
+			defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, attacker, dmgAbsorbed);
+			sendMitigationCombatSpam(defender, NULL, (int)dmgAbsorbed, FORCEARMOR);
+		}
+	} else if (data.getAttackType() == CombatManager::FORCEATTACK) {
 		float jediBuffDamage = 0;
 		float rawDamage = damage;
 
@@ -1110,45 +1135,13 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 		}
 
 		defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, attacker, jediBuffDamage);
-
-		return damage;
-	}
-
-	if (defender->isAiAgent()) {
-		float armorReduction = getArmorNpcReduction(cast<AiAgent*>(defender), weapon);
-
-		if (armorReduction >= 0)
-			damage *= getArmorPiercing(cast<AiAgent*>(defender), weapon);
-
-		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
-
-		return damage;
-	} else if (defender->isVehicleObject()) {
-		float armorReduction = getArmorVehicleReduction(cast<VehicleObject*>(defender), weapon);
-
-		if (armorReduction >= 0)
-			damage *= getArmorPiercing(cast<VehicleObject*>(defender), weapon);
-
-		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
-
-		return damage;
-	}
-
-	// Force Armor
-	float rawDamage = damage;
-
-	int forceArmor = defender->getSkillMod("force_armor");
-	if (forceArmor > 0) {
-		float dmgAbsorbed = rawDamage - (damage *= 1.f - (forceArmor / 100.f));
-		defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, attacker, dmgAbsorbed);
-		sendMitigationCombatSpam(defender, NULL, (int)dmgAbsorbed, FORCEARMOR);
 	}
 
 	// PSG
 	ManagedReference<ArmorObject*> psg = getPSGArmor(defender);
 
-	if (psg != NULL && !psg->isVulnerable(weapon->getDamageType())) {
-		float armorReduction =  getArmorObjectReduction(weapon, psg);
+	if (psg != NULL && !psg->isVulnerable(damageType)) {
+		float armorReduction =  getArmorObjectReduction(psg, damageType);
 		float dmgAbsorbed = damage;
 
         if (armorReduction > 0) damage *= 1.f - (armorReduction / 100.f);
@@ -1177,13 +1170,12 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 	else if (poolToDamage & CombatManager::MIND)
 		armor = getMindArmor(defender);
 
-	if (armor != NULL && !armor->isVulnerable(weapon->getDamageType())) {
-		// use only the damage applied to the armor for piercing (after the PSG takes some off)
-		float armorPiercing = getArmorPiercing(armor, weapon);
-		float armorReduction = getArmorObjectReduction(weapon, armor);
+	if (armor != NULL && !armor->isVulnerable(damageType)) {
+		float armorReduction = getArmorObjectReduction(armor, damageType);
 		float dmgAbsorbed = damage;
 
-		damage *= armorPiercing;
+		// use only the damage applied to the armor for piercing (after the PSG takes some off)
+		damage *= getArmorPiercing(armor, armorPiercing);
 
 		if (armorReduction > 0) {
 			damage *= (1.f - (armorReduction / 100.f));
@@ -1200,11 +1192,7 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 	return damage;
 }
 
-float CombatManager::getArmorPiercing(TangibleObject* defender, WeaponObject* weapon) {
-	int armorPiercing = weapon->getArmorPiercing();
-	if (weapon->isBroken())
-		armorPiercing = 0;
-
+float CombatManager::getArmorPiercing(TangibleObject* defender, int armorPiercing) {
 	int armorReduction = 0;
 
 	if (defender->isAiAgent()) {
@@ -1220,8 +1208,8 @@ float CombatManager::getArmorPiercing(TangibleObject* defender, WeaponObject* we
 		armorReduction = vehicleDefender->getArmor();
 	} else {
 		DataObjectComponentReference* data = defender->getDataObjectComponent();
-		if(data != NULL){
 
+		if (data != NULL) {
 			TurretDataComponent* turretData = cast<TurretDataComponent*>(data->get());
 
 			if(turretData != NULL) {
@@ -1238,10 +1226,11 @@ float CombatManager::getArmorPiercing(TangibleObject* defender, WeaponObject* we
 
 float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defender, const CreatureAttackData& data) {
 	float damage = 0;
+	int diff = 0;
 
-	if (data.getDamage() > 0) { // this is a special attack (force, etc)
-		damage = data.getDamage();
-		damage -= System::random(damage / 4);
+	if (data.getMinDamage() > 0 || data.getMaxDamage() > 0) { // this is a special attack (force, etc)
+		damage = data.getMinDamage();
+		diff = data.getMaxDamage() - damage;
 
 	} else {
 		float minDamage = weapon->getMinDamage(), maxDamage = weapon->getMaxDamage();
@@ -1252,11 +1241,11 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 		}
 
 		damage = minDamage;
-		float diff = maxDamage - minDamage;
-
-		if (diff >= 0)
-			damage += System::random(diff);
+		diff = maxDamage - minDamage;
 	}
+
+	if (diff > 0)
+		damage += System::random(diff);
 
 	damage = applyDamageModifiers(attacker, weapon, damage, data);
 
@@ -1379,23 +1368,24 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 
 float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data, Vector<int>& foodMitigation) {
 	float damage = 0;
+	int diff = 0;
 
-	if (data.getDamage() > 0) { // this is a special attack (force, etc)
-		damage = data.getDamage();
-		damage -= System::random(damage / 4);
+	if (data.getMinDamage() > 0 || data.getMaxDamage() > 0) { // this is a special attack (force, etc)
+		damage = data.getMinDamage();
+		diff = data.getMaxDamage() - damage;
 
 	} else {
-		int diff = calculateDamageRange(attacker, defender, weapon);
+		diff = calculateDamageRange(attacker, defender, weapon);
 		float minDamage = weapon->getMinDamage();
 
 		if (attacker->isPlayerCreature() && !weapon->isCertifiedFor(attacker))
 			minDamage = 5;
 
-		if (diff >= 0)
-			damage = System::random(diff) + (int)minDamage;
-		else
-			damage = minDamage;
+		damage = minDamage;
 	}
+
+	if (diff > 0)
+		damage += System::random(diff);
 
 	damage = applyDamageModifiers(attacker, weapon, damage, data);
 
@@ -1412,7 +1402,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 
 	// Toughness reduction
 	if (data.getAttackType() == CombatManager::FORCEATTACK)
-		damage = getDefenderToughnessModifier(defender, WeaponObject::FORCEATTACK, WeaponObject::FORCE, damage, foodMitigation);
+		damage = getDefenderToughnessModifier(defender, WeaponObject::FORCEATTACK, data.getDamageType(), damage, foodMitigation);
 	else
 		damage = getDefenderToughnessModifier(defender, weapon->getAttackType(), weapon->getDamageType(), damage, foodMitigation);
 
@@ -1434,7 +1424,7 @@ float CombatManager::calculateDamage(TangibleObject* attacker, WeaponObject* wea
 	int diff = calculateDamageRange(attacker, defender, weapon);
 	float minDamage = weapon->getMinDamage();
 
-	if (diff >= 0)
+	if (diff > 0)
 		damage = System::random(diff) + (int)minDamage;
 
 	damage += defender->getSkillMod("private_damage_susceptibility");
@@ -1904,11 +1894,23 @@ int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, T
 	else
 		xpType = weapon->getXpType();
 
-	if(defender->isTurret() && data.getAttackType() == CombatManager::WEAPONATTACK){
-		int armorReduction = getArmorTurretReduction(attacker, defender, weapon);
+	if (defender->isTurret()) {
+		int damageType = 0, armorPiercing = 1;
+
+		if (data.getAttackType() == CombatManager::WEAPONATTACK) {
+			damageType = weapon->getDamageType();
+			armorPiercing = weapon->getArmorPiercing();
+
+			if (weapon->isBroken())
+				armorPiercing = 0;
+		} else {
+			damageType = data.getDamageType();
+		}
+
+		int armorReduction = getArmorTurretReduction(attacker, defender, damageType);
 
 		if (armorReduction >= 0)
-			damage *= getArmorPiercing(defender, weapon);
+			damage *= getArmorPiercing(defender, armorPiercing);
 
 		damage *= (1.f - (armorReduction / 100.f));
 	}
@@ -2563,18 +2565,17 @@ int CombatManager::doAreaCombatAction(TangibleObject* attacker, WeaponObject* we
 	return 0;
 }
 
-int CombatManager::getArmorTurretReduction(CreatureObject* attacker, TangibleObject* defender, WeaponObject* weapon){
+int CombatManager::getArmorTurretReduction(CreatureObject* attacker, TangibleObject* defender, int damageType) {
 	int resist = 0;
 
-	if(defender != NULL && defender->isTurret() && weapon != NULL){
+	if (defender != NULL && defender->isTurret()) {
 		DataObjectComponentReference* data = defender->getDataObjectComponent();
-		if(data != NULL){
+
+		if (data != NULL) {
 
 			TurretDataComponent* turretData = cast<TurretDataComponent*>(data->get());
 
-			if(turretData != NULL) {
-
-				int damageType = weapon->getDamageType();
+			if (turretData != NULL) {
 
 				switch (damageType) {
 				case WeaponObject::KINETIC:
@@ -2603,9 +2604,6 @@ int CombatManager::getArmorTurretReduction(CreatureObject* attacker, TangibleObj
 					break;
 				case WeaponObject::LIGHTSABER:
 					resist = turretData->getLightSaber();
-					break;
-				case WeaponObject::FORCE:
-					resist = 0;
 					break;
 				}
 			}

@@ -50,7 +50,7 @@ object_weapon_melee_unarmed_unarmed_default = object_weapon_melee_unarmed_shared
 	attackType = MELEEATTACK,
 	weaponType = UNARMEDWEAPON,
 	
-	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, LIGHTSABER
 	damageType = KINETIC,
 	
 	-- NONE, LIGHT, MEDIUM, HEAVY

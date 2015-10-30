@@ -69,7 +69,7 @@ object_weapon_melee_special_vibroknuckler = object_weapon_melee_special_shared_v
 	attackType = MELEEATTACK,
 	weaponType = UNARMEDWEAPON,
 
-	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, LIGHTSABER
 	damageType = KINETIC,
 
 	-- NONE, LIGHT, MEDIUM, HEAVY

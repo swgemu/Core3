@@ -42,9 +42,10 @@
 --true = 1, false = 0
 
 ForceThrow1Command = {
-        name = "forcethrow1",
+	name = "forcethrow1",
 
-    	damage = 500,
+	minDamage = 375,
+	maxDamage = 500,
 	speed = 4.0,
 	forceCost = 28,
 	accuracySkillMod = "forcethrow_accuracy";
@@ -69,6 +70,7 @@ ForceThrow1Command = {
 	poolsToDamage = RANDOM_ATTRIBUTE,
 	
 	attackType = FORCEATTACK,
+	damageType = KINETIC_DAMAGE,
 
 	range = 32
 }			

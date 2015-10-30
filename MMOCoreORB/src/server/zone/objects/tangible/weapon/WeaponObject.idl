@@ -97,7 +97,6 @@ class WeaponObject extends TangibleObject {
 	public static final int COLD = 64;
 	public static final int ACID = 128;
 	public static final int ELECTRICITY = 256;
-	public static final int FORCE = 512;
 
 	public static final int MELEEATTACK = 0;
 	public static final int RANGEDATTACK = 1;

@@ -63,7 +63,7 @@ public:
 			if (forceSpace <= 0) //Cannot Force Drain if attacker can't hold any more Force.
 				return GENERALERROR;
 
-			int maxDrain = damage; //Value set in command lua.
+			int maxDrain = minDamage; //Value set in command lua.
 
 			int targetForce = targetGhost->getForcePower();
 			if (targetForce <= 0) {

@@ -71,7 +71,7 @@ object_weapon_melee_baton_baton_stun = object_weapon_melee_baton_shared_baton_st
 	attackType = MELEEATTACK,
 	weaponType = ONEHANDMELEEWEAPON,
 
-	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, LIGHTSABER
 	damageType = STUN,
 
 	-- NONE, LIGHT, MEDIUM, HEAVY

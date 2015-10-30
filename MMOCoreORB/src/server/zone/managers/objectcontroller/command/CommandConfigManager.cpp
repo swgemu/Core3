@@ -477,6 +477,17 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("WEAPONATTACK", CombatManager::WEAPONATTACK);
 	setGlobalInt("FORCEATTACK", CombatManager::FORCEATTACK);
 
+	// damage types
+	setGlobalInt("KINETIC_DAMAGE", WeaponObject::KINETIC);
+	setGlobalInt("ENERGY_DAMAGE", WeaponObject::ENERGY);
+	setGlobalInt("BLAST_DAMAGE", WeaponObject::BLAST);
+	setGlobalInt("STUN_DAMAGE", WeaponObject::STUN);
+	setGlobalInt("LIGHTSABER_DAMAGE", WeaponObject::LIGHTSABER);
+	setGlobalInt("HEAT_DAMAGE", WeaponObject::HEAT);
+	setGlobalInt("COLD_DAMAGE", WeaponObject::COLD);
+	setGlobalInt("ACID_DAMAGE", WeaponObject::ACID);
+	setGlobalInt("ELECTRICITY_DAMAGE", WeaponObject::ELECTRICITY);
+
 	// force heal targets
 	setGlobalInt("FORCE_HEAL_TARGET_SELF", ForceHealQueueCommand::TARGET_SELF);
 	setGlobalInt("FORCE_HEAL_TARGET_OTHER", ForceHealQueueCommand::TARGET_OTHER);
@@ -558,8 +569,12 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			combatCommand->setAccuracyBonus(Lua::getIntParameter(L));
 		else if (varName == "speedMultiplier")
 			combatCommand->setSpeedMultiplier(Lua::getFloatParameter(L));
-		else if (varName == "damage")
-			combatCommand->setDamage(Lua::getFloatParameter(L));
+		else if (varName == "minDamage")
+			combatCommand->setMinDamage(Lua::getFloatParameter(L));
+		else if (varName == "maxDamage")
+			combatCommand->setMaxDamage(Lua::getFloatParameter(L));
+		else if (varName == "damageType")
+			combatCommand->setDamageType(Lua::getIntParameter(L));
 		else if (varName == "speed")
 			combatCommand->setSpeed(Lua::getFloatParameter(L));
 		else if (varName == "poolsToDamage")

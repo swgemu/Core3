@@ -42,9 +42,10 @@
 --true = 1, false = 0
 
 MindBlast1Command = {
-        name = "mindblast1",
+	name = "mindblast1",
 
-	damage = 1000,
+	minDamage = 750,
+	maxDamage = 1000,
 	speed = 4.0,
 	forceCost = 68,
 	accuracySkillMod = "mindblast_accuracy";
@@ -88,6 +89,7 @@ MindBlast1Command = {
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
 	attackType = FORCEATTACK,
+	damageType = LIGHTSABER_DAMAGE,
 
 	range = 32
 }

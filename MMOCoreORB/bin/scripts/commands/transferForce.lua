@@ -42,13 +42,13 @@
 --true = 1, false = 0
 
 TransferForceCommand = {
-        name = "transferforce",
+	name = "transferforce",
 	
 	animationCRC = hashCode("force_transfer_1"),
 
 	combatSpam = "forcetransfer_hit",
 	
-	damage = 200, --Force transferred
+	minDamage = 200, --Force transferred
 	
 	range = 32
 }

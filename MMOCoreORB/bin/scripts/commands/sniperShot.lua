@@ -42,9 +42,9 @@
 --true = 1, false = 0
 
 SniperShotCommand = {
-        name = "snipershot",
+	name = "snipershot",
 
-    	damage = 200,
+	minDamage = 200,
 	speed = 1.0,
 	healthCostMultiplier = 0.5,
 	actionCostMultiplier = 0.5,

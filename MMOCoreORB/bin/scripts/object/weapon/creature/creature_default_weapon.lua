@@ -50,7 +50,7 @@ object_weapon_creature_creature_default_weapon = object_weapon_creature_shared_c
 	attackType = MELEEATTACK,
 	weaponType = MELEEWEAPON,
 	
-	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, LIGHTSABER
 	damageType = KINETIC,
 	
 	-- NONE, LIGHT, MEDIUM, HEAVY
