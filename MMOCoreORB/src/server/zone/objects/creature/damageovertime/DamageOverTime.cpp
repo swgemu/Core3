@@ -226,6 +226,9 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attack
 	}
 
 	int woundsToApply = (int)(secondaryStrength * (1.f + victim->getShockWounds() / 100.0f));
+	int maxWoundsToApply = victim->getBaseHAM(attribute) - 1 - victim->getWounds(attribute);
+
+	woundsToApply = MIN(woundsToApply, maxWoundsToApply);
 
 	Reference<CreatureObject*> attackerRef = attacker;
 	Reference<CreatureObject*> victimRef = victim;
@@ -304,6 +307,10 @@ uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim, CreatureObject* att
 	// absorption reduces the strength of a dot by the given %.
 	// make sure that the CM dots modify the strength
 	int damage = (int)(strength * (1.f - absorptionMod / 100.f) * (1.f + victim->getShockWounds() / 100.0f));
+	int maxDamage = victim->getBaseHAM(attribute) - 1 - victim->getWounds(attribute);
+
+	damage = MIN(damage, maxDamage);
+
 	uint8 attribute = this->attribute;
 	uint32 strength = this->strength;
 	Reference<CreatureObject*> attackerRef = attacker;
