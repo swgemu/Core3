@@ -3149,6 +3149,11 @@ void AiAgentImplementation::sendReactionChat(int type, int state, bool force) {
 		reactionManager->sendChatReaction(asAiAgent(), type, state, force);
 }
 
+void AiAgentImplementation::setMaxHAM(int type, int value, bool notifyClient) {
+		CreatureObjectImplementation::setMaxHAM(type, value, notifyClient);
+		activateRecovery();
+	}
+
 float AiAgentImplementation::getEffectiveResist() {
 	if (!isSpecialProtection(WeaponObject::ACID) && getAcid() > 0)
 		return getAcid();
