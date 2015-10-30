@@ -1428,9 +1428,9 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 	}
 
 	posture = newPosture;
-	
+
 	updateSpeedAndAccelerationMods();
-	
+
 	// TODO: these two seem to be as of yet unused (maybe only necessary in client)
 	//CreaturePosture::instance()->getTurnScale((uint8)newPosture);
 	//CreaturePosture::instance()->getCanSeeHeightMod((uint8)newPosture);
@@ -1471,7 +1471,7 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 	}
 
 	if(posture != CreaturePosture::UPRIGHT && posture != CreaturePosture::DRIVINGVEHICLE
-				&& posture != CreaturePosture::RIDINGCREATURE && posture != CreaturePosture::SKILLANIMATING ) {
+			&& posture != CreaturePosture::RIDINGCREATURE && posture != CreaturePosture::SKILLANIMATING ) {
 		setCurrentSpeed(0);
 	}
 
@@ -1780,7 +1780,7 @@ void CreatureObjectImplementation::updateTerrainNegotiation()
 }
 
 float CreatureObjectImplementation::getTerrainNegotiation() {
-    float slopeMod = ((float)getSkillMod("slope_move") / 50.0f) + terrainNegotiation;
+	float slopeMod = ((float)getSkillMod("slope_move") / 50.0f) + terrainNegotiation;
 	if(slopeMod > 1)
 		slopeMod = 1;
 	return slopeMod;
@@ -2661,7 +2661,7 @@ void CreatureObjectImplementation::sendStateCombatSpam(const String& fileName, c
 
 void CreatureObjectImplementation::sendCustomCombatSpam(const UnicodeString& customString, byte color) {
 	if (!this->isPlayerCreature())
-			return;
+		return;
 	CombatSpam* spam = new CombatSpam(asCreatureObject(), customString, color);
 	sendMessage(spam);
 }
@@ -3260,10 +3260,16 @@ void CreatureObjectImplementation::updateVehiclePosition(bool sendPackets) {
 
 	CreatureObject* creo = cast<CreatureObject*>(parent.get());
 
-	if (creo != NULL) {
-		Locker clocker(creo, asCreatureObject());
-		creo->setCurrentSpeed(getCurrentSpeed());
-	}
+	if (creo == NULL)
+		return;
+
+	CreatureObject* creoPointer = asCreatureObject();
+
+	if (creoPointer == NULL)
+		return;
+
+	Locker clocker(creo, creoPointer);
+	creo->setCurrentSpeed(getCurrentSpeed());
 
 	TangibleObjectImplementation::updateVehiclePosition(sendPackets);
 }
