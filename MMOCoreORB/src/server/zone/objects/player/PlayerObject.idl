@@ -665,17 +665,19 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public native void clearScreenPlayData(final string screenPlay);
-	
+
 	public native void activateRecovery();
 
 	public native void activateForcePowerRegen();
-	
+
 	public native void doRecovery(int latency);
-	
+
+	private native void checkForNewSpawns();
+
 	public native void disconnect(boolean closeClient, boolean doLock);
-	
+
 	public native void reload(ZoneClientSession client);
-	
+
 	public void setOffline() {
 		if (isLinkDead()) {
 			// clear LD flag

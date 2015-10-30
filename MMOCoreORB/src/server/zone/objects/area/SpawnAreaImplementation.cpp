@@ -106,69 +106,6 @@ int SpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Observa
 	return 1;
 }
 
-void SpawnAreaImplementation::notifyEnter(SceneObject* object) {
-	if (!(tier & SpawnAreaMap::SPAWNAREA)) {
-		ActiveAreaImplementation::notifyEnter(object);
-		return;
-	}
-
-	if (!object->isPlayerCreature())
-		return;
-
-	CreatureObject* creo = cast<CreatureObject*>(object);
-	if (creo->isInvisible()) {
-		return;
-	}
-
-	ManagedReference<SceneObject*> parent = object->getParent();
-
-	if (parent != NULL && parent->isCellObject())
-		return;
-
-	if (object->getCityRegion() != NULL)
-		return;
-
-	ManagedReference<SpawnArea*> spawnArea = _this.getReferenceUnsafeStaticCast();
-	ManagedReference<SceneObject*> obj = object;
-
-	EXECUTE_TASK_2(spawnArea, obj, {
-			spawnArea_p->tryToSpawn(obj_p);
-	});
-
-}
-
-void SpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
-	if (!(tier & SpawnAreaMap::SPAWNAREA))
-		return;
-
-	CreatureObject* creature = dynamic_cast<CreatureObject*>(obj);
-
-	if (creature == NULL)
-		return;
-
-	if (!creature->isPlayerCreature() || creature->isInvisible())
-		return;
-
-	ManagedReference<SceneObject*> parent = creature->getParent();
-
-	if (parent != NULL && parent->isCellObject())
-		return;
-
-	if (System::random(25) == 1) {
-		ManagedReference<SpawnArea*> spawnArea = _this.getReferenceUnsafeStaticCast();
-		ManagedReference<SceneObject*> object = cast<SceneObject*>(obj);
-
-		EXECUTE_TASK_2(spawnArea, object, {
-				spawnArea_p->tryToSpawn(object_p);
-		});
-	}
-}
-
-void SpawnAreaImplementation::notifyExit(SceneObject* object) {
-	if (!(tier & SpawnAreaMap::SPAWNAREA))
-		ActiveAreaImplementation::notifyExit(object);
-}
-
 void SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 	Locker _locker(_this.getReferenceUnsafeStaticCast());
 

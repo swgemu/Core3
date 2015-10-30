@@ -1603,7 +1603,75 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 		}
 	}
 
+	checkForNewSpawns();
+
 	activateRecovery();
+}
+
+void PlayerObjectImplementation::checkForNewSpawns() {
+	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
+	if (creature->isInvisible()) {
+		return;
+	}
+
+	ManagedReference<SceneObject*> parent = creature->getParent();
+
+	if (parent != NULL && parent->isCellObject()) {
+		return;
+	}
+
+	if (creature->getCityRegion() != NULL) {
+		return;
+	}
+
+	SortedVector<ManagedReference<ActiveArea* > > areas = *dynamic_cast<SortedVector<ManagedReference<ActiveArea* > >* >(creature->getActiveAreas());
+	Vector<SpawnArea*> spawnAreas;
+	int totalWeighting = 0;
+
+	for (int i = 0; i < areas.size(); ++i) {
+		ManagedReference<ActiveArea*> area = areas.get(i);
+
+		if (area->isNoSpawnArea()) {
+			return;
+		}
+
+		SpawnArea* spawnArea = area.castTo<SpawnArea*>();
+
+		if (spawnArea == NULL) {
+			continue;
+		}
+
+		if (!(spawnArea->getTier() & SpawnAreaMap::SPAWNAREA)) {
+			continue;
+		}
+
+		spawnAreas.add(spawnArea);
+		totalWeighting += spawnArea->getTotalWeighting();
+	}
+
+	int choice = System::random(totalWeighting - 1);
+	int counter = 0;
+	ManagedReference<SpawnArea*> finalArea = NULL;
+
+	for (int i = 0; i < spawnAreas.size(); i++) {
+		SpawnArea* area = spawnAreas.get(i);
+
+		counter += area->getTotalWeighting();
+
+		if (choice < counter) {
+			finalArea = area;
+			break;
+		}
+	}
+
+	if (finalArea == NULL) {
+		return;
+	}
+
+	EXECUTE_TASK_2(finalArea, creature, {
+			finalArea_p->tryToSpawn(creature_p);
+	});
 }
 
 void PlayerObjectImplementation::activateRecovery() {
