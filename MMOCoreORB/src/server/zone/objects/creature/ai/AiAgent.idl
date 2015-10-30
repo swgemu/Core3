@@ -81,7 +81,7 @@ class AiAgent extends CreatureObject {
 	protected CreatureAttackMap attackMap;
 	protected CreatureAttackMap defaultAttackMap;
 
-	@dereferenced 
+	@dereferenced
 	protected transient Vector<unsigned long> camouflagedObjects;
 
 	@dereferenced
@@ -275,7 +275,7 @@ class AiAgent extends CreatureObject {
 	 * Sends the CREO baseline messages of this object to the specified player
 	 * @pre { this object is locked }
 	 * @post { this object is locked, player received the baseline messages }
-	 * @param player SceneObject that will receive the baselines 
+	 * @param player SceneObject that will receive the baselines
 	 */
 	@dirty
 	public native void sendBaselinesTo(SceneObject player);
@@ -329,10 +329,10 @@ class AiAgent extends CreatureObject {
 	@local
 	@preLocked
 	public native void doAwarenessCheck();
-	
+
 	@local
 	public native boolean runAwarenessLogicCheck(SceneObject pObject);
-	
+
 	@local
 	public native int checkForReactionChat(SceneObject pObject);
 
@@ -383,7 +383,7 @@ class AiAgent extends CreatureObject {
 	}
 
 	public void clearSavedPatrolPoints() {
-		synchronized (targetMutex) {		
+		synchronized (targetMutex) {
 			savedPatrolPoints.removeAll();
 		}
 	}
@@ -438,7 +438,7 @@ class AiAgent extends CreatureObject {
 	@preLocked
 	@arg1preLocked
 	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
-	
+
 	@preLocked
 	@arg1preLocked
 	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true);
@@ -450,7 +450,7 @@ class AiAgent extends CreatureObject {
 	}
 
 	/**
-	 * sends the conversation notification 
+	 * sends the conversation notification
 	 * @pre {this locked, player locked }
 	 * @post { this locked, player locked }
 	 * @return whether the conversation was started or not
@@ -467,7 +467,7 @@ class AiAgent extends CreatureObject {
 	public native void sendDefaultConversationTo(SceneObject player);
 
 	/**
-	 * sends the conversation list 
+	 * sends the conversation list
 	 * @pre {this locked, player locked }
 	 * @post { this locked, player locked }
 	 */
@@ -577,7 +577,7 @@ class AiAgent extends CreatureObject {
 	 * @param timeToDespawn the time to despawn the AiAgent in seconds.
 	 */
 	@preLocked
-	public abstract native void scheduleDespawn(int timeToDespawn); 
+	public abstract native void scheduleDespawn(int timeToDespawn);
 
 	/**
 	 * Respawns creature to specified zone with home location position
@@ -618,7 +618,7 @@ class AiAgent extends CreatureObject {
 	 * Evaluates if this can be attacket by object
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
-	 * @return returns true if object can attack this 
+	 * @return returns true if object can attack this
 	 */
 	@dirty
 	public native boolean isAttackableBy(CreatureObject object);
@@ -1120,7 +1120,7 @@ class AiAgent extends CreatureObject {
 	public boolean isAiAgent() {
 		return true;
 	}
-	
+
 	@dirty
 	@nativeStub
 	@local
@@ -1151,14 +1151,14 @@ class AiAgent extends CreatureObject {
 	/**
 	 * Pull an AI template from AiMap and set up the tree using the rules from the template. Then 
 	 * store the root behavior in the trees Map.
-	 * 
+	 *
 	 * TODO: Should we store the active (instead of root) node in the trees map? I like that idea -- dannuic
-	 * 
+	 *
 	 * Maintain an unsorted vector of Behaviors for reference (TODO: needed? -- dannuic)
-	 * 
+	 *
 	 * TODO: Do we actually need a map, or is one tree just fine? Only implement one AI per AiAgent for now,
 	 * we can implement a multi-AI system later if it's appropriate -- dannuic
-	 * 
+	 *
 	 * Status is passed to the parent upon execution of doAction, which then sets the next Behavior
 	 * to the tree and runs it.
 	 */
@@ -1355,7 +1355,7 @@ class AiAgent extends CreatureObject {
 	public void setReactionRank(int rank) {
 		reactionRank = rank;
 	}
-	
+
 	@dirty
 	public int getHamMaximum() {
 		return npcTemplate.get().getBaseHAMmax();
@@ -1363,6 +1363,12 @@ class AiAgent extends CreatureObject {
 	@dirty
 	public int getHamBase() {
 		return npcTemplate.get().getBaseHAM();
+	}
+
+	@preLocked
+	public void setMaxHAM(int attribute, int value, boolean notifyClient = true) {
+		super.setMaxHAM(int attribute, int value, boolean notifyClient = true);
+		activateRecovery();
 	}
 
 	/**
