@@ -50,8 +50,15 @@ public:
 			}
 		}
 
+		//check if droid is in correct proximity to owner
+		ManagedReference<CreatureObject*> owner = droid->getLinkedCreature().get();
+		if( !droid->isInRange(owner, 16.0f) ){
+			droid->removePendingTask("droid_effects");
+			return;
+		}
+
 		// Check droid states
-		if( droid->isDead() || droid->isIncapacitated() ){
+		if( droid->isDead() || droid->isIncapacitated()){
 			droid->removePendingTask("droid_effects");
 			return;
 		}
