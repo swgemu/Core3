@@ -25,6 +25,9 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (creature->hasAttackDelay())
+			return GENERALERROR;
+
 		//StringTokenizer args(arguments.toString());
 
 		if (creature->isDizzied() && System::random(100) < 85) {
