@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_103e32b9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/BuffImplementation.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-10-31T04:27:40Z",
+      "side": 1,
+      "message": "You should account for wounds as well.",
+      "revId": "8c1db3762614e1ccce44b7f21230b18b5ef2cc24",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
