@@ -22,7 +22,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (!creature->isAiAgent())
+		if (!creature->isAiAgent() || creature->hasAttackDelay())
 			return GENERALERROR;
 
 		return doCombatAction(creature, target, arguments);

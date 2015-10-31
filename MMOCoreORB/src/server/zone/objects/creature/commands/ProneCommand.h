@@ -23,6 +23,9 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (creature->hasAttackDelay())
+			return GENERALERROR;
+
 		// TODO: DELETE STARTING HERE
 		UnicodeTokenizer args(arguments);
 
