@@ -126,6 +126,12 @@ void DroidObjectImplementation::notifyInsertToZone(Zone* zone) {
 
 }
 
+void DroidObjectImplementation::doAwarenessCheck() {
+	onAwareness();
+
+	AiAgentImplementation::doAwarenessCheck();
+}
+
 int DroidObjectImplementation::rechargeFromBattery(CreatureObject* player){
 
 	// Find droid battery in player inventory
@@ -273,18 +279,30 @@ void DroidObjectImplementation::onStore() {
 		module->onStore();
 	}
 }
+
 void DroidObjectImplementation::onCall() {
 	for( int i=0; i<modules.size(); i++){
 		BaseDroidModuleComponent* module = modules.get(i);
 		module->onCall();
 	}
 }
+
+void DroidObjectImplementation::onAwareness() {
+	ManagedReference<CreatureObject* > player = this->linkedCreature.get();
+
+	for( int i=0; i<modules.size(); i++){
+		BaseDroidModuleComponent* module = modules.get(i);
+		module->onAwareness(_this.getReferenceUnsafeStaticCast(), player);
+	}
+}
+
 void DroidObjectImplementation::loadSkillMods(CreatureObject* player) {
 	for( int i=0; i<modules.size(); i++){
 		BaseDroidModuleComponent* module = modules.get(i);
 		module->loadSkillMods(player);
 	}
 }
+
 void DroidObjectImplementation::unloadSkillMods(CreatureObject* player) {
 	for( int i=0; i<modules.size(); i++){
 		BaseDroidModuleComponent* module = modules.get(i);

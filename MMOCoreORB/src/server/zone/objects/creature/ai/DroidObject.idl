@@ -150,6 +150,15 @@ class DroidObject extends AiAgent {
 	@local
 	public native void notifyInsertToZone(Zone zone);
 
+	/**
+	 * Does the AI awareness update tick
+	 * @pre { this is locked }
+	 * @post { this is locked, this AI will have scheduled one awareness check }
+	 */
+	@local
+	@preLocked
+	public native void doAwarenessCheck();
+
 	@dirty
 	public boolean isDroidObject() {
 		return true;
@@ -275,12 +284,19 @@ class DroidObject extends AiAgent {
 	@local
 	@preLocked
 	public native void onStore();
+
 	@local
 	@preLocked
 	public native void onCall();
+
+	@local
+	@preLocked
+	public native void onAwareness();
+
 	@local
 	@preLocked
 	public native void loadSkillMods(CreatureObject player);
+
 	@local
 	@preLocked
 	public native void unloadSkillMods(CreatureObject player);

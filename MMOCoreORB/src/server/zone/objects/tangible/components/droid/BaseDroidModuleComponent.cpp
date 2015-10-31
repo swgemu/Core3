@@ -49,10 +49,16 @@ String BaseDroidModuleComponent::toString() {
 	str << getModuleName() << "\n";
 	return str.toString();
 }
+
 void BaseDroidModuleComponent::onCall() {
 }
+
 void BaseDroidModuleComponent::onStore() {
 }
+
+void BaseDroidModuleComponent::onAwareness(DroidObject* droid, CreatureObject* player) {
+}
+
 ManagedReference<DroidObject*> BaseDroidModuleComponent::getDroidObject() {
 	ManagedReference<DroidObject*> droid = getParent()->getParentRecursively(SceneObjectType::DROIDCREATURE).get().castTo<DroidObject*>();
 	return droid;

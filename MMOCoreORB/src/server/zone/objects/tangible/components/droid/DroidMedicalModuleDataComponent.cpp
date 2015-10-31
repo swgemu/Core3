@@ -9,6 +9,7 @@
 DroidMedicalModuleDataComponent::DroidMedicalModuleDataComponent() {
 	setLoggingName("DroidMedicalModule");
 	rating = 0;
+	modsLoaded = false;
 }
 DroidMedicalModuleDataComponent::~DroidMedicalModuleDataComponent() {
 
@@ -74,20 +75,45 @@ void DroidMedicalModuleDataComponent::copy(BaseDroidModuleComponent* other) {
 	if (droidComponent != NULL)
 		droidComponent->addProperty("medical_module",(float)rating,0,"exp_effectiveness");
 }
+
 void DroidMedicalModuleDataComponent::onCall() {
 	// no op
 }
+
 void DroidMedicalModuleDataComponent::onStore() {
 	// no op on store
 }
+
+void DroidMedicalModuleDataComponent::onAwareness(DroidObject* droid, CreatureObject* player) {
+	if (player == NULL)
+		return;
+
+	if (droid->isDead() || !droid->hasPower()) {
+		if (modsLoaded)
+			unloadSkillMods(player);
+
+		return;
+	}
+
+	bool inRange = droid->isInRange(player, 16.0f);
+
+	if (inRange && !modsLoaded) {
+		loadSkillMods(player);
+	} else if (!inRange && modsLoaded) {
+		unloadSkillMods(player);
+	}
+}
+
 void DroidMedicalModuleDataComponent::loadSkillMods(CreatureObject* player) {
 	// add the rating to the player as a private medical center for right now we ignore the part about not usable in a static cantina we will handle that in the injury treatment task
-	// only add this is the payer didnt have it already.
+	// only add this is the player didnt have it already.
 	player->removeAllSkillModsOfType(SkillModManager::DROID,true);
 	player->addSkillMod(SkillModManager::DROID,"private_medical_rating",getMedicalRating(),true);
+	modsLoaded = true;
 }
+
 void DroidMedicalModuleDataComponent::unloadSkillMods(CreatureObject* player) {
 	player->removeAllSkillModsOfType(SkillModManager::DROID,true);
-	//player->removeSkillMod(SkillModManager::DROID,"private_medical_rating",true);
+	modsLoaded = false;
 }
 
