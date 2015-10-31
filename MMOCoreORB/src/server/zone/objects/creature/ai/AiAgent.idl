@@ -328,7 +328,7 @@ class AiAgent extends CreatureObject {
 	 */
 	@local
 	@preLocked
-	public native void doAwarenessCheck();
+	public abstract native void doAwarenessCheck();
 
 	@local
 	public native boolean runAwarenessLogicCheck(SceneObject pObject);

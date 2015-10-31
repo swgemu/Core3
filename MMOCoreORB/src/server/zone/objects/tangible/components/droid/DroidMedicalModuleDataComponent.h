@@ -21,6 +21,7 @@ class DroidMedicalModuleDataComponent : public BaseDroidModuleComponent {
 
 protected:
 	int rating;
+	bool modsLoaded;
 
 public:
 	DroidMedicalModuleDataComponent();
@@ -36,6 +37,7 @@ public:
 	// crafting droid module specific
 	void onCall();
 	void onStore();
+	void onAwareness(DroidObject* droid, CreatureObject* player);
 	bool isStackable() { return true; }
 	void copy(BaseDroidModuleComponent* other);
 	void addToStack(BaseDroidModuleComponent* other);

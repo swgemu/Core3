@@ -99,6 +99,7 @@ public:
 	virtual String toString();
 	virtual void onCall();
 	virtual void onStore();
+	virtual void onAwareness(DroidObject* droid, CreatureObject* player);
 	virtual bool isDroidModuleData() { return true; }
 	virtual bool isStackable() { return false; }
 	virtual bool isCombatModule() { return false; }
