@@ -25,14 +25,8 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		/*if (creature->isDizzied()) {
-			if (creature->getPosture() != CreaturePosture::CROUCHED) {
-				creature->setPosture(CreaturePosture::KNOCKEDDOWN);
-				creature->sendSystemMessage("@cbt_spam:dizzy_fall_down_single");
-
-				return SUCCESS;
-			}
-		}*/
+		if (creature->hasAttackDelay())
+			return GENERALERROR;
 
 		if (creature->isDizzied() && System::random(100) < 85) {
 			creature->queueDizzyFallEvent();
