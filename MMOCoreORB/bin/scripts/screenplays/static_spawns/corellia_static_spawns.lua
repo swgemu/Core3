@@ -32,6 +32,9 @@ function CorelliaStaticSpawnsScreenPlay:spawnSceneObjects()
 
 	createObserver(OBJECTDESTRUCTION, "CorelliaStaticSpawnsScreenPlay", "notifyTurretDestroyed", pTurret)
 
+	spawnSceneObject("corellia", "object/static/vehicle/static_speeder_bike.iff", 615.7, 26.1, -434.0, 0, math.rad(84) )
+	spawnSceneObject("corellia", "object/static/structure/general/droid_probedroid_powerdown.iff", 640.5, 27.1, -424.0, 0, math.rad(-138) )
+
 end
 
 function CorelliaStaticSpawnsScreenPlay:notifyTurretDestroyed(pTurret, pPlayer)
@@ -56,7 +59,21 @@ end
 
 function CorelliaStaticSpawnsScreenPlay:spawnMobiles()
 
-	--Need to add the rest of static spawns (Incomplete).
+	--random Power Plant (643 -429)
+	local pNpc = spawnMobile("corellia", "twilek_slave", 60,621.013,26.31,-435.848,-50,0)
+	self:setMoodString(pNpc, "sad")
+	pNpc = spawnMobile("corellia", "surgical_droid_21b", 60,632.614,26.8166,-438.739,135,0)
+	self:setMoodString(pNpc, "neutral")
+	pNpc = spawnMobile("corellia", "twilek_slave", 60,637.195,26.9908,-434.182,135,0)
+	self:setMoodString(pNpc, "npc_use_terminal_high")
+	pNpc = spawnMobile("corellia", "r4", 60,637.837,27.0342,-433.138,-172,0)
+	self:setMoodString(pNpc, "neutral")
+	pNpc = spawnMobile("corellia", "r5", 60,620.512,26.3006,-437.168,-25,0)
+	self:setMoodString(pNpc, "worried")
+	pNpc = spawnMobile("corellia", "seeker", 60,626.362,26.6092,-440.824,-45,0)
+	self:setMoodString(pNpc, "neutral")
+	pNpc = spawnMobile("corellia", "contractor", 60,618.957,26.2465,-433.424,130,0)
+	self:setMoodString(pNpc, "angry")
 
 	--Rebels vs Imps (4112 -1252) Smoking small Rebel base
 	spawnMobile("corellia", "rebel_army_captain", 30,5.2,0.1,-3.6,-93,6036092)
@@ -73,8 +90,6 @@ function CorelliaStaticSpawnsScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "imperial_trooper", 60, 4132.13,24,-1269.63,-75,0)
 	spawnMobile("corellia", "imperial_trooper", 60, 4075.41,26.4493,-1269.93,90,0)
 	spawnMobile("corellia", "imperial_trooper", 60, 4066.41,35.4493,-1268.93,90,0)
-
-	--Power Plant (643 -429) Unknown if there are spawns not populated.
 
 	--Imperial Detachment HQ (-2975 2908) Outside Kor Vella, populated in city kor_vella screenplay
 
