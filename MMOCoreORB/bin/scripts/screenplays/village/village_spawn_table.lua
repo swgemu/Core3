@@ -8,7 +8,7 @@ villageMobileSpawns = {
 		{ "noldan", 5243, 78, -4224, 0, "", "" },
 		{ "quharek", 5373.7, 78.5, -4181.4, -69, "", "" },
 		{ "fs_villager_farmer", 5291.31, 78.5, -4037.8, 164, "", "" },
-		{ "eozlin", 5200.15, 78.5, -4141.37, 164, "", "" },
+		{ "eozlin", 5200.15, 78.5, -4141.37, 164, "", "villageSurveyorConvoTemplate" },
 	},
 
 	[1] = {

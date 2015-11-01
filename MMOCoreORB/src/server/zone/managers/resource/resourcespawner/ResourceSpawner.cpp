@@ -836,8 +836,7 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 	for (int i = 0; i < points; i++) {
 		for (int j = 0; j < points; j++) {
 
-			float density = resourceMap->getDensityAt(resname, zoneName, posX,
-					posY);
+			float density = resourceMap->getDensityAt(resname, zoneName, posX, posY);
 
 			if (density > maxDensity) {
 				maxDensity = density;
@@ -1046,6 +1045,7 @@ void ResourceSpawner::sendSampleResults(CreatureObject* player, const float dens
 		playerManager->awardExperience(player, "resource_harvesting_inorganic", xp, true);
 
 	addResourceToPlayerInventory(player, resourceSpawn, unitsExtracted);
+	player->notifyObservers(ObserverEventType::SAMPLE, resourceSpawn, density);
 
 	if (resourceSpawn->isType("radioactive")) {
 		int wound = int((sampleRate / 30) - System::random(7));

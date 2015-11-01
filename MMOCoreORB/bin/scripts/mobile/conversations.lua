@@ -130,6 +130,7 @@ includeFile("conversations/tasks/theater_manager_conv.lua")
 -- Village
 includeFile("conversations/village/fs_village_convo6_m_conv.lua")
 includeFile("conversations/village/fs_village_convo7_conv.lua")
+includeFile("conversations/village/fs_surveyor_conv.lua")
 includeFile("conversations/village/old_man_conv.lua")
 includeFile("conversations/village/paemos_conv.lua")
 includeFile("conversations/village/phase1/elder_phase1_conv.lua")
