@@ -19,6 +19,7 @@ include server.zone.objects.resource.SpawnDensityMap;
 include server.zone.objects.resource.SpawnMap;
 import server.zone.objects.scene.SceneObject;
 
+@lua
 class ResourceSpawn extends SceneObject {
 
 	protected string spawnType;
