@@ -828,5 +828,10 @@ class TangibleObject extends SceneObject {
 	public void setInvisible(boolean invis) {
 		invisible = invis;
 	}
+
+	@dirty
+	public abstract boolean isCustomIngredient() {
+		return false;
+	}
 }
 

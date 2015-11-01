@@ -273,7 +273,7 @@ public:
 	const static int ORGANICFOOD = 0x400009;
 	const static int ORGANICHIDE = 0x40000A;
 	const static int ORGANICSTRUCTURAL = 0x40000B;
-	const static int QUESTREOURCE = 0x40000C; // Resource Container?
+	const static int QUESTRESOURCE = 0x40000C; // Resource Container?
 
 	// Not in client ************
 	const static int RESOURCESPAWN = 0x410000;
