@@ -69,6 +69,7 @@ includeFile("dungeon/corellian_corvette/lt_lance.lua")
 -- Village
 includeFile("village/convos/fs_experience_converter_conv_handler.lua")
 includeFile("village/convos/elder_conv_handler.lua")
+includeFile("village/convos/fs_surveyor_conv_handler.lua")
 includeFile("village/convos/fs_village_convo6_m_conv_handler.lua")
 includeFile("village/convos/fs_village_convo7_conv_handler.lua")
 includeFile("village/convos/phase1/sarguillo_phase1_conv_handler.lua")
