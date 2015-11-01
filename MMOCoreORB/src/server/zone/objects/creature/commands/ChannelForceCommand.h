@@ -31,15 +31,9 @@ public:
 			return NOJEDIARMOR;
 		}
 
-
-		// Bonus is inbetween 200-300.
+		// Bonus is in between 200-300.
 		int rand = System::random(10);
 		int forceBonus = 200 + (rand * 10); // Needs to be divisible by amount of ticks.
-
-		if ((creature->getMaxHAM(CreatureAttribute::HEALTH) <= forceBonus) || (creature->getMaxHAM(CreatureAttribute::ACTION) <= forceBonus) || (creature->getMaxHAM(CreatureAttribute::MIND) <= forceBonus)) {
-			creature->sendSystemMessage("@jedi_spam:channel_ham_too_low"); // Your body is too weakened to perform that action.
-			return GENERALERROR;
-		}
 
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
@@ -52,26 +46,28 @@ public:
 
 		// To keep it from going over max...
 		if ((playerObject->getForcePowerMax() - playerObject->getForcePower()) < forceBonus)
-			forceBonus = (playerObject->getForcePowerMax() - playerObject->getForcePower());
-
-
-		// Give Force, and subtract HAM.
-
-		playerObject->setForcePower(playerObject->getForcePower() + forceBonus);
+			forceBonus = ((playerObject->getForcePowerMax() - playerObject->getForcePower() / 10) * 10);
 
 		int maxHealth = creature->getMaxHAM(CreatureAttribute::HEALTH);
 		int maxAction = creature->getMaxHAM(CreatureAttribute::ACTION);
 		int maxMind = creature->getMaxHAM(CreatureAttribute::MIND);
 
+		if ((maxHealth - creature->getWounds(CreatureAttribute::HEALTH) <= forceBonus) || (maxAction - creature->getWounds(CreatureAttribute::ACTION) <= forceBonus) || (maxMind - creature->getWounds(CreatureAttribute::MIND) <= forceBonus)) {
+			creature->sendSystemMessage("@jedi_spam:channel_ham_too_low"); // Your body is too weakened to perform that action.
+			return GENERALERROR;
+		}
+
+		// Give Force, and subtract HAM.
+
+		playerObject->setForcePower(playerObject->getForcePower() + forceBonus);
+
 		creature->setMaxHAM(CreatureAttribute::HEALTH, maxHealth - forceBonus, true);
 		creature->setMaxHAM(CreatureAttribute::ACTION, maxAction - forceBonus, true);
 		creature->setMaxHAM(CreatureAttribute::MIND, maxMind - forceBonus, true);
 
-
 		// Setup task.
 		Reference<ChannelForceRegenTask*> cfTask = new ChannelForceRegenTask(creature, forceBonus);
 		creature->addPendingTask("channelForceRegenTask", cfTask, 6000);
-
 
 		return SUCCESS;
 	}
