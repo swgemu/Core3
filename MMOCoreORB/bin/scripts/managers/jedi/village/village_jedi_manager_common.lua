@@ -50,4 +50,12 @@ function VillageJediManagerCommon.unlockBranch(pPlayer, branch)
 	CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject())
 end
 
+function VillageJediManagerCommon.hasUnlockedBranch(pPlayer, branch)
+	if (pPlayer == nil) then
+		return false
+	end
+	
+	return CreatureObject(pPlayer):hasScreenPlayState(2, "VillageUnlockScreenPlay:" .. branch)
+end
+
 return VillageJediManagerCommon
