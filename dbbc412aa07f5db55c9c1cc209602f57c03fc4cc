@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_f0dce676",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/PostureDownAttackCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-02T02:36:13Z",
+      "side": 1,
+      "message": "This is unnecessary. Combat commands are already checked for delays in the combat manager.",
+      "revId": "dbbc412aa07f5db55c9c1cc209602f57c03fc4cc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_10dab278",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/PostureUpAttackCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-02T02:36:13Z",
+      "side": 1,
+      "message": "Also unnecessary.",
+      "revId": "dbbc412aa07f5db55c9c1cc209602f57c03fc4cc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
