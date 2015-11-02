@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_b0541ecb",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ChannelForceCommand.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-02T04:39:47Z",
+      "side": 1,
+      "message": "Remove your added comment",
+      "revId": "1b166bd98c4b44cbb777cc4bf0c1c89c9f52c947",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_d051aad9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ChannelForceCommand.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-02T04:39:47Z",
+      "side": 1,
+      "message": "Don\u0027t use maxHealth for all 3 checks. Use maxHealth for the first, maxAction for the second, maxMind for the third.\n\nAlso, your encapsulation (parenthesis) is a bit confusing. Be consistent with how you encapsulate each of the 3 checks.",
+      "revId": "1b166bd98c4b44cbb777cc4bf0c1c89c9f52c947",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
