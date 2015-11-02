@@ -11,6 +11,7 @@
 #include "engine/engine.h"
 #include "DirectorSharedMemory.h"
 #include "server/zone/managers/director/QuestStatus.h"
+#include "server/zone/managers/director/QuestVectorMap.h"
 
 #include "system/util/SynchronizedHashTable.h"
 #include "system/util/SynchronizedVectorMap.h"
@@ -53,6 +54,7 @@ namespace server {
 		ThreadLocal<Lua*> localLua;
 		VectorMap<String, bool> screenPlays;
 		SynchronizedVectorMap<String, Reference<QuestStatus*> > questStatuses;
+		SynchronizedVectorMap<String, Reference<QuestVectorMap*> > questVectorMaps;
 
 #ifdef WITH_STM
 		TransactionalReference<DirectorSharedMemory* > sharedMemory;
@@ -161,6 +163,9 @@ namespace server {
 		static int playClientEffectLoc(lua_State* L);
 		static int getQuestInfo(lua_State* L);
 		static int getPlayerQuestID(lua_State* L);
+		static int getQuestVectorMap(lua_State* L);
+		static int removeQuestVectorMap(lua_State* L);
+		static int createQuestVectorMap(lua_State* L);
 
 	private:
 		void setupLuaPackagePath(Lua* luaEngine);
