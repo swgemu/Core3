@@ -1,0 +1,45 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.managers.director;
+
+import engine.lua.LuaObject;
+import engine.core.ManagedObject;
+import system.lang.String;
+
+@lua
+class QuestVectorMap extends ManagedObject {
+	protected string key;
+	
+	@dereferenced
+	protected VectorMap<string, string> questMap;
+
+	public QuestVectorMap() {
+		key = "";
+	}
+	
+	public string getKey() {
+		return key;
+	}
+	
+	public void setKey(final string k) {
+		key = k;
+	}
+
+	public synchronized string getMapRow(final string mapKey) {
+		return questMap.get(mapKey); 
+	}
+	
+	public synchronized void addMapRow(final string mapKey, final string mapValue) {
+		questMap.put(mapKey, mapValue);
+	}
+
+	public synchronized void deleteMapRow(final string mapKey) {
+		questMap.drop(mapKey);
+	}
+
+	public synchronized boolean hasMapRow(final string mapKey) {
+		return questMap.contains(mapKey);
+	}
+}

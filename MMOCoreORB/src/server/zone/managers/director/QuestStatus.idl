@@ -20,7 +20,7 @@ class QuestStatus extends ManagedObject {
 		return key;
 	}
 	
-	public void setKey(string k) {
+	public void setKey(final string k) {
 		key = k;
 	}
 	
@@ -28,7 +28,7 @@ class QuestStatus extends ManagedObject {
 		return status;
 	}
 	
-	public void setStatus(string s) {
+	public void setStatus(final string s) {
 		status = s;
 	}
 }
