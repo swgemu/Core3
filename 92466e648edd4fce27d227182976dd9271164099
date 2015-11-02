@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_703776b1",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase1/fs_survey.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-02T04:30:30Z",
+      "side": 1,
+      "message": "Why not just get the current phase and pass that instead or trying both? You can temporarily set the phase to 2 like you do in the convo handler.",
+      "revId": "92466e648edd4fce27d227182976dd9271164099",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_3041ee0b",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase1/fs_survey.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-02T04:30:30Z",
+      "side": 1,
+      "message": "Seems odd that the survey tool reward would be given in the same manner as the special resources. Is that really how it was?",
+      "revId": "92466e648edd4fce27d227182976dd9271164099",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_5046fa24",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase1/fs_survey.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-02T04:30:30Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand this. You\u0027re getting a random number between average - 50 and average + 50. How could it ever be greater than average + 150 or lower than average - 150? Why not just check \u003e 1000 and \u003c 150?",
+      "revId": "92466e648edd4fce27d227182976dd9271164099",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_b0bdfe04",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-02T04:30:30Z",
+      "side": 1,
+      "message": "Why does this need to be required here?",
+      "revId": "92466e648edd4fce27d227182976dd9271164099",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_f04aa626",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_common.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-02T04:30:30Z",
+      "side": 1,
+      "message": "What are you going to use this for? I don\u0027t see anywhere where you do use it.",
+      "revId": "92466e648edd4fce27d227182976dd9271164099",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_30ca4ea2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_surveyor_conv_handler.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-02T04:30:30Z",
+      "side": 1,
+      "message": "There\u0027s no screen called thanks. Did you mean intro_completed_current_phase?",
+      "revId": "92466e648edd4fce27d227182976dd9271164099",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_50cfdab0",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_surveyor_conv_handler.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-02T04:30:30Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "92466e648edd4fce27d227182976dd9271164099",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_903c8295",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_surveyor_conv_handler.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-02T04:30:30Z",
+      "side": 1,
+      "message": "I think this is wrong. According to the strings, the player has to sample for the resource, not just survey. Instead of using the survey observer from survey quests, you need to make one for sampling. When they sample in a spot with a high enough density, then you can give the special resource, though I\u0027m not sure it should be given automatically with the first sample.\n\nBased on the language in the strings (\"Once you get there, take a sample and try to find some special resources.\"), it seems to me like it should be a chance on sample to get the special resource so it might take them a bit to actually find it.",
+      "revId": "92466e648edd4fce27d227182976dd9271164099",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
