@@ -114,6 +114,7 @@ core3_IDLS =	autogen/server/zone/objects/tangible/misc/CustomIngredient.cpp \
 				autogen/server/zone/objects/tangible/tool/antidecay/AntiDecayKit.cpp \
 				autogen/server/zone/objects/tangible/deed/eventperk/EventPerkDeed.cpp \
 				autogen/server/zone/managers/director/QuestStatus.cpp \
+				autogen/server/zone/managers/director/QuestVectorMap.cpp \
 				autogen/server/zone/objects/tangible/LairObject.cpp \
 				autogen/server/zone/managers/creature/DynamicSpawnObserver.cpp \
 				autogen/server/zone/managers/creature/SpawnObserver.cpp \
