@@ -92,6 +92,9 @@ DirectorManager::DirectorManager() : Logger("DirectorManager") {
 
 	questStatuses.setNullValue(NULL);
 	questStatuses.setNoDuplicateInsertPlan();
+
+	questVectorMaps.setNullValue(NULL);
+	questVectorMaps.setNoDuplicateInsertPlan();
 }
 
 void DirectorManager::loadPersistentEvents() {
@@ -150,14 +153,21 @@ void DirectorManager::loadPersistentStatus() {
 		while (iterator.getNextKey(objectID)) {
 			Reference<QuestStatus*> status = Core::getObjectBroker()->lookUp(objectID).castTo<QuestStatus*>();
 
-			if (status != NULL)
+			if (status != NULL) {
 				questStatuses.put(status->getKey(), status);
+				continue;
+			}
+
+			Reference<QuestVectorMap*> questMap = Core::getObjectBroker()->lookUp(objectID).castTo<QuestVectorMap*>();
+
+			if (questMap != NULL)
+				questVectorMaps.put(questMap->getKey(), questMap);
 		}
 	} catch (DatabaseException& e) {
 		error("Database exception in DirectorManager::loadPersistentStatus(): "	+ e.getMessage());
 	}
 
-	info(String::valueOf(questStatuses.size()) + " persistent statuses loaded.", true);
+	info(String::valueOf(questStatuses.size() + questVectorMaps.size()) + " persistent statuses loaded.", true);
 }
 
 void DirectorManager::setQuestStatus(String keyString, String valString) {
@@ -310,6 +320,9 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "removeQuestStatus", removeQuestStatus);
 	lua_register(luaEngine->getLuaState(), "getControllingFaction", getControllingFaction);
 	lua_register(luaEngine->getLuaState(), "playClientEffectLoc", playClientEffectLoc);
+	lua_register(luaEngine->getLuaState(), "getQuestVectorMap", getQuestVectorMap);
+	lua_register(luaEngine->getLuaState(), "createQuestVectorMap", createQuestVectorMap);
+	lua_register(luaEngine->getLuaState(), "removeQuestVectorMap", removeQuestVectorMap);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -1986,7 +1999,7 @@ int DirectorManager::spawnActiveArea(lua_State* L) {
 		area->setCellObjectID(cellID);
 
 		Locker zoneLocker(zone);
-		
+
 		zone->transferObject(area, -1, true);
 
 		area->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
@@ -2806,4 +2819,88 @@ int DirectorManager::getQuestInfo(lua_State* L) {
 		lua_pushlightuserdata(L, questInfo);
 
 	return 1;
+}
+
+int DirectorManager::getQuestVectorMap(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getQuestVectorMap");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String keyString = lua_tostring(L, -1);
+
+	Reference<QuestVectorMap*> questMap = instance()->getQuestVectorMap(keyString);
+
+	if (questMap == NULL)
+		lua_pushnil(L);
+	else
+		lua_pushlightuserdata(L, questMap);
+
+	return 1;
+}
+
+int DirectorManager::createQuestVectorMap(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::createQuestVectorMap");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String keyString = lua_tostring(L, -1);
+
+	Reference<QuestVectorMap*> questMap = instance()->createQuestVectorMap(keyString);
+
+	if (questMap == NULL)
+		lua_pushnil(L);
+	else
+		lua_pushlightuserdata(L, questMap);
+
+	return 1;
+}
+
+int DirectorManager::removeQuestVectorMap(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::removeQuestVectorMap");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String keyString = lua_tostring(L, -1);
+
+	instance()->removeQuestVectorMap(keyString);
+
+	return 0;
+}
+
+
+QuestVectorMap* DirectorManager::createQuestVectorMap(String keyString) {
+	Reference<QuestVectorMap*> questMap = questVectorMaps.get(keyString);
+
+	if (questMap == NULL) {
+		questMap = new QuestVectorMap();
+		questMap->setKey(keyString);
+		questVectorMaps.put(keyString, questMap);
+
+		ObjectManager::instance()->persistObject(questMap, 1, "questdata");
+	}
+
+	return questMap;
+}
+
+QuestVectorMap* DirectorManager::getQuestVectorMap(String keyString) {
+	Reference<QuestVectorMap*> questMap = questVectorMaps.get(keyString);
+
+	return questMap;
+}
+
+void DirectorManager::removeQuestVectorMap(String keyString) {
+	Reference<QuestVectorMap*> questMap = NULL;
+
+	questMap = questVectorMaps.get(keyString);
+
+	questVectorMaps.drop(keyString);
+
+	if (questMap != NULL)
+		ObjectManager::instance()->destroyObjectFromDatabase(questMap->_getObjectID());
 }
