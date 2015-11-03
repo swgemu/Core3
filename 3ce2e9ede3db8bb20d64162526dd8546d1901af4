@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_708f7624",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/intro/sith_shadow_encounter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-03T15:41:53Z",
+      "side": 0,
+      "message": "You should remove the sith_shadow mobile now that it\u0027s no longer being used.",
+      "revId": "3ce2e9ede3db8bb20d64162526dd8546d1901af4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_1079522f",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/encounter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-03T15:41:53Z",
+      "side": 0,
+      "message": "You might as well remove NOTINABUILDING. No point in declaring something that isn\u0027t used.",
+      "revId": "3ce2e9ede3db8bb20d64162526dd8546d1901af4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_d0720a49",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/encounter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-03T15:41:53Z",
+      "side": 0,
+      "message": "You may as well remove ENCOUNTER_CLOSING_IN_TIME and ENCOUNTER_AT_PLAYER_TIME if they aren\u0027t going to be used.",
+      "revId": "3ce2e9ede3db8bb20d64162526dd8546d1901af4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

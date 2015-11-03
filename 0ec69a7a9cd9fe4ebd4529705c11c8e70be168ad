@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_b075fe33",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/encounter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-03T15:41:53Z",
+      "side": 1,
+      "message": "This is backwards. Remove the not.",
+      "revId": "0ec69a7a9cd9fe4ebd4529705c11c8e70be168ad",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_90948238",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/encounter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-03T15:41:53Z",
+      "side": 1,
+      "message": "Why not just use SceneObject(pCreatureObject):isInRangeWithObject(spawnedObjects[1], self.inRangeValue) ?\n\nIt calls SceneObject\u0027s isInRange which does essentially the same thing you\u0027re doing with your new function (comparing squared distances) but does it in cpp.",
+      "revId": "0ec69a7a9cd9fe4ebd4529705c11c8e70be168ad",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
