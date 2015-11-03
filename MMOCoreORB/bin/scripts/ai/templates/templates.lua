@@ -1,5 +1,6 @@
 includeAiFile("templates/example.lua")
 includeAiFile("templates/stationary.lua")
+includeAiFile("templates/stationarynoleash.lua")
 includeAiFile("templates/follow.lua")
 includeAiFile("templates/wait.lua")
 includeAiFile("templates/idlewander.lua")

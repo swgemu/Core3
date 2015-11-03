@@ -93,4 +93,8 @@ function Task:finish(pCreatureObject)
 	end
 end
 
+function Task:calculateDistance(x1, y1, x2, y2)
+	return math.abs(x1 - x2) + math.abs(y1 - y2)
+end
+
 return Task

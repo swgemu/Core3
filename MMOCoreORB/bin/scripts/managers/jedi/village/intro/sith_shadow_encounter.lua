@@ -19,15 +19,15 @@ SithShadowEncounter = Encounter:new {
 	minimumTimeUntilEncounter = 1 * 60 * 1000, -- 12 hours
 	maximumTimeUntilEncounter = 1 * 60 * 1000, -- 24 hours
 	--encounterDespawnTime = 5 * 60 * 1000, -- 5 minutes
-	encounterDespawnTime = 5 * 60 * 1000, -- 5 minutes
+	encounterDespawnTime = 1 * 60 * 1000, -- 5 minutes
 	spawnObjectList = {
-		{ template = "sith_shadow", minimumDistance = 64, maximumDistance = 96, referencePoint = 0, followPlayer = true, setNotAttackable = false },
-		{ template = "sith_shadow", minimumDistance = 4, maximumDistance = 8, referencePoint = 1, followPlayer = true, setNotAttackable = false }
+		{ template = "sith_shadow_outlaw_mission", minimumDistance = 64, maximumDistance = 96, referencePoint = 0, followPlayer = true, setNotAttackable = false, runOnDespawn = false },
+		{ template = "sith_shadow_outlaw_mission", minimumDistance = 4, maximumDistance = 8, referencePoint = 1, followPlayer = true, setNotAttackable = false, runOnDespawn = false }
 	},
 	onEncounterSpawned = nil,
 	isEncounterFinished = nil,
-	onEncounterClosingIn = nil,
-	onEncounterAtPlayer = nil
+	onEncounterInRange = nil,
+	inRangeValue = 26,
 }
 
 -- Check if the sith shadow is the first one spawned for the player.
@@ -122,11 +122,11 @@ function SithShadowEncounter:onEncounterSpawned(pCreatureObject, spawnedObjects)
 	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.TwO_MILITARY)
 end
 
--- Handling of the encounter closing in event.
+-- Handling of the encounter in range event.
 -- Send a spatial chat from the first sith shadow.
 -- @param pCreatureObject pointer to the creature object of the player who has this encounter.
 -- @param spawnedObjects list of pointers to the spawned sith shadows.
-function SithShadowEncounter:onEncounterClosingIn(pCreatureObject, spawnedObjects)
+function SithShadowEncounter:onEncounterInRange(pCreatureObject, spawnedObjects)
 	if (pCreatureObject == nil or spawnedObjects == nil or spawnedObjects[1] == nil) then
 		return
 	end
