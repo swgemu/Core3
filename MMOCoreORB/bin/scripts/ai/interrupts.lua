@@ -200,7 +200,7 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 				end
 			end
 		else aiAgent:setOblivious() end
-	else
+	elseif not (pObject == pFollow and aiAgent:getFollowState() == FOLLOWING) then
 		aiAgent:setOblivious()
 	end
 

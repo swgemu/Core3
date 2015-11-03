@@ -38,11 +38,12 @@ Encounter = Task:new {
 	minimumTimeUntilEncounter = 0,
 	maximumTimeUntilEncounter = 0,
 	encounterDespawnTime = 0,
+	despawnMessage = "",
 	spawnObjectList = {},
 	onEncounterSpawned = nil,
 	isEncounterFinished = nil,
-	onEncounterClosingIn = nil,
-	onEncounterAtPlayer = nil,
+	onEncounterInRange = nil,
+	inRangeValue = 16,
 	spawnTask = nil,
 	despawnTask = nil
 }
@@ -102,50 +103,52 @@ end
 -- @param pCreatureObject pointer to the creature object of the player that should be checked for being in a building or not.
 -- @return true if the player is in a building.
 function Encounter:isPlayerInABuilding(pCreatureObject)
-	return ObjectManager.withSceneObject(pCreatureObject, function(sceneObject)
-		return not (sceneObject:getParentID() == NOTINABUILDING)
-	end) == true
+	return not SceneObject(pCreatureObject):getParentID() == 0
 end
 
 -- Check if the player is in a NPC city.
 -- @param pCreatureObject pointer to the creature object of the player who should be checked for being in a NPC city.
 -- return true if the player is within a NPC city.
 function Encounter:isPlayerInNpcCity(pCreatureObject)
-	return ObjectManager.withSceneObject(pCreatureObject, function(sceneObject)
-		local pCityRegion = getCityRegionAt(sceneObject:getZoneName(), sceneObject:getWorldPositionX(), sceneObject:getWorldPositionY())
-		local inNpcCity = ObjectManager.withCityRegion(pCityRegion, function(cityRegion)
-			return not cityRegion:isClientRegion()
-		end)
-		return inNpcCity == true
-	end) == true
+	if (pCreatureObject == nil or SceneObject(pCreatureObject):getZoneName() == "") then
+		return false
+	end
+
+	local pCityRegion = getCityRegionAt(SceneObject(pCreatureObject):getZoneName(), SceneObject(pCreatureObject):getWorldPositionX(), SceneObject(pCreatureObject):getWorldPositionY())
+
+	if (pCityRegion == nil) then
+		return false
+	end
+
+	return not CityRegion(pCityRegion):isClientRegion()
 end
 
 -- Check if the player is in a position where the encounter can be spawned.
 -- @param pCreatureObject pointer to the player object of the player.
 function Encounter:isPlayerInPositionForEncounter(pCreatureObject)
-	return (self:isPlayerOnline(pCreatureObject) and not self:isPlayerInABuilding(pCreatureObject) and not self:isPlayerInNpcCity(pCreatureObject))
+	return self:isPlayerOnline(pCreatureObject) and not self:isPlayerInABuilding(pCreatureObject) and not self:isPlayerInNpcCity(pCreatureObject)
 end
 
--- Empty handler for the handleEncounterClosingIn event.
+-- Empty handler for the handleEncounterInRange event.
 -- @param pCreatureObject pointer to the player object of the player.
-function Encounter:handleEncounterClosingIn(pCreatureObject)
-	Logger:log("Mobiles closing in in encounter " .. self.taskName .. ".", LT_INFO)
-	local spawnedObjects = SpawnMobiles.getSpawnedMobiles(pCreatureObject, self.taskName)
-	self:callFunctionIfNotNil(self.onEncounterClosingIn, nil, pCreatureObject, spawnedObjects)
-end
+function Encounter:handleEncounterInRangeCheck(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
 
--- Empty handler for the handleEncounterAtPlayer event.
--- @param pCreatureObject pointer to the player object of the player.
-function Encounter:handleEncounterAtPlayer(pCreatureObject)
-	Logger:log("Mobiles at player in encounter " .. self.taskName .. ".", LT_INFO)
 	local spawnedObjects = SpawnMobiles.getSpawnedMobiles(pCreatureObject, self.taskName)
-	self:setSpawnedObjectsToFollow(spawnedObjects, nil)
-	self:callFunctionIfNotNil(self.onEncounterAtPlayer, nil, pCreatureObject, spawnedObjects)
-	
-	for i = 1, table.getn(spawnedObjects), 1 do
-		if (spawnedObjects[i] ~= nil) then
-			AiAgent(spawnedObjects[i]):setHomeLocation(CreatureObject(spawnedObjects[i]):getPositionX(), CreatureObject(spawnedObjects[i]):getPositionZ(), CreatureObject(spawnedObjects[i]):getPositionY(), nil)
-		end
+
+	if (spawnedObjects == nil or spawnedObjects[1] == nil) then
+		return
+	end
+
+	local curRange = self:calculateDistance(SceneObject(pCreatureObject):getPositionX(), SceneObject(pCreatureObject):getPositionY(), SceneObject(spawnedObjects[1]):getPositionX(), SceneObject(spawnedObjects[1]):getPositionY())
+
+	-- calculateDistance function is compared against squared range for accuracy
+	if (curRange <= self.inRangeValue ^ 2) then
+		self:callFunctionIfNotNil(self.onEncounterInRange, nil, pCreatureObject, spawnedObjects)
+	else
+		createEvent(1000, self.taskName, "handleEncounterInRangeCheck", pCreatureObject)
 	end
 end
 
@@ -153,9 +156,8 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param spawnedObjects list with pointers to the spawned objects.
 function Encounter:createEncounterEvents(pCreatureObject, spawnedObjects)
-	Logger:log("Creating encounter events in " .. self.taskName .. ".", LT_INFO)
-	createEvent(ENCOUNTER_CLOSING_IN_TIME, self.taskName, "handleEncounterClosingIn", pCreatureObject)
-	createEvent(ENCOUNTER_AT_PLAYER_TIME, self.taskName, "handleEncounterAtPlayer", pCreatureObject)
+	Logger:log("Creating encounter distance heartbeat in " .. self.taskName .. ".", LT_INFO)
+	createEvent(1000, self.taskName, "handleEncounterInRangeCheck", pCreatureObject)
 end
 
 -- Set all spawned objects to follow an object.
@@ -165,14 +167,16 @@ function Encounter:setSpawnedObjectsToFollow(spawnedObjects, objectToFollow)
 	if spawnedObjects ~= nil then
 		for i = 1, table.getn(spawnedObjects), 1 do
 			if self.spawnObjectList[i]["setNotAttackable"] then
-				ObjectManager.withCreatureObject(spawnedObjects[i], function(creo)
-					creo:setPvpStatusBitmask(0)
-				end)
+				CreatureObject(spawnedObjects[i]):setPvpStatusBitmask(0)
 			end
+
 			if self.spawnObjectList[i]["followPlayer"] then
-				ObjectManager.withCreatureAiAgent(spawnedObjects[i], function(aiAgent)
-					aiAgent:setFollowObject(objectToFollow)
-				end)
+				if self.spawnObjectList[i]["setNotAttackable"] then
+					AiAgent(spawnedObjects[i]):setAiTemplate("follow")
+				else
+					AiAgent(spawnedObjects[i]):setAiTemplate("stationarynoleash")
+				end
+				AiAgent(spawnedObjects[i]):setFollowObject(objectToFollow)
 			end
 		end
 	end
@@ -196,7 +200,11 @@ end
 -- Function to call from the spawn event.
 -- @param pCreatureObject pointer to the creature object of the player.
 function Encounter:handleSpawnEvent(pCreatureObject)
-	Logger:log("Spawn encounter in " .. self.taskName .. " triggered.", LT_INFO)
+	if (pCreatureObject == nil) then
+		return
+	end
+
+	Logger:log("Spawn encounter in " .. self.taskName .. " triggered for player " .. SceneObject(pCreatureObject):getDisplayedName() .. ".", LT_INFO)
 	self:setupSpawnAndDespawnEvents()
 	self.spawnTask:finish(pCreatureObject)
 
@@ -215,6 +223,76 @@ end
 -- Function to call from the despawn event.
 -- @param pCreatureObject pointer to the creature object of the player.
 function Encounter:handleDespawnEvent(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
+
+	local spawnedObjects = SpawnMobiles.getSpawnedMobiles(pCreatureObject, self.taskName)
+
+	if (spawnedObjects == nil) then
+		self:doDespawn(pCreatureObject)
+		return
+	end
+
+	if (self.despawnMessage ~= "") then
+		CreatureObject(pCreatureObject):sendSystemMessage(self.despawnMessage)
+	end
+
+	local runAway = false
+
+	local mobX, mobY
+
+	for i = 1, table.getn(spawnedObjects), 1 do
+		if spawnedObjects[i] ~= nil and self.spawnObjectList[i]["runOnDespawn"] and self.spawnObjectList[i]["setNotAttackable"] then
+			runAway = true
+			mobX = SceneObject(spawnedObjects[i]):getPositionX()
+			mobY = SceneObject(spawnedObjects[i]):getPositionY()
+		end
+	end
+
+	if (not runAway) then
+		self:doDespawn(pCreatureObject)
+		return
+	end
+
+	local playerX = SceneObject(pCreatureObject):getPositionX()
+	local playerY = SceneObject(pCreatureObject):getPositionY()
+	local newX, newY
+
+	if (playerX < mobX) then
+		newX = playerX - getRandomNumber(20,40)
+	else
+		newX = playerX + getRandomNumber(20,40)
+	end
+
+	if (playerY < mobY) then
+		newY = playerY - getRandomNumber(20,40)
+	else
+		newY = playerY + getRandomNumber(20,40)
+	end
+
+	local newZ = getTerrainHeight(pCreatureObject, newX, newY)
+
+	for i = 1, table.getn(spawnedObjects), 1 do
+		if (spawnedObjects[i] ~= nil) then
+			AiAgent(spawnedObjects[i]):setFollowObject(nil)
+			AiAgent(spawnedObjects[i]):setAiTemplate("manualescort")
+
+			AiAgent(spawnedObjects[i]):stopWaiting()
+			AiAgent(spawnedObjects[i]):setWait(0)
+			AiAgent(spawnedObjects[i]):setNextPosition(newX, newZ, newY, 0)
+			AiAgent(spawnedObjects[i]):executeBehavior()
+		end
+	end
+
+	createEvent(8000, self.taskName, "doDespawn", pCreatureObject)
+end
+
+function Encounter:doDespawn(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
+
 	Logger:log("Despawning mobiles in encounter " .. self.taskName .. ".", LT_INFO)
 	self:setupSpawnAndDespawnEvents()
 	self.despawnTask:finish(pCreatureObject)

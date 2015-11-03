@@ -93,4 +93,9 @@ function Task:finish(pCreatureObject)
 	end
 end
 
+-- Calculate distance between points, compare against a squared distance for accuracy
+function Task:calculateDistance(x1, y1, x2, y2)
+	return ((x1 - x2) ^ 2) + ((y1 - y2) ^ 2)
+end
+
 return Task
