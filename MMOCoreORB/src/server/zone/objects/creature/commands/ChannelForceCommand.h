@@ -48,6 +48,15 @@ public:
 		if ((playerObject->getForcePowerMax() - playerObject->getForcePower()) < forceBonus)
 			forceBonus = ((playerObject->getForcePowerMax() - playerObject->getForcePower() / 10) * 10);
 
+		int Health = creature->getHAM(CreatureAttribute::HEALTH);
+		int Action = creature->getHAM(CreatureAttribute::ACTION);
+		int Mind = creature->getHAM(CreatureAttribute::MIND);
+
+		if ((Health < forceBonus) || (Action < forceBonus) || (Mind < forceBonus)) {
+			creature->sendSystemMessage("@jedi_spam:channel_ham_too_low"); // Your body is too weakened to perform that action.
+			return GENERALERROR;
+		}
+
 		int maxHealth = creature->getMaxHAM(CreatureAttribute::HEALTH);
 		int maxAction = creature->getMaxHAM(CreatureAttribute::ACTION);
 		int maxMind = creature->getMaxHAM(CreatureAttribute::MIND);
