@@ -107,11 +107,6 @@ function TatooineStaticSpawnsNorthScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "alkhara_bandit", 300, -4881.9, 94.8, 2956.5, -165, 0)
 	spawnMobile("tatooine", "alkhara_bandit", 300, -4877.9, 94.6, 2951.1, -165, 0)
 
-	--Imperial Camp (-5332,2710) needs its own screenplay
-	spawnMobile("tatooine", "trainer_commando",0,-5292,6.76132,2718,183,0)
-	spawnMobile("tatooine", "informant_npc_lvl_2",0,-5284,9.1,2676,240,0)
-	spawnMobile("tatooine", "informant_npc_lvl_1",0,-5296,8.5,2654,0,0)
-
 	--Rocks With Fire on Top (-6112,3966)
 
 	--Krayt Skeleton (-6750,3569)
