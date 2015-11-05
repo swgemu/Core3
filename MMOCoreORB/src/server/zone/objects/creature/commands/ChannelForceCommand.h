@@ -48,6 +48,15 @@ public:
 		if ((playerObject->getForcePowerMax() - playerObject->getForcePower()) < forceBonus)
 			forceBonus = ((playerObject->getForcePowerMax() - playerObject->getForcePower() / 10) * 10);
 
+		int health = creature->getHAM(CreatureAttribute::HEALTH);
+		int action = creature->getHAM(CreatureAttribute::ACTION);
+		int mind = creature->getHAM(CreatureAttribute::MIND);
+
+		if ((health <= forceBonus) || (action <= forceBonus) || (mind <= forceBonus)) {
+			creature->sendSystemMessage("@jedi_spam:channel_ham_too_low"); // Your body is too weakened to perform that action.
+			return GENERALERROR;
+		}
+
 		int maxHealth = creature->getMaxHAM(CreatureAttribute::HEALTH);
 		int maxAction = creature->getMaxHAM(CreatureAttribute::ACTION);
 		int maxMind = creature->getMaxHAM(CreatureAttribute::MIND);
@@ -64,6 +73,10 @@ public:
 		creature->setMaxHAM(CreatureAttribute::HEALTH, maxHealth - forceBonus, true);
 		creature->setMaxHAM(CreatureAttribute::ACTION, maxAction - forceBonus, true);
 		creature->setMaxHAM(CreatureAttribute::MIND, maxMind - forceBonus, true);
+
+		creature->setHAM(CreatureAttribute::HEALTH, health - forceBonus, true);
+		creature->setHAM(CreatureAttribute::ACTION, action - forceBonus, true);
+		creature->setHAM(CreatureAttribute::MIND, mind - forceBonus, true);
 
 		// Setup task.
 		Reference<ChannelForceRegenTask*> cfTask = new ChannelForceRegenTask(creature, forceBonus);
