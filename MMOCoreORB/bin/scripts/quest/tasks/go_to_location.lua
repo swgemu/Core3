@@ -74,7 +74,7 @@ function GoToLocation:taskStart(pCreatureObject)
 	local point = self.spawnPoint
 
 	if (self.randomLocation) then
-		local tempPoint = getSpawnPoint(pCreatureObject, SceneObject(pCreatureObject):getWorldPositionX(), SceneObject(pCreatureObject):getWorldPositionY(), self.randomMinDistance, self.randomMaxDistance, true)
+		local tempPoint = getSpawnArea(pCreatureObject, SceneObject(pCreatureObject):getWorldPositionX(), SceneObject(pCreatureObject):getWorldPositionY(), self.randomMinDistance, self.randomMaxDistance, 30, 5, true)
 		point.x = tempPoint[1]
 		point.y = tempPoint[3]
 	end
