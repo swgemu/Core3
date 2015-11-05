@@ -39,9 +39,11 @@ function villageSivarraPhase1ConvoHandler:getInitialScreen(pPlayer, pNpc, pConve
 	elseif (not QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_02) and
 		QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_01)) then
 		return convoTemplate:getScreen("intro_start_second_set")
+	elseif (VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
+		return convoTemplate:getScreen("intro_has_another_quest")
+	else
+		return convoTemplate:getScreen("intro")
 	end
-
-	return convoTemplate:getScreen("intro")
 end
 
 function villageSivarraPhase1ConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
@@ -54,6 +56,7 @@ function villageSivarraPhase1ConvoHandler:runScreenHandlers(conversationTemplate
 		QuestManager.setCurrentQuestID(conversingPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_01)
 		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_01)
 		FsMedicPuzzle:setCuredVillagerCount(conversingPlayer, 0)
+		VillageJediManagerCommon.setActiveQuestThisPhase(conversingPlayer)
 
 		ObjectManager.withCreaturePlayerObject(conversingPlayer, function(playerObject)
 			playerObject:addRewardedSchematic("object/draft_schematic/item/quest_item/fs_medic_puzzle_heal_pack.iff", 2, -1, true)
@@ -86,7 +89,7 @@ function villageSivarraPhase1ConvoHandler:runScreenHandlers(conversationTemplate
 				CreatureObject(conversingPlayer):sendSystemMessage("Error: Unable to generate item.")
 			end
 		end
-
+		VillageJediManagerCommon.setCompletedQuestThisPhase(conversingPlayer)
 		FsMedicPuzzle:cleanUp(conversingPlayer)
 	elseif (screenID == "talk_droids_again") then
 		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_02)

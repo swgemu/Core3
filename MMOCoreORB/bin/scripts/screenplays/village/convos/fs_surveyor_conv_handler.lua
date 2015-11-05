@@ -27,7 +27,11 @@ function villageSurveyorConvoHandler:getInitialScreen(pPlayer, pNpc, pConversati
 		return convoTemplate:getScreen("intro_in_progress")
 	end
 
-	return convoTemplate:getScreen("intro")
+	if (VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
+		return convoTemplate:getScreen("intro_has_another_quest")
+	else
+		return convoTemplate:getScreen("intro")
+	end
 end
 
 function villageSurveyorConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
@@ -47,7 +51,7 @@ function villageSurveyorConvoHandler:runScreenHandlers(conversationTemplate, con
 			return conversationScreen
 		end
 		local pQuest = getQuestInfo(hasQuest)
-		
+
 		local questTarget = LuaQuestInfo(pQuest):getQuestTarget()
 		clonedConversation:setDialogTextStringId("@quest/force_sensitive/fs_survey:sample_for_" .. questTarget)
 	elseif (screenID == "special_answer") then

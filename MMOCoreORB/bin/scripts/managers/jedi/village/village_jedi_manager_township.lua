@@ -12,10 +12,6 @@ VillageJediManagerTownship = ScreenPlay:new {
 	screenplayName = "VillageJediManagerTownship"
 }
 
-VILLAGE_PHASE_ONE = 1
-VILLAGE_PHASE_TWO = 2
-VILLAGE_PHASE_THREE = 3
-VILLAGE_PHASE_FOUR = 4
 VILLAGE_TOTAL_NUMBER_OF_PHASES = 1 -- Temporarily set to 1 for testing until other phases begin development
 
 local VILLAGE_PHASE_CHANGE_TIME = 24 * 60 * 60 * 1000 -- Testing value.
@@ -24,11 +20,25 @@ local VILLAGE_PHASE_CHANGE_TIME = 24 * 60 * 60 * 1000 -- Testing value.
 
 -- Set the current Village Phase for the first time.
 function VillageJediManagerTownship.setCurrentPhaseInit()
-	local phaseChange = hasServerEvent("VillagePhaseChange")
-	if (phaseChange == false) then
-		VillageJediManagerTownship.setCurrentPhase(VILLAGE_PHASE_ONE)
+	if (not hasServerEvent("VillagePhaseChange")) then
+		VillageJediManagerTownship.setCurrentPhase(1)
+		VillageJediManagerTownship.setPhaseID(1)
 		createServerEvent(VILLAGE_PHASE_CHANGE_TIME, "VillageJediManagerTownship", "switchToNextPhase", "VillagePhaseChange")
 	end
+end
+
+function VillageJediManagerTownship.setCurrentPhaseID(phaseID)
+	setQuestStatus("Village:phaseID", phaseID)
+end
+
+function VillageJediManagerTownship.getCurrentPhaseID()
+	local curPhase = tonumber(getQuestStatus("Village:phaseID"))
+
+	if (curPhase == nil) then
+		return 1
+	end
+
+	return curPhase
 end
 
 -- Set the current Village Phase.
@@ -48,6 +58,7 @@ end
 
 function VillageJediManagerTownship:switchToNextPhase()
 	local currentPhase = VillageJediManagerTownship.getCurrentPhase()
+	local phaseID = VillageJediManagerTownship.getCurrentPhaseID()
 	VillageJediManagerTownship:despawnMobiles(currentPhase)
 	VillageJediManagerTownship:despawnSceneObjects(currentPhase)
 
@@ -57,6 +68,7 @@ function VillageJediManagerTownship:switchToNextPhase()
 	end
 
 	VillageJediManagerTownship.setCurrentPhase(currentPhase)
+	VillageJediManagerTownship.setCurrentPhaseID(phaseID + 1)
 	VillageJediManagerTownship:spawnMobiles(currentPhase, false)
 	VillageJediManagerTownship:spawnSceneObjects(currentPhase, false)
 	Logger:log("Switching village phase to " .. currentPhase, LT_INFO)
