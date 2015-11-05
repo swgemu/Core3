@@ -82,8 +82,6 @@ function TatooineStaticSpawnsNorthScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "dwarf_nuna", 300, 6675.8, 1.1, 5473.4, 175, 0)
 	spawnMobile("tatooine", "cu_pa", 300, 6677.8, 1.3, 5445.0, -45, 0)
 
-	--Sandcrawler (5770,4007) already populate in its own screenplay
-
 	--Giant Krayt (5728,3784)
 	spawnMobile("tatooine", "giant_canyon_krayt_dragon", 1800, 5728.5, 56.6, 3784.7, 35, 0)
 
@@ -107,11 +105,6 @@ function TatooineStaticSpawnsNorthScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "alkhara_bandit", 300, -4881.9, 94.8, 2956.5, -165, 0)
 	spawnMobile("tatooine", "alkhara_bandit", 300, -4877.9, 94.6, 2951.1, -165, 0)
 
-	--Imperial Camp (-5332,2710) needs its own screenplay
-	spawnMobile("tatooine", "trainer_commando",0,-5292,6.76132,2718,183,0)
-	spawnMobile("tatooine", "informant_npc_lvl_2",0,-5284,9.1,2676,240,0)
-	spawnMobile("tatooine", "informant_npc_lvl_1",0,-5296,8.5,2654,0,0)
-
 	--Rocks With Fire on Top (-6112,3966)
 
 	--Krayt Skeleton (-6750,3569)
@@ -123,8 +116,6 @@ function TatooineStaticSpawnsNorthScreenPlay:spawnMobiles()
 
 	--Hunter Camp
 	spawnMobile("tatooine", "hunter", 300, -6893.4, 68.7, 1509.4, -86, 0)
-
-	--Jawa Traders (-6131,1866) needs its own screenplay
 
 	--Comms Dish (-5467,2138)
 
@@ -148,7 +139,6 @@ function TatooineStaticSpawnsNorthScreenPlay:spawnMobiles()
         createObserver(OBJECTDESTRUCTION, "TatooineStaticSpawnsNorthScreenPlay", "notifyWarriorDead", pWarrior)
 
 	--Building Ruins, Balcony and Stairs (576,353)
-		--unsure what if anything to populate here
 	spawnMobile("tatooine", "jawa", 300,579.1,160.5,355.3,179,0)
 	spawnMobile("tatooine", "jawa", 300,578.9,160.5,352.9,4,0)
 	spawnMobile("tatooine", "jawa", 300,596.6,153.4,340.7,-13,0)
@@ -162,11 +152,7 @@ function TatooineStaticSpawnsNorthScreenPlay:spawnMobiles()
 
 	--3 Arches (1855,1465)
 
-	--Jabba's cave (5148,618) already populated, tatooine hutt hideout screenplay
-
 	--2 small buildings (5100,596)
-
-	--Village Ruins (5692,1877) needs its own screenplay
 
 	--Building Ruins (6395,195)
 
@@ -177,17 +163,16 @@ function TatooineStaticSpawnsNorthScreenPlay:notifyWarriorDead(pWarrior, pKiller
           local pWarlord = spawnMobile("tatooine", "tusken_warlord", 0, -160.3, 156.1, 1923.4, 0, 0)
 			spawnMobile("tatooine", "tusken_sniper", 0, -183.2, 157.5, 1920.6, 15, 0)
 			spawnMobile("tatooine", "tusken_gore_chief", 0, -159.6, 146.6, 1941.2, -55, 0)
-			
+
           createObserver(OBJECTDESTRUCTION, "TatooineStaticSpawnsNorthScreenPlay", "notifyWarlordDead", pWarlord)
           writeData("TatooineStaticSpawnsNorthScreenPlay:tusken_warlord",1)
      end
-     
+
      return 0
 end
 
 function TatooineStaticSpawnsNorthScreenPlay:notifyWarlordDead(pWarlord, pKiller)
      writeData("TatooineStaticSpawnsNorthScreenPlay:tusken_warlord", 0)
-     
+
      return 1
 end
-
