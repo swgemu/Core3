@@ -80,6 +80,10 @@ function TalusDetainmentCenterScreenPlay:spawnImperials(pBuilding)
 		building:spawnChildCreature("stormtrooper", 300, -5.0, -23.0, 196.3, 90, 9686217)
 		building:spawnChildCreature("stormtrooper", 300, -8.0, -23.0, 196.3, 90, 9686217)
 		building:spawnChildCreature("imperial_first_lieutenant", 300, 7.1, -23.0, 198.5, -135, 9686217)
+		building:spawnChildCreature("imperial_inquisitor", 900, -80.5, -23.0, 259.4, 88, 9686223)
+		building:spawnChildCreature("stormtrooper_colonel", 600, 45.2, -23.0, 276.3, -179, 9686225)
+		building:spawnChildCreature("senior_prophet_of_the_dark_side", 10800, -2.7, -23.0, 268.5, 90, 9686224)
+
 	end)
 end
 
@@ -119,5 +123,9 @@ function TalusDetainmentCenterScreenPlay:spawnRebels(pBuilding)
 		building:spawnChildCreature("rebel_trooper", 300, 10.0, -23.0, 186.3, 0, 9686217)
 		building:spawnChildCreature("rebel_trooper", 300, 10.0, -23.0, 183.3, 0, 9686217)
 		building:spawnChildCreature("rebel_first_lieutenant", 300, 6.8, -23.0, 203.1, -9, 9686217)
+		building:spawnChildCreature("rebel_lieutenant_general", 600, -79.8, -23.0, 259.1, 89, 9686223)
+		building:spawnChildCreature("specops_alliance_free_agent", 600, 43.2, -23.0, 278.3, -177, 9686225)
+		building:spawnChildCreature("lesser_prophet_of_the_light_side", 10800, -3.7, -23.0, 269.5, 90, 9686224)
+
 	end)
 end
