@@ -359,6 +359,8 @@ function TalusNashalScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("talus", "sullustan_male",300,46.424,0.639418,45.4992,0,4265362)
 	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("talus", "ithorian_male",300,46.4,0.6,46.7,-177,4265362)
+	self:setMoodString(pNpc, "explain")
 	pNpc = spawnMobile("talus", "chiss_female",60,-53.4306,2.63942,44.8995,360.011,4265367)
 	self:setMoodString(pNpc, "conversation")
 
