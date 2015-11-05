@@ -58,6 +58,7 @@ function FsReflex1:completeVillagerEscort(pCreature)
 		VillageJediManagerCommon.unlockBranch(pCreature, "force_sensitive_enhanced_reflexes_survival")
 		QuestManager.completeQuest(pCreature, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_00)
 		QuestManager.completeQuest(pCreature, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_05)
+		VillageJediManagerCommon.setCompletedQuestThisPhase(pCreature)
 
 		local pInventory = SceneObject(pCreature):getSlottedObject("inventory")
 

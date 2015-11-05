@@ -1,4 +1,5 @@
 local ObjectManager = require("managers.object.object_manager")
+local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
 local FsReflex1 = require("managers.jedi.village.phase1.fs_reflex1")
 local QuestManager = require("managers.quest.quest_manager")
 
@@ -16,8 +17,11 @@ function villageWhipPhase1ConvoHandler:getInitialScreen(pPlayer, pNpc, pConversa
 		return convoTemplate:getScreen("intro_quest_continue")
 	elseif (QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_05)) then
 		return convoTemplate:getScreen("intro_quest_completed")
+	elseif (VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
+		return convoTemplate:getScreen("intro_has_other_quest")
+	else
+		return convoTemplate:getScreen("intro")
 	end
-	return convoTemplate:getScreen("intro")
 end
 
 function villageWhipPhase1ConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
@@ -27,6 +31,7 @@ function villageWhipPhase1ConvoHandler:runScreenHandlers(conversationTemplate, c
 	local clonedConversation = LuaConversationScreen(conversationScreen)
 
 	if (screenID == "good_place_to_start") then
+		VillageJediManagerCommon.setActiveQuestThisPhase(conversingPlayer)
 		FsReflex1:setRescueCount(conversingPlayer, 0)
 		FsReflex1:startQuest(conversingPlayer)
 	elseif (screenID == "intro_quest_failed") then

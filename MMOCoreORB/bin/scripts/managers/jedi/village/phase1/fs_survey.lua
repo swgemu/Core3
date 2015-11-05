@@ -9,9 +9,9 @@ function FsSurvey:sampleEventHandler(pPlayer, pResourceSpawn, density)
 	if (pPlayer == nil or pResourceSpawn == nil) then
 		return 0
 	end
-	
+
 	local chance = getRandomNumber(1,5)
-	
+
 	if (chance ~= 1) then
 		return 0
 	end
@@ -19,7 +19,7 @@ function FsSurvey:sampleEventHandler(pPlayer, pResourceSpawn, density)
 	local phase = VillageJediManagerTownship:getCurrentPhase()
 
 	phase = 2 -- Temporary until phase 2 is enabled
-	
+
 	local questName = self:hasSurveyorQuest(pPlayer, phase)
 
 	if (questName == "") then
@@ -90,6 +90,7 @@ function FsSurvey:sampleEventHandler(pPlayer, pResourceSpawn, density)
 
 	if (nextQuest == "fs_survey_phase2_reward" or nextQuest == "fs_survey_phase3_reward") then
 		QuestManager.completeQuest(pPlayer, nextQuestID)
+		VillageJediManagerCommon.setCompletedQuestThisPhase(pPlayer)
 
 		if (nextQuest == "fs_survey_phase2_reward") then
 			QuestManager.completeQuest(pPlayer, QuestManager.quests.SURVEY_PHASE2_MAIN)
