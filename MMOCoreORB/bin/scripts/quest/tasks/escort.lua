@@ -83,13 +83,9 @@ function Escort:taskStart(pCreatureObject, pEscort)
 
 		if waypointId ~= nil then
 			writeData(playerID .. self.taskName .. "waypointID", waypointId)
-			AiAgent(pEscort):setAiTemplate("follow")
-			AiAgent(pEscort):setFollowObject(pCreatureObject)
-
-			writeData(playerID .. self.taskName .. "escortID", escortID)
-			writeData(SceneObject(pActiveArea):getObjectID() .. self.taskName .. "escortID", escortID)
-			writeData(escortID .. self.taskName .. "ownerID", playerID)
 			writeData(playerID .. ":escortInProgress", 1)
+			
+			self:setEscortFollow(pCreatureObject, pEscort)
 
 			self:callFunctionIfNotNil(self.onSuccessfulSpawn, nil, pCreatureObject, pEscort)
 			return true
@@ -100,6 +96,18 @@ function Escort:taskStart(pCreatureObject, pEscort)
 	self:finish(pCreatureObject)
 
 	return false
+end
+
+function Escort:setEscortFollow(pCreatureObject, pEscort)
+	local playerID = SceneObject(pCreatureObject):getObjectID()
+	local escortID = SceneObject(pEscort):getObjectID()
+	
+	AiAgent(pEscort):setAiTemplate("follow")
+	AiAgent(pEscort):setFollowObject(pCreatureObject)
+
+	writeData(playerID .. self.taskName .. "escortID", escortID)
+	writeData(SceneObject(pActiveArea):getObjectID() .. self.taskName .. "escortID", escortID)
+	writeData(escortID .. self.taskName .. "ownerID", playerID)
 end
 
 function Escort:taskFinish(pCreatureObject)

@@ -91,7 +91,7 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 function GoToTheater:taskStart(pCreatureObject)
 	Logger:log("Spawning " .. self.taskName .. " theater.", LT_INFO)
-	local spawnPoint = getSpawnArea(pCreatureObject, SceneObject(pCreatureObject):getWorldPositionX(), SceneObject(pCreatureObject):getWorldPositionY(), self.minimumDistance, self.maximumDistance, 10, 5, true)
+	local spawnPoint = getSpawnArea(pCreatureObject, SceneObject(pCreatureObject):getWorldPositionX(), SceneObject(pCreatureObject):getWorldPositionY(), self.minimumDistance, self.maximumDistance, 30, 5, true)
 	local zoneName = SceneObject(pCreatureObject):getZoneName()
 	local playerID = SceneObject(pCreatureObject):getObjectID()
 
