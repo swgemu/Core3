@@ -103,6 +103,9 @@ void PlantObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cre
 
 	if (temp > 0 && temp < 10)
 		temp = 10;
+	else if (temp < 0)
+		temp = 0;
+
 	alm->insertAttribute("plant_health_n", "@plant_grow:health_" + String::valueOf(temp / 10));
 
 	if (fruitCount > 0)

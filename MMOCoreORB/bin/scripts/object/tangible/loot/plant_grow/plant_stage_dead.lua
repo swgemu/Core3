@@ -42,7 +42,6 @@
 
 
 object_tangible_loot_plant_grow_plant_stage_dead = object_tangible_loot_plant_grow_shared_plant_stage_dead:new {
-	gameObjectType = 8247
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_plant_grow_plant_stage_dead, "object/tangible/loot/plant_grow/plant_stage_dead.iff")
