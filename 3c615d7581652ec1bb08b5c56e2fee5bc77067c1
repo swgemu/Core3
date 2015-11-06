@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_d073ea13",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ChannelForceCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-06T01:17:32Z",
+      "side": 1,
+      "message": "Don\u0027t capitalize your variable names.",
+      "revId": "3c615d7581652ec1bb08b5c56e2fee5bc77067c1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_7060d635",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ChannelForceCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-06T01:17:32Z",
+      "side": 1,
+      "message": "Change each \u003c to \u003c\u003d\n\nAlso, what is the point of checking current ham if it\u0027s not being changed at all? You should be reducing current ham along with max ham.",
+      "revId": "3c615d7581652ec1bb08b5c56e2fee5bc77067c1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
