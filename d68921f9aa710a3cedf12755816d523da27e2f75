@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_b0fbbe46",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/village/phase1/whip_phase1_conv.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-06T15:37:36Z",
+      "side": 1,
+      "message": "I don\u0027t think you meant to change this.",
+      "revId": "d68921f9aa710a3cedf12755816d523da27e2f75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_d0f8ca4b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase1/whip_phase1_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-06T15:37:36Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like this quest ever gets set completed.",
+      "revId": "d68921f9aa710a3cedf12755816d523da27e2f75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
