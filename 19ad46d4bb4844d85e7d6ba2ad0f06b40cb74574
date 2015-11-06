@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_9017a2a3",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/escort.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-06T00:39:00Z",
+      "side": 1,
+      "message": "pActiveArea is not declared here.",
+      "revId": "19ad46d4bb4844d85e7d6ba2ad0f06b40cb74574",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
