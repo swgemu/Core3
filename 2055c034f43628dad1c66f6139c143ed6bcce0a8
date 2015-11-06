@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_30832ece",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/caves/talus_weapons_depot.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-06T01:11:58Z",
+      "side": 1,
+      "message": "Why would the judge of a theater manager quest be down here?",
+      "revId": "2055c034f43628dad1c66f6139c143ed6bcce0a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_50111aab",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/talus_imperial_vs_rebel_battle.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-06T01:11:58Z",
+      "side": 1,
+      "message": "I don\u0027t see a spawnSceneObjects function declared in this screenplay.",
+      "revId": "2055c034f43628dad1c66f6139c143ed6bcce0a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_f025c60a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/talus_imperial_vs_rebel_battle.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-06T01:11:58Z",
+      "side": 1,
+      "message": "These stranded mobs are specific to Yavin4. I don\u0027t think it\u0027s appropriate to use them here.",
+      "revId": "2055c034f43628dad1c66f6139c143ed6bcce0a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_10239206",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/tatooine_imperial_oasis_base.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-06T01:11:58Z",
+      "side": 1,
+      "message": "I don\u0027t see a spawnSceneObjects function in this screenplay.",
+      "revId": "2055c034f43628dad1c66f6139c143ed6bcce0a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_b01f3eb7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/tatooine_imperial_oasis_base.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-06T01:11:58Z",
+      "side": 1,
+      "message": "These stranded mobs are specific to Yavin4. I don\u0027t think it\u0027s appropriate to use them here.",
+      "revId": "2055c034f43628dad1c66f6139c143ed6bcce0a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
