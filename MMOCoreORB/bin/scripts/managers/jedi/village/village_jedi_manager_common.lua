@@ -54,8 +54,48 @@ function VillageJediManagerCommon.hasUnlockedBranch(pPlayer, branch)
 	if (pPlayer == nil) then
 		return false
 	end
-	
+
 	return CreatureObject(pPlayer):hasScreenPlayState(2, "VillageUnlockScreenPlay:" .. branch)
+end
+
+function VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	local phaseID = VillageJediManagerTownship:getCurrentPhaseID()
+	local lastActiveQuest = tonumber(getQuestStatus(SceneObject(pPlayer):getObjectID() .. ":village:lastActiveQuest"))
+
+	return phaseID == lastActiveQuest
+end
+
+function VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local phaseID = VillageJediManagerTownship:getCurrentPhaseID()
+	setQuestStatus(SceneObject(pPlayer):getObjectID() .. ":village:lastActiveQuest", phaseID)
+end
+
+function VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	local phaseID = VillageJediManagerTownship:getCurrentPhaseID()
+	local lastCompletedQuest = tonumber(getQuestStatus(SceneObject(pPlayer):getObjectID() .. ":village:lastCompletedQuest"))
+
+	return phaseID == lastCompletedQuest
+end
+
+function VillageJediManagerCommon.setCompletedQuestThisPhase(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local phaseID = VillageJediManagerTownship:getCurrentPhaseID()
+	setQuestStatus(SceneObject(pPlayer):getObjectID() .. ":village:lastCompletedQuest", phaseID)
 end
 
 return VillageJediManagerCommon
