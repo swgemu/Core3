@@ -33,7 +33,6 @@ class CustomIngredient extends TangibleObject {
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
-	@preLocked
 	public native void addAttribute(final string attribute, int value);
 
 	@local
