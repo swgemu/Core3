@@ -7,7 +7,7 @@ nightsister_elder = Creature:new {
 	chanceHit = 27.25,
 	damageMin = 1520,
 	damageMax = 2750,
-	baseXp = 26654,
+	baseXp = 51654,
 	baseHAM = 321000,
 	baseHAMmax = 392000,
 	armor = 3,
@@ -42,9 +42,9 @@ nightsister_elder = Creature:new {
 			}
 		}
 	},
-	weapons = {},
+	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(tkamaster,brawlermaster,forcepowermaster)
+	attacks = merge(tkamaster,swordsmanmaster,fencermaster,pikemanmaster,brawlermaster,forcepowermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(nightsister_elder, "nightsister_elder")

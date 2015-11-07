@@ -3,11 +3,11 @@ nightsister_sentinel = Creature:new {
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "nightsister",
 	faction = "nightsister",
-	level = 88,
-	chanceHit = 0.8,
-	damageMin = 545,
+	level = 80,
+	chanceHit = 0.55,
+	damageMin = 400,
 	damageMax = 800,
-	baseXp = 8408,
+	baseXp = 19108,
 	baseHAM = 21000,
 	baseHAMmax = 26000,
 	armor = 1,
@@ -46,7 +46,7 @@ nightsister_sentinel = Creature:new {
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(pikemanmaster,brawlermaster)
+	attacks = merge(fencermid,swordsmanmid,tkamid,pikemanmaster,brawlermaster,forcewielder)
 }
 
 CreatureTemplates:addCreatureTemplate(nightsister_sentinel, "nightsister_sentinel")
