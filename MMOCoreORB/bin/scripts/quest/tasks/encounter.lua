@@ -269,17 +269,38 @@ function Encounter:handleDespawnEvent(pCreatureObject)
 
 	for i = 1, table.getn(spawnedObjects), 1 do
 		if (spawnedObjects[i] ~= nil) then
-			AiAgent(spawnedObjects[i]):setFollowObject(nil)
-			AiAgent(spawnedObjects[i]):setAiTemplate("manualescort")
-
-			AiAgent(spawnedObjects[i]):stopWaiting()
-			AiAgent(spawnedObjects[i]):setWait(0)
-			AiAgent(spawnedObjects[i]):setNextPosition(newX, newZ, newY, 0)
-			AiAgent(spawnedObjects[i]):executeBehavior()
+			local objectID = SceneObject(spawnedObjects[i]):getObjectID
+			writeData(objectID .. ":encounterNewX", newX)
+			writeData(objectID .. ":encounterNewY", newY)
+			writeData(objectID .. ":encounterNewZ", newZ)
+			createEvent(1000, self.taskName, "doRunAway", spawnedObjects[i])
 		end
 	end
 
-	createEvent(8000, self.taskName, "doDespawn", pCreatureObject)
+	createEvent(9000, self.taskName, "doDespawn", pCreatureObject)
+end
+
+function Encounter:doRunAway(pAiAgent)
+	if pAiAgent == nil or not SceneObject(pAiAgent):isAiAgent() then
+		return
+	end
+
+	local objectID = SceneObject(pAiAgent):getObjectID
+	local newX = readData(objectID .. ":encounterNewX")
+	local newY = readData(objectID .. ":encounterNewY")
+	local newZ = readData(objectID .. ":encounterNewZ")
+
+	AiAgent(pAiAgent):setFollowObject(nil)
+	AiAgent(pAiAgent):setAiTemplate("manualescort")
+
+	AiAgent(pAiAgent):stopWaiting()
+	AiAgent(pAiAgent):setWait(0)
+	AiAgent(pAiAgent):setNextPosition(newX, newZ, newY, 0)
+	AiAgent(pAiAgent):executeBehavior()
+
+	deleteData(objectID .. ":encounterNewX")
+	deleteData(objectID .. ":encounterNewY")
+	deleteData(objectID .. ":encounterNewZ")
 end
 
 function Encounter:doDespawn(pCreatureObject)
