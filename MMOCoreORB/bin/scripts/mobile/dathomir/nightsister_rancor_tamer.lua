@@ -3,9 +3,9 @@ nightsister_rancor_tamer = Creature:new {
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "nightsister",
 	faction = "nightsister",
-	level = 76,
-	chanceHit = 0.75,
-	damageMin = 520,
+	level = 75,
+	chanceHit = 0.55,
+	damageMin = 350,
 	damageMax = 750,
 	baseXp = 7299,
 	baseHAM = 12000,
@@ -46,7 +46,7 @@ nightsister_rancor_tamer = Creature:new {
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(pikemanmaster,brawlermaster)
+	attacks = merge(swordsmanmid,fencermid,tkamid,pikemanmid,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(nightsister_rancor_tamer, "nightsister_rancor_tamer")

@@ -3,9 +3,9 @@ nightsister_ranger = Creature:new {
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "nightsister",
 	faction = "nightsister",
-	level = 81,
-	chanceHit = 0.75,
-	damageMin = 555,
+	level = 75,
+	chanceHit = 0.55,
+	damageMin = 355,
 	damageMax = 820,
 	baseXp = 7761,
 	baseHAM = 12000,
@@ -46,7 +46,7 @@ nightsister_ranger = Creature:new {
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(pikemanmaster,brawlermaster)
+	attacks = merge(fencermid,swordsmanmid,tkamid,pikemanmid,brawlermaster,forcewielder)
 }
 
 CreatureTemplates:addCreatureTemplate(nightsister_ranger, "nightsister_ranger")
