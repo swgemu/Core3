@@ -6,7 +6,7 @@ axkva_min = Creature:new {
 	chanceHit = 30,
 	damageMin = 1645,
 	damageMax = 3000,
-	baseXp = 28549,
+	baseXp = 58549,
 	baseHAM = 385000,
 	baseHAMmax = 471000,
 	armor = 3,
@@ -49,7 +49,7 @@ axkva_min = Creature:new {
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(pikemanmaster,brawlermaster,forcepowermaster)
+	attacks = merge(fencermaster,swordsmanmaster,tkamaster,pikemanmaster,brawlermaster,forcepowermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(axkva_min, "axkva_min")
