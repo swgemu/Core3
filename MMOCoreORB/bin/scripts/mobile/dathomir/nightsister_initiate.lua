@@ -46,7 +46,7 @@ nightsister_initiate = Creature:new {
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(pikemanmaster,brawlermaster)
+	attacks = merge(tkamid,fencermid,swordsmanmid,pikemanmid,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(nightsister_initiate, "nightsister_initiate")
