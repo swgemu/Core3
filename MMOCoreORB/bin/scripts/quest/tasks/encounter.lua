@@ -269,7 +269,7 @@ function Encounter:handleDespawnEvent(pCreatureObject)
 
 	for i = 1, table.getn(spawnedObjects), 1 do
 		if (spawnedObjects[i] ~= nil) then
-			local objectID = SceneObject(spawnedObjects[i]):getObjectID
+			local objectID = SceneObject(spawnedObjects[i]):getObjectID()
 			writeData(objectID .. ":encounterNewX", newX)
 			writeData(objectID .. ":encounterNewY", newY)
 			writeData(objectID .. ":encounterNewZ", newZ)
@@ -285,7 +285,7 @@ function Encounter:doRunAway(pAiAgent)
 		return
 	end
 
-	local objectID = SceneObject(pAiAgent):getObjectID
+	local objectID = SceneObject(pAiAgent):getObjectID()
 	local newX = readData(objectID .. ":encounterNewX")
 	local newY = readData(objectID .. ":encounterNewY")
 	local newZ = readData(objectID .. ":encounterNewZ")
