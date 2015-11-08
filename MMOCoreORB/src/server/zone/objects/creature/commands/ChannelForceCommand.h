@@ -46,7 +46,7 @@ public:
 
 		// To keep it from going over max...
 		if ((playerObject->getForcePowerMax() - playerObject->getForcePower()) < forceBonus)
-			forceBonus = ((playerObject->getForcePowerMax() - playerObject->getForcePower() / 10) * 10);
+			forceBonus = ((playerObject->getForcePowerMax() - playerObject->getForcePower()) / 10) * 10;
 
 		int health = creature->getHAM(CreatureAttribute::HEALTH);
 		int action = creature->getHAM(CreatureAttribute::ACTION);
