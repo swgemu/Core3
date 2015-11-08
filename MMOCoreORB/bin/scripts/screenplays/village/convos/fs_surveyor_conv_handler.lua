@@ -9,8 +9,6 @@ function villageSurveyorConvoHandler:getInitialScreen(pPlayer, pNpc, pConversati
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 	local phase = VillageJediManagerTownship:getCurrentPhase()
 
-	phase = 2 -- Temporary until phase 2 is enabled
-
 	if (phase ~= 2 and phase ~= 3) then
 		return convoTemplate:getScreen("intro_wrong_phase")
 	elseif (not CreatureObject(pPlayer):hasSkill("crafting_artisan_novice")) then

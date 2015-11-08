@@ -1,15 +1,15 @@
-fsVillageConvo7Handler = Object:new { }
+fsVillageGenericConvoHandler = Object:new { }
 
-function fsVillageConvo7Handler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+function fsVillageGenericConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
 	return conversationScreen
 end
 
-function fsVillageConvo7Handler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
+function fsVillageGenericConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 	return convoTemplate:getScreen("intro")
 end
 
-function fsVillageConvo7Handler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
+function fsVillageGenericConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
 	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
 	local pLastConversationScreen = nil
 	if (pConversationSession ~= nil) then
