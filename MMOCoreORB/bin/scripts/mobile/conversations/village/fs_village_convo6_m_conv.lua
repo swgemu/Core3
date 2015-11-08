@@ -1,7 +1,7 @@
 fsVillageConvo6MaleTemplate = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "fsVillageConvo6MaleHandler",
+	luaClassHandler = "fsVillageGenericConvoHandler",
 	screens = {}
 }
 

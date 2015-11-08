@@ -128,6 +128,8 @@ includeFile("conversations/tasks/librarian_conv.lua")
 includeFile("conversations/tasks/theater_manager_conv.lua")
 
 -- Village
+includeFile("conversations/village/fs_village_convo4_f_conv.lua")
+includeFile("conversations/village/fs_village_convo5_f_conv.lua")
 includeFile("conversations/village/fs_village_convo6_m_conv.lua")
 includeFile("conversations/village/fs_village_convo7_conv.lua")
 includeFile("conversations/village/fs_surveyor_conv.lua")

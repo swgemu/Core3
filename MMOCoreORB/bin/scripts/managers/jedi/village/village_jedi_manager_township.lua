@@ -12,7 +12,7 @@ VillageJediManagerTownship = ScreenPlay:new {
 	screenplayName = "VillageJediManagerTownship"
 }
 
-VILLAGE_TOTAL_NUMBER_OF_PHASES = 1 -- Temporarily set to 1 for testing until other phases begin development
+VILLAGE_TOTAL_NUMBER_OF_PHASES = 2 -- Temporarily set to 1 for testing until other phases begin development
 
 local VILLAGE_PHASE_CHANGE_TIME = 24 * 60 * 60 * 1000 -- Testing value.
 --local VILLAGE_PHASE_CHANGE_TIME = 5 * 60 * 1000
@@ -246,6 +246,33 @@ function VillageJediManagerTownship.initMedDroid(pNpc)
 	if (pNpc ~= nil) then
 		SceneObject(pNpc):setContainerComponent("MedDroidContainerComponent")
 	end
+end
+
+function VillageJediManagerTownship.initVillageRepairer(pNpc)
+	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doVillageRepairer", pNpc) -- 2-5 minute initial delay
+end
+
+function VillageJediManagerTownship:doVillageRepairer(pNpc)
+	if (pNpc == nil) then
+		return
+	end
+
+	local rand = getRandomNumber(1,10)
+
+	if (rand < 5) then
+		CreatureObject(pNpc):doAnimation("manipulate_medium")
+	else
+		CreatureObject(pNpc):doAnimation("manipulate_high")
+	end
+	
+	rand = getRandomNumber(1,2)
+	
+	if (rand == 1) then
+		rand = getRandomNumber(1,7)
+		spatialChat(pNpc, "@quest/force_sensitive/fs_wall_repair:fs_response0" .. rand)
+	end
+
+	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doVillageRepairer", pNpc) -- 2-5 minute delay
 end
 
 MedDroidContainerComponent = {}
