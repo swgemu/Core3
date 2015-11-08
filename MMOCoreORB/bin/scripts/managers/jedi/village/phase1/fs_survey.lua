@@ -18,8 +18,6 @@ function FsSurvey:sampleEventHandler(pPlayer, pResourceSpawn, density)
 
 	local phase = VillageJediManagerTownship:getCurrentPhase()
 
-	phase = 2 -- Temporary until phase 2 is enabled
-
 	local questName = self:hasSurveyorQuest(pPlayer, phase)
 
 	if (questName == "") then
