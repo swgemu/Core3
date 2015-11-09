@@ -335,11 +335,13 @@ includeFile("poi/rori_poacher_vs_creature_battle.lua")
 includeFile("poi/rori_rebel_military_base.lua")
 includeFile("poi/talus_corsec_vs_flail_battle.lua")
 includeFile("poi/talus_lost_village_of_durbin.lua")
+includeFile("poi/talus_imperial_vs_rebel_battle.lua")
 includeFile("poi/tatooine_ancient_krayt_dragon_skeleton.lua")
 includeFile("poi/tatooine_ben_kenobis_house.lua")
 includeFile("poi/tatooine_darklighters_estate.lua")
 includeFile("poi/tatooine_fort_tusken.lua")
 includeFile("poi/tatooine_imperial_detachment_hq.lua")
+includeFile("poi/tatooine_imperial_oasis_base.lua")
 includeFile("poi/tatooine_jabbas_palace_mobs.lua")
 includeFile("poi/tatooine_jawa_traders.lua")
 includeFile("poi/tatooine_krayt_graveyard.lua")
@@ -376,8 +378,8 @@ includeFile("treasure_map/TreasureMapMenuComponent.lua")
 --Race Tracks
 includeFile("racetracks/racetracks.lua")
 
--- Space
+--Space
 includeFile("space/space_chassis_dealer_conv_handler.lua")
 
--- Record Keepers
+--Record Keepers
 includeFile("record_keepers/record_keepers.lua")
