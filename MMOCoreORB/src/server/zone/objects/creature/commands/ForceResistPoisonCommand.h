@@ -23,12 +23,12 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (creature->hasAttackDelay())
+			return GENERALERROR;
 
 		if (isWearingArmor(creature)) {
 			return NOJEDIARMOR;
 		}
-
-
 
 		uint32 buffcrc = BuffCRC::JEDI_RESIST_POISON;
 

@@ -25,6 +25,9 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (creature->hasAttackDelay())
+				return GENERALERROR;
+
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 

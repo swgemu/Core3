@@ -24,6 +24,9 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (creature->hasAttackDelay())
+			return GENERALERROR;
+
 		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
 
 		if (!weapon->isMeleeWeapon() && !weapon->isUnarmedWeapon()) {
