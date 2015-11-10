@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_c461efd4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/talus_imperial_vs_rebel_battle.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-10T04:19:23Z",
+      "side": 1,
+      "message": "I didn\u0027t mean for you to add a function that does nothing. Rather, I meant for you to remove this function call.",
+      "revId": "9cdd3effc4f2ece54fe7d612edfd14de951f3e59",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_e45e6b12",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/tatooine_imperial_oasis_base.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-10T04:19:23Z",
+      "side": 1,
+      "message": "I didn\u0027t mean for you to add a function that does nothing. Rather, I meant for you to remove this function call.",
+      "revId": "9cdd3effc4f2ece54fe7d612edfd14de951f3e59",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
