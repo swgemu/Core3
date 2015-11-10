@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_84820751",
+        "filename": "MMOCoreORB/bin/scripts/mobile/dathomir/nightsister_initiate.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-10T04:30:12Z",
+      "side": 1,
+      "message": "You shouldn\u0027t be changing these values on any of these mobs. That data comes directly from the prima guide.",
+      "revId": "d69320fa6e4d12805e455e8a7a8024c2bb8a54a4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_64aa5bd6",
+        "filename": "MMOCoreORB/bin/scripts/mobile/weapon/groups/mixed_force_weapons.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-10T04:30:12Z",
+      "side": 1,
+      "message": "Don\u0027t include unarmed_default. Every npc has their default unarmed weapon created automatically.",
+      "revId": "d69320fa6e4d12805e455e8a7a8024c2bb8a54a4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

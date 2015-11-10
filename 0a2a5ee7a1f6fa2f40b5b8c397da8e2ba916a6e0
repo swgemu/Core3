@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_24ac53ed",
+        "filename": "MMOCoreORB/bin/scripts/mobile/dathomir/nightsister_spell_weaver.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-10T04:30:12Z",
+      "side": 0,
+      "message": "This mob should have mixed_force_weapons as well.",
+      "revId": "0a2a5ee7a1f6fa2f40b5b8c397da8e2ba916a6e0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
