@@ -24,8 +24,8 @@ public:
 			return INVALIDLOCOMOTION;
 
 		if (!creature->isPlayerCreature())
-			return GENERALERROR;			
-	
+			return GENERALERROR;
+
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 		ManagedReference<GroupObject*> group = player->getGroup();
 
@@ -104,7 +104,7 @@ public:
 			checkForTef(leader, memberPlayer);
 		}
 
-//		What is this used for?		
+//		What is this used for?
 //		leader->updateCooldownTimer("rally", (duration + 30) * 1000);
 
 		return true;
