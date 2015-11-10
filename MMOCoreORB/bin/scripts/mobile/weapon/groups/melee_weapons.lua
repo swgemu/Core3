@@ -1,5 +1,8 @@
 melee_weapons = {
-	"object/weapon/melee/axe/axe_heavy_duty.iff"
+	"object/weapon/melee/axe/axe_heavy_duty.iff",
+	"object/weapon/melee/polearm/polearm_vibro_axe.iff",
+	"object/weapon/melee/polearm/lance_staff_wood_s1.iff",
+	"object/weapon/melee/knife/knife_dagger.iff"
 	
 }
 
