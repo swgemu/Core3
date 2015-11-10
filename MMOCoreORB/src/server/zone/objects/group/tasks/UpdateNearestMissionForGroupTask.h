@@ -43,7 +43,9 @@ public:
 		for(int i = 0; i < group->getGroupSize(); i++) {
 			if (group->getGroupMember(i) != NULL && group->getGroupMember(i)->isPlayerCreature()) {
 				Reference<CreatureObject*> groupMember = (group->getGroupMember(i)).castTo<CreatureObject*>();
-				if (groupMember->getPlanetCRC() == planetCRC) {
+				Zone* zone = groupMember->getZone();
+
+				if (zone != NULL && zone->getZoneCRC() == planetCRC) {
 					groupMembersOnPlanet.add(groupMember);
 				}
 			}
