@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_046837b9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_spawn_table.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-10T04:03:58Z",
+      "side": 0,
+      "message": "I thought you were moving this guy to phase 2.\n\nAlso, were you intending to add spawns that use the new generic convos? If so, you must have forgotten to as I don\u0027t see them in here.",
+      "revId": "0a2a5ee7a1f6fa2f40b5b8c397da8e2ba916a6e0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

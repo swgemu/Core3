@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_64733bb2",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/village/fs_village_convo5_f_conv.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-10T04:03:58Z",
+      "side": 1,
+      "message": "I don\u0027t see a goodbye screen.",
+      "revId": "7bfaf907f8ac4bda2e69634ed2d7cce94567097c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
