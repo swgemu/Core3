@@ -44,7 +44,7 @@ force_crystal_hunter = Creature:new {
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(pikemanmaster,brawlermaster)
+	attacks = merge(pikemanmaster,brawlermaster,fencermaster,swordsmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(force_crystal_hunter, "force_crystal_hunter")

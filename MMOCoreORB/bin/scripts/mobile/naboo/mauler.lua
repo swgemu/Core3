@@ -38,7 +38,7 @@ mauler = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	reactionStf = "@npc_reaction/fancy",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermaster,marksmanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(mauler, "mauler")

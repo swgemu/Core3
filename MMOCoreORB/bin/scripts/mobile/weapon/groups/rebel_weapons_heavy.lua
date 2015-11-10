@@ -1,6 +1,9 @@
 rebel_weapons_heavy = {
 	"object/weapon/ranged/rifle/rifle_acid_beam.iff",
-	"object/weapon/ranged/rifle/rifle_flame_thrower.iff"	
+	"object/weapon/ranged/rifle/rifle_flame_thrower.iff",
+	"object/weapon/ranged/pistol/pistol_launcher.iff",
+	"object/weapon/ranged/pistol/pistol_srcombat.iff",
+	"object/weapon/ranged/carbine/carbine_cdef.iff"
 }
 
 addWeapon("rebel_weapons_heavy", rebel_weapons_heavy)

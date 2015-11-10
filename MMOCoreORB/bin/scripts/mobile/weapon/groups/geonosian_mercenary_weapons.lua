@@ -1,5 +1,6 @@
 geonosian_mercenary_weapons = {
 	"object/weapon/melee/knife/knife_survival.iff",
+	"object/weapon/melee/sword/sword_rantok.iff",
 	"object/weapon/ranged/rifle/rifle_tenloss_dxr6_disruptor_loot.iff",
 	"object/weapon/ranged/pistol/pistol_geonosian_sonic_blaster_loot.iff"
 }
