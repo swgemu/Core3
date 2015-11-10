@@ -24,6 +24,8 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (creature->hasAttackDelay() || !creature->checkPostureChangeDelay())
+			return GENERALERROR;
 
 		uint32 buffcrc1 = BuffCRC::JEDI_FORCE_SPEED_1;
 		uint32 buffcrc2 = BuffCRC::JEDI_FORCE_SPEED_2;
@@ -33,14 +35,12 @@ public:
 			return GENERALERROR;
 		}
 
-
 		// Force cost of skill.
 		int forceCost = 300;
 
 		//Check for and deduct Force cost.
 
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-
 
 		if (playerObject->getForcePower() <= forceCost) {
 			creature->sendSystemMessage("@jedi_spam:no_force_power"); //"You do not have enough Force Power to peform that action.

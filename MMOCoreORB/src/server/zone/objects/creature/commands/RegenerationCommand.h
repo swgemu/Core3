@@ -23,11 +23,14 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (creature->hasAttackDelay() || !creature->checkPostureChangeDelay())
+			return GENERALERROR;
+
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		if (creature->getSpecies() != CreatureObject::TRANDOSHAN) 
-			return GENERALERROR;		
+		if (creature->getSpecies() != CreatureObject::TRANDOSHAN)
+			return GENERALERROR;
 
 		CreatureObject* player = cast<CreatureObject*>(creature);
 

@@ -21,7 +21,7 @@ public:
 			return false;
 		}
 
-		Zone* zone = creature->getZone();		
+		Zone* zone = creature->getZone();
 
 		if (creature->getZone() == NULL) {
 			return false;
@@ -81,7 +81,7 @@ public:
 
 			if (member == NULL || !member->isPlayerCreature() || member->getZone() != creature->getZone())
 				continue;
-			
+
 			ManagedReference<CreatureObject*> memberPlayer = cast<CreatureObject*>( member.get());
 
 			if (!isValidGroupAbilityTarget(creature, memberPlayer, false))
@@ -135,7 +135,7 @@ public:
 		buff->setSpeedMultiplierMod(1.822f);
 		buff->setAccelerationMultiplierMod(1.822f);
 		buff->setStartMessage(startStringId);
-		buff->setEndMessage(endStringId);		
+		buff->setEndMessage(endStringId);
 
 		player->addBuff(buff);
 
