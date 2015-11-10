@@ -119,7 +119,7 @@ void SurveySessionImplementation::startSurvey(const String& resname) {
 		return;
 	}
 
-	if(spawn->getSurveyToolType() != activeSurveyTool->getToolType()) {
+	if(spawn->getSurveyToolType() != activeSurveyTool->getToolType() && !(activeSurveyTool->getToolType() == SurveyTool::INORGANIC && spawn->isType("inorganic"))) {
 		StringIdChatParameter message("@survey:wrong_tool"); // %TO resources cannot be located with this tool
 		message.setTO(spawn->getFinalClass());
 		surveyer->sendSystemMessage(message);
@@ -201,7 +201,7 @@ void SurveySessionImplementation::startSample(const String& resname) {
 		return;
 	}
 
-	if(resourceSpawn->getSurveyToolType() != activeSurveyTool->getToolType()) {
+	if(resourceSpawn->getSurveyToolType() != activeSurveyTool->getToolType() && !(activeSurveyTool->getToolType() == SurveyTool::INORGANIC && resourceSpawn->isType("inorganic"))) {
 		StringIdChatParameter message("@survey:wrong_tool"); // %TO resources cannot be located with this tool
 		message.setTO(resourceSpawn->getFinalClass());
 		surveyer->sendSystemMessage(message);
