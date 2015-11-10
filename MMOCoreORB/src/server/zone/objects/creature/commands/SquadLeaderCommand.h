@@ -56,7 +56,10 @@ public:
 		if (group->getLeader() != player) {
 			player->sendSystemMessage("@error_message:not_group_leader");
 			return false;
-		}	
+		}
+
+		if (player->hasAttackDelay() || !player->checkPostureChangeDelay())
+			return GENERALERROR;
 
 		return true;
 	}
@@ -160,7 +163,7 @@ public:
 
         return true;
     }
-	
+
     void sendCombatSpam(CreatureObject* player) const {
         if (player == NULL)
 			return;
@@ -169,34 +172,34 @@ public:
 
         player->sendSystemMessage("@cbt_spam:" + combatSpam);
     }
-	
+
 /*    bool setCommandMessage(CreatureObject* creature, String message){
         if(!creature->isPlayerCreature())
             return false;
-			
+
         ManagedReference<CreatureObject*> player = (creature);
-        ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();	
-			
+        ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
+
 		if (message.length()>128){
 			player->sendSystemMessage("Your message can only be up to 128 characters long.");
 			return false;
 		}
 		if (NameManager::instance()->isProfane(message)){
 			player->sendSystemMessage("Your message has failed the profanity filter.");
-			return false;				
+			return false;
 		}
-		
+
         if(message.isEmpty()) {
             playerObject->removeCommandMessageString(actionCRC);
 			player->sendSystemMessage("Your message has been removed.");
 		} else {
             playerObject->setCommandMessageString(actionCRC, message);
 			player->sendSystemMessage("Your message was set to :-\n" + message);
-		}		
-		
+		}
+
         return true;
     }
-*/	
+*/
     bool isSquadLeaderCommand(){
         return true;
     }
