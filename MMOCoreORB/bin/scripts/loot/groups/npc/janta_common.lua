@@ -8,8 +8,8 @@ janta_common = {
 		{itemTemplate = "janta_blood", weight = 2500000},
 		{itemTemplate = "knife_janta", weight = 1500000},
 		{itemTemplate = "janta_hides", weight = 4000000},
-		{groupTemplate = "wearables_common", weight = 1000000},
-		{groupTemplate = "wearables_uncommon", weight = 1000000}
+		{groupTemplate = "wearables_common", weight = 1500000},
+		{groupTemplate = "wearables_uncommon", weight = 500000}
 	}
 }
 
