@@ -94,8 +94,8 @@ wearables_rare = {
 		{itemTemplate = "pants_s08", weight = 80645}, -- Striped Slacks
 		{itemTemplate = "pants_s09", weight = 80645}, -- Quilted Pants
 		{itemTemplate = "pants_s11", weight = 80645}, -- Desert Crawlers
-		{itemTemplate = "pants_s26", weight = 80645}, -- Hot Pants
 		{itemTemplate = "pants_s27", weight = 80645}, -- Pocketed Shorts
+		{itemTemplate = "pants_s26", weight = 80645}, -- Hot Pants
 		{itemTemplate = "pants_s28", weight = 80645}, -- Reinforced Pants
 		{itemTemplate = "pants_s29", weight = 80645}, -- Crafter's Pants
 		{itemTemplate = "pants_s30", weight = 80645}, -- Padded Workpants
@@ -131,3 +131,4 @@ wearables_rare = {
 }
 
 addLootGroupTemplate("wearables_rare", wearables_rare)
+
