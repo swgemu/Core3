@@ -40,7 +40,7 @@ dark_trooper = Creature:new {
 				{group = "pistols", chance = 600000},
 				{group = "clothing_attachments", chance = 150000},
 				{group = "armor_attachments", chance = 150000},
-				{group = "wearables_common", chance = 1000000}
+				{group = "grenades_looted", chance = 1000000}
 			}
 		}
 	},

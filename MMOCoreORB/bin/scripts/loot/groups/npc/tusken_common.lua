@@ -17,11 +17,13 @@ tusken_common = {
 		{itemTemplate = "tusken_raider_helmet_2", weight = 200000},
 		{itemTemplate = "tusken_raider_robe_1", weight = 1000000},
 		{itemTemplate = "tusken_raider_robe_2", weight = 200000},
-		{itemTemplate = "feed_tube", weight = 1300000},
+		{itemTemplate = "feed_tube", weight = 1000000},
 		{itemTemplate = "spear_rack_schematic", weight = 400000},
 		{itemTemplate = "tanned_hide_s01_schematic", weight = 400000},
 		{itemTemplate = "tanned_hide_s02_schematic", weight = 400000},
 		{itemTemplate = "tatooine_tapestry_schematic", weight = 400000},
+		{itemTemplate = "projectile_rifle_barrel_quest", weight = 150000},
+		{itemTemplate = "projectile_pistol_barrel_quest", weight = 150000},
 	}
 }
 

@@ -94,8 +94,8 @@ wearables_rare = {
 		{itemTemplate = "pants_s08", weight = 80645}, -- Striped Slacks
 		{itemTemplate = "pants_s09", weight = 80645}, -- Quilted Pants
 		{itemTemplate = "pants_s11", weight = 80645}, -- Desert Crawlers
+		{itemTemplate = "pants_s24", weight = 80645}, -- Pantaloons
 		{itemTemplate = "pants_s26", weight = 80645}, -- Hot Pants
-		{itemTemplate = "pants_s27", weight = 80645}, -- Pocketed Shorts
 		{itemTemplate = "pants_s28", weight = 80645}, -- Reinforced Pants
 		{itemTemplate = "pants_s29", weight = 80645}, -- Crafter's Pants
 		{itemTemplate = "pants_s30", weight = 80645}, -- Padded Workpants
@@ -117,7 +117,7 @@ wearables_rare = {
 		{itemTemplate = "shirt_s38", weight = 80645}, -- Flex-form Shirt
 		{itemTemplate = "shirt_s42", weight = 80645}, -- Muscle Shirt
 		{itemTemplate = "skirt_s09", weight = 80645}, -- Decorative Skirt
-		{itemTemplate = "vest_s04", weight = 80645}, -- Simple Vest
+		{itemTemplate = "shoes_s08", weight = 80645}, -- Women's shoes
 		{itemTemplate = "vest_s05", weight = 80645}, -- Pullover
 		{itemTemplate = "vest_s10", weight = 80645}, -- Mangy Vest
 		{itemTemplate = "vest_s15", weight = 80645}, -- Decorative Vest
