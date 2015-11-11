@@ -34,7 +34,8 @@ kunga_clan_leader = Creature:new {
 				{group = "loot_kit_parts", chance = 3000000},
 				{group = "armor_attachments", chance = 500000},
 				{group = "clothing_attachments", chance = 500000},
-				{group = "wearables_all", chance = 2000000}
+				{group = "wearables_all", chance = 1500000},
+				{group = "crystals_okay", chance = 500000}
 			}
 		}
 	},
