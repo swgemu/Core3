@@ -39,8 +39,8 @@ singing_mountain_clan_outcast = Creature:new {
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},
 				{group = "carbines", chance = 1000000},
-				{group = "wearables_common", chance = 500000},
-				{group = "wearables_uncommon", chance = 500000}
+				{group = "wearables_uncommon", chance = 500000},
+				{group = "tailor_components", chance = 500000}
 			}
 		}
 	},
@@ -50,3 +50,4 @@ singing_mountain_clan_outcast = Creature:new {
 }
 
 CreatureTemplates:addCreatureTemplate(singing_mountain_clan_outcast, "singing_mountain_clan_outcast")
+
