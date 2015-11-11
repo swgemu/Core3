@@ -5,7 +5,8 @@ crystals_poor = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "force_crystal_poor", weight = 10000000}
+		{itemTemplate = "force_crystal_poor", weight = 9500000},
+		{itemTemplate = "rare_artifact", weight = 500000}
 	}
 }
 

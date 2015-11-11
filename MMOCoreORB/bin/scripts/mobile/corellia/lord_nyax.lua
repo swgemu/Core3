@@ -29,11 +29,9 @@ lord_nyax = Creature:new {
 	lootGroups = {
 		{
 		groups = {
-				{group = "junk", chance = 3000000},
-				{group = "nyax", chance = 2000000},
-				{group = "armor_all", chance = 1000000},
-				{group = "weapons_all", chance = 1000000},
-				{group = "wearables_all", chance = 1000000},
+				{group = "junk", chance = 4000000},
+				{group = "nyax", chance = 3000000},
+				{group = "grenades_looted", chance = 1000000},
 				{group = "armor_attachments", chance = 1000000},
 				{group = "clothing_attachments", chance = 1000000}
 			}
@@ -43,6 +41,7 @@ lord_nyax = Creature:new {
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/fancy",
 	attacks = merge(marksmanmaster,riflemanmaster,carbineermaster,brawlermaster,swordsmanmaster)
+
 }
 
 CreatureTemplates:addCreatureTemplate(lord_nyax, "lord_nyax")
