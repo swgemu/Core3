@@ -39,13 +39,15 @@ nightsister_protector = Creature:new {
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},
 				{group = "carbines", chance = 1000000},
-				{group = "wearables_all", chance = 1000000}
+				{group = "wearables_common", chance = 500000},
+				{group = "tailor_components", chance = 500000}
 			}
 		}
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
 	attacks = merge(fencermaster,swordsmanmaster,tkamid,brawlermaster,pikemanmaster,forcewielder)
+
 }
 
 CreatureTemplates:addCreatureTemplate(nightsister_protector, "nightsister_protector")

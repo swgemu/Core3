@@ -52,8 +52,27 @@ sith_shadow_pirate = Creature:new {
 		"object/mobile/dressed_sith_shadow_zab_m_01.iff",
 		"object/mobile/dressed_sith_shadow_zab_m_02.iff",
 		"object/mobile/dressed_sith_shadow_zab_m_03.iff"},
+
+	lootItems = {
+			{item = "village_ardanium_ii", chance = 100000},
+			{item = "village_endrine", chance = 100000},
+			{item = "village_ostrine", chance = 100000},
+			{item = "village_rudic", chance = 100000},
+			{item = "village_wind_crystal", chance = 100000}
+		},
+
 	lootGroups = {
-		{}
+	    {
+			groups = {
+				{group = "junk", chance = 4000000},
+				{group = "tailor_components", chance = 1500000},
+				{group = "loot_kit_parts", chance = 1500000},
+				{group = "printer_parts", chance = 1000000},
+				{group = "wearables_common", chance = 1000000},
+				{group = "clothing_attachments", chance = 500000},
+				{group = "armor_attachments", chance = 500000}
+			},
+		}
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
