@@ -772,7 +772,7 @@ void ResourceSpawner::sendResourceListForSurvey(CreatureObject* player,
 		if (!resourceSpawn->inShift())
 			continue;
 
-		if (resourceSpawn->getSurveyToolType() == toolType) {
+		if (resourceSpawn->getSurveyToolType() == toolType || (toolType == SurveyTool::INORGANIC && resourceSpawn->isType("inorganic"))) {
 			matchingResources.add(resourceSpawn);
 			message->addResource(resourceSpawn->getName(),
 					resourceSpawn->getType(), resourceSpawn->_getObjectID());

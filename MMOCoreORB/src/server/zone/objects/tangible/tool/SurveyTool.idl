@@ -34,6 +34,7 @@ class SurveyTool extends ToolTangibleObject {
 	public static final int WATER = 7;
 	public static final int WIND = 8;
 	public static final int FUSION = 9;
+	public static final int INORGANIC = 10;
 	
 	public static final int NOTYPE = -1;
 	
