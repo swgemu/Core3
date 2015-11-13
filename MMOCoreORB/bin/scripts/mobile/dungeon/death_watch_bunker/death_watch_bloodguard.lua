@@ -39,7 +39,7 @@ death_watch_bloodguard = Creature:new {
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(bountyhuntermaster,marksmanmaster,brawlermaster)
+	attacks = merge(bountyhuntermaster,marksmanmaster,brawlermaster,tkamaster)
 }
 
 CreatureTemplates:addCreatureTemplate(death_watch_bloodguard, "death_watch_bloodguard")

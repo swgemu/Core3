@@ -49,7 +49,7 @@ fbase_rebel_rifleman_hard = Creature:new {
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	attacks = merge(brawlermaster,marksmanmaster,riflemanmid)
+	attacks = merge(brawlermaster,marksmanmaster,riflemanmid,pistoleermid)
 }
 
 CreatureTemplates:addCreatureTemplate(fbase_rebel_rifleman_hard, "fbase_rebel_rifleman_hard")

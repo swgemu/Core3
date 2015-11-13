@@ -42,7 +42,7 @@ novice_force_mystic = Creature:new {
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(pikemanmaster,brawlermaster)
+	attacks = merge(pikemanmaster,brawlermaster,fencermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(novice_force_mystic, "novice_force_mystic")

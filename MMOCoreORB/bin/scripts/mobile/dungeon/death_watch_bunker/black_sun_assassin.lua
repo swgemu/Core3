@@ -44,7 +44,7 @@ black_sun_assassin = Creature:new {
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(bountyhuntermaster,marksmanmaster,brawlermaster)
+	attacks = merge(bountyhuntermaster,marksmanmaster,brawlermaster,swordsmanmaster,pistoleermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(black_sun_assassin, "black_sun_assassin")

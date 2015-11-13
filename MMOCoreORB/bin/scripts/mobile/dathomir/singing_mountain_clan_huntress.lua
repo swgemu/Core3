@@ -46,7 +46,7 @@ singing_mountain_clan_huntress = Creature:new {
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,pikemanmaster)
+	attacks = merge(brawlermaster,pikemanmaster,swordsmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(singing_mountain_clan_huntress, "singing_mountain_clan_huntress")

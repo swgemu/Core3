@@ -39,7 +39,7 @@ mercenary_sentry = Creature:new {
 	},
 	weapons = {"geonosian_mercenary_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster,pistoleermaster,riflemanmaster)
+	attacks = merge(brawlermaster,marksmanmaster,pistoleermaster,riflemanmaster,fencermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(mercenary_sentry, "mercenary_sentry")

@@ -54,7 +54,7 @@ imperial_surface_marshall = Creature:new {
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
 	personalityStf = "@hireling/hireling_military",
-	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
+	attacks = merge(riflemanmid,carbineermid,brawlermaster,marksmanmaster,pikemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_surface_marshall, "imperial_surface_marshall")

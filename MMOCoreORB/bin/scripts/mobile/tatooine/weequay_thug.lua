@@ -42,7 +42,7 @@ weequay_thug = Creature:new {
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermid,marksmanmaster,carbineernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(weequay_thug, "weequay_thug")
