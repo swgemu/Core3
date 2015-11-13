@@ -3,6 +3,8 @@ NightSisterStrongholdScreenPlay = ScreenPlay:new {
 
 	screenplayName = "NightSisterStrongholdScreenPlay",
 
+	spawnEvents = { "", "fourProtectAxkva" },
+
 	lootContainers = {
 		5035775
 	},
@@ -31,7 +33,10 @@ registerScreenPlay("NightSisterStrongholdScreenPlay", true)
 function NightSisterStrongholdScreenPlay:start()
 	if (isZoneEnabled("dathomir")) then
 		self:spawnMobiles()
+		self:spawnAxkva()
+		self:spawnCombatArea()
 		self:initializeLootContainers()
+		self:initializeEvents()
 	end
 end
 
@@ -114,25 +119,21 @@ function NightSisterStrongholdScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "nightsister_elder",3600,-5.8,7.2,-3.0,135,189383)
 	spawnMobile("dathomir", "nightsister_slave",300,-15.0,7.2,-14.3,3,189384)
 
-	--in the cave
-	spawnMobile("dathomir", "axkva_min",6400,-90.5,-101,-102.2,172,4115629, true)
-	spawnMobile("dathomir", "nightsister_protector",1200,-98.1117,-102.689,-131.572,7,4115626)
+	--in the cave, make progress in difficulty scale as you go down
 	spawnMobile("dathomir", "nightsister_sentinel",720,-89.6414,-100.547,-149.769,2,4115626)
 	spawnMobile("dathomir", "nightsister_sentinel",720,-28.3439,-80.1922,-151.496,7,4115628)
 	spawnMobile("dathomir", "nightsister_sentinel",720,-22.2057,-80.5683,-151.813,2,4115628)
 	spawnMobile("dathomir", "nightsister_spell_weaver",720,-12.9025,-68.921,-96.3403,7,4115627)
-	spawnMobile("dathomir", "nightsister_spell_weaver",720,-85.9,-100.8,-105.4,-118,4115629)
-	spawnMobile("dathomir", "nightsister_sentinel",720,-99.1,-99.8,-105.1,168,4115629)
 	spawnMobile("dathomir", "nightsister_sentinel",720,-19.9525,-69.7168,-92.0932,2,4115627)
-	spawnMobile("dathomir", "nightsister_protector",1200,-52.8,-68.7,-103.5,20,4115627)
+	spawnMobile("dathomir", "nightsister_ranger",1200,-52.8,-68.7,-103.5,20,4115627)
 	spawnMobile("dathomir", "nightsister_sentinel",720,-66.3095,-70.9,-84.3193,2,4115627)
-	spawnMobile("dathomir", "nightsister_protector",1200,-107.147,-68.531,-113.11,7,4115626)
+	spawnMobile("dathomir", "nightsister_ranger",1200,-107.147,-68.531,-113.11,7,4115626)
 	spawnMobile("dathomir", "nightsister_stalker",720,-118.707,-69.6862,-123.213,2,4115626)
 	spawnMobile("dathomir", "nightsister_stalker",720,-122.558,-69.332,-138.946,7,4115626)
 	spawnMobile("dathomir", "nightsister_stalker",720,-104.958,-71.5983,-176.399,2,4115626)
 	spawnMobile("dathomir", "nightsister_stalker",720,-115.398,-69.2239,-172.659,7,4115626)
 	spawnMobile("dathomir", "nightsister_initiate",600,-121.94,-69.8514,-182.011,2,4115626)
-	spawnMobile("dathomir", "nightsister_protector",1200,-115.618,-69.9586,-198.215,7,4115626)
+	spawnMobile("dathomir", "nightsister_spell_weaver",1200,-115.618,-69.9586,-198.215,7,4115626)
 	spawnMobile("dathomir", "nightsister_sentinel",720,-101.324,-68.9513,-203.529,2,4115626)
 	spawnMobile("dathomir", "nightsister_rancor_tamer",720,-68.4386,-69.8099,-196.707,7,4115626)
 	spawnMobile("dathomir", "nightsister_enraged_bull_rancor",720,-61.3,-69.9,-194.0,12,4115626)
@@ -155,16 +156,16 @@ function NightSisterStrongholdScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "nightsister_sentry",600,65.0699,-55.58,-159.308,2,4115623)
 	spawnMobile("dathomir", "nightsister_sentinel",720,65.4328,-55.1946,-157.441,-167,4115623)
 	spawnMobile("dathomir", "nightsister_sentinel",720,37.6787,-52.6718,-143.421,2,4115623)
-	spawnMobile("dathomir", "nightsister_protector",1200,37.6899,-52.6698,-143.418,7,4115623)
+	spawnMobile("dathomir", "nightsister_spell_weaver",1200,37.6899,-52.6698,-143.418,7,4115623)
 	spawnMobile("dathomir", "nightsister_sentinel",720,17.99,-47.6612,-133.802,2,4115623)
-	spawnMobile("dathomir", "nightsister_protector",1200,-7.9093,-45.001,-143.0,9,4115623)
+	spawnMobile("dathomir", "nightsister_spell_weaver",1200,-7.9093,-45.001,-143.0,9,4115623)
 	spawnMobile("dathomir", "nightsister_spell_weaver",720,0.0473984,-45.1734,-143.086,7,4115623)
 	spawnMobile("dathomir", "nightsister_sentinel",720,38.3645,-45.6514,-94.5238,2,4115622)
 	spawnMobile("dathomir", "nightsister_sentry",600,40.565,-46.6515,-76.2628,7,4115622)
 	spawnMobile("dathomir", "nightsister_stalker",720,48.2317,-47.0278,-54.4734,2,4115622)
 	spawnMobile("dathomir", "nightsister_stalker",720,44.0373,-46.6601,-51.444,7,4115622)
 	spawnMobile("dathomir", "nightsister_sentinel",720,31.0654,-45.1049,-56.1405,-100,4115622)
-	spawnMobile("dathomir", "nightsister_protector",1200,15.027,-40.2011,-76.6327,7,4115621)
+	spawnMobile("dathomir", "nightsister_spell_weaver",1200,15.027,-40.2011,-76.6327,7,4115621)
 	spawnMobile("dathomir", "nightsister_sentinel",720,-5.96411,-40.5602,-65.8697,2,4115621)
 	spawnMobile("dathomir", "nightsister_stalker",720,-10.1746,-39.3909,-54.6325,2,4115621)
 	spawnMobile("dathomir", "nightsister_initiate",600,-9.30522,-31.6686,-33.0453,7,4115620)
@@ -178,4 +179,75 @@ function NightSisterStrongholdScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "gethzerion",3600,-2,7.2,-1,180,189383)
 	spawnMobile("dathomir", "herald_dathomir_leandra",3600,-4082,132.7,-210,330,0)
 	spawnMobile("dathomir", "kais",3600,14.2,7.2,-15,230,189382)
+
 end
+
+function NightSisterStrongholdScreenPlay:spawnAxkva()
+	local pAxkvaMin = spawnMobile("dathomir", "axkva_min",6400,-90.5,-101,-102.2,172,4115629)
+	self:saveID(pAxkvaMin,0)
+	self:setMoodString(pAxkvaMin, "angry")
+	if (pAxkvaMin ~= nil) then
+		createObserver(STARTCOMBAT, "NightSisterStrongholdScreenPlay", "startCombatLogic", pAxkvaMin)
+	--a helper spawn Event, for whenever Axkva is first aggro'd...
+	createEvent(13000, "NightSisterStrongholdScreenPlay", "fourProtectAxkva", pAxkva, true)
+	else
+		return 0
+	end
+
+end
+
+function NightSisterStrongholdScreenPlay:spawnCombatArea()
+	local pActiveArea = spawnActiveArea("dathomir", "object/active_area.iff", -90, -101, -102, 65, 4115629)
+	if (pActiveArea ~= nil) then
+		createObserver(EXITEDAREA, "NightSisterStrongholdScreenPlay", "despawnProtectors", pActiveArea)
+		createObserver(EXITEDAREA, "NightSisterStrongholdScreenPlay", "forcePeace", pActiveArea)
+	end
+end
+
+function NightSisterStrongholdScreenPlay:startCombatLogic(pAxkvaMin)
+	if (pAxkvaMin ~= nil and (AiAgent(pAxkvaMin):isInCombat())) then
+	local pAttacker = spawnMobile("dathomir", "nightsister_protector",0,-80.5,-99.7,-101.6,-171,4115629)
+	self:saveID(pAttacker,1)
+	pAttacker = spawnMobile("dathomir", "nightsister_protector",0,-94.5,-100.8,-106.8,166,4115629)
+	self:saveID(pAttacker,2)
+	pAttacker = spawnMobile("dathomir", "nightsister_protector",0,-85.9,-100.8,-105.4,-118,4115629)
+	self:saveID(pAttacker,3)
+	pAttacker = spawnMobile("dathomir", "nightsister_protector",0,-99.1,-99.8,-105.1,168,4115629)
+	self:saveID(pAttacker,4)
+	spatialChat(pAxkvaMin, "@dungeon/nightsister_rancor_cave:protect")
+
+	return 0
+
+	end
+
+end
+
+function NightSisterStrongholdScreenPlay:saveID(pCreatureObject, id)
+	ObjectManager.withCreatureObject(pCreature, function(creature)
+		writeData("NightSisterStrongholdScreenPlay:CreatureID_" .. id, creature:getObjectID())
+	end)
+end
+
+function NightSisterStrongholdScreenPlay:despawnProtectors(pActiveArea)
+	for i = 1 , 4 , 1 do
+		self:destroy(readData("NightSisterStrongholdScreenPlay:CreatureID_" .. i))
+	end
+	return 0
+end
+
+function NightSisterStrongholdScreenPlay:forcePeace(pActiveArea)
+	forcePeace(getCreatureObject(readData("NightSisterStrongholdScreenPlay:CreatureID_0")))
+	return 0
+end
+
+function NightSisterStrongholdScreenPlay:destroy(objectID)
+	local sObj = getSceneObject(objectID)
+	if (sObj ~= nil) then
+		local oObj = LuaSceneObject(sObj)
+		if (oObj ~= nil) then
+			oObj:destroyObjectFromWorld()
+		end
+	end
+	return 0
+end
+
