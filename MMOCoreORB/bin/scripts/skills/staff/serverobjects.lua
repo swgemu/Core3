@@ -41,13 +41,19 @@
 --which carries forward this exception.
 --true = 1, false = 0
 
+-- Basilisk staff skills
+includeFile("staff/admin_qa_basilisk.lua")
+includeFile("staff/admin_dev_basilisk.lua")
+
 includeFile("staff/admin_base.lua")
 includeFile("staff/admin_debug_01.lua")
 includeFile("staff/admin_debug_02.lua")
 includeFile("staff/admin_debug_03.lua")
+includeFile("staff/admin_dev_basilisk.lua")
 includeFile("staff/admin_general_admin_01.lua")
 includeFile("staff/admin_general_admin_02.lua")
 includeFile("staff/admin_general_admin_03.lua")
+includeFile("staff/admin_intern_01.lua")
 includeFile("staff/admin_jedi_management_01.lua")
 includeFile("staff/admin_player_management_01.lua")
 includeFile("staff/admin_player_management_02.lua")
