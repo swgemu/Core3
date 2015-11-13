@@ -268,29 +268,25 @@ void TangibleObjectImplementation::setDefender(SceneObject* defender) {
 	int i = 0;
 	for (; i < defenderList.size(); i++) {
 		if (defenderList.get(i) == defender) {
-			if (i == 0)
-				return;
-
-			temp = defenderList.get(0);
-
-			TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6(asTangibleObject());
-			dtano6->startUpdate(0x01);
-
-			defenderList.set(0, defender, dtano6, 2);
-			defenderList.set(i, temp, dtano6, 0);
-
-			dtano6->close();
-
-			broadcastMessage(dtano6, true);
-
+			if (i == 0) return;
 			break;
 		}
 	}
 
 	if (i == defenderList.size())
 		addDefender(defender);
-	else
-		setCombatState();
+
+	temp = defenderList.get(0);
+	
+	TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6(asTangibleObject());
+	dtano6->startUpdate(0x01);
+
+	defenderList.set(0, defender, dtano6, 2);
+	defenderList.set(i, temp, dtano6, 0);
+
+	dtano6->close();
+
+	broadcastMessage(dtano6, true);
 }
 
 void TangibleObjectImplementation::addDefender(SceneObject* defender) {
