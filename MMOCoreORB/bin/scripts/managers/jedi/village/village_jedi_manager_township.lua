@@ -12,7 +12,7 @@ VillageJediManagerTownship = ScreenPlay:new {
 	screenplayName = "VillageJediManagerTownship"
 }
 
-VILLAGE_TOTAL_NUMBER_OF_PHASES = 2 -- Temporarily set to 1 for testing until other phases begin development
+VILLAGE_TOTAL_NUMBER_OF_PHASES = 2 -- Temporarily set to 2 for testing until other phases begin development
 
 local VILLAGE_PHASE_CHANGE_TIME = 24 * 60 * 60 * 1000 -- Testing value.
 --local VILLAGE_PHASE_CHANGE_TIME = 5 * 60 * 1000
@@ -22,7 +22,7 @@ local VILLAGE_PHASE_CHANGE_TIME = 24 * 60 * 60 * 1000 -- Testing value.
 function VillageJediManagerTownship.setCurrentPhaseInit()
 	if (not hasServerEvent("VillagePhaseChange")) then
 		VillageJediManagerTownship.setCurrentPhase(1)
-		VillageJediManagerTownship.setPhaseID(1)
+		VillageJediManagerTownship.setCurrentPhaseID(1)
 		createServerEvent(VILLAGE_PHASE_CHANGE_TIME, "VillageJediManagerTownship", "switchToNextPhase", "VillagePhaseChange")
 	end
 end
