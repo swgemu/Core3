@@ -99,7 +99,7 @@ end
 -- @param pCreatureObject pointer to the creature object of the player that should be checked for being in a building or not.
 -- @return true if the player is in a building.
 function Encounter:isPlayerInABuilding(pCreatureObject)
-	return not SceneObject(pCreatureObject):getParentID() == 0
+	return SceneObject(pCreatureObject):getParentID() ~= 0
 end
 
 -- Check if the player is in a NPC city.
