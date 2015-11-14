@@ -29,12 +29,6 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
-
-		//Check privileges
-		if (ghost == NULL || !ghost->isPrivileged())
-			return INSUFFICIENTPERMISSION;
-
 		StringTokenizer args(arguments.toString());
 
 		//Explain syntax

@@ -42,7 +42,7 @@ public:
 			return;
 
 		ManagedReference<PlayerObject*> playerObject = NULL;
-		bool privileged = false;
+		bool godMode = false;
 
 		if (player == NULL)
 			return;
@@ -52,8 +52,8 @@ public:
 		if (playerObject == NULL)
 			return;
 
-		if (playerObject->isPrivileged())
-			privileged = true;
+		if (playerObject->hasGodMode())
+			godMode = true;
 
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(targetToTrade);
 
@@ -64,7 +64,7 @@ public:
 
 		CreatureObject* targetPlayer = cast<CreatureObject*>( targetObject.get());
 
-		if (targetPlayer->getPlayerObject()->isIgnoring(player->getFirstName().toLowerCase()) && !privileged)
+		if (targetPlayer->getPlayerObject()->isIgnoring(player->getFirstName().toLowerCase()) && !godMode)
 			return;
 
 		PlayerObject* ghost = player->getPlayerObject();

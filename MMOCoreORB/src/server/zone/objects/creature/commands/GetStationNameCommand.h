@@ -27,11 +27,6 @@ public:
 		if(!creature->isPlayerCreature())
 			return INVALIDTARGET;
 
-		Reference<PlayerObject*> admin = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
-
-		if(admin == NULL || !admin->isPrivileged())
-			return INVALIDTARGET;
-
 		ManagedReference<CreatureObject* > targetCreature = NULL;
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 

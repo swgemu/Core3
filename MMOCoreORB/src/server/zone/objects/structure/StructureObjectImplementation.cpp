@@ -508,7 +508,7 @@ bool StructureObjectImplementation::isOnAdminList(CreatureObject* player) {
 bool StructureObjectImplementation::isOnEntryList(CreatureObject* player) {
 	PlayerObject* ghost = player->getPlayerObject();
 
-	if (ghost != NULL && ghost->isPrivileged())
+	if (ghost != NULL && ghost->hasGodMode())
 		return true;
 	else if (structurePermissionList.isOnPermissionList("ADMIN", player->getObjectID())
 			|| structurePermissionList.isOnPermissionList("ENTRY", player->getObjectID())
@@ -529,7 +529,7 @@ bool StructureObjectImplementation::isOnEntryList(CreatureObject* player) {
 bool StructureObjectImplementation::isOnBanList(CreatureObject* player) {
 	PlayerObject* ghost = player->getPlayerObject();
 
-	if (ghost != NULL && ghost->isPrivileged())
+	if (ghost != NULL && ghost->hasGodMode())
 		return false;
 	else if (structurePermissionList.isOnPermissionList("BAN", player->getObjectID()))
 		return true;

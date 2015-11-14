@@ -28,8 +28,8 @@ public:
 
 		Reference<PlayerObject*> admin = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-		if(admin == NULL || !admin->isPrivileged())
-			return INVALIDTARGET;
+		if(admin == NULL)
+			return GENERALERROR;
 
 		ManagedReference<PlayerManagementSession*> session = NULL;
 		ManagedReference<CreatureObject* > targetCreature = NULL;

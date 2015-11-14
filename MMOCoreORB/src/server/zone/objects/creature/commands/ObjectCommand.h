@@ -29,13 +29,6 @@ public:
 
 		StringTokenizer args(arguments.toString());
 
-		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
-
-		if (ghost == NULL || !ghost->isPrivileged()) {
-			creature->sendSystemMessage("@error_message:insufficient_permissions"); //You do not have sufficient permissions to perform the requested action.
-			return INSUFFICIENTPERMISSION;
-		}
-
 		try {
 			String commandType;
 			args.getStringToken(commandType);

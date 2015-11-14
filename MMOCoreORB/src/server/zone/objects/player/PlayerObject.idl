@@ -1210,8 +1210,13 @@ class PlayerObject extends IntangibleObject {
 	}
 
 	@dirty
-	public boolean isPrivileged() {
+	public boolean hasGodMode() {
 		return (adminLevel > 0 && hasAbility("admin"));
+	}
+
+	@dirty
+	public boolean isPrivileged() {
+		return (adminLevel > 6 && hasAbility("admin"));
 	}
 
 	@dirty

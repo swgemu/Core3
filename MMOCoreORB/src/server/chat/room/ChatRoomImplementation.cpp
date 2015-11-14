@@ -110,7 +110,7 @@ void ChatRoomImplementation::broadcastMessageCheckIgnore(BaseMessage* msg, Strin
 	String lowerName = senderName.toLowerCase();
 	PlayerManager* playerManager = server->getPlayerManager();
 	ManagedReference<CreatureObject*> sender = NULL;
-	bool privileged = false;
+	bool godMode = false;
 	ManagedReference<PlayerObject*> senderPlayer = NULL;
 
 	if (playerManager == NULL)
@@ -126,8 +126,8 @@ void ChatRoomImplementation::broadcastMessageCheckIgnore(BaseMessage* msg, Strin
 	if (senderPlayer == NULL)
 		return;
 
-	if (senderPlayer->isPrivileged())
-		privileged = true;
+	if (senderPlayer->hasGodMode())
+		godMode = true;
 
 
 	for (int i = 0; i < playerList.size(); ++i) {
@@ -138,7 +138,7 @@ void ChatRoomImplementation::broadcastMessageCheckIgnore(BaseMessage* msg, Strin
 			if (ghost == NULL)
 				continue;
 
-			if (!ghost->isIgnoring(lowerName) || privileged) {
+			if (!ghost->isIgnoring(lowerName) || godMode) {
 				player->sendMessage(msg->clone());
 			}
 		}

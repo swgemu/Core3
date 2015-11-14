@@ -34,7 +34,7 @@ void FsVillageAreaImplementation::notifyEnter(SceneObject* player) {
 
 	// Those who aren't a valid player, do not currently have or have had the Village elder quest cannot enter.
 	if (ghost != NULL) {
-		if (ghost->isPrivileged())
+		if (ghost->hasGodMode())
 			return;
 
 		if (!ghost->hasActiveQuestBitSet(PlayerQuestData::FS_VILLAGE_ELDER) && !ghost->hasCompletedQuestsBitSet(PlayerQuestData::FS_VILLAGE_ELDER)) {

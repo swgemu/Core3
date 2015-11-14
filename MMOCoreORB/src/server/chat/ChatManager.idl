@@ -14,7 +14,7 @@ import server.zone.managers.player.PlayerMap;
 import server.zone.managers.player.PlayerManager;
 import system.util.VectorMap;
 import system.util.HashTable;
-import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.player.PlayerObject;
 import server.zone.packets.chat.ChatRoomList;
 import server.zone.packets.chat.ChatInstantMessageToCharacter;
 import engine.log.Logger;
@@ -115,6 +115,7 @@ class ChatManager extends ManagedService implements Logger {
 	public native void handleAuctionChat(CreatureObject player, final unicode message);
 
 	public native unicode formatMessage(final unicode message);
+	public native string getTaggedName(PlayerObject ghost, final string name);
 	
 	public native ChatRoom createRoomByFullPath(final string path);
 	

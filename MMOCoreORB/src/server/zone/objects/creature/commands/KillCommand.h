@@ -24,12 +24,6 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
-
-		//Check privileges
-		if (ghost == NULL || !ghost->isPrivileged())
-			return INSUFFICIENTPERMISSION;
-
 		//Explain syntax
 		if (arguments.isEmpty() && creature->getTargetID() == 0) {
 			creature->sendSystemMessage("Syntax: /kill [-area [range]] [<health> [action] [mind]]");

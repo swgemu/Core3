@@ -109,7 +109,7 @@ public:
 		PlayerObject* targetGhost = targetCreature->getPlayerObject();
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
-		if (targetGhost != NULL && targetGhost->isPrivileged() && playerManager != NULL) {
+		if (targetGhost != NULL && targetGhost->hasGodMode() && playerManager != NULL) {
 			playerManager->updatePermissionName(targetCreature, targetGhost->getAdminLevel());
 		}
 

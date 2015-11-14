@@ -26,11 +26,6 @@ public:
 		if (!checkInvalidLocomotions(player))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
-
-		if (ghost == NULL || !ghost->isPrivileged())
-			return INSUFFICIENTPERMISSION;
-
 		StringTokenizer tokenizer(arguments.toString());
 		tokenizer.setDelimeter(" ");
 		int milestone = tokenizer.getIntToken();

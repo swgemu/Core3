@@ -28,12 +28,12 @@ public:
 			return INVALIDLOCOMOTION;
 
 		PlayerObject* playerObject = creature->getPlayerObject();
-		bool privileged = false;
+		bool godMode = false;
 
 		if (playerObject)
 		{
-			if (playerObject->isPrivileged())
-				privileged = true;
+			if (playerObject->hasGodMode())
+				godMode = true;
 		}
 
 		GroupManager* groupManager = GroupManager::instance();
@@ -47,7 +47,7 @@ public:
 		if (object->isPlayerCreature()) {
 			CreatureObject* player = cast<CreatureObject*>( object.get());
 
-			if (!player->getPlayerObject()->isIgnoring(creature->getFirstName().toLowerCase()) || privileged)
+			if (!player->getPlayerObject()->isIgnoring(creature->getFirstName().toLowerCase()) || godMode)
 				groupManager->inviteToGroup(creature, player);
 		}
 

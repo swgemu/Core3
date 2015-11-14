@@ -17,7 +17,7 @@ public:
 	static int executeCommand(CreatureObject* creature, uint64 target, const UnicodeString& arguments) {
 		PlayerObject* ghost = creature->getPlayerObject();
 
-		if (ghost == NULL || !ghost->isPrivileged() || ghost->getAdminLevel() < 15)
+		if (ghost == NULL || ghost->getAdminLevel() < 15)
 			return 1;
 
 		StringTokenizer args(arguments.toString());

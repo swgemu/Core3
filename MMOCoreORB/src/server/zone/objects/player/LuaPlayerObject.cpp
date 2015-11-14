@@ -55,7 +55,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "addEventPerk", &LuaPlayerObject::addEventPerk},
 		{ "getEventPerkCount", &LuaPlayerObject::getEventPerkCount},
 		{ "getCharacterAgeInDays", &LuaPlayerObject::getCharacterAgeInDays},
-		{ "isPrivileged", &LuaPlayerObject::isPrivileged},
+		{ "hasGodMode", &LuaPlayerObject::hasGodMode},
 		{ "closeSuiWindowType", &LuaPlayerObject::closeSuiWindowType},
 		{ "getExperienceList", &LuaPlayerObject::getExperienceList},
 		{ "getExperienceCap", &LuaPlayerObject::getExperienceCap},
@@ -486,8 +486,8 @@ int LuaPlayerObject::getCharacterAgeInDays(lua_State* L) {
 	return 1;
 }
 
-int LuaPlayerObject::isPrivileged(lua_State* L) {
-	lua_pushboolean(L, realObject->isPrivileged());
+int LuaPlayerObject::hasGodMode(lua_State* L) {
+	lua_pushboolean(L, realObject->hasGodMode());
 
 	return 1;
 }

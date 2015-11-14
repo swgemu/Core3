@@ -54,7 +54,7 @@ public:
 
 		ManagedReference<PlayerObject*> ghost = targetCreature->getPlayerObject();
 
-		if (ghost != NULL && ghost->isPrivileged()) {
+		if (ghost != NULL && ghost->hasGodMode()) {
 			//Can't ban a CSR
 			creature->sendSystemMessage("@city/city:not_csr_ban"); //You cannot ban a Customer Service Representative from the city!
 

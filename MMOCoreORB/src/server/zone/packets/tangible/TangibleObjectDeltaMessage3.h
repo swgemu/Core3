@@ -39,7 +39,7 @@ public:
 		if (tano->isPlayerCreature()) {
 			CreatureObject* player = cast<CreatureObject*>( tano.get());
 
-			if (player->getPlayerObject()->isPrivileged() && tag != "") {
+			if (player->getPlayerObject()->hasGodMode() && tag != "") {
 				UnicodeString customName = name + " \\#ffff00[" + tag + "]\\#.";
 				addUnicodeUpdate(2, customName);
 				return;

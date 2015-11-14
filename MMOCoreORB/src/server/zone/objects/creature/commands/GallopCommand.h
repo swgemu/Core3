@@ -71,9 +71,6 @@ public:
 		float magnitude = mountSpeedData->getGallopSpeedMultiplier();
 		int cooldown = mountSpeedData->getGallopCooldown();
 
-		if (creature->getPlayerObject()->isPrivileged())
-			cooldown = 5;
-
 		StringIdChatParameter startStringId("combat_effects", "gallop_start"); // Your mount runs as fast as it can.
 		StringIdChatParameter endStringId("combat_effects", "gallop_stop"); // Your mount is winded and slows down.
 

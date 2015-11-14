@@ -150,7 +150,7 @@ void VisibilityManager::increaseVisibility(CreatureObject* creature) {
 	//info("Increasing visibility for " + creature->getFirstName(), true);
 	Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-	if (ghost != NULL && !ghost->isPrivileged()) {
+	if (ghost != NULL && !ghost->hasGodMode()) {
 		Locker locker(ghost);
 		decreaseVisibility(creature);
 		ghost->setVisibility(ghost->getVisibility() + calculateVisibilityIncrease(creature));
@@ -164,7 +164,7 @@ void VisibilityManager::increaseVisibility(CreatureObject* creature) {
 void VisibilityManager::clearVisibility(CreatureObject* creature) {
 	Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-	if (ghost != NULL && !ghost->isPrivileged()) {
+	if (ghost != NULL && !ghost->hasGodMode()) {
 		//info("Clearing visibility for player " + String::valueOf(creature->getObjectID()), true);
 
 		Locker locker(ghost);

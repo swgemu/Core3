@@ -25,10 +25,6 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		PlayerObject* ghost = creature->getPlayerObject();
-		if (!ghost->isPrivileged())
-			return INSUFFICIENTPERMISSION;
-
 		ManagedReference<AiAgent*> targetObj = server->getZoneServer()->getObject(creature->getTargetID()).castTo<AiAgent*>();
 		if (targetObj == NULL)
 			return GENERALERROR;

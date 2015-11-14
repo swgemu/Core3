@@ -240,7 +240,7 @@ public:
 		ValidatedPosition pos;
 		pos.update(object);
 
-		if (!ghost->isPrivileged()) {
+		if (!ghost->hasGodMode()) {
 			SceneObject* inventory = object->getSlottedObject("inventory");
 
 			if (inventory != NULL && inventory->getCountableObjectsRecursive() > inventory->getContainerVolumeLimit() + 1) {

@@ -24,12 +24,6 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerObject* ghost = creature->getPlayerObject();
-
-		if(ghost == NULL || !ghost->isPrivileged()) {
-			return GENERALERROR;
-		}
-
 		byte rank = 0;
 		StringTokenizer args(arguments.toString());
 		String planet;

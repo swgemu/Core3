@@ -24,11 +24,6 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		Reference<PlayerObject*> admin = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
-
-		if(admin == NULL || !admin->isPrivileged())
-			return INVALIDTARGET;
-
 		ManagedReference<CreatureObject* > targetCreature = NULL;
 
 		StringTokenizer args(arguments.toString());

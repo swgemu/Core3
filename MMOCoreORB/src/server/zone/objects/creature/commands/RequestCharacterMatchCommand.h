@@ -85,7 +85,7 @@ public:
 							continue;
 
 						// Don't allow non privileged characters to search for admin skills
-						if (profession.contains("admin") && !ghost->isPrivileged())
+						if (profession.contains("admin") && !ghost->hasGodMode())
 							continue;
 
 						// Dont show invisible admins

@@ -195,7 +195,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 			if(object->isPlayerCreature()) {
 				Reference<PlayerObject*> ghost =  object->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-				if (ghost == NULL || !ghost->isPrivileged() || !ghost->hasAbility(queueCommand->getQueueCommandName())) {
+				if (ghost == NULL || !ghost->hasGodMode() || !ghost->hasAbility(queueCommand->getQueueCommandName())) {
 					StringBuffer logEntry;
 					logEntry << object->getDisplayedName() << " attempted to use the '/" << queueCommand->getQueueCommandName()
 							<< "' command without permissions";

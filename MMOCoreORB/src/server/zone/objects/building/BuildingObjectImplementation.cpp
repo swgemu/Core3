@@ -725,7 +725,7 @@ void BuildingObjectImplementation::updateCellPermissionsTo(CreatureObject* creat
 void BuildingObjectImplementation::ejectObject(CreatureObject* creature) {
 	PlayerObject* ghost = creature->getPlayerObject();
 
-	if (ghost != NULL && ghost->isPrivileged())
+	if (ghost != NULL && ghost->hasGodMode())
 		return;
 
 	Vector3 ejectionPoint = getEjectionPoint();

@@ -19,9 +19,6 @@
 class PlayerInfoCommand {
 public:
 	static int executeCommand(CreatureObject* creature, uint64 target, const UnicodeString& arguments) {
-		if (!creature->getPlayerObject()->isPrivileged())
-			return 1;
-
 		ManagedReference<CreatureObject*> targetObject;
 
 		if (!arguments.isEmpty()) {

@@ -23,10 +23,6 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		PlayerObject* ghost = creature->getPlayerObject();
-		if (!ghost->isPrivileged())
-			return INSUFFICIENTPERMISSION;
-
 		ManagedReference<CreatureObject*> targetCreature = NULL;
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 

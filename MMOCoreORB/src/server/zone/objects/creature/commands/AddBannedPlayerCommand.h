@@ -27,8 +27,8 @@ public:
 
 		ManagedReference<PlayerObject*> adminGhost = creature->getPlayerObject();
 
-		if (adminGhost == NULL || !adminGhost->isPrivileged())
-			return INSUFFICIENTPERMISSION;
+		if (adminGhost == NULL)
+			return GENERALERROR;
 
 		ManagedReference<CreatureObject*> targetCreature = NULL;
 		ManagedReference<PlayerObject*> ghost = NULL;

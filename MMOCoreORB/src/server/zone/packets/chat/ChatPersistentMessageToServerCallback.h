@@ -212,17 +212,17 @@ public:
 		if (receiver == NULL || !receiver->isPlayerCreature() || sender == NULL)
 			return 0;
 
-		bool privileged = false;
+		bool godMode = false;
 
-		if (sender->isPrivileged())
-			privileged = true;
+		if (sender->hasGodMode())
+			godMode = true;
 
 		Locker locker(receiver);
 
 		CreatureObject* receiverPlayer = cast<CreatureObject*>(receiver.get());
 		ManagedReference<PlayerObject*> ghost = receiverPlayer->getPlayerObject();
 
-		if (ghost == NULL || (ghost->isIgnoring(player->getFirstName().toLowerCase()) && !privileged)) {
+		if (ghost == NULL || (ghost->isIgnoring(player->getFirstName().toLowerCase()) && !godMode)) {
 			StringIdChatParameter err("ui_pm", "recipient_ignored_prose");
 			err.setTT(recipientName);
 			player->sendSystemMessage(err);

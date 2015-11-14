@@ -28,12 +28,6 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
-
-		//Check privileges
-		if (ghost == NULL || !ghost->isPrivileged())
-			return INSUFFICIENTPERMISSION;
-
 		StringTokenizer args(arguments.toString());
 
 		//Explain syntax
@@ -107,7 +101,7 @@ public:
 					ManagedReference<CreatureObject*> playerObject = playerMap->getNextValue(false);
 
 					if (creature->getPlanetCRC() == playerObject->getPlanetCRC()) {
-						if (playerObject->getFaction() == faction.hashCode() || playerObject->getPlayerObject()->isPrivileged())
+						if (playerObject->getFaction() == faction.hashCode() || playerObject->getPlayerObject()->hasGodMode())
 							playerObject->sendSystemMessage(type + message);
 					}
 				}
@@ -135,7 +129,7 @@ public:
 					ManagedReference<CreatureObject*> playerObject = playerMap->getNextValue(false);
 
 					if (creature->getPlanetCRC() == playerObject->getPlanetCRC()) {
-						if (playerObject->getFaction() == faction.hashCode() || playerObject->getPlayerObject()->isPrivileged())
+						if (playerObject->getFaction() == faction.hashCode() || playerObject->getPlayerObject()->hasGodMode())
 							playerObject->sendSystemMessage(type + message);
 					}
 				}

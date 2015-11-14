@@ -27,8 +27,9 @@ public:
 			return INVALIDLOCOMOTION;
 
 		PlayerObject* ghost = creature->getPlayerObject();
-		if (!ghost->isPrivileged())
-			return INSUFFICIENTPERMISSION;
+
+		if (ghost == NULL)
+			return GENERALERROR;
 
 		StringTokenizer args(arguments.toString());
 		String targetName = "";

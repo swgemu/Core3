@@ -65,9 +65,6 @@ public:
 
 		int cooldown = mountSpeedData->getGallopCooldown();
 
-		if (creature->getPlayerObject()->isPrivileged())
-			cooldown = 5;
-
 		creature->removeBuff(crc);
 		mount->removeBuff(crc);
 		creature->getCooldownTimerMap()->updateToCurrentAndAddMili("gallop", cooldown * 1000);
