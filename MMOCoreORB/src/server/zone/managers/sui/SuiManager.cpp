@@ -59,6 +59,7 @@
 #include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/objects/tangible/eventperk/Jukebox.h"
+#include "server/zone/objects/player/sui/SuiBoxPage.h"
 
 SuiManager::SuiManager() : Logger("SuiManager") {
 	server = NULL;
@@ -881,5 +882,23 @@ void SuiManager::sendTransferBox(SceneObject* usingObject, SceneObject* player, 
 
 		creature->sendMessage(box->generateMessage());
 		playerObject->addSuiBox(box);
+	}
+}
+
+void SuiManager::sendSuiPage(CreatureObject* creature, SuiPageData* pageData, const String& play, const String& callback) {
+
+	if (pageData == NULL)
+		return;
+
+	if (creature == NULL || !creature->isPlayerCreature())
+		return;
+
+	PlayerObject* playerObject = creature->getPlayerObject();
+
+	if (playerObject != NULL) {
+		ManagedReference<SuiBoxPage*> boxPage = new SuiBoxPage(creature, pageData, 0x00);
+		boxPage->setCallback(new LuaSuiCallback(creature->getZoneServer(), play, callback));
+		creature->sendMessage(boxPage->generateMessage());
+		playerObject->addSuiBox(boxPage);
 	}
 }
