@@ -518,34 +518,33 @@ function ThemeParkLogic:spawnDestroyBuilding(mission, pConversingPlayer)
 	end
 
 	local spawnDistance = self.distance
-	return ObjectManager.withCreatureObject(pConversingPlayer, function(creature)
-		local spawnPoint = getSpawnArea(pConversingPlayer, creature:getWorldPositionX(), creature:getWorldPositionY(), spawnDistance, (spawnDistance/2)*3, 20, 5)
-		local pBuilding = spawnBuilding(pConversingPlayer, buildingData.building.template, spawnPoint[1], spawnPoint[3], 0)
 
-		if (pBuilding == nil) then
-			return false
-		end
+	local spawnPoint = getSpawnArea(SceneObject(pConversingPlayer):getZoneName(), SceneObject(pConversingPlayer):getWorldPositionX(), SceneObject(pConversingPlayer):getWorldPositionY(), spawnDistance, (spawnDistance/2)*3, 20, 5)
+	local pBuilding = spawnBuilding(pConversingPlayer, buildingData.building.template, spawnPoint[1], spawnPoint[3], 0)
 
-		createObserver(OBJECTDESTRUCTION, self.className, "notifyDestroyedBuilding", pBuilding)
+	if (pBuilding == nil) then
+		return false
+	end
 
-		local buildingCell = BuildingObject(pBuilding):getCell(buildingData.terminal.vectorCellID)
+	createObserver(OBJECTDESTRUCTION, self.className, "notifyDestroyedBuilding", pBuilding)
 
-		if (buildingCell == nil) then
-			return false
-		end
+	local buildingCell = BuildingObject(pBuilding):getCell(buildingData.terminal.vectorCellID)
 
-		local pTerminal = spawnSceneObject(buildingData.building.planet, buildingData.terminal.template, buildingData.terminal.x, buildingData.terminal.z, buildingData.terminal.y, SceneObject(buildingCell):getObjectID(), 1, 0, 0, 0)
+	if (buildingCell == nil) then
+		return false
+	end
 
-		if (pTerminal == nil) then
-			return false
-		end
+	local pTerminal = spawnSceneObject(buildingData.building.planet, buildingData.terminal.template, buildingData.terminal.x, buildingData.terminal.z, buildingData.terminal.y, SceneObject(buildingCell):getObjectID(), 1, 0, 0, 0)
 
-		writeData(creature:getObjectID() .. ":destroyableBuildingID", SceneObject(pBuilding):getObjectID())
-		self:updateWaypoint(pConversingPlayer, buildingData.building.planet, spawnPoint[1], spawnPoint[3], "target")
-		self:spawnDestroyMissionNpcs(mission, pConversingPlayer)
+	if (pTerminal == nil) then
+		return false
+	end
 
-		return true
-	end)
+	writeData(SceneObject(pConversingPlayer):getObjectID() .. ":destroyableBuildingID", SceneObject(pBuilding):getObjectID())
+	self:updateWaypoint(pConversingPlayer, buildingData.building.planet, spawnPoint[1], spawnPoint[3], "target")
+	self:spawnDestroyMissionNpcs(mission, pConversingPlayer)
+
+	return true
 end
 
 function ThemeParkLogic:spawnMissionStaticObjects(mission, pConversingPlayer, x, y)
@@ -562,7 +561,7 @@ function ThemeParkLogic:spawnMissionStaticObjects(mission, pConversingPlayer, x,
 	writeData(playerID .. ":missionStaticObjects", numberOfSpawns)
 
 	for i = 1, numberOfSpawns, 1 do
-		local spawnPoint = getSpawnPoint(pConversingPlayer, x, y, 5, 10)
+		local spawnPoint = getSpawnPoint(mission.staticObjects[i].planetName, x, y, 5, 10)
 		if spawnPoint ~= nil then
 			local pObject = spawnSceneObject(mission.staticObjects[i].planetName, mission.staticObjects[i].objectTemplate, spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, 0, 0, 0, 0)
 			writeData(playerID .. ":missionStaticObject:no" .. i, SceneObject(pObject):getObjectID())
@@ -1342,10 +1341,12 @@ function ThemeParkLogic:getSpawnPoints(numberOfSpawns, x, y, pConversingPlayer)
 
 	local spawnDistance = self.distance
 
+	local zoneName = SceneObject(pConversingPlayer):getZoneName()
+
 	if currentMissionType == "destroy" then
-		firstSpawnPoint = getSpawnPoint(pConversingPlayer, x, y, 15, 25, true)
+		firstSpawnPoint = getSpawnPoint(zoneName, x, y, 15, 25, true)
 	else
-		firstSpawnPoint = getSpawnPoint(pConversingPlayer, x, y, spawnDistance, (spawnDistance/2)*3)
+		firstSpawnPoint = getSpawnPoint(zoneName, x, y, spawnDistance, (spawnDistance/2)*3)
 	end
 
 	if firstSpawnPoint ~= nil then
@@ -1353,9 +1354,9 @@ function ThemeParkLogic:getSpawnPoints(numberOfSpawns, x, y, pConversingPlayer)
 		for i = 2, numberOfSpawns, 1 do
 			local nextSpawnPoint
 			if currentMissionType == "destroy" then
-				nextSpawnPoint = getSpawnPoint(pConversingPlayer, firstSpawnPoint[1], firstSpawnPoint[3], 10, 20, true)
+				nextSpawnPoint = getSpawnPoint(zoneName, firstSpawnPoint[1], firstSpawnPoint[3], 10, 20, true)
 			else
-				nextSpawnPoint = getSpawnPoint(pConversingPlayer, firstSpawnPoint[1], firstSpawnPoint[3], 5, 15)
+				nextSpawnPoint = getSpawnPoint(zoneName, firstSpawnPoint[1], firstSpawnPoint[3], 5, 15)
 			end
 			if nextSpawnPoint ~= nil then
 				table.insert(spawnPoints, nextSpawnPoint)
