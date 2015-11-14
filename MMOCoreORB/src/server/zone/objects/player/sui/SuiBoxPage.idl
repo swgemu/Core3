@@ -1,0 +1,32 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.player.sui;
+import server.zone.objects.player.sui.SuiPageData;
+import server.zone.objects.creature.CreatureObject;
+import engine.service.proto.BaseMessage;
+import server.zone.objects.player.sui.SuiBox;
+include server.zone.packets.ui.SuiCreatePageMessage;
+
+class SuiBoxPage extends SuiBox {
+	@dereferenced
+	protected SuiPageData pageData;
+
+	public SuiBoxPage(CreatureObject player, SuiPageData data) {
+		super(player, 0x00, 0x00);
+		pageData = data;
+	}
+
+	public native BaseMessage generateMessage();
+
+	public boolean isSuiBoxPage() {
+		return true;
+	}
+
+	@local
+	@dirty
+	public SuiPageData getSuiPageData() {
+		return pageData;
+	}
+}
