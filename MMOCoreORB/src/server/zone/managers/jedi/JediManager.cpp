@@ -78,6 +78,10 @@ void JediManager::onPlayerLoggedIn(CreatureObject* creature) {
 	*luaOnPlayerLoggedIn << creature;
 
 	luaOnPlayerLoggedIn->callFunction();
+
+	Reference<LuaFunction*> testFunction = lua->createFunction("SuiSample", "openSample", 0);
+	*testFunction << creature;
+	testFunction->callFunction();
 }
 
 void JediManager::onPlayerLoggedOut(CreatureObject* creature) {
