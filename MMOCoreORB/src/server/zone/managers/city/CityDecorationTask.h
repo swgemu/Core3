@@ -94,6 +94,13 @@ public:
 			return;
 		}
 
+		if (zone->getPlanetManager()->isInRangeWithPoi(mayor->getPositionX(), mayor->getPositionY(), obj->getObjectTemplate()->getNoBuildRadius())) {
+			StringIdChatParameter msg;
+			msg.setStringId("@player_structure:not_permitted"); //"Building is not permitted here.");
+			mayor->sendSystemMessage(msg);
+			return;
+		}
+
 		if(city->getCityTreasury() < 1000) {
 			StringIdChatParameter msg;
 			msg.setStringId("@city/city:action_no_money");
