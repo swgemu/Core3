@@ -352,6 +352,8 @@ core3_IDLS =	autogen/server/zone/objects/tangible/misc/CustomIngredient.cpp \
 				
 core3_SOURCES =	$(core3_IDLS) \
 		$(core3_TESTS) \
+		server/zone/objects/player/sui/LuaSuiPageData.cpp \
+		server/zone/objects/player/sui/SuiPageData.cpp \
 		server/zone/managers/vendor/VendorManager.cpp \
 		server/zone/managers/jedi/JediManager.cpp \
 		server/zone/managers/ship/ShipManager.cpp \
