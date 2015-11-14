@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_4435df44",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/dathomir_nightsister_stronghold.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2015-11-14T06:51:34Z",
+      "side": 1,
+      "message": "Doesn\u0027t look like this is used anywhere.",
+      "revId": "ca2bdab80a7aac0ec97becad888235a892332801",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_643a5b38",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/dathomir_nightsister_stronghold.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2015-11-14T06:51:34Z",
+      "side": 1,
+      "message": "I\u0027m not seeing this function anywhere.",
+      "revId": "ca2bdab80a7aac0ec97becad888235a892332801",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_043fd726",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/dathomir_nightsister_stronghold.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2015-11-14T06:51:34Z",
+      "side": 1,
+      "message": "I dont see a setMoodString function",
+      "revId": "ca2bdab80a7aac0ec97becad888235a892332801",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_c41fafb6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/dathomir_nightsister_stronghold.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2015-11-14T06:51:34Z",
+      "side": 1,
+      "message": "You\u0027ll probably want an observer to monitor her leaving combat, otherwise if a player dies while her guards are alive the next time she is aggroed she\u0027ll have duplicate guards. You should be able to use the DEFENDERDROPPED observer, and inside the function call only destroy the guards if she isnt in combat.",
+      "revId": "ca2bdab80a7aac0ec97becad888235a892332801",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_841207b3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/dathomir_nightsister_stronghold.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2015-11-14T06:51:34Z",
+      "side": 1,
+      "message": "This event calls a function that doesn\u0027t exist, and it doesn\u0027t look like it\u0027s needed anyway.",
+      "revId": "ca2bdab80a7aac0ec97becad888235a892332801",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_a41703a3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/dathomir_nightsister_stronghold.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2015-11-14T06:51:34Z",
+      "side": 1,
+      "message": "Just return, no need to return 0 as this isnt an observer function.",
+      "revId": "ca2bdab80a7aac0ec97becad888235a892332801",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_6411fbab",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/dathomir_nightsister_stronghold.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2015-11-14T06:51:34Z",
+      "side": 1,
+      "message": "Fix tabbing here.",
+      "revId": "ca2bdab80a7aac0ec97becad888235a892332801",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_2423f306",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/dathomir_nightsister_stronghold.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2015-11-14T06:51:34Z",
+      "side": 1,
+      "message": "We\u0027re trying to stray away from using ObjectManager calls directly. Instead, use CreatureObject(pCreatureObject):getObjectID()",
+      "revId": "ca2bdab80a7aac0ec97becad888235a892332801",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_0426f716",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/dathomir_nightsister_stronghold.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2015-11-14T06:51:34Z",
+      "side": 1,
+      "message": "Make sure you deleteData the data you\u0027re reading after the object is destroyed.",
+      "revId": "ca2bdab80a7aac0ec97becad888235a892332801",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_a47e23e3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/dathomir_nightsister_stronghold.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2015-11-14T06:51:34Z",
+      "side": 1,
+      "message": "You\u0027ll also want to destroy the guards here, otherwise you\u0027ll end up with duplicate guards the next time she is aggroed.",
+      "revId": "ca2bdab80a7aac0ec97becad888235a892332801",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
