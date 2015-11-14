@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_c49ecf63",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/BoostmoraleCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-14T00:47:21Z",
+      "side": 0,
+      "message": "You should just add the checks to checkGroupLeader in SquadLeaderCommand instead of individually in each one.",
+      "revId": "0a2a5ee7a1f6fa2f40b5b8c397da8e2ba916a6e0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_e49bcb70",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/Berserk1Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-14T00:47:21Z",
+      "side": 1,
+      "message": "Each place you add this check, you should also check for posture change delays (as is already happening in ForceResistStatesCommand)",
+      "revId": "56d8ef223eca6b6e326765825cfe8530023a6591",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_64b01bf5",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceIntimidate1Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-14T00:47:21Z",
+      "side": 1,
+      "message": "This is unneeded. This command is checked for an attack delay in CombatManager.",
+      "revId": "56d8ef223eca6b6e326765825cfe8530023a6591",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_0495973f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceIntimidate2Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-14T00:47:21Z",
+      "side": 1,
+      "message": "This is unneeded. This command is checked for an attack delay in CombatManager.",
+      "revId": "56d8ef223eca6b6e326765825cfe8530023a6591",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_24921358",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/WookieeRoarCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-14T00:47:21Z",
+      "side": 1,
+      "message": "This is unneeded. This command is checked for an attack delay in CombatManager.",
+      "revId": "56d8ef223eca6b6e326765825cfe8530023a6591",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
