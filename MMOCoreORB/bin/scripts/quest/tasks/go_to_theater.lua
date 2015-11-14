@@ -91,9 +91,14 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 function GoToTheater:taskStart(pCreatureObject)
 	Logger:log("Spawning " .. self.taskName .. " theater.", LT_INFO)
-	local spawnPoint = getSpawnArea(pCreatureObject, SceneObject(pCreatureObject):getWorldPositionX(), SceneObject(pCreatureObject):getWorldPositionY(), self.minimumDistance, self.maximumDistance, 30, 5, true)
+
+	local spawnPoint = getSpawnArea(SceneObject(pCreatureObject):getZoneName(), SceneObject(pCreatureObject):getWorldPositionX(), SceneObject(pCreatureObject):getWorldPositionY(), self.minimumDistance, self.maximumDistance, 20, 15, true)
 	local zoneName = SceneObject(pCreatureObject):getZoneName()
 	local playerID = SceneObject(pCreatureObject):getObjectID()
+	
+	if (spawnPoint == nil) then	
+		printf("Error in GoToTheater:taskStart() for task " .. self.taskName .. ", spawnPoint is nil.\n")
+	end
 
 	if spawnPoint ~= nil then
 		local pTheater = spawnSceneObject(zoneName, self.theater, spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, getRandomNumber(0, 359))
@@ -161,6 +166,10 @@ end
 -- Handle the despawn event.
 -- @param pCreatureObject pointer to the creature object of the player that the event was triggered for.
 function GoToTheater:handleDespawnTheater(pCreatureObject)
+	if (not self:hasTaskStarted(pCreatureObject)) then
+		return
+	end
+
 	self:finish(pCreatureObject)
 end
 

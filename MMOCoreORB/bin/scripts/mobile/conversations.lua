@@ -141,6 +141,7 @@ includeFile("conversations/village/phase1/sivarra_phase1_conv.lua")
 includeFile("conversations/village/phase1/med_droid_phase1_conv.lua")
 includeFile("conversations/village/phase1/whip_phase1_conv.lua")
 includeFile("conversations/village/phase1/fs_reflex1_prisoner_conv.lua")
+includeFile("conversations/village/phase2/whip_phase2_conv.lua")
 
 -- Race Tracks
 includeFile("conversations/racetracks/agrilatswampconversation.lua")
