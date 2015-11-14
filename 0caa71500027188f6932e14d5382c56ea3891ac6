@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_a494e337",
+        "filename": "MMOCoreORB/bin/scripts/loot/groups/wearables/wearables_rare.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-14T01:18:29Z",
+      "side": 0,
+      "message": "Why are you removing this?",
+      "revId": "0caa71500027188f6932e14d5382c56ea3891ac6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_848f6723",
+        "filename": "MMOCoreORB/bin/scripts/loot/groups/wearables/wearables_rare.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-14T01:18:29Z",
+      "side": 0,
+      "message": "Why are you removing this?",
+      "revId": "0caa71500027188f6932e14d5382c56ea3891ac6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

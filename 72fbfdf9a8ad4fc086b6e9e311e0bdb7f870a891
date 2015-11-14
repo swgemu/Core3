@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_649edb58",
+        "filename": "MMOCoreORB/bin/scripts/loot/groups/crystals_poor.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-14T01:18:29Z",
+      "side": 1,
+      "message": "Why are you adding this to this loot group specifically?",
+      "revId": "72fbfdf9a8ad4fc086b6e9e311e0bdb7f870a891",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_2479b32f",
+        "filename": "MMOCoreORB/bin/scripts/loot/groups/npc/canyon_corsair_common.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-14T01:18:29Z",
+      "side": 1,
+      "message": "Don\u0027t add these quest rewards to standard loot.",
+      "revId": "72fbfdf9a8ad4fc086b6e9e311e0bdb7f870a891",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_c4756f33",
+        "filename": "MMOCoreORB/bin/scripts/loot/groups/npc/tusken_common.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-14T01:18:29Z",
+      "side": 1,
+      "message": "Don\u0027t add these quest rewards to standard loot.",
+      "revId": "72fbfdf9a8ad4fc086b6e9e311e0bdb7f870a891",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_44995f6d",
+        "filename": "MMOCoreORB/bin/scripts/loot/groups/wearables/wearables_rare.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-14T01:18:29Z",
+      "side": 1,
+      "message": "These pants are in the wearables_scarce group. It shouldn\u0027t be in both.",
+      "revId": "72fbfdf9a8ad4fc086b6e9e311e0bdb7f870a891",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_e472eb48",
+        "filename": "MMOCoreORB/bin/scripts/loot/groups/wearables/wearables_rare.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-14T01:18:29Z",
+      "side": 1,
+      "message": "These shoes are in the wearables_uncommon group. It shouldn\u0027t be in both that and this.",
+      "revId": "72fbfdf9a8ad4fc086b6e9e311e0bdb7f870a891",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_c4ac8f8f",
+        "filename": "MMOCoreORB/bin/scripts/mobile/dathomir/nightsister_elder.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-14T01:18:29Z",
+      "side": 1,
+      "message": "melee weapons were already two-thirds as common as ranged and now you cut their chance in half? I\u0027m a fan of just using weapons_all",
+      "revId": "72fbfdf9a8ad4fc086b6e9e311e0bdb7f870a891",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_04a3579f",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/dathomir/fs_village/sith_shadow_commander.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-14T01:18:29Z",
+      "side": 1,
+      "message": "Is there a reason you are overriding the default loot chance for the sith shadow mobs?",
+      "revId": "72fbfdf9a8ad4fc086b6e9e311e0bdb7f870a891",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
