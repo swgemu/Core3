@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_a4c143e6",
+        "filename": "MMOCoreORB/bin/scripts/skills/staff/serverobjects.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-15T06:45:11Z",
+      "side": 1,
+      "message": "Only need to include this once.",
+      "revId": "a41cfcd2f20f116ca6cd522bd2bd7bd8670cd8d2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
