@@ -4,6 +4,11 @@ require("themeParkLogic")
 require("corvetteTicketGiverLogic")
 require("corvetteTicketTakerLogic")
 
+-- SUI
+require("sui.SuiTemplate")
+require("sui.SuiListBox")
+require("sui.SuiSample")
+
 -- Theme parks
 includeFile("themepark/conversations/goru_conv_handler.lua")
 includeFile("themepark/conversations/mission_giver_conv_handler.lua")
