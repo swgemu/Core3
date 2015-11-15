@@ -30,6 +30,7 @@ namespace sui {
 		int sendInputBox(lua_State* L);
 		int sendListBox(lua_State* L);
 		int sendTransferBox(lua_State* L);
+		int sendSuiPage(lua_State* L);
 
 	private:
 		Reference<SuiManager*> realObject;
