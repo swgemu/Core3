@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_248693ba",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SquadLeaderCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-15T05:32:20Z",
+      "side": 1,
+      "message": "return false;",
+      "revId": "3483e63974947315155092e071133e7b35c8622f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
