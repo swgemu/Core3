@@ -176,9 +176,9 @@ function ExperienceConverter:getExperienceForConversion(pCreature, theType)
 	if (theType == 0 or theType == 3) then
 		inputTable = XpCombat
 	elseif (theType == 1) then
-		inputTable = XpSenses
-	elseif (theType == 2) then
 		inputTable = XpCrafting
+	elseif (theType == 2) then
+		inputTable = XpSenses
 	end
 
 	local expList = {}
@@ -210,9 +210,9 @@ function ExperienceConverter:getExperienceRatio(experienceType, theType)
 	if (theType == 0 or theType == 3) then
 		inputTable = XpCombat
 	elseif (theType == 1) then
-		inputTable = XpSenses
-	elseif (theType == 2) then
 		inputTable = XpCrafting
+	elseif (theType == 2) then
+		inputTable = XpSenses
 	end
 
 
