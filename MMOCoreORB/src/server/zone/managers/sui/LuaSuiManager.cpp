@@ -10,6 +10,7 @@
 #include "LuaSuiManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/SuiPageData.h"
 
 const char LuaSuiManager::className[] = "LuaSuiManager";
 
@@ -20,6 +21,7 @@ Luna<LuaSuiManager>::RegType LuaSuiManager::Register[] = {
 		{ "sendInputBox", &LuaSuiManager::sendInputBox },
 		{ "sendListBox", &LuaSuiManager::sendListBox },
 		{ "sendTransferBox", &LuaSuiManager::sendTransferBox },
+		{ "sendSuiPage", &LuaSuiManager::sendSuiPage },
 		{ 0, 0 }
 };
 
@@ -28,6 +30,22 @@ LuaSuiManager::LuaSuiManager(lua_State* L) {
 }
 
 LuaSuiManager::~LuaSuiManager(){
+}
+
+int LuaSuiManager::sendSuiPage(lua_State* L) {
+	if (lua_gettop(L) - 1 < 4) {
+		Logger::console.error("incorrect number of arguments for LuaSuiManager::sendSuiPage");
+		return 0;
+	}
+
+	String callback = lua_tostring(L, -1);
+	String play = lua_tostring(L, -2);
+	SuiPageData* page = (SuiPageData*) lua_touserdata(L, -3);
+	CreatureObject* creo = (CreatureObject*) lua_touserdata(L, -4);
+
+	realObject->sendSuiPage(creo, page, play, callback);
+
+	return 0;
 }
 
 int LuaSuiManager::sendKeypadSui(lua_State* L) {
