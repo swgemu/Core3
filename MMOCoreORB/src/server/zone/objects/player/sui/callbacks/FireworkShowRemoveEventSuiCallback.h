@@ -59,8 +59,10 @@ public:
 
 		ManagedReference<TangibleObject*> fireworkShowObject = fireworkShow.castTo<TangibleObject*>();
 
-		if (fireworkShowObject != NULL )
+		if (fireworkShowObject != NULL) {
+			Locker locker(fireworkShowObject);
 			fireworkShowObject->setUseCount(fireworkShowObject->getUseCount() - 1, true);
+		}
 
 		FireworkShowMenuComponent* showMenu = cast<FireworkShowMenuComponent*>(fireworkShow->getObjectMenuComponent());
 		showMenu->removeEvent(player, fireworkShow.castTo<FireworkObject*>());
