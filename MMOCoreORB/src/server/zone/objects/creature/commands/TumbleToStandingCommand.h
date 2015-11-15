@@ -15,7 +15,6 @@ public:
 		: QueueCommand(name, server) {
 
 	}
-	
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
@@ -24,6 +23,9 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		if (creature->hasAttackDelay() || !creature->checkPostureChangeDelay())
+			return GENERALERROR;
 
 		if (creature->isDizzied() && System::random(100) < 85) {
 			creature->queueDizzyFallEvent();
@@ -34,7 +36,6 @@ public:
 				return INSUFFICIENTHAM;
 
 			creature->inflictDamage(creature, CreatureAttribute::ACTION, actionCost, true);
-
 
 			creature->setPosture(CreaturePosture::UPRIGHT, false);
 

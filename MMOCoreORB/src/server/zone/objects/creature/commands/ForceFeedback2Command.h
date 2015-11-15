@@ -24,6 +24,8 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (creature->hasAttackDelay() || !creature->checkPostureChangeDelay())
+			return GENERALERROR;
 
 		if (isWearingArmor(creature)) {
 			return NOJEDIARMOR;
