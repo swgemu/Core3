@@ -35,7 +35,7 @@ public:
 		actionHealed = 0;
 		mindHealed = 0;
 
-		mindCost = 800;
+		mindCost = 1000;
 		mindWoundCost = 10;
 
 		speed = 1;
@@ -113,29 +113,21 @@ public:
 		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
 
 		Locker clocker(creatureTarget, creature);
-		
+
 		if (!creature->isInRange(creatureTarget, range + creatureTarget->getTemplateRadius() + creature->getTemplateRadius()))
-			return TOOFAR;		
+			return TOOFAR;
 
 		if ((creatureTarget->isAiAgent() && !creatureTarget->isPet()) || creatureTarget->isDroidObject() || creatureTarget->isDead() || creatureTarget->isRidingMount() || creatureTarget->isAttackableBy(creature))
 			creatureTarget = creature;
-
-		if (creature->isInCombat()) {
-			creature->sendSystemMessage("You cannot do that while in Combat.");
-			return GENERALERROR;
-		}
-
-		if (creatureTarget->isInCombat()) {
-			creature->sendSystemMessage("You cannot do that while your target is in Combat.");
-			return GENERALERROR;
-		}
 
 		if (!creatureTarget->isHealableBy(creature)) {
 			creature->sendSystemMessage("@healing:pvp_no_help");  //It would be unwise to help such a patient.
 			return GENERALERROR;
 		}
 
-		if (creature->getHAM(CreatureAttribute::MIND) < abs(mindCost)) {
+		int mindCostNew = creature->calculateCostAdjustment(CreatureAttribute::FOCUS, mindCost);
+
+		if (creature->getHAM(CreatureAttribute::MIND) < abs(mindCostNew)) {
 			creature->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
 			return GENERALERROR;
 		}
@@ -168,7 +160,7 @@ public:
 
 		sendHealMessage(creature, creatureTarget, healedHealth, healedAction);
 
-		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
+		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCostNew, false);
 		creature->addWounds(CreatureAttribute::FOCUS, mindWoundCost, true);
 		creature->addWounds(CreatureAttribute::WILLPOWER, mindWoundCost, true);
 
