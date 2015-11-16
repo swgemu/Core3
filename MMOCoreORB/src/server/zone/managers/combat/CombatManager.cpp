@@ -2361,7 +2361,13 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 	int range = data.getAreaRange();
 
 	if (data.getCommand()->isConeAction()) {
-		range = data.getRange();
+		int coneRange = data.getConeRange();
+
+		if(coneRange > -1) {
+			range = coneRange;
+		} else {
+			range = data.getRange();
+		}
 	}
 
 	if (range < 0) {

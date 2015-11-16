@@ -49,6 +49,7 @@ SaberPolearmDervish2Command = {
 	speedMultiplier = 4.0,
 	coneAngle = 45,
 	coneAction = true,
+	coneRange = 24,
 	forceCostMultiplier = 3.0,
 
 		stateEffects = {
@@ -89,7 +90,7 @@ SaberPolearmDervish2Command = {
 	
 	weaponType = POLEARMJEDIWEAPON,
 
-	range = 24
+	range = -1
 }
 
 AddCommand(SaberPolearmDervish2Command)

@@ -35,6 +35,7 @@ protected:
 	float forceCostMultiplier;
 
     int range;
+    int coneRange;
     int coneAngle;
     int areaRange;
 
@@ -139,6 +140,10 @@ public:
 
 	int getPoolsToDamage() const {
 		return poolsToDamage;
+	}
+
+	int getConeRange() const {
+		return coneRange;
 	}
 
 	int getRange() const {
