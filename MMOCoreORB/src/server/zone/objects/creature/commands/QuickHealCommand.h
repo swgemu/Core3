@@ -35,7 +35,7 @@ public:
 		actionHealed = 0;
 		mindHealed = 0;
 
-		mindCost = 800;
+		mindCost = 1000;
 		mindWoundCost = 10;
 
 		speed = 1;
@@ -119,16 +119,6 @@ public:
 
 		if ((creatureTarget->isAiAgent() && !creatureTarget->isPet()) || creatureTarget->isDroidObject() || creatureTarget->isDead() || creatureTarget->isRidingMount() || creatureTarget->isAttackableBy(creature))
 			creatureTarget = creature;
-
-		if (creature->isInCombat()) {
-			creature->sendSystemMessage("You cannot do that while in Combat.");
-			return GENERALERROR;
-		}
-
-		if (creatureTarget->isInCombat()) {
-			creature->sendSystemMessage("You cannot do that while your target is in Combat.");
-			return GENERALERROR;
-		}
 
 		if (!creatureTarget->isHealableBy(creature)) {
 			creature->sendSystemMessage("@healing:pvp_no_help");  //It would be unwise to help such a patient.
