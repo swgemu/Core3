@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_47a5e102",
+        "filename": "MMOCoreORB/src/server/zone/managers/sui/SuiManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2015-11-16T15:17:22Z",
+      "side": 1,
+      "message": "the try block should start before -\u003egetCommand is called, thats what can throw an out of bounds exception",
+      "revId": "24cca1c7442fe3e64c1138da22de796694bce2df",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_67aa5dd6",
+        "filename": "MMOCoreORB/src/server/zone/managers/sui/SuiManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2015-11-16T15:17:22Z",
+      "side": 1,
+      "message": "print an error.\n\nerror(e.getMessage()) or similar",
+      "revId": "24cca1c7442fe3e64c1138da22de796694bce2df",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
