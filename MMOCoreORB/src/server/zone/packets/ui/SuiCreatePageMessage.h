@@ -12,12 +12,22 @@
 #define SUICREATEPAGEMESSAGE_H_
 
 #include "engine/engine.h"
+#include "server/zone/objects/player/sui/SuiPageData.h"
 
 class SuiCreatePageMessage : public BaseMessage {
 	int optionOffset;
 	int optionCount;
 
 public:
+	SuiCreatePageMessage(SuiPageData* sui) {
+		insertShort(0x02);
+		insertInt(0xD44B7259);
+
+		sui->toBinaryStream(this);
+
+		setCompression(true);
+	}
+
    SuiCreatePageMessage(uint32 pageID, const String& scriptClass) : BaseMessage() {
 	   optionOffset = 0;
 	   optionCount = 2; // Header and footer
