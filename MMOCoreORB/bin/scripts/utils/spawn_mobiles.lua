@@ -91,10 +91,12 @@ end
 function SpawnMobiles.generateSpawnPoints(pSceneObject, mobileList, forceSpawn)
 	local spawnPoints = {}
 
+	local zoneName = SceneObject(pSceneObject):getZoneName()
+	
 	for spawnObjectNumber = 1, table.getn(mobileList), 1 do
 		local spawnPointParams = SpawnMobiles.getSpawnPointParameters(pSceneObject, mobileList, spawnPoints, spawnObjectNumber)
 		if spawnPointParams ~= nil then
-			local spawnPoint = getSpawnPoint(pSceneObject, spawnPointParams["x"], spawnPointParams["y"], spawnPointParams["min"], spawnPointParams["max"], forceSpawn)
+			local spawnPoint = getSpawnPoint(zoneName, spawnPointParams["x"], spawnPointParams["y"], spawnPointParams["min"], spawnPointParams["max"], forceSpawn)
 			if spawnPoint ~= nil then
 				table.insert(spawnPoints, spawnPoint)
 			else

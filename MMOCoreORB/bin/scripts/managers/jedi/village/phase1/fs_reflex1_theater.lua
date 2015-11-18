@@ -11,7 +11,12 @@ FsReflex1Theater = GoToTheater:new {
 	-- GoToTheater properties
 	minimumDistance = 64,
 	maximumDistance = 128,
-	theater = "object/static/structure/naboo/poi_nboo_tent_small.iff",
+	theater = {
+		{ template = "object/static/structure/military/military_wall_med_imperial_style_01.iff", xDiff = 0.5, zDiff = -0.11, yDiff = 2.12, heading = -14.32 },
+		{ template = "object/static/structure/military/military_column_med_imperial_style_01.iff", xDiff = -3.84, zDiff = -0.11, yDiff = 1.098, heading = -14.32 },
+		{ template = "object/static/structure/military/military_column_med_imperial_style_01.iff", xDiff = 4.95, zDiff = -0.1, yDiff = 3.24, heading = -14.32 },
+		{ template = "object/static/structure/naboo/poi_nboo_tent_small.iff", xDiff = -1.61, zDiff = 0.32, yDiff = -6.46, heading = 14.32 }
+	},
 	waypointDescription = "@quest/quest_journal/fs_quests_reflex1:s_02",
 	mobileList = {
 		{ template = "fs_reflex1_prisoner", minimumDistance = 2, maximumDistance = 4, referencePoint = 0 },
