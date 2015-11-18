@@ -142,7 +142,7 @@ function Coa2Screenplay:spawnNpc(pSource, template, minDist, maxDist, force)
 	local sourceY = SceneObject(pSource):getWorldPositionY()
 	local planet = SceneObject(pSource):getZoneName()
 
-	local spawnPoint = getSpawnPoint(pSource, sourceX, sourceY, minDist, maxDist, force)
+	local spawnPoint = getSpawnPoint(planet, sourceX, sourceY, minDist, maxDist, force)
 
 	if spawnPoint == nil then
 		return nil
@@ -158,7 +158,7 @@ function Coa2Screenplay:spawnObject(pSource, template, minDist, maxDist)
 	local sourceY = SceneObject(pSource):getWorldPositionY()
 	local planet = SceneObject(pSource):getZoneName()
 
-	local spawnPoint = getSpawnPoint(pSource, sourceX, sourceY, minDist, maxDist)
+	local spawnPoint = getSpawnPoint(planet, sourceX, sourceY, minDist, maxDist)
 
 	if spawnPoint == nil then
 		return nil
