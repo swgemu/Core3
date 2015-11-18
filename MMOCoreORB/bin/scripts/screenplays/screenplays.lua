@@ -81,6 +81,7 @@ includeFile("village/convos/phase1/sivarra_phase1_conv_handler.lua")
 includeFile("village/convos/phase1/med_droid_phase1_conv_handler.lua")
 includeFile("village/convos/phase1/whip_phase1_conv_handler.lua")
 includeFile("village/convos/phase1/fs_reflex1_prisoner_conv_handler.lua")
+includeFile("village/convos/phase2/whip_phase2_conv_handler.lua")
 
 -- Events
 includeFile("events/conversations/bestine_artist_conv_handler.lua")
