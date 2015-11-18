@@ -73,13 +73,14 @@ function TreasureMapMenuComponent:doSearchArea(pObject, pPlayer)
 
 		local pActiveArea = getSceneObject(searchAreaID)
 		SceneObject(pActiveArea):destroyObjectFromWorld()
+		local zoneName = SceneObject(pPlayer):getZoneName()
 
 		local spawnPoint
 		ObjectManager.withSceneObject(pWaypoint, function(waypoint)
 			if (mapType == 4) then
-				spawnPoint = getSpawnPoint(pPlayer, waypoint:getWorldPositionX(), waypoint:getWorldPositionY(), 15, 30, true)
+				spawnPoint = getSpawnPoint(zoneName, waypoint:getWorldPositionX(), waypoint:getWorldPositionY(), 15, 30, true)
 			else
-				spawnPoint = getSpawnPoint(pPlayer, waypoint:getWorldPositionX(), waypoint:getWorldPositionY(), 30, 60)
+				spawnPoint = getSpawnPoint(zoneName, waypoint:getWorldPositionX(), waypoint:getWorldPositionY(), 30, 60)
 			end
 		end)
 
@@ -185,7 +186,7 @@ function TreasureMapMenuComponent:spawnTreasureLoot(pChest, pPlayer, mapType)
 	if (pPlayer == nil or pChest == nil) then
 		return
 	end
-	
+
 	if (mapType == 1 or mapType == 2 or mapType == 3) then
 		local playerLevelRange = getRandomNumber(CreatureObject(pPlayer):getLevel() - 5, CreatureObject(pPlayer):getLevel() + 5)
 
@@ -202,16 +203,17 @@ function TreasureMapMenuComponent:spawnTreasureDefenders(pObject, pPlayer, x, z,
 		return
 	end
 
+	local zoneName = SceneObject(pPlayer):getZoneName()
 	local mapType = TreasureMapMenuComponent:getMapType(pObject)
 	local mapData = treasureMapData[mapType]
 	local firstSpawnPoint, secondSpawnPoint, thirdSpawnPoint
 	if (mapType ~= 4) then
-		firstSpawnPoint = getSpawnPoint(pPlayer, x, y, 10, 20)
+		firstSpawnPoint = getSpawnPoint(zoneName, x, y, 10, 20)
 	end
 
 	if (mapType == 1 or mapType == 2) then
-		secondSpawnPoint = getSpawnPoint(pPlayer, x, y, 10, 20)
-		thirdSpawnPoint = getSpawnPoint(pPlayer, x, y, 10, 20)
+		secondSpawnPoint = getSpawnPoint(zoneName, x, y, 10, 20)
+		thirdSpawnPoint = getSpawnPoint(zoneName, x, y, 10, 20)
 		local pMobile = spawnMobile(mapData.planet, "pirate_leader", 0, firstSpawnPoint[1], firstSpawnPoint[2], firstSpawnPoint[3], 0, 0)
 		TreasureMapMenuComponent:setDefenderAggro(pMobile, pPlayer)
 		spatialChat(pMobile, "@treasure_map/treasure_map:bark_" .. mapStringName[mapType])
@@ -240,7 +242,7 @@ function TreasureMapMenuComponent:removeTreasureChest(pChest)
 	if (pChest == nil) then
 		return
 	end
-	
+
 	local chestID = SceneObject(pChest):getObjectID()
 	local chestOwnerID = readData(chestID .. ":ownerID")
 	local pOwner = getSceneObject(chestOwnerID)
@@ -261,7 +263,7 @@ function TreasureMapMenuComponent:doReadMap(pObject, pPlayer)
 	if (pObject == nil or pPlayer == nil) then
 		return
 	end
-	
+
 	local mapType = TreasureMapMenuComponent:getMapType(pObject)
 	local suiManager = LuaSuiManager()
 	suiManager:sendMessageBox(pObject, pPlayer, "@treasure_map/treasure_map:title_" .. mapStringName[mapType], "@treasure_map/treasure_map:text_" .. mapStringName[mapType], "@treasure_map/treasure_map:store_waypoint", "TreasureMapMenuComponent", "handleTreasureMapSuiCallback")
@@ -288,7 +290,7 @@ function TreasureMapMenuComponent:handleTreasureMapSuiCallback(pCreature, pSui, 
 			return 0
 		end
 		local playerID = creature:getObjectID()
-		
+
 		local currentWaypointID = readData(playerID .. ":treasureMapSearchAreaWaypointID")
 		local exactWaypointID = readData(playerID .. ":treasureMapExactWaypointID")
 		local pExactWaypoint = getSceneObject(currentWaypointID)
@@ -300,10 +302,12 @@ function TreasureMapMenuComponent:handleTreasureMapSuiCallback(pCreature, pSui, 
 		end
 
 		local spawnPoint
+		local zoneName = SceneObject(pCreature):getZoneName()
+
 		if (mapType == 4) then
-			spawnPoint = getSpawnPoint(pCreature, mapData.x, mapData.y, 1, 50, true)
+			spawnPoint = getSpawnPoint(zoneName, mapData.x, mapData.y, 1, 50, true)
 		else
-			spawnPoint = getSpawnPoint(pCreature, mapData.x, mapData.y, 1, 2000)
+			spawnPoint = getSpawnPoint(zoneName, mapData.x, mapData.y, 1, 2000)
 		end
 
 		local waypointID = player:addWaypoint(mapData.planet, "@treasure_map/treasure_map:waypoint_name", "", spawnPoint[1], spawnPoint[3], WAYPOINTGREEN, true, true, WAYPOINTTREASUREMAP, 0)
@@ -317,7 +321,7 @@ function TreasureMapMenuComponent:spawnSearchArea(mapType, pCreature, x, y)
 	if (pCreature == nil) then
 		return 0
 	end
-	
+
 	local mapData = treasureMapData[mapType]
 	local z = getTerrainHeight(pCreature, x, y)
 	local pActiveArea = spawnActiveArea(mapData.planet, "object/active_area.iff", x, z, y, 64, 0)
@@ -333,7 +337,7 @@ function TreasureMapMenuComponent:getMapType(pObject)
 	if (pObject == nil) then
 		return 0
 	end
-	
+
 	local objectTemplate = SceneObject(pObject):getTemplateObjectPath()
 
 	if (objectTemplate == "object/tangible/treasure_map/treasure_map_pirate1.iff") then
