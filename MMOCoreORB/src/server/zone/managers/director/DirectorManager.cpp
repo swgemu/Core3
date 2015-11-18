@@ -2433,7 +2433,7 @@ int DirectorManager::getSpawnPoint(lua_State* L) {
 	}
 
     float maximumDistance, minimumDistance, y, x;
-    CreatureObject* creatureObject;
+    String zoneName;
     bool forceSpawn = false;
 
     if (numberOfArguments == 5) {
@@ -2441,21 +2441,38 @@ int DirectorManager::getSpawnPoint(lua_State* L) {
 		minimumDistance = lua_tonumber(L, -2);
 		y = lua_tonumber(L, -3);
 		x = lua_tonumber(L, -4);
-		creatureObject = (CreatureObject*) lua_touserdata(L, -5);
+		zoneName = lua_tostring(L, -5);
     } else {
     	forceSpawn = lua_toboolean(L, -1);
     	maximumDistance = lua_tonumber(L, -2);
 		minimumDistance = lua_tonumber(L, -3);
 		y = lua_tonumber(L, -4);
 		x = lua_tonumber(L, -5);
-		creatureObject = (CreatureObject*) lua_touserdata(L, -6);
+		zoneName = lua_tostring(L, -6);
     }
 
-	if (creatureObject == NULL || creatureObject->getZone() == NULL) {
+    Zone* zone = ServerCore::getZoneServer()->getZone(zoneName);
+
+	if (zone == NULL) {
+		instance()->error("Zone is NULL in DirectorManager::getSpawnPoint");
 		return 0;
 	}
 
-	Vector3 position = generateSpawnPoint(creatureObject->getZone()->getZoneName(), x, y, minimumDistance, maximumDistance, 5.0, 20, forceSpawn);
+	bool found = false;
+	Vector3 position;
+	int retries = 50;
+
+	while (!found && retries > 0) {
+		position = generateSpawnPoint(zoneName, x, y, minimumDistance, maximumDistance, 5.0, 20, false);
+
+		if (position != Vector3(0, 0, 0))
+			found = true;
+
+		retries--;
+	}
+
+	if (!found && forceSpawn)
+		position = generateSpawnPoint(zoneName, x, y, minimumDistance, maximumDistance, 5.0, 20, true);
 
 	if (position != Vector3(0, 0, 0)) {
 		lua_newtable(L);
@@ -2484,7 +2501,7 @@ int DirectorManager::getSpawnArea(lua_State* L) {
     float maximumHeightDifference, areaSize, maximumDistance, minimumDistance, y, x;
     Zone* zone = NULL;
     bool forceSpawn = false;
-    CreatureObject* creatureObject = NULL;
+  	String zoneName;
 
     if (numberOfArguments == 8) {
     	forceSpawn = lua_toboolean(L, -1);
@@ -2494,7 +2511,7 @@ int DirectorManager::getSpawnArea(lua_State* L) {
     	minimumDistance = lua_tonumber(L, -5);
     	y = lua_tonumber(L, -6);
     	x = lua_tonumber(L, -7);
-    	creatureObject = (CreatureObject*) lua_touserdata(L, -8);
+    	zoneName = lua_tostring(L, -8);
     } else {
     	maximumHeightDifference = lua_tonumber(L, -1);
     	areaSize = lua_tonumber(L, -2);
@@ -2502,23 +2519,22 @@ int DirectorManager::getSpawnArea(lua_State* L) {
     	minimumDistance = lua_tonumber(L, -4);
     	y = lua_tonumber(L, -5);
     	x = lua_tonumber(L, -6);
-    	creatureObject = (CreatureObject*) lua_touserdata(L, -7);
+    	zoneName = lua_tostring(L, -7);
     }
 
-	if (creatureObject == NULL)
-		return 0;
+	zone = ServerCore::getZoneServer()->getZone(zoneName);
 
-	zone = creatureObject->getZone();
-
-	if (zone == NULL)
+	if (zone == NULL) {
+		instance()->error("Zone is NULL in DirectorManager::getSpawnArea");
 		return 0;
+	}
 
 	bool found = false;
 	Vector3 position;
-	int retries = 40;
+	int retries = 50;
 
 	while (!found && retries > 0) {
-		position = generateSpawnPoint(zone->getZoneName(), x, y, minimumDistance, maximumDistance, areaSize + 5.0, areaSize + 20, forceSpawn);
+		position = generateSpawnPoint(zoneName, x, y, minimumDistance, maximumDistance, areaSize + 5.0, areaSize + 20, false);
 
 		int x0 = position.getX() - areaSize;
 		int x1 = position.getX() + areaSize;
@@ -2527,6 +2543,17 @@ int DirectorManager::getSpawnArea(lua_State* L) {
 
 		found = zone->getPlanetManager()->getTerrainManager()->getHighestHeightDifference(x0, y0, x1, y1) <= maximumHeightDifference;
 		retries--;
+	}
+
+	if (!found && forceSpawn) {
+		position = generateSpawnPoint(zoneName, x, y, minimumDistance, maximumDistance, areaSize + 5.0, areaSize + 20, true);
+
+		int x0 = position.getX() - areaSize;
+		int x1 = position.getX() + areaSize;
+		int y0 = position.getY() - areaSize;
+		int y1 = position.getY() + areaSize;
+
+		found = zone->getPlanetManager()->getTerrainManager()->getHighestHeightDifference(x0, y0, x1, y1) <= maximumHeightDifference;
 	}
 
 	if (found) {

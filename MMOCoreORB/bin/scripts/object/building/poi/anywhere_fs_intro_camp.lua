@@ -42,19 +42,6 @@
 
 
 object_building_poi_anywhere_fs_intro_camp = object_building_poi_shared_anywhere_fs_intro_camp:new {
-	childObjects = {
-		{templateFile = "object/static/structure/tatooine/tent_house_tatooine_style_01.iff", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1},
-		{templateFile = "object/static/structure/general/campfire_smoldering.iff", x = 0.2, z = 0, y = -6.5, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1},
-		{templateFile = "object/static/particle/pt_campfire_s01.iff", x = 0.2, z = 0, y = -6.5, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1},
-		{templateFile = "object/static/structure/tatooine/debris_tatt_crate_1.iff", x = -3.85, z = 0, y = -1.82, ox = 0, oy = -0.214248, oz = 0, ow = 0.976779, cellid = -1, containmentType = -1},
-		{templateFile = "object/static/structure/tatooine/debris_tatt_crate_metal_1.iff", x = -3.46, z = 0, y = -2.45, ox = 0, oy = -0.214248, oz = 0, ow = 0.976779, cellid = -1, containmentType = -1},
-		{templateFile = "object/static/structure/tatooine/debris_tatt_drum_dented_1.iff", x = -4.4084, z = 0, y = -0.827468, ox = 0, oy = -0.214248, oz = 0, ow = 0.976779, cellid = -1, containmentType = -1},
-		{templateFile = "object/tangible/camp/camp_chair_s1.iff", x = -1.75, z = 0, y = -6.75, ox = 0, oy = 0.801575, oz = 0, ow = 0.597895, cellid = -1, containmentType = -1},
-		{templateFile = "object/tangible/camp/camp_chair_s1.iff", x = -1, z = 0, y = -5, ox = 0, oy = 0.938289, oz = 0, ow = 0.345852, cellid = -1, containmentType = -1},
-		{templateFile = "object/tangible/camp/camp_chair_s1.iff", x = 3, z = 0, y = -6.75, ox = 0, oy = 0.787299, oz = 0, ow = -0.616572, cellid = -1, containmentType = -1},
-		{templateFile = "object/static/structure/general/camp_cot_s01.iff", x = -0.018, z = 0, y = 1.9, ox = 0, oy = 0.010666, oz = 0, ow = -0.999943, cellid = -1, containmentType = -1},
-		{templateFile = "object/static/structure/general/trash_pile_s01.iff", x = 3.78975, z = 0, y = -2.74693, ox = 0, oy = 0.010666, oz = 0, ow = -0.999943, cellid = -1, containmentType = -1},
-	}
 }
 
 ObjectTemplates:addTemplate(object_building_poi_anywhere_fs_intro_camp, "object/building/poi/anywhere_fs_intro_camp.iff")
