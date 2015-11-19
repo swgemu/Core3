@@ -5,7 +5,6 @@ DathomirStaticSpawnsSeScreenPlay = ScreenPlay:new {
 	screenplayName = "DathomirStaticSpawnsSeScreenPlay",
 
 	lootContainers = {
-		
 
 	},
 
@@ -38,7 +37,6 @@ function DathomirStaticSpawnsSeScreenPlay:start()
 end
 
 function DathomirStaticSpawnsSeScreenPlay:spawnMobiles()
-
 
 	-- fenced building (50,-168)
 	spawnMobile("dathomir", "thug", 300, 76.6, 127.1, -164.5, -90, 0)
@@ -78,12 +76,13 @@ function DathomirStaticSpawnsSeScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "singing_mountain_clan_rancor", 360, 5214.4, 437.9, -6931.9, -24, 0)
 	
 	--spiderclan stone arch (7070,-6440)
+	spawnMobile("dathomir", "spiderclan_elder", 7200, 7076.7, 568.5, -6433.6, -136, 0)
 
 	--broken ship engine (6885,-4925)
-
-	--large rock formation (5355,-4705)
+	spawnMobile("dathomir", "mature_reptilian_flier", 3600, 6874.5, 404.3, -4925.9, 113, 0)
 
 	--floating rocks (3000,-5145)
+	spawnMobile("dathomir", "singing_mountain_clan_arch_witch", 3600, 3000.9, 80.0, -5141.1, -90, 0)
 
 	--ceremonial site (1072,-4485)
 	spawnMobile("dathomir", "nightsister_sentinel", 360, 1083.9, 101.7, -4495.8, -95, 0)
@@ -111,6 +110,5 @@ function DathomirStaticSpawnsSeScreenPlay:spawnMobiles()
 
 	--sining mountain clan hut (5556,-688)
 	spawnMobile("dathomir", "singing_mountain_clan_guardian", 360, 5556.5, 128.8, -688.6, -85, 0)
-
 
 end

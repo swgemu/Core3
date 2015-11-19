@@ -6,7 +6,6 @@ TalusStaticSpawnsSouthScreenPlay = ScreenPlay:new {
 
 	lootContainers = {
 
-
 	},
 
 	lootLevel = 14,
@@ -40,7 +39,8 @@ end
 function TalusStaticSpawnsSouthScreenPlay:spawnMobiles()
 
 	--Flag & Ruins (-3804,-6500)
-	spawnMobile("talus", "fed_dub_captain", 300, -3811.6, 1.1, -6490.9, 88, 0)
+	local pNpc = spawnMobile("talus", "fed_dub_captain", 300, -3811.6, 1.1, -6490.9, 88, 0)
+	self:setMoodString(pNpc, "neutral")
 	spawnMobile("talus", "fed_dub_investigator", 300, -3802.4, 0.7, -6495.2, -175, 0)
 	spawnMobile("talus", "fed_dub_investigator", 300, -3795.7, 6.0, -6474.4, 75, 0)
 
@@ -87,6 +87,7 @@ function TalusStaticSpawnsSouthScreenPlay:spawnMobiles()
 	spawnMobile("talus", "rebel_trooper", 360, 2353.9, 125.4, -5004.1, -90, 0)
 
 	--Tie Debris (4850,-4720)
+	spawnMobile("talus", "foaming_vynock", 360, 4850.2, 93.8, -4727.0, -16, 0)
 
 	--Rebel Camp (3100,-4044)
 	spawnMobile("talus", "rebel_trooper", 360, 3106.9, 65.8, -4057.9, 180, 0)
@@ -97,11 +98,10 @@ function TalusStaticSpawnsSouthScreenPlay:spawnMobiles()
 	spawnMobile("talus", "rebel_trooper", 360, 3097.3, 65.9, -4013.7, 0, 0)
 	spawnMobile("talus", "specforce_technician", 360, 3107.4, 65.8, -4034.0, -135, 0)
 	spawnMobile("talus", "specforce_technician", 360, 3100.7, 65.8, -4048.9, 0, 0)
-
 	--Debris (-1011,-5092)
-
 	--Supply Drop (-3363,-3813)
-
+	pNpc = spawnMobile("talus", "binayre_smuggler", 360, -3364.0, 32.2, -3812.9, 90, 0)
+	self:setMoodString(pNpc, "npc_use_terminal_low")
 	--Small Moisture Farm (-4916,-4510)
 	spawnMobile("talus", "commoner_technician", 360, -4914.8, 5.0, -4510.7, 180, 0)
 	spawnMobile("talus", "commoner_technician", 360, -4919.0, 5.0, -4506.9, 160, 0)
@@ -113,6 +113,8 @@ function TalusStaticSpawnsSouthScreenPlay:spawnMobiles()
 	spawnMobile("talus", "fynock", 360, -5647.3, 76.2, -2365.1, -166, 0)
 
 	--Wind Generatos (-4557,-2906)
+	pNpc = spawnMobile("talus", "lost_aqualish_infiltrator", 360, -4558.0, 139.1, -2905.7, -20, 0)
+	self:setMoodString(pNpc, "npc_use_terminal_high")
 
 	--Campsite (-2716,-2265)
 	spawnMobile("talus", "rebel_commando", 360, -2713.4, 32.9, -2263.3, 60, 0)
@@ -133,20 +135,17 @@ function TalusStaticSpawnsSouthScreenPlay:spawnMobiles()
 	spawnMobile("talus", "jungle_fynock", 300, -2436.7, 34.2, -2234.0, 33, 0)
 	spawnMobile("talus", "clipped_fynock", 300, -2436.8, 34.8, -2242.5, -169, 0)
 	spawnMobile("talus", "jungle_fynock", 300, -2430.2, 34.2, -2240.9, 73, 0)
-
 	--Debris (-1729,-2886)
-
 	--Bridge (18,-2523)
-
 	--Picnic Site (-485,-2073)
 	spawnMobile("talus", "sleemo_scamp", 300, -488.0, 40.3, -2074.6, 10, 0)
 	spawnMobile("talus", "sleemo_vandal", 300, -486.7, 40.1, -2070.6, 90, 0)
-
 	--Cantina General (117,-1925) (bugged building here with no appearance)
-
 	--Arch & Torches (1467,-2672)
-
 	--Quarantined Building (3886,-2848)
+	pNpc = spawnMobile("talus", "lost_aqualish_lookout", 300, 3885.4, 94.2, -2845.8, -95, 0)
+	self:setMoodString(pNpc, "angry")
+	spawnMobile("talus", "mutated_kahmurra", 900, 3884.8, 94.7, -2852.1, -43, 0)
 
 	--Building Ruins with Camp (5190,-1735)
 	spawnMobile("talus", "lost_aqualish_commando", 300, 5189.4, 30.9, -1748.9, -90, 0)
@@ -165,23 +164,22 @@ function TalusStaticSpawnsSouthScreenPlay:spawnMobiles()
 	spawnMobile("talus", "lost_aqualish_warchief", 300, 17.7, 6.2, -912.7, -45, 0)
 	spawnMobile("talus", "lost_aqualish_marksman", 300, 13.7, 5.6, -920.3, 0, 0)
 	spawnMobile("talus", "lost_aqualish_lookout", 300, 6.5, 5.8, -892.6, -57, 0)
-
 	--Ruins (-1600,-540)
-
 	--Broken Strut (-1650,-330)
-
 	--Fountain (-3153,-922)
+	pNpc = spawnMobile("talus", "chiss_female", 60, -3148.3, 4.9, -919.6, -89, 0)
+	self:setMoodString(pNpc, "npc_sitting_chair")
 
 	--Aakuan Awning (-3686,-553)
 	spawnMobile("talus", "aakuan_defender", 300, -3686.8, 34.7, -558.9, 57, 0)
 	spawnMobile("talus", "aakuan_keeper", 300, -3691.3, 34.8, -555.2, -40, 0)
 	spawnMobile("talus", "aakuan_defender", 300, -3690.3, 35.0, -548.8, 67, 0)
 	spawnMobile("talus", "aakuan_guardian", 300, -3683.0, 35.2, -546.9, -57, 0)
-
 	--Pillars (-4975,-590)
-
 	--Rock Formation (-5877,-178)
-
 	--Antenna (-6027,-1192)
+	pNpc = spawnMobile("talus", "r4", 60, -6028.5, 65.2, -1190.0, 125, 0)
+	self:setMoodString(pNpc, "worried")
+	spawnMobile("talus", "imperial_probe_drone", 300, -6021.4, 70.2, -1190.2, -97, 0)
 
 end
