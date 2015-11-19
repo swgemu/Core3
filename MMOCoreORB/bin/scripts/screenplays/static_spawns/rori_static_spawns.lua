@@ -6,7 +6,6 @@ RoriStaticSpawnsScreenPlay = ScreenPlay:new {
 
 	lootContainers = {
 
-
 	},
 
 	lootLevel = 18,
@@ -53,7 +52,8 @@ function RoriStaticSpawnsScreenPlay:spawnMobiles()
 	--NORTH
 
 	--Spice Collective Tent (5510,1007)
-	spawnMobile("rori", "spice_collective_courier", 300, 5514.9, 77.3, 1009.3, -97, 0)
+	local pNpc = spawnMobile("rori", "spice_collective_courier", 300, 5514.9, 77.3, 1009.3, -97, 0)
+	self:setMoodString(pNpc, "neutral")
 	spawnMobile("rori", "spice_collective_sentry", 300, 5506.4, 75.6, 1003.4, -97, 0)
 	spawnMobile("rori", "spice_collective_courier", 300, 5510.2, 76.2, 1009.3, 83, 0)
 	spawnMobile("rori", "spice_collective_heavy_guard", 300, 5506.4, 75.4, 1006.7, -97, 0)
@@ -69,12 +69,19 @@ function RoriStaticSpawnsScreenPlay:spawnMobiles()
 	spawnMobile("rori", "rorgungan_scout", 300, 3593.2, 79.3, 345.0, 129, 0)
 
 	--Ruins in Lake (1871,1761)
+	spawnMobile("rori", "young_borgle_gruntling", 300, 1873.2, 74.4, 1761.6, -66, 0)
 
 	--RorGungan Gravestones (1163,698)
+	pNpc = spawnMobile("rori", "rorgungan_warrior", 300, 1162.5, 90.2, 699.7, 102, 0)
+	self:setMoodString(pNpc, "sad")
 
 	--RorGungan Ruins (-1494,1683)
+	pNpc = spawnMobile("rori", "rorgungan_scout", 300, -1483.0, 75.6, 1699.6, -173, 0)
+	self:setMoodString(pNpc, "happy")
 
 	--Statue head (-2140,614)
+	pNpc = spawnMobile("rori", "rorgungan_scout", 300, -2150.7, 75.5, 617.1, -131, 0)
+	self:setMoodString(pNpc, "worried")
 
 	--Debris (-4493,1085)
 	spawnMobile("rori", "gundark_rogue", 300, -4487.1, 75.6, 1087.3, 12, 0)
@@ -87,43 +94,49 @@ function RoriStaticSpawnsScreenPlay:spawnMobiles()
 	spawnMobile("rori", "scavenger", 300, -6717.4, 77.3, 1087.4, 140, 0)
 
 	--RorGungan Shield Gen + Gravestone (-5507,2096)
+	pNpc = spawnMobile("rori", "rorgungan_warchief", 300, -5506.9, 75.4, 2098.4, -75, 0)
+	self:setMoodString(pNpc, "sad")
 
 	--Ruins (-4706,3580)
+	spawnMobile("rori", "sickle_rasp", 300, -4705.8, 74.2, 3579.3, -101, 0)
 
 	--Statue (-2902,2588)
+	spawnMobile("rori", "male_squall", 300, -2901.5, 76.2, 2591.1, 147, 0)
 
 	--4 columns (-432,3264)
+	pNpc = spawnMobile("rori", "rorgungan_boss", 300, -432.1, 76.2, 3266.7, 40, 0)
+	self:setMoodString(pNpc, "npc_use_terminal_high")
 
-	--Burried Fountains (952,2558)
-
+	--Buried Fountains (952,2558)
 	--Dark Circle on the Ground (923,2906)
-
-	--Burried Debris (947,3478)
+	--Buried Debris (947,3478)
 
 	--Statue Head (1116,3833)
+	pNpc = spawnMobile("rori", "rorgungan_scout", 300, 1114.8, 86.7, 3828.6, 64, 0)
+	self:setMoodString(pNpc, "happy")
 
 	--Crashed Escape Pod (4272,2509)
+	spawnMobile("rori", "blood_thirsty_borgle", 300, 4273.1, 84.3, 2511.8, 106, 0)
 
 	--Ruins (5584,2436)
+	pNpc = spawnMobile("rori", "rorgungan_warrior", 300, 5576.9, 75.2, 2431.9, 87, 0)
+	self:setMoodString(pNpc, "angry")
 
 	--Stream Trees & Arches (6779,3016)
-
 	--Ruined Outpost (5083,4676)
+	spawnMobile("rori", "juvenile_pygmy_torton", 300, 5086.0, 76.2, 4677.2, -134, 0)
 
 	--RorGungan Ruins (3379,5861)
 	spawnMobile("rori", "rorgungan_scout", 300, 3380.7, 90.0, 5863.3, 0, 0)
 	spawnMobile("rori", "rorgungan_scout", 300, 3374.7, 90.0, 5863.3, 0, 0)
 
-	--Burried Statue (2031,5884)
-
+	--Buried Statue (2031,5884)
 	--Rorgungan Ruins (956,4049)
-
+	pNpc = spawnMobile("rori", "gundark_hooligan", 300, 952.7, 77.5, 4043.4, 29, 0)
+	self:setMoodString(pNpc, "happy")
 	--Statue Head (961,4493)
-
 	--Wall (959,5080)
-
-	--Partially Burried Gazebo (1001,5360)
-
+	--Partially Buried Gazebo (1001,5360)
 	--RorGungan Monument (-70,5229)
 	spawnMobile("rori", "rorgungan_scout", 300, -8.1, 75.4, 5282.6, 75, 0)
 	spawnMobile("rori", "rorgungan_scout", 300, -8.1, 76.6, 5171.6, 105, 0)
@@ -136,9 +149,7 @@ function RoriStaticSpawnsScreenPlay:spawnMobiles()
 	spawnMobile("rori", "nudfuh", 300, 208.4, 75.4, 5143.3, 75, 0)
 	spawnMobile("rori", "nudfuh", 300, 211.0, 76.0, 5132.8, 75, 0)
 	spawnMobile("rori", "nudfuh", 300, 211.0, 76.1, 5121.8, 75, 0)
-
 	--Ruins (-2713,4486)
-
 	--Bounty Hunter Camp (-3650,5531)
 	spawnMobile("rori", "bounty_hunter_thug", 300, -3649.6, 79.1, 5528.6, 155, 0)
 
@@ -155,16 +166,19 @@ function RoriStaticSpawnsScreenPlay:spawnMobiles()
 	spawnMobile("rori", "rorgungan_warchief", 300, -5851.9, 76.0, 5836.8, -70, 0)
 
 	--Graveyard (-1710,6144)
-
+	pNpc = spawnMobile("rori", "commoner_naboo", 60, -1713.3, 75.3, 6144.6, 87, 0)
+	self:setMoodString(pNpc, "sad")
 	--Ruins (958,6521)
-
 	--Escape pod (959,6899)
+	spawnMobile("rori", "kobola_thief", 300, 956.2, 74.6, 6907.1, -166, 0)
 
 	--Campfire & Engine Debris (986,7560)
-
+	pNpc = spawnMobile("rori", "kobola_smuggler", 300, 987.5, 107.8, 7560.4, -54, 0)
+	self:setMoodString(pNpc, "npc_use_terminal_low")
 	--Flooded Ruins (2528,7260)
-
 	--Ruins (6684,6882)
+	pNpc = spawnMobile("rori", "insane_miner", 300, 6691.1, 76.1, 6878.0, -72, 0)
+	self:setMoodString(pNpc, "threaten")
 
 	--Crashed Corellian Corvette (0,2012) strong mercenary's, secrets of the syrens quest location
 	spawnMobile("rori", "strong_mercenary", 300, 1.2, 75.0, 2003.0, 74, 0)
@@ -198,23 +212,21 @@ function RoriStaticSpawnsScreenPlay:spawnMobiles()
 	spawnMobile("rori", "cobral_hooligan", 300, -4972.7, 76.5, -669.1, 149, 0)
 
 	--RorGungan Ruins (-2641,-752)
-
 	--Debris (-989,-315)
+	pNpc = spawnMobile("rori", "agriculturalist", 60, -986.1, 76.1, -311.6, -84, 0)
+	self:setMoodString(pNpc, "npc_use_terminal_low")
 
 	--RorGungan Ruins (6119,-509)
-
 	--Sunken Ruins (5961,-2598)
-
 	--RorGungan Ruins (3462,-2174)
-
+	pNpc = spawnMobile("rori", "kobola_underboss", 300, 3457.9, 77.4, -2145.7, 165, 0)
+	self:setMoodString(pNpc, "fishing")
 	--Gate (2996,-3668)
-
 	--Wall (-1230,-3207)
 
 	--Camp & Skeleton (-2641,-3209)
-
+	spawnMobile("rori", "deadly_forest_mite_guardian", 300, -2638.9, 81.3, -3211.8, -75, 0)
 	--Narmle Spike (-3394,-2097)
-
 	--RorGungan Ruins (-6967,-5642)
 	spawnMobile("rori", "rorgungan_boss", 360, -6967.2, 101.0, -5634.1, 105, 0)
 	spawnMobile("rori", "rorgungan_boss", 360, -6961.2, 101.0, -5632.2, -153, 0)
@@ -223,9 +235,7 @@ function RoriStaticSpawnsScreenPlay:spawnMobiles()
 	spawnMobile("rori", "rorgungan_warrior", 300, -6964.2, 86.5, -5658.7, 150, 0)
 	spawnMobile("rori", "rorgungan_scout", 300, -6904.3, 88.0, -5667.3, 115, 0)
 	spawnMobile("rori", "rorgungan_warrior", 300, -6976.9, 84.7, -5664.4, 22, 0)
-
 	--Ruins (-760,-4085)
-
 	--Rancher & Pets (-435,-5435)
 	spawnMobile("rori", "domestic_bearded_jax", 300,getRandomNumber(8) + -435.7, 75.7,getRandomNumber(15) + -5454.5, 50, 0)
 	spawnMobile("rori", "domestic_bearded_jax", 300,getRandomNumber(8) + -435.7, 75.7,getRandomNumber(15) + -5454.5, 90, 0)
@@ -252,9 +262,10 @@ function RoriStaticSpawnsScreenPlay:spawnMobiles()
 	spawnMobile("rori", "nudfuh", 300,getRandomNumber(95) + -480, 75.7,getRandomNumber(35) + -5425,getRandomNumber(360), 0)
 	spawnMobile("rori", "nudfuh", 300,getRandomNumber(95) + -480, 75.7,getRandomNumber(35) + -5425,getRandomNumber(360), 0)
 	spawnMobile("rori", "nudfuh", 300,getRandomNumber(95) + -480, 75.7,getRandomNumber(35) + -5425,getRandomNumber(360), 0)
-	
 
 	--Gazebo (3783,-4473)
+	pNpc = spawnMobile("rori", "rorgungan_commoner", 300, 3783.1, 74.5, -4473.2, -9, 0)
+	self:setMoodString(pNpc, "npc_sitting_ground")
 
 	--Small Imperial Base (6530,-4763)
 	spawnMobile("rori", "swamp_trooper", 360, 6522.9, 107.1, -4761.1, 105, 0)

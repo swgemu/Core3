@@ -1,5 +1,5 @@
 --This is to be used for static spawns that are NOT part of caves, cities, dungeons, poi's, or other large screenplays.
-LokStaticSpawnsScreenPlay = ScreenPlay:new 
+LokStaticSpawnsScreenPlay = ScreenPlay:new
 {
 	numberOfActs = 1,
 
@@ -18,13 +18,12 @@ function LokStaticSpawnsScreenPlay:spawnMobiles()
 
 	--Need to add the rest of static spawns (Incomplete).
 
-	--Cave (4772 946) Suppose to be empty? not populated yet
-
-	--Nym Pirate Cave (-2996 -668) Sulfur Lake Pirates Nym themepark part 1 screenplay up for review
-
-	--Mining Cave (6475 3895) "Gas Mine" Nym themepark part 2 needs to be populated
-
-	--Nym Mercenary Bunker (916 -4185) "Research facility" Nym themepark part 3 needs to be populated
+	--Cave (4772 946)
+	spawnMobile("lok", "young_spined_snake",720,-26.3,-118.8,-370.0,66,7475374)
+	spawnMobile("lok", "kimogila_hatchling",3600,-28.2,-78.7,-353.3,13,7475370)
+	spawnMobile("lok", "kimogila_hatchling",3600,-100.0,-82.8,-345.1,-54,7475371)
+	spawnMobile("lok", "enraged_kimogila",7200,-29.9,-53.5,-190.9,59,7475359)
+	spawnMobile("lok", "ig_assassin_droid",360,-27.1,-38.2,-64.2,0,7475357)
 
 	--Rebel House (-4743 3531) Leia Story part 3 needs to be populated
 
