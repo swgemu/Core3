@@ -5,7 +5,6 @@ DathomirStaticSpawnsSwScreenPlay = ScreenPlay:new {
 	screenplayName = "DathomirStaticSpawnsSwScreenPlay",
 
 	lootContainers = {
-		
 
 	},
 
@@ -39,9 +38,9 @@ end
 
 function DathomirStaticSpawnsSwScreenPlay:spawnMobiles()
 
-
 	--destroyed imperial camp (-6467,-6722)
-	spawnMobile("dathomir", "specforce_marine", 300, -6455.5, 555.1, -6743.6, -33, 0)
+	local pNpc = spawnMobile("dathomir", "specforce_marine", 300, -6455.5, 555.1, -6743.6, -33, 0)
+	self:setMoodString(pNpc, "neutral")
 	spawnMobile("dathomir", "specforce_marine", 300, -6471.7, 553.5, -6741.9, 0, 0)
 	spawnMobile("dathomir", "specforce_marine", 300, -6476.2, 546.3, -6733.3, 33, 0)
 
@@ -60,6 +59,7 @@ function DathomirStaticSpawnsSwScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "nightsister_outcast", 360, -3230.3, 101.4, -6588.9, 1, 0)
 
 	--tie bomber debris (-986,-6391)
+	spawnMobile("dathomir", "imperial_probe_drone", 720, -988.8, 147.2, -6396.2, 4, 0)
 
 	--floating rocks (-828,-5042)
 	spawnMobile("dathomir", "nightsister_rancor_tamer", 360, -821.0, 94.6, -5032.9, 15, 0)
@@ -88,6 +88,7 @@ function DathomirStaticSpawnsSwScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "mutant_rancor", 360, -4766.7, 92.3, -4738.5, 55, 0)
 
 	--empty hut (-6894,-4854)
+	spawnMobile("dathomir", "singing_mountain_clan_councilwoman", 7200, -6894.9, 461.8, -4853.8, 109, 0)
 
 	--worshop stone (-6953,-3032)
 	spawnMobile("dathomir", "nightsister_elder", 4220, -6953.8, 551.6, -3032.1, -45, 0)
@@ -103,6 +104,8 @@ function DathomirStaticSpawnsSwScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "singing_mountain_clan_scout", 360, -2431.9, 55.7, -3091.8, -40, 0)
 
 	--rock spire with skulls (-493,-2890)
+	pNpc = spawnMobile("dathomir", "spiderclan_auspex", 3600, -493.1, 133.2, -2889.6, -117, 0)
+	self:setMoodString(pNpc, "explain")
 
 	--tower & stones (-443,-1156)
 	spawnMobile("dathomir", "nightsister_protector", 720, -444.9, 124.0, -1159.7, -118, 0)
@@ -125,6 +128,5 @@ function DathomirStaticSpawnsSwScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "singing_mountain_clan_huntress", 360, -6593.1, 281.5, -740.3, 90, 0)
 	spawnMobile("dathomir", "singing_mountain_clan_initiate", 360, -6573.8, 268.0, -741.4, 98, 0)
 	spawnMobile("dathomir", "singing_mountain_clan_sentry", 360, -6547.6, 261.7, -742.8, 115, 0)
-
 
 end

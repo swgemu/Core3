@@ -16,11 +16,16 @@ end
 function NabooStaticSpawnsSouthScreenPlay:spawnMobiles()
 
 		--Fishing Pond (-6310,-5075)
-	spawnMobile("naboo", "commoner", 180, -6306.9, 5.5, -5082.5, -158.0, 0)
+	local pNpc = spawnMobile("naboo", "commoner", 180, -6306.9, 5.5, -5082.5, -158.0, 0)
+	self:setMoodString(pNpc, "fishing")
 	spawnMobile("naboo", "commoner", 180, -6318.0, 4.7, -5077.5, -34.0, 0)
 	spawnMobile("naboo", "commoner", 180, -6327.0, 3.3, -5082.4, 39.0, 0)
 
-		--Gungan Sheild Generator (-5184,-6366)
+		--Gungan Shield Generator (-5184,-6366)
+	pNpc = spawnMobile("naboo", "gungan_boss", 300, -5170.7, 5.2, -6382.9, -44, 0)
+	self:setMoodString(pNpc, "threaten")
+	pNpc = spawnMobile("naboo", "gungan_reject", 300, -5177.3, 2.4, -6373.0, -50, 0)
+	self:setMoodString(pNpc, "angry")
 
 		--Gungan Statue Head (7160,-5764)
 	spawnMobile("naboo", "gungan_hunter", 300, 7153.6, 27.8, -5771.8, -78.0, 0)
@@ -51,16 +56,22 @@ function NabooStaticSpawnsSouthScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "r5", 300, -2433.9, 269.3, -2489.1, 5.0, 0)
 
 		--Broken Wall (3485,-2882)
+	pNpc = spawnMobile("naboo", "gungan_reject", 300, 3487.9, 112.5, -2880.0, -13, 0)
+	self:setMoodString(pNpc, "sad")
 
 		--Statue Head (4662,-2489)
+	pNpc = spawnMobile("naboo", "gungan_leader", 300, 4663.6, 224.6, -2491.4, -40, 0)
+	self:setMoodString(pNpc, "explain")
 
 		--Pillars (7263,-2973)
 	spawnMobile("naboo", "gungan_hermit", 300, 7257.0, 111.1, -2970.9, 35.0, 0)
 	spawnMobile("naboo", "gungan_hermit", 300, 7260.2, 110.8, -2967.6, -37.5, 0)
 
 		--Stone Mast (1216,-1248)
+	spawnMobile("naboo", "gungan_kaadu", 300, 1216.9, 225.8, -1252.1, -91, 0)
 
 		--Gungan Ruins (0,-1866)
+	spawnMobile("naboo", "vine_rawl", 300, 7.6, 441.2, -1858.6, -140, 0)
 
 		--Gate & Gazebo (-258,-46)
 	spawnMobile("naboo", "commoner_naboo", 180, -258.6, 2.9, -74.4, -25.0, 0)
@@ -75,5 +86,6 @@ function NabooStaticSpawnsSouthScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "naboo_pirate", 300, -1769.5, 33.2, -495.6, -45.0, 0)
 
 		--Ruined Walls (-3586,-880)
+	spawnMobile("naboo", "spitting_rawl", 300, -3584.9, 92.1, -873.0, 86, 0)
 
 end
