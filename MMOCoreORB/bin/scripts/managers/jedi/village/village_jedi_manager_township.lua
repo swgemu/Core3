@@ -264,9 +264,9 @@ function VillageJediManagerTownship:doVillageRepairer(pNpc)
 	else
 		CreatureObject(pNpc):doAnimation("manipulate_high")
 	end
-	
+
 	rand = getRandomNumber(1,2)
-	
+
 	if (rand == 1) then
 		rand = getRandomNumber(1,7)
 		spatialChat(pNpc, "@quest/force_sensitive/fs_wall_repair:fs_response0" .. rand)
