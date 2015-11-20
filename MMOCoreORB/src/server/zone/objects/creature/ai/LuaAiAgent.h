@@ -131,6 +131,7 @@ namespace ai {
 		int runAwarenessLogicCheck(lua_State* L);
 		int setConvoTemplate(lua_State* L);
 		int setHomeLocation(lua_State* L);
+		int setNoAiAggro(lua_State* L);
 	private:
 		AiAgent* realObject;
 	};

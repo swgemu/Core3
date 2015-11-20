@@ -128,6 +128,7 @@ function SpawnMobiles.spawnMobileObjects(pSceneObject, mobileList, spawnPoints)
 			spawnPoints[spawnNumber][3],
 			0,
 			SceneObject(pSceneObject):getParentID())
+			AiAgent(spawnedObject):setNoAiAggro()
 		table.insert(spawnedObjects, spawnedObject)
 		if spawnedObject == nil then
 			success = false

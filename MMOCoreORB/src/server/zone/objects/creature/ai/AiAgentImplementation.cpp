@@ -3101,6 +3101,9 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 	}
 
 	if (object->isAiAgent()) {
+		if ((creatureBitmask & CreatureFlag::NOAIAGGRO) && !object->isPet())
+			return false;
+
 		AiAgent* ai = object->asAiAgent();
 
 		CreatureTemplate* targetTemplate = ai->getCreatureTemplate();
