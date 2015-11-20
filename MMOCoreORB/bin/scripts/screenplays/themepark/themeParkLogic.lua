@@ -646,6 +646,8 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 		end
 
 		if pNpc ~= nil and SceneObject(pNpc):isCreatureObject() then
+			AiAgent(pNpc):setNoAiAggro()
+			
 			if i == 1 then
 				if (self:isValidConvoString(stfFile, ":npc_breech_" .. missionNumber)) then
 					local pBreechArea = spawnActiveArea(planetName, "object/active_area.iff", spawnPoints[i][1], spawnPoints[i][2], spawnPoints[i][3], 32, 0)

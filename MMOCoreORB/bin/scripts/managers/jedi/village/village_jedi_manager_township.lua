@@ -66,6 +66,8 @@ function VillageJediManagerTownship:switchToNextPhase()
 	if currentPhase > VILLAGE_TOTAL_NUMBER_OF_PHASES then
 		currentPhase = 1
 	end
+	
+	currentPhase = 2 -- Temporary
 
 	VillageJediManagerTownship.setCurrentPhase(currentPhase)
 	VillageJediManagerTownship.setCurrentPhaseID(phaseID + 1)

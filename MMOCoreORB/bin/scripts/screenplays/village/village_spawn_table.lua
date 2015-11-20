@@ -47,6 +47,7 @@ villageMobileSpawns = {
 	[2] = {
 		{ "captain_sarguillo", 5313.9, 78.5, -4161.5, -72, "", "" },
 		{ "dageerin", 5238.25, 78.5, -4189, 97, "", "" },
+		{ "rohak_village_elder", 5306, 78, -4145, 0, "", "villageElderPhase2ConvoTemplate" },
 		{ "whip", 5283.66, 78.5, -4226.31, -143, "", "villageWhipPhase2ConvoTemplate" },
 		{ "quharek", 5373.7, 78.5, -4181.4, -69, "", "" },
 		{ "fs_cll8_binary_load_lifter", 5193.25, 78.5, -4195.6, -34, "", "" },

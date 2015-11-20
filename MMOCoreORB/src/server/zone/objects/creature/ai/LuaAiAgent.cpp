@@ -137,6 +137,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "runAwarenessLogicCheck", &LuaAiAgent::runAwarenessLogicCheck },
 		{ "setConvoTemplate", &LuaAiAgent::setConvoTemplate },
 		{ "setHomeLocation", &LuaAiAgent::setHomeLocation },
+		{ "setNoAiAggro", &LuaAiAgent::setNoAiAggro },
 		{ 0, 0 }
 };
 
@@ -1016,6 +1017,12 @@ int LuaAiAgent::setHomeLocation(lua_State* L) {
 	Locker locker(realObject);
 
 	realObject->setHomeLocation(x, z, y, cell);
+
+	return 0;
+}
+
+int LuaAiAgent::setNoAiAggro(lua_State* L) {
+	realObject->setCreatureBitmask(realObject->getCreatureBitmask() + CreatureFlag::NOAIAGGRO);
 
 	return 0;
 }
