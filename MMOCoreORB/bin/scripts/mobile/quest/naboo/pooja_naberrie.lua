@@ -1,6 +1,6 @@
-senator_pooja_naberrie = Creature:new {
+pooja_naberrie = Creature:new {
 	objectName = "",
-	customName = "Senator Pooja Naberrie",
+	customName = "Pooja Naberrie",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -23,15 +23,15 @@ senator_pooja_naberrie = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_pooja_naberrie.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "pooja_naberrie_mission_giver_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(senator_pooja_naberrie, "senator_pooja_naberrie")
+CreatureTemplates:addCreatureTemplate(pooja_naberrie, "pooja_naberrie")
