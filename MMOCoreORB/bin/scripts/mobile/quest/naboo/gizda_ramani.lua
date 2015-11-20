@@ -1,0 +1,36 @@
+gizda_ramani = Creature:new {
+	objectName = "",
+	customName = "Gizda Ramani",
+	socialGroup = "rebel",
+	faction = "rebel",
+	level = 16,
+	chanceHit = 0.31,
+	damageMin = 170,
+	damageMax = 180,
+	baseXp = 1102,
+	baseHAM = 2900,
+	baseHAMmax = 3500,
+	armor = 0,
+	resists = {15,15,15,15,15,15,15,-1,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = PACK,
+	optionsBitmask = 136,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/dressed_rebel_pilot_human_female_01.iff"},
+	lootGroups = {},
+	weapons = {"rebel_weapons_medium"},
+	conversationTemplate = "pooja_naberrie_mission_target_convotemplate",
+	attacks = merge(brawlermaster,marksmanmaster)
+}
+
+CreatureTemplates:addCreatureTemplate(gizda_ramani, "gizda_ramani")
