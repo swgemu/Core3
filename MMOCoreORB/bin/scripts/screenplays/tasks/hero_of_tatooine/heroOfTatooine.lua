@@ -200,6 +200,7 @@ function HeroOfTatooineScreenPlay:doCourageChange()
 	local pBoar = spawnMobile("tatooine", "wild_bladeback_boar", 0, self.courageSpawns[newLoc][1], z, self.courageSpawns[newLoc][2], getRandomNumber(360) - 180, 0)
 
 	if (pBoar ~= nil) then
+		AiAgent(pBoar):setNoAiAggro()
 		createObserver(OBJECTDESTRUCTION, "HeroOfTatooineScreenPlay", "notifyDefeatedBoar", pBoar)
 		writeData("hero_of_tat:courage_mob_id", SceneObject(pBoar):getObjectID())
 	else
@@ -813,6 +814,7 @@ function HeroOfTatooineScreenPlay:doHonorChange()
 		return
 	end
 
+	AiAgent(pLeader):setNoAiAggro()
 	writeData("hero_of_tat:honor_leader_id", SceneObject(pLeader):getObjectID())
 
 	x = self.honorSpawns[newLoc][1] - 10 + getRandomNumber(20)
@@ -820,6 +822,7 @@ function HeroOfTatooineScreenPlay:doHonorChange()
 	z = getTerrainHeight(pHermit, x, y)
 	pPirate1 = spawnMobile("tatooine", "pirate", 0, x, z, y, getRandomNumber(360) - 180, 0)
 	if (pPirate1 ~= nil) then
+		AiAgent(pPirate1):setNoAiAggro()
 		writeData("hero_of_tat:honor_pirate_1_id", SceneObject(pPirate1):getObjectID())
 	end
 
@@ -828,6 +831,7 @@ function HeroOfTatooineScreenPlay:doHonorChange()
 	z = getTerrainHeight(pHermit, x, y)
 	pPirate2 = spawnMobile("tatooine", "pirate", 0, x, z, y, getRandomNumber(360) - 180, 0)
 	if (pPirate2 ~= nil) then
+		AiAgent(pPirate2):setNoAiAggro()
 		writeData("hero_of_tat:honor_pirate_2_id", SceneObject(pPirate2):getObjectID())
 	end
 

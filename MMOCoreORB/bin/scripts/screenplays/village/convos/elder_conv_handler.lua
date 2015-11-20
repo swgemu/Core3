@@ -27,14 +27,9 @@ function villageElderConvoHandler:getNextConversationScreen(pConversationTemplat
 end
 
 function villageElderConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local state = CreatureObject(pPlayer):getScreenPlayState("VillageElderScreenPlay")
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 
-	if (state == 1) then
-		return convoTemplate:getScreen("intro")
-	else
-		return convoTemplate:getScreen("greetings")
-	end
+	return convoTemplate:getScreen("intro")
 end
 
 function villageElderConvoHandler:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
@@ -49,9 +44,9 @@ function villageElderConvoHandler:runScreenHandlers(pConversationTemplate, pConv
 			local pInvItem = getContainerObjectByTemplate(pInventory, CRYSTAL_OBJECT, true)
 
 			if (pInvItem ~= nil) then
-				clonedConversation:addOption("@conversation/village_elder_1:s_9dc8bf5d", "already_have_crystal")
+				clonedConversation:addOption("@conversation/village_elder_1:s_9dc8bf5d", "already_have_crystal") -- String does not change between phases, can use phase 1 string on all phases
 			else
-				clonedConversation:addOption("@conversation/village_elder_1:s_9dc8bf5d", "give_new_crystal")
+				clonedConversation:addOption("@conversation/village_elder_1:s_9dc8bf5d", "give_new_crystal") -- String does not change between phases, can use phase 1 string on all phases
 			end
 		end
 		return conversationScreen
@@ -72,15 +67,6 @@ function villageElderConvoHandler:runScreenHandlers(pConversationTemplate, pConv
 				end
 			end
 		end
-	elseif (screenID == "yes_you_might") then
-		CreatureObject(pConversingPlayer):setScreenPlayState(1, "VillageElderScreenPlay")
-		local pGhost = CreatureObject(pConversingPlayer):getPlayerObject()
-
-		if (not PlayerObject(pGhost):isJedi()) then
-			PlayerObject(pGhost):setJediState(1)
-		end
-
-		awardSkill(pConversingPlayer, "force_title_jedi_novice")
 	end
 
 	return pConversationScreen

@@ -194,7 +194,24 @@ function GoToTheater:handleDespawnTheater(pCreatureObject)
 		return
 	end
 
+	if (self:areMobilesInCombat(pCreatureObject)) then
+		createEvent(self.despawnTime / 10, self.taskName, "handleDespawnTheater", pCreatureObject)
+		return
+	end
+
 	self:finish(pCreatureObject)
+end
+
+function GoToTheater:areMobilesInCombat(pCreatureObject)
+	local spawnedObjects = self:getSpawnedMobileList(pCreatureObject)
+
+	for i = 1, #spawnedObjects, 1 do
+		if (spawnedObjects[i] ~= nil and AiAgent(spawnedObjects[i]):isInCombat()) then
+			return true
+		end
+	end
+
+	return false
 end
 
 function GoToTheater:removeTheaterWaypoint(pCreatureObject)
