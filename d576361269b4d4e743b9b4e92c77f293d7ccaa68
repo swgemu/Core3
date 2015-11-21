@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_ba8c1181",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase2/fs_reflex2_theater.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-21T01:27:58Z",
+      "side": 1,
+      "message": "It seems odd to just give the supplies to the player as soon as they enter the area. Also odd to activate and complete that quest at the same time.\n\nIf you\u0027re going to give the item when they enter the area I would think that it would make more sense to complete 1 and activate 2 inside onSuccessfulSpawn.",
+      "revId": "d576361269b4d4e743b9b4e92c77f293d7ccaa68",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_3a81e14a",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_theater.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-21T01:27:58Z",
+      "side": 1,
+      "message": "What are you writing these for? I don\u0027t see you read them anywhere, though you delete x and y (not z) below.",
+      "revId": "d576361269b4d4e743b9b4e92c77f293d7ccaa68",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

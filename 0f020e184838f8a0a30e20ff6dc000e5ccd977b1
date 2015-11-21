@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_da954589",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/intro/sith_shadow_intro_theater.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-21T01:27:58Z",
+      "side": 0,
+      "message": "Do any of the new objects below have a noBuildRadius? I suspect that they don\u0027t since they are mostly static objects and a couple of tanos. Without the building, what\u0027s to stop other random spawns from spawning on top of this? Why not just change the list of childObjects on the building and keep using it?\n\nAlso, do the reflex 1 and 2 theaters have any kind of protection against spawns being spawned on top of them?",
+      "revId": "0f020e184838f8a0a30e20ff6dc000e5ccd977b1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
