@@ -418,4 +418,12 @@ function NabooTheedScreenPlay:spawnMobiles()
 	pNpc = spawnMobile("naboo", "chassis_dealer",60,-1.0,0.7,-72.2,50,1692101)
 	self:setMoodString(pNpc, "neutral")
 
+	--double waterfall island near Palace
+	spawnMobile("naboo", "mott_calf", 600, getRandomNumber(10) + -5201.0, 6, getRandomNumber(10) + 4542.6, getRandomNumber(360), 0)
+	spawnMobile("naboo", "mott_calf", 600, getRandomNumber(10) + -5195.0, 6, getRandomNumber(10) + 4537.4, getRandomNumber(360), 0)
+	spawnMobile("naboo", "mott_calf", 600, getRandomNumber(10) + -5202.4, 6, getRandomNumber(10) + 4552.0, getRandomNumber(360), 0)
+	spawnMobile("naboo", "flewt", 300, getRandomNumber(10) + -5176.4, 6, getRandomNumber(10) + 4612.2, getRandomNumber(360), 0)
+	spawnMobile("naboo", "flewt", 300, getRandomNumber(10) + -5161.3, 6, getRandomNumber(10) + 4601.7, getRandomNumber(360), 0)
+	spawnMobile("naboo", "flewt", 300, getRandomNumber(10) + -5193.3, 6, getRandomNumber(10) + 4610.0, getRandomNumber(360), 0)
+
 end
