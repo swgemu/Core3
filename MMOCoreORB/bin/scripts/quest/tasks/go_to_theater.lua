@@ -72,7 +72,7 @@ end
 -- @param pCreatureObject pointer to the creature who is entering the active area.
 -- @param nothing not used.
 function GoToTheater:handleEnteredAreaEvent(pActiveArea, pCreatureObject, nothing)
-	if not SceneObject(pCreatureObject):isCreatureObject() then
+	if not SceneObject(pCreatureObject):isPlayerCreature() then
 		return 0
 	end
 
@@ -94,13 +94,13 @@ function GoToTheater:taskStart(pCreatureObject)
 	Logger:log("Spawning " .. self.taskName .. " theater.", LT_INFO)
 
 	local zoneName = SceneObject(pCreatureObject):getZoneName()
-	local spawnPoint = getSpawnArea(zoneName, SceneObject(pCreatureObject):getWorldPositionX(), SceneObject(pCreatureObject):getWorldPositionY(), self.minimumDistance, self.maximumDistance, 20, 15, true)
+	local spawnPoint = getSpawnArea(zoneName, SceneObject(pCreatureObject):getWorldPositionX(), SceneObject(pCreatureObject):getWorldPositionY(), self.minimumDistance, self.maximumDistance, 20, 10, true)
 	local playerID = SceneObject(pCreatureObject):getObjectID()
 
 	if (spawnPoint == nil) then
 		printf("Error in GoToTheater:taskStart() for task " .. self.taskName .. ", spawnPoint is nil.\n")
 	end
-
+	
 	if spawnPoint ~= nil then
 		local pTheater = spawnSceneObject(zoneName, "object/static/structure/nobuild/nobuild_32.iff", spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, 0)
 
