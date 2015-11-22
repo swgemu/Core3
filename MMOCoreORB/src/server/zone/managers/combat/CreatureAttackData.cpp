@@ -82,6 +82,7 @@ void CreatureAttackData::fillFromBase() {
 	stateEffects = baseCommand->getStateEffects();
 	dotEffects = baseCommand->getDotEffects();
 	coneAngle = baseCommand->getConeAngle();
+	coneRange = baseCommand->getConeRange();
 	range = baseCommand->getRange();
 	areaRange = baseCommand->getAreaRange();
 	animationCRC = baseCommand->getAnimationCRC();

@@ -591,6 +591,8 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			combatCommand->setForceCostMultiplier(Lua::getFloatParameter(L));
 		else if (varName == "forceCost")
 			combatCommand->setForceCost(Lua::getFloatParameter(L));
+		else if (varName == "coneRange")
+			combatCommand->setConeRange(Lua::getIntParameter(L));
 		else if (varName == "range")
 			combatCommand->setRange(Lua::getIntParameter(L));
 		else if (varName == "accuracySkillMod")

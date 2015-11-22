@@ -42,6 +42,7 @@ protected:
 	float forceCostMultiplier;
 	float forceCost;
 
+	int coneRange;
 	int range;
 
 	String accuracySkillMod;
@@ -86,6 +87,8 @@ public:
 		poolsToDamage = CombatManager::RANDOM;
 
 		coneAngle = 30;
+
+		coneRange = -1;
 
 		//for weapon set -1
 		range = -1;
@@ -248,6 +251,10 @@ public:
 
 	inline float getMindCostMultiplier() const {
 		return mindCostMultiplier;
+	}
+
+	inline int getConeRange() const {
+		return coneRange;
 	}
 
 	inline int getRange() const {
@@ -436,6 +443,10 @@ public:
 
 	DotEffect getDotEffect(uint64 type) {
 		return dotEffects.get(type);
+	}
+
+	void setConeRange(int i) {
+		this->coneRange = i;
 	}
 
 	void setRange(int i) {
