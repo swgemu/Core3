@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_5addb513",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/QuickHealCommand.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-23T10:54:47Z",
+      "side": 1,
+      "message": "Move these 3 lines back to where they were. It\u0027s just the calculation of the actual mind cost that you needed to move to here.",
+      "revId": "6ee3cb1275f21826a854993f35aaf3362e81db2a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
