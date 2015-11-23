@@ -61,6 +61,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "getExperienceCap", &LuaPlayerObject::getExperienceCap},
 		{ "activateQuest", &LuaPlayerObject::activateQuest },
 		{ "canActivateQuest", &LuaPlayerObject::canActivateQuest },
+		{ "completePadawanTrial", &LuaPlayerObject::completePadawanTrial },
 		{ 0, 0 }
 };
 
@@ -522,3 +523,9 @@ int LuaPlayerObject::getExperienceCap(lua_State* L) {
 	return 1;
 }
 
+int LuaPlayerObject::completePadawanTrial(lua_State* L) {
+	int trialNum = lua_tointeger(L, -1);
+
+	realObject->addCompletedPadawanTrial((unsigned)trialNum);
+	return 0;
+}

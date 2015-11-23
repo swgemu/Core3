@@ -259,6 +259,9 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	@rawTemplate(value = "uint32, PlayerQuestData")
 	protected DeltaVectorMap playerQuestsData;
+
+	@dereferenced
+	protected Vector<unsigned int> completedPadawanTrials;
 	
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
@@ -1749,6 +1752,16 @@ class PlayerObject extends IntangibleObject {
 	@dirty
 	public native boolean hasSchematic(DraftSchematic schematic) {
 		return schematicList.contains(schematic);
+	}
+
+	public void addCompletedPadawanTrial(unsigned int trialNumber) {
+		completedPadawanTrials.add(trialNumber);
+	}
+	
+	@local
+	@dirty
+	public Vector<unsigned int> getCompletedPadawanTrials() {
+		return completedPadawanTrials;
 	}
 }
 

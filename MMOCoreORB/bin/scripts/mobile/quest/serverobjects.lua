@@ -318,6 +318,12 @@ includeFile("quest/lok/theme_park_rebel_nym_contact.lua")
 includeFile("quest/lok/theme_park_rebel_pirate.lua")
 includeFile("quest/lok/theme_park_rebel_pirate_holocron.lua")
 
+-- Misc
+includeFile("quest/misc/kant_graf.lua")
+includeFile("quest/misc/trials_gungan_captain.lua")
+includeFile("quest/misc/sathme_forr.lua")
+includeFile("quest/misc/trials_ileeb_isonocra.lua")
+
 -- Naboo
 includeFile("quest/naboo/alowi_fintz.lua")
 includeFile("quest/naboo/arven_wendik.lua")
