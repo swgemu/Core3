@@ -42,7 +42,7 @@ protected:
 public:
 	TendCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
-	
+
 		mindCost = 0;
 		mindWoundCost = 0;
 
@@ -192,13 +192,15 @@ public:
 			return TOOFAR;
 
 		uint8 attribute = findAttribute(creatureTarget);
-		
+
 		if (!creatureTarget->isHealableBy(creature)) {
 			creature->sendSystemMessage("@healing:pvp_no_help");  //It would be unwise to help such a patient.
 			return GENERALERROR;
 		}
 
-		if (creature->getHAM(CreatureAttribute::MIND) < mindCost) {
+		int mindCostNew = creature->calculateCostAdjustment(CreatureAttribute::FOCUS, mindCost);
+
+		if (creature->getHAM(CreatureAttribute::MIND) < mindCostNew) {
 			creature->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
 			return GENERALERROR;
 		}
@@ -261,7 +263,7 @@ public:
 			playerManager->sendBattleFatigueMessage(creature, creatureTarget);
 		}
 
-		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
+		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCostNew, false);
 		creature->addWounds(CreatureAttribute::FOCUS, mindWoundCost);
 		creature->addWounds(CreatureAttribute::WILLPOWER, mindWoundCost);
 
