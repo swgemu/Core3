@@ -51,7 +51,7 @@ void FactoryCrateImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 	Reference<TangibleObject*> prototype = getPrototype();
 
 	if(prototype == NULL || !prototype->isTangibleObject()) {
-		object->sendSystemMessage("This crate is broken, please contact Kyle if you get this message");
+		object->sendSystemMessage("This crate is broken, please contact support if you get this message.");
 		return;
 	}
 
@@ -103,6 +103,7 @@ Reference<TangibleObject*> FactoryCrateImplementation::getPrototype() {
 		error("FactoryCrateImplementation::getPrototype has a NULL or non-tangible item");
 		return NULL;
 	}
+
 	return prototype;
 }
 
@@ -172,6 +173,15 @@ bool FactoryCrateImplementation::extractObjectToInventory(CreatureObject* player
 			protoclone->destroyObjectFromDatabase(true);
 
 			return false;
+		}
+
+		/*
+		 * I really didn't want to do this this way, but I had no other way of making the text on the crate be white
+		 * if the item it contained has the yellow magic bit set. So I stripped the yellow magic bit off when the item is placed inside
+		 * the crate, and added it back here.
+		 */
+		if(protoclone->getIsCraftedEnhancedItem()) {
+			protoclone->addMagicBit(false);
 		}
 
 		inventory->transferObject(protoclone, -1, true);

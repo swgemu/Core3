@@ -149,6 +149,10 @@ int DraftSchematicImplementation::getXpAmount() {
 	return schematicTemplate->getXp();
 }
 
+bool DraftSchematicImplementation::getIsMagic() {
+	return schematicTemplate->getIsMagic();
+}
+
 String DraftSchematicImplementation::getAssemblySkill() {
 	return schematicTemplate->getAssemblySkill();
 }

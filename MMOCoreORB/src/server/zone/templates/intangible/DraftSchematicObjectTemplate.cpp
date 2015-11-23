@@ -16,6 +16,8 @@ DraftSchematicObjectTemplate::DraftSchematicObjectTemplate() {
 
 	xp = 0;
 
+	isMagic = false;
+
 	tanoCRC = 0;
 
 	ingredientTemplateNames = new Vector<String> ();
@@ -74,6 +76,7 @@ void DraftSchematicObjectTemplate::readObject(LuaObject* templateData) {
 	labratory = templateData->getIntField("lab");
 	disableFactory = templateData->getBooleanField("disableFactoryRun");
 
+	isMagic = templateData->getBooleanField("isMagic");
 	assemblySkill = templateData->getStringField("assemblySkill");
 	experimentingSkill = templateData->getStringField("experimentingSkill");
 	customizationSkill = templateData->getStringField("customizationSkill");

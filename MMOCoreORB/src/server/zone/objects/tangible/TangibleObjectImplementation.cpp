@@ -172,6 +172,10 @@ void TangibleObjectImplementation::setPvpStatusBitmask(uint32 bitmask, bool noti
 	broadcastPvpStatusBitmask();
 }
 
+void TangibleObjectImplementation::setIsCraftedEnhancedItem(bool value) {
+	isCraftedEnhancedItem = value;
+}
+
 void TangibleObjectImplementation::setPvpStatusBit(uint32 pvpStatus, bool notifyClient) {
 	if (!(pvpStatusBitmask & pvpStatus)) {
 		setPvpStatusBitmask(pvpStatusBitmask | pvpStatus, notifyClient);
@@ -701,8 +705,14 @@ Reference<FactoryCrate*> TangibleObjectImplementation::createFactoryCrate(bool i
 			return NULL;
 		}
 	} else {
-
 		ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(asTangibleObject()));
+		/*
+		* I really didn't want to do this this way, but I had no other way of making the text on the crate be white
+		* if the item it contained has yellow magic bit set. So I stripped the yellow magic bit off when the item is placed inside
+		* the crate here, and added it back when the item is extracted from the crate if it is a crafted enhanced item.
+		*/
+		if(protoclone->getIsCraftedEnhancedItem())
+			protoclone->removeMagicBit(false);
 
 		if (protoclone == NULL) {
 			crate->destroyObjectFromDatabase(true);
