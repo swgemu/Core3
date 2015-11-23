@@ -40,8 +40,8 @@ function Patrol:setupPatrolPoints(pCreature)
 		local x = (self.originX + offsetX) + (radius * math.cos(theta))
 		local y = (self.originY + offsetY) + (radius * math.sin(theta))
 
-		local spawnPoint = getSpawnPoint(pCreature, x, y, 0, 200, self.forceSpawn)
 		local planetName = SceneObject(pCreature):getZoneName()
+		local spawnPoint = getSpawnPoint(planetName, x, y, 0, 200, self.forceSpawn)
 
 		local pActiveArea = spawnActiveArea(planetName, "object/active_area.iff", spawnPoint[1], spawnPoint[2], spawnPoint[3], self.areaSize, 0)
 
