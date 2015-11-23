@@ -55,6 +55,7 @@ CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 
 	range = data.range;
 	coneAngle = data.coneAngle;
+	coneRange = data.coneRange;
 	areaRange = data.areaRange;
 
 	animationCRC = data.animationCRC;
