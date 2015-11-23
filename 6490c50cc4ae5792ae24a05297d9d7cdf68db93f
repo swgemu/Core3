@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_15238406",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/trials/padawan/architect_02_conv.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-23T04:46:03Z",
+      "side": 1,
+      "message": "I would think that the player would have the attack option here as well.",
+      "revId": "6490c50cc4ae5792ae24a05297d9d7cdf68db93f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_156aa41a",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/trials/padawan/bad_cat_01_conv.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-23T04:46:03Z",
+      "side": 1,
+      "message": "I think you should also have the \"What do you want me to do about it?\" option here.",
+      "revId": "6490c50cc4ae5792ae24a05297d9d7cdf68db93f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_b5765005",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/trials/padawan/chef_01_conv.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-23T04:46:03Z",
+      "side": 1,
+      "message": "I think you should add the \"I don\u0027t care, I\u0027m glad he took it.\" option here as well.",
+      "revId": "6490c50cc4ae5792ae24a05297d9d7cdf68db93f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_555fcc72",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/trials/padawan/kill_baz_nitch_01_conv.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-23T04:46:03Z",
+      "side": 1,
+      "message": "This seems like what would be said to a player that already completed this.",
+      "revId": "6490c50cc4ae5792ae24a05297d9d7cdf68db93f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_355a4084",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/trials/padawan/kill_falumpaset_01_conv.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-23T04:46:03Z",
+      "side": 1,
+      "message": "This seems like what would be said to a player that already completed this.",
+      "revId": "6490c50cc4ae5792ae24a05297d9d7cdf68db93f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_95655447",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/trials/padawan/kill_sludge_panther_01_conv.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-23T04:46:03Z",
+      "side": 1,
+      "message": "This seems like what would be said to a player that already completed this.",
+      "revId": "6490c50cc4ae5792ae24a05297d9d7cdf68db93f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_7aee7924",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/trials/padawan/old_musician_01_conv.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-23T04:46:03Z",
+      "side": 1,
+      "message": "I don\u0027t see a not_curious screen.",
+      "revId": "6490c50cc4ae5792ae24a05297d9d7cdf68db93f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_dadc6577",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/trials/padawan/old_musician_01_conv.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-23T04:46:03Z",
+      "side": 1,
+      "message": "Using the noquest_player_talks screen here makes no sense.",
+      "revId": "6490c50cc4ae5792ae24a05297d9d7cdf68db93f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_fad92984",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/trials/padawan/old_musician_02_conv.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-23T04:46:03Z",
+      "side": 1,
+      "message": "Using the noquest_player_talks screen here makes no sense.",
+      "revId": "6490c50cc4ae5792ae24a05297d9d7cdf68db93f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_1af3bd0b",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/trials/padawan/pannaqa_01_conv.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-23T04:46:03Z",
+      "side": 1,
+      "message": "I don\u0027t see a not_curious screen.",
+      "revId": "6490c50cc4ae5792ae24a05297d9d7cdf68db93f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_3af801e5",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/trials/padawan/pannaqa_03_conv.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-23T04:46:03Z",
+      "side": 1,
+      "message": "The continue_final screen makes no sense to use here.",
+      "revId": "6490c50cc4ae5792ae24a05297d9d7cdf68db93f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
