@@ -23,7 +23,7 @@ public:
 
 	HealEnhanceCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
-		
+
 		mindCost = 150;
 		range = 7;
 	}
@@ -81,7 +81,9 @@ public:
 		return NULL;
 	}
 
-	bool canPerformSkill(CreatureObject* enhancer, CreatureObject* patient, EnhancePack* enhancePack) const {
+	int mindCostNew = enhancer->calculateCostAdjustment(CreatureAttribute::FOCUS, mindCost);
+
+	bool canPerformSkill(CreatureObject* enhancer, CreatureObject* patient, EnhancePack* enhancePack, Creature* mindCostNew) const {
 		if (patient->isDead())
 			return false;
 
@@ -129,7 +131,7 @@ public:
 			return false;
 		}
 
-		if (enhancer->getHAM(CreatureAttribute::MIND) < mindCost) {
+		if (enhancer->getHAM(CreatureAttribute::MIND) < mindCostNew) {
 			enhancer->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
 			return false;
 		}
@@ -247,7 +249,7 @@ public:
 		if (object != NULL) {
 			if (!object->isCreatureObject()) {
 				TangibleObject* tangibleObject = dynamic_cast<TangibleObject*>(object.get());
- 
+
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
 				} else {
@@ -354,7 +356,7 @@ public:
 
 		sendEnhanceMessage(enhancer, patient, attribute, amountEnhanced);
 
-		enhancer->inflictDamage(enhancer, CreatureAttribute::MIND, mindCost, false);
+		enhancer->inflictDamage(enhancer, CreatureAttribute::MIND, mindCostNew, false);
 
 		deactivateWoundTreatment(enhancer);
 
