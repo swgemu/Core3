@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_5aba95e2",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_theater.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-23T04:22:58Z",
+      "side": 1,
+      "message": "Don\u0027t you want to return here?",
+      "revId": "d17dd01b6ef97768982aafdc9cbe65b3ccae0b41",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
