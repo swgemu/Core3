@@ -129,7 +129,9 @@ public:
 			return false;
 		}
 
-		if (enhancer->getHAM(CreatureAttribute::MIND) < mindCost) {
+		int mindCostNew = enhancer->calculateCostAdjustment(CreatureAttribute::FOCUS, mindCost);
+
+		if (enhancer->getHAM(CreatureAttribute::MIND) < mindCostNew) {
 			enhancer->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
 			return false;
 		}
@@ -354,7 +356,8 @@ public:
 
 		sendEnhanceMessage(enhancer, patient, attribute, amountEnhanced);
 
-		enhancer->inflictDamage(enhancer, CreatureAttribute::MIND, mindCost, false);
+		int mindCostNew = enhancer->calculateCostAdjustment(CreatureAttribute::FOCUS, mindCost);
+		enhancer->inflictDamage(enhancer, CreatureAttribute::MIND, mindCostNew, false);
 
 		deactivateWoundTreatment(enhancer);
 
