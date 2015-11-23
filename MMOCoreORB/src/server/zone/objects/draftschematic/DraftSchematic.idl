@@ -151,6 +151,13 @@ class DraftSchematic extends IntangibleObject {
 	public native int getXpAmount();
 
 	/**
+	 * getter for the isMagic
+	 * \return isMagic
+	 */
+	@dirty
+	public native boolean getIsMagic();
+
+	/**
 	 * getter for assemblyMod
 	 * \return assemblyMod
 	 */

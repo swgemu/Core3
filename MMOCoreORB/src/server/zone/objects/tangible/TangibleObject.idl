@@ -56,6 +56,8 @@ class TangibleObject extends SceneObject {
 	@dereferenced
 	protected AutoDeltaSet<int> visibleComponents;
 	
+	protected boolean isCraftedEnhancedItem;
+	
 	protected unsigned int pvpStatusBitmask;
 	
 	protected byte objectVisible;
@@ -533,6 +535,11 @@ class TangibleObject extends SceneObject {
 		return level;
 	}
 	
+	@dirty 
+	public boolean getIsCraftedEnhancedItem() {
+		return isCraftedEnhancedItem;
+	}
+	
 	@dirty
 	public unsigned int getPvpStatusBitmask() {
 		return pvpStatusBitmask;
@@ -644,6 +651,7 @@ class TangibleObject extends SceneObject {
 		customizationVariables.parseFromClientString(vars);
 	}
 	
+	public native void setIsCraftedEnhancedItem(boolean value);
 	public native void setPvpStatusBitmask(unsigned int bitmask, boolean notifyClient = true);
 
 	public native void setPvpStatusBit(unsigned int pvpStatus, boolean notifyClient = true);

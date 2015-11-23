@@ -54,6 +54,7 @@ object_draft_schematic_item_item_powerup_weapon_mine_explosive = object_draft_sc
    xpType = "crafting_general", 
    xp = 20, 
 
+   isMagic = true,
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
    customizationSkill = "clothing_customization", 
