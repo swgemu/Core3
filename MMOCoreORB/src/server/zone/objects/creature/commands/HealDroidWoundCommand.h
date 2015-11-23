@@ -55,7 +55,7 @@ public:
 		}
 	}
 
-	bool canPerformSkill(CreatureObject* creature, CreatureObject* droid, WoundPack* woundPack) const {
+	bool canPerformSkill(CreatureObject* creature, CreatureObject* droid, WoundPack* woundPack, int mindCostNew) const {
 		if (!creature->canTreatWounds()) {
 			creature->sendSystemMessage("@healing_response:enhancement_must_wait"); //You must wait before you can heal wounds or apply enhancements again.
 			return false;
@@ -100,7 +100,7 @@ public:
 			return false;
 		}
 
-		if (creature->getHAM(CreatureAttribute::MIND) < mindCost) {
+		if (creature->getHAM(CreatureAttribute::MIND) < mindCostNew) {
 			creature->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
 			return false;
 		}
@@ -212,7 +212,9 @@ public:
 			woundPack = findWoundPack(creature);
 		}
 
-		if (!canPerformSkill(creature, droid, woundPack))
+		int mindCostNew = creature->calculateCostAdjustment(CreatureAttribute::FOCUS, mindCost);
+
+		if (!canPerformSkill(creature, droid, woundPack, mindCostNew))
 			return GENERALERROR;
 
 		uint32 woundPower = woundPack->calculatePower(creature, droid, false);
@@ -223,7 +225,7 @@ public:
 
 		sendWoundMessage(creature, droid, woundHealed);
 
-		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
+		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCostNew, false);
 
 		deactivateWoundTreatment(creature);
 

@@ -258,7 +258,7 @@ public:
 		checkForTef(creature, creatureTarget);
 	}
 
-	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, CurePack* curePack) const {
+	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, CurePack* curePack, int mindCostNew) const {
 		switch (state) {
 		case CreatureState::POISONED:
 			if (!creatureTarget->isPoisoned()) {
@@ -325,7 +325,7 @@ public:
 			return false;
 		}
 
-		if (creature->getHAM(CreatureAttribute::MIND) < mindCost) {
+		if (creature->getHAM(CreatureAttribute::MIND) < mindCostNew) {
 			creature->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
 			return false;
 		}
@@ -380,14 +380,16 @@ public:
 		if (!creature->isInRange(targetCreature, range + creature->getTemplateRadius() + targetCreature->getTemplateRadius()))
 			return TOOFAR;
 
-		if (!canPerformSkill(creature, targetCreature, curePack))
+		int mindCostNew = creature->calculateCostAdjustment(CreatureAttribute::FOCUS, mindCost);
+
+		if (!canPerformSkill(creature, targetCreature, curePack, mindCostNew))
 			return GENERALERROR;
 
 		sendCureMessage(creature, targetCreature);
 
 		targetCreature->healDot(state, curePack->calculatePower(creature));
 
-		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
+		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCostNew, false);
 
 		deactivateConditionTreatment(creature);
 

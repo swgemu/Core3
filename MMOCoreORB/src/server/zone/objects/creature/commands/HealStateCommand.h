@@ -23,7 +23,7 @@ public:
 
 	HealStateCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
-		
+
 		mindCost = 20;
 		range = 6;
 	}
@@ -98,7 +98,7 @@ public:
 			creature->doAnimation("heal_other");
 	}
 
-	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, StatePack* statePack) const {
+	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, StatePack* statePack, int mindCostNew) const {
 		if (!creature->canTreatStates()) {
 			creature->sendSystemMessage("@healing_response:healing_must_wait"); //You must wait before you can do that.
 			return false;
@@ -114,7 +114,7 @@ public:
 			return false;
 		}
 
-		if (creature->getHAM(CreatureAttribute::MIND) < mindCost) {
+		if (creature->getHAM(CreatureAttribute::MIND) < mindCostNew) {
 			creature->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
 			return false;
 		}
@@ -222,7 +222,9 @@ public:
 		if (statePack == NULL)
 			statePack = findStatePack(creature, state);
 
-		if (!canPerformSkill(creature, creatureTarget, statePack))
+		int mindCostNew = creature->calculateCostAdjustment(CreatureAttribute::FOCUS, mindCost);
+
+		if (!canPerformSkill(creature, creatureTarget, statePack, mindCostNew))
 			return GENERALERROR;
 
 		if (!creatureTarget->isInRange(creature, range + creatureTarget->getTemplateRadius() + creature->getTemplateRadius()))
@@ -244,7 +246,7 @@ public:
 			else if (creatureTarget->isPlayerCreature()){
 				StringIdChatParameter msg("healing_response", "healing_response_74"); //%NT has no state of that type to heal.
 				msg.setTT(creatureTarget->getObjectID());
-				creature->sendSystemMessage(msg); 
+				creature->sendSystemMessage(msg);
 			} else {
 				StringBuffer message;
 				message << creatureTarget->getDisplayedName() << " has no state of that type to heal.";
@@ -254,7 +256,7 @@ public:
 			return GENERALERROR;
 		}
 
-		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
+		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCostNew, false);
 
 		sendStateMessage(creature, creatureTarget, state);
 
