@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_7aa679c3",
+        "filename": "MMOCoreORB/bin/scripts/mobile/naboo/serverobjects.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-23T05:46:54Z",
+      "side": 0,
+      "message": "You should also delete the mobile template and not just remove the include.",
+      "revId": "0f020e184838f8a0a30e20ff6dc000e5ccd977b1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
