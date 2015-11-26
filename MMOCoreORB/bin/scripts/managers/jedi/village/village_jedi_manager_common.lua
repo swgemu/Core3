@@ -98,4 +98,28 @@ function VillageJediManagerCommon.setCompletedQuestThisPhase(pPlayer)
 	setQuestStatus(SceneObject(pPlayer):getObjectID() .. ":village:lastCompletedQuest", phaseID)
 end
 
+-- Get the first name of the player.
+-- @param pCreatureObject pointer to the creature object of the player.
+-- @return the first name of the player.
+function VillageJediManagerCommon:getPlayerFirstName(pCreatureObject)
+	local firstName = CreatureObject(pCreatureObject):getFirstName()
+
+	if firstName == nil then
+		return ""
+	end
+
+	return firstName
+end
+
+-- Send the greeting string to the player.
+-- @param pCreatureObject pointer to the creature object of the player.
+function VillageJediManagerCommon:sendGreetingString(pCreatureFrom, pCreatureTo, string)
+	Logger:log("Sending greeting string.", LT_INFO)
+	local greetingString = LuaStringIdChatParameter(string)
+	local firstName = self:getPlayerFirstName(pCreatureTo)
+	greetingString:setTT(firstName)
+	spatialChat(pCreatureFrom, greetingString:_getObject())
+end
+
+
 return VillageJediManagerCommon
