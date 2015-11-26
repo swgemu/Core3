@@ -1,5 +1,4 @@
 --Copyright (C) 2007 <SWGEmu>
-
 --This File is part of Core3.
 
 --This program is free software; you can redistribute
@@ -13,7 +12,6 @@
 --MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 --See the GNU Lesser General Public License for
 --more details.
-
 --You should have received a copy of the GNU Lesser General
 --Public License along with this program; if not, write to
 --the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
@@ -43,6 +41,21 @@
 
 AnimalScareCommand = {
         name = "animalscare",
+
+	damageMultiplier = 0,
+	speed = 4.0,
+	forceCost = 200,
+	accuracySkillMod = "animalscare_accuracy",
+	attackType = FORCEATTACK,
+
+	animationCRC = hashCode("mind_trick_1"),
+
+	combatSpam = "animalscare",
+
+	poolsToDamage = NO_ATTRIBUTE,
+
+	range = 32
+
 }
 
 AddCommand(AnimalScareCommand)
