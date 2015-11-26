@@ -42,7 +42,8 @@
 
 
 object_tangible_jedi_power_shrine_red = object_tangible_jedi_shared_power_shrine_red:new {
-
+		pvpStatusBitmask = ATTACKABLE,
+		optionsBitmask = 0
 }
 
 ObjectTemplates:addTemplate(object_tangible_jedi_power_shrine_red, "object/tangible/jedi/power_shrine_red.iff")
