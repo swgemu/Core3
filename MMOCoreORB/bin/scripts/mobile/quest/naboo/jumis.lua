@@ -1,0 +1,36 @@
+jumis = Creature:new {
+	objectName = "@mob/creature_names:commoner",
+	customName = "Jumis",
+	socialGroup = "townsperson",
+	faction = "townsperson",
+	level = 16,
+	chanceHit = 0.31,
+	damageMin = 170,
+	damageMax = 180,
+	baseXp = 1102,
+	baseHAM = 2900,
+	baseHAMmax = 3500,
+	armor = 0,
+	resists = {15,15,15,15,15,15,15,-1,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = NONE,
+	creatureBitmask = HERD,
+	optionsBitmask = 136,
+	diet = HERBIVORE,
+
+	templates = {	"object/mobile/dressed_commoner_naboo_bothan_female_01.iff"},
+	lootGroups = {},
+	weapons = {},
+	conversationTemplate = "pooja_naberrie_mission_target_convotemplate",
+	attacks = brawlermaster
+}
+
+CreatureTemplates:addCreatureTemplate(jumis, "jumis")
