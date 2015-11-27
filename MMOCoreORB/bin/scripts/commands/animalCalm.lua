@@ -43,6 +43,17 @@
 
 AnimalCalmCommand = {
         name = "animalcalm",
+
+	speed = 4.0,
+	forceCost = 50,
+	accuracySkillMod = "animalcalm_accuracy",
+	attackType = FORCEATTACK,
+
+	animationCRC = hashCode("mind_trick_1"),
+
+	combatSpam = "animalcalm",
+
+	range = 32
 }
 
 AddCommand(AnimalCalmCommand)
