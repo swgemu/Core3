@@ -1,5 +1,4 @@
 --Copyright (C) 2007 <SWGEmu>
-
 --This File is part of Core3.
 
 --This program is free software; you can redistribute
@@ -28,6 +27,7 @@
 --programs or libraries that are released under the GNU LGPL and with
 --code included in the standard release of Core3 under the GNU LGPL
 --license (or modified versions of such code, with unchanged license).
+
 --You may copy and distribute such a system following the terms of the
 --GNU LGPL for Engine3 and the licenses of the other code concerned,
 --provided that you include the source code of that other code when
@@ -43,6 +43,19 @@
 
 AnimalScareCommand = {
         name = "animalscare",
+
+	damageMultiplier = 0,
+	speed = 4.0,
+	forceCost = 200,
+	accuracySkillMod = "mindblast_accuracy",
+	attackType = FORCEATTACK,
+
+	combatSpam = "mindblast1",
+
+	poolsToDamage = NO_ATTRIBUTE,
+
+	range = 32
+
 }
 
 AddCommand(AnimalScareCommand)
