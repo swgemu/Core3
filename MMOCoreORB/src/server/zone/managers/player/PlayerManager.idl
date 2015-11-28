@@ -23,6 +23,7 @@ import engine.util.Observable;
 import server.zone.objects.player.PlayerObject;
 import server.zone.objects.structure.StructureObject;
 import engine.util.u3d.Vector3;
+include system.util.SynchronizedVector;
 import server.zone.objects.creature.ai.AiAgent;
 import server.zone.objects.creature.ai.Creature;
 import server.zone.objects.tangible.tool.CraftingStation;
@@ -313,7 +314,7 @@ class PlayerManager extends Observer implements Logger {
 	public native int healEnhance(CreatureObject enhancer, CreatureObject patient, byte attribute, int buffvalue, float duration);
 
 	@local
-	public native void disseminateExperience(TangibleObject destructedObject, ThreatMap threatMap, Vector<CreatureObject> lairSpawnedCreatures = null);
+	public native void disseminateExperience(TangibleObject destructedObject, ThreatMap threatMap, SynchronizedVector<CreatureObject> lairSpawnedCreatures = null);
 
 	public native int calculatePlayerLevel(CreatureObject player);
 	public native int calculatePlayerLevel(CreatureObject player, string xpType);

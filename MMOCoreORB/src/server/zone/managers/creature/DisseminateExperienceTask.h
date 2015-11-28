@@ -11,16 +11,19 @@
 #include "engine/engine.h"
 #include "server/zone/managers/creature/LairObserver.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "system/util/SynchronizedVector.h"
+
 class DisseminateExperienceTask : public Task {
 	ManagedWeakReference<TangibleObject*> lair;
 
 	ThreatMap copyThreatMap;
 
-	Vector<ManagedReference<CreatureObject*> > spawnedCreatures;
+	SynchronizedVector<ManagedReference<CreatureObject*> > spawnedCreatures;
 
 public:
 
-	DisseminateExperienceTask(TangibleObject* obj, ThreatMap* threatMap, Vector<ManagedReference<CreatureObject*> >* creatures) : lair(obj),
+	DisseminateExperienceTask(TangibleObject* obj, ThreatMap* threatMap, SynchronizedVector<ManagedReference<CreatureObject*> >* creatures) : lair(obj),
 		copyThreatMap(*threatMap), spawnedCreatures(*creatures) {
 	}
 

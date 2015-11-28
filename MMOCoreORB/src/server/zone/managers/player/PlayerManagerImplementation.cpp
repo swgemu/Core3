@@ -1015,7 +1015,8 @@ void PlayerManagerImplementation::ejectPlayerFromBuilding(CreatureObject* player
 
 
 
-void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap, Vector<ManagedReference<CreatureObject*> >* spawnedCreatures) {
+void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap,
+		SynchronizedVector<ManagedReference<CreatureObject*> >* spawnedCreatures) {
 	uint32 totalDamage = threatMap->getTotalDamage();
 
 	VectorMap<ManagedReference<CreatureObject*>, int> slExperience;
