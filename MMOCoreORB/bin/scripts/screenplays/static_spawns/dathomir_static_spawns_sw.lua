@@ -83,7 +83,7 @@ function DathomirStaticSpawnsSwScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "rancor", 360, -4734.8, 91.2, -4752.4, -165, 0)
 	spawnMobile("dathomir", "bull_rancor", 360, -4728.4, 90.4, -4770.2, 105, 0)
 	spawnMobile("dathomir", "rancor", 360, -4725.0, 85.7, -4804.2, 54, 0)
-	spawnMobile("dathomir", "rancor", 360, -4710.4, 89.7, -4777.0, 45, 0)
+	spawnMobile("dathomir", "ancient_bull_rancor", 1800, -4710.4, 89.7, -4777.0, 45, 0)
 	spawnMobile("dathomir", "rancor", 360, -4762.8, 91.4, -4759.9, -15, 0)
 	spawnMobile("dathomir", "mutant_rancor", 360, -4766.7, 92.3, -4738.5, 55, 0)
 
