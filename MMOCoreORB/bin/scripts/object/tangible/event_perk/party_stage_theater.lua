@@ -41,13 +41,23 @@
 --this exception also makes it possible to release a modified version
 
 
-object_tangible_deed_event_perk_fed_dub_stage_theater_deed = object_tangible_deed_event_perk_shared_fed_dub_stage_theater_deed:new {
-	templateType = EVENTPERKDEED,
-	gameObjectType = 8388615,
-	noTrade = 1,
+object_tangible_event_perk_party_stage_theater = object_tangible_poi_base_shared_poi_base:new {
+	invisible = 1,
 
-	generatedObjectTemplate = "object/tangible/event_perk/fed_dub_stage_theater.iff",
-	perkType = THEATER,
+	gameObjectType = 16410, -- Event Perk
+
+	dataObjectComponent = "EventPerkDataComponent",
+	attributeListComponent = "EventPerkAttributeListComponent",
+	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+
+	childObjects = {
+		{ templateFile = "object/tangible/microphone/microphone.iff", x = -0.05, z = 1.35, y = -0.52, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/tangible/speaker/speaker.iff", x = -7.19, z = 1.35, y = 7.14, ow = 0.40394, ox = 0, oy = 0.91478, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/tangible/speaker/speaker.iff", x = 7.09, z = 1.35, y = 7.12, ow = 0.36699, ox = 0, oy = -0.93023, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/tangible/speaker/speaker.iff", x = -7.08, z = 1.35, y = -7.09, ow = 0.92679, ox = 0, oy = 0.37558, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/tangible/speaker/speaker.iff", x = 7.11, z = 1.35, y = -7.09, ow = 0.92679, ox = 0, oy = -0.37558, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/building/endor/endor_lake_platform.iff", x = -0.03, z = 1.16, y = 0, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+	},
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_fed_dub_stage_theater_deed, "object/tangible/deed/event_perk/fed_dub_stage_theater_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_event_perk_party_stage_theater, "object/tangible/event_perk/party_stage_theater.iff")
