@@ -41,13 +41,26 @@
 --this exception also makes it possible to release a modified version
 
 
-object_tangible_deed_event_perk_crashed_tie_fighter_theater_deed = object_tangible_deed_event_perk_shared_crashed_tie_fighter_theater_deed:new {
-	templateType = EVENTPERKDEED,
-	gameObjectType = 8388615,
-	noTrade = 1,
+object_tangible_event_perk_fire_pit = object_tangible_poi_base_shared_poi_base:new {
+	invisible = 1,
 
-	generatedObjectTemplate = "object/tangible/event_perk/crashed_tie_fighter_theater.iff",
-	perkType = THEATER,
+	gameObjectType = 16410, -- Event Perk
+
+	dataObjectComponent = "EventPerkDataComponent",
+	attributeListComponent = "EventPerkAttributeListComponent",
+	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+
+	childObjects = {
+		{ templateFile = "object/static/structure/dantooine/dant_fire_pit.iff", x = 0.04544, z = 0, y = -0.03838, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_campfire_s01.iff", x = 0.2360, z = 0, y = -0.4640, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_campfire_s01.iff", x = 0.0057, z = 0, y = 0.3116, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_campfire_s01.iff", x = -0.2593, z = 0, y = -0.2161, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_campfire_s01.iff", x = 0.0610, z = 0, y = 0.04630, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_campfire_s01.iff", x = -0.1810, z = 0, y = 0.0640, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_campfire_s01.iff", x = -0.3683, z = 0, y = 0.2790, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_campfire_s01.iff", x = 0.4604, z = 0, y = 0.0175, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+	},
+
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_crashed_tie_fighter_theater_deed, "object/tangible/deed/event_perk/crashed_tie_fighter_theater_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_event_perk_fire_pit, "object/tangible/event_perk/fire_pit.iff")
