@@ -41,13 +41,24 @@
 --this exception also makes it possible to release a modified version
 
 
-object_tangible_deed_event_perk_crashed_tie_fighter_theater_deed = object_tangible_deed_event_perk_shared_crashed_tie_fighter_theater_deed:new {
-	templateType = EVENTPERKDEED,
-	gameObjectType = 8388615,
-	noTrade = 1,
+object_tangible_event_perk_destroyed_atat_theater = object_tangible_poi_base_shared_poi_base:new {
+	invisible = 1,
 
-	generatedObjectTemplate = "object/tangible/event_perk/crashed_tie_fighter_theater.iff",
-	perkType = THEATER,
+	gameObjectType = 16410, -- Event Perk
+
+	dataObjectComponent = "EventPerkDataComponent",
+	attributeListComponent = "EventPerkAttributeListComponent",
+	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+
+	childObjects = {
+		{ templateFile = "object/static/structure/general/atat_debris_01.iff", x = -3.06, z = 0, y = -6.2, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/general/atat_debris_02.iff", x = -5.46, z = 0, y = 2.54, ox = 0.71441, oy = 0, oz = -0.69973, ow = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/general/atat_destroyed.iff", x = -0.03, z = 0, y = 0.02, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_lair_med_burn.iff", x = 0.72, z = 2.97, y = 7.28, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_lair_med_burn.iff", x = -1.31, z = 1.5, y = 0.62, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_poi_broken_electronics.iff", x = 1.71, z = 1.92, y = 0.1, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_sparks_small.iff", x = -2.45, z = 2.17, y = 11.37, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+	},
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_crashed_tie_fighter_theater_deed, "object/tangible/deed/event_perk/crashed_tie_fighter_theater_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_event_perk_destroyed_atat_theater, "object/tangible/event_perk/destroyed_atat_theater.iff")

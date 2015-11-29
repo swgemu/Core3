@@ -41,13 +41,25 @@
 --this exception also makes it possible to release a modified version
 
 
-object_tangible_deed_event_perk_crashed_tie_fighter_theater_deed = object_tangible_deed_event_perk_shared_crashed_tie_fighter_theater_deed:new {
-	templateType = EVENTPERKDEED,
-	gameObjectType = 8388615,
-	noTrade = 1,
+object_tangible_event_perk_wrecked_sandcrawler = object_tangible_poi_base_shared_poi_base:new {
+	invisible = 1,
 
-	generatedObjectTemplate = "object/tangible/event_perk/crashed_tie_fighter_theater.iff",
-	perkType = THEATER,
+	gameObjectType = 16410, -- Event Perk
+
+	dataObjectComponent = "EventPerkDataComponent",
+	attributeListComponent = "EventPerkAttributeListComponent",
+	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+
+	childObjects = {
+		{templateFile = "object/static/particle/pt_lair_med_burn.iff", x = -6.22401, z = 5.29996, y = -2.26188, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{templateFile = "object/static/particle/pt_lair_med_burn.iff", x = -1.73153, z = -2.83365, y = -3.55365, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{templateFile = "object/static/particle/pt_lair_med_burn.iff", x = -5.1685, z = -0.574905, y = 11.4336, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{templateFile = "object/static/particle/pt_lair_med_burn.iff", x = 9.10239, z = 7.40378, y = -2.72494, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{templateFile = "object/static/particle/pt_lair_med_burn.iff", x = 7.65518, z = -1.7283, y = -3.77579, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{templateFile = "object/static/structure/general/sandcrawler_debris_02.iff", x = -6.62201, z = -3.88705, y = 4.25635, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{templateFile = "object/static/structure/general/sandcrawler_destroyed.iff", x = 2.98848, z = -3.67989, y = -3.37369, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+	},
+
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_crashed_tie_fighter_theater_deed, "object/tangible/deed/event_perk/crashed_tie_fighter_theater_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_event_perk_wrecked_sandcrawler, "object/tangible/event_perk/wrecked_sandcrawler.iff")
