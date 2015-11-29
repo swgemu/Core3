@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_1df3b70b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CurePackCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-29T03:43:28Z",
+      "side": 1,
+      "message": "Instead of calculating this twice, calculate it before calling canPerformSkill and pass mindCostNew as a new argument to that method to use within.\n\nDo the same for each command that is setup the same way.",
+      "revId": "7e7b1ceed1f7407460011c07d8d01405326effa0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
