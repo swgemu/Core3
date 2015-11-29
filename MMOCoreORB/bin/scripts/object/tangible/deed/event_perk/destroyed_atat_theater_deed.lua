@@ -46,6 +46,8 @@ object_tangible_deed_event_perk_destroyed_atat_theater_deed = object_tangible_de
 	gameObjectType = 8388615,
 	noTrade = 1,
 
+	generatedObjectTemplate = "object/tangible/event_perk/destroyed_atat_theater.iff",
+	perkType = THEATER,
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_event_perk_destroyed_atat_theater_deed, "object/tangible/deed/event_perk/destroyed_atat_theater_deed.iff")

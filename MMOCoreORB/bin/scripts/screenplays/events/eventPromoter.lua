@@ -118,7 +118,7 @@ function eventPromoterScreenplay:giveItem(pPlayer, deedData)
 		elseif (SceneObject(pInventory):isContainerFullRecursive()) then
 			player:sendSystemMessage("@event_perk:promoter_full_inv")
 			return
-		elseif (playerObject:getEventPerkCount() >= 5) then
+		elseif ((not playerObject:hasGodMode()) and playerObject:getEventPerkCount() >= 5) then
 			player:sendSystemMessage("@event_perk:pro_too_many_perks")
 			return
 		end
