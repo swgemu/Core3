@@ -140,7 +140,7 @@ public:
 		return true;
 	}
 
-	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, StimPack* stimPack) const {
+	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, StimPack* stimPack, int mindCostNew) const {
 		if (!creature->canTreatInjuries()) {
 			creature->sendSystemMessage("@healing_response:healing_must_wait"); //You must wait before you can do that.
 			return false;
@@ -151,7 +151,7 @@ public:
 			return false;
 		}
 
-		if (creature->getHAM(CreatureAttribute::MIND) < mindCost) {
+		if (creature->getHAM(CreatureAttribute::MIND) < mindCostNew) {
 			creature->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
 			return false;
 		}
@@ -376,7 +376,9 @@ public:
 			}
 		}
 
-		if (!canPerformSkill(creature, targetCreature, stimPack))
+		int mindCostNew = creature->calculateCostAdjustment(CreatureAttribute::FOCUS, mindCost);
+
+		if (!canPerformSkill(creature, targetCreature, stimPack, mindCostNew))
 			return GENERALERROR;
 
 		float rangeToCheck = 7;
@@ -404,7 +406,7 @@ public:
 
 		sendHealMessage(creature, targetCreature, healthHealed, actionHealed);
 
-		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
+		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCostNew, false);
 
 		Locker locker(stimPack);
 		stimPack->decreaseUseCount();

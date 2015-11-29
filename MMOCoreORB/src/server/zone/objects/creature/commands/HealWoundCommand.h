@@ -23,7 +23,7 @@ public:
 
 	HealWoundCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
-		
+
 		mindCost = 50;
 		range = 6;
 	}
@@ -103,7 +103,7 @@ public:
 		}
 	}
 
-	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, WoundPack* woundPack) const {
+	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, WoundPack* woundPack, int mindCostNew) const {
 		if (!creature->canTreatWounds()) {
 			creature->sendSystemMessage("@healing_response:enhancement_must_wait"); //You must wait before you can heal wounds or apply enhancements again.
 			return false;
@@ -133,7 +133,7 @@ public:
 			}
 		}
 
-		// TODO add check that your not in a cantinna with droid bonus
+		// TODO add check that you're not in a cantina with droid bonus
 
 		if (creature->isInCombat()) {
 			creature->sendSystemMessage("You cannot do that while in Combat.");
@@ -150,7 +150,7 @@ public:
 			return false;
 		}
 
-		if (creature->getHAM(CreatureAttribute::MIND) < mindCost) {
+		if (creature->getHAM(CreatureAttribute::MIND) < mindCostNew) {
 			creature->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
 			return false;
 		}
@@ -240,7 +240,7 @@ public:
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
 				} else {
-					creature->sendSystemMessage("Target must be a player or a creature pet in order to heal wound."); 
+					creature->sendSystemMessage("Target must be a player or a creature pet in order to heal wound.");
 					return GENERALERROR;
 				}
 			}
@@ -305,7 +305,9 @@ public:
 			attribute = searchAttribute;
 		}
 
-		if (!canPerformSkill(creature, creatureTarget, woundPack))
+		int mindCostNew = creature->calculateCostAdjustment(CreatureAttribute::FOCUS, mindCost);
+
+		if (!canPerformSkill(creature, creatureTarget, woundPack, mindCostNew))
 			return GENERALERROR;
 
 		if (creatureTarget->getWounds(attribute) == 0) {
@@ -338,7 +340,7 @@ public:
 
 		sendWoundMessage(creature, creatureTarget, attribute, woundHealed);
 
-		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
+		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCostNew, false);
 
 		deactivateWoundTreatment(creature);
 
