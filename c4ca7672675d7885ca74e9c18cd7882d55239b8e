@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_ddf8dfc6",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/event_promoter_conv.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-29T13:35:48Z",
+      "side": 1,
+      "message": "You\u0027re not adding any personnel deeds in this patch and none of them are functional. Also, none are commented out in eventPerkData.lua since the convo option was commented out here. By adding the convo option, you\u0027re allowing people to purchase non-functioning deeds. Probably best to leave it commented out for now. Same below.",
+      "revId": "c4ca7672675d7885ca74e9c18cd7882d55239b8e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_fdf5a3cb",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/eventperk/EventPerkDeedImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-29T13:35:48Z",
+      "side": 1,
+      "message": "Locker cLock(child, parent);",
+      "revId": "c4ca7672675d7885ca74e9c18cd7882d55239b8e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
