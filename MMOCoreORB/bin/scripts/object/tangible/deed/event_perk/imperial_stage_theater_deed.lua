@@ -46,6 +46,8 @@ object_tangible_deed_event_perk_imperial_stage_theater_deed = object_tangible_de
 	gameObjectType = 8388615,
 	noTrade = 1,
 
+	generatedObjectTemplate = "object/tangible/event_perk/imperial_stage_theater.iff",
+	perkType = THEATER,
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_event_perk_imperial_stage_theater_deed, "object/tangible/deed/event_perk/imperial_stage_theater_deed.iff")
