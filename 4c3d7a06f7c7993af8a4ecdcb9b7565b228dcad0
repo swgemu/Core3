@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_1d7c1772",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_gm_commands.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-29T02:42:35Z",
+      "side": 1,
+      "message": "You should also check that pPlayer is a creo.",
+      "revId": "4c3d7a06f7c7993af8a4ecdcb9b7565b228dcad0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_fd92839e",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_gm_commands.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-29T02:42:35Z",
+      "side": 1,
+      "message": "Do you not need to require VillageJediManagerTownship in this file?",
+      "revId": "4c3d7a06f7c7993af8a4ecdcb9b7565b228dcad0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_3d81db4a",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_gm_commands.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-29T02:42:35Z",
+      "side": 1,
+      "message": "You should also check that pPlayer is a creo.",
+      "revId": "4c3d7a06f7c7993af8a4ecdcb9b7565b228dcad0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_dd953f89",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_gm_commands.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-29T02:42:35Z",
+      "side": 1,
+      "message": "You should also check that pPlayer is a creo.",
+      "revId": "4c3d7a06f7c7993af8a4ecdcb9b7565b228dcad0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_9d8fc775",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_gm_commands.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-29T02:42:35Z",
+      "side": 1,
+      "message": "This all could be simplified by using the modulo (%) operator.",
+      "revId": "4c3d7a06f7c7993af8a4ecdcb9b7565b228dcad0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_5d828f53",
+        "filename": "MMOCoreORB/src/server/zone/managers/jedi/JediManager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-29T02:42:35Z",
+      "side": 1,
+      "message": "These comments are misleading. You aren\u0027t returning a name.",
+      "revId": "4c3d7a06f7c7993af8a4ecdcb9b7565b228dcad0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_7d875362",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GmFsVillageCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-11-29T02:42:35Z",
+      "side": 1,
+      "message": "This else is unnecessary. You don\u0027t need to set to \"\" because it will already be empty.",
+      "revId": "4c3d7a06f7c7993af8a4ecdcb9b7565b228dcad0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
