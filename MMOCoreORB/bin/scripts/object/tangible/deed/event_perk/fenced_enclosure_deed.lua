@@ -46,6 +46,8 @@ object_tangible_deed_event_perk_fenced_enclosure_deed = object_tangible_deed_eve
 	gameObjectType = 8388615,
 	noTrade = 1,
 
+	generatedObjectTemplate = "object/tangible/event_perk/fenced_enclosure.iff",
+	perkType = THEATER,
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_event_perk_fenced_enclosure_deed, "object/tangible/deed/event_perk/fenced_enclosure_deed.iff")

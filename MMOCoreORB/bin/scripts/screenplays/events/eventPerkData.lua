@@ -33,7 +33,6 @@ eventPerkImperialDecorationDeeds = {
 	{ template = "imperial_banner_static_deed", cost = 315, displayName = "@event_perk:pro_imperial_banner_static" },
 	{ template = "lambda_shuttle_static_deed", cost = 2000, displayName = "@event_perk:pro_lambda_shuttle_static" },
 	{ template = "tie_bomber_static_deed", cost = 2000, displayName = "@event_perk:pro_tie_bomber_static_deed" },
-	--{ template = "tie_fighter_static_deed", cost = 2000, displayName = "@space_ship:player_tiefighter" },
 }
 
 eventPerkRebelDecorationDeeds = {
@@ -46,32 +45,32 @@ eventPerkVenueDeeds = {
 	--{ template = "fed_dub_stage_theater_deed", cost = 2500, displayName = "@event_perk:pro_fed_dub_stage_theater" },
 	--{ template = "party_stage_theater_deed", cost = 2500, displayName = "@event_perk:pro_party_stage_theater" },
 	--{ template = "rsf_stage_theater_deed", cost = 2500, displayName = "@event_perk:pro_rsf_stage_theater" },
-	--{ template = "universe_flags_theater", cost = 4500, displayName = "@event_perk:pro_universe_flags_theater" },
+	{ template = "universe_flags_theater", cost = 4500, displayName = "@event_perk:pro_universe_flags_theater" },
 	{ template = "audience_seating_deed", cost = 5000, displayName = "@event_perk:pro_audience_seating" },
-	--{ template = "fenced_enclosure_deed", cost = 2500, displayName = "@event_perk:pro_fenced_enclosure" },
+	{ template = "fenced_enclosure_deed", cost = 2500, displayName = "@event_perk:pro_fenced_enclosure" },
 	{ template = "fire_pit_deed", cost = 750, displayName = "@event_perk:pro_fire_pit" },
 	{ template = "graveyard_deed", cost = 7500, displayName = "@event_perk:pro_graveyard" },
-	--{ template = "jawas_and_droids_deed", cost = 750, displayName = "@event_perk:pro_jawas_and_droids" },
+	{ template = "jawas_and_droids_deed", cost = 750, displayName = "@event_perk:pro_jawas_and_droids" },
 	{ template = "picnic_pavillion_deed", cost = 2300, displayName = "@event_perk:pro_picnic_pavillion" },
 	{ template = "wrecked_sandcrawler_deed", cost = 3225, displayName = "@event_perk:pro_wrecked_sandcrawler" },
 }
 
 eventPerkImperialVenueDeeds = {
 	{ template = "crashed_xwing_theater_deed", cost = 4500, displayName = "@event_perk:pro_crashed_xwing_theater" },
-	--{ template = "imperial_landing_party_atat_theater_deed", cost = 10000, displayName = "@event_perk:pro_imp_landing_party_theater" },
+	{ template = "imperial_landing_party_atat_theater_deed", cost = 10000, displayName = "@event_perk:pro_imp_landing_party_theater" },
 	{ template = "imperial_landing_party_lambda_theater_deed", cost = 10000, displayName = "@event_perk:pro_imp_landing_lambda_theater" },
-	--{ template = "imperial_recruiting_station_theater_deed", cost = 15000, displayName = "@event_perk:pro_imp_recruiting_theater" },
+	{ template = "imperial_recruiting_station_theater_deed", cost = 15000, displayName = "@event_perk:pro_imp_recruiting_theater" },
 	--{ template = "imperial_stage_theater_deed", cost = 2500, displayName = "@event_perk:pro_imp_stage_theater" },
-	--{ template = "wedding_garden_imperial_large_theater_deed", cost = 4500, displayName = "@event_perk:pro_wedding_garden_imp_lg_theater" },
+	{ template = "wedding_garden_imperial_large_theater_deed", cost = 4500, displayName = "@event_perk:pro_wedding_garden_imp_lg_theater" },
 }
 
 eventPerkRebelVenueDeeds = {
-	--{ template = "crashed_tie_bomber_theater_deed", cost = 4500, displayName = "@event_perk:pro_crashed_tie_bomber_theater" },
+	{ template = "crashed_tie_bomber_theater_deed", cost = 4500, displayName = "@event_perk:pro_crashed_tie_bomber_theater" },
 	{ template = "crashed_tie_fighter_theater_deed", cost = 4500, displayName = "@event_perk:pro_crashed_tie_fighter_theater" },
 	{ template = "destroyed_atat_theater_deed", cost = 4500, displayName = "@event_perk:pro_destroyed_atat_theater" },
-	--{ template = "rebel_recruiting_station_theater_deed", cost = 1500, displayName = "@event_perk:pro_rebel_recruiting_theater" },
+	{ template = "rebel_recruiting_station_theater_deed", cost = 1500, displayName = "@event_perk:pro_rebel_recruiting_theater" },
 	--{ template = "rebel_stage_theater_deed", cost = 2500, displayName = "@event_perk:pro_rebel_stage_theater" },
-	--{ template = "wedding_garden_rebel_large_theater_deed", cost = 4500, displayName = "@event_perk:pro_wedding_garden_reb_lg_theater" },
+	{ template = "wedding_garden_rebel_large_theater_deed", cost = 4500, displayName = "@event_perk:pro_wedding_garden_reb_lg_theater" },
 }
 
 eventPerkGamesSuppliesDeeds = {

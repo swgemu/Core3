@@ -41,7 +41,7 @@
 --this exception also makes it possible to release a modified version
 
 
-object_tangible_event_perk_destroyed_atat_theater = object_tangible_poi_base_shared_poi_base:new {
+object_tangible_event_perk_universe_flags = object_tangible_poi_base_shared_poi_base:new {
 	invisible = 1,
 
 	gameObjectType = 16410, -- Event Perk
@@ -51,14 +51,17 @@ object_tangible_event_perk_destroyed_atat_theater = object_tangible_poi_base_sha
 	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 
 	childObjects = {
-		{ templateFile = "object/static/structure/general/atat_debris_01.iff", x = -3.06, z = 0, y = -6.2, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/structure/general/atat_debris_02.iff", x = -5.46, z = 0, y = 2.54, ow = 0.71441, ox = 0, oy = -0.69973, oz = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/structure/general/atat_destroyed.iff", x = -0.03, z = 0, y = 0.02, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/particle/pt_lair_med_burn.iff", x = 0.72, z = 2.97, y = 7.28, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/particle/pt_lair_med_burn.iff", x = -1.31, z = 1.5, y = 0.62, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/particle/pt_poi_broken_electronics.iff", x = 1.71, z = 1.92, y = 0.1, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/particle/pt_sparks_small.iff", x = -2.45, z = 2.17, y = 11.37, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/endor/endr_imprv_flagpole_s01.iff", x = 10, z = 0, y = 0, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/corellia/corl_imprv_flagpole_s01.iff", x = 8.09, z = 0, y = 5.87, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/dantooine/dant_imprv_flagpole_s01.iff", x = 3.09, z = 0, y = 9.51, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/dathomir/dath_imprv_flagpole_s01.iff", x = -3.08, z = 0, y = 9.51, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/lok/lok_imprv_flagpole_s01.iff", x = -8.09, z = 0, y = 5.87, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/naboo/nboo_imprv_flagpole_s01.iff", x = -10, z = 0, y = 0, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/rori/rori_imprv_flagpole_s01.iff", x = -8.09, z = 0, y = -5.87, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/talus/talus_imprv_flagpole_s01.iff", x = -3.09, z = 0, y = -9.51, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/tatooine/tato_imprv_flagpole_s01.iff", x = 3.09, z = 0, y = -9.51, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/yavin/yavn_imprv_flagpole_s01.iff", x = 8.09, z = 0, y = -5.87, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
 	},
 }
 
-ObjectTemplates:addTemplate(object_tangible_event_perk_destroyed_atat_theater, "object/tangible/event_perk/destroyed_atat_theater.iff")
+ObjectTemplates:addTemplate(object_tangible_event_perk_universe_flags, "object/tangible/event_perk/universe_flags.iff")

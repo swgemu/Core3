@@ -51,14 +51,14 @@ object_tangible_event_perk_fire_pit = object_tangible_poi_base_shared_poi_base:n
 	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 
 	childObjects = {
-		{ templateFile = "object/static/structure/dantooine/dant_fire_pit.iff", x = 0.04544, z = 0, y = -0.03838, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/particle/pt_campfire_s01.iff", x = 0.2360, z = 0, y = -0.4640, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/particle/pt_campfire_s01.iff", x = 0.0057, z = 0, y = 0.3116, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/particle/pt_campfire_s01.iff", x = -0.2593, z = 0, y = -0.2161, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/particle/pt_campfire_s01.iff", x = 0.0610, z = 0, y = 0.04630, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/particle/pt_campfire_s01.iff", x = -0.1810, z = 0, y = 0.0640, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/particle/pt_campfire_s01.iff", x = -0.3683, z = 0, y = 0.2790, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/particle/pt_campfire_s01.iff", x = 0.4604, z = 0, y = 0.0175, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/dantooine/dant_fire_pit.iff", x = 0.04544, z = 0, y = -0.03838, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_campfire_s01.iff", x = 0.2360, z = 0, y = -0.4640, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_campfire_s01.iff", x = 0.0057, z = 0, y = 0.3116, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_campfire_s01.iff", x = -0.2593, z = 0, y = -0.2161, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_campfire_s01.iff", x = 0.0610, z = 0, y = 0.04630, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_campfire_s01.iff", x = -0.1810, z = 0, y = 0.0640, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_campfire_s01.iff", x = -0.3683, z = 0, y = 0.2790, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_campfire_s01.iff", x = 0.4604, z = 0, y = 0.0175, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
 	},
 
 }

@@ -51,13 +51,13 @@ object_tangible_event_perk_wrecked_sandcrawler = object_tangible_poi_base_shared
 	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 
 	childObjects = {
-		{templateFile = "object/static/particle/pt_lair_med_burn.iff", x = -6.22401, z = 5.29996, y = -2.26188, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{templateFile = "object/static/particle/pt_lair_med_burn.iff", x = -1.73153, z = -2.83365, y = -3.55365, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{templateFile = "object/static/particle/pt_lair_med_burn.iff", x = -5.1685, z = -0.574905, y = 11.4336, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{templateFile = "object/static/particle/pt_lair_med_burn.iff", x = 9.10239, z = 7.40378, y = -2.72494, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{templateFile = "object/static/particle/pt_lair_med_burn.iff", x = 7.65518, z = -1.7283, y = -3.77579, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{templateFile = "object/static/structure/general/sandcrawler_debris_02.iff", x = -6.62201, z = -3.88705, y = 4.25635, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{templateFile = "object/static/structure/general/sandcrawler_destroyed.iff", x = 2.98848, z = -3.67989, y = -3.37369, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{templateFile = "object/static/particle/pt_lair_med_burn.iff", x = -6.22401, z = 5.29996, y = -2.26188, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{templateFile = "object/static/particle/pt_lair_med_burn.iff", x = -1.73153, z = -2.83365, y = -3.55365, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{templateFile = "object/static/particle/pt_lair_med_burn.iff", x = -5.1685, z = -0.574905, y = 11.4336, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{templateFile = "object/static/particle/pt_lair_med_burn.iff", x = 9.10239, z = 7.40378, y = -2.72494, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{templateFile = "object/static/particle/pt_lair_med_burn.iff", x = 7.65518, z = -1.7283, y = -3.77579, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{templateFile = "object/static/structure/general/sandcrawler_debris_02.iff", x = -6.62201, z = -3.88705, y = 4.25635, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{templateFile = "object/static/structure/general/sandcrawler_destroyed.iff", x = 2.98848, z = -3.67989, y = -3.37369, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
 	},
 
 }

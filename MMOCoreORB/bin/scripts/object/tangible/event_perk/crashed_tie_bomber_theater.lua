@@ -41,13 +41,21 @@
 --this exception also makes it possible to release a modified version
 
 
-object_tangible_deed_event_perk_wedding_garden_rebel_large_theater_deed = object_tangible_deed_event_perk_shared_wedding_garden_rebel_large_theater_deed:new {
-	templateType = EVENTPERKDEED,
-	gameObjectType = 8388615,
-	noTrade = 1,
+object_tangible_event_perk_crashed_tie_bomber_theater = object_tangible_poi_base_shared_poi_base:new {
+	invisible = 1,
 
-	generatedObjectTemplate = "object/tangible/event_perk/wedding_garden_rebel_large_theater.iff",
-	perkType = THEATER,
+	gameObjectType = 16410, -- Event Perk
+
+	dataObjectComponent = "EventPerkDataComponent",
+	attributeListComponent = "EventPerkAttributeListComponent",
+	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+
+	childObjects = {
+		{ templateFile = "object/static/particle/pt_lair_med_burn.iff", x = -1.60, z = 2.84, y = 3.24, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_poi_electricity_2x2.iff", x = -4.92, z = 2.47, y = 0.65, ow = 0.01422, ox = 0, oy = 0.9999, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_sparks_large.iff", x = 1.75, z = 2.75, y = -1.88, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/vehicle/static_tie_bomber.iff", x = 0.02, z = 0, y = 0.51, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+	},
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_wedding_garden_rebel_large_theater_deed, "object/tangible/deed/event_perk/wedding_garden_rebel_large_theater_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_event_perk_crashed_tie_bomber_theater, "object/tangible/event_perk/crashed_tie_bomber_theater.iff")

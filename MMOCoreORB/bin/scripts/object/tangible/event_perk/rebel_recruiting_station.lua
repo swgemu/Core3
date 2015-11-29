@@ -41,13 +41,25 @@
 --this exception also makes it possible to release a modified version
 
 
-object_tangible_deed_event_perk_wedding_garden_rebel_large_theater_deed = object_tangible_deed_event_perk_shared_wedding_garden_rebel_large_theater_deed:new {
-	templateType = EVENTPERKDEED,
-	gameObjectType = 8388615,
-	noTrade = 1,
+object_tangible_event_perk_rebel_recruiting_station = object_tangible_poi_base_shared_poi_base:new {
+	invisible = 1,
 
-	generatedObjectTemplate = "object/tangible/event_perk/wedding_garden_rebel_large_theater.iff",
-	perkType = THEATER,
+	gameObjectType = 16410, -- Event Perk
+
+	dataObjectComponent = "EventPerkDataComponent",
+	attributeListComponent = "EventPerkAttributeListComponent",
+	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+
+	childObjects = {
+		{ templateFile = "object/static/structure/tatooine/palette_supply_02.iff", x = 1.71, z = 0, y = -3.89, ow = 0.00079, ox = 0, oy = -1, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/tatooine/palette_supply_01.iff", x = -1.72, z = 0, y = -4.06, ow = 0.72825, ox = 0, oy = 0.68531, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/tangible/furniture/all/frn_all_professor_desk.iff", x = 0.01, z = 0, y = 0.15, ow = 0.02417, ox = 0, oy = 0.99971, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/tangible/camp/camp_pavilion_s1.iff", x = -0.03, z = 0, y = 0.13, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/general/banner_rebel_style_01.iff", x = -5.1, z = 0, y = -5.83, ow = 0.92491, ox = 0, oy = 0.38018, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/general/banner_rebel_style_01.iff", x = 4.97, z = 0, y = 6.39, ow = 0.92105, ox = 0, oy = 0.38945, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/general/banner_rebel_style_01.iff", x = 5.2, z = 0, y = -5.8, ow = 0.9191, ox = 0, oy = -0.39402, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/general/banner_rebel_style_01.iff", x = -4.59, z = 0, y = 6.3, ow = 0.93591, ox = 0, oy = -0.35225, oz = 0, cellid = -1, containmentType = -1 },
+	},
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_wedding_garden_rebel_large_theater_deed, "object/tangible/deed/event_perk/wedding_garden_rebel_large_theater_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_event_perk_rebel_recruiting_station, "object/tangible/event_perk/rebel_recruiting_station.iff")

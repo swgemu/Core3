@@ -222,8 +222,7 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 
 		object->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 
-		if (perkType != EventPerkDeedTemplate::THEATER)
-			object->setDirection(Math::deg2rad(player->getDirectionAngle()));
+		object->setDirection(Math::deg2rad(player->getDirectionAngle()));
 
 		zone->transferObject(object, -1, true);
 

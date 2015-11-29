@@ -46,6 +46,8 @@ object_tangible_deed_event_perk_crashed_tie_bomber_theater_deed = object_tangibl
 	gameObjectType = 8388615,
 	noTrade = 1,
 
+	generatedObjectTemplate = "object/tangible/event_perk/crashed_tie_bomber_theater.iff",
+	perkType = THEATER,
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_event_perk_crashed_tie_bomber_theater_deed, "object/tangible/deed/event_perk/crashed_tie_bomber_theater_deed.iff")

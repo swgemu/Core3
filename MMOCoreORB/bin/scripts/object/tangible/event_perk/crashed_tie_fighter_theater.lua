@@ -51,11 +51,11 @@ object_tangible_event_perk_crashed_tie_fighter_theater = object_tangible_poi_bas
 	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 
 	childObjects = {
-		{ templateFile = "object/static/particle/pt_lair_med_burn.iff", x = 0.39, z = 5.95, y = -0.38, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/particle/pt_lair_med_burn.iff", x = -2.44, z = 4.9, y = -0.17, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/particle/pt_poi_electricity_2x2.iff", x = -3.25, z = 5, y = -0.47, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/particle/pt_poi_electricity_2x2.iff", x = 3.62, z = 4.5, y = -1.61, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/vehicle/static_tie_fighter.iff", x = 0.04, z = 4.61, y = -0.1, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_lair_med_burn.iff", x = 0.39, z = 5.95, y = -0.38, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_lair_med_burn.iff", x = -2.44, z = 4.9, y = -0.17, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_poi_electricity_2x2.iff", x = -3.25, z = 5, y = -0.47, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_poi_electricity_2x2.iff", x = 3.62, z = 4.5, y = -1.61, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/vehicle/static_tie_fighter.iff", x = 0.04, z = 4.61, y = -0.1, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
 	},
 }
 

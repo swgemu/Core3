@@ -46,6 +46,8 @@ object_tangible_deed_event_perk_universe_flags_theater = object_tangible_deed_ev
 	gameObjectType = 8388615,
 	noTrade = 1,
 
+	generatedObjectTemplate = "object/tangible/event_perk/universe_flags.iff",
+	perkType = THEATER,
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_event_perk_universe_flags_theater, "object/tangible/deed/event_perk/universe_flags_theater.iff")

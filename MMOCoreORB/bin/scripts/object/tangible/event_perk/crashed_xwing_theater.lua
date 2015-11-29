@@ -51,10 +51,10 @@ object_tangible_event_perk_crashed_xwing_theater = object_tangible_poi_base_shar
 	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 
 	childObjects = {
-		{ templateFile = "object/static/structure/general/xwing.iff", x = 0, z = 0, y = 1.61, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/particle/pt_sparks_small.iff", x = -1.83, z = 3.02, y = -5.55, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/particle/pt_lair_med_burn.iff", x = 1.71, z = 2.82, y = -0.97, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/particle/pt_poi_broken_electronics.iff", x = -6.12, z = 2.82, y = -0.78, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/general/xwing.iff", x = 0, z = 0, y = 1.61, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_sparks_small.iff", x = -1.83, z = 3.02, y = -5.55, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_lair_med_burn.iff", x = 1.71, z = 2.82, y = -0.97, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_poi_broken_electronics.iff", x = -6.12, z = 2.82, y = -0.78, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
 	}
 }
 ObjectTemplates:addTemplate(object_tangible_event_perk_crashed_xwing_theater, "object/tangible/event_perk/crashed_xwing_theater.iff")
