@@ -75,6 +75,8 @@ class EventPerkDeed extends Deed {
 
 	public native string getDurationString();
 
+	public native void parseChildObjects(SceneObject parent);
+
 	public void setOwner(CreatureObject player) {
 		owner = player;
 	}

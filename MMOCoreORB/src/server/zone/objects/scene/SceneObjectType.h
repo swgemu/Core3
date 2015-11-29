@@ -185,6 +185,7 @@ public:
 	const static int GAMBLINGTERMINAL = 0x4017;
 	const static int JUKEBOX = 0x4018;
 	const static int FLAGGAME = 0x4019;
+	const static int EVENTPERK = 0x401A;
 	/// end not in client ***************
 
 	const static int TOOL = 0x8000;

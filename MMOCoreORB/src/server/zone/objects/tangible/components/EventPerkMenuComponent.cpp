@@ -13,6 +13,15 @@ void EventPerkMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Ob
 
 	EventPerkDataComponent* data = cast<EventPerkDataComponent*>(sceneObject->getDataObjectComponent()->get());
 
+	if (sceneObject->getGameObjectType() == SceneObjectType::EVENTPERK) {
+		ContainerPermissions* permissions = sceneObject->getContainerPermissions();
+		uint64 objectID = permissions->getOwnerID();
+
+		Reference<SceneObject*> owner = Core::getObjectBroker()->lookUp(objectID).castTo<SceneObject*>();
+
+		data = cast<EventPerkDataComponent*>(owner->getDataObjectComponent()->get());
+	}
+
 	if (data == NULL) {
 		player->sendSystemMessage("Error: no dataObjectComponent.");
 		return;
@@ -41,6 +50,15 @@ void EventPerkMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Ob
 
 int EventPerkMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
 	EventPerkDataComponent* data = cast<EventPerkDataComponent*>(sceneObject->getDataObjectComponent()->get());
+
+	if (sceneObject->getGameObjectType() == SceneObjectType::EVENTPERK) {
+		ContainerPermissions* permissions = sceneObject->getContainerPermissions();
+		uint64 objectID = permissions->getOwnerID();
+
+		Reference<SceneObject*> owner = Core::getObjectBroker()->lookUp(objectID).castTo<SceneObject*>();
+
+		data = cast<EventPerkDataComponent*>(owner->getDataObjectComponent()->get());
+	}
 
 	if (data == NULL) {
 		player->sendSystemMessage("Error: no dataObjectComponent.");
@@ -98,7 +116,14 @@ int EventPerkMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cre
 		deed->sendTo(player, true);
 		inventory->transferObject(deed, -1, true);
 		deed->setGenerated(false);
-		sceneObject->destroyObjectFromWorld(true);
+
+		ManagedReference<TangibleObject*> perk = deed->getGeneratedObject();
+
+		if (perk != NULL) {
+			Locker perkLock(perk);
+			perk->destroyChildObjects();
+			perk->destroyObjectFromWorld(true);
+		}
 
 		player->sendSystemMessage("@event_perk:redeed_success"); // Your Rental has been removed and the deed reclaimed.
 		return 0;

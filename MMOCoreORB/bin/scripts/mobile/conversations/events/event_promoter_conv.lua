@@ -12,9 +12,9 @@ welcome = ConvoScreen:new {
 	options = {
 		{"@conversation/event_promoter:s_9", "explain_more"}, -- Tell me more about all of this
 		{"@conversation/event_promoter:s_11", "interested_decorations"}, -- I'm interested in decorations
---		{"@conversation/event_promoter:s_26", "interested_venues"}, -- I'm interested in venues
+		{"@conversation/event_promoter:s_26", "interested_venues"}, -- I'm interested in venues
 		{"@conversation/event_promoter:s_42", "interested_games_supplies"}, -- I'm interested in games and supplies
---		{"@conversation/event_promoter:s_80", "interested_personnel"}, -- I'm interested in hiring personnel
+		--{"@conversation/event_promoter:s_80", "interested_personnel"}, -- I'm interested in hiring personnel
 	}
 }
 eventPromoterConvoTemplate:addScreen(welcome);
@@ -25,9 +25,9 @@ explain_more = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		{"@conversation/event_promoter:s_11", "interested_decorations"}, -- I'm interested in decorations
---		{"@conversation/event_promoter:s_26", "interested_venues"}, -- I'm interested in venues
+		{"@conversation/event_promoter:s_26", "interested_venues"}, -- I'm interested in venues
 		{"@conversation/event_promoter:s_42", "interested_games_supplies"}, -- I'm interested in games and supplies
---		{"@conversation/event_promoter:s_80", "interested_personnel"}, -- I'm interested in hiring personnel
+		--{"@conversation/event_promoter:s_80", "interested_personnel"}, -- I'm interested in hiring personnel
 	}
 }
 eventPromoterConvoTemplate:addScreen(explain_more);

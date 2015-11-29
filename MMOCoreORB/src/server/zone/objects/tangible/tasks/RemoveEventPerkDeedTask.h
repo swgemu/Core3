@@ -32,6 +32,7 @@ public:
 
 		if (genOb != NULL) {
 			Locker clocker(genOb, deed);
+			genOb->destroyChildObjects();
 			genOb->destroyObjectFromWorld(true);
 			genOb->destroyObjectFromDatabase();
 		} else if (player != NULL) {

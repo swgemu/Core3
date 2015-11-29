@@ -190,7 +190,7 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			return 1;
 		}
 
-		if (perkType != EventPerkDeedTemplate::STATIC && perkType != EventPerkDeedTemplate::GAME) {
+		if (perkType != EventPerkDeedTemplate::STATIC && perkType != EventPerkDeedTemplate::GAME && perkType != EventPerkDeedTemplate::THEATER) {
 			player->sendSystemMessage("This type of event perk deed is not functional yet.");
 			return 1;
 		}
@@ -221,8 +221,14 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		data->setDeed(_this.getReferenceUnsafeStaticCast());
 
 		object->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
-		object->setDirection(Math::deg2rad(player->getDirectionAngle()));
+
+		if (perkType != EventPerkDeedTemplate::THEATER)
+			object->setDirection(Math::deg2rad(player->getDirectionAngle()));
+
 		zone->transferObject(object, -1, true);
+
+		object->createChildObjects();
+		parseChildObjects(object);
 
 		generated = true;
 		destroyObjectFromWorld(true);
@@ -231,6 +237,33 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 	}
 
 	return DeedImplementation::handleObjectMenuSelect(player, selectedID);
+}
+
+void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
+	SortedVector<ManagedReference<SceneObject*> >* children = parent->getChildObjects();
+
+	for (int j = 0; j < children->size(); j++) {
+		SceneObject* child = children->get(j);
+
+		if (child != NULL)	{
+			Locker cLock(child, parent);
+
+			if (child->getServerObjectCRC() == 0xB2EC90B2) { // object/mobile/dressed_stormtrooper_m.iff
+				int randNum = 100 + System::random(899);
+				child->setCustomObjectName("TK-" + String::valueOf(randNum), true);
+			} else if (child->getServerObjectCRC() == 0x3AADC9C4) { // object/mobile/dressed_tie_fighter_m.iff
+				int randNum = 100 + System::random(899);
+				child->setCustomObjectName("DS-" + String::valueOf(randNum), true);
+			} else if (child->getServerObjectCRC() == 0xD5985A18) { // object/mobile/atat.iff
+				child->setCustomObjectName("AT-AT", true);
+			} else if (child->getServerObjectCRC() == 0x55898ADF) { // object/mobile/atst.iff
+				child->setCustomObjectName("AT-ST", true);
+			} else if (child->getServerObjectCRC() == 0xCF9AC86C) { // object/mobile/bantha_saddle.iff
+				child->setCustomObjectName("a bantha mount", true);
+
+			}
+		}
+	}
 }
 
 void EventPerkDeedImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
