@@ -75,14 +75,14 @@ function GoToLocation:taskStart(pCreatureObject)
 
 	if (self.randomLocation) then
 		local tempX, tempY
-		if point == {} then
+		if next(point) == nil then
 			tempX = SceneObject(pCreatureObject):getWorldPositionX()
 			tempY = SceneObject(pCreatureObject):getWorldPositionY()
 		else
 			tempX = point.x
 			tempY = point.y
 		end
-		
+
 		local tempPoint = getSpawnArea(self.spawnPlanet, tempX, tempY, self.randomMinDistance, self.randomMaxDistance, 20, 15, true)
 		point.x = tempPoint[1]
 		point.y = tempPoint[3]
