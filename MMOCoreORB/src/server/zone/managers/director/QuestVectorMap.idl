@@ -42,4 +42,10 @@ class QuestVectorMap extends ManagedObject {
 	public synchronized boolean hasMapRow(final string mapKey) {
 		return questMap.contains(mapKey);
 	}
+
+	public synchronized int getMapSize() {
+		return questMap.size();
+	}
+
+	public native string getMapKeyAtIndex(int idx);
 }

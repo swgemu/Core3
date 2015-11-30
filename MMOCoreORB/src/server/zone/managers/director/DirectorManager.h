@@ -101,6 +101,7 @@ namespace server {
 		static int createEventActualTime(lua_State* L);
 		static int createServerEvent(lua_State* L);
 		static int hasServerEvent(lua_State* L);
+		static int getServerEventID(lua_State* L);
 		static int getServerEventTimeLeft(lua_State* L);
 		static int createObserver(lua_State* L);
 		static int dropObserver(lua_State* L);

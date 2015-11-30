@@ -25,8 +25,8 @@ sitting_ducks = ConvoScreen:new {
 	options = {
 		{"@conversation/village_elder_2:s_4ecdf473", "too_busy_defending"}, -- We need to take the fight to them.
 		{"@conversation/village_elder_2:s_1607b22e", "you_have_a_point"}, -- Those supplies are key to everything else.
-		{"@conversation/village_elder_2:s_4ecdf473", "current_shape"}, -- I'd like to help rebuild the defenses.
-		{"@conversation/village_elder_2:s_4ecdf473", "very_appreciative"}, -- I'd like to help gather supplies and resources.
+		{"@conversation/village_elder_2:s_5bdbe99a", "current_shape"}, -- I'd like to help rebuild the defenses.
+		{"@conversation/village_elder_2:s_c7c2a3b0", "very_appreciative"}, -- I'd like to help gather supplies and resources.
 	}
 }
 villageElderPhase2ConvoTemplate:addScreen(sitting_ducks);

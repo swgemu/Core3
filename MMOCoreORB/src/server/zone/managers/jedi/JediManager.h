@@ -97,6 +97,12 @@ public:
 	String getJediManagerName();
 
 	/**
+	 * Get the value of the currently active jedi progression type.
+	 * @return the value of the currently active jedi progression type.
+	 */
+	int getJediProgressionType();
+
+	/**
 	 * Set the name of the currently active lua jedi manager.
 	 * @param name the name of the currently active lua jedi manager.
 	 */
