@@ -185,12 +185,22 @@ public:
 					if (death) {
 						killCreature();
 					} else if (aggro) {
-						CombatManager::instance()->startCombat(creature,player,true);
+						CombatManager::instance()->startCombat(creature,player,true); {
+							if (player->hasState(CreatureState::MASKSCENT)) {
+								player->removeBuff(STRING_HASHCODE("skill_buff_mask_scent_self")) || player->removeBuff(STRING_HASHCODE("skill_buff_mask_scent"));
+								player->sendSystemMessage("@skl_use:sys_scentmask_break"); // "A creature has detected you, despite your attempts at camouflage!"
+							}
+						}
 					}
 				} else {
 					player->sendSystemMessage("@bio_engineer:harvest_dna_failed");
 					if (aggro) {
-						CombatManager::instance()->startCombat(creature,player,true);
+						CombatManager::instance()->startCombat(creature,player,true); {
+							if (player->hasState(CreatureState::MASKSCENT)) {
+								player->removeBuff(STRING_HASHCODE("skill_buff_mask_scent_self")) || player->removeBuff(STRING_HASHCODE("skill_buff_mask_scent"));
+								player->sendSystemMessage("@skl_use:sys_scentmask_break"); // "A creature has detected you, despite your attempts at camouflage!"
+							}
+						}
 					}
 				}
 				break;
