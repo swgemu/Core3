@@ -1,4 +1,4 @@
-trandosian_slavemaster = Creature:new {
+trandoshan_slavemaster = Creature:new {
 	objectName = "@mob/creature_names:trandoshan_slavemaster",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "slaver",
@@ -44,4 +44,4 @@ trandosian_slavemaster = Creature:new {
 	attacks = merge(marksmannovice,brawlernovice)
 }
 
-CreatureTemplates:addCreatureTemplate(trandosian_slavemaster, "trandosian_slavemaster")
+CreatureTemplates:addCreatureTemplate(trandoshan_slavemaster, "trandoshan_slavemaster")
