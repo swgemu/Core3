@@ -28,6 +28,7 @@ droopy_mccool = Creature:new {
 	templates = {"object/mobile/droopy_mccool.iff"},
 	lootGroups = {},
 	weapons = {},
+	outfit = "band_flute_droopy_outfit",
 	conversationTemplate = "",
 	attacks = {
 	}
