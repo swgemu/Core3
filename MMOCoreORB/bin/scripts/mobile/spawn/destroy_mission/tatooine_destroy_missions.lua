@@ -33,7 +33,7 @@ tatooine_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "tatooine_trandosian_slaver_neutral_medium_theater",
+			lairTemplateName = "tatooine_trandoshan_slaver_neutral_medium_theater",
 			minDifficulty = 4,
 			maxDifficulty = 8,
 			size = 25,

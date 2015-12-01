@@ -146,7 +146,7 @@ tatooine_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "tatooine_trandosian_slaver_neutral_medium_theater",
+			lairTemplateName = "tatooine_trandoshan_slaver_neutral_medium_theater",
 			spawnLimit = -1,
 			minDifficulty = 5,
 			maxDifficulty = 9,
