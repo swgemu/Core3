@@ -188,6 +188,16 @@ public:
 		// Growable Plant
 		GROWABLE_PLANT					   = 341,
 
+		// Lottery Droid
+		LOTTERY_DURATION_SETUP			   = 351,
+		LOTTERY_PAYOUT_SETUP			   = 352,
+		LOTTERY_COST_SETUP				   = 353,
+		LOTTERY_ADD_CREDITS				   = 354,
+		LOTTERY_ADD_CREDITS_CONFIRM		   = 355,
+		LOTTERY_INFO					   = 356,
+		LOTTERY_REGISTRATION			   = 357,
+
+
 		// Ranger 400 - 401
 		RANGER_TRACK_OPTIONS               = 400,
 		RANGER_TRACK_RESULTS               = 401,
