@@ -22,6 +22,14 @@ String JediManager::getJediManagerName() {
 	return ret;
 }
 
+int JediManager::getJediProgressionType() {
+	ReadLocker locker(this);
+
+	int ret = jediProgressionType;
+
+	return ret;
+}
+
 void JediManager::setJediManagerName(String name) {
 	Locker writeLock(this);
 
