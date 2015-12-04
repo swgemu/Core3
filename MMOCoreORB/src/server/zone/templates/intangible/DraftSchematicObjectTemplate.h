@@ -51,6 +51,7 @@ protected:
 	String xpType;
 	int xp;
 
+	bool isMagic;
 	String assemblySkill;
 	String experimentingSkill;
 	String customizationSkill;
@@ -95,6 +96,9 @@ public:
 		draftSlots->add(slot);
 	}
 
+    bool getIsMagic() {
+    	return isMagic;
+    }
 
     String getAssemblySkill() {
         return assemblySkill;

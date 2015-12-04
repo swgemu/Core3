@@ -54,6 +54,7 @@ object_draft_schematic_item_item_powerup_weapon_ranged_two = object_draft_schema
    xpType = "crafting_general", 
    xp = 20, 
 
+   isMagic = true,
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
    customizationSkill = "clothing_customization", 

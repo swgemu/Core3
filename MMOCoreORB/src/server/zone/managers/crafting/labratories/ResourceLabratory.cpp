@@ -98,6 +98,11 @@ void ResourceLabratory::setInitialCraftingValues(TangibleObject* prototype, Manu
 		craftingValues->recalculateValues(true);
 	}
 
+	if(draftSchematic->getIsMagic()) {
+		prototype->setIsCraftedEnhancedItem(true);
+		prototype->addMagicBit(false);
+	}
+
 }
 
 void ResourceLabratory::experimentRow(CraftingValues* craftingValues,int rowEffected, int pointsAttempted, float failure, int experimentationResult){
