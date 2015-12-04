@@ -1,0 +1,170 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.eventperk;
+
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.tangible.tasks.RemoveEventPerkItemTask;
+import server.zone.objects.tangible.tasks.LotteryDroidPulseTask;
+import system.util.VectorMap;
+import server.zone.Zone;
+
+class LotteryDroid extends CreatureObject {	
+	@dereferenced
+	protected Time purchaseTime;
+
+	@dereferenced
+	protected Time gameStartTime;
+	
+	protected int gameStatus;
+	protected int ticketPrice;
+	protected float payoutPercent;
+	protected int gameDuration; // In Hours
+	protected int creditPool;
+
+	protected unsigned long winnerID;
+
+	public final static int GAMESETUP = 0;
+	public final static int GAMESTARTED = 1;
+	public final static int GAMEENDED = 2;
+	public final static unsigned long TIMETOLIVE = 1296000000; // 15 Days
+
+	@dereferenced
+	protected Vector<unsigned long> playerList;
+
+	@dereferenced
+	protected transient Vector<unsigned int> gameDurationChoices;
+
+	@dereferenced
+	protected transient Vector<unsigned int> payoutPercentChoices;
+
+	@dereferenced
+	protected Reference<LotteryDroidPulseTask> gamePulse;
+
+	@dereferenced
+	protected transient Reference<RemoveEventPerkItemTask> removeEventPerkItemTask;
+
+	public LotteryDroid() {
+		Logger.setLoggingName("LotteryDroid");
+
+		purchaseTime.updateToCurrentTime();
+
+		gameStatus = 0;
+		ticketPrice = 0;
+		payoutPercent = 0.0f;
+		gameDuration = 0;
+		creditPool = 0;
+		winnerID = 0;
+	}
+
+	public native void initializeTransientMembers();
+
+	@preLocked
+	@arg1preLocked
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+
+	@local
+	@dirty
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+
+	@preLocked
+	public native void endGame();
+
+	@preLocked
+	public native void activateRemoveEvent(boolean immediate = false);
+
+	@preLocked
+	public native void startLottery(CreatureObject player);
+
+	public native void sendDurationSUI(CreatureObject player);
+	
+	public native void sendPayoutSUI(CreatureObject player);
+
+	public native void sendTicketCostSUI(CreatureObject player);
+	
+	public native void sendAddCreditsSUI(CreatureObject player);
+
+	public native void sendLotteryInstructionsSUI(CreatureObject player);
+	
+	public native void sendRegistrationSUI(CreatureObject player);
+
+	public native void sendLotteryInfoSUI(CreatureObject player);
+
+	public native string getTimeLeft(int timeLeft);
+
+	public native CreatureObject getDeedOwner();
+
+	@preLocked
+	public native void activateGamePulse();
+
+	@dirty
+	public boolean isEventPerkItem() {
+		return true;
+	}
+
+	@local
+	public Time getPurchaseTime() {
+		return purchaseTime;
+	}
+
+	@read
+	public int getGameStatus() {
+		return gameStatus;
+	}
+
+	@read
+	public int getGameDuration() {
+		return gameDuration;
+	}
+
+	@read
+	public int getTicketPrice() {
+		return ticketPrice;
+	}
+
+	@read
+	public float getPayoutPercent() {
+		return payoutPercent;
+	}
+
+	@local
+	public Time getGameStartTime() {
+		return gameStartTime;
+	}
+
+	@preLocked
+	public native void setGameDuration(int i) {
+		gameDuration = gameDurationChoices.get(i);
+	}
+
+	@preLocked
+	public native void setPayoutPercent(int i) {
+		payoutPercent = (float) payoutPercentChoices.get(i) / 100;
+	}
+
+	@preLocked
+	public native void setTicketPrice(int price) {
+		ticketPrice = price;
+	}
+
+	@preLocked
+	public native void addToCreditPool(int amount) {
+		creditPool = creditPool + amount;
+	}
+
+	@read
+	public int getNumPlayers() {
+		return playerList.size();
+	}
+
+	@preLocked
+	public void addNewPlayer(unsigned long playerID) {
+		playerList.add(playerID);
+	}
+
+	public boolean isCurrentPlayer(unsigned long playerID) {
+		return playerList.contains(playerID);
+	}
+}

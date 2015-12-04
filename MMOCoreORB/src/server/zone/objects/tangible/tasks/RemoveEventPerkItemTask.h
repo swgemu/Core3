@@ -3,6 +3,7 @@
 #define REMOVEEVENTPERKITEMTASK_H_
 
 #include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/eventperk/Jukebox.h"
 
 namespace server {
 namespace zone {
