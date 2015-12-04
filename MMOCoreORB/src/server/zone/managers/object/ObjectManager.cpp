@@ -110,6 +110,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<IntangibleObject>(SceneObjectType::INTANGIBLE);
 	objectFactory.registerObject<IntangibleObject>(SceneObjectType::DATA2);
 	objectFactory.registerObject<TheaterObject>(SceneObjectType::THEATEROBJECT);
+	objectFactory.registerObject<TangibleObject>(SceneObjectType::EVENTPERK);
 
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::ARMOR);
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::BODYARMOR); //chest plates
