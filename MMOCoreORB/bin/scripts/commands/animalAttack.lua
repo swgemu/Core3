@@ -28,6 +28,7 @@
 --programs or libraries that are released under the GNU LGPL and with
 --code included in the standard release of Core3 under the GNU LGPL
 --license (or modified versions of such code, with unchanged license).
+
 --You may copy and distribute such a system following the terms of the
 --GNU LGPL for Engine3 and the licenses of the other code concerned,
 --provided that you include the source code of that other code when
@@ -43,6 +44,16 @@
 
 AnimalAttackCommand = {
         name = "animalattack",
+
+	speed = 4.0,
+	forceCost = 150,
+	accuracySkillMod = "animalattack_accuracy",
+	attackType = FORCEATTACK,
+
+	animationCRC = hashCode("mind_trick_1"),
+
+	range = 32
+
 }
 
 AddCommand(AnimalAttackCommand)
