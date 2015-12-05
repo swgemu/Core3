@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_9dda6716",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AnimalCalmCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-05T03:16:04Z",
+      "side": 1,
+      "message": "This could all be done with !target-\u003eisCreature(), the other three checks are unneccesary",
+      "revId": "63975e501e5f1e1d651c68598f42dca881e9c039",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_5d04cf7d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AnimalCalmCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-05T03:16:04Z",
+      "side": 1,
+      "message": "do you even want to call doCombatAction here?",
+      "revId": "63975e501e5f1e1d651c68598f42dca881e9c039",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_bdd72bed",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AnimalCalmCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-05T03:16:04Z",
+      "side": 1,
+      "message": "I mentioned this to you today, so you should see what\u0027s wrong here. If you get a non-SUCCESS return from doCombatAction then you should immediately return that result and not go on.",
+      "revId": "63975e501e5f1e1d651c68598f42dca881e9c039",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_7d099394",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AnimalCalmCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-05T03:16:04Z",
+      "side": 1,
+      "message": "this check is redundant since you would have already returned INVALIDTARGET",
+      "revId": "63975e501e5f1e1d651c68598f42dca881e9c039",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_1dfe576c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AnimalCalmCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-05T03:16:04Z",
+      "side": 1,
+      "message": "cast to creature at the beginning and just check if it\u0027s null. Then you don\u0027t need all these other checks.",
+      "revId": "63975e501e5f1e1d651c68598f42dca881e9c039",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
