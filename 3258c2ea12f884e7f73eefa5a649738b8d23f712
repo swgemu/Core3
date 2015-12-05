@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_ddf77f8b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AnimalScareCommand.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-05T03:18:23Z",
+      "side": 1,
+      "message": "why are you peacing here? The creature should stay in combat and should flee, this isn\u0027t the right thing to do.",
+      "revId": "3258c2ea12f884e7f73eefa5a649738b8d23f712",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
