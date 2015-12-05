@@ -49,7 +49,7 @@ public:
 
 		// trap must be a trap
 		ManagedReference<TangibleObject*> trap = module->getTrap();
-		if (!trap->isTrapObject()) {
+		if (trap == NULL || !trap->isTrapObject()) {
 			droid->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
 			return GENERALERROR;
 		}
