@@ -446,7 +446,6 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	public native void setRunSpeed(float newSpeed, boolean notifyClient = true);
 
-	@preLocked
 	public void setCurrentSpeed(float newSpeed) {
 		currentSpeed = newSpeed;
 	}

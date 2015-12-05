@@ -814,7 +814,7 @@ void SceneObjectImplementation::updateVehiclePosition(bool sendPackets) {
 
 	if (parent == NULL || (!parent->isVehicleObject() && !parent->isMount()))
 		return;
-
+/*
 	Vector3 position = getPosition();
 
 	parent->setPosition(getPositionX(), getPositionZ(), getPositionY());
@@ -831,6 +831,15 @@ void SceneObjectImplementation::updateVehiclePosition(bool sendPackets) {
 			parent_p->updateZone(false, sendPackets_p);
 		}
 	);
+*/
+	Locker locker(parent);
+
+	parent->setDirection(direction.getW(), direction.getX(), direction.getY(), direction.getZ());
+	parent->setPosition(getPositionX(), getPositionZ(), getPositionY());
+
+	parent->incrementMovementCounter();
+
+	parent->updateZone(false, sendPackets);
 }
 
 void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {

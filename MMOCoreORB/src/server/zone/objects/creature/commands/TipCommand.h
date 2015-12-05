@@ -36,8 +36,9 @@ private:
 		// We have a target, who is on-line, in range, with sufficient funds.
 		// Lock target player to prevent simultaneous tips to not register correctly.
 
-		Locker clocker(targetPlayer, player);
 		player->subtractCashCredits(amount);
+
+		Locker clocker(targetPlayer, player);
 		targetPlayer->addCashCredits(amount, false); // FIXME: param notifyClient does nothing atm. in CreatureObject.idl:632
 
 		StringIdChatParameter tiptarget("base_player", "prose_tip_pass_target"); // %TT tips you %DI credits.
