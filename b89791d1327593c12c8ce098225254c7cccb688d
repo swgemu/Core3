@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_5d604f35",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/LotteryDroidImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-05T05:00:18Z",
+      "side": 1,
+      "message": "These gameStatus values need to be consts in the idl to make it clear what is happening.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "b89791d1327593c12c8ce098225254c7cccb688d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_7d651344",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/LotteryDroidImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-05T05:00:18Z",
+      "side": 1,
+      "message": "this should be static so it only gets initialized once (or make it a const in the idl)",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 350,
+        "endChar": 46
+      },
+      "revId": "b89791d1327593c12c8ce098225254c7cccb688d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_bd73ab14",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tasks/LotteryDroidPulseTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-05T05:00:18Z",
+      "side": 1,
+      "message": "You can do this outside your if checks to save redundant code.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 75
+      },
+      "revId": "b89791d1327593c12c8ce098225254c7cccb688d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
