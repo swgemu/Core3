@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_9df10798",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/SampleDnaTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-05T03:20:44Z",
+      "side": 1,
+      "message": "why did you bracket this code? It\u0027s valid, but it\u0027s unneccesary.",
+      "revId": "d8395909a493cbc58bfc8d649b2e4d7913fd058b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
