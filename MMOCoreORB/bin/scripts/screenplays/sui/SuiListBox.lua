@@ -1,7 +1,12 @@
 SuiListBox = {}
-SuiListBox.new = function ()
+SuiListBox.new = function (defaultCallback, defaultFunction)
 	local self = SuiTemplate.new("Script.listBox")
 	local data = {}
+
+	self.setDefaultCallback(defaultCallback, defaultFunction)
+
+	-- Subscribe to selected listbox row so that it sends back an argument
+	self.subscribeToPropertyForEvent(SuiEventType.SET_onClosedOk, "List.lstList", "SelectedRow")
 
 	self.setTitle = function (value)
 		self.setProperty("bg.caption.lblTitle", "Text", value)
