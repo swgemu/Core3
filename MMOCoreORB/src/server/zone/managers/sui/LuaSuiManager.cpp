@@ -43,9 +43,11 @@ int LuaSuiManager::sendSuiPage(lua_State* L) {
 	SuiPageData* page = (SuiPageData*) lua_touserdata(L, -3);
 	CreatureObject* creo = (CreatureObject*) lua_touserdata(L, -4);
 
-	realObject->sendSuiPage(creo, page, play, callback);
+	int32 pageId = realObject->sendSuiPage(creo, page, play, callback);
 
-	return 0;
+	lua_pushinteger(L, pageId);
+
+	return 1;
 }
 
 int LuaSuiManager::sendKeypadSui(lua_State* L) {

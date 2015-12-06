@@ -61,6 +61,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "getExperienceCap", &LuaPlayerObject::getExperienceCap},
 		{ "activateQuest", &LuaPlayerObject::activateQuest },
 		{ "canActivateQuest", &LuaPlayerObject::canActivateQuest },
+		{ "getSuiBox", &LuaPlayerObject::getSuiBox },
 		{ 0, 0 }
 };
 
@@ -522,3 +523,16 @@ int LuaPlayerObject::getExperienceCap(lua_State* L) {
 	return 1;
 }
 
+int LuaPlayerObject::getSuiBox(lua_State* L) {
+	uint32 pageId = lua_tointeger(L, -1);
+	Reference<SuiBox*> object = realObject->getSuiBox(pageId);
+
+	if (object == NULL) {
+		lua_pushnil(L);
+	} else {
+		lua_pushlightuserdata(L, object.get());
+		object->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
+	}
+
+	return 1;
+}

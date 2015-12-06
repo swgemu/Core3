@@ -44,13 +44,34 @@ public:
 	bool parseFromBinaryStream(ObjectInputStream* stream);
 
 	void sendTo(CreatureObject* creo);
+	void sendUpdateTo(CreatureObject* creo);
 
 	void setPageId(int pageId) {
 		id = pageId;
 	}
 
+	int32 getPageId() {
+		return id;
+	}
+
+	void setForceCloseDistance(float dist) {
+		forceCloseDistance = dist;
+	}
+
+	float getForceCloseDistance() {
+		return forceCloseDistance;
+	}
+
+	void setTargetNetworkId(int id) {
+		targetNetworkId = id;
+	}
+
 	SuiCommand* getCommand(int index) {
 		return commands.get(index);
+	}
+
+	uint64 getTargetNetworkId() {
+		return targetNetworkId;
 	}
 
 	inline String& getRootPage() {

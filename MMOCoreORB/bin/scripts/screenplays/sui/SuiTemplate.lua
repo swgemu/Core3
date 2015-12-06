@@ -20,19 +20,8 @@ SuiTemplate.new = function (templateName)
 
 	local suiPageData = LuaSuiPageData(templateName)
 
-	--self.getId = function () return suiPageData.id end
-
-	self.getUsingObject = function ()
-		--return suiPageData.usingObject
-		return 0
-	end
-
-	self.setUsingObject = function (object)
-	--suiPageData.usingObject = object
-	end
-
-	self.setForceCloseDistance = function (forceCloseDistance)
-	--suiPageData.forceCloseDistance = forceCloseDistance
+	self.setForceCloseDistance = function (distance)
+		suiPageData:setForceCloseDistance(distance)
 	end
 
 	self.setProperty = function (widget, property, value)
@@ -68,6 +57,10 @@ SuiTemplate.new = function (templateName)
 		luaCallback.callback = callback
 		suiPageData:setDefaultCallback(play .. ":" .. callback)
 	end
+	
+	self.setTargetNetworkId = function (id)
+		suiPageData:setTargetNetworkId(id)
+	end
 
 	self.subscribeToPropertyForEvent = function (eventType, widget, property)
 		suiPageData:subscribeToPropertyForEvent(eventType, widget, property)
@@ -85,7 +78,7 @@ SuiTemplate.new = function (templateName)
 		end
 
 		local suiManager = LuaSuiManager()
-		suiManager:sendSuiPage(pCreatureObject, pPageData, luaCallback.play, luaCallback.callback)
+		return suiManager:sendSuiPage(pCreatureObject, pPageData, luaCallback.play, luaCallback.callback)
 	end
 
 	return self
