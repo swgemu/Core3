@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_2009ae2c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tools/shuttle_dropoff.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T12:11:43Z",
+      "side": 1,
+      "message": "nil check pPlayer",
+      "revId": "9f1af5779e6d3e680e5b3b662e1f081b58547826",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_bd02cb09",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tools/shuttle_dropoff.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T12:11:43Z",
+      "side": 1,
+      "message": "nil check pPlayer",
+      "revId": "9f1af5779e6d3e680e5b3b662e1f081b58547826",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_400e2236",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tools/shuttle_dropoff.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T12:11:43Z",
+      "side": 1,
+      "message": "nil check pPlayer",
+      "revId": "9f1af5779e6d3e680e5b3b662e1f081b58547826",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_80043a16",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tools/shuttle_dropoff.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T12:11:43Z",
+      "side": 1,
+      "message": "You should probably make sure that setup has been completed before trying to do a flyby",
+      "revId": "9f1af5779e6d3e680e5b3b662e1f081b58547826",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_60ffa602",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tools/shuttle_dropoff.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T12:11:43Z",
+      "side": 1,
+      "message": "Why allow zero?",
+      "revId": "9f1af5779e6d3e680e5b3b662e1f081b58547826",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
