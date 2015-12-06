@@ -75,6 +75,7 @@
 #include "server/zone/objects/tangible/misc/FsPuzzlePack.h"
 #include "server/zone/objects/tangible/misc/CustomIngredient.h"
 #include "server/zone/objects/player/sui/LuaSuiPageData.h"
+#include "server/zone/objects/player/sui/SuiBoxPage.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -483,6 +484,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaCustomIngredient>::Register(luaEngine->getLuaState());
 	Luna<LuaSuiPageData>::Register(luaEngine->getLuaState());
 	Luna<LuaQuestVectorMap>::Register(luaEngine->getLuaState());
+	Luna<LuaSuiBoxPage>::Register(luaEngine->getLuaState());
 }
 
 int DirectorManager::loadScreenPlays(Lua* luaEngine) {

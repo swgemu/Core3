@@ -5,9 +5,11 @@ require("corvetteTicketGiverLogic")
 require("corvetteTicketTakerLogic")
 
 -- SUI
+--require("sui.SuiSample")
 require("sui.SuiTemplate")
 require("sui.SuiListBox")
-require("sui.SuiSample")
+require("sui.SuiQuestPopup")
+require("sui.SuiRadiationSensor")
 
 -- Theme parks
 includeFile("themepark/conversations/goru_conv_handler.lua")
@@ -24,7 +26,6 @@ includeFile("themepark/rebel/themeParkRebel.lua")
 includeFile("themepark/jabba/themeParkJabba.lua")
 includeFile("themepark/valarian/themeParkValarian.lua")
 includeFile("themepark/marauder/themeParkMarauder.lua")
-
 
 -- GCW
 includeFile("gcw/newsnet.lua")
@@ -82,6 +83,7 @@ includeFile("village/convos/phase1/med_droid_phase1_conv_handler.lua")
 includeFile("village/convos/phase1/whip_phase1_conv_handler.lua")
 includeFile("village/convos/phase1/fs_reflex1_prisoner_conv_handler.lua")
 includeFile("village/convos/phase2/whip_phase2_conv_handler.lua")
+includeFile("village/convos/phase2/dageerin_phase2_conv_handler.lua")
 
 -- Events
 includeFile("events/conversations/bestine_artist_conv_handler.lua")

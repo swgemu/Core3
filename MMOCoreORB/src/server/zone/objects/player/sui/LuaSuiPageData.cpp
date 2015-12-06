@@ -15,6 +15,10 @@ Luna<LuaSuiPageData>::RegType LuaSuiPageData::Register[] = {
 		{ "_setObject", &LuaSuiPageData::_setObject },
 		{ "_getObject", &LuaSuiPageData::_getObject },
 		{ "sendTo", &LuaSuiPageData::sendTo },
+		{ "sendUpdateTo", &LuaSuiPageData::sendUpdateTo },
+		{ "getPageId", &LuaSuiPageData::getPageId },
+		{ "setTargetNetworkId", &LuaSuiPageData::setTargetNetworkId },
+		{ "setForceCloseDistance", &LuaSuiPageData::setForceCloseDistance },
 		{ "setProperty", &LuaSuiPageData::setProperty },
 		{ "setDefaultCallback", &LuaSuiPageData::setDefaultCallback },
 		{ "addDataItem", &LuaSuiPageData::addDataItem },
@@ -28,7 +32,10 @@ Luna<LuaSuiPageData>::RegType LuaSuiPageData::Register[] = {
 };
 
 LuaSuiPageData::LuaSuiPageData(lua_State *L) {
-	realObject = new SuiPageData(lua_tostring(L, 1));
+	if (lua_isstring(L, 1))
+		realObject = new SuiPageData(lua_tostring(L, 1));
+	else
+		realObject = static_cast<SuiPageData*>(lua_touserdata(L, 1));
 }
 
 LuaSuiPageData::~LuaSuiPageData() {
@@ -45,6 +52,29 @@ int LuaSuiPageData::_getObject(lua_State* L) {
 		lua_pushnil(L);
 	else
 		lua_pushlightuserdata(L, realObject.get());
+
+	return 1;
+}
+
+int LuaSuiPageData::setTargetNetworkId(lua_State* L) {
+	int targetId = lua_tonumber(L, -1);
+
+	realObject->setTargetNetworkId(targetId);
+
+	return 0;
+}
+
+int LuaSuiPageData::setForceCloseDistance(lua_State* L) {
+	int dist = lua_tonumber(L, -1);
+
+	realObject->setForceCloseDistance(dist);
+
+	return 0;
+}
+
+
+int LuaSuiPageData::getPageId(lua_State* L) {
+	lua_pushinteger(L, realObject->getPageId());
 
 	return 1;
 }
@@ -143,6 +173,15 @@ int LuaSuiPageData::sendTo(lua_State* L) {
 
 	if (creo != NULL)
 		realObject->sendTo(creo);
+
+	return 0;
+}
+
+int LuaSuiPageData::sendUpdateTo(lua_State* L) {
+	CreatureObject* creo = static_cast<CreatureObject*>(lua_touserdata(L, -1));
+
+	if (creo != NULL)
+		realObject->sendUpdateTo(creo);
 
 	return 0;
 }

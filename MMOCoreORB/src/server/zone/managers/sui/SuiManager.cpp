@@ -628,7 +628,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 			}
 
 			if (templatePath.contains("event_perk")) {
-				if (ghost->getEventPerkCount() >= 5) {
+				if (!ghost->hasGodMode() && ghost->getEventPerkCount() >= 5) {
 					player->sendSystemMessage("@event_perk:pro_too_many_perks"); // You cannot rent any more items right now.
 					ghost->addSuiBox(cbSui);
 					player->sendMessage(cbSui->generateMessage());
@@ -916,13 +916,13 @@ void SuiManager::sendTransferBox(SceneObject* usingObject, SceneObject* player, 
 	}
 }
 
-void SuiManager::sendSuiPage(CreatureObject* creature, SuiPageData* pageData, const String& play, const String& callback) {
+int32 SuiManager::sendSuiPage(CreatureObject* creature, SuiPageData* pageData, const String& play, const String& callback) {
 
 	if (pageData == NULL)
-		return;
+		return 0;
 
 	if (creature == NULL || !creature->isPlayerCreature())
-		return;
+		return 0;
 
 	PlayerObject* playerObject = creature->getPlayerObject();
 
@@ -931,5 +931,9 @@ void SuiManager::sendSuiPage(CreatureObject* creature, SuiPageData* pageData, co
 		boxPage->setCallback(new LuaSuiCallback(creature->getZoneServer(), play, callback));
 		creature->sendMessage(boxPage->generateMessage());
 		playerObject->addSuiBox(boxPage);
+
+		return boxPage->getBoxID();
 	}
+
+	return 0;
 }
