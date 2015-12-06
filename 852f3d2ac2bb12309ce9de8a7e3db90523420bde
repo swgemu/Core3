@@ -1,0 +1,378 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_9d80278d",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase2/fs_sad.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "Is this item functional yet? It doesn\u0027t look like it to me.",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_fd7363e5",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase2/fs_sad.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "This check isn\u0027t needed since you know pPlayer is not nil when you call this function",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_bd7debb3",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase2/fs_sad_1_theaters/fs_sad_1_theater_1.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "You don\u0027t need to include the above 3 lines. They are already initialized to nil in GoToTheater. The same applies to your other new theaters.",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_7d4f5393",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase2/fs_sad_1_theaters/fs_sad_1_theater_1.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "Can you use a different name for the second arg instead of mobileList? Maybe spawnedMobileList? I was confused at first when looking at the for loop below. I thought it was referring to the mobileList with the template, dists, etc. Do the same in the other theaters.",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_1d441773",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase2/fs_sad_1_theaters/fs_sad_1_theater_1.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "You should nil check each mobile before you use it. Do the same in the other theaters.",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_3d49db8b",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase2/fs_sad_1_theaters/fs_sad_1_theater_1.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "You can remove your debug statements. Do the same in the other theaters.",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_dd5d3f4a",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase2/fs_sad_1_theaters/fs_sad_1_theater_1.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "You should nil check pTheater before using it. Do the same in the other theaters",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_fd5a834f",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase2/fs_sad_1_theaters/fs_sad_1_theater_1.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "You should delete the :killableCount data here. The same applies to your other theaters.",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_3dbb1b74",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/SuiRadiationSensor.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "Since this function is called from an event, you should be nil checking pCreature before using it.",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_9da90727",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/SuiRadiationSensor.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "Do you need to get the location again? I don\u0027t think it would have changed since line 64 above.",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_1d6df704",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/SuiRadiationSensor.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "This check should be unneeded since you know pCreature is not nil where you call this.",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_ddaf7f2a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/SuiRadiationSensor.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "This is unneeded since everywhere you call this has already nil checked pCreature.",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_bda64b52",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/SuiRadiationSensor.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "This is the only place in this method that you return a value. You should be consistent in the return type.",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_bd540b22",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/SuiRadiationSensor.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "This isn\u0027t called from anywhere that I could find. I\u0027m guessing that it should be called from FsSad:completeSeries",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_5d636f1a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/SuiRadiationSensor.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "You use :radiationSensorFactor when you write this",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_9d57c726",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/SuiRadiationSensor.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "You know pCreature isn\u0027t nil coming in so this is unnecessary.",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_7d68b3f5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/SuiRadiationSensor.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "You should nil check pSensor",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_1db6578b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/SuiRadiationSensor.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "This check shouldn\u0027t be necessary since you know pCreature isn\u0027t nil where it\u0027s called. However, if you want to leave it, you should return an empty table and check if the return is empty after calling getLocation.",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_fdacc337",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/SuiRadiationSensor.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "You should nil check pSensor before using it.",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_dd769fd8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/SuiRadiationSensor.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "This check is unnecessary.",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_7dc193e3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/SuiRadiationSensor.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "Did you forget to add the instructions or are you planning to do that later?",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_9de6e743",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/SuiTemplate.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-06T07:49:43Z",
+      "side": 1,
+      "message": "I think you meant to call setForceCloseDistance here",
+      "revId": "852f3d2ac2bb12309ce9de8a7e3db90523420bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
