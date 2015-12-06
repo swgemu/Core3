@@ -8,6 +8,8 @@ require("corvetteTicketTakerLogic")
 --require("sui.SuiSample")
 require("sui.SuiTemplate")
 require("sui.SuiListBox")
+require("sui.SuiMessageBox")
+require("sui.SuiInputBox")
 require("sui.SuiQuestPopup")
 require("sui.SuiRadiationSensor")
 
@@ -26,6 +28,10 @@ includeFile("themepark/rebel/themeParkRebel.lua")
 includeFile("themepark/jabba/themeParkJabba.lua")
 includeFile("themepark/valarian/themeParkValarian.lua")
 includeFile("themepark/marauder/themeParkMarauder.lua")
+
+-- Staff tools
+includeFile("tools/tools.lua")
+includeFile("tools/shuttle_dropoff.lua")
 
 -- GCW
 includeFile("gcw/newsnet.lua")

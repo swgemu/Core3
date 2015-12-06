@@ -6,6 +6,7 @@
 #define CREATENPCCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/director/DirectorManager.h"
 
 class CreateNPCCommand : public QueueCommand {
 public:
@@ -22,6 +23,24 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		StringTokenizer args(arguments.toString());
+
+		if (!args.hasMoreTokens())
+			return INVALIDPARAMETERS;
+
+		String arg = "";
+
+		args.getStringToken(arg);
+
+		if (arg == "tools") {
+			Lua* lua = DirectorManager::instance()->getLuaInstance();
+
+			Reference<LuaFunction*> staffTools = lua->createFunction("StaffTools", "openToolsSUI", 0);
+			*staffTools << creature;
+
+			staffTools->callFunction();
+		}
 
 		return SUCCESS;
 	}
