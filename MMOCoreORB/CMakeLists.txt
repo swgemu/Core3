@@ -27,8 +27,15 @@ find_package(Engine3 REQUIRED)
 include_directories(${ENGINE3_INCLUDE_DIR})
 link_directories(${ENGINE3_LIBRARY})
 
+include_directories(${CMAKE_SOURCE_DIR}/src)
+include_directories(${CMAKE_SOURCE_DIR}/src/autogen)
+include_directories(${CMAKE_SOURCE_DIR}/utils)
+include_directories(${CMAKE_SOURCE_DIR}/utils/gtest-1.6.0/include)
+include_directories(${CMAKE_SOURCE_DIR}/utils/gmock-1.6.0/include)
+link_directories(${CMAKE_SOURCE_DIR}/utils/gtest-1.6.0/lib)
+
 # Define build flags
-set(CMAKE_CXX_FLAGS "-ggdb -Wall -Wextra -Wno-unused -Wno-unused-paramater -Wno-sign-compare -Wno-multichar -Wno-overloaded-virtual")
+set(CMAKE_CXX_FLAGS "-ggdb -Wall -Wextra -Wno-unused -Wno-unused-paramater -Wno-sign-compare -Wno-multichar -Wno-overloaded-virtual -femit-class-debug-always")
 
 # Define sources
 add_subdirectory(src)

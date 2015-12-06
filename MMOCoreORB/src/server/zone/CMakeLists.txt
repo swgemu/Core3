@@ -8,11 +8,11 @@ file(GLOB_RECURSE zone3_sources "*.cpp")
 include_directories(../..)
 
 # Exclude sources from zone
-file(GLOB_RECURSE zone3_excludes
-    "objects/player/sessions/StructureStatusSession.cpp"
-    "managers/structure/StructureManagerImplementation.cpp"
-    )
-list(REMOVE_ITEM zone3_sources ${zone3_excludes})
+#file(GLOB_RECURSE zone3_excludes
+#    "objects/player/sessions/StructureStatusSession.cpp"
+#    "managers/structure/StructureManagerImplementation.cpp"
+#    )
+#list(REMOVE_ITEM zone3_sources ${zone3_excludes})
 
 # Create zone library
 add_library(zone3 SHARED ${zone3_sources})
