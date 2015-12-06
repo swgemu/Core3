@@ -10,6 +10,7 @@
 #include "SuiCommand.h"
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/packets/ui/SuiCreatePageMessage.h"
+#include "server/zone/packets/ui/SuiUpdatePageMessage.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
 void SuiPageData::setProperty(const String& widget, const String& property, const UnicodeString& value) {
@@ -136,5 +137,13 @@ void SuiPageData::sendTo(CreatureObject* creo) {
 
 	if (playerObject != NULL) {
 		creo->getClient()->sendMessage(new SuiCreatePageMessage(this));
+	}
+}
+
+void SuiPageData::sendUpdateTo(CreatureObject* creo) {
+	PlayerObject* playerObject = creo->getPlayerObject();
+
+	if (playerObject != NULL) {
+		creo->getClient()->sendMessage(new SuiUpdatePageMessage(this));
 	}
 }

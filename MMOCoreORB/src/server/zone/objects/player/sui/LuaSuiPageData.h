@@ -22,14 +22,18 @@ public:
 	int _setObject(lua_State* L);
 	int _getObject(lua_State* L);
 	int sendTo(lua_State* L);
+	int sendUpdateTo(lua_State* L);
 	int setProperty(lua_State* L);
 	int setDefaultCallback(lua_State* L);
+	int setTargetNetworkId(lua_State* L);
+	int setForceCloseDistance(lua_State* L);
 	int addDataItem(lua_State* L);
 	int clearDataSource(lua_State* L);
 	int addDataSourceContainer(lua_State* L);
 	int clearDataSourceContainer(lua_State* L);
 	int addChildWidget(lua_State* L);
 	int subscribeToEvent(lua_State* L);
+	int getPageId(lua_State* L);
 	int subscribeToPropertyForEvent(lua_State* L);
 private:
 	Reference<SuiPageData*> realObject;
