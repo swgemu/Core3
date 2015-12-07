@@ -49,9 +49,9 @@ public:
 		if (!player->isInRange(creature, maxRange + player->getTemplateRadius() + creature->getTemplateRadius()))
 			return TOOFAR;
 				
-		if (player->isAttackableBy(creature) && player->isIncapacitated()) {
+		if (player->isAttackableBy(creature) && (player->isIncapacitated() && player->isFeigningDeath() == false)) {
 			playerManager->killPlayer(creature, player, 1);			
-		}  else if (!player->isIncapacitated()) {
+		}  else if (!player->isIncapacitated() || player->isFeigningDeath()) {
 			creature->sendSystemMessage("@error_message:target_not_incapacitated");  //You cannot perform the death blow. Your target is not incapacitated.
 		}  else if (player->isDead()) {
 			return GENERALERROR;
