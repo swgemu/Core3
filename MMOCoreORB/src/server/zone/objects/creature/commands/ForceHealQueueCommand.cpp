@@ -224,6 +224,12 @@ int ForceHealQueueCommand::checkStates(CreatureObject* creature, CreatureObject*
 			retval |= INTIMIDATE;
 		}
 	}
+
+	if (healStates & CreatureState::FEIGNDEATH) {
+		if(target->hasState(CreatureState::FEIGNDEATH)) {
+			retval |= FEIGNDEATH;
+		}
+	}
 #ifdef DEBUG_FORCE_HEALS
 	creature->sendSystemMessage("[checkStates] result = " + String::valueOf(retval));
 	creature->sendSystemMessage("[checkStates] result & STUNN = " + dbg_fh_bool2s(retval & STUN));
@@ -257,6 +263,11 @@ int ForceHealQueueCommand::doHealStates(CreatureObject* creature, CreatureObject
 	if (healableStates & INTIMIDATE) {
 		target->removeStateBuff(CreatureState::INTIMIDATED);
 		attrs.healedStates |= INTIMIDATE;
+	}
+
+	if (healableStates & FEIGNDEATH) {
+		target->removeFeignedDeath(false);
+		attrs.healedStates |= FEIGNDEATH;
 	}
 
 	return SUCCESS;

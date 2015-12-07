@@ -61,6 +61,8 @@ class CreatureObject extends TangibleObject {
 	protected byte locomotion;
 	protected byte factionRank;
 
+	protected boolean feignedDeath;
+
 	@weakReference
 	protected CreatureObject linkedCreature;
 
@@ -1230,6 +1232,21 @@ class CreatureObject extends TangibleObject {
 	public native float calculateBFRatio();
 
 	@preLocked
+	public native void removeFeignedDeath(boolean removedByFeigner);
+
+	@preLocked
+	public native void setFeignedDeath(boolean val);
+
+	@preLocked
+	public native boolean canFeignDeath();
+
+	@preLocked
+	public native void feignDeath();
+
+	@preLocked
+	public native void setFeignedDeathState();
+
+	@preLocked
 	public native void setDizziedState(int durationSeconds = 5);
 
 	@preLocked
@@ -1490,6 +1507,11 @@ class CreatureObject extends TangibleObject {
 	@read
 	public byte getFactionRank() {
 		return factionRank;
+	}
+	
+	@read
+	public boolean isFeignedDeath() {
+		return feignedDeath;
 	}
 
 	@weakReference
