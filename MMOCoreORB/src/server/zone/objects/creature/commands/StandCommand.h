@@ -19,8 +19,14 @@ public:
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
-		if (!checkStateMask(creature))
+		info("got stand command", true);
+		if(creature->isFeigningDeath() && creature->isIncapacitated()) {
+			creature->removeFeignedDeath();
+		}
+
+		if (!checkStateMask(creature)) {
 			return INVALIDSTATE;
+		}
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;

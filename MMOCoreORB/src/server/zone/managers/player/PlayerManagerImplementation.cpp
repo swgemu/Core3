@@ -640,7 +640,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 
 	CreatureObject* playerCreature = cast<CreatureObject*>( destructedObject);
 
-	if (playerCreature->isIncapacitated() || playerCreature->isDead())
+	if ((playerCreature->isIncapacitated() && !(playerCreature->isFeigningDeath())) || playerCreature->isDead())
 		return 1;
 
 	if (playerCreature->isRidingMount()) {
@@ -664,6 +664,9 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 	if ((destructor->isKiller() && isDefender) || ghost->getIncapacitationCounter() >= 3) {
 		killPlayer(destructor, playerCreature, 0);
 	} else {
+
+		playerCreature->clearState(CreatureState::FEIGNDEATH); // We got incapped for real - Remove the state so we can be DB'd
+
 		playerCreature->setCurrentSpeed(0);
 		playerCreature->setPosture(CreaturePosture::INCAPACITATED, true);
 		playerCreature->updateLocomotion();
