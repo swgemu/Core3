@@ -47,7 +47,6 @@ object_tangible_deed_event_perk_game_flag_deed = object_tangible_deed_event_perk
 	noTrade = 1,
 	generatedObjectTemplate = "object/tangible/event_perk/flag_game.iff",
 	perkType = GAME,
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_event_perk_game_flag_deed, "object/tangible/deed/event_perk/game_flag_deed.iff")
