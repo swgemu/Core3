@@ -436,6 +436,10 @@ void TangibleObjectImplementation::setCustomizationVariable(const String& type, 
 }
 
 void TangibleObjectImplementation::setCountdownTimer(unsigned int newUseCount, bool notifyClient) {
+
+	countDownTimer.updateToCurrentTime();
+	countDownTimer.addMiliTime(newUseCount*1000);
+
 	if (useCount == newUseCount)
 		return;
 

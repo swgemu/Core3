@@ -107,11 +107,13 @@ void CreatureObjectImplementation::initializeTransientMembers() {
 
 	setContainerOwnerID(getObjectID());
 	setMood(moodID);
+	feignBuffCRC = STRING_HASHCODE("private_feign_buff");
 
 	setLoggingName("CreatureObject");
 }
 
 void CreatureObjectImplementation::initializeMembers() {
+
 	linkedCreature = NULL;
 	controlDevice = NULL;
 
@@ -984,7 +986,7 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 		return 0;
 	}
 
-	if (this->isIncapacitated() || this->isDead() || damage == 0)
+	if ((isIncapacitated() && !isFeigningDeath()) || this->isDead() || damage == 0)
 		return 0;
 
 	int currentValue = hamList.get(damageType);
@@ -1415,8 +1417,12 @@ void CreatureObjectImplementation::addSkill(const String& skill,
 }
 
 void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient) {
+
 	if (posture == newPosture)
 		return;
+
+	if(isFeigningDeath())
+		return; // Disallow allow forced posture changes, the state will be cleared before they can stand
 
 	if (posture == CreaturePosture::PRONE && isInCover()) {
 		clearState(CreatureState::COVER);
@@ -1799,6 +1805,15 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 		return;
 	}
 
+	if(hasBuff(feignBuffCRC)) { // I honestly couldn't find a better place to do this
+		if(queueCommand->getDefaultTime() == 0) { //All commmands which are able to be used while dead have a zero time, but not vice versa
+			if(queueCommand->checkInvalidLocomotion(CreatureLocomotion::DEAD) == false) { // I think it's reasonable these commands shouldn't remove pending feign
+				removeBuff(feignBuffCRC);
+			}
+		}
+	}
+
+
 	if (priority < 0)
 		priority = queueCommand->getDefaultPriority();
 
@@ -1990,6 +2005,7 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 		bankCredits = 0;
 
 	if (isIncapacitated()) {
+
 		int health = getHAM(CreatureAttribute::HEALTH);
 
 		if (health < 0)
@@ -2005,7 +2021,13 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 		if (mind < 0)
 			setHAM(CreatureAttribute::MIND, 1);
 
+
+		clearState(CreatureState::FEIGNDEATH); // This must be done before setting the player upright
+
 		setPosture(CreaturePosture::UPRIGHT);
+
+
+		removeBuff(feignBuffCRC);
 	}
 
 	if (ghost == NULL)
@@ -2122,6 +2144,50 @@ float CreatureObjectImplementation::calculateBFRatio() {
 		return ((((float) shockWounds) - 250.0f) / 1000.0f);
 }
 
+void CreatureObjectImplementation::removeFeignedDeath() {
+	clearState(CreatureState::FEIGNDEATH); // This must always be done before setting the player upright
+	setPosture(CreaturePosture::UPRIGHT);
+}
+
+void CreatureObjectImplementation::setFeignedDeathState() {
+	setState(CreatureState::FEIGNDEATH);
+}
+
+bool CreatureObjectImplementation::canFeignDeath() {
+
+	if(isKneeling())
+		return false;
+
+	if(getHAM(CreatureAttribute::HEALTH) <= 100 && getHAM(CreatureAttribute::ACTION) <= 100 && getHAM(CreatureAttribute::MIND) <= 100)
+		return false;
+
+	const int maxDefenders = 5;
+
+	int defenderCount = getDefenderList()->size();
+	int skillMod = getSkillMod("feign_death");
+
+	if(defenderCount > maxDefenders)
+		defenderCount = maxDefenders;
+
+	for(int i=0; i<defenderCount; i++) {
+		if(System::random(100) > skillMod)
+			return false;
+	}
+
+	return true;
+}
+
+void CreatureObjectImplementation::feignDeath() {
+	Reference<CreatureObject*> creo = _this.getReferenceUnsafeStaticCast();
+
+	if(creo->hasBuff(feignBuffCRC)) {
+		creo->setCountdownTimer(5);
+		creo->updateCooldownTimer("command_message", 5 * 1000);
+		creo->setFeignedDeathState();
+		creo->setPosture(CreaturePosture::INCAPACITATED);
+	}
+}
+
 void CreatureObjectImplementation::setDizziedState(int durationSeconds) {
 	uint32 buffCRC = Long::hashCode(CreatureState::DIZZY);
 
@@ -2212,6 +2278,7 @@ void CreatureObjectImplementation::setBerserkedState(uint32 duration) {
 		addBuff(state);
 	}
 }
+
 void CreatureObjectImplementation::setStunnedState(int durationSeconds) {
 	uint32 buffCRC = Long::hashCode(CreatureState::STUNNED);
 
@@ -2284,7 +2351,7 @@ void CreatureObjectImplementation::setIntimidatedState(int durationSeconds) {
 
 		return;
 	}
-	
+
 	state = new StateBuff(asCreatureObject(), CreatureState::INTIMIDATED, durationSeconds, STRING_HASHCODE("intimidatedstate"));
 
 	Locker locker(state);
@@ -2720,7 +2787,7 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object, bool b
 	if (ghost->isOnLoadScreen())
 		return false;
 
-	if ((!bypassDeadCheck && (isDead() || isIncapacitated())) || isInvisible())
+	if ((!bypassDeadCheck && (isDead() || (isIncapacitated() && !isFeigningDeath()))) || isInvisible())
 		return false;
 
 	if (getPvpStatusBitmask() == CreatureFlag::NONE)

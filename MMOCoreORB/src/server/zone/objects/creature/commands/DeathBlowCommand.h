@@ -44,7 +44,7 @@ public:
 				return GENERALERROR;
 			}
 
-			if (!player->isIncapacitated()){
+			if (!player->isIncapacitated() || player->isFeigningDeath()){
 				creature->sendSystemMessage("@error_message:target_not_incapacitated");
 				return GENERALERROR;
 			}

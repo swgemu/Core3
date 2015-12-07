@@ -84,6 +84,10 @@ class TangibleObject extends SceneObject {
 	protected SortedVector<ActiveArea> activeAreas;
 
 	protected SceneObject antiDecayKitObject;
+	
+	@dereferenced
+	@transient
+	protected Time countDownTimer;
 
 	/**
 	 * TangibleObject constructor, used to initialized the object
@@ -273,6 +277,11 @@ class TangibleObject extends SceneObject {
 	 */
 	@preLocked
 	public native abstract void removeDefenders();
+	
+	@dirty
+	public unsigned long getCountDownTimerMilis() {
+		return countDownTimer.getMiliTime();
+	}
 	
 	/**
 	 * Sets the combat state, needs to be overriden
