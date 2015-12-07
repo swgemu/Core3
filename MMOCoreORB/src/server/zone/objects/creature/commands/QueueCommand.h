@@ -86,6 +86,11 @@ public:
 	 */
 	bool checkInvalidLocomotions(CreatureObject* creature) const;
 
+	/*
+	 * Checks a single locomotion and returns false if it is invalid for this command
+	 */
+	bool checkInvalidLocomotion(int locomotion) const;
+
 	void onStateFail(CreatureObject* creature, uint32 actioncntr) const;
 	void onLocomotionFail(CreatureObject* creature, uint32 actioncntr) const;
 

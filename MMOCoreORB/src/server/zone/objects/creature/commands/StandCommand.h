@@ -19,8 +19,20 @@ public:
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
-		if (!checkStateMask(creature))
+		if(creature->isFeigningDeath()) {
+			Time current;
+			if(current.getMiliTime() >= creature->getCountDownTimerMilis()) {
+				creature->removeFeignedDeath();
+			}
+			else
+				return INVALIDLOCOMOTION;
+
+			info("countdowntimer: " + String::valueOf(creature->getCountDownTimerMilis()) + " currentTime " + String::valueOf(current.getMiliTime()), true);
+		}
+
+		if (!checkStateMask(creature)) {
 			return INVALIDSTATE;
+		}
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;

@@ -67,6 +67,18 @@ bool QueueCommand::checkInvalidLocomotions(CreatureObject* creature) const {
 	return true;
 }
 
+/*
+ * Checks each invalid locomotion against the value passed in
+ */
+bool QueueCommand::checkInvalidLocomotion(int locomotion) const {
+	for (int i = 0; i < invalidLocomotion.size(); ++i) {
+		if (invalidLocomotion.get(i) == locomotion)
+			return false;
+	}
+
+	return true;
+}
+
 void QueueCommand::onStateFail(CreatureObject* creature, uint32 actioncntr) const {
 	if (!addToQueue)
 		return;

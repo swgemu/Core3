@@ -160,7 +160,8 @@ public:
 					if (!tano->isAttackableBy(droid) || !droid->isInRange(object,17)) {
 						continue;
 					}
-					if (tano->isCreatureObject() && (cast<CreatureObject*>(tano))->isIncapacitated()) {
+					CreatureObject *creo = tano->asCreatureObject();
+					if (creo != NULL && (creo->isIncapacitated() && creo->isFeigningDeath() == false)) {
 						continue;
 					}
 					try {
