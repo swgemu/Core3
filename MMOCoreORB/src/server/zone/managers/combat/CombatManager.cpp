@@ -66,7 +66,8 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 	if (!defender->isAttackableBy(attacker))
 		return false;
 
-	if (defender->isCreatureObject() && defender->asCreatureObject()->isIncapacitated())
+	CreatureObject *creo = defender->asCreatureObject();
+	if (creo != NULL && creo->isIncapacitated() && creo->isFeigningDeath() == false)
 		return false;
 
 	if (attacker->isPlayerCreature() && attacker->getPlayerObject()->isAFK())
@@ -243,12 +244,16 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 
 		damage = applyDamage(attacker, weapon, tano, poolsToDamage, data);
 
+		tano->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, damage);
+
 		broadcastCombatAction(attacker, tano, weapon, data, 0x01);
 
 		data.getCommand()->sendAttackCombatSpam(attacker, tano, HIT, damage, data);
+
+
 	}
 
-	tano->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, damage);
+
 
 	if (damage > 0 && tano->isAiAgent()) {
 		AiAgent* aiAgent = cast<AiAgent*>(tano);
@@ -306,8 +311,6 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		broadcastCombatAction(attacker, defender, weapon, data, hitVal);
 		return 0;
 		break;
-	case HIT:
-		break;
 	case BLOCK:
 		doBlock(attacker, weapon, defender, damage);
 		damageMultiplier = 0.5f;
@@ -333,6 +336,8 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	// Apply states first
 	applyStates(attacker, defender, data);
 
+
+
 	//if it's a state only attack (intimidate, warcry, wookiee roar) don't apply dots or break combat delays
 	if (!data.isStateOnlyAttack()) {
 		if (defender->hasAttackDelay())
@@ -351,6 +356,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		if (!foodMitigation.isEmpty())
 			sendMitigationCombatSpam(defender, weapon, foodMitigation.get(0), FOOD);
 	}
+	defender->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, damage); // this should always happen BEFORE a broadcast
 
 	broadcastCombatAction(attacker, defender, weapon, data, hitVal);
 
@@ -452,6 +458,9 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 	defenderObject->updatePostures(false);
 
 	uint32 animationCRC = data.getAnimationCRC();
+
+	defenderObject->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, damage);
+
 	combatAction = new CombatAction(attacker, defenderObject, animationCRC, hitVal, CombatManager::DEFAULTTRAIL);
 	attacker->broadcastMessage(combatAction,true);
 
@@ -2483,7 +2492,8 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 					continue;
 			}
 
-			if (tano->isCreatureObject() && tano->asCreatureObject()->isIncapacitated()) {
+			CreatureObject *creo = tano->asCreatureObject();
+			if (creo != NULL && creo->isFeigningDeath() == false && creo->isIncapacitated()) {
 				//error("object is incapacitated");
 				continue;
 			}
@@ -2594,7 +2604,8 @@ int CombatManager::doAreaCombatAction(TangibleObject* attacker, WeaponObject* we
 				continue;
 			}
 
-			if (tano->isCreatureObject() && tano->asCreatureObject()->isIncapacitated()) {
+			CreatureObject *creo = tano->asCreatureObject();
+			if (creo != NULL && creo->isFeigningDeath() == false && creo->isIncapacitated()) {
 				//error("object is incapacitated");
 				continue;
 			}

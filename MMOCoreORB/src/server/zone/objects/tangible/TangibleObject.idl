@@ -84,7 +84,7 @@ class TangibleObject extends SceneObject {
 	protected SortedVector<ActiveArea> activeAreas;
 
 	protected SceneObject antiDecayKitObject;
-
+	
 	/**
 	 * TangibleObject constructor, used to initialized the object
 	 * @pre { templateData is a valid SharedTangibleObjectTemplate LuaObject that contains the necessary values to initialize CreatureObject }
@@ -274,6 +274,7 @@ class TangibleObject extends SceneObject {
 	@preLocked
 	public native abstract void removeDefenders();
 	
+	
 	/**
 	 * Sets the combat state, needs to be overriden
 	 * @pre { this object is locked }
@@ -293,7 +294,7 @@ class TangibleObject extends SceneObject {
 	public native abstract void setUseCount(unsigned int newUseCount, boolean notifyClient = true);
 	
 	@preLocked
-	public native void setCountdownTimer(unsigned int newCount, boolean notifyClient = true);
+	public abstract native void setCountdownTimer(unsigned int newCount, boolean notifyClient = true);
 	
 	/**
 	 * Decreases use count, when reaches 0 destroys itself
