@@ -117,7 +117,7 @@ class CreatureObject extends TangibleObject {
 	protected byte moodID;
 	protected int performanceCounter;
 	protected int instrumentID;
-
+	
 	@dereferenced
 	protected DeltaVector<int> hamList;
 
@@ -241,6 +241,12 @@ class CreatureObject extends TangibleObject {
 	 */
 	public native void initializeTransientMembers();
 
+	@preLocked
+	public abstract void setCountdownTimer(unsigned int newCount, boolean notifyClient = true) {
+		super.setCountdownTimer(newCount, notifyClient);
+		cooldownTimerMap.updateToCurrentAndAddMili("incapTimer", getUseCount()*1000);
+	}
+		
 	/**
 	 * Sends a CommandQueueRemove ObjectControllerMessage to the owner client of this object
 	 * @pre { }
@@ -1259,6 +1265,18 @@ class CreatureObject extends TangibleObject {
 	public native float calculateBFRatio();
 
 	@preLocked
+	public native void removeFeignedDeath();
+
+	@preLocked
+	public native boolean canFeignDeath();
+
+	@preLocked
+	public native void feignDeath();
+
+	@preLocked
+	public native void setFeignedDeathState();
+
+	@preLocked
 	public native void setDizziedState(int durationSeconds = 5);
 
 	@preLocked
@@ -1314,6 +1332,11 @@ class CreatureObject extends TangibleObject {
 
 	public void removeAttackDelay() {
 		cooldownTimerMap.updateToCurrentTime("nextAttackDelay");
+	}
+	
+	@dirty
+	public boolean hasIncapTimer() {
+		return !cooldownTimerMap.isPast("incapTimer");
 	}
 
 	@local
@@ -2008,6 +2031,11 @@ class CreatureObject extends TangibleObject {
 	@read
 	public boolean isOnFire() {
 		return stateBitmask & CreatureState.ONFIRE;
+	}
+	
+	@read
+	public boolean isFeigningDeath() {
+		return stateBitmask & CreatureState.FEIGNDEATH;
 	}
 
 	@read
