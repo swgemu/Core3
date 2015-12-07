@@ -104,6 +104,7 @@ core3_IDLS =	autogen/server/zone/objects/tangible/misc/CustomIngredient.cpp \
 				autogen/server/zone/objects/tangible/eventperk/Jukebox.cpp \
 				autogen/server/zone/objects/tangible/eventperk/FlagGame.cpp \
 				autogen/server/zone/objects/tangible/eventperk/LotteryDroid.cpp \
+				autogen/server/zone/objects/tangible/eventperk/ScavengerChest.cpp \
 				autogen/server/zone/objects/player/sessions/LootLotterySession.cpp \
 				autogen/server/zone/objects/intangible/TheaterObject.cpp \
 				autogen/server/zone/objects/building/PoiBuilding.cpp \
@@ -442,6 +443,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/components/PlayerContainerComponent.cpp \
 		server/zone/objects/tangible/components/LootContainerComponent.cpp \
 		server/zone/objects/tangible/components/PlaceableLootContainerComponent.cpp \
+		server/zone/objects/tangible/components/ScavengerChestContainerComponent.cpp \
 		server/zone/objects/scene/components/ContainerComponent.cpp \
 		server/zone/objects/scene/components/DataObjectComponentReference.cpp \
 		server/zone/objects/scene/components/DataObjectComponent.cpp \
