@@ -80,12 +80,12 @@ eventPerkGamesSuppliesDeeds = {
 	--{ template = "race_droid_deed", cost = 10000, displayName = "@event_perk:pro_race_droid_game" },
 	--{ template = "scavenger_droid_deed", cost = 25000, displayName = "@event_perk:pro_scavenger_droid_game" },
 	--{ template = "shuttle_beacon", cost = 25000, displayName = "@event_perk:pro_shuttle_beacon_game" },
-	--{ template = "radiologically_shielded_chest_deed", cost = 15000, displayName = "@event_perk:pro_radiological_chest_game" },
-	--{ template = "skeleton_chest_deed", cost = 15000, displayName = "@event_perk:pro_skeleton_chest_deed" },
-	--{ template = "sparking_treasure_box_chest_deed", cost = 15000, displayName = "@event_perk:pro_sparking_chest_deed" },
-	--{ template = "technical_chest_deed", cost = 15000, displayName = "@event_perk:pro_technical_chest_game" },
-	--{ template = "treasure_box_chest_deed", cost = 15000, displayName = "@event_perk:pro_treasure_chest_game" },
-	--{ template = "treasure_crate_chest_deed", cost = 15000, displayName = "@event_perk:pro_crate_chest_game" },
+	{ template = "radiologically_shielded_chest_deed", cost = 15000, displayName = "@event_perk:pro_radiological_chest_game" },
+	{ template = "skeleton_chest_deed", cost = 15000, displayName = "@event_perk:pro_skeleton_chest_deed" },
+	{ template = "sparking_treasure_box_chest_deed", cost = 15000, displayName = "@event_perk:pro_sparking_chest_deed" },
+	{ template = "technical_chest_deed", cost = 15000, displayName = "@event_perk:pro_technical_chest_game" },
+	{ template = "treasure_box_chest_deed", cost = 15000, displayName = "@event_perk:pro_treasure_chest_game" },
+	{ template = "treasure_crate_chest_deed", cost = 15000, displayName = "@event_perk:pro_crate_chest_game" },
 }
 
 eventPerkPersonnelDeeds = {

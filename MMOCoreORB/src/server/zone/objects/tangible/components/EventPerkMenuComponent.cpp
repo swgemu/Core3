@@ -100,6 +100,10 @@ int EventPerkMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cre
 	}
 
 	if (selectedID == 128) {
+		if (sceneObject->getGameObjectType() == SceneObjectType::SCAVENGERCHEST && sceneObject->getContainerObjectsSize() > 0) {
+			player->sendSystemMessage("@event_perk:redeed_remove_items"); // The chest still contains items. You must empty the chest before it can be redeeded.
+			return 1;
+		}
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 		PlayerObject* ghost = player->getPlayerObject();
 

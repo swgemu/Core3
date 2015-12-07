@@ -1,0 +1,31 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.eventperk;
+
+import server.zone.objects.tangible.Container;
+import system.util.Vector;
+
+class ScavengerChest extends Container {
+	@dereferenced
+	protected Vector<unsigned long> lootedList;
+
+	public ScavengerChest() {
+		Logger.setLoggingName("ScavengerChest");
+	}
+
+	@dirty
+	public boolean isEventPerkItem() {
+		return true;
+	}
+
+	@preLocked
+	public void addtoLootedList(unsigned long playerID) {
+		lootedList.add(playerID);
+	}
+
+	public boolean isOnLootedList(unsigned long playerID) {
+		return lootedList.contains(playerID);
+	}
+}
