@@ -367,6 +367,7 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalLong("TUMBLING_STATE", CreatureState::TUMBLING);
 	setGlobalLong("RALLIED_STATE", CreatureState::RALLIED);
 	setGlobalLong("STUNNED_STATE", CreatureState::STUNNED);
+	setGlobalLong("FEIGNDEATH_STATE", CreatureState::FEIGNDEATH);
 	setGlobalLong("BLINDED_STATE", CreatureState::BLINDED);
 	setGlobalLong("DIZZY_STATE", CreatureState::DIZZY);
 	setGlobalLong("INTIMIDATED_STATE", CreatureState::INTIMIDATED);

@@ -23,6 +23,8 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		creature->setFeignedDeathState();
+
 		return SUCCESS;
 	}
 

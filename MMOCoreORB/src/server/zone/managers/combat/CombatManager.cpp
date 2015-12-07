@@ -306,6 +306,15 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		return 0;
 		break;
 	case HIT:
+		if(defender->hasBuff(CreatureState::FEIGNDEATH) && !defender->isFeignedDeath()) {
+			if(defender->canFeignDeath()) {
+				defender->sendSystemMessage("You've successfully feigned death.");
+				defender->feignDeath();
+			} else {
+				defender->removeBuff(CreatureState::FEIGNDEATH);
+				defender->sendSystemMessage("You've failed to feign death.");
+			}
+		}
 		break;
 	case BLOCK:
 		doBlock(attacker, weapon, defender, damage);

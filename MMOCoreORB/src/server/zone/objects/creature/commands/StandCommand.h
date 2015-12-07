@@ -28,6 +28,8 @@ public:
 		if (creature->hasAttackDelay())
 			return GENERALERROR;
 
+		creature->removeFeignedDeath(true);
+
 		if (creature->isDizzied() && System::random(100) < 85) {
 			creature->queueDizzyFallEvent();
 		} else {

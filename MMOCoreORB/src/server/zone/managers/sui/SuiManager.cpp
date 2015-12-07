@@ -68,6 +68,9 @@ SuiManager::SuiManager() : Logger("SuiManager") {
 }
 
 void SuiManager::handleSuiEventNotification(uint32 boxID, CreatureObject* player, uint32 eventIndex, Vector<UnicodeString>* args) {
+	if(player->isFeignedDeath())
+		return;
+
 	uint16 windowType = (uint16) boxID;
 
 	Locker _lock(player);

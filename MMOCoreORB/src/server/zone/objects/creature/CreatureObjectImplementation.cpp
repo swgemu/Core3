@@ -111,6 +111,8 @@ void CreatureObjectImplementation::initializeTransientMembers() {
 }
 
 void CreatureObjectImplementation::initializeMembers() {
+	feignedDeath = false;
+
 	linkedCreature = NULL;
 	controlDevice = NULL;
 
@@ -1007,12 +1009,16 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 	if (damageType % 3 != 0 && newValue < 0) // secondaries never should go negative
 		newValue = 0;
 
+	//Just putting a hard cap here now that more attacks can be done with negative hp given feign death.
+	if(newValue < -300)
+		newValue = -300;
+
 	setHAM(damageType, newValue, notifyClient);
 
 	if (attacker == NULL)
 		attacker = asCreatureObject();
 
-	if (newValue <= 0)
+	if (newValue <= 0 && !feignedDeath)
 		notifyObjectDestructionObservers(attacker, newValue);
 
 	return 0;
@@ -2125,6 +2131,86 @@ float CreatureObjectImplementation::calculateBFRatio() {
 		return 0;
 	else
 		return ((((float) shockWounds) - 250.0f) / 1000.0f);
+}
+
+void CreatureObjectImplementation::removeFeignedDeath(bool removedByFeigner) {
+	int health = getHAM(CreatureAttribute::HEALTH);
+	int action = getHAM(CreatureAttribute::ACTION);
+	int mind = getHAM(CreatureAttribute::MIND);
+
+	if(removedByFeigner) {
+		if(health < 0)
+			setHAM(CreatureAttribute::HEALTH, 1, true);
+
+		if(action < 0)
+			setHAM(CreatureAttribute::ACTION, 1, true);
+
+		if(mind < 0)
+			setHAM(CreatureAttribute::MIND, 1, true);
+	} else {
+		int min = health < action ? health : action;
+		min = min < mind ? min : mind;
+
+		if(health < 0 || action < 0 || mind < 0) {
+			notifyObjectDestructionObservers(asCreatureObject(), min);
+		}
+	}
+
+	removeStateBuff(CreatureState::FEIGNDEATH);
+	setFeignedDeath(false);
+}
+
+void CreatureObjectImplementation::setFeignedDeath(bool val) {
+	feignedDeath = val;
+}
+
+bool CreatureObjectImplementation::canFeignDeath() {
+	int defenderCount = getDefenderList()->size();
+
+	if(defenderCount > 5)
+		defenderCount = 5;
+
+	//Wasn't sure what to use for these values so I subtracted 10% for each defender with a max loss of 50%
+	bool success = System::random(100) <= (100 - (defenderCount * 10));
+
+	return
+		hasBuff(CreatureState::FEIGNDEATH) &&
+		!isKneeling() &&
+		getHAM(CreatureAttribute::HEALTH) > 100 &&
+		getHAM(CreatureAttribute::ACTION) > 100 &&
+		getHAM(CreatureAttribute::MIND) > 100 &&
+		success;
+}
+
+void CreatureObjectImplementation::feignDeath() {
+	if(feignedDeath)
+		return;
+
+	feignedDeath = true;
+	setPosture(CreaturePosture::KNOCKEDDOWN);
+
+	Reference<Buff*> buff = getBuff(CreatureState::FEIGNDEATH);
+	buff->renew(std::numeric_limits<float>::max());
+}
+
+void CreatureObjectImplementation::setFeignedDeathState() {
+	uint64 feignDeathState = CreatureState::FEIGNDEATH;
+	int const durationSeconds = 15;
+	uint32 buffCRC = Long::hashCode(feignDeathState);
+
+	Reference<Buff*> buff = getBuff(buffCRC);
+	if (buff != NULL) {
+		Locker locker(buff);
+		if (buff->getTimeLeft() < durationSeconds) {
+			buff->renew(durationSeconds);
+			return;
+		}
+	}
+
+	Reference<StateBuff*> state = new StateBuff(asCreatureObject(), feignDeathState, durationSeconds);
+	Locker locker(state);
+
+	addBuff(state);
 }
 
 void CreatureObjectImplementation::setDizziedState(int durationSeconds) {
