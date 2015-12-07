@@ -640,7 +640,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 
 	CreatureObject* playerCreature = cast<CreatureObject*>( destructedObject);
 
-	if (playerCreature->isIncapacitated() || playerCreature->isDead())
+	if ((playerCreature->isIncapacitated() && !(playerCreature->isFeigningDeath())) || playerCreature->isDead())
 		return 1;
 
 	if (playerCreature->isRidingMount()) {
@@ -664,6 +664,9 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 	if ((destructor->isKiller() && isDefender) || ghost->getIncapacitationCounter() >= 3) {
 		killPlayer(destructor, playerCreature, 0);
 	} else {
+
+		playerCreature->clearState(CreatureState::FEIGNDEATH); // We got incapped for real - Remove the state so we can be DB'd
+
 		playerCreature->setCurrentSpeed(0);
 		playerCreature->setPosture(CreaturePosture::INCAPACITATED, true);
 		playerCreature->updateLocomotion();
@@ -681,12 +684,22 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		Reference<Task*> task = new PlayerIncapacitationRecoverTask(playerCreature, false);
 		playerCreature->addPendingTask("incapacitationRecovery", task, incapTime * 1000);
 
-		StringIdChatParameter stringId;
+		StringIdChatParameter toVictim;
 
-		stringId.setStringId("base_player", "prose_victim_incap");
-		stringId.setTT(destructor->getObjectID());
+		toVictim.setStringId("base_player", "prose_victim_incap");
+		toVictim.setTT(destructor->getObjectID());
 
-		playerCreature->sendSystemMessage(stringId);
+		playerCreature->sendSystemMessage(toVictim);
+
+
+		if(destructor->isPlayerCreature()) {
+			StringIdChatParameter toKiller;
+
+			toKiller.setStringId("base_player", "prose_target_incap");
+			toKiller.setTT(playerCreature->getObjectID());
+
+			destructor->asCreatureObject()->sendSystemMessage(toKiller);
+		}
 	}
 
 	return 0;

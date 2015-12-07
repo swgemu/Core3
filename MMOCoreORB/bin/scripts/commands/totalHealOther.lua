@@ -43,7 +43,7 @@
 
 TotalHealOtherCommand = {
         name = "totalhealother",
-	healStates = STUNNED_STATE + DIZZY_STATE + BLINDED_STATE + INTIMIDATED_STATE,
+	healStates = STUNNED_STATE + DIZZY_STATE + BLINDED_STATE + INTIMIDATED_STATE + FEIGNDEATH_STATE,
 	healDisease = 450,
 	healPoison = 450,
 	healBleeding = 450,

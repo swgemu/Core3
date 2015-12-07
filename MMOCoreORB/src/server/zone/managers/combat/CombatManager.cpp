@@ -60,7 +60,8 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 	if (!defender->isAttackableBy(attacker))
 		return false;
 
-	if (defender->isCreatureObject() && defender->asCreatureObject()->isIncapacitated())
+	CreatureObject *creo = defender->asCreatureObject();
+	if (creo != NULL && creo->isIncapacitated() && creo->isFeigningDeath() == false)
 		return false;
 
 	if (attacker->isPlayerCreature() && attacker->getPlayerObject()->isAFK())
@@ -304,8 +305,6 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	case MISS:
 		doMiss(attacker, weapon, defender, damage);
 		return 0;
-		break;
-	case HIT:
 		break;
 	case BLOCK:
 		doBlock(attacker, weapon, defender, damage);
@@ -2430,7 +2429,8 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 					continue;
 			}
 
-			if (tano->isCreatureObject() && tano->asCreatureObject()->isIncapacitated()) {
+			CreatureObject *creo = tano->asCreatureObject();
+			if (creo != NULL && creo->isFeigningDeath() == false && creo->isIncapacitated()) {
 				//error("object is incapacitated");
 				continue;
 			}
@@ -2541,7 +2541,8 @@ int CombatManager::doAreaCombatAction(TangibleObject* attacker, WeaponObject* we
 				continue;
 			}
 
-			if (tano->isCreatureObject() && tano->asCreatureObject()->isIncapacitated()) {
+			CreatureObject *creo = tano->asCreatureObject();
+			if (creo != NULL && creo->isFeigningDeath() == false && creo->isIncapacitated()) {
 				//error("object is incapacitated");
 				continue;
 			}
