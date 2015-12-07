@@ -176,7 +176,7 @@ uint32 DamageOverTime::initDot(CreatureObject* victim, CreatureObject* attacker)
 uint32 DamageOverTime::doBleedingTick(CreatureObject* victim, CreatureObject* attacker) {
 	// TODO: Do we try to resist again?
 	// we need to allow dots to tick while incapped, but not do damage
-	if (victim->isIncapacitated())
+	if (victim->isIncapacitated() && victim->isFeigningDeath() == false)
 		return 0;
 
 	uint32 attr = victim->getHAM(attribute);
@@ -212,7 +212,7 @@ uint32 DamageOverTime::doBleedingTick(CreatureObject* victim, CreatureObject* at
 
 uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attacker) {
 	// we need to allow dots to tick while incapped, but not do damage
-	if (victim->isIncapacitated())
+	if (victim->isIncapacitated() && victim->isFeigningDeath() == false)
 		return 0;
 
 	uint32 attr = victim->getHAM(attribute);
@@ -265,7 +265,7 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attack
 
 uint32 DamageOverTime::doPoisonTick(CreatureObject* victim, CreatureObject* attacker) {
 	// we need to allow dots to tick while incapped, but not do damage
-	if (victim->isIncapacitated())
+	if (victim->isIncapacitated() && victim->isFeigningDeath() == false)
 		return 0;
 
 	uint32 attr = victim->getHAM(attribute);
@@ -299,7 +299,7 @@ uint32 DamageOverTime::doPoisonTick(CreatureObject* victim, CreatureObject* atta
 
 uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim, CreatureObject* attacker) {
 	// we need to allow dots to tick while incapped, but not do damage
-	if (victim->isIncapacitated())
+	if (victim->isIncapacitated() && victim->isFeigningDeath() == false)
 		return 0;
 
 	int absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_disease")));
@@ -342,7 +342,7 @@ uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim, CreatureObject* att
 
 uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* attacker) {
 	// we need to allow dots to tick while incapped, but not do damage
-	if (victim->isIncapacitated())
+	if (victim->isIncapacitated() && victim->isFeigningDeath() == false)
 		return 0;
 
 	int damage = (int)(strength);
