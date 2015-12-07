@@ -1604,7 +1604,7 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 	if (isOnline()) {
 		CommandQueueActionVector* commandQueue = creature->getCommandQueue();
 
-		if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced()
+		if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced() && !creature->hasBuff(STRING_HASHCODE("private_feign_buff"))
 				&& (commandQueue->size() == 0) && creature->isNextActionPast() && !creature->isDead() && !creature->isIncapacitated()) {
 			creature->executeObjectControllerAction(STRING_HASHCODE("attack"), creature->getTargetID(), "");
 		}

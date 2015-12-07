@@ -73,6 +73,8 @@ public:
 
 			player->setPosture(CreaturePosture::UPRIGHT);
 
+			player->removeFeignedDeath();
+
 			if (ghost->getForcePowerMax() > 0 && ghost->getForcePower() < ghost->getForcePowerMax()) {
 				ghost->activateForcePowerRegen();
 			}
