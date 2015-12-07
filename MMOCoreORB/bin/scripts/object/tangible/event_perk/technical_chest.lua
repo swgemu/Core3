@@ -41,13 +41,12 @@
 --this exception also makes it possible to release a modified version
 
 
-object_tangible_deed_event_perk_treasure_box_chest_deed = object_tangible_deed_event_perk_shared_treasure_box_chest_deed:new {
-	templateType = EVENTPERKDEED,
-	gameObjectType = 8388615,
-	noTrade = 1,
-
-	generatedObjectTemplate = "object/tangible/event_perk/treasure_box_chest.iff",
-	perkType = STATIC,
+object_tangible_event_perk_technical_chest = object_tangible_container_drum_warren_drum_tech_chest:new {
+	gameObjectType = 16412,
+	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	dataObjectComponent = "EventPerkDataComponent",
+	attributeListComponent = "EventPerkAttributeListComponent",
+	containerComponent = {"cpp", "ScavengerChestContainerComponent"},
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_treasure_box_chest_deed, "object/tangible/deed/event_perk/treasure_box_chest_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_event_perk_technical_chest, "object/tangible/event_perk/technical_chest.iff")
