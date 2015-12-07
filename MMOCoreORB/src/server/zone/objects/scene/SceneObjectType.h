@@ -187,6 +187,7 @@ public:
 	const static int FLAGGAME = 0x4019;
 	const static int EVENTPERK = 0x401A;
 	const static int LOTTERYDROID = 0x401B;
+	const static int SCAVENGERCHEST = 0x401C;
 	/// end not in client ***************
 
 	const static int TOOL = 0x8000;

@@ -231,6 +231,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Jukebox>(SceneObjectType::JUKEBOX);
 	objectFactory.registerObject<FlagGame>(SceneObjectType::FLAGGAME);
 	objectFactory.registerObject<LotteryDroid>(SceneObjectType::LOTTERYDROID);
+	objectFactory.registerObject<ScavengerChest>(SceneObjectType::SCAVENGERCHEST);
 	objectFactory.registerObject<GamblingTerminal>(SceneObjectType::GAMBLINGTERMINAL);
 	objectFactory.registerObject<Terminal>(SceneObjectType::CLONING);
 
