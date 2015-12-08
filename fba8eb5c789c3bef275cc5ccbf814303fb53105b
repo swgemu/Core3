@@ -2,6 +2,74 @@
   "comments": [
     {
       "key": {
+        "uuid": "fa6b99d7_609b26ca",
+        "filename": "MMOCoreORB/bin/scripts/commands/animalAttack.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-08T00:54:17Z",
+      "side": 1,
+      "message": "Hmm, this speed seems to suggest something that I hadn\u0027t thought of before; Did you test to make sure that you have a 4s wait in the queue after using this command?",
+      "revId": "fba8eb5c789c3bef275cc5ccbf814303fb53105b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_00658ae0",
+        "filename": "MMOCoreORB/bin/scripts/commands/animalAttack.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-08T00:54:17Z",
+      "side": 1,
+      "message": "You should probably be using this skillmod in the skill check itself.",
+      "revId": "fba8eb5c789c3bef275cc5ccbf814303fb53105b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_a0613ed5",
+        "filename": "MMOCoreORB/bin/scripts/commands/animalAttack.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-08T00:54:17Z",
+      "side": 1,
+      "message": "If this is not used as a combat command, then you don\u0027t need attackType",
+      "revId": "fba8eb5c789c3bef275cc5ccbf814303fb53105b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_c05eb212",
+        "filename": "MMOCoreORB/bin/scripts/commands/animalAttack.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-08T00:54:17Z",
+      "side": 1,
+      "message": "You need to be checking range in the skill check, use this range value.",
+      "revId": "fba8eb5c789c3bef275cc5ccbf814303fb53105b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa6b99d7_206e8eca",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AnimalAttackCommand.h",
         "patchSetId": 3
