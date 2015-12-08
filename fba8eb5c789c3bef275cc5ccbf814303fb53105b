@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_206e8eca",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AnimalAttackCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-08T00:50:17Z",
+      "side": 1,
+      "message": "Don\u0027t simultaneously send a message and return INVALIDTARGET, only send a message with GENERALERROR. INVALIDTARGET produces it\u0027s own message.",
+      "revId": "fba8eb5c789c3bef275cc5ccbf814303fb53105b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_407382b1",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AnimalAttackCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-08T00:50:17Z",
+      "side": 1,
+      "message": "Use the string from the lua here to play the animation (it gets read in at server load).",
+      "revId": "fba8eb5c789c3bef275cc5ccbf814303fb53105b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
