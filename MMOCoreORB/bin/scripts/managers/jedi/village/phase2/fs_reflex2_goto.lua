@@ -48,9 +48,13 @@ function FsReflex2Goto:onLoggedIn(pCreatureObject)
 		return 1
 	end
 
-	CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_02_quest_fail_phase_done"); -- No logged out error message in string files, using phase change error instead
-	self:finish(pCreatureObject)
-	FsReflex2:failQuest(pCreatureObject)
+	if (VillageJediManagerTownship:getCurrentPhase() ~= 2) then
+		FsReflex2:doPhaseChangeFail(pCreatureObject)
+	else
+		CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_02_quest_fail_phase_done"); -- No logged out error message in string files, using phase change error instead
+		self:finish(pCreatureObject)
+		FsReflex2:failQuest(pCreatureObject)
+	end
 
 	return 1
 end

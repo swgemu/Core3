@@ -2,6 +2,7 @@ local Patrol = require("quest.tasks.patrol")
 local ObjectManager = require("managers.object.object_manager")
 local QuestManager = require("managers.quest.quest_manager")
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
+local VillageJediManagerTownship = require("managers.jedi.village.village_jedi_manager_township")
 require("utils.helpers")
 
 FsPatrol = Patrol:new {
@@ -157,10 +158,23 @@ function FsPatrol:onLoggedIn(pCreatureObject)
 		return 1
 	end
 
-	CreatureObject(pCreatureObject):sendSystemMessage("@fs_quest_village:combat_quest_failed_timeout");
-	self:failPatrol(pCreatureObject)
+	if (VillageJediManagerTownship:getCurrentPhase() ~= 1) then
+		self:doPhaseChangeFail(pCreatureObject)
+	else
+		CreatureObject(pCreatureObject):sendSystemMessage("@fs_quest_village:combat_quest_failed_timeout");
+		self:failPatrol(pCreatureObject)
+	end
 
 	return 1
+end
+
+function FsPatrol:doPhaseChangeFail(pCreatureObject)
+	if (not self:hasTaskStarted(pCreatureObject)) then
+		return
+	end
+
+	CreatureObject(pCreatureObject):sendSystemMessage("@fs_quest_village:combat_quest_failed_timeout");
+	self:finish(pCreatureObject)
 end
 
 return FsPatrol

@@ -713,6 +713,9 @@ bool SkillManager::fullfillsSkillPrerequisites(const String& skillName, Creature
 		return false;
 	}
 
+	if (ghost->isPrivileged())
+		return true;
+
 	if (skillName.beginsWith("force_sensitive")) { // Check for Force Sensitive boxes.
 		int index = skillName.indexOf("0");
 		if (index != -1) {

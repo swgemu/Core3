@@ -2,6 +2,7 @@ local ObjectManager = require("managers.object.object_manager")
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
 local QuestManager = require("managers.quest.quest_manager")
 local FsReflex2Goto = require("managers.jedi.village.phase2.fs_reflex2_goto")
+local FsReflex2Goback = require("managers.jedi.village.phase2.fs_reflex2_goback")
 local FsReflex2Theater = require("managers.jedi.village.phase2.fs_reflex2_theater")
 
 FsReflex2 = Object:new {}
@@ -86,6 +87,26 @@ end
 
 function FsReflex2:setFetchCount(pCreature, count)
 	writeScreenPlayData(pCreature, "VillageJediProgression", "FsReflex2Fetches", count)
+end
+
+function FsReflex2:doPhaseChangeFail(pCreature)
+	if (QuestManager.hasCompletedQuest(pCreature, QuestManager.quests.FS_REFLEX_FETCH_QUEST_04)) then
+		return
+	end
+
+	CreatureObject(pCreature):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_02_quest_fail_phase_done");
+
+	for i = 0, 6, 1 do
+		local questName = "fs_reflex_fetch_quest_0" .. i
+		local questID = getPlayerQuestID(questName)
+
+		QuestManager.resetQuest(pCreature, questID)
+	end
+
+	FsReflex2Goto:finish(pCreature)
+	FsReflex2Goback:finish(pCreature)
+	FsReflex2Theater:finish(pCreature)
+	deleteData(SceneObject(pCreature):getObjectID() .. ":failedWhipPhase1")
 end
 
 return FsReflex2

@@ -145,7 +145,7 @@ function FsMedicPuzzle:cureSymptoms(pPlayer, pNpc, pPack)
 		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_medic:npc_cured")
 		local villagerCount = self:getCuredVillagerCount(pPlayer)
 		self:setCuredVillagerCount(pPlayer, villagerCount + 1)
-		
+
 		for i = 0, self.totalSymptoms - 1, 1 do
 			deleteData(playerID .. ":fs_medic_puzzle_npc:" .. npcID .. ":symptom" .. i)
 		end
@@ -156,10 +156,33 @@ function FsMedicPuzzle:cureSymptoms(pPlayer, pNpc, pPack)
 end
 
 function FsMedicPuzzle:cleanUp(pPlayer)
-
 	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
 		playerObject:removeRewardedSchematic("object/draft_schematic/item/quest_item/fs_medic_puzzle_heal_pack.iff", true)
 	end)
+end
+
+function FsMedicPuzzle:doPhaseChange(pPlayer)
+	local hasActiveQuest = false
+	for i = 1, 3, 1 do
+		local questName = "fs_medic_puzzle_quest_0" .. i
+		local questID = getPlayerQuestID(questName)
+
+		if QuestManager.hasActiveQuest(pPlayer, questID) and not QuestManager.hasCompletedQuest(pPlayer, questID) then
+			hasActiveQuest = true
+			QuestManager.resetQuest(pPlayer, questID)
+		end
+	end
+
+	if QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_01) then
+		hasActiveQuest = false
+		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_FINISH)
+	end
+
+	if (hasActiveQuest) then
+		CreatureObject(pPlayer):sendSystemMessage("@fs_quest_village:combat_quest_failed_timeout")
+	end
+
+	self:cleanUp(pPlayer)
 end
 
 return FsMedicPuzzle
