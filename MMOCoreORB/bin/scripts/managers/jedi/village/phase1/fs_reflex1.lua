@@ -39,6 +39,28 @@ function FsReflex1:resetEscortStatus(pCreature)
 	QuestManager.resetQuest(pCreature, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_05)
 end
 
+function FsReflex1:doPhaseChangeFail(pCreature)
+	if (QuestManager.hasCompletedQuest(pCreature, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_00)) then
+		return
+	end
+
+	CreatureObject(pCreature):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_01_quest_fail_phase_done");
+
+	for i = 0, 7, 1 do
+		local questName = "fs_reflex_rescue_quest_0" .. i
+		local questID = getPlayerQuestID(questName)
+
+		if QuestManager.hasCompletedQuest(pCreature, questID) or QuestManager.hasActiveQuest(pCreature, questID) then
+			QuestManager.resetQuest(pCreature, questID)
+		end
+	end
+
+	local FsReflex1Theater = require("managers.jedi.village.phase1.fs_reflex1_theater")
+	FsReflex1Goto:finish(pCreature)
+	FsReflex1Theater:finish(pCreature)
+	deleteData(SceneObject(pCreature):getObjectID() .. ":failedWhipPhase1")
+end
+
 function FsReflex1:completeVillagerEscort(pCreature)
 	if (pCreature == nil) then
 		return

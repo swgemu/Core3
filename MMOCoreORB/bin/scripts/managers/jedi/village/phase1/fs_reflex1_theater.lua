@@ -2,6 +2,7 @@ local GoToTheater = require("quest.tasks.go_to_theater")
 local ObjectManager = require("managers.object.object_manager")
 local QuestManager = require("managers.quest.quest_manager")
 local SpawnMobiles = require("utils.spawn_mobiles")
+local VillageJediManagerTownship = require("managers.jedi.village.village_jedi_manager_township")
 
 require("utils.helpers")
 
@@ -75,9 +76,13 @@ function FsReflex1Theater:onLoggedIn(pCreatureObject)
 		return 1
 	end
 
-	CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_01_quest_fail_logout");
-	self:finish(pCreatureObject)
-	FsReflex1:failQuest(pCreatureObject)
+	if (VillageJediManagerTownship:getCurrentPhase() ~= 1) then
+		FsReflex1:doPhaseChangeFail(pCreatureObject)
+	else
+		CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_01_quest_fail_logout");
+		self:finish(pCreatureObject)
+		FsReflex1:failQuest(pCreatureObject)
+	end
 
 	return 1
 end
