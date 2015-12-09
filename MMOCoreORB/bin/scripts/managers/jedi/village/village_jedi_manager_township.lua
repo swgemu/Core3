@@ -1,6 +1,7 @@
 local ObjectManager = require("managers.object.object_manager")
 local ScreenPlay = require("screenplays.screenplay")
 local FsMedicPuzzle = require("managers.jedi.village.phase1.fs_medic_puzzle")
+local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
 
 require("screenplays.village.village_spawn_table")
 
@@ -61,6 +62,7 @@ function VillageJediManagerTownship:switchToNextPhase()
 	local phaseID = VillageJediManagerTownship.getCurrentPhaseID()
 	VillageJediManagerTownship:despawnMobiles(currentPhase)
 	VillageJediManagerTownship:despawnSceneObjects(currentPhase)
+	VillageJediManagerTownship:handlePhaseChangeActiveQuests(phaseID, currentPhase)
 
 	currentPhase = currentPhase + 1
 	if currentPhase > VILLAGE_TOTAL_NUMBER_OF_PHASES then
@@ -176,6 +178,51 @@ function VillageJediManagerTownship:despawnSceneObjects(currentPhase)
 			SceneObject(pObject):destroyObjectFromWorld()
 			deleteData("village:npc:object:" .. i)
 		end
+	end
+end
+
+function VillageJediManagerTownship:handlePhaseChangeActiveQuests(phaseID, currentPhase)
+	local pMap = VillageJediManagerCommon.getActiveQuestList(phaseID)
+
+	if (pMap == nil) then
+		return
+	end
+
+	local questMap = LuaQuestVectorMap(pMap)
+	local mapSize = questMap:getMapSize()
+
+	for i = 1, mapSize, 1 do
+		local playerID = tonumber(questMap:getMapKeyAtIndex(i - 1))
+
+		local pPlayer = getSceneObject(playerID)
+
+		if (pPlayer ~= nil) then
+			ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
+				if (playerObject:isOnline()) then
+					self:doOnlinePhaseChangeFails(pPlayer, currentPhase)
+				end
+			end)
+		end
+	end
+	
+	VillageJediManagerCommon.removeActiveQuestList(phaseID)
+end
+
+function VillageJediManagerTownship:doOnlinePhaseChangeFails(pCreature, currentPhase)
+	if (currentPhase == 1) then
+		local FsReflex1 = require("managers.jedi.village.phase1.fs_reflex1")
+		FsReflex1:doPhaseChangeFail(pCreature)
+
+		local FsPatrol = require("managers.jedi.village.phase1.fs_patrol")
+		FsPatrol:doPhaseChangeFail(pCreature)
+
+		FsMedicPuzzle:doPhaseChange(pCreature)
+	elseif (currentPhase == 2) then
+		local FsReflex2 = require("managers.jedi.village.phase2.fs_reflex2")
+		FsReflex2:doPhaseChangeFail(pCreature)
+
+		local FsSad = require("managers.jedi.village.phase2.fs_sad")
+		FsSad:doPhaseChangeFail(pCreature)
 	end
 end
 
