@@ -5,6 +5,9 @@ local Glowing = require("managers.jedi.village.intro.glowing")
 local Logger = require("utils.logger")
 local SithShadowEncounter = require("managers.jedi.village.intro.sith_shadow_encounter")
 local SithShadowIntroTheater = require("managers.jedi.village.intro.sith_shadow_intro_theater")
+local QuestManager = require("managers.quest.quest_manager")
+local FsSad = require("managers.jedi.village.phase2.fs_sad")
+local FsMedicPuzzle = require("managers.jedi.village.phase1.fs_medic_puzzle")
 require("managers.jedi.village.village_jedi_manager_township")
 
 jediManagerName = "VillageJediManager"
@@ -57,6 +60,21 @@ function VillageJediManager:onPlayerLoggedIn(pCreatureObject)
 	end
 
 	Glowing:onPlayerLoggedIn(pCreatureObject)
+
+	-- Any quests below are run from township because they are not a standard task
+	if (VillageJediManagerTownship:getCurrentPhase() ~= 1) then
+		if (QuestManager.hasActiveQuest(pCreatureObject, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_01) or
+			QuestManager.hasActiveQuest(pCreatureObject, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_02) or
+			QuestManager.hasActiveQuest(pCreatureObject, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_03)) then
+			FsMedicPuzzle:doPhaseChange(pCreatureObject)
+		end
+	elseif (VillageJediManagerTownship:getCurrentPhase() ~= 2) then
+		if (QuestManager.hasActiveQuest(pCreatureObject, QuestManager.quests.FS_QUESTS_SAD_TASKS)) then
+			FsSad:doPhaseChangeFail(pCreatureObject)
+		end
+	end
+
+
 end
 
 registerScreenPlay("VillageJediManager", true)

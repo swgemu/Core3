@@ -117,6 +117,29 @@ function FsSad:completeSeries(pPlayer, questID)
 	end
 end
 
+function FsSad:doPhaseChangeFail(pPlayer)
+	if (not QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_QUESTS_SAD_TASKS) or QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_QUESTS_SAD_FINISH)) then
+		return
+	end
+
+	CreatureObject(pPlayer):sendSystemMessage("@quest/quest_journal/fs_quests_sad:wrong_phase")
+
+	if QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_QUESTS_SAD_TASKS) or QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_QUESTS_SAD_TASKS) then
+		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_QUESTS_SAD_TASKS)
+	end
+
+	for i = 1, 8, 1 do
+		local questName = "fs_quests_sad_task" .. i
+		local questID = getPlayerQuestID(questName)
+
+		if QuestManager.hasCompletedQuest(pPlayer, questID) or QuestManager.hasActiveQuest(pPlayer, questID) then
+			QuestManager.resetQuest(pPlayer, questID)
+		end
+	end
+	
+	SuiRadiationSensor:removeSensor(pPlayer)
+end
+
 function FsSad:finishOldTask(pPlayer, questNum)
 	local FsSadTheater = self.theaterTable[questNum]
 
