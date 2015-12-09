@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_402b8230",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-09T04:29:45Z",
+      "side": 1,
+      "message": "move all this to an observer that can trigger all the logic that you need.",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 3
+      },
+      "revId": "20c292bd9f6e284fe2fdb5d8144c9251417e6c4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_c016b2f1",
+        "filename": "MMOCoreORB/src/server/zone/managers/sui/SuiManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-09T04:29:45Z",
+      "side": 1,
+      "message": "I think this is too overarching, The patch notes seem to indicate that the SUI disabling was pretty specific to GCW/faction terminal stuff. This should probably go into those specific SUIs.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 9
+      },
+      "revId": "20c292bd9f6e284fe2fdb5d8144c9251417e6c4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_00f6ead7",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-09T04:29:45Z",
+      "side": 1,
+      "message": "I know you said you need to separate waiting for FD and actual FD, but I still don\u0027t see a reason to add a boolean here: instead use an observer to set the FD state when they get hit.",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "20c292bd9f6e284fe2fdb5d8144c9251417e6c4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_4014e2f4",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-09T04:29:45Z",
+      "side": 1,
+      "message": "why are you capping the negative HAM value? Furthermore, after looking at the mantis report, as of pub 13, you could be incapped (and subsequently DB\u0027d) while FD, so this invalidates this code and the code on line 1021.",
+      "range": {
+        "startLine": 1012,
+        "startChar": 0,
+        "endLine": 1014,
+        "endChar": 18
+      },
+      "revId": "20c292bd9f6e284fe2fdb5d8144c9251417e6c4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_001d8a0f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1021,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-09T04:29:45Z",
+      "side": 1,
+      "message": "not valid per pub 13",
+      "range": {
+        "startLine": 1021,
+        "startChar": 18,
+        "endLine": 1021,
+        "endChar": 35
+      },
+      "revId": "20c292bd9f6e284fe2fdb5d8144c9251417e6c4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_a0029eb2",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2157,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-09T04:29:45Z",
+      "side": 1,
+      "message": "evidence from the links on mantis suggest that you got incapped if you stood up from FD with negative HAM (pre-pub13), but the pub 13 changes invalidate this as well.",
+      "range": {
+        "startLine": 2137,
+        "startChar": 0,
+        "endLine": 2157,
+        "endChar": 2
+      },
+      "revId": "20c292bd9f6e284fe2fdb5d8144c9251417e6c4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_602c864b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2167,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-09T04:29:45Z",
+      "side": 1,
+      "message": "I think you have this backwards. You should add an observer once you hit FD and then run a command when a mob hits you and use the command system\u0027s in place checks (since this is exactly like executing a command). Doing it this way removes the spam/system message apparatus available in the command structure, which is something you are missing.",
+      "range": {
+        "startLine": 2167,
+        "startChar": 0,
+        "endLine": 2167,
+        "endChar": 50
+      },
+      "revId": "20c292bd9f6e284fe2fdb5d8144c9251417e6c4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_c0ff92a9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2174,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-09T04:29:45Z",
+      "side": 1,
+      "message": "This is probably a good guess and can be tested later. I\u0027d leave this like it is.",
+      "range": {
+        "startLine": 2170,
+        "startChar": 0,
+        "endLine": 2174,
+        "endChar": 68
+      },
+      "revId": "20c292bd9f6e284fe2fdb5d8144c9251417e6c4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_e01f3608",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2193,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-09T04:29:45Z",
+      "side": 1,
+      "message": "Why is this buff renewed? What does it do for you, especially when you are creating a StateBuff in setFeignedDeathState()? Even if this is valid, what if buff is NULL?",
+      "range": {
+        "startLine": 2192,
+        "startChar": 0,
+        "endLine": 2193,
+        "endChar": 48
+      },
+      "revId": "20c292bd9f6e284fe2fdb5d8144c9251417e6c4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_a0193e24",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2213,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-09T04:29:45Z",
+      "side": 1,
+      "message": "This is a more work than necessary (and it\u0027s kind of hard to follow). Instead of maintaining a double buff system, use an observer that will add the state buff when it triggers. Then have the state buff give all the necessary mods.",
+      "range": {
+        "startLine": 2197,
+        "startChar": 0,
+        "endLine": 2213,
+        "endChar": 16
+      },
+      "revId": "20c292bd9f6e284fe2fdb5d8144c9251417e6c4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_20268e69",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/KneelCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-09T04:29:45Z",
+      "side": 1,
+      "message": "The isFD\u0027d check should happen in the stateMask, the valid states for commands are listed in the client which we load automatically.",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 62
+      },
+      "revId": "20c292bd9f6e284fe2fdb5d8144c9251417e6c4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
