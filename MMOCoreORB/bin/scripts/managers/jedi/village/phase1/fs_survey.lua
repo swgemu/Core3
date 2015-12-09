@@ -17,6 +17,10 @@ function FsSurvey:sampleEventHandler(pPlayer, pResourceSpawn, density)
 	end
 
 	local phase = VillageJediManagerTownship:getCurrentPhase()
+	
+	if (phase ~= 2 and phase ~= 3) then
+		return 0
+	end
 
 	local questName = self:hasSurveyorQuest(pPlayer, phase)
 
