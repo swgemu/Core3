@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "fa6b99d7_a0f05eca",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-09T05:21:50Z",
+      "side": 1,
+      "message": "Well, when you are FD, there is no timer; it sits at 0 (after the initial 5s command delay). But all of this is moot with the pub 13 changes, since if you go less than 0 HAM, you get incapped like normal.",
+      "parentUuid": "fa6b99d7_80d8ba54",
+      "range": {
+        "startLine": 1012,
+        "startChar": 0,
+        "endLine": 1014,
+        "endChar": 18
+      },
+      "revId": "20c292bd9f6e284fe2fdb5d8144c9251417e6c4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa6b99d7_001d8a0f",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
         "patchSetId": 2
@@ -269,6 +293,30 @@
       "side": 1,
       "message": "So when you activate Feign Death skill, it puts the State icon on your character, and it disappears if it is never triggered by an attack. But if it is triggered by an attack, the state should stay on the character until they exit it themselves or it is healed off.",
       "parentUuid": "fa6b99d7_e01f3608",
+      "range": {
+        "startLine": 2192,
+        "startChar": 0,
+        "endLine": 2193,
+        "endChar": 48
+      },
+      "revId": "20c292bd9f6e284fe2fdb5d8144c9251417e6c4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_00e4aa0b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2193,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-09T05:21:50Z",
+      "side": 1,
+      "message": "But this isn\u0027t the state buff, this is the regular buff. The state icon comes from the state buff. Also, I think we have an apparatus for neverending buffs, but I\u0027m not 100% certain about that.",
+      "parentUuid": "fa6b99d7_40e2a204",
       "range": {
         "startLine": 2192,
         "startChar": 0,
