@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "fa6b99d7_80d8ba54",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1821
+      },
+      "writtenOn": "2015-12-09T05:16:55Z",
+      "side": 1,
+      "message": "The reason I put a cap here is to prevent the number from becoming larger than an 32bit integer can hold. The max incap timer is 60 seconds at one second per 5 damage, so I chose a value that would be the max incap timer, which is 300. If you have any suggestions or reasons why a cap would be a bad idea, I can change it.",
+      "parentUuid": "fa6b99d7_4014e2f4",
+      "range": {
+        "startLine": 1012,
+        "startChar": 0,
+        "endLine": 1014,
+        "endChar": 18
+      },
+      "revId": "20c292bd9f6e284fe2fdb5d8144c9251417e6c4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa6b99d7_001d8a0f",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
         "patchSetId": 2
@@ -105,6 +129,30 @@
       "writtenOn": "2015-12-09T04:29:45Z",
       "side": 1,
       "message": "not valid per pub 13",
+      "range": {
+        "startLine": 1021,
+        "startChar": 18,
+        "endLine": 1021,
+        "endChar": 35
+      },
+      "revId": "20c292bd9f6e284fe2fdb5d8144c9251417e6c4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_20dd2e43",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1021,
+      "author": {
+        "id": 1821
+      },
+      "writtenOn": "2015-12-09T05:16:55Z",
+      "side": 1,
+      "message": "I\u0027ll read the notes on pub13, I seemed to have missed that.",
+      "parentUuid": "fa6b99d7_001d8a0f",
       "range": {
         "startLine": 1021,
         "startChar": 18,
@@ -197,6 +245,30 @@
       "writtenOn": "2015-12-09T04:29:45Z",
       "side": 1,
       "message": "Why is this buff renewed? What does it do for you, especially when you are creating a StateBuff in setFeignedDeathState()? Even if this is valid, what if buff is NULL?",
+      "range": {
+        "startLine": 2192,
+        "startChar": 0,
+        "endLine": 2193,
+        "endChar": 48
+      },
+      "revId": "20c292bd9f6e284fe2fdb5d8144c9251417e6c4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_40e2a204",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2193,
+      "author": {
+        "id": 1821
+      },
+      "writtenOn": "2015-12-09T05:16:55Z",
+      "side": 1,
+      "message": "So when you activate Feign Death skill, it puts the State icon on your character, and it disappears if it is never triggered by an attack. But if it is triggered by an attack, the state should stay on the character until they exit it themselves or it is healed off.",
+      "parentUuid": "fa6b99d7_e01f3608",
       "range": {
         "startLine": 2192,
         "startChar": 0,
