@@ -168,11 +168,7 @@ void ForceShrineMenuComponent::findTrainerObject(CreatureObject* player, PlayerO
 			continue;
 		}
 
-		if (!trainerCreo->isTrainerCreature()) {
-			continue;
-		}
-
-                ManagedReference<CityRegion*> city = trainerCreo->getCityRegion();
+		ManagedReference<CityRegion*> city = trainerCreo->getCityRegion();
 
 		// Make sure it's not a player-city trainer.
 		if (city != NULL && !city->isClientRegion()){
