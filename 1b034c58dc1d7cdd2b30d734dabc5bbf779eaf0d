@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_00c7ca46",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_common.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T08:18:52Z",
+      "side": 1,
+      "message": "I don\u0027t think you\u0027d want to remove them from the list each time you check if they\u0027ve completed a quest this phase.",
+      "revId": "1b034c58dc1d7cdd2b30d734dabc5bbf779eaf0d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_c0c0f22c",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_common.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T08:18:52Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to tostring playerID twice. Once should suffice. You do the same in the remove function below.",
+      "revId": "1b034c58dc1d7cdd2b30d734dabc5bbf779eaf0d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_a0c37e37",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_common.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T08:18:52Z",
+      "side": 1,
+      "message": "Why not just return if it\u0027s nil? There\u0027s really no point in creating the map to try and remove from it. You know the player won\u0027t be in the map.",
+      "revId": "1b034c58dc1d7cdd2b30d734dabc5bbf779eaf0d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_60dd6614",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_township.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T08:18:52Z",
+      "side": 1,
+      "message": "You should delete the map once you\u0027re done with it.",
+      "revId": "1b034c58dc1d7cdd2b30d734dabc5bbf779eaf0d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_20b0cedc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase2/whip_phase2_conv_handler.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T08:18:52Z",
+      "side": 1,
+      "message": "Would it be better to use \u003c 5?",
+      "revId": "1b034c58dc1d7cdd2b30d734dabc5bbf779eaf0d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_80bbdac3",
+        "filename": "MMOCoreORB/src/server/zone/managers/skill/SkillManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T08:18:52Z",
+      "side": 1,
+      "message": "I would use isPrivileged() here.",
+      "revId": "1b034c58dc1d7cdd2b30d734dabc5bbf779eaf0d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
