@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_003caa2e",
+        "filename": "MMOCoreORB/bin/scripts/loot/groups/npc/canyon_corsair_common.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T09:47:00Z",
+      "side": 1,
+      "message": "Don\u0027t add quest rewards to common loot.",
+      "revId": "d61b76131627f444ea2319e79338f28bc32b36cd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_e03e5629",
+        "filename": "MMOCoreORB/bin/scripts/loot/groups/npc/dark_jedi_common.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T09:47:00Z",
+      "side": 1,
+      "message": "Are the stat ranges on the foraged item correct for common loot as well? If not, you\u0027ll want to create a new loot item to use here.",
+      "revId": "d61b76131627f444ea2319e79338f28bc32b36cd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_403aa237",
+        "filename": "MMOCoreORB/bin/scripts/loot/groups/npc/tusken_common.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T09:47:00Z",
+      "side": 1,
+      "message": "Don\u0027t use quest rewards as common loot.",
+      "revId": "d61b76131627f444ea2319e79338f28bc32b36cd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
