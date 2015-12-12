@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_20352e46",
+        "filename": "MMOCoreORB/bin/scripts/mobile/dantooine/force_crystal_hunter.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T09:49:15Z",
+      "side": 1,
+      "message": "What is this supposed to be?",
+      "revId": "a99aa76a2508555ae302395d884fdc3e09750ca7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_602b26ec",
+        "filename": "MMOCoreORB/bin/scripts/mobile/dantooine/kunga_clan_leader.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T09:49:15Z",
+      "side": 1,
+      "message": "Take it from junk instead (like you did for most of the others).",
+      "revId": "a99aa76a2508555ae302395d884fdc3e09750ca7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_8030ba57",
+        "filename": "MMOCoreORB/bin/scripts/mobile/dantooine/kunga_rockshaper.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T09:49:15Z",
+      "side": 1,
+      "message": "Take it from junk instead.",
+      "revId": "a99aa76a2508555ae302395d884fdc3e09750ca7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
