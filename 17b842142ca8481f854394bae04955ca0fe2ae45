@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_e07bb627",
+        "filename": "MMOCoreORB/bin/scripts/mobile/rori/black_sun_initiate.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T07:32:15Z",
+      "side": 1,
+      "message": "When creating stats for new mobs that we don\u0027t have info on, it\u0027s best to look at other existing mobs of the same level that we do have info on. Other level 17 mobs have 0.31 or 0.32 chanceHit.",
+      "revId": "17b842142ca8481f854394bae04955ca0fe2ae45",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_00790a2f",
+        "filename": "MMOCoreORB/bin/scripts/mobile/rori/black_sun_initiate.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T07:32:15Z",
+      "side": 1,
+      "message": "Other level 17 mobs that have a 0.31 chanceHit seem to have a 170-180 damage range. Mobs with a 0.32 chanceHit seem to have a 160-170 damage range. It\u0027s possible that\u0027s there\u0027s more variance, but those two damage ranges seems to be fine for this level.",
+      "revId": "17b842142ca8481f854394bae04955ca0fe2ae45",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_a075be33",
+        "filename": "MMOCoreORB/bin/scripts/mobile/rori/black_sun_initiate.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T07:32:15Z",
+      "side": 1,
+      "message": "It looks like 1102 is the standard baseXp for level 17 mobs.",
+      "revId": "17b842142ca8481f854394bae04955ca0fe2ae45",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_c0723249",
+        "filename": "MMOCoreORB/bin/scripts/mobile/rori/black_sun_initiate.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T07:32:15Z",
+      "side": 1,
+      "message": "Looking at other level 17 mobs, it appears that there are a few possible ham ranges at that level: 2500-2900, 2900-3500, 3500-4300, 4100-5000.\n\n3500-4300 seems to be the most common. I would use it. I suspect that those that are different have other attributes that are supposed to make up for it (abnormally low/high resists or something).",
+      "revId": "17b842142ca8481f854394bae04955ca0fe2ae45",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_608fa624",
+        "filename": "MMOCoreORB/bin/scripts/mobile/rori/black_sun_minion.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T07:32:15Z",
+      "side": 1,
+      "message": "Other level 21 mobs have 0.32 - 0.34",
+      "revId": "17b842142ca8481f854394bae04955ca0fe2ae45",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_80943a38",
+        "filename": "MMOCoreORB/bin/scripts/mobile/rori/black_sun_minion.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T07:32:15Z",
+      "side": 1,
+      "message": "Other level 21 mobs have either 170-180, 180-190, or 190-200.",
+      "revId": "17b842142ca8481f854394bae04955ca0fe2ae45",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_2099ae6e",
+        "filename": "MMOCoreORB/bin/scripts/mobile/rori/black_sun_minion.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T07:32:15Z",
+      "side": 1,
+      "message": "Most level 21 mobs have 1803 baseXp",
+      "revId": "17b842142ca8481f854394bae04955ca0fe2ae45",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_409e2258",
+        "filename": "MMOCoreORB/bin/scripts/mobile/rori/black_sun_minion.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T07:32:15Z",
+      "side": 1,
+      "message": "Looking at other mobs of this level and the screenshot you found, I\u0027d use 5400-6600 for the ham range.",
+      "revId": "17b842142ca8481f854394bae04955ca0fe2ae45",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_e0a2d699",
+        "filename": "MMOCoreORB/bin/scripts/mobile/rori/black_sun_smuggler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T07:32:15Z",
+      "side": 1,
+      "message": "0.32 or 0.33",
+      "revId": "17b842142ca8481f854394bae04955ca0fe2ae45",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_00a02a8f",
+        "filename": "MMOCoreORB/bin/scripts/mobile/rori/black_sun_smuggler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T07:32:15Z",
+      "side": 1,
+      "message": "160-170, 170-180, or 180-190",
+      "revId": "17b842142ca8481f854394bae04955ca0fe2ae45",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_a0acde8d",
+        "filename": "MMOCoreORB/bin/scripts/mobile/rori/black_sun_smuggler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T07:32:15Z",
+      "side": 1,
+      "message": "1426 xp",
+      "revId": "17b842142ca8481f854394bae04955ca0fe2ae45",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_c0a9d27c",
+        "filename": "MMOCoreORB/bin/scripts/mobile/rori/black_sun_smuggler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T07:32:15Z",
+      "side": 1,
+      "message": "I\u0027d probably use 4500-5500 based on the ranges other level 19 mobs have.",
+      "revId": "17b842142ca8481f854394bae04955ca0fe2ae45",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
