@@ -295,6 +295,9 @@ includeFile("groups/theme_park_reward/theme_park_reward_rebel_nien_nunb.lua")
 includeFile("groups/theme_park_reward/theme_park_reward_rebel_qualdo_herm.lua")
 includeFile("groups/theme_park_reward/theme_park_reward_rebel_wedge_antilles.lua")
 
+--village of aurilia sub-folder
+includeFile("groups/village_of_aurilia/village_resources.lua")
+
 -- weapon sub-folder
 includeFile("groups/weapon/carbines.lua")
 includeFile("groups/weapon/grenades_looted.lua")
