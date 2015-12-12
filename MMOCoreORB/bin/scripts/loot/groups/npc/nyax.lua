@@ -7,8 +7,9 @@ nyax = {
 	lootItems = {
 		{itemTemplate = "attachment_armor", weight = 1666667},
 		{itemTemplate = "attachment_clothing", weight = 1666667},
-		{itemTemplate = "nyax_necklace", weight = 3333333},
-		{itemTemplate = "nyax_sword", weight = 3333333}
+		{itemTemplate = "nyax_necklace", weight = 2033333},
+		{itemTemplate = "nyax_sword", weight = 3033333},
+		{itemTemplate = "rifle_lightning", weight = 1600000}
 	}
 }
 
