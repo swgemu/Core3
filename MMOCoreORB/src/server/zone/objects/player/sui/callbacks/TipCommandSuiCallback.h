@@ -16,15 +16,14 @@ private:
 	int amount;
 
 public:
-	TipCommandSuiCallback(ZoneServer* server, CreatureObject* target,
-			int amount) :
+	TipCommandSuiCallback(ZoneServer* server, CreatureObject* target, int amount) :
 		SuiCallback(server) {
 		this->targetPlayer = target;
 		this->amount = amount;
 	}
 
-	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed,
-			Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
+		bool cancelPressed = (eventIndex == 1);
 
 		if (!suiBox->isMessageBox() || cancelPressed) {
 			return;

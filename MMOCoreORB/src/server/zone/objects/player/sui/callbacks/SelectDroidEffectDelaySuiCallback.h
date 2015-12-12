@@ -19,16 +19,14 @@ class SelectDroidEffectDelaySuiCallback : public SuiCallback, public Logger {
 	int slotIndex;
 
 public:
-	SelectDroidEffectDelaySuiCallback(ZoneServer* serv,
-								      DroidEffectsModuleDataComponent* module,
-								      String effectName,
-								      int slotIndex) : SuiCallback(serv) {
+	SelectDroidEffectDelaySuiCallback(ZoneServer* serv, DroidEffectsModuleDataComponent* module, String effectName, int slotIndex) : SuiCallback(serv) {
 		this->module = module;
 		this->effectName = effectName;
 		this->slotIndex = slotIndex;
 	}
 
-	void run(CreatureObject* player, SuiBox* sui, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* sui, uint32 eventIndex, Vector<UnicodeString>* args) {
+		bool cancelPressed = (eventIndex == 1);
 
 		if (!sui->isInputBox() || cancelPressed || args->size() < 1 || module == NULL)
 			return;

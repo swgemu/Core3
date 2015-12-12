@@ -21,7 +21,7 @@ public:
 		screenPlayCallback = callback;
 	}
 
-	void run(CreatureObject* creature, SuiBox* sui, bool cancePressed, Vector<UnicodeString>* args);
+	void run(CreatureObject* creature, SuiBox* sui, uint32 eventIndex, Vector<UnicodeString>* args);
 };
 
 #endif /* LUASUICALLBACK_H_ */

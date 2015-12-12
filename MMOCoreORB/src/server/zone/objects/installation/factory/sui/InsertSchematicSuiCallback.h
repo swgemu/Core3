@@ -19,17 +19,18 @@ public:
 		: SuiCallback(server) {
 	}
 
-	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
+		bool cancelPressed = (eventIndex == 1);
 
 		if(suiBox->getWindowType() == SuiWindowType::FACTORY_SCHEMATIC2BUTTON)
-			handleInsertFactorySchem2(player, suiBox, cancelPressed, args);
+			handleInsertFactorySchem2(player, suiBox, eventIndex, args);
 
 		if(suiBox->getWindowType() == SuiWindowType::FACTORY_SCHEMATIC3BUTTON)
-			handleInsertFactorySchem3(player, suiBox, cancelPressed, args);
+			handleInsertFactorySchem3(player, suiBox, eventIndex, args);
 	}
 
-	void handleInsertFactorySchem2(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-		if (!suiBox->isListBox() || cancel != 0)
+	void handleInsertFactorySchem2(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
+		if (!suiBox->isListBox() || eventIndex == 1)
 			return;
 
 		if (args->size() < 1)
@@ -53,8 +54,8 @@ public:
 		factory->handleInsertFactorySchem(player, schematic);
 	}
 
-	void handleInsertFactorySchem3(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-		if (!suiBox->isListBox() || cancel != 0)
+	void handleInsertFactorySchem3(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
+		if (!suiBox->isListBox() || eventIndex == 1)
 			return;
 
 		if (args->size() < 2)

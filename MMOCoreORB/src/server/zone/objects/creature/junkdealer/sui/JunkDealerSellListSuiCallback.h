@@ -20,8 +20,10 @@ public:
 
 	}
 
-	void run(CreatureObject* player, SuiBox* suiBox, bool cancel, Vector<UnicodeString>* args) {
-		if (!suiBox->isListBox() || cancel != 0)
+	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
+		bool cancelPressed = (eventIndex == 1);
+
+		if (!suiBox->isListBox() || cancelPressed != 0)
 			return;
 
 		if (args->size() < 2)
@@ -32,7 +34,7 @@ public:
 
 		if (otherPressed)
 			player->info("Sell All");
-		else if (cancel == 0)
+		else if (cancelPressed)
 			player->info("Sell");
 		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");

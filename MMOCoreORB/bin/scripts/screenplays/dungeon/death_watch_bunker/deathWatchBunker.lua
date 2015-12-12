@@ -1355,7 +1355,7 @@ function DeathWatchBunkerScreenPlay:checkTime(pCreature)
 
 	local currentTime = os.time()
 	local receivedTime = readScreenPlayData(pCreature, "DeathWatchBunkerScreenPlay", "time")
-	
+
 	-- Fix for people who had done the quest prior to Publish 7
 	if (receivedTime == "") then
 		receivedTime = readScreenPlayData(pCreature, "DWB", "time")
@@ -1617,11 +1617,12 @@ function DeathWatchBunkerScreenPlay:getObjOwner(pObj)
 	return nil
 end
 
-function DeathWatchBunkerScreenPlay:craftingConfirmCallback(pCreature, pSui, cancelPressed)
+function DeathWatchBunkerScreenPlay:craftingConfirmCallback(pCreature, pSui, eventIndex)
+	local cancelPressed = (eventIndex == 1)
 	local suiBox = LuaSuiBox(pSui)
 	local pUsingObject = suiBox:getUsingObject()
 
-	if (pUsingObject == nil) then
+	if (pUsingObject == nil or cancelPressed) then
 		return 0
 	end
 

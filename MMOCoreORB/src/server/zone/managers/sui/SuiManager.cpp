@@ -70,6 +70,7 @@ SuiManager::SuiManager() : Logger("SuiManager") {
 void SuiManager::handleSuiEventNotification(uint32 boxID, CreatureObject* player, uint32 eventIndex, Vector<UnicodeString>* args) {
 	uint16 windowType = (uint16) boxID;
 
+	printf("Got event index %d \n", eventIndex);
 	Locker _lock(player);
 
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
@@ -119,7 +120,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, CreatureObject* player
 				}
 			}
 		}
-
 		callback->run(player, suiBox, eventIndex, args);
 		return;
 	}

@@ -19,7 +19,9 @@ public:
 		: SuiCallback(server) {
 	}
 
-	void run(CreatureObject* newLeader, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* newLeader, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
+		bool cancelPressed = (eventIndex == 1);
+
 		ManagedReference<SceneObject*> sceoTerminal = suiBox->getUsingObject().get();
 		if (sceoTerminal == NULL || !sceoTerminal->isTerminal())
 			return;

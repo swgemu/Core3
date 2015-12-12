@@ -13,7 +13,9 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/sessions/CityRemoveMilitiaSession.h"
 
-void CityManageMilitiaSuiCallback::run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+void CityManageMilitiaSuiCallback::run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
+	bool cancelPressed = (eventIndex == 1);
+
 	if (!suiBox->isListBox() || player == NULL || cancelPressed || args->size() <= 0)
 		return;
 

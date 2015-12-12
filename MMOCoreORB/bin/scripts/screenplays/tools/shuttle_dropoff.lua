@@ -186,7 +186,9 @@ function ShuttleDropoff:showMainUI(pPlayer)
 	sui.sendTo(pPlayer)
 end
 
-function ShuttleDropoff:suiShuttleDropoffMainCallback(pPlayer, pSui, cancelPressed, args)
+function ShuttleDropoff:suiShuttleDropoffMainCallback(pPlayer, pSui, eventIndex, args)
+	local cancelPressed = (eventIndex == 1)
+
 	if (cancelPressed) then
 		return
 	end
@@ -275,7 +277,9 @@ function ShuttleDropoff:showSetupUI(pPlayer)
 	sui.sendTo(pPlayer)
 end
 
-function ShuttleDropoff:suiShuttleDropoffSetupCallback(pPlayer, pSui, cancelPressed, args)
+function ShuttleDropoff:suiShuttleDropoffSetupCallback(pPlayer, pSui, eventIndex, args)
+	local cancelPressed = (eventIndex == 1)
+
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local curStep = readData(playerID .. ":ShuttleDropoff:setupStep")
 

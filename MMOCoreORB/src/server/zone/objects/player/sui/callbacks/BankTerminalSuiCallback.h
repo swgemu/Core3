@@ -15,7 +15,9 @@ public:
 	BankTerminalSuiCallback(ZoneServer* serv) : SuiCallback(serv) {
 	}
 
-	void run(CreatureObject* player, SuiBox* sui, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* sui, uint32 eventIndex, Vector<UnicodeString>* args) {
+		bool cancelPressed = (eventIndex == 1);
+
 		if (!sui->isBankTransferBox() || player == NULL || cancelPressed) {
 			return;
 		}

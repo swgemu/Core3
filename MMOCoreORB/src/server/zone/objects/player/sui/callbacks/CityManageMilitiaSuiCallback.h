@@ -36,7 +36,7 @@ public:
 		cityRegion = city;
 	}
 
-	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args);
+	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args);
 };
 
 #endif /* CITYMANAGEMILITIASUICALLBACK_H_ */
