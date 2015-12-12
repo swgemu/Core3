@@ -22,14 +22,13 @@ class SelectDroidEffectSuiCallback : public SuiCallback, public Logger {
 	int slotIndex;
 
 public:
-	SelectDroidEffectSuiCallback(ZoneServer* serv,
-								 DroidEffectsModuleDataComponent* module,
-								 int slotIndex) : SuiCallback(serv) {
+	SelectDroidEffectSuiCallback(ZoneServer* serv, DroidEffectsModuleDataComponent* module, int slotIndex) : SuiCallback(serv) {
 		this->module = module;
 		this->slotIndex = slotIndex;
 	}
 
-	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
+		bool cancelPressed = (eventIndex == 1);
 
 		if( !suiBox->isListBox() || module == NULL )
 			return;

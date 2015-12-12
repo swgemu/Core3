@@ -24,7 +24,8 @@ public:
 	SelectWaypointSuiCallback(ZoneServer* serv,DroidMerchantModuleDataComponent* module) : SuiCallback(serv), module(module), slotIndex(0) {
 	}
 
-	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
+		bool cancelPressed = (eventIndex == 1);
 
 		if( !suiBox->isListBox() || module == NULL )
 			return;

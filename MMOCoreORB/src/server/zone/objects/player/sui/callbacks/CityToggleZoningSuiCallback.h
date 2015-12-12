@@ -29,7 +29,9 @@ public:
 		cityRegion = city;
 	}
 
-	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
+		bool cancelPressed = (eventIndex == 1);
+
 		ManagedReference<CityRegion*> city = cityRegion.get();
 
 		if (city == NULL || !suiBox->isMessageBox() || player == NULL || cancelPressed) {

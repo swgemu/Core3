@@ -16,7 +16,9 @@ public:
 		: SuiCallback(server) {
 	}
 
-	void run(CreatureObject* creature, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* creature, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
+		bool cancelPressed = (eventIndex == 1);
+
 		if (!suiBox->isMessageBox() || cancelPressed)
 			return;
 

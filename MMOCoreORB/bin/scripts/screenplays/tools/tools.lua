@@ -28,7 +28,9 @@ function StaffTools:openSUI(pCreature)
 	sui.sendTo(pCreature)
 end
 
-function StaffTools:mainSuiCallback(pPlayer, pSui, cancelPressed, args)
+function StaffTools:mainSuiCallback(pPlayer, pSui, eventIndex, args)
+	local cancelPressed = (eventIndex == 1)
+
 	if (cancelPressed) then
 		return
 	end
@@ -42,7 +44,7 @@ function StaffTools.openShuttleConfig(pPlayer)
 	ShuttleDropoff:showMainUI(pPlayer)
 end
 
-function StaffTools:suiShuttleDropoffCallback(pPlayer, pSui, cancelPressed, args)
+function StaffTools:suiShuttleDropoffCallback(pPlayer, pSui, eventIndex, args)
 end
 
 return StaffTools

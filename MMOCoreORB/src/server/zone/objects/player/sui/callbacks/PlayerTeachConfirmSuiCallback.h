@@ -19,7 +19,9 @@ public:
 		skill = skl;
 	}
 
-	void run(CreatureObject* student, SuiBox* sui, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* student, SuiBox* sui, uint32 eventIndex, Vector<UnicodeString>* args) {
+		bool cancelPressed = (eventIndex == 1);
+
 		ManagedReference<SceneObject*> usingObject = sui->getUsingObject();
 
 		if (usingObject == NULL || !usingObject->isCreatureObject())

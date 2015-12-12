@@ -34,10 +34,10 @@ namespace sui {
 		/**
 		 * @param player The player that this suibox is assigned to.
 		 * @param suiBox The actual SuiBox object.
-		 * @param cancelPressed Was the cancel button pressed, or was the sui box closed via a similar method. (this might actually be more of a dialogResult type variable)
+		 * @param eventIndex Index of the event triggered by SUI, cancel button usually returns 1
 		 * @param args A vector of UnicodeStrings containing the arguments passed to the sui box from the client.
 		 */
-		virtual void run(server::zone::objects::creature::CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) = 0;
+		virtual void run(server::zone::objects::creature::CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) = 0;
 	};
 }
 }

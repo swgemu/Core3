@@ -17,7 +17,9 @@ public:
 	PlayerTeachSuiCallback(ZoneServer* serv) : SuiCallback(serv) {
 	}
 
-	void run(CreatureObject* teacher, SuiBox* sui, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* teacher, SuiBox* sui, uint32 eventIndex, Vector<UnicodeString>* args) {
+		bool cancelPressed = (eventIndex == 1);
+
 		if (!sui->isListBox() || cancelPressed || args->size() <= 0)
 			return;
 

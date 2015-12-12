@@ -84,7 +84,9 @@ function eventPromoterScreenplay:getPerkTable(category)
 	end
 end
 
-function eventPromoterScreenplay:handleSuiPurchase(pPlayer, pSui, cancelPressed, arg0)
+function eventPromoterScreenplay:handleSuiPurchase(pPlayer, pSui, eventIndex, arg0)
+	local cancelPressed = (eventIndex == 1)
+
 	if (pPlayer == nil) then
 		return
 	end

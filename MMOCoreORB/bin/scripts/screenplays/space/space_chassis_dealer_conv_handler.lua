@@ -53,7 +53,9 @@ function chassis_dealer_conv_handler:runScreenHandlers(pConversationTemplate, pC
 	return pConversationScreen
 end
 
-function chassis_dealer_conv_handler:purchaseChassisConfirmation(pCreature, pSui, cancelPressed, arg0)
+function chassis_dealer_conv_handler:purchaseChassisConfirmation(pCreature, pSui, eventIndex, arg0)
+	local cancelPressed = (eventIndex == 1)
+
 	if (cancelPressed) then
 		return
 	end
@@ -78,8 +80,10 @@ function chassis_dealer_conv_handler:purchaseChassisConfirmation(pCreature, pSui
 	-- TODO: Add in certs...
 end
 
-function chassis_dealer_conv_handler:purchaseChassis(pCreature, pSui, cancelPressed, arg0)
-	if (pCreature == nil or pSui == nil) then
+function chassis_dealer_conv_handler:purchaseChassis(pCreature, pSui, eventIndex, arg0)
+	local cancelPressed = (eventIndex == 1)
+
+	if (pCreature == nil or pSui == nil or cancelPressed) then
 		return
 	end
 

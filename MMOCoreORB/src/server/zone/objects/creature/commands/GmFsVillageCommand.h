@@ -47,6 +47,8 @@ public:
 			functionName = "cmdGetCurrentPhaseDuration";
 		else if (argFunction == "changecurrentphase")
 			functionName = "cmdChangeCurrentPhase";
+		else if (argFunction == "test")
+			functionName = "cmdTestFunction";
 
 		if (argFunction == "?") {
 			creature->sendSystemMessage("Syntax: /gmFsVillage <command> (params)");

@@ -307,7 +307,9 @@ function recruiterScreenplay:sendPurchaseSui(pNpc, pPlayer, screenID)
 	suiManager:sendListBox(pNpc, pPlayer, "@faction_recruiter:faction_purchase", "@faction_recruiter:select_item_purchase", 2, "@cancel", "", "@ok", "recruiterScreenplay", "handleSuiPurchase", options)
 end
 
-function recruiterScreenplay:handleSuiPurchase(pCreature, pSui, cancelPressed, arg0)
+function recruiterScreenplay:handleSuiPurchase(pCreature, pSui, eventIndex, arg0)
+	local cancelPressed = (eventIndex == 1)
+
 	if (pCreature == nil or cancelPressed) then
 		deleteStringData(CreatureObject(pCreature):getObjectID() .. ":faction_purchase")
 		return

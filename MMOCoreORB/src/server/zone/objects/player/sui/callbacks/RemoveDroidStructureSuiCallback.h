@@ -21,12 +21,12 @@ class RemoveDroidStructureSuiCallback : public SuiCallback, public Logger {
 	ManagedReference<DroidMaintenanceModuleDataComponent*> module;
 
 public:
-	RemoveDroidStructureSuiCallback(ZoneServer* serv,
-								    DroidMaintenanceModuleDataComponent* module) : SuiCallback(serv) {
+	RemoveDroidStructureSuiCallback(ZoneServer* serv, DroidMaintenanceModuleDataComponent* module) : SuiCallback(serv) {
 		this->module = module;
 	}
 
-	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
+		bool cancelPressed = (eventIndex == 1);
 
 		if( !suiBox->isListBox() || module == NULL )
 			return;

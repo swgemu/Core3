@@ -89,7 +89,9 @@ function fs_experience_converter_conv_handler:chooseBranchToUnlock(pCreature)
 	suiManager:sendListBox(pCreature, pCreature, "@quest/force_sensitive/utils:branch_select_title", "@quest/force_sensitive/utils:select_branch", 2, "@cancel", "", "@ok", "fs_experience_converter_conv_handler", "notifyBranchUnlocked", options)
 end
 
-function fs_experience_converter_conv_handler:notifyBranchUnlocked(pCreature, pSui, cancelPressed, arg0)
+function fs_experience_converter_conv_handler:notifyBranchUnlocked(pCreature, pSui, eventIndex, arg0)
+	local cancelPressed = (eventIndex == 1)
+
 	if (pCreature == nil or cancelPressed) then
 		return
 	end
@@ -135,7 +137,9 @@ function fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pCrea
 	end
 end
 
-function fs_experience_converter_conv_handler:notifyTransfer(pCreature, pSui, cancelPressed, arg0)
+function fs_experience_converter_conv_handler:notifyTransfer(pCreature, pSui, eventIndex, arg0)
+	local cancelPressed = (eventIndex == 1)
+
 	if (pCreature == nil or cancelPressed) then
 		return
 	end
@@ -183,7 +187,9 @@ function fs_experience_converter_conv_handler:notifyTransfer(pCreature, pSui, ca
 	end
 end
 
-function fs_experience_converter_conv_handler:transferExperiencePoints(pCreature, pSui, cancelPressed, arg0, arg1)
+function fs_experience_converter_conv_handler:transferExperiencePoints(pCreature, pSui, eventIndex, arg0, arg1)
+	local cancelPressed = (eventIndex == 1)
+
 	if (pCreature == nil or cancelPressed) then
 		return
 	end

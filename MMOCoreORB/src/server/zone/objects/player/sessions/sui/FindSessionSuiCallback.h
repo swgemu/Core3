@@ -17,11 +17,11 @@ public:
 		: SuiCallback(server) {
 	}
 
-	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
+		bool cancelPressed = (eventIndex == 1);
+
 		if (!suiBox->isListBox())
 			return;
-
-
 
 		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::FIND);
 		ManagedReference<FindSession*> session = dynamic_cast<FindSession*>(facade.get());
