@@ -27,12 +27,17 @@ force_crystal_hunter = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_dark_force_crystal_hunter.iff"},
+
+	lootItems = {
+			{item = "rare_artifact", chance = 500000}
+		},
+
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 3500000},
-				{group = "crystals_poor", chance = 500000},
-				{group = "color_crystals", chance = 500000},
+				{group = "junk", chance = 3000000},
+				{group = "crystals_poor", chance = 800000},
+				{group = "color_crystals", chance = 700000},
 				{group = "holocron_dark", chance = 500000},
 				{group = "holocron_light", chance = 500000},
 				{group = "melee_weapons", chance = 1000000},
