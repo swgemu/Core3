@@ -75,6 +75,7 @@ function VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
 	end
 
 	local phaseID = VillageJediManagerTownship:getCurrentPhaseID()
+	VillageJediManagerCommon.addToActiveQuestList(pPlayer)
 	setQuestStatus(SceneObject(pPlayer):getObjectID() .. ":village:lastActiveQuest", phaseID)
 end
 
@@ -95,7 +96,57 @@ function VillageJediManagerCommon.setCompletedQuestThisPhase(pPlayer)
 	end
 
 	local phaseID = VillageJediManagerTownship:getCurrentPhaseID()
+	VillageJediManagerCommon.removeFromActiveQuestList(pPlayer)
 	setQuestStatus(SceneObject(pPlayer):getObjectID() .. ":village:lastCompletedQuest", phaseID)
+end
+
+function VillageJediManagerCommon.createNewActiveQuestList()
+	local phaseID = VillageJediManagerTownship:getCurrentPhaseID()
+	return createQuestVectorMap("VillageActiveQuestsPhaseID" .. phaseID)
+end
+
+function VillageJediManagerCommon.removeActiveQuestList(phaseID)
+	removeQuestVectorMap("VillageActiveQuestsPhaseID" .. phaseID)
+end
+
+function VillageJediManagerCommon.getActiveQuestList(phaseID)
+	return getQuestVectorMap("VillageActiveQuestsPhaseID" .. phaseID)
+end
+
+function VillageJediManagerCommon.addToActiveQuestList(pPlayer)
+	local phaseID = VillageJediManagerTownship:getCurrentPhaseID()
+	local pMap = VillageJediManagerCommon.getActiveQuestList(phaseID)
+
+	if (pMap == nil) then
+		pMap = VillageJediManagerCommon.createNewActiveQuestList()
+	end
+
+	local questMap = LuaQuestVectorMap(pMap)
+	local playerID = tostring(SceneObject(pPlayer):getObjectID())
+
+	if (not questMap:hasMapRow(playerID)) then
+		questMap:addMapRow(playerID, tostring(os.time()))
+	else
+		printf("Error in VillageJediManagerCommon.addToActiveQuestList, attempting to add existing player " .. SceneObject(pPlayer):getCustomObjectName() .. " to active quest list.\n")
+	end
+
+end
+
+function VillageJediManagerCommon.removeFromActiveQuestList(pPlayer)
+	local phaseID = VillageJediManagerTownship:getCurrentPhaseID()
+
+	local pMap = VillageJediManagerCommon.getActiveQuestList(phaseID)
+
+	if (pMap == nil) then
+		return
+	end
+
+	local questMap = LuaQuestVectorMap(pMap)
+	local playerID = tostring(SceneObject(pPlayer):getObjectID())
+
+	if (questMap:hasMapRow(playerID)) then
+		questMap:deleteMapRow(playerID)
+	end
 end
 
 return VillageJediManagerCommon

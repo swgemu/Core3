@@ -3,6 +3,7 @@ local ObjectManager = require("managers.object.object_manager")
 local FsReflex1 = require("managers.jedi.village.phase1.fs_reflex1")
 local QuestManager = require("managers.quest.quest_manager")
 local FsReflex1Theater = require("managers.jedi.village.phase1.fs_reflex1_theater")
+local VillageJediManagerTownship = require("managers.jedi.village.village_jedi_manager_township")
 local Logger = require("utils.logger")
 
 FsReflex1Escort = Escort:new {
@@ -33,11 +34,14 @@ function FsReflex1Escort:onLoggedIn(pCreatureObject)
 		return 1
 	end
 
-	CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_01_quest_fail_logout");
-	FsReflex1Theater:finish(pCreatureObject)
-	self:finish(pCreatureObject)
-	FsReflex1:failQuest(pCreatureObject)
-
+	if (VillageJediManagerTownship:getCurrentPhase() ~= 1) then
+		FsReflex1:doPhaseChangeFail(pCreatureObject)
+	else
+		CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_01_quest_fail_logout");
+		FsReflex1Theater:finish(pCreatureObject)
+		self:finish(pCreatureObject)
+		FsReflex1:failQuest(pCreatureObject)
+	end
 	return 1
 end
 

@@ -194,7 +194,7 @@ function GoToTheater:handleDespawnTheater(pCreatureObject)
 		return
 	end
 
-	if (self:areMobilesInCombat(pCreatureObject)) then
+	if (self:areMobilesInCombat(pCreatureObject) or self:areMobilesFollowing(pCreatureObject)) then
 		createEvent(self.despawnTime / 10, self.taskName, "handleDespawnTheater", pCreatureObject)
 		return
 	end
@@ -207,6 +207,18 @@ function GoToTheater:areMobilesInCombat(pCreatureObject)
 
 	for i = 1, #spawnedObjects, 1 do
 		if (spawnedObjects[i] ~= nil and AiAgent(spawnedObjects[i]):isInCombat()) then
+			return true
+		end
+	end
+
+	return false
+end
+
+function GoToTheater:areMobilesFollowing(pCreatureObject)
+	local spawnedObjects = self:getSpawnedMobileList(pCreatureObject)
+
+	for i = 1, #spawnedObjects, 1 do
+		if (spawnedObjects[i] ~= nil and AiAgent(spawnedObjects[i]):getFollowObject() == pCreatureObject) then
 			return true
 		end
 	end

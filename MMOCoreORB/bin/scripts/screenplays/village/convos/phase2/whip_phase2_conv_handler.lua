@@ -54,7 +54,7 @@ function villageWhipPhase2ConvoHandler:runScreenHandlers(conversationTemplate, c
 		FsReflex2:startQuest(conversingPlayer)
 	elseif (screenID == "intro_quest_failed" or screenID == "beacons_not_reliable") then
 		FsReflex2:restartQuest(conversingPlayer)
-	elseif (screenID == "intro_quest_completed" or screenID == "intro_quest_continue") then
+	elseif ((screenID == "intro_quest_completed" or screenID == "intro_quest_continue") and FsReflex2:getFetchCount(conversingPlayer) < 5 and self:hasSupplies(conversingPlayer)) then
 		local pInventory = CreatureObject(conversingPlayer):getSlottedObject("inventory")
 
 		if pInventory ~= nil then
