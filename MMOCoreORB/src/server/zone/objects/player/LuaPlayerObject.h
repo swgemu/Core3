@@ -68,6 +68,7 @@ public:
 	int activateQuest(lua_State* L);
 	int canActivateQuest(lua_State* L);
 	int getSuiBox(lua_State* L);
+	int addSuiBox(lua_State* L);
 
 private:
 	// The pointer to the 'real object' defined in object.cc

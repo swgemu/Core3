@@ -29,7 +29,7 @@ function SuiRadiationSensor:openSensor(pCreatureObject, pSensor)
 	createEvent(3 * 1000, "SuiRadiationSensor", "updateSensor", pCreatureObject)
 end
 
-function SuiRadiationSensor:defaultCallback(pPlayer, pSui, cancelPressed, args)
+function SuiRadiationSensor:defaultCallback(pPlayer, pSui, eventIndex, args)
 	deleteData(SceneObject(pPlayer):getObjectID() .. ":radiationSensorPid")
 end
 

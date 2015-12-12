@@ -23,23 +23,8 @@ function SuiSample:openSample(pCreatureObject, pUsingObject)
 	sui.sendTo(pCreatureObject)
 end
 
--- cancelPressed not used here
-function SuiSample:eventCallback(pPlayer, pSui, cancelPressed, args)
-	printf("Event callback triggered.")
-	local pPageData = LuaSuiBoxPage(pSui):getSuiPageData()
-	if (pPageData == nil) then
-		printf("ppagedata nil\n")
-	else
-		printf("pageid on callback: " .. LuaSuiPageData(pPageData):getPageId() .. "\n")
-	end
+function SuiSample:eventCallback(pPlayer, pSui, eventIndex, args)
 end
 
-function SuiSample:defaultCallback(pPlayer, pSui, cancelPressed, args)
-	printf("Default callback triggered.")
-	local pPageData = LuaSuiBoxPage(pSui):getSuiPageData()
-	if (pPageData == nil) then
-		printf("ppagedata nil\n")
-	else
-		printf("pageid on callback: " .. LuaSuiPageData(pPageData):getPageId() .. "\n")
-	end
+function SuiSample:defaultCallback(pPlayer, pSui, eventIndex, args)
 end
