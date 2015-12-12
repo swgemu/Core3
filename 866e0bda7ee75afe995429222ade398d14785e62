@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_20820e01",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/ForceShrineMenuComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-12T07:05:14Z",
+      "side": 0,
+      "message": "Go ahead and remove the method from CreatureObject. This is the only place that it\u0027s currently called.",
+      "revId": "866e0bda7ee75afe995429222ade398d14785e62",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
