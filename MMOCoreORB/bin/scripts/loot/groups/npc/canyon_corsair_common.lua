@@ -8,7 +8,7 @@ canyon_corsair_common = {
 		{itemTemplate = "agitator_motor_schematic", weight = 3500000},
 		{itemTemplate = "skill_buff_rifle_accuracy", weight = 1000000},
 		{itemTemplate = "skill_buff_rifle_speed", weight = 1000000},
-		{groupTemplate = "wearables_common", weight = 1500000},	
+		{groupTemplate = "wearables_common", weight = 1500000}
 	}
 }
 
