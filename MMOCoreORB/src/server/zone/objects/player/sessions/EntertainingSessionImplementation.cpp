@@ -556,7 +556,7 @@ void EntertainingSessionImplementation::addEntertainerFlourishBuff() {
 
 }
 
-void EntertainingSessionImplementation::doFlourish(int flourishNumber) {
+void EntertainingSessionImplementation::doFlourish(int flourishNumber, bool grantXp) {
 	ManagedReference<CreatureObject*> entertainer = this->entertainer.get();
 
 	int fid = flourishNumber;
@@ -614,7 +614,7 @@ void EntertainingSessionImplementation::doFlourish(int flourishNumber) {
 			addEntertainerFlourishBuff();
 
 			// Grant Experience
-			if(flourishCount < 2)
+			if(grantXp && flourishCount < 2)
 				flourishXp += performance->getBaseXp() + performance->getFlourishXpMod();
 
 			flourishCount++;
