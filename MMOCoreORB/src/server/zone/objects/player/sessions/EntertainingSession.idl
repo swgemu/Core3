@@ -90,7 +90,7 @@ class EntertainingSession extends Facade {
 	public native void healWounds(CreatureObject creature, float woundHeal, float shockHeal);
 	public native boolean isInEntertainingBuilding(CreatureObject creature);
 	
-	public native void doFlourish(int flourishNumber);
+	public native void doFlourish(int flourishNumber, boolean grantXp);
 
 	public native boolean canHealBattleFatigue();
 	public native boolean canGiveEntertainBuff();
