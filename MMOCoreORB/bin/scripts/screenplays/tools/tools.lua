@@ -1,7 +1,7 @@
 StaffTools = {
 	toolsMenu = {
 		{ "Shuttle Dropoff", "openShuttleConfig" },
-		{ "Test row 2" }
+		{ "Firework Event", "openFireworkConfig" },
 	}
 }
 
@@ -42,6 +42,10 @@ end
 
 function StaffTools.openShuttleConfig(pPlayer)
 	ShuttleDropoff:showMainUI(pPlayer)
+end
+
+function StaffTools.openFireworkConfig(pPlayer)
+	FireworkEvent:showMainUI(pPlayer)
 end
 
 function StaffTools:suiShuttleDropoffCallback(pPlayer, pSui, eventIndex, args)
