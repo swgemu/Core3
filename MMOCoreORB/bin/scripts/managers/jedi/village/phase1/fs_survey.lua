@@ -118,6 +118,9 @@ function FsSurvey:giveResourceStats(pResource, density)
 	local objTemplate = SceneObject(pResource):getTemplateObjectPath()
 	local resource = LuaCustomIngredient(pResource)
 
+	-- Clear default attributes to set custom ones
+	resource:clearAttributes()
+	
 	if (objTemplate == "object/tangible/loot/quest/ardanium_ii.iff") then
 		resource:addAttribute("res_potential_energy", self:getResourceValue(average));
 		resource:addAttribute("res_quality", self:getResourceValue(average));
