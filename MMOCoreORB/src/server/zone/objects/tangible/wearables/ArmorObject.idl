@@ -236,9 +236,6 @@ class ArmorObject extends WearableObject {
 	
 	@dirty
 	public int getHealthEncumbrance() {
-		if(healthEncumbrance < 0)
-			return healthEncumbrance * (2 - encumbranceSlice);
-			
 		return healthEncumbrance * encumbranceSlice;
 	}
 	
@@ -248,9 +245,6 @@ class ArmorObject extends WearableObject {
 	
 	@dirty
 	public int getActionEncumbrance() {
-		if(actionEncumbrance < 0)
-			return actionEncumbrance * (2 - encumbranceSlice);
-			
 		return actionEncumbrance * encumbranceSlice;
 	}
 	
@@ -259,10 +253,7 @@ class ArmorObject extends WearableObject {
 	}
 	
 	@dirty
-	public int getMindEncumbrance() {	
-		if(mindEncumbrance < 0)
-			return mindEncumbrance * (2 - encumbranceSlice);
-			
+	public int getMindEncumbrance() {
 		return mindEncumbrance * encumbranceSlice;
 	}
 	
