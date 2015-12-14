@@ -20,9 +20,10 @@ public:
 		: SuiCallback(server) {
 	}
 
-	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
+		bool cancelPressed = (eventIndex == 1);
 
-		if (!suiBox->isTransferBox() || cancelPressed != 0)
+		if (!suiBox->isTransferBox() || cancelPressed)
 			return;
 
 		if (args->size() < 2)

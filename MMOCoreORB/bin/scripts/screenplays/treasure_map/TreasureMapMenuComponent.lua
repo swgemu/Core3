@@ -269,7 +269,9 @@ function TreasureMapMenuComponent:doReadMap(pObject, pPlayer)
 	suiManager:sendMessageBox(pObject, pPlayer, "@treasure_map/treasure_map:title_" .. mapStringName[mapType], "@treasure_map/treasure_map:text_" .. mapStringName[mapType], "@treasure_map/treasure_map:store_waypoint", "TreasureMapMenuComponent", "handleTreasureMapSuiCallback")
 end
 
-function TreasureMapMenuComponent:handleTreasureMapSuiCallback(pCreature, pSui, cancelPressed)
+function TreasureMapMenuComponent:handleTreasureMapSuiCallback(pCreature, pSui, eventIndex)
+	local cancelPressed = (eventIndex == 1)
+
 	if (cancelPressed or pCreature == nil) then
 		return 0
 	end

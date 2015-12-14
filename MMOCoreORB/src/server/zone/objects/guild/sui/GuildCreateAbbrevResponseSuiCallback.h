@@ -18,7 +18,9 @@ public:
 		: SuiCallback(server) {
 	}
 
-	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
+		bool cancelPressed = (eventIndex == 1);
+
 		uint64 playerID = player->getObjectID();
 
 		ManagedReference<GuildManager*> guildManager = server->getGuildManager();

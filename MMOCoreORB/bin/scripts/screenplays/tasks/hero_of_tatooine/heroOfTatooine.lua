@@ -77,7 +77,7 @@ end
 
 function HeroOfTatooineScreenPlay:spawnAltruismObjects()
 	self:despawnAltruismObjects()
-	
+
 	local pCrate = spawnSceneObject("tatooine", "object/tangible/item/quest/hero_of_tatooine/explosives_crate.iff", 76.87,-46.24,-136.9, 5995575, .985, 0, .1714, 0)
 
 	if (pCrate ~= nil) then
@@ -107,13 +107,13 @@ function HeroOfTatooineScreenPlay:spawnAltruismObjects()
 	local pDaughter = spawnMobile("tatooine", "hero_of_tat_farmers_child", 0, 192.1, -66.8, -105.9, -70, 5995573)
 	CreatureObject(pDaughter):setPvpStatusBitmask(0)
 	writeData("hero_of_tat:farmerChildId", SceneObject(pDaughter):getObjectID())
-	
+
 	createEvent(30 * 60 * 1000, "HeroOfTatooineScreenPlay", "validateAltruismCave", nil)
 end
 
 function HeroOfTatooineScreenPlay:validateAltruismCave()
 	local count = self:getCavePlayerWithQuestCount()
-	
+
 	if (count == 0) then
 		self:despawnAltruismObjects()
 	else
@@ -391,7 +391,9 @@ function HeroOfTatooineScreenPlay:sendImplicateSui(pPlayer, pNpc)
 	suiManager:sendListBox(pNpc, pPlayer, "@quest/hero_of_tatooine/intellect_liar:sui_title", "@quest/hero_of_tatooine/intellect_liar:sui_prompt", 2, "@quest/hero_of_tatooine/intellect_liar:sui_btn_cancel", "", "@quest/hero_of_tatooine/intellect_liar:sui_btn_ok", "HeroOfTatooineScreenPlay", "handleSuiImplication", liarTable)
 end
 
-function HeroOfTatooineScreenPlay:handleSuiImplication(pPlayer, pSui, cancelPressed, arg0)
+function HeroOfTatooineScreenPlay:handleSuiImplication(pPlayer, pSui, eventIndex, arg0)
+	local cancelPressed = (eventIndex == 1)
+
 	if (pPlayer == nil) then
 		return
 	end
@@ -539,7 +541,7 @@ function HeroOfTatooineScreenPlay:onExitedAltruismCave(pCave, pCreature)
 	end
 
 	local count = self:getCavePlayerWithQuestCount()
-	
+
 	if (count == 0) then
 		self:despawnAltruismObjects()
 	end

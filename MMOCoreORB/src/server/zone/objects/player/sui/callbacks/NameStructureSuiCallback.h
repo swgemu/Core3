@@ -18,7 +18,9 @@ public:
 	NameStructureSuiCallback(ZoneServer* serv) : SuiCallback(serv) {
 	}
 
-	void run(CreatureObject* creature, SuiBox* sui, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* creature, SuiBox* sui, uint32 eventIndex, Vector<UnicodeString>* args) {
+		bool cancelPressed = (eventIndex == 1);
+
 		if (!sui->isInputBox() || cancelPressed || args->size() < 1)
 			return;
 

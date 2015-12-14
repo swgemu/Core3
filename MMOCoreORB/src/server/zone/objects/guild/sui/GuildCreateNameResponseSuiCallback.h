@@ -19,7 +19,9 @@ public:
 		: SuiCallback(server) {
 	}
 
-	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
+		bool cancelPressed = (eventIndex == 1);
+
 		if (player->isInGuild()) {
 			player->sendSystemMessage("@guild:create_fail_in_guild"); //You cannot create a guild while already in a guild.
 			return;

@@ -119,7 +119,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, CreatureObject* player
 				}
 			}
 		}
-
 		callback->run(player, suiBox, eventIndex, args);
 		return;
 	}
