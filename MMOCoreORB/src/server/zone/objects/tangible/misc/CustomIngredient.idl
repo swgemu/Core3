@@ -21,6 +21,15 @@ class CustomIngredient extends TangibleObject {
 		objectAttributes.setAllowOverwriteInsertPlan();
 		setLoggingName("CustomIngredient");
 	}
+
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	/**
 	 * Fills the attribute list message options that are sent to player creature
@@ -35,6 +44,11 @@ class CustomIngredient extends TangibleObject {
 
 	public native void addAttribute(final string attribute, int value);
 
+	@dirty
+	public native void clearAttributes() {
+		objectAttributes.removeAll();
+	}
+
 	@local
 	@dirty
 	public native int getAttributeAndValue(string attribute, int index);
@@ -43,6 +57,9 @@ class CustomIngredient extends TangibleObject {
 	public int getAttributeValue(int index) {
 		return objectAttributes.get(index);
 	}
+
+	@dirty
+	public native int getResourceValue(int average);
 
 	@dirty
 	public native int getValueOf(int index);
