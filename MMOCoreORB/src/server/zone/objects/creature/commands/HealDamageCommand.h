@@ -300,6 +300,9 @@ public:
 				if (creatureTarget->isAttackableBy(creature))
 					continue;
 
+				if (!creatureTarget->isHealableBy(creature))
+					continue;
+
 				//zone->runlock();
 
 				try {
