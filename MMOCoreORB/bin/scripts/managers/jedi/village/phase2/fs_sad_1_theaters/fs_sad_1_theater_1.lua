@@ -20,11 +20,11 @@ FsSad1Theater1 = GoToTheater:new {
 		{ template = "object/static/structure/general/camp_campfire_logs_smoldering_s01.iff", xDiff = 0.743, zDiff = -0.038, yDiff = -3.091, heading = 0 }
 	},
 	mobileList = {
-		{ template = "sith_shadow_outlaw", minimumDistance = 4, maximumDistance = 12, referencePoint = 0 },
-		{ template = "sith_shadow_outlaw", minimumDistance = 4, maximumDistance = 12, referencePoint = 0 },
-		{ template = "sith_shadow_outlaw", minimumDistance = 4, maximumDistance = 12, referencePoint = 0 },
-		{ template = "sith_shadow_outlaw", minimumDistance = 4, maximumDistance = 12, referencePoint = 0 },
-		{ template = "sith_shadow_outlaw", minimumDistance = 4, maximumDistance = 12, referencePoint = 0 }
+		{ template = "sith_shadow_outlaw", minimumDistance = 7, maximumDistance = 12, referencePoint = 0 },
+		{ template = "sith_shadow_outlaw", minimumDistance = 7, maximumDistance = 12, referencePoint = 0 },
+		{ template = "sith_shadow_outlaw", minimumDistance = 7, maximumDistance = 12, referencePoint = 0 },
+		{ template = "sith_shadow_outlaw", minimumDistance = 7, maximumDistance = 12, referencePoint = 0 },
+		{ template = "sith_shadow_outlaw", minimumDistance = 7, maximumDistance = 12, referencePoint = 0 }
 	},
 	createWaypoint = false,
 	despawnTime = 20 * 60 * 1000, -- 20 minutes
