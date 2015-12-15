@@ -1424,6 +1424,7 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 					despawnEvent->schedule(30000);
 				}
 
+				Locker locker(&awarenessEventMutex);
 				if (awarenessEvent != NULL) {
 					awarenessEvent->cancel();
 					awarenessEvent = NULL;
