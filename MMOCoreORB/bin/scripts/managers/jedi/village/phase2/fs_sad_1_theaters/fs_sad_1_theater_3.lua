@@ -20,9 +20,9 @@ FsSad1Theater3 = GoToTheater:new {
 		{ template = "object/static/structure/general/camp_stool_short_s01.iff", xDiff = -0.376, zDiff = -0.242, yDiff = -0.460, heading = 0 }
 	},
 	mobileList = {
-		{ template = "sith_shadow_outlaw", minimumDistance = 4, maximumDistance = 12, referencePoint = 0 },
-		{ template = "sith_shadow_outlaw", minimumDistance = 4, maximumDistance = 12, referencePoint = 0 },
-		{ template = "sith_shadow_pirate", minimumDistance = 4, maximumDistance = 12, referencePoint = 0 }
+		{ template = "sith_shadow_outlaw", minimumDistance = 7, maximumDistance = 12, referencePoint = 0 },
+		{ template = "sith_shadow_outlaw", minimumDistance = 7, maximumDistance = 12, referencePoint = 0 },
+		{ template = "sith_shadow_pirate", minimumDistance = 7, maximumDistance = 12, referencePoint = 0 }
 	},
 	createWaypoint = true,
 	despawnTime = 20 * 60 * 1000, -- 20 minutes
