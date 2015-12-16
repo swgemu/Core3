@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_a33388f5",
+        "filename": "MMOCoreORB/bin/scripts/mobile/dantooine/force_crystal_hunter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-16T02:53:04Z",
+      "side": 1,
+      "message": "This is still wrong. You can\u0027t add loot items to a mob. You can only add loot groups.",
+      "revId": "50c5bc7150ea2a8b760c4a8f4b27758880468713",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
