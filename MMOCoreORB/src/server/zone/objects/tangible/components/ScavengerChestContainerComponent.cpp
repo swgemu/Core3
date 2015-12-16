@@ -15,6 +15,8 @@ bool ScavengerChestContainerComponent::checkContainerPermission(SceneObject* sce
 	if (chest == NULL)
 		return false;
 
+	Locker guard(chest);
+
 	EventPerkDataComponent* gameData = cast<EventPerkDataComponent*>(chest->getDataObjectComponent()->get());
 
 	if (gameData == NULL)
