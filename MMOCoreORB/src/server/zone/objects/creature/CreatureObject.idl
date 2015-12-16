@@ -1841,11 +1841,6 @@ class CreatureObject extends TangibleObject {
 		return nextAction.isPast();
 	}
 
-	@dirty
-	public abstract boolean isTrainerCreature() {
-		return false;
-	}
-
 	@read
 	public boolean isSwimming() {
 		return stateBitmask & CreatureState.SWIMMING;
