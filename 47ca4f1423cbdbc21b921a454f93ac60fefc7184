@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_a3b8682b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidSkillModTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-16T10:54:55Z",
+      "side": 1,
+      "message": "Use ManagedWeakReference for both of these and then get a strong ref in run() to use there.",
+      "revId": "47ca4f1423cbdbc21b921a454f93ac60fefc7184",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_83876461",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidSkillModTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-16T10:54:55Z",
+      "side": 1,
+      "message": "get a strong ref instead of a weak one.",
+      "revId": "47ca4f1423cbdbc21b921a454f93ac60fefc7184",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_63825054",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidSkillModTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-16T10:54:55Z",
+      "side": 1,
+      "message": "owner needs to be locked before this. Since droid is already locked, you\u0027ll need to cross lock owner to it.",
+      "revId": "47ca4f1423cbdbc21b921a454f93ac60fefc7184",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_237c5872",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidSkillModTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-16T10:54:55Z",
+      "side": 1,
+      "message": "You should also check if the droid is out of power. In addition, are there any checks that should be made on the owner? dead/incap/whatever?",
+      "revId": "47ca4f1423cbdbc21b921a454f93ac60fefc7184",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_c3b55c32",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidSkillModTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-16T10:54:55Z",
+      "side": 1,
+      "message": "reschedule() won\u0027t add it back to owner\u0027s pending tasks map. Use owner-\u003eaddPendingTask()",
+      "revId": "47ca4f1423cbdbc21b921a454f93ac60fefc7184",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
