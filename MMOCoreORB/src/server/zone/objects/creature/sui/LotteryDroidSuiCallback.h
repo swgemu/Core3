@@ -39,6 +39,8 @@ public:
 		if (lotteryDroid == NULL)
 			return;
 
+		Locker lotteryDroidGuard(lotteryDroid, player);
+
 		if (args->size() < 1)
 			return;
 
