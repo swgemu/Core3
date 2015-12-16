@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fa6b99d7_83ee8421",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidSkillModTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 2114
+      },
+      "writtenOn": "2015-12-16T13:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa6b99d7_a3b8682b",
+      "revId": "47ca4f1423cbdbc21b921a454f93ac60fefc7184",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa6b99d7_83876461",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidSkillModTask.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-12-16T10:54:55Z",
       "side": 1,
       "message": "get a strong ref instead of a weak one.",
+      "revId": "47ca4f1423cbdbc21b921a454f93ac60fefc7184",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_23f3f80b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidSkillModTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 2114
+      },
+      "writtenOn": "2015-12-16T13:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa6b99d7_83876461",
       "revId": "47ca4f1423cbdbc21b921a454f93ac60fefc7184",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "fa6b99d7_e3dc2077",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidSkillModTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 2114
+      },
+      "writtenOn": "2015-12-16T13:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa6b99d7_63825054",
+      "revId": "47ca4f1423cbdbc21b921a454f93ac60fefc7184",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa6b99d7_237c5872",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidSkillModTask.h",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "fa6b99d7_03da7478",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidSkillModTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 2114
+      },
+      "writtenOn": "2015-12-16T13:30:07Z",
+      "side": 1,
+      "message": "Agreed to the out of power.  As for the other checks, doing so would prevent a droid component from affecting those states(auto-rez bot anyone?)... for future modifications I will forego this change unless you are passionate about it.",
+      "parentUuid": "fa6b99d7_237c5872",
+      "revId": "47ca4f1423cbdbc21b921a454f93ac60fefc7184",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa6b99d7_c3b55c32",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidSkillModTask.h",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2015-12-16T10:54:55Z",
       "side": 1,
       "message": "reschedule() won\u0027t add it back to owner\u0027s pending tasks map. Use owner-\u003eaddPendingTask()",
+      "revId": "47ca4f1423cbdbc21b921a454f93ac60fefc7184",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_a3e62843",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidSkillModTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 2114
+      },
+      "writtenOn": "2015-12-16T13:30:07Z",
+      "side": 1,
+      "message": "The original task was scheduled on the droid object and not the owner object.  \n\nPlease let me know if I am misunderstanding as I am brand new to the framework.  Sorry for any ignorance thus far.",
+      "parentUuid": "fa6b99d7_c3b55c32",
       "revId": "47ca4f1423cbdbc21b921a454f93ac60fefc7184",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
