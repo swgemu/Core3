@@ -4,7 +4,8 @@
 
 class ScavengerChestContainerComponent: public ContainerComponent {
 public:
-	bool checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission);
+	bool checkContainerPermission(SceneObject* container, CreatureObject* creature, uint16 permission);
+	int notifyObjectRemoved(SceneObject* container, SceneObject*, SceneObject* destination);
 };
 
 #endif /* SCAVENGERCHESTCONTAINERCOMPONENT_H_ */
