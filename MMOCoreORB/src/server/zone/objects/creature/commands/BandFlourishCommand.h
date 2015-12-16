@@ -41,7 +41,7 @@ public:
 			}
 
 			if (session->isAcceptingBandFlourishes()) {
-				session->doFlourish(Integer::valueOf(number));
+				session->doFlourish(Integer::valueOf(number), true);
 			}
 
 			return;
@@ -54,13 +54,13 @@ public:
 				}
 				player->sendSystemMessage("@performance:flourish_perform_band_self"); //"Your band performs a flourish."
 				if (player->isPlayingMusic() && leaderInstrument == instrumentType && session->isAcceptingBandFlourishes()) {
-					session->doFlourish(Integer::valueOf(number));
+					session->doFlourish(Integer::valueOf(number), true);
 				}
 
 			} else { //no instrument specified.
 				player->sendSystemMessage("@performance:flourish_perform_band_self"); //"Your band performs a flourish."
 				if (session->isAcceptingBandFlourishes()) {
-					session->doFlourish(Integer::valueOf(number));
+					session->doFlourish(Integer::valueOf(number), true);
 				}
 			}
 
@@ -99,7 +99,7 @@ public:
 						if (!musicflourish && psession->isDancing()) {
 							params.setStringId("performance", "flourish_perform_band_member");
 							member->sendSystemMessage(params);
-							psession->doFlourish(Integer::valueOf(number));
+							psession->doFlourish(Integer::valueOf(number), false);
 						}
 
 						//Handle music flourish
@@ -107,7 +107,7 @@ public:
 							if (instrumentType < 1 || (playerInstrumentType == instrumentType)) {
 								params.setStringId("performance", "flourish_perform_band_member");
 								member->sendSystemMessage(params);
-								psession->doFlourish(Integer::valueOf(number));
+								psession->doFlourish(Integer::valueOf(number), false);
 							}
 						}
 					}

@@ -55,7 +55,7 @@ public:
 			return GENERALERROR;
 		}
 
-		session->doFlourish(mod);
+		session->doFlourish(mod, true);
 
 		return SUCCESS;
 	}
