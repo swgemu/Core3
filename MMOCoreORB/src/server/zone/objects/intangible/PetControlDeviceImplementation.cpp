@@ -21,6 +21,7 @@
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/player/sessions/TradeSession.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/creature/events/DroidSkillModTask.h"
 #include "server/zone/objects/creature/events/DroidPowerTask.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
@@ -361,14 +362,18 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 		if( droid == NULL )
 			return;
 
-		// Sanity check that there isn't another power task outstanding
+		// Sanity check that there aren't outstanding power/skill mod tasks
 		droid->removePendingTask( "droid_power" );
+		droid->removePendingTask( "droid_skill_mod" );
 		droid->initDroidModules();
 		droid->onCall();
 		droid->loadSkillMods(player);
 		// Submit new power task
 		Reference<Task*> droidPowerTask = new DroidPowerTask( droid );
 		droid->addPendingTask("droid_power", droidPowerTask, 120000); // 2 min
+		// Submit new skill mod task
+		Reference<Task*> droidSkillModTask = new DroidSkillModTask( droid, player );
+		droid->addPendingTask("droid_skill_mod", droidSkillModTask, 3000); // 3 sec
 	}
 
 	pet->setHomeLocation(player->getPositionX(), player->getPositionZ(), player->getPositionY(), (parent != NULL && parent->isCellObject()) ? parent : NULL);
