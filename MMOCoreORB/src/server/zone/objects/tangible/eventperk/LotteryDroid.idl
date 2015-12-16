@@ -135,22 +135,22 @@ class LotteryDroid extends CreatureObject {
 	}
 
 	@preLocked
-	public native void setGameDuration(int i) {
+	public void setGameDuration(int i) {
 		gameDuration = gameDurationChoices.get(i);
 	}
 
 	@preLocked
-	public native void setPayoutPercent(int i) {
+	public void setPayoutPercent(int i) {
 		payoutPercent = (float) payoutPercentChoices.get(i) / 100;
 	}
 
 	@preLocked
-	public native void setTicketPrice(int price) {
+	public void setTicketPrice(int price) {
 		ticketPrice = price;
 	}
 
 	@preLocked
-	public native void addToCreditPool(int amount) {
+	public void addToCreditPool(int amount) {
 		creditPool = creditPool + amount;
 	}
 
