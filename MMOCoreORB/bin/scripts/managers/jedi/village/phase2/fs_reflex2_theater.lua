@@ -17,10 +17,10 @@ FsReflex2Theater = GoToTheater:new {
 		{ template = "object/static/particle/particle_smoke.iff", xDiff = 2.51, zDiff = 2.25, yDiff = -17.23, heading = 0 }
 	},
 	waypointDescription = "@quest/quest_journal/fs_quests_reflex2:s_02",
-	mobileList = {
-		{ template = "fs_reflex1_prisoner", minimumDistance = 2, maximumDistance = 4, referencePoint = 0 },
-		{ template = "sith_shadow_pirate", minimumDistance = 6, maximumDistance = 12, referencePoint = 0 },
-		{ template = "sith_shadow_thug", minimumDistance = 6, maximumDistance = 12, referencePoint = 0 }
+	mobileListWithLoc = {
+		{ template = "sith_shadow_pirate", x = 9.75, y = -3.63 },
+		{ template = "sith_shadow_pirate", x = -11.14, y = -7.26 },
+		{ template = "sith_shadow_thug", x = -2.57, y = 12.67 }
 	},
 	despawnTime = 20 * 60 * 1000, -- 20 minutes
 	activeAreaRadius = 16,
@@ -83,13 +83,15 @@ function FsReflex2Theater:onLoggedIn(pCreatureObject)
 	if (not self:hasTaskStarted(pCreatureObject)) then
 		return 1
 	end
-
+	
 	if (VillageJediManagerTownship:getCurrentPhase() ~= 2) then
 		FsReflex2:doPhaseChangeFail(pCreatureObject)
 	else
-		CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_02_quest_fail_phase_done"); -- No logged out error message in string files, using phase change error instead
+		if (not QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.FS_REFLEX_FETCH_QUEST_04)) then
+			CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_02_quest_fail_phase_done"); -- No logged out error message in string files, using phase change error instead
+			FsReflex2:failQuest(pCreatureObject)
+		end
 		self:finish(pCreatureObject)
-		FsReflex2:failQuest(pCreatureObject)
 	end
 
 	return 1

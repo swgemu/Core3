@@ -174,7 +174,7 @@ end
 function SpawnMobiles.generateMobileObjects(pSceneObject, prefix, mobileList, spawnPoints)
 	local spawnedObjects = SpawnMobiles.spawnMobileObjects(pSceneObject, mobileList, spawnPoints)
 
-	if spawnedObjects ~= nil then
+	if spawnedObjects ~= nil and #spawnedObjects > 0 then
 		SpawnMobiles.saveSpawnedMobileObjects(pSceneObject, prefix, spawnedObjects)
 	end
 
@@ -190,7 +190,28 @@ end
 function SpawnMobiles.spawnMobilesWithPrefix(pSceneObject, prefix, mobileList, forceSpawn)
 	local spawnPoints = SpawnMobiles.generateSpawnPoints(pSceneObject, mobileList, forceSpawn)
 
-	if spawnPoints ~= nil then
+	if spawnPoints ~= nil and #spawnPoints > 0 then
+		return SpawnMobiles.generateMobileObjects(pSceneObject, prefix, mobileList, spawnPoints)
+	else
+		return nil
+	end
+end
+
+function SpawnMobiles.spawnMobilesWithLocAndPrefix(pSceneObject, prefix, mobileList)
+	local spawnPoints = { }
+	local baseX = SceneObject(pSceneObject):getWorldPositionX()
+	local baseZ = SceneObject(pSceneObject):getWorldPositionZ()
+	local baseY = SceneObject(pSceneObject):getWorldPositionY()
+	
+	for i = 1, #mobileList, 1 do
+		local newX = baseX + mobileList[i].x
+		local newY = baseY + mobileList[i].y
+		local newZ = getTerrainHeight(pSceneObject, newX, newY)
+		
+		table.insert(spawnPoints, { newX, newZ, newY })
+	end
+	
+	if spawnPoints ~= nil and #spawnPoints > 0 then
 		return SpawnMobiles.generateMobileObjects(pSceneObject, prefix, mobileList, spawnPoints)
 	else
 		return nil
@@ -254,6 +275,14 @@ function SpawnMobiles.spawnMobiles(pSceneObject, prefix, mobileList, forceSpawn)
 	forceSpawn = forceSpawn or false
 	if SpawnMobiles.isPrefixFree(pSceneObject, prefix) then
 		return SpawnMobiles.spawnMobilesWithPrefix(pSceneObject, prefix, mobileList, forceSpawn)
+	else
+		return nil
+	end
+end
+
+function SpawnMobiles.spawnMobilesWithLoc(pSceneObject, prefix, mobileList)
+	if SpawnMobiles.isPrefixFree(pSceneObject, prefix) then
+		return SpawnMobiles.spawnMobilesWithLocAndPrefix(pSceneObject, prefix, mobileList)
 	else
 		return nil
 	end
