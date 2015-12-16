@@ -33,6 +33,9 @@ Luna<LuaTangibleObject>::RegType LuaTangibleObject::Register[] = {
 		{ "isNeutral", &LuaTangibleObject::isNeutral },
 		{ "hasActiveArea", &LuaTangibleObject::hasActiveArea},
 		{ "isInvisible", &LuaTangibleObject::isInvisible },
+		{ "getLuaStringData", &LuaTangibleObject::getLuaStringData },
+		{ "setLuaStringData", &LuaTangibleObject::setLuaStringData },
+		{ "deleteLuaStringData", &LuaTangibleObject::deleteLuaStringData },
 		{ 0, 0 }
 };
 
@@ -214,6 +217,31 @@ int LuaTangibleObject::hasActiveArea(lua_State* L) {
 int LuaTangibleObject::isInvisible(lua_State* L) {
 	bool retVal = realObject->isInvisible();
 	lua_pushboolean(L, retVal);
+
+	return 1;
+}
+
+int LuaTangibleObject::setLuaStringData(lua_State *L) {
+	String key = lua_tostring(L, -1);
+	String data = lua_tostring(L, -2);
+
+	realObject->setLuaStringData(key, data);
+	return 0;
+}
+
+int LuaTangibleObject::deleteLuaStringData(lua_State* L) {
+	String key = lua_tostring(L, -1);
+
+	realObject->deleteLuaStringData(key);
+
+	return 0;
+}
+
+int LuaTangibleObject::getLuaStringData(lua_State *L) {
+	String key = lua_tostring(L, -1);
+	String data = realObject->getLuaStringData(key);
+
+	lua_pushstring(L, data.toCharArray());
 
 	return 1;
 }
