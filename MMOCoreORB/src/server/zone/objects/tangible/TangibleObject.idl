@@ -39,6 +39,9 @@ class TangibleObject extends SceneObject {
 	protected unsigned int faction;
 
 	protected boolean invisible;
+
+	@dereferenced
+	protected VectorMap<string, string> luaStringData;
 	
 	@dereferenced
 	protected CustomizationVariables customizationVariables;
@@ -96,6 +99,8 @@ class TangibleObject extends SceneObject {
 		invisible = false;
 
 		antiDecayKitObject = null;
+
+		luaStringData.setNoDuplicateInsertPlan();
 	}
 	
 	public void initializeMembers() {
@@ -840,6 +845,21 @@ class TangibleObject extends SceneObject {
 	@dirty
 	public abstract boolean isCustomIngredient() {
 		return false;
+	}
+
+	@preLocked
+	public void setLuaStringData(final string key, final string data) {
+		luaStringData.put(key, data);
+	}
+	
+	@preLocked
+	public void deleteLuaStringData(final string key) {
+		luaStringData.drop(key);
+	}
+
+	@dirty
+	public string getLuaStringData(final string key) {
+		return luaStringData.get(key);
 	}
 }
 
