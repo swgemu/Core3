@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_e340a037",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase2/fs_reflex2_theater.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-16T03:12:05Z",
+      "side": 1,
+      "message": "Why bother putting a z here? You don\u0027t use it.",
+      "revId": "508cdd472a095e913526f4e15c8eb9bceefba27e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
