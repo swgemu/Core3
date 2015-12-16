@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_c368fc89",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidSkillModTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-16T23:56:45Z",
+      "side": 1,
+      "message": "This might be a point of style, but I (at least personally) think it is confusing when local variables are named the same thing as class member variables. We usually indicate weak or strong in the names to differentiate the two. I\u0027d like to see this changed.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 56
+      },
+      "revId": "0a1933860848d310a3a7e7eb3ded651a984e483b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_a36b8884",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidSkillModTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-16T23:56:45Z",
+      "side": 1,
+      "message": "The point ivo was trying to make here was that the call to reschedule doesn\u0027t automatically refresh the pending task for any object (since we don\u0027t know what a task does a priori), so if it needs to be refreshed for the droid it needs to be manually called here.",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 30
+      },
+      "revId": "0a1933860848d310a3a7e7eb3ded651a984e483b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_036fd493",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/PetControlDeviceImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-16T23:56:45Z",
+      "side": 1,
+      "message": "Does this need to happen if there are no skill mods to apply? The task system can be kind of heavy at points and it would be best to avoid extra tasks that don\u0027t do anything.",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 77
+      },
+      "revId": "0a1933860848d310a3a7e7eb3ded651a984e483b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
