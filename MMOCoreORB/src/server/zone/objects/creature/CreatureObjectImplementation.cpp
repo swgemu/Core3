@@ -2277,29 +2277,9 @@ void CreatureObjectImplementation::setBlindedState(int durationSeconds) {
 	addBuff(state);
 }
 
-void CreatureObjectImplementation::setIntimidatedState(uint32 mod, uint32 crc, int durationSeconds) {
-	// put the skillmods into a crc buff so we can stack all forms of intim
-	if (!hasBuff(crc)) {
-		Reference<PrivateSkillMultiplierBuff*> buff = new PrivateSkillMultiplierBuff(asCreatureObject(), crc, durationSeconds, BuffType::STATE);
-
-		Locker locker(buff);
-
-		buff->setSkillModifier("private_damage_divisor", 2);
-
-		addBuff(buff);
-
-	} else { // already have this intimidation buff, don't keep stacking the multiplier, but do extend the duration
-		Reference<Buff*> buff = getBuff(crc);
-
-		if (buff != NULL && buff->getTimeLeft() < durationSeconds) {
-			Locker locker(buff);
-
-			buff->renew(durationSeconds);
-		}
-	}
-
+void CreatureObjectImplementation::setIntimidatedState(int durationSeconds) {
 	if (!hasState(CreatureState::INTIMIDATED)) {
-		Reference<StateBuff*> state = new StateBuff(asCreatureObject(), CreatureState::INTIMIDATED, durationSeconds, crc);
+		Reference<StateBuff*> state = new StateBuff(asCreatureObject(), CreatureState::INTIMIDATED, durationSeconds);
 
 		Locker locker(state);
 
@@ -2308,26 +2288,22 @@ void CreatureObjectImplementation::setIntimidatedState(uint32 mod, uint32 crc, i
 
 		state->setSkillModifier("private_melee_defense", -20);
 		state->setSkillModifier("private_ranged_defense", -20);
+		state->setSkillModifier("private_damage_divisor", 2);
 
 		addBuff(state);
-	} else { // already have the intimidated state, so extend it. This is the buff that gets sent to the client
+	} else { // already have the intimidated state, so extend it.
 		Reference<Buff*> state = getBuff(Long::hashCode(CreatureState::INTIMIDATED));
 
-		if (state == NULL) { // this shouldn't happen, but if it does, we want to make sure intim gets set
-			//removeStateBuff(CreatureState::INTIMIDATED);
-			//setIntimidatedState(mod, crc, durationSeconds);
+		if (state == NULL) { // this shouldn't happen, so if it does, we want to complain noisily
 			error("no intimidate state buff in setIntimidatedState");
 			clearState(CreatureState::INTIMIDATED);
-			removeBuff(crc);
-			setIntimidatedState(mod, crc, durationSeconds);
+			setIntimidatedState(durationSeconds);
 			return;
 		}
 		// the intimidate flytext should show up everytime it succeeds
 		showFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
 
 		Locker locker(state);
-
-		state->addSecondaryBuffCRC(crc);
 
 		if (state->getTimeLeft() < durationSeconds)
 			state->renew(durationSeconds);

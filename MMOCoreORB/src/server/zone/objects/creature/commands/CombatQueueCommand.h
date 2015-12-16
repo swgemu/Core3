@@ -470,7 +470,7 @@ public:
 	}
 
 	// this goes in command in order to allow for overriding for special commands
-	virtual void applyEffect(CreatureObject* creature, uint8 effectType, uint32 mod, uint32 crc = 0) const {
+	virtual void applyEffect(CreatureObject* creature, uint8 effectType, uint32 mod) const {
 		CombatManager* combatManager = CombatManager::instance();
 		StateEffect effect = getStateEffect(effectType);
 		Reference<Buff*> buff = NULL;
@@ -492,7 +492,7 @@ public:
 			creature->setDizziedState(duration);
 			break;
 		case CommandEffect::INTIMIDATE:
-			creature->setIntimidatedState(mod, crc, duration);
+			creature->setIntimidatedState(duration);
 			break;
 		case CommandEffect::STUN:
 			creature->setStunnedState(duration);
