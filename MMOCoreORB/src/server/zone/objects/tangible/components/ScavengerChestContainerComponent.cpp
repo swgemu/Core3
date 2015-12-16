@@ -44,14 +44,50 @@ bool ScavengerChestContainerComponent::checkContainerPermission(SceneObject* sce
 			return false;
 		}
 
-		chest->addtoLootedList(creature->getObjectID());
 		return true;
-	} else if ( permission == ContainerPermissions::OPEN  ) {
+	} else if (permission == ContainerPermissions::OPEN) {
 		return true;
 	}
 
 	return false;
 }
 
+int ScavengerChestContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) {
+	ContainerPermissions* permissions = sceneObject->getContainerPermissions();
+
+	if(!sceneObject->isEventPerkItem())
+		return 0;
+
+	ManagedReference<ScavengerChest*> chest = cast<ScavengerChest*>(sceneObject);
+
+	if (chest == NULL)
+		return 0;
+
+	EventPerkDataComponent* gameData = cast<EventPerkDataComponent*>(chest->getDataObjectComponent()->get());
+
+	if (gameData == NULL)
+		return 0;
+
+	EventPerkDeed* deed = gameData->getDeed();
+
+	if (deed == NULL)
+		return 0;
+
+	ManagedReference<CreatureObject*> owner = deed->getOwner().get();
+
+	if (destination == NULL)
+		return 0;
+
+	ManagedReference<SceneObject*> rootParent = destination->getParent();
+
+	if (rootParent != NULL && rootParent->isCreatureObject()) {
+		CreatureObject* creature = cast<CreatureObject*>(rootParent.get());
+
+		if (creature != NULL && creature != owner)
+			chest->addtoLootedList(creature->getObjectID());
+	}
+
+	return 0;
+}
 
 
