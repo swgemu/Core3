@@ -43,6 +43,9 @@ namespace tangible {
 		int isNeutral(lua_State *L);
 		int hasActiveArea(lua_State* L);
 		int isInvisible(lua_State* L);
+		int getLuaStringData(lua_State *L);
+		int setLuaStringData(lua_State *L);
+		int deleteLuaStringData(lua_State *L);
 
 	protected:
 		TangibleObject* realObject;
