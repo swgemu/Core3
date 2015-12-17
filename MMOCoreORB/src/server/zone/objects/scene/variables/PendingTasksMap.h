@@ -36,7 +36,7 @@ public:
 
 	PendingTasksMap(const PendingTasksMap& p);
 
-	void put(const String& name, Task* task);
+	int put(const String& name, Task* task);
 
 	void drop(const String& name);
 

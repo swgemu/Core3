@@ -22,10 +22,10 @@ PendingTasksMap::PendingTasksMap(const PendingTasksMap& p) : Object(), taskMap(p
 	taskMap.setNullValue(NULL);
 }
 
-void PendingTasksMap::put(const String& name, Task* task) {
+int PendingTasksMap::put(const String& name, Task* task) {
 	Locker guard(&mutex);
 
-	taskMap.put(name, task);
+	return taskMap.put(name, task);
 }
 
 void PendingTasksMap::drop(const String& name) {
