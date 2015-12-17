@@ -25,6 +25,9 @@ public:
 
 		if (pet->containsPendingTask("droid_power"))
 			pet->removePendingTask( "droid_power" );
+          
+		if (pet->containsPendingTask("droid_skill_mod"))
+			pet->removePendingTask( "droid_skill_mod" );
 
 		if (pet->containsPendingTask("store_pet"))
 			pet->removePendingTask( "store_pet" );
