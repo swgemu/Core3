@@ -253,6 +253,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "createObserver", createObserver);
 	lua_register(luaEngine->getLuaState(), "dropObserver", dropObserver);
 	lua_register(luaEngine->getLuaState(), "spawnMobile", spawnMobile);
+	lua_register(luaEngine->getLuaState(), "spawnEventMobile", spawnEventMobile);
 	lua_register(luaEngine->getLuaState(), "spatialChat", spatialChat);
 	lua_register(luaEngine->getLuaState(), "spatialMoodChat", spatialMoodChat);
 
@@ -1816,6 +1817,59 @@ int DirectorManager::spawnMobile(lua_State* L) {
 
 	return 1;
 	//public native CreatureObject spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long parentID = 0);
+}
+
+int DirectorManager::spawnEventMobile(lua_State* L) {
+    int numberOfArguments = lua_gettop(L);
+    if (numberOfArguments != 8) {
+            instance()->error("incorrect number of arguments passed to DirectorManager::spawnEventMobile");
+            ERROR_CODE = INCORRECT_ARGUMENTS;
+            return 0;
+    }
+
+    uint64 parentID;
+    float x, y, z, heading;
+    int respawnTimer, level;
+    String mobile, zoneid;
+
+    if (numberOfArguments == 8) {
+    	parentID = lua_tointeger(L, -1);
+		heading = lua_tonumber(L, -2);
+		y = lua_tonumber(L, -3);
+		z = lua_tonumber(L, -4);
+		x = lua_tonumber(L, -5);
+		level = lua_tointeger(L, -6);
+		mobile = lua_tostring(L, -7);
+		zoneid = lua_tostring(L, -8);
+    }
+
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+
+	Zone* zone = zoneServer->getZone(zoneid);
+
+	if (zone == NULL) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	CreatureManager* creatureManager = zone->getCreatureManager();
+
+	CreatureObject* creature = creatureManager->spawnCreatureAsEventMob(mobile.hashCode(), level, x, z, y, parentID);
+
+	if (creature == NULL) {
+		instance()->error("could not spawn mobile " + mobile);
+
+		lua_pushnil(L);
+	} else {
+		Locker locker(creature);
+
+		creature->updateDirection(Math::deg2rad(heading));
+
+		creature->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
+		lua_pushlightuserdata(L, creature);
+	}
+
+	return 1;
 }
 
 int DirectorManager::spawnBuilding(lua_State* L) {

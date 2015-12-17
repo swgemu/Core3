@@ -3,11 +3,12 @@ ShuttleDropoff = {
 		"Which shuttle would you like to spawn? (\"lambda\", \"shuttle\", \"transport\", \"theed transport\").",
 		"Move to the location where you'd like the shuttle to land and type \"here\" in the box to set its spawn point.",
 		"Would you like the shuttle to spawn NPCs upon landing? (\"yes\" or \"no\").",
-		"Enter the spawn template name of the NPC (e.g. stormtrooper, nightsister_elder)",
-		"Enter the number of NPCs to spawn."
+		"Enter the spawn template name of the NPC (e.g. stormtrooper, nightsister_elder) Note: These will be spawned as event mobs.",
+		"Enter the number of NPCs to spawn.",
+		"Enter the level of the event NPC's to spawn."
 	},
 
-	promptTitle = { "Shuttle Type", "Landing Area", "Spawn NPCs on Landing?", "NPC Template", "Number of NPCs" },
+	promptTitle = { "Shuttle Type", "Landing Area", "Spawn NPCs on Landing?", "NPC Template", "Number of NPCs", "NPC Level" },
 
 	shuttleTemplate = {
 		"object/creature/npc/theme_park/lambda_shuttle.iff",
@@ -16,7 +17,7 @@ ShuttleDropoff = {
 		"object/creature/npc/theme_park/player_transport_theed_hangar.iff"
 	},
 
-	shuttleName = { "Lambda Shuttle", "Shuttle", "Transport", "Transport" },
+	shuttleName = { "Lambda Shuttle", "Shuttle", "Transport", "Theed Transport" },
 
 	shuttleLandingTime = { 17, 22, 26, 33 }, -- Time it takes each shuttle to land in seconds
 
@@ -35,6 +36,8 @@ function ShuttleDropoff:resetDefaults(pPlayer)
 	deleteData(playerID .. ":ShuttleDropoff:spawnPointX")
 	deleteData(playerID .. ":ShuttleDropoff:spawnPointZ")
 	deleteData(playerID .. ":ShuttleDropoff:spawnPointY")
+	deleteData(playerID .. ":ShuttleDropoff:shuttleStatus")
+	deleteData(playerID .. ":ShuttleDropoff:spawnLevel")
 
 	deleteStringData(playerID .. ":ShuttleDropoff:spawnTemplate")
 	deleteStringData(playerID .. ":ShuttleDropoff:spawnPlanet")
@@ -81,6 +84,7 @@ function ShuttleDropoff:spawnShuttle(pPlayer)
 	CreatureObject(pShuttle):setCustomObjectName(self.shuttleName[type])
 
 	writeData(playerID .. ":ShuttleDropoff:shuttleID", SceneObject(pShuttle):getObjectID())
+	writeData(playerID .. ":ShuttleDropoff:shuttleStatus", 1) -- Spawned
 	createEvent(self.shuttleCleanup * 1000, "ShuttleDropoff", "cleanUp", pPlayer)
 
 	return pShuttle
@@ -95,9 +99,10 @@ function ShuttleDropoff:doFlyby(pPlayer)
 	end
 
 	local type = readData(SceneObject(pPlayer):getObjectID() .. ":ShuttleDropoff:shuttleType")
-	self:landShuttle(pPlayer)
+	CreatureObject(pPlayer):sendSystemMessage("Beginning flyby.")
 
-	createEvent(self.shuttleLandingTime[type] * 1000, "ShuttleDropoff", "doTakeOff", pPlayer)
+	createEvent(5 * 1000, "ShuttleDropoff", "landShuttle", pPlayer)
+	createEvent((self.shuttleLandingTime[type] + 5) * 1000, "ShuttleDropoff", "doTakeOff", pPlayer)
 end
 
 function ShuttleDropoff:landShuttle(pPlayer)
@@ -117,6 +122,7 @@ function ShuttleDropoff:landShuttle(pPlayer)
 		CreatureObject(pShuttle):setPosture(UPRIGHT)
 	end
 
+	writeData(playerID .. ":ShuttleDropoff:shuttleStatus", 2) -- Landing
 	createEvent(self.shuttleLandingTime[type] * 1000, "ShuttleDropoff", "dropOffNpcs", pPlayer)
 	CreatureObject(pPlayer):sendSystemMessage("Shuttle Update: Shuttle is now landing..")
 end
@@ -131,12 +137,17 @@ function ShuttleDropoff:dropOffNpcs(pPlayer)
 	local posZ = readData(playerID .. ":ShuttleDropoff:spawnPointZ")
 	local posY = readData(playerID .. ":ShuttleDropoff:spawnPointY")
 	local template = readStringData(playerID .. ":ShuttleDropoff:spawnTemplate")
+	local mobLevel = readData(playerID .. ":ShuttleDropoff:spawnLevel")
 	local numSpawns = readData(playerID .. ":ShuttleDropoff:numSpawns")
 	local heading = readData(playerID .. ":ShuttleDropoff:heading")
 	local planet = readStringData(playerID .. ":ShuttleDropoff:spawnPlanet")
 
+	writeData(playerID .. ":ShuttleDropoff:shuttleStatus", 3) -- Landed
+
 	for i = 1, numSpawns, 1 do
-		spawnMobile(planet, template, 0, posX, posZ, posY, heading, 0)
+		local xOffset = -3 + getRandomNumber(0, 6)
+		local yOffset = -3 + getRandomNumber(0, 6)
+		spawnEventMobile(planet, template, mobLevel, posX + xOffset, posZ, posY + yOffset, heading, 0)
 	end
 end
 
@@ -170,6 +181,7 @@ function ShuttleDropoff:doTakeOff(pPlayer)
 		CreatureObject(pShuttle):setPosture(PRONE)
 	end
 
+	writeData(playerID .. ":ShuttleDropoff:shuttleStatus", 4) -- Taking off
 	createEvent(20 * 1000, "ShuttleDropoff", "cleanUp", pPlayer)
 	CreatureObject(pPlayer):sendSystemMessage("Shuttle Update: Shuttle has taken off.")
 end
@@ -246,10 +258,27 @@ function ShuttleDropoff:suiShuttleDropoffMainCallback(pPlayer, pSui, eventIndex,
 			if (pShuttle == nil) then
 				CreatureObject(pPlayer):sendSystemMessage("No shuttle found. Type \"m\" first to enter manual control before trying to land or leave.")
 			else
+				local shuttleStatus = readData(playerID .. ":ShuttleDropoff:shuttleStatus")
 				if (args == "land") then
-					self:landShuttle(pPlayer)
+					if (shuttleStatus == 1) then
+						self:landShuttle(pPlayer)
+					elseif (shuttleStatus == 2) then
+						CreatureObject(pPlayer):sendSystemMessage("Shuttle is already in the process of landing.")
+					elseif (shuttleStatus == 3) then
+						CreatureObject(pPlayer):sendSystemMessage("Shuttle has already landed.")
+					elseif (shuttleStatus == 4) then
+						CreatureObject(pPlayer):sendSystemMessage("Shuttle is currently taking off.")
+					end
 				else
-					self:doTakeOff(pPlayer)
+					if (shuttleStatus == 1) then
+						CreatureObject(pPlayer):sendSystemMessage("Shuttle is not currently on the ground.")
+					elseif (shuttleStatus == 2) then
+						CreatureObject(pPlayer):sendSystemMessage("Shuttle is currently in the process of landing.")
+					elseif (shuttleStatus == 3) then
+						self:doTakeOff(pPlayer)
+					elseif (shuttleStatus == 4) then
+						CreatureObject(pPlayer):sendSystemMessage("Shuttle is already taking off.")
+					end
 				end
 			end
 		end
@@ -341,9 +370,18 @@ function ShuttleDropoff:suiShuttleDropoffSetupCallback(pPlayer, pSui, eventIndex
 
 		if (spawnNumber ~= nil and spawnNumber > 0 and spawnNumber <= 10) then
 			writeData(playerID .. ":ShuttleDropoff:numSpawns", spawnNumber)
-			writeData(playerID .. ":ShuttleDropoff:setupCompleted", 1)
+			writeData(playerID .. ":ShuttleDropoff:setupStep", 6)
 		else
 			CreatureObject(pPlayer):sendSystemMessage("You must enter a spawn number between 1 and 10.")
+		end
+	elseif (curStep == 6) then
+		local spawnLevel = tonumber(args)
+
+		if (spawnLevel ~= nil and spawnLevel > 0) then
+			writeData(playerID .. ":ShuttleDropoff:spawnLevel", spawnLevel)
+			writeData(playerID .. ":ShuttleDropoff:setupCompleted", 1)
+		else
+			CreatureObject(pPlayer):sendSystemMessage("You must enter a spawn level greater than 0.")
 		end
 	end
 
