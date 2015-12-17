@@ -4,13 +4,13 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/components/EventPerkDataComponent.h"
 
-bool ScavengerChestContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) {
-	ContainerPermissions* permissions = sceneObject->getContainerPermissions();
+bool ScavengerChestContainerComponent::checkContainerPermission(SceneObject* container, CreatureObject* creature, uint16 permission) {
+	ContainerPermissions* permissions = container->getContainerPermissions();
 
-	if(!sceneObject->isEventPerkItem())
+	if(!container->isEventPerkItem())
 		return false;
 
-	ManagedReference<ScavengerChest*> chest = cast<ScavengerChest*>(sceneObject);
+	ManagedReference<ScavengerChest*> chest = cast<ScavengerChest*>(container);
 
 	if (chest == NULL)
 		return false;
@@ -44,14 +44,52 @@ bool ScavengerChestContainerComponent::checkContainerPermission(SceneObject* sce
 			return false;
 		}
 
-		chest->addtoLootedList(creature->getObjectID());
 		return true;
-	} else if ( permission == ContainerPermissions::OPEN  ) {
+	} else if (permission == ContainerPermissions::OPEN) {
 		return true;
 	}
 
 	return false;
 }
 
+int ScavengerChestContainerComponent::notifyObjectRemoved(SceneObject* container, SceneObject*, SceneObject* destination) {
+	if (destination == NULL)
+		return 0;
+
+	ManagedReference<SceneObject*> rootParent = destination->getParent();
+
+	if (rootParent != NULL && rootParent->isCreatureObject()) {
+		CreatureObject* creature = cast<CreatureObject*>(rootParent.get());
+
+		ContainerPermissions* permissions = container->getContainerPermissions();
+
+		if(!container->isEventPerkItem())
+			return 0;
+
+		ManagedReference<ScavengerChest*> chest = cast<ScavengerChest*>(container);
+
+		if (chest == NULL)
+			return 0;
+
+		EventPerkDataComponent* gameData = cast<EventPerkDataComponent*>(chest->getDataObjectComponent()->get());
+
+		if (gameData == NULL)
+			return 0;
+
+		EventPerkDeed* deed = gameData->getDeed();
+
+		if (deed == NULL)
+			return 0;
+
+		ManagedReference<CreatureObject*> owner = deed->getOwner().get();
+
+		Locker guard(chest);
+
+		if (creature != NULL && creature != owner)
+			chest->addtoLootedList(creature->getObjectID());
+	}
+
+	return 0;
+}
 
 
