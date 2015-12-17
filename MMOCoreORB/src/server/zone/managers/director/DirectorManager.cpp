@@ -253,6 +253,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "createObserver", createObserver);
 	lua_register(luaEngine->getLuaState(), "dropObserver", dropObserver);
 	lua_register(luaEngine->getLuaState(), "spawnMobile", spawnMobile);
+	lua_register(luaEngine->getLuaState(), "spawnEventMobile", spawnEventMobile);
 	lua_register(luaEngine->getLuaState(), "spatialChat", spatialChat);
 	lua_register(luaEngine->getLuaState(), "spatialMoodChat", spatialMoodChat);
 
@@ -1156,9 +1157,9 @@ int DirectorManager::spatialChat(lua_State* L) {
 			StringIdChatParameter taskMessage = *message;
 
 			EXECUTE_TASK_3(creature, chatManager, taskMessage, {
-				Locker locker(creature_p);
+					Locker locker(creature_p);
 
-				chatManager_p->broadcastMessage(creature_p, taskMessage_p, 0, 0, 0);
+					chatManager_p->broadcastMessage(creature_p, taskMessage_p, 0, 0, 0);
 			});
 		}
 	} else {
@@ -1739,21 +1740,21 @@ int DirectorManager::setAuthorizationState(lua_State* L) {
 }
 
 int DirectorManager::spawnMobile(lua_State* L) {
-    int numberOfArguments = lua_gettop(L);
-    if (numberOfArguments != 8 && numberOfArguments != 9) {
-            instance()->error("incorrect number of arguments passed to DirectorManager::spawnMobile");
-            ERROR_CODE = INCORRECT_ARGUMENTS;
-            return 0;
-    }
+	int numberOfArguments = lua_gettop(L);
+	if (numberOfArguments != 8 && numberOfArguments != 9) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::spawnMobile");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
 
-    bool randomRespawn = false;
-    uint64 parentID;
-    float x, y, z, heading;
-    int respawnTimer;
-    String mobile, zoneid;
+	bool randomRespawn = false;
+	uint64 parentID;
+	float x, y, z, heading;
+	int respawnTimer;
+	String mobile, zoneid;
 
-    if (numberOfArguments == 8) {
-    	parentID = lua_tointeger(L, -1);
+	if (numberOfArguments == 8) {
+		parentID = lua_tointeger(L, -1);
 		heading = lua_tonumber(L, -2);
 		y = lua_tonumber(L, -3);
 		z = lua_tonumber(L, -4);
@@ -1761,9 +1762,9 @@ int DirectorManager::spawnMobile(lua_State* L) {
 		respawnTimer = lua_tointeger(L, -6);
 		mobile = lua_tostring(L, -7);
 		zoneid = lua_tostring(L, -8);
-    } else {
-    	randomRespawn = lua_toboolean(L, -1);
-    	parentID = lua_tointeger(L, -2);
+	} else {
+		randomRespawn = lua_toboolean(L, -1);
+		parentID = lua_tointeger(L, -2);
 		heading = lua_tonumber(L, -3);
 		y = lua_tonumber(L, -4);
 		z = lua_tonumber(L, -5);
@@ -1771,7 +1772,7 @@ int DirectorManager::spawnMobile(lua_State* L) {
 		respawnTimer = lua_tointeger(L, -7);
 		mobile = lua_tostring(L, -8);
 		zoneid = lua_tostring(L, -9);
-    }
+	}
 
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 
@@ -1818,6 +1819,59 @@ int DirectorManager::spawnMobile(lua_State* L) {
 	//public native CreatureObject spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long parentID = 0);
 }
 
+int DirectorManager::spawnEventMobile(lua_State* L) {
+	int numberOfArguments = lua_gettop(L);
+	if (numberOfArguments != 8) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::spawnEventMobile");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	uint64 parentID;
+	float x, y, z, heading;
+	int respawnTimer, level;
+	String mobile, zoneid;
+
+	if (numberOfArguments == 8) {
+		parentID = lua_tointeger(L, -1);
+		heading = lua_tonumber(L, -2);
+		y = lua_tonumber(L, -3);
+		z = lua_tonumber(L, -4);
+		x = lua_tonumber(L, -5);
+		level = lua_tointeger(L, -6);
+		mobile = lua_tostring(L, -7);
+		zoneid = lua_tostring(L, -8);
+	}
+
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+
+	Zone* zone = zoneServer->getZone(zoneid);
+
+	if (zone == NULL) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	CreatureManager* creatureManager = zone->getCreatureManager();
+
+	CreatureObject* creature = creatureManager->spawnCreatureAsEventMob(mobile.hashCode(), level, x, z, y, parentID);
+
+	if (creature == NULL) {
+		instance()->error("could not spawn mobile " + mobile);
+
+		lua_pushnil(L);
+	} else {
+		Locker locker(creature);
+
+		creature->updateDirection(Math::deg2rad(heading));
+
+		creature->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
+		lua_pushlightuserdata(L, creature);
+	}
+
+	return 1;
+}
+
 int DirectorManager::spawnBuilding(lua_State* L) {
 	int numberOfArguments = lua_gettop(L);
 	if (numberOfArguments != 5) {
@@ -1855,32 +1909,32 @@ int DirectorManager::spawnBuilding(lua_State* L) {
 }
 
 int DirectorManager::destroyBuilding(lua_State* L) {
-       int numberOfArguments = lua_gettop(L);
-       if (numberOfArguments != 1) {
-               instance()->error("incorrect number of arguments passed to DirectorManager::destroyBuilding");
-               ERROR_CODE = INCORRECT_ARGUMENTS;
-               return 0;
-       }
-       uint64 objectID = lua_tointeger(L, -1);
-       ZoneServer* zoneServer = ServerCore::getZoneServer();
-       Reference<SceneObject*> object = zoneServer->getObject(objectID);
+	int numberOfArguments = lua_gettop(L);
+	if (numberOfArguments != 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::destroyBuilding");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+	uint64 objectID = lua_tointeger(L, -1);
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+	Reference<SceneObject*> object = zoneServer->getObject(objectID);
 
-       if (object == NULL)
-               return 0;
+	if (object == NULL)
+		return 0;
 
-       ManagedReference<StructureObject*> building = object.castTo<StructureObject*>();
+	ManagedReference<StructureObject*> building = object.castTo<StructureObject*>();
 
-       if (building == NULL || !building->isStructureObject())
-               return 0;
+	if (building == NULL || !building->isStructureObject())
+		return 0;
 
-       Reference<Task*> pendingTask = building->getPendingTask("destruction");
+	Reference<Task*> pendingTask = building->getPendingTask("destruction");
 
-       if (pendingTask != NULL)
-               return 0;
+	if (pendingTask != NULL)
+		return 0;
 
-       Reference<DestroyStructureTask*> task = new DestroyStructureTask(building);
-       task->execute();
-       return 1;
+	Reference<DestroyStructureTask*> task = new DestroyStructureTask(building);
+	task->execute();
+	return 1;
 }
 
 int DirectorManager::spawnSceneObject(lua_State* L) {
@@ -2449,33 +2503,33 @@ Vector3 DirectorManager::generateSpawnPoint(String zoneName, float x, float y, f
 }
 
 int DirectorManager::getSpawnPoint(lua_State* L) {
-    int numberOfArguments = lua_gettop(L);
-    if (numberOfArguments != 5 && numberOfArguments != 6) {
+	int numberOfArguments = lua_gettop(L);
+	if (numberOfArguments != 5 && numberOfArguments != 6) {
 		instance()->error("incorrect number of arguments passed to DirectorManager::getSpawnPoint");
 		ERROR_CODE = INCORRECT_ARGUMENTS;
 		return 0;
 	}
 
-    float maximumDistance, minimumDistance, y, x;
-    String zoneName;
-    bool forceSpawn = false;
+	float maximumDistance, minimumDistance, y, x;
+	String zoneName;
+	bool forceSpawn = false;
 
-    if (numberOfArguments == 5) {
-    	maximumDistance = lua_tonumber(L, -1);
+	if (numberOfArguments == 5) {
+		maximumDistance = lua_tonumber(L, -1);
 		minimumDistance = lua_tonumber(L, -2);
 		y = lua_tonumber(L, -3);
 		x = lua_tonumber(L, -4);
 		zoneName = lua_tostring(L, -5);
-    } else {
-    	forceSpawn = lua_toboolean(L, -1);
-    	maximumDistance = lua_tonumber(L, -2);
+	} else {
+		forceSpawn = lua_toboolean(L, -1);
+		maximumDistance = lua_tonumber(L, -2);
 		minimumDistance = lua_tonumber(L, -3);
 		y = lua_tonumber(L, -4);
 		x = lua_tonumber(L, -5);
 		zoneName = lua_tostring(L, -6);
-    }
+	}
 
-    Zone* zone = ServerCore::getZoneServer()->getZone(zoneName);
+	Zone* zone = ServerCore::getZoneServer()->getZone(zoneName);
 
 	if (zone == NULL) {
 		instance()->error("Zone is NULL in DirectorManager::getSpawnPoint");
@@ -2515,36 +2569,36 @@ int DirectorManager::getSpawnPoint(lua_State* L) {
 }
 
 int DirectorManager::getSpawnArea(lua_State* L) {
-    int numberOfArguments = lua_gettop(L);
-    if (numberOfArguments != 7 && numberOfArguments != 8) {
+	int numberOfArguments = lua_gettop(L);
+	if (numberOfArguments != 7 && numberOfArguments != 8) {
 		instance()->error("incorrect number of arguments passed to DirectorManager::getSpawnArea");
 		ERROR_CODE = INCORRECT_ARGUMENTS;
 		return 0;
 	}
 
-    float maximumHeightDifference, areaSize, maximumDistance, minimumDistance, y, x;
-    Zone* zone = NULL;
-    bool forceSpawn = false;
-  	String zoneName;
+	float maximumHeightDifference, areaSize, maximumDistance, minimumDistance, y, x;
+	Zone* zone = NULL;
+	bool forceSpawn = false;
+	String zoneName;
 
-    if (numberOfArguments == 8) {
-    	forceSpawn = lua_toboolean(L, -1);
-    	maximumHeightDifference = lua_tonumber(L, -2);
-    	areaSize = lua_tonumber(L, -3);
-    	maximumDistance = lua_tonumber(L, -4);
-    	minimumDistance = lua_tonumber(L, -5);
-    	y = lua_tonumber(L, -6);
-    	x = lua_tonumber(L, -7);
-    	zoneName = lua_tostring(L, -8);
-    } else {
-    	maximumHeightDifference = lua_tonumber(L, -1);
-    	areaSize = lua_tonumber(L, -2);
-    	maximumDistance = lua_tonumber(L, -3);
-    	minimumDistance = lua_tonumber(L, -4);
-    	y = lua_tonumber(L, -5);
-    	x = lua_tonumber(L, -6);
-    	zoneName = lua_tostring(L, -7);
-    }
+	if (numberOfArguments == 8) {
+		forceSpawn = lua_toboolean(L, -1);
+		maximumHeightDifference = lua_tonumber(L, -2);
+		areaSize = lua_tonumber(L, -3);
+		maximumDistance = lua_tonumber(L, -4);
+		minimumDistance = lua_tonumber(L, -5);
+		y = lua_tonumber(L, -6);
+		x = lua_tonumber(L, -7);
+		zoneName = lua_tostring(L, -8);
+	} else {
+		maximumHeightDifference = lua_tonumber(L, -1);
+		areaSize = lua_tonumber(L, -2);
+		maximumDistance = lua_tonumber(L, -3);
+		minimumDistance = lua_tonumber(L, -4);
+		y = lua_tonumber(L, -5);
+		x = lua_tonumber(L, -6);
+		zoneName = lua_tostring(L, -7);
+	}
 
 	zone = ServerCore::getZoneServer()->getZone(zoneName);
 

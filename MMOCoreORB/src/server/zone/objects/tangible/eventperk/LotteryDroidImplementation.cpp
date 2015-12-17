@@ -300,7 +300,7 @@ void LotteryDroidImplementation::startLottery(CreatureObject* player) {
 void LotteryDroidImplementation::activateGamePulse() {
 	if (gamePulse == NULL) {
 		gamePulse = new LotteryDroidPulseTask(_this.getReferenceUnsafeStaticCast());
-		gamePulse->reschedule(gameDuration * 60 * 60 * 1000);
+		gamePulse->schedule(gameDuration * 60 * 60 * 1000);
 	} else {
 		gamePulse->reschedule(gameDuration * 60 * 60 * 1000);
 	}
