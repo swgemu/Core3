@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "fa6b99d7_c3ff9ca9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidSkillModTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-17T01:46:38Z",
+      "side": 1,
+      "message": "Do the null checking after you get the strong refs.",
+      "revId": "0a1933860848d310a3a7e7eb3ded651a984e483b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa6b99d7_c368fc89",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidSkillModTask.h",
         "patchSetId": 2
@@ -42,6 +59,24 @@
         "endLine": 57,
         "endChar": 30
       },
+      "revId": "0a1933860848d310a3a7e7eb3ded651a984e483b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_a302a8b2",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidSkillModTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-17T01:46:38Z",
+      "side": 1,
+      "message": "Yep, I had it backwards. Add it to the droid.",
+      "parentUuid": "fa6b99d7_a36b8884",
       "revId": "0a1933860848d310a3a7e7eb3ded651a984e483b",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
