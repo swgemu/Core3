@@ -1429,6 +1429,19 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 		if (!creo->isInvisible()) {
 			int32 newValue = (int32) numberOfPlayersInRange.decrement();
 
+			if (newValue < 0) {
+				int oldValue;
+
+				do {
+					oldValue = (int)numberOfPlayersInRange.get();
+
+					newValue = oldValue;
+
+					if (newValue < 0)
+						newValue = 0;
+				} while (!numberOfPlayersInRange.compareAndSet((uint32)oldValue, (uint32)newValue));
+			}
+
 			if (newValue == 0) {
 				if (despawnOnNoPlayerInRange && (despawnEvent == NULL) && !isPet()) {
 					despawnEvent = new DespawnCreatureOnPlayerDissappear(asAiAgent());
@@ -1440,8 +1453,6 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 					awarenessEvent->cancel();
 					awarenessEvent = NULL;
 				}
-			} else if (newValue < 0) {
-				error("numberOfPlayersInRange below 0");
 			}
 
 			activateMovementEvent();
