@@ -51,10 +51,10 @@ object_tangible_event_perk_fed_dub_stage_theater = object_tangible_poi_base_shar
 	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 
 	childObjects = {
-		{ templateFile = "object/static/structure/general/talus_imprv_flagpole_s01.iff", x = 5.96, z = 1.35, y = 7.72, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/structure/general/talus_imprv_flagpole_s01.iff", x = -6.06, z = 1.35, y = 7.71, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/structure/general/talus_imprv_flagpole_s01.iff", x = -2, z = 1.35, y = 7.68, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/structure/general/talus_imprv_flagpole_s01.iff", x = 1.98, z = 1.35, y = 7.73, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/talus/talus_imprv_flagpole_s01.iff", x = 5.96, z = 1.35, y = 7.72, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/talus/talus_imprv_flagpole_s01.iff", x = -6.06, z = 1.35, y = 7.71, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/talus/talus_imprv_flagpole_s01.iff", x = -2, z = 1.35, y = 7.68, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/talus/talus_imprv_flagpole_s01.iff", x = 1.98, z = 1.35, y = 7.73, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/mobile/dressed_fed_dub_patrolman_human_male_01.iff", x = 5.77, z = 1.35, y = 5.49, ow = 0.00881, ox = 0, oy = 0.99996, oz = 0, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/mobile/dressed_fed_dub_patrolman_human_male_01.iff", x = 1.9, z = 1.35, y = 5.44, ow = 0.00881, ox = 0, oy = 0.99996, oz = 0, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/mobile/dressed_fed_dub_patrolman_human_male_01.iff", x = -3.98, z = 1.35, y = 5.41, ow = 0.00881, ox = 0, oy = 0.99996, oz = 0, cellid = -1, containmentType = -1 },

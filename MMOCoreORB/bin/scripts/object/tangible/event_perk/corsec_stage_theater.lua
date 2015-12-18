@@ -51,10 +51,10 @@ object_tangible_event_perk_corsec_stage_theater = object_tangible_poi_base_share
 	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 
 	childObjects = {
-		{ templateFile = "object/static/structure/general/corl_banner_govt_tall_s01.iff", x = 5.96, z = 1.35, y = 7.72, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/structure/general/corl_banner_govt_tall_s01.iff", x = -6.06, z = 1.35, y = 7.71, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/structure/general/corl_banner_govt_tall_s01.iff", x = -2, z = 1.35, y = 7.68, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/structure/general/corl_banner_govt_tall_s01.iff", x = 1.98, z = 1.35, y = 7.73, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/corellia/corl_banner_govt_tall_s01.iff", x = 5.96, z = 1.35, y = 7.72, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/corellia/corl_banner_govt_tall_s01.iff", x = -6.06, z = 1.35, y = 7.71, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/corellia/corl_banner_govt_tall_s01.iff", x = -2, z = 1.35, y = 7.68, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/corellia/corl_banner_govt_tall_s01.iff", x = 1.98, z = 1.35, y = 7.73, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/mobile/dressed_corsec_officer_human_male_01.iff", x = 5.77, z = 1.35, y = 5.49, ow = 0.00881, ox = 0, oy = 0.99996, oz = 0, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/mobile/dressed_corsec_officer_human_male_01.iff", x = 1.9, z = 1.35, y = 5.44, ow = 0.00881, ox = 0, oy = 0.99996, oz = 0, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/mobile/dressed_corsec_officer_human_male_01.iff", x = -3.98, z = 1.35, y = 5.41, ow = 0.00881, ox = 0, oy = 0.99996, oz = 0, cellid = -1, containmentType = -1 },

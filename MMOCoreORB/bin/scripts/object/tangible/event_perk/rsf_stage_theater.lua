@@ -51,10 +51,10 @@ object_tangible_event_perk_rsf_stage_theater = object_tangible_poi_base_shared_p
 	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 
 	childObjects = {
-		{ templateFile = "object/static/structure/general/nboo_imprv_flagpole_s01.iff", x = 5.96, z = 1.35, y = 7.72, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/structure/general/nboo_imprv_flagpole_s01.iff", x = -6.06, z = 1.35, y = 7.71, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/structure/general/nboo_imprv_flagpole_s01.iff", x = -2, z = 1.35, y = 7.68, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/structure/general/nboo_imprv_flagpole_s01.iff", x = 1.98, z = 1.35, y = 7.73, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/naboo/nboo_imprv_flagpole_s01.iff", x = 5.96, z = 1.35, y = 7.72, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/naboo/nboo_imprv_flagpole_s01.iff", x = -6.06, z = 1.35, y = 7.71, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/naboo/nboo_imprv_flagpole_s01.iff", x = -2, z = 1.35, y = 7.68, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/naboo/nboo_imprv_flagpole_s01.iff", x = 1.98, z = 1.35, y = 7.73, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/mobile/dressed_rsf_security_guard.iff", x = 5.77, z = 1.35, y = 5.49, ow = 0.00881, ox = 0, oy = 0.99996, oz = 0, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/mobile/dressed_rsf_captain.iff", x = 1.9, z = 1.35, y = 5.44, ow = 0.00881, ox = 0, oy = 0.99996, oz = 0, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/mobile/dressed_rsf_tier2_trainer.iff", x = -3.98, z = 1.35, y = 5.41, ow = 0.00881, ox = 0, oy = 0.99996, oz = 0, cellid = -1, containmentType = -1 },

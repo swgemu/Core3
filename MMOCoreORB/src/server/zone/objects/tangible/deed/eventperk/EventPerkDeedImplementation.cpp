@@ -11,6 +11,7 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
+#include "server/zone/managers/name/NameManager.h"
 
 void EventPerkDeedImplementation::initializeTransientMembers() {
 	DeedImplementation::initializeTransientMembers();
@@ -259,7 +260,10 @@ void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
 				child->setCustomObjectName("AT-ST", true);
 			} else if (child->getServerObjectCRC() == 0xCF9AC86C) { // object/mobile/bantha_saddle.iff
 				child->setCustomObjectName("a bantha mount", true);
-
+			} else if (child->getObjectTemplate()->getFullTemplateString().indexOf("object/mobile") != -1) {
+				NameManager* nameManager = NameManager::instance();
+				String name = nameManager->makeCreatureName(true);
+				child->setCustomObjectName(name, true);
 			}
 		}
 	}
