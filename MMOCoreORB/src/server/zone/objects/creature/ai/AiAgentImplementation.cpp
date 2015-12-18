@@ -653,8 +653,12 @@ int AiAgentImplementation::checkForReactionChat(SceneObject* pObject) {
 }
 
 void AiAgentImplementation::doAwarenessCheck() {
-	if (numberOfPlayersInRange.get() <= 0)
+	int oldCount = numberOfPlayersInRange.get();
+
+	if (oldCount <= 0)
 		return;
+
+	int newPlayerCount = 0;
 
 	CloseObjectsVector* vec = (CloseObjectsVector*) getCloseObjects();
 	if (vec == NULL)
@@ -681,13 +685,20 @@ void AiAgentImplementation::doAwarenessCheck() {
 
 			//Locker crossLocker(target, thisObject); lets do dirty reads
 
+			if (target->isPlayerCreature())
+				++newPlayerCount;
+
 			if (current->doAwarenessCheck(target)) {
 				interrupt(target, ObserverEventType::OBJECTINRANGEMOVED);
 			}
 		}
 	}
 
-	if (numberOfPlayersInRange.get() > 0) {
+	bool success = numberOfPlayersInRange.compareAndSet(oldCount, newPlayerCount);
+
+	if (success && !newPlayerCount) {
+		return;
+	} else {
 		activateAwarenessEvent();
 	}
 }
@@ -1443,6 +1454,11 @@ void AiAgentImplementation::activateAwarenessEvent(uint64 delay) {
 #ifdef DEBUG
 	info("Starting activateAwarenessEvent check", true);
 #endif
+	CloseObjectsVector* vec = (CloseObjectsVector*) getCloseObjects();
+
+	if (vec == NULL)
+		return;
+
 	Locker locker(&awarenessEventMutex);
 
 	if (awarenessEvent == NULL) {
