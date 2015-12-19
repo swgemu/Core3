@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_43038c73",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tools/shuttle_dropoff.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-19T00:38:16Z",
+      "side": 1,
+      "message": "These numbers should be replaced with some descriptive enums. They don\u0027t need to be global -- you can just define them at the top of this file, but magic numbers are \"bad.\"",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 69
+      },
+      "revId": "b5a7b89da6377c225943762b602c32a9f1bb7727",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_23fe986c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tools/shuttle_dropoff.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-19T00:38:16Z",
+      "side": 1,
+      "message": "Why did you remove the self.shuttleLandingTime[type] in favor of a static number? I\u0027d prefer to see something more descriptive here. (The 1000 makes sense because you can assume we are converting from seconds to ms).",
+      "range": {
+        "startLine": 104,
+        "startChar": 13,
+        "endLine": 104,
+        "endChar": 14
+      },
+      "revId": "b5a7b89da6377c225943762b602c32a9f1bb7727",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_e3f7408b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tools/shuttle_dropoff.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-19T00:38:16Z",
+      "side": 1,
+      "message": "I know this is retroactive, but I really think these step numbers should also be descriptive, since it\u0027s not entirely clear that they MUST go in order always. You could probably convince me otherwise...",
+      "range": {
+        "startLine": 377,
+        "startChar": 1,
+        "endLine": 377,
+        "endChar": 22
+      },
+      "revId": "b5a7b89da6377c225943762b602c32a9f1bb7727",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_03f59482",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1836,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2015-12-19T00:38:16Z",
+      "side": 1,
+      "message": "Watch your tabs here. As long as it\u0027s the same throughout a file or function defintion it\u0027s probably fine, but the rest of this function uses actual tabs instead of \"4 spaces \u003d tab\"",
+      "range": {
+        "startLine": 1822,
+        "startChar": 0,
+        "endLine": 1836,
+        "endChar": 37
+      },
+      "revId": "b5a7b89da6377c225943762b602c32a9f1bb7727",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
