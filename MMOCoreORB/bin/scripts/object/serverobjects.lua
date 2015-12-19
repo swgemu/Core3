@@ -40,6 +40,7 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 
+includeFile("swgemu/serverobjects.lua")
 
 
 --Children folder includes
