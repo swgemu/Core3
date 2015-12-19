@@ -484,6 +484,14 @@ void AiAgentImplementation::initializeTransientMembers() {
 
 void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 	CreatureObjectImplementation::notifyPositionUpdate(entry);
+
+	SceneObject* object = static_cast<SceneObject*>(entry);
+
+	CreatureObject* creo = object->asCreatureObject();
+
+	if (creo != NULL && creo->isPlayerCreature() && !creo->isInvisible()) {
+		activateAwarenessEvent();
+	}
 }
 
 bool AiAgentImplementation::runAwarenessLogicCheck(SceneObject* pObject) {
@@ -655,9 +663,6 @@ int AiAgentImplementation::checkForReactionChat(SceneObject* pObject) {
 void AiAgentImplementation::doAwarenessCheck() {
 	int oldCount = numberOfPlayersInRange.get();
 
-	if (oldCount <= 0)
-		return;
-
 	int newPlayerCount = -1;
 
 	CloseObjectsVector* vec = (CloseObjectsVector*) getCloseObjects();
@@ -703,7 +708,8 @@ void AiAgentImplementation::doAwarenessCheck() {
 		}
 	}
 
-	activateAwarenessEvent();
+	if (numberOfPlayersInRange.get() > 0)
+		activateAwarenessEvent();
 }
 
 void AiAgentImplementation::doRecovery(int latency) {
@@ -1451,11 +1457,11 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 					despawnEvent->schedule(30000);
 				}
 
-				Locker locker(&awarenessEventMutex);
+				/*Locker locker(&awarenessEventMutex);
 				if (awarenessEvent != NULL) {
 					awarenessEvent->cancel();
 					awarenessEvent = NULL;
-				}
+				}*/
 			} else if (newValue < 0) {
 				error("numberOfPlayersInRange below 0");
 			}
