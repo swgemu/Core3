@@ -36,8 +36,6 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		StringTokenizer tokenizer(arguments.toString());
-
 		ManagedReference<SceneObject* > object = server->getZoneServer()->getObject(target);
 
 		StringTokenizer args(arguments.toString());
@@ -111,17 +109,17 @@ public:
 				float y = creature->getPositionY();
 				float heading = creature->getDirectionAngle();
 
-				if (tokenizer.hasMoreTokens())
-					x = tokenizer.getFloatToken();
+				if (args.hasMoreTokens())
+					x = args.getFloatToken();
 
-				if (tokenizer.hasMoreTokens())
-					z = tokenizer.getFloatToken();
+				if (args.hasMoreTokens())
+					z = args.getFloatToken();
 
-				if (tokenizer.hasMoreTokens())
-					y = tokenizer.getFloatToken();
+				if (args.hasMoreTokens())
+					y = args.getFloatToken();
 
-				if (tokenizer.hasMoreTokens())
-					heading = tokenizer.getFloatToken();
+				if (args.hasMoreTokens())
+					heading = args.getFloatToken();
 
 				SharedStructureObjectTemplate* serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(TemplateManager::instance()->getTemplate(objectTemplate.hashCode()));
 				if (serverTemplate != NULL) {
