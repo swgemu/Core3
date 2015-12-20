@@ -17,6 +17,7 @@
 
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
+#include "server/zone/packets/chat/ChatOnEnteredRoom.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
@@ -184,16 +185,13 @@ public:
 
 			// Join auction chat room
 			ManagedReference<ChatRoom*> auctionChat = chatManager->getAuctionRoom();
-			if( auctionChat != NULL ){
+			if(auctionChat != NULL) {
+				printf("\nJoining player to Auction Room. roomID = %s", String::valueOf(auctionChat->getRoomID()).toCharArray());
 				auctionChat->sendTo(player);
-				auctionChat->addPlayer(player);
-			}
-
-			// Join General chat room
-			ManagedReference<ChatRoom*> generalChat = chatManager->getGeneralRoom();
-			if (generalChat != NULL) {
-				generalChat->sendTo(player);
-				generalChat->addPlayer(player);
+				chatManager->handleChatEnterRoomById(player, auctionChat->getRoomID(), -1, true);
+				//auctionChat->addPlayer(player);
+				//ChatOnEnteredRoom* coer = new ChatOnEnteredRoom(player->getZoneServer()->getGalaxyName(), player->getFirstName(), auctionChat->getRoomID(), 0, -1);
+				//player->sendMessage(coer);
 			}
 
 			ghost->notifyOnline();

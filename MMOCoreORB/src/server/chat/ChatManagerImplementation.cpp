@@ -9,6 +9,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/player/PlayerMap.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/creature/PetManager.h"
@@ -20,8 +21,11 @@
 #include "server/zone/packets/chat/ChatInstantMessageToClient.h"
 #include "server/zone/packets/chat/ChatOnSendInstantMessage.h"
 #include "server/zone/packets/chat/ChatOnSendRoomMessage.h"
+#include "server/zone/packets/chat/ChatOnCreateRoom.h"
 #include "server/zone/packets/chat/ChatOnDestroyRoom.h"
+#include "server/zone/packets/chat/ChatOnEnteredRoom.h"
 #include "server/zone/packets/chat/ChatPersistentMessageToClient.h"
+#include "server/zone/packets/chat/ChatQueryRoomResults.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
@@ -56,7 +60,8 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 
 	mute = false;
 
-	roomID = 0;
+	//roomID = 0;
+	//persistentRoomID = 100000;
 
 	setLoggingName("ChatManager");
 
@@ -127,15 +132,6 @@ void ChatManagerImplementation::loadSpatialChatTypes() {
 	delete iffStream;
 }
 
-ChatRoom* ChatManagerImplementation::createRoom(const String& roomName, ChatRoom* parent) {
-	ManagedReference<ChatRoom*> room = cast<ChatRoom*>(ObjectManager::instance()->createObject("ChatRoom", 0 , ""));
-	room->init(server, parent, roomName, getNextRoomID());
-
-	addRoom(room);
-
-	return room;
-}
-
 void ChatManagerImplementation::initiateRooms() {
 	gameRooms.setNullValue(NULL);
 
@@ -145,22 +141,24 @@ void ChatManagerImplementation::initiateRooms() {
 
 	core3Room = createRoom(server->getGalaxyName(), mainRoom);
 	core3Room->setPrivate();
-	mainRoom->addSubRoom(core3Room);
+	mainRoom->addSubRoom(core3Room->getName(), core3Room->getRoomID());
 
 	groupRoom = createRoom("group", core3Room);
 	groupRoom->setPrivate();
-	core3Room->addSubRoom(groupRoom);
+	core3Room->addSubRoom(groupRoom->getName(), groupRoom->getRoomID());
 
 	guildRoom = createRoom("guild", core3Room);
 	guildRoom->setPrivate();
-	core3Room->addSubRoom(guildRoom);
+	core3Room->addSubRoom(guildRoom->getName(), guildRoom->getRoomID());
+
+	ChatRoom* generalRoom = createRoom("Chat", core3Room);
+	generalRoom->setCanEnter(true);
+	generalRoom->setAllowSubrooms(true);
+	core3Room->addSubRoom(generalRoom->getName(), generalRoom->getRoomID());
 
 	auctionRoom = createRoom("Auction", core3Room);
-	core3Room->addSubRoom(auctionRoom);
-
-	generalRoom = createRoom("General", core3Room);
-	core3Room->addSubRoom(generalRoom);
-
+	auctionRoom->setCanEnter(true);
+	core3Room->addSubRoom(auctionRoom->getName(), auctionRoom->getRoomID());
 
 }
 
@@ -175,16 +173,107 @@ void ChatManagerImplementation::initiatePlanetRooms() {
 		Locker locker(zone);
 
 		ChatRoom* planetRoom = createRoom(zone->getZoneName(), core3Room);
-		core3Room->addSubRoom(planetRoom);
+		planetRoom->setAllowSubrooms(true);
+		core3Room->addSubRoom(planetRoom->getName(), planetRoom->getRoomID());
+
+		ChatRoom* chat = createRoom("Chat", planetRoom);
+		chat->setTitle("public chat for this planet, can create rooms here.");
+		chat->setAllowSubrooms(true);
+		planetRoom->addSubRoom(chat->getName(), chat->getRoomID());
 
 		ChatRoom* planetaryChat = createRoom("Planet", planetRoom);
-		planetRoom->addSubRoom(planetaryChat);
-		zone->setChatRoom( planetaryChat );
+		planetRoom->addSubRoom(planetaryChat->getName(), planetaryChat->getRoomID());
 
+		zone->setPlanetChatRoom(planetaryChat);
 	}
 }
 
-ChatRoom* ChatManagerImplementation::createRoomByFullPath(const String& path) {
+void ChatManagerImplementation::loadPersistentRooms() {
+	Locker locker(_this.getReferenceUnsafeStaticCast());
+
+	info("Loading chat rooms from chatrooms.db", true);
+
+	ObjectDatabase* chatRoomDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("chatrooms", true);
+	ObjectDatabaseManager::instance()->commitLocalTransaction();
+
+	ObjectDatabaseIterator iterator(chatRoomDatabase);
+
+	uint64 objectID = 0;
+
+	int i = 0;
+
+	while (iterator.getNextKey(objectID)) {
+		//Pull the chatroom from the database.
+		Reference<ChatRoom*> room = Core::getObjectBroker()->lookUp(objectID).castTo<ChatRoom*>();
+		ObjectDatabaseManager::instance()->commitLocalTransaction();
+
+		if (room == NULL) {
+			error("Chat room was NULL when attempting to load objectID: " + String::valueOf(objectID));
+			ObjectManager::instance()->destroyObjectFromDatabase(objectID);
+			continue;
+		}
+
+		//Check if room is expired.
+		info("Chat room " + String::valueOf(room->getRoomID()) + " is inactive for " + String::valueOf(room->getLastJoinTime() / (1000*60*60)) + " hours.", true);
+		if (room->getLastJoinTime() / (1000*60*60)  > ChatManager::ROOMEXPIRATIONTIME) {
+			info("Deleting expired room.", true);
+			ObjectManager::instance()->destroyObjectFromDatabase(objectID);
+			continue;
+		}
+
+		//Re-initialize the chat room.
+		room->setChatManager(_this.getReferenceUnsafeStaticCast());
+		room->setZoneServer(server);
+		addRoom(room);
+
+		if (!room->hasPersistentParent()) {
+			ChatRoom* parent = room->getParent();
+			if (parent == NULL) {
+				error("Non-persistent parent was NULL.");
+				continue;
+			}
+
+			parent->addSubRoom(room->getName(), room->getRoomID());
+		}
+
+		i++;
+
+	}
+
+	info("Loaded " + String::valueOf(i) + " chat rooms.", true);
+
+}
+
+ChatRoom* ChatManagerImplementation::createRoom(const String& roomName, ChatRoom* parent) {
+	ManagedReference<ChatRoom*> room = cast<ChatRoom*>(ObjectManager::instance()->createObject("ChatRoom", 0 , ""));
+	if (parent != NULL)
+		room->init(server, parent->getFullPath(), roomName);
+		//room->init(server, parent->getFullPath(), roomName, getNextRoomID());
+	else
+		room->init(server, "", roomName);
+		//room->init(server, "", roomName, getNextRoomID());
+
+	addRoom(room);
+
+	return room;
+}
+
+ChatRoom* ChatManagerImplementation::createPersistentRoom(const String& roomName, ChatRoom* parent) {
+	if (parent == NULL)
+		return NULL;
+
+	ManagedReference<ChatRoom*> room = cast<ChatRoom*>(ObjectManager::instance()->createObject("ChatRoom", 1 , "chatrooms"));
+
+	if (room != NULL) {
+		room->init(server, parent->getFullPath(), roomName);
+		parent->addSubRoom(room->getName(), room->getRoomID());
+		addRoom(room);
+	}
+
+	return room;
+}
+
+ChatRoom* ChatManagerImplementation::createPersistentRoomByFullPath(CreatureObject* player, const String& path) {
 	StringTokenizer tokenizer(path);
 	tokenizer.setDelimeter(".");
 
@@ -198,24 +287,24 @@ ChatRoom* ChatManagerImplementation::createRoomByFullPath(const String& path) {
 
 	String channel;
 
-	ChatRoom* room = gameRoom;
+	ChatRoom* parent = gameRoom;
 	while (tokenizer.hasMoreTokens()) {
 		tokenizer.getStringToken(channel);
 
-		if (room->getSubRoom(channel) == NULL)
+		if (parent->getSubRoom(channel) == NULL)
 			break;
 		else
-			room = room->getSubRoom(channel);
+			parent = parent->getSubRoom(channel);
 	}
 
-	if (room == gameRoom)
+	if (parent == gameRoom)
 		return NULL;
 
-	if (room->isPrivate())
+	//Check permission to create channel in the parent.
+	if (!parent->subroomsAllowed() && !parent->hasModerator(player->getObjectID()))
 		return NULL;
 
-	ChatRoom* newRoom = createRoom(channel, room);
-	room->addSubRoom(newRoom);
+	ChatRoom* newRoom = createPersistentRoom(channel, parent);
 
 	return newRoom;
 }
@@ -256,12 +345,43 @@ ChatRoom* ChatManagerImplementation::getChatRoomByFullPath(const String& path) {
 	if (gameRoom == NULL)
 		return NULL;
 
+	if (!tokenizer.hasMoreTokens())
+		return NULL;
+
 	String gamePath;
 	tokenizer.finalToken(gamePath);
 
 	return getChatRoomByGamePath(gameRoom, gamePath);
 }
 
+void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
+	Locker _locker(_this.getReferenceUnsafeStaticCast());
+	//printf("\nRunning destroyRoom()");
+	if (room == NULL)
+		return;
+
+	uint32 roomID = room->getRoomID();
+
+	//Notify players that the room has been destroyed.
+	//All player need to receive this packet, otherwise it will incorrectly stay in Channel Browser even when removed from ChannelList.
+	ChatOnDestroyRoom* msg = new ChatOnDestroyRoom("SWG", server->getGalaxyName(), room->getOwnerName(), roomID);
+	broadcastMessage(msg);
+	room->removeAllPlayers();
+
+	ManagedReference<ChatRoom*> parent = room->getParent();
+
+	if (parent != NULL) {
+		//printf("\nRemoving room from parent subrooms.");
+		parent->removeSubRoom(room->getName());
+	}
+
+	//printf("\nRemoving room with ID = %s from the roomMap.", String::valueOf(room->getRoomID()).toCharArray());
+	roomMap->remove(room->getRoomID());
+
+	//Remove room from the database.
+	ObjectManager::instance()->destroyObjectFromDatabase(room->_getObjectID());
+
+}
 
 void ChatManagerImplementation::destroyRooms() {
 	Locker _locker(_this.getReferenceUnsafeStaticCast());
@@ -278,16 +398,7 @@ void ChatManagerImplementation::destroyRooms() {
 	gameRooms.removeAll();
 }
 
-void ChatManagerImplementation::populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg) {
-	if (channel->isPublic())
-		msg->addChannel(channel);
 
-	for (int i = 0; i < channel->getSubRoomsSize(); i++) {
-		ChatRoom* chan = channel->getSubRoom(i);
-
-		populateRoomListMessage(chan, msg);
-	}
-}
 
 void ChatManagerImplementation::handleChatRoomMessage(CreatureObject* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter) {
 	String name = sender->getFirstName();
@@ -328,16 +439,14 @@ void ChatManagerImplementation::handleChatRoomMessage(CreatureObject* sender, co
 
 	UnicodeString formattedMessage(formatMessage(message));
 
-	ManagedReference<ChatRoom*> planetRoom = zone->getChatRoom();
+	ManagedReference<ChatRoom*> planetRoom = zone->getPlanetChatRoom();
 
 	BaseMessage* msg = new ChatRoomMessage(fullName, formattedMessage, roomID);
 
-	// Auction Chat, General Chat, and Planet Chat should adhere to player ignore list
-	if( auctionRoom != NULL && auctionRoom->getRoomID() == roomID ) {
+	// Auction Chat and Planet Chat should adhere to player ignore list
+	if(auctionRoom != NULL && auctionRoom->getRoomID() == roomID) {
 		channel->broadcastMessageCheckIgnore(msg, name);
-	} else if (generalRoom != NULL && generalRoom->getRoomID() == roomID) {
-		channel->broadcastMessageCheckIgnore(msg, name);
-	} else if( planetRoom != NULL && planetRoom->getRoomID() == roomID ) {
+	} else if (planetRoom != NULL && planetRoom->getRoomID() == roomID) {
 		channel->broadcastMessageCheckIgnore(msg, name);
 	} else {
 		channel->broadcastMessage(msg);
@@ -353,13 +462,52 @@ void ChatManagerImplementation::handleChatRoomMessage(CreatureObject* sender, co
 	channel->broadcastMessage(messages);*/
 }
 
-void ChatManagerImplementation::handleChatEnterRoomById(CreatureObject* player, uint32 counter, uint32 roomID) {
-	ManagedReference<ChatRoom*> room = getChatRoom(roomID);
-
-	if (room == NULL)
+void ChatManagerImplementation::handleChatEnterRoomById(CreatureObject* player, uint32 roomID, int requestID, bool forced) {
+	if (player == NULL)
 		return;
 
+	printf("\n===================================");
+	printf("\nhandleChatEnterRoomById Activating.");
+	printf("\nroomID = %i", roomID);
+	printf("\nrequestID = %i", requestID);
+	printf("\nForced = %i", forced);
+
+	/* Error codes
+	0: You have joined the channel.
+	0x10: You cannot join '%TU (room name)' because you are not invited to the room
+	Other: Chatroom '%TU (room name)' join failed for an unknown reason.*/
+
+	//Check if room exists.
+	ManagedReference<ChatRoom*> room = getChatRoom(roomID);
+	if (room == NULL) {
+		int error = 1; //"Chatroom (roomname) join failed for an unknown reason."
+		ChatOnEnteredRoom* coer = new ChatOnEnteredRoom(server->getGalaxyName(), player->getFirstName(), roomID, error, requestID);
+		player->sendMessage(coer);
+		return;
+	}
+
+	printf("\nroom path = %s", room->getFullPath().toCharArray());
+	printf("\ncanEnter = %i", room->canEnter());
+	printf("\nisPrivate = %i", room->isPrivate());
+	printf("\nhasInvited = %i", room->hasInvited(player->getObjectID()));
+
+	//Check if player is allowed to join.
+	if (!forced) {
+		if ( !room->canEnter() || (room->isPrivate() && !room->hasInvited(player->getObjectID())) ) {
+			printf("\nPlayer was DENIED access to room!");
+			int error = 0x10; //"You cannot join '%TU (room name)' because you are not invited to the room"
+			ChatOnEnteredRoom* coer = new ChatOnEnteredRoom(server->getGalaxyName(), player->getFirstName(), roomID, error, requestID);
+			player->sendMessage(coer);
+			return;
+		}
+	}
+
+	//Add player to the room.
 	room->addPlayer(player);
+	int error = 0; //"You have joined the channel."
+	ChatOnEnteredRoom* coer = new ChatOnEnteredRoom(server->getGalaxyName(), player->getFirstName(), roomID, error, requestID);
+	room->broadcastMessage(coer);
+
 }
 
 void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* sender, const UnicodeString& arguments) {
@@ -446,13 +594,51 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 }
 
 void ChatManagerImplementation::sendRoomList(CreatureObject* player) {
+	Locker _locker(_this.getReferenceUnsafeStaticCast());
+
+	printf("\n===============");
+	printf("\nChatRoomList request received.");
+	printf("\n===============");
+
 	ChatRoomList* crl = new ChatRoomList();
 
-	String game = "SWG";
-	populateRoomListMessage(gameRooms.get(game), crl);
+	HashTableIterator<unsigned int, ManagedReference<ChatRoom* > > iter = roomMap->iterator();
+
+	uint64 playerID = player->getObjectID();
+
+	while (iter.hasNext()) {
+		ChatRoom* room = iter.next();
+		if (room != NULL) {
+			if (room->isPrivate()) {
+				if ( !room->hasModerator(playerID) && !room->hasInvited(playerID) )
+					continue;
+			}
+
+			crl->addChannel(room);
+		}
+	}
 
 	crl->insertChannelListCount();
 	player->sendMessage(crl);
+
+}
+
+void ChatManagerImplementation::populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg) {
+	//if (channel->isPublic())
+
+	/*if (channel != groupRoom && channel != guildRoom)
+		msg->addChannel(channel);
+
+	for (int i = 0; i < channel->getSubRoomsSize(); i++) {
+		ChatRoom* chan = channel->getSubRoom(i);
+		if (chan == NULL) {
+			error("A sub room was NULL while populating the ChatRoomList.");
+			continue;
+		}
+
+		populateRoomListMessage(chan, msg);
+	}*/
+
 }
 
 void ChatManagerImplementation::addPlayer(CreatureObject* player) {
@@ -909,7 +1095,7 @@ ChatRoom* ChatManagerImplementation::createGroupRoom(uint64 groupID, CreatureObj
 
 	ChatRoom* newGroupRoom = createRoom(name.toString(), groupRoom);
 	newGroupRoom->setPrivate();
-	groupRoom->addSubRoom(newGroupRoom);
+	groupRoom->addSubRoom(newGroupRoom->getName(), newGroupRoom->getRoomID());
 
 	groupChatRoom = createRoom("GroupChat", newGroupRoom);
 
@@ -919,26 +1105,10 @@ ChatRoom* ChatManagerImplementation::createGroupRoom(uint64 groupID, CreatureObj
 	groupChatRoom->sendTo(creator);
 	groupChatRoom->addPlayer(creator, false);
 
-	newGroupRoom->addSubRoom(groupChatRoom);
+	newGroupRoom->addSubRoom(groupChatRoom->getName(), groupChatRoom->getRoomID());
 
 	return groupChatRoom;
 }
-
-void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
-	Locker _locker(_this.getReferenceUnsafeStaticCast());
-
-	ChatOnDestroyRoom* msg = new ChatOnDestroyRoom("SWG", server->getGalaxyName(), room->getRoomID());
-	room->broadcastMessage(msg);
-	room->removeAllPlayers();
-
-	ManagedReference<ChatRoom*> parent = room->getParent();
-
-	if (parent != NULL)
-		parent->removeSubRoom(room);
-
-	roomMap->remove(room->getRoomID());
-}
-
 
 void ChatManagerImplementation::handleGroupChat(CreatureObject* sender, const UnicodeString& message) {
 	String name = sender->getFirstName();
@@ -1081,7 +1251,7 @@ void ChatManagerImplementation::handlePlanetChat(CreatureObject* sender, const U
 
 	UnicodeString formattedMessage(formatMessage(message));
 
-	ManagedReference<ChatRoom*> room = zone->getChatRoom();
+	ManagedReference<ChatRoom*> room = zone->getPlanetChatRoom();
 
 	if (room != NULL) {
 		BaseMessage* msg = new ChatRoomMessage(fullName, formattedMessage, room->getRoomID());
@@ -1449,3 +1619,165 @@ void ChatManagerImplementation::loadSocialTypes() {
 
 	info("Loaded " + String::valueOf(socialTypes.size()) + " social types.", true);
 }
+
+void ChatManagerImplementation::handleChatCreateRoom(CreatureObject* player, uint8 permissionFlag, uint8 moderationFlag, const String& roomPath, const String& roomTitle, int requestID) {
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
+	//This request is sent by clients to make a new room, but also to join a room they were previously in if the client doesn't have the roomID (like at startup).
+
+	printf("\n========================");
+	printf("\nChatCreateRoom packet received:");
+	printf("\nmoderationFlag = %s", String::valueOf(moderationFlag).toCharArray());
+	printf("\npermissionFlag = %s", String::valueOf(permissionFlag).toCharArray());
+	printf("\nroomPath = %s", roomPath.toCharArray());
+	printf("\nroomtitle = %s", roomTitle.toCharArray());
+	printf("\nrequestID = %s", String::valueOf(requestID).toCharArray());
+	printf("\n========================");
+
+	/* Error Codes:
+	 * 0: [RoomName] You have created the channel. (successful creation)
+	 * 6: Cannot create the channel named '[RoomPathName]'because the name is invalid.
+	 * 24: NO MESSAGE (room already exists)
+	 * Default: Channel '[RoomPathName]' creation failed for an unknown reason.*/
+
+	int error = 0;
+
+	//Check for illegal chat room name.
+	String name = getRoomNameFromPath(roomPath);
+	if (name == "Planet" || name == "system" || name == "named" || name == "GuildChat" || name == "GroupChat") {
+		error = 6; //Cannot create the channel named '[RoomPathName]'because the name is invalid.
+		sendChatOnCreateRoomError(player, requestID, error);
+		return;
+	}
+
+	//Check if room already exists
+	ChatRoom* newRoom = getChatRoomByFullPath(roomPath);
+	if (newRoom != NULL) {
+		error = 24; //NO MESSAGE (room already exists)
+		sendChatOnCreateRoomError(player, requestID, error);
+		return;
+	}
+
+	//Attempt to create the new room as a subroom of the second last path node (the parent).
+	printf("\nRoom does not exist already, attempting to create it...");
+
+	newRoom = createPersistentRoomByFullPath(player, roomPath);
+
+	if (newRoom != NULL) {
+		printf("New room name = %s", newRoom->getName().toCharArray());
+		//Set the room flags as specified by the player.
+		if (permissionFlag == 0)
+			newRoom->setPrivate();
+		else
+			newRoom->setPublic();
+
+		if (moderationFlag == 0)
+			newRoom->setModerated(false);
+		else
+			newRoom->setModerated(true);
+
+		newRoom->setTitle(roomTitle);
+
+		//Initialize the creator and owner of the new room.
+		newRoom->setCreator(player->getFirstName());
+		newRoom->setOwnerName(player->getFirstName());
+		newRoom->setOwnerID(player->getObjectID());
+		newRoom->addModerator(player);
+
+		newRoom->setCanEnter(true);
+
+		printf("\nSending ChatOnCreateRoom response packet!");
+		printf("\nroomID = %s", String::valueOf(newRoom->getRoomID()).toCharArray());
+		printf("\nerror = %s", String::valueOf(error).toCharArray());
+		printf("\nrequestID = %s", String::valueOf(requestID).toCharArray());
+
+		ChatOnCreateRoom* packet = new ChatOnCreateRoom(newRoom, requestID, error);
+		player->sendMessage(packet);
+
+	} else {
+		error = 1;
+		sendChatOnCreateRoomError(player, requestID, error);
+		return;
+	}
+
+}
+
+void ChatManagerImplementation::sendChatOnCreateRoomError(CreatureObject* player, int requestID, int error) {
+	ChatOnCreateRoom* errorPacket = new ChatOnCreateRoom(player, requestID, error);
+	player->sendMessage(errorPacket);
+
+	printf("\nSending ChatOnCreateRoom error packet!");
+	printf("\nrequestID = %s", String::valueOf(requestID).toCharArray());
+	printf("\nerror = %s", String::valueOf(error).toCharArray());
+}
+
+String ChatManagerImplementation::getRoomNameFromPath(const String& path) {
+	StringTokenizer tokenizer(path);
+	tokenizer.setDelimeter(".");
+
+	String name = path;
+
+	while (tokenizer.hasMoreTokens())
+		tokenizer.getStringToken(name);
+
+	printf("\nRoom name = '%s'", name.toCharArray());
+
+	return name;
+}
+
+void ChatManagerImplementation::handleChatDestroyRoom(CreatureObject* player, uint32 roomID, int requestID) {
+	/* Error codes:
+	 * 0: Success: [RoomName] You have destroyed the channel.
+	 * Default: You don't have permission to delete '[RoomPathName]'.
+	 */
+
+	ChatRoom* room = getChatRoom(roomID);
+	if (room != NULL && room->getOwnerID() == player->getObjectID())
+		destroyRoom(room);
+	else {
+		int error = 1;
+		ChatOnDestroyRoom* errorPacket = new ChatOnDestroyRoom(roomID, error, requestID);
+		player->sendMessage(errorPacket);
+	}
+
+}
+
+void ChatManagerImplementation::handleChatLeaveRoom(CreatureObject* player, const String& roomPath) {
+	ChatRoom* room = getChatRoomByFullPath(roomPath);
+
+	if (room == NULL)
+		return;
+
+	room->removePlayer(player);
+
+}
+
+void ChatManagerImplementation::handleChatQueryRoom(CreatureObject* player, const String& roomPath, int requestID) {
+	ChatRoom* room = getChatRoomByFullPath(roomPath);
+	if (player == NULL || room == NULL)
+		return;
+
+	Locker lock(room);
+
+	ChatQueryRoomResults* packet = new ChatQueryRoomResults(room, requestID);
+	player->sendMessage(packet);
+
+}
+
+/*uint32 ChatManagerImplementation::getNextRoomID() {
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
+
+	for (int i = 1; i < 5000000; i++) {
+		if (reservedRoomIDs.contains(i)) {
+			continue;
+		} else {
+			reservedRoomIDs.put(i);
+			printf("\nReserving roomID: %i\n", i);
+			return i;
+		}
+	}
+
+	error("Could not locate a free roomID in ChatManagerImplementation::getNextRoomID");
+	return 0;
+
+}*/
+

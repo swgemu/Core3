@@ -668,12 +668,13 @@ ChatRoom* GuildManagerImplementation::createGuildChannels(GuildObject* guild) {
 
 	ManagedReference<ChatRoom*> guildLobby = chatManager->createRoom(String::valueOf(guild->getGuildID()), guildRoom);
 	guildLobby->setPrivate();
-	guildRoom->addSubRoom(guildLobby);
+	guildRoom->addSubRoom(guildLobby->getName(), guildLobby->getRoomID());
+	//guildRoom->addSubRoom(guildLobby);
 
 	ManagedReference<ChatRoom*> guildChat = chatManager->createRoom("GuildChat", guildLobby);
 	guildChat->setPrivate();
 	guildChat->setTitle(String::valueOf(guild->getGuildID()));
-	guildLobby->addSubRoom(guildChat);
+	guildLobby->addSubRoom(guildChat->getName(), guildChat->getRoomID());
 
 	Locker locker(guild);
 

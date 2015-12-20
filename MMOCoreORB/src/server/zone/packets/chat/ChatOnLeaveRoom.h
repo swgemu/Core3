@@ -20,12 +20,11 @@ public:
 		
 		insertAscii("SWG");
 		insertAscii(room->getGalaxyName());
-		
 		insertAscii(player->getFirstName());
 		
-		insertInt(0);
-		insertInt(room->getRoomID());
-		insertInt(0);		
+		insertInt(0); //Error Code
+		insertInt(room->getRoomID()); //Room ID
+		insertInt(0); //Request ID. Always seen 0.
 	}
 };
 

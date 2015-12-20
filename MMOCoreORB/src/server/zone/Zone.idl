@@ -54,7 +54,7 @@ class Zone extends SceneObject {
 
 	private transient CreatureManager creatureManager;
 
-	private ChatRoom chatRoom;
+	private transient ChatRoom planetChatRoom;
 
 	@dereferenced
 	private transient SortedVector<CityRegion> cityRegionUpdateVector;
@@ -232,11 +232,13 @@ class Zone extends SceneObject {
 		return zoneCRC;
 	}
 
-	public void setChatRoom(ChatRoom room) {
-		chatRoom = room;
+	public void setPlanetChatRoom(ChatRoom room) {
+		planetChatRoom = room;
 	}
 
-	public ChatRoom getChatRoom() {
-		return chatRoom;
+	public ChatRoom getPlanetChatRoom() {
+		return planetChatRoom;
 	}
+
 }
+

@@ -45,6 +45,7 @@ public:
 	}
 	
 	void run() {
+		printf("\nChatInstantMessageToCharacter packet sent.");
 		ZoneServer* zoneServer = server->getZoneServer();
 		ChatManager* chatManager = zoneServer->getChatManager();
 

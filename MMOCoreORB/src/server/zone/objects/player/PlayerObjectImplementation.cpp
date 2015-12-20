@@ -19,6 +19,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneClientSession.h"
+#include "server/zone/packets/chat/ChatOnDestroyRoom.h"
 #include "server/zone/packets/player/PlayerObjectMessage3.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage3.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage8.h"
@@ -87,6 +88,7 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 	drinkFillingMax = 100;
 
 	duelList.setNoDuplicateInsertPlan();
+	chatRooms.setNoDuplicateInsertPlan();
 
 	setLoggingName("PlayerObject");
 }
@@ -126,13 +128,14 @@ void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 void PlayerObjectImplementation::notifyLoadFromDatabase() {
 	IntangibleObjectImplementation::notifyLoadFromDatabase();
 
-	chatRooms.removeAll();
+	//chatRooms.removeAll();
 
 	serverLastMovementStamp.updateToCurrentTime();
 
 	lastValidatedPosition.update(getParent().get());
 
 	clientLastMovementStamp = 0;
+
 }
 
 void PlayerObjectImplementation::unloadSpawnedChildren() {
@@ -220,14 +223,16 @@ void PlayerObjectImplementation::unload() {
 
 	//creature->clearDots();
 
+	//Remove player from Chat Manager and all rooms.
 	ManagedReference<ChatManager*> chatManager = getZoneServer()->getChatManager();
-
-	if (chatManager != NULL)
+	if (chatManager != NULL) {
 		chatManager->removePlayer(creature->getFirstName().toLowerCase());
 
-	while (!chatRooms.isEmpty()) {
-		ChatRoom* room = chatRooms.get(0);
-		room->removePlayer(creature);
+		for (int i = 0; i < chatRooms.size(); i++) {
+			ManagedReference<ChatRoom*> room = chatManager->getChatRoom(chatRooms.get(i));
+			if (room != NULL)
+				room->removeDisconnectingPlayer(creature);
+		}
 	}
 
 	CombatManager::instance()->freeDuelList(creature);
@@ -311,30 +316,57 @@ void PlayerObjectImplementation::notifySceneReady() {
 	if (zoneServer == NULL || zoneServer->isServerLoading())
 		return;
 
-	// Leave all planet chat rooms
+	//Leave all planet chat rooms
 	for (int i = 0; i < zoneServer->getZoneCount(); ++i) {
 		ManagedReference<Zone*> zone = zoneServer->getZone(i);
 
 		if (zone == NULL)
 			continue;
 
-		ManagedReference<ChatRoom*> room = zone->getChatRoom();
-		if( room == NULL )
+		ManagedReference<ChatRoom*> planetRoom = zone->getPlanetChatRoom();
+		if (planetRoom == NULL)
 			continue;
 
-		room->removePlayer(creature);
+		planetRoom->removePlayer(creature);
 
 	}
 
-	// Join current planet chat room
-	if(creature->getZone() != NULL ){
-		ManagedReference<ChatRoom*> planetChat = creature->getZone()->getChatRoom();
+	//Join current zone's Planet chat room
+	ManagedReference<ChatManager*> chatManager = zoneServer->getChatManager();
+	ManagedReference<Zone*> zone = creature->getZone();
+	if (zone != NULL){
+		ManagedReference<ChatRoom*> planetChat = zone->getPlanetChatRoom();
+		printf("\nPlayer's zone = %s", zone->getZoneName().toCharArray());
 
-		if (planetChat == NULL)
-			return;
+		if (planetChat != NULL) {
+			printf("\nJoining player to Planet Room. roomID = %s", String::valueOf(planetChat->getRoomID()).toCharArray());
+			planetChat->sendTo(creature);
+			chatManager->handleChatEnterRoomById(creature, planetChat->getRoomID(), -1, true);
+		}
+	}
 
-		planetChat->sendTo(creature);
-		planetChat->addPlayer(creature);
+	//Print chatRooms list.
+	printf("\n===============");
+	printf("\nContents of chatRooms:");
+	for (int i = 0; i < chatRooms.size(); i++) {
+		printf("\n%s", String::valueOf(chatRooms.get(i)).toCharArray());
+	}
+	printf("\n===============");
+
+	//Re-Join any chat rooms player was a member of before disconnecting.
+	printf("\nRejoining player to chatRooms in the SortedVector");
+	printf("\nNumber of chatRooms = %i \n", chatRooms.size());
+
+	info("ACTIVATING MISTER LOOPY!!!!", true);
+	for (int i = chatRooms.size() - 1; i >= 0; i--) {
+		printf("\n i = %i", i);
+		ChatRoom* room = chatManager->getChatRoom(chatRooms.get(i));
+		if (room != NULL) {
+			printf("\nJoining player to room: %s", String::valueOf(room->getRoomID()).toCharArray());
+			chatManager->handleChatEnterRoomById(creature, room->getRoomID(), -1);
+		} else {
+			chatRooms.remove(i);
+		}
 	}
 
 	if(creature->getZone() != NULL && creature->getZone()->getPlanetManager() != NULL) {
