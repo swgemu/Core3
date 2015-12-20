@@ -36,9 +36,11 @@ public:
 			return GENERALERROR;
 
 		if (ai->getDistanceTo(creature) > 16) {
-			creature->sendSystemMessage("@error_message:target_out_of_range"); // Your target is out of range for this action.
+			creature->sendSystemMessage("@error_message:target_out_of_range"); //"Your target is out of range for this action."
 			return GENERALERROR;
 		}
+
+		bool lootAll = arguments.toString().beginsWith("all");
 
 		//Get the corpse's inventory.
 		SceneObject* lootContainer = ai->getSlottedObject("inventory");
@@ -49,10 +51,24 @@ public:
 		bool looterIsOwner = (lootContainer->getContainerPermissions()->getOwnerID() == creature->getObjectID());
 		bool groupIsOwner = (lootContainer->getContainerPermissions()->getOwnerID() == creature->getGroupID());
 
+		//Allow player to loot the corpse if they own it.
+		if (looterIsOwner) {
+			if (lootAll) {
+				PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+				playerManager->lootAll(creature, ai);
+			} else {
+				ai->notifyObservers(ObserverEventType::LOOTCREATURE, creature, 0);
+				lootContainer->openContainerTo(creature);
+			}
+
+			return SUCCESS;
+		}
+
+		//If player and their group don't own the corpse, pick up any owned items left on corpse due to full inventory, then fail.
 		if (!looterIsOwner && !groupIsOwner) {
-			//Handle picking up items when full inventory and group is disbanded.
-			if (!pickupOwnedItems(creature, lootContainer)) {
-				StringIdChatParameter noPermission("error_message","no_corpse_permission"); //You do not have permission to access this corpse.
+			int pickupResult = pickupOwnedItems(creature, lootContainer);
+			if (pickupResult != 1) { //Player did not pickup any owned items.
+				StringIdChatParameter noPermission("error_message","no_corpse_permission"); //"You do not have permission to access this corpse."
 				creature->sendSystemMessage(noPermission);
 				return GENERALERROR;
 			}
@@ -60,23 +76,18 @@ public:
 			return SUCCESS;
 		}
 
-		//Handle picking up items when full inventory in RANDOM loot mode.
-		ManagedReference<GroupObject*> group = creature->getGroup();
-		int lootRule = -1;
-		if (group != NULL)
-			lootRule = group->getLootRule();
-
-		if (lootRule == GroupManager::RANDOM) {
-			if (pickupOwnedItems(creature, lootContainer)) {
+		//If looter's group is the owner, attempt to pick up any owned items, then process group loot rule.
+		if (groupIsOwner) {
+			int pickupResult = pickupOwnedItems(creature, lootContainer);
+			if (pickupResult == 1) {
 				creature->getZoneServer()->getPlayerManager()->rescheduleCorpseDestruction(creature, ai);
 				return SUCCESS;
+			} else if (pickupResult == 2) { //Player did not pickup an item, but there is one there for someone else.
+				ai->notifyObservers(ObserverEventType::LOOTCREATURE, creature, 0);
+				lootContainer->openContainerTo(creature);
 			}
-		}
 
-		bool lootAll = arguments.toString().beginsWith("all");
-
-		//Handle group looting rules if looter is in a group.
-		if (groupIsOwner) {
+			ManagedReference<GroupObject*> group = creature->getGroup();
 			if (group == NULL)
 				return GENERALERROR;
 
@@ -85,58 +96,69 @@ public:
 			return SUCCESS;
 		}
 
-		//Allow player to loot the corpse if looter is not in a group.
-		if (lootAll) {
-			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-			playerManager->lootAll(creature, ai);
-		} else {
-			ai->notifyObservers(ObserverEventType::LOOTCREATURE, creature, 0);
-			lootContainer->openContainerTo(creature);
-		}
+		return GENERALERROR;
 
-		return SUCCESS;
 	}
 
-	bool pickupOwnedItems(CreatureObject* creature, SceneObject* lootContainer) const {
+	int pickupOwnedItems(CreatureObject* creature, SceneObject* lootContainer) const {
+		/* Return codes:
+		 * 0: No item picked up, no items available for pickup.
+		 * 1: An item was picked up by the player.
+		 * 2: No item picked up, but one is available for someone else to pickup.
+		 */
+
 		bool pickedUpItem = false;
+		bool pickupItemAvailable = false;
 
 		int totalItems = lootContainer->getContainerObjectsSize();
-		if (totalItems < 1) return false;
+		if (totalItems < 1) return 0;
 
 		ContainerPermissions* contPerms = lootContainer->getContainerPermissions();
-		if (contPerms == NULL) return false;
+		if (contPerms == NULL) return 0;
 
 		//Check each loot item to see if the player owns it.
 		for (int i = totalItems - 1; i >= 0; --i) {
 			SceneObject* object = lootContainer->getContainerObject(i);
-			if (object == NULL) continue;
+			if (object == NULL) return 0;
 
 			ContainerPermissions* itemPerms = object->getContainerPermissions();
-			if (itemPerms == NULL) continue;
+			if (itemPerms == NULL) return 0;
 
 			//If player owns the loot item, transfer it to them.
-			if (itemPerms->getOwnerID() == creature->getObjectID()) {
+			uint64 itemOwnerID = itemPerms->getOwnerID();
+			if (itemOwnerID == creature->getObjectID()) {
+				pickedUpItem = true;
+
 				//Transfer the item to the player.
 				SceneObject* playerInventory = creature->getSlottedObject("inventory");
-				if (playerInventory == NULL) return true;
+				if (playerInventory == NULL) return 0;
 
 				if (playerInventory->isContainerFullRecursive()) {
 					StringIdChatParameter full("group", "you_are_full"); //"Your Inventory is full."
 					creature->sendSystemMessage(full);
-					return true;
+					return 1;
 				}
 
 				uint64 originalOwner = contPerms->getOwnerID();
 				contPerms->setOwner(creature->getObjectID());
 
-				creature->getZoneServer()->getObjectController()->transferObject(object, playerInventory, -1, true);
+				if (creature->getZoneServer()->getObjectController()->transferObject(object, playerInventory, -1, true)) {
+					itemPerms->clearDenyPermission("player", ContainerPermissions::OPEN);
+					itemPerms->clearDenyPermission("player", ContainerPermissions::MOVECONTAINER);
+				}
 
 				contPerms->setOwner(originalOwner);
-				pickedUpItem = true;
-			}
+
+			} else if (itemOwnerID != 0)
+				pickupItemAvailable = true;
 		}
 
-		return pickedUpItem;
+		if (pickedUpItem)
+			return 1;
+		if (pickupItemAvailable)
+			return 2;
+
+		return 0;
 	}
 
 };
