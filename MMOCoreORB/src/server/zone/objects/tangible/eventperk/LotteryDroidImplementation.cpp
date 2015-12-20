@@ -319,6 +319,8 @@ void LotteryDroidImplementation::endGame() {
 		ManagedReference<CreatureObject*> winner = server->getZoneServer()->getObject(winnerID).castTo<CreatureObject*>();
 
 		if (winner != NULL) {
+			Locker crossLocker(winner, _this.get());
+
 			winner->addBankCredits(winnerPayout, true);
 
 			ChatManager* chatManager = server->getZoneServer()->getChatManager();
@@ -332,6 +334,8 @@ void LotteryDroidImplementation::endGame() {
 		ManagedReference<CreatureObject*> perkOwner = getDeedOwner();
 
 		if (perkOwner != NULL) {
+			Locker crossLocker(perkOwner, _this.get());
+
 			perkOwner->addBankCredits(ownerPayout, true);
 
 			ChatManager* chatManager = server->getZoneServer()->getChatManager();
