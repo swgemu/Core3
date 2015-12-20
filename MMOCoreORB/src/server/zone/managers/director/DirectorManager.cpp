@@ -1539,7 +1539,7 @@ int DirectorManager::giveItem(lua_State* L) {
 		obj = (SceneObject*) lua_touserdata(L, -4);
 		objectString = lua_tostring(L, -3);
 		slot = lua_tointeger(L, -2);
-		bool overload = lua_toboolean(L, -1);
+		overload = lua_toboolean(L, -1);
 	}
 
 	if (obj == NULL)
