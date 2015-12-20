@@ -603,7 +603,7 @@ int ForceHealQueueCommand::runCommand(CreatureObject* creature, CreatureObject* 
 #ifdef DEBUG_FORCE_HEALS
 				creature->sendSystemMessage("[runCommand] healBattleFatigue sets didHeal = true");
 #endif
-				sendHealMessage(creature, targetCreature, BATTLE_FATIGUE, healedAttributes.healedBF);
+				sendHealMessage(creature, targetCreature, BATTLE_FATIGUE, healedAttributes.healedBF, true);
 				didHeal = true;
 			}
 		}
