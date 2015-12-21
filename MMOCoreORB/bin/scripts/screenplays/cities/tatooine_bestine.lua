@@ -73,9 +73,9 @@ function TatooineBestineScreenPlay:spawnMobiles()
 
 	--Imperial Mini Base -1136 -3901
 	pNpc = spawnMobile("tatooine", "imperial_sergeant",400,-2.3,0,-3.9,13,1279924)
-	self:setMoodString(pNpc, "npc_use_terminal_high")
-	pNpc = spawnMobile("tatooine", "imperial_first_lieutenant",400,3.9,0,0.5,180,1279922)
-	self:setMoodString(pNpc, "npc_sitting_table")
+	self:setMoodString(pNpc, "npc_imperial")
+	pNpc = spawnMobile("tatooine", "imperial_first_lieutenant",400,3.0,0.1,0.5,164,1279922)
+	self:setMoodString(pNpc, "npc_imperial")
 	spawnMobile("tatooine", "imperial_recruiter",0,-1138,98,-3897,0,0)
 
 	--Inside a House -1346 -3891
@@ -148,7 +148,6 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("tatooine", "commoner_tatooine",60,-16.8302,1.00087,0.571647,90.0019,1223851)
 	self:setMoodString(pNpc, "conversation")
-	--{"commoner_old",60,-24,1.6,-4,343.038,1223855, "calm", "An Event Promoter"},
 	pNpc = spawnMobile("tatooine", "farmer",60,20.4356,1.28309,-1.59068,180.009,1223850)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("tatooine", "gil_burtin",60,20.5073,1.56616,12.9718,218.196,1223850)
@@ -317,11 +316,9 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_imperial")
 	pNpc = spawnMobile("tatooine", "dark_trooper",400,-1428.52,12,-3730.88,141.264,0)
 	self:setMoodString(pNpc, "npc_imperial")
-	--{"dark_trooper",400,-983.59,12,-3748.85,33.65,0, "npc_imperial", ""},
 	spawnMobile("tatooine", "dark_trooper",400,-1453,12,-3646.95,42.076,0)
 	spawnMobile("tatooine", "dark_trooper",400,-1133.2,12.1958,-3614.6,125.004,0)
 	spawnMobile("tatooine", "dark_trooper",400,-1130.9,12.1964,-3611.6,125.004,0)
-	--{"dark_trooper",400,-1428.52,12,-3730.88,141.264,0, "npc_imperial", ""},
 	pNpc = spawnMobile("tatooine", "dark_trooper",400,-1002.9,12,-3705.4,-55,0)
 	self:setMoodString(pNpc, "npc_imperial")
 	spawnMobile("tatooine", "elite_sand_trooper",400,-1284,12,-3486,180,0)
