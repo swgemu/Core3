@@ -103,7 +103,10 @@ public:
 		} else if (container == "lots") {
 			return sendLots(creature, targetObj);
 		} else if (container == "vendors") {
-			return sendVendorInfo(creature, targetObj);
+			String doRespawn = "";
+			if (args.hasMoreTokens())
+				args.getStringToken(doRespawn);
+			return sendVendorInfo(creature, targetObj, doRespawn == "respawn");
 		} else if (container == "veteranrewards") {
 			return sendVeteranRewardInfo( creature, targetObj );
 		} else if( container == "faction") {
@@ -229,7 +232,7 @@ public:
 	}
 
 
-	int sendVendorInfo(CreatureObject* creature, CreatureObject* target) const {
+	int sendVendorInfo(CreatureObject* creature, CreatureObject* target, bool doRespawn) const {
 		ManagedReference<PlayerObject*> targetGhost = target->getPlayerObject();
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 		ManagedReference<AuctionManager*> auctionManager = server->getZoneServer()->getAuctionManager();
@@ -294,6 +297,17 @@ public:
 			Zone* zone = vendor->getZone();
 			if (zone == NULL) {
 				body << "NULL" << endl;
+
+				if (doRespawn) {
+					Reference<SceneObject*> cellParent = creature->getParent().get();
+					vendor->initializePosition(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY());
+					if (cellParent != NULL && cellParent->isCellObject()) {
+						cellParent->transferObject(vendor, -1);
+					} else {
+						zone = creature->getZone();
+						zone->transferObject(vendor, -1, true);
+					}
+				}
 			} else {
 				body << zone->getZoneName() << endl;
 				body << "    World Position:\t" << vendor->getWorldPositionX() << ", " << vendor->getWorldPositionY() << endl;
