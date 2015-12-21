@@ -46,7 +46,7 @@ function NabooDeejaPeakScreenPlay:spawnMobiles()
 
 	--Capitol building
 	local pNpc = spawnMobile("naboo", "entertainer",60,-0.0,3.1,-9.6,0,1945390)
-	self:setMoodString(pNpc, "themepark_music_3")
+	self:setMoodString(pNpc, "themepark_music_1")
 	pNpc = spawnMobile("naboo", "comm_operator",60,25.8,1.3,-4.5,90,1945390)
 	self:setMoodString(pNpc, "sad")
 	pNpc = spawnMobile("naboo", "commoner_technician",60,-25.8,1.3,-0.9,-90,1945390)
