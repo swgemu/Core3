@@ -259,8 +259,14 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 			}
 		}
 
+		ManagedReference<SceneObject*> myParent = getParent();
+
 		// Check if the container is in a building or factory ingredient hopper
-		if (playerParent == NULL) {
+		// If it is a droid object, don't consider these cases as it can still
+		// receive items in a full house.
+		bool isDroid = (myParent != NULL && myParent->isDroidObject());
+
+		if (playerParent == NULL && !isDroid) {
 			ManagedReference<SceneObject*> rootParent = getRootParent();
 
 			if (rootParent != NULL) {
@@ -284,7 +290,6 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 			}
 		}
 
-		ManagedReference<SceneObject*> myParent = getParent();
 		ManagedReference<SceneObject*> otherParent = object->getParent();
 
 		if (myParent != NULL && otherParent != NULL) {
