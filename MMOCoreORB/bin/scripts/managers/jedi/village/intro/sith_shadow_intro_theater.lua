@@ -176,4 +176,18 @@ function SithShadowIntroTheater:useTheaterDatapad(pSceneObject, pCreatureObject)
 	end
 end
 
+function SithShadowIntroTheater:onLoggedIn(pCreatureObject)
+	if (not self:hasTaskStarted(pCreatureObject)) then
+		return 1
+	end
+
+	if not QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD_2) then
+		-- Respawn theater
+		self:finish(pCreatureObject)
+		self:start(pCreatureObject)
+	end
+
+	return 1
+end
+
 return SithShadowIntroTheater
