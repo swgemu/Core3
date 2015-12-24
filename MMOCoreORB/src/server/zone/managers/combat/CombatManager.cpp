@@ -1633,13 +1633,13 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, WeaponObjec
 	if (attacker->getHAM(CreatureAttribute::MIND) <= mind)
 		return false;
 
-	if (health > 0)
+	if (health > 0 && !weapon->isJediWeapon())
 		attacker->inflictDamage(attacker, CreatureAttribute::HEALTH, health, true);
 
-	if (action > 0)
+	if (action > 0 && !weapon->isJediWeapon())
 		attacker->inflictDamage(attacker, CreatureAttribute::ACTION, action, true);
 
-	if (mind > 0)
+	if (mind > 0 && !weapon->isJediWeapon())
 		attacker->inflictDamage(attacker, CreatureAttribute::MIND, mind, true);
 
 	return true;
