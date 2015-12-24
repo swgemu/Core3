@@ -1624,6 +1624,9 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, WeaponObjec
 	action = attacker->calculateCostAdjustment(CreatureAttribute::QUICKNESS, action);
 	mind = attacker->calculateCostAdjustment(CreatureAttribute::FOCUS, mind);
 
+	if (weapon->isJediWeapon())
+		return true;
+
 	if (attacker->getHAM(CreatureAttribute::HEALTH) <= health)
 		return false;
 
