@@ -102,5 +102,38 @@ perhaps_another_time = ConvoScreen:new {
 
 oldManIntroConvoTemplate:addScreen(perhaps_another_time);
 
+intro_mellichae = ConvoScreen:new {
+	id = "intro_mellichae",
+	leftDialog = "@conversation/fs_intro_oldman_initial:s_958f442", -- Hello again, my friend. Thank you for all of your help at the village. The time has come for you to hunt down and destroy Mellichae.
+	stopConversation = "false",
+	options = {
+	{ "@conversation/fs_intro_oldman_initial:s_9641e6e", "where_camp"}, -- Where is his camp located?
+	{ "@conversation/fs_intro_oldman_initial:s_fbd984c8", "where_camp_detail"} 	--Who is Mellichae? Where is his camp located?
+	}
+}
+
+oldManIntroConvoTemplate:addScreen(intro_mellichae);
+
+where_camp = ConvoScreen:new {
+	id = "where_camp",
+	leftDialog = "@conversation/fs_intro_oldman_initial:s_f5c5ace0", -- Although the exact location is still unknown, his camp is relatively close to here. I have given the approximate location to you as a waypoint. Be very careful. You may want to bring some friends. Defeating Mellichae will not be easy... Good luck!
+	stopConversation = "true",
+	options = {}
+}
+
+oldManIntroConvoTemplate:addScreen(where_camp);
+
+where_camp_detail = ConvoScreen:new {
+	id = "where_camp_detail",
+	leftDialog = "@conversation/fs_intro_oldman_initial:s_31a054f9", -- Mellichae is the leader of the Sith Shadows. He is responsible for the attacks at the village. Scouts have reported he has set up camp near here.
+	stopConversation = "false",
+	options = {
+	{ "@conversation/fs_intro_oldman_initial:s_9641e6e", "where_camp"}, -- Where is his camp located?
+	}
+}
+
+oldManIntroConvoTemplate:addScreen(where_camp_detail);
+
+
 addConversationTemplate("oldManIntroConvoTemplate", oldManIntroConvoTemplate);
 
