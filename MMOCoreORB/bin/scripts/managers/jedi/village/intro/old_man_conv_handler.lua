@@ -1,5 +1,7 @@
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
 local OldManEncounter = require("managers.jedi.village.intro.old_man_encounter")
+local QuestManager = require("managers.quest.quest_manager")
+local MellichaeOutroTheater = require("managers.jedi.village.outro.mellichae_outro_theater")
 
 oldManIntroConvoHandler = Object:new {}
 
@@ -28,7 +30,11 @@ end
 function oldManIntroConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 	if OldManEncounter:doesOldManBelongToThePlayer(pPlayer, pNpc) then
-		return convoTemplate:getScreen("intro")
+		if (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE)) then
+			return convoTemplate:getScreen("intro_mellichae")
+		else
+			return convoTemplate:getScreen("intro")
+		end
 	else
 		return convoTemplate:getScreen("nothing_to_discuss")
 	end
@@ -46,6 +52,10 @@ function oldManIntroConvoHandler:runScreenHandlers(pConversationTemplate, pConve
 	elseif screenID == "here_is_the_crystal" then
 		OldManEncounter:scheduleDespawnOfOldMan(pConversingPlayer)
 		OldManEncounter:giveForceCrystalToPlayer(pConversingPlayer)
+		CreatureObject(pConversingNpc):setOptionsBitmask(128)
+	elseif screenID == "where_camp" then
+		QuestManager.completeQuest(pConversingPlayer, QuestManager.quests.OLD_MAN_FINAL)
+		MellichaeOutroTheater:start(pConversingPlayer)
 		CreatureObject(pConversingNpc):setOptionsBitmask(128)
 	end
 
