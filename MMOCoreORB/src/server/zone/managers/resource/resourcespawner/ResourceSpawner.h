@@ -152,7 +152,7 @@ public:
 private:
 
 	void loadResourceSpawns();
-	String makeResourceName(bool isOrganic);
+	String makeResourceName(const String& randomNameClass);
 	int randomizeValue(int min, int max);
 	long getRandomExpirationTime(ResourceTreeEntry* resourceEntry);
 	long getRandomUnixTimestamp(int min, int max);

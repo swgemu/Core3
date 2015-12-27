@@ -40,7 +40,7 @@ public:
 
 		NameManager* nameManager = server->getNameManager();
 
-		int result = nameManager->validateFirstName(newName, targetCreature->getSpecies());
+		int result = nameManager->validateName(newName, targetCreature->getSpecies());
 
 		switch (result) {
 		case NameManagerResult::ACCEPTED:
