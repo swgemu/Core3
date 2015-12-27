@@ -492,7 +492,7 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 		return NULL;
 	}
 
-	String name = makeResourceName(resourceEntry->isOrganic());
+	String name = makeResourceName(resourceEntry->getRandomNameClass());
 
 	ResourceSpawn* newSpawn =
 			dynamic_cast<ResourceSpawn*> (objectManager->createObject(
@@ -583,11 +583,11 @@ void ResourceSpawner::despawn(ResourceSpawn* spawn) {
 	spawn->setSpawnPool(ResourcePool::NOPOOL, "");
 }
 
-String ResourceSpawner::makeResourceName(bool isOrganic) {
+String ResourceSpawner::makeResourceName(const String& randomNameClass) {
 	String randname;
 
 	while (true) {
-		randname = nameManager->makeResourceName(isOrganic);
+		randname = nameManager->generateResourceName(randomNameClass);
 
 		if (!resourceMap->contains(randname.toLowerCase()) && resourceTree->getEntry(randname) == NULL)
 			break;

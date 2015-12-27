@@ -2650,16 +2650,8 @@ int DirectorManager::getSpawnArea(lua_State* L) {
 }
 
 int DirectorManager::makeCreatureName(lua_State* L) {
-	if (checkArgumentCount(L, 1) == 1) {
-		instance()->error("incorrect number of arguments passed to DirectorManager::makeCreatureName");
-		ERROR_CODE = INCORRECT_ARGUMENTS;
-		return 0;
-	}
-
-	bool surname = lua_toboolean(L, -1);
-
 	NameManager* nameManager = NameManager::instance();
-	String name = nameManager->makeCreatureName(surname);
+	String name = nameManager->makeCreatureName();
 
 	lua_pushstring(L, name.toCharArray());
 	return 1;
