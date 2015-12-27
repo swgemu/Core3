@@ -262,7 +262,7 @@ void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
 				child->setCustomObjectName("a bantha mount", true);
 			} else if (child->getObjectTemplate()->getFullTemplateString().indexOf("object/mobile") != -1) {
 				NameManager* nameManager = NameManager::instance();
-				String name = nameManager->makeCreatureName(true);
+				String name = nameManager->makeCreatureName();
 				child->setCustomObjectName(name, true);
 			}
 		}

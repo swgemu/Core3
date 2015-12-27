@@ -65,7 +65,7 @@ private:
 	/// The script that explains the resource container type
 	String resourceContainerType;
 
-	/// Unused, but in the resource tree
+	/// Used in resource name generation
 	String randomNameClass;
 
 	/// The type of survey tool that can survey this
