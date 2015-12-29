@@ -46,6 +46,9 @@ Saber2hBodyHit3Command = {
         
     damageMultiplier = 2.25,
 	speedMultiplier = 2.25,
+	healthCostMultiplier = 0,
+	actionCostMultiplier = 0,
+	mindCostMultiplier = 0,
 	forceCostMultiplier = 1.75,
 
 	animationCRC = hashCode("combo_4a_light"),

@@ -43,10 +43,13 @@
 
 Saber2hSweep2Command = {
         name = "saber2hsweep2",
-        
-    damageMultiplier = 2.5,
+
+	damageMultiplier = 2.5,
 	speedMultiplier = 2.5,
-	forceCostMultiplier = 3.0, -- Not correct
+	healthCostMultiplier = 0,
+	actionCostMultiplier = 0,
+	mindCostMultiplier = 0,
+	forceCostMultiplier = 1.75,
 
 	stateEffects = {
 	  StateEffect( 
@@ -63,9 +66,9 @@ Saber2hSweep2Command = {
 	animationCRC = hashCode("combo_4b_light"),
 
 	combatSpam = "saber2hsweep2",
-	
+
 	poolsToDamage = RANDOM_ATTRIBUTE,
-	
+
 	weaponType = TWOHANDJEDIWEAPON,
 
 	range = -1

@@ -43,11 +43,14 @@
 
 SaberSlash1Command = {
         name = "saberslash1",    
-        
-    damageMultiplier = 1.0,
+
+	damageMultiplier = 1.0,
 	speedMultiplier = 1.25,
+	healthCostMultiplier = 0,
+	actionCostMultiplier = 0,
+	mindCostMultiplier = 0,
 	forceCostMultiplier = 1.0,
-	
+
 	dotEffects = {
 	  DotEffect( 
 		BLEEDING, 
@@ -59,7 +62,7 @@ SaberSlash1Command = {
 		50, 
 		30
 	  ),
-	  
+
 	  	DotEffect( 
 		BLEEDING, 
 		{ "resistance_bleeding", "bleed_resist" },
@@ -70,7 +73,7 @@ SaberSlash1Command = {
 		50, 
 		30
 	  ),
-	  
+
 	  	DotEffect( 
 		BLEEDING, 
 		{ "resistance_bleeding", "bleed_resist" },
@@ -82,7 +85,7 @@ SaberSlash1Command = {
 		30
 	  ),
 	},
-	
+
 	stateEffects = {
 	  StateEffect( 
 		POSTUREDOWN_EFFECT, 
@@ -96,9 +99,9 @@ SaberSlash1Command = {
 	},
 
 	combatSpam = "saberslash1",
-	
+
 	poolsToDamage = RANDOM_ATTRIBUTE,
-	
+
 	weaponType = JEDIWEAPON,
 
 	range = -1

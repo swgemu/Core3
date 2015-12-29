@@ -43,17 +43,20 @@
 
 Saber1hHeadHit2Command = {
         name = "saber1hheadhit2",
-        
-   damageMultiplier = 1.75,
+
+	damageMultiplier = 1.75,
 	speedMultiplier = 1.75,
+	healthCostMultiplier = 0,
+	actionCostMultiplier = 0,
+	mindCostMultiplier = 0,
 	forceCostMultiplier = 1.5,
 
 	animationCRC = hashCode("combo_4c_light"),
 
 	combatSpam = "saber1hheadhit2",
-	
+
 	poolsToDamage = MIND_ATTRIBUTE,
-	
+
 	weaponType = ONEHANDJEDIWEAPON,
 
 	range = -1
