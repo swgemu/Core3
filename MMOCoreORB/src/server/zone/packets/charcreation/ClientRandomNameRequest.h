@@ -33,7 +33,7 @@ public:
 		if (raceFile.indexOf("wookie") != -1)
 			type = NameManagerType::GENERIC_FIRSTNAME;
 
-		BaseMessage* msg = new ClientRandomNameResponse(raceFile, nameManager->makeCreatureName(type));
+		BaseMessage* msg = new ClientRandomNameResponse(raceFile, nameManager->makeCreatureName());
 		client->sendMessage(msg);
 	}
 };
