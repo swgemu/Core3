@@ -32,11 +32,9 @@ public:
 
 	void run() {
 		int crc = STRING_HASHCODE("skill_buff_mask_scent");
-		String buffMsg = "@skl_use:sys_conceal_stop";
 
 		if (maskScent) {
 			crc = STRING_HASHCODE("skill_buff_mask_scent_self");
-			buffMsg = "@skl_use:sys_scentmask_break";
 		}
 
 		ManagedReference<CreatureObject*> target = targ.get();
@@ -51,7 +49,7 @@ public:
 		Locker clocker(creature, target);
 
 		if (!success && creature->hasBuff(crc)) {
-			creature->sendSystemMessage(buffMsg);
+			creature->sendSystemMessage("@skl_use:sys_scentmask_break"); // A creature has detected you, despite your attempts at camouflage!
 			creature->removeBuff(crc);
 		}
 
@@ -59,7 +57,6 @@ public:
 			// on failure 50% chance to aggro animal if aggressive and within 40 meters
 			if (System::random(100) > 50 && target->isAggressiveTo(creature) && target->isInRange(creature,40.0f))
 				CombatManager::instance()->startCombat(target,creature,true);
-
 			return;
 		}
 
@@ -82,6 +79,5 @@ public:
 		}
 	}
 };
-
 
 #endif /* CAMOTASK_H_ */
