@@ -63,10 +63,8 @@ void SuiPageData::addChildWidget(const String& parent, const String& type, const
 }
 
 void SuiPageData::subscribeToEvent(const byte& eventType, const String& parent, const String& callback) {
-	if (callbacks.contains(eventType)) {
-		warning("SuiPageData::addCommand attempt to add duplicate SCT_subscribeToEvent command.");
-		return;
-	}
+	if (callbacks.contains(eventType))
+		callbacks.drop(eventType);
 
 	SuiCommand* command = new SuiCommand(SuiCommand::SCT_subscribeToEvent);
 	command->addNarrowParameter(parent);

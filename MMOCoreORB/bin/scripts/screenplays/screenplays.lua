@@ -5,13 +5,22 @@ require("corvetteTicketGiverLogic")
 require("corvetteTicketTakerLogic")
 
 -- SUI
---require("sui.SuiSample")
-require("sui.SuiTemplate")
+--require("sui.custom.SuiSample")
+require("sui.SuiCalibrationGame1")
+require("sui.SuiCalibrationGame2")
+require("sui.SuiCalibrationGame3")
+require("sui.SuiCalibrationGame4")
+require("sui.SuiInputBox")
 require("sui.SuiListBox")
 require("sui.SuiMessageBox")
-require("sui.SuiInputBox")
 require("sui.SuiQuestPopup")
-require("sui.SuiRadiationSensor")
+require("sui.SuiTemplate")
+require("sui.custom.SuiAmpPuzzle")
+require("sui.custom.SuiArrayPuzzle")
+require("sui.custom.SuiProcessorPuzzle")
+require("sui.custom.SuiRadiationSensor")
+require("sui.custom.SuiReceiverPuzzle")
+
 
 -- Theme parks
 includeFile("themepark/conversations/goru_conv_handler.lua")
