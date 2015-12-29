@@ -43,15 +43,18 @@
 
 Saber1hHit2Command = {
         name = "saber1hhit2",
-        
-    damageMultiplier = 2.0,
+
+	damageMultiplier = 2.0,
 	speedMultiplier = 1.5,
+	healthCostMultiplier = 0,
+	actionCostMultiplier = 0,
+	mindCostMultiplier = 0,
 	forceCostMultiplier = 1.5,
 
 	animationCRC = hashCode("combo_jedi_2_light"),
 
 	combatSpam = "saber1hhit2",
-	
+
 	stateEffects = {
 	  StateEffect( 
 		BLIND_EFFECT, 
@@ -63,9 +66,9 @@ Saber1hHit2Command = {
 		45 
 	  )
 	},
-	
+
 	poolsToDamage = RANDOM_ATTRIBUTE,
-	
+
 	weaponType = ONEHANDJEDIWEAPON,
 
 	range = -1

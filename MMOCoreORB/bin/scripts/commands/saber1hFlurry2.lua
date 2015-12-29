@@ -43,10 +43,12 @@
 
 Saber1hFlurry2Command = {
         name = "saber1hflurry2",
-        
-        
-    damageMultiplier = 4.0,
+
+	damageMultiplier = 4.0,
 	speedMultiplier = 4.0,
+	healthCostMultiplier = 0,
+	actionCostMultiplier = 0,
+	mindCostMultiplier = 0,
 	areaRange = 16,
 	areaAction = true,
 	forceCostMultiplier = 3.0,
@@ -84,9 +86,9 @@ Saber1hFlurry2Command = {
 	animationCRC = hashCode("combo_jedi_4_light"),
 
 	combatSpam = "saber1hflurry2",
-	
+
 	poolsToDamage = RANDOM_ATTRIBUTE,
-	
+
 	weaponType = ONEHANDJEDIWEAPON,
 
 	range = -1

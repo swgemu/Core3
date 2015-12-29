@@ -43,12 +43,14 @@
 
 SaberPolearmHit3Command = {
         name = "saberpolearmhit3",
-        
-                        
-    damageMultiplier = 2.5,
+  
+	damageMultiplier = 2.5,
 	speedMultiplier = 2.5,
+	healthCostMultiplier = 0,
+	actionCostMultiplier = 0,
+	mindCostMultiplier = 0,
 	forceCostMultiplier = 2.0,
-	
+
 	stateEffects = {
 	  StateEffect( 
 		STUN_EFFECT, 
@@ -64,9 +66,9 @@ SaberPolearmHit3Command = {
 	animationCRC = hashCode("combo_4b_medium"),
 
 	combatSpam = "saberpolearmhit3",
-	
+
 	poolsToDamage = RANDOM_ATTRIBUTE,
-	
+
 	weaponType = POLEARMJEDIWEAPON,
 
 	range = -1

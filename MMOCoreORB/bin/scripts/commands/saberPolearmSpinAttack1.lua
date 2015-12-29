@@ -43,9 +43,12 @@
 
 SaberPolearmSpinAttack1Command = {
         name = "saberpolearmspinattack1",
-       
-    damageMultiplier = 0.75,
+
+	damageMultiplier = 0.75,
 	speedMultiplier = 1.25,
+	healthCostMultiplier = 0,
+	actionCostMultiplier = 0,
+	mindCostMultiplier = 0,
 	forceCostMultiplier = 1.25,
 	areaAction = true,
 	areaRange = 16,
@@ -53,9 +56,9 @@ SaberPolearmSpinAttack1Command = {
 	animationCRC = hashCode("counter_low_left_light"),
 
 	combatSpam = "saberpolearmspinattack1",
-	
+
 	poolsToDamage = RANDOM_ATTRIBUTE,
-	
+
 	weaponType = POLEARMJEDIWEAPON,
 
 	range = -1
