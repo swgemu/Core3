@@ -7,8 +7,8 @@ binary_liquid = {
 	directObjectTemplate = "object/tangible/loot/dungeon/death_watch_bunker/binary_liquid.iff",
 	craftingValues = {
 	},
-	customizationStringNames = {},
-	customizationValues = {}
+	customizationStringNames = {"/private/index_color_1"},
+	customizationValues = {{29}},
 }
 
 addLootItemTemplate("binary_liquid", binary_liquid)
