@@ -7,8 +7,8 @@ protective_liquid_coating = {
 	directObjectTemplate = "object/tangible/loot/dungeon/death_watch_bunker/emulsion_protection.iff",
 	craftingValues = {
 	},
-	customizationStringNames = {},
-	customizationValues = {}
+	customizationStringNames = {"/private/index_color_1"},
+	customizationValues = {{9}},
 }
 
 addLootItemTemplate("protective_liquid_coating", protective_liquid_coating)
