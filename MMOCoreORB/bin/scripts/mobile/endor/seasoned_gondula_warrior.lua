@@ -1,6 +1,7 @@
 seasoned_gondula_warrior = Creature:new {
 	objectName = "@mob/creature_names:seasoned_gondula_warrior",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "gondula_tribe",
 	faction = "gondula_tribe",
 	level = 45,

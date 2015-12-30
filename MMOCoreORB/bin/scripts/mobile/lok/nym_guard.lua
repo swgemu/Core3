@@ -1,6 +1,7 @@
 nym_guard = Creature:new {
 	objectName = "@mob/creature_names:nym_guard",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "nym",
 	faction = "nym",
 	level = 9,

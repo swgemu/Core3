@@ -1,6 +1,7 @@
 hidden_daggers_activist = Creature:new {
 	objectName = "@mob/creature_names:hidden_daggers_activist",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "hidden_daggers",
 	faction = "hidden_daggers",
 	level = 9,

@@ -1,6 +1,7 @@
 special_missions_engineer = Creature:new {
 	objectName = "@mob/creature_names:special_missions_engineer",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 16,

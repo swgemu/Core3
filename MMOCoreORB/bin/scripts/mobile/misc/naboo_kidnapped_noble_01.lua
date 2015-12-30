@@ -1,6 +1,7 @@
 naboo_kidnapped_noble_01 = Creature:new {
 	objectName = "",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	customName = "a Kidnapped Noble",
 	socialGroup = "townsperson",
 	faction = "townsperson",

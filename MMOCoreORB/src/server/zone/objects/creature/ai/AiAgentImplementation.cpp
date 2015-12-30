@@ -268,7 +268,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	if(npcTemplate->getRandomNameType() != NameManagerType::TAG) {
 		NameManager* nm = server->getNameManager();
 
-		if(npcTemplate->getRandomNameType() % 2 == 1) {
+		if(!npcTemplate->getRandomNameTag()) {
 			setCustomObjectName(nm->makeCreatureName(npcTemplate->getRandomNameType()), false);
 		} else {
 			String newName = nm->makeCreatureName(npcTemplate->getRandomNameType());

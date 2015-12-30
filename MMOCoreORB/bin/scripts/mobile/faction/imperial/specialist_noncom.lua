@@ -1,6 +1,7 @@
 specialist_noncom = Creature:new {
 	objectName = "@mob/creature_names:specialist_noncom",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 13,

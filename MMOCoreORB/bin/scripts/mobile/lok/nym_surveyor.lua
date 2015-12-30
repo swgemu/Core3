@@ -1,6 +1,7 @@
 nym_surveyor = Creature:new {
 	objectName = "@mob/creature_names:nym_surveyer",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "nym",
 	faction = "nym",
 	level = 21,

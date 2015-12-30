@@ -1,6 +1,7 @@
 chassis_dealer = Creature:new {
 	objectName = "@chassis_npc:npc_name",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,

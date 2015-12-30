@@ -1,6 +1,7 @@
 fbase_specialist_noncom = Creature:new {
 	objectName = "@mob/creature_names:fbase_specialist_noncom",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 23,

@@ -1,6 +1,7 @@
 death_watch_ghost = Creature:new {
 	objectName = "@mob/creature_names:mand_bunker_dthwatch_grey",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "death_watch",
 	faction = "",
 	level = 152,

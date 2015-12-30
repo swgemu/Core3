@@ -1,6 +1,7 @@
 theater_manager = Creature:new {
 	objectName = "@mob/creature_names:quest_crowd_pleaser_theater_manager",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 10,

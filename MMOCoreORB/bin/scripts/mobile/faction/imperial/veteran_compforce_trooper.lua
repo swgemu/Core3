@@ -1,6 +1,7 @@
 veteran_compforce_trooper = Creature:new {
 	objectName = "@mob/creature_names:veteran_compforce_trooper",
-	randomNameType = NAME_STORMTROOPER_TAG,
+	randomNameType = NAME_STORMTROOPER,
+	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 25,

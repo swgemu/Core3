@@ -1,6 +1,7 @@
 rebel_midshipman = Creature:new {
 	objectName = "@mob/creature_names:corvet_rebel_midshipman",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 136,

@@ -1,6 +1,7 @@
 imperial_surface_marshall = Creature:new {
 	objectName = "@mob/creature_names:mission_imperial_surface_marshal",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 30,

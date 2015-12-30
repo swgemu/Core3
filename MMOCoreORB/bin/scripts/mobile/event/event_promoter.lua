@@ -1,6 +1,7 @@
 event_promoter = Creature:new {
 	objectName = "",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	customName = "an Event Promoter",
 	socialGroup = "townsperson",
 	faction = "townsperson",

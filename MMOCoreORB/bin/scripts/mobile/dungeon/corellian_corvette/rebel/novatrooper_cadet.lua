@@ -1,6 +1,7 @@
 novatrooper_cadet = Creature:new {
 	objectName = "@mob/creature_names:stormtrooper_novatrooper_cadet",
-	randomNameType = NAME_STORMTROOPER_TAG,
+	randomNameType = NAME_STORMTROOPER,
+	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 72,

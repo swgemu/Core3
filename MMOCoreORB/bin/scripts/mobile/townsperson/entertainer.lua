@@ -1,6 +1,7 @@
 entertainer = Creature:new {
 	objectName = "@mob/creature_names:entertainer",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 4,

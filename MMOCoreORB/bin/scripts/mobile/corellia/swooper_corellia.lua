@@ -1,6 +1,7 @@
 swooper_corellia = Creature:new {
 	objectName = "@mob/creature_names:swooper",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "cor_swoop",
 	faction = "cor_swoop",
 	level = 8,

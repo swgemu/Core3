@@ -1,6 +1,7 @@
 businessman_target = Creature:new {
 	objectName = "@mob/creature_names:businessman",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 4,

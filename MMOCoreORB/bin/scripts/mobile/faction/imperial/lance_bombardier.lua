@@ -1,6 +1,7 @@
 lance_bombardier = Creature:new {
 	objectName = "@mob/creature_names:lance_bombardier",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 16,

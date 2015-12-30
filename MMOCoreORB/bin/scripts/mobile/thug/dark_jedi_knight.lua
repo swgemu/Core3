@@ -1,6 +1,7 @@
 dark_jedi_knight = Creature:new {
 	objectName = "@mob/creature_names:dark_jedi_knight",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "dark_jedi",
 	faction = "",
 	level = 265,

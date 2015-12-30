@@ -1,6 +1,7 @@
 blood_razor_officer = Creature:new {
 	objectName = "@mob/creature_names:blood_razor_officer",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "bloodrazor",
 	faction = "bloodrazor",
 	level = 40,

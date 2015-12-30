@@ -1,6 +1,7 @@
 vordin_girlfriend = Creature:new {
 	objectName = "@mob/creature_names:commoner_twilek_female",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 7,

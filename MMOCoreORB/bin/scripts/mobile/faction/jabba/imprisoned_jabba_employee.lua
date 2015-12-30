@@ -1,6 +1,7 @@
 imprisoned_jabba_employee = Creature:new {
 	objectName = "@mob/creature_names:imprisoned_jabba_employee",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "jabba",
 	faction = "jabba",
 	level = 12,

@@ -1,6 +1,7 @@
 veteran_explorer = Creature:new {
 	objectName = "",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	customName = "a Veteran Explorer",
 	socialGroup = "wilder",
 	faction = "",

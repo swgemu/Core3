@@ -1,6 +1,7 @@
 gondula_elder_worker = Creature:new {
 	objectName = "@mob/creature_names:gondula_elder_worker",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "gondula_tribe",
 	faction = "gondula_tribe",
 	level = 19,

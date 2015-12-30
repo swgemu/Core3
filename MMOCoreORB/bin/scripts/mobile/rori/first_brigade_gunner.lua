@@ -1,6 +1,7 @@
 first_brigade_gunner = Creature:new {
 	objectName = "@mob/creature_names:brigade_gunner",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "restuss",
 	faction = "restuss",
 	level = 9,

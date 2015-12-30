@@ -1,6 +1,7 @@
 teraud_loyalist = Creature:new {
 	objectName = "@mob/creature_names:warren_teraud_loyalist",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "warren_teraud",
 	faction = "",
 	level = 34,

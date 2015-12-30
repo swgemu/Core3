@@ -1,6 +1,7 @@
 light_jedi_sentinel = Creature:new {
 	objectName = "@mob/creature_names:light_jedi_sentinel",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "self",
 	faction = "",
 	level = 1,

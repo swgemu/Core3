@@ -1,6 +1,7 @@
 sennex_slavemaster = Creature:new {
 	objectName = "@mob/creature_names:sennex_slavemaster",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "sennex",
 	faction = "pirate",
 	level = 37,

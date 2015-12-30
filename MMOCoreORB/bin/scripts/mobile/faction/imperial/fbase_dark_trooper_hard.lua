@@ -1,6 +1,7 @@
 fbase_dark_trooper_hard = Creature:new {
 	objectName = "@mob/creature_names:fbase_dark_trooper_hard",
-	randomNameType = NAME_DARKTROOPER_TAG,
+	randomNameType = NAME_DARKTROOPER,
+	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 100,

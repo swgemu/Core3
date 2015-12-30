@@ -1,6 +1,7 @@
 bh_assassin_twilek_mate = Creature:new {
 	objectName = "@mob/creature_names:assassin",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 18,

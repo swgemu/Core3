@@ -1,6 +1,7 @@
 rodian_sif = Creature:new {
 	objectName = "",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	customName = "a rodian Sif",
 	socialGroup = "sif",
 	faction = "sif",

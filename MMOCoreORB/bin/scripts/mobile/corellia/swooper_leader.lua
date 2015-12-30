@@ -1,6 +1,7 @@
 swooper_leader = Creature:new {
 	objectName = "@mob/creature_names:swooper_leader",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "cor_swoop",
 	faction = "cor_swoop",
 	level = 12,

@@ -1,6 +1,7 @@
 kobola_pitboss = Creature:new {
 	objectName = "@mob/creature_names:kobola_pitboss",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "kobola",
 	faction = "kobola",
 	level = 22,

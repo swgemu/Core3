@@ -1,6 +1,7 @@
 tainted_pubam_dark_shaman = Creature:new {
 	objectName = "@mob/creature_names:tainted_pubam_dark_shaman",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "pubam",
 	faction = "pubam",
 	level = 35,

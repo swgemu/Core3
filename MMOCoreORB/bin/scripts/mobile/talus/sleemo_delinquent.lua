@@ -1,6 +1,7 @@
 sleemo_delinquent = Creature:new {
 	objectName = "@mob/creature_names:sleemo_delinquent",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "sleemo_gang",
 	faction = "",
 	level = 7,

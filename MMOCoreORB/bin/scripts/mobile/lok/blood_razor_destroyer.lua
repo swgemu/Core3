@@ -1,6 +1,7 @@
 blood_razor_destroyer = Creature:new {
 	objectName = "@mob/creature_names:blood_razor_destroyer",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "bloodrazor",
 	faction = "bloodrazor",
 	level = 38,

@@ -1,6 +1,7 @@
 tough_thug_bothan_female = Creature:new {
 	objectName = "@mob/creature_names:thug",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 16,

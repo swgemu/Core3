@@ -63,21 +63,12 @@ class NameManagerType {
 public:
 
 	static const int TAG = 0; // a mobile
-
-	// List format must be main type with odd value followed by _TAG type with even value for AiAgent to properly generate name
-	static const int GENERIC = 1; // Firstname Lastname
-	static const int GENERIC_TAG = 2; // Firstname Lastname (a mobile)
-	static const int GENERIC_FIRSTNAME = 3; // Firstname
-	static const int GENERIC_FIRSTNAME_TAG = 4; // Firstname (a mobile)
+	static const int GENERIC = 1; // Name Generator
 
 	static const int STORMTROOPER = 11; // XX-123
-	static const int STORMTROOPER_TAG = 12; // XX-123 (a stormtrooper)
-	static const int SCOUTTROOPER = 13; // XX-123
-	static const int SCOUTTROOPER_TAG = 14; // XX-123 (a scout trooper)
-	static const int DARKTROOPER = 15; // XX-123
-	static const int DARKTROOPER_TAG = 16; // XX-123 (a dark trooper)
-	static const int SWAMPTROOPER = 17; // XX-123
-	static const int SWAMPTROOPER_TAG = 18; // XX-123 (a swamp trooper)
+	static const int SCOUTTROOPER = 12; // XX-123
+	static const int DARKTROOPER = 13; // XX-123
+	static const int SWAMPTROOPER = 14; // XX-123
 
 	static const int GUILD_NAME = 31;
 	static const int GUILD_ABBREV = 32;
@@ -168,7 +159,7 @@ public:
 	int validateCityName(const String& name);
 	int validateVendorName(const String& name);
 
-	const String makeCreatureName(int type = 1);
+	const String makeCreatureName(int type = 1, int species = 0);
 
 	String generateSingleName(NameData* nameData, NameRules* rules);
 

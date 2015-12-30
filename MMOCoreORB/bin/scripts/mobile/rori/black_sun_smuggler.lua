@@ -1,6 +1,7 @@
 black_sun_smuggler = Creature:new {
 	objectName = "@mob/creature_names:black_sun_smuggler",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "death_watch",
 	faction = "",
 	level = 19,

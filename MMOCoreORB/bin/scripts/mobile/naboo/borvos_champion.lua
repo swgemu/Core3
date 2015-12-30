@@ -1,6 +1,7 @@
 borvos_champion = Creature:new {
 	objectName = "@mob/creature_names:borvos_champion",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "borvo",
 	faction = "borvo",
 	level = 21,

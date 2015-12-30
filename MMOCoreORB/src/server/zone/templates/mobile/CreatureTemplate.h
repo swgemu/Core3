@@ -52,6 +52,7 @@ protected:
 
 	String objectName;
 	int randomNameType;
+	bool randomNameTag;
 	String socialGroup;
 	String faction;
 
@@ -243,6 +244,10 @@ public:
 
 	inline int getRandomNameType() {
 		return randomNameType;
+	}
+
+	inline bool getRandomNameTag() {
+		return randomNameTag;
 	}
 
 	inline String getSocialGroup() {

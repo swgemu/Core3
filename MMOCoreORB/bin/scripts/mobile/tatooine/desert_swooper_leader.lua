@@ -1,6 +1,7 @@
 desert_swooper_leader = Creature:new {
 	objectName = "@mob/creature_names:desert_swooper_leader",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "swoop",
 	faction = "swoop",
 	level = 7,

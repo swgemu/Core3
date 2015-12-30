@@ -1,6 +1,7 @@
 pirate_squab = Creature:new {
 	objectName = "",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	customName = "a Pirate Squab",
 	socialGroup = "pirate",
 	faction = "",

@@ -1,6 +1,7 @@
 crackdown_imperial_warrant_officer_ii = Creature:new {
 	objectName = "@mob/creature_names:crackdown_imperial_warrant_officer_ii",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 1,

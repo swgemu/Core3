@@ -1,6 +1,7 @@
 bothan_diplomat = Creature:new {
 	objectName = "@mob/creature_names:bothan_diplomat",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "spynet",
 	faction = "",
 	level = 3,

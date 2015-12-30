@@ -1,6 +1,7 @@
 bh_singing_mountain_clan_arch_witch = Creature:new {
 	objectName = "@mob/creature_names:singing_mtn_clan_arch_witch",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "mtn_clan",
 	faction = "mtn_clan",
 	level = 107,

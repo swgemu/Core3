@@ -1,6 +1,7 @@
 monumenter_bandit = Creature:new {
 	objectName = "@mob/creature_names:monumenter_bandit",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "monumenter",
 	faction = "monumenter",
 	level = 11,

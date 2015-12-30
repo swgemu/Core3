@@ -1,6 +1,7 @@
 plainsfolk = Creature:new {
 	objectName = "@mob/creature_names:plainsfolk",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 5,

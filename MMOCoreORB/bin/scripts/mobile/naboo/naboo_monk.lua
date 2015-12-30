@@ -1,6 +1,7 @@
 naboo_monk = Creature:new {
 	objectName = "@mob/creature_names:naboo_monk",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "self",
 	faction = "naboo",
 	level = 4,

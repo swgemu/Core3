@@ -1,6 +1,7 @@
 coa2_rebel_commander = Creature:new {
 	objectName = "@mob/creature_names:coa2_rebel_commander",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 100,

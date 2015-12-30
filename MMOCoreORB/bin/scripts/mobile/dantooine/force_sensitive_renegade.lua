@@ -1,6 +1,7 @@
 force_sensitive_renegade = Creature:new {
 	objectName = "@mob/creature_names:force_sensitive_renegade",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "force",
 	faction = "",
 	level = 80,

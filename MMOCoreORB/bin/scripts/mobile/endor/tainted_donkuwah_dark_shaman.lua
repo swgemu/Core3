@@ -1,6 +1,7 @@
 tainted_donkuwah_dark_shaman = Creature:new {
 	objectName = "@mob/creature_names:tainted_donkuwah_dark_shaman",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "donkuwah_tribe",
 	faction = "donkuwah_tribe",
 	level = 45,

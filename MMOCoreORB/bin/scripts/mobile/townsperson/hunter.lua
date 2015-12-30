@@ -1,6 +1,7 @@
 hunter = Creature:new {
 	objectName = "@mob/creature_names:hunter",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "poacher",
 	faction = "",
 	level = 16,

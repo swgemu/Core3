@@ -1,6 +1,7 @@
 shaki_imperial_q2 = Creature:new {
 	objectName = "@mob/creature_names:imperial_second_lieutenant",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 20,

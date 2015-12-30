@@ -1,6 +1,7 @@
 specforce_heavy_weapons_specialist = Creature:new {
 	objectName = "@mob/creature_names:specforce_heavy_weapons_specialist",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 18,

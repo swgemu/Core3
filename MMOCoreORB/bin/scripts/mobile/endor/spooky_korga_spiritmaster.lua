@@ -1,6 +1,7 @@
 spooky_korga_spiritmaster = Creature:new {
 	objectName = "@mob/creature_names:spooky_korga_spiritmaster",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "korga_tribe",
 	faction = "korga_tribe",
 	level = 50,

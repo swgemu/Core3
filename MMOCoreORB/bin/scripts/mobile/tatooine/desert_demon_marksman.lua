@@ -1,6 +1,7 @@
 desert_demon_marksman = Creature:new {
 	objectName = "@mob/creature_names:desert_demon_marksman",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "desert_demon",
 	faction = "desert_demon",
 	level = 13,

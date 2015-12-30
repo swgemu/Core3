@@ -1,6 +1,7 @@
 dim_u_preacher = Creature:new {
 	objectName = "@mob/creature_names:dim_u_preacher",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "dim_u",
 	faction = "",
 	level = 8,

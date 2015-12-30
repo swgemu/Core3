@@ -1,6 +1,7 @@
 theme_park_imperial_mercenary = Creature:new {
 	objectName = "@mob/creature_names:mercenary",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 12,

@@ -1,6 +1,7 @@
 bh_fugitive = Creature:new {
 	objectName = "@mob/creature_names:fugitive",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 7,

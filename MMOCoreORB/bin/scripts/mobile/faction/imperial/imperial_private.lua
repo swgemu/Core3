@@ -1,6 +1,7 @@
 imperial_private = Creature:new {
 	objectName = "@mob/creature_names:imperial_private",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 15,

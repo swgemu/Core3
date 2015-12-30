@@ -1,6 +1,7 @@
 shibb_gnarled_rancor = Creature:new {
 	objectName = "@mob/creature_names:thug",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "brigand",
 	faction = "",
 	level = 17,

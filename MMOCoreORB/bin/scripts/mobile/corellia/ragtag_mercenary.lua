@@ -1,6 +1,7 @@
 ragtag_mercenary = Creature:new {
 	objectName = "",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	customName = "a Ragtag mercenary",
 	socialGroup = "ragtag",
 	faction = "thug",

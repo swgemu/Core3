@@ -1,6 +1,7 @@
 spice_collective_foreman = Creature:new {
 	objectName = "@mob/creature_names:spice_collective_foreman",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "spice_collective",
 	faction = "spice_collective",
 	level = 18,

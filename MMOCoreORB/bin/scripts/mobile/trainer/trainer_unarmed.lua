@@ -1,6 +1,7 @@
 trainer_unarmed = Creature:new {
 	objectName = "@mob/creature_names:trainer_unarmed",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	faction = "",
 	level = 100,
 	chanceHit = 0.390000,

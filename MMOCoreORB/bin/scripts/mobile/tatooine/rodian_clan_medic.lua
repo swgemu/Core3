@@ -1,6 +1,7 @@
 rodian_clan_medic = Creature:new {
 	objectName = "@mob/creature_names:rodian_clan_medic",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "rodian",
 	faction = "",
 	level = 7,

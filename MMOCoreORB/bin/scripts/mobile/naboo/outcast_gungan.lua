@@ -1,6 +1,7 @@
 outcast_gungan = Creature:new {
 	objectName = "@mob/creature_names:mordran_gungan_outcast",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "borvo",
 	faction = "borvo",
 	level = 30,

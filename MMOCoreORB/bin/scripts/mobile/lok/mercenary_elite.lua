@@ -1,6 +1,7 @@
 mercenary_elite = Creature:new {
 	objectName = "@mob/creature_names:mercenary_elite",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "lok_mercenaries",
 	faction = "lok_mercenaries",
 	level = 40,

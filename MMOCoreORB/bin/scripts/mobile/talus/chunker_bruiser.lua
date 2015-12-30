@@ -1,6 +1,7 @@
 chunker_bruiser = Creature:new {
 	objectName = "@mob/creature_names:chunker_bruiser",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "chunker",
 	faction = "thug",
 	level = 11,
