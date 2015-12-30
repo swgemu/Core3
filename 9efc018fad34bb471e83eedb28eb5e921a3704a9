@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_4e1413f5",
+        "filename": "MMOCoreORB/src/server/zone/managers/city/CityDecorationTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-30T02:32:53Z",
+      "side": 1,
+      "message": "This isn\u0027t a complete check as it\u0027s only checking for pois and not other no build zones.\n\nAlso, this wouldn\u0027t really work anyway, since the noBuildRadius on city decorations is only 8m. You\u0027re be restricting a player from placing one within 8m of the poi waypoint and that\u0027s it.",
+      "revId": "9efc018fad34bb471e83eedb28eb5e921a3704a9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
