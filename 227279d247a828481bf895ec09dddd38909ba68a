@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_ce68238a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/custom/SuiAmpPuzzle.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-30T02:20:23Z",
+      "side": 1,
+      "message": "Is this status data for future use in the quest? I don\u0027t see it being read or deleted. Same question for the other puzzles.",
+      "revId": "227279d247a828481bf895ec09dddd38909ba68a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_0e485b2c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/custom/SuiAmpPuzzle.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-30T02:20:23Z",
+      "side": 1,
+      "message": "There\u0027s 7 of these serverBarVal data, right? You\u0027re only deleting 3.",
+      "revId": "227279d247a828481bf895ec09dddd38909ba68a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_6e5eb7eb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/custom/SuiArrayPuzzle.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-30T02:20:23Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you also delete :arrayPuzzle:Pid here?",
+      "revId": "227279d247a828481bf895ec09dddd38909ba68a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_8e630bb1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/custom/SuiArrayPuzzle.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-30T02:20:23Z",
+      "side": 1,
+      "message": "Don\u0027t you want to delete all the other data at this point as well? Why not use a dataCleanup function like in the amp puzzle?",
+      "revId": "227279d247a828481bf895ec09dddd38909ba68a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_4e5df3e8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/custom/SuiProcessorPuzzle.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-30T02:20:23Z",
+      "side": 1,
+      "message": "You forgot to append i here.",
+      "revId": "227279d247a828481bf895ec09dddd38909ba68a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
