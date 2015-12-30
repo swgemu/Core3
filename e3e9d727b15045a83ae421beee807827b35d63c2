@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_ceffc3a9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/LootCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-30T03:00:18Z",
+      "side": 1,
+      "message": "Checking looterIsOwner is unnecessary here. You\u0027ve already returned if it was true.",
+      "revId": "e3e9d727b15045a83ae421beee807827b35d63c2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_2e267f69",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/LootCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-30T03:00:18Z",
+      "side": 1,
+      "message": "Looking at how you use these, I think you either need additional options or you need to clarify this comment. For example, you return 1 when inventory is full whether they picked up an item or not.\n\nAlso, what about if they picked up an item but there\u0027s still another item owned by another player? You return 1. In the case of the group owning the corpse, it\u0027ll then reschedule the despawn and the other player will have no opportunity to loot.",
+      "revId": "e3e9d727b15045a83ae421beee807827b35d63c2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_6e2c774b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/LootCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-30T03:00:18Z",
+      "side": 1,
+      "message": "Why change the above 2 cases to returns? You don\u0027t want to check other container objects if one is null?",
+      "revId": "e3e9d727b15045a83ae421beee807827b35d63c2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_8e31cba4",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/LootCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-30T03:00:18Z",
+      "side": 1,
+      "message": "I would get and null check the inventory before the for loop instead of doing that for each item.",
+      "revId": "e3e9d727b15045a83ae421beee807827b35d63c2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
