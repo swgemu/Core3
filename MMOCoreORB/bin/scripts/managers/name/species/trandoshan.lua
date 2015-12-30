@@ -101,7 +101,6 @@ nameManagerTrandoshan = {
 	-- rules table handles where in the name syllables can be inserted
 	specials = {
 		{ "ossk", 10 },
-		{ "ossk", 10 },
 		{ "iss", 10 },
 		{ "uss", 10 },
 	},

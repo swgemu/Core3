@@ -1,6 +1,7 @@
 industrial_spy = Creature:new {
 	objectName = "@mob/creature_names:industrial_spy",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "mercenary",
 	faction = "",
 	level = 8,

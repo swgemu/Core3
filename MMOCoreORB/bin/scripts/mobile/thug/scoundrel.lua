@@ -1,6 +1,7 @@
 scoundrel = Creature:new {
 	objectName = "@mob/creature_names:scoundrel",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 7,

@@ -1,6 +1,7 @@
 janta_primalist = Creature:new {
 	objectName = "@mob/creature_names:janta_primalist",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "janta_tribe",
 	faction = "janta_tribe",
 	level = 42,

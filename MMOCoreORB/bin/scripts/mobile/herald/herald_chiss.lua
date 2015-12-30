@@ -1,6 +1,7 @@
 herald_chiss = Creature:new {
 	objectName = "@mob/creature_names:patron_chiss_male",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 6,

@@ -1,6 +1,7 @@
 talus_liberation_party_partisan = Creature:new {
 	objectName = "@mob/creature_names:liberation_partisan",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "liberation_party",
 	faction = "liberation_party",
 	level = 12,

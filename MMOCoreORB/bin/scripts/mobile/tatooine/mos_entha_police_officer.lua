@@ -1,6 +1,7 @@
 mos_entha_police_officer = Creature:new {
 	objectName = "@mob/creature_names:mos_entha_police_officer",
-	randomNameType = NAME_STORMTROOPER_TAG,
+	randomNameType = NAME_STORMTROOPER,
+	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 13,

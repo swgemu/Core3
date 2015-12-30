@@ -1,6 +1,7 @@
 naive_panshee_workling = Creature:new {
 	objectName = "@mob/creature_names:naive_panshee_workling",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "panshee_tribe",
 	faction = "panshee_tribe",
 	level = 10,

@@ -1,6 +1,7 @@
 crackdown_rebel_cadet = Creature:new {
 	objectName = "@mob/creature_names:crackdown_rebel_cadet",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 1,

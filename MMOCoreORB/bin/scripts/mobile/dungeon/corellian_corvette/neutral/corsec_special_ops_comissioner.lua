@@ -1,6 +1,7 @@
 corsec_special_ops_comissioner = Creature:new {
 	objectName = "@mob/creature_names:corsec_commissioner_aggro",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "corsec",
 	faction = "corsec",
 	level = 226,

@@ -1,6 +1,7 @@
 donkuwah_laborer = Creature:new {
 	objectName = "@mob/creature_names:donkuwah_laborer",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "donkuwah_tribe",
 	faction = "donkuwah_tribe",
 	level = 13,

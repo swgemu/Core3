@@ -1,6 +1,7 @@
 swooper_gangmember = Creature:new {
 	objectName = "",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	customName = "a swooper gangmember",
 	socialGroup = "cor_swoop",
 	faction = "cor_swoop",

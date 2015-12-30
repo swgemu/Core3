@@ -1,6 +1,7 @@
 bh_canyon_corsair_cutthroat = Creature:new {
 	objectName = "@mob/creature_names:canyon_corsair_cutthroat",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "canyon_corsair",
 	faction = "canyon_corsair",
 	level = 35,

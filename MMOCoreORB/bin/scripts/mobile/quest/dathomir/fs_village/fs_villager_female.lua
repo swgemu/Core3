@@ -1,6 +1,7 @@
 fs_villager_female = Creature:new {
 	objectName = "@mob/creature_names:fs_villager_female",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "fs_villager",
 	faction = "fs_villager",
 	level = 4,

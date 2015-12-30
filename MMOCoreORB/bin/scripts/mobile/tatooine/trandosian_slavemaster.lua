@@ -1,6 +1,7 @@
 trandosian_slavemaster = Creature:new {
 	objectName = "@mob/creature_names:trandoshan_slavemaster",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "slaver",
 	faction = "",
 	level = 7,

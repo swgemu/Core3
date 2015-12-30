@@ -476,14 +476,15 @@ int NameManager::validateVendorName(const String& name) {
 	return NameManagerResult::ACCEPTED;
 }
 
-const String NameManager::makeCreatureName(int type) {
+const String NameManager::makeCreatureName(int type, int species) {
 	String name;
+	NameData* data = getSpeciesData(species);
 
 	// Covers all Imperial Trooper types
-	if (type >= NameManagerType::STORMTROOPER && type <= NameManagerType::SWAMPTROOPER_TAG) {
+	if (type >= NameManagerType::STORMTROOPER && type <= NameManagerType::SWAMPTROOPER) {
 		name = makeImperialTrooperName(type);
 	} else {
-		name = generateRandomName(humanData);
+		name = generateRandomName(data);
 	}
 
 	return name;
@@ -492,13 +493,13 @@ const String NameManager::makeCreatureName(int type) {
 String NameManager::makeImperialTrooperName(int type) {
 	String name;
 
-	if (type == NameManagerType::STORMTROOPER || type == NameManagerType::STORMTROOPER_TAG)
+	if (type == NameManagerType::STORMTROOPER)
 		name += stormtrooperPrefixes.get(System::random(stormtrooperPrefixes.size() - 1));
-	else if (type == NameManagerType::SCOUTTROOPER || type == NameManagerType::SCOUTTROOPER_TAG)
+	else if (type == NameManagerType::SCOUTTROOPER)
 		name += scouttrooperPrefixes.get(System::random(scouttrooperPrefixes.size() - 1));
-	else if (type == NameManagerType::DARKTROOPER || type == NameManagerType::DARKTROOPER_TAG)
+	else if (type == NameManagerType::DARKTROOPER)
 		name += darktrooperPrefixes.get(System::random(darktrooperPrefixes.size() - 1));
-	else if (type == NameManagerType::SWAMPTROOPER || type == NameManagerType::SWAMPTROOPER_TAG)
+	else if (type == NameManagerType::SWAMPTROOPER)
 		name += swamptrooperPrefixes.get(System::random(swamptrooperPrefixes.size() - 1));
 
 	name += "-";

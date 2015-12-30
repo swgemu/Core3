@@ -1,6 +1,7 @@
 sulfur_lake_pirate_crewman = Creature:new {
 	objectName = "@mob/creature_names:slp_crewman",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "pirate",
 	faction = "",
 	level = 12,

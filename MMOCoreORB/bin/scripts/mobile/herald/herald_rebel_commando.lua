@@ -1,6 +1,7 @@
 herald_rebel_commando = Creature:new {
 	objectName = "@mob/creature_names:rebel_commando",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 25,

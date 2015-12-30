@@ -1,6 +1,7 @@
 black_sun_minion = Creature:new {
 	objectName = "@mob/creature_names:black_sun_minion",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "death_watch",
 	faction = "",
 	level = 21,

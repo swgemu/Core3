@@ -1,6 +1,7 @@
 senior_specforce_infiltrator = Creature:new {
 	objectName = "@mob/creature_names:senior_specforce_infiltrator",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 20,

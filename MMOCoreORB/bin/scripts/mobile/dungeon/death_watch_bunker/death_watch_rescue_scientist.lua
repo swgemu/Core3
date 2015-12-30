@@ -1,6 +1,7 @@
 death_watch_rescue_scientist = Creature:new {
 	objectName = "@mob/creature_names:death_watch_scientist",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,

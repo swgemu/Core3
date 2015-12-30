@@ -1,6 +1,7 @@
 cobral_mugger = Creature:new {
 	objectName = "",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	customName = "a Neo-Cobral Mugger",
 	socialGroup = "cobral",
 	faction = "cobral",

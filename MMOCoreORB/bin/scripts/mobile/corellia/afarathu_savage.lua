@@ -1,6 +1,7 @@
 afarathu_savage = Creature:new {
 	objectName = "@mob/creature_names:afarathu_cult_savage",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "afarathu",
 	faction = "afarathu",
 	level = 7,

@@ -1,6 +1,7 @@
 aakuan_anarchist = Creature:new {
 	objectName = "",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	customName = "an Aa'kuan Anarchist",
 	socialGroup = "aakuans",
 	faction = "aakuans",

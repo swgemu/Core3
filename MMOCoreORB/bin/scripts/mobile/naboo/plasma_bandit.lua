@@ -1,6 +1,7 @@
 plasma_bandit = Creature:new {
 	objectName = "",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	customName = "a Plasma Bandit",
 	socialGroup = "plasma_thief",
 	faction = "plasma_thief",

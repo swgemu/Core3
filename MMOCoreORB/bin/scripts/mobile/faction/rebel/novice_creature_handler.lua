@@ -1,6 +1,7 @@
 novice_creature_handler = Creature:new {
 	objectName = "@mob/creature_names:rebel_creature_handler_novice",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 8,

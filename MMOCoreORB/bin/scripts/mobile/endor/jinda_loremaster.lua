@@ -1,6 +1,7 @@
 jinda_loremaster = Creature:new {
 	objectName = "@mob/creature_names:jinda_loremaster",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "jinda_tribe",
 	faction = "",
 	level = 40,

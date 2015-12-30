@@ -1,6 +1,7 @@
 stormtrooper_black_hole = Creature:new {
 	objectName = "",
-	randomNameType = NAME_STORMTROOPER_TAG,
+	randomNameType = NAME_STORMTROOPER,
+	randomNameTag = true,
 	customName = "a Black Hole Stormtrooper",
 	socialGroup = "imperial",
 	faction = "imperial",

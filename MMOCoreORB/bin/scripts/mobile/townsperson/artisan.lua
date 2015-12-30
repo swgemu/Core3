@@ -1,6 +1,7 @@
 artisan = Creature:new {
 	objectName = "@mob/creature_names:artisan",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 4,

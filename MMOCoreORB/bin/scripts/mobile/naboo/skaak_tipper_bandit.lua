@@ -1,6 +1,7 @@
 skaak_tipper_bandit = Creature:new {
 	objectName = "@mob/creature_names:skaak_tipper_bandit",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "skaak_tipper_gang",
 	faction = "thug",
 	level = 8,

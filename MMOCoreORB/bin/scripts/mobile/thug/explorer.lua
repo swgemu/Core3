@@ -1,6 +1,7 @@
 explorer = Creature:new {
 	objectName = "@mob/creature_names:explorer",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "wilder",
 	faction = "",
 	level = 7,

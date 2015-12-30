@@ -1,6 +1,7 @@
 ragtag_lunatic = Creature:new {
 	objectName = "@mob/creature_names:ragtag_lunatic",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "ragtag",
 	faction = "thug",
 	level = 7,

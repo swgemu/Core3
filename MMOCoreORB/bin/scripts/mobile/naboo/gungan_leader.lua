@@ -1,6 +1,7 @@
 gungan_leader = Creature:new {
 	objectName = "",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	customName = "a Gungan Leader",
 	socialGroup = "gungan",
 	faction = "gungan",

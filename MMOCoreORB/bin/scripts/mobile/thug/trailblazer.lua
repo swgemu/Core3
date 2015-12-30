@@ -1,6 +1,7 @@
 trailblazer = Creature:new {
 	objectName = "",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	customName = "a Trailblazer",
 	socialGroup = "wilder",
 	faction = "",

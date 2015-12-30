@@ -1,6 +1,7 @@
 biogenic_scientist_human = Creature:new {
 	objectName = "@mob/creature_names:geonosian_scientist",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "self",
 	faction = "",
 	level = 25,

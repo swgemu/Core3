@@ -1,6 +1,7 @@
 scientist_target_scientist = Creature:new {
 	objectName = "@mob/creature_names:scientist",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 7,

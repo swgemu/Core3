@@ -1,6 +1,7 @@
 fbase_storm_commando = Creature:new {
 	objectName = "@mob/creature_names:fbase_storm_commando",
-	randomNameType = NAME_STORMTROOPER_TAG,
+	randomNameType = NAME_STORMTROOPER,
+	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 44,

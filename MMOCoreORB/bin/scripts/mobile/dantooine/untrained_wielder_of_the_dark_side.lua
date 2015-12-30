@@ -1,6 +1,7 @@
 untrained_wielder_of_the_dark_side = Creature:new {
 	objectName = "@mob/creature_names:untrained_wielder_of_the_dark_side",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "kun",
 	faction = "",
 	level = 65,

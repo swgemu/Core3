@@ -1,6 +1,7 @@
 vicious_korga_battlelord = Creature:new {
 	objectName = "@mob/creature_names:vicious_korga_battlelord",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "korga_tribe",
 	faction = "korga_tribe",
 	level = 48,

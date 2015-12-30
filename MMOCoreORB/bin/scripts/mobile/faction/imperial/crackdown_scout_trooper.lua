@@ -1,6 +1,7 @@
 crackdown_scout_trooper = Creature:new {
 	objectName = "@mob/creature_names:crackdown_scout_trooper",
-	randomNameType = NAME_SCOUTTROOPER_TAG,
+	randomNameType = NAME_SCOUTTROOPER,
+	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 1,

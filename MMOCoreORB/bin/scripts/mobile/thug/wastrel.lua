@@ -1,6 +1,7 @@
 wastrel = Creature:new {
 	objectName = "@mob/creature_names:wastrel",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 6,

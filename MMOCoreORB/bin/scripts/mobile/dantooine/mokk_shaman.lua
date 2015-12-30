@@ -1,6 +1,7 @@
 mokk_shaman = Creature:new {
 	objectName = "@mob/creature_names:mokk_shaman",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "mokk_tribe",
 	faction = "mokk_tribe",
 	level = 60,

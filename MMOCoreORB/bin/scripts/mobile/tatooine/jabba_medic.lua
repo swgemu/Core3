@@ -1,6 +1,7 @@
 jabba_medic = Creature:new {
 	objectName = "",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	customName = "Jabba's Medic",
 	socialGroup = "jabba",
 	faction = "jabba",

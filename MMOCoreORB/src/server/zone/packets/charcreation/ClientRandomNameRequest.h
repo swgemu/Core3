@@ -28,12 +28,28 @@ public:
 	void run() {
 		NameManager* nameManager = server->getNameManager();
 
-		int type = NameManagerType::GENERIC;
+		int species = CreatureObject::HUMAN;
 
-		if (raceFile.indexOf("wookie") != -1)
-			type = NameManagerType::GENERIC_FIRSTNAME;
+		if (raceFile.indexOf("wookiee") != -1)
+			species = CreatureObject::WOOKIE;
+		else if (raceFile.indexOf("bothan") != -1)
+			species = CreatureObject::BOTHAN;
+		else if (raceFile.indexOf("ithorian") != -1)
+			species = CreatureObject::ITHORIAN;
+		else if (raceFile.indexOf("moncal") != -1)
+			species = CreatureObject::MONCAL;
+		else if (raceFile.indexOf("rodian") != -1)
+			species = CreatureObject::RODIAN;
+		else if (raceFile.indexOf("sullustan") != -1)
+			species = CreatureObject::SULLUSTAN;
+		else if (raceFile.indexOf("trandoshan") != -1)
+			species = CreatureObject::TRANDOSHAN;
+		else if (raceFile.indexOf("twilek") != -1)
+			species = CreatureObject::TWILEK;
+		else if (raceFile.indexOf("bothan") != -1)
+			species = CreatureObject::ZABRAK;
 
-		BaseMessage* msg = new ClientRandomNameResponse(raceFile, nameManager->makeCreatureName());
+		BaseMessage* msg = new ClientRandomNameResponse(raceFile, nameManager->makeCreatureName(1, species));
 		client->sendMessage(msg);
 	}
 };

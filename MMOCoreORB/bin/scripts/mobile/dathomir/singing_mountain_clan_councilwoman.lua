@@ -1,6 +1,7 @@
 singing_mountain_clan_councilwoman = Creature:new {
 	objectName = "@mob/creature_names:singing_mtn_clan_councilwoman",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "mtn_clan",
 	faction = "mtn_clan",
 	level = 253,

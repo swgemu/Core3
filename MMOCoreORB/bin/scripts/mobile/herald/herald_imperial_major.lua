@@ -1,6 +1,7 @@
 herald_imperial_major = Creature:new {
 	objectName = "@mob/creature_names:imperial_major",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 23,

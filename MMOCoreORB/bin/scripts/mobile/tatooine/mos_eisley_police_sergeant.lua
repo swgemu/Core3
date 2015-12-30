@@ -1,6 +1,7 @@
 mos_eisley_police_sergeant = Creature:new {
 	objectName = "@mob/creature_names:mos_eisley_police_sergeant",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 14,

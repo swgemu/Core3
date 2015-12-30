@@ -67,6 +67,7 @@
 #include "server/zone/packets/scene/UpdateTransformMessage.h"
 #include "server/zone/packets/scene/UpdateTransformWithParentMessage.h"
 #include "server/zone/templates/AiTemplate.h"
+#include "server/zone/templates/tangible/SharedCreatureObjectTemplate.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/templates/mobile/MobileOutfit.h"
 #include "server/zone/templates/mobile/MobileOutfitGroup.h"
@@ -268,10 +269,12 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	if(npcTemplate->getRandomNameType() != NameManagerType::TAG) {
 		NameManager* nm = server->getNameManager();
 
-		if(npcTemplate->getRandomNameType() % 2 == 1) {
-			setCustomObjectName(nm->makeCreatureName(npcTemplate->getRandomNameType()), false);
+		int templSpecies = getSpecies();
+
+		if(!npcTemplate->getRandomNameTag()) {
+			setCustomObjectName(nm->makeCreatureName(npcTemplate->getRandomNameType(), templSpecies), false);
 		} else {
-			String newName = nm->makeCreatureName(npcTemplate->getRandomNameType());
+			String newName = nm->makeCreatureName(npcTemplate->getRandomNameType(), templSpecies);
 			newName += " (";
 
 			if (objectName == "")

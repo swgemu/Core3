@@ -1,6 +1,7 @@
 master_prophet_of_the_dark_side = Creature:new {
 	objectName = "@mob/creature_names:master_prophet_of_the_dark_side",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 168,

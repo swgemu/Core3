@@ -1,6 +1,7 @@
 crackdown_comm_operator = Creature:new {
 	objectName = "@mob/creature_names:crackdown_comm_operator",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 1,

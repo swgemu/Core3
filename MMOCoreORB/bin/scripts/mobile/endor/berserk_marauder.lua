@@ -1,6 +1,7 @@
 berserk_marauder = Creature:new {
 	objectName = "@mob/creature_names:berserk_marauder",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "endor_marauder",
 	faction = "endor_marauder",
 	level = 55,

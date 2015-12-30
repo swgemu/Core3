@@ -1,6 +1,7 @@
 lost_aqualish_lookout = Creature:new {
 	objectName = "@mob/creature_names:lost_aqualish_lookout",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "lost_aqualish",
 	faction = "lost_aqualish",
 	level = 10,

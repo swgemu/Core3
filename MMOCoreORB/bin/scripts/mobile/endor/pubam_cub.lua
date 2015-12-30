@@ -1,6 +1,7 @@
 pubam_cub = Creature:new {
 	objectName = "@mob/creature_names:pubam_cub",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "pubam",
 	faction = "pubam",
 	level = 5,
