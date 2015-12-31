@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_4eb5f3cb",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-31T13:23:47Z",
+      "side": 1,
+      "message": "Don\u0027t call getZone twice. Initialize a pointer just like you do here for gcwMan.",
+      "revId": "94f588bb294812d763216937fe6321bbf4e3ee70",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_2eb0bfdc",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/terminal/components/OverrideTerminalMenuComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-12-31T13:23:47Z",
+      "side": 0,
+      "message": "Why are you removing this check? A BE should not be able to use this terminal in their own faction\u0027s base.",
+      "revId": "0ddcd10952a240080e014b909a0b2dce49c91650",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
