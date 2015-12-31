@@ -7,7 +7,7 @@
 #include "server/zone/objects/installation/components/TurretObserver.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/managers/gcw/GCWManager.h"
-#include "server/zone/managers/gcw/DestroyFactionInstallationTask.h"
+#include "server/zone/managers/gcw/tasks/DestroyFactionInstallationTask.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 
 

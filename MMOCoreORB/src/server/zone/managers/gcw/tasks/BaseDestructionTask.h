@@ -16,10 +16,10 @@ class BaseDestructionTask : public Task {
 	ManagedWeakReference<BuildingObject*> buildingObject;
 	int countDown;
 public:
-	BaseDestructionTask(GCWManager* manager, BuildingObject* building){
+	BaseDestructionTask(GCWManager* manager, BuildingObject* building) {
 		gcwManager = manager;
 		buildingObject = building;
-		countDown = GCWManagerImplementation::destructionTimer / 60;
+		countDown = manager->getDestructionTimer() / 60;
 	}
 
 	void run() {
@@ -38,7 +38,5 @@ public:
 		return countDown;
 	}
 };
-
-
 
 #endif /* BASEDESTRUCTIONTASK_H_ */

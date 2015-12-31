@@ -13,7 +13,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/loot/LootManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
-#include "server/zone/managers/gcw/SecuritySliceTask.h"
+#include "server/zone/managers/gcw/tasks/SecuritySliceTask.h"
 #include "server/zone/objects/tangible/Container.h"
 #include "server/zone/objects/tangible/RelockLootContainerEvent.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"

@@ -937,6 +937,18 @@ void StructureManager::reportStructureStatus(CreatureObject* creature,
 	if (structure->isBuildingObject()) {
 		BuildingObject* building = cast<BuildingObject*>(structure);
 
+		if (building->isGCWBase() && (building->getPvpStatusBitmask() & CreatureFlag::OVERT) &&
+				(building->getOwnerCreatureObject() == creature || creature->getFactionRank() >= 9)) {
+			Zone* zone = creature->getZone();
+
+			if (zone != NULL) {
+				GCWManager* gcwMan = zone->getGCWManager();
+
+				if (gcwMan != NULL)
+					status->addMenuItem(gcwMan->getVulnerableStatus(building, creature));
+			}
+		}
+
 		status->addMenuItem(
 				"@player_structure:items_in_building_prompt "
 						+ String::valueOf(
