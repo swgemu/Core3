@@ -927,7 +927,7 @@ int CityManagerImplementation::collectNonStructureMaintenance(SceneObject* objec
 		return 0;
 
 	int amountPaid = 0;
-	if(city->getCityTreasury() >= maintenanceDue) {
+	if(city->getCityTreasury() >= maintenanceDue && object->getLocalZone() != NULL) {
 		city->subtractFromCityTreasury(maintenanceDue);
 		amountPaid = maintenanceDue;
 	} else {
