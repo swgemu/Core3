@@ -46,7 +46,7 @@ public:
 			species = CreatureObject::TRANDOSHAN;
 		else if (raceFile.indexOf("twilek") != -1)
 			species = CreatureObject::TWILEK;
-		else if (raceFile.indexOf("bothan") != -1)
+		else if (raceFile.indexOf("zabrak") != -1)
 			species = CreatureObject::ZABRAK;
 
 		BaseMessage* msg = new ClientRandomNameResponse(raceFile, nameManager->makeCreatureName(1, species));

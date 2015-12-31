@@ -17,7 +17,8 @@
 #include "server/zone/Zone.h"
 
 #include "server/zone/managers/gcw/GCWManager.h"
-#include "server/zone/managers/gcw/DestroyFactionInstallationTask.h"
+#include "server/zone/managers/gcw/tasks/DestroyFactionInstallationTask.h"
+
 int DestroyStructureSessionImplementation::initializeSession() {
 	//TODO: Temporary until CreatureObject* dependency removed.
 	if (!creatureObject->isPlayerCreature())

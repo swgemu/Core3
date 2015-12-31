@@ -102,7 +102,17 @@ public:
 	}
 
 	void handleManualFire(TurretDataComponent* turretData, WeaponObject* weapon) {
-		turretData->updateAutoCooldown(GCWManagerImplementation::turretAutoFireTimeout);
+		int cooldown = 20;
+		Zone* zone = sceneObject->getZone();
+
+		if (zone != NULL) {
+			GCWManager* gcwMan = zone->getGCWManager();
+
+			if (gcwMan != NULL)
+				cooldown = gcwMan->getTurretAutoFireTimeout();
+		}
+
+		turretData->updateAutoCooldown(cooldown);
 		turretData->updateManualCooldown(weapon->getAttackSpeed());
 		turretData->setManualTarget(target);
 		turretData->rescheduleFireTask(weapon->getAttackSpeed(), true);
