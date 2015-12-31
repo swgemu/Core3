@@ -13,14 +13,9 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/structure/StructureObject.h"
-//#include "server/zone/objects/tangible/terminal/Terminal.h"
-//#include "server/zone/managers/structure/StructureManager.h"
-//#include "server/zone/objects/player/sessions/StructureSetAccessFeeSession.h"
 #include "server/zone/objects/building/BuildingObject.h"
-//#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
-//#include "server/zone/objects/cell/CellObject.h"
 
 void UplinkTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 

@@ -76,7 +76,7 @@ int OverrideTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 			if (player->hasSkill("outdoors_bio_engineer_novice"))
 				gcwMan->sendDNASampleMenu(player, building, overrideTerminal);
 			else
-				player->sendSystemMessage("Only an experience Bio Engineer can be expected to access the Override Terminal");
+				player->sendSystemMessage("Only an experienced Bio-Engineer can be expected to access the Override Terminal.");
 		}
 	}
 	return 0;

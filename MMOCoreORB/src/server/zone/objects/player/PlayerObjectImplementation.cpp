@@ -464,7 +464,17 @@ void PlayerObjectImplementation::setFactionStatus(int status) {
 	} else if (factionStatus == FactionStatus::OVERT) {
 
 		if(!(pvpStatusBitmask & CreatureFlag::OVERT)) {
-			creature->addCooldown("declare_overt_cooldown",GCWManagerImplementation::overtCooldown*1000);
+			int cooldown = 300;
+
+			Zone* creoZone = creature->getZone();
+			if (creoZone != NULL) {
+				GCWManager* gcwMan = creoZone->getGCWManager();
+
+				if (gcwMan != NULL)
+					cooldown = gcwMan->getOvertCooldown();
+			}
+
+			creature->addCooldown("declare_overt_cooldown", cooldown * 1000);
 			pvpStatusBitmask |= CreatureFlag::OVERT;
 		}
 

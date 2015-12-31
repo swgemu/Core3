@@ -52,50 +52,70 @@ class GCWManager extends ManagedService implements Logger {
 	protected transient VectorMap<unsigned long, Reference<Task> > gcwDestroyTasks;
 	
 	@dereferenced
-	protected transient static Mutex baseMutex;
+	protected transient Mutex baseMutex;
 
 	@dereferenced
-	protected transient static VectorMap<string, int> baseValue;
+	protected transient VectorMap<string, int> baseValue;
 
 	@dereferenced
-	protected transient static HashTable<int, float> racialPenaltyMap;
+	protected transient HashTable<int, float> racialPenaltyMap;
 
 	private transient int rebelBases;
 	private transient int rebelScore;
 	private transient int imperialBases;
 	private transient int imperialScore;
 	
-	public transient static int gcwCheckTimer;
-	public transient static int vulnerabilityDuration; 
-	public transient static int vulnerabilityFrequency; 
-	public transient static int resetTimer; 
-	public transient static int sliceCooldown;
-	public transient static int totalDNASamples;
-	public transient static int dnaMatchesRequired;
-	public transient static int destructionTimer;
-	public transient static int maxBases;
-	public transient static int overtCooldown;
-	public transient static int reactvationTimer;
-	public transient static int turretAutoFireTimeout;
-	public transient static int maxBasesPerPlayer;
-	public transient static int bonusXP;
-	public transient static int winnerBonus;
-	public transient static int loserBonus;
-	public transient static boolean spawnDefenses;
-	public transient static int initialVulnerabilityDelay;
+	public transient int gcwCheckTimer;
+	public transient int vulnerabilityDuration; 
+	public transient int vulnerabilityFrequency; 
+	public transient int resetTimer; 
+	public transient int sliceCooldown;
+	public transient int totalDNASamples;
+	public transient int dnaMatchesRequired;
+	public transient int destructionTimer;
+	public transient int maxBases;
+	public transient int overtCooldown;
+	public transient int reactivationTimer;
+	public transient int turretAutoFireTimeout;
+	public transient int maxBasesPerPlayer;
+	public transient int bonusXP;
+	public transient int winnerBonus;
+	public transient int loserBonus;
+	public transient boolean spawnDefenses;
+	public transient int initialVulnerabilityDelay;
 	
-	public transient static boolean racialPenaltyEnabled;
+	public transient boolean racialPenaltyEnabled;
 
 	@dereferenced
-	protected transient static Vector<string> imperialStrongholds;
+	protected transient Vector<string> imperialStrongholds;
 	@dereferenced
-	protected transient static Vector<string> rebelStrongholds;
+	protected transient Vector<string> rebelStrongholds;
 
 	public GCWManager(Zone zne){
 		imperialBases = 0;
 		imperialScore = 0;
 		rebelBases = 0;
 		rebelScore = 0;
+
+		gcwCheckTimer = 3600;
+		vulnerabilityDuration = 7200;
+		vulnerabilityFrequency = 172800;
+		resetTimer = 604800;
+		sliceCooldown = 120;
+		totalDNASamples = 10;
+		dnaMatchesRequired = 28;
+		destructionTimer = 600;
+		maxBases = -1;
+		overtCooldown = 300;
+		reactivationTimer = 300;
+		turretAutoFireTimeout = 20;
+		maxBasesPerPlayer = 3;
+		bonusXP = 15;
+		loserBonus = 0;
+		winnerBonus = 30;
+		racialPenaltyEnabled = true;
+		spawnDefenses = true;
+		initialVulnerabilityDelay = 0;
 
 		Logger.setLoggingName("GCWManager " + zne.getZoneName());
 		Logger.info("instantiated", true);
@@ -155,8 +175,6 @@ class GCWManager extends ManagedService implements Logger {
 	public native void doBaseDestruction(StructureObject structure);
 
 	public native void doBaseDestruction(BuildingObject building);
-	
-	public native void sendResetVerification(CreatureObject creature, BuildingObject building);
 	
 	public native void sendJamUplinkMenu(CreatureObject creature, BuildingObject building, TangibleObject uplinkTerminal);
 	
@@ -272,12 +290,14 @@ class GCWManager extends ManagedService implements Logger {
 		return gcwDestroyTasks.drop(id);
 	}
 
-	public synchronized boolean isPlanetCapped(){
+	public synchronized boolean isPlanetCapped() {
 		return maxBases <= gcwBaseList.size();
 	}
 
 	private native DestructibleBuildingDataComponent getDestructibleBuildingData(BuildingObject building);
 	
+	public native boolean hasResetTimerPast(BuildingObject building);
+
 	private native void checkVulnerabilityData(BuildingObject building);
 
 	private native void scheduleVulnerabilityStart(BuildingObject building);
@@ -320,7 +340,7 @@ class GCWManager extends ManagedService implements Logger {
 
 	private native unsigned long addChildInstallationFromDeed(BuildingObject building, ChildObject child, CreatureObject creature, Deed deed);
 
-	public native void sendStatus(BuildingObject building, CreatureObject creature);
+	public native string getVulnerableStatus(BuildingObject building, CreatureObject creature);
 
 	public native void addMinefield(BuildingObject building, SceneObject minefield);
 
@@ -348,23 +368,23 @@ class GCWManager extends ManagedService implements Logger {
 
 	public native boolean hasTooManyBasesNearby(int x, int y);
 
-	public int getImperialBaseCount(){
+	public int getImperialBaseCount() {
 		return imperialBases;
 	}
 
-	public int getRebelBaseCount(){
+	public int getRebelBaseCount() {
 		return rebelBases;
 	}
 
 	@local
 	@read
-	public int getRebelScore(){
+	public int getRebelScore() {
 		return rebelScore;
 	}
 
 	@local
 	@read
-	public int getImperialScore(){
+	public int getImperialScore() {
 		return imperialScore;
 	}
 
@@ -389,7 +409,7 @@ class GCWManager extends ManagedService implements Logger {
 	}
 
 	@local 
-	public unsigned int getWinningFaction(){
+	public unsigned int getWinningFaction() {
 
 		if(getRebelScore() > getImperialScore())
 			return REBELHASH;
@@ -403,7 +423,7 @@ class GCWManager extends ManagedService implements Logger {
 
 	@local
 	@read
-	public int getGCWXPBonus(){
+	public int getGCWXPBonus() {
 		return bonusXP;
 	}
 
@@ -436,19 +456,19 @@ class GCWManager extends ManagedService implements Logger {
 
 	@local
 	@read
-	public boolean isRacialPenaltyEnabled(){
+	public boolean isRacialPenaltyEnabled() {
 		return racialPenaltyEnabled;
 	}
  
 	@local
 	@read
-	public boolean shouldSpawnDefenses(){
+	public boolean shouldSpawnDefenses() {
 		return spawnDefenses;
 	}
 
 	@local
 	@read
-	public int getInitialVulnerabilityDelay(){
+	public int getInitialVulnerabilityDelay() {
 		return initialVulnerabilityDelay;
 	}
 
@@ -456,5 +476,25 @@ class GCWManager extends ManagedService implements Logger {
 
 	@dirty
 	public native int isStrongholdCity(string city);
+
+	@read
+	public int getTurretAutoFireTimeout() {
+		return turretAutoFireTimeout;
+	}
+
+	@read
+	public int getDestructionTimer() {
+		return destructionTimer;
+	}
+
+	@read
+	public int getOvertCooldown() {
+		return overtCooldown;
+	}
+
+	@read
+	public int getResetTimer() {
+		return resetTimer;
+	}
 }
 
