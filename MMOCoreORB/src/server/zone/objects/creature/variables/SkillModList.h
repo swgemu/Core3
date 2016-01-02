@@ -34,23 +34,43 @@ public:
 
 class SkillModList : public DeltaVectorMap<String, SkillModEntry> {
 protected:
-
 	VectorMap<uint32, SkillModGroup> mods;
 
 public:
 
 	SkillModList() {
 		mods.setAllowOverwriteInsertPlan();
+
 		addSerializableVariables();
 	}
+
+	SkillModList(const SkillModList& l) : Object(), DeltaVectorMap<String, SkillModEntry>(l) {
+		mods.setAllowOverwriteInsertPlan();
+
+		mods = l.mods;
+
+		addSerializableVariables();
+	}
+
+/*	SkillModList& operator=(const SkillModList& l) {
+		if (this == &l)
+			return *this;
+
+		DeltaVectorMap<String, int>::operator =(m);
+
+		mods.setAllowOverwriteInsertPlan();
+
+		mods = l.mods;
+
+		return *this;
+	}*/
 
 	inline void addSerializableVariables() {
 		addSerializableVariable("mods", &mods);
 	}
 
 	bool add(const uint32 modType, const String& skillMod, int value) {
-
-		if(!mods.contains(modType)) {
+		if (!mods.contains(modType)) {
 			SkillModGroup newgroup;
 			newgroup.put(skillMod, value);
 			mods.put(modType, newgroup);
@@ -68,11 +88,9 @@ public:
 	}
 
 	SkillModEntry getVisibleSkillMod(const String& skillMod) {
-
 		SkillModEntry newEntry;
 
-		for(int i = 0; i < mods.size(); ++i) {
-
+		for (int i = 0; i < mods.size(); ++i) {
 			uint32 modType = mods.elementAt(i).getKey();
 			SkillModGroup* group = &mods.elementAt(i).getValue();
 

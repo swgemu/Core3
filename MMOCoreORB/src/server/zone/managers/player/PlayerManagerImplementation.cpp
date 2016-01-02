@@ -3494,8 +3494,12 @@ void PlayerManagerImplementation::fixBuffSkillMods(CreatureObject* player) {
 		if (player->getSkillModList() == NULL)
 			return;
 
+		Locker smodsGuard(player->getSkillModMutex());
+
 		SkillModGroup* smodGroup = player->getSkillModList()->getSkillModGroup(SkillModManager::BUFF);
 		smodGroup->removeAll();
+
+		smodsGuard.release();
 
 		BuffList* buffs = player->getBuffList();
 

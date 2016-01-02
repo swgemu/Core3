@@ -1379,6 +1379,8 @@ void CreatureObjectImplementation::removeSkillMod(const int modType, const Strin
 }
 
 void CreatureObjectImplementation::removeAllSkillModsOfType(const int modType, bool notifyClient) {
+	Locker locker(&skillModMutex);
+
 	SkillModGroup* modGroup = skillModList.getSkillModGroup(modType);
 
 	if (notifyClient) {
