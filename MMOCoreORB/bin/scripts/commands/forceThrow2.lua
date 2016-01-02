@@ -48,7 +48,7 @@ ForceThrow2Command = {
 	maxDamage = 1000,
 	speed = 4.0,
 	forceCost = 56,
-	accuracySkillMod = "forcethrow_accuracy";
+	accuracySkillMod = "forcethrow_accuracy",
 
 	stateEffects = {
 	  StateEffect( 
