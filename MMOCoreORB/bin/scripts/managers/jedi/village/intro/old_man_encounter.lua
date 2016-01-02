@@ -116,6 +116,13 @@ function OldManEncounter:giveForceCrystalToPlayer(pCreatureObject)
 	end
 end
 
+function OldManEncounter:hasForceCrystal(pCreatureObject)
+	local forceCrystalId = CreatureObject(pCreatureObject):getScreenPlayState(self.taskName .. OLD_MAN_FORCE_CRYSTAL_ID_STRING)
+	local pForceCrystal = getSceneObject(forceCrystalId)
+
+	return pForceCrystal ~= nil
+end
+
 -- Remove the force crystal from the player.
 -- @param pCreatureObject pointer to the creature object of the player.
 function OldManEncounter:removeForceCrystalFromPlayer(pCreatureObject)

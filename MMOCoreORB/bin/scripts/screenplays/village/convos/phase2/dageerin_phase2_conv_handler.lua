@@ -51,9 +51,12 @@ function villageDageerinPhase2ConvoHandler:runScreenHandlers(conversationTemplat
 	local screen = LuaConversationScreen(conversationScreen)
 	local screenID = screen:getScreenID()
 
-	if (screenID == "tracking_device") then
+	if (screenID == "tracking_device" or screenID == "intro_need_new_sensor") then
 		SuiRadiationSensor:giveSensor(conversingPlayer)
-		FsSad:acceptNextTask(conversingPlayer)
+
+		if (screenID == "tracking_device") then
+			FsSad:acceptNextTask(conversingPlayer)
+		end
 	elseif (screenID == "come_back_when_eliminated" or screenID == "intro_reward") then
 		FsSad:acceptNextTask(conversingPlayer)
 	end

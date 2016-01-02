@@ -151,7 +151,7 @@ function SithShadowEncounter:isEncounterFinished(pCreatureObject)
 		return false
 	end
 
-	return QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD)
+	return not OldManEncounter:hasForceCrystal(pCreatureObject) or QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD)
 end
 
 -- Handling of the activation of the looted datapad.
