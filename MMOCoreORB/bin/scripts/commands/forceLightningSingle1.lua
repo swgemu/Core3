@@ -48,7 +48,7 @@ ForceLightningSingle1Command = {
 	maxDamage = 1250,
 	speed = 4.0,
 	forceCost = 75,
-	accuracySkillMod = "forcelightning_accuracy";
+	accuracySkillMod = "forcelightning_accuracy",
 
 	animationCRC = hashCode("force_lightning_1_particle_level_1_light"),
 

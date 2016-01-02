@@ -45,11 +45,11 @@ ForceChokeCommand = {
 	name = "forcechoke",
 
 	minDamage = 300,
-	maxDamage = 400,
+	maxDamage = 375,
 	speed = 6.0,
 	forceCost = 400,
 	attackType = FORCEATTACK,
-	accuracySkillMod = "forcechoke_accuracy";
+	accuracyBonus = 95,
 
 	animationCRC = hashCode("force_choke_1_particle_level_1_medium"),
 
@@ -61,15 +61,17 @@ ForceChokeCommand = {
 	range = 32,
 
 	dotEffects = {
-	  DotEffect( 
-		FORCECHOKE, 
+	  DotEffect(
+		FORCECHOKE,
 		{ "", "" },
-		0,
+		HEALTH,
 		false,
 		-1,
 		100,
-		500, 
-		35
+		500,
+		35,
+		100,
+		0
 	  )
 	},
 }

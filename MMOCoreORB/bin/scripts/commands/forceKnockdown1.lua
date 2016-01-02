@@ -47,7 +47,7 @@ ForceKnockdown1Command = {
 	damageMultiplier = 0,
 	speed = 4.0,
 	forceCost = 75,
-	accuracySkillMod = "forceknockdown_accuracy";
+	accuracySkillMod = "forceknockdown_accuracy",
 
 	stateEffects = {
 	  StateEffect(
@@ -70,7 +70,7 @@ ForceKnockdown1Command = {
 	attackType = FORCEATTACK,
 
 	range = 32
-}		
+}
 
 AddCommand(ForceKnockdown1Command)
 
