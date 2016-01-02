@@ -102,7 +102,6 @@ function FsSad:completeSeries(pPlayer, questID)
 	QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_QUESTS_SAD_TASKS)
 	QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_QUESTS_SAD_FINISH)
 	VillageJediManagerCommon.setCompletedQuestThisPhase(pPlayer)
-	CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_02_quest_finished")
 	VillageJediManagerCommon.unlockBranch(pPlayer, "force_sensitive_combat_prowess_melee_speed")
 	SuiRadiationSensor:removeSensor(pPlayer)
 
