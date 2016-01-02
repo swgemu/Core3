@@ -733,7 +733,6 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 			if (itemPerms == NULL)
 				continue;
 
-			itemPerms->setInheritPermissionsFromParent(false);
 			itemPerms->setDenyPermission("player", ContainerPermissions::OPEN);
 			itemPerms->setDenyPermission("player", ContainerPermissions::MOVECONTAINER);
 		}
@@ -842,7 +841,6 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 		itemPerms->setOwner(winner->getObjectID());
 
 		//Stop other players being able to take the items if left on the corpse (full inventory).
-		itemPerms->setInheritPermissionsFromParent(false);
 		itemPerms->setDenyPermission("player", ContainerPermissions::OPEN);
 		itemPerms->setDenyPermission("player", ContainerPermissions::MOVECONTAINER);
 
@@ -864,8 +862,12 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 				group->sendSystemMessage(unable, winner);
 			}
 
-		} else
-			winner->getZoneServer()->getObjectController()->transferObject(object, winnerInventory, -1, true);
+		} else {
+			if (winner->getZoneServer()->getObjectController()->transferObject(object, winnerInventory, -1, true)) {
+				itemPerms->clearDenyPermission("player", ContainerPermissions::OPEN);
+				itemPerms->clearDenyPermission("player", ContainerPermissions::MOVECONTAINER);
+			}
+		}
 
 	}
 
