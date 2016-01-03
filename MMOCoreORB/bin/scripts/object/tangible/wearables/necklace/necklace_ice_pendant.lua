@@ -85,9 +85,6 @@ object_tangible_wearables_necklace_necklace_ice_pendant = object_tangible_wearab
 		"object/mobile/vendor/zabrak_female.iff",
 		"object/mobile/vendor/zabrak_male.iff" },
 
-	skillMods = {
-		{"combat_medicine_experimentation", 5}
-	},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_necklace_ice_pendant, "object/tangible/wearables/necklace/necklace_ice_pendant.iff")

@@ -70,11 +70,7 @@ function villageSivarraPhase1ConvoHandler:runScreenHandlers(conversationTemplate
 		local pInventory = SceneObject(conversingPlayer):getSlottedObject("inventory")
 
 		if (pInventory ~= nil) then
-			local pPendant = giveItem(pInventory, "object/tangible/wearables/necklace/necklace_ice_pendant.iff", -1, true)
-
-			if (pPendant == nil) then
-				CreatureObject(conversingPlayer):sendSystemMessage("Error: Unable to generate item.")
-			end
+			createLoot(pInventory, "sivarra_reward_necklace", -1, true)
 		end
 	elseif (screenID == "intro_completed_third_set") then
 		QuestManager.completeQuest(conversingPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_03)

@@ -299,6 +299,7 @@ includeFile("groups/theme_park_reward/theme_park_reward_rebel_wedge_antilles.lua
 
 --village of aurilia sub-folder
 includeFile("groups/village_of_aurilia/village_resources.lua")
+includeFile("groups/village_of_aurilia/sivarra_reward_necklace.lua")
 
 -- weapon sub-folder
 includeFile("groups/weapon/carbines.lua")
