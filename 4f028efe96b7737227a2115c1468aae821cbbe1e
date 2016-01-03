@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_ae760f05",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase1/sivarra_phase1_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-03T05:17:37Z",
+      "side": 1,
+      "message": "createLoot doesn\u0027t push anything back to lua so this assignment should be removed along with the nil check below.",
+      "revId": "4f028efe96b7737227a2115c1468aae821cbbe1e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
