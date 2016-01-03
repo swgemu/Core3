@@ -51,6 +51,15 @@ public:
 
 			return 0;
 
+		} else if (command == "listfrs") {
+			player->sendSystemMessage("Please wait. This may take a while.");
+
+			EXECUTE_TASK_2(playerManager, player, {
+					playerManager_p->sendAdminFRSList(player_p);
+			});
+
+			return 0;
+
 		} else if (command == "listadmins") {
 			player->sendSystemMessage("Please wait. This may take a while.");
 
@@ -88,6 +97,8 @@ public:
 		if (player != NULL) {
 			player->sendSystemMessage("Syntax: /server playermanager [setxpmodifier] [value]");
 			player->sendSystemMessage("Syntax: /server playermanager [listjedi]");
+			player->sendSystemMessage("Syntax: /server playermanager [list_frsjedi]");
+			player->sendSystemMessage("Syntax: /server playermanager [listadmins]");
 		}
 	}
 };
