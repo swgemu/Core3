@@ -47,6 +47,8 @@ public:
 	int getForcePowerMax(lua_State* L);
 	int setForcePower(lua_State* L);
 	int isJedi(lua_State* L);
+	int isJediLight(lua_State* L);
+	int isJediDark(lua_State* L);
 	int setJediState(lua_State* L);
 	int isOnline(lua_State* L);
 	int setActiveQuestsBit(lua_State* L);
