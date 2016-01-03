@@ -48,6 +48,11 @@ function GoToTheater:getSpawnedMobileList(pCreatureObject)
 	Logger:log("Getting the spawned mobile list for " .. self.taskName .. " theater.", LT_INFO)
 	local theaterId = readData(SceneObject(pCreatureObject):getObjectID() .. self.taskName .. THEATER_ID_STRING)
 	local pTheater = getSceneObject(theaterId)
+
+	if pTheater == nil then
+		return nil
+	end
+
 	return SpawnMobiles.getSpawnedMobiles(pTheater, self.taskName)
 end
 
