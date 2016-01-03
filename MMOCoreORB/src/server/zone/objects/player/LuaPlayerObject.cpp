@@ -41,6 +41,8 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "getForcePowerMax", &LuaPlayerObject::getForcePowerMax },
 		{ "setForcePower", &LuaPlayerObject::setForcePower },
 		{ "isJedi", &LuaPlayerObject::isJedi },
+		{ "isFRSL", &LuaPlayerObject::isFRSL },
+		{ "isFRSD", &LuaPlayerObject::isFRSD },
 		{ "setJediState", &LuaPlayerObject::setJediState },
 		{ "isOnline", &LuaPlayerObject::isOnline },
 		{ "setActiveQuestsBit", &LuaPlayerObject::setActiveQuestsBit },
@@ -334,6 +336,18 @@ int LuaPlayerObject::setForcePower(lua_State* L) {
 
 int LuaPlayerObject::isJedi(lua_State* L) {
 	lua_pushboolean(L, realObject->isJedi());
+
+	return 1;
+}
+
+int LuaPlayerObject::isFRSL(lua_State* L) {
+	lua_pushboolean(L, realObject->isFRSL());
+
+	return 1;
+}
+
+int LuaPlayerObject::isFRSD(lua_State* L) {
+	lua_pushboolean(L, realObject->isFRSD());
 
 	return 1;
 }
