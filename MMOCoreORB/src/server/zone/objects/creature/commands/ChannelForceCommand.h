@@ -78,11 +78,20 @@ public:
 		creature->setHAM(CreatureAttribute::ACTION, action - forceBonus, true);
 		creature->setHAM(CreatureAttribute::MIND, mind - forceBonus, true);
 
-		// Setup task.
-		Reference<ChannelForceRegenTask*> cfTask = new ChannelForceRegenTask(creature, forceBonus);
-		creature->addPendingTask("channelForceRegenTask", cfTask, 6000);
+		// Setup task and make sure one isn't already running, to avoid perma-negative modifiers.
+		Reference<Task*> cfTask = creature->getPendingTask("channelForceRegenTask");
+		if (cfTask != NULL) {
+			creature->setMaxHAM(CreatureAttribute::HEALTH, maxHealth, true);
+			creature->setMaxHAM(CreatureAttribute::ACTION, maxAction, true);
+			creature->setMaxHAM(CreatureAttribute::MIND, maxMind, true);
+			cfTask->reschedule(6000);
+		} else {
+			Reference<ChannelForceRegenTask*> cfTask = new ChannelForceRegenTask(creature, forceBonus);
+			creature->addPendingTask("channelForceRegenTask", cfTask, 6000);
+		}
 
 		return SUCCESS;
+
 	}
 
 	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) const {
