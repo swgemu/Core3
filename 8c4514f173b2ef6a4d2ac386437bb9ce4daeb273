@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_8ef30b73",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObject.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 1619,
+      "author": {
+        "id": 1520
+      },
+      "writtenOn": "2016-01-04T02:45:33Z",
+      "side": 1,
+      "message": "Perhaps the boolean name could be more descriptive than \"FRSL\"? I think it should be something like \"isJediLight()\" and \"isJediDark()\", to coincide with \"isJedi()\".",
+      "range": {
+        "startLine": 1619,
+        "startChar": 16,
+        "endLine": 1619,
+        "endChar": 22
+      },
+      "revId": "8c4514f173b2ef6a4d2ac386437bb9ce4daeb273",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
