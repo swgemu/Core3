@@ -1,11 +1,10 @@
 local ObjectManager = require("managers.object.object_manager")
 
 SuiArrayPuzzle = {}
-function SuiArrayPuzzle:openPuzzle(pCreatureObject, pArray)
+function SuiArrayPuzzle:openPuzzle(pCreatureObject, pPuzzle)
 	local sui = SuiCalibrationGame1.new("SuiArrayPuzzle", "defaultCallback")
 
-	sui.setTargetNetworkId(0)
-
+	sui.setTargetNetworkId(SceneObject(pPuzzle):getObjectID())
 	sui.setForceCloseDistance(0)
 
 	local goal = getRandomNumber(100)
@@ -94,12 +93,18 @@ function SuiArrayPuzzle:defaultCallback(pPlayer, pSui, eventIndex, ...)
 
 	if (cancelPressed) then
 		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_crafting:phase1_msg_calibration_aborted")
-
 		self:doDataCleanup(pPlayer)
-
 		return
 	end
 
+	local puzzleID = suiPageData:getTargetNetworkId()
+	local pPuzzle = getSceneObject(puzzleID)
+
+	if (pPuzzle == nil) then
+		printf("Error in SuiArrayPuzzle:defaultCallback, pPuzzle nil.\n")
+		return
+	end
+	
 	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
 		playerObject:addSuiBox(pSui)
 	end)
@@ -154,10 +159,10 @@ function SuiArrayPuzzle:defaultCallback(pPlayer, pSui, eventIndex, ...)
 		suiPageData:setProperty("btnOk", "Visible", "false")
 
 		if (wonPuzzle) then
-			writeData(playerID .. ":arrayPuzzle:status", 1)
+			TangibleObject(pPuzzle):setLuaStringData("componentStatus", "1")
 			suiPageData:setProperty("description.desc", "Text", "@quest/force_sensitive/fs_crafting:sui_calibration_success")
 		else
-			writeData(playerID .. ":arrayPuzzle:status", -1)
+			TangibleObject(pPuzzle):setLuaStringData("componentStatus", "-1")
 			suiPageData:setProperty("description.desc", "Text", "@quest/force_sensitive/fs_crafting:sui_calibration_failure")
 			suiPageData:setProperty("description.attempts", "Text", "@quest/force_sensitive/fs_crafting:sui_attempts_remaining" .. " " .. integrity .. "%")
 		end
