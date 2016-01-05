@@ -1616,6 +1616,14 @@ class PlayerObject extends IntangibleObject {
 		return jediState >= 2; //TODO: Implement jedi constants.
 	}
 
+	public boolean isJediLight() {
+		return jediState == 4; // Light FRS.
+	}
+
+	public boolean isJediDark() {
+		return jediState == 8; // Dark FRS.
+	}
+
 	@read
 	public boolean isMuted() {
 		return muted;

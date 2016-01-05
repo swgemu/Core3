@@ -355,6 +355,7 @@ class PlayerManager extends Observer implements Logger {
 	}
 
 	public native void sendAdminJediList(CreatureObject player);
+	public native void sendAdminFRSList(CreatureObject player);	
 	public native void sendAdminList(CreatureObject player);
 
 	public native CraftingStation getNearbyCraftingStation(CreatureObject player, int type);
