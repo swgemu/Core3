@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6b99d7_ee2407c8",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ChannelForceCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-05T23:16:25Z",
+      "side": 1,
+      "message": "I find it odd that named tasks don\u0027t do this automatically...",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 3
+      },
+      "revId": "f1b5dc7d523b7ef66bf66b5e20c7459b53aa4c50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_ce54a323",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/ChannelForceRegenTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-05T23:16:25Z",
+      "side": 1,
+      "message": "You are using creature before NULL checking it.",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 62
+      },
+      "revId": "f1b5dc7d523b7ef66bf66b5e20c7459b53aa4c50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_6e31d70a",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/ChannelForceRegenTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-05T23:16:25Z",
+      "side": 1,
+      "message": "These values will be the same as the \"orig\" values, which are in turn the same as the \"max\" values that you got rid of.",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 66
+      },
+      "revId": "f1b5dc7d523b7ef66bf66b5e20c7459b53aa4c50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_8e36ab02",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/ChannelForceRegenTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-05T23:16:25Z",
+      "side": 1,
+      "message": "You never change any of these values after setting them, so this will never return true since they are all exactly the same.",
+      "range": {
+        "startLine": 51,
+        "startChar": 6,
+        "endLine": 51,
+        "endChar": 90
+      },
+      "revId": "f1b5dc7d523b7ef66bf66b5e20c7459b53aa4c50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_4e409356",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/ChannelForceRegenTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-05T23:16:25Z",
+      "side": 1,
+      "message": "This will also never be true.",
+      "range": {
+        "startLine": 56,
+        "startChar": 9,
+        "endLine": 56,
+        "endChar": 93
+      },
+      "revId": "f1b5dc7d523b7ef66bf66b5e20c7459b53aa4c50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6b99d7_2e3bdfec",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/ChannelForceRegenTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-05T23:16:25Z",
+      "side": 1,
+      "message": "This tabbing is wrong, and don\u0027t put an if inside an else when you can do else if () {} -- it is much clearer",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 7
+      },
+      "revId": "f1b5dc7d523b7ef66bf66b5e20c7459b53aa4c50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
