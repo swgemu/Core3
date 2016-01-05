@@ -18,6 +18,7 @@ Luna<LuaSuiPageData>::RegType LuaSuiPageData::Register[] = {
 		{ "sendUpdateTo", &LuaSuiPageData::sendUpdateTo },
 		{ "getPageId", &LuaSuiPageData::getPageId },
 		{ "setTargetNetworkId", &LuaSuiPageData::setTargetNetworkId },
+		{ "getTargetNetworkId", &LuaSuiPageData::getTargetNetworkId },
 		{ "setForceCloseDistance", &LuaSuiPageData::setForceCloseDistance },
 		{ "setProperty", &LuaSuiPageData::setProperty },
 		{ "setDefaultCallback", &LuaSuiPageData::setDefaultCallback },
@@ -184,4 +185,10 @@ int LuaSuiPageData::sendUpdateTo(lua_State* L) {
 		realObject->sendUpdateTo(creo);
 
 	return 0;
+}
+
+int LuaSuiPageData::getTargetNetworkId(lua_State* L) {
+	lua_pushinteger(L, realObject->getTargetNetworkId());
+
+	return 1;
 }
