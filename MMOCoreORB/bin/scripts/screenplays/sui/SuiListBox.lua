@@ -17,7 +17,18 @@ SuiListBox.new = function (defaultCallback, defaultFunction)
 	end
 
 	self.showOtherButton = function (value)
+		self.subscribeToPropertyForEvent(SuiEventType.SET_onClosedOk, "this", "otherPressed")
+		self.subscribeToPropertyForEvent(SuiEventType.SET_onClosedCancel, "this", "otherPressed")
+
 		self.setProperty("btnOther", "Visible", "true")
+		self.setProperty("btnOther", "Location", "102,262")
+		self.setProperty("btnOther", "Size", "81,19")
+		self.setProperty("btnOther", "ScrollExtent", "81,19")
+		self.setProperty("btnOk", "Location", "188,262")
+		self.setProperty("btnOk", "Size", "81,19")
+		self.setProperty("btnOk", "ScrollExtent", "81,19")
+		self.setProperty("btnCancel", "Size", "81,19")
+		self.setProperty("btnCancel", "ScrollExtent", "81,19")
 	end
 
 	self.setCancelButtonText = function (text)

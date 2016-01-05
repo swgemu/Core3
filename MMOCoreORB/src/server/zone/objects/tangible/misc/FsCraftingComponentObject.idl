@@ -1,0 +1,57 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.misc;
+
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.Zone;
+import engine.lua.LuaObject;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.ZoneServer;
+
+
+@lua
+class FsCraftingComponentObject extends TangibleObject {
+	protected int status;
+
+	public FsCraftingComponentObject() {
+		setLoggingName("FsCraftingComponentObject");
+		
+		status = 0;
+	}
+
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	@dirty
+	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
+		if (status == 1)
+			msg.insertAttribute("status", "@quest/force_sensitive/fs_crafting:phase1_status_operational");
+		else if (status == -1)
+			msg.insertAttribute("status", "@quest/force_sensitive/fs_crafting:phase1_status_damaged");
+		else
+			msg.insertAttribute("status", "@quest/force_sensitive/fs_crafting:phase1_status_not_calibrated");
+	}
+
+	@preLocked
+	public native void destroyObjectFromWorld(boolean sendSelfDestroy);
+
+	@dirty
+	public int getStatus() {
+		return status;
+	}
+
+	@preLocked
+	public void setStatus(int st) {
+		status = st;
+	}
+}
