@@ -26,6 +26,7 @@ public:
 	int setProperty(lua_State* L);
 	int setDefaultCallback(lua_State* L);
 	int setTargetNetworkId(lua_State* L);
+	int getTargetNetworkId(lua_State* L);
 	int setForceCloseDistance(lua_State* L);
 	int addDataItem(lua_State* L);
 	int clearDataSource(lua_State* L);

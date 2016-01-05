@@ -158,6 +158,7 @@ public:
 	const static int PLAYERLOOTCRATE = 0x2035;
 	const static int FSPUZZLEPACK = 0x2036;
 	const static int GROWABLEPLANT = 0x2037;
+	const static int FSCRAFTINGCOMPONENT = 0x2038;
 	/// End Not in client **************
 
 	const static int TERMINAL = 0x4000;
