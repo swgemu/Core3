@@ -64,6 +64,8 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 				if (gcwMan->hasResetTimerPast(building))
 					menuResponse->addRadialMenuItemToRadialID(210, 235, 3, "@hq:mnu_reset_vulnerability"); // Reset Vulnerability
 				menuResponse->addRadialMenuItemToRadialID(210, 236, 3, "@player_structure:permission_destroy");
+			} else if (!(building->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
+				menuResponse->addRadialMenuItemToRadialID(210, 236, 3, "@player_structure:permission_destroy");
 			}
 		}
 
