@@ -25,8 +25,9 @@ public:
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 		int res = doJediSelfBuffCommand(creature);
 
-		// Return if something errored.
+		// Return if something is in error.
 		if (res != SUCCESS) {
+			creature->sendSystemMessage("@jedi_spam:already_force_running");
 			return res;
 		}
 

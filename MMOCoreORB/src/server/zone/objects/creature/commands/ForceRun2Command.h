@@ -26,6 +26,7 @@ public:
 		int res = doJediSelfBuffCommand(creature);
 
 		if (res != SUCCESS) {
+			creature->sendSystemMessage("@jedi_spam:already_force_running");
 			return res;
 		}
 
