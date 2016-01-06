@@ -48,9 +48,14 @@ public:
 		if (res != SUCCESS)
 			return res;
 
+		int frun = doEnhancerJediChecks(creature);
+
+		if (frun != SUCCESS)
+			return frun;
+
 		ManagedReference<Buff*> buff = createJediSelfBuff(creature);
 
-		// Return if buff is NOT valid.
+		// Return if buff is NOT valid. -- add FR stuff here??
 		if (buff == NULL)
 			return GENERALERROR;
 
@@ -72,6 +77,15 @@ public:
 		// Based on all current self-buff jedi types, there is no animation used.
 
 		// Return.
+		return SUCCESS;
+	}
+
+	int doEnhancerJediChecks(CreatureObject* creature) const {
+		if (creature->hasBuff(BuffCRC::JEDI_FORCE_RUN_1) || (creature->hasBuff(BuffCRC::JEDI_FORCE_RUN_2)) || (creature->hasBuff(BuffCRC::JEDI_FORCE_RUN_3))) {
+			creature->sendSystemMessage("@jedi_spam:already_force_running");
+			return GENERALERROR;
+		}
+
 		return SUCCESS;
 	}
 

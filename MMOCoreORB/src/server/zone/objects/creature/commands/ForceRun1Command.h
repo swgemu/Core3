@@ -23,8 +23,8 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-		int res = doJediSelfBuffCommand(creature);
 
+		int res = doJediSelfBuffCommand(creature);
 		// Return if something errored.
 		if (res != SUCCESS) {
 			return res;
