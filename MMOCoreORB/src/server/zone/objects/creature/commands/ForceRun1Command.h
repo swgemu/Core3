@@ -23,8 +23,13 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-		int res = doJediSelfBuffCommand(creature);
+		creature->getBuffList();
 
+		if (creature->hasBuff(BuffCRC::JEDI_FORCE_RUN_1) || (creature->hasBuff(BuffCRC::JEDI_FORCE_RUN_2)) || (creature->hasBuff(BuffCRC::JEDI_FORCE_RUN_3))) {
+			creature->sendSystemMessage("@jedi_spam:already_force_running");
+		}
+
+		int res = doJediSelfBuffCommand(creature);
 		// Return if something errored.
 		if (res != SUCCESS) {
 			return res;
