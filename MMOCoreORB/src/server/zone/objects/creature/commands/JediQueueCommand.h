@@ -48,6 +48,13 @@ public:
 		if (res != SUCCESS)
 			return res;
 
+		// Check for current buff and other buffs supplied in the vector. If they have any, return error.
+		for (int i=0; i < buffCRCs.size(); ++i) {
+			if (creature->hasBuff(buffCRCs.get(i))) {
+				return NOSTACKJEDIBUFF;
+			}
+		}
+
 		ManagedReference<Buff*> buff = createJediSelfBuff(creature);
 
 		// Return if buff is NOT valid.
@@ -62,7 +69,6 @@ public:
 		// Force Cost.
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 		playerObject->setForcePower(playerObject->getForcePower() - forceCost);
-
 
 		// Client Effect.
 		if (!clientEffect.isEmpty()) {
@@ -101,13 +107,6 @@ public:
 	}
 
 	ManagedReference<Buff*> createJediSelfBuff(CreatureObject* creature) const {
-
-		// Check for current buff and other buffs supplied in the vector. If they have any, return error.
-		for (int i=0; i < buffCRCs.size(); ++i) {
-			if (creature->hasBuff(buffCRCs.get(i))) {
-				return NULL;
-			}
-		}
 
 		// Create buff object.
 		ManagedReference<Buff*> buff = new Buff(creature, buffCRCs.get(0), duration, BuffType::JEDI);
