@@ -41,8 +41,10 @@ public:
 			return GENERALERROR;
 
 		// Do not execute if the player's force bar is full.
-		if (playerObject->getForcePower() >= playerObject->getForcePowerMax())
+		if (playerObject->getForcePower() >= playerObject->getForcePowerMax()) {
+			creature->sendSystemMessage("@jedi_spam:holocron_force_max"); // You are already at your maximum Force power.
 			return GENERALERROR;
+		}
 
 		// To keep it from going over max...
 		if ((playerObject->getForcePowerMax() - playerObject->getForcePower()) < forceBonus)
@@ -66,7 +68,7 @@ public:
 			return GENERALERROR;
 		}
 
-		// Give Force, and subtract HAM.
+		// Give Force, and subtract HAM...
 
 		playerObject->setForcePower(playerObject->getForcePower() + forceBonus);
 
@@ -78,9 +80,9 @@ public:
 		creature->setHAM(CreatureAttribute::ACTION, action - forceBonus, true);
 		creature->setHAM(CreatureAttribute::MIND, mind - forceBonus, true);
 
-		// Setup task.
+		// Setup task...
 		Reference<ChannelForceRegenTask*> cfTask = new ChannelForceRegenTask(creature, forceBonus);
-		creature->addPendingTask("channelForceRegenTask", cfTask, 6000);
+			creature->addPendingTask("channelForceRegenTask", cfTask, 6000);
 
 		return SUCCESS;
 	}
