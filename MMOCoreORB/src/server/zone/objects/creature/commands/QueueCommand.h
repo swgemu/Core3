@@ -75,6 +75,7 @@ public:
 	const static int NOJEDIARMOR = 12;
 	const static int INVALIDSYNTAX = 13;
 	const static int TOOCLOSE = 14;
+	const static int NOSTACKJEDIBUFF = 15;
 
 
 	virtual ~QueueCommand() {

@@ -148,6 +148,13 @@ void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 er
 
 		break;
 
+	case NOSTACKJEDIBUFF:
+		creature->sendSystemMessage("@jedi_spam:force_buff_present"); // You are already have a similar Force enhancement active.
+		if (addToQueue)
+			creature->clearQueueAction(actioncntr);
+
+		break;
+
 	case NOPRONE:
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr, 0, 1, 7);
