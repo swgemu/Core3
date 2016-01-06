@@ -25,10 +25,13 @@ public:
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 		int res = doJediSelfBuffCommand(creature);
 
-		// Return if something errored.
+		if (res == NOSTACKJEDIBUFF) {
+			creature->sendSystemMessage("@jedi_spam:already_force_running"); // You are already force running.
+		}
+		// Return if something is in error.
 		if (res != SUCCESS) {
 			return res;
-		}
+                }
 
 		// SPECIAL - For Force Run.
 		if (creature->hasBuff(STRING_HASHCODE("burstrun")) || creature->hasBuff(STRING_HASHCODE("retreat"))) {
