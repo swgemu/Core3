@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_390ecf35",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/intro/glowing.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-07T07:41:45Z",
+      "side": 1,
+      "message": "Why not just use hasScreenPlayState so you don\u0027t need to check ~\u003d 16?",
+      "revId": "1e4e00eebe3f26c2f56f6034f181a7eb9b98c947",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_19098b2c",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/intro/glowing.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-07T07:41:45Z",
+      "side": 1,
+      "message": "This existed before your patch, but we\u0027ll need it fixed anyway. Current implementation will stack up observers if the player logs in more than once without a restart. We\u0027re going to want to dropObserver before creating a new one. I previously added the ability to dropObserver certain screenplay keys, so you should be able to:\ndropObserver(BADGEAWARDED, \"Glowing\", \"badgeAwardedEventHandler\", pCreatureObject)\n\nDo the same for the below if block.",
+      "revId": "1e4e00eebe3f26c2f56f6034f181a7eb9b98c947",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_991cbb6c",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-07T07:41:45Z",
+      "side": 1,
+      "message": "Just to be safe, do a pMember nil check here",
+      "revId": "1e4e00eebe3f26c2f56f6034f181a7eb9b98c947",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_b9197f7b",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-07T07:41:45Z",
+      "side": 1,
+      "message": "do a spawnedSithShadowsList[1] ~\u003d nil check here or in the initial if nil check block, the spawnedSithShadowsList \u003d\u003d nil check above only guarantees that the spawnedSithShadowsList table isn\u0027t empty.",
+      "revId": "1e4e00eebe3f26c2f56f6034f181a7eb9b98c947",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_1920ab9a",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-07T07:41:45Z",
+      "side": 1,
+      "message": "This data needs to be deleted after you read it, since the shrine is destroyed at this point.",
+      "revId": "1e4e00eebe3f26c2f56f6034f181a7eb9b98c947",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_792be782",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_common.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-07T07:41:45Z",
+      "side": 1,
+      "message": "getFirstName() pushes a string, so this will never be nil, if anything it will set firstName to \"\"",
+      "revId": "1e4e00eebe3f26c2f56f6034f181a7eb9b98c947",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_592623bc",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_common.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-07T07:41:45Z",
+      "side": 1,
+      "message": "Do you use this anywhere? I just see this code duplicated in MellichaeOutroTheater:onDamageReceived and in MellichaeOutroTheater:onEnteredActiveArea instead of using the function.",
+      "revId": "1e4e00eebe3f26c2f56f6034f181a7eb9b98c947",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
