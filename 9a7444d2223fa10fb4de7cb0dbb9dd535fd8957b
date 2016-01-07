@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_59ff0302",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceRun1Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-07T07:16:02Z",
+      "side": 1,
+      "message": "This isn\u0027t doing anything. Remove it from all 3 commands.",
+      "revId": "9a7444d2223fa10fb4de7cb0dbb9dd535fd8957b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_79044715",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceRun1Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-07T07:16:02Z",
+      "side": 1,
+      "message": "Instead of adding a redundant check here just for the sending of the message, have doJediSelfBuffCommand below return something unique to this case. Then you can check the return value and send the message where appropriate. You\u0027d do the same in all 3 of these commands.",
+      "revId": "9a7444d2223fa10fb4de7cb0dbb9dd535fd8957b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
