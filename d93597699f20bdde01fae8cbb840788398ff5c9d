@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_b9e3bf32",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/GCWManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1415,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-08T14:02:55Z",
+      "side": 1,
+      "message": "You should lock building before modifying it\u0027s data but you\u0027ll already have 2 objects locked here. You should therefor change the menu component to execute a task to call repairTerminal.",
+      "revId": "d93597699f20bdde01fae8cbb840788398ff5c9d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_19caeba1",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/GCWManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1544,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-08T14:02:55Z",
+      "side": 1,
+      "message": "Locker clocker(building, creature);",
+      "revId": "d93597699f20bdde01fae8cbb840788398ff5c9d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_59d06353",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/GCWManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1613,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-08T14:02:55Z",
+      "side": 1,
+      "message": "You need to lock building before calling this but you\u0027ll already have 2 things locked when this method is called from the terminal menu component. You probably want to change the menu component to execute a task and call sendPowerRegulatorControls within the task after locking creature. That way you\u0027ll be free to crosslock building to creature here without any worries.",
+      "revId": "d93597699f20bdde01fae8cbb840788398ff5c9d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_f9d93784",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/SecurityRepairTask.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-08T14:02:55Z",
+      "side": 1,
+      "message": "They must be out of combat to start repairs. Should they not also have to remain out of combat for the duration?",
+      "revId": "d93597699f20bdde01fae8cbb840788398ff5c9d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_99e6fb43",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/SecurityRepairTask.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-08T14:02:55Z",
+      "side": 1,
+      "message": "You should lock building before modifying it\u0027s data.",
+      "revId": "d93597699f20bdde01fae8cbb840788398ff5c9d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_39f80fe5",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/components/DestructibleBuildingDataComponent.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-08T14:02:55Z",
+      "side": 1,
+      "message": "Including a header within itself?",
+      "revId": "d93597699f20bdde01fae8cbb840788398ff5c9d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_d9dc7377",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/components/DestructibleBuildingDataComponent.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-08T14:02:55Z",
+      "side": 1,
+      "message": "Why not remove?",
+      "revId": "d93597699f20bdde01fae8cbb840788398ff5c9d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_79d52742",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/terminal/components/OverrideTerminalMenuComponent.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-08T14:02:55Z",
+      "side": 1,
+      "message": "You should execute a task and call this within it since sendDNASampleMenu will need building to be locked but there are already 2 other objects locked here.",
+      "revId": "d93597699f20bdde01fae8cbb840788398ff5c9d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

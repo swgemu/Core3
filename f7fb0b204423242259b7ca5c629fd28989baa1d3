@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_19f3cb0b",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/terminal/components/SecurityTerminalMenuComponent.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-08T14:02:55Z",
+      "side": 0,
+      "message": "It looks to me like all of the checks in this method are the same as what\u0027s in GCWManager::canStartSlice. Why not just call it and eliminate all of this redundant code?",
+      "revId": "f7fb0b204423242259b7ca5c629fd28989baa1d3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
