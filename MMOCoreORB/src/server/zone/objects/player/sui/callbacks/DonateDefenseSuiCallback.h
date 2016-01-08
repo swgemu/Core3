@@ -47,7 +47,7 @@ public:
 		if(gcwMan==NULL)
 			return;
 
-		gcwMan->performDefenseDontation(building, player,objectid, turretSlot);
+		gcwMan->performDefenseDonation(building, player,objectid, turretSlot);
 
 	}
 };
