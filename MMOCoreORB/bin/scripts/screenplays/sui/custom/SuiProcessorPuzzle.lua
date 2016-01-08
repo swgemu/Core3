@@ -8,11 +8,11 @@ SuiProcessorPuzzle = {
 		"top.triangles.server.left.2", "top.triangles.server.left.3", "top.triangles.server.left.1"}
 }
 
-function SuiProcessorPuzzle:openPuzzle(pCreatureObject, pArray)
+function SuiProcessorPuzzle:openPuzzle(pCreatureObject, pPuzzle)
 	local sui = SuiCalibrationGame4.new("SuiProcessorPuzzle", "defaultCallback")
 	local playerID = SceneObject(pCreatureObject):getObjectID()
 
-	sui.setTargetNetworkId(0)
+	sui.setTargetNetworkId(SceneObject(pPuzzle):getObjectID())
 	sui.setForceCloseDistance(0)
 
 	local goal = { 0, 0, 0, 0, 0, 0 }
@@ -115,7 +115,7 @@ function SuiProcessorPuzzle:toggleButton(goalTable, button)
 	else
 		goalTable[temp2] = 0
 	end
-	
+
 	return goalTable
 end
 
@@ -145,6 +145,14 @@ function SuiProcessorPuzzle:defaultCallback(pPlayer, pSui, eventIndex, ...)
 	if (cancelPressed) then
 		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_crafting:phase1_msg_calibration_aborted")
 		self:doDataCleanup(pPlayer)
+		return
+	end
+
+	local puzzleID = suiPageData:getTargetNetworkId()
+	local pPuzzle = getSceneObject(puzzleID)
+
+	if (pPuzzle == nil) then
+		printf("Error in SuiProcessorPuzzle:defaultCallback, pPuzzle nil.\n")
 		return
 	end
 
@@ -187,10 +195,10 @@ function SuiProcessorPuzzle:defaultCallback(pPlayer, pSui, eventIndex, ...)
 		end
 
 		if (wonPuzzle) then
-			writeData(playerID .. ":processorPuzzle:status", 1)
+			LuaFsCraftingComponentObject(pPuzzle):setStatus(1)
 			suiPageData:setProperty("top.description.desc", "Text", "@quest/force_sensitive/fs_crafting:sui_calibration_success")
 		else
-			writeData(playerID .. ":processorPuzzle:status", -1)
+			LuaFsCraftingComponentObject(pPuzzle):setStatus(-1)
 			suiPageData:setProperty("top.description.desc", "Text", "@quest/force_sensitive/fs_crafting:sui_calibration_failure")
 			suiPageData:setProperty("top.description.attempts", "Text", "@quest/force_sensitive/fs_crafting:sui_attempts_remaining" .. " " .. integrity .. "%")
 		end
@@ -199,7 +207,7 @@ function SuiProcessorPuzzle:defaultCallback(pPlayer, pSui, eventIndex, ...)
 	else
 		suiPageData:setProperty("top.description.attempts", "Text", "@quest/force_sensitive/fs_crafting:sui_attempts_remaining" .. " " .. integrity .. "%")
 		writeData(playerID .. ":processorPuzzle:tries", tries)
-		
+
 		for i = 1, 6, 1 do
 			writeData(playerID .. ":processorPuzzle:current" .. i, current[i])
 		end

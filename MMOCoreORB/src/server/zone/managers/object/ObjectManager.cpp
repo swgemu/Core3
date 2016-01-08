@@ -314,6 +314,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ResourceContainer>(SceneObjectType::ORGANICSTRUCTURAL);
 
 	objectFactory.registerObject<CustomIngredient>(SceneObjectType::QUESTRESOURCE);
+	objectFactory.registerObject<FsCraftingComponentObject>(SceneObjectType::FSCRAFTINGCOMPONENT);
 
 	objectFactory.registerObject<DraftSchematic>(SceneObjectType::DRAFTSCHEMATIC);
 	objectFactory.registerObject<ManufactureSchematic>(SceneObjectType::MANUFACTURINGSCHEMATIC);

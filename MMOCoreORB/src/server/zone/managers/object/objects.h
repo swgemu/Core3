@@ -113,6 +113,7 @@
 #include "server/zone/objects/resource/ResourceSpawn.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
 #include "server/zone/objects/tangible/misc/CustomIngredient.h"
+#include "server/zone/objects/tangible/misc/FsCraftingComponentObject.h"
 
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/area/CampSiteActiveArea.h"
