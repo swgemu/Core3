@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_593703b1",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-08T23:03:58Z",
+      "side": 1,
+      "message": "Remove this.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 15
+      },
+      "revId": "03ad44fbf77ba12267ea0a9dcaf04e45e505f054",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_3946cf24",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-08T23:03:58Z",
+      "side": 1,
+      "message": "Does a NULL buff necessarily mean that it didn\u0027t stack?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 26
+      },
+      "revId": "03ad44fbf77ba12267ea0a9dcaf04e45e505f054",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_b9badf08",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-08T23:03:58Z",
+      "side": 1,
+      "message": "Take all of this out. Use the new return value you just created to send the message upstream.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "03ad44fbf77ba12267ea0a9dcaf04e45e505f054",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_19418b0b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/QueueCommand.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-08T23:03:58Z",
+      "side": 1,
+      "message": "Does this message display for every force buff that doesn\u0027t stack? What about force runs?",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 8
+      },
+      "revId": "03ad44fbf77ba12267ea0a9dcaf04e45e505f054",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
