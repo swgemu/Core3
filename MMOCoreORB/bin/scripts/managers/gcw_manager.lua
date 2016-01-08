@@ -7,15 +7,20 @@ vulnerabilityDuration = 10800
 -- Amount of time in seconds between base vulnerabilities.  
 vulnerabilityFrequency = 172800
 
+powerSwitchCount = 7
+
 -- amount of time before waiting to reset vulnerability
-resetTimer = 604800	
+resetTimer = 1209600
 
 -- amount of time in seconds to wait when a slice fails
 sliceCooldown = 120
 
+dnaNucleotides = { "A", "G", "C", "T" }
+dnaPairs = { "AT", "TA", "GC", "CG" }
+
 totalDNASamples = 44
 
-DNAMatchesRequired = 23
+dnaStrandLength = 23
 
 -- Amount of time in seconds that a base destructino takes after the countdown is initiated
 destructionTimer = 600
@@ -27,7 +32,7 @@ maxBases = 25
 overtCooldown = 300
 
 -- time in seconds to wait before reactivating the overload after the shutdown is aborted
-reactvationTimer = 300
+reactivationTimer = 300
 
 -- time that a player can maintain control of a turret before another player can take it
 --(removed)turretInactivityTimer = 15
