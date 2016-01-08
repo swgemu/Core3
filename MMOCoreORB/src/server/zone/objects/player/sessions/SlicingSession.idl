@@ -69,8 +69,10 @@ class SlicingSession extends Facade {
 	private native void generateSliceMenu(SuiListBox suiBox);
 	
 	private string getPrefix(TangibleObject obj) {
-		if (obj.isMissionTerminal() || isBaseSlice())
+		if (obj.isMissionTerminal())
 			return "terminal_";
+		else if (isBaseSlice())
+			return "hq_security_";
 		else if (obj.isWeaponObject())
 			return "weapon_";
 		else if (obj.isArmorObject())

@@ -51,9 +51,6 @@ int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* pl
 	} else if (target->isArmorObject() && !player->hasSkill("combat_smuggler_slicing_03")) {
 		return 0;
 	} else if (target->isSecurityTerminal()) {
-		if (!player->hasSkill("combat_smuggler_slicing_01"))
-			return 0;
-
 		Zone* zone = target->getZone();
 		if(zone == NULL)
 			return 0;
