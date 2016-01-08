@@ -480,7 +480,7 @@ void SlicingSessionImplementation::handleSlice(SuiListBox* suiBox) {
 	if (tangibleObject->isContainerObject() || tangibleObject->getGameObjectType() == SceneObjectType::PLAYERLOOTCRATE) {
 		handleContainerSlice();
 		playerManager->awardExperience(player, "slicing", 250, true); // Container Slice XP
-	} else	if (tangibleObject->isMissionTerminal()) {
+	} else if (tangibleObject->isMissionTerminal()) {
 		MissionTerminal* term = cast<MissionTerminal*>( tangibleObject.get());
 		playerManager->awardExperience(player, "slicing", 100, true); // Terminal Slice XP
 		term->addSlicer(player);
@@ -496,10 +496,10 @@ void SlicingSessionImplementation::handleSlice(SuiListBox* suiBox) {
 
 		Zone* zone = player->getZone();
 
-		if(zone != NULL){
+		if (zone != NULL){
 			GCWManager* gcwMan = zone->getGCWManager();
 
-			if(gcwMan != NULL){
+			if (gcwMan != NULL){
 				SecuritySliceTask* task = new SecuritySliceTask(gcwMan, tangibleObject.get(), player);
 				task->execute();
 			}

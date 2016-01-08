@@ -8,7 +8,6 @@
 #ifndef DESTRUCTIBLEBUILDINGDATACOMPONENT_H_
 #define DESTRUCTIBLEBUILDINGDATACOMPONENT_H_
 #include "engine/engine.h"
-//#include "server/zone/objects/scene/components/DataObjectComponent.h"
 #include "server/zone/objects/building/components/BuildingDataComponent.h"
 #include "system/util/Vector.h"
 #include "system/util/VectorMap.h"
@@ -17,16 +16,17 @@
 class DestructibleBuildingDataComponent : public BuildingDataComponent, public Logger {
 
 private:
-	HashTable<int, String> dnaProfiles;
+	Vector<String> dnaStrand;
+	Vector<int> dnaLocks;
+	String currentDnaChain;
 
-	String lastDNAString;
+	Vector<int> powerSwitchRules;
+	Vector<bool> powerSwitchStates;
 
 	int  intCurrentState; // serialized
 	bool terminalDamaged; //serialized
 	bool inRepair; // serialized
-	int  sampleMatches; // serialized
-	int  switchesTurnedOn; // serialized
-	Vector<bool> powerSwitchesTester;
+
 	Vector<uint64> turretSlots;
 	Vector<uint64> minefieldSlots;
 	Vector<uint64> scannerSlots;
@@ -36,7 +36,6 @@ private:
 	Time vulnerabilityEndTime; //se rialized
 	Time placementTime; // serialized
 	Time lastResetTime; // serialized
-	Time repairTime; // serialized
 	Time rebootFinishTime; // serialized
 	int uplinkBand; // secret code used to jam the uplink
 	bool activeDefenses;
@@ -55,28 +54,16 @@ public:
 
 	const static int POWERSWITCHCOUNT = 8;
 
-	DestructibleBuildingDataComponent(){
+	DestructibleBuildingDataComponent() {
 		this->setLoggingName("DESTOBJ");
 		intCurrentState = INVULNERABLE;
-		repairTime = 0;
-		sampleMatches = 0;
-		lastDNAString = "";
 
-		// all switches on
-		switchesTurnedOn = 8;
-		//powerSwitches[8] = {true};
-
-		for(int i=0;i<POWERSWITCHCOUNT;i++){
-			powerSwitchesTester.add(i,true);
-
-		}
-		powerSwitchesTester.get(0) = false;
+		currentDnaChain = "";
 
 		activeDefenses = true;
 		exposed = false;
 		terminalDamaged = false;
 		rebootFinishTime = Time(0);
-		dnaProfiles.removeAll();
 
 		uplinkBand = 0;
 		inRepair = false;
@@ -122,30 +109,18 @@ public:
 		return lastResetTime;
 	}
 
-	Time getSliceRepairTime(){
-		return repairTime;
-	}
-
-
 	int getUplinkBand(){
 		return uplinkBand;
-	}
-
-	int getSampleMatches(){
-		return sampleMatches;
-	}
-
-	void incrementSampleMatches(){
-		sampleMatches++;
 	}
 
 	int isTerminalBeingRepaired(){
 		return inRepair;
 	}
 
-	bool isTerminalDamanged(){
+	bool isTerminalDamaged(){
 		return terminalDamaged;
 	}
+
 	void setState(int state);
 
 	void setLastVulnerableTime(Time time){
@@ -172,20 +147,12 @@ public:
 		uplinkBand = band;
 	}
 
-	void setSliceRepairTime(Time time){
-		repairTime = time;
-	}
-
 	void setTerminalBeingRepaired(bool val){
 		inRepair = val;
 	}
 
 	void setTerminalDamaged(bool val){
 		terminalDamaged = val;
-	}
-
-	void setSampleMatches(int val){
-		sampleMatches = val;
 	}
 
 	void setActiveTurret(int indx, uint64 turretOID){
@@ -196,73 +163,7 @@ public:
 		minefieldSlots.get(indx) == minefieldOID;
 	}
 
-	void modifySampleAt(int indx, String val){
-		if(indx < dnaProfiles.size()) {
-			dnaProfiles.remove(indx);
-			dnaProfiles.put(indx,val);
-		}
-	}
 	void initializeTransientMembers();
-
-	void addDNAProfile(int indx, String val){
-		dnaProfiles.put(indx, val);
-
-	}
-	void setSystemDNAString(String val){
-		lastDNAString = val;
-	}
-	String getSystemDNAString(){
-		return lastDNAString;
-	}
-	String getDNAProfile(int id){
-		return dnaProfiles.get(id);
-	}
-
-	bool getPowerPosition(int indx){
-		if(indx<8)
-		{
-			return powerSwitchesTester.get(indx);
-			//return powerSwitches[indx];
-
-		}
-		return false;
-	}
-	void clearDNAProfiles(){
-		dnaProfiles.removeAll();
-	}
-
-	bool isDNAInitialized(){
-		return (dnaProfiles.size() > 0);
-	}
-
-	void turnSwitchOff(int indx){
-		if(indx < 8 && powerSwitchesTester.get(indx))	{
-			powerSwitchesTester.get(indx) = false;
-			switchesTurnedOn--;
-		}
-
-	}
-
-	void turnSwitchOn(int indx){
-		if(indx < 8 && !powerSwitchesTester.get(indx))	{
-			powerSwitchesTester.get(indx) = true;
-			switchesTurnedOn++;
-		}
-	}
-
-	int getOnSwitchCount(){
-		return switchesTurnedOn;
-	}
-
-	void turnAllSwitchesOn(){
-		for(int i = 0;i < POWERSWITCHCOUNT;i++){
-			//powerSwitches.put(i,true);
-			powerSwitchesTester.get(i) = true;
-
-		}
-		switchesTurnedOn = POWERSWITCHCOUNT;
-	}
-
 
 	int getTotalTurretCount(){
 		return turretSlots.size();
@@ -357,6 +258,58 @@ public:
 
 	Time getRebootFinishTime(){
 		return rebootFinishTime;
+	}
+
+	void clearDnaStrand() {
+		dnaStrand.removeAll();
+	}
+
+	void setDnaStrand(Vector<String> strand) {
+		dnaStrand = strand;
+	}
+
+	Vector<String> getDnaStrand() {
+		return dnaStrand;
+	}
+
+	void clearDnaLocks() {
+		dnaLocks.removeAll();
+	}
+
+	void setDnaLocks(Vector<int> locks) {
+		dnaLocks = locks;
+	}
+
+	Vector<int> getDnaLocks() {
+		return dnaLocks;
+	}
+
+	String getCurrentDnaChain() {
+		return currentDnaChain;
+	}
+
+	void setCurrentDnaChain(String chain) {
+		currentDnaChain = chain;
+	}
+
+	Vector<int> getPowerSwitchRules() {
+		return powerSwitchRules;
+	}
+
+	void setPowerSwitchRules(Vector<int> rules) {
+		powerSwitchRules = rules;
+	}
+
+	Vector<bool> getPowerSwitchStates() {
+		return powerSwitchStates;
+	}
+
+	void setPowerSwitchStates(Vector<bool> states) {
+		powerSwitchStates = states;
+	}
+
+	bool getPowerPosition(int indx) {
+		return powerSwitchStates.get(indx);
 	}
 
 private:
