@@ -42,7 +42,12 @@
 --true = 1, false = 0
 
 ForceArmor1Command = {
-        name = "forcearmor1",
+    name = "forcearmor1",
+    forceCost = 75,
+    duration = 900,
+    --animationCRC = hashCode()
+    clientEffect = "clienteffect/pl_force_armor_self.cef",
+    buffClass = SINGLE_USE_BUFF
 }
 
 AddCommand(ForceArmor1Command)
