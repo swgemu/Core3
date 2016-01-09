@@ -6,78 +6,36 @@
 #define FORCEARMOR2COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/buffs/SingleUseBuff.h"
 
-class ForceArmor2Command : public QueueCommand {
+#include "JediQueueCommand.h"
+
+class ForceArmor2Command : public JediQueueCommand {
 public:
 
 	ForceArmor2Command(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: JediQueueCommand(name, server) {
 
+            buffCRCs.add(BuffCRC::JEDI_FORCE_ARMOR_2);
+            
+            skillMods.put("force_armor", 2); // this is the same as force abosrb 1?
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
-
-		if (creature->hasAttackDelay() || !creature->checkPostureChangeDelay())
-			return GENERALERROR;
-
-		if (isWearingArmor(creature)) {
-			return NOJEDIARMOR;
-		}
-
-		// Force cost of skill.
-		int forceCost = 150;
-
-
-		//Check for and deduct Force cost.
-
-		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-
-
-		if (playerObject->getForcePower() <= forceCost) {
-			creature->sendSystemMessage("@jedi_spam:no_force_power"); //"You do not have enough Force Power to peform that action.
-
-			return GENERALERROR;
-		}
-
-		uint32 buffcrc1 = BuffCRC::JEDI_FORCE_ARMOR_1;
+        int res = doCommonJediSelfChecks(creature);
+		if(res != SUCCESS)
+            return res;
+        
+        uint32 buffcrc1 = BuffCRC::JEDI_FORCE_ARMOR_1;
 		uint32 buffcrc2 = BuffCRC::JEDI_FORCE_ARMOR_2;
+
 
 		if (creature->hasBuff(buffcrc1)) {
 			creature->removeBuff(buffcrc1);
 		} else if (creature->hasBuff(buffcrc2)) {
 			creature->removeBuff(buffcrc2);
 		}
-
-		playerObject->setForcePower(playerObject->getForcePower() - forceCost);
-
-		StringIdChatParameter startStringId("jedi_spam", "apply_forcearmor2");
-		StringIdChatParameter endStringId("jedi_spam", "remove_forcearmor2");
-
-		int duration = 1800;
-
-		Vector<unsigned int> eventTypes;
-		eventTypes.add(ObserverEventType::FORCEBUFFHIT);
-
-		ManagedReference<SingleUseBuff*> buff = new SingleUseBuff(creature, buffcrc2, duration, BuffType::JEDI, getNameCRC());
-
-		Locker locker(buff);
-
-		buff->setStartMessage(startStringId);
-		buff->setEndMessage(endStringId);
-		buff->setSkillModifier("force_armor", 45);
-		buff->init(&eventTypes);
-
-		creature->addBuff(buff);
-		creature->playEffect("clienteffect/pl_force_armor_self.cef", "");
-
-		return SUCCESS;
+        
+        return doBuff(creature);
 	}
 
 	void handleBuff(SceneObject* creature, ManagedObject* object, int64 param) {

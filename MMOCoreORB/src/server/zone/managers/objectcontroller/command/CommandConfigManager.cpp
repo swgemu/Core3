@@ -487,6 +487,9 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("COLD_DAMAGE", WeaponObject::COLD);
 	setGlobalInt("ACID_DAMAGE", WeaponObject::ACID);
 	setGlobalInt("ELECTRICITY_DAMAGE", WeaponObject::ELECTRICITY);
+    
+    setGlobalInt("BASE_BUFF", JediQueueCommand::BASE_BUFF);
+    setGlobalInt("SINGLE_USE_BUFF", JediQueueCommand::SINGLE_USE_BUFF);
 
 	// force heal targets
 	setGlobalInt("FORCE_HEAL_TARGET_SELF", ForceHealQueueCommand::TARGET_SELF);
@@ -654,6 +657,8 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 		JediQueueCommand* jediCommand = cast<JediQueueCommand*>(slashCommand);
 		if (varName == "forceCost")
 			jediCommand->setForceCost(Lua::getIntParameter(L));
+        else if(varName == "buffType")
+            jediCommand->setBuffType(Lua::getIntParameter(L));
 		else if (varName == "duration")
 			jediCommand->setDuration(Lua::getIntParameter(L));
 		else if (varName == "animationCRC")
