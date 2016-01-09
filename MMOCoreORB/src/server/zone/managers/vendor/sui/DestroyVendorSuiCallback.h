@@ -37,7 +37,7 @@ public:
 
 		Locker clocker(vendor, player);
 
-		VendorManager::instance()->handleDestroyCallback(player, vendor);
+		VendorManager::instance()->destroyVendor(vendor);
 	}
 };
 

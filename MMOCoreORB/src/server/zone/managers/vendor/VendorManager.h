@@ -52,8 +52,6 @@ public:
 
 	void promptRenameVendorTo(CreatureObject* player, TangibleObject* vendor);
 
-	void handleDestroyCallback(CreatureObject* player, TangibleObject* vendor);
-
 	void destroyVendor(SceneObject* vendor);
 
 	void sendRegisterVendorTo(CreatureObject* player, TangibleObject* vendor);

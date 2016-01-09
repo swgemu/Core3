@@ -240,10 +240,6 @@ void VendorManager::promptRenameVendorTo(CreatureObject* player, TangibleObject*
 	player->getPlayerObject()->addSuiBox(input);
 }
 
-void VendorManager::handleDestroyCallback(CreatureObject* player, TangibleObject* vendor) {
-	destroyVendor(vendor);
-}
-
 void VendorManager::destroyVendor(SceneObject* vendor) {
 	DataObjectComponentReference* data = vendor->getDataObjectComponent();
 	if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {

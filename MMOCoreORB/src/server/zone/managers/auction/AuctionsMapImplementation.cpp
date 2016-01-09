@@ -223,12 +223,25 @@ void AuctionsMapImplementation::deleteTerminalItems(SceneObject* vendor) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	Reference<TerminalItemList*> vendorItems = vendorItemsForSale.get(vendor->getObjectID());
+	ZoneServer* zserv = vendor->getZoneServer();
 
 	if(vendorItems != NULL) {
 		for(int i = 0; i < vendorItems->size(); ++i) {
 			ManagedReference<AuctionItem*> item = vendorItems->get(i);
-			if(item != NULL)
-				allItems.drop(item->getAuctionedItemObjectID());
+
+			if(item != NULL) {
+				uint64 oid = item->getAuctionedItemObjectID();
+
+				allItems.drop(oid);
+				ObjectManager::instance()->destroyObjectFromDatabase(item->_getObjectID());
+
+				ManagedReference<SceneObject*> sceno = zserv->getObject(oid);
+
+				if (sceno != NULL) {
+					Locker locker(sceno);
+					sceno->destroyObjectFromDatabase(true);
+				}
+			}
 		}
 	}
 
