@@ -15,9 +15,12 @@ public:
 	: JediQueueCommand(name, server) {
 		// BuffCRC's, first one is used.
 		buffCRCs.add(BuffCRC::JEDI_FORCE_RUN_2);
-		buffCRCs.add(BuffCRC::JEDI_FORCE_RUN_1);
-		buffCRCs.add(BuffCRC::JEDI_FORCE_RUN_3);
 
+        // If these are active they will block buff use
+		blockingCRCs.add(BuffCRC::JEDI_FORCE_RUN_1);
+		blockingCRCs.add(BuffCRC::JEDI_FORCE_RUN_2);
+		blockingCRCs.add(BuffCRC::JEDI_FORCE_RUN_3);
+        
 		skillMods.put("force_run", 2);
 		skillMods.put("slope_move", 66);
 	}
