@@ -33,7 +33,7 @@ public:
 		}
 
 		if (buffCRCUsed == -1)
-			return GENERALERROR;
+			return NOSTACKJEDIBUFF;
 
 		// Avoid Incap is a special case since it stacks (whereas all other jedi buffs do not stack), so forego the
 		// existing structure and build the buff manually
@@ -43,15 +43,27 @@ public:
 		if (res != SUCCESS)
 			return res;
 
+		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+
+		uint32 buffcrc1 = BuffCRC::JEDI_AVOID_INCAPACITATION;
+
+		if (creature->hasBuff(buffcrc1)) {
+			creature->removeBuff(buffcrc1);
+                }
+
+		playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+
+		StringIdChatParameter startStringId("jedi_spam", "apply_avoidincapacitation");
+		StringIdChatParameter endStringId("jedi_spam", "remove_avoidincapacitation");
+
 		ManagedReference<Buff*> buff = new Buff(creature, buffCRCUsed, duration, BuffType::JEDI);
 
 		Locker locker(buff);
 
+		buff->setStartMessage(startStringId);
+		buff->setEndMessage(endStringId);
 		buff->setSkillModifier("avoid_incapacitation", 1);
 		creature->addBuff(buff);
-
-		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-		playerObject->setForcePower(playerObject->getForcePower() - forceCost);
 
 		if (!clientEffect.isEmpty())
 			creature->playEffect(clientEffect, "");
