@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_395d6fea",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/GCWManagerImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-09T04:00:58Z",
+      "side": 1,
+      "message": "Just delete it if it\u0027s not necessary.",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 40
+      },
+      "revId": "f9715211a869352b317294689b07e62d24449166",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_f96e1796",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/GCWManagerImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1318,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-09T04:00:58Z",
+      "side": 1,
+      "message": "This is backwards, no?",
+      "range": {
+        "startLine": 1318,
+        "startChar": 5,
+        "endLine": 1318,
+        "endChar": 72
+      },
+      "revId": "f9715211a869352b317294689b07e62d24449166",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_996b5b85",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/GCWManagerImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1341,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-09T04:00:58Z",
+      "side": 1,
+      "message": "What about the damaged terminal check?",
+      "revId": "f9715211a869352b317294689b07e62d24449166",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_b9689f88",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/terminal/components/OverrideTerminalMenuComponent.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-09T04:00:58Z",
+      "side": 1,
+      "message": "no turning this menu option off?",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 64
+      },
+      "revId": "f9715211a869352b317294689b07e62d24449166",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_5905c3c0",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/terminal/components/UplinkTerminalMenuComponent.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-09T04:00:58Z",
+      "side": 1,
+      "message": "what about locks here, why is this call different than the others?",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 61
+      },
+      "revId": "f9715211a869352b317294689b07e62d24449166",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
