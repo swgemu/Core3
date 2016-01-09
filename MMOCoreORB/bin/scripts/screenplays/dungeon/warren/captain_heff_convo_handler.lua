@@ -9,6 +9,7 @@ function CaptainHeffConversationHandler:runScreenHandlers(pConversationTemplate,
 	if (screenID == "heff_1") then
 		ObjectManager.withCreaturePlayerObject(pConversingPlayer, function(playerObject)
 			playerObject:awardBadge(39)
+			playerObject:increaseFactionStanding("imperial", 500)
 
 			local pDatapad = SceneObject(pConversingPlayer):getSlottedObject("datapad")
 
