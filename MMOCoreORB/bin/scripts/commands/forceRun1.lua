@@ -47,7 +47,8 @@ ForceRun1Command = {
         duration = 120,
         --animationCRC = hashCode()
         clientEffect = "clienteffect/pl_force_run_self.cef",
-        speedMod = 1.5
+        speedMod = 1.5,
+        buffFlags = JEDI_BUFF_NO_STACK
 }
 
 AddCommand(ForceRun1Command)

@@ -1125,7 +1125,8 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 		}
 
 		// Force Absorb
-		if (defender->getSkillMod("force_absorb") > 0 && defender->isPlayerCreature()) {
+        int forceAbsorb = defender->getSkillMod("force_absorb");
+		if (forceAbsorb > 0 && defender->isPlayerCreature()) {
 			ManagedReference<PlayerObject*> playerObject = defender->getPlayerObject();
 			if (playerObject != NULL) {
 				playerObject->setForcePower(playerObject->getForcePower() + (damage * 0.5));
