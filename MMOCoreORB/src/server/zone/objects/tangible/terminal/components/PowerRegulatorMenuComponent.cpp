@@ -39,17 +39,14 @@ void PowerRegulatorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	if (gcwMan == NULL)
 		return;
 
-	if (!gcwMan->canUseTerminals(player, building, sceneObject))
+	if (!gcwMan->isBaseVulnerable(building))
 		return;
 
-	if (gcwMan->isDNASampled(building) && !gcwMan->isPowerOverloaded(building) &&  player->getFaction() != building->getFaction()) {
-		menuResponse->addRadialMenuItem(228, 3, "@hq:mnu_set_overload"); // Set to overload
-	}
-
+	menuResponse->addRadialMenuItem(20, 3, "@hq:mnu_set_overload"); // Set to overload
 }
 
 int PowerRegulatorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
-	if (player->isDead() || player->isIncapacitated())
+	if (player->isDead() || player->isIncapacitated() || selectedID != 20)
 		return 1;
 
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
@@ -68,18 +65,38 @@ int PowerRegulatorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	if (gcwMan == NULL)
 		return 1;
 
-	if (!gcwMan->canUseTerminals(player, building, sceneObject))
+	if (!gcwMan->isBaseVulnerable(building))
 		return 1;
 
-	if (player->getFaction() != building->getFaction()) {
-		if (selectedID == 228 || selectedID == 20) {
-			if (player->hasSkill("combat_commando_heavyweapon_speed_02"))
-				gcwMan->sendPowerRegulatorControls(player, building, powerRegulator);
-			else
-				player->sendSystemMessage("@faction/faction_hq/faction_hq_response:commando_only"); // Only an experienced commando with heavy weapons training could expect to rig the regulators for overload
-
-		}
+	if (!gcwMan->areOpposingFactions(player->getFaction(), building->getFaction())) {
+		player->sendSystemMessage("@faction/faction_hq/faction_hq_response:no_tamper"); // You are not an enemy of this structure. Why would you want to tamper?
+		return 1;
+	} else if (gcwMan->isPowerOverloaded(building)) {
+		player->sendSystemMessage("@faction/faction_hq/faction_hq_response:already_overloading"); // The power regulator has already been set to overload.
+		return 1;
+	} else if (!gcwMan->isDNASampled(building))	{
+		player->sendSystemMessage("@faction/faction_hq/faction_hq_response:other_objectives"); // Other objectives must be disabled prior to gaining access to this one.
+		return 1;
+	} else if (player->isInCombat()) {
+		player->sendSystemMessage("@faction/faction_hq/faction_hq_response:power_not_in_combat"); // You cannot align the power flow to overload if you are in combat!
+		return 1;
+	} else if (powerRegulator->getParentID() != player->getParentID()) {
+		player->sendSystemMessage("@faction/faction_hq/faction_hq_response:power_not_in_room"); // You cannot align the power flow if you are not even in the same room!
+		return 1;
+	} else if (powerRegulator->getDistanceTo(player) > 15) {
+		player->sendSystemMessage("@faction/faction_hq/faction_hq_response:power_too_far"); // You are too far away from the power regulator to continue the setup!
+		return 1;
+	} else if (!player->hasSkill("combat_commando_heavyweapon_speed_02")) {
+		player->sendSystemMessage("@faction/faction_hq/faction_hq_response:commando_only"); // Only an experienced commando with heavy weapons training could expect to rig the regulators for overload
+		return 1;
 	}
+
+	EXECUTE_TASK_4(player, gcwMan, powerRegulator, building, {
+			Locker locker(player_p);
+			Locker clocker(building_p, player_p);
+
+			gcwMan_p->sendPowerRegulatorControls(player_p, building_p, powerRegulator_p);
+	});
 
 	return 0;
 }

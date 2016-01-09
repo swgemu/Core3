@@ -21,7 +21,7 @@ void TangibleObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	TangibleObject* tano = cast<TangibleObject*>( sceneObject);
 
 	// Figure out what the object is and if its able to be Sliced.
-	if(tano->isSliceable()) { // Check to see if the player has the correct skill level
+	if(tano->isSliceable() && !tano->isSecurityTerminal()) { // Check to see if the player has the correct skill level
 
 		bool hasSkill = true;
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");

@@ -93,14 +93,6 @@ int DestructibleBuildingDataComponent::writeObjectMembers(ObjectOutputStream* st
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "repairTime";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<Time >::toBinaryStream(&repairTime, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
 	_name = "rebootFinishTime";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -130,30 +122,6 @@ int DestructibleBuildingDataComponent::writeObjectMembers(ObjectOutputStream* st
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&terminalDamaged, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "sampleMatches";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<int >::toBinaryStream(&sampleMatches, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "switchesTurnedOn";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<int >::toBinaryStream(&switchesTurnedOn, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "powerSwitchesTester";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<Vector<bool> >::toBinaryStream(&powerSwitchesTester, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -193,13 +161,11 @@ int DestructibleBuildingDataComponent::writeObjectMembers(ObjectOutputStream* st
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<Vector<bool> >::toBinaryStream(&powerSwitchesTester, stream);
+	TypeInfo<bool >::toBinaryStream(&exposed, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	return 18;
-
-
+	return 14;
 }
 
 bool DestructibleBuildingDataComponent::readObjectMember(ObjectInputStream* stream, const String& name){
@@ -228,11 +194,6 @@ bool DestructibleBuildingDataComponent::readObjectMember(ObjectInputStream* stre
 		return true;
 	}
 
-	if(name == "repairTime") {
-		TypeInfo<Time >::parseFromBinaryStream(&repairTime, stream);
-		return true;
-	}
-
 	if(name == "rebootFinishTime") {
 		TypeInfo<Time >::parseFromBinaryStream(&rebootFinishTime, stream);
 		return true;
@@ -250,20 +211,6 @@ bool DestructibleBuildingDataComponent::readObjectMember(ObjectInputStream* stre
 
 	if (name == "intCurrentState") {
 		TypeInfo<int >::parseFromBinaryStream(&intCurrentState, stream);
-		return true;
-	}
-
-	if (name == "sampleMatches") {
-		TypeInfo<int >::parseFromBinaryStream(&sampleMatches, stream);
-		return true;
-	}
-	if (name == "switchesTurnedOn") {
-		TypeInfo<int >::parseFromBinaryStream(&switchesTurnedOn, stream);
-		return true;
-	}
-
-	if ( name == "powerSwitchesTester") {
-		TypeInfo<Vector<bool> >::parseFromBinaryStream(&powerSwitchesTester, stream);
 		return true;
 	}
 

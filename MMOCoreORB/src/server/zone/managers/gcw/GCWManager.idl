@@ -44,9 +44,12 @@ class GCWManager extends ManagedService implements Logger {
 	
 	@dereferenced
 	protected transient VectorMap<unsigned long, Reference<Task> > gcwEndTasks;
-	
+
 	@dereferenced
-	protected transient VectorMap<string, string> dnaHash;
+	protected transient Vector<string> dnaNucleotides;
+
+	@dereferenced
+	protected transient Vector<string> dnaPairs;
 	
 	@dereferenced
 	protected transient VectorMap<unsigned long, Reference<Task> > gcwDestroyTasks;
@@ -71,7 +74,8 @@ class GCWManager extends ManagedService implements Logger {
 	public transient int resetTimer; 
 	public transient int sliceCooldown;
 	public transient int totalDNASamples;
-	public transient int dnaMatchesRequired;
+	public transient int powerSwitchCount;
+	public transient int dnaStrandLength;
 	public transient int destructionTimer;
 	public transient int maxBases;
 	public transient int overtCooldown;
@@ -103,9 +107,10 @@ class GCWManager extends ManagedService implements Logger {
 		resetTimer = 604800;
 		sliceCooldown = 120;
 		totalDNASamples = 10;
-		dnaMatchesRequired = 28;
+		dnaStrandLength = 23;
 		destructionTimer = 600;
 		maxBases = -1;
+		powerSwitchCount = 7;
 		overtCooldown = 300;
 		reactivationTimer = 300;
 		turretAutoFireTimeout = 20;
@@ -170,7 +175,7 @@ class GCWManager extends ManagedService implements Logger {
 	// called to reschedule the vulnerability time of a base
 	public native void resetVulnerability(CreatureObject creature, BuildingObject building);
 
-	public  native void sendBaseDefenseStatus(CreatureObject creature, BuildingObject building);
+	public native void sendBaseDefenseStatus(CreatureObject creature, BuildingObject building);
 	
 	public native void doBaseDestruction(StructureObject structure);
 
@@ -196,22 +201,12 @@ class GCWManager extends ManagedService implements Logger {
 	
 	public native void abortShutdownSequence(BuildingObject building, CreatureObject creature);
 	
-	public native void processDNASample(CreatureObject creature, TangibleObject overrideTerminal, final string sampleChain, int indx);
-	
-	//public native void processDNASample(CreatureObject creature, BuildingObject building, final string dnaString, int indx);
+	public native void processDNASample(CreatureObject creature, TangibleObject overrideTerminal, int indx);
 	
 	public native void handlePowerRegulatorSwitch(CreatureObject creature, TangibleObject powerRegulator, int indx);
 	
 	public native void sendPowerRegulatorControls(CreatureObject creature, BuildingObject building, TangibleObject powerRegulator);
 
-	public synchronized string getDNAHash(final string usersample){
-		return dnaHash.get(usersample); 
-	}
-	
-	protected synchronized void addDNAHash(final string usersample, final string systemsample){
-		dnaHash.put(usersample, systemsample);
-	}
-	
 	protected synchronized boolean hasBase(BuildingObject building){
 		return gcwBaseList.contains(building);
 	}
@@ -236,7 +231,7 @@ class GCWManager extends ManagedService implements Logger {
 		if(!gcwStartTasks.contains(id)){
 			return gcwStartTasks.put(id, newTask);
 		}
-	return false;
+		return false;
 	}
 	
 	@local
@@ -309,14 +304,20 @@ class GCWManager extends ManagedService implements Logger {
 	private native void initializeBaseTimers(BuildingObject building);
 	
 	private native void renewUplinkBand(BuildingObject building);
+
+	private native void constructDNAStrand(BuildingObject building);
+
+	private native void createPowerRegulatorRules(BuildingObject building);
+
+	private native void randomizePowerRegulatorSwitches(BuildingObject building);
+
+	private native void flipPowerSwitch(BuildingObject building, @dereferenced Vector<boolean> switchStates, int flipSwitch);
 	
 	private native void refreshExpiredVulnerability(BuildingObject building);
 	
 	public native void initializeNewVulnerability(BuildingObject building);
 
 	private native void initializeNewVulnerability(DestructibleBuildingDataComponent data);
-	
-	private native string refreshDNA(DestructibleBuildingDataComponent data, int chainLength);
 
 	public native void notifyInstallationDestruction(InstallationObject installation);
 
@@ -330,7 +331,7 @@ class GCWManager extends ManagedService implements Logger {
 
 	public native void sendRemoveDefenseConfirmation(BuildingObject building, CreatureObject creature, unsigned long deedOID);
 
-	public native void performDefenseDontation(BuildingObject building, CreatureObject creature, unsigned long deedOID, int turretIndex);
+	public native void performDefenseDonation(BuildingObject building, CreatureObject creature, unsigned long deedOID, int turretIndex);
 
 	private native void performDonateMine(BuildingObject building, CreatureObject creature, SceneObject sceneObject);
 
@@ -365,6 +366,8 @@ class GCWManager extends ManagedService implements Logger {
 	private native boolean canUseTurret(TurretDataComponent turretData, TurretControlTerminalDataComponent controlData, CreatureObject creature);
 
 	public native boolean canPlaceMoreBases(CreatureObject creature);
+
+	public native boolean areOpposingFactions(int faction1, int faction2);
 
 	public native boolean hasTooManyBasesNearby(int x, int y);
 
