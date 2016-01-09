@@ -12,26 +12,42 @@
 #include "server/zone/objects/creature/buffs/Buff.h"
 #include "QueueCommand.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-
+#include "server/zone/managers/visibility/VisibilityManager.h"
+#include "server/zone/objects/creature/buffs/SingleUseBuff.h"
 
 class JediQueueCommand : public QueueCommand {
+
 protected:
 	int forceCost;
 	int duration;
 	uint32 animationCRC;
 	String clientEffect;
 	float speedMod;
+	int visMod;
+	int buffClass;
 
-	Vector<uint32> buffCRCs;
+	uint32 buffCRC;
+	Vector<uint32> overrideableCRCs;
+	Vector<uint32> blockingCRCs;
+	Vector<unsigned int> singleUseEventTypes;
+
 
 public:
+	enum { BASE_BUFF, SINGLE_USE_BUFF };
+    
 	JediQueueCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 		forceCost = 0;
 		duration = 0;
 		animationCRC = 0;
 		clientEffect = "";
+		buffClass = BASE_BUFF;
 		speedMod = 0;
+		visMod = 10;
+
+        
 	}
+
+
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 		return SUCCESS;
@@ -41,6 +57,7 @@ public:
 		return true;
 	}
 
+    
 	int doJediSelfBuffCommand(CreatureObject* creature) const {
 		// Do checks first.
 		int res = doCommonJediSelfChecks(creature);
@@ -48,35 +65,33 @@ public:
 		if (res != SUCCESS)
 			return res;
 
-		// Check for current buff and other buffs supplied in the vector. If they have any, return error.
-		for (int i=0; i < buffCRCs.size(); ++i) {
-			if (creature->hasBuff(buffCRCs.get(i))) {
-				return NOSTACKJEDIBUFF;
-			}
-		}
+        return doBuff(creature);
 
+	}
+    
+	int doBuff(CreatureObject* creature) const {
 		ManagedReference<Buff*> buff = createJediSelfBuff(creature);
-
+        
 		// Return if buff is NOT valid.
 		if (buff == NULL)
 			return GENERALERROR;
-
+        
 		Locker locker(buff);
-
+        
 		// Add buff.
 		creature->addBuff(buff);
-
+        
 		// Force Cost.
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 		playerObject->setForcePower(playerObject->getForcePower() - forceCost);
-
+        
 		// Client Effect.
 		if (!clientEffect.isEmpty()) {
 			creature->playEffect(clientEffect, "");
 		}
-
+        
 		// Based on all current self-buff jedi types, there is no animation used.
-
+        
 		// Return.
 		return SUCCESS;
 	}
@@ -102,14 +117,45 @@ public:
 		if (isWearingArmor(creature))
 			return NOJEDIARMOR;
 
+		for (int i=0; i < blockingCRCs.size(); ++i) {
+			if (creature->hasBuff(blockingCRCs.get(i))) {
+				return NOSTACKJEDIBUFF;
+			}
+		}
+
 		res = doJediForceCostCheck(creature);
 		return res;
 	}
 
 	ManagedReference<Buff*> createJediSelfBuff(CreatureObject* creature) const {
 
+		for (int i=0; i < overrideableCRCs.size(); ++i) {
+			int buff = overrideableCRCs.get(i);
+			if (creature->hasBuff(buff)) {
+				creature->removeBuff(buff);
+			}
+		}
+
 		// Create buff object.
-		ManagedReference<Buff*> buff = new Buff(creature, buffCRCs.get(0), duration, BuffType::JEDI);
+		ManagedReference<Buff*> buff = NULL;
+        
+		if(buffClass == BASE_BUFF || singleUseEventTypes.size() == 0) {
+			buff = new Buff(creature, buffCRC, duration, BuffType::JEDI);
+		} else if(buffClass == SINGLE_USE_BUFF) {;
+
+			SingleUseBuff* suBuff = new SingleUseBuff(creature, buffCRC, duration, BuffType::JEDI, getNameCRC());
+
+			buff = suBuff;
+
+			// Otherwise the compiler complains we're modifying member variables in a "const" function
+			Vector<uint32> singleUseTypesCopy = singleUseEventTypes;
+
+			suBuff->init(&singleUseTypesCopy);
+
+		} else {
+			error("Unknown buff type");
+			return NULL;
+		}
 
 		Locker locker(buff);
 
@@ -149,6 +195,14 @@ public:
 
 	void setSpeedMod(float sm) {
 		speedMod = sm;
+	}
+    
+	void setBuffClass(int bt) {
+		buffClass = bt;
+	}
+
+	void setVisMod(int vm) {
+		visMod = vm;
 	}
 
 };
