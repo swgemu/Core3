@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_39032f75",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/GCWManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-10T13:25:23Z",
+      "side": 0,
+      "message": "I think you still need this call.",
+      "revId": "c59ed75f580ba0b3f0aa4bea1616ca42c2563d26",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_19fe6b6c",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/BaseShutdownTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-10T13:25:23Z",
+      "side": 1,
+      "message": "Locker locker(player);",
+      "revId": "9b87e3275627891d55fe1955f6625a26489bab68",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
