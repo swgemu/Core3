@@ -75,7 +75,7 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 		menuResponse->addRadialMenuItem(37, 3, "@hq:mnu_donate"); // Donate
 		menuResponse->addRadialMenuItemToRadialID(37, 226, 3, "@hq:mnu_donate_deed"); // Donate Defense
 	} else {
-		if (gcwMan->isPowerOverloaded(building))
+		if (gcwMan->isPowerOverloaded(building) || gcwMan->isFacilityRebooting(building))
 			menuResponse->addRadialMenuItem(230, 3, "@hq:mnu_overload");  // Activate Overload
 	}
 }
@@ -113,24 +113,24 @@ int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureOb
 		} else if (selectedID == 236) {
 			creature->executeObjectControllerAction(0x18FC1726, building->getObjectID(), ""); //destroyStructure
 		} else if (selectedID == 231) {
-			ShutdownSequenceTask* task = new ShutdownSequenceTask(gcwMan, building, creature, false);
+			ShutdownSequenceTask* task = new ShutdownSequenceTask(gcwMan, building, creature, sceneObject, false);
 			task->execute();
 		} else if (selectedID == 226)
 				gcwMan->sendSelectDeedToDonate(building,creature,0);
 	} else {
-		if (selectedID == 230) {
-			if (creature->hasSkill("outdoors_squadleader_novice")) {
+		if (selectedID == 230 && (gcwMan->isPowerOverloaded(building) || gcwMan->isFacilityRebooting(building))) {
+			if (gcwMan->isFacilityRebooting(building)) {
+				creature->sendSystemMessage("You must wait for the facility to reboot before activating the overload again.");
+			} else if (creature->hasSkill("outdoors_squadleader_novice")) {
 				if (gcwMan->isShutdownSequenceStarted(building)) {
 					creature->sendSystemMessage(("@faction/faction_hq/faction_hq_response:terminal_response02")); // A countdown is already in progress...
 				} else {
-					ShutdownSequenceTask* task = new ShutdownSequenceTask(gcwMan, building, creature, true);
+					ShutdownSequenceTask* task = new ShutdownSequenceTask(gcwMan, building, creature, sceneObject, true);
 					task->execute();
 				}
 			} else {
 				creature->sendSystemMessage(("@faction/faction_hq/faction_hq_response:terminal_response03")); // Only an experienced squad leader could expect to coordinate a reactor overload!
 			}
-		} else if (selectedID == 20) {
-			creature->executeObjectControllerAction(0x13F7E585, building->getObjectID(), ""); //structureStatus
 		}
 	}
 

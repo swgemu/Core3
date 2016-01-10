@@ -34,6 +34,8 @@ public:
 		if (obj == NULL)
 			return;
 
+		TangibleObject* uplinkTerm = cast<TangibleObject*>(obj.get());
+
 		ManagedReference<BuildingObject*> building = cast<BuildingObject*>(obj->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
 
 		if (building == NULL)
@@ -46,7 +48,7 @@ public:
 
 		int index = Integer::valueOf(args->get(0).toString());
 
-		gcwMan->verifyUplinkBand(player, building, index);
+		gcwMan->verifyUplinkBand(player, building, index, uplinkTerm);
 	}
 };
 

@@ -73,8 +73,6 @@ int SecurityTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 		return 1;
 
 	if (gcwMan->isTerminalDamaged(securityTerminal)) {
-		player->sendSystemMessage("You begin repairing the damage done by a prior slicing attempt...");
-
 		EXECUTE_TASK_3(player, gcwMan, securityTerminal, {
 				gcwMan_p->repairTerminal(player_p, securityTerminal_p);
 		});
@@ -84,6 +82,8 @@ int SecurityTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 			player->sendSystemMessage("@slicing/slicing:already_slicing");
 			return 1;
 		}
+
+		player->sendSystemMessage("You begin repairing the damage done by a prior slicing attempt...");
 
 		ManagedReference<SlicingSession*> session = new SlicingSession(player);
 		session->setBaseSlice(true);
