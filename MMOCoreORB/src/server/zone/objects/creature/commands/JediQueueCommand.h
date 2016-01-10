@@ -24,9 +24,11 @@ protected:
 	String clientEffect;
 	float speedMod;
     float visMod;
-    int buffType;
+    int buffClass;
 
 	Vector<uint32> buffCRCs;
+	Vector<uint32> overrideableCRCs;
+	Vector<uint32> blockingCRCs;
 
 public:
     enum { BASE_BUFF, SINGLE_USE_BUFF };
@@ -36,7 +38,7 @@ public:
 		duration = 0;
 		animationCRC = 0;
 		clientEffect = "";
-        buffType = BASE_BUFF;
+        buffClass = BASE_BUFF;
 		speedMod = 0;
         visMod = 0;
 
@@ -65,11 +67,7 @@ public:
     
     int doBuff(CreatureObject* creature) const {
       		// Check for current buff and other buffs supplied in the vector. If they have any, return error.
-        for (int i=0; i < buffCRCs.size(); ++i) {
-            if (creature->hasBuff(buffCRCs.get(i))) {
-                return NOSTACKJEDIBUFF;
-            }
-        }
+
         
         ManagedReference<Buff*> buff = createJediSelfBuff(creature);
         
@@ -118,18 +116,31 @@ public:
 		if (isWearingArmor(creature))
 			return NOJEDIARMOR;
 
+        for (int i=0; i < blockingCRCs.size(); ++i) {
+            if (creature->hasBuff(blockingCRCs.get(i))) {
+                return NOSTACKJEDIBUFF;
+            }
+        }
+
 		res = doJediForceCostCheck(creature);
 		return res;
 	}
 
 	ManagedReference<Buff*> createJediSelfBuff(CreatureObject* creature) const {
 
+        for (int i=0; i < overrideableCRCs.size(); ++i) {
+        	int buff = overrideableCRCs.get(i);
+            if (creature->hasBuff(buff)) {
+                creature->removeBuff(buff);
+            }
+        }
+
 		// Create buff object.
         ManagedReference<Buff*> buff = NULL;
         
-        if(buffType == BASE_BUFF) {
+        if(buffClass == BASE_BUFF) {
             buff = new Buff(creature, buffCRCs.get(0), duration, BuffType::JEDI);
-        } else if(buffType == SINGLE_USE_BUFF) {
+        } else if(buffClass == SINGLE_USE_BUFF) {
             Vector<unsigned int> singleUseEventTypes;
             singleUseEventTypes.add(ObserverEventType::FORCEBUFFHIT);
             
@@ -184,8 +195,12 @@ public:
 		speedMod = sm;
 	}
     
-    void setBuffType(int bt) {
-        buffType = bt;
+    void setBuffClass(int bt) {
+        buffClass = bt;
+    }
+
+    void setVisMod(int vm) {
+    	visMod = vm;
     }
 
 };

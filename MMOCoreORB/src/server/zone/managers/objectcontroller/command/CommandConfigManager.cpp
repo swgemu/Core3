@@ -492,10 +492,6 @@ void CommandConfigManager::registerGlobals() {
     setGlobalInt("BASE_BUFF", JediQueueCommand::BASE_BUFF);
     setGlobalInt("SINGLE_USE_BUFF", JediQueueCommand::SINGLE_USE_BUFF);
     
-    // JediQueueCommand buff flags
-    setGlobalInt("JEDI_BUFF_NO_STACK", JediQueueCommand::JEDI_BUFF_NO_STACK);
-    setGlobalInt("JEDI_BUFF_NO_REAPPLY", JediQueueCommand::JEDI_BUFF_NO_REAPPLY);
-
 	// force heal targets
 	setGlobalInt("FORCE_HEAL_TARGET_SELF", ForceHealQueueCommand::TARGET_SELF);
 	setGlobalInt("FORCE_HEAL_TARGET_OTHER", ForceHealQueueCommand::TARGET_OTHER);

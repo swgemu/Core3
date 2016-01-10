@@ -15,7 +15,7 @@ public:
 		: JediQueueCommand(name, server) {
             buffCRCs.add(BuffCRC::JEDI_FORCE_ARMOR_1);
             
-            blockingCRCs.add(BuffCRC:JEDI_FORCE_ARMOR_2);
+            blockingCRCs.add(BuffCRC::JEDI_FORCE_ARMOR_2);
             
             
             skillMods.put("force_armor", 25);
