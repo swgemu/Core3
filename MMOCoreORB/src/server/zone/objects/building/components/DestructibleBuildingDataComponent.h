@@ -36,7 +36,6 @@ private:
 	Time vulnerabilityEndTime; //se rialized
 	Time placementTime; // serialized
 	Time lastResetTime; // serialized
-	Time rebootFinishTime; // serialized
 	int uplinkBand; // secret code used to jam the uplink
 	bool activeDefenses;
 	bool exposed;
@@ -49,10 +48,8 @@ public:
 	const static int SLICED = 4;
 	const static int DNA = 5;
 	const static int OVERLOADED = 6;
-	const static int ALIGNED = 7;
-	const static int SHUTDOWNSEQUENCE = 8;
-
-	const static int POWERSWITCHCOUNT = 8;
+	const static int SHUTDOWNSEQUENCE = 7;
+	const static int REBOOTSEQUENCE = 8;
 
 	DestructibleBuildingDataComponent() {
 		this->setLoggingName("DESTOBJ");
@@ -63,7 +60,6 @@ public:
 		activeDefenses = true;
 		exposed = false;
 		terminalDamaged = false;
-		rebootFinishTime = Time(0);
 
 		uplinkBand = 0;
 		inRepair = false;
@@ -250,14 +246,6 @@ public:
 
 	void setDefense(bool value){
 		activeDefenses = value;
-	}
-
-	void setRebootFinishTime(Time val){
-		rebootFinishTime = val;
-	}
-
-	Time getRebootFinishTime(){
-		return rebootFinishTime;
 	}
 
 	void clearDnaStrand() {

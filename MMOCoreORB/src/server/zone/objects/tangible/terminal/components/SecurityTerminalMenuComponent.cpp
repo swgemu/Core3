@@ -73,8 +73,6 @@ int SecurityTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 		return 1;
 
 	if (gcwMan->isTerminalDamaged(securityTerminal)) {
-		player->sendSystemMessage("You begin repairing the damage done by a prior slicing attempt...");
-
 		EXECUTE_TASK_3(player, gcwMan, securityTerminal, {
 				gcwMan_p->repairTerminal(player_p, securityTerminal_p);
 		});
