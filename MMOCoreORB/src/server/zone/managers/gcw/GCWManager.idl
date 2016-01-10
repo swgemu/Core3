@@ -171,6 +171,8 @@ class GCWManager extends ManagedService implements Logger {
 	public native boolean isSecurityTermSliced(BuildingObject building);
 
 	public native boolean isPowerOverloaded(BuildingObject building);
+
+	public native boolean isFacilityRebooting(BuildingObject building);
 	
 	// called to reschedule the vulnerability time of a base
 	public native void resetVulnerability(CreatureObject creature, BuildingObject building);
@@ -183,7 +185,7 @@ class GCWManager extends ManagedService implements Logger {
 	
 	public native void sendJamUplinkMenu(CreatureObject creature, BuildingObject building, TangibleObject uplinkTerminal);
 	
-	public native void verifyUplinkBand(CreatureObject creature, BuildingObject building, int band);
+	public native void verifyUplinkBand(CreatureObject creature, BuildingObject building, int band, TangibleObject uplinkTerminal);
 	
 	public native boolean canStartSlice(CreatureObject creature, TangibleObject terminal);
 	
@@ -200,6 +202,8 @@ class GCWManager extends ManagedService implements Logger {
 	public native void repairTerminal(CreatureObject creature, TangibleObject securityTerminal);
 	
 	public native void abortShutdownSequence(BuildingObject building, CreatureObject creature);
+
+	public native void startAbortSequenceDelay(BuildingObject building, CreatureObject creature, SceneObject hqTerminal);
 	
 	public native void processDNASample(CreatureObject creature, TangibleObject overrideTerminal, int indx);
 	
@@ -271,7 +275,7 @@ class GCWManager extends ManagedService implements Logger {
 	@local
 	protected synchronized boolean addDestroyTask(unsigned long id, Reference<Task> newTask){
 		if(!gcwDestroyTasks.contains(id)){
-			return	gcwDestroyTasks.put(id, newTask);
+			return gcwDestroyTasks.put(id, newTask);
 		}
 		return false;
 	}

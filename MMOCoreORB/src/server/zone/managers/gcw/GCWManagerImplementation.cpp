@@ -24,6 +24,8 @@
 #include "server/zone/managers/gcw/tasks/BaseDestructionTask.h"
 #include "server/zone/managers/gcw/tasks/CheckGCWTask.h"
 #include "server/zone/managers/gcw/tasks/SecurityRepairTask.h"
+#include "server/zone/managers/gcw/tasks/BaseShutdownTask.h"
+#include "server/zone/managers/gcw/tasks/BaseRebootTask.h"
 
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
@@ -40,8 +42,6 @@
 
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
-
-//#define GCW_DEBUG
 
 void GCWManagerImplementation::initialize() {
 	// TODO: initialize things
@@ -171,10 +171,6 @@ void GCWManagerImplementation::loadLuaConfig() {
 void GCWManagerImplementation::startVulnerability(BuildingObject* building) {
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
-#ifdef GCW_DEBUG
-	info("BASE " + String::valueOf(building->getObjectID()) + " IS NOW VULNERABLE " + Time().getFormattedTime(),true);
-#endif
-
 	renewUplinkBand(building);
 
 	if (baseData == NULL) {
@@ -186,11 +182,7 @@ void GCWManagerImplementation::startVulnerability(BuildingObject* building) {
 	baseData->setLastVulnerableTime(baseData->getNextVulnerableTime());
 	block.release();
 
-	if (!dropStartTask(building->getObjectID())) {
-#ifdef GCW_DEBUG
-		error("No starttask found to drop while starting vulnerability");
-#endif
-	}
+	dropStartTask(building->getObjectID());
 
 	Locker block2(building);
 
@@ -216,7 +208,6 @@ void GCWManagerImplementation::initializeNewVulnerability(BuildingObject* buildi
 void GCWManagerImplementation::initializeNewVulnerability(DestructibleBuildingDataComponent* baseData) {
 	baseData->setTerminalDamaged(false);
 	baseData->setState(DestructibleBuildingDataComponent::VULNERABLE);
-	baseData->setRebootFinishTime(Time(0));
 }
 
 // PRE: nothing needs to be locked!
@@ -230,18 +221,11 @@ void GCWManagerImplementation::scheduleVulnerabilityStart(BuildingObject* buildi
 	if (baseData == NULL)
 		return;
 
-#ifdef GCW_DEBUG
-	info("Base " + String::valueOf(building->getObjectID()) + " scheduling next vulnerable time for " + baseData->getNextVulnerableTime().getFormattedTime(),true);
-#endif
-
 	Time vulnTime = baseData->getNextVulnerableTime();
 	int64 vulnDif = vulnTime.miliDifference();
-	if (vulnDif >= 0) {
-#ifdef GCW_DEBUG
-		info("Base: " + String::valueOf(building->getObjectID()) + " Cannot schedule start time.  IT has already passed",true);
-#endif
+
+	if (vulnDif >= 0)
 		return;
-	}
 
 	Reference<Task*> newTask = new StartVulnerabilityTask(_this.getReferenceUnsafeStaticCast(), building);
 	newTask->schedule(llabs(vulnDif));
@@ -254,10 +238,6 @@ void GCWManagerImplementation::endVulnerability(BuildingObject* building) {
 
 	if (baseData == NULL)
 		return;
-
-#ifdef GCW_DEBUG
-	info("BASE " + String::valueOf(building->getObjectID()) + " IS NO LONGER VULNERABLE " + Time().getFormattedTime(),true);
-#endif
 
 	Locker block(building);
 
@@ -306,20 +286,10 @@ void GCWManagerImplementation::refreshExpiredVulnerability(BuildingObject* build
 
 	Time thisStartTime(baseData->getLastVulnerableTime());
 
-#ifdef GCW_DEBUG
-	info("BEfore Refreshed Current time is  " + Time().getFormattedTime(),true);
-	info("before Refreshed NextStart is     " + thisStartTime.getFormattedTime(),true);
-	info("before Refreshed Next end time is " + baseData->getVulnerabilityEndTime().getFormattedTime(),true);
-#endif
-
 	while ((thisStartTime.getTime() + vulnerabilityFrequency) <= Time().getTime()) {
 		int amountToAdd = vulnerabilityFrequency*1000;
 		thisStartTime.addMiliTime(amountToAdd);
 	}
-
-#ifdef GCW_DEBUG
-	info("Looped starttime to get " + thisStartTime.getFormattedTime(),true);
-#endif
 
 	// test time is the vulnerability end time for this current period.  it can be past or presetnt.
 	Time testTime(thisStartTime);
@@ -348,11 +318,6 @@ void GCWManagerImplementation::refreshExpiredVulnerability(BuildingObject* build
 		block.release();
 		scheduleVulnerabilityEnd(building);
 	} else {
-
-#ifdef GCW_DEBUG
-		info("Loaded " + String::valueOf(building->getObjectID()) + " while invulnerable between vuln and the next start",true);
-#endif
-
 		baseData->setLastVulnerableTime(thisStartTime);
 		Time nStartTime(thisStartTime);
 		nStartTime.addMiliTime(vulnerabilityFrequency*1000);
@@ -372,13 +337,8 @@ void GCWManagerImplementation::refreshExpiredVulnerability(BuildingObject* build
 
 // PRE:  nothing needs to be locked... building NOT locked
 void GCWManagerImplementation::scheduleVulnerabilityEnd(BuildingObject* building) {
-	if (!hasBase(building)) {
-
-#ifdef GCW_DEBUG
-		info("Not scheduling end task.  Building is not in the base list");
-#endif
+	if (!hasBase(building))
 		return;
-	}
 
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
@@ -388,20 +348,11 @@ void GCWManagerImplementation::scheduleVulnerabilityEnd(BuildingObject* building
 	Time endTime = baseData->getVulnerabilityEndTime();
 	int64 endDif = endTime.miliDifference();
 
-	if (endDif >= 0) {
-#ifdef GCW_DEBUG
-		info("error scheduling end time.  it has already passed");
-#endif
+	if (endDif >= 0)
 		return;
-	}
 
-#ifdef GCW_DEBUG
-	info("Scheduling end  vulnerability for " + String::valueOf(endDif));
-#endif
 	Reference<Task*> newTask = new EndVulnerabilityTask(_this.getReferenceUnsafeStaticCast(), building);
-
 	newTask->schedule(llabs(endDif));
-
 	addEndTask(building->getObjectID(),newTask);
 }
 
@@ -410,14 +361,12 @@ void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building,
 	if (isBaseVulnerable(building) && !hasDestroyTask(building->getObjectID()) ) {
 		DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
-		if (baseData == NULL) {
-			error("ERROR:  could not get base data for base");
+		if (baseData == NULL)
 			return;
-		}
 
-		if (!baseData->getRebootFinishTime().isPast()) {
+		if (isFacilityRebooting(building)) {
 			if (creature != NULL)
-				creature->sendSystemMessage("You must wait for the facility to finish rebooting before activating the overload again");
+				creature->sendSystemMessage("You must wait for the facility to reboot before activating the overload again.");
 
 			return;
 		}
@@ -438,14 +387,6 @@ void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building,
 }
 
 void GCWManagerImplementation::abortShutdownSequence(BuildingObject* building, CreatureObject* creature) {
-	if (creature != NULL && !creature->checkCooldownRecovery("declare_overt_cooldown")) {
-		StringIdChatParameter params("@faction/faction_hq/faction_hq_response:terminal_response42"); // Before issuing the shutdown, you must have been in special forces for at least %TO
-		int timer = overtCooldown / 60;
-		params.setTO(String::valueOf(timer) + " minutes.");
-		creature->sendSystemMessage(params); // Before issuing the shutdown, you must hve beenin Special forces for at least %TO
-		return;
-	}
-
 	if (isBaseVulnerable(building) && hasDestroyTask(building->getObjectID())) {
 		Reference<Task*> oldDestroyTask = getDestroyTask(building->getObjectID());
 		if (oldDestroyTask != NULL) {
@@ -455,22 +396,34 @@ void GCWManagerImplementation::abortShutdownSequence(BuildingObject* building, C
 
 		DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
-		if (baseData == NULL) {
-			error("ERROR:  could not get base data for base");
+		if (baseData == NULL)
 			return;
-		}
 
 		Locker block(building);
 
-		baseData->setState(DestructibleBuildingDataComponent::OVERLOADED);
-		Time finishTime = Time();
-		finishTime.addMiliTime(reactivationTimer * 1000);
-		baseData->setRebootFinishTime(finishTime);
-
+		baseData->setState(DestructibleBuildingDataComponent::REBOOTSEQUENCE);
 		StringIdChatParameter reloadMessage;
-		reloadMessage.setStringId("@faction/faction_hq/faction_hq_response:terminal_response07"); // COUNTDOWN ABORTED: FACILITY SHUTTIGN DOWN
+		reloadMessage.setStringId("@faction/faction_hq/faction_hq_response:terminal_response07"); // COUNTDOWN ABORTED: FACILITY SHUTTING DOWN!!
 		broadcastBuilding(building, reloadMessage);
+
+		Reference<Task*> newTask = new BaseRebootTask(_this.getReferenceUnsafeStaticCast(), building, baseData);
+		newTask->schedule(60000);
 	}
+}
+
+void GCWManagerImplementation::startAbortSequenceDelay(BuildingObject* building, CreatureObject* creature, SceneObject* hqTerminal) {
+	if (!creature->checkCooldownRecovery("declare_overt_cooldown")) {
+		StringIdChatParameter params("@faction/faction_hq/faction_hq_response:terminal_response41"); // You have recently joined Special Forces. Before issuing the shutdown command, you must wait %TO
+		Time* cooldownTimer = creature->getCooldownTime("declare_overt_cooldown");
+		int minutes = ceil(cooldownTimer->miliDifference() / -60000.f);
+		params.setTO(String::valueOf(minutes) + " minutes.");
+		creature->sendSystemMessage(params);
+		return;
+	}
+
+	creature->sendSystemMessage("@hq:vulnerability_reset_request_received"); // Structure shutdown request received. Please stand by while the command is processed. Remain with the terminal.
+	Reference<Task*> newTask = new BaseShutdownTask(_this.getReferenceUnsafeStaticCast(), building, creature, hqTerminal);
+	newTask->schedule(60000);
 }
 
 void GCWManagerImplementation::doBaseDestruction(StructureObject* structure) {
@@ -501,15 +454,10 @@ void GCWManagerImplementation::doBaseDestruction(BuildingObject* building) {
 		}
 
 	}
-#ifdef GCW_DEBUG
-	info("Destroying Base " + String::valueOf(building->getObjectID()),true);
-#endif
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
-	if (baseData == NULL) {
-		error("ERROR:  could not get base data for base");
+	if (baseData == NULL)
 		return;
-	}
 
 	// need to lock both.  building must be locked for destroyStructure() and then _this is locked when it calls unregister.
 	Locker locker(_this.getReferenceUnsafeStaticCast());
@@ -557,32 +505,19 @@ void GCWManagerImplementation::unregisterGCWBase(BuildingObject* building) {
 	if (oldStartTask != NULL) {
 		oldStartTask->cancel();
 		dropStartTask(building->getObjectID());
-#ifdef GCW_DEBUG
-		info("deleting start task for building " + String::valueOf(building->getObjectID()),true);
-#endif
 	}
 
 	Reference<Task*> oldEndTask = getEndTask(building->getObjectID());
 	if (oldEndTask != NULL) {
-#ifdef GCW_DEBUG
-		info("deleting the end task for building " + String::valueOf(building->getObjectID()), true);
-#endif
 		oldEndTask->cancel();
 		dropEndTask(building->getObjectID());
 	}
 
 	Reference<Task*> oldDestroyTask = getDestroyTask(building->getObjectID());
 	if (oldDestroyTask != NULL) {
-#ifdef GCW_DEBUG
-		info("deleting destroy task for building " + String::valueOf(building->getObjectID()),true);
-#endif
 		oldDestroyTask->cancel();
 		dropDestroyTask(building->getObjectID());
 	}
-
-#ifdef GCW_DEBUG
-	info("Base " + String::valueOf(building->getObjectID()) + " has been removed",true);
-#endif
 }
 
 void GCWManagerImplementation::performGCWTasks() {
@@ -594,21 +529,14 @@ void GCWManagerImplementation::performGCWTasks() {
 		return;
 	}
 
-#ifdef GCW_DEBUG
-	info("Performing gcw maintenance");
-#endif
 	int totalBase = gcwBaseList.size();
 	int startCount = gcwStartTasks.size();
 	int endCount = gcwEndTasks.size();
 	int destroyCount = gcwDestroyTasks.size();
 
 	info("Checking " + String::valueOf(totalBase) + " bases", true);
-	//info("Size of start list is " + String::valueOf(startCount), true);
-	//info("Size of end list is   " + String::valueOf(endCount),true);
-	//info("Size of destroy list is   " + String::valueOf(destroyCount),true);
 
-	uint64  thisOid;
-
+	uint64 thisOid;
 	int rebelCheck = 0;
 	int imperialCheck = 0;
 
@@ -626,12 +554,6 @@ void GCWManagerImplementation::performGCWTasks() {
 			imperialCheck++;
 
 		verifyTurrets(building);
-
-#ifdef GCW_DEBUG
-		info("Base " + String::valueOf(i) + " id: " + String::valueOf(thisOid) + " - " +   " Start: " + String::valueOf( hasStartTask(thisOid) )
-		+ " End: " + String::valueOf(hasEndTask(thisOid)) + " DESTROY: " + String::valueOf(hasDestroyTask(thisOid))
-		+ " FACTION:  " + String::valueOf(building->getFaction()),true );
-#endif
 	}
 
 	setRebelBaseCount(rebelCheck);
@@ -723,22 +645,10 @@ void GCWManagerImplementation::checkVulnerabilityData(BuildingObject* building) 
 	int64 endDif = nextEnd.miliDifference();
 
 	if (!vulnTime.isPast()) {
-
-#ifdef GCW_DEBUG
-		info("scheduling building " + String::valueOf(building->getObjectID()) + "vulnerability start " + String::valueOf(llabs(endDif)));
-#endif
 		scheduleVulnerabilityStart(building);
 	} else if (vulnTime.isPast() && !nextEnd.isPast()) {
-
-#ifdef GCW_DEBUG
-		info("loading vulnerable base " + String::valueOf(building->getObjectID()) + " with vulnerability in progress");
-#endif
 		startVulnerability(building);
 	} else if (nextEnd.isPast()) {
-
-#ifdef GCW_DEBUG
-		info("base " + String::valueOf(building->getObjectID()) + " vuln end time has already passed... need to refresh next vuln times " + String::valueOf(vulnDif));
-#endif
 		refreshExpiredVulnerability(building);
 	}
 
@@ -1175,14 +1085,14 @@ void GCWManagerImplementation::sendJamUplinkMenu(CreatureObject* creature, Build
 	status->setCallback( new JamUplinkSuiCallback(zone->getZoneServer()) );
 
 	if (!isBandIdentified(building)) {
-		status->setPromptText(" \0Select the BAND that you wish to search.");
+		status->setPromptText("Select the BAND that you wish to search.");
 
-		for(int i =0;i<10;i++)
+		for(int i =0 ; i < 10; i++)
 			status->addMenuItem("Band #" + String::valueOf(i+1),9);
 	} else {
-		status->setPromptText(" \0Select the CHANNEL that you wish to search.");
+		status->setPromptText("Select the CHANNEL that you wish to search.");
 
-		for(int i =0;i<10;i++)
+		for(int i = 0; i < 10; i++)
 			status->addMenuItem("Channel #" + String::valueOf(i+1),9);
 	}
 
@@ -1192,7 +1102,7 @@ void GCWManagerImplementation::sendJamUplinkMenu(CreatureObject* creature, Build
 	creature->sendMessage(status->generateMessage());
 }
 
-void GCWManagerImplementation::verifyUplinkBand(CreatureObject* creature, BuildingObject* building, int band) {
+void GCWManagerImplementation::verifyUplinkBand(CreatureObject* creature, BuildingObject* building, int band, TangibleObject* uplinkTerm) {
 	ManagedReference<PlayerObject* > ghost = creature->getPlayerObject();
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
@@ -1207,6 +1117,7 @@ void GCWManagerImplementation::verifyUplinkBand(CreatureObject* creature, Buildi
 			creature->sendSystemMessage("You isolate the carrier signal to Channel #" + String::valueOf(band + 1) + ".");
 			creature->sendSystemMessage("Jamming complete! You disable the uplink...");
 			awardSlicingXP(creature, "bountyhunter", 1000);
+			return;
 		} else {
 			baseData->setState(DestructibleBuildingDataComponent::BAND);
 			creature->sendSystemMessage("You narrow the carrier signal down to Band #" + String::valueOf(band + 1) + ".");
@@ -1224,6 +1135,8 @@ void GCWManagerImplementation::verifyUplinkBand(CreatureObject* creature, Buildi
 			creature->sendSystemMessage("You feel like you need to search lower...");
 		}
 	}
+
+	sendJamUplinkMenu(creature, building, uplinkTerm);
 }
 
 bool GCWManagerImplementation::isBaseVulnerable(BuildingObject* building) {
@@ -1290,7 +1203,18 @@ bool GCWManagerImplementation::isPowerOverloaded(BuildingObject* building) {
 		return false;
 	}
 
-	return(baseData->getState() >= DestructibleBuildingDataComponent::OVERLOADED);
+	return(baseData->getState() == DestructibleBuildingDataComponent::OVERLOADED);
+}
+
+bool GCWManagerImplementation::isFacilityRebooting(BuildingObject* building) {
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == NULL) {
+		error("ERROR:  could not get base data for base");
+		return false;
+	}
+
+	return(baseData->getState() == DestructibleBuildingDataComponent::REBOOTSEQUENCE);
 }
 
 bool GCWManagerImplementation::isShutdownSequenceStarted(BuildingObject* building) {
@@ -1396,6 +1320,7 @@ void GCWManagerImplementation::repairTerminal(CreatureObject* creature, Tangible
 	if (baseData->isTerminalBeingRepaired()) {
 		creature->sendSystemMessage("Terminal is already in the process of being repaired.");
 	} else {
+		creature->sendSystemMessage("You begin repairing the damage done by a prior slicing attempt...");
 		SecurityRepairTask* repairTask = new SecurityRepairTask(_this.getReferenceUnsafeStaticCast(), securityTerminal, creature, 10);
 		repairTask->schedule(5000);
 
@@ -1685,10 +1610,6 @@ void GCWManagerImplementation::notifyInstallationDestruction(InstallationObject*
 	Reference<SceneObject*> ownerObject = server->getObject(ownerid);
 
 	if (ownerObject == NULL) {
-
-#ifdef GCW_DEBUG
-		info("owner object for the turret is null",true);
-#endif
 		PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", zone->getZoneName(), installation->getPositionX(), installation->getPositionZ(), installation->getPositionY());
 		installation->broadcastMessage(explodeLoc, false);
 
@@ -1725,11 +1646,6 @@ void GCWManagerImplementation::notifyInstallationDestruction(InstallationObject*
 			tlock.release();
 		}
 	} else if (ownerObject->isCreatureObject()) {
-
-#ifdef GCW_DEBUG
-		info("Destroying faction installation not part of a base",true);
-#endif
-
 		Locker plock(ownerObject);
 		Locker tlock(installation, ownerObject);
 		StructureManager::instance()->destroyStructure(installation);
@@ -1776,15 +1692,6 @@ void GCWManagerImplementation::notifyMinefieldDestruction(BuildingObject* buildi
 	for(int i = 0; i < baseData->getTotalMinefieldCount();i++) {
 		if (baseData->getMinefieldOID(i))
 			defensecount++;
-	}
-
-#ifdef GCW_DEBUG
-	info("Base " + String::valueOf(building->getObjectID()) + " minefield destroyed.  Remaining minefields: " + String::valueOf(defensecount),true);
-#endif
-
-	if (!defensecount) {
-		//baseData->setDefense(false);
-		//building->broadcastCellPermissions();
 	}
 
 	minefield->destroyObjectFromWorld(true);
