@@ -31,6 +31,7 @@ public:
 
 		if (res == NOSTACKJEDIBUFF) {
 			creature->sendSystemMessage("@jedi_spam:already_force_running"); // You are already force running.
+			return GENERALERROR;
 		}
 		// Return if something is in error.
 		if (res != SUCCESS) {
