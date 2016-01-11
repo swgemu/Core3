@@ -25,7 +25,7 @@ public:
 	void run() {
 		Locker locker(creature);
 
-		playero->setForcePowerRegen(playero->getForcePowerRegen() * 2);
+		creature->removeSkillMod(SkillModManager::TEMPORARYMOD, "private_force_regen", 50);
 		creature->removePendingTask("regainConsciousnessRegenTask");
 	}
 };

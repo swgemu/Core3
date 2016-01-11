@@ -398,7 +398,8 @@ public:
 		}
 
 		body << "Force Power:\t" << ghost->getForcePower() << " / " << ghost->getForcePowerMax() << endl;
-		body << "Force Regen:\t" << ghost->getForcePowerRegen() << endl;
+
+		body << "Force Regen:\t" << target->getSkillMod("jedi_force_power_regen") << endl;
 
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, 0);
 		box->setPromptTitle("Player HAM");

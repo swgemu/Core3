@@ -29,9 +29,7 @@ QueueCommand::QueueCommand(const String& skillname, ZoneProcessServer* serv) : L
 	admin = false;
 
 	defaultTime = 0.f;
-
 	cooldown = 0;
-
 	defaultPriority = NORMAL;
 
 	setLogging(true);
