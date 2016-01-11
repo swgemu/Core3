@@ -6,13 +6,13 @@
 #define SABER1HHIT3COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "CombatQueueCommand.h"
+#include "JediCombatQueueCommand.h"
 
-class Saber1hHit3Command : public CombatQueueCommand {
+class Saber1hHit3Command : public JediCombatQueueCommand {
 public:
 
 	Saber1hHit3Command(const String& name, ZoneProcessServer* server)
-		: CombatQueueCommand(name, server) {
+		: JediCombatQueueCommand(name, server) {
 
 	}
 
