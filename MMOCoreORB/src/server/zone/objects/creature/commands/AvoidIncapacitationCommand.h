@@ -12,34 +12,36 @@ public:
 
 	AvoidIncapacitationCommand(const String& name, ZoneProcessServer* server)
 : JediQueueCommand(name, server) {
-		buffCRC = BuffCRC::JEDI_AVOID_INCAPACITATION;
+		 buffCRC = BuffCRC::JEDI_AVOID_INCAPACITATION;
+		 skillMods.put("avoid_incapacitation", 1);
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-		// SPECIAL - For Avoid Incapacitation, it can be stacked (maybe up to 6 times, if looking at the client CRCs)
-		// TODO: implement AI stacking
-		// Avoid Incap is a special case since it stacks (whereas all other jedi buffs do not stack), so forego the
-		// existing structure and build the buff manually
+		// SPECIAL - For Avoid Incapacitation, which is a special case buff, if it's determined that it should only be stacked up to 6 times for a new buff object, then it'll needs a new crc from the other 5 in string-files.
+		// PLUS: There is no concrete evidence for what's stated in 'SPECIAL' sentence above, beyond the existence of 6 CRCs themselves.
 
-		int res = doCommonJediSelfChecks(creature);
+		if (creature->hasBuff(BuffCRC::JEDI_AVOID_INCAPACITATION)) {
 
-		if (res != SUCCESS)
-			return res;
+			int res = doCommonJediSelfChecks(creature);
 
-		ManagedReference<Buff*> buff = new Buff(creature, buffCRC, duration, BuffType::JEDI);
+			if (res != SUCCESS)
+				return res;
 
-		Locker locker(buff);
+			ManagedReference<Buff*> buff = creature->getBuff(BuffCRC::JEDI_AVOID_INCAPACITATION);
+			Locker locker(buff, creature);
 
-		buff->setSkillModifier("avoid_incapacitation", 1);
-		creature->addBuff(buff);
+			buff->renew(30);
+			doForceCost(creature);
 
-		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-		playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+                  	buff->sendTo(creature);
 
-		if (!clientEffect.isEmpty())
-			creature->playEffect(clientEffect, "");
+			if (!clientEffect.isEmpty())
+				creature->playEffect(clientEffect, "");
 
-		return SUCCESS;
+			return SUCCESS;
+		} else {
+			return doJediSelfBuffCommand(creature);
+		}
 	}
 
 };
