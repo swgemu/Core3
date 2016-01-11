@@ -47,6 +47,7 @@ ForceKnockdown3Command = {
     damageMultiplier = 0,
 	speed = 4.0,
 	forceCost = 200,
+	visMod = 25,
 	accuracySkillMod = "forceknockdown_accuracy";
 	areaAction = true,
 	areaRange = 15,
