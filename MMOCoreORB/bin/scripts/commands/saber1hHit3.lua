@@ -51,6 +51,7 @@ Saber1hHit3Command = {
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
 	forceCostMultiplier = 2.0,
+	visMod = 25,
 
 	animationCRC = hashCode("combo_jedi_3_light"),
 	

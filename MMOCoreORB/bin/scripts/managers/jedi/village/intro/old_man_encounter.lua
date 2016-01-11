@@ -34,9 +34,9 @@ OldManEncounter = Encounter:new {
 -- Figure out if we are pre or post village...
 function OldManEncounter:isPostVillage(pCreatureObject)
 
-	if (VillageJediManagerCommon.hasProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE)) then
+	if (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE)) then
 		return true
-	else 
+	else
 		return false
 	end
 end
@@ -78,12 +78,12 @@ function OldManEncounter:onEncounterInRange(pCreatureObject, oldManPointerList)
 	if (pCreatureObject == nil or oldManPointerList == nil or oldManPointerList[1] == nil) then
 		return
 	end
-	
+
+	self:sendGreetingString(oldManPointerList[1], pCreatureObject)
+
 	if (self:isPostVillage(pCreatureObject)) then
-		self:sendGreetingString(oldManPointerList[1], pCreatureObject)
 		QuestManager.activateQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FINAL)
 	else
-		self:sendGreetingString(oldManPointerList[1], pCreatureObject)
 		QuestManager.activateQuest(pCreatureObject, QuestManager.quests.OLD_MAN_INITIAL)
 	end
 end
@@ -193,13 +193,13 @@ function OldManEncounter:isEncounterFinished(pCreatureObject)
 	if (pCreatureObject == nil) then
 		return
 	end
-	
+
 	if (not self:isPostVillage(pCreatureObject)) then
 		return QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)
 	else
 		return QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FINAL)
 	end
-	
+
 end
 
 -- Handling of finishing the encounter.
@@ -210,8 +210,8 @@ function OldManEncounter:taskFinish(pCreatureObject)
 	end
 
 	if (not self:isPostVillage(pCreatureObject)) then
-	Logger:log("Finishing " .. self.taskName .. " and starting SithShadowEncounter.", LT_INFO)
-	SithShadowEncounter:start(pCreatureObject)
+		Logger:log("Finishing " .. self.taskName .. " and starting SithShadowEncounter.", LT_INFO)
+		SithShadowEncounter:start(pCreatureObject)
 	end
 end
 

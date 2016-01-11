@@ -8,6 +8,7 @@
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/creature/ai/Creature.h"
 #include "server/zone/objects/creature/events/PetIncapacitationRecoverTask.h"
 #include "server/zone/objects/intangible/tasks/PetControlDeviceStoreObjectTask.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
@@ -351,9 +352,14 @@ bool PetManagerImplementation::handleCommandTraining(CreatureObject* speaker, Ai
 
 		if (!alreadyTrained) {
 			bool success = false;
+			Creature* petCreature = cast<Creature*>(pet);
+
+			if (petCreature == NULL)
+				return false;
 
 			int skill = speaker->getSkillMod("tame_level");
-			int roll = System::random(skill + 30);
+			int level = petCreature->getAdultLevel();
+			int roll = System::random(skill + level);
 
 			if (skill > roll)
 				success = true;

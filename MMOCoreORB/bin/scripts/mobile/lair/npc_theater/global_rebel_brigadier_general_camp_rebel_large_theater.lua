@@ -12,7 +12,8 @@ global_rebel_brigadier_general_camp_rebel_large_theater = Lair:new {
 	buildingsVeryHard = {"object/building/poi/anywhere_rebel_camp_large_1.iff"},
 	missionBuilding = "object/tangible/lair/base/objective_banner_rebel.iff",
 	mobType = "npc",
-	buildingType = "theater"
+	buildingType = "theater",
+	faction = "rebel"
 }
 
 addLairTemplate("global_rebel_brigadier_general_camp_rebel_large_theater", global_rebel_brigadier_general_camp_rebel_large_theater)

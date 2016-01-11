@@ -2280,36 +2280,30 @@ void CreatureObjectImplementation::setBlindedState(int durationSeconds) {
 }
 
 void CreatureObjectImplementation::setIntimidatedState(int durationSeconds) {
-	if (!hasState(CreatureState::INTIMIDATED)) {
-		Reference<StateBuff*> state = new StateBuff(asCreatureObject(), CreatureState::INTIMIDATED, durationSeconds);
+	Reference<StateBuff*> state = dynamic_cast<StateBuff*>(getBuff(Long::hashCode(CreatureState::INTIMIDATED)));
 
-		Locker locker(state);
-
-		state->setStartFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
-		state->setEndFlyText("combat_effects", "no_intimidated", 0xFF, 0, 0);
-
-		state->setSkillModifier("private_melee_defense", -20);
-		state->setSkillModifier("private_ranged_defense", -20);
-		state->setSkillModifier("private_damage_divisor", 2);
-
-		addBuff(state);
-	} else { // already have the intimidated state, so extend it.
-		Reference<Buff*> state = getBuff(Long::hashCode(CreatureState::INTIMIDATED));
-
-		if (state == NULL) { // this shouldn't happen, so if it does, we want to complain noisily
-			error("no intimidate state buff in setIntimidatedState");
-			clearState(CreatureState::INTIMIDATED);
-			setIntimidatedState(durationSeconds);
-			return;
-		}
-		// the intimidate flytext should show up everytime it succeeds
+	if (state != NULL) {
 		showFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
-
 		Locker locker(state);
 
 		if (state->getTimeLeft() < durationSeconds)
 			state->renew(durationSeconds);
+
+		return;
 	}
+	
+	state = new StateBuff(asCreatureObject(), CreatureState::INTIMIDATED, durationSeconds);
+
+	Locker locker(state);
+
+	state->setStartFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
+	state->setEndFlyText("combat_effects", "no_intimidated", 0xFF, 0, 0);
+
+	state->setSkillModifier("private_melee_defense", -20);
+	state->setSkillModifier("private_ranged_defense", -20);
+	state->setSkillModifier("private_damage_divisor", 2);
+
+	addBuff(state);
 }
 
 void CreatureObjectImplementation::setSnaredState(int durationSeconds) {

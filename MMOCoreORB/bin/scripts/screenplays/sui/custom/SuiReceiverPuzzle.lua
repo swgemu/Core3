@@ -83,6 +83,12 @@ function SuiReceiverPuzzle:defaultCallback(pPlayer, pSui, eventIndex, ...)
 		return
 	end
 
+	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+
+	if pInventory == nil or SceneObject(pPuzzle):getParentID() ~= SceneObject(pInventory):getObjectID() then
+		return
+	end
+
 	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
 		playerObject:addSuiBox(pSui)
 	end)
