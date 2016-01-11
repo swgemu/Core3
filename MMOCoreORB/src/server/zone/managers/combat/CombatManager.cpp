@@ -1611,7 +1611,7 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, WeaponObjec
 				return false;
 			} else {
 				playerObject->setForcePower(playerObject->getForcePower() - force);
-				VisibilityManager::instance()->increaseVisibility(attacker); // Give visibility
+				VisibilityManager::instance()->increaseVisibility(attacker, data.getCommand()->getVisMod()); // Give visibility
 			}
 		}
 	}

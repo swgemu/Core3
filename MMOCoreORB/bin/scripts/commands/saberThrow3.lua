@@ -52,6 +52,7 @@ SaberThrow3Command = {
 	coneAngle = 30,
 	coneAction = true,
 	forceCostMultiplier = 2.5,
+	visMod = 25,
 
 	stateEffects = {
 	   StateEffect( 

@@ -50,6 +50,7 @@ SaberThrow1Command = {
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
 	forceCostMultiplier = 1.5,
+	visMod = 25,
 
 	animationCRC = hashCode("saberthrow_light"),
 

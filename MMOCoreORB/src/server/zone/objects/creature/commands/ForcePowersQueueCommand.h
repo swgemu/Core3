@@ -76,7 +76,7 @@ public:
 			}
 
 			// Increase Visibility for Force Power.
-			VisibilityManager::instance()->increaseVisibility(creature);
+			VisibilityManager::instance()->increaseVisibility(creature, visMod);
 			return SUCCESS;
 		}
 
