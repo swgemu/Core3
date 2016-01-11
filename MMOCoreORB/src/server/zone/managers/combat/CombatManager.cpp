@@ -492,8 +492,12 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 		}
 
 		//info("entering addDotState", true);
-		defender->addDotState(attacker, dotType, data.getCommand()->getNameCRC(), effect.isDotDamageofHit() ? damageToApply * effect.getPrimaryPercent() / 100.0f : effect.getDotStrength(), pool, effect.getDotDuration(), potency, resist,
-				effect.isDotDamageofHit() ? damageToApply * effect.getSecondaryPercent() / 100.0f : effect.getDotStrength());
+		defender->addDotState(attacker, dotType, data.getCommand()->getNameCRC(),
+				effect.isDotDamageofHit() ? damageToApply * effect.getPrimaryPercent() / 100.0f 
+					: effect.getDotStrength(),
+				pool, effect.getDotDuration(), potency, resist,
+				effect.isDotDamageofHit() ? damageToApply * effect.getSecondaryPercent() / 100.0f 
+					: effect.getDotStrength());
 	}
 }
 
@@ -532,7 +536,11 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 		if (defender->hasDotImmunity(type))
 			continue;
 
-		if (weapon->getDotPotency(i)*(1.f-resist/100.f) > System::random(100) && defender->addDotState(attacker, type, weapon->getObjectID(), weapon->getDotStrength(i), weapon->getDotAttribute(i), weapon->getDotDuration(i), -1, 0, weapon->getDotStrength(i)) > 0) // Unresisted, reduce use count.
+		if (weapon->getDotPotency(i)*(1.f-resist/100.f) > System::random(100) && 
+			defender->addDotState(attacker, type, weapon->getObjectID(), 
+								  weapon->getDotStrength(i), weapon->getDotAttribute(i), 
+								  weapon->getDotDuration(i), -1, 0,
+								  (int)(weapon->getDotStrength(i)/5.f)) > 0) // Unresisted, reduce use count.
 			if (weapon->getDotUses(i) > 0) weapon->setDotUses(weapon->getDotUses(i) - 1, i);
 	}
 }
