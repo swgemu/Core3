@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_1983cbcd",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/intro/old_man_encounter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-11T04:15:22Z",
+      "side": 1,
+      "message": "Put this before the if check since it\u0027s the same call either way.",
+      "revId": "f103a073e4fff7003822ecf1c3c5a7575e4a34f2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

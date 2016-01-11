@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_39880fe7",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/intro/old_man_encounter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-11T04:15:22Z",
+      "side": 0,
+      "message": "Fix your tabbing.",
+      "revId": "79a2c18970014c0e63541647335ae4df91dd8e45",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
