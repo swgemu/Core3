@@ -283,6 +283,14 @@ public:
 		return false;
 	}
 
+	virtual bool isJediCombatCommand() {
+		return false;
+	}
+
+	bool isJediCommand() {
+		return (isForceHealCommand() || isJediQueueCommand() || isJediCombatCommand());
+	}
+
 	inline int getSkillModSize() const {
 		return skillMods.size();
 	}
