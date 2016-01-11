@@ -16,7 +16,7 @@
 // 1 vis per hour or 3 weeks at 2 per hour. We'll just calculate it using constants
 // ((60*60*24) / visDecayTickRate)) = number of ticks per day
 // (MAXVIS / (totalDecayTime * numberOfTicksPerDay) = decayPerTick
-#define VIS_TESTING
+//#define VIS_TESTING
 #ifdef VIS_TESTING
 	const unsigned int VisibilityManager::visDecayTickRate = (15);
 	const unsigned int VisibilityManager::totalDecayTimeInDays = 1;

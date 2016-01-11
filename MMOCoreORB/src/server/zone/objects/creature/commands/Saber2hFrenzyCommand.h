@@ -7,13 +7,13 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
-#include "CombatQueueCommand.h"
+#include "JediCombatQueueCommand.h"
 
-class Saber2hFrenzyCommand : public CombatQueueCommand {
+class Saber2hFrenzyCommand : public JediCombatQueueCommand {
 public:
 
 	Saber2hFrenzyCommand(const String& name, ZoneProcessServer* server)
-		: CombatQueueCommand(name, server) {
+		: JediCombatQueueCommand(name, server) {
 
 	}
 

@@ -369,6 +369,7 @@ public:
 
 	int sendHam(CreatureObject* creature, CreatureObject* target) const {
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+		ManagedReference<PlayerObject*> targetGhost = target->getPlayerObject();
 
 		if (ghost == NULL) {
 			return GENERALERROR;
@@ -397,9 +398,10 @@ public:
 			}
 		}
 
-		body << "Force Power:\t" << ghost->getForcePower() << " / " << ghost->getForcePowerMax() << endl;
-		body << "Force Regen:\t" << ghost->getForcePowerRegen() << endl;
-
+		if(targetGhost != NULL) { // if we're not a PlayerObject, we don't hold force values
+			body << "Force Power:\t" << targetGhost->getForcePower() << " / " << targetGhost->getForcePowerMax() << endl;
+			body << "Force Regen:\t" << target->getSkillMod("jedi_force_power_regen") << endl;
+		}
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, 0);
 		box->setPromptTitle("Player HAM");
 		box->setPromptText(body.toString());

@@ -33,6 +33,7 @@ ForceHealQueueCommand::ForceHealQueueCommand(const String& name, ZoneProcessServ
 	healBattleFatigue = 0;
 	healAmount = 0;
 	healWoundAmount = 0;
+	visMod = 10;
 
 	range = 0;
 
