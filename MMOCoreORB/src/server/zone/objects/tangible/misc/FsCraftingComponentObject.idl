@@ -50,7 +50,6 @@ class FsCraftingComponentObject extends TangibleObject {
 		return status;
 	}
 
-	@preLocked
 	public void setStatus(int st) {
 		status = st;
 	}
