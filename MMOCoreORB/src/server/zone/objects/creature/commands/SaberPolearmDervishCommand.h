@@ -6,13 +6,13 @@
 #define SABERPOLEARMDERVISHCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "CombatQueueCommand.h"
+#include "JediCombatQueueCommand.h"
 
-class SaberPolearmDervishCommand : public CombatQueueCommand {
+class SaberPolearmDervishCommand : public JediCombatQueueCommand {
 public:
 
 	SaberPolearmDervishCommand(const String& name, ZoneProcessServer* server)
-		: CombatQueueCommand(name, server) {
+		: JediCombatQueueCommand(name, server) {
 
 	}
 
