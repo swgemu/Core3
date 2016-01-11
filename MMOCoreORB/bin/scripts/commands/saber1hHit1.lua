@@ -50,7 +50,8 @@ Saber1hHit1Command = {
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
 	forceCostMultiplier = 1.0,
-
+	visMod = 25,
+	
 	animationCRC = hashCode("combo_jedi_1_light"),
 
 	combatSpam = "saber1hhit1",

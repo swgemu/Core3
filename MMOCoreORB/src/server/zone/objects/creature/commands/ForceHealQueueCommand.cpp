@@ -751,5 +751,8 @@ void ForceHealQueueCommand::applyForceCost(CreatureObject* creature, int calcula
 	} else {
 		playerObject->setForcePower(currentForce - calculatedForceCost);
 	}
+
+	//This seems like a logical place to put this to me
+	VisibilityManager::instance()->increaseVisibility(creature, visMod);
 }
 
