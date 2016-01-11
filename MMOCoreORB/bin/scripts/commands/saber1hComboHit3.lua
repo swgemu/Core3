@@ -50,6 +50,7 @@ Saber1hComboHit3Command = {
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
 	forceCostMultiplier = 2.25,
+	visMod = 25,
 
 	animationCRC = hashCode("showoff_1_light"),
 

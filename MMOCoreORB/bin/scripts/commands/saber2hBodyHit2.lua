@@ -50,6 +50,7 @@ Saber2hBodyHit2Command = {
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
 	forceCostMultiplier = 1.25,
+	visMod = 25,
 
 	animationCRC = hashCode("combo_3d_light"),
 

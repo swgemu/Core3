@@ -20,7 +20,7 @@ public:
 
 	void run() {
 		VisibilityManager::instance()->performVisiblityDecay();
-		reschedule(3600 * 1000);
+		reschedule(VisibilityManager::getVisDecayTickRate() * 1000);
 	}
 };
 

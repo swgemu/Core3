@@ -51,6 +51,7 @@ ForceIntimidate2Command = {
 	attackType = FORCEATTACK,
 	areaAction = true,
 	areaRange = 15,
+	visMod = 25,
 
 	stateEffects = {
 	  StateEffect(
