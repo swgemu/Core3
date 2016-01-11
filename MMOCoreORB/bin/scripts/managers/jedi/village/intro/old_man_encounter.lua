@@ -34,7 +34,7 @@ OldManEncounter = Encounter:new {
 -- Figure out if we are pre or post village...
 function OldManEncounter:isPostVillage(pCreatureObject)
 
-	if (VillageJediManagerCommon.hasProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE)) then
+	if (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE)) then
 		return true
 	else
 		return false
