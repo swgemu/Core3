@@ -23,8 +23,25 @@ class VisibilityManager : public Singleton<VisibilityManager>, public Logger, pu
 	 * available on the bounty hunter mission terminal as a player bounty.
 	 */
 	enum {
-		TERMINALVISIBILITYLIMIT = 24
+		TERMINALVISIBILITYLIMIT = 500,
+		MAXVISIBILITY = 1000
 	};
+
+
+	/**
+	 * Number of days before complete visibility decay
+	 */
+	static const unsigned int totalDecayTimeInDays;
+
+	/**
+	 * Number of seconds before rescheduling the decay event. Must be SHORTER than 1 day
+	 */
+	static const unsigned int	 visDecayTickRate;
+
+	/**
+	 * Amount of visibility to decay per tick
+	 */
+	static const float visDecayPerTick;
 
 	/**
 	 * Rebel faction string.
@@ -93,6 +110,12 @@ class VisibilityManager : public Singleton<VisibilityManager>, public Logger, pu
 
 public:
 
+	enum { // default visibility modifiers if value does not exist in LUA
+		SABERVISMOD = 10, // equipping saber cost
+		COMBATVISMOD = 25, // Combat action or force power cost
+		BUFFVISMOD = 10 // jedi self buff cost
+	};
+
 	/**
 	 * Constructor.
 	 */
@@ -115,7 +138,7 @@ public:
 	 * if not already in the list.
 	 * @param creature the player to increase the visibility for.
 	 */
-	void increaseVisibility(CreatureObject* creature);
+	void increaseVisibility(CreatureObject* creature, int visibilityMultiplier);
 
 	/**
 	 * Clear the visibility for a player and remove him/her from the visibility
@@ -129,6 +152,10 @@ public:
 	 * Iterates through all currently online players and decays their visibility.
 	 */
 	void performVisiblityDecay();
+
+	static unsigned int getVisDecayTickRate() {
+		return visDecayTickRate;
+	}
 };
 
 }

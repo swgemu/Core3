@@ -82,16 +82,14 @@ public:
 		creature->addBuff(buff);
         
 		// Force Cost.
-		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-		playerObject->setForcePower(playerObject->getForcePower() - forceCost);
-        
+		doForceCost(creature);
+
 		// Client Effect.
 		if (!clientEffect.isEmpty()) {
 			creature->playEffect(clientEffect, "");
 		}
         
-		// Based on all current self-buff jedi types, there is no animation used.
-        
+
 		// Return.
 		return SUCCESS;
 	}
@@ -177,6 +175,15 @@ public:
 		return buff;
 	}
 
+	void doForceCost(CreatureObject* creature) const {
+		// Force Cost.
+		ManagedReference<PlayerObject*> playerObject =
+				creature->getPlayerObject();
+		playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+
+		VisibilityManager::instance()->increaseVisibility(creature, visMod);
+	}
+
 	void setForceCost(int fc) {
 		forceCost = fc;
 	}
@@ -205,6 +212,9 @@ public:
 		visMod = vm;
 	}
 
+	int getVisMod() const {
+		return visMod;
+	}
 };
 
 

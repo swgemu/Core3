@@ -8,6 +8,25 @@
 #include "server/zone/managers/visibility/tasks/VisibilityDecayTask.h"
 #include "server/zone/Zone.h"
 
+
+
+
+
+// 21(days) * 24(hours) brings us to 504. Meaning you could clear your visibility in 6 weeks at
+// 1 vis per hour or 3 weeks at 2 per hour. We'll just calculate it using constants
+// ((60*60*24) / visDecayTickRate)) = number of ticks per day
+// (MAXVIS / (totalDecayTime * numberOfTicksPerDay) = decayPerTick
+#define VIS_TESTING
+#ifdef VIS_TESTING
+	const unsigned int VisibilityManager::visDecayTickRate = (15);
+	const unsigned int VisibilityManager::totalDecayTimeInDays = 1;
+#else
+	const unsigned int VisibilityManager::visDecayTickRate = (60 * 60);
+	const unsigned int VisibilityManager::totalDecayTimeInDays = 21;
+#endif
+const float VisibilityManager::visDecayPerTick = ((float)MAXVISIBILITY / ((float)(totalDecayTimeInDays * (float)(60*60*24) / (float)visDecayTickRate)));
+
+
 const String VisibilityManager::factionStringRebel = "rebel";
 const String VisibilityManager::factionStringImperial = "imperial";
 const unsigned int VisibilityManager::factionRebel = factionStringRebel.hashCode();
@@ -22,7 +41,7 @@ void VisibilityManager::addPlayerToBountyList(CreatureObject* creature, int rewa
 void VisibilityManager::removePlayerFromBountyList(CreatureObject* creature) {
 	MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
 	missionManager->removePlayerFromBountyList(creature->getObjectID());
-	//info("Dropping player " + String::valueOf(creature->getObjectID()) + " from bounty hunter list.", true);
+	//info("Dropping player " + creature->getFirstName() + " from bounty hunter list.", true);
 }
 
 int VisibilityManager::calculateReward(CreatureObject* creature) {
@@ -65,14 +84,17 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 			SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
 			if (obj != NULL && obj->isCreatureObject() && creature->isInRange(obj, 32)) {
 				ManagedReference<CreatureObject*> c = cast<CreatureObject*>(obj);
-				if (c->isNonPlayerCreatureObject()) {
+				if (c->isNonPlayerCreatureObject() || c->isPlayerCreature()) {
 					if (creature->getFaction() == 0 || (c->getFaction() != factionImperial && c->getFaction() != factionRebel)) {
 						visibilityIncrease += 0.5;
+						//info(c->getCreatureName().toString() + " generating a 0.5 visibility modifier", true);
 					} else {
 						if (creature->getFaction() == c->getFaction()) {
 							visibilityIncrease += 0.25;
+							//info(c->getCreatureName().toString() + " generating a 0.25 visibility modifier", true);
 						} else {
 							visibilityIncrease += 1;
+							//info( c->getCreatureName().toString() + " generating a 1.0 visibility modifier", true);
 						}
 					}
 				}
@@ -85,13 +107,18 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 }
 
 void VisibilityManager::decreaseVisibility(CreatureObject* creature) {
+
 	Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 	if (ghost != NULL) {
 		Locker locker(ghost);
 		if (ghost->getVisibility() > 0)
 		{
-			float visibilityDecrease = ghost->getLastVisibilityUpdateTimestamp().miliDifference() / 1000.f / 3600.f;
+
+			//info("VisDecayTickRate: " + String::valueOf(visDecayTickRate) + "DecayPerTick: " + String::valueOf(visDecayPerTick), true);
+			float visibilityDecrease = (((ghost->getLastVisibilityUpdateTimestamp().miliDifference() / 1000.0f) / (float)visDecayTickRate) * (float)visDecayPerTick);
+
+			//info("Decreasing visibility of player " + creature->getFirstName() + " by " + String::valueOf(visibilityDecrease), true);
 			if (ghost->getVisibility() <= visibilityDecrease) {
 				clearVisibility(creature);
 			} else {
@@ -105,9 +132,9 @@ void VisibilityManager::decreaseVisibility(CreatureObject* creature) {
 	}
 }
 
-VisibilityManager::VisibilityManager() {
+VisibilityManager::VisibilityManager() : Logger("VisibilityManager") {
 	Reference<Task*> decayTask = new VisibilityDecayTask();
-	decayTask->schedule(3600 * 1000);
+	decayTask->schedule(visDecayTickRate * 1000);
 }
 
 void VisibilityManager::login(CreatureObject* creature) {
@@ -115,6 +142,13 @@ void VisibilityManager::login(CreatureObject* creature) {
 	Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 	if (ghost != NULL) {
+
+		//You only gain visibility after completing the padawan trials
+		if(!creature->hasSkill("force_title_jedi_rank_02")) {
+			//info("Player " + creature->getFirstName() + " does not qualify for visibility", true);
+			return;
+		}
+
 		decreaseVisibility(creature);
 
 		Locker locker(&visibilityListLock);
@@ -146,14 +180,14 @@ void VisibilityManager::logout(CreatureObject* creature) {
 	}
 }
 
-void VisibilityManager::increaseVisibility(CreatureObject* creature) {
+void VisibilityManager::increaseVisibility(CreatureObject* creature, int visibilityMultiplier) {
 	//info("Increasing visibility for " + creature->getFirstName(), true);
 	Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-	if (ghost != NULL && !ghost->hasGodMode()) {
+	if (ghost != NULL  && !ghost->hasGodMode()) {
 		Locker locker(ghost);
 		decreaseVisibility(creature);
-		ghost->setVisibility(ghost->getVisibility() + calculateVisibilityIncrease(creature));
+		ghost->setVisibility(ghost->getVisibility() + calculateVisibilityIncrease(creature) * visibilityMultiplier);
 		//info("New visibility for " + creature->getFirstName() + " is " + String::valueOf(ghost->getVisibility()), true);
 		locker.release();
 
@@ -164,7 +198,7 @@ void VisibilityManager::increaseVisibility(CreatureObject* creature) {
 void VisibilityManager::clearVisibility(CreatureObject* creature) {
 	Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-	if (ghost != NULL && !ghost->hasGodMode()) {
+	if (ghost != NULL  && !ghost->hasGodMode()) {
 		//info("Clearing visibility for player " + String::valueOf(creature->getObjectID()), true);
 
 		Locker locker(ghost);
@@ -176,7 +210,7 @@ void VisibilityManager::clearVisibility(CreatureObject* creature) {
 }
 
 void VisibilityManager::performVisiblityDecay() {
-	//info("Performing visibility decay", true);
+	//info("Performing visibility decay (List Size: " + String::valueOf(visibilityList.size()) +")", true);
 	Locker locker(&visibilityListLock);
 
 	for (int i = 0; i < visibilityList.size(); i++) {
@@ -184,3 +218,4 @@ void VisibilityManager::performVisiblityDecay() {
 		decreaseVisibility(creature);
 	}
 }
+
