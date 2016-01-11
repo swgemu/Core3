@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_794f6793",
+        "filename": "MMOCoreORB/src/server/zone/managers/objectcontroller/command/CommandConfigManager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-11T23:44:56Z",
+      "side": 1,
+      "message": "tabbing",
+      "range": {
+        "startLine": 491,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 34
+      },
+      "revId": "85e9b49942f314e6ae8ce2a52e71f3579fd70071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_594aa384",
+        "filename": "MMOCoreORB/src/server/zone/managers/objectcontroller/command/CommandConfigManager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-11T23:44:56Z",
+      "side": 1,
+      "message": "tabbing",
+      "range": {
+        "startLine": 661,
+        "startChar": 0,
+        "endLine": 664,
+        "endChar": 60
+      },
+      "revId": "85e9b49942f314e6ae8ce2a52e71f3579fd70071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_19442b73",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceAbsorb1Command.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-11T23:44:56Z",
+      "side": 1,
+      "message": "tabbing",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 45
+      },
+      "revId": "85e9b49942f314e6ae8ce2a52e71f3579fd70071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_b97dffb3",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceAbsorb1Command.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-11T23:44:56Z",
+      "side": 1,
+      "message": "tabbing!",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "85e9b49942f314e6ae8ce2a52e71f3579fd70071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_d95d534a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceAbsorb2Command.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-11T23:44:56Z",
+      "side": 1,
+      "message": "tabbing",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 84
+      },
+      "revId": "85e9b49942f314e6ae8ce2a52e71f3579fd70071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_3949ef8b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceAbsorb2Command.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-11T23:44:56Z",
+      "side": 1,
+      "message": "tabbing",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 47
+      },
+      "revId": "85e9b49942f314e6ae8ce2a52e71f3579fd70071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_f95a974f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceArmor1Command.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-11T23:44:56Z",
+      "side": 1,
+      "message": "tabbing",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "85e9b49942f314e6ae8ce2a52e71f3579fd70071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_9957db26",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceArmor2Command.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-11T23:44:56Z",
+      "side": 1,
+      "message": "tabbing",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 83
+      },
+      "revId": "85e9b49942f314e6ae8ce2a52e71f3579fd70071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_b9541f22",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceArmor2Command.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-11T23:44:56Z",
+      "side": 1,
+      "message": "tabbing",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 47
+      },
+      "revId": "85e9b49942f314e6ae8ce2a52e71f3579fd70071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_5931430a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-11T23:44:56Z",
+      "side": 1,
+      "message": "tabbing",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 9
+      },
+      "revId": "85e9b49942f314e6ae8ce2a52e71f3579fd70071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_79368705",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-11T23:44:56Z",
+      "side": 1,
+      "message": "tabbing",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 9
+      },
+      "revId": "85e9b49942f314e6ae8ce2a52e71f3579fd70071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_d92473c8",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-11T23:44:56Z",
+      "side": 1,
+      "message": "since you are always using buffCRCs.at(0), just make this a single int.",
+      "range": {
+        "startLine": 139,
+        "startChar": 38,
+        "endLine": 139,
+        "endChar": 53
+      },
+      "revId": "85e9b49942f314e6ae8ce2a52e71f3579fd70071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_39400f56",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-11T23:44:56Z",
+      "side": 1,
+      "message": "always FORCEBUFFHIT trigger? This might need to be specific per command and moved into the lua (triggerType or something like that)",
+      "range": {
+        "startLine": 142,
+        "startChar": 12,
+        "endLine": 142,
+        "endChar": 69
+      },
+      "revId": "85e9b49942f314e6ae8ce2a52e71f3579fd70071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_193bcbec",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-11T23:44:56Z",
+      "side": 1,
+      "message": "tabbing",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 9
+      },
+      "revId": "85e9b49942f314e6ae8ce2a52e71f3579fd70071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
