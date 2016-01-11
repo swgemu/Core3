@@ -50,6 +50,7 @@ SaberPolearmHit1Command = {
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
 	forceCostMultiplier = 1.0,
+	visMod = 25,
 
 	animationCRC = hashCode("combo_3a_light"),
 
