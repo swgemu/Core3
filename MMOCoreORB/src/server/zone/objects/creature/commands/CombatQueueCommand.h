@@ -41,6 +41,7 @@ protected:
 	float mindCostMultiplier;
 	float forceCostMultiplier;
 	float forceCost;
+	int visMod;
 
 	int coneRange;
 	int range;
@@ -667,6 +668,14 @@ public:
 
 	bool validateWeapon(WeaponObject* weapon) {
 		return true;
+	}
+
+	void setVisMod(int vm) {
+		visMod = vm;
+	}
+
+	int getVisMod() const {
+		return visMod;
 	}
 
 };
