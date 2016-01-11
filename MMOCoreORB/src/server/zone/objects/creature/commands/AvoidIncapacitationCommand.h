@@ -12,34 +12,58 @@ public:
 
 	AvoidIncapacitationCommand(const String& name, ZoneProcessServer* server)
 : JediQueueCommand(name, server) {
-		buffCRC = BuffCRC::JEDI_AVOID_INCAPACITATION;
+		 buffCRC = BuffCRC::JEDI_AVOID_INCAPACITATION;
+		// since this is a special case buff, these CRC's aren't exclusive. Instead we will use this list to select whichever one is not active
+		// buffCRCs.add(BuffCRC::JEDI_AVOID_INCAPACITATION);
+		// buffCRCs.add(BuffCRC::JEDI_AVOID_INCAPACITATION_1);
+		// buffCRCs.add(BuffCRC::JEDI_AVOID_INCAPACITATION_2);
+		// buffCRCs.add(BuffCRC::JEDI_AVOID_INCAPACITATION_3);
+		// buffCRCs.add(BuffCRC::JEDI_AVOID_INCAPACITATION_4);
+		// buffCRCs.add(BuffCRC::JEDI_AVOID_INCAPACITATION_5);
+
+		 skillMods.put("avoid_incapacitation", 1);
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-		// SPECIAL - For Avoid Incapacitation, it can be stacked (maybe up to 6 times, if looking at the client CRCs)
-		// TODO: implement AI stacking
-		// Avoid Incap is a special case since it stacks (whereas all other jedi buffs do not stack), so forego the
-		// existing structure and build the buff manually
+		// SPECIAL - For Avoid Incapacitation, it can be stacked up to 6 times for a new buff object, and needs a new crc.
+		// PLUS: There is no evidence for what's stated in 'SPECIAL' sentence above, beyond the existence of 6 CRCs themselves.
 
-		int res = doCommonJediSelfChecks(creature);
+		uint32 buffcrc0 = BuffCRC::JEDI_AVOID_INCAPACITATION;
 
-		if (res != SUCCESS)
-			return res;
+		if (creature->hasBuff(BuffCRC::JEDI_AVOID_INCAPACITATION)) {
 
-		ManagedReference<Buff*> buff = new Buff(creature, buffCRC, duration, BuffType::JEDI);
+			int res = doCommonJediSelfChecks(creature);
 
-		Locker locker(buff);
+			if (res != SUCCESS)
+				return res;
 
-		buff->setSkillModifier("avoid_incapacitation", 1);
-		creature->addBuff(buff);
+			StringIdChatParameter startStringId("jedi_spam", "apply_avoidincapacitation");
+			StringIdChatParameter endStringId("jedi_spam", "remove_avoidincapacitation");
 
-		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-		playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+			Locker creatureLocker(creature);
+			ManagedReference<Buff*> buff = creature->getBuff(BuffCRC::JEDI_AVOID_INCAPACITATION);
+			Locker locker(buff);
 
-		if (!clientEffect.isEmpty())
-			creature->playEffect(clientEffect, "");
+			buff->renew(30);
+			ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+			playerObject->setForcePower(playerObject->getForcePower() - forceCost);
 
-		return SUCCESS;
+			if (!creature->hasBuff(buffcrc0)) {
+				buff->setStartMessage(startStringId);
+			}
+			buff->setEndMessage(endStringId);
+			buff->setSkillModifier("avoid_incapacitation", 1);
+			creature->addBuff(buff);
+
+			if (!clientEffect.isEmpty())
+				creature->playEffect(clientEffect, "");
+
+			buff->sendTo(creature);
+
+			return SUCCESS;
+		} else {
+			return doJediSelfBuffCommand(creature);
+		}
 	}
 
 };
