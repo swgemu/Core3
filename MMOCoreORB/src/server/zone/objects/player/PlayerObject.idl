@@ -949,14 +949,8 @@ class PlayerObject extends IntangibleObject {
 
 	public native void doForceRegen();
 	
-	public void setForcePowerRegen(int val) {
-		forcePowerRegen = val;
-	}
-	
-	@read
-	public int getForcePowerRegen() {
-		return forcePowerRegen;
-	}
+	@dirty
+	public native int getForcePowerRegen();
 
 	@read
 	public unsigned long getSavedParentID() {

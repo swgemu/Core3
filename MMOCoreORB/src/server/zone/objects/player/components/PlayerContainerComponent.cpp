@@ -146,25 +146,12 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 	PlayerObject* ghost = creo->getPlayerObject();
 
 	if (ghost && ghost->isJedi()) {
-		if (object->isRobeObject()) {
-			RobeObject* robeObject = cast<RobeObject*>(object);
-			if (robeObject->getSkillRequired() != "") {
-				ghost->setForcePowerMax(creo->getSkillMod("jedi_force_power_max"));
 
-				if (creo->getWeapon()->isJediWeapon()) {
-					ghost->setForcePowerRegen(creo->getSkillMod("jedi_force_power_regen"));
-				}
-			}
+		if (object->isRobeObject()) {
+			ghost->setForcePowerMax(creo->getSkillMod("jedi_force_power_max"));
 		} else if (object->isWeaponObject()) {
 			WeaponObject* weaponObject = cast<WeaponObject*>(object);
 			if (weaponObject->isJediWeapon()) {
-				SceneObject* item = creo->getSlottedObject("chest1");
-				if (item != NULL && item->isRobeObject()) {
-					RobeObject* robeObject = cast<RobeObject*>(item);
-					if (robeObject->getSkillRequired() != "") {
-						ghost->setForcePowerRegen(creo->getSkillMod("jedi_force_power_regen"));
-					}
-				}
 				VisibilityManager::instance()->increaseVisibility(creo, VisibilityManager::SABERVISMOD);
 			}
 		}
@@ -218,25 +205,7 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 
 	if (ghost && ghost->isJedi()) {
 		if (object->isRobeObject()) {
-			RobeObject* robeObject = cast<RobeObject*>(object);
-			if (robeObject->getSkillRequired() != "") {
-				ghost->setForcePowerMax(creo->getSkillMod("jedi_force_power_max"));
-
-				if (creo->getWeapon()->isJediWeapon()) {
-					ghost->setForcePowerRegen(creo->getSkillMod("jedi_force_power_regen"));
-				}
-			}
-		} else if (object->isWeaponObject()) {
-			WeaponObject* weaponObject = cast<WeaponObject*>(object);
-			if (weaponObject->isJediWeapon()) {
-				SceneObject* item = creo->getSlottedObject("chest1");
-				if (item != NULL && item->isRobeObject()) {
-					RobeObject* robeObject = cast<RobeObject*>(item);
-					if (robeObject->getSkillRequired() != "") {
-						ghost->setForcePowerRegen(creo->getSkillMod("jedi_force_power_regen") - robeObject->getTemplateSkillMods()->get("jedi_force_power_regen"));
-					}
-				}
-			}
+			ghost->setForcePowerMax(creo->getSkillMod("jedi_force_power_max"));
 		}
 	}
 
