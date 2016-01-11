@@ -101,6 +101,20 @@ public:
 		playerManager->awardExperience(player, type, amount, true);
 	}
 
+	void applyDebuff(CreatureObject* creature) const {
+		// Apply grogginess debuff
+		ManagedReference<PrivateBuff *> debuff = new PrivateBuff(creature, STRING_HASHCODE("private_groggy_debuff"), 60, BuffType::JEDI);
+		Locker locker(debuff);
+
+		for(int i=0; i<CreatureAttribute::ARRAYSIZE; i++)
+			debuff->setAttributeModifier(i, -100);
+
+		creature->sendSystemMessage("Your grogginess will expire in 60.0 seconds.");
+		// TODO: Find potential end message for groggy debuff
+
+		creature->addBuff(debuff);
+	}
+
 	RevivePack* findRevivePack(CreatureObject* creature) const {
 		SceneObject* inventory = creature->getSlottedObject("inventory");
 		int medicineUse = creature->getSkillMod("healing_ability");
@@ -229,6 +243,8 @@ public:
 		doAnimations(creature, creatureTarget);
 
 		checkForTef(creature, creatureTarget);
+
+		applyDebuff(creatureTarget);
 
 		return SUCCESS;
 	}
