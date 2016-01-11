@@ -84,6 +84,10 @@ public:
 		return defaultTime * speed;
 	}
 
+	virtual bool isJediCombatQueueCommand() {
+		return true;
+	}
+
 };
 
 #endif /* FORCEPOWERSQUEUECOMMAND_H_ */

@@ -43,6 +43,9 @@
 
 RegainConsciousnessCommand = {
         name = "regainconsciousness",
+        forceCost = 1000,
+        duration = 60,
+        clientEffect = "clienteffect/pl_force_regain_consciousness_self.cef"
 }
 
 AddCommand(RegainConsciousnessCommand)
