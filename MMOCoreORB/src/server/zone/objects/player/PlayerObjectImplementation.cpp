@@ -102,7 +102,6 @@ void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 
 	forcePower = getForcePower();
 	forcePowerMax = getForcePowerMax();
-	forcePowerRegen = getForcePowerRegen();
 
 	trainerZoneName = getTrainerZoneName();
 
@@ -1704,7 +1703,23 @@ void PlayerObjectImplementation::activateForcePowerRegen() {
 	}
 
 	if (!forceRegenerationEvent->isScheduled()) {
+
+		Locker locker(parent.get());
+		ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
+		if (creature == NULL) {
+			return;
+		}
+
+		int regen =  creature->getSkillMod("jedi_force_power_regen");
+		int regenMultiplier =  creature->getSkillMod("private_force_regen_multiplier");
+		locker.release();
+
 		float timer = ((float) getForcePowerRegen()) / 5.f;
+
+		if(regenMultiplier != 0)
+			timer *= (regenMultiplier * 0.01f);
+
 		float scheduledTime = 10 / timer;
 		uint64 miliTime = static_cast<uint64>(scheduledTime * 1000.f);
 		forceRegenerationEvent->schedule(miliTime);
@@ -1829,6 +1844,16 @@ void PlayerObjectImplementation::maximizeExperience() {
 	}
 }
 
+int PlayerObjectImplementation::getForcePowerRegen() {
+	Locker locker(parent.get());
+	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
+	if (creature == NULL) {
+		return 0;
+	}
+
+	return creature->getSkillMod("jedi_force_power_regen");
+}
 void PlayerObjectImplementation::activateMissions() {
 	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
 
