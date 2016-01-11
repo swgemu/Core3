@@ -12,7 +12,8 @@ global_imperial_civil_patrol_captain_camp_imperial_small_theater = Lair:new {
 	buildingsVeryHard = {"object/building/poi/anywhere_imperial_base_small_1.iff","object/building/poi/lok_imperial_small1.iff","object/building/poi/lok_imperial_small2.iff"},
 	missionBuilding = "object/tangible/lair/base/objective_banner_imperial.iff",
 	mobType = "npc",
-	buildingType = "theater"
+	buildingType = "theater",
+	faction = "imperial"
 }
 
 addLairTemplate("global_imperial_civil_patrol_captain_camp_imperial_small_theater", global_imperial_civil_patrol_captain_camp_imperial_small_theater)

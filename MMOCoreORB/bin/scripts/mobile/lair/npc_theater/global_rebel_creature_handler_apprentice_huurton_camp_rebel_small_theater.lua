@@ -11,7 +11,8 @@ global_rebel_creature_handler_apprentice_huurton_camp_rebel_small_theater = Lair
 	buildingsVeryHard = {"object/building/poi/anywhere_rebel_camp_small_1.iff","object/building/poi/anywhere_rebel_camp_small_2.iff","object/building/poi/anywhere_rebel_camp_small_3.iff"},
 	missionBuilding = "object/tangible/lair/base/objective_banner_rebel.iff",
 	mobType = "npc",
-	buildingType = "theater"
+	buildingType = "theater",
+	faction = "rebel"
 }
 
 addLairTemplate("global_rebel_creature_handler_apprentice_huurton_camp_rebel_small_theater", global_rebel_creature_handler_apprentice_huurton_camp_rebel_small_theater)

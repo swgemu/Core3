@@ -11,7 +11,8 @@ global_rebel_warrant_officer_camp_rebel_medium_theater = Lair:new {
 	buildingsVeryHard = {"object/building/poi/anywhere_rebel_base_large_1.iff"},
 	missionBuilding = "object/tangible/lair/base/objective_banner_rebel.iff",
 	mobType = "npc",
-	buildingType = "theater"
+	buildingType = "theater",
+	faction = "rebel"
 }
 
 addLairTemplate("global_rebel_warrant_officer_camp_rebel_medium_theater", global_rebel_warrant_officer_camp_rebel_medium_theater)
