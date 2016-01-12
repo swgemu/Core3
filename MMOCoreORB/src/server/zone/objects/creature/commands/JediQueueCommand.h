@@ -148,6 +148,7 @@ public:
 			// Otherwise the compiler complains we're modifying member variables in a "const" function
 			Vector<uint32> singleUseTypesCopy = singleUseEventTypes;
 
+			Locker blocker(suBuff);
 			suBuff->init(&singleUseTypesCopy);
 
 		} else {
