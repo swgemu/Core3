@@ -43,7 +43,7 @@ public:
 		buffClass = BASE_BUFF;
 		speedMod = 0;
 		visMod = 10;
-
+		buffCRC = 0;
         
 	}
 

@@ -84,6 +84,7 @@ public:
 		// Force Power is only set in Jedi-skills.
 		forceCostMultiplier = 0;
 		forceCost = 0;
+		visMod = 0;
 
 		poolsToDamage = CombatManager::RANDOM;
 
