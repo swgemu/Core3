@@ -62,6 +62,7 @@
 #include "server/zone/packets/ui/ExecuteConsoleCommand.h"
 #include "server/zone/objects/creature/buffs/StateBuff.h"
 #include "server/zone/objects/creature/buffs/PrivateBuff.h"
+#include "server/zone/objects/creature/buffs/PlayerVehicleBuff.h"
 #include "server/zone/objects/creature/buffs/PrivateSkillMultiplierBuff.h"
 #include "server/zone/objects/building/hospital/HospitalBuildingObject.h"
 
@@ -613,19 +614,19 @@ void CreatureObjectImplementation::addMountedCombatSlow() {
 	if (!parent->isMount())
 		return;
 
-	if (hasBuff(STRING_HASHCODE("gallop"))) {
+	if (parent->hasBuff(STRING_HASHCODE("gallop"))) {
 		sendSystemMessage("@combat_effects:no_combat_while_galloping"); // You cannot attack or react to an attack while galloping. Use /gallopStop to stop galloping.
 		return;
 	}
 
 	ManagedReference<CreatureObject*> creo = asCreatureObject();
 
-	EXECUTE_TASK_2(creo, parent, {
-			Locker locker(creo_p);
-			Locker clocker(parent_p, creo_p);
+	//EXECUTE_TASK_2(creo, parent, {
+	//		Locker locker(creo_p);
+			Locker clocker(parent, creo);
 
 			float newSpeed = 1;
-			SharedObjectTemplate* templateData = creo_p->getObjectTemplate();
+			SharedObjectTemplate* templateData = creo->getObjectTemplate();
 			SharedCreatureObjectTemplate* playerTemplate = dynamic_cast<SharedCreatureObjectTemplate*> (templateData);
 
 			if (playerTemplate != NULL) {
@@ -634,59 +635,50 @@ void CreatureObjectImplementation::addMountedCombatSlow() {
 			}
 
 			float oldSpeed = 1;
-			PetManager* petManager = creo_p->getZoneServer()->getPetManager();
+			PetManager* petManager = creo->getZoneServer()->getPetManager();
 
 			if (petManager != NULL) {
-				oldSpeed = petManager->getMountedRunSpeed(parent_p);
+				oldSpeed = petManager->getMountedRunSpeed(parent);
 			}
 
 			float magnitude = newSpeed / oldSpeed;
 
-			uint32 crc = STRING_HASHCODE("mounted_combat_slow");
+			info("Adding mounted combat slow - newSpeed" + String::valueOf(newSpeed) + " oldSpeed : " + String::valueOf(oldSpeed), true);
+
 			StringIdChatParameter startStringId("combat_effects", "mount_slow_for_combat"); // Your mount slows down to prepare for combat.
-			StringIdChatParameter endStringId("combat_effects", "mount_speed_after_combat"); // Your mount speeds up.
 
-			ManagedReference<Buff*> buff = new Buff(creo_p, crc, 604800, BuffType::OTHER);
+			ManagedReference<PlayerVehicleBuff*> buff = new PlayerVehicleBuff(parent, crc, 604800, BuffType::OTHER);
 
-			Locker blocker(buff);
-
+//			Locker blocker(buff);
 			buff->setSpeedMultiplierMod(magnitude);
 			buff->setAccelerationMultiplierMod(magnitude);
 			buff->setStartMessage(startStringId);
-			buff->setEndMessage(endStringId);
 
-			creo_p->addBuff(buff);
-
-			blocker.release();
-
-			ManagedReference<Buff*> buff2 = new Buff(parent_p, crc, 604800, BuffType::OTHER);
-
-			Locker blocker2(buff2);
-
-			buff2->setSpeedMultiplierMod(magnitude);
-			buff2->setAccelerationMultiplierMod(magnitude);
-
-			parent_p->addBuff(buff2);
-	});
+			parent->addBuff(buff);
+//	});
 }
 
-void CreatureObjectImplementation::removeMountedCombatSlow() {
+void CreatureObjectImplementation::removeMountedCombatSlow(bool showEndMessage) {
+
 	ManagedReference<CreatureObject*> creo = asCreatureObject();
+	ManagedReference<CreatureObject*> parent = creo->getParent().get().castTo<CreatureObject*>();
 
-	EXECUTE_TASK_1(creo, {
-			Locker locker(creo_p);
+	if (parent == NULL)
+		return;
 
-			uint32 crc = STRING_HASHCODE("mounted_combat_slow");
-			creo_p->removeBuff(crc);
+	uint32 crc = STRING_HASHCODE("mounted_combat_slow");
 
-			ManagedReference<CreatureObject*> parent = creo_p->getParent().get().castTo<CreatureObject*>();
+	if(parent->hasBuff(crc)) {
 
-			if (parent != NULL) {
-				Locker clocker(parent, creo_p);
-				parent->removeBuff(crc);
-			}
-	});
+		if(showEndMessage) {
+			//I don't think we want to show this on dismount, or after a gallop
+			StringIdChatParameter endStringId("combat_effects", "mount_speed_after_combat"); // Your mount speeds up.
+			sendSystemMessage(endStringId);
+		}
 
+		Locker clocker(parent, creo);
+		parent->removeBuff(crc);
+	}
 }
 
 void CreatureObjectImplementation::setCombatState() {
@@ -746,7 +738,8 @@ void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
 	if (removedefenders)
 		removeDefenders();
 
-	removeMountedCombatSlow();
+	if(isRidingMount())
+		removeMountedCombatSlow();
 
 	//info("finished clearCombatState");
 }

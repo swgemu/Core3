@@ -8,7 +8,6 @@
 #include "BuffDurationEvent.h"
 #include "BuffList.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/Buffs.h"
@@ -82,12 +81,9 @@ void BuffImplementation::sendDestroyTo(CreatureObject* player) {
 void BuffImplementation::activate(bool applyModifiers) {
 	//info("activating buff with crc " + String::hexvalueOf((int)buffCRC), true);
 	try {
-		if (applyModifiers && !modsApplied) {
-			applyAttributeModifiers();
-			applySkillModifiers();
-			applyStates();
-			modsApplied = true;
-		}
+
+		if(applyModifiers)
+			applyAllModifiers();
 
 		scheduleBuffEvent();
 
@@ -112,6 +108,24 @@ void BuffImplementation::activate(bool applyModifiers) {
 	}
 }
 
+void BuffImplementation::applyAllModifiers() {
+	if (!modsApplied) {
+		applyAttributeModifiers();
+		applySkillModifiers();
+		applyStates();
+		modsApplied = true;
+	}
+}
+
+void BuffImplementation::removeAllModifiers() {
+	if (modsApplied) {
+		removeAttributeModifiers();
+		removeSkillModifiers();
+		removeStates();
+		modsApplied = false;
+	}
+}
+
 void BuffImplementation::deactivate(bool removeModifiers) {
 	ManagedReference<CreatureObject*> strongRef = creature.get().get();
 
@@ -119,12 +133,8 @@ void BuffImplementation::deactivate(bool removeModifiers) {
 		return;
 
 	try {
-		if (removeModifiers && modsApplied) {
-			removeAttributeModifiers();
-			removeSkillModifiers();
-			removeStates();
-			modsApplied = false;
-		}
+		if(removeModifiers)
+			removeAllModifiers();
 
 		if (creature.get()->isPlayerCreature())
 			sendDestroyTo(cast<CreatureObject*>(creature.get().get()));
