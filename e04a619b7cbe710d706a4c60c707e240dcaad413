@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_9cc7c964",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediCombatQueueCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-12T18:46:01Z",
+      "side": 1,
+      "message": "I originally made all of these changes because the original description for the \"Grogginess\" debuff was that \"no action could be taken\" for 60 seconds. This turned out to be wrong but the work was already done. I have no issue reverting this though if you prefer.",
+      "parentUuid": "da7095c5_3cb9dde9",
+      "revId": "e04a619b7cbe710d706a4c60c707e240dcaad413",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_7cbf55d1",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SnoopCommand.h",
         "patchSetId": 4
