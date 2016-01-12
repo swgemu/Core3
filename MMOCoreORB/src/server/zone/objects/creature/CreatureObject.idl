@@ -361,7 +361,7 @@ class CreatureObject extends TangibleObject {
 	public native void addMountedCombatSlow();
 
 	@preLocked
-	public native void removeMountedCombatSlow();
+	public native void removeMountedCombatSlow(boolean showEndMessage = true);
 
 	/**
 	 * Sets a new posture
