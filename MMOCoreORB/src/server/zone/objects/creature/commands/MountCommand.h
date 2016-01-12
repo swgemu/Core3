@@ -10,10 +10,17 @@
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
 class MountCommand : public QueueCommand {
+	Vector<uint32> restrictedBuffCRCs;
 public:
 
 	MountCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
+		restrictedBuffCRCs.add(STRING_HASHCODE("gallop"));
+		restrictedBuffCRCs.add(STRING_HASHCODE("burstrun"));
+		restrictedBuffCRCs.add(STRING_HASHCODE("retreat"));
+		restrictedBuffCRCs.add(BuffCRC::JEDI_FORCE_RUN_1);
+		restrictedBuffCRCs.add(BuffCRC::JEDI_FORCE_RUN_2);
+		restrictedBuffCRCs.add(BuffCRC::JEDI_FORCE_RUN_3);
 
 	}
 
@@ -80,20 +87,16 @@ public:
 
 		creature->updateCooldownTimer("mount_dismount", 2000);
 
-		uint32 crc = STRING_HASHCODE("gallop");
-		if (creature->hasBuff(crc) && vehicle->hasBuff(crc)) {
-			//Clear the active negation of the gallop buff.
-			creature->setSpeedMultiplierMod(1.f);
-			creature->setAccelerationMultiplierMod(1.f);
-			vehicle->setSpeedMultiplierMod(1.f);
-			vehicle->setAccelerationMultiplierMod(1.f);
-		}
+		uint32 buffCRC = 0;
+		for(int i=0; i<restrictedBuffCRCs.size(); i++) {
+			buffCRC = restrictedBuffCRCs.get(i);
+			if(creature->hasBuff(buffCRC)) {
+				ManagedReference<Buff*> buff = creature->getBuff(buffCRC);
 
-		if (creature->hasBuff(STRING_HASHCODE("burstrun"))
-				|| creature->hasBuff(STRING_HASHCODE("retreat"))) {
-			//Negate effect of the active burst run or retreat buff. The negation will be cleared automatically when the buff is deactivated.
-			creature->setSpeedMultiplierMod(1.f / 1.822f);
-			creature->setAccelerationMultiplierMod(1.f / 1.822f);
+				Locker lock(buff, creature); // Is this necessary?
+
+				buff->removeAllModifiers();
+			}
 		}
 
 		SpeedMultiplierModChanges* changeBuffer = creature->getSpeedMultiplierModChanges();
