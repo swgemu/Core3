@@ -49,7 +49,9 @@ public:
 
 				String firstArg;
 				String firstName = "";
+				String modName = "";
 				bool buff = false;
+				bool skillmod = false;
 				args.getStringToken(firstArg);
 
 				if (firstArg.toLowerCase() == "buff") { // First argument is buff, get second argument
@@ -57,6 +59,12 @@ public:
 					if (args.hasMoreTokens())
 						args.getStringToken(firstName);
 
+				} else if (firstArg.toLowerCase() == "skillmod") {
+					skillmod = true;
+					if (args.hasMoreTokens())
+						args.getStringToken(modName);
+					else
+						return GENERALERROR;
 				} else { // First argument is not buff, must be a name or area
 					firstName = firstArg;
 				}
@@ -167,6 +175,13 @@ public:
 						return INVALIDTARGET;
 					}
 
+				} else if (skillmod) {
+					if (object != NULL && object->isPlayerCreature()) {
+						patient = cast<CreatureObject*>(object.get());
+						Locker clocker(patient, creature);
+						patient->removeSkillMod(SkillModManager::BUFF, modName, patient->getSkillMod(modName), true);
+					} else
+						return INVALIDTARGET;
 				} else { // Shouldn't ever end up here
 					creature->sendSystemMessage("Syntax: /gmrevive [buff] [ [<name>] | [area [<range>] [imperial | rebel | neutral]] ]");
 					return INVALIDTARGET;
