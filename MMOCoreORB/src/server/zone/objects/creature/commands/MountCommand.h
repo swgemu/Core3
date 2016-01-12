@@ -10,10 +10,19 @@
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
 class MountCommand : public QueueCommand {
+	Vector<uint32> restrictedBuffCRCs;
+	uint32 gallopCRC;
 public:
 
 	MountCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
+		gallopCRC = STRING_HASHCODE("gallop");
+
+		restrictedBuffCRCs.add(STRING_HASHCODE("burstrun"));
+		restrictedBuffCRCs.add(STRING_HASHCODE("retreat"));
+		restrictedBuffCRCs.add(BuffCRC::JEDI_FORCE_RUN_1);
+		restrictedBuffCRCs.add(BuffCRC::JEDI_FORCE_RUN_2);
+		restrictedBuffCRCs.add(BuffCRC::JEDI_FORCE_RUN_3);
 
 	}
 
@@ -74,37 +83,62 @@ public:
 
 			return GENERALERROR;
 		}
-
 		creature->setState(CreatureState::RIDINGMOUNT);
 		creature->clearState(CreatureState::SWIMMING);
 
 		creature->updateCooldownTimer("mount_dismount", 2000);
 
-		uint32 crc = STRING_HASHCODE("gallop");
-		if (creature->hasBuff(crc) && vehicle->hasBuff(crc)) {
-			//Clear the active negation of the gallop buff.
-			creature->setSpeedMultiplierMod(1.f);
-			creature->setAccelerationMultiplierMod(1.f);
-			vehicle->setSpeedMultiplierMod(1.f);
-			vehicle->setAccelerationMultiplierMod(1.f);
+		//We need to crosslock buff and creature below
+		clocker.release();
+
+		for(int i=0; i<restrictedBuffCRCs.size(); i++) {
+
+			uint32 buffCRC = restrictedBuffCRCs.get(i);
+
+			if(creature->hasBuff(buffCRC)) {
+				ManagedReference<Buff*> buff = creature->getBuff(buffCRC);
+
+				Locker lock(buff, creature);
+
+				buff->removeAllModifiers();
+			}
 		}
 
-		if (creature->hasBuff(STRING_HASHCODE("burstrun"))
-				|| creature->hasBuff(STRING_HASHCODE("retreat"))) {
-			//Negate effect of the active burst run or retreat buff. The negation will be cleared automatically when the buff is deactivated.
-			creature->setSpeedMultiplierMod(1.f / 1.822f);
-			creature->setAccelerationMultiplierMod(1.f / 1.822f);
+		if(creature->hasBuff(gallopCRC)) {
+			creature->removeBuff(gallopCRC); // This should "fix" any players that have the old gallop buff
 		}
 
+		//We released this crosslock before to remove player buffs
+		Locker vehicleLocker(vehicle, creature);
+
+		if(vehicle->hasBuff(gallopCRC)) {
+			EXECUTE_TASK_1(vehicle, {
+
+				uint32 gallopCRC = STRING_HASHCODE("gallop");
+				Locker lock(vehicle_p);
+
+				ManagedReference<Buff*> gallop = vehicle_p->getBuff(gallopCRC);
+				Locker blocker(gallop, vehicle_p);
+
+				if(gallop != NULL) {
+					gallop->applyAllModifiers();
+				}
+			});
+		}
+
+		// Speed hack buffer
 		SpeedMultiplierModChanges* changeBuffer = creature->getSpeedMultiplierModChanges();
 		const int bufferSize = changeBuffer->size();
 
+		// Drop old change off the buffer
 		if (bufferSize > 5) {
 			changeBuffer->remove(0);
 		}
 
+		// get vehicle speed
 		float newSpeed = vehicle->getRunSpeed();
 
+		// get animal mount speeds
 		if (vehicle->isMount()) {
 			PetManager* petManager = server->getZoneServer()->getPetManager();
 
@@ -113,6 +147,12 @@ public:
 			}
 		}
 
+		// add speed multiplier mod for existing buffs
+		if(vehicle->getSpeedMultiplierMod() != 0)
+			newSpeed *= vehicle->getSpeedMultiplierMod();
+
+
+		// Add our change to the buffer history
 		changeBuffer->add(SpeedModChange(newSpeed / creature->getRunSpeed()));
 
 		creature->updateToDatabase();
