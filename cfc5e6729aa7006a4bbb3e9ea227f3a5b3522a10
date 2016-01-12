@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_dccd4188",
+        "filename": "MMOCoreORB/src/server/zone/managers/skill/SkillManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-12T16:01:29Z",
+      "side": 0,
+      "message": "You could remove the regen part of this comment and the one below.",
+      "revId": "cfc5e6729aa7006a4bbb3e9ea227f3a5b3522a10",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_1cb419f1",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/Saber1hHeadHit1Command.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-12T16:01:29Z",
+      "side": 0,
+      "message": "On the others you changed this include to JediCombatQueueCommand",
+      "revId": "cfc5e6729aa7006a4bbb3e9ea227f3a5b3522a10",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

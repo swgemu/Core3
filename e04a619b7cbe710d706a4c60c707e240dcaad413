@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_3cb9dde9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediCombatQueueCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-12T16:01:29Z",
+      "side": 1,
+      "message": "If you\u0027re going to add this, you may want to move the jedi only members of CombatQueueCommand to here (forceCost, forceCostMultiplier, etc.). Then again, I don\u0027t really see the point of adding this.",
+      "revId": "e04a619b7cbe710d706a4c60c707e240dcaad413",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_7cbf55d1",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SnoopCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-12T16:01:29Z",
+      "side": 1,
+      "message": "I just noticed this was bugged. ghost is creature\u0027s ghost not target\u0027s. We\u0027ve been displaying the wrong force stats. Mind fixing the forcePower and ForcePowerMax here to get from the correct player?",
+      "revId": "e04a619b7cbe710d706a4c60c707e240dcaad413",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_9cf029cb",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObject.idl",
+        "patchSetId": 4
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-12T16:01:29Z",
+      "side": 1,
+      "message": "Add the @dirty annotation",
+      "revId": "e04a619b7cbe710d706a4c60c707e240dcaad413",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_5cba91e2",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1707,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-12T16:01:29Z",
+      "side": 1,
+      "message": "The parent should already be locked anywhere this method is called so you don\u0027t need to lock it here, but if you did you\u0027d want to put the locker after you null check creature and lock creature instead.",
+      "revId": "e04a619b7cbe710d706a4c60c707e240dcaad413",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_bcededf1",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1848,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-12T16:01:29Z",
+      "side": 1,
+      "message": "Remove the locker. The skill mod list is protected by a mutex that is locked when getSkillMod is called so it\u0027s not necessary to lock the creo.",
+      "revId": "e04a619b7cbe710d706a4c60c707e240dcaad413",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
