@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_bca96d7d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediCombatQueueCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-12T20:21:47Z",
+      "side": 1,
+      "message": "I can either leave this as is (no harm done), get rid of it, or branch these specific changes and work on refactoring them separately if you think that would be useful. Let me know.",
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
