@@ -11,10 +11,22 @@
 #include "server/zone/templates/tangible/SharedCreatureObjectTemplate.h"
 
 class DismountCommand : public QueueCommand {
+	Vector<uint32> restrictedBuffCRCs;
+	uint32 gallopCRC;
+
 public:
 
 	DismountCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
+		gallopCRC = STRING_HASHCODE("gallop");
+
+
+		restrictedBuffCRCs.add(gallopCRC);
+		restrictedBuffCRCs.add(STRING_HASHCODE("burstrun"));
+		restrictedBuffCRCs.add(STRING_HASHCODE("retreat"));
+		restrictedBuffCRCs.add(BuffCRC::JEDI_FORCE_RUN_1);
+		restrictedBuffCRCs.add(BuffCRC::JEDI_FORCE_RUN_2);
+		restrictedBuffCRCs.add(BuffCRC::JEDI_FORCE_RUN_3);
 
 	}
 
@@ -65,7 +77,15 @@ public:
 		if (terrainManager == NULL)
 			return GENERALERROR;
 
-		creature->removeMountedCombatSlow();
+		creature->removeMountedCombatSlow(false);
+
+		//remove gallop on dismount
+		if(vehicle->hasBuff(gallopCRC)) {
+			ManagedReference<Buff*> buff = vehicle->getBuff(gallopCRC);
+
+			if(buff != NULL)
+				buff->removeAllModifiers();
+		}
 
 		zone->transferObject(creature, -1, false);
 
@@ -77,37 +97,19 @@ public:
 
 		creature->teleport(creature->getPositionX(), z, creature->getPositionY(), 0);
 
-		if (creature->hasBuff(STRING_HASHCODE("burstrun"))
-				|| creature->hasBuff(STRING_HASHCODE("retreat"))) {
-			//Clear the active negation of the burst run or retreat buff.
-			creature->setSpeedMultiplierMod(1.f);
-			creature->setAccelerationMultiplierMod(1.f);
-		}
+		//reapply speed buffs if they exist
+		for(int i=0; i<restrictedBuffCRCs.size(); i++) {
 
-		unsigned int crc = STRING_HASHCODE("gallop");
-		if (creature->hasBuff(crc)) {
-			ManagedReference<Buff*> buff = creature->getBuff(crc);
+			uint32 buffCRC = restrictedBuffCRCs.get(i);
 
-			if (buff != NULL) {
-				//Negate effect of the active gallop buff. The negation will be cleared automatically when the buff is deactivated.
-				creature->setSpeedMultiplierMod(1.f / buff->getSpeedMultiplierMod());
-				creature->setAccelerationMultiplierMod(1.f / buff->getAccelerationMultiplierMod());
+			if(creature->hasBuff(buffCRC)) {
+				ManagedReference<Buff*> buff = creature->getBuff(buffCRC);
+
+				Locker lock(buff, creature); // Is this necessary?
+
+				buff->applyAllModifiers();
 			}
 		}
-
-		Locker vehicleLocker(vehicle, creature);
-
-		if (vehicle->hasBuff(crc)) {
-			ManagedReference<Buff*> buff = creature->getBuff(crc);
-
-			if (buff != NULL) {
-				//Negate effect of the active gallop buff. The negation will be cleared automatically when the buff is deactivated.
-				vehicle->setSpeedMultiplierMod(1.f / buff->getSpeedMultiplierMod());
-				vehicle->setAccelerationMultiplierMod(1.f / buff->getAccelerationMultiplierMod());
-			}
-		}
-
-		vehicleLocker.release();
 
 		creature->clearState(CreatureState::RIDINGMOUNT);
 

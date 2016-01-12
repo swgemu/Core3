@@ -1,0 +1,38 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.creature.buffs;
+
+import system.thread.Mutex;
+import engine.core.ManagedObject;
+import server.zone.objects.creature.buffs.Buff;
+import server.zone.objects.creature.CreatureObject;
+include server.zone.objects.creature.buffs.BuffType;
+
+// This buff is intended for mount and vehicles. It's start and end messages are sent to it's rider
+class PlayerVehicleBuff extends Buff {
+	public PlayerVehicleBuff(CreatureObject creo, unsigned int buffcrc, float duration, int bufftype) {
+		super(creo, buffcrc, duration, bufftype);
+	}
+	
+	// This is needed to avoid triple locking between the buff vehicle and rider
+	@dereferenced
+	protected transient Mutex mutex;
+	
+	public native abstract void applyRiderAttributeModifiers();
+	public native abstract void applyRiderSkillModifiers();
+	public native abstract void applyRiderStates();
+	public native abstract void applyAllModifiers();
+
+	public native abstract void removeRiderAttributeModifiers();
+	public native abstract void removeRiderSkillModifiers();
+	public native abstract void removeRiderStates();
+	public native abstract void removeAllModifiers();
+
+	@preLocked
+	public native void activate(boolean applyModifiers);
+
+	@preLocked
+	public native void deactivate(boolean removeModifiers);
+}
