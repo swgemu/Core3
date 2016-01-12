@@ -120,6 +120,7 @@ class TangibleObject extends SceneObject {
 		
 		sliceable = false;
 		sliced = false;
+		isCraftedEnhancedItem = false;
 		
 		threatMap = null;
 		junkDealerNeeded = 0;
