@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_1c6e59ca",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AvoidIncapacitationCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-12T07:33:52Z",
+      "side": 1,
+      "message": "never leave in commented out code.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 56
+      },
+      "revId": "5bd7a647dc223cfda05bfab47b59a16d6d564281",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_3c731db3",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AvoidIncapacitationCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-12T07:33:52Z",
+      "side": 1,
+      "message": "there is no point to this variable.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 55
+      },
+      "revId": "5bd7a647dc223cfda05bfab47b59a16d6d564281",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_fc64c5e6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AvoidIncapacitationCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-12T07:33:52Z",
+      "side": 1,
+      "message": "These are already set, you don\u0027t need to reset them.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 80
+      },
+      "revId": "5bd7a647dc223cfda05bfab47b59a16d6d564281",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_3caa3dd5",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AvoidIncapacitationCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-12T07:33:52Z",
+      "side": 1,
+      "message": "change this to use the doForceCost() subroutine. It handles things that aren\u0027t being handled here (like vis).",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 74
+      },
+      "revId": "5bd7a647dc223cfda05bfab47b59a16d6d564281",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_bc5e4d11",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AvoidIncapacitationCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-12T07:33:52Z",
+      "side": 1,
+      "message": "You\u0027ve already checked this.",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 38
+      },
+      "revId": "5bd7a647dc223cfda05bfab47b59a16d6d564281",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_dc6781e9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AvoidIncapacitationCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-12T07:33:52Z",
+      "side": 1,
+      "message": "what is happening here? why are the brackets like this?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 4
+      },
+      "revId": "5bd7a647dc223cfda05bfab47b59a16d6d564281",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_9c6109d6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AvoidIncapacitationCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-12T07:33:52Z",
+      "side": 1,
+      "message": "already set.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 53
+      },
+      "revId": "5bd7a647dc223cfda05bfab47b59a16d6d564281",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_5c9b71c9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AvoidIncapacitationCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-12T07:33:52Z",
+      "side": 1,
+      "message": "don\u0027t add the buff if you already have it.",
+      "range": {
+        "startLine": 56,
+        "startChar": 3,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "5bd7a647dc223cfda05bfab47b59a16d6d564281",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_7ca0b5f4",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AvoidIncapacitationCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-12T07:33:52Z",
+      "side": 1,
+      "message": "Don\u0027t need this line.",
+      "range": {
+        "startLine": 61,
+        "startChar": 3,
+        "endLine": 61,
+        "endChar": 26
+      },
+      "revId": "5bd7a647dc223cfda05bfab47b59a16d6d564281",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
