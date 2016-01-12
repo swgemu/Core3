@@ -2292,7 +2292,7 @@ void CreatureObjectImplementation::setIntimidatedState(int durationSeconds) {
 		return;
 	}
 	
-	state = new StateBuff(asCreatureObject(), CreatureState::INTIMIDATED, durationSeconds);
+	state = new StateBuff(asCreatureObject(), CreatureState::INTIMIDATED, durationSeconds, STRING_HASHCODE("intimidatedstate"));
 
 	Locker locker(state);
 
@@ -2301,9 +2301,18 @@ void CreatureObjectImplementation::setIntimidatedState(int durationSeconds) {
 
 	state->setSkillModifier("private_melee_defense", -20);
 	state->setSkillModifier("private_ranged_defense", -20);
-	state->setSkillModifier("private_damage_divisor", 2);
 
 	addBuff(state);
+
+	locker.release();
+
+	Reference<PrivateSkillMultiplierBuff*> multBuff = new PrivateSkillMultiplierBuff(asCreatureObject(), STRING_HASHCODE("intimidatedstate"), durationSeconds, BuffType::STATE);
+
+	Locker blocker(multBuff);
+
+	multBuff->setSkillModifier("private_damage_divisor", 2);
+
+	addBuff(multBuff);
 }
 
 void CreatureObjectImplementation::setSnaredState(int durationSeconds) {
