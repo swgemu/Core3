@@ -49,11 +49,6 @@ public:
 			return GENERALERROR;
 		}
 
-		if (creature->hasBuff(STRING_HASHCODE("burstrun"))) {
-			creature->sendSystemMessage("You cannot gallop while burst run is active.");
-			return GENERALERROR;
-		}
-
 		PetManager* petManager = server->getZoneServer()->getPetManager();
 		ManagedReference<PetControlDevice*> pcd = mount->getControlDevice().get().castTo<PetControlDevice*>();
 		if (petManager == NULL || pcd == NULL)
@@ -80,22 +75,10 @@ public:
 
 		buff->setSpeedMultiplierMod(magnitude);
 		buff->setAccelerationMultiplierMod(magnitude);
-
+		buff->setStartMessage(startStringId);
+		buff->setEndMessage(endStringId);
 		mount->addBuff(buff);
-
-		locker.release();
-
-		ManagedReference<GallopBuff*> buff2 = new GallopBuff(creature, crc, duration);
-
-		Locker locker2(buff2);
-
-		buff2->setSpeedMultiplierMod(magnitude);
-		buff2->setAccelerationMultiplierMod(magnitude);
-		buff2->setStartMessage(startStringId);
-		buff2->setEndMessage(endStringId);
-
-		creature->addBuff(buff2);
-
+;
 		mount->updateCooldownTimer("gallop", (cooldown + duration) * 1000);
 
 		Reference<GallopNotifyAvailableEvent*> task = new GallopNotifyAvailableEvent(mount);

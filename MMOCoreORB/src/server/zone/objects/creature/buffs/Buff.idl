@@ -129,10 +129,12 @@ class Buff extends ManagedObject implements Logger {
 	public native abstract void applyAttributeModifiers();
 	public native abstract void applySkillModifiers();
 	public native abstract void applyStates();
+	public native abstract void applyAllModifiers();
 
 	public native abstract void removeAttributeModifiers();
 	public native abstract void removeSkillModifiers();
 	public native abstract void removeStates();
+	public native abstract void removeAllModifiers();
 
 	@preLocked
 	public abstract native void clearBuffEvent();
