@@ -1,6 +1,7 @@
 local ObjectManager = require("managers.object.object_manager")
 local OldManEncounter = require("managers.jedi.village.intro.old_man_encounter")
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
+local Logger = require("utils.logger")
 
 Glowing = Object:new {}
 
@@ -190,9 +191,11 @@ function Glowing:screenPlayStateChangedEventHandler(pCreatureObject, arg0, arg1)
 	end
 
 	if (not VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE)) then
+		--Logger:log("They haven't completed the village, ", LT_INFO)
 		return 0
 	else
 		OldManEncounter:start(pCreatureObject)
+		--Logger:log("Starting old man encounter for Mellichae...", LT_INFO)
 		return 1
 	end
 
@@ -216,8 +219,11 @@ end
 function Glowing:onPlayerLoggedIn(pCreatureObject)
 	if not self:isGlowing(pCreatureObject) then
 		self:registerObservers(pCreatureObject, 1)
-	elseif not VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE) then
+	end
+	
+	if not VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE) then
 		self:registerObservers(pCreatureObject, 2)
+		--Logger:log("Player logged in, registering observer type 2.", LT_INFO)
 	end
 end
 
