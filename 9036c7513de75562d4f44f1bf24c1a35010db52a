@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_1ccad9a1",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/QueueCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-12T11:59:52Z",
+      "side": 1,
+      "message": "I was thinking perhaps these should be non-virtual and reference member variables (booleans) for speed reasons. Any input would be appreciated. Currently only the derived base classes override their respective functions",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 2
+      },
+      "revId": "9036c7513de75562d4f44f1bf24c1a35010db52a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
