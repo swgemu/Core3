@@ -11,11 +11,18 @@
 #include "server/zone/templates/tangible/SharedCreatureObjectTemplate.h"
 
 class DismountCommand : public QueueCommand {
+	Vector<uint32> restrictedBuffCRCs;
+
 public:
 
 	DismountCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
-
+		restrictedBuffCRCs.add(STRING_HASHCODE("gallop"));
+		restrictedBuffCRCs.add(STRING_HASHCODE("burstrun"));
+		restrictedBuffCRCs.add(STRING_HASHCODE("retreat"));
+		restrictedBuffCRCs.add(BuffCRC::JEDI_FORCE_RUN_1);
+		restrictedBuffCRCs.add(BuffCRC::JEDI_FORCE_RUN_2);
+		restrictedBuffCRCs.add(BuffCRC::JEDI_FORCE_RUN_3);
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
@@ -77,25 +84,19 @@ public:
 
 		creature->teleport(creature->getPositionX(), z, creature->getPositionY(), 0);
 
-		if (creature->hasBuff(STRING_HASHCODE("burstrun"))
-				|| creature->hasBuff(STRING_HASHCODE("retreat"))) {
-			//Clear the active negation of the burst run or retreat buff.
-			creature->setSpeedMultiplierMod(1.f);
-			creature->setAccelerationMultiplierMod(1.f);
-		}
+		uint32 buffCRC = 0;
+		for(int i=0; i<restrictedBuffCRCs.size(); i++) {
+			buffCRC = restrictedBuffCRCs.get(i);
+			if(creature->hasBuff(buffCRC)) {
+				ManagedReference<Buff*> buff = creature->getBuff(buffCRC);
 
-		unsigned int crc = STRING_HASHCODE("gallop");
-		if (creature->hasBuff(crc)) {
-			ManagedReference<Buff*> buff = creature->getBuff(crc);
+				Locker lock(buff, creature); // Is this necessary?
 
-			if (buff != NULL) {
-				//Negate effect of the active gallop buff. The negation will be cleared automatically when the buff is deactivated.
-				creature->setSpeedMultiplierMod(1.f / buff->getSpeedMultiplierMod());
-				creature->setAccelerationMultiplierMod(1.f / buff->getAccelerationMultiplierMod());
+				buff->applyAllModifiers();
 			}
 		}
 
-		Locker vehicleLocker(vehicle, creature);
+	/*	Locker vehicleLocker(vehicle, creature);
 
 		if (vehicle->hasBuff(crc)) {
 			ManagedReference<Buff*> buff = creature->getBuff(crc);
@@ -107,7 +108,7 @@ public:
 			}
 		}
 
-		vehicleLocker.release();
+		vehicleLocker.release();*/
 
 		creature->clearState(CreatureState::RIDINGMOUNT);
 
