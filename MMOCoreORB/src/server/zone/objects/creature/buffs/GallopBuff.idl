@@ -5,26 +5,38 @@
 package server.zone.objects.creature.buffs;
 
 import engine.core.ManagedObject;
-import server.zone.objects.creature.buffs.Buff;
+import server.zone.objects.creature.buffs.PlayerVehicleBuff;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.creature.buffs.BuffType;
 
 
-class GallopBuff extends Buff {
+class GallopBuff extends PlayerVehicleBuff {
 	public GallopBuff(CreatureObject creo, unsigned int buffcrc, float duration) {
 		super(creo, buffcrc, duration, BuffType.SKILL);
 	}
 
 	public void activate(boolean applyModifiers) {
 		super.activate(true);
-
-		super.creature.removeMountedCombatSlow();
+	
+		SceneObject rider = super.creature.getSlottedObject("rider");
+		if(rider == null)
+			return;
+	
+		CreatureObject creo = rider.asCreatureObject();
+		if(creo != null)
+			creo.removeMountedCombatSlow();
 	}
 
 	public void deactivate(boolean applyModifiers) {
 		super.deactivate(true);
 
-		super.creature.addMountedCombatSlow();
+		SceneObject rider = super.creature.getSlottedObject("rider");
+		if(rider == null)
+			return;
+	
+		CreatureObject creo = rider.asCreatureObject();
+		if(creo != null)
+			creo.addMountedCombatSlow();
 	}
 
 }
