@@ -37,7 +37,7 @@ function QuestManager.completeQuest(pCreatureObject, quest)
 
 	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
 		playerObject:clearActiveQuestsBit(quest)
-		playerObject:setCompletedQuestsBit(quest, QUEST_ACTIVE)
+		playerObject:setCompletedQuestsBit(quest, QUEST_COMPLETED)
 	end)
 end
 

@@ -28,9 +28,10 @@ void FsVillageAreaImplementation::notifyEnter(SceneObject* player) {
 
 	CreatureObject* playerCreature = cast<CreatureObject*>(player);
 	PlayerObject* ghost = playerCreature->getPlayerObject();
+	float rad = getRadius() * 1.05;
 
-	float newPosX = getPositionX() + (cos(angle) * 530);
-	float newPosY = getPositionY() + (sin(angle) * 530);
+	float newPosX = getPositionX() + (cos(angle) * rad);
+	float newPosY = getPositionY() + (sin(angle) * rad);
 
 	// Those who aren't a valid player, do not currently have or have had the Village elder quest cannot enter.
 	if (ghost != NULL) {

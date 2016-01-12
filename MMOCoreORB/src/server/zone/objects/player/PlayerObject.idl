@@ -732,7 +732,9 @@ class PlayerObject extends IntangibleObject {
 	public void clearCompletedQuestsBit(int bitIndex, boolean notifyClient = true) {
 		setCompletedQuestsBit(bitIndex, (byte)0, notifyClient);
 	}
-	
+
+	public native void completeQuest(int questID);
+
 	@dereferenced
 	@local
 	@dirty
