@@ -97,7 +97,7 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/tangible/misc/FsCraftingComponentObject.cpp \
+core3_IDLS =			autogen/server/zone/objects/tangible/misc/FsCraftingComponentObject.cpp \
 				autogen/server/zone/objects/tangible/misc/CustomIngredient.cpp \
 				autogen/server/zone/objects/tangible/misc/PlantObject.cpp \
 				autogen/server/zone/objects/tangible/misc/FsPuzzlePack.cpp \
@@ -209,6 +209,7 @@ core3_IDLS =	autogen/server/zone/objects/tangible/misc/FsCraftingComponentObject
 				autogen/server/zone/objects/creature/buffs/SquadLeaderBuffObserver.cpp \
 				autogen/server/zone/objects/creature/buffs/PrivateBuff.cpp \
 				autogen/server/zone/objects/creature/buffs/PrivateSkillMultiplierBuff.cpp \
+				autogen/server/zone/objects/creature/buffs/PlayerVehicleBuff.cpp \
 				autogen/server/zone/objects/player/PlayerObject.cpp \
 				autogen/server/zone/objects/player/sui/SuiBox.cpp \
 				autogen/server/zone/objects/player/sui/SuiBoxPage.cpp \
@@ -670,6 +671,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/damageovertime/DamageOverTime.cpp \
 		server/zone/objects/creature/damageovertime/DamageOverTimeList.cpp \
 		server/zone/objects/creature/buffs/BuffImplementation.cpp \
+		server/zone/objects/creature/buffs/PlayerVehicleBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/SpiceBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/PowerBoostBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/PerformanceBuffImplementation.cpp \
