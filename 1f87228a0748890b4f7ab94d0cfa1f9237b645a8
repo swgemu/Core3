@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_dc53016b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DismountCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T01:27:12Z",
+      "side": 1,
+      "message": "I don\u0027t have another suggestion (make me think? what?), but the case I\u0027m thinking of where this could break is if you force dismount without calling the dismount command (I\u0027m sure we do this somewhere), then you fail to get your mods back. I do see now that you can\u0027t double apply or double remove, but you could fail to apply or fail to remove (though I\u0027m not sure we ever force mount).",
+      "parentUuid": "da7095c5_7c30b556",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 30
+      },
+      "revId": "1f87228a0748890b4f7ab94d0cfa1f9237b645a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_bcee4db3",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/MountCommand.h",
         "patchSetId": 2
