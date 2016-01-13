@@ -6,67 +6,81 @@
 #define REGAINCONSCIOUSNESSCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/player/events/RegainConsciousnessRegenTask.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/player/PlayerManager.h"
-
-class RegainConsciousnessCommand : public QueueCommand {
+#include "server/zone/objects/creature/buffs/PrivateBuff.h"
+class RegainConsciousnessCommand : public JediQueueCommand {
 public:
 
 	RegainConsciousnessCommand(const String& name, ZoneProcessServer* server)
-	: QueueCommand(name, server) {
+	: JediQueueCommand(name, server) {
 
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
-
-		if (isWearingArmor(creature)) {
-			return NOJEDIARMOR;
-		}
-
-		// Force cost of skill.
-		int forceCost = 1000;
-
-
-		//Check for and deduct Force cost.
-
-		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-
-
-		if (playerObject->getForcePower() <= forceCost) {
-			creature->sendSystemMessage("@jedi_spam:no_force_power"); //"You do not have enough Force Power to peform that action.
-			return GENERALERROR;
-		}
-
 		// They should be dead...
 		if (creature->isDead()){
-			// Revive user by setting posture to standing.
-			creature->setPosture(CreaturePosture::UPRIGHT);
 
-			// Unsure if this was used in live?
-			 creature->playEffect("clienteffect/pl_force_regain_consciousness_self.cef", "");
+			int res = doCommonJediSelfChecks(creature);
+			if(res != SUCCESS)
+				return res;
 
-			// Do the 1 minute of grogginess suffering (no actions can be taken.)
-			// TODO: Unsure how to do this.
-
-			playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+			doForceCost(creature);
 
 			// Cut Force Regen in Half for 30 Minutes.
+			ManagedReference<PrivateSkillMultiplierBuff *> regenDebuff = new PrivateSkillMultiplierBuff(creature, STRING_HASHCODE("private_force_regen_debuff"), 60*30, BuffType::JEDI);
+			Locker regenLocker(regenDebuff);
+			regenDebuff->setSkillModifier("private_force_regen_divisor", 2);
+			// TODO: Find potential end message for force regen debuff
 
-			playerObject->setForcePowerRegen(playerObject->getForcePowerRegen() / 2);
 
-			// Jedi experience loss.
+			// Apply grogginess debuff
+			ManagedReference<PrivateBuff *> groggyDebuff = new PrivateBuff(creature, STRING_HASHCODE("private_groggy_debuff"), 60, BuffType::JEDI);
+			Locker groggyLocker(groggyDebuff);
+
+			for(int i=0; i<CreatureAttribute::ARRAYSIZE; i++)
+				groggyDebuff->setAttributeModifier(i, -100);
+			// TODO: Find potential end message for groggy debuff
+
+			// Add buffs to creature
+			creature->addBuff(groggyDebuff);
+			creature->addBuff(regenDebuff);
+
+			ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+
+			//close clone window
+			playerObject->removeSuiBoxType(SuiWindowType::CLONE_REQUEST);
+
+			//send hard coded buff messages
+			creature->sendSystemMessage("Your grogginess will expire in 60.0 seconds.");
+			creature->sendSystemMessage("Your force regeneration rate has been temporarily reduced due to your near death experience.");
+
+			// Jedi XP Loss
 			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 			playerManager->awardExperience(creature, "jedi_general", -50000, true);
 
-			Reference<RegainConsciousnessRegenTask*> rcTask = new RegainConsciousnessRegenTask(creature, playerObject);
-			creature->addPendingTask("regainConsciousnessRegenTask", rcTask, (1800 * 1000));
+			StringIdChatParameter message("base_player","prose_revoke_xp");
+			message.setDI(-50000);
+			message.setTO("exp_n", "jedi_general");
+			creature->sendSystemMessage(message);
+
+			// Revive user by setting posture to standing.
+
+			creature->setPosture(CreaturePosture::UPRIGHT);
+
+			if(creature->getHAM(CreatureAttribute::HEALTH) <= 0) {
+				creature->setHAM(CreatureAttribute::HEALTH, 500, true);
+			}
+
+			if(creature->getHAM(CreatureAttribute::ACTION) <= 0) {
+				creature->setHAM(CreatureAttribute::ACTION, 500, true);
+			}
+
+			if(creature->getHAM(CreatureAttribute::MIND) <= 0) {
+				creature->setHAM(CreatureAttribute::MIND, 500, true);
+			}
+
 
 			return SUCCESS;
 		}
