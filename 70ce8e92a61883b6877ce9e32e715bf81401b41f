@@ -291,6 +291,24 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_dcda21e9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-13T01:33:06Z",
+      "side": 1,
+      "message": "Does the first buff locker only need to be released if I were crosslocking them?",
+      "parentUuid": "da7095c5_9c76e905",
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_bcc08d2b",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
         "patchSetId": 8
