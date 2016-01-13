@@ -44,7 +44,7 @@ public:
 			return GENERALERROR;
 		}
 
-		if (!creature->checkCooldownRecovery("gallop")) {
+		if (!mount->checkCooldownRecovery("gallop")) {
 			creature->sendSystemMessage("@combat_effects:mount_tired"); // Your mount is too tired to gallop.
 			return GENERALERROR;
 		}
@@ -96,10 +96,10 @@ public:
 
 		creature->addBuff(buff2);
 
-		creature->updateCooldownTimer("gallop", (cooldown + duration) * 1000);
+		mount->updateCooldownTimer("gallop", (cooldown + duration) * 1000);
 
-		Reference<GallopNotifyAvailableEvent*> task = new GallopNotifyAvailableEvent(creature);
-		creature->addPendingTask("gallop_notify", task, (cooldown + duration) * 1000);
+		Reference<GallopNotifyAvailableEvent*> task = new GallopNotifyAvailableEvent(mount);
+		mount->addPendingTask("gallop_notify", task, (cooldown + duration) * 1000);
 
 		return SUCCESS;
 	}
