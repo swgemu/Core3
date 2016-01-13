@@ -1,4 +1,6 @@
 local ObjectManager = require("managers.object.object_manager")
+local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
+local QuestManager = require("managers.quest.quest_manager")
 
 SuiPhase1AccessTerminal = {
 	terminalComponents = { "@quest_item_n:fs_craft_puzzle_config_processor", "@quest_item_n:fs_craft_puzzle_gyro_receiver",
@@ -61,6 +63,7 @@ function SuiPhase1AccessTerminal:openAccessTerminal(pPlayer, pTerminal)
 	sui.setTitle("@quest/force_sensitive/fs_crafting:sui_access_terminal_title")
 	sui.setPrompt(suiPrompt)
 	sui.showOtherButton()
+	sui.setForceCloseDistance(10)
 	sui.setTargetNetworkId(SceneObject(pTerminal):getObjectID())
 
 	for i = 1, #componentStatus, 1 do
@@ -68,6 +71,23 @@ function SuiPhase1AccessTerminal:openAccessTerminal(pPlayer, pTerminal)
 	end
 
 	if (completed) then
+		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_crafting:phase1_msg_quest_finished")
+
+		VillageJediManagerCommon.unlockBranch(pPlayer, "force_sensitive_crafting_mastery_assembly")
+		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_CRAFT_PUZZLE_QUEST_00)
+		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_CRAFT_PUZZLE_QUEST_03)
+		VillageJediManagerCommon.setCompletedQuestThisPhase(pPlayer)
+
+		local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+
+		if (pInventory ~= nil) then
+			local pSculpture = giveItem(pInventory, "object/tangible/item/quest/force_sensitive/fs_sculpture_4.iff", -1, true)
+
+			if (pSculpture == nil) then
+				CreatureObject(pPlayer):sendSystemMessage("Error: Unable to generate item.")
+			end
+		end
+
 		sui.setProperty("btnOk", "Visible", "false")
 		sui.setProperty("btnOther", "Visible", "false")
 	else
@@ -91,19 +111,24 @@ function SuiPhase1AccessTerminal:accessTerminalCallback(pPlayer, pSui, eventInde
 
 	local suiPageData = LuaSuiPageData(pPageData)
 
+	local terminalID = suiPageData:getTargetNetworkId()
+	local pTerminal = getSceneObject(terminalID)
+
 	if (rowIndex == -1) then
-		suiPageData:sendUpdateTo(pPlayer)
+		self:openAccessTerminal(pPlayer, pTerminal)
 		return
 	end
 
 	if (otherPressed == "true") then -- otherPressed is sent by the client as a string
-		self:retrieveComponent(pPlayer, suiPageData, rowIndex)
+		self:retrieveComponent(pPlayer, rowIndex)
 	else
-		self:replaceComponent(pPlayer, suiPageData, rowIndex)
+		self:replaceComponent(pPlayer, rowIndex)
 	end
+
+	self:openAccessTerminal(pPlayer, pTerminal)
 end
 
-function SuiPhase1AccessTerminal:retrieveComponent(pPlayer, suiPageData, rowIndex)
+function SuiPhase1AccessTerminal:retrieveComponent(pPlayer, rowIndex)
 	rowIndex = rowIndex + 1
 
 	if (rowIndex > 4 or rowIndex < 1) then
@@ -114,7 +139,6 @@ function SuiPhase1AccessTerminal:retrieveComponent(pPlayer, suiPageData, rowInde
 
 	if (rowStatus == 0) then
 		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_crafting:phase1_msg_comp_not_installed")
-		suiPageData:sendUpdateTo(pPlayer)
 		return
 	end
 
@@ -122,7 +146,6 @@ function SuiPhase1AccessTerminal:retrieveComponent(pPlayer, suiPageData, rowInde
 
 	if (pInventory == nil or SceneObject(pInventory):isContainerFullRecursive()) then
 		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_crafting:phase1_msg_inventory_full")
-		suiPageData:sendUpdateTo(pPlayer)
 		return
 	end
 
@@ -130,7 +153,6 @@ function SuiPhase1AccessTerminal:retrieveComponent(pPlayer, suiPageData, rowInde
 
 	if (pItem == nil) then
 		CreatureObject(pPlayer):sendSystemMessage("Failed to generate component, please try again.")
-		suiPageData:sendUpdateTo(pPlayer)
 		return
 	end
 
@@ -143,10 +165,9 @@ function SuiPhase1AccessTerminal:retrieveComponent(pPlayer, suiPageData, rowInde
 	writeScreenPlayData(pPlayer, "FsCrafting1", "accessTerminalStatus" .. rowIndex, "0")
 
 	CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_crafting:phase1_msg_component_retrieved")
-	suiPageData:sendUpdateTo(pPlayer)
 end
 
-function SuiPhase1AccessTerminal:replaceComponent(pPlayer, suiPageData, rowIndex)
+function SuiPhase1AccessTerminal:replaceComponent(pPlayer, rowIndex)
 	rowIndex = rowIndex + 1
 
 	if (rowIndex > 4 or rowIndex < 1) then
@@ -157,7 +178,6 @@ function SuiPhase1AccessTerminal:replaceComponent(pPlayer, suiPageData, rowIndex
 
 	if (rowStatus ~= 0) then
 		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_crafting:phase1_msg_comp_installed")
-		suiPageData:sendUpdateTo(pPlayer)
 		return
 	end
 
@@ -165,7 +185,6 @@ function SuiPhase1AccessTerminal:replaceComponent(pPlayer, suiPageData, rowIndex
 
 	if (pInventory == nil) then
 		CreatureObject(pPlayer):sendSystemMessage("Error locating inventory, please try again.")
-		suiPageData:sendUpdateTo(pPlayer)
 		return
 	end
 
@@ -173,7 +192,6 @@ function SuiPhase1AccessTerminal:replaceComponent(pPlayer, suiPageData, rowIndex
 
 	if (pComponent == nil) then
 		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_crafting:phase1_msg_dont_have_component")
-		suiPageData:sendUpdateTo(pPlayer)
 		return
 	end
 
@@ -185,6 +203,4 @@ function SuiPhase1AccessTerminal:replaceComponent(pPlayer, suiPageData, rowIndex
 	SceneObject(pComponent):destroyObjectFromDatabase()
 
 	CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_crafting:phase1_msg_component_replaced")
-
-	suiPageData:sendUpdateTo(pPlayer)
 end

@@ -5,6 +5,9 @@ SuiMessageBox.new = function (defaultCallback, defaultFunction)
 
 	self.setDefaultCallback(defaultCallback, defaultFunction)
 
+	self.setProperty("btnRevert", "Enabled", "false")
+	self.setProperty("btnRevert", "Visible", "false")
+
 	self.setTitle = function (value)
 		self.setProperty("bg.caption.lblTitle", "Text", value)
 	end
