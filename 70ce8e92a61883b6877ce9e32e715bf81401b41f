@@ -16,6 +16,300 @@
       "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_7c099594",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediCombatQueueCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T00:35:56Z",
+      "side": 1,
+      "message": "Just leave it. I\u0027m sure it will be handy in the future.",
+      "parentUuid": "da7095c5_bca96d7d",
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_1ce739e6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T00:35:56Z",
+      "side": 1,
+      "message": "This needs to be crosslocked to creature since creature comes in locked.",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 35
+      },
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_fcc60549",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T00:35:56Z",
+      "side": 1,
+      "message": "You might want to use a PrivateMultiplier buff here so that any future mods to \"private_force_regen_multiplier\" are multiplied instead of added.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 71
+      },
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_9cc34938",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T00:35:56Z",
+      "side": 1,
+      "message": "Change this to \"private_force_regen_percent\" or something. Multiplier makes it sound like I am multiplying by 50.",
+      "range": {
+        "startLine": 34,
+        "startChar": 34,
+        "endLine": 34,
+        "endChar": 64
+      },
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_7ce2f5d6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T00:35:56Z",
+      "side": 1,
+      "message": "This needs to be crosslocked to creature since creature comes in locked. Also, you need to somehow release the previous buff Locker (either with .release() or by forcing it out of scope).",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 37
+      },
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_bcc08d2b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T00:35:56Z",
+      "side": 1,
+      "message": "Are these the right strings? I feel like there should be client strings to send, in which case we should add them to the buff (setStartMessage). At the least, add a TODO here to research the appropriate client strings for these two buffs.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 127
+      },
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_5cddb113",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T00:35:56Z",
+      "side": 1,
+      "message": "What about HAM? If you just set them upright without modifying HAM in some way (ie, setting anything less than 1 to 1, or whatever the appropriate action is), they will just incap (or possibly die, depending on how triple incaps are being handled).",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 50
+      },
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_3cec7dc7",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RevivePlayerCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T00:35:56Z",
+      "side": 1,
+      "message": "Check your locks here. creature comes in crosslocked to a different creatures -- you will probably need to use an EXECUTE_TASK macro for this.",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 24
+      },
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_dcd0e1f9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SnoopCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T00:35:56Z",
+      "side": 1,
+      "message": "Did you mean target-\u003egetPlayerObject(); ?",
+      "range": {
+        "startLine": 372,
+        "startChar": 2,
+        "endLine": 372,
+        "endChar": 76
+      },
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_bcd72ded",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1711,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T00:35:56Z",
+      "side": 1,
+      "message": "I know you don\u0027t need creature out of scope, but this check should be done before scheduling a new regen event to prevent any erroneous regen events from being scheduled.",
+      "range": {
+        "startLine": 1707,
+        "startChar": 0,
+        "endLine": 1711,
+        "endChar": 3
+      },
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_9cda6916",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1714,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T00:35:56Z",
+      "side": 1,
+      "message": "change this name as per an earlier comment",
+      "range": {
+        "startLine": 1714,
+        "startChar": 48,
+        "endLine": 1714,
+        "endChar": 78
+      },
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_fccda55e",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1716,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T00:35:56Z",
+      "side": 1,
+      "message": "just use the regen value you just defined here.",
+      "range": {
+        "startLine": 1716,
+        "startChar": 25,
+        "endLine": 1716,
+        "endChar": 45
+      },
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_5c04d17d",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/components/PlayerContainerComponent.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T00:35:56Z",
+      "side": 1,
+      "message": "I\u0027d keep this an else if() just because these are mutually exclusive events.",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 33
+      },
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
