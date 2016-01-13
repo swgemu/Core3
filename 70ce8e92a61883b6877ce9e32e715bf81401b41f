@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_3cd6bdc6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T01:34:06Z",
+      "side": 1,
+      "message": "Check how intimidate sets its private divisor skillmod. Maybe I\u0027m confusing a couple of things, but the way you have it now all changes to this skillmod would need to be additive.",
+      "parentUuid": "da7095c5_5cc7f112",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 71
+      },
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_7ce2f5d6",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
         "patchSetId": 8
@@ -392,6 +416,30 @@
       "side": 1,
       "message": "https://drive.google.com/file/d/0Bw03ub5LUQyQSl9GRkp5MDJUWkk/view \n\nhttps://drive.google.com/file/d/0Bw03ub5LUQyQajFfR3ExYTVQNUU/view \n\nhttps://drive.google.com/file/d/0Bw03ub5LUQyQay1tM2hWM3BVWG8/view",
       "parentUuid": "da7095c5_7c651544",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 127
+      },
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_9ce4a9ad",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T01:34:06Z",
+      "side": 1,
+      "message": "I think it\u0027s strange that the grogginess message isn\u0027t a stringID with a DF parameter, but that looks like great proof to me. I would add a TODO here saying to change these when buff setStart/EndMessage can take a string, and they should be added later if it\u0027s possible. It\u0027s also possible it\u0027s a client restriction and this is how it needs to work. I\u0027d still add the comment.",
+      "parentUuid": "da7095c5_7ccc3536",
       "range": {
         "startLine": 60,
         "startChar": 0,
