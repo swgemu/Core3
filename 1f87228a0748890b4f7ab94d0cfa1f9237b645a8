@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_9cf10998",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DismountCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T00:46:00Z",
+      "side": 1,
+      "message": "This isn\u0027t quite correct. gallop is the exact opposite the other buffs in that you want to clear it on dismount and add it on mount.",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "1f87228a0748890b4f7ab94d0cfa1f9237b645a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_3c031d75",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DismountCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T00:46:00Z",
+      "side": 1,
+      "message": "Why declare this out of scope?",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 21
+      },
+      "revId": "1f87228a0748890b4f7ab94d0cfa1f9237b645a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_dcf7818b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DismountCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T00:46:00Z",
+      "side": 1,
+      "message": "yes, you can have a race here if modifiers ever change on the buff.",
+      "range": {
+        "startLine": 93,
+        "startChar": 33,
+        "endLine": 93,
+        "endChar": 54
+      },
+      "revId": "1f87228a0748890b4f7ab94d0cfa1f9237b645a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_fcf4c588",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DismountCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T00:46:00Z",
+      "side": 1,
+      "message": "I\u0027m a bit worried this will double apply modifiers if we aren\u0027t careful about how we remove mounts every time. ie, this seems like a fragile way to do this.",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 30
+      },
+      "revId": "1f87228a0748890b4f7ab94d0cfa1f9237b645a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_bcee4db3",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/MountCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T00:46:00Z",
+      "side": 1,
+      "message": "Take the inverse of my comments from Dismount",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 3
+      },
+      "revId": "1f87228a0748890b4f7ab94d0cfa1f9237b645a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
