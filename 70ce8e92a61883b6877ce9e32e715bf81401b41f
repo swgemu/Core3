@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_5cc7f112",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-13T01:28:47Z",
+      "side": 1,
+      "message": "it\u0027s probably a sign I should just go to sleep but I\u0027m not quite seeing how I could use it as a divisor.",
+      "parentUuid": "da7095c5_5c605135",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 71
+      },
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_7ce2f5d6",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
         "patchSetId": 8
@@ -326,6 +350,30 @@
       "side": 1,
       "message": "It\u0027s possible it\u0027s necessary; do you have screenshots showing the messages that should be sent?",
       "parentUuid": "da7095c5_dc3ea129",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 127
+      },
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_7ccc3536",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-13T01:28:47Z",
+      "side": 1,
+      "message": "https://drive.google.com/file/d/0Bw03ub5LUQyQSl9GRkp5MDJUWkk/view \n\nhttps://drive.google.com/file/d/0Bw03ub5LUQyQajFfR3ExYTVQNUU/view \n\nhttps://drive.google.com/file/d/0Bw03ub5LUQyQay1tM2hWM3BVWG8/view",
+      "parentUuid": "da7095c5_7c651544",
       "range": {
         "startLine": 60,
         "startChar": 0,
