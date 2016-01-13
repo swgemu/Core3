@@ -20,7 +20,7 @@ public:
 
 		singleUseEventTypes.add(ObserverEventType::FORCEBUFFHIT);
 
-		skillMods.put("force_armor", 2); // this is the same as force abosrb 1?
+		skillMods.put("force_armor", 45);
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
