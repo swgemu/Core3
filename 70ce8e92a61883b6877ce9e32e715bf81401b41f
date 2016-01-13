@@ -60,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_1c0c1994",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-13T01:15:39Z",
+      "side": 1,
+      "message": "It\u0027s not necessary to crosslock this. Since the buff was just created it\u0027ll be safe without it.",
+      "parentUuid": "da7095c5_1ce739e6",
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_fcc60549",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
         "patchSetId": 8
@@ -129,6 +147,24 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_3c11ddac",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-13T01:15:39Z",
+      "side": 1,
+      "message": "Again, this doesn\u0027t need to be crosslocked.",
+      "parentUuid": "da7095c5_7ce2f5d6",
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_bcc08d2b",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
         "patchSetId": 8
@@ -192,6 +228,24 @@
         "endLine": 107,
         "endChar": 24
       },
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_9c1fc9b7",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RevivePlayerCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-13T01:15:39Z",
+      "side": 1,
+      "message": "Again, this is safe how it is since the buff is just created.",
+      "parentUuid": "da7095c5_3cec7dc7",
       "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
