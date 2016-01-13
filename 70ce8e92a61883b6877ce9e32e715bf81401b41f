@@ -333,6 +333,24 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_7cf3d573",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T01:39:30Z",
+      "side": 1,
+      "message": "Yes, if you don\u0027t crosslock (which will work because you know the buff isn\u0027t getting used in any other thread), then you don\u0027t need to release before locking this one for the same reason. At this point in your code, you have perfect knowledge of what\u0027s locking these buffs so you can use that to your advantage.",
+      "parentUuid": "da7095c5_dcda21e9",
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_bcc08d2b",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
         "patchSetId": 8
