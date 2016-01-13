@@ -10,7 +10,7 @@ local OLD_MAN_DESPAWN_TIME = 10 * 1000
 local OLD_MAN_FORCE_CRYSTAL_STRING = "object/tangible/loot/quest/force_sensitive/force_crystal.iff"
 local OLD_MAN_FORCE_CRYSTAL_ID_STRING = "force_crystal_id"
 
-local OLD_MAN_GREETING_STRING_EXIT = "@quest/force_sensitive/exit:oldman_greeting"
+local OLD_MAN_GREETING_STRING_EXIT = "@quest/force_sensitive/exit:old_man_greeting"
 
 OldManEncounter = Encounter:new {
 	-- Task properties
