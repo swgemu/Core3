@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_3c3a3d37",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DismountCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-13T01:07:27Z",
+      "side": 1,
+      "message": "I was a bit confused as to why it set it to 1.0f, I\u0027ll definitely fix this.",
+      "parentUuid": "da7095c5_9cf10998",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "1f87228a0748890b4f7ab94d0cfa1f9237b645a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_3c031d75",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DismountCommand.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-01-13T00:46:00Z",
       "side": 1,
       "message": "Why declare this out of scope?",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 21
+      },
+      "revId": "1f87228a0748890b4f7ab94d0cfa1f9237b645a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_1c35f945",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DismountCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-13T01:07:27Z",
+      "side": 1,
+      "message": "my brain forgot how compilers work - it\u0027s not any more efficient",
+      "parentUuid": "da7095c5_3c031d75",
       "range": {
         "startLine": 87,
         "startChar": 2,
@@ -82,6 +130,30 @@
       "writtenOn": "2016-01-13T00:46:00Z",
       "side": 1,
       "message": "I\u0027m a bit worried this will double apply modifiers if we aren\u0027t careful about how we remove mounts every time. ie, this seems like a fragile way to do this.",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 30
+      },
+      "revId": "1f87228a0748890b4f7ab94d0cfa1f9237b645a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_7c30b556",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DismountCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-13T01:07:27Z",
+      "side": 1,
+      "message": "The buff itself has a boolean to see whether the modifiers are applied or not. That should prevent it from ever being doubly applied or removed. \n\nIf you have another suggestion though I\u0027d love to hear it.",
+      "parentUuid": "da7095c5_fcf4c588",
       "range": {
         "startLine": 95,
         "startChar": 4,
