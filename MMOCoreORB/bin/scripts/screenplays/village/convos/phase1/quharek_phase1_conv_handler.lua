@@ -2,6 +2,7 @@ local ObjectManager = require("managers.object.object_manager")
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
 local QuestManager = require("managers.quest.quest_manager")
 local FsCrafting1 = require("managers.jedi.village.phase1.fs_crafting1")
+local FsCrafting1Goto1 = require("managers.jedi.village.phase1.fs_crafting1_goto1")
 
 villageQuharekPhase1ConvoHandler = {  }
 
@@ -29,6 +30,8 @@ function villageQuharekPhase1ConvoHandler:runScreenHandlers(conversationTemplate
 
 	if (screenID == "get_to_work") then
 		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.FS_CRAFT_PUZZLE_QUEST_00)
+		VillageJediManagerCommon.setActiveQuestThisPhase(conversingPlayer)
+		FsCrafting1Goto1:start(conversingPlayer)
 	end
 
 	return conversationScreen

@@ -95,6 +95,8 @@ villageObjectSpawns = {
 	},
 
 	[1] = {
+		{ "object/tangible/item/quest/force_sensitive/fs_craft_puzzle_analyzer.iff", 5375.64, 79.26, -4116.92, 139.8 },
+		{ "object/tangible/item/quest/force_sensitive/fs_craft_puzzle_calibrator.iff", 5375.46, 79.26, -4116.32, 0 },
 		{ "object/static/structure/dantooine/dant_large_communal_dest.iff", 5227.9, 78.5, -4171.6, -40 },
 		{ "object/static/structure/dantooine/dant_large_rock_hut_dest_01.iff", 5303.8, 78.5, -4058, -55 },
 		{ "object/static/structure/dantooine/dant_large_rock_hut_dest_02.iff", 5316.4, 78.5, -4024, 45 },

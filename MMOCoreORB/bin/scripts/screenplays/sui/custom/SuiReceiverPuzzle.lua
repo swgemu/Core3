@@ -1,12 +1,13 @@
 local ObjectManager = require("managers.object.object_manager")
 
 SuiReceiverPuzzle = {}
-function SuiReceiverPuzzle:openPuzzle(pCreatureObject, pPuzzle)
+function SuiReceiverPuzzle:openPuzzle(pCreatureObject, pPuzzle, pCalibrator)
 	local sui = SuiCalibrationGame3.new("SuiReceiverPuzzle", "defaultCallback")
 	local playerID = SceneObject(pCreatureObject):getObjectID()
+	writeData(playerID .. ":calibratorComponentID", SceneObject(pPuzzle):getObjectID())
 
-	sui.setTargetNetworkId(SceneObject(pPuzzle):getObjectID())
-	sui.setForceCloseDistance(0)
+	sui.setTargetNetworkId(SceneObject(pCalibrator):getObjectID())
+	sui.setForceCloseDistance(10)
 
 	local goal = { 0, 0, 0 }
 	local current = { 0, 0, 0 }
@@ -75,7 +76,7 @@ function SuiReceiverPuzzle:defaultCallback(pPlayer, pSui, eventIndex, ...)
 		return
 	end
 
-	local puzzleID = suiPageData:getTargetNetworkId()
+	local puzzleID = readData(playerID .. ":calibratorComponentID")
 	local pPuzzle = getSceneObject(puzzleID)
 
 	if (pPuzzle == nil) then

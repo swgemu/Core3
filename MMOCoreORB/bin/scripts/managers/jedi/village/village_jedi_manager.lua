@@ -8,6 +8,7 @@ local SithShadowIntroTheater = require("managers.jedi.village.intro.sith_shadow_
 local QuestManager = require("managers.quest.quest_manager")
 local FsSad = require("managers.jedi.village.phase2.fs_sad")
 local FsMedicPuzzle = require("managers.jedi.village.phase1.fs_medic_puzzle")
+local FsCrafting1 = require("managers.jedi.village.phase1.fs_crafting1")
 require("managers.jedi.village.village_jedi_manager_township")
 
 jediManagerName = "VillageJediManager"
@@ -67,6 +68,10 @@ function VillageJediManager:onPlayerLoggedIn(pCreatureObject)
 			QuestManager.hasActiveQuest(pCreatureObject, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_02) or
 			QuestManager.hasActiveQuest(pCreatureObject, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_03)) then
 			FsMedicPuzzle:doPhaseChange(pCreatureObject)
+		end
+		if (QuestManager.hasActiveQuest(pCreatureObject, QuestManager.quests.FS_CRAFT_PUZZLE_QUEST_00) and not
+			QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.FS_CRAFT_PUZZLE_QUEST_00)) then
+			FsCrafting1:doPhaseChangeFail(pCreatureObject)
 		end
 	elseif (VillageJediManagerTownship:getCurrentPhase() ~= 2) then
 		if (QuestManager.hasActiveQuest(pCreatureObject, QuestManager.quests.FS_QUESTS_SAD_TASKS)) then
