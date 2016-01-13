@@ -78,6 +78,24 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_fc692526",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T01:22:48Z",
+      "side": 1,
+      "message": "This is only true as long as the buff isn\u0027t added first. Which in this case it isn\u0027t, so I was just being careful.",
+      "parentUuid": "da7095c5_1c0c1994",
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_fcc60549",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
         "patchSetId": 8
@@ -136,6 +154,30 @@
       "side": 1,
       "message": "I\u0027m not 100% sure how I should do this. As far as I can tell I can only increase a skillmod with the multiplier. At least the way the logic would work isn\u0027t immediately coming to me. \n\nI suppose I could set the mod to be 100, then subtract 100 before I do the force cost calculations. Something that throws me off though is inside of PrivateSkillMultiplierBuff it does this - \"prevMod*(value-1)\"\n\nAny idea why the -1 is used? Should I use 51 as the \"multiplier\" in that case?",
       "parentUuid": "da7095c5_fcc60549",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 71
+      },
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_5c605135",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T01:22:48Z",
+      "side": 1,
+      "message": "It does it that way because it\u0027s not designed for percents. It\u0027s designed for raw multipliers/divisors.",
+      "parentUuid": "da7095c5_7c1755a4",
       "range": {
         "startLine": 32,
         "startChar": 0,
@@ -260,6 +302,30 @@
       "side": 1,
       "message": "I searched for the client strings with Nee quite a bit and couldn\u0027t find anything. With that said, is there a reason Buff isn\u0027t overloaded to take a basic string start message? Seems like it would be useful.",
       "parentUuid": "da7095c5_bcc08d2b",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 127
+      },
+      "revId": "70ce8e92a61883b6877ce9e32e715bf81401b41f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_7c651544",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T01:22:48Z",
+      "side": 1,
+      "message": "It\u0027s possible it\u0027s necessary; do you have screenshots showing the messages that should be sent?",
+      "parentUuid": "da7095c5_dc3ea129",
       "range": {
         "startLine": 60,
         "startChar": 0,
