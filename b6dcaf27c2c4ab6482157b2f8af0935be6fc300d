@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_dc88e1c8",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T05:20:10Z",
+      "side": 1,
+      "message": "did you mean to put this double underscore here?",
+      "range": {
+        "startLine": 32,
+        "startChar": 111,
+        "endLine": 32,
+        "endChar": 113
+      },
+      "revId": "b6dcaf27c2c4ab6482157b2f8af0935be6fc300d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_fc85a5ad",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegainConsciousnessCommand.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-13T05:20:10Z",
+      "side": 1,
+      "message": "You used percentage here, but then use multiplier and divisor later. The latter is better, but that also means that this buff needs to be a PrivateSkillMultiplierBuff.",
+      "range": {
+        "startLine": 34,
+        "startChar": 33,
+        "endLine": 34,
+        "endChar": 65
+      },
+      "revId": "b6dcaf27c2c4ab6482157b2f8af0935be6fc300d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
