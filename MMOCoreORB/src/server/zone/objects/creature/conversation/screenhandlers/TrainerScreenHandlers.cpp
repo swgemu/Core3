@@ -6,6 +6,7 @@
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/objects/player/sessions/TrainerConversationSession.h"
 #include "server/zone/Zone.h"
+#include "server/zone/managers/jedi/JediManager.h"
 
 const String TrainerScreenHandlers::STARTSCREENHANDLERID = "convoscreenstart";
 const String TrainerScreenHandlers::INFOSCREENHANDLERID = "convoscreentrainerinfo";
@@ -366,6 +367,7 @@ ConversationScreen* TrainerTrainSkillScreenHandler::handleScreen(CreatureObject*
 
 			if (treesMastered >= 6) { // Six trees to access village. State matches that in jedi manager.
 				conversingPlayer->setScreenPlayState("VillageJediProgression", 8);
+				JediManager::instance()->createOldManEncounter(conversingPlayer);
 			}
 		}
 

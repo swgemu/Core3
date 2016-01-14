@@ -115,6 +115,14 @@ public:
 	 * @param creature the creature that used the item.
 	 */
 	void useItem(SceneObject* item, const int itemType, CreatureObject* creature);
+
+
+	/**
+	 * Create the old man encounter, used for spawning the Old Man.
+	 * Calls the createOldManEncounter in the lua manager.
+	 * @param creature the creature object.
+	 */
+	void createOldManEncounter(CreatureObject* creature);
 };
 
 }
