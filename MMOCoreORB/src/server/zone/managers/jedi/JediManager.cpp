@@ -113,3 +113,11 @@ void JediManager::useItem(SceneObject* item, const int itemType, CreatureObject*
 
 	luaUseItem->callFunction();
 }
+
+void JediManager::startTask(CreatureObject* creature, String nameOfTask) {
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	Reference<LuaFunction*> luaStartTask = lua->createFunction(nameOfTask, "start", 0);
+	*luaStartTask << creature;
+
+	luaStartTask->callFunction();
+}

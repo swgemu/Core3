@@ -115,6 +115,15 @@ public:
 	 * @param creature the creature that used the item.
 	 */
 	void useItem(SceneObject* item, const int itemType, CreatureObject* creature);
+
+
+	/**
+	 * Starts a task.
+	 * Calls the startTask in the lua manager.
+	 * @param creature the creature object.
+	 * @param nameOfTask the name of the task to call.
+	 */
+	void startTask(CreatureObject* creature, String nameOfTask);
 };
 
 }
