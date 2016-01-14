@@ -18,6 +18,7 @@
 #include "server/zone/objects/mission/MissionObserver.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/group/GroupObject.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/mission/bountyhunter/BountyHunterDroid.h"
 #include "server/zone/objects/mission/bountyhunter/events/BountyHunterTargetTask.h"
@@ -165,7 +166,7 @@ int BountyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* o
 	Locker locker(&syncMutex);
 
 	if (eventType == ObserverEventType::OBJECTDESTRUCTION) {
-		handleNpcTargetKilled(arg1);
+		handleNpcTargetKilled(observable);
 	} else if (eventType == ObserverEventType::DAMAGERECEIVED) {
 		return handleNpcTargetReceivesDamage(arg1);
 	} else if (eventType == ObserverEventType::PLAYERKILLED) {
@@ -521,28 +522,24 @@ bool BountyMissionObjectiveImplementation::isPlayerTarget() {
 	return mission->getTargetOptionalTemplate() == "";
 }
 
-void BountyMissionObjectiveImplementation::handleNpcTargetKilled(ManagedObject* arg1) {
-	CreatureObject* attacker = NULL;
-
-	attacker = cast<CreatureObject*>(arg1);
-
-	ManagedReference<MissionObject* > mission = this->mission.get();
+void BountyMissionObjectiveImplementation::handleNpcTargetKilled(Observable* observable) {
+	CreatureObject* target =  cast<CreatureObject*>(observable);
 	ManagedReference<CreatureObject*> owner = getPlayerOwner();
 
-	if (owner == NULL)
+	if (owner == NULL || target == NULL)
 		return;
 
-	if (attacker != NULL && attacker->getObjectID() == owner->getObjectID() && attacker->isPlayerCreature()) {
+	SceneObject* targetInventory = target->getSlottedObject("inventory");
+
+	if (targetInventory == NULL)
+		return;
+
+	uint64 lootOwnerID = targetInventory->getContainerPermissions()->getOwnerID();
+	GroupObject* group = owner->getGroup();
+
+	if (lootOwnerID == owner->getObjectID() || (group != NULL && lootOwnerID == group->getObjectID())) {
 		//Target killed by player, complete mission.
 		complete();
-	} else if (attacker != NULL && attacker->isPet()) {
-		// Target killed by pet
-		ManagedReference<CreatureObject*> petOwner = attacker->getLinkedCreature().get();
-
-		if (petOwner != NULL && petOwner->getObjectID() == owner->getObjectID()) {
-			// Pet is owned by mission owner, complete mission.
-			complete();
-		}
 	} else {
 		//Target killed by other player, fail mission.
 		owner->sendSystemMessage("@mission/mission_generic:failed"); // Mission failed
