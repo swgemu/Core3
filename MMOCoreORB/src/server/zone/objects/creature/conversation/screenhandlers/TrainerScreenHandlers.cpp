@@ -6,6 +6,7 @@
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/objects/player/sessions/TrainerConversationSession.h"
 #include "server/zone/Zone.h"
+#include "server/zone/managers/jedi/JediManager.h"
 
 const String TrainerScreenHandlers::STARTSCREENHANDLERID = "convoscreenstart";
 const String TrainerScreenHandlers::INFOSCREENHANDLERID = "convoscreentrainerinfo";
@@ -351,21 +352,7 @@ ConversationScreen* TrainerTrainSkillScreenHandler::handleScreen(CreatureObject*
 		// Set the screen play state if they mastered a fourth-tier box.
 		if (skill->getSkillName().contains("force_sensitive")) {
 			if (skill->getSkillName().contains("_04")) {
-				conversingPlayer->setScreenPlayState("VillageUnlockScreenPlay:" + skill->getSkillName(), 4);
-			}
-
-			int treesMastered = 0;
-			// If they have trained the 6th tree's 4th box, finish village.
-			SkillList* skills = conversingPlayer->getSkillList();
-			for (int i=0; i < skills->size(); ++i) {
-				String skillName = skills->get(i)->getSkillName();
-				if (skillName.contains("force_sensitive") && skillName.contains("_04")) {
-					treesMastered += 1;
-				}
-			}
-
-			if (treesMastered >= 6) { // Six trees to access village. State matches that in jedi manager.
-				conversingPlayer->setScreenPlayState("VillageJediProgression", 8);
+				JediManager::instance()->onFSTreeCompleted(conversingPlayer, skill->getSkillName());
 			}
 		}
 
