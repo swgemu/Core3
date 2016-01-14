@@ -1738,7 +1738,9 @@ void AuctionManagerImplementation::sendVendorUpdateMail(SceneObject* vendor, boo
 		body.setTO(vendor->getDisplayedName());
 		cman->sendMail(sender, subject, body, owner->getFirstName());
 		vendorData->setEmpty();
-		VendorManager::instance()->handleUnregisterVendor(owner, cast<TangibleObject*>(vendor));
+
+		if (vendorData->isRegistered())
+			VendorManager::instance()->handleUnregisterVendor(owner, cast<TangibleObject*>(vendor));
 	} else {
 		StringIdChatParameter body("@auction:vendor_status_normal");
 		body.setTO(vendor->getDisplayedName());

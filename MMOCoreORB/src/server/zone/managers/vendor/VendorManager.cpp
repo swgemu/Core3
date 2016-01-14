@@ -162,7 +162,8 @@ void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* 
 	else
 		statusBox->addMenuItem("@player_structure:vendor_search_disabled");
 
-	statusBox->addMenuItem("\\#32CD32Vendor Operating Normally\\#.");
+	if (!vendorData->isOnStrike() && !vendorData->isEmpty())
+		statusBox->addMenuItem("\\#32CD32Vendor Operating Normally\\#.");
 
 	player->getPlayerObject()->addSuiBox(statusBox);
 	player->sendMessage(statusBox->generateMessage());

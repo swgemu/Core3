@@ -107,6 +107,7 @@ public:
 			return;
 
 		originalDirection = strongParent->getDirectionAngle();
+		setVendorSearchEnabled(true);
 	}
 
 	void setVendorSearchEnabled(bool enabled);
@@ -241,6 +242,8 @@ public:
 	void handleWithdrawMaintanence(int value);
 
 	void performVendorBark(SceneObject* target);
+
+	void scheduleVendorCheckTask(int delay); // In minutes
 
 private:
 	void addSerializableVariables();

@@ -67,10 +67,7 @@ void VendorDataComponent::initializeTransientMembers() {
 	if(strongParent != NULL) {
 
 		if (isInitialized()) {
-			vendorCheckTask = new UpdateVendorTask(strongParent);
-
-			/// Schedule initial task
-			vendorCheckTask->schedule((VENDORCHECKDELAY + System::random(VENDORCHECKINTERVAL)) * 60 * 1000);
+			scheduleVendorCheckTask(VENDORCHECKDELAY + System::random(VENDORCHECKINTERVAL));
 
 			if(originalDirection == 1000)
 				originalDirection = strongParent->getDirectionAngle();
@@ -111,10 +108,7 @@ void VendorDataComponent::runVendorUpdate() {
 		return;
 	}
 
-	if(vendorCheckTask == NULL)
-		vendorCheckTask = new UpdateVendorTask(strongParent);
-
-	vendorCheckTask->reschedule(1000 * 60 * VENDORCHECKINTERVAL);
+	scheduleVendorCheckTask(VENDORCHECKINTERVAL);
 
 	vendorBarks.removeAll();
 
@@ -176,6 +170,11 @@ void VendorDataComponent::runVendorUpdate() {
 	}
 
 	if(isOnStrike()) {
+		if (isRegistered())
+			VendorManager::instance()->handleUnregisterVendor(owner, vendor);
+
+		if (isVendorSearchEnabled())
+			setVendorSearchEnabled(false);
 
 		if(time(0) - inactiveTimer.getTime() > DELETEWARNING) {
 
@@ -391,4 +390,16 @@ void VendorDataComponent::performVendorBark(SceneObject* target) {
 
 	Reference<VendorReturnToPositionTask*> returnTask = new VendorReturnToPositionTask(vendor, originalDirection);
 	vendor->addPendingTask("vendorreturn", returnTask, 3000);
+}
+
+void VendorDataComponent::scheduleVendorCheckTask(int delay) {
+	ManagedReference<SceneObject*> strongParent = parent.get();
+
+	if (strongParent == NULL)
+		return;
+
+	if(vendorCheckTask == NULL)
+		vendorCheckTask = new UpdateVendorTask(strongParent);
+
+	vendorCheckTask->schedule(1000 * 60 * delay);
 }
