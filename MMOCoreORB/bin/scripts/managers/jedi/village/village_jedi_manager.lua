@@ -9,6 +9,7 @@ local QuestManager = require("managers.quest.quest_manager")
 local FsSad = require("managers.jedi.village.phase2.fs_sad")
 local FsMedicPuzzle = require("managers.jedi.village.phase1.fs_medic_puzzle")
 require("managers.jedi.village.village_jedi_manager_township")
+local OldManEncounter = require("managers.jedi.village.intro.old_man_encounter")
 
 jediManagerName = "VillageJediManager"
 
@@ -73,8 +74,14 @@ function VillageJediManager:onPlayerLoggedIn(pCreatureObject)
 			FsSad:doPhaseChangeFail(pCreatureObject)
 		end
 	end
+end
 
-
+function VillageJediManager:createOldManEncounter(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
+	
+	OldManEncounter:start(pCreatureObject)
 end
 
 registerScreenPlay("VillageJediManager", true)

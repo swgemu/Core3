@@ -113,3 +113,11 @@ void JediManager::useItem(SceneObject* item, const int itemType, CreatureObject*
 
 	luaUseItem->callFunction();
 }
+
+void JediManager::createOldManEncounter(CreatureObject* creature) {
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	Reference<LuaFunction*> luaCreateOldManEncounter = lua->createFunction(getJediManagerName(), "createOldManEncounter", 0);
+	*luaCreateOldManEncounter << creature;
+
+	luaCreateOldManEncounter->callFunction();
+}
