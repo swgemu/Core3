@@ -1,8 +1,10 @@
 JediManager = require("managers.jedi.jedi_manager")
 require("managers.jedi.village.village_jedi_manager_holocron")
 require("managers.jedi.village.intro.old_man_conv_handler")
+local ExperienceConverter = require("screenplays.village.convos.convohelpers.experience_converter")
 local Glowing = require("managers.jedi.village.intro.glowing")
 local Logger = require("utils.logger")
+local OldManEncounter = require("managers.jedi.village.intro.old_man_encounter")
 local SithShadowEncounter = require("managers.jedi.village.intro.sith_shadow_encounter")
 local SithShadowIntroTheater = require("managers.jedi.village.intro.sith_shadow_intro_theater")
 local QuestManager = require("managers.quest.quest_manager")
@@ -10,10 +12,13 @@ local FsSad = require("managers.jedi.village.phase2.fs_sad")
 local FsMedicPuzzle = require("managers.jedi.village.phase1.fs_medic_puzzle")
 local FsCrafting1 = require("managers.jedi.village.phase1.fs_crafting1")
 require("managers.jedi.village.village_jedi_manager_township")
+local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
 
 jediManagerName = "VillageJediManager"
 
 NOTINABUILDING = 0
+
+NUMBEROFTREESTOMASTER = 6
 
 VillageJediManager = JediManager:new {
 	screenplayName = jediManagerName,
@@ -80,6 +85,30 @@ function VillageJediManager:onPlayerLoggedIn(pCreatureObject)
 	end
 
 
+end
+
+-- Handling of the onFSTreesCompleted event.
+-- @param pCreatureObject pointer to the creature object of the player
+function VillageJediManager:onFSTreeCompleted(pCreatureObject, branch)
+	if (pCreatureObject == nil) then
+		return
+	end
+	
+	-- Remove the "_04" from the end of the skill...
+	local branchSub = string.sub(branch, 0, (string.len(branch) - 3))
+	
+	-- Set the screenplaystate...
+	CreatureObject(pCreatureObject):setScreenPlayState(4, "VillageUnlockScreenPlay:" .. branchSub)
+
+
+	-- check for finish...
+	if (ExperienceConverter:getMasteredBranches(pCreatureObject) >= NUMBEROFTREESTOMASTER) then
+		-- Set Screenplaystate.
+		VillageJediManagerCommon.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE)
+
+		-- Start Old Man.
+		OldManEncounter:start(pCreatureObject)
+	end
 end
 
 registerScreenPlay("VillageJediManager", true)

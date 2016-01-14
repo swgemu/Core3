@@ -62,5 +62,9 @@ function JediManager:useItem(pSceneObject, itemType, pCreatureObject)
 	-- Default behaviour for the useItem event, do nothing.
 end
 
+function JediManager:onFSTreeCompleted(pCreatureObject, branch)
+	-- Default behaviour for the onFSTreesCompleted event, do nothing.
+end
+
 return JediManager
 
