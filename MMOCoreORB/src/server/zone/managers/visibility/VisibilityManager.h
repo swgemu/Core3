@@ -22,26 +22,40 @@ class VisibilityManager : public Singleton<VisibilityManager>, public Logger, pu
 	 * Any player with a visibility greater than or equal to this amount will be
 	 * available on the bounty hunter mission terminal as a player bounty.
 	 */
-	enum {
-		TERMINALVISIBILITYLIMIT = 500,
-		MAXVISIBILITY = 1000
-	};
+
+	float terminalVisThreshold;
+
+	/**
+	 * If a players visibility falls below this value they will be removed from the BH terminals
+	 */
+	float falloffThreshold;
+
+	/**
+	 * This is the maximum visibility that can be gained
+	 */
+	float maxVisibility;
+
 
 
 	/**
 	 * Number of days before complete visibility decay
 	 */
-	static const unsigned int totalDecayTimeInDays;
+	unsigned int totalDecayTimeInDays;
 
 	/**
 	 * Number of seconds before rescheduling the decay event. Must be SHORTER than 1 day
 	 */
-	static const unsigned int	 visDecayTickRate;
+	unsigned int visDecayTickRate;
 
 	/**
 	 * Amount of visibility to decay per tick
 	 */
-	static const float visDecayPerTick;
+	float visDecayPerTick;
+
+	/**
+	 * Jedi PVP rating divisor
+	 */
+	float pvpRatingDivisor;
 
 	/**
 	 * Rebel faction string.
@@ -122,6 +136,11 @@ public:
 	VisibilityManager();
 
 	/**
+	 * Load lua configuration for visibility variables
+	 */
+	void loadConfiguration();
+
+	/**
 	 * Login a player and add it to the visibility list if he/she still has visibility.
 	 * @param creature the player to login.
 	 */
@@ -153,7 +172,11 @@ public:
 	 */
 	void performVisiblityDecay();
 
-	static unsigned int getVisDecayTickRate() {
+	int getPvpRatingDivisor() {
+		return pvpRatingDivisor;
+	}
+
+	unsigned int getVisDecayTickRate() {
 		return visDecayTickRate;
 	}
 };
