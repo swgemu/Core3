@@ -54,8 +54,9 @@ int SurveyToolImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		}
 
 		if (selectedID == 20) { // use object
+			int range = getRange(player);
 
-			if(getRange(player) == 0) {
+			if(range <= 0 || range > 320) {
 				sendRangeSui(player);
 				return 0;
 			}
@@ -113,20 +114,6 @@ void SurveyToolImplementation::sendRangeSui(CreatureObject* player) {
 
 	if (surveyMod >= 100)
 		suiToolRangeBox->addMenuItem("320m x 5pts", 4);
-
-
-	/// The options below are not true to pre-cu
-	if (surveyMod >= 105)
-		suiToolRangeBox->addMenuItem("384m x 5pts", 5);
-
-	if (surveyMod >= 110)
-		suiToolRangeBox->addMenuItem("448m x 5pts", 6);
-
-	if (surveyMod >= 115)
-		suiToolRangeBox->addMenuItem("512m x 5pts", 7);
-
-	if (surveyMod >= 125)
-		suiToolRangeBox->addMenuItem("1024m x 1024m", 8);
 
 	suiToolRangeBox->setUsingObject(_this.getReferenceUnsafeStaticCast());
 	suiToolRangeBox->setCallback(new SurveyToolSetRangeSuiCallback(server->getZoneServer()));
