@@ -79,7 +79,7 @@ visibleComponents = {
 	},
 	{
 		template = "object/weapon/ranged/carbine/shared_carbine_laser.iff",
-		muzzle = {"muzzle_m_1","muzzle_m_2","muzzle_m_3","muzzle_m_4","muzzle_m_5","muzzle_m_6"},
+		muzzle = {"muzzle_m_1","muzzle_m_2","muzzle_m_3","muzzle_m_5","muzzle_m_6"},
 		scope = {"scope_sm_1","scope_sm_2","scope_sm_4","scope_sm_5"},
 		stock = {"stock_carbine_laser"}
 	},
