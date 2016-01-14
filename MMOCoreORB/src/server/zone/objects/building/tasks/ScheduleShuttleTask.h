@@ -58,12 +58,20 @@ public:
 			Reference<PlanetTravelPoint*> ptp = planetManager->getNearestPlanetTravelPoint(strongReference, 128.f);
 
 			if (ptp != NULL) {
-				if (ptp->isInterplanetary())
-					planetManager->scheduleShuttle(strongReference, PlanetManager::STARPORT);
-				else
-					planetManager->scheduleShuttle(strongReference, PlanetManager::SHUTTLEPORT);
+				CreatureObject* oldShuttle = ptp->getShuttle();
 
-				ptp->setShuttle(strongReference);
+				if (oldShuttle == NULL) {
+					if (ptp->isInterplanetary())
+						planetManager->scheduleShuttle(strongReference, PlanetManager::STARPORT);
+					else
+						planetManager->scheduleShuttle(strongReference, PlanetManager::SHUTTLEPORT);
+
+					ptp->setShuttle(strongReference);
+
+				} else {
+					strongReference->destroyObjectFromWorld(true);
+					strongReference->destroyObjectFromDatabase(true);
+				}
 			}
 		}
 	}

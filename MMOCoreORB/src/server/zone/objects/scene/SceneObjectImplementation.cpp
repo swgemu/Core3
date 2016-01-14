@@ -490,7 +490,7 @@ void SceneObjectImplementation::sendAttributeListTo(CreatureObject* object) {
 void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, SceneObject* selfObject) {
 	ZoneServer* zoneServer = getZoneServer();
 
-	if (zoneServer != NULL && zoneServer->isServerLoading())
+	if (zoneServer == NULL || zoneServer->isServerLoading())
 		return;
 
 	if (parent != NULL) {
@@ -524,7 +524,6 @@ void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, Scen
 		vec->safeCopyTo(closeSceneObjects);
 
 		maxInRangeObjectCount = closeSceneObjects.size(); //closeobjects->size();
-
 	}
 
 	for (int i = 0; i < maxInRangeObjectCount; ++i) {
@@ -546,7 +545,7 @@ void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSe
 void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, SceneObject* selfObject) {
 	ZoneServer* zoneServer = getZoneServer();
 
-	if (zoneServer != NULL && zoneServer->isServerLoading())
+	if (zoneServer == NULL || zoneServer->isServerLoading())
 		return;
 
 	if (parent.get() != NULL) {
@@ -602,7 +601,7 @@ void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendS
 void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, SceneObject* selfObject, bool lockZone) {
 	ZoneServer* zoneServer = getZoneServer();
 
-	if (zoneServer != NULL && zoneServer->isServerLoading())
+	if (zoneServer == NULL || zoneServer->isServerLoading())
 		return;
 
 	if (parent.get() != NULL) {
@@ -691,7 +690,7 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* messages, SceneObject* selfObject) {
 	ZoneServer* zoneServer = getZoneServer();
 
-	if (zoneServer != NULL && zoneServer->isServerLoading())
+	if (zoneServer == NULL || zoneServer->isServerLoading())
 		return;
 
 	if (parent.get() != NULL) {
@@ -709,7 +708,6 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 			return;
 		}
 	}
-
 
 	if (zone == NULL) {
 		while (!messages->isEmpty()) {
@@ -1183,6 +1181,7 @@ void SceneObjectImplementation::createChildObjects() {
 		return;
 
 	ZoneServer* zoneServer = getZone()->getZoneServer();
+	bool client = isStaticObject();
 
 	for (int i = 0; i < templateObject->getChildObjectsSize(); ++i) {
 		ChildObject* child = templateObject->getChildObject(i);
@@ -1190,7 +1189,12 @@ void SceneObjectImplementation::createChildObjects() {
 		if (child == NULL)
 			continue;
 
-		ManagedReference<SceneObject*> obj = zoneServer->createObject(child->getTemplateFile().hashCode(), getPersistenceLevel());
+		ManagedReference<SceneObject*> obj = NULL;
+
+		if (client)
+			obj = zoneServer->createObject(child->getTemplateFile().hashCode(), "clientobjects", getPersistenceLevel());
+		else
+			obj = zoneServer->createObject(child->getTemplateFile().hashCode(), getPersistenceLevel());
 
 		if (obj == NULL)
 			continue;
