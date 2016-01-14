@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_ff3d97bc",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/intro/glowing.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-14T10:54:23Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand what you are doing here. Shouldn\u0027t you be finishing the mellichae outro theater and restarting it here?",
+      "revId": "41394396eaf5070bf062d0b7e2b14ceda9a03697",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_df40d337",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_common.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-14T10:54:23Z",
+      "side": 1,
+      "message": "Don\u0027t you need to update the mellichae encounter to utilize these?",
+      "revId": "41394396eaf5070bf062d0b7e2b14ceda9a03697",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_5f4da371",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/conversation/screenhandlers/TrainerScreenHandlers.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-14T10:54:23Z",
+      "side": 1,
+      "message": "I would make this more generic. Give it a more generic name and move the screenplay state setting into the Lua function. That way other jedi unlock systems could utilize it without village specific code running.",
+      "revId": "41394396eaf5070bf062d0b7e2b14ceda9a03697",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
