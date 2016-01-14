@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_bfb5df32",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/custom/SuiFsCrafting1Calibrator.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-14T13:37:16Z",
+      "side": 1,
+      "message": "You forgot to check if rowIndex \u003d\u003d -1 like you did in the analyzer callbacks.",
+      "revId": "6568178eaefa073e0e83d0c50f3776b72214f4a4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_5f828353",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/custom/SuiFsCrafting1Calibrator.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-14T13:37:16Z",
+      "side": 1,
+      "message": "You should nil check pComponent before this.",
+      "revId": "6568178eaefa073e0e83d0c50f3776b72214f4a4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
