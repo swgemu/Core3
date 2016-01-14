@@ -1,11 +1,13 @@
 local ObjectManager = require("managers.object.object_manager")
 
 SuiAmpPuzzle = {}
-function SuiAmpPuzzle:openPuzzle(pCreatureObject, pPuzzle)
+function SuiAmpPuzzle:openPuzzle(pCreatureObject, pPuzzle, pCalibrator)
 	local sui = SuiCalibrationGame2.new("SuiAmpPuzzle", "defaultCallback")
+	local playerID = SceneObject(pCreatureObject):getObjectID()
+	writeData(playerID .. ":calibratorComponentID", SceneObject(pPuzzle):getObjectID())
 
-	sui.setTargetNetworkId(SceneObject(pPuzzle):getObjectID())
-	sui.setForceCloseDistance(0)
+	sui.setTargetNetworkId(SceneObject(pCalibrator):getObjectID())
+	sui.setForceCloseDistance(10)
 
 	local bar1 = getRandomNumber(0, 2)
 	local bar2 = getRandomNumber(0, 1)
@@ -142,7 +144,7 @@ function SuiAmpPuzzle:defaultCallback(pPlayer, pSui, eventIndex, ...)
 		return
 	end
 
-	local puzzleID = suiPageData:getTargetNetworkId()
+	local puzzleID = readData(playerID .. ":calibratorComponentID")
 	local pPuzzle = getSceneObject(puzzleID)
 
 	if (pPuzzle == nil) then

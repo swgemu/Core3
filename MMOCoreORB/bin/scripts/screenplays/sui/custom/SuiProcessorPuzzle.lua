@@ -8,12 +8,13 @@ SuiProcessorPuzzle = {
 		"top.triangles.server.left.2", "top.triangles.server.left.3", "top.triangles.server.left.1"}
 }
 
-function SuiProcessorPuzzle:openPuzzle(pCreatureObject, pPuzzle)
+function SuiProcessorPuzzle:openPuzzle(pCreatureObject, pPuzzle, pCalibrator)
 	local sui = SuiCalibrationGame4.new("SuiProcessorPuzzle", "defaultCallback")
 	local playerID = SceneObject(pCreatureObject):getObjectID()
+	writeData(playerID .. ":calibratorComponentID", SceneObject(pPuzzle):getObjectID())
 
-	sui.setTargetNetworkId(SceneObject(pPuzzle):getObjectID())
-	sui.setForceCloseDistance(0)
+	sui.setTargetNetworkId(SceneObject(pCalibrator):getObjectID())
+	sui.setForceCloseDistance(10)
 
 	local goal = { 0, 0, 0, 0, 0, 0 }
 	local current = { 0, 0, 0, 0, 0, 0 }
@@ -148,7 +149,7 @@ function SuiProcessorPuzzle:defaultCallback(pPlayer, pSui, eventIndex, ...)
 		return
 	end
 
-	local puzzleID = suiPageData:getTargetNetworkId()
+	local puzzleID = readData(playerID .. ":calibratorComponentID")
 	local pPuzzle = getSceneObject(puzzleID)
 
 	if (pPuzzle == nil) then

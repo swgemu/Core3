@@ -15,7 +15,7 @@ VillageJediManagerTownship = ScreenPlay:new {
 
 VILLAGE_TOTAL_NUMBER_OF_PHASES = 2 -- Temporarily set to 2 for testing until other phases begin development
 
-local VILLAGE_PHASE_CHANGE_TIME = 24 * 60 * 60 * 1000 -- Testing value.
+local VILLAGE_PHASE_CHANGE_TIME = 48 * 60 * 60 * 1000 -- Testing value.
 --local VILLAGE_PHASE_CHANGE_TIME = 5 * 60 * 1000
 --local VILLAGE_PHASE_CHANGE_TIME = 3 * 7 * 24 * 60 * 60 * 1000 -- Three Weeks.
 
@@ -217,6 +217,9 @@ function VillageJediManagerTownship:doOnlinePhaseChangeFails(pCreature, currentP
 		FsPatrol:doPhaseChangeFail(pCreature)
 
 		FsMedicPuzzle:doPhaseChange(pCreature)
+		
+		local FsCrafting1 = require("managers.jedi.village.phase1.fs_crafting1")
+		FsCrafting1:doPhaseChangeFail(pCreature)
 	elseif (currentPhase == 2) then
 		local FsReflex2 = require("managers.jedi.village.phase2.fs_reflex2")
 		FsReflex2:doPhaseChangeFail(pCreature)

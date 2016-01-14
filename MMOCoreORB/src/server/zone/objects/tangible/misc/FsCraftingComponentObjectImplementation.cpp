@@ -24,7 +24,10 @@ void FsCraftingComponentObjectImplementation::destroyObjectFromWorld(bool sendSe
 			else if (objCRC == 0x70035120) // object/tangible/item/quest/force_sensitive/fs_craft_puzzle_solid_state_array.iff
 				index = 4;
 
-			ghost->setScreenPlayData("FsCrafting1", "accessTerminalStatus" + String::valueOf(index), "-1");
+			String analyzed = ghost->getScreenPlayData("SuiFsCrafting1Analyzer", "componentAnalyzed" + String::valueOf(index));
+
+			if (analyzed == "" || analyzed == "0")
+				ghost->setScreenPlayData("FsCrafting1", "accessTerminalStatus" + String::valueOf(index), "-1");
 		}
 	}
 
