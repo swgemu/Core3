@@ -8,25 +8,6 @@
 #include "server/zone/managers/visibility/tasks/VisibilityDecayTask.h"
 #include "server/zone/Zone.h"
 
-
-
-
-
-// 21(days) * 24(hours) brings us to 504. Meaning you could clear your visibility in 6 weeks at
-// 1 vis per hour or 3 weeks at 2 per hour. We'll just calculate it using constants
-// ((60*60*24) / visDecayTickRate)) = number of ticks per day
-// (MAXVIS / (totalDecayTime * numberOfTicksPerDay) = decayPerTick
-//#define VIS_TESTING
-#ifdef VIS_TESTING
-	const unsigned int VisibilityManager::visDecayTickRate = (15);
-	const unsigned int VisibilityManager::totalDecayTimeInDays = 1;
-#else
-	const unsigned int VisibilityManager::visDecayTickRate = (60 * 60);
-	const unsigned int VisibilityManager::totalDecayTimeInDays = 21;
-#endif
-const float VisibilityManager::visDecayPerTick = ((float)MAXVISIBILITY / ((float)(totalDecayTimeInDays * (float)(60*60*24) / (float)visDecayTickRate)));
-
-
 const String VisibilityManager::factionStringRebel = "rebel";
 const String VisibilityManager::factionStringImperial = "imperial";
 const unsigned int VisibilityManager::factionRebel = factionStringRebel.hashCode();
@@ -115,7 +96,7 @@ void VisibilityManager::decreaseVisibility(CreatureObject* creature) {
 		if (ghost->getVisibility() > 0)
 		{
 
-			//info("VisDecayTickRate: " + String::valueOf(visDecayTickRate) + "DecayPerTick: " + String::valueOf(visDecayPerTick), true);
+			//info("VisDecayTickRate: " + String::valueOf(visDecayTickRate) + " DecayPerTick: " + String::valueOf(visDecayPerTick), true);
 			float visibilityDecrease = (((ghost->getLastVisibilityUpdateTimestamp().miliDifference() / 1000.0f) / (float)visDecayTickRate) * (float)visDecayPerTick);
 
 			//info("Decreasing visibility of player " + creature->getFirstName() + " by " + String::valueOf(visibilityDecrease), true);
@@ -124,7 +105,7 @@ void VisibilityManager::decreaseVisibility(CreatureObject* creature) {
 			} else {
 				ghost->setVisibility(ghost->getVisibility() - visibilityDecrease);
 
-				if (ghost->getVisibility() < TERMINALVISIBILITYLIMIT) {
+				if (ghost->getVisibility() < falloffThreshold) {
 					removePlayerFromBountyList(creature);
 				}
 			}
@@ -135,6 +116,7 @@ void VisibilityManager::decreaseVisibility(CreatureObject* creature) {
 VisibilityManager::VisibilityManager() : Logger("VisibilityManager") {
 	Reference<Task*> decayTask = new VisibilityDecayTask();
 	decayTask->schedule(visDecayTickRate * 1000);
+	loadConfiguration();
 }
 
 void VisibilityManager::login(CreatureObject* creature) {
@@ -160,8 +142,9 @@ void VisibilityManager::login(CreatureObject* creature) {
 
 		locker.release();
 
-		if (ghost->getVisibility() >= TERMINALVISIBILITYLIMIT) {
+		if (ghost->getVisibility() >= terminalVisThreshold) {
 			// TODO: Readjust after FRS implementation.
+			// +100k per FRS level
 			int reward = calculateReward(creature);
 			addPlayerToBountyList(creature, reward);
 		}
@@ -216,6 +199,30 @@ void VisibilityManager::performVisiblityDecay() {
 	for (int i = 0; i < visibilityList.size(); i++) {
 		ManagedReference<CreatureObject*> creature = visibilityList.get(i);
 		decreaseVisibility(creature);
+	}
+}
+
+void VisibilityManager::loadConfiguration() {
+	try {
+
+		Lua* lua = new Lua();
+		lua->init();
+
+		lua->runFile("scripts/managers/jedi/visibility_manager.lua");
+
+		maxVisibility  = lua->getGlobalInt(String("maxVisibility"));
+		terminalVisThreshold = lua->getGlobalInt(String("termThreshold"));
+		falloffThreshold = lua->getGlobalInt(String("falloffThreshold"));
+		totalDecayTimeInDays = lua->getGlobalInt(String("totalDecayTimeInDays"));
+		visDecayTickRate = lua->getGlobalInt(String("tickRateInSeconds"));
+		pvpRatingDivisor = lua->getGlobalInt(String("pvpRatingDivisor"));
+
+		visDecayPerTick = ((float)maxVisibility / ((float)(totalDecayTimeInDays * (float)(60*60*24) / (float)visDecayTickRate)));
+
+		delete lua;
+
+	} catch(Exception e) {
+		error(e.getMessage());
 	}
 }
 
