@@ -3,6 +3,7 @@ require("managers.jedi.village.village_jedi_manager_holocron")
 require("managers.jedi.village.intro.old_man_conv_handler")
 local Glowing = require("managers.jedi.village.intro.glowing")
 local Logger = require("utils.logger")
+local OldManEncounter = require("managers.jedi.village.intro.old_man_encounter")
 local SithShadowEncounter = require("managers.jedi.village.intro.sith_shadow_encounter")
 local SithShadowIntroTheater = require("managers.jedi.village.intro.sith_shadow_intro_theater")
 local QuestManager = require("managers.quest.quest_manager")
@@ -10,6 +11,7 @@ local FsSad = require("managers.jedi.village.phase2.fs_sad")
 local FsMedicPuzzle = require("managers.jedi.village.phase1.fs_medic_puzzle")
 local FsCrafting1 = require("managers.jedi.village.phase1.fs_crafting1")
 require("managers.jedi.village.village_jedi_manager_township")
+local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
 
 jediManagerName = "VillageJediManager"
 
@@ -80,6 +82,20 @@ function VillageJediManager:onPlayerLoggedIn(pCreatureObject)
 	end
 
 
+end
+
+-- Handling of the onFSTreesCompleted event.
+-- @param pCreatureObject pointer to the creature object of the player
+function VillageJediManager:onFSTreesCompleted(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
+	
+	-- Set Screenplaystate.
+	VillageJediManagerCommon.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE)
+	
+	-- Start Old Man.
+	OldManEncounter:start(pCreatureObject)
 end
 
 registerScreenPlay("VillageJediManager", true)

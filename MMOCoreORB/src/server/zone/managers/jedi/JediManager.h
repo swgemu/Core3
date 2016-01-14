@@ -115,6 +115,14 @@ public:
 	 * @param creature the creature that used the item.
 	 */
 	void useItem(SceneObject* item, const int itemType, CreatureObject* creature);
+
+
+	/**
+	 * Decides what to do next pending learning all 6 FS trees.
+	 * Calls the onFSTreesCompleted in the lua manager.
+	 * @param creature the creature object.
+	 */
+	void onFSTreesCompleted(CreatureObject* creature);
 };
 
 }

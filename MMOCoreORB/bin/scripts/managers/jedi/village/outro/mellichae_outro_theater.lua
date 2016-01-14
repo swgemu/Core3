@@ -2,6 +2,7 @@ local GoToTheater = require("quest.tasks.go_to_theater")
 local ObjectManager = require("managers.object.object_manager")
 local QuestManager = require("managers.quest.quest_manager")
 local SpawnMobiles = require("utils.spawn_mobiles")
+local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
 require("utils.helpers")
 
 
@@ -101,7 +102,7 @@ function MellichaeOutroTheater:onBossKilled(pCreature, pKiller, nothing)
 		self:addLoot(pCreature)
 		QuestManager.completeQuest(pOwner, QuestManager.quests.FS_THEATER_FINAL)
 		CreatureObject(pOwner):sendSystemMessage("@quest/force_sensitive/exit:final_complete") --	Congratulations, you have completed the Force sensitive quests! You are now qualified to begin the Jedi Padawan Trials.
-		CreatureObject(pOwner):setScreenPlayState(16, "VillageScreenPlay") -- Killed him.
+		VillageJediManagerCommon.setJediProgressionScreenPlayState(pOwner, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE) -- Killed him.
 		deleteData(SceneObject(pCreature) .. ":totalNum:Shrines:Red")
 		deleteData(SceneObject(pCreature) .. ":totalNum:Shrines:Green")
 	end
@@ -133,6 +134,8 @@ function MellichaeOutroTheater:onSuccessfulSpawn(pCreatureObject, spawnedSithSha
 	if (pCreatureObject == nil or spawnedSithShadowsList == nil or spawnedSithShadowsList[1] == nil or spawnedSithShadowsList[2] == nil) then
 		return
 	end
+	
+	VillageJediManagerCommon.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE)
 
 	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.FS_THEATER_CAMP)
 	createObserver(OBJECTDESTRUCTION, self.taskName, "onBossKilled", spawnedSithShadowsList[1])

@@ -113,3 +113,11 @@ void JediManager::useItem(SceneObject* item, const int itemType, CreatureObject*
 
 	luaUseItem->callFunction();
 }
+
+void JediManager::onFSTreesCompleted(CreatureObject* creature) {
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	Reference<LuaFunction*> luaStartTask = lua->createFunction(getJediManagerName(), "onFSTreesCompleted", 0);
+	*luaStartTask << creature;
+
+	luaStartTask->callFunction();
+}
