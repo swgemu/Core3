@@ -90,7 +90,7 @@ function MellichaeOutroTheater:onBossKilled(pCreature, pKiller, nothing)
 		for i=1,groupSize do
 			local pMember = CreatureObject(pKiller):getGroupMember(i)
 			if (pMember ~= nil) then
-				if (CreatureObject(pMember):hasActiveQuest(QuestManager.quests.FS_THEATER_FINAL)) then
+				if QuestManager.hasActiveQuest(pMember, QuestManager.quests.FS_THEATER_FINAL) then
 					pOwner = pMember
 				end
 			end
