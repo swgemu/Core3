@@ -234,6 +234,7 @@ public:
 					break;
 				case BATTLE_FATIGUE:
 					message.setTO("@jedi_spam:battle_fatigue");
+					break;
 				default:
 					return false;
 			}
