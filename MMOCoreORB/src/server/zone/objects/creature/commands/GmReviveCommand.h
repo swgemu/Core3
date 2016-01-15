@@ -198,6 +198,17 @@ public:
 	void revivePatient(CreatureObject* creature, CreatureObject* patient) const {
 		Locker clocker(patient, creature);
 
+		ManagedReference<PlayerObject*> targetGhost = patient->getPlayerObject();
+
+		if (targetGhost != NULL) {
+
+			if(targetGhost->getJediState() > 1)
+				targetGhost->setForcePower(targetGhost->getForcePowerMax());
+
+			if(patient->isDead())
+				targetGhost->removeSuiBoxType(SuiWindowType::CLONE_REQUEST);
+		}
+
 		patient->healDamage(creature, CreatureAttribute::HEALTH, 5000);
 		patient->healDamage(creature, CreatureAttribute::ACTION, 5000);
 		patient->healDamage(creature, CreatureAttribute::MIND, 5000);
@@ -213,12 +224,6 @@ public:
 		patient->setPosture(CreaturePosture::UPRIGHT);
 
 		patient->broadcastPvpStatusBitmask();
-
-		ManagedReference<PlayerObject*> targetGhost = patient->getPlayerObject();
-
-		if (targetGhost != NULL && targetGhost->getJediState() > 1) {
-			targetGhost->setForcePower(targetGhost->getForcePowerMax());
-		}
 
 		if (patient->isPlayerCreature()) {
 			patient->sendSystemMessage("You have been restored.");
