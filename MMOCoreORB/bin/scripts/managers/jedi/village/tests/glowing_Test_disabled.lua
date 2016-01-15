@@ -162,7 +162,7 @@ describe("Village Jedi Manager - Glowing", function()
 				}
 
 				testGlowing.countBadgesInListToUpperLimit = spy.new(function(self, pCO, l, n)
-					for i = 1, table.getn(argumentList), 1 do
+					for i = 1, #argumentList, 1 do
 						if argumentList[i][1] == l and argumentList[i][2] == n and pCO == pCreatureObject then
 							argumentList[i][3] = true
 						end

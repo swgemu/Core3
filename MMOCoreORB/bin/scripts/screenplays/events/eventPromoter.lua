@@ -36,7 +36,7 @@ end
 
 function eventPromoterScreenplay:spawnMobiles()
 	local mobiles = self.promoterLocs
-	for i = 1, table.getn(mobiles), 1 do
+	for i = 1, #mobiles, 1 do
 		if isZoneEnabled(mobiles[i].planet) then
 			spawnMobile(mobiles[i].planet, "event_promoter", 1, mobiles[i].x, mobiles[i].z, mobiles[i].y, mobiles[i].angle, mobiles[i].cell)
 		end
@@ -53,7 +53,7 @@ function eventPromoterScreenplay:sendSaleSui(pNpc, pPlayer, screenID)
 	local perkData = self:getPerkTable(screenID)
 
 	local options = { }
-	for i = 1, table.getn(perkData), 1 do
+	for i = 1, #perkData, 1 do
 		table.insert(options, getStringId(perkData[i].displayName) .. " (Cost: " .. perkData[i].cost .. ")")
 	end
 

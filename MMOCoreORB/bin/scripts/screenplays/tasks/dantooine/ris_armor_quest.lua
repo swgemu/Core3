@@ -151,7 +151,7 @@ function risArmorQuestConvoHandler:teachSchematic(pPlayer, templateTable)
 end
 
 function risArmorQuestConvoHandler:rewardSchematics(pPlayer)
-	for i = 1, table.getn(risArmorQuest.finalRewardSchematics), 1 do
+	for i = 1, #risArmorQuest.finalRewardSchematics, 1 do
 		self:teachSchematic(pPlayer, risArmorQuest.finalRewardSchematics[i])
 	end
 end

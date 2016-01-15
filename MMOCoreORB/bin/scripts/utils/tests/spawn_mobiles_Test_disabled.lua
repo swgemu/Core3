@@ -776,7 +776,7 @@ describe("Spawn Mobile", function()
 							assert.same(PREFIX_IN_USE, value)
 						elseif callNumber == 1 then
 							assert.same(playerID .. prefix .. SPAWN_MOBILES_STRING .. NUMBER_OF_SPAWNS_STRING, key)
-							assert.same(table.getn(spawnedMobilesList), value)
+							assert.same(#spawnedMobilesList, value)
 						else
 							assert.same(playerID .. prefix .. SPAWN_MOBILES_STRING .. (callNumber - 1), key)
 							assert.same(mobileObjectIDs[callNumber - 1], value)
@@ -804,7 +804,7 @@ describe("Spawn Mobile", function()
 						callNumberReadData = callNumberReadData + 1
 						if callNumberReadData == 1 then
 							assert.same(playerID .. prefix .. SPAWN_MOBILES_STRING .. NUMBER_OF_SPAWNS_STRING, key)
-							return table.getn(mobileObjectIDs)
+							return #mobileObjectIDs
 						else
 							assert.same(playerID .. prefix .. SPAWN_MOBILES_STRING .. (callNumberReadData - 1), key)
 							return mobileObjectIDs[callNumberReadData - 1]

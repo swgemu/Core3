@@ -184,10 +184,10 @@ function HeroOfTatooineScreenPlay:doCourageChange()
 		return 0
 	end
 
-	local newLoc = getRandomNumber(1, table.getn(self.courageSpawns))
+	local newLoc = getRandomNumber(1, #self.courageSpawns)
 
 	if (newLoc == mobLoc) then
-		if (newLoc == table.getn(self.courageSpawns)) then
+		if (newLoc == #self.courageSpawns) then
 			newLoc = newLoc - 1
 		else
 			newLoc = newLoc + 1
@@ -296,10 +296,10 @@ function HeroOfTatooineScreenPlay:doAltruismChange()
 		return 0
 	end
 
-	local newLoc = getRandomNumber(1, table.getn(self.altruismSpawns))
+	local newLoc = getRandomNumber(1, #self.altruismSpawns)
 
 	if (newLoc == mobLoc) then
-		if (newLoc == table.getn(self.altruismSpawns)) then
+		if (newLoc == #self.altruismSpawns) then
 			newLoc = newLoc - 1
 		else
 			newLoc = newLoc + 1
@@ -339,10 +339,10 @@ function HeroOfTatooineScreenPlay:doIntellectSpawn()
 
 	self:destroyIntellectMobs()
 
-	local newLoc = getRandomNumber(1, table.getn(self.intellectSpawns))
+	local newLoc = getRandomNumber(1, #self.intellectSpawns)
 
 	if (newLoc == mobLoc) then
-		if (newLoc == table.getn(self.intellectSpawns)) then
+		if (newLoc == #self.intellectSpawns) then
 			newLoc = newLoc - 1
 		else
 			newLoc = newLoc + 1
@@ -794,10 +794,10 @@ function HeroOfTatooineScreenPlay:doHonorChange()
 		return
 	end
 
-	local newLoc = getRandomNumber(1, table.getn(self.honorSpawns))
+	local newLoc = getRandomNumber(1, #self.honorSpawns)
 
 	if (newLoc == mobLoc) then
-		if (newLoc == table.getn(self.honorSpawns)) then
+		if (newLoc == #self.honorSpawns) then
 			newLoc = newLoc - 1
 		else
 			newLoc = newLoc + 1

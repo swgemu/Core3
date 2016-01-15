@@ -3,7 +3,7 @@ local ObjectManager = require("managers.object.object_manager")
 
 -- look up for `k' in list of tables `plist'
 local function search (k, plist)
-	for i=1, table.getn(plist) do
+	for i=1, #plist do
 		local v = plist[i][k]     -- try `i'-th superclass
 		if v then return v end
 	end

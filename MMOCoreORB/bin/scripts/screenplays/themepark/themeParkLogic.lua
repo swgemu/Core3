@@ -328,7 +328,7 @@ function ThemeParkLogic:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 	end
 
 	local npcName = npcData.spawnData.npcTemplate
-	local numberOfMissionsTotal = table.getn(npcData.missions)
+	local numberOfMissionsTotal = #npcData.missions
 
 	local missionsCompleted = 0
 	local stateToCheck = 1
@@ -556,7 +556,7 @@ function ThemeParkLogic:spawnMissionStaticObjects(mission, pConversingPlayer, x,
 	local npcNumber = self:getActiveNpcNumber(pConversingPlayer)
 	local missionNumber = self:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 
-	local numberOfSpawns = table.getn(mission.staticObjects)
+	local numberOfSpawns = #mission.staticObjects
 
 	writeData(playerID .. ":missionStaticObjects", numberOfSpawns)
 
@@ -613,7 +613,7 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 	local currentMissionType = self:getMissionType(npcNumber, pConversingPlayer)
 	local spawnPoints
 
-	local numberOfSpawns = table.getn(mission.primarySpawns) + table.getn(mission.secondarySpawns)
+	local numberOfSpawns = #mission.primarySpawns + #mission.secondarySpawns
 
 	if (currentMissionType == "destroy") then
 		local buildingID = readData(playerID .. ":destroyableBuildingID")
@@ -628,14 +628,14 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 		spawnPoints = self:getSpawnPoints(numberOfSpawns, SceneObject(pConversingPlayer):getWorldPositionX(), SceneObject(pConversingPlayer):getWorldPositionY(), pConversingPlayer)
 	end
 
-	if table.getn(spawnPoints) ~= numberOfSpawns then
+	if #spawnPoints ~= numberOfSpawns then
 		return false
 	end
 
 	writeData(playerID .. ":missionSpawns", numberOfSpawns)
 
 	local mainNpcs = mission.primarySpawns
-	for i = 1, table.getn(mission.primarySpawns), 1 do
+	for i = 1, #mission.primarySpawns, 1 do
 		local pNpc = self:spawnNpc(mainNpcs[i], spawnPoints[i], pConversingPlayer, i)
 
 		local planetName
@@ -661,7 +661,7 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 				if (currentMissionType ~= "destroy") then
 					self:updateWaypoint(pConversingPlayer, planetName, spawnPoints[i][1], spawnPoints[i][3], "target")
 				end
-				if (mission.staticObjects ~= nil and table.getn(mission.staticObjects) > 0) then
+				if (mission.staticObjects ~= nil and #mission.staticObjects > 0) then
 					self:spawnMissionStaticObjects(mission, pConversingPlayer, spawnPoints[i][1], spawnPoints[i][3])
 				end
 			end
@@ -684,8 +684,8 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 	end
 
 	local secondaryNpcs = mission.secondarySpawns
-	for i = 1 + table.getn(mission.primarySpawns), numberOfSpawns, 1 do
-		local secondaryNpc = secondaryNpcs[i - table.getn(mission.primarySpawns)]
+	for i = 1 + #mission.primarySpawns, numberOfSpawns, 1 do
+		local secondaryNpc = secondaryNpcs[i - #mission.primarySpawns]
 		local pNpc = self:spawnNpc(secondaryNpc, spawnPoints[i], pConversingPlayer, i)
 
 		if pNpc ~= nil and SceneObject(pNpc):isCreatureObject() then
@@ -734,7 +734,7 @@ function ThemeParkLogic:spawnDestroyMissionNpcs(mission, pConversingPlayer)
 
 	local buildingData = mission.buildingSpawn
 	local childNpcs = buildingData.childNpcs
-	local numberOfChildNpcs = table.getn(childNpcs)
+	local numberOfChildNpcs = #childNpcs
 
 	local buildingID = readData(playerID .. ":destroyableBuildingID")
 	local pBuilding = getSceneObject(buildingID)
@@ -872,7 +872,7 @@ function ThemeParkLogic:getMissionLootCount(pLooter)
 	local mission = self:getMission(npcNumber, missionNumber)
 
 	if mission ~= nil and mission.missionType == "confiscate" then
-		return table.getn(mission.itemSpawns)
+		return #mission.itemSpawns
 	else
 		return 0
 	end
@@ -991,12 +991,12 @@ function ThemeParkLogic:setNpcDefender(pPlayer)
 		if readData(objectID .. ":missionOwnerID") == playerID then
 			local pNpc = getSceneObject(objectID)
 			if pNpc ~= nil and SceneObject(pNpc):isAiAgent() then
-				if (i <= table.getn(mission.primarySpawns)) then
+				if (i <= #mission.primarySpawns) then
 					if currentMissionType == "assassinate" or currentMissionType == "confiscate" or currentMissionType == "destroy" then
 						AiAgent(pNpc):setDefender(pPlayer)
 					end
-				elseif i > table.getn(mission.primarySpawns) then
-					if (mission.secondarySpawns[i - table.getn(mission.primarySpawns)].dead == nil or mission.secondarySpawns[i - table.getn(mission.primarySpawns)].dead ~= "true") then
+				elseif i > #mission.primarySpawns then
+					if (mission.secondarySpawns[i - #mission.primarySpawns].dead == nil or mission.secondarySpawns[i - #mission.primarySpawns].dead ~= "true") then
 						AiAgent(pNpc):setDefender(pPlayer)
 					end
 				end
@@ -1061,7 +1061,7 @@ function ThemeParkLogic:getMissionKillCount(pAttacker)
 	local mission = self:getMission(npcNumber, missionNumber)
 
 	if mission ~= nil and mission.missionType == "assassinate" then
-		return table.getn(mission.primarySpawns)
+		return #mission.primarySpawns
 	else
 		return 0
 	end
@@ -1139,9 +1139,9 @@ function ThemeParkLogic:giveMissionItems(mission, pConversingPlayer)
 		return
 	end
 
-	writeData(playerID .. ":missionItems", table.getn(itemsToGive))
+	writeData(playerID .. ":missionItems", #itemsToGive)
 
-	for i = 1, table.getn(itemsToGive), 1 do
+	for i = 1, #itemsToGive, 1 do
 		local pInvItem = getContainerObjectByTemplate(pInventory, itemsToGive[i].itemTemplate, false)
 
 		if (pInvItem == nil) then
@@ -1171,7 +1171,7 @@ function ThemeParkLogic:getMissionDescription(pConversingPlayer, direction)
 
 	local npcNumber = 1
 	while (npcNumber < activeNpcNumber) do
-		missionNumber = missionNumber + table.getn(self:getNpcData(npcNumber).missions)
+		missionNumber = missionNumber + #self:getNpcData(npcNumber).missions
 		npcNumber = npcNumber * 2
 	end
 	if curMission ~= nil and curMission.missionDescription ~= "" and curMission.missionDescription ~= nil and direction == "target" then
@@ -1784,7 +1784,7 @@ function ThemeParkLogic:goToNextMission(pConversingPlayer)
 	writeStringData(playerID .. ":activeScreenPlay", "")
 	CreatureObject(pConversingPlayer):setScreenPlayState(math.pow(2, missionNumber - 1), self.screenPlayState .. "_mission_" .. npcName)
 
-	if missionNumber == table.getn(npcData.missions) then
+	if missionNumber == #npcData.missions then
 		CreatureObject(pConversingPlayer):setScreenPlayState(npcNumber, self.screenPlayState)
 	end
 end

@@ -72,7 +72,7 @@ end
 
 function heraldScreenPlay:spawnMobiles()
 	local mobiles = self.heraldList
-	for i = 1, table.getn(mobiles), 1 do
+	for i = 1, #mobiles, 1 do
 		if isZoneEnabled(mobiles[i].planet) then
 			local pSpawn = spawnMobile(mobiles[i].planet, mobiles[i].template, 1, mobiles[i].x, mobiles[i].z, mobiles[i].y, mobiles[i].angle, mobiles[i].cell)
 			if (pSpawn ~= nil) then

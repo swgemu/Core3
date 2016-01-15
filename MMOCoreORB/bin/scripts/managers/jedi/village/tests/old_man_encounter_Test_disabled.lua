@@ -88,7 +88,7 @@ describe("OldManEncounter", function()
 
 		describe("spawnObjectList", function()
 			it("Should have one mobile defined.", function()
-				assert.same(1, table.getn(OldManEncounter.spawnObjectList))
+				assert.same(1, #OldManEncounter.spawnObjectList)
 			end)
 			it("Should have template equal to old_man.", function()
 				assert.same("old_man", OldManEncounter.spawnObjectList[1]["template"])

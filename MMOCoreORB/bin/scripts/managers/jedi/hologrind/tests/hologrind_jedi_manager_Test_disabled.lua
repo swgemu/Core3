@@ -174,14 +174,14 @@ describe("Hologrind Jedi Manager", function()
 
 		describe("getGrindableProfessionList", function()
 			it("Should return a list of at least the number of professions that has to be mastered", function()
-				assert.is_true(EXPECTEDNUMBEROFPROFESSIONSTOGRIND <= table.getn(testHologrind.getGrindableProfessionList()))
+				assert.is_true(EXPECTEDNUMBEROFPROFESSIONSTOGRIND <= #testHologrind.getGrindableProfessionList())
 			end)
 
 			it("Should not modify the size of the grindable profession list when items are removed from it in another function", function()
 				local theList = testHologrind.getGrindableProfessionList()
-				local firstSize = table.getn(theList)
+				local firstSize = #theList
 				table.remove(theList, 1)
-				assert.are.equal(firstSize, table.getn(testHologrind.getGrindableProfessionList()))
+				assert.are.equal(firstSize, #testHologrind.getGrindableProfessionList())
 			end)
 		end)
 

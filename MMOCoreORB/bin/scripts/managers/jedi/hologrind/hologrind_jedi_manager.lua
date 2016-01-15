@@ -72,7 +72,7 @@ function HologrindJediManager:onPlayerCreated(pCreatureObject)
 	local skillList = self:getGrindableProfessionList()
 	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
 		for i = 1, NUMBEROFPROFESSIONSTOMASTER, 1 do
-			local numberOfSkillsInList = table.getn(skillList)
+			local numberOfSkillsInList = #skillList
 			local skillNumber = getRandomNumber(1, numberOfSkillsInList)
 			playerObject:addHologrindProfession(skillList[skillNumber][2])
 			table.remove(skillList, skillNumber)
@@ -87,7 +87,7 @@ function HologrindJediManager:getNumberOfMasteredProfessions(pCreatureObject)
 	return ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
 		local professions = playerObject:getHologrindProfessions()
 		local masteredNumberOfProfessions = 0
-		for i = 1, table.getn(professions), 1 do
+		for i = 1, #professions, 1 do
 			if playerObject:hasBadge(professions[i]) then
 				masteredNumberOfProfessions = masteredNumberOfProfessions + 1
 			end
@@ -172,7 +172,7 @@ end
 -- @return the profession name associated with the badge number, Unknown profession returned if the badge number isn't found.
 function HologrindJediManager:getProfessionStringIdFromBadgeNumber(badgeNumber)
 	local skillList = self:getGrindableProfessionList()
-	for i = 1, table.getn(skillList), 1 do
+	for i = 1, #skillList, 1 do
 		if skillList[i][2] == badgeNumber then
 			return skillList[i][1]
 		end
@@ -190,7 +190,7 @@ function HologrindJediManager:sendHolocronMessage(pCreatureObject)
 	else
 		ObjectManager.withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject)
 			local professions = playerObject:getHologrindProfessions()
-			for i = 1, table.getn(professions), 1 do
+			for i = 1, #professions, 1 do
 				if not playerObject:hasBadge(professions[i]) then
 					local professionText = self:getProfessionStringIdFromBadgeNumber(professions[i])
 					creatureObject:sendSystemMessageWithTO("@jedi_spam:holocron_light_information", "@skl_n:" .. professionText)

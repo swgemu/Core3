@@ -534,7 +534,7 @@ function TheaterManagerScreenPlay:getExpectedPerformance(pPlayer, type)
 		end
 		if (type == 1) then
 			while performance == nil do
-				local performanceName = self.dances[getRandomNumber(table.getn(self.dances))]
+				local performanceName = self.dances[getRandomNumber(#self.dances)]
 
 				if (playerObject:hasAbility("startDance+" .. performanceName) and (currentPerformance == nil or performanceName ~= currentPerformance)) then
 					performance = self:getPerformanceKey(1, performanceName)
@@ -543,7 +543,7 @@ function TheaterManagerScreenPlay:getExpectedPerformance(pPlayer, type)
 			return performance
 		elseif (type == 2) then
 			while performance == nil do
-				local performanceName = self.songs[getRandomNumber(table.getn(self.songs))]
+				local performanceName = self.songs[getRandomNumber(#self.songs)]
 				if (playerObject:hasAbility("startMusic+" .. performanceName) and (currentPerformance == nil or performanceName ~= currentPerformance)) then
 					performance = self:getPerformanceKey(2, performanceName)
 				end
@@ -930,7 +930,7 @@ function TheaterManagerScreenPlay:isInPlayersEntertainedList(pPlayer, playerID)
 		return false
 	end
 
-	for i = 1, table.getn(playersEntertained), 1 do
+	for i = 1, #playersEntertained, 1 do
 		if tonumber(playersEntertained[i]) == playerID then
 			return true
 		end
@@ -1085,7 +1085,7 @@ function TheaterManagerScreenPlay:spawnAudienceWave(pControl)
 		audienceSpawned = 0
 	end
 
-	local seatTotal = table.getn(theaterManagerSeatingChart)
+	local seatTotal = #theaterManagerSeatingChart
 	for i = 1, 5, 1 do
 		local isOccupied = true
 		local randomSeat = 0
@@ -1158,7 +1158,7 @@ end
 function TheaterManagerScreenPlay:cleanupAudience(pControl)
 	local controlID = SceneObject(pControl):getObjectID()
 
-	local seatTotal = table.getn(theaterManagerSeatingChart)
+	local seatTotal = #theaterManagerSeatingChart
 
 	for i = 1, seatTotal, 1 do
 		local memberID = readData(controlID .. ":theater_manager:seat_" .. i)
@@ -1266,11 +1266,11 @@ function TheaterManagerScreenPlay:determineAudienceInterests(pPlayer)
 	end
 
 	for i = 1, interestTable[1], 1 do
-		writeData(controlID .. ":theater_manager:rating:" .. performTable[getRandomNumber(1, table.getn(performTable))], 10)
+		writeData(controlID .. ":theater_manager:rating:" .. performTable[getRandomNumber(1, #performTable)], 10)
 	end
 
 	for i = 1, interestTable[2], 1 do
-		writeData(controlID .. ":theater_manager:rating:" .. performTable[getRandomNumber(1, table.getn(performTable))], -2)
+		writeData(controlID .. ":theater_manager:rating:" .. performTable[getRandomNumber(1, #performTable)], -2)
 	end
 
 	for i = 1, interestTable[3], 1 do
@@ -1298,13 +1298,13 @@ function TheaterManagerScreenPlay:getRandomInterest(type, pPlayer, controlID)
 
 	local choices = { }
 	if (type == 1) then
-		for i = 1, table.getn(performTable), 1 do
+		for i = 1, #performTable, 1 do
 			if (readData(controlID .. ":theater_manager:rating:" .. performTable[i]) == 10) then
 				table.insert(choices, performTable[i])
 			end
 		end
 	elseif (type == 2) then
-		for i = 1, table.getn(performTable), 1 do
+		for i = 1, #performTable, 1 do
 			if (readData(controlID .. ":theater_manager:rating:" .. performTable[i]) == -2) then
 				table.insert(choices, performTable[i])
 			end
@@ -1323,10 +1323,10 @@ function TheaterManagerScreenPlay:getRandomInterest(type, pPlayer, controlID)
 		end
 	end
 
-	if (table.getn(choices) == 0) then
+	if (#choices == 0) then
 		return nil
 	else
-		return choices[getRandomNumber(1,table.getn(choices))]
+		return choices[getRandomNumber(1, #choices)]
 	end
 end
 
@@ -1667,11 +1667,11 @@ function TheaterManagerScreenPlay:performanceCleanup(pControl)
 	local playerID = readData(controlID .. ":theater_manager:ownerID")
 	local theaterID = readData(controlID .. ":theater_manager:theaterID")
 
-	for i = 1, table.getn(self.songs), 1 do
+	for i = 1, #self.songs, 1 do
 		deleteData(controlID .. ":theater_manager:rating:" .. self.songs[i])
 	end
 
-	for i = 1, table.getn(self.dances), 1 do
+	for i = 1, #self.dances, 1 do
 		deleteData(controlID .. ":theater_manager:rating:" .. self.dances[i])
 	end
 

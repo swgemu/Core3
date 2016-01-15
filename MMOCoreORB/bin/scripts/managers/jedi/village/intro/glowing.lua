@@ -138,7 +138,7 @@ PROFESSIONBADGES = {
 function Glowing:countBadgesInListToUpperLimit(pCreatureObject, list, upperLimit)
 	local numberOfBadges = 0
 	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-		for i = 1, table.getn(list), 1 do
+		for i = 1, #list, 1 do
 			if playerObject:hasBadge(list[i]) then
 				numberOfBadges = numberOfBadges + 1
 				if numberOfBadges >= upperLimit then
