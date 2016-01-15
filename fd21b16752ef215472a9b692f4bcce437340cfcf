@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_df4a1327",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-15T01:51:07Z",
+      "side": 1,
+      "message": "tabs",
+      "range": {
+        "startLine": 624,
+        "startChar": 0,
+        "endLine": 652,
+        "endChar": 25
+      },
+      "revId": "fd21b16752ef215472a9b692f4bcce437340cfcf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_1f588bf9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/PlayerVehicleBuff.idl",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-15T01:51:07Z",
+      "side": 1,
+      "message": "You can\u0027t use the mutex like you want to here. You are locking after this mutex, which destroys any protection you have against triple (or even double) locks. If you want to use a single-shot mutex like this, you MUST guarantee that nothing gets locked afterwards.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "fd21b16752ef215472a9b692f4bcce437340cfcf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_9f549bcb",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/PlayerVehicleBuffImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-15T01:51:07Z",
+      "side": 1,
+      "message": "remove commented code",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 99
+      },
+      "revId": "fd21b16752ef215472a9b692f4bcce437340cfcf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ff47d71b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/PlayerVehicleBuffImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-15T01:51:07Z",
+      "side": 1,
+      "message": "remove commented code",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 49
+      },
+      "revId": "fd21b16752ef215472a9b692f4bcce437340cfcf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_bf515fda",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DismountCommand.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-15T01:51:07Z",
+      "side": 1,
+      "message": "why is this here? It will cause gallop to remove all mods and then add all mods because it\u0027s in this vector.",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "fd21b16752ef215472a9b692f4bcce437340cfcf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_5f5e03eb",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DismountCommand.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-15T01:51:07Z",
+      "side": 1,
+      "message": "the buff needs to be locked here, see my note about your mutex in your new buff",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 31
+      },
+      "revId": "fd21b16752ef215472a9b692f4bcce437340cfcf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_7f63c7b1",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/MountCommand.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-15T01:51:07Z",
+      "side": 1,
+      "message": "Need to lock the buff here, see my note about your mutex in your new buff",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 32
+      },
+      "revId": "fd21b16752ef215472a9b692f4bcce437340cfcf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
