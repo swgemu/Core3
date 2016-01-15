@@ -51,7 +51,7 @@ include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.scene.variables.DeltaBitArray;
 
-class PlayerObject extends IntangibleObject {	
+class PlayerObject extends IntangibleObject {
 	protected unsigned int characterBitmask;
 	protected string title;
 
@@ -317,15 +317,13 @@ class PlayerObject extends IntangibleObject {
 		activePets.setNoDuplicateInsertPlan();
 		chosenVeteranRewards.setNoDuplicateInsertPlan();
 
-		accountID = 0;		
+		accountID = 0;
 
 		factionStatus = 0;
 
 		clientLastMovementStamp = 0;
 
 		maximumLots = 10;
-
-		debugOutput = false;
 
 		adminLevel = 0;
 
@@ -353,8 +351,6 @@ class PlayerObject extends IntangibleObject {
 
 		drinkFilling = 0;
 		drinkFillingMax = 0;
-
-		suiBoxNextID = 0;
 
 		reactionFines = 0;
 
@@ -611,9 +607,6 @@ class PlayerObject extends IntangibleObject {
 	 */
 	public native void removeFriend(final string name, boolean notifyClient = true);
 
-	// Used when character is deleted
-	public native void removeAllFriends();
-
 	//Used when a character is renamed
 	public native void removeAllReverseFriends(final string oldName);
 
@@ -836,8 +829,6 @@ class PlayerObject extends IntangibleObject {
 	public void dropPersistentMessage(unsigned long id) {
 		persistentMessages.drop(id);
 	}
-
-	private native void deleteAllPersistentMessages();
 
 	/**
 	 * Unloads all the spawned creatures from the datapad control devices
@@ -1576,7 +1567,7 @@ class PlayerObject extends IntangibleObject {
 		}
 		lastVisibilityUpdateTimestamp.updateToCurrentTime();
 	}
-	
+
 	@dereferenced
 	@local
 	public native Time getLastVisibilityUpdateTimestamp();
@@ -1598,7 +1589,7 @@ class PlayerObject extends IntangibleObject {
 	public void removeVendor(SceneObject vendor) {
 		ownedVendors.removeElement(vendor.getObjectID());
 	}
-	
+
 	@dirty
 	public native int getVendorCount();
 
@@ -1608,7 +1599,12 @@ class PlayerObject extends IntangibleObject {
 	}
 
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
-	
+
+	//Used when character is deleted
+	private native void removeAllFriends();
+	private native void deleteAllPersistentMessages();
+	private native void deleteAllWaypoints();
+
 	@read
 	public boolean isJedi() {
 		return jediState >= 2; //TODO: Implement jedi constants.
@@ -1639,63 +1635,63 @@ class PlayerObject extends IntangibleObject {
 	public void setMutedReason(string reason) {
 		mutedReason = reason;
 	}
-	
+
 	@read
 	public string getInstalledHoloEmote(){
 		return installedHoloEmote;
 	}
-	
+
 	public void setInstalledHoloEmote(string holoEmote){	
 		installedHoloEmote = holoEmote;
 		holoEmoteUseCount = 20;
 	}
-	
+
 	public void removeInstalledHoloEmote(){
 		installedHoloEmote = "";
 		holoEmoteUseCount = 0;
 	}
-	
+
 	@read
 	public int getHoloEmoteUseCount(){
 		return holoEmoteUseCount;
 	}
-	
+
 	public void decreaseHoloEmoteUseCount(){
 		holoEmoteUseCount = holoEmoteUseCount - 1;
 		if( holoEmoteUseCount < 0 )
 			holoEmoteUseCount = 0;
 	}
-	
+
 	@read
 	public boolean isMarried(){	
 		return spouseName != "";
 	}
-	
+
 	@read
 	public string getSpouseName(){
 		return spouseName;
 	}
-	
+
 	public void setSpouseName( string firstName ){
 		 spouseName = firstName;
 	}
-	
+
 	public void removeSpouse(){
 		spouseName = "";
 	}
-	
+
 	@dirty
 	public string getChosenVeteranReward( unsigned int milestone ){
 		return chosenVeteranRewards.get(milestone);
 	}
-	
+
 	public void addChosenVeteranReward( unsigned int milestone, string rewardTemplate ){
 		chosenVeteranRewards.put( milestone, rewardTemplate );
 	}
-	
+
 	@dirty
 	public native boolean hasChosenVeteranReward( final string rewardTemplate );
-	
+
 	public void clearVeteranReward( unsigned int milestone ){
 		if( chosenVeteranRewards.contains(milestone) )
 			chosenVeteranRewards.drop( milestone );

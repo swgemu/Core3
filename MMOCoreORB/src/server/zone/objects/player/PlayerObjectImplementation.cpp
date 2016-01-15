@@ -2163,6 +2163,8 @@ void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContained
 
 	deleteAllPersistentMessages();
 
+	deleteAllWaypoints();
+
 	for (int i = 0; i < currentEventPerks.size(); ++i) {
 		uint64 oid = currentEventPerks.get(i);
 
@@ -2244,6 +2246,16 @@ void PlayerObjectImplementation::deleteAllPersistentMessages() {
 		}
 
 		dropPersistentMessage(messageObjectID);
+	}
+}
+
+void PlayerObjectImplementation::deleteAllWaypoints() {
+	for (int i = 0; i < waypointList.size(); ++i) {
+		WaypointObject* waypoint = waypointList.getValueAt(i);
+
+		if (waypoint != NULL && waypoint->isPersistent()) {
+			waypoint->destroyObjectFromDatabase(true);
+		}
 	}
 }
 
