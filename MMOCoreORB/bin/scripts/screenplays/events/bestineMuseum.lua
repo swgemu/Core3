@@ -301,7 +301,7 @@ function BestineMuseumScreenPlay:hasAlreadyVoted(pPlayer)
 
 	local list = self:splitString(voteList, ",")
 
-	for i = 1, table.getn(list), 1 do
+	for i = 1, #list, 1 do
 		if tonumber(list[i]) == playerID then
 			return true
 		end
@@ -343,7 +343,7 @@ function BestineMuseumScreenPlay:hasAlreadyPurchased(pPlayer)
 	end
 
 	local list = self:splitString(purchaseList, ",")
-	for i = 1, table.getn(list), 1 do
+	for i = 1, #list, 1 do
 		if tonumber(list[i]) == playerID then
 			return true
 		end
@@ -382,7 +382,7 @@ function BestineMuseumScreenPlay:hasTalkedToArtist(pPlayer, artistid)
 	end
 
 	local list = self:splitString(talkedList, ",")
-	for i = 1, table.getn(list), 1 do
+	for i = 1, #list, 1 do
 		if tonumber(list[i]) == playerID then
 			return true
 		end
@@ -430,7 +430,7 @@ end
 
 function BestineMuseumScreenPlay:incrementNextArtistPainting(artistid)
 	local nextPainting = tonumber(getQuestStatus("bestine_museum:next_painting_" .. artistid))
-	local totalArtistPaintings = table.getn(artistPaintings[artistid])
+	local totalArtistPaintings = #artistPaintings[artistid]
 	if nextPainting == totalArtistPaintings then
 		setQuestStatus("bestine_museum:next_painting_" .. artistid, 1)
 	else
@@ -464,7 +464,7 @@ function BestineMuseumScreenPlay:createArtistWaypoint(pPlayer, id)
 end
 
 function BestineMuseumScreenPlay:getArtistID(mobile)
-	for i = 1, table.getn(artistMobiles), 1 do
+	for i = 1, #artistMobiles, 1 do
 		if artistMobiles[i].template == mobile then
 			return i
 		end

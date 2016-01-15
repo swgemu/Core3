@@ -179,7 +179,7 @@ function OldManEncounter:doesOldManBelongToThePlayer(pConversingPlayer, pConvers
 
 	local playerOldMan = SpawnMobiles.getSpawnedMobiles(pConversingPlayer, OldManEncounter.taskName)
 
-	if playerOldMan ~= nil and playerOldMan[1] ~= nil and table.getn(playerOldMan) == 1 then
+	if playerOldMan ~= nil and playerOldMan[1] ~= nil and #playerOldMan == 1 then
 		return SceneObject(pConversingOldMan):getObjectID() == SceneObject(playerOldMan[1]):getObjectID()
 	else
 		return false

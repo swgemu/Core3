@@ -35,7 +35,7 @@ function chassis_dealer_conv_handler:runScreenHandlers(pConversationTemplate, pC
 		local suiManager = LuaSuiManager()
 		local options = ChassisDealer.getValidBlueprints(pConversingPlayer)
 
-		if (table.getn(options) <= 0) then
+		if (#options <= 0) then
 			pConversationScreen = screen:cloneScreen()
 			local clonedConversation = LuaConversationScreen(pConversationScreen)
 			clonedConversation:setDialogTextTO("@chassis_npc:no_deeds")

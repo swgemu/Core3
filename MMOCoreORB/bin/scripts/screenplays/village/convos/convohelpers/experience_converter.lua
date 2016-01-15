@@ -142,7 +142,7 @@ function ExperienceConverter:getNextUnlockableBranches(pCreatureObject)
 		end
 	end)
 
-	if (table.getn(trees) > 0) then
+	if (#trees > 0) then
 		return trees
 	else
 		return nil

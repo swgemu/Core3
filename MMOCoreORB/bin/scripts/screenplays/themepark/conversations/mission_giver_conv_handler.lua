@@ -119,7 +119,7 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 			end
 
 		elseif globalFaction ~= 0 and self.themePark:isInFaction(globalFaction, pConversingPlayer) ~= true then
-			if self.themePark:isValidConvoString(stfFile, ":notyet") and table.getn(self.themePark.npcMap) == 1  then
+			if self.themePark:isValidConvoString(stfFile, ":notyet") and #self.themePark.npcMap == 1  then
 				nextScreenName = "notyet"
 			else
 				nextScreenName = "no_faction"
@@ -135,7 +135,7 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 				nextScreenName = "no_faction"
 			end
 		elseif globalFaction ~= 0 and self.themePark:isInFaction(globalFaction, pConversingPlayer) and self.themePark:isOnLeave(pConversingPlayer) then
-			if self.themePark:isValidConvoString(stfFile, ":notyet") and table.getn(self.themePark.npcMap) == 1 then
+			if self.themePark:isValidConvoString(stfFile, ":notyet") and #self.themePark.npcMap == 1 then
 				nextScreenName = "notyet"
 			else
 				nextScreenName = "no_faction"
@@ -259,7 +259,7 @@ function mission_giver_conv_handler:handleScreenNpc1(pConversationTemplate, pCon
 			return nil
 		end
 
-		writeData(CreatureObject(pConversingPlayer):getObjectID() .. ":generic_mission_number", getRandomNumber(1, table.getn(npcData.missions)))
+		writeData(CreatureObject(pConversingPlayer):getObjectID() .. ":generic_mission_number", getRandomNumber(1, #npcData.missions))
 	end
 
 	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)

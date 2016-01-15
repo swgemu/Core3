@@ -159,7 +159,7 @@ end
 -- @param objectToFollow pointer to the object to follow.
 function Encounter:setSpawnedObjectsToFollow(spawnedObjects, objectToFollow)
 	if spawnedObjects ~= nil then
-		for i = 1, table.getn(spawnedObjects), 1 do
+		for i = 1, #spawnedObjects, 1 do
 			if self.spawnObjectList[i]["setNotAttackable"] then
 				CreatureObject(spawnedObjects[i]):setPvpStatusBitmask(0)
 			end
@@ -236,7 +236,7 @@ function Encounter:handleDespawnEvent(pCreatureObject)
 
 	local mobX, mobY
 
-	for i = 1, table.getn(spawnedObjects), 1 do
+	for i = 1, #spawnedObjects, 1 do
 		if spawnedObjects[i] ~= nil and self.spawnObjectList[i]["runOnDespawn"] and self.spawnObjectList[i]["setNotAttackable"] then
 			runAway = true
 			mobX = SceneObject(spawnedObjects[i]):getPositionX()
@@ -267,7 +267,7 @@ function Encounter:handleDespawnEvent(pCreatureObject)
 
 	local newZ = getTerrainHeight(pCreatureObject, newX, newY)
 
-	for i = 1, table.getn(spawnedObjects), 1 do
+	for i = 1, #spawnedObjects, 1 do
 		if (spawnedObjects[i] ~= nil) then
 			local objectID = SceneObject(spawnedObjects[i]):getObjectID()
 			writeData(objectID .. ":encounterNewX", newX)

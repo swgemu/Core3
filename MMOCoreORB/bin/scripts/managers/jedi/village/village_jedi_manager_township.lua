@@ -96,7 +96,7 @@ function VillageJediManagerTownship:spawnMobiles(currentPhase, spawnStaticMobs)
 	if (spawnStaticMobs == true) then
 		local mobileTable = villageMobileSpawns[0]
 
-		for i = 1, table.getn(mobileTable), 1 do
+		for i = 1, #mobileTable, 1 do
 			local mobile = mobileTable[i]
 			local pMobile = spawnMobile("dathomir", mobile[1], 0, mobile[2], mobile[3], mobile[4], mobile[5], 0)
 			if (pMobile ~= nil) then
@@ -114,7 +114,7 @@ function VillageJediManagerTownship:spawnMobiles(currentPhase, spawnStaticMobs)
 
 	local mobileTable = villageMobileSpawns[currentPhase]
 
-	for i = 1, table.getn(mobileTable), 1 do
+	for i = 1, #mobileTable, 1 do
 		local mobile = mobileTable[i]
 		local pMobile = spawnMobile("dathomir", mobile[1], 0, mobile[2], mobile[3], mobile[4], mobile[5], 0)
 
@@ -136,7 +136,7 @@ end
 -- Despawn and cleanup current phase mobiles.
 function VillageJediManagerTownship:despawnMobiles(currentPhase)
 	local mobileTable = villageMobileSpawns[currentPhase]
-	for i = 1, table.getn(mobileTable), 1 do
+	for i = 1, #mobileTable, 1 do
 		local objectID = readData("village:npc:object:" .. i)
 		local pMobile = getSceneObject(objectID)
 
@@ -156,7 +156,7 @@ function VillageJediManagerTownship:spawnSceneObjects(currentPhase, spawnStaticO
 	end
 
 	local objectTable = villageObjectSpawns[currentPhase]
-	for i = 1, table.getn(objectTable), 1 do
+	for i = 1, #objectTable, 1 do
 		local sceneObject = objectTable[i]
 		local pObject = spawnSceneObject("dathomir", sceneObject[1], sceneObject[2], sceneObject[3], sceneObject[4], 0, sceneObject[5])
 
@@ -170,7 +170,7 @@ end
 -- Despawn and cleanup current phase scene objects.
 function VillageJediManagerTownship:despawnSceneObjects(currentPhase)
 	local objectTable = villageObjectSpawns[currentPhase]
-	for i = 1, table.getn(objectTable), 1 do
+	for i = 1, #objectTable, 1 do
 		local objectID = readData("village:scene:object:" .. i)
 		local pObject = getSceneObject(objectID)
 

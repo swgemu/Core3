@@ -3,7 +3,7 @@ local ObjectManager = require("managers.object.object_manager")
 RaceTrack =ScreenPlay:new {}
 
 function RaceTrack:createRaceTrack()
-	for lc = 1, table.getn(self.trackConfig.waypoints) , 1 do
+	for lc = 1, #self.trackConfig.waypoints , 1 do
 		local pWaypointAA = spawnActiveArea(self.trackConfig.planetName, "object/active_area.iff", self.trackConfig.waypoints[lc].x, 0, self.trackConfig.waypoints[lc].y, self.trackConfig.waypointRadius, 0)
 
 		if (pWaypointAA ~= nil) then
@@ -35,7 +35,7 @@ function RaceTrack:processWaypoint(pActiveArea, pObject)
 	if lastIndex ~= "" then
 		local index = self:getWaypointIndex(pActiveArea)
 		if tonumber(lastIndex)==index then
-			if tonumber(index)==table.getn(self.trackConfig.waypoints) then
+			if tonumber(index)==#self.trackConfig.waypoints then
 				self:finalWaypoint(pActiveArea, pObject)
 			else
 				self:actuallyProcessWaypoint(pObject,index)
@@ -151,7 +151,7 @@ function RaceTrack:getWaypointIndex(pActiveArea)
 	local index = 0
 	local wpX = SceneObject(pActiveArea):getPositionX()
 	local wpY = SceneObject(pActiveArea):getPositionY()
-	for lc = 1, table.getn(self.trackConfig.waypoints) , 1 do
+	for lc = 1, #self.trackConfig.waypoints, 1 do
 		if self.trackConfig.waypoints[lc].x==wpX and self.trackConfig.waypoints[lc].y==wpY then
 			index = lc
 			break

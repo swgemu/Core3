@@ -1743,7 +1743,7 @@ function DeathWatchBunkerScreenPlay:doVentDroidMove(pDroid)
 		return
 	end
 
-	local patrolPointCount = table.getn(patrolPoints)
+	local patrolPointCount = #patrolPoints
 	local onCurrentPoint = readData("dwb:ventDroidCurrentPoint")
 
 	if (onCurrentPoint == patrolPointCount) then

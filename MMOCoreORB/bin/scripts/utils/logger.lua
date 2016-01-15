@@ -17,7 +17,7 @@ Logger.logEntries = {}
 -- @param message the text to log.
 -- @param level the level of the log message.
 function Logger:log(message, level)
-	if table.getn(Logger.logEntries) > MAX_NUMBER_OF_ENTRIES then
+	if #Logger.logEntries > MAX_NUMBER_OF_ENTRIES then
 		table.remove(Logger.logEntries, 1)
 	end
 
@@ -37,7 +37,7 @@ end
 -- @param detailed detailed information about where logs where made if set to true.
 -- @param lowestLevel the lowest message level to dump.
 function Logger:dump(detailed, lowestLevel)
-	for i = 1, table.getn(Logger.logEntries), 1 do
+	for i = 1, #Logger.logEntries, 1 do
 		local entry = Logger.logEntries[i]
 		if entry["level"] >= lowestLevel then
 			if detailed then

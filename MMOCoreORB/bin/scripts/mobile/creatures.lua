@@ -62,13 +62,15 @@ function deepcopy(t)
 end
 
 function merge(a, ...)
-      local r = deepcopy(a)
-        for j,k in ipairs({...}) do
-		table.foreach(k, function(i,v)table.insert(r,v) end )
+	local r = deepcopy(a)
+
+	for j,k in ipairs({...}) do
+		for i, v in pairs(k) do
+			table.insert(r,v)
 		end
-		
-      return r
-		
+	end
+
+	return r
 end
 
 includeFile("creatureskills.lua")
