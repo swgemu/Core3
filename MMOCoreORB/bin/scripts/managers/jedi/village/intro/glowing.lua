@@ -199,15 +199,18 @@ function Glowing:onPlayerLoggedIn(pCreatureObject)
 	if not self:isGlowing(pCreatureObject) then
 		self:registerObservers(pCreatureObject)
 	end
-	
-	if VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE)
-		and not VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE) then
-		if VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE) then
+
+	local hasCompletedVillage = VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE)
+	local hasDefeatedMellichae = VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE)
+	local hasAcceptedMellichae = VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE)
+
+	if (hasCompletedVillage == true and hasDefeatedMellichae == false) then
+		if (hasAcceptedMellichae == true) then
 			MellichaeOutroTheater:finish(pCreatureObject)
 			MellichaeOutroTheater:start(pCreatureObject)
-		else
-			OldManEncounter:start(pCreatureObject)
 		end
+
+		OldManEncounter:start(pCreatureObject)
 	end
 end
 
