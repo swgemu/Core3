@@ -1327,7 +1327,7 @@ void ChatManagerImplementation::loadMail(CreatureObject* player) {
 
 	SortedVector<uint64>* messages = ghost->getPersistentMessages();
 
-	for (int i = 0; i < messages->size(); ++i) {
+	for (int i = messages->size() - 1; i >= 0 ; --i) {
 		uint64 messageObjectID = messages->get(i);
 
 		Reference<PersistentMessage*> mail = Core::getObjectBroker()->lookUp(messageObjectID).castTo<PersistentMessage*>();

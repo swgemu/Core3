@@ -54,25 +54,25 @@ include server.zone.objects.scene.variables.DeltaBitArray;
 class PlayerObject extends IntangibleObject {	
 	protected unsigned int characterBitmask;
 	protected string title;
-	
+
 	protected string savedTerrainName;
 	protected unsigned long savedParentID;
-	
+
 	@dereferenced
 	protected Badges badges;
-	
+
 	protected int forcePower;
 	protected int forcePowerMax;
 	protected int forcePowerRegen;
-	
+
 	protected int foodFilling;
 	protected int foodFillingMax;
-	
+
 	protected int drinkFilling;
 	protected int drinkFillingMax;
 
 	protected int reactionFines;
-	
+
 	@dereferenced
 	protected Time reactionFineTimestamp; // Timestamp of when player was given a fine
 
@@ -80,7 +80,7 @@ class PlayerObject extends IntangibleObject {
 	protected Time reactionFineMailTimestamp; // Timestamp of last mail sent regarding fine being due
 
 	protected string starterProfession;
-	
+
 	protected string bankLocation;
 
 	protected boolean teleporting;
@@ -92,134 +92,134 @@ class PlayerObject extends IntangibleObject {
 
 	@dereferenced
 	protected SortedVector<unsigned long> ownedStructures;
-	
+
 	@dereferenced
 	protected SortedVector<unsigned long> ownedVendors;
-	
+
 	protected byte maximumLots;
-	
+
 	protected int jediState;
 	protected unsigned int adminLevel;
-	
+
 	protected byte languageID;
-	
+
 	@dereferenced
 	protected VectorMap<string, int> xpTypeCapList;
-		
+
 	@dereferenced
 	protected VectorMap<unsigned int, string> commandMessageStrings;
-	
+
 	@dereferenced
 	protected DeltaVectorMap<string, int> experienceList;
-	
+
 	@dereferenced
 	protected WaypointList waypointList;
-	
+
 	@dereferenced
 	protected AbilityList abilityList;
-		
+
 	@dereferenced
 	protected FriendList friendList;
-	
+
 	@dereferenced
 	protected IgnoreList ignoreList;
-	
+
 	@dereferenced
 	protected FactionStandingList factionStandingList;
-	
+
 	@dereferenced
 	protected SchematicList schematicList;
 
 	@dereferenced
 	protected Vector<unsigned int> incapacitationTimes;
-	
+
 	protected unsigned int suiBoxNextID;
-	
+
 	@dereferenced
 	protected VectorMap<unsigned int, SuiBox> suiBoxes;
-	
+
 	@dereferenced
 	protected SortedVector<ChatRoom> chatRooms;
-		
+
 	@dereferenced
 	protected transient SynchronizedSortedVector<CreatureObject> duelList;
-	
+
 	@dereferenced
 	protected BountyHunterTefRemovalTaskMap bountyLockList;
-	
+
 	protected unsigned long declaredResidence;
-	
+
 	protected unsigned long cloningFacility;
 
 	@dereferenced
 	protected SortedVector<unsigned long> persistentMessages;
-	
+
 	protected unicode biography; //char biography
-	
+
 	@dereferenced
 	protected SortedVector<string> consentList;
-	
+
 	//npc conversation
 	protected string lastNpcConvoMessage;
 	protected string lastNpcConvo;
+
 	@dereferenced
 	protected Vector<string> lastNpcConvoOptions; //Deprecate. Conversation could also be a session.
-	
+
 	protected unsigned long conversatingCreature; //If conversation is a session, then this would be stored on the session.
-	
-	
+
 	// Jedi Trainers.
 	@local
 	@dereferenced
 	protected Vector3 trainerCoordinates;
-	
+
 	protected string trainerZoneName;
-	
+
 	@dereferenced
 	protected transient Reference<PlayerDisconnectEvent> disconnectEvent;
-	
+
 	@dereferenced
 	protected transient Reference<PlayerRecoveryEvent> recoveryEvent;
 
 	@dereferenced
 	protected transient Reference<ForceRegenerationEvent> forceRegenerationEvent;
-	
+
 	@dereferenced
 	protected Time logoutTimeStamp;
-	
+
 	protected int onlineStatus;
-	
+
 	protected int skillPoints; //TODO: This could be encapsulated in the skill list.
-		
+
 	protected int pvpRating;
 
 	protected int factionStatus;
 
 	@dereferenced
 	protected Vector<byte> hologrindProfessions;
-	
+
 	protected unsigned int clientLastMovementStamp;
-	
+
 	@dereferenced
 	protected Time serverLastMovementStamp;
-	
+
 	@dereferenced
 	protected ValidatedPosition lastValidatedPosition;
-	
+
 	protected unsigned int accountID;
 
 	@dereferenced
 	protected VectorMap<string, string> screenPlayData;
-	
+
 	@dereferenced
 	protected SortedVector<string> permissionGroups;
 
 	protected unsigned long performanceBuffTarget;
-	
+
 	protected boolean debugOutput;
-	
+
 	protected float visibility;
-	
+
 	@dereferenced
 	protected Time lastVisibilityUpdateTimestamp;
 
@@ -234,19 +234,19 @@ class PlayerObject extends IntangibleObject {
 
 	@dereferenced
 	protected SortedVector<AiAgent> activePets;
-	
+
 	@dereferenced
 	protected DeltaBitArray activeQuests;
-	
+
 	@dereferenced
 	protected DeltaBitArray completedQuests;
-	
+
 	protected string installedHoloEmote;
-	
+
 	protected int holoEmoteUseCount;
-	
+
 	protected string spouseName;
-	
+
 	@dereferenced
 	protected VectorMap<unsigned int, string> chosenVeteranRewards; // milestone, templateFile
 
@@ -259,7 +259,7 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	@rawTemplate(value = "uint32, PlayerQuestData")
 	protected DeltaVectorMap playerQuestsData;
-	
+
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
 	public static final int ROLEPLAYER = 4;
@@ -274,12 +274,12 @@ class PlayerObject extends IntangibleObject {
 	public static final int LOGGINGIN = 4;
 	public static final int LOGGINGOUT = 5;
 	public static final int LOADING = 6;
-	
+
 	public PlayerObject() {
 		characterBitmask = 0;
-		
+
 		commandMessageStrings.setNoDuplicateInsertPlan();
-		
+
 		bankLocation = "";
 
 		teleporting = false;
@@ -289,28 +289,28 @@ class PlayerObject extends IntangibleObject {
 		mutedReason = "";
 
 		debugOutput = false;
-		
+
 		suiBoxNextID = 0;
-		
+
 		savedParentID = 0;
-		
+
 		declaredResidence = 0;
-		
+
 		cloningFacility = 0;
-		
+
 		skillPoints = 0;
-		
+
 		conversatingCreature = 0;
-		
+
 		forcePower = 0;
 		forcePowerMax = 0;
 		forcePowerRegen = 0;
 		jediState = 0;
-		
+
 		pvpRating = 0;
-		
+
 		trainerZoneName = "";
-		
+
 		duelList.setNoDuplicateInsertPlan();
 		persistentMessages.setNoDuplicateInsertPlan();
 		consentList.setNoDuplicateInsertPlan();
@@ -318,72 +318,72 @@ class PlayerObject extends IntangibleObject {
 		chosenVeteranRewards.setNoDuplicateInsertPlan();
 
 		accountID = 0;		
-		
+
 		factionStatus = 0;
 
 		clientLastMovementStamp = 0;
-		
+
 		maximumLots = 10;
-		
+
 		debugOutput = false;
 
 		adminLevel = 0;
-		
+
 		languageID = 0;
-		
+
 		setOffline();
-		
+
 		performanceBuffTarget = 0;
-		
+
 		visibility = 0;
 		lastVisibilityUpdateTimestamp.updateToCurrentTime();
 
 		lastPvpCombatActionTimestamp.updateToCurrentTime();
 
 		lastDigestion.updateToCurrentTime();
-		
+
 		installedHoloEmote = "";
-		
+
 		holoEmoteUseCount = 0;
-		
+
 		spouseName = "";
-		
+
 		foodFilling = 0;
 		foodFillingMax = 0;
-		
+
 		drinkFilling = 0;
 		drinkFillingMax = 0;
 
 		suiBoxNextID = 0;
-		
+
 		reactionFines = 0;
 
 		Logger.setLoggingName("PlayerObject");
 	}
-	
+
 	public void finalize() {
 
 	}
-	
+
 	/**
 	 * Gets called when this objects is loaded from database
 	 * @pre { this locked }
 	 * @post { this locked }
 	 */
 	public native void notifyLoadFromDatabase();
-	
+
 	public native void unload();
-	
+
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 	public native void initializeTransientMembers();
-	
+
 	@dirty
 	public native void sendBaselinesTo(SceneObject player);
-	
+
 	@dirty
 	public native void sendMessage(BasePacket msg);
-	
+
 	public synchronized void addOwnedStructure(StructureObject obj) {
 		if (obj == null)
 			return;
@@ -822,30 +822,32 @@ class PlayerObject extends IntangibleObject {
 	public string getTrainerZoneName() {
 		return trainerZoneName;
 	}
-	
+
 	@local
 	@dirty
 	public SortedVector<unsigned long> getPersistentMessages() {
 		return persistentMessages;
 	}
-	
+
 	public void addPersistentMessage(unsigned long id) {
 		persistentMessages.put(id);
 	}
-	
+
 	public void dropPersistentMessage(unsigned long id) {
 		persistentMessages.drop(id);
 	}
-	
+
+	private native void deleteAllPersistentMessages();
+
 	/**
 	 * Unloads all the spawned creatures from the datapad control devices
 	 */
 	public native void unloadSpawnedChildren();
-	
+
 	public void addToConsentList(final string name) {
 		consentList.put(name);
 	}
-	
+
 	public boolean hasInConsentList(final string name) {
 		return consentList.contains(name);
 	}

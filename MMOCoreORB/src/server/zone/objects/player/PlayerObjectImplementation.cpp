@@ -16,6 +16,7 @@
 #include "server/zone/managers/vendor/VendorManager.h"
 #include "server/chat/ChatManager.h"
 #include "server/chat/room/ChatRoom.h"
+#include "server/chat/PersistentMessage.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneClientSession.h"
@@ -2160,6 +2161,8 @@ void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContained
 
 	removeAllFriends();
 
+	deleteAllPersistentMessages();
+
 	for (int i = 0; i < currentEventPerks.size(); ++i) {
 		uint64 oid = currentEventPerks.get(i);
 
@@ -2227,6 +2230,20 @@ void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContained
 				task->execute();
 			}
 		}
+	}
+}
+
+void PlayerObjectImplementation::deleteAllPersistentMessages() {
+	for (int i = persistentMessages.size() - 1; i >= 0; --i) {
+		uint64 messageObjectID = persistentMessages.get(i);
+
+		Reference<PersistentMessage*> mail = Core::getObjectBroker()->lookUp(messageObjectID).castTo<PersistentMessage*>();
+
+		if (mail != NULL) {
+			ObjectManager::instance()->destroyObjectFromDatabase(messageObjectID);
+		}
+
+		dropPersistentMessage(messageObjectID);
 	}
 }
 
