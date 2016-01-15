@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_7fe2e7d6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-15T23:29:43Z",
+      "side": 1,
+      "message": "what happens if gallop wears off while in combat? Shouldn\u0027t the slow modifiers be immediately applied?",
+      "range": {
+        "startLine": 617,
+        "startChar": 0,
+        "endLine": 620,
+        "endChar": 2
+      },
+      "revId": "966dee61ccdeed0e235ee5d8945daf5730c5b6f0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_dfc9b35b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-15T23:29:43Z",
+      "side": 1,
+      "message": "This is redundant. The message will get displayed on removeBuff() beacuse the EndMessage was set to this.",
+      "range": {
+        "startLine": 675,
+        "startChar": 0,
+        "endLine": 679,
+        "endChar": 3
+      },
+      "revId": "966dee61ccdeed0e235ee5d8945daf5730c5b6f0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_9fc33b38",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DismountCommand.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-15T23:29:43Z",
+      "side": 1,
+      "message": "I don\u0027t see clocker getting released before this; it needs to be released before the for loop.",
+      "range": {
+        "startLine": 96,
+        "startChar": 5,
+        "endLine": 96,
+        "endChar": 33
+      },
+      "revId": "966dee61ccdeed0e235ee5d8945daf5730c5b6f0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_bfc07f2b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DismountCommand.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-15T23:29:43Z",
+      "side": 1,
+      "message": "This is necessary, but you need to release clocker for it to make sense.",
+      "range": {
+        "startLine": 102,
+        "startChar": 41,
+        "endLine": 102,
+        "endChar": 125
+      },
+      "revId": "966dee61ccdeed0e235ee5d8945daf5730c5b6f0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_5fdda313",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DismountCommand.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-15T23:29:43Z",
+      "side": 1,
+      "message": "I\u0027m a bit confused why you don\u0027t just remove the buff from the vehicle here.",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 118
+      },
+      "revId": "966dee61ccdeed0e235ee5d8945daf5730c5b6f0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_1fe72be6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/MountCommand.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-15T23:29:43Z",
+      "side": 1,
+      "message": "gallop needs a lock",
+      "range": {
+        "startLine": 117,
+        "startChar": 4,
+        "endLine": 117,
+        "endChar": 32
+      },
+      "revId": "966dee61ccdeed0e235ee5d8945daf5730c5b6f0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
