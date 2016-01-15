@@ -46,6 +46,10 @@ Encounter = Task:new {
 
 -- Setup persistent events
 function Encounter:setupSpawnAndDespawnEvents()
+	if self:callFunctionIfNotNil(self.isEncounterFinished, true, pCreatureObject) then
+		return
+	end
+	
 	if self.spawnTask == nil then
 		self.spawnTask = PersistentEvent:new {
 			-- Task properties
