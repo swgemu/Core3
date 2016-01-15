@@ -44,7 +44,7 @@
 object_draft_schematic_item_quest_item_fs_medic_puzzle_heal_pack = object_draft_schematic_item_quest_item_shared_fs_medic_puzzle_heal_pack:new {
 	templateType = DRAFTSCHEMATIC,
 
-	craftingToolTab = 524288, -- (See DraftSchematicObjectTemplate.h)
+	craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
 	complexity = 5,
 	size = 1,
 

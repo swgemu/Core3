@@ -32,7 +32,7 @@ function villageSivarraPhase1ConvoHandler:getInitialScreen(pPlayer, pNpc, pConve
 		(QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_01) and curedCount < 5)) then
 		return convoTemplate:getScreen("intro_in_progress")
 	elseif (not CreatureObject(pPlayer):hasSkill("science_medic_master")) then
-		convoTemplate:getScreen("intro_not_master_medic")
+		return convoTemplate:getScreen("intro_not_master_medic")
 	elseif (not QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_03) and
 		QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_02)) then
 		return convoTemplate:getScreen("intro_start_third_set")
