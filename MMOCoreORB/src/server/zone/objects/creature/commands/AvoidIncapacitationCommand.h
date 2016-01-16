@@ -27,13 +27,9 @@ public:
 			if (res != SUCCESS)
 				return res;
 
-			ManagedReference<Buff*> buff = creature->getBuff(BuffCRC::JEDI_AVOID_INCAPACITATION);
-			Locker locker(buff, creature);
+			creature->renewBuff(buffCRC, duration, true);
 
-			buff->renew(30);
 			doForceCost(creature);
-
-                  	buff->sendTo(creature);
 
 			if (!clientEffect.isEmpty())
 				creature->playEffect(clientEffect, "");
