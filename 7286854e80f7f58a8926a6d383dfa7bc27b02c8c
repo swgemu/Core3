@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_425ce825",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2302,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-16T21:38:26Z",
+      "side": 1,
+      "message": "You have an extra \"state \u003d \" in here.",
+      "revId": "7286854e80f7f58a8926a6d383dfa7bc27b02c8c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
