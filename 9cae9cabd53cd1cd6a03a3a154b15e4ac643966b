@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_7ff3c773",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-16T10:46:01Z",
+      "side": 1,
+      "message": "Make sure these isShrineOwned:By\u0027s are also deleted in onTheaterDespawn, and in onPowerShrineDestroyed as well.",
+      "revId": "9cae9cabd53cd1cd6a03a3a154b15e4ac643966b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_bfe15f9c",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_theater.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-16T10:46:01Z",
+      "side": 1,
+      "message": "Put this in taskFinish, otherwise it will only destroy them during the scheduled despawn. As this is a generic function that can be used in other theaters, you want it to be triggered when finish() is called directly as well.",
+      "revId": "9cae9cabd53cd1cd6a03a3a154b15e4ac643966b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
