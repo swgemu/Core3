@@ -10,6 +10,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/Zone.h"
 
@@ -39,6 +40,11 @@ int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* pl
 		if (!player->hasSkill("combat_smuggler_slicing_01")) {
 			return 0;
 		}
+
+		MissionTerminal* terminal = target.castTo<MissionTerminal*>();
+
+		if (terminal == NULL || terminal->isBountyTerminal())
+			return 0;
 
 		ManagedReference<CityRegion*> city = player->getCityRegion();
 		if (city != NULL && !city->isClientRegion() && city->isBanned(player->getObjectID())) {

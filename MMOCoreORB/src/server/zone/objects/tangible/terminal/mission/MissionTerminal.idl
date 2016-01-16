@@ -40,7 +40,12 @@ class MissionTerminal extends Terminal {
 		terminalType = templ.getMissionTerminalType();
 
 		boolean sliceTempFix = true; // Temporary Hack.
-		setSliceable(sliceTempFix);
+
+		if (isBountyTerminal()) {
+			setSliceable(!sliceTempFix);
+		} else {
+			setSliceable(sliceTempFix);
+		}
 
 	}
 	
