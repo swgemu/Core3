@@ -42,7 +42,7 @@
 --true = 1, false = 0
 
 AssistCommand = {
-        name = "assist",
+        name = "assist"
 }
 
 AddCommand(AssistCommand)
