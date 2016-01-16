@@ -6,12 +6,13 @@
 #define ASSISTCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/packets/object/ObjectControllerMessage.h"
 
-class AssistCommand : public QueueCommand {
+class AssistCommand : public CombatQueueCommand {
 public:
 
 	AssistCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
 	}
 
@@ -23,7 +24,19 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return SUCCESS;
+		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
+          
+		if (targetObject == NULL || !targetObject->isTangibleObject() || targetObject == creature)
+			return INVALIDTARGET;
+
+		CreatureObject *targetCreo = targetObject->asCreatureObject();
+
+		if(targetCreo == NULL)
+			return INVALIDTARGET;
+
+		creature->setTargetID(targetCreo->getTargetID(), false); // This should allow people to use heals and buffs
+
+		return doCombatAction(creature, targetCreo->getTargetID());
 	}
 
 };
