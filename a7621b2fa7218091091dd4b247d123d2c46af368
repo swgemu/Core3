@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_c230f8ea",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AssistCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-16T21:27:29Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem right for this to be a CombatQueueCommand that does a combat action. Looking at command_table.iff in the tres, it\u0027s an immediate command with a default time of 0. Having it do a combat action would allow players to spam it and do massive damage very quickly.",
+      "revId": "a7621b2fa7218091091dd4b247d123d2c46af368",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
