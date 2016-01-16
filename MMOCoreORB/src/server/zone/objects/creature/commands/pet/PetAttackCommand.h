@@ -47,6 +47,19 @@ public:
 			return INVALIDTARGET;
 		}
 
+		Reference<CellObject*> targetCell = targetObject->getParent().castTo<CellObject*>();
+
+		if (targetCell != NULL) {
+			ContainerPermissions* perms = targetCell->getContainerPermissions();
+
+			if (!perms->hasInheritPermissionsFromParent()) {
+				if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
+					pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+					return INVALIDTARGET;
+				}
+			}
+		}
+
 		ManagedReference<TangibleObject*> targetTano = targetObject.castTo<TangibleObject*>();
 
 		Locker clocker(controlDevice, creature);
