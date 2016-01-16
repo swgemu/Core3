@@ -6,7 +6,7 @@ function lifeDayAnarraConvoHandler:getInitialScreen(pPlayer, npc, pConversationT
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 
 	local playerID = SceneObject(pPlayer):getObjectID()
-	if readScreenPlayData(pPlayer, "lifeDay", "complete") == "1" or readData(playerID .. ":lifeDayAnarra") == 1 then
+	if readScreenPlayData(pPlayer, readStringSharedMemory("lifeDayScreenplayName"), "complete") == "1" or readData(playerID .. ":lifeDayAnarra") == 1 then
 		return convoTemplate:getScreen("tell_again")
 	elseif readData(playerID .. ":lifeDayState") == 2 then
 		return convoTemplate:getScreen("renewel")

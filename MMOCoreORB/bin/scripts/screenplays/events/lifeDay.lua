@@ -42,6 +42,7 @@ registerScreenPlay("lifeDayScreenplay", true)
 
 function lifeDayScreenplay:start()
 	if getFormattedTime():find("Dec") ~= nil then
+		writeStringSharedMemory("lifeDayScreenplayName", "lifeDay" .. tostring(os.date('%Y')))
 		self:spawnMobiles()
 	end
 end
@@ -120,7 +121,7 @@ function lifeDayScreenplay:giveRandomGift(pPlayer)
 	local itemTemplate = self.randomGifts[rand]
 	local pItem = giveItem(pInventory, itemTemplate, -1)
 
-	writeScreenPlayData(pPlayer, "lifeDay", "complete", 1)
+	writeScreenPlayData(pPlayer, readStringSharedMemory("lifeDayScreenplayName"), "complete", 1)
 
 	self:removeWaypoint(pPlayer)
 end
@@ -143,7 +144,7 @@ function lifeDayScreenplay:giveRobe(pPlayer)
 
 	local pItem = giveItem(pInventory, self.robe, -1)
 
-	writeScreenPlayData(pPlayer, "lifeDay", "complete", 1)
+	writeScreenPlayData(pPlayer, readStringSharedMemory("lifeDayScreenplayName"), "complete", 1)
 
 	self:removeWaypoint(pPlayer)
 end
@@ -153,6 +154,6 @@ function lifeDayScreenplay:noGift(pPlayer)
 		return
 	end
 
-	writeScreenPlayData(pPlayer, "lifeDay", "complete", 1)
+	writeScreenPlayData(pPlayer, readStringSharedMemory("lifeDayScreenplayName"), "complete", 1)
 	self:removeWaypoint(pPlayer)
 end
