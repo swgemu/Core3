@@ -200,7 +200,7 @@ function MellichaeOutroTheater:onPowerShrineDestroyed(pSceneObject, pKiller, not
 		local numOfShrines = readData(ownerID .. ":totalNum:Shrines:Green")
 
 		if (numOfShrines ~= nil) then
-			writeData(ownerID .. ":totalNum:Shrines:Red", numOfShrines - 1)
+			writeData(ownerID .. ":totalNum:Shrines:Green", numOfShrines - 1)
 		end
 		SceneObject(pSceneObject):destroyObjectFromWorld()
 		deleteData(SceneObject(pSceneObject):getObjectID() .. ":isShrineOwned:By")
