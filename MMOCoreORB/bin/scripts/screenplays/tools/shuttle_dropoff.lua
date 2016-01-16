@@ -19,7 +19,7 @@ ShuttleDropoff = {
 
 	shuttleName = { "Lambda Shuttle", "Shuttle", "Transport", "Theed Transport" },
 
-	shuttleLandingTime = { 17, 22, 26, 33 }, -- Time it takes each shuttle to land in seconds
+	shuttleLandingTime = { 18, 23, 27, 34 }, -- Time it takes each shuttle to land in seconds
 
 	shuttleCleanup = 8 * 60 * 60, -- Automatic shuttle cleanup after 8 hours if the shuttle has not been told to lift off
 
@@ -56,7 +56,7 @@ function ShuttleDropoff:destroyShuttle(pPlayer)
 	deleteData(playerID .. ":ShuttleDropoff:shuttleID")
 end
 
-function ShuttleDropoff:spawnShuttle(pPlayer)
+function ShuttleDropoff:spawnShuttle(pPlayer, manualControl)
 	local playerID = SceneObject(pPlayer):getObjectID()
 
 	local type = readData(playerID .. ":ShuttleDropoff:shuttleType")
@@ -84,14 +84,21 @@ function ShuttleDropoff:spawnShuttle(pPlayer)
 	CreatureObject(pShuttle):setCustomObjectName(self.shuttleName[type])
 
 	writeData(playerID .. ":ShuttleDropoff:shuttleID", SceneObject(pShuttle):getObjectID())
-	writeData(playerID .. ":ShuttleDropoff:shuttleStatus", 1) -- Spawned
+
+	if (manualControl) then
+		writeData(playerID .. ":ShuttleDropoff:shuttleStatus", -1) -- Spawned
+		createEvent(5 * 1000, "ShuttleDropoff", "allowManualControl", pPlayer)
+	else
+		writeData(playerID .. ":ShuttleDropoff:shuttleStatus", 1) -- Spawned
+	end
+
 	createEvent(self.shuttleCleanup * 1000, "ShuttleDropoff", "cleanUp", pPlayer)
 
 	return pShuttle
 end
 
 function ShuttleDropoff:doFlyby(pPlayer)
-	local pShuttle = self:spawnShuttle(pPlayer)
+	local pShuttle = self:spawnShuttle(pPlayer, false)
 
 	if (pShuttle == nil) then
 		CreatureObject(pPlayer):sendSystemMessage("Error executing flyby, shuttle not found.")
@@ -101,8 +108,8 @@ function ShuttleDropoff:doFlyby(pPlayer)
 	local type = readData(SceneObject(pPlayer):getObjectID() .. ":ShuttleDropoff:shuttleType")
 	CreatureObject(pPlayer):sendSystemMessage("Beginning flyby.")
 
-	createEvent(5 * 1000, "ShuttleDropoff", "landShuttle", pPlayer)
-	createEvent((self.shuttleLandingTime[type] + 5) * 1000, "ShuttleDropoff", "doTakeOff", pPlayer)
+	createEvent(6 * 1000, "ShuttleDropoff", "landShuttle", pPlayer)
+	createEvent((self.shuttleLandingTime[type] + 9) * 1000, "ShuttleDropoff", "doTakeOff", pPlayer)
 end
 
 function ShuttleDropoff:landShuttle(pPlayer)
@@ -198,6 +205,14 @@ function ShuttleDropoff:showMainUI(pPlayer)
 	sui.sendTo(pPlayer)
 end
 
+function ShuttleDropoff:allowManualControl(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	writeData(SceneObject(pPlayer) .. ":ShuttleDropoff:shuttleStatus", 1)
+end
+
 function ShuttleDropoff:suiShuttleDropoffMainCallback(pPlayer, pSui, eventIndex, args)
 	local cancelPressed = (eventIndex == 1)
 
@@ -249,7 +264,7 @@ function ShuttleDropoff:suiShuttleDropoffMainCallback(pPlayer, pSui, eventIndex,
 				if (pShuttle ~= nil) then
 					CreatureObject(pPlayer):sendSystemMessage("Existing shuttle found. Use \"land\" and \"leave\" to control it, or \"quit\" to end the event.")
 				else
-					ShuttleDropoff:spawnShuttle(pPlayer)
+					ShuttleDropoff:spawnShuttle(pPlayer, true)
 				end
 			else
 				CreatureObject(pPlayer):sendSystemMessage("Shuttle setup has not been completed. Use \"setup\" to configure the shuttle.")
@@ -260,7 +275,9 @@ function ShuttleDropoff:suiShuttleDropoffMainCallback(pPlayer, pSui, eventIndex,
 			else
 				local shuttleStatus = readData(playerID .. ":ShuttleDropoff:shuttleStatus")
 				if (args == "land") then
-					if (shuttleStatus == 1) then
+					if (shuttleStatus == -1) then
+						CreatureObject(pPlayer):sendSystemMessage("Please allow 5 seconds after entering manual control for the shuttle to be created.")
+					elseif (shuttleStatus == 1) then
 						self:landShuttle(pPlayer)
 					elseif (shuttleStatus == 2) then
 						CreatureObject(pPlayer):sendSystemMessage("Shuttle is already in the process of landing.")
