@@ -98,7 +98,7 @@ function MellichaeOutroTheater:onBossKilled(pCreature, pKiller, nothing)
 	end
 
 
-	if (SpawnMobiles.isFromSpawn(pOwner, MellichaeOutroTheater.taskName, pCreature)) then
+	if (SpawnMobiles.isFromSpawn(pOwner, self.taskName, pCreature)) then
 		self:addLoot(pCreature)
 		QuestManager.completeQuest(pOwner, QuestManager.quests.FS_THEATER_FINAL)
 		CreatureObject(pOwner):sendSystemMessage("@quest/force_sensitive/exit:final_complete") --	Congratulations, you have completed the Force sensitive quests! You are now qualified to begin the Jedi Padawan Trials.
@@ -163,7 +163,7 @@ function MellichaeOutroTheater:onPlayerKilled(pCreatureObject, pKiller, nothing)
 	end
 
 	Logger:log("Player was killed.", LT_INFO)
-	if SpawnMobiles.isFromSpawn(pCreatureObject, MellichaeOutroTheater.taskName, pKiller) then
+	if SpawnMobiles.isFromSpawn(pCreatureObject, self.taskName, pKiller) then
 		CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/exit:final_fail") -- You have failed the Mellichae encounter, you will be given the oppertunity to attempt it again in the near future.
 		OldManEncounter:start(pCreatureObject)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.FS_THEATER_FINAL)
@@ -200,7 +200,7 @@ function MellichaeOutroTheater:onPowerShrineDestroyed(pSceneObject, pKiller, not
 		local numOfShrines = readData(ownerID .. ":totalNum:Shrines:Green")
 
 		if (numOfShrines ~= nil) then
-			writeData(ownerID .. ":totalNum:Shrines:Red", numOfShrines - 1)
+			writeData(ownerID .. ":totalNum:Shrines:Green", numOfShrines - 1)
 		end
 		SceneObject(pSceneObject):destroyObjectFromWorld()
 		deleteData(SceneObject(pSceneObject):getObjectID() .. ":isShrineOwned:By")
@@ -234,9 +234,9 @@ function MellichaeOutroTheater:onDamageReceived(pObject, pAttacker, damage)
 		local numOfShrines = readData(creoOwnerId .. ":totalNum:Shrines:Red")
 
 		if (numOfShrines ~= nil and numOfShrines > 0) then
-			CreatureObject(pObject):healDamage(damage, 1)
-			CreatureObject(pObject):healDamage(damage, 2)
+			CreatureObject(pObject):healDamage(damage, 0)
 			CreatureObject(pObject):healDamage(damage, 3)
+			CreatureObject(pObject):healDamage(damage, 6)
 			CreatureObject(pObject):playEffect("clienteffect/healing_healdamage.cef", "")
 			return 0
 		elseif (numOfShrines == nil or numOfShrines <= 0) then
