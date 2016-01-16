@@ -45,7 +45,7 @@ Encounter = Task:new {
 }
 
 -- Setup persistent events
-function Encounter:setupSpawnAndDespawnEvents()
+function Encounter:setupSpawnAndDespawnEvents(pCreatureObject)
 	if self:callFunctionIfNotNil(self.isEncounterFinished, true, pCreatureObject) then
 		return
 	end
@@ -85,7 +85,7 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 function Encounter:taskStart(pCreatureObject)
 	Logger:log("Starting spawn task in " .. self.taskName, LT_INFO)
-	self:setupSpawnAndDespawnEvents()
+	self:setupSpawnAndDespawnEvents(pCreatureObject)
 	self.spawnTask:start(pCreatureObject)
 	return true
 end
@@ -203,7 +203,7 @@ function Encounter:handleSpawnEvent(pCreatureObject)
 	end
 
 	Logger:log("Spawn encounter in " .. self.taskName .. " triggered for player " .. SceneObject(pCreatureObject):getDisplayedName() .. ".", LT_INFO)
-	self:setupSpawnAndDespawnEvents()
+	self:setupSpawnAndDespawnEvents(pCreatureObject)
 	self.spawnTask:finish(pCreatureObject)
 
 	if not self:callFunctionIfNotNil(self.isEncounterFinished, true, pCreatureObject) then
@@ -213,6 +213,7 @@ function Encounter:handleSpawnEvent(pCreatureObject)
 
 		self.despawnTask:start(pCreatureObject)
 	else
+		self.despawnTask:finish(pCreatureObject)
 		self:finish(pCreatureObject)
 	end
 end
@@ -313,7 +314,7 @@ function Encounter:doDespawn(pCreatureObject)
 	end
 
 	Logger:log("Despawning mobiles in encounter " .. self.taskName .. ".", LT_INFO)
-	self:setupSpawnAndDespawnEvents()
+	self:setupSpawnAndDespawnEvents(pCreatureObject)
 	self.despawnTask:finish(pCreatureObject)
 
 	SpawnMobiles.despawnMobiles(pCreatureObject, self.taskName)
