@@ -38,7 +38,8 @@ GoToTheater = Task:new {
 	activeAreaRadius = 0,
 	onFailedSpawn = nil,
 	onSuccessfulSpawn = nil,
-	onEnteredActiveArea = nil
+	onEnteredActiveArea = nil,
+	onTheaterDespawn = nil
 }
 
 -- Get the spawned mobile list for the theater.
@@ -194,6 +195,8 @@ function GoToTheater:taskFinish(pCreatureObject)
 		SpawnMobiles.despawnMobiles(pTheater, self.taskName)
 		SceneObject(pTheater):destroyObjectFromWorld()
 	end
+	
+	self:callFunctionIfNotNil(self.onTheaterDespawn, nil, pCreatureObject)
 
 	return true
 end
