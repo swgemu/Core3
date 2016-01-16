@@ -7,7 +7,7 @@ function lifeDayOraalarriConvoHandler:getInitialScreen(pPlayer, npc, pConversati
 
 	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, ghost)
 		local playerID = player:getObjectID()
-		if readScreenPlayData(pPlayer, "lifeDay", "complete") == "1" then
+		if readScreenPlayData(pPlayer, readStringSharedMemory("lifeDayScreenplayName"), "complete") == "1" then
 			return convoTemplate:getScreen("return_complete")
 		elseif readData(playerID .. ":lifeDayState") == 1 or readData(playerID .. ":lifeDayState") == 2 then
 			return convoTemplate:getScreen("greetings")
