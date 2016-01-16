@@ -665,7 +665,7 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	@arg1preLocked
 	public native void removeBuff(Buff buff);
-
+	
 	@preLocked
 	public native boolean removeStateBuff(unsigned long state);
 
@@ -675,6 +675,16 @@ class CreatureObject extends TangibleObject {
 	 */
 	@preLocked
 	public native void clearBuffs(boolean updateclient);
+	
+	/**
+	 * Renews the buff and all secondary buffs associated with it.
+	 * @param buffCRC The buff to renew from the list
+	 * @param duration The duration to renew the buff at
+	 * @param sendToClient Send buff information to the client - Necessary to update timers
+	 */
+	@preLocked
+	public native void renewBuff(unsigned int buffCRC, int duration, boolean sendToClient = false);
+
 
 	public native void updateVehiclePosition(boolean sendPackets);
 

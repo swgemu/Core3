@@ -149,14 +149,13 @@ class Buff extends ManagedObject implements Logger {
 	@preLocked
 	public native void scheduleBuffEvent();
 
+	/*
+	 * This updates the duration event for this buff only  
+	 * Does not affect secondaryBuffs or update the client
+	 * You should probably use the CreatureObject::renewBuff() instead
+	 */
 	@preLocked
-	public void renew(float newDuration = -1) {
-		if (newDuration > 0)
-			buffDuration = newDuration;
-
-		clearBuffEvent();
-		scheduleBuffEvent();
-	}
+	public native void renew(float newDuration = -1);
 
 	@preLocked
 	public native abstract void parseAttributeModifierString(final string modifierstring);
