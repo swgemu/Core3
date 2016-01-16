@@ -68,7 +68,7 @@ public:
 
 					ptp->setShuttle(strongReference);
 
-				} else {
+				} else if (oldShuttle != strongReference) {
 					strongReference->destroyObjectFromWorld(true);
 					strongReference->destroyObjectFromDatabase(true);
 				}
