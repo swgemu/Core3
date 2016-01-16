@@ -35,6 +35,19 @@ public:
 			return GENERALERROR;
 		}
 
+		Reference<CellObject*> targetCell = targetObject->getParent().castTo<CellObject*>();
+
+		if (targetCell != NULL) {
+			ContainerPermissions* perms = targetCell->getContainerPermissions();
+
+			if (!perms->hasInheritPermissionsFromParent()) {
+				if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
+					pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+					return INVALIDTARGET;
+				}
+			}
+		}
+
 		// Check if droid has power
 		if( controlDevice->getPetType() == PetManager::DROIDPET ){
 			ManagedReference<DroidObject*> droidPet = cast<DroidObject*>(pet.get());
