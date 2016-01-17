@@ -16,6 +16,24 @@
       "revId": "31526b4ba7ecbc2842eb14187d680316b4709310",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_82a0c0f5",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2286,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-17T02:51:47Z",
+      "side": 0,
+      "message": "I can look into the implications of refactoring buff like that, but I\u0027m worried there are buffs that shouldn\u0027t have that functionality.",
+      "parentUuid": "da7095c5_e2409c37",
+      "revId": "31526b4ba7ecbc2842eb14187d680316b4709310",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
