@@ -665,7 +665,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		killPlayer(destructor, playerCreature, 0);
 	} else {
 		playerCreature->setCurrentSpeed(0);
-		playerCreature->setPosture(CreaturePosture::INCAPACITATED, true);
+		playerCreature->setPosture(CreaturePosture::INCAPACITATED, false);
 		playerCreature->updateLocomotion();
 
 		uint32 incapTime = calculateIncapacitationTimer(playerCreature, condition);
@@ -709,7 +709,7 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 	player->clearDots();
 
 	player->setCurrentSpeed(0);
-	player->setPosture(CreaturePosture::DEAD, true);
+	player->setPosture(CreaturePosture::DEAD, false);
 	player->updateLocomotion();
 
 	sendActivateCloneRequest(player, typeofdeath);

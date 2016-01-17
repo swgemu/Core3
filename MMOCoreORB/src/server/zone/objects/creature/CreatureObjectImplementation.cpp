@@ -1434,21 +1434,14 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 			CreatureState::SITTINGONCHAIR))
 		clearState(CreatureState::SITTINGONCHAIR);
 
-	if (notifyClient) {
-		Vector<BasePacket*> messages;
 
+	Vector<BasePacket*> messages;
+
+	if (notifyClient) {
+
+		// This invokes an immediate posture change - Attacks which force the attacker to stand/kneel/prone as well as death/incap should not send this
 		PostureMessage* octrl = new PostureMessage(asCreatureObject());
 		messages.add(octrl);
-
-		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(
-				asCreatureObject());
-		dcreo3->updatePosture();
-		//dcreo3->updateState();
-		dcreo3->close();
-
-		messages.add(dcreo3);
-
-		broadcastMessages(&messages, true);
 
 		if (!isProbotSpecies() && (isPlayerCreature() || isAiAgent())) {
 			switch (posture) {
@@ -1464,6 +1457,16 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 			}
 		}
 	}
+
+	CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(
+			asCreatureObject());
+	dcreo3->updatePosture();
+	//dcreo3->updateState();
+	dcreo3->close();
+
+	messages.add(dcreo3);
+
+	broadcastMessages(&messages, true);
 
 	if(posture != CreaturePosture::UPRIGHT && posture != CreaturePosture::DRIVINGVEHICLE
 				&& posture != CreaturePosture::RIDINGCREATURE && posture != CreaturePosture::SKILLANIMATING ) {
