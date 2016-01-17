@@ -34,9 +34,8 @@ public:
 			return INVALIDTARGET;
 		}
 
-		doCombatAction(creature, target);
+		return doCombatAction(creature, target);
 
-		return SUCCESS;
 	}
 
 };

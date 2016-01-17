@@ -58,7 +58,7 @@ public:
 
 		}
 
-		return SUCCESS;
+		return res;
 	}
 
 };
