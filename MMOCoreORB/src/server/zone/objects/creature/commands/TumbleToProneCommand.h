@@ -56,10 +56,6 @@ public:
 
 			locker.release();
 
-			CreatureObjectDeltaMessage3* pmsg = new CreatureObjectDeltaMessage3(creature);
-			pmsg->updatePosture();
-			pmsg->close();
-			creature->broadcastMessage(pmsg, true);
 			creature->sendStateCombatSpam("cbt_spam", "tum_prone", 0);
 		}
 
