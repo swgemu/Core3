@@ -298,11 +298,12 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		data.getCommand()->sendAttackCombatSpam(attacker, defender, hitVal, damage, data);
 	}
 
-	broadcastCombatAction(attacker, defender, weapon, data, hitVal);
+
 
 	switch (hitVal) {
 	case MISS:
 		doMiss(attacker, weapon, defender, damage);
+		broadcastCombatAction(attacker, defender, weapon, data, hitVal);
 		return 0;
 		break;
 	case HIT:
@@ -352,6 +353,8 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	//Send defensive buff combat spam last.
 	if (!foodMitigation.isEmpty())
 		sendMitigationCombatSpam(defender, weapon, foodMitigation.get(0), FOOD);
+
+	broadcastCombatAction(attacker, defender, weapon, data, hitVal);
 
 	return damage;
 }
@@ -1732,7 +1735,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 				creature->sendSystemMessage(stringId);
 			}
 
-			data.getCommand()->applyEffect(targetCreature, effectType, effect.getStateStrength() + stateAccuracyBonus);
+			data.getCommand()->applyEffect(creature, targetCreature, effectType, effect.getStateStrength() + stateAccuracyBonus);
 		}
 
 		// can move this to scripts, but only these states have fail messages
