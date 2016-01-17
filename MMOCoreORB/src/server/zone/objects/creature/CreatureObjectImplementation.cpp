@@ -40,6 +40,7 @@
 #include "server/zone/objects/creature/CreaturePosture.h"
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
 #include "server/zone/objects/creature/events/CommandQueueActionEvent.h"
+#include "server/zone/objects/creature/events/PostureUpdateTask.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/chat/StringIdChatParameter.h"
@@ -1444,8 +1445,7 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 	if (notifyClient) {
 		Vector<BasePacket*> messages;
 
-		PostureMessage* octrl = new PostureMessage(asCreatureObject());
-		messages.add(octrl);
+
 
 		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(
 				asCreatureObject());
@@ -1453,9 +1453,10 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 		//dcreo3->updateState();
 		dcreo3->close();
 
-		messages.add(dcreo3);
+		broadcastMessage(dcreo3, true);
 
-		broadcastMessages(&messages, true);
+		PostureUpdateTask *postureUpdateMessage = new PostureUpdateTask(asCreatureObject());
+		postureUpdateMessage->schedule(75); // Delay this message until after CreoDelta3 hits
 
 		if (!isProbotSpecies() && (isPlayerCreature() || isAiAgent())) {
 			switch (posture) {
