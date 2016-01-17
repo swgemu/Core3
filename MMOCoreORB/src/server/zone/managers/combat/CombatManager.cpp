@@ -298,7 +298,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		data.getCommand()->sendAttackCombatSpam(attacker, defender, hitVal, damage, data);
 	}
 
-	broadcastCombatAction(attacker, defender, weapon, data, hitVal);
+
 
 	switch (hitVal) {
 	case MISS:
@@ -352,6 +352,8 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	//Send defensive buff combat spam last.
 	if (!foodMitigation.isEmpty())
 		sendMitigationCombatSpam(defender, weapon, foodMitigation.get(0), FOOD);
+
+	broadcastCombatAction(attacker, defender, weapon, data, hitVal);
 
 	return damage;
 }
