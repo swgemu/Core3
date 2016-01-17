@@ -506,7 +506,8 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 
 			durationstring << seconds << "s";
 
-			alm->insertAttribute("duration", durationstring.toString());
+			if (duration > 1)
+				alm->insertAttribute("duration", durationstring.toString());
 		}
 
 		break;
