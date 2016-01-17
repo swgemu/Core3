@@ -589,7 +589,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 	if (destructedObject->isDead())
 		return 1;
 
-	destructedObject->setPosture(CreaturePosture::DEAD, true);
+	destructedObject->setPosture(CreaturePosture::DEAD, false);
 
 	destructedObject->updateTimeOfDeath();
 
