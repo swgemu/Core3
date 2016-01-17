@@ -511,7 +511,7 @@ int PetManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAg
 
 	if (!destructor->isKiller() && petControlDevice != NULL && petControlDevice->getPetType() == CREATUREPET) {
 		destructedObject->setCurrentSpeed(0);
-		destructedObject->setPosture(CreaturePosture::INCAPACITATED, true);
+		destructedObject->setPosture(CreaturePosture::INCAPACITATED, false);
 		destructedObject->updateLocomotion();
 
 		uint32 incapTime = calculateIncapacitationTimer(destructedObject, condition);
