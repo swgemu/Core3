@@ -298,11 +298,12 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		data.getCommand()->sendAttackCombatSpam(attacker, defender, hitVal, damage, data);
 	}
 
-	broadcastCombatAction(attacker, defender, weapon, data, hitVal);
+
 
 	switch (hitVal) {
 	case MISS:
 		doMiss(attacker, weapon, defender, damage);
+		broadcastCombatAction(attacker, defender, weapon, data, hitVal);
 		return 0;
 		break;
 	case HIT:
@@ -352,6 +353,8 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	//Send defensive buff combat spam last.
 	if (!foodMitigation.isEmpty())
 		sendMitigationCombatSpam(defender, weapon, foodMitigation.get(0), FOOD);
+
+	broadcastCombatAction(attacker, defender, weapon, data, hitVal);
 
 	return damage;
 }
@@ -1732,7 +1735,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 				creature->sendSystemMessage(stringId);
 			}
 
-			data.getCommand()->applyEffect(targetCreature, effectType, effect.getStateStrength() + stateAccuracyBonus);
+			data.getCommand()->applyEffect(creature, targetCreature, effectType, effect.getStateStrength() + stateAccuracyBonus);
 		}
 
 		// can move this to scripts, but only these states have fail messages
@@ -1765,6 +1768,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 		}
 
 		// now check combat equilibrium
+		//TODO: This should eventually be moved to happen AFTER the CombatAction is broadcast to "fix" it's animation (Mantis #4832)
 		if (!failed && (effectType == CommandEffect::KNOCKDOWN || effectType == CommandEffect::POSTUREDOWN || effectType == CommandEffect::POSTUREUP)) {
 			int combatEquil = targetCreature->getSkillMod("combat_equillibrium");
 
@@ -1772,7 +1776,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 				combatEquil = 100;
 
 			if ((combatEquil >> 1) > (int) System::random(100) && !targetCreature->isDead() && !targetCreature->isIntimidated())
-				targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
+				targetCreature->setPosture(CreaturePosture::UPRIGHT, false);
 		}
 
 		//Send Combat Spam for state-only attacks.

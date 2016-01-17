@@ -57,7 +57,18 @@ DiveShotCommand = {
 	
 	weaponType = PISTOLWEAPON,
 
-	range = -1
+	range = -1,
+	stateEffects = {
+	  StateEffect( 
+	    ATTACKER_FORCE_PRONE, 
+	    {}, 
+	    {}, 
+	    {}, 
+	    100, 
+	    0, 
+	    0 
+	  )
+	},
 
 }
 

@@ -1414,7 +1414,7 @@ void CreatureObjectImplementation::addSkill(const String& skill,
 	addSkill(skillObject, notifyClient);
 }
 
-void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient) {
+void CreatureObjectImplementation::setPosture(int newPosture, bool immediate) {
 	if (posture == newPosture)
 		return;
 
@@ -1434,21 +1434,14 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 			CreatureState::SITTINGONCHAIR))
 		clearState(CreatureState::SITTINGONCHAIR);
 
-	if (notifyClient) {
-		Vector<BasePacket*> messages;
 
+	Vector<BasePacket*> messages;
+
+	if (immediate) {
+
+		// This invokes an immediate posture change animation - Attacks and animations which force a creature to change postures should not send this.
 		PostureMessage* octrl = new PostureMessage(asCreatureObject());
 		messages.add(octrl);
-
-		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(
-				asCreatureObject());
-		dcreo3->updatePosture();
-		//dcreo3->updateState();
-		dcreo3->close();
-
-		messages.add(dcreo3);
-
-		broadcastMessages(&messages, true);
 
 		if (!isProbotSpecies() && (isPlayerCreature() || isAiAgent())) {
 			switch (posture) {
@@ -1464,6 +1457,18 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 			}
 		}
 	}
+
+	// This will not instantly force a posture change animation but will update the creatures posture variable in the client.
+	// Failing to send this will result in the creature returning to it's previous posture after a CombatAction
+	CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(
+			asCreatureObject());
+	dcreo3->updatePosture();
+	//dcreo3->updateState();
+	dcreo3->close();
+
+	messages.add(dcreo3);
+
+	broadcastMessages(&messages, true);
 
 	if(posture != CreaturePosture::UPRIGHT && posture != CreaturePosture::DRIVINGVEHICLE
 				&& posture != CreaturePosture::RIDINGCREATURE && posture != CreaturePosture::SKILLANIMATING ) {
