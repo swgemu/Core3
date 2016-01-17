@@ -40,6 +40,7 @@
 #include "server/zone/objects/creature/CreaturePosture.h"
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
 #include "server/zone/objects/creature/events/CommandQueueActionEvent.h"
+#include "server/zone/objects/creature/events/PostureUpdateTask.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/chat/StringIdChatParameter.h"
@@ -1444,8 +1445,7 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 	if (notifyClient) {
 		Vector<BasePacket*> messages;
 
-		PostureMessage* octrl = new PostureMessage(asCreatureObject());
-		messages.add(octrl);
+
 
 		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(
 				asCreatureObject());
@@ -1453,9 +1453,13 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 		//dcreo3->updateState();
 		dcreo3->close();
 
-		messages.add(dcreo3);
+		broadcastMessage(dcreo3, true);
 
-		broadcastMessages(&messages, true);
+		PostureUpdateTask *postureUpdateMessage = new PostureUpdateTask(asCreatureObject());
+		postureUpdateMessage->schedule(50); // Delay this message until after CreoDelta3 hits
+          	// There seems to be a required delay between the client recieving CreoDelta3 and the update message
+          	// 25, 30, and 40ms do not work. 50ms works even under extreme network conditions 95% of the time (40-500ms ping variance)
+          	// An extremely high but stable ping does not seem to affect the required delay
 
 		if (!isProbotSpecies() && (isPlayerCreature() || isAiAgent())) {
 			switch (posture) {
