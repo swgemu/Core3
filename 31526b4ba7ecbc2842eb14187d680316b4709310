@@ -34,6 +34,24 @@
       "revId": "31526b4ba7ecbc2842eb14187d680316b4709310",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_c28c7882",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2286,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-17T16:57:59Z",
+      "side": 0,
+      "message": "I checked and there are currently only 5 calls to renew(), the 4 main state buffs (dizzy, blind, stunned, intimidated) and jedi avoid incap. The latter does not seem to have flytext. I think it would be safe to generically send the start flytext on renewal.",
+      "parentUuid": "da7095c5_82a0c0f5",
+      "revId": "31526b4ba7ecbc2842eb14187d680316b4709310",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
