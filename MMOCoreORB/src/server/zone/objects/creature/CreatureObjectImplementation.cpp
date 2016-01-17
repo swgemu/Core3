@@ -846,10 +846,10 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 				playEffect("clienteffect/combat_special_defender_intimidate.cef");
 				break;
 			case CreatureState::IMMOBILIZED:
-				//showFlyText("combat_effects", "go_snare", 0, 0xFF, 0);
+				showFlyText("combat_effects", "go_snare", 0, 0xFF, 0);
 				break;
 			case CreatureState::FROZEN:
-				//showFlyText("combat_effects", "go_rooted", 0, 0xFF, 0);
+				showFlyText("combat_effects", "go_rooted", 0, 0xFF, 0);
 				break;
 			case CreatureState::RALLIED:
 				showFlyText("combat_effects", "go_rally", 0, 0xFF, 0);
@@ -923,10 +923,10 @@ bool CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
 		case CreatureState::INTIMIDATED:
 			break;
 		case CreatureState::IMMOBILIZED:
-			//showFlyText("combat_effects", "no_snare", 0, 0xFF, 0);
+			showFlyText("combat_effects", "no_snare", 0, 0xFF, 0);
 			break;
 		case CreatureState::FROZEN:
-			//showFlyText("combat_effects", "no_rooted", 0, 0xFF, 0);
+			showFlyText("combat_effects", "no_rooted", 0, 0xFF, 0);
 			break;
 		case CreatureState::RALLIED:
 			showFlyText("combat_effects", "no_rally", 0xFF, 0, 0);
