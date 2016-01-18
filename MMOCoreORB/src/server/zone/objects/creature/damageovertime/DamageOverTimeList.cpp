@@ -326,6 +326,25 @@ void DamageOverTimeList::clear(CreatureObject* creature) {
 	removeAll();
 }
 
+void DamageOverTimeList::multiplyAllDOTDurations(float multiplier) {
+	Locker locker(&guard);
+	dot = false;
+
+	if(!hasDot())
+		return;
+
+	for (int i = 0; i < size(); i++) {
+		Vector<DamageOverTime>* vector = &elementAt(i).getValue();
+
+		for (int j = 0; j < vector->size(); j++) {
+			DamageOverTime* dot = &vector->elementAt(j);
+
+			if (!dot->isPast()) {
+				dot->multiplyDuration(multiplier);
+			}
+		}
+	}
+}
 
 void DamageOverTimeList::sendStartMessage(CreatureObject* victim, uint64 type) {
 	if (!victim->isPlayerCreature())

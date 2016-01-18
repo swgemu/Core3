@@ -43,6 +43,7 @@ public:
 	bool healState(CreatureObject* victim, uint64 dotType, float reduction);
 	void clear(CreatureObject* creature);
 	bool hasDot(uint64 dotType);
+	void multiplyAllDOTDurations (float multiplier);
 
 	void sendStartMessage(CreatureObject* victim, uint64 type);
 	void sendStopMessage(CreatureObject* victim, uint64 type);
