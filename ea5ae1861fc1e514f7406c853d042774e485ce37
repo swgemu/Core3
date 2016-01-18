@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_02c7d046",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-18T23:59:40Z",
+      "side": 1,
+      "message": "this is unused",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "ea5ae1861fc1e514f7406c853d042774e485ce37",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_22b0d4dc",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1427,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-18T23:59:40Z",
+      "side": 1,
+      "message": "This would cause \"force to standing\" style attacks to remove FD, which I don\u0027t think is how it functioned on live. FD should only be removed if the player stands or gets incapped.",
+      "range": {
+        "startLine": 1426,
+        "startChar": 0,
+        "endLine": 1427,
+        "endChar": 40
+      },
+      "revId": "ea5ae1861fc1e514f7406c853d042774e485ce37",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_a2c38437",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2140,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-18T23:59:40Z",
+      "side": 1,
+      "message": "This should probably only clear the state. There are two possible postures that can get set when you clear an FD (UPRIGHT and INCAPACITATED), and you are limiting it to one and therefore limiting the usefulness of this function.",
+      "range": {
+        "startLine": 2137,
+        "startChar": 0,
+        "endLine": 2140,
+        "endChar": 1
+      },
+      "revId": "ea5ae1861fc1e514f7406c853d042774e485ce37",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_e2c97c5b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2157,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-18T23:59:40Z",
+      "side": 1,
+      "message": "I think using the actual skillmod is fine. It was a pretty unreliable skill on live, and the working knowledge was that your skillmod was chance to succeed against one mob.",
+      "range": {
+        "startLine": 2157,
+        "startChar": 47,
+        "endLine": 2157,
+        "endChar": 123
+      },
+      "revId": "ea5ae1861fc1e514f7406c853d042774e485ce37",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_42b5c8cb",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2172,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-18T23:59:40Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure this should be 5. There\u0027s a 5s delay after your FD goes off before you can do anything -- we might actually need to set nextAttackDelay as well.",
+      "range": {
+        "startLine": 2172,
+        "startChar": 2,
+        "endLine": 2172,
+        "endChar": 23
+      },
+      "revId": "ea5ae1861fc1e514f7406c853d042774e485ce37",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_c2c0f82c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/LuaCreatureObject.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-18T23:59:40Z",
+      "side": 1,
+      "message": "I don\u0027t think this is necessary (you never use it)",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 1
+      },
+      "revId": "ea5ae1861fc1e514f7406c853d042774e485ce37",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_62dd6c14",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/FeignDeathCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-18T23:59:40Z",
+      "side": 1,
+      "message": "Correct me if I\u0027m wrong here (I might be), but I don\u0027t think the state was set until after you actually fell down.",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 35
+      },
+      "revId": "ea5ae1861fc1e514f7406c853d042774e485ce37",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_82e200d4",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/StandCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-18T23:59:40Z",
+      "side": 1,
+      "message": "I\u0027m only commenting on this once, but this affects your whole patch. You should instead make the actual check for isIncapacitated also make sure that !FD instead of changing everywhere in the code. The reason I\u0027m commenting here is because this is the only exception where you used both as positives. In reality, you only need to check for isFD here, the incap posture doesn\u0027t matter (especially if I\u0027m correct that the state shouldn\u0027t be applied until after you fall down).",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 63
+      },
+      "revId": "ea5ae1861fc1e514f7406c853d042774e485ce37",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
