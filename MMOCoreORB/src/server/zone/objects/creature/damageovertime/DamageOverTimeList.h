@@ -42,6 +42,7 @@ public:
 	uint8 getRandomPool(uint64 dotType);
 	bool healState(CreatureObject* victim, uint64 dotType, float reduction);
 	void clear(CreatureObject* creature);
+	void reduceAllDOTDurations(float multiplier);
 	bool hasDot(uint64 dotType);
 
 	void sendStartMessage(CreatureObject* victim, uint64 type);
@@ -82,6 +83,5 @@ public:
 	}
 
 };
-
 
 #endif /* DAMAGEOVERTIMELIST_H_ */
