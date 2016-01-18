@@ -265,6 +265,8 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 			//Tilla till reduces food stomach filling by a percentage
 			int currentfilling = ghost->getFoodFilling();
 			ghost->setFoodFilling(round(currentfilling * (100 - nutrition) / 100.0f), true);
+		} else if (effect == "slow_dot") {
+			player->getDamageOverTimeList()->multiplyAllDOTDurations(100.0f - nutrition / 100.0f);
 		}
 	}
 	}
@@ -286,7 +288,6 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 	player->sendSystemMessage(stringId);//player->sendSystemMessage("base_player", "prose_consume_item", objectID);
 
 	// Play the client effect sound depending on species/gender.
-
 	// Get the species.
 	int species = player->getSpecies();
 
@@ -314,7 +315,6 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		break;
 
 	}
-
 	//Consume a charge from the item, destroy it if it reaches 0 charges remaining.
 	//useCharge(player);
 	decreaseUseCount();
