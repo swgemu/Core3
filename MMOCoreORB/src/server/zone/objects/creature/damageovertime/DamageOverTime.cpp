@@ -246,7 +246,7 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attack
 				// applied twice
 				if (attribute_p % 3 == 0)
 					victimRef_p->inflictDamage(attackerRef_p, attribute_p, woundsToApply_p, true);
-	
+
 				victimRef_p->addWounds(attribute_p, woundsToApply_p, true, false);
 			}
 
@@ -368,7 +368,7 @@ uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* 
 
 float DamageOverTime::reduceTick(float reduction) {
 	//System::out << "reducing tick with reduction " << reduction << endl;
-	if (reduction < 0.f) // this ensures we can't increse a dot strength
+	if (reduction < 0.f) // this ensures we can't increase a dot strength
 		return reduction;
 
 	if (reduction >= strength) {
@@ -381,4 +381,14 @@ float DamageOverTime::reduceTick(float reduction) {
 	}
 
 	return 0.f;
+}
+
+void DamageOverTime::reduceDuration(float multiplier) {
+	Time newTime;
+	uint64 timeToAdd = (expires.getMiliTime() - newTime.getMiliTime()) * multiplier;
+	Logger logger;
+	logger.info("timeToAdd:" + String::valueOf(timeToAdd) + " multiplier " + String::valueOf(multiplier) + " original " + String::valueOf(expires.getMiliTime() - newTime.getMiliTime()), true);
+	newTime.addMiliTime(timeToAdd);
+	expires = newTime;
+
 }
