@@ -43,6 +43,26 @@
 
 object_tangible_food_crafted_dish_dustcrepe = object_tangible_food_crafted_shared_dish_dustcrepe:new {
 
+templateType = CONSUMABLE,
+
+	duration = 1,
+	filling = 10,
+	nutrition = 10,
+
+	effectType = 0,
+
+	fillingMin = 20,
+	fillingMax = 29,
+
+	flavorMin = 540, -- no valid info found for live flavor numbers
+	flavorMax = 1080,
+
+	nutritionMin = 10,
+	nutritionMax = 18,
+	quantityMin = 3,
+	quantityMax = 4,
+
+	modifiers = { "slow_dot", 0 },
 
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "DR", "PE", "DR", "OQ"},

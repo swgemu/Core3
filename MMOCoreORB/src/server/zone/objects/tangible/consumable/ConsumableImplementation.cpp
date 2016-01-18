@@ -265,8 +265,10 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 			//Tilla till reduces food stomach filling by a percentage
 			int currentfilling = ghost->getFoodFilling();
 			ghost->setFoodFilling(round(currentfilling * (100 - nutrition) / 100.0f), true);
+		} else if (effect == "slow_dot") {
+			player->getDamageOverTimeList()->reduce(100.0f - nutrition);
+			}
 		}
-	}
 	}
 
 	if (buff != NULL) {
