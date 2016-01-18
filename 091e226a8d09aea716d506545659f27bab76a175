@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_429e2858",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
+        "patchSetId": 4
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-18T23:14:45Z",
+      "side": 1,
+      "message": "make sure you are compiling idlc without the -noprelocks option. It is by default turned on (ie, the @preLocked directive by default does nothing)",
+      "range": {
+        "startLine": 687,
+        "startChar": 1,
+        "endLine": 687,
+        "endChar": 11
+      },
+      "revId": "091e226a8d09aea716d506545659f27bab76a175",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2299b46e",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2137,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-18T23:14:45Z",
+      "side": 1,
+      "message": "These calls to renewBuff don\u0027t go through the @preLocked filter because they are directly calling the implementation.",
+      "range": {
+        "startLine": 2137,
+        "startChar": 2,
+        "endLine": 2137,
+        "endChar": 38
+      },
+      "revId": "091e226a8d09aea716d506545659f27bab76a175",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
