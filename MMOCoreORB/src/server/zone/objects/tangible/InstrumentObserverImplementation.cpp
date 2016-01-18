@@ -20,11 +20,11 @@ int InstrumentObserverImplementation::notifyObserverEvent(unsigned int eventType
 	ManagedReference<Instrument* > instrument = this->instrument.get();
 
 	if (instrument == NULL || instrument->getZone() == NULL) {
-		/*if (eventType == ObserverEventType::OBJECTREMOVEDFROMZONE) {
-			observable->dropObserver(ObserverEventType::POSITIONCHANGED, _this);
+		if (eventType == ObserverEventType::OBJECTREMOVEDFROMZONE) {
+			creature->dropObserver(ObserverEventType::POSITIONCHANGED, _this.getReferenceUnsafeStaticCast());
 		} else if (eventType == ObserverEventType::POSITIONCHANGED) {
-			observable->dropObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, _this);
-		}*/
+			creature->dropObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, _this.getReferenceUnsafeStaticCast());
+		}
 
 		return 1;
 	} else {
@@ -34,18 +34,17 @@ int InstrumentObserverImplementation::notifyObserverEvent(unsigned int eventType
 			if (creature->getDistanceTo(instrument) > 8) {
 				instrument->destroyObjectFromWorld(true);
 
-				//observable->dropObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, _this);
+				creature->dropObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, _this.getReferenceUnsafeStaticCast());
 
 				return 1;
 			}
 		} else if (eventType == ObserverEventType::OBJECTREMOVEDFROMZONE) {
 			instrument->destroyObjectFromWorld(true);
 
-			//observable->dropObserver(ObserverEventType::POSITIONCHANGED, _this);
+			creature->dropObserver(ObserverEventType::POSITIONCHANGED, _this.getReferenceUnsafeStaticCast());
 
 			return 1;
 		}
-
 	}
 
 	return 0;

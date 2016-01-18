@@ -20,11 +20,17 @@ import server.zone.objects.tangible.Instrument;
 class InstrumentObserver extends Observer {
 	@weakReference
 	protected Instrument instrument;
-	
+
 	public InstrumentObserver(Instrument instr) {
 		instrument = instr;
 	}
 
 	@dirty
-	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);	
+	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+
+	@weakReference
+	@read
+	public Instrument getInstrument() {
+		return instrument;
+	}
 }

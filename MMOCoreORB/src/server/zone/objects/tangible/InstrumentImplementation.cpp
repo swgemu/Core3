@@ -32,15 +32,25 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		if (!canDropInstrument())
 			return 1;
 
+		if (player->isSkillAnimating()) {
+			player->sendSystemMessage("@performance:music_fail"); // You are unable to do that at this time.
+			return 1;
+		}
+
 		SortedVector<ManagedReference<Observer* > > observers = player->getObservers(ObserverEventType::POSITIONCHANGED);
 
 		for (int i = 0; i < observers.size(); ++i) {
-			Observer* observer = observers.get(i);
+			InstrumentObserver* observer = dynamic_cast<InstrumentObserver*>(observers.get(i).get());
 
-			if (dynamic_cast<InstrumentObserver*>(observer) != NULL) {
-				//couldnt find stringi
-				player->sendSystemMessage("You already dropped an instrument");
-				return 1;
+			if (observer != NULL) {
+				ManagedReference<Instrument*> oldInstrument = observer->getInstrument().get();
+
+				if (oldInstrument != NULL) {
+					Locker locker(oldInstrument);
+					oldInstrument->destroyObjectFromWorld(true);
+					player->dropObserver(ObserverEventType::POSITIONCHANGED, observer);
+					player->dropObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, observer);
+				}
 			}
 		}
 
@@ -58,13 +68,13 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 					return 1;
 
 				if (!structureObject->isOnAdminList(player))
-					spawnInForeignCell(player);
+					spawnNonAdmin(player);
 				else {
 					spawnInAdminCell(player);
 				}
 			}
 		} else {
-			spawnOutside(player);
+			spawnNonAdmin(player);
 		}
 
 	} else if (selectedID == 20) {
@@ -97,7 +107,7 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 	return 0;
 }
 
-void InstrumentImplementation::spawnInForeignCell(CreatureObject* player) {
+void InstrumentImplementation::spawnNonAdmin(CreatureObject* player) {
 	if (spawnedObject == NULL) {
 		spawnedObject = ObjectManager::instance()->createObject(serverObjectCRC, 0, "sceneobjects");
 		spawnedObject->setParent(NULL);
@@ -112,36 +122,16 @@ void InstrumentImplementation::spawnInForeignCell(CreatureObject* player) {
 		instrument->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 		instrument->setSpawnerPlayer(player);
 
-		player->getParent().get()->transferObject(instrument, -1);
-		//instrument->insertToZone(player->getZone());
-		//player->getZone()->transferObject(instrument, -1, true);
+		ManagedReference<SceneObject*> parent = player->getParent().get();
+		Zone* zone = player->getZone();
 
-		ManagedReference<InstrumentObserver*> posObserver = new InstrumentObserver(instrument);
-		player->registerObserver(ObserverEventType::POSITIONCHANGED, posObserver);
-		player->registerObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, posObserver);
-	} else {
-		spawnedObject->teleport(player->getPositionX(), player->getPositionZ(), player->getPositionY(), player->getParentID());
-	}
-
-	spawnerPlayer = player;
-}
-
-void InstrumentImplementation::spawnOutside(CreatureObject* player) {
-	if (spawnedObject == NULL) {
-		spawnedObject = ObjectManager::instance()->createObject(serverObjectCRC, 0, "sceneobjects");
-		spawnedObject->setParent(NULL);
-		spawnedObject->setZone(NULL);
-	}
-
-	if (spawnedObject->getZone() == NULL) {
-		Instrument* instrument = cast<Instrument*>( spawnedObject.get());
-
-		Locker locker(instrument);
-
-		instrument->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
-		instrument->setSpawnerPlayer(player);
-		//instrument->insertToZone(player->getZone());
-		player->getZone()->transferObject(instrument, -1, true);
+		if (parent != NULL) {
+			parent->transferObject(instrument, -1);
+		} else if (zone != NULL) {
+			zone->transferObject(instrument, -1, true);
+		} else {
+			return;
+		}
 
 		ManagedReference<InstrumentObserver*> posObserver = new InstrumentObserver(instrument);
 		player->registerObserver(ObserverEventType::POSITIONCHANGED, posObserver);
@@ -164,6 +154,7 @@ void InstrumentImplementation::spawnInAdminCell(CreatureObject* player) {
 	spawnerPlayer = NULL;
 
 	if (spawnedObject != NULL) {
+		Locker locker(spawnedObject);
 		spawnedObject->destroyObjectFromWorld(true);
 		spawnedObject = NULL;
 	}

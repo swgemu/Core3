@@ -21,10 +21,10 @@ class Instrument extends TangibleObject {
 	protected int instrumentType;
 	protected boolean beingUsed;
 	protected SceneObject spawnedObject;
-	
+
 	@weakReference
-	protected CreatureObject spawnerPlayer; 
-	
+	protected CreatureObject spawnerPlayer;
+
 	/* Redoing instrument consts to match the instrumentAudioId in TRE
 	 * The actual packets for triggering sound is different & in creature
 	 * implementation as well as the appropriate animation for each inst type
@@ -49,45 +49,43 @@ class Instrument extends TangibleObject {
 	public static final int OMNIBOX = 8;
 	public static final int NALARGON = 9;
 	public static final int MANDOVIOL = 10;
-	
+
 	public Instrument() {
 		instrumentType = 0;
-		
+
 		beingUsed = false;
-		
+
 		Logger.setLoggingName("Instrument");
 	}
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
+
 		Logger.setLoggingName("Instrument");
 	}
-	
+
 	public void notifyLoadFromDatabase() {
 		super.notifyLoadFromDatabase();
-		
+
 		beingUsed = false;
-		
+
 		if (spawnedObject != null) {
-			//spawnedObject.getZone().removeObject(spawnedObject, true);
 			spawnedObject.destroyObjectFromWorld(false);
-			//spawnedObject.removeFromZone();
 		}
 	}
-	
+
 	@local
 	public void loadTemplateData(SharedObjectTemplate templateData) {
 		super.loadTemplateData(templateData);
-		
+
 		if (!templateData.isInstrumentObjectTemplate())
 			return;
-		
+
 		InstrumentObjectTemplate templ = (InstrumentObjectTemplate) templateData;
-		
+
 		instrumentType = templ.getInstrumentType();
 	}
-	
+
 	/**
 	 * Fills the radial options, needs to be overriden
 	 * @pre { this object is locked }
@@ -98,18 +96,18 @@ class Instrument extends TangibleObject {
 	@dirty
 	public void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player) {
 		super.fillObjectMenuResponse(menuResponse, player);
-		
+
 		if (instrumentType != OMNIBOX && instrumentType != NALARGON) {
 			return;
 		}
-			
+
 		if (beingUsed) {
 			return;
 		} else if (canDropInstrument()) {
 			menuResponse.addRadialMenuItem(69, 3, "@radial_performance:play_instrument");
 		}
 	}
-	
+
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
@@ -119,34 +117,33 @@ class Instrument extends TangibleObject {
 	 * @returns 0 if successfull
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
-	public native void spawnInForeignCell(CreatureObject spawner);
+
 	public native void spawnInAdminCell(CreatureObject spawner);
-	public native void spawnOutside(CreatureObject spawner);
-	
+	public native void spawnNonAdmin(CreatureObject spawner);
+
 	@dirty
 	public native boolean canDropInstrument();
-	
+
 	@dirty
 	public int getInstrumentType() {
 		return instrumentType;
 	}
-	
+
 	@weakReference
 	@dirty
 	public CreatureObject getSpawnerPlayer() {
 		return spawnerPlayer;
 	}
-	
+
 	public void setSpawnerPlayer(CreatureObject pla) {
 		spawnerPlayer = pla;
 	}
-	
+
 	@read
 	public boolean isBeingUsed() {
 		return beingUsed;
 	}
-	
+
 	public void setBeingUsed(boolean val) {
 		beingUsed = val;
 	}
