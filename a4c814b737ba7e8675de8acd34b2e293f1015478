@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_c29b1871",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-18T21:16:15Z",
+      "side": 1,
+      "message": "what happens on a miss now? The reason this was before the switch was because miss returns.",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 65
+      },
+      "revId": "a4c814b737ba7e8675de8acd34b2e293f1015478",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
