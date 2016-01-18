@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_a2ace48d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTime.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-18T23:32:11Z",
+      "side": 1,
+      "message": "This won\u0027t necessarily reduce duration. Change the name to reflect that this multiplies duration.",
+      "range": {
+        "startLine": 57,
+        "startChar": 6,
+        "endLine": 57,
+        "endChar": 40
+      },
+      "revId": "0e4544e8c995b1dbf9eea833a3b506f00723b0e3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_62b6ccde",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTimeList.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-18T23:32:11Z",
+      "side": 1,
+      "message": "Why the completely different implementation? The other new reduceDuration function never gets used because this calls setDuration directly. This function also assumes multiplier comes in the form of a percent (it\u0027s a float, it should come in the form of a ratio). Furthermore, which functionality is correct? Is it this one or the one on the dot itself? I would say the latter is the correct implementation because this modifies the total duration, and that one modifies the duration that is left. This needs to be consistent.",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 1
+      },
+      "revId": "0e4544e8c995b1dbf9eea833a3b506f00723b0e3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_c2a9d87c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTimeList.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-18T23:32:11Z",
+      "side": 1,
+      "message": "once again, doesn\u0027t reduce durations; it multiplies them",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 46
+      },
+      "revId": "0e4544e8c995b1dbf9eea833a3b506f00723b0e3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_02a0308f",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/consumable/ConsumableImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-18T23:32:11Z",
+      "side": 1,
+      "message": "brackets?",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 3
+      },
+      "revId": "0e4544e8c995b1dbf9eea833a3b506f00723b0e3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
