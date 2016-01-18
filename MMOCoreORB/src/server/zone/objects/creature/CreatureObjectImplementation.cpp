@@ -63,6 +63,7 @@
 #include "server/zone/objects/creature/buffs/StateBuff.h"
 #include "server/zone/objects/creature/buffs/PrivateBuff.h"
 #include "server/zone/objects/creature/buffs/PrivateSkillMultiplierBuff.h"
+#include "server/zone/objects/creature/buffs/PlayerVehicleBuff.h"
 #include "server/zone/objects/building/hospital/HospitalBuildingObject.h"
 
 #include "server/zone/packets/object/SitOnObject.h"
@@ -597,12 +598,12 @@ void CreatureObjectImplementation::addMountedCombatSlow() {
 
 	uint32 crc = STRING_HASHCODE("mounted_combat_slow");
 
-	if (hasBuff(crc))
-		return;
-
 	ManagedReference<CreatureObject*> parent = getParent().get().castTo<CreatureObject*>();
 
 	if (parent == NULL)
+		return;
+
+	if (parent->hasBuff(crc))
 		return;
 
 	if (parent->isVehicleObject()) {
@@ -613,7 +614,7 @@ void CreatureObjectImplementation::addMountedCombatSlow() {
 	if (!parent->isMount())
 		return;
 
-	if (hasBuff(STRING_HASHCODE("gallop"))) {
+	if (parent->hasBuff(STRING_HASHCODE("gallop"))) {
 		sendSystemMessage("@combat_effects:no_combat_while_galloping"); // You cannot attack or react to an attack while galloping. Use /gallopStop to stop galloping.
 		return;
 	}
@@ -644,47 +645,36 @@ void CreatureObjectImplementation::addMountedCombatSlow() {
 
 			uint32 crc = STRING_HASHCODE("mounted_combat_slow");
 			StringIdChatParameter startStringId("combat_effects", "mount_slow_for_combat"); // Your mount slows down to prepare for combat.
-			StringIdChatParameter endStringId("combat_effects", "mount_speed_after_combat"); // Your mount speeds up.
 
-			ManagedReference<Buff*> buff = new Buff(creo_p, crc, 604800, BuffType::OTHER);
+			ManagedReference<PlayerVehicleBuff*> buff = new PlayerVehicleBuff(parent_p, crc, 604800, BuffType::OTHER);
 
 			Locker blocker(buff);
 
 			buff->setSpeedMultiplierMod(magnitude);
 			buff->setAccelerationMultiplierMod(magnitude);
 			buff->setStartMessage(startStringId);
-			buff->setEndMessage(endStringId);
 
-			creo_p->addBuff(buff);
-
-			blocker.release();
-
-			ManagedReference<Buff*> buff2 = new Buff(parent_p, crc, 604800, BuffType::OTHER);
-
-			Locker blocker2(buff2);
-
-			buff2->setSpeedMultiplierMod(magnitude);
-			buff2->setAccelerationMultiplierMod(magnitude);
-
-			parent_p->addBuff(buff2);
+			parent_p->addBuff(buff);
 	});
 }
 
-void CreatureObjectImplementation::removeMountedCombatSlow() {
+void CreatureObjectImplementation::removeMountedCombatSlow(bool showEndMessage) {
+
 	ManagedReference<CreatureObject*> creo = asCreatureObject();
+	ManagedReference<CreatureObject*> vehicle = getParent().get().castTo<CreatureObject*>();
+	if(vehicle == NULL)
+		return;
 
-	EXECUTE_TASK_1(creo, {
-			Locker locker(creo_p);
+	EXECUTE_TASK_3(vehicle, creo, showEndMessage, {
+		Locker locker(vehicle_p);
 
-			uint32 crc = STRING_HASHCODE("mounted_combat_slow");
-			creo_p->removeBuff(crc);
+		vehicle_p->removeBuff(STRING_HASHCODE("mounted_combat_slow"));
 
-			ManagedReference<CreatureObject*> parent = creo_p->getParent().get().castTo<CreatureObject*>();
-
-			if (parent != NULL) {
-				Locker clocker(parent, creo_p);
-				parent->removeBuff(crc);
-			}
+		if(showEndMessage_p) {
+			//I don't think we want to show this on dismount, or after a gallop
+			StringIdChatParameter endStringId("combat_effects", "mount_speed_after_combat"); // Your mount speeds up.
+			creo_p->sendSystemMessage(endStringId);
+		}
 	});
 
 }
