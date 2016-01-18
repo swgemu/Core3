@@ -229,6 +229,7 @@ SceneObject* CreatureManagerImplementation::spawnDynamicSpawn(unsigned int lairT
 
 	zone->transferObject(theater, -1, false);
 
+	theater->createChildObjects();
 	dynamicObserver->spawnInitialMobiles(theater);
 
 	return theater;

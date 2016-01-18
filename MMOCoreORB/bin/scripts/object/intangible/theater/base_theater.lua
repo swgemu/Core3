@@ -44,6 +44,10 @@
 object_intangible_theater_base_theater = object_intangible_theater_shared_base_theater:new {
 	gameObjectType = 2060,
 	noBuildRadius = 64,
+
+	childObjects = {
+		{templateFile = "object/static/structure/nobuild/nobuild_64.iff", x=0, z=0, y=0, ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1},
+	}
 }
 
 ObjectTemplates:addTemplate(object_intangible_theater_base_theater, "object/intangible/theater/base_theater.iff")
