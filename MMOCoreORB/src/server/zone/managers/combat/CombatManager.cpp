@@ -50,7 +50,7 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 		if (parent == NULL || !parent->isMount())
 			return false;
 
-		if (attacker->hasBuff(STRING_HASHCODE("gallop")))
+		if (parent->hasBuff(STRING_HASHCODE("gallop")))
 			return false;
 	}
 
