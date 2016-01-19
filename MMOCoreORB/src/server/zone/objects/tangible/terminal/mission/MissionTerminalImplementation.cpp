@@ -37,8 +37,10 @@ int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player
 	ManagedReference<CityRegion*> city = player->getCityRegion();
 
 	if (selectedID == 69 && player->hasSkill("combat_smuggler_slicing_01")) {
-		if (isBountyTerminal())
+		if (isBountyTerminal()) {
+			player->sendSystemMessage("You cannot slice that type of terminal.");
 			return 0;
+		}
 
 		if (city != NULL && !city->isClientRegion() && city->isBanned(player->getObjectID())) {
 			player->sendSystemMessage("@city/city:banned_services"); // You are banned from using this city's services.

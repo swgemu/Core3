@@ -43,8 +43,10 @@ int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* pl
 
 		MissionTerminal* terminal = target.castTo<MissionTerminal*>();
 
-		if (terminal == NULL || terminal->isBountyTerminal())
+		if (terminal == NULL || terminal->isBountyTerminal()) {
+			player->sendSystemMessage("You cannot slice that type of terminal.");
 			return 0;
+		}
 
 		ManagedReference<CityRegion*> city = player->getCityRegion();
 		if (city != NULL && !city->isClientRegion() && city->isBanned(player->getObjectID())) {
