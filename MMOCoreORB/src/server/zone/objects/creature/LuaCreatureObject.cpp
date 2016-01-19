@@ -118,6 +118,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "isInvisible", &LuaTangibleObject::isInvisible },
 		{ "isInCombat", &LuaCreatureObject::isInCombat },
 		{ "healDamage", &LuaCreatureObject::healDamage },
+		{ "getGroupID", &LuaCreatureObject::getGroupID },
 		{ 0, 0 }
 };
 
@@ -795,7 +796,7 @@ int LuaCreatureObject::isDancing(lua_State* L) {
 int LuaCreatureObject::isPlayingMusic(lua_State* L) {
 	bool retVal = realObject->isPlayingMusic();
 
-	lua_pushboolean(L, retVal);
+	lua_pushboolean(L,  retVal);
 
 	return 1;
 }
@@ -903,4 +904,11 @@ int LuaCreatureObject::healDamage(lua_State* L) {
 	realObject->healDamage(realObject, pool, damageHealed, true, true);
 
 	return 0;
+}
+
+int LuaCreatureObject::getGroupID(lua_State* L) {
+
+	lua_pushnumber(L, realObject->getGroupID());
+
+	return 1;
 }
