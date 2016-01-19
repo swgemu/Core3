@@ -51,6 +51,7 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 			return false;
 
 		if (attacker->hasBuff(STRING_HASHCODE("gallop")))
+			attacker->sendSystemMessage("@combat_effects:no_combat_while_galloping"); // You cannot attack or react to an attack while galloping. Use /gallopStop to stop galloping.
 			return false;
 	}
 
