@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_62048c7e",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AssistCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-19T00:15:59Z",
+      "side": 1,
+      "message": "You can just use isCreatureObject here and skip the second INVALIDTARGET check. asCreatureObject() is guaranteed to return something if isCreatureObject returns true.",
+      "range": {
+        "startLine": 29,
+        "startChar": 45,
+        "endLine": 29,
+        "endChar": 63
+      },
+      "revId": "f9b674d998894a84cc206c7227f6121d57a43e6c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_c2d798ec",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AssistCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-19T00:15:59Z",
+      "side": 1,
+      "message": "what happens if targetCreo isn\u0027t targeting anything? You can either fail before this call if you don\u0027t want to allow assist, or you can just check to make sure you aren\u0027t enqueueing an attack command with no targetID, depending on what it\u0027s supposed to be doing.",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 58
+      },
+      "revId": "f9b674d998894a84cc206c7227f6121d57a43e6c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
