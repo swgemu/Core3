@@ -357,10 +357,8 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	public native void clearCombatState(boolean clearDefenders = true);
 
-	@preLocked
 	public native void addMountedCombatSlow();
 
-	@preLocked
 	public native void removeMountedCombatSlow(boolean showEndMessage = true);
 
 	/**
