@@ -171,6 +171,7 @@ includeFile("conversations/village/phase1/fs_reflex1_prisoner_conv.lua")
 includeFile("conversations/village/phase2/whip_phase2_conv.lua")
 includeFile("conversations/village/phase2/elder_phase2_conv.lua")
 includeFile("conversations/village/phase2/dageerin_phase2_conv.lua")
+includeFile("conversations/village/phase3/dageerin_phase3_conv.lua")
 
 -- Race Tracks
 includeFile("conversations/racetracks/agrilatswampconversation.lua")
