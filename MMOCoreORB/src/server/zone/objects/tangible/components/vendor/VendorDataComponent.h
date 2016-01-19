@@ -49,14 +49,15 @@ protected:
 
 	float originalDirection;
 
-public:
-	/// 5 minutes
-	enum {
-		USEXPINTERVAL       = 5,
+	Mutex adBarkingMutex;
 
-		// 60 Minutes
-		VENDORCHECKINTERVAL = 60,
-		VENDORCHECKDELAY    = 20,
+public:
+
+	enum {
+		USEXPINTERVAL       = 5, // 5 minutes
+
+		VENDORCHECKINTERVAL = 60, // 60 Minutes
+		VENDORCHECKDELAY    = 20, // 20 Minutes
 
 		FIRSTWARNING        = 60 * 60 * 24 * 25, // 5 days
 		SECONDWARNING       = 60 * 60 * 24 * 50, // 10 days
@@ -64,8 +65,8 @@ public:
 
 		DELETEWARNING       = 60 * 60 * 24 * 100, // 100 days
 
-		BARKRANGE           = 15, //Meters
-		BARKINTERVAL        = 60 * 2 //Minutes
+		BARKRANGE           = 15, // 15 Meters
+		BARKINTERVAL        = 60 * 2 // 2 Minutes
 	};
 
 public:
@@ -166,10 +167,12 @@ public:
 	}
 
 	inline bool isAdBarkingEnabled() {
+		Locker locker(&adBarkingMutex);
 		return adBarking;
 	}
 
 	inline void setAdBarking(bool value) {
+		Locker locker(&adBarkingMutex);
 		vendorBarks.removeAll();
 		adBarking = value;
 	}
@@ -215,20 +218,50 @@ public:
 		barkAnimation = animation;
 	}
 
+	String getAdPhrase() {
+		return barkMessage;
+	}
+
+	String getAdMood() {
+		return barkMood;
+	}
+
+	String getAdAnimation() {
+		return barkAnimation;
+	}
+
 	bool hasBarkTarget(SceneObject* target) {
+		Locker locker(&adBarkingMutex);
 		return vendorBarks.contains(target->getObjectID());
 	}
 
 	void addBarkTarget(SceneObject* target) {
+		Locker locker(&adBarkingMutex);
 		vendorBarks.add(target->getObjectID());
 	}
 
 	bool canBark() {
+		Locker locker(&adBarkingMutex);
 		return (time(0) - lastBark > BARKINTERVAL);
 	}
 
+	void resetLastBark() {
+		Locker locker(&adBarkingMutex);
+		lastBark = time(0);
+	}
+
 	void clearVendorBark(SceneObject* target) {
+		Locker locker(&adBarkingMutex);
 		vendorBarks.removeElement(target->getObjectID());
+	}
+
+	void removeAllVendorBarks() {
+		Locker locker(&adBarkingMutex);
+		vendorBarks.removeAll();
+	}
+
+	float getOriginalDirection() {
+		return originalDirection;
 	}
 
 	float getMaintenanceRate();

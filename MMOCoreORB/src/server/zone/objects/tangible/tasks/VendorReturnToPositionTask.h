@@ -27,7 +27,7 @@ public:
 			return;
 
 		Locker locker(strongref);
-		strongref->updateDirection(heading);
+		strongref->updateDirection(Math::deg2rad(heading));
 
 		strongref->removePendingTask("vendorreturn");
 	}

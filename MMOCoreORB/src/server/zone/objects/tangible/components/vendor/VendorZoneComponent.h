@@ -39,31 +39,25 @@ class VendorZoneComponent : public ZoneComponent {
 
 public:
 	void notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) {
-		return;
-
 		ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
-		if(target == NULL || !target->isPlayerCreature())
+
+		if (target == NULL || !target->isPlayerCreature())
 			return;
 
-		VendorDataComponent* terminalData = NULL;
-		DataObjectComponentReference* data = sceneObject->getDataObjectComponent();
-		if(data != NULL && data->get() != NULL && data->get()->isVendorData())
-			terminalData = cast<VendorDataComponent*>(data->get());
+		VendorDataComponent* data = cast<VendorDataComponent*>(sceneObject->getDataObjectComponent()->get());
 
-		if(terminalData == NULL || !terminalData->isAdBarkingEnabled())
+		if (data == NULL || !data->isAdBarkingEnabled())
 			return;
 
-		Locker locker(sceneObject);
-
-		if(terminalData->hasBarkTarget(target))
+		if (data->hasBarkTarget(target))
 			return;
 
-		if(target->getDistanceTo(sceneObject) <= VendorDataComponent::BARKRANGE) {
-
-			if(terminalData->canBark())
-				terminalData->performVendorBark(target);
-			else
-				terminalData->addBarkTarget(target);
+		if (target->getDistanceTo(sceneObject) <= VendorDataComponent::BARKRANGE) {
+			if (data->canBark()) {
+				data->performVendorBark(target);
+			} else {
+				data->addBarkTarget(target);
+			}
 		}
 	}
 };
