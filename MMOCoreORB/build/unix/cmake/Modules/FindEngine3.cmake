@@ -13,26 +13,30 @@ ENDIF (ENGINE3_INCLUDE_DIR)
 FIND_PATH(IDLC_BIN_DIR idlc
   /opt/engine3/bin
   /opt/engine3pub/bin
+  ../MMOEngine/bin
   NO_DEFAULT_PATH
 )
 
 FIND_PATH(ENGINE3_INCLUDE_DIR engine/engine.h
   /opt/engine3/include
   /opt/engine3pub/include
+  ../MMOEngine/include
 )
 
 SET(ENGINE3_NAMES engine3)
 FIND_LIBRARY(ENGINE3_LIBRARY
   NAMES ${ENGINE3_NAMES}
-  PATHS /opt/engine3/lib /opt/engine3pub/lib
+  PATHS /opt/engine3/lib /opt/engine3pub/lib ../MMOEngine/lib/unix
 )
 
 IF (IDLC_BIN_DIR AND ENGINE3_INCLUDE_DIR AND ENGINE3_LIBRARY)
   SET(ENGINE3_FOUND TRUE)
   SET(ENGINE3_LIBRARIES ${ENGINE3_LIBRARY})
+  SET(IDL_DIRECTIVES -od autogen -cp ${ENGINE3_INCLUDE_DIR} -sd ${CMAKE_SOURCE_DIR}/src anyadEclipse)
 ELSE ()
   SET(ENGINE3_FOUND FALSE)
   SET(ENGINE3_LIBRARIES)
+  SET(IDL_DIRECTIVES)
 ENDIF ()
 
 IF (ENGINE3_FOUND)
