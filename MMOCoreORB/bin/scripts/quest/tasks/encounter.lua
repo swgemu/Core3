@@ -49,7 +49,7 @@ function Encounter:setupSpawnAndDespawnEvents(pCreatureObject)
 	if self:callFunctionIfNotNil(self.isEncounterFinished, true, pCreatureObject) then
 		return
 	end
-	
+
 	if self.spawnTask == nil then
 		self.spawnTask = PersistentEvent:new {
 			-- Task properties
@@ -204,7 +204,10 @@ function Encounter:handleSpawnEvent(pCreatureObject)
 
 	Logger:log("Spawn encounter in " .. self.taskName .. " triggered for player " .. SceneObject(pCreatureObject):getDisplayedName() .. ".", LT_INFO)
 	self:setupSpawnAndDespawnEvents(pCreatureObject)
-	self.spawnTask:finish(pCreatureObject)
+
+	if (self.spawnTask ~= nil) then
+		self.spawnTask:finish(pCreatureObject)
+	end
 
 	if not self:callFunctionIfNotNil(self.isEncounterFinished, true, pCreatureObject) then
 		if self:isPlayerInPositionForEncounter(pCreatureObject) then
@@ -213,7 +216,10 @@ function Encounter:handleSpawnEvent(pCreatureObject)
 
 		self.despawnTask:start(pCreatureObject)
 	else
-		self.despawnTask:finish(pCreatureObject)
+		if (self.despawnTask ~= nil) then
+			self.despawnTask:finish(pCreatureObject)
+		end
+
 		self:finish(pCreatureObject)
 	end
 end
@@ -315,7 +321,10 @@ function Encounter:doDespawn(pCreatureObject)
 
 	Logger:log("Despawning mobiles in encounter " .. self.taskName .. ".", LT_INFO)
 	self:setupSpawnAndDespawnEvents(pCreatureObject)
-	self.despawnTask:finish(pCreatureObject)
+
+	if (self.despawnTask ~= nil) then
+		self.despawnTask:finish(pCreatureObject)
+	end
 
 	SpawnMobiles.despawnMobiles(pCreatureObject, self.taskName)
 
