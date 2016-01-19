@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_e225fc0a",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase3/fs_sad_2_theaters/fs_sad_2_theater_5.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-19T05:07:30Z",
+      "side": 1,
+      "message": "Don\u0027t you need a waypoint description?",
+      "revId": "891c8c5956d90572101281481b8e12536fc59339",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_02235006",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase3/fs_sad_2_theaters/fs_sad_2_theater_6.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-19T05:07:30Z",
+      "side": 1,
+      "message": "Don\u0027t you need a waypoint description?",
+      "revId": "891c8c5956d90572101281481b8e12536fc59339",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_a21f04b7",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase3/fs_sad_2_theaters/fs_sad_2_theater_7.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-19T05:07:30Z",
+      "side": 1,
+      "message": "Don\u0027t you need a waypoint description?",
+      "revId": "891c8c5956d90572101281481b8e12536fc59339",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_a24864cd",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_township.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-19T05:07:30Z",
+      "side": 1,
+      "message": "Should be 7 for both, right?",
+      "revId": "891c8c5956d90572101281481b8e12536fc59339",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_c24558b4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/Copy of village_spawn_table.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-19T05:07:30Z",
+      "side": 1,
+      "message": "Did you mean to commit this file?",
+      "revId": "891c8c5956d90572101281481b8e12536fc59339",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
