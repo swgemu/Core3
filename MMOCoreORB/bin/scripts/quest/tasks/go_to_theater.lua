@@ -209,7 +209,7 @@ function GoToTheater:handleDespawnTheater(pCreatureObject)
 	end
 
 	if (self:areMobilesInCombat(pCreatureObject) or self:areMobilesFollowing(pCreatureObject)) then
-		createEvent(self.despawnTime / 10, self.taskName, "handleDespawnTheater", pCreatureObject)
+		createEvent(self.despawnTime / 2, self.taskName, "handleDespawnTheater", pCreatureObject)
 		return
 	end
 

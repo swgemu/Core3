@@ -1,7 +1,7 @@
 local ObjectManager = require("managers.object.object_manager")
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
 local QuestManager = require("managers.quest.quest_manager")
-require("managers.jedi.village.phase1.fs_survey")
+require("managers.jedi.village.multiple.fs_survey")
 
 villageSurveyorConvoHandler = {  }
 
@@ -26,7 +26,7 @@ function villageSurveyorConvoHandler:getInitialScreen(pPlayer, pNpc, pConversati
 	end
 
 	if (VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
-		return convoTemplate:getScreen("intro_has_another_quest")
+		return convoTemplate:getScreen("intro_has_other_quest")
 	else
 		return convoTemplate:getScreen("intro")
 	end
@@ -38,8 +38,6 @@ function villageSurveyorConvoHandler:runScreenHandlers(conversationTemplate, con
 	local conversationScreen = screen:cloneScreen()
 	local clonedConversation = LuaConversationScreen(conversationScreen)
 	local phase = VillageJediManagerTownship:getCurrentPhase()
-
-	phase = 2 -- Temporary until phase 2 is enabled
 
 	if (screenID == "intro_in_progress") then
 		local hasQuest = FsSurvey:hasSurveyorQuest(conversingPlayer, phase)
