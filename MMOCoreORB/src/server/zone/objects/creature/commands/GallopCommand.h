@@ -41,6 +41,7 @@ public:
 		uint32 crc = STRING_HASHCODE("gallop");
 
 		if (mount->hasBuff(crc) || creature->hasBuff(crc)) {
+			creature->sendSystemMessage("@combat_effects:already_galloping"); // You are already galloping!
 			return GENERALERROR;
 		}
 
