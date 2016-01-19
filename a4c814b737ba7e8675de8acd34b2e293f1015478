@@ -22,6 +22,30 @@
       "revId": "a4c814b737ba7e8675de8acd34b2e293f1015478",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_02f59082",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-19T01:08:45Z",
+      "side": 1,
+      "message": "Yeah I noticed the problem when I tried to fix rollShot, as well as another that is forcing the creature to repeatedly stand.",
+      "parentUuid": "da7095c5_c29b1871",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 65
+      },
+      "revId": "a4c814b737ba7e8675de8acd34b2e293f1015478",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
