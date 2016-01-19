@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_62eecc8d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2140,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-19T08:52:27Z",
+      "side": 1,
+      "message": "If we remove the line from setPosture then re-setting the posture to UPRIGHT should return early and do nothing.",
+      "parentUuid": "da7095c5_a2c38437",
+      "range": {
+        "startLine": 2137,
+        "startChar": 0,
+        "endLine": 2140,
+        "endChar": 1
+      },
+      "revId": "ea5ae1861fc1e514f7406c853d042774e485ce37",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_e2c97c5b",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
         "patchSetId": 3
@@ -140,6 +164,30 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_82f3e072",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/LuaCreatureObject.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-19T08:52:27Z",
+      "side": 1,
+      "message": "I was originally using it before I wrote isFeigningDeath() I figured it couldn\u0027t hurt to leave in for completeness sake.",
+      "parentUuid": "da7095c5_c2c0f82c",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 1
+      },
+      "revId": "ea5ae1861fc1e514f7406c853d042774e485ce37",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_62dd6c14",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/FeignDeathCommand.h",
         "patchSetId": 3
@@ -151,6 +199,30 @@
       "writtenOn": "2016-01-18T23:59:40Z",
       "side": 1,
       "message": "Correct me if I\u0027m wrong here (I might be), but I don\u0027t think the state was set until after you actually fell down.",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 35
+      },
+      "revId": "ea5ae1861fc1e514f7406c853d042774e485ce37",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_22e8d47b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/FeignDeathCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-19T08:52:27Z",
+      "side": 1,
+      "message": "I know I disagreed with you before but I believe you are in fact right. Just based on the state buff description and icon itself. It makes no sense to show this to the player unless they are already on the ground.",
+      "parentUuid": "da7095c5_62dd6c14",
       "range": {
         "startLine": 36,
         "startChar": 2,
