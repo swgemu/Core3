@@ -106,6 +106,7 @@ namespace creature {
 		int isInvisible(lua_State* L);
 		int isInCombat(lua_State* L);
 		int healDamage(lua_State* L);
+		int getGroupID(lua_State* L);
 	private:
 		// The pointer to the 'real object' defined in object.cc
 		CreatureObject* realObject;
