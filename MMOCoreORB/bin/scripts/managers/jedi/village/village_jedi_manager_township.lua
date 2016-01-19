@@ -13,7 +13,7 @@ VillageJediManagerTownship = ScreenPlay:new {
 	screenplayName = "VillageJediManagerTownship"
 }
 
-VILLAGE_TOTAL_NUMBER_OF_PHASES = 2 -- Temporarily set to 2 for testing until other phases begin development
+VILLAGE_TOTAL_NUMBER_OF_PHASES = 3 -- Temporarily set to 3 for testing until fourth phase begins development
 
 local VILLAGE_PHASE_CHANGE_TIME = 48 * 60 * 60 * 1000 -- Testing value.
 --local VILLAGE_PHASE_CHANGE_TIME = 5 * 60 * 1000
@@ -65,6 +65,7 @@ function VillageJediManagerTownship:switchToNextPhase()
 	VillageJediManagerTownship:handlePhaseChangeActiveQuests(phaseID, currentPhase)
 
 	currentPhase = currentPhase + 1
+
 	if currentPhase > VILLAGE_TOTAL_NUMBER_OF_PHASES then
 		currentPhase = 1
 	end
@@ -73,6 +74,7 @@ function VillageJediManagerTownship:switchToNextPhase()
 	VillageJediManagerTownship.setCurrentPhaseID(phaseID + 1)
 	VillageJediManagerTownship:spawnMobiles(currentPhase, false)
 	VillageJediManagerTownship:spawnSceneObjects(currentPhase, false)
+
 	Logger:log("Switching village phase to " .. currentPhase, LT_INFO)
 
 	-- Schedule another persistent event.
@@ -120,10 +122,10 @@ function VillageJediManagerTownship:spawnMobiles(currentPhase, spawnStaticMobs)
 
 		if (pMobile ~= nil) then
 			CreatureObject(pMobile):setPvpStatusBitmask(0)
-			if (mobile[6] ~= "") then
+			if (mobile[6] ~= nil and mobile[6] ~= "") then
 				self[mobile[6]](pMobile)
 			end
-			if (mobile[7] ~= "") then
+			if (mobile[7] ~= nil and mobile[7] ~= "") then
 				CreatureObject(pMobile):setOptionsBitmask(136)
 				AiAgent(pMobile):setConvoTemplate(mobile[7])
 			end
@@ -151,14 +153,14 @@ function VillageJediManagerTownship:spawnSceneObjects(currentPhase, spawnStaticO
 	if (spawnStaticObjects == true) then
 		local objectTable = villageObjectSpawns[0]
 		foreach(objectTable, function(sceneObject)
-			spawnSceneObject("dathomir", sceneObject[1], sceneObject[2], sceneObject[3], sceneObject[4], 0, sceneObject[5])
+			spawnSceneObject("dathomir", sceneObject[1], sceneObject[2], sceneObject[3], sceneObject[4], 0, math.rad(sceneObject[5]))
 		end)
 	end
 
 	local objectTable = villageObjectSpawns[currentPhase]
 	for i = 1, #objectTable, 1 do
 		local sceneObject = objectTable[i]
-		local pObject = spawnSceneObject("dathomir", sceneObject[1], sceneObject[2], sceneObject[3], sceneObject[4], 0, sceneObject[5])
+		local pObject = spawnSceneObject("dathomir", sceneObject[1], sceneObject[2], sceneObject[3], sceneObject[4], 0, math.rad(sceneObject[5]))
 
 		if (pObject ~= nil) then
 			local objectID = SceneObject(pObject):getObjectID()
@@ -204,7 +206,7 @@ function VillageJediManagerTownship:handlePhaseChangeActiveQuests(phaseID, curre
 			end)
 		end
 	end
-	
+
 	VillageJediManagerCommon.removeActiveQuestList(phaseID)
 end
 
@@ -217,7 +219,7 @@ function VillageJediManagerTownship:doOnlinePhaseChangeFails(pCreature, currentP
 		FsPatrol:doPhaseChangeFail(pCreature)
 
 		FsMedicPuzzle:doPhaseChange(pCreature)
-		
+
 		local FsCrafting1 = require("managers.jedi.village.phase1.fs_crafting1")
 		FsCrafting1:doPhaseChangeFail(pCreature)
 	elseif (currentPhase == 2) then
