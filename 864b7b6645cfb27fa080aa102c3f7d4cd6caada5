@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_4de2d904",
+        "filename": "MMOCoreORB/bin/scripts/commands/diveShot.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-20T23:06:18Z",
+      "side": 1,
+      "message": "tabs",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 4
+      },
+      "revId": "864b7b6645cfb27fa080aa102c3f7d4cd6caada5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ede64d16",
+        "filename": "MMOCoreORB/bin/scripts/commands/kipUpShot.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-20T23:06:18Z",
+      "side": 1,
+      "message": "tabs",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 4
+      },
+      "revId": "864b7b6645cfb27fa080aa102c3f7d4cd6caada5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0de4e10b",
+        "filename": "MMOCoreORB/bin/scripts/commands/rollShot.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-20T23:06:18Z",
+      "side": 1,
+      "message": "tabs",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 4
+      },
+      "revId": "864b7b6645cfb27fa080aa102c3f7d4cd6caada5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_adf055ca",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1741,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-20T23:06:18Z",
+      "side": 1,
+      "message": "remove (accurate per emulation)",
+      "range": {
+        "startLine": 1741,
+        "startChar": 0,
+        "endLine": 1741,
+        "endChar": 150
+      },
+      "revId": "864b7b6645cfb27fa080aa102c3f7d4cd6caada5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8dd8f154",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1471,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-20T23:06:18Z",
+      "side": 1,
+      "message": "are we sure that we want to send this every time? We might need 2 booleans, one for immediate posture change and one for sending of the packet. What happens when we change posture multiple times before we want to send a packet?",
+      "range": {
+        "startLine": 1461,
+        "startChar": 0,
+        "endLine": 1471,
+        "endChar": 36
+      },
+      "revId": "864b7b6645cfb27fa080aa102c3f7d4cd6caada5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
