@@ -277,5 +277,77 @@ schematic_purchased = ConvoScreen:new {
 }
 museumCuratorConvoTemplate:addScreen(schematic_purchased);
 
+talk_about_sean = ConvoScreen:new {
+	id = "talk_about_sean",
+	leftDialog = "@conversation/lilas_dinhint:s_8b3d6e46", --  Can you tell me anything about Sean Trenwell?
+	stopConversation = "false",
+	options = {}
+}
+museumCuratorConvoTemplate:addScreen(talk_about_sean);
+
+
+talk_about_sean_reply = ConvoScreen:new {
+	id = "talk_about_sean_reply",
+	leftDialog = "@conversation/lilas_dinhint:s_7c297430", --  Mr. Trenwell? Yes, of course. Many of our latest additions and newest programs have only been possible thanks to funding provided by the efforts of Mr. Trenwell. His large personal contributions - both in time and money - have been generous beyond expectations.
+	stopConversation = "false",
+	options = {}
+}
+museumCuratorConvoTemplate:addScreen(talk_about_sean_reply);
+
+sean_giveitem = ConvoScreen:new {
+	id = "sean_giveitem",
+	leftDialog = "@conversation/lilas_dinhint:s_7b488371", -- Indeed, I would be quite happy to do exactly that. I'll load that into this datapad that you can then take to Mrs. Aryon.
+	stopConversation = "false",
+	options = {}
+}
+museumCuratorConvoTemplate:addScreen(sean_giveitem);
+
+sean_noroom = ConvoScreen:new {
+	id = "sean_noroom",
+	leftDialog = "@conversation/lilas_dinhint:s_4f010def", --  It would seem that you have no room in your inventory to hold this datapad with my testimonial. I'm afraid you'll have to make some room before I can give it to you. Please speak to me again after you've done that.
+	stopConversation = "true",
+	options = {}
+}
+museumCuratorConvoTemplate:addScreen(sean_noroom);
+
+sean_noroom_returned = ConvoScreen:new {
+	id = "sean_noroom_returned",
+	leftDialog = "@conversation/lilas_dinhint:s_26c02ad3", --  I'm back for the testimonial for Sean Trenwell you had offered.. 
+	stopConversation = "false",
+	options = {}
+}
+museumCuratorConvoTemplate:addScreen(sean_noroom_returned);
+
+sean_noroom_reply = ConvoScreen:new {
+	id = "sean_noroom_reply",
+	leftDialog = "@conversation/lilas_dinhint:s_71561c79", --  Ah, of course. I remember you now. I have everything prepared and loaded onto this datapad that you can show to Mrs. Aryon.
+	stopConversation = "true",
+	options = {}
+}
+museumCuratorConvoTemplate:addScreen(sean_noroom_reply);
+
+sean_noroom_giveitem = ConvoScreen:new {
+	id = "sean_noroom_giveitem",
+	leftDialog = "@conversation/lilas_dinhint:s_1042bed3", --  Here you are. I'm glad to help Mr. Trenwell and in this small way repay his generosity to the museum.
+	stopConversation = "true",
+	options = {}
+}
+museumCuratorConvoTemplate:addScreen(sean_noroom_giveitem);
+
+sean_giveitem_noroom = ConvoScreen:new {
+	id = "sean_giveitem_noroom",
+	leftDialog = "@conversation/lilas_dinhint:s_4f010def", --  It would seem that you have no room in your inventory to hold this datapad with my testimonial. I'm afraid you'll have to make some room before I can give it to you. Please speak to me again after you've done that.
+	stopConversation = "true",
+	options = {}
+}
+museumCuratorConvoTemplate:addScreen(sean_giveitem_noroom);
+
+sean_im_leaving = ConvoScreen:new {
+	id = "sean_im_leaving",
+	leftDialog = "@conversation/lilas_dinhint:s_eb35002", --  Ah... yes. Okay then.
+	stopConversation = "true",
+	options = {}
+}
+museumCuratorConvoTemplate:addScreen(sean_im_leaving);
 
 addConversationTemplate("museumCuratorConvoTemplate", museumCuratorConvoTemplate);

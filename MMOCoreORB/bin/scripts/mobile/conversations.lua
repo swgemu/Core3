@@ -24,6 +24,17 @@ includeFile("conversations/themepark/nym/nym_conv.lua")
 includeFile("conversations/themepark/nym/sergeant_moore_conv.lua")
 includeFile("conversations/themepark/nym/kole_conv.lua")
 
+-- Bestine Election
+includeFile("conversations/events/bestine_election/hutt_informant_conv.lua")
+includeFile("conversations/events/bestine_election/indigo_siyan_conv.lua")
+includeFile("conversations/events/bestine_election/keanna_likyna_conv.lua")
+includeFile("conversations/events/bestine_election/sean_questn_university_conv.lua")
+includeFile("conversations/events/bestine_election/sean_trenwell_conv.lua")
+includeFile("conversations/events/bestine_election/tour_aryon_conv.lua")
+includeFile("conversations/events/bestine_election/victor_questn_cantina_conv.lua")
+includeFile("conversations/events/bestine_election/victor_questn_capitol_conv.lua")
+includeFile("conversations/events/bestine_election/victor_visalis_conv.lua")
+
 -- Bestine Museum
 includeFile("conversations/events/bestine_museum/bestine_artist01_conv.lua")
 includeFile("conversations/events/bestine_museum/bestine_artist02_conv.lua")

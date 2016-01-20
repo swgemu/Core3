@@ -1,6 +1,6 @@
-indigo_siyan = Creature:new {
+keanna_likyna = Creature:new {
 	objectName = "",
-	customName = "Indigo Siyan",
+	customName = "Keanna Li'kyna",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -23,15 +23,15 @@ indigo_siyan = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_indigo_siyan.iff"},
+	templates = {"object/mobile/dressed_keanna_likyna.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "keannaLikynaConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(indigo_siyan, "indigo_siyan")
+CreatureTemplates:addCreatureTemplate(keanna_likyna, "keanna_likyna")

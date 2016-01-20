@@ -496,6 +496,77 @@ function BestineMuseumScreenPlay:getPaintingTemplate(npc, id)
 	end
 end
 
+function BestineMuseumScreenPlay:giveSeanTestimony(pPlayer)
+	
+local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+	if (pInventory ~= nil) then
+		local pItem = giveItem(pInventory, "object/tangible/loot/quest/sean_questp_ctestimony.iff", -1)
+
+		if (pItem ~= nil) then
+			CreatureObject(pPlayer):sendSystemMessage("@system_msg:give_item_success")
+		end
+	end
+	
+end
+
+function BestineMuseumScreenPlay:checkTestimony(pPlayer)
+local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+	if pInventory ~= nil then
+		if getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/sean_questp_ctestimony.iff" , true) then
+			return true
+		end
+	end
+	return false
+end
+
+function BestineMuseumScreenPlay:hasNoRoomVar(pPlayer)
+	local electionPhase = BestineElectionScreenPlay:getCurrentPhase()
+	if electionPhase == 1 then
+		local playerID = CreatureObject(pPlayer):getObjectID()
+		local electionNum = BestineElectionScreenPlay:getElectionNumber()
+		playerCampaign = tonumber(getQuestStatus(playerID..":bestine_election:sean_museum_noroom"))
+		if (playerCampaign ~= nil) then
+			if (playerCampaign >= electionNum) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function BestineMuseumScreenPlay:canTalkAboutSean(pPlayer)
+	local playerID = CreatureObject(pPlayer):getObjectID()
+	local electionNum = BestineElectionScreenPlay:getElectionNumber()
+	local electionPhase = BestineElectionScreenPlay:getCurrentPhase()
+	if electionPhase == 1 then
+		return (tonumber(getQuestStatus(playerID..":bestine_election:SeanCampaign")) == electionNum) and (not BestineMuseumScreenPlay:hasNoRoomVar(pPlayer)) and  (not BestineMuseumScreenPlay:checkTestimony(pPlayer))
+	end
+	return false
+end
+
+function BestineMuseumScreenPlay:madeRoomSeanTestimony(pPlayer)
+	local playerID = CreatureObject(pPlayer):getObjectID()
+	local electionNum = BestineElectionScreenPlay:getElectionNumber()
+	local electionPhase = BestineElectionScreenPlay:getCurrentPhase()
+	if electionPhase == 1 then
+		return (tonumber(getQuestStatus(playerID..":bestine_election:SeanCampaign")) == electionNum) and (BestineMuseumScreenPlay:hasNoRoomVar(pPlayer)) 
+	end
+	return false
+end
+
+
+
+function BestineMuseumScreenPlay:hasFullInventory(pPlayer)
+	if (pPlayer == nil) then
+		return true
+	end
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+	if (pInventory == nil) then
+		return true
+	end
+	return SceneObject(pInventory):isContainerFullRecursive()
+end
+
 function BestineMuseumScreenPlay:splitString(string, delimiter)
 	local outResults = { }
 	local start = 1

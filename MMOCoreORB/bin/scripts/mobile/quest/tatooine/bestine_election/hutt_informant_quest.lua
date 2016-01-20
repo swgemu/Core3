@@ -1,17 +1,17 @@
-oohiani = Creature:new {
+hutt_informant_quest = Creature:new {
 	objectName = "@npc_name:rodian_base_male",
-	customName = "Oohiani",
+	customName = "Osso",
 	socialGroup = "townsperson",
 	faction = "townsperson",
-	level = 10,
-	chanceHit = 0.28,
-	damageMin = 90,
-	damageMax = 110,
-	baseXp = 356,
-	baseHAM = 810,
-	baseHAMmax = 990,
+	level = 100,
+	chanceHit = 1,
+	damageMin = 645,
+	damageMax = 1000,
+	baseXp = 9429,
+	baseHAM = 24000,
+	baseHAMmax = 30000,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,-1,-1},
+	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -23,15 +23,15 @@ oohiani = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_hutt_informant_quest.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "huttInformantConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(oohiani, "oohiani")
+CreatureTemplates:addCreatureTemplate(hutt_informant_quest, "hutt_informant_quest")

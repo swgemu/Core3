@@ -1,15 +1,15 @@
-quajjifek_coge = Creature:new {
+victor_questn_cantina = Creature:new {
 	objectName = "@npc_name:twilek_base_male",
 	customName = "Quajjif-Ek Coge",
 	socialGroup = "townsperson",
 	faction = "townsperson",
-	level = 13,
-	chanceHit = 0.29,
-	damageMin = 150,
-	damageMax = 160,
-	baseXp = 609,
-	baseHAM = 1500,
-	baseHAMmax = 1900,
+	level = 100,
+	chanceHit = 1,
+	damageMin = 645,
+	damageMax = 1000,
+	baseXp = 9429,
+	baseHAM = 24000,
+	baseHAMmax = 30000,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
@@ -23,14 +23,14 @@ quajjifek_coge = Creature:new {
 	ferocity = 3,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/dressed_victor_questn_cantina.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "victorQuestnCantinaConvoTemplate",
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(quajjifek_coge, "quajjifek_coge")
+CreatureTemplates:addCreatureTemplate(victor_questn_cantina, "victor_questn_cantina")

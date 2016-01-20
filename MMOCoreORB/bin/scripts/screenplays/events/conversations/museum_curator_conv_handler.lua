@@ -35,6 +35,35 @@ function MuseumCuratorConvoHandler:runScreenHandlers(conversationTemplate, conve
 				clonedConversation:addOption("@conversation/lilas_dinhint:s_e649bf0a", "schematic_cost")
 			end
 			clonedConversation:addOption("@conversation/lilas_dinhint:s_6b5b28b2", "enjoy_visit_votephase")
+			if (BestineMuseumScreenPlay:canTalkAboutSean(conversingPlayer)) then
+				clonedConversation:addOption("@conversation/lilas_dinhint:s_8b3d6e46", "talk_about_sean_reply")
+			elseif (BestineMuseumScreenPlay:hasNoRoomVar(conversingPlayer)) then
+				clonedConversation:addOption("@conversation/lilas_dinhint:s_26c02ad3", "sean_noroom_returned")
+			end
+			
+		elseif (screenID == "talk_about_sean_reply") then
+				clonedConversation:addOption("@conversation/lilas_dinhint:s_7552be07", "sean_im_leaving")
+				clonedConversation:addOption("@conversation/lilas_dinhint:s_6d1148d8", "sean_giveitem")
+		elseif (screenID == "sean_giveitem") then
+				if BestineMuseumScreenPlay:hasFullInventory(conversingPlayer) then
+					local playerID = CreatureObject(conversingPlayer):getObjectID()
+					local electionNum = tonumber(getQuestStatus("bestine_election:election_num"))
+					setQuestStatus(playerID..":bestine_election:sean_museum_noroom",electionNum)
+					clonedConversation:addOption("@conversation/lilas_dinhint:s_b67247f1", "sean_noroom")
+				else
+					clonedConversation:addOption("@conversation/lilas_dinhint:s_b67247f1", "sean_noroom_giveitem")
+				end
+		elseif (screenID == "sean_noroom_returned") then
+			if BestineMuseumScreenPlay:hasFullInventory(conversingPlayer) then
+				clonedConversation:addOption("@conversation/lilas_dinhint:s_b67247f1", "sean_giveitem_noroom")
+			else
+				local playerID = CreatureObject(conversingPlayer):getObjectID()
+				removeQuestStatus(playerID..":bestine_election:sean_museum_noroom")
+				clonedConversation:addOption("@conversation/lilas_dinhint:s_b67247f1", "sean_noroom_giveitem")
+				BestineMuseumScreenPlay:giveSeanTestimony(conversingPlayer)
+			end
+		elseif (screenID == "sean_noroom_giveitem") then
+			BestineMuseumScreenPlay:giveSeanTestimony(conversingPlayer)
 		elseif (screenID == "seek_out_artists" or string.find(screenID, "find_") ~= nil) then
 			for i = 1, 3, 1 do
 				local artistTemplate = BestineMuseumScreenPlay:getArtistTemplate(tonumber(currentArtists[i]))
@@ -119,9 +148,12 @@ end
 function MuseumCuratorConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 
+	
 	if (BestineMuseumScreenPlay:isMuseumEnabled() == false) then
 		return convoTemplate:getScreen("hello_no_voting")
 	end
+	
+
 
 	local currentPhase = BestineMuseumScreenPlay:getCurrentPhase()
 

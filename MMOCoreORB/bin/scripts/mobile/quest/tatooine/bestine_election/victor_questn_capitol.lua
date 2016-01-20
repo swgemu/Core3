@@ -1,8 +1,8 @@
-victor_visalis = Creature:new {
-	objectName = "@npc_name:human_base_male",
-	customName = "Victor Visalis",
-	socialGroup = "townsperson",
-	faction = "townsperson",
+victor_questn_capitol = Creature:new {
+	objectName = "@mob/creature_names:dark_trooper",
+	customName = "TL-017",
+	socialGroup = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -11,7 +11,7 @@ victor_visalis = Creature:new {
 	baseHAM = 24000,
 	baseHAMmax = 30000,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,12 +26,12 @@ victor_visalis = Creature:new {
 	optionsBitmask = 264,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_victor_visalis.iff"},
+	templates = {"object/mobile/dressed_victor_questn_capitol.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "victorVisalisConvoTemplate",
+	conversationTemplate = "victorQuestnCapitolConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(victor_visalis, "victor_visalis")
+CreatureTemplates:addCreatureTemplate(victor_questn_capitol, "victor_questn_capitol")
