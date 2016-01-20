@@ -1695,9 +1695,6 @@ void PlayerObjectImplementation::activateRecovery() {
 }
 
 void PlayerObjectImplementation::activateForcePowerRegen() {
-	if (forcePowerRegen == 0) {
-		return;
-	}
 
 	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
 
@@ -1705,15 +1702,18 @@ void PlayerObjectImplementation::activateForcePowerRegen() {
 		return;
 	}
 
+
+	float regen = (float)creature->getSkillMod("jedi_force_power_regen");
+
+	if(regen == 0.0f)
+		return;
+
 	if (forceRegenerationEvent == NULL) {
 		forceRegenerationEvent = new ForceRegenerationEvent(_this.getReferenceUnsafeStaticCast());
 	}
 
 	if (!forceRegenerationEvent->isScheduled()) {
 
-
-
-		float regen = (float)creature->getSkillMod("jedi_force_power_regen");
 		int regenMultiplier = creature->getSkillMod("private_force_regen_multiplier");
 		int regenDivisor = creature->getSkillMod("private_force_regen_divisor");
 
