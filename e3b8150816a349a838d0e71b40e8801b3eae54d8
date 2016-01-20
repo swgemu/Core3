@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_ad3375f5",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-20T03:09:59Z",
+      "side": 1,
+      "message": "Your commit message says 128m but this is only 96m. Either way, I think that\u0027s a long distance to cause aggro from. How about 72m? It\u0027s far enough out that the player can\u0027t attack before getting aggro\u0027d yet won\u0027t seem exceptionally far.",
+      "revId": "e3b8150816a349a838d0e71b40e8801b3eae54d8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0d3e21b9",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-20T03:09:59Z",
+      "side": 1,
+      "message": "Why aren\u0027t you checking for the active quest anymore?",
+      "revId": "e3b8150816a349a838d0e71b40e8801b3eae54d8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_cd3029eb",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-20T03:09:59Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you also check if it\u0027s from the killer\u0027s spawn here? The way you have it, an ungrouped player on this quest step can go around killing other people\u0027s mellichae and get the rewards for it.\n\nHonestly, I don\u0027t really like having success/failure rely on who gets the killing blow anyway. You should change it to check who gets loot rights on the mob.",
+      "revId": "e3b8150816a349a838d0e71b40e8801b3eae54d8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8d523112",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-20T03:09:59Z",
+      "side": 1,
+      "message": "This isFromSpawn call is wrong. A player will never be in their own quest\u0027s spawn mobile list.",
+      "revId": "e3b8150816a349a838d0e71b40e8801b3eae54d8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2d576504",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-20T03:09:59Z",
+      "side": 1,
+      "message": "Does this actually work? I don\u0027t see how getFirstName could return \"Daktar Bloodmoon\" since it only returns a substring up to the first space.",
+      "revId": "e3b8150816a349a838d0e71b40e8801b3eae54d8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ad4a9553",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-20T03:09:59Z",
+      "side": 1,
+      "message": "This will spawn in the exact same spot as the mercenary. I don\u0027t think you want that.",
+      "revId": "e3b8150816a349a838d0e71b40e8801b3eae54d8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
