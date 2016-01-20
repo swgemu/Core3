@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_ed1f2d08",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-20T22:46:24Z",
+      "side": 1,
+      "message": "You need to get rid of the else and make this a separate if otherwise it\u0027ll never be true.",
+      "revId": "a824781ae7350fd59c010355340002bc346b86f5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

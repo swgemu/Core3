@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_0d1dc10f",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-20T22:46:24Z",
+      "side": 0,
+      "message": "You are returning 1 so the observer is dropped, but you have the observer on two different mobs. That means that you could potentially spawn 6 more mobs twice. Is that the desired functionality?",
+      "revId": "07f46ea5caac5d2380ac7075983b9af35cb38509",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
