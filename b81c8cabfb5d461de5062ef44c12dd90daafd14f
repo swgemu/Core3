@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_ad8ff574",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-20T05:45:01Z",
+      "side": 1,
+      "message": "I think you meant to use getGroupID here.",
+      "revId": "b81c8cabfb5d461de5062ef44c12dd90daafd14f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8deeb121",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-20T05:45:01Z",
+      "side": 1,
+      "message": "This will have mellichae and daktar not aggro, but every other mob will. Your commit message is vague, but I think that\u0027s opposite of how you want it.",
+      "revId": "b81c8cabfb5d461de5062ef44c12dd90daafd14f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
