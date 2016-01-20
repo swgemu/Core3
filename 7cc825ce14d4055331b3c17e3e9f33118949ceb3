@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_6da1dda8",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-20T23:42:03Z",
+      "side": 1,
+      "message": "this should be a static, you can define it in the cpp (const unsigned ints can\u0027t be defined in idl)",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 34
+      },
+      "revId": "7cc825ce14d4055331b3c17e3e9f33118949ceb3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8da6b1c0",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-20T23:42:03Z",
+      "side": 1,
+      "message": "Move this to the top and initialize it there.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 54
+      },
+      "revId": "7cc825ce14d4055331b3c17e3e9f33118949ceb3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2dabe58a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1814,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-20T23:42:03Z",
+      "side": 1,
+      "message": "I know it would result in more code in the end, but this should be in the actual command definitions that should remove FD. Another reason to make feignBuffCRC a static (so you can reference it like CREO::feignBuffCRC)",
+      "range": {
+        "startLine": 1808,
+        "startChar": 0,
+        "endLine": 1814,
+        "endChar": 2
+      },
+      "revId": "7cc825ce14d4055331b3c17e3e9f33118949ceb3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0d79412f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2164,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-20T23:42:03Z",
+      "side": 1,
+      "message": "might as well make this static, too",
+      "range": {
+        "startLine": 2164,
+        "startChar": 1,
+        "endLine": 2164,
+        "endChar": 28
+      },
+      "revId": "7cc825ce14d4055331b3c17e3e9f33118949ceb3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0d92a157",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2183,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-20T23:42:03Z",
+      "side": 1,
+      "message": "not sure if this check is useful. This method gets called from the buff as a callback, and it would be useful to allow this function to be used outside the context of the actual command in the future.",
+      "range": {
+        "startLine": 2183,
+        "startChar": 4,
+        "endLine": 2183,
+        "endChar": 31
+      },
+      "revId": "7cc825ce14d4055331b3c17e3e9f33118949ceb3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_cd9b4971",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/FeignDeathCommand.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-20T23:42:03Z",
+      "side": 1,
+      "message": "are there client strings for this?",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 65
+      },
+      "revId": "7cc825ce14d4055331b3c17e3e9f33118949ceb3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_6d88fd22",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/FeignDeathCommand.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-20T23:42:03Z",
+      "side": 1,
+      "message": "are there client strings for this?",
+      "range": {
+        "startLine": 48,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 60
+      },
+      "revId": "7cc825ce14d4055331b3c17e3e9f33118949ceb3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ad9e1562",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/FeignDeathCommand.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-20T23:42:03Z",
+      "side": 1,
+      "message": "Doesn\u0027t this automatically get removed by the SingleUseBuff mechanism?",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 58
+      },
+      "revId": "7cc825ce14d4055331b3c17e3e9f33118949ceb3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8d8d5134",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/QueueCommand.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-20T23:42:03Z",
+      "side": 1,
+      "message": "This won\u0027t be necessary if you move the code that uses it to the commands",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 51
+      },
+      "revId": "7cc825ce14d4055331b3c17e3e9f33118949ceb3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2d820501",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/StandCommand.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-20T23:42:03Z",
+      "side": 1,
+      "message": "shouldn\u0027t we just be using isPast() here? If not, you can just use .miliDifference(void) on the actual countdown timer.",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 65
+      },
+      "revId": "7cc825ce14d4055331b3c17e3e9f33118949ceb3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ed7bad27",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/TangibleObject.idl",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-20T23:42:03Z",
+      "side": 1,
+      "message": "Should use the cooldown timer map we already have to avoid adding extra members",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 31
+      },
+      "revId": "7cc825ce14d4055331b3c17e3e9f33118949ceb3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
