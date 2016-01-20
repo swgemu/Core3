@@ -63,7 +63,6 @@ class PlayerObject extends IntangibleObject {
 
 	protected int forcePower;
 	protected int forcePowerMax;
-	protected int forcePowerRegen;
 
 	protected int foodFilling;
 	protected int foodFillingMax;
@@ -304,7 +303,7 @@ class PlayerObject extends IntangibleObject {
 
 		forcePower = 0;
 		forcePowerMax = 0;
-		forcePowerRegen = 0;
+		
 		jediState = 0;
 
 		pvpRating = 0;
