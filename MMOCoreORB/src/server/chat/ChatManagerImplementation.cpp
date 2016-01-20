@@ -40,14 +40,11 @@
 ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int initsize) : ManagedServiceImplementation() {
 	server = serv;
 
-	//userManager = server->getUserManager();
-
 	playerManager = NULL;
-	//guildManager = playerManager->getGuildManager();
 
-	//resourceManager = server->getResourceManager();
+	setLoggingName("ChatManager");
 
-	ObjectDatabaseManager::instance()->loadObjectDatabase("mail", true);
+	loadMailDatabase();
 
 	playerMap = new PlayerMap(initsize);
 	//playerMap->deploy("ChatPlayerMap");
@@ -58,18 +55,84 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 
 	roomID = 0;
 
-	setLoggingName("ChatManager");
-
 	loadSocialTypes();
 
 	//gameRooms = new VectorMap<String, ManagedReference<ChatRoom*> >();
-
-	//gameCommandHandler = new GameCommandHandler();
 
 	loadSpatialChatTypes();
 }
 
 void ChatManagerImplementation::finalize() {
+}
+
+void ChatManagerImplementation::loadMailDatabase() {
+	info("Checking mail for expiration...", true);
+
+	ObjectDatabase* playerMailDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("mail", true);
+
+	if (playerMailDatabase == NULL) {
+		error("Could not load the player mail database.");
+		return;
+	}
+
+	int i = 0;
+
+	try {
+		ObjectDatabaseIterator iterator(playerMailDatabase);
+
+		uint64 objectID;
+		uint32 timeStamp, currentTime = System::getTime();
+		ObjectInputStream* objectData = new ObjectInputStream(2000);
+
+		while (i < 10000 && iterator.getNextKeyAndValue(objectID, objectData)) {
+			if (!Serializable::getVariable<uint32>(STRING_HASHCODE("PersistentMessage.timeStamp"), &timeStamp, objectData)) {
+				objectData->clear();
+				continue;
+			}
+
+			if (currentTime - timeStamp > PM_LIFESPAN) {
+				Reference<PersistentMessage*> mail = Core::getObjectBroker()->lookUp(objectID).castTo<PersistentMessage*>();
+
+				if (mail != NULL) {
+					i++;
+
+					ObjectManager::instance()->destroyObjectFromDatabase(objectID);
+				}
+			}
+
+			objectData->clear();
+		}
+
+		delete objectData;
+	} catch (DatabaseException& e) {
+		error("Database exception in ChatManager::loadMailDatabase(): " + e.getMessage());
+	}
+
+	info("Deleted " + String::valueOf(i) + " mails due to expiration.", true);
+}
+
+void ChatManagerImplementation::loadSocialTypes() {
+	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/chat/social_types.iff");
+
+	if (iffStream == NULL) {
+		error("Could not load social types.");
+		return;
+	}
+
+	DataTableIff dtiff;
+	dtiff.readObject(iffStream);
+
+	delete iffStream;
+
+	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
+		DataTableRow* row = dtiff.getRow(i);
+
+		String key;
+		row->getCell(0)->getValue(key);
+		socialTypes.put(i + 1, key);
+	}
+
+	info("Loaded " + String::valueOf(socialTypes.size()) + " social types.", true);
 }
 
 void ChatManagerImplementation::loadSpatialChatTypes() {
@@ -1424,28 +1487,4 @@ String ChatManagerImplementation::getTaggedName(PlayerObject* ghost, const Strin
 	}
 
 	return taggedName;
-}
-
-void ChatManagerImplementation::loadSocialTypes() {
-	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/chat/social_types.iff");
-
-	if (iffStream == NULL) {
-		error("Could not load social types.");
-		return;
-	}
-
-	DataTableIff dtiff;
-	dtiff.readObject(iffStream);
-
-	delete iffStream;
-
-	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
-		DataTableRow* row = dtiff.getRow(i);
-
-		String key;
-		row->getCell(0)->getValue(key);
-		socialTypes.put(i + 1, key);
-	}
-
-	info("Loaded " + String::valueOf(socialTypes.size()) + " social types.", true);
 }

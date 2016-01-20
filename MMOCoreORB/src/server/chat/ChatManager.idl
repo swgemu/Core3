@@ -28,14 +28,7 @@ include server.chat.WaypointChatParameterVector;
 class ChatManager extends ManagedService implements Logger {
 	ZoneServer server;
 
-	//UserManager userManager;
-
 	PlayerManager playerManager;
-	//GuildManager guildManager;
-
-	//GameCommandHandler * gameCommandHandler;
-
-	//ResourceManager* resourceManager;
 
 	transient PlayerMap playerMap;
 
@@ -50,7 +43,7 @@ class ChatManager extends ManagedService implements Logger {
 	ChatRoom core3Room;
 	ChatRoom auctionRoom;
 	ChatRoom generalRoom;
-	
+
 	transient ChatRoomMap roomMap;
 
 	unsigned int roomID;
@@ -64,50 +57,51 @@ class ChatManager extends ManagedService implements Logger {
 	private transient VectorMap<unsigned int, short> spatialChatDistances;
 
 	private transient short defaultSpatialChatDistance;
-	
+
 	public static final int IM_SUCCESS = 0x00;
 	public static final int IM_OFFLINE = 0x04;
 	public static final int IM_IGNORED = 0x09;
 	public static final int IM_TOOLONG = 0x10;
-	
+
 	public static final int IM_MAXSIZE = 255;
 	public static final int PM_MAXSIZE = 4000;
-	
+	public static final int PM_LIFESPAN = 15552000; // 6 months, in seconds
+
 	public native ChatManager(ZoneServer serv, int initsize);
-	
+
 	public native void finalize();
 
-	public native void loadSpatialChatTypes();
+	private native void loadMailDatabase();
+	private native void loadSocialTypes();
+	private native void loadSpatialChatTypes();
 
 	public native void initiateRooms();
 	public native void initiatePlanetRooms();
 	public native void destroyRooms();
 
-	private native void loadSocialTypes();
-	
 	public native ChatRoom createRoom(final string roomName, ChatRoom parent = null);
-	
+
 	public synchronized void addRoom(ChatRoom channel) {
 		roomMap.put(channel.getRoomID(), channel);
 	}
-	
+
 	public synchronized void removeRoom(ChatRoom channel) {
 		roomMap.remove(channel.getRoomID());
 	}
-	
+
 	public native void populateRoomListMessage(ChatRoom channel, ChatRoomList msg);
-	
+
 	public native void sendRoomList(CreatureObject player);
-	
+
 	public native void addPlayer(CreatureObject player);
 	public native CreatureObject getPlayer(final string name);
 	public native CreatureObject removePlayer(final string name);
-	
+
 	public native void broadcastMessage(BaseMessage message);
 	public native void broadcastMessage(CreatureObject player, final unicode message, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
 	@local
 	public native void broadcastMessage(CreatureObject player, @dereferenced StringIdChatParameter message, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
-	
+
 	public native void handleSpatialChatInternalMessage(CreatureObject player, final unicode args);
 	public native void handleGroupChat(CreatureObject player, final unicode message);
 	public native void handleGuildChat(CreatureObject player, final unicode message);
@@ -116,41 +110,38 @@ class ChatManager extends ManagedService implements Logger {
 
 	public native unicode formatMessage(final unicode message);
 	public native string getTaggedName(PlayerObject ghost, final string name);
-	
+
 	public native ChatRoom createRoomByFullPath(final string path);
-	
+
 	public native ChatRoom getChatRoomByFullPath(final string path);
 	public native ChatRoom getChatRoomByGamePath(ChatRoom game, final string path);
-	
+
 	public native void handleChatRoomMessage(CreatureObject sender, final unicode message, unsigned int roomID, unsigned int counter);
 	public native void handleChatEnterRoomById(CreatureObject player, unsigned int counter, unsigned int roomID);
 	public native void handleSocialInternalMessage(CreatureObject sender, final unicode arguments);
 
 	@local
 	public native void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter message);
-	
+
 	public native void destroyRoom(ChatRoom room);
-	
+
 	public native ChatRoom createGroupRoom(unsigned long groupID, CreatureObject creator);
 
 	public native void loadMail(CreatureObject player);
 	public native void sendMail(final string sendername, final unicode header, final unicode body, final string name);
-	
+
 	@local
 	public native int sendMail(final string sendername, final unicode subject, @dereferenced StringIdChatParameter body, final string recipientName, WaypointObject waypoint = null);
-	
+
 	@local
 	public native int sendMail(final string sendername, final unicode subject, final unicode body, final string recipientName, StringIdChatParameterVector stringIdParameters, WaypointChatParameterVector waypointParameters);
-	
-	//@local
-	//public native int sendMail(CityRegion city, final string sendername, final unicode subject, final unicode body, final string recipientName, StringIdChatParameterVector stringIdParameters, WaypointChatParameterVector waypointParameters);
 
 	public native void handleRequestPersistentMsg(CreatureObject player, unsigned int mailID);
 	public native void deletePersistentMessage(CreatureObject player, unsigned int mailID);
-	
+
 	public native void broadcastGalaxy(CreatureObject player, final string message);
 	public native void broadcastGalaxy(final string message, final string faction);
-	
+
 	/*public native void sendMailBody(CreatureObject receiver, unsigned int mailid);
 	public native void listMail(CreatureObject ply);
 	public native void deleteMail(unsigned int mailid);
@@ -170,35 +161,32 @@ class ChatManager extends ManagedService implements Logger {
 
 	// ChatRooms
 	public native void initGuildChannel(CreatureObject creator, unsigned int gid);
-	
-	
+
 	public native void handleGuildChat(CreatureObject player, BaseMessage pack);
 
 	public native void handleCreateRoom(CreatureObject player, BaseMessage pack);
 	public native void handleChatDestroyRoom(CreatureObject player, BaseMessage pack);
 	public native void handleChatRemoveAvatarFromRoom(CreatureObject player, BaseMessage pack);
 
-
 	public native void sendGuildChat(CreatureObject player);
-
 	 */
-	
+
 	public void setPlayerManager(PlayerManager manager) {
 		playerManager = manager;
 	}
-	
+
 	public synchronized ChatRoom getChatRoom(unsigned int id) {
 		return roomMap.get(id);
 	}
-	
+
 	public synchronized ChatRoom getGameRoom(final string game) {
 		return gameRooms.get(game);
 	}
-	 
+
 	public synchronized unsigned int getNextRoomID() {
 		return ++roomID;
 	}
-	
+
 	public int getPlayerCount() {
 		return playerMap.size();
 	}
@@ -207,28 +195,28 @@ class ChatManager extends ManagedService implements Logger {
 	public PlayerMap getPlayerMap() {
 		return playerMap;
 	}
-	
+
 	/**
 	 * Returns the parent room for guild chat rooms.
 	 */
 	public ChatRoom getGuildRoom() {
 		return guildRoom;
 	}
-	
+
 	/**
 	 * Returns the parent room for group chat rooms.
 	 */
 	public ChatRoom getGroupRoom() {
 		return groupRoom;
 	}
-	
+
 	/**
 	 * Returns the auction chat room
 	 */
 	public ChatRoom getAuctionRoom() {
 		return auctionRoom;
 	}
-	
+
 	/***
 	 * Returns the general chat room
 	 */
