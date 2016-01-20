@@ -1,15 +1,15 @@
-oka_alewame = Creature:new {
+sean_questn_university = Creature:new {
 	objectName = "@npc_name:moncal_base_male",
 	customName = "Oka Alewame",
 	socialGroup = "townsperson",
 	faction = "townsperson",
-	level = 10,
-	chanceHit = 0.28,
-	damageMin = 90,
-	damageMax = 110,
-	baseXp = 356,
-	baseHAM = 810,
-	baseHAMmax = 990,
+	level = 100,
+	chanceHit = 1,
+	damageMin = 645,
+	damageMax = 1000,
+	baseXp = 9429,
+	baseHAM = 24000,
+	baseHAMmax = 30000,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
@@ -23,15 +23,15 @@ oka_alewame = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_sean_questn_university.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "seanQuestnUniversityConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(oka_alewame, "oka_alewame")
+CreatureTemplates:addCreatureTemplate(sean_questn_university, "sean_questn_university")

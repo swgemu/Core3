@@ -1,6 +1,6 @@
-tl_017 = Creature:new {
-	objectName = "",
-	customName = "TL-017",
+tour_aryon = Creature:new {
+	objectName = "@npc_name:human_base_female",
+	customName = "Tour Aryon (governor)",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 10,
@@ -23,15 +23,15 @@ tl_017 = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_victor_questn_capitol.iff"},
+	templates = {"object/mobile/dressed_tatooine_tour_aryon.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "tourAryonConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(tl_017, "tl_017")
+CreatureTemplates:addCreatureTemplate(tour_aryon, "tour_aryon")
