@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_8da0f1f5",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-20T04:56:25Z",
+      "side": 1,
+      "message": "This will only work if the player wasn\u0027t grouped. If they were grouped, ownerID would be the group\u0027s oid. You need to check both possibilities.",
+      "revId": "6564f726fea802630bb647c61adbd029d1196215",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2da52504",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-20T04:56:25Z",
+      "side": 1,
+      "message": "Check your logic. The part after the and will always be true since the first name cannot be both values. You\u0027ll end up having every spawned mobile aggro.",
+      "revId": "6564f726fea802630bb647c61adbd029d1196215",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_edae4de7",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-20T04:56:25Z",
+      "side": 1,
+      "message": "Since you are having this mob aggro right away, I don\u0027t think the heading matters much. May as well just use 0 or something and save the getRandomNumber call. Do the same for the next spawnMobile call.",
+      "revId": "6564f726fea802630bb647c61adbd029d1196215",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_adb8552b",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-20T04:56:25Z",
+      "side": 1,
+      "message": "You should verify the object type as well here (and below for the other mobile).",
+      "revId": "6564f726fea802630bb647c61adbd029d1196215",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0dace1ec",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-20T04:56:25Z",
+      "side": 1,
+      "message": "Rather than calling getZoneName twice, call it once and store it in a local var for use in both spawnMobile calls.",
+      "revId": "6564f726fea802630bb647c61adbd029d1196215",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
