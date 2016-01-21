@@ -86,7 +86,7 @@ function ShuttleDropoff:spawnShuttle(pPlayer, manualControl)
 	writeData(playerID .. ":ShuttleDropoff:shuttleID", SceneObject(pShuttle):getObjectID())
 
 	if (manualControl) then
-		writeData(playerID .. ":ShuttleDropoff:shuttleStatus", -1) -- Spawned
+		writeData(playerID .. ":ShuttleDropoff:shuttleStatus", -1) -- Creating shuttle
 		createEvent(5 * 1000, "ShuttleDropoff", "allowManualControl", pPlayer)
 	else
 		writeData(playerID .. ":ShuttleDropoff:shuttleStatus", 1) -- Spawned
@@ -210,7 +210,7 @@ function ShuttleDropoff:allowManualControl(pPlayer)
 		return
 	end
 
-	writeData(SceneObject(pPlayer) .. ":ShuttleDropoff:shuttleStatus", 1)
+	writeData(SceneObject(pPlayer):getObjectID() .. ":ShuttleDropoff:shuttleStatus", 1)
 end
 
 function ShuttleDropoff:suiShuttleDropoffMainCallback(pPlayer, pSui, eventIndex, args)
