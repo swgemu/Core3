@@ -225,6 +225,8 @@ void VisibilityManager::loadConfiguration() {
 
 		visDecayPerTick = (maxVisibility / ((totalDecayTimeInDays * (float)(60*60*24) / visDecayTickRate)));
 
+		noSameAccounts = lua->getGlobalBoolean("noSameAccounts");
+
 		delete lua;
 
 	} catch(Exception e) {

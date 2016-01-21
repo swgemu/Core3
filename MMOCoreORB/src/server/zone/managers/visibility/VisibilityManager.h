@@ -87,6 +87,9 @@ class VisibilityManager : public Singleton<VisibilityManager>, public Logger, pu
 	 */
 	Mutex visibilityListLock;
 
+	// Boolean for preventing same account hunting.
+	bool noSameAccounts;
+
 	/**
 	 * Add the player to the bounty list.
 	 * @param creature the player to add.
@@ -178,6 +181,10 @@ public:
 
 	unsigned int getVisDecayTickRate() {
 		return visDecayTickRate;
+	}
+
+	bool isNoSameAccounts() {
+		return noSameAccounts;
 	}
 };
 
