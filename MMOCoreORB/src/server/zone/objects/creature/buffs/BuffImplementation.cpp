@@ -64,12 +64,6 @@ void BuffImplementation::renew(float newDuration) {
 	if (newDuration > 0)
 		buffDuration = newDuration;
 
-	if (!startMessage.isEmpty())
-		creature.get()->sendSystemMessage(startMessage);
-
-	if (!startFlyFile.isEmpty())
-		creature.get()->showFlyText(startFlyFile, startFlyAux, startFlyRed, startFlyGreen, startFlyBlue);
-
 	clearBuffEvent();
 	scheduleBuffEvent();
 }

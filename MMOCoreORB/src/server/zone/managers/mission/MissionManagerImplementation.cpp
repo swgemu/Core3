@@ -1772,10 +1772,14 @@ Reference<MissionObject*> MissionManagerImplementation::getBountyHunterMission(C
 void MissionManagerImplementation::addPlayerToBountyList(uint64 targetId, int reward) {
 	Locker listLocker(&playerBountyListMutex);
 
-	if (playerBountyList.contains(targetId)) {
+	if (playerBountyList.contains(targetId) && !playerBountyList.get(targetId)->getCanHaveNewMissions()) {
 		playerBountyList.get(targetId)->setCanHaveNewMissions(true);
+
+		info("Re-adding player " + String::valueOf(targetId) + " to bounty hunter list.", true);
 	} else {
 		playerBountyList.put(targetId, new BountyTargetListElement(targetId, reward));
+
+		info("Adding player " + String::valueOf(targetId) + " to bounty hunter list.", true);
 	}
 }
 
@@ -1783,12 +1787,17 @@ void MissionManagerImplementation::removePlayerFromBountyList(uint64 targetId) {
 	Locker listLocker(&playerBountyListMutex);
 
 	if (playerBountyList.contains(targetId)) {
-		if (playerBountyList.get(targetId)->numberOfActiveMissions() > 0) {
+
+		BountyTargetListElement* target = playerBountyList.get(targetId);
+
+		if (target->numberOfActiveMissions() > 0 && target->getCanHaveNewMissions()) {
 			playerBountyList.get(targetId)->setCanHaveNewMissions(false);
+			info("Removing player " + String::valueOf(targetId) + " from bounty hunter list with pending missions.", true);
+
 		} else {
-			BountyTargetListElement* target = playerBountyList.get(targetId);
 			playerBountyList.remove(playerBountyList.find(targetId));
 			delete target;
+			info("Removing player " + String::valueOf(targetId) + " from bounty hunter list.", true);
 		}
 	}
 }
