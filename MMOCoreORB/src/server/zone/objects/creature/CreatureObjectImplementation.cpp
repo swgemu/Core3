@@ -2269,6 +2269,9 @@ void CreatureObjectImplementation::setIntimidatedState(int durationSeconds) {
 	uint32 buffCRC = Long::hashCode(CreatureState::INTIMIDATED);
 	if(hasBuff(buffCRC)) {
 		Reference<CreatureObject*> creo = _this.getReferenceUnsafeStaticCast();
+
+		showFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
+
 		creo->renewBuff(buffCRC, durationSeconds);
 	} else {
 

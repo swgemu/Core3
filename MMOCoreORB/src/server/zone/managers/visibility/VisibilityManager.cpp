@@ -16,13 +16,11 @@ const unsigned int VisibilityManager::factionImperial = factionStringImperial.ha
 void VisibilityManager::addPlayerToBountyList(CreatureObject* creature, int reward) {
 	MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
 	missionManager->addPlayerToBountyList(creature->getObjectID(), reward);
-	info("Adding player " + String::valueOf(creature->getObjectID()) + " to bounty hunter list.", true);
 }
 
 void VisibilityManager::removePlayerFromBountyList(CreatureObject* creature) {
 	MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
 	missionManager->removePlayerFromBountyList(creature->getObjectID());
-	info("Dropping player " + creature->getFirstName() + " from bounty hunter list.", true);
 }
 
 int VisibilityManager::calculateReward(CreatureObject* creature) {
