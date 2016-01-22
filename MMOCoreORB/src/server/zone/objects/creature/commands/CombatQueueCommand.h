@@ -168,6 +168,17 @@ public:
 			return GENERALERROR;
 		}
 
+		if (creature->isPlayerCreature() && !targetObject->isPlayerCreature() && targetObject->getParentID() != 0 && creature->getParentID() != targetObject->getParentID()) {
+			Reference<CellObject*> targetCell = targetObject->getParent().castTo<CellObject*>();
+
+			if (targetCell != NULL) {
+				if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
+					creature->sendSystemMessage("@container_error_message:container18");
+					return GENERALERROR;
+				}
+			}
+		}
+
 		CombatManager* combatManager = CombatManager::instance();
 
 		bool shouldTef = false;
