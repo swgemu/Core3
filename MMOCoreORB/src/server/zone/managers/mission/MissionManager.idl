@@ -53,6 +53,8 @@ class MissionManager extends Observer implements Logger {
 	
 	protected boolean enableFactionalEntertainerMissions;
 	
+	protected boolean enableSameAccountBountyMissions;
+	
 	public static final unsigned int UNKNOWN_TARGET = 0xB911DA26;
 	
 	public MissionManager(ZoneServer srv, ZoneProcessServer impl) {
@@ -64,6 +66,7 @@ class MissionManager extends Observer implements Logger {
 		enableFactionalCraftingMissions = false;
 		enableFactionalReconMissions = false;
 		enableFactionalEntertainerMissions = false;
+		enableSameAccountBountyMissions = false;
 		
 		Logger.setLoggingName("MissionManager");
 		

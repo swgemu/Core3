@@ -69,3 +69,5 @@ enable_factional_crafting_missions = "true"
 enable_factional_recon_missions = "true"
 
 enable_factional_entertainer_missions = "true"
+
+enable_same_account_bounty_missions = "false"

@@ -91,6 +91,12 @@ void MissionManagerImplementation::loadLuaSettings() {
 			enableFactionalEntertainerMissions = true;
 		}
 
+		value = lua->getGlobalString("enable_same_account_bounty_missions");
+
+		if (value.toLowerCase() == "true") {
+			enableSameAccountBountyMissions = true;
+		}
+
 		delete lua;
 	}
 	catch (Exception& e) {
@@ -708,21 +714,21 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	mission->setMissionDescription("mission/mission_destroy_neutral" +  messageDifficulty + missionType, "m" + String::valueOf(randTexts) + "d");
 
 	switch (faction) {
-		case MissionObject::FACTIONIMPERIAL:
-			mission->setRewardFactionPointsImperial(factionPointsReward * 2);
-			mission->setRewardFactionPointsRebel(-factionPointsReward);
-			generateRandomFactionalDestroyMissionDescription(player, mission, "imperial");
-			break;
-		case MissionObject::FACTIONREBEL:
-			mission->setRewardFactionPointsImperial(-factionPointsReward);
-			mission->setRewardFactionPointsRebel(factionPointsReward * 2);
-			generateRandomFactionalDestroyMissionDescription(player, mission, "rebel");
-			break;
-		default:
-			mission->setRewardFactionPointsImperial(0);
-			mission->setRewardFactionPointsRebel(0);
-			break;
-		}
+	case MissionObject::FACTIONIMPERIAL:
+		mission->setRewardFactionPointsImperial(factionPointsReward * 2);
+		mission->setRewardFactionPointsRebel(-factionPointsReward);
+		generateRandomFactionalDestroyMissionDescription(player, mission, "imperial");
+		break;
+	case MissionObject::FACTIONREBEL:
+		mission->setRewardFactionPointsImperial(-factionPointsReward);
+		mission->setRewardFactionPointsRebel(factionPointsReward * 2);
+		generateRandomFactionalDestroyMissionDescription(player, mission, "rebel");
+		break;
+	default:
+		mission->setRewardFactionPointsImperial(0);
+		mission->setRewardFactionPointsRebel(0);
+		break;
+	}
 
 	mission->setTypeCRC(MissionObject::DESTROY);
 }
@@ -1839,13 +1845,27 @@ BountyTargetListElement* MissionManagerImplementation::getRandomPlayerBounty(Cre
 	if (playerBountyList.size() <= 0) {
 		return NULL;
 	}
-
-	bool found = false;
 	int retries = 20;
 
-	while (!found && retries-- > 0) {
+	while (retries-- > 0) {
 		int index = System::random(playerBountyList.size() - 1);
 		BountyTargetListElement* randomTarget = playerBountyList.get(index);
+
+		if (enableSameAccountBountyMissions != true) {
+			SceneObject* object = server->getObject(randomTarget->getTargetId());
+
+			if (object != NULL) {
+				CreatureObject* creo = cast<CreatureObject*>(object);
+				ZoneClientSession* targetClient = creo->getClient();
+				ZoneClientSession* playerClient = player->getClient();
+
+				if (targetClient != NULL && playerClient != NULL) {
+					if (targetClient->getAccountID() == playerClient->getAccountID()) {
+						continue;
+					}
+				}
+			}
+		}
 
 		if (randomTarget->getCanHaveNewMissions() && randomTarget->numberOfActiveMissions() < 6 &&
 				randomTarget->getTargetId() != player->getObjectID()) {
@@ -1855,6 +1875,23 @@ BountyTargetListElement* MissionManagerImplementation::getRandomPlayerBounty(Cre
 
 	for (int i = 0; i < playerBountyList.size(); i++) {
 		BountyTargetListElement* randomTarget = playerBountyList.get(i);
+
+
+		if (enableSameAccountBountyMissions != true) {
+			SceneObject* object = server->getObject(randomTarget->getTargetId());
+
+			if (object != NULL) {
+				CreatureObject* creo = cast<CreatureObject*>(object);
+				ZoneClientSession* targetClient = creo->getClient();
+				ZoneClientSession* playerClient = player->getClient();
+
+				if (targetClient != NULL && playerClient != NULL) {
+					if (targetClient->getAccountID() == playerClient->getAccountID()) {
+						continue;
+					}
+				}
+			}
+		}
 
 		if (randomTarget->getCanHaveNewMissions() && randomTarget->numberOfActiveMissions() < 6 &&
 				randomTarget->getTargetId() != player->getObjectID()) {
@@ -1933,7 +1970,7 @@ void MissionManagerImplementation::despawnMissionNpc(NpcSpawnPoint* npc) {
 	//Lock mission spawn points.
 	if (npc == NULL)
 		return;
-		
+
 	Locker missionSpawnLocker(&missionNpcSpawnMap);
 	npc->despawnNpc();
 }
