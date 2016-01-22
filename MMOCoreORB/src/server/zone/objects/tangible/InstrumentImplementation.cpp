@@ -8,28 +8,43 @@
 #include "server/zone/objects/tangible/Instrument.h"
 #include "server/zone/objects/tangible/InstrumentObserver.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/Zone.h"
 
-bool InstrumentImplementation::canDropInstrument() {
-	ManagedReference<SceneObject*> parent = getParent().get();
+void InstrumentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
+	if (instrumentType != OMNIBOX && instrumentType != NALARGON)
+		return;
 
-	if (isInQuadTree() || (parent != NULL && parent->isCellObject()))
-		return false;
+	if (canDropInstrument()) {
+		ManagedReference<SceneObject*> parent = getParentRecursively(SceneObjectType::PLAYERCREATURE).get();
 
-	return true;
+		if (parent != NULL && parent == player->asSceneObject())
+			menuResponse->addRadialMenuItem(20, 3, "@ui_radial:item_use");
+	} else {
+		if (spawnerPlayer != NULL && spawnerPlayer == player) {
+			if (!player->isPlayingMusic())
+				menuResponse->addRadialMenuItem(20, 3, "@radial_performance:play_instrument");
+			else
+				menuResponse->addRadialMenuItem(20, 3, "@radial_performance:stop_playing");
+		}
+	}
 }
 
 int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (instrumentType != OMNIBOX && instrumentType != NALARGON) {
+	if (instrumentType != OMNIBOX && instrumentType != NALARGON)
 		return 1;
-	}
 
-	if (selectedID == 69) {
-		if (!canDropInstrument())
+	if (selectedID != 20)
+		return 1;
+
+	if (canDropInstrument()) {
+		ManagedReference<SceneObject*> parent = getParentRecursively(SceneObjectType::PLAYERCREATURE).get();
+
+		if (parent == NULL || parent != player->asSceneObject())
 			return 1;
 
 		if (player->isSkillAnimating()) {
@@ -76,35 +91,51 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		} else {
 			spawnNonAdmin(player);
 		}
-
-	} else if (selectedID == 20) {
+	} else {
 		if (getZone() == NULL)
 			return 1;
 
-		Reference<Instrument*> instrument = player->getSlottedObject("hold_r").castTo<Instrument*>();
-
-		if (instrument != NULL) {
-			player->sendSystemMessage("@performance:music_must_unequip");
+		if (spawnerPlayer == NULL || spawnerPlayer != player)
 			return 1;
+
+		if (player->isPlayingMusic()) {
+			player->executeObjectControllerAction(STRING_HASHCODE("stopmusic"), getObjectID(), "");
+		} else {
+
+			Reference<Instrument*> instrument = player->getSlottedObject("hold_r").castTo<Instrument*>();
+
+			if (instrument != NULL) {
+				player->sendSystemMessage("@performance:music_must_unequip");
+				return 1;
+			}
+
+			Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
+
+			if (ghost == NULL)
+				return 1;
+
+			if (!ghost->hasAbility("startmusic")) {
+				player->sendSystemMessage("@performance:music_lack_skill_instrument");
+				return 1;
+			}
+
+			if (player->getDistanceTo(_this.getReferenceUnsafeStaticCast()) >= 5) {
+				player->sendSystemMessage("@elevator_text:too_far");
+			} else
+				player->executeObjectControllerAction(STRING_HASHCODE("startmusic"), getObjectID(), "");
 		}
-
-		Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
-
-		if (ghost == NULL)
-			return 1;
-
-		if (!ghost->hasAbility("startmusic")) {
-			player->sendSystemMessage("@performance:music_lack_skill_instrument");
-			return 1;
-		}
-
-		if (player->getDistanceTo(_this.getReferenceUnsafeStaticCast()) >= 5) {
-			player->sendSystemMessage("@elevator_text:too_far");
-		} else
-			player->executeObjectControllerAction(STRING_HASHCODE("startmusic"), getObjectID(), "");
 	}
 
 	return 0;
+}
+
+bool InstrumentImplementation::canDropInstrument() {
+	ManagedReference<SceneObject*> parent = getParent().get();
+
+	if (isInQuadTree() || (parent != NULL && parent->isCellObject()))
+		return false;
+
+	return true;
 }
 
 void InstrumentImplementation::spawnNonAdmin(CreatureObject* player) {
