@@ -36,6 +36,7 @@
 #include "server/zone/Zone.h"
 #include "server/db/ServerDatabase.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/managers/visibility/VisibilityManager.h"
 
 void MissionManagerImplementation::loadLuaSettings() {
 	try {
@@ -1846,6 +1847,16 @@ BountyTargetListElement* MissionManagerImplementation::getRandomPlayerBounty(Cre
 	while (!found && retries-- > 0) {
 		int index = System::random(playerBountyList.size() - 1);
 		BountyTargetListElement* randomTarget = playerBountyList.get(index);
+
+		if (VisibilityManager::instance()->getAllowedSameAccounts() == false) {
+			ZoneServer* zServer = player->getZoneServer();
+			SceneObject* object = zServer->getObject(randomTarget->getTargetId());
+			CreatureObject* creo = cast<CreatureObject*>(object);
+
+			if (creo->getClient()->getAccountID() == player->getClient()->getAccountID()) {
+				continue;
+			}
+		}
 
 		if (randomTarget->getCanHaveNewMissions() && randomTarget->numberOfActiveMissions() < 6 &&
 				randomTarget->getTargetId() != player->getObjectID()) {

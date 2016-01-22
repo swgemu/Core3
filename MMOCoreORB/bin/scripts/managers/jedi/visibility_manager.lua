@@ -4,3 +4,4 @@ falloffThreshold = 100    -- Visibility jedi will disappear off terminals
 totalDecayTimeInDays = 21 -- Total time before visibility decays from cap
 tickRateInSeconds = 60*60 -- How often visibility will decay in seconds
 pvpRatingDivisor = 18      -- Divisor for calculating visibility
+allowSameAccounts = 0;       -- Should Bounty Hunters pull their own account's jedi? 1 = yes, 0 = no
