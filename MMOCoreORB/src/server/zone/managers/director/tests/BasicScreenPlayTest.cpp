@@ -35,6 +35,12 @@ public:
 
 TEST_F(BasicScreenPlayTest, ScreenPlayLuaInitialize) {
 	DirectorManager::DEBUG_MODE = 1;
+
+	lua_State* L = DirectorManager::instance()->getLuaInstance()->getLuaState();
+	double ver = *lua_version(L);
+	double reqVer = 503;
+
+	ASSERT_EQ(ver, reqVer) << "Wrong version of Lua Installed: " << ver << ". Required version: " << reqVer;
 	EXPECT_EQ(DirectorManager::instance()->runScreenPlays(), 0);
 }
 

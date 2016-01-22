@@ -17,7 +17,7 @@ jediManagerName = "JediManager"
 
 customJediProgressionFile = "scripts/managers/jedi/custom_jedi_manager.lua"
 
-function printf(...) io.write(string.format(unpack({...}))) end
+function printf(...) io.write(string.format(table.unpack({...}))) end
 
 JediManager = ScreenPlay:new {
 	screenplayName = jediManagerName,
