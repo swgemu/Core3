@@ -1,6 +1,6 @@
 local ObjectManager = require("managers.object.object_manager")
 
-function printf(...) io.write(string.format(unpack({...}))) end
+function printf(...) io.write(string.format(table.unpack({...}))) end
 
 function writeData(key, data)
 	writeSharedMemory(string.format(key), data)
