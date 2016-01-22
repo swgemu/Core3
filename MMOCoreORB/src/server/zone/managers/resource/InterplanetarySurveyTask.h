@@ -61,9 +61,13 @@ public:
 		}
 		// Create Email:
 		StringBuffer body;
-		UnicodeString sender(String("Interplanetary Survey Droid"));
+
+		String sender = "SWG." + ServerCore::getZoneServer()->getGalaxyName() + ".interplanetary survey droid";
 		Reference<StringIdManager* > stringIdManager = StringIdManager::instance();
-		String planetName = stringIdManager->getStringId(String("@planet_n:" + surveyData->getPlanet()).hashCode()).toString();
+
+		String planetName = surveyData->getPlanet();
+		planetName[0] = toupper(planetName[0]);
+
 		String sType = surveyData->getSurveyType();
 		// Some override for untranslated names
 		if (sType == "floral_resources") {
@@ -102,7 +106,7 @@ public:
 		}
 		UnicodeString bodyString(body.toString());
 		ManagedReference<ChatManager*> chat = ServerCore::getZoneServer()->getChatManager();
-		chat->sendMail(sender.toString(), subject, bodyString, surveyData->getRequestor());
+		chat->sendMail(sender, subject, bodyString, surveyData->getRequestor());
 		// mark it as run and delete from the database
 		surveyData->setExecuted(true);
 		if (surveyData->isPersistent())
