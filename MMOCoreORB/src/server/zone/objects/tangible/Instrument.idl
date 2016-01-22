@@ -94,19 +94,7 @@ class Instrument extends TangibleObject {
 	 */
 	@local
 	@dirty
-	public void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player) {
-		super.fillObjectMenuResponse(menuResponse, player);
-
-		if (instrumentType != OMNIBOX && instrumentType != NALARGON) {
-			return;
-		}
-
-		if (beingUsed) {
-			return;
-		} else if (canDropInstrument()) {
-			menuResponse.addRadialMenuItem(69, 3, "@radial_performance:play_instrument");
-		}
-	}
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
