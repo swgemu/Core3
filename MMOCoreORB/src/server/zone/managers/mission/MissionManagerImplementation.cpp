@@ -1845,6 +1845,7 @@ BountyTargetListElement* MissionManagerImplementation::getRandomPlayerBounty(Cre
 	if (playerBountyList.size() <= 0) {
 		return NULL;
 	}
+
 	int retries = 20;
 
 	while (retries-- > 0) {
@@ -1852,10 +1853,9 @@ BountyTargetListElement* MissionManagerImplementation::getRandomPlayerBounty(Cre
 		BountyTargetListElement* randomTarget = playerBountyList.get(index);
 
 		if (enableSameAccountBountyMissions != true) {
-			SceneObject* object = server->getObject(randomTarget->getTargetId());
+			ManagedReference<CreatureObject*> creo = server->getObject(randomTarget->getTargetId()).castTo<CreatureObject*>();
 
-			if (object != NULL) {
-				CreatureObject* creo = cast<CreatureObject*>(object);
+			if (creo != NULL) {
 				ZoneClientSession* targetClient = creo->getClient();
 				ZoneClientSession* playerClient = player->getClient();
 
@@ -1878,10 +1878,9 @@ BountyTargetListElement* MissionManagerImplementation::getRandomPlayerBounty(Cre
 
 
 		if (enableSameAccountBountyMissions != true) {
-			SceneObject* object = server->getObject(randomTarget->getTargetId());
+			ManagedReference<CreatureObject*> creo = server->getObject(randomTarget->getTargetId()).castTo<CreatureObject*>();
 
-			if (object != NULL) {
-				CreatureObject* creo = cast<CreatureObject*>(object);
+			if (creo != NULL) {
 				ZoneClientSession* targetClient = creo->getClient();
 				ZoneClientSession* playerClient = player->getClient();
 
