@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_adfb7546",
+        "filename": "MMOCoreORB/src/server/zone/managers/mission/MissionManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1852,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-22T13:52:20Z",
+      "side": 1,
+      "message": "MissionManager already has a pointer to ZoneServer (server). Use it.",
+      "revId": "0b2da3f8320b7a42da387c092e703936defc4b0e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_cdf8294c",
+        "filename": "MMOCoreORB/src/server/zone/managers/mission/MissionManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1856,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-22T13:52:20Z",
+      "side": 1,
+      "message": "In this method the target should always be a player creo, but you should NULL check creo and it\u0027s client just in case.\n\nAlso, this check should be in the next for loop as well.",
+      "revId": "0b2da3f8320b7a42da387c092e703936defc4b0e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

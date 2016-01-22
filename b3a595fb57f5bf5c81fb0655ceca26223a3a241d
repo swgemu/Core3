@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_6d955de3",
+        "filename": "MMOCoreORB/src/server/zone/managers/mission/MissionManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1843,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-22T13:52:20Z",
+      "side": 0,
+      "message": "Go ahead and remove found since it does nothing.",
+      "revId": "b3a595fb57f5bf5c81fb0655ceca26223a3a241d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
