@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_6dbc7d6d",
+        "filename": "MMOCoreORB/bin/scripts/mobile/tatooine/serverobjects.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-22T14:42:35Z",
+      "side": 0,
+      "message": "Remove the file and not just the include.",
+      "revId": "24950a447092afe1d6437922a201ee43c1e7b1bd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

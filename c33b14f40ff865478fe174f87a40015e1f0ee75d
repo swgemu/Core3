@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_cd8fc9cb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/tatooine_bestine.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-22T14:42:35Z",
+      "side": 1,
+      "message": "Go ahead and remove these lines instead of leaving them commented out.",
+      "revId": "c33b14f40ff865478fe174f87a40015e1f0ee75d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8dc1d1e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/tatooine/melios_purl.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-22T14:42:35Z",
+      "side": 1,
+      "message": "According to http://www.swgemu.com/archive/scrapbookv51/data/20070129004902/index.html this step should also reward 1000 credits.\n\nAnd http://www.swgemu.com/archive/scrapbookv51/data/20070209175151/index.html shows 4000 credits for the last step...\n\nI don\u0027t know which is correct (if either).",
+      "revId": "c33b14f40ff865478fe174f87a40015e1f0ee75d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
