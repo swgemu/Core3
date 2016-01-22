@@ -2629,6 +2629,16 @@ bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
 	if (!isAttackableBy(target) || target->isVehicleObject())
 		return false;
 
+	if (getParentID() != 0 && getParentID() != target->getParentID()) {
+		Reference<CellObject*> curCell = getParent().castTo<CellObject*>();
+
+		if (curCell != NULL) {
+			if (!curCell->checkContainerPermission(target, ContainerPermissions::WALKIN)) {
+				return false;
+			}
+		}
+	}
+
 	// grab the GCW faction
 	uint32 targetFaction = target->getFaction();
 	PlayerObject* ghost = target->getPlayerObject();
