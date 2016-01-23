@@ -6,6 +6,7 @@
 #define THROWGRENADECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "engine/task/ScheduledTask.h"
 
 class ThrowGrenadeCommand : public CombatQueueCommand {
 public:
@@ -62,9 +63,14 @@ public:
 			int result = doCombatAction(creature, target, args, grenade);
 
 			if (result == SUCCESS) {
-				Locker locker(grenade);
+				// We need to give some time for the combat animation to start playing before destroying the tano
+				// otherwise our character will play the wrong animations
 
-				grenade->decreaseUseCount();
+				SCHEDULE_TASK_1(grenade, 100, {
+
+					Locker locker(grenade_p);
+					grenade_p->decreaseUseCount();
+				});
 			}
 
 			return result;
