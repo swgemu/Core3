@@ -166,8 +166,12 @@ int PlaceStructureSessionImplementation::completeSession() {
 
 		if (structureObject->isBuildingObject()) {
 			BuildingObject* building = cast<BuildingObject*>(structureObject.get());
+
 			if (building->getSignObject() != NULL) {
-				building->setCustomObjectName(creatureObject->getFirstName() + "'s House", true); //Set the house sign.
+				if (building->isCivicStructure() || building->isCommercialStructure())
+					building->setCustomObjectName(structureObject->getDisplayedName(), true);
+				else
+					building->setCustomObjectName(creatureObject->getFirstName() + "'s House", true);
 			}
 		}
 	}
