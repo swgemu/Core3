@@ -40,12 +40,21 @@ public:
 			return INVALIDTARGET;
 		}
 
+		if (!CollisionManager::checkLineOfSight(creature, targetObject)) {
+			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+			return INVALIDTARGET;
+		}
+
 		Reference<CellObject*> targetCell = targetObject->getParent().castTo<CellObject*>();
 
 		if (targetCell != NULL) {
-			if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
-				pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
-				return INVALIDTARGET;
+			ContainerPermissions* perms = targetCell->getContainerPermissions();
+
+			if (!perms->hasInheritPermissionsFromParent()) {
+				if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
+					pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+					return INVALIDTARGET;
+				}
 			}
 		}
 
