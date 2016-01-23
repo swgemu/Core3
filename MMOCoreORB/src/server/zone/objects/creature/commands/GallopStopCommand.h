@@ -41,9 +41,6 @@ public:
 		if (!mount->hasBuff(crc)) {
 			creature->sendSystemMessage("@combat_effects:cant_stop_galloping_not_galloping"); // You can't stop galloping if you aren't already galloping.
 			return GENERALERROR;
-		} else {
-			creature->sendSystemMessage("@combat_effects:gallop_stop"); // Your mount is winded and slows down.
-			mount->removeBuff(crc);
 		}
 
 		PetManager* petManager = server->getZoneServer()->getPetManager();

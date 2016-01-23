@@ -79,7 +79,7 @@ public:
 		buff->setStartMessage(startStringId);
 		buff->setEndMessage(endStringId);
 		mount->addBuff(buff);
-;
+
 		mount->updateCooldownTimer("gallop", (cooldown + duration) * 1000);
 
 		Reference<GallopNotifyAvailableEvent*> task = new GallopNotifyAvailableEvent(mount);
