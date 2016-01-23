@@ -84,7 +84,7 @@ void ChatManagerImplementation::loadMailDatabase() {
 		uint32 timeStamp, currentTime = System::getTime();
 		ObjectInputStream* objectData = new ObjectInputStream(2000);
 
-		while (i < 10000 && iterator.getNextKeyAndValue(objectID, objectData)) {
+		while (i < 25000 && iterator.getNextKeyAndValue(objectID, objectData)) {
 			if (!Serializable::getVariable<uint32>(STRING_HASHCODE("PersistentMessage.timeStamp"), &timeStamp, objectData)) {
 				objectData->clear();
 				continue;

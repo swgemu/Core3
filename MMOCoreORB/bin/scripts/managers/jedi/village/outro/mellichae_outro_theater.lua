@@ -65,14 +65,14 @@ function MellichaeOutroTheater:onLoot(pLootedCreature, pLooter, nothing)
 	local pInventory = SceneObject(pLootedCreature):getSlottedObject("inventory")
 
 	if (pInventory == nil) then
-		return
+		return 1
 	end
 
 	local ownerID = SceneObject(pInventory):getContainerOwnerID()
 	local looterID = SceneObject(pLooter):getObjectID()
 
 	if (CreatureObject(pLooter):isGrouped()) then
-		looterID = SceneObject(pLooter):getGroupID()
+		looterID = CreatureObject(pLooter):getGroupID()
 	end
 
 	if (looterID == ownerID) and (SpawnMobiles.isFromSpawn(pLooter, self.taskName, pLootedCreature)) then
