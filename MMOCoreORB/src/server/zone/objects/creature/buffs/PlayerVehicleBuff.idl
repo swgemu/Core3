@@ -20,5 +20,8 @@ class PlayerVehicleBuff extends Buff {
 
 	public native abstract void removeAllModifiers();
 	
+	public native abstract void activate(boolean applyModifiers);
+	
+	public native abstract void deactivate(boolean removeModifiers);
 	public native void updateRiderSpeeds();
 }
