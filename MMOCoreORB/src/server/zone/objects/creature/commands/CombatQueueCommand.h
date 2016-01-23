@@ -172,9 +172,13 @@ public:
 			Reference<CellObject*> targetCell = targetObject->getParent().castTo<CellObject*>();
 
 			if (targetCell != NULL) {
-				if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
-					creature->sendSystemMessage("@container_error_message:container18");
-					return GENERALERROR;
+				ContainerPermissions* perms = targetCell->getContainerPermissions();
+
+				if (!perms->hasInheritPermissionsFromParent()) {
+					if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
+						creature->sendSystemMessage("@container_error_message:container18");
+						return GENERALERROR;
+					}
 				}
 			}
 		}
