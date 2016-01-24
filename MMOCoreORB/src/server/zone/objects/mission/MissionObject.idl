@@ -90,6 +90,7 @@ class MissionObject extends IntangibleObject {
 
 	public MissionObject() {
 		typeCRC = SURVEY;
+		waypointToMission = createWaypoint();
 
 		refreshCounter = 0;
 
