@@ -138,6 +138,8 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "setConvoTemplate", &LuaAiAgent::setConvoTemplate },
 		{ "setHomeLocation", &LuaAiAgent::setHomeLocation },
 		{ "setNoAiAggro", &LuaAiAgent::setNoAiAggro },
+		{ "doDespawn", &LuaAiAgent::doDespawn },
+		{ "getCreatureTemplateName", &LuaAiAgent::getCreatureTemplateName },
 		{ 0, 0 }
 };
 
@@ -1028,4 +1030,25 @@ int LuaAiAgent::setNoAiAggro(lua_State* L) {
 		realObject->setCreatureBitmask(realObject->getCreatureBitmask() + CreatureFlag::NOAIAGGRO);
 
 	return 0;
+}
+
+int LuaAiAgent::doDespawn(lua_State* L) {
+	Zone* zone = realObject->getZone();
+
+	if (zone == NULL)
+		return 0;
+
+	Locker locker(realObject);
+
+	realObject->destroyObjectFromWorld(true);
+	realObject->notifyDespawn(zone);
+
+	return 0;
+}
+
+int LuaAiAgent::getCreatureTemplateName(lua_State* L) {
+	String creoTemplName = realObject->getCreatureTemplate()->getTemplateName();
+
+	lua_pushstring(L, creoTemplName.toCharArray());
+	return 1;
 }
