@@ -56,6 +56,22 @@ void MissionObjectiveImplementation::activate() {
 
 		failTask = new FailMissionAfterCertainTimeTask(_this.getReferenceUnsafeStaticCast());
 		failTask->schedule(timeRemaining);
+
+		ManagedReference<MissionObject*> strongRef = mission;
+		if(strongRef == NULL)
+			return;
+
+		WaypointObject* waypoint = strongRef->getWaypointToMission();
+		if (waypoint == NULL) {
+
+			Locker mlocker(strongRef);
+			waypoint = strongRef->createWaypoint();
+
+			mlocker.release();
+
+			Locker wlocker(waypoint);
+			waypoint->setActive(false);
+		}
 	}
 }
 
