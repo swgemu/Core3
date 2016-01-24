@@ -46,6 +46,14 @@ void BountyMissionObjectiveImplementation::activate() {
 			startNpcTargetTask();
 		}
 	}
+	ManagedReference<MissionObject* > mission = this->mission.get();
+
+	WaypointObject* waypoint = mission->getWaypointToMission();
+
+	Locker wpLocker(waypoint);
+
+	waypoint->setActive(false);
+	mission->updateMissionLocation();
 
 	if (failMission) {
 		getPlayerOwner().get()->sendSystemMessage("@mission/mission_generic:failed"); // Mission failed
@@ -222,11 +230,6 @@ void BountyMissionObjectiveImplementation::updateWaypoint() {
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	WaypointObject* waypoint = mission->getWaypointToMission();
-
-	if (waypoint == NULL) {
-		Locker mlocker(mission);
-		waypoint = mission->createWaypoint();
-	}
 
 	Locker wplocker(waypoint);
 
