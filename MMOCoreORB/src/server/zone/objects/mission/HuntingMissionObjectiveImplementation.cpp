@@ -1,4 +1,5 @@
 /*
+
  * HuntingMissionObjectiveImplementation.cpp
  *
  *  Created on: 20/08/2010
@@ -63,6 +64,8 @@ void HuntingMissionObjectiveImplementation::complete() {
 
 int HuntingMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	ManagedReference<MissionObject* > mission = this->mission.get();
+	if (mission == NULL)
+		return 1;
 
 	if (eventType == ObserverEventType::KILLEDCREATURE) {
 		if (cast<CreatureObject*>(observable) != getPlayerOwner().get())
@@ -105,6 +108,9 @@ Vector3 HuntingMissionObjectiveImplementation::getEndPosition() {
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	Vector3 missionEndPoint;
+
+	if(mission == NULL)
+		return missionEndPoint;
 
 	missionEndPoint.setX(mission->getStartPositionX());
 	missionEndPoint.setY(mission->getStartPositionY());

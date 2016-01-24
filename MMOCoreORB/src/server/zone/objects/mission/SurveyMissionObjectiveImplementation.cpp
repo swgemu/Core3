@@ -54,7 +54,9 @@ void SurveyMissionObjectiveImplementation::complete() {
 int SurveyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	if (eventType == ObserverEventType::SURVEY) {
 		ManagedReference<CreatureObject*> player = getPlayerOwner();
-		if (player == NULL) {
+		ManagedReference<MissionObject*> mission = this->mission.get();
+
+		if (player == NULL || mission == NULL) {
 			return 0;
 		}
 
@@ -63,8 +65,8 @@ int SurveyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* o
 		int sampledDensity = (int)arg2;
 		if (sampledSpawn->getSurveyMissionSpawnFamilyName() == spawnFamily && (sampledDensity >= efficiency)) {
 			Vector3 startPosition;
-			startPosition.setX(mission.get()->getStartPositionX());
-			startPosition.setY(mission.get()->getStartPositionY());
+			startPosition.setX(mission->getStartPositionX());
+			startPosition.setY(mission->getStartPositionY());
 			float distance = startPosition.distanceTo(player->getWorldPosition());
 			if (distance > 1024.0f) {
 				complete();
