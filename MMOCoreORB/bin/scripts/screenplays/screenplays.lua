@@ -247,8 +247,9 @@ includeFile("tasks/tatooine/vardias_tyne.lua")
 includeFile("tasks/yavin4/gins_darone.lua")
 includeFile("tasks/yavin4/lian_byrne.lua")
 includeFile("tasks/yavin4/ruwan_tokai.lua")
-includeFile("tasks/heralds.lua")
-includeFile("tasks/theater_manager.lua")
+includeFile("tasks/misc/heralds.lua")
+includeFile("tasks/misc/theater_manager.lua")
+includeFile("tasks/misc/conversations/kidnappedNobleConvoHandler.lua")
 
 -- Caves
 includeFile("caves/corellia_afarathu_cave.lua")

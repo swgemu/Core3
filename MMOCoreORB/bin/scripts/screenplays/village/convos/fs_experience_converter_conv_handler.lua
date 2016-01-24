@@ -249,8 +249,8 @@ function fs_experience_converter_conv_handler:transferExperiencePoints(pCreature
 			messageString2:setTO(experienceTypeFS)
 			messageString2:setDI(tonumber(arg1))
 			messageString:setDI(xpToLose * -1)
-			creatureObject:awardExperience(optionsNameFromUnformatted, xpToLose)
-			creatureObject:awardExperience(expFsUnformatted, tonumber(arg1))
+			creatureObject:awardExperience(optionsNameFromUnformatted, xpToLose, false)
+			creatureObject:awardExperience(expFsUnformatted, tonumber(arg1), false)
 
 			creatureObject:sendSystemMessage(messageString:_getObject())
 			creatureObject:sendSystemMessage(messageString2:_getObject())

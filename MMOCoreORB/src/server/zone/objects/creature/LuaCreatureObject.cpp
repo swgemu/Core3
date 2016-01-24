@@ -862,11 +862,12 @@ int LuaCreatureObject::isCombatDroidPet(lua_State* L) {
 }
 
 int LuaCreatureObject::awardExperience(lua_State* L) {
-	String experienceType = lua_tostring(L, -2);
-	int experienceAmount = lua_tointeger(L, -1);
+	String experienceType = lua_tostring(L, -3);
+	int experienceAmount = lua_tointeger(L, -2);
+	bool sendSysMessage = lua_toboolean(L, -1);
 
 	PlayerManager* playerManager = realObject->getZoneServer()->getPlayerManager();
-	playerManager->awardExperience(realObject, experienceType, experienceAmount, false);
+	playerManager->awardExperience(realObject, experienceType, experienceAmount, sendSysMessage);
 
 	return 0;
 }

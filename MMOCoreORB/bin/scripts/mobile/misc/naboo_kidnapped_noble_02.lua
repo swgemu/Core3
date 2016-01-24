@@ -1,4 +1,4 @@
-naboo_kidnapped_noble_01 = Creature:new {
+naboo_kidnapped_noble_02 = Creature:new {
 	objectName = "",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
@@ -29,7 +29,7 @@ naboo_kidnapped_noble_01 = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-		"object/mobile/dressed_noble_naboo_twilek_female_01.iff"
+		"object/mobile/dressed_noble_naboo_twilek_female_02.iff"
 	},
 	lootGroups = {},
 	weapons = {},
@@ -37,4 +37,4 @@ naboo_kidnapped_noble_01 = Creature:new {
 	attacks = brawlermaster
 }
 
-CreatureTemplates:addCreatureTemplate(naboo_kidnapped_noble_01, "naboo_kidnapped_noble_01")
+CreatureTemplates:addCreatureTemplate(naboo_kidnapped_noble_02, "naboo_kidnapped_noble_02")

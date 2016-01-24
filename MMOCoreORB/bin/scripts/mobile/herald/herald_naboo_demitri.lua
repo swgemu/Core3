@@ -23,13 +23,13 @@ herald_naboo_demitri = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_herald_servant_naboo_human_male.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "heraldConvoTemplate",
 	attacks = {
 	}
 }
