@@ -75,13 +75,16 @@ function MellichaeOutroTheater:onLoot(pLootedCreature, pLooter, nothing)
 		looterID = CreatureObject(pLooter):getGroupID()
 	end
 
-	if (looterID == ownerID) and (SpawnMobiles.isFromSpawn(pLooter, self.taskName, pLootedCreature)) then
-		createLoot(pInventory, "mellichae_outro", 0, true)
-		QuestManager.completeQuest(pLooter, QuestManager.quests.FS_THEATER_FINAL)
-		CreatureObject(pLooter):sendSystemMessage("@quest/force_sensitive/exit:final_complete") --	Congratulations, you have completed the Force sensitive quests! You are now qualified to begin the Jedi Padawan Trials.
-		VillageJediManagerCommon.setJediProgressionScreenPlayState(pLooter, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE) -- Killed him.
-		deleteData(SceneObject(pLooter) .. ":totalNum:Shrines:Red")
-		deleteData(SceneObject(pLooter) .. ":totalNum:Shrines:Green")
+	-- Only complete quests if Mellichae belongs to the loot group container owner, and has the quest.
+	if (looterID == ownerID) then
+		if (QuestManager.hasActiveQuest(pLooter, QuestManager.quests.FS_THEATER_FINAL)) then
+			createLoot(pInventory, "mellichae_outro", 0, true)
+			QuestManager.completeQuest(pLooter, QuestManager.quests.FS_THEATER_FINAL)
+			CreatureObject(pLooter):sendSystemMessage("@quest/force_sensitive/exit:final_complete") --	Congratulations, you have completed the Force sensitive quests! You are now qualified to begin the Jedi Padawan Trials.
+			VillageJediManagerCommon.setJediProgressionScreenPlayState(pLooter, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE) -- Killed him.
+			deleteData(SceneObject(pLooter) .. ":totalNum:Shrines:Red")
+			deleteData(SceneObject(pLooter) .. ":totalNum:Shrines:Green")
+		end
 	end
 
 	return 1
@@ -95,7 +98,7 @@ function MellichaeOutroTheater:onEnteredActiveArea(pCreatureObject, spawnedSithS
 	end
 
 	-- Shouldn't be here...
-	if not (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE) and SpawnMobiles.isFromSpawn(pCreatureObject, self.taskName, spawnedSithShadowsList[1])) then
+	if not VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE) then
 		return
 	end
 
@@ -103,20 +106,22 @@ function MellichaeOutroTheater:onEnteredActiveArea(pCreatureObject, spawnedSithS
 		if (pMobile ~= nil) then
 			if (CreatureObject(pMobile):getFirstName() ~= "Mellichae") then
 				AiAgent(pMobile):setDefender(pCreatureObject)
-          		end
+			end
 
 			if (CreatureObject(pMobile):getFirstName() == "Daktar") then
-        			local greetingString = LuaStringIdChatParameter("@quest/force_sensitive/exit:taunt1")
+				local greetingString = LuaStringIdChatParameter("@quest/force_sensitive/exit:taunt1")
 				local firstName = CreatureObject(pCreatureObject):getFirstName()
 				greetingString:setTT(firstName)
 				spatialChat(spawnedSithShadowsList[1], greetingString:_getObject()) -- %TT, You shall pay for your tresspass here - SOLDIERS - defend the crystals! Let no one leave here alive.
-        		end
+			end
 		end
 	end)
 
-	createObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pCreatureObject)
-	QuestManager.completeQuest(pCreatureObject, QuestManager.quests.FS_THEATER_CAMP)
-	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.FS_THEATER_FINAL)
+	if (QuestManager.hasActiveQuest(pCreatureObject, QuestManager.quests.FS_THEATER_CAMP)) then
+		createObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pCreatureObject)
+		QuestManager.completeQuest(pCreatureObject, QuestManager.quests.FS_THEATER_CAMP)
+		QuestManager.activateQuest(pCreatureObject, QuestManager.quests.FS_THEATER_FINAL)
+	end
 end
 
 -- Event handler for the successful spawn event.
@@ -232,7 +237,7 @@ function MellichaeOutroTheater:onDamageReceived(pObject, pAttacker, damage)
 				greetingString:setTT(firstName)
 				spatialChat(pObject, greetingString:_getObject())
 
-          			-- Do the extra spawn of 6 more sith shadows, only on Daktar so they don't spawn twice.
+				-- Do the extra spawn of 6 more sith shadows, only on Daktar so they don't spawn twice.
 				for i=1,3 do
 					local zoneName = CreatureObject(pObject):getZoneName()
 					local randomDistance = getRandomNumber(32)
