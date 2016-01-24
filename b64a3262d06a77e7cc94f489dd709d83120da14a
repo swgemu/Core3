@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_c85ed712",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/BurstRunCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-24T12:57:16Z",
+      "side": 1,
+      "message": "Don\u0027t return general error here. Let it return invalid state.",
+      "revId": "b64a3262d06a77e7cc94f489dd709d83120da14a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
