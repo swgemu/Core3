@@ -40,6 +40,34 @@ void PlayerVehicleBuffImplementation::removeAllModifiers() {
 	}
 }
 
+void PlayerVehicleBuffImplementation::activate(bool applyModifiers) {
+		BuffImplementation::activate(applyModifiers);
+		//Send start message to mount rider
+		if (!startMessage.isEmpty()) {
+
+			ManagedReference<CreatureObject*> rider = creature.get()->getSlottedObject("rider").castTo<CreatureObject*>();
+
+			if(rider != NULL) {
+				rider->sendSystemMessage(startMessage);
+			}
+		}
+
+}
+
+void PlayerVehicleBuffImplementation::deactivate(bool removeModifiers) {
+		BuffImplementation::deactivate(removeModifiers);
+		//Send end message to mount rider
+		if (!endMessage.isEmpty()) {
+
+			ManagedReference<CreatureObject*> rider = creature.get()->getSlottedObject("rider").castTo<CreatureObject*>();
+
+			if(rider != NULL) {
+				rider->sendSystemMessage(endMessage);
+			}
+		}
+
+}
+
 void PlayerVehicleBuffImplementation::updateRiderSpeeds() {
 
 	ManagedReference<CreatureObject*> vehicle = creature.get();
