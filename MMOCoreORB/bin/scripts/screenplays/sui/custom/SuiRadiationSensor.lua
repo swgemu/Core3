@@ -218,6 +218,11 @@ function SuiRadiationSensor:calculateSensorResult(pCreature)
 
 	local sensorFactor = readData(SceneObject(pCreature):getObjectID() .. ":radiationSensorFactor")
 
+	if (sensorFactor == 0) then
+		sensorFactor = getRandomNumber(3,7)
+		writeData(SceneObject(pCreature):getObjectID() .. ":radiationSensorFactor", sensorFactor)
+	end
+
 	local distance = math.sqrt(((curX - targetLoc[1]) ^ 2) + ((curY - targetLoc[2]) ^ 2))
 	distance = 5000 - distance
 	local result
