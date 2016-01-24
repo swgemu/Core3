@@ -133,11 +133,6 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 	if (objectiveStatus == 0) {
 		WaypointObject* waypoint = mission->getWaypointToMission();
 
-		if (waypoint == NULL) {
-			Locker mlocker(mission);
-			waypoint = mission->createWaypoint();
-		}
-
 		Locker locker(waypoint);
 
 		waypoint->setPlanetCRC(mission->getStartPlanetCRC());
@@ -236,10 +231,6 @@ bool DeliverMissionObjectiveImplementation::updateMissionTarget(CreatureObject* 
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	WaypointObject* waypoint = mission->getWaypointToMission();
-	if (waypoint == NULL) {
-		Locker mlocker(mission);
-		waypoint = mission->createWaypoint();
-	}
 
 	Locker locker(waypoint);
 

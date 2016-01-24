@@ -78,11 +78,6 @@ void DestroyMissionObjectiveImplementation::activate() {
 
 	WaypointObject* waypoint = mission->getWaypointToMission();
 
-	if (waypoint == NULL) {
-		Locker mlocker(mission);
-		waypoint = mission->createWaypoint();
-	}
-
 	Locker locker(waypoint);
 
 	waypoint->setPlanetCRC(mission->getStartPlanet().hashCode());
@@ -160,11 +155,6 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	Vector3 pos = findValidSpawnPosition(zone);
 
 	ManagedReference<WaypointObject*> waypoint = mission->getWaypointToMission();
-
-	if (waypoint == NULL) {
-		Locker mlocker(mission);
-		waypoint = mission->createWaypoint();
-	}
 
 	Locker wplocker(waypoint);
 

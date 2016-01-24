@@ -90,7 +90,7 @@ class MissionObject extends IntangibleObject {
 
 	public MissionObject() {
 		typeCRC = SURVEY;
-
+                
 		refreshCounter = 0;
 
 		//targetTemplateCRC = 2640304325;
