@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_287c3372",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/tatooine/melios_purl.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-24T13:34:39Z",
+      "side": 1,
+      "message": "I thought I posted some good evidence that this step should have a credit reward as well in your last patch. The amount was unclear but you should pick one and add it.",
+      "revId": "f875bef6a1a80654169f5386448d600f5b20706e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

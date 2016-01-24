@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_68822b54",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/serverobjects.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-24T13:34:39Z",
+      "side": 0,
+      "message": "Why are you deleting these includes?",
+      "revId": "b3a595fb57f5bf5c81fb0655ceca26223a3a241d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_88877f61",
+        "filename": "MMOCoreORB/bin/scripts/mobile/tatooine/serverobjects.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-24T13:34:39Z",
+      "side": 0,
+      "message": "You\u0027re still only removing the include. You need to remove the file as well.",
+      "revId": "b3a595fb57f5bf5c81fb0655ceca26223a3a241d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
