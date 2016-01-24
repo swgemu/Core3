@@ -18,6 +18,9 @@ void MissionObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
 
 	setLoggingName("MissionObject");
+
+	if(waypointToMission == NULL)
+		waypointToMission = createWaypoint();
 }
 
 void MissionObjectImplementation::sendBaselinesTo(SceneObject* player) {

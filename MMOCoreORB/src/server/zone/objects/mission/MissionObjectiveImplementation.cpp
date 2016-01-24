@@ -105,6 +105,9 @@ void MissionObjectiveImplementation::abort() {
 void MissionObjectiveImplementation::awardFactionPoints() {
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
+	if(mission == NULL)
+		return;
+
 	int factionPointsRebel = mission->getRewardFactionPointsRebel();
 	int factionPointsImperial = mission->getRewardFactionPointsImperial();
 
@@ -147,7 +150,7 @@ void MissionObjectiveImplementation::removeMissionFromPlayer() {
 	ManagedReference<CreatureObject*> player = getPlayerOwner();
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
-	if (player != NULL) {
+	if (player != NULL && mission != NULL) {
 		ZoneServer* zoneServer = player->getZoneServer();
 		MissionManager* missionManager = zoneServer->getMissionManager();
 
@@ -161,6 +164,11 @@ void MissionObjectiveImplementation::fail() {
 }
 
 void MissionObjectiveImplementation::awardReward() {
+	ManagedReference<MissionObject* > mission = this->mission.get();
+
+	if(mission == NULL)
+		return;
+
 	Vector<ManagedReference<CreatureObject*> > players;
 	PlayMusicMessage* pmm = new PlayMusicMessage("sound/music_mission_complete.snd");
 
@@ -200,8 +208,6 @@ void MissionObjectiveImplementation::awardReward() {
 	if (players.size() == 0) {
 		players.add(owner);
 	}
-
-	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	int divisor = mission->getRewardCreditsDivisor();
 	bool expanded = false;
@@ -244,11 +250,12 @@ Vector3 MissionObjectiveImplementation::getEndPosition() {
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	Vector3 missionEndPoint;
-
-	missionEndPoint.setX(mission->getEndPositionX());
-	missionEndPoint.setY(mission->getEndPositionY());
-	TerrainManager* terrain = getPlayerOwner().get()->getZone()->getPlanetManager()->getTerrainManager();
-	missionEndPoint.setZ(terrain->getHeight(missionEndPoint.getX(), missionEndPoint.getY()));
+	if(mission != NULL) {
+		missionEndPoint.setX(mission->getEndPositionX());
+		missionEndPoint.setY(mission->getEndPositionY());
+		TerrainManager* terrain = getPlayerOwner().get()->getZone()->getPlanetManager()->getTerrainManager();
+		missionEndPoint.setZ(terrain->getHeight(missionEndPoint.getX(), missionEndPoint.getY()));
+	}
 
 	return missionEndPoint;
 }

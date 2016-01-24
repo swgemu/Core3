@@ -12,6 +12,8 @@
 void CraftingMissionObjectiveImplementation::updateMissionStatus(CreatureObject* player) {
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
+	if(mission == NULL)
+		return;
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 	if (inventory == NULL) {
 		return;
@@ -83,7 +85,7 @@ void CraftingMissionObjectiveImplementation::abort() {
 	ManagedReference<MissionObject* > mission = this->mission.get();
 	ManagedReference<CreatureObject*> player = getPlayerOwner();
 
-	if (player != NULL) {
+	if (player != NULL && mission != NULL) {
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
 		if (ghost != NULL) {
