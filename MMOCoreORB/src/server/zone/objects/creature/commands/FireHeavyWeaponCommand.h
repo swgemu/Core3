@@ -56,7 +56,7 @@ public:
 
 			// TODO: This is probably actually determined by some combat result
 			String animName = "fire_heavy_" + weaponData->getAnimationType() + (System::random(1) ? "_light" : "_medium");
-			uint32 animCRC = STRING_HASHCODE(animName);
+			uint32 animCRC = animName.hashCode();
 
 			UnicodeString args = "combatSpam=" + weaponData->getCombatSpam() + ";animationCRC=" + String::valueOf(animCRC) + ";";
 
