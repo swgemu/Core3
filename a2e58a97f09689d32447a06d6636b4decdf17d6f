@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_08484f2c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/misc/conversations/kidnappedNobleConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-25T14:08:37Z",
+      "side": 1,
+      "message": "This logic is wrong, please fix.",
+      "revId": "a2e58a97f09689d32447a06d6636b4decdf17d6f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
