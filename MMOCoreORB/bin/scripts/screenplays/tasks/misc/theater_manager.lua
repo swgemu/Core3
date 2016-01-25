@@ -1,5 +1,5 @@
 local ObjectManager = require("managers.object.object_manager")
-includeFile("tasks/theaterManagerSeatingChart.lua")
+includeFile("tasks/misc/theaterManagerSeatingChart.lua")
 
 --[[
 Theater Manager Steps:
