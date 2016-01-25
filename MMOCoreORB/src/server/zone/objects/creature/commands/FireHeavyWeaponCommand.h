@@ -6,6 +6,7 @@
 #define FIREHEAVYWEAPONCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "engine/task/ScheduledTask.h"
 
 class FireHeavyWeaponCommand : public CombatQueueCommand {
 public:
@@ -53,14 +54,21 @@ public:
 			if (weaponData == NULL)
 				return GENERALERROR;
 
-			UnicodeString args = "combatSpam=" + weaponData->getCombatSpam() + ";animationCRC=fire_heavy_" + weaponData->getAnimationType() + "medium;";
+			// TODO: This is probably actually determined by some combat result
+			String animName = "fire_heavy_" + weaponData->getAnimationType() + (System::random(1) ? "_light" : "_medium");
+			uint32 animCRC = STRING_HASHCODE(animName);
+
+			UnicodeString args = "combatSpam=" + weaponData->getCombatSpam() + ";animationCRC=" + String::valueOf(animCRC) + ";";
 
 			int result = doCombatAction(creature, target, args, weapon);
 
 			if (result == SUCCESS) {
-				Locker locker(weapon);
+				// We need to give some time for the combat animation to start playing before destroying the tano
+				SCHEDULE_TASK_1(weapon, 100, {
 
-				weapon->decreaseUseCount();
+					Locker locker(weapon_p);
+					weapon_p->decreaseUseCount();
+				});
 			}
 
 			return result;
