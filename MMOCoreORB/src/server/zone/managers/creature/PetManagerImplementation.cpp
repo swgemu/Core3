@@ -207,13 +207,13 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petstay"), "");
 	}
 	else if( isTrainedCommand( pcd, FOLLOW, message ) ){
-		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petfollow"), "", true);
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petfollow"), String::valueOf(speaker->getObjectID()), true);
 	}
 	else if( isTrainedCommand( pcd, STORE, message ) ){
 		enqueueOwnerOnlyPetCommand(speaker, pet, STRING_HASHCODE("petstore"), "");
 	}
 	else if( isTrainedCommand( pcd, ATTACK, message ) ){
-		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petattack"), "");
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petattack"), String::valueOf(speaker->getObjectID()));
 	}
 	else if( isTrainedCommand( pcd, GUARD, message ) ){
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petguard"), "", true);
@@ -222,7 +222,7 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 		enqueueOwnerOnlyPetCommand(speaker, pet, STRING_HASHCODE("petfriend"), "");
 	}
 	else if( isTrainedCommand( pcd, FOLLOWOTHER, message ) ){
-		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petfollow"), "");
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petfollow"), String::valueOf(speaker->getObjectID()));
 	}
 	else if( isTrainedCommand( pcd, TRICK1, message ) ){
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("pettrick"), "1", true);
@@ -246,10 +246,10 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 		speaker->sendSystemMessage("FORMATION2 pet command is not yet implemented.");
 	}
 	else if( isTrainedCommand( pcd, SPECIAL_ATTACK1, message ) ){
-		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petspecialattack"), "1");
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petspecialattack"), "1 " + String::valueOf(speaker->getObjectID()));
 	}
 	else if( isTrainedCommand( pcd, SPECIAL_ATTACK2, message ) ){
-		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petspecialattack"), "2");
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petspecialattack"), "2 " + String::valueOf(speaker->getObjectID()));
 	}
 	else if( isTrainedCommand( pcd, RANGED_ATTACK, message ) ){
 		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petrangedattack"), "", true);
@@ -471,6 +471,7 @@ void PetManagerImplementation::enqueuePetCommand(CreatureObject* player, AiAgent
 		targetID = player->getObjectID();
 	else
 		targetID = player->getTargetID();
+
 	//CreatureObject* pet, uint32 command, const String& args, uint64 target, int priority = -1
 	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, command, args, targetID, 1);
 	enqueueCommand->execute();
@@ -488,7 +489,6 @@ void PetManagerImplementation::enqueueOwnerOnlyPetCommand(CreatureObject* player
 	//CreatureObject* pet, uint32 command, const String& args, uint64 target, int priority = -1
 	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, command, args, player->getTargetID(), 1);
 	enqueueCommand->execute();
-
 }
 
 int PetManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition) {

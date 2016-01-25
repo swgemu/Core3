@@ -246,7 +246,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		player->getCooldownTimerMap()->updateToCurrentAndAddMili("petCallOrStoreCooldown", 1000); // 1 sec
 	}
 
-	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, String("petFollow").toLowerCase().hashCode(), "", player->getObjectID(), 1);
+	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, String("petFollow").toLowerCase().hashCode(), String::valueOf(player->getObjectID()), player->getObjectID(), 1);
 	enqueueCommand->execute();
 }
 
