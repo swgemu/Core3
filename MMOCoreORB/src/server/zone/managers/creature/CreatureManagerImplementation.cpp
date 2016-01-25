@@ -585,11 +585,14 @@ void CreatureManagerImplementation::loadSpawnAreas() {
 	spawnAreaMap.loadMap(zone);
 }
 
-int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition) {
+int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition, bool isCombatAction) {
 	if (destructedObject->isDead())
 		return 1;
 
-	destructedObject->setPosture(CreaturePosture::DEAD, false);
+	if(!isCombatAction)
+		destructedObject->setPosture(CreaturePosture::DEAD);
+	else
+		destructedObject->setPosture(CreaturePosture::DEAD, false, false);
 
 	destructedObject->updateTimeOfDeath();
 

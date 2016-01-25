@@ -166,12 +166,6 @@ void CombatManager::forcePeace(CreatureObject* attacker) {
 	attacker->setState(CreatureState::PEACE);
 }
 
-
-
-int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, CombatQueueCommand* command) {
-	return doCombatAction(attacker, weapon, defenderObject, CreatureAttackData("",command));
-}
-
 int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data) {
 	//info("entering doCombat action with data ", true);
 
@@ -211,9 +205,9 @@ int CombatManager::doCombatAction(TangibleObject* attacker, WeaponObject* weapon
 
 	if(weapon != NULL){
 		if(!command->isAreaAction()){
-			return doTargetCombatAction(attacker, weapon, defender, CreatureAttackData("",command));
+			return doTargetCombatAction(attacker, weapon, defender, CreatureAttackData("",command, defender->getObjectID()));
 		} else {
-			return doAreaCombatAction(attacker, weapon, defender, CreatureAttackData("",command));
+			return doAreaCombatAction(attacker, weapon, defender, CreatureAttackData("",command, defender->getObjectID()));
 		}
 	}
 
@@ -1128,9 +1122,9 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 			float feedbackDmg = rawDamage * (forceFeedback / 100.f);
 			float splitDmg = feedbackDmg / 3;
 
-			attacker->inflictDamage(defender, CreatureAttribute::HEALTH, splitDmg, true);
-			attacker->inflictDamage(defender, CreatureAttribute::ACTION, splitDmg, true);
-			attacker->inflictDamage(defender, CreatureAttribute::MIND, splitDmg, true);
+			attacker->inflictDamage(defender, CreatureAttribute::HEALTH, splitDmg, true, true, true);
+			attacker->inflictDamage(defender, CreatureAttribute::ACTION, splitDmg, true, true, true);
+			attacker->inflictDamage(defender, CreatureAttribute::MIND, splitDmg, true, true, true);
 			broadcastCombatSpam(defender, attacker, NULL, feedbackDmg, "cbt_spam", "forcefeedback_hit", 1);
 			defender->playEffect("clienteffect/pl_force_feedback_block.cef", "");
 		}
@@ -1360,15 +1354,15 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 			}
 		}
 		if((pool & ACTION)){
-			defender->inflictDamage(droid, CreatureAttribute::ACTION, (int)actionDamage, true, true);
+			defender->inflictDamage(droid, CreatureAttribute::ACTION, (int)actionDamage, true, true, true);
 			return (int)actionDamage;
 		}
 		if((pool & HEALTH)) {
-			defender->inflictDamage(droid, CreatureAttribute::HEALTH, (int)healthDamage, true, true);
+			defender->inflictDamage(droid, CreatureAttribute::HEALTH, (int)healthDamage, true, true, true);
 			return (int)healthDamage;
 		}
 		if((pool & MIND)) {
-			defender->inflictDamage(droid, CreatureAttribute::MIND, (int)mindDamage, true, true);
+			defender->inflictDamage(droid, CreatureAttribute::MIND, (int)mindDamage, true, true, true);
 			return (int)mindDamage;
 		}
 		return 0;
@@ -1645,13 +1639,13 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, WeaponObjec
 		return false;
 
 	if (health > 0)
-		attacker->inflictDamage(attacker, CreatureAttribute::HEALTH, health, true);
+		attacker->inflictDamage(attacker, CreatureAttribute::HEALTH, health, true, true, true);
 
 	if (action > 0)
-		attacker->inflictDamage(attacker, CreatureAttribute::ACTION, action, true);
+		attacker->inflictDamage(attacker, CreatureAttribute::ACTION, action, true, true, true);
 
 	if (mind > 0)
-		attacker->inflictDamage(attacker, CreatureAttribute::MIND, mind, true);
+		attacker->inflictDamage(attacker, CreatureAttribute::MIND, mind, true, true, true);
 
 	return true;
 }
@@ -1827,7 +1821,7 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 
 	if (poolsToDamage & HEALTH) {
 		healthDamage = getArmorReduction(attacker, weapon, defender, damage * data.getHealthDamageMultiplier(), HEALTH, data) * damageMultiplier;
-		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)healthDamage, true, xpType);
+		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)healthDamage, true, xpType, true, true);
 
 		if (System::random(100) < ratio)
 			defender->addWounds(CreatureAttribute::HEALTH, 1, true);
@@ -1841,7 +1835,7 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 
 	if (poolsToDamage & ACTION) {
 		actionDamage = getArmorReduction(attacker, weapon, defender, damage * data.getActionDamageMultiplier(), ACTION, data) * damageMultiplier;
-		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (int)actionDamage, true, xpType);
+		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (int)actionDamage, true, xpType, true, true);
 
 		if (System::random(100) < ratio)
 			defender->addWounds(CreatureAttribute::ACTION, 1, true);
@@ -1855,7 +1849,7 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 
 	if (poolsToDamage & MIND) {
 		mindDamage = getArmorReduction(attacker, weapon, defender, damage * data.getMindDamageMultiplier(), MIND, data) * damageMultiplier;
-		defender->inflictDamage(attacker, CreatureAttribute::MIND, (int)mindDamage, true, xpType);
+		defender->inflictDamage(attacker, CreatureAttribute::MIND, (int)mindDamage, true, xpType, true, true);
 
 		if (System::random(100) < ratio)
 			defender->addWounds(CreatureAttribute::MIND, 1, true);
@@ -1870,11 +1864,11 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	// now splash damage
 	float maxDamage = MAX(healthDamage, MAX(actionDamage, mindDamage));
 	if ((poolsToDamage ^ 0x7) & HEALTH)
-		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)(maxDamage/10.f + 0.5f), true, xpType);
+		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)(maxDamage/10.f + 0.5f), true, xpType, true, true);
 	if ((poolsToDamage ^ 0x7) & ACTION)
-		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (int)(maxDamage/10.f + 0.5f), true, xpType);
+		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (int)(maxDamage/10.f + 0.5f), true, xpType, true, true);
 	if ((poolsToDamage ^ 0x7) & MIND)
-		defender->inflictDamage(attacker, CreatureAttribute::MIND, (int)(maxDamage/10.f + 0.5f), true, xpType);
+		defender->inflictDamage(attacker, CreatureAttribute::MIND, (int)(maxDamage/10.f + 0.5f), true, xpType, true, true);
 
 	// This method can be called multiple times for area attacks. Let the calling method decrease the powerup once
 	if (data.getAttackType() == CombatManager::WEAPONATTACK && !data.getCommand()->isAreaAction() && !data.getCommand()->isConeAction() && attacker->isCreatureObject()) {
@@ -1928,7 +1922,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, T
 		damage *= (1.f - (armorReduction / 100.f));
 	}
 
-	defender->inflictDamage(attacker, 0, damage, true, xpType);
+	defender->inflictDamage(attacker, 0, damage, true, xpType, true, true);
 
 	// This method can be called multiple times for area attacks. Let the calling method decrease the powerup once
 	if (data.getAttackType() == CombatManager::WEAPONATTACK && !data.getCommand()->isAreaAction() && !data.getCommand()->isConeAction())
@@ -2043,12 +2037,33 @@ void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObj
 			animationCRC = STRING_HASHCODE("creature_attack_light");
 	}
 
-	if (defenderObject->isCreatureObject())
-		combatAction = new CombatAction(attacker, defenderObject->asCreatureObject(), animationCRC, hit, data.getTrails(), weapon->getObjectID());
-	else
-		combatAction = new CombatAction(attacker, defenderObject, animationCRC, hit, data.getTrails(), weapon->getObjectID());
+	CreatureObject *dcreo = defenderObject->asCreatureObject();
+	if(dcreo != NULL) {
 
-	attacker->broadcastMessage(combatAction, true);
+		dcreo->updatePostures(false); // Commit pending posture changes to the client and notify observers
+
+		if(data.changesDefenderPosture() && hit == HIT && (!dcreo->isIncapacitated() && !dcreo->isDead())) {
+			combatAction = new CombatAction(dcreo, STRING_HASHCODE("change_posture")); // it's a PCD/KD attack
+			attacker->broadcastMessage(combatAction, true);
+		}
+
+		if(data.getPrimaryTarget() != defenderObject->getObjectID()){
+			combatAction = new CombatAction(dcreo, STRING_HASHCODE("get_hit_medium")); // It's an AOE but we're not the primary target
+			attacker->broadcastMessage(combatAction, true);
+		} else { // Primary target attack
+			combatAction = new CombatAction(attacker, defenderObject->asCreatureObject(), animationCRC, hit, data.getTrails(), weapon->getObjectID());
+			attacker->broadcastMessage(combatAction, true);
+		}
+
+	} else { // Tano target attack
+			combatAction = new CombatAction(attacker, defenderObject, animationCRC, hit, data.getTrails(), weapon->getObjectID());
+			attacker->broadcastMessage(combatAction, true);
+	}
+
+
+
+	if(data.changesAttackerPosture())
+		attacker->updatePostures(false);
 
 	String effect = data.getCommand()->getEffectString();
 

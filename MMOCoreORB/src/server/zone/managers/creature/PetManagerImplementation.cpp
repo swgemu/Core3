@@ -491,7 +491,7 @@ void PetManagerImplementation::enqueueOwnerOnlyPetCommand(CreatureObject* player
 
 }
 
-int PetManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition) {
+int PetManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition, bool isCombatAction) {
 	if (!destructedObject->isPet() || destructedObject->isDead() || destructedObject->isIncapacitated())
 		return 1;
 

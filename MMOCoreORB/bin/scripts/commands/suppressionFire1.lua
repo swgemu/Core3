@@ -63,7 +63,7 @@ SuppressionFire1Command = {
 	  )
 	},
 
-	animationCRC = hashCode("fire_area_light"),
+	animationCRC = hashCode("fire_defender_posture_change_down"),
 
 	combatSpam = "suppressionfire",
 	

@@ -69,8 +69,8 @@ public:
 		insertLong(attacker->getWeaponID());
 
 		insertByte(attacker->getPosture());
-		insertByte(0xFF);
-		insertByte(0xFF);
+		insertByte(CombatManager::HIT);
+		insertByte(0x00);
 
 		defenderSize = 0;
 		insertShort(0); // number of defenders

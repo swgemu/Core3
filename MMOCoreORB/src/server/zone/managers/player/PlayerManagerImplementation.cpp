@@ -630,7 +630,7 @@ uint8 PlayerManagerImplementation::calculateIncapacitationTimer(CreatureObject* 
 	return recoveryTime;
 }
 
-int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition) {
+int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition, bool isCombatAction) {
 	if (destructor == NULL) {
 		assert(0 && "destructor should always be != NULL.");
 	}
@@ -664,9 +664,11 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 	if ((destructor->isKiller() && isDefender) || ghost->getIncapacitationCounter() >= 3) {
 		killPlayer(destructor, playerCreature, 0);
 	} else {
-		playerCreature->setCurrentSpeed(0);
-		playerCreature->setPosture(CreaturePosture::INCAPACITATED, false);
-		playerCreature->updateLocomotion();
+
+		if(destructor == NULL || destructor == destructedObject || !isCombatAction)
+			playerCreature->setPosture(CreaturePosture::INCAPACITATED);
+		else
+			playerCreature->setPosture(CreaturePosture::INCAPACITATED, false, false);
 
 		uint32 incapTime = calculateIncapacitationTimer(playerCreature, condition);
 		playerCreature->setCountdownTimer(incapTime, true);
@@ -692,7 +694,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 	return 0;
 }
 
-void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath) {
+void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath, bool isCombatAction) {
 	StringIdChatParameter stringId;
 
 	if (attacker->isPlayerCreature()) {
@@ -708,9 +710,10 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 
 	player->clearDots();
 
-	player->setCurrentSpeed(0);
-	player->setPosture(CreaturePosture::DEAD, false);
-	player->updateLocomotion();
+	if(attacker == NULL || attacker == player || isCombatAction == false)
+		player->setPosture(CreaturePosture::DEAD);
+	else
+		player->setPosture(CreaturePosture::DEAD, false, false);
 
 	sendActivateCloneRequest(player, typeofdeath);
 
