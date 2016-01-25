@@ -283,7 +283,7 @@ public:
 				} else if (targetPlayer->isPet()) {
 					Locker locker(targetPlayer, creature);
 
-					targetPlayer->notifyObjectDestructionObservers(creature, 0);
+					targetPlayer->notifyObjectDestructionObservers(creature, 0, false);
 				}
 			}
 			else {
