@@ -1,5 +1,5 @@
 #ifndef SCHEDULEDTASK_H_
-#define SCHEDULED_TASK_H_
+#define SCHEDULEDTASK_H_
 
 
 #include <boost/typeof/typeof.hpp>
