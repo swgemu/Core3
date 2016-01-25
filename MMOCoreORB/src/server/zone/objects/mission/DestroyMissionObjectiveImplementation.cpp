@@ -78,11 +78,6 @@ void DestroyMissionObjectiveImplementation::activate() {
 
 	WaypointObject* waypoint = mission->getWaypointToMission();
 
-	if (waypoint == NULL) {
-		Locker mlocker(mission);
-		waypoint = mission->createWaypoint();
-	}
-
 	Locker locker(waypoint);
 
 	waypoint->setPlanetCRC(mission->getStartPlanet().hashCode());
@@ -94,6 +89,10 @@ void DestroyMissionObjectiveImplementation::activate() {
 
 Vector3 DestroyMissionObjectiveImplementation::findValidSpawnPosition(Zone* zone) {
 	Vector3 position;
+	ManagedReference<MissionObject*> mission = this->mission.get();
+
+	if(mission == NULL)
+		return position;
 
 	float newX = spawnActiveArea->getPositionX() + (256.0f - (float) System::random(512));
 	float newY = spawnActiveArea->getPositionY() + (256.0f - (float) System::random(512));
@@ -105,7 +104,7 @@ Vector3 DestroyMissionObjectiveImplementation::findValidSpawnPosition(Zone* zone
 
 	float distance = 128;
 	int tries = 0;
-	float size = mission.get()->getSize();
+	float size = mission->getSize();
 
 	position.set(newX, height, newY);
 
@@ -143,7 +142,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 
 	ManagedReference<MissionSpawnActiveArea* > spawnActiveArea = this->spawnActiveArea;
 
-	if (spawnActiveArea == NULL)
+	if (spawnActiveArea == NULL || mission == NULL)
 		return;
 
 	if (lairObject != NULL && lairObject->getZone() != NULL)
@@ -160,11 +159,6 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	Vector3 pos = findValidSpawnPosition(zone);
 
 	ManagedReference<WaypointObject*> waypoint = mission->getWaypointToMission();
-
-	if (waypoint == NULL) {
-		Locker mlocker(mission);
-		waypoint = mission->createWaypoint();
-	}
 
 	Locker wplocker(waypoint);
 
@@ -303,6 +297,9 @@ Vector3 DestroyMissionObjectiveImplementation::getEndPosition() {
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	Vector3 missionEndPoint;
+
+	if(mission == NULL)
+		return missionEndPoint;
 
 	missionEndPoint.setX(mission->getStartPositionX());
 	missionEndPoint.setY(mission->getStartPositionY());

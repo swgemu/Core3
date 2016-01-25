@@ -24,14 +24,14 @@ void EntertainerMissionObjectiveImplementation::activate() {
 
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
+	if (mission == NULL)
+		return;
+
 	MissionObjectiveImplementation::activate();
 
 	if (hasObservers()) {
 		return;
 	}
-
-	if (mission == NULL)
-		return;
 
 	ManagedReference<ZoneServer*> zoneServer = Core::lookupObject<ZoneServer>("ZoneServer");
 
@@ -71,11 +71,6 @@ void EntertainerMissionObjectiveImplementation::activate() {
 	locationLocker.release();
 
 	WaypointObject* waypoint = mission->getWaypointToMission();
-
-	if (waypoint == NULL) {
-		Locker mlocker(mission);
-		waypoint = mission->createWaypoint();
-	}
 
 	Locker wplocker(waypoint);
 
@@ -191,6 +186,8 @@ Vector3 EntertainerMissionObjectiveImplementation::getEndPosition() {
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	Vector3 missionEndPoint;
+	if (mission == NULL)
+		return missionEndPoint;
 
 	missionEndPoint.setX(mission->getStartPositionX());
 	missionEndPoint.setY(mission->getStartPositionY());

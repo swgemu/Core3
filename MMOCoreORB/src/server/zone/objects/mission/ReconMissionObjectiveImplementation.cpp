@@ -56,11 +56,6 @@ void ReconMissionObjectiveImplementation::activate() {
 
 	ManagedReference<WaypointObject*> waypoint = mission->getWaypointToMission();
 
-	if (waypoint == NULL) {
-		Locker mlocker(mission);
-		waypoint = mission->createWaypoint();
-	}
-
 	Locker locker(waypoint);
 
 	waypoint->setPlanetCRC(mission->getStartPlanetCRC());
@@ -102,6 +97,8 @@ Vector3 ReconMissionObjectiveImplementation::getEndPosition() {
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	Vector3 missionEndPoint;
+	if(mission == NULL)
+		return missionEndPoint;
 
 	missionEndPoint.setX(mission->getStartPositionX());
 	missionEndPoint.setY(mission->getStartPositionY());
