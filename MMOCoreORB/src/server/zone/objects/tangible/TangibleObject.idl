@@ -382,11 +382,11 @@ class TangibleObject extends SceneObject {
 	 */
 	@preLocked
 	@arg1preLocked
-	public native abstract int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
+	public native abstract int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true, boolean isCombatAction = false);
 	
 	@preLocked
 	@arg1preLocked
-	public native abstract int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true);
+	public native abstract int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true, boolean isCombatAction = false);
 	
 	/**
 	 * Heals damage
@@ -441,7 +441,7 @@ class TangibleObject extends SceneObject {
 	@local
 	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
-	public abstract native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
+	public abstract native int notifyObjectDestructionObservers(TangibleObject attacker, int condition, boolean isCombatAction);
 	
 	@preLocked
 	public native void dropFromDefenderLists(TangibleObject destructor);

@@ -370,7 +370,10 @@ class CreatureObject extends TangibleObject {
 	 * 
 	 */
 	@preLocked
-	public native abstract void setPosture(int newPosture, boolean immedate = true);
+	public native abstract void setPosture(int newPosture, boolean immedate = true, boolean notifyClient = true);
+	
+	@preLocked
+	public native abstract void updatePostures(boolean immediate = true);
 
 	/**
 	 * checks locomotion and sets a new one if appropriate
@@ -467,11 +470,11 @@ class CreatureObject extends TangibleObject {
 	 */
 	@preLocked
 	@arg1preLocked
-	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
+	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true, boolean isCombatAction = false);
 
 	@preLocked
 	@arg1preLocked
-	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true);
+	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true, boolean isCombatAction = false);
 
 	@dirty
 	public boolean hasDamage(int attribute) {
@@ -1158,7 +1161,7 @@ class CreatureObject extends TangibleObject {
 	 */
 	@preLocked
 	@arg1preLocked
-	public native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
+	public native int notifyObjectDestructionObservers(TangibleObject attacker, int condition, boolean isCombatAction);
 
 	/**
 	 * Is called when this object is killed
@@ -1428,7 +1431,10 @@ class CreatureObject extends TangibleObject {
 	public native void doAnimation(final string animation);
 
 	@dirty
-	public native void doCombatAnimation(CreatureObject defender, unsigned int animationCRC, byte hit, byte trails);
+	public native void doCombatAnimation(TangibleObject defender, unsigned int animationCRC, byte hit, byte trails);
+	
+	@dirty
+	public native void doCombatAnimation(unsigned int animationCRC);
 
 	@preLocked
 	public native void activateQueueAction();

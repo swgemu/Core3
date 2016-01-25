@@ -502,7 +502,7 @@ void TangibleObjectImplementation::setConditionDamage(float condDamage, bool not
 	broadcastMessage(dtano3, true);
 }
 
-int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {
+int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient, bool isCombatAction) {
 	if(hasAntiDecayKit())
 		return 0;
 
@@ -523,12 +523,12 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 	}
 
 	if (newConditionDamage >= maxCondition)
-		notifyObjectDestructionObservers(attacker, newConditionDamage);
+		notifyObjectDestructionObservers(attacker, newConditionDamage, isCombatAction);
 
 	return 0;
 }
 
-int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient) {
+int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient, bool isCombatAction) {
 	if(hasAntiDecayKit())
 		return 0;
 
@@ -547,12 +547,12 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 	}
 
 	if (newConditionDamage >= maxCondition)
-		notifyObjectDestructionObservers(attacker, newConditionDamage);
+		notifyObjectDestructionObservers(attacker, newConditionDamage, isCombatAction);
 
 	return 0;
 }
 
-int TangibleObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
+int TangibleObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition, bool isCombatAction) {
 	notifyObservers(ObserverEventType::OBJECTDESTRUCTION, attacker, condition);
 
 	if (threatMap != NULL)
