@@ -40,6 +40,20 @@ public:
 			return INVALIDTARGET;
 		}
 
+		StringTokenizer tokenizer(arguments.toString());
+
+		if (!tokenizer.hasMoreTokens())
+			return GENERALERROR;
+
+		int attackNumber = tokenizer.getIntToken();
+
+		if (!tokenizer.hasMoreTokens())
+			return GENERALERROR;
+
+		uint64 playerID = tokenizer.getLongToken();
+
+		Reference<CreatureObject*> player = server->getZoneServer()->getObject(playerID, true).castTo<CreatureObject*>();
+
 		if (!CollisionManager::checkLineOfSight(creature, targetObject)) {
 			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
 			return INVALIDTARGET;
@@ -59,8 +73,6 @@ public:
 		}
 
 		ManagedReference<TangibleObject*> targetTano = targetObject.castTo<TangibleObject*>();
-
-		int attackNumber = Integer::valueOf(arguments.toCharArray());
 
 		if (attackNumber < 1 || attackNumber > 2)
 			return INVALIDPARAMETERS;
