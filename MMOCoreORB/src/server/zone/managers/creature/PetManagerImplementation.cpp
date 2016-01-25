@@ -491,7 +491,7 @@ void PetManagerImplementation::enqueueOwnerOnlyPetCommand(CreatureObject* player
 	enqueueCommand->execute();
 }
 
-int PetManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition) {
+int PetManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition, bool isCombatAction) {
 	if (!destructedObject->isPet() || destructedObject->isDead() || destructedObject->isIncapacitated())
 		return 1;
 
@@ -534,7 +534,7 @@ int PetManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAg
 		destructedObject->addPendingTask("incapacitationRecovery", task, incapTime * 1000);
 
 	} else {
-		killPet(destructor, destructedObject);
+		killPet(destructor, destructedObject, isCombatAction);
 	}
 
 	return 0;
@@ -555,7 +555,7 @@ uint32 PetManagerImplementation::calculateIncapacitationTimer(AiAgent* pet, int 
 	return recoveryTime;
 }
 
-void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet) {
+void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet, bool isCombatAction) {
 	StringIdChatParameter stringId;
 
 	if (attacker->isPlayerCreature()) {
@@ -566,10 +566,8 @@ void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet) {
 
 	pet->clearDots();
 
-	pet->setCurrentSpeed(0);
 	pet->clearCombatState(true);
-	pet->setPosture(CreaturePosture::DEAD, true);
-	pet->updateLocomotion();
+	pet->setPosture(CreaturePosture::DEAD, !isCombatAction, !isCombatAction);
 	pet->setOblivious();
 	pet->storeFollowObject();
 

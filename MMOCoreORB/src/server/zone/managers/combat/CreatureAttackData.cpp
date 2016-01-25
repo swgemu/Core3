@@ -8,7 +8,8 @@
 #include "CreatureAttackData.h"
 #include "server/zone/objects/creature/commands/CombatQueueCommand.h"
 
-CreatureAttackData::CreatureAttackData(const UnicodeString& dataString, const CombatQueueCommand* base) {
+CreatureAttackData::CreatureAttackData(const UnicodeString& dataString, const CombatQueueCommand* base, uint64 target) {
+	targetID = target;
 	baseCommand = base;
 	fillFromBase();
 
@@ -33,6 +34,7 @@ CreatureAttackData::CreatureAttackData(const UnicodeString& dataString, const Co
 
 CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 	baseCommand = data.baseCommand;
+	targetID = data.targetID;
 
 	damageMultiplier = data.damageMultiplier;
 	healthDamageMultiplier = data.healthDamageMultiplier;
@@ -178,4 +180,35 @@ String CreatureAttackData::getCommandName() const {
 
 uint32 CreatureAttackData::getCommandCRC() const {
 	return baseCommand->getNameCRC();
+}
+
+bool CreatureAttackData::changesDefenderPosture() const {
+	if(stateEffects == NULL)
+		return false;
+
+	for(int i=0; i<stateEffects->size(); i++) {
+		switch(stateEffects->get(i).getEffectType()) {
+		case CommandEffect::KNOCKDOWN:
+		case CommandEffect::POSTUREUP:
+		case CommandEffect::POSTUREDOWN:
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool CreatureAttackData::changesAttackerPosture() const {
+	if(stateEffects == NULL)
+		return false;
+
+	for(int i=0; i<stateEffects->size(); i++) {
+		switch(stateEffects->get(i).getEffectType()) {
+		case CommandEffect::ATTACKER_FORCE_STAND:
+		case CommandEffect::ATTACKER_FORCE_CROUCH:
+		case CommandEffect::ATTACKER_FORCE_PRONE:
+			return true;
+		}
+	}
+	return false;
 }
