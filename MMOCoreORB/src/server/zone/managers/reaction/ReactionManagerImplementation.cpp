@@ -10,6 +10,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/callbacks/ReactionFinePaymentSuiCallback.h"
+#include "server/zone/packets/object/CombatAction.h"
 
 void ReactionManagerImplementation::loadLuaConfig() {
 	Lua* lua = new Lua();
@@ -386,9 +387,16 @@ void ReactionManagerImplementation::doKnockdown(CreatureObject* victim, AiAgent*
 		knockdownAnim = "attack_high_center_light_0";
 
 	// TODO: Get knockdown animation working
-	//attacker->doCombatAnimation(victim, knockdownAnim.hashCode(), 0, 0xFF);
+	//
 
-	victim->inflictDamage(attacker, CreatureAttribute::MIND, victim->getHAM(CreatureAttribute::MIND) + 200, true);
+	victim->inflictDamage(attacker, CreatureAttribute::MIND, victim->getHAM(CreatureAttribute::MIND) + 200, true, true, true);
+
+	victim->setPosture(CreaturePosture::KNOCKEDDOWN, false, false); // set posture and don't update client
+
+	attacker->doCombatAnimation(victim, knockdownAnim.hashCode(), HIT, 0xFF); // play attacker animation - This will update the victim's posture on the client
+
+	victim->doCombatAnimation(STRING_HASHCODE("change_posture")); // force defender to change posture after attack animation has completed
+
 
 }
 

@@ -39,7 +39,7 @@ public:
 
 			creature->inflictDamage(creature, CreatureAttribute::ACTION, actionCost, true);
 
-			creature->setPosture(CreaturePosture::CROUCHED, false);
+			creature->setPosture(CreaturePosture::CROUCHED, false, false);
 
 			Reference<CreatureObject*> defender = server->getZoneServer()->getObject(target).castTo<CreatureObject*>();
 			if (defender == NULL)

@@ -63,7 +63,7 @@ UnarmedKnockdown1Command = {
 	  )
 	},
 
-	animationCRC = hashCode("attack_special_shoulder_bash_medium"),
+	animationCRC = hashCode("knockdown_unarmed_2"),
 
 	combatSpam = "sleepingkrayt",
 	

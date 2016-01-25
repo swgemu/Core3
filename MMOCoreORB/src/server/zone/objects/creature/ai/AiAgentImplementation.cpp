@@ -60,6 +60,7 @@
 #include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/packets/object/CombatAction.h"
 #include "server/zone/packets/object/StartNpcConversation.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformMessage.h"
@@ -1515,8 +1516,10 @@ void AiAgentImplementation::activateRecovery() {
 }
 
 void AiAgentImplementation::activatePostureRecovery() {
-	if (isProne() || isKnockedDown() || isKneeling())
+	if ((isProne() || isKnockedDown() || isKneeling()) && checkPostureChangeDelay()) {
 		executeObjectControllerAction(0xA8A25C79); // stand
+
+	}
 }
 
 void AiAgentImplementation::activateHAMRegeneration(int latency) {
@@ -2318,23 +2321,23 @@ void AiAgentImplementation::broadcastNextPositionUpdate(PatrolPoint* point) {
 	broadcastMessage(msg, false);
 }
 
-int AiAgentImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
+int AiAgentImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition, bool isCombatAction) {
 	sendReactionChat(ReactionManager::DEATH);
 
 	if (isPet()) {
 		PetManager* petManager = server->getZoneServer()->getPetManager();
 
-		petManager->notifyDestruction(attacker, asAiAgent(), condition);
+		petManager->notifyDestruction(attacker, asAiAgent(), condition, isCombatAction);
 
 	} else {
 		if (getZone() != NULL) {
 			CreatureManager* creatureManager = getZone()->getCreatureManager();
 
-			creatureManager->notifyDestruction(attacker, asAiAgent(), condition);
+			creatureManager->notifyDestruction(attacker, asAiAgent(), condition, isCombatAction);
 		}
 	}
 
-	return CreatureObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
+	return CreatureObjectImplementation::notifyObjectDestructionObservers(attacker, condition, isCombatAction);
 }
 
 int AiAgentImplementation::notifyConverseObservers(CreatureObject* converser) {
@@ -2343,7 +2346,7 @@ int AiAgentImplementation::notifyConverseObservers(CreatureObject* converser) {
 	return 1;
 }
 
-int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {
+int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient, bool isCombatAction) {
 	lastDamageReceived.updateToCurrentTime();
 
 	activateRecovery();
@@ -2356,10 +2359,10 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 		}
 	}
 	activateInterrupt(attacker, ObserverEventType::DAMAGERECEIVED);
-	return CreatureObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient);
+	return CreatureObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient, isCombatAction);
 }
 
-int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient) {
+int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient, bool isCombatAction) {
 	lastDamageReceived.updateToCurrentTime();
 
 	activateRecovery();
@@ -2372,7 +2375,7 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 		}
 	}
 	activateInterrupt(attacker, ObserverEventType::DAMAGERECEIVED);
-	return CreatureObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient);
+	return CreatureObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient, isCombatAction);
 }
 
 
