@@ -34,6 +34,8 @@ public:
 		if (creature == targetObject || targetObject == NULL)
 			return GENERALERROR;
 
+		//TODO: play coup_de_grace combat animations - ranged_coup_de_grace, melee_coup_de_grace, unarmed_coup_de_grace
+
 		if (targetObject->isPlayerCreature()) {
 			CreatureObject* player = cast<CreatureObject*>( targetObject.get());
 

@@ -437,11 +437,11 @@ class AiAgent extends CreatureObject {
 	 */
 	@preLocked
 	@arg1preLocked
-	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
+	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true, boolean isCombatAction = false);
 
 	@preLocked
 	@arg1preLocked
-	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true);
+	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true, boolean isCombatAction = false);
 
 	@preLocked
 	public native int addDotState(CreatureObject attacker, unsigned long dotType, unsigned long objectID, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense, int secondaryStrength = 0) {
@@ -480,7 +480,7 @@ class AiAgent extends CreatureObject {
 	 */
 	@preLocked
 	@arg1preLocked
-	public native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
+	public native int notifyObjectDestructionObservers(TangibleObject attacker, int condition, boolean isCombatAction);
 
 	/**
 	 * Is called when an object is talked to

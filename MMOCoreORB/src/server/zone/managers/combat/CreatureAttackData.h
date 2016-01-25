@@ -41,6 +41,8 @@ protected:
 
     uint32 animationCRC;
 
+    uint64 targetID;
+
     VectorMap<uint8, StateEffect>* stateEffects;
     VectorMap<uint64, DotEffect>* dotEffects;
 
@@ -52,7 +54,7 @@ protected:
 	int stateAccuracyBonus;
 
 public:
-    CreatureAttackData(const UnicodeString & dataString, const CombatQueueCommand *base);
+    CreatureAttackData(const UnicodeString & dataString, const CombatQueueCommand *base, uint64 target);
     CreatureAttackData(const CreatureAttackData& data);
     virtual ~CreatureAttackData() {}
 
@@ -178,6 +180,10 @@ public:
 		return trails;
 	}
 
+	uint64 getPrimaryTarget() const {
+		return targetID;
+	}
+
 	void setTrails(uint8 trails) {
 		this->trails = trails;
 	}
@@ -201,6 +207,10 @@ public:
 	void setStateAccuracyBonus(int stateAccuracyBonus) {
 		this->stateAccuracyBonus = stateAccuracyBonus;
 	}
+
+	bool changesDefenderPosture() const;
+
+	bool changesAttackerPosture() const;
 };
 
 #endif /* CREATUREATTACKDATA_H_ */
