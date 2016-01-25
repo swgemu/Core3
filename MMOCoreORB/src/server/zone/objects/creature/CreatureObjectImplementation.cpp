@@ -966,7 +966,7 @@ void CreatureObjectImplementation::setHAM(int type, int value,
 	}
 }
 
-int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient) {
+int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient, bool isCombatAction) {
 	if (attacker->isCreatureObject()) {
 		CreatureObject* creature = attacker->asCreatureObject();
 
@@ -975,10 +975,10 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 		}
 	}
 
-	return inflictDamage(attacker, damageType, damage, destroy, notifyClient);
+	return inflictDamage(attacker, damageType, damage, destroy, notifyClient, isCombatAction);
 }
 
-int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {
+int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient, bool isCombatAction) {
 	if (damageType < 0 || damageType >= hamList.size()) {
 		error("incorrect damage type in CreatureObjectImplementation::inflictDamage");
 		return 0;
@@ -1006,7 +1006,7 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 		attacker = asCreatureObject();
 
 	if (newValue <= 0)
-		notifyObjectDestructionObservers(attacker, newValue);
+		notifyObjectDestructionObservers(attacker, newValue, isCombatAction);
 
 	return 0;
 }
@@ -1414,18 +1414,9 @@ void CreatureObjectImplementation::addSkill(const String& skill,
 	addSkill(skillObject, notifyClient);
 }
 
-void CreatureObjectImplementation::setPosture(int newPosture, bool immediate) {
-	if (posture == newPosture)
-		return;
-
-	if (posture == CreaturePosture::PRONE && isInCover()) {
-		clearState(CreatureState::COVER);
-	}
-
-	posture = newPosture;
-	
+void CreatureObjectImplementation::updatePostures(bool immediate) {
 	updateSpeedAndAccelerationMods();
-	
+
 	// TODO: these two seem to be as of yet unused (maybe only necessary in client)
 	//CreaturePosture::instance()->getTurnScale((uint8)newPosture);
 	//CreaturePosture::instance()->getCanSeeHeightMod((uint8)newPosture);
@@ -1476,7 +1467,23 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool immediate) {
 	}
 
 	updateLocomotion();
-	notifyPostureChange(newPosture);
+	notifyPostureChange(posture);
+}
+
+void CreatureObjectImplementation::setPosture(int newPosture, bool immediate, bool notifyClient) {
+	if (posture == newPosture)
+		return;
+
+	if (posture == CreaturePosture::PRONE && isInCover()) {
+		clearState(CreatureState::COVER);
+	}
+
+	posture = newPosture;
+
+	if(!notifyClient)
+		return;
+
+	updatePostures(immediate);
 }
 
 void CreatureObjectImplementation::updateSpeedAndAccelerationMods() {
@@ -2103,10 +2110,15 @@ void CreatureObjectImplementation::executeObjectControllerAction(
 	objectController->activateCommand(asCreatureObject(), actionCRC, 0, targetID, args);
 }
 
-void CreatureObjectImplementation::doCombatAnimation(CreatureObject* defender,
+void CreatureObjectImplementation::doCombatAnimation(TangibleObject* defender,
 		uint32 animcrc, byte hit, byte trails) {
-	CombatAction* action = new CombatAction(asCreatureObject(), defender, animcrc, hit, trails);
 
+	CombatAction* action = new CombatAction(asCreatureObject(), defender, animcrc, hit, trails);
+	broadcastMessage(action, true);
+}
+
+void CreatureObjectImplementation::doCombatAnimation(unsigned int animationCRC) {
+	CombatAction* action = new CombatAction(asCreatureObject(), animationCRC);
 	broadcastMessage(action, true);
 }
 
@@ -2909,13 +2921,13 @@ bool CreatureObjectImplementation::isInBountyMission(CreatureObject* bountyHunte
 	return mission->getTargetObjectId() == target->getObjectID();
 }
 
-int CreatureObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
+int CreatureObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition, bool isCombatAction) {
 	PlayerObject* ghost = getPlayerObject();
 
 	if (ghost != NULL) {
 		PlayerManager* playerManager = getZoneServer()->getPlayerManager();
 
-		playerManager->notifyDestruction(attacker, asCreatureObject(), condition);
+		playerManager->notifyDestruction(attacker, asCreatureObject(), condition, isCombatAction);
 	}
 
 	if (attacker->isAiAgent()) {
@@ -2923,7 +2935,7 @@ int CreatureObjectImplementation::notifyObjectDestructionObservers(TangibleObjec
 		aiAgent->sendReactionChat(ReactionManager::GLOAT);
 	}
 
-	return TangibleObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
+	return TangibleObjectImplementation::notifyObjectDestructionObservers(attacker, condition, isCombatAction);
 }
 
 int CreatureObjectImplementation::notifyObjectKillObservers(TangibleObject* killer) {

@@ -65,7 +65,7 @@ SuppressionFire2Command = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	animationCRC = hashCode("fire_area_medium"),
+	animationCRC = hashCode("fire_defender_posture_change_down"),
 
 	combatSpam = "sup_fire",
 	

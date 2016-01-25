@@ -71,7 +71,7 @@ KnockdownFireCommand = {
 	  )
 	},
 
-	animationCRC = hashCode("fire_1_special_single_medium"),
+	animationCRC = hashCode("fire_3_single_medium"),
 
 	combatSpam = "knockdownfire",
 	

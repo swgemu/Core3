@@ -75,7 +75,7 @@ Melee2hArea3Command = {
 	areaRange = 16,
 	areaAction = true,
 
-	animationCRC = hashCode("combo_3a_light"),
+	animationCRC = hashCode("lower_posture_2hmelee_5"),
 
 	combatSpam = "domination",
 	

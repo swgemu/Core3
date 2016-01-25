@@ -134,7 +134,6 @@ public:
 	 * @return returns -1 on failure to start combat or damage on succesfull combat
 	 */
 	int doCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, CombatQueueCommand* command);
-	int doCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, CombatQueueCommand* command);
 	int doCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data);
 
 	/**
