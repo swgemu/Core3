@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_08f60fd8",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTimeList.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-25T23:20:39Z",
+      "side": 1,
+      "message": "tabs",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 8
+      },
+      "revId": "ea5dac486ace41e2d58d4802684cf1bc1348b292",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_c8ffb7a9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTimeList.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-25T23:20:39Z",
+      "side": 1,
+      "message": "This return is completely unnecessary.",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 8
+      },
+      "revId": "ea5dac486ace41e2d58d4802684cf1bc1348b292",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_a80283b2",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/consumable/ConsumableImplementation.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-25T23:20:39Z",
+      "side": 1,
+      "message": "This will invariably increase the duration (by a lot) instead of reducing it because you aren\u0027t grouping the terms correctly. This value will be calculated to be near 100 (since nutrition is on the order of tens), when you want something less than 1.",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 89
+      },
+      "revId": "ea5dac486ace41e2d58d4802684cf1bc1348b292",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
