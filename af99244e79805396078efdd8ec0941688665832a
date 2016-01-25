@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_8831bfa4",
+        "filename": "MMOCoreORB/src/server/zone/objects/mission/BountyMissionObjectiveImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-25T23:32:30Z",
+      "side": 1,
+      "message": "I\u0027m not convinced that this is necessarily not NULL. It should be since it gets created in activate, but can\u0027t there be edge cases where it fails to get created?",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 60
+      },
+      "revId": "af99244e79805396078efdd8ec0941688665832a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
