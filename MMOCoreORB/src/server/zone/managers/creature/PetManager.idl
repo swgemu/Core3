@@ -139,7 +139,7 @@ class PetManager extends ManagedService implements Logger {
 	 * @post { destructor and destructedObject locked }
 	 */
 	@local
-	public native int notifyDestruction(TangibleObject destructor, AiAgent destructedObject, int condition);
+	public native int notifyDestruction(TangibleObject destructor, AiAgent destructedObject, int condition, boolean isCombatAction);
 
 	/**
 	 * Calculates the length of time that incapacitation should last. 2 minute minimum.
@@ -151,5 +151,5 @@ class PetManager extends ManagedService implements Logger {
 	 * @pre { attacker and player locked }
 	 * @post { attacker and player locked }
 	 */
-	public native void killPet(TangibleObject attacker, AiAgent pet);
+	public native void killPet(TangibleObject attacker, AiAgent pet, boolean isCombatAction = false);
 }

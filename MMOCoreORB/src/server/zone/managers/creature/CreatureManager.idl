@@ -101,7 +101,7 @@ class CreatureManager extends ZoneManager {
 	@local
 	@arg1preLocked
 	@arg2preLocked
-	public native int notifyDestruction(TangibleObject destructor, AiAgent destructedObject, int condition);
+	public native int notifyDestruction(TangibleObject destructor, AiAgent destructedObject, int condition, boolean isCombatAction);
 	
 	public native void loadSpawnAreas();
 	

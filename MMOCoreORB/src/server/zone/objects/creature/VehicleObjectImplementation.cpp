@@ -279,7 +279,7 @@ int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject
 	else
 		wlock();
 
-	return CreatureObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
+	return CreatureObjectImplementation::notifyObjectDestructionObservers(attacker, condition, false);
 }
 
 void VehicleObjectImplementation::sendMessage(BasePacket* msg) {
