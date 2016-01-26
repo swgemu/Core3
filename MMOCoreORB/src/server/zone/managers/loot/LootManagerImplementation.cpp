@@ -60,6 +60,7 @@ bool LootManagerImplementation::loadConfigFile() {
 bool LootManagerImplementation::loadConfigData() {
 	if (!loadConfigFile())
 		return false;
+
 	yellowChance = lua->getGlobalFloat("yellowChance");
 	yellowModifier = lua->getGlobalFloat("yellowModifier");
 	exceptionalChance = lua->getGlobalFloat("exceptionalChance");
@@ -158,7 +159,7 @@ bool LootManagerImplementation::loadConfigData() {
 	return true;
 }
 
-void LootManagerImplementation::loadLootableMods(LuaObject* modsTable, SortedVector<String>* mods ){
+void LootManagerImplementation::loadLootableMods(LuaObject* modsTable, SortedVector<String>* mods) {
 
 	if (!modsTable->isValidTable())
 		return;
@@ -276,7 +277,10 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 
 	float excMod = 1.0;
 
-	if (level >= 50 && System::random(legendaryChance) >= legendaryChance - (int) floor(((float)level - 50.f) / 2.f + 0.5)) {
+	if (level >= 50) {
+		float adjustment = floor((float)(level - 50) / 10.f + 0.5);
+
+		if (System::random(legendaryChance) >= legendaryChance - adjustment) {
 			UnicodeString newName = prototype->getDisplayedName() + " (Legendary)";
 			prototype->setCustomObjectName(newName, false);
 
@@ -285,26 +289,26 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 			prototype->addMagicBit(false);
 
 			legendaryLooted.increment();
-	} else if (level >= 50 && System::random(exceptionalChance) >= exceptionalChance - (int) floor(((float)level-50)/2.f + 0.5)) {
-		UnicodeString newName = prototype->getDisplayedName() + " (Exceptional)";
-		prototype->setCustomObjectName(newName, false);
+		} else if (System::random(exceptionalChance) >= exceptionalChance - adjustment) {
+			UnicodeString newName = prototype->getDisplayedName() + " (Exceptional)";
+			prototype->setCustomObjectName(newName, false);
 
-		excMod = exceptionalModifier;
+			excMod = exceptionalModifier;
 
-		prototype->addMagicBit(false);
+			prototype->addMagicBit(false);
 
-		exceptionalLooted.increment();
+			exceptionalLooted.increment();
+		}
 	}
+
 	String subtitle;
 	bool yellow = false;
 
 	for (int i = 0; i < craftingValues.getExperimentalPropertySubtitleSize(); ++i) {
 		subtitle = craftingValues.getExperimentalPropertySubtitle(i);
 
-		if (subtitle == "hitpoints" || subtitle == "maxrange") {
-			if(!(prototype->isComponent())) {
-				continue;
-			}
+		if (subtitle == "hitpoints" && !prototype->isComponent()) {
+			continue;
 		}
 
 		float min = craftingValues.getMinValue(subtitle);
@@ -313,8 +317,15 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 		if (min == max)
 			continue;
 
-		if (subtitle != "forcecost" && subtitle != "useCount" && subtitle != "quantity" && subtitle != "charges" && subtitle != "uses" && subtitle != "charge") {
+		float percentage = System::random(10000) / 10000.f;
 
+		craftingValues.setCurrentPercentage(subtitle, percentage);
+
+		if (subtitle == "maxrange" || subtitle == "midrange" || subtitle == "zerorangemod" || subtitle == "maxrangemod" || subtitle == "midrangemod" || subtitle == "forcecost") {
+			continue;
+		}
+
+		if (subtitle != "useCount" && subtitle != "quantity" && subtitle != "charges" && subtitle != "uses" && subtitle != "charge") {
 			float minMod = (max > min) ? 2000.f : -2000.f;
 			float maxMod = (max > min) ? 500.f : -500.f;
 
@@ -348,14 +359,13 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 				min = ((min * level / minMod) + min) / excMod;
 				max = ((max * level / maxMod) + max) * excMod;
 			}
-		} else {
-			if (subtitle != "forcecost" && excMod != 1.0) {
-				min *= yellowModifier;
-				max *= yellowModifier;
-			}
+
+		} else if (excMod != 1.0) {
+			min *= yellowModifier;
+			max *= yellowModifier;
 		}
 
-		if (subtitle != "forcecost" && excMod == 1.0 && (yellowChance == 0 || System::random(yellowChance) == 0)) {
+		if (excMod == 1.0 && (yellowChance == 0 || System::random(yellowChance) == 0)) {
 			if (max > min && min >= 0) {
 				min *= yellowModifier;
 				max *= yellowModifier;
@@ -383,17 +393,13 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 
 		craftingValues.setMinValue(subtitle, min);
 		craftingValues.setMaxValue(subtitle, max);
-
-		float percentage = System::random(10000) / 10000.f;
-
-		craftingValues.setCurrentPercentage(subtitle, percentage);
 	}
 
 	if (yellow) {
 		prototype->addMagicBit(false);
 		prototype->setJunkValue((int)(fJunkValue * 1.25));
 	} else {
-		if (excMod==1){
+		if (excMod == 1.0) {
 			prototype->setJunkValue((int)(fJunkValue));
 		} else {
 			prototype->setJunkValue((int)(fJunkValue * (excMod/2)));
