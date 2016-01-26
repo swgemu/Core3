@@ -1240,8 +1240,9 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 	int diff = 0;
 
 	if (data.getMinDamage() > 0 || data.getMaxDamage() > 0) { // this is a special attack (force, etc)
-		damage = data.getMinDamage();
-		diff = data.getMaxDamage() - damage;
+		float mod = attacker->isAiAgent() ? cast<AiAgent*>(attacker)->getSpecialDamageMult() : 1.f;
+		damage = data.getMinDamage() * mod;
+		diff = (data.getMaxDamage() * mod) - damage;
 
 	} else {
 		float minDamage = weapon->getMinDamage(), maxDamage = weapon->getMaxDamage();

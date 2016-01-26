@@ -1001,28 +1001,20 @@ class AiAgent extends CreatureObject {
 
 	@dirty
 	public int getDamageMin() {
-		if (npcTemplate.get() == null)
-			return 0;
-
-		if (getWeapon() == null)
-			return 0;
-
 		return getWeapon().getMinDamage();
-
-		//return npcTemplate.get().getDamageMin();
-		//return calculateAttackMinDamage(super.getLevel());
 	}
 
 	@dirty
 	public int getDamageMax() {
-		if (npcTemplate.get() == null)
-			return 0;
-
-		if (getWeapon() == null)
-			return 0;
-
-		//return npcTemplate.get().getDamageMax();
 		return getWeapon().getMaxDamage();
+	}
+
+	@dirty
+	public float getSpecialDamageMult() {
+		if (npcTemplate.get() == null)
+			return 1.f;
+
+		return npcTemplate.get().getSpecialDamageMult();
 	}
 
 	@dirty
