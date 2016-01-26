@@ -17,13 +17,14 @@ public:
 
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().castTo<PetControlDevice*>();
+
 		if (controlDevice == NULL)
 			return GENERALERROR;
 
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(creature);
-		if( pet == NULL )
+
+		if (pet == NULL)
 			return GENERALERROR;
 
 		if (pet->hasRidingCreature())
@@ -35,7 +36,24 @@ public:
 			return GENERALERROR;
 		}
 
-		if (!CollisionManager::checkLineOfSight(creature, targetObject)) {
+		StringTokenizer tokenizer(arguments.toString());
+
+		if (!tokenizer.hasMoreTokens())
+			return GENERALERROR;
+
+		uint64 playerID = tokenizer.getLongToken();
+
+		ManagedReference<CreatureObject*> player = server->getZoneServer()->getObject(playerID, true).castTo<CreatureObject*>();
+
+		if (player == NULL)
+			return GENERALERROR;
+
+		CreatureObject* targetCreature = cast<CreatureObject*>(targetObject.get());
+
+		if (targetCreature == NULL)
+			return GENERALERROR;
+
+		if (targetCreature != player && targetCreature->isAttackableBy(creature) && !CollisionManager::checkLineOfSight(player, targetObject)) {
 			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
 			return INVALIDTARGET;
 		}

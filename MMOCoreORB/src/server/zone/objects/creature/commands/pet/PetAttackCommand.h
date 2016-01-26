@@ -47,7 +47,19 @@ public:
 			return INVALIDTARGET;
 		}
 
-		if (!CollisionManager::checkLineOfSight(creature, targetObject)) {
+		StringTokenizer tokenizer(arguments.toString());
+
+		if (!tokenizer.hasMoreTokens())
+			return GENERALERROR;
+
+		uint64 playerID = tokenizer.getLongToken();
+
+		Reference<CreatureObject*> player = server->getZoneServer()->getObject(playerID, true).castTo<CreatureObject*>();
+
+		if (player == NULL)
+			return GENERALERROR;
+
+		if (!CollisionManager::checkLineOfSight(player, targetObject)) {
 			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
 			return INVALIDTARGET;
 		}
