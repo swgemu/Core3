@@ -22,6 +22,75 @@
       "revId": "af99244e79805396078efdd8ec0941688665832a",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_e8e63b16",
+        "filename": "MMOCoreORB/src/server/zone/objects/mission/MissionObjectiveImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-26T01:04:59Z",
+      "side": 1,
+      "message": "This should be mission.get()",
+      "range": {
+        "startLine": 61,
+        "startChar": 53,
+        "endLine": 61,
+        "endChar": 60
+      },
+      "revId": "af99244e79805396078efdd8ec0941688665832a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_28dd1343",
+        "filename": "MMOCoreORB/src/server/zone/objects/mission/MissionObjectiveImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-26T01:04:59Z",
+      "side": 1,
+      "message": "This is redundant; it gets called in createWaypoint()",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 51
+      },
+      "revId": "af99244e79805396078efdd8ec0941688665832a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_48e2c704",
+        "filename": "MMOCoreORB/src/server/zone/objects/mission/MissionObjectiveImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-26T01:04:59Z",
+      "side": 1,
+      "message": "tabs",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 9
+      },
+      "revId": "af99244e79805396078efdd8ec0941688665832a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
