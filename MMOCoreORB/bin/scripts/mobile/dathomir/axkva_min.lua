@@ -6,6 +6,7 @@ axkva_min = Creature:new {
 	chanceHit = 30,
 	damageMin = 1645,
 	damageMax = 3000,
+	specialDamageMult = 10,
 	baseXp = 28549,
 	baseHAM = 385000,
 	baseHAMmax = 471000,
