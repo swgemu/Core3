@@ -56,7 +56,7 @@ object_building_player_city_cityhall_corellia = object_building_player_city_shar
 		{"private_med_battle_fatigue", 5}
 	},
 	childObjects = {
-		{templateFile = "object/tangible/sign/municipal/municipal_sign_hanging_capitol.iff", x = 8, z = 4, y = 21, ox = 0, oy = -1, oz = 0, ow = 0, cellid = -1, containmentType = -1},
+		{templateFile = "object/tangible/sign/municipal/municipal_sign_hanging_capitol.iff", x = 7, z = 4, y = 26, ox = 0, oy = -1, oz = 0, ow = 0, cellid = -1, containmentType = -1},
 		{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -16.78, z = 2.0, y = 7.9, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 4, containmentType = -1},
 		{templateFile = "object/tangible/terminal/terminal_city_vote.iff", x = 0.25, z = 2.0, y = -9.65, ow = 1, ox = 0, oy = 0, oz = 0, cellid = 3, containmentType = -1},
 		{templateFile = "object/tangible/terminal/terminal_city.iff", x = 17.07, z = 2.0, y = -8.7, ow = 1, ox = 0, oy = 0, oz = 0, cellid = 5, containmentType = -1},
