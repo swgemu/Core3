@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_68ba2be3",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/consumable/ConsumableImplementation.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-26T01:50:15Z",
+      "side": 1,
+      "message": "I\u0027m no sure what you are intending to do here, but it\u0027s not right.",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 89
+      },
+      "revId": "2e8e1f7d2021a728dca434eb4607174bdc820a66",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
