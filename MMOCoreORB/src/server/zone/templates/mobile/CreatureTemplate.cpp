@@ -31,6 +31,7 @@ CreatureTemplate::CreatureTemplate() {
 	chanceHit = 0.f;
 	damageMin = 0;
 	damageMax = 0;
+	specialDamageMult = 1.f;
 	range = 0;
 	baseXp = 0;
 	baseHAM = 0;
@@ -89,6 +90,7 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	chanceHit = templateData->getFloatField("chanceHit");
 	damageMin = templateData->getIntField("damageMin");
 	damageMax = templateData->getIntField("damageMax");
+	specialDamageMult = templateData->getFloatField("specialDamageMult");
 	//range = templateData->getIntField("range");
 	baseXp = templateData->getIntField("baseXp");
 	baseHAM = templateData->getIntField("baseHAM");

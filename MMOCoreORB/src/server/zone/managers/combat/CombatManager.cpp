@@ -495,12 +495,13 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 		}
 
 		//info("entering addDotState", true);
+		float damMod = attacker->isAiAgent() ? cast<AiAgent*>(attacker)->getSpecialDamageMult() : 1.f;
 		defender->addDotState(attacker, dotType, data.getCommand()->getNameCRC(),
 				effect.isDotDamageofHit() ? damageToApply * effect.getPrimaryPercent() / 100.0f 
-					: effect.getDotStrength(),
+					: effect.getDotStrength() * damMod,
 				pool, effect.getDotDuration(), potency, resist,
 				effect.isDotDamageofHit() ? damageToApply * effect.getSecondaryPercent() / 100.0f 
-					: effect.getDotStrength());
+					: effect.getDotStrength() * damMod);
 	}
 }
 
@@ -1240,8 +1241,9 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 	int diff = 0;
 
 	if (data.getMinDamage() > 0 || data.getMaxDamage() > 0) { // this is a special attack (force, etc)
-		damage = data.getMinDamage();
-		diff = data.getMaxDamage() - damage;
+		float mod = attacker->isAiAgent() ? cast<AiAgent*>(attacker)->getSpecialDamageMult() : 1.f;
+		damage = data.getMinDamage() * mod;
+		diff = (data.getMaxDamage() * mod) - damage;
 
 	} else {
 		float minDamage = weapon->getMinDamage(), maxDamage = weapon->getMaxDamage();
