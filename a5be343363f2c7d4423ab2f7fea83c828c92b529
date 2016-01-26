@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_a89e0362",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/consumable/ConsumableImplementation.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-26T03:27:11Z",
+      "side": 1,
+      "message": "tabs and no !",
+      "range": {
+        "startLine": 269,
+        "startChar": 18,
+        "endLine": 269,
+        "endChar": 65
+      },
+      "revId": "a5be343363f2c7d4423ab2f7fea83c828c92b529",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
