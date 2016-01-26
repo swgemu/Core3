@@ -68,7 +68,7 @@ public:
 			ContainerPermissions* perms = targetCell->getContainerPermissions();
 
 			if (!perms->hasInheritPermissionsFromParent()) {
-				if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
+				if (!targetCell->checkContainerPermission(player, ContainerPermissions::WALKIN)) {
 					pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
 					return INVALIDTARGET;
 				}
