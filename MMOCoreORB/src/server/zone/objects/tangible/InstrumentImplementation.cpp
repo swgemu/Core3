@@ -32,6 +32,8 @@ void InstrumentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRe
 				menuResponse->addRadialMenuItem(20, 3, "@radial_performance:stop_playing");
 		}
 	}
+
+	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 }
 
 int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
