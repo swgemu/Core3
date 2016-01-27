@@ -1,0 +1,285 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_08f5af82",
+        "filename": "MMOCoreORB/bin/scripts/commands/knockdownFire.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-27T03:37:36Z",
+      "side": 1,
+      "message": "Try reverting this",
+      "range": {
+        "startLine": 74,
+        "startChar": 26,
+        "endLine": 74,
+        "endChar": 58
+      },
+      "revId": "7192cfd0adbee19cb1fcaf48ab5afbe3f3ed7b03",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_c8eed7b4",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2048,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-27T03:37:36Z",
+      "side": 1,
+      "message": "move this after get_hit",
+      "range": {
+        "startLine": 2045,
+        "startChar": 0,
+        "endLine": 2048,
+        "endChar": 3
+      },
+      "revId": "7192cfd0adbee19cb1fcaf48ab5afbe3f3ed7b03",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_682b0bec",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/CreatureManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-27T03:37:36Z",
+      "side": 1,
+      "message": "just pass the bool in",
+      "range": {
+        "startLine": 595,
+        "startChar": 61,
+        "endLine": 595,
+        "endChar": 66
+      },
+      "revId": "7192cfd0adbee19cb1fcaf48ab5afbe3f3ed7b03",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8830df57",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/PetManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-27T03:37:36Z",
+      "side": 1,
+      "message": "Need to pass isCombatAction",
+      "range": {
+        "startLine": 537,
+        "startChar": 2,
+        "endLine": 537,
+        "endChar": 40
+      },
+      "revId": "7192cfd0adbee19cb1fcaf48ab5afbe3f3ed7b03",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_28351346",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/PetManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-27T03:37:36Z",
+      "side": 1,
+      "message": "pass in isCombatAction",
+      "revId": "7192cfd0adbee19cb1fcaf48ab5afbe3f3ed7b03",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_e83e3b29",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-27T03:37:36Z",
+      "side": 1,
+      "message": "fix this",
+      "range": {
+        "startLine": 665,
+        "startChar": 2,
+        "endLine": 665,
+        "endChar": 44
+      },
+      "revId": "7192cfd0adbee19cb1fcaf48ab5afbe3f3ed7b03",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_083ccf2e",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-27T03:37:36Z",
+      "side": 1,
+      "message": "pass in isCombatAction",
+      "range": {
+        "startLine": 671,
+        "startChar": 69,
+        "endLine": 671,
+        "endChar": 74
+      },
+      "revId": "7192cfd0adbee19cb1fcaf48ab5afbe3f3ed7b03",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_a84843cd",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-27T03:37:36Z",
+      "side": 1,
+      "message": "here too",
+      "range": {
+        "startLine": 716,
+        "startChar": 51,
+        "endLine": 716,
+        "endChar": 56
+      },
+      "revId": "7192cfd0adbee19cb1fcaf48ab5afbe3f3ed7b03",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_c84577b4",
+        "filename": "MMOCoreORB/src/server/zone/managers/reaction/ReactionManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-27T03:37:36Z",
+      "side": 1,
+      "message": "pretty sure this can just be setPosture(KD, true, true)",
+      "range": {
+        "startLine": 394,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 40
+      },
+      "revId": "7192cfd0adbee19cb1fcaf48ab5afbe3f3ed7b03",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_68122bb6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1486,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-27T03:37:36Z",
+      "side": 1,
+      "message": "pass in immediate",
+      "revId": "7192cfd0adbee19cb1fcaf48ab5afbe3f3ed7b03",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_88177fa3",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/ai/AiAgentImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-27T03:37:36Z",
+      "side": 1,
+      "message": "Check if creature is an AI and try doing this in the /stand command itself",
+      "range": {
+        "startLine": 1523,
+        "startChar": 0,
+        "endLine": 1529,
+        "endChar": 4
+      },
+      "revId": "7192cfd0adbee19cb1fcaf48ab5afbe3f3ed7b03",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_280c3394",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CombatQueueCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-27T03:37:36Z",
+      "side": 1,
+      "message": "Maybe assuming that all CombatQueueCommands are happening within a combat frame is bad. Should probably add isCombatAction here too.",
+      "revId": "7192cfd0adbee19cb1fcaf48ab5afbe3f3ed7b03",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_481167ab",
+        "filename": "MMOCoreORB/src/server/zone/packets/object/CombatAction.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-27T03:37:36Z",
+      "side": 1,
+      "message": "fixme",
+      "range": {
+        "startLine": 72,
+        "startChar": 13,
+        "endLine": 72,
+        "endChar": 31
+      },
+      "revId": "7192cfd0adbee19cb1fcaf48ab5afbe3f3ed7b03",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
