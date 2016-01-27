@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_08236f06",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/CreatureManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-27T03:44:30Z",
+      "side": 1,
+      "message": "for both of the arguments and remove the if...else",
+      "parentUuid": "da7095c5_682b0bec",
+      "range": {
+        "startLine": 595,
+        "startChar": 61,
+        "endLine": 595,
+        "endChar": 66
+      },
+      "revId": "7192cfd0adbee19cb1fcaf48ab5afbe3f3ed7b03",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_8830df57",
         "filename": "MMOCoreORB/src/server/zone/managers/creature/PetManagerImplementation.cpp",
         "patchSetId": 1
