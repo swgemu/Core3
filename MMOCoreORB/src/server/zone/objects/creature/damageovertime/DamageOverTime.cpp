@@ -160,15 +160,21 @@ uint32 DamageOverTime::initDot(CreatureObject* victim, CreatureObject* attacker)
 		strength = (float)strength * (1.f - (System::random(25) / 100.f));
 
 		if (victim->isPlayerCreature() && attacker->isPlayerCreature()) {
-			strength /= 4;
+			strength /= 2;
+		}
+
+		if (victim->isProne()) {
+			strength = ((float)strength * (1.f - (System::random(25) / 100.f)) * 1.5);
+		}
+
+		if (victim->isKneeling()) {
+			strength = ((float)strength * (1.f - (System::random(25) / 100.f)) * 1.25);
 		}
 
 		break;
 	}
 
 	power = (uint32)(strength * (1.f - absorptionMod / 100.f));
-
-	//victim->addDamage(attacker,1);
 
 	return power;
 }
@@ -258,7 +264,6 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attack
 
 			victimRef_p->playEffect("clienteffect/dot_fire.cef","");
 	});
-
 
 	return damage;
 }
@@ -355,12 +360,12 @@ uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* 
 			Locker crossLocker(attackerRef_p, victimRef_p);
 
 			victimRef_p->inflictDamage(attackerRef_p, CreatureAttribute::HEALTH, damage_p, true);
-			victimRef_p->inflictDamage(attackerRef_p, CreatureAttribute::ACTION, damage_p, true);
-			victimRef_p->inflictDamage(attackerRef_p, CreatureAttribute::MIND, damage_p, true);
+
 			if (victimRef_p->hasAttackDelay())
 				victimRef_p->removeAttackDelay();
 
 			victimRef_p->playEffect("clienteffect/pl_force_choke.cef", "");
+			victimRef_p->sendSystemMessage("@combat_effects:choke_single"); // You are choking!
 	});
 
 	return damage;

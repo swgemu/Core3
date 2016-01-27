@@ -50,7 +50,7 @@ ForceLightningSingle1Command = {
 	forceCost = 75,
 	visMod = 25,
 	
-	accuracySkillMod = "forcelightning_accuracy";
+	accuracySkillMod = "forcelightning_accuracy",
 
 	animationCRC = hashCode("force_lightning_1_particle_level_1_light"),
 
