@@ -157,18 +157,10 @@ uint32 DamageOverTime::initDot(CreatureObject* victim, CreatureObject* attacker)
 		break;
 	case CommandEffect::FORCECHOKE:
 		nextTick.addMiliTime(6000);
-		strength = (float)strength * (1.f - (System::random(25) / 100.f));
-
-		if (victim->isPlayerCreature() && attacker->isPlayerCreature()) {
-			strength /= 4;
-		}
-
 		break;
 	}
 
 	power = (uint32)(strength * (1.f - absorptionMod / 100.f));
-
-	//victim->addDamage(attacker,1);
 
 	return power;
 }
@@ -259,7 +251,6 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attack
 			victimRef_p->playEffect("clienteffect/dot_fire.cef","");
 	});
 
-
 	return damage;
 }
 
@@ -345,22 +336,29 @@ uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* 
 	if (victim->isIncapacitated())
 		return 0;
 
-	int damage = (int)(strength);
+	int damage = (float)strength * (1.f - (System::random(25) / 100.f));
+	uint8 attribute = this->attribute;
 	Reference<CreatureObject*> attackerRef = attacker;
 	Reference<CreatureObject*> victimRef = victim;
 
-	EXECUTE_TASK_3(victimRef, attackerRef, damage, {
+	EXECUTE_TASK_4(victimRef, attackerRef, damage, attribute, {
 			Locker locker(victimRef_p);
 
 			Locker crossLocker(attackerRef_p, victimRef_p);
 
-			victimRef_p->inflictDamage(attackerRef_p, CreatureAttribute::HEALTH, damage_p, true);
-			victimRef_p->inflictDamage(attackerRef_p, CreatureAttribute::ACTION, damage_p, true);
-			victimRef_p->inflictDamage(attackerRef_p, CreatureAttribute::MIND, damage_p, true);
+			victimRef_p->inflictDamage(attackerRef_p, attribute_p, damage_p, false);
+
+			if (victimRef_p->isProne()) {
+				victimRef_p->inflictDamage(attackerRef_p, attribute_p, damage_p * 1.5, false);
+			} else if (victimRef_p->isKneeling()) {
+				victimRef_p->inflictDamage(attackerRef_p, attribute_p, damage_p * 1.25, false);
+			}
+
 			if (victimRef_p->hasAttackDelay())
 				victimRef_p->removeAttackDelay();
 
 			victimRef_p->playEffect("clienteffect/pl_force_choke.cef", "");
+			victimRef_p->sendSystemMessage("@combat_effects:choke_single"); // You are choking!
 	});
 
 	return damage;
