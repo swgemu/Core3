@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_68954be3",
+        "filename": "MMOCoreORB/bin/scripts/commands/forceChoke.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-27T23:06:34Z",
+      "side": 1,
+      "message": "This is a bit odd. I think this needs to be reduced and the code changed in the tick to be lower.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 6
+      },
+      "revId": "87ce85458b3a96fb9cfff486ae1f42acf5ca1362",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_c8f8174c",
+        "filename": "MMOCoreORB/bin/scripts/commands/forceChoke.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-27T23:06:34Z",
+      "side": 1,
+      "message": "These two values aren\u0027t necessary since primary already defaults to 100 and secondary isn\u0027t used in the code at all.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 3
+      },
+      "revId": "87ce85458b3a96fb9cfff486ae1f42acf5ca1362",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_889a1f13",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTime.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-27T23:06:34Z",
+      "side": 1,
+      "message": "Just use the range in the lua you defined to get the damage.",
+      "range": {
+        "startLine": 160,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 68
+      },
+      "revId": "87ce85458b3a96fb9cfff486ae1f42acf5ca1362",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_289f5305",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTime.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-27T23:06:34Z",
+      "side": 1,
+      "message": "Don\u0027t reduce for PvP.",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 3
+      },
+      "revId": "87ce85458b3a96fb9cfff486ae1f42acf5ca1362",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_48a40757",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTime.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-27T23:06:34Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to do isProne/isKneeling here (and even if you do, don\u0027t roll twice like this).",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 3
+      },
+      "revId": "87ce85458b3a96fb9cfff486ae1f42acf5ca1362",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_e8887bc8",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTime.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-27T23:06:34Z",
+      "side": 1,
+      "message": "I think this is where your randomness needs to go. I could be wrong, but I\u0027m pretty sure choke didn\u0027t do the same damage for every tick.\n\nAlso, if you MUST code in prone/kneeling checks, you do it here.",
+      "range": {
+        "startLine": 353,
+        "startChar": 1,
+        "endLine": 353,
+        "endChar": 30
+      },
+      "revId": "87ce85458b3a96fb9cfff486ae1f42acf5ca1362",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_08ffef35",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTime.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-27T23:06:34Z",
+      "side": 1,
+      "message": "Use the attribute from lua, don\u0027t hardcode health here",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 362,
+        "endChar": 88
+      },
+      "revId": "87ce85458b3a96fb9cfff486ae1f42acf5ca1362",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
