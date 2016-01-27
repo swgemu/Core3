@@ -65,15 +65,6 @@ global = {
 			size = 25
 		},
 		{
-			lairTemplateName = "global_commoner_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 2,
-			maxDifficulty = 6,
-			numberToSpawn = 0,
-			weighting = 1,
-			size = 25
-		},
-		{
 			lairTemplateName = "global_slave_camp_neutral_small_theater",
 			spawnLimit = -1,
 			minDifficulty = 2,
