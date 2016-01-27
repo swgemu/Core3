@@ -321,7 +321,11 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 
 		craftingValues.setCurrentPercentage(subtitle, percentage);
 
-		if (subtitle == "maxrange" || subtitle == "midrange" || subtitle == "zerorangemod" || subtitle == "maxrangemod" || subtitle == "midrangemod" || subtitle == "forcecost") {
+		if (subtitle == "maxrange" || subtitle == "midrange" || subtitle == "zerorangemod" || subtitle == "maxrangemod" || subtitle == "forcecost") {
+			continue;
+		}
+
+		if (subtitle == "midrangemod" && !prototype->isComponent()) {
 			continue;
 		}
 
