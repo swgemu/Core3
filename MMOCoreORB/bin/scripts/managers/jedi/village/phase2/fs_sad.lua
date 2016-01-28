@@ -110,8 +110,10 @@ function FsSad:completeSeries(pPlayer, questID)
 	if (pInventory ~= nil) then
 		local pPowerup = giveItem(pInventory, "object/tangible/powerup/weapon/fs_quest_sad/melee_speed_quest.iff", -1, true)
 
-		if (pPowerup == nil) then
-			CreatureObject(pPlayer):sendSystemMessage("Error: Unable to generate item.")
+		if (pPowerup ~= nil) then
+			LuaPowerupObject(pPowerup):setUses(500)
+			LuaPowerupObject(pPowerup):addPowerupStat("attackSpeed", "Control Enhancement", "cat_pup.pup_wpn_attack_speed", 30)
+			LuaPowerupObject(pPowerup):setType("melee")
 		end
 	end
 end
@@ -135,7 +137,7 @@ function FsSad:doPhaseChangeFail(pPlayer)
 			QuestManager.resetQuest(pPlayer, questID)
 		end
 	end
-	
+
 	SuiRadiationSensor:removeSensor(pPlayer)
 end
 
