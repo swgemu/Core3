@@ -24,6 +24,9 @@ includeFile("conversations/themepark/nym/nym_conv.lua")
 includeFile("conversations/themepark/nym/sergeant_moore_conv.lua")
 includeFile("conversations/themepark/nym/kole_conv.lua")
 
+-- Bestine Election
+includeFile("conversations/events/bestine_election/tour_aryon_conv.lua")
+
 -- Bestine Museum
 includeFile("conversations/events/bestine_museum/bestine_artist01_conv.lua")
 includeFile("conversations/events/bestine_museum/bestine_artist02_conv.lua")
