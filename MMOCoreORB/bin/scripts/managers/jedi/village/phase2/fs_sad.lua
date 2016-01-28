@@ -113,6 +113,10 @@ function FsSad:completeSeries(pPlayer, questID)
 		if (pPowerup == nil) then
 			CreatureObject(pPlayer):sendSystemMessage("Error: Unable to generate item.")
 		end
+		
+		LuaPowerupObject(pPowerup):setUses(500)
+		LuaPowerupObject(pPowerup):addPowerupStat("attackSpeed", "Control Enhancement", "cat_pup.pup_wpn_attack_speed", 30)
+		LuaPowerupObject(pPowerup):setType("melee")
 	end
 end
 
