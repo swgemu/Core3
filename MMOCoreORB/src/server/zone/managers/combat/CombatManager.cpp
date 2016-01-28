@@ -673,6 +673,12 @@ int CombatManager::getAttackerAccuracyModifier(TangibleObject* attacker, Creatur
 
 	attackerAccuracy += creoAttacker->getSkillMod("attack_accuracy") + creoAttacker->getSkillMod("dead_eye");
 
+	// FS skill mods
+	if (weapon->getAttackType() == WeaponObject::MELEEATTACK)
+		attackerAccuracy += creoAttacker->getSkillMod("melee_accuracy");
+	else if (weapon->getAttackType() == WeaponObject::RANGEDATTACK)
+		attackerAccuracy += creoAttacker->getSkillMod("ranged_accuracy");
+
 	// now apply overall weapon defense mods
 	if (weapon->isMeleeWeapon()) {
 		switch (defender->getWeapon()->getGameObjectType()) {
@@ -906,10 +912,13 @@ int CombatManager::getSpeedModifier(CreatureObject* attacker, WeaponObject* weap
 
 	speedMods += attacker->getSkillMod("private_speed_bonus");
 
-	if (weapon->getAttackType() == WeaponObject::MELEEATTACK)
+	if (weapon->getAttackType() == WeaponObject::MELEEATTACK) {
 		speedMods += attacker->getSkillMod("private_melee_speed_bonus");
-	if (weapon->getAttackType() == WeaponObject::RANGEDATTACK)
+		speedMods += attacker->getSkillMod("melee_speed");
+	} else if (weapon->getAttackType() == WeaponObject::RANGEDATTACK) {
 		speedMods += attacker->getSkillMod("private_ranged_speed_bonus");
+		speedMods += attacker->getSkillMod("ranged_speed");
+	}
 
 	return speedMods;
 }
