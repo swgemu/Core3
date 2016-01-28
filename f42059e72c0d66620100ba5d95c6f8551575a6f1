@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_133e44b9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/ai/AiAgentImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1531,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-01-28T13:21:55Z",
+      "side": 1,
+      "message": "I moved this into /stand and it started doing weird stuff, I must\u0027ve reverted it. I\u0027ll check it out again",
+      "range": {
+        "startLine": 1519,
+        "startChar": 0,
+        "endLine": 1531,
+        "endChar": 2
+      },
+      "revId": "f42059e72c0d66620100ba5d95c6f8551575a6f1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
