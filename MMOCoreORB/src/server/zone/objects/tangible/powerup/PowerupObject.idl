@@ -9,6 +9,7 @@ import engine.lua.LuaObject;
 include server.zone.objects.tangible.powerup.PowerupStatVector;
 import server.zone.Zone;
 
+@lua
 class PowerupObject extends TangibleObject {
 
 	public transient static float MAXPRIMARY;
@@ -55,9 +56,19 @@ class PowerupObject extends TangibleObject {
 	public int getUses() {
 		return uses;
 	}
+
+	public void setUses(int i) {
+		uses = i;
+	}
+
+	public void setType(final string t) {
+		type = t;
+	}
 	
 	@dirty
 	public native float getPowerupStat(final string stat);
+	
+	public native void addPowerupStat(final string attributeToMod, final string name, final string pupAttrib, float value);
 
 	/**
 	 * Fills the attribute list message options that are sent to player creature

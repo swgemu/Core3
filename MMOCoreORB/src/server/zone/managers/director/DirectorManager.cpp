@@ -77,6 +77,7 @@
 #include "server/zone/objects/tangible/misc/FsCraftingComponentObject.h"
 #include "server/zone/objects/player/sui/LuaSuiPageData.h"
 #include "server/zone/objects/player/sui/SuiBoxPage.h"
+#include "server/zone/objects/tangible/powerup/PowerupObject.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -488,6 +489,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaSuiPageData>::Register(luaEngine->getLuaState());
 	Luna<LuaQuestVectorMap>::Register(luaEngine->getLuaState());
 	Luna<LuaSuiBoxPage>::Register(luaEngine->getLuaState());
+	Luna<LuaPowerupObject>::Register(luaEngine->getLuaState());
 }
 
 int DirectorManager::loadScreenPlays(Lua* luaEngine) {

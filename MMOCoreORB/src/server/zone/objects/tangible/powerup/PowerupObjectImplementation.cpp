@@ -52,34 +52,33 @@ void PowerupObjectImplementation::fillWeaponAttributeList(AttributeListMessage* 
 }
 
 float PowerupObjectImplementation::getWeaponStat(const String& attrib, WeaponObject* weapon, bool withPup) {
-
-	if(attrib == "pointBlankAccuracy")
+	if (attrib == "pointBlankAccuracy")
 		return weapon->getPointBlankAccuracy(withPup);
-	else if(attrib == "idealRange")
+	else if (attrib == "idealRange")
 		return weapon->getIdealRange(withPup);
-	else if(attrib == "maxRange")
+	else if (attrib == "maxRange")
 		return weapon->getMaxRange(withPup);
-	else if(attrib == "idealAccuracy")
+	else if (attrib == "idealAccuracy")
 		return weapon->getIdealAccuracy(withPup);
-	else if(attrib == "maxRangeAccuracy")
+	else if (attrib == "maxRangeAccuracy")
 		return weapon->getMaxRangeAccuracy(withPup);
-	else if(attrib == "attackSpeed")
+	else if (attrib == "attackSpeed")
 		return weapon->getAttackSpeed(withPup);
-	else if(attrib == "maxDamage")
+	else if (attrib == "maxDamage")
 		return weapon->getMaxDamage(withPup);
-	else if(attrib == "minDamage")
+	else if (attrib == "minDamage")
 		return weapon->getMinDamage(withPup);
-	else if(attrib == "woundsRatio")
+	else if (attrib == "woundsRatio")
 		return weapon->getWoundsRatio(withPup);
-	else if(attrib == "damageRadius")
+	else if (attrib == "damageRadius")
 		return weapon->getDamageRadius(withPup);
-	else if(attrib == "healthAttackCost")
+	else if (attrib == "healthAttackCost")
 		return weapon->getHealthAttackCost(withPup);
-	else if(attrib == "actionAttackCost")
+	else if (attrib == "actionAttackCost")
 		return weapon->getActionAttackCost(withPup);
-	else if(attrib == "mindAttackCost")
+	else if (attrib == "mindAttackCost")
 		return weapon->getMindAttackCost(withPup);
-	else if(attrib == "pointBlankRange")
+	else if (attrib == "pointBlankRange")
 		return weapon->getPointBlankRange(withPup);
 
 	return 0;
@@ -188,4 +187,11 @@ float PowerupObjectImplementation::getPowerupStat(const String& attribName) {
 	}
 
 	return 0;
+}
+
+void PowerupObjectImplementation::addPowerupStat(const String& attributeToMod, const String& name, const String& pupAttrib, float value) {
+	PowerupStat newStat(attributeToMod, name, pupAttrib);
+	newStat.setValue(value);
+
+	modifiers.add(newStat);
 }
