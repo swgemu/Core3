@@ -1778,10 +1778,12 @@ Reference<MissionObject*> MissionManagerImplementation::getBountyHunterMission(C
 void MissionManagerImplementation::addPlayerToBountyList(uint64 targetId, int reward) {
 	Locker listLocker(&playerBountyListMutex);
 
-	if (playerBountyList.contains(targetId) && !playerBountyList.get(targetId)->getCanHaveNewMissions()) {
-		playerBountyList.get(targetId)->setCanHaveNewMissions(true);
+	if (playerBountyList.contains(targetId)) {
+		if (!playerBountyList.get(targetId)->getCanHaveNewMissions()) {
+			playerBountyList.get(targetId)->setCanHaveNewMissions(true);
 
-		info("Re-adding player " + String::valueOf(targetId) + " to bounty hunter list.", true);
+			info("Re-adding player " + String::valueOf(targetId) + " to bounty hunter list.", true);
+		}
 	} else {
 		playerBountyList.put(targetId, new BountyTargetListElement(targetId, reward));
 
