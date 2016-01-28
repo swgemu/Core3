@@ -56,7 +56,7 @@ int SurveyToolImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		if (selectedID == 20) { // use object
 			int range = getRange(player);
 
-			if(range <= 0 || range > 320) {
+			if(range <= 0 || range > 384) {
 				sendRangeSui(player);
 				return 0;
 			}
@@ -115,6 +115,9 @@ void SurveyToolImplementation::sendRangeSui(CreatureObject* player) {
 	if (surveyMod >= 100)
 		suiToolRangeBox->addMenuItem("320m x 5pts", 4);
 
+	if (surveyMod >= 120)
+		suiToolRangeBox->addMenuItem("384m x 5pts", 5);
+
 	suiToolRangeBox->setUsingObject(_this.getReferenceUnsafeStaticCast());
 	suiToolRangeBox->setCallback(new SurveyToolSetRangeSuiCallback(server->getZoneServer()));
 	player->getPlayerObject()->addSuiBox(suiToolRangeBox);
@@ -134,46 +137,32 @@ int SurveyToolImplementation::getRange(CreatureObject* player) {
 
 int SurveyToolImplementation::getSkillBasedRange(int skillLevel) {
 
-	if(skillLevel >= 125)
-		return 1024;
-	else if(skillLevel >= 115)
-		return 512;
-	else if(skillLevel >= 110)
-		return 448;
-	else if(skillLevel >= 105)
+	if (skillLevel >= 120)
 		return 384;
-	else if(skillLevel >= 100)
+	else if (skillLevel >= 100)
 		return 320;
-	else if(skillLevel >= 75)
+	else if (skillLevel >= 75)
 		return 256;
-	else if(skillLevel >= 55)
+	else if (skillLevel >= 55)
 		return 192;
-	else if(skillLevel >= 35)
+	else if (skillLevel >= 35)
 		return 128;
-	else if(skillLevel >= 20)
+	else if (skillLevel >= 20)
 		return 64;
 
 	return 0;
 }
 
 void SurveyToolImplementation::setRange(int r) {
-	range = r;  /// Distance the tool checks during survey
-	points = 3; /// Number of grid points in survey SUI 3x3 to 5x5
+	range = r;  // Distance the tool checks during survey
 
-	if (range >= 128) {
+	// Set number of grid points in survey SUI 3x3 to 5x5
+	if (range >= 256) {
+		points = 5;
+	} else if (range >= 128) {
 		points = 4;
-	}
-
-	if (range >= 255) {
-		points = 5;
-	}
-
-	if (range >= 320) {
-		points = 5;
-	}
-
-	if (range >= 384) {
-		points = 6;
+	} else {
+		points = 3;
 	}
 }
 
