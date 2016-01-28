@@ -125,6 +125,11 @@ public:
 		if (lootCredits < 1)
 			return;
 
+		int luck = player->getSkillMod("force_luck");
+
+		if (luck > 0)
+			lootCredits += (lootCredits * luck) / 20;
+
 		Locker clocker(group, corpse);
 
 		//Determine eligible group members to give credits.
