@@ -39,8 +39,7 @@ function TatooineBestineScreenPlay:spawnMobiles()
 
 	--Med Center
 	spawnMobile("tatooine", "trainer_medic",0,-8.7,0.2,0.1,91,4005383)
-	pNpc = spawnMobile("tatooine", "melious_purl",60,-1.28426,0.184067,0.712487,280.416,4005383)
-	self:setMoodString(pNpc, "npc_imperial")
+
 
 	--Guild Hall -1239 -3580
 	pNpc = spawnMobile("tatooine", "coa3_tactical_imperial",60,9.74537,1.13306,0.300803,93.0077,1028549)

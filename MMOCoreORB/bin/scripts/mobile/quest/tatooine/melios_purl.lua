@@ -1,8 +1,9 @@
-melious_purl = Creature:new {
+melios_purl = Creature:new {
 	objectName = "@theme_park_name:melious_purl",
+	customName = "Melios Purl",
 	socialGroup = "townsperson",
 	faction = "townsperson",
-	level = 10,
+	level = 8,
 	chanceHit = 0.28,
 	damageMin = 90,
 	damageMax = 110,
@@ -22,15 +23,17 @@ melious_purl = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 236,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_melious_purl.iff"},
+	templates = {"object/mobile/tatooine_npc/melios_purl.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "melios_purl_mission_giver_convotemplate",
+	outfit = "melios_purl_outfit",
+	scale = .85,
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(melious_purl, "melious_purl")
+CreatureTemplates:addCreatureTemplate(melios_purl, "melios_purl")
