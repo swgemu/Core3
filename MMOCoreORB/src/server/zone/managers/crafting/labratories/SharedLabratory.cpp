@@ -146,8 +146,12 @@ int SharedLabratory::calculateAssemblySuccess(CreatureObject* player,DraftSchema
 	/// City bonus should be 10
 	float cityBonus = player->getSkillMod("private_spec_assembly");
 
-	float assemblyPoints = ((float)player->getSkillMod(draftSchematic->getAssemblySkill())) / 10.0f;
+	int assemblySkill = player->getSkillMod(draftSchematic->getAssemblySkill());
+	assemblySkill += player->getSkillMod("force_assembly");
+
+	float assemblyPoints = ((float)assemblySkill) / 10.0f;
 	int failMitigate = (player->getSkillMod(draftSchematic->getAssemblySkill()) - 100 + cityBonus) / 7;
+	failMitigate += player->getSkillMod("force_failure_reduction");
 
 	if(failMitigate < 0)
 		failMitigate = 0;
@@ -158,7 +162,6 @@ int SharedLabratory::calculateAssemblySuccess(CreatureObject* player,DraftSchema
 	float toolModifier = 1.0f + (effectiveness / 100.0f);
 
 	//Pyollian Cake
-
 	float craftbonus = 0;
 	if (player->hasBuff(BuffCRC::FOOD_CRAFT_BONUS)) {
 		Buff* buff = player->getBuff(BuffCRC::FOOD_CRAFT_BONUS);

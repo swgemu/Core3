@@ -69,10 +69,15 @@ int CraftingManagerImplementation::calculateExperimentationSuccess(CreatureObjec
 
 	float cityBonus = player->getSkillMod("private_spec_experimentation");
 
-	// assemblyPoints is 0-12
-	float experimentingPoints = ((float)player->getSkillMod(draftSchematic->getExperimentationSkill())) / 10.0f;
+	int experimentationSkill = player->getSkillMod(draftSchematic->getExperimentationSkill());
+	int forceSkill = player->getSkillMod("force_experimentation");
+	experimentationSkill += forceSkill;
+
+	float experimentingPoints = ((float)experimentationSkill) / 10.0f;
 
 	int failMitigate = (player->getSkillMod(draftSchematic->getAssemblySkill()) - 100 + cityBonus) / 7;
+	failMitigate += player->getSkillMod("force_failure_reduction");
+
 	if(failMitigate < 0)
 		failMitigate = 0;
 	if(failMitigate > 5)
@@ -82,7 +87,6 @@ int CraftingManagerImplementation::calculateExperimentationSuccess(CreatureObjec
 	float toolModifier = 1.0f + (effectiveness / 100.0f);
 
 	//Bespin Port
-
 	float expbonus = 0;
 	if (player->hasBuff(BuffCRC::FOOD_EXPERIMENT_BONUS)) {
 		Buff* buff = player->getBuff(BuffCRC::FOOD_EXPERIMENT_BONUS);
@@ -96,7 +100,7 @@ int CraftingManagerImplementation::calculateExperimentationSuccess(CreatureObjec
 	/// Range 0-100
 	int luckRoll = System::random(100) + cityBonus;
 
-	if(luckRoll > (95 - expbonus))
+	if(luckRoll > ((95 - expbonus) - forceSkill))
 		return AMAZINGSUCCESS;
 
 	if(luckRoll < (5 - expbonus - failMitigate))
