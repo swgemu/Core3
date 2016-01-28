@@ -68,7 +68,7 @@ public:
 		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 		Zone* zone = creature->getZone();
 
-		if (creature->getCloseObjects() == NULL || range > ZoneServer::CLOSEOBJECTRANGE) {
+		if (creature->getCloseObjects() == NULL || range > server->getZoneServer()->getCloseObjectRange()) {
 			creature->info("Null closeobjects vector in BroadcastAreaCommand::doQueueCommand", true);
 			zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
 		}
@@ -195,8 +195,9 @@ public:
 			if (targetObject->isPlayerCreature() && creature->isInRange(targetObject, range)) {
 					CreatureObject* targetPlayer = cast<CreatureObject*>(targetObject);
 					targetPlayer->sendSystemMessage(message);
-				}
 			}
+		}
+
 		return SUCCESS;
 	}
 

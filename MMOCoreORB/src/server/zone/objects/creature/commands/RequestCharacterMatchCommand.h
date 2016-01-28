@@ -47,7 +47,7 @@ public:
 			if (actualCloseObjects != NULL) {
 				actualCloseObjects->safeCopyTo(closeObjects);
 			} else {
-				zone->getInRangeObjects(creature->getWorldPositionX(), creature->getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeObjects, true);
+				zone->getInRangeObjects(creature->getWorldPositionX(), creature->getWorldPositionY(), server->getZoneServer()->getCloseObjectRange(), &closeObjects, true);
 			}
 
 			PlayersNearYouMessage* pny = new PlayersNearYouMessage(creature);

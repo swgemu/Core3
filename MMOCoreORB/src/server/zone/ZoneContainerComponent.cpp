@@ -178,7 +178,7 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 
 	zone->insert(object);
 
-	zone->inRange(object, ZoneServer::CLOSEOBJECTRANGE);
+	zone->inRange(object, zone->getZoneServer()->getCloseObjectRange());
 
 	if (object->isTangibleObject()) {
 		TangibleObject* tano = cast<TangibleObject*>(object);

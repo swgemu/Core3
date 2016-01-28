@@ -781,7 +781,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, StringI
 		closeObjects->safeCopyTo(closeEntryObjects);
 	} else {
 		player->info("Null closeobjects vector in ChatManager::broadcastMessage(StringId)", true);
-		zone->getInRangeObjects(player->getWorldPositionX(), player->getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
+		zone->getInRangeObjects(player->getWorldPositionX(), player->getWorldPositionY(), server->getCloseObjectRange(), &closeEntryObjects, true);
 	}
 
 	try {

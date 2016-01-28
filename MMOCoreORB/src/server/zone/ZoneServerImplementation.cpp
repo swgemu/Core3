@@ -62,9 +62,9 @@ ZoneServerImplementation::ZoneServerImplementation(ConfigManager* config) :
 	galaxyName = "Core3";
 
 	processor = NULL;
-	
-	
+
 	serverCap = 3000;
+	closeObjectRange = 192;
 
 	phandler = NULL;
 
@@ -518,9 +518,18 @@ void ZoneServerImplementation::changeUserCap(int amount) {
 	lock();
 
 	serverCap += amount;
-	//userManager->changeUserCap(amount);
 	
 	info("server cap changed to " + String::valueOf(serverCap), true);
+
+	unlock();
+}
+
+void ZoneServerImplementation::changeCloseObjectRange(float newRange) {
+	lock();
+
+	closeObjectRange = newRange;
+
+	info("close object range changed to " + String::valueOf(closeObjectRange), true);
 
 	unlock();
 }
@@ -565,6 +574,7 @@ void ZoneServerImplementation::printInfo() {
 
 	msg << dec << currentPlayers << " users connected (" << maximumPlayers << " max, " << totalPlayers << " total, "
 		 << totalDeletedPlayers << " deleted)" << endl;
+	msg << dec << "closeObjectRange is currently set to " << closeObjectRange << endl;
 
 #ifndef WITH_STM
 	msg << ObjectManager::instance()->getInfo() << endl;
@@ -613,6 +623,7 @@ String ZoneServerImplementation::getInfo() {
 
 	msg << dec << currentPlayers << " users connected (" << maximumPlayers << " max, " << totalPlayers << " total, "
 		 << totalDeletedPlayers << " deleted)" << endl;
+	msg << dec << "closeObjectRange is currently set to " << closeObjectRange << endl;
 
 #ifndef WITH_STM
 	msg << ObjectManager::instance()->getInfo() << endl;

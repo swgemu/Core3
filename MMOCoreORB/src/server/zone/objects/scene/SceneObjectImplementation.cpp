@@ -514,7 +514,7 @@ void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, Scen
 
 	if (closeobjects == NULL) {
 		info("Null closeobjects vector in SceneObjectImplementation::broadcastObjectPrivate", true);
-		zone->getInRangeObjects(getPositionX(), getPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeSceneObjects, true);
+		zone->getInRangeObjects(getPositionX(), getPositionY(), zoneServer->getCloseObjectRange(), &closeSceneObjects, true);
 
 		maxInRangeObjectCount = closeSceneObjects.size();
 	} else {
@@ -568,7 +568,7 @@ void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, Sce
 
 	if (closeobjects == NULL) {
 		info("Null closeobjects vector in SceneObjectImplementation::broadcastDestroyPrivate", true);
-		zone->getInRangeObjects(getPositionX(), getPositionY(), ZoneServer::CLOSEOBJECTRANGE + 64, &closeSceneObjects, true);
+		zone->getInRangeObjects(getPositionX(), getPositionY(), zoneServer->getCloseObjectRange() + 64, &closeSceneObjects, true);
 
 		maxInRangeObjectCount = closeSceneObjects.size();
 	} else {
@@ -633,7 +633,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 		if (closeobjects == NULL) {
 			info(String::valueOf(getObjectID()) + " Null closeobjects vector in SceneObjectImplementation::broadcastMessagePrivate", true);
 			closeSceneObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
-			zone->getInRangeObjects(getPositionX(), getPositionY(), ZoneServer::CLOSEOBJECTRANGE, closeSceneObjects, true);
+			zone->getInRangeObjects(getPositionX(), getPositionY(), zoneServer->getCloseObjectRange(), closeSceneObjects, true);
 
 			maxInRangeObjectCount = closeSceneObjects->size();
 			deleteVector = true;
@@ -726,7 +726,7 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 
 		if (closeobjects == NULL) {
 			info(String::valueOf(getObjectID()) + " Null closeobjects vector in SceneObjectImplementation::broadcastMessagesPrivate", true);
-			zone->getInRangeObjects(getPositionX(), getPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeSceneObjects, true);
+			zone->getInRangeObjects(getPositionX(), getPositionY(), zoneServer->getCloseObjectRange(), &closeSceneObjects, true);
 
 			maxInRangeObjectCount = closeSceneObjects.size();
 		} else {

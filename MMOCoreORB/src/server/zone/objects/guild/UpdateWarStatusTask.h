@@ -51,7 +51,7 @@ public:
 
 				Locker _lock(creo);
 
-				if (creo->isInRange(creo2, ZoneServer::CLOSEOBJECTRANGE)) {
+				if (creo->isInRange(creo2, server->getCloseObjectRange())) {
 					Locker _crosslock(creo2, creo);
 					creo->sendPvpStatusTo(creo2);
 					creo2->sendPvpStatusTo(creo);
