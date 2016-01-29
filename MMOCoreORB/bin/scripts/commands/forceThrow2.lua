@@ -49,32 +49,31 @@ ForceThrow2Command = {
 	speed = 4.0,
 	forceCost = 56,
 	visMod = 25,
-	accuracySkillMod = "forcethrow_accuracy";
+	accuracySkillMod = "forcethrow_accuracy",
 
 	stateEffects = {
-	  StateEffect( 
-		STUN_EFFECT, 
-		{}, 
-		{ "jedi_state_defense" }, 
-		{}, 
-		65, 
-		0, 
-		10 
+	  StateEffect(
+		STUN_EFFECT,
+		{},
+		{ "jedi_state_defense" },
+		{},
+		65,
+		0,
+		10
 	  )
 	},
-	
-		
+
 	animationCRC = hashCode("force_throw_1_particle_level_1_medium"),
 
 	combatSpam = "forcethrow2",
-	
+
 	poolsToDamage = RANDOM_ATTRIBUTE,
-	
+
 	attackType = FORCEATTACK,
 	damageType = KINETIC_DAMAGE,
 
 	range = 32
-}				
+}	
 
 AddCommand(ForceThrow2Command)
 
