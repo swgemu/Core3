@@ -257,8 +257,6 @@ class BuildingObject extends StructureObject {
 		return totalCellNumber;
 	}
 
-	public native abstract boolean transferObject(SceneObject object, int containmentType, boolean notifyClient = false, boolean allowOverflow = false);
-
 	public native int notifyObjectInsertedToChild(SceneObject object, SceneObject child, SceneObject oldParent);
 	public native int notifyObjectRemovedFromChild(SceneObject object, SceneObject child);
 

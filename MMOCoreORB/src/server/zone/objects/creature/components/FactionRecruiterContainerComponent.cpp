@@ -44,7 +44,7 @@ int FactionRecruiterContainerComponent::canAddObject(SceneObject* sceneObject, S
 	return TransferErrorCode::INVALIDTYPE;
 }
 
-bool FactionRecruiterContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow) {
+bool FactionRecruiterContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow, bool notifyRoot) {
 	CoaMessageDataComponent* data = object->getDataObjectComponent()->castTo<CoaMessageDataComponent*>();
 
 	if (data == NULL) {

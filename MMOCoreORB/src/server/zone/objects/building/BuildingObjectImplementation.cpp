@@ -848,10 +848,6 @@ uint32 BuildingObjectImplementation::getMaximumNumberOfPlayerItems() {
 	return MIN(MAXPLAYERITEMS, lots * 100);
 }
 
-bool BuildingObjectImplementation::transferObject(SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow) {
-	return StructureObjectImplementation::transferObject(object, containmentType, notifyClient, allowOverflow);
-}
-
 int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent) {
 	ManagedReference<Zone*> zone = getZone();
 

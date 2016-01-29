@@ -121,7 +121,7 @@ int CellObjectImplementation::canAddObject(SceneObject* object, int containmentT
 	return SceneObjectImplementation::canAddObject(object, containmentType, errorDescription);
 }
 
-bool CellObjectImplementation::transferObject(SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow) {
+bool CellObjectImplementation::transferObject(SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow, bool notifyRoot) {
 	//Locker locker(_this);
 
 	Zone* zone = getZone();
@@ -137,7 +137,7 @@ bool CellObjectImplementation::transferObject(SceneObject* object, int containme
 	ManagedReference<SceneObject*> oldParent = object->getParent();
 
 	try {
-		ret = SceneObjectImplementation::transferObject(object, containmentType, notifyClient, allowOverflow);
+		ret = SceneObjectImplementation::transferObject(object, containmentType, notifyClient, allowOverflow, notifyRoot);
 
 		if (zone != NULL && object->isTangibleObject()) {
 			TangibleObject* tano = cast<TangibleObject*>(object);

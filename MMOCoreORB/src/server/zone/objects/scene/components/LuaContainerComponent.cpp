@@ -43,7 +43,7 @@ int LuaContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* o
 	return result;
 }
 
-bool LuaContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow) {
+bool LuaContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow, bool notifyRoot) {
 	if (sceneObject == object)
 		return false;
 
@@ -61,7 +61,7 @@ bool LuaContainerComponent::transferObject(SceneObject* sceneObject, SceneObject
 	lua_pop(lua->getLuaState(), 1);
 
 	if (result == -1)
-		result = ContainerComponent::transferObject(sceneObject, object, containmentType, notifyClient, allowOverflow);
+		result = ContainerComponent::transferObject(sceneObject, object, containmentType, notifyClient, allowOverflow, notifyRoot);
 
 	return result;
 }

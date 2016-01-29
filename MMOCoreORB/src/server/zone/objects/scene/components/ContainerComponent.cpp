@@ -139,7 +139,7 @@ bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, Crea
 	return permission & (allowPermissions & ~denyPermissions);
 }
 
-bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow) {
+bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow, bool notifyRoot) {
 	if (sceneObject == object) {
 		return false;
 	}
@@ -240,7 +240,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 	ManagedReference<SceneObject*> rootParent = object->getRootParent();
 
-	if (rootParent != NULL)
+	if (rootParent != NULL && notifyRoot)
 		rootParent->notifyObjectInsertedToChild(object, sceneObject, objParent);
 
 	object->notifyObservers(ObserverEventType::PARENTCHANGED, sceneObject);

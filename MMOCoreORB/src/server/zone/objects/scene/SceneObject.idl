@@ -232,7 +232,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param notifyClient if true in range objects will be updated with the change
 	 * @return returns true if the object has been successfully added
 	 */
-	public native abstract boolean transferObject(SceneObject object, int containmentType, boolean notifyClient = false, boolean allowOverflow = false);
+	public native abstract boolean transferObject(SceneObject object, int containmentType, boolean notifyClient = false, boolean allowOverflow = false, boolean notifyRoot = true);
 
 	/**
 	 * Tries to remove/unlink object

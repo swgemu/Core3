@@ -41,7 +41,7 @@ public:
 	 * @param allowOverflow if true will bypass the containerVolumeLimit check
 	 * @return returns true if the object has been successfully added
 	 */
-	virtual bool transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient = false, bool allowOverflow = false);
+	virtual bool transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient = false, bool allowOverflow = false, bool notifyRoot = true);
 
 	/**
 	 * Tries to remove/unlink object

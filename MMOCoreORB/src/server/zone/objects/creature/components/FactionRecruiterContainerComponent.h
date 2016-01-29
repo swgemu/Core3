@@ -9,7 +9,7 @@ public:
 
 	int canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription);
 
-	bool transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient = false, bool allowOverflow = false);
+	bool transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient = false, bool allowOverflow = false, bool notifyRoot = true);
 
 };
 
