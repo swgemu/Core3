@@ -3092,8 +3092,6 @@ bool AiAgentImplementation::isAttackableBy(TangibleObject* object) {
 			return false;
 		}
 
-	} else if (targetFaction == 0 && getFaction() != 0) {
-		return false;
 	}
 
 	return true;
@@ -3155,8 +3153,6 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 			return false;
 		}
 
-	} else if (targetFaction == 0 && getFaction() != 0) {
-		return false;
 	}
 
 	if (object->isAiAgent()) {

@@ -257,6 +257,12 @@ class InstallationObject extends StructureObject {
 
 	//public native void setCombatState();
 
+	@preLocked
+	public native void addDefender(SceneObject defender);
+
+	@dirty
+	public native boolean isAggressiveTo(CreatureObject object);
+
 	/**
 	* pre{ object is locked}
 	* post{this object is locked}

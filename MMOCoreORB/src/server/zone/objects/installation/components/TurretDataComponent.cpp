@@ -82,11 +82,15 @@ bool TurretDataComponent::checkTarget(CreatureObject* creature) {
 	if (creature == NULL)
 		return false;
 
-	ManagedReference<SceneObject*> turret = getParent();
+	ManagedReference<TangibleObject*> turret = cast<TangibleObject*>(getParent());
 	if (turret == NULL)
 		return false;
 
 	if (creature->isDead() || creature->isIncapacitated() || !turret->isInRange(creature, maxrange)) {
+		return false;
+	}
+
+	if (!turret->hasDefender(creature) && !turret->isAggressiveTo(creature)) {
 		return false;
 	}
 

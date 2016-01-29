@@ -688,6 +688,28 @@ void InstallationObjectImplementation::updateStructureStatus() {
 	}
 }
 
+void InstallationObjectImplementation::addDefender(SceneObject* defender) {
+	StructureObjectImplementation::addDefender(defender);
+
+	if (isTurret() && defender->isCreatureObject()) {
+		TurretDataComponent* turretData = cast<TurretDataComponent*>(getDataObjectComponent()->get());
+
+		if (turretData != NULL) {
+			turretData->addTarget(cast<CreatureObject*>(defender));
+		}
+	}
+}
+
+bool InstallationObjectImplementation::isAggressiveTo(CreatureObject* target) {
+	if (!isAttackableBy(target) || target->isVehicleObject())
+		return false;
+
+	if (getFaction() != 0 && target->getFaction() != 0 && getFaction() != target->getFaction())
+		return true;
+
+	return false;
+}
+
 bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (!(getPvpStatusBitmask() & CreatureFlag::ATTACKABLE)) {
 		return false;
@@ -701,8 +723,6 @@ bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object) {
 			return false;
 		}
 
-	} else if (otherFaction == 0 && thisFaction != 0) {
-		return false;
 	}
 
 	if (object->isPet()) {
