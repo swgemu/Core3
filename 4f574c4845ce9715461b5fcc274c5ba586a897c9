@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_33f3480c",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/powerup/PowerupObject.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-29T09:14:36Z",
+      "side": 1,
+      "message": "The powerup won\u0027t be locked when you call these methods in lua, but that should be fine since you just created it. Remove this from each of your new methods.",
+      "revId": "4f574c4845ce9715461b5fcc274c5ba586a897c9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

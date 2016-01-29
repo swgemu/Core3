@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_93eed421",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/phase2/fs_sad.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-29T09:14:36Z",
+      "side": 0,
+      "message": "I would change this to ~\u003d, remove the sys message and move your new line inside here.",
+      "revId": "0ebb35e47654dc0d18ba0f53cfd5b102b9179029",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
