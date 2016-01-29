@@ -42,7 +42,12 @@
 
 
 object_tangible_loot_quest_quest_stimpack_a_schematic = object_tangible_loot_quest_shared_quest_stimpack_a_schematic:new {
-
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "science_medic_novice",
+	targetDraftSchematic = "object/draft_schematic/chemistry/quest_stimpack_a.iff",
+	targetUseCount = 5
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_quest_stimpack_a_schematic, "object/tangible/loot/quest/quest_stimpack_a_schematic.iff")
