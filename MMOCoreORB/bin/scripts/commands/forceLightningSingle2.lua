@@ -49,7 +49,7 @@ ForceLightningSingle2Command = {
 	speed = 4.0,
 	forceCost = 150,
 	visMod = 25,
-	accuracySkillMod = "forcelightning_accuracy";
+	accuracySkillMod = "forcelightning_accuracy",
 
 	stateEffects = {
 	  StateEffect(
