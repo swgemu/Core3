@@ -210,7 +210,7 @@ public:
 		}
 
 		try {
-			int res = combatManager->doCombatAction(creature, weapon, cast<TangibleObject*>(targetObject.get()), CreatureAttackData(arguments, this));
+			int res = combatManager->doCombatAction(creature, weapon, cast<TangibleObject*>(targetObject.get()), CreatureAttackData(arguments, this, target));
 
 			switch (res) {
 			case -1:
@@ -517,7 +517,7 @@ public:
 		case CommandEffect::KNOCKDOWN:
 			if (!defender->checkKnockdownRecovery()) {
 				if (defender->getPosture() != CreaturePosture::UPRIGHT)
-					defender->setPosture(CreaturePosture::UPRIGHT);
+					defender->setPosture(CreaturePosture::UPRIGHT, false, false);
 				break;
 			}
 
@@ -527,7 +527,7 @@ public:
 			}
 
 			if (!defender->isDead() && !defender->isIncapacitated())
-				defender->setPosture(CreaturePosture::KNOCKEDDOWN);
+				defender->setPosture(CreaturePosture::KNOCKEDDOWN, false, false);
 
 			defender->updateKnockdownRecovery();
 			defender->updatePostureChangeDelay(5000);
@@ -539,7 +539,7 @@ public:
 		case CommandEffect::POSTUREUP:
 			if (!defender->checkPostureUpRecovery()) {
 				if (defender->getPosture() != CreaturePosture::UPRIGHT)
-					defender->setPosture(CreaturePosture::UPRIGHT);
+					defender->setPosture(CreaturePosture::UPRIGHT, false, false);
 				break;
 			}
 
@@ -549,11 +549,11 @@ public:
 			}
 
 			if (defender->getPosture() == CreaturePosture::PRONE) {
-				defender->setPosture(CreaturePosture::CROUCHED);
+				defender->setPosture(CreaturePosture::CROUCHED, false, false);
 				defender->sendSystemMessage("@cbt_spam:force_posture_change_1");
 				defender->sendStateCombatSpam("cbt_spam", "force_posture_change_1", 0, 0, false);
 			} else if (defender->getPosture() == CreaturePosture::CROUCHED) {
-				defender->setPosture(CreaturePosture::UPRIGHT);
+				defender->setPosture(CreaturePosture::UPRIGHT, false, false);
 				defender->sendSystemMessage("@cbt_spam:force_posture_change_0");
 				defender->sendStateCombatSpam("cbt_spam", "force_posture_change_0", 0, 0, false);
 			}
@@ -566,7 +566,7 @@ public:
 		case CommandEffect::POSTUREDOWN:
 			if (!defender->checkPostureDownRecovery()) {
 				if (defender->getPosture() != CreaturePosture::UPRIGHT)
-					defender->setPosture(CreaturePosture::UPRIGHT);
+					defender->setPosture(CreaturePosture::UPRIGHT, false, false);
 				break;
 			}
 
@@ -576,11 +576,11 @@ public:
 			}
 
 			if (defender->getPosture() == CreaturePosture::UPRIGHT) {
-				defender->setPosture(CreaturePosture::CROUCHED);
+				defender->setPosture(CreaturePosture::CROUCHED, false, false);
 				defender->sendSystemMessage("@cbt_spam:force_posture_change_1");
 				defender->sendStateCombatSpam("cbt_spam", "force_posture_change_1", 0, 0, false);
 			} else if (defender->getPosture() == CreaturePosture::CROUCHED) {
-				defender->setPosture(CreaturePosture::PRONE);
+				defender->setPosture(CreaturePosture::PRONE, false, false);
 				defender->sendSystemMessage("@cbt_spam:force_posture_change_2");
 				defender->sendStateCombatSpam("cbt_spam", "force_posture_change_2", 0, 0, false);
 			}
@@ -619,13 +619,13 @@ public:
 			}
 			break;
 		case CommandEffect::ATTACKER_FORCE_STAND:
-			attacker->setPosture(CreaturePosture::UPRIGHT, false);
+			attacker->setPosture(CreaturePosture::UPRIGHT, false, false);
 			break;
 		case CommandEffect::ATTACKER_FORCE_CROUCH:
-			attacker->setPosture(CreaturePosture::CROUCHED, false);
+			attacker->setPosture(CreaturePosture::CROUCHED, false, false);
 			break;
 		case CommandEffect::ATTACKER_FORCE_PRONE:
-			attacker->setPosture(CreaturePosture::PRONE, false);
+			attacker->setPosture(CreaturePosture::PRONE, false, false);
 			break;
 		default:
 			break;

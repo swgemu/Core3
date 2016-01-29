@@ -64,7 +64,7 @@ Melee2hArea1Command = {
 	  )
 	},
 
-	animationCRC = hashCode("attack_high_right_light_2"),
+	animationCRC = hashCode("lower_posture_2hmelee_2"),
 
 	combatSpam = "descendingstrike",
 	

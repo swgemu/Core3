@@ -129,7 +129,7 @@ class PlayerManager extends Observer implements Logger {
 	 */
 	@arg1preLocked
 	@arg2preLocked
-	public native int notifyDestruction(TangibleObject destructor, TangibleObject destructedObject, int condition); 
+	public native int notifyDestruction(TangibleObject destructor, TangibleObject destructedObject, int condition, boolean isCombatAction); 
 
 	public native boolean shouldRescheduleCorpseDestruction(CreatureObject player, CreatureObject ai);
 
@@ -141,7 +141,7 @@ class PlayerManager extends Observer implements Logger {
 	 * @pre { attacker and player locked }
 	 * @post { attacker and player locked }
 	 */
-	public native void killPlayer(TangibleObject attacker, CreatureObject player, int typeofdeath = 0);
+	public native void killPlayer(TangibleObject attacker, CreatureObject player, int typeofdeath = 0, boolean isCombatAction = false);
 
 	/**
 	 * Calculates the length of time that incapacitation should last. Cannot exceed 1 minute.
