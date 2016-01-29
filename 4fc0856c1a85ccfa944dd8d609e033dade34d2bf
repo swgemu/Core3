@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_53e27c04",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceChokeCommand.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-29T23:20:04Z",
+      "side": 1,
+      "message": "No, use the damage in the lua for this. Also, this will only randomize once and pass the damage into the tick task. It will be the same damage each time.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 39
+      },
+      "revId": "4fc0856c1a85ccfa944dd8d609e033dade34d2bf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_b3c75864",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceChokeCommand.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-29T23:20:04Z",
+      "side": 1,
+      "message": "What about overwriting conditions? We had a whole conversation about that.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "4fc0856c1a85ccfa944dd8d609e033dade34d2bf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_f3e63016",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceChokeCommand.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-29T23:20:04Z",
+      "side": 1,
+      "message": "This is messy, you are independently building a buff and a task, and assuming that they will be simultaneous. If you want simultaneous, use one or the other or if you need both, have one linked to the other in some way.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 67
+      },
+      "revId": "4fc0856c1a85ccfa944dd8d609e033dade34d2bf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_13e4040c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceChokeCommand.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-29T23:20:04Z",
+      "side": 1,
+      "message": "This used to be 6 seconds, is 5 seconds better?",
+      "range": {
+        "startLine": 59,
+        "startChar": 61,
+        "endLine": 59,
+        "endChar": 65
+      },
+      "revId": "4fc0856c1a85ccfa944dd8d609e033dade34d2bf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_13cba473",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/ForceChokeTickTask.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-29T23:20:04Z",
+      "side": 1,
+      "message": "This isn\u0027t used.",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 16
+      },
+      "revId": "4fc0856c1a85ccfa944dd8d609e033dade34d2bf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_b3f0b8ca",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/ForceChokeTickTask.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-29T23:20:04Z",
+      "side": 1,
+      "message": "creature shouldn\u0027t be locked here (nothing should be locked here)... how can you crosslock against it?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 47
+      },
+      "revId": "4fc0856c1a85ccfa944dd8d609e033dade34d2bf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_53b91ce8",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/ForceChokeTickTask.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-29T23:20:04Z",
+      "side": 1,
+      "message": "Don\u0027t put this here. Put this either as a configurable option in the lua command, a const in the variable definitions, or don\u0027t use it at all (I don\u0027t think you need this).",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 38
+      },
+      "revId": "4fc0856c1a85ccfa944dd8d609e033dade34d2bf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_f3cdd087",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/ForceChokeTickTask.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-29T23:20:04Z",
+      "side": 1,
+      "message": "I would say to use the damage from the lua, but that will automatically get used when you fix this to go through combat manager.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 40
+      },
+      "revId": "4fc0856c1a85ccfa944dd8d609e033dade34d2bf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_33b4a8f1",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/ForceChokeTickTask.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-29T23:20:04Z",
+      "side": 1,
+      "message": "creature and creatureTarget are already CreatureObject* -- why do this?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 59
+      },
+      "revId": "4fc0856c1a85ccfa944dd8d609e033dade34d2bf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_d3ed2cf1",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/ForceChokeTickTask.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-29T23:20:04Z",
+      "side": 1,
+      "message": "This is your third lock, you\u0027re just asking for a deadlock at this point.",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 32
+      },
+      "revId": "4fc0856c1a85ccfa944dd8d609e033dade34d2bf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_73ba20e3",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/ForceChokeTickTask.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-29T23:20:04Z",
+      "side": 1,
+      "message": "Don\u0027t inflict damage directly. Send the command through combat manager each time.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 90
+      },
+      "revId": "4fc0856c1a85ccfa944dd8d609e033dade34d2bf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
