@@ -155,8 +155,6 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim,
 	//only 1 disease per bar allowed
 	if(dotType == CreatureState::DISEASED) {
 		objectID = Long::hashCode(CreatureState::DISEASED);
-	} else if (dotType == CommandEffect::FORCECHOKE) {
-		objectID = 0;
 	}
 
 	DamageOverTime newDot(attacker, dotType, pool, strength, duration, secondaryStrength);
@@ -209,8 +207,7 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim,
 
 	locker.release();
 
-	if (dotType != CommandEffect::FORCECHOKE)
-		victim->setState(dotType);
+	victim->setState(dotType);
 
 	return dotPower;
 }
@@ -362,9 +359,6 @@ void DamageOverTimeList::sendStartMessage(CreatureObject* victim, uint64 type) {
 		break;
 	case CreatureState::ONFIRE:
 		victim->sendSystemMessage("@dot_message:start_fire");
-		break;
-	case CommandEffect::FORCECHOKE:
-		victim->sendSystemMessage("@combat_effects:choke_single");
 		break;
 	}
 }
