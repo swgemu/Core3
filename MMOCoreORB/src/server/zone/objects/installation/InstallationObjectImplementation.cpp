@@ -689,7 +689,19 @@ void InstallationObjectImplementation::updateStructureStatus() {
 }
 
 bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object) {
-	if( !(getPvpStatusBitmask() & CreatureFlag::ATTACKABLE) ) {
+	if (!(getPvpStatusBitmask() & CreatureFlag::ATTACKABLE)) {
+		return false;
+	}
+
+	unsigned int thisFaction = getFaction();
+	unsigned int otherFaction = object->getFaction();
+
+	if (otherFaction != 0 && thisFaction != 0) {
+		if (otherFaction == thisFaction) {
+			return false;
+		}
+
+	} else if (otherFaction == 0 && thisFaction != 0) {
 		return false;
 	}
 
@@ -700,24 +712,21 @@ bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object) {
 			return false;
 
 		return isAttackableBy(owner);
-	} else if(object->isPlayerCreature()) {
+
+	} else if (object->isPlayerCreature()) {
 		ManagedReference<PlayerObject*> ghost = object->getPlayerObject();
-		if(ghost == NULL) {
+		if (ghost == NULL) {
 			return false;
 		}
 
-		if(getFaction() == 0) {
-			return true;
-		}
+		if (thisFaction != 0) {
+			if (ghost->getFactionStatus() == 0) {
+				return false;
+			}
 
-		if(getFaction() == object->getFaction()) {
-			return false;
-		}
-
-		if((getPvpStatusBitmask() & CreatureFlag::OVERT) && ghost->getFactionStatus() != FactionStatus::OVERT) {
-			return false;
-		} else if(!(ghost->getFactionStatus() >= FactionStatus::COVERT)) {
-			return false;
+			if ((getPvpStatusBitmask() & CreatureFlag::OVERT) && ghost->getFactionStatus() != FactionStatus::OVERT) {
+				return false;
+			}
 		}
 	}
 
