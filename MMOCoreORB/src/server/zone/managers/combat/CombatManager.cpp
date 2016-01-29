@@ -402,14 +402,9 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 
 	CombatAction* combatAction = NULL;
 
-	uint32 animationCRC = data.getAnimationCRC();
-	combatAction = new CombatAction(attacker, defenderObject, animationCRC, hitVal, CombatManager::DEFAULTTRAIL);
-	attacker->broadcastMessage(combatAction,true);
-
 	switch (hitVal) {
 	case MISS:
 		doMiss(attacker, weapon, defenderObject, damage);
-		return 0;
 		break;
 	case HIT:
 		break;
@@ -435,20 +430,30 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 		break;
 	}
 
-	int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
+	if(hitVal != MISS) {
+		int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
 
-	if (poolsToDamage == 0)
-		return 0;
+		if (poolsToDamage == 0)
+			return 0;
 
-	if (defenderObject->hasAttackDelay())
-		defenderObject->removeAttackDelay();
+		if (defenderObject->hasAttackDelay())
+			defenderObject->removeAttackDelay();
 
-	if (damageMultiplier != 0 && damage != 0)
-		damage = applyDamage(attacker, weapon, defenderObject, damage, damageMultiplier, poolsToDamage, data);
+		if (damageMultiplier != 0 && damage != 0)
+			damage = applyDamage(attacker, weapon, defenderObject, damage, damageMultiplier, poolsToDamage, data);
 
-	//Send defensive buff combat spam last.
-	if (!foodMitigation.isEmpty())
-		sendMitigationCombatSpam(defenderObject, weapon, foodMitigation.get(0), FOOD);
+		//Send defensive buff combat spam last.
+		if (!foodMitigation.isEmpty())
+			sendMitigationCombatSpam(defenderObject, weapon, foodMitigation.get(0), FOOD);
+	} else {
+		damage = 0;
+	}
+
+	defenderObject->updatePostures(false);
+
+	uint32 animationCRC = data.getAnimationCRC();
+	combatAction = new CombatAction(attacker, defenderObject, animationCRC, hitVal, CombatManager::DEFAULTTRAIL);
+	attacker->broadcastMessage(combatAction,true);
 
 	return damage;
 }
