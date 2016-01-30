@@ -12,6 +12,7 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/name/NameManager.h"
+#include "server/zone/managers/creature/CreatureManager.h"
 
 void EventPerkDeedImplementation::initializeTransientMembers() {
 	DeedImplementation::initializeTransientMembers();
@@ -191,11 +192,6 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			return 1;
 		}
 
-		if (perkType != EventPerkDeedTemplate::STATIC && perkType != EventPerkDeedTemplate::GAME && perkType != EventPerkDeedTemplate::THEATER) {
-			player->sendSystemMessage("This type of event perk deed is not functional yet.");
-			return 1;
-		}
-
 		ManagedReference<TangibleObject*> object = generatedObject.get();
 
 		if (object == NULL) {
@@ -240,6 +236,18 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 }
 
 void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
+	EventPerkDataComponent* data = cast<EventPerkDataComponent*>(parent->getDataObjectComponent()->get());
+
+	if (data == NULL)
+		return;
+
+	EventPerkDeed* deed = data->getDeed();
+
+	if (deed == NULL)
+		return;
+
+	int perkType = getPerkType();
+
 	SortedVector<ManagedReference<SceneObject*> >* children = parent->getChildObjects();
 
 	for (int j = 0; j < children->size(); j++) {
@@ -247,6 +255,15 @@ void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
 
 		if (child != NULL)	{
 			Locker cLock(child, parent);
+
+			ContainerPermissions* permissions = child->getContainerPermissions();
+			permissions->setOwner(parent->getObjectID());
+			permissions->setInheritPermissionsFromParent(false);
+			permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
+			permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
+
+			if (perkType == EventPerkDeedTemplate::HONORGUARD || perkType == EventPerkDeedTemplate::RECRUITER)
+				child->setObjectMenuComponent("EventPerkMenuComponent");
 
 			if (child->getServerObjectCRC() == 0xB2EC90B2) { // object/mobile/dressed_stormtrooper_m.iff
 				int randNum = 100 + System::random(899);
@@ -260,9 +277,19 @@ void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
 				child->setCustomObjectName("AT-ST", true);
 			} else if (child->getServerObjectCRC() == 0xCF9AC86C) { // object/mobile/bantha_saddle.iff
 				child->setCustomObjectName("a bantha mount", true);
-			} else if (child->getObjectTemplate()->getFullTemplateString().indexOf("object/mobile") != -1) {
+			} else if (child->getObjectTemplate()->getFullTemplateString().indexOf("object/mobile") != -1 && perkType != EventPerkDeedTemplate::RECRUITER) {
 				NameManager* nameManager = NameManager::instance();
 				String name = nameManager->makeCreatureName();
+
+				if (child->getServerObjectCRC() == 0x63371470) // object/mobile/dressed_corsec_officer_human_male_01.iff
+					name = name + " (a CorSec trooper)";
+				else if (child->getServerObjectCRC() == 0x86752E27) // object/mobile/dressed_fed_dub_patrolman_human_male_01.iff
+					name = name + " (a Fed-Dub patrolman)";
+				else if (child->getServerObjectCRC() == 0x450C04C9) // object/mobile/dressed_rebel_crewman_human_male_01.iff
+					name = name + " (a Rebel crewman)";
+				else if (child->getServerObjectCRC() == 0xF171DF10) // object/mobile/dressed_rsf_security_guard.iff
+					name = name + " (an RSF security guard)";
+
 				child->setCustomObjectName(name, true);
 			}
 		}
