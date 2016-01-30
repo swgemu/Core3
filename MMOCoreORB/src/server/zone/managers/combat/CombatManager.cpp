@@ -27,6 +27,7 @@
 #include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/objects/installation/components/TurretDataComponent.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "engine/task/ScheduledTask.h"
 
 #define COMBAT_SPAM_RANGE 85
 
@@ -1790,8 +1791,12 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 			if (combatEquil > 100)
 				combatEquil = 100;
 
-			if ((combatEquil >> 1) > (int) System::random(100) && !targetCreature->isDead() && !targetCreature->isIntimidated())
-				targetCreature->setPosture(CreaturePosture::UPRIGHT, false);
+			if ((combatEquil >> 1) > (int) System::random(100) && !targetCreature->isDead() && !targetCreature->isIntimidated()) {
+				SCHEDULE_TASK_1(targetCreature, 750, { // Delay this until well after we are KD'd
+					Locker lock(targetCreature_p);
+					targetCreature_p->setPosture(CreaturePosture::UPRIGHT, true);
+				});
+			}
 		}
 
 		//Send Combat Spam for state-only attacks.
