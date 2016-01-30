@@ -41,13 +41,24 @@
 --this exception also makes it possible to release a modified version
 
 
-object_tangible_deed_event_perk_corsec_4x10_honorguard_deed = object_tangible_deed_event_perk_shared_corsec_4x10_honorguard_deed:new {
-	templateType = EVENTPERKDEED,
-	gameObjectType = 8388615,
-	noTrade = 1,
+object_tangible_event_perk_imperial_2x10_honorguard = object_tangible_poi_base_shared_poi_base:new {
+	invisible = 1,
+	gameObjectType = 16410, -- Event Perk
+	dataObjectComponent = "EventPerkDataComponent",
+	zoneComponent = "PersonnelPerkZoneComponent",
 
-	generatedObjectTemplate = "object/tangible/event_perk/corsec_4x10_honorguard.iff",
-	perkType = HONORGUARD,
+	childObjects = {
+		{ templateFile = "object/mobile/dressed_stormtrooper_m.iff", x = 0, z = 0, y = 0, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/mobile/dressed_stormtrooper_m.iff", x = 2, z = 0, y = 0, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/mobile/dressed_stormtrooper_m.iff", x = 4, z = 0, y = 0, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/mobile/dressed_stormtrooper_m.iff", x = 6, z = 0, y = 0, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/mobile/dressed_stormtrooper_m.iff", x = 8, z = 0, y = 0, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/mobile/dressed_stormtrooper_m.iff", x = 0, z = 0, y = 2, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/mobile/dressed_stormtrooper_m.iff", x = 2, z = 0, y = 2, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/mobile/dressed_stormtrooper_m.iff", x = 4, z = 0, y = 2, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/mobile/dressed_stormtrooper_m.iff", x = 6, z = 0, y = 2, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/mobile/dressed_stormtrooper_m.iff", x = 8, z = 0, y = 2, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+	},
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_corsec_4x10_honorguard_deed, "object/tangible/deed/event_perk/corsec_4x10_honorguard_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_event_perk_imperial_2x10_honorguard, "object/tangible/event_perk/imperial_2x10_honorguard.iff")

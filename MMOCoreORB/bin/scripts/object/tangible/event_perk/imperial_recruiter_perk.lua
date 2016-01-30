@@ -41,13 +41,12 @@
 --this exception also makes it possible to release a modified version
 
 
-object_tangible_deed_event_perk_corsec_4x10_honorguard_deed = object_tangible_deed_event_perk_shared_corsec_4x10_honorguard_deed:new {
-	templateType = EVENTPERKDEED,
-	gameObjectType = 8388615,
-	noTrade = 1,
+object_tangible_event_perk_imperial_recruiter_perk = object_tangible_poi_base_shared_poi_base:new {
+	invisible = 1,
 
-	generatedObjectTemplate = "object/tangible/event_perk/corsec_4x10_honorguard.iff",
-	perkType = HONORGUARD,
+	dataObjectComponent = "EventPerkDataComponent",
+	attributeListComponent = "EventPerkAttributeListComponent",
+	zoneComponent = "PersonnelPerkZoneComponent",
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_corsec_4x10_honorguard_deed, "object/tangible/deed/event_perk/corsec_4x10_honorguard_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_event_perk_imperial_recruiter_perk, "object/tangible/event_perk/imperial_recruiter_perk.iff")
