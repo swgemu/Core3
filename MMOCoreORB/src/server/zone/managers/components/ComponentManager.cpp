@@ -62,6 +62,7 @@
 #include "server/zone/objects/tangible/components/generic/LootSchematicAttributeListComponent.h"
 #include "server/zone/objects/tangible/components/generic/XpPurchaseAttributeListComponent.h"
 #include "server/zone/objects/tangible/components/generic/XpPurchaseMenuComponent.h"
+#include "server/zone/objects/tangible/components/PersonnelPerkZoneComponent.h"
 #include "server/zone/objects/tangible/components/RingObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/HeroRingMenuComponent.h"
 #include "server/zone/objects/tangible/components/HeroRingAttributeListComponent.h"
@@ -226,6 +227,7 @@ ComponentManager::ComponentManager() {
 	components.put("MinefieldZoneComponent", new MinefieldZoneComponent());
 	components.put("MinefieldContainerComponent", new MinefieldContainerComponent());
 	components.put("DetectorZoneComponent", new DetectorZoneComponent());
+	components.put("PersonnelPerkZoneComponent", new PersonnelPerkZoneComponent());
 
 	dataObjectFactory.registerObject<VendorDataComponent>("VendorDataComponent");
 	dataObjectFactory.registerObject<AuctionTerminalDataComponent>("AuctionTerminalDataComponent");

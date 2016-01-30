@@ -97,7 +97,7 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =			autogen/server/zone/objects/tangible/misc/FsCraftingComponentObject.cpp \
+core3_IDLS =	autogen/server/zone/objects/tangible/misc/FsCraftingComponentObject.cpp \
 				autogen/server/zone/objects/tangible/misc/CustomIngredient.cpp \
 				autogen/server/zone/objects/tangible/misc/PlantObject.cpp \
 				autogen/server/zone/objects/tangible/misc/FsPuzzlePack.cpp \
@@ -445,6 +445,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/deed/components/PlaceDecorationComponent.cpp \
 		server/zone/objects/player/components/PlayerContainerComponent.cpp \
 		server/zone/objects/tangible/components/LootContainerComponent.cpp \
+		server/zone/objects/tangible/components/PersonnelPerkZoneComponent.cpp \
 		server/zone/objects/tangible/components/PlaceableLootContainerComponent.cpp \
 		server/zone/objects/tangible/components/ScavengerChestContainerComponent.cpp \
 		server/zone/objects/scene/components/ContainerComponent.cpp \
