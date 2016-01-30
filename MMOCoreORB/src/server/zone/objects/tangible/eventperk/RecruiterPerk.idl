@@ -1,0 +1,34 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.eventperk;
+
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.Zone;
+
+class RecruiterPerk extends TangibleObject {
+	protected string recruiterTemplate;
+
+	protected float posX;
+	protected float posZ;
+	protected float posY;
+
+	public RecruiterPerk() {
+		Logger.setLoggingName("RecruiterPerk");
+
+		recruiterTemplate = "";
+		posX = 0;
+		posZ = 0;
+		posY = 0;
+	}
+
+	@dirty
+	public boolean isEventPerkItem() {
+		return true;
+	}
+
+	public native void notifyInsertToZone(Zone zone);
+
+	public native void setupRecruiter(Zone zone, final string mobileTemplate, float x, float z, float y);
+}

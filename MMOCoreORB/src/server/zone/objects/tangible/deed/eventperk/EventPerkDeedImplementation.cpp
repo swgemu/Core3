@@ -12,6 +12,8 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/name/NameManager.h"
+#include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/objects/tangible/eventperk/RecruiterPerk.h"
 
 void EventPerkDeedImplementation::initializeTransientMembers() {
 	DeedImplementation::initializeTransientMembers();
@@ -191,11 +193,6 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			return 1;
 		}
 
-		if (perkType != EventPerkDeedTemplate::STATIC && perkType != EventPerkDeedTemplate::GAME && perkType != EventPerkDeedTemplate::THEATER) {
-			player->sendSystemMessage("This type of event perk deed is not functional yet.");
-			return 1;
-		}
-
 		ManagedReference<TangibleObject*> object = generatedObject.get();
 
 		if (object == NULL) {
@@ -230,6 +227,21 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		object->createChildObjects();
 		parseChildObjects(object);
 
+		if (perkType == EventPerkDeedTemplate::RECRUITER) {
+			RecruiterPerk* perk = cast<RecruiterPerk*>(object.get());
+
+			if (perk == NULL) {
+				player->sendSystemMessage("Error: failed to generate recruiter.");
+				object->destroyObjectFromDatabase(true);
+				return 1;
+			}
+
+			if (object->getServerObjectCRC() == 0xCA8B8505) // object/tangible/event_perk/imperial_recruiter_perk.iff
+				perk->setupRecruiter(zone, "imperial_recruiter", player->getPositionX(), player->getPositionZ(), player->getPositionY());
+			else if (object->getServerObjectCRC() == 0x740E97C5) // object/tangible/event_perk/rebel_recruiter_perk.iff
+				perk->setupRecruiter(zone, "rebel_recruiter", player->getPositionX(), player->getPositionZ(), player->getPositionY());
+		}
+
 		generated = true;
 		destroyObjectFromWorld(true);
 
@@ -240,6 +252,18 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 }
 
 void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
+	EventPerkDataComponent* data = cast<EventPerkDataComponent*>(parent->getDataObjectComponent()->get());
+
+	if (data == NULL)
+		return;
+
+	EventPerkDeed* deed = data->getDeed();
+
+	if (deed == NULL)
+		return;
+
+	int perkType = deed->getPerkType();
+
 	SortedVector<ManagedReference<SceneObject*> >* children = parent->getChildObjects();
 
 	for (int j = 0; j < children->size(); j++) {
@@ -247,6 +271,9 @@ void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
 
 		if (child != NULL)	{
 			Locker cLock(child, parent);
+
+			if (perkType == EventPerkDeedTemplate::HONORGUARD)
+				child->setObjectMenuComponent("EventPerkMenuComponent");
 
 			if (child->getServerObjectCRC() == 0xB2EC90B2) { // object/mobile/dressed_stormtrooper_m.iff
 				int randNum = 100 + System::random(899);
@@ -263,6 +290,16 @@ void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
 			} else if (child->getObjectTemplate()->getFullTemplateString().indexOf("object/mobile") != -1) {
 				NameManager* nameManager = NameManager::instance();
 				String name = nameManager->makeCreatureName();
+
+				if (child->getServerObjectCRC() == 0x63371470) // object/mobile/dressed_corsec_officer_human_male_01.iff
+					name = name + " (a CorSec trooper)";
+				else if (child->getServerObjectCRC() == 0x86752E27) // object/mobile/dressed_fed_dub_patrolman_human_male_01.iff
+					name = name + " (a Fed-Dub patrolman)";
+				else if (child->getServerObjectCRC() == 0x450C04C9) // object/mobile/dressed_rebel_crewman_human_male_01.iff
+					name = name + " (a Rebel crewman)";
+				else if (child->getServerObjectCRC() == 0xF171DF10) // object/mobile/dressed_rsf_security_guard.iff
+					name = name + " (an RSF security guard)";
+
 				child->setCustomObjectName(name, true);
 			}
 		}
