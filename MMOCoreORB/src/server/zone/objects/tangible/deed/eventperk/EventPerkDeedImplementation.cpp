@@ -12,6 +12,7 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/name/NameManager.h"
+#include "server/zone/managers/creature/CreatureManager.h"
 
 void EventPerkDeedImplementation::initializeTransientMembers() {
 	DeedImplementation::initializeTransientMembers();
@@ -191,19 +192,31 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			return 1;
 		}
 
-		if (perkType != EventPerkDeedTemplate::STATIC && perkType != EventPerkDeedTemplate::GAME && perkType != EventPerkDeedTemplate::THEATER) {
-			player->sendSystemMessage("This type of event perk deed is not functional yet.");
-			return 1;
-		}
-
 		ManagedReference<TangibleObject*> object = generatedObject.get();
 
 		if (object == NULL) {
-			object = (server->getZoneServer()->createObject(generatedObjectTemplate.hashCode(), "playerstructures", 1)).castTo<TangibleObject*>();
+			if (perkType == EventPerkDeedTemplate::RECRUITER) {
+				CreatureManager* creatureManager = zone->getCreatureManager();
+				object = creatureManager->spawnCreature(generatedObjectTemplate.hashCode(), 0, player->getPositionX(), player->getPositionZ(), player->getPositionY(), 0);
 
-			if (object == NULL) {
-				player->sendSystemMessage("Error generating object. Wrong generatedObjectTemplate or is not a tangible object.");
-				return 1;
+				if (object == NULL) {
+					player->sendSystemMessage("Error generating recruiter. Wrong generatedObjectTemplate or is not a mobile.");
+					return 1;
+				}
+
+				ObjectManager* objectManager = server->getZoneServer()->getObjectManager();
+				objectManager->persistSceneObjectsRecursively(object, 1);
+
+				generated = true;
+				destroyObjectFromWorld(true);
+				return 0;
+			} else {
+				object = (server->getZoneServer()->createObject(generatedObjectTemplate.hashCode(), "playerstructures", 1)).castTo<TangibleObject*>();
+
+				if (object == NULL) {
+					player->sendSystemMessage("Error generating object. Wrong generatedObjectTemplate or is not a tangible object.");
+					return 1;
+				}
 			}
 
 			generatedObject = object;
@@ -240,6 +253,18 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 }
 
 void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
+	EventPerkDataComponent* data = cast<EventPerkDataComponent*>(parent->getDataObjectComponent()->get());
+
+	if (data == NULL)
+		return;
+
+	EventPerkDeed* deed = data->getDeed();
+
+	if (deed == NULL)
+		return;
+
+	int perkType = deed->getPerkType();
+
 	SortedVector<ManagedReference<SceneObject*> >* children = parent->getChildObjects();
 
 	for (int j = 0; j < children->size(); j++) {
@@ -247,6 +272,9 @@ void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
 
 		if (child != NULL)	{
 			Locker cLock(child, parent);
+
+			if (perkType == EventPerkDeedTemplate::HONORGUARD)
+				child->setObjectMenuComponent("EventPerkMenuComponent");
 
 			if (child->getServerObjectCRC() == 0xB2EC90B2) { // object/mobile/dressed_stormtrooper_m.iff
 				int randNum = 100 + System::random(899);
@@ -263,6 +291,16 @@ void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
 			} else if (child->getObjectTemplate()->getFullTemplateString().indexOf("object/mobile") != -1) {
 				NameManager* nameManager = NameManager::instance();
 				String name = nameManager->makeCreatureName();
+
+				if (child->getServerObjectCRC() == 0x63371470) // object/mobile/dressed_corsec_officer_human_male_01.iff
+					name = name + " (a CorSec trooper)";
+				else if (child->getServerObjectCRC() == 0x86752E27) // object/mobile/dressed_fed_dub_patrolman_human_male_01.iff
+					name = name + " (a Fed-Dub patrolman)";
+				else if (child->getServerObjectCRC() == 0x450C04C9) // object/mobile/dressed_rebel_crewman_human_male_01.iff
+					name = name + " (a Rebel crewman)";
+				else if (child->getServerObjectCRC() == 0xF171DF10) // object/mobile/dressed_rsf_security_guard.iff
+					name = name + " (an RSF security guard)";
+
 				child->setCustomObjectName(name, true);
 			}
 		}

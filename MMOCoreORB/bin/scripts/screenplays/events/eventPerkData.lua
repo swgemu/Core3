@@ -89,7 +89,7 @@ eventPerkGamesSuppliesDeeds = {
 }
 
 eventPerkPersonnelDeeds = {
-	{ template = "npc_actor_deed", cost = 10000, displayName = "@event_perk:pro_npc_actor_person" },
+	--{ template = "npc_actor_deed", cost = 10000, displayName = "@event_perk:pro_npc_actor_person" },
 	{ template = "corsec_1x10_honorguard_deed", cost = 5000, displayName = "@event_perk:pro_corsec_1_person" },
 	{ template = "corsec_2x10_honorguard_deed", cost = 10000, displayName = "@event_perk:pro_corsec_2_person" },
 	{ template = "corsec_3x10_honorguard_deed", cost = 15000, displayName = "@event_perk:pro_corsec_3_person" },
