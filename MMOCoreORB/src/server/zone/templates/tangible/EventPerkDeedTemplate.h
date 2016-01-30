@@ -13,8 +13,9 @@ public:
 	const static int UNKNOWN = 0;
 	const static int STATIC = 1;
 	const static int THEATER = 2;
-	const static int PERSONNEL = 3;
+	const static int RECRUITER = 3;
 	const static int GAME = 4;
+	const static int HONORGUARD = 5;
 
 	const static uint64 TIME_TO_LIVE = 28800000; // 8 hours
 
