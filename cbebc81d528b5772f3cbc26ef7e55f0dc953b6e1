@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_d3c0cc2c",
+        "filename": "MMOCoreORB/bin/scripts/object/tangible/event_perk/imperial_4x10_honorguard.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-30T11:00:25Z",
+      "side": 1,
+      "message": "I thought this was supposed to be an imperial honorguard.",
+      "revId": "cbebc81d528b5772f3cbc26ef7e55f0dc953b6e1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_93e254d4",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/eventperk/EventPerkDeedImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-30T11:00:25Z",
+      "side": 1,
+      "message": "One issue with creating the recruiter this way is that it gets created in the sceneobjects.db instead of playerstructures.db like the other perks. The reason they were created in playerstructures is so that when the server loads, any placed in the world are automatically loaded into the zone. If you create it in sceneobjects, I don\u0027t think it\u0027ll get loaded into the world until a reference to it is loaded (the owner logs in and the deed gets loaded). We need to come up with a different way to spawn these.\n\nAlso, you\u0027re not giving these an EventPerkDataComponent. That component is what holds the reference to the deed so that when the object is loaded into the world, the deed gets loaded and when the deed is loaded, it\u0027s expiration task gets scheduled.",
+      "revId": "cbebc81d528b5772f3cbc26ef7e55f0dc953b6e1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_33e7c8e6",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/eventperk/EventPerkDeedImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-01-30T11:00:25Z",
+      "side": 1,
+      "message": "I don\u0027t think menu components set in this manner are persistent, but you can double check that easily enough.",
+      "revId": "cbebc81d528b5772f3cbc26ef7e55f0dc953b6e1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
