@@ -13,7 +13,7 @@ void EventPerkMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Ob
 
 	EventPerkDataComponent* data = cast<EventPerkDataComponent*>(sceneObject->getDataObjectComponent()->get());
 
-	if (sceneObject->getGameObjectType() == SceneObjectType::EVENTPERK) {
+	if (sceneObject->getGameObjectType() == SceneObjectType::EVENTPERK || data == NULL) {
 		ContainerPermissions* permissions = sceneObject->getContainerPermissions();
 		uint64 objectID = permissions->getOwnerID();
 
@@ -51,7 +51,7 @@ void EventPerkMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Ob
 int EventPerkMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
 	EventPerkDataComponent* data = cast<EventPerkDataComponent*>(sceneObject->getDataObjectComponent()->get());
 
-	if (sceneObject->getGameObjectType() == SceneObjectType::EVENTPERK) {
+	if (sceneObject->getGameObjectType() == SceneObjectType::EVENTPERK || data == NULL) {
 		ContainerPermissions* permissions = sceneObject->getContainerPermissions();
 		uint64 objectID = permissions->getOwnerID();
 
