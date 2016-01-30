@@ -2283,8 +2283,9 @@ void CreatureObjectImplementation::setIntimidatedState(int durationSeconds) {
 		Reference<CreatureObject*> creo = _this.getReferenceUnsafeStaticCast();
 
 		showFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
-
 		creo->renewBuff(buffCRC, durationSeconds);
+		creo->playEffect("clienteffect/combat_special_defender_intimidate.cef");
+
 	} else {
 
 		ManagedReference<StateBuff*> state = new StateBuff(asCreatureObject(), CreatureState::INTIMIDATED, durationSeconds, STRING_HASHCODE("private_intimidate_multiplier"));

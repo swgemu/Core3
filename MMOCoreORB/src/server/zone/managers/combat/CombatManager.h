@@ -228,6 +228,8 @@ protected:
 	void doDodge(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage);
 	void doLightsaberBlock(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage);
 
+	void doCombatEquilibrium(CreatureObject* defender);
+
 	int applyDamage(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defender, int poolsToDamage, const CreatureAttackData& data);
 	int applyDamage(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data);
 	void applyStates(CreatureObject* creature, CreatureObject* targetCreature, const CreatureAttackData& data);

@@ -27,6 +27,7 @@
 #include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/objects/installation/components/TurretDataComponent.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "engine/task/ScheduledTask.h"
 
 #define COMBAT_SPAM_RANGE 85
 
@@ -1790,8 +1791,9 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 			if (combatEquil > 100)
 				combatEquil = 100;
 
-			if ((combatEquil >> 1) > (int) System::random(100) && !targetCreature->isDead() && !targetCreature->isIntimidated())
-				targetCreature->setPosture(CreaturePosture::UPRIGHT, false);
+			if ((combatEquil >> 1) > (int) System::random(100) && !targetCreature->isDead() && !targetCreature->isIntimidated()) {
+				doCombatEquilibrium(targetCreature);
+			}
 		}
 
 		//Send Combat Spam for state-only attacks.
@@ -2679,4 +2681,26 @@ int CombatManager::getArmorTurretReduction(CreatureObject* attacker, TangibleObj
 	}
 
 	return resist;
+}
+
+void CombatManager::doCombatEquilibrium(CreatureObject* defender) {
+	Reference<CreatureObject*> strongRef = defender;
+	if(strongRef == NULL)
+		return;
+
+	int currentPosture = defender->getPosture();
+
+#ifdef CXX11_COMPILER
+	Core::getTaskManager()->scheduleTask([strongRef, currentPosture]{
+		Locker lock(strongRef);
+		if(strongRef->getPosture() != currentPosture)
+			strongRef->setPosture(CreaturePosture::UPRIGHT, true);
+	},750);
+#else
+	SCHEDULE_TASK_2(strongRef, currentPosture, 750, { // Delay this until well after we are KD'd
+		Locker lock(strongRef_p);
+		if(strongRef_p->getPosture() == currentPosture_p) // if our posture changed again before this task hits, ignore it
+			strongRef_p->setPosture(CreaturePosture::UPRIGHT, true);
+	});
+#endif
 }
