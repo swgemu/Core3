@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_73a1c0a8",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-30T00:05:13Z",
+      "side": 1,
+      "message": "Can we comment what strings these represent, or use STRING_HASHCODE() here?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 12
+      },
+      "revId": "68e62181fe3333bd143eee19764c7bbd6a99e628",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_93a6d4c0",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CreatureAttackData.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-30T00:05:13Z",
+      "side": 1,
+      "message": "tabbing!",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 4
+      },
+      "revId": "68e62181fe3333bd143eee19764c7bbd6a99e628",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_53b03cf4",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CombatQueueCommand.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-01-30T00:05:13Z",
+      "side": 1,
+      "message": "duplicate",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 512,
+        "endChar": 2
+      },
+      "revId": "68e62181fe3333bd143eee19764c7bbd6a99e628",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
