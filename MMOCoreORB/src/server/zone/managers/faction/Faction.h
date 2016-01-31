@@ -16,6 +16,12 @@ class Faction : public Object {
 	SortedVector<String> allies;
 
 public:
+	enum {
+		FACTIONNEUTRAL = 0,
+		FACTIONIMPERIAL = 0xDB4ACC54,
+		FACTIONREBEL = 0x16148850
+	};
+
 	Faction() : Object() {
 	}
 

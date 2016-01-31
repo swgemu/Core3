@@ -360,7 +360,7 @@ void EntertainingSessionImplementation::stopPlayingMusic() {
 		tickTask->cancel();
 
 	targetInstrument = false;
-	updateEntertainerMissionStatus(false, MissionObject::MUSICIAN);
+	updateEntertainerMissionStatus(false, MissionTypes::MUSICIAN);
 
 	entertainer->notifyObservers(ObserverEventType::STOPENTERTAIN, entertainer);
 
@@ -398,7 +398,7 @@ void EntertainingSessionImplementation::startDancing(const String& dance, const 
 
 	entertainer->sendSystemMessage("@performance:dance_start_self");
 
-	updateEntertainerMissionStatus(true, MissionObject::DANCER);
+	updateEntertainerMissionStatus(true, MissionTypes::DANCER);
 
 	entertainer->notifyObservers(ObserverEventType::STARTENTERTAIN, entertainer);
 
@@ -434,7 +434,7 @@ void EntertainingSessionImplementation::startPlayingMusic(const String& song, co
 	if (externalInstrument != NULL)
 		externalInstrument->setBeingUsed(true);
 
-	updateEntertainerMissionStatus(true, MissionObject::MUSICIAN);
+	updateEntertainerMissionStatus(true, MissionTypes::MUSICIAN);
 
 	entertainer->notifyObservers(ObserverEventType::STARTENTERTAIN, entertainer);
 
@@ -499,7 +499,7 @@ void EntertainingSessionImplementation::stopDancing() {
 	if (tickTask != NULL && tickTask->isScheduled())
 		tickTask->cancel();
 
-	updateEntertainerMissionStatus(false, MissionObject::DANCER);
+	updateEntertainerMissionStatus(false, MissionTypes::DANCER);
 
 	entertainer->notifyObservers(ObserverEventType::STOPENTERTAIN, entertainer);
 
@@ -953,9 +953,9 @@ void EntertainingSessionImplementation::updateEntertainerMissionStatus(bool ente
 			if (datapadMission != NULL) {
 				EntertainerMissionObjective* objective = cast<EntertainerMissionObjective*>(datapadMission->getMissionObjective());
 
-				if (objective != NULL && datapadMission->getTypeCRC() == MissionObject::DANCER && missionType == MissionObject::DANCER) {
+				if (objective != NULL && datapadMission->getTypeCRC() == MissionTypes::DANCER && missionType == MissionTypes::DANCER) {
 					objective->setIsEntertaining(entertaining);
-				} else if (objective != NULL && datapadMission->getTypeCRC() == MissionObject::MUSICIAN && missionType == MissionObject::MUSICIAN) {
+				} else if (objective != NULL && datapadMission->getTypeCRC() == MissionTypes::MUSICIAN && missionType == MissionTypes::MUSICIAN) {
 					objective->setIsEntertaining(entertaining);
 				}
 			}
