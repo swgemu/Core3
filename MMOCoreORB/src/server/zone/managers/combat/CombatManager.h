@@ -136,6 +136,8 @@ public:
 	int doCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, CombatQueueCommand* command);
 	int doCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data);
 
+	SortedVector<ManagedReference<TangibleObject*> > getAreaTargets(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data);
+
 	/**
 	 * Requests duel
 	 * @param player player that is trying to duel target

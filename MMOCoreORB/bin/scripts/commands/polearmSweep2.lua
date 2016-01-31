@@ -65,7 +65,7 @@ PolearmSweep2Command = {
 	areaRange = 16,
 	areaAction = true,
 
-	animationCRC = hashCode("knockdown_polearm_2"),
+	animationCRC = hashCode("knockdown_polearm_3"),
 
 	combatSpam = "backbreaker",
 

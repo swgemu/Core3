@@ -33,6 +33,7 @@ public:
 		Locker clocker(targetCreature, creature);
 
 		ManagedReference<PlayerObject*> targetGhost = targetCreature->getPlayerObject();
+
 		if(targetGhost == NULL)
 			return INVALIDTARGET;
 

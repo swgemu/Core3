@@ -49,8 +49,9 @@ ForceIntimidate2Command = {
 	forceCost = 500,
 	accuracySkillMod = "forceintimidate_accuracy",
 	attackType = FORCEATTACK,
+	splashDamage = true,
 	areaAction = true,
-	areaRange = 15,
+	areaRange = 32,
 	visMod = 25,
 
 	stateEffects = {

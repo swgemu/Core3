@@ -2432,12 +2432,17 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 		}
 	}
 
+	if(data.isSplashDamage())
+		range += data.getRange();
+
 	if (range < 0) {
 		range = weapon->getMaxRange();
 	}
 
 	if (weapon->isThrownWeapon() || weapon->isHeavyWeapon())
 		range = weapon->getMaxRange() + data.getAreaRange();
+
+
 
 	try {
 		//zone->rlock();
@@ -2478,7 +2483,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 				continue;
 			}
 
-			if (weapon->isThrownWeapon() || weapon->isHeavyWeapon()) {
+			if (weapon->isThrownWeapon() || weapon->isHeavyWeapon() || data.isSplashDamage()) {
 				if (!(tano == defenderObject) && !(tano->isInRange(defenderObject, data.getAreaRange() + defenderObject->getTemplateRadius())))
 					continue;
 			}
@@ -2496,7 +2501,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 			//			zone->runlock();
 
 			try {
-				if (tano == defenderObject || (!(weapon->isThrownWeapon()) && !(weapon->isHeavyWeapon()))) {
+				if (tano == defenderObject || (!(weapon->isThrownWeapon()) && !(weapon->isHeavyWeapon()) && !(data.isSplashDamage()))) {
 					if (CollisionManager::checkLineOfSight(object, attacker)) {
 						damage += doTargetCombatAction(attacker, weapon, tano, data);
 					}
@@ -2527,6 +2532,133 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 		weapon->decreasePowerupUses(attacker);
 
 	return damage;
+}
+
+SortedVector<ManagedReference<TangibleObject*> > CombatManager::getAreaTargets(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data) {
+	float creatureVectorX = attacker->getPositionX();
+	float creatureVectorY = attacker->getPositionY();
+
+	float directionVectorX = defenderObject->getPositionX() - creatureVectorX;
+	float directionVectorY = defenderObject->getPositionY() - creatureVectorY;
+
+	SortedVector<ManagedReference<TangibleObject*> > defenders;
+
+	Zone* zone = attacker->getZone();
+
+	if (zone == NULL)
+		return defenders;
+
+	PlayerManager* playerManager = zone->getZoneServer()->getPlayerManager();
+
+	int damage = 0;
+
+	int range = data.getAreaRange();
+
+	if (data.getCommand()->isConeAction()) {
+		int coneRange = data.getConeRange();
+
+		if(coneRange > -1) {
+			range = coneRange;
+		} else {
+			range = data.getRange();
+		}
+	}
+
+	if (range < 0) {
+		range = weapon->getMaxRange();
+	}
+
+	if (data.isSplashDamage())
+		range += data.getRange();
+
+	if (weapon->isThrownWeapon() || weapon->isHeavyWeapon())
+		range = weapon->getMaxRange() + data.getAreaRange();
+
+	try {
+		//zone->rlock();
+
+		CloseObjectsVector* vec =  (CloseObjectsVector*)attacker->getCloseObjects();
+
+		SortedVector<QuadTreeEntry*> closeObjects;
+
+		if (vec != NULL) {
+			closeObjects.removeAll(vec->size(), 10);
+			vec->safeCopyTo(closeObjects);
+		} else {
+			attacker->info("Null closeobjects vector in CombatManager::doAreaCombatAction", true);
+			zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
+		}
+
+		for (int i = 0; i < closeObjects.size(); ++i) {
+			SceneObject* object = cast<SceneObject*>(closeObjects.get(i));
+
+			TangibleObject* tano = object->asTangibleObject();
+
+			if (tano == NULL) {
+				continue;
+			}
+
+			if (object == attacker || object == defenderObject) {
+				//error("object is attacker");
+				continue;
+			}
+
+			if (!tano->isAttackableBy(attacker)) {
+				//error("object is not attackable");
+				continue;
+			}
+
+			if (!attacker->isInRange(object, range + object->getTemplateRadius() + attacker->getTemplateRadius())) {
+				//error("not in range " + String::valueOf(range));
+				continue;
+			}
+
+			if (data.isSplashDamage() || weapon->isThrownWeapon() || weapon->isHeavyWeapon()) {
+				if (!(tano == defenderObject) && !(tano->isInRange(defenderObject, data.getAreaRange() + defenderObject->getTemplateRadius())))
+					continue;
+			}
+
+			if (tano->isCreatureObject() && tano->asCreatureObject()->isIncapacitated()) {
+				//error("object is incapacitated");
+				continue;
+			}
+
+			if (data.getCommand()->isConeAction() && !checkConeAngle(tano, data.getConeAngle(), creatureVectorX, creatureVectorY, directionVectorX, directionVectorY)) {
+				//error("object is not in cone angle");
+				continue;
+			}
+
+			//			zone->runlock();
+
+			try {
+				if (tano == defenderObject || (!(weapon->isThrownWeapon()) && !(data.isSplashDamage()) && !(weapon->isHeavyWeapon()))) {
+					if (CollisionManager::checkLineOfSight(object, attacker)) {
+						defenders.put(tano);
+					}
+				} else {
+					if (CollisionManager::checkLineOfSight(object, defenderObject)) {
+						defenders.put(tano);
+					}
+				}
+			} catch (Exception& e) {
+				error(e.getMessage());
+			} catch (...) {
+				//zone->rlock();
+
+				throw;
+			}
+
+			//			zone->rlock();
+		}
+
+		//		zone->runlock();
+	} catch (...) {
+		//		zone->runlock();
+
+		throw;
+	}
+
+	return defenders;
 }
 
 int CombatManager::doAreaCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data){

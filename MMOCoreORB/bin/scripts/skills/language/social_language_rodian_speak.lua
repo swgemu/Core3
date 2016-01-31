@@ -38,7 +38,7 @@ social_language_rodian_speak = {
 	},
 	schematicsGranted = {},
 	schematicsRevoked = {},
-	searchable = 1
+	searchable = 0
 }
 
 addSkill(social_language_rodian_speak)
