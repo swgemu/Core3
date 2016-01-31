@@ -35,39 +35,39 @@ public:
 
 	void completeMission(unsigned int missionType, int reward) {
 		switch (missionType) {
-		case MissionObject::BOUNTY:
+		case MissionTypes::BOUNTY:
 			numberOfCompletedMissionsBounty.increment();
 			creditsGeneratedFromMissionsBounty.add(reward);
 			break;
-		case MissionObject::CRAFTING:
+		case MissionTypes::CRAFTING:
 			numberOfCompletedMissionsCrafting.increment();
 			creditsGeneratedFromMissionsCrafting.add(reward);
 			break;
-		case MissionObject::DANCER:
+		case MissionTypes::DANCER:
 			numberOfCompletedMissionsDancer.increment();
 			creditsGeneratedFromMissionsDancer.add(reward);
 			break;
-		case MissionObject::DELIVER:
+		case MissionTypes::DELIVER:
 			numberOfCompletedMissionsDeliver.increment();
 			creditsGeneratedFromMissionsDeliver.add(reward);
 			break;
-		case MissionObject::DESTROY:
+		case MissionTypes::DESTROY:
 			numberOfCompletedMissionsDestroy.increment();
 			creditsGeneratedFromMissionsDestroy.add(reward);
 			break;
-		case MissionObject::HUNTING:
+		case MissionTypes::HUNTING:
 			numberOfCompletedMissionsHunting.increment();
 			creditsGeneratedFromMissionsHunting.add(reward);
 			break;
-		case MissionObject::MUSICIAN:
+		case MissionTypes::MUSICIAN:
 			numberOfCompletedMissionsMusician.increment();
 			creditsGeneratedFromMissionsMusician.add(reward);
 			break;
-		case MissionObject::RECON:
+		case MissionTypes::RECON:
 			numberOfCompletedMissionsRecon.increment();
 			creditsGeneratedFromMissionsRecon.add(reward);
 			break;
-		case MissionObject::SURVEY:
+		case MissionTypes::SURVEY:
 			numberOfCompletedMissionsSurvey.increment();
 			creditsGeneratedFromMissionsSurvey.add(reward);
 			break;
