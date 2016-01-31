@@ -1512,7 +1512,24 @@ void PlayerObjectImplementation::logout(bool doLock) {
 		if (disconnectEvent == NULL) {
 			info("creating disconnect event");
 
-			disconnectEvent = new PlayerDisconnectEvent(_this.getReferenceUnsafeStaticCast());
+			Reference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
+			bool isInSafeArea = false;
+			ManagedReference<SceneObject*> root = creature->getRootParent();
+			if (root != NULL && root->isStaticObject()) {
+				PlanetMapCategory* planetMapCategory = root->getPlanetMapCategory();
+				if (planetMapCategory != NULL) {
+					String category = planetMapCategory->getName();
+					if (category == "cantina" || category == "hotel") {
+						isInSafeArea = true;
+					}
+				}
+			}
+
+			if(creature->getCurrentCamp() != NULL)
+				isInSafeArea = true;
+
+			disconnectEvent = new PlayerDisconnectEvent(_this.getReferenceUnsafeStaticCast(), isInSafeArea);
 
 			if (isLoggingOut()) {
 				disconnectEvent->schedule(10);
@@ -1735,7 +1752,7 @@ void PlayerObjectImplementation::setLinkDead() {
 	onlineStatus = LINKDEAD;
 
 	logoutTimeStamp.updateToCurrentTime();
-	logoutTimeStamp.addMiliTime(30000);
+	logoutTimeStamp.addMiliTime(180000); // 3 minutes
 
 	setCharacterBit(PlayerObjectImplementation::LD, true);
 
