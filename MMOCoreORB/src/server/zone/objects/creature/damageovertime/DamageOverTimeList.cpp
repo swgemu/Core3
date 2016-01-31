@@ -126,6 +126,10 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim,
 		pool = getRandomPool(dotType);
 	}
 
+	if (pool == CreatureAttribute::HEALTH && CreatureAttribute::ACTION && CreatureAttribute::MIND) {
+		pool = getAllPools(dotType);
+	}
+
 	int oldStrength = getStrength(pool, dotType);
 
 	int durationMod = 0;
@@ -232,6 +236,23 @@ uint8 DamageOverTimeList::getRandomPool(uint64 dotType) {
 	}
 
 	return pool;
+}
+
+uint8 DamageOverTimeList::getAllPools(uint64 dotType) {
+	uint8 pools = 0;
+
+	switch (dotType) {
+	case CreatureState::POISONED:
+	case CreatureState::ONFIRE:
+	case CreatureState::DISEASED:
+	case CreatureState::BLEEDING:
+		pools = CreatureAttribute::HEALTH + CreatureAttribute::ACTION + CreatureAttribute::MIND;
+		break;
+	default:
+		break;
+	}
+
+	return pools;
 }
 
 bool DamageOverTimeList::healState(CreatureObject* victim, uint64 dotType, float reduction) {

@@ -565,6 +565,8 @@ uint8 CombatManager::getPoolForDot(uint64 dotType, int poolsToDamage) {
 			pool = CreatureAttribute::ACTION;
 		} else if (poolsToDamage & MIND) {
 			pool = CreatureAttribute::MIND;
+		} else if (poolsToDamage & ALLHAM) {
+			pool = CreatureAttribute::HEALTH + CreatureAttribute::ACTION + CreatureAttribute::MIND;
 		}
 		break;
 	case CreatureState::DISEASED:
@@ -1816,6 +1818,10 @@ int CombatManager::calculatePoolsToDamage(int poolsToDamage) {
 		} else {
 			poolsToDamage = MIND;
 		}
+	}
+
+	else if (poolsToDamage & ALLHAM) {
+		poolsToDamage = HEALTH + ACTION + MIND;
 	}
 
 	return poolsToDamage;

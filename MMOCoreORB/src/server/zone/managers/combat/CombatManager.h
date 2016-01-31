@@ -51,6 +51,7 @@ public:
 	const static int HEALTH = 1;
 	const static int ACTION = 2;
 	const static int MIND = 4;
+	const static int ALLHAM = 7;
 	const static int RANDOM = 8;
 
 	const static int ANYWEAPON = 0xFFFFFFFF;
