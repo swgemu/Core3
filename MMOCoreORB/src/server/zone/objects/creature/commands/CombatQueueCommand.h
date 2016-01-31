@@ -31,6 +31,7 @@ protected:
 	float maxDamage;
 	int damageType;
 	float damageMultiplier;
+	float dotMultiplier;
 	int accuracyBonus;
 	float speedMultiplier;
 	float speed;
@@ -74,6 +75,7 @@ public:
 		maxDamage = 0;
 		damageType = 0;
 		damageMultiplier = 1;
+		dotMultiplier = 1;
 		accuracyBonus = 0;
 		speedMultiplier = 1;
 		speed = 0;
@@ -286,6 +288,10 @@ public:
 		return damageMultiplier;
 	}
 
+	inline float getDotMultiplier() const {
+		return dotMultiplier;
+	}
+
 	inline int getAccuracyBonus() const {
 		return accuracyBonus;
 	}
@@ -324,6 +330,10 @@ public:
 
 	void setDamageMultiplier(float damageMultiplier) {
 		this->damageMultiplier = damageMultiplier;
+	}
+
+	void setDotMultiplier(float dotMultiplier) {
+		this->dotMultiplier = dotMultiplier;
 	}
 
 	void setAccuracyBonus(int accuracyBonus) {

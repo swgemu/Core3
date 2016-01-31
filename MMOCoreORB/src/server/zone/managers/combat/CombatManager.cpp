@@ -478,11 +478,15 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 
 		int damageToApply = appliedDamage;
 		uint32 dotType = effect.getDotType();
+		float dotMultiplier = data.getDotMultiplier();
 
 		if (effect.isDotDamageofHit()) {
 			// determine if we should use unmitigated damage
 			if (dotType != CreatureState::BLEEDING)
 				damageToApply = unmitDamage;
+			else {
+				damageToApply = unmitDamage * dotMultiplier;
+			}
 		}
 
 		int potency = effect.getDotPotency();
@@ -565,6 +569,8 @@ uint8 CombatManager::getPoolForDot(uint64 dotType, int poolsToDamage) {
 			pool = CreatureAttribute::ACTION;
 		} else if (poolsToDamage & MIND) {
 			pool = CreatureAttribute::MIND;
+		} else if (poolsToDamage & UNKNOWN) {
+			pool = CreatureAttribute::HEALTH + CreatureAttribute::ACTION + CreatureAttribute::MIND;
 		}
 		break;
 	case CreatureState::DISEASED:

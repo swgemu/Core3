@@ -22,6 +22,7 @@ protected:
 	float maxDamage;
 	int damageType;
 	float damageMultiplier;
+	float dotMultiplier;
 	float healthDamageMultiplier;
 	float actionDamageMultiplier;
 	float mindDamageMultiplier;
@@ -126,6 +127,10 @@ public:
 
 	float getDamageMultiplier() const {
 		return damageMultiplier;
+	}
+
+	float getDotMultiplier() const {
+		return dotMultiplier;
 	}
 
 	float getForceCostMultiplier() const {

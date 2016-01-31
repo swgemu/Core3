@@ -37,6 +37,7 @@ CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 	targetID = data.targetID;
 
 	damageMultiplier = data.damageMultiplier;
+	dotMultiplier = data.dotMultiplier;
 	healthDamageMultiplier = data.healthDamageMultiplier;
 	actionDamageMultiplier = data.actionDamageMultiplier;
 	mindDamageMultiplier = data.mindDamageMultiplier;
@@ -72,6 +73,7 @@ CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 
 void CreatureAttackData::fillFromBase() {
 	damageMultiplier = baseCommand->getDamageMultiplier();
+	dotMultiplier = baseCommand->getDotMultiplier();
 	minDamage = baseCommand->getMinDamage();
 	maxDamage = baseCommand->getMaxDamage();
 	damageType = baseCommand->getDamageType();
@@ -114,6 +116,9 @@ void CreatureAttackData::setVariable(const String& var, const String& val) {
 		break;
 	case 0xA82FB287: // STRING_HASHCODE("damageMultiplier"):
 		damageMultiplier = Float::valueOf(val);
+		break;
+	case 0x00000000: // STRING_HASHCODE("dotMultiplier"):
+		dotMultiplier = Float::valueOf(val);
 		break;
 	case 0xC60F1652: // STRING_HASHCODE("healthDamageMultiplier"):
 		healthDamageMultiplier = Float::valueOf(val);

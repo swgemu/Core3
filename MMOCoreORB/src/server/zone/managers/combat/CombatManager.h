@@ -52,6 +52,7 @@ public:
 	const static int ACTION = 2;
 	const static int MIND = 4;
 	const static int RANDOM = 8;
+	const static int UNKNOWN = 16;
 
 	const static int ANYWEAPON = 0xFFFFFFFF;
 	const static int THROWNWEAPON = 0x1;

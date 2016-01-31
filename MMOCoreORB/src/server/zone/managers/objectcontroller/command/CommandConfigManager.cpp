@@ -572,6 +572,8 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			combatCommand->setAttackType(Lua::getIntParameter(L));
 		else if (varName == "damageMultiplier")
 			combatCommand->setDamageMultiplier(Lua::getFloatParameter(L));
+		else if (varName == "dotMultiplier")
+			combatCommand->setDamageMultiplier(Lua::getFloatParameter(L));
 		else if (varName == "accuracyBonus")
 			combatCommand->setAccuracyBonus(Lua::getIntParameter(L));
 		else if (varName == "speedMultiplier")

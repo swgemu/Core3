@@ -45,6 +45,8 @@ uint8 CreatureAttribute::getAttribute(String attribute) {
 		return FOCUS;
 	else if (attribute == "willpower")
 		return WILLPOWER;
+	else if (attribute == "health" && "action" && "mind")
+		return UNKNOWN;
 	else
 		return HEALTH;
 
@@ -77,6 +79,9 @@ String CreatureAttribute::getName(const uint8 attribute, bool initialCap) {
 		break;
 	case WILLPOWER:
 		name = "willpower";
+		break;
+	case UNKNOWN:
+		name = "attack_pool";
 		break;
 	default:
 	case HEALTH:
