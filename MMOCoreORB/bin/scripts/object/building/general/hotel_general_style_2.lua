@@ -45,7 +45,8 @@ object_building_general_hotel_general_style_2 = object_building_general_shared_h
 	planetMapCategory = "hotel",
 	skillMods = {
 		{"private_buff_mind", 100},
-		{"private_med_battle_fatigue", 5}
+		{"private_med_battle_fatigue", 5},
+    {"private_safe_logout", 1}
 	},
 }
 

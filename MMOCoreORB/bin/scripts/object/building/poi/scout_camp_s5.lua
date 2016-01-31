@@ -46,15 +46,19 @@ object_building_poi_scout_camp_s5 = object_building_poi_shared_scout_camp_s5:new
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	basePowerRate = 0,
-	
-	skillMods = {{"private_medical_rating", 100}, {"private_med_wound_health", 100}, {"private_med_wound_action", 100}, {"private_aggro_mod", 100}, {"private_buff_mind", 100}},
-
+	skillMods = {
+  	{"private_safe_logout", 1},
+  	{"private_medical_rating", 100}, 
+  	{"private_med_wound_health", 100}, 
+  	{"private_med_wound_action", 100}, 
+  	{"private_aggro_mod", 100}, 
+  	{"private_buff_mind", 100}
+	},
 	aggroMod = 100,	
 	duration = 3600,
 	radius = 20,
 	experience = 1250,
 	skillRequired = 85,
-
 	childObjects = {
 		{templateFile = "object/tangible/camp/camp_control_panel.iff", 
 			x = -4.5, z = 0, y = 12.3, 

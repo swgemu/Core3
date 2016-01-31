@@ -45,7 +45,8 @@ object_building_corellia_cloning_corellia = object_building_corellia_shared_clon
 	planetMapCategory = "cloningfacility",
 	
 	skillMods = {
-		{"private_medical_rating", 100}
+		{"private_medical_rating", 100},
+    {"private_safe_logout", 1}
 	},
 
 	childObjects = {
