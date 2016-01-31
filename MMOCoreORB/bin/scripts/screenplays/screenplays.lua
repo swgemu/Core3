@@ -108,6 +108,8 @@ includeFile("village/convos/phase3/dageerin_phase3_conv_handler.lua")
 
 -- Events
 includeFile("events/conversations/bestine_election/tour_aryon_conv_handler.lua")
+includeFile("events/conversations/bestine_election/hutt_informant_conv_handler.lua")
+includeFile("events/conversations/bestine_election/victor_visalis_conv_handler.lua")
 includeFile("events/conversations/bestine_artist_conv_handler.lua")
 includeFile("events/conversations/imperial_commander_conv_handler.lua")
 includeFile("events/conversations/imperial_coordinator_conv_handler.lua")

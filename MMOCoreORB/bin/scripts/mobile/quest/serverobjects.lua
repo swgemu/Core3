@@ -524,6 +524,7 @@ includeFile("quest/talus/xalox_smuggler2.lua")
 -- Tatooine
 includeFile("quest/tatooine/bestine_election/afroh_orah.lua")
 includeFile("quest/tatooine/bestine_election/bestine_merchant.lua")
+includeFile("quest/tatooine/bestine_election/hutt_informant_quest.lua")
 includeFile("quest/tatooine/bestine_election/ihatha_hawit.lua")
 includeFile("quest/tatooine/bestine_election/imi_eficoaw.lua")
 includeFile("quest/tatooine/bestine_election/issirx.lua")

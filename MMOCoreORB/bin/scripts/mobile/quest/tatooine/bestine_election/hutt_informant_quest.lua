@@ -1,6 +1,6 @@
 hutt_informant_quest = Creature:new {
-	objectName = "",
-	customName = "Hutt Informant",
+	objectName = "@npc_name:rodian_base_male",
+	customName = "Osso",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -23,13 +23,13 @@ hutt_informant_quest = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_hutt_informant_quest.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "huttInformantConvoTemplate",
 	attacks = {
 	}
 }

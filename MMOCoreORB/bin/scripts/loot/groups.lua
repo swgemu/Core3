@@ -45,6 +45,10 @@ includeFile("groups/armor/padded_armor.lua")
 includeFile("groups/armor/tantel_armor.lua")
 includeFile("groups/armor/ubese_armor.lua")
 
+-- bestine election sub-folder
+includeFile("groups/bestine_election/sean_trenwell_rewards.lua")
+includeFile("groups/bestine_election/victor_visalis_rewards.lua")
+
 -- creature sub-folder
 includeFile("groups/creature/brackaset_common.lua")
 includeFile("groups/creature/fambaa_common.lua")

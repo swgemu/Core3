@@ -15,7 +15,7 @@ end
 function tourAryonConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 
-	if (BestineElectionScreenPlay:isElectionEnabled() == false) then
+	if (not BestineElectionScreenPlay:isElectionEnabled()) then
 		return convoTemplate:getScreen("default_condition")
 	end
 
