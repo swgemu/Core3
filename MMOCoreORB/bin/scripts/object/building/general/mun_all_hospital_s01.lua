@@ -45,7 +45,8 @@ object_building_general_mun_all_hospital_s01 = object_building_general_shared_mu
 	skillMods = {
 		{"private_medical_rating", 100},
 		{"private_med_wound_health", 100},
-		{"private_med_wound_action", 100}
+		{"private_med_wound_action", 100},
+		{"private_safe_logout", 1}
 	},
 
 	planetMapCategory = "medicalcenter"

@@ -47,7 +47,8 @@ object_building_military_military_base_shed_imperial_style_cantina_s01 = object_
 	skillMods = {
 		{"private_med_wound_mind", 20},
 		{"private_buff_mind", 100},
-		{"private_med_battle_fatigue", 5}
+		{"private_med_battle_fatigue", 5},
+		{"private_safe_logout", 1}
 	}
 }
 

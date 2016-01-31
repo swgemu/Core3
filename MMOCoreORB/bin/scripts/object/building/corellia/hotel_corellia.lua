@@ -45,7 +45,8 @@ object_building_corellia_hotel_corellia = object_building_corellia_shared_hotel_
 	gameObjectType = 523,
 	skillMods = {
 		{"private_buff_mind", 100},
-		{"private_med_battle_fatigue", 5}
+		{"private_med_battle_fatigue", 5},
+    {"private_safe_logout", 1}
 	},
 	planetMapCategory = "hotel"
 }
