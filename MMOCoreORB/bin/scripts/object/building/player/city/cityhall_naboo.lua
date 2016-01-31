@@ -55,7 +55,8 @@ object_building_player_city_cityhall_naboo = object_building_player_city_shared_
 	cityMaintenanceRate = 25000,
 	skillMods = {
 		{"private_buff_mind", 100},
-		{"private_med_battle_fatigue", 5}
+		{"private_med_battle_fatigue", 5},
+		{"private_safe_logout", 1}
 	},
 	childObjects = {
 		{templateFile = "object/tangible/sign/municipal/municipal_sign_hanging_capitol.iff", x = 8, z = 4, y = 21, ox = 0, oy = -1, oz = 0, ow = 0, cellid = -1, containmentType = -1},

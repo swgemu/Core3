@@ -52,7 +52,8 @@ object_building_player_city_theater_corellia = object_building_player_city_share
 	abilityRequired = "place_theater",
 	skillMods = {
 		{"private_buff_mind", 100},
-		{"private_med_battle_fatigue", 5}
+		{"private_med_battle_fatigue", 5},
+		{"private_safe_logout", 1}
 	},
 	cityRankRequired = 4,
 	zoneComponent = "StructureZoneComponent",
