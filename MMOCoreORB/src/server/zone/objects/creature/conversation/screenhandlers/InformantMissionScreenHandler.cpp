@@ -25,7 +25,7 @@ MissionObject* InformantMissionScreenHandler::getBountyMissionObject(CreatureObj
 		if (datapad->getContainerObject(i)->isMissionObject()) {
 			Reference<MissionObject*> mission = datapad->getContainerObject(i).castTo<MissionObject*>();
 
-			if (mission != NULL && mission->getTypeCRC() == MissionObject::BOUNTY) {
+			if (mission != NULL && mission->getTypeCRC() == MissionTypes::BOUNTY) {
 				BountyMissionObjective* objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
 				if (objective != NULL) {
 					return mission;

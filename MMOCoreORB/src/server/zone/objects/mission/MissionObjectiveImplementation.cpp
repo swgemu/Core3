@@ -111,7 +111,7 @@ void MissionObjectiveImplementation::awardFactionPoints() {
 	int factionPointsRebel = mission->getRewardFactionPointsRebel();
 	int factionPointsImperial = mission->getRewardFactionPointsImperial();
 
-	if ((factionPointsRebel <= 0 && factionPointsImperial <= 0) || mission->getFaction() == MissionObject::FACTIONNEUTRAL) {
+	if ((factionPointsRebel <= 0 && factionPointsImperial <= 0) || mission->getFaction() == FactionManager::FACTIONNEUTRAL) {
 		return;
 	}
 
@@ -125,7 +125,7 @@ void MissionObjectiveImplementation::awardFactionPoints() {
 
 			//Switch to get the correct order.
 			switch (mission->getFaction()) {
-			case MissionObject::FACTIONIMPERIAL:
+			case FactionManager::FACTIONIMPERIAL:
 				if (factionPointsImperial > 0) {
 					ghost->increaseFactionStanding("imperial", factionPointsImperial);
 				}
@@ -133,7 +133,7 @@ void MissionObjectiveImplementation::awardFactionPoints() {
 					ghost->decreaseFactionStanding("rebel", -factionPointsRebel);
 				}
 				break;
-			case MissionObject::FACTIONREBEL:
+			case FactionManager::FACTIONREBEL:
 				if (factionPointsRebel > 0) {
 					ghost->increaseFactionStanding("rebel", factionPointsRebel);
 				}
