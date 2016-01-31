@@ -53,7 +53,8 @@ object_building_player_city_cityhall_corellia = object_building_player_city_shar
 	abilityRequired = "place_cityhall",
 	skillMods = {
 		{"private_buff_mind", 100},
-		{"private_med_battle_fatigue", 5}
+		{"private_med_battle_fatigue", 5},
+		{"private_safe_logout", 1}
 	},
 	childObjects = {
 		{templateFile = "object/tangible/sign/municipal/municipal_sign_hanging_capitol.iff", x = 7, z = 4, y = 26, ox = 0, oy = -1, oz = 0, ow = 0, cellid = -1, containmentType = -1},

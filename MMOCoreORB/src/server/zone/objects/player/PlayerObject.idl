@@ -678,7 +678,7 @@ class PlayerObject extends IntangibleObject {
 		onlineStatus = OFFLINE;
 	}
 	
-	public native void setLinkDead();
+	public native void setLinkDead(boolean isSafeLogout = false);
 	
 	public native void setOnline();
 	
