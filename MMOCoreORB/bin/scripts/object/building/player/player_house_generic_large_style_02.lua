@@ -49,7 +49,8 @@ object_building_player_player_house_generic_large_style_02 = object_building_pla
 	skillMods = {
 		{"private_medical_rating", 100},
 		{"private_buff_mind", 100},
-		{"private_med_battle_fatigue", 5}
+		{"private_med_battle_fatigue", 5},
+		{"private_safe_logout", 1}
 	},
 	childObjects = {
 		{templateFile = "object/tangible/sign/player/house_address.iff", x = -6.07, z = 2.5, y = 15.26, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1},

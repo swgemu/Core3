@@ -1512,7 +1512,11 @@ void PlayerObjectImplementation::logout(bool doLock) {
 		if (disconnectEvent == NULL) {
 			info("creating disconnect event");
 
-			disconnectEvent = new PlayerDisconnectEvent(_this.getReferenceUnsafeStaticCast());
+			Reference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
+			int isInSafeArea = creature->getSkillMod("private_safe_logout");
+
+			disconnectEvent = new PlayerDisconnectEvent(_this.getReferenceUnsafeStaticCast(), isInSafeArea);
 
 			if (isLoggingOut()) {
 				disconnectEvent->schedule(10);
@@ -1731,11 +1735,12 @@ void PlayerObjectImplementation::activateForcePowerRegen() {
 	}
 }
 
-void PlayerObjectImplementation::setLinkDead() {
+void PlayerObjectImplementation::setLinkDead(bool isSafeLogout) {
 	onlineStatus = LINKDEAD;
 
 	logoutTimeStamp.updateToCurrentTime();
-	logoutTimeStamp.addMiliTime(30000);
+	if(!isSafeLogout)
+		logoutTimeStamp.addMiliTime(180000); // 3 minutes if unsafe
 
 	setCharacterBit(PlayerObjectImplementation::LD, true);
 

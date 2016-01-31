@@ -56,6 +56,9 @@ object_building_player_city_cloning_naboo = object_building_player_city_shared_c
 	abilityRequired = "place_cloning",
 	alwaysPublic = 1,
 	zoneComponent = "StructureZoneComponent",
+	skillMods = {
+		{"private_safe_logout", 1}
+	},
 	childObjects = {
 		{templateFile = "object/tangible/sign/municipal/municipal_sign_hanging_cloning.iff", x = 9.65, z = 2, y = 3, ox = 0, oy = 0.707107, oz = 0, ow = -0.707107, cellid = -1, containmentType = -1},
 		{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -13.28604, z = -2.110639, y = -6.443224, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = 4, containmentType = -1},

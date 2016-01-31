@@ -49,7 +49,8 @@ object_building_player_player_house_naboo_medium_style_01 = object_building_play
 	skillMods = {
 		{"private_medical_rating", 100},
 		{"private_buff_mind", 100},
-		{"private_med_battle_fatigue", 5}
+		{"private_med_battle_fatigue", 5},
+		{"private_safe_logout", 1}
 	},
 	childObjects = {
 		{templateFile = "object/tangible/sign/player/house_address_naboo.iff", x = -0.5, z = 2.25, y = -11.5, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1},
