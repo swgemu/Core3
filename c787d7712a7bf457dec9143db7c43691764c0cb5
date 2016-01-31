@@ -1,0 +1,310 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_7379c0fb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-31T01:24:29Z",
+      "side": 1,
+      "message": "make sure you nil check pNpc here, also needs to be \"local pNpc\". The pNpc variable doesn\u0027t exist at this point because you were creating it inside the above for statement.",
+      "revId": "c787d7712a7bf457dec9143db7c43691764c0cb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_937ed4e3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-31T01:24:29Z",
+      "side": 1,
+      "message": "I know it\u0027s commented out, but same as above, nil check pNpc.",
+      "revId": "c787d7712a7bf457dec9143db7c43691764c0cb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_338348ce",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-31T01:24:29Z",
+      "side": 1,
+      "message": "No 0 here",
+      "revId": "c787d7712a7bf457dec9143db7c43691764c0cb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_136ac41a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-31T01:24:29Z",
+      "side": 1,
+      "message": "Why not use your isElectionEnabled() function?",
+      "revId": "c787d7712a7bf457dec9143db7c43691764c0cb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_53883ce7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-31T01:24:29Z",
+      "side": 1,
+      "message": "no 0 here",
+      "revId": "c787d7712a7bf457dec9143db7c43691764c0cb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_f36cf038",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-31T01:24:29Z",
+      "side": 1,
+      "message": "Just to be safe, set the \"bestine_election:election_num\" quest status to 1 here if electionNum is nil.",
+      "revId": "c787d7712a7bf457dec9143db7c43691764c0cb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_b3767805",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-31T01:24:29Z",
+      "side": 1,
+      "message": "Put the pPlayer nil check at the top, that way if it\u0027s nil, none of the rest of the code runs.",
+      "revId": "c787d7712a7bf457dec9143db7c43691764c0cb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_d373ec13",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-31T01:24:29Z",
+      "side": 1,
+      "message": "All of these need nil checks on pTerminal",
+      "revId": "c787d7712a7bf457dec9143db7c43691764c0cb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_7360e035",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-31T01:24:29Z",
+      "side": 1,
+      "message": "Rather than use the AiAgent checks below, you can do an isPlayerCreature check instead. No need to have him turn to face a pet.",
+      "revId": "c787d7712a7bf457dec9143db7c43691764c0cb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_93657447",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-31T01:24:29Z",
+      "side": 1,
+      "message": "Same as above.",
+      "revId": "c787d7712a7bf457dec9143db7c43691764c0cb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_d3452cb4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-31T01:24:29Z",
+      "side": 1,
+      "message": "No need for the 0 here.",
+      "revId": "c787d7712a7bf457dec9143db7c43691764c0cb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_731220b6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-31T01:24:29Z",
+      "side": 1,
+      "message": "Make this an \u003d\u003d nil check and return if it\u0027s nil, because everything below this if block needs pInventory to not be nil as well.",
+      "revId": "c787d7712a7bf457dec9143db7c43691764c0cb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_9317b4a3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-31T01:24:29Z",
+      "side": 1,
+      "message": "Same as above, no 0 here.",
+      "revId": "c787d7712a7bf457dec9143db7c43691764c0cb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_330ca894",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-31T01:24:29Z",
+      "side": 1,
+      "message": "Same as above, change this if block to \u003d\u003d nil.",
+      "revId": "c787d7712a7bf457dec9143db7c43691764c0cb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_1323a406",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-31T01:24:29Z",
+      "side": 1,
+      "message": "return 0",
+      "revId": "c787d7712a7bf457dec9143db7c43691764c0cb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_53111cab",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-31T01:24:29Z",
+      "side": 1,
+      "message": "Same as above.",
+      "revId": "c787d7712a7bf457dec9143db7c43691764c0cb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_f325d00a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-31T01:24:29Z",
+      "side": 1,
+      "message": "return 0",
+      "revId": "c787d7712a7bf457dec9143db7c43691764c0cb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_b31f58b7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/tour_aryon_conv_handler.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-01-31T01:24:29Z",
+      "side": 1,
+      "message": "A matter of semantics, but its cleaner to just write \"not BestineElectionScreenPlay:isElectionEnabled()\"",
+      "revId": "c787d7712a7bf457dec9143db7c43691764c0cb5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
