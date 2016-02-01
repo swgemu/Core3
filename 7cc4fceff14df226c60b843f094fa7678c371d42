@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_ce47bf4a",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoomImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 0,
+      "message": "I can\u0027t find anywhere that this method is used. I only see the removePlayer above being called. If you can confirm that it\u0027s not used, go ahead and remove it.",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

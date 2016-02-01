@@ -1,0 +1,463 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_4e5c0f26",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "Don\u0027t need to set systemRoom private?",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ee408337",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this spamming the console during startup.",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0e3e17b9",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "This might be more useful if it logged the room path, name, id, or something to identify it.",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_d3020c0b",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoom.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "Should a player that is banned be removed from the invited list? how about moderator list? Is it possible to ban one who is on either?",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8e046716",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoomImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "If this isn\u0027t needed, remove it rather than leaving a comment.",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_4e0e4f36",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoomImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "Again, remove if it\u0027s not needed.",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ee12c357",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoomImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "It\u0027s not a big deal, but I would probably invert this check and assign name to invited\u0027s first name if invited is not null thereby reducing your line count a couple. I would do the same in each of these similar methods.",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0e10574d",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoomImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "Fix your tabbing for the above 5 lines.",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ae1ccb6b",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoomImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "Should there be a banned check here?",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_f30b9029",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObject.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "Will this ever be variable? I kinda doubt it. I\u0027d rather you just add a static to ChatManager and use it in your canCreateChatRoom() check.",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_931d7476",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObject.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "Every ownedChatRooms will also be in chatRooms, right? Rather than store a separate vector I think it\u0027d likely be better to just iterate chatRooms and check ownerID on each when needed.",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_13096431",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "If something is unnecessary, you should remove it instead of leaving it as a comment.",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2e099b2c",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "Instead of returning here, invert the check and nest the next two calls within.",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_7318e084",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2313,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "Since there\u0027s a possibility of removing rooms, you should be iterating in reverse order to avoid out of bounds exceptions like you do above when joining all chatRooms.",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2e20bb9a",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatCreateRoomCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "Don\u0027t use relative paths in includes.",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ee3963d9",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatCreateRoomCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "Fix tabbing",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_4e25efa9",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatDestroyRoomCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "Don\u0027t use relative paths in includes.",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0e37f7e4",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatDestroyRoomCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "Fix tabbing",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ae336bf5",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatLeaveRoomCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "Don\u0027t use relative paths in includes.",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ce301feb",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatLeaveRoomCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "Fix tabbing.",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2e575b04",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatOnCreateRoom.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "I doubt it matters since owner will be the same as creator when the room is created, but I noticed that owner is inserted before creator in both ChatQueryRoomResults and ChatRoomList. I\u0027m guessing it\u0027s supposed to be that way here as well.",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_6e26b3bc",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatOnCreateRoom.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8e2b0782",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatOnCreateRoom.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ce19ff7a",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatOnDestroyRoom.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "If this one isn\u0027t used, you can remove it instead of leaving as a comment.",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_6e4d5372",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatQueryRoomCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "Don\u0027t use relative paths in includes.",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8e522712",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatQueryRoomCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "Fix tabbing.",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_b3051816",
+        "filename": "MMOCoreORB/src/server/zone/packets/zone/SelectCharacterCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-01T16:23:52Z",
+      "side": 1,
+      "message": "Is this include necessary?",
+      "revId": "e9e9d94c82f73f3cf57d8ddddfd3802fcc5fa9fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
