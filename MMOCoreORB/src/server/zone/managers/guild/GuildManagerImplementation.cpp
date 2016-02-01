@@ -635,7 +635,7 @@ GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, con
 	ManagedReference<ChatRoom*> guildChat = createGuildChannels(guild);
 
 	guildChat->sendTo(player);
-	guildChat->addPlayer(player);
+	server->getChatManager()->handleChatEnterRoomById(player, guildChat->getRoomID(), -1, true);
 
 	//Handle setting of the guild leader.
 	GuildMemberInfo* gmi = guild->getMember(playerID);
@@ -668,12 +668,13 @@ ChatRoom* GuildManagerImplementation::createGuildChannels(GuildObject* guild) {
 
 	ManagedReference<ChatRoom*> guildLobby = chatManager->createRoom(String::valueOf(guild->getGuildID()), guildRoom);
 	guildLobby->setPrivate();
-	guildRoom->addSubRoom(guildLobby);
 
 	ManagedReference<ChatRoom*> guildChat = chatManager->createRoom("GuildChat", guildLobby);
 	guildChat->setPrivate();
 	guildChat->setTitle(String::valueOf(guild->getGuildID()));
-	guildLobby->addSubRoom(guildChat);
+	guildChat->setOwnerID(guild->getObjectID());
+	guildChat->setCanEnter(true);
+	guildChat->setChatRoomType(ChatRoom::GUILD);
 
 	Locker locker(guild);
 
@@ -1603,7 +1604,7 @@ void GuildManagerImplementation::acceptSponsoredPlayer(CreatureObject* player, u
 
 		if (guildChat != NULL) {
 			guildChat->sendTo(target);
-			guildChat->addPlayer(target);
+			server->getChatManager()->handleChatEnterRoomById(target, guildChat->getRoomID(), -1, true);
 		}
 
 		PlayerObject* targetGhost = target->getPlayerObject();
