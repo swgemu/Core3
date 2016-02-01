@@ -7,119 +7,209 @@ package server.chat.room;
 import engine.core.ManagedObject;
 import system.util.VectorMap;
 import system.util.Vector;
+import system.lang.Time;
 import engine.service.proto.BaseMessage;
 import server.zone.ZoneServer;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.CreatureObject;
 import server.zone.managers.objectcontroller.ObjectController;
+import server.chat.ChatManager;
 
 class ChatRoom extends ManagedObject {
-	protected ZoneServer server;
+	protected transient ZoneServer server;
+	protected transient ChatManager manager;
+
+	protected string parentPath;
+	protected boolean parentIsPersistent;
 
 	protected string name;
 	protected string fullPath;
 
-	protected string owner;
+	protected unsigned long ownerID;
+	protected string ownerName;
 	protected string creator;
 
 	protected unicode title;
 	protected unsigned int roomID;
 
-	protected ChatRoom parent;
+	protected boolean isPublicRoom;
+	protected boolean moderated;
+	protected boolean canEnterRoom;
+	protected boolean allowSubrooms;
+
+	protected int roomType;
+
+	@dereferenced
+	Time lastJoin;
 
 	@dereferenced 
-	protected VectorMap<string, CreatureObject> playerList;
+	protected VectorMap<string, unsigned int> subRooms;
+
+	@dereferenced 
+	protected transient VectorMap<string, CreatureObject> playerList;
 	
 	@dereferenced
-	protected VectorMap<string, CreatureObject> moderatorList;
-	
-	@dereferenced 
-	protected VectorMap<string, ChatRoom> subRooms;
+	protected Vector<unsigned long> moderatorList;
 
-	protected boolean isPublicRoom;
+	@dereferenced
+	protected Vector<unsigned long> invitedList;
+
+	@dereferenced
+	protected Vector<unsigned long> bannedList;
+
+	//ChatRoom types:
+	public static final int DEFAULT = 0;
+	public static final int AUCTION = 1;
+	public static final int GUILD = 2;
+	public static final int GROUP = 3;
+	public static final int PLANET = 4;
+	public static final int CUSTOM = 5;
 	
-	protected boolean moderated;
 	
 	public ChatRoom() {
 		server = null;
+		manager = null;
 
 		name = "";
 		roomID = 0;
+		ownerID = 0;
+		
 
-		owner = "system";
+		ownerName = "system";
 		creator = "system";
 		title = "";
+		parentPath = "";
 		fullPath = "";
 
-		parent = null;
+		parentIsPersistent = false;
 
 		isPublicRoom = true;
-		
 		moderated = false;
-
-		subRooms.setNullValue(null);
-		subRooms.setNoDuplicateInsertPlan();
-
-		playerList.setNoDuplicateInsertPlan();
-		playerList.setNullValue(null);
-		
-		moderatorList.setNoDuplicateInsertPlan();
-		moderatorList.setNullValue(null);
+		canEnterRoom = false;
+		allowSubrooms = false;
+		roomType = 0;
 	}
 	
-	public void init(ZoneServer serv, ChatRoom par, final string roomName, unsigned int channelID) {
-		server = serv;
-		
-		name = roomName;
-		
-		roomID = channelID;
-		
-		parent = par;
-		
-		owner = "system";
-		creator = "system";
-		title = "";
-		
-		if (par == null) {
-			fullPath = roomName;
-		} else {
-			fullPath = par.getFullPath() + "." + roomName;
-		}
-		
-		isPublicRoom = true;
-
-		subRooms.setNullValue(null);
-		subRooms.setNoDuplicateInsertPlan();
-
-		playerList.setNoDuplicateInsertPlan();
-		playerList.setNullValue(null);
-	}
-		
+	public native void init(ZoneServer serv, final string parent, final string roomName);
 	public native void sendTo(CreatureObject player);
 	public native void sendDestroyTo(CreatureObject player);
 
-	public synchronized void addSubRoom(ChatRoom channel) {
-		subRooms.put(channel.getName(), channel);
+////////////////////////////////////////////////////////////////////////////////////////
+//                              SubRoom Management
+	
+	public synchronized void addSubRoom(ChatRoom room) {
+		subRooms.put(room.getName(), room.getRoomID());
 	}
 
-	public synchronized void removeSubRoom(ChatRoom channel) {
-		subRooms.drop(channel.getName());
+	public synchronized void removeSubRoom(final string channel) {
+		subRooms.drop(channel);
 	}
 
 	public synchronized ChatRoom getSubRoom(int i) {
-		return subRooms.get(i);
+		return manager.getChatRoom(subRooms.get(i));
 	}
 	
 	public synchronized ChatRoom getSubRoom(final string name) {
-		return subRooms.get(name);
+		return manager.getChatRoom(subRooms.get(name));
 	}
+
+	public int getSubRoomsSize() {
+		return subRooms.size();
+	}
+
+////////////////////////////////////////////////////////////////////////////////////////
+//                              Player Management
 
 	public native void addPlayer(CreatureObject player, boolean doLock = true);
 	public native void removePlayer(CreatureObject player, boolean doLock = true);
 	public native void removePlayer(final string player);
+	public native void removeDisconnectingPlayer(CreatureObject player);
+
+	public int getPlayerSize() {
+		return playerList.size();
+	}
+	
+	public CreatureObject getPlayer(int idx) {
+		return playerList.get(idx);
+	}
+
+	public synchronized boolean hasPlayer(CreatureObject player) {
+		return playerList.contains(player.getFirstName());
+	}
+	
+	public synchronized boolean hasPlayer(final string name) {
+		return playerList.contains(name);
+	}
+
+////////////////////////////////////////////////////////////////////////////////////////
+//                              Moderator Management
+
+	public synchronized void addModerator(CreatureObject player) {
+		moderatorList.add(player.getObjectID());
+		addInvited(player);
+	}
+
+	public synchronized void removeModerator(CreatureObject player) {
+		moderatorList.removeElement(player.getObjectID());
+	}
+
+	public int getModeratorSize() {
+		return moderatorList.size();
+	}
+
+	public native string getModeratorName(int idx);
+		
+	public synchronized boolean hasModerator(unsigned long objectID) {
+		return moderatorList.contains(objectID);
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//                              Invited Management
+
+	public synchronized void addInvited(CreatureObject player) {
+		invitedList.add(player.getObjectID());
+	}
+
+	public synchronized void removeInvited(CreatureObject player) {
+		invitedList.removeElement(player.getObjectID());
+		removeModerator(player);
+	}
+
+	public int getInvitedSize() {
+		return invitedList.size();
+	}
+
+	public native string getInvitedName(int idx);
+
+	public synchronized boolean hasInvited(unsigned long objectID) {
+		return invitedList.contains(objectID);
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//                              Banned Management
+
+	public synchronized void addBanned(CreatureObject player) {
+		bannedList.add(player.getObjectID());
+	}
+
+	public synchronized void removeBanned(CreatureObject player) {
+		bannedList.removeElement(player.getObjectID());
+	}
+
+	public int getBannedSize() {
+		return bannedList.size();
+	}
+
+	public native string getBannedName(int idx);
+
+	public synchronized boolean hasBanned(unsigned long objectID) {
+		return bannedList.contains(objectID);
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////
 
 	public native void broadcastMessage(BaseMessage msg);
 	public native void broadcastMessageCheckIgnore(BaseMessage msg, string senderName );
+	public native boolean checkEnterPermission(CreatureObject player);
 	
 	@local 
 	public synchronized void broadcastMessages(Vector<BaseMessage> messages) {
@@ -140,14 +230,6 @@ class ChatRoom extends ManagedObject {
 		messages.removeAll();
 	}
 
-	public synchronized boolean hasPlayer(CreatureObject player) {
-		return playerList.contains(player.getFirstName());
-	}
-	
-	public synchronized boolean hasPlayer(final string name) {
-		return playerList.contains(name);
-	}
-
 	public native void removeAllPlayers();
 	
 	public void setPrivate() {
@@ -165,20 +247,28 @@ class ChatRoom extends ManagedObject {
 	public boolean isPrivate() {
 		return isPublicRoom == false;
 	}
+
+	public boolean canEnter() {
+		return canEnterRoom;
+	}
+
+	public void setCanEnter(boolean value) {
+		canEnterRoom = value;
+	}
+
+	public boolean subroomsAllowed() {
+		return allowSubrooms;
+	}
+
+	public void setAllowSubrooms(boolean value) {
+		allowSubrooms = value;
+	}
 	
 	public boolean isModerated() {
 		return moderated;
 	}
 	public void setModerated(boolean moderate) {
 		moderated = moderate;
-	}
-
-	public CreatureObject getPlayer(int idx) {
-		return playerList.get(idx);
-	}
-
-	public int getPlayerSize() {
-		return playerList.size();
 	}
 
 	public void setName(final string Name) {
@@ -193,46 +283,75 @@ class ChatRoom extends ManagedObject {
 		return fullPath;
 	}
 
-	public string getOwner() {
-		return owner;
+	public void setOwnerID(unsigned long objectID) {
+		ownerID = objectID;
+	}
+
+	public unsigned long getOwnerID() {
+		return ownerID;
+	}
+
+	public void setOwnerName(final string name) {
+		ownerName = name;
+	}
+
+	public string getOwnerName() {
+		return ownerName;
+	}
+
+	public void setCreator(final string name) {
+		creator = name;
 	}
 
 	public string getCreator() {
 		return creator;
 	}
 
+	public void setTitle(final unicode uniTitle) {
+		title = uniTitle;
+	}
+
 	public unicode getTitle() {
 		return title;
+	}
+	
+	public unsigned int getLastJoinTime() {
+		return lastJoin.miliDifference();
 	}
 
 	public native string getGalaxyName();
 
-	public void setOwner(final string Owner) {
-		owner = Owner;
-	}
-
-	public void setCreator(final string Creator) {
-		creator = Creator;
-	}
-
-	public void setTitle(final string Title) {
-		title = Title;
-	}
 	
 	public void setRoomID(int id) {
 		roomID = id;
+	}
+
+	public void setZoneServer(ZoneServer srv) {
+		server = srv;
+	}
+
+	public void setChatManager(ChatManager mgr) {
+		manager = mgr;
 	}
 
 	public unsigned int getRoomID() {
 		return roomID;
 	}
 
-	public int getSubRoomsSize() {
-		return subRooms.size();
+	public void setChatRoomType(int type) {
+		roomType = type;
+	}
+
+	public int getChatRoomType() {
+		return roomType;
 	}
 
 	public ChatRoom getParent() {
-		return parent;
+		return manager.getChatRoomByFullPath(parentPath);
+	}
+
+	public boolean hasPersistentParent() {
+		return parentIsPersistent;
 	}
 
 	public int compareTo(ChatRoom obj) {

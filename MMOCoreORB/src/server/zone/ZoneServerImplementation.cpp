@@ -254,6 +254,7 @@ void ZoneServerImplementation::startManagers() {
 	guildManager->loadGuilds();
 
 	chatManager->initiatePlanetRooms();
+	chatManager->loadPersistentRooms();
 
 	//Loads the FactionManager LUA Config.
 	FactionManager::instance()->loadData();

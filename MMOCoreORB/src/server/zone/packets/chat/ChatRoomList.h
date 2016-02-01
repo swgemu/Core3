@@ -39,14 +39,22 @@ public:
 		channelCounter++;
 		
 		insertInt(channel->getRoomID());
-		insertInt(1);
-		insertByte(0);
+
+		if (channel->isPublic())
+			insertInt(0);
+		else
+			insertInt(1);
+
+		if (!channel->isModerated())
+			insertByte(0);
+		else
+			insertByte(1);
 
 		insertAscii(channel->getFullPath());
 		
 		insertAscii("SWG");
 		insertAscii(channel->getGalaxyName());
-		insertAscii(channel->getOwner());	
+		insertAscii(channel->getOwnerName());
 		
 		//This struct is a ChatAvatarId
 		insertAscii("SWG");
@@ -55,39 +63,35 @@ public:
 		
 		insertUnicode(channel->getTitle());
 		
-		addToUnknownListA(channel);
-		addToUnknownListB();
+		insertInt(0);
+		//insertInt(channel->getModeratorSize());
+		//fillModeratorList(channel);
+
+		insertInt(0);
+		//insertInt(channel->getPlayerSize()); //TA says this is the invitee list, but irrelevant
+		//fillPlayerList(channel);
+
 	}
 	
 	void insertChannelListCount() {
 		insertInt(10, channelCounter);
 	}
 	
-	void addToUnknownListA(ChatRoom* room) {
-		insertInt(0);
-		
-		/*int size = room->playerList.size(); 
-		insertInt(size);
-		
-		for (int i = 0; i < size; i++) {
+	void fillModeratorList(ChatRoom* room) {
+		for (int i = 0; i < room->getModeratorSize(); i++) {
 			insertAscii("SWG");
 			insertAscii(room->getGalaxyName());
-			insertAscii(room->playerList.get(i)->getFirstName());
-		}*/
-		
-		/*insertInt(1); //List Count of Players in Room?
-		insertAscii("SWG");
-		insertAscii(serverName.toCharArray());
-		insertAscii(name.toCharArray());*/
-	}
-	
-	void addToUnknownListB() {
-		insertInt(0); //List Count
-		/*insertAscii("SWG");
-		insertAscii(serverName.toCharArray());
-		insertAscii(name);*/	
+			insertAscii(room->getModeratorName(i));
+		}
 	}
 
+	void fillPlayerList(ChatRoom* room) {
+		for (int i = 0; i < room->getPlayerSize(); i++) {
+			insertAscii("SWG");
+			insertAscii(room->getGalaxyName());
+			insertAscii(room->getPlayer(i)->getFirstName());
+		}
+	}
 
 };
 

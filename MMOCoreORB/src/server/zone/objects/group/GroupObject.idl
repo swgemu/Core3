@@ -100,7 +100,7 @@ class GroupObject extends SceneObject {
 	}
 
 	@read
-	public ChatRoom getGroupChannel() {
+	public ChatRoom getChatRoom() {
 		return chatRoom;
 	}
 

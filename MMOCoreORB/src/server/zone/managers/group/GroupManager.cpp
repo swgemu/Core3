@@ -15,6 +15,7 @@
 
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/chat/ChatManager.h"
 
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
@@ -191,11 +192,10 @@ void GroupManager::joinGroup(CreatureObject* player) {
 		if (ghost != NULL)
 			ghost->clearCharacterBit(PlayerObject::LFG, true);
 
-		ManagedReference<ChatRoom*> groupChannel = group->getGroupChannel();
-
-		if (groupChannel != NULL) {
-			groupChannel->sendTo(cast<CreatureObject*>(player));
-			groupChannel->addPlayer(cast<CreatureObject*>(player), false);
+		ManagedReference<ChatRoom*> groupChat = group->getChatRoom();
+		if (groupChat != NULL) {
+			groupChat->sendTo(cast<CreatureObject*>(player));
+			server->getChatManager()->handleChatEnterRoomById(player, groupChat->getRoomID(), -1, true);
 		}
 
 		if (player->isPlayingMusic()) {
@@ -317,13 +317,13 @@ void GroupManager::leaveGroup(ManagedReference<GroupObject*> group, CreatureObje
 	try {
 		Locker clocker(group, player);
 
-		ChatRoom* groupChannel = group->getGroupChannel();
-		if (groupChannel != NULL && player->isPlayerCreature()) {
+		ChatRoom* groupChat = group->getChatRoom();
+		if (groupChat != NULL && player->isPlayerCreature()) {
 			CreatureObject* playerCreature = cast<CreatureObject*>( player);
-			groupChannel->removePlayer(playerCreature, false);
-			groupChannel->sendDestroyTo(playerCreature);
+			groupChat->removePlayer(playerCreature, false);
+			groupChat->sendDestroyTo(playerCreature);
 
-			ChatRoom* room = groupChannel->getParent();
+			ChatRoom* room = groupChat->getParent();
 			room->sendDestroyTo(playerCreature);
 		}
 
@@ -471,11 +471,11 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 
 			if (memberToKick->isPlayerCreature()) {
 				CreatureObject* pl = cast<CreatureObject*>( memberToKick);
-				ManagedReference<ChatRoom*> groupChannel = group->getGroupChannel();
-				groupChannel->removePlayer(pl, false);
-				groupChannel->sendDestroyTo(pl);
+				ManagedReference<ChatRoom*> groupChat = group->getChatRoom();
+				groupChat->removePlayer(pl, false);
+				groupChat->sendDestroyTo(pl);
 
-				ManagedReference<ChatRoom*> room = groupChannel->getParent();
+				ManagedReference<ChatRoom*> room = groupChat->getParent();
 				room->sendDestroyTo(pl);
 			}
 
