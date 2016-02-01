@@ -1806,6 +1806,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 }
 
 int CombatManager::calculatePoolsToDamage(int poolsToDamage) {
+
 	if (poolsToDamage & RANDOM) {
 		int rand = System::random(100);
 

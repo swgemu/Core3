@@ -44,7 +44,6 @@
 SaberSlash2Command = {
         name = "saberslash2",	
 
-
 	damageMultiplier = 2.5,
 	speedMultiplier = 2.0,
 	healthCostMultiplier = 0,
@@ -54,49 +53,29 @@ SaberSlash2Command = {
 	visMod = 25,
 
 	dotEffects = {
-	  DotEffect( 
-		BLEEDING, 
+	  DotEffect(
+		BLEEDING,
 		{ "resistance_bleeding", "bleed_resist" },
-		HEALTH,
+		BLEED_ALL_PRIMARY,
 		true,
 		0,
 		100,
-		75, 
-		60
-	  ),
-
-	  	DotEffect( 
-		BLEEDING, 
-		{ "resistance_bleeding", "bleed_resist" },
-		ACTION,
-		true,
-		0,
-		100,
-		75, 
-		60
-	  ),
-
-	  	DotEffect( 
-		BLEEDING, 
-		{ "resistance_bleeding", "bleed_resist" },
-		MIND,
-		true,
-		0,
-		100,
-		75, 
-		60
-	  ),
+		75,
+		60,
+		16,
+		16
+	  )
 	},
 
 	stateEffects = {
-	  StateEffect( 
-		POSTUREDOWN_EFFECT, 
-		{ "postureDownRecovery" }, 
-		{ "posture_change_down_defense" }, 
-		{}, 
-		100, 
-		0, 
-		0 
+	  StateEffect(
+		POSTUREDOWN_EFFECT,
+		{ "postureDownRecovery" },
+		{ "posture_change_down_defense" },
+		{},
+		100,
+		0,
+		0
 	  )
 	},
 

@@ -12,6 +12,8 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/packets/object/CombatSpam.h"
 
+const uint8 DamageOverTime::BLEED_ALL_PRIMARY = CreatureAttribute::UNKNOWN+1; // I'm truly sorry for this
+
 DamageOverTime::DamageOverTime() {
 	setAttackerID(0);
 	setType(CreatureState::BLEEDING);
@@ -179,26 +181,49 @@ uint32 DamageOverTime::doBleedingTick(CreatureObject* victim, CreatureObject* at
 	if (victim->isIncapacitated())
 		return 0;
 
-	uint32 attr = victim->getHAM(attribute);
-	int absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_bleeding")));
+	Vector<uint8> attributes;
+	Vector<uint32> damages;
+	int totalDamage = 0;
 
-	// absorption reduces the strength of a dot by the given %.
-	int damage = (int)(strength * (1.f - absorptionMod / 100.f));
-	if (attr < damage) {
-		//System::out << "setting strength to " << attr -1 << endl;
-		damage = attr - 1;
+
+	if(attribute != DamageOverTime::BLEED_ALL_PRIMARY) {
+		attributes.add(attribute);
+	} else {
+		attributes.add(CreatureAttribute::HEALTH);
+		attributes.add(CreatureAttribute::ACTION);
+		attributes.add(CreatureAttribute::MIND);
 	}
+
+	for(int i=0; i<attributes.size(); i++) {
+		uint32 attr = victim->getHAM(attributes.get(i));
+		int absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_bleeding")));
+
+		// absorption reduces the strength of a dot by the given %.
+		int damage = (int)(strength * (1.f - absorptionMod / 100.f));
+		if (attr < damage) {
+			//System::out << "setting strength to " << attr -1 << endl;
+			damage = attr - 1;
+		}
+		damages.add(damage);
+		totalDamage+=damage;
+	}
+
+
 
 	Reference<CreatureObject*> attackerRef = attacker;
 	Reference<CreatureObject*> victimRef = victim;
-	uint8 attribute = this->attribute;
 
-	EXECUTE_TASK_4(attackerRef, victimRef, attribute, damage, {
+	EXECUTE_TASK_4(attackerRef, victimRef, attributes, damages, {
+
+			assert(attributes_p.size() == damages_p.size());
+
 			Locker locker(victimRef_p);
 
 			Locker crossLocker(attackerRef_p, victimRef_p);
 
-			victimRef_p->inflictDamage(attackerRef_p, attribute_p, damage_p, false);
+			for(int i=0; i<attributes_p.size(); i++) {
+				victimRef_p->inflictDamage(attackerRef_p, attributes_p.get(i), damages_p.get(i), false);
+			}
 
 			if (victimRef_p->hasAttackDelay())
 				victimRef_p->removeAttackDelay();
@@ -207,13 +232,14 @@ uint32 DamageOverTime::doBleedingTick(CreatureObject* victim, CreatureObject* at
 	});
 
 
-	return damage;
+	return totalDamage;
 }
 
 uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attacker) {
 	// we need to allow dots to tick while incapped, but not do damage
 	if (victim->isIncapacitated())
 		return 0;
+
 
 	uint32 attr = victim->getHAM(attribute);
 	int absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_fire")));

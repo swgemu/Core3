@@ -36,6 +36,9 @@ protected:
 	int secondaryStrength;
 
 public:
+	static const uint8 BLEED_ALL_PRIMARY; // Hackity hack: THIS IS ONLY TO BLED ALL POOLS
+
+
 	DamageOverTime();
 	DamageOverTime(CreatureObject* attacker, uint64 tp, uint8 attrib, uint32 str, uint32 dur, int secondaryStr = 0);
 
