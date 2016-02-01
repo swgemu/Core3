@@ -54,7 +54,7 @@ class Zone extends SceneObject {
 
 	private transient CreatureManager creatureManager;
 
-	private ChatRoom chatRoom;
+	private transient ChatRoom planetChatRoom;
 
 	@dereferenced
 	private transient SortedVector<CityRegion> cityRegionUpdateVector;
@@ -72,7 +72,7 @@ class Zone extends SceneObject {
 
 	@transactional
 	private transient MapLocationTable mapLocations;
-	
+
 	@dereferenced
 	protected AtomicInteger spawnedAiAgents;
 
@@ -86,7 +86,7 @@ class Zone extends SceneObject {
 	public native SceneObject getNearestPlanetaryObject(SceneObject object, final string mapObjectLocationType);
 
 	public native void initializePrivateData();
-	
+
 	@local
 	public QuadTree getRegionTree() {
 		return regionTree.get();
@@ -94,7 +94,7 @@ class Zone extends SceneObject {
 
 	@local
 	public native int getInRangeObjects(float x, float y, float range, SortedVector<QuadTreeEntry> objects, boolean readLockZone);
-	
+
 	@local
 	public native int getInRangeObjects(float x, float y, float range, InRangeObjectsVector objects, boolean readLockZone);
 
@@ -180,7 +180,7 @@ class Zone extends SceneObject {
 	public boolean hasManagersStarted() {
 		return managersStarted;
 	}
-	
+
 	public int getSpawnedAiAgents() {
 		return spawnedAiAgents.get();
 	}
@@ -232,11 +232,13 @@ class Zone extends SceneObject {
 		return zoneCRC;
 	}
 
-	public void setChatRoom(ChatRoom room) {
-		chatRoom = room;
+	public void setPlanetChatRoom(ChatRoom room) {
+		planetChatRoom = room;
 	}
 
-	public ChatRoom getChatRoom() {
-		return chatRoom;
+	public ChatRoom getPlanetChatRoom() {
+		return planetChatRoom;
 	}
+
 }
+

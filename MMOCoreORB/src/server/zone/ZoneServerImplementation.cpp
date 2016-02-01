@@ -254,6 +254,7 @@ void ZoneServerImplementation::startManagers() {
 	guildManager->loadGuilds();
 
 	chatManager->initiatePlanetRooms();
+	chatManager->loadPersistentRooms();
 
 	//Loads the FactionManager LUA Config.
 	FactionManager::instance()->loadData();
@@ -519,7 +520,7 @@ void ZoneServerImplementation::changeUserCap(int amount) {
 
 	serverCap += amount;
 	//userManager->changeUserCap(amount);
-	
+
 	info("server cap changed to " + String::valueOf(serverCap), true);
 
 	unlock();
