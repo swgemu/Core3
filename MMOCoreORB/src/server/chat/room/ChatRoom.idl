@@ -7,121 +7,260 @@ package server.chat.room;
 import engine.core.ManagedObject;
 import system.util.VectorMap;
 import system.util.Vector;
+import system.lang.Time;
 import engine.service.proto.BaseMessage;
 import server.zone.ZoneServer;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.CreatureObject;
 import server.zone.managers.objectcontroller.ObjectController;
+import server.chat.ChatManager;
+include system.thread.ReadWriteLock;
 
 class ChatRoom extends ManagedObject {
-	protected ZoneServer server;
-
+	protected transient ZoneServer server;
+	protected transient ChatManager manager;
+	
 	protected string name;
 	protected string fullPath;
 
-	protected string owner;
+	protected unsigned long ownerID;
+	protected string ownerName;
 	protected string creator;
 
 	protected unicode title;
 	protected unsigned int roomID;
 
-	protected ChatRoom parent;
-
-	@dereferenced 
-	protected VectorMap<string, CreatureObject> playerList;
-	
-	@dereferenced
-	protected VectorMap<string, CreatureObject> moderatorList;
-	
-	@dereferenced 
-	protected VectorMap<string, ChatRoom> subRooms;
+	protected boolean parentIsPersistent;
+	protected unsigned int parentRoomID;
 
 	protected boolean isPublicRoom;
-	
 	protected boolean moderated;
-	
+	protected boolean canEnterRoom;
+	protected boolean allowSubrooms;
+	protected boolean disabled;
+
+	protected int roomType;
+
+	@dereferenced
+	Time lastJoin;
+
+	@dereferenced
+	protected VectorMap<string, unsigned int> subRooms;
+
+	@dereferenced
+	protected transient ReadWriteLock subRoomsMutex;
+
+	@dereferenced 
+	protected transient VectorMap<string, CreatureObject> playerList;
+
+	@dereferenced
+	protected Vector<unsigned long> moderatorList;
+
+	@dereferenced
+	protected Vector<unsigned long> invitedList;
+
+	@dereferenced
+	protected Vector<unsigned long> bannedList;
+
+	//ChatRoom types:
+	public static final int DEFAULT = 0;
+	public static final int AUCTION = 1;
+	public static final int GUILD = 2;
+	public static final int GROUP = 3;
+	public static final int PLANET = 4;
+	public static final int CUSTOM = 5;
+
 	public ChatRoom() {
 		server = null;
+		manager = null;
 
 		name = "";
 		roomID = 0;
+		parentRoomID = 0;
+		ownerID = 0;
 
-		owner = "system";
+		ownerName = "system";
 		creator = "system";
 		title = "";
 		fullPath = "";
 
-		parent = null;
+		parentIsPersistent = false;
 
 		isPublicRoom = true;
-		
 		moderated = false;
-
-		subRooms.setNullValue(null);
-		subRooms.setNoDuplicateInsertPlan();
-
-		playerList.setNoDuplicateInsertPlan();
-		playerList.setNullValue(null);
-		
-		moderatorList.setNoDuplicateInsertPlan();
-		moderatorList.setNullValue(null);
+		canEnterRoom = false;
+		allowSubrooms = false;
+		disabled = false;
+		roomType = DEFAULT;
 	}
-	
-	public void init(ZoneServer serv, ChatRoom par, final string roomName, unsigned int channelID) {
-		server = serv;
-		
-		name = roomName;
-		
-		roomID = channelID;
-		
-		parent = par;
-		
-		owner = "system";
-		creator = "system";
-		title = "";
-		
-		if (par == null) {
-			fullPath = roomName;
-		} else {
-			fullPath = par.getFullPath() + "." + roomName;
-		}
-		
-		isPublicRoom = true;
 
-		subRooms.setNullValue(null);
-		subRooms.setNoDuplicateInsertPlan();
-
-		playerList.setNoDuplicateInsertPlan();
-		playerList.setNullValue(null);
-	}
-		
+	public native void init(ZoneServer serv, ChatRoom parent, final string roomName);
 	public native void sendTo(CreatureObject player);
 	public native void sendDestroyTo(CreatureObject player);
 
-	public synchronized void addSubRoom(ChatRoom channel) {
-		subRooms.put(channel.getName(), channel);
+////////////////////////////////////////////////////////////////////////////////////////
+//                              SubRoom Management
+	
+	public void addSubRoom(final string name, unsigned int roomID) {
+		synchronized (subRoomsMutex) {
+			subRooms.put(name, roomID);
+		}
 	}
 
-	public synchronized void removeSubRoom(ChatRoom channel) {
-		subRooms.drop(channel.getName());
+	public void removeSubRoom(final string channel) {
+		synchronized (subRoomsMutex) {
+			subRooms.drop(channel);
+		}
 	}
 
-	public synchronized ChatRoom getSubRoom(int i) {
-		return subRooms.get(i);
+	@dirty
+	public ChatRoom getSubRoom(int i) {
+		synchronized (subRoomsMutex) {
+			return manager.getChatRoom(subRooms.get(i));
+		}
+	}
+
+	@dirty
+	public ChatRoom getSubRoom(final string name) {
+		synchronized (subRoomsMutex) {
+			return manager.getChatRoom(subRooms.get(name));
+		}
+	}
+
+	@dirty
+	public int getSubRoomsSize() {
+		synchronized (subRoomsMutex) {
+			return subRooms.size();
+		}
+	}
+
+////////////////////////////////////////////////////////////////////////////////////////
+//                              Player Management
+
+	public native void addPlayer(CreatureObject player);
+
+	@preLocked
+	@arg1preLocked
+	public native void removePlayer(CreatureObject player, boolean disconnecting = false);
+
+	@preLocked
+	public native void removeAllPlayers();
+
+	@dirty
+	public int getPlayerSize() {
+		return playerList.size();
 	}
 	
-	public synchronized ChatRoom getSubRoom(final string name) {
-		return subRooms.get(name);
+	@dirty
+	public CreatureObject getPlayer(int idx) {
+		return playerList.get(idx);
 	}
 
-	public native void addPlayer(CreatureObject player, boolean doLock = true);
-	public native void removePlayer(CreatureObject player, boolean doLock = true);
-	public native void removePlayer(final string player);
+	@dirty
+	public synchronized boolean hasPlayer(CreatureObject player) {
+		return playerList.contains(player.getFirstName());
+	}
+	
+	@dirty
+	public synchronized boolean hasPlayer(final string name) {
+		return playerList.contains(name);
+	}
+
+////////////////////////////////////////////////////////////////////////////////////////
+//                              Moderator Management
+
+	public synchronized void addModerator(CreatureObject player) {
+		moderatorList.add(player.getObjectID());
+		addInvited(player);
+	}
+
+	public synchronized void removeModerator(CreatureObject player) {
+		moderatorList.removeElement(player.getObjectID());
+	}
+
+	public synchronized void removeAllModerators() {
+		moderatorList.removeAll();
+	}
+
+	@dirty
+	public int getModeratorSize() {
+		return moderatorList.size();
+	}
+
+	@dirty
+	public native string getModeratorName(int idx);
+		
+	@dirty
+	public synchronized boolean hasModerator(unsigned long objectID) {
+		return moderatorList.contains(objectID);
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//                              Invited Management
+
+	public synchronized void addInvited(CreatureObject player) {
+		invitedList.add(player.getObjectID());
+	}
+
+	public synchronized void removeInvited(CreatureObject player) {
+		invitedList.removeElement(player.getObjectID());
+		removeModerator(player);
+	}
+
+	public synchronized void removeAllInvited() {
+		invitedList.removeAll();
+	}
+
+	@dirty
+	public int getInvitedSize() {
+		return invitedList.size();
+	}
+
+	@dirty
+	public native string getInvitedName(int idx);
+
+	@dirty
+	public synchronized boolean hasInvited(unsigned long objectID) {
+		return invitedList.contains(objectID);
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//                              Banned Management
+
+	public synchronized void addBanned(CreatureObject player) {
+		bannedList.add(player.getObjectID());
+		removeInvited(player);
+	}
+
+	public synchronized void removeBanned(CreatureObject player) {
+		bannedList.removeElement(player.getObjectID());
+	}
+
+	public synchronized void removeAllBanned() {
+		bannedList.removeAll();
+	}
+
+	@dirty
+	public int getBannedSize() {
+		return bannedList.size();
+	}
+
+	@dirty
+	public native string getBannedName(int idx);
+
+	@dirty
+	public synchronized boolean hasBanned(unsigned long objectID) {
+		return bannedList.contains(objectID);
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////
 
 	public native void broadcastMessage(BaseMessage msg);
 	public native void broadcastMessageCheckIgnore(BaseMessage msg, string senderName );
-	
-	@local 
+
+	@dirty
+	public native boolean checkEnterPermission(CreatureObject player);
+
+	@local
 	public synchronized void broadcastMessages(Vector<BaseMessage> messages) {
 		for (int i = 0; i < playerList.size(); ++i) {
 			CreatureObject player = playerList.get(i);
@@ -140,16 +279,11 @@ class ChatRoom extends ManagedObject {
 		messages.removeAll();
 	}
 
-	public synchronized boolean hasPlayer(CreatureObject player) {
-		return playerList.contains(player.getFirstName());
-	}
-	
-	public synchronized boolean hasPlayer(final string name) {
-		return playerList.contains(name);
+	@dirty
+	public ChatRoom getParent() {
+		return manager.getChatRoom(parentRoomID);
 	}
 
-	public native void removeAllPlayers();
-	
 	public void setPrivate() {
 		isPublicRoom = false;
 	}
@@ -158,14 +292,35 @@ class ChatRoom extends ManagedObject {
 		isPublicRoom = true;
 	}
 
+	@dirty
 	public boolean isPublic() {
 		return isPublicRoom == true;
 	}
 
+	@dirty
 	public boolean isPrivate() {
 		return isPublicRoom == false;
 	}
+
+	@read
+	public boolean canEnter() {
+		return canEnterRoom;
+	}
+
+	public void setCanEnter(boolean value) {
+		canEnterRoom = value;
+	}
+
+	@read
+	public boolean subroomsAllowed() {
+		return allowSubrooms;
+	}
+
+	public void setAllowSubrooms(boolean value) {
+		allowSubrooms = value;
+	}
 	
+	@read
 	public boolean isModerated() {
 		return moderated;
 	}
@@ -173,74 +328,120 @@ class ChatRoom extends ManagedObject {
 		moderated = moderate;
 	}
 
-	public CreatureObject getPlayer(int idx) {
-		return playerList.get(idx);
-	}
-
-	public int getPlayerSize() {
-		return playerList.size();
-	}
-
 	public void setName(final string Name) {
 		name = Name;
 	}
 
+	@read
 	public string getName() {
 		return name;
 	}
 
+	@read
 	public string getFullPath() {
 		return fullPath;
 	}
 
-	public string getOwner() {
-		return owner;
+	public void setOwnerID(unsigned long objectID) {
+		ownerID = objectID;
 	}
 
+	@read
+	public unsigned long getOwnerID() {
+		return ownerID;
+	}
+
+	public void setOwnerName(final string name) {
+		ownerName = name;
+	}
+
+	@read
+	public string getOwnerName() {
+		return ownerName;
+	}
+
+	public void setCreator(final string name) {
+		creator = name;
+	}
+
+	@dirty
 	public string getCreator() {
 		return creator;
 	}
 
+	public void setTitle(final unicode uniTitle) {
+		title = uniTitle;
+	}
+
+	@read
 	public unicode getTitle() {
 		return title;
 	}
+	
+	@dirty
+	public unsigned int getLastJoinTime() {
+		return lastJoin.miliDifference();
+	}
 
+	@dirty
 	public native string getGalaxyName();
 
-	public void setOwner(final string Owner) {
-		owner = Owner;
-	}
-
-	public void setCreator(final string Creator) {
-		creator = Creator;
-	}
-
-	public void setTitle(final string Title) {
-		title = Title;
-	}
-	
-	public void setRoomID(int id) {
+	public void setRoomID(unsigned int id) {
 		roomID = id;
 	}
 
+	@read
 	public unsigned int getRoomID() {
 		return roomID;
 	}
 
-	public int getSubRoomsSize() {
-		return subRooms.size();
+	public void setZoneServer(ZoneServer srv) {
+		server = srv;
 	}
 
-	public ChatRoom getParent() {
-		return parent;
+	public ZoneServer getZoneServer() {
+		return server;
 	}
 
-	public int compareTo(ChatRoom obj) {
-		if (roomID < obj.getRoomID())
-			return 1;
-		else if (roomID > obj.getRoomID())
-			return -1;
-		else
-			return 0;
+	public void setChatManager(ChatManager mgr) {
+		manager = mgr;
 	}
+
+	public void setChatRoomType(int type) {
+		roomType = type;
+	}
+
+	@read
+	public int getChatRoomType() {
+		return roomType;
+	}
+
+	@read
+	public boolean hasPersistentParent() {
+		return parentIsPersistent;
+	}
+
+	public void setParentIsPersistent(boolean value) {
+		parentIsPersistent = value;
+	}
+
+	public void setParentRoomID(unsigned int value) {
+		parentRoomID = value;
+	}
+
+	public void setDisabled(boolean value) {
+		disabled = value;
+	}
+
+	@dirty
+	public boolean isDisabled() {
+		return disabled == true;
+	}
+
+	@dirty
+	public boolean isPersistent() {
+		return roomType == CUSTOM;
+	}
+
 }
+

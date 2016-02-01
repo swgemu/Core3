@@ -40,7 +40,7 @@ public:
 
 	void run() {
 		ZoneServer* zoneServer = server->getZoneServer();
-		
+
 		if (zoneServer->isServerLocked()) {
 			ErrorMessage* errMsg = new ErrorMessage("Login Error", "Server is currently locked", 0);
 			client->sendMessage(errMsg);
@@ -51,7 +51,7 @@ public:
 		if (zoneServer->isServerLoading()) {
 			ErrorMessage* errMsg = new ErrorMessage("Login Error", "Server is currently loading", 0);
 			client->sendMessage(errMsg);
-			
+
 			return;
 		}
 
@@ -96,7 +96,7 @@ public:
 
 			if (ghost->getAdminLevel() == 0 && (zoneServer->getConnectionCount() >= zoneServer->getServerCap())) {
 				client->sendMessage(new ErrorMessage("Login Error", "Server cap reached, please try again later", 0));
-				return;				
+				return;
 			}
 
 			if (!zoneServer->getPlayerManager()->increaseOnlineCharCountIfPossible(client)) {
@@ -185,18 +185,11 @@ public:
 			chatManager->addPlayer(player);
 			chatManager->loadMail(player);
 
-			// Join auction chat room
+			//Join auction chat room (this causes Auction tab to be recreated on login if deleted)
 			ManagedReference<ChatRoom*> auctionChat = chatManager->getAuctionRoom();
-			if( auctionChat != NULL ){
+			if(auctionChat != NULL) {
 				auctionChat->sendTo(player);
-				auctionChat->addPlayer(player);
-			}
-
-			// Join General chat room
-			ManagedReference<ChatRoom*> generalChat = chatManager->getGeneralRoom();
-			if (generalChat != NULL) {
-				generalChat->sendTo(player);
-				generalChat->addPlayer(player);
+				chatManager->handleChatEnterRoomById(player, auctionChat->getRoomID(), -1, true);
 			}
 
 			ghost->notifyOnline();

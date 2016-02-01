@@ -68,7 +68,7 @@ class GroupObject extends SceneObject {
 	@local
 	@dirty
 	public native void sendSystemMessage(@dereferenced StringIdChatParameter param, CreatureObject excluded);
-	
+
 	public native void addMember(SceneObject newMember);
 	@preLocked
 	public native void removeMember(SceneObject member);
@@ -84,6 +84,7 @@ class GroupObject extends SceneObject {
 
 	@preLocked
 	public native void startChatRoom();
+
 	@preLocked
 	public native void destroyChatRoom();
 
@@ -100,7 +101,7 @@ class GroupObject extends SceneObject {
 	}
 
 	@read
-	public ChatRoom getGroupChannel() {
+	public ChatRoom getChatRoom() {
 		return chatRoom;
 	}
 

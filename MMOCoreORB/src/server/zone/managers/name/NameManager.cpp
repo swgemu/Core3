@@ -476,6 +476,35 @@ int NameManager::validateVendorName(const String& name) {
 	return NameManagerResult::ACCEPTED;
 }
 
+int NameManager::validateChatRoomName(const String& name) {
+	if (name.isEmpty())
+		return NameManagerResult::DECLINED_EMPTY;
+
+	if (isProfane(name))
+		return NameManagerResult::DECLINED_PROFANE;
+
+	//Chat rooms can only have letters and numbers in the name, no special characters or spaces.
+	if (strspn(name.toCharArray(), "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz") != name.length())
+		return NameManagerResult::DECLINED_SYNTAX;
+
+	uint32 hash = name.hashCode();
+
+	//The following are special names in the game client and should not be used by players.
+	if (hash == STRING_HASHCODE("Planet") || hash == STRING_HASHCODE("Quest"))
+		return NameManagerResult::DECLINED_RESERVED;
+
+	if (hash == STRING_HASHCODE("system") || hash == STRING_HASHCODE("named"))
+		return NameManagerResult::DECLINED_RESERVED;
+
+	if (hash == STRING_HASHCODE("GuildChat") || hash == STRING_HASHCODE("GroupChat"))
+		return NameManagerResult::DECLINED_RESERVED;
+
+	if (hash == STRING_HASHCODE("Auction") || hash == STRING_HASHCODE("Combat"))
+		return NameManagerResult::DECLINED_RESERVED;
+
+	return NameManagerResult::ACCEPTED;
+}
+
 const String NameManager::makeCreatureName(int type, int species) {
 	String name;
 	NameData* data = getSpeciesData(species);

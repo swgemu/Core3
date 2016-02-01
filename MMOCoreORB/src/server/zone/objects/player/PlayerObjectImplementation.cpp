@@ -88,6 +88,8 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 	drinkFillingMax = 100;
 
 	duelList.setNoDuplicateInsertPlan();
+	chatRooms.setNoDuplicateInsertPlan();
+	ownedChatRooms.setNoDuplicateInsertPlan();
 
 	setLoggingName("PlayerObject");
 }
@@ -126,13 +128,12 @@ void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 void PlayerObjectImplementation::notifyLoadFromDatabase() {
 	IntangibleObjectImplementation::notifyLoadFromDatabase();
 
-	chatRooms.removeAll();
-
 	serverLastMovementStamp.updateToCurrentTime();
 
 	lastValidatedPosition.update(getParent().get());
 
 	clientLastMovementStamp = 0;
+
 }
 
 void PlayerObjectImplementation::unloadSpawnedChildren() {
@@ -220,14 +221,18 @@ void PlayerObjectImplementation::unload() {
 
 	//creature->clearDots();
 
+	//Remove player from Chat Manager and all rooms.
 	ManagedReference<ChatManager*> chatManager = getZoneServer()->getChatManager();
-
-	if (chatManager != NULL)
+	if (chatManager != NULL) {
 		chatManager->removePlayer(creature->getFirstName().toLowerCase());
 
-	while (!chatRooms.isEmpty()) {
-		ChatRoom* room = chatRooms.get(0);
-		room->removePlayer(creature);
+		for (int i = 0; i < chatRooms.size(); i++) {
+			ManagedReference<ChatRoom*> room = chatManager->getChatRoom(chatRooms.get(i));
+			if (room != NULL) {
+				Locker clocker(room, creature);
+				room->removePlayer(creature, true);
+			}
+		}
 	}
 
 	CombatManager::instance()->freeDuelList(creature);
@@ -279,18 +284,6 @@ void PlayerObjectImplementation::notifySceneReady() {
 
 	creature->sendBuffsTo(creature);
 
-	ManagedReference<GuildObject*> guild = creature->getGuildObject().get();
-
-	if (guild != NULL) {
-		ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
-
-		if (guildChat == NULL)
-			return;
-
-		guildChat->sendTo(creature);
-		guildChat->addPlayer(creature);
-	}
-
 	sendFriendLists();
 
 	if (creature->isDead()) {
@@ -311,30 +304,58 @@ void PlayerObjectImplementation::notifySceneReady() {
 	if (zoneServer == NULL || zoneServer->isServerLoading())
 		return;
 
-	// Leave all planet chat rooms
+	//Join GuildChat
+	ManagedReference<ChatManager*> chatManager = zoneServer->getChatManager();
+	ManagedReference<GuildObject*> guild = creature->getGuildObject().get();
+
+	if (guild != NULL) {
+		ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
+		if (guildChat != NULL) {
+			guildChat->sendTo(creature);
+			chatManager->handleChatEnterRoomById(creature, guildChat->getRoomID(), -1, true);
+		}
+	}
+
+	//Leave all planet chat rooms
 	for (int i = 0; i < zoneServer->getZoneCount(); ++i) {
 		ManagedReference<Zone*> zone = zoneServer->getZone(i);
 
 		if (zone == NULL)
 			continue;
 
-		ManagedReference<ChatRoom*> room = zone->getChatRoom();
-		if( room == NULL )
+		ManagedReference<ChatRoom*> planetRoom = zone->getPlanetChatRoom();
+		if (planetRoom == NULL)
 			continue;
 
-		room->removePlayer(creature);
+		Locker clocker(planetRoom, creature);
+		planetRoom->removePlayer(creature);
+		planetRoom->sendDestroyTo(creature);
 
 	}
 
-	// Join current planet chat room
-	if(creature->getZone() != NULL ){
-		ManagedReference<ChatRoom*> planetChat = creature->getZone()->getChatRoom();
+	//Join current zone's Planet chat room
+	ManagedReference<Zone*> zone = creature->getZone();
+	if (zone != NULL) {
+		ManagedReference<ChatRoom*> planetChat = zone->getPlanetChatRoom();
+		if (planetChat != NULL) {
+			planetChat->sendTo(creature);
+			chatManager->handleChatEnterRoomById(creature, planetChat->getRoomID(), -1, true);
+		}
+	}
 
-		if (planetChat == NULL)
-			return;
+	//Re-join chat rooms player was a member of before disconnecting.
+	for (int i = chatRooms.size() - 1; i >= 0; i--) {
+		ChatRoom* room = chatManager->getChatRoom(chatRooms.get(i));
+		if (room != NULL) {
+			int roomType = room->getChatRoomType();
+			if (roomType == ChatRoom::AUCTION || roomType == ChatRoom::PLANET || roomType == ChatRoom::GUILD)
+				continue; //Auction is handled in SelectCharacterCallback and Planet is handled above.
 
-		planetChat->sendTo(creature);
-		planetChat->addPlayer(creature);
+			room->sendTo(creature);
+			chatManager->handleChatEnterRoomById(creature, room->getRoomID(), -1);
+
+		} else
+			chatRooms.remove(i);
 	}
 
 	if(creature->getZone() != NULL && creature->getZone()->getPlanetManager() != NULL) {
@@ -2282,6 +2303,25 @@ int PlayerObjectImplementation::getLotsRemaining() {
 	}
 
 	return lotsRemaining;
+}
+
+int PlayerObjectImplementation::getOwnedChatRoomCount() {
+	ManagedReference<ChatManager*> chatManager = getZoneServer()->getChatManager();
+	if (chatManager == NULL)
+		return 0;
+
+	int roomCount = 0;
+
+	for (int i = ownedChatRooms.size() - 1; i >= 0; i--) {
+		ManagedReference<ChatRoom*> room = chatManager->getChatRoom(ownedChatRooms.get(i));
+		if (room != NULL)
+			roomCount++;
+		else
+			ownedChatRooms.remove(i);
+	}
+
+	return roomCount;
+
 }
 
 void PlayerObjectImplementation::setJediState(int state, bool notifyClient) {
