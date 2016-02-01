@@ -425,6 +425,8 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("ACTION", CreatureAttribute::ACTION);
 	setGlobalInt("MIND", CreatureAttribute::MIND);
 	setGlobalInt("ATTACK_POOL", CreatureAttribute::UNKNOWN);
+	setGlobalInt("BLEED_ALL_PRIMARY", DamageOverTime::BLEED_ALL_PRIMARY);
+
 
 	// weapons
 	setGlobalInt("ANYWEAPON", CombatManager::ANYWEAPON);
