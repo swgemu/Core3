@@ -27,26 +27,22 @@ include server.chat.WaypointChatParameterVector;
 
 class ChatManager extends ManagedService implements Logger {
 	ZoneServer server;
-
 	PlayerManager playerManager;
-
 	transient PlayerMap playerMap;
 
-	@dereferenced 
+	@dereferenced
 	private VectorMap<string, ChatRoom> gameRooms;
-
+ 
 	@dereferenced
 	protected VectorMap<unsigned int, string> socialTypes;
 
+	ChatRoom core3Room;
 	ChatRoom groupRoom;
 	ChatRoom guildRoom;
-	ChatRoom core3Room;
 	ChatRoom auctionRoom;
-	ChatRoom generalRoom;
+	ChatRoom systemRoom;
 
 	transient ChatRoomMap roomMap;
-
-	unsigned int roomID;
 
 	boolean mute;
 
@@ -57,6 +53,18 @@ class ChatManager extends ManagedService implements Logger {
 	private transient VectorMap<unsigned int, short> spatialChatDistances;
 
 	private transient short defaultSpatialChatDistance;
+
+	//Determines how many characters long a room name can be.
+	public static final unsigned int MAXCHATROOMNAMELENGTH = 25;
+
+	//Determines how many chat rooms a player character can own at one time.
+	public static final unsigned int MAXCUSTOMCHATROOMS = 10;
+
+	//Determines how many persistent chat room nodes can be in a room path. 
+	public static final unsigned int MAXPERSISTENTNODES = 5;
+
+	//Custom room will be deleted on server load if no joins for this time (7 days, in hours).
+	public static final unsigned int ROOMEXPIRATIONTIME = 168;
 
 	public static final int IM_SUCCESS = 0x00;
 	public static final int IM_OFFLINE = 0x04;
@@ -81,6 +89,15 @@ class ChatManager extends ManagedService implements Logger {
 
 	public native ChatRoom createRoom(final string roomName, ChatRoom parent = null);
 
+	public native ChatRoom createPersistentRoom(final string roomName, ChatRoom parent = null);
+	public native void loadPersistentRooms();
+
+	@preLocked
+	public native ChatRoom createPersistentRoomByFullPath(CreatureObject player, final string path, int requestID);
+
+	@preLocked
+	private native void checkRoomExpirations();
+
 	public synchronized void addRoom(ChatRoom channel) {
 		roomMap.put(channel.getRoomID(), channel);
 	}
@@ -88,8 +105,6 @@ class ChatManager extends ManagedService implements Logger {
 	public synchronized void removeRoom(ChatRoom channel) {
 		roomMap.remove(channel.getRoomID());
 	}
-
-	public native void populateRoomListMessage(ChatRoom channel, ChatRoomList msg);
 
 	public native void sendRoomList(CreatureObject player);
 
@@ -109,21 +124,29 @@ class ChatManager extends ManagedService implements Logger {
 	public native void handleAuctionChat(CreatureObject player, final unicode message);
 
 	public native unicode formatMessage(final unicode message);
-	public native string getTaggedName(PlayerObject ghost, final string name);
 
-	public native ChatRoom createRoomByFullPath(final string path);
+	public native string getTaggedName(PlayerObject ghost, final string name);
 
 	public native ChatRoom getChatRoomByFullPath(final string path);
 	public native ChatRoom getChatRoomByGamePath(ChatRoom game, final string path);
 
 	public native void handleChatRoomMessage(CreatureObject sender, final unicode message, unsigned int roomID, unsigned int counter);
-	public native void handleChatEnterRoomById(CreatureObject player, unsigned int counter, unsigned int roomID);
+	public native void handleChatEnterRoomById(CreatureObject player, unsigned int roomID, int requestID, boolean bypassSecurity = false);
 	public native void handleSocialInternalMessage(CreatureObject sender, final unicode arguments);
 
 	@local
 	public native void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter message);
 
 	public native void destroyRoom(ChatRoom room);
+
+	@arg1PreLocked
+	public native void deleteRoom(ChatRoom room);
+
+	@arg1PreLocked
+	public native void disableRoom(ChatRoom room);
+
+	@preLocked
+	private native void enableRoom(CreatureObject player, ChatRoom room, int requestID);
 
 	public native ChatRoom createGroupRoom(unsigned long groupID, CreatureObject creator);
 
@@ -138,6 +161,16 @@ class ChatManager extends ManagedService implements Logger {
 
 	public native void handleRequestPersistentMsg(CreatureObject player, unsigned int mailID);
 	public native void deletePersistentMessage(CreatureObject player, unsigned int mailID);
+
+	public native string getRoomNameFromPath(final string path);
+	public native void handleChatCreateRoom(CreatureObject player, byte permissionFlag, byte moderationFlag, final string roomPath, final string roomTitle, int requestID);
+	public native void sendChatOnCreateRoomError(CreatureObject player, int requestID, int error);
+	public native void handleChatDestroyRoom(CreatureObject player, unsigned int roomID, int requestID);
+
+	@arg1preLocked
+	public native void handleChatLeaveRoom(CreatureObject player, final string roomPath);
+
+	public native void handleChatQueryRoom(CreatureObject player, final string roomPath, int requestID);
 
 	public native void broadcastGalaxy(CreatureObject player, final string message);
 	public native void broadcastGalaxy(final string message, final string faction);
@@ -183,10 +216,6 @@ class ChatManager extends ManagedService implements Logger {
 		return gameRooms.get(game);
 	}
 
-	public synchronized unsigned int getNextRoomID() {
-		return ++roomID;
-	}
-
 	public int getPlayerCount() {
 		return playerMap.size();
 	}
@@ -217,15 +246,16 @@ class ChatManager extends ManagedService implements Logger {
 		return auctionRoom;
 	}
 
-	/***
-	 * Returns the general chat room
+	/**
+	 * Returns the system chat room
 	 */
-	public ChatRoom getGeneralRoom() {
-		return generalRoom;
+	public ChatRoom getSystemRoom() {
+		return systemRoom;
 	}
 
 	@dirty
 	public string getSocialType(unsigned int id) {
 		return socialTypes.get(id);
 	}
+
 }
