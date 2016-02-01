@@ -19,7 +19,7 @@ const uint8 CreatureAttribute::FOCUS = 7;
 const uint8 CreatureAttribute::WILLPOWER = 8;
 const uint8 CreatureAttribute::UNKNOWN = 9;
 
-const uint8 CreatureAttribute::ARRAYSIZE = 9;
+const uint8 CreatureAttribute::ARRAYSIZE = 10;
 
 
 bool CreatureAttribute::isHAM(uint8 attribute) {

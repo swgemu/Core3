@@ -420,11 +420,14 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("ACTION_ATTRIBUTE", CombatManager::ACTION);
 	setGlobalInt("MIND_ATTRIBUTE", CombatManager::MIND);
 	setGlobalInt("RANDOM_ATTRIBUTE", CombatManager::RANDOM);
+	setGlobalInt("ALLHAM_ATTRIBUTE", CombatManager::ALLHAM);
 
 	setGlobalInt("HEALTH", CreatureAttribute::HEALTH);
 	setGlobalInt("ACTION", CreatureAttribute::ACTION);
 	setGlobalInt("MIND", CreatureAttribute::MIND);
 	setGlobalInt("ATTACK_POOL", CreatureAttribute::UNKNOWN);
+	setGlobalInt("BLEED_ALL_PRIMARY", DamageOverTime::BLEED_ALL_PRIMARY);
+
 
 	// weapons
 	setGlobalInt("ANYWEAPON", CombatManager::ANYWEAPON);

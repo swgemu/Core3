@@ -499,7 +499,7 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 
 		//info("entering addDotState", true);
 		float damMod = attacker->isAiAgent() ? cast<AiAgent*>(attacker)->getSpecialDamageMult() : 1.f;
-		defender->addDotState(attacker, dotType, data.getCommand()->getNameCRC(),
+		defender->addDotState(attacker, dotType, (data.getCommand()->getNameCRC() + String::valueOf(i)).hashCode(),
 				effect.isDotDamageofHit() ? damageToApply * effect.getPrimaryPercent() / 100.0f 
 					: effect.getDotStrength() * damMod,
 				pool, effect.getDotDuration(), potency, resist,
@@ -554,6 +554,7 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 
 uint8 CombatManager::getPoolForDot(uint64 dotType, int poolsToDamage) {
 	uint8 pool = 0;
+	uint8 pools = 0;
 
 	switch (dotType) {
 	case CreatureState::POISONED:
@@ -565,6 +566,9 @@ uint8 CombatManager::getPoolForDot(uint64 dotType, int poolsToDamage) {
 			pool = CreatureAttribute::ACTION;
 		} else if (poolsToDamage & MIND) {
 			pool = CreatureAttribute::MIND;
+		} else if (poolsToDamage & ALLHAM) {
+			pools = CreatureAttribute::HEALTH && CreatureAttribute::ACTION && CreatureAttribute::MIND;
+			return pools;
 		}
 		break;
 	case CreatureState::DISEASED:
@@ -1806,6 +1810,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 }
 
 int CombatManager::calculatePoolsToDamage(int poolsToDamage) {
+
 	if (poolsToDamage & RANDOM) {
 		int rand = System::random(100);
 
