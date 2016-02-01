@@ -15,6 +15,7 @@
 
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/chat/ChatManager.h"
 
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
@@ -191,11 +192,10 @@ void GroupManager::joinGroup(CreatureObject* player) {
 		if (ghost != NULL)
 			ghost->clearCharacterBit(PlayerObject::LFG, true);
 
-		ManagedReference<ChatRoom*> groupChannel = group->getGroupChannel();
-
-		if (groupChannel != NULL) {
-			groupChannel->sendTo(cast<CreatureObject*>(player));
-			groupChannel->addPlayer(cast<CreatureObject*>(player), false);
+		ManagedReference<ChatRoom*> groupChat = group->getChatRoom();
+		if (groupChat != NULL) {
+			groupChat->sendTo(cast<CreatureObject*>(player));
+			server->getChatManager()->handleChatEnterRoomById(player, groupChat->getRoomID(), -1, true);
 		}
 
 		if (player->isPlayingMusic()) {
@@ -315,17 +315,20 @@ void GroupManager::leaveGroup(ManagedReference<GroupObject*> group, CreatureObje
 		return;
 
 	try {
-		Locker clocker(group, player);
+		ChatRoom* groupChat = group->getChatRoom();
+		if (groupChat != NULL && player->isPlayerCreature()) {
+			CreatureObject* playerCreature = cast<CreatureObject*>(player);
 
-		ChatRoom* groupChannel = group->getGroupChannel();
-		if (groupChannel != NULL && player->isPlayerCreature()) {
-			CreatureObject* playerCreature = cast<CreatureObject*>( player);
-			groupChannel->removePlayer(playerCreature, false);
-			groupChannel->sendDestroyTo(playerCreature);
+			Locker gclocker(groupChat, playerCreature);
+			groupChat->removePlayer(playerCreature);
+			groupChat->sendDestroyTo(playerCreature);
 
-			ChatRoom* room = groupChannel->getParent();
-			room->sendDestroyTo(playerCreature);
+			ChatRoom* parentRoom = groupChat->getParent();
+			if (parentRoom != NULL)
+				parentRoom->sendDestroyTo(playerCreature);
 		}
+
+		Locker clocker(group, player);
 
 		if (!group->isOtherMemberPlayingMusic(player))
 			group->setBandSong("");
@@ -368,14 +371,14 @@ void GroupManager::disbandGroup(ManagedReference<GroupObject*> group, CreatureOb
 	player->unlock();
 
 	try {
-		group->wlock();
+		Locker locker(group);
+
 		//The following should never happen, as a check is made in
 		//ObjectControlMessage.cpp and removes the player from the group
 		//if he's not the leader. Remove?
 		//After Fix 13 feb 2009 - Bankler
 		if (group->getLeader() != player) {
 			player->sendSystemMessage("@group:must_be_leader");
-			group->unlock();
 			player->wlock();
 			return;
 		}
@@ -398,10 +401,7 @@ void GroupManager::disbandGroup(ManagedReference<GroupObject*> group, CreatureOb
 
 		group->disband();
 
-		group->unlock();
 	} catch (...) {
-		group->unlock();
-
 		player->wlock();
 
 		throw;
@@ -419,28 +419,24 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 	bool disbanded = false;
 
 	try {
-		group->wlock();
+		Locker locker(group);
 
 		if (!group->hasMember(memberToKick)) {
-			group->unlock();
 			player->wlock();
 			return;
 		}
 
-		Reference<CreatureObject*> leader = ( group->getLeader()).castTo<CreatureObject*>();
+		Reference<CreatureObject*> leader = (group->getLeader()).castTo<CreatureObject*>();
 
 		if (player != leader) {
 			player->sendSystemMessage("@group:must_be_leader");
-
-			group->unlock();
-
 			player->wlock();
 			return;
 		}
 
 		if (group->getGroupSize() - 1 < 2) {
 			for (int i = 0; i < group->getGroupSize(); i++) {
-				Reference<CreatureObject*> play = ( group->getGroupMember(i)).castTo<CreatureObject*>();
+				Reference<CreatureObject*> play = (group->getGroupMember(i)).castTo<CreatureObject*>();
 
 				play->sendSystemMessage("@group:disbanded");
 			}
@@ -455,11 +451,7 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 			memberToKick->info("kicking from group");
 		}
 
-		group->unlock();
-
 	} catch (...) {
-		group->unlock();
-
 		player->wlock();
 
 		throw;
@@ -467,16 +459,19 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 
 	if (!disbanded) {
 		try {
-			memberToKick->wlock();
+			Locker mlocker(memberToKick);
 
 			if (memberToKick->isPlayerCreature()) {
-				CreatureObject* pl = cast<CreatureObject*>( memberToKick);
-				ManagedReference<ChatRoom*> groupChannel = group->getGroupChannel();
-				groupChannel->removePlayer(pl, false);
-				groupChannel->sendDestroyTo(pl);
+				ManagedReference<ChatRoom*> groupChat = group->getChatRoom();
+				if(groupChat != NULL) {
+					Locker clocker(groupChat, memberToKick);
+					groupChat->removePlayer(memberToKick);
+					groupChat->sendDestroyTo(memberToKick);
 
-				ManagedReference<ChatRoom*> room = groupChannel->getParent();
-				room->sendDestroyTo(pl);
+					ManagedReference<ChatRoom*> parentRoom = groupChat->getParent();
+					if (parentRoom != NULL)
+						parentRoom->sendDestroyTo(memberToKick);
+				}
 			}
 
 			memberToKick->updateGroup(NULL);
@@ -484,12 +479,8 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 			if (memberToKick->isPlayerCreature())
 				group->sendDestroyTo(memberToKick);
 
-			memberToKick->unlock();
 		} catch (...) {
-			memberToKick->unlock();
-
 			player->wlock();
-
 			throw;
 		}
 	}

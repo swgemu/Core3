@@ -347,11 +347,10 @@ void GuildManagerImplementation::processGuildElection(GuildObject* guild) {
 void GuildManagerImplementation::destroyGuild(GuildObject* guild, StringIdChatParameter& mailbody) {
 	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
+	//Destroy GuildChat
 	ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
-
 	if (guildChat != NULL) {
 		ManagedReference<ChatRoom*> guildLobby = guildChat->getParent();
-
 		chatManager->destroyRoom(guildChat);
 
 		if (guildLobby != NULL)
@@ -445,6 +444,7 @@ void GuildManagerImplementation::destroyGuild(GuildObject* guild, StringIdChatPa
 		//Send the delta to everyone currently online!
 		chatManager->broadcastMessage(gildd3);
 	}
+
 }
 
 void GuildManagerImplementation::sendGuildCreateNameTo(CreatureObject* player, GuildTerminal* terminal) {
@@ -635,7 +635,7 @@ GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, con
 	ManagedReference<ChatRoom*> guildChat = createGuildChannels(guild);
 
 	guildChat->sendTo(player);
-	guildChat->addPlayer(player);
+	server->getChatManager()->handleChatEnterRoomById(player, guildChat->getRoomID(), -1, true);
 
 	//Handle setting of the guild leader.
 	GuildMemberInfo* gmi = guild->getMember(playerID);
@@ -668,12 +668,13 @@ ChatRoom* GuildManagerImplementation::createGuildChannels(GuildObject* guild) {
 
 	ManagedReference<ChatRoom*> guildLobby = chatManager->createRoom(String::valueOf(guild->getGuildID()), guildRoom);
 	guildLobby->setPrivate();
-	guildRoom->addSubRoom(guildLobby);
 
 	ManagedReference<ChatRoom*> guildChat = chatManager->createRoom("GuildChat", guildLobby);
 	guildChat->setPrivate();
 	guildChat->setTitle(String::valueOf(guild->getGuildID()));
-	guildLobby->addSubRoom(guildChat);
+	guildChat->setOwnerID(guild->getObjectID());
+	guildChat->setCanEnter(true);
+	guildChat->setChatRoomType(ChatRoom::GUILD);
 
 	Locker locker(guild);
 
@@ -948,9 +949,9 @@ void GuildManagerImplementation::transferLeadership(CreatureObject* newLeader, C
 	}
 
 	if (oldLeader != NULL && oldLeader != newLeader) {
-	
+
 		GuildMemberInfo* gmiOldLeader = guild->getMember(oldLeader->getObjectID());
-		
+
 		if (gmiOldLeader != NULL){
 			gmiOldLeader->setPermissions(GuildObject::PERMISSION_NONE);
 		}
@@ -1236,10 +1237,17 @@ void GuildManagerImplementation::kickMember(CreatureObject* player, CreatureObje
 		target->broadcastMessage(creod6, true);
 
 		ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
-
 		if (guildChat != NULL) {
-			guildChat->removePlayer(target);
-			guildChat->sendDestroyTo(target);
+			EXECUTE_TASK_2(guildChat, target, {
+				Locker locker(target_p);
+				Locker cLocker(guildChat_p, target_p);
+				guildChat_p->removePlayer(target_p);
+				guildChat_p->sendDestroyTo(target_p);
+
+				ManagedReference<ChatRoom*> parentRoom = guildChat_p->getParent();
+				if (parentRoom != NULL)
+					parentRoom->sendDestroyTo(target_p);
+			});
 		}
 
 		PlayerObject* targetGhost = target->getPlayerObject();
@@ -1603,7 +1611,7 @@ void GuildManagerImplementation::acceptSponsoredPlayer(CreatureObject* player, u
 
 		if (guildChat != NULL) {
 			guildChat->sendTo(target);
-			guildChat->addPlayer(target);
+			server->getChatManager()->handleChatEnterRoomById(target, guildChat->getRoomID(), -1, true);
 		}
 
 		PlayerObject* targetGhost = target->getPlayerObject();
@@ -2028,13 +2036,6 @@ void GuildManagerImplementation::leaveGuild(CreatureObject* player, GuildObject*
 	creod6->close();
 	player->broadcastMessage(creod6, true);
 
-	ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
-
-	if (guildChat != NULL) {
-		guildChat->removePlayer(player);
-		guildChat->sendDestroyTo(player);
-	}
-
 	PlayerObject* ghost = player->getPlayerObject();
 
 	if (ghost != NULL) {
@@ -2049,6 +2050,20 @@ void GuildManagerImplementation::leaveGuild(CreatureObject* player, GuildObject*
 	if (guild->getGuildLeaderID() == 0 && !guild->isElectionEnabled()) {
 		toggleElection(guild, NULL);
 	}
+
+	clocker.release();
+
+	ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
+	if (guildChat != NULL) {
+		Locker chatLocker(guildChat, player);
+		guildChat->removePlayer(player);
+		guildChat->sendDestroyTo(player);
+
+		ManagedReference<ChatRoom*> parentRoom = guildChat->getParent();
+		if (parentRoom != NULL)
+			parentRoom->sendDestroyTo(player);
+	}
+
 }
 
 void GuildManagerImplementation::sendGuildMail(const String& subject, StringIdChatParameter& body, GuildObject* guild) {

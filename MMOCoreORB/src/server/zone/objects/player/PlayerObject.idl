@@ -8,7 +8,6 @@ import engine.lua.LuaObject;
 import engine.service.proto.BaseMessage;
 import engine.service.proto.BasePacket;
 import engine.util.u3d.Vector3;
-import server.chat.room.ChatRoom;
 import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.objects.building.BuildingObject;
 import server.zone.objects.creature.commands.QueueCommand;
@@ -96,7 +95,7 @@ class PlayerObject extends IntangibleObject {
 	protected SortedVector<unsigned long> ownedVendors;
 
 	protected byte maximumLots;
-
+	
 	protected int jediState;
 	protected unsigned int adminLevel;
 
@@ -138,8 +137,11 @@ class PlayerObject extends IntangibleObject {
 	protected VectorMap<unsigned int, SuiBox> suiBoxes;
 
 	@dereferenced
-	protected SortedVector<ChatRoom> chatRooms;
+	protected SortedVector<unsigned int> chatRooms;
 
+	@dereferenced
+	protected SortedVector<unsigned int> ownedChatRooms;
+		
 	@dereferenced
 	protected transient SynchronizedSortedVector<CreatureObject> duelList;
 
@@ -323,7 +325,7 @@ class PlayerObject extends IntangibleObject {
 		clientLastMovementStamp = 0;
 
 		maximumLots = 10;
-
+		
 		adminLevel = 0;
 
 		languageID = 0;
@@ -1341,29 +1343,39 @@ class PlayerObject extends IntangibleObject {
 		return onLoadScreen;
 	}
 
-	public void addChatRoom(ChatRoom room) {
-		chatRooms.put(room);
+	public void addChatRoom(unsigned int roomID) {
+		chatRooms.put(roomID);
 	}
 
-	public void removeChatRoom(ChatRoom room) {
-		chatRooms.drop(room);
+	public void removeChatRoom(unsigned int roomID) {
+		chatRooms.drop(roomID);
 	}
-	
+
+	public void addOwnedChatRoom(unsigned int roomID) {
+		ownedChatRooms.put(roomID);
+	}
+
+	public void removeOwnedChatRoom(unsigned int roomID) {
+		ownedChatRooms.drop(roomID);
+	}
+
+	public native int getOwnedChatRoomCount();
+
 	public void setBankLocation(final string location) {
 		bankLocation = location;
 	}
-	
+
 	@read
 	public string getBankLocation() {
 		return bankLocation;
 	}
-		
+
 	@local
 	@dirty
 	public DeltaVector<string> getIgnoreList() {
 		return ignoreList;
 	}
-	
+
 	@dirty
 	public int getExperience(final string xp) {
 		if (experienceList.contains(xp)) {
@@ -1377,46 +1389,46 @@ class PlayerObject extends IntangibleObject {
 	 * Maximizes all types of experience for the player.
 	 */
 	public native void maximizeExperience();
-	
+
 	public native void activateMissions();
-	
+
 	@dirty
 	public string getCommandMessageString(unsigned int actionCRC) {
 		return commandMessageStrings.get(actionCRC);
 	}
-	
+
 	@dirty
 	public boolean hasBadge(unsigned int badge) {
 		return badges.hasBadge(badge);
 	}
-	
+
 	public native void clearDisconnectEvent();
 
 	@read
 	public boolean isOnline() {
 		return onlineStatus != OFFLINE && onlineStatus != LINKDEAD;
 	}
-	
+
 	@read
 	public boolean isOffline() {
 		return onlineStatus == OFFLINE;
 	}
-	
+
 	@read
 	public boolean isLoading() {
 		return onlineStatus == LOADING || onlineStatus == LOGGINGOUT;
 	}
-	
+
 	@read
 	public boolean isLinkDead() {
 		return onlineStatus == LINKDEAD;
 	}
-	
+
 	@read
 	public boolean isLoggingIn() {
 		return onlineStatus == LOGGINGIN;
 	}
-	
+
 	@read
 	public boolean isLoggingOut() {
 		return onlineStatus == LOGGINGOUT;
@@ -1434,22 +1446,22 @@ class PlayerObject extends IntangibleObject {
 
 	public void setSkillPoints(int points) {
 		skillPoints = points;
-	}	
-	
+	}
+
 	public void addSkillPoints(int points) {
 		skillPoints += points;
 	}
-	
+
 	@read
 	public int getSkillPoints() {
 		return skillPoints;
 	}
-	
+
 	@local
 	public ValidatedPosition getLastValidatedPosition() {
 		return lastValidatedPosition;
 	}
-	
+
 	public void updateLastValidatedPosition() {
 		SceneObject par = super.getParent();
 		lastValidatedPosition.update(par);
@@ -1465,7 +1477,7 @@ class PlayerObject extends IntangibleObject {
 	public unsigned long getServerMovementTimeDelta() {
 		return serverLastMovementStamp.miliDifference();
 	}
-	
+
 	@local
 	public Time getServerMovementTimeStamp() {
 		return serverLastMovementStamp;
@@ -1474,11 +1486,11 @@ class PlayerObject extends IntangibleObject {
 	public void setClientLastMovementStamp(unsigned int stamp) {
 		clientLastMovementStamp = stamp;
 	}
-	
+
 	public void updateServerLastMovementStamp() {
 		serverLastMovementStamp.updateToCurrentTime();
 	}
-	
+
 	public void setAccountID(unsigned int id) {
 		accountID = id;
 	}
@@ -1487,18 +1499,18 @@ class PlayerObject extends IntangibleObject {
 	public int getFactionStatus() {
 		return factionStatus;
 	}
-	
+
 	public native void setFactionStatus(int status);
-	
+
 	@read
 	public unsigned int getClientLastMovementStamp() {
 		return clientLastMovementStamp;
 	}
-	
+
 	public void addHologrindProfession(byte prof) {
 		hologrindProfessions.add(prof);
 	}
-	
+
 	@local
 	@dirty
 	public Vector<byte> getHologrindProfessions() {
@@ -1508,57 +1520,58 @@ class PlayerObject extends IntangibleObject {
 	public void setMaximumLots(byte lots) {
 		maximumLots = lots;
 	}
-	
+
 	@read
 	public byte getMaximumLots() {
 		return maximumLots;
 	}
-	
+
 	@read
 	public string getStarterProfession() {
 		return starterProfession;
 	}
-	
+
 	public void setStarterProfession(string profession) {
 		starterProfession = profession;
 	}
 
 	public native void addToBountyLockList(unsigned long playerId);
-	
+
 	@dirty
 	public native boolean isInBountyLockList(unsigned long playerId);
-	
+
 	public native void removeFromBountyLockList(unsigned long playerId, boolean immediately);
-	
+
 	public native void removeFromBountyLockListDirectly(unsigned long playerId);
-	
+
 	@dirty
 	public native boolean isBountyLocked();
-	
+
 	private native void updateBountyPvpStatus(unsigned long playerId);
-	
+
 	@read
 	public unsigned long getPerformanceBuffTarget() {
 		return performanceBuffTarget;
 	}
+
 	public void setPerformanceBuffTarget(unsigned long target) {
 		performanceBuffTarget = target;
 	}
-	
+
 	public void setDebug(boolean value) {
 		debugOutput = value;
 	}
-	
+
 	@read
 	public boolean getDebug() {
 		return debugOutput;
 	}
-	
+
 	@read
 	public float getVisibility() {
 		return visibility;
 	}
-	
+
 	public void setVisibility(float value) {
 		visibility = value;
 		lastVisibilityUpdateTimestamp.updateToCurrentTime();
@@ -1637,7 +1650,7 @@ class PlayerObject extends IntangibleObject {
 		return installedHoloEmote;
 	}
 
-	public void setInstalledHoloEmote(string holoEmote){	
+	public void setInstalledHoloEmote(string holoEmote){
 		installedHoloEmote = holoEmote;
 		holoEmoteUseCount = 20;
 	}
@@ -1659,7 +1672,7 @@ class PlayerObject extends IntangibleObject {
 	}
 
 	@read
-	public boolean isMarried(){	
+	public boolean isMarried(){
 		return spouseName != "";
 	}
 

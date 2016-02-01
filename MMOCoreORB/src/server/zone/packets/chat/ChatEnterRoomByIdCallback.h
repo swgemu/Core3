@@ -13,16 +13,16 @@
 #include "server/chat/ChatManager.h"
 
 class ChatEnterRoomByIdCallback : public MessageCallback {
-	uint32 counter;
+	uint32 requestID;
 	uint32 roomID;
 
 public:
 	ChatEnterRoomByIdCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-		MessageCallback(client, server), counter(0), roomID(0) {
+		MessageCallback(client, server), requestID(0), roomID(0) {
 	}
 
 	void parse(Message* message) {
-		counter = message->parseInt();
+		requestID = message->parseInt();
 		roomID = message->parseInt();
 	}
 
@@ -38,7 +38,8 @@ public:
 			return;
 
 		ChatManager* chatManager = server->getChatManager();
-		chatManager->handleChatEnterRoomById(player, counter, roomID);
+		chatManager->handleChatEnterRoomById(player, roomID, requestID);
+
 	}
 
 };

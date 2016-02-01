@@ -9,16 +9,23 @@
 
 class ChatOnEnteredRoom : public BaseMessage {
 public:
-	ChatOnEnteredRoom(const String& server, const String& playername, uint64 channelid) : BaseMessage() {
+	ChatOnEnteredRoom(const String& server, const String& playername, uint32 roomID, int error, int requestID) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0xE69BDC0A);  // Opcode
-		insertAscii("SWG");
-		insertAscii(server.toCharArray());
 		
-		insertAscii(playername);
-		insertInt(0);
-		insertLong(channelid);
-	} 
+		insertAscii("SWG"); // Game name
+		insertAscii(server.toCharArray()); // Galaxy name
+		insertAscii(playername.toCharArray()); // Character name
+
+		/* Error codes:
+		* 0 = You have joined the channel.
+		* 0x10 = You cannot join (room name) because you are not invited.
+		* Default: Chatroom (roomname) join failed for an unknown reason.*/
+		insertInt(error);
+
+		insertInt(roomID); // Room ID
+		insertInt(requestID); // Request ID
+	}
 
 };
 
