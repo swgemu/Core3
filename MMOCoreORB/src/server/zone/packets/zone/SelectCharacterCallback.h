@@ -182,18 +182,11 @@ public:
 			chatManager->addPlayer(player);
 			chatManager->loadMail(player);
 
-			// Join auction chat room
+			//Join auction chat room
 			ManagedReference<ChatRoom*> auctionChat = chatManager->getAuctionRoom();
-			if( auctionChat != NULL ){
+			if(auctionChat != NULL) {
 				auctionChat->sendTo(player);
-				auctionChat->addPlayer(player);
-			}
-
-			// Join General chat room
-			ManagedReference<ChatRoom*> generalChat = chatManager->getGeneralRoom();
-			if (generalChat != NULL) {
-				generalChat->sendTo(player);
-				generalChat->addPlayer(player);
+				chatManager->handleChatEnterRoomById(player, auctionChat->getRoomID(), -1, true);
 			}
 
 			ghost->notifyOnline();

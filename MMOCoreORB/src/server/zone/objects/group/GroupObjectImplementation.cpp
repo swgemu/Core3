@@ -49,13 +49,14 @@ void GroupObjectImplementation::destroyChatRoom() {
 	if (chatRoom == NULL)
 		return;
 
-	ManagedReference<ChatRoom*> room = chatRoom->getParent();
-	ManagedReference<ChatRoom*> parent = room->getParent();
-
 	ChatManager* chatManager = server->getZoneServer()->getChatManager();
 
+	ManagedReference<ChatRoom*> parent = chatRoom->getParent();
+
 	chatManager->destroyRoom(chatRoom);
-	chatManager->destroyRoom(room);
+
+	if (parent != NULL)
+		chatManager->destroyRoom(parent);
 
 	chatRoom = NULL;
 }
@@ -220,13 +221,12 @@ void GroupObjectImplementation::makeLeader(SceneObject* player) {
 }
 
 void GroupObjectImplementation::disband() {
-	// this locked
-	ManagedReference<ChatRoom* > chat = chatRoom;
+	//Group is locked
+	ManagedReference<ChatRoom* > groupChat = chatRoom;
 
 	for (int i = 0; i < groupMembers.size(); i++) {
-		if (groupMembers.get(i) == NULL) {
+		if (groupMembers.get(i) == NULL)
 			continue;
-		}
 
 		Reference<CreatureObject*> groupMember = getGroupMember(i).castTo<CreatureObject*>();
 
@@ -234,14 +234,6 @@ void GroupObjectImplementation::disband() {
 			Locker clocker(groupMember, _this.getReferenceUnsafeStaticCast());
 
 			if (groupMember->isPlayerCreature()) {
-				if (chat != NULL) {
-					chat->removePlayer(groupMember, false);
-					chat->sendDestroyTo(groupMember);
-
-					ChatRoom* room = chat->getParent();
-					room->sendDestroyTo(groupMember);
-				}
-
 				if (groupMember->getPlayerObject() != NULL) {
 					PlayerObject* ghost = groupMember->getPlayerObject();
 					ghost->removeWaypointBySpecialType(WaypointObject::SPECIALTYPE_NEARESTMISSIONFORGROUP);
@@ -249,11 +241,7 @@ void GroupObjectImplementation::disband() {
 			}
 
 			groupMember->updateGroup(NULL);
-			//play->updateGroupId(0);
 
-			//sendClosestWaypointDestroyTo(play);
-
-			//removeSquadLeaderBonuses(play);
 		} catch (Exception& e) {
 			System::out << "Exception in GroupObject::disband(Player* player)\n";
 		}
@@ -266,8 +254,6 @@ void GroupObjectImplementation::disband() {
 
 	groupMembers.removeAll();
 
-	//The mission waypoints should not be destroyed. They belong to the players.
-	//missionWaypoints.removeAll();
 }
 
 bool GroupObjectImplementation::hasSquadLeader() {

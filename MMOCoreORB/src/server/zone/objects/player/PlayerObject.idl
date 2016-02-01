@@ -8,7 +8,6 @@ import engine.lua.LuaObject;
 import engine.service.proto.BaseMessage;
 import engine.service.proto.BasePacket;
 import engine.util.u3d.Vector3;
-import server.chat.room.ChatRoom;
 import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.objects.building.BuildingObject;
 import server.zone.objects.creature.commands.QueueCommand;
@@ -96,7 +95,7 @@ class PlayerObject extends IntangibleObject {
 	protected SortedVector<unsigned long> ownedVendors;
 
 	protected byte maximumLots;
-
+	
 	protected int jediState;
 	protected unsigned int adminLevel;
 
@@ -138,8 +137,11 @@ class PlayerObject extends IntangibleObject {
 	protected VectorMap<unsigned int, SuiBox> suiBoxes;
 
 	@dereferenced
-	protected SortedVector<ChatRoom> chatRooms;
+	protected SortedVector<unsigned int> chatRooms;
 
+	@dereferenced
+	protected SortedVector<unsigned int> ownedChatRooms;
+		
 	@dereferenced
 	protected transient SynchronizedSortedVector<CreatureObject> duelList;
 
@@ -323,7 +325,7 @@ class PlayerObject extends IntangibleObject {
 		clientLastMovementStamp = 0;
 
 		maximumLots = 10;
-
+		
 		adminLevel = 0;
 
 		languageID = 0;
@@ -1341,13 +1343,23 @@ class PlayerObject extends IntangibleObject {
 		return onLoadScreen;
 	}
 
-	public void addChatRoom(ChatRoom room) {
-		chatRooms.put(room);
+	public void addChatRoom(unsigned int roomID) {
+		chatRooms.put(roomID);
 	}
 
-	public void removeChatRoom(ChatRoom room) {
-		chatRooms.drop(room);
+	public void removeChatRoom(unsigned int roomID) {
+		chatRooms.drop(roomID);
 	}
+
+	public void addOwnedChatRoom(unsigned int roomID) {
+		ownedChatRooms.put(roomID);
+	}
+
+	public void removeOwnedChatRoom(unsigned int roomID) {
+		ownedChatRooms.drop(roomID);
+	}
+
+	public native int getOwnedChatRoomCount();
 	
 	public void setBankLocation(final string location) {
 		bankLocation = location;

@@ -3,7 +3,8 @@
 		See file COPYING for copying conditions.*/
 
 #include "server/chat/room/ChatRoom.h"
-
+#include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/ZoneServer.h"
@@ -11,9 +12,30 @@
 #include "server/zone/packets/chat/ChatRoomList.h"
 #include "server/zone/packets/chat/ChatOnDestroyRoom.h"
 #include "server/zone/packets/chat/ChatOnLeaveRoom.h"
-#include "server/zone/packets/chat/ChatOnEnteredRoom.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/player/PlayerManager.h"
+
+void ChatRoomImplementation::init(ZoneServer* serv, const String& parent, const String& roomName) {
+	server = serv;
+	manager = server->getChatManager();
+
+	if (parent.isEmpty()) {
+		fullPath = roomName;
+	} else {
+		parentPath = parent;
+		fullPath = parentPath + "." + roomName;
+	}
+
+	name = roomName;
+
+	roomID = Long::hashCode(_this.getReferenceUnsafeStaticCast()->_getObjectID());
+
+	isPublicRoom = true;
+
+	playerList.setNoDuplicateInsertPlan();
+	playerList.setNullValue(NULL);
+
+}
 
 void ChatRoomImplementation::sendTo(CreatureObject* player) {
 	ChatRoomList* crl = new ChatRoomList();
@@ -24,72 +46,44 @@ void ChatRoomImplementation::sendTo(CreatureObject* player) {
 }
 
 void ChatRoomImplementation::sendDestroyTo(CreatureObject* player) {
-	ChatOnDestroyRoom* msg = new ChatOnDestroyRoom("SWG", server->getGalaxyName(), roomID);
+	ChatOnDestroyRoom* msg = new ChatOnDestroyRoom("SWG", server->getGalaxyName(), getOwnerName(), roomID);
 	player->sendMessage(msg);
 }
 
-void ChatRoomImplementation::addPlayer(CreatureObject* player, bool doLock) {
+void ChatRoomImplementation::addPlayer(CreatureObject* player) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	if (playerList.put(player->getFirstName(), player) == -1) {
-		//return;
-	}
-
-	ChatOnEnteredRoom* coer = new ChatOnEnteredRoom(server->getGalaxyName(), player->getFirstName(), roomID);
-	player->sendMessage(coer);
+	playerList.put(player->getFirstName(), player);
+	lastJoin.updateToCurrentTime();
 
 	locker.release();
 
-	Locker locker2(player);
-
+	Locker plocker(player);
 	PlayerObject* ghost = player->getPlayerObject();
-
-	ghost->addChatRoom(_this.getReferenceUnsafeStaticCast());
-
-
-	/*ChatOnReceiveRoomInvitation* corri = new ChatOnReceiveRoomInvitation(name);
-	player->sendMessage(corri);*/
-
+	ghost->addChatRoom(getRoomID());
 
 }
 
-void ChatRoomImplementation::removePlayer(CreatureObject* player, bool doLock) {
-	Locker locker(player);
-
+void ChatRoomImplementation::removePlayer(CreatureObject* player) {
 	PlayerObject* ghost = player->getPlayerObject();
+	ghost->removeChatRoom(getRoomID());
 
-	ghost->removeChatRoom(_this.getReferenceUnsafeStaticCast());
-
-	locker.release();
-
-	Locker locker2(_this.getReferenceUnsafeStaticCast());
+	ChatOnLeaveRoom* msg = new ChatOnLeaveRoom(_this.getReferenceUnsafeStaticCast(), player);
+	broadcastMessage(msg);
 
 	playerList.drop(player->getFirstName());
 
-	ChatOnLeaveRoom* msg = new ChatOnLeaveRoom(_this.getReferenceUnsafeStaticCast(), player);
-	player->sendMessage(msg);
 }
 
-void ChatRoomImplementation::removePlayer(const String& player) {
-	// Pre: player unlocked
-	Locker locker(_this.getReferenceUnsafeStaticCast());
-
-	ManagedReference<CreatureObject*> play = playerList.get(player);
-	playerList.drop(player);
-
-	locker.release();
-
-	if (play == NULL)
+void ChatRoomImplementation::removeDisconnectingPlayer(CreatureObject* player) {
+	if (player == NULL)
 		return;
 
-	Locker locker2(play);
+	ChatOnLeaveRoom* msg = new ChatOnLeaveRoom(_this.getReferenceUnsafeStaticCast(), player);
+	broadcastMessage(msg);
 
-	PlayerObject* ghost = play->getPlayerObject();
+	playerList.drop(player->getFirstName());
 
-	ghost->removeChatRoom(_this.getReferenceUnsafeStaticCast());
-
-	ChatOnLeaveRoom* msg = new ChatOnLeaveRoom(_this.getReferenceUnsafeStaticCast(), play);
-	play->sendMessage(msg);
 }
 
 void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
@@ -157,7 +151,7 @@ void ChatRoomImplementation::removeAllPlayers() {
 
 		PlayerObject* ghost = player->getPlayerObject();
 
-		ghost->removeChatRoom(_this.getReferenceUnsafeStaticCast());
+		ghost->removeChatRoom(getRoomID());
 	}
 
 	playerList.removeAll();
@@ -166,4 +160,91 @@ void ChatRoomImplementation::removeAllPlayers() {
 
 String ChatRoomImplementation::getGalaxyName() {
 	return server->getGalaxyName();
+}
+
+String ChatRoomImplementation::getModeratorName(int index) {
+	Locker locker(_this.getReferenceUnsafeStaticCast());
+
+	String name = "";
+	uint64 objectID = moderatorList.get(index);
+
+	CreatureObject* moderator = server->getObject(objectID).castTo<CreatureObject*>();
+	if (moderator != NULL)
+		name = moderator->getFirstName();
+
+	return name;
+}
+
+String ChatRoomImplementation::getInvitedName(int index) {
+	Locker locker(_this.getReferenceUnsafeStaticCast());
+
+	String name = "";
+	uint64 objectID = invitedList.get(index);
+
+	CreatureObject* invited = server->getObject(objectID).castTo<CreatureObject*>();
+	if (invited != NULL)
+		name = invited->getFirstName();
+
+	return name;
+}
+
+String ChatRoomImplementation::getBannedName(int index) {
+	Locker locker(_this.getReferenceUnsafeStaticCast());
+
+	String name = "";
+	uint64 objectID = bannedList.get(index);
+
+	CreatureObject* banned = server->getObject(objectID).castTo<CreatureObject*>();
+	if (banned != NULL)
+		name = banned->getFirstName();
+
+	return name;
+}
+
+bool ChatRoomImplementation::checkEnterPermission(CreatureObject* player) {
+	Locker locker(_this.getReferenceUnsafeStaticCast());
+
+	if (player == NULL || !canEnterRoom)
+		return false;
+
+	switch (roomType) {
+	case ChatRoom::DEFAULT:
+		return true;
+	case ChatRoom::AUCTION:
+		return true;
+	case ChatRoom::GUILD: {
+		ManagedReference<GuildObject*> guild = player->getGuildObject().getReferenceUnsafeStaticCast();
+		if (guild != NULL) {
+			if (guild->getObjectID() == getOwnerID())
+				return true;
+		}
+		return false;
+	}
+	case ChatRoom::GROUP: {
+		ManagedReference<GroupObject*> group = player->getGroup();
+		if (group != NULL) {
+			if (group->getObjectID() == getOwnerID())
+				return true;
+		}
+		return false;
+	}
+	case ChatRoom::PLANET: {
+		ManagedReference<Zone*> zone = player->getZone();
+		if (zone != NULL) {
+			if (zone->getObjectID() == getOwnerID())
+				return true;
+		}
+		return false;
+	}
+	case ChatRoom::CUSTOM:
+		if (!hasBanned(player->getObjectID()) && (isPublic() || hasInvited(player->getObjectID()) || player->getObjectID() == getOwnerID()))
+			return true;
+		break;
+
+	default:
+		break;
+	}
+
+	return false;
+
 }
