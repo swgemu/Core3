@@ -3142,17 +3142,18 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 
 	unsigned int targetFaction = object->getFaction();
 
-	if (targetFaction != 0 && getFaction() != 0) {
+	if (getFaction() != 0) {
 		if (targetFaction == getFaction()) {
 			return false;
 		}
 
-		PlayerObject* ghost = object->getPlayerObject();
+		if (object->isPlayerCreature()) {
+			PlayerObject* ghost = object->getPlayerObject();
 
-		if (ghost != NULL && ghost->getFactionStatus() == FactionStatus::ONLEAVE) {
-			return false;
+			if (targetFaction == 0 || (ghost != NULL && ghost->getFactionStatus() == FactionStatus::ONLEAVE)) {
+				return false;
+			}
 		}
-
 	}
 
 	if (object->isAiAgent()) {
