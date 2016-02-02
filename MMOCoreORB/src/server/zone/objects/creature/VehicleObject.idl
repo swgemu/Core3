@@ -100,11 +100,11 @@ class VehicleObject extends CreatureObject {
 	 */
 	@preLocked
 	@arg1preLocked
-	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
+	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true, boolean isCombatAction = false);
 
 	@preLocked
 	@arg1preLocked
-	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true);
+	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true, boolean isCombatAction = false);
 
 	/**
 	 * Heals damage

@@ -227,12 +227,12 @@ int VehicleObjectImplementation::calculateRepairCost(CreatureObject* player) {
 	return getConditionDamage() * 4;
 }
 
-int VehicleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {
-	return TangibleObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient);
+int VehicleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient, bool isCombatAction) {
+	return TangibleObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient, isCombatAction);
 }
 
-int VehicleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient) {
-	return TangibleObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, xp, notifyClient);
+int VehicleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient, bool isCombatAction) {
+	return TangibleObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, xp, notifyClient, isCombatAction);
 }
 
 int VehicleObjectImplementation::healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient) {
