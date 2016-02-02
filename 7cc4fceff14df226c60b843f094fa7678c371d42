@@ -2,6 +2,295 @@
   "comments": [
     {
       "key": {
+        "uuid": "da7095c5_eec3a388",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoom.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-02T06:14:41Z",
+      "side": 0,
+      "message": "@dirty",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0ec13780",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoom.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-02T06:14:41Z",
+      "side": 0,
+      "message": "@dirty",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ce16dff1",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoom.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-02T06:14:41Z",
+      "side": 0,
+      "message": "Remove the second arg since it\u0027s unused.",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ee95e388",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoom.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-02T06:14:41Z",
+      "side": 0,
+      "message": "@preLocked\n@arg1preLocked\n\nRemove the second arg since it\u0027s unused.",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ee716378",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoom.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-02T06:14:41Z",
+      "side": 0,
+      "message": "@dirty",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0e6ff793",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoom.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-02T06:14:41Z",
+      "side": 0,
+      "message": "@dirty",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_6e0553c1",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoom.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-02T06:14:41Z",
+      "side": 0,
+      "message": "@read",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8e0a27d1",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoom.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-02T06:14:41Z",
+      "side": 0,
+      "message": "@read",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2e0f5be3",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoom.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-02T06:14:41Z",
+      "side": 0,
+      "message": "@read",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0ef617d8",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoom.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-02T06:14:41Z",
+      "side": 0,
+      "message": "@dirty",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ae028bb2",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoom.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-02T06:14:41Z",
+      "side": 0,
+      "message": "@read",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_6e2c734b",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoom.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-02T06:14:41Z",
+      "side": 0,
+      "message": "@dirty",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8e31c7a4",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoom.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-02T06:14:41Z",
+      "side": 0,
+      "message": "@read",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ee1f2308",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoom.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-02T06:14:41Z",
+      "side": 0,
+      "message": "@dirty",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0e1db70f",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoom.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-02T06:14:41Z",
+      "side": 0,
+      "message": "@dirty",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_aeb84b2b",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoomImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-02T06:14:41Z",
+      "side": 0,
+      "message": "If you\u0027re not going to do anything if the player fails to get added, then there\u0027s no point in checking the return value.",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_4e816f49",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoomImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-02T06:14:41Z",
+      "side": 0,
+      "message": "Remove all the locks from this method. We\u0027ll ensure that both objects are locked coming in.",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_ce47bf4a",
         "filename": "MMOCoreORB/src/server/chat/room/ChatRoomImplementation.cpp",
         "patchSetId": 2
@@ -13,6 +302,57 @@
       "writtenOn": "2016-02-01T16:23:52Z",
       "side": 0,
       "message": "I can\u0027t find anywhere that this method is used. I only see the removePlayer above being called. If you can confirm that it\u0027s not used, go ahead and remove it.",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8eeea721",
+        "filename": "MMOCoreORB/src/server/zone/managers/group/GroupManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-02T06:14:41Z",
+      "side": 0,
+      "message": "Move this to after the group chat removal.",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2ef3db0b",
+        "filename": "MMOCoreORB/src/server/zone/managers/group/GroupManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-02T06:14:41Z",
+      "side": 0,
+      "message": "Locker gclocker(groupChat, playerCreature);",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2e7c3b72",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-02T06:14:41Z",
+      "side": 0,
+      "message": "Locker clocker(planetRoom, creature);",
       "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
