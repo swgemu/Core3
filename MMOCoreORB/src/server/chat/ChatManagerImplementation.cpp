@@ -1229,6 +1229,7 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 	mail->setSenderName(sendername);
 	mail->setSubject(header);
 	mail->setBody(body);
+	mail->setServerName(player->getZoneServer()->getGalaxyName());
 	//mail->setParameterizedBody(test);
 	mail->setReceiverObjectID(receiverObjectID);
 	mail->setTimeStamp(currentTime);
@@ -1284,6 +1285,7 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 	mail->setSenderName(sendername);
 	mail->setSubject(subject);
 	mail->setBody(body);
+	mail->setServerName(player->getZoneServer()->getGalaxyName());
 
 	for (int i = 0; i < stringIdParameters->size(); ++i) {
 		StringIdChatParameter* param = &stringIdParameters->get(i);
@@ -1358,6 +1360,7 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 	mail->setSenderName(sendername);
 	mail->setSubject(subject);
 	mail->addStringIdParameter(body);
+	mail->setServerName(player->getZoneServer()->getGalaxyName());
 
 	if (waypoint != NULL) {
 		WaypointChatParameter waypointParam(waypoint);
