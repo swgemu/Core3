@@ -120,9 +120,12 @@ public:
 			}
 
 			ghost->setTeleporting(true);
-			ghost->setOnLoadScreen(true);
 			player->setMovementCounter(0);
 			ghost->setClientLastMovementStamp(0);
+
+			if (player->getZone() == NULL) {
+				ghost->setOnLoadScreen(true);
+			}
 
 			uint64 savedParentID = ghost->getSavedParentID();
 			ManagedReference<SceneObject*> playerParent = zoneServer->getObject(savedParentID, true);

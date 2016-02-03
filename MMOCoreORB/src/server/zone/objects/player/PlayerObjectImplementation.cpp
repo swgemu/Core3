@@ -1603,7 +1603,7 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 
 	CommandQueueActionVector* commandQueue = creature->getCommandQueue();
 
-	if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced()
+	if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced() && isOnline()
 			&& (commandQueue->size() == 0) && creature->isNextActionPast() && !creature->isDead() && !creature->isIncapacitated()) {
 		creature->executeObjectControllerAction(STRING_HASHCODE("attack"), creature->getTargetID(), "");
 	}
