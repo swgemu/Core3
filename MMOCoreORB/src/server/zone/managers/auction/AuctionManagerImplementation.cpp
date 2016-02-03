@@ -585,7 +585,7 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	ManagedReference<PlayerManager*> pman = zoneServer->getPlayerManager();
 	ManagedReference<CreatureObject*> seller = pman->getPlayer(item->getOwnerName());
 
-	String sender = "SWG." + zoneServer->getGalaxyName() + ".auctioner";
+	String sender = "auctioner";
 	String sellerName = item->getOwnerName();
 
 	Time expireTime;
@@ -844,7 +844,7 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 		plocker.release();
 		locker.release();
 
-		String sender = "SWG." + zoneServer->getGalaxyName() + ".auctioner";
+		String sender = "auctioner";
 		cman->sendMail(sender, bidderSubject, bidderBody, item->getBidderName());
 
 		// no prior bidder, just take the money
@@ -1010,7 +1010,7 @@ void AuctionManagerImplementation::refundAuction(AuctionItem* item) {
 				bidder_p->sendSystemMessage(buyerBody_p);
 		});
 	}
-	String sender = "SWG." + zoneServer->getGalaxyName() + ".auctioner";
+	String sender = "auctioner";
 	cman->sendMail(sender, buyerSubject, buyerBody, item->getBidderName());
 }
 
@@ -1395,7 +1395,7 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 
 		if(vendor != NULL) {
 			ManagedReference<ChatManager*> cman = zoneServer->getChatManager();
-			String sender = "SWG." + zoneServer->getGalaxyName() + ".auctioner";
+			String sender = "auctioner";
 
 			// Waypoint to Vendor / bazaar
 			float waypointX = vendor->getWorldPositionX();
@@ -1449,7 +1449,7 @@ void AuctionManagerImplementation::expireSale(AuctionItem* item) {
 	String itemName = removeColorCodes(item->getItemName());
 
 	//Send the mail to the vendor owner
-	String sender = "SWG." + zoneServer->getGalaxyName() + ".auctioner";
+	String sender = "auctioner";
 
 	UnicodeString sellerSubject("@auction:subject_auction_unsuccessful"); // Auction Unsuccessful
 
@@ -1490,7 +1490,7 @@ void AuctionManagerImplementation::expireBidAuction(AuctionItem* item) {
 	String itemName = removeColorCodes(item->getItemName());
 
 	//Send the mail to the vendor owner
-	String sender = "SWG." + zoneServer->getGalaxyName() + ".auctioner";
+	String sender = "auctioner";
 
 	UnicodeString sellerSubject("@auction:subject_auction_item_expired"); // Auction Item Expired
 
@@ -1566,7 +1566,7 @@ void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
 		WaypointChatParameter waypointParam;
 		waypointParam.set(vendor->getDisplayedName(), waypointX, 0, waypointY, vendor->getPlanetCRC());
 
-		String sender = "SWG." + zoneServer->getGalaxyName() + ".auctioner";
+		String sender = "auctioner";
 
 		StringIdChatParameterVector sellerBodyVector;
 		WaypointChatParameterVector sellerWaypointVector;
@@ -1636,7 +1636,7 @@ void AuctionManagerImplementation::deleteExpiredSale(AuctionItem* item) {
 	if (vendor != NULL) {
 
 		ManagedReference<ChatManager*> cman = zoneServer->getChatManager();
-		String sender = "SWG." + zoneServer->getGalaxyName() + ".auctioner";
+		String sender = "auctioner";
 
 		// Waypoint to Vendor / bazaar
 		float waypointX = vendor->getWorldPositionX();

@@ -36,7 +36,7 @@ class PersistentMessage extends ManagedObject {
 	public PersistentMessage() {
 		timeStamp = System.getTime();
 		status = NEW;
-		
+
 		receiverObjectID = 0;
 	}
 	
@@ -114,7 +114,7 @@ class PersistentMessage extends ManagedObject {
 	public void setSubject(final unicode subj) {
 		subject = subj;
 	}
-	
+
 	@read
 	public boolean isNew() {
 		return status == NEW;

@@ -113,13 +113,13 @@ public:
 		setCompression(true);
 	}
 
-	ChatPersistentMessageToClient(PersistentMessage* mail, bool sendBody) {
+	ChatPersistentMessageToClient(PersistentMessage* mail, const String& serverName, bool sendBody) {
 		insertShort(0x02);
 		insertInt(0x08485E17); //ChatPersistentMessageToClient
 
 		insertAscii(mail->getSenderName());
-		insertAscii(""); //Game NOTE: SOE doesn't send this, why should we?
-		insertAscii(""); //Galaxy Name
+		insertAscii("SWG"); // Game Name
+		insertAscii(serverName.toCharArray()); //Galaxy Name
 		insertInt(mail->getMailID());
 
 		insertByte((uint8) !sendBody);

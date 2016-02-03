@@ -62,7 +62,7 @@ public:
 		// Create Email:
 		StringBuffer body;
 
-		String sender = "SWG." + ServerCore::getZoneServer()->getGalaxyName() + ".interplanetary survey droid";
+		String sender = "interplanetary survey droid";
 		Reference<StringIdManager* > stringIdManager = StringIdManager::instance();
 
 		String planetName = surveyData->getPlanet();
