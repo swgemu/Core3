@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_ae75ab33",
+        "filename": "MMOCoreORB/bin/scripts/object/building/naboo/cantina_naboo.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-03T04:21:21Z",
+      "side": 0,
+      "message": "Did you mean to add safe logout to this building? Cause you didn\u0027t.",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

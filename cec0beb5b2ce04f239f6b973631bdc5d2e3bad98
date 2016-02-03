@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_ce725f49",
+        "filename": "MMOCoreORB/bin/scripts/object/building/player/city/hospital_corellia.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-03T04:21:21Z",
+      "side": 1,
+      "message": "This building already had a skillMods table. Combine the two.",
+      "revId": "cec0beb5b2ce04f239f6b973631bdc5d2e3bad98",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_6e8f9324",
+        "filename": "MMOCoreORB/bin/scripts/object/building/player/city/hospital_naboo.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-03T04:21:21Z",
+      "side": 1,
+      "message": "This building already had a skillMods table. Combine the two.",
+      "revId": "cec0beb5b2ce04f239f6b973631bdc5d2e3bad98",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8e946738",
+        "filename": "MMOCoreORB/bin/scripts/object/building/player/city/hospital_tatooine.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-03T04:21:21Z",
+      "side": 1,
+      "message": "This building already had a skillMods table. Combine the two.",
+      "revId": "cec0beb5b2ce04f239f6b973631bdc5d2e3bad98",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0e79372f",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/PlayerDisconnectEvent.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-03T04:21:21Z",
+      "side": 1,
+      "message": "This isn\u0027t going to have the desired affect. By broadcasting the destroy message you are telling the clients of those nearby that the player is no longer in the world, but you\u0027re not actually removing the player from the world serverside. Another player that comes into range after this (or one that leaves range and comes back) will see the player in the world still. The disconnect call below will set the player LD and it\u0027ll really be no different than an unsafe logout.\n\nI can think of a couple of other options. First one is to modify setLinkDead() to require an arg that dictates whether to add the 3 minutes to logoutTimeStamp or not. If you don\u0027t add that, the player will get removed during it\u0027s next recovery event (max 3 seconds later).\n\nIf you really want the removal to be immediate instead of up to 3 seconds later, then you\u0027ll need to call unload(), setOffline(), and then get the client and closeConnection(). You will also need to manually update logoutTimeStamp since that is updated in setLinkDead() and you\u0027d be bypassing that step.\n\nWith either of these options you don\u0027t need to broadcast a destroy message or call disconnect(), though with the later you may want to create a new method to handle what you need it to do.",
+      "revId": "cec0beb5b2ce04f239f6b973631bdc5d2e3bad98",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
