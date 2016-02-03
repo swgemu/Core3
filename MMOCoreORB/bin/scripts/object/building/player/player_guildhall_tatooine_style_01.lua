@@ -52,7 +52,8 @@ object_building_player_player_guildhall_tatooine_style_01 = object_building_play
 	skillMods = {
 		{"private_medical_rating", 100},
 		{"private_buff_mind", 100},
-		{"private_med_battle_fatigue", 5}
+		{"private_med_battle_fatigue", 5},
+		{"private_safe_logout", 1}
 	},
 	childObjects = {
 		{templateFile = "object/tangible/sign/player/house_address_tatooine.iff", x = 4.15, z = 1.25, y = 21.7, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1},
