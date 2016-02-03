@@ -1601,19 +1601,21 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 	if (creature->isOnFire() && !damageOverTimeList->hasDot(CreatureState::ONFIRE))
 		creature->clearState(CreatureState::ONFIRE);
 
-	CommandQueueActionVector* commandQueue = creature->getCommandQueue();
+	if (isOnline()) {
+		CommandQueueActionVector* commandQueue = creature->getCommandQueue();
 
-	if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced()
-			&& (commandQueue->size() == 0) && creature->isNextActionPast() && !creature->isDead() && !creature->isIncapacitated()) {
-		creature->executeObjectControllerAction(STRING_HASHCODE("attack"), creature->getTargetID(), "");
-	}
+		if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced()
+				&& (commandQueue->size() == 0) && creature->isNextActionPast() && !creature->isDead() && !creature->isIncapacitated()) {
+			creature->executeObjectControllerAction(STRING_HASHCODE("attack"), creature->getTargetID(), "");
+		}
 
-	if (!getZoneServer()->isServerLoading()) {
-		if(creature->getZone() != NULL && creature->getZone()->getPlanetManager() != NULL) {
-			ManagedReference<WeatherManager*> weatherManager = creature->getZone()->getPlanetManager()->getWeatherManager();
+		if (!getZoneServer()->isServerLoading()) {
+			if(creature->getZone() != NULL && creature->getZone()->getPlanetManager() != NULL) {
+				ManagedReference<WeatherManager*> weatherManager = creature->getZone()->getPlanetManager()->getWeatherManager();
 
-			if (weatherManager != NULL)
-				weatherManager->sendWeatherTo(creature);
+				if (weatherManager != NULL)
+					weatherManager->sendWeatherTo(creature);
+			}
 		}
 	}
 
@@ -1736,6 +1738,11 @@ void PlayerObjectImplementation::activateForcePowerRegen() {
 }
 
 void PlayerObjectImplementation::setLinkDead(bool isSafeLogout) {
+	CreatureObject* creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
+	if (creature == NULL)
+		return;
+
 	onlineStatus = LINKDEAD;
 
 	logoutTimeStamp.updateToCurrentTime();
@@ -1745,6 +1752,8 @@ void PlayerObjectImplementation::setLinkDead(bool isSafeLogout) {
 	setCharacterBit(PlayerObjectImplementation::LD, true);
 
 	activateRecovery();
+
+	creature->clearQueueActions(false);
 }
 
 void PlayerObjectImplementation::setOnline() {
