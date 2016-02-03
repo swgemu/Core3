@@ -16,6 +16,8 @@ import server.zone.objects.creature.CreatureObject;
 
 class PersistentMessage extends ManagedObject {
 	protected string senderName;
+	protected string gameName;
+	protected string serverName;
 	protected unicode subject;
 	protected unicode body;
 	protected unsigned int timeStamp;
@@ -36,6 +38,7 @@ class PersistentMessage extends ManagedObject {
 	public PersistentMessage() {
 		timeStamp = System.getTime();
 		status = NEW;
+		gameName = "SWG";
 		
 		receiverObjectID = 0;
 	}
@@ -113,6 +116,24 @@ class PersistentMessage extends ManagedObject {
 	
 	public void setSubject(final unicode subj) {
 		subject = subj;
+	}
+
+	public void setGameName(final string name) {
+		gameName = name;
+	}
+
+	public void setServerName(final string name) {
+		serverName = name;
+	}
+
+	@read
+	public string getGameName() {
+		return gameName;
+	}
+
+	@read
+	public string getServerName() {
+		return serverName;
 	}
 	
 	@read

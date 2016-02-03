@@ -118,8 +118,8 @@ public:
 		insertInt(0x08485E17); //ChatPersistentMessageToClient
 
 		insertAscii(mail->getSenderName());
-		insertAscii(""); //Game NOTE: SOE doesn't send this, why should we?
-		insertAscii(""); //Galaxy Name
+		insertAscii(mail->getGameName()); // Game Name
+		insertAscii(mail->getServerName()); //Galaxy Name
 		insertInt(mail->getMailID());
 
 		insertByte((uint8) !sendBody);

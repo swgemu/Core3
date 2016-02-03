@@ -1229,6 +1229,7 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 	mail->setSenderName(sendername);
 	mail->setSubject(header);
 	mail->setBody(body);
+	mail->setServerName(player->getZoneServer()->getGalaxyName());
 	//mail->setParameterizedBody(test);
 	mail->setReceiverObjectID(receiverObjectID);
 	mail->setTimeStamp(currentTime);
