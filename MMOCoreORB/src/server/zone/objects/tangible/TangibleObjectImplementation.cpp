@@ -912,6 +912,12 @@ ThreatMap* TangibleObjectImplementation::getThreatMap() {
 
 	return threatMap;
 }
+bool TangibleObjectImplementation::isAttackableBy(TangibleObject* object) {
+	if(object->isCreatureObject())
+		return isAttackableBy(object->asCreatureObject());
+
+	return false;
+}
 
 bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (isImperial() && !(object->isRebel())) {
