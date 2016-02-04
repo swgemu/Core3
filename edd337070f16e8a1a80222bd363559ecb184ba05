@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_6e60f335",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTime.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-04T03:52:05Z",
+      "side": 1,
+      "message": "make this into a VectorMap\u003cuint8, uint32\u003e and key the damages by attribute instead of maintaining two vectors that MUST be equal size.",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 24
+      },
+      "revId": "edd337070f16e8a1a80222bd363559ecb184ba05",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8e654747",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTime.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-04T03:52:05Z",
+      "side": 1,
+      "message": "Only use an assert when you can\u0027t gurantee something programatically, which in this case can be done if you use a map instead of two vectors.",
+      "range": {
+        "startLine": 215,
+        "startChar": 3,
+        "endLine": 215,
+        "endChar": 51
+      },
+      "revId": "edd337070f16e8a1a80222bd363559ecb184ba05",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ce733f14",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTime.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-04T03:52:05Z",
+      "side": 1,
+      "message": "rename this to ALLPRIMARY and move it to CreatureAttributes since you use the definition of what you assume to be the last CreatureAttribute to define this.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 38
+      },
+      "revId": "edd337070f16e8a1a80222bd363559ecb184ba05",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
