@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_ae4dabc6",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-04T05:44:38Z",
+      "side": 1,
+      "message": "can/should this go into applyDamage?",
+      "range": {
+        "startLine": 247,
+        "startChar": 2,
+        "endLine": 247,
+        "endChar": 77
+      },
+      "revId": "18ae11441d3d64e0fad799c44cc35846e5aa8633",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ce4a5fac",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-04T05:44:38Z",
+      "side": 1,
+      "message": "what if this is a stateOnlyAttack? No damage was received then.",
+      "range": {
+        "startLine": 359,
+        "startChar": 1,
+        "endLine": 359,
+        "endChar": 80
+      },
+      "revId": "18ae11441d3d64e0fad799c44cc35846e5aa8633",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_6ec79313",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-04T05:44:38Z",
+      "side": 1,
+      "message": "what if hitVal is MISS or damage \u003d\u003d 0?",
+      "range": {
+        "startLine": 462,
+        "startChar": 1,
+        "endLine": 462,
+        "endChar": 86
+      },
+      "revId": "18ae11441d3d64e0fad799c44cc35846e5aa8633",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8ecc6737",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/FeignDeathCommand.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-04T05:44:38Z",
+      "side": 1,
+      "message": "don\u0027t actually need to lock the buff here, you just made it; it\u0027s guaranteed to only be used in the current thread until you addBuff.",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "18ae11441d3d64e0fad799c44cc35846e5aa8633",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2ed19bcd",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/FeignDeathCommand.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-04T05:44:38Z",
+      "side": 1,
+      "message": "I would move this to either feignDeath or setFeignDeathState in CREO in case anyone wants to force FD for any reason.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 23
+      },
+      "revId": "18ae11441d3d64e0fad799c44cc35846e5aa8633",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
