@@ -44,7 +44,7 @@ protected:
     uint64 targetID;
 
     VectorMap<uint8, StateEffect>* stateEffects;
-    VectorMap<uint64, DotEffect>* dotEffects;
+    Vector<DotEffect>* dotEffects;
 
 	uint8 attackType;
 	uint8 trails;
@@ -160,7 +160,7 @@ public:
 		return stateEffects;
 	}
 
-	VectorMap<uint64, DotEffect>* getDotEffects() const {
+	Vector<DotEffect>* getDotEffects() const {
 		return dotEffects;
 	}
 

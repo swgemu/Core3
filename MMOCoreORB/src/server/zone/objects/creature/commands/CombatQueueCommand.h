@@ -59,7 +59,7 @@ protected:
 	String effectString;
 
 	VectorMap<uint8, StateEffect> stateEffects;
-	VectorMap<uint64, DotEffect> dotEffects;
+	Vector<DotEffect> dotEffects;
 
 	uint8 attackType;
 	uint8 trails;
@@ -398,7 +398,7 @@ public:
 		return &(const_cast<CombatQueueCommand*>(this)->stateEffects);
 	}
 
-	inline VectorMap<uint64, DotEffect>* getDotEffects() const {
+	inline Vector<DotEffect>* getDotEffects() const {
 		return &(const_cast<CombatQueueCommand*>(this)->dotEffects);
 	}
 
@@ -426,7 +426,7 @@ public:
 		return const_cast<CombatQueueCommand*>(this)->stateEffects.get(type);
 	}
 
-	void setDotEffects(VectorMap<uint64, DotEffect> dotEffects) {
+	void setDotEffects(Vector<DotEffect> dotEffects) {
 		this->dotEffects = dotEffects;
 	}
 
@@ -455,11 +455,7 @@ public:
 	}
 
 	void addDotEffect(DotEffect dotEffect) {
-		dotEffects.put(dotEffect.getDotType(), dotEffect);
-	}
-
-	DotEffect getDotEffect(uint64 type) {
-		return dotEffects.get(type);
+		dotEffects.add(dotEffect);
 	}
 
 	void setConeRange(int i) {

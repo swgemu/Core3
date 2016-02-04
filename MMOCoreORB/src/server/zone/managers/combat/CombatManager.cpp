@@ -459,7 +459,7 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 }
 
 void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data, int appliedDamage, int unmitDamage, int poolsToDamage) {
-	VectorMap<uint64, DotEffect>* dotEffects = data.getDotEffects();
+	Vector<DotEffect>* dotEffects = data.getDotEffects();
 
 	if (defender->isPlayerCreature() && defender->getPvpStatusBitmask() == CreatureFlag::NONE)
 		return;
@@ -497,7 +497,7 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 			pool = getPoolForDot(dotType, poolsToDamage);
 		}
 
-		//info("entering addDotState", true);
+		//info("entering addDotState with CRC:" + String::valueOf(dotCRC), true);
 		float damMod = attacker->isAiAgent() ? cast<AiAgent*>(attacker)->getSpecialDamageMult() : 1.f;
 		defender->addDotState(attacker, dotType, data.getCommand()->getNameCRC(),
 				effect.isDotDamageofHit() ? damageToApply * effect.getPrimaryPercent() / 100.0f 
