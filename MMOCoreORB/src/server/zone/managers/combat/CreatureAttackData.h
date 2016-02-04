@@ -39,6 +39,8 @@ protected:
     int coneAngle;
     int areaRange;
 
+    bool splashDamage;
+
     uint32 animationCRC;
 
     uint64 targetID;
@@ -114,6 +116,14 @@ public:
 
 	uint32 getAnimationCRC() const {
 		return animationCRC;
+	}
+
+	void setSplashDamage(bool b) {
+		splashDamage = b;
+	}
+
+	bool isSplashDamage() const {
+		return splashDamage;
 	}
 
 	int getAreaRange() const {
