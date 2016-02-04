@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_eef7238b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceChokeCommand.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-04T03:33:54Z",
+      "side": 1,
+      "message": "This is unnecessary.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 49
+      },
+      "revId": "4e927080fa5c3330eb84086bb2a6f77b556b507c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0e6a971a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceChokeCommand.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-04T03:33:54Z",
+      "side": 1,
+      "message": "Why are you adding the choke task to the creature and not the target? What is your intention here?",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 67
+      },
+      "revId": "4e927080fa5c3330eb84086bb2a6f77b556b507c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ee6c0339",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceChokeCommand.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-04T03:33:54Z",
+      "side": 1,
+      "message": "You need to check and make sure the target isn\u0027t already choking, and if they are if this choke is more powerful, etc.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 67
+      },
+      "revId": "4e927080fa5c3330eb84086bb2a6f77b556b507c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0ef5b782",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/ForceChokeTickTask.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-04T03:33:54Z",
+      "side": 1,
+      "message": "This is completely unused, remove it.",
+      "range": {
+        "startLine": 22,
+        "startChar": 78,
+        "endLine": 22,
+        "endChar": 94
+      },
+      "revId": "4e927080fa5c3330eb84086bb2a6f77b556b507c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8e30e757",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/ForceChokeTickTask.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-04T03:33:54Z",
+      "side": 1,
+      "message": "Define this elsewhere. Defining a const static this deep in the code is never a good idea. Put it into a header somewhere. Better yet, put it into the force choke lua.",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 38
+      },
+      "revId": "4e927080fa5c3330eb84086bb2a6f77b556b507c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_aef12b97",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/ForceChokeTickTask.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-04T03:33:54Z",
+      "side": 1,
+      "message": "This is also unused, remove it.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 50
+      },
+      "revId": "4e927080fa5c3330eb84086bb2a6f77b556b507c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ee3e4329",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/ForceChokeTickTask.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-04T03:33:54Z",
+      "side": 1,
+      "message": "all you do is play an effect and send a message now? This is where you need to send the attack through combat manager.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 90
+      },
+      "revId": "4e927080fa5c3330eb84086bb2a6f77b556b507c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
