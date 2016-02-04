@@ -60,6 +60,8 @@ CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 	coneRange = data.coneRange;
 	areaRange = data.areaRange;
 
+	splashDamage = data.splashDamage;
+
 	animationCRC = data.animationCRC;
 
 	attackType= data.attackType;
@@ -92,6 +94,7 @@ void CreatureAttackData::fillFromBase() {
 	attackType = baseCommand->getAttackType();
 	trails = baseCommand->getTrails();
 	combatSpam = baseCommand->getCombatSpam();
+	splashDamage = baseCommand->isSplashDamage();
 
 	stateAccuracyBonus = 0;
 

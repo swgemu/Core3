@@ -350,7 +350,11 @@ class TangibleObject extends SceneObject {
 	 */
 	@dirty
 	public native abstract boolean isAttackableBy(CreatureObject object);
+
 	
+	@dirty
+	public native abstract boolean isAttackableBy(TangibleObject object);
+		
 	/**
 	 * Evaluates if this creature is aggresive to the object
 	 * @pre { }
