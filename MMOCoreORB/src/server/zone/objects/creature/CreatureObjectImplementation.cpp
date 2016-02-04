@@ -2284,6 +2284,8 @@ void CreatureObjectImplementation::setIntimidatedState(int durationSeconds) {
 
 		showFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
 
+		creo->playEffect("clienteffect/combat_special_defender_intimidate.cef");
+
 		creo->renewBuff(buffCRC, durationSeconds);
 	} else {
 
