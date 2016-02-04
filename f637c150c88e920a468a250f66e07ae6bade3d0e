@@ -1,0 +1,242 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_ceeedfb4",
+        "filename": "MMOCoreORB/src/server/chat/ChatManager.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-04T03:11:16Z",
+      "side": 1,
+      "message": "Remove if unnecessary.",
+      "revId": "f637c150c88e920a468a250f66e07ae6bade3d0e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_6e2b13ec",
+        "filename": "MMOCoreORB/src/server/chat/ChatManager.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-04T03:11:16Z",
+      "side": 1,
+      "message": "Remove if unused.",
+      "revId": "f637c150c88e920a468a250f66e07ae6bade3d0e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2e351b46",
+        "filename": "MMOCoreORB/src/server/chat/ChatManager.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-04T03:11:16Z",
+      "side": 1,
+      "message": "Please clean up extraneous white space from your patch.",
+      "revId": "f637c150c88e920a468a250f66e07ae6bade3d0e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_4e3acf37",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-04T03:11:16Z",
+      "side": 1,
+      "message": "Decide if you\u0027re going to keep or remove this.",
+      "revId": "f637c150c88e920a468a250f66e07ae6bade3d0e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ae484bcd",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-04T03:11:16Z",
+      "side": 1,
+      "message": "Maybe call the destroyRoom() method (you can give it a notifyClient arg).",
+      "revId": "f637c150c88e920a468a250f66e07ae6bade3d0e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0e3cd72e",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-04T03:11:16Z",
+      "side": 1,
+      "message": "Decide what to do with rooms that don\u0027t have a parent (persistent or non).",
+      "revId": "f637c150c88e920a468a250f66e07ae6bade3d0e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_6e1233b6",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-04T03:11:16Z",
+      "side": 1,
+      "message": "Should we iterate through subrooms and alter their path to remove the destroyed room from it? If we do this we\u0027ll need to watch out for and handle name/path collisions.",
+      "revId": "f637c150c88e920a468a250f66e07ae6bade3d0e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0e237706",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-04T03:11:16Z",
+      "side": 1,
+      "message": "Locker clocker(player, _this.getReferenceUnsafeStaticCast());",
+      "revId": "f637c150c88e920a468a250f66e07ae6bade3d0e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ce1c9fc4",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1685,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-04T03:11:16Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "f637c150c88e920a468a250f66e07ae6bade3d0e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8e1787a3",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/GroupObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-04T03:11:16Z",
+      "side": 1,
+      "message": "I don\u0027t think you use this anymore and can remove it.",
+      "revId": "f637c150c88e920a468a250f66e07ae6bade3d0e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2e0c3b94",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-04T03:11:16Z",
+      "side": 1,
+      "message": "How about ownedChatRooms?",
+      "revId": "f637c150c88e920a468a250f66e07ae6bade3d0e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_6e79d3fb",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-04T03:11:16Z",
+      "side": 1,
+      "message": "Is this sendTo call necessary? You do the same for auction and planet chat when you enter them, but not for custom channels.",
+      "revId": "f637c150c88e920a468a250f66e07ae6bade3d0e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_4e116fab",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-04T03:11:16Z",
+      "side": 1,
+      "message": "Should you also continue if it\u0027s type is guild? You join their guild chat above.",
+      "revId": "f637c150c88e920a468a250f66e07ae6bade3d0e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ee25e30a",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2299,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-04T03:11:16Z",
+      "side": 1,
+      "message": "Remove this. The parent creo will be locked where this is called.",
+      "revId": "f637c150c88e920a468a250f66e07ae6bade3d0e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "da7095c5_ce457fb4",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-04T03:11:16Z",
+      "side": 0,
+      "message": "Since parent might be different than expected (due to a null node on the path), you should check here to make sure the room doesn\u0027t already exist at the parent\u0027s path.",
+      "revId": "7cc4fceff14df226c60b843f094fa7678c371d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_eec3a388",
         "filename": "MMOCoreORB/src/server/chat/room/ChatRoom.idl",
         "patchSetId": 2
