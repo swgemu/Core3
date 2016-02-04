@@ -151,27 +151,37 @@ quick_exit = ConvoScreen:new {
 tourAryonConvoTemplate:addScreen(quick_exit);
 
 
-vote_for_victor = ConvoScreen:new {
-	id = "vote_for_victor",
+can_vote_for_victor = ConvoScreen:new {
+	id = "can_vote_for_victor",
 	leftDialog = "@conversation/tour_aryon:s_bf3641cd", --Excellent! I see that you have positive evidence to support Victor Visalis' campaign. Do you wish to vote for him?
 	stopConversation = "false",
-	options = {
-		{"@conversation/tour_aryon:s_b51737ff", "elect_victor"}, --Yes, I wish to vote for him.
-		{"@conversation/tour_aryon:s_91852029", "changed_my_mind"}, --I've changed my mind and would like to think about this a bit more.
-	}
+	options = {}
 }
-tourAryonConvoTemplate:addScreen(vote_for_victor);
+tourAryonConvoTemplate:addScreen(can_vote_for_victor);
 
-vote_for_sean = ConvoScreen:new {
-	id = "vote_for_sean",
+can_vote_for_sean = ConvoScreen:new {
+	id = "can_vote_for_sean",
 	leftDialog = "@conversation/tour_aryon:s_f3d3efe5", --Excellent! I see that you have positive evidence to support Sean Trenwell's campaign. Do you wish to vote for him?
 	stopConversation = "false",
-	options = {
-		{"@conversation/tour_aryon:s_b51737ff", "like_to_vote"}, --Yes, I wish to vote for him.
-		{"@conversation/tour_aryon:s_91852029", "changed_my_mind"}, --I've changed my mind and would like to think about this a bit more.
-	}
+	options = {}
 }
-tourAryonConvoTemplate:addScreen(vote_for_sean);
+tourAryonConvoTemplate:addScreen(can_vote_for_sean);
+
+elect_sean = ConvoScreen:new {
+	id = "elect_sean",
+	leftDialog = "@conversation/tour_aryon:s_b1e3db3e", -- Thank you for your vote. I will keep the tally in my database for when the election has been drawn to a close.
+	stopConversation = "true",
+	options = { }
+}
+tourAryonConvoTemplate:addScreen(elect_sean);
+
+elect_victor = ConvoScreen:new {
+	id = "elect_victor",
+	leftDialog = "@conversation/tour_aryon:s_b1e3db3e", -- Thank you for your vote. I will keep the tally in my database for when the election has been drawn to a close.
+	stopConversation = "true",
+	options = { }
+}
+tourAryonConvoTemplate:addScreen(elect_victor);
 
 no_evidence = ConvoScreen:new {
 	id = "no_evidence",
@@ -189,13 +199,13 @@ changed_my_mind = ConvoScreen:new {
 }
 tourAryonConvoTemplate:addScreen(changed_my_mind);
 
-get_to_it = ConvoScreen:new {
-	id = "get_to_it",
+go_get_it = ConvoScreen:new {
+	id = "go_get_it",
 	leftDialog = "@conversation/tour_aryon:s_567d69e1", --I will be here when you return. I am looking forward to collecting your vote for the election!
 	stopConversation = "true",
 	options = {}
 }
-tourAryonConvoTemplate:addScreen(get_to_it);
+tourAryonConvoTemplate:addScreen(go_get_it);
 
 within_the_hour = ConvoScreen:new {
 	id = "within_the_hour",

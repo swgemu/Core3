@@ -1,6 +1,6 @@
-indigo_siyan = Creature:new {
-	objectName = "",
-	customName = "Indigo Siyan",
+sean_questn_university = Creature:new {
+	objectName = "@npc_name:moncal_base_male",
+	customName = "Oka Alewame",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -11,7 +11,7 @@ indigo_siyan = Creature:new {
 	baseHAM = 24000,
 	baseHAMmax = 30000,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -23,15 +23,15 @@ indigo_siyan = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_indigo_siyan.iff"},
+	templates = {"object/mobile/dressed_sean_questn_university.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "seanQuestnUniversityConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(indigo_siyan, "indigo_siyan")
+CreatureTemplates:addCreatureTemplate(sean_questn_university, "sean_questn_university")

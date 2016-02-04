@@ -13,16 +13,40 @@ local CAMPAIGN_TIME = 23 * 24 *30 * 60 * 1000 -- 23 days Phase 1
 local TUNE_TIME = 7 * 24 * 30 * 60 * 1000 -- 7 days (TUNE = Time Until Next Election) Phase 2
 
 local electionMobiles = {
-		{ template = "sean_trenwell", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=926483, breech = 4}, 
-		{ template = "victor_visalis", x = -26.48, z = 3.23, y = 20.29, direction = 146, cellID = 926480,breech = 4},
-		{ template = "tour_aryon", x = -37.31, z = 1.29, y = 0.71, direction = -125, cellID = 926479,breech = 10},
-		{ template = "indigo_siyan", x = 24.64, z = 3.22, y = -30.71, direction = 341.212, cellID = 926483,breech = 4},
-		{ template = "keanna_likyna", x = -18.88, z = 3.22, y = 20.6, direction = 214.006, cellID = 926480,breech = 4},
-		--{ template = "victor_questp_slums", x= -1357, z=26, y=-3871, direction = -108, cellID=0,breech = 4},
-		--{ template = "sean_questp_house", x = 3.0, z = .4, y = -0.2, direction = -111, cellID = 1528397,breech = 4},
-		--{ template = "victor_questp_hospital", x = -1294, z = 12, y = -3500, direction = 45, cellID = 0,breech = 4},
-		--{ template = "sean_questp_market", x = -1104, z = 12, y = -3705, direction = 20, cellID = 0,breech = 4},
-		--{ template = "sean_questn_university", x = 3.6, z = 1.1, y = -4.6, direction = 0, cellID = 1028578,breech = 4},
+		{ template = "sean_trenwell", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=926483, moodString = "neutral", breech = 0},
+		{ template = "victor_visalis", x = -26.48, z = 3.23, y = 20.29, direction = 146, cellID = 926480, moodString = "neutral", breech = 0},
+		{ template = "tour_aryon", x = -37.31, z = 1.29, y = 0.71, direction = -125, cellID = 926479, moodString = "neutral", breech = 10},
+		{ template = "indigo_siyan", x = 24.64, z = 3.22, y = -30.71, direction = 341.212, cellID = 926483, moodString = "neutral", breech = 0},
+		{ template = "keanna_likyna", x = -18.88, z = 3.22, y = 20.6, direction = 214.006, cellID = 926480, moodString = "neutral", breech = 0},
+		{ template = "victor_questn_capitol", x = 6.1, z = 0.3, y = -0.49,direction = 96.7754, cellID = 926475, moodString = "npc_imperial", breech = 4},
+		{ template = "victor_questn_cantina", x = 3.1, z = -0.9, y = 22.6, direction = 179, cellID = 1028651, moodString = "npc_sitting_chair", breech = 0},
+		--{ template = "victor_questp_slums", x= -1357, z=26, y=-3871, direction = -108, cellID=0, moodString = "neutral", breech = 4},
+		--{ template = "sean_questp_house", x = 3.0, z = .4, y = -0.2, direction = -111, cellID = 1528397, moodString = "neutral", breech = 4},
+		--{ template = "victor_questp_hospital", x = -1294, z = 12, y = -3500, direction = 45, cellID = 0, moodString = "neutral", breech = 4},
+		--{ template = "sean_questp_market", x = -1104, z = 12, y = -3705, direction = 20, cellID = 0, moodString = "neutral", breech = 4},
+		{ template = "sean_questn_university", x = 3.6, z = 1.1, y = -4.6, direction = 0, cellID = 1028578, moodString = "neutral", breech = 8},
+}	
+
+local rumorMobiles = {
+	{ template = "bestine_rumor01", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=0, moodString = "neutral", breech = 4},
+	{ template = "bestine_rumor02", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=0, moodString = "neutral", breech = 4},
+	{ template = "bestine_rumor03", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=0, moodString = "neutral", breech = 4},
+	{ template = "bestine_rumor04", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=0, moodString = "neutral", breech = 4},
+	{ template = "bestine_rumor05", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=0, moodString = "neutral", breech = 4},
+	{ template = "bestine_rumor06", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=0, moodString = "neutral", breech = 4},
+	{ template = "bestine_rumor07", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=0, moodString = "neutral", breech = 4},
+	{ template = "bestine_rumor08", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=0, moodString = "neutral", breech = 4},
+	{ template = "bestine_rumor09", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=0, moodString = "neutral", breech = 4},
+	{ template = "bestine_rumor10", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=0, moodString = "neutral", breech = 4},
+	{ template = "bestine_rumor11", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=0, moodString = "neutral", breech = 4},
+	{ template = "bestine_rumor12", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=0, moodString = "neutral", breech = 4},
+}
+
+local capitolMobiles = {
+	{ template = "bestine_capitol01", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=0, moodString = "neutral", breech = 4},
+	{ template = "bestine_capitol02", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=0, moodString = "neutral", breech = 4},
+	{ template = "bestine_capitol03", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=0, moodString = "neutral", breech = 4},
+	{ template = "bestine_capitol04", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=0, moodString = "neutral", breech = 4},
 }
 
 registerScreenPlay("BestineElectionScreenPlay", true)
@@ -31,7 +55,7 @@ function BestineElectionScreenPlay:start()
 	if (isZoneEnabled("tatooine")) then
 		self:doPhaseInit()
 		self:spawnMobiles()
-		--self:setupTerminals()
+		self:setupTerminals()
 	end
 end
 
@@ -39,20 +63,19 @@ function BestineElectionScreenPlay:spawnMobiles()
 	for i = 1, #electionMobiles do
 		local npcData = electionMobiles[i]
 		local pNpc = spawnMobile("tatooine", npcData.template, 60, npcData.x, npcData.z, npcData.y, npcData.direction, npcData.cellID)
-		self:setMoodString(pNpc, "neutral")
-		local pActiveArea = spawnActiveArea("tatooine", "object/active_area.iff", SceneObject(pNpc):getWorldPositionX(),SceneObject(pNpc):getWorldPositionZ(),SceneObject(pNpc):getWorldPositionY(), npcData.breech, 0)
-		if pActiveArea ~= nil then
-			local areaID = SceneObject(pActiveArea):getObjectID()
-			writeData(areaID .. ":OwnerID", SceneObject(pNpc):getObjectID())
-			createObserver(ENTEREDAREA, "BestineElectionScreenPlay", "spawnApproach", pActiveArea)	
+		self:setMoodString(pNpc, npcData.moodString)
+		if npcData.template == "tour_aryon" then
+			SceneObject(pNpc):setContainerComponent("TourContainerComponent")
+		end
+		if npcData.breech > 0 then
+			local pActiveArea = spawnActiveArea("tatooine", "object/active_area.iff", SceneObject(pNpc):getWorldPositionX(),SceneObject(pNpc):getWorldPositionZ(),SceneObject(pNpc):getWorldPositionY(), npcData.breech, 0)
+			if pActiveArea ~= nil then
+				local areaID = SceneObject(pActiveArea):getObjectID()
+				writeData(areaID .. ":OwnerID", SceneObject(pNpc):getObjectID())
+				createObserver(ENTEREDAREA, "BestineElectionScreenPlay", "spawnApproach", pActiveArea)	
+			end
 		end
 	end
-
-	--negative quest NPC
---[[	pNpc = spawnMobile("tatooine", "victor_questn_cantina",60,3.1,-0.9,22.6,179,1028651)
-	self:setMoodString(pNpc, "npc_sitting_chair")
-	pNpc = spawnMobile("tatooine", "victor_questn_capitol",60,6.1,0.3,-0.49,96.7754,926475)
-	self:setMoodString(pNpc, "npc_imperial")
 
 	--Merchants if Sean Wins
 	--print("	--Merchants if Sean Wins")
@@ -72,14 +95,13 @@ function BestineElectionScreenPlay:spawnMobiles()
 			createObserver(ENTEREDAREA, "BestineElectionScreenPlay", "informantApproach", pActiveArea)
 		end
 	end	
---]]
 end
 
 function BestineElectionScreenPlay:createEvent(duration)
 	local electionNum = tonumber(getQuestStatus("bestine_election:election_num"))
 	if electionNum == nil then
 		electionNum = 1
-		setQuestStatus("bestine_election:election_num",1)
+		setQuestStatus("bestine_election:election_num", electionNum)
 	end
 	local eventID = createServerEvent(duration, "BestineElectionScreenPlay", "doPhaseChange", "ElectionPhaseChange")
 	setQuestStatus("bestine_election:event_id", eventID)
@@ -137,7 +159,7 @@ end
 
 function BestineElectionScreenPlay:getElectionNumber()
 	local electionNum = tonumber(getQuestStatus("bestine_election:election_num"))
-	if electionNum == nil then
+	if (electionNum == nil) then
 		electionNum = 1
 		setQuestStatus("bestine_election:election_num",electionNum)
 	end
@@ -145,42 +167,152 @@ function BestineElectionScreenPlay:getElectionNumber()
 end
 
 function BestineElectionScreenPlay:isElectionEnabled()
-	return ELECTION_ENABLED == 1
+	return ELECTION_ENABLED
 end
 
+function BestineElectionScreenPlay:voteForVictor(pPlayer)
+	local votes = getQuestStatus("bestine_election:Victor_Votes")
+	local electionNum = BestineElectionScreenPlay:getElectionNumber()
+	if (votes == nil) then 
+		votes = 0
+		setQuestStatus("bestine_election:Victor_Votes",votes)
+	end
+	votes = votes + 1
+	setQuestStatus("bestine_election:Victor_Votes",votes)
+	writeScreenPlayData(pPlayer,"BestineElection","VotedVictor",electionNum)
+end
 
-function BestineElectionScreenPlay:hasAlreadyVoted(pPlayer)
+function BestineElectionScreenPlay:voteForSean(pPlayer)
+	local votes = getQuestStatus("bestine_election:Sean_Votes")
+	local electionNum = BestineElectionScreenPlay:getElectionNumber()
+	if (votes == nil) then 
+		votes = 0
+		setQuestStatus("bestine_election:Sean_Votes",votes)
+	end
+	votes = votes + 1
+	setQuestStatus("bestine_election:Sean_Votes",votes)
+	writeScreenPlayData(pPlayer,"BestineElection","VotedSean",electionNum)
+end
+
+function BestineElectionScreenPlay:VictorCampaign(pPlayer)
+	local playerCampaign = tonumber(readScreenPlayData(pPlayer,"BestineElection","VictorCampaign"))
+	local electionNum = BestineElectionScreenPlay:getElectionNumber()
+	if (playerCampaign ~= nil) then 
+		return (playerCampaign >= electionNum)
+	end
 	return false
 end
 
+function BestineElectionScreenPlay:SeanCampaign(pPlayer)
+	local playerCampaign = tonumber(readScreenPlayData(pPlayer,"BestineElection","SeanCampaign"))
+	local electionNum = BestineElectionScreenPlay:getElectionNumber()
+	if (playerCampaign ~= nil) then 
+		return (playerCampaign >= electionNum)
+	end
+	return false
+end
+
+function BestineElectionScreenPlay:votedVictor(pPlayer)
+	local electionNum = BestineElectionScreenPlay:getElectionNumber()
+	local playerCampaign = tonumber(readScreenPlayData(pPlayer,"BestineElection","VotedVictor"))
+	if (playerCampaign ~= nil) then 
+		return (playerCampaign >= electionNum)
+	end
+	return false
+end
+
+function BestineElectionScreenPlay:votedSean(pPlayer)
+	local electionNum = BestineElectionScreenPlay:getElectionNumber()
+	local playerCampaign = tonumber(readScreenPlayData(pPlayer,"BestineElection","VotedSean"))
+	if (playerCampaign ~= nil) then 
+		return (playerCampaign >= electionNum)
+	end
+	return false
+end
+
+function BestineElectionScreenPlay:canVote(pPlayer)
+	return (not BestineElectionScreenPlay:hasAlreadyVoted(pPlayer)) and (BestineElectionScreenPlay:canVoteForSean(pPlayer) or BestineElectionScreenPlay:canVoteForVictor(pPlayer))
+end
+
+function BestineElectionScreenPlay:hasAlreadyVoted(pPlayer)
+	return self:votedVictor(pPlayer) or self:votedSean(pPlayer)
+end
+
 function BestineElectionScreenPlay:canVoteForSean(pPlayer)
-	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
-	if pInventory ~= nil then
-		if getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/sean_questp_ctestimony.iff" , true) then
-			return true
-		elseif getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/sean_questp_mdisk.iff", true) then
-			return true
-		elseif getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/sean_questp_htestimony.iff", true) then
-			return true
+	if self:SeanCampaign(pPlayer) then
+		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+		if pInventory ~= nil then
+			if getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/sean_questp_ctestimony.iff" , true) then
+				return true
+			elseif getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/sean_questp_mdisk.iff", true) then
+				return true
+			elseif getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/sean_questp_htestimony.iff", true) then
+				return true
+			end
 		end
 	end
 	return false
 end
 
 function BestineElectionScreenPlay:canVoteForVictor(pPlayer)
-	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
-	if pInventory ~= nil then
-		if getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/victor_questp_testimony.iff" , true) then
-			return true
-		elseif getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/victor_questp_jregistry.iff", true) then
-			return true
-		elseif getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/victor_questp_receipt.iff", true) then
-			return true
+	if self:VictorCampaign(pPlayer) then
+		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+		if pInventory ~= nil then
+			if getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/victor_questp_testimony.iff" , true) then
+				return true
+			elseif getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/victor_questp_jregistry.iff", true) then
+				return true
+			elseif getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/victor_questp_receipt.iff", true) then
+				return true
+			end
 		end
 	end
 	return false
 end
 
+function BestineElectionScreenPlay:removeSeanEvidence(pPlayer)
+	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+	if pInventory ~= nil then
+		local evidenceItem = getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/sean_questp_ctestimony.iff" , true)
+		if evidenceItem ~= nil then
+			SceneObject(evidenceItem):destroyObjectFromWorld()
+			SceneObject(evidenceItem):destroyObjectFromDatabase()
+		end
+		evidenceItem = getContainerObjectByTemplate(pInventory,"object/tangible/loot/quest/sean_questp_mdisk.iff", true)
+		if evidenceItem ~= nil then
+			SceneObject(evidenceItem):destroyObjectFromWorld()
+			SceneObject(evidenceItem):destroyObjectFromDatabase()
+		end
+		evidenceItem = getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/sean_questp_htestimony.iff", true)
+		if evidenceItem ~= nil then
+			SceneObject(evidenceItem):destroyObjectFromWorld()
+			SceneObject(evidenceItem):destroyObjectFromDatabase()
+		end
+	end
+	return
+end
+
+function BestineElectionScreenPlay:removeVictorEvidence(pPlayer)
+	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+	if pInventory ~= nil then
+		local evidenceItem = getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/victor_questp_testimony.iff" , true)
+		if evidenceItem ~= nil then
+			SceneObject(evidenceItem):destroyObjectFromWorld()
+			SceneObject(evidenceItem):destroyObjectFromDatabase()
+		end
+		evidenceItem = getContainerObjectByTemplate(pInventory,"object/tangible/loot/quest/victor_questp_jregistry.iff", true)
+		if evidenceItem ~= nil then
+			SceneObject(evidenceItem):destroyObjectFromWorld()
+			SceneObject(evidenceItem):destroyObjectFromDatabase()
+		end
+		evidenceItem = getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/victor_questp_receipt.iff", true)
+		if evidenceItem ~= nil then
+			SceneObject(evidenceItem):destroyObjectFromWorld()
+			SceneObject(evidenceItem):destroyObjectFromDatabase()
+		end
+	end
+	return
+end
 
 function BestineElectionScreenPlay:getPhaseTimeLeft(pPlayer)
 	local eventID = getServerEventID("ElectionPhaseChange")
@@ -209,9 +341,9 @@ function BestineElectionScreenPlay:hasFullInventory(pPlayer)
 end
 
 function BestineElectionScreenPlay:setupTerminals()
-	local pTerminal = getSceneObject(5565564) --terminal in victors office
+	local pTerminal = getSceneObject(5565564) --terminal in victors office gives object/tangible/loot/quest/victor_questp_jregistry.iff
 	if pTerminal ~= nil then
-		SceneObject(pTerminal):setObjectMenuComponent("BestineElectionVictorTerminalMenuComponent")
+		SceneObject(pTerminal):setObjectMenuComponent("BestineElectionVictorTerminalMenuComponent_Registry")
 	end
 	pTerminal = getSceneObject(5565562) --desk in seans office
 	if pTerminal ~= nil then
@@ -232,9 +364,9 @@ function BestineElectionScreenPlay:setupTerminals()
 		SceneObject(pTerminal):setObjectMenuComponent("BestineElectionFakeSearchMenuComponent")
 	end
 
-	pTerminal = getSceneObject(4475517) --other desk in seans office
+	pTerminal = getSceneObject(4475517) --desk in victors room - gives object/tangible/loot/quest/victor_questn_journal.iff
 	if pTerminal ~= nil then
-		SceneObject(pTerminal):setObjectMenuComponent("BestineElectionFakeSearchMenuComponent")
+		SceneObject(pTerminal):setObjectMenuComponent("BestineElectionSearchMenuComponent_Journal")
 	end
 
 	pTerminal = getSceneObject(5565565) --other desk in seans office
@@ -245,6 +377,9 @@ function BestineElectionScreenPlay:setupTerminals()
 	--5565565 victors table
 
 end
+
+
+
 
 function BestineElectionScreenPlay:spawnApproach(pActiveArea, pMovingObject)
 	if (not SceneObject(pMovingObject):isPlayerCreature()) then
@@ -262,7 +397,6 @@ function BestineElectionScreenPlay:informantApproach(pActiveArea, pMovingObject)
 	end
 	local informantId = readData("bestine_election:hutt_informant")
 	local pInformant = getSceneObject(informantId)
-
 	if pInformant ~= nil then
 		local pInventory = CreatureObject(pMovingObject):getSlottedObject("inventory")
 		if pInventory ~= nil then
@@ -285,9 +419,10 @@ hutt_informant_conv_handler = huttInformantConvoHandler:new {
 victor_visalis_conv_handler = victorVisalisConvoHandler:new {
 	themePark = BestineElection
 }
+sean_trenwell_conv_handler = seanTrenwellConvoHandler:new {
+	themePark = BestineElection
+}
 
-
---[[
 keanna_likyna_conv_handler = keannaLikynaConvoHandler:new {
 	themePark = BestineElection
 }
@@ -295,11 +430,6 @@ keanna_likyna_conv_handler = keannaLikynaConvoHandler:new {
 indigo_siyan_conv_handler = indigoSiyanConvoHandler:new {
 	themePark = BestineElection
 }
-
-sean_trenwell_conv_handler = seanTrenwellConvoHandler:new {
-	themePark = BestineElection
-}
-
 
 victor_questn_cantina_conv_handler = victorQuestnCantinaConvoHandler:new {
 	themePark = BestineElection
@@ -313,4 +443,3 @@ sean_questn_university_conv_handler = seanQuestnUniversityConvoHandler:new {
 	themePark = BestineElection
 }
 
---]]

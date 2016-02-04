@@ -28,8 +28,6 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	--Anything dashed out will need to be added here and removed from spawn manager once the spawnMobiles command is extended.
 
 	--Cantina
-	local pNpc = spawnMobile("tatooine", "quajjifek_coge",60,32.2473,0.105,-7.74246,15.5057,1028646)
-	self:setMoodString(pNpc, "neutral")
 	spawnMobile("tatooine", "bartender",60,-11.1901,-0.894992,1.50145,33.4278,1028647)
 	--starport interior
 	pNpc = spawnMobile("tatooine", "trainer_shipwright",60,-3.2,0.6,67.9,144,1026828)
@@ -167,16 +165,8 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	--Capitol
 	pNpc = spawnMobile("tatooine", "ekoarili_eichreemo",60,-2.83709,3.18179,19.5635,187.088,926474)
 	self:setMoodString(pNpc, "neutral")
-	--pNpc = spawnMobile("tatooine", "indigo_siyan",60,24.6402,3.22324,-30.7135,341.212,926483)
-	--self:setMoodString(pNpc, "neutral")
-	--pNpc = spawnMobile("tatooine", "sean_trenwell",60,19.4653,3.22324,-35.9776,345,926483)
-	--self:setMoodString(pNpc, "neutral")
-	--pNpc = spawnMobile("tatooine", "victor_visalis",60,-26.4873,3.22324,20.2943,140.257,926480)
-	--self:setMoodString(pNpc, "neutral")
 	pNpc = spawnMobile("tatooine", "oberhaur",60,-21.8614,3.22324,26.9177,183.918,926480)
 	self:setMoodString(pNpc, "npc_imperial")
-	--pNpc = spawnMobile("tatooine", "keanna_likyna",60,-18.8886,3.22324,20.608,214.006,926480)
-	--self:setMoodString(pNpc, "neutral")
 	pNpc = spawnMobile("tatooine", "egach_iromn",60,2.2628,7.90008,-37.3821,304.411,926476)
 	self:setMoodString(pNpc, "neutral")
 	pNpc = spawnMobile("tatooine", "rancher",60,-2.63337,0.3,2.46637,180.004,926475)
@@ -199,8 +189,6 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_accusing")
 	pNpc = spawnMobile("tatooine", "noble",60,19.5,1.3,5.2,236,926475)
 	self:setMoodString(pNpc, "angry")
-	pNpc = spawnMobile("tatooine", "tl_017",400,6.1,0.3,-0.49,96.7754,926475)
-	self:setMoodString(pNpc, "npc_imperial")
 
 	--Outside
 	pNpc = spawnMobile("tatooine", "afroh_orah",60,-1211.37,12,-3637.48,26.5441,0)

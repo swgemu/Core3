@@ -6,7 +6,6 @@ huttInformantConvoHandler = Object:new {
 
 
 function huttInformantConvoHandler:destroyDisk(pPlayer)
-	local playerID = CreatureObject(pPlayer):getObjectID()
 	local electionNum = BestineElectionScreenPlay:getElectionNumber()
 
 	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
@@ -22,7 +21,7 @@ function huttInformantConvoHandler:destroyDisk(pPlayer)
 		return
 		end
 	end
-	setQuestStatus(playerID..":bestine_election:hutt",electionNum)
+	writeScreenPlayData(pPlayer,"BestineElection","hutt")
 	return
 end
 

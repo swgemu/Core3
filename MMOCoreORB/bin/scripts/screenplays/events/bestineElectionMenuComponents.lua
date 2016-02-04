@@ -3,36 +3,20 @@ local ObjectManager = require("managers.object.object_manager")
 BestineElectionSeanTerminalMenuComponent = { }
 
 function BestineElectionSeanTerminalMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
-	if (pSceneObject == nil) then
+	if (pSceneObject == nil) or (BestineElectionScreenPlay:getCurrentPhase() == 2) then
 		return
 	end
-	if (BestineElectionScreenPlay:getCurrentPhase() == 2) then
-		return
+	if victorVisalisConvoHandler:hasNQuestVar(pPlayer) then
+		local menuResponse = LuaObjectMenuResponse(pMenuResponse)
+		menuResponse:addRadialMenuItem(20, 3,"@city/bestine/terminal_items:download")
 	end
-	local playerID = CreatureObject(pPlayer):getObjectID()
-	local electionNum = BestineElectionScreenPlay:getElectionNumber()
-	local playerCampaign = tonumber(getQuestStatus(playerID..":bestine_election:VictorNegativeQuests"))
-	if (playerCampaign == nil) or (playerCampaign < electionNum) then
-		return
-	end
-
-	local menuResponse = LuaObjectMenuResponse(pMenuResponse)
-	menuResponse:addRadialMenuItem(20, 3,"@city/bestine/terminal_items:download")
-	print(pSceneObject, pMenuResponse, pPlayer)
 end
 
 function BestineElectionSeanTerminalMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
-	print(pSceneObject, pPlayer, selectedID)
 	if (pSceneObject == nil or pPlayer == nil or selectedID ~= 20) then
 		return
 	end
-	local playerID = CreatureObject(pPlayer):getObjectID()
-	local electionNum = BestineElectionScreenPlay:getElectionNumber()
-	local playerCampaign = tonumber(getQuestStatus(playerID..":bestine_election:VictorNegativeQuests"))
-	if (playerCampaign == nil) or (playerCampaign < electionNum) then
-		return
-	end
-
+	
 	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 	if pInventory == nil then
 		return
@@ -49,40 +33,27 @@ function BestineElectionSeanTerminalMenuComponent:handleObjectMenuSelect(pSceneO
 		return 0
 	end
 	CreatureObject(pPlayer):sendSystemMessage("@city/bestine/terminal_items:receive1")
-	return
+	return 1
 end
 
-BestineElectionVictorTerminalMenuComponent = { }
+BestineElectionVictorTerminalMenuComponent_Registry = { }
 
-function BestineElectionVictorTerminalMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
+function BestineElectionVictorTerminalMenuComponent_Registry:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
 	if (pSceneObject == nil) then
 		return
 	end
-	if (BestineElectionScreenPlay:getCurrentPhase() == 2) then
-		return
-	end
-	local playerID = CreatureObject(pPlayer):getObjectID()
-	local electionNum = BestineElectionScreenPlay:getElectionNumber()
-	local playerCampaign = tonumber(getQuestStatus(playerID..":bestine_election:VictorCampaign"))
-	if (playerCampaign == nil) or (playerCampaign < electionNum) then
+	if (not BestineElectionScreenPlay:VictorCampaign(pPlayer)) and (BestineElectionScreenPlay:getCurrentPhase() == 2) then
 		return
 	end
 	local menuResponse = LuaObjectMenuResponse(pMenuResponse)
 	menuResponse:addRadialMenuItem(20, 3,"@city/bestine/terminal_items:download")
-	print(pSceneObject, pMenuResponse, pPlayer)
 end
 
-function BestineElectionVictorTerminalMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
-	print(pSceneObject, pPlayer, selectedID)
+function BestineElectionVictorTerminalMenuComponent_Registry:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
 	if (pSceneObject == nil or pPlayer == nil or selectedID ~= 20) then
 		return
 	end
-
-	local playerID = CreatureObject(pPlayer):getObjectID()
-	local electionNum = BestineElectionScreenPlay:getElectionNumber()
-
-	local playerCampaign = tonumber(getQuestStatus(playerID..":bestine_election:VictorCampaign"))
-	if (playerCampaign == nil) or (playerCampaign < electionNum) then
+	if (not BestineElectionScreenPlay:VictorCampaign(pPlayer)) then
 		return
 	end
 
@@ -109,34 +80,16 @@ end
 BestineElectionSeanDeskMenuComponent = { }
 
 function BestineElectionSeanDeskMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
-	if (pSceneObject == nil) then
+	if (pSceneObject == nil) or (BestineElectionScreenPlay:getCurrentPhase() == 2) then
 		return
 	end
-	if (BestineElectionScreenPlay:getCurrentPhase() == 2) then
-		return
-	end
-	local playerID = CreatureObject(pPlayer):getObjectID()
-	local electionNum = BestineElectionScreenPlay:getElectionNumber()
-	local playerCampaign = tonumber(getQuestStatus(playerID..":bestine_election:VictorNegativeQuests"))
-	if (playerCampaign == nil) or (playerCampaign < electionNum) then
-		return
-	end
+
 	local menuResponse = LuaObjectMenuResponse(pMenuResponse)
 	menuResponse:addRadialMenuItem(20, 3,"@bestine:search_item")
-	print(pSceneObject, pMenuResponse, pPlayer)
 end
 
 function BestineElectionSeanDeskMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
-	print(pSceneObject, pPlayer, selectedID)
 	if (pSceneObject == nil or pPlayer == nil or selectedID ~= 20) then
-		return
-	end
-
-	local playerID = CreatureObject(pPlayer):getObjectID()
-	local electionNum = BestineElectionScreenPlay:getElectionNumber()
-
-	local playerCampaign = tonumber(getQuestStatus(playerID..":bestine_election:VictorNegativeQuests"))
-	if (playerCampaign == nil) or (playerCampaign < electionNum) then
 		return
 	end
 
@@ -151,80 +104,101 @@ function BestineElectionSeanDeskMenuComponent:handleObjectMenuSelect(pSceneObjec
 		return 0
 	end
 	CreatureObject(pPlayer):sendSystemMessage("@city/bestine/terminal_items:receive1")
-	return
+	return 1
 end
 
 BestineElectionSeanDesk2MenuComponent = { }
 
 function BestineElectionSeanDesk2MenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
-	if (pSceneObject == nil) then
-		return
-	end
-	if (BestineElectionScreenPlay:getCurrentPhase() == 2) then
-		return
-	end
-	local playerID = CreatureObject(pPlayer):getObjectID()
-	local electionNum = BestineElectionScreenPlay:getElectionNumber()
-	local playerCampaign = tonumber(getQuestStatus(playerID..":bestine_election:SeanCampaign"))
-	if (playerCampaign == nil) or (playerCampaign < electionNum) then
+	if (pSceneObject == nil) or (BestineElectionScreenPlay:getCurrentPhase() == 2) then
 		return
 	end
 	local menuResponse = LuaObjectMenuResponse(pMenuResponse)
 	menuResponse:addRadialMenuItem(20, 3,"@bestine:search_item")
-	print(pSceneObject, pMenuResponse, pPlayer)
 end
 
 function BestineElectionSeanDesk2MenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
-	print(pSceneObject, pPlayer, selectedID)
+	if (pSceneObject == nil or pPlayer == nil or selectedID ~= 20) then
+		return
+	end
+	CreatureObject(pPlayer):sendSystemMessage("@city/bestine/terminal_items:fail")
+	return 1
+end
+
+
+BestineElectionSearchMenuComponent_Journal = { }
+
+function BestineElectionSearchMenuComponent_Journal:canAddObject(pContainer, pObj, slot)
+	return
+end
+
+function BestineElectionSearchMenuComponent_Journal:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
+	if (pSceneObject == nil) or (BestineElectionScreenPlay:getCurrentPhase() == 2) then
+		return
+	end
+	if seanTrenwellConvoHandler:hasNQuestVar(pPlayer) then
+		local menuResponse = LuaObjectMenuResponse(pMenuResponse)
+		menuResponse:addRadialMenuItem(20, 3,"@bestine:search_item")
+	end
+end
+
+function BestineElectionSearchMenuComponent_Journal:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
 	if (pSceneObject == nil or pPlayer == nil or selectedID ~= 20) then
 		return
 	end
 
-	local playerID = CreatureObject(pPlayer):getObjectID()
-	local electionNum = BestineElectionScreenPlay:getElectionNumber()
-	local playerCampaign = tonumber(getQuestStatus(playerID..":bestine_election:SeanCampaign"))
-	if (playerCampaign == nil) or (playerCampaign < electionNum) then
+	if seanTrenwellConvoHandler:hasNQuestVar(pPlayer) then
+		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+		if (pInventory == nil) then
+			return
+		end
+		if getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/victor_questn_journal.iff" , true) then
+			CreatureObject(pPlayer):sendSystemMessage("@city/bestine/terminal_items:fail")
+			return
+		end
+	
+		local pDisk = giveItem(pInventory, "object/tangible/loot/quest/victor_questn_journal.iff", -1)
+		if (pDisk == nil) then
+			CreatureObject(pPlayer):sendSystemMessage("Error: Unable to generate item:victor_questn_journal.iff")
+			return
+		end
+		CreatureObject(pPlayer):sendSystemMessage("@city/bestine/terminal_items:receivemsg")
 		return
 	end
-		CreatureObject(pPlayer):sendSystemMessage("@city/bestine/terminal_items:fail")
+	
+	CreatureObject(pPlayer):sendSystemMessage("@city/bestine/terminal_items:fail")
 	return
 end
+
 
 BestineElectionFakeSearchMenuComponent = { }
 
 function BestineElectionFakeSearchMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
-	if (pSceneObject == nil) then
-		return
-	end
-	if (BestineElectionScreenPlay:getCurrentPhase() == 2) then
-		return
-	end
-	local playerID = CreatureObject(pPlayer):getObjectID()
-	local electionNum = BestineElectionScreenPlay:getElectionNumber()
-	local playerCampaign = tonumber(getQuestStatus(playerID..":bestine_election:SeanCampaign"))
-	if (playerCampaign == nil) or (playerCampaign < electionNum) then
+	if (pSceneObject == nil) or (BestineElectionScreenPlay:getCurrentPhase() == 2) then
 		return
 	end
 	local menuResponse = LuaObjectMenuResponse(pMenuResponse)
 	menuResponse:addRadialMenuItem(20, 3,"@bestine:search_item")
-	print(pSceneObject, pMenuResponse, pPlayer)
 end
 
+
+
 function BestineElectionFakeSearchMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
-	print(pSceneObject, pPlayer, selectedID)
 	if (pSceneObject == nil or pPlayer == nil or selectedID ~= 20) then
 		return
 	end
 
-	local playerID = CreatureObject(pPlayer):getObjectID()
-	local electionNum = BestineElectionScreenPlay:getElectionNumber()
-	local playerCampaign = tonumber(getQuestStatus(playerID..":bestine_election:SeanCampaign"))
-	if (playerCampaign == nil) or (playerCampaign < electionNum) then
-		return
-	end
-		CreatureObject(pPlayer):sendSystemMessage("@city/bestine/terminal_items:fail")
+	CreatureObject(pPlayer):sendSystemMessage("@city/bestine/terminal_items:fail")
 	return
 end
 
+TourContainerComponent = {}
 
-
+function TourContainerComponent:transferObject(pContainer, pObj, slot)
+	if (SceneObject(pObj):getTemplateObjectPath() == "object/tangible/loot/quest/sean_questp_mdisk.iff") or 	(SceneObject(pObj):getTemplateObjectPath() == "object/tangible/loot/quest/sean_questp_ctestimony.iff") or
+	(SceneObject(pObj):getTemplateObjectPath() == "object/tangible/loot/quest/sean_questp_htestimony.iff") or (SceneObject(pObj):getTemplateObjectPath() == "object/tangible/loot/quest/victor_questp_jregistry.iff") or
+	(SceneObject(pObj):getTemplateObjectPath() == "object/tangible/loot/quest/victor_questp_testimony.iff") or (SceneObject(pObj):getTemplateObjectPath() == "object/tangible/loot/quest/victor_questp_receipt.iff")
+	then spatialChat(pContainer, "@bestine:give_governor_item")
+	end
+	return 0
+end

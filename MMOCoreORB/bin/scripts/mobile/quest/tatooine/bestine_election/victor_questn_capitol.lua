@@ -1,8 +1,8 @@
-sean_trenwell = Creature:new {
-	objectName = "",
-	customName = "Sean Trenwell",
-	socialGroup = "townsperson",
-	faction = "townsperson",
+victor_questn_capitol = Creature:new {
+	objectName = "@mob/creature_names:dark_trooper",
+	customName = "TL-017",
+	socialGroup = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -11,7 +11,7 @@ sean_trenwell = Creature:new {
 	baseHAM = 24000,
 	baseHAMmax = 30000,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,12 +26,12 @@ sean_trenwell = Creature:new {
 	optionsBitmask = 264,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_sean_trenwell.iff"},
+	templates = {"object/mobile/dressed_victor_questn_capitol.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "seanTrenwellConvoTemplate",
+	conversationTemplate = "victorQuestnCapitolConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(sean_trenwell, "sean_trenwell")
+CreatureTemplates:addCreatureTemplate(victor_questn_capitol, "victor_questn_capitol")
