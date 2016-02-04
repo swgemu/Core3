@@ -62,7 +62,9 @@ SaberSlash2Command = {
 		0,
 		100,
 		75, 
-		60
+		60,
+		16.66,
+		16.66
 	  ),
 
 	  	DotEffect( 
@@ -73,7 +75,9 @@ SaberSlash2Command = {
 		0,
 		100,
 		75, 
-		60
+		60,
+		16.66,
+		16.66
 	  ),
 
 	  	DotEffect( 
@@ -84,7 +88,9 @@ SaberSlash2Command = {
 		0,
 		100,
 		75, 
-		60
+		60,
+		16.66,
+		16.66
 	  ),
 	},
 
@@ -96,7 +102,7 @@ SaberSlash2Command = {
 		{}, 
 		100, 
 		0, 
-		0 
+		0
 	  )
 	},
 
