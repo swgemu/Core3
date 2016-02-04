@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_4e5f2f73",
+        "filename": "MMOCoreORB/src/server/zone/managers/faction/Faction.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-04T04:07:40Z",
+      "side": 1,
+      "message": "Move these to FactionManager to limit the size of the Faction object.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 3
+      },
+      "revId": "df5ad7238c68a83ec9a57cf8e5445214d7face6f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ee53a36a",
+        "filename": "MMOCoreORB/src/server/zone/objects/mission/MissionTypes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-04T04:07:40Z",
+      "side": 1,
+      "message": "replicate the comments here that are in the original idl definition (they are the string conversions of these CRCs)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "df5ad7238c68a83ec9a57cf8e5445214d7face6f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
