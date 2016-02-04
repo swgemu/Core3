@@ -72,7 +72,9 @@ SaberSlash1Command = {
 		0,
 		25,
 		50, 
-		30
+		30,
+		8.33,
+		8.33
 	  ),
 
 	  	DotEffect( 
@@ -83,7 +85,9 @@ SaberSlash1Command = {
 		0,
 		25,
 		50, 
-		30
+		30,
+		8.33,
+		8.33
 	  ),
 	},
 
@@ -95,7 +99,9 @@ SaberSlash1Command = {
 		{}, 
 		100, 
 		0, 
-		0 
+		0,
+		8.33,
+		8.33
 	  )
 	},
 
