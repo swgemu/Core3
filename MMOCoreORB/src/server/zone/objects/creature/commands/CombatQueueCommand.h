@@ -48,6 +48,7 @@ protected:
 
 	String accuracySkillMod;
 
+	bool splashDamage;
 	bool areaAction;
 	bool coneAction;
 	int coneAngle;
@@ -98,6 +99,7 @@ public:
 		accuracySkillMod = "";
 
 		areaRange = 0;
+		splashDamage = false;
 		areaAction = false;
 		coneAction = false;
 
@@ -298,6 +300,10 @@ public:
 		return speed;
 	}
 
+	inline bool isSplashDamage() const {
+		return splashDamage;
+	}
+
 	inline bool isAreaAction() const {
 		return areaAction;
 	}
@@ -352,6 +358,10 @@ public:
 
 	void setConeAngle(int i) {
 		this->coneAngle = i;
+	}
+
+	void setSplashDamage(bool b) {
+		this->splashDamage = b;
 	}
 
 	void setAreaAction(bool b) {
