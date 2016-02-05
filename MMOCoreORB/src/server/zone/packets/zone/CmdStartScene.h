@@ -28,9 +28,9 @@ public:
 		insertByte(0);
 		insertLong(creo->getObjectID());
 	 	insertAscii("terrain/" + zone->getZoneName() + ".trn"); //terrain name
-	 	insertFloat(creo->getPositionX()); //X
-	 	insertFloat(creo->getPositionZ()); //Z
-	 	insertFloat(creo->getPositionY()); //Y
+	 	insertFloat(creo->getWorldPositionX()); //X
+	 	insertFloat(creo->getWorldPositionZ()); //Z
+	 	insertFloat(creo->getWorldPositionY()); //Y
 	 	
 	 	//TODO: This should be deprecated when possible.
 		uint32 crc = creo->getClientObjectCRC();
