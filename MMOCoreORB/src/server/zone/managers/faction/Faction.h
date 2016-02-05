@@ -16,6 +16,7 @@ class Faction : public Object {
 	SortedVector<String> allies;
 
 public:
+
 	Faction() : Object() {
 	}
 
