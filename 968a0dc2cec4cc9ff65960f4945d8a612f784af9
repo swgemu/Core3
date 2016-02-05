@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_8e68e7f6",
+        "filename": "MMOCoreORB/bin/scripts/commands/saberSlash1.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-05T00:34:10Z",
+      "side": 1,
+      "message": "These two fields aren\u0027t defined for StateEffect",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 6
+      },
+      "revId": "968a0dc2cec4cc9ff65960f4945d8a612f784af9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2e6d1b05",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-05T00:34:10Z",
+      "side": 1,
+      "message": "Better idea: move the dot effect strings to CRC into the DotEffect struct inside lua.",
+      "range": {
+        "startLine": 500,
+        "startChar": 0,
+        "endLine": 506,
+        "endChar": 3
+      },
+      "revId": "968a0dc2cec4cc9ff65960f4945d8a612f784af9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
