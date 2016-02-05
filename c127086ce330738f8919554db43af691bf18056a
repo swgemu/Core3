@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_ae57eb25",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/effect/DotEffect.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-05T03:09:22Z",
+      "side": 1,
+      "message": "You\u0027re getter and setter still expect uint8, and when reading from lua it\u0027s reading a byteField. You should either change it all or leave this alone.",
+      "revId": "c127086ce330738f8919554db43af691bf18056a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
