@@ -16,6 +16,24 @@
       "revId": "c127086ce330738f8919554db43af691bf18056a",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_4e408f56",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/effect/DotEffect.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-02-05T03:19:53Z",
+      "side": 1,
+      "message": "good catch, that was left over from when I was trying to change the attributes",
+      "parentUuid": "da7095c5_ae57eb25",
+      "revId": "c127086ce330738f8919554db43af691bf18056a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
