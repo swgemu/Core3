@@ -114,7 +114,7 @@ describe("OldManEncounter", function()
 				it("Should create an event to despawn the old man.", function()
 					OldManEncounter:scheduleDespawnOfOldMan(pCreatureObject)
 
-					assert.spy(createEvent).was.called_with(SCHEDULED_OLD_MAN_DESPAWN_TIME, "OldManEncounter", "handleScheduledDespawn", pCreatureObject)
+					assert.spy(createEvent).was.called_with(SCHEDULED_OLD_MAN_DESPAWN_TIME, "OldManEncounter", "handleScheduledDespawn", pCreatureObject, "")
 				end)
 			end)
 		end)

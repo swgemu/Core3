@@ -190,7 +190,7 @@ function RaceTrack:displayTrackBestTime(pObject,trackConfig)
 end
 
 function RaceTrack:createResetBestTimeEvent()
-	createEventActualTime(self.trackConfig.resetTime, self.trackConfig.className, "resetBestTimeEventHandler")
+	createEventActualTime(self.trackConfig.resetTime, self.trackConfig.className, "resetBestTimeEventHandler", "")
 	if self.trackConfig.debugMode==1 then
 		printf("Created CallBack Event for :" .. self.trackConfig.trackName .. "\n")
 	end
@@ -204,11 +204,11 @@ function RaceTrack:resetBestTimeEventHandler()
 		deleteSharedMemory(self.trackConfig.trackName ..".recordtime."..lc)
 		deleteSharedMemory(self.trackConfig.trackName ..".recordholder."..lc)
 	end
-	createEvent(24*60*60*1000, self.trackConfig.className, "resetBestTimeEventHandler",nil)
+	createEvent(24*60*60*1000, self.trackConfig.className, "resetBestTimeEventHandler",nil, "")
 end
 
 function RaceTrack:createResetPlayerUnfinishedEvent(pObject)
-	createEvent(self.trackConfig.expiryTime*1000, self.trackConfig.className, "resetPlayerUnfinishedEventHandler",pObject)
+	createEvent(self.trackConfig.expiryTime*1000, self.trackConfig.className, "resetPlayerUnfinishedEventHandler",pObject, "")
 	if self.trackConfig.debugMode==1 then
 		printf("Created Reset Player CallBack Event for :" .. self.trackConfig.trackName .. " in \n")
 	end

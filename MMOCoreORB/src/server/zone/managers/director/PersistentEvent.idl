@@ -14,74 +14,84 @@ class PersistentEvent extends ManagedObject {
 	protected unsigned long curTime;
 	protected string key;
 	protected string play;
+	protected string args;
 	protected string eventName;
 	protected boolean eventExecuted;
 
 	@weakReference
 	protected SceneObject obj;
-	
+
 	public PersistentEvent() {
 		eventExecuted = false;
 	}
-	
+
 	@read
 	public int getTimeStamp() {
 		return timeStamp;
 	}
-	
+
 	@read
 	public final string getKey() {
 		return key;
 	}
-	
+
 	@read
 	public final string getScreenplay() {
 		return play;
 	}
-	
+
+	@read
+	public final string getArgs() {
+		return args;
+	}
+
 	@weakReference
 	@read
 	public SceneObject getObject() {
 		return obj;
 	}
-	
+
 	@read
 	public unsigned long getCurTime() {
 		return curTime;
 	}
-	
+
 	@read
 	public final string getEventName() {
 		return eventName;
 	}
-	
+
 	public void setEventName(final string en) {
 		eventName = en;
 	}
-	
+
 	public void setCurTime(unsigned long time) {
 		curTime = time;
 	}
-	
+
 	public void setTimeStamp(int stamp) {
 		timeStamp = stamp;
 	}
-	
+
 	public void setKey(final string k) {
 		key = k;
 	}
-	
+
 	public void setScreenplay(final string sp) {
 		play = sp;
 	}
-	
+
+	public void setArgs(final string ar) {
+		args = ar;
+	}
+
 	public void setObject(SceneObject o) {
 		obj = o;
 	}
-	
+
 	public void setEventExecuted(boolean val) {
 		eventExecuted = val;
 	}
-	
+
 	public native void loadTransientTask();
 }

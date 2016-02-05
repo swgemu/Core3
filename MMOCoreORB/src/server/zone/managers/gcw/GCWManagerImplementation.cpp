@@ -44,19 +44,17 @@
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 
 void GCWManagerImplementation::initialize() {
-	// TODO: initialize things
+	loadLuaConfig();
 }
 
 void GCWManagerImplementation::start() {
-	loadLuaConfig();
-
 	// randomize a bit so every zone doesn't run it's check at the same time
 	uint64 timer = (uint64)(System::random(gcwCheckTimer / 10) + gcwCheckTimer) * 1000;
 
 	CheckGCWTask* task = new CheckGCWTask(_this.getReferenceUnsafeStaticCast());
 	task->schedule(timer);
 
-	initialize();
+	updateWinningFaction();
 }
 
 void GCWManagerImplementation::loadLuaConfig() {
@@ -480,10 +478,10 @@ void GCWManagerImplementation::unregisterGCWBase(BuildingObject* building) {
 	if (hasBase(building)) {
 		dropBase(building);
 
-		if (building->getFaction() == IMPERIALHASH)
+		if (building->getFaction() == FactionManager::FACTIONIMPERIAL)
 			imperialBases--;
 
-		else if (building->getFaction() == REBELHASH)
+		else if (building->getFaction() == FactionManager::FACTIONREBEL)
 			rebelBases--;
 
 		String templateString = building->getObjectTemplate()->getFullTemplateString();
@@ -491,9 +489,9 @@ void GCWManagerImplementation::unregisterGCWBase(BuildingObject* building) {
 		int pointsValue = getPointValue(templateString);
 
 		if (pointsValue > -1) {
-			if (building->getFaction() == REBELHASH)
+			if (building->getFaction() == FactionManager::FACTIONREBEL)
 				setRebelScore(getRebelScore() - pointsValue);
-			else if (building->getFaction() == IMPERIALHASH)
+			else if (building->getFaction() == FactionManager::FACTIONIMPERIAL)
 				setImperialScore(getImperialScore() - pointsValue);
 
 		} else
@@ -548,9 +546,9 @@ void GCWManagerImplementation::performGCWTasks() {
 		if (building == NULL)
 			continue;
 
-		if (building->getFaction() == REBELHASH)
+		if (building->getFaction() == FactionManager::FACTIONREBEL)
 			rebelCheck++;
-		else if (building->getFaction() == IMPERIALHASH)
+		else if (building->getFaction() == FactionManager::FACTIONIMPERIAL)
 			imperialCheck++;
 
 		verifyTurrets(building);
@@ -559,6 +557,8 @@ void GCWManagerImplementation::performGCWTasks() {
 	setRebelBaseCount(rebelCheck);
 	setImperialBaseCount(imperialCheck);
 
+	updateWinningFaction();
+
 	CheckGCWTask* task = new CheckGCWTask(_this.getReferenceUnsafeStaticCast());
 	task->schedule(gcwCheckTimer * 1000);
 }
@@ -566,9 +566,9 @@ void GCWManagerImplementation::performGCWTasks() {
 void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool initializeBase) {
 	if ( !hasBase(building)) {
 
-		if (building->getFaction() == IMPERIALHASH)
+		if (building->getFaction() == FactionManager::FACTIONIMPERIAL)
 			imperialBases++;
-		else if (building->getFaction() == REBELHASH)
+		else if (building->getFaction() == FactionManager::FACTIONREBEL)
 			rebelBases++;
 
 		if (initializeBase) {
@@ -616,9 +616,9 @@ void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool in
 		int pointsValue = getPointValue(templateString);
 
 		if (pointsValue > -1) {
-			if (building->getFaction() == REBELHASH)
+			if (building->getFaction() == FactionManager::FACTIONREBEL)
 				setRebelScore(getRebelScore() + pointsValue);
-			else if (building->getFaction() == IMPERIALHASH)
+			else if (building->getFaction() == FactionManager::FACTIONIMPERIAL)
 				setImperialScore(getImperialScore() + pointsValue);
 		} else {
 			info("ERROR looking up value for GCW Base: " + templateString, true);
@@ -2315,14 +2315,14 @@ float GCWManagerImplementation::getGCWDiscount(CreatureObject* creature) {
 
 	float discount = 1.0f;
 
-	if (getWinningFaction() != 1 && creature->getFaction() != 0) {
+	if (getWinningFaction() != 0 && creature->getFaction() != 0) {
 		if (getWinningFaction() == creature->getFaction())
 			discount -= winnerBonus /100.f;
 		else
 			discount -= loserBonus /100.f;
 	}
 
-	if (creature->getFaction() == IMPERIALHASH && racialPenaltyEnabled && getRacialPenalty(creature->getSpecies()) > 0)
+	if (creature->getFaction() == FactionManager::FACTIONIMPERIAL && racialPenaltyEnabled && getRacialPenalty(creature->getSpecies()) > 0)
 		discount *= getRacialPenalty(creature->getSpecies());
 
 	return discount;
@@ -2331,13 +2331,13 @@ float GCWManagerImplementation::getGCWDiscount(CreatureObject* creature) {
 int GCWManagerImplementation::isStrongholdCity(String& city) {
 	for (int i = 0; i < imperialStrongholds.size(); i++) {
 		if (city.contains(imperialStrongholds.get(i))) {
-			return IMPERIALHASH;
+			return FactionManager::FACTIONIMPERIAL;
 		}
 	}
 
 	for (int i = 0; i < rebelStrongholds.size(); i++) {
 		if (city.contains(rebelStrongholds.get(i))) {
-			return REBELHASH;
+			return FactionManager::FACTIONREBEL;
 		}
 	}
 

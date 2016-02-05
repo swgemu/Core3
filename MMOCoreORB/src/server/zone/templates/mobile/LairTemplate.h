@@ -9,7 +9,7 @@
 #define LAIRTEMPLATE_H_
 
 #include "engine/engine.h"
-#include "server/zone/managers/gcw/GCWManager.h"
+#include "server/zone/managers/faction/FactionManager.h"
 
 namespace server {
 namespace zone {
@@ -92,9 +92,9 @@ public:
 			String factionString = templateData->getStringField("faction");
 
 			if (factionString == "imperial") {
-				faction = GCWManager::IMPERIALHASH;
+				faction = FactionManager::FACTIONIMPERIAL;
 			} else if (factionString == "rebel") {
-				faction = GCWManager::REBELHASH;
+				faction = FactionManager::FACTIONREBEL;
 			}
 		}
 

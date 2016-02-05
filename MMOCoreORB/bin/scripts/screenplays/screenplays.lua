@@ -293,6 +293,7 @@ includeFile("caves/tatooine_squill_cave.lua")
 includeFile("caves/tatooine_tusken_bunker.lua")
 
 -- Cities
+includeFile("cities/city.lua")
 includeFile("cities/corellia_bela_vistal.lua")
 includeFile("cities/corellia_coronet.lua")
 includeFile("cities/corellia_doaba_guerfel.lua")

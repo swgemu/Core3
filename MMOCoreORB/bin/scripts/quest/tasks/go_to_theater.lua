@@ -146,7 +146,7 @@ function GoToTheater:taskStart(pCreatureObject)
 							writeData(playerID .. self.taskName .. WAYPOINT_ID_STRING, waypointId)
 						end
 
-						createEvent(self.despawnTime, self.taskName, "handleDespawnTheater", pCreatureObject)
+						createEvent(self.despawnTime, self.taskName, "handleDespawnTheater", pCreatureObject, "")
 						self:callFunctionIfNotNil(self.onSuccessfulSpawn, nil, pCreatureObject, spawnedMobilesList)
 						return true
 					end
@@ -209,7 +209,7 @@ function GoToTheater:handleDespawnTheater(pCreatureObject)
 	end
 
 	if (self:areMobilesInCombat(pCreatureObject) or self:areMobilesFollowing(pCreatureObject)) then
-		createEvent(self.despawnTime / 2, self.taskName, "handleDespawnTheater", pCreatureObject)
+		createEvent(self.despawnTime / 2, self.taskName, "handleDespawnTheater", pCreatureObject, "")
 		return
 	end
 

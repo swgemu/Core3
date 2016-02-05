@@ -1,11 +1,8 @@
 require("screenplays.screenplay")
 local ObjectManager = require("managers.object.object_manager")
 
-WAYPOINT_COLOR_PURPLE = 5
 SIT = 1
 STAND = 0
-FACTIONIMPERIAL = 0xDB4ACC54
-FACTIONREBEL = 0x16148850
 
 ThemeParkLogic = ScreenPlay:new {
 	numberOfActs = 1,
@@ -1320,7 +1317,7 @@ end
 
 function ThemeParkLogic:updateWaypoint(pConversingPlayer, planetName, x, y, direction)
 	ObjectManager.withCreaturePlayerObject(pConversingPlayer, function(ghost)
-		ghost:addWaypoint(planetName, self:getMissionDescription(pConversingPlayer, direction), "", x, y, WAYPOINT_COLOR_PURPLE, true, true, WAYPOINTTHEMEPARK, 0)
+		ghost:addWaypoint(planetName, self:getMissionDescription(pConversingPlayer, direction), "", x, y, WAYPOINTPURPLE, true, true, WAYPOINTTHEMEPARK, 0)
 	end)
 end
 

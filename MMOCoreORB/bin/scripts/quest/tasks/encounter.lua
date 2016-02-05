@@ -146,7 +146,7 @@ function Encounter:handleEncounterInRangeCheck(pCreatureObject)
 	if (CreatureObject(spawnedObjects[1]):isInRangeWithObject(pCreatureObject, self.inRangeValue)) then
 		self:callFunctionIfNotNil(self.onEncounterInRange, nil, pCreatureObject, spawnedObjects)
 	else
-		createEvent(1000, self.taskName, "handleEncounterInRangeCheck", pCreatureObject)
+		createEvent(1000, self.taskName, "handleEncounterInRangeCheck", pCreatureObject, "")
 	end
 end
 
@@ -155,7 +155,7 @@ end
 -- @param spawnedObjects list with pointers to the spawned objects.
 function Encounter:createEncounterEvents(pCreatureObject, spawnedObjects)
 	Logger:log("Creating encounter distance heartbeat in " .. self.taskName .. ".", LT_INFO)
-	createEvent(1000, self.taskName, "handleEncounterInRangeCheck", pCreatureObject)
+	createEvent(1000, self.taskName, "handleEncounterInRangeCheck", pCreatureObject, "")
 end
 
 -- Set all spawned objects to follow an object.
@@ -284,11 +284,11 @@ function Encounter:handleDespawnEvent(pCreatureObject)
 			writeData(objectID .. ":encounterNewX", newX)
 			writeData(objectID .. ":encounterNewY", newY)
 			writeData(objectID .. ":encounterNewZ", newZ)
-			createEvent(1000, self.taskName, "doRunAway", spawnedObjects[i])
+			createEvent(1000, self.taskName, "doRunAway", spawnedObjects[i], "")
 		end
 	end
 
-	createEvent(9000, self.taskName, "doDespawn", pCreatureObject)
+	createEvent(9000, self.taskName, "doDespawn", pCreatureObject, "")
 end
 
 function Encounter:doRunAway(pAiAgent)

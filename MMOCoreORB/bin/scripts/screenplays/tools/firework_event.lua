@@ -212,7 +212,7 @@ function FireworkEvent:startEvent(pPlayer)
 	local controlID = SceneObject(pControl):getObjectID()
 	writeData(playerID .. ":FireworkEvent:eventID", controlID)
 	writeData(controlID .. ":FireworkEvent:ownerID", playerID)
-	createEvent(self.eventWarmup, "FireworkEvent", "spawnFirework", pControl)
+	createEvent(self.eventWarmup, "FireworkEvent", "spawnFirework", pControl, "")
 end
 
 function FireworkEvent:spawnFirework(pControl)
@@ -243,7 +243,7 @@ function FireworkEvent:spawnFirework(pControl)
 		return
 	end
 
-	createEvent(self.removeDelay, "FireworkEvent", "destroyFirework", pFirework)
+	createEvent(self.removeDelay, "FireworkEvent", "destroyFirework", pFirework, "")
 
 	local mainLength = readData(playerID .. ":FireworkEvent:mainEventLength")
 	local mainCount = readData(playerID .. ":FireworkEvent:mainEventCount")
@@ -270,7 +270,7 @@ function FireworkEvent:spawnFirework(pControl)
 		return
 	end
 
-	createEvent(delayTilNext * 1000, "FireworkEvent", "spawnFirework", pControl)
+	createEvent(delayTilNext * 1000, "FireworkEvent", "spawnFirework", pControl, "")
 end
 
 function FireworkEvent:resetDefaults(pPlayer)

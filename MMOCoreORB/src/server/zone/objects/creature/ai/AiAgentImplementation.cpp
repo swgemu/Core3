@@ -1394,7 +1394,9 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 		return;
 	}
 
-	if (respawnTimer == 0) {
+	notifyObservers(ObserverEventType::CREATUREDESPAWNED);
+
+	if (respawnTimer <= 0) {
 		//zone->getCreatureManager()->addToReservePool(asAiAgent());
 		return;
 	}

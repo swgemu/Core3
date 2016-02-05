@@ -594,22 +594,16 @@ class TangibleObject extends SceneObject {
 	public unsigned int getFaction() {
 		return faction;
 	}
-	
+
 	@read
-	public boolean isRebel() {
-		return faction == 0x16148850;
-	}
-	
+	public native boolean isRebel();
+
 	@read
-	public boolean isImperial() {
-		return faction == 0xDB4ACC54;
-	}
-	
+	public native boolean isImperial();
+
 	@read
-	public boolean isNeutral() {
-		return faction == 0;
-	}
-	
+	public native boolean isNeutral();
+
 	@dirty
 	@local
 	@nativeStub

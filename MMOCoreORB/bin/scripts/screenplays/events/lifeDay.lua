@@ -97,7 +97,7 @@ function lifeDayScreenplay:giveWaypoint(pPlayer)
 
 		player:sendSystemMessage("@quest/lifeday/lifeday:waypoint_updated") -- A waypoint to a planet holding a Life Day celebration was added to your datapad.
 
-		createEvent(3600000, "lifeDayScreenplay", "removeWaypoint", pPlayer)
+		createEvent(3600000, "lifeDayScreenplay", "removeWaypoint", pPlayer, "")
 	end)
 end
 

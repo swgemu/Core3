@@ -491,7 +491,7 @@ function GeonosianLabScreenPlay:notifyDebrisDestroyed(pDebris, pPlayer)
 		return 0
 	end
 
-	createEvent(240000, "GeonosianLabScreenPlay", "respawnDebris", pDebris)
+	createEvent(240000, "GeonosianLabScreenPlay", "respawnDebris", pDebris, "")
 	SceneObject(pDebris):destroyObjectFromWorld()
 
 	CreatureObject(pPlayer):clearCombatState(1)

@@ -26,7 +26,7 @@ function SuiRadiationSensor:openSensor(pCreatureObject, pSensor)
 	local pageId = sui.sendTo(pCreatureObject)
 	writeData(SceneObject(pCreatureObject):getObjectID() .. ":radiationSensorPid", pageId)
 
-	createEvent(3 * 1000, "SuiRadiationSensor", "updateSensor", pCreatureObject)
+	createEvent(3 * 1000, "SuiRadiationSensor", "updateSensor", pCreatureObject, "")
 end
 
 function SuiRadiationSensor:defaultCallback(pPlayer, pSui, eventIndex, args)
@@ -124,7 +124,7 @@ function SuiRadiationSensor:updateSensor(pCreature)
 	end
 
 	suiPageData:sendUpdateTo(pCreature)
-	createEvent(3 * 1000, "SuiRadiationSensor", "updateSensor", pCreature)
+	createEvent(3 * 1000, "SuiRadiationSensor", "updateSensor", pCreature, "")
 
 end
 

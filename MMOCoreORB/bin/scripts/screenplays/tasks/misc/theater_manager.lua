@@ -328,7 +328,7 @@ function TheaterManagerScreenPlay:startAudition(pPlayer)
 	createObserver(EXITEDAREA, "TheaterManagerScreenPlay", "notifyExitedAuditionArea", pAuditionArea)
 
 	CreatureObject(pPlayer):sendSystemMessage("@quest/crowd_pleaser/system_messages:audition_time_remaining")
-	createEvent(30 * 1000, "TheaterManagerScreenPlay", "beginAudition", pControl)
+	createEvent(30 * 1000, "TheaterManagerScreenPlay", "beginAudition", pControl, "")
 end
 
 -- Spawns the judges for a player's audition
@@ -449,7 +449,7 @@ function TheaterManagerScreenPlay:beginAudition(pControl)
 	else
 		CreatureObject(pPlayer):sendSystemMessage("@quest/crowd_pleaser/system_messages:audition_begin")
 		writeData(playerID .. ":theater_manager:auditionPhase", 1)
-		createEvent(5 * 1000, "TheaterManagerScreenPlay", "runAuditionPhase", pControl)
+		createEvent(5 * 1000, "TheaterManagerScreenPlay", "runAuditionPhase", pControl, "")
 	end
 end
 
@@ -498,7 +498,7 @@ function TheaterManagerScreenPlay:runAuditionPhase(pControl)
 		performanceName = performanceName:gsub("^%l", string.upper)
 		createObserver(STARTENTERTAIN, "TheaterManagerScreenPlay", "notifyPerformanceObserver", pPlayer)
 		createObserver(CHANGEENTERTAIN, "TheaterManagerScreenPlay", "notifyPerformanceObserver", pPlayer)
-		createEvent(self.auditionHeartbeat, "TheaterManagerScreenPlay", "checkPerformanceStatus", pControl)
+		createEvent(self.auditionHeartbeat, "TheaterManagerScreenPlay", "checkPerformanceStatus", pControl, "")
 
 		local messageString = LuaStringIdChatParameter("@quest/crowd_pleaser/system_messages:audition_step_" .. phase)
 		messageString:setTO(performanceName)
@@ -510,7 +510,7 @@ function TheaterManagerScreenPlay:runAuditionPhase(pControl)
 		writeData(playerID .. ":theater_manager:performanceCompleted", 0)
 
 		createObserver(FLOURISH, "TheaterManagerScreenPlay", "notifyFlourishObserver", pPlayer)
-		createEvent(self.auditionHeartbeat, "TheaterManagerScreenPlay", "checkPerformanceStatus", pControl)
+		createEvent(self.auditionHeartbeat, "TheaterManagerScreenPlay", "checkPerformanceStatus", pControl, "")
 
 		local messageString = LuaStringIdChatParameter("@quest/crowd_pleaser/system_messages:audition_step_" .. phase)
 		messageString:setDI(expectedPerformance)
@@ -597,7 +597,7 @@ function TheaterManagerScreenPlay:failAudition(pControl, reason)
 	local pPlayer = getSceneObject(playerID)
 
 	self:auditionCleanup(pControl)
-	createEvent(2 * 1000, "TheaterManagerScreenPlay", "auditionJudgeCleanup", pControl)
+	createEvent(2 * 1000, "TheaterManagerScreenPlay", "auditionJudgeCleanup", pControl, "")
 
 	if (pPlayer ~= nil) then
 		CreatureObject(pPlayer):sendSystemMessage("@quest/crowd_pleaser/system_messages:" .. reason)
@@ -752,7 +752,7 @@ function TheaterManagerScreenPlay:completeAudition(pControl)
 
 
 	self:auditionCleanup(pControl)
-	createEvent(5 * 1000, "TheaterManagerScreenPlay", "auditionJudgeCleanup", pControl)
+	createEvent(5 * 1000, "TheaterManagerScreenPlay", "auditionJudgeCleanup", pControl, "")
 end
 
 -- Sends payout to player
@@ -1017,9 +1017,9 @@ function TheaterManagerScreenPlay:beginPerformance(pPlayer)
 	createObserver(EXITEDAREA, "TheaterManagerScreenPlay", "notifyExitedPerformanceArea", pPerformanceArea)
 
 
-	createEvent(1 * 1000, "TheaterManagerScreenPlay", "spawnAudienceWave", pControl)
-	createEvent(1 * 1000, "TheaterManagerScreenPlay", "handlePerformanceCountdown", pControl)
-	createEvent(self:getPerformCountdownLength(currentStep) * 1000, "TheaterManagerScreenPlay", "handleStartPerformance", pControl)
+	createEvent(1 * 1000, "TheaterManagerScreenPlay", "spawnAudienceWave", pControl, "")
+	createEvent(1 * 1000, "TheaterManagerScreenPlay", "handlePerformanceCountdown", pControl, "")
+	createEvent(self:getPerformCountdownLength(currentStep) * 1000, "TheaterManagerScreenPlay", "handleStartPerformance", pControl, "")
 	writeData(controlID .. ":theater_manager:countdownTime", self:getPerformCountdownLength(currentStep))
 end
 
@@ -1044,7 +1044,7 @@ function TheaterManagerScreenPlay:handlePerformanceCountdown(pControl)
 
 	if (countdownLeft >= 30) then
 		writeData(controlID .. ":theater_manager:countdownTime", countdownLeft)
-		createEvent(30 * 1000, "TheaterManagerScreenPlay", "handlePerformanceCountdown", pControl)
+		createEvent(30 * 1000, "TheaterManagerScreenPlay", "handlePerformanceCountdown", pControl, "")
 	end
 end
 
@@ -1114,7 +1114,7 @@ function TheaterManagerScreenPlay:spawnAudienceWave(pControl)
 
 	if (leftToSpawn > 0) then
 		writeData(controlID .. ":theater_manager:audienceSpawned", audienceSpawned)
-		createEvent(10 * 1000, "TheaterManagerScreenPlay", "spawnAudienceWave", pControl)
+		createEvent(10 * 1000, "TheaterManagerScreenPlay", "spawnAudienceWave", pControl, "")
 	else
 		deleteData(controlID .. ":theater_manager:audienceSpawned")
 	end
@@ -1369,8 +1369,8 @@ function TheaterManagerScreenPlay:handleStartPerformance(pControl)
 
 	createObserver(FLOURISH, "TheaterManagerScreenPlay", "notifyPerformFlourishObserver", pPlayer)
 
-	createEvent(self.performanceHeartbeat, "TheaterManagerScreenPlay", "doPerformanceHeartbeat", pControl)
-	createEvent(self:getPerformanceLength(curStep) * 1000, "TheaterManagerScreenPlay", "endPerformance", pControl)
+	createEvent(self.performanceHeartbeat, "TheaterManagerScreenPlay", "doPerformanceHeartbeat", pControl, "")
+	createEvent(self:getPerformanceLength(curStep) * 1000, "TheaterManagerScreenPlay", "endPerformance", pControl, "")
 end
 
 -- Observer function when player performs a flourish during a performance
@@ -1482,7 +1482,7 @@ function TheaterManagerScreenPlay:doPerformanceHeartbeat(pControl)
 		deleteData(controlID .. ":theater_manager:performedFlourishes")
 	end
 
-	createEvent(self.performanceHeartbeat, "TheaterManagerScreenPlay", "doPerformanceHeartbeat", pControl)
+	createEvent(self.performanceHeartbeat, "TheaterManagerScreenPlay", "doPerformanceHeartbeat", pControl, "")
 end
 
 -- Do audience reaction based on current satisfaction level
@@ -1607,7 +1607,7 @@ function TheaterManagerScreenPlay:failPerformance(pControl, reason)
 
 	local pPlayer = getSceneObject(playerID)
 
-	createEvent(20 * 1000, "TheaterManagerScreenPlay", "performanceCleanup", pControl)
+	createEvent(20 * 1000, "TheaterManagerScreenPlay", "performanceCleanup", pControl, "")
 
 	if (pPlayer ~= nil) then
 		CreatureObject(pPlayer):sendSystemMessage("@quest/crowd_pleaser/system_messages:" .. reason)
@@ -1651,7 +1651,7 @@ function TheaterManagerScreenPlay:succeedPerformance(pControl)
 
 	local pPlayer = getSceneObject(playerID)
 
-	createEvent(20 * 1000, "TheaterManagerScreenPlay", "performanceCleanup", pControl)
+	createEvent(20 * 1000, "TheaterManagerScreenPlay", "performanceCleanup", pControl, "")
 
 	if (pPlayer ~= nil) then
 		CreatureObject(pPlayer):sendSystemMessage("@quest/crowd_pleaser/system_messages:succeed_performance")

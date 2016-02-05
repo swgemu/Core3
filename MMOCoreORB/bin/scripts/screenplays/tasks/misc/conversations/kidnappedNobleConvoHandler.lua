@@ -28,7 +28,7 @@ function kidnappedNobleConvoHandler:runScreenHandlers(conversationTemplate, conv
 			writeScreenPlayData(conversingPlayer, "kidnappedNoble:" .. objectName, "completed", 1)
 		end
 
-		createEvent(2000, "kidnappedNobleConvoHandler", "doRunAway", conversingNPC)
+		createEvent(2000, "kidnappedNobleConvoHandler", "doRunAway", conversingNPC, "")
 	end
 
 	return conversationScreen
@@ -50,7 +50,7 @@ function kidnappedNobleConvoHandler:doRunAway(pCreature)
 	AiAgent(pCreature):setNextPosition(xPos, zPos, yPos, 0)
 	AiAgent(pCreature):executeBehavior()
 
-	createEvent(30000, "kidnappedNobleConvoHandler", "destroyNoble", pCreature)
+	createEvent(30000, "kidnappedNobleConvoHandler", "destroyNoble", pCreature, "")
 end
 
 function kidnappedNobleConvoHandler:destroyNoble(pCreature)

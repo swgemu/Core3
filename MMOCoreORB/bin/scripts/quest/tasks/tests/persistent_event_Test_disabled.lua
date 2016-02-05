@@ -124,7 +124,7 @@ describe("Persistent Event", function()
 				it("Should create a spawn event.", function()
 					testPersistentEvent:taskStart(pCreatureObject)
 
-					assert.spy(createEvent).was.called_with(true, eventTime, testPersistentEvent.handlerName, testPersistentEvent.handlerFunction, pCreatureObject)
+					assert.spy(createEvent).was.called_with(true, eventTime, testPersistentEvent.handlerName, testPersistentEvent.handlerFunction, pCreatureObject, "")
 				end)
 			end)
 		end)

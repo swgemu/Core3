@@ -138,6 +138,7 @@ class PlanetManager extends ManagedService implements Logger {
 	public native abstract void initialize();
 	public native void loadClientRegions();
 	public native void loadClientPoiData();
+	public native void start();
 
 	/**
 	 * Returns the closest PlanetTravelPoint within the given range.

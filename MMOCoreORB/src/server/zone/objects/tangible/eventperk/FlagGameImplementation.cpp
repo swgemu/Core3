@@ -17,18 +17,18 @@ void FlagGameImplementation::initializeTransientMembers() {
 
 void FlagGameImplementation::notifyInsertToZone(Zone* zone) {
 	if (rebScore > impScore)
-		changeFlag(0x16148850);
+		changeFlag(FactionManager::FACTIONREBEL);
 	else if (impScore > rebScore)
-		changeFlag(0xDB4ACC54);
+		changeFlag(FactionManager::FACTIONIMPERIAL);
 	else
 		changeFlag(0);
 }
 
 uint32 FlagGameImplementation::getFlagTemplate(uint32 faction) {
 	switch (faction) {
-	case 0x16148850:
+	case FactionManager::FACTIONREBEL:
 		return 0x1C517D16; // STRING_HASHCODE("object/tangible/furniture/all/event_flag_game_reb_banner.iff")
-	case 0xDB4ACC54:
+	case FactionManager::FACTIONIMPERIAL:
 		return 0xA5EBEFBE; // STRING_HASHCODE("object/tangible/furniture/all/event_flag_game_imp_banner.iff")
 	case 0:
 	default:
@@ -93,9 +93,9 @@ void FlagGameImplementation::tryFlagChange(CreatureObject* player) {
 		return;
 	}
 
-	if (player->getFaction() == 0x16148850) { // Rebel
+	if (player->getFaction() == FactionManager::FACTIONREBEL) {
 		announceToPlayers("flag_game_rebel_capture");
-	} else if (player->getFaction() == 0xDB4ACC54) { // Imperial
+	} else if (player->getFaction() == FactionManager::FACTIONIMPERIAL) {
 		announceToPlayers("flag_game_imperial_capture");
 	} else {
 		return;
@@ -126,12 +126,12 @@ void FlagGameImplementation::startGame() {
 
 void FlagGameImplementation::endGame() {
 	if (rebScore > impScore) {
-		changeFlag(0x16148850);
-		doVictoryEffects(0x16148850);
+		changeFlag(FactionManager::FACTIONREBEL);
+		doVictoryEffects(FactionManager::FACTIONREBEL);
 		announceToPlayers("flag_game_over_reb_win");
 	} else if (impScore > rebScore) {
-		changeFlag(0xDB4ACC54);
-		doVictoryEffects(0xDB4ACC54);
+		changeFlag(FactionManager::FACTIONIMPERIAL);
+		doVictoryEffects(FactionManager::FACTIONIMPERIAL);
 		announceToPlayers("flag_game_over_imp_win");
 	} else {
 		changeFlag(0);
@@ -189,9 +189,9 @@ void FlagGameImplementation::doVictoryEffects(uint32 faction) {
 			ManagedReference<CreatureObject*> player = cast<CreatureObject*>(targetObject);
 
 			if (player != NULL && player->getFaction() == faction && (player->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
-				if (player->getFaction() == 0x16148850) { // Rebel
+				if (player->getFaction() == FactionManager::FACTIONREBEL) {
 					player->playEffect("clienteffect/holoemote_rebel.cef", "head");
-				} else if (player->getFaction() == 0xDB4ACC54) { // Imperial
+				} else if (player->getFaction() == FactionManager::FACTIONIMPERIAL) {
 					player->playEffect("clienteffect/holoemote_imperial.cef", "head");
 				}
 			}

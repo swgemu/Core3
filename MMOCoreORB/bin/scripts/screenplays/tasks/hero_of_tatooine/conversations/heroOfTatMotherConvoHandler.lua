@@ -55,7 +55,7 @@ function heroOfTatMotherConvoHandler:runScreenHandlers(conversationTemplate, con
 			AiAgent(conversingNPC):setAiTemplate("follow")
 			writeData("hero_of_tat:altruismEscortStatus", 1)
 			writeData("hero_of_tat:altruismEscorterID", SceneObject(conversingPlayer):getObjectID())
-			createEvent(2000, "HeroOfTatooineScreenPlay", "escortRangeCheckEvent", conversingPlayer)
+			createEvent(2000, "HeroOfTatooineScreenPlay", "escortRangeCheckEvent", conversingPlayer, "")
 		end
 
 		return conversationScreen

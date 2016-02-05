@@ -724,7 +724,7 @@ int LuaSceneObject::addPendingTask(lua_State* L) {
 	String play = lua_tostring(L, -2);
 	String key = lua_tostring(L, -1);
 
-	Reference<ScreenPlayTask*> task = new ScreenPlayTask(realObject, key, play);
+	Reference<ScreenPlayTask*> task = new ScreenPlayTask(realObject, key, play, "");
 
 	String name = play + ":" + key;
 

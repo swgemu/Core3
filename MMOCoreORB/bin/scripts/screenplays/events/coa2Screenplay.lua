@@ -724,7 +724,7 @@ function Coa2Screenplay:completeMissionFive(pPlayer, faction)
 
 	SceneObject(pPlayer):cancelPendingTask("Coa2Screenplay", "timeoutMission")
 
-	createEvent(600000, "Coa2Screenplay", "cleanupMission", pPlayer)
+	createEvent(600000, "Coa2Screenplay", "cleanupMission", pPlayer, "")
 end
 
 function Coa2Screenplay:timeoutMission(pPlayer)

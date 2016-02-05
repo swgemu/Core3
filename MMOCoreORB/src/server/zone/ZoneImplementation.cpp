@@ -89,6 +89,8 @@ void ZoneImplementation::startManagers() {
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
+	planetManager->start();
+
 	managersStarted = true;
 }
 
