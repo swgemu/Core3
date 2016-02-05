@@ -114,7 +114,7 @@ function deathWatchJetpackCraftingDroid:transferObject(pDroid, pIngredient, slot
 		writeData(statusPrefix .. "alummineral", 1)
 	end
 
-	createEvent(100, "DeathWatchBunkerScreenPlay", "destroyIngredient", pIngredient)
+	createEvent(100, "DeathWatchBunkerScreenPlay", "destroyIngredient", pIngredient, "")
 
 	local hasMineral = readData(statusPrefix .. "alummineral")
 	local hasJetpackBase = readData(statusPrefix .. "jetpackbase")
@@ -301,7 +301,7 @@ function deathWatchCraftingDroid:transferObject(pDroid, pIngredient, slot)
 		end
 	end
 
-	createEvent(100, "DeathWatchBunkerScreenPlay", "destroyIngredient", pIngredient)
+	createEvent(100, "DeathWatchBunkerScreenPlay", "destroyIngredient", pIngredient, "")
 
 	local hasMineral = readData(statusPrefix .. "alummineral")
 	local hasBL = readData(statusPrefix .. "binary")

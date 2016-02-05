@@ -1,8 +1,6 @@
 require("screenplays.screenplay")
 local ObjectManager = require("managers.object.object_manager")
 
-FACTIONIMPERIAL = 0xDB4ACC54
-FACTIONREBEL = 0x16148850
 SIT = 1
 STAND = 0
 local ticketTemplate = "object/tangible/travel/travel_ticket/dungeon_ticket.iff"
@@ -48,7 +46,7 @@ function CorvetteTicketTakerLogic:validateTicket(pPlayer)
 
 	player:sendSystemMessage("@dungeon/space_dungeon:validating_ticket") -- Validating travel authorization. Please stand by...
 
-	createEvent(5 * 1000, self.takerName, "finishValidateTicket", pPlayer)
+	createEvent(5 * 1000, self.takerName, "finishValidateTicket", pPlayer, "")
 end
 
 function CorvetteTicketTakerLogic:finishValidateTicket(pPlayer)

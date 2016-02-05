@@ -34,6 +34,7 @@
 #include "server/zone/objects/tangible/tool/repair/RepairTool.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/creature/PetManager.h"
+#include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/tangible/tool/antidecay/AntiDecayKit.h"
@@ -47,7 +48,7 @@ void TangibleObjectImplementation::initializeTransientMembers() {
 
 	setLoggingName("TangibleObject");
 
-	if (faction !=  0x16148850 && faction != 0xDB4ACC54) {
+	if (faction !=  FactionManager::FACTIONREBEL && faction != FactionManager::FACTIONIMPERIAL) {
 		faction = 0;
 	}
 }
@@ -967,6 +968,18 @@ bool TangibleObjectImplementation::isCityStatue(){
 
 bool TangibleObjectImplementation::isCityFountain(){
 	return (templateObject != NULL && templateObject->getFullTemplateString().contains("object/tangible/furniture/city/fountain"));
+}
+
+bool TangibleObjectImplementation::isRebel() const {
+	return faction == FactionManager::FACTIONREBEL;
+}
+
+bool TangibleObjectImplementation::isImperial() const {
+	return faction == FactionManager::FACTIONIMPERIAL;
+}
+
+bool TangibleObjectImplementation::isNeutral() const {
+	return faction == FactionManager::FACTIONNEUTRAL;
 }
 
 TangibleObject* TangibleObject::asTangibleObject() {

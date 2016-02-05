@@ -15,6 +15,7 @@
 #include "server/zone/templates/mobile/LairTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
 
 class CreateSpawningElementCommand : public QueueCommand {
 public:

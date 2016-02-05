@@ -159,7 +159,7 @@ function DeathWatchBunkerScreenPlay:start()
 
 		writeData("dwb:ventDroidAvailable", 1)
 
-		createEvent(1000 * 45, "DeathWatchBunkerScreenPlay", "poisonEvent", pBunker)
+		createEvent(1000 * 45, "DeathWatchBunkerScreenPlay", "poisonEvent", pBunker, "")
 		createObserver(ENTEREDBUILDING, "DeathWatchBunkerScreenPlay", "onEnterDWB", pBunker)
 		createObserver(EXITEDBUILDING, "DeathWatchBunkerScreenPlay", "onExitDWB", pBunker)
 	end
@@ -412,21 +412,21 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 	self:setLootBoxPermissions(spawnedPointer)
 	spawnedSceneObject:setCustomObjectName("Chest")
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:lootbox", 1)
-	createEvent(1000, "DeathWatchBunkerScreenPlay", "refillContainer", spawnedPointer)
+	createEvent(1000, "DeathWatchBunkerScreenPlay", "refillContainer", spawnedPointer, "")
 	createObserver(OBJECTRADIALUSED, "DeathWatchBunkerScreenPlay", "boxLooted", spawnedPointer)
 
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/coal_bin_container.iff",6.01353,-32,-102.05,5996337,0.707107,0,0.707107,0)
 	spawnedSceneObject:_setObject(spawnedPointer)
 	self:setLootBoxPermissions(spawnedPointer)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:lootbox", 2)
-	createEvent(1000, "DeathWatchBunkerScreenPlay", "refillContainer", spawnedPointer)
+	createEvent(1000, "DeathWatchBunkerScreenPlay", "refillContainer", spawnedPointer, "")
 	createObserver(OBJECTRADIALUSED, "DeathWatchBunkerScreenPlay", "boxLooted", spawnedPointer)
 
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/container/loot/placable_loot_crate_tech_armoire.iff", -2.78947,-32,-27.1899,5996335,0,0,1,0)
 	spawnedSceneObject:_setObject(spawnedPointer)
 	self:setLootBoxPermissions(spawnedPointer)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:lootbox", 3)
-	createEvent(1000, "DeathWatchBunkerScreenPlay", "refillContainer", spawnedPointer)
+	createEvent(1000, "DeathWatchBunkerScreenPlay", "refillContainer", spawnedPointer, "")
 	createObserver(OBJECTRADIALUSED, "DeathWatchBunkerScreenPlay", "boxLooted", spawnedPointer)
 end
 
@@ -525,7 +525,7 @@ function DeathWatchBunkerScreenPlay:boxLooted(pSceneObject, pCreature, selectedI
 			spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 		end
 
-		createEvent(self.containerRespawnTime, "DeathWatchBunkerScreenPlay", "refillContainer", pSceneObject)
+		createEvent(self.containerRespawnTime, "DeathWatchBunkerScreenPlay", "refillContainer", pSceneObject, "")
 	end
 
 	return 0
@@ -559,14 +559,14 @@ function DeathWatchBunkerScreenPlay:poisonEvent(pSceneObject)
 					if pObject ~= nil then
 						if (SceneObject(pObject):isPlayerCreature() and not self:hasRebreather(pObject)
 							and not CreatureObject(pObject):isDead() and not CreatureObject(pObject):isIncapacitated()) then
-							createEvent(500, "DeathWatchBunkerScreenPlay", "doPoison", pObject)
+							createEvent(500, "DeathWatchBunkerScreenPlay", "doPoison", pObject, "")
 						end
 					end
 				end
 			end
 		end
 	end
-	createEvent(1000 * 45, "DeathWatchBunkerScreenPlay", "poisonEvent", pSceneObject)
+	createEvent(1000 * 45, "DeathWatchBunkerScreenPlay", "poisonEvent", pSceneObject, "")
 end
 
 function DeathWatchBunkerScreenPlay:timeWarning(pCreature)
@@ -620,12 +620,12 @@ function DeathWatchBunkerScreenPlay:removeFromBunker(pCreature)
 			local pMember = CreatureObject(pCreature):getGroupMember(i)
 			if pMember ~= nil then
 				if CreatureObject(pMember):getParentID() > 5996313 and CreatureObject(pMember):getParentID() < 5996380 then
-					createEvent(500, "DeathWatchBunkerScreenPlay", "teleportPlayer", pMember)
+					createEvent(500, "DeathWatchBunkerScreenPlay", "teleportPlayer", pMember, "")
 				end
 			end
 		end
 	else
-		createEvent(500, "DeathWatchBunkerScreenPlay", "teleportPlayer", pCreature)
+		createEvent(500, "DeathWatchBunkerScreenPlay", "teleportPlayer", pCreature, "")
 	end
 end
 
@@ -706,7 +706,7 @@ function DeathWatchBunkerScreenPlay:voiceTerminalSpatialReceived(pTerminal, pCha
 	local bombDroidID = readData("dwb:bombDroid")
 	local pBombDroid = getSceneObject(bombDroidID)
 
-	createEvent(500, "DeathWatchBunkerScreenPlay", "doBombDroidAction", pBombDroid)
+	createEvent(500, "DeathWatchBunkerScreenPlay", "doBombDroidAction", pBombDroid, "")
 
 	return 0
 end
@@ -800,10 +800,10 @@ function DeathWatchBunkerScreenPlay:bombDroidDetonated(pBombDroid, pBombDroid2)
 
 	if (pDebris ~= nil and SceneObject(pBombDroid):isInRangeWithObject(pDebris, 5)) then
 		SceneObject(pDebris):playEffect("clienteffect/combat_grenade_proton.cef", "")
-		createEvent(1000, "DeathWatchBunkerScreenPlay", "destroyDebris", pDebris)
+		createEvent(1000, "DeathWatchBunkerScreenPlay", "destroyDebris", pDebris, "")
 	elseif (pDebris2 ~= nil and SceneObject(pBombDroid):isInRangeWithObject(pDebris2, 5)) then
 		SceneObject(pDebris2):playEffect("clienteffect/combat_grenade_proton.cef", "")
-		createEvent(1000, "DeathWatchBunkerScreenPlay", "destroyDebris", pDebris2)
+		createEvent(1000, "DeathWatchBunkerScreenPlay", "destroyDebris", pDebris2, "")
 	end
 
 	deleteData("dwb:bombDroid")
@@ -829,7 +829,7 @@ end
 
 function DeathWatchBunkerScreenPlay:destroyDebris(pDebris)
 	if (pDebris ~= nil) then
-		createEvent(self.debrisRespawnTime, "DeathWatchBunkerScreenPlay", "respawnDebris", pDebris)
+		createEvent(self.debrisRespawnTime, "DeathWatchBunkerScreenPlay", "respawnDebris", pDebris, "")
 		SceneObject(pDebris):destroyObjectFromWorld()
 	end
 end
@@ -860,7 +860,7 @@ function DeathWatchBunkerScreenPlay:haldoTimer(pCreature)
 end
 
 function DeathWatchBunkerScreenPlay:haldoKilled(pHaldo, pPlayer)
-	createEvent(1000 * 240, "DeathWatchBunkerScreenPlay", "respawnHaldo", pPlayer)
+	createEvent(1000 * 240, "DeathWatchBunkerScreenPlay", "respawnHaldo", pPlayer, "")
 	return ObjectManager.withCreatureObject(pPlayer, function(creature)
 		if (creature:hasScreenPlayState(2, "death_watch_foreman_stage") and not creature:hasScreenPlayState(4, "death_watch_foreman_stage")) then
 			local pInventory = creature:getSlottedObject("inventory")
@@ -973,7 +973,7 @@ function DeathWatchBunkerScreenPlay:spawnNextA(pCreature)
 	elseif nextSpawn == 1 then
 		writeData(5996314 .. ":dwb:terminalAnextSpawn", 2)
 		local spawn = deathWatchSpecialSpawns["rageon_vart_assist1"]
-		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DeathWatchBunkerScreenPlay", "spawnNextA", pCreature)
+		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DeathWatchBunkerScreenPlay", "spawnNextA", pCreature, "")
 		local pMobile = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 
 		if (pMobile ~= nil) then
@@ -982,7 +982,7 @@ function DeathWatchBunkerScreenPlay:spawnNextA(pCreature)
 	elseif nextSpawn == 2 then
 		writeData(5996314 .. ":dwb:terminalAnextSpawn", 3)
 		local spawn = deathWatchSpecialSpawns["rageon_vart_assist2"]
-		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DeathWatchBunkerScreenPlay", "spawnNextA", pCreature)
+		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DeathWatchBunkerScreenPlay", "spawnNextA", pCreature, "")
 		local pMobile = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 
 		if (pMobile ~= nil) then
@@ -1007,7 +1007,7 @@ function DeathWatchBunkerScreenPlay:spawnNextB(pCreature)
 	elseif nextSpawn == 1 then
 		writeData(5996314 .. ":dwb:terminalBnextSpawn", 2)
 		local spawn = deathWatchSpecialSpawns["klin_nif_assist1"]
-		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DeathWatchBunkerScreenPlay", "spawnNextB", pCreature)
+		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DeathWatchBunkerScreenPlay", "spawnNextB", pCreature, "")
 		local pMobile = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 
 		if (pMobile ~= nil) then
@@ -1016,7 +1016,7 @@ function DeathWatchBunkerScreenPlay:spawnNextB(pCreature)
 	elseif nextSpawn == 2 then
 		writeData(5996314 .. ":dwb:terminalBnextSpawn", 3)
 		local spawn = deathWatchSpecialSpawns["klin_nif_assist2"]
-		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DeathWatchBunkerScreenPlay", "spawnNextB", pCreature)
+		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DeathWatchBunkerScreenPlay", "spawnNextB", pCreature, "")
 		local pMobile = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 
 		if (pMobile ~= nil) then
@@ -1040,7 +1040,7 @@ function DeathWatchBunkerScreenPlay:spawnNextC(creatureObject)
 	elseif nextSpawn == 1 then
 		writeData(5996314 .. ":dwb:terminalCnextSpawn", 2)
 		local spawn = deathWatchSpecialSpawns["fenri_dalso_assist1"]
-		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DeathWatchBunkerScreenPlay", "spawnNextC", creatureObject)
+		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DeathWatchBunkerScreenPlay", "spawnNextC", creatureObject, "")
 		local pMobile = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 
 		if (pMobile ~= nil) then
@@ -1049,7 +1049,7 @@ function DeathWatchBunkerScreenPlay:spawnNextC(creatureObject)
 	elseif nextSpawn == 2 then
 		writeData(5996314 .. ":dwb:terminalCnextSpawn", 3)
 		local spawn = deathWatchSpecialSpawns["fenri_dalso_assist2"]
-		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DeathWatchBunkerScreenPlay", "spawnNextC", creatureObject)
+		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DeathWatchBunkerScreenPlay", "spawnNextC", creatureObject, "")
 		local pMobile = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 
 		if (pMobile ~= nil) then
@@ -1185,7 +1185,7 @@ function DeathWatchBunkerScreenPlay:spawnDefenders(number, pCreature)
 		end
 	else
 		writeData(5996314 .. ":dwb:" .. self.spawnGroups[number], 1)
-		createEvent(2 * 1000, "DeathWatchBunkerScreenPlay", self.spawnEvents[number], pCreature)
+		createEvent(2 * 1000, "DeathWatchBunkerScreenPlay", self.spawnEvents[number], pCreature, "")
 	end
 end
 
@@ -1293,13 +1293,13 @@ function DeathWatchBunkerScreenPlay:checkDoor(pSceneObject, pCreature)
 				writeData(creature:getObjectID() .. ":teleportedFromBunker", 0)
 			end
 
-			createEvent(1000 * 60 * 5, "DeathWatchBunkerScreenPlay", "removeFromBunker", pCreature)
-			createEvent(1000 * 60 * 4.5, "DeathWatchBunkerScreenPlay", "timeWarning", pCreature)
-			createEvent(1000 * 60 * 5.5, "DeathWatchBunkerScreenPlay", "despawnCell", pCell)
+			createEvent(1000 * 60 * 5, "DeathWatchBunkerScreenPlay", "removeFromBunker", pCreature, "")
+			createEvent(1000 * 60 * 4.5, "DeathWatchBunkerScreenPlay", "timeWarning", pCreature, "")
+			createEvent(1000 * 60 * 5.5, "DeathWatchBunkerScreenPlay", "despawnCell", pCell, "")
 		end
 
 		writeData(SceneObject(pSceneObject):getObjectID() .. ":dwb:accessEnabled", 0)
-		createEvent(1000 * 60 * self.doorData[doorNumber].lockTime, "DeathWatchBunkerScreenPlay", "enableAccess", pSceneObject)
+		createEvent(1000 * 60 * self.doorData[doorNumber].lockTime, "DeathWatchBunkerScreenPlay", "enableAccess", pSceneObject, "")
 	end)
 end
 
@@ -1316,7 +1316,7 @@ function DeathWatchBunkerScreenPlay:despawnCell(pCell)
 				local template = SceneObject(pObject):getTemplateObjectPath()
 
 				if string.find(template, "death_watch") ~= nil or string.find(template, "battle_droid") ~= nil then
-					createEvent(1000, "DeathWatchBunkerScreenPlay", "despawnCreature", pObject)
+					createEvent(1000, "DeathWatchBunkerScreenPlay", "despawnCreature", pObject, "")
 				end
 			end
 		end
@@ -1335,9 +1335,9 @@ function DeathWatchBunkerScreenPlay:startForemanQuestStage(number, pCreature)
 	end
 
 	if number == 1 then
-		createEvent(1000 * 60 * 60, "DeathWatchBunkerScreenPlay", "haldoTimer", pCreature)
+		createEvent(1000 * 60 * 60, "DeathWatchBunkerScreenPlay", "haldoTimer", pCreature, "")
 	elseif number == 2 then
-		createEvent(1000 * 60 * 60, "DeathWatchBunkerScreenPlay", "pumpTimer", pCreature)
+		createEvent(1000 * 60 * 60, "DeathWatchBunkerScreenPlay", "pumpTimer", pCreature, "")
 	end
 end
 
@@ -1456,9 +1456,9 @@ function DeathWatchBunkerScreenPlay:stopCraftingProcess(pCreature, pTerm, succes
 
 	if teleport == true then
 		if (number == 4) then
-			createEvent(5000, "DeathWatchBunkerScreenPlay", "removeFromBunker", pCreature)
+			createEvent(5000, "DeathWatchBunkerScreenPlay", "removeFromBunker", pCreature, "")
 		else
-			createEvent(500, "DeathWatchBunkerScreenPlay", "teleportPlayer", pCreature)
+			createEvent(500, "DeathWatchBunkerScreenPlay", "teleportPlayer", pCreature, "")
 		end
 	end
 end
@@ -1553,8 +1553,8 @@ function DeathWatchBunkerScreenPlay:startCraftingProcess(pCreature, pTerminal)
 	local statusPrefix = "dwb:craftingTerminal" .. number .. ":"
 
 	writeData(statusPrefix .. "stepStartTime", os.time())
-	createEvent(1000 * 30, "DeathWatchBunkerScreenPlay", "cancelCrafting", pTerminal)
-	createEvent(1000, "DeathWatchBunkerScreenPlay", "sendUseTerminalMessage", pCreature)
+	createEvent(1000 * 30, "DeathWatchBunkerScreenPlay", "cancelCrafting", pTerminal, "")
+	createEvent(1000, "DeathWatchBunkerScreenPlay", "sendUseTerminalMessage", pCreature, "")
 	writeData(playerID .. ":dwb:currentlycrafting", 1)
 	writeData(playerID .. ":dwb:terminal", number)
 	writeData(statusPrefix .. "currentlycrafting", 1)
@@ -1577,7 +1577,7 @@ function DeathWatchBunkerScreenPlay:nextCraftingStep(pTerm)
 		local pCreature = getSceneObject(creoId)
 		self:sendUseTerminalMessage(pCreature)
 		writeData(statusPrefix .. "stepStartTime", os.time())
-		createEvent(1000 * 30, "DeathWatchBunkerScreenPlay", "cancelCrafting", pTerm)
+		createEvent(1000 * 30, "DeathWatchBunkerScreenPlay", "cancelCrafting", pTerm, "")
 	end
 end
 
@@ -1636,11 +1636,11 @@ function DeathWatchBunkerScreenPlay:craftingConfirmCallback(pCreature, pSui, eve
 		writeData(statusPrefix .. "currentlycrafting", 2)
 		CreatureObject(pCreature):sendSystemMessage("@dungeon/death_watch:alum_process_begun")
 		writeData(statusPrefix .. "stepStartTime", 0)
-		createEvent(10 * 1000, "DeathWatchBunkerScreenPlay", "nextCraftingStep", pUsingObject)
+		createEvent(10 * 1000, "DeathWatchBunkerScreenPlay", "nextCraftingStep", pUsingObject, "")
 	elseif step == 3 then
 		writeData(statusPrefix .. "currentlycrafting", 4)
 		CreatureObject(pCreature):sendSystemMessage("@dungeon/death_watch:aeration_process_begun")
-		createEvent(10 * 1000, "DeathWatchBunkerScreenPlay", "finishCraftingStep", pUsingObject)
+		createEvent(10 * 1000, "DeathWatchBunkerScreenPlay", "finishCraftingStep", pUsingObject, "")
 	end
 
 	return 0
@@ -1667,7 +1667,7 @@ function DeathWatchBunkerScreenPlay:doVentDroidStep(pDroid)
 		createObserver(DESTINATIONREACHED, "DeathWatchBunkerScreenPlay", "ventDroidDestinationReached", pDroid)
 		AiAgent(pDroid):setAiTemplate("manualescortwalk") -- Don't move unless patrol point is added to list, walking speed
 		AiAgent(pDroid):setFollowState(4) -- Patrolling
-		createEvent(10 * 1000, "DeathWatchBunkerScreenPlay", "doVentDroidStep", pDroid)
+		createEvent(10 * 1000, "DeathWatchBunkerScreenPlay", "doVentDroidStep", pDroid, "")
 		writeData("dwb:ventDroidStep", curStep + 1)
 	elseif (curStep == 1) then -- Move to toolbox
 		self:sendMessageToCell(5996345, "@dungeon/death_watch:protect_tools")
@@ -1679,7 +1679,7 @@ function DeathWatchBunkerScreenPlay:doVentDroidStep(pDroid)
 		spawnMobile("endor", "death_watch_bloodguard", 0, -7.4, -52, -119.1, 120, 5996379)
 		spawnMobile("endor", "death_watch_bloodguard", 0, -4.6, -52, -117.2, 172, 5996379)
 		spawnMobile("endor", "death_watch_bloodguard", 0, -3.1, -52, -120.7, -113, 5996379)
-		createEvent(120 * 1000, "DeathWatchBunkerScreenPlay", "doVentDroidStep", pDroid)
+		createEvent(120 * 1000, "DeathWatchBunkerScreenPlay", "doVentDroidStep", pDroid, "")
 		writeData("dwb:ventDroidStep", curStep + 1)
 	elseif (curStep == 3) then -- move to first center boxed area
 		self:sendMessageToCell(5996379, "@dungeon/death_watch:protect_fix")
@@ -1693,7 +1693,7 @@ function DeathWatchBunkerScreenPlay:doVentDroidStep(pDroid)
 		if (pValveEffect ~= nil) then
 			writeData("dwb:ventDroidEffectID", SceneObject(pValveEffect):getObjectID())
 		end
-		createEvent(120 * 1000, "DeathWatchBunkerScreenPlay", "doVentDroidStep", pDroid)
+		createEvent(120 * 1000, "DeathWatchBunkerScreenPlay", "doVentDroidStep", pDroid, "")
 		writeData("dwb:ventDroidStep", curStep + 1)
 	elseif (curStep == 5) then -- End effect, Despawn droid, complete quest
 		local effectID = readData("dwb:ventDroidEffectID")
@@ -1722,12 +1722,12 @@ function DeathWatchBunkerScreenPlay:doVentDroidStep(pDroid)
 
 		CreatureObject(pStarter):setScreenPlayState(2, "death_watch_bunker_technician_sidequest")
 
-		createEvent(60 * 60 * 1000, "DeathWatchBunkerScreenPlay", "disableVents", pStarter) -- Disable vents after an hour
+		createEvent(60 * 60 * 1000, "DeathWatchBunkerScreenPlay", "disableVents", pStarter, "") -- Disable vents after an hour
 	end
 end
 
 function DeathWatchBunkerScreenPlay:ventDroidDestinationReached(pDroid)
-	createEvent(1500, "DeathWatchBunkerScreenPlay", "doVentDroidMove", pDroid)
+	createEvent(1500, "DeathWatchBunkerScreenPlay", "doVentDroidMove", pDroid, "")
 	return 0
 end
 
@@ -1775,7 +1775,7 @@ function DeathWatchBunkerScreenPlay:failVentEscort(pDroid)
 	writeData("dwb:ventDroidStep", -1)
 	self:sendMessageToCell(5996379, "@dungeon/death_watch:repair_failed")
 	self:sendMessageToCell(5996378, "@dungeon/death_watch:repair_failed")
-	createEvent(5 * 60 * 1000, "DeathWatchBunkerScreenPlay", "createNewVentDroid", pDroid) -- New vent droid available 5 mins after failing
+	createEvent(5 * 60 * 1000, "DeathWatchBunkerScreenPlay", "createNewVentDroid", pDroid, "") -- New vent droid available 5 mins after failing
 end
 
 function DeathWatchBunkerScreenPlay:createNewVentDroid()

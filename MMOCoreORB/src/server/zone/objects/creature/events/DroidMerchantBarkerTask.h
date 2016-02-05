@@ -27,7 +27,7 @@ public:
 
 	void run() {
 
-		if( module == NULL) {
+		if (module == NULL) {
 			return;
 		}
 
@@ -38,39 +38,48 @@ public:
 		}
 
 		Locker locker(droid);
-		// Check if droid is spawned
-		if( droid->getLocalZone() == NULL ){  // Not outdoors
 
-			ManagedWeakReference<SceneObject*> parent = droid->getParent();
-			if( parent == NULL || !parent.get()->isCellObject() ){ // Not indoors either
-				droid->removePendingTask("barking");
+		droid->removePendingTask("barking");
+
+		// Check if droid is spawned
+		if (droid->getLocalZone() == NULL) {  // Not outdoors
+			ManagedReference<SceneObject*> parent = droid->getParent().get();
+
+			if (parent == NULL || !parent.get()->isCellObject()) { // Not indoors either
 				module->deactivate();
 				return;
 			}
 		}
+
 		// Droid must have power
-		if( !droid->hasPower() ){
+		if (!droid->hasPower()) {
 			droid->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
-			droid->removePendingTask("barking");
 			return;
 		}
 
 		// Check if module is still active
-		if( !module->isActive() ){
-			droid->removePendingTask("barking");
+		if (!module->isActive()) {
 			return;
 		}
 
 		// Check droid states
-		if( droid->isDead() || droid->isIncapacitated() ){
-			droid->removePendingTask("barking");
+		if (droid->isDead() || droid->isIncapacitated()) {
 			module->deactivate();
 			return;
 		}
+
 		String message = module->getMessage();
 		if (message.length() == 0) {
 			module->deactivate();
 		}
+
+		Zone* zone = droid->getZone();
+		if (zone == NULL) {
+			return;
+		}
+
+		ZoneServer* zoneServer = zone->getZoneServer();
+
 		// Get nearby people and bark
 		CloseObjectsVector* vec = (CloseObjectsVector*) droid->getCloseObjects();
 		SortedVector<QuadTreeEntry*> closeEntryObjects(200, 50);
@@ -78,8 +87,9 @@ public:
 			vec->safeCopyTo(closeEntryObjects);
 		} else {
 			droid->info("Null closeobjects vector in DroidMerchantBarkerTask::run()", true);
-			droid->getZone()->getInRangeObjects(droid->getWorldPositionX(), droid->getWorldPositionX(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
+			zone->getInRangeObjects(droid->getWorldPositionX(), droid->getWorldPositionX(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
 		}
+
 		bool speak = false;
 		for (int i = 0; i < closeEntryObjects.size(); ++i) {
 			SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i));
@@ -88,9 +98,11 @@ public:
 				break;
 			}
 		}
+
 		if (speak) {
-			droid->getZoneServer()->getChatManager()->broadcastMessage(droid,message,0,0,0);
+			zoneServer->getChatManager()->broadcastMessage(droid,message,0,0,0);
 		}
+
 		droid->addPendingTask("barking",this,60000); // wait a mintue to bark again
 	}
 

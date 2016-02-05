@@ -108,7 +108,7 @@ function HeroOfTatooineScreenPlay:spawnAltruismObjects()
 	CreatureObject(pDaughter):setPvpStatusBitmask(0)
 	writeData("hero_of_tat:farmerChildId", SceneObject(pDaughter):getObjectID())
 
-	createEvent(30 * 60 * 1000, "HeroOfTatooineScreenPlay", "validateAltruismCave", nil)
+	createEvent(30 * 60 * 1000, "HeroOfTatooineScreenPlay", "validateAltruismCave", nil, "")
 end
 
 function HeroOfTatooineScreenPlay:validateAltruismCave()
@@ -117,7 +117,7 @@ function HeroOfTatooineScreenPlay:validateAltruismCave()
 	if (count == 0) then
 		self:despawnAltruismObjects()
 	else
-		createEvent(30 * 60 * 1000, "HeroOfTatooineScreenPlay", "validateAltruismCave", nil)
+		createEvent(30 * 60 * 1000, "HeroOfTatooineScreenPlay", "validateAltruismCave", nil, "")
 	end
 end
 
@@ -440,7 +440,7 @@ function HeroOfTatooineScreenPlay:handleSuiImplication(pPlayer, pSui, eventIndex
 			player:setScreenPlayState(2, "hero_of_tatooine_intellect")
 			playerObject:awardBadge(POI_TWOLIARS)
 			spatialChat(pBountyHunter, "@quest/hero_of_tatooine/intellect_liar:bh_win")
-			createEvent(10 * 1000, "HeroOfTatooineScreenPlay", "doIntellectSpawn", pBountyHunter)
+			createEvent(10 * 1000, "HeroOfTatooineScreenPlay", "doIntellectSpawn", pBountyHunter, "")
 		else
 			spatialChat(pBountyHunter, "@quest/hero_of_tatooine/intellect_liar:bh_lose")
 			writeData(player:getObjectID() .. ":hero_of_tat:failedIntellect", mobId)
@@ -649,7 +649,7 @@ function HeroOfTatooineScreenPlay:doGiverDespawn(pGiver)
 end
 
 function HeroOfTatooineScreenPlay:giverDespawnDestinationReached(pGiver)
-	createEvent(2000, "HeroOfTatooineScreenPlay", "destroyGiver", pGiver)
+	createEvent(2000, "HeroOfTatooineScreenPlay", "destroyGiver", pGiver, "")
 	return 1
 end
 
@@ -692,7 +692,7 @@ function HeroOfTatooineScreenPlay:escortRangeCheckEvent(pPlayer)
 	end
 
 	if (CreatureObject(pPlayer):isInRangeWithObject(pWife, 25)) then
-		createEvent(1000, "HeroOfTatooineScreenPlay", "escortRangeCheckEvent", pPlayer)
+		createEvent(1000, "HeroOfTatooineScreenPlay", "escortRangeCheckEvent", pPlayer, "")
 	else
 		self:failEscort(pPlayer)
 	end
@@ -736,7 +736,7 @@ function HeroOfTatooineScreenPlay:completeEscort(pPlayer)
 		player:setScreenPlayState(4, "hero_of_tatooine")
 		player:setScreenPlayState(2, "hero_of_tatooine_altruism")
 		self:removeAltruismWaypoint(pPlayer)
-		createEvent(3000, "HeroOfTatooineScreenPlay", "despawnAltruismObjects", pPlayer)
+		createEvent(3000, "HeroOfTatooineScreenPlay", "despawnAltruismObjects", pPlayer, "")
 	end)
 end
 
@@ -986,19 +986,19 @@ function HeroOfTatooineScreenPlay:doHonorFail(pPlayer)
 	local pIntercom = getSceneObject(intercomID)
 	local pWife = getSceneObject(wifeID)
 
-	createEvent(500, "HeroOfTatooineScreenPlay", "setNotConversable", pIntercom)
-	createEvent(500, "HeroOfTatooineScreenPlay", "setNotConversable", pWife)
+	createEvent(500, "HeroOfTatooineScreenPlay", "setNotConversable", pIntercom, "")
+	createEvent(500, "HeroOfTatooineScreenPlay", "setNotConversable", pWife, "")
 
 	--Explosion effect
 	playClientEffectLoc(SceneObject(pPlayer):getObjectID(), "clienteffect/combat_grenade_thermal_detonator.cef", "tatooine", -4.8, 0.3, -2.3, 4005941)
 	--House shake effect
 	playClientEffectLoc(SceneObject(pPlayer):getObjectID(), "clienteffect/cr_bodyfall_huge.cef", "tatooine", -4.8, 0.3, -2.3, 4005941)
 
-	createEvent(500, "HeroOfTatooineScreenPlay", "doStartPatrol", pPirate1)
-	createEvent(500, "HeroOfTatooineScreenPlay", "doStartPatrol", pPirate2)
+	createEvent(500, "HeroOfTatooineScreenPlay", "doStartPatrol", pPirate1, "")
+	createEvent(500, "HeroOfTatooineScreenPlay", "doStartPatrol", pPirate2, "")
 
-	createEvent(3500, "HeroOfTatooineScreenPlay", "doFailHonorPhase", pPlayer)
-	createEvent(120000, "HeroOfTatooineScreenPlay", "doRanchHouseCleanup", pPlayer)
+	createEvent(3500, "HeroOfTatooineScreenPlay", "doFailHonorPhase", pPlayer, "")
+	createEvent(120000, "HeroOfTatooineScreenPlay", "doRanchHouseCleanup", pPlayer, "")
 end
 
 function HeroOfTatooineScreenPlay:setNotConversable(pNpc)
@@ -1126,7 +1126,7 @@ function HeroOfTatooineScreenPlay:honorDestReached(pAgent)
 		local curStep = readData("hero_of_tat:honor_trooper1_step")
 
 		if (curStep == 2) then
-			createEvent(5500, "HeroOfTatooineScreenPlay", "doHonorSuccessPirates", pAgent)
+			createEvent(5500, "HeroOfTatooineScreenPlay", "doHonorSuccessPirates", pAgent, "")
 			delay = 5000
 		end
 	elseif (agentID == trooper2ID) then
@@ -1169,7 +1169,7 @@ function HeroOfTatooineScreenPlay:honorDestReached(pAgent)
 		end
 	end
 
-	createEvent(delay, "HeroOfTatooineScreenPlay", "doHonorStep", pAgent)
+	createEvent(delay, "HeroOfTatooineScreenPlay", "doHonorStep", pAgent, "")
 	return 0
 end
 
@@ -1248,7 +1248,7 @@ function HeroOfTatooineScreenPlay:doHonorStart(pPlayer)
 	writeData(playerID .. ":hero_of_tat_honor:accepted", 1)
 	writeData("hero_of_tat:ranch_player_id", playerID)
 
-	createEvent(7 * 60 * 1000, "HeroOfTatooineScreenPlay", "doHonorTimeout", pPlayer) -- 7 Minute timeout
+	createEvent(7 * 60 * 1000, "HeroOfTatooineScreenPlay", "doHonorTimeout", pPlayer, "") -- 7 Minute timeout
 end
 
 function HeroOfTatooineScreenPlay:doHonorTimeout(pPlayer)
@@ -1298,14 +1298,14 @@ function HeroOfTatooineScreenPlay:doHonorSuccess(pPlayer)
 	local pIntercom = getSceneObject(intercomID)
 	local pWife = getSceneObject(wifeID)
 
-	createEvent(500, "HeroOfTatooineScreenPlay", "setNotConversable", pIntercom)
-	createEvent(500, "HeroOfTatooineScreenPlay", "setNotConversable", pWife)
+	createEvent(500, "HeroOfTatooineScreenPlay", "setNotConversable", pIntercom, "")
+	createEvent(500, "HeroOfTatooineScreenPlay", "setNotConversable", pWife, "")
 
-	createEvent(500, "HeroOfTatooineScreenPlay", "doStartPatrol", pRancher)
-	createEvent(500, "HeroOfTatooineScreenPlay", "doStartPatrol", pTrooper1)
-	createEvent(500, "HeroOfTatooineScreenPlay", "doStartPatrol", pTrooper2)
+	createEvent(500, "HeroOfTatooineScreenPlay", "doStartPatrol", pRancher, "")
+	createEvent(500, "HeroOfTatooineScreenPlay", "doStartPatrol", pTrooper1, "")
+	createEvent(500, "HeroOfTatooineScreenPlay", "doStartPatrol", pTrooper2, "")
 
-	createEvent(120000, "HeroOfTatooineScreenPlay", "doRanchHouseCleanup", pPlayer)
+	createEvent(120000, "HeroOfTatooineScreenPlay", "doRanchHouseCleanup", pPlayer, "")
 end
 
 function HeroOfTatooineScreenPlay:doHonorSuccessPirates()
@@ -1327,8 +1327,8 @@ function HeroOfTatooineScreenPlay:doHonorSuccessPirates()
 	createObserver(DESTINATIONREACHED, "HeroOfTatooineScreenPlay", "honorDestReached", pPirate1)
 	createObserver(DESTINATIONREACHED, "HeroOfTatooineScreenPlay", "honorDestReached", pPirate2)
 
-	createEvent(500, "HeroOfTatooineScreenPlay", "doStartPatrol", pPirate1)
-	createEvent(500, "HeroOfTatooineScreenPlay", "doStartPatrol", pPirate2)
+	createEvent(500, "HeroOfTatooineScreenPlay", "doStartPatrol", pPirate1, "")
+	createEvent(500, "HeroOfTatooineScreenPlay", "doStartPatrol", pPirate2, "")
 end
 
 function HeroOfTatooineScreenPlay:onEnteredRanchHouse(pHouse, pObject)

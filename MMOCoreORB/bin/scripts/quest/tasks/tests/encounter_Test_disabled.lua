@@ -629,15 +629,15 @@ describe("Encounter", function()
 		describe("createEncounterEvents", function()
 			describe("When called with a player", function()
 				local createEventArgList = {
-					{ time = CLOSING_IN_TIME, name = testEncounter.taskName, func = "handleEncounterClosingIn", pSO = pCreatureObject },
-					{ time = AT_PLAYER_TIME, name = testEncounter.taskName, func = "handleEncounterAtPlayer", pSO = pCreatureObject }
+					{ time = CLOSING_IN_TIME, name = testEncounter.taskName, func = "handleEncounterClosingIn", pSO = pCreatureObject, arg = "" },
+					{ time = AT_PLAYER_TIME, name = testEncounter.taskName, func = "handleEncounterAtPlayer", pSO = pCreatureObject, arg = "" }
 				}
 				local callNumber
 
 				before_each(function()
 					callNumber = 1
 
-					createEvent = spy.new(function(time, name, func, pSO)
+					createEvent = spy.new(function(time, name, func, pSO, arg)
 						assert.same(createEventArgList[callNumber]["time"], time)
 						assert.same(createEventArgList[callNumber]["name"], name)
 						assert.same(createEventArgList[callNumber]["func"], func)

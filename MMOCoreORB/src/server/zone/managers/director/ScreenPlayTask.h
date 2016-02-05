@@ -18,13 +18,15 @@ class ScreenPlayTask : public Task {
 	ManagedWeakReference<SceneObject*> obj;
 	String taskKey;
 	String screenPlay;
+	String args;
 	Reference<PersistentEvent*> persistentEvent;
 public:
 
-	ScreenPlayTask(SceneObject* scno, const String& key, const String& playName) {
+	ScreenPlayTask(SceneObject* scno, const String& key, const String& playName, const String& arguments) {
 		obj = scno;
 		taskKey = key;
 		screenPlay = playName;
+		args = arguments;
 		persistentEvent = NULL;
 	}
 
@@ -58,6 +60,10 @@ public:
 
 	String getScreenPlay() {
 		return screenPlay;
+	}
+
+	String getArgs() {
+		return args;
 	}
 
 	void setPersistentEvent(PersistentEvent* persistentEvent) {

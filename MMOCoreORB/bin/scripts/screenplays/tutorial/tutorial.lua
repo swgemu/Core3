@@ -56,7 +56,7 @@ function TutorialScreenPlay:start(pPlayer)
 	createObserver(PARENTCHANGED, "TutorialScreenPlay", "changedRoomEvent", pPlayer)
 
 	writeData(playerID .. ":tutorialStarted", 1)
-	createEvent(2000, "TutorialScreenPlay", "handleRoomOne", pPlayer)
+	createEvent(2000, "TutorialScreenPlay", "handleRoomOne", pPlayer, "")
 end
 
 -- Spawn all tutorial mobiles and sceneobjects
@@ -156,14 +156,14 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 		-- Animate them to look like they are operating terminal
 		if (pMobile ~= nil) then
 			CreatureObject(pMobile):setPvpStatusBitmask(0)
-			createEvent(getRandomNumber(10, 30) * 1000, "TutorialScreenPlay", "doBankUserAnimation", pMobile)
+			createEvent(getRandomNumber(10, 30) * 1000, "TutorialScreenPlay", "doBankUserAnimation", pMobile, "")
 		end
 
 		pMobile = spawnMobile("tutorial", "tutorial_commoner_noconverse", 0, 46.1, 0, 6.35, 0, cellID)
 
 		if (pMobile ~= nil) then
 			CreatureObject(pMobile):setPvpStatusBitmask(0)
-			createEvent(getRandomNumber(10, 30) * 1000, "TutorialScreenPlay", "doBankUserAnimation", pMobile)
+			createEvent(getRandomNumber(10, 30) * 1000, "TutorialScreenPlay", "doBankUserAnimation", pMobile, "")
 		end
 
 		-- Banker, conversable, explains bank and item dispenser/bazaar
@@ -390,7 +390,7 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 		if (pMobile ~= nil) then
 			CreatureObject(pMobile):setPvpStatusBitmask(0)
 			writeData(SceneObject(pMobile):getObjectID() .. ":playerID", playerID)
-			createEvent(30000, "TutorialScreenPlay", "doTrappedGuySpam", pMobile)
+			createEvent(30000, "TutorialScreenPlay", "doTrappedGuySpam", pMobile, "")
 			writeData(playerID .. ":tutorial:roomTenTrappedGuy", SceneObject(pMobile):getObjectID())
 		end
 	end
@@ -429,7 +429,7 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 			CreatureObject(pMobile):setMoodString("npc_sitting_ground")
 			CreatureObject(pMobile):setPvpStatusBitmask(0)
 			writeData(SceneObject(pMobile):getObjectID() .. ":playerID", playerID)
-			createEvent(30000, "TutorialScreenPlay", "doRefugeeSpam", pMobile)
+			createEvent(30000, "TutorialScreenPlay", "doRefugeeSpam", pMobile, "")
 		end
 
 		pMobile = spawnMobile("tutorial", "tutorial_commoner_noconverse", 0, 40.8, -4.2, -164.1, -50, cellID)
@@ -438,7 +438,7 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 			CreatureObject(pMobile):setMoodString("npc_sitting_ground")
 			CreatureObject(pMobile):setPvpStatusBitmask(0)
 			writeData(SceneObject(pMobile):getObjectID() .. ":playerID", playerID)
-			createEvent(30000, "TutorialScreenPlay", "doRefugeeSpam", pMobile)
+			createEvent(30000, "TutorialScreenPlay", "doRefugeeSpam", pMobile, "")
 		end
 
 		pMobile = spawnMobile("tutorial", "tutorial_commoner_noconverse", 0, 36.8, -4.2, -164.1, -50, cellID)
@@ -447,7 +447,7 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 			CreatureObject(pMobile):setMoodString("npc_sitting_ground")
 			CreatureObject(pMobile):setPvpStatusBitmask(0)
 			writeData(SceneObject(pMobile):getObjectID() .. ":playerID", playerID)
-			createEvent(30000, "TutorialScreenPlay", "doRefugeeSpam", pMobile)
+			createEvent(30000, "TutorialScreenPlay", "doRefugeeSpam", pMobile, "")
 		end
 
 		-- Stormtroopers, conversable, one paths between multiple cells back and forth
@@ -456,7 +456,7 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 
 		if (pMobile ~= nil) then
 			writeData(SceneObject(pMobile):getObjectID() .. ":currentLoc", 1)
-			createEvent(45000, "TutorialScreenPlay", "doRoomElevenTrooperPathing", pMobile)
+			createEvent(45000, "TutorialScreenPlay", "doRoomElevenTrooperPathing", pMobile, "")
 			createObserver(DESTINATIONREACHED, "TutorialScreenPlay", "trooperDestReached", pMobile)
 			AiAgent(pMobile):setAiTemplate("manualescortwalk") -- Don't move unless patrol point is added to list, walking speed
 			AiAgent(pMobile):setFollowState(4) -- Patrolling
@@ -473,31 +473,31 @@ function TutorialScreenPlay:changedRoomEvent(pPlayer, pNewParent)
 	if (self:isInRoom(pPlayer, "r2") and not self:isRoomComplete(pPlayer, "r2")) then
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:part_2")
 		self:markRoomComplete(pPlayer, "r1")
-		createEvent(3000, "TutorialScreenPlay", "handleRoomTwo", pPlayer)
+		createEvent(3000, "TutorialScreenPlay", "handleRoomTwo", pPlayer, "")
 	elseif (self:isInRoom(pPlayer, "r3") and not self:isRoomComplete(pPlayer, "r3")) then
 		self:givePermission(pPlayer, "RoomTwoItemDrum")
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:part_3")
 		self:markRoomComplete(pPlayer, "r2")
-		createEvent(1000, "TutorialScreenPlay", "handleRoomThree", pPlayer)
+		createEvent(1000, "TutorialScreenPlay", "handleRoomThree", pPlayer, "")
 	elseif (self:isInRoom(pPlayer, "r4") and not self:isRoomComplete(pPlayer, "r4")) then
-		createEvent(500, "TutorialScreenPlay", "handleRoomFour", pPlayer)
+		createEvent(500, "TutorialScreenPlay", "handleRoomFour", pPlayer, "")
 		self:markRoomComplete(pPlayer, "r3")
 	elseif (self:isInRoom(pPlayer, "r5") and not self:isRoomComplete(pPlayer, "r5")) then
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:part_4")
-		createEvent(500, "TutorialScreenPlay", "handleRoomFive", pPlayer)
+		createEvent(500, "TutorialScreenPlay", "handleRoomFive", pPlayer, "")
 		self:markRoomComplete(pPlayer, "r4")
 	elseif (self:isInRoom(pPlayer, "r6") and not self:isRoomComplete(pPlayer, "r6")) then
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:part_5")
-		createEvent(100, "TutorialScreenPlay", "handleRoomSix", pPlayer)
+		createEvent(100, "TutorialScreenPlay", "handleRoomSix", pPlayer, "")
 		self:markRoomComplete(pPlayer, "r5")
 	elseif (self:isInRoom(pPlayer, "r7") and not self:isRoomComplete(pPlayer, "r7")) then
-		createEvent(500, "TutorialScreenPlay", "handleRoomSeven", pPlayer)
+		createEvent(500, "TutorialScreenPlay", "handleRoomSeven", pPlayer, "")
 		self:markRoomComplete(pPlayer, "r6")
 	elseif (self:isInRoom(pPlayer, "r14") and not self:isRoomComplete(pPlayer, "r14")) then
 		if (readData(SceneObject(pPlayer):getObjectID() .. ":tutorial:givenWeapon") == 1) then
 			self:markRoomComplete(pPlayer, "r7")
 		end
-		createEvent(500, "TutorialScreenPlay", "handleRoomFourteen", pPlayer)
+		createEvent(500, "TutorialScreenPlay", "handleRoomFourteen", pPlayer, "")
 	elseif (self:isInRoom(pPlayer, "r8") and not self:isRoomComplete(pPlayer, "r8")) then
 		-- Lock door to room 9
 		local pBuilding = self:getTutorialBuilding(pPlayer)
@@ -510,18 +510,18 @@ function TutorialScreenPlay:changedRoomEvent(pPlayer, pNewParent)
 			end
 		end
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:part_6")
-		createEvent(500, "TutorialScreenPlay", "handleRoomEight", pPlayer)
+		createEvent(500, "TutorialScreenPlay", "handleRoomEight", pPlayer, "")
 	elseif (self:isInRoom(pPlayer, "r9") and not self:isRoomComplete(pPlayer, "r9")) then
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:part_7")
-		createEvent(500, "TutorialScreenPlay", "handleRoomNine", pPlayer)
+		createEvent(500, "TutorialScreenPlay", "handleRoomNine", pPlayer, "")
 	elseif (self:isInRoom(pPlayer, "r10") and not self:isRoomComplete(pPlayer, "r10")) then
 		self:markRoomComplete(pPlayer, "r9")
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:part_8")
-		createEvent(500, "TutorialScreenPlay", "handleRoomTen", pPlayer)
+		createEvent(500, "TutorialScreenPlay", "handleRoomTen", pPlayer, "")
 	elseif (self:isInRoom(pPlayer, "r11") and not self:isRoomComplete(pPlayer, "r11")) then
 		self:markRoomComplete(pPlayer, "r10")
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:part_9")
-		createEvent(500, "TutorialScreenPlay", "handleRoomEleven", pPlayer)
+		createEvent(500, "TutorialScreenPlay", "handleRoomEleven", pPlayer, "")
 	end
 
 
@@ -570,20 +570,20 @@ function TutorialScreenPlay:handleRoomOne(pPlayer)
 			player:playMusicMessage("sound/tut_01_welcome.snd")
 			player:sendSystemMessage("@newbie_tutorial/system_messages:part_1")
 
-			createEvent(6000, "TutorialScreenPlay", "handleRoomOne", pPlayer)
+			createEvent(6000, "TutorialScreenPlay", "handleRoomOne", pPlayer, "")
 		elseif (curStep == 1) then -- Movement tutorial
 			player:sendSystemMessage("@newbie_tutorial/system_messages:movement_keyboard")
 			player:sendSystemMessage("@newbie_tutorial/system_messages:movement_mouse")
 			player:sendSystemMessage("@newbie_tutorial/system_messages:lookaround")
 			player:playMusicMessage("sound/tut_02_movement.snd")
 
-			createEvent(12000, "TutorialScreenPlay", "handleRoomOne", pPlayer)
+			createEvent(12000, "TutorialScreenPlay", "handleRoomOne", pPlayer, "")
 		elseif (curStep == 2) then -- Mouse wheel tutorial
 			player:sendSystemMessage("@newbie_tutorial/system_messages:mousewheel")
 			player:playMusicMessage("sound/tut_00_camera.snd")
 			player:sendNewbieTutorialRequest("zoomCamera")
 
-			createEvent(35000, "TutorialScreenPlay", "handleRoomOne", pPlayer)
+			createEvent(35000, "TutorialScreenPlay", "handleRoomOne", pPlayer, "")
 		elseif (curStep == 3) then -- Chat tutorial
 			player:sendNewbieTutorialEnableHudElement("chatbox", 1, 3)
 			player:playMusicMessage("sound/tut_04_chat.snd")
@@ -592,7 +592,7 @@ function TutorialScreenPlay:handleRoomOne(pPlayer)
 			writeData(playerID .. ":tutorial:waitingOnChat", 1)
 			player:sendNewbieTutorialRequest("chatbox")
 
-			createEvent(20000, "TutorialScreenPlay", "doChatReminder", pPlayer)
+			createEvent(20000, "TutorialScreenPlay", "doChatReminder", pPlayer, "")
 			createObserver(CHAT, "TutorialScreenPlay", "chatEvent", pPlayer)
 
 		elseif (curStep == 4) then -- Holocron tutorial
@@ -607,7 +607,7 @@ function TutorialScreenPlay:handleRoomOne(pPlayer)
 		elseif (curStep == 5) then -- Move to next room
 			player:sendSystemMessage("@newbie_tutorial/system_messages:move_to_item_room")
 			player:playMusicMessage("sound/tut_06_excellent.snd")
-			createEvent(15000, "TutorialScreenPlay", "doMoveToItemRoomReminder", pPlayer)
+			createEvent(15000, "TutorialScreenPlay", "doMoveToItemRoomReminder", pPlayer, "")
 		end
 
 		writeData(playerID .. ":tutorial:currentStep:r1", curStep + 1)
@@ -639,7 +639,7 @@ function TutorialScreenPlay:chatEvent(pPlayer, chatMessage)
 
 	if (readData(playerID .. ":tutorial:waitingOnChat") == 1) then
 		deleteData(playerID .. ":tutorial:waitingOnChat")
-		createEvent(2000, "TutorialScreenPlay", "handleRoomOne", pPlayer)
+		createEvent(2000, "TutorialScreenPlay", "handleRoomOne", pPlayer, "")
 	end
 
 	return 1
@@ -660,7 +660,7 @@ function TutorialScreenPlay:doChatReminder(pPlayer)
 			player:sendNewbieTutorialRequest("chatbox")
 			player:sendSystemMessage("@newbie_tutorial/system_messages:repeatchatprompt")
 			player:playMusicMessage("sound/tut_05_remind_chat.snd")
-			createEvent(15000, "TutorialScreenPlay", "doChatReminder", pPlayer)
+			createEvent(15000, "TutorialScreenPlay", "doChatReminder", pPlayer, "")
 		end
 	end)
 end
@@ -678,7 +678,7 @@ function TutorialScreenPlay:holocronEvent(pPlayer)
 	local playerID = SceneObject(pPlayer):getObjectID()
 
 	if (readData(playerID .. ":tutorial:waitingOnHolocron") == 1) then
-		createEvent(3000, "TutorialScreenPlay", "handleRoomOne", pPlayer)
+		createEvent(3000, "TutorialScreenPlay", "handleRoomOne", pPlayer, "")
 	end
 
 	return 1
@@ -709,7 +709,7 @@ function TutorialScreenPlay:handleRoomTwo(pPlayer)
 			CreatureObject(pPlayer):playMusicMessage("sound/tut_08_imperialofficer.snd")
 			spatialChat(pGreeter, "@newbie_tutorial/newbie_convo:greeting")
 			createObserver(OBJECTRADIALOPENED, "TutorialScreenPlay", "greeterRadialEvent", pGreeter)
-			createEvent(15000, "TutorialScreenPlay", "doGreeterConvoReminder", pPlayer)
+			createEvent(15000, "TutorialScreenPlay", "doGreeterConvoReminder", pPlayer, "")
 		end
 
 	elseif (curStep == 1) then -- Open item drum
@@ -727,26 +727,26 @@ function TutorialScreenPlay:handleRoomTwo(pPlayer)
 			createObserver(CLOSECONTAINER, "TutorialScreenPlay", "drumCloseEvent", pDrum)
 		end
 
-		createEvent(15000, "TutorialScreenPlay", "doDrumRadialReminder", pPlayer)
+		createEvent(15000, "TutorialScreenPlay", "doDrumRadialReminder", pPlayer, "")
 	elseif (curStep == 2) then -- Close inventory
 		CreatureObject(pPlayer):sendNewbieTutorialRequest("closeInventory")
 		createObserver(NEWBIECLOSEINVENTORY, "TutorialScreenPlay", "closeInventoryEvent", pPlayer)
 		CreatureObject(pPlayer):playMusicMessage("sound/tut_26_closeinventory.snd")
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:close_inventory")
-		createEvent(15000, "TutorialScreenPlay", "doCloseInventoryReminder", pPlayer)
+		createEvent(15000, "TutorialScreenPlay", "doCloseInventoryReminder", pPlayer, "")
 	elseif (curStep == 3) then -- Toolbar
 		CreatureObject(pPlayer):sendNewbieTutorialEnableHudElement("toolbar", 1, 3)
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:show_toolbar")
 		CreatureObject(pPlayer):playMusicMessage("sound/tut_23_toolbar.snd")
-		createEvent(5000, "TutorialScreenPlay", "handleRoomTwo", pPlayer)
+		createEvent(5000, "TutorialScreenPlay", "handleRoomTwo", pPlayer, "")
 	elseif (curStep == 4) then -- Toolbar drag
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:tut_00_toolbardrag")
 		CreatureObject(pPlayer):playMusicMessage("sound/tut_00_toolbardrag.snd")
-		createEvent(15000, "TutorialScreenPlay", "handleRoomTwo", pPlayer)
+		createEvent(15000, "TutorialScreenPlay", "handleRoomTwo", pPlayer, "")
 	elseif (curStep == 5) then -- Move to next room
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:visit_commerce_room")
 		CreatureObject(pPlayer):playMusicMessage("sound/tut_27_proceed.snd")
-		createEvent(20000, "TutorialScreenPlay", "doCommerceRoomReminder", pPlayer)
+		createEvent(20000, "TutorialScreenPlay", "doCommerceRoomReminder", pPlayer, "")
 	end
 
 	writeData(playerID .. ":tutorial:currentStep:r2", curStep + 1)
@@ -823,7 +823,7 @@ function TutorialScreenPlay:drumCloseEvent(pDrum, pPlayer)
 
 		player:sendNewbieTutorialRequest("openInventory")
 		createObserver(NEWBIEOPENINVENTORY, "TutorialScreenPlay", "openInventoryEvent", pPlayer)
-		createEvent(20000, "TutorialScreenPlay", "doOpenInventoryReminder", pPlayer)
+		createEvent(20000, "TutorialScreenPlay", "doOpenInventoryReminder", pPlayer, "")
 	end)
 
 	return 1
@@ -910,7 +910,7 @@ function TutorialScreenPlay:closeInventoryEvent(pPlayer)
 
 	writeData(SceneObject(pPlayer):getObjectID() .. ":tutorial:hasClosedInventory", 1)
 
-	createEvent(5000, "TutorialScreenPlay", "handleRoomTwo", pPlayer)
+	createEvent(5000, "TutorialScreenPlay", "handleRoomTwo", pPlayer, "")
 
 	return 1
 end
@@ -948,7 +948,7 @@ function TutorialScreenPlay:melonRadialUsedEvent(pItem, pPlayer, radialID)
 
 	CreatureObject(pPlayer):playMusicMessage("sound/tut_22_attributes.snd")
 	CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:explain_item_used")
-	createEvent(10000, "TutorialScreenPlay", "handleRoomTwo", pPlayer)
+	createEvent(10000, "TutorialScreenPlay", "handleRoomTwo", pPlayer, "")
 	return 1
 end
 
@@ -1140,7 +1140,7 @@ function TutorialScreenPlay:bazaarRadialEvent(pBazaar, pPlayer)
 		return 1
 	end
 
-	createEvent(1000, "TutorialScreenPlay", "bazaarExplanation", pPlayer)
+	createEvent(1000, "TutorialScreenPlay", "bazaarExplanation", pPlayer, "")
 
 	writeData(playerID .. ":tutorial:hasOpenedBazaarRadial", 1)
 
@@ -1161,7 +1161,7 @@ function TutorialScreenPlay:bazaarExplanation(pPlayer)
 
 	-- Reschedule if player is receiving bank explanation
 	if (readData(playerID .. ":tutorial:bankExplanationStep") ~= 0) then
-		createEvent(5000, "TutorialScreenPlay", "bazaarExplanation", pPlayer)
+		createEvent(5000, "TutorialScreenPlay", "bazaarExplanation", pPlayer, "")
 		return
 	end
 
@@ -1172,12 +1172,12 @@ function TutorialScreenPlay:bazaarExplanation(pPlayer)
 			player:sendSystemMessage("@newbie_tutorial/system_messages:bazaar_info_1")
 			player:playMusicMessage("sound/tut_29_itemdispenser.snd")
 			writeData(playerID .. ":tutorial:bazaarExplanationStep", 1)
-			createEvent(6000, "TutorialScreenPlay", "bazaarExplanation", pPlayer)
+			createEvent(6000, "TutorialScreenPlay", "bazaarExplanation", pPlayer, "")
 		elseif (curBazaarStep == 1) then
 			player:sendSystemMessage("@newbie_tutorial/system_messages:bazaar_info_2")
 			player:playMusicMessage("sound/tut_00_bazaar_tease.snd")
 			writeData(playerID .. ":tutorial:bazaarExplanationStep", 2)
-			createEvent(7000, "TutorialScreenPlay", "bazaarExplanation", pPlayer)
+			createEvent(7000, "TutorialScreenPlay", "bazaarExplanation", pPlayer, "")
 		elseif (curBazaarStep == 2) then
 			player:sendSystemMessage("@newbie_tutorial/system_messages:bazaar_info_3")
 			deleteData(playerID .. ":tutorial:bazaarExplanationStep")
@@ -1201,7 +1201,7 @@ function TutorialScreenPlay:bankRadialEvent(pBank, pPlayer)
 		return 1
 	end
 
-	createEvent(1000, "TutorialScreenPlay", "bankExplanation", pPlayer)
+	createEvent(1000, "TutorialScreenPlay", "bankExplanation", pPlayer, "")
 
 	writeData(playerID .. ":tutorial:hasOpenedBankRadial", 1)
 
@@ -1222,7 +1222,7 @@ function TutorialScreenPlay:bankExplanation(pPlayer)
 
 	-- Reschedule if player is receiving bazaar explanation
 	if (readData(playerID .. ":tutorial:bazaarExplanationStep") ~= 0) then
-		createEvent(5000, "TutorialScreenPlay", "bankExplanation", pPlayer)
+		createEvent(5000, "TutorialScreenPlay", "bankExplanation", pPlayer, "")
 		return
 	end
 
@@ -1232,24 +1232,24 @@ function TutorialScreenPlay:bankExplanation(pPlayer)
 			player:playMusicMessage("sound/tut_32_bank.snd")
 			player:sendSystemMessage("@newbie_tutorial/system_messages:bank_info_1")
 			writeData(playerID .. ":tutorial:bankExplanationStep", 1)
-			createEvent(7000, "TutorialScreenPlay", "bankExplanation", pPlayer)
+			createEvent(7000, "TutorialScreenPlay", "bankExplanation", pPlayer, "")
 		elseif (curBankStep == 1) then
 			player:sendSystemMessage("@newbie_tutorial/system_messages:bank_info_2")
 			writeData(playerID .. ":tutorial:bankExplanationStep", 2)
-			createEvent(7000, "TutorialScreenPlay", "bankExplanation", pPlayer)
+			createEvent(7000, "TutorialScreenPlay", "bankExplanation", pPlayer, "")
 		elseif (curBankStep == 2) then
 			player:sendSystemMessage("@newbie_tutorial/system_messages:bank_info_3")
 			writeData(playerID .. ":tutorial:bankExplanationStep", 3)
-			createEvent(7000, "TutorialScreenPlay", "bankExplanation", pPlayer)
+			createEvent(7000, "TutorialScreenPlay", "bankExplanation", pPlayer, "")
 		elseif (curBankStep == 3) then
 			player:sendSystemMessage("@newbie_tutorial/system_messages:bank_info_4")
 			writeData(playerID .. ":tutorial:bankExplanationStep", 4)
-			createEvent(5000, "TutorialScreenPlay", "bankExplanation", pPlayer)
+			createEvent(5000, "TutorialScreenPlay", "bankExplanation", pPlayer, "")
 		elseif (curBankStep == 4) then
 			player:sendSystemMessage("@newbie_tutorial/system_messages:bank_info_5")
 			player:playMusicMessage("sound/tut_33_cash.snd")
 			writeData(playerID .. ":tutorial:bankExplanationStep", 5)
-			createEvent(3000, "TutorialScreenPlay", "bankExplanation", pPlayer)
+			createEvent(3000, "TutorialScreenPlay", "bankExplanation", pPlayer, "")
 		elseif (curBankStep == 5) then
 			deleteData(playerID .. ":tutorial:bankExplanationStep")
 		end
@@ -1264,7 +1264,7 @@ function TutorialScreenPlay:doBankUserAnimation(pBanker)
 
 	CreatureObject(pBanker):doAnimation("manipulate_medium")
 
-	createEvent(getRandomNumber(10, 30) * 1000, "TutorialScreenPlay", "doBankUserAnimation", pBanker)
+	createEvent(getRandomNumber(10, 30) * 1000, "TutorialScreenPlay", "doBankUserAnimation", pBanker, "")
 end
 
 -- ROOM FOUR
@@ -1363,17 +1363,17 @@ function TutorialScreenPlay:handleRoomSix(pPlayer)
 		end
 
 		CreatureObject(pPanicNpc):playEffect("clienteffect/combat_explosion_lair_large.cef", "")
-		createEvent(1000, "TutorialScreenPlay", "doStartPanic", pPanicNpc)
-		createEvent(2500, "TutorialScreenPlay", "handleRoomSix", pPlayer)
+		createEvent(1000, "TutorialScreenPlay", "doStartPanic", pPanicNpc, "")
+		createEvent(2500, "TutorialScreenPlay", "handleRoomSix", pPlayer, "")
 	elseif (curStep == 1) then -- Radar
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:radar")
 		CreatureObject(pPlayer):playMusicMessage("sound/tut_41_advancewarning.snd")
 		CreatureObject(pPlayer):sendNewbieTutorialEnableHudElement("radar", 1, 3)
-		createEvent(8000, "TutorialScreenPlay", "handleRoomSix", pPlayer)
+		createEvent(8000, "TutorialScreenPlay", "handleRoomSix", pPlayer, "")
 	elseif (curStep == 2) then -- Radar again
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:radar_more")
 		CreatureObject(pPlayer):playMusicMessage("sound/tut_42_map.snd")
-		createEvent(15000, "TutorialScreenPlay", "handleRoomSix", pPlayer)
+		createEvent(15000, "TutorialScreenPlay", "handleRoomSix", pPlayer, "")
 	elseif (curStep == 3) then -- overlay
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:tut_43")
 		CreatureObject(pPlayer):playMusicMessage("sound/tut_43_zoommap.snd")
@@ -1423,7 +1423,7 @@ function TutorialScreenPlay:doPanicYelling(pNpc)
 
 	if (panicYell < 3) then
 		writeData(SceneObject(pNpc):getObjectID() .. ":panicYell", panicYell + 1)
-		createEvent(10000, "TutorialScreenPlay", "doPanicYelling", pNpc)
+		createEvent(10000, "TutorialScreenPlay", "doPanicYelling", pNpc, "")
 	end
 end
 
@@ -1444,7 +1444,7 @@ function TutorialScreenPlay:handleRoomSeven(pPlayer)
 		local celebID = readData(playerID .. ":tutorial:roomSevenNervousGuy" .. i)
 		local pCeleb = getSceneObject(celebID)
 		if (pCeleb ~= nil) then
-			createEvent(getRandomNumber(5,10) * 1000, "TutorialScreenPlay", "doNervousGuySpeak", pCeleb)
+			createEvent(getRandomNumber(5,10) * 1000, "TutorialScreenPlay", "doNervousGuySpeak", pCeleb, "")
 		end
 	end
 
@@ -1477,7 +1477,7 @@ function TutorialScreenPlay:doNervousGuySpeak(pGuy)
 		spatialChat(pGuy, "@newbie_tutorial/newbie_convo:nervous_guy" .. getRandomNumber(1,5))
 	end
 
-	createEvent(getRandomNumber(20,30) * 1000, "TutorialScreenPlay", "doNervousGuySpeak", pGuy)
+	createEvent(getRandomNumber(20,30) * 1000, "TutorialScreenPlay", "doNervousGuySpeak", pGuy, "")
 end
 
 -- Hallway with debris blocking path, must be destroyed
@@ -1506,7 +1506,7 @@ function TutorialScreenPlay:debrisDestroyed(pDebris, pAttacker)
 		return 1
 	end
 
-	createEvent(1000, "TutorialScreenPlay", "removeDebris", pDebris)
+	createEvent(1000, "TutorialScreenPlay", "removeDebris", pDebris, "")
 
 	return 1
 end
@@ -1545,11 +1545,11 @@ function TutorialScreenPlay:handleRoomEight(pPlayer)
 		CreatureObject(pPlayer):sendNewbieTutorialEnableHudElement("all", 1, 0)
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:explain_combat_1")
 		CreatureObject(pPlayer):playMusicMessage("sound/tut_47_defaultattack.snd")
-		createEvent(5000, "TutorialScreenPlay", "handleRoomEight", pPlayer)
+		createEvent(5000, "TutorialScreenPlay", "handleRoomEight", pPlayer, "")
 	elseif (curStep == 1) then -- Explain combat message 2, pirate taunts again
 		spatialMoodChat(pPirate, "@newbie_tutorial/newbie_convo:pirate_taunt2", 4, 0)
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:explain_combat_2")
-		createEvent(5000, "TutorialScreenPlay", "handleRoomEight", pPlayer)
+		createEvent(5000, "TutorialScreenPlay", "handleRoomEight", pPlayer, "")
 	elseif (curStep == 2) then -- Explain combat message 3
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:explain_combat_3")
 	end
@@ -1574,10 +1574,10 @@ function TutorialScreenPlay:handlePirateGrenade(pPlayer)
 	if (grenadeStep == 0) then -- Pirate taunts that he has grenade
 		spatialMoodChat(pPirate, "@newbie_tutorial/newbie_convo:pirate_taunt3", 4, 0)
 		writeData(SceneObject(pPirate):getObjectID() .. ":grenadeStep", 1)
-		createEvent(3000, "TutorialScreenPlay", "handlePirateGrenade", pPlayer)
+		createEvent(3000, "TutorialScreenPlay", "handlePirateGrenade", pPlayer, "")
 	elseif (grenadeStep == 1) then -- Faulty grenade, schedules explosion
 		spatialMoodChat(pPirate, "@newbie_tutorial/newbie_convo:pirate_taunt4", 4, 0)
-		createEvent(2000, "TutorialScreenPlay", "doGrenadeExplode", pPirate)
+		createEvent(2000, "TutorialScreenPlay", "doGrenadeExplode", pPirate, "")
 	end
 end
 
@@ -1621,7 +1621,7 @@ function TutorialScreenPlay:pirateDefenderAdded(pPirate, pPlayer)
 		return 1
 	end
 
-	createEvent(10000, "TutorialScreenPlay", "handlePirateGrenade", pPlayer)
+	createEvent(10000, "TutorialScreenPlay", "handlePirateGrenade", pPlayer, "")
 	spatialMoodChat(pPirate, "@newbie_tutorial/newbie_convo:pirate_attack", 4, 0)
 
 	return 1
@@ -1682,15 +1682,15 @@ function TutorialScreenPlay:handleRoomNine(pPlayer)
 			local celebID = readData(playerID .. ":tutorial:roomNineCeleb" .. i)
 			local pCeleb = getSceneObject(celebID)
 			if (pCeleb ~= nil) then
-				createEvent(getRandomNumber(2,4) * 1000, "TutorialScreenPlay", "doCelebAnimation", pCeleb)
-				createEvent(getRandomNumber(5,10) * 1000, "TutorialScreenPlay", "doCelebSpeak", pCeleb)
+				createEvent(getRandomNumber(2,4) * 1000, "TutorialScreenPlay", "doCelebAnimation", pCeleb, "")
+				createEvent(getRandomNumber(5,10) * 1000, "TutorialScreenPlay", "doCelebSpeak", pCeleb, "")
 			end
 		end
 
 	elseif (curStep == 1) then -- Explains character sheet
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:tut_51")
 		CreatureObject(pPlayer):playMusicMessage("sound/tut_51_charactersheet.snd")
-		createEvent(10000, "TutorialScreenPlay", "handleRoomNine", pPlayer)
+		createEvent(10000, "TutorialScreenPlay", "handleRoomNine", pPlayer, "")
 	elseif (curStep == 2) then -- Advises to move to next room
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:visit_commerce_room") -- Not actually commerce room, but only string that matches sound
 		CreatureObject(pPlayer):playMusicMessage("sound/tut_52_walkdown.snd")
@@ -1716,7 +1716,7 @@ function TutorialScreenPlay:doCelebSpeak(pCeleb)
 		spatialChat(pCeleb, "@newbie_tutorial/newbie_convo:celeb_guy" .. getRandomNumber(1,5))
 	end
 
-	createEvent(getRandomNumber(20,30) * 1000, "TutorialScreenPlay", "doCelebSpeak", pCeleb)
+	createEvent(getRandomNumber(20,30) * 1000, "TutorialScreenPlay", "doCelebSpeak", pCeleb, "")
 end
 
 -- Random animated cheering event for celebs in room
@@ -1733,7 +1733,7 @@ function TutorialScreenPlay:doCelebAnimation(pCeleb)
 	end
 
 	CreatureObject(pCeleb):doAnimation("celebrate")
-	createEvent(getRandomNumber(5,10) * 1000, "TutorialScreenPlay", "doCelebAnimation", pCeleb)
+	createEvent(getRandomNumber(5,10) * 1000, "TutorialScreenPlay", "doCelebAnimation", pCeleb, "")
 end
 
 -- Triggered when ending conversation with training room officer, explains skill trainer
@@ -1774,7 +1774,7 @@ function TutorialScreenPlay:finishedTrainerConvo(pOfficer, pPlayer)
 
 	CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:tut_50")
 	CreatureObject(pPlayer):playMusicMessage("sound/tut_50_skillbrowser.snd")
-	createEvent(25000, "TutorialScreenPlay", "handleRoomNine", pPlayer)
+	createEvent(25000, "TutorialScreenPlay", "handleRoomNine", pPlayer, "")
 	return 1
 end
 
@@ -1795,7 +1795,7 @@ function TutorialScreenPlay:handleRoomTen(pPlayer)
 	if (curStep == 0) then -- Explain Missions
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:tut_53")
 		CreatureObject(pPlayer):playMusicMessage("sound/tut_53_missions.snd")
-		createEvent(12000, "TutorialScreenPlay", "handleRoomTen", pPlayer)
+		createEvent(12000, "TutorialScreenPlay", "handleRoomTen", pPlayer, "")
 	elseif (curStep == 1) then -- Explain npc missions
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:tut_54")
 		CreatureObject(pPlayer):playMusicMessage("sound/tut_54_npcmission.snd")
@@ -1823,7 +1823,7 @@ function TutorialScreenPlay:doTrappedGuySpam(pMobile)
 		spatialChat(pMobile, "@newbie_tutorial/newbie_convo:trapped_guy" .. getRandomNumber(1,5))
 	end
 
-	createEvent(getRandomNumber(20,30) * 1000, "TutorialScreenPlay", "doTrappedGuySpam", pMobile)
+	createEvent(getRandomNumber(20,30) * 1000, "TutorialScreenPlay", "doTrappedGuySpam", pMobile, "")
 end
 
 -- ROOM ELEVEN
@@ -1864,7 +1864,7 @@ function TutorialScreenPlay:doRefugeeSpam(pMobile)
 		spatialChat(pMobile, "@newbie_tutorial/newbie_convo:refugee" .. getRandomNumber(1,5))
 	end
 
-	createEvent(getRandomNumber(20,30) * 1000, "TutorialScreenPlay", "doRefugeeSpam", pMobile)
+	createEvent(getRandomNumber(20,30) * 1000, "TutorialScreenPlay", "doRefugeeSpam", pMobile, "")
 end
 
 -- Event to initiate trooper pathing back and forth between two set points
@@ -1911,7 +1911,7 @@ function TutorialScreenPlay:trooperDestReached(pMobile)
 		writeData(SceneObject(pMobile):getObjectID() .. ":currentLoc", 1)
 	end
 
-	createEvent(45000, "TutorialScreenPlay", "doRoomElevenTrooperPathing", pMobile)
+	createEvent(45000, "TutorialScreenPlay", "doRoomElevenTrooperPathing", pMobile, "")
 
 	return 0
 end

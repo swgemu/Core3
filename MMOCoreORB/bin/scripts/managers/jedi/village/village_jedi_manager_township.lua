@@ -232,7 +232,7 @@ function VillageJediManagerTownship:doOnlinePhaseChangeFails(pCreature, currentP
 end
 
 function VillageJediManagerTownship.initPukingVillager(pNpc)
-	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doPukingVillager", pNpc) -- 2-5 minute initial delay
+	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doPukingVillager", pNpc, "") -- 2-5 minute initial delay
 end
 
 function VillageJediManagerTownship:doPukingVillager(pNpc)
@@ -244,11 +244,11 @@ function VillageJediManagerTownship:doPukingVillager(pNpc)
 
 	spatialChat(pNpc, "@quest/force_sensitive/fs_sick:fs_response0" .. getRandomNumber(1,7))
 
-	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doPukingVillager", pNpc) -- 2-5 minute delay
+	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doPukingVillager", pNpc, "") -- 2-5 minute delay
 end
 
 function VillageJediManagerTownship.initPanickedVillager(pNpc)
-	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doPanickedVillager", pNpc) -- 2-5 minute initial delay
+	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doPanickedVillager", pNpc, "") -- 2-5 minute initial delay
 end
 
 function VillageJediManagerTownship:doPanickedVillager(pNpc)
@@ -266,7 +266,7 @@ function VillageJediManagerTownship:doPanickedVillager(pNpc)
 		spatialChat(pNpc, "@quest/force_sensitive/fs_panicked:fs_response" .. rand)
 	end
 
-	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doPanickedVillager", pNpc) -- 2-5 minute delay
+	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doPanickedVillager", pNpc, "") -- 2-5 minute delay
 end
 
 function VillageJediManagerTownship.initWoundedVillager(pNpc)
@@ -275,7 +275,7 @@ function VillageJediManagerTownship.initWoundedVillager(pNpc)
 	end
 
 	CreatureObject(pNpc):setPosture(KNOCKEDDOWN)
-	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doWoundedVillager", pNpc) -- 2-5 minute initial delay
+	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doWoundedVillager", pNpc, "") -- 2-5 minute initial delay
 end
 
 function VillageJediManagerTownship:doWoundedVillager(pNpc)
@@ -291,7 +291,7 @@ function VillageJediManagerTownship:doWoundedVillager(pNpc)
 		spatialChat(pNpc, "@quest/force_sensitive/fs_lamentations:fs_response" .. rand)
 	end
 
-	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doWoundedVillager", pNpc) -- 2-5 minute delay
+	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doWoundedVillager", pNpc, "") -- 2-5 minute delay
 end
 
 function VillageJediManagerTownship.initMedDroid(pNpc)
@@ -301,7 +301,7 @@ function VillageJediManagerTownship.initMedDroid(pNpc)
 end
 
 function VillageJediManagerTownship.initVillageRepairer(pNpc)
-	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doVillageRepairer", pNpc) -- 2-5 minute initial delay
+	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doVillageRepairer", pNpc, "") -- 2-5 minute initial delay
 end
 
 function VillageJediManagerTownship:doVillageRepairer(pNpc)
@@ -324,7 +324,7 @@ function VillageJediManagerTownship:doVillageRepairer(pNpc)
 		spatialChat(pNpc, "@quest/force_sensitive/fs_wall_repair:fs_response0" .. rand)
 	end
 
-	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doVillageRepairer", pNpc) -- 2-5 minute delay
+	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doVillageRepairer", pNpc, "") -- 2-5 minute delay
 end
 
 MedDroidContainerComponent = {}

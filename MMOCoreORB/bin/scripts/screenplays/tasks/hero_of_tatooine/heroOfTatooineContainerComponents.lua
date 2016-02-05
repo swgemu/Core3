@@ -48,7 +48,7 @@ function heroOfTatooineRockCrevice:transferObject(pCrevice, pIngredient, slot)
 		writeData("hero_of_tat:explosivePlanterID", SceneObject(pParent):getObjectID())
 		CreatureObject(pParent):sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_explosive_set")
 		SceneObject(pIngredient):destroyObjectFromWorld()
-		createEvent(1000 * 10, "HeroOfTatooineScreenPlay", "destroyCaveWall", pCrevice)
+		createEvent(1000 * 10, "HeroOfTatooineScreenPlay", "destroyCaveWall", pCrevice, "")
 		return TRANSFERSUCCESS
 	end
 

@@ -129,7 +129,7 @@ function Escort:taskFinish(pCreatureObject)
 
 	if (pEscort ~= nil) then
 		AiAgent(pEscort):setFollowObject(nil)
-		createEvent(self.escortDespawnTime, self.taskName, "handleEscortDespawn", pEscort)
+		createEvent(self.escortDespawnTime, self.taskName, "handleEscortDespawn", pEscort, "")
 	end
 
 	deleteData(playerID .. ":escortInProgress")

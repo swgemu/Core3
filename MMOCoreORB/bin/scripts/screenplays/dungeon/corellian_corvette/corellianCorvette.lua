@@ -80,7 +80,7 @@ function CorellianCorvetteScreenPlay:activate(pPlayer, faction, questType)
 		if corvetteId ~= 0 then
 			writeData(SceneObject(pPlayer):getObjectID() .. "corvetteId", corvetteId)
 			writeStringData(SceneObject(pPlayer):getObjectID() .. "questType", questType)
-			createEvent(1000, "CorellianCorvetteScreenPlay", "transportPlayer", pPlayer)
+			createEvent(1000, "CorellianCorvetteScreenPlay", "transportPlayer", pPlayer, "")
 			--TODO prompt nearby group members for travel
 			return 1
 
@@ -112,7 +112,7 @@ end
 
 function CorellianCorvetteScreenPlay:startQuest(pCorvette, questType)
 	writeData("corvetteActive:" .. SceneObject(pCorvette):getObjectID(), 1)
-	createEvent(5 * 60 * 1000, "CorellianCorvetteScreenPlay", "handleQuestFailure", pCorvette)
+	createEvent(5 * 60 * 1000, "CorellianCorvetteScreenPlay", "handleQuestFailure", pCorvette, "")
 	--TODO add timer countdowns
 	--TODO spawn quest mobs, scene objects, and objectives
 end
@@ -133,7 +133,7 @@ function CorellianCorvetteScreenPlay:onEnterCorvette(pCorvette, pPlayer)
 	if SceneObject(pPlayer):isPlayerCreature() then
 		local active = readData("corvetteActive:" .. SceneObject(pCorvette):getObjectID())
 		if active ~= 1 then
-			createEvent(10 * 1000, "CorellianCorvetteScreenPlay", "handleNotAuthorized", pPlayer)
+			createEvent(10 * 1000, "CorellianCorvetteScreenPlay", "handleNotAuthorized", pPlayer, "")
 			return 0
 		end
 
@@ -142,7 +142,7 @@ function CorellianCorvetteScreenPlay:onEnterCorvette(pCorvette, pPlayer)
 		writeData("corvettePlayerCount:" .. SceneObject(pCorvette):getObjectID(), playerCount + 1)
 
 		if playerCount > 10 then
-			createEvent(10 * 1000, "CorellianCorvetteScreenPlay", "handleTooMany", pPlayer)
+			createEvent(10 * 1000, "CorellianCorvetteScreenPlay", "handleTooMany", pPlayer, "")
 			return 0
 		end
 	end
@@ -162,12 +162,12 @@ end
 
 function CorellianCorvetteScreenPlay:handleNotAuthorized(pPlayer)
 	CreatureObject(pPlayer):sendSystemMessage("@dungeon/space_dungeon:not_authorized") -- You do not have the proper authorization to be in this area.
-	createEvent(2 * 1000, "CorellianCorvetteScreenPlay", "ejectPlayer", pPlayer)
+	createEvent(2 * 1000, "CorellianCorvetteScreenPlay", "ejectPlayer", pPlayer, "")
 end
 
 function CorellianCorvetteScreenPlay:handleTooMany(pPlayer)
 	CreatureObject(pPlayer):sendSystemMessage("@dungeon/space_dungeon:no_room_remaining") -- There are too many people in this area. Return transportation initiated.
-	createEvent(2 * 1000, "CorellianCorvetteScreenPlay", "ejectPlayer", pPlayer)
+	createEvent(2 * 1000, "CorellianCorvetteScreenPlay", "ejectPlayer", pPlayer, "")
 end
 
 function CorellianCorvetteScreenPlay:handleQuestFailure(pCorvette)
@@ -191,7 +191,7 @@ function CorellianCorvetteScreenPlay:ejectAllPlayers(pCorvette)
 
 		for i = 1, #playersToEject, 1 do
 			local pObject = playersToEject[i]
-			createEvent(1000, "CorellianCorvetteScreenPlay", "ejectPlayer", pObject)
+			createEvent(1000, "CorellianCorvetteScreenPlay", "ejectPlayer", pObject, "")
 		end
 	end)
 end

@@ -106,7 +106,7 @@ function OldManEncounter:scheduleDespawnOfOldMan(pCreatureObject)
 	end
 
 	Logger:log("Scheduling despawn of old man.", LT_INFO)
-	createEvent(OLD_MAN_DESPAWN_TIME, "OldManEncounter", "handleScheduledDespawn", pCreatureObject)
+	createEvent(OLD_MAN_DESPAWN_TIME, "OldManEncounter", "handleScheduledDespawn", pCreatureObject, "")
 end
 
 -- Give the force crystal to the player.

@@ -32,7 +32,7 @@ function tutorialCloningTerminal:handleObjectMenuSelect(pSceneObject, pPlayer, s
 	if (selectedID == 20) then
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:declare_cloned")
 		writeData(SceneObject(pPlayer):getObjectID() .. ":tutorial:cloningTerminalUsed", 1)
-		createEvent(1000, "TutorialScreenPlay", "handleRoomFive", pPlayer)
+		createEvent(1000, "TutorialScreenPlay", "handleRoomFive", pPlayer, "")
 	end
 
 	return 0

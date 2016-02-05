@@ -455,7 +455,7 @@ function WarrenScreenPlay:notifyUseCRTerminal(pTerminal, pPlayer)
 
 	if (self:isMCRElevatorActive()) then
 		--Then they must've just activated it? right?
-		createEvent(self.elevatorRelock, "WarrenScreenPlay", "deactivateElevator", pTerminal)
+		createEvent(self.elevatorRelock, "WarrenScreenPlay", "deactivateElevator", pTerminal, "")
 	end
 
 	SceneObject(pTerminal):setCustomObjectName("theme_park/warren/warren_system_messages", "mcr_term_name_off")
@@ -479,7 +479,7 @@ function WarrenScreenPlay:recycleMirlaPassword()
 	--Also relock the inquisitor cell.
 	writeData("warren:inquisitor:locked", 1)
 
-	createEvent(self.recycleMirla, "WarrenScreenPlay", "recycleMirlaPassword", nil)
+	createEvent(self.recycleMirla, "WarrenScreenPlay", "recycleMirlaPassword", nil, "")
 end
 
 function WarrenScreenPlay:recycleReactorRoom()
@@ -591,7 +591,7 @@ function WarrenScreenPlay:notifyDebrisDestroyed(pDebris, pPlayer)
 	SceneObject(pDebris):destroyObjectFromWorld()
 	CreatureObject(pPlayer):clearCombatState(1)
 
-	createEvent(self.debris.respawn, "WarrenScreenPlay", "respawnDebris", pDebris)
+	createEvent(self.debris.respawn, "WarrenScreenPlay", "respawnDebris", pDebris, "")
 	return 0
 end
 
@@ -684,7 +684,7 @@ function WarrenScreenPlay:deactivateTurret(pTerminal)
 			SceneObject(pTurret):destroyObjectFromWorld()
 		end
 	end
-	createEvent(self.turret.respawn, "WarrenScreenPlay", "activateTurret", pTerminal)
+	createEvent(self.turret.respawn, "WarrenScreenPlay", "activateTurret", pTerminal, "")
 end
 
 function WarrenScreenPlay:refillContainer(pContainer)
@@ -834,7 +834,7 @@ end
 
 function RespawnContainerContentsComponent:removeObject(pContainer, pObj, slot)
 	if (pContainer ~= nil) then
-		createEvent(WarrenScreenPlay.questItems["container_" .. SceneObject(pContainer):getObjectID()].respawn, "WarrenScreenPlay", "refillContainer", pContainer)
+		createEvent(WarrenScreenPlay.questItems["container_" .. SceneObject(pContainer):getObjectID()].respawn, "WarrenScreenPlay", "refillContainer", pContainer, "")
 	end
 	return -1
 end
@@ -887,7 +887,7 @@ function EnterReactorRoomComponent:transferObject(pContainer, pObj, slot)
 						BuildingObject(pWarren):broadcastSpecificCellPermissions(8575755)
 					end
 				end
-				createEvent(WarrenScreenPlay.recycleReactor, "WarrenScreenPlay", "recycleReactorRoom", nil)
+				createEvent(WarrenScreenPlay.recycleReactor, "WarrenScreenPlay", "recycleReactorRoom", nil, "")
 			end
 		end
 	end

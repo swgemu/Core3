@@ -24,11 +24,9 @@ include server.zone.objects.installation.components.TurretDataComponent;
 include server.zone.objects.tangible.terminal.components.TurretControlTerminalDataComponent;
 include server.zone.templates.ChildObject;
 include server.chat.StringIdChatParameter;
+include server.zone.managers.faction.FactionManager;
 
 class GCWManager extends ManagedService implements Logger {
-
-	public final static int IMPERIALHASH = 3679112276;
-	public final static int REBELHASH = 370444368;
 
 	public static final int NOTAFACTIONBASE = 0;
 	public static final int PLAYERFACTIONBASE = 1;
@@ -67,6 +65,7 @@ class GCWManager extends ManagedService implements Logger {
 	private transient int rebelScore;
 	private transient int imperialBases;
 	private transient int imperialScore;
+	private transient int winningFaction;
 	
 	public transient int gcwCheckTimer;
 	public transient int vulnerabilityDuration; 
@@ -100,6 +99,7 @@ class GCWManager extends ManagedService implements Logger {
 		imperialScore = 0;
 		rebelBases = 0;
 		rebelScore = 0;
+		winningFaction = FactionManager.FACTIONNEUTRAL;
 
 		gcwCheckTimer = 3600;
 		vulnerabilityDuration = 7200;
@@ -145,9 +145,7 @@ class GCWManager extends ManagedService implements Logger {
 	}
 
 	public native void loadLuaConfig();
-
 	public native void initialize();
-	
 	public native void start();
 
 	public native void registerGCWBase(BuildingObject building, boolean initializeBase);
@@ -415,15 +413,19 @@ class GCWManager extends ManagedService implements Logger {
 		imperialBases = val;
 	}
 
-	@local 
-	public unsigned int getWinningFaction() {
+	@local
+	private void updateWinningFaction() {
+		if (getRebelScore() > getImperialScore()) {
+			winningFaction = FactionManager.FACTIONREBEL;
+		} else if (getImperialScore() > getRebelScore()) {
+			winningFaction = FactionManager.FACTIONIMPERIAL;
+		}
+	}
 
-		if(getRebelScore() > getImperialScore())
-			return REBELHASH;
-		else if ( getImperialScore() > getRebelScore() )
-			return IMPERIALHASH;
-		else
-			return 1;
+	@local
+	@read
+	public unsigned int getWinningFaction() {
+		return winningFaction;
 	}
 
 	public native float getGCWDiscount(CreatureObject creature);

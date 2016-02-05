@@ -46,7 +46,7 @@ function RebelHideoutScreenPlay:notifyTurretDestroyed(pTurret, pPlayer)
 	ObjectManager.withSceneObject(pTurret, function(turret)
 		local turretData = self.turrets[readData(turret:getObjectID() .. ":rebel_hideout:turret_index")]
 		turret:destroyObjectFromWorld()
-		createEvent(1800000, "RebelHideoutScreenPlay", "respawnTurret", pTurret)
+		createEvent(1800000, "RebelHideoutScreenPlay", "respawnTurret", pTurret, "")
 	end)
 	CreatureObject(pPlayer):clearCombatState(1)
 	return 0

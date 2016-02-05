@@ -137,7 +137,7 @@ function TreasureMapMenuComponent:doExtractTreasure(pObject, pPlayer)
 		createObserver(OPENCONTAINER, "TreasureMapMenuComponent", "openChestEvent", pChest)
 		createObserver(CONTAINERCONTENTSCHANGED, "TreasureMapMenuComponent", "chestLootedEvent", pChest)
 		TreasureMapMenuComponent:spawnTreasureLoot(pChest, pPlayer, mapType)
-		createEvent(TREASURE_CHEST_LIFESPAN, "TreasureMapMenuComponent", "removeTreasureChest", pChest)
+		createEvent(TREASURE_CHEST_LIFESPAN, "TreasureMapMenuComponent", "removeTreasureChest", pChest, "")
 	end
 
 	TreasureMapMenuComponent:spawnTreasureDefenders(pObject, pPlayer, x, z, y, mapType)

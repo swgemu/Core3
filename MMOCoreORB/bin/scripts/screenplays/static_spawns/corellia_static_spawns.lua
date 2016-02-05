@@ -40,7 +40,7 @@ end
 function CorelliaStaticSpawnsScreenPlay:notifyTurretDestroyed(pTurret, pPlayer)
 	ObjectManager.withSceneObject(pTurret, function(turret)
 		turret:destroyObjectFromWorld()
-		createEvent(1800, "CorelliaStaticSpawnsScreenPlay", "respawnTurret", pTurret)
+		createEvent(1800, "CorelliaStaticSpawnsScreenPlay", "respawnTurret", pTurret, "")
 	end)
 	CreatureObject(pPlayer):clearCombatState(1)
 	return 0
