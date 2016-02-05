@@ -195,6 +195,7 @@ public:
 
 			ObjectController* objectController = zoneServer->getObjectController();
 			objectController->activateCommand(object, STRING_HASHCODE("dismount"), 0, 0, "");
+			return; // don't allow a dismount and parent update in the same frame, this looks better than bouncing their position
 		}
 
 		uint32 objectMovementCounter = object->getMovementCounter();
