@@ -87,7 +87,7 @@ public:
 			vec->safeCopyTo(closeEntryObjects);
 		} else {
 			droid->info("Null closeobjects vector in DroidMerchantBarkerTask::run()", true);
-			zone->getInRangeObjects(droid->getWorldPositionX(), droid->getWorldPositionX(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
+			zone->getInRangeObjects(droid->getWorldPositionX(), droid->getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
 		}
 
 		bool speak = false;
