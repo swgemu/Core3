@@ -29,7 +29,8 @@ r3_crafted_advanced = Creature:new {
 		"object/creature/npc/droid/crafted/r3_droid_advanced.iff"
 	},		
 	lootGroups = {},
-	weapons = {},
+	defaultAttack = "creaturerangedattack",
+  defaultWeapon = "object/weapon/ranged/droid/droid_astromech_ranged.iff",
 	conversationTemplate = "",
 }
 
