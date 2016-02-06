@@ -805,7 +805,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 	CloningBuildingObjectTemplate* cbot = cast<CloningBuildingObjectTemplate*>(closestCloning->getObjectTemplate());
 
 	//Check if player is city banned where the closest facility is or if it's not a valid cloner
-	if ((cr != NULL && cr->isBanned(playerID)) || cbot == NULL) {
+	if ((cr != NULL && cr->isBanned(playerID)) || cbot == NULL || (cbot->getFaction() != 0 && cbot->getFaction() != player->getFaction())) {
 		int distance = 50000;
 		for (int j = 0; j < locations.size(); j++) {
 			ManagedReference<SceneObject*> location = locations.get(j);
@@ -815,7 +815,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 
 			cbot = cast<CloningBuildingObjectTemplate*>(location->getObjectTemplate());
 
-			if (cbot == NULL)
+			if (cbot == NULL || (cbot->getFaction() != 0 && cbot->getFaction() != player->getFaction()))
 				continue;
 
 			cr = location->getCityRegion();
@@ -927,7 +927,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 		player->addShockWounds(100, true);
 	}
 
-	if (ghost->getFactionStatus() != FactionStatus::ONLEAVE)
+	if (ghost->getFactionStatus() != FactionStatus::ONLEAVE && cbot->getFaction() == 0)
 		ghost->setFactionStatus(FactionStatus::ONLEAVE);
 
 	if (ghost->hasPvpTef())

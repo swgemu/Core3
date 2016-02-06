@@ -125,6 +125,7 @@ includeFile("events/bestineMuseum.lua")
 includeFile("events/coa2Screenplay.lua")
 includeFile("events/eventPromoter.lua")
 includeFile("events/lifeDay.lua")
+includeFile("events/buffTerminalMenuComponent.lua")
 
 -- Hero of Tatooine
 includeFile("tasks/hero_of_tatooine/conversations/hermitConvoHandler.lua")

@@ -119,6 +119,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "isInCombat", &LuaCreatureObject::isInCombat },
 		{ "healDamage", &LuaCreatureObject::healDamage },
 		{ "getGroupID", &LuaCreatureObject::getGroupID },
+		{ "enhanceCharacter", &LuaCreatureObject::enhanceCharacter },
 		{ 0, 0 }
 };
 
@@ -912,4 +913,11 @@ int LuaCreatureObject::getGroupID(lua_State* L) {
 	lua_pushnumber(L, realObject->getGroupID());
 
 	return 1;
+}
+
+int LuaCreatureObject::enhanceCharacter(lua_State* L) {
+	PlayerManager* playerManager = realObject->getZoneServer()->getPlayerManager();
+	playerManager->enhanceCharacter(realObject);
+
+	return 0;
 }

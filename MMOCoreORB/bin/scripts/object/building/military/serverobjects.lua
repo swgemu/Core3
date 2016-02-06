@@ -45,6 +45,8 @@
 --Children folder includes
 
 -- Server Objects
+includeFile("building/military/event_imperial_cloning_facility.lua")
+includeFile("building/military/event_rebel_cloning_facility.lua")
 includeFile("building/military/military_abandoned_police_station_rebel.lua")
 includeFile("building/military/military_base_gate_house_imperial.lua")
 includeFile("building/military/military_base_gate_house_rebel.lua")

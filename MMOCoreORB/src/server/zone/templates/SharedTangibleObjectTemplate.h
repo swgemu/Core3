@@ -44,7 +44,7 @@ protected:
 
 	bool invisible;
 
-	int faction;
+	unsigned int faction;
 
 	VectorMap<String, int> skillMods;
 
@@ -123,7 +123,7 @@ public:
 		return playerUseMask;
 	}
 
-    inline int getFaction() const {
+    inline unsigned int getFaction() const {
     	return faction;
     }
 

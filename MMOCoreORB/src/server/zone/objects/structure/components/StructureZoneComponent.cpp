@@ -15,9 +15,9 @@
 void StructureZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zone) {
 	ZoneComponent::notifyInsertToZone(sceneObject, zone);
 
-	if(sceneObject->isGCWBase()){
+	if (sceneObject->isBuildingObject()) {
 		ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject);
-		if(building->hasTemplateChildCreatures())
+		if (building->hasTemplateChildCreatures())
 			building->spawnChildCreaturesFromTemplate();
 	}
 }

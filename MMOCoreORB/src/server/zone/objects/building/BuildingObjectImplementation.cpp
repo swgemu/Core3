@@ -49,6 +49,7 @@
 #include "server/zone/objects/creature/ai/AiAgent.h"
 
 #include "server/zone/managers/planet/MapLocationType.h"
+#include "server/zone/objects/building/components/GCWBaseContainerComponent.h"
 
 void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();
@@ -369,8 +370,9 @@ bool BuildingObjectImplementation::isCityBanned(CreatureObject* player){
 
 
 bool BuildingObjectImplementation::isAllowedEntry(CreatureObject* player) {
+	GCWBaseContainerComponent* conComp = containerComponent.castTo<GCWBaseContainerComponent*>();
 
-	if(isGCWBase()) {
+	if (conComp != NULL) {
 		if (factionBaseType == GCWManager::STATICFACTIONBASE)
 			return true;
 

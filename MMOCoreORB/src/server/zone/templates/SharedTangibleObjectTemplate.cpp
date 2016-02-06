@@ -47,7 +47,6 @@ SharedTangibleObjectTemplate::SharedTangibleObjectTemplate() {
 	skillMods.setNoDuplicateInsertPlan();
 	skillMods.setNullValue(0);
 
-	faction = 0;
 	factoryCrateSize = 100;
 }
 

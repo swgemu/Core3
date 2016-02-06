@@ -115,20 +115,25 @@ bool GCWBaseContainerComponent::checkPVEPermission(BuildingObject* building, Cre
 	DestructibleBuildingDataComponent* baseData = NULL;
 
 
-	if(data != NULL){
+	if(data != NULL) {
 		baseData = cast<DestructibleBuildingDataComponent*>(data->get());
 	}
 
-	if(baseData == NULL)
-		return false;
+	if (baseData != NULL) {
+		if (!baseData->hasDefense()) {
+			return true;
+		} else {
+			if (sendMessage)
+				creature->sendSystemMessage("@faction_perk:destroy_turrets"); // You cannot enter this HQ until all TUrrets have been destroyed
 
-	if(!baseData->hasDefense()){
-		return true;
-	} else{
-		if(sendMessage)
-			creature->sendSystemMessage("@faction_perk:destroy_turrets"); // You cannot enter this HQ until all TUrrets have been destroyed
-
-		return false;
+			return false;
+		}
+	} else {
+		if(creature->getFaction() != building->getFaction()) {
+			return false;
+		}
 	}
+
+	return true;
 }
 
