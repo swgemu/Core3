@@ -190,7 +190,7 @@ function RaceTrack:displayTrackBestTime(pObject,trackConfig)
 end
 
 function RaceTrack:createResetBestTimeEvent()
-	createEventActualTime(self.trackConfig.resetTime, self.trackConfig.className, "resetBestTimeEventHandler", "")
+	createEventActualTime(self.trackConfig.resetTime, self.trackConfig.className, "resetBestTimeEventHandler")
 	if self.trackConfig.debugMode==1 then
 		printf("Created CallBack Event for :" .. self.trackConfig.trackName .. "\n")
 	end
