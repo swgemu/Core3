@@ -120,6 +120,8 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "healDamage", &LuaCreatureObject::healDamage },
 		{ "getGroupID", &LuaCreatureObject::getGroupID },
 		{ "enhanceCharacter", &LuaCreatureObject::enhanceCharacter },
+		{ "setWounds", &LuaCreatureObject::setWounds },
+		{ "setShockWounds", &LuaCreatureObject::setShockWounds },
 		{ 0, 0 }
 };
 
@@ -918,6 +920,23 @@ int LuaCreatureObject::getGroupID(lua_State* L) {
 int LuaCreatureObject::enhanceCharacter(lua_State* L) {
 	PlayerManager* playerManager = realObject->getZoneServer()->getPlayerManager();
 	playerManager->enhanceCharacter(realObject);
+
+	return 0;
+}
+
+int LuaCreatureObject::setWounds(lua_State* L) {
+	int amount = lua_tointeger(L, -1);
+	int pool = lua_tointeger(L, -2);
+
+	realObject->setWounds(pool, amount, true);
+
+	return 0;
+}
+
+int LuaCreatureObject::setShockWounds(lua_State* L) {
+	int amount = lua_tointeger(L, -1);
+
+	realObject->setShockWounds(amount, true);
 
 	return 0;
 }
