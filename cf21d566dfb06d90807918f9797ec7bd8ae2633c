@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_0296eb94",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1904,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-02-07T00:27:32Z",
+      "side": 1,
+      "message": "I was thinking about it. This may fix our saber block issue but at the same time would probably cause issues with dodge foods. I need to look into this.",
+      "range": {
+        "startLine": 1904,
+        "startChar": 4,
+        "endLine": 1904,
+        "endChar": 15
+      },
+      "revId": "cf21d566dfb06d90807918f9797ec7bd8ae2633c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
