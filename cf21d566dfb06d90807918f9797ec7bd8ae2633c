@@ -22,6 +22,30 @@
       "revId": "cf21d566dfb06d90807918f9797ec7bd8ae2633c",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_c28f9374",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1904,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-02-07T00:52:59Z",
+      "side": 1,
+      "message": "Dodge foods are all on timers, they\u0027d be fine. Damage mitigating foods would also be fine, except for Flameout which could potentially mitigate 100% damage and therefor would not see the observer notification.",
+      "parentUuid": "da7095c5_0296eb94",
+      "range": {
+        "startLine": 1904,
+        "startChar": 4,
+        "endLine": 1904,
+        "endChar": 15
+      },
+      "revId": "cf21d566dfb06d90807918f9797ec7bd8ae2633c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
