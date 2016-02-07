@@ -28,10 +28,22 @@ void JukeboxImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRespo
 		menuResponse->addRadialMenuItem(132, 3, "@event_perk:mnu_show_exp_time"); // Show Expiration Time
 	}
 
+	PlayerObject* playerObject = player->getPlayerObject();
+
 	if (!isASubChildOf(player)) {
 		menuResponse->addRadialMenuItem(68, 3, "@event_perk:jukebox_operate");
 		menuResponse->addRadialMenuItemToRadialID(68, 69, 3, "@event_perk:jukebox_start_music");
 		menuResponse->addRadialMenuItemToRadialID(68, 70, 3, "@event_perk:jukebox_stop_music");
+
+		if (playerObject != NULL && player->getPlayerObject()->isPrivileged() && player->getParentID() == 0) {
+			menuResponse->addRadialMenuItem(72, 3, "Staff Functionality");
+			menuResponse->addRadialMenuItemToRadialID(72, 73, 3, "@ui_radial:item_pickup");
+		}
+	} else {
+		if (playerObject != NULL && player->getPlayerObject()->isPrivileged() && player->getParentID() == 0) {
+			menuResponse->addRadialMenuItem(72, 3, "Staff Functionality");
+			menuResponse->addRadialMenuItemToRadialID(72, 73, 3, "@ui_radial:item_drop");
+		}
 	}
 }
 
@@ -66,6 +78,41 @@ int JukeboxImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		return 0;
 	} else if (selectedID == 10) {
 		stopPlaying();
+	} else if (selectedID == 73) {
+		PlayerObject* playerObject = player->getPlayerObject();
+
+		if (playerObject == NULL)
+			return 0;
+
+		if (player->getPlayerObject()->isPrivileged() && player->getParentID() == 0) {
+			if (isASubChildOf(player)) {
+				Zone* zone = player->getZone();
+
+				if (zone == NULL)
+					return 0;
+
+				ManagedReference<Jukebox*> jbox = _this.getReferenceUnsafeStaticCast();
+
+				Locker locker(jbox);
+
+				jbox->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
+				jbox->setDirection(Math::deg2rad(player->getDirectionAngle()));
+				zone->transferObject(jbox, -1, true);
+			} else {
+				stopPlaying();
+
+				ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+				if (inventory == NULL || inventory->isContainerFullRecursive())
+					return 0;
+
+				ManagedReference<Jukebox*> jbox = _this.getReferenceUnsafeStaticCast();
+
+				Locker locker(jbox);
+
+				inventory->transferObject(jbox, -1, true, true);
+			}
+		}
 	}
 	return 0;
 }
