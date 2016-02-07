@@ -31,6 +31,7 @@ doikk_nats = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	outfit = "band_fizz_outfit",
+	defaultWeapon = "object/tangible/instrument/fizz.iff",
 	attacks = {
 	}
 }

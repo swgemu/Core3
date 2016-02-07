@@ -30,7 +30,7 @@ figrin_dan = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	outfit = "band_kloo_horn_outfit",
+	defaultWeapon = "object/tangible/instrument/kloo_horn.iff",
 	attacks = {
 	}
 }

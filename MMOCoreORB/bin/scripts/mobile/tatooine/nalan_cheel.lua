@@ -31,6 +31,7 @@ nalan_cheel = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	outfit = "band_bandfill_outfit",
+	defaultWeapon = "object/tangible/instrument/bandfill.iff",
 	attacks = {
 	}
 }

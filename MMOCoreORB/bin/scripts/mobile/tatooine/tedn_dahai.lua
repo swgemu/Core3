@@ -31,6 +31,7 @@ tedn_dahai = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	outfit = "band_fanfar_outfit",
+	defaultWeapon = "object/tangible/instrument/fanfar.iff",
 	attacks = {
 	}
 }
