@@ -22,12 +22,12 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
-			
+
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
-		
+			
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
-		
+
 		if (creature == targetObject || targetObject == NULL || !targetObject->isPlayerCreature())
 			return INVALIDTARGET;
 
@@ -44,20 +44,25 @@ public:
 
 		WeaponObject* weapon = creature->getWeapon();
 
+		if (!player->isIncapacitated() && !player->isDead()) {
+			creature->sendSystemMessage("@error_message:target_not_incapacitated");  //You cannot perform the death blow. Your target is not incapacitated.
+			return GENERALERROR;
+		}  else if (player->isDead()) {
+			StringIdChatParameter params("error_message", "prose_target_already_dead");
+			params.setTT(player->getDisplayedName());
+			creature->sendSystemMessage(params); //But %TT is already dead!
+			return GENERALERROR;
+		}
+
 		int maxRange = weapon->getMaxRange();
 
 		if (!player->isInRange(creature, maxRange + player->getTemplateRadius() + creature->getTemplateRadius()))
 			return TOOFAR;
-				
-		if (player->isAttackableBy(creature) && player->isIncapacitated()) {
-			playerManager->killPlayer(creature, player, 1);			
-		}  else if (!player->isIncapacitated()) {
-			creature->sendSystemMessage("@error_message:target_not_incapacitated");  //You cannot perform the death blow. Your target is not incapacitated.
-		}  else if (player->isDead()) {
-			return GENERALERROR;
-		}
 
- 		return doCombatAction(creature, target);
+ 		if (player->isAttackableBy(creature) && player->isIncapacitated())
+ 			playerManager->killPlayer(creature, player, 1);
+
+ 		return doCombatAction(creature,target);
 
 	}
 
