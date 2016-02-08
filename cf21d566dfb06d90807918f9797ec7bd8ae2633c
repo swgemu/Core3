@@ -46,6 +46,30 @@
       "revId": "cf21d566dfb06d90807918f9797ec7bd8ae2633c",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_02e7cb13",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1904,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-08T23:52:36Z",
+      "side": 1,
+      "message": "The only thing that this could possibly affect is bounty hunter targets, and if that code expects DAMAGERECEIVED to mean any aggressive action taken, then they are using the wrong observer. I believe this is fine as you have it.",
+      "parentUuid": "da7095c5_c28f9374",
+      "range": {
+        "startLine": 1904,
+        "startChar": 4,
+        "endLine": 1904,
+        "endChar": 15
+      },
+      "revId": "cf21d566dfb06d90807918f9797ec7bd8ae2633c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
