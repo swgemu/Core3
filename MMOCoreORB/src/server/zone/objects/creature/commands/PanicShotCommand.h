@@ -23,7 +23,19 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return doCombatAction(creature, target);
+		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
+		CreatureObject* player = cast<CreatureObject*>( targetObject.get());
+		int res = doCombatAction(creature, target);
+
+		if (res == SUCCESS) {
+			StringIdChatParameter params("combat_effects", "delay_notify");
+			params.setTT(creature->getDisplayedName());
+			params.setDI(10);
+			player->sendSystemMessage(params); // You duck for cover from %TT's wild shooting! Your next action is delayed for %DI seconds.
+		}
+
+		return res;
+
 	}
 
 };
