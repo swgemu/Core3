@@ -27,9 +27,10 @@ dz70_crafted = Creature:new {
 
 	templates = {
 		"object/creature/npc/droid/crafted/dz_70_fugitive_tracker_droid.iff"
-	},		
+	},
 	lootGroups = {},
-	weapons = {},
+	defaultAttack = "creaturerangedattack",
+	defaultWeapon = "object/weapon/ranged/droid/droid_probot_ranged.iff",
 	conversationTemplate = "",
 }
 
