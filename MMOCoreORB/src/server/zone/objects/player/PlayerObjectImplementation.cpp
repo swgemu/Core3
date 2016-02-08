@@ -1691,13 +1691,18 @@ void PlayerObjectImplementation::checkForNewSpawns() {
 }
 
 void PlayerObjectImplementation::activateRecovery() {
+	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
 	if (recoveryEvent == NULL) {
 		recoveryEvent = new PlayerRecoveryEvent(_this.getReferenceUnsafeStaticCast());
 	}
 
-	if (!recoveryEvent->isScheduled()) {
+	if (!recoveryEvent->isScheduled() && creature->isInCombat()) {
+		recoveryEvent->acquire(); // What method can we use here?? ->clear() nor  ->cancel()  didn't seem to work and if i just return;  it obviously totally disables auto-attack which we dont' want.
+	} else {
 		recoveryEvent->schedule(3000);
 	}
+
 }
 
 void PlayerObjectImplementation::activateForcePowerRegen() {
