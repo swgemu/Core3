@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "da7095c5_82a19bab",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SniperShotCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-09T03:10:13Z",
+      "side": 1,
+      "message": "A dead target is not a valid target, only an incapped target.",
+      "range": {
+        "startLine": 47,
+        "startChar": 35,
+        "endLine": 47,
+        "endChar": 53
+      },
+      "revId": "f642fc80379d04827b5cfb8b2aa58ca0ee44ef22",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_c2c79363",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SniperShotCommand.h",
         "patchSetId": 2
@@ -13,6 +36,23 @@
       "writtenOn": "2016-02-09T02:53:20Z",
       "side": 1,
       "message": "Don\u0027t put these checks before the range check.",
+      "revId": "f642fc80379d04827b5cfb8b2aa58ca0ee44ef22",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_62b007f5",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SniperShotCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-09T03:10:13Z",
+      "side": 1,
+      "message": "I think the best course of action here is to check if the target is incapped before this command fires, then do the basic CombatAction and CombatSpam stuff manually (since it won\u0027t go through combat manager). If it\u0027s not incapped, then do the combat action and check for isIncapped after everything is done to decide whether or not to DB the target. Then return the result you got from doCOmbatAction, or SUCCESS if the target was already incapped.",
       "revId": "f642fc80379d04827b5cfb8b2aa58ca0ee44ef22",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
