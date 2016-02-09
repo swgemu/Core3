@@ -66,6 +66,9 @@ int DroidMaintenanceModuleDataComponent::handleObjectMenuSelect(CreatureObject* 
 
 	Locker dlock( droid, player );
 
+	if (player->getZone() == NULL)
+		return 0;
+
 	// Perform Maintenance Run
 	if( selectedID == MAINT_MODULE_PERFORM ){
 
