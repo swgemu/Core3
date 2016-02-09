@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_e2c41761",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SniperShotCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-09T02:53:20Z",
+      "side": 0,
+      "message": "Put the isDead check here and play your message and return if the target is.\n\nAfter the isDead check is passed, put the isIncapped check. If they are incapped, call killPlayer. If they are not, do a combatAction (but don\u0027t return it\u0027s result right away. Store it. after the action, check for incapped again. If they are, kill them. Then return the result of doCombatAction.",
+      "revId": "b8bdbc500c2f25600ba198bde091c6beed63f915",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

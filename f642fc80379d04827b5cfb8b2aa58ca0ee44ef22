@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_c2c79363",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SniperShotCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-09T02:53:20Z",
+      "side": 1,
+      "message": "Don\u0027t put these checks before the range check.",
+      "revId": "f642fc80379d04827b5cfb8b2aa58ca0ee44ef22",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
