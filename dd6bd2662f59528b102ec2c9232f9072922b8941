@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_027cab1f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/PanicShotCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-09T03:50:42Z",
+      "side": 1,
+      "message": "Add an optional message to StateEffect in commands.lua, parse it, and use it in CREO::setNextAttackDelay(). Remember to set this field for anything that has an attack delay effect.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 3
+      },
+      "revId": "dd6bd2662f59528b102ec2c9232f9072922b8941",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
