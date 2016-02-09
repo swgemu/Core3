@@ -716,6 +716,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 			if (pendingTasks == null)
 				return;
 
+			Task task = pendingTasks.get(name);
+
+			if (task != null && task.isScheduled())
+				task.cancel();
+
 			pendingTasks.drop(name);
 		}
 	}

@@ -12,7 +12,7 @@
 class TurretControlTerminalDataComponent : public DataObjectComponent {
 protected:
 	int turretIndex;
-	int suiBoxID;
+	unsigned int suiBoxID;
 
 public:
 	TurretControlTerminalDataComponent() {
@@ -37,13 +37,13 @@ public:
 		turretIndex = indx;
 	}
 
-	void setSuiBoxID(int id){
+	void setSuiBoxID(unsigned int id){
 		suiBoxID = id;
 	}
-	int getSuiBoxID(){
+
+	unsigned int getSuiBoxID(){
 		return suiBoxID;
 	}
-
 
 
 private:

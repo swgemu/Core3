@@ -743,7 +743,6 @@
 #include "TumbleToProneCommand.h"
 #include "TumbleToStandingCommand.h"
 #include "TurretFireCommand.h"
-#include "TurretFireManualCommand.h"
 #include "UnarmedBlind1Command.h"
 #include "UnarmedBodyHit1Command.h"
 #include "UnarmedCombo1Command.h"

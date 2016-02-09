@@ -365,7 +365,7 @@ class GCWManager extends ManagedService implements Logger {
 
 	private native void generateTurretControlBoxTo(CreatureObject creature, TangibleObject turret, SceneObject terminal);
 
-	private native boolean canUseTurret(TurretDataComponent turretData, TurretControlTerminalDataComponent controlData, CreatureObject creature);
+	public native boolean canUseTurret(TangibleObject turret, SceneObject terminal, CreatureObject creature);
 
 	public native boolean canPlaceMoreBases(CreatureObject creature);
 

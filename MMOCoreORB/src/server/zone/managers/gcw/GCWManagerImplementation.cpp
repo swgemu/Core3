@@ -861,7 +861,7 @@ void GCWManagerImplementation::sendTurretAttackListTo(CreatureObject* creature, 
 	if (turretData == NULL)
 		return;
 
-	if (!canUseTurret(turretData, controlData, creature)) {
+	if (!canUseTurret(turretObject, turretControlTerminal, creature)) {
 		creature->sendSystemMessage("@hq:in_use");  //  This turret control terminal is already in use."
 		return;
 	}
@@ -904,81 +904,80 @@ void GCWManagerImplementation::generateTurretControlBoxTo(CreatureObject* creatu
 	if (ghost == NULL)
 		return;
 
-	ManagedReference<SuiListBox*> status = new SuiListBox(creature, SuiWindowType::HQ_TURRET_TERMINAL);
-	status->setPromptTitle("@hq:control_title"); //"Turret Control Consule"
-	status->setCancelButton(true, "@cancel");
-	status->setCallback(new TurretControlSuiCallback(zone->getZoneServer(), turret,terminal));
-	status->setOtherButton(true,"@ui:refresh"); // refresh
-	status->setOkButton(true,"@hq:btn_attack"); // Attack
-	status->setUsingObject(terminal);
-	status->setForceCloseDistance(5);
-	StringIdChatParameter params;
-	params.setStringId(("@hq:attack_targets")); // Turret is now attacking %TO.");
-	StringBuffer msg;
-	msg << "Turret is now targeting: ";
-
-	if (turretData->getManualTarget() != NULL)
-		msg << turretData->getManualTarget()->getFirstName();
-
-	status->setPromptText(msg.toString());
-
-	CloseObjectsVector* vec = (CloseObjectsVector*)turret->getCloseObjects();
-
-	SortedVector<QuadTreeEntry*> closeObjects;
-
-	vec->safeCopyTo(closeObjects);
 	Reference<WeaponObject*> weapon = turret->getSlottedObject("hold_r").castTo<WeaponObject*>();
 
 	if (weapon == NULL)
 		return;
 
+	CreatureObject* target = turretData->getManualTarget();
+
+	ManagedReference<SuiListBox*> status = new SuiListBox(creature, SuiWindowType::HQ_TURRET_TERMINAL);
+	status->setPromptTitle("@hq:control_title"); //"Turret Control Consule"
+	status->setCancelButton(true, "@cancel");
+	status->setCallback(new TurretControlSuiCallback(zone->getZoneServer(), turret, cast<TangibleObject*>(terminal)));
+	status->setOtherButton(true,"@ui:refresh"); // refresh
+	status->setOkButton(true,"@hq:btn_attack"); // Attack
+	status->setUsingObject(terminal);
+	status->setForceCloseDistance(5);
+
+	int maxHp = turret->getMaxCondition();
+	int hp = maxHp - turret->getConditionDamage();
+
+	StringBuffer msg;
+	msg << "@hq:turret_control " << turret->getDisplayedName() << " [" << hp << "/" << maxHp << "]" << endl << endl;
+	msg << "@hq:current_target ";
+
+	if (target != NULL) {
+		msg << target->getDisplayedName() << " " << "hq:target_health " << target->getHAM(0);
+	} else
+		msg << "None";
+
+	status->setPromptText(msg.toString());
+
+	Vector<CreatureObject*> targets = turretData->getAvailableTargets(false);
 	int targetTotal = 0;
 
-	for(int i = 0; i < closeObjects.size(); ++i) {
-		CreatureObject* creo = cast<CreatureObject*>(closeObjects.get(i));
+	for (int i = 0; i < targets.size(); ++i) {
+		CreatureObject* creo = targets.get(i);
 
-		if (creo != NULL && creo->isAttackableBy(turret)) {
-			if (!CollisionManager::checkLineOfSight(creo, turret)) {
-				continue;
-			}
+		if (creo != NULL) {
 
-			if (turret->getDistanceTo(creo) <= weapon->getMaxRange()) {
+			int distance = turret->getDistanceTo(creo);
 
-				if (creo->isPlayerCreature())
-					status->addMenuItem(creo->getFirstName() + " - " + String::valueOf((int)turret->getDistanceTo(creo)) + "m",creo->getObjectID());
-				else
-					status->addMenuItem(creo->getObjectNameStringIdName() + " - " + String::valueOf((int)turret->getDistanceTo(creo)) + "m",creo->getObjectID());
+			status->addMenuItem(creo->getDisplayedName() + " - " + String::valueOf(distance) + "m", creo->getObjectID());
 
-				targetTotal++;
-			}
+			targetTotal++;
 		}
 
-		if (targetTotal > 20)
+		if (targetTotal >= 20)
 			break;
 	}
 
-	if ( status->getMenuSize() > 0 ) {
+	if (status->getMenuSize() > 0) {
 		ghost->addSuiBox(status);
 		creature->sendMessage(status->generateMessage());
 
-		Locker _lock(terminal, creature);
 		controlData->setSuiBoxID(status->getBoxID());
-		_lock.release();
-
-		Locker tlock(turret, creature);
-		turretData->setController(creature);
-		//turretData->updateAutoCooldown(turretAutoFireTimeout);
 
 	} else
 		creature->sendSystemMessage("@hq:no_targets"); // This turret has no valid targets.
 }
 
 
-bool GCWManagerImplementation::canUseTurret(TurretDataComponent* turretData, TurretControlTerminalDataComponent* controlData, CreatureObject* creature) {
+bool GCWManagerImplementation::canUseTurret(TangibleObject* turret, SceneObject* terminal, CreatureObject* creature) {
+	TurretDataComponent* turretData = getTurretDataComponent(turret);
 
-	if (turretData->getController() != NULL && turretData->getController() != creature) {
+	if (turretData == NULL)
+		return false;
 
-		CreatureObject* controllerCreature = turretData->getController();
+	TurretControlTerminalDataComponent* controlData = getTurretControlDataComponent(terminal);
+
+	if (controlData == NULL)
+		return false;
+
+	CreatureObject* controllerCreature = turretData->getController();
+
+	if (controllerCreature != NULL && controllerCreature != creature) {
 		PlayerObject* controllerGhost = controllerCreature->getPlayerObject();
 
 		// if there is no manual target, give it to the new guy, close it from the old guy

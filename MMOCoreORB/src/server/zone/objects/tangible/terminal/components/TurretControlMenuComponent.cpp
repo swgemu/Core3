@@ -51,8 +51,6 @@ void TurretControlMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject
 	if (building->getFaction() == player->getFaction()) {
 		menuResponse->addRadialMenuItem(222, 3, "@hq:mnu_turret_control"); // "Turret Control"
 	}
-
-	//menuResponse->addRadialMenuItem(222, 3, "OH YEA");
 }
 
 int TurretControlMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
@@ -79,6 +77,9 @@ int TurretControlMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		return 1;
 
 	if (!gcwMan->canUseTerminals(player, building, sceneObject))
+		return 1;
+
+	if (building->getFaction() != player->getFaction())
 		return 1;
 
 	if (selectedID == 222) {

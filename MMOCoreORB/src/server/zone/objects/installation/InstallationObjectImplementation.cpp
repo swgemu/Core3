@@ -688,18 +688,6 @@ void InstallationObjectImplementation::updateStructureStatus() {
 	}
 }
 
-void InstallationObjectImplementation::addDefender(SceneObject* defender) {
-	StructureObjectImplementation::addDefender(defender);
-
-	if (isTurret() && defender->isCreatureObject()) {
-		TurretDataComponent* turretData = cast<TurretDataComponent*>(getDataObjectComponent()->get());
-
-		if (turretData != NULL) {
-			turretData->addTarget(cast<CreatureObject*>(defender));
-		}
-	}
-}
-
 bool InstallationObjectImplementation::isAggressiveTo(CreatureObject* target) {
 	if (!isAttackableBy(target) || target->isVehicleObject())
 		return false;

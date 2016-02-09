@@ -13,136 +13,102 @@
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/objects/creature/commands/TurretFireCommand.h"
-#include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/tangible/terminal/components/TurretControlTerminalDataComponent.h"
 
 class TurretFireTask : public Task {
-	ManagedReference<TangibleObject*> sceneObject;
-	ManagedReference<CreatureObject*> target;
+	ManagedWeakReference<TangibleObject*> turretObject;
+	ManagedWeakReference<TangibleObject*> terminalObject;
 	bool isManual;
 
 public:
 
-	TurretFireTask(TangibleObject* turret, CreatureObject* victim, bool isManualFire = false) {
-		sceneObject = turret;
-		isManual = isManualFire;
-		target = victim;
+	TurretFireTask(TangibleObject* turret, TangibleObject* terminal, bool manual) {
+		turretObject = turret;
+		terminalObject = terminal;
+		isManual = manual;
 	}
 
 
 	void run() {
-		DataObjectComponentReference* data = sceneObject->getDataObjectComponent();
-		if (data == NULL)
+		ManagedReference<TangibleObject*> turret = turretObject.get();
+
+		if (turret == NULL)
 			return;
 
-		TurretDataComponent* turretData = cast<TurretDataComponent*>(data->get());
+		TurretDataComponent* turretData = cast<TurretDataComponent*>(turret->getDataObjectComponent()->get());
 
 		if (turretData == NULL)
 			return;
 
-		Locker lock(sceneObject);
+		Locker lock(turret);
+
+		ManagedReference<CreatureObject*> target = NULL;
 
 		if (isManual) {
-			if (turretData->getManualTarget() == NULL && target != NULL)
-				turretData->setManualTarget(target);
-			else
-				target = turretData->getManualTarget();
+			target = turretData->getManualTarget();
 
-			if(!checkTarget(turretData)) {
-				turretData->setManualTarget(NULL);
-				turretData->setFireTask(NULL);
+			if(!checkTarget(turret, target)) {
+				turretData->rescheduleFireTask(true, false);
 				return;
 			}
 		} else {
+			ManagedReference<CreatureObject*> controller = turretData->getController();
+
+			if (controller != NULL) {
+				closeControls(controller);
+				turretData->setController(NULL);
+			}
+
 			target = turretData->selectTarget();
 
-			if (target == NULL)
+			if (target == NULL) {
+				turretData->rescheduleFireTask(false, false);
 				return;
+			}
 		}
 
-		turretData->setFireTask(this);
-
-		ManagedReference<ObjectController*> objectController = sceneObject->getZoneServer()->getObjectController();
+		ManagedReference<ObjectController*> objectController = turret->getZoneServer()->getObjectController();
 
 		CombatQueueCommand* command = cast<CombatQueueCommand*>(objectController->getQueueCommand(STRING_HASHCODE("turretfire")));
+		ManagedReference<WeaponObject*> weapon = turret->getSlottedObject("hold_r").castTo<WeaponObject*>();
 
-		if (command != NULL) {
-			if((!isManual && !turretData->canAutoFire())) {
-				return;
-			}
-
-			executeCommand(turretData, command);
-			checkTurretController(turretData);
-		}
-	}
-
-	void executeCommand(TurretDataComponent* turretData, CombatQueueCommand* combatCommand ) {
-		ManagedReference<WeaponObject*> weapon = sceneObject->getSlottedObject("hold_r").castTo<WeaponObject*>();
-
-		if (weapon != NULL) {
-			int result = CombatManager::instance()->doCombatAction(sceneObject, weapon, target, combatCommand);
+		if (command != NULL && weapon != NULL) {
+			CombatManager::instance()->doCombatAction(turret, weapon, target, command);
 
 			if (isManual) {
-				if(turretData->getController() != NULL)
-					turretData->getController()->sendSystemMessage("Turret attacks " + getTargetName() + " for " + String::valueOf(result) + " damage.");
-
-				handleManualFire(turretData, weapon);
-
+				if (checkTurretController(turretData))
+					turretData->rescheduleFireTask(true, true);
+				else
+					turretData->rescheduleFireTask(true, false);
 			} else {
-				doAutoFire(turretData, weapon);
+				turretData->rescheduleFireTask(false, false);
 			}
 		}
 	}
 
-	void doAutoFire(TurretDataComponent* turretData, WeaponObject* weapon) {
-		turretData->updateAutoCooldown(weapon->getAttackSpeed());
-		turretData->updateManualCooldown(weapon->getAttackSpeed());
-		turretData->rescheduleFireTask(weapon->getAttackSpeed(), false);
-	}
-
-	void handleManualFire(TurretDataComponent* turretData, WeaponObject* weapon) {
-		int cooldown = 20;
-		Zone* zone = sceneObject->getZone();
-
-		if (zone != NULL) {
-			GCWManager* gcwMan = zone->getGCWManager();
-
-			if (gcwMan != NULL)
-				cooldown = gcwMan->getTurretAutoFireTimeout();
-		}
-
-		turretData->updateAutoCooldown(cooldown);
-		turretData->updateManualCooldown(weapon->getAttackSpeed());
-		turretData->setManualTarget(target);
-		turretData->rescheduleFireTask(weapon->getAttackSpeed(), true);
-	}
-
-	void checkTurretController(TurretDataComponent* turretData) {
+	bool checkTurretController(TurretDataComponent* turretData) {
 		ManagedReference<CreatureObject*> attacker = cast<CreatureObject*>(turretData->getController());
+		ManagedReference<TangibleObject*> terminal = terminalObject.get();
 
-		if (attacker != NULL) {
-			PlayerObject* ghost = attacker->getPlayerObject();
+		if (attacker == NULL || terminal == NULL)
+			return false;
 
-			if(ghost != NULL)
-				ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
-		}
-	}
+		PlayerObject* ghost = attacker->getPlayerObject();
 
-	String getTargetName() {
-		String strName;
+		if (ghost == NULL)
+			return false;
 
-		if (target == NULL) {
-			return strName;
-		}
+		TurretControlTerminalDataComponent* controlData = cast<TurretControlTerminalDataComponent*>(terminal->getDataObjectComponent()->get());
 
-		if (target->isPlayerCreature()) {
-			strName = target->getFirstName();
-		} else {
-			strName = target->getObjectNameStringIdName();
-		}
+		if (controlData == NULL)
+			return false;
 
-		return strName;
+		if (!ghost->hasSuiBox(controlData->getSuiBoxID()))
+			return false;
+
+		return true;
 	}
 
 	void closeControls(CreatureObject* controllerCharacter) {
@@ -156,13 +122,18 @@ public:
 		}
 	}
 
-	bool checkTarget(TurretDataComponent* turretData) {
-		if (target == NULL)
+	bool checkTarget(TangibleObject* turret, CreatureObject* target) {
+		if (target == NULL || turret == NULL)
+			return false;
+
+		TurretDataComponent* turretData = cast<TurretDataComponent*>(turret->getDataObjectComponent()->get());
+
+		if (turretData == NULL)
 			return false;
 
 		ManagedReference<CreatureObject*> attacker = turretData->getController();
 
-		if (target->isDead() || target->isIncapacitated() || !sceneObject->isInRange(target, turretData->getMaxRange())) {
+		if (!target->isAttackableBy(turret) || !turret->isInRange(target, turretData->getMaxRange())) {
 
 			closeControls(attacker);
 
@@ -172,7 +143,7 @@ public:
 			return false;
 		}
 
-		if (!CollisionManager::checkLineOfSight(target, sceneObject)) {
+		if (!CollisionManager::checkLineOfSight(target, turret)) {
 			closeControls(attacker);
 
 			if (attacker)
@@ -189,10 +160,13 @@ public:
 		return isManual;
 	}
 
-	void setManualTask(bool val) {
-		isManual = val;
+	void setManualFireTask(bool man) {
+		isManual = man;
 	}
 
+	void setTerminal(TangibleObject* terminal) {
+		terminalObject = terminal;
+	}
 };
 
 #endif /* TURRETFIRETASK_H_ */

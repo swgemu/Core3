@@ -17,24 +17,20 @@
 class TurretDataComponent : public DataObjectComponent {
 
 protected:
-	int maxrange;
-	Time nextFireTime;
-	Time nextManualFireTime;
-	Time controlTimeout;  // when the controller times out from inactivity and someone else can control it
-	int attackSpeed;
+	int maxRange;
+	float attackSpeed;
+	Time nextAutoFireTime;
 	SharedInstallationObjectTemplate* templateData;
-	ManagedReference<CreatureObject*> controller;
-	ManagedReference<CreatureObject*> manualTarget;
-	Vector<ManagedReference<CreatureObject*> > availableTargets;
+	ManagedWeakReference<CreatureObject*> controller;
+	ManagedWeakReference<CreatureObject*> manualTarget;
 	Reference<Task*> turretFireTask;
+	AtomicInteger numberOfPlayersInRange;
 
 public:
 	TurretDataComponent() {
-		maxrange = 80;
-		nextFireTime = Time();
-		nextManualFireTime = Time();
-		controlTimeout = Time();
-		attackSpeed = 5;
+		maxRange = 80;
+		attackSpeed = 1;
+		nextAutoFireTime = Time();
 		templateData = NULL;
 		controller = NULL;
 		manualTarget = NULL;
@@ -48,21 +44,13 @@ public:
 	void initializeTransientMembers();
 	void setWeapon(WeaponObject* weapon);
 
-	bool canAutoFire() {
-		return (attackSpeed > 0 && nextFireTime.isPast()) ;
-	}
+	int getRescheduleDelay() {
+		int delay = 0;
 
-	bool canManualFire() {
-		return (attackSpeed > 0 && nextManualFireTime.isPast());
-	}
+		if (nextAutoFireTime.isFuture())
+			delay = Time().miliDifference(nextAutoFireTime);
 
-	void refreshControlTimer(int seconds) {
-		controlTimeout = Time();
-		controlTimeout.addMiliTime(seconds * 1000);
-	}
-
-	bool hasControlTimedOut() {
-		return controlTimeout.isPast();
+		return delay;
 	}
 
 	bool isTurretData() {
@@ -74,7 +62,7 @@ public:
 	}
 
 	CreatureObject* getController() {
-		return controller;
+		return controller.get();
 	}
 
 	void setManualTarget(CreatureObject* creature) {
@@ -82,30 +70,46 @@ public:
 	}
 
 	CreatureObject* getManualTarget() {
-		return manualTarget;
+		return manualTarget.get();
 	}
 
 	int getMaxRange () {
-		return maxrange;
+		return maxRange;
 	}
 
-	void setFireTask(Task* newTask) {
-		turretFireTask = newTask;
+	float getAttackSpeed() {
+		return attackSpeed;
 	}
 
 	Task* getFireTask() {
 		return turretFireTask;
 	}
 
-	void addTarget(CreatureObject* creature);
+	Vector<CreatureObject*> getAvailableTargets(bool aggroOnly);
 	CreatureObject* selectTarget();
-	bool checkTarget(CreatureObject* creature);
+	bool checkTarget(CreatureObject* creature, TangibleObject* turret, bool aggroOnly);
 
 	void updateAutoCooldown(float secondsToAdd);
-	void updateManualCooldown(float secondsToAdd);
 
-	void rescheduleFireTask(float secondsToWait, bool manual);
+	void scheduleFireTask(CreatureObject* target, TangibleObject* terminal, int delay = 0);
+	void rescheduleFireTask(bool wasManual, bool isManual);
+	int getAutoFireTimeout();
 
+	uint32 getNumberOfPlayersInRange() {
+		return numberOfPlayersInRange.get();
+	}
+
+	uint32 incrementNumberOfPlayersInRange() {
+		return numberOfPlayersInRange.increment();
+	}
+
+	uint32 decrementNumberOfPlayersInRange() {
+		return numberOfPlayersInRange.decrement();
+	}
+
+	bool compareAndSetNumberOfPlayersInRange(uint32 oldVal, uint32 newVal) {
+		return numberOfPlayersInRange.compareAndSet(oldVal, newVal);
+	}
 	void fillAttributeList(AttributeListMessage* alm);
 
 	unsigned int getArmorRating();

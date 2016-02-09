@@ -8,6 +8,7 @@
 #include "TurretDataComponent.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
+#include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/objects/installation/components/TurretFireTask.h"
 
 void TurretDataComponent::initializeTransientMembers() {
@@ -27,70 +28,61 @@ void TurretDataComponent::initializeTransientMembers() {
 
 	WeaponObject* weapon = cast<WeaponObject*>(sceneObject);
 
-	if (weapon != NULL) {
-		attackSpeed = weapon->getAttackSpeed();
-		maxrange = weapon->getMaxRange();
-	}
+	setWeapon(weapon);
 }
 
 void TurretDataComponent::setWeapon(WeaponObject* weapon) {
 	if (weapon != NULL) {
 		attackSpeed = weapon->getAttackSpeed();
-		maxrange = weapon->getMaxRange();
+		maxRange = weapon->getMaxRange();
 	}
 }
 
-void TurretDataComponent::addTarget(CreatureObject* creature) {
+Vector<CreatureObject*> TurretDataComponent::getAvailableTargets(bool aggroOnly) {
+	Vector<CreatureObject*> targets;
+
 	ManagedReference<TangibleObject*> turret = cast<TangibleObject*>(getParent());
 
-	if (turret == NULL) {
-		return;
-	}
+	if (turret == NULL)
+		return targets;
 
-	Locker locker(turret);
+	CloseObjectsVector* vec = (CloseObjectsVector*)turret->getCloseObjects();
 
-	if (!availableTargets.contains(creature)) {
-		availableTargets.add(creature);
-	}
+	SortedVector<QuadTreeEntry*> closeObjects;
 
-	if (turretFireTask == NULL) {
-		turretFireTask = new TurretFireTask(turret, NULL, false);
-	}
+	vec->safeCopyTo(closeObjects);
 
-	if (!turretFireTask->isScheduled()) {
-		turretFireTask->execute();
-	}
-}
+	int targetTotal = 0;
 
-CreatureObject* TurretDataComponent::selectTarget() {
-	CreatureObject* selection = NULL;
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		CreatureObject* creo = cast<CreatureObject*>(closeObjects.get(i));
 
-	while (availableTargets.size() > 0 && selection == NULL) {
-		int rand = System::random(availableTargets.size() - 1);
-		selection = availableTargets.get(rand);
-
-		if (!checkTarget(selection)) {
-			availableTargets.removeElementAt(rand);
-			selection = NULL;
+		if (creo != NULL && checkTarget(creo, turret, aggroOnly)) {
+			targets.add(creo);
 		}
 	}
 
-	return selection;
+	return targets;
 }
 
-bool TurretDataComponent::checkTarget(CreatureObject* creature) {
-	if (creature == NULL)
+CreatureObject* TurretDataComponent::selectTarget() {
+	Vector<CreatureObject*> targets = getAvailableTargets(true);
+
+	if (targets.size() == 0)
+		return NULL;
+
+	return targets.get(System::random(targets.size() - 1));
+}
+
+bool TurretDataComponent::checkTarget(CreatureObject* creature, TangibleObject* turret, bool aggroOnly) {
+	if (creature == NULL || turret == NULL)
 		return false;
 
-	ManagedReference<TangibleObject*> turret = cast<TangibleObject*>(getParent());
-	if (turret == NULL)
-		return false;
-
-	if (creature->isDead() || creature->isIncapacitated() || !turret->isInRange(creature, maxrange)) {
+	if (!creature->isAttackableBy(turret) || !turret->isInRange(creature, maxRange)) {
 		return false;
 	}
 
-	if (!turret->hasDefender(creature) && !turret->isAggressiveTo(creature)) {
+	if (aggroOnly && !turret->hasDefender(creature) && !turret->isAggressiveTo(creature)) {
 		return false;
 	}
 
@@ -103,39 +95,105 @@ bool TurretDataComponent::checkTarget(CreatureObject* creature) {
 
 void TurretDataComponent::updateAutoCooldown(float secondsToAdd) {
 	int milisecondsToAdd = secondsToAdd*1000;
-	nextFireTime = Time();
-	nextFireTime.addMiliTime(milisecondsToAdd);
+	nextAutoFireTime = Time();
+	nextAutoFireTime.addMiliTime(milisecondsToAdd);
 }
 
-void TurretDataComponent::updateManualCooldown(float secondsToAdd) {
-	int milisecondsToAdd = secondsToAdd*1000;
-	nextManualFireTime = Time();
-	nextManualFireTime.addMiliTime(milisecondsToAdd);
-}
+void TurretDataComponent::scheduleFireTask(CreatureObject* target, TangibleObject* terminal, int delay) {
+	//PRE: turret is locked
 
-void TurretDataComponent::rescheduleFireTask(float secondsToWait, bool manual) {
-	if (getParent() == NULL)
+	if (numberOfPlayersInRange.get() < 1)
 		return;
 
-	if (manual) {
-		CreatureObject* attacker = getController();
-		CreatureObject* target = getManualTarget();
+	ManagedReference<TangibleObject*> turret = cast<TangibleObject*>(getParent());
 
-		//Logger::Logger tlog("reschedule");
-		if (target != NULL) {
-			Reference<TurretFireTask*> fireTask = new TurretFireTask(cast<TangibleObject*>(getParent()), target, manual);
-			this->setFireTask(fireTask);
-			getFireTask()->schedule(secondsToWait * 1000);
+	if (turret->getZone() == NULL)
+		return;
 
-		} else {
-			//tlog.info("target is null",true);
-			setController(NULL);
-			setFireTask(NULL);
-			setManualTarget(NULL);
-		}
-	} else {
-		turretFireTask->schedule(secondsToWait * 1000);
+	if (turretFireTask == NULL) {
+		turretFireTask = new TurretFireTask(turret, terminal, target != NULL);
 	}
+
+	TurretFireTask* task = turretFireTask.castTo<TurretFireTask*>();
+
+	if (task == NULL)
+		return;
+
+	if (task->isManualFireTask()) {
+		if (target != NULL && target != getManualTarget())
+			setManualTarget(target);
+	} else {
+		if (target != NULL) {
+			if (target != getManualTarget())
+				setManualTarget(target);
+
+			task->setManualFireTask(true);
+			task->setTerminal(terminal);
+		}
+	}
+
+	if (target == NULL && !task->isManualFireTask()) {
+		delay += getRescheduleDelay();
+	}
+
+	if (!task->isScheduled()) {
+		if (delay == 0)
+			task->execute();
+		else
+			task->schedule(delay);
+
+	} else if (task->isManualFireTask()) {
+		task->reschedule(attackSpeed * 1000);
+	}
+}
+
+void TurretDataComponent::rescheduleFireTask(bool wasManual, bool isManual) {
+	if (numberOfPlayersInRange.get() < 1)
+		return;
+
+	ManagedReference<TangibleObject*> turret = cast<TangibleObject*>(getParent());
+
+	if (turret == NULL || turret->getZone() == NULL)
+		return;
+
+	TurretFireTask* task = turretFireTask.castTo<TurretFireTask*>();
+
+	if (task == NULL)
+		return;
+
+	if (wasManual) {
+		updateAutoCooldown(getAutoFireTimeout());
+	} else {
+		updateAutoCooldown(attackSpeed);
+	}
+
+	if (isManual) {
+		task->reschedule(attackSpeed * 1000);
+	} else {
+		setManualTarget(NULL);
+		task->setManualFireTask(false);
+		task->setTerminal(NULL);
+		task->reschedule(getRescheduleDelay());
+	}
+}
+
+int TurretDataComponent::getAutoFireTimeout() {
+	int cooldown = 20;
+
+	ManagedReference<InstallationObject*> turret = cast<InstallationObject*>(getParent());
+
+	if (turret != NULL) {
+		Zone* zone = turret->getZone();
+
+		if (zone != NULL) {
+			GCWManager* gcwMan = zone->getGCWManager();
+
+			if (gcwMan != NULL)
+				cooldown = gcwMan->getTurretAutoFireTimeout();
+		}
+	}
+
+	return cooldown;
 }
 
 void TurretDataComponent::fillAttributeList(AttributeListMessage* alm) {

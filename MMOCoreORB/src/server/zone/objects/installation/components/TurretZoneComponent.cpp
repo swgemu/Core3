@@ -26,37 +26,6 @@
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "TurretFireTask.h"
 
-void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) {
-
-	ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
-
-	if (!sceneObject->isTangibleObject() || !sceneObject->isTurret() || target == NULL || !target->isCreatureObject()) {
-		return;
-	}
-
-	ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(sceneObject);
-	DataObjectComponentReference* data = sceneObject->getDataObjectComponent();
-
-	if (data == NULL || tano == NULL) {
-		return;
-	}
-
-	TurretDataComponent* turretData = cast<TurretDataComponent*>(data->get());
-
-	if (turretData == NULL) {
-		return;
-	}
-
-	if (sceneObject->isInRange(target, turretData->getMaxRange())) {
-		ManagedReference<CreatureObject*> targetCreo = cast<CreatureObject*>(entry);
-
-		if (targetCreo == NULL || !targetCreo->isAttackableBy(tano))
-			return;
-
-		turretData->addTarget(targetCreo);
-	}
-}
-
 void TurretZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zne) {
 	if (zne == NULL)
 		return;
@@ -66,5 +35,58 @@ void TurretZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zne
 	if (installation == NULL)
 		return;
 
-	installation->registerObserver(ObserverEventType::OBJECTDESTRUCTION,observer);
+	installation->registerObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
+}
+
+void TurretZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* entry) {
+	ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
+
+	if (!sceneObject->isTurret() || target == NULL || !target->isPlayerCreature())
+		return;
+
+	ManagedReference<TangibleObject*> turret = cast<TangibleObject*>(sceneObject);
+	TurretDataComponent* turretData = cast<TurretDataComponent*>(sceneObject->getDataObjectComponent()->get());
+	CreatureObject* player = target.castTo<CreatureObject*>();
+
+	if (turret == NULL || turretData == NULL || player == NULL || player->isInvisible())
+		return;
+
+	Locker locker(turret);
+
+	int newValue = (int) turretData->incrementNumberOfPlayersInRange();
+
+	if (newValue == 1) {
+		turretData->scheduleFireTask(NULL, NULL, System::random(1000));
+	}
+}
+
+void TurretZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) {
+	ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
+
+	if (!sceneObject->isTurret() || target == NULL || !target->isPlayerCreature())
+		return;
+
+	ManagedReference<TangibleObject*> turret = cast<TangibleObject*>(sceneObject);
+	TurretDataComponent* turretData = cast<TurretDataComponent*>(sceneObject->getDataObjectComponent()->get());
+	CreatureObject* player = target.castTo<CreatureObject*>();
+
+	if (turret == NULL || turretData == NULL || player == NULL || player->isInvisible())
+		return;
+
+	Locker locker(turret);
+
+	int32 newValue = (int32) turretData->decrementNumberOfPlayersInRange();
+
+	if (newValue < 0) {
+		int oldValue;
+
+		do {
+			oldValue = (int)turretData->getNumberOfPlayersInRange();
+
+			newValue = oldValue;
+
+			if (newValue < 0)
+				newValue = 0;
+		} while (!turretData->compareAndSetNumberOfPlayersInRange((uint32)oldValue, (uint32)newValue));
+	}
 }

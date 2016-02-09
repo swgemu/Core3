@@ -15,10 +15,10 @@
 #include "server/zone/objects/installation/components/TurretFireTask.h"
 
 class TurretControlSuiCallback : public SuiCallback {
-	ManagedReference<TangibleObject*> turretObject;
-	ManagedReference<SceneObject*> turretControl;
+	ManagedWeakReference<TangibleObject*> turretObject;
+	ManagedWeakReference<TangibleObject*> turretControl;
 public:
-	TurretControlSuiCallback(ZoneServer* server, TangibleObject* turret, SceneObject* terminal)
+	TurretControlSuiCallback(ZoneServer* server, TangibleObject* turret, TangibleObject* terminal)
 		: SuiCallback(server) {
 		turretObject = turret;
 		turretControl = terminal;
@@ -30,37 +30,50 @@ public:
 		if (cancelPressed)
 			return;
 
-		DataObjectComponentReference* data  = turretObject->getDataObjectComponent();
-
-		if (data == NULL)
-			return;
-
-		TurretDataComponent* turretData = cast<TurretDataComponent*>(data->get());
-
-		if (turretData == NULL)
-			return;
-
-		if (turretData->getController() != player) {
-			player->sendSystemMessage("@hq:in_use");  //  This turret control terminal is already in use."
-			return;
-		}
-
 		if (args->size() < 1)
 			return;
 
-		bool otherPressed = Bool::valueOf(args->get(0).toString());
-		int index = Integer::valueOf(args->get(1).toString());
+		Zone* zone = player->getZone();
 
-		if (player->getZone() == NULL)
+		if (zone == NULL)
 			return;
 
-		GCWManager* gcwMan = player->getZone()->getGCWManager();
+		GCWManager* gcwMan = zone->getGCWManager();
 
 		if (gcwMan == NULL)
 			return;
 
+		ManagedReference<TangibleObject*> turret = turretObject.get();
+
+		if (turret == NULL)
+			return;
+
+		TurretDataComponent* turretData  = cast<TurretDataComponent*>(turret->getDataObjectComponent()->get());
+
+		if (turretData == NULL)
+			return;
+
+		ManagedReference<TangibleObject*> control = turretControl.get();
+
+		if (turret == NULL)
+			return;
+
+		TurretControlTerminalDataComponent* controlData = cast<TurretControlTerminalDataComponent*>(control->getDataObjectComponent()->get());
+
+		if (controlData == NULL)
+			return;
+
+		if (!gcwMan->canUseTurret(turret, control, player)) {
+			player->sendSystemMessage("@hq:in_use");  //  This turret control terminal is already in use."
+			return;
+		}
+
+		bool otherPressed = Bool::valueOf(args->get(0).toString());
+		int index = Integer::valueOf(args->get(1).toString());
+
 		if (index == -1 || otherPressed) {
-			gcwMan->sendTurretAttackListTo(player,turretControl);
+			Locker clocker(control, player);
+			gcwMan->sendTurretAttackListTo(player, control);
 			return;
 		}
 
@@ -69,47 +82,42 @@ public:
 			return;
 
 		uint64 targetID = listBox->getMenuObjectID(index);
-		ManagedReference<SceneObject*> target = server->getObject(targetID);
-		if (target == NULL || !target->isCreatureObject())
-			return;
-
-		CreatureObject* targetCreature = cast<CreatureObject*>(target.get());
+		ManagedReference<CreatureObject*> targetCreature = server->getObject(targetID).castTo<CreatureObject*>();
 
 		if (targetCreature == NULL)
 			return;
 
-		Reference<TurretFireTask*> fireTask = cast<TurretFireTask*>(turretData->getFireTask());
+		Locker clocker(turret, player);
 
-		Locker clock(turretControl, player);
+		turretData->setController(player);
+
+		TurretFireTask* fireTask = cast<TurretFireTask*>(turretData->getFireTask());
 
 		StringIdChatParameter param;
-		if (fireTask) {
-			// if there's a task need to
-			// 1.  exit out if we're already manually attacking the target
-			// 2.  otherwise, set the target and set the task to manual attack
+
+		if (fireTask != NULL && fireTask->isManualFireTask()) {
 			if (targetCreature == turretData->getManualTarget()) {
-				if (fireTask->isManualFireTask()) {
-					param.setStringId("hq","already_attacking"); //Your selected target is already being attacked by this turret.
-					player->sendSystemMessage(param);
-					gcwMan->sendTurretAttackListTo(player,turretControl);
-					return;
-				}
+				param.setStringId("hq","already_attacking"); //Your selected target is already being attacked by this turret.
+				player->sendSystemMessage(param);
+
+				clocker.release();
+
+				Locker clock(control, player);
+
+				gcwMan->sendTurretAttackListTo(player, control);
+				return;
 			}
-
-			fireTask->setManualTask(true);
-			turretData->setManualTarget(targetCreature);
-			param.setStringId("hq","attack_targets"); // "Turret is now attacking %TO.");
-			param.setTO(targetCreature);
-
-		} else {
-			fireTask = new TurretFireTask(turretObject.castTo<TangibleObject*>(), targetCreature, true);
-			turretData->setFireTask(fireTask);
-			fireTask->execute();
-			return;
 		}
 
+		turretData->scheduleFireTask(targetCreature, control);
+		param.setStringId("hq","attack_targets"); // "Turret is now attacking %TO.");
+		param.setTO(targetCreature);
 		player->sendSystemMessage(param);
-		gcwMan->sendTurretAttackListTo(player,turretControl);
+
+		clocker.release();
+
+		Locker clock(control, player);
+		gcwMan->sendTurretAttackListTo(player, control);
 
 	}
 };
