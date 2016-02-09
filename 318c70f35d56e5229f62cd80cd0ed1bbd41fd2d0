@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_c2755333",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DefaultAttackCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-09T04:32:54Z",
+      "side": 1,
+      "message": "scrap all this.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "318c70f35d56e5229f62cd80cd0ed1bbd41fd2d0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_629ec758",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1610,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-09T04:32:54Z",
+      "side": 1,
+      "message": "RESEARCH THIS:\nEither do 1 second recoveries and just check if you can attack this \"round\" for autoattack (which is appropriate if attack delay was rounded), or\nMove this stuff to a separate auto-attack task, and schedule it here if it\u0027s not already scheduled, with a delay based on the player\u0027s attack speed. You\u0027ll probably have to reschedule the task any time the player\u0027s attack speed is recalculated.",
+      "range": {
+        "startLine": 1605,
+        "startChar": 0,
+        "endLine": 1610,
+        "endChar": 3
+      },
+      "revId": "318c70f35d56e5229f62cd80cd0ed1bbd41fd2d0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_e272d748",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1701,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-09T04:32:54Z",
+      "side": 1,
+      "message": "not sure what you are trying to do here, but it\u0027s not necessary. Just keep this stuff the same, or possibly add the auto-attack task scheduling at the same time you do the recoveryEvent scheduling.",
+      "range": {
+        "startLine": 1701,
+        "startChar": 2,
+        "endLine": 1701,
+        "endChar": 27
+      },
+      "revId": "318c70f35d56e5229f62cd80cd0ed1bbd41fd2d0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
