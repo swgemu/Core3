@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_a2e29fd3",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SniperShotCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-02-09T15:53:53Z",
+      "side": 1,
+      "message": "Also, I want to point out that this is your target\u0027s target.",
+      "parentUuid": "da7095c5_c2c31337",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 53
+      },
+      "revId": "8fad3050550f0c433c3a4e639ee99e0ef0073ed8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_62b567cc",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SniperShotCommand.h",
         "patchSetId": 3
