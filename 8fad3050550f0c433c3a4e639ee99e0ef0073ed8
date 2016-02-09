@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_62ec87c8",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SniperShotCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-02-09T16:00:51Z",
+      "side": 1,
+      "message": "Also you should be passing the isCombatAction\u003dtrue (you\u0027re passing false) to prevent killPlayer from sending an immediate posture message.\n\nAlso, this will play a second combatanimation if the doCombatAction successfully incapacitates them. You need to figure out how to do one or the other, but not both at the same time.",
+      "parentUuid": "da7095c5_02ca6b4f",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 58
+      },
+      "revId": "8fad3050550f0c433c3a4e639ee99e0ef0073ed8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_22c76f47",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SniperShotCommand.h",
         "patchSetId": 3
