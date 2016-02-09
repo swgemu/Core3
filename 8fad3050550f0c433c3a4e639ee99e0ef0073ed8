@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_e2c0972c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SniperShotCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-02-09T15:52:39Z",
+      "side": 1,
+      "message": "This is the same as your \"CreatureObject* player\" above.",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 64
+      },
+      "revId": "8fad3050550f0c433c3a4e639ee99e0ef0073ed8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_c2c31337",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SniperShotCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-02-09T15:52:39Z",
+      "side": 1,
+      "message": "Don\u0027t do this. Use the target passed into the command. Which is the target at the time the command is enqueued.",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 53
+      },
+      "revId": "8fad3050550f0c433c3a4e639ee99e0ef0073ed8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_62b567cc",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SniperShotCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-02-09T15:52:39Z",
+      "side": 1,
+      "message": "This isn\u0027t doing anything because the target is already incapacitated.",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 37
+      },
+      "revId": "8fad3050550f0c433c3a4e639ee99e0ef0073ed8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_02ca6b4f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SniperShotCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-02-09T15:52:39Z",
+      "side": 1,
+      "message": "this needs to happen before doCombatAnimation",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 58
+      },
+      "revId": "8fad3050550f0c433c3a4e639ee99e0ef0073ed8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_22c76f47",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SniperShotCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-02-09T15:52:39Z",
+      "side": 1,
+      "message": "You probably want to make sure res \u003d\u003d SUCCESS here otherwise it will play this message even when the attack fails.",
+      "range": {
+        "startLine": 78,
+        "startChar": 12,
+        "endLine": 78,
+        "endChar": 69
+      },
+      "revId": "8fad3050550f0c433c3a4e639ee99e0ef0073ed8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
