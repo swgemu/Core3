@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_023fcb26",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SniperShotCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-10T04:03:50Z",
+      "side": 1,
+      "message": "The problem with the way you have things set up now is that if the player is not incapped coming into the command but gets incapped by the command, you\u0027ll be deducting the sac twice, broadcasting combat spam twice, and doing the combat animation twice.\n\nThat is why I suggested that you check for incap before calling doCombatAction. If they are incapped coming in, do all the manual calls. If not, doCombatAction. After the doCombatAction call, check again for incap and do the DB if they are incapped at that point.",
+      "revId": "78861d078d18b97568f550b45822d26edc8182a3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
