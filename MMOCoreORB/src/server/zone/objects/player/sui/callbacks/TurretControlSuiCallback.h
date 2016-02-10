@@ -55,7 +55,7 @@ public:
 
 		ManagedReference<TangibleObject*> control = turretControl.get();
 
-		if (turret == NULL)
+		if (control == NULL)
 			return;
 
 		TurretControlTerminalDataComponent* controlData = cast<TurretControlTerminalDataComponent*>(control->getDataObjectComponent()->get());
