@@ -74,6 +74,8 @@
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/resource/resourcespawner/SampleTask.h"
 
+#include "engine/task/ScheduledTask.h"
+
 #include "server/zone/templates/tangible/SharedCreatureObjectTemplate.h"
 
 #include "variables/Skill.h"
@@ -2189,12 +2191,12 @@ bool CreatureObjectImplementation::canFeignDeath() {
 }
 
 void CreatureObjectImplementation::feignDeath() {
-	Reference<CreatureObject*> creo = _this.getReferenceUnsafeStaticCast();
+	ManagedReference<CreatureObject*> creo = _this.getReferenceUnsafeStaticCast();
 
 	creo->setCountdownTimer(5);
 	creo->updateCooldownTimer("command_message", 5 * 1000);
 	creo->setFeignedDeathState();
-	creo->setPosture(CreaturePosture::INCAPACITATED, false, true);
+	creo->setPosture(CreaturePosture::INCAPACITATED, false, false);
 
 	PrivateSkillMultiplierBuff *buff = new PrivateSkillMultiplierBuff(creo, STRING_HASHCODE("private_feign_damage_buff"), std::numeric_limits<float>::max(), BuffType::OTHER);
 
@@ -2203,8 +2205,11 @@ void CreatureObjectImplementation::feignDeath() {
 	buff->setSkillModifier("private_damage_multiplier", 5);
 	creo->addBuff(buff);
 
-	CombatManager::instance()->forcePeace(creo);
-
+	// We need to delay the forcePeace until after the CombatAction is executed
+	SCHEDULE_TASK_1(creo, 250, {
+			Locker lock(creo_p);
+			CombatManager::instance()->forcePeace(creo_p);
+	});
 }
 
 void CreatureObjectImplementation::setDizziedState(int durationSeconds) {
