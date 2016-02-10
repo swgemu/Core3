@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_625fa773",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2537,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-02-10T15:03:58Z",
+      "side": 1,
+      "message": "I actually pulled this function out of my branch that I was doing combat refactoring in. I was hoping that one day we could just use this and create a defender list to iterate on, then delete both the \"doAreaCombatAction\" calls. \n\nThe defender is left out of the group of targets because in area attacks it is a special case from the rest of the defenders. It should always have doTargetCombatAction called on it first, whereas this list is sorted by distance. It would actually translate fairly well in the changes that I envisioned in the future anyway. \n\nLast, from the videos I saw, the intimidate effect is applied to the group instantly while the chain has a delay in it\u0027s animation. If I were to call \"doTargetCombatAction\" on each defender in the list it would re-apply the intimidate from the initial \"doCombatAction\" in the command. Which is why I manually fire the animations from within the task. \n\nIf you\u0027d prefer, I could make the changes to CombatManager now and remove doAreaCombatAction, it\u0027s actually a rather small change compared to the rest of the refactoring I was attempting to do.",
+      "parentUuid": "da7095c5_026d8b32",
+      "revId": "4473b67a09bbe7b8456461a7ad69bd2bf270c64b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_a27e1fe3",
         "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
         "patchSetId": 3
@@ -47,6 +65,24 @@
       "writtenOn": "2016-02-10T14:46:53Z",
       "side": 1,
       "message": "Should feign death be considered here?",
+      "revId": "4473b67a09bbe7b8456461a7ad69bd2bf270c64b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0254ab52",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2621,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-02-10T15:03:58Z",
+      "side": 1,
+      "message": "Yes it should, also I think it might be worthwhile to investigate removing this check entirely.",
+      "parentUuid": "da7095c5_428383cc",
       "revId": "4473b67a09bbe7b8456461a7ad69bd2bf270c64b",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
