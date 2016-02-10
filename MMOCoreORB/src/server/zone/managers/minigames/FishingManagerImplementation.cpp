@@ -960,7 +960,7 @@ bool FishingManagerImplementation::loseBait(CreatureObject* player) {
 				Locker fishBaitLocker(fishBait);
 
 				if (fishBait->getUseCount() > 1){
-					fishBait->setUseCount(fishBait->getUseCount() - 1, true);
+					fishBait->decreaseUseCount();
 					fishBait->setFreshness(FRESH);
 				}
 				else {
