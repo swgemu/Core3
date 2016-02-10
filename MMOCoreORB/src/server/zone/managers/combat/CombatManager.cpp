@@ -192,17 +192,26 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 	//info("past special attack cost", true);
 
 	int damage = 0;
+	damage = doTargetCombatAction(attacker, weapon, defenderObject, data);
 
-	if (data.getCommand()->isAreaAction() || data.getCommand()->isConeAction())
-		damage = doAreaCombatAction(attacker, weapon, defenderObject, data);
-	else
-		damage = doTargetCombatAction(attacker, weapon, defenderObject, data);
+	if (data.getCommand()->isAreaAction() || data.getCommand()->isConeAction()) {
+
+		Reference<SortedVector<ManagedReference<TangibleObject*> >* > areaDefenders = getAreaTargets(attacker, weapon, defenderObject, data);
+
+		for(int i=0; i<areaDefenders->size(); i++) {
+			damage += doTargetCombatAction(attacker, weapon, areaDefenders->get(i), data);
+		}
+	}
 
 	if (damage > 0) {
 		attacker->updateLastSuccessfulCombatAction();
 
 		if (attacker->isPlayerCreature() && data.getCommandCRC() != STRING_HASHCODE("attack"))
 			weapon->decay(attacker);
+
+		// This method can be called multiple times for area attacks. Let the calling method decrease the powerup once
+		if (data.getAttackType() == CombatManager::WEAPONATTACK)
+			weapon->decreasePowerupUses(attacker);
 	}
 
 	return damage;
@@ -210,15 +219,21 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 
 int CombatManager::doCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defender, CombatQueueCommand* command){
 
+	const CreatureAttackData data = CreatureAttackData("", command, defender->getObjectID());
+	int damage = 0;
+
 	if(weapon != NULL){
-		if(!command->isAreaAction()){
-			return doTargetCombatAction(attacker, weapon, defender, CreatureAttackData("",command, defender->getObjectID()));
-		} else {
-			return doAreaCombatAction(attacker, weapon, defender, CreatureAttackData("",command, defender->getObjectID()));
+		damage = doTargetCombatAction(attacker, weapon, defender, data);
+
+		if (data.getCommand()->isAreaAction() || data.getCommand()->isConeAction()) {
+			Reference<SortedVector<ManagedReference<TangibleObject*> >* > areaDefenders = getAreaTargets(attacker, weapon, defender, data);
+			for(int i=0; i<areaDefenders->size(); i++) {
+				damage += doTargetCombatAction(attacker, weapon, areaDefenders->get(i), data);
+			}
 		}
 	}
 
-	return 0;
+	return damage;
 }
 
 int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* tano, const CreatureAttackData& data) {
@@ -247,7 +262,6 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		broadcastCombatAction(attacker, tano, weapon, data, 0x01);
 
 		data.getCommand()->sendAttackCombatSpam(attacker, tano, HIT, damage, data);
-
 
 	}
 
@@ -1895,11 +1909,6 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	if ((poolsToDamage ^ 0x7) & MIND)
 		defender->inflictDamage(attacker, CreatureAttribute::MIND, (int)(maxDamage/10.f + 0.5f), true, xpType, true, true);
 
-	// This method can be called multiple times for area attacks. Let the calling method decrease the powerup once
-	if (data.getAttackType() == CombatManager::WEAPONATTACK && !data.getCommand()->isAreaAction() && !data.getCommand()->isConeAction() && attacker->isCreatureObject()) {
-		weapon->decreasePowerupUses(attacker->asCreatureObject());
-	}
-
 	int totalDamage =  (int) (healthDamage + actionDamage + mindDamage);
 	if(totalDamage != 0) {
 		defender->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, totalDamage);
@@ -1954,10 +1963,6 @@ int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, T
 	}
 
 	defender->inflictDamage(attacker, 0, damage, true, xpType, true, true);
-
-	// This method can be called multiple times for area attacks. Let the calling method decrease the powerup once
-	if (data.getAttackType() == CombatManager::WEAPONATTACK && !data.getCommand()->isAreaAction() && !data.getCommand()->isConeAction())
-		weapon->decreasePowerupUses(attacker);
 
 	if(damage != 0)
 		defender->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, damage);
@@ -2417,17 +2422,19 @@ uint32 CombatManager::getDefaultAttackAnimation(CreatureObject* creature) {
 	}
 }
 
-int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data) {
+Reference<SortedVector<ManagedReference<TangibleObject*> >* > CombatManager::getAreaTargets(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data) {
 	float creatureVectorX = attacker->getPositionX();
 	float creatureVectorY = attacker->getPositionY();
 
 	float directionVectorX = defenderObject->getPositionX() - creatureVectorX;
 	float directionVectorY = defenderObject->getPositionY() - creatureVectorY;
 
+	Reference<SortedVector<ManagedReference<TangibleObject*> >* > defenders = new SortedVector<ManagedReference<TangibleObject*> >();
+
 	Zone* zone = attacker->getZone();
 
 	if (zone == NULL)
-		return 0;
+		return defenders;
 
 	PlayerManager* playerManager = zone->getZoneServer()->getPlayerManager();
 
@@ -2449,13 +2456,16 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 		range = weapon->getMaxRange();
 	}
 
+	if (data.isSplashDamage())
+		range += data.getRange();
+
 	if (weapon->isThrownWeapon() || weapon->isHeavyWeapon())
 		range = weapon->getMaxRange() + data.getAreaRange();
 
 	try {
 		//zone->rlock();
 
-		CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
+		CloseObjectsVector* vec =  (CloseObjectsVector*)attacker->getCloseObjects();
 
 		SortedVector<QuadTreeEntry*> closeObjects;
 
@@ -2463,7 +2473,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 			closeObjects.removeAll(vec->size(), 10);
 			vec->safeCopyTo(closeObjects);
 		} else {
-			attacker->info("Null closeobjects vector in CombatManager::doAreaCombatAction", true);
+			attacker->info("Null closeobjects vector in CombatManager::getAreaTargets", true);
 			zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
 		}
 
@@ -2471,12 +2481,13 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 			SceneObject* object = cast<SceneObject*>(closeObjects.get(i));
 
 			TangibleObject* tano = object->asTangibleObject();
+			CreatureObject* creo = object->asCreatureObject();
 
 			if (tano == NULL) {
 				continue;
 			}
 
-			if (object == attacker) {
+			if (object == attacker || object == defenderObject) {
 				//error("object is attacker");
 				continue;
 			}
@@ -2491,12 +2502,11 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 				continue;
 			}
 
-			if (weapon->isThrownWeapon() || weapon->isHeavyWeapon()) {
-				if (!(tano == defenderObject) && !(tano->isInRange(defenderObject, data.getAreaRange() + defenderObject->getTemplateRadius())))
+			if (data.isSplashDamage() || weapon->isThrownWeapon() || weapon->isHeavyWeapon()) {
+				if (!(tano->isInRange(defenderObject, data.getAreaRange() + defenderObject->getTemplateRadius())))
 					continue;
 			}
 
-			CreatureObject *creo = tano->asCreatureObject();
 			if (creo != NULL && creo->isFeigningDeath() == false && creo->isIncapacitated()) {
 				//error("object is incapacitated");
 				continue;
@@ -2510,13 +2520,13 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 			//			zone->runlock();
 
 			try {
-				if (tano == defenderObject || (!(weapon->isThrownWeapon()) && !(weapon->isHeavyWeapon()))) {
+				if (!(weapon->isThrownWeapon()) && !(data.isSplashDamage()) && !(weapon->isHeavyWeapon())) {
 					if (CollisionManager::checkLineOfSight(object, attacker)) {
-						damage += doTargetCombatAction(attacker, weapon, tano, data);
+						defenders->put(tano);
 					}
 				} else {
 					if (CollisionManager::checkLineOfSight(object, defenderObject)) {
-						damage += doTargetCombatAction(attacker, weapon, tano, data);
+						defenders->put(tano);
 					}
 				}
 			} catch (Exception& e) {
@@ -2537,115 +2547,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 		throw;
 	}
 
-	if (data.getAttackType() == CombatManager::WEAPONATTACK)
-		weapon->decreasePowerupUses(attacker);
-
-	return damage;
-}
-
-int CombatManager::doAreaCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data){
-	float creatureVectorX = attacker->getPositionX();
-	float creatureVectorY = attacker->getPositionY();
-
-	float directionVectorX = defenderObject->getPositionX() - creatureVectorX;
-	float directionVectorY = defenderObject->getPositionY() - creatureVectorY;
-
-	Zone* zone = attacker->getZone();
-
-	if (zone == NULL)
-		return 0;
-
-	PlayerManager* playerManager = zone->getZoneServer()->getPlayerManager();
-
-	int damage = 0;
-
-	int range = data.getAreaRange();
-
-	if (data.getCommand()->isConeAction()) {
-		range = data.getRange();
-	}
-
-	if (range < 0) {
-		range = weapon->getMaxRange();
-	}
-
-	try {
-		//zone->rlock();
-
-		CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
-
-		SortedVector<QuadTreeEntry*> closeObjects;
-
-		if (vec != NULL) {
-			closeObjects.removeAll(vec->size(), 10);
-			vec->safeCopyTo(closeObjects);
-		} else {
-			attacker->info("Null closeobjects vector in CombatManager::doAreaCombatAction", true);
-			zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
-		}
-
-		for (int i = 0; i < closeObjects.size(); ++i) {
-			SceneObject* object = cast<SceneObject*>(closeObjects.get(i));
-
-			TangibleObject* tano = object->asTangibleObject();
-
-			if (tano == NULL) {
-				continue;
-			}
-
-			if (object == attacker) {
-				//error("object is attacker");
-				continue;
-			}
-
-			if (!(tano->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE)) {
-				//error("object is not attackable");
-				continue;
-			}
-
-			if (!attacker->isInRange(object, range + object->getTemplateRadius() + attacker->getTemplateRadius())) {
-				//error("not in range " + String::valueOf(range));
-				continue;
-			}
-
-			CreatureObject *creo = tano->asCreatureObject();
-			if (creo != NULL && creo->isFeigningDeath() == false && creo->isIncapacitated()) {
-				//error("object is incapacitated");
-				continue;
-			}
-
-			if (data.getCommand()->isConeAction() && !checkConeAngle(tano, data.getConeAngle(), creatureVectorX, creatureVectorY, directionVectorX, directionVectorY)) {
-				//error("object is not in cone angle");
-				continue;
-			}
-
-			//			zone->runlock();
-
-			try {
-				if (CollisionManager::checkLineOfSight(object, attacker)) {
-					damage += doTargetCombatAction(attacker, weapon, tano, data);
-
-				}
-			} catch (Exception& e) {
-				error(e.getMessage());
-			} catch (...) {
-				//zone->rlock();
-
-				throw;
-			}
-
-			//			zone->rlock();
-		}
-
-		//		zone->runlock();
-	} catch (...) {
-		//		zone->runlock();
-
-		throw;
-	}
-
-	return damage;
-	return 0;
+	return defenders;
 }
 
 int CombatManager::getArmorTurretReduction(CreatureObject* attacker, TangibleObject* defender, int damageType) {
