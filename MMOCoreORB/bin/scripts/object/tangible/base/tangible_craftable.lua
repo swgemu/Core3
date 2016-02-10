@@ -48,7 +48,7 @@ object_tangible_base_tangible_craftable = object_tangible_base_shared_tangible_c
 	
 	maxCondition = 1000,
 	
-	useCount = 1,
+	useCount = 0,
 	
 	optionsBitmask = 256, --Default all objects to not display ham bars.
 	pvpStatusBitmask = 0,

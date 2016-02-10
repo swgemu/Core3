@@ -28,6 +28,7 @@ public:
 	ObjectOutputStream* changeVariableData(const uint32& variableHashCode, ObjectInputStream* object, Stream* newVariableData);
 
 
+	void updateTangibleObjectUseCounts();
 	void updateResidences();
 	void setResidence(uint64 buildingID, bool isResidence);
 	void verifyResidenceVariables();

@@ -48,7 +48,7 @@ object_tangible_base_tangible_base = object_tangible_base_shared_tangible_base:n
 	
 	maxCondition = 1000,
 	
-	useCount = 1,
+	useCount = 0,
 
 	factoryCrateSize = 100,
 	

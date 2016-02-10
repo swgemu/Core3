@@ -49,9 +49,7 @@ public:
 
 		insertInt(tano->getOptionsBitmask());
 
-		int count = tano->getDisplayedUseCount();
-
-		insertInt(count); //item count
+		insertInt(tano->getUseCount()); //item count
 
 		insertInt(int(tano->getConditionDamage()));
 		insertInt(tano->getMaxCondition());
