@@ -2444,12 +2444,19 @@ void CreatureObjectImplementation::queueDizzyFallEvent() {
 }
 
 void CreatureObjectImplementation::activateStateRecovery() {
-	//applyDots();
 	if (damageOverTimeList.hasDot() && damageOverTimeList.isNextTickPast()) {
 		damageOverTimeList.activateDots(asCreatureObject());
 	}
 
-	//updateStates();
+	// clear any stuck states
+	if (isBleeding() && !damageOverTimeList.hasDot(CreatureState::BLEEDING))
+		clearState(CreatureState::BLEEDING);
+	if (isPoisoned() && !damageOverTimeList.hasDot(CreatureState::POISONED))
+		clearState(CreatureState::POISONED);
+	if (isDiseased() && !damageOverTimeList.hasDot(CreatureState::DISEASED))
+		clearState(CreatureState::DISEASED);
+	if (isOnFire() && !damageOverTimeList.hasDot(CreatureState::ONFIRE))
+		clearState(CreatureState::ONFIRE);
 }
 
 void CreatureObjectImplementation::updateToDatabaseAllObjects(bool startTask) {
