@@ -39,7 +39,7 @@ StimPack* StimPackImplementation::split(int charges) {
 
 		protoclone->setParent(NULL);
 		protoclone->setUseCount(charges);
-		setUseCount(getUseCount() - charges);
+		decreaseUseCount(charges);
 		return protoclone;
 	}
 	return NULL;

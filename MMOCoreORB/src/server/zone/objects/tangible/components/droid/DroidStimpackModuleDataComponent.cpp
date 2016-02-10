@@ -402,10 +402,10 @@ void DroidStimpackModuleDataComponent::handleInsertStimpack(CreatureObject* play
 
 				if (allowedAmount > amountOnStim) {
 					targetStim->setUseCount(targetStim->getUseCount() + amountOnStim,true);
-					pack->setUseCount(0,true);
+					pack->decreaseUseCount(pack->getUseCount());
 				} else {
 					targetStim->setUseCount(targetStim->getUseCount() + allowedAmount,true);
-					pack->setUseCount(pack->getUseCount() - allowedAmount,true);
+					pack->decreaseUseCount(allowedAmount);
 				}
 			} else {
 				// can we take it all?

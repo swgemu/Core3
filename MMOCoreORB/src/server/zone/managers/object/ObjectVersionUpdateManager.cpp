@@ -11,6 +11,17 @@
 #include "server/db/ServerDatabase.h"
 #include "system/util/SortedVector.h"
 #include "server/zone/objects/structure/StructurePermissionList.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/managers/templates/TemplateCRCMap.h"
+#include "server/zone/templates/SharedTangibleObjectTemplate.h"
+#include "server/zone/templates/LootItemTemplate.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/templates/TemplateReference.h"
+#include "server/zone/templates/tangible/LootSchematicTemplate.h"
+#include "server/zone/templates/tangible/SharedFactoryObjectTemplate.h"
+#include "server/zone/managers/loot/LootGroupMap.h"
+#include "server/zone/managers/loot/LootManager.h"
 
 #define INITIAL_DATABASE_VERSION 0
 
@@ -43,7 +54,11 @@ int ObjectVersionUpdateManager::run() {
 		updateCityTreasuryToDouble();
 		ObjectDatabaseManager::instance()->updateCurrentVersion(INITIAL_DATABASE_VERSION + 5);
 		return 0;
-	}  else {
+	} else if (true) {//version == INITIAL_DATABASE_VERSION + 5) {
+		updateTangibleObjectUseCountsAndPlayerAbilityLists();
+		ObjectDatabaseManager::instance()->updateCurrentVersion(INITIAL_DATABASE_VERSION + 6);
+		return 0;
+	} else {
 
 		info("database on latest version : " + String::valueOf(version), true);
 		//verifyResidenceVariables();
@@ -262,6 +277,171 @@ void ObjectVersionUpdateManager::updateWeaponsDots() {
 	}
 
 	info("done updating databse weapon dots\n", true);
+}
+
+void ObjectVersionUpdateManager::updateTangibleObjectUseCountsAndPlayerAbilityLists() {
+	ObjectDatabase* database = ObjectDatabaseManager::instance()->loadObjectDatabase("sceneobjects", true);
+
+	ObjectDatabaseIterator iterator(database);
+	ObjectInputStream objectData(2000);
+	uint64 objectID = 0;
+	TemplateCRCMap& templateMap = TemplateManager::instance()->getTemplateCRCMap();
+	HashTableIterator<uint32, TemplateReference<SharedObjectTemplate*> > iter = templateMap.iterator();
+
+	SortedVector<uint32> templateKeys;
+	templateKeys.setInsertPlan(SortedVector<uint32>::NO_DUPLICATE);
+
+
+	info("Building tangible object template list for migration", true);
+	while(iter.hasNext()) {
+		TemplateReference<SharedObjectTemplate*> tmpl;
+		uint32 key = 0;
+		iter.getNextKeyAndValue(key, tmpl);
+
+		//info("Found " + tmpl->getTemplateFileName(), true);
+		if(tmpl->isSharedTangibleObjectTemplate()) {
+			SharedTangibleObjectTemplate *tanotmp = tmpl.castTo<SharedTangibleObjectTemplate*>();
+			LootSchematicTemplate *lootSchem = tmpl.castTo<LootSchematicTemplate*>();
+
+			// Add all templates that still have a use Count > 1
+			// Also add all loot schematic templates as well as factory crates
+			if((tanotmp != NULL && tanotmp->getUseCount() > 0) ||
+			   (lootSchem != NULL && lootSchem->getTargetUseCount() > 0) ||
+			    tmpl->getGameObjectType() == SceneObjectType::FACTORYCRATE) {
+				templateKeys.put(key);
+				info("Adding Tangible Template: " + tanotmp->getTemplateFileName(), true);
+				continue;
+			}
+
+
+			Reference<Vector<String>* > subGroups = tanotmp->getExperimentalSubGroupTitles();
+			for(int i=0; i<subGroups->size(); i++) {
+				String subGroupTitle = subGroups->get(i).toLowerCase();
+				//info("\tsubgroup-"+subGroupTitle, true);
+				if(subGroupTitle == "usecount" ||
+						subGroupTitle == "quantity" ||
+						subGroupTitle == "charges" ||
+						subGroupTitle == "uses" ||
+						subGroupTitle == "charge") {
+					templateKeys.put(key);
+					info("Adding Tangible Template: " + tanotmp->getTemplateFileName(), true);
+					continue;
+				}
+			}
+
+		}
+	}
+
+	Reference<LootGroupMap*> lootMap =  LootGroupMap::instance();
+	lootMap->initialize();
+
+	HashTable<String, Reference<LootItemTemplate*> > &itemTemplates = lootMap->itemTemplates;
+	HashTableIterator<String, Reference<LootItemTemplate*> > lootIter = itemTemplates.iterator();
+
+	while(lootIter.hasNext()) {
+
+		Reference<LootItemTemplate*> lootTmpl = lootIter.next();
+
+		CraftingValues craftingValues = lootTmpl->getCraftingValuesCopy();
+
+		for (int i = 0; i < craftingValues.getExperimentalPropertySubtitleSize(); ++i) {
+
+			String subtitle = craftingValues.getExperimentalPropertySubtitle(i);
+
+			// if a loot template contains any of the following subtitles then it will be generated in stacks
+			// add the base template to the exclusion list
+			if (subtitle == "useCount" ||
+				subtitle == "quantity" ||
+				subtitle == "charges" ||
+				subtitle == "uses" ||
+				subtitle == "charge") {
+
+				uint32 hash = lootTmpl->getDirectObjectTemplate().hashCode();
+
+				SharedObjectTemplate *tmpl = templateMap.get(hash);
+
+				if(tmpl == NULL) {
+					info("Null shared object template from loot template" + lootTmpl->getDirectObjectTemplate(), false);
+					continue;
+				}
+
+				templateKeys.put(hash);
+				info("Adding Tangible Template: " + tmpl->getTemplateFileName(), true);
+			}
+		}
+	}
+
+	info("Migrating tangible objects based on :" + String::valueOf(templateKeys.size()) + " templates.", true);
+	int count = 0;
+	uint32 classNameHashCode = STRING_HASHCODE("_className");
+	try {
+
+		while (iterator.getNextKeyAndValue(objectID, &objectData)) {
+
+			int useCount = 0;
+			uint objCRC = 0;
+			AbilityList abilityList;
+			try {
+				if (Serializable::getVariable<AbilityList>(STRING_HASHCODE("PlayerObject.abilityList"), &abilityList, &objectData)) {
+					int size = abilityList.size();
+					for(int i=size-1; i>=0; i--) {
+						Ability *ability = abilityList.get(i);
+						if(ability->getAbilityName().beginsWith("language+")) {
+							abilityList.remove(i, NULL);
+						}
+					}
+
+					if(abilityList.size() != size) {
+						ObjectOutputStream data;
+						abilityList.toBinaryStream(&data);
+						ObjectOutputStream *test = changeVariableData(STRING_HASHCODE("PlayerObject.abilityList"), &objectData, &data);
+						test->reset();
+						database->putData(objectID, test, NULL);
+					}
+				}
+
+				continue; // if we're a player we don't need to migrate useCount's
+			} catch (Exception &e) {
+				info("Error fetching PlayerObject.abilityList", false);
+				info(e.getMessage(), true);
+			}
+
+			try {
+				if (!Serializable::getVariable<int>(STRING_HASHCODE("TangibleObject.useCount"), &useCount, &objectData) ||
+						!Serializable::getVariable<uint>(STRING_HASHCODE("SceneObject.serverObjectCRC"), &objCRC, &objectData)) {
+					objectData.clear();
+					continue;
+				}
+			} catch (Exception& e) {
+				info(e.getMessage(), true);
+				objectData.clear();
+				continue;
+			}
+
+			if(useCount == 1) { // We're moving 1->0, we don't need to do anything else
+				if(templateKeys.contains(objCRC)) {
+					info("Skipping: [" + templateMap.get(objCRC)->getTemplateFileName() + "] useCount: " + String::valueOf(useCount));
+					continue;
+				} else {
+					// change useCount to 0
+					info("Found tangible object to migrate: " + templateMap.get(objCRC)->getTemplateFileName());
+					ObjectOutputStream data;
+					data.writeInt(0);
+					ObjectOutputStream* test = changeVariableData(STRING_HASHCODE("TangibleObject.useCount"), &objectData, &data);
+					test->reset();
+					database->putData(objectID, test, NULL);
+
+				}
+			}
+
+			objectData.clear();
+		}
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+	}
+
+	info("Finished migrating tangible object use counts\n", true);
 }
 
 

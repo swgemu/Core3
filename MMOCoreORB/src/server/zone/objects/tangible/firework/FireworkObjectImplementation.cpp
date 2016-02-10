@@ -143,7 +143,7 @@ int FireworkObjectImplementation::getDisplayedUseCount() {
 		return fireworkShowData->getTotalFireworkCount();
 	}
 
-	return TangibleObjectImplementation::getDisplayedUseCount();
+	return useCount;
 }
 
 void FireworkObjectImplementation::launch(CreatureObject* player, int removeDelay) {
@@ -187,7 +187,7 @@ void FireworkObjectImplementation::completeLaunch(CreatureObject* player, int re
 	player->getZone()->transferObject(launcherObject, -1, true);
 
 	if (getUseCount() > 1) {
-		setUseCount(getUseCount() - 1, true);
+		decreaseUseCount();
 	} else {
 		destroyObjectFromWorld(true);
 
