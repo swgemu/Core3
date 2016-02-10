@@ -197,7 +197,7 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim,
 
 	Time nTime = newDot.getNextTick();
 
-	if (isEmpty() || nextTick.isPast() || nTime.compareTo(nextTick) > 0)
+	if (isEmpty() || nTime.compareTo(nextTick) > 0)
 		nextTick = nTime;
 
 	if(oldStrength == 0)
