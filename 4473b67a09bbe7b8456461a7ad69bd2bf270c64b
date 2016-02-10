@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_e24ad7ab",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2537,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-02-10T15:09:53Z",
+      "side": 1,
+      "message": "Also because of how the source (attacker) changes each chain. We couldn\u0027t reasonably call doTargetCombatAction as it would show combat spam from the wrong people.",
+      "parentUuid": "da7095c5_625fa773",
+      "revId": "4473b67a09bbe7b8456461a7ad69bd2bf270c64b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_a27e1fe3",
         "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
         "patchSetId": 3
