@@ -50,7 +50,7 @@ public:
 	}
 
 	void updateCountdownTimer() {
-		addIntUpdate(7, tano->getDisplayedUseCount());
+		addIntUpdate(7, tano->getUseCount());
 	}
 
 	void updateConditionDamage() {
