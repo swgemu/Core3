@@ -111,8 +111,7 @@ public:
 
 		if(incomingTano->getUseCount() > slotNeeds) {
 
-			int newCount = incomingTano->getUseCount() - slotNeeds;
-			incomingTano->setUseCount(newCount, true);
+			incomingTano->decreaseUseCount(slotNeeds);
 
 			itemToUse = cast<TangibleObject*>( objectManager->cloneObject(incomingTano));
 

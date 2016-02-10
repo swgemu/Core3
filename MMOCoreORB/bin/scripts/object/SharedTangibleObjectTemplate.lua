@@ -104,7 +104,7 @@ SharedTangibleObjectTemplate = SharedObjectTemplate:new {
 	
 	maxCondition = 1000,
 	
-	useCount = 1,
+	useCount = 0,
 	
 	skillMods = {},
 	
