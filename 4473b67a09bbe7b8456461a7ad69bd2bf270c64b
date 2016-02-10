@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_026d8b32",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2537,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-10T14:46:53Z",
+      "side": 1,
+      "message": "This is nearly identical to the code in doAreaCombatAction() above. The only differences I see is that you aren\u0027t including defenderObject in the returned vector and, well, returning a vector instead doing target combat actions and returning a damage total.\n\nYou already have a check in ForceIntimidateTask to filter out the defender, so why not just leave it in the vector that\u0027s returned and call this method from doAreaCombatAction as well? You then just need to iterate through the returned vector to call doTargetCombatAction() for each (and total the damage). It would cut a lot of redundant code. If you do this, you can ignore the comments below.\n\nYou can maybe use it for the other doAreaCombatAction below as well, though it has a few differences (starting with attacker being a tano and not a creo so you\u0027d need to make this take a tano attacker). I didn\u0027t fully look into the implications of this so it may or may not be feasible.",
+      "revId": "4473b67a09bbe7b8456461a7ad69bd2bf270c64b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_a27e1fe3",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2617,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-10T14:46:53Z",
+      "side": 1,
+      "message": "You continued if object \u003d\u003d defenderObject above so the first check here is unnecessary.",
+      "revId": "4473b67a09bbe7b8456461a7ad69bd2bf270c64b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_428383cc",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2621,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-10T14:46:53Z",
+      "side": 1,
+      "message": "Should feign death be considered here?",
+      "revId": "4473b67a09bbe7b8456461a7ad69bd2bf270c64b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_628807e8",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2634,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-10T14:46:53Z",
+      "side": 1,
+      "message": "Again, you already continued if object \u003d\u003d defenderObject so your first check isn\u0027t needed.",
+      "revId": "4473b67a09bbe7b8456461a7ad69bd2bf270c64b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
