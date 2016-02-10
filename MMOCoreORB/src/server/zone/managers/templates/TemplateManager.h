@@ -74,7 +74,13 @@ protected:
 	//this is only to be used when loading client dervs
 	LuaObject* getLuaObject(const String& iffTemplateName);
 
+
+
 public:
+	TemplateCRCMap& getTemplateCRCMap() const {
+		return *templateCRCMap;
+	}
+
 	TemplateManager();
 	~TemplateManager();
 
