@@ -1586,40 +1586,33 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 		cooldownTimerMap->updateToCurrentAndAddMili("digestEvent", 18000);
 	}
 
-	DamageOverTimeList* damageOverTimeList = creature->getDamageOverTimeList();
-
-	if (damageOverTimeList->hasDot() && damageOverTimeList->isNextTickPast()) {
-		damageOverTimeList->activateDots(creature);
-	}
-
-	if (creature->isBleeding() && !damageOverTimeList->hasDot(CreatureState::BLEEDING))
-		creature->clearState(CreatureState::BLEEDING);
-	if (creature->isPoisoned() && !damageOverTimeList->hasDot(CreatureState::POISONED))
-		creature->clearState(CreatureState::POISONED);
-	if (creature->isDiseased() && !damageOverTimeList->hasDot(CreatureState::DISEASED))
-		creature->clearState(CreatureState::DISEASED);
-	if (creature->isOnFire() && !damageOverTimeList->hasDot(CreatureState::ONFIRE))
-		creature->clearState(CreatureState::ONFIRE);
-
 	if (isOnline()) {
 		CommandQueueActionVector* commandQueue = creature->getCommandQueue();
 
-		if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced() && !creature->hasBuff(STRING_HASHCODE("private_feign_buff"))
-				&& (commandQueue->size() == 0) && creature->isNextActionPast() && !creature->isDead() && !creature->isIncapacitated()) {
+		if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced() && 
+			!creature->hasBuff(STRING_HASHCODE("private_feign_buff")) && (commandQueue->size() == 0) && 
+			creature->isNextActionPast() && !creature->isDead() && !creature->isIncapacitated() &&
+			cooldownTimerMap->isPast("autoAttackDelay")) {
 			creature->executeObjectControllerAction(STRING_HASHCODE("attack"), creature->getTargetID(), "");
+			cooldownTimerMap->updateToCurrentAndAddMili("autoAttackDelay", (int)(CombatManager::instance()->calculateWeaponAttackSpeed(creature, creature->getWeapon(), 1.f) * 1000.f));
 		}
 
-		if (!getZoneServer()->isServerLoading()) {
+		if (!getZoneServer()->isServerLoading() && cooldownTimerMap->isPast("weatherEvent")) {
 			if(creature->getZone() != NULL && creature->getZone()->getPlanetManager() != NULL) {
 				ManagedReference<WeatherManager*> weatherManager = creature->getZone()->getPlanetManager()->getWeatherManager();
 
 				if (weatherManager != NULL)
 					weatherManager->sendWeatherTo(creature);
+
+				cooldownTimerMap->updateToCurrentAndAddMili("weatherEvent", 3000);
 			}
 		}
 	}
 
-	checkForNewSpawns();
+	if (cooldownTimerMap->isPast("spawnCheckTimer")) {
+		checkForNewSpawns();
+		cooldownTimerMap->updateToCurrentAndAddMili("spawnCheckTimer", 3000);
+	}
 
 	activateRecovery();
 }
@@ -1696,7 +1689,7 @@ void PlayerObjectImplementation::activateRecovery() {
 	}
 
 	if (!recoveryEvent->isScheduled()) {
-		recoveryEvent->schedule(3000);
+		recoveryEvent->schedule(1000);
 	}
 }
 
