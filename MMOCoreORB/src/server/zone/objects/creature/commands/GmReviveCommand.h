@@ -221,6 +221,8 @@ public:
 
 		patient->clearDots();
 
+		patient->removeFeignedDeath();
+
 		patient->setPosture(CreaturePosture::UPRIGHT);
 
 		patient->broadcastPvpStatusBitmask();
