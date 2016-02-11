@@ -89,11 +89,18 @@ public:
 	const static int WEAPONATTACK = 0x0;
 	const static int FORCEATTACK = 0x1;
 
+	Vector<uint32> defaultMeleeAttacks;
+	Vector<uint32> defaultRangedAttacks;
+
+private:
+	void initializeDefaultAttacks();
+
 public:
 	CombatManager() {
 		setLoggingName("CombatManager");
 		setGlobalLogging(false);
 		setLogging(false);
+		initializeDefaultAttacks();
 	}
 
 	/**

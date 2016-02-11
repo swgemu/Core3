@@ -6,12 +6,13 @@
 #define ANIMALCALMCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/commands/JediQueueCommand.h"
 
-class AnimalCalmCommand : public QueueCommand {
+class AnimalCalmCommand : public JediQueueCommand {
 public:
 
 	AnimalCalmCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: JediQueueCommand(name, server) {
 
 	}
 

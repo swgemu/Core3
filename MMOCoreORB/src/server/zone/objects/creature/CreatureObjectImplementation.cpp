@@ -1044,7 +1044,19 @@ int CreatureObjectImplementation::healDamage(TangibleObject* healer,
 			newValue = 1;
 
 		if (damageType % 3 == 0) {
+
 			setPosture(CreaturePosture::UPRIGHT);
+
+
+			if(isPlayerCreature()) {
+
+				PlayerObject* ghost = getPlayerObject();
+
+				if (ghost->getForcePowerMax() > 0 && ghost->getForcePower() < ghost->getForcePowerMax()) {
+					ghost->activateForcePowerRegen();
+				}
+			}
+
 			if (isPet()) {
 				AiAgent* pet = asAiAgent();
 				ManagedReference<CreatureObject*> player = getLinkedCreature().get();

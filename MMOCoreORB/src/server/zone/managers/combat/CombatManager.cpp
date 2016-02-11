@@ -30,19 +30,6 @@
 
 #define COMBAT_SPAM_RANGE 85
 
-const uint32 CombatManager::defaultAttacks[9] = { //
-		0x99476628, // attack_high_left_light_0
-		0xF5547B91, // attack_high_center_light_0
-		0x3CE273EC, // attack_high_right_light_0
-		0x734C00C,  // attack_mid_left_light_0
-		0x43C4FFD0, // attack_mid_center_light_0
-		0x56D7CC78, // attack_mid_right_light_0
-		0x4B41CAFB, // attack_low_left_light_0
-		0x2257D06B, // attack_low_right_light_0
-		0x306887EB  // attack_low_center_light_0
-};
-
-
 bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defender, bool lockDefender) {
 	if (attacker == defender)
 		return false;
@@ -2063,7 +2050,7 @@ void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObj
 
 	uint32 animationCRC = data.getAnimationCRC();
 
-	if (!attacker->isCreature() && animationCRC == 0)
+	if (animationCRC == 0)
 		animationCRC = getDefaultAttackAnimation(attacker);
 
 	CreatureObject *dcreo = defenderObject->asCreatureObject();
@@ -2397,28 +2384,34 @@ bool CombatManager::checkConeAngle(SceneObject* target, float angle,
 }
 
 uint32 CombatManager::getDefaultAttackAnimation(CreatureObject* creature) {
-	// TODO: this needs to be fixed - Default and counter-attack animation names should be generated.
+	// TODO: this needs to be fixed - All animation names should be generated.
 	// This may make a lot more sense to place in a virtual CombatQueueCommand func
 	// Ex: attack_mid_center_medium_2 attack_high_right_light_0  attack_low_center_light_3
 	// _high _mid _low _left _right  should be based on hit location
 	// _light _medium should be based on damage and also applied to most special attacks
 	// _0 _1 _2 _3 should be played in sequence
 
+	// Ranged attacks are formatted "fire_[number_of_shots]_[special]_[intensity]_[location]"
+	// Ranged attacks only have "face" as a location target as well as the light/medium intensity
+	// Ex: fire_5_special_single_light_face
+
+	// Special attacks have _special_ inserted into them and generally do not have locational damage
 
 	WeaponObject* weapon = creature->getWeapon();
 
 	if(!creature->isCreature()) {
 		if (weapon->isRangedWeapon())
-			return 0x506E9D4C;
+			return defaultRangedAttacks.get(System::random(defaultRangedAttacks.size()-1));
 		else
-			return defaultAttacks[System::random(8)];
+			return defaultMeleeAttacks.get(System::random(defaultMeleeAttacks.size()-1));
 	} else {
 		if (creature->getGameObjectType() == SceneObjectType::DROIDCREATURE || creature->getGameObjectType() == SceneObjectType::PROBOTCREATURE)
-			return STRING_HASHCODE("droid_attack_light");
+			return (System::random(1) ? STRING_HASHCODE("droid_attack_medium") : STRING_HASHCODE("droid_attack_light"));
 		else if (weapon->isRangedWeapon())
-			return STRING_HASHCODE("creature_attack_ranged_light");
-		else
-			return STRING_HASHCODE("creature_attack_light");
+			return (System::random(1) ? STRING_HASHCODE("creature_attack_ranged_medium") : STRING_HASHCODE("creature_attack_ranged_light"));
+		else {
+			return (System::random(1) ? STRING_HASHCODE("creature_attack_medium") : STRING_HASHCODE("creature_attack_light"));
+		}
 	}
 }
 
@@ -2596,4 +2589,97 @@ int CombatManager::getArmorTurretReduction(CreatureObject* attacker, TangibleObj
 	}
 
 	return resist;
+}
+
+void CombatManager::initializeDefaultAttacks() {
+
+	defaultRangedAttacks.add(STRING_HASHCODE("fire_1_single_light"));
+	defaultRangedAttacks.add(STRING_HASHCODE("fire_1_single_medium"));
+	defaultRangedAttacks.add(STRING_HASHCODE("fire_1_single_light_face"));
+	defaultRangedAttacks.add(STRING_HASHCODE("fire_1_single_medium_face"));
+
+	defaultRangedAttacks.add(STRING_HASHCODE("fire_3_single_light"));
+	defaultRangedAttacks.add(STRING_HASHCODE("fire_3_single_medium"));
+	defaultRangedAttacks.add(STRING_HASHCODE("fire_3_single_light_face"));
+	defaultRangedAttacks.add(STRING_HASHCODE("fire_3_single_medium_face"));
+
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_left_light_0"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_center_light_0"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_right_light_0"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_left_light_0"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_center_light_0"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_right_light_0"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_left_light_0"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_right_light_0"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_center_light_0"));
+
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_left_medium_0"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_center_medium_0"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_right_medium_0"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_left_medium_0"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_center_medium_0"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_right_medium_0"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_left_medium_0"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_right_medium_0"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_center_medium_0"));
+
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_left_light_1"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_center_light_1"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_right_light_1"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_left_light_1"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_center_light_1"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_right_light_1"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_left_light_1"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_right_light_1"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_center_light_1"));
+
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_left_medium_1"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_center_medium_1"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_right_medium_1"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_left_medium_1"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_center_medium_1"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_right_medium_1"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_left_medium_1"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_right_medium_1"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_center_medium_1"));
+
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_left_light_2"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_center_light_2"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_right_light_2"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_left_light_2"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_center_light_2"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_right_light_2"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_left_light_2"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_right_light_2"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_center_light_2"));
+
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_left_medium_2"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_center_medium_2"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_right_medium_2"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_left_medium_2"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_center_medium_2"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_right_medium_2"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_left_medium_2"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_right_medium_2"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_center_medium_2"));
+
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_left_light_3"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_center_light_3"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_right_light_3"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_left_light_3"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_center_light_3"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_right_light_3"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_left_light_3"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_right_light_3"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_center_light_3"));
+
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_left_medium_3"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_center_medium_3"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_high_right_medium_3"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_left_medium_3"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_center_medium_3"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_mid_right_medium_3"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_left_medium_3"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_right_medium_3"));
+	defaultMeleeAttacks.add(STRING_HASHCODE("attack_low_center_medium_3"));
 }

@@ -49,7 +49,7 @@ CreatureAreaComboCommand = {
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
 	combatSpam = "attack",
-	animationCRC = 0,
+	animationCRC = hashCode("creature_attack_special_2_medium"),
 
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,

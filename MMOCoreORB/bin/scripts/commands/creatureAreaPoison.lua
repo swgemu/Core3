@@ -44,6 +44,7 @@
 CreatureAreaPoisonCommand = {
         name = "creatureareapoison",
         combatSpam = "attack",
+        animationCRC = hashCode("creature_attack_special_1_medium"),
 	dotEffects = {
 	  DotEffect( 
 		POISONED_EFFECT, 

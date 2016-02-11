@@ -44,6 +44,7 @@
 PostureDownAttackCommand = {
         name = "posturedownattack",
         combatSpam = "attack",
+        animationCRC = hashCode("creature_attack_special_1_medium"),
 	stateEffects = {
 	  StateEffect( 
 		POSTUREDOWN_EFFECT, 

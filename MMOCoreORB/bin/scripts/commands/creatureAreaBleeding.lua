@@ -44,6 +44,7 @@
 CreatureAreaBleedingCommand = {
         name = "creatureareableeding",
         combatSpam = "attack",
+        animationCRC = hashCode("creature_attack_special_2_medium"),
 	dotEffects = {
 	  DotEffect( 
 		BLEEDING, 

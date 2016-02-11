@@ -609,6 +609,9 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 		else if (varName == "areaAction") {
 			combatCommand->setAreaAction((bool)lua_toboolean(L, -1));
 			command.pop();
+		} else if (varName == "splashDamage") {
+			combatCommand->setSplashDamage((bool)lua_toboolean(L, -1));
+			command.pop();
 		} else if (varName == "coneAction") {
 			combatCommand->setConeAction((bool)lua_toboolean(L, -1));
 			command.pop();

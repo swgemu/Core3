@@ -44,7 +44,7 @@
 StunAttackCommand = {
 	name = "stunattack",
 	combatSpam = "attack",
-        
+	animationCRC = hashCode("creature_attack_special_2_medium"),
 	stateEffects = {
 	  StateEffect( 
 		STUN_EFFECT, 
