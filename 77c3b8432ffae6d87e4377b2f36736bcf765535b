@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_a24fff91",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-11T05:16:27Z",
+      "side": 1,
+      "message": "This will trigger the preLocked assert because you aren\u0027t locking parent before calling deleteRoom() here. You probably want to do this in a task.",
+      "revId": "77c3b8432ffae6d87e4377b2f36736bcf765535b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_82319b0d",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1679,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-11T05:16:27Z",
+      "side": 1,
+      "message": "You need to lock player before calling getOwnedChatRoomCount() since it has a chance to modify the vector.",
+      "revId": "77c3b8432ffae6d87e4377b2f36736bcf765535b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_22220fba",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1810,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-11T05:16:27Z",
+      "side": 1,
+      "message": "Remove the ! before nameManager",
+      "revId": "77c3b8432ffae6d87e4377b2f36736bcf765535b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_a2685ff6",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoomImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-11T05:16:27Z",
+      "side": 1,
+      "message": "Null check the playerObject before use.",
+      "revId": "77c3b8432ffae6d87e4377b2f36736bcf765535b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_627247e7",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoomImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-11T05:16:27Z",
+      "side": 1,
+      "message": "Null check player before use.",
+      "revId": "77c3b8432ffae6d87e4377b2f36736bcf765535b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_426dc303",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoomImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-11T05:16:27Z",
+      "side": 1,
+      "message": "Null check ghost before use.",
+      "revId": "77c3b8432ffae6d87e4377b2f36736bcf765535b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
