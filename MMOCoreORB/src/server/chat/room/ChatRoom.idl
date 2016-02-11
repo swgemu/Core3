@@ -113,16 +113,16 @@ class ChatRoom extends ManagedObject {
 	}
 
 	@dirty
-	public ChatRoom getSubRoom(int i) {
+	public unsigned int getSubRoom(int i) {
 		synchronized (subRoomsMutex) {
-			return manager.getChatRoom(subRooms.get(i));
+			return subRooms.get(i);
 		}
 	}
 
 	@dirty
-	public ChatRoom getSubRoom(final string name) {
+	public unsigned int getSubRoom(final string name) {
 		synchronized (subRoomsMutex) {
-			return manager.getChatRoom(subRooms.get(name));
+			return subRooms.get(name);
 		}
 	}
 

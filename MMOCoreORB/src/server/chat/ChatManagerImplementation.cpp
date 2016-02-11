@@ -365,7 +365,9 @@ ChatRoom* ChatManagerImplementation::getChatRoomByGamePath(ChatRoom* game, const
 	while (tokenizer.hasMoreTokens()) {
 		tokenizer.getStringToken(channel);
 
-		room = room->getSubRoom(channel);
+		unsigned int roomID = room->getSubRoom(channel);
+		room = getChatRoom(roomID);
+
 		if (room == NULL)
 			return NULL;
 	}
@@ -1757,8 +1759,10 @@ ChatRoom* ChatManagerImplementation::createPersistentRoomByFullPath(CreatureObje
 		//Get name of next node in path.
 		tokenizer.getStringToken(channel);
 		String channelLower = channel.toLowerCase(); //Subrooms are stored in lower case to prevent close duplicates.
+		unsigned int subRoomID = parent->getSubRoom(channelLower);
+		ChatRoom* subRoom = getChatRoom(subRoomID);
 
-		if (parent->getSubRoom(channelLower) == NULL) { //Found first node that doesn't already exist.
+		if (subRoom == NULL) { //Found first node that doesn't already exist.
 			persistentPath = persistentPath + channelLower;
 
 			if (tokenizer.hasMoreTokens()) { //Do not create a room that is not the last node in the entered path.
@@ -1771,10 +1775,8 @@ ChatRoom* ChatManagerImplementation::createPersistentRoomByFullPath(CreatureObje
 
 		} else { //Node exists, check if it's the last path node.
 			if (!tokenizer.hasMoreTokens()) {
-				ManagedReference<ChatRoom*> room = parent->getSubRoom(channelLower);
-
-				if (room->isDisabled() && room->getOwnerID() == player->getObjectID()) { //Allow owner to re-enable the room.
-					enableRoom(player, room, requestID);
+				if (subRoom->isDisabled() && subRoom->getOwnerID() == player->getObjectID()) { //Allow owner to re-enable the room.
+					enableRoom(player, subRoom, requestID);
 					return NULL;
 
 				} else { //Only the owner can re-enable the room.
@@ -1784,7 +1786,7 @@ ChatRoom* ChatManagerImplementation::createPersistentRoomByFullPath(CreatureObje
 				}
 
 			} else {
-				parent = parent->getSubRoom(channelLower);
+				parent = subRoom;
 				if (parent->isPersistent()) {
 					persistentPath = persistentPath + channelLower;
 					persistentNodes++;
