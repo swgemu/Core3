@@ -384,14 +384,20 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	sceneObject->initializePosition(newPostionX, newPositionZ, newPositionY);
 
 	if (newParent != NULL) {
-		if (newParent->transferObject(sceneObject, -1, false, false, false)) {
-			sceneObject->sendToOwner(true);
+		if (zone == newZone) {
+			if (newParent->transferObject(sceneObject, -1, false)) {
+				sceneObject->sendToOwner(true);
+			}
+		} else {
+			if (newParent->transferObject(sceneObject, -1, false, false, false)) {
+				sceneObject->sendToOwner(true);
 
-			if (newParent->isCellObject()) {
-				ManagedReference<SceneObject*> rootParent = sceneObject->getRootParent();
+				if (newParent->isCellObject()) {
+					ManagedReference<SceneObject*> rootParent = sceneObject->getRootParent();
 
-				if (rootParent != NULL)
-					rootParent->notifyObjectInsertedToChild(sceneObject, newParent, NULL);
+					if (rootParent != NULL)
+						rootParent->notifyObjectInsertedToChild(sceneObject, newParent, NULL);
+				}
 			}
 		}
 	} else {
