@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_a504e915",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-11T15:00:36Z",
+      "side": 1,
+      "message": "ManagedReference\u003c\u003e",
+      "revId": "ab8b69c34c5fbf60a49db0d9e43a0fc713279f98",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_45094d2b",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-11T15:00:36Z",
+      "side": 1,
+      "message": "Don\u0027t pass chatManager to this task. You don\u0027t need to be locking it anymore.",
+      "revId": "ab8b69c34c5fbf60a49db0d9e43a0fc713279f98",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
