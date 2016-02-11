@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_02026b3e",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-11T02:06:29Z",
+      "side": 0,
+      "message": "You should be returning damage here.",
+      "revId": "800f57328a5edca6b1e7c45dec0f7a98a25f61a0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_22ff6f36",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2541,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-11T02:06:29Z",
+      "side": 0,
+      "message": "You seem to have lost this in the shuffle.",
+      "revId": "800f57328a5edca6b1e7c45dec0f7a98a25f61a0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

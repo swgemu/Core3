@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_c2fb1346",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceIntimidate1Command.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-11T02:06:29Z",
+      "side": 1,
+      "message": "targetObject shouldn\u0027t ever be a PlayerObject. You should be checking if it\u0027s a PlayerCreature instead.",
+      "revId": "3c762bbe49bac55991a3e6635394f3dd1d5c6d6d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_e2f8974b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceIntimidate2Command.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-11T02:06:29Z",
+      "side": 1,
+      "message": "targetObject shouldn\u0027t ever be a PlayerObject. You should be checking if it\u0027s a PlayerCreature instead.",
+      "revId": "3c762bbe49bac55991a3e6635394f3dd1d5c6d6d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_82951be6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/ForceIntimidateTask.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-11T02:06:29Z",
+      "side": 1,
+      "message": "Again, check isPlayerCreature",
+      "revId": "3c762bbe49bac55991a3e6635394f3dd1d5c6d6d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
