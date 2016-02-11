@@ -65,7 +65,7 @@ public:
 		inRepair = false;
 	}
 
-	virtual ~DestructibleBuildingDataComponent(){
+	virtual ~DestructibleBuildingDataComponent() {
 
 	}
 
@@ -73,178 +73,185 @@ public:
 
 	bool parseFromBinaryStream(ObjectInputStream* stream);
 
-	bool isVulnerable(){
+	bool isVulnerable() {
 		return (intCurrentState >= VULNERABLE);
 	}
 
-	bool isDestructibleBuildingData(){
+	bool isDestructibleBuildingData() {
 		return true;
 	}
 
-	int getState(){
+	int getState() {
 		return intCurrentState;
 	}
 
-	Time getLastVulnerableTime(){
+	Time getLastVulnerableTime() {
 		return lastVulnerableTime;
 	}
 
-	Time getNextVulnerableTime(){
+	Time getNextVulnerableTime() {
 		return nextVulnerableTime;
 	}
 
-	Time getVulnerabilityEndTime(){
+	Time getVulnerabilityEndTime() {
 		return vulnerabilityEndTime;
 	}
 
-	Time getPlacmenetTime(){
+	Time getPlacmenetTime() {
 		return placementTime;
 	}
 
-	Time getLastResetTime(){
+	Time getLastResetTime() {
 		return lastResetTime;
 	}
 
-	int getUplinkBand(){
+	int getUplinkBand() {
 		return uplinkBand;
 	}
 
-	int isTerminalBeingRepaired(){
+	int isTerminalBeingRepaired() {
 		return inRepair;
 	}
 
-	bool isTerminalDamaged(){
+	bool isTerminalDamaged() {
 		return terminalDamaged;
 	}
 
 	void setState(int state);
 
-	void setLastVulnerableTime(Time time){
+	void setLastVulnerableTime(Time time) {
 		lastVulnerableTime = time;
 	}
 
-	void setNextVulnerableTime(Time time){
+	void setNextVulnerableTime(Time time) {
 		nextVulnerableTime = time;
 	}
 
-	void setVulnerabilityEndTime(Time time){
+	void setVulnerabilityEndTime(Time time) {
 		vulnerabilityEndTime = time;
 	}
 
-	void setPlacementTime(Time time){
+	void setPlacementTime(Time time) {
 		placementTime = time;
 	}
 
-	void setLastResetTime(Time time){
+	void setLastResetTime(Time time) {
 		lastResetTime = time;
 	}
 
-	void setUplinkBand(int band){
+	void setUplinkBand(int band) {
 		uplinkBand = band;
 	}
 
-	void setTerminalBeingRepaired(bool val){
+	void setTerminalBeingRepaired(bool val) {
 		inRepair = val;
 	}
 
-	void setTerminalDamaged(bool val){
+	void setTerminalDamaged(bool val) {
 		terminalDamaged = val;
 	}
 
-	void setActiveTurret(int indx, uint64 turretOID){
+	void setActiveTurret(int indx, uint64 turretOID) {
 		turretSlots.get(indx) = turretOID;
 	}
 
-	void setActiveMinefield(int indx, uint64 minefieldOID){
+	void setActiveMinefield(int indx, uint64 minefieldOID) {
 		minefieldSlots.get(indx) == minefieldOID;
 	}
 
 	void initializeTransientMembers();
 
-	int getTotalTurretCount(){
+	int getTotalTurretCount() {
 		return turretSlots.size();
 	}
 
-	int getTotalMinefieldCount(){
+	int getTotalMinefieldCount() {
 		return minefieldSlots.size();
 	}
 
-	int getTotalScannerCount(){
+	int getTotalScannerCount() {
 		return scannerSlots.size();
 	}
-	bool isTurretSlotOccupied(int indx){
+
+	bool isTurretSlotOccupied(int indx) {
 		return (turretSlots.get(indx) > 0);
 	}
 
-	bool isMinefieldSlotOccupied(int indx){
+	bool isMinefieldSlotOccupied(int indx) {
 		return (minefieldSlots.get(indx) > 0);
 	}
 
-	uint64 getTurretID(int indx){
+	uint64 getTurretID(int indx) {
 		return turretSlots.elementAt(indx);
 	}
 
-	uint64 getMinefieldOID(int indx){
+	uint64 getMinefieldOID(int indx) {
 		return minefieldSlots.elementAt(indx);
 	}
 
-	bool hasTurret(uint64 turretID){
+	bool hasTurret(uint64 turretID) {
 		return turretSlots.contains(turretID);
 	}
 
-	bool hasMinefield(uint64 minefieldOID){
+	bool hasMinefield(uint64 minefieldOID) {
 		return minefieldSlots.contains(minefieldOID);
 	}
 
-	int getIndexOfTurret(uint64 turretID){
+	bool hasDefense(uint64 defenseOID) {
+		return hasTurret(defenseOID) || hasMinefield(defenseOID);
+	}
 
-		for(int i =0; i< turretSlots.size();i++){
-			if(turretSlots.elementAt(i) == turretID)
+	int getIndexOfTurret(uint64 turretID) {
+		for (int i = 0; i < turretSlots.size(); i++) {
+			if (turretSlots.elementAt(i) == turretID)
 				return i;
 		}
+
 		return -1;
 	}
 
-	int getIndexOfMinefield(uint64 minefieldOID){
-		for(int i=0; i < minefieldSlots.size(); i++){
-			if(minefieldSlots.elementAt(i) == minefieldOID){
+	int getIndexOfMinefield(uint64 minefieldOID) {
+		for (int i = 0; i < minefieldSlots.size(); i++) {
+			if (minefieldSlots.elementAt(i) == minefieldOID)
 				return i;
-			}
 		}
+
 		return -1;
 	}
 
-	void setTurretID(int indx, uint64 turretOID){
+	void setTurretID(int indx, uint64 turretOID) {
 		turretSlots.elementAt(indx) = turretOID;
 	}
 
-	void addScanner(int indx, uint64 scannerOID){
+	void addScanner(int indx, uint64 scannerOID) {
 		scannerSlots.add(indx,scannerOID);
 	}
-	void addTurret(int indx, uint64 turretOID){
+
+	void addTurret(int indx, uint64 turretOID) {
 		turretSlots.add(indx, turretOID);
 	}
 
-	void setScannerID(int indx, uint64 scannerOID){
+	void setScannerID(int indx, uint64 scannerOID) {
 		scannerSlots.elementAt(indx) = scannerOID;
 	}
-	void setMinefieldID(int indx, uint64 minefieldOID){
+
+	void setMinefieldID(int indx, uint64 minefieldOID) {
 		minefieldSlots.elementAt(indx) = minefieldOID;
 	}
 
-	void addMinefield(int indx, uint64 minefieldOID){
+	void addMinefield(int indx, uint64 minefieldOID) {
 		minefieldSlots.add(indx, minefieldOID);
 	}
 
-	bool isGCWBaseData(){
+	bool isGCWBaseData() {
 		return true;
 	}
 
-	bool hasDefense(){
+	bool hasDefense() {
 		return activeDefenses;
 	}
 
-	void setDefense(bool value){
+	void setDefense(bool value) {
 		activeDefenses = value;
 	}
 

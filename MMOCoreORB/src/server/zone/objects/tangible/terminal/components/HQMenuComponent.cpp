@@ -32,10 +32,7 @@
 void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
 
-	if (building == NULL)
-		return;
-
-	if ( player  == NULL || player->isDead() || player->isIncapacitated())
+	if (building == NULL || player  == NULL)
 		return;
 
 	Zone* zone = building->getZone();
@@ -48,32 +45,40 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 	if (gcwMan == NULL)
 		return;
 
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
 	if (!gcwMan->canUseTerminals(player, building, sceneObject))
 		return;
 
-	if (building->getFaction() == player->getFaction()) {
+	if (building->getFaction() == player->getFaction() || ghost->isPrivileged()) {
 
 		menuResponse->addRadialMenuItem(210, 3, "@player_structure:management");
 
 		menuResponse->addRadialMenuItemToRadialID(210, 227, 3, "@player_structure:management_status");
 
-		if (building->getOwnerCreatureObject() == player) {
+		if (building->getOwnerCreatureObject() == player || ghost->isPrivileged()) {
 			menuResponse->addRadialMenuItemToRadialID(210, 228, 3, "@hq:mnu_defense_status");
 
 			if ((building->getPvpStatusBitmask() & CreatureFlag::OVERT) && !gcwMan->isBaseVulnerable(building)) {
 				if (gcwMan->hasResetTimerPast(building))
 					menuResponse->addRadialMenuItemToRadialID(210, 235, 3, "@hq:mnu_reset_vulnerability"); // Reset Vulnerability
+
 				menuResponse->addRadialMenuItemToRadialID(210, 236, 3, "@player_structure:permission_destroy");
 			} else if (!(building->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
 				menuResponse->addRadialMenuItemToRadialID(210, 236, 3, "@player_structure:permission_destroy");
 			}
 		}
 
-		if (gcwMan->isShutdownSequenceStarted(building) && (building->getPvpStatusBitmask() & CreatureFlag::OVERT))
-			menuResponse->addRadialMenuItem(231, 3, "@hq:mnu_shutdown");  // Shutdown facility
+		if (building->getFaction() == player->getFaction()) {
+			if (gcwMan->isShutdownSequenceStarted(building) && (building->getPvpStatusBitmask() & CreatureFlag::OVERT))
+				menuResponse->addRadialMenuItem(231, 3, "@hq:mnu_shutdown");  // Shutdown facility
 
-		menuResponse->addRadialMenuItem(37, 3, "@hq:mnu_donate"); // Donate
-		menuResponse->addRadialMenuItemToRadialID(37, 226, 3, "@hq:mnu_donate_deed"); // Donate Defense
+			menuResponse->addRadialMenuItem(37, 3, "@hq:mnu_donate"); // Donate
+			menuResponse->addRadialMenuItemToRadialID(37, 226, 3, "@hq:mnu_donate_deed"); // Donate Defense
+		}
 	} else {
 		if (gcwMan->isPowerOverloaded(building) || gcwMan->isFacilityRebooting(building))
 			menuResponse->addRadialMenuItem(230, 3, "@hq:mnu_overload");  // Activate Overload
@@ -81,9 +86,6 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 }
 
 int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) {
-	if (creature->isDead() || creature->isIncapacitated())
-		return 1;
-
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
 
 	if (building == NULL)
@@ -99,29 +101,36 @@ int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureOb
 	if (gcwMan == NULL)
 		return 1;
 
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	if (ghost == NULL)
+		return 1;
+
 	if (!gcwMan->canUseTerminals(creature, building, sceneObject))
 		return 1;
 
-	if (creature->getFaction() == building->getFaction()) {
+	if (creature->getFaction() == building->getFaction() || ghost->isPrivileged()) {
 		if (selectedID == 210 || selectedID == 20 || selectedID == 227) {
 			creature->executeObjectControllerAction(0x13F7E585, building->getObjectID(), ""); //structureStatus
-		} else if (selectedID == 228){
+		} else if (selectedID == 228) {
 			gcwMan->sendBaseDefenseStatus(creature, building);
 		} else if (selectedID == 235) {
-			if (building->getOwnerCreatureObject() == creature)
+			if (building->getOwnerCreatureObject() == creature || ghost->isPrivileged())
 				gcwMan->resetVulnerability(creature, building);
 		} else if (selectedID == 236) {
 			creature->executeObjectControllerAction(0x18FC1726, building->getObjectID(), ""); //destroyStructure
 		} else if (selectedID == 231) {
-			ShutdownSequenceTask* task = new ShutdownSequenceTask(gcwMan, building, creature, sceneObject, false);
-			task->execute();
+			if (gcwMan->isShutdownSequenceStarted(building) && (building->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
+				ShutdownSequenceTask* task = new ShutdownSequenceTask(gcwMan, building, creature, sceneObject, false);
+				task->execute();
+			}
 		} else if (selectedID == 226)
 				gcwMan->sendSelectDeedToDonate(building,creature,0);
 	} else {
-		if (selectedID == 230 && (gcwMan->isPowerOverloaded(building) || gcwMan->isFacilityRebooting(building))) {
+		if (selectedID == 230) {
 			if (gcwMan->isFacilityRebooting(building)) {
 				creature->sendSystemMessage("You must wait for the facility to reboot before activating the overload again.");
-			} else if (creature->hasSkill("outdoors_squadleader_novice")) {
+			} else if (gcwMan->isPowerOverloaded(building) && creature->hasSkill("outdoors_squadleader_novice")) {
 				if (gcwMan->isShutdownSequenceStarted(building)) {
 					creature->sendSystemMessage(("@faction/faction_hq/faction_hq_response:terminal_response02")); // A countdown is already in progress...
 				} else {

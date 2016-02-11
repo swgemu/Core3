@@ -26,20 +26,20 @@ public:
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
 
-		if(obj == NULL || !obj->isBuildingObject())
+		if (obj == NULL || !obj->isBuildingObject())
 			return;
 
 		ManagedReference<BuildingObject*> building = cast<BuildingObject*>(obj.get());
 
 		GCWManager* gcwMan = player->getZone()->getGCWManager();
 
-		if(gcwMan==NULL)
+		if (gcwMan == NULL)
 			return;
 
 		bool otherPressed = Bool::valueOf(args->get(0).toString());
 		int indx = Integer::valueOf(args->get(1).toString());
 
-		if(indx == -1)
+		if (indx == -1)
 			return;
 
 		SuiListBox* listBox = cast<SuiListBox*>(suiBox);
@@ -47,7 +47,7 @@ public:
 		uint64 turretOID = listBox->getMenuObjectID(indx);
 
 
-		if(otherPressed)
+		if (otherPressed)
 			gcwMan->sendRemoveDefenseConfirmation(building, player, turretOID);
 		else
 			gcwMan->sendBaseDefenseStatus(player, building);

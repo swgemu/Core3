@@ -144,167 +144,75 @@ class GCWManager extends ManagedService implements Logger {
 		return zone;
 	}
 
-	public native void loadLuaConfig();
 	public native void initialize();
 	public native void start();
+	public native void loadLuaConfig();
 
-	public native void registerGCWBase(BuildingObject building, boolean initializeBase);
-	
-	public native void unregisterGCWBase(BuildingObject building);
-	
 	public native void performGCWTasks();
 
+	public native void registerGCWBase(BuildingObject building, boolean initializeBase);
+	public native void unregisterGCWBase(BuildingObject building);
+
 	public native void startVulnerability(BuildingObject building);
-
 	public native void endVulnerability(BuildingObject building);
-	
+	public native void initializeNewVulnerability(BuildingObject building);
+	private native void initializeNewVulnerability(DestructibleBuildingDataComponent data);
+	private native void scheduleVulnerabilityStart(BuildingObject building);
+	private native void scheduleVulnerabilityEnd(BuildingObject building);
+	private native void refreshExpiredVulnerability(BuildingObject building);
+	private native void checkVulnerabilityData(BuildingObject building);
+
 	public native boolean isBaseVulnerable(BuildingObject building);
-	
 	public native boolean isBandIdentified(BuildingObject building);
-	
 	public native boolean isUplinkJammed(BuildingObject building);
-	
-	public native boolean isShutdownSequenceStarted(BuildingObject building);
-	
+	public native boolean isTerminalDamaged(TangibleObject securityTerminal);
 	public native boolean isSecurityTermSliced(BuildingObject building);
-
+	public native boolean isDNASampled(BuildingObject building);
 	public native boolean isPowerOverloaded(BuildingObject building);
-
+	public native boolean isShutdownSequenceStarted(BuildingObject building);
 	public native boolean isFacilityRebooting(BuildingObject building);
-	
+
 	// called to reschedule the vulnerability time of a base
 	public native void resetVulnerability(CreatureObject creature, BuildingObject building);
 
 	public native void sendBaseDefenseStatus(CreatureObject creature, BuildingObject building);
-	
+
 	public native void doBaseDestruction(StructureObject structure);
 
 	public native void doBaseDestruction(BuildingObject building);
-	
+
 	public native void sendJamUplinkMenu(CreatureObject creature, BuildingObject building, TangibleObject uplinkTerminal);
-	
+
 	public native void verifyUplinkBand(CreatureObject creature, BuildingObject building, int band, TangibleObject uplinkTerminal);
-	
+
 	public native boolean canStartSlice(CreatureObject creature, TangibleObject terminal);
-	
+
 	public native void sendDNASampleMenu(CreatureObject creature, BuildingObject building, TangibleObject overrideTerminal);
-		
+
 	public native void completeSecuritySlice(CreatureObject creature, TangibleObject securityTerminal);
-	
+
 	public native void failSecuritySlice(TangibleObject securityTerminal);
-	
-	public native boolean isTerminalDamaged(TangibleObject securityTerminal);
-	
-	public native boolean isDNASampled(BuildingObject building);
-	
+
 	public native void repairTerminal(CreatureObject creature, TangibleObject securityTerminal);
-	
+
 	public native void abortShutdownSequence(BuildingObject building, CreatureObject creature);
 
 	public native void startAbortSequenceDelay(BuildingObject building, CreatureObject creature, SceneObject hqTerminal);
-	
+
 	public native void processDNASample(CreatureObject creature, TangibleObject overrideTerminal, int indx);
-	
+
 	public native void handlePowerRegulatorSwitch(CreatureObject creature, TangibleObject powerRegulator, int indx);
-	
+
 	public native void sendPowerRegulatorControls(CreatureObject creature, BuildingObject building, TangibleObject powerRegulator);
 
-	protected synchronized boolean hasBase(BuildingObject building){
-		return gcwBaseList.contains(building);
-	}
-	
-	protected synchronized boolean dropBase(BuildingObject building){
-		return gcwBaseList.drop(building);
-	}
-	
-	protected synchronized void addBase(BuildingObject building){
-		gcwBaseList.put(building);
-	}
-	
-	protected synchronized BuildingObject getBase(int indx){
-		return gcwBaseList.get(indx);
-	}
-	protected synchronized boolean hasStartTask(unsigned long id){
-		return gcwStartTasks.contains(id);
-	}
-	
-	@local
-	protected synchronized boolean addStartTask(unsigned long id, Reference<Task> newTask){
-		if(!gcwStartTasks.contains(id)){
-			return gcwStartTasks.put(id, newTask);
-		}
-		return false;
-	}
-	
-	@local
-	protected synchronized Reference<Task> getStartTask(unsigned long id){
-		return gcwStartTasks.get(id);
-	}
-	
-	protected synchronized boolean dropStartTask(unsigned long id){
-		return gcwStartTasks.drop(id);
-	}
-	
-	protected synchronized boolean hasEndTask(unsigned long id){
-		return gcwEndTasks.contains(id);
-	}
-	
-	@local
-	protected synchronized boolean addEndTask(unsigned long id, Reference<Task> newTask){
-		if(!gcwEndTasks.contains(id)){
-			return	gcwEndTasks.put(id, newTask);
-		}
-		return false;
-	}
-	
-	@local
-	protected synchronized Reference<Task> getEndTask(unsigned long id){
-		return gcwEndTasks.get(id);
-	}
-	
-	protected synchronized boolean dropEndTask(unsigned long id){
-		return gcwEndTasks.drop(id);
-	}
-	
-	protected synchronized boolean hasDestroyTask(unsigned long id){
-		return gcwDestroyTasks.contains(id);
-	}
-	
-	@local
-	protected synchronized boolean addDestroyTask(unsigned long id, Reference<Task> newTask){
-		if(!gcwDestroyTasks.contains(id)){
-			return gcwDestroyTasks.put(id, newTask);
-		}
-		return false;
-	}
-	
-	@local
-	protected synchronized Reference<Task> getDestroyTask(unsigned long id){
-		return gcwDestroyTasks.get(id);
-	}
-		
-	protected synchronized boolean dropDestroyTask(unsigned long id){
-		return gcwDestroyTasks.drop(id);
-	}
-
-	public synchronized boolean isPlanetCapped() {
-		return maxBases <= gcwBaseList.size();
-	}
-
 	private native DestructibleBuildingDataComponent getDestructibleBuildingData(BuildingObject building);
-	
+
 	public native boolean hasResetTimerPast(BuildingObject building);
 
-	private native void checkVulnerabilityData(BuildingObject building);
-
-	private native void scheduleVulnerabilityStart(BuildingObject building);
-
-	private native void scheduleVulnerabilityEnd(BuildingObject building);
-
 	public native void scheduleBaseDestruction(BuildingObject building, CreatureObject creature);
-	
+
 	private native void initializeBaseTimers(BuildingObject building);
-	
+
 	private native void renewUplinkBand(BuildingObject building);
 
 	private native void constructDNAStrand(BuildingObject building);
@@ -314,12 +222,6 @@ class GCWManager extends ManagedService implements Logger {
 	private native void randomizePowerRegulatorSwitches(BuildingObject building);
 
 	private native void flipPowerSwitch(BuildingObject building, @dereferenced Vector<boolean> switchStates, int flipSwitch);
-	
-	private native void refreshExpiredVulnerability(BuildingObject building);
-	
-	public native void initializeNewVulnerability(BuildingObject building);
-
-	private native void initializeNewVulnerability(DestructibleBuildingDataComponent data);
 
 	public native void notifyInstallationDestruction(InstallationObject installation);
 
@@ -358,7 +260,7 @@ class GCWManager extends ManagedService implements Logger {
 	public native boolean canUseTerminals(CreatureObject creature, BuildingObject building, SceneObject terminal);
 
 	public native void sendTurretAttackListTo(CreatureObject creature, SceneObject turretControlTerminal);
-	
+
 	private native TurretControlTerminalDataComponent getTurretControlDataComponent(SceneObject terminal);
 
 	private native TurretDataComponent getTurretDataComponent(SceneObject turret);
@@ -372,6 +274,99 @@ class GCWManager extends ManagedService implements Logger {
 	public native boolean areOpposingFactions(int faction1, int faction2);
 
 	public native boolean hasTooManyBasesNearby(int x, int y);
+
+	public native void awardSlicingXP(CreatureObject creature, final string xpType, int value);
+
+	@dirty
+	public native int isStrongholdCity(string city);
+
+	@local
+	public native void broadcastBuilding(BuildingObject building, @dereferenced StringIdChatParameter params);
+
+	public native float getGCWDiscount(CreatureObject creature);
+
+	protected synchronized boolean hasBase(BuildingObject building) {
+		return gcwBaseList.contains(building);
+	}
+
+	protected synchronized boolean dropBase(BuildingObject building) {
+		return gcwBaseList.drop(building);
+	}
+
+	protected synchronized void addBase(BuildingObject building) {
+		gcwBaseList.put(building);
+	}
+
+	protected synchronized BuildingObject getBase(int indx) {
+		return gcwBaseList.get(indx);
+	}
+
+	protected synchronized boolean hasStartTask(unsigned long id) {
+		return gcwStartTasks.contains(id);
+	}
+
+	@local
+	protected synchronized boolean addStartTask(unsigned long id, Reference<Task> newTask) {
+		if (!gcwStartTasks.contains(id)) {
+			return gcwStartTasks.put(id, newTask);
+		}
+		return false;
+	}
+
+	@local
+	protected synchronized Reference<Task> getStartTask(unsigned long id) {
+		return gcwStartTasks.get(id);
+	}
+
+	protected synchronized boolean dropStartTask(unsigned long id) {
+		return gcwStartTasks.drop(id);
+	}
+
+	protected synchronized boolean hasEndTask(unsigned long id) {
+		return gcwEndTasks.contains(id);
+	}
+
+	@local
+	protected synchronized boolean addEndTask(unsigned long id, Reference<Task> newTask) {
+		if (!gcwEndTasks.contains(id)) {
+			return	gcwEndTasks.put(id, newTask);
+		}
+		return false;
+	}
+
+	@local
+	protected synchronized Reference<Task> getEndTask(unsigned long id) {
+		return gcwEndTasks.get(id);
+	}
+
+	protected synchronized boolean dropEndTask(unsigned long id) {
+		return gcwEndTasks.drop(id);
+	}
+
+	protected synchronized boolean hasDestroyTask(unsigned long id) {
+		return gcwDestroyTasks.contains(id);
+	}
+
+	@local
+	protected synchronized boolean addDestroyTask(unsigned long id, Reference<Task> newTask) {
+		if (!gcwDestroyTasks.contains(id)) {
+			return gcwDestroyTasks.put(id, newTask);
+		}
+		return false;
+	}
+
+	@local
+	protected synchronized Reference<Task> getDestroyTask(unsigned long id) {
+		return gcwDestroyTasks.get(id);
+	}
+
+	protected synchronized boolean dropDestroyTask(unsigned long id) {
+		return gcwDestroyTasks.drop(id);
+	}
+
+	public synchronized boolean isPlanetCapped() {
+		return maxBases <= gcwBaseList.size();
+	}
 
 	public int getImperialBaseCount() {
 		return imperialBases;
@@ -393,23 +388,23 @@ class GCWManager extends ManagedService implements Logger {
 		return imperialScore;
 	}
 
-	@local 
-	public void setRebelScore(int val){
+	@local
+	public void setRebelScore(int val) {
 		rebelScore = val;
 	}
-	
+
 	@local
-	public void setImperialScore(int val){
+	public void setImperialScore(int val) {
 		imperialScore = val;
 	}
 
-	@local 
-	private void setRebelBaseCount(int val){
+	@local
+	private void setRebelBaseCount(int val) {
 		rebelBases = val;
 	}
 
 	@local
-	private void setImperialBaseCount(int val){
+	private void setImperialBaseCount(int val) {
 		imperialBases = val;
 	}
 
@@ -428,8 +423,6 @@ class GCWManager extends ManagedService implements Logger {
 		return winningFaction;
 	}
 
-	public native float getGCWDiscount(CreatureObject creature);
-
 	@local
 	@read
 	public int getGCWXPBonus() {
@@ -437,27 +430,24 @@ class GCWManager extends ManagedService implements Logger {
 	}
 
 	@local
-	public native void broadcastBuilding(BuildingObject building, @dereferenced StringIdChatParameter params);
-
-	@local
-	public int getPointValue(final string templateString){
+	public int getPointValue(final string templateString) {
 		synchronized (baseMutex) {
 			return baseValue.get(templateString);
 		}
 	}
 
 	@local
-	public void addPointValue(final string templateString, int val){
+	public void addPointValue(final string templateString, int val) {
 		baseValue.put(templateString, val);
 	}
 
 	@local
-	public void addRacialPenalty(int race, float val){
+	public void addRacialPenalty(int race, float val) {
 		racialPenaltyMap.put(race, val);
 	}
 
 	@local
-	public float getRacialPenalty(int race){
+	public float getRacialPenalty(int race) {
 		synchronized (baseMutex) {
 			return racialPenaltyMap.get(race);
 		}
@@ -481,11 +471,6 @@ class GCWManager extends ManagedService implements Logger {
 		return initialVulnerabilityDelay;
 	}
 
-	public native void awardSlicingXP(CreatureObject creature, final string xpType, int value);
-
-	@dirty
-	public native int isStrongholdCity(string city);
-
 	@read
 	public int getTurretAutoFireTimeout() {
 		return turretAutoFireTimeout;
@@ -506,4 +491,3 @@ class GCWManager extends ManagedService implements Logger {
 		return resetTimer;
 	}
 }
-
