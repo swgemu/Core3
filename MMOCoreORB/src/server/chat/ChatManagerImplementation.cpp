@@ -548,7 +548,7 @@ void ChatManagerImplementation::handleChatRoomMessage(CreatureObject* sender, co
 
 	ManagedReference<ChatRoom*> planetRoom = zone->getPlanetChatRoom();
 
-	BaseMessage* msg = new ChatRoomMessage(fullName, formattedMessage, roomID);
+	BaseMessage* msg = new ChatRoomMessage(fullName, server->getGalaxyName(), formattedMessage, roomID);
 
 	// Auction Chat and Planet Chat should adhere to player ignore list
 	if(auctionRoom != NULL && auctionRoom->getRoomID() == roomID) {
@@ -1228,7 +1228,7 @@ void ChatManagerImplementation::handleGroupChat(CreatureObject* sender, const Un
 		ManagedReference<ChatRoom*> room = group->getChatRoom();
 
 		if (room != NULL) {
-			BaseMessage* msg = new ChatRoomMessage(name, formattedMessage, room->getRoomID());
+			BaseMessage* msg = new ChatRoomMessage(name, server->getGalaxyName(), formattedMessage, room->getRoomID());
 			group->broadcastMessage(msg);
 		}
 
@@ -1281,7 +1281,7 @@ void ChatManagerImplementation::handleGuildChat(CreatureObject* sender, const Un
 
 	ManagedReference<ChatRoom*> room = guild->getChatRoom();
 	if (room != NULL) {
-		BaseMessage* msg = new ChatRoomMessage(name, formattedMessage, room->getRoomID());
+		BaseMessage* msg = new ChatRoomMessage(name, server->getGalaxyName(), formattedMessage, room->getRoomID());
 		room->broadcastMessage(msg);
 	}
 
@@ -1327,7 +1327,7 @@ void ChatManagerImplementation::handlePlanetChat(CreatureObject* sender, const U
 	ManagedReference<ChatRoom*> room = zone->getPlanetChatRoom();
 
 	if (room != NULL) {
-		BaseMessage* msg = new ChatRoomMessage(fullName, formattedMessage, room->getRoomID());
+		BaseMessage* msg = new ChatRoomMessage(fullName, server->getGalaxyName(), formattedMessage, room->getRoomID());
 		room->broadcastMessageCheckIgnore(msg, name);
 	}
 
@@ -1366,7 +1366,7 @@ void ChatManagerImplementation::handleAuctionChat(CreatureObject* sender, const 
 	UnicodeString formattedMessage(formatMessage(message));
 
 	if (auctionRoom != NULL) {
-		BaseMessage* msg = new ChatRoomMessage(fullName, formattedMessage, auctionRoom->getRoomID());
+		BaseMessage* msg = new ChatRoomMessage(fullName, server->getGalaxyName(), formattedMessage, auctionRoom->getRoomID());
 		auctionRoom->broadcastMessageCheckIgnore(msg, name);
 	}
 
