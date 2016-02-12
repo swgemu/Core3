@@ -29,7 +29,7 @@ r5_crafted = Creature:new {
 		"object/creature/npc/droid/crafted/r5_droid.iff"
 	},
 	lootGroups = {},
-	defaultAttack = "creaturerangedattack",
+	defaultAttack = "attack",
 	defaultWeapon = "object/weapon/ranged/droid/droid_astromech_ranged.iff",
 	conversationTemplate = "",
 }
