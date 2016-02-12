@@ -78,6 +78,8 @@
 #include "packets/chat/ChatDestroyRoomCallback.h"
 #include "packets/chat/ChatQueryRoomCallback.h"
 #include "packets/chat/ChatLeaveRoomCallback.h"
+#include "packets/chat/ChatInviteToRoomCallback.h"
+#include "packets/chat/ChatUninviteFromRoomCallback.h"
 
 #include "packets/trade/AbortTradeMessageCallback.h"
 #include "packets/trade/AcceptTransactionMessageCallback.h"
@@ -158,6 +160,9 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<ChatQueryRoomCallback>(0x9CF2B192);
 	messageCallbackFactory.registerObject<ChatDestroyRoomCallback>(0x094B2A77);
 	messageCallbackFactory.registerObject<ChatLeaveRoomCallback>(0x493E3FFA);
+	messageCallbackFactory.registerObject<ChatInviteToRoomCallback>(0x7273ECD3);
+	messageCallbackFactory.registerObject<ChatUninviteFromRoomCallback>(0xFC8D01F1);
+
 }
 
 void ZonePacketHandler::registerObjectControllerMessages() {
