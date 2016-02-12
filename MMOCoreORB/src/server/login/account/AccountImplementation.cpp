@@ -7,8 +7,14 @@
 #include "server/login/account/Account.h"
 #include "server/login/account/AccountManager.h"
 #include "../objects/GalaxyBanEntry.h"
+#include "server/zone/managers/object/ObjectManager.h"
 
 AccountImplementation::AccountImplementation() {
+	initializeTransientMembers();
+}
+
+
+void AccountImplementation::initializeTransientMembers() {
 	active = false;
 	accountID = 0;
 	stationID = 0;
@@ -18,12 +24,31 @@ AccountImplementation::AccountImplementation() {
 	banAdmin = 0;
 }
 
+
 void AccountImplementation::updateFromDatabase() {
 
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 	updateAccount();
 	updateCharacters();
 	updateGalaxyBans();
 
+}
+
+Reference<GalaxyAccountInfo*> AccountImplementation::getGalaxyAccountInfo(const String& galaxyName) {
+
+	Reference<GalaxyAccountInfo*> info = galaxyAccountInfo.get(galaxyName);
+
+	if(info == NULL) {
+		info = new GalaxyAccountInfo();
+		
+		galaxyAccountInfo.put(galaxyName, info);
+	}
+
+	return info;
+}
+
+void AccountImplementation::addGalaxyBan(GalaxyBanEntry* ban, uint32 galaxy) {
+	galaxyBans.put(galaxy, ban);
 }
 
 void AccountImplementation::updateAccount() {
