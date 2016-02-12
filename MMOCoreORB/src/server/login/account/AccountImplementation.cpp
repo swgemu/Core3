@@ -7,6 +7,7 @@
 #include "server/login/account/Account.h"
 #include "server/login/account/AccountManager.h"
 #include "../objects/GalaxyBanEntry.h"
+#include "server/zone/managers/object/ObjectManager.h"
 
 AccountImplementation::AccountImplementation() {
 	active = false;
@@ -18,12 +19,42 @@ AccountImplementation::AccountImplementation() {
 	banAdmin = 0;
 }
 
+/*
+void AccountImplementation::initializeTransientMembers() {
+	active = false;
+	accountID = 0;
+	stationID = 0;
+	adminLevel = 0;
+	created = 0;
+	banExpires = 0;
+	banAdmin = 0;
+}
+*/
+
 void AccountImplementation::updateFromDatabase() {
 
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 	updateAccount();
 	updateCharacters();
 	updateGalaxyBans();
 
+}
+
+GalaxyAccountInfo* AccountImplementation::getGalaxyAccountInfo(const String& galaxyName) {
+
+	ManagedReference<GalaxyAccountInfo*> info = galaxyAccountInfo.get(galaxyName);
+
+	if(info == NULL) {
+		ManagedReference<ManagedObject*> obj = ObjectManager::instance()->createObject("GalaxyAccountInfo", 1, "sceneobjects");
+		if(obj == NULL || (info = obj.castTo<GalaxyAccountInfo*>()) == NULL) {
+			error("Error creating galaxyaccountinfo object");
+			return NULL;
+		}
+
+		galaxyAccountInfo.put(galaxyName, info);
+	}
+
+	return info;
 }
 
 void AccountImplementation::updateAccount() {

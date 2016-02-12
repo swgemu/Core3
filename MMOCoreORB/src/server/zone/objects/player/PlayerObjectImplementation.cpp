@@ -77,6 +77,8 @@
 #include "server/zone/managers/jedi/JediManager.h"
 #include "events/ForceRegenerationEvent.h"
 #include "server/login/account/Account.h"
+#include "server/login/account/AccountManager.h"
+
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/managers/player/QuestInfo.h"
 #include "server/zone/objects/player/events/ForceMeditateTask.h"
@@ -90,8 +92,25 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 	duelList.setNoDuplicateInsertPlan();
 	chatRooms.setNoDuplicateInsertPlan();
 	ownedChatRooms.setNoDuplicateInsertPlan();
-
 	setLoggingName("PlayerObject");
+
+	if(accountID != 0)
+		initializeAccount();
+}
+
+void PlayerObjectImplementation::initializeAccount() {
+	account = AccountManager::getAccount(accountID);
+
+	if(account != NULL) {
+
+		galaxyAccountInfo = account->getGalaxyAccountInfo(getZoneServer()->getGalaxyName());
+		if(chosenVeteranRewards.size() > 0) {
+			galaxyAccountInfo->updateVetRewardsFromPlayer(chosenVeteranRewards);
+			chosenVeteranRewards.removeAll();
+		}
+	} else {
+		error("NULL Account in initialize transient objects");
+	}
 }
 
 void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -2508,24 +2527,11 @@ int PlayerObjectImplementation::getVendorCount() {
 	return ownedVendors.size();
 }
 
-bool PlayerObjectImplementation::hasChosenVeteranReward( const String& rewardTemplate ){
-
-	for( int i = 0; i < chosenVeteranRewards.size(); i++){
-		if( rewardTemplate == chosenVeteranRewards.get(i) ){
-			return true;
-		}
-	}
-
-	return false;
-
-}
-
 int PlayerObjectImplementation::getCharacterAgeInDays() {
 	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
 
 	PlayerManager* playerManager = creature->getZoneServer()->getPlayerManager();
 
-	ManagedReference<Account*> account = playerManager->getAccount(getAccountID());
 	if(account == NULL) {
 		return 0;
 	}
