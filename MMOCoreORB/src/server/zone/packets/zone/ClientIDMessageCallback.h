@@ -14,6 +14,7 @@
 #include "server/login/account/Account.h"
 #include "server/login/objects/CharacterList.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/login/account/AccountManager.h"
 
 #include "ClientPermissionsMessage.h"
 
@@ -84,7 +85,7 @@ public:
 					//client->setAccount(account);
 					//account->addZoneSession(client);
 
-					ManagedReference<Account*> account = server->getPlayerManager()->getAccount(accountID);
+					ManagedReference<Account*> account = AccountManager::getAccount(accountID);
 					if (account == NULL)
 						return;
 
