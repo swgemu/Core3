@@ -201,10 +201,10 @@ void ChatManagerImplementation::initiateRooms() {
 	mainRoom->setPrivate();
 	gameRooms.put("SWG", mainRoom);
 
-	core3Room = createRoom(server->getGalaxyName(), mainRoom);
-	core3Room->setPrivate();
+	galaxyRoom = createRoom(server->getGalaxyName(), mainRoom);
+	galaxyRoom->setPrivate();
 
-	systemRoom = createRoom("system", core3Room);
+	systemRoom = createRoom("system", galaxyRoom);
 	systemRoom->setPrivate();
 
 	groupRoom = createRoom("group", systemRoom);
@@ -213,12 +213,12 @@ void ChatManagerImplementation::initiateRooms() {
 	guildRoom = createRoom("guild", systemRoom);
 	guildRoom->setPrivate();
 
-	ChatRoom* generalRoom = createRoom("Chat", core3Room);
+	ChatRoom* generalRoom = createRoom("Chat", galaxyRoom);
 	generalRoom->setCanEnter(true);
 	generalRoom->setAllowSubrooms(true);
 	generalRoom->setTitle("public chat for this server, can create rooms here");
 
-	auctionRoom = createRoom("Auction", core3Room);
+	auctionRoom = createRoom("Auction", galaxyRoom);
 	auctionRoom->setCanEnter(true);
 	auctionRoom->setChatRoomType(ChatRoom::AUCTION);
 
@@ -233,7 +233,7 @@ void ChatManagerImplementation::initiatePlanetRooms() {
 
 		Locker locker(zone);
 
-		ChatRoom* zoneRoom = createRoom(zone->getZoneName(), core3Room);
+		ChatRoom* zoneRoom = createRoom(zone->getZoneName(), galaxyRoom);
 		zoneRoom->setPrivate();
 
 		ChatRoom* planetaryChat = createRoom("Planet", zoneRoom);
@@ -370,7 +370,7 @@ ChatRoom* ChatManagerImplementation::getChatRoomByGamePath(ChatRoom* game, const
 	while (tokenizer.hasMoreTokens()) {
 		tokenizer.getStringToken(channel);
 
-		unsigned int roomID = room->getSubRoom(channel);
+		unsigned int roomID = room->getSubRoom(channel.toLowerCase());
 		room = getChatRoom(roomID);
 
 		if (room == NULL)

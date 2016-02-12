@@ -36,7 +36,7 @@ class ChatManager extends ManagedService implements Logger {
 	@dereferenced
 	protected VectorMap<unsigned int, string> socialTypes;
 
-	ChatRoom core3Room;
+	ChatRoom galaxyRoom;
 	ChatRoom groupRoom;
 	ChatRoom guildRoom;
 	ChatRoom auctionRoom;
