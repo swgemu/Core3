@@ -7,6 +7,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/login/account/AccountManager.h"
 
 class AddBannedPlayerCommand: public QueueCommand {
 public:
@@ -76,10 +77,13 @@ public:
 		}
 
 		if(banReason.toString().isEmpty()) {
-			creature->sendSystemMessage("Usage: /AddBannedPlayer <player name> <reason>");			return GENERALERROR;
+			creature->sendSystemMessage("Usage: /AddBannedPlayer <player name> <reason>");
+			return GENERALERROR;
 		}
 
-		ManagedReference<Account*> account = playerManager->getAccount(ghost->getAccountID());
+		ManagedReference<Account*> account = ghost->getAccount();
+
+		Locker alocker(account);
 
 		String reason = banReason.toString();
 		playerManager->banCharacter(adminGhost, account, targetCreature->getFirstName(), server->getZoneServer()->getGalaxyID(), duration, reason);
