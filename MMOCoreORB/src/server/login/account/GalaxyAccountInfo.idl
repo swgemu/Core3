@@ -1,0 +1,51 @@
+package server.login.account;
+
+import server.chat.StringIdChatParameter;
+import engine.core.ManagedObject;
+import engine.log.Logger;
+import server.login.account.AccountManager;
+import server.zone.ZoneClientSession;
+import system.util.VectorMap;
+import system.lang.Time;
+import system.lang.System;
+include server.login.objects.CharacterList;
+include server.login.objects.CharacterListEntry;
+include server.login.objects.GalaxyBanEntry;
+import system.thread.ReadWriteLock;
+
+class GalaxyAccountInfo extends ManagedObject {
+	
+	@dereferenced
+	protected VectorMap<unsigned int, string > chosenVeteranRewards; // milestone, templateFile
+	
+	@dereferenced
+	protected transient ReadWriteLock vetMutex;
+	
+	public GalaxyAccountInfo() {
+		
+	}
+	
+	@local
+	public native void updateVetRewardsFromPlayer(@dereferenced VectorMap<unsigned int, string> newRewards);
+	@dirty
+	public string getChosenVeteranReward( unsigned int milestone ){
+		return chosenVeteranRewards.get(milestone);
+	}
+
+	public void addChosenVeteranReward( unsigned int milestone, string rewardTemplate ){
+		synchronized(vetMutex) {
+			chosenVeteranRewards.put( milestone, rewardTemplate );
+		}
+	}
+
+	@dirty
+	public native boolean hasChosenVeteranReward( final string rewardTemplate );
+
+	public void clearVeteranReward( unsigned int milestone ){
+		synchronized(vetMutex) {
+			if( chosenVeteranRewards.contains(milestone) )
+				chosenVeteranRewards.drop( milestone );
+		}
+	}
+
+}

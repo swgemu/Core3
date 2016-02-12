@@ -19,6 +19,8 @@
 #include "server/login/packets/LoginEnumCluster.h"
 #include "server/ServerCore.h"
 
+#include "server/zone/managers/object/ObjectManager.h"
+
 AccountManager::AccountManager(LoginServer* loginserv) : Logger("AccountManager") {
 	loginServer = loginserv;
 
@@ -225,44 +227,85 @@ Account* AccountManager::createAccount(const String& username, const String& pas
 	return getAccount(accountID, passwordStored);
 }
 
-Account* AccountManager::getAccount(uint32 accountID) {
+ManagedReference<Account*> AccountManager::getAccount(uint32 accountID) {
 
 	String passwordStored;
 	return getAccount(accountID, passwordStored);
 }
 
-Account* AccountManager::getAccount(uint32 accountID, String& passwordStored) {
+ManagedReference<Account*> AccountManager::getAccount(uint32 accountID, String& passwordStored) {
 	StringBuffer query;
 	query << "SELECT a.active, a.username, a.password, a.salt, a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level FROM accounts a WHERE a.account_id = '" << accountID << "' LIMIT 1;";
 
 	return getAccount(query.toString(), passwordStored);
 }
 
-Account* AccountManager::getAccount(String query, String& passwordStored) {
+ManagedReference<Account*> AccountManager::getAccount(String query, String& passwordStored) {
 
-	Account* account = NULL;
+	//static Logger logger("AccountManager::getAccount");
+	Reference<Account*> account = NULL;
+	ManagedReference<ManagedObject*> accObj = NULL;
 
-	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+	Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
 
 	if (result->next()) {
+		uint64 accountID = result->getUnsignedInt(4);
+		uint64 databaseID = ObjectDatabaseManager::instance()->getDatabaseID("accounts");
 
-		account = new Account();
+		uint64 oid = (accountID | (databaseID << 48));
+
+		//logger.info("Generated OID: " + String::valueOf(oid), true);
+
+		accObj = Core::getObjectBroker()->lookUp(oid).castTo<ManagedObject*>();
+
+		if(accObj == NULL) {
+			//logger.info("Lazily creating persistent account object for: " + String::valueOf(accountID), true);
+			accObj = ObjectManager::instance()->createObject("Account", 3, "accounts", oid);
+
+			if(accObj == NULL) {
+				//logger.error("Catastrophic error creating persistent account object");
+				return NULL;
+			}
+		}
+
+		account = accObj.castTo<Account*>();
+		if(account == NULL) {
+			//logger.error("Catastrophic error creating persistent account object");
+			return NULL;
+		}
+
+		//logger.info("Real account OID: " + String::valueOf(account->_getObjectID()), true);
+
+		Locker locker(account);
 
 		account->setActive(result->getBoolean(0));
 		account->setUsername(result->getString(1));
 		passwordStored = result->getString(2);
 		account->setSalt(result->getString(3));
-
-		account->setAccountID(result->getUnsignedInt(4));
+		account->setAccountID(accountID);
 		account->setStationID(result->getUnsignedInt(5));
-
 		account->setTimeCreated(result->getUnsignedInt(6));
 		account->setAdminLevel(result->getInt(7));
-
 		account->updateFromDatabase();
-	}
-	delete result;
-	result = NULL;
 
-	return account;
+		return account;
+	}
+
+	return NULL;
+}
+
+
+
+ManagedReference<Account*> AccountManager::getAccount(const String& accountName) {
+
+	String name = accountName;
+
+	Database::escapeString(name);
+
+	StringBuffer query;
+	query << "SELECT a.active, a.username, a.password, a.salt, a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level FROM accounts a WHERE a.username = '" << name << "' LIMIT 1;";
+
+	String temp;
+
+	return getAccount(query.toString(), temp);
 }
