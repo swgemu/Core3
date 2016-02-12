@@ -359,6 +359,13 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		float scale = creature->getScale();
 		EXPECT_TRUE( scale > 0 ) << "Scale is not a positive value on mobile: " << templateName;
 
+		// Verify PACK mobs have a social group
+		uint32 creatureBitmask = creature->getCreatureBitmask();
+		String socialGroup = creature->getSocialGroup();
+		if (creatureBitmask & CreatureFlag::PACK) {
+			EXPECT_FALSE( socialGroup.isEmpty() ) << "Social group is empty on pack mobile: " << templateName;
+		}
+
 		// Verify loot group percentages
 		LootGroupCollection* groupCollection = creature->getLootGroups();
 		if( groupCollection->count() > 0 ){

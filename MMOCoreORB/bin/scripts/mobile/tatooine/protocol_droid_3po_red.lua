@@ -21,7 +21,7 @@ protocol_droid_3po_red = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = PACK,
+	creatureBitmask = NONE,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 

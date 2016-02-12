@@ -21,7 +21,7 @@ cie_vos = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER,
+	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 

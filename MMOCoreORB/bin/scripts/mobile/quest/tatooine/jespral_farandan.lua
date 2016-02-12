@@ -21,7 +21,7 @@ jespral_farandan = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK,
+	creatureBitmask = NONE,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 

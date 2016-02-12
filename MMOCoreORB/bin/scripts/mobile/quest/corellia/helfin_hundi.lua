@@ -21,7 +21,7 @@ helfin_hundi = Creature:new {
 	tamingChance = 0.000000,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK,
+	creatureBitmask = NONE,
 	optionsBitmask = 136,
 	diet = HERBIVORE,
 

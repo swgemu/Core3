@@ -22,7 +22,7 @@ maestro = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + HERD,
+	creatureBitmask = NONE,
 	optionsBitmask = 264,
 	diet = HERBIVORE,
 

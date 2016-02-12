@@ -21,8 +21,8 @@ draya_korbinari_smuggler = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
-	creatureBitmask = PACK + STALKER,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = NONE,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 

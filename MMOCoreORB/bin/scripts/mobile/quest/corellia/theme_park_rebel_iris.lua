@@ -20,8 +20,8 @@ theme_park_rebel_iris = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
-	creatureBitmask = PACK + KILLER + STALKER,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 

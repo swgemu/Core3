@@ -22,7 +22,7 @@ draya_korbinari_thief = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + STALKER,
+	creatureBitmask = NONE,
 	optionsBitmask = 264,
 	diet = HERBIVORE,
 

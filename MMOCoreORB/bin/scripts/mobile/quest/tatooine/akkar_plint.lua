@@ -22,7 +22,7 @@ akkar_plint = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + HERD,
+	creatureBitmask = NONE,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 

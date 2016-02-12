@@ -21,8 +21,8 @@ theme_park_marauder_stranded_mercenary = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
-	creatureBitmask = PACK + KILLER,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 

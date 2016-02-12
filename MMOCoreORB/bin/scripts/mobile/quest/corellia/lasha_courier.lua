@@ -21,7 +21,7 @@ lasha_courier = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = PACK,
+	creatureBitmask = NONE,
 	optionsBitmask = 136,
 	diet = HERBIVORE,
 

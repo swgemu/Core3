@@ -21,7 +21,7 @@ theme_park_rebel_engineer = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK,
+	creatureBitmask = NONE,
 	optionsBitmask = 264,
 	diet = HERBIVORE,
 

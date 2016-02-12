@@ -22,7 +22,7 @@ kalia_kulmina = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	optionsBitmask = 128,
-	creatureBitmask = PACK + STALKER + KILLER,
+	creatureBitmask = KILLER,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_bounty_hunter_zabrak_female_01.iff"},

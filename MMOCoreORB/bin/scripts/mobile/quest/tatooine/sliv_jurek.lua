@@ -22,7 +22,7 @@ sliv_jurek = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = PACK,
+	creatureBitmask = NONE,
 	optionsBitmask = 264,
 	diet = HERBIVORE,
 

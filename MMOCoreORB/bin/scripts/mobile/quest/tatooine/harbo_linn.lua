@@ -21,7 +21,7 @@ harbo_linn = Creature:new {
 	tamingChance = 0.000000,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK,
+	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_commoner_fat_human_male_01.iff"},

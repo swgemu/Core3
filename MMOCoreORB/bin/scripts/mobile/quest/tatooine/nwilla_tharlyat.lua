@@ -21,7 +21,7 @@ nwilla_tharlyat = Creature:new {
 	tamingChance = 0.000000,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK,
+	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_noble_bothan_female_01.iff"},

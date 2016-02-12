@@ -21,8 +21,8 @@ huff_blistmok = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
-	creatureBitmask = PACK,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = NONE,
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
