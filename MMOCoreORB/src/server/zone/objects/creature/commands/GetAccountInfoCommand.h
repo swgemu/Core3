@@ -66,7 +66,7 @@ public:
 				targetCreature = playerManager->getPlayer(name);
 
 				if (targetCreature != NULL)
-					account = playerManager->getAccount(targetCreature->getPlayerObject()->getAccountID());
+					account = targetCreature->getPlayerObject()->getAccount();
 			} else if(type.toLowerCase() == "-a") {
 
 				while(args.hasMoreTokens()) {
@@ -76,11 +76,11 @@ public:
 					name += " " + token;
 				}
 
-				account = playerManager->getAccount(name);
+				account = AccountManager::getAccount(name);
 
 				if(account == NULL) {
 					try {
-						account = playerManager->getAccount(Long::valueOf(name));
+						account = AccountManager::getAccount(Long::valueOf(name));
 					} catch(Exception& e) {
 
 					}
@@ -127,7 +127,7 @@ public:
 			header << session->getBanDuration(account->getBanExpires());
 			header << "Reason: "  << account->getBanReason() << endl;
 
-			ManagedReference<Account*> adminAccount = playerManager->getAccount(account->getBanAdmin());
+			ManagedReference<Account*> adminAccount = AccountManager::getAccount(account->getBanAdmin());
 
 			if(adminAccount != NULL)
 				header << "Banned by: " << adminAccount->getUsername() << endl;
@@ -235,7 +235,7 @@ public:
 			SortedVector<uint32> loggedInAccounts = server->getZoneServer()->getPlayerManager()->getOnlineZoneClientMap()->getAccountsLoggedIn(loggedInIp);
 			
 			for (int i = 0; i < loggedInAccounts.size(); ++i){
-				ManagedReference<Account*> otherAccount = playerManager->getAccount(loggedInAccounts.get(i));
+				ManagedReference<Account*> otherAccount = AccountManager::getAccount(loggedInAccounts.get(i));
 
 				if (otherAccount != NULL) {
 					header << "\t" << otherAccount->getUsername() << "|" << loggedInAccounts.get(i) << endl;

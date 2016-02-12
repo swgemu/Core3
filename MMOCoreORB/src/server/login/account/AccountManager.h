@@ -81,13 +81,15 @@ namespace server {
 					return autoRegistration;
 				}
 
-				Account* getAccount(uint32 accountID);
+				static ManagedReference<Account*> getAccount(uint32 accountID);
 
-				Account* getAccount(uint32 accountID, String& passwordStored);
+				static ManagedReference<Account*> getAccount(const String& accountName);
+
+				static ManagedReference<Account*> getAccount(uint32 accountID, String& passwordStored);
 
 			private:
 
-				Account* getAccount(String query, String& passwordStored);
+				static ManagedReference<Account*> getAccount(String query, String& passwordStored);
 
 			};
 		}
