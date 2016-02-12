@@ -19,6 +19,8 @@
 #include "server/login/packets/LoginEnumCluster.h"
 #include "server/ServerCore.h"
 
+#include "server/zone/managers/object/ObjectManager.h"
+
 AccountManager::AccountManager(LoginServer* loginserv) : Logger("AccountManager") {
 	loginServer = loginserv;
 
@@ -103,7 +105,7 @@ Account* AccountManager::validateAccountCredentials(LoginClient* client, const S
 	query << "SELECT a.account_id, a.username, a.password, a.salt, a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level FROM accounts a WHERE a.username = '" << username << "' LIMIT 1;";
 
 	String passwordStored;
-	Account* account = getAccount(query.toString(), passwordStored);
+	Account* account = getAccount(query.toString(), passwordStored, true); //force update of mysql rows to update galaxy bans
 
 	if(account == NULL) {
 
@@ -188,7 +190,7 @@ Account* AccountManager::validateAccountCredentials(LoginClient* client, const S
 void AccountManager::updateHash(const String& username, const String& password) {
 	String salt = Crypto::randomSalt();
 	String hash = Crypto::SHA256Hash(dbSecret + password + salt);
-
+	
 	StringBuffer query;
 	query << "UPDATE accounts SET password = '" << hash << "', ";
 	query << "salt = '" << salt << "' ";
@@ -199,6 +201,8 @@ void AccountManager::updateHash(const String& username, const String& password) 
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
 	}
+	
+	
 }
 
 Account* AccountManager::createAccount(const String& username, const String& password, String& passwordStored) {
@@ -215,54 +219,93 @@ Account* AccountManager::createAccount(const String& username, const String& pas
 	query << stationID << ",";
 	query << "'" << salt << "');";
 
-	ResultSet* result = ServerDatabase::instance()->executeQuery(query.toString());
+	Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query.toString());
 
 	if (result == NULL)
 		return NULL;
 
 	uint32 accountID = result->getLastAffectedRow();
 
-	return getAccount(accountID, passwordStored);
+	return getAccount(accountID, passwordStored, true);
 }
 
-Account* AccountManager::getAccount(uint32 accountID) {
+ManagedReference<Account*> AccountManager::getAccount(uint32 accountID, bool forceSqlUpdate) {
 
 	String passwordStored;
-	return getAccount(accountID, passwordStored);
+	return getAccount(accountID, passwordStored, forceSqlUpdate);
 }
 
-Account* AccountManager::getAccount(uint32 accountID, String& passwordStored) {
+ManagedReference<Account*> AccountManager::getAccount(uint32 accountID, String& passwordStored, bool forceSqlUpdate) {
 	StringBuffer query;
 	query << "SELECT a.active, a.username, a.password, a.salt, a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level FROM accounts a WHERE a.account_id = '" << accountID << "' LIMIT 1;";
 
-	return getAccount(query.toString(), passwordStored);
+	return getAccount(query.toString(), passwordStored, forceSqlUpdate);
 }
 
-Account* AccountManager::getAccount(String query, String& passwordStored) {
+ManagedReference<Account*> AccountManager::getAccount(String query, String& passwordStored, bool forceSqlUpdate) {
 
-	Account* account = NULL;
+	//static Logger logger("AccountManager::getAccount");
+	Reference<Account*> account = NULL;
+	ManagedReference<ManagedObject*> accObj = NULL;
 
-	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+	Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
 
 	if (result->next()) {
+		static uint64 databaseID = ObjectDatabaseManager::instance()->getDatabaseID("accounts");
+		uint64 accountID = result->getUnsignedInt(4);
+	
+		uint64 oid = (accountID | (databaseID << 48));
 
-		account = new Account();
+		accObj = Core::getObjectBroker()->lookUp(oid).castTo<ManagedObject*>();
+
+		if(accObj == NULL) {
+			
+			// Lazily create account object
+			accObj = ObjectManager::instance()->createObject("Account", 3, "accounts", oid);
+
+			if(accObj == NULL) {
+				//error("Error creating account object with account ID " + String::hexvalueOf((int64)oid));
+				return NULL;
+			}
+		} else if(!forceSqlUpdate) {
+			return accObj.castTo<Account*>();
+		}
+
+		account = accObj.castTo<Account*>();
+		if(account == NULL) {
+			return NULL;
+		}
+
+		Locker locker(account);
 
 		account->setActive(result->getBoolean(0));
 		account->setUsername(result->getString(1));
 		passwordStored = result->getString(2);
 		account->setSalt(result->getString(3));
-
-		account->setAccountID(result->getUnsignedInt(4));
+		account->setAccountID(accountID);
 		account->setStationID(result->getUnsignedInt(5));
-
 		account->setTimeCreated(result->getUnsignedInt(6));
 		account->setAdminLevel(result->getInt(7));
-
 		account->updateFromDatabase();
-	}
-	delete result;
-	result = NULL;
 
-	return account;
+		return account;
+	}
+
+	return NULL;
+}
+
+
+
+ManagedReference<Account*> AccountManager::getAccount(const String& accountName, bool forceSqlUpdate) {
+
+	String name = accountName;
+
+	Database::escapeString(name);
+
+	StringBuffer query;
+	query << "SELECT a.active, a.username, a.password, a.salt, a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level FROM accounts a WHERE a.username = '" << name << "' LIMIT 1;";
+
+	String temp;
+
+	return getAccount(query.toString(), temp, forceSqlUpdate);
 }

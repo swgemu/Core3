@@ -1,6 +1,8 @@
 package server.login.account;
 
+import server.chat.StringIdChatParameter;
 import engine.core.ManagedObject;
+import engine.core.ManagedReference;
 import engine.log.Logger;
 import server.login.account.AccountManager;
 import server.zone.ZoneClientSession;
@@ -10,6 +12,8 @@ import system.lang.System;
 include server.login.objects.CharacterList;
 include server.login.objects.CharacterListEntry;
 include server.login.objects.GalaxyBanEntry;
+include server.login.account.GalaxyAccountInfo;
+include server.login.account.GalaxyAccountInfoMap;
 
 
 class Account extends ManagedObject implements Logger {
@@ -26,115 +30,170 @@ class Account extends ManagedObject implements Logger {
 	protected transient unsigned int created;
 	
 	protected transient CharacterList characterList;
-	
+
+	public native void initializeTransientMembers();
+
 	@dereferenced
 	protected transient VectorMap<unsigned int, Reference<GalaxyBanEntry> > galaxyBans;
+	
+	@dereferenced
+	protected GalaxyAccountInfoMap galaxyAccountInfo;
 	
 	protected transient unsigned int banExpires;
 	protected transient string banReason;
 	protected transient unsigned int banAdmin;
 	
 	public native Account();
-		
+	
+	@preLocked
 	public void setActive(boolean act) {
 		active = act;
 	}
 	
+	@preLocked
 	public void setAccountID(unsigned int accountid) {
 		accountID = accountid;
 	}
 	
+	@preLocked
 	public void setStationID(unsigned int stationid) {
 		stationID = stationid;
 	}
 	
+	@preLocked
 	public void setAdminLevel(unsigned int adminlvl) {
 		adminLevel = adminlvl;
 	}
 	
+	@preLocked
 	public void setUsername(final string usern) {
 		username = usern;
 	}
 	
+	@preLocked
 	public void setBanExpires(unsigned int expires) {
 		banExpires = expires;
 	}
 	
+	@preLocked
 	public void setBanReason(final string reason) {
 		banReason = reason;
 	}
 	
+	@preLocked
 	public void setSalt(final string s) {
 		salt = s;
 	}
 	
+	@preLocked
 	public void setBanAdmin(unsigned int value) {
 		banAdmin = value;
 	}
 	
+	@dirty
 	public unsigned int getBanAdmin() {
 		return banAdmin;
 	}
 	
+	@preLocked
 	public void setTimeCreated(unsigned int seconds) {
 		created = seconds;
 	}
 	
+	@dirty
 	public boolean isActive() {
 		return active == true;
 	}
 	
+	@dirty
 	public unsigned int getAccountID() {
 		return accountID;
 	}
 	
+	@preLocked
+	@local
+	@reference
+	public native GalaxyAccountInfo getGalaxyAccountInfo(final string galaxyName);
+	
+	@dirty
+	@local
+	public GalaxyAccountInfoMap getGalaxyAccountInfo() {
+		return galaxyAccountInfo;
+	}
+	
+	@dirty
 	public unsigned int getStationID() {
 		return stationID;
 	}
 	
+	@dirty
 	public unsigned int getAdminLevel() {
 		return adminLevel;
 	}
 	
+	@dirty
 	public string getUsername() {
 		return username;
 	}
 	
+	@dirty
 	public string getSalt() {
 		return salt;
 	}
 
+	@dirty
 	public unsigned int getTimeCreated() {
 		return created;
 	}
 	
+	@preLocked
 	public native void updateFromDatabase();
 	
+	@preLocked
 	public native void updateAccount();
 
+	@preLocked
 	public native void updateCharacters();
 
+	@preLocked
 	public native void updateGalaxyBans();
 	
+	@dirty
 	public unsigned int getBanExpires() {
 		return banExpires;
 	}
 	
+	@dirty
 	public string getBanReason() {
 		return banReason;
 	}
 	
+	@dirty
 	public native boolean isBanned();
 
+	@dirty
 	@local
 	public native CharacterList getCharacterList();
 	
+	@dirty
 	@local
 	public native GalaxyBanEntry getGalaxyBan(final unsigned int galaxy);
-	
+
+	@preLocked
+	@local
+	public native void addGalaxyBan(GalaxyBanEntry ban, unsigned int galaxy);
+
+	@preLocked
+	public void removeGalaxyBan(final unsigned int galaxy) {
+		galaxyBans.drop(galaxy);
+	}
+
+	@dirty
 	@local
 	public native CharacterListEntry getCharacterBan(final unsigned int  galaxy, final string name);
 	
+	@dirty
 	@local
 	public native unsigned int getAgeInDays();
+	
 }
