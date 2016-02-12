@@ -35,7 +35,7 @@ public:
 			return GENERALERROR;
 
 		// Get account
-		ManagedReference<Account*> account = playerManager->getAccount( playerGhost->getAccountID() );
+		ManagedReference<Account*> account = playerGhost->getAccount();
 		if( account == NULL )
 			return GENERALERROR;
 
