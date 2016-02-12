@@ -74,8 +74,6 @@ class LoginServer extends ManagedService implements Logger {
 		return accountManager;
 	}
 
-	public native Account getAccount(unsigned int accountID);
-	
 	@local
 	public native LoginClient getLoginClient(ServiceClient session);
 	

@@ -61,7 +61,7 @@ void PermissionsServlet::handlePost(HttpRequest* request, HttpResponse* response
 	if(request->getParameter("applyToAll") == "true")
 		applyToAll = true;
 
-	ManagedReference<Account*> account = playerManager->getAccount(accountName);
+	ManagedReference<Account*> account = AccountManager::getAccount(accountName);
 	if(account == NULL) {
 		response->println("HTTP/1.1 200 OK\r\n");
 		response->println("Content-Type: text/html\r\n\r\n");
@@ -81,10 +81,12 @@ void PermissionsServlet::handlePost(HttpRequest* request, HttpResponse* response
 		response->println("</html>");
 	}
 
+	Locker locker(account);
 	account->setAdminLevel(level);
+	locker.release();
 
 	if(applyToAll == true) {
-		CharacterList* characterList = account->getCharacterList();
+		Reference<CharacterList*> characterList = account->getCharacterList();
 		for(int i = 0; i < characterList->size(); ++i) {
 			ManagedReference<CreatureObject* > targetCreature = NULL;
 			CharacterListEntry* entry = &characterList->get(i);

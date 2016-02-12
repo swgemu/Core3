@@ -15,7 +15,7 @@ public:
 		insertShort(0x02);
 		insertInt(0x65EA4574);
 
-		CharacterList* characters = account->getCharacterList();
+		Reference<CharacterList*> characters = account->getCharacterList();
 
 	    insertInt(characters->size()); //Character List Count
 	    for (int i = 0; i < characters->size(); ++i) {

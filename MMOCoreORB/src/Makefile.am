@@ -382,6 +382,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/skill/SkillManager.cpp \
 		server/zone/managers/skill/SkillModManager.cpp \
 		server/login/account/AccountImplementation.cpp \
+		server/login/account/GalaxyAccountInfo.cpp \
+		server/login/account/GalaxyAccountInfoMap.cpp \
 		server/zone/objects/structure/events/StructureMaintenanceTask.cpp \
 		server/zone/objects/tangible/components/ElevatorMenuComponent.cpp \
 		server/zone/objects/tangible/components/ElevatorUpMenuComponent.cpp \

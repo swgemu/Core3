@@ -33,6 +33,7 @@
 #include "templates/params/PaletteColorCustomizationVariable.h"
 #include "templates/customization/BasicRangedIntCustomizationVariable.h"
 #include "server/zone/managers/jedi/JediManager.h"
+#include "server/login/account/AccountManager.h"
 
 PlayerCreationManager::PlayerCreationManager() :
 		Logger("PlayerCreationManager") {
@@ -457,14 +458,13 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 	playerCreature->setBankCredits(startingBank, false);
 
 	if (ghost != NULL) {
-
-		ghost->setAccountID(client->getAccountID());
+		int accID = client->getAccountID();
+		ghost->setAccountID(accID);
+		ghost->initializeAccount();
 
 		if (!freeGodMode) {
 			try {
-				uint32 accID = client->getAccountID();
-
-				ManagedReference<Account*> playerAccount = playerManager->getAccount(accID);
+				ManagedReference<Account*> playerAccount = ghost->getAccount();
 
 				if (playerAccount == NULL) {
 					playerCreature->destroyPlayerCreatureFromDatabase(true);
@@ -597,40 +597,6 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 	}
 
 	playerManager->addPlayer(playerCreature);
-
-	// Copy claimed veteran rewards from player's alt character
-	uint32 accID = client->getAccountID();
-	ManagedReference<Account*> playerAccount = playerManager->getAccount(accID);
-	if (playerAccount != NULL && ghost != NULL) {
-
-		// Find the first alt character
-		ManagedReference<CreatureObject*> altPlayer = NULL;
-		CharacterList* characters = playerAccount->getCharacterList();
-		for(int i = 0; i < characters->size(); ++i) {
-			CharacterListEntry* entry = &characters->get(i);
-			if(entry->getGalaxyID() == zoneServer.get()->getGalaxyID() &&
-		       entry->getFirstName() != playerCreature->getFirstName() ) {
-
-				altPlayer = playerManager->getPlayer(entry->getFirstName());
-				if( altPlayer != NULL ){
-					break;
-				}
-			}
-		}
-
-		// Record the rewards if alt player was found
-		if( altPlayer != NULL && altPlayer->getPlayerObject() != NULL){
-
-			Locker alocker( altPlayer );
-			for( int i = 0; i < playerManager->getNumVeteranRewardMilestones(); i++ ){
-				int milestone = playerManager->getVeteranRewardMilestone(i);
-				String claimedReward = altPlayer->getPlayerObject()->getChosenVeteranReward(milestone);
-				if( !claimedReward.isEmpty() ){
-					ghost->addChosenVeteranReward(milestone,claimedReward);
-				}
-			}
-		}
-	}
 
 	client->addCharacter(playerCreature->getObjectID(), zoneServer.get()->getGalaxyID());
 

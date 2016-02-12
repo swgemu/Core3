@@ -26,10 +26,13 @@ import server.zone.objects.waypoint.WaypointObject;
 include templates.SharedObjectTemplate;
 import server.zone.Zone;
 import server.zone.ZoneClientSession;
+import server.login.account.Account;
+
 import system.util.SortedVector;
 import system.util.Vector;
 import system.util.VectorMap;
 import system.util.SynchronizedSortedVector;
+include server.login.account.GalaxyAccountInfo;
 include server.zone.objects.creature.variables.Skill;
 include server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.objects.manufactureschematic.ManufactureSchematic;
@@ -70,6 +73,11 @@ class PlayerObject extends IntangibleObject {
 	protected int drinkFillingMax;
 
 	protected int reactionFines;
+	
+	
+	protected transient GalaxyAccountInfo galaxyAccountInfo;
+	
+	protected transient Account account;
 
 	@dereferenced
 	protected Time reactionFineTimestamp; // Timestamp of when player was given a fine
@@ -366,6 +374,8 @@ class PlayerObject extends IntangibleObject {
 	public void finalize() {
 
 	}
+	
+	public native void initializeAccount();
 
 	/**
 	 * Gets called when this objects is loaded from database
@@ -1477,6 +1487,13 @@ class PlayerObject extends IntangibleObject {
 	public unsigned int getAccountID() {
 		return accountID;
 	}
+	
+	@read
+	@dirty
+	@local
+	public native GalaxyAccountInfo getGalaxyAccountInfo() {
+		return galaxyAccountInfo;
+	}
 
 	@dirty
 	public unsigned long getServerMovementTimeDelta() {
@@ -1693,22 +1710,30 @@ class PlayerObject extends IntangibleObject {
 	public void removeSpouse(){
 		spouseName = "";
 	}
-
+	
 	@dirty
-	public string getChosenVeteranReward( unsigned int milestone ){
-		return chosenVeteranRewards.get(milestone);
-	}
-
-	public void addChosenVeteranReward( unsigned int milestone, string rewardTemplate ){
-		chosenVeteranRewards.put( milestone, rewardTemplate );
+	public Account getAccount() {
+		return account;
 	}
 
 	@dirty
-	public native boolean hasChosenVeteranReward( final string rewardTemplate );
+	public string getChosenVeteranReward( unsigned int milestone ) {
+		return galaxyAccountInfo.getChosenVeteranReward(milestone);
+	}
 
+	@dirty
+	public void addChosenVeteranReward( unsigned int milestone, string rewardTemplate ) {
+		galaxyAccountInfo.addChosenVeteranReward( milestone, rewardTemplate );
+	}
+
+	@dirty
+	public native boolean hasChosenVeteranReward( final string rewardTemplate ) {
+		return galaxyAccountInfo.hasChosenVeteranReward(rewardTemplate);
+	}
+
+	@dirty
 	public void clearVeteranReward( unsigned int milestone ){
-		if( chosenVeteranRewards.contains(milestone) )
-			chosenVeteranRewards.drop( milestone );
+		galaxyAccountInfo.clearVeteranReward(milestone);
 	}
 
 	public void addEventPerk(SceneObject deed) {
