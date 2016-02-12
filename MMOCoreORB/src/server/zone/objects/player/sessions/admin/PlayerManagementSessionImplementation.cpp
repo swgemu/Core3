@@ -346,6 +346,7 @@ void PlayerManagementSessionImplementation::completeBan() {
 	String message = "";
 
 	/// Update account to check for changes
+	Locker locker(targetAccount);
 	targetAccount->updateAccount();
 
 	if(banMode == ACCOUNT) {
