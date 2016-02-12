@@ -70,11 +70,13 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<Account*> account = playerManager->getAccount(ghost->getAccountID());
+		ManagedReference<Account*> account = ghost->getAccount();
 		if(account == NULL) {
 			creature->sendSystemMessage("Account is NULL");
 			return GENERALERROR;
 		}
+
+		Locker alocker(account);
 
 		CharacterListEntry* entry = account->getCharacterBan(server->getZoneServer()->getGalaxyID(), targetCreature->getFirstName());
 
