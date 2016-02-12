@@ -47,11 +47,13 @@ public:
 		if(targetCreature == NULL || !targetCreature->isPlayerCreature())
 			return INVALIDTARGET;
 
-		ManagedReference<Account*> account = playerManager->getAccount(targetCreature->getPlayerObject()->getAccountID());
+		ManagedReference<Account*> account = targetCreature->getPlayerObject()->getAccount();
 		if(account == NULL) {
 			creature->sendSystemMessage("Account not found");
 			return SUCCESS;
 		}
+
+		Locker alocker(account);
 
 		creature->sendSystemMessage("Account name for " + targetCreature->getFirstName() +  ": " + account->getUsername());
 

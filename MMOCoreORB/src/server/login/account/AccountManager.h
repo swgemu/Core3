@@ -80,14 +80,18 @@ namespace server {
 				inline bool isAutoRegistrationEnabled() {
 					return autoRegistration;
 				}
+				
+				
 
-				Account* getAccount(uint32 accountID);
+				static ManagedReference<Account*> getAccount(uint32 accountID, bool forceSqlUpdate = false);
 
-				Account* getAccount(uint32 accountID, String& passwordStored);
+				static ManagedReference<Account*> getAccount(const String& accountName, bool forceSqlUpdate = false);
+
+				static ManagedReference<Account*> getAccount(uint32 accountID, String& passwordStored, bool forceSqlUpdate = false);
 
 			private:
 
-				Account* getAccount(String query, String& passwordStored);
+				static ManagedReference<Account*> getAccount(String query, String& passwordStored, bool forceSqlUpdate = false);
 
 			};
 		}

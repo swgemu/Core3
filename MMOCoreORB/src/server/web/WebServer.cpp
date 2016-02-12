@@ -446,7 +446,7 @@ bool WebServer::authorize(HttpSession* session) {
 ManagedReference<Account*> WebServer::validateAccountCredentials(LoginClient* client, const String& username, const String& password) {
 
 
-	ManagedReference<Account*> account = zoneServer->getPlayerManager()->getAccount(username);
+	ManagedReference<Account*> account = AccountManager::getAccount(username, true);
 
 	if(account == NULL)
 		return NULL;

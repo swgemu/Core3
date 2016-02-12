@@ -80,6 +80,8 @@ void PlayerManagementSessionImplementation::ban(const int tablevel, const uint32
 	banReason = "";
 	targetName = "";
 
+	Locker alocker(targetAccount);
+
 	//Account Ban
 	if(tablevel == 0) {
 
@@ -265,6 +267,7 @@ void PlayerManagementSessionImplementation::setBanReason(const String& reason) {
 }
 
 void PlayerManagementSessionImplementation::showBanSummary() {
+	Locker alocker(targetAccount);
 
 	if(summaryBox == NULL) {
 		summaryBox = new SuiListBox(admin, SuiWindowType::ADMIN_BAN_SUMMARY);
@@ -300,6 +303,7 @@ void PlayerManagementSessionImplementation::showBanSummary() {
 }
 
 void PlayerManagementSessionImplementation::showUnbanSummary() {
+	Locker alocker(targetAccount);
 
 	if(unbanSummaryBox == NULL) {
 		unbanSummaryBox = new SuiMessageBox(admin, SuiWindowType::ADMIN_UNBAN_SUMMARY);
@@ -346,6 +350,7 @@ void PlayerManagementSessionImplementation::completeBan() {
 	String message = "";
 
 	/// Update account to check for changes
+	Locker locker(targetAccount);
 	targetAccount->updateAccount();
 
 	if(banMode == ACCOUNT) {
