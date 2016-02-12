@@ -6,6 +6,7 @@ package server.chat.room;
 
 import engine.core.ManagedObject;
 import system.util.VectorMap;
+import system.util.SortedVector;
 import system.util.Vector;
 import system.lang.Time;
 import engine.service.proto.BaseMessage;
@@ -53,13 +54,13 @@ class ChatRoom extends ManagedObject {
 	protected transient VectorMap<string, CreatureObject> playerList;
 
 	@dereferenced
-	protected Vector<unsigned long> moderatorList;
+	protected SortedVector<unsigned long> moderatorList;
 
 	@dereferenced
-	protected Vector<unsigned long> invitedList;
+	protected SortedVector<unsigned long> invitedList;
 
 	@dereferenced
-	protected Vector<unsigned long> bannedList;
+	protected SortedVector<unsigned long> bannedList;
 
 	//ChatRoom types:
 	public static final int DEFAULT = 0;
@@ -169,7 +170,7 @@ class ChatRoom extends ManagedObject {
 //                              Moderator Management
 
 	public synchronized void addModerator(CreatureObject player) {
-		moderatorList.add(player.getObjectID());
+		moderatorList.put(player.getObjectID());
 		addInvited(player);
 	}
 
@@ -190,15 +191,15 @@ class ChatRoom extends ManagedObject {
 	public native string getModeratorName(int idx);
 		
 	@dirty
-	public synchronized boolean hasModerator(unsigned long objectID) {
-		return moderatorList.contains(objectID);
+	public synchronized boolean hasModerator(CreatureObject player) {
+		return moderatorList.contains(player.getObjectID());
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //                              Invited Management
 
 	public synchronized void addInvited(CreatureObject player) {
-		invitedList.add(player.getObjectID());
+		invitedList.put(player.getObjectID());
 	}
 
 	public synchronized void removeInvited(CreatureObject player) {
@@ -219,15 +220,15 @@ class ChatRoom extends ManagedObject {
 	public native string getInvitedName(int idx);
 
 	@dirty
-	public synchronized boolean hasInvited(unsigned long objectID) {
-		return invitedList.contains(objectID);
+	public synchronized boolean hasInvited(CreatureObject player) {
+		return invitedList.contains(player.getObjectID());
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //                              Banned Management
 
 	public synchronized void addBanned(CreatureObject player) {
-		bannedList.add(player.getObjectID());
+		bannedList.put(player.getObjectID());
 		removeInvited(player);
 	}
 
@@ -248,8 +249,8 @@ class ChatRoom extends ManagedObject {
 	public native string getBannedName(int idx);
 
 	@dirty
-	public synchronized boolean hasBanned(unsigned long objectID) {
-		return bannedList.contains(objectID);
+	public synchronized boolean hasBanned(CreatureObject player) {
+		return bannedList.contains(player.getObjectID());
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////

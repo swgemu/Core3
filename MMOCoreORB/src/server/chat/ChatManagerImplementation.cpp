@@ -28,6 +28,9 @@
 #include "server/zone/packets/chat/ChatOnEnteredRoom.h"
 #include "server/zone/packets/chat/ChatPersistentMessageToClient.h"
 #include "server/zone/packets/chat/ChatQueryRoomResults.h"
+#include "server/zone/packets/chat/ChatOnReceiveRoomInvitation.h"
+#include "server/zone/packets/chat/ChatOnInviteToRoom.h"
+#include "server/zone/packets/chat/ChatOnUninviteFromRoom.h"
 
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/guild/GuildObject.h"
@@ -700,13 +703,11 @@ void ChatManagerImplementation::sendRoomList(CreatureObject* player) {
 
 	HashTableIterator<unsigned int, ManagedReference<ChatRoom* > > iter = roomMap->iterator();
 
-	uint64 playerID = player->getObjectID();
-
 	while (iter.hasNext()) {
 		ChatRoom* room = iter.next();
 		if (room != NULL && !room->isDisabled()) {
 			if (room->isPrivate()) {
-				if ( !room->hasModerator(playerID) && !room->hasInvited(playerID) )
+				if (!room->hasInvited(player))
 					continue;
 			}
 
@@ -1697,7 +1698,7 @@ void ChatManagerImplementation::handleChatCreateRoom(CreatureObject* player, uin
 	clocker.release();
 
 	//Attempt to create the new room as a subroom of the second last path node (the parent).
-	ManagedReference<ChatRoom*> newRoom = createPersistentRoomByFullPath(player, roomPath, requestID);
+	ManagedReference<ChatRoom*> newRoom = createPersistentRoomByFullPath(player, roomPath, roomTitle, requestID);
 
 	if (newRoom == NULL)
 		return;
@@ -1732,7 +1733,7 @@ void ChatManagerImplementation::handleChatCreateRoom(CreatureObject* player, uin
 
 }
 
-ChatRoom* ChatManagerImplementation::createPersistentRoomByFullPath(CreatureObject* player, const String& path, int requestID) {
+ChatRoom* ChatManagerImplementation::createPersistentRoomByFullPath(CreatureObject* player, const String& path, const String& title, int requestID) {
 	//ChatManager locked
 
 	StringTokenizer tokenizer(path);
@@ -1807,7 +1808,7 @@ ChatRoom* ChatManagerImplementation::createPersistentRoomByFullPath(CreatureObje
 	}
 
 	//Check permission to create channel in the parent.
-	if (!parent->subroomsAllowed() && !parent->hasModerator(player->getObjectID())) {
+	if (!parent->subroomsAllowed() && !parent->hasModerator(player)) {
 		int error = 1; //"Channel '[RoomPathName]' creation failed for an unknown reason.""
 		sendChatOnCreateRoomError(player, requestID, error);
 		return NULL;
@@ -1820,8 +1821,12 @@ ChatRoom* ChatManagerImplementation::createPersistentRoomByFullPath(CreatureObje
 	if (channel.length() > ChatManager::MAXCHATROOMNAMELENGTH || nameManager->validateChatRoomName(channel) != NameManagerResult::ACCEPTED)
 		nameOK = false;
 
+	//Check for profane room title.
+	if (nameOK && nameManager->isProfane(title))
+		nameOK = false;
+
 	//Check for profane path combinations on the path's persistent portion.
-	if (nameOK && nameManager->validateChatRoomName(persistentPath) != NameManagerResult::ACCEPTED)
+	if (nameOK && nameManager->isProfane(persistentPath))
 		nameOK = false;
 
 	if (!nameOK) {
@@ -1893,5 +1898,144 @@ void ChatManagerImplementation::handleChatQueryRoom(CreatureObject* player, cons
 
 	ChatQueryRoomResults* packet = new ChatQueryRoomResults(room, requestID);
 	player->sendMessage(packet);
+
+}
+
+void ChatManagerImplementation::handleChatInvitePlayer(CreatureObject* inviter, const String& inviteeName, const String& roomPath, int requestID) {
+	//Nothing locked
+
+	/* Error Codes:
+	 * 0: You have invited %TT to %TU. (MODERATOR_SUCCESS)
+	 * 1: Failed to invite %TT to %TU. (MODERATOR_FAIL)
+	 * 4: Failed to invite %TT to %TU: avatar not found. (NOAVATAR)
+	 * 5: Failed to invite %TT to %TU: room does not exist. (NOROOM)
+	 * 9: Failed to invite %TT to %TU: room is not private. (NOTPRIVATE)
+	 * 16: Failed to invite %TT to %TU: you are not a moderator. (NOPERMISSION)
+	 */
+
+	//Validate the room.
+	ManagedReference<ChatRoom*> room = getChatRoomByFullPath(roomPath);
+	if (room == NULL) {
+		sendChatOnInviteResult(inviter, inviteeName, roomPath, ChatManager::NOROOM, requestID);
+		return;
+	} else if (room->isPublic()) {
+		sendChatOnInviteResult(inviter, inviteeName, roomPath, ChatManager::NOTPRIVATE, requestID);
+		return;
+	}
+
+	//Check for moderator permission.
+	if (!room->hasModerator(inviter)) {
+		sendChatOnInviteResult(inviter, inviteeName, roomPath, ChatManager::NOPERMISSION, requestID);
+		return;
+	}
+
+	//Get the invitee.
+	ManagedReference<CreatureObject*> invitee = getPlayer(inviteeName); //locks ChatManager
+	if (invitee == NULL || inviteeName != invitee->getFirstName()) { //Enforce proper capitalization to prevent duplicate list entries on client.
+		sendChatOnInviteResult(inviter, inviteeName, roomPath, ChatManager::NOAVATAR, requestID);
+		return;
+	}
+
+	//Add invitee and send invitation.
+	if (!room->hasInvited(invitee)) {
+		Locker locker(room);
+		room->addInvited(invitee);
+		room->sendTo(invitee);
+		ChatOnReceiveRoomInvitation* invitation = new ChatOnReceiveRoomInvitation(server->getGalaxyName(), inviter->getFirstName(), roomPath);
+		invitee->sendMessage(invitation);
+	}
+
+	//Notify inviter of successful invite.
+	sendChatOnInviteResult(inviter, inviteeName, roomPath, ChatManager::MODERATOR_SUCCESS, requestID);
+
+}
+
+void ChatManagerImplementation::sendChatOnInviteResult(CreatureObject* inviter, const String& inviteeName, const String& roomPath, int error, int requestID) {
+	ChatOnInviteToRoom* notification = new ChatOnInviteToRoom(inviter, inviteeName, roomPath, error, requestID);
+	inviter->sendMessage(notification);
+}
+
+void ChatManagerImplementation::handleChatUninvitePlayer(CreatureObject* uninviter, const String& uninviteeName, const String& roomPath, int requestID) {
+	//Nothing locked
+
+	/* Error Codes:
+	 * 0: Success: You uninvited [Target] from [RoomPathName]. (MODERATOR_SUCCESS)
+	 * 1: Failed to uninvite %TT to %TU. (MODERATOR_FAIL)
+	 * 4: Failed to uninvite [Target] from [RoomPathName]: avatar not found. (NOAVATAR)
+	 * 5: Failed to uninvite [Target] from [RoomPathName]: room does not exist. (NOROOM)
+	 * 9: Failed to uninvite [Target] from [RoomPathName]: room is not private. (NOTPRIVATE)
+	 * 13: Failed to uninvite [Target] from [RoomPathName]: that avatar is not currently invited. (NOTINVITED)
+	 * 16: Failed to uninvite [Target] from [RoomPathName]: you are not a moderator. (NOPERMISSION)
+	 */
+
+	//Validate the room.
+	ManagedReference<ChatRoom*> room = getChatRoomByFullPath(roomPath);
+	if (room == NULL) {
+		sendChatOnUninviteResult(uninviter, uninviteeName, roomPath, ChatManager::NOROOM, requestID);
+		return;
+	} else if (room->isPublic()){
+		sendChatOnUninviteResult(uninviter, uninviteeName, roomPath, ChatManager::NOTPRIVATE, requestID);
+		return;
+	}
+
+	//Check for moderator permission.
+	if (!room->hasModerator(uninviter)) {
+		sendChatOnUninviteResult(uninviter, uninviteeName, roomPath, ChatManager::NOPERMISSION, requestID);
+		return;
+	}
+
+	//Get the uninvitee.
+	ManagedReference<CreatureObject*> uninvitee = getPlayer(uninviteeName); //locks ChatManager
+	if (uninvitee == NULL) {
+		sendChatOnUninviteResult(uninviter, uninviteeName, roomPath, ChatManager::NOAVATAR, requestID);
+		return;
+	} else if (uninvitee->getObjectID() == room->getOwnerID()) { //Sorry buddy, you cannot uninvite the channel owner!
+		sendChatOnUninviteResult(uninviter, uninviteeName, roomPath, ChatManager::MODERATOR_FAIL, requestID);
+		return;
+	}
+
+	//Remove uninvitee from list.
+	if (room->hasInvited(uninvitee)) {
+		Locker locker(room);
+		room->removeInvited(uninvitee);
+		room->sendDestroyTo(uninvitee); //TODO: Should uninvite kick? Should it send a destroy if it doesn't?
+	} else {
+		sendChatOnUninviteResult(uninviter, uninviteeName, roomPath, ChatManager::NOTINVITED, requestID);
+		return;
+	}
+
+	//Notify uninviter of the result.
+	sendChatOnUninviteResult(uninviter, uninviteeName, roomPath, ChatManager::MODERATOR_SUCCESS, requestID);
+
+}
+
+void ChatManagerImplementation::sendChatOnUninviteResult(CreatureObject* uninviter, const String& uninviteeName, const String& roomPath, int error, int requestID) {
+	ChatOnUninviteFromRoom* notification = new ChatOnUninviteFromRoom(uninviter, uninviteeName, roomPath, error, requestID);
+	uninviter->sendMessage(notification);
+}
+
+void ChatManagerImplementation::handleChatKickPlayerFromRoom(CreatureObject* kicker, const String& kickeeName, const String& roomPath) {
+	//Nothing locked
+
+	//Validate the room.
+	ManagedReference<ChatRoom*> room = getChatRoomByFullPath(roomPath);
+	if (room == NULL)
+		return;
+
+	//Get the player to be kicked.
+	ManagedReference<CreatureObject*> kickee = getPlayer(kickeeName); //locks ChatManager
+	if (kickee == NULL || kickee->getObjectID() == room->getOwnerID()) //Sorry friend, you cannot kick the channel owner!
+		return;
+
+	//Check for moderator permission.
+	if (!room->hasModerator(kicker))
+		return;
+
+	//Remove the player from the room.
+	if (room->hasPlayer(kickee)) {
+		Locker locker(room);
+		Locker clocker(kickee, room);
+		room->removePlayer(kickee);
+	}
 
 }

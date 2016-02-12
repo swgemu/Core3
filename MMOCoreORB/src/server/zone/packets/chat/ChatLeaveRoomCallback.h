@@ -15,18 +15,21 @@
 class ChatLeaveRoomCallback : public MessageCallback {
 
 	String roomPath;
+	String leavingName;
 
 public:
 	ChatLeaveRoomCallback(ZoneClientSession* client, ZoneProcessServer* server) : MessageCallback(client, server) {
 		roomPath = "";
+		leavingName = "";
 	}
 
 	void parse(Message* message) {
-		String blank = "";
-		message->parseAscii(blank); //Game
-		message->parseAscii(blank); //Galaxy
-		message->parseAscii(blank); //Player Name
-		message->parseAscii(roomPath);
+		String unused = "";
+		message->parseAscii(unused); //Game
+		message->parseAscii(unused); //Galaxy
+		message->parseAscii(leavingName); //Player Name
+		message->parseAscii(roomPath); //Full room path
+
 	}
 
 	void run() {
@@ -40,16 +43,22 @@ public:
 		if (player == NULL)
 			return;
 
-		Locker locker(player);
-
 		ChatManager* chatManager = server->getChatManager();
-		chatManager->handleChatLeaveRoom(player, roomPath);
+		if (chatManager == NULL)
+			return;
+
+		String senderName = player->getFirstName().toLowerCase();
+
+		if (senderName != leavingName.toLowerCase()) { //One player is kicking another from a room.
+			chatManager->handleChatKickPlayerFromRoom(player, leavingName, roomPath);
+		} else { //Player is just trying to leave a room (or kicked himself).
+			Locker locker(player);
+			chatManager->handleChatLeaveRoom(player, roomPath);
+		}
 
 	}
 
 };
-
-
 
 
 #endif /* CHATLEAVEROOMCALLBACK_H_ */
