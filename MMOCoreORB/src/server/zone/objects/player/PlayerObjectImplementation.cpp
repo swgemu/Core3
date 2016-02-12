@@ -1024,11 +1024,11 @@ void PlayerObjectImplementation::addFriend(const String& name, bool notifyClient
 		AddFriendInitiateMessage* init = new AddFriendInitiateMessage();
 		strongParent->sendMessage(init);
 
-		AddFriendMessage* add = new AddFriendMessage(strongParent->getObjectID(),	nameLower, "Core3", true);
+		AddFriendMessage* add = new AddFriendMessage(strongParent->getObjectID(),	nameLower, zoneServer->getGalaxyName(), true);
 		strongParent->sendMessage(add);
 
 		if (playerToAdd->isOnline()) {
-			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(nameLower, "Core3", true);
+			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(nameLower, zoneServer->getGalaxyName(), true);
 			strongParent->sendMessage(notifyStatus);
 		}
 
@@ -1092,7 +1092,7 @@ void PlayerObjectImplementation::removeFriend(const String& name, bool notifyCli
 	ManagedReference<SceneObject*> parent = getParent().get();
 
 	if (notifyClient && parent != NULL) {
-		AddFriendMessage* add = new AddFriendMessage(parent->getObjectID(),	nameLower, "Core3", false);
+		AddFriendMessage* add = new AddFriendMessage(parent->getObjectID(),	nameLower, zoneServer->getGalaxyName(), false);
 		parent->sendMessage(add);
 
 		friendList.removePlayer(nameLower);
@@ -1193,7 +1193,7 @@ void PlayerObjectImplementation::addIgnore(const String& name, bool notifyClient
 	ManagedReference<SceneObject*> parent = getParent().get();
 
 	if (notifyClient && parent != NULL) {
-		AddIgnoreMessage* add = new AddIgnoreMessage(parent->getObjectID(),	nameLower, "Core3", true);
+		AddIgnoreMessage* add = new AddIgnoreMessage(parent->getObjectID(),	nameLower, server->getZoneServer()->getGalaxyName(), true);
 		parent->sendMessage(add);
 
 		ignoreList.add(nameLower);
@@ -1231,7 +1231,7 @@ void PlayerObjectImplementation::removeIgnore(const String& name, bool notifyCli
 	}
 
 	if (notifyClient && parent != NULL) {
-		AddIgnoreMessage* add = new AddIgnoreMessage(parent->getObjectID(),	nameLower, "Core3", false);
+		AddIgnoreMessage* add = new AddIgnoreMessage(parent->getObjectID(),	nameLower, server->getZoneServer()->getGalaxyName(), false);
 		parent->sendMessage(add);
 
 		ignoreList.removePlayer(nameLower);
@@ -1281,6 +1281,7 @@ void PlayerObjectImplementation::notifyOnline() {
 		return;
 
 	ChatManager* chatManager = server->getChatManager();
+	ZoneServer* zoneServer = server->getZoneServer();
 
 	String firstName = playerCreature->getFirstName();
 	firstName = firstName.toLowerCase();
@@ -1289,7 +1290,7 @@ void PlayerObjectImplementation::notifyOnline() {
 		ManagedReference<CreatureObject*> player = chatManager->getPlayer(friendList.getReversePlayer(i));
 
 		if (player != NULL) {
-			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(firstName, "Core3", true);
+			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(firstName, zoneServer->getGalaxyName(), true);
 			player->sendMessage(notifyStatus);
 		}
 	}
@@ -1299,7 +1300,7 @@ void PlayerObjectImplementation::notifyOnline() {
 		ManagedReference<CreatureObject*> player = chatManager->getPlayer(name);
 
 		if (player != NULL) {
-			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(name, "Core3", true);
+			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(name, zoneServer->getGalaxyName(), true);
 			parent->sendMessage(notifyStatus);
 		}
 	}
@@ -1342,7 +1343,7 @@ void PlayerObjectImplementation::notifyOffline() {
 		ManagedReference<CreatureObject*> player = chatManager->getPlayer(friendList.getReversePlayer(i));
 
 		if (player != NULL) {
-			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(firstName, "Core3", false);
+			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(firstName, server->getZoneServer()->getGalaxyName(), false);
 			player->sendMessage(notifyStatus);
 		}
 	}
