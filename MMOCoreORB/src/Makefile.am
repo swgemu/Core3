@@ -98,6 +98,7 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
 core3_IDLS =	autogen/server/zone/objects/tangible/eventperk/ShuttleBeacon.cpp \
+				autogen/server/login/account/GalaxyAccountInfo.cpp \
 				autogen/server/zone/objects/tangible/misc/FsCraftingComponentObject.cpp \
 				autogen/server/zone/objects/tangible/misc/CustomIngredient.cpp \
 				autogen/server/zone/objects/tangible/misc/PlantObject.cpp \
@@ -376,6 +377,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/skill/SkillManager.cpp \
 		server/zone/managers/skill/SkillModManager.cpp \
 		server/login/account/AccountImplementation.cpp \
+		server/login/account/GalaxyAccountInfoImplementation.cpp \
 		server/zone/objects/structure/events/StructureMaintenanceTask.cpp \
 		server/zone/objects/tangible/components/ElevatorMenuComponent.cpp \
 		server/zone/objects/tangible/components/ElevatorUpMenuComponent.cpp \
