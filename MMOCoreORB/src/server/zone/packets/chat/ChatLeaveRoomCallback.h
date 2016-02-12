@@ -27,7 +27,6 @@ public:
 		message->parseAscii(blank); //Galaxy
 		message->parseAscii(blank); //Player Name
 		message->parseAscii(roomPath);
-
 	}
 
 	void run() {

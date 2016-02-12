@@ -364,9 +364,7 @@ void ServerCore::handleCommands() {
 			} else if (command == "help") {
 				System::out << "available commands:\n";
 				System::out
-						<< "\texit, logQuadTree, info, icap, dcap, fixQueue, crash, about.\n";
-			} else if (command == "about") {
-				System::out << "Core3 Uber Edition. Ultyma pwns you.\n";
+						<< "\texit, logQuadTree, info, icap, dcap, fixQueue, crash.\n";
 			} else if (command == "chars") {
 				uint32 num = 0;
 

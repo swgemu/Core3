@@ -22,7 +22,7 @@ public:
 
 		for (int i = 0; i < ignoreList->size(); ++i) {
 			insertAscii("SWG");
-			insertAscii("Core3");
+			insertAscii(ghost->getZoneServer()->getGalaxyName());
 			insertAscii(ignoreList->get(i));
 		}
 

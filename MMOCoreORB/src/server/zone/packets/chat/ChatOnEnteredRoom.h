@@ -12,7 +12,6 @@ public:
 	ChatOnEnteredRoom(const String& server, const String& playername, uint32 roomID, int error, int requestID) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0xE69BDC0A);  // Opcode
-		
 		insertAscii("SWG"); // Game name
 		insertAscii(server.toCharArray()); // Galaxy name
 		insertAscii(playername.toCharArray()); // Character name
