@@ -65,7 +65,7 @@ void ChatManagerImplementation::finalize() {
 }
 
 void ChatManagerImplementation::loadMailDatabase() {
-	info("Checking mail for expiration...", true);
+	info("Checking mail for expiration");
 
 	ObjectDatabase* playerMailDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("mail", true);
 
@@ -74,7 +74,7 @@ void ChatManagerImplementation::loadMailDatabase() {
 		return;
 	}
 
-	int i = 0;
+	int i = 0, j = 0;
 
 	try {
 		ObjectDatabaseIterator iterator(playerMailDatabase);
@@ -89,6 +89,8 @@ void ChatManagerImplementation::loadMailDatabase() {
 				continue;
 			}
 
+			j++;
+
 			if (currentTime - timeStamp > PM_LIFESPAN) {
 				Reference<PersistentMessage*> mail = Core::getObjectBroker()->lookUp(objectID).castTo<PersistentMessage*>();
 
@@ -98,6 +100,9 @@ void ChatManagerImplementation::loadMailDatabase() {
 					ObjectManager::instance()->destroyObjectFromDatabase(objectID);
 				}
 			}
+
+			if (ConfigManager::instance()->isProgressMonitorActivated())
+				printf("\r\tChecking mail for expiration [%d] / [?]\t", j);
 
 			objectData->clear();
 		}

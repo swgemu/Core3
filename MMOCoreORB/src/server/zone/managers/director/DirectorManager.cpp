@@ -130,6 +130,9 @@ void DirectorManager::loadPersistentEvents() {
 			} else {
 				error("could not load PersistentEvent!");
 			}
+
+			if (ConfigManager::instance()->isProgressMonitorActivated())
+				printf("\r\tLoading persistent events [%d] / [?]\t", i);
 		}
 	} catch (DatabaseException& e) {
 		error("Database exception in DirectorManager::loadPersistentEvents(): "	+ e.getMessage());
