@@ -8,7 +8,7 @@
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/login/account/Account.h"
+#include "server/login/account/AccountManager.h"
 
 class ClearVeteranRewardCommand : public QueueCommand {
 public:
@@ -28,7 +28,12 @@ public:
 
 		StringTokenizer tokenizer(arguments.toString());
 		tokenizer.setDelimeter(" ");
-		int milestone = tokenizer.getIntToken();
+
+		int milestone = -1;
+
+		if(tokenizer.hasMoreTokens())
+			milestone = tokenizer.getIntToken();
+
 		if( milestone < 0 ){
 			player->sendSystemMessage("SYNTAX: /clearVeteranReward player milestone");
 			return INVALIDPARAMETERS;
@@ -56,27 +61,26 @@ public:
 		}
 
 		// Get account
-		ManagedReference<Account*> account = playerManager->getAccount( targetGhost->getAccountID() );
+		ManagedReference<Account*> account = targetGhost->getAccount();
+
 		if( account == NULL ){
 			player->sendSystemMessage("Error finding account");
 			return GENERALERROR;
 		}
 
 		// Clear reward in all characters registered to the account
-		CharacterList* characters = account->getCharacterList();
-		for(int i = 0; i < characters->size(); ++i) {
-			CharacterListEntry* entry = &characters->get(i);
-			if(entry->getGalaxyID() == server->getZoneServer()->getGalaxyID()) {
 
-				ManagedReference<CreatureObject*> altPlayer = playerManager->getPlayer(entry->getFirstName());
-				if(altPlayer != NULL && altPlayer->getPlayerObject() != NULL) {
-					Locker alocker(altPlayer, player);
-					altPlayer->getPlayerObject()->clearVeteranReward(milestone);
-					player->sendSystemMessage( altPlayer->getFirstName() + "'s " + String::valueOf(milestone) + "-day reward has been cleared" );
-					alocker.release();
-				}
-			}
+		Locker locker(account, player); //getGalaxyAccountInfo can lazily instantiate an object
+
+		Reference<VectorMap<String, ManagedReference<GalaxyAccountInfo*> >* > galaxyInfo = account->getGalaxyAccountInfo();
+		for(int i = 0; i < galaxyInfo->size(); ++i) {
+			GalaxyAccountInfo *info = galaxyInfo->get(i);
+
+			info->clearVeteranReward(milestone);
 		}
+
+		player->sendSystemMessage( account->getUsername() + "'s " + String::valueOf(milestone) + "-day reward has been cleared" );
+
 
 		return SUCCESS;
 	}
