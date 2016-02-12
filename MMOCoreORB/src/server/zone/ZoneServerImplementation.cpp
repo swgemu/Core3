@@ -771,12 +771,3 @@ void ZoneServerImplementation::changeLoginMessage(const String& motd) {
 	delete writer;
 	delete file;
 }
-
-/*Account* ZoneServerImplementation::getAccount(uint32 accountID) {
-
-	ManagedReference<LoginServer*> loginServer = cast<LoginServer*>(DistributedObjectBroker::instance()->lookUp("LoginServer"));
-	if(loginServer == NULL)
-		return NULL;
-
-	return loginServer->getAccount(accountID);
-}*/
