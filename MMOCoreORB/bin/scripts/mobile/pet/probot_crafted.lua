@@ -29,7 +29,7 @@ probot_crafted = Creature:new {
 		"object/creature/npc/droid/crafted/probe_droid.iff"
 	},
 	lootGroups = {},
-	defaultAttack = "creaturerangedattack",
+	defaultAttack = "attack",
 	defaultWeapon = "object/weapon/ranged/droid/droid_probot_ranged.iff",
 	conversationTemplate = "",
 }
