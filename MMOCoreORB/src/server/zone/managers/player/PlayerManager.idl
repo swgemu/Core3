@@ -363,10 +363,6 @@ class PlayerManager extends Observer implements Logger {
 
 	public native void finishHologrind(CreatureObject player);
 
-	public native Account getAccount(final string username);	
-	public native Account getAccount(unsigned int accountID);
-	private native Account queryForAccount(final string query);
-
 	public native string banAccount(PlayerObject admin, Account account, unsigned int seconds, final string reason);	
 	public native string unbanAccount(PlayerObject admin, Account account, final string reason);	
 	public native string banFromGalaxy(PlayerObject admin, Account account, final unsigned int galaxy, unsigned int seconds, final string reason);	

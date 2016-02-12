@@ -78,6 +78,8 @@
 #include "server/zone/managers/jedi/JediManager.h"
 #include "server/zone/objects/player/events/ForceRegenerationEvent.h"
 #include "server/login/account/Account.h"
+#include "server/login/account/AccountManager.h"
+
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/managers/player/QuestInfo.h"
 #include "server/zone/objects/player/events/ForceMeditateTask.h"
@@ -92,8 +94,24 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 	duelList.setNoDuplicateInsertPlan();
 	chatRooms.setNoDuplicateInsertPlan();
 	ownedChatRooms.setNoDuplicateInsertPlan();
-
 	setLoggingName("PlayerObject");
+
+	initializeAccount();
+}
+
+void PlayerObjectImplementation::initializeAccount() {
+
+	if(accountID == 0) {
+		CreatureObject* creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
+		if (creature == NULL)
+			return;
+
+		ZoneClientSession* owner = creature->getClient();
+
+		if(owner != NULL)
+			accountID = owner->getAccountID();
+	}
 }
 
 void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -2515,24 +2533,13 @@ int PlayerObjectImplementation::getVendorCount() {
 	return ownedVendors.size();
 }
 
-bool PlayerObjectImplementation::hasChosenVeteranReward( const String& rewardTemplate ){
-
-	for( int i = 0; i < chosenVeteranRewards.size(); i++){
-		if( rewardTemplate == chosenVeteranRewards.get(i) ){
-			return true;
-		}
-	}
-
-	return false;
-
-}
-
 int PlayerObjectImplementation::getCharacterAgeInDays() {
 	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
 
 	PlayerManager* playerManager = creature->getZoneServer()->getPlayerManager();
 
-	ManagedReference<Account*> account = playerManager->getAccount(getAccountID());
+	Reference<Account*> account = this->getAccount();
+
 	if(account == NULL) {
 		return 0;
 	}
@@ -2546,9 +2553,9 @@ int PlayerObjectImplementation::getCharacterAgeInDays() {
 	Time age;
 
 	for (int i = 0; i < list->size(); i++) {
-		CharacterListEntry entry = list->get(i);
-		if (entry.getObjectID() == creature->getObjectID() && entry.getGalaxyID() == creature->getZoneServer()->getGalaxyID()) {
-			age = entry.getCreationDate();
+		CharacterListEntry* entry = &list->get(i);
+		if (entry->getObjectID() == creature->getObjectID() && entry->getGalaxyID() == creature->getZoneServer()->getGalaxyID()) {
+			age = entry->getCreationDate();
 			break;
 		}
 	}
@@ -2613,5 +2620,27 @@ void PlayerObjectImplementation::doFieldFactionChange(int newStatus) {
 
 	addSuiBox(inputbox);
 	parent->sendMessage(inputbox->generateMessage());
+}
+
+void PlayerObjectImplementation::initializeGalaxyAccountInfo() {
+	if(account != NULL && galaxyAccountInfo == NULL) {
+		Locker locker(account);
+
+		galaxyAccountInfo = account->getGalaxyAccountInfo(getZoneServer()->getGalaxyName());
+
+		if (chosenVeteranRewards.size() > 0) {
+			galaxyAccountInfo->updateVetRewardsFromPlayer(chosenVeteranRewards);
+			chosenVeteranRewards.removeAll();
+		}
+	}
+}
+
+void PlayerObjectImplementation::getAccount() {
+	if(account == NULL)
+		account = AccountManager::getAccount(accountID);
+
+	initializeGalaxyAccountInfo();
+
+	return account;
 }
 
