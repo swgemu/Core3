@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_2548d92c",
+        "filename": "MMOCoreORB/src/server/ServerCore.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-13T00:37:45Z",
+      "side": 1,
+      "message": "about doesn\u0027t exist anymore.",
+      "range": {
+        "startLine": 367,
+        "startChar": 64,
+        "endLine": 367,
+        "endChar": 72
+      },
+      "revId": "f81b14573277a7f8cd66b1b5117ad1990ee5a218",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
