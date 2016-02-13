@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_45586dfa",
+        "filename": "MMOCoreORB/src/server/login/account/AccountImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-13T03:07:42Z",
+      "side": 1,
+      "message": "Don\u0027t need this here, castTo will give NULL for every case that you want (obj itself isn\u0027t NULL, it\u0027s the reference that obj manages that might be NULL)",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 16
+      },
+      "revId": "732287b3ee27c055bebd07fbfd02a0b180489e71",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_655d71e9",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-13T03:07:42Z",
+      "side": 1,
+      "message": "When would accountID be 0? Shouldn\u0027t we handle that?",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 19
+      },
+      "revId": "732287b3ee27c055bebd07fbfd02a0b180489e71",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
