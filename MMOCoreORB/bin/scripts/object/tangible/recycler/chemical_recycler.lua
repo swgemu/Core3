@@ -71,7 +71,7 @@ object_tangible_recycler_chemical_recycler = object_tangible_recycler_shared_che
 	customizationDefaults = {},
 
 	toolType = 1,
-	resourceTypes = "water,chemical,fuel_petrochem_solid,radioactive",
+	resourceTypes = {"water", "chemical", "fuel_petrochem_solid", "radioactive"},
 	containerComponent = "RecycleToolContainerComponent",
 
 	numberExperimentalProperties = {1, 1, 1},
