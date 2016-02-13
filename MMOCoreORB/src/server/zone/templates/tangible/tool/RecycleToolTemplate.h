@@ -26,7 +26,7 @@ public:
 
 		LuaObject resources = templateData->getObjectField("resourceTypes");
 		for (int i = 1; i <= resources.getTableSize(); ++i) {
-			resourceTypes->add(resources.getStringAt(i));
+			resourceTypes.add(resources.getStringAt(i));
 		}
 		resources.pop();
 	}
