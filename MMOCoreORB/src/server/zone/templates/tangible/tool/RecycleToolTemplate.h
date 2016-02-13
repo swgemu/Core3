@@ -24,16 +24,11 @@ public:
 
 		toolType = templateData->getByteField("toolType");
 
-		String resources = templateData->getStringField("resourceTypes");
-
-		StringTokenizer resourceTokens(resources);
-		resourceTokens.setDelimeter(",");
-
-		while (resourceTokens.hasMoreTokens()) {
-			String token;
-			resourceTokens.getStringToken(token);
-			resourceTypes.add(token);
+		LuaObject resources = templateData->getObjectField("resourceTypes");
+		for (int i = 1; i <= resources.getTableSize(); ++i) {
+			resourceTypes.add(resources.getStringAt(i));
 		}
+		resources.pop();
 	}
 
 	short getToolType() {

@@ -71,7 +71,7 @@ object_tangible_recycler_flora_recycler = object_tangible_recycler_shared_flora_
 	customizationDefaults = {},
 
 	toolType = 13,
-	resourceTypes = "cereal,fruit,vegetable,wood",
+	resourceTypes = {"cereal", "fruit", "vegetable", "wood"},
 	containerComponent = "RecycleToolContainerComponent",
 
 	numberExperimentalProperties = {1, 1, 1},

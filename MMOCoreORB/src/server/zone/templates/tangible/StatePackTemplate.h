@@ -28,7 +28,7 @@ public:
 		SharedTangibleObjectTemplate::readObject(templateData);
 
 		medicineUse = templateData->getIntField("medicineUse");
-		state = templateData->getFloatField("state");
+		state = templateData->getLongField("state");
     }
 
 	inline int getMedicineUse() {
