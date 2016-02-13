@@ -71,7 +71,7 @@ object_tangible_recycler_metal_recycler = object_tangible_recycler_shared_metal_
 	customizationDefaults = {},
 
 	toolType = 18,
-	resourceTypes = "ferrous,nonferrous",
+	resourceTypes = {"ferrous", "nonferrous"},
 	containerComponent = "RecycleToolContainerComponent",
 
 	numberExperimentalProperties = {1, 1, 1},

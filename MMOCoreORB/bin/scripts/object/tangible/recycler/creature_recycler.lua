@@ -71,7 +71,7 @@ object_tangible_recycler_creature_recycler = object_tangible_recycler_shared_cre
 	customizationDefaults = {},
 
 	toolType = 6,
-	resourceTypes = "hide,meat,bone,horn,seafood,milk",
+	resourceTypes = {"hide", "meat", "bone", "horn", "seafood", "milk"},
 	containerComponent = "RecycleToolContainerComponent",
 
 	numberExperimentalProperties = {1, 1, 1},

@@ -71,7 +71,7 @@ object_tangible_recycler_ore_recycler = object_tangible_recycler_shared_ore_recy
 	customizationDefaults = {},
 
 	toolType = 21,
-	resourceTypes = "igneous,sedimentary,gemstone",
+	resourceTypes = {"igneous", "sedimentary", "gemstone"},
 	containerComponent = "RecycleToolContainerComponent",
 
 	numberExperimentalProperties = {1, 1, 1},
