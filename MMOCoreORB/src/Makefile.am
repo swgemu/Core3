@@ -121,6 +121,7 @@ core3_IDLS =	autogen/server/zone/objects/tangible/misc/FsCraftingComponentObject
 				autogen/server/zone/objects/tangible/LairObject.cpp \
 				autogen/server/zone/managers/creature/DynamicSpawnObserver.cpp \
 				autogen/server/zone/managers/creature/SpawnObserver.cpp \
+				autogen/server/zone/objects/tangible/deed/vetharvester/VetHarvesterDeed.cpp \
 				autogen/server/zone/objects/player/sessions/VeteranRewardSession.cpp \
 				autogen/server/zone/objects/player/sessions/ProposeUnitySession.cpp \
 				autogen/server/zone/managers/mission/DestroyMissionLairObserver.cpp \
@@ -415,6 +416,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/terminal/components/PowerRegulatorMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/TurretControlMenuComponent.cpp \
 		server/zone/objects/region/events/CityUpdateEvent.cpp \
+		server/zone/objects/tangible/deed/vetharvester/VetHarvesterDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/structure/StructureDeedImplementation.cpp \
 		server/zone/objects/player/sui/callbacks/CityManageMilitiaSuiCallback.cpp \
 		server/zone/objects/player/sessions/CityRemoveMilitiaSessionImplementation.cpp \
