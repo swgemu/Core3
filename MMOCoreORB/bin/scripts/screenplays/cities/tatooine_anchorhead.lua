@@ -16,7 +16,7 @@ end
 function TatooineAnchorheadScreenPlay:spawnSceneObjects()
 
 	--Tavern
-	spawnSceneObject("tatooine", "object/mobile/dressed_rebel_crewman_human_male_03.iff", -0.3, -4.0, -3.7, 1213349, math.rad(90) )
+	spawnSceneObject("tatooine", "object/mobile/le_repair_droid.iff", -0.3, -4.0, -3.7, 1213349, math.rad(90) )
 
 end
 
@@ -27,7 +27,7 @@ function TatooineAnchorheadScreenPlay:spawnMobiles()
 	--Tavern
 	local pNpc = spawnMobile("tatooine", "borra_setas",60,9.51111,0.408271,-0.736723,320.12,1213345)
 	self:setMoodString(pNpc, "worried")
-	pNpc = spawnMobile("tatooine", "commoner_tatooine",60,-9.58703,0.408271,0.574718,94,1213345)
+	pNpc = spawnMobile("tatooine", "commoner_tatooine",60,-9.4,0.4,2.0,161,1213345)
 	self:setMoodString(pNpc, "npc_standing_drinking")
 	--{"nitra_vendallan",60,-2.95305,0.40827,-9.30713,12.2342,1213345, "calm", "Nitra Vendallan"},
 	spawnMobile("tatooine", "trainer_doctor",0,1.53792,1.00421,6.82596,265,1213346)
