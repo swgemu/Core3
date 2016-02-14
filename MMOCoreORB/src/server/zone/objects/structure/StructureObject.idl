@@ -294,7 +294,7 @@ class StructureObject extends TangibleObject {
 	public native int getBaseMaintenanceRate();
 	
 	@dirty
-	public native int getBasePowerRate();
+	public abstract native int getBasePowerRate();
 	
 	@read
 	public int getSurplusMaintenance() {
