@@ -341,13 +341,15 @@ bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 
 	addMaintenance(-1.0f * payAmount);
 
-	if (isOperating()) {
-		float energyAmount = (elapsedTime / 3600.0) * getBasePowerRate();
+	int basePowerRate = getBasePowerRate();
+
+	if (isOperating() && basePowerRate != 0) {
+		float energyAmount = (elapsedTime / 3600.0) * basePowerRate;
 
 		if (energyAmount > surplusPower) {
 			energyAmount = surplusPower;
 
-			float workPowerPermitted = (surplusPower / getBasePowerRate()) * 3600;
+			float workPowerPermitted = (surplusPower / basePowerRate) * 3600;
 
 			if (workPowerPermitted < elapsedTime) {
 				Time workTill(lastMaintenanceTime.getTime() + (int) workPowerPermitted);

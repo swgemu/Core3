@@ -25,6 +25,7 @@
 #include "DeleteCharactersTask.h"
 #include "server/conf/ConfigManager.h"
 #include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
+#include "server/zone/objects/tangible/deed/vetharvester/VetHarvesterDeed.h"
 
 using namespace engine::db;
 
@@ -243,6 +244,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<StructureDeed>(SceneObjectType::INSTALLATIONDEED);
 	objectFactory.registerObject<ResourceDeed>(SceneObjectType::RESOURCEDEED);
 	objectFactory.registerObject<EventPerkDeed>(SceneObjectType::EVENTPERKDEED);
+	objectFactory.registerObject<VetHarvesterDeed>(SceneObjectType::VETHARVESTERDEED);
 
 	objectFactory.registerObject<GroupObject>(SceneObjectType::GROUPOBJECT);
 	objectFactory.registerObject<GuildObject>(SceneObjectType::GUILDOBJECT);

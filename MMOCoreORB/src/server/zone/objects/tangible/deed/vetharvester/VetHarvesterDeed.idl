@@ -1,0 +1,50 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.deed.resource;
+
+import server.zone.objects.tangible.deed.Deed;
+import engine.lua.LuaObject;
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.Zone;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.packets.object.ObjectMenuResponse;
+
+class VetHarvesterDeed extends Deed {
+	
+	public VetHarvesterDeed() {		
+		Logger.setLoggingName("VetHarvesterDeed");
+		
+	}
+	
+	public native void initializeTransientMembers();
+	
+	/**
+	 * Fills the radial options, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
+	@local
+	@dirty
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+	
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+	
+	public native int useObject(CreatureObject player);
+	 
+	/**
+	 * Removes this object from parent container
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 */
+	public native void destroyDeed();
+}

@@ -8,8 +8,30 @@ import server.zone.objects.installation.InstallationObject;
 import server.zone.objects.area.ActiveArea;
 
 class HarvesterObject extends InstallationObject {
+	
+	protected boolean selfPowered;
+	
 	public HarvesterObject() {
 		Logger.setLoggingName("HarvesterObject");
+		selfPowered = false;
+	}
+	
+	@preLocked
+	public void setSelfPowered(boolean isSelfPowered) {
+		selfPowered = isSelfPowered;
+	}
+	
+	@dirty
+	public boolean isSelfPowered() {
+		return selfPowered;
+	}
+	
+	@dirty
+	public abstract int getBasePowerRate() {
+		if(isSelfPowered())
+			return 0;
+		else
+			return super.getBasePowerRate();
 	}
 
 	/**
@@ -74,4 +96,15 @@ class HarvesterObject extends InstallationObject {
 
 	@dirty
 	public native string getRedeedMessage();
+	
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 }

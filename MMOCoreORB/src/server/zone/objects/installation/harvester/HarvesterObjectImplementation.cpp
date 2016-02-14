@@ -91,6 +91,16 @@ String HarvesterObjectImplementation::getRedeedMessage() {
 	if(getHopperSize() > 0)
 		return "destroy_empty_hopper";
 
-
 	return "";
+}
+
+
+void HarvesterObjectImplementation::fillAttributeList(AttributeListMessage* alm,
+		CreatureObject* object) {
+	InstallationObjectImplementation::fillAttributeList(alm, object);
+
+	if(isSelfPowered()){
+		alm->insertAttribute("@veteran_new:harvester_examine_title", "@veteran_new:harvester_examine_text");
+	}
+
 }
