@@ -173,6 +173,9 @@ class PlayerObject extends IntangibleObject {
 	@local
 	@dereferenced
 	protected Vector3 trainerCoordinates;
+	
+	@dereferenced
+	protected transient Vector3 lastGroupUpdatePosition;
 
 	protected string trainerZoneName;
 

@@ -75,6 +75,14 @@ public:
 
 			player->removeFeignedDeath();
 
+			Reference<GroupObject*> group = player->getGroup();
+
+			if(group != NULL) {
+				Locker locker(group, player);
+				group->updateMember(player);
+			}
+
+
 			if (ghost->getForcePowerMax() > 0 && ghost->getForcePower() < ghost->getForcePowerMax()) {
 				ghost->activateForcePowerRegen();
 			}

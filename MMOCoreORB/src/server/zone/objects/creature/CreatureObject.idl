@@ -246,6 +246,10 @@ class CreatureObject extends TangibleObject {
 		super.setCountdownTimer(newCount, notifyClient);
 		cooldownTimerMap.updateToCurrentAndAddMili("incapTimer", getUseCount()*1000);
 	}
+	
+	@dirty
+	@local
+	public native void updateGroupMFDPositions();
 		
 	/**
 	 * Sends a CommandQueueRemove ObjectControllerMessage to the owner client of this object

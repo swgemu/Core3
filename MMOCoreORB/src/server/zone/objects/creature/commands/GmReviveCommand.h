@@ -233,6 +233,14 @@ public:
 		} else {
 			creature->sendSystemMessage(patient->getDisplayedName() + " has been restored.");
 		}
+
+		clocker.release();
+
+		Reference<GroupObject*> group = patient->getGroup();
+		if(group != NULL) {
+			Locker locker(group, creature);
+			group->updateMember(patient);
+		}
 	}
 };
 

@@ -12,7 +12,10 @@
 #include "GroupMember.h"
 
 class GroupList : public DeltaVector<GroupMember> {
+public:
+	virtual ~GroupList() {
 
+	}
 };
 
 
