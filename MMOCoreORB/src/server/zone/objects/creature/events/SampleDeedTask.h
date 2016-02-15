@@ -28,22 +28,27 @@ public:
 		deed = obj;
 		player = playo;
 	}
+
 	void run() {
-		if (deed == NULL)
+		if (deed == NULL || player == NULL)
 			return;
-		if (deed->isGenerated()) {
-			return;
-		}
-		if(!player->hasSkill("outdoors_bio_engineer_novice") || !deed->isASubChildOf(player)) {
-			return;
-		}
+
 		Locker locker(player);
 		Locker crosslocker(deed,player);
 		player->removePendingTask("sampledeed");
 
+		if (deed->isGenerated()) {
+			return;
+		}
+
+		if(!player->hasSkill("outdoors_bio_engineer_novice") || !deed->isASubChildOf(player)) {
+			return;
+		}
+
 		int mindCost = player->calculateCostAdjustment(CreatureAttribute::FOCUS, 200);
 		int skillMod = player->getSkillMod("dna_harvesting");
 		int cl = deed->getLevel();
+
 		if (skillMod < 1 || cl > skillMod + 15){
 			player->sendSystemMessage("@bio_engineer:harvest_dna_skill_too_low");
 			return;
