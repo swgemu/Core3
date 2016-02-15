@@ -22,6 +22,7 @@
 #include "server/zone/objects/group/tasks/UpdateNearestMissionForGroupTask.h"
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
+#include "server/zone/packets/ui/ClientMfdStatusUpdateMessage.h"
 
 void GroupObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	ZoneClientSession* client = player->getClient();
@@ -34,8 +35,21 @@ void GroupObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	BaseMessage* grup6 = new GroupObjectMessage6(_this.getReferenceUnsafeStaticCast());
 	client->sendMessage(grup6);
 
-	if (player->isPlayerCreature() && chatRoom != NULL)
-		chatRoom->sendTo(cast<CreatureObject*>( player));
+	if (player->isPlayerCreature()) {
+		if (chatRoom != NULL)
+			chatRoom->sendTo(cast<CreatureObject*>( player));
+
+
+/*		for(int i=0; i<groupMembers.size(); i++) {
+			Reference<SceneObject*> sceno = groupMembers.get(i);
+			if(sceno == NULL || sceno == player)
+				continue;
+
+			ClientMfdStatusUpdateMessage *msg = new ClientMfdStatusUpdateMessage(sceno);
+			player->sendMessage(msg);
+		}*/
+
+	}
 }
 
 void GroupObjectImplementation::startChatRoom() {
@@ -534,4 +548,22 @@ void GroupObjectImplementation::updateLootRules() {
 	msg->updateLootRules(this->masterLooterID, this->lootRule);
 	msg->close();
 	broadcastMessage(msg);
+}
+
+void GroupObjectImplementation::updateMember(SceneObject* player) {
+
+		 if(player == NULL)
+			 return;
+
+		int idx = groupMembers.find(player);
+		if(idx == -1)
+			return;
+
+		GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(_this.getReferenceUnsafeStaticCast());
+		grp->startUpdate(1);
+		groupMembers.set(idx, player, grp); // This will update their name to "corpse of"
+		grp->close();
+
+		broadcastMessage(grp);
+
 }

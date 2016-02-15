@@ -10,6 +10,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/scene/variables/StringId.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class GroupMember : public Variable {
 	ManagedReference<SceneObject*> creature;
@@ -65,8 +66,12 @@ public:
 		creature.toBinaryStream(stream);
 
 		if (creature != NULL) {
-			StringId* stringId = creature->getObjectName();
-			name = creature->getCustomObjectName().toString();
+			Reference<CreatureObject*> creo = creature->asCreatureObject();
+
+			if(creo != NULL && creo->getPosture() == CreaturePosture::DEAD)
+				name += "corpse of ";
+
+			name += creature->getCustomObjectName().toString();
 		}
 
 		name.toBinaryStream(stream);
