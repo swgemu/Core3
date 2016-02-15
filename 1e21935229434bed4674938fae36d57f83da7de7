@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_25a0d98f",
+        "filename": "MMOCoreORB/src/server/zone/managers/structure/StructureManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-15T03:35:15Z",
+      "side": 1,
+      "message": "This does nothing and is unnecessary.",
+      "revId": "1e21935229434bed4674938fae36d57f83da7de7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_c5ac7d8f",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/vetharvester/VetHarvesterDeedImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-15T03:35:15Z",
+      "side": 1,
+      "message": "It doesn\u0027t do any good to null check creature after you try and use it.",
+      "revId": "1e21935229434bed4674938fae36d57f83da7de7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_e5a9817c",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/vetharvester/VetHarvesterDeedImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-15T03:35:15Z",
+      "side": 1,
+      "message": "All the checks on the target seem unnecessary for here. I think it\u0027s fine to display the radial option regardless of target. As long as the check are there in the menu select response, we\u0027re fine.",
+      "revId": "1e21935229434bed4674938fae36d57f83da7de7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_85b685db",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/vetharvester/VetHarvesterDeedImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-15T03:35:15Z",
+      "side": 1,
+      "message": "This is redundant. You\u0027re only calling this method if it\u0027s not null.",
+      "revId": "1e21935229434bed4674938fae36d57f83da7de7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_a5bb89c3",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/vetharvester/VetHarvesterDeedImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-15T03:35:15Z",
+      "side": 1,
+      "message": "player and the deed are already locked here. I would execute a task to setSelfPowered.",
+      "revId": "1e21935229434bed4674938fae36d57f83da7de7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_45b06ddd",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/vetharvester/VetHarvesterDeedImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-15T03:35:15Z",
+      "side": 1,
+      "message": "Go ahead and remove these commented lines.",
+      "revId": "1e21935229434bed4674938fae36d57f83da7de7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
