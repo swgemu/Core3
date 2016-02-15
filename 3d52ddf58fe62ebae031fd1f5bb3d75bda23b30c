@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_c5f1dd96",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-15T23:33:30Z",
+      "side": 1,
+      "message": "Why use displayed name here? More precisely, why are you changing OID to displayed name? Shouldn\u0027t we let the client handle this?",
+      "range": {
+        "startLine": 690,
+        "startChar": 29,
+        "endLine": 690,
+        "endChar": 45
+      },
+      "revId": "3d52ddf58fe62ebae031fd1f5bb3d75bda23b30c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_4535cd44",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-15T23:33:30Z",
+      "side": 1,
+      "message": "You do this in a lot of places. Could you instead use an observer that stores a weakref to the group and passes the player as an argument? Could even store a weakref to the player as well then you wouldn\u0027t need to pass anything. Then you could register the observer onto several event types that could be re-used (PLAYERKILLED in this case)",
+      "range": {
+        "startLine": 745,
+        "startChar": 3,
+        "endLine": 745,
+        "endChar": 35
+      },
+      "revId": "3d52ddf58fe62ebae031fd1f5bb3d75bda23b30c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_25f53983",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2601,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-15T23:33:30Z",
+      "side": 1,
+      "message": "creo.get() should suffice here. .castTo() does a dynamic_cast, I\u0027m pretty sure .get() is faster.",
+      "range": {
+        "startLine": 2601,
+        "startChar": 72,
+        "endLine": 2601,
+        "endChar": 101
+      },
+      "revId": "3d52ddf58fe62ebae031fd1f5bb3d75bda23b30c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_653a5138",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/GroupMember.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-15T23:33:30Z",
+      "side": 1,
+      "message": "It\u0027s strange that this is in toBinaryStream... I was under the impression this method was only used for serialization purposes. Couldn\u0027t we be setting the member names in a more dynamic way, and then just reading that here for serialization?",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 25
+      },
+      "revId": "3d52ddf58fe62ebae031fd1f5bb3d75bda23b30c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_852be5ea",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/GroupObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-15T23:33:30Z",
+      "side": 1,
+      "message": "this can be the same if you don\u0027t need that commented out code.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 52
+      },
+      "revId": "3d52ddf58fe62ebae031fd1f5bb3d75bda23b30c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_e5ee61b4",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/GroupObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-15T23:33:30Z",
+      "side": 1,
+      "message": "remove this",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 5
+      },
+      "revId": "3d52ddf58fe62ebae031fd1f5bb3d75bda23b30c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_a5306957",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/GroupObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-15T23:33:30Z",
+      "side": 1,
+      "message": "extra space here",
+      "range": {
+        "startLine": 555,
+        "startChar": 2,
+        "endLine": 555,
+        "endChar": 3
+      },
+      "revId": "3d52ddf58fe62ebae031fd1f5bb3d75bda23b30c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
