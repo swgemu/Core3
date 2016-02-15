@@ -38,9 +38,9 @@ public:
 
 		ManagedReference<SceneObject*> inventory = crafter->getSlottedObject("inventory");
 
-		if (inventory != NULL && !inventory->isContainerFullRecursive()) {
+		if (inventory != NULL && craftingTool->isASubChildOf(inventory) && !inventory->isContainerFullRecursive()) {
 
-			if(inventory->transferObject(prototype, -1, true)) {
+			if (inventory->transferObject(prototype, -1, true)) {
 				crafter->sendSystemMessage("@system_msg:prototype_transferred");
 				craftingTool->setReady();
 				return;
