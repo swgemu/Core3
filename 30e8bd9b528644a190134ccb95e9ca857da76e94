@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_0526f516",
+        "filename": "MMOCoreORB/src/server/chat/ChatManager.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-15T23:58:43Z",
+      "side": 1,
+      "message": "You should indicate what needs to be locked (or more specifically in these cases, that NOTHING should be locked) coming into these functions, since they lock things.",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 120
+      },
+      "revId": "30e8bd9b528644a190134ccb95e9ca857da76e94",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_253c592f",
+        "filename": "MMOCoreORB/src/server/chat/ChatManager.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-15T23:58:43Z",
+      "side": 1,
+      "message": "Don\u0027t just comment this out. Remove it if it\u0027s not needed.",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 3
+      },
+      "revId": "30e8bd9b528644a190134ccb95e9ca857da76e94",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_c548fdce",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-15T23:58:43Z",
+      "side": 1,
+      "message": "Won\u0027t this add rooms to the room list if they are private and have a moderator or an invited (that aren\u0027t necessarily the player)? Is that desired?",
+      "range": {
+        "startLine": 714,
+        "startChar": 3,
+        "endLine": 714,
+        "endChar": 25
+      },
+      "revId": "30e8bd9b528644a190134ccb95e9ca857da76e94",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_e54501b4",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1921,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-15T23:58:43Z",
+      "side": 1,
+      "message": "missing a space",
+      "range": {
+        "startLine": 1921,
+        "startChar": 28,
+        "endLine": 1921,
+        "endChar": 30
+      },
+      "revId": "30e8bd9b528644a190134ccb95e9ca857da76e94",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_450ced94",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1992,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-15T23:58:43Z",
+      "side": 1,
+      "message": "Should also probably disallow moderators from uninviting other moderators.",
+      "range": {
+        "startLine": 1992,
+        "startChar": 11,
+        "endLine": 1992,
+        "endChar": 59
+      },
+      "revId": "30e8bd9b528644a190134ccb95e9ca857da76e94",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_6511f1ab",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2027,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-15T23:58:43Z",
+      "side": 1,
+      "message": "Once again, moderators probably shouldn\u0027t be able to kick other moderators.",
+      "range": {
+        "startLine": 2027,
+        "startChar": 23,
+        "endLine": 2027,
+        "endChar": 66
+      },
+      "revId": "30e8bd9b528644a190134ccb95e9ca857da76e94",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
