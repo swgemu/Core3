@@ -2146,7 +2146,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			"Veteran Rewards (COMPLETE)",
 			{
 				--90 Day Rewards
-				--"@veteran_new:poweredharvester","object/tangible/veteran_reward/harvester.iff",
+				"@veteran_new:poweredharvester","object/tangible/veteran_reward/harvester.iff",
 				"@veteran_new:dataterminal1","object/tangible/veteran_reward/data_terminal_s1.iff",
 				"@veteran_new:dataterminal2","object/tangible/veteran_reward/data_terminal_s2.iff",
 				"@veteran_new:dataterminal3","object/tangible/veteran_reward/data_terminal_s3.iff",
