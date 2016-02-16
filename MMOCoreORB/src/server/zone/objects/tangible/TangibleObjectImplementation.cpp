@@ -157,12 +157,12 @@ void TangibleObjectImplementation::broadcastPvpStatusBitmask() {
 			if (obj != NULL && obj->isCreatureObject()) {
 				CreatureObject* creo = obj->asCreatureObject();
 
-				sendPvpStatusTo(creo);
+				if (creo->isPlayerCreature())
+					sendPvpStatusTo(creo);
 
-				if (thisCreo != NULL)
+				if (thisCreo != NULL && thisCreo->isPlayerCreature())
 					creo->sendPvpStatusTo(thisCreo);
 			}
-
 		}
 	}
 }
