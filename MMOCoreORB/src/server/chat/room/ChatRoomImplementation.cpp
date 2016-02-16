@@ -31,6 +31,10 @@ void ChatRoomImplementation::init(ZoneServer* serv, ChatRoom* parent, const Stri
 	playerList.setNoDuplicateInsertPlan();
 	playerList.setNullValue(NULL);
 
+	invitedList.setNoDuplicateInsertPlan();
+	moderatorList.setNoDuplicateInsertPlan();
+	bannedList.setNoDuplicateInsertPlan();
+
 }
 
 void ChatRoomImplementation::sendTo(CreatureObject* player) {
@@ -228,7 +232,7 @@ bool ChatRoomImplementation::checkEnterPermission(CreatureObject* player) {
 		return false;
 	}
 	case ChatRoom::CUSTOM:
-		if (!hasBanned(player->getObjectID()) && (isPublic() || hasInvited(player->getObjectID()) || player->getObjectID() == getOwnerID()))
+		if (!hasBanned(player) && (isPublic() || hasInvited(player) || player->getObjectID() == getOwnerID()))
 			return true;
 		break;
 
