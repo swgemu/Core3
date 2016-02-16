@@ -344,8 +344,8 @@ class TangibleObject extends SceneObject {
 	
 	/**
 	 * Evaluates if this object can be attacket by the passed creature object
-	 * @pre { this object is locked }
-	 * @post { this object is locked}
+	 * @pre { }
+	 * @post { }
 	 * @return returns true if the creature object can attack this 
 	 */
 	@dirty
@@ -373,8 +373,8 @@ class TangibleObject extends SceneObject {
 	
 	/**
 	 * Sends the pvp options bitmask
-	 * @pre { this object is locked}
-	 * @post { this object is locked }
+	 * @pre { }
+	 * @post { }
 	 */
 	@dirty
 	public abstract native void sendPvpStatusTo(CreatureObject player);

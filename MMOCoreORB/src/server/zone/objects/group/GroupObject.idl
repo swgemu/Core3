@@ -56,6 +56,9 @@ class GroupObject extends SceneObject {
 	@dirty
 	public native void broadcastMessage(CreatureObject player, BaseMessage msg, boolean sendSelf = false);
 
+	@dirty
+	public native void updatePvPStatusNearCreature(CreatureObject creature);
+
 	/*public native void sendSystemMessage(SceneObject player, final string message, boolean sendToSelf = false);
 	public native void sendSystemMessage(SceneObject player, final string file, final string str, unsigned long targetid = 0, boolean sendToSelf = false);
 	public native void sendSystemMessage(SceneObject player, final string file, final string str, StfParameter param, boolean sendToSelf = false);

@@ -178,9 +178,9 @@ class VehicleObject extends CreatureObject {
 	}
 
 	/**
-	 * Evaluates if this object can be attacket by the passed creature object
-	 * @pre { this object is locked }
-	 * @post { this object is locked}
+	 * Evaluates if this object can be attacked by the passed creature object
+	 * @pre { }
+	 * @post { }
 	 * @return returns true if the creature object can attack this 
 	 */
 	@dirty

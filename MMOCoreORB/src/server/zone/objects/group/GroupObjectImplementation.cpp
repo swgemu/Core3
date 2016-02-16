@@ -85,6 +85,27 @@ void GroupObjectImplementation::broadcastMessage(CreatureObject* player, BaseMes
 	delete msg;
 }
 
+void GroupObjectImplementation::updatePvPStatusNearCreature(CreatureObject* creature) {
+	CloseObjectsVector* creatureCloseObjects = (CloseObjectsVector*) creature->getCloseObjects();
+	SortedVector<QuadTreeEntry*> closeObjectsVector;
+
+	creatureCloseObjects->safeCopyTo(closeObjectsVector);
+
+	for (int i = 0; i < groupMembers.size(); i++) {
+		SceneObject* member = groupMembers.get(i).get().get();
+
+		if (member->isCreatureObject() && closeObjectsVector.contains(member)) {
+			CreatureObject* memberCreo = member->asCreatureObject();
+
+			if (creature->isPlayerCreature())
+				memberCreo->sendPvpStatusTo(creature);
+
+			if (memberCreo->isPlayerCreature())
+				creature->sendPvpStatusTo(memberCreo);
+		}
+	}
+}
+
 void GroupObjectImplementation::addMember(SceneObject* newMember) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
@@ -107,6 +128,9 @@ void GroupObjectImplementation::addMember(SceneObject* newMember) {
 
 		scheduleUpdateNearestMissionForGroup(playerCreature->getPlanetCRC());
 	}
+
+	if (newMember->isCreatureObject())
+		updatePvPStatusNearCreature(newMember->asCreatureObject());
 
 	calcGroupLevel();
 }
@@ -162,6 +186,9 @@ void GroupObjectImplementation::removeMember(SceneObject* member) {
 			scheduleUpdateNearestMissionForGroup(zone->getPlanetCRC());
 		}
 	}
+
+	if (member->isCreatureObject())
+		updatePvPStatusNearCreature(member->asCreatureObject());
 
 	calcGroupLevel();
 }
@@ -232,8 +259,9 @@ void GroupObjectImplementation::disband() {
 			Locker clocker(groupMember, _this.getReferenceUnsafeStaticCast());
 
 			if (groupMember->isPlayerCreature()) {
-				if (groupMember->getPlayerObject() != NULL) {
-					PlayerObject* ghost = groupMember->getPlayerObject();
+				PlayerObject* ghost = groupMember->getPlayerObject();
+
+				if (ghost != NULL) {
 					ghost->removeWaypointBySpecialType(WaypointObject::SPECIALTYPE_NEARESTMISSIONFORGROUP);
 				}
 			}
@@ -248,10 +276,16 @@ void GroupObjectImplementation::disband() {
 	if (hasSquadLeader())
 		removeGroupModifiers();
 
-	groupMembers.removeAll();
+	while (groupMembers.size() > 0) {
+		CreatureObject* member = groupMembers.get(0).get().get()->asCreatureObject();
+
+		if (member != NULL)
+			updatePvPStatusNearCreature(member);
+
+		groupMembers.remove(0);
+	}
 
 	destroyChatRoom();
-
 }
 
 bool GroupObjectImplementation::hasSquadLeader() {

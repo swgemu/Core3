@@ -261,8 +261,10 @@ class InstallationObject extends StructureObject {
 	public native boolean isAggressiveTo(CreatureObject object);
 
 	/**
-	* pre{ object is locked}
-	* post{this object is locked}
+	* Evaluates if this can be attacked by object
+	* @pre { }
+	* @post { }
+	* @return returns true if object can attack this
 	*/ 
 	@dirty
 	public native boolean isAttackableBy(CreatureObject object);
