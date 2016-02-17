@@ -1388,6 +1388,11 @@ class CreatureObject extends TangibleObject {
 	public boolean checkKnockdownRecovery() {
 		return cooldownTimerMap.isPast("knockdownRecovery");
 	}
+	
+	
+	// Updates directional arrows and planet names for group members out of range
+	@dirty 
+	public native void updateGroupMFDPositions();
 
 	// misc methods
 	@preLocked

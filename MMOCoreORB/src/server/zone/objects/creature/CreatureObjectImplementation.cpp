@@ -81,6 +81,8 @@
 #include "variables/Skill.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
 
+#include "server/zone/packets/ui/ClientMfdStatusUpdateMessage.h"
+
 #include "server/zone/packets/zone/unkByteFlag.h"
 #include "server/zone/packets/zone/CmdStartScene.h"
 #include "server/zone/packets/zone/CmdSceneReady.h"
@@ -1046,8 +1048,7 @@ int CreatureObjectImplementation::healDamage(TangibleObject* healer,
 		if (damageType % 3 == 0) {
 
 			setPosture(CreaturePosture::UPRIGHT);
-
-
+                  
 			if(isPlayerCreature()) {
 
 				PlayerObject* ghost = getPlayerObject();
@@ -1561,6 +1562,8 @@ void CreatureObjectImplementation::updateGroupInviterID(uint64 id,
 	delta->close();
 
 	broadcastMessage(delta, true);
+
+
 }
 
 void CreatureObjectImplementation::updateGroup(GroupObject* grp,
@@ -2572,6 +2575,28 @@ void CreatureObjectImplementation::notifyPostureChange(int newPosture) {
 	notifyObservers(ObserverEventType::POSTURECHANGED, NULL, newPosture);
 }
 
+void CreatureObjectImplementation::updateGroupMFDPositions() {
+	Reference<CreatureObject*> creo = _this.getReferenceUnsafeStaticCast();
+
+	if(group != NULL) {
+		GroupList* list = group->getGroupList();
+		if(list != NULL) {
+			for(int i=0; i<list->size(); i++) {
+
+				Reference<SceneObject*> member = list->get(i).get();
+
+				CloseObjectsVector* cev =  (CloseObjectsVector*)member->getCloseObjects();
+
+				if(member == NULL || creo == member || cev == NULL || cev->contains(creo.get()))
+					continue;
+
+				ClientMfdStatusUpdateMessage *msg = new ClientMfdStatusUpdateMessage(creo);
+				member->sendMessage(msg);
+			}
+		}
+	}
+}
+
 void CreatureObjectImplementation::notifySelfPositionUpdate() {
 	if (getZone() != NULL) {
 		ManagedReference<PlanetManager*> planetManager =
@@ -2585,6 +2610,11 @@ void CreatureObjectImplementation::notifySelfPositionUpdate() {
 		}
 	}
 
+	if(cooldownTimerMap->isPast("groupMFDUpdate")) {
+		cooldownTimerMap->updateToCurrentAndAddMili("groupMFDUpdate", 2000);
+
+		updateGroupMFDPositions();
+	}
 	updateLocomotion();
 
 	TangibleObjectImplementation::notifySelfPositionUpdate();
