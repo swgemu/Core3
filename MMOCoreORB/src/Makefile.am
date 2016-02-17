@@ -40,7 +40,7 @@
 # this exception also makes it possible to release a modified version 
 # which carries forward this exception.
 
-AM_CXXFLAGS= $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror
+AM_CXXFLAGS= $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11
 
 ENGINE3_PATH=../../../../MMOEngine
 ENGINE3_MOCK_PATH=../../../utils
@@ -98,6 +98,7 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
 core3_IDLS =	autogen/server/zone/objects/tangible/eventperk/ShuttleBeacon.cpp \
+				autogen/server/utils/LambdaObserver.cpp \
 				autogen/server/zone/objects/tangible/misc/FsCraftingComponentObject.cpp \
 				autogen/server/zone/objects/tangible/misc/CustomIngredient.cpp \
 				autogen/server/zone/objects/tangible/misc/PlantObject.cpp \
