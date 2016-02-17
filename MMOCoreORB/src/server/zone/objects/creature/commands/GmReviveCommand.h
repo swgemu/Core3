@@ -225,6 +225,8 @@ public:
 
 		patient->setPosture(CreaturePosture::UPRIGHT);
 
+		patient->notifyObservers(ObserverEventType::CREATUREREVIVED, creature, 0);
+
 		patient->broadcastPvpStatusBitmask();
 
 		if (patient->isPlayerCreature()) {
