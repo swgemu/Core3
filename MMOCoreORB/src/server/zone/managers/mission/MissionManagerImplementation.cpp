@@ -1437,6 +1437,8 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 
 	switch (faction) {
 	case FactionManager::FACTIONIMPERIAL:
+		if(randTexts == 19) // mission/mission_npc_recon_imperial_easy/m19t is missing from the strings file
+			randTexts = 20;
 		mission->setRewardFactionPointsImperial(10);
 		mission->setRewardFactionPointsRebel(0);
 		mission->setMissionTitle("mission/mission_npc_recon_imperial_easy", "m" + String::valueOf(randTexts) + "t");
