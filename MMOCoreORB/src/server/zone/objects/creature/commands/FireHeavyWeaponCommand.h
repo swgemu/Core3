@@ -6,7 +6,6 @@
 #define FIREHEAVYWEAPONCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "engine/task/ScheduledTask.h"
 
 class FireHeavyWeaponCommand : public CombatQueueCommand {
 public:
@@ -64,11 +63,10 @@ public:
 
 			if (result == SUCCESS) {
 				// We need to give some time for the combat animation to start playing before destroying the tano
-				SCHEDULE_TASK_1(weapon, 100, {
-
-					Locker locker(weapon_p);
-					weapon_p->decreaseUseCount();
-				});
+				Core::getTaskManager()->scheduleTask([weapon] {
+					Locker lock(weapon);
+					weapon->decreaseUseCount();
+				}, "FireHeavyWeaponTanoDecrementTask", 100);
 			}
 
 			return result;

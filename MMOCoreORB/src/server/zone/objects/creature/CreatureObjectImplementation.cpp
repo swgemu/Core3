@@ -74,8 +74,6 @@
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/resource/resourcespawner/SampleTask.h"
 
-#include "engine/task/ScheduledTask.h"
-
 #include "server/zone/templates/tangible/SharedCreatureObjectTemplate.h"
 
 #include "variables/Skill.h"
@@ -96,6 +94,7 @@
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 
 #include "buffs/BuffDurationEvent.h"
+#include "engine/core/TaskManager.h"
 
 float CreatureObjectImplementation::DEFAULTRUNSPEED = 5.376;
 
@@ -1048,7 +1047,9 @@ int CreatureObjectImplementation::healDamage(TangibleObject* healer,
 		if (damageType % 3 == 0) {
 
 			setPosture(CreaturePosture::UPRIGHT);
-                  
+
+			asCreatureObject()->notifyObservers(ObserverEventType::CREATUREREVIVED, healer, 0);
+
 			if(isPlayerCreature()) {
 
 				PlayerObject* ghost = getPlayerObject();
@@ -2221,10 +2222,10 @@ void CreatureObjectImplementation::feignDeath() {
 	creo->addBuff(buff);
 
 	// We need to delay the forcePeace until after the CombatAction is executed
-	SCHEDULE_TASK_1(creo, 250, {
-			Locker lock(creo_p);
-			CombatManager::instance()->forcePeace(creo_p);
-	});
+	Core::getTaskManager()->scheduleTask([creo] {
+		Locker lock(creo);
+		CombatManager::instance()->forcePeace(creo);
+	}, "FeignDeathForcePeaceTask", 250);
 }
 
 void CreatureObjectImplementation::setDizziedState(int durationSeconds) {

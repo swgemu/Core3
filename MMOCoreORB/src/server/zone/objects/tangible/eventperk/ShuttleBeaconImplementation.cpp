@@ -12,7 +12,6 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/player/sui/callbacks/ShuttleBeaconSuiCallback.h"
-#include "engine/task/ScheduledTask.h"
 
 void ShuttleBeaconImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -156,10 +155,10 @@ void ShuttleBeaconImplementation::spawnShuttle(CreatureObject* player, int type)
 	if (tempBeacon == NULL)
 		return;
 
-	SCHEDULE_TASK_2(tempBeacon, player, 250, {
-		Locker locker(tempBeacon_p);
-		tempBeacon_p->landShuttle(player_p);
-	});
+	Core::getTaskManager()->scheduleTask([tempBeacon, player] {
+		Locker locker(tempBeacon);
+		tempBeacon->landShuttle(player);
+	}, "LandShuttleTask", 250);
 }
 
 void ShuttleBeaconImplementation::landShuttle(CreatureObject* player) {
@@ -192,10 +191,10 @@ void ShuttleBeaconImplementation::landShuttle(CreatureObject* player) {
 
 	shuttleStatus = 1;
 
-	SCHEDULE_TASK_1(tempBeacon, 40000, {
-		Locker locker(tempBeacon_p);
-		tempBeacon_p->setReadyToTakeOff(true);
-	});
+	Core::getTaskManager()->scheduleTask([tempBeacon] {
+		Locker locker(tempBeacon);
+		tempBeacon->setReadyToTakeOff(true);
+	}, "ShuttleTakeOffTask", 40000);
 }
 
 void ShuttleBeaconImplementation::dismissShuttle(CreatureObject* player) {
@@ -226,10 +225,10 @@ void ShuttleBeaconImplementation::dismissShuttle(CreatureObject* player) {
 	shuttleStatus = 0;
 	player->sendSystemMessage("@event_perk:shuttle_is_leaving"); // Transmission Recieved: Shuttle is leaving the area.
 
-	SCHEDULE_TASK_2(tempBeacon, player, 20000, {
-		Locker locker(tempBeacon_p);
-		tempBeacon_p->destroyShuttle(player_p);
-	});
+	Core::getTaskManager()->scheduleTask([tempBeacon, player] {
+		Locker locker(tempBeacon);
+		tempBeacon->destroyShuttle(player);
+	}, "DestroyShuttleTask", 20000);
 }
 
 void ShuttleBeaconImplementation::destroyShuttle(CreatureObject* player) {
