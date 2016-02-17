@@ -43,6 +43,7 @@ member_covert_start = ConvoScreen:new {
 		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_overt"}, -- I need to address my role in the Civil War.
 		{"@conversation/faction_recruiter_rebel:s_526", "leave_time_covert"}, -- I need to go on leave for a time.
 		{"@conversation/faction_recruiter_rebel:s_538", "resign_covert"}, -- This is all too much for me. I would like to resign completely.
+		{"@conversation/faction_recruiter_rebel:s_562", "show_gcw_score"}, -- How are we doing in the war against the Imperial tyrants?
 	}
 }
 
@@ -57,6 +58,7 @@ member_overt_start = ConvoScreen:new {
 		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_covert"}, -- I need to address my role in the Civil War.
 		{"@conversation/faction_recruiter_rebel:s_526", "leave_time_overt"}, -- I need to go on leave for a time.
 		{"@conversation/faction_recruiter_rebel:s_538", "resign_overt"}, -- This is all too much for me. I would like to resign completely.
+		{"@conversation/faction_recruiter_rebel:s_562", "show_gcw_score"}, -- How are we doing in the war against the Imperial tyrants?
 	}
 }
 
@@ -88,8 +90,8 @@ join_military = ConvoScreen:new {
 	leftDialog = "@conversation/faction_recruiter_rebel:s_584", -- This is not a decision to be taken lightly. Rebels are hunted across the galaxy. If you join us, while you are an active combatant, Imperials will attack you on sight but Imperial Special Forces will leave you alone. Are you ready for that?
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_586", "accept_join"},
-		{"@conversation/faction_recruiter_rebel:s_592", "think_more"},
+		{"@conversation/faction_recruiter_rebel:s_586", "accept_join"}, -- That doesn't scare me. Down with the Emperor!
+		{"@conversation/faction_recruiter_rebel:s_592", "think_more"}, -- Now that you put it that way, perhaps I was a bit hasty.
 	}
 }
 
@@ -157,6 +159,7 @@ stay_special_forces = ConvoScreen:new {
 		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_covert"}, -- I need to address my role in the Civil War.
 		{"@conversation/faction_recruiter_rebel:s_526", "leave_time_overt"}, -- I need to go on leave for a time.
 		{"@conversation/faction_recruiter_rebel:s_538", "resign_overt"}, -- This is all too much for me. I would like to resign completely.
+		{"@conversation/faction_recruiter_rebel:s_562", "show_gcw_score"}, -- How are we doing in the war against the Imperial tyrants?
 	}
 }
 
@@ -202,6 +205,7 @@ stay_covert = ConvoScreen:new {
 		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_overt"}, -- I need to address my role in the Civil War.
 		{"@conversation/faction_recruiter_rebel:s_526", "leave_time_covert"}, -- I need to go on leave for a time.
 		{"@conversation/faction_recruiter_rebel:s_538", "resign_covert"}, -- This is all too much for me. I would like to resign completely.
+		{"@conversation/faction_recruiter_rebel:s_562", "show_gcw_score"}, -- How are we doing in the war against the Imperial tyrants?
 	}
 }
 
@@ -227,6 +231,7 @@ stay_overt = ConvoScreen:new {
 		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_covert"}, -- I need to address my role in the Civil War.
 		{"@conversation/faction_recruiter_rebel:s_526", "leave_time_covert"}, -- I need to go on leave for a time.
 		{"@conversation/faction_recruiter_rebel:s_538", "resign_covert"}, -- This is all too much for me. I would like to resign completely.
+		{"@conversation/faction_recruiter_rebel:s_562", "show_gcw_score"}, -- How are we doing in the war against the Imperial tyrants?
 	}
 }
 
@@ -262,6 +267,7 @@ dont_resign_covert = ConvoScreen:new {
 		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_overt"}, -- I need to address my role in the Civil War.
 		{"@conversation/faction_recruiter_rebel:s_526", "leave_time_covert"}, -- I need to go on leave for a time.
 		{"@conversation/faction_recruiter_rebel:s_538", "resign_covert"}, -- This is all too much for me. I would like to resign completely.
+		{"@conversation/faction_recruiter_rebel:s_562", "show_gcw_score"}, -- How are we doing in the war against the Imperial tyrants?
 	}
 }
 
@@ -287,6 +293,7 @@ dont_resign_overt = ConvoScreen:new {
 		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_covert"}, -- I need to address my role in the Civil War.
 		{"@conversation/faction_recruiter_rebel:s_526", "leave_time_covert"}, -- I need to go on leave for a time.
 		{"@conversation/faction_recruiter_rebel:s_538", "resign_covert"}, -- This is all too much for me. I would like to resign completely.
+		{"@conversation/faction_recruiter_rebel:s_562", "show_gcw_score"}, -- How are we doing in the war against the Imperial tyrants?
 	}
 }
 
@@ -340,7 +347,7 @@ confirm_promotion = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		{"@conversation/faction_recruiter_rebel:s_472", "accepted_promotion"}, -- Excellent. I would like that promotion.
-		{"@conversation/faction_recruiter_rebel:s_476", "declined_promotion"}
+		{"@conversation/faction_recruiter_rebel:s_476", "declined_promotion"} -- I believe that I will stay my current rank. I am not looking for glory.
 	}
 }
 
@@ -462,5 +469,14 @@ fp_hirelings = ConvoScreen:new {
 
 }
 rebelRecruiterConvoTemplate:addScreen(fp_hirelings);
+
+show_gcw_score = ConvoScreen:new {
+	id = "show_gcw_score",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_564", -- Our spies have reported that the possession of the planet stands at Rebel: %TO and Imperial: %DI.
+	stopConversation = "true",
+	options = {}
+}
+
+rebelRecruiterConvoTemplate:addScreen(show_gcw_score);
 
 addConversationTemplate("rebelRecruiterConvoTemplate", rebelRecruiterConvoTemplate);

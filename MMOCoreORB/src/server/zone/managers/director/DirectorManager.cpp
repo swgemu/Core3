@@ -328,6 +328,8 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getQuestStatus", getQuestStatus);
 	lua_register(luaEngine->getLuaState(), "removeQuestStatus", removeQuestStatus);
 	lua_register(luaEngine->getLuaState(), "getControllingFaction", getControllingFaction);
+	lua_register(luaEngine->getLuaState(), "getImperialScore", getImperialScore);
+	lua_register(luaEngine->getLuaState(), "getRebelScore", getRebelScore);
 	lua_register(luaEngine->getLuaState(), "playClientEffectLoc", playClientEffectLoc);
 	lua_register(luaEngine->getLuaState(), "getQuestVectorMap", getQuestVectorMap);
 	lua_register(luaEngine->getLuaState(), "createQuestVectorMap", createQuestVectorMap);
@@ -2853,15 +2855,65 @@ int DirectorManager::getControllingFaction(lua_State* L) {
 
 	Zone* zone = ServerCore::getZoneServer()->getZone(zoneName);
 	if (zone == NULL) {
-		lua_pushnil(L);
+		lua_pushinteger(L, 0);
 		return 1;
 	}
 
 	GCWManager* gcwMan = zone->getGCWManager();
 	if (gcwMan == NULL) {
-		lua_pushnil(L);
+		lua_pushinteger(L, 0);
 	} else {
 		lua_pushinteger(L, gcwMan->getWinningFaction());
+	}
+
+	return 1;
+}
+
+int DirectorManager::getImperialScore(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getImperialScore");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String zoneName = lua_tostring(L, -1);
+
+	Zone* zone = ServerCore::getZoneServer()->getZone(zoneName);
+	if (zone == NULL) {
+		lua_pushinteger(L, 0);
+		return 1;
+	}
+
+	GCWManager* gcwMan = zone->getGCWManager();
+	if (gcwMan == NULL) {
+		lua_pushinteger(L, 0);
+	} else {
+		lua_pushinteger(L, gcwMan->getImperialScore());
+	}
+
+	return 1;
+}
+
+int DirectorManager::getRebelScore(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getRebelScore");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String zoneName = lua_tostring(L, -1);
+
+	Zone* zone = ServerCore::getZoneServer()->getZone(zoneName);
+	if (zone == NULL) {
+		lua_pushinteger(L, 0);
+		return 1;
+	}
+
+	GCWManager* gcwMan = zone->getGCWManager();
+	if (gcwMan == NULL) {
+		lua_pushinteger(L, 0);
+	} else {
+		lua_pushinteger(L, gcwMan->getRebelScore());
 	}
 
 	return 1;
