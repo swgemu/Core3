@@ -43,6 +43,7 @@ member_covert_start = ConvoScreen:new {
 		{"@conversation/faction_recruiter_imperial:s_352", "confirm_go_overt"}, -- I would like to reevaluate my active military status.
 		{"@conversation/faction_recruiter_imperial:s_374", "leave_time_covert"}, -- I would like to use my personal leave time.
 		{"@conversation/faction_recruiter_imperial:s_386", "resign_covert"}, -- I believe it is time to end my tour of duty. I would like to resign.
+		{"@conversation/faction_recruiter_imperial:s_410", "show_gcw_score"}, -- How are we doing in the war effort against the Rebel scum?
 	}
 }
 
@@ -57,6 +58,7 @@ member_overt_start = ConvoScreen:new {
 		{"@conversation/faction_recruiter_imperial:s_352", "confirm_go_covert"}, -- I would like to reevaluate my active military status.
 		{"@conversation/faction_recruiter_imperial:s_374", "leave_time_overt"}, -- I would like to use my personal leave time.
 		{"@conversation/faction_recruiter_imperial:s_386", "resign_overt"}, -- I believe it is time to end my tour of duty. I would like to resign.
+		{"@conversation/faction_recruiter_imperial:s_410", "show_gcw_score"}, -- How are we doing in the war effort against the Rebel scum?
 	}
 }
 
@@ -157,6 +159,7 @@ stay_special_forces = ConvoScreen:new {
 		{"@conversation/faction_recruiter_imperial:s_352", "confirm_go_covert"}, -- I would like to reevaluate my active military status.
 		{"@conversation/faction_recruiter_imperial:s_374", "leave_time_overt"}, -- I would like to use my personal leave time.
 		{"@conversation/faction_recruiter_imperial:s_386", "resign_overt"}, -- I believe it is time to end my tour of duty. I would like to resign.
+		{"@conversation/faction_recruiter_imperial:s_410", "show_gcw_score"}, -- How are we doing in the war effort against the Rebel scum?
 	}
 }
 
@@ -202,6 +205,7 @@ stay_covert = ConvoScreen:new {
 		{"@conversation/faction_recruiter_imperial:s_352", "confirm_go_overt"}, -- I would like to reevaluate my active military status.
 		{"@conversation/faction_recruiter_imperial:s_374", "leave_time_covert"}, -- I would like to use my personal leave time.
 		{"@conversation/faction_recruiter_imperial:s_386", "resign_covert"}, -- I believe it is time to end my tour of duty. I would like to resign.
+		{"@conversation/faction_recruiter_imperial:s_410", "show_gcw_score"}, -- How are we doing in the war effort against the Rebel scum?
 	}
 }
 
@@ -227,6 +231,7 @@ stay_overt = ConvoScreen:new {
 		{"@conversation/faction_recruiter_imperial:s_352", "confirm_go_covert"}, -- I would like to reevaluate my active military status.
 		{"@conversation/faction_recruiter_imperial:s_374", "leave_time_covert"}, -- I would like to use my personal leave time.
 		{"@conversation/faction_recruiter_imperial:s_386", "resign_covert"}, -- I believe it is time to end my tour of duty. I would like to resign.
+		{"@conversation/faction_recruiter_imperial:s_410", "show_gcw_score"}, -- How are we doing in the war effort against the Rebel scum?
 	}
 }
 
@@ -262,6 +267,7 @@ dont_resign_covert = ConvoScreen:new {
 		{"@conversation/faction_recruiter_imperial:s_352", "confirm_go_overt"}, -- I would like to reevaluate my active military status.
 		{"@conversation/faction_recruiter_imperial:s_374", "leave_time_covert"}, -- I would like to use my personal leave time.
 		{"@conversation/faction_recruiter_imperial:s_386", "resign_covert"}, -- I believe it is time to end my tour of duty. I would like to resign.
+		{"@conversation/faction_recruiter_imperial:s_410", "show_gcw_score"}, -- How are we doing in the war effort against the Rebel scum?
 	}
 }
 
@@ -287,6 +293,7 @@ dont_resign_overt = ConvoScreen:new {
 		{"@conversation/faction_recruiter_imperial:s_352", "confirm_go_covert"}, -- I would like to reevaluate my active military status.
 		{"@conversation/faction_recruiter_imperial:s_374", "leave_time_covert"}, -- I would like to use my personal leave time.
 		{"@conversation/faction_recruiter_imperial:s_386", "resign_covert"}, -- I believe it is time to end my tour of duty. I would like to resign.
+		{"@conversation/faction_recruiter_imperial:s_410", "show_gcw_score"}, -- How are we doing in the war effort against the Rebel scum?
 	}
 }
 
@@ -340,7 +347,7 @@ confirm_promotion = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		{"@conversation/faction_recruiter_imperial:s_93", "accepted_promotion"}, -- I would like that promotion, sir.
-		{"@conversation/faction_recruiter_imperial:s_320", "declined_promotion"}
+		{"@conversation/faction_recruiter_imperial:s_320", "declined_promotion"} -- I do not think so. I am happy with my current duties.
 	}
 }
 
@@ -471,5 +478,14 @@ fp_hirelings = ConvoScreen:new {
 
 }
 imperialRecruiterConvoTemplate:addScreen(fp_hirelings);
+
+show_gcw_score = ConvoScreen:new {
+	id = "show_gcw_score",
+	leftDialog = "@conversation/faction_recruiter_imperial:s_412", -- Our satellite readings have the planetary occupation at Imperial: %DI and Rebel: %TO.
+	stopConversation = "true",
+	options = {}
+}
+
+imperialRecruiterConvoTemplate:addScreen(show_gcw_score);
 
 addConversationTemplate("imperialRecruiterConvoTemplate", imperialRecruiterConvoTemplate);
