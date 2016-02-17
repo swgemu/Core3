@@ -106,8 +106,8 @@ void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, cons
 					// ex: received value 0.5 is for i == 0 -> 0.0, i == 1 -> 0.0
 					// ex: received value 1 is for i == 0 -> 0.0, i == 1 -> 1.0
 
-					// pre: i Û [0, 1] && value Û [0, 1]
-					// post f Û [0, 1]
+					// pre: i ï¿½ [0, 1] && value ï¿½ [0, 1]
+					// post f ï¿½ [0, 1]
 					currentValue = MAX(0, ((value - 0.5) * 2) * (-1 + (i * 2)));
 				}
 
@@ -412,10 +412,13 @@ TangibleObject* ImageDesignManager::updateHairObject(CreatureObject* creo, Tangi
 	if (hairObject == NULL)
 		return NULL;
 
-	Locker locker(hairObject);
-
-	creo->transferObject(hairObject, 4);
-	creo->broadcastObject(hairObject, true);
+	// Some race condition in the client prevents both the destroy and transfer from happening too close together
+	// Without it placing a hair object in the inventory.
+	Core::getTaskManager()->scheduleTask([creo, hairObject]{
+		Locker locker(hairObject);
+		creo->transferObject(hairObject, 4);
+		creo->broadcastObject(hairObject, true);
+	}, "TransferHairTask", 100);
 
 	return hair;
 }
