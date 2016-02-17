@@ -1,0 +1,43 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.
+*/
+
+package server.utils;
+
+import engine.util.Observable;
+include engine.core.ManagedObject;
+//import engine.core.ManagedReference;
+
+import engine.log.Logger;
+
+import engine.util.Observer;
+
+include server.utils.LambdaObserverFunction;
+
+//@nonTransactional
+
+
+/*
+ * Usage:
+ * registerObserver(ObserverEventType::CREATUREREVIVED, new LambdaObserver(
+ * 		new LambdaObserverFunction([newPosture](uint32 eventType, Observable *observable, ManagedObject *arg1, uint64 arg2) ->int {
+ * 	return 1;
+ * }, "TestObserver")));
+*/
+class LambdaObserver extends Observer {
+	
+	LambdaObserverFunction function;
+	
+	public abstract int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
+		if(function != null)
+			return function.notifyObserverEvent(eventType, observable, arg1, arg2);
+        	else
+                	return 1;
+	}
+	
+	public LambdaObserver(LambdaObserverFunction f) {
+		function = f;
+	}
+}
+

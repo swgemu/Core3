@@ -42,6 +42,8 @@ public:
 		try {
 			Locker playerLocker(player);
 
+
+
 			PlayerObject* ghost = player->getPlayerObject();
 
 			if (ghost == NULL) {
@@ -71,9 +73,11 @@ public:
 			if (mind < 0)
 				player->setHAM(CreatureAttribute::MIND, 1);
 
+			player->removeFeignedDeath();
+
 			player->setPosture(CreaturePosture::UPRIGHT);
 
-			player->removeFeignedDeath();
+			player->notifyObservers(ObserverEventType::CREATUREREVIVED, NULL, 0);
 
 			if (ghost->getForcePowerMax() > 0 && ghost->getForcePower() < ghost->getForcePowerMax()) {
 				ghost->activateForcePowerRegen();
