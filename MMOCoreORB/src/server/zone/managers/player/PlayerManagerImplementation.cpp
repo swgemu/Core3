@@ -128,6 +128,8 @@
 
 #include "server/zone/objects/player/badges/Badge.h"
 
+#include "server/zone/packets/group/GroupObjectDeltaMessage6.h"
+
 #include <iostream>
 
 int PlayerManagerImplementation::MAX_CHAR_ONLINE_COUNT = 2;
@@ -685,7 +687,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		StringIdChatParameter toVictim;
 
 		toVictim.setStringId("base_player", "prose_victim_incap");
-		toVictim.setTT(destructor->getObjectID());
+		toVictim.setTT(destructor->getDisplayedName());
 
 		playerCreature->sendSystemMessage(toVictim);
 
@@ -694,7 +696,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 			StringIdChatParameter toKiller;
 
 			toKiller.setStringId("base_player", "prose_target_incap");
-			toKiller.setTT(playerCreature->getObjectID());
+			toKiller.setTT(playerCreature->getDisplayedName());
 
 			destructor->asCreatureObject()->sendSystemMessage(toKiller);
 		}
@@ -710,7 +712,7 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 
 	if (attacker->isPlayerCreature()) {
 		stringId.setStringId("base_player", "prose_target_dead");
-		stringId.setTT(player->getObjectID());
+		stringId.setTT(player->getDisplayedName());
 		(cast<CreatureObject*>(attacker))->sendSystemMessage(stringId);
 
 		Reference<ThreatMap*> copyThreatMap = new ThreatMap(*threatMap);
@@ -737,7 +739,7 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 	sendActivateCloneRequest(player, typeofdeath);
 
 	stringId.setStringId("base_player", "prose_victim_dead");
-	stringId.setTT(attacker->getObjectID());
+	stringId.setTT(attacker->getDisplayedName());
 	player->sendSystemMessage(stringId);
 
 	player->updateTimeOfDeath();
