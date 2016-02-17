@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_65401157",
+        "filename": "MMOCoreORB/src/server/utils/LambdaObserverFunction.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-17T23:40:52Z",
+      "side": 1,
+      "message": "If you implement one, you need to implement all 5 (in c++11), and I would suggest using copy and swap for strong exception safety (though it won\u0027t really matter in this case... it\u0027s just a good habit).",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "c53c845daab501d44eca9cedeecffee0553e9b47",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
