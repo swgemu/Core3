@@ -79,7 +79,7 @@ public:
 				commandCooldown->updateToCurrentTime();
 			}
 
-			player->enqueueCommand(actionCRC, actionCount, targetID, arguments);
+			player->enqueueCommand(actionCRC, actionCount, targetID, arguments, -1, actionCount&0x3FFFFFFF);
 		}
 	}
 };
