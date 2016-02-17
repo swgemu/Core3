@@ -1437,6 +1437,10 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 
 	switch (faction) {
 	case FactionManager::FACTIONIMPERIAL:
+          	randTexts = System::random(48)+1; // There are actually 50 imperial recon missions including bugged m19
+          	if (randTexts >= 19)
+                  randTexts++;
+          
 		mission->setRewardFactionPointsImperial(10);
 		mission->setRewardFactionPointsRebel(0);
 		mission->setMissionTitle("mission/mission_npc_recon_imperial_easy", "m" + String::valueOf(randTexts) + "t");
