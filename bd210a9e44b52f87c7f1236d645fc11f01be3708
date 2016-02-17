@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_8531a50d",
+        "filename": "MMOCoreORB/src/server/zone/managers/mission/MissionManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1441,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-17T23:21:36Z",
+      "side": 1,
+      "message": "Instead of doing this, reduce the random range by one and add one if it equals 19, so you don\u0027t double the chance of mission 20",
+      "range": {
+        "startLine": 1440,
+        "startChar": 0,
+        "endLine": 1441,
+        "endChar": 18
+      },
+      "revId": "bd210a9e44b52f87c7f1236d645fc11f01be3708",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
