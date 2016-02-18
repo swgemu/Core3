@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_18109c4d",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-02-18T08:34:17Z",
+      "side": 1,
+      "message": "should I remove this?",
+      "range": {
+        "startLine": 117,
+        "startChar": 20,
+        "endLine": 117,
+        "endChar": 48
+      },
+      "revId": "fc00aa6f2b67b58b1b12be251a056d6670322486",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
