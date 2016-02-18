@@ -15,10 +15,14 @@ include server.zone.ZoneProcessServer;
 import server.zone.objects.creature.buffs.BuffDurationEvent;
 include server.zone.objects.creature.buffs.BuffType;
 include server.chat.StringIdChatParameter;
+import system.lang.Time;
 
 class Buff extends ManagedObject implements Logger {
 	@weakReference
 	protected CreatureObject creature;
+	
+	@dereferenced
+	protected Time timeApplied;
 
 	protected transient BuffDurationEvent buffEvent;
 
@@ -294,6 +298,14 @@ class Buff extends ManagedObject implements Logger {
 		if (secondaryCRC != 0 && !secondaryBuffCRCs.contains(secondaryCRC))
 			secondaryBuffCRCs.add(secondaryCRC);
 	}
+	
+	@dirty
+	@local
+	@dereferenced
+	public native Time getTimeApplied();
+	
+	@dirty
+	public abstract native int compareTo(Buff obj);
 
 	@local
 	@dirty
