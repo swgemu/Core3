@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_78ff5802",
+        "filename": "MMOCoreORB/src/server/utils/LambdaObserverFunction.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2016-02-18T02:13:28Z",
+      "side": 1,
+      "message": "T\u0026\u0026 func",
+      "revId": "902055cba90b63928b3de900baba083f5a9ea41c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
