@@ -86,6 +86,14 @@ void BuffImplementation::sendDestroyTo(CreatureObject* player) {
 	}
 }
 
+Time BuffImplementation::getTimeApplied() {
+	return timeApplied;
+}
+
+int BuffImplementation::compareTo(Buff *buff) {
+	Time rhs = buff->getTimeApplied();
+	return timeApplied.compareTo(rhs);
+}
 void BuffImplementation::activate(bool applyModifiers) {
 	//info("activating buff with crc " + String::hexvalueOf((int)buffCRC), true);
 	try {
@@ -94,6 +102,8 @@ void BuffImplementation::activate(bool applyModifiers) {
 			applyAllModifiers();
 
 		scheduleBuffEvent();
+
+		timeApplied.updateToCurrentTime();
 
 		//info("nextExecutionTime miliDifference:" + String::valueOf(nextExecutionTime.miliDifference()), true);
 
