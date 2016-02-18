@@ -64,14 +64,14 @@ object_tangible_wearables_armor_kashyyykian_hunting_armor_kashyyykian_hunting_br
 	-- LIGHT, MEDIUM, HEAVY
 	rating = LIGHT,
 
-	kinetic = 75,
-	energy = 50,
-	electricity = 50,
-	stun = 15,
-	blast = 50,
-	heat = 50,
-	cold = 50,
-	acid = 50,
+	kinetic = 80,
+	energy = 65,
+	electricity = 65,
+	stun = 25,
+	blast = 65,
+	heat = 65,
+	cold = 65,
+	acid = 65,
 	lightSaber = 0,
 
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 2, 1},
