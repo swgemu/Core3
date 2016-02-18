@@ -269,10 +269,9 @@ public:
 
 		parseModifier(arguments.toString(), attribute, objectId);
 
-		if (attribute == BuffAttribute::UNKNOWN) {
-			enhancer->sendSystemMessage("@healing_response:healing_response_75"); //You must specify a valid attribute.
-			return GENERALERROR;
-		}
+		CreatureObject* patient = cast<CreatureObject*>( targetCreature);
+
+		Locker clocker(patient, creature);
 
 		ManagedReference<EnhancePack*> enhancePack = NULL;
 
@@ -299,12 +298,29 @@ public:
 				attribute = enhancePack->getAttribute();
 			}
 		} else {
-			enhancePack = findEnhancePack(creature, attribute);
+			if (attribute == BuffAttribute::UNKNOWN) {
+				for(int i=0; i<CreatureAttribute::ARRAYSIZE; i++) {
+					if(patient->hasBuff(BuffCRC::getMedicalBuff(i)))
+						continue;
+
+					attribute = i;
+					enhancePack = findEnhancePack(creature, i);
+					if(enhancePack != NULL)
+						break;
+				}
+
+				if(attribute == BuffAttribute::UNKNOWN) {
+					StringIdChatParameter stringId("healing", "no_attrib_to_buff"); // %TT has no state that you can heal.
+					stringId.setTT(patient->getDisplayedName());
+					creature->sendSystemMessage(stringId);
+					return GENERALERROR;
+				}
+			} else {
+				enhancePack = findEnhancePack(creature, attribute);
+			}
 		}
 
-		CreatureObject* patient = cast<CreatureObject*>( targetCreature);
 
-		Locker clocker(patient, creature);
 
 		if (patient->isDead() || patient->isRidingMount())
 			patient = enhancer;
