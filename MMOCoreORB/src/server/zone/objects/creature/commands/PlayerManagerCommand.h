@@ -42,6 +42,15 @@ public:
 		tokenizer.getStringToken(command);
 		command = command.toLowerCase();
 
+		// TODO: remove before merge
+		if(command == "warcry") {
+			player->setNextAttackDelay(100, 10);
+			return 0;
+		} else if(command == "pcd") {
+			player->updatePostureChangeDelay(10000);
+			return 0;
+		}
+
 		if (command == "listjedi") {
 			player->sendSystemMessage("Please wait. This may take a while.");
 

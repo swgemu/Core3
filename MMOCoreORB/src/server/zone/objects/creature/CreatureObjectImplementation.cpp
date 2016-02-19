@@ -94,7 +94,6 @@
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 
 #include "buffs/BuffDurationEvent.h"
-#include "engine/core/TaskManager.h"
 
 float CreatureObjectImplementation::DEFAULTRUNSPEED = 5.376;
 
@@ -1048,8 +1047,6 @@ int CreatureObjectImplementation::healDamage(TangibleObject* healer,
 
 			setPosture(CreaturePosture::UPRIGHT);
 
-			asCreatureObject()->notifyObservers(ObserverEventType::CREATUREREVIVED, healer, 0);
-
 			if(isPlayerCreature()) {
 
 				PlayerObject* ghost = getPlayerObject();
@@ -1822,6 +1819,7 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 			getZoneServer()->getObjectController();
 
 	QueueCommand* queueCommand = objectController->getQueueCommand(actionCRC);
+	bool addToQueue = queueCommand->addToCombatQueue();
 
 	if (queueCommand == NULL) {
 		//StringBuffer msg;
@@ -1842,7 +1840,7 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 
 	Reference<CommandQueueAction*> action = NULL;
 
-	if (priority == QueueCommand::IMMEDIATE) {
+	if (priority == QueueCommand::IMMEDIATE && !addToQueue) {
 #ifndef WITH_STM
 		objectController->activateCommand(asCreatureObject(), actionCRC, actionCount,
 				targetID, arguments);
@@ -1860,7 +1858,7 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 		return;
 	}
 
-	if (commandQueue->size() > 15 && priority != QueueCommand::FRONT) {
+	if (commandQueue->size() > 15 && priority != QueueCommand::FRONT && priority != QueueCommand::IMMEDIATE ) {
 		clearQueueAction(actionCount);
 
 		return;
@@ -1881,12 +1879,20 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 
 		if (priority == QueueCommand::NORMAL)
 			commandQueue->put(action.get());
-		else if (priority == QueueCommand::FRONT) {
+		else if (priority == QueueCommand::FRONT || priority == QueueCommand::IMMEDIATE) {
 			if (commandQueue->size() > 0)
 				action->setCompareToCounter(
 						commandQueue->get(0)->getCompareToCounter() - 1);
+			else
+				action->setCompareToCounter(32);
 
 			commandQueue->put(action.get());
+
+			if(!addToQueue) {
+				Reference<CommandQueueActionEvent*> e =
+						new CommandQueueActionEvent(asCreatureObject());
+				e->schedule(nextAction);
+			}
 		}
 	} else {
 		nextAction.updateToCurrentTime();
@@ -1906,7 +1912,7 @@ void CreatureObjectImplementation::sendCommand(uint32 crc, const UnicodeString& 
 	sendMessage(msg);
 
 	int compareCnt = -1;
-	if (commandQueue->size() == 0 || priority == QueueCommand::FRONT)
+	if (commandQueue->size() == 0 || priority == QueueCommand::FRONT || priority == QueueCommand::IMMEDIATE)
 		compareCnt = 0;
 	else if (priority == QueueCommand::NORMAL)
 		compareCnt = commandQueue->get(commandQueue->size() - 1)->getCompareToCounter() + 1;
@@ -1935,12 +1941,18 @@ void CreatureObjectImplementation::activateImmediateAction() {
 		Core::getTaskManager()->executeTask(ev);
 	}
 }
+void CreatureObjectImplementation::removeAttackDelay() {
+	if(hasAttackDelay()) {
+		CommandQueueActionEvent* e = new CommandQueueActionEvent(asCreatureObject());
+		e->schedule(50);
+	}
+	cooldownTimerMap->updateToCurrentTime("nextAttackDelay");
 
+}
 void CreatureObjectImplementation::activateQueueAction() {
 	if (nextAction.isFuture()) {
 		CommandQueueActionEvent* e = new CommandQueueActionEvent(asCreatureObject());
 		e->schedule(nextAction);
-
 		return;
 	}
 
@@ -1948,6 +1960,28 @@ void CreatureObjectImplementation::activateQueueAction() {
 		return;
 
 	Reference<CommandQueueAction*> action = commandQueue->get(0);
+	const QueueCommand* command = getZoneServer()->getObjectController()->getQueueCommand(action->getCommand());
+
+	bool addToQueue = command->addToCombatQueue();
+
+	if(hasAttackDelay() && addToQueue) {
+		CommandQueueActionEvent* e = new CommandQueueActionEvent(asCreatureObject());
+		Time *delay = getCooldownTime("nextAttackDelay");
+		if(delay) {
+			e->schedule(*delay);
+			return;
+		}
+	}
+
+	if(!checkPostureChangeDelay() && addToQueue && command->getCommandGroup() != STRING_HASHCODE("posture")) {
+		CommandQueueActionEvent* e = new CommandQueueActionEvent(asCreatureObject());
+		Time *delay = getCooldownTime("postureChangeDelay");
+		if(delay) {
+			e->schedule(*delay);
+			return;
+		}
+	}
+
 	commandQueue->remove(0);
 
 	ManagedReference<ObjectController*> objectController =
@@ -2222,10 +2256,10 @@ void CreatureObjectImplementation::feignDeath() {
 	creo->addBuff(buff);
 
 	// We need to delay the forcePeace until after the CombatAction is executed
-	Core::getTaskManager()->scheduleTask([creo] {
-		Locker lock(creo);
+	Core::getTaskManager()->scheduleTask([=]{
+		Locker locker(creo);
 		CombatManager::instance()->forcePeace(creo);
-	}, "FeignDeathForcePeaceTask", 250);
+	}, "FeignDeathForcePeace", 250 );
 }
 
 void CreatureObjectImplementation::setDizziedState(int durationSeconds) {
