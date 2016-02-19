@@ -1841,7 +1841,7 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 
 	Reference<CommandQueueAction*> action = NULL;
 
-	if (priority == QueueCommand::IMMEDIATE) {
+	if (priority == QueueCommand::IMMEDIATE && !queueCommand->addToCombatQueue()) {
 #ifndef WITH_STM
 		objectController->activateCommand(asCreatureObject(), actionCRC, actionCount,
 				targetID, arguments);
@@ -1859,7 +1859,7 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 		return;
 	}
 
-	if (commandQueue->size() > 15 && priority != QueueCommand::FRONT) {
+	if (commandQueue->size() > 15 && priority != QueueCommand::FRONT && priority != QueueCommand::IMMEDIATE) {
 		clearQueueAction(actionCount);
 
 		return;
@@ -1880,7 +1880,7 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 
 		if (priority == QueueCommand::NORMAL)
 			commandQueue->put(action.get());
-		else if (priority == QueueCommand::FRONT) {
+		else if (priority == QueueCommand::FRONT || priority == QueueCommand::IMMEDIATE) {
 			if (commandQueue->size() > 0)
 				action->setCompareToCounter(
 						commandQueue->get(0)->getCompareToCounter() - 1);
@@ -1905,7 +1905,7 @@ void CreatureObjectImplementation::sendCommand(uint32 crc, const UnicodeString& 
 	sendMessage(msg);
 
 	int compareCnt = -1;
-	if (commandQueue->size() == 0 || priority == QueueCommand::FRONT)
+	if (commandQueue->size() == 0 || priority == QueueCommand::FRONT || priority == QueueCommand::IMMEDIATE)
 		compareCnt = 0;
 	else if (priority == QueueCommand::NORMAL)
 		compareCnt = commandQueue->get(commandQueue->size() - 1)->getCompareToCounter() + 1;
@@ -1934,19 +1934,34 @@ void CreatureObjectImplementation::activateImmediateAction() {
 		Core::getTaskManager()->executeTask(ev);
 	}
 }
+void CreatureObjectImplementation::removeAttackDelay() {
+	if(hasAttackDelay()) {
+		CommandQueueActionEvent* e = new CommandQueueActionEvent(asCreatureObject());
+		e->schedule(50);
+	}
+	cooldownTimerMap->updateToCurrentTime("nextAttackDelay");
 
+}
 void CreatureObjectImplementation::activateQueueAction() {
 	if (nextAction.isFuture()) {
 		CommandQueueActionEvent* e = new CommandQueueActionEvent(asCreatureObject());
 		e->schedule(nextAction);
-
 		return;
 	}
+
+
 
 	if (commandQueue->size() == 0)
 		return;
 
 	Reference<CommandQueueAction*> action = commandQueue->get(0);
+
+	if(hasAttackDelay()) {
+		CommandQueueActionEvent* e = new CommandQueueActionEvent(asCreatureObject());
+		e->schedule(*getCooldownTime("nextAttackDelay"));
+		return;
+	}
+
 	commandQueue->remove(0);
 
 	ManagedReference<ObjectController*> objectController =
