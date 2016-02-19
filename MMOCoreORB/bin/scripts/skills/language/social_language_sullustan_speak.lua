@@ -31,7 +31,6 @@ social_language_sullustan_speak = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"language+sullustan"
 	},
 	skillModifiers = {
 		{ "language_sullustan_speak", 100 }

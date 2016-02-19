@@ -23,7 +23,6 @@ social_language_lekku_speak = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"language+lekku"
 	},
 	skillModifiers = {
 		{ "language_lekku_speak", 100 }

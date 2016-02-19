@@ -31,7 +31,6 @@ social_language_moncalamari_speak = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"language+moncalamarian"
 	},
 	skillModifiers = {
 		{ "language_moncalamari_speak", 100 }
