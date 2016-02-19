@@ -97,7 +97,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/tangible/misc/FsCraftingComponentObject.cpp \
+core3_IDLS =	autogen/server/zone/objects/tangible/eventperk/ShuttleBeacon.cpp \
+				autogen/server/zone/objects/tangible/misc/FsCraftingComponentObject.cpp \
 				autogen/server/zone/objects/tangible/misc/CustomIngredient.cpp \
 				autogen/server/zone/objects/tangible/misc/PlantObject.cpp \
 				autogen/server/zone/objects/tangible/misc/FsPuzzlePack.cpp \
@@ -612,6 +613,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/intangible/PetControlDeviceImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/InstrumentImplementation.cpp \
+		server/zone/objects/tangible/eventperk/ShuttleBeaconImplementation.cpp \
 		server/zone/objects/tangible/eventperk/FlagGameImplementation.cpp \
 		server/zone/objects/tangible/eventperk/LotteryDroidImplementation.cpp \
 		server/zone/objects/tangible/eventperk/JukeboxImplementation.cpp \
