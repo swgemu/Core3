@@ -31,7 +31,6 @@ social_language_basic_speak = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"language+basic"
 	},
 	skillModifiers = {
 		{ "language_basic_speak", 100 }

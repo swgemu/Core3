@@ -31,7 +31,6 @@ social_language_trandoshan_speak = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"language+dosh"
 	},
 	skillModifiers = {
 		{ "language_trandoshan_speak", 100 }

@@ -31,7 +31,6 @@ social_language_rodian_speak = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"language+rodese"
 	},
 	skillModifiers = {
 		{ "language_rodian_speak", 100 }

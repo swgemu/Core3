@@ -31,7 +31,6 @@ social_language_zabrak_speak = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"language+zabrak"
 	},
 	skillModifiers = {
 		{ "language_zabrak_speak", 100 }
