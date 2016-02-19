@@ -63,6 +63,7 @@ public:
 	int getExperience(lua_State* L);
 	int addEventPerk(lua_State* L);
 	int getEventPerkCount(lua_State* L);
+	int hasEventPerk(lua_State* L);
 	int getCharacterAgeInDays(lua_State* L);
 	int hasGodMode(lua_State* L);
 	int isPrivileged(lua_State* L);

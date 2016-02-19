@@ -11,6 +11,7 @@
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/objects/tangible/eventperk/Jukebox.h"
+#include "server/zone/objects/tangible/eventperk/ShuttleBeacon.h"
 #include "server/zone/managers/skill/SkillManager.h"
 
 const char LuaPlayerObject::className[] = "LuaPlayerObject";
@@ -57,6 +58,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "getExperience", &LuaPlayerObject::getExperience },
 		{ "addEventPerk", &LuaPlayerObject::addEventPerk},
 		{ "getEventPerkCount", &LuaPlayerObject::getEventPerkCount},
+		{ "hasEventPerk", &LuaPlayerObject::hasEventPerk},
 		{ "getCharacterAgeInDays", &LuaPlayerObject::getCharacterAgeInDays},
 		{ "hasGodMode", &LuaPlayerObject::hasGodMode},
 		{ "isPrivileged", &LuaPlayerObject::isPrivileged},
@@ -481,6 +483,14 @@ int LuaPlayerObject::getEventPerkCount(lua_State* L) {
 	return 1;
 }
 
+int LuaPlayerObject::hasEventPerk(lua_State* L) {
+	String templateString = lua_tostring(L, -1);
+
+	lua_pushboolean(L, realObject->hasEventPerk(templateString));
+
+	return 1;
+}
+
 int LuaPlayerObject::addEventPerk(lua_State* L) {
 	SceneObject* item = (SceneObject*) lua_touserdata(L, -1);
 
@@ -499,6 +509,9 @@ int LuaPlayerObject::addEventPerk(lua_State* L) {
 		if (item->getServerObjectCRC() == 0x46BD798B) { // Jukebox
 			Jukebox* jbox = cast<Jukebox*>(item);
 			jbox->setOwner(creature);
+		} else if (item->getServerObjectCRC() == 0x255F612C) { // Shuttle Beacon
+			ShuttleBeacon* beacon = cast<ShuttleBeacon*>(item);
+			beacon->setOwner(creature);
 		}
 	}
 

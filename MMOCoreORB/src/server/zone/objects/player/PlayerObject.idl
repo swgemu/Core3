@@ -1761,5 +1761,7 @@ class PlayerObject extends IntangibleObject {
 	public native boolean hasSchematic(DraftSchematic schematic) {
 		return schematicList.contains(schematic);
 	}
+
+	public native boolean hasEventPerk(final string templatePath);
 }
 
