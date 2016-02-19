@@ -31,7 +31,6 @@ social_language_ithorian_speak = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"language+ithorian"
 	},
 	skillModifiers = {
 		{ "language_ithorian_speak", 100 }
