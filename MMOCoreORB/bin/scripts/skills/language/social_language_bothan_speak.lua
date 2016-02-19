@@ -31,7 +31,7 @@ social_language_bothan_speak = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"language+bothese"
+		"language bothese"
 	},
 	skillModifiers = {
 		{ "language_bothan_speak", 100 }

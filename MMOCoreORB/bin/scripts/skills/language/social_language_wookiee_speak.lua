@@ -23,7 +23,7 @@ social_language_wookiee_speak = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"language+shyriiwook"
+		"language shyriiwook"
 	},
 	skillModifiers = {
 		{ "language_wookiee_speak", 100 }
