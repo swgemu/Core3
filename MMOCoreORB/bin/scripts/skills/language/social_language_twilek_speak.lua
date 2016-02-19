@@ -31,7 +31,6 @@ social_language_twilek_speak = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"language+ryl"
 	},
 	skillModifiers = {
 		{ "language_twilek_speak", 100 }
