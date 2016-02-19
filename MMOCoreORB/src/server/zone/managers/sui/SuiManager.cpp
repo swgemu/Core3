@@ -59,6 +59,7 @@
 #include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/objects/tangible/eventperk/Jukebox.h"
+#include "server/zone/objects/tangible/eventperk/ShuttleBeacon.h"
 #include "server/zone/objects/player/sui/SuiBoxPage.h"
 
 SuiManager::SuiManager() : Logger("SuiManager") {
@@ -660,6 +661,9 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 				if (item->getServerObjectCRC() == 0x46BD798B) { // Jukebox
 					Jukebox* jbox = cast<Jukebox*>(item.get());
 					jbox->setOwner(player);
+				} else if (item->getServerObjectCRC() == 0x255F612C) { // Shuttle Beacon
+					ShuttleBeacon* beacon = cast<ShuttleBeacon*>(item.get());
+					beacon->setOwner(player);
 				}
 				ghost->addEventPerk(item);
 			}

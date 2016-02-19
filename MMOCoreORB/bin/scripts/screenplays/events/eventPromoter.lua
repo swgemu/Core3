@@ -120,9 +120,14 @@ function eventPromoterScreenplay:giveItem(pPlayer, deedData)
 		elseif (SceneObject(pInventory):isContainerFullRecursive()) then
 			player:sendSystemMessage("@event_perk:promoter_full_inv")
 			return
-		elseif ((not playerObject:isPrivileged()) and playerObject:getEventPerkCount() >= 5) then
-			player:sendSystemMessage("@event_perk:pro_too_many_perks")
-			return
+		elseif (not playerObject:isPrivileged()) then
+			if (playerObject:hasEventPerk("shuttle_beacon")) then
+				player:sendSystemMessage("@event_perk:only_one_shuttle_beacon")
+				return
+			elseif (playerObject:getEventPerkCount() >= 5) then
+				player:sendSystemMessage("@event_perk:pro_too_many_perks")
+				return
+			end
 		end
 
 		player:subtractCashCredits(deedData.cost)
