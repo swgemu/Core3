@@ -67,6 +67,5 @@ disabledWearableSkillMods = {
 	"healing_ability",
 	"keep_creature",
 	"stored_pets",
-	"tame_bonus",
 	"combat_medic_effectiveness",
 }
