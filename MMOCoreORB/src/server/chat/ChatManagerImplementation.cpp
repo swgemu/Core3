@@ -191,6 +191,25 @@ void ChatManagerImplementation::loadSpatialChatTypes() {
 
 	iffStream->closeForm('VOLS');
 
+	Chunk* temp = iffStream->openForm('PRIV');
+	iffStream->closeForm('PRIV');
+
+	Chunk* version3 = iffStream->openForm('SKCS');
+
+	for (int j = 0; j < version3->getChunksSize(); j++) {
+		Chunk* skillData = version3->getNextChunk();
+
+		String type, skillNeeded;
+		skillData->readString(type);
+		skillData->readString(skillNeeded);
+
+		uint32 chatType = spatialChatTypes.get(type);
+
+		spatialChatTypeSkillNeeded.put(chatType, skillNeeded);
+	}
+
+	iffStream->closeForm('SKCS');
+
 	iffStream->closeForm('0000');
 	iffStream->closeForm('SPCT');
 
@@ -808,7 +827,7 @@ void ChatManagerImplementation::broadcastMessage(BaseMessage* message) {
 	message = NULL;
 }
 
-void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const UnicodeString& message,  uint64 target, uint32 moodid, uint32 mood2) {
+void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const UnicodeString& message,  uint64 target, uint32 moodType, uint32 spatialChatType) {
 	Zone* zone = player->getZone();
 	PlayerObject* myGhost = NULL;
 	bool godMode = false;
@@ -819,7 +838,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 	int language = 0;
 	String firstName;
 
-	if (player->isPlayerCreature() /*|| !((Player *)player)->isChatMuted() */) {
+	if (player->isPlayerCreature()) {
 		CreatureObject* playerCreature = cast<CreatureObject*>(player);
 		if (playerCreature)
 		{
@@ -827,14 +846,15 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 			myGhost = playerCreature->getPlayerObject();
 		}
 
-		if (myGhost)
-			language = myGhost->getLanguageID();
-	}
+		if (myGhost) {
+			if (spatialChatTypeSkillNeeded.contains(spatialChatType) && !myGhost->hasAbility(spatialChatTypeSkillNeeded.get(spatialChatType)))
+				return;
 
-	if (myGhost)
-	{
-		if (myGhost->hasGodMode())
-			godMode = true;
+			language = myGhost->getLanguageID();
+
+			if (myGhost->hasGodMode())
+				godMode = true;
+		}
 	}
 
 	StringIdChatParameter* param = NULL;
@@ -856,7 +876,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 
 	float range = defaultSpatialChatDistance;
 
-	float specialRange = spatialChatDistances.get(mood2);
+	float specialRange = spatialChatDistances.get(spatialChatType);
 	if (specialRange != -1) {
 		range = specialRange;
 	}
@@ -899,9 +919,9 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 						SpatialChat* cmsg = NULL;
 
 						if (param == NULL) {
-							cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodid, mood2, language);
+							cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodType, spatialChatType, language);
 						} else {
-							cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), *param, target, moodid, mood2);
+							cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), *param, target, moodType, spatialChatType);
 						}
 
 						creature->sendMessage(cmsg);
@@ -946,7 +966,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 
 }
 
-void ChatManagerImplementation::broadcastMessage(CreatureObject* player, StringIdChatParameter& message,  uint64 target, uint32 moodid, uint32 mood2) {
+void ChatManagerImplementation::broadcastMessage(CreatureObject* player, StringIdChatParameter& message, uint64 target, uint32 moodType, uint32 spatialChatType) {
 	Zone* zone = player->getZone();
 	PlayerObject* myGhost = NULL;
 	bool godMode = false;
@@ -968,6 +988,9 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, StringI
 
 		if (myGhost)
 		{
+			if (spatialChatTypeSkillNeeded.contains(spatialChatType) && !myGhost->hasAbility(spatialChatTypeSkillNeeded.get(spatialChatType)))
+				return;
+
 			language = myGhost->getLanguageID();
 
 			if (myGhost->hasGodMode())
@@ -1008,7 +1031,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, StringI
 						continue;
 
 					if (!ghost->isIgnoring(firstName) || godMode) {
-						SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodid, mood2);
+						SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodType, spatialChatType);
 
 						creature->sendMessage(cmsg);
 					}
@@ -1043,8 +1066,8 @@ void ChatManagerImplementation::handleSpatialChatInternalMessage(CreatureObject*
 		UnicodeTokenizer tokenizer(args);
 
 		uint64 targetid = tokenizer.getLongToken();
-		uint32 mood2 = tokenizer.getIntToken();
-		uint32 moodid = tokenizer.getIntToken();
+		uint32 spatialChatType = tokenizer.getIntToken();
+		uint32 moodType = tokenizer.getIntToken();
 		uint32 unk2 = tokenizer.getIntToken();
 		uint32 unk3 = tokenizer.getIntToken();
 
@@ -1053,20 +1076,7 @@ void ChatManagerImplementation::handleSpatialChatInternalMessage(CreatureObject*
 		tokenizer.finalToken(msg);
 
 		UnicodeString formattedMessage(formatMessage(msg));
-		/*if (msg[0] == '@') {
-			handleGameCommand(player, msg.toString());
-		} else {
-			if (isMute()) {
-				if (player->getAdminLevel() & PlayerImplementation::ADMIN) {
-					broadcastMessage(player, msg, targetid, moodid, mood2);
-				} else {
-					((CreatureObject*) player)->sendSystemMessage("Chat has been muted by the admins");
-				}
-			} else {
-				broadcastMessage(player, msg, targetid, moodid, mood2);
-			}
-		}*/
-		broadcastMessage(player, formattedMessage, targetid, moodid, mood2);
+		broadcastMessage(player, formattedMessage, targetid, moodType, spatialChatType);
 
 		ManagedReference<ChatMessage*> cm = new ChatMessage();
 		cm->setString(formattedMessage.toString());
