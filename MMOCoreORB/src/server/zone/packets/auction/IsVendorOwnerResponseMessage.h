@@ -21,13 +21,21 @@ public:
 		insertInt(0xCE04173E);
 
 		// Make sure sceno is a valid Vendor Object.
-		if (!vendor->isVendor() && !vendor->isBazaarTerminal())
+		if (!vendor->isVendor() && !vendor->isBazaarTerminal()) {
+			//returning half built packets on errors is bad, mmkay
+			insertInt(1);
+			insertInt(2); // 2 == invalid object
+			insertLong(vendor->getObjectID());
+			insertAscii("");
+			insertShort(0x64);
 			return;
+		}
 
 		Reference<AuctionManager*> auctionManager = player->getZoneServer()->getAuctionManager();
 
 		int rights = 2;
-		bool marketIssues = auctionManager->isMarketEnabled() == false;
+		uint32 errorCode = auctionManager->isMarketEnabled() == false; // 1 == auctioneer issue
+
 
 		if(vendor->isVendor()) {
 
@@ -45,7 +53,7 @@ public:
 			rights = vendorData->getOwnershipRightsOf(player);
 
 			if(vendorData->isOnStrike()) {
-				marketIssues = true;
+				errorCode = 1;
 				player->sendSystemMessage("@ui_auc:err_vendor_deactivated");
 			}
 		}
@@ -55,7 +63,7 @@ public:
 		// 0: own vendor, 1: someone else owns the vendor, 2: the galaxy owns the vendor (bazaar)
 		insertInt(rights);
 
-		insertInt(marketIssues);
+		insertInt(errorCode);
 		
 		insertLong(objectID);
 
