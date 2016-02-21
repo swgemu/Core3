@@ -15,7 +15,7 @@
 class ChatQueryRoomResults : public BaseMessage {
 public:
 
-	ChatQueryRoomResults(ChatRoom* room, int requestID) : BaseMessage() {
+	ChatQueryRoomResults(ChatRoom* room, int requestID = 0) : BaseMessage() {
 		insertShort(7); // Op Count
 		insertInt(0xC4DE864E); // Opcode
 
