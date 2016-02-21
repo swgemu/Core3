@@ -196,50 +196,61 @@ String ChatRoomImplementation::getBannedName(int index) {
 	return name;
 }
 
-bool ChatRoomImplementation::checkEnterPermission(CreatureObject* player) {
+int ChatRoomImplementation::checkEnterPermission(CreatureObject* player) {
+	/* Error Codes:
+	 * 0: [Room] You have joined the channel. (SUCCESS)
+	 * 6: Chatroom [Room path] does not exist! (NOROOM)
+	 * 12: You cannot join [Room path] because you have been banned. (INVALIDBANSTATE)
+	 * 13: You cannot join [Room path] because you are not invited to the room. (NOTINVITED)
+	 * Default: Chatroom '%TU (room name)' join failed for an unknown reason. (FAIL)
+	 */
+
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	if (player == NULL || !canEnterRoom)
-		return false;
+		return ChatManager::NOTINVITED;
 
 	switch (roomType) {
 	case ChatRoom::DEFAULT:
-		return true;
+		return ChatManager::NOTINVITED;
 	case ChatRoom::AUCTION:
-		return true;
+		return ChatManager::SUCCESS;
 	case ChatRoom::GUILD: {
 		ManagedReference<GuildObject*> guild = player->getGuildObject().getReferenceUnsafeStaticCast();
 		if (guild != NULL) {
 			if (guild->getObjectID() == getOwnerID())
-				return true;
+				return ChatManager::SUCCESS;
 		}
-		return false;
+		return ChatManager::NOTINVITED;
 	}
 	case ChatRoom::GROUP: {
 		ManagedReference<GroupObject*> group = player->getGroup();
 		if (group != NULL) {
 			if (group->getObjectID() == getOwnerID())
-				return true;
+				return ChatManager::SUCCESS;
 		}
-		return false;
+		return ChatManager::NOTINVITED;
 	}
 	case ChatRoom::PLANET: {
 		ManagedReference<Zone*> zone = player->getZone();
 		if (zone != NULL) {
 			if (zone->getObjectID() == getOwnerID())
-				return true;
+				return ChatManager::SUCCESS;
 		}
-		return false;
+		return ChatManager::NOTINVITED;
 	}
 	case ChatRoom::CUSTOM:
-		if (!hasBanned(player) && (isPublic() || hasInvited(player) || player->getObjectID() == getOwnerID()))
-			return true;
-		break;
+		if (hasBanned(player))
+			return ChatManager::INVALIDBANSTATE;
+		if (isPrivate() && (!hasInvited(player) && player->getObjectID() != getOwnerID()))
+			return ChatManager::NOTINVITED;
+
+		return ChatManager::SUCCESS;
 
 	default:
 		break;
 	}
 
-	return false;
+	return ChatManager::FAIL;
 
 }

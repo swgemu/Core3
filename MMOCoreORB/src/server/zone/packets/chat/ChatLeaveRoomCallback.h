@@ -50,7 +50,7 @@ public:
 		String senderName = player->getFirstName().toLowerCase();
 
 		if (senderName != leavingName.toLowerCase()) { //One player is kicking another from a room.
-			chatManager->handleChatKickPlayerFromRoom(player, leavingName, roomPath);
+			chatManager->handleChatKickPlayer(player, leavingName, roomPath);
 		} else { //Player is just trying to leave a room (or kicked himself).
 			Locker locker(player);
 			chatManager->handleChatLeaveRoom(player, roomPath);

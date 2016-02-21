@@ -9,12 +9,12 @@
 
 class ChatOnSendRoomMessage : public BaseMessage {
 public:
-	ChatOnSendRoomMessage(uint32 seq) : BaseMessage() {
+	ChatOnSendRoomMessage(uint32 seq, int error = 0) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0xE7B61633);  // Opcode
-		insertInt(0);
+		insertInt(error);
 		insertInt(seq);
-	} 
+	}
 
 };
 #endif /*CHATONSENDROOMMESSAGE_H_*/

@@ -80,6 +80,10 @@
 #include "packets/chat/ChatLeaveRoomCallback.h"
 #include "packets/chat/ChatInviteToRoomCallback.h"
 #include "packets/chat/ChatUninviteFromRoomCallback.h"
+#include "packets/chat/ChatAddModeratorToRoomCallback.h"
+#include "packets/chat/ChatRemoveModeratorFromRoomCallback.h"
+#include "packets/chat/ChatBanFromRoomCallback.h"
+#include "packets/chat/ChatUnbanFromRoomCallback.h"
 
 #include "packets/trade/AbortTradeMessageCallback.h"
 #include "packets/trade/AcceptTransactionMessageCallback.h"
@@ -162,6 +166,10 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<ChatLeaveRoomCallback>(0x493E3FFA);
 	messageCallbackFactory.registerObject<ChatInviteToRoomCallback>(0x7273ECD3);
 	messageCallbackFactory.registerObject<ChatUninviteFromRoomCallback>(0xFC8D01F1);
+	messageCallbackFactory.registerObject<ChatAddModeratorToRoomCallback>(0x90BDE76F);
+	messageCallbackFactory.registerObject<ChatRemoveModeratorFromRoomCallback>(0x8A3F8E04);
+	messageCallbackFactory.registerObject<ChatBanFromRoomCallback>(0xD9FA0194);
+	messageCallbackFactory.registerObject<ChatUnbanFromRoomCallback>(0x4C8F94A9);
 
 }
 
