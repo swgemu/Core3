@@ -41,14 +41,14 @@ public:
 		if (scene == NULL)
 			return;
 
-		CreatureObject* player = cast<CreatureObject*>(scene.get());
+		CreatureObject* uninviter = cast<CreatureObject*>(scene.get());
 
-		if (player == NULL)
+		if (uninviter == NULL)
 			return;
 
 		ManagedReference<ChatManager*> chatManager = server->getChatManager();
 		if (chatManager != NULL)
-			chatManager->handleChatUninvitePlayer(player, uninviteeName, roomPath, requestID);
+			chatManager->handleChatUninvitePlayer(uninviter, uninviteeName, roomPath, requestID);
 
 	}
 

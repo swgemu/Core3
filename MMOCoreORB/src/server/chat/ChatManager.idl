@@ -69,11 +69,12 @@ class ChatManager extends ManagedService implements Logger {
 	//Custom room will be deleted on server load if no joins for this time (7 days, in hours).
 	public static final unsigned int ROOMEXPIRATIONTIME = 168;
 
-	public static final int MODERATOR_SUCCESS = 0;
-	public static final int MODERATOR_FAIL = 1;
+	public static final int SUCCESS = 0;
+	public static final int FAIL = 1;
 	public static final int NOAVATAR = 4;
-	public static final int NOROOM = 5;
+	public static final int NOROOM = 6;
 	public static final int NOTPRIVATE = 9;
+	public static final int INVALIDBANSTATE = 12;
 	public static final int NOTINVITED = 13;
 	public static final int NOPERMISSION = 16;
 
@@ -167,6 +168,10 @@ class ChatManager extends ManagedService implements Logger {
 
 	public native void handleChatEnterRoomById(CreatureObject player, unsigned int roomID, int requestID, boolean bypassSecurity = false);
 	public native void handleChatQueryRoom(CreatureObject player, final string roomPath, int requestID);
+
+	@arg1preLocked
+	private native void broadcastQueryResultsToRoom(ChatRoom room);
+
 	public native void sendRoomList(CreatureObject player);
 
 	//////////////////////////////////////////////////////
@@ -224,7 +229,91 @@ class ChatManager extends ManagedService implements Logger {
 	 * @param kickeeName name of player who is being kicked
 	 * @param roomPath path to room the kickee is being kicked from
 	 */
-	public native void handleChatKickPlayerFromRoom(CreatureObject kicker, final string kickeeName, final string roomPath);
+	public native void handleChatKickPlayer(CreatureObject kicker, final string kickeeName, final string roomPath);
+
+	/**
+	 * Adds the new moderator's objectID to the room's moderator list if all checks are successful. Also adds to invite list if not already invited.
+	 * @pre { nothing is locked }
+	 * @post { nothing is locked }
+	 * @param oper player who is op'ing someone
+	 * @param opeeName name of player who is being op'd
+	 * @param roomPath path to room the op'ee is being made a moderator in
+	 * @param requestID the counter value the client sent for this request
+	 */
+	public native void handleChatAddModerator(CreatureObject oper, final string opeeName, final string roomPath, int requestID);
+
+	/**
+	 * Sends a ChatOnAddModeratorToRoom result packet to the player attempting to op someone in the room.
+	 * @param oper player who is op'ing another player
+	 * @param opeeName name of player who is being op'd
+	 * @param roomPath path to room the op'ee is being op'd in
+	 * @param error the error code to determine which result message the client displays
+	 * @param requestID the counter value the client sent for this request
+	 */
+	private native void sendChatOnAddModeratorResult(CreatureObject oper, final string opeeName, final string roomPath, int error, int requestID);
+
+	/**
+	 * Removes the deopee's objectID from the room's moderator list if all checks are successful.
+	 * @pre { nothing is locked }
+	 * @post { nothing is locked }
+	 * @param deoper player who is deop'ing someone
+	 * @param deopeeName name of player who is being deop'd
+	 * @param roomPath path to room the deopee is being deop'd from
+	 * @param requestID the counter value the client sent for this request
+	 */
+	public native void handleChatRemoveModerator(CreatureObject deoper, final string deopeeName, final string roomPath, int requestID);
+
+	/**
+	 * Sends a ChatOnRemoveModeratorFromRoom result packet to the player attempting to deop someone in the room.
+	 * @param deoper player who is deop'ing another player
+	 * @param deopeeName name of player who is being deop'd
+	 * @param roomPath path to room the deop'ee is being deop'd in
+	 * @param error the error code to determine which result message the client displays
+	 * @param requestID the counter value the client sent for this request
+	 */
+	private native void sendChatOnRemoveModeratorResult(CreatureObject deoper, final string deopeeName, final string roomPath, int error, int requestID);
+
+	/**
+	 * Adds the banee's objectID to the room's banned list if all checks are successful
+	 * @pre { nothing is locked }
+	 * @post { nothing is locked }
+	 * @param banner player who is banning someone
+	 * @param baneeName name of player who is being banned
+	 * @param roomPath path to room the banee is being banned from
+	 * @param requestID the counter value the client sent for this request
+	 */
+	public native void handleChatBanPlayer(CreatureObject banner, final string baneeName, final string roomPath, int requestID);
+
+	/**
+	 * Sends a ChatOnBanFromRoom result packet to the player attempting to ban someone from a room.
+	 * @param banner player who is banning someone
+	 * @param baneeName name of player who is being banned
+	 * @param roomPath path to room the banee is being banned from
+	 * @param error the error code to determine which result message the client displays
+	 * @param requestID the counter value the client sent for this request
+	 */
+	private native void sendChatOnBanResult(CreatureObject banner, final string baneeName, final string roomPath, int error, int requestID);
+
+	/**
+	 * Removes the unbanee's objectID from the room's banned list if all checks are successful
+	 * @pre { nothing is locked }
+	 * @post { nothing is locked }
+	 * @param unbanner player who is banning someone
+	 * @param unbaneeName name of player who is being banned
+	 * @param roomPath path to room the unbanee is being unbanned from
+	 * @param requestID the counter value the client sent for this request
+	 */
+	public native void handleChatUnbanPlayer(CreatureObject unbanner, final string unbaneeName, final string roomPath, int requestID);
+
+	/**
+	 * Sends a ChatOnUnbanFromRoom result packet to the player attempting to unban someone from a room.
+	 * @param unbanner player who is unbanning someone
+	 * @param unbaneeName name of player who is being unbanned
+	 * @param roomPath path to room the unbanee is being unbanned from
+	 * @param error the error code to determine which result message the client displays
+	 * @param requestID the counter value the client sent for this request
+	 */
+	private native void sendChatOnUnbanResult(CreatureObject unbanner, final string unbaneeName, final string roomPath, int error, int requestID);
 
 	//////////////////////////////////////////////////////
 
