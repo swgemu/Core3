@@ -171,7 +171,6 @@ class ChatRoom extends ManagedObject {
 
 	public synchronized void addModerator(CreatureObject player) {
 		moderatorList.put(player.getObjectID());
-		addInvited(player);
 	}
 
 	public synchronized void removeModerator(CreatureObject player) {
@@ -204,7 +203,6 @@ class ChatRoom extends ManagedObject {
 
 	public synchronized void removeInvited(CreatureObject player) {
 		invitedList.removeElement(player.getObjectID());
-		removeModerator(player);
 	}
 
 	public synchronized void removeAllInvited() {
@@ -229,7 +227,6 @@ class ChatRoom extends ManagedObject {
 
 	public synchronized void addBanned(CreatureObject player) {
 		bannedList.put(player.getObjectID());
-		removeInvited(player);
 	}
 
 	public synchronized void removeBanned(CreatureObject player) {
@@ -259,7 +256,7 @@ class ChatRoom extends ManagedObject {
 	public native void broadcastMessageCheckIgnore(BaseMessage msg, string senderName );
 
 	@dirty
-	public native boolean checkEnterPermission(CreatureObject player);
+	public native int checkEnterPermission(CreatureObject player);
 
 	@local
 	public synchronized void broadcastMessages(Vector<BaseMessage> messages) {
