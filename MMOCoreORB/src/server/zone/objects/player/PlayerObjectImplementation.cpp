@@ -81,6 +81,7 @@
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/managers/player/QuestInfo.h"
 #include "server/zone/objects/player/events/ForceMeditateTask.h"
+#include "server/zone/objects/player/sui/callbacks/FieldFactionChangeSuiCallback.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -2569,3 +2570,44 @@ bool PlayerObjectImplementation::hasEventPerk(const String& templatePath) {
 
 	return false;
 }
+
+void PlayerObjectImplementation::doFieldFactionChange(int newStatus) {
+	int curStatus = getFactionStatus();
+
+	if (curStatus == FactionStatus::OVERT || curStatus == newStatus)
+		return;
+
+	CreatureObject* parent = cast<CreatureObject*>(_this.getReferenceUnsafeStaticCast()->getParent().get().get());
+
+	if (parent == NULL)
+		return;
+
+	uint32 pvpStatusBitmask = parent->getPvpStatusBitmask();
+
+	if (pvpStatusBitmask & CreatureFlag::CHANGEFACTIONSTATUS)
+		return;
+
+	if (hasSuiBoxWindowType(SuiWindowType::FIELD_FACTION_CHANGE))
+		closeSuiWindowType(SuiWindowType::FIELD_FACTION_CHANGE);
+
+	ManagedReference<SuiInputBox*> inputbox = new SuiInputBox(parent, SuiWindowType::FIELD_FACTION_CHANGE);
+	inputbox->setCallback(new FieldFactionChangeSuiCallback(server->getZoneServer(), newStatus));
+	inputbox->setPromptTitle("@gcw:gcw_status_change"); // GCW STATUS CHANGE CONFIRMATION
+	inputbox->setUsingObject(_this.getReferenceUnsafeStaticCast());
+	inputbox->setCancelButton(true, "@cancel");
+
+	if (newStatus == FactionStatus::COVERT) {
+		if (curStatus == FactionStatus::OVERT) {
+			parent->sendSystemMessage("@gcw:cannot_change_from_combatant_in_field"); // You cannot change you status to combatant in the field. Go talk to a faction recruiter.
+			return;
+		}
+
+		inputbox->setPromptText("@gcw:gcw_status_change_covert"); // You are changing your GCW Status to 'Combatant'. This transition will take 30 seconds. It will allow you to attack and be attacked by enemy NPC's. Type YES in this box to confirm the change.
+	} else if (newStatus == FactionStatus::OVERT) {
+		inputbox->setPromptText("@gcw:gcw_status_change_overt"); // You are changing your GCW Status to 'Special Forces'. This transition will take 5 minutes. It will allow you to attack and be attacked by hostile players and NPC's.Type YES in this box to confirm the change.
+	}
+
+	addSuiBox(inputbox);
+	parent->sendMessage(inputbox->generateMessage());
+}
+
