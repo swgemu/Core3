@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_b8bdf004",
+        "filename": "MMOCoreORB/src/server/zone/managers/sui/SuiManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-22T11:40:24Z",
+      "side": 1,
+      "message": "What\u0027s this for?",
+      "revId": "54013f06630d972e91209c0c8c6307d8fa1af3f4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_d8ba240a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/HealEnhanceCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-22T11:40:24Z",
+      "side": 1,
+      "message": "No overwriting of weaker buffs when no args are given?",
+      "revId": "54013f06630d972e91209c0c8c6307d8fa1af3f4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
