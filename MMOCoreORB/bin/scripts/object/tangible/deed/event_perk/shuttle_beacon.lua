@@ -43,9 +43,8 @@
 
 object_tangible_deed_event_perk_shuttle_beacon = object_tangible_deed_event_perk_shared_shuttle_beacon:new {
 	templateType = EVENTPERKDEED,
-	gameObjectType = 8388615,
+	gameObjectType = 16413,
 	noTrade = 1,
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_event_perk_shuttle_beacon, "object/tangible/deed/event_perk/shuttle_beacon.iff")

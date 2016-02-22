@@ -189,6 +189,7 @@ public:
 	const static int EVENTPERK = 0x401A;
 	const static int LOTTERYDROID = 0x401B;
 	const static int SCAVENGERCHEST = 0x401C;
+	const static int SHUTTLEBEACON = 0x401D;
 	/// end not in client ***************
 
 	const static int TOOL = 0x8000;

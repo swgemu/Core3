@@ -1,0 +1,108 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.eventperk;
+
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.tangible.tasks.RemoveEventPerkItemTask;
+import server.zone.Zone;
+
+class ShuttleBeacon extends TangibleObject {
+	@weakReference
+	protected CreatureObject owner;
+
+	@dereferenced
+	protected Time purchaseTime;
+
+	@weakReference
+	protected CreatureObject shuttle;
+
+	protected int shuttleStatus;
+	protected int shuttleType;
+
+	protected boolean readyToTakeOff;
+
+	@dereferenced
+	protected transient Reference<RemoveEventPerkItemTask> removeEventPerkItemTask;
+
+	public ShuttleBeacon() {
+		Logger.setLoggingName("ShuttleBeacon");
+
+		shuttleStatus = 0;
+		shuttleType = 0;
+
+		owner = null;
+
+		readyToTakeOff = false;
+	}
+
+	public native void initializeTransientMembers();
+
+	@preLocked
+	@arg1preLocked
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);
+
+	@local
+	@dirty
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+
+	@preLocked
+	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+
+	@preLocked
+	public native void activateRemoveEvent(boolean immediate = false);
+
+	@preLocked
+	@arg1preLocked
+	public native void callShuttle(CreatureObject player);
+
+	@arg1preLocked
+	public native void spawnShuttle(CreatureObject player, int type);
+
+	@preLocked
+	public native void landShuttle(CreatureObject player);
+
+	@preLocked
+	@arg1preLocked
+	public native void dismissShuttle(CreatureObject player);
+
+	@preLocked
+	public native void destroyShuttle(CreatureObject player);
+
+	public native boolean canSpawnShuttle(CreatureObject player);
+
+	public native string getDurationString();
+
+	@preLocked
+	public void setOwner(CreatureObject player) {
+		owner = player;
+	}
+
+	@weakReference
+	@read
+	public CreatureObject getOwner() {
+		return owner;
+	}
+
+	@local
+	public Time getPurchaseTime() {
+		return purchaseTime;
+	}
+
+	@preLocked
+	public void setReadyToTakeOff(boolean status) {
+		readyToTakeOff = status;
+	}
+
+	@dirty
+	public boolean isEventPerkItem() {
+		return true;
+	}
+}

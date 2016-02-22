@@ -42,12 +42,13 @@
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
-#include "events/PlayerDisconnectEvent.h"
-#include "events/PlayerRecoveryEvent.h"
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
 #include "server/zone/managers/group/GroupManager.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/creature/variables/Skill.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/intangible/ControlDevice.h"
@@ -55,8 +56,8 @@
 #include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/structure/events/StructureSetOwnerTask.h"
-#include "badges/Badge.h"
-#include "badges/Badges.h"
+#include "server/zone/objects/player/badges/Badge.h"
+#include "server/zone/objects/player/badges/Badges.h"
 #include "server/zone/packets/player/BadgesResponseMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/weather/WeatherManager.h"
@@ -64,7 +65,7 @@
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/mission/DeliverMissionObjective.h"
 #include "server/zone/objects/mission/MissionObject.h"
-#include "FactionStatus.h"
+#include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/templates/intangible/SharedPlayerObjectTemplate.h"
 #include "server/zone/objects/player/sessions/TradeSession.h"
@@ -75,7 +76,7 @@
 #include "server/zone/managers/visibility/VisibilityManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
-#include "events/ForceRegenerationEvent.h"
+#include "server/zone/objects/player/events/ForceRegenerationEvent.h"
 #include "server/login/account/Account.h"
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/managers/player/QuestInfo.h"
@@ -2552,4 +2553,19 @@ int PlayerObjectImplementation::getCharacterAgeInDays() {
 	int days = timeDelta / 60 / 60 / 24;
 
 	return days;
+}
+
+bool PlayerObjectImplementation::hasEventPerk(const String& templatePath) {
+	ZoneServer* zoneServer = server->getZoneServer();
+	ManagedReference<SceneObject*> eventPerk = NULL;
+
+	for (int i = 0; i < currentEventPerks.size(); i++) {
+		uint64 perkID = currentEventPerks.get(i);
+		eventPerk = zoneServer->getObject(perkID);
+
+		if (eventPerk != NULL && eventPerk->getObjectTemplate()->getFullTemplateString().indexOf(templatePath) != -1)
+			return true;
+	}
+
+	return false;
 }

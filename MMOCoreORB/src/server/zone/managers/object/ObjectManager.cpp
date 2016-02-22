@@ -230,6 +230,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<TravelTerminal>(SceneObjectType::TRAVELTERMINAL);
 	objectFactory.registerObject<GuildTerminal>(SceneObjectType::GUILDTERMINAL);
 	objectFactory.registerObject<Jukebox>(SceneObjectType::JUKEBOX);
+	objectFactory.registerObject<ShuttleBeacon>(SceneObjectType::SHUTTLEBEACON);
 	objectFactory.registerObject<FlagGame>(SceneObjectType::FLAGGAME);
 	objectFactory.registerObject<LotteryDroid>(SceneObjectType::LOTTERYDROID);
 	objectFactory.registerObject<ScavengerChest>(SceneObjectType::SCAVENGERCHEST);
