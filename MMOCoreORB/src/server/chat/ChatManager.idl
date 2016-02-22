@@ -61,7 +61,7 @@ class ChatManager extends ManagedService implements Logger {
 	public static final unsigned int MAXCHATROOMNAMELENGTH = 25;
 
 	//Determines how many chat rooms a player character can own at one time.
-	public static final unsigned int MAXCUSTOMCHATROOMS = 10;
+	public static final unsigned int MAXCUSTOMCHATROOMS = 3;
 
 	//Determines how many persistent chat room nodes can be in a room path.
 	public static final unsigned int MAXPERSISTENTNODES = 5;
@@ -103,7 +103,10 @@ class ChatManager extends ManagedService implements Logger {
 	public native void loadPersistentRooms();
 
 	@preLocked
-	private native void checkRoomExpirations();
+	private native int checkRoomPaths();
+
+	@preLocked
+	private native int checkRoomExpirations();
 
 	//////////////////////////////////////////////////////
 
