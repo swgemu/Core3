@@ -212,7 +212,7 @@ int ChatRoomImplementation::checkEnterPermission(CreatureObject* player) {
 
 	switch (roomType) {
 	case ChatRoom::DEFAULT:
-		return ChatManager::NOTINVITED;
+		return ChatManager::SUCCESS;
 	case ChatRoom::AUCTION:
 		return ChatManager::SUCCESS;
 	case ChatRoom::GUILD: {
