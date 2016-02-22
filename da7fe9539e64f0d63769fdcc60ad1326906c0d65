@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_d851c4d9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/eventPromoter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-22T13:22:42Z",
+      "side": 1,
+      "message": "I don\u0027t think this is sufficient. What if they stick a shuttle beacon in their backpack or another container? or leave it in their house? It will allow them to get another one. Instead, you should add a hasEventPerkType() check to PlayerObject and iterate through their currentEventPerks, get each object by it\u0027s id and check it\u0027s type and return true if the type matches the passed arg.",
+      "revId": "da7fe9539e64f0d63769fdcc60ad1326906c0d65",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_f8712878",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/ShuttleBeacon.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-22T13:22:42Z",
+      "side": 1,
+      "message": "@arg1preLocked",
+      "revId": "da7fe9539e64f0d63769fdcc60ad1326906c0d65",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_186f3c94",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/ShuttleBeacon.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-22T13:22:42Z",
+      "side": 1,
+      "message": "@preLocked",
+      "revId": "da7fe9539e64f0d63769fdcc60ad1326906c0d65",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_b86bb084",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/ShuttleBeacon.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-22T13:22:42Z",
+      "side": 1,
+      "message": "@preLocked\n@arg1preLocked",
+      "revId": "da7fe9539e64f0d63769fdcc60ad1326906c0d65",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_d868e489",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/ShuttleBeacon.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-22T13:22:42Z",
+      "side": 1,
+      "message": "@preLocked",
+      "revId": "da7fe9539e64f0d63769fdcc60ad1326906c0d65",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_98634cb1",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/ShuttleBeaconImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-22T13:22:42Z",
+      "side": 1,
+      "message": "You should either add a radial option to show expiration time like the JukeBox or generated perks have, or add an item to the attributeList to show duration like in EventPerkDeed.",
+      "revId": "da7fe9539e64f0d63769fdcc60ad1326906c0d65",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_385800fa",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/ShuttleBeaconImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-22T13:22:42Z",
+      "side": 1,
+      "message": "You should probably close any open SHUTTLE_BEACON type sui boxes before sending them a new one.",
+      "revId": "da7fe9539e64f0d63769fdcc60ad1326906c0d65",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_980a6cd1",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/ShuttleBeaconImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-22T13:22:42Z",
+      "side": 1,
+      "message": "cross lock to this.",
+      "revId": "da7fe9539e64f0d63769fdcc60ad1326906c0d65",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_f8f848c6",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/ShuttleBeaconImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-22T13:22:42Z",
+      "side": 1,
+      "message": "Since you aren\u0027t sending the messages that are sent after the same checks in EventPerkDeedImplementation::handleObjectMenuSelect, the above two checks are redundant. The one below should suffice.",
+      "revId": "da7fe9539e64f0d63769fdcc60ad1326906c0d65",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_785e78eb",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/ShuttleBeaconImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-22T13:22:42Z",
+      "side": 1,
+      "message": "make this a crosslock",
+      "revId": "da7fe9539e64f0d63769fdcc60ad1326906c0d65",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_380fa0e3",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/ShuttleBeaconImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-22T13:22:42Z",
+      "side": 1,
+      "message": "This isn\u0027t needed since it\u0027s persistenceLevel is zero.",
+      "revId": "da7fe9539e64f0d63769fdcc60ad1326906c0d65",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_5814d4f4",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/ShuttleBeaconImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-22T13:22:42Z",
+      "side": 1,
+      "message": "You could actually just call destroyShuttle() instead of the above. Send NULL for the arg and add a null check on player before sending the message.",
+      "revId": "da7fe9539e64f0d63769fdcc60ad1326906c0d65",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
