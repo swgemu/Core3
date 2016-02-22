@@ -50,6 +50,9 @@ class ChatManager extends ManagedService implements Logger {
 	private transient VectorMap<string, unsigned int> spatialChatTypes;
 
 	@dereferenced
+	private transient VectorMap<unsigned int, string> spatialChatTypeSkillNeeded;
+
+	@dereferenced
 	private transient VectorMap<unsigned int, short> spatialChatDistances;
 
 	private transient short defaultSpatialChatDistance;
