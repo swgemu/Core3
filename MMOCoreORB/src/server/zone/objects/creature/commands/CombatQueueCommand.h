@@ -151,6 +151,20 @@ public:
 					return GENERALERROR;
 				}
 			}
+			ManagedReference<CreatureObject*> targetCreature = targetObject.castTo<CreatureObject*>();
+
+			if (targetCreature != NULL && targetCreature->getFaction() != creature->getFaction() && ghost->getFactionStatus() != FactionStatus::OVERT) {
+
+				if (targetCreature->isPlayerCreature()) {
+					PlayerObject* targetGhost = targetCreature->getPlayerObject();
+
+					if (targetGhost != NULL && targetGhost->getFactionStatus() == FactionStatus::OVERT) {
+						ghost->doFieldFactionChange(FactionStatus::OVERT);
+					}
+				} else {
+					ghost->doFieldFactionChange(FactionStatus::COVERT);
+				}
+			}
 		}
 
 		if (creature->isKneeling() && weapon->isMeleeWeapon() && !(poolsToDamage == 0) && !weapon->isJediWeapon())
