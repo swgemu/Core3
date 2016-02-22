@@ -19,6 +19,7 @@ include server.zone.templates.TemplateReference;
 import server.zone.managers.mission.spawnmaps.NpcSpawnPoint;
 include server.zone.objects.mission.MissionTypes;
 include server.zone.managers.faction.FactionManager;
+include server.zone.packets.scene.AttributeListMessage;
 
 class MissionObject extends IntangibleObject {
 	protected WaypointObject waypointToMission;
@@ -110,6 +111,17 @@ class MissionObject extends IntangibleObject {
 
 		Logger.setLoggingName("MissionObject");
 	}
+	
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	@preLocked
 	public native WaypointObject createWaypoint();
