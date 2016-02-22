@@ -157,8 +157,10 @@ void ShuttleBeaconImplementation::spawnShuttle(CreatureObject* player, int type)
 		return;
 
 	SCHEDULE_TASK_2(tempBeacon, player, 250, {
-		Locker locker(tempBeacon_p);
-		tempBeacon_p->landShuttle(player_p);
+		if (tempBeacon_p != NULL) {
+			Locker locker(tempBeacon_p);
+			tempBeacon_p->landShuttle(player_p);
+		}
 	});
 }
 
@@ -193,8 +195,10 @@ void ShuttleBeaconImplementation::landShuttle(CreatureObject* player) {
 	shuttleStatus = 1;
 
 	SCHEDULE_TASK_1(tempBeacon, 40000, {
-		Locker locker(tempBeacon_p);
-		tempBeacon_p->setReadyToTakeOff(true);
+		if (tempBeacon_p != NULL) {
+			Locker locker(tempBeacon_p);
+			tempBeacon_p->setReadyToTakeOff(true);
+		}
 	});
 }
 
@@ -227,8 +231,10 @@ void ShuttleBeaconImplementation::dismissShuttle(CreatureObject* player) {
 	player->sendSystemMessage("@event_perk:shuttle_is_leaving"); // Transmission Recieved: Shuttle is leaving the area.
 
 	SCHEDULE_TASK_2(tempBeacon, player, 20000, {
-		Locker locker(tempBeacon_p);
-		tempBeacon_p->destroyShuttle(player_p);
+		if (tempBeacon_p != NULL) {
+			Locker locker(tempBeacon_p);
+			tempBeacon_p->destroyShuttle(player_p);
+		}
 	});
 }
 

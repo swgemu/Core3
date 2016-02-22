@@ -143,12 +143,36 @@ public:
 			PlayerObject* ghost = creature->getPlayerObject();
 
 			if (ghost != NULL) {
-				if (ghost->isOnLoadScreen()) {
+				if (ghost->isOnLoadScreen())
 					ghost->setOnLoadScreen(false);
-				}
 
-				if (ghost->isAFK()) {
+				if (ghost->isAFK())
 					return GENERALERROR;
+
+				ManagedReference<TangibleObject*> targetTano = targetObject.castTo<TangibleObject*>();
+
+				if (targetTano != NULL && creature->getFaction() != 0 && targetTano->getFaction() != 0 && targetTano->getFaction() != creature->getFaction() && ghost->getFactionStatus() != FactionStatus::OVERT) {
+					if (targetTano->isCreatureObject()) {
+						ManagedReference<CreatureObject*> targetCreature = targetObject.castTo<CreatureObject*>();
+
+						if (targetCreature != NULL) {
+							if (targetCreature->isPlayerCreature()) {
+								PlayerObject* targetGhost = targetCreature->getPlayerObject();
+
+								if (targetGhost != NULL && targetGhost->getFactionStatus() == FactionStatus::OVERT) {
+									ghost->doFieldFactionChange(FactionStatus::OVERT);
+								}
+							} else {
+								if (ghost->getFactionStatus() == FactionStatus::ONLEAVE)
+									ghost->doFieldFactionChange(FactionStatus::COVERT);
+							}
+						}
+					} else {
+						if (ghost->getFactionStatus() == FactionStatus::ONLEAVE && !(targetTano->getPvpStatusBitmask() & CreatureFlag::OVERT))
+							ghost->doFieldFactionChange(FactionStatus::COVERT);
+						else if ((targetTano->getPvpStatusBitmask() & CreatureFlag::OVERT))
+							ghost->doFieldFactionChange(FactionStatus::OVERT);
+					}
 				}
 			}
 		}
