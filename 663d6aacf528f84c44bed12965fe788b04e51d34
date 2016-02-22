@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_782c384b",
+        "filename": "MMOCoreORB/src/server/chat/ChatManager.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-22T14:17:24Z",
+      "side": 1,
+      "message": "deoper not player",
+      "revId": "663d6aacf528f84c44bed12965fe788b04e51d34",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_b802d0b2",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatBanFromRoomCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-22T14:17:24Z",
+      "side": 1,
+      "message": "invite?",
+      "revId": "663d6aacf528f84c44bed12965fe788b04e51d34",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_d8ff84a9",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatBanFromRoomCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-22T14:17:24Z",
+      "side": 1,
+      "message": "invited?",
+      "revId": "663d6aacf528f84c44bed12965fe788b04e51d34",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_d816a4f1",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatOnBanFromRoom.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-22T14:17:24Z",
+      "side": 1,
+      "message": "Inviter?",
+      "revId": "663d6aacf528f84c44bed12965fe788b04e51d34",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_78d3d838",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatOnUnbanFromRoom.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-22T14:17:24Z",
+      "side": 1,
+      "message": "Inviter?",
+      "revId": "663d6aacf528f84c44bed12965fe788b04e51d34",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_98d82c55",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatOnUnbanFromRoom.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-22T14:17:24Z",
+      "side": 1,
+      "message": "Banee?",
+      "revId": "663d6aacf528f84c44bed12965fe788b04e51d34",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
