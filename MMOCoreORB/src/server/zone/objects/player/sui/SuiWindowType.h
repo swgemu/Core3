@@ -263,7 +263,8 @@ public:
 		DROID_ADD_STRUCTURE_AMOUNT         = 1036,
 		PET_FIX_DIALOG					   = 1037,
 		JUKEBOX_SELECTION				   = 1038,
-		SHUTTLE_BEACON					   = 1039
+		SHUTTLE_BEACON					   = 1039,
+		FIELD_FACTION_CHANGE			   = 1040
 	};
 };
 
