@@ -3010,8 +3010,10 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
 	if (getFaction() != object->getFaction() && !(targetFactionStatus == FactionStatus::ONLEAVE))
 		return false;
 
-	if ((targetFactionStatus == FactionStatus::OVERT) && !(currentFactionStatus == FactionStatus::OVERT))
+	if ((targetFactionStatus == FactionStatus::OVERT) && !(currentFactionStatus == FactionStatus::OVERT)) {
+		ghost->doFieldFactionChange(FactionStatus::OVERT);
 		return false;
+	}
 
 	if (!(targetFactionStatus == FactionStatus::ONLEAVE) && (currentFactionStatus == FactionStatus::ONLEAVE))
 		return false;
