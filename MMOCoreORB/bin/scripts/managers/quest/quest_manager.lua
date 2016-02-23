@@ -32,6 +32,12 @@ end
 -- @param quest the index number for the quest to complete.
 function QuestManager.completeQuest(pCreatureObject, quest)
 	if (QuestManager.shouldSendSystemMessage(pCreatureObject, quest)) then
+		local summary = QuestManager.getJournalSummary(quest)
+
+		if (summary ~= "") then
+			CreatureObject(pCreatureObject):sendSystemMessage(summary)
+		end
+
 		CreatureObject(pCreatureObject):sendSystemMessage("@quest/quests:task_complete")
 	end
 
@@ -86,6 +92,16 @@ function QuestManager.getQuestName(questID)
 	end
 
 	return LuaQuestInfo(pQuest):getQuestName()
+end
+
+function QuestManager.getJournalSummary(questID)
+	local pQuest = getQuestInfo(questID)
+
+	if (pQuest == nil) then
+		return ""
+	end
+
+	return LuaQuestInfo(pQuest):getJournalSummary()
 end
 
 function QuestManager.getCurrentQuestID(pPlayer)
