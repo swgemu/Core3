@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_b8765005",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3013,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-23T13:16:25Z",
+      "side": 1,
+      "message": "Is it intended to be able to go straight to Special Forces from On Leave via a field faction change?",
+      "revId": "0a0062cfdb5d48083ed701603c4e3af85c50366b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_d8730414",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CombatQueueCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-23T13:16:25Z",
+      "side": 1,
+      "message": "Is it intended to be able to go straight to Special Forces from On Leave via a field faction change?",
+      "revId": "0a0062cfdb5d48083ed701603c4e3af85c50366b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_186adc1a",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/FieldFactionChangeSuiCallback.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-23T13:16:25Z",
+      "side": 1,
+      "message": "A lot can happen in 30 seconds (or 5 minutes). You should add null checks to these tasks.\n\nI should have had you do the same for the tasks in your shuttle beacon patch so go ahead and do so and include it with this patch.",
+      "revId": "0a0062cfdb5d48083ed701603c4e3af85c50366b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
