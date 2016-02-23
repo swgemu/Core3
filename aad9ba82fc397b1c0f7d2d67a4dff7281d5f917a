@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_f853686a",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-23T13:34:15Z",
+      "side": 1,
+      "message": "Put this outside the while loop. You only need to get the galaxy name once.",
+      "revId": "aad9ba82fc397b1c0f7d2d67a4dff7281d5f917a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
