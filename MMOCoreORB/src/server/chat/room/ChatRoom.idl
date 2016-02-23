@@ -335,6 +335,10 @@ class ChatRoom extends ManagedObject {
 		return name;
 	}
 
+	public void setFullPath(final string newPath) {
+		fullPath = newPath;
+	}
+
 	@read
 	public string getFullPath() {
 		return fullPath;

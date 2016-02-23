@@ -276,7 +276,7 @@ void ChatManagerImplementation::initiatePlanetRooms() {
 void ChatManagerImplementation::loadPersistentRooms() {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	info("Loading chat rooms from chatrooms.db", true);
+	info("Loading and validating chat rooms from chatrooms.db", true);
 
 	ObjectDatabase* chatRoomDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("chatrooms", true);
 
@@ -285,12 +285,16 @@ void ChatManagerImplementation::loadPersistentRooms() {
 		return;
 	}
 
-	int i = 0;
+	int loaded = 0;
+	int repaired = 0;
+	int deleted = 0;
+	bool galaxyNameChanged = false;
 
 	try {
 		ObjectDatabaseIterator iterator(chatRoomDatabase);
 
 		uint64 objectID = 0;
+		String currentGalaxy = server->getGalaxyName();
 
 		while (iterator.getNextKey(objectID)) {
 
@@ -304,11 +308,35 @@ void ChatManagerImplementation::loadPersistentRooms() {
 				continue;
 			}
 
-			//Re-initialize the chat room.
-			room->setChatManager(_this.getReferenceUnsafeStaticCast());
-			room->setZoneServer(server);
-			addRoom(room);
+			//Validate the Galaxy name in the room path.
+			String oldPath = room->getFullPath();
+			String pathGalaxy = oldPath.subString(oldPath.indexOf('.') + 1, oldPath.length());
+			pathGalaxy = pathGalaxy.subString(0, pathGalaxy.indexOf('.'));
 
+			if (pathGalaxy != currentGalaxy) { //Room needs its path corrected.
+				if (!galaxyNameChanged) {
+					info("Detected a Galaxy name change to: '" + currentGalaxy + "'", true);
+					info("Attempting to repair chat room paths...", true);
+					galaxyNameChanged = true; //Display these messages only once.
+				}
+
+				String newPath = oldPath.replaceFirst(pathGalaxy, currentGalaxy);
+				info("Old path = " + oldPath, false);
+				info("New path = " + newPath, false);
+
+				if (getChatRoomByFullPath(newPath) == NULL) {
+					room->setFullPath(newPath);
+					info("Successfully updated room to the new path.", false);
+					repaired++;
+				} else {
+					info("There is already a room at the new path! Deleting this room from the database.", false);
+					ObjectManager::instance()->destroyObjectFromDatabase(objectID);
+					deleted++;
+					continue;
+				}
+			}
+
+			//Reset transient parent's room ID on the room.
 			if (!room->hasPersistentParent()) {
 				String parentPath = room->getFullPath();
 				parentPath = parentPath.subString(0, parentPath.lastIndexOf('.'));
@@ -317,26 +345,33 @@ void ChatManagerImplementation::loadPersistentRooms() {
 				if (parent != NULL) {
 					room->setParentRoomID(parent->getRoomID());
 					parent->addSubRoom(room->getName().toLowerCase(), room->getRoomID());
-				} else
-					error("Non-persistent parent (" + parentPath + ") was NULL while attempting to set sub room");
+				}
 			}
 
-			i++;
-
+			//Re-initialize the chat room.
+			room->setChatManager(_this.getReferenceUnsafeStaticCast());
+			room->setZoneServer(server);
+			addRoom(room);
+			loaded++;
 		}
 
 	} catch (DatabaseException& e) {
 		error("Database exception in ChatManager::loadPersistentRooms(): " + e.getMessage());
 	}
 
-	info("Loaded " + String::valueOf(i) + " chat rooms.", true);
+	int totalDeleted = deleted + checkRoomPaths();
+	int expired = checkRoomExpirations();
 
-	checkRoomExpirations();
+	info("Load room results: Loaded = " + String::valueOf(loaded - totalDeleted - expired) + " Repaired = " +
+	String::valueOf(repaired) + " Deleted = " + String::valueOf(totalDeleted) + " Expired = " + String::valueOf(expired), true);
 
 }
 
-void ChatManagerImplementation::checkRoomExpirations() {
+int ChatManagerImplementation::checkRoomPaths() {
 	//ChatManager locked
+
+	Vector<ChatRoom*> roomsToDelete;
+	int deleted = 0;
 
 	HashTableIterator<unsigned int, ManagedReference<ChatRoom* > > iter = roomMap->iterator();
 
@@ -346,9 +381,48 @@ void ChatManagerImplementation::checkRoomExpirations() {
 		if (room == NULL)
 			continue;
 
-		if (room->getLastJoinTime() / (1000*60*60)  > ChatManager::ROOMEXPIRATIONTIME) //in hours
-			destroyRoom(room);
+		//Check if room's path is broken.
+		if (room->getChatRoomType() == ChatRoom::CUSTOM) {
+			if (getChatRoomByFullPath(room->getFullPath()) == NULL)
+				roomsToDelete.add(room);
+		}
 	}
+
+	//Delete rooms with broken paths.
+	for (int i = 0; i < roomsToDelete.size(); ++i) {
+		ChatRoom* badRoom = roomsToDelete.get(i);
+		if (badRoom != NULL) {
+			error("Broken path detected! Deleting room: " + badRoom->getFullPath());
+			roomMap->remove(badRoom->getRoomID());
+			ObjectManager::instance()->destroyObjectFromDatabase(badRoom->_getObjectID());
+			deleted++;
+		}
+	}
+
+	return deleted;
+
+}
+
+int ChatManagerImplementation::checkRoomExpirations() {
+	//ChatManager locked
+
+	int expired = 0;
+
+	HashTableIterator<unsigned int, ManagedReference<ChatRoom* > > iter = roomMap->iterator();
+
+	while (iter.hasNext()) {
+		ChatRoom* room = iter.next();
+
+		if (room == NULL)
+			continue;
+
+		if (room->getLastJoinTime() / (1000*60*60)  > ChatManager::ROOMEXPIRATIONTIME) { //in hours
+			destroyRoom(room);
+			expired++;
+		}
+	}
+
+	return expired;
 
 }
 
