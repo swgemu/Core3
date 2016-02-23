@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_b8c3b037",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CombatQueueCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-23T05:33:01Z",
+      "side": 1,
+      "message": "Can\u0027t change status by trying to attack a turret?",
+      "revId": "b1ebee6823ac7de04ed000fdeb048204650d48d2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_98e26cd4",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CombatQueueCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-23T05:33:01Z",
+      "side": 1,
+      "message": "What if one of them is neutral? It looks like you\u0027ll send the sui in a lot of situations where you don\u0027t want to. Neutral player trying to attack overt player, neutral player trying to attack factional npc, onleave factioned player attacking neutral npc, etc.",
+      "revId": "b1ebee6823ac7de04ed000fdeb048204650d48d2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_38e7a0e6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CombatQueueCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-23T05:33:01Z",
+      "side": 1,
+      "message": "ghost might be null here. You should wrap all of this new code within the ghost\u0027s null check.",
+      "revId": "b1ebee6823ac7de04ed000fdeb048204650d48d2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_58ecd4c7",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2590,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-23T05:33:01Z",
+      "side": 1,
+      "message": "You should close any already open windows of this type before sending a new one.",
+      "revId": "b1ebee6823ac7de04ed000fdeb048204650d48d2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_18c73c47",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2604,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-23T05:33:01Z",
+      "side": 1,
+      "message": "Your prompt text comments are reversed.",
+      "revId": "b1ebee6823ac7de04ed000fdeb048204650d48d2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_f8d048f9",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/FieldFactionChangeSuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-23T05:33:01Z",
+      "side": 1,
+      "message": "You should pass player into the task instead and lock it. Then get ghost and set the status. Same for the other task below.",
+      "revId": "b1ebee6823ac7de04ed000fdeb048204650d48d2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
