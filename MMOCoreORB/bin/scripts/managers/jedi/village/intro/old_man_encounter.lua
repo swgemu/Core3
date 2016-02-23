@@ -129,12 +129,11 @@ function OldManEncounter:giveForceCrystalToPlayer(pCreatureObject)
 	if (pCrystal ~= nil) then
 		CreatureObject(pCreatureObject):removeScreenPlayState(0xFFFFFFFFFFFFFFFF, self.taskName .. OLD_MAN_FORCE_CRYSTAL_ID_STRING)
 		CreatureObject(pCreatureObject):setScreenPlayState(SceneObject(pCrystal):getObjectID(), self.taskName .. OLD_MAN_FORCE_CRYSTAL_ID_STRING)
-		CreatureObject(pCreatureObject):sendSystemMessage("@quest/quests:task_complete")
-		CreatureObject(pCreatureObject):sendSystemMessage("@quest/quests:quest_journal_updated")
 
 		VillageJediManagerCommon.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_HAS_CRYSTAL)
 		QuestManager.completeQuest(pCreatureObject, QuestManager.quests.OLD_MAN_INITIAL)
 		QuestManager.completeQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)
+		CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/intro:crystal_message")
 	end
 end
 
