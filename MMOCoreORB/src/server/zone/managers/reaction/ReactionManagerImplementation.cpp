@@ -386,18 +386,13 @@ void ReactionManagerImplementation::doKnockdown(CreatureObject* victim, AiAgent*
 	else
 		knockdownAnim = "attack_high_center_light_0";
 
-	// TODO: Get knockdown animation working
-	//
 
 	victim->inflictDamage(attacker, CreatureAttribute::MIND, victim->getHAM(CreatureAttribute::MIND) + 200, true, true, true);
 
-	victim->setPosture(CreaturePosture::KNOCKEDDOWN, false, false); // set posture and don't update client
+
+	victim->updatePostures(); // set posture, don't send posture message, but send DeltaCreo3
 
 	attacker->doCombatAnimation(victim, knockdownAnim.hashCode(), HIT, 0xFF); // play attacker animation - This will update the victim's posture on the client
-
-	victim->doCombatAnimation(STRING_HASHCODE("change_posture")); // force defender to change posture after attack animation has completed
-
-
 }
 
 void ReactionManagerImplementation::doReactionFineMailCheck(CreatureObject* player) {
