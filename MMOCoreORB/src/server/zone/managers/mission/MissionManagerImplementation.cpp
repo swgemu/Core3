@@ -1421,9 +1421,7 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 
 	NameManager* nm = processor->getNameManager();
 
-	int randTexts = System::random(24) + 1;
 
-	mission->setMissionNumber(randTexts);
 	mission->setCreatorName(nm->makeCreatureName());
 
 	mission->setMissionTargetName(TemplateManager::instance()->getTemplate(STRING_HASHCODE("object/tangible/mission/mission_recon_target.iff"))->getObjectName());
@@ -1437,23 +1435,41 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 
 	switch (faction) {
 	case FactionManager::FACTIONIMPERIAL:
+	{
+		int randTexts = System::random(48)+1; // There are actually 50 imperial recon missions including bugged m19
+		if (randTexts >= 19)
+			  randTexts++;
+
+		mission->setMissionNumber(randTexts);
+          
 		mission->setRewardFactionPointsImperial(10);
 		mission->setRewardFactionPointsRebel(0);
 		mission->setMissionTitle("mission/mission_npc_recon_imperial_easy", "m" + String::valueOf(randTexts) + "t");
 		mission->setMissionDescription("mission/mission_npc_recon_imperial_easy", "m" + String::valueOf(randTexts) + "o");
 		break;
+	}
 	case FactionManager::FACTIONREBEL:
+	{
+		int randTexts = System::random(49) + 1;
+		mission->setMissionNumber(randTexts);
+
 		mission->setRewardFactionPointsImperial(0);
 		mission->setRewardFactionPointsRebel(10);
 		mission->setMissionTitle("mission/mission_npc_recon_rebel_easy", "m" + String::valueOf(randTexts) + "t");
 		mission->setMissionDescription("mission/mission_npc_recon_rebel_easy", "m" + String::valueOf(randTexts) + "o");
 		break;
+	}
 	default:
+	{
+		int randTexts = System::random(24) + 1;
+		mission->setMissionNumber(randTexts);
+
 		mission->setRewardFactionPointsImperial(0);
 		mission->setRewardFactionPointsRebel(0);
 		mission->setMissionTitle("mission/mission_npc_recon_neutral_easy", "m" + String::valueOf(randTexts) + "t");
 		mission->setMissionDescription("mission/mission_npc_recon_neutral_easy", "m" + String::valueOf(randTexts) + "o");
 		break;
+	}
 	}
 
 	mission->setMissionDifficulty(1);
