@@ -209,6 +209,29 @@ public:
 		}
 	}
 
+	uint32 getEnhancePackStrength(EnhancePack *enhancePack, CreatureObject* enhancer, CreatureObject *patient) const {
+		uint32 buffPower = 0;
+		if (BuffAttribute::isProtection(enhancePack->getAttribute())) {  // If it's a protection enhancement, wound treatment has no effect
+			buffPower = enhancePack->getEffectiveness();
+			buffPower = buffPower * (1 - patient->calculateBFRatio()) * (1 - enhancer->calculateBFRatio());
+		} else
+			buffPower = enhancePack->calculatePower(enhancer, patient);
+
+		return buffPower;
+	}
+
+	uint32 getBuffStrength(Buff* existingbuff, int attribute) const {
+
+		if (existingbuff != NULL) {
+
+			if (BuffAttribute::isProtection(attribute))
+				return existingbuff->getSkillModifierValue(BuffAttribute::getProtectionString(attribute));
+			else
+				return existingbuff->getAttributeModifierValue(attribute);
+		}
+		return 0;
+	}
+
 	void awardXp(CreatureObject* creature, const String& type, int power) const {
 		if (!creature->isPlayerCreature())
 			return;
@@ -269,10 +292,9 @@ public:
 
 		parseModifier(arguments.toString(), attribute, objectId);
 
-		if (attribute == BuffAttribute::UNKNOWN) {
-			enhancer->sendSystemMessage("@healing_response:healing_response_75"); //You must specify a valid attribute.
-			return GENERALERROR;
-		}
+		CreatureObject* patient = cast<CreatureObject*>( targetCreature);
+
+		Locker clocker(patient, creature);
 
 		ManagedReference<EnhancePack*> enhancePack = NULL;
 
@@ -299,12 +321,63 @@ public:
 				attribute = enhancePack->getAttribute();
 			}
 		} else {
-			enhancePack = findEnhancePack(creature, attribute);
+			if (attribute == BuffAttribute::UNKNOWN) {
+				SortedVector<Buff*> currentBuffs; //values are sorted by duration
+				VectorMap<Buff*, int> attributeMap;
+
+				for(int i=0; i<CreatureAttribute::MIND; i++) {
+					uint32 buffCRC = BuffCRC::getMedicalBuff(i);
+					if(patient->hasBuff(buffCRC)) {
+						Buff *buff = patient->getBuff(buffCRC);
+						currentBuffs.put(buff);
+						attributeMap.put(buff, i);
+
+						continue;
+					}
+
+					attribute = i;
+					enhancePack = findEnhancePack(creature, i);
+					if(enhancePack != NULL)
+						break;
+				}
+
+
+				if(enhancePack == NULL) {
+
+					// We couldn't find any enhance packs for non-applied buffs.
+					// Loop through the applied buffs and see if one matches our criteria
+					// This should be sorted by time applied - This ensures we don't overwrite the same buff repeatedly
+					for(int i=0; i<currentBuffs.size(); i++) {
+						Buff *buff = currentBuffs.get(i);
+
+						attribute = attributeMap.get(buff);
+						enhancePack = findEnhancePack(creature, attribute);
+						if(enhancePack != NULL) {
+							uint32 currentBuff = getBuffStrength(buff, attribute);
+							uint32 newBuff = getEnhancePackStrength(enhancePack, enhancer, patient);
+
+							if(newBuff < currentBuff) {
+								enhancePack = NULL;
+								attribute = BuffAttribute::UNKNOWN;
+							} else {
+								break;
+							}
+						}
+					}
+
+					if(attribute == BuffAttribute::UNKNOWN) {
+						StringIdChatParameter stringId("healing", "no_attrib_to_buff"); // %TT has no attribute that you can enhance.
+						stringId.setTT(patient->getDisplayedName());
+						creature->sendSystemMessage(stringId);
+						return GENERALERROR;
+					}
+				}
+			} else {
+				enhancePack = findEnhancePack(creature, attribute);
+			}
 		}
 
-		CreatureObject* patient = cast<CreatureObject*>( targetCreature);
 
-		Locker clocker(patient, creature);
 
 		if (patient->isDead() || patient->isRidingMount())
 			patient = enhancer;
@@ -320,22 +393,11 @@ public:
 		if (patient->hasBuff(buffcrc)) {
 			Buff* existingbuff = patient->getBuff(buffcrc);
 
-			if (existingbuff != NULL){
-
-				if (BuffAttribute::isProtection(attribute))
-					currentBuff = existingbuff->getSkillModifierValue(BuffAttribute::getProtectionString(attribute));
-				else
-					currentBuff = existingbuff->getAttributeModifierValue(attribute);
-			}
+			currentBuff = getBuffStrength(existingbuff, attribute);
 		}
 
 		//Applies battle fatigue
-		uint32 buffPower = 0;
-		if (BuffAttribute::isProtection(attribute)) {  // If it's a protection enhancement, wound treatment has no effect
-			buffPower = enhancePack->getEffectiveness();
-			buffPower = buffPower * (1 - patient->calculateBFRatio()) * (1 - enhancer->calculateBFRatio());
-		} else
-			buffPower = enhancePack->calculatePower(enhancer, patient);
+		uint32 buffPower = getEnhancePackStrength(enhancePack, enhancer, patient);
 
 		if (buffPower < currentBuff) {
 			if (patient == enhancer)
@@ -374,6 +436,8 @@ public:
 
 		return SUCCESS;
 	}
+
+
 
 };
 
