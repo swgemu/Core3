@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_d8722449",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2560,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-23T02:53:14Z",
+      "side": 1,
+      "message": "initialize to NULL",
+      "revId": "576e42ad0eba51091021110d358ad5a2c6299780",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_788f5824",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/ShuttleBeaconImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-23T02:53:14Z",
+      "side": 1,
+      "message": "TangibleObjectImplementation::fillAttributeList(alm, object);",
+      "revId": "576e42ad0eba51091021110d358ad5a2c6299780",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
