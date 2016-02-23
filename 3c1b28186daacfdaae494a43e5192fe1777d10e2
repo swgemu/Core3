@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_987eece3",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/HealEnhanceCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-23T12:55:40Z",
+      "side": 1,
+      "message": "The comment is wrong",
+      "revId": "3c1b28186daacfdaae494a43e5192fe1777d10e2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
