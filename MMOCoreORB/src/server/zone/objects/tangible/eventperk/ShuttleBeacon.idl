@@ -70,7 +70,6 @@ class ShuttleBeacon extends TangibleObject {
 	public native void landShuttle(CreatureObject player);
 
 	@preLocked
-	@arg1preLocked
 	public native void dismissShuttle(CreatureObject player);
 
 	@preLocked

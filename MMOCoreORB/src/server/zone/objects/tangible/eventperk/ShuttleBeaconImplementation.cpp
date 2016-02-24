@@ -61,7 +61,14 @@ int ShuttleBeaconImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			return 0;
 		}
 
-		dismissShuttle(player);
+		ManagedReference<ShuttleBeacon*> tempBeacon = _this.getReferenceUnsafeStaticCast();
+
+		SCHEDULE_TASK_2(tempBeacon, player, 250, {
+			if (tempBeacon_p != NULL) {
+				Locker locker(tempBeacon_p);
+				tempBeacon_p->dismissShuttle(player_p);
+			}
+		});
 	}
 
 	return 0;
@@ -178,6 +185,8 @@ void ShuttleBeaconImplementation::landShuttle(CreatureObject* player) {
 	if (tempBeacon == NULL)
 		return;
 
+	Locker clocker(strongShuttle, _this.getReferenceUnsafeStaticCast());
+
 	readyToTakeOff = false;
 
 	if (shuttleType == 0 || shuttleType == 2) {
@@ -203,7 +212,7 @@ void ShuttleBeaconImplementation::landShuttle(CreatureObject* player) {
 }
 
 void ShuttleBeaconImplementation::dismissShuttle(CreatureObject* player) {
-	if (shuttle == NULL)
+	if (shuttle == NULL || player == NULL)
 		return;
 
 	ManagedReference<CreatureObject*> strongShuttle = shuttle.get();
@@ -220,6 +229,8 @@ void ShuttleBeaconImplementation::dismissShuttle(CreatureObject* player) {
 		player->sendSystemMessage("@event_perk:shuttle_not_take_off"); // The shuttle is not yet ready for take off.
 		return;
 	}
+
+	Locker clocker(strongShuttle, _this.getReferenceUnsafeStaticCast());
 
 	if (shuttleType == 1) {
 		strongShuttle->setPosture(CreaturePosture::PRONE, true, true);
