@@ -1,5 +1,6 @@
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
 local OldManIntroEncounter = require("managers.jedi.village.intro.old_man_intro_encounter")
+local OldManOutroEncounter = require("managers.jedi.village.outro.old_man_outro_encounter")
 local QuestManager = require("managers.quest.quest_manager")
 local MellichaeOutroTheater = require("managers.jedi.village.outro.mellichae_outro_theater")
 
@@ -29,12 +30,10 @@ end
 
 function oldManIntroConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-	if OldManIntroEncounter:doesOldManBelongToThePlayer(pPlayer, pNpc) then
-		if (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pPlayer, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE)) then
-			return convoTemplate:getScreen("intro_mellichae")
-		else
-			return convoTemplate:getScreen("intro")
-		end
+	if OldManOutroEncounter:doesOldManBelongToThePlayer(pPlayer, pNpc) then
+		return convoTemplate:getScreen("intro_mellichae")
+	elseif OldManIntroEncounter:doesOldManBelongToThePlayer(pPlayer, pNpc) then
+		return convoTemplate:getScreen("intro")
 	else
 		return convoTemplate:getScreen("nothing_to_discuss")
 	end
