@@ -4,7 +4,7 @@ local QuestManager = require("managers.quest.quest_manager")
 local SpawnMobiles = require("utils.spawn_mobiles")
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
 require("utils.helpers")
-local OldManEncounter = require("managers.jedi.village.intro.old_man_encounter")
+local OldManOutroEncounter = require("managers.jedi.village.outro.old_man_outro_encounter")
 
 MellichaeOutroTheater = GoToTheater:new {
 	-- Task properties
@@ -153,7 +153,7 @@ function MellichaeOutroTheater:onPlayerKilled(pCreatureObject, pKiller, nothing)
 
 	Logger:log("Player was killed.", LT_INFO)
 	CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/exit:final_fail") -- You have failed the Mellichae encounter, you will be given the oppertunity to attempt it again in the near future.
-	OldManEncounter:start(pCreatureObject)
+	OldManOutroEncounter:start(pCreatureObject)
 	QuestManager.resetQuest(pCreatureObject, QuestManager.quests.FS_THEATER_CAMP)
 	QuestManager.resetQuest(pCreatureObject, QuestManager.quests.FS_THEATER_FINAL)
 	deleteData(SceneObject(pCreatureObject) .. ":totalNum:Shrines:Red")

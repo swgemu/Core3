@@ -81,7 +81,7 @@ function Task:finish(pCreatureObject)
 
 	if self:hasTaskStarted(pCreatureObject) then
 		Logger:log("Finishing task " .. self.taskName, LT_INFO)
-		if self:callFunctionIfNotNil(self.taskFinish, true, pCreatureObject) == true then
+		if self:callFunctionIfNotNil(self.taskFinish, true, pCreatureObject) then
 			Logger:log(self.taskName .. " finished.", LT_INFO)
 			self:setTaskFinished(pCreatureObject)
 
