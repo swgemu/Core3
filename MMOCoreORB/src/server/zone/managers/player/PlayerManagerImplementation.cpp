@@ -710,6 +710,18 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 		stringId.setStringId("base_player", "prose_target_dead");
 		stringId.setTT(player->getObjectID());
 		(cast<CreatureObject*>(attacker))->sendSystemMessage(stringId);
+
+		ThreatMap* threatMap = player->getThreatMap();
+		Reference<ThreatMap*> copyThreatMap = new ThreatMap(*threatMap);
+		PlayerManager* pManager = _this.getReferenceUnsafeStaticCast();
+		ManagedReference<CreatureObject*> playerRef = player->asCreatureObject();
+
+		EXECUTE_TASK_3(pManager, playerRef, copyThreatMap, {
+				if (playerRef_p != NULL) {
+					Locker locker(playerRef_p);
+					pManager_p->doPvpDeathRatingUpdate(playerRef_p, copyThreatMap_p);
+				}
+		});
 	}
 
 	if (player->isRidingMount()) {
@@ -5016,3 +5028,170 @@ void PlayerManagerImplementation::sendAdminList(CreatureObject* player) {
 	player->sendMessage(listBox->generateMessage());
 }
 
+void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player, ThreatMap* threatMap) {
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	uint32 totalDamage = threatMap->getTotalDamage();
+	int defenderPvpRating = ghost->getPvpRating();
+	int victimRatingTotalDelta = 0;
+	ManagedReference<CreatureObject*> highDamageAttacker = NULL;
+	uint32 highDamageAmount = 0;
+
+	for (int i = 0; i < threatMap->size(); ++i) {
+		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
+		CreatureObject* attacker = threatMap->elementAt(i).getKey();
+
+		if (entry == NULL || attacker == NULL || attacker == player || !attacker->isPlayerCreature())
+			continue;
+
+		if (player->getDistanceTo(attacker) > 80.f)
+			continue;
+
+		PlayerObject* attackerGhost = attacker->getPlayerObject();
+
+		if (attackerGhost == NULL)
+			continue;
+
+		if (attacker->getFaction() == 0 || attacker->getFaction() == player->getFaction() || attackerGhost->getFactionStatus() != FactionStatus::OVERT)
+			continue;
+
+		int curAttackerRating = attackerGhost->getPvpRating();
+
+		if (highDamageAmount == 0 || entry->getTotalDamage() > highDamageAmount) {
+			highDamageAmount = entry->getTotalDamage();
+			highDamageAttacker = attacker;
+		}
+
+		if (ghost->hasOnKillerList(attacker->getObjectID())) {
+			String stringFile;
+
+			if (attacker->getSpecies() == CreatureObject::TRANDOSHAN)
+				stringFile = "rating_throttle_trandoshan_winner";
+			else
+				stringFile = "rating_throttle_winner";
+
+			StringIdChatParameter toAttacker;
+			toAttacker.setStringId("pvp_rating", stringFile);
+			toAttacker.setTT(player->getFirstName());
+			toAttacker.setTU(attacker->getObjectID());
+			toAttacker.setDI(curAttackerRating);
+
+			attacker->sendSystemMessage(toAttacker);
+			continue;
+		}
+
+		ghost->addToKillerList(attacker->getObjectID());
+
+		if (defenderPvpRating <= PlayerObject::PVP_RATING_FLOOR) {
+			String stringFile;
+			if (attacker->getSpecies() == CreatureObject::TRANDOSHAN)
+				stringFile = "rating_floor_trandoshan_winner";
+			else
+				stringFile = "rating_floor_winner";
+
+			StringIdChatParameter toAttacker;
+			toAttacker.setStringId("pvp_rating", stringFile);
+			toAttacker.setTT(player->getFirstName());
+			toAttacker.setDI(curAttackerRating);
+
+			attacker->sendSystemMessage(toAttacker);
+
+			continue;
+		}
+
+		float damageContribution = (float) entry->getTotalDamage() / totalDamage;
+
+		int attackerRatingDelta = 20 + ((curAttackerRating - defenderPvpRating) / 25);
+		int victimRatingDelta = -20 + ((defenderPvpRating - curAttackerRating) / 25);
+
+		if (attackerRatingDelta > 40)
+			attackerRatingDelta = 40;
+		else if (attackerRatingDelta < 0)
+			attackerRatingDelta = 0;
+
+		if (victimRatingDelta < -40)
+			victimRatingDelta = -40;
+		else if (victimRatingDelta > 0)
+			victimRatingDelta = 0;
+
+		attackerRatingDelta *= damageContribution;
+		victimRatingDelta *= damageContribution;
+
+		victimRatingTotalDelta += victimRatingDelta;
+		int newRating = curAttackerRating + attackerRatingDelta;
+
+		Locker crossLock(attacker, player);
+
+		attackerGhost->setPvpRating(newRating);
+
+		crossLock.release();
+
+		String stringFile;
+
+		int randNum = System::random(2) + 1;
+		if (attacker->getSpecies() == CreatureObject::TRANDOSHAN)
+			stringFile = "trandoshan_win" + String::valueOf(randNum);
+		else
+			stringFile = "win" + String::valueOf(randNum);
+
+		StringIdChatParameter toAttacker;
+		toAttacker.setStringId("pvp_rating", stringFile);
+		toAttacker.setTT(player->getFirstName());
+		toAttacker.setDI(newRating);
+
+		attacker->sendSystemMessage(toAttacker);
+	}
+
+	if (highDamageAttacker == NULL)
+		return;
+
+	if (defenderPvpRating <= PlayerObject::PVP_RATING_FLOOR) {
+		String stringFile;
+		if (player->getSpecies() == CreatureObject::TRANDOSHAN)
+			stringFile = "rating_floor_trandoshan_loser";
+		else
+			stringFile = "rating_floor_victim";
+
+		StringIdChatParameter toVictim;
+		toVictim.setStringId("pvp_rating", stringFile);
+		toVictim.setTT(highDamageAttacker->getFirstName());
+		toVictim.setDI(defenderPvpRating);
+
+		player->sendSystemMessage(toVictim);
+	} else if (victimRatingTotalDelta != 0) {
+		int newDefenderRating = defenderPvpRating + victimRatingTotalDelta;
+		ghost->setPvpRating(newDefenderRating);
+
+		String stringFile;
+
+		int randNum = System::random(2) + 1;
+		if (player->getSpecies() == CreatureObject::TRANDOSHAN)
+			stringFile = "trandoshan_killed" + String::valueOf(randNum);
+		else
+			stringFile = "killed" + String::valueOf(randNum);
+
+		StringIdChatParameter toVictim;
+		toVictim.setStringId("pvp_rating", stringFile);
+		toVictim.setTT(highDamageAttacker->getFirstName());
+		toVictim.setDI(newDefenderRating);
+
+		player->sendSystemMessage(toVictim);
+	} else {
+		String stringFile;
+
+		if (player->getSpecies() == CreatureObject::TRANDOSHAN)
+			stringFile = "rating_throttle_trandoshan_loser";
+		else
+			stringFile = "rating_throttle_loser";
+
+		StringIdChatParameter toVictim;
+		toVictim.setStringId("pvp_rating", stringFile);
+		toVictim.setTT(highDamageAttacker->getFirstName());
+		toVictim.setDI(defenderPvpRating);
+
+		player->sendSystemMessage(toVictim);
+	}
+}
