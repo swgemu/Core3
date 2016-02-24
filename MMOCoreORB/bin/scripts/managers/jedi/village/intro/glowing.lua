@@ -1,5 +1,6 @@
 local ObjectManager = require("managers.object.object_manager")
-local OldManEncounter = require("managers.jedi.village.intro.old_man_encounter")
+local OldManIntroEncounter = require("managers.jedi.village.intro.old_man_intro_encounter")
+local OldManOutroEncounter = require("managers.jedi.village.outro.old_man_outro_encounter")
 local MellichaeOutroTheater = require("managers.jedi.village.outro.mellichae_outro_theater")
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
 local Logger = require("utils.logger")
@@ -180,7 +181,7 @@ function Glowing:badgeAwardedEventHandler(pCreatureObject, pCreatureObject2, bad
 
 	if self:countBadges(pCreatureObject) >= TOTALNUMBEROFBADGESREQUIRED then
 		VillageJediManagerCommon.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_GLOWING)
-		OldManEncounter:start(pCreatureObject)
+		OldManIntroEncounter:start(pCreatureObject)
 	end
 
 	return 0
@@ -206,7 +207,7 @@ function Glowing:onPlayerLoggedIn(pCreatureObject)
 			MellichaeOutroTheater:finish(pCreatureObject)
 			MellichaeOutroTheater:start(pCreatureObject)
 		else
-			OldManEncounter:start(pCreatureObject)
+			OldManOutroEncounter:start(pCreatureObject)
 		end
 	end
 end

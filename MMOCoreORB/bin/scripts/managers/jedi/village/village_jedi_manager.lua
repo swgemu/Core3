@@ -4,7 +4,7 @@ require("managers.jedi.village.intro.old_man_conv_handler")
 local ExperienceConverter = require("screenplays.village.convos.convohelpers.experience_converter")
 local Glowing = require("managers.jedi.village.intro.glowing")
 local Logger = require("utils.logger")
-local OldManEncounter = require("managers.jedi.village.intro.old_man_encounter")
+local OldManOutroEncounter = require("managers.jedi.village.outro.old_man_outro_encounter")
 local SithShadowEncounter = require("managers.jedi.village.intro.sith_shadow_encounter")
 local SithShadowIntroTheater = require("managers.jedi.village.intro.sith_shadow_intro_theater")
 local QuestManager = require("managers.quest.quest_manager")
@@ -107,7 +107,7 @@ function VillageJediManager:onFSTreeCompleted(pCreatureObject, branch)
 		VillageJediManagerCommon.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE)
 
 		-- Start Old Man.
-		OldManEncounter:start(pCreatureObject)
+		OldManOutroEncounter:start(pCreatureObject)
 	end
 end
 

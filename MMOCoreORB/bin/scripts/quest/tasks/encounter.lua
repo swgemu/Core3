@@ -210,7 +210,7 @@ function Encounter:handleSpawnEvent(pCreatureObject)
 	end
 
 	if not self:callFunctionIfNotNil(self.isEncounterFinished, true, pCreatureObject) then
-		if self:isPlayerInPositionForEncounter(pCreatureObject) then
+		if self:isPlayerInPositionForEncounter(pCreatureObject) and not CreatureObject(pCreatureObject):isDead() then
 			self:createEncounter(pCreatureObject)
 		end
 
