@@ -1,5 +1,4 @@
 local ObjectManager = require("managers.object.object_manager")
-local Reflex1Escort = require("managers.jedi.village.phase1.fs_reflex1_escort")
 local QuestManager = require("managers.quest.quest_manager")
 
 villageFsReflex1PrisonerConvoHandler = {  }

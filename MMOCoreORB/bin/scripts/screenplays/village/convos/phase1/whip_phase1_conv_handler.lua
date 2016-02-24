@@ -1,6 +1,4 @@
 local ObjectManager = require("managers.object.object_manager")
-local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
-local FsReflex1 = require("managers.jedi.village.phase1.fs_reflex1")
 local QuestManager = require("managers.quest.quest_manager")
 
 villageWhipPhase1ConvoHandler = {  }
