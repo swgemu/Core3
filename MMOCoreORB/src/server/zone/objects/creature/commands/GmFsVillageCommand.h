@@ -64,7 +64,7 @@ public:
 
 		Lua* lua = DirectorManager::instance()->getLuaInstance();
 
-		lua->runFile("scripts/managers/jedi/village/village_gm_commands.lua");
+		lua->runFile("scripts/screenplays/village/village_gm_commands.lua");
 
 		Reference<LuaFunction*> luaVillageGmCmd = lua->createFunction("VillageGmCommands", functionName, 0);
 		*luaVillageGmCmd << creature;
