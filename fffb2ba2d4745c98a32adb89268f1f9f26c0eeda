@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_b892d0f4",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/FieldFactionChangeSuiCallback.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-24T01:18:31Z",
+      "side": 1,
+      "message": "Instead of passing player directly, you should pass a ManagedReference of player.",
+      "revId": "fffb2ba2d4745c98a32adb89268f1f9f26c0eeda",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_18865cba",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/FieldFactionChangeSuiCallback.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-24T01:18:31Z",
+      "side": 1,
+      "message": "Null check ghost as well.",
+      "revId": "fffb2ba2d4745c98a32adb89268f1f9f26c0eeda",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
