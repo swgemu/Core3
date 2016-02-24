@@ -80,7 +80,7 @@ TEST_F(JediManagerTest, ShouldRunTheHolocronJediManagerLuaFileIfHolocronJediProg
 	constructorDefaults(mockLua);
 
 	ON_CALL(mockLua, getGlobalInt(String("jediProgressionType"))).WillByDefault(Return((int)JediManager::HOLOGRINDJEDIPROGRESSION /* gcc-4.4.5 cast-hack */));
-	EXPECT_CALL(mockLua, runFile(String("scripts/managers/jedi/hologrind/hologrind_jedi_manager.lua"))).Times(1);
+	EXPECT_CALL(mockLua, runFile(String("scripts/managers/jedi/hologrind_jedi_manager.lua"))).Times(1);
 
 	jediManager->loadConfiguration(&mockLua);
 }
@@ -91,7 +91,7 @@ TEST_F(JediManagerTest, ShouldRunTheVillageJediManagerLuaFileIfVillageJediProgre
 	constructorDefaults(mockLua);
 
 	ON_CALL(mockLua, getGlobalInt(String("jediProgressionType"))).WillByDefault(Return((int)JediManager::VILLAGEJEDIPROGRESSION /* gcc-4.4.5 cast-hack */));
-	EXPECT_CALL(mockLua, runFile(String("scripts/managers/jedi/village/village_jedi_manager.lua"))).Times(1);
+	EXPECT_CALL(mockLua, runFile(String("scripts/managers/jedi/village_jedi_manager.lua"))).Times(1);
 
 	jediManager->loadConfiguration(&mockLua);
 }

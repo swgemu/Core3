@@ -73,7 +73,7 @@ local XpCrafting =
 	{"crafting_structure_general", 35}
 }
 
-ExperienceConverter = Object:new {}
+ExperienceConverter = ScreenPlay:new {}
 
 -- Since the logic flow of the conversation calls set always before get, it should work, but just in case...
 function ExperienceConverter:setSuiTransferExperienceSelection(var, oid)
