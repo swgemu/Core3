@@ -143,9 +143,8 @@ function SithShadowIntroTheater:onPlayerKilled(pCreatureObject, pKiller, nothing
 
 	Logger:log("Player was killed.", LT_INFO)
 	if SpawnMobiles.isFromSpawn(pCreatureObject, SithShadowIntroTheater.taskName, pKiller) then
-		OldManEncounter:removeForceCrystalFromPlayer(pCreatureObject)
+		OldManIntroEncounter:removeForceCrystalFromPlayer(pCreatureObject)
 		spatialChat(pKiller, SITH_SHADOW_MILITARY_TAKE_CRYSTAL)
-		OldManEncounter:start(pCreatureObject)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.TWO_MILITARY)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD)
