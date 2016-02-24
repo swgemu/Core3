@@ -71,7 +71,6 @@ function SithShadowEncounter:onLoot(pLootedCreature, pLooter, nothing)
 			self:addWaypointDatapadAsLoot(pLootedCreature)
 			QuestManager.completeQuest(pLooter, QuestManager.quests.TwO_MILITARY)
 			QuestManager.completeQuest(pLooter, QuestManager.quests.GOT_DATAPAD)
-			CreatureObject(pLooter):sendSystemMessage("@quest/quests:quest_journal_updated")
 			return 1
 		end
 	end
@@ -91,15 +90,11 @@ function SithShadowEncounter:onPlayerKilled(pCreatureObject, pKiller, nothing)
 
 	Logger:log("Player was killed.", LT_INFO)
 	if SpawnMobiles.isFromSpawn(pCreatureObject, SithShadowEncounter.taskName, pKiller) then
-		OldManEncounter:removeForceCrystalFromPlayer(pCreatureObject)
 		spatialChat(pKiller, SITH_SHADOW_MILITARY_TAKE_CRYSTAL)
-		OldManEncounter:start(pCreatureObject)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.TwO_MILITARY)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD)
-
-		CreatureObject(pCreatureObject):sendSystemMessage("@quest/quests:task_failure")
-		CreatureObject(pCreatureObject):sendSystemMessage("@quest/quests:quest_journal_updated")
+		OldManIntroEncounter:removeForceCrystalFromPlayer(pCreatureObject)
 		return 1
 	end
 
@@ -151,7 +146,7 @@ function SithShadowEncounter:isEncounterFinished(pCreatureObject)
 		return false
 	end
 
-	return not OldManEncounter:hasForceCrystal(pCreatureObject) or QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD)
+	return not OldManIntroEncounter:hasForceCrystal(pCreatureObject) or QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD)
 end
 
 -- Handling of the activation of the looted datapad.

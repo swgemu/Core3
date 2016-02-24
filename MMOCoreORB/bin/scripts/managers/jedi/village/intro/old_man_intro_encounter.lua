@@ -10,11 +10,9 @@ local OLD_MAN_DESPAWN_TIME = 10 * 1000
 local OLD_MAN_FORCE_CRYSTAL_STRING = "object/tangible/loot/quest/force_sensitive/force_crystal.iff"
 local OLD_MAN_FORCE_CRYSTAL_ID_STRING = "force_crystal_id"
 
-local OLD_MAN_GREETING_STRING_EXIT = "@quest/force_sensitive/exit:old_man_greeting"
-
-OldManEncounter = Encounter:new {
+OldManIntroEncounter = Encounter:new {
 	-- Task properties
-	taskName = "OldManEncounter",
+	taskName = "OldManIntroEncounter",
 	-- Encounter properties
 	--minimumTimeUntilEncounter = 12 * 60 * 60 * 1000, -- 12 hours
 	--maximumTimeUntilEncounter = 24 * 60 * 60 * 1000, -- 24 hours
@@ -31,20 +29,10 @@ OldManEncounter = Encounter:new {
 	inRangeValue = 16,
 }
 
--- Figure out if we are pre or post village...
-function OldManEncounter:isPostVillage(pCreatureObject)
-
-	if (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE)) then
-		return true
-	else
-		return false
-	end
-end
-
 -- Get the first name of the player.
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @return the first name of the player.
-function OldManEncounter:getPlayerFirstName(pCreatureObject)
+function OldManIntroEncounter:getPlayerFirstName(pCreatureObject)
 	local firstName = CreatureObject(pCreatureObject):getFirstName()
 
 	if firstName == nil then
@@ -57,14 +45,9 @@ end
 -- Send the greeting string to the player.
 -- @param pOldMan pointer to the old man.
 -- @param pCreatureObject pointer to the creature object of the player.
-function OldManEncounter:sendGreetingString(pOldMan, pCreatureObject)
+function OldManIntroEncounter:sendGreetingString(pOldMan, pCreatureObject)
 	Logger:log("Sending greeting string.", LT_INFO)
-	local greetingString = ""
-	if (not self:isPostVillage(pCreatureObject)) then
-		greetingString = LuaStringIdChatParameter(OLD_MAN_GREETING_STRING)
-	else
-		greetingString = LuaStringIdChatParameter(OLD_MAN_GREETING_STRING_EXIT)
-	end
+	local greetingString = LuaStringIdChatParameter(OLD_MAN_GREETING_STRING)
 	local firstName = self:getPlayerFirstName(pCreatureObject)
 	greetingString:setTT(firstName)
 	spatialChat(pOldMan, greetingString:_getObject())
@@ -74,23 +57,19 @@ end
 -- Send the greeting string from the old man and activate the old man quest.
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param oldManPointerList a list with a pointer to the old man.
-function OldManEncounter:onEncounterInRange(pCreatureObject, oldManPointerList)
+function OldManIntroEncounter:onEncounterInRange(pCreatureObject, oldManPointerList)
 	if (pCreatureObject == nil or oldManPointerList == nil or oldManPointerList[1] == nil) then
 		return
 	end
 
 	self:sendGreetingString(oldManPointerList[1], pCreatureObject)
 
-	if (self:isPostVillage(pCreatureObject)) then
-		QuestManager.activateQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FINAL)
-	else
-		QuestManager.activateQuest(pCreatureObject, QuestManager.quests.OLD_MAN_INITIAL)
-	end
+	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.OLD_MAN_INITIAL)
 end
 
 -- Event handler for the scheduled despawn of the old man when the player has finished the conversation.
 -- @param pCreatureObject pointer to the creatureObject of the player.
-function OldManEncounter:handleScheduledDespawn(pCreatureObject)
+function OldManIntroEncounter:handleScheduledDespawn(pCreatureObject)
 	if (pCreatureObject == nil) then
 		return
 	end
@@ -100,18 +79,18 @@ end
 
 -- Schedule despawn of old man due to player conversation has ended.
 -- @param pCreatureObject pointer to the creature object of the player.
-function OldManEncounter:scheduleDespawnOfOldMan(pCreatureObject)
+function OldManIntroEncounter:scheduleDespawnOfOldMan(pCreatureObject)
 	if (pCreatureObject == nil) then
 		return
 	end
 
 	Logger:log("Scheduling despawn of old man.", LT_INFO)
-	createEvent(OLD_MAN_DESPAWN_TIME, "OldManEncounter", "handleScheduledDespawn", pCreatureObject, "")
+	createEvent(OLD_MAN_DESPAWN_TIME, "OldManIntroEncounter", "handleScheduledDespawn", pCreatureObject, "")
 end
 
 -- Give the force crystal to the player.
 -- @param pCreatureObject pointer to the creature object of the player.
-function OldManEncounter:giveForceCrystalToPlayer(pCreatureObject)
+function OldManIntroEncounter:giveForceCrystalToPlayer(pCreatureObject)
 	if (pCreatureObject == nil) then
 		return
 	end
@@ -137,7 +116,7 @@ function OldManEncounter:giveForceCrystalToPlayer(pCreatureObject)
 	end
 end
 
-function OldManEncounter:hasForceCrystal(pCreatureObject)
+function OldManIntroEncounter:hasForceCrystal(pCreatureObject)
 	local forceCrystalId = CreatureObject(pCreatureObject):getScreenPlayState(self.taskName .. OLD_MAN_FORCE_CRYSTAL_ID_STRING)
 	local pForceCrystal = getSceneObject(forceCrystalId)
 
@@ -146,7 +125,7 @@ end
 
 -- Remove the force crystal from the player.
 -- @param pCreatureObject pointer to the creature object of the player.
-function OldManEncounter:removeForceCrystalFromPlayer(pCreatureObject)
+function OldManIntroEncounter:removeForceCrystalFromPlayer(pCreatureObject)
 	if (pCreatureObject == nil) then
 		return
 	end
@@ -160,23 +139,24 @@ function OldManEncounter:removeForceCrystalFromPlayer(pCreatureObject)
 		SceneObject(pForceCrystal):destroyObjectFromDatabase()
 	end
 
-	CreatureObject(pCreatureObject):sendSystemMessage("@quest/quests:quest_journal_updated")
 	CreatureObject(pCreatureObject):removeScreenPlayState(0xFFFFFFFFFFFFFFFF, self.taskName .. OLD_MAN_FORCE_CRYSTAL_ID_STRING)
 
 	QuestManager.resetQuest(pCreatureObject, QuestManager.quests.OLD_MAN_INITIAL)
 	QuestManager.resetQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)
+	
+	self:start(pCreatureObject)
 end
 
 -- Check if the player is conversing with the old man that is spawned for the player
 -- @param pConversingPlayer pointer to the creature object of the player.
 -- @param pConversingOldMan pointer to the creature object of the conversing old man.
 -- @return true if the old man belongs to the player.
-function OldManEncounter:doesOldManBelongToThePlayer(pConversingPlayer, pConversingOldMan)
+function OldManIntroEncounter:doesOldManBelongToThePlayer(pConversingPlayer, pConversingOldMan)
 	if (pConversingPlayer == nil or pConversingOldMan == nil) then
 		return false
 	end
 
-	local playerOldMan = SpawnMobiles.getSpawnedMobiles(pConversingPlayer, OldManEncounter.taskName)
+	local playerOldMan = SpawnMobiles.getSpawnedMobiles(pConversingPlayer, OldManIntroEncounter.taskName)
 
 	if playerOldMan ~= nil and playerOldMan[1] ~= nil and #playerOldMan == 1 then
 		return SceneObject(pConversingOldMan):getObjectID() == SceneObject(playerOldMan[1]):getObjectID()
@@ -188,30 +168,25 @@ end
 -- Check if the old man encounter is finished or not.
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @return true if the encounter is finished. I.e. the player has the crystal.
-function OldManEncounter:isEncounterFinished(pCreatureObject)
+function OldManIntroEncounter:isEncounterFinished(pCreatureObject)
 	if (pCreatureObject == nil) then
 		return
 	end
 
-	if (not self:isPostVillage(pCreatureObject)) then
-		return QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)
-	else
-		return QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FINAL)
-	end
-
+	return QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)
 end
 
 -- Handling of finishing the encounter.
 -- @param pCreatureObject pointer to the creature object of the player.
-function OldManEncounter:taskFinish(pCreatureObject)
+function OldManIntroEncounter:taskFinish(pCreatureObject)
 	if (pCreatureObject == nil) then
-		return
+		return true
 	end
 
-	if (not self:isPostVillage(pCreatureObject)) then
-		Logger:log("Finishing " .. self.taskName .. " and starting SithShadowEncounter.", LT_INFO)
-		SithShadowEncounter:start(pCreatureObject)
-	end
+	Logger:log("Finishing " .. self.taskName .. " and starting SithShadowEncounter.", LT_INFO)
+	SithShadowEncounter:start(pCreatureObject)
+	
+	return true
 end
 
-return OldManEncounter
+return OldManIntroEncounter
