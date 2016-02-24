@@ -24,7 +24,7 @@ function heroOfTatIntercomConvoHandler:getInitialScreen(pPlayer, pNpc, pConversa
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 
 	local playerID = CreatureObject(pPlayer):getObjectID()
-	local inProgressID = readData("hero_of_tat_ranch_player_id")
+	local inProgressID = readData("hero_of_tat:ranch_player_id")
 	if (inProgressID ~= 0 and inProgressID ~= playerID) then
 		return convoTemplate:getScreen("intro_noquest")
 	elseif (readData(playerID .. ":hero_of_tat_honor:accepted") == 1) then
