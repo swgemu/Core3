@@ -88,7 +88,12 @@ void MissionObjectImplementation::setMissionDescription(const String& file, cons
 
 void MissionObjectImplementation::setMissionTitle(const String& file, const String& id, bool notifyClient) {
 	missionTitle.setStringId(file, id);
+
+	Locker clocker(waypointToMission, _this.getReferenceUnsafeStaticCast());
+
 	waypointToMission->setCustomObjectName(missionTitle.getFullPath(), false);
+
+	clocker.release();
 
 	if (!notifyClient)
 		return;
