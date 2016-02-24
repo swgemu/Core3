@@ -146,6 +146,9 @@ class PlayerObject extends IntangibleObject {
 	protected transient SynchronizedSortedVector<CreatureObject> duelList;
 
 	@dereferenced
+	protected Vector<unsigned int> killerList;
+
+	@dereferenced
 	protected BountyHunterTefRemovalTaskMap bountyLockList;
 
 	protected unsigned long declaredResidence;
@@ -276,6 +279,8 @@ class PlayerObject extends IntangibleObject {
 	public static final int LOGGINGOUT = 5;
 	public static final int LOADING = 6;
 
+	public static final int PVP_RATING_FLOOR = 500;
+
 	public PlayerObject() {
 		characterBitmask = 0;
 
@@ -308,7 +313,7 @@ class PlayerObject extends IntangibleObject {
 		
 		jediState = 0;
 
-		pvpRating = 0;
+		pvpRating = 1200;
 
 		trainerZoneName = "";
 
@@ -1765,5 +1770,31 @@ class PlayerObject extends IntangibleObject {
 	public native boolean hasEventPerk(final string templatePath);
 
 	public native void doFieldFactionChange(int newStatus);
+
+	public void addToKillerList(unsigned int playerID) {
+		killerList.add(0, playerID);
+
+		if (killerList.size() > 10)
+			killerList.remove(killerList.size() - 1);
+	}
+
+	public boolean hasOnKillerList(unsigned int playerID) {
+		return killerList.contains(playerID);
+	}
+
+	@read
+	public int getPvpRating() {
+		if (pvpRating == 0)
+			return 1200;
+
+		return pvpRating;
+	}
+
+	public void setPvpRating(int rating) {
+		if (rating < PVP_RATING_FLOOR)
+			rating = PVP_RATING_FLOOR;
+
+		pvpRating = rating;
+	}
 }
 
