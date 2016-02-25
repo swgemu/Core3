@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_dbc0de2c",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1850,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-25T23:00:54Z",
+      "side": 1,
+      "message": "Your bool casts are in the wrong place. poolsToDamage \u0026 XX need to be cast, but everything else is already a boolean (since they are the result of operator\u003e() and \u0026\u0026), and then you are implicitly casting the result of a bool to an integer, which is not a guaranteed operation (depending on architecture).",
+      "range": {
+        "startLine": 1848,
+        "startChar": 1,
+        "endLine": 1850,
+        "endChar": 97
+      },
+      "revId": "63a766f2e8bf13c4411cf70a756f4e528cebc753",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_9be266d4",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1852,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-25T23:00:54Z",
+      "side": 1,
+      "message": "Explicit is better than implicit. Let people know that you are casting the result and not some other part.",
+      "range": {
+        "startLine": 1852,
+        "startChar": 23,
+        "endLine": 1852,
+        "endChar": 44
+      },
+      "revId": "63a766f2e8bf13c4411cf70a756f4e528cebc753",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_7bdd1214",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1904,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-25T23:00:54Z",
+      "side": 1,
+      "message": "Why remove the integer cast here? Explicit is better than implicit. Also, your math is wonky. If you have two pools explicitly damaged, then the remaining pool will use only the result of the most damaged pool, so it won\u0027t add up again. You have already calculated the spillover damage above so that it all adds up correctly. Use that instead.",
+      "range": {
+        "startLine": 1899,
+        "startChar": 0,
+        "endLine": 1904,
+        "endChar": 112
+      },
+      "revId": "63a766f2e8bf13c4411cf70a756f4e528cebc753",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
