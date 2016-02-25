@@ -56,6 +56,7 @@ FastBlastCommand = {
 	animationCRC = hashCode("fire_5_special_single_light"),
 
 	combatSpam = "fastblast",
+	weaponType = PISTOLWEAPON,
 
 	range = -1
 }
