@@ -143,5 +143,9 @@ class AuctionManager extends ManagedService implements Logger {
 	public native void updateAuctionOwner(AuctionItem item, CreatureObject player);
 
 	public native string removeColorCodes(final string name);
+	
+	@dirty
+	@local
+	public native boolean checkItemCategory(int category, AuctionItem item);
 }
 
