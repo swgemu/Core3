@@ -46,15 +46,15 @@ void ArmorObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 	lightSaber = armorTemplate->getLightSaber();
 
 	hitLocation = armorTemplate->getHitLocation();
-	if (hitLocation == CombatManager::NOLOCATION) {
+	if (hitLocation == WearablesDeltaVector::NOLOCATION) {
 		if (hasArrangementDescriptor("chest2"))
-			hitLocation |= CombatManager::CHEST;
+			hitLocation |= WearablesDeltaVector::CHEST;
 		if (hasArrangementDescriptor("bicep_r") || hasArrangementDescriptor("bicep_l") || hasArrangementDescriptor("bracer_upper_r") || hasArrangementDescriptor("bracer_upper_l") || hasArrangementDescriptor("gloves"))
-			hitLocation |= CombatManager::ARMS;
+			hitLocation |= WearablesDeltaVector::ARMS;
 		if (hasArrangementDescriptor("shoes") || hasArrangementDescriptor("pants1"))
-			hitLocation |= CombatManager::LEGS;
+			hitLocation |= WearablesDeltaVector::LEGS;
 		if (hasArrangementDescriptor("hat"))
-			hitLocation |= CombatManager::HEAD;
+			hitLocation |= WearablesDeltaVector::HEAD;
 	}
 
 	setSliceable(true);

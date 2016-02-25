@@ -56,7 +56,7 @@ public:
 		vulnerabilites = 0;
 		specialResists = 0;
 
-		hitLocation = CombatManager::NOLOCATION;
+		hitLocation = WearablesDeltaVector::NOLOCATION;
 	}
 
 	~ArmorObjectTemplate() {

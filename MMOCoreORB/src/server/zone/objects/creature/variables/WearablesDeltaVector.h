@@ -19,6 +19,11 @@ protected:
 	VectorMap<uint8, Vector<ManagedReference<ArmorObject*> > > protectionArmorMap;
 
 public:
+
+	// hit locations (for serverside armor checks)
+	enum SuitLocations { NOLOCATION = 0x0, CHEST = 0x1, ARMS = 0x2, LEGS = 0x4, HEAD = 0x8 };
+
+
 	WearablesDeltaVector() : DeltaVector<ManagedReference<TangibleObject*> >() {
 		protectionArmorMap.setAllowOverwriteInsertPlan();
 
@@ -42,17 +47,17 @@ public:
 			ManagedReference<ArmorObject*> armor = cast<ArmorObject*>(element.get());
 			uint8 hitLocations = armor->getHitLocation();
 
-			if (hitLocations & 0x01)
-				addArmor(0x01, armor);
+			if (hitLocations & CHEST)
+				addArmor(CHEST, armor);
 
-			if (hitLocations & 0x02)
-				addArmor(0x02, armor);
+			if (hitLocations & ARMS)
+				addArmor(ARMS, armor);
 
-			if (hitLocations & 0x04)
-				addArmor(0x04, armor);
+			if (hitLocations & LEGS)
+				addArmor(LEGS, armor);
 
-			if (hitLocations & 0x08)
-				addArmor(0x08, armor);
+			if (hitLocations & HEAD)
+				addArmor(HEAD, armor);
 		}
 
 		return DeltaVector<ManagedReference<TangibleObject*> >::add(element, message, updates);
@@ -65,25 +70,71 @@ public:
 			ManagedReference<ArmorObject*> armor = cast<ArmorObject*>(element.get());
 			uint8 hitLocations = armor->getHitLocation();
 
-			if (hitLocations & 0x01)
-				removeArmor(0x01, armor);
+			if (hitLocations & CHEST)
+				removeArmor(CHEST, armor);
 
-			if (hitLocations & 0x02)
-				removeArmor(0x02, armor);
+			if (hitLocations & ARMS)
+				removeArmor(ARMS, armor);
 
-			if (hitLocations & 0x04)
-				removeArmor(0x04, armor);
+			if (hitLocations & LEGS)
+				removeArmor(LEGS, armor);
 
-			if (hitLocations & 0x08)
-				removeArmor(0x08, armor);
+			if (hitLocations & HEAD)
+				removeArmor(HEAD, armor);
 		}
 
 		return DeltaVector<ManagedReference<TangibleObject*> >::remove(index, message, updates);
 	}
 
+
 	Vector<ManagedReference<ArmorObject*> > getArmorAtHitLocation(uint8 hl) {
-		return protectionArmorMap.get(hl);
+
+		// TODO: Migrate and remove this when the object versioning and migration system is in place
+
+		// HIT_LOCATION has a circular dependency nightmare with CombatManager and CreatureObject
+		switch(hl) {
+		case 1: // HIT_BODY
+			return protectionArmorMap.get((uint8)CHEST); // CHEST
+		case 2: // HIT_LARM
+		case 3: // HIT_RARM
+		{
+			Vector<ManagedReference<ArmorObject*> > armArmor = protectionArmorMap.get((uint8)ARMS); // ARMS
+			Vector<ManagedReference<ArmorObject*> > armorAtLocation;
+
+			if(armArmor.isEmpty())
+				return armArmor;
+
+			if(hl == 2) {
+				for(int i=armArmor.size()-1; i>=0; i--) {
+					ArmorObject *obj = armArmor.get(i);
+					if(obj->hasArrangementDescriptor("bicep_l") || obj->hasArrangementDescriptor("bracer_upper_l") || obj->hasArrangementDescriptor("gloves"))
+						armorAtLocation.add(obj);
+				}
+			} else {
+				for(int i=armArmor.size()-1; i>=0; i--) {
+					ArmorObject *obj = armArmor.get(i);
+
+					if(obj->hasArrangementDescriptor("bicep_r") || obj->hasArrangementDescriptor("bracer_upper_r") || obj->hasArrangementDescriptor("gloves"))
+						armorAtLocation.add(obj);
+				}
+			}
+
+			if(armorAtLocation.isEmpty())
+				return armArmor;
+			else
+				return armorAtLocation;
+		}
+		case 4: // HIT_LLEG
+		case 5: // HIT_RLEG
+			return protectionArmorMap.get((uint8)LEGS); // LEGS
+		case 6: // HIT_HEAD
+			return protectionArmorMap.get((uint8)HEAD); // HEAD
+		}
+
+		return protectionArmorMap.get((uint8)NOLOCATION);
 	}
+
+
 
 	void addArmor(uint8 hitLocation, ManagedReference<ArmorObject*> armor) {
 		Vector<ManagedReference<ArmorObject*> > armors = protectionArmorMap.get(hitLocation);
