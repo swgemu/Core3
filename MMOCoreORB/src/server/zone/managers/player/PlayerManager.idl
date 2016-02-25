@@ -484,4 +484,8 @@ class PlayerManager extends Observer implements Logger {
 	public int getNumJukeboxSongs(){
 		return jukeboxSongs.size();
 	}
+
+	@local
+	@arg1preLocked
+	public native void doPvpDeathRatingUpdate(CreatureObject player, ThreatMap threatMap);
 }
