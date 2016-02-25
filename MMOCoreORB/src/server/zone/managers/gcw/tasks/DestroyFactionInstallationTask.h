@@ -24,11 +24,11 @@ public:
 
 	void run() {
 		Zone* zne = installation->getZone();
-		if(zne == NULL)
+		if (zne == NULL)
 			return;
 
 		GCWManager* gcwMan = zne->getGCWManager();
-		if(gcwMan != NULL)
+		if (gcwMan != NULL)
 			gcwMan->notifyInstallationDestruction(installation);
 	}
 

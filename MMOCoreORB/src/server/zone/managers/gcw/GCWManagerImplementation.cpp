@@ -1655,7 +1655,6 @@ void GCWManagerImplementation::notifyInstallationDestruction(InstallationObject*
 		tlock.release();
 		plock.release();
 	}
-
 }
 
 void GCWManagerImplementation::notifyTurretDestruction(BuildingObject* building, InstallationObject* turret) {
@@ -2177,6 +2176,8 @@ void GCWManagerImplementation::verifyTurrets(BuildingObject* building) {
 
 	Locker blocker(building);
 
+	bool hasDefense = baseData->hasDefense();
+
 	for(int i = 0; i < baseData->getTotalTurretCount(); ++i) {
 		uint64 turretID = baseData->getTurretID(i);
 		ManagedReference<SceneObject*> turret = zoneServer->getObject(baseData->getTurretID(i));
@@ -2186,6 +2187,10 @@ void GCWManagerImplementation::verifyTurrets(BuildingObject* building) {
 	}
 
 	baseData->setDefense(turretCount != 0);
+
+	if (!(hasDefense == baseData->hasDefense())) {
+		building->broadcastCellPermissions();
+	}
 }
 
 bool GCWManagerImplementation::canPlaceMoreBases(CreatureObject* creature) {

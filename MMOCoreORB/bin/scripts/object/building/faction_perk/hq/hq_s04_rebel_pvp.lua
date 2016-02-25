@@ -131,9 +131,6 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=-7, z=0, y=45,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1},
 			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=0, z=0, y=25,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1},
 
-			{templateFile = "object/installation/faction_perk/covert_detector/detector_base.iff", x=15, z=0, y=53,  ox=-10, oy=-.3, oz=0, ow=1, cellid=-1, containmentType=-1},
-			{templateFile = "object/installation/faction_perk/covert_detector/detector_base.iff", x=-15, z=0, y=53,  ox=10, oy=-.3, oz=0, ow=1, cellid=-1, containmentType=-1},
-
 			{templateFile="object/tangible/terminal/terminal_mission.iff", x=18.25, z=-13.75, y=14.65, ow=-.69, ox=0, oz=0, oy=.71, cellid=9, containmentType=-1},
 			{templateFile="object/tangible/terminal/terminal_bank.iff", x=-7, z=-13.75, y=-7, ow=.7, ox=0, oz=0, oy=.66, cellid=7, containmentType=-1},
 			{templateFile="object/tangible/terminal/terminal_insurance.iff", x=-7, z=-13.75, y=-4, ow=.7, ox=0, oz=0, oy=.66, cellid=7, containmentType=-1},
