@@ -2575,7 +2575,7 @@ void PlayerManagerImplementation::updatePermissionLevel(CreatureObject* targetPl
 			for(int i = 0; i < skillsToBeRemoved->size(); i++) {
 				String skill = skillsToBeRemoved->get(i);
 				targetPlayer->sendSystemMessage("Staff skill revoked: " + skill);
-				skillManager->surrenderSkill(skill, targetPlayer, true);
+				skillManager->surrenderSkill(skill, targetPlayer, false, true);
 			}
 		}
 	}

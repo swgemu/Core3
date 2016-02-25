@@ -363,7 +363,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 	return true;
 }
 
-bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creature, bool notifyClient) {
+bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creature, bool forceSurrender, bool notifyClient) {
 	Skill* skill = skillMap.get(skillName.hashCode());
 
 	if (skill == NULL)
@@ -373,23 +373,25 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 
 	SkillList* skillList = creature->getSkillList();
 
-	if(skillName == "force_title_jedi_novice" && getForceSensitiveSkillCount(creature, true) > 0) {
+	if(!forceSurrender && skillName == "force_title_jedi_novice" && getForceSensitiveSkillCount(creature, true) > 0) {
 		return false;
 	}
 
-	if(skillName.beginsWith("force_sensitive_") &&
+	if(!forceSurrender && skillName.beginsWith("force_sensitive_") &&
 		getForceSensitiveSkillCount(creature, false) <= 24 &&
 		creature->hasSkill("force_title_jedi_rank_01"))
 		return false;
 
-	for (int i = 0; i < skillList->size(); ++i) {
-		Skill* checkSkill = skillList->get(i);
+	if (!forceSurrender) {
+		for (int i = 0; i < skillList->size(); ++i) {
+			Skill* checkSkill = skillList->get(i);
 
-		if (checkSkill->isRequiredSkillOf(skill))
-			return false;
+			if (checkSkill->isRequiredSkillOf(skill))
+				return false;
+		}
 	}
 
-	if(creature->hasSkill("force_title_jedi_rank_03") && skillName.contains("force_discipline_") && !knightPrereqsMet(creature, skillName)) {
+	if(!forceSurrender && creature->hasSkill("force_title_jedi_rank_03") && skillName.contains("force_discipline_") && !knightPrereqsMet(creature, skillName)) {
 		return false;
 	}
 
