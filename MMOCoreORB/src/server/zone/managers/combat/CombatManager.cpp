@@ -1845,9 +1845,23 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	else
 		xpType = weapon->getXpType();
 
+	int numberOfPoolsDamaged = ((bool)(poolsToDamage & HEALTH) && data.getHealthDamageMultiplier() > 0.0f);
+	numberOfPoolsDamaged += ((bool)(poolsToDamage & ACTION) && data.getActionDamageMultiplier() > 0.0f);
+	numberOfPoolsDamaged += ((bool)(poolsToDamage & MIND) && data.getMindDamageMultiplier() > 0.0f);
+
+	int numSpillOverPools = 3-numberOfPoolsDamaged;
+	float spillMultPerPool = (0.1f * numSpillOverPools) / numberOfPoolsDamaged;
+	int totalSpillOver = 0; // Accumulate our total spill damage
+
 	if (poolsToDamage & HEALTH) {
 		healthDamage = getArmorReduction(attacker, weapon, defender, damage * data.getHealthDamageMultiplier(), HEALTH, data) * damageMultiplier;
+
+		int spilledDamage = (int)(healthDamage*spillMultPerPool); // Cut our damage by the spill percentage
+		healthDamage -= spilledDamage; // subtract spill damage from total damage
+		totalSpillOver += spilledDamage;  // accumulate spill damage
+
 		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)healthDamage, true, xpType, true, true);
+
 
 		if (System::random(100) < ratio)
 			defender->addWounds(CreatureAttribute::HEALTH, 1, true);
@@ -1861,7 +1875,13 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 
 	if (poolsToDamage & ACTION) {
 		actionDamage = getArmorReduction(attacker, weapon, defender, damage * data.getActionDamageMultiplier(), ACTION, data) * damageMultiplier;
+
+		int spilledDamage = (int)(actionDamage*spillMultPerPool);
+		actionDamage -= spilledDamage;
+		totalSpillOver += spilledDamage;
+
 		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (int)actionDamage, true, xpType, true, true);
+
 
 		if (System::random(100) < ratio)
 			defender->addWounds(CreatureAttribute::ACTION, 1, true);
@@ -1875,6 +1895,11 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 
 	if (poolsToDamage & MIND) {
 		mindDamage = getArmorReduction(attacker, weapon, defender, damage * data.getMindDamageMultiplier(), MIND, data) * damageMultiplier;
+
+		int spilledDamage = (int)(mindDamage*spillMultPerPool);
+		mindDamage -= spilledDamage;
+		totalSpillOver += spilledDamage;
+
 		defender->inflictDamage(attacker, CreatureAttribute::MIND, (int)mindDamage, true, xpType, true, true);
 
 		if (System::random(100) < ratio)
@@ -1887,14 +1912,16 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 			defender->addWounds(CreatureAttribute::WILLPOWER, 1, true);
 	}
 
-	// now splash damage
-	float maxDamage = MAX(healthDamage, MAX(actionDamage, mindDamage));
+	int spillDamagePerPool = (int)(totalSpillOver / numSpillOverPools); // Split the spill over damage between the pools damaged
+
+	int spillOverRemainder = (totalSpillOver % numSpillOverPools) + spillDamagePerPool;
+
 	if ((poolsToDamage ^ 0x7) & HEALTH)
-		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)(maxDamage/10.f + 0.5f), true, xpType, true, true);
+		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (numSpillOverPools-- > 1 ? spillDamagePerPool : spillOverRemainder), true, xpType, true, true);
 	if ((poolsToDamage ^ 0x7) & ACTION)
-		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (int)(maxDamage/10.f + 0.5f), true, xpType, true, true);
+		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (numSpillOverPools-- > 1 ? spillDamagePerPool : spillOverRemainder), true, xpType, true, true);
 	if ((poolsToDamage ^ 0x7) & MIND)
-		defender->inflictDamage(attacker, CreatureAttribute::MIND, (int)(maxDamage/10.f + 0.5f), true, xpType, true, true);
+		defender->inflictDamage(attacker, CreatureAttribute::MIND, (numSpillOverPools-- > 1 ? spillDamagePerPool : spillOverRemainder), true, xpType, true, true);
 
 	int totalDamage =  (int) (healthDamage + actionDamage + mindDamage);
 	if(totalDamage != 0) {
@@ -1902,7 +1929,6 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	}
 
 	return totalDamage;
-
 }
 
 int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defender, int poolsToDamage, const CreatureAttackData& data) {
