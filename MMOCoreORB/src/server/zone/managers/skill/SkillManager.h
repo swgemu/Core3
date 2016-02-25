@@ -76,7 +76,7 @@ public:
 	bool awardSkill(const String& skillName, CreatureObject* creature, bool notifyClient = true, bool awardRequiredSkills = false, bool noXpRequired = false);
 	void awardDraftSchematics(Skill* skill, PlayerObject* ghost, bool notifyClient = true);
 
-	bool surrenderSkill(const String& skillName, CreatureObject* creature, bool notifyClient = true);
+	bool surrenderSkill(const String& skillName, CreatureObject* creature, bool forceSurrender = false, bool notifyClient = true);
 	void surrenderAllSkills(CreatureObject* creature, bool notifyClient = true);
 
 	/**

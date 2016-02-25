@@ -406,7 +406,7 @@ int LuaCreatureObject::surrenderSkill(lua_State* L) {
 	String value = lua_tostring(L, -1);
 
 	SkillManager* skillManager = SkillManager::instance();
-	skillManager->surrenderSkill(value, realObject, true);
+	skillManager->surrenderSkill(value, realObject, false, true);
 	return 0;
 }
 

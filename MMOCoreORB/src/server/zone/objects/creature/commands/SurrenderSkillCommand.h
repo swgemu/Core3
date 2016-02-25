@@ -26,7 +26,7 @@ public:
 			return INVALIDLOCOMOTION;
 
 		SkillManager* skillManager = SkillManager::instance();
-		skillManager->surrenderSkill(arguments.toString(), creature, true);
+		skillManager->surrenderSkill(arguments.toString(), creature, false, true);
 
 		return SUCCESS;
 	}
