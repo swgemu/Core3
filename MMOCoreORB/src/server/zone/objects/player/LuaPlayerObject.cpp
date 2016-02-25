@@ -69,6 +69,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "canActivateQuest", &LuaPlayerObject::canActivateQuest },
 		{ "getSuiBox", &LuaPlayerObject::getSuiBox },
 		{ "addSuiBox", &LuaPlayerObject::addSuiBox },
+		{ "completePadawanTrial", &LuaPlayerObject::completePadawanTrial },
 		{ 0, 0 }
 };
 
@@ -590,5 +591,12 @@ int LuaPlayerObject::addSuiBox(lua_State* L) {
 
 	realObject->addSuiBox(box);
 
+	return 0;
+}
+
+int LuaPlayerObject::completePadawanTrial(lua_State* L) {
+	int trialNum = lua_tointeger(L, -1);
+
+	realObject->addCompletedPadawanTrial((unsigned)trialNum);
 	return 0;
 }
