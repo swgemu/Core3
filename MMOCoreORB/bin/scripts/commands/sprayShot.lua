@@ -83,6 +83,7 @@ SprayShotCommand = {
 	animationCRC = hashCode("fire_7_single_medium"),
 
 	combatSpam = "sprayshot",
+	weaponType = CARBINEWEAPON,
 
 	range = -1
 }
