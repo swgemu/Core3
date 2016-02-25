@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_1bc73647",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1879,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-25T22:46:57Z",
+      "side": 1,
+      "message": "Use the armor damage location code to determine which location it hits.",
+      "range": {
+        "startLine": 1871,
+        "startChar": 0,
+        "endLine": 1879,
+        "endChar": 2
+      },
+      "revId": "f66850ba4b2c5da03921b5e134892662d19f5c72",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
