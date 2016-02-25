@@ -51,7 +51,7 @@ public:
 			}
 
 			player->sendSystemMessage("@gcw:handle_go_covert"); // You will be flagged as a Combatant in 30 seconds.
-			player->setPvpStatusBitmask(CreatureFlag::CHANGEFACTIONSTATUS);
+			player->setPvpStatusBit(CreatureFlag::CHANGEFACTIONSTATUS);
 
 			ManagedReference<CreatureObject*> creo = player->asCreatureObject();
 
@@ -67,7 +67,7 @@ public:
 			});
 		} else if (newStatus == FactionStatus::OVERT) {
 			player->sendSystemMessage("You will be flagged as Special Forces in 5 minutes."); // No string available for overt.
-			player->setPvpStatusBitmask(CreatureFlag::CHANGEFACTIONSTATUS);
+			player->setPvpStatusBit(CreatureFlag::CHANGEFACTIONSTATUS);
 
 			ManagedReference<CreatureObject*> creo = player->asCreatureObject();
 
