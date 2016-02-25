@@ -71,6 +71,13 @@ public:
 	const static int TWOHANDJEDIWEAPON = 0x4000;
 	const static int POLEARMJEDIWEAPON = 0x8000;
 
+	const static int HIT_BODY = 0x1;
+	const static int HIT_LARM = 0x2;
+	const static int HIT_RARM = 0x4;
+	const static int HIT_LLEG = 0x8;
+	const static int HIT_RLEG = 0x10;
+	const static int HIT_HEAD = 0x20;
+
 	// multiple weapon type scenarios
 	const static int MELEEWEAPON = 0xF0;
 	const static int RANGEDWEAPON = 0x1F0B; // these are all weapons derived from ranged in the client
@@ -228,6 +235,8 @@ protected:
 	float calculateDamage(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data, Vector<int>& foodMitigation);
 	float calculateDamage(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defender, const CreatureAttackData& data);
 	bool checkConeAngle(SceneObject* targetCreature, float angle, float creatureVectorX, float creatureVectorY, float directionVectorX, float directionVectorY);
+
+	void showHitLocationFlyText(CreatureObject *defender, uint8 location);
 
 	void doMiss(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage);
 	void doCounterAttack(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage);

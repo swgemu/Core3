@@ -349,6 +349,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 
 			applyDots(attacker, defender, data, damage, unmitDamage, poolsToDamage);
 			applyWeaponDots(attacker, defender, weapon);
+
 		}
 
 		//Send defensive buff combat spam last.
@@ -1621,6 +1622,28 @@ void CombatManager::doLightsaberBlock(TangibleObject* attacker, WeaponObject* we
 
 }
 
+void CombatManager::showHitLocationFlyText(CreatureObject *defender, uint8 location) {
+	switch(location) {
+	case HIT_HEAD:
+		defender->showFlyText("combat_effects", "hit_head", 0, 0, 0xFF);
+		break;
+	case HIT_BODY:
+		defender->showFlyText("combat_effects", "hit_body", 0xFF, 0, 0);
+		break;
+	case HIT_LARM:
+		defender->showFlyText("combat_effects", "hit_larm", 0xFF, 0, 0);
+		break;
+	case HIT_RARM:
+		defender->showFlyText("combat_effects", "hit_rarm", 0xFF, 0, 0);
+		break;
+	case HIT_LLEG:
+		defender->showFlyText("combat_effects", "hit_lleg", 0, 0xFF, 0);
+		break;
+	case HIT_RLEG:
+		defender->showFlyText("combat_effects", "hit_rleg", 0, 0xFF, 0);
+		break;
+	}
+}
 void CombatManager::doDodge(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage) {
 	defender->showFlyText("combat_effects", "dodge", 0, 0xFF, 0);
 
@@ -1844,6 +1867,16 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 		xpType = "creaturehandler";
 	else
 		xpType = weapon->getXpType();
+
+	if((poolsToDamage & HEALTH) && data.getHealthDamageMultiplier() > 0.0f) {
+		static uint8 bodyLocations[] = {HIT_BODY, HIT_LARM, HIT_RARM};
+		showHitLocationFlyText(defender, bodyLocations[System::random(3)]);
+	} else if((poolsToDamage & ACTION) && data.getHealthDamageMultiplier() > 0.0f) {
+		static uint8 legLocations[] = {HIT_LLEG, HIT_RLEG};
+		showHitLocationFlyText(defender, legLocations[System::random(2)]);
+	} else if((poolsToDamage & MIND) && data.getMindDamageMultiplier() > 0.0f) {
+		showHitLocationFlyText(defender, HIT_HEAD);
+	}
 
 	if (poolsToDamage & HEALTH) {
 		healthDamage = getArmorReduction(attacker, weapon, defender, damage * data.getHealthDamageMultiplier(), HEALTH, data) * damageMultiplier;
