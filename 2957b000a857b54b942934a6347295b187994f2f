@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_1bf656d8",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManager.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-25T12:04:41Z",
+      "side": 1,
+      "message": "@arg1preLocked",
+      "revId": "2957b000a857b54b942934a6347295b187994f2f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_7b2c324b",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-25T12:04:41Z",
+      "side": 1,
+      "message": "Pass a ManagedReference of player instead of player.",
+      "revId": "2957b000a857b54b942934a6347295b187994f2f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_dbff7ea9",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-25T12:04:41Z",
+      "side": 1,
+      "message": "Null check before locking.",
+      "revId": "2957b000a857b54b942934a6347295b187994f2f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_bb02cab2",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 5029,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-25T12:04:41Z",
+      "side": 1,
+      "message": "This is unneeded since it\u0027ll be locked coming in.",
+      "revId": "2957b000a857b54b942934a6347295b187994f2f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_db169ef1",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 5038,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-25T12:04:41Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you be checking if defenderPvpRating is at the minimum value and use the floor strings where applicable?",
+      "revId": "2957b000a857b54b942934a6347295b187994f2f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_3b26ba69",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 5078,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-25T12:04:41Z",
+      "side": 1,
+      "message": "Looking at the strings, it looks like %TT should be player, not attacker.",
+      "revId": "2957b000a857b54b942934a6347295b187994f2f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_5b2b6e30",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 5079,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-25T12:04:41Z",
+      "side": 1,
+      "message": "Should this be attacker?",
+      "revId": "2957b000a857b54b942934a6347295b187994f2f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_fb1fe207",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 5118,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-25T12:04:41Z",
+      "side": 1,
+      "message": "There are 3 of the trando strings as well. Why not get the rand before checking species and use it for either?",
+      "revId": "2957b000a857b54b942934a6347295b187994f2f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_1b1df60f",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 5124,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-25T12:04:41Z",
+      "side": 1,
+      "message": "This should be player unless I\u0027m reading the strings incorrectly.",
+      "revId": "2957b000a857b54b942934a6347295b187994f2f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_bb196a24",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 5141,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-25T12:04:41Z",
+      "side": 1,
+      "message": "Again, there are 3 trando killed strings. Why not use all 3?",
+      "revId": "2957b000a857b54b942934a6347295b187994f2f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_7bd3d238",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObject.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 1786,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-25T12:04:41Z",
+      "side": 1,
+      "message": "What should the pvpRating floor be? If it\u0027s above 0, then this will work fine. If not, you need to rethink this.\n\nAlso, you should change the value that pvpRating is initialized to in the ctor.",
+      "revId": "2957b000a857b54b942934a6347295b187994f2f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
