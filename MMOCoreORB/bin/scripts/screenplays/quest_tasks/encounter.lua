@@ -84,7 +84,11 @@ end
 function Encounter:taskStart(pCreatureObject)
 	Logger:log("Starting spawn task in " .. self.taskName, LT_INFO)
 	self:setupSpawnAndDespawnEvents(pCreatureObject)
-	self.spawnTask:start(pCreatureObject)
+
+	if self.spawnTask ~= nil then
+		self.spawnTask:start(pCreatureObject)
+	end
+
 	return true
 end
 
