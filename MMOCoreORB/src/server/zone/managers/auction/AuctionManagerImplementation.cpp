@@ -1079,7 +1079,22 @@ void AuctionManagerImplementation::retrieveItem(CreatureObject* player, uint64 o
 		player->sendMessage(msg);
 	}
 }
+bool AuctionManagerImplementation::checkItemCategory(int category, AuctionItem* item) {
+	if (category & 255) { // Searching a sub category
+		if (item->getItemType() == category) {
+			return true;
+		}
+	} else if (item->getItemType() & category) {
+		return true;
 
+	} else if ((category == 8192) && (item->getItemType() < 256)) {
+		return true;
+	} else if (category == 0) { // Searching all items
+		return true;
+	}
+
+	return false;
+}
 AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQueryHeadersResponseMessage(CreatureObject* player, SceneObject* vendor, TerminalListVector* terminalList, int screen, uint32 category, int clientcounter, int offset) {
 	AuctionQueryHeadersResponseMessage* reply = new AuctionQueryHeadersResponseMessage(screen, clientcounter, player);
 
@@ -1126,37 +1141,23 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 					}
 				case 2: // All Auctions (Bazaar)
 					if (item->getStatus() == AuctionItem::FORSALE) {
-						if (category & 255) { // Searching a sub category
-							if (item->getItemType() == category) {
-								// copy the item
-
-								if (displaying >= offset)
-									reply->addItemToList(items->get(i));
-
-								displaying++;
-							}
-						} else if (item->getItemType() & category) {
-							if (displaying >= offset)
-								reply->addItemToList(items->get(i));
-
-							displaying++;
-
-						} else if ((category == 8192) && (item->getItemType() < 256)) {
-							if (displaying >= offset)
-								reply->addItemToList(items->get(i));
-
-							displaying++;
-						} else if (category == 0 && vendor->isVendor()) { // Searching all items
-							if (displaying >= offset)
+						if(checkItemCategory(category, item)) {
+							if (displaying >= offset) {
 								reply->addItemToList(item);
-
+							}
 							displaying++;
 						}
 					}
 					break;
 				case 3: // My auctions/sales
 					if (item->getStatus() == AuctionItem::FORSALE && (item->getOwnerID() == player->getObjectID())) {
-						reply->addItemToList(item);
+						if(checkItemCategory(category, item)) {
+							if (displaying >= offset) {
+								reply->addItemToList(item);
+							}
+
+							displaying++;
+						}
 					}
 					break;
 				case 4: // My Bids
@@ -1172,17 +1173,36 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 					break;
 				case 6: // Offers to Vendor (vendor owner)
 					if (item->getStatus() == AuctionItem::OFFERED && item->getOfferToID() == player->getObjectID()) {
-						reply->addItemToList(item);
+						if(checkItemCategory(category, item)) {
+							if (displaying >= offset) {
+								reply->addItemToList(item);
+							}
+
+							displaying++;
+						}
 					}
 					break;
 				case 8: // Stockroom
 					if ((item->getStatus() == AuctionItem::EXPIRED && item->getOwnerID() == player->getObjectID()) ||
-							(item->getStatus() == AuctionItem::SOLD && item->getBuyerID() == player->getObjectID()))
-						reply->addItemToList(item);
+							(item->getStatus() == AuctionItem::SOLD && item->getBuyerID() == player->getObjectID())) {
+						if(checkItemCategory(category, item)) {
+							if (displaying >= offset) {
+								reply->addItemToList(item);
+							}
+
+							displaying++;
+						}
+					}
 					break;
 				case 9: // Offers to vendor (browsing player)
 					if (item->getStatus() == AuctionItem::OFFERED && item->getOwnerID() == player->getObjectID()) {
-						reply->addItemToList(item);
+						if(checkItemCategory(category, item)) {
+							if (displaying >= offset) {
+								reply->addItemToList(item);
+							}
+
+							displaying++;
+						}
 					}
 					break;
 				}
