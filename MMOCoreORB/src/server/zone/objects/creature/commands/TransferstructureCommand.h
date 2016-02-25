@@ -72,7 +72,7 @@ public:
 					if(obj == NULL)
 						continue;
 
-					if(obj->isNoTrade() || obj->containsNoTradeObjectRecursive()) {
+					if((obj->isNoTrade() || obj->containsNoTradeObjectRecursive()) && !obj->isVendor()) {
 						StringIdChatParameter param("@player_structure:building_has_notrade"); // The object %TT may not be traded and must be put in your inventory or destroyed before the building can be transferred.
 						param.setTT(obj->getDisplayedName());
 						creature->sendSystemMessage(param);
