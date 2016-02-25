@@ -27,6 +27,7 @@
 #include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/objects/installation/components/TurretDataComponent.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/packets/object/ShowFlyText.h"
 
 #define COMBAT_SPAM_RANGE 85
 
@@ -246,7 +247,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 
 		damage = applyDamage(attacker, weapon, tano, poolsToDamage, data);
 
-		broadcastCombatAction(attacker, tano, weapon, data, 0x01);
+		broadcastCombatAction(attacker, tano, weapon, data, damage, 0x01, 0);
 
 		data.getCommand()->sendAttackCombatSpam(attacker, tano, HIT, damage, data);
 
@@ -284,6 +285,8 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		defender->stopEntertaining();
 
 	int hitVal = HIT;
+	uint8 hitLocation = 0;
+
 	float damageMultiplier = data.getDamageMultiplier();
 
 	// need to calculate damage here to get proper client spam
@@ -307,7 +310,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	switch (hitVal) {
 	case MISS:
 		doMiss(attacker, weapon, defender, damage);
-		broadcastCombatAction(attacker, defender, weapon, data, hitVal);
+		broadcastCombatAction(attacker, defender, weapon, data, 0, hitVal, 0);
 		return 0;
 		break;
 	case BLOCK:
@@ -345,10 +348,11 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		if (damageMultiplier != 0 && damage != 0) {
 			int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage()); // TODO: animations are probably determined by which pools are damaged (high, mid, low, combos, etc)
 			int unmitDamage = damage;
-			damage = applyDamage(attacker, weapon, defender, damage, damageMultiplier, poolsToDamage, data);
+			damage = applyDamage(attacker, weapon, defender, damage, damageMultiplier, poolsToDamage, hitLocation, data);
 
 			applyDots(attacker, defender, data, damage, unmitDamage, poolsToDamage);
 			applyWeaponDots(attacker, defender, weapon);
+
 		}
 
 		//Send defensive buff combat spam last.
@@ -356,7 +360,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 			sendMitigationCombatSpam(defender, weapon, foodMitigation.get(0), FOOD);
 	}
 
-	broadcastCombatAction(attacker, defender, weapon, data, hitVal);
+	broadcastCombatAction(attacker, defender, weapon, data, damage, hitVal, hitLocation);
 
 	return damage;
 }
@@ -401,6 +405,8 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 	damageMultiplier = 1.0f;
 	int hitVal = getHitChance(attacker, defenderObject, weapon, damage, data.getAccuracyBonus());
 
+	uint8 hitLocation = 0;
+
 	//Send Attack Combat Spam
 	data.getCommand()->sendAttackCombatSpam(attacker, defenderObject, hitVal, damage, data);
 
@@ -444,7 +450,8 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 			defenderObject->removeAttackDelay();
 
 		if (damageMultiplier != 0 && damage != 0)
-			damage = applyDamage(attacker, weapon, defenderObject, damage, damageMultiplier, poolsToDamage, data);
+			damage = applyDamage(attacker, weapon, defenderObject, damage, damageMultiplier, poolsToDamage, hitLocation, data);
+
 
 		//Send defensive buff combat spam last.
 		if (!foodMitigation.isEmpty())
@@ -969,40 +976,14 @@ int CombatManager::getArmorObjectReduction(ArmorObject* armor, int damageType) {
 	return MAX(0, (int)resist);
 }
 
-ArmorObject* CombatManager::getHealthArmor(CreatureObject* defender) {
-	Vector<ManagedReference<ArmorObject*> > healthArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::CHEST);
+ArmorObject* CombatManager::getArmorObject(CreatureObject* defender, uint8 hitLocation) {
 
-	if (System::random(1) == 0)
-		healthArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::ARMS);
+	Vector<ManagedReference<ArmorObject*> > armor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(hitLocation);
 
-	ManagedReference<ArmorObject*> armorToHit = NULL;
+	if(armor.isEmpty())
+		return NULL;
 
-	if (!healthArmor.isEmpty())
-		armorToHit = healthArmor.get(System::random(healthArmor.size() - 1));
-
-	return armorToHit;
-}
-
-ArmorObject* CombatManager::getActionArmor(CreatureObject* defender) {
-	Vector<ManagedReference<ArmorObject*> > actionArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::LEGS);
-
-	ManagedReference<ArmorObject*> armorToHit = NULL;
-
-	if (!actionArmor.isEmpty())
-		armorToHit = actionArmor.get(System::random(actionArmor.size() - 1));
-
-	return armorToHit;
-}
-
-ArmorObject* CombatManager::getMindArmor(CreatureObject* defender) {
-	Vector<ManagedReference<ArmorObject*> > mindArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::HEAD);
-
-	ManagedReference<ArmorObject*> armorToHit = NULL;
-
-	if (!mindArmor.isEmpty())
-		armorToHit = mindArmor.get(System::random(mindArmor.size() - 1));
-
-	return armorToHit;
+	return armor.get(System::random(armor.size()-1));
 }
 
 ArmorObject* CombatManager::getPSGArmor(CreatureObject* defender) {
@@ -1086,7 +1067,7 @@ int CombatManager::getArmorVehicleReduction(VehicleObject* defender, int damageT
 	return (int)resist;
 }
 
-int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, float damage, int poolToDamage, const CreatureAttackData& data) {
+int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, float damage, int hitLocation, const CreatureAttackData& data) {
 	int damageType = 0, armorPiercing = 1;
 
 	if (data.getAttackType() == CombatManager::WEAPONATTACK) {
@@ -1192,12 +1173,7 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 	// Standard Armor
 	ManagedReference<ArmorObject*> armor = NULL;
 
-	if (poolToDamage & CombatManager::HEALTH)
-		armor = getHealthArmor(defender);
-	else if (poolToDamage & CombatManager::ACTION)
-		armor = getActionArmor(defender);
-	else if (poolToDamage & CombatManager::MIND)
-		armor = getMindArmor(defender);
+	armor = getArmorObject(defender, hitLocation);
 
 	if (armor != NULL && !armor->isVulnerable(damageType)) {
 		float armorReduction = getArmorObjectReduction(armor, damageType);
@@ -1331,9 +1307,11 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 
 		} else {
 			// player
-			ArmorObject* healthArmor = getHealthArmor(defender);
-			ArmorObject* mindArmor = getMindArmor(defender);
-			ArmorObject* actionArmor = getActionArmor(defender);
+			static uint8 bodyHitLocations[] = {HIT_BODY, HIT_BODY, HIT_LARM, HIT_RARM};
+			
+			ArmorObject* healthArmor = getArmorObject(defender, bodyHitLocations[System::random(3)]);
+			ArmorObject* mindArmor = getArmorObject(defender, HIT_HEAD);
+			ArmorObject* actionArmor = getArmorObject(defender, HIT_LLEG); // This hits both the pants and feet regardless
 			ArmorObject* psgArmor = getPSGArmor(defender);
 			if (psgArmor != NULL && !psgArmor->isVulnerable(WeaponObject::BLAST)) {
 				float armorReduction =  psgArmor->getBlast();
@@ -1621,6 +1599,32 @@ void CombatManager::doLightsaberBlock(TangibleObject* attacker, WeaponObject* we
 
 }
 
+void CombatManager::showHitLocationFlyText(CreatureObject *attacker, CreatureObject *defender, uint8 location) {
+
+	ShowFlyText* fly = NULL;
+	switch(location) {
+	case HIT_HEAD:
+		fly = new ShowFlyText(defender, "combat_effects", "hit_head", 0, 0, 0xFF);
+		break;
+	case HIT_BODY:
+		fly = new ShowFlyText(defender, "combat_effects", "hit_body", 0xFF, 0, 0);
+		break;
+	case HIT_LARM:
+		fly = new ShowFlyText(defender, "combat_effects", "hit_larm", 0xFF, 0, 0);
+		break;
+	case HIT_RARM:
+		fly = new ShowFlyText(defender, "combat_effects", "hit_rarm", 0xFF, 0, 0);
+		break;
+	case HIT_LLEG:
+		fly = new ShowFlyText(defender, "combat_effects", "hit_lleg", 0, 0xFF, 0);
+		break;
+	case HIT_RLEG:
+		fly = new ShowFlyText(defender, "combat_effects", "hit_rleg", 0, 0xFF, 0);
+		break;
+	}
+	if(fly != NULL)
+		attacker->sendMessage(fly);
+}
 void CombatManager::doDodge(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage) {
 	defender->showFlyText("combat_effects", "dodge", 0, 0xFF, 0);
 
@@ -1826,7 +1830,7 @@ int CombatManager::calculatePoolsToDamage(int poolsToDamage) {
 	return poolsToDamage;
 }
 
-int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data) {
+int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, float damageMultiplier, int poolsToDamage, uint8& hitLocation, const CreatureAttackData& data) {
 	if (poolsToDamage == 0 || damageMultiplier == 0)
 		return 0;
 
@@ -1854,7 +1858,10 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	int totalSpillOver = 0; // Accumulate our total spill damage
 
 	if (poolsToDamage & HEALTH) {
-		healthDamage = getArmorReduction(attacker, weapon, defender, damage * data.getHealthDamageMultiplier(), HEALTH, data) * damageMultiplier;
+		static uint8 bodyLocations[] = {HIT_BODY, HIT_BODY, HIT_LARM, HIT_RARM};
+		hitLocation = bodyLocations[System::random(3)];
+
+		healthDamage = getArmorReduction(attacker, weapon, defender, damage * data.getHealthDamageMultiplier(), hitLocation, data) * damageMultiplier;
 
 		int spilledDamage = (int)(healthDamage*spillMultPerPool); // Cut our damage by the spill percentage
 		healthDamage -= spilledDamage; // subtract spill damage from total damage
@@ -1874,7 +1881,10 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	}
 
 	if (poolsToDamage & ACTION) {
-		actionDamage = getArmorReduction(attacker, weapon, defender, damage * data.getActionDamageMultiplier(), ACTION, data) * damageMultiplier;
+		static uint8 legLocations[] = {HIT_LLEG, HIT_RLEG};
+		hitLocation = legLocations[System::random(1)];
+
+		actionDamage = getArmorReduction(attacker, weapon, defender, damage * data.getActionDamageMultiplier(), hitLocation, data) * damageMultiplier;
 
 		int spilledDamage = (int)(actionDamage*spillMultPerPool);
 		actionDamage -= spilledDamage;
@@ -1894,7 +1904,8 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	}
 
 	if (poolsToDamage & MIND) {
-		mindDamage = getArmorReduction(attacker, weapon, defender, damage * data.getMindDamageMultiplier(), MIND, data) * damageMultiplier;
+		hitLocation = HIT_HEAD;
+		mindDamage = getArmorReduction(attacker, weapon, defender, damage * data.getMindDamageMultiplier(), hitLocation, data) * damageMultiplier;
 
 		int spilledDamage = (int)(mindDamage*spillMultPerPool);
 		mindDamage -= spilledDamage;
@@ -1929,6 +1940,11 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	if(totalDamage != 0) {
 		defender->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, totalDamage);
 	}
+
+
+	if(attacker->isPlayerCreature())
+		showHitLocationFlyText(attacker->asCreatureObject(), defender, hitLocation);
+
 
 	return totalDamage;
 }
@@ -2073,13 +2089,13 @@ void CombatManager::broadcastCombatSpam(TangibleObject* attacker, TangibleObject
 	}
 }
 
-void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObject * defenderObject, WeaponObject* weapon, const CreatureAttackData & data, uint8 hit) {
+void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObject * defenderObject, WeaponObject* weapon, const CreatureAttackData & data, int damage, uint8 hit, uint8 hitLocation) {
 	CombatAction* combatAction = NULL;
 
 	uint32 animationCRC = data.getAnimationCRC();
 
 	if (animationCRC == 0)
-		animationCRC = getDefaultAttackAnimation(attacker);
+		animationCRC = getDefaultAttackAnimation(attacker, weapon, hitLocation, damage);
 
 	CreatureObject *dcreo = defenderObject->asCreatureObject();
 	if(dcreo != NULL) { // All of this funkiness only applies to creo targets, tano's don't animate hits or posture changes
@@ -2411,7 +2427,7 @@ bool CombatManager::checkConeAngle(SceneObject* target, float angle,
 	return true;
 }
 
-uint32 CombatManager::getDefaultAttackAnimation(CreatureObject* creature) {
+uint32 CombatManager::getDefaultAttackAnimation(CreatureObject* creature, WeaponObject* weapon, uint8 hitLocation, int damage) {
 	// TODO: this needs to be fixed - All animation names should be generated.
 	// This may make a lot more sense to place in a virtual CombatQueueCommand func
 	// Ex: attack_mid_center_medium_2 attack_high_right_light_0  attack_low_center_light_3
@@ -2424,8 +2440,6 @@ uint32 CombatManager::getDefaultAttackAnimation(CreatureObject* creature) {
 	// Ex: fire_5_special_single_light_face
 
 	// Special attacks have _special_ inserted into them and generally do not have locational damage
-
-	WeaponObject* weapon = creature->getWeapon();
 
 	if(!creature->isCreature()) {
 		if (weapon->isRangedWeapon())
