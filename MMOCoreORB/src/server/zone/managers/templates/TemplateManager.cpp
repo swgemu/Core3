@@ -762,11 +762,11 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("VEHICLE", SharedObjectTemplate::VEHICLE);
 	luaTemplatesInstance->setGlobalInt("XPPURCHASE", SharedObjectTemplate::XPPURCHASE);
 
-	luaTemplatesInstance->setGlobalInt("NO_HITLOCATION", CombatManager::NOLOCATION);
-	luaTemplatesInstance->setGlobalInt("CHEST_HITLOCATION", CombatManager::CHEST);
-	luaTemplatesInstance->setGlobalInt("ARMS_HITLOCATION", CombatManager::ARMS);
-	luaTemplatesInstance->setGlobalInt("LEGS_HITLOCATION", CombatManager::LEGS);
-	luaTemplatesInstance->setGlobalInt("HEAD_HITLOCATION", CombatManager::HEAD);
+	luaTemplatesInstance->setGlobalInt("NO_HITLOCATION", WearablesDeltaVector::NOLOCATION);
+	luaTemplatesInstance->setGlobalInt("CHEST_HITLOCATION", WearablesDeltaVector::CHEST);
+	luaTemplatesInstance->setGlobalInt("ARMS_HITLOCATION", WearablesDeltaVector::ARMS);
+	luaTemplatesInstance->setGlobalInt("LEGS_HITLOCATION", WearablesDeltaVector::LEGS);
+	luaTemplatesInstance->setGlobalInt("HEAD_HITLOCATION", WearablesDeltaVector::HEAD);
 
 	luaTemplatesInstance->setGlobalInt("GENETIC_LAB", CraftingManager::GENETIC_LAB);
 	luaTemplatesInstance->setGlobalInt("RESOURCE_LAB", CraftingManager::RESOURCE_LAB);
