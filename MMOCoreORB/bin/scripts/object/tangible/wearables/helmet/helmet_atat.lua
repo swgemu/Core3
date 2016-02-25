@@ -80,6 +80,8 @@ object_tangible_wearables_helmet_helmet_atat = object_tangible_wearables_helmet_
 				"object/mobile/vendor/twilek_male.iff",
 				"object/mobile/vendor/zabrak_female.iff",
 				"object/mobile/vendor/zabrak_male.iff" },
+				gameObjectType = 16777226,
+        clientGameObjectType = 16777226
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_helmet_helmet_atat, "object/tangible/wearables/helmet/helmet_atat.iff")

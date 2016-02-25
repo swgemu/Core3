@@ -50,6 +50,9 @@ object_tangible_wearables_helmet_helmet_tusken_raider_s01 = object_tangible_wear
 				"object/mobile/vendor/human_male.iff",
 				"object/mobile/vendor/zabrak_female.iff",
 				"object/mobile/vendor/zabrak_male.iff" },
+				gameObjectType = 16777226,
+				clientGameObjectType = 16777226
+				
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_helmet_helmet_tusken_raider_s01, "object/tangible/wearables/helmet/helmet_tusken_raider_s01.iff")
