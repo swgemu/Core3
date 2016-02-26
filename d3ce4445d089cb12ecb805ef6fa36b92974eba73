@@ -16,6 +16,24 @@
       "revId": "d3ce4445d089cb12ecb805ef6fa36b92974eba73",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_fb01223a",
+        "filename": "MMOCoreORB/src/server/zone/managers/auction/AuctionManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1149,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-02-26T18:33:47Z",
+      "side": 0,
+      "message": "I assumed it was to prevent the bazaar from listing results when no category was selected. When I removed it that behavior still appeared to work fine. I didn\u0027t investigate it farther though.",
+      "parentUuid": "da7095c5_fbf7e28a",
+      "revId": "d3ce4445d089cb12ecb805ef6fa36b92974eba73",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
