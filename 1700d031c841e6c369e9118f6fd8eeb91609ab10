@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_5ba4ce56",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-26T23:38:42Z",
+      "side": 1,
+      "message": "There\u0027s a simpler way to do this: have getArmorAtHitLocation take the new hitLocation as an argument instead of the other previous consts, and remove this giant switch. Just pass one parameter, get one return. This would require changing the armor map a bit, but would be a MUCH better solution with 0 if/switch statements.",
+      "range": {
+        "startLine": 980,
+        "startChar": 1,
+        "endLine": 980,
+        "endChar": 22
+      },
+      "revId": "1700d031c841e6c369e9118f6fd8eeb91609ab10",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_9b9a6613",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-26T23:38:42Z",
+      "side": 1,
+      "message": "I would prefer this (and the next loop) to be hidden inside the getArmorAtHitLocation() method. I\u0027m not sure why you didn\u0027t change that to take the new hit locations you defined instead of keeping now 2 different static blocks for location definitons.",
+      "range": {
+        "startLine": 1014,
+        "startChar": 0,
+        "endLine": 1017,
+        "endChar": 30
+      },
+      "revId": "1700d031c841e6c369e9118f6fd8eeb91609ab10",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_3b9f9a05",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-26T23:38:42Z",
+      "side": 1,
+      "message": "This should be an enum for type safety and it should replace the current hit location static block. Having two blocks this similar will just lead to confusion in the future (and isn\u0027t necessary in the code).",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 33
+      },
+      "revId": "1700d031c841e6c369e9118f6fd8eeb91609ab10",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
