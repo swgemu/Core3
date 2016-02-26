@@ -156,7 +156,7 @@ public:
 						ManagedReference<CreatureObject*> targetCreature = targetObject.castTo<CreatureObject*>();
 
 						if (targetCreature != NULL) {
-							if (targetCreature->isPlayerCreature()) {
+							if (targetCreature->isPlayerCreature() && !CombatManager::instance()->areInDuel(creature, targetCreature)) {
 								PlayerObject* targetGhost = targetCreature->getPlayerObject();
 
 								if (targetGhost != NULL && targetGhost->getFactionStatus() == FactionStatus::OVERT) {
