@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_bbe40aad",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-26T13:08:38Z",
+      "side": 1,
+      "message": "I would add a default that just breaks to make it explicit what you intend to happen for other values of hitLocation.",
+      "revId": "1a4abf5321c23db1c92d17baae6fc63c9d967b9c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_3bd1dacd",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1907,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-26T13:08:38Z",
+      "side": 1,
+      "message": "You\u0027re only selecting one hit location. What about multipool attacks? You\u0027ll do damage to each pool but use the armor from only 1 hit location in the reduction calc. So, for example, if an attack that hits all three pools selects head as the location, all three pools will have their damage reduced based on the helmet.",
+      "revId": "1a4abf5321c23db1c92d17baae6fc63c9d967b9c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_5bd60ec7",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1966,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-26T13:08:38Z",
+      "side": 1,
+      "message": "Should you show multiple hit location flytexts in the case of multipool attacks?",
+      "revId": "1a4abf5321c23db1c92d17baae6fc63c9d967b9c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_9bcca637",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-26T13:08:38Z",
+      "side": 1,
+      "message": "Go ahead and remove the above.",
+      "revId": "1a4abf5321c23db1c92d17baae6fc63c9d967b9c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
