@@ -30,7 +30,7 @@ public:
 				continue;
 
 			CreatureObject* tarCreo = tar->asCreatureObject();
-			if(tarCreo != NULL && tarCreo != sourceCreo && tarCreo->isPlayerCreature()) {
+			if(tarCreo != NULL && tarCreo != sourceCreo) {
 
 				sourceCreo->doCombatAnimation(tarCreo, STRING_HASHCODE("force_intimidate_chain"), 0x01, data.getTrails());
 				sourceCreo = tarCreo;
