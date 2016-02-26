@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_5b3a8e37",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-26T04:26:56Z",
+      "side": 1,
+      "message": "use player-\u003easCreatureObject()",
+      "revId": "53d865cc68b0740e9db89b058c2fdfe371331744",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_fb3e0229",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 5156,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-26T04:26:56Z",
+      "side": 1,
+      "message": "victim, not loser.",
+      "revId": "53d865cc68b0740e9db89b058c2fdfe371331744",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
