@@ -66,9 +66,9 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 
 		SkillManager::instance()->awardSkill("force_title_jedi_rank_02", creature, true, true, true);
 
-		creature->playEffect("clienteffect/entertainer_dazzle_level_3.cef", ""); // Not sure if it's the right one for this.
+		creature->playEffect("clienteffect/trap_electric_01.cef", "");
 
-		PlayMusicMessage* pmm = new PlayMusicMessage("sound/intro.snd");
+		PlayMusicMessage* pmm = new PlayMusicMessage("sound/music_become_jedi.snd");
 		creature->sendMessage(pmm);
 
 		ghost->setJediState(2);

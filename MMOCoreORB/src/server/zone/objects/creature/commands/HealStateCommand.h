@@ -96,7 +96,7 @@ public:
 	}
 
 	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) const {
-		creatureTarget->playEffect("clienteffect/healing_healdamage.cef", "");
+		creatureTarget->playEffect("clienteffect/healing_healstate.cef", "");
 
 		if (creature == creatureTarget)
 			creature->doAnimation("heal_self");
