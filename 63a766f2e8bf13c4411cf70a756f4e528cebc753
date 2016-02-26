@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_fbd042f9",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1850,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-26T00:24:05Z",
+      "side": 1,
+      "message": "I was recently informed that I was wrong about the second part of my answer, in which case: explicit is better than implicit.",
+      "parentUuid": "da7095c5_dbc0de2c",
+      "range": {
+        "startLine": 1848,
+        "startChar": 1,
+        "endLine": 1850,
+        "endChar": 97
+      },
+      "revId": "63a766f2e8bf13c4411cf70a756f4e528cebc753",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_9be266d4",
         "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
         "patchSetId": 2
