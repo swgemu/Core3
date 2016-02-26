@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_1bf5f682",
+        "filename": "MMOCoreORB/src/server/zone/managers/auction/AuctionManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-26T04:00:48Z",
+      "side": 1,
+      "message": "Why change all of these to items-\u003eget(i) when we already have that in item?",
+      "revId": "61602a2d2fe8b2b8e373f4d2553425a08042367d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
