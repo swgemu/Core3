@@ -5055,9 +5055,6 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 		if (attackerGhost == NULL)
 			continue;
 
-		if (attacker->getFaction() == 0 || attacker->getFaction() == player->getFaction() || attackerGhost->getFactionStatus() != FactionStatus::OVERT)
-			continue;
-
 		int curAttackerRating = attackerGhost->getPvpRating();
 
 		if (highDamageAmount == 0 || entry->getTotalDamage() > highDamageAmount) {
