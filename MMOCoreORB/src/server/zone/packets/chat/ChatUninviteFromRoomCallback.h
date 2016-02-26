@@ -6,7 +6,7 @@
  */
 
 #ifndef CHATUNINVITEFROMROOMCALLBACK_H_
-#define CHATUNINVITEFROMROOMCALLBACKBACK_H_
+#define CHATUNINVITEFROMROOMCALLBACK_H_
 
 
 #include "server/zone/packets/MessageCallback.h"
