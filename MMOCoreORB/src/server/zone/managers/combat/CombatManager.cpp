@@ -1912,16 +1912,18 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 			defender->addWounds(CreatureAttribute::WILLPOWER, 1, true);
 	}
 
-	int spillDamagePerPool = (int)(totalSpillOver / numSpillOverPools); // Split the spill over damage between the pools damaged
+	if (numSpillOverPools > 0) {
+		int spillDamagePerPool = (int)(totalSpillOver / numSpillOverPools); // Split the spill over damage between the pools damaged
 
-	int spillOverRemainder = (totalSpillOver % numSpillOverPools) + spillDamagePerPool;
+		int spillOverRemainder = (totalSpillOver % numSpillOverPools) + spillDamagePerPool;
 
-	if ((poolsToDamage ^ 0x7) & HEALTH)
-		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (numSpillOverPools-- > 1 ? spillDamagePerPool : spillOverRemainder), true, xpType, true, true);
-	if ((poolsToDamage ^ 0x7) & ACTION)
-		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (numSpillOverPools-- > 1 ? spillDamagePerPool : spillOverRemainder), true, xpType, true, true);
-	if ((poolsToDamage ^ 0x7) & MIND)
-		defender->inflictDamage(attacker, CreatureAttribute::MIND, (numSpillOverPools-- > 1 ? spillDamagePerPool : spillOverRemainder), true, xpType, true, true);
+		if ((poolsToDamage ^ 0x7) & HEALTH)
+			defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (numSpillOverPools-- > 1 ? spillDamagePerPool : spillOverRemainder), true, xpType, true, true);
+		if ((poolsToDamage ^ 0x7) & ACTION)
+			defender->inflictDamage(attacker, CreatureAttribute::ACTION, (numSpillOverPools-- > 1 ? spillDamagePerPool : spillOverRemainder), true, xpType, true, true);
+		if ((poolsToDamage ^ 0x7) & MIND)
+			defender->inflictDamage(attacker, CreatureAttribute::MIND, (numSpillOverPools-- > 1 ? spillDamagePerPool : spillOverRemainder), true, xpType, true, true);
+	}
 
 	int totalDamage =  (int) (healthDamage + actionDamage + mindDamage);
 	if(totalDamage != 0) {

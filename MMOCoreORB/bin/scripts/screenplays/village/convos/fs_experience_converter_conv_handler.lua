@@ -140,7 +140,7 @@ end
 function fs_experience_converter_conv_handler:notifyTransfer(pCreature, pSui, eventIndex, arg0)
 	local cancelPressed = (eventIndex == 1)
 
-	if (pCreature == nil or cancelPressed) then
+	if (pCreature == nil or cancelPressed or arg0 == -1) then
 		return
 	end
 
