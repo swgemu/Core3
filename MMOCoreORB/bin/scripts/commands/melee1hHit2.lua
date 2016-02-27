@@ -51,7 +51,8 @@ Melee1hHit2Command = {
 	mindCostMultiplier = 1.25,
         accuracyBonus = 25,
 
-	animationCRC = hashCode("combo_4a_medium"),
+	animation = "combo_4a", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "chosun",
 	

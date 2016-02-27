@@ -44,7 +44,8 @@
 CreatureAreaDiseaseCommand = {
         name = "creatureareadisease",
         combatSpam = "attack",
-        animationCRC = hashCode("creature_attack_special_1_light"),
+        animation = "creature_attack_special_1", 
+	animType = GENERATE_INTENSITY,
 	dotEffects = {
 	  DotEffect( 
 		DISEASED, 

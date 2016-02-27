@@ -52,7 +52,7 @@ Melee2hLunge2Command = {
 	actionCostMultiplier = 0.625,
 	mindCostMultiplier = 0.625,
 
-	animationCRC = hashCode("knockdown_2hmelee_1"),
+	animation = "knockdown_2hmelee_1",
 
 	combatSpam = "lungeslam",
 

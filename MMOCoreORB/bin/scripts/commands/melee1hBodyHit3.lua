@@ -54,7 +54,8 @@ Melee1hBodyHit3Command = {
 	poolsToDamage = HEALTH_ATTRIBUTE,
 	weaponType = ONEHANDMELEEWEAPON,
 
-	animationCRC = hashCode("combo_3a_light"),
+	animation = "combo_3a", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "saitok",
 

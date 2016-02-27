@@ -71,7 +71,8 @@ ConfusionShotCommand = {
 	  )
 	},
 
-	animationCRC = hashCode("fire_5_special_single_medium_face"),
+	animation = "fire_5_special_single", 
+	animType = GENERATE_RANGED,
 
 	combatSpam = "confusionshot",
 	

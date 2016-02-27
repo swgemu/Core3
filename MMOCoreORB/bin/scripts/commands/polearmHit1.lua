@@ -52,7 +52,8 @@ PolearmHit1Command = {
 	actionCostMultiplier = 0.5,
 	mindCostMultiplier = 0.5,
 
-	animationCRC = hashCode("combo_2b_light"),
+	animation = "combo_2b", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "bonebruiser",
 	

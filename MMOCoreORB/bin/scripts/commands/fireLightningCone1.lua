@@ -50,7 +50,8 @@ FireLightningCone1Command = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	animationCRC = hashCode("fire_area_medium"),
+	animation = "fire_area", 
+	animType = GENERATE_RANGED,
 
 	combatSpam = "firelightningcone1",
 
