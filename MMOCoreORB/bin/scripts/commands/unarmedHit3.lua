@@ -51,7 +51,8 @@ UnarmedHit3Command = {
 	mindCostMultiplier = 2,
         accuracyBonus = 15,
 
-	animationCRC = hashCode("combo_5a_medium"),
+	animation = "combo_5a", 
+	animType = GENERATE_INTENSITY,
 
 
 

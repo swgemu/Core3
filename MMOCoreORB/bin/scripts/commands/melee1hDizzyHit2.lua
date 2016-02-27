@@ -54,7 +54,8 @@ Melee1hDizzyHit2Command = {
 	areaRange = 16,
 	areaAction = true,
 
-	animationCRC = hashCode("combo_4a_light"),
+	animation = "combo_4a", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "skullslash",
 

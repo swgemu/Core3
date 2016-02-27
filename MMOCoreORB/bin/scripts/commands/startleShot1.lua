@@ -65,7 +65,7 @@ StartleShot1Command = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	animationCRC = hashCode("fire_defender_posture_change_up"),
+	animation = "fire_defender_posture_change_up",
 
 	combatSpam = "startle",
 	

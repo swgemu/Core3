@@ -51,7 +51,8 @@ WildShot1Command = {
 	mindCostMultiplier = 0.5,
 	accuracyBonus = 25,
 
-	animationCRC = hashCode("fire_7_single_medium"),
+	animation = "fire_7_single", 
+	animType = GENERATE_RANGED,
 
 	combatSpam = "wildshot",
 

@@ -52,7 +52,8 @@ ForceChokeCommand = {
 	attackType = FORCEATTACK,
 	accuracySkillMod = "forcechoke_accuracy";
 
-	animationCRC = hashCode("force_choke_1_particle_level_1_medium"),
+	animation = "force_choke_1_particle_level_1", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "forcechoke",
 

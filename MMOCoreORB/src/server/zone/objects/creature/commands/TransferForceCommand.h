@@ -70,7 +70,8 @@ public:
 			targetGhost->setForcePower(targetGhost->getForcePower() + forceTransfer);
 			playerGhost->setForcePower(playerGhost->getForcePower() - forceTransfer);
 
-			creature->doCombatAnimation(targetCreature, animationCRC, 0x1, 0xFF);
+			uint32 animCRC = getAnimationString().hashCode();
+			creature->doCombatAnimation(targetCreature, animCRC, 0x1, 0xFF);
 			CombatManager::instance()->broadcastCombatSpam(creature, targetCreature, NULL, forceTransfer, "cbt_spam", combatSpam, 0);
 
 			return SUCCESS;

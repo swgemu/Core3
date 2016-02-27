@@ -52,7 +52,8 @@ Saber1hHit2Command = {
 	forceCostMultiplier = 1.5,
 	visMod = 25,
 
-	animationCRC = hashCode("combo_jedi_2_light"),
+	animation = "combo_jedi_2", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "saber1hhit2",
 

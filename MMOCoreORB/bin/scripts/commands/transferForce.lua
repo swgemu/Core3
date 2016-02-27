@@ -44,7 +44,7 @@
 TransferForceCommand = {
 	name = "transferforce",
 	
-	animationCRC = hashCode("force_transfer_1"),
+	animation = "force_transfer_1",
 
 	combatSpam = "forcetransfer_hit",
 	

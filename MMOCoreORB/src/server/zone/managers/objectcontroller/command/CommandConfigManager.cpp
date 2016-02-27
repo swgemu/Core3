@@ -498,6 +498,11 @@ void CommandConfigManager::registerGlobals() {
 	// force heal targets
 	setGlobalInt("FORCE_HEAL_TARGET_SELF", ForceHealQueueCommand::TARGET_SELF);
 	setGlobalInt("FORCE_HEAL_TARGET_OTHER", ForceHealQueueCommand::TARGET_OTHER);
+
+	//animation generation types
+	setGlobalInt("GENERATE_NONE", CombatQueueCommand::GENERATE_NONE);
+	setGlobalInt("GENERATE_RANGED", CombatQueueCommand::GENERATE_RANGED);
+	setGlobalInt("GENERATE_INTENSITY", CombatQueueCommand::GENERATE_INTENSITY);
 }
 
 int CommandConfigManager::runSlashCommandsFile(lua_State* L) {
@@ -621,8 +626,10 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			combatCommand->setAreaRange(Lua::getIntParameter(L));
 		else if (varName == "combatSpam")
 			combatCommand->setCombatSpam(Lua::getStringParameter(L));
-		else if (varName == "animationCRC")
-			combatCommand->setAnimationCRC(Lua::getUnsignedIntParameter(L));
+		else if (varName == "animation")
+			combatCommand->setAnimationString(Lua::getStringParameter(L));
+		else if (varName == "animType")
+			combatCommand->setAnimType(Lua::getUnsignedIntParameter(L));
 		else if (varName == "effectString")
 			combatCommand->setEffectString(Lua::getStringParameter(L));
 		else if (varName == "trails")
@@ -673,7 +680,7 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 		else if (varName == "duration")
 			jediCommand->setDuration(Lua::getIntParameter(L));
 		else if (varName == "animationCRC")
-			jediCommand->setAnimationCRC(Lua::getUnsignedIntParameter(L));
+			jediCommand->setAnimationCRC(Lua::getIntParameter(L));
 		else if (varName == "clientEffect")
 			jediCommand->setClientEffect(Lua::getStringParameter(L));
 		else if (varName == "speedMod")

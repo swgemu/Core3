@@ -68,7 +68,8 @@ StrafeShot2Command = {
 	  )
 	},
 
-	animationCRC = hashCode("fire_area_medium"),
+	animation = "fire_area", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "advancedstrafe",
 	

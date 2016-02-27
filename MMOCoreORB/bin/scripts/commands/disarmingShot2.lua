@@ -54,7 +54,8 @@ DisarmingShot2Command = {
 	coneAngle = 15,
 	coneAction = true,
 
-	animationCRC = hashCode("fire_3_single_light_face"),
+	animation = "fire_3_single", 
+	animType = GENERATE_RANGED,
 
 	combatSpam = "disarmblast",
 

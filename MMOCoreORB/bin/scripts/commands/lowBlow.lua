@@ -63,7 +63,8 @@ LowBlowCommand = {
 	  )
 	},
 
-	animationCRC = hashCode("fire_5_single_light"),
+	animation = "fire_5_single", 
+	animType = GENERATE_RANGED,
 
 	combatSpam = "lowblow",
 	

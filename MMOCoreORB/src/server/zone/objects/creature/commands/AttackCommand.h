@@ -26,7 +26,6 @@ public:
 
 		return doCombatAction(creature, target);
 	}
-
 };
 
 #endif //ATTACKCOMMAND_H_

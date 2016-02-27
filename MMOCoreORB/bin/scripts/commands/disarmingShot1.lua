@@ -51,7 +51,8 @@ DisarmingShot1Command = {
 	mindCostMultiplier = 0.5,
         accuracyBonus = 50,
 
-	animationCRC = hashCode("fire_3_single_light_face"),
+	animation = "fire_3_single", 
+	animType = GENERATE_RANGED,
 
 	combatSpam = "disarmshot",
 	

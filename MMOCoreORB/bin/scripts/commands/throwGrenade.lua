@@ -56,7 +56,7 @@ ThrowGrenadeCommand = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	animationCRC = hashCode("throw_grenade"),
+	animation = "throw_grenade",
 }
 
 AddCommand(ThrowGrenadeCommand)

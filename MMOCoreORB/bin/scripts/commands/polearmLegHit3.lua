@@ -51,7 +51,8 @@ PolearmLegHit3Command = {
 	mindCostMultiplier = 1.5,
 	accuracyBonus = 10,
 
-	animationCRC = hashCode("combo_3b_medium"),
+	animation = "combo_3b", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "legbreaker",
 

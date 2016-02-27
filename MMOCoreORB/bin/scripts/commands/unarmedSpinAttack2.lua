@@ -53,7 +53,8 @@ UnarmedSpinAttack2Command = {
 	mindCostMultiplier = 2,
         accuracyBonus = 15,
 
-	animationCRC = hashCode("combo_3d_medium"),
+	animation = "combo_3d", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "unarmed_knockdown",
 	

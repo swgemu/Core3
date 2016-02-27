@@ -51,7 +51,7 @@ ChargeShot1Command = {
 	mindCostMultiplier = 0.5,
 	accuracyBonus = 25,
 
-	animationCRC = hashCode("charge"),
+	animation = "charge",
 
 	combatSpam = "chargeshot",
 	
