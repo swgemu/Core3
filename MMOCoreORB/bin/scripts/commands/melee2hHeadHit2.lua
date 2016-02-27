@@ -55,7 +55,8 @@ Melee2hHeadHit2Command = {
 	
 	weaponType = TWOHANDMELEEWEAPON,
 
-	animationCRC = hashCode("combo_2d_light"),
+	animation = "combo_2d", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "scalpstrike",
 

@@ -51,7 +51,8 @@ OverChargeShot1Command = {
 	mindCostMultiplier = 0.5,
 	accuracyBonus = 15,
 
-	animationCRC = hashCode("fire_1_special_single_medium"),
+	animation = "fire_1_special_single", 
+	animType = GENERATE_RANGED,
 
 	combatSpam = "overchargeshot",
 	

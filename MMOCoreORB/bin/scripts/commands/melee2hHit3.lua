@@ -64,7 +64,8 @@ Melee2hHit3Command = {
 	
 	weaponType = TWOHANDMELEEWEAPON,
 
-	animationCRC = hashCode("combo_4a_medium"),
+	animation = "combo_4a", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "viciousstrike",
 

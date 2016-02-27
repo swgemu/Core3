@@ -84,7 +84,8 @@ SaberPolearmDervishCommand = {
 	  )
 	},
 
-	animationCRC = hashCode("showoff_2_light"),
+	animation = "showoff_2", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "saberpolearmdervish",
 

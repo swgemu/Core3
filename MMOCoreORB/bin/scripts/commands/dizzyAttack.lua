@@ -44,7 +44,8 @@
 DizzyAttackCommand = {
 	name = "dizzyattack",
 	combatSpam = "attack",
-	animationCRC = hashCode("creature_attack_special_2_light"),
+	animation = "creature_attack_special_2", 
+	animType = GENERATE_INTENSITY,
 	stateEffects = {
 	  StateEffect( 
 		DIZZY_EFFECT, 

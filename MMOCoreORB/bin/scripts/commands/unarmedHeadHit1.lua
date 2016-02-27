@@ -53,7 +53,7 @@ UnarmedHeadHit1Command = {
 
 	poolsToDamage = MIND_ATTRIBUTE,
 
-	animationCRC = hashCode("knockdown_unarmed_1"),
+	animation = "knockdown_unarmed_1",
 
 	combatSpam = "nexugrin",
 	

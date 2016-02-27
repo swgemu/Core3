@@ -75,7 +75,7 @@ PolearmArea2Command = {
 	  )
 	},
 
-	animationCRC = hashCode("lower_posture_2hmelee_6"),
+	animation = "lower_posture_2hmelee_6",
 
 	combatSpam = "tornado",
 

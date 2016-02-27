@@ -51,7 +51,8 @@ FullAutoArea1Command = {
 	mindCostMultiplier = 0.5,
 	accuracyBonus = 25,
 
-	animationCRC = hashCode("fire_defender_posture_change_down"),
+	animation = "fire_area",
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "areashot",
 

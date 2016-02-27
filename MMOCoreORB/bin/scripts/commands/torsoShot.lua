@@ -52,7 +52,8 @@ TorsoShotCommand = {
 
 	poolsToDamage = HEALTH_ATTRIBUTE,
 
-	animationCRC = hashCode("fire_3_special_single_light_face"),
+	animation = "fire_3_special_single", 
+	animType = GENERATE_RANGED,
 
 	combatSpam = "torsoshot",
 

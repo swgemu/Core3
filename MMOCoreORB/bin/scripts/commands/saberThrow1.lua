@@ -52,7 +52,8 @@ SaberThrow1Command = {
 	forceCostMultiplier = 1.5,
 	visMod = 25,
 
-	animationCRC = hashCode("saberthrow_light"),
+	animation = "saberthrow", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "saberthrow1",
 
