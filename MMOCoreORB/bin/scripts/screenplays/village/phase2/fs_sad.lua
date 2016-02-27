@@ -5,7 +5,7 @@ FsSad = ScreenPlay:new {
 	--timePeriod = 24 * 60 * 60, -- 24 Hours
 	timePeriod = 1 * 60 * 60, -- 1 hour for testing
 	tasksPerPeriod = 3,
-	theaterTable = { FsSadTheater1, FsSadTheater2, FsSadTheater3, FsSadTheater4, FsSadTheater5, FsSadTheater6, FsSadTheater7, FsSadTheater8 }
+	theaterTable = { FsSad1Theater1, FsSad1Theater2, FsSad1Theater3, FsSad1Theater4, FsSad1Theater5, FsSad1Theater6, FsSad1Theater7, FsSad1Theater8 }
 }
 
 function FsSad:hasExceededLimit(pPlayer)
