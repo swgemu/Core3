@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_5bbb6e72",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1968,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-27T02:16:36Z",
+      "side": 1,
+      "message": "After looking at more evidence, I\u0027ll take this back with the caveat that I think that the only person that was able to see flytext was the attacker that caused the hit, which is exactly what you are doing, so this part is fine.",
+      "parentUuid": "da7095c5_9bc106e7",
+      "range": {
+        "startLine": 1967,
+        "startChar": 0,
+        "endLine": 1968,
+        "endChar": 78
+      },
+      "revId": "1700d031c841e6c369e9118f6fd8eeb91609ab10",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_3b9f9a05",
         "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.h",
         "patchSetId": 3
