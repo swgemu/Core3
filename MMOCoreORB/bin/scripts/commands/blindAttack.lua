@@ -44,7 +44,8 @@
 BlindAttackCommand = {
 	name = "blindattack",
 	combatSpam = "attack",
-	animationCRC = hashCode("creature_attack_special_1_light"),
+	animation = "creature_attack_special_1", 
+	animType = GENERATE_INTENSITY,
 	stateEffects = {
 	  StateEffect( 
 		BLIND_EFFECT, 

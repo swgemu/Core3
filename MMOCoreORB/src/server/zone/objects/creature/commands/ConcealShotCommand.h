@@ -23,7 +23,24 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return doCombatAction(creature, target);
+		int size = creature->getAttackHistorySize();
+		info("attack history size: " + String::valueOf(size), true);
+
+		int res =  doCombatAction(creature, target);
+
+		if(res == SUCCESS) {
+			ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
+			if(targetObject != NULL) {
+				AiAgent *ai = targetObject->asAiAgent();
+				if(ai != NULL) {
+					Locker locker(ai, creature);
+					ai->getDefenderList()->removeAll(NULL);
+					CombatManager::instance()->forcePeace(ai);
+				}
+			}
+		}
+
+		return res;
 	}
 
 };

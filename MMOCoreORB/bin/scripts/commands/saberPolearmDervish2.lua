@@ -85,7 +85,8 @@ SaberPolearmDervish2Command = {
 	  )
 	},
 
-	animationCRC = hashCode("combo_jedi_2_light"),
+	animation = "combo_jedi_2", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "saberpolearmdervish2",
 

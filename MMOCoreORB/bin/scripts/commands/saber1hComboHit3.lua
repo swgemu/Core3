@@ -52,7 +52,8 @@ Saber1hComboHit3Command = {
 	forceCostMultiplier = 2.25,
 	visMod = 25,
 
-	animationCRC = hashCode("showoff_1_light"),
+	animation = "showoff_1", 
+	animType = GENERATE_INTENSITY,
 
 	stateEffects = {
 	  StateEffect( 

@@ -53,7 +53,8 @@ Saber1hHit3Command = {
 	forceCostMultiplier = 2.0,
 	visMod = 25,
 
-	animationCRC = hashCode("combo_jedi_3_light"),
+	animation = "combo_jedi_3", 
+	animType = GENERATE_INTENSITY,
 	
 	stateEffects = {
 	  StateEffect( 

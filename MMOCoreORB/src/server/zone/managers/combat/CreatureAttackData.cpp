@@ -32,7 +32,7 @@ CreatureAttackData::CreatureAttackData(const UnicodeString& dataString, const Co
 	}
 }
 
-CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
+CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) : Object(data) {
 	baseCommand = data.baseCommand;
 	targetID = data.targetID;
 
@@ -62,8 +62,6 @@ CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 
 	splashDamage = data.splashDamage;
 
-	animationCRC = data.animationCRC;
-
 	attackType= data.attackType;
 	trails = data.trails;
 
@@ -90,7 +88,6 @@ void CreatureAttackData::fillFromBase() {
 	coneRange = baseCommand->getConeRange();
 	range = baseCommand->getRange();
 	areaRange = baseCommand->getAreaRange();
-	animationCRC = baseCommand->getAnimationCRC();
 	attackType = baseCommand->getAttackType();
 	trails = baseCommand->getTrails();
 	combatSpam = baseCommand->getCombatSpam();
@@ -103,6 +100,26 @@ void CreatureAttackData::fillFromBase() {
 	mindDamageMultiplier = 1.f;
 }
 
+CombatDefenderResult* CreatureAttackData::getDefender(uint64 objID) {
+	for(int i=0; i<defenderResults.size(); i++) {
+		CombatDefenderResult* result = defenderResults.get(i);
+		if(result->getDefender()->getObjectID() == objID) {
+			return result;
+		}
+	}
+	return NULL;
+}
+
+CombatDefenderResult* CreatureAttackData::addDefender(SceneObject* defender) {
+	CombatDefenderResult* result = getDefender(defender->getObjectID());
+
+	if(result == NULL) {
+		result = new CombatDefenderResult();
+		result->setDefender(defender);
+	}
+
+	return result;
+}
 void CreatureAttackData::setVariable(const String& var, const String& val) {
 	uint32 crc = var.hashCode();
 	switch(crc) {
@@ -156,9 +173,6 @@ void CreatureAttackData::setVariable(const String& var, const String& val) {
 		break;
 	case 0xFEC2FA79: // STRING_HASHCODE("areaRange")
 		areaRange = Integer::valueOf(val);
-		break;
-	case 0x244FB60D: // STRING_HASHCODE("animationCRC")
-		animationCRC = Integer::valueOf(val);
 		break;
 	case 0x708615B8: // STRING_HASHCODE("attackType")
 		attackType = Integer::valueOf(val);

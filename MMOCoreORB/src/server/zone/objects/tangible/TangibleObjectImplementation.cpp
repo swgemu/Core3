@@ -768,6 +768,9 @@ void TangibleObjectImplementation::removeTemplateSkillMods(TangibleObject* targe
 	}
 }
 
+Vector<Reference<CreatureAttackData* > > TangibleObjectImplementation::getAttackHistory() {
+	return attackHistory;
+}
 VectorMap<String, int>* TangibleObjectImplementation::getTemplateSkillMods() {
 	SharedTangibleObjectTemplate* tano = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
 

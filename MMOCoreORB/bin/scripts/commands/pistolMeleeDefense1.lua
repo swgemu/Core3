@@ -65,7 +65,8 @@ PistolMeleeDefense1Command = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	animationCRC = hashCode("ranged_melee_light"),
+	animation = "ranged_melee", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "pistolwhip",
 	

@@ -44,7 +44,7 @@
 DrainForceCommand = {
     name = "drainforce",
 	
-	animationCRC = hashCode("force_drain_1"),
+	animation = "force_drain_1",
 
 	combatSpam = "forcedrain_hit",
 	

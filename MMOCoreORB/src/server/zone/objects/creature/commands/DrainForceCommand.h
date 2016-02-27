@@ -78,7 +78,9 @@ public:
 			playerGhost->setForcePower(playerGhost->getForcePower() + forceDrain);
 			targetGhost->setForcePower(targetGhost->getForcePower() - forceDrain);
 
-			creature->doCombatAnimation(targetCreature, animationCRC, 0x1, 0xFF);
+			const static uint32 animHash = getAnimationString().hashCode();
+
+			creature->doCombatAnimation(targetCreature, animHash , 0x1, 0xFF);
 			manager->broadcastCombatSpam(creature, targetCreature, NULL, forceDrain, "cbt_spam", combatSpam, 1);
 
 			return SUCCESS;

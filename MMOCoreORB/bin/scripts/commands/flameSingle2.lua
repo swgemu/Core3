@@ -53,7 +53,8 @@ FlameSingle2Command = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	animationCRC = hashCode("fire_flame_thrower_single_2_light"),
+	animation = "fire_flame_thrower_single_2", 
+	animType = GENERATE_INTENSITY,
 	combatSpam = "flamesingle2",
 	dotEffects = {
 	  DotEffect( 

@@ -40,7 +40,7 @@ public:
 		int res = doCombatAction(creature, target);
 
 		if(res == SUCCESS) {
-			CreatureAttackData data = CreatureAttackData("", this, target);
+			Reference<CreatureAttackData*> data = new CreatureAttackData("", this, target);
 			Reference<SortedVector<ManagedReference<TangibleObject*> >* > targets = CombatManager::instance()->getAreaTargets(creature, creature->getWeapon(), tarCreo, data);
 			if(targets->size() != 0) {
 				ForceIntimidateTask *task = new ForceIntimidateTask(tarCreo, targets, this);

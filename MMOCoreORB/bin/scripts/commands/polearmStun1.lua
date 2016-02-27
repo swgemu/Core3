@@ -51,7 +51,8 @@ PolearmStun1Command = {
 	mindCostMultiplier = 0.5,
 	accuracyBonus = 10,
 
-	animationCRC = hashCode("combo_4a_light"),
+	animation = "combo_4a", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "breathtaker",
 

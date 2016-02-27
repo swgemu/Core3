@@ -59,7 +59,8 @@ public:
 			CombatManager* combatManager = CombatManager::instance();
 
 			try {
-				int res = combatManager->doCombatAction(creature, creature->getWeapon(), cast<TangibleObject*>(targetObject.get()), CreatureAttackData(arguments, this, target));
+				Reference<CreatureAttackData*> data = new CreatureAttackData(arguments, this, target);
+				int res = combatManager->doCombatAction(creature, creature->getWeapon(), cast<TangibleObject*>(targetObject.get()), data);
 
 				switch (res) {
 				case -1:

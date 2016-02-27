@@ -52,7 +52,7 @@ Melee2hSweep1Command = {
 	actionCostMultiplier = 1.5,
 	mindCostMultiplier = 0.75,
 
-	animationCRC = hashCode("lower_posture_2hmelee_3"),
+	animation = "lower_posture_2hmelee_3",
 
 	combatSpam = "sweep",
 

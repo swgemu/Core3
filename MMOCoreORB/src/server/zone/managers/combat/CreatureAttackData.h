@@ -11,10 +11,67 @@
 #include "engine/engine.h"
 #include "server/zone/objects/creature/commands/effect/StateEffect.h"
 #include "server/zone/objects/creature/commands/effect/DotEffect.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CombatQueueCommand;
+class CombatDefenderResult : public Object {
+protected:
+	ManagedWeakReference<SceneObject*> defender;
+	uint8 hitLocation;
+	uint8 hitResult; // hit miss etc.
+	int damage;
+public:
+	CombatDefenderResult() {
+		defender = NULL;
+		hitLocation = 0;
+		hitResult = 0;
+		damage = 0;
+	}
+	~CombatDefenderResult() {
+		defender = NULL;
+	}
 
-class CreatureAttackData {
+	CombatDefenderResult(const CombatDefenderResult& rhs) : Object(rhs) {
+		defender = rhs.defender;
+		hitLocation = rhs.hitLocation;
+		hitResult = rhs.hitResult;
+		damage = rhs.damage;
+	}
+
+	SceneObject* getDefender() {
+		return defender.get();
+	}
+
+	uint8 getHitLocation() {
+		return hitLocation;
+	}
+
+	uint8 getHitResult() {
+		return hitResult;
+	}
+
+	int getDamage() {
+		return damage;
+	}
+
+	void setDefender(SceneObject *defender) {
+		this->defender = defender;
+	}
+
+	void setHitLocation(uint8 hitLocation) {
+		this->hitLocation = hitLocation;
+	}
+
+	void setHitResult(uint8 hitResult) {
+		this->hitResult = hitResult;
+	}
+
+	void setDamage(int damage) {
+		this->damage = damage;
+	}
+};
+
+class CreatureAttackData : public Object {
 protected:
 	const CombatQueueCommand* baseCommand;
 
@@ -41,8 +98,6 @@ protected:
 
     bool splashDamage;
 
-    uint32 animationCRC;
-
     uint64 targetID;
 
     VectorMap<uint8, StateEffect>* stateEffects;
@@ -55,6 +110,8 @@ protected:
 
 	int stateAccuracyBonus;
 
+	SortedVector<Reference<CombatDefenderResult*> > defenderResults;
+
 public:
     CreatureAttackData(const UnicodeString & dataString, const CombatQueueCommand *base, uint64 target);
     CreatureAttackData(const CreatureAttackData& data);
@@ -65,6 +122,10 @@ public:
 
     String getCommandName() const;
     uint32 getCommandCRC() const;
+
+    CombatDefenderResult* getDefender(uint64 objID);
+
+    CombatDefenderResult* addDefender(SceneObject* defender);
 
 	float getActionDamageMultiplier() const {
 		return actionDamageMultiplier;
@@ -114,9 +175,6 @@ public:
 		return actionCostMultiplier;
 	}
 
-	uint32 getAnimationCRC() const {
-		return animationCRC;
-	}
 
 	void setSplashDamage(bool b) {
 		splashDamage = b;
@@ -174,10 +232,6 @@ public:
 		return dotEffects;
 	}
 
-	void setAnimationCRC(uint32 animationCRC) {
-		this->animationCRC = animationCRC;
-	}
-
 	uint8 getAttackType() const {
 		return attackType;
 	}
@@ -222,5 +276,4 @@ public:
 
 	bool changesAttackerPosture() const;
 };
-
 #endif /* CREATUREATTACKDATA_H_ */
