@@ -52,7 +52,8 @@ Melee2hHit1Command = {
 	actionCostMultiplier = 1.0,
 	mindCostMultiplier = 0.5,
 
-	animationCRC = hashCode("combo_2c_medium"),
+	animation = "combo_2c", 
+	animType = GENERATE_INTENSITY,
 	
 	weaponType = TWOHANDMELEEWEAPON,
 

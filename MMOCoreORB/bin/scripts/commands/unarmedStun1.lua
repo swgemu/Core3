@@ -52,7 +52,8 @@ UnarmedStun1Command = {
 	actionCostMultiplier = 1.5,
 	mindCostMultiplier = 1.5,
 
-	animationCRC = hashCode("combo_4c_light"),
+	animation = "combo_4c", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "screamingsquill",
 

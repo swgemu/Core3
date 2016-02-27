@@ -54,7 +54,8 @@ PolearmArea1Command = {
 	areaRange = 16,
 	areaAction = true,
 
-	animationCRC = hashCode("combo_2c_medium"),
+	animation = "combo_2c", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "whirlwind",
 

@@ -50,7 +50,8 @@ BleedingShotCommand = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	animationCRC = hashCode("fire_3_single_light"),
+	animation = "fire_3_single", 
+	animType = GENERATE_RANGED,
 
 	combatSpam = "bleedingshot",
 

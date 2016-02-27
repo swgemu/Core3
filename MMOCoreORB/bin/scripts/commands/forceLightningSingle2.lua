@@ -63,7 +63,8 @@ ForceLightningSingle2Command = {
 	  )
 	},
 
-	animationCRC = hashCode("force_lightning_1_particle_level_3_light"),
+	animation = "force_lightning_1_particle_level_3", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "forcelightningsingle2",
 

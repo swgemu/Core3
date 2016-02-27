@@ -67,7 +67,8 @@ LastDitchCommand = {
 		{"pistol_accuracy",10},
 	},
 
-	animationCRC = hashCode("fire_1_special_single_light"),
+	animation = "fire_1_special_single", 
+	animType = GENERATE_RANGED,
 
 	combatSpam = "lastditch",
 	

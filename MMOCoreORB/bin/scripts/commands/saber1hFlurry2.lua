@@ -84,7 +84,8 @@ Saber1hFlurry2Command = {
 	  )
 	},
 
-	animationCRC = hashCode("combo_jedi_4_light"),
+	animation = "combo_jedi_4", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "saber1hflurry2",
 

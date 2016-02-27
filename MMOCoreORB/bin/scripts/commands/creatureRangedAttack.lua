@@ -1,6 +1,7 @@
 CreatureRangedAttackCommand = {
 	name = "creaturerangedattack",
-	animationCRC = hashCode("creature_attack_ranged_medium"),
+	animation = "creature_attack_ranged", 
+	animType = GENERATE_INTENSITY,
 	damageMultiplier = 1,
 	speedMultiplier = 1,
 	combatSpam = "attack",

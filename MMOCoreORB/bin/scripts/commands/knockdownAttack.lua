@@ -44,7 +44,8 @@
 KnockdownAttackCommand = {
         name = "knockdownattack",
 	combatSpam = "attack",
-	animationCRC = hashCode("creature_attack_special_1_medium"),
+	animation = "creature_attack_special_1", 
+	animType = GENERATE_INTENSITY,
 
 	stateEffects = {
 	  StateEffect( 

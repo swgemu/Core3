@@ -67,7 +67,8 @@ Melee2hMindHit1Command = {
 	
 	weaponType = TWOHANDMELEEWEAPON,
 
-	animationCRC = hashCode("combo_2b_medium"),
+	animation = "combo_2b", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "mindstrike",
 

@@ -57,7 +57,7 @@ Melee2hSpinAttack1Command = {
 	
 	weaponType = TWOHANDMELEEWEAPON,
 
-	animationCRC = hashCode("attack_high_right_light_2"),
+	animation = "attack_high_right_light_2",
 
 	combatSpam = "spinstrike",
 

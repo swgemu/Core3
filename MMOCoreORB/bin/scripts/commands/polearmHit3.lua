@@ -71,7 +71,8 @@ PolearmHit3Command = {
 	  )
 	},
 
-	animationCRC = hashCode("combo_5a_medium"),
+	animation = "combo_5a", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "bonebreaker",
 	

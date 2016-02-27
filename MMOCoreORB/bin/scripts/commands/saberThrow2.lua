@@ -64,7 +64,7 @@ SaberThrow2Command = {
 	  )
 	},
 
-	animationCRC = hashCode("saberthrow_posture_change"),
+	animation = "saberthrow_posture_change",
 
 	combatSpam = "saberthrow2",
 

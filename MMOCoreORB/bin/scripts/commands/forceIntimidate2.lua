@@ -66,7 +66,7 @@ ForceIntimidate2Command = {
 	  )
 	},
 
-	animationCRC = hashCode("force_intimidate_chain"),
+	animation = "force_intimidate_chain",
 
 	combatSpam = "forceintimidate2",
 
