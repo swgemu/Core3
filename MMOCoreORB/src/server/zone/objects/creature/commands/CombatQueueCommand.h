@@ -156,11 +156,13 @@ public:
 						ManagedReference<CreatureObject*> targetCreature = targetObject.castTo<CreatureObject*>();
 
 						if (targetCreature != NULL) {
-							if (targetCreature->isPlayerCreature() && !CombatManager::instance()->areInDuel(creature, targetCreature)) {
-								PlayerObject* targetGhost = targetCreature->getPlayerObject();
+							if (targetCreature->isPlayerCreature()) {
+								if (!CombatManager::instance()->areInDuel(creature, targetCreature)) {
+									PlayerObject* targetGhost = targetCreature->getPlayerObject();
 
-								if (targetGhost != NULL && targetGhost->getFactionStatus() == FactionStatus::OVERT) {
-									ghost->doFieldFactionChange(FactionStatus::OVERT);
+									if (targetGhost != NULL && targetGhost->getFactionStatus() == FactionStatus::OVERT) {
+										ghost->doFieldFactionChange(FactionStatus::OVERT);
+									}
 								}
 							} else if (targetCreature->isPet()) {
 								ManagedReference<CreatureObject*> targetOwner = targetCreature->getLinkedCreature().get();
