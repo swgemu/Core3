@@ -209,6 +209,93 @@ void GCWManagerImplementation::performGCWTasks() {
 	task->schedule(gcwCheckTimer * 1000);
 }
 
+void GCWManagerImplementation::verifyTurrets(BuildingObject* building) {
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == NULL)
+		return;
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+
+	if (zoneServer == NULL)
+		return;
+
+	int turretCount = 0;
+
+	Locker blocker(building);
+
+	bool hasDefense = baseData->hasDefense();
+
+	for(int i = 0; i < baseData->getTotalTurretCount(); ++i) {
+		uint64 turretID = baseData->getTurretID(i);
+		ManagedReference<SceneObject*> turret = zoneServer->getObject(baseData->getTurretID(i));
+
+		if (turret != NULL)
+			turretCount++;
+	}
+
+	baseData->setDefense(turretCount != 0);
+
+	if (!(hasDefense == baseData->hasDefense())) {
+		building->broadcastCellPermissions();
+	}
+}
+
+bool GCWManagerImplementation::canPlaceMoreBases(CreatureObject* creature) {
+	if (creature == NULL || !creature->isPlayerCreature())
+		return false;
+
+	PlayerObject* ghost = creature->getPlayerObject();
+	if (ghost == NULL)
+		return false;
+
+	if (zone == NULL)
+		return false;
+
+	ZoneServer* server = zone->getZoneServer();
+	if (server == NULL)
+		return false;
+
+	int baseCount = 0;
+	for (int i =0; i < ghost->getTotalOwnedStructureCount(); ++i) {
+		ManagedReference<SceneObject*> structure = server->getObject(ghost->getOwnedStructure(i));
+
+		if (structure != NULL && structure->isGCWBase())
+			baseCount++;
+	}
+
+	if (baseCount >= maxBasesPerPlayer) {
+		creature->sendSystemMessage("You own " + String::valueOf(baseCount) + " bases.  The maximum amount is " + String::valueOf(maxBasesPerPlayer));
+		return false;
+	}
+
+	return true;
+}
+
+bool GCWManagerImplementation::hasTooManyBasesNearby(int x, int y) {
+	if (zone == NULL)
+		return true;
+
+	SortedVector<QuadTreeEntry*> inRangeObjects;
+	zone->getInRangeObjects(x, y, 600, &inRangeObjects, true);
+	int count = 0;
+
+	for (int i = 0; i < inRangeObjects.size(); ++i) {
+		SceneObject* scene = cast<SceneObject*>(inRangeObjects.get(i));
+
+		if (scene == NULL)
+			continue;
+
+		if (scene->isGCWBase())
+			count++;
+	}
+
+	if (count >= 3)
+		return true;
+
+	return false;
+}
+
 void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool initializeBase) {
 	if (!hasBase(building)) {
 
@@ -317,6 +404,118 @@ void GCWManagerImplementation::unregisterGCWBase(BuildingObject* building) {
 		oldDestroyTask->cancel();
 		dropDestroyTask(building->getObjectID());
 	}
+}
+
+// pre: building is locked
+// initializes times when a base is placed for the first time
+void GCWManagerImplementation::initializeBaseTimers(BuildingObject* building) {
+
+	// THESE WORK IF YOU DONT WANT A BASE VULN ON PLANT
+	// IT DOES THE NEXT ONE
+	/*
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == NULL) {
+		error("ERROR:  could not get base data for base");
+		return;
+	}
+
+	baseData->setPlacementTime(Time());
+	baseData->setLastVulnerableTime(Time());
+
+	Time nextTime;
+
+	nextTime.addMiliTime(GCWManager::VULNERABILITYFREQUENCY*1000);
+	baseData->setNextVulnerableTime(nextTime);
+
+	nextTime.addMiliTime(GCWManager::VULNERABILITYDURATION*1000);
+	baseData->setVulnerabilityEndTime(nextTime);
+
+	baseData->setTerminalDamaged(false);
+	baseData->setLastResetTime(Time(0)); // set it to a long, long time ago
+	 */
+
+	// try to do initial vuln on plant
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == NULL) {
+		error("ERROR:  could not get base data for base");
+		return;
+	}
+
+	baseData->setPlacementTime(Time());
+	baseData->setLastVulnerableTime(Time());
+
+	Time endTime(baseData->getPlacmenetTime());
+	endTime.addMiliTime(vulnerabilityDuration*1000 + getInitialVulnerabilityDelay()*1000);
+	baseData->setVulnerabilityEndTime(endTime);
+
+	if ( getInitialVulnerabilityDelay() == 0) {
+		Time nextVuln(baseData->getPlacmenetTime());
+		nextVuln.addMiliTime(vulnerabilityFrequency*1000);
+		baseData->setNextVulnerableTime(nextVuln);
+	} else {
+		Time nextVuln(baseData->getPlacmenetTime());
+		nextVuln.addMiliTime(getInitialVulnerabilityDelay()*1000);
+		baseData->setNextVulnerableTime(nextVuln);
+	}
+
+	baseData->setTerminalDamaged(false);
+	baseData->setLastResetTime(Time(0)); // set it to a long, long time ago
+}
+
+void GCWManagerImplementation::addMinefield(BuildingObject* building, SceneObject* minefield) {
+	if (building == NULL)
+		return;
+	//info("adding minefield",true);
+
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == NULL)
+		return;
+	Locker _lock(building);
+	if (minefield != NULL)
+		baseData->addMinefield(baseData->getTotalMinefieldCount(), minefield->getObjectID());
+	else
+		baseData->addMinefield(baseData->getTotalMinefieldCount(), 0);
+}
+
+void GCWManagerImplementation::addScanner(BuildingObject* building, SceneObject* scanner) {
+	if (building == NULL)
+		return;
+
+	//info("adding scanner",true);
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == NULL)
+		return;
+
+	Locker _lock(building);
+
+	if (scanner != NULL)
+		baseData->addScanner(baseData->getTotalScannerCount(), scanner->getObjectID());
+	else
+		baseData->addScanner(baseData->getTotalScannerCount(), 0);
+}
+
+void GCWManagerImplementation::addTurret(BuildingObject* building, SceneObject* turret) {
+	if (building == NULL)
+		return;
+
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == NULL)
+		return;
+	Locker _lock(building);
+
+	if (turret != NULL)
+		baseData->addTurret(baseData->getTotalTurretCount(), turret->getObjectID());
+	else {
+		// create empty turret slot
+		baseData->addTurret(baseData->getTotalTurretCount(),0);
+	}
+
+	verifyTurrets(building);
 }
 
 // PRE: Nothing needs to be locked
@@ -537,6 +736,29 @@ void GCWManagerImplementation::checkVulnerabilityData(BuildingObject* building) 
 	}
 }
 
+String GCWManagerImplementation::getVulnerableStatus(BuildingObject* building, CreatureObject* creature) {
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (creature == NULL || baseData == NULL)
+		return "";
+
+	double dif = 0;
+
+	if (isBaseVulnerable(building)) {
+		return "@player_structure:next_vulnerability_prompt Now";
+	} else {
+		dif = baseData->getNextVulnerableTime().getTime() - time(0);
+	}
+
+	int days = (int) floor(dif / 86400.f);
+	dif = dif - (days*86400);
+	int hours = (int) floor(dif / 3600.f);
+	dif = dif - (hours * 3600);
+	int minutes = (int) ceil(dif / 60.f);
+
+	return "@player_structure:next_vulnerability_prompt "+ String::valueOf(days) + " days, " + String::valueOf(hours) + " hours, " + String::valueOf(minutes) + " minutes";
+}
+
 bool GCWManagerImplementation::isBaseVulnerable(BuildingObject* building) {
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
@@ -642,200 +864,6 @@ bool GCWManagerImplementation::isFacilityRebooting(BuildingObject* building) {
 	return(baseData->getState() == DestructibleBuildingDataComponent::REBOOTSEQUENCE);
 }
 
-void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building, CreatureObject* creature) {
-	if (isBaseVulnerable(building) && !hasDestroyTask(building->getObjectID()) ) {
-		DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
-
-		if (baseData == NULL)
-			return;
-
-		if (isFacilityRebooting(building)) {
-			if (creature != NULL)
-				creature->sendSystemMessage("You must wait for the facility to reboot before activating the overload again.");
-
-			return;
-		}
-
-		Locker block(building);
-
-		StringIdChatParameter destroyMessage("@faction/faction_hq/faction_hq_response:terminal_response40"); // COUNTDOWN INITIATED: estimated time to detonation: %DI minutes.
-		int minutesRemaining = (int) ceil((double)destructionTimer / (double)60);
-		destroyMessage.setDI(minutesRemaining);
-		broadcastBuilding(building, destroyMessage);
-		baseData->setState(DestructibleBuildingDataComponent::SHUTDOWNSEQUENCE);
-		block.release();
-
-		Reference<Task*> newTask = new BaseDestructionTask(_this.getReferenceUnsafeStaticCast(), building);
-		newTask->schedule(60000);
-		addDestroyTask(building->getObjectID(),newTask);
-	}
-}
-
-void GCWManagerImplementation::abortShutdownSequence(BuildingObject* building, CreatureObject* creature) {
-	if (isBaseVulnerable(building) && hasDestroyTask(building->getObjectID())) {
-		Reference<Task*> oldDestroyTask = getDestroyTask(building->getObjectID());
-		if (oldDestroyTask != NULL) {
-			oldDestroyTask->cancel();
-			dropDestroyTask(building->getObjectID());
-		}
-
-		DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
-
-		if (baseData == NULL)
-			return;
-
-		Locker block(building);
-
-		baseData->setState(DestructibleBuildingDataComponent::REBOOTSEQUENCE);
-		StringIdChatParameter reloadMessage;
-		reloadMessage.setStringId("@faction/faction_hq/faction_hq_response:terminal_response07"); // COUNTDOWN ABORTED: FACILITY SHUTTING DOWN!!
-		broadcastBuilding(building, reloadMessage);
-
-		Reference<Task*> newTask = new BaseRebootTask(_this.getReferenceUnsafeStaticCast(), building, baseData);
-		newTask->schedule(60000);
-	}
-}
-
-void GCWManagerImplementation::startAbortSequenceDelay(BuildingObject* building, CreatureObject* creature, SceneObject* hqTerminal) {
-	if (!creature->checkCooldownRecovery("declare_overt_cooldown")) {
-		StringIdChatParameter params("@faction/faction_hq/faction_hq_response:terminal_response41"); // You have recently joined Special Forces. Before issuing the shutdown command, you must wait %TO
-		Time* cooldownTimer = creature->getCooldownTime("declare_overt_cooldown");
-		int minutes = ceil(cooldownTimer->miliDifference() / -60000.f);
-		params.setTO(String::valueOf(minutes) + " minutes.");
-		creature->sendSystemMessage(params);
-		return;
-	}
-
-	creature->sendSystemMessage("@hq:vulnerability_reset_request_received"); // Structure shutdown request received. Please stand by while the command is processed. Remain with the terminal.
-	Reference<Task*> newTask = new BaseShutdownTask(_this.getReferenceUnsafeStaticCast(), building, creature, hqTerminal);
-	newTask->schedule(60000);
-}
-
-void GCWManagerImplementation::doBaseDestruction(StructureObject* structure) {
-	if (structure == NULL)
-		return;
-
-	BuildingObject* building = cast<BuildingObject*>(structure);
-
-	if (building != NULL)
-		doBaseDestruction(building);
-}
-
-void GCWManagerImplementation::doBaseDestruction(BuildingObject* building) {
-	if (building == NULL)
-		return;
-
-	Reference<Task*> oldEndTask = getDestroyTask(building->getObjectID());
-
-	if (oldEndTask != NULL) {
-		BaseDestructionTask* dTask = cast<BaseDestructionTask*>(oldEndTask.get());
-		if (dTask != NULL && dTask->getCountdown() > 0) {
-			oldEndTask->reschedule(60000);
-			StringIdChatParameter msg("@faction/faction_hq/faction_hq_response:terminal_response39"); // Countdown: Estimated time to detonation: %DI minutes
-			int minutesRemaining = dTask->getCountdown();
-			msg.setDI(minutesRemaining);
-			broadcastBuilding(building, msg);
-			return;
-		}
-
-	}
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
-
-	if (baseData == NULL)
-		return;
-
-	// need to lock both.  building must be locked for destroyStructure() and then _this is locked when it calls unregister.
-	Locker locker(_this.getReferenceUnsafeStaticCast());
-	Locker block(building,_this.getReferenceUnsafeStaticCast());
-
-	int baseType = building->getFactionBaseType();
-
-	if (baseType == PLAYERFACTIONBASE) {
-		unregisterGCWBase(building);
-
-		StructureManager::instance()->destroyStructure(building);
-	} else if (baseType == STATICFACTIONBASE) {
-		building->notifyObservers(ObserverEventType::FACTIONBASEFLIPPED);
-	}
-
-}
-
-// PRE: no locks or only lock on building
-// sets the bandwidth to guess during jamming of the uplink
-void GCWManagerImplementation::renewUplinkBand(BuildingObject* building) {
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
-
-	if (baseData == NULL) {
-		error("ERROR:  could not get base data for base");
-		return;
-	}
-
-	// 10 possible codes bands to guess
-	int secretCode = System::random(0x9);
-	//info("New uplink band is " + String::valueOf(secretCode), true);
-
-	Locker block(building);
-	baseData->setUplinkBand(secretCode);
-}
-
-// pre: building is locked
-// initializes times when a base is placed for the first time
-void GCWManagerImplementation::initializeBaseTimers(BuildingObject* building) {
-
-	// THESE WORK IF YOU DONT WANT A BASE VULN ON PLANT
-	// IT DOES THE NEXT ONE
-	/*
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
-
-	if (baseData == NULL) {
-		error("ERROR:  could not get base data for base");
-		return;
-	}
-
-	baseData->setPlacementTime(Time());
-	baseData->setLastVulnerableTime(Time());
-
-	Time nextTime;
-
-	nextTime.addMiliTime(GCWManager::VULNERABILITYFREQUENCY*1000);
-	baseData->setNextVulnerableTime(nextTime);
-
-	nextTime.addMiliTime(GCWManager::VULNERABILITYDURATION*1000);
-	baseData->setVulnerabilityEndTime(nextTime);
-
-	baseData->setTerminalDamaged(false);
-	baseData->setLastResetTime(Time(0)); // set it to a long, long time ago
-	 */
-
-	// try to do initial vuln on plant
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
-
-	if (baseData == NULL) {
-		error("ERROR:  could not get base data for base");
-		return;
-	}
-
-	baseData->setPlacementTime(Time());
-	baseData->setLastVulnerableTime(Time());
-
-	Time endTime(baseData->getPlacmenetTime());
-	endTime.addMiliTime(vulnerabilityDuration*1000 + getInitialVulnerabilityDelay()*1000);
-	baseData->setVulnerabilityEndTime(endTime);
-
-	if ( getInitialVulnerabilityDelay() == 0) {
-		Time nextVuln(baseData->getPlacmenetTime());
-		nextVuln.addMiliTime(vulnerabilityFrequency*1000);
-		baseData->setNextVulnerableTime(nextVuln);
-	} else {
-		Time nextVuln(baseData->getPlacmenetTime());
-		nextVuln.addMiliTime(getInitialVulnerabilityDelay()*1000);
-		baseData->setNextVulnerableTime(nextVuln);
-	}
-
-	baseData->setTerminalDamaged(false);
-	baseData->setLastResetTime(Time(0)); // set it to a long, long time ago
-}
-
 DestructibleBuildingDataComponent* GCWManagerImplementation::getDestructibleBuildingData(BuildingObject* building) {
 	DestructibleBuildingDataComponent* baseData = NULL;
 
@@ -849,324 +877,62 @@ DestructibleBuildingDataComponent* GCWManagerImplementation::getDestructibleBuil
 	return baseData;
 }
 
-// time of the day
-void GCWManagerImplementation::resetVulnerability(CreatureObject* creature, BuildingObject* building) {
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+bool GCWManagerImplementation::canUseTerminals(CreatureObject* creature, BuildingObject* building, SceneObject* terminal) {
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-	if (baseData == NULL)
-		return;
-
-	if (isBaseVulnerable(building))
-		return;
-
-	if (!hasResetTimerPast(building))
-		return;
-
-	Locker clock(building, creature);
-
-	//info("Resetting vulnerability timer",true);
-	baseData->setLastResetTime(Time());
-
-	Time nextTime = Time();
-
-	clock.release();
-
-	Locker glock(_this.getReferenceUnsafeStaticCast(), creature);
-	baseData->setLastVulnerableTime(nextTime);
-
-	nextTime.addMiliTime(vulnerabilityFrequency * 1000);
-	baseData->setNextVulnerableTime(nextTime.getTime());
-
-	nextTime.addMiliTime(vulnerabilityDuration * 1000);
-	baseData->setVulnerabilityEndTime(nextTime.getTime());
-
-
-	Reference<Task*> task = getStartTask(building->getObjectID());
-	if (task != NULL ) {
-		task->cancel();
-		dropStartTask(building->getObjectID());
-	}
-
-	scheduleVulnerabilityStart(building);
-
-	if (creature != NULL)
-		creature->sendSystemMessage("@hq:vulnerability_reset"); // The vulnerability for this structure has been reset.
-}
-
-bool GCWManagerImplementation::hasResetTimerPast(BuildingObject* building) {
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
-
-	if (baseData == NULL)
+	if (ghost == NULL)
 		return false;
 
-	Time ttime = baseData->getLastResetTime();
+	if (creature->isDead() || creature->isIncapacitated())
+		return false;
 
-	ttime.addMiliTime(resetTimer*1000);
+	// Make sure the player is in the same cell
+	ValidatedPosition* validPosition = ghost->getLastValidatedPosition();
+	uint64 parentid = validPosition->getParent();
 
-	return ttime.isPast();
-}
-
-void GCWManagerImplementation::sendTurretAttackListTo(CreatureObject* creature, SceneObject* turretControlTerminal) {
-	if (turretControlTerminal == NULL || creature == NULL || creature->isInCombat() )
-		return;
-
-	PlayerObject* ghost = creature->getPlayerObject();
-
-	if (ghost == NULL)
-		return;
-
-	if (ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TURRET_TERMINAL))
-		ghost->closeSuiWindowType(SuiWindowType::HQ_TURRET_TERMINAL);
-
-	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(turretControlTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
-
-	if (building == NULL)
-		return;
-
-	// get the base data component
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
-
-	if (baseData == NULL)
-		return;
-
-	TurretControlTerminalDataComponent* controlData = getTurretControlDataComponent(turretControlTerminal);
-
-	if (controlData == NULL)
-		return;
-
-	uint64 tindex = baseData->getTurretID(controlData->getTurrteIndex());
-
-	if (tindex == 0 || controlData->getTurrteIndex() < 0) {
-		creature->sendSystemMessage("@hq:none_active");  //  There are no available turrets to control using this terminal.
-		return;
+	if (parentid != terminal->getParentID()) {
+		creature->sendSystemMessage("@pvp_rating:ch_terminal_too_far");  // you are too far away from the terminal to use it
+		return false;
 	}
 
-	ZoneServer* server = zone->getZoneServer();
+	if (ghost->isPrivileged())
+		return true;
 
-	if (server == NULL)
-		return;
-
-	Reference<SceneObject*> turret = server->getObject(tindex);
-
-	if (turret == NULL || !turret->isTurret()) {
-		creature->sendSystemMessage("@hq:none_active"); // There are no available turrets to control using this terminal.
-		return;
-	}
-
-	TangibleObject* turretObject = cast<TangibleObject*>(turret.get());
-
-	if (turretObject == NULL)
-		return;
-
-	TurretDataComponent* turretData = getTurretDataComponent(turret);
-
-	if (turretData == NULL)
-		return;
-
-	if (!canUseTurret(turretObject, turretControlTerminal, creature)) {
-		creature->sendSystemMessage("@hq:in_use");  //  This turret control terminal is already in use."
-		return;
-	}
-
-	generateTurretControlBoxTo(creature, turretObject, turretControlTerminal);
-
-}
-
-TurretDataComponent* GCWManagerImplementation::getTurretDataComponent(SceneObject* turret) {
-	DataObjectComponentReference* turretComponent = turret->getDataObjectComponent();
-
-	if (turretComponent == NULL)
-		return NULL;
-
-	return cast<TurretDataComponent*>(turretComponent->get());
-}
-
-TurretControlTerminalDataComponent* GCWManagerImplementation::getTurretControlDataComponent(SceneObject* terminal) {
-	DataObjectComponentReference* terminalData  = terminal->getDataObjectComponent();
-
-	if (terminalData == NULL)
-		return NULL;
-
-	return cast<TurretControlTerminalDataComponent*>(terminalData->get());
-}
-
-void GCWManagerImplementation::generateTurretControlBoxTo(CreatureObject* creature, TangibleObject* turret, SceneObject* terminal) {
-	TurretControlTerminalDataComponent* controlData = getTurretControlDataComponent(terminal);
-
-	if (controlData == NULL)
-		return;
-
-	TurretDataComponent* turretData = getTurretDataComponent(turret);
-
-	if (turretData == NULL)
-		return;
-
-	PlayerObject* ghost = creature->getPlayerObject();
-
-	if (ghost == NULL)
-		return;
-
-	Reference<WeaponObject*> weapon = turret->getSlottedObject("hold_r").castTo<WeaponObject*>();
-
-	if (weapon == NULL)
-		return;
-
-	CreatureObject* target = turretData->getManualTarget();
-
-	ManagedReference<SuiListBox*> status = new SuiListBox(creature, SuiWindowType::HQ_TURRET_TERMINAL);
-	status->setPromptTitle("@hq:control_title"); //"Turret Control Consule"
-	status->setCancelButton(true, "@cancel");
-	status->setCallback(new TurretControlSuiCallback(zone->getZoneServer(), turret, cast<TangibleObject*>(terminal)));
-	status->setOtherButton(true,"@ui:refresh"); // refresh
-	status->setOkButton(true,"@hq:btn_attack"); // Attack
-	status->setUsingObject(terminal);
-	status->setForceCloseDistance(5);
-
-	int maxHp = turret->getMaxCondition();
-	int hp = maxHp - turret->getConditionDamage();
-
-	StringBuffer msg;
-	msg << "@hq:turret_control " << turret->getDisplayedName() << " [" << hp << "/" << maxHp << "]" << endl << endl;
-	msg << "@hq:current_target ";
-
-	if (target != NULL) {
-		msg << target->getDisplayedName() << " " << "hq:target_health " << target->getHAM(0);
-	} else
-		msg << "None";
-
-	status->setPromptText(msg.toString());
-
-	Vector<CreatureObject*> targets = turretData->getAvailableTargets(false);
-	int targetTotal = 0;
-
-	for (int i = 0; i < targets.size(); ++i) {
-		CreatureObject* creo = targets.get(i);
-
-		if (creo != NULL) {
-
-			int distance = turret->getDistanceTo(creo);
-
-			status->addMenuItem(creo->getDisplayedName() + " - " + String::valueOf(distance) + "m", creo->getObjectID());
-
-			targetTotal++;
+	// check for PvP base
+	if (building->getPvpStatusBitmask() & CreatureFlag::OVERT) {
+		if (ghost->getFactionStatus() != FactionStatus::OVERT) {
+			creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:declared_personnel_only"); // Only Special Forces personnel may access this terminal
+			return false;
 		}
-
-		if (targetTotal >= 20)
-			break;
 	}
-
-	if (status->getMenuSize() > 0) {
-		ghost->addSuiBox(status);
-		creature->sendMessage(status->generateMessage());
-
-		controlData->setSuiBoxID(status->getBoxID());
-
-	} else
-		creature->sendSystemMessage("@hq:no_targets"); // This turret has no valid targets.
-}
-
-
-bool GCWManagerImplementation::canUseTurret(TangibleObject* turret, SceneObject* terminal, CreatureObject* creature) {
-	TurretDataComponent* turretData = getTurretDataComponent(turret);
-
-	if (turretData == NULL)
-		return false;
-
-	TurretControlTerminalDataComponent* controlData = getTurretControlDataComponent(terminal);
-
-	if (controlData == NULL)
-		return false;
-
-	CreatureObject* controllerCreature = turretData->getController();
-
-	if (controllerCreature != NULL && controllerCreature != creature) {
-		PlayerObject* controllerGhost = controllerCreature->getPlayerObject();
-
-		// if there is no manual target, give it to the new guy, close it from the old guy
-		if (turretData->getManualTarget() == NULL) {
-			// try to close it from the old controller if it's still up
-			controllerGhost->closeSuiWindowType(SuiWindowType::HQ_TURRET_TERMINAL);
-		} else if (controllerGhost != NULL) {
-
-			// if the controller creatures has the same window up
-			if (turretData->getManualTarget() != NULL) {
-				int controllingSuiBoxID = controlData->getSuiBoxID();
-
-				if (controllingSuiBoxID >= 0) {
-					// get the sui from the controllerGhost to see if it's still up
-					if (controllerGhost->hasSuiBox(controllingSuiBoxID)) {
-						return false;
-					}
-				}
-			}
+	// check for PvE base
+	else {
+		if (ghost->getFactionStatus() < FactionStatus::COVERT) {
+			creature->sendSystemMessage("You must be at least combatant");
+			return false;
 		}
 	}
 
 	return true;
 }
 
-String GCWManagerImplementation::getVulnerableStatus(BuildingObject* building, CreatureObject* creature) {
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+bool GCWManagerImplementation::areOpposingFactions(int faction1, int faction2) {
+	if (faction1 == 0 || faction2 == 0)
+		return false;
 
-	if (creature == NULL || baseData == NULL)
-		return "";
-
-	double dif = 0;
-
-	if (isBaseVulnerable(building)) {
-		return "@player_structure:next_vulnerability_prompt Now";
-	} else {
-		dif = baseData->getNextVulnerableTime().getTime() - time(0);
-	}
-
-	int days = (int) floor(dif / 86400.f);
-	dif = dif - (days*86400);
-	int hours = (int) floor(dif / 3600.f);
-	dif = dif - (hours * 3600);
-	int minutes = (int) ceil(dif / 60.f);
-
-	return "@player_structure:next_vulnerability_prompt "+ String::valueOf(days) + " days, " + String::valueOf(hours) + " hours, " + String::valueOf(minutes) + " minutes";
+	return faction1 != faction2;
 }
 
-void GCWManagerImplementation::sendBaseDefenseStatus(CreatureObject* creature, BuildingObject* building) {
-	ZoneServer* zoneServer = zone->getZoneServer();
-	if (zoneServer == NULL)
+void GCWManagerImplementation::awardSlicingXP(CreatureObject* creature,  const String& xpType, int val) {
+	if (creature->getZoneServer() == NULL)
 		return;
 
-	ManagedReference<PlayerObject* > ghost = creature->getPlayerObject();
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
-	if (ghost == NULL || baseData == NULL)
+	PlayerManager* playerManager = creature->getZoneServer()->getPlayerManager();
+
+	if (playerManager == NULL)
 		return;
 
-	if (ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TERMINAL))
-		ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
-
-	if (building->getOwnerCreatureObject() != creature && !ghost->isPrivileged())
-		return;
-
-	ManagedReference<SuiListBox*> status = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
-	status->setPromptTitle("@hq:mnu_defense_status"); //Defense status
-	status->setPromptText("@faction/faction_hq/faction_hq_response:terminal_response21"); // If you want to remove a defense select it and press remove
-	status->setUsingObject(building);
-	status->setCancelButton(true, "@cancel");
-
-	if (creature == building->getOwnerCreatureObject()) {
-		status->setOtherButton(true,"@ui:permission_remove");
-	}
-	status->setOkButton(true, "@ok");
-	status->setCallback(new HQDefenseStatusSuiCallback(zone->getZoneServer()));
-
-	for (int i = 0; i < baseData->getTotalTurretCount(); i++) {
-		ManagedReference<SceneObject*> sceno = zoneServer->getObject(baseData->getTurretID(i));
-
-		if (sceno != NULL && sceno->isTurret()) {
-
-			status->addMenuItem(sceno->getDisplayedName(), sceno->getObjectID());
-		}
-	}
-
-	ghost->addSuiBox(status);
-	creature->sendMessage(status->generateMessage());
+	playerManager->awardExperience(creature, xpType, val, true);
 }
 
 void GCWManagerImplementation::sendJamUplinkMenu(CreatureObject* creature, BuildingObject* building, TangibleObject* uplinkTerminal) {
@@ -1245,6 +1011,24 @@ void GCWManagerImplementation::verifyUplinkBand(CreatureObject* creature, Buildi
 	sendJamUplinkMenu(creature, building, uplinkTerm);
 }
 
+// PRE: no locks or only lock on building
+// sets the bandwidth to guess during jamming of the uplink
+void GCWManagerImplementation::renewUplinkBand(BuildingObject* building) {
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == NULL) {
+		error("ERROR:  could not get base data for base");
+		return;
+	}
+
+	// 10 possible codes bands to guess
+	int secretCode = System::random(0x9);
+	//info("New uplink band is " + String::valueOf(secretCode), true);
+
+	Locker block(building);
+	baseData->setUplinkBand(secretCode);
+}
+
 bool GCWManagerImplementation::canStartSlice(CreatureObject* creature, TangibleObject* tano) {
 	Locker _lock(creature);
 	Locker clocker(tano, creature);
@@ -1300,6 +1084,31 @@ void GCWManagerImplementation::completeSecuritySlice(CreatureObject* creature, T
 	baseData->setState(DestructibleBuildingDataComponent::SLICED);
 }
 
+void GCWManagerImplementation::failSecuritySlice(TangibleObject* securityTerminal) {
+	if (securityTerminal == NULL)
+		return;
+
+	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(securityTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+
+	if (building == NULL)
+		return;
+
+	if (!isBaseVulnerable(building))
+		return;
+
+	Locker block(building);
+
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == NULL) {
+		error("ERROR:  could not get base data for base");
+		return;
+	}
+	//info("Failing slice",true);
+	baseData->setTerminalBeingRepaired(false);
+	baseData->setTerminalDamaged(true);
+}
+
 void GCWManagerImplementation::repairTerminal(CreatureObject* creature, TangibleObject* securityTerminal) {
 	if (securityTerminal == NULL)
 		return;
@@ -1331,30 +1140,6 @@ void GCWManagerImplementation::repairTerminal(CreatureObject* creature, Tangible
 
 		baseData->setTerminalBeingRepaired(true);
 	}
-}
-void GCWManagerImplementation::failSecuritySlice(TangibleObject* securityTerminal) {
-	if (securityTerminal == NULL)
-		return;
-
-	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(securityTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
-
-	if (building == NULL)
-		return;
-
-	if (!isBaseVulnerable(building))
-		return;
-
-	Locker block(building);
-
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
-
-	if (baseData == NULL) {
-		error("ERROR:  could not get base data for base");
-		return;
-	}
-	//info("Failing slice",true);
-	baseData->setTerminalBeingRepaired(false);
-	baseData->setTerminalDamaged(true);
 }
 
 void GCWManagerImplementation::sendDNASampleMenu(CreatureObject* creature, BuildingObject* building, TangibleObject* overrideTerminal) {
@@ -1513,6 +1298,29 @@ void GCWManagerImplementation::processDNASample(CreatureObject* creature, Tangib
 	sendDNASampleMenu(creature, building, overrideTerminal);
 }
 
+void GCWManagerImplementation::constructDNAStrand(BuildingObject* building) {
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == NULL)
+		return;
+
+	Vector<String> dnaStrand;
+
+	for (int i = 0; i < dnaStrandLength; i++) {
+		int randNucleotide = System::random(dnaNucleotides.size() - 1);
+		dnaStrand.add(dnaNucleotides.get(randNucleotide));
+	}
+
+	baseData->setDnaStrand(dnaStrand);
+
+	Vector<int> dnaLocks;
+
+	for (int i = 0; i < dnaStrandLength; i++)
+		dnaLocks.add(0);
+
+	baseData->setDnaLocks(dnaLocks);
+}
+
 void GCWManagerImplementation::sendPowerRegulatorControls(CreatureObject* creature, BuildingObject* building, TangibleObject* powerRegulator) {
 	ManagedReference<PlayerObject* > ghost = creature->getPlayerObject();
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
@@ -1551,7 +1359,6 @@ void GCWManagerImplementation::sendPowerRegulatorControls(CreatureObject* creatu
 
 	ghost->addSuiBox(status);
 	creature->sendMessage(status->generateMessage());
-
 }
 
 void GCWManagerImplementation::handlePowerRegulatorSwitch(CreatureObject* creature, TangibleObject* powerRegulator, int index) {
@@ -1592,7 +1399,368 @@ void GCWManagerImplementation::handlePowerRegulatorSwitch(CreatureObject* creatu
 	} else {
 		sendPowerRegulatorControls(creature, building, powerRegulator);
 	}
+}
 
+void GCWManagerImplementation::randomizePowerRegulatorSwitches(BuildingObject* building) {
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == NULL)
+		return;
+
+	createPowerRegulatorRules(building);
+
+	Vector<bool> switchStates;
+
+	for (int i = 0; i < powerSwitchCount; i++)
+		switchStates.add(true);
+
+	int numCycles = ((System::random(2) + 2) * 2) + 1; // 5 to 9 cycles
+
+	for (int i = 0; i < numCycles; i++)
+		flipPowerSwitch(building, switchStates, System::random(powerSwitchCount - 1));
+
+	// Make sure the switches arent all set on
+	bool doubleCheck = false;
+
+	for (int i = 0; i < powerSwitchCount; i++)
+		doubleCheck &= switchStates.get(i);
+
+	if (doubleCheck)
+		flipPowerSwitch(building, switchStates, System::random(powerSwitchCount - 1));
+
+	baseData->setPowerSwitchStates(switchStates);
+}
+
+void GCWManagerImplementation::createPowerRegulatorRules(BuildingObject* building) {
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == NULL)
+		return;
+
+	Vector<int> rules;
+
+	for (int i = 0; i < powerSwitchCount; i++) {
+		rules.add(System::random(powerSwitchCount - 1));
+	}
+
+	baseData->setPowerSwitchRules(rules);
+}
+
+void GCWManagerImplementation::flipPowerSwitch(BuildingObject* building, Vector<bool>& switchStates, int flipSwitch) {
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == NULL)
+		return;
+
+	Vector<int> rules = baseData->getPowerSwitchRules();
+
+	switchStates.get(flipSwitch) = !switchStates.get(flipSwitch);
+
+	int affectedSwitch = rules.get(flipSwitch);
+
+	switchStates.get(affectedSwitch) = !switchStates.get(affectedSwitch);
+}
+
+void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building, CreatureObject* creature) {
+	if (isBaseVulnerable(building) && !hasDestroyTask(building->getObjectID()) ) {
+		DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+		if (baseData == NULL)
+			return;
+
+		if (isFacilityRebooting(building)) {
+			if (creature != NULL)
+				creature->sendSystemMessage("You must wait for the facility to reboot before activating the overload again.");
+
+			return;
+		}
+
+		Locker block(building);
+
+		StringIdChatParameter destroyMessage("@faction/faction_hq/faction_hq_response:terminal_response40"); // COUNTDOWN INITIATED: estimated time to detonation: %DI minutes.
+		int minutesRemaining = (int) ceil((double)destructionTimer / (double)60);
+		destroyMessage.setDI(minutesRemaining);
+		broadcastBuilding(building, destroyMessage);
+		baseData->setState(DestructibleBuildingDataComponent::SHUTDOWNSEQUENCE);
+		block.release();
+
+		Reference<Task*> newTask = new BaseDestructionTask(_this.getReferenceUnsafeStaticCast(), building);
+		newTask->schedule(60000);
+		addDestroyTask(building->getObjectID(),newTask);
+	}
+}
+
+void GCWManagerImplementation::doBaseDestruction(StructureObject* structure) {
+	if (structure == NULL)
+		return;
+
+	BuildingObject* building = cast<BuildingObject*>(structure);
+
+	if (building != NULL)
+		doBaseDestruction(building);
+}
+
+void GCWManagerImplementation::doBaseDestruction(BuildingObject* building) {
+	if (building == NULL)
+		return;
+
+	Reference<Task*> oldEndTask = getDestroyTask(building->getObjectID());
+
+	if (oldEndTask != NULL) {
+		BaseDestructionTask* dTask = cast<BaseDestructionTask*>(oldEndTask.get());
+		if (dTask != NULL && dTask->getCountdown() > 0) {
+			oldEndTask->reschedule(60000);
+			StringIdChatParameter msg("@faction/faction_hq/faction_hq_response:terminal_response39"); // Countdown: Estimated time to detonation: %DI minutes
+			int minutesRemaining = dTask->getCountdown();
+			msg.setDI(minutesRemaining);
+			broadcastBuilding(building, msg);
+			return;
+		}
+	}
+
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == NULL)
+		return;
+
+	// need to lock both.  building must be locked for destroyStructure() and then _this is locked when it calls unregister.
+	Locker locker(_this.getReferenceUnsafeStaticCast());
+	Locker block(building,_this.getReferenceUnsafeStaticCast());
+
+	int baseType = building->getFactionBaseType();
+
+	if (baseType == PLAYERFACTIONBASE) {
+		unregisterGCWBase(building);
+
+		StructureManager::instance()->destroyStructure(building);
+	} else if (baseType == STATICFACTIONBASE) {
+		building->notifyObservers(ObserverEventType::FACTIONBASEFLIPPED);
+	}
+}
+
+void GCWManagerImplementation::broadcastBuilding(BuildingObject* building, StringIdChatParameter& params) {
+	//Default range of broadcast
+	float range = 64;
+
+	if (zone == NULL)
+		return;
+
+	SortedVector<QuadTreeEntry*> closeObjects;
+	if (building->getCloseObjects() == NULL) {
+		building->info("Null closeobjects vector in GCWManagerImplementation::broadcastBuilding", true);
+		zone->getInRangeObjects(building->getPositionX(), building->getPositionY(), range, &closeObjects, true);
+	} else {
+		CloseObjectsVector* closeVector = (CloseObjectsVector*) building->getCloseObjects();
+		closeVector->safeCopyTo(closeObjects);
+	}
+
+	// send message to all the players in range
+	for (int i = 0; i < closeObjects.size(); i++) {
+		SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i));
+
+		if (targetObject->isPlayerCreature() && building->isInRange(targetObject, range)) {
+			CreatureObject* targetPlayer = cast<CreatureObject*>(targetObject);
+
+			if (targetPlayer != NULL)
+				targetPlayer->sendSystemMessage(params);
+		}
+	}
+}
+
+void GCWManagerImplementation::startAbortSequenceDelay(BuildingObject* building, CreatureObject* creature, SceneObject* hqTerminal) {
+	if (!creature->checkCooldownRecovery("declare_overt_cooldown")) {
+		StringIdChatParameter params("@faction/faction_hq/faction_hq_response:terminal_response41"); // You have recently joined Special Forces. Before issuing the shutdown command, you must wait %TO
+		Time* cooldownTimer = creature->getCooldownTime("declare_overt_cooldown");
+		int minutes = ceil(cooldownTimer->miliDifference() / -60000.f);
+		params.setTO(String::valueOf(minutes) + " minutes.");
+		creature->sendSystemMessage(params);
+		return;
+	}
+
+	creature->sendSystemMessage("@hq:vulnerability_reset_request_received"); // Structure shutdown request received. Please stand by while the command is processed. Remain with the terminal.
+	Reference<Task*> newTask = new BaseShutdownTask(_this.getReferenceUnsafeStaticCast(), building, creature, hqTerminal);
+	newTask->schedule(60000);
+}
+
+void GCWManagerImplementation::abortShutdownSequence(BuildingObject* building, CreatureObject* creature) {
+	if (isBaseVulnerable(building) && hasDestroyTask(building->getObjectID())) {
+		Reference<Task*> oldDestroyTask = getDestroyTask(building->getObjectID());
+		if (oldDestroyTask != NULL) {
+			oldDestroyTask->cancel();
+			dropDestroyTask(building->getObjectID());
+		}
+
+		DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+		if (baseData == NULL)
+			return;
+
+		Locker block(building);
+
+		baseData->setState(DestructibleBuildingDataComponent::REBOOTSEQUENCE);
+		StringIdChatParameter reloadMessage;
+		reloadMessage.setStringId("@faction/faction_hq/faction_hq_response:terminal_response07"); // COUNTDOWN ABORTED: FACILITY SHUTTING DOWN!!
+		broadcastBuilding(building, reloadMessage);
+
+		Reference<Task*> newTask = new BaseRebootTask(_this.getReferenceUnsafeStaticCast(), building, baseData);
+		newTask->schedule(60000);
+	}
+}
+
+// time of the day
+void GCWManagerImplementation::resetVulnerability(CreatureObject* creature, BuildingObject* building) {
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == NULL)
+		return;
+
+	if (isBaseVulnerable(building))
+		return;
+
+	if (!hasResetTimerPast(building))
+		return;
+
+	Locker clock(building, creature);
+
+	//info("Resetting vulnerability timer",true);
+	baseData->setLastResetTime(Time());
+
+	Time nextTime = Time();
+
+	clock.release();
+
+	Locker glock(_this.getReferenceUnsafeStaticCast(), creature);
+	baseData->setLastVulnerableTime(nextTime);
+
+	nextTime.addMiliTime(vulnerabilityFrequency * 1000);
+	baseData->setNextVulnerableTime(nextTime.getTime());
+
+	nextTime.addMiliTime(vulnerabilityDuration * 1000);
+	baseData->setVulnerabilityEndTime(nextTime.getTime());
+
+
+	Reference<Task*> task = getStartTask(building->getObjectID());
+	if (task != NULL ) {
+		task->cancel();
+		dropStartTask(building->getObjectID());
+	}
+
+	scheduleVulnerabilityStart(building);
+
+	if (creature != NULL)
+		creature->sendSystemMessage("@hq:vulnerability_reset"); // The vulnerability for this structure has been reset.
+}
+
+bool GCWManagerImplementation::hasResetTimerPast(BuildingObject* building) {
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == NULL)
+		return false;
+
+	Time ttime = baseData->getLastResetTime();
+
+	ttime.addMiliTime(resetTimer*1000);
+
+	return ttime.isPast();
+}
+
+void GCWManagerImplementation::sendBaseDefenseStatus(CreatureObject* creature, BuildingObject* building) {
+	ZoneServer* zoneServer = zone->getZoneServer();
+	if (zoneServer == NULL)
+		return;
+
+	ManagedReference<PlayerObject* > ghost = creature->getPlayerObject();
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+	if (ghost == NULL || baseData == NULL)
+		return;
+
+	if (ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TERMINAL))
+		ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
+
+	if (building->getOwnerCreatureObject() != creature && !ghost->isPrivileged())
+		return;
+
+	ManagedReference<SuiListBox*> status = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
+	status->setPromptTitle("@hq:mnu_defense_status"); //Defense status
+	status->setPromptText("@faction/faction_hq/faction_hq_response:terminal_response21"); // If you want to remove a defense select it and press remove
+	status->setUsingObject(building);
+	status->setCancelButton(true, "@cancel");
+
+	if (creature == building->getOwnerCreatureObject()) {
+		status->setOtherButton(true,"@ui:permission_remove");
+	}
+	status->setOkButton(true, "@ok");
+	status->setCallback(new HQDefenseStatusSuiCallback(zone->getZoneServer()));
+
+	for (int i = 0; i < baseData->getTotalTurretCount(); i++) {
+		ManagedReference<SceneObject*> sceno = zoneServer->getObject(baseData->getTurretID(i));
+
+		if (sceno != NULL && sceno->isTurret()) {
+
+			status->addMenuItem(sceno->getDisplayedName(), sceno->getObjectID());
+		}
+	}
+
+	ghost->addSuiBox(status);
+	creature->sendMessage(status->generateMessage());
+}
+
+void GCWManagerImplementation::sendRemoveDefenseConfirmation(BuildingObject* building, CreatureObject* creature, uint64 deedOID) {
+	ZoneServer* zoneServer = zone->getZoneServer();
+	if (zoneServer == NULL)
+		return;
+
+	ManagedReference<PlayerObject* > ghost = creature->getPlayerObject();
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (ghost == NULL || baseData == NULL)
+		return;
+
+	if (ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TERMINAL))
+		ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
+
+	if (building->getOwnerCreatureObject() != creature)
+		return;
+
+	if (!baseData->hasDefense(deedOID))
+		return;
+
+	ManagedReference<SuiListBox*> removeDefense = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
+	removeDefense->setPromptTitle("@faction/faction_hq/faction_hq_response:terminal_response24"); // Confirm Defense Removal?
+	removeDefense->setPromptText("@faction/faction_hq/faction_hq_response:terminal_response25"); // Are you sure you want to remove the selected defense?
+	removeDefense->setUsingObject(building);
+	removeDefense->setOkButton(true, "@ok");
+	removeDefense->setCancelButton(true, "@cancel");
+	removeDefense->setCallback( new RemoveDefenseSuiCallback(zone->getZoneServer(), deedOID));
+
+	ghost->addSuiBox(removeDefense);
+	creature->sendMessage(removeDefense->generateMessage());
+}
+
+void GCWManagerImplementation::removeDefense(BuildingObject* building, CreatureObject* creature, uint64 deedOID) {
+	//info("remove defense " + String::valueOf(deedOID),true);
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+
+	if (zoneServer == NULL)
+		return;
+
+	if (building->getOwnerCreatureObject() != creature)
+		return;
+
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == NULL || !baseData->hasDefense(deedOID))
+		return;
+
+	ManagedReference<SceneObject*> defense = zoneServer->getObject(deedOID);
+
+	if (defense == NULL || !defense->isTurret())
+		return;
+
+	InstallationObject* turret = cast<InstallationObject*>(defense.get());
+
+	notifyInstallationDestruction(turret);
 }
 
 void GCWManagerImplementation::notifyInstallationDestruction(InstallationObject* installation) {
@@ -1758,65 +1926,6 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 
 	ghost->addSuiBox(donate);
 	creature->sendMessage(donate->generateMessage());
-
-}
-
-void GCWManagerImplementation::sendRemoveDefenseConfirmation(BuildingObject* building, CreatureObject* creature, uint64 deedOID) {
-	ZoneServer* zoneServer = zone->getZoneServer();
-	if (zoneServer == NULL)
-		return;
-
-	ManagedReference<PlayerObject* > ghost = creature->getPlayerObject();
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
-
-	if (ghost == NULL || baseData == NULL)
-		return;
-
-	if (ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TERMINAL))
-		ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
-
-	if (building->getOwnerCreatureObject() != creature)
-		return;
-
-	if (!baseData->hasDefense(deedOID))
-		return;
-
-	ManagedReference<SuiListBox*> removeDefense = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
-	removeDefense->setPromptTitle("@faction/faction_hq/faction_hq_response:terminal_response24"); // Confirm Defense Removal?
-	removeDefense->setPromptText("@faction/faction_hq/faction_hq_response:terminal_response25"); // Are you sure you want to remove the selected defense?
-	removeDefense->setUsingObject(building);
-	removeDefense->setOkButton(true, "@ok");
-	removeDefense->setCancelButton(true, "@cancel");
-	removeDefense->setCallback( new RemoveDefenseSuiCallback(zone->getZoneServer(), deedOID));
-
-	ghost->addSuiBox(removeDefense);
-	creature->sendMessage(removeDefense->generateMessage());
-}
-
-void GCWManagerImplementation::removeDefense(BuildingObject* building, CreatureObject* creature, uint64 deedOID) {
-	//info("remove defense " + String::valueOf(deedOID),true);
-
-	ZoneServer* zoneServer = zone->getZoneServer();
-
-	if (zoneServer == NULL)
-		return;
-
-	if (building->getOwnerCreatureObject() != creature)
-		return;
-
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
-
-	if (baseData == NULL || !baseData->hasDefense(deedOID))
-		return;
-
-	ManagedReference<SceneObject*> defense = zoneServer->getObject(deedOID);
-
-	if (defense == NULL || !defense->isTurret())
-		return;
-
-	InstallationObject* turret = cast<InstallationObject*>(defense.get());
-
-	notifyInstallationDestruction(turret);
 }
 
 void GCWManagerImplementation::performDefenseDonation(BuildingObject* building, CreatureObject* creature, uint64 deedOID, int turretIndex) {
@@ -1838,8 +1947,6 @@ void GCWManagerImplementation::performDefenseDonation(BuildingObject* building, 
 	}
 
 	if (defenseObj->isDeedObject()) {
-
-
 		ManagedReference<Deed*> deed = dynamic_cast<Deed*>(defenseObj.get());
 		if (deed != NULL) {
 
@@ -1861,8 +1968,6 @@ void GCWManagerImplementation::performDefenseDonation(BuildingObject* building, 
 	param.setTO(defenseObj->getObjectName());
 	creature->sendSystemMessage(param);
 	return;
-
-
 }
 
 void GCWManagerImplementation::performDonateMine(BuildingObject* building, CreatureObject* creature, SceneObject* mine) {
@@ -1881,7 +1986,6 @@ void GCWManagerImplementation::performDonateMine(BuildingObject* building, Creat
 			Locker clock(obj,creature);
 
 			obj->transferObject(mine,-1,true);
-
 
 			if (precount < obj->getContainerObjectsSize()) {
 				StringIdChatParameter param("@faction/faction_hq/faction_hq_response:terminal_response46"); // YOu sucessfully donate a %TO
@@ -1927,8 +2031,6 @@ void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, 
 			break;
 	}
 
-	//creature->sendSystemMessage("Minefield open at postiion " + String::valueOf(minefieldIndex));
-
 	// this is turret donation
 	int nextAvailableMinefield = 0;
 	for(nextAvailableMinefield = 0; nextAvailableMinefield < baseData->getTotalTurretCount(); nextAvailableMinefield++) {
@@ -1941,7 +2043,6 @@ void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, 
 	}
 
 	// now find the coords of the nth turret
-
 	for (int i = 0; i < baseServerTemplate->getChildObjectsSize(); ++i) {
 		child = baseServerTemplate->getChildObject(i);
 		minefieldTemplate = NULL;
@@ -1962,6 +2063,7 @@ void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, 
 		return;
 
 	uint64 minefieldID = addChildInstallationFromDeed(building, child, creature, deed);
+
 	if (minefieldID > 0) {
 		baseData->setMinefieldID(currentMinefieldIndex,minefieldID);
 
@@ -1987,8 +2089,6 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 	ChildObject* child = NULL;
 	int currentTurretIndex = 0;
 
-	// search through the baseData to find the first empty turret index
-
 	Locker block(building,creature);
 
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
@@ -1996,8 +2096,7 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 	if (baseData == NULL)
 		return;
 
-
-	// this is turret donation
+	// search through the baseData to find the first empty turret index
 	int nextAvailableTurret = 0;
 	for(nextAvailableTurret = 0; nextAvailableTurret < baseData->getTotalTurretCount(); nextAvailableTurret++) {
 		if (baseData->getTurretID(nextAvailableTurret) == 0)
@@ -2009,7 +2108,6 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 	}
 
 	// now find the coords of the nth turret
-
 	for (int i = 0; i < baseServerTemplate->getChildObjectsSize(); ++i) {
 		child = baseServerTemplate->getChildObject(i);
 		turretTemplate = NULL;
@@ -2104,231 +2202,203 @@ uint64 GCWManagerImplementation::addChildInstallationFromDeed(BuildingObject* bu
 	return obj->getObjectID();
 }
 
-void GCWManagerImplementation::addMinefield(BuildingObject* building, SceneObject* minefield) {
-	if (building == NULL)
+void GCWManagerImplementation::sendTurretAttackListTo(CreatureObject* creature, SceneObject* turretControlTerminal) {
+	if (turretControlTerminal == NULL || creature == NULL || creature->isInCombat() )
 		return;
-	//info("adding minefield",true);
-
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
-
-	if (baseData == NULL)
-		return;
-	Locker _lock(building);
-	if (minefield != NULL)
-		baseData->addMinefield(baseData->getTotalMinefieldCount(), minefield->getObjectID());
-	else
-		baseData->addMinefield(baseData->getTotalMinefieldCount(), 0);
-
-
-}
-
-void GCWManagerImplementation::addScanner(BuildingObject* building, SceneObject* scanner) {
-	if (building == NULL)
-		return;
-
-	//info("adding scanner",true);
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
-
-	if (baseData == NULL)
-		return;
-
-	Locker _lock(building);
-
-	if (scanner != NULL)
-		baseData->addScanner(baseData->getTotalScannerCount(), scanner->getObjectID());
-	else
-		baseData->addScanner(baseData->getTotalScannerCount(), 0);
-
-}
-
-void GCWManagerImplementation::addTurret(BuildingObject* building, SceneObject* turret) {
-	if (building == NULL)
-		return;
-
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
-
-	if (baseData == NULL)
-		return;
-	Locker _lock(building);
-
-	if (turret != NULL)
-		baseData->addTurret(baseData->getTotalTurretCount(), turret->getObjectID());
-	else {
-		// create empty turret slot
-		baseData->addTurret(baseData->getTotalTurretCount(),0);
-	}
-
-	verifyTurrets(building);
-}
-
-void GCWManagerImplementation::verifyTurrets(BuildingObject* building) {
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
-
-	if (baseData == NULL)
-		return;
-
-	ZoneServer* zoneServer = zone->getZoneServer();
-
-	if (zoneServer == NULL)
-		return;
-
-	int turretCount = 0;
-
-	Locker blocker(building);
-
-	bool hasDefense = baseData->hasDefense();
-
-	for(int i = 0; i < baseData->getTotalTurretCount(); ++i) {
-		uint64 turretID = baseData->getTurretID(i);
-		ManagedReference<SceneObject*> turret = zoneServer->getObject(baseData->getTurretID(i));
-
-		if (turret != NULL)
-			turretCount++;
-	}
-
-	baseData->setDefense(turretCount != 0);
-
-	if (!(hasDefense == baseData->hasDefense())) {
-		building->broadcastCellPermissions();
-	}
-}
-
-bool GCWManagerImplementation::canPlaceMoreBases(CreatureObject* creature) {
-	if (creature == NULL || !creature->isPlayerCreature())
-		return false;
 
 	PlayerObject* ghost = creature->getPlayerObject();
-	if (ghost == NULL)
-		return false;
 
-	if (zone == NULL)
-		return false;
+	if (ghost == NULL)
+		return;
+
+	if (ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TURRET_TERMINAL))
+		ghost->closeSuiWindowType(SuiWindowType::HQ_TURRET_TERMINAL);
+
+	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(turretControlTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+
+	if (building == NULL)
+		return;
+
+	// get the base data component
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if (baseData == NULL)
+		return;
+
+	TurretControlTerminalDataComponent* controlData = getTurretControlDataComponent(turretControlTerminal);
+
+	if (controlData == NULL)
+		return;
+
+	uint64 tindex = baseData->getTurretID(controlData->getTurrteIndex());
+
+	if (tindex == 0 || controlData->getTurrteIndex() < 0) {
+		creature->sendSystemMessage("@hq:none_active");  //  There are no available turrets to control using this terminal.
+		return;
+	}
 
 	ZoneServer* server = zone->getZoneServer();
+
 	if (server == NULL)
-		return false;
+		return;
 
-	int baseCount = 0;
-	for (int i =0; i < ghost->getTotalOwnedStructureCount(); ++i) {
-		ManagedReference<SceneObject*> structure = server->getObject(ghost->getOwnedStructure(i));
+	Reference<SceneObject*> turret = server->getObject(tindex);
 
-		if (structure != NULL && structure->isGCWBase())
-			baseCount++;
+	if (turret == NULL || !turret->isTurret()) {
+		creature->sendSystemMessage("@hq:none_active"); // There are no available turrets to control using this terminal.
+		return;
 	}
 
-	if (baseCount >= maxBasesPerPlayer) {
-		creature->sendSystemMessage("You own " + String::valueOf(baseCount) + " bases.  The maximum amount is " + String::valueOf(maxBasesPerPlayer));
+	TangibleObject* turretObject = cast<TangibleObject*>(turret.get());
+
+	if (turretObject == NULL)
+		return;
+
+	TurretDataComponent* turretData = getTurretDataComponent(turret);
+
+	if (turretData == NULL)
+		return;
+
+	if (!canUseTurret(turretObject, turretControlTerminal, creature)) {
+		creature->sendSystemMessage("@hq:in_use");  //  This turret control terminal is already in use."
+		return;
+	}
+
+	generateTurretControlBoxTo(creature, turretObject, turretControlTerminal);
+
+}
+
+bool GCWManagerImplementation::canUseTurret(TangibleObject* turret, SceneObject* terminal, CreatureObject* creature) {
+	TurretDataComponent* turretData = getTurretDataComponent(turret);
+
+	if (turretData == NULL)
 		return false;
+
+	TurretControlTerminalDataComponent* controlData = getTurretControlDataComponent(terminal);
+
+	if (controlData == NULL)
+		return false;
+
+	CreatureObject* controllerCreature = turretData->getController();
+
+	if (controllerCreature != NULL && controllerCreature != creature) {
+		PlayerObject* controllerGhost = controllerCreature->getPlayerObject();
+
+		// if there is no manual target, give it to the new guy, close it from the old guy
+		if (turretData->getManualTarget() == NULL) {
+			// try to close it from the old controller if it's still up
+			controllerGhost->closeSuiWindowType(SuiWindowType::HQ_TURRET_TERMINAL);
+		} else if (controllerGhost != NULL) {
+
+			// if the controller creatures has the same window up
+			if (turretData->getManualTarget() != NULL) {
+				int controllingSuiBoxID = controlData->getSuiBoxID();
+
+				if (controllingSuiBoxID >= 0) {
+					// get the sui from the controllerGhost to see if it's still up
+					if (controllerGhost->hasSuiBox(controllingSuiBoxID)) {
+						return false;
+					}
+				}
+			}
+		}
 	}
 
 	return true;
-
 }
 
-bool GCWManagerImplementation::hasTooManyBasesNearby(int x, int y) {
-	if (zone == NULL)
-		return true;
+TurretDataComponent* GCWManagerImplementation::getTurretDataComponent(SceneObject* turret) {
+	DataObjectComponentReference* turretComponent = turret->getDataObjectComponent();
 
-	SortedVector<QuadTreeEntry*> inRangeObjects;
-	zone->getInRangeObjects(x, y, 600, &inRangeObjects, true);
-	int count = 0;
+	if (turretComponent == NULL)
+		return NULL;
 
-	for (int i = 0; i < inRangeObjects.size(); ++i) {
-		SceneObject* scene = cast<SceneObject*>(inRangeObjects.get(i));
-
-		if (scene == NULL)
-			continue;
-
-		if (scene->isGCWBase())
-			count++;
-	}
-
-	if (count >= 3)
-		return true;
-
-	return false;
+	return cast<TurretDataComponent*>(turretComponent->get());
 }
 
-bool GCWManagerImplementation::canUseTerminals(CreatureObject* creature, BuildingObject* building, SceneObject* terminal) {
-	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+TurretControlTerminalDataComponent* GCWManagerImplementation::getTurretControlDataComponent(SceneObject* terminal) {
+	DataObjectComponentReference* terminalData  = terminal->getDataObjectComponent();
+
+	if (terminalData == NULL)
+		return NULL;
+
+	return cast<TurretControlTerminalDataComponent*>(terminalData->get());
+}
+
+void GCWManagerImplementation::generateTurretControlBoxTo(CreatureObject* creature, TangibleObject* turret, SceneObject* terminal) {
+	TurretControlTerminalDataComponent* controlData = getTurretControlDataComponent(terminal);
+
+	if (controlData == NULL)
+		return;
+
+	TurretDataComponent* turretData = getTurretDataComponent(turret);
+
+	if (turretData == NULL)
+		return;
+
+	PlayerObject* ghost = creature->getPlayerObject();
 
 	if (ghost == NULL)
-		return false;
-
-	if (creature->isDead() || creature->isIncapacitated())
-		return false;
-
-	// Make sure the player is in the same cell
-	ValidatedPosition* validPosition = ghost->getLastValidatedPosition();
-	uint64 parentid = validPosition->getParent();
-
-	if (parentid != terminal->getParentID()) {
-		creature->sendSystemMessage("@pvp_rating:ch_terminal_too_far");  // you are too far away from the terminal to use it
-		return false;
-	}
-
-	if (ghost->isPrivileged())
-		return true;
-
-	// check for PvP base
-	if (building->getPvpStatusBitmask() & CreatureFlag::OVERT) {
-		if (ghost->getFactionStatus() != FactionStatus::OVERT) {
-			creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:declared_personnel_only"); // Only Special Forces personnel may access this terminal
-			return false;
-		}
-	}
-	// check for PvE base
-	else {
-		if (ghost->getFactionStatus() < FactionStatus::COVERT) {
-			creature->sendSystemMessage("You must be at least combatant");
-			return false;
-		}
-	}
-
-	return true;
-}
-
-void GCWManagerImplementation::broadcastBuilding(BuildingObject* building, StringIdChatParameter& params) {
-	//Default range of broadcast
-	float range = 64;
-
-	if (zone == NULL)
 		return;
 
-	SortedVector<QuadTreeEntry*> closeObjects;
-	if (building->getCloseObjects() == NULL) {
-		building->info("Null closeobjects vector in GCWManagerImplementation::broadcastBuilding", true);
-		zone->getInRangeObjects(building->getPositionX(), building->getPositionY(), range, &closeObjects, true);
-	} else {
-		CloseObjectsVector* closeVector = (CloseObjectsVector*) building->getCloseObjects();
-		closeVector->safeCopyTo(closeObjects);
-	}
+	Reference<WeaponObject*> weapon = turret->getSlottedObject("hold_r").castTo<WeaponObject*>();
 
-	// send message to all the players in range
-	for (int i = 0; i < closeObjects.size(); i++) {
-		SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i));
+	if (weapon == NULL)
+		return;
 
-		if (targetObject->isPlayerCreature() && building->isInRange(targetObject, range)) {
-			CreatureObject* targetPlayer = cast<CreatureObject*>(targetObject);
+	CreatureObject* target = turretData->getManualTarget();
 
-			if (targetPlayer != NULL)
-				targetPlayer->sendSystemMessage(params);
+	ManagedReference<SuiListBox*> status = new SuiListBox(creature, SuiWindowType::HQ_TURRET_TERMINAL);
+	status->setPromptTitle("@hq:control_title"); //"Turret Control Consule"
+	status->setCancelButton(true, "@cancel");
+	status->setCallback(new TurretControlSuiCallback(zone->getZoneServer(), turret, cast<TangibleObject*>(terminal)));
+	status->setOtherButton(true,"@ui:refresh"); // refresh
+	status->setOkButton(true,"@hq:btn_attack"); // Attack
+	status->setUsingObject(terminal);
+	status->setForceCloseDistance(5);
+
+	int maxHp = turret->getMaxCondition();
+	int hp = maxHp - turret->getConditionDamage();
+
+	StringBuffer msg;
+	msg << "@hq:turret_control " << turret->getDisplayedName() << " [" << hp << "/" << maxHp << "]" << endl << endl;
+	msg << "@hq:current_target ";
+
+	if (target != NULL) {
+		msg << target->getDisplayedName() << " " << "hq:target_health " << target->getHAM(0);
+	} else
+		msg << "None";
+
+	status->setPromptText(msg.toString());
+
+	Vector<CreatureObject*> targets = turretData->getAvailableTargets(false);
+	int targetTotal = 0;
+
+	for (int i = 0; i < targets.size(); ++i) {
+		CreatureObject* creo = targets.get(i);
+
+		if (creo != NULL) {
+
+			int distance = turret->getDistanceTo(creo);
+
+			status->addMenuItem(creo->getDisplayedName() + " - " + String::valueOf(distance) + "m", creo->getObjectID());
+
+			targetTotal++;
 		}
+
+		if (targetTotal >= 20)
+			break;
 	}
+
+	if (status->getMenuSize() > 0) {
+		ghost->addSuiBox(status);
+		creature->sendMessage(status->generateMessage());
+
+		controlData->setSuiBoxID(status->getBoxID());
+
+	} else
+		creature->sendSystemMessage("@hq:no_targets"); // This turret has no valid targets.
 }
-
-void GCWManagerImplementation::awardSlicingXP(CreatureObject* creature,  const String& xpType, int val) {
-	if (creature->getZoneServer() == NULL)
-		return;
-
-	PlayerManager* playerManager = creature->getZoneServer()->getPlayerManager();
-
-	if (playerManager == NULL)
-		return;
-
-	playerManager->awardExperience(creature, xpType, val, true);
-}
-
 
 // returns a cost multiplier for faction items
 // includes racial penalty and Bonus&Penality for Loser and Winner side
@@ -2363,94 +2433,4 @@ int GCWManagerImplementation::isStrongholdCity(String& city) {
 	}
 
 	return 0;
-}
-
-bool GCWManagerImplementation::areOpposingFactions(int faction1, int faction2) {
-	if (faction1 == 0 || faction2 == 0)
-		return false;
-
-	return faction1 != faction2;
-}
-
-void GCWManagerImplementation::constructDNAStrand(BuildingObject* building) {
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
-
-	if (baseData == NULL)
-		return;
-
-	Vector<String> dnaStrand;
-
-	for (int i = 0; i < dnaStrandLength; i++) {
-		int randNucleotide = System::random(dnaNucleotides.size() - 1);
-		dnaStrand.add(dnaNucleotides.get(randNucleotide));
-	}
-
-	baseData->setDnaStrand(dnaStrand);
-
-	Vector<int> dnaLocks;
-
-	for (int i = 0; i < dnaStrandLength; i++)
-		dnaLocks.add(0);
-
-	baseData->setDnaLocks(dnaLocks);
-}
-
-void GCWManagerImplementation::createPowerRegulatorRules(BuildingObject* building) {
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
-
-	if (baseData == NULL)
-		return;
-
-	Vector<int> rules;
-
-	for (int i = 0; i < powerSwitchCount; i++) {
-		rules.add(System::random(powerSwitchCount - 1));
-	}
-
-	baseData->setPowerSwitchRules(rules);
-}
-
-void GCWManagerImplementation::randomizePowerRegulatorSwitches(BuildingObject* building) {
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
-
-	if (baseData == NULL)
-		return;
-
-	createPowerRegulatorRules(building);
-
-	Vector<bool> switchStates;
-
-	for (int i = 0; i < powerSwitchCount; i++)
-		switchStates.add(true);
-
-	int numCycles = ((System::random(2) + 2) * 2) + 1; // 5 to 9 cycles
-
-	for (int i = 0; i < numCycles; i++)
-		flipPowerSwitch(building, switchStates, System::random(powerSwitchCount - 1));
-
-	// Make sure the switches arent all set on
-	bool doubleCheck = false;
-
-	for (int i = 0; i < powerSwitchCount; i++)
-		doubleCheck &= switchStates.get(i);
-
-	if (doubleCheck)
-		flipPowerSwitch(building, switchStates, System::random(powerSwitchCount - 1));
-
-	baseData->setPowerSwitchStates(switchStates);
-}
-
-void GCWManagerImplementation::flipPowerSwitch(BuildingObject* building, Vector<bool>& switchStates, int flipSwitch) {
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
-
-	if (baseData == NULL)
-		return;
-
-	Vector<int> rules = baseData->getPowerSwitchRules();
-
-	switchStates.get(flipSwitch) = !switchStates.get(flipSwitch);
-
-	int affectedSwitch = rules.get(flipSwitch);
-
-	switchStates.get(affectedSwitch) = !switchStates.get(affectedSwitch);
 }

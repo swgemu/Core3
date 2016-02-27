@@ -4,8 +4,6 @@ import engine.core.ManagedService;
 import engine.core.Task;
 import server.zone.Zone;
 import engine.log.Logger;
-
-
 import engine.core.ManagedObject;
 import system.util.SortedVector;
 
@@ -149,9 +147,16 @@ class GCWManager extends ManagedService implements Logger {
 	public native void loadLuaConfig();
 
 	public native void performGCWTasks();
+	private native void verifyTurrets(BuildingObject building);
 
+	public native boolean canPlaceMoreBases(CreatureObject creature);
+	public native boolean hasTooManyBasesNearby(int x, int y);
 	public native void registerGCWBase(BuildingObject building, boolean initializeBase);
 	public native void unregisterGCWBase(BuildingObject building);
+	private native void initializeBaseTimers(BuildingObject building);
+	public native void addMinefield(BuildingObject building, SceneObject minefield);
+	public native void addScanner(BuildingObject building, SceneObject scanner);
+	public native void addTurret(BuildingObject building, SceneObject turret);
 
 	public native void startVulnerability(BuildingObject building);
 	public native void endVulnerability(BuildingObject building);
@@ -161,6 +166,7 @@ class GCWManager extends ManagedService implements Logger {
 	private native void scheduleVulnerabilityEnd(BuildingObject building);
 	private native void refreshExpiredVulnerability(BuildingObject building);
 	private native void checkVulnerabilityData(BuildingObject building);
+	public native string getVulnerableStatus(BuildingObject building, CreatureObject creature);
 
 	public native boolean isBaseVulnerable(BuildingObject building);
 	public native boolean isBandIdentified(BuildingObject building);
@@ -172,118 +178,69 @@ class GCWManager extends ManagedService implements Logger {
 	public native boolean isShutdownSequenceStarted(BuildingObject building);
 	public native boolean isFacilityRebooting(BuildingObject building);
 
-	// called to reschedule the vulnerability time of a base
-	public native void resetVulnerability(CreatureObject creature, BuildingObject building);
-
-	public native void sendBaseDefenseStatus(CreatureObject creature, BuildingObject building);
-
-	public native void doBaseDestruction(StructureObject structure);
-
-	public native void doBaseDestruction(BuildingObject building);
-
-	public native void sendJamUplinkMenu(CreatureObject creature, BuildingObject building, TangibleObject uplinkTerminal);
-
-	public native void verifyUplinkBand(CreatureObject creature, BuildingObject building, int band, TangibleObject uplinkTerminal);
-
-	public native boolean canStartSlice(CreatureObject creature, TangibleObject terminal);
-
-	public native void sendDNASampleMenu(CreatureObject creature, BuildingObject building, TangibleObject overrideTerminal);
-
-	public native void completeSecuritySlice(CreatureObject creature, TangibleObject securityTerminal);
-
-	public native void failSecuritySlice(TangibleObject securityTerminal);
-
-	public native void repairTerminal(CreatureObject creature, TangibleObject securityTerminal);
-
-	public native void abortShutdownSequence(BuildingObject building, CreatureObject creature);
-
-	public native void startAbortSequenceDelay(BuildingObject building, CreatureObject creature, SceneObject hqTerminal);
-
-	public native void processDNASample(CreatureObject creature, TangibleObject overrideTerminal, int indx);
-
-	public native void handlePowerRegulatorSwitch(CreatureObject creature, TangibleObject powerRegulator, int indx);
-
-	public native void sendPowerRegulatorControls(CreatureObject creature, BuildingObject building, TangibleObject powerRegulator);
-
 	private native DestructibleBuildingDataComponent getDestructibleBuildingData(BuildingObject building);
-
-	public native boolean hasResetTimerPast(BuildingObject building);
-
-	public native void scheduleBaseDestruction(BuildingObject building, CreatureObject creature);
-
-	private native void initializeBaseTimers(BuildingObject building);
-
-	private native void renewUplinkBand(BuildingObject building);
-
-	private native void constructDNAStrand(BuildingObject building);
-
-	private native void createPowerRegulatorRules(BuildingObject building);
-
-	private native void randomizePowerRegulatorSwitches(BuildingObject building);
-
-	private native void flipPowerSwitch(BuildingObject building, @dereferenced Vector<boolean> switchStates, int flipSwitch);
-
-	public native void notifyInstallationDestruction(InstallationObject installation);
-
-	public native void notifyTurretDestruction(BuildingObject building, InstallationObject turret);
-
-	public native void notifyMinefieldDestruction(BuildingObject building, InstallationObject turret);
-
-	private native void destroyStandaloneTurret(InstallationObject turret);
-
-	public native void sendSelectDeedToDonate(BuildingObject building, CreatureObject creature,int turretIndex);
-
-	public native void sendRemoveDefenseConfirmation(BuildingObject building, CreatureObject creature, unsigned long deedOID);
-
-	public native void performDefenseDonation(BuildingObject building, CreatureObject creature, unsigned long deedOID, int turretIndex);
-
-	private native void performDonateMine(BuildingObject building, CreatureObject creature, SceneObject sceneObject);
-
-	private native void performDonateMinefield(BuildingObject building, CreatureObject creature, Deed deed);
-
-	private native void performDonateTurret(BuildingObject building, CreatureObject creature, Deed deed);
-
-	private native unsigned long addChildInstallationFromDeed(BuildingObject building, ChildObject child, CreatureObject creature, Deed deed);
-
-	public native string getVulnerableStatus(BuildingObject building, CreatureObject creature);
-
-	public native void addMinefield(BuildingObject building, SceneObject minefield);
-
-	public native void addTurret(BuildingObject building, SceneObject turret);
-
-	public native void addScanner(BuildingObject building, SceneObject scanner);
-
-	public native void removeDefense(BuildingObject building, CreatureObject creature, unsigned long deedOID);
-
-	private native void verifyTurrets(BuildingObject building);
-
 	public native boolean canUseTerminals(CreatureObject creature, BuildingObject building, SceneObject terminal);
-
-	public native void sendTurretAttackListTo(CreatureObject creature, SceneObject turretControlTerminal);
-
-	private native TurretControlTerminalDataComponent getTurretControlDataComponent(SceneObject terminal);
-
-	private native TurretDataComponent getTurretDataComponent(SceneObject turret);
-
-	private native void generateTurretControlBoxTo(CreatureObject creature, TangibleObject turret, SceneObject terminal);
-
-	public native boolean canUseTurret(TangibleObject turret, SceneObject terminal, CreatureObject creature);
-
-	public native boolean canPlaceMoreBases(CreatureObject creature);
-
 	public native boolean areOpposingFactions(int faction1, int faction2);
-
-	public native boolean hasTooManyBasesNearby(int x, int y);
-
 	public native void awardSlicingXP(CreatureObject creature, final string xpType, int value);
 
-	@dirty
-	public native int isStrongholdCity(string city);
+	public native void sendJamUplinkMenu(CreatureObject creature, BuildingObject building, TangibleObject uplinkTerminal);
+	public native void verifyUplinkBand(CreatureObject creature, BuildingObject building, int band, TangibleObject uplinkTerminal);
+	private native void renewUplinkBand(BuildingObject building);
+
+	public native boolean canStartSlice(CreatureObject creature, TangibleObject terminal);
+	public native void completeSecuritySlice(CreatureObject creature, TangibleObject securityTerminal);
+	public native void failSecuritySlice(TangibleObject securityTerminal);
+	public native void repairTerminal(CreatureObject creature, TangibleObject securityTerminal);
+
+	public native void sendDNASampleMenu(CreatureObject creature, BuildingObject building, TangibleObject overrideTerminal);
+	public native void processDNASample(CreatureObject creature, TangibleObject overrideTerminal, int indx);
+	private native void constructDNAStrand(BuildingObject building);
+
+	public native void sendPowerRegulatorControls(CreatureObject creature, BuildingObject building, TangibleObject powerRegulator);
+	public native void handlePowerRegulatorSwitch(CreatureObject creature, TangibleObject powerRegulator, int indx);
+	private native void randomizePowerRegulatorSwitches(BuildingObject building);
+	private native void createPowerRegulatorRules(BuildingObject building);
+	private native void flipPowerSwitch(BuildingObject building, @dereferenced Vector<boolean> switchStates, int flipSwitch);
+
+	public native void scheduleBaseDestruction(BuildingObject building, CreatureObject creature);
+	public native void doBaseDestruction(StructureObject structure);
+	public native void doBaseDestruction(BuildingObject building);
 
 	@local
 	public native void broadcastBuilding(BuildingObject building, @dereferenced StringIdChatParameter params);
 
+	public native void startAbortSequenceDelay(BuildingObject building, CreatureObject creature, SceneObject hqTerminal);
+	public native void abortShutdownSequence(BuildingObject building, CreatureObject creature);
+
+	// called to reschedule the vulnerability time of a base
+	public native void resetVulnerability(CreatureObject creature, BuildingObject building);
+	public native boolean hasResetTimerPast(BuildingObject building);
+
+	public native void sendBaseDefenseStatus(CreatureObject creature, BuildingObject building);
+	public native void sendRemoveDefenseConfirmation(BuildingObject building, CreatureObject creature, unsigned long deedOID);
+	public native void removeDefense(BuildingObject building, CreatureObject creature, unsigned long deedOID);
+
+	public native void notifyInstallationDestruction(InstallationObject installation);
+	public native void notifyTurretDestruction(BuildingObject building, InstallationObject turret);
+	public native void notifyMinefieldDestruction(BuildingObject building, InstallationObject turret);
+
+	public native void sendSelectDeedToDonate(BuildingObject building, CreatureObject creature,int turretIndex);
+	public native void performDefenseDonation(BuildingObject building, CreatureObject creature, unsigned long deedOID, int turretIndex);
+	private native void performDonateMine(BuildingObject building, CreatureObject creature, SceneObject sceneObject);
+	private native void performDonateMinefield(BuildingObject building, CreatureObject creature, Deed deed);
+	private native void performDonateTurret(BuildingObject building, CreatureObject creature, Deed deed);
+	private native unsigned long addChildInstallationFromDeed(BuildingObject building, ChildObject child, CreatureObject creature, Deed deed);
+
+	public native void sendTurretAttackListTo(CreatureObject creature, SceneObject turretControlTerminal);
+	public native boolean canUseTurret(TangibleObject turret, SceneObject terminal, CreatureObject creature);
+	private native TurretControlTerminalDataComponent getTurretControlDataComponent(SceneObject terminal);
+	private native TurretDataComponent getTurretDataComponent(SceneObject turret);
+	private native void generateTurretControlBoxTo(CreatureObject creature, TangibleObject turret, SceneObject terminal);
+
 	public native float getGCWDiscount(CreatureObject creature);
+
+	@dirty
+	public native int isStrongholdCity(string city);
 
 	protected synchronized boolean hasBase(BuildingObject building) {
 		return gcwBaseList.contains(building);
