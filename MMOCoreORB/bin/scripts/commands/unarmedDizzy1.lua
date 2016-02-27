@@ -63,7 +63,8 @@ UnarmedDizzy1Command = {
 	  )
 	},
 
-	animationCRC = hashCode("attack_special_wookiee_slap_light"),
+	animation = "attack_special_wookiee_slap", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "gundarkslap",
 	

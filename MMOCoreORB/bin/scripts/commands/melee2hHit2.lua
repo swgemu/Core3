@@ -50,7 +50,8 @@ Melee2hHit2Command = {
 	mindCostMultiplier = 1.0,
         accuracyBonus = 10,
 
-	animationCRC = hashCode("combo_2a_medium"),
+	animation = "combo_2a", 
+	animType = GENERATE_INTENSITY,
 	
 	weaponType = TWOHANDMELEEWEAPON,
 

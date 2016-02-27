@@ -52,7 +52,7 @@ PolearmLunge2Command = {
 	actionCostMultiplier = 1.5,
 	mindCostMultiplier = 0.625,
 
-	animationCRC = hashCode("lower_posture_polearm_2"),
+	animation = "lower_posture_polearm_2",
 
 	combatSpam = "lungestrike",
 

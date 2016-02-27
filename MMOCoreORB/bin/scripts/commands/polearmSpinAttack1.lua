@@ -55,7 +55,7 @@ PolearmSpinAttack1Command = {
 	areaAction = true,
 	areaRange = 16,
 
-	animationCRC = hashCode("attack_high_left_light_2"),
+	animation = "attack_high_left_light_2",
 
 	combatSpam = "limbsmasher",
 	
