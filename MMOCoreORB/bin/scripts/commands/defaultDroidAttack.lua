@@ -43,7 +43,8 @@
 
 DefaultDroidAttackCommand = {
     name = "defaultdroidattack",
-    animationCRC = hashCode("droid_attack_medium"),
+    animation = "droid_attack", 
+	animType = GENERATE_INTENSITY,
     damageMultiplier = 1,
 	speedMultiplier = 1,
 	combatSpam = "attack",

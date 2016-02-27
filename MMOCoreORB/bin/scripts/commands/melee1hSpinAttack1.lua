@@ -51,7 +51,7 @@ Melee1hSpinAttack1Command = {
 	mindCostMultiplier = 1.5,
         accuracyBonus = 25,
 
-	animationCRC = hashCode("attack_high_right_medium_2"),
+	animation = "attack_high_right_medium_2",
 
 	combatSpam = "slashspin",
 	

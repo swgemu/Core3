@@ -51,7 +51,8 @@ ForceWeaken2Command = {
 	accuracySkillMod = "forceweaken_accuracy",
 	attackType = FORCEATTACK,
 
-	animationCRC = hashCode("force_weaken_1_particle_level_1_light"),
+	animation = "force_weaken_1_particle_level_1", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "forceweaken2",
 

@@ -53,7 +53,8 @@ DoubleTapCommand = {
 
 	poolsToDamage = ACTION_ATTRIBUTE + HEALTH_ATTRIBUTE,
 
-	animationCRC = hashCode("fire_7_single_light_face"),
+	animation = "fire_7_single", 
+	animType = GENERATE_RANGED,
 
 	combatSpam = "doubletap",
 	

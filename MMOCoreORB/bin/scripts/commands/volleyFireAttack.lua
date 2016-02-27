@@ -48,7 +48,7 @@ VolleyFireAttackCommand = {
 	speedMultiplier = 1,
 
 	combatSpam = "volley",
-	animationCRC = 0,
+	animation = "",
 
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,

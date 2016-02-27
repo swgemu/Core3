@@ -84,7 +84,8 @@ Saber2hFrenzyCommand = {
 	  )
 	},
 
-	animationCRC = hashCode("showoff_2_light"),
+	animation = "showoff_2", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "saber2hfrenzy",
 	

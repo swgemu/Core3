@@ -53,7 +53,8 @@ UnarmedLegHit1Command = {
 
 	poolsToDamage = ACTION_ATTRIBUTE,
 
-	animationCRC = hashCode("attack_special_foot_stomp_medium"),
+	animation = "attack_special_foot_stomp", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "grondastomp",
 	

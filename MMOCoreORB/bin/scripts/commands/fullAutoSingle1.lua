@@ -51,7 +51,8 @@ FullAutoSingle1Command = {
 	mindCostMultiplier = 0.5,
 	accuracyBonus = 25,
 
-	animationCRC = hashCode("fire_5_special_single_medium"),
+	animation = "fire_5_special_single", 
+	animType = GENERATE_RANGED,
 
 	combatSpam = "fullautoattack",
 

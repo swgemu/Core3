@@ -164,6 +164,9 @@ void CombatManager::forcePeace(CreatureObject* attacker) {
 int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data) {
 	//info("entering doCombat action with data ", true);
 
+	if(data.getCommand() == NULL)
+		return -3;
+
 	if (!startCombat(attacker, defenderObject))
 		return -1;
 
@@ -206,6 +209,9 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 }
 
 int CombatManager::doCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defender, CombatQueueCommand* command){
+
+	if(command == NULL)
+		return -3;
 
 	const CreatureAttackData data = CreatureAttackData("", command, defender->getObjectID());
 	int damage = 0;
@@ -462,7 +468,7 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 
 	defenderObject->updatePostures(false);
 
-	uint32 animationCRC = data.getAnimationCRC();
+	uint32 animationCRC = data.getCommand()->getAnimation(attacker, weapon, hitLocation, damage).hashCode();
 
 	combatAction = new CombatAction(attacker, defenderObject, animationCRC, hitVal, CombatManager::DEFAULTTRAIL);
 	attacker->broadcastMessage(combatAction,true);
@@ -2092,10 +2098,14 @@ void CombatManager::broadcastCombatSpam(TangibleObject* attacker, TangibleObject
 void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObject * defenderObject, WeaponObject* weapon, const CreatureAttackData & data, int damage, uint8 hit, uint8 hitLocation) {
 	CombatAction* combatAction = NULL;
 
-	uint32 animationCRC = data.getAnimationCRC();
+	String animation = data.getCommand()->getAnimation(attacker, weapon, hitLocation, damage);
 
-	if (animationCRC == 0)
-		animationCRC = getDefaultAttackAnimation(attacker, weapon, hitLocation, damage);
+	uint32 animationCRC = 0;
+
+	if (!animation.isEmpty())
+		animationCRC = animation.hashCode();
+
+	assert(animationCRC != 0);
 
 	CreatureObject *dcreo = defenderObject->asCreatureObject();
 	if(dcreo != NULL) { // All of this funkiness only applies to creo targets, tano's don't animate hits or posture changes
@@ -2427,35 +2437,6 @@ bool CombatManager::checkConeAngle(SceneObject* target, float angle,
 	return true;
 }
 
-uint32 CombatManager::getDefaultAttackAnimation(CreatureObject* creature, WeaponObject* weapon, uint8 hitLocation, int damage) {
-	// TODO: this needs to be fixed - All animation names should be generated.
-	// This may make a lot more sense to place in a virtual CombatQueueCommand func
-	// Ex: attack_mid_center_medium_2 attack_high_right_light_0  attack_low_center_light_3
-	// _high _mid _low _left _right  should be based on hit location
-	// _light _medium should be based on damage and also applied to most special attacks
-	// _0 _1 _2 _3 should be played in sequence
-
-	// Ranged attacks are formatted "fire_[number_of_shots]_[special]_[intensity]_[location]"
-	// Ranged attacks only have "face" as a location target as well as the light/medium intensity
-	// Ex: fire_5_special_single_light_face
-
-	// Special attacks have _special_ inserted into them and generally do not have locational damage
-
-	if(!creature->isCreature()) {
-		if (weapon->isRangedWeapon())
-			return defaultRangedAttacks.get(System::random(defaultRangedAttacks.size()-1));
-		else
-			return defaultMeleeAttacks.get(System::random(defaultMeleeAttacks.size()-1));
-	} else {
-		if (creature->getGameObjectType() == SceneObjectType::DROIDCREATURE || creature->getGameObjectType() == SceneObjectType::PROBOTCREATURE)
-			return (System::random(1) ? STRING_HASHCODE("droid_attack_medium") : STRING_HASHCODE("droid_attack_light"));
-		else if (weapon->isRangedWeapon())
-			return (System::random(1) ? STRING_HASHCODE("creature_attack_ranged_medium") : STRING_HASHCODE("creature_attack_ranged_light"));
-		else {
-			return (System::random(1) ? STRING_HASHCODE("creature_attack_medium") : STRING_HASHCODE("creature_attack_light"));
-		}
-	}
-}
 
 Reference<SortedVector<ManagedReference<TangibleObject*> >* > CombatManager::getAreaTargets(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data) {
 	float creatureVectorX = attacker->getPositionX();
