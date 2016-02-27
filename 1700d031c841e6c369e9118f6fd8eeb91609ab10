@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_9bc106e7",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1968,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-02-27T00:36:29Z",
+      "side": 1,
+      "message": "This will show the flytext far too often. I\u0027m fairly certain after looking at screenshots that the flytext would only be shown for pool-directed attacks, and not for attacks with random/multiple pool targets.",
+      "range": {
+        "startLine": 1967,
+        "startChar": 0,
+        "endLine": 1968,
+        "endChar": 78
+      },
+      "revId": "1700d031c841e6c369e9118f6fd8eeb91609ab10",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_3b9f9a05",
         "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.h",
         "patchSetId": 3
