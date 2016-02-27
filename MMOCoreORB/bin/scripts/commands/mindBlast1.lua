@@ -83,7 +83,8 @@ MindBlast1Command = {
 	  )
 	},
 
-	animationCRC = hashCode("force_mind_blast_1_particle_level_1_light"),
+	animation = "force_mind_blast_1_particle_level_1", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "mindblast1",
 

@@ -62,8 +62,6 @@ CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 
 	splashDamage = data.splashDamage;
 
-	animationCRC = data.animationCRC;
-
 	attackType= data.attackType;
 	trails = data.trails;
 
@@ -90,7 +88,6 @@ void CreatureAttackData::fillFromBase() {
 	coneRange = baseCommand->getConeRange();
 	range = baseCommand->getRange();
 	areaRange = baseCommand->getAreaRange();
-	animationCRC = baseCommand->getAnimationCRC();
 	attackType = baseCommand->getAttackType();
 	trails = baseCommand->getTrails();
 	combatSpam = baseCommand->getCombatSpam();
@@ -156,9 +153,6 @@ void CreatureAttackData::setVariable(const String& var, const String& val) {
 		break;
 	case 0xFEC2FA79: // STRING_HASHCODE("areaRange")
 		areaRange = Integer::valueOf(val);
-		break;
-	case 0x244FB60D: // STRING_HASHCODE("animationCRC")
-		animationCRC = Integer::valueOf(val);
 		break;
 	case 0x708615B8: // STRING_HASHCODE("attackType")
 		attackType = Integer::valueOf(val);

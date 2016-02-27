@@ -52,7 +52,7 @@ UnarmedLunge2Command = {
 	actionCostMultiplier = 1.5,
 	mindCostMultiplier = 1.5,
 
-	animationCRC = hashCode("knockdown_unarmed_1"),
+	animation = "knockdown_unarmed_1",
 
 	combatSpam = "lungeshiak",
 

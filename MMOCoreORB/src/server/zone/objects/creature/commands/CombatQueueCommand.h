@@ -56,7 +56,7 @@ protected:
 
 	String combatSpam;
 	String stateSpam;
-	uint32 animationCRC;
+	String animation;
 	String effectString;
 
 	VectorMap<uint8, StateEffect> stateEffects;
@@ -64,10 +64,16 @@ protected:
 
 	uint8 attackType;
 	uint8 trails;
+	uint8 animType;
 
 	uint32 weaponType;
 
 public:
+	enum AnimGenTypes {
+		GENERATE_NONE, // Uses animation as given - Default
+		GENERATE_RANGED, // Generates _light|_medium as well as appends _face with headshots
+		GENERATE_INTENSITY // generates _light|_medium only
+	};
 
 	CombatQueueCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 
@@ -104,7 +110,9 @@ public:
 		coneAction = false;
 
 		combatSpam = "";
-		animationCRC = 0;
+		animation = "";
+		animType = GENERATE_NONE;
+
 
 		attackType = CombatManager::WEAPONATTACK;
 		trails = CombatManager::DEFAULTTRAIL;
@@ -424,9 +432,119 @@ public:
 		this->speed = speedd;
 	}
 
-	inline uint32 getAnimationCRC() const {
-		return animationCRC;
+	void setAnimType(uint8 type) {
+		animType = type;
 	}
+
+	uint8 getAnimType() const {
+		return animType;
+	}
+
+	String getAnimationString() const {
+		return animation;
+	}
+
+	static inline String getIntensity(int threshold, int damage) {
+		if(damage > threshold)
+			return "_medium";
+		else
+			return "_light";
+	}
+
+	String getDefaultAttackAnimation(TangibleObject* attacker, WeaponObject* weapon, uint8 hitLocation, int damage) const {
+			enum lateralLocations {LEFT, CENTER, RIGHT};
+			static const char* headLocations[] =  {"attack_high_left", "attack_high_center", "attack_high_right"};
+			static const char* chestLocations[] = {"attack_mid_left", "attack_mid_center", "attack_mid_right"};
+			static const char* legLocations[] = {"attack_low_left", "attack_low_center", "attack_low_right"};
+
+			static const char* rangedAttacks[] = {"fire_1_single", "fire_3_single", "fire_5_single"};
+
+			String intensity = getIntensity((weapon != NULL ? (((uint32)weapon->getMaxDamage()) >> 2) : 0), damage);
+			StringBuffer buffer;
+			if(!attacker->isCreature()) {
+				if(weapon->isRangedWeapon()) {
+
+					buffer << rangedAttacks[System::random(2)];
+
+					buffer << intensity;
+
+					if(hitLocation == CombatManager::HIT_HEAD)
+						buffer << "_face";
+
+				} else {
+					if(hitLocation == 0)
+						hitLocation = System::random(5)+1;
+
+					switch(hitLocation) {
+					case CombatManager::HIT_BODY:
+						buffer << chestLocations[CENTER];
+						break;
+					case CombatManager::HIT_LARM:
+						buffer << chestLocations[RIGHT];
+						break;
+					case CombatManager::HIT_RARM:
+						buffer << chestLocations[LEFT]; // these are purposely backwards - It's mirrored
+						break;
+					case CombatManager::HIT_LLEG:
+						buffer << legLocations[System::random(1)+1];
+						break;
+					case CombatManager::HIT_RLEG:
+						buffer << legLocations[System::random(1)];
+						break;
+					case CombatManager::HIT_HEAD:
+						buffer << headLocations[System::random(2)];
+						break;
+					}
+
+					buffer << intensity;
+
+					// TODO: Actually sequence these
+					buffer << "_" << String::valueOf(System::random(3));
+				}
+			} else {
+				if (attacker->getGameObjectType() == SceneObjectType::DROIDCREATURE || attacker->getGameObjectType() == SceneObjectType::PROBOTCREATURE)
+					return "droid_attack" + intensity;
+				else if (weapon->isRangedWeapon())
+					return "creature_attack_ranged" + intensity;
+				else
+					return "creature_attack" + intensity;
+			}
+
+			//info("Generated Attack Animation- " + buffer.toString(), true);
+			return buffer.toString();
+		}
+
+	inline String generateAnimation(uint8 hitLocation, int weaponThreshold, int damage) const {
+		String anim = animation;
+
+		switch(animType) {
+		case GENERATE_NONE:
+			break;
+		case GENERATE_RANGED:
+		case GENERATE_INTENSITY:
+			anim += getIntensity(weaponThreshold, damage);
+
+			if(animType == GENERATE_INTENSITY)
+				return anim;
+
+			if(hitLocation == CombatManager::HIT_HEAD)
+				anim += "_face";
+
+			return anim;
+		}
+		//info("Generated Attack Animation- " + anim, true);
+		return anim;
+	}
+	virtual String getAnimation(TangibleObject* attacker, WeaponObject* weapon, uint8 hitLocation, int damage) const {
+
+		if(animation.isEmpty())
+			return getDefaultAttackAnimation(attacker, weapon, hitLocation, damage);
+
+		return generateAnimation(hitLocation, (weapon != NULL ? (((uint32)weapon->getMaxDamage()) >> 2) : 0), damage);
+
+	}
+
+
 
 	inline String getEffectString() const {
 		return effectString;
@@ -448,8 +566,8 @@ public:
 		return &(const_cast<CombatQueueCommand*>(this)->dotEffects);
 	}
 
-	void setAnimationCRC(uint32 animationCRC) {
-		this->animationCRC = animationCRC;
+	void setAnimationString(String anim) {
+		this->animation = anim;
 	}
 
 	void setCombatSpam(String combatSpam) {

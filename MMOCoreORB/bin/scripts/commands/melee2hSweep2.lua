@@ -53,7 +53,7 @@ Melee2hSweep2Command = {
 	areaRange = 16,
 	areaAction = true,
 
-	animationCRC = hashCode("lower_posture_2hmelee_6"),
+	animation = "lower_posture_2hmelee_6",
 
 	combatSpam = "sword2_knockdown",
 

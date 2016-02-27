@@ -66,7 +66,8 @@ SaberPolearmSpinAttack3Command = {
 	  )
 	},
 
-	animationCRC = hashCode("showoff_1_light"),
+	animation = "showoff_1", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "saberpolearmspinattack3",
 

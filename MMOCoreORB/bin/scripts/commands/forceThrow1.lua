@@ -64,7 +64,8 @@ ForceThrow1Command = {
 	},
 	
 		
-	animationCRC = hashCode("force_throw_1_particle_level_1_light"),
+	animation = "force_throw_1_particle_level_1", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "forcethrow1",
 	

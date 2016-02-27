@@ -53,7 +53,8 @@ UnarmedCombo1Command = {
 
 	poolsToDamage = HEALTH_ATTRIBUTE + ACTION_ATTRIBUTE + MIND_ATTRIBUTE,
 
-	animationCRC = hashCode("combo_4b_medium"),
+	animation = "combo_4b", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "shenbitbonecrusher",
 	

@@ -50,7 +50,8 @@ TurretFireCommand = {
 	mindCostMultiplier = 0,
 	forceCostMultiplier = 0,
 
-	animationCRC = hashCode("fire_turret_medium"),
+	animation = "fire_turret", 
+	animType = GENERATE_INTENSITY,
 
 	trails = NOTRAIL,
 

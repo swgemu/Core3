@@ -62,7 +62,8 @@ UnderHandShotCommand = {
 	  )
 	},
 
-	animationCRC = hashCode("fire_7_single_light"),
+	animation = "fire_7_single", 
+	animType = GENERATE_RANGED,
 
 	combatSpam = "underhandshot",
 	

@@ -56,7 +56,8 @@ FanShotCommand = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	animationCRC = hashCode("fire_area_light"),
+	animation = "fire_area", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "fanshot",
 	

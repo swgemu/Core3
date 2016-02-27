@@ -52,7 +52,8 @@ ForceLightningSingle1Command = {
 	
 	accuracySkillMod = "forcelightning_accuracy";
 
-	animationCRC = hashCode("force_lightning_1_particle_level_1_light"),
+	animation = "force_lightning_1_particle_level_1", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "forcelightningsingle1",
 

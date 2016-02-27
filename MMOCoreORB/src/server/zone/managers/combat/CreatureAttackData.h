@@ -41,8 +41,6 @@ protected:
 
     bool splashDamage;
 
-    uint32 animationCRC;
-
     uint64 targetID;
 
     VectorMap<uint8, StateEffect>* stateEffects;
@@ -114,9 +112,6 @@ public:
 		return actionCostMultiplier;
 	}
 
-	uint32 getAnimationCRC() const {
-		return animationCRC;
-	}
 
 	void setSplashDamage(bool b) {
 		splashDamage = b;
@@ -172,10 +167,6 @@ public:
 
 	Vector<DotEffect>* getDotEffects() const {
 		return dotEffects;
-	}
-
-	void setAnimationCRC(uint32 animationCRC) {
-		this->animationCRC = animationCRC;
 	}
 
 	uint8 getAttackType() const {
