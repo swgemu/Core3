@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "da7095c5_1b22d6b9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceIntimidate2Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-02-27T06:28:22Z",
+      "side": 1,
+      "message": "this should be logical OR. Logical AND will force a dereference on a NULL targetObject.",
+      "range": {
+        "startLine": 34,
+        "startChar": 27,
+        "endLine": 34,
+        "endChar": 63
+      },
+      "revId": "a308fef708f2cd077a18e0c81477821f3192b513",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_9b36e602",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/events/ForceIntimidateTask.h",
         "patchSetId": 1
