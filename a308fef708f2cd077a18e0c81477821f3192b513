@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_9b36e602",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/ForceIntimidateTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-02-27T06:24:55Z",
+      "side": 1,
+      "message": "You should remove this entire check. \n\nWhat you are doing is forcing the target to either be a PlayerCreature OR an animal. This would prevent it from being used on humanoid AI.\n\ntarCreo !\u003d NULL will prevent it from being casted on non creature objects.",
+      "range": {
+        "startLine": 33,
+        "startChar": 47,
+        "endLine": 33,
+        "endChar": 104
+      },
+      "revId": "a308fef708f2cd077a18e0c81477821f3192b513",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
