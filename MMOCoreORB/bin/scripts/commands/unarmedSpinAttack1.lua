@@ -54,7 +54,8 @@ UnarmedSpinAttack1Command = {
 	actionCostMultiplier = 1.5,
 	mindCostMultiplier = 1.5,
 
-	animationCRC = hashCode("combo_3c_light"),
+	animation = "combo_3c", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "leapingveermok",
 	

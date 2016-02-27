@@ -53,7 +53,8 @@ Melee1hHealthHit1Command = {
 
 	poolsToDamage = HEALTH_ATTRIBUTE,
 
-	animationCRC = hashCode("counter_low_left_light"),
+	animation = "counter_low_left", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "shiim",
 

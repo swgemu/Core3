@@ -55,7 +55,8 @@ ActionShot2Command = {
 
 	poolsToDamage = ACTION_ATTRIBUTE,
 
-	animationCRC = hashCode("fire_area_medium"),
+	animation = "fire_area", 
+	animType = GENERATE_RANGED,
 
 	combatSpam = "sapblast",
 	    

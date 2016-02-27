@@ -74,7 +74,8 @@ FlushingShot1Command = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	animationCRC = hashCode("fire_3_special_single_medium"),
+	animation = "fire_3_special_single", 
+	animType = GENERATE_RANGED,
 
 	combatSpam = "flushingshot",
 	

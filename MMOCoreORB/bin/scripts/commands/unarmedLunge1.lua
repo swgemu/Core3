@@ -52,7 +52,7 @@ UnarmedLunge1Command = {
 	actionCostMultiplier = 1.0,
 	mindCostMultiplier = 1.0,
 
-	animationCRC = hashCode("lower_posture_unarmed_1"),
+	animation = "lower_posture_unarmed_1",
 
 	combatSpam = "ridingbantha",
 

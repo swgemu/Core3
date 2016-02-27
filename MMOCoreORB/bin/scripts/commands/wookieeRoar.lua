@@ -67,7 +67,7 @@ WookieeRoarCommand = {
 	},
 
 	combatSpam = "intim",
-	animationCRC = hashCode("intimidate"),
+	animation = "intimidate",
 	effectString = "clienteffect/combat_special_attacker_intimidate.cef",
 	range = 15,
 

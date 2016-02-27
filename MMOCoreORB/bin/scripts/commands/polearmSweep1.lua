@@ -64,7 +64,7 @@ PolearmSweep1Command = {
 	  )
 	},
 
-	animationCRC = hashCode("knockdown_polearm_1"),
+	animation = "knockdown_polearm_1",
 
 	combatSpam = "backcracker",
 	

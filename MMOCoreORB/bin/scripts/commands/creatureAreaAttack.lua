@@ -47,7 +47,8 @@ CreatureAreaAttackCommand = {
 	speedMultiplier = 1,
 
 	combatSpam = "attack",
-	animationCRC = hashCode("creature_attack_special_2_medium"),
+	animation = "creature_attack_special_2", 
+	animType = GENERATE_INTENSITY,
 
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,
