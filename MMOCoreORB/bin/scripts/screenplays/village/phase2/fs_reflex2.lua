@@ -100,7 +100,7 @@ function FsReflex2:doPhaseChangeFail(pCreature)
 	end
 
 	FsReflex2Goto:finish(pCreature)
-	FsReflex2Goback:finish(pCreature)
+	FsReflex2GoBack:finish(pCreature)
 	FsReflex2Theater:finish(pCreature)
 	deleteData(SceneObject(pCreature):getObjectID() .. ":failedWhipPhase1")
 end
