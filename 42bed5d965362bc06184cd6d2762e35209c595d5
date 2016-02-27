@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_16138d5d",
+        "filename": "MMOCoreORB/src/server/zone/managers/object/ObjectVersionUpdateManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-02-27T08:24:44Z",
+      "side": 1,
+      "message": "Should I continue here? Or throw the exception/delete this handler and let the entire migration die at this point?",
+      "range": {
+        "startLine": 419,
+        "startChar": 4,
+        "endLine": 419,
+        "endChar": 13
+      },
+      "revId": "42bed5d965362bc06184cd6d2762e35209c595d5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
