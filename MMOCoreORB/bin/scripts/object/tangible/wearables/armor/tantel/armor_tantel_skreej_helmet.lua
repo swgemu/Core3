@@ -79,7 +79,7 @@ object_tangible_wearables_armor_tantel_armor_tantel_skreej_helmet = object_tangi
 				"object/mobile/vendor/zabrak_male.iff" },
 
 	-- Damage types in WeaponObject
-	vulnerability = NONE,
+	vulnerability = LIGHTSABER,
 
 	-- These are default Blue Frog stats
 	healthEncumbrance = 8,
@@ -97,7 +97,7 @@ object_tangible_wearables_armor_tantel_armor_tantel_skreej_helmet = object_tangi
 	heat = 15,
 	cold = 15,
 	acid = 15,
-	lightSaber = 15,
+	lightSaber = 0,
 
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "SR", "OQ", "SR", "OQ", "UT", "MA", "OQ", "MA", "OQ", "MA", "OQ", "XX", "XX", "OQ", "SR", "XX"},
