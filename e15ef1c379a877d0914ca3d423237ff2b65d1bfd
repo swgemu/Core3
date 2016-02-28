@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_5641050a",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1310,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-28T15:27:21Z",
+      "side": 1,
+      "message": "This will target arms twice as often as body. Intended? Prior to this patch it would be 50/50",
+      "revId": "e15ef1c379a877d0914ca3d423237ff2b65d1bfd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_76468925",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2098,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-28T15:27:21Z",
+      "side": 1,
+      "message": "You have damage and hitLocation swapped.",
+      "revId": "e15ef1c379a877d0914ca3d423237ff2b65d1bfd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
