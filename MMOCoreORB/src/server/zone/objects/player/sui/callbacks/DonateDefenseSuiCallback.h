@@ -31,7 +31,7 @@ public:
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
 
-		if(obj == NULL || !obj->isBuildingObject())
+		if (obj == NULL || !obj->isBuildingObject())
 			return;
 
 		SuiListBox* listBox = cast<SuiListBox*>(suiBox);
@@ -44,10 +44,10 @@ public:
 
 		GCWManager* gcwMan = player->getZone()->getGCWManager();
 
-		if(gcwMan==NULL)
+		if (gcwMan == NULL)
 			return;
 
-		gcwMan->performDefenseDonation(building, player,objectid, turretSlot);
+		gcwMan->performDefenseDonation(building, player, objectid, turretSlot);
 
 	}
 };

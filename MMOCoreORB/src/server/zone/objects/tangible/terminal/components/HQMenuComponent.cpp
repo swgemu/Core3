@@ -72,8 +72,8 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 			}
 		}
 
-		if (building->getFaction() == player->getFaction()) {
-			if (gcwMan->isShutdownSequenceStarted(building) && (building->getPvpStatusBitmask() & CreatureFlag::OVERT))
+		if (building->getFaction() == player->getFaction() && (building->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
+			if (gcwMan->isShutdownSequenceStarted(building))
 				menuResponse->addRadialMenuItem(231, 3, "@hq:mnu_shutdown");  // Shutdown facility
 
 			menuResponse->addRadialMenuItem(37, 3, "@hq:mnu_donate"); // Donate
@@ -124,6 +124,8 @@ int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureOb
 				ShutdownSequenceTask* task = new ShutdownSequenceTask(gcwMan, building, creature, sceneObject, false);
 				task->execute();
 			}
+		} else if (selectedID == 37) {
+			creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:terminal_response04"); // You must first select a sub-menu of 'Donate' to proceed.
 		} else if (selectedID == 226)
 				gcwMan->sendSelectDeedToDonate(building,creature,0);
 	} else {

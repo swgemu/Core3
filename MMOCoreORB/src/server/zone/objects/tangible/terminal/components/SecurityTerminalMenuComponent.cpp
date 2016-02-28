@@ -42,7 +42,7 @@ void SecurityTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObj
 	if (gcwMan->isTerminalDamaged(cast<TangibleObject*>(sceneObject)))
 		menuResponse->addRadialMenuItem(20, 3, "@ui:repair");
 	else
-		menuResponse->addRadialMenuItem(20, 3, "@slicing/slicing:slice");
+		menuResponse->addRadialMenuItem(20, 3, "@hq:mnu_slice"); // Slice Security
 }
 
 int SecurityTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {

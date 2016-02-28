@@ -21,17 +21,14 @@
 
 
 void TurretControlMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
-
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
 	ManagedReference<PlayerObject*> thisPlayer = player->getPlayerObject();
-
 
 	if (thisPlayer == NULL || building == NULL || player->isDead() || player->isIncapacitated())
 		return;
 
-
 	if (player->getFaction() == 0) {
-		player->sendSystemMessage("@faction_recruiter:must_be_declared_use"); // Your faction affiliation must be delcared in order to use that item.
+		player->sendSystemMessage("@hq:declared_only"); // Only Special Forces personnel may access this terminal!
 		return;
 	}
 
@@ -88,7 +85,3 @@ int TurretControlMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 	return 0;
 }
-
-
-
-

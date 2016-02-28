@@ -38,7 +38,7 @@ private:
 	Time lastResetTime; // serialized
 	int uplinkBand; // secret code used to jam the uplink
 	bool activeDefenses;
-	bool exposed;
+	bool defenseAddedThisVuln;
 
 public:
 	const static int INVULNERABLE = 0;
@@ -58,11 +58,11 @@ public:
 		currentDnaChain = "";
 
 		activeDefenses = true;
-		exposed = false;
 		terminalDamaged = false;
 
 		uplinkBand = 0;
 		inRepair = false;
+		defenseAddedThisVuln = false;
 	}
 
 	virtual ~DestructibleBuildingDataComponent() {
@@ -253,6 +253,14 @@ public:
 
 	void setDefense(bool value) {
 		activeDefenses = value;
+	}
+
+	bool wasDefenseAddedThisVuln() {
+		return defenseAddedThisVuln;
+	}
+
+	void setDefenseAddedThisVuln(bool added) {
+		defenseAddedThisVuln = added;
 	}
 
 	void clearDnaStrand() {

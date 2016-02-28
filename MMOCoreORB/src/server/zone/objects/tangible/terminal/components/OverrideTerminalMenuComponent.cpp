@@ -42,7 +42,7 @@ void OverrideTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObj
 	if (!gcwMan->isBaseVulnerable(building))
 		return;
 
-	menuResponse->addRadialMenuItem(20, 3, "@hq:mnu_dna"); // Slice
+	menuResponse->addRadialMenuItem(20, 3, "@hq:mnu_dna"); // Provide DNA Profile
 
 }
 

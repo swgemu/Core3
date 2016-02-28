@@ -51,7 +51,10 @@ int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player
 		}
 
 		if (!player->checkCooldownRecovery("slicing.terminal")) {
-			player->sendSystemMessage("@slicing/slicing:not_again");
+			StringIdChatParameter message;
+			message.setStringId("@slicing/slicing:not_yet"); // You will be able to hack the network again in %DI seconds.
+			message.setDI(player->getCooldownTime("slicing.terminal")->getTime() - Time().getTime());
+			player->sendSystemMessage(message);
 			return 0;
 		}
 

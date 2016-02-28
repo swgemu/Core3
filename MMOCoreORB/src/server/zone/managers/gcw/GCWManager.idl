@@ -150,6 +150,7 @@ class GCWManager extends ManagedService implements Logger {
 	private native void verifyTurrets(BuildingObject building);
 
 	public native boolean canPlaceMoreBases(CreatureObject creature);
+	public native int getBaseCount(CreatureObject creature);
 	public native boolean hasTooManyBasesNearby(int x, int y);
 	public native void registerGCWBase(BuildingObject building, boolean initializeBase);
 	public native void unregisterGCWBase(BuildingObject building);
@@ -226,7 +227,6 @@ class GCWManager extends ManagedService implements Logger {
 
 	public native void sendSelectDeedToDonate(BuildingObject building, CreatureObject creature,int turretIndex);
 	public native void performDefenseDonation(BuildingObject building, CreatureObject creature, unsigned long deedOID, int turretIndex);
-	private native void performDonateMine(BuildingObject building, CreatureObject creature, SceneObject sceneObject);
 	private native void performDonateMinefield(BuildingObject building, CreatureObject creature, Deed deed);
 	private native void performDonateTurret(BuildingObject building, CreatureObject creature, Deed deed);
 	private native unsigned long addChildInstallationFromDeed(BuildingObject building, ChildObject child, CreatureObject creature, Deed deed);
@@ -319,6 +319,10 @@ class GCWManager extends ManagedService implements Logger {
 
 	protected synchronized boolean dropDestroyTask(unsigned long id) {
 		return gcwDestroyTasks.drop(id);
+	}
+
+	public int getMaxBasesPerPlayer() {
+		return maxBasesPerPlayer;
 	}
 
 	public synchronized boolean isPlanetCapped() {

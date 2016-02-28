@@ -46,8 +46,8 @@ public:
 			ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
 
 		ManagedReference<SuiMessageBox*> suiMessageBox = new SuiMessageBox(player, SuiWindowType::HQ_TERMINAL);
-		suiMessageBox->setPromptTitle("@faction/faction_hq/faction_hq_response:terminal_response27");
-		suiMessageBox->setPromptText("@faction/faction_hq/faction_hq_response:terminal_response28");
+		suiMessageBox->setPromptTitle("@faction/faction_hq/faction_hq_response:terminal_response27"); // Confirm Facility Shutdown
+		suiMessageBox->setPromptText("@faction/faction_hq/faction_hq_response:terminal_response28"); // Are you sure that you want to shut down the facility?
 		suiMessageBox->setCancelButton(true, "Cancel");
 		suiMessageBox->setUsingObject(hqTerminal);
 		suiMessageBox->setCallback(new BaseShutdownSuiCallback(player->getZoneServer()));

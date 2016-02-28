@@ -146,11 +146,11 @@ int DestructibleBuildingDataComponent::writeObjectMembers(ObjectOutputStream* st
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "exposed";
+	_name = "defenseAddedThisVuln";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<bool >::toBinaryStream(&exposed, stream);
+	TypeInfo<bool >::toBinaryStream(&defenseAddedThisVuln, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -214,8 +214,8 @@ bool DestructibleBuildingDataComponent::readObjectMember(ObjectInputStream* stre
 		TypeInfo<bool>::parseFromBinaryStream(&activeDefenses, stream);
 		return true;
 	}
-	if (name == "exposed") {
-		TypeInfo<bool>::parseFromBinaryStream(&exposed, stream);
+	if (name == "defenseAddedThisVuln") {
+		TypeInfo<bool>::parseFromBinaryStream(&defenseAddedThisVuln, stream);
 		return true;
 	}
 
