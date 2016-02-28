@@ -310,13 +310,22 @@ end
 function recruiterScreenplay:handleSuiPurchase(pCreature, pSui, eventIndex, arg0)
 	local cancelPressed = (eventIndex == 1)
 
-	if (pCreature == nil or cancelPressed) then
+	if pCreature == nil then
+		return
+	end
+
+	if cancelPressed then
 		deleteStringData(CreatureObject(pCreature):getObjectID() .. ":faction_purchase")
 		return
 	end
 
 	local playerID = SceneObject(pCreature):getObjectID()
 	local purchaseCategory = readStringData(playerID .. ":faction_purchase")
+
+	if purchaseCategory == "" then
+		return
+	end
+
 	local purchaseIndex = arg0 + 1
 	local faction = self:getFactionFromHashCode(CreatureObject(pCreature):getFaction())
 	local dataTable = self:getFactionDataTable(faction)
@@ -333,15 +342,7 @@ function recruiterScreenplay:handleSuiPurchase(pCreature, pSui, eventIndex, arg0
 	end
 
 	if (awardResult == self.errorCodes.SUCCESS) then
-		local messageString
-		if (self:isHireling(faction, itemString)) then
-			messageString = LuaStringIdChatParameter("@faction_recruiter:hireling_purchase_complete")
-		else
-			messageString = LuaStringIdChatParameter("@faction_recruiter:item_purchase_complete")
-		end
-
-		messageString:setTT(self:getDisplayName(faction, itemString))
-		CreatureObject(pCreature):sendSystemMessage(messageString:_getObject())
+		return
 	elseif (awardResult == self.errorCodes.INVENTORYFULL) then
 		CreatureObject(pCreature):sendSystemMessage("@dispenser:inventory_full") -- Your inventory is full. You must make some room before you can purchase.
 	elseif (awardResult == self.errorCodes.DATAPADFULL) then
@@ -353,9 +354,9 @@ function recruiterScreenplay:handleSuiPurchase(pCreature, pSui, eventIndex, arg0
 		messageString:setDI(self.minimumFactionStanding)
 		messageString:setTO(self:toTitleCase(faction))
 		CreatureObject(pCreature):sendSystemMessage(messageString:_getObject()) -- You do not have enough faction standing to spend. You must maintain at least %DI to remain part of the %TO faction.
-	elseif ( awardResult == self.errorCodes.ITEMCOST ) then
+	elseif (awardResult == self.errorCodes.ITEMCOST) then
 		CreatureObject(pCreature):sendSystemMessage("Error determining cost of item. Please post a bug report regarding the item you attempted to purchase.")
-	elseif ( awardResult == self.errorCodes.INVENTORYERROR or awardResult == self.DATAPADERROR) then
+	elseif (awardResult == self.errorCodes.INVENTORYERROR or awardResult == self.DATAPADERROR) then
 		CreatureObject(pCreature):sendSystemMessage("Error finding location to put item. Please post a report.")
 	elseif (awardResult == self.errorCodes.TEMPLATEPATHERROR) then
 		CreatureObject(pCreature):sendSystemMessage("Error determining data for item. Please post a bug report regarding the item you attempted to purchase..")
@@ -377,7 +378,7 @@ function recruiterScreenplay:awardItem(pPlayer, faction, itemString)
 			return self.errorCodes.ITEMCOST
 		end
 
-		itemCost  = math.ceil(itemCost *  getGCWDiscount(pPlayer) * self:getSmugglerDiscount(pPlayer))
+		itemCost = math.ceil(itemCost * getGCWDiscount(pPlayer) * self:getSmugglerDiscount(pPlayer))
 
 		if (factionStanding < (itemCost + self.minimumFactionStanding)) then
 			return self.errorCodes.NOTENOUGHFACTION
@@ -393,20 +394,31 @@ function recruiterScreenplay:awardItem(pPlayer, faction, itemString)
 
 		local transferResult =  self:transferItem(player, pInventory, faction, itemString)
 
-		if(transferResult ~= self.errorCodes.SUCCESS) then
+		if (transferResult ~= self.errorCodes.SUCCESS) then
 			return transferResult
 		end
 
 		playerObject:decreaseFactionStanding(faction, itemCost)
 
+		local messageString = LuaStringIdChatParameter("@faction_recruiter:item_purchase_complete") -- Your requisition of %TT is complete.
+		messageString:setTT(self:getDisplayName(faction, itemString))
+		player:sendSystemMessage(messageString:_getObject())
+
 		if bonusItemCount then
 			local bonusItems = self:getBonusItems(faction, itemString)
 			if bonusItems ~= nil then
+				messageString = LuaStringIdChatParameter("@faction_perk:given_extra_bases") -- Congratulations! In addition to the base that you purchased, we have given you two additional bases. They are:
+				player:sendSystemMessage(messageString:_getObject())
+
 				for k, v in pairs(bonusItems) do
 					transferResult = self:transferItem(pPlayer, pInventory, faction, v)
 					if(transferResult ~= self.errorCodes.SUCCESS) then
 						return transferResult
 					end
+
+					messageString = LuaStringIdChatParameter("@faction_perk:bonus_base_name") -- You received a: %TO
+					messageString:setTO(self:getDisplayName(faction, v))
+					player:sendSystemMessage(messageString:_getObject())
 				end
 			end
 		end
@@ -460,6 +472,10 @@ function recruiterScreenplay:awardData(pPlayer, faction, itemString)
 
 		playerObject:decreaseFactionStanding(faction, itemCost)
 
+		local messageString = LuaStringIdChatParameter("@faction_recruiter:hireling_purchase_complete") -- The %TT is now under your command.
+		messageString:setTT(self:getDisplayName(faction, itemString))
+		player:sendSystemMessage(messageString:_getObject())
+
 		if bonusItemCount then
 			local bonusItems = self:getBonusItems(faction, itemString)
 			if bonusItems ~= nil then
@@ -471,6 +487,7 @@ function recruiterScreenplay:awardData(pPlayer, faction, itemString)
 				end
 			end
 		end
+
 		return self.errorCodes.SUCCESS
 	end)
 end

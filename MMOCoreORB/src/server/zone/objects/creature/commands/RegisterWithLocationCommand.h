@@ -29,37 +29,48 @@ public:
 		ManagedReference<BuildingObject*> building = player->getRootParent().get().castTo<BuildingObject*>();
 
 		// If outside don't bother doing anything ...
-		if(building == NULL) {
-			player->sendSystemMessage("@faction/faction_hq/faction_hq_response:cannot_register"); // "You cannot register at a location that is not registered with the planetary map."
+		if (building == NULL) {
+			player->sendSystemMessage("@faction/faction_hq/faction_hq_response:no_support"); // This location does not support active/inactive registration status.
 			return GENERALERROR;
 		}
 
-		bool flagDoc = isNoviceDoctor(player);
-		bool flagEnt = isNoviceEntertainer(player);
+		bool medBuilding = isInMedicalBuilding(player, building);
+		bool entBuilding = isInEntertainingBuilding(player, building);
+		bool novDoc = isNoviceDoctor(player);
+		bool novEnt = isNoviceEntertainer(player);
 
-		if ( flagDoc || flagEnt ) {
-			if (flagDoc && isInMedicalBuilding(player, building)) {
-					addPlayerToBuilding(player);
-					return SUCCESS;
+		if (medBuilding && entBuilding) {
+			if (novDoc || novEnt) {
+				addPlayerToBuilding(player, building);
+				return SUCCESS;
 			}
-			// NOT else if! (Char is both a doctor and an entertainer, etc.)
-			if (flagEnt && isInEntertainingBuilding(player, building)) {
-					addPlayerToBuilding(player);
-					return SUCCESS;
+		} else if (medBuilding) {
+			if (novDoc) {
+				addPlayerToBuilding(player, building);
+				return SUCCESS;
+			} else {
+				player->sendSystemMessage("@faction/faction_hq/faction_hq_response:no_skills"); // You lack the appropriate skill-set to activate this location.
+				return GENERALERROR;
 			}
-			// Right profession, wrong place ...
-			player->sendSystemMessage("This building is not a valid registration location for your profession.");
+		} else if (entBuilding) {
+			if (novEnt) {
+				addPlayerToBuilding(player, building);
+				return SUCCESS;
+			} else {
+				player->sendSystemMessage("@faction/faction_hq/faction_hq_response:no_skills"); // You lack the appropriate skill-set to activate this location.
+				return GENERALERROR;
+			}
+		} else {
+			player->sendSystemMessage("@faction/faction_hq/faction_hq_response:no_support"); // This location does not support active/inactive registration status.
+			return GENERALERROR;
 		}
 
 		return SUCCESS;
 	}
 
-	void addPlayerToBuilding(CreatureObject* player) const {
-		ManagedReference<BuildingObject*> building = player->getRootParent().get().castTo<BuildingObject*>();
-		if (building != NULL) {
-			Locker blocker(building, player);
-			building->registerProfessional(player);
-		}
+	void addPlayerToBuilding(CreatureObject* player, BuildingObject* building) const {
+		Locker blocker(building, player);
+		building->registerProfessional(player);
 	}
 
 	bool isNoviceDoctor(CreatureObject* player) const {
