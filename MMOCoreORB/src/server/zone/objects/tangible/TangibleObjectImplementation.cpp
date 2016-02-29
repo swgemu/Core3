@@ -459,6 +459,12 @@ void TangibleObjectImplementation::setUseCount(uint32 newUseCount, bool notifyCl
 
 	setCountdownTimer(newUseCount, notifyClient);
 
+
+}
+
+void TangibleObjectImplementation::decreaseUseCount(unsigned int decrementAmount, bool notifyClient) {
+	setUseCount(useCount - decrementAmount, notifyClient);
+
 	if (useCount < 1 && !isCreatureObject()) {
 		destroyObjectFromWorld(true);
 
@@ -466,10 +472,6 @@ void TangibleObjectImplementation::setUseCount(uint32 newUseCount, bool notifyCl
 
 		return;
 	}
-}
-
-void TangibleObjectImplementation::decreaseUseCount() {
-	setUseCount(useCount - 1, true);
 }
 
 void TangibleObjectImplementation::setMaxCondition(int maxCond, bool notifyClient) {

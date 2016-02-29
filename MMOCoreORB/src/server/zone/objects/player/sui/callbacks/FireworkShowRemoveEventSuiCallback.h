@@ -63,7 +63,7 @@ public:
 
 		if (fireworkShowObject != NULL) {
 			Locker locker(fireworkShowObject);
-			fireworkShowObject->setUseCount(fireworkShowObject->getUseCount() - 1, true);
+			fireworkShowObject->decreaseUseCount();
 		}
 
 		FireworkShowMenuComponent* showMenu = cast<FireworkShowMenuComponent*>(fireworkShow->getObjectMenuComponent());

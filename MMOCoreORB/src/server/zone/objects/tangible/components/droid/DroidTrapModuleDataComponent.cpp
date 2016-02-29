@@ -238,7 +238,7 @@ void DroidTrapModuleDataComponent::handleInsertTrap(CreatureObject* player, Tang
 				protoclone->setParent(NULL);
 				protoclone->setUseCount(input->getUseCount());
 				trap = protoclone;
-				input->setUseCount(0);
+				input->decreaseUseCount(input->getUseCount());
 				StringIdChatParameter msg;
 				msg.setStringId("@pet/droid_modules:trap_module_initialize");
 				msg.setTU(trap->getObjectName()->getFullPath());
@@ -257,7 +257,7 @@ void DroidTrapModuleDataComponent::handleInsertTrap(CreatureObject* player, Tang
 
 				protoclone->setParent(NULL);
 				protoclone->setUseCount(allowed);
-				input->setUseCount(input->getUseCount() - allowed);
+				input->decreaseUseCount(allowed);
 				trap = protoclone;
 				StringIdChatParameter msg;
 				msg.setStringId("@pet/droid_modules:trap_module_initialize");
@@ -279,10 +279,10 @@ void DroidTrapModuleDataComponent::handleInsertTrap(CreatureObject* player, Tang
 
 				if (allowed > input->getUseCount()) {
 					trap->setUseCount(trap->getUseCount() + input->getUseCount());
-					input->setUseCount(0);
+					input->decreaseUseCount(input->getUseCount());
 				} else {
 					trap->setUseCount(trap->getUseCount() + allowed);
-					input->setUseCount(input->getUseCount() - allowed);
+					input->setUseCount(allowed);
 					player->sendSystemMessage("@pet/droid_modules:trap_max_reached");
 				}
 			}

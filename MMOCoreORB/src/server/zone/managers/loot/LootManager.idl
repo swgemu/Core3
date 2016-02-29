@@ -183,5 +183,10 @@ class LootManager extends ManagedService implements Logger {
 	public unsigned int getLegendaryLooted() {
 		return legendaryLooted.get();
 	}
+	
+	@local
+	public LootGroupMap getLootMap() {
+		return lootGroupMap;
+	}
 
 }
