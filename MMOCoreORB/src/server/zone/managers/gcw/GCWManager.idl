@@ -225,8 +225,8 @@ class GCWManager extends ManagedService implements Logger {
 	public native void notifyTurretDestruction(BuildingObject building, InstallationObject turret);
 	public native void notifyMinefieldDestruction(BuildingObject building, InstallationObject turret);
 
-	public native void sendSelectDeedToDonate(BuildingObject building, CreatureObject creature,int turretIndex);
-	public native void performDefenseDonation(BuildingObject building, CreatureObject creature, unsigned long deedOID, int turretIndex);
+	public native void sendSelectDeedToDonate(BuildingObject building, CreatureObject creature);
+	public native void performDefenseDonation(BuildingObject building, CreatureObject creature, unsigned long deedOID);
 	private native void performDonateMinefield(BuildingObject building, CreatureObject creature, Deed deed);
 	private native void performDonateTurret(BuildingObject building, CreatureObject creature, Deed deed);
 	private native unsigned long addChildInstallationFromDeed(BuildingObject building, ChildObject child, CreatureObject creature, Deed deed);

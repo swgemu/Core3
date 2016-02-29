@@ -973,8 +973,7 @@ void StructureManager::reportStructureStatus(CreatureObject* creature,
 	if (structure->isBuildingObject()) {
 		BuildingObject* building = cast<BuildingObject*>(structure);
 
-		if (building->isGCWBase() && (building->getPvpStatusBitmask() & CreatureFlag::OVERT) &&
-				(building->getOwnerCreatureObject() == creature || creature->getFactionRank() >= 9)) {
+		if (building->isGCWBase()) {
 			Zone* zone = creature->getZone();
 
 			if (zone != NULL) {
