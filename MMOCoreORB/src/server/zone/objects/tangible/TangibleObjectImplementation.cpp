@@ -562,12 +562,12 @@ int TangibleObjectImplementation::notifyObjectDestructionObservers(TangibleObjec
 	if (threatMap != NULL)
 		threatMap->removeAll();
 
-	dropFromDefenderLists(attacker);
+	dropFromDefenderLists();
 
 	return 1;
 }
 
-void TangibleObjectImplementation::dropFromDefenderLists(TangibleObject* destructor) {
+void TangibleObjectImplementation::dropFromDefenderLists() {
 	if (defenderList.size() == 0)
 		return;
 
