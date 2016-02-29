@@ -67,8 +67,9 @@ function NabooStaticSpawnsSouthScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "gungan_hermit", 300, 7257.0, 111.1, -2970.9, 35.0, 0)
 	spawnMobile("naboo", "gungan_hermit", 300, 7260.2, 110.8, -2967.6, -37.5, 0)
 
-		--Stone Mast (1216,-1248)
+		--Ancient Stone Mast (1216,-1248)
 	spawnMobile("naboo", "gungan_kaadu", 300, 1216.9, 225.8, -1252.1, -91, 0)
+	spawnMobile("naboo", "giant_fanned_rawl", 900, 1219.6, 221.3, -1239.0, 169, 0)
 
 		--Gungan Ruins (0,-1866)
 	spawnMobile("naboo", "vine_rawl", 300, 7.6, 441.2, -1858.6, -140, 0)
@@ -86,6 +87,14 @@ function NabooStaticSpawnsSouthScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "naboo_pirate", 300, -1769.5, 33.2, -495.6, -45.0, 0)
 
 		--Ruined Walls (-3586,-880)
-	spawnMobile("naboo", "spitting_rawl", 300, -3584.9, 92.1, -873.0, 86, 0)
+	spawnMobile("naboo", "mutant_hermit_spider", 900, getRandomNumber(5) + -3586, 92.6, getRandomNumber(5) + -872, getRandomNumber(360), 0)
+	spawnMobile("naboo", "mutant_hermit_spider", 900, getRandomNumber(5) + -3586, 92.6, getRandomNumber(5) + -872, getRandomNumber(360), 0)
+	spawnMobile("naboo", "mutant_hermit_spider", 900, getRandomNumber(5) + -3586, 92.6, getRandomNumber(5) + -872, getRandomNumber(360), 0)
+	spawnMobile("naboo", "mutant_hermit_spider", 900, getRandomNumber(5) + -3586, 92.6, getRandomNumber(5) + -872, getRandomNumber(360), 0)
+
+		--Ruined Gate (-7300, -4100)
+	spawnMobile("naboo", "mutant_hermit_spider", 900, getRandomNumber(5) + -7330, 10.8, getRandomNumber(5) + -4164, getRandomNumber(360), 0)
+	spawnMobile("naboo", "mutant_hermit_spider", 900, getRandomNumber(5) + -7330, 10.8, getRandomNumber(5) + -4164, getRandomNumber(360), 0)
+	spawnMobile("naboo", "mutant_hermit_spider", 900, getRandomNumber(5) + -7330, 10.8, getRandomNumber(5) + -4164, getRandomNumber(360), 0)
 
 end

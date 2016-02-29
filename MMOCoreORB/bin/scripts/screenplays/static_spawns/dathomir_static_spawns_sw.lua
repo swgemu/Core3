@@ -90,9 +90,10 @@ function DathomirStaticSpawnsSwScreenPlay:spawnMobiles()
 	--empty hut (-6894,-4854)
 	spawnMobile("dathomir", "singing_mountain_clan_councilwoman", 7200, -6894.9, 461.8, -4853.8, 109, 0)
 
-	--worshop stone (-6953,-3032)
+	--worship stone (-6953,-3032)
 	spawnMobile("dathomir", "nightsister_elder", 4220, -6953.8, 551.6, -3032.1, -45, 0)
 	spawnMobile("dathomir", "nightsister_protector", 720, -6946.5, 550.5, -3041.9, 135, 0)
+	spawnMobile("dathomir", "rancor_pygmy", 1200, -6995.6, 570.0, -3058.8, 93, 0)
 
 	--tree hut (-5045,-2773)
 	spawnMobile("dathomir", "escaped_nightsister_slave", 360, -5038.1, 8.9, -2773.2, -35, 0)

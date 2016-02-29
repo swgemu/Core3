@@ -107,5 +107,30 @@ function CorelliaStaticSpawnsScreenPlay:spawnMobiles()
 	spawnSceneObject("corellia", "object/tangible/camp/camp_stool_tall.iff", -1419.5, 85.2822, 1978.6, 0, 1, 0, 0, 0 )
 	spawnSceneObject("corellia", "object/tangible/camp/camp_stool_tall.iff", -1420.0, 85.2822, 1976.9, 0, 1, 0, 0, 0 )
 
+	--Abandoned Tower (4950, 2900)
+	spawnMobile("corellia", "vicious_slice_hound", 300, getRandomNumber(5) + 4976, 3.5, getRandomNumber(5) + 2888, getRandomNumber(360), 0)
+	spawnMobile("corellia", "vicious_slice_hound", 300, getRandomNumber(5) + 4976, 3.5, getRandomNumber(5) + 2888, getRandomNumber(360), 0)
+	spawnMobile("corellia", "vicious_slice_hound", 300, getRandomNumber(5) + 4976, 3.5, getRandomNumber(5) + 2888, getRandomNumber(360), 0)
+	spawnMobile("corellia", "vicious_slice_hound", 300, getRandomNumber(5) + 4976, 3.5, getRandomNumber(5) + 2888, getRandomNumber(360), 0)
+
+	--Forgotten Spires (750, 2500)
+	spawnMobile("corellia", "vicious_slice_hound", 300, getRandomNumber(10) + 755, 393.6, getRandomNumber(10) + 2509, getRandomNumber(360), 0)
+	spawnMobile("corellia", "vicious_slice_hound", 300, getRandomNumber(10) + 755, 393.6, getRandomNumber(10) + 2509, getRandomNumber(360), 0)
+	spawnMobile("corellia", "vicious_slice_hound", 300, getRandomNumber(10) + 755, 393.6, getRandomNumber(10) + 2509, getRandomNumber(360), 0)
+
+	--Mysterious Shrine (-6900, 4500)
+	spawnMobile("corellia", "vicious_slice_hound", 300, getRandomNumber(5) + -6919, 449.7, getRandomNumber(5) + 4506, getRandomNumber(360), 0)
+	spawnMobile("corellia", "vicious_slice_hound", 300, getRandomNumber(5) + -6919, 449.7, getRandomNumber(5) + 4506, getRandomNumber(360), 0)
+	spawnMobile("corellia", "vicious_slice_hound", 300, getRandomNumber(5) + -6919, 449.7, getRandomNumber(5) + 4506, getRandomNumber(360), 0)
+
+	--Rock Formations (-1650, 6850)
+	spawnMobile("corellia", "vicious_slice_hound", 300, getRandomNumber(10) + -1686, 375.3, getRandomNumber(10) + 6885, getRandomNumber(360), 0)
+	spawnMobile("corellia", "vicious_slice_hound", 300, getRandomNumber(10) + -1686, 375.3, getRandomNumber(10) + 6885, getRandomNumber(360), 0)
+	spawnMobile("corellia", "vicious_slice_hound", 300, getRandomNumber(10) + -1686, 375.3, getRandomNumber(10) + 6885, getRandomNumber(360), 0)
+
+	--Weather Station (-7400, -3900)
+	spawnMobile("corellia", "vicious_slice_hound", 300, getRandomNumber(5) + -7482, 236.8, getRandomNumber(5) + -3955, getRandomNumber(360), 0)
+	spawnMobile("corellia", "vicious_slice_hound", 300, getRandomNumber(5) + -7482, 236.8, getRandomNumber(5) + -3955, getRandomNumber(360), 0)
+	spawnMobile("corellia", "vicious_slice_hound", 300, getRandomNumber(5) + -7482, 236.8, getRandomNumber(5) + -3955, getRandomNumber(360), 0)
 
 end

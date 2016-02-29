@@ -66,13 +66,15 @@ function DathomirStaticSpawnsNwScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "singing_mountain_clan_rancor_tamer", 360, -7072.5, 409.6, 5962.6, -170, 0)
 	spawnMobile("dathomir", "singing_mountain_clan_rancor", 360, -7060.7, 405.1, 5959.0, 170, 0)
 
-	--Large Mast (-6427,7206)
+	--Large Mast aka Forgotten Spire (-6427,7206)
 	spawnMobile("dathomir", "gaping_spider_hunter", 300, -6415.2, 503.2, 7216.2, -170, 0)
 	spawnMobile("dathomir", "gaping_spider_hunter", 300, -6411.7, 503.6, 7217.3, -170, 0)
 	spawnMobile("dathomir", "gaping_spider_hunter", 300, -6421.3, 506.5, 7217.7, -170, 0)
+	spawnMobile("dathomir", "rancor_pygmy", 1200, -6439.9, 499.7, 7181.8, 24, 0)
 
 	--singing mountain clan tree (-2650,7366)
 	spawnMobile("dathomir", "singing_mountain_clan_councilwoman", 4200, -2657.9, 545.7, 7368.5, 110, 0)
+	spawnMobile("dathomir", "rancor_pygmy", 3400, -2684.7, 534.6, 7336.5, -81, 0)
 
 	--singing mountain clan totem (-1206,5312)
 	spawnMobile("dathomir", "singing_mountain_clan_huntress", 360, -1203.7, 127.5, 5303.4, -21, 0)
