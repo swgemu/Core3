@@ -72,13 +72,25 @@ function MellichaeOutroTheater:onLoot(pLootedCreature, pLooter, nothing)
 		looterID = CreatureObject(pLooter):getGroupID()
 	end
 
-	if (looterID == ownerID) and (SpawnMobiles.isFromSpawn(pLooter, self.taskName, pLootedCreature)) then
+	local playerID = SceneObject(pLooter):getObjectID()
+	local theaterID = readData(playerID .. self.taskName .. "theaterId")
+	local pTheater = getSceneObject(theaterID)
+
+	if (pTheater == nil) then
+		return 1
+	end
+
+	local ownedSpawn = SpawnMobiles.isFromSpawn(pTheater, MellichaeOutroTheater.taskName, pLootedCreature)
+
+	Logger:log("Mellichae ownedSpawn == " .. tostring(ownedSpawn) .. ".", LT_INFO)
+
+	if (looterID == ownerID) and (ownedSpawn == true) then
 		createLoot(pInventory, "mellichae_outro", 0, true)
 		QuestManager.completeQuest(pLooter, QuestManager.quests.FS_THEATER_FINAL)
 		CreatureObject(pLooter):sendSystemMessage("@quest/force_sensitive/exit:final_complete") --	Congratulations, you have completed the Force sensitive quests! You are now qualified to begin the Jedi Padawan Trials.
 		VillageJediManagerCommon.setJediProgressionScreenPlayState(pLooter, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE) -- Killed him.
-		deleteData(SceneObject(pLooter) .. ":totalNum:Shrines:Red")
-		deleteData(SceneObject(pLooter) .. ":totalNum:Shrines:Green")
+		deleteData(SceneObject(pLooter):getObjectID() .. ":totalNum:Shrines:Red")
+		deleteData(SceneObject(pLooter):getObjectID() .. ":totalNum:Shrines:Green")
 	end
 
 	return 1
@@ -88,26 +100,43 @@ end
 -- Event handler for the enter active area event.
 function MellichaeOutroTheater:onEnteredActiveArea(pCreatureObject, spawnedSithShadowsList)
 	if (pCreatureObject == nil or spawnedSithShadowsList == nil or spawnedSithShadowsList[1] == nil) then
-		return
+		return 1 -- This shouldn't happen, so lets not keep the observer.
 	end
 
+	local playerID = SceneObject(pCreatureObject):getObjectID()
+
+	local theaterID = readData(playerID .. self.taskName .. "theaterId")
+
+	local pTheater = getSceneObject(theaterID)
+
+	if (pTheater == nil) then
+		return 1
+	end
+
+	local ownedSpawn = SpawnMobiles.isFromSpawn(pTheater, MellichaeOutroTheater.taskName, spawnedSithShadowsList[1])
+
+	Logger:log("Mellichae ownedSpawn == " .. tostring(ownedSpawn) .. ".", LT_INFO)
+
 	-- Shouldn't be here...
-	if not (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE) and SpawnMobiles.isFromSpawn(pCreatureObject, self.taskName, spawnedSithShadowsList[1])) then
-		return
+	if (VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE) == false) then
+		if (ownedSpawn == false) then
+			Logger:log("Player entered area that doesn't own the quest.", LT_INFO)
+			return 0 -- Lets keep it to wait for the right player.
+		end
 	end
 
 	foreach(spawnedSithShadowsList, function(pMobile)
 		if (pMobile ~= nil) then
-			if (CreatureObject(pMobile):getFirstName() ~= "Mellichae") then
+			if (SceneObject(pMobile):getDisplayedName() ~= "Mellichae") then
 				AiAgent(pMobile):setDefender(pCreatureObject)
-          		end
+			end
 
-			if (CreatureObject(pMobile):getFirstName() == "Daktar") then
-        			local greetingString = LuaStringIdChatParameter("@quest/force_sensitive/exit:taunt1")
+			if (SceneObject(pMobile):getDisplayedName() == "Daktar Bloodmoon") then
+				local greetingString = LuaStringIdChatParameter("@quest/force_sensitive/exit:taunt1")
 				local firstName = CreatureObject(pCreatureObject):getFirstName()
 				greetingString:setTT(firstName)
-				spatialChat(spawnedSithShadowsList[1], greetingString:_getObject()) -- %TT, You shall pay for your tresspass here - SOLDIERS - defend the crystals! Let no one leave here alive.
-        		end
+				spatialChat(spawnedSithShadowsList[2], greetingString:_getObject()) -- %TT, You shall pay for your tresspass here - SOLDIERS - defend the crystals! Let no one leave here alive.
+			end
 		end
 	end)
 
@@ -153,8 +182,8 @@ function MellichaeOutroTheater:onPlayerKilled(pCreatureObject, pKiller, nothing)
 	OldManOutroEncounter:start(pCreatureObject)
 	QuestManager.resetQuest(pCreatureObject, QuestManager.quests.FS_THEATER_CAMP)
 	QuestManager.resetQuest(pCreatureObject, QuestManager.quests.FS_THEATER_FINAL)
-	deleteData(SceneObject(pCreatureObject) .. ":totalNum:Shrines:Red")
-	deleteData(SceneObject(pCreatureObject) .. ":totalNum:Shrines:Green")
+	deleteData(SceneObject(pCreatureObject):getObjectID() .. ":totalNum:Shrines:Red")
+	deleteData(SceneObject(pCreatureObject):getObjectID() .. ":totalNum:Shrines:Green")
 	return 1
 end
 
@@ -223,13 +252,13 @@ function MellichaeOutroTheater:onDamageReceived(pObject, pAttacker, damage)
 			CreatureObject(pObject):playEffect("clienteffect/healing_healdamage.cef", "")
 			return 0
 		elseif (numOfShrines == nil or numOfShrines <= 0) then
-			if (CreatureObject(pObject):getFirstName() == "Daktar") then -- Only Daktar should taunt.
+			if (SceneObject(pObject):getDisplayedName() == "Daktar Bloodmoon") then -- Only Daktar should taunt.
 				local greetingString = LuaStringIdChatParameter("@quest/force_sensitive/exit:taunt3") -- %TT, You may have destroyed my power crystals, but now I will destroy you! SOLDIERS ATTACK!!!
 				local firstName = CreatureObject(pAttacker):getFirstName()
 				greetingString:setTT(firstName)
 				spatialChat(pObject, greetingString:_getObject())
 
-          			-- Do the extra spawn of 6 more sith shadows, only on Daktar so they don't spawn twice.
+				-- Do the extra spawn of 6 more sith shadows, only on Daktar so they don't spawn twice.
 				for i=1,3 do
 					local zoneName = CreatureObject(pObject):getZoneName()
 					local randomDistance = getRandomNumber(32)
