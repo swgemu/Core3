@@ -40,4 +40,27 @@ function LokStaticSpawnsScreenPlay:spawnMobiles()
 	spawnMobile("lok", "gurk",900,-3754.7,63.2,-3477.6,150,0)
 	spawnMobile("lok", "gurk",900,-3763.7,62,-3485.9,170,0)
 	spawnMobile("lok", "reclusive_gurk_king",1200,-3763.4,62.5,-3477.2,160,0)
+
+	--Tribal Stone Claws Site (-6000, 6400)
+	spawnMobile("lok", "kimogila_dwarf", 4200, -6014.5, 56.2, 6429.9, 131, 0)
+
+	--Rare Lokkian Fountain (6400, 5000)
+	spawnMobile("lok", "aged_kimogila", 4200, 6426.0, 100.1, 5142.2, -151, 0)
+	spawnMobile("lok", "kimogila_dwarf", 4200, 6443.7, 92.1, 5106.4, -108, 0)
+
+	--Abandoned Settlers Camp (-130, -350)
+	spawnMobile("lok", "aged_kimogila", 4200, -252.0, 11.1, -455.0, -6, 0)
+	--Abandoned Settlers Camp Ruins (5000, -4100)
+	spawnMobile("lok", "aged_kimogila", 4200, 5086.8, 12.1, -4114.6, 139, 0)
+	spawnMobile("lok", "kimogila_dwarf", 4200, 5097.4, 11.9, -4113.3, 124, 0)
+
+	--Mysterious Shrine (-2100, 5900)
+	spawnMobile("lok", "langlatch_giant", 900, getRandomNumber(5) + -2110.8, 87.8, getRandomNumber(5) + 5935.2, getRandomNumber(360), 0)
+	spawnMobile("lok", "langlatch_giant", 900, getRandomNumber(5) + -2110.8, 87.8, getRandomNumber(5) + 5935.2, getRandomNumber(360), 0)
+
+	--Broken Wall Hill (-4400, -5800)
+	spawnMobile("lok", "langlatch_giant", 900, getRandomNumber(10) + -4448.2, 11.9, getRandomNumber(10) + -5769.9, getRandomNumber(360), 0)
+	spawnMobile("lok", "langlatch_giant", 900, getRandomNumber(10) + -4448.2, 11.9, getRandomNumber(10) + -5769.9, getRandomNumber(360), 0)
+	spawnMobile("lok", "langlatch_giant", 900, getRandomNumber(10) + -4448.2, 11.9, getRandomNumber(10) + -5769.9, getRandomNumber(360), 0)
+
 end
