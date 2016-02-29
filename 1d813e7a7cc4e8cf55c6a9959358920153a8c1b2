@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_1672ad7c",
+        "filename": "MMOCoreORB/src/server/utils/LambdaObserverImplementation.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1667
+      },
+      "writtenOn": "2016-02-29T02:56:49Z",
+      "side": 1,
+      "message": "this can\u0027t compile, im guessing you forgot to add this file to Makefile.am",
+      "revId": "1d813e7a7cc4e8cf55c6a9959358920153a8c1b2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_765d29e9",
+        "filename": "MMOCoreORB/src/server/zone/managers/skill/imagedesign/ImageDesignManager.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1667
+      },
+      "writtenOn": "2016-02-29T02:56:49Z",
+      "side": 1,
+      "message": "you should be locking creo instead",
+      "revId": "1d813e7a7cc4e8cf55c6a9959358920153a8c1b2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_366fb194",
+        "filename": "MMOCoreORB/src/server/zone/managers/skill/imagedesign/ImageDesignManager.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1667
+      },
+      "writtenOn": "2016-02-29T02:56:49Z",
+      "side": 1,
+      "message": "Another issue with this lambda is that you pass creo and hairObject, both raw pointers. You need to pass a Reference\u003c\u003e instead to be sure that pointer won\u0027t dangle",
+      "revId": "1d813e7a7cc4e8cf55c6a9959358920153a8c1b2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
