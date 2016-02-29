@@ -359,7 +359,7 @@ void ObjectVersionUpdateManager::updateTangibleObjectsVersion6() {
 
 			int useCount = 0;
 			uint objCRC = 0;
-			AbilityList abilityList;
+			AbilityListMigrator abilityList;
 
 			String className;
 
@@ -375,16 +375,20 @@ void ObjectVersionUpdateManager::updateTangibleObjectsVersion6() {
 
 			try {
 				if (className == "PlayerObject") {
-					if (Serializable::getVariable<AbilityList>(STRING_HASHCODE("PlayerObject.abilityList"), &abilityList, &objectData)) {
-						int size = abilityList.size();
-						for(int i=size-1; i>=0; i--) {
-							Ability *ability = abilityList.get(i);
-							if(ability->getAbilityName().beginsWith("language+")) {
-								abilityList.remove(i, NULL);
+
+					if (Serializable::getVariable<AbilityListMigrator>(STRING_HASHCODE("PlayerObject.abilityList"), &abilityList, &objectData)) {
+						Vector<String> &abilities = abilityList.names;
+						int size = abilityList.names.size();
+
+						for(int i=abilities.size()-1; i>=0; i--) {
+
+							String ability = abilities.get(i);
+							if(ability.beginsWith("language+")) {
+								abilities.remove(i);
 							}
 						}
 
-						if(abilityList.size() != size) {
+						if(abilities.size() != size) {
 							ObjectOutputStream data;
 							abilityList.toBinaryStream(&data);
 							ObjectOutputStream *test = changeVariableData(STRING_HASHCODE("PlayerObject.abilityList"), &objectData, &data);
