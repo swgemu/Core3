@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_b63181a4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-29T05:44:41Z",
+      "side": 0,
+      "message": "I\u0027d prefer it if you\u0027d figure out why isFromSpawn isn\u0027t working in this case and fix whatever is wrong with it instead of hacking in a different solution.",
+      "revId": "1d928de46c0e8247d3da3061ee8e94beaa06d9cb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
