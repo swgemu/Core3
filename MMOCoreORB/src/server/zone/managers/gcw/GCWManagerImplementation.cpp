@@ -37,7 +37,6 @@
 #include "server/zone/objects/player/sui/callbacks/PowerRegulatorSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/RemoveDefenseSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/DonateDefenseSuiCallback.h"
-#include "server/zone/objects/player/sui/callbacks/SelectTurretDonationSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/TurretControlSuiCallback.h"
 
 #include "server/zone/managers/structure/StructureManager.h"
@@ -1910,7 +1909,7 @@ void GCWManagerImplementation::notifyMinefieldDestruction(BuildingObject* buildi
 	minefield->destroyObjectFromDatabase(true);
 }
 
-void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, CreatureObject* creature, int turretIndex) {
+void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, CreatureObject* creature) {
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
 	if (creature == NULL || baseData == NULL)
@@ -1939,7 +1938,7 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 	donate->setUsingObject(building);
 	donate->setOkButton(true, "@ok");
 	donate->setCancelButton(true, "@cancel");
-	donate->setCallback( new DonateDefenseSuiCallback(zone->getZoneServer(), turretIndex) );
+	donate->setCallback( new DonateDefenseSuiCallback(zone->getZoneServer()) );
 
 	for (int i = 0; i < inv->getContainerObjectsSize(); ++i) {
 		ManagedReference<SceneObject*> inventoryObject = inv->getContainerObject(i);
@@ -1968,7 +1967,7 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 	}
 }
 
-void GCWManagerImplementation::performDefenseDonation(BuildingObject* building, CreatureObject* creature, uint64 deedOID, int turretIndex) {
+void GCWManagerImplementation::performDefenseDonation(BuildingObject* building, CreatureObject* creature, uint64 deedOID) {
 	ZoneServer* zoneServer = zone->getZoneServer();
 	if (zoneServer == NULL)
 		return;
