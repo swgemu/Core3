@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "da7095c5_36f6d1d8",
+        "filename": "MMOCoreORB/src/server/zone/managers/object/ObjectVersionUpdateManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-29T05:17:26Z",
+      "side": 1,
+      "message": "You don\u0027t use this",
+      "revId": "42bed5d965362bc06184cd6d2762e35209c595d5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_d602f5b3",
+        "filename": "MMOCoreORB/src/server/zone/managers/object/ObjectVersionUpdateManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-29T05:17:26Z",
+      "side": 1,
+      "message": "If you pass false to the second arg you could then just check if the odb is null, right?",
+      "revId": "42bed5d965362bc06184cd6d2762e35209c595d5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_f6fff9a8",
+        "filename": "MMOCoreORB/src/server/zone/managers/object/ObjectVersionUpdateManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-02-29T05:17:26Z",
+      "side": 1,
+      "message": "You can remove your commented debugging statements throughout.",
+      "revId": "42bed5d965362bc06184cd6d2762e35209c595d5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_16138d5d",
         "filename": "MMOCoreORB/src/server/zone/managers/object/ObjectVersionUpdateManager.cpp",
         "patchSetId": 5
