@@ -706,12 +706,13 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath, bool isCombatAction) {
 	StringIdChatParameter stringId;
 
+	ThreatMap* threatMap = player->getThreatMap();
+
 	if (attacker->isPlayerCreature()) {
 		stringId.setStringId("base_player", "prose_target_dead");
 		stringId.setTT(player->getObjectID());
 		(cast<CreatureObject*>(attacker))->sendSystemMessage(stringId);
 
-		ThreatMap* threatMap = player->getThreatMap();
 		Reference<ThreatMap*> copyThreatMap = new ThreatMap(*threatMap);
 		PlayerManager* pManager = _this.getReferenceUnsafeStaticCast();
 		ManagedReference<CreatureObject*> playerRef = player->asCreatureObject();
@@ -768,6 +769,12 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 	}
 
 	CombatManager::instance()->freeDuelList(player, false);
+
+	threatMap->removeAll(true);
+
+	player->removeDefenders();
+	player->dropFromDefenderLists();
+	player->setTargetID(0, true);
 
 	player->notifyObjectKillObservers(attacker);
 }

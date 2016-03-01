@@ -97,12 +97,12 @@ void ThreatMap::addDamage(CreatureObject* target, uint32 damage, String xp) {
 	}
 }
 
-void ThreatMap::removeAll() {
+void ThreatMap::removeAll(bool forceRemoveAll) {
 	Locker locker(&lockMutex);
 
 	removeObservers();
 
-	for (int i = 0; i < size(); i++) {
+	for (int i = size() - 1; i >= 0; i--) {
 		VectorMapEntry<ManagedReference<CreatureObject*> , ThreatMapEntry> *entry = &elementAt(i);
 
 		ManagedReference<CreatureObject*> key = entry->getKey();
@@ -117,7 +117,7 @@ void ThreatMap::removeAll() {
 		uint32 keyPlanetCRC = (keyZone != NULL ? keyZone->getPlanetCRC() : 0);
 		uint32 selfPlanetCRC = (selfZone != NULL ? selfZone->getPlanetCRC() : 0);
 
-		if (key == NULL || selfStrong == NULL || key->isDead() || !key->isOnline() || keyPlanetCRC != selfPlanetCRC) {
+		if (key == NULL || selfStrong == NULL || key->isDead() || !key->isOnline() || keyPlanetCRC != selfPlanetCRC || forceRemoveAll) {
 			remove(i);
 
 			if (threatMapObserver != NULL)

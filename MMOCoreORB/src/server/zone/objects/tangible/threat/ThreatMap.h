@@ -176,7 +176,7 @@ public:
 	~ThreatMap() {
 	}
 
-	void removeAll();
+	void removeAll(bool forceRemoveAll = false);
 
 	void removeObservers();
 

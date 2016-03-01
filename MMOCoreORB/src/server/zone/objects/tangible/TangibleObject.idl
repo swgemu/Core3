@@ -450,7 +450,7 @@ class TangibleObject extends SceneObject {
 	public abstract native int notifyObjectDestructionObservers(TangibleObject attacker, int condition, boolean isCombatAction);
 	
 	@preLocked
-	public native void dropFromDefenderLists(TangibleObject destructor);
+	public native void dropFromDefenderLists();
 	
 	@dirty
 	public byte getObjectVisible() {
