@@ -249,8 +249,15 @@ void ObjectVersionUpdateManager::updateTangibleObjectsVersion6() {
 	ObjectDatabase *schemdb = ObjectDatabaseManager::instance()->loadObjectDatabase("draftschematics", false);
 	if(!schemdb) {
 		info("Skipping updateTangibleObjectsVersion6()", true);
+
 		return;
 	}
+
+	uint64 dummyKey;
+	ObjectDatabaseIterator schemIterator(schemdb);
+	schemIterator.getNextKey(dummyKey);
+	if(dummyKey == 0)
+		return;
 
 	ObjectDatabase* database = ObjectDatabaseManager::instance()->loadObjectDatabase("sceneobjects", true);
 
@@ -289,7 +296,8 @@ void ObjectVersionUpdateManager::updateTangibleObjectsVersion6() {
 			}
 
 
-			Reference<Vector<String>* > subGroups = tanotmp->getExperimentalSubGroupTitles();
+			Vector<String>* subGroups = tanotmp->getExperimentalSubGroupTitles();
+
 			for(int i=0; i<subGroups->size(); i++) {
 				String subGroupTitle = subGroups->get(i).toLowerCase();
 
@@ -307,10 +315,10 @@ void ObjectVersionUpdateManager::updateTangibleObjectsVersion6() {
 		}
 	}
 
-	Reference<LootGroupMap*> lootMap =  LootGroupMap::instance();
+	LootGroupMap* lootMap =  LootGroupMap::instance();
 	lootMap->initialize();
 
-	HashTable<String, Reference<LootItemTemplate*> > &itemTemplates = lootMap->itemTemplates;
+	HashTable<String, Reference<LootItemTemplate*> > itemTemplates = lootMap->itemTemplates;
 	HashTableIterator<String, Reference<LootItemTemplate*> > lootIter = itemTemplates.iterator();
 
 	while(lootIter.hasNext()) {
@@ -376,42 +384,55 @@ void ObjectVersionUpdateManager::updateTangibleObjectsVersion6() {
 			try {
 				if (className == "PlayerObject") {
 
+					ObjectOutputStream *abilityListChanges = NULL;
 					if (Serializable::getVariable<AbilityListMigrator>(STRING_HASHCODE("PlayerObject.abilityList"), &abilityList, &objectData)) {
-						Vector<String> &abilities = abilityList.names;
+						Vector<String> *abilities = &(abilityList.names);
 						int size = abilityList.names.size();
 
-						for(int i=abilities.size()-1; i>=0; i--) {
+						for(int i=abilities->size()-1; i>=0; i--) {
 
-							String ability = abilities.get(i);
-							if(ability.beginsWith("language+")) {
-								abilities.remove(i);
+							String ability = abilities->get(i);
+							if(ability.beginsWith("language")) {
+								abilities->remove(i);
 							}
 						}
 
-						if(abilities.size() != size) {
+						if(abilities->size() != size) {
 							ObjectOutputStream data;
-							abilityList.toBinaryStream(&data);
-							ObjectOutputStream *test = changeVariableData(STRING_HASHCODE("PlayerObject.abilityList"), &objectData, &data);
-							test->reset();
-							database->putData(objectID, test, NULL);
+							uint32 updateCounter = 0;
+							TypeInfo<uint32>::toBinaryStream(&updateCounter, &data);
+							abilities->toBinaryStream(&data);
+							abilityListChanges = changeVariableData(STRING_HASHCODE("PlayerObject.abilityList"), &objectData, &data);
+							abilityListChanges->reset();
 						}
 					} else {
-						info("PlayerObject.abilityList does not exist for " + String::valueOf(objectID));
+						info("PlayerObject.abilityList does not exist for " + String::valueOf(objectID), true);
 					}
 
 					//Update PVP rating for all PlayerObjects
 					if(Serializable::getVariable<int>(STRING_HASHCODE("PlayerObject.pvpRating"), &dummyPVPRating, &objectData)) {
-						ObjectOutputStream *pvpUpdate = changeVariableData(STRING_HASHCODE("PlayerObject.pvpRating"), &objectData, &pvpRatingData);
+						ObjectInputStream* inputStream = &objectData;
+
+						if(abilityListChanges != NULL) {
+							inputStream = new ObjectInputStream(abilityListChanges->getBuffer(), abilityListChanges->size());
+							delete abilityListChanges;
+						}
+
+						ObjectOutputStream *pvpUpdate = changeVariableData(STRING_HASHCODE("PlayerObject.pvpRating"), inputStream, &pvpRatingData);
 						pvpUpdate->reset();
 						database->putData(objectID, pvpUpdate, NULL);
+
 					} else {
-						info("PlayerObject.pvpRating does not exist for " + String::valueOf(objectID));
+						if(abilityListChanges != NULL) {
+							database->putData(objectID, abilityListChanges, NULL);
+						}
+						info("PlayerObject.pvpRating does not exist for " + String::valueOf(objectID), true);
 					}
 					objectData.clear();
 					continue;
 				}
 			} catch(Exception& e) {
-				info("Error updating PlayerObject");
+				info("Error updating PlayerObject", true);
 				objectData.clear();
 				continue;
 			}
@@ -431,7 +452,6 @@ void ObjectVersionUpdateManager::updateTangibleObjectsVersion6() {
 			if(useCount == 1) { // We're moving 1->0, we don't need to do anything else
 				if(templateKeys.contains(objCRC)) {
 					info("Skipping: [" + templateMap.get(objCRC)->getTemplateFileName() + "] useCount: " + String::valueOf(useCount));
-					continue;
 				} else {
 					// change useCount to 0
 					info("Found tangible object to migrate: " + templateMap.get(objCRC)->getTemplateFileName());
@@ -449,6 +469,8 @@ void ObjectVersionUpdateManager::updateTangibleObjectsVersion6() {
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
+		info("Tangible object migration FAILED", true);
+		return;
 	}
 
 	info("Finished migrating tangible object use counts\n", true);
