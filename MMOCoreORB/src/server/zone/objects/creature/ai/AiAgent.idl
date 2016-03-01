@@ -497,6 +497,8 @@ class AiAgent extends CreatureObject {
 	@preLocked
 	public void destroyObjectFromWorld(boolean sendSelfDestroy) {
 		super.destroyObjectFromWorld(sendSelfDestroy);
+		
+		numberOfPlayersInRange.set(0);
 
 		if (moveEvent != null) {
 			moveEvent.clearCreatureObject();
