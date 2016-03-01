@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_96dd5d17",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-01T03:59:02Z",
+      "side": 1,
+      "message": "Although unlikely, there is no inherent protection against NULL commands inside combat data. This is therefore vulnerable to segfaults due to NULL command.",
+      "range": {
+        "startLine": 465,
+        "startChar": 23,
+        "endLine": 465,
+        "endChar": 42
+      },
+      "revId": "56cfb92d171ab87fb21d14c8d1c1676d28bd69ed",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_b6e2e1d3",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2095,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-01T03:59:02Z",
+      "side": 1,
+      "message": "See previous comment.",
+      "range": {
+        "startLine": 2095,
+        "startChar": 20,
+        "endLine": 2095,
+        "endChar": 39
+      },
+      "revId": "56cfb92d171ab87fb21d14c8d1c1676d28bd69ed",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_b6098197",
+        "filename": "MMOCoreORB/src/server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-01T03:59:02Z",
+      "side": 1,
+      "message": "You should generate this list from TREs if it\u0027s not too difficult.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 37
+      },
+      "revId": "56cfb92d171ab87fb21d14c8d1c1676d28bd69ed",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_16f86d7b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DrainForceCommand.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-01T03:59:02Z",
+      "side": 1,
+      "message": "pre-hash these static animation strings so they don\u0027t get hashed at runtime since they are constant.",
+      "range": {
+        "startLine": 81,
+        "startChar": 47,
+        "endLine": 81,
+        "endChar": 78
+      },
+      "revId": "56cfb92d171ab87fb21d14c8d1c1676d28bd69ed",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
