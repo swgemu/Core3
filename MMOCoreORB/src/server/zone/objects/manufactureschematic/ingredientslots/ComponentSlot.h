@@ -198,8 +198,16 @@ public:
 		int quantity = 0;
 		for(int i = 0; i < contents.size(); ++i) {
 			TangibleObject* tano =  contents.elementAt(i);
-			if(tano != NULL)
-				quantity += tano->getUseCount();
+			if(tano != NULL) {
+				uint32 useCount = tano->getUseCount();
+
+				// Objects with 0 uses that have not been destroyed are still valid and "usable" one time only
+				if(useCount == 0)
+					useCount++;
+
+				quantity += useCount;
+			}
+
 		}
 		return quantity;
 	}
