@@ -57,16 +57,20 @@ public:
 		}
 
 		ChatManager* chatManager = player->getZoneServer()->getChatManager();
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+		if (ghost == NULL)
+			return;
 
 		switch (currentPhase) {
 		case INITIAL:
-			chatManager->broadcastMessage(player, "@hireling/hireling:taming_" + String::valueOf(System::random(4) + 1));
+			chatManager->broadcastChatMessage(player, "@hireling/hireling:taming_" + String::valueOf(System::random(4) + 1), 0, 0, 0, ghost->getLanguageID());
 			player->doAnimation("");
 			currentPhase = SECOND;
 			player->addPendingTask("tame_pet", this, 10000);
 			break;
 		case SECOND:
-			chatManager->broadcastMessage(player, "@hireling/hireling:taming_" + String::valueOf(System::random(4) + 1));
+			chatManager->broadcastChatMessage(player, "@hireling/hireling:taming_" + String::valueOf(System::random(4) + 1), 0, 0, 0, ghost->getLanguageID());
 			currentPhase = FINAL;
 			player->addPendingTask("tame_pet", this, 10000);
 			break;

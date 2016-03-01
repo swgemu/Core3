@@ -61,7 +61,16 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<CreatureObject*> player = creature;
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
+
+		if (player == NULL)
+			return GENERALERROR;
+
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+		if (ghost != NULL)
+			return GENERALERROR;
+
 		ManagedReference<GroupObject*> group = player->getGroup();
 
 		if (!checkGroupLeader(player, group))
@@ -95,9 +104,9 @@ public:
 			checkForTef(player, memberPlayer);
 		}
 
-		if (player->isPlayerCreature() && player->getPlayerObject()->getCommandMessageString(STRING_HASHCODE("retreat")).isEmpty()==false && creature->checkCooldownRecovery("command_message")) {
-			UnicodeString shout(player->getPlayerObject()->getCommandMessageString(STRING_HASHCODE("retreat")));
- 	 	 	server->getChatManager()->broadcastMessage(player, shout, 0, 0, 80);
+		if (!ghost->getCommandMessageString(STRING_HASHCODE("retreat")).isEmpty() && creature->checkCooldownRecovery("command_message")) {
+			UnicodeString shout(ghost->getCommandMessageString(STRING_HASHCODE("retreat")));
+ 	 	 	server->getChatManager()->broadcastChatMessage(player, shout, 0, 0, 80, ghost->getLanguageID());
  	 	 	creature->updateCooldownTimer("command_message", 30 * 1000);
 		}
 

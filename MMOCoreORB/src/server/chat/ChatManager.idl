@@ -327,7 +327,7 @@ class ChatManager extends ManagedService implements Logger {
 	public native void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter message);
 
 	@local
-	public native void broadcastMessage(CreatureObject player, @dereferenced StringIdChatParameter message, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
+	public native void broadcastChatMessage(CreatureObject player, @dereferenced StringIdChatParameter message, unsigned long target = 0, unsigned int moodType = 0, unsigned int spatialChatType = 0, int languageID = 1);
 
 	public native void handleSpatialChatInternalMessage(CreatureObject player, final unicode args);
 	public native void handleGroupChat(CreatureObject player, final unicode message);
@@ -337,7 +337,7 @@ class ChatManager extends ManagedService implements Logger {
 	public native void handleChatRoomMessage(CreatureObject sender, final unicode message, unsigned int roomID, unsigned int counter);
 	public native void handleSocialInternalMessage(CreatureObject sender, final unicode arguments);
 	public native void broadcastMessage(BaseMessage message);
-	public native void broadcastMessage(CreatureObject player, final unicode message, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
+	public native void broadcastChatMessage(CreatureObject player, final unicode message, unsigned long target = 0, unsigned int moodType = 0, unsigned int spatialChatType = 0, int languageID = 1);
 	public native void broadcastGalaxy(CreatureObject player, final string message);
 	public native void broadcastGalaxy(final string message, final string faction);
 

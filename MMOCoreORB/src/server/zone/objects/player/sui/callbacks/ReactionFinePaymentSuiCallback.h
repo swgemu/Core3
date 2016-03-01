@@ -46,7 +46,7 @@ public:
 		if (totalFine > playerCredits) {
 			if (totalFine > 1000000) {
 				totalFine = 1000000;
-				chatManager->broadcastMessage(emoteTarget, reactionManager->getReactionQuip(41), 0, 0, 0);
+				chatManager->broadcastChatMessage(emoteTarget, reactionManager->getReactionQuip(41), 0, 0, 0);
 			}
 
 			creature->subtractCashCredits(playerCredits);
@@ -54,7 +54,7 @@ public:
 
 			emoteTarget->doAnimation("point_accusingly");
 			String quip = reactionManager->getReactionQuip(6 + System::random(6));
-			chatManager->broadcastMessage(emoteTarget, quip, 0, 0, 0);
+			chatManager->broadcastChatMessage(emoteTarget, quip, 0, 0, 0);
 
 		} else {
 			int randomQuip = System::random(5);
@@ -75,7 +75,7 @@ public:
 
 			emoteTarget->doAnimation(tauntMsg);
 			String quip = reactionManager->getReactionQuip(randomQuip);
-			chatManager->broadcastMessage(emoteTarget, quip, 0, 0, 0);
+			chatManager->broadcastChatMessage(emoteTarget, quip, 0, 0, 0);
 
 		}
 

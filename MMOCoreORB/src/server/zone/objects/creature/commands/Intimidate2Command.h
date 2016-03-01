@@ -38,10 +38,14 @@ public:
 			creature->sendMessage(msg);
 		}
 
-		if (res == SUCCESS && creature->isPlayerCreature() && creature->getPlayerObject()->getCommandMessageString(STRING_HASHCODE("intimidate2")).isEmpty()==false && creature->checkCooldownRecovery("command_message")) {
-			UnicodeString shout(creature->getPlayerObject()->getCommandMessageString(STRING_HASHCODE("intimidate2")));
- 	 	 	server->getChatManager()->broadcastMessage(creature, shout, 0, 0, 80);
- 	 	 	creature->updateCooldownTimer("command_message", 30 * 1000);
+		if (res == SUCCESS && creature->isPlayerCreature()) {
+			ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+			if (ghost != NULL && !ghost->getCommandMessageString(STRING_HASHCODE("intimidate2")).isEmpty() && creature->checkCooldownRecovery("command_message")) {
+				UnicodeString shout(ghost->getCommandMessageString(STRING_HASHCODE("intimidate2")));
+				server->getChatManager()->broadcastChatMessage(creature, shout, 0, 0, 80, ghost->getLanguageID());
+				creature->updateCooldownTimer("command_message", 30 * 1000);
+			}
 		}
 		return res;
 	}

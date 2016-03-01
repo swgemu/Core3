@@ -588,7 +588,7 @@ int BountyMissionObjectiveImplementation::handleNpcTargetReceivesDamage(ManagedO
 			diffString = "medium";
 		}
 
-		target->getZoneServer()->getChatManager()->broadcastMessage(npcTarget, "@mission/mission_bounty_neutral_" + diffString + ":m" + String::valueOf(mission->getMissionNumber()) + "v", 0, 0, 0);
+		target->getZoneServer()->getChatManager()->broadcastChatMessage(npcTarget, "@mission/mission_bounty_neutral_" + diffString + ":m" + String::valueOf(mission->getMissionNumber()) + "v", 0, 0, 0);
 		return 1;
 	}
 

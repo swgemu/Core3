@@ -1174,7 +1174,7 @@ int DirectorManager::spatialChat(lua_State* L) {
 			EXECUTE_TASK_3(creature, chatManager, taskMessage, {
 					Locker locker(creature_p);
 
-					chatManager_p->broadcastMessage(creature_p, taskMessage_p, 0, 0, 0);
+					chatManager_p->broadcastChatMessage(creature_p, taskMessage_p, 0, 0, 0);
 			});
 		}
 	} else {
@@ -1184,7 +1184,7 @@ int DirectorManager::spatialChat(lua_State* L) {
 			EXECUTE_TASK_3(creature, chatManager, message, {
 					Locker locker(creature_p);
 
-					chatManager_p->broadcastMessage(creature_p, message_p, 0, 0, 0);
+					chatManager_p->broadcastChatMessage(creature_p, message_p, 0, 0, 0);
 			});
 		}
 	}
@@ -1219,11 +1219,11 @@ int DirectorManager::spatialMoodChat(lua_State* L) {
 	if (lua_isuserdata(L, -3)) {
 		StringIdChatParameter* message = (StringIdChatParameter*)lua_touserdata(L, -3);
 
-		chatManager->broadcastMessage(creature, *message, 0, moodType, chatType);
+		chatManager->broadcastChatMessage(creature, *message, 0, moodType, chatType);
 	} else {
 		String message = lua_tostring(L, -3);
 
-		chatManager->broadcastMessage(creature, message, 0, moodType, chatType);
+		chatManager->broadcastChatMessage(creature, message, 0, moodType, chatType);
 	}
 
 	return 0;

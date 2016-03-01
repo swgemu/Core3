@@ -27,6 +27,15 @@ public:
 			return GENERALERROR;
 
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
+
+		if (player == NULL)
+			return GENERALERROR;
+
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+		if (ghost == NULL)
+			return GENERALERROR;
+
 		ManagedReference<GroupObject*> group = player->getGroup();
 
 		if (!checkGroupLeader(player, group))
@@ -46,9 +55,9 @@ public:
 		if (!doFormUp(player, group))
 			return GENERALERROR;
 
-		if (player->isPlayerCreature() && player->getPlayerObject()->getCommandMessageString(STRING_HASHCODE("formup")).isEmpty()==false && creature->checkCooldownRecovery("command_message")) {
-			UnicodeString shout(player->getPlayerObject()->getCommandMessageString(STRING_HASHCODE("formup")));
- 	 	 	server->getChatManager()->broadcastMessage(player, shout, 0, 0, 80);
+		if (!ghost->getCommandMessageString(STRING_HASHCODE("formup")).isEmpty() && creature->checkCooldownRecovery("command_message")) {
+			UnicodeString shout(ghost->getCommandMessageString(STRING_HASHCODE("formup")));
+ 	 	 	server->getChatManager()->broadcastChatMessage(player, shout, 0, 0, 80, ghost->getLanguageID());
  	 	 	creature->updateCooldownTimer("command_message", 30 * 1000);
 		}
 
