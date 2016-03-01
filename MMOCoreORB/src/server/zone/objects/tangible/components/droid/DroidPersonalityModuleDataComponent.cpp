@@ -103,7 +103,7 @@ void DroidPersonalityModuleDataComponent::quip(String m,DroidObject* droid) {
 	message << personalityBase << ":" << m << "_" << (System::random(15) + 1);
 	StringIdChatParameter chat;
 	chat.setStringId(message.toString());
-	droid->getZoneServer()->getChatManager()->broadcastMessage(droid,chat,0,0,0);
+	droid->getZoneServer()->getChatManager()->broadcastChatMessage(droid,chat,0,0,0);
 }
 void DroidPersonalityModuleDataComponent::notifyEvent(unsigned int eventType, ManagedObject* arg1, int64 arg2, bool forced) {
 	ManagedReference<DroidObject*> droid = getDroidObject();

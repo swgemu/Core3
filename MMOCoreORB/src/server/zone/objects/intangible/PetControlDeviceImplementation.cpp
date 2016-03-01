@@ -1103,7 +1103,7 @@ void PetControlDeviceImplementation::setTrainingCommand( unsigned int commandID 
 		message << stf << ":start_convo_4";
 		StringIdChatParameter chat;
 		chat.setStringId(message.toString());
-		pet->getZoneServer()->getChatManager()->broadcastMessage(pet,chat,0,0,0);
+		pet->getZoneServer()->getChatManager()->broadcastChatMessage(pet,chat,0,0,0);
 	} else {
 		pet->showFlyText("npc_reaction/flytext","alert", 204, 0, 0);  // "?"
 	}

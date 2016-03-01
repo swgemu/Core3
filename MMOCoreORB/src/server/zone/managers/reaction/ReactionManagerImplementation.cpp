@@ -198,7 +198,7 @@ void ReactionManagerImplementation::sendChatReaction(AiAgent* npc, int type, int
 		message << ":" << typeString << num;
 		StringIdChatParameter chat;
 		chat.setStringId(message.toString());
-		zoneServer->getChatManager()->broadcastMessage(npc,chat,0,0,0);
+		zoneServer->getChatManager()->broadcastChatMessage(npc,chat,0,0,0);
 
 		npc->getCooldownTimerMap()->updateToCurrentAndAddMili("reaction_chat", 60000); // 60 second cooldown
 	}
@@ -265,7 +265,7 @@ void ReactionManagerImplementation::emoteReaction(CreatureObject* emoteUser, AiA
 	if (randomQuip != -1) {
 		StringIdChatParameter param(getReactionQuip(randomQuip));
 		param.setTT(emoteUser->getObjectID());
-		chatManager->broadcastMessage(emoteTarget, param, 0, 0, 0);
+		chatManager->broadcastChatMessage(emoteTarget, param, 0, 0, 0);
 	}
 
 	if (reactionFine->getFactionFine() != 0)

@@ -904,7 +904,7 @@ void ChatManagerImplementation::broadcastMessage(BaseMessage* message) {
 	message = NULL;
 }
 
-void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const UnicodeString& message,  uint64 target, uint32 moodType, uint32 spatialChatType) {
+void ChatManagerImplementation::broadcastChatMessage(CreatureObject* player, const UnicodeString& message,  uint64 target, uint32 moodType, uint32 spatialChatType, int languageID) {
 	Zone* zone = player->getZone();
 	PlayerObject* myGhost = NULL;
 	bool godMode = false;
@@ -912,7 +912,6 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 	if (zone == NULL)
 		return;
 
-	int language = 0;
 	String firstName;
 
 	if (player->isPlayerCreature()) {
@@ -926,8 +925,6 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 		if (myGhost) {
 			if (spatialChatTypeSkillNeeded.contains(spatialChatType) && !myGhost->hasAbility(spatialChatTypeSkillNeeded.get(spatialChatType)))
 				return;
-
-			language = myGhost->getLanguageID();
 
 			if (myGhost->hasGodMode())
 				godMode = true;
@@ -947,7 +944,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 	if (closeObjects != NULL) {
 		closeObjects->safeCopyTo(closeEntryObjects);
 	} else {
-		player->info("Null closeobjects vector in ChatManager::broadcastMessage", true);
+		player->info("Null closeobjects vector in ChatManager::broadcastChatMessage", true);
 		zone->getInRangeObjects(player->getWorldPositionX(), player->getWorldPositionY(), 128, &closeEntryObjects, true);
 	}
 
@@ -996,7 +993,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 						SpatialChat* cmsg = NULL;
 
 						if (param == NULL) {
-							cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodType, spatialChatType, language);
+							cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodType, spatialChatType, languageID);
 						} else {
 							cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), *param, target, moodType, spatialChatType);
 						}
@@ -1043,7 +1040,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 
 }
 
-void ChatManagerImplementation::broadcastMessage(CreatureObject* player, StringIdChatParameter& message, uint64 target, uint32 moodType, uint32 spatialChatType) {
+void ChatManagerImplementation::broadcastChatMessage(CreatureObject* player, StringIdChatParameter& message, uint64 target, uint32 moodType, uint32 spatialChatType, int languageID) {
 	Zone* zone = player->getZone();
 	PlayerObject* myGhost = NULL;
 	bool godMode = false;
@@ -1051,7 +1048,6 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, StringI
 	if (zone == NULL)
 		return;
 
-	int language = 0;
 	String firstName;
 
 	if (player->isPlayerCreature() /*|| !((Player *)player)->isChatMuted() */) {
@@ -1068,8 +1064,6 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, StringI
 			if (spatialChatTypeSkillNeeded.contains(spatialChatType) && !myGhost->hasAbility(spatialChatTypeSkillNeeded.get(spatialChatType)))
 				return;
 
-			language = myGhost->getLanguageID();
-
 			if (myGhost->hasGodMode())
 				godMode = true;
 		}
@@ -1082,7 +1076,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, StringI
 	if (closeObjects != NULL) {
 		closeObjects->safeCopyTo(closeEntryObjects);
 	} else {
-		player->info("Null closeobjects vector in ChatManager::broadcastMessage(StringId)", true);
+		player->info("Null closeobjects vector in ChatManager::broadcastChatMessage(StringId)", true);
 		zone->getInRangeObjects(player->getWorldPositionX(), player->getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
 	}
 
@@ -1140,20 +1134,21 @@ void ChatManagerImplementation::handleSpatialChatInternalMessage(CreatureObject*
 	}
 
 	try {
+		printf("args: %s \n", args.toString().toCharArray());
 		UnicodeTokenizer tokenizer(args);
 
 		uint64 targetid = tokenizer.getLongToken();
 		uint32 spatialChatType = tokenizer.getIntToken();
 		uint32 moodType = tokenizer.getIntToken();
 		uint32 unk2 = tokenizer.getIntToken();
-		uint32 unk3 = tokenizer.getIntToken();
+		uint32 languageID = tokenizer.getIntToken();
 
 		UnicodeString msg;
 
 		tokenizer.finalToken(msg);
 
 		UnicodeString formattedMessage(formatMessage(msg));
-		broadcastMessage(player, formattedMessage, targetid, moodType, spatialChatType);
+		broadcastChatMessage(player, formattedMessage, targetid, moodType, spatialChatType, languageID);
 
 		ManagedReference<ChatMessage*> cm = new ChatMessage();
 		cm->setString(formattedMessage.toString());

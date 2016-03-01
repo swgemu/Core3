@@ -100,10 +100,10 @@ public:
 		}
 
 		if (speak) {
-			zoneServer->getChatManager()->broadcastMessage(droid,message,0,0,0);
+			zoneServer->getChatManager()->broadcastChatMessage(droid, message, 0, 0, 0);
 		}
 
-		droid->addPendingTask("barking",this,60000); // wait a mintue to bark again
+		droid->addPendingTask("barking", this, 60000); // wait a mintue to bark again
 	}
 
 };

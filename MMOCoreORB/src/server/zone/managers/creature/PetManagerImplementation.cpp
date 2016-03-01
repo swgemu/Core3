@@ -334,7 +334,7 @@ bool PetManagerImplementation::handleCommandTraining(CreatureObject* speaker, Ai
 			message << stf << ":confused";
 			StringIdChatParameter chat;
 			chat.setStringId(message.toString());
-			pet->getZoneServer()->getChatManager()->broadcastMessage(pet,chat,0,0,0);
+			pet->getZoneServer()->getChatManager()->broadcastChatMessage(pet,chat,0,0,0);
 		} else {
 			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?"
 		}
@@ -399,7 +399,7 @@ bool PetManagerImplementation::handleCommandTraining(CreatureObject* speaker, Ai
 			message << stf << ":end_convo";
 			StringIdChatParameter chat;
 			chat.setStringId(message.toString());
-			pet->getZoneServer()->getChatManager()->broadcastMessage(pet,chat,0,0,0);
+			pet->getZoneServer()->getChatManager()->broadcastChatMessage(pet,chat,0,0,0);
 		} else {
 			pet->showFlyText("npc_reaction/flytext","threaten", 204, 0, 0);  // "?"
 			speaker->sendSystemMessage("@pet/pet_menu:pet_learn"); // You teach your pet a new command.
