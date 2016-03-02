@@ -34,11 +34,16 @@ function ThemeParkLogic:spawnNpcs()
 		local npcSpawnData = self.npcMap[i].spawnData
 		if isZoneEnabled(npcSpawnData.planetName) then
 			local pNpc = spawnMobile(npcSpawnData.planetName, npcSpawnData.npcTemplate, 1, npcSpawnData.x, npcSpawnData.z, npcSpawnData.y, npcSpawnData.direction, npcSpawnData.cellID)
-			if pNpc ~= nil and npcSpawnData.position == SIT then
-				CreatureObject(pNpc):setState(STATESITTINGONCHAIR)
-			end
-			if (pNpc ~= nil and npcSpawnData.mood ~= nil and npcSpawnData.mood ~= "") then
-				CreatureObject(pNpc):setMoodString(npcSpawnData.mood)
+			if (pNpc ~= nil) then
+				if npcSpawnData.position == SIT then
+					CreatureObject(pNpc):setState(STATESITTINGONCHAIR)
+				end
+				if (npcSpawnData.mood ~= nil and npcSpawnData.mood ~= "") then
+					CreatureObject(pNpc):setMoodString(npcSpawnData.mood)
+				end
+				if (self.npcMap[i].npcNumber > 0) then
+					CreatureObject(pNpc):setOptionBit(INTERESTING)
+				end
 			end
 		end
 	end
@@ -644,7 +649,7 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 
 		if pNpc ~= nil and SceneObject(pNpc):isCreatureObject() then
 			AiAgent(pNpc):setNoAiAggro()
-			
+
 			if i == 1 then
 				if (self:isValidConvoString(stfFile, ":npc_breech_" .. missionNumber)) then
 					local pBreechArea = spawnActiveArea(planetName, "object/active_area.iff", spawnPoints[i][1], spawnPoints[i][2], spawnPoints[i][3], 32, 0)
@@ -670,12 +675,15 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 				createObserver(OBJECTDESTRUCTION, self.className, "notifyDefeatedTargetWithLoot", pNpc)
 				createObserver(DEFENDERADDED, self.className, "notifyTriggeredBreechAggro", pNpc)
 				writeData(CreatureObject(pNpc):getObjectID() .. ":missionOwnerID", playerID)
+				CreatureObject(pNpc):setOptionBit(INTERESTING)
 			elseif mission.missionType == "escort" then
 				CreatureObject(pNpc):setPvpStatusBitmask(0)
+				CreatureObject(pNpc):setOptionBit(INTERESTING)
 				self:normalizeNpc(pNpc, 16, 3000)
 				writeData(CreatureObject(pNpc):getObjectID() .. ":missionOwnerID", playerID)
 			elseif mission.missionType == "retrieve" or mission.missionType == "deliver" then
 				CreatureObject(pNpc):setPvpStatusBitmask(0)
+				CreatureObject(pNpc):setOptionBit(INTERESTING)
 			end
 		end
 	end
@@ -1294,7 +1302,7 @@ function ThemeParkLogic:notifyEnteredEscortArea(pActiveArea, pCreature)
 	local escortNpcID = readData(areaID .. ":escortNpcID")
 
 	if (objectID == escortNpcID) then
-		CreatureObject(pCreature):setOptionsBitmask(128)
+		CreatureObject(pCreature):setOptionsBitmask(AIENABLED)
 		local ownerID = readData(escortNpcID .. ":missionOwnerID")
 		local pPlayer = getCreatureObject(ownerID)
 

@@ -24,7 +24,7 @@ noble = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = HERD,
-	optionsBitmask = AIENABLED + CONVERSABLE,
+	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING,
 	diet = HERBIVORE,
 
 

@@ -95,6 +95,8 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getGroupSize", &LuaCreatureObject::getGroupSize},
 		{ "getGroupMember", &LuaCreatureObject::getGroupMember},
 		{ "setOptionsBitmask", &LuaCreatureObject::setOptionsBitmask},
+		{ "setOptionBit", &LuaCreatureObject::setOptionBit},
+		{ "clearOptionBit", &LuaCreatureObject::clearOptionBit},
 		{ "setPvpStatusBitmask", &LuaTangibleObject::setPvpStatusBitmask},
 		{ "setPvpStatusBit", &LuaTangibleObject::setPvpStatusBit},
 		{ "isChangingFactionStatus", &LuaTangibleObject::isChangingFactionStatus },
@@ -717,6 +719,26 @@ int LuaCreatureObject::setOptionsBitmask(lua_State* L) {
 	Locker locker(realObject);
 
 	realObject->setOptionsBitmask(bitmask, true);
+
+	return 0;
+}
+
+int LuaCreatureObject::setOptionBit(lua_State* L) {
+	uint32 bit = lua_tointeger(L, -1);
+
+	Locker locker(realObject);
+
+	realObject->setOptionBit(bit, true);
+
+	return 0;
+}
+
+int LuaCreatureObject::clearOptionBit(lua_State* L) {
+	uint32 bit = lua_tointeger(L, -1);
+
+	Locker locker(realObject);
+
+	realObject->clearOptionBit(bit, true);
 
 	return 0;
 }

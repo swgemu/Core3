@@ -43,15 +43,15 @@ function oldManIntroConvoHandler:runScreenHandlers(pConversationTemplate, pConve
 
 	if screenID == "perhaps_meet_again" or screenID == "perhaps_another_time" then
 		OldManIntroEncounter:scheduleDespawnOfOldMan(pConversingPlayer)
-		CreatureObject(pConversingNpc):setOptionsBitmask(128)
+		CreatureObject(pConversingNpc):clearOptionBit(CONVERSABLE)
 	elseif screenID == "here_is_the_crystal" then
 		OldManIntroEncounter:scheduleDespawnOfOldMan(pConversingPlayer)
 		OldManIntroEncounter:giveForceCrystalToPlayer(pConversingPlayer)
-		CreatureObject(pConversingNpc):setOptionsBitmask(128)
+		CreatureObject(pConversingNpc):clearOptionBit(CONVERSABLE)
 	elseif screenID == "where_camp" then
 		QuestManager.completeQuest(pConversingPlayer, QuestManager.quests.OLD_MAN_FINAL)
 		MellichaeOutroTheater:start(pConversingPlayer)
-		CreatureObject(pConversingNpc):setOptionsBitmask(128)
+		CreatureObject(pConversingNpc):clearOptionBit(CONVERSABLE)
 	end
 
 	return pConversationScreen

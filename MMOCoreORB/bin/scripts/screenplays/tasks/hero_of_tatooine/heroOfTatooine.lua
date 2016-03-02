@@ -1003,7 +1003,7 @@ end
 
 function HeroOfTatooineScreenPlay:setNotConversable(pNpc)
 	if pNpc ~= nil and SceneObject(pNpc):isCreatureObject() then
-		CreatureObject(pNpc):setOptionsBitmask(128) -- No longer conversable
+		CreatureObject(pNpc):clearOptionBit(CONVERSABLE) -- No longer conversable
 	end
 end
 

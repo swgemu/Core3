@@ -30,7 +30,7 @@ function tutorialQuartermasterConvoHandler:runScreenHandlers(conversationTemplat
 				TutorialScreenPlay:markRoomComplete(conversingPlayer, "r11")
 			end
 		end)
-		CreatureObject(conversingNPC):setOptionsBitmask(128)
+		CreatureObject(conversingNPC):clearOptionBit(CONVERSABLE)
 	end
 
 	return conversationScreen

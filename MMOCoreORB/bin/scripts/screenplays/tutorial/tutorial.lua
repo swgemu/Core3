@@ -378,7 +378,7 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 
 		if (pMobile ~= nil) then
 			if (self:isRoomComplete(pPlayer, "r10")) then
-				CreatureObject(pMobile):setOptionsBitmask(128)
+				CreatureObject(pMobile):clearOptionBit(CONVERSABLE)
 			end
 			CreatureObject(pMobile):setPvpStatusBitmask(0)
 			writeData(playerID .. ":tutorial:roomTenMissionGiver", SceneObject(pMobile):getObjectID())
@@ -416,7 +416,7 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 
 		if (pMobile ~= nil) then
 			if (self:isRoomComplete(pPlayer, "r11")) then
-				CreatureObject(pMobile):setOptionsBitmask(128)
+				CreatureObject(pMobile):clearOptionBit(CONVERSABLE)
 			end
 			CreatureObject(pMobile):setPvpStatusBitmask(0)
 			writeData(playerID .. ":tutorial:roomElevenQuartermaster", SceneObject(pMobile):getObjectID())
