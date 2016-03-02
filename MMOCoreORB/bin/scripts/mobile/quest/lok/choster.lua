@@ -23,7 +23,7 @@ choster = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = 136,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = { "object/mobile/dressed_commoner_naboo_twilek_male_02.iff" },

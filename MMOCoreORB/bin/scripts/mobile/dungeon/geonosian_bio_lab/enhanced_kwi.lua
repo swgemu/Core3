@@ -22,7 +22,7 @@ enhanced_kwi = Creature:new {
 	ferocity = 16,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/kwi.iff"},

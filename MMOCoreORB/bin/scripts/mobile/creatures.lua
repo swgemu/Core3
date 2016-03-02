@@ -31,7 +31,7 @@ Creature = {
 	attacks = {},
 	conversationTemplate = "",
 	personalityStf = "",
-	optionsBitmask = 128
+	optionsBitmask = AIENABLED
 }
 
 function Creature:new (o)

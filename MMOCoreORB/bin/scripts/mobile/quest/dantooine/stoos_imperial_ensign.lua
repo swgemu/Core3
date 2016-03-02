@@ -22,7 +22,7 @@ stoos_imperial_ensign = Creature:new {
   ferocity = 0,
   pvpBitmask = NONE,
   creatureBitmask = NONE,
-  optionsBitmask = 136,
+  optionsBitmask = AIENABLED + CONVERSABLE,
   diet = HERBIVORE,
 
   templates = {

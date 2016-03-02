@@ -24,7 +24,7 @@ stoos_stormtrooper_squad_leader = Creature:new {
   ferocity = 0,
   pvpBitmask = NONE,
   creatureBitmask = NONE,
-  optionsBitmask = 136,
+  optionsBitmask = AIENABLED + CONVERSABLE,
   diet = HERBIVORE,
 
   templates = {"object/mobile/dressed_stormtrooper_squad_leader_white_white.iff"},

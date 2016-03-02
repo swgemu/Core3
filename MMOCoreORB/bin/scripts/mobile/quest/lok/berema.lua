@@ -23,7 +23,7 @@ berema = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = HERD,
-	optionsBitmask = 136,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {   "object/mobile/dressed_commoner_tatooine_aqualish_female_05.iff" },

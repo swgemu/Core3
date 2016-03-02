@@ -435,6 +435,12 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("CHANGEFACTIONSTATUS", CreatureFlag::CHANGEFACTIONSTATUS);
 	luaEngine->setGlobalInt("BLINK_GREEN", CreatureFlag::BLINK_GREEN);
 
+	luaEngine->setGlobalInt("CONVERSABLE", OptionBitmask::CONVERSE);
+	luaEngine->setGlobalInt("AIENABLED", OptionBitmask::AIENABLED);
+	luaEngine->setGlobalInt("INVULNERABLE", OptionBitmask::INVULNERABLE);
+	luaEngine->setGlobalInt("FACTIONAGGRO", OptionBitmask::FACTIONAGGRO);
+	luaEngine->setGlobalInt("INTERESTING", OptionBitmask::INTERESTING);
+
 	luaEngine->setGlobalInt("OPEN", ContainerPermissions::OPEN);
 	luaEngine->setGlobalInt("MOVEIN", ContainerPermissions::MOVEIN);
 	luaEngine->setGlobalInt("MOVEOUT", ContainerPermissions::MOVEOUT);

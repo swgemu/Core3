@@ -22,7 +22,7 @@ tatooine_mynock = Creature:new {
 	ferocity = 2,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = STALKER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mynock.iff"},

@@ -23,7 +23,7 @@ sergeant_moore = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = HERD,
-	optionsBitmask = 136,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = { "object/mobile/dressed_commoner_old_human_male_02.iff" },

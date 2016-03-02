@@ -22,7 +22,7 @@ reelo_baruk = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 264,
+	optionsBitmask = INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/reelo_baruk.iff"},
@@ -31,7 +31,7 @@ reelo_baruk = Creature:new {
 	conversationTemplate = "theme_park_jabba_mission_giver_convotemplate",
 	outfit = "reelo_baruk_outfit",
 	attacks = {},
-	optionsBitmask = 264
+	optionsBitmask = INVULNERABLE + CONVERSABLE
 }
 
 CreatureTemplates:addCreatureTemplate(reelo_baruk, "reelo_baruk")

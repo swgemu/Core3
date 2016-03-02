@@ -22,7 +22,7 @@ kwi = Creature:new {
 	ferocity = 2,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kwi.iff"},

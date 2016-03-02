@@ -50,6 +50,12 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 	lua->setGlobalInt("CHANGEFACTIONSTATUS", CreatureFlag::CHANGEFACTIONSTATUS);
 	lua->setGlobalInt("BLINK_GREEN", CreatureFlag::BLINK_GREEN);
 
+	lua->setGlobalInt("CONVERSABLE", OptionBitmask::CONVERSE);
+	lua->setGlobalInt("AIENABLED", OptionBitmask::AIENABLED);
+	lua->setGlobalInt("INVULNERABLE", OptionBitmask::INVULNERABLE);
+	lua->setGlobalInt("FACTIONAGGRO", OptionBitmask::FACTIONAGGRO);
+	lua->setGlobalInt("INTERESTING", OptionBitmask::INTERESTING);
+
 	lua->setGlobalInt("PACK", CreatureFlag::PACK);
 	lua->setGlobalInt("HERD", CreatureFlag::HERD);
 	lua->setGlobalInt("KILLER", CreatureFlag::KILLER);

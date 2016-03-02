@@ -22,7 +22,7 @@ male_kai_tok = Creature:new {
 	ferocity = 2,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kai_tok.iff"},

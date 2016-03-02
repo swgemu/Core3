@@ -21,7 +21,7 @@ tutorial_bandit = Creature:new {
 	tamingChance = 0.000000,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE + ENEMY,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	creatureBitmask = NONE,
 	diet = NONE,
 

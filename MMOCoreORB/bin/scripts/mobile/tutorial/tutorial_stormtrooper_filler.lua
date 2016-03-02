@@ -21,7 +21,7 @@ tutorial_stormtrooper_filler = Creature:new {
 	tamingChance = 0.000000,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	optionsBitmask = 264,
+	optionsBitmask = INVULNERABLE + CONVERSABLE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 

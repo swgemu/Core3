@@ -23,7 +23,7 @@ lx_466_rebel_scout = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + STALKER + KILLER,
-	optionsBitmask = 128,	
+	optionsBitmask = AIENABLED,	
 	diet = HERBIVORE,
 
 	templates = {

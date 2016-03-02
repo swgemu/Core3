@@ -24,7 +24,7 @@ brawler = Creature:new {
 	ferocity = 0,
 	pvpBitmask = 0,
 	creatureBitmask = PACK + STALKER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_brawler_trainer_02.iff",

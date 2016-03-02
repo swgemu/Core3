@@ -22,7 +22,7 @@ spineflap_guard = Creature:new {
 	ferocity = 7,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + STALKER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/capper_spineflap_hue.iff"},

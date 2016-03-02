@@ -22,7 +22,7 @@ jace_yiaso = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/space_imperial_tier4_naboo_jace_yiaso.iff"},

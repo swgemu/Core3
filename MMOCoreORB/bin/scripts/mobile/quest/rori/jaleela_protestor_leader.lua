@@ -22,7 +22,7 @@ jaleela_protestor_leader = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE + ENEMY + AGGRESSIVE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = { "object/mobile/dressed_criminal_thug_human_male_01.iff" },

@@ -22,7 +22,7 @@ silman_voueen = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = HERD,
-	optionsBitmask = 264,
+	optionsBitmask = INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = 	{"object/mobile/dressed_criminal_thug_bothan_female_01.iff"},	

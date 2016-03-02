@@ -22,7 +22,7 @@ missy = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
-	optionsBitmask = 264,
+	optionsBitmask = INVULNERABLE + CONVERSABLE,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/corellian_sand_panther_cub.iff"},

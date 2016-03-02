@@ -22,7 +22,7 @@ mutated_kahmurra = Creature:new {
 	ferocity = 7,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mutated_kahmurra.iff"},

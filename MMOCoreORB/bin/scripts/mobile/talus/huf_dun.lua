@@ -22,7 +22,7 @@ huf_dun = Creature:new {
 	ferocity = 4,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/huf_dun.iff"},

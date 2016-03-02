@@ -21,7 +21,7 @@ theme_park_rebel_bounty_hunter = Creature:new {
 	tamingChance = 0.000000,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	creatureBitmask = KILLER,
 	diet = HERBIVORE,
 

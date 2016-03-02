@@ -22,7 +22,7 @@ theme_park_imperial_mattias = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = KILLER,
-	optionsBitmask = 264,
+	optionsBitmask = INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_mercenary_commander_hum_m.iff"},

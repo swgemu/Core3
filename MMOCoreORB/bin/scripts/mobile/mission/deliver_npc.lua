@@ -22,7 +22,7 @@ deliver_npc = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = 264,
+	optionsBitmask = INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_commoner_fat_zabrak_male_01.iff","object/mobile/dressed_commoner_fat_zabrak_male_02.iff","object/mobile/dressed_commoner_fat_zabrak_female_01.iff","object/mobile/dressed_commoner_fat_zabrak_female_02.iff","object/mobile/dressed_commoner_fat_human_male_01.iff","object/mobile/dressed_commoner_fat_human_male_02.iff","object/mobile/dressed_commoner_fat_human_female_01.iff","object/mobile/dressed_commoner_fat_human_female_02.iff","object/mobile/dressed_commoner_fat_twilek_male_01.iff","object/mobile/dressed_commoner_fat_twilek_male_02.iff","object/mobile/dressed_commoner_fat_twilek_female_01.iff","object/mobile/dressed_commoner_fat_twilek_female_02.iff","object/mobile/dressed_commoner_old_zabrak_male_01.iff","object/mobile/dressed_commoner_old_zabrak_male_02.iff","object/mobile/dressed_commoner_old_zabrak_female_01.iff","object/mobile/dressed_commoner_old_zabrak_female_02.iff","object/mobile/dressed_commoner_old_human_male_01.iff","object/mobile/dressed_commoner_old_human_male_02.iff","object/mobile/dressed_commoner_old_human_female_01.iff","object/mobile/dressed_commoner_old_human_female_02.iff","object/mobile/dressed_commoner_old_twilek_male_01.iff","object/mobile/dressed_commoner_old_twilek_male_02.iff","object/mobile/dressed_commoner_old_twilek_female_01.iff","object/mobile/dressed_commoner_old_twilek_female_02.iff"},

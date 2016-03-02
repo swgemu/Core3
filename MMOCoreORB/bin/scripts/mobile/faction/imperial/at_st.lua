@@ -22,7 +22,7 @@ at_st = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE + OVERT,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = NONE,
 
 	templates = {"object/mobile/atst.iff"},

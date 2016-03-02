@@ -22,7 +22,7 @@ theme_park_imperial_captain_sargon = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_captain_m.iff"},
@@ -37,7 +37,7 @@ theme_park_imperial_captain_sargon = Creature:new {
 	weapons = {"imperial_weapons_medium"},
 	attacks = merge(brawlermaster,marksmanmaster,riflemanmaster,carbineermaster),
 	conversationTemplate = "",
-	optionsBitmask = 128
+	optionsBitmask = AIENABLED
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_imperial_captain_sargon, "theme_park_imperial_captain_sargon")

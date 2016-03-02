@@ -23,7 +23,7 @@ gungan_falumpaset = Creature:new {
 	ferocity = 8,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/falumpaset_hue.iff"},

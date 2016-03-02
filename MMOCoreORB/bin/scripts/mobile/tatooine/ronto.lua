@@ -23,7 +23,7 @@ ronto = Creature:new {
 	ferocity = 3,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/ronto.iff"},

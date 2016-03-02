@@ -22,7 +22,7 @@ digger_dimms = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
-	optionsBitmask = 264,
+	optionsBitmask = INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = { "object/mobile/dressed_commoner_tatooine_bith_male_05.iff" },

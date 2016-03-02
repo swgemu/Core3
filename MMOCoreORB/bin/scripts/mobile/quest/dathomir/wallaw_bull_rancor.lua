@@ -22,7 +22,7 @@ wallaw_bull_rancor = Creature:new {
   ferocity = 11,
   pvpBitmask = ATTACKABLE,
   creatureBitmask = NONE,
-  optionsBitmask = 136,
+  optionsBitmask = AIENABLED + CONVERSABLE,
   diet = CARNIVORE,
 
   templates = {"object/mobile/bull_rancor.iff"},

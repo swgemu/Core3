@@ -23,7 +23,7 @@ lok_hacker = Creature:new {
        ferocity = 0,
        pvpBitmask = NONE,
        creatureBitmask = NONE,
-       optionsBitmask = 136,
+       optionsBitmask = AIENABLED + CONVERSABLE,
        diet = HERBIVORE,
 
        templates = { "object/mobile/dressed_criminal_assassin_human_female_01.iff" },

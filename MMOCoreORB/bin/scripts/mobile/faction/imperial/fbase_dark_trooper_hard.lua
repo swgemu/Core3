@@ -24,7 +24,7 @@ fbase_dark_trooper_hard = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE + OVERT,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 	scale = 1.5,
 

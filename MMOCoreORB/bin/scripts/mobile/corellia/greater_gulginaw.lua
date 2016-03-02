@@ -22,7 +22,7 @@ greater_gulginaw = Creature:new {
 	ferocity = 6,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/greater_gulginaw.iff"},

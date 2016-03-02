@@ -23,7 +23,7 @@ mat_rags_bantha_matriarch = Creature:new {
 	ferocity = 4,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/matriarch_bantha.iff"},

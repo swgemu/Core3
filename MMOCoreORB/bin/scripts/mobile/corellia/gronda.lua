@@ -22,7 +22,7 @@ gronda = Creature:new {
 	ferocity = 1,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gronda.iff"},
