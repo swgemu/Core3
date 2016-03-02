@@ -39,6 +39,7 @@
 #include "server/zone/packets/object/Animation.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
+#include "server/zone/objects/creature/commands/effect/StateEffect.h"
 #include "server/zone/objects/creature/events/CommandQueueActionEvent.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
@@ -2431,11 +2432,11 @@ bool CreatureObjectImplementation::setNextAttackDelay(uint32 mod, int del) {
 		//del += mod;
 		cooldownTimerMap->updateToCurrentAndAddMili("nextAttackDelay", del * 1000);
 		cooldownTimerMap->updateToCurrentAndAddMili("nextAttackDelayRecovery", 30000 + (del * 1000));
-
 		showFlyText("combat_effects", "warcry_hit", 0x00, 0xFF, 0x00);
 
 		if (isPlayerCreature()) {
-			StringIdChatParameter stringId("combat_effects", "delay_applied_self");
+			StringIdChatParameter stringId("stateMessage");
+			stringId.setTT(getDisplayedName());
 			stringId.setDI(del);
 			sendSystemMessage(stringId);
 		}

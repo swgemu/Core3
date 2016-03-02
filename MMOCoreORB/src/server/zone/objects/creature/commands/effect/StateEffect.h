@@ -21,6 +21,7 @@ protected:
 	uint32 stateChance;
 	uint32 stateStrength;
 	uint32 stateLength;
+	Vector<String> stateMessage;
 
 public:
 	StateEffect() : Object() {
@@ -42,6 +43,7 @@ public:
 		stateChance = effect.stateChance;
 		stateStrength = effect.stateStrength;
 		stateLength = effect.stateLength;
+		stateMessage = effect.stateMessage;
 	}
 
 	StateEffect& operator= (const StateEffect& effect) {
@@ -55,6 +57,7 @@ public:
 		stateChance = effect.stateChance;
 		stateStrength = effect.stateStrength;
 		stateLength = effect.stateLength;
+		stateMessage = effect.stateMessage;
 
 		return *this;
 	}
@@ -94,6 +97,14 @@ public:
 		}
 
 		jediMods.pop();
+
+		LuaObject stateMsgs = state.getObjectField("stateMessage");
+
+		for (int i = 1; i <= stateMsgs.getTableSize(); ++i) {
+			stateMessage.add(stateMsgs.getStringAt(i));
+		}
+
+		stateMsgs.pop();
 	}
 
     Vector<String> getDefenderExclusionTimers() const {
@@ -124,6 +135,10 @@ public:
         return stateStrength;
     }
 
+    Vector<String> getStateMessage() const {
+    	return stateMessage;
+    }
+
     void setDefenderExclusionTimers(const Vector<String>& defenderExclusionTimers) {
         this->defenderExclusionTimers = defenderExclusionTimers;
     }
@@ -150,6 +165,10 @@ public:
 
     void setStateStrength(uint32 stateStrength) {
         this->stateStrength = stateStrength;
+    }
+
+    void setStateMessage(const Vector<String>& stateMessage) {
+    	this->stateMessage = stateMessage;
     }
 };
 

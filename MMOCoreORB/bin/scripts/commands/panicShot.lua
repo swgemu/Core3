@@ -52,14 +52,15 @@ PanicShotCommand = {
 	accuracyBonus = 50,
 
 	stateEffects = {
-	  StateEffect( 
-		NEXTATTACKDELAY_EFFECT, 
-		{}, 
-		{ "warcry_defense" }, 
-		{}, 
-		100, 
-		0, 
-		10 
+	  StateEffect(
+		NEXTATTACKDELAY_EFFECT,
+		{},
+		{ "warcry_defense" },
+		{},
+		100,
+		0,
+		10,
+		{ "combat_effects", "delay_notify" }
 	  )
 	},
 
@@ -69,7 +70,7 @@ PanicShotCommand = {
 
 	coneAction = true,
 	coneAngle = 45,
-	
+
 	weaponType = PISTOLWEAPON,
 
 	range = -1

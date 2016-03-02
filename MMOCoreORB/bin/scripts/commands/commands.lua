@@ -1,5 +1,5 @@
 -- define an object to carry state data for combat commands
-function StateEffect(t, et, dm, jm, c, s, l) 
+function StateEffect(t, et, dm, jm, c, s, l, m) 
   return {
 	effectType = t,
 	defenderExclusionTimers = et,
@@ -7,7 +7,8 @@ function StateEffect(t, et, dm, jm, c, s, l)
 	defenderJediStateDefenseModifiers = jm,
 	stateChance = c,
 	stateStrength = s,
-	stateLength = l
+	stateLength = l,
+	stateMessage = m
   }
 end
 
