@@ -79,7 +79,9 @@ void ShuttleBeaconImplementation::callShuttle(CreatureObject* player) {
 	if (ghost == NULL)
 		return;
 
-	if (shuttleStatus == 1 && shuttle != NULL && shuttle.get()->getZone() != NULL)
+	ManagedReference<CreatureObject*> strongShuttle = shuttle.get();
+
+	if (shuttleStatus == 1 && strongShuttle != NULL && strongShuttle->getZone() != NULL)
 		return;
 
 	if (ghost->hasSuiBoxWindowType(SuiWindowType::SHUTTLE_BEACON))
@@ -103,7 +105,9 @@ void ShuttleBeaconImplementation::callShuttle(CreatureObject* player) {
 }
 
 void ShuttleBeaconImplementation::spawnShuttle(CreatureObject* player, int type) {
-	if (player == NULL || (shuttle != NULL && shuttle.get()->getZone() != NULL))
+	ManagedReference<CreatureObject*> strongShuttle = shuttle.get();
+
+	if (player == NULL || (strongShuttle != NULL && strongShuttle->getZone() != NULL))
 		return;
 
 	ManagedReference<ZoneServer*> zoneServer = getZoneServer();
@@ -170,9 +174,6 @@ void ShuttleBeaconImplementation::spawnShuttle(CreatureObject* player, int type)
 }
 
 void ShuttleBeaconImplementation::landShuttle(CreatureObject* player) {
-	if (shuttle == NULL)
-		return;
-
 	ManagedReference<CreatureObject*> strongShuttle = shuttle.get();
 
 	if (strongShuttle == NULL)
@@ -209,12 +210,9 @@ void ShuttleBeaconImplementation::landShuttle(CreatureObject* player) {
 }
 
 void ShuttleBeaconImplementation::dismissShuttle(CreatureObject* player) {
-	if (shuttle == NULL || player == NULL)
-		return;
-
 	ManagedReference<CreatureObject*> strongShuttle = shuttle.get();
 
-	if (strongShuttle == NULL)
+	if (strongShuttle == NULL || player == NULL)
 		return;
 
 	ManagedReference<ShuttleBeacon*> tempBeacon = _this.getReferenceUnsafeStaticCast();
