@@ -22,7 +22,7 @@ mantigrue_night_stalker = Creature:new {
 	ferocity = 2,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + HERD + KILLER + STALKER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mantigrue_night_stalker.iff"},

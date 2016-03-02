@@ -22,7 +22,7 @@ young_mountain_squill = Creature:new {
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + HERD,
-	optionsBitmask = 0,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mountain_squill.iff"},

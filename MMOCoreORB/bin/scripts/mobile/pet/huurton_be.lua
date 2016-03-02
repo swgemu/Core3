@@ -22,7 +22,7 @@ huurton_be = Creature:new {
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE,
 	creatureBitmask = PACK + HERD,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/huurton_hue.iff"},

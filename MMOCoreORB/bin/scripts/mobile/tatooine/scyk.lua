@@ -22,7 +22,7 @@ scyk = Creature:new {
 	ferocity = 6,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + STALKER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/scyk.iff"},

@@ -22,7 +22,7 @@ vicious_squall = Creature:new {
 	ferocity = 2,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + HERD,
-	optionsBitmask = 0,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/squall.iff"},

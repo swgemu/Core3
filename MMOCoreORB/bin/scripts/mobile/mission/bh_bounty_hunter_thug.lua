@@ -23,7 +23,7 @@ bh_bounty_hunter_thug = Creature:new {
 	tamingChance = 0.000000,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 

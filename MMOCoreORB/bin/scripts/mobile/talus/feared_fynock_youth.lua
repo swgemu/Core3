@@ -22,7 +22,7 @@ feared_fynock_youth = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/fearful_fynock_youth.iff"},

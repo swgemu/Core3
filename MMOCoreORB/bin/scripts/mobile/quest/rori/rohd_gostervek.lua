@@ -37,7 +37,7 @@ rohd_gostervek = Creature:new {
 	weapons = {"imperial_weapons_medium"},
 	attacks = merge(riflemanmaster,carbineermaster,brawlermaster),
 	conversationTemplate = "",
-	optionsBitmask = 128
+	optionsBitmask = AIENABLED
 }
 
 CreatureTemplates:addCreatureTemplate(rohd_gostervek, "rohd_gostervek")

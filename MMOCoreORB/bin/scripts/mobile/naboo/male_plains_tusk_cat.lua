@@ -22,7 +22,7 @@ male_plains_tusk_cat = Creature:new {
 	ferocity = 9,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = KILLER + STALKER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/tusk_cat_hue.iff"},

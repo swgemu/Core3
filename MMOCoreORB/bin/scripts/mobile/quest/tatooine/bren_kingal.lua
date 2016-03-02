@@ -23,7 +23,7 @@ bren_kingal = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 136,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/mos_taike_guard_young.iff"},

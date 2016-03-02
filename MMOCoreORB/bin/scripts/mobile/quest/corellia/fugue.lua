@@ -22,7 +22,7 @@ fugue = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = STALKER,
-	optionsBitmask = 136,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_pirate_human_male_01.iff"},

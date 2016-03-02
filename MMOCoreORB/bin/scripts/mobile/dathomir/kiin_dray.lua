@@ -22,7 +22,7 @@ kiin_dray = Creature:new {
 	ferocity = 8,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER + STALKER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gaping_spider_recluse_giant_kiin_dray.iff"},

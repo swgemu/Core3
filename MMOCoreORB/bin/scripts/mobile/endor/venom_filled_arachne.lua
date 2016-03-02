@@ -22,7 +22,7 @@ venom_filled_arachne = Creature:new {
 	ferocity = 4,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/queen_arachne.iff"},

@@ -23,7 +23,7 @@ gungan_fambaa = Creature:new {
 	ferocity = 3,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/fambaa_hue.iff"},

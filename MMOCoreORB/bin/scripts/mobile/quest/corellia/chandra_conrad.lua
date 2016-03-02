@@ -22,7 +22,7 @@ chandra_conrad = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
-	optionsBitmask = 136,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {	"object/mobile/dressed_commoner_fat_human_female_01.iff",

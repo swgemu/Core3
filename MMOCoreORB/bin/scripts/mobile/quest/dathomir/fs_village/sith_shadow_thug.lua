@@ -22,7 +22,7 @@ sith_shadow_thug = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE + ENEMY + AGGRESSIVE,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {

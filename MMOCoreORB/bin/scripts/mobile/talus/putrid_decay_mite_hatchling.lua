@@ -22,7 +22,7 @@ putrid_decay_mite_hatchling = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/putrid_decay_mite_hatchling.iff"},

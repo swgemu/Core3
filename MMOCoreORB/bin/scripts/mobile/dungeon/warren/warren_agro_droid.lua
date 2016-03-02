@@ -22,7 +22,7 @@ warren_agro_droid = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {	"object/mobile/warren_agro_droid_s01.iff", --droideka

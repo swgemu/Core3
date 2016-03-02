@@ -22,7 +22,7 @@ narglatch_cub = Creature:new {
 	ferocity = 1,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + STALKER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/narglatch_cub.iff"},

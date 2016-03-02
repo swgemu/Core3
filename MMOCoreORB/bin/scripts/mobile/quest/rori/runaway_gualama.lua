@@ -23,7 +23,7 @@ runaway_gualama = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
-	optionsBitmask = 264,
+	optionsBitmask = INVULNERABLE + CONVERSABLE,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gualama.iff"},

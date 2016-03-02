@@ -36,7 +36,7 @@ rebel_recruiter = Creature:new {
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster),
 	conversationTemplate = "rebelRecruiterConvoTemplate",
 	containerComponentTemplate = "FactionRecruiterContainerComponent",
-	optionsBitmask = 264
+	optionsBitmask = INVULNERABLE + CONVERSABLE
 
 }
 

@@ -22,7 +22,7 @@ peko_peko = Creature:new {
 	ferocity = 6,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/peko_peko.iff"},

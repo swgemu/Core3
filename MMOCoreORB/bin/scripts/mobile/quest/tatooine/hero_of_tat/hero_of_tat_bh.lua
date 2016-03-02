@@ -23,7 +23,7 @@ hero_of_tat_bh = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	optionsBitmask = 136,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 

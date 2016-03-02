@@ -22,7 +22,7 @@ hero_of_tat_farmer = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
-	optionsBitmask = 136,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = { "object/mobile/dressed_quest_farmer.iff" },

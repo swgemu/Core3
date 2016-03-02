@@ -29,7 +29,7 @@ theme_park_imperial_escort_droid = Creature:new {
 	weapons = {},
 	attacks = {},
 	conversationTemplate = "theme_park_imperial_mission_target_convotemplate",
-	optionsBitmask = 264
+	optionsBitmask = INVULNERABLE + CONVERSABLE
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_imperial_escort_droid, "theme_park_imperial_escort_droid")

@@ -22,7 +22,7 @@ surgical_droid_21b = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = HERD,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {

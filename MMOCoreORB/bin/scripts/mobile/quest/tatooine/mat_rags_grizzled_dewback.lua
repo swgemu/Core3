@@ -22,7 +22,7 @@ mat_rags_grizzled_dewback = Creature:new {
 	ferocity = 6,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/dewback.iff"},

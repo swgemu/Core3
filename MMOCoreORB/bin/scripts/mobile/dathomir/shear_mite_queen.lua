@@ -22,7 +22,7 @@ shear_mite_queen = Creature:new {
 	ferocity = 4,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + STALKER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/shear_mite_queen.iff"},

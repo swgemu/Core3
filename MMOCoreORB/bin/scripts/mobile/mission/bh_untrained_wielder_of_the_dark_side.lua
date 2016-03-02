@@ -24,7 +24,7 @@ bh_untrained_wielder_of_the_dark_side = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_untrained_wielder_of_the_darkside.iff"},

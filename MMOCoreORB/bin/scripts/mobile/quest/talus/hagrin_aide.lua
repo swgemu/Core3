@@ -22,7 +22,7 @@ hagrin_aide = Creature:new {
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {	"object/mobile/dressed_commoner_fat_zabrak_male_01.iff",

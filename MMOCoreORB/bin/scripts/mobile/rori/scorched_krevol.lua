@@ -22,7 +22,7 @@ scorched_krevol = Creature:new {
 	ferocity = 5,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/horned_krevol.iff"},

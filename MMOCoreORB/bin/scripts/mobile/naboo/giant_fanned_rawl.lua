@@ -23,7 +23,7 @@ giant_fanned_rawl = Creature:new {
 	ferocity = 3,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/fanned_rawl_hue.iff"},

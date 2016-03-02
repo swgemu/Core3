@@ -22,7 +22,7 @@ sharnaff_reckless_ravager = Creature:new {
 	ferocity = 8,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/sharnaff_hue.iff"},

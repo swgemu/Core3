@@ -22,7 +22,7 @@ veermok_hunter = Creature:new {
 	ferocity = 7,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER + STALKER,
-	optionsBitmask = 0,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/veermok_hue.iff"},

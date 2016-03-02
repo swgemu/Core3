@@ -21,7 +21,7 @@ kafleer_tredahl = Creature:new {
 	tamingChance = 0.000000,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	optionsBitmask = 136,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 

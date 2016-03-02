@@ -43,7 +43,7 @@ theme_park_imperial_officer_emil = Creature:new {
 	weapons = {"imperial_weapons_medium"},
 	attacks = merge(brawlermaster,marksmanmaster,riflemanmaster,carbineermaster),
 	conversationTemplate = "",
-	optionsBitmask = 128
+	optionsBitmask = AIENABLED
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_imperial_officer_emil, "theme_park_imperial_officer_emil")

@@ -22,7 +22,7 @@ corellian_butterfly = Creature:new {
 	ferocity = 6,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/corellian_butterfly.iff"},

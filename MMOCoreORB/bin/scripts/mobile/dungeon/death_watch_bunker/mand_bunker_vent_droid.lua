@@ -22,7 +22,7 @@ mand_bunker_vent_droid = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE ,
 	creatureBitmask = NONE,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = { "object/mobile/r2.iff" },

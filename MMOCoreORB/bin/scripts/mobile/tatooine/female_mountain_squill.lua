@@ -22,7 +22,7 @@ female_mountain_squill = Creature:new {
 	ferocity = 8,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mountain_squill.iff"},

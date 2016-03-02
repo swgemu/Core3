@@ -29,7 +29,7 @@ j1_po = Creature:new {
 	weapons = {},
 	attacks = {},
 	conversationTemplate = "",
-	optionsBitmask = 128
+	optionsBitmask = AIENABLED
 }
 
 CreatureTemplates:addCreatureTemplate(j1_po, "j1_po")

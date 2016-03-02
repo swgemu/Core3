@@ -22,7 +22,7 @@ theme_park_jabba_meatbeast = Creature:new {
 	ferocity = 6,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = STALKER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/dewback_hue.iff"},

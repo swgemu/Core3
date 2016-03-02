@@ -22,7 +22,7 @@ slym_shudee = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
-	optionsBitmask = 136,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {	"object/mobile/dressed_commoner_naboo_twilek_male_01.iff",

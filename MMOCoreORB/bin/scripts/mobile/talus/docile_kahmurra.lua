@@ -23,7 +23,7 @@ docile_kahmurra = Creature:new {
 	ferocity = 1,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/kahmurra.iff"},

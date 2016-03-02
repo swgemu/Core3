@@ -23,7 +23,7 @@ sharnaff = Creature:new {
 	ferocity = 2,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/sharnaff.iff"},

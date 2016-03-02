@@ -22,7 +22,7 @@ sith_shadow_commander = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = KILLER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {

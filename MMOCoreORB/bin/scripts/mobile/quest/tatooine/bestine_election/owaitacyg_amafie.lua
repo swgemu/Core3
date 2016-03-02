@@ -23,7 +23,7 @@ owaitacyg_amafie = Creature:new {
 	ferocity = 3,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/dressed_bestine_rumor02.iff"},

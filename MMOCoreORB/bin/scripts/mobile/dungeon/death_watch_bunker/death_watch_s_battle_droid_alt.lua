@@ -22,7 +22,7 @@ death_watch_s_battle_droid_alt = Creature:new {
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = KILLER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = NONE,
 	scale = 1.40,
 

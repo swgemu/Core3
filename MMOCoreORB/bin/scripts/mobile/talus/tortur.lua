@@ -22,7 +22,7 @@ tortur = Creature:new {
 	ferocity = 7,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/meager_tortur.iff"},

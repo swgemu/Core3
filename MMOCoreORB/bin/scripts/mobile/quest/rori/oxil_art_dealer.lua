@@ -23,7 +23,7 @@ oxil_art_dealer = Creature:new {
   ferocity = 0,
   pvpBitmask = NONE,
   creatureBitmask = NONE,
-  optionsBitmask = 136,
+  optionsBitmask = AIENABLED + CONVERSABLE,
   diet = HERBIVORE,
 
   templates = {

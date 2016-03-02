@@ -22,7 +22,7 @@ reclusive_cavern_spider = Creature:new {
 	ferocity = 8,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER + STALKER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gaping_spider_recluse.iff"},

@@ -22,7 +22,7 @@ huff_delivery_guy = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = HERD,
-	optionsBitmask = 136,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {

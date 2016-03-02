@@ -22,7 +22,7 @@ greater_sludge_panther = Creature:new {
 	ferocity = 7,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/greater_sludge_panther.iff"},

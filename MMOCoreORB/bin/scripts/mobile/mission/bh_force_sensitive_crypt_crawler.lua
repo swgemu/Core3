@@ -24,7 +24,7 @@ bh_force_sensitive_crypt_crawler = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_force_sensitive_crypt_crawler.iff"},

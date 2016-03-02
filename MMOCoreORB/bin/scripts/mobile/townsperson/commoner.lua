@@ -24,7 +24,7 @@ commoner = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = HERD,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {	"object/mobile/dressed_commoner_fat_human_female_01.iff",

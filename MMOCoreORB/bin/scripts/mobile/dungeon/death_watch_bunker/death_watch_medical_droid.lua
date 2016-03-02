@@ -30,7 +30,7 @@ death_watch_medical_droid = Creature:new {
 	weapons = {},
 	attacks = {},
 	conversationTemplate = "deathWatchMedicalDroidConvoTemplate",
-	optionsBitmask = 264
+	optionsBitmask = INVULNERABLE + CONVERSABLE
 }
 
 CreatureTemplates:addCreatureTemplate(death_watch_medical_droid, "death_watch_medical_droid")

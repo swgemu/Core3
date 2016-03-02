@@ -22,7 +22,7 @@ domestic_tusk_cat = Creature:new {
 	ferocity = 8,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/tusk_cat_hue.iff"},
