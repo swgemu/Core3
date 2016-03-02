@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_f62b7992",
+        "filename": "MMOCoreORB/bin/scripts/commands/commands.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-02T23:04:57Z",
+      "side": 1,
+      "message": "This needs to either have a default (probably {}) or you will need to go through and add a member to every StateEffect in the commands. Look at primary/secondaryPercent in DotEffect.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "9b97fc90631efdb8d84d32e70a13f4c9a8ca4f01",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_76176952",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-02T23:04:57Z",
+      "side": 1,
+      "message": "You include this but never use this.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 69
+      },
+      "revId": "9b97fc90631efdb8d84d32e70a13f4c9a8ca4f01",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_9618fd85",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2438,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-02T23:04:57Z",
+      "side": 1,
+      "message": "This isn\u0027t a valid ctor for StringIdChatParameter. You either need the full path (\"@path:message\") or two arguments like it used to be. I\u0027m not sure how this works.",
+      "range": {
+        "startLine": 2438,
+        "startChar": 3,
+        "endLine": 2438,
+        "endChar": 50
+      },
+      "revId": "9b97fc90631efdb8d84d32e70a13f4c9a8ca4f01",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_b61d0176",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2439,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-02T23:04:57Z",
+      "side": 1,
+      "message": "Following from the last comment, what %TT are you trying to set here? There\u0027s no @path:stringID that the client would understand.",
+      "range": {
+        "startLine": 2439,
+        "startChar": 3,
+        "endLine": 2439,
+        "endChar": 38
+      },
+      "revId": "9b97fc90631efdb8d84d32e70a13f4c9a8ca4f01",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_f602990a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2442,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-02T23:04:57Z",
+      "side": 1,
+      "message": "Since you made the state message generic, you can no longer assume that the message only gets applied in setNextAttackDelay(). This functionality needs to be moved upstream to be sent for all state effects. This leads to a problem: can you assume that they all have the same variables (%DI, %TT, etc)? This needs to be made more robust to allow for variance of string forms.",
+      "range": {
+        "startLine": 2437,
+        "startChar": 0,
+        "endLine": 2442,
+        "endChar": 3
+      },
+      "revId": "9b97fc90631efdb8d84d32e70a13f4c9a8ca4f01",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_56126563",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/effect/StateEffect.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-02T23:04:57Z",
+      "side": 1,
+      "message": "You expect 1 of 2 sizes here, either 0 or 2. Any other size does not make sense, so check for that.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 18
+      },
+      "revId": "9b97fc90631efdb8d84d32e70a13f4c9a8ca4f01",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_160ced41",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/effect/StateEffect.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-02T23:04:57Z",
+      "side": 1,
+      "message": "You never use this. You need to use this.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 5
+      },
+      "revId": "9b97fc90631efdb8d84d32e70a13f4c9a8ca4f01",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
