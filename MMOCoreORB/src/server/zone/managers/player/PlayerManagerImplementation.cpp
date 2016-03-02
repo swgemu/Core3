@@ -791,20 +791,10 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 		return;
 
 	ghost->removeSuiBoxType(SuiWindowType::CLONE_REQUEST);
-	ghost->removeSuiBoxType(SuiWindowType::CLONE_REQUEST_DECAY);
 
 	ManagedReference<SuiListBox*> cloneMenu = new SuiListBox(player, SuiWindowType::CLONE_REQUEST);
 	cloneMenu->setCallback(new CloningRequestSuiCallback(player->getZoneServer(), typeofdeath));
 	cloneMenu->setPromptTitle("@base_player:revive_title");
-
-	/*
-	if (typeofdeath == 1) {
-		cloneMenu = new SuiListBox(player, SuiWindowType::CLONE_REQUEST);//no decay - GM command, deathblow or factional death
-	} else if (typeofdeath == 0) {
-		cloneMenu = new SuiListBox(player, SuiWindowType::CLONE_REQUEST_DECAY);
-	} else if (ghost->getFactionStatus() == FactionStatus::OVERT) {//TODO: Do proper check if faction death
-		cloneMenu = new SuiListBox(player, SuiWindowType::CLONE_REQUEST_FACTIONAL);
-	}*/
 
 	uint64 preDesignatedFacilityOid = ghost->getCloningFacility();
 	ManagedReference<SceneObject*> preDesignatedFacility = server->getObject(preDesignatedFacilityOid);
@@ -963,9 +953,16 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 	if (ghost->hasPvpTef())
 		ghost->schedulePvpTefRemovalTask(true);
 
+
+	SortedVector<ManagedReference<SceneObject*> > insurableItems = getInsurableItems(player, false);
+
 	// Decay
-	if (typeofdeath == 0) {
-		SortedVector<ManagedReference<SceneObject*> > insurableItems = getInsurableItems(player, false);
+	if (typeofdeath == 0 && insurableItems.size() > 0) {
+
+		ManagedReference<SuiListBox*> suiCloneDecayReport = new SuiListBox(player, SuiWindowType::CLONE_REQUEST_DECAY, SuiListBox::HANDLESINGLEBUTTON);
+		suiCloneDecayReport->setPromptTitle("DECAY REPORT");
+		suiCloneDecayReport->setPromptText("The following report summarizes the status of your items after the decay event.");
+		suiCloneDecayReport->addMenuItem("\\#00FF00DECAYED ITEMS");
 
 		for (int i = 0; i < insurableItems.size(); i++) {
 			SceneObject* item = insurableItems.get(i);
@@ -985,9 +982,23 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 					//5% Decay for uninsured items
 					obj->inflictDamage(obj, 0, 0.05 * obj->getMaxCondition(), true, true);
 				}
+
+				// Calculate condition percentage for decay report
+				int max = obj->getMaxCondition();
+				int min = max - obj->getConditionDamage();
+				int condPercentage = ( min / (float)max ) * 100.0f;
+				String line = " - " + obj->getDisplayedName() + " (@"+String::valueOf(condPercentage)+"%)";
+
+				suiCloneDecayReport->addMenuItem(line, item->getObjectID());
 			}
 		}
+
+		ghost->addSuiBox(suiCloneDecayReport);
+		player->sendMessage(suiCloneDecayReport->generateMessage());
+
 	}
+
+
 
 	Reference<Task*> task = new PlayerIncapacitationRecoverTask(player, true);
 	task->schedule(3 * 1000);
