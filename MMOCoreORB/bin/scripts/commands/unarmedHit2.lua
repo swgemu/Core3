@@ -51,7 +51,8 @@ UnarmedHit2Command = {
 	mindCostMultiplier = 1.5,
         accuracyBonus = 15,
 
-	animationCRC = hashCode("combo_3a_light"),
+	animation = "combo_3a", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "goraxsmash",
 	

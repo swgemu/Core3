@@ -53,7 +53,8 @@ Melee2hSpinAttack2Command = {
 	areaAction = true,
 	areaRange = 16,
 
-	animationCRC = hashCode("combo_4b_medium"),
+	animation = "combo_4b", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "spinslam",
 	

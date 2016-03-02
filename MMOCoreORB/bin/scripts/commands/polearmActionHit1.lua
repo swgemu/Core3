@@ -51,7 +51,7 @@ PolearmActionHit1Command = {
 	mindCostMultiplier = 0.5,
 	accuracyBonus = 10,
 
-	animationCRC = hashCode("attack_low_right_medium_0"),
+	animation = "attack_low_right_medium_0",
 
 	combatSpam = "kneecracker",
 

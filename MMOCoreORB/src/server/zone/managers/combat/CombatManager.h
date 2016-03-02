@@ -198,8 +198,6 @@ protected:
 
 	float getWeaponRangeModifier(float currentRange, WeaponObject* weapon);
 
-	uint32 getDefaultAttackAnimation(CreatureObject* creature, WeaponObject* weapon, uint8 hitLocation, int damage);
-
 	/**
 	 * @returns 0 - hit, 1 - block, 2 - dodge, 3 - counter-attack, 4 - miss
 	 */

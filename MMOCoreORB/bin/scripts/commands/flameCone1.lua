@@ -56,7 +56,8 @@ FlameCone1Command = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	animationCRC = hashCode("fire_flame_thrower_cone_1_light"),
+	animation = "fire_flame_thrower_cone_1", 
+	animType = GENERATE_INTENSITY,
 	combatSpam = "flamecone1",
 	dotEffects = {
 	  DotEffect( 

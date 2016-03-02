@@ -52,7 +52,7 @@ UnarmedBlind1Command = {
 	actionCostMultiplier = 1.5,
 	mindCostMultiplier = 1.5,
 
-	animationCRC = hashCode("attack_high_center_light_1"),
+	animation = "attack_high_center_light_1",
 
 	combatSpam = "aryxslash",
 

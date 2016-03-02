@@ -51,7 +51,7 @@ DiveShotCommand = {
 	mindCostMultiplier = 0.5,
 	accuracyBonus = 50,
 
-	animationCRC = hashCode("fire_acrobatic"),
+	animation = "fire_acrobatic",
 
 	combatSpam = "diveshot",
 	

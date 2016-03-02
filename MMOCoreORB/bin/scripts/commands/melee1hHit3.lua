@@ -51,7 +51,8 @@ Melee1hHit3Command = {
 	mindCostMultiplier = 2.0,
         accuracyBonus = 25,
 
-	animationCRC = hashCode("combo_5a_light"),
+	animation = "combo_5a", 
+	animType = GENERATE_INTENSITY,
 
 	stateEffects = {
 	  StateEffect( 

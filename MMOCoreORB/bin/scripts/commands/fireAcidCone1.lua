@@ -56,7 +56,8 @@ FireAcidCone1Command = {
 	
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	animationCRC = hashCode("fire_acid_rifle_single_1_medium"),
+	animation = "fire_acid_rifle_single_1", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "fireacidcone1",
 	

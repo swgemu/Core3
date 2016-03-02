@@ -51,7 +51,8 @@ Melee1hScatterHit1Command = {
 	mindCostMultiplier = 1.5,
         accuracyBonus = 25,
 
-	animationCRC = hashCode("combo_3b_light"),
+	animation = "combo_3b", 
+	animType = GENERATE_INTENSITY,
 
 	poolsToDamage = HEALTH_ATTRIBUTE + ACTION_ATTRIBUTE + MIND_ATTRIBUTE,
 	

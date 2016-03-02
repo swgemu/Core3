@@ -51,7 +51,8 @@ FullAutoSingle2Command = {
 	mindCostMultiplier = 0.5,
 	accuracyBonus = 25,
 
-	animationCRC = hashCode("fire_7_single_medium_face"),
+	animation = "fire_7_single", 
+	animType = GENERATE_RANGED,
 
 	combatSpam = "s_auto",
 

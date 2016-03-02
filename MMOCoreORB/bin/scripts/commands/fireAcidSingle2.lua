@@ -53,7 +53,8 @@ FireAcidSingle2Command = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	animationCRC = hashCode("fire_acid_rifle_single_2_light"),
+	animation = "fire_acid_rifle_single_2", 
+	animType = GENERATE_INTENSITY,
 
 	combatSpam = "fireacidsingle2",
 	
