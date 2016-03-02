@@ -28,7 +28,7 @@ function tutorialMissionGiverConvoHandler:runScreenHandlers(conversationTemplate
 				SceneObject(pItem):setCustomObjectName("Release Documents")
 			end
 		end
-		CreatureObject(conversingNPC):setOptionsBitmask(128)
+		CreatureObject(conversingNPC):clearOptionBit(CONVERSABLE)
 		TutorialScreenPlay:handleRoomTen(conversingPlayer)
 	end
 
