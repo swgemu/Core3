@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_f654d922",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-02T16:46:52Z",
+      "side": 1,
+      "message": "You already have a pointer to the PlayerObject, ghost. Use it instead.",
+      "revId": "4824aceffce6eaade0e0f283d1aa4808403b8db8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
