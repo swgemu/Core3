@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_313edbb9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-03T04:11:32Z",
+      "side": 1,
+      "message": "I would only set this if self.npcMap[i].npcNumber \u003e 0.\n\nSome of the themeparks have mobiles in their map that aren\u0027t quest givers and they are given negative npcNumbers (r2d2, chewbacca in rebel themepark, etc.)",
+      "revId": "943265b8b4b662f040c10eb5800019acf3eebfc0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
