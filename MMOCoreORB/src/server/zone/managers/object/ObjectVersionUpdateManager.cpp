@@ -288,7 +288,7 @@ void ObjectVersionUpdateManager::updateTangibleObjectsVersion6() {
 			// Add all templates that still have a use Count > 1
 			// Also add all loot schematic templates as well as factory crates
 			if((tanotmp != NULL && tanotmp->getUseCount() > 0) ||
-			   (lootSchem != NULL && lootSchem->getTargetUseCount() > 0) ||
+			   (lootSchem != NULL && lootSchem->getTargetUseCount() > 1) ||
 			    tmpl->getGameObjectType() == SceneObjectType::FACTORYCRATE) {
 				templateKeys.put(key);
 				info("Adding Tangible Template: " + tanotmp->getTemplateFileName(), true);

@@ -121,8 +121,9 @@ public:
 				itemToUse->removeAntiDecayKit();
 			}
 
-			itemToUse->setUseCount(slotNeeds, false);
+			itemToUse->setUseCount((slotNeeds > 1 ? slotNeeds : 0), false);
 			itemToUse->setParent(NULL);
+			itemToUse->sendTo(player, true); // Without this, the new object does not appear in the crafting slot
 			itemToUse->sendAttributeListTo(player);
 
 		} else {
@@ -144,7 +145,8 @@ public:
 			}
 
 			newTano->setParent(NULL);
-			newTano->setUseCount(1, false);
+			newTano->setUseCount(0, false);
+			newTano->sendTo(player, true); // Without this, the new object does not appear in the crafting slot
 			itemsToAdd.add(newTano);
 
 			ilocker.release();
@@ -157,6 +159,7 @@ public:
 		while(itemsToAdd.size() > 0) {
 			ManagedReference<TangibleObject*> tano = itemsToAdd.remove(0);
 			if(!satchel->transferObject(tano, -1, true)) {
+
 				error("cant transfer crafting component Has Items: " + String::valueOf(satchel->getContainerObjectsSize()));
 				return false;
 			}
