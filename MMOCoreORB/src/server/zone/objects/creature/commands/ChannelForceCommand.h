@@ -5,8 +5,9 @@
 #ifndef CHANNELFORCECOMMAND_H_
 #define CHANNELFORCECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/player/events/ChannelForceRegenTask.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/CreatureAttribute.h"
 
 class ChannelForceCommand : public QueueCommand {
 public:
@@ -70,17 +71,15 @@ public:
 
 		playerObject->setForcePower(playerObject->getForcePower() + forceBonus);
 
+		creature->setHAM(CreatureAttribute::HEALTH, health - forceBonus, true);
+		creature->setHAM(CreatureAttribute::ACTION, action - forceBonus, true);
+		creature->setHAM(CreatureAttribute::MIND, mind - forceBonus, true);
 		creature->setMaxHAM(CreatureAttribute::HEALTH, maxHealth - forceBonus, true);
 		creature->setMaxHAM(CreatureAttribute::ACTION, maxAction - forceBonus, true);
 		creature->setMaxHAM(CreatureAttribute::MIND, maxMind - forceBonus, true);
 
-		creature->setHAM(CreatureAttribute::HEALTH, health - forceBonus, true);
-		creature->setHAM(CreatureAttribute::ACTION, action - forceBonus, true);
-		creature->setHAM(CreatureAttribute::MIND, mind - forceBonus, true);
-
 		// Setup task.
-		Reference<ChannelForceRegenTask*> cfTask = new ChannelForceRegenTask(creature, forceBonus);
-		creature->addPendingTask("channelForceRegenTask", cfTask, 6000);
+		playerObject->activateChannelRecovery(forceBonus, 10);
 
 		return SUCCESS;
 	}

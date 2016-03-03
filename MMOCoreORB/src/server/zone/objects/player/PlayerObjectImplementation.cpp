@@ -82,6 +82,7 @@
 #include "server/zone/managers/player/QuestInfo.h"
 #include "server/zone/objects/player/events/ForceMeditateTask.h"
 #include "server/zone/objects/player/sui/callbacks/FieldFactionChangeSuiCallback.h"
+#include "server/zone/objects/player/events/ChannelForceRegenTask.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -574,7 +575,7 @@ int PlayerObjectImplementation::addExperience(const String& xpType, int xp, bool
 		if (xp <= 0 && xpType != "jedi_general") {
 			removeExperience(xpType, notifyClient);
 			return 0;
-		// -10 million experience cap for Jedi experience loss
+			// -10 million experience cap for Jedi experience loss
 		} else if(xp < -10000000 && xpType == "jedi_general") {
 			xp = -10000000;
 		}
@@ -1614,9 +1615,9 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 		CommandQueueActionVector* commandQueue = creature->getCommandQueue();
 
 		if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced() && 
-			!creature->hasBuff(STRING_HASHCODE("private_feign_buff")) && (commandQueue->size() == 0) && 
-			creature->isNextActionPast() && !creature->isDead() && !creature->isIncapacitated() &&
-			cooldownTimerMap->isPast("autoAttackDelay")) {
+				!creature->hasBuff(STRING_HASHCODE("private_feign_buff")) && (commandQueue->size() == 0) &&
+				creature->isNextActionPast() && !creature->isDead() && !creature->isIncapacitated() &&
+				cooldownTimerMap->isPast("autoAttackDelay")) {
 			creature->executeObjectControllerAction(STRING_HASHCODE("attack"), creature->getTargetID(), "");
 			cooldownTimerMap->updateToCurrentAndAddMili("autoAttackDelay", (int)(CombatManager::instance()->calculateWeaponAttackSpeed(creature, creature->getWeapon(), 1.f) * 1000.f));
 		}
@@ -1751,6 +1752,32 @@ void PlayerObjectImplementation::activateForcePowerRegen() {
 		float scheduledTime = 10 / timer;
 		uint64 miliTime = static_cast<uint64>(scheduledTime * 1000.f);
 		forceRegenerationEvent->schedule(miliTime);
+	}
+}
+
+void PlayerObjectImplementation::activateChannelRecovery(int bonus, int tickAmount) {
+
+	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
+	if (creature == NULL) {
+		return;
+	}
+
+	if (channelRecoveryEvent == NULL) {
+		channelRecoveryEvent = new ChannelForceRegenTask(creature, bonus, tickAmount);
+	}
+
+	if (!channelRecoveryEvent->isScheduled()) {
+		uint64 miliTime = static_cast<uint64>(8000.f); // 8 seconds
+		channelRecoveryEvent->schedule(miliTime);
+	}
+
+	--tickAmount;
+	bonus /= tickAmount;
+	channelRecoveryEvent = NULL;
+
+	if (bonus > 0) {
+		activateChannelRecovery(bonus, tickAmount);
 	}
 }
 

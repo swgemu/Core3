@@ -9,47 +9,55 @@
 #define CHANNELFORCEREGENTASK_H_
 
 
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/CreatureAttribute.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+namespace events {
 
 class ChannelForceRegenTask : public Task {
 	ManagedReference<CreatureObject*> creature;
-	int forceBonus;
-	int counter;
+	int theBonus;
+	int tickAmount;
 public:
 
-	ChannelForceRegenTask(CreatureObject* creo, int bonus) {
+	ChannelForceRegenTask(CreatureObject* creo, int bonus, int tickAmt) {
 		creature = creo;
-		forceBonus = bonus;
-		counter = 0;
+		theBonus = bonus;
+		tickAmount = tickAmt;
 	}
 
 	void run() {
-		Locker locker(creature);
-
 		if(creature != NULL) {
-			const static int amountOfTicks = 10; // How many ticks will it take to get back to normal HAM.
-			int hamBack = round((float) forceBonus / (float) amountOfTicks);
+			Locker locker(creature);
 
-			if (counter < amountOfTicks) {
-				int maxHealth = creature->getMaxHAM(CreatureAttribute::HEALTH);
-				int maxAction = creature->getMaxHAM(CreatureAttribute::ACTION);
-				int maxMind = creature->getMaxHAM(CreatureAttribute::MIND);
+			for (int i=0; i < 9; ++i) {
+				int baseHAM = creature->getBaseHAM(i);
+				int maxHAM = creature->getMaxHAM(i);
 
-				creature->setMaxHAM(CreatureAttribute::HEALTH, maxHealth + hamBack, true);
-				creature->setMaxHAM(CreatureAttribute::ACTION, maxAction + hamBack, true);
-				creature->setMaxHAM(CreatureAttribute::MIND, maxMind + hamBack, true);
+				int calculated = baseHAM + theBonus;
 
-				counter++;
+				if (calculated != maxHAM && calculated > 1) {
+					if (creature->getHAM(i) > calculated) {
+						creature->setHAM(i, calculated / tickAmount, true);
+					}
 
-				this->reschedule(6000); // Reschedule in 6 seconds...
-			}
-			else {
-
-				creature->removePendingTask("channelForceRegenTask");
+					creature->setMaxHAM(i, calculated / tickAmount, true);
+				}
 			}
 		}
 	}
 };
+
+}
+}
+}
+}
+}
 
 
 #endif /* CHANNELFORCEREGENTASK_H_ */

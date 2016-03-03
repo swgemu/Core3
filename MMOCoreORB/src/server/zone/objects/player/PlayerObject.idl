@@ -17,6 +17,7 @@ import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.player.events.PlayerDisconnectEvent;
 import server.zone.objects.player.events.PlayerRecoveryEvent;
 import server.zone.objects.player.events.ForceRegenerationEvent;
+import server.zone.objects.player.events.ChannelForceRegenTask;
 import server.zone.objects.player.events.PvpTefRemovalTask;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.structure.StructureObject;
@@ -187,6 +188,9 @@ class PlayerObject extends IntangibleObject {
 
 	@dereferenced
 	protected transient Reference<ForceRegenerationEvent> forceRegenerationEvent;
+	
+	@dereferenced
+	protected transient Reference<ChannelForceRegenTask> channelRecoveryEvent;
 
 	@dereferenced
 	protected Time logoutTimeStamp;
@@ -668,6 +672,8 @@ class PlayerObject extends IntangibleObject {
 	public native void activateRecovery();
 
 	public native void activateForcePowerRegen();
+	
+	public native void activateChannelRecovery();
 
 	public native void doRecovery(int latency);
 
