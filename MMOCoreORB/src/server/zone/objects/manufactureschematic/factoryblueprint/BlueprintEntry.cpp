@@ -125,7 +125,8 @@ bool BlueprintEntry::hasEnoughResources() {
 			continue;
 		}
 
-		count += object->getUseCount();
+		int useCount = object->getUseCount();
+		count += (useCount == 0 ? 1 : useCount);
 	}
 
 	if(count >= quantity)
@@ -143,7 +144,11 @@ void BlueprintEntry::removeResources(FactoryObject* factory) {
 
 		Locker locker(object);
 
-		if(object->getUseCount() < quantity) {
+		int useCount = object->getUseCount();
+		if(useCount == 0)
+			useCount=1;
+
+		if(useCount < quantity) {
 			count += object->getUseCount();
 			matchingHopperItems.removeElement(object);
 
@@ -152,7 +157,7 @@ void BlueprintEntry::removeResources(FactoryObject* factory) {
 		}
 
 
-		object->setUseCount(object->getUseCount() - (quantity - count), false);
+		object->decreaseUseCount((quantity - count), false);
 
 		if(!object->isResourceContainer()) {
 			TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(object);
