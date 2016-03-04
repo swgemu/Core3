@@ -468,7 +468,7 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 
 	defenderObject->updatePostures(false);
 
-	uint32 animationCRC = data.getCommand()->getAnimation(attacker, weapon, hitLocation, damage).hashCode();
+	uint32 animationCRC = data.getCommand()->getAnimation(attacker, defenderObject, weapon, hitLocation, damage).hashCode();
 
 	combatAction = new CombatAction(attacker, defenderObject, animationCRC, hitVal, CombatManager::DEFAULTTRAIL);
 	attacker->broadcastMessage(combatAction,true);
@@ -2098,7 +2098,7 @@ void CombatManager::broadcastCombatSpam(TangibleObject* attacker, TangibleObject
 void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObject * defenderObject, WeaponObject* weapon, const CreatureAttackData & data, int damage, uint8 hit, uint8 hitLocation) {
 	CombatAction* combatAction = NULL;
 
-	String animation = data.getCommand()->getAnimation(attacker, weapon, hitLocation, damage);
+	String animation = data.getCommand()->getAnimation(attacker, defenderObject, weapon, hitLocation, damage);
 
 	uint32 animationCRC = 0;
 

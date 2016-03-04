@@ -119,6 +119,7 @@ object_weapon_ranged_grenade_grenade_fragmentation_light = object_weapon_ranged_
 	attackSpeed = 4,
 
 	woundsRatio = 10,
+	animationType = "fragmentation",
 
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2},
