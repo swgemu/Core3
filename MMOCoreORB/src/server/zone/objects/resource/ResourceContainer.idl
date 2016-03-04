@@ -80,6 +80,10 @@ class ResourceContainer extends TangibleObject {
 	}
 
 	public native void setUseCount(unsigned int newUseCount, boolean notifyClient = true);
+	
+	public native void decreaseUseCount(unsigned int decrement=1, boolean notifyClient = true) {
+		setUseCount(stackQuantity-decrement, notifyClient);
+	}
 
 	@preLocked
 	public void setSpawnObject(ResourceSpawn spawn) {
