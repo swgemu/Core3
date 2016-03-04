@@ -50,8 +50,8 @@ tkamaster = { {"unarmedhit3",""},{"unarmedleghit1",""},{"unarmedbodyhit1",""},{"
 
 --npc jedi skills
 lightsabermaster = { {"saber1hheadhit1",""},{"saber1hhit1",""},{"saber1hcombohit1",""},{"saber1hflurry",""},{"saber2hbodyhit1",""},{"saber2hfrenzy",""},{"saber2hhit1",""},{"saber2hphantom",""},{"saber2hsweep1",""},{"saberpolearmdervish",""},{"saberpolearmhit1",""},{"saberpolearmleghit1",""},{"saberpolearmspinattack1",""},{"saberslash1",""},{"saberthrow1",""} }
-forcepowermaster = { {"forcelightningsingle2",""},{"forcelightningcone2",""},{"forceintimidate2",""},{"forceknockdown2",""},{"forcethrow2",""},{"forcechoke",""} }
+forcepowermaster = { {"forcelightningsingle2",""},{"forcelightningcone2",""},{"mindblast2",""},{"forceknockdown2",""},{"forceweaken2",""},{"forcethrow2",""},{"forcechoke",""} }
 
 -- npc force wielders use standard profession mastery with the addition of this command
-forcewielder ={ {"forcelightningsingle1",""},{"forcechoke",""},{"forcelightningcone1",""} }
+forcewielder ={ {"forcelightningsingle1",""},{"mindblast1",""},{"forcechoke",""},{"forceweaken1",""},{"forceknockdown1",""},{"forcelightningcone1",""} }
 --Server Administrator NPC skill trees place below
