@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_b163cbb0",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/FireHeavyWeaponCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-04T12:40:09Z",
+      "side": 1,
+      "message": "Every SceneObject has a reference to it\u0027s SharedObjectTemplate. You can simply use weapon-\u003egetObjectTemplate() here instead of going through the TemplateManager. Same goes for ThrowGrenade.",
+      "revId": "b039c2ecb9b79a8d0b15d31aaae0b282d9c51fe2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
