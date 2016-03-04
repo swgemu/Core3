@@ -1134,7 +1134,6 @@ void ChatManagerImplementation::handleSpatialChatInternalMessage(CreatureObject*
 	}
 
 	try {
-		printf("args: %s \n", args.toString().toCharArray());
 		UnicodeTokenizer tokenizer(args);
 
 		uint64 targetid = tokenizer.getLongToken();
