@@ -28,22 +28,22 @@ public:
 			return NOJEDIARMOR;
 		}
 
-		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
-		String animCRC = "";
+		return doCombatAction(creature, target, "");
+	}
 
+	String getAnimation(TangibleObject* attacker, TangibleObject* defender, WeaponObject* weapon, uint8 hitLocation, int damage) const {
+
+		String anim = "";
 		if (weapon->isJediOneHandedWeapon()) {
-			animCRC = "knockdown_1hmelee_1";
+			return "knockdown_1hmelee_1";
 		} else if (weapon->isJediTwoHandedWeapon()) {
-			animCRC = "knockdown_2hmelee_1";
+			return "knockdown_2hmelee_1";
 		} else if (weapon->isJediPolearmWeapon()) {
-			animCRC = "knockdown_polearm_1";
+			return "knockdown_polearm_1";
 		} else {
-			return INVALIDWEAPON;
+			warning("Invalid weapon in saberSlash getAnimation");
+			return "";
 		}
-
-		UnicodeString args = "animationCRC=" + String::valueOf(animCRC.hashCode()) + ";";
-
-		return doCombatAction(creature, target, args);
 	}
 
 };
