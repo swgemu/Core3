@@ -1,8 +1,8 @@
 VreniIslandScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
-	
+
 	screenplayName = "VreniIslandScreenPlay",
-	
+
 }
 
 registerScreenPlay("VreniIslandScreenPlay", true)
@@ -99,8 +99,8 @@ function VreniIslandScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "entertained")
 	pNpc = spawnMobile("corellia", "seeker",60,-32.2,-0.9,19.6,76,3005706)
 	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile("corellia", "shadowy_figure",60,-27.8,-0.9,2.1,-56,3005705)
-	self:setMoodString(pNpc, "calm")
+	pNpc = spawnMobile("corellia", "shadowy_figure",60,-27.8,-0.9,0.1,-56,3005705)
+	self:setMoodString(pNpc, "worried")
 	pNpc = spawnMobile("corellia", "mercenary",60,-16.3,-0.9,3.2,106,3005697)
 	self:setMoodString(pNpc, "angry")
 	pNpc = spawnMobile("corellia", "mercenary",60,-16.3,-0.9,-2.9,65,3005697)
