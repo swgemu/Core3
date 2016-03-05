@@ -46,7 +46,7 @@ public:
 
 		Locker targetCrosslocker(targetPlayer, creature);
 
-		if (!player->isInRange(targetPlayer, 15)) {
+		if (!checkDistance(player, targetPlayer, 15)) {
 			player->sendSystemMessage("@error_message:target_out_of_range"); // Your target is out of range for this action.
 			return GENERALERROR;
 		}

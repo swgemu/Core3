@@ -36,6 +36,7 @@ void SharedCreatureObjectTemplate::parseVariableData(const String& varName, Chun
 		collisionHeight.parse(data);
 	} else if (varName == "collisionRadius") {
 		collisionRadius.parse(data);
+		collisionRadiusSq = collisionRadius*collisionRadius;
 	} else if (varName == "movementDatatable") {
 		movementDatatable.parse(data);
 	} else if (varName == "postureAlignToTerrain") {
@@ -79,6 +80,7 @@ void SharedCreatureObjectTemplate::parseVariableData(const String& varName, LuaO
 		collisionHeight = Lua::getFloatParameter(state);
 	} else if (varName == "collisionRadius") {
 		collisionRadius = Lua::getFloatParameter(state);
+		collisionRadiusSq = collisionRadius*collisionRadius;
 	} else if (varName == "warpTolerance") {
 		warpTolerance = Lua::getFloatParameter(state);
 	} else if (varName == "collisionOffsetX") {
