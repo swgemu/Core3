@@ -51,7 +51,7 @@ public:
 				return GENERALERROR;
 			}
 
-			if (player->isAttackableBy(creature) && player->isInRange(creature, 5)) {
+			if (player->isAttackableBy(creature) && checkDistance(player, creature, 5)) {
 				PlayerManager* playerManager = server->getPlayerManager();
 
 				playerManager->killPlayer(creature, player, 1);
@@ -71,7 +71,7 @@ public:
 				return GENERALERROR;
 			}
 
-			if (pet->isAttackableBy(creature) && pet->isInRange(creature, 5)) {
+			if (pet->isAttackableBy(creature) && checkDistance(pet, creature, 5)) {
 				PetManager* petManager = server->getZoneServer()->getPetManager();
 
 				petManager->killPet(creature, pet);

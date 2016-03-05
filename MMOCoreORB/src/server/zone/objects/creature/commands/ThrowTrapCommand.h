@@ -80,7 +80,7 @@ public:
 			}
 
 			/// Check Range
-			if(creature->getDistanceTo(targetCreature) > trapData->getMaxRange())
+			if(!checkDistance(creature, targetCreature, trapData->getMaxRange()))
 			{
 				StringIdChatParameter tooFar("cmd_err", "target_range_prose");
 				tooFar.setTO("Throw Trap");
