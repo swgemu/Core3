@@ -156,7 +156,7 @@ public:
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
 			SceneObject* object = cast<SceneObject*>( closeObjects.get(i));
-			if (object == NULL || !object->isPlayerCreature() || !leader->isInRange(object, 70) || group->hasMember(object))
+			if (object == NULL || !object->isPlayerCreature() || !checkDistance(leader, object, 70) || group->hasMember(object))
 				continue;
 
 			CreatureObject* receiver = cast<CreatureObject*>( object); //in range player who isn't in group.

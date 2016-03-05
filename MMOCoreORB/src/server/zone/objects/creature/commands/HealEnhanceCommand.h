@@ -287,7 +287,7 @@ public:
 		uint8 attribute = BuffAttribute::UNKNOWN;
 		uint64 objectId = 0;
 
-		if (!targetCreature->isInRange(creature, range + targetCreature->getTemplateRadius() + creature->getTemplateRadius()))
+		if(!checkDistance(creature, targetCreature, range))
 			return TOOFAR;
 
 		parseModifier(arguments.toString(), attribute, objectId);

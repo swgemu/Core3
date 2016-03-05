@@ -31,7 +31,7 @@ public:
 		if (targetObject == NULL || !targetObject->isPlayerCreature() || targetObject == creature)
 			return INVALIDTARGET;
 
-		if (!targetObject->isInRange(creature, 25))
+		if(!checkDistance(creature, targetObject, 25.0f))
 			return TOOFAR;
 
 		CombatManager* combatManager = CombatManager::instance();
