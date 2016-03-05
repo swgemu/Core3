@@ -40,7 +40,7 @@ public:
 			if (creature->isProne())
 				return NOPRONE;
 
-			if (!targetObject->isInRange(creature, checkRange + targetObject->getTemplateRadius() + creature->getTemplateRadius()))
+			if(!checkDistance(creature, targetObject, checkRange))
 				return TOOFAR;
 
 			if (!CollisionManager::checkLineOfSight(creature, targetObject)) {

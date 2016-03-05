@@ -85,7 +85,7 @@ public:
 			return GENERALERROR;
 		}
 
-		if (!target->isInRange(droid,7.0f)) { // this should run the droid to the target for harvesting
+		if (!checkDistance(target, droid,7.0f)) { // this should run the droid to the target for harvesting
 			module->addHarvestTarget(droidTarget,true);
 			droid->setTargetObject(target);
 			droid->activateMovementEvent();

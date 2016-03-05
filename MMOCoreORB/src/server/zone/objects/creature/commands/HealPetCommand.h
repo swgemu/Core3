@@ -153,7 +153,7 @@ public:
 			return GENERALERROR;
 		}
 
-		if (!creature->isInRange(pet, range + pet->getTemplateRadius() + creature->getTemplateRadius()))
+		if(!checkDistance(creature, pet, range))
 			return TOOFAR;
 
 		uint64 objectID = 0;

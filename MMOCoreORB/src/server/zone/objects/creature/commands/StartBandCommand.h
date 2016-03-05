@@ -206,7 +206,7 @@ public:
 				instrument = cast<Instrument*> (nala.get());
 				ManagedReference<SceneObject*> creatureParent = creature->getParent();
 
-				if (creature->getDistanceTo(nala) >= 3 || nala->getZone()
+				if (!checkDistance(creature, nala, 3) || nala->getZone()
 						== NULL || (creatureParent == NULL && NULL
 						!= nala->getParent().get())) {
 					creature->sendSystemMessage("@elevator_text:too_far"); // You are too far away to use that.

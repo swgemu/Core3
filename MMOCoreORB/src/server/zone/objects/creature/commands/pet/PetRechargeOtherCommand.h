@@ -36,7 +36,7 @@ public:
 		}
 
 		// Check range between droids
-		if (!droidPet->isInRange(targetDroid, 30.0f)){ // Same range as auto-repair
+		if (!checkDistance(droidPet, targetDroid, 30.0f)){ // Same range as auto-repair
 			droidPet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
 			return GENERALERROR;
 		}
