@@ -153,6 +153,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	public native void initializePrivateData();
+	
 
 	/**
 	 * Reads and sets the template data from a SharedObjectTemplate LuaObject

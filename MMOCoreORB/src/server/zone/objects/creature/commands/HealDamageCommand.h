@@ -270,6 +270,8 @@ public:
 	void handleArea(CreatureObject* creature, CreatureObject* areaCenter, StimPack* pharma,
 			float range) const {
 
+		// TODO: Replace this with a CombatManager::getAreaTargets() call
+		
 		Zone* zone = creature->getZone();
 
 		if (zone == NULL)
@@ -292,7 +294,7 @@ public:
 				if (object == areaCenter || object->isDroidObject())
 					continue;
 
-				if (!areaCenter->isInRange(object, range))
+				if (areaCenter->getWorldPosition().distanceTo(object->getWorldPosition()) - object->getTemplateRadius() > range)
 					continue;
 
 				CreatureObject* creatureTarget = cast<CreatureObject*>( object);
@@ -389,7 +391,7 @@ public:
 		if (stimPack->isRangedStimPack())
 			rangeToCheck = (cast<RangedStimPack*>(stimPack.get()))->getRange();
 
-		if (!creature->isInRange(targetCreature, rangeToCheck + targetCreature->getTemplateRadius() + creature->getTemplateRadius()))
+		if(!checkDistance(creature, targetCreature, rangeToCheck))
 			return TOOFAR;
 
 		if (creature != targetCreature && !CollisionManager::checkLineOfSight(creature, targetCreature)) {
@@ -425,7 +427,7 @@ public:
 		}
 
 		if (stimPack->isRangedStimPack()) {
-			doAnimationsRange(creature, targetCreature, stimPack->getObjectID(), creature->getDistanceTo(targetCreature));
+			doAnimationsRange(creature, targetCreature, stimPack->getObjectID(), creature->getWorldPosition().distanceTo(targetCreature->getWorldPosition()));
 		} else {
 			doAnimations(creature, targetCreature);
 		}

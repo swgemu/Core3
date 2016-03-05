@@ -50,7 +50,7 @@ public:
 			return GENERALERROR;
 		}
 
-		if (!creature->isInRange(targetCreature, range + targetCreature->getTemplateRadius() + creature->getTemplateRadius()))
+		if (!checkDistance(creature, targetCreature, range))
 			return TOOFAR;
 
 		int maxTransfer = minDamage; //Value set in command lua
