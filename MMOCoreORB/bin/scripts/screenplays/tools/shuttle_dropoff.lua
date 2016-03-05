@@ -308,7 +308,7 @@ function ShuttleDropoff:showSetupUI(pPlayer)
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local curStep = readData(playerID .. ":ShuttleDropoff:setupStep")
 
-	if (readData(playerID .. ":ShuttleDropoff:setupCompleted") == 1) then
+	if (readData(playerID .. ":ShuttleDropoff:setupCompleted") == 1 or curStep == 0) then
 		self:showMainUI(pPlayer)
 		return
 	end
