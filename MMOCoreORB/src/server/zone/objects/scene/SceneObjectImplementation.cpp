@@ -1589,6 +1589,19 @@ float SceneObjectImplementation::getTemplateRadius() {
 	return app->getBoundingSphere()->getRadius();
 }
 
+float SceneObjectImplementation::getTemplateRadiusSq() {
+	if (templateObject == NULL || templateObject->getAppearanceTemplate() == NULL)
+		return 0.f;
+
+	MeshAppearanceTemplate* app = cast<MeshAppearanceTemplate*>(templateObject->getAppearanceTemplate());
+
+	if (app == NULL || app->getBoundingSphere() == NULL)
+		return 0.f;
+
+	// we currently don't scale these, so we have no scale variable
+	return app->getBoundingSphere()->getRadiusSquared();
+}
+
 void SceneObjectImplementation::playEffect(const String& file,
 		const String& aux) {
 	PlayClientEffectObjectMessage* effect = new PlayClientEffectObjectMessage(

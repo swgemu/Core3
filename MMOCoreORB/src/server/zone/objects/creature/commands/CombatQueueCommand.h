@@ -127,7 +127,7 @@ public:
 		if (targetObject == NULL || !targetObject->isTangibleObject() || targetObject == creature)
 			return INVALIDTARGET;
 
-		float checkRange = range;
+		float rangeToCheck = range;
 
 		if (weapon == NULL) {
 			if(creature->getWeapon() == NULL) {
@@ -141,8 +141,8 @@ public:
 		if (!(getWeaponType() & weapon->getWeaponBitmask()))
 			return INVALIDWEAPON;
 
-		if (checkRange == -1)
-			checkRange = MAX(10.f, weapon->getMaxRange());
+		if (rangeToCheck == -1)
+			rangeToCheck = MAX(10.f, weapon->getMaxRange());
 
 		if (creature->isDead() || (creature->isPet() && creature->isIncapacitated()))
 			return INVALIDLOCOMOTION;
@@ -203,10 +203,10 @@ public:
 		if (creature->isProne() && (weapon->isMeleeWeapon() || poolsToDamage == 0))
 			return NOPRONE;
 
-		if (!targetObject->isInRange(creature, checkRange + targetObject->getTemplateRadius() + creature->getTemplateRadius()))
+		if(!checkDistance(creature, targetObject, rangeToCheck))
 			return TOOFAR;
 
-		if (weapon->isRangedWeapon() && creature->isProne() && targetObject->isInRange(creature, 7 + targetObject->getTemplateRadius() + creature->getTemplateRadius()))
+		if (weapon->isRangedWeapon() && creature->isProne() && checkDistance(targetObject, creature, 7))
 			return TOOCLOSE;
 
 		if (!CollisionManager::checkLineOfSight(creature, targetObject)) {

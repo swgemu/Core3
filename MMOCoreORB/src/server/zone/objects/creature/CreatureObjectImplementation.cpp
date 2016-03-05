@@ -3320,6 +3320,15 @@ float CreatureObjectImplementation::getTemplateRadius() {
 	return creoTempl->getCollisionRadius()*getHeight();
 }
 
+float CreatureObjectImplementation::getTemplateRadiusSq() {
+	SharedCreatureObjectTemplate* creoTempl = templateObject.castTo<SharedCreatureObjectTemplate*>();
+
+	if (creoTempl == NULL)
+		return 0;
+
+	return creoTempl->getCollisionRadius()*getHeight();
+}
+
 bool CreatureObjectImplementation::hasEffectImmunity(uint8 effectType) {
 	switch (effectType) {
 	case CommandEffect::BLIND:

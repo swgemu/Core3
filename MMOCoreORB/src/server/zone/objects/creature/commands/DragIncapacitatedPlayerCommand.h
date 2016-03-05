@@ -79,14 +79,15 @@ public:
 			player->sendSystemMessage("@healing_response:healing_response_a5"); //"You must first have a valid target to drag before you can perform this command."
 			return;
 		}
+		float sqDistance = targetPlayer->getWorldPosition().squaredDistanceTo(player->getWorldPosition());
 
 		//Check minimum range.
-		if (player->isInRange(targetPlayer, 0.01f)) {
+		if (sqDistance < 0.01f*0.01f) {
 			return;
 		}
 
 		//Check maximum range.
-		if (!player->isInRange(targetPlayer, maxRange)) {
+		if (sqDistance > maxRange*maxRange) {
 			StringIdChatParameter stringId("healing_response", "healing_response_b1"); //"Your maximum drag range is %DI meters! Try getting closer."
 			stringId.setDI(maxRange);
 			player->sendSystemMessage(stringId); 
