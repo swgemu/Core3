@@ -214,7 +214,7 @@ public:
 				if (object == areaCenter || object->isDroidObject())
 					continue;
 
-				if (!areaCenter->isInRange(object, range))
+				if (!checkDistance(areaCenter, object, 10))
 					continue;
 
 				CreatureObject* creatureTarget = cast<CreatureObject*>( object);
@@ -377,7 +377,7 @@ public:
 			}
 		}
 
-		if (!creature->isInRange(targetCreature, range + creature->getTemplateRadius() + targetCreature->getTemplateRadius()))
+		if(!checkDistance(creature, targetCreature, range))
 			return TOOFAR;
 
 		int mindCostNew = creature->calculateCostAdjustment(CreatureAttribute::FOCUS, mindCost);

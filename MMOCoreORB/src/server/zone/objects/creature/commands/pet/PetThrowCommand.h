@@ -74,7 +74,7 @@ public:
 		}
 
 		// Check range to target
-		if (!droid->isInRange(target, 64.0f)){ // traps via launcher get their own range
+		if (!checkDistance(droid, target, 64.0f)){ // traps via launcher get their own range
 			droid->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
 			return GENERALERROR;
 		}

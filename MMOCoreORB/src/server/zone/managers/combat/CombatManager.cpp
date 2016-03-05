@@ -1466,7 +1466,7 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 	//info("Attacker accuracy bonus is " + String::valueOf(accuracyBonus), true);
 	float weaponAccuracy = 0.0f;
 	// Get the weapon mods for range and add the mods for stance
-	weaponAccuracy = getWeaponRangeModifier(attacker->getDistanceTo(targetCreature) - targetCreature->getTemplateRadius() - attacker->getTemplateRadius(), weapon);
+	weaponAccuracy = getWeaponRangeModifier(attacker->getWorldPosition().distanceTo(attacker->getWorldPosition()) - targetCreature->getTemplateRadius() - attacker->getTemplateRadius(), weapon);
 	// accounts for steadyaim, general aim, and specific weapon aim, these buffs will clear after a completed combat action
 	if (creoAttacker != NULL) {
 		if (weapon->getAttackType() == WeaponObject::RANGEDATTACK) weaponAccuracy += creoAttacker->getSkillMod("private_aim");
@@ -2493,6 +2493,9 @@ Reference<SortedVector<ManagedReference<TangibleObject*> >* > CombatManager::get
 			zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
 		}
 
+		float rangeSq = range*range;
+		const Vector3 attackerPosition = attacker->getWorldPosition();
+
 		for (int i = 0; i < closeObjects.size(); ++i) {
 			SceneObject* object = cast<SceneObject*>(closeObjects.get(i));
 
@@ -2513,13 +2516,13 @@ Reference<SortedVector<ManagedReference<TangibleObject*> >* > CombatManager::get
 				continue;
 			}
 
-			if (!attacker->isInRange(object, range + object->getTemplateRadius() + attacker->getTemplateRadius())) {
+			if (attackerPosition.squaredDistanceTo(object->getWorldPosition()) > rangeSq) {
 				//error("not in range " + String::valueOf(range));
 				continue;
 			}
 
 			if (data.isSplashDamage() || weapon->isThrownWeapon() || weapon->isHeavyWeapon()) {
-				if (!(tano->isInRange(defenderObject, data.getAreaRange() + defenderObject->getTemplateRadius())))
+				if (tano->getWorldPosition().distanceTo(defenderObject->getWorldPosition()) > data.getAreaRange())
 					continue;
 			}
 

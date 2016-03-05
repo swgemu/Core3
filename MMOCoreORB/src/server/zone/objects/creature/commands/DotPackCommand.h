@@ -118,7 +118,7 @@ public:
 				if (object == areaCenter || object == creature)
 					continue;
 
-				if (!areaCenter->isInRange(object, range))
+				if (!checkDistance(areaCenter, object, range))
 					continue;
 
 				CreatureObject* creatureTarget = cast<CreatureObject*>( object);
@@ -260,10 +260,8 @@ public:
 
 		int	range = int(dotPack->getRange() + creature->getSkillMod("healing_range") / 100 * 14);
 
-		if (creature != creatureTarget && !creature->isInRange(creatureTarget, range + creatureTarget->getTemplateRadius() + creature->getTemplateRadius())){
-			creature->sendSystemMessage("@error_message:target_out_of_range"); //Your target is out of range for this action.
-			return TOOFAR;
-		}
+		if(!checkDistance(creature, creatureTarget, range))
+					return TOOFAR;
 		//timer
 		if (!creature->checkCooldownRecovery(skillName)) {
 			creature->sendSystemMessage("@healing_response:healing_must_wait"); //You must wait before you can do that.
@@ -361,7 +359,7 @@ public:
 			dotPack->decreaseUseCount();
 		}
 
-		doAnimationsRange(creature, creatureTarget, dotPack->getObjectID(), creature->getDistanceTo(creatureTarget), dotPack->isArea());
+		doAnimationsRange(creature, creatureTarget, dotPack->getObjectID(), creature->getWorldPosition().distanceTo(creatureTarget->getWorldPosition()), dotPack->isArea());
 
 		creature->notifyObservers(ObserverEventType::MEDPACKUSED);
 
