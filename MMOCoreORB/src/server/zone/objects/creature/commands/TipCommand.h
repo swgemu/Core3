@@ -16,7 +16,7 @@ private:
 			int amount) const {
 
 		// Target player must be in range (I think it's likely to assume this is the maximum targeting range, 190m)
-		if (!player->isInRange(targetPlayer, 190)) {
+		if (!checkDistance(player, targetPlayer, 190)) {
 			StringIdChatParameter ptr("base_player", "prose_tip_range"); // You are too far away to tip %TT with cash. You can send a wire transfer instead.
 			ptr.setTT(targetPlayer->getCreatureName());
 			player->sendSystemMessage(ptr);

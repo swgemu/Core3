@@ -119,6 +119,11 @@ public:
 		invalidLocomotion.add(l);
 	}
 
+	inline bool checkDistance(SceneObject* source, SceneObject* target, float range) const {
+		//TODO: Stored squared template radius as a transient and use that in calculations instead
+		return (source->getWorldPosition().distanceTo(target->getWorldPosition()) - source->getTemplateRadius() - target->getTemplateRadius() <= range);
+	}
+
 	/*
 	 * Override me
 	 */
