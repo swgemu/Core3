@@ -163,8 +163,8 @@ function ShuttleDropoff:cleanUp(pPlayer)
 		return
 	end
 
-	self:destroyShuttle(pPlayer)
 	self:resetDefaults(pPlayer)
+	self:destroyShuttle(pPlayer)
 end
 
 function ShuttleDropoff:doTakeOff(pPlayer)
@@ -249,8 +249,8 @@ function ShuttleDropoff:suiShuttleDropoffMainCallback(pPlayer, pSui, eventIndex,
 			end
 		end
 	elseif (args == "quit") then
-		self:destroyShuttle(pPlayer)
 		self:resetDefaults(pPlayer)
+		self:destroyShuttle(pPlayer)
 		return
 	elseif (args == "f") then
 		if (readData(playerID .. ":ShuttleDropoff:setupCompleted") ~= 1) then
@@ -308,7 +308,7 @@ function ShuttleDropoff:showSetupUI(pPlayer)
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local curStep = readData(playerID .. ":ShuttleDropoff:setupStep")
 
-	if (readData(playerID .. ":ShuttleDropoff:setupCompleted") == 1) then
+	if (readData(playerID .. ":ShuttleDropoff:setupCompleted") == 1 or curStep == 0) then
 		self:showMainUI(pPlayer)
 		return
 	end
