@@ -535,10 +535,8 @@ int ForceHealQueueCommand::runCommandWithTarget(CreatureObject* creature, Creatu
 		return GENERALERROR;
 	}
 
-	if (!creature->isInRange(targetCreature, range + targetCreature->getTemplateRadius() + creature->getTemplateRadius())) {
-		// out of range
+	if(!checkDistance(creature, targetCreature, range))
 		return TOOFAR;
-	}
 
 	if (!CollisionManager::checkLineOfSight(creature, targetCreature)) {
 		creature->sendSystemMessage("@container_error_message:container18"); // not in sight?!?

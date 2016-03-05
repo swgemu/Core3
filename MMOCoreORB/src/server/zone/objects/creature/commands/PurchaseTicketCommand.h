@@ -35,7 +35,7 @@ public:
 
 		for (int i = 0; i < closeObjects.size(); i++) {
 			SceneObject* object = cast<SceneObject*>( closeObjects.get(i));
-			if (object != NULL && object->getGameObjectType() == SceneObjectType::TRAVELTERMINAL && creature->getDistanceTo(object) <= 8) {
+			if (object != NULL && object->getGameObjectType() == SceneObjectType::TRAVELTERMINAL && checkDistance(creature, object, 8)) {
 				nearTravelTerminal = true;
 				break;
 			}

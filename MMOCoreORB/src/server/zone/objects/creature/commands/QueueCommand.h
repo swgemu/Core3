@@ -119,6 +119,10 @@ public:
 		invalidLocomotion.add(l);
 	}
 
+	inline bool checkDistance(SceneObject* source, SceneObject* target, float range) const {
+		return (source->getWorldPosition().squaredDistanceTo(target->getWorldPosition()) - source->getTemplateRadius() - target->getTemplateRadius() <= (range * range));
+	}
+
 	/*
 	 * Override me
 	 */
