@@ -30,6 +30,7 @@ protected:
 	FloatParam stepHeight;
 	FloatParam collisionHeight;
 	FloatParam collisionRadius;
+	float collisionRadiusSq;
 
 	StringParam movementDatatable;
 
@@ -95,6 +96,10 @@ public:
 
 	inline float getCollisionRadius() const {
 		return collisionRadius;
+	}
+
+	inline float getCollisionRadiusSq() const {
+		return collisionRadiusSq;
 	}
 
 	inline int getGender() const {
@@ -187,6 +192,8 @@ public:
 
 	void setCollisionRadius(float collisionRadius) {
 		this->collisionRadius = collisionRadius;
+
+		collisionRadiusSq = collisionRadius*collisionRadius;
 	}
 
 	void setGender(int gender) {

@@ -33,7 +33,7 @@ public:
 
 		Locker clocker(targetPlayer, creature);
 
-		if(targetPlayer->getDistanceTo(creature) > 10.0) {
+		if(!checkDistance(creature, targetPlayer, 10.0f)) {
 			return GENERALERROR;
 		}
 
@@ -62,7 +62,7 @@ public:
 		for (int i = 0; i < objects.size(); ++i) {
 			SceneObject* object = cast<SceneObject*>(objects.get(i));
 
-			if (object->isCreatureObject() && creature->isInRange(object, 32)) {
+			if (object->isCreatureObject() && checkDistance(creature, object, 32)) {
 				CreatureObject* creo = cast<CreatureObject*>(object);
 
 				if(!creo->isDead() && (creo->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE)) {

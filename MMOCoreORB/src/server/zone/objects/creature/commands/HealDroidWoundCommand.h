@@ -184,7 +184,7 @@ public:
 			return GENERALERROR;
 		}
 
-		if (!creature->isInRange(droid, range + droid->getTemplateRadius() + creature->getTemplateRadius()))
+		if(!checkDistance(creature, droid, range))
 			return TOOFAR;
 
 		uint8 attribute = findAttribute(droid);

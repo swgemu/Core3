@@ -103,7 +103,7 @@ public:
 		if(type.isEmpty())
 			return "throw_grenade";
 
-		int range = attacker->getDistanceTo(defender);
+		int range = attacker->getWorldPosition().distanceTo(defender->getWorldPosition());
 
 		String distance = "";
 		if(range < 10) {

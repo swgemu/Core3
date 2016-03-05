@@ -67,7 +67,7 @@ public:
 					continue;
 
 				// Check range
-				if( !player->isInRange( pet, 50.0 ) )
+				if( !checkDistance(player, pet, 50.0f) )
 					continue;
 
 				// Check if pet already has buff
