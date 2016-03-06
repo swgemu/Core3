@@ -53,11 +53,7 @@ public:
 			if (weaponData == NULL)
 				return GENERALERROR;
 
-			// TODO: This is probably actually determined by some combat result
-			String animName = "fire_heavy_" + weaponData->getAnimationType() + (System::random(1) ? "_light" : "_medium");
-			uint32 animCRC = animName.hashCode();
-
-			UnicodeString args = "combatSpam=" + weaponData->getCombatSpam() + ";animationCRC=" + String::valueOf(animCRC) + ";";
+			UnicodeString args = "combatSpam=" + weaponData->getCombatSpam() + ";";
 
 			int result = doCombatAction(creature, target, args, weapon);
 
@@ -76,6 +72,20 @@ public:
 		}
 
 		return GENERALERROR;
+	}
+
+	String getAnimation(TangibleObject* attacker, TangibleObject* defender, WeaponObject* weapon, uint8 hitLocation, int damage) const {
+		if (weapon == NULL) {
+			warning("Null weapon in FireHeavyWeapon::getAnimation");
+			return "";
+		}
+		SharedWeaponObjectTemplate* weaponData = cast<SharedWeaponObjectTemplate*>(weapon->getObjectTemplate());
+		if (weaponData == NULL) {
+			warning("Null weaponData in FireHeavyWeapon::getAnimation");
+			return "";
+		}
+
+		return "fire_heavy_" + weaponData->getAnimationType() + getIntensity(weapon->getMaxDamage()/2.0f, damage);
 	}
 
 	float getCommandDuration(CreatureObject *object, const UnicodeString& arguments) const {

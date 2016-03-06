@@ -535,7 +535,7 @@ public:
 		//info("Generated Attack Animation- " + anim, true);
 		return anim;
 	}
-	virtual String getAnimation(TangibleObject* attacker, WeaponObject* weapon, uint8 hitLocation, int damage) const {
+	virtual String getAnimation(TangibleObject* attacker, TangibleObject* defender, WeaponObject* weapon, uint8 hitLocation, int damage) const {
 
 		if(animation.isEmpty())
 			return getDefaultAttackAnimation(attacker, weapon, hitLocation, damage);
