@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_91880724",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GotoCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-07T03:03:26Z",
+      "side": 1,
+      "message": "You don\u0027t need to leave all your debugging statements in, even undefined. Go ahead and remove them.",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_3179fb2f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GotoCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-07T03:03:26Z",
+      "side": 1,
+      "message": "Why not continue?",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_71877310",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GotoCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-07T03:03:26Z",
+      "side": 1,
+      "message": "You should check that planet is not empty before calling switchZone. This could happen if they have a waypoint on a zone that is currently disabled.",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_b18d0b34",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GotoCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-07T03:03:26Z",
+      "side": 1,
+      "message": "The \u0027to\u0027 seems redundant.",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_f19b8370",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GotoCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-07T03:03:26Z",
+      "side": 1,
+      "message": "You don\u0027t use this. Go ahead and remove it.",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_117cf71f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GotoCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-07T03:03:26Z",
+      "side": 1,
+      "message": "I would get planet before you start building menuText and just continue if it\u0027s empty.",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_51826f01",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GotoCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-07T03:03:26Z",
+      "side": 1,
+      "message": "ZoneServer keeps a ManagedReference to all zones already so you don\u0027t need to add a ref here.",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_d1751f33",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GotoCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-07T03:03:26Z",
+      "side": 1,
+      "message": "Again, you don\u0027t need to ref count here.",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_f172a348",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/GotoSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-07T03:03:26Z",
+      "side": 1,
+      "message": "This server \u003d\u003d NULL check is redundant as you already checked it above.",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_b1942b38",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/GotoSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-07T03:03:26Z",
+      "side": 1,
+      "message": "You don\u0027t use this. Go ahead and remove.",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_918fa723",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/GotoSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-07T03:03:26Z",
+      "side": 1,
+      "message": "No need to ref count here.",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
