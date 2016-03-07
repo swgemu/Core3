@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_719e9358",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1469,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-07T03:27:22Z",
+      "side": 1,
+      "message": "You\u0027re checking distance of attacker\u0027s position to attacker\u0027s position which should always be zero.",
+      "revId": "dd3ad507bfcbe0a696763256d4214967ca81fa13",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_11a3979f",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2519,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-07T03:27:22Z",
+      "side": 1,
+      "message": "You\u0027re removing template radii from the range check here and many places in this patch? Why?",
+      "revId": "dd3ad507bfcbe0a696763256d4214967ca81fa13",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_f1a9437c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CurePackCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-07T03:27:22Z",
+      "side": 1,
+      "message": "Why use 10 and not range?",
+      "revId": "dd3ad507bfcbe0a696763256d4214967ca81fa13",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_51feef6c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SniperShotCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-07T03:27:22Z",
+      "side": 1,
+      "message": "Why change this from maxRange to range? range for this command is -1 (which denotes that it should use the weapon\u0027s range).",
+      "revId": "dd3ad507bfcbe0a696763256d4214967ca81fa13",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
