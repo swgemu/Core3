@@ -264,7 +264,8 @@ public:
 		PET_FIX_DIALOG					   = 1037,
 		JUKEBOX_SELECTION				   = 1038,
 		SHUTTLE_BEACON					   = 1039,
-		FIELD_FACTION_CHANGE			   = 1040
+		FIELD_FACTION_CHANGE			   = 1040,
+		GOTO_LIST			   = 1041
 	};
 };
 
