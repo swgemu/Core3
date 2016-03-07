@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_912b27eb",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GotoCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2016-03-07T04:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7095c5_91880724",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_3179fb2f",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GotoCommand.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-03-07T03:03:26Z",
       "side": 1,
       "message": "Why not continue?",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_b130ab57",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GotoCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2016-03-07T04:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7095c5_3179fb2f",
       "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_51358f44",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GotoCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2016-03-07T04:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7095c5_71877310",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_b18d0b34",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GotoCommand.h",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2016-03-07T03:03:26Z",
       "side": 1,
       "message": "The \u0027to\u0027 seems redundant.",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_713a1338",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GotoCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2016-03-07T04:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7095c5_b18d0b34",
       "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_113f1727",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GotoCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2016-03-07T04:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7095c5_f19b8370",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_117cf71f",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GotoCommand.h",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2016-03-07T03:03:26Z",
       "side": 1,
       "message": "I would get planet before you start building menuText and just continue if it\u0027s empty.",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_313c9b2f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GotoCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2016-03-07T04:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7095c5_117cf71f",
       "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_d148bfce",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GotoCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2016-03-07T04:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7095c5_51826f01",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_d1751f33",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GotoCommand.h",
         "patchSetId": 1
@@ -132,6 +258,24 @@
       "writtenOn": "2016-03-07T03:03:26Z",
       "side": 1,
       "message": "Again, you don\u0027t need to ref count here.",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_f145c3b3",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GotoCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2016-03-07T04:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7095c5_d1751f33",
       "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_911247b3",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/GotoSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2016-03-07T04:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7095c5_f172a348",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_b1942b38",
         "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/GotoSuiCallback.h",
         "patchSetId": 1
@@ -172,6 +334,24 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_b1174ba3",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/GotoSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2016-03-07T04:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7095c5_b1942b38",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_918fa723",
         "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/GotoSuiCallback.h",
         "patchSetId": 1
@@ -183,6 +363,24 @@
       "writtenOn": "2016-03-07T03:03:26Z",
       "side": 1,
       "message": "No need to ref count here.",
+      "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_510caf94",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/GotoSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 2367
+      },
+      "writtenOn": "2016-03-07T04:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7095c5_918fa723",
       "revId": "d01fbf7e0b0e6db4c2855ec536911c9535994996",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
