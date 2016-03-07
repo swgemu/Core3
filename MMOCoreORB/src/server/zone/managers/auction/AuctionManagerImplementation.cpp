@@ -805,7 +805,8 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 	Locker locker(item);
 	Locker plocker(player);
 
-	if (player->getBankCredits() < price1) {
+	if (player->getBankCredits() < price1 ||
+			player->getBankCredits() < item->getPrice()) {
 		BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), BidAuctionResponseMessage::NOTENOUGHCREDITS);
 		player->sendMessage(msg);
 
@@ -822,17 +823,8 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 		StringIdChatParameter bidderBody("@auction:bidder_outbid"); // You have been outbid on the "%TO" that you were bidding on.
 		bidderBody.setTO(itemName);
 
-		if (priorBidder != NULL) {
-			Locker clocker(priorBidder, player);
-
-			if(priorBidder != player)
-				priorBidder->sendSystemMessage(bidderBody);
-			priorBidder->addBankCredits(item->getPrice());
-		}
-
 		// mail prior bidder with outcome
 		UnicodeString bidderSubject("@auction:subject_auction_outbid"); // Auction Outbid
-
 
 		item->setPrice(price1);
 		item->setBuyerID(player->getObjectID());
@@ -840,6 +832,15 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 
 		// take money from high bidder
 		player->subtractBankCredits(item->getPrice());
+
+		if (priorBidder != NULL) {
+			Locker clocker(priorBidder, player);
+
+			if (priorBidder != player)
+				priorBidder->sendSystemMessage(bidderBody);
+
+			priorBidder->addBankCredits(item->getPrice());
+		}
 
 		plocker.release();
 		locker.release();
@@ -895,10 +896,16 @@ void AuctionManagerImplementation::buyItem(CreatureObject* player, uint64 object
 		return;
 	}
 
-
 	if (!item->isAuction()) { // Instant buy
 		doInstantBuy(player, item);
 	} else { // For Auction Bids
+		if (price1 < 1) {
+			BaseMessage* msg = new BidAuctionResponseMessage(objectid, BidAuctionResponseMessage::INVALIDPRICE);
+			player->sendMessage(msg);
+
+			return;
+		}
+
 		doAuctionBid(player, item, price1, price2);
 	}
 
