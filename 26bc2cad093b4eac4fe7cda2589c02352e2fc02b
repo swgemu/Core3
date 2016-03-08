@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "da7095c5_1102b73e",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuff.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-03-08T11:11:39Z",
+      "side": 1,
+      "message": "You should probably accumulate this value. This way you would know exactly how much HAM in total was being reduced by the buff. This would make it easy to restore them back to full health.",
+      "range": {
+        "startLine": 35,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 17
+      },
+      "revId": "26bc2cad093b4eac4fe7cda2589c02352e2fc02b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_b1f3cb72",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuff.idl",
         "patchSetId": 3
