@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_b1f3cb72",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuff.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-03-08T11:01:11Z",
+      "side": 1,
+      "message": "You will lose precision here as the remainder of the division will get discarded. You will have to make up for this in the last tick to make sure they\u0027re back at max ham.",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 31
+      },
+      "revId": "26bc2cad093b4eac4fe7cda2589c02352e2fc02b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_f1e1439b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffDurationEvent.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-03-08T11:01:11Z",
+      "side": 1,
+      "message": "If you use buff-\u003erenew you don\u0027t need this task.",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 37
+      },
+      "revId": "26bc2cad093b4eac4fe7cda2589c02352e2fc02b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_51e82f7c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-03-08T11:01:11Z",
+      "side": 1,
+      "message": "If the creature dies while this buff is active I don\u0027t think it will properly deactivate/restore HAM but instead reschedule itself. This is assuming that the creature should revive with full HAM though.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 49
+      },
+      "revId": "26bc2cad093b4eac4fe7cda2589c02352e2fc02b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_91eec78a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-03-08T11:01:11Z",
+      "side": 1,
+      "message": "you can replace this with buff-\u003erenew() if you also created another member for the maximum duration. Inside the renew you would have to recalculate cfTick and add to \"amountOfTicks\". The renew will automatically reschedule the BuffDurationEvent though",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 38
+      },
+      "revId": "26bc2cad093b4eac4fe7cda2589c02352e2fc02b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
