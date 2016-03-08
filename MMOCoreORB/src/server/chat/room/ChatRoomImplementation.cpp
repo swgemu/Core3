@@ -104,7 +104,7 @@ void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
 	for (int i = 0; i < playerList.size(); ++i) {
 		ManagedReference<CreatureObject*> player = playerList.get(i);
 
-		if (player)
+		if (player != NULL)
 			player->sendMessage(msg->clone());
 	}
 
@@ -163,7 +163,7 @@ String ChatRoomImplementation::getModeratorName(int index) {
 	String name = "";
 	uint64 objectID = moderatorList.get(index);
 
-	CreatureObject* moderator = server->getObject(objectID).castTo<CreatureObject*>();
+	Reference<CreatureObject*> moderator = server->getObject(objectID).castTo<CreatureObject*>();
 	if (moderator != NULL)
 		name = moderator->getFirstName();
 
@@ -176,7 +176,7 @@ String ChatRoomImplementation::getInvitedName(int index) {
 	String name = "";
 	uint64 objectID = invitedList.get(index);
 
-	CreatureObject* invited = server->getObject(objectID).castTo<CreatureObject*>();
+	Reference<CreatureObject*> invited = server->getObject(objectID).castTo<CreatureObject*>();
 	if (invited != NULL)
 		name = invited->getFirstName();
 
@@ -189,7 +189,7 @@ String ChatRoomImplementation::getBannedName(int index) {
 	String name = "";
 	uint64 objectID = bannedList.get(index);
 
-	CreatureObject* banned = server->getObject(objectID).castTo<CreatureObject*>();
+	Reference<CreatureObject*> banned = server->getObject(objectID).castTo<CreatureObject*>();
 	if (banned != NULL)
 		name = banned->getFirstName();
 
