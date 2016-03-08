@@ -1,0 +1,40 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.creature.buffs;
+
+import engine.core.ManagedObject;
+import system.util.VectorMap;
+import system.lang.ref.Reference;
+import server.zone.objects.creature.CreatureObject;
+
+include server.zone.ZoneProcessServer;
+import server.zone.objects.creature.buffs.Buff;
+include server.zone.objects.creature.buffs.BuffType;
+include server.zone.objects.creature.buffs.BuffCRC;
+include server.chat.StringIdChatParameter;
+
+
+class ChannelForceBuff extends Buff {
+
+	protected int cfTick;
+	protected int amountOfTicks;
+	protected int currentTick;
+	
+	public ChannelForceBuff(CreatureObject creo, final string name, unsigned int buffCRC, int value, int duration) {
+		super(creo, buffCRC, duration, BuffType.SKILL);
+		super.buffName = name;
+		amountOfTicks = 20;
+		cfTick = value;
+	}
+	
+	public native void initializeTransientMembers();
+
+	@preLocked
+	public native void activate(boolean applyModifiers);
+	@preLocked
+	public native void deactivate(boolean removeModifiers);
+
+	public native void doHamTick();
+}
