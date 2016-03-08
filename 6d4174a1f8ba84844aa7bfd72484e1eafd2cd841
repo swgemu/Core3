@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_f14aa3ab",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObject.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-08T04:23:46Z",
+      "side": 1,
+      "message": "There\u0027s a fundamental flaw with using a transient task to handle the recovery. The reductions might be updated to the db and not all of the recoveries when the server goes down. This will cause the same type of permanent reductions that you are trying to fix.\n\nI think the best solution would be to ditch the task altogether and use a buff. Buffs are automatically serialized and start right back up when loaded from the db.",
+      "revId": "6d4174a1f8ba84844aa7bfd72484e1eafd2cd841",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
