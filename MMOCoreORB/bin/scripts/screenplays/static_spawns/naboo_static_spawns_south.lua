@@ -16,10 +16,10 @@ end
 function NabooStaticSpawnsSouthScreenPlay:spawnMobiles()
 
 		--Fishing Pond (-6310,-5075)
-	local pNpc = spawnMobile("naboo", "commoner", 180, -6306.9, 5.5, -5082.5, -158.0, 0)
+	local pNpc = spawnMobile("naboo", "commoner", 180, -6327.0, 3.3, -5082.4, 39.0, 0)
 	self:setMoodString(pNpc, "fishing")
 	spawnMobile("naboo", "commoner", 180, -6318.0, 4.7, -5077.5, -34.0, 0)
-	spawnMobile("naboo", "commoner", 180, -6327.0, 3.3, -5082.4, 39.0, 0)
+	spawnMobile("naboo", "commoner", 180, -6306.9, 5.5, -5082.5, -158.0, 0)
 
 		--Gungan Shield Generator (-5184,-6366)
 	pNpc = spawnMobile("naboo", "gungan_boss", 300, -5170.7, 5.2, -6382.9, -44, 0)
