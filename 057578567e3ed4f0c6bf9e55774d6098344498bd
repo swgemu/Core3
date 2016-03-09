@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_b168abf6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ChannelForceCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-09T01:33:56Z",
+      "side": 1,
+      "message": "This needs to be part of the buff or you haven\u0027t solved the problem. What happens if you use channel force and then are killed right after (your buffs are removed when killed)?\n\nWhat you should be aiming for is a setup where if the buff is removed, maxHam goes back to normal and if not, the penalty diminishes over time.",
+      "revId": "057578567e3ed4f0c6bf9e55774d6098344498bd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
