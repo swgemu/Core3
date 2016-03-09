@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_31ad7b32",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2519,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-09T01:25:32Z",
+      "side": 1,
+      "message": "Why remove the attacker\u0027s radius here?\n\nAlso, you\u0027re using squared distance yet not squaring the template radius.",
+      "revId": "a3be073ad585462246c893bc2ea66e16ad51f642",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_d1a99f25",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/QueueCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-09T01:25:32Z",
+      "side": 1,
+      "message": "You\u0027re checking squared distance yet you aren\u0027t squaring the template radii.",
+      "revId": "a3be073ad585462246c893bc2ea66e16ad51f642",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_f1a62353",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/TransferForceCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-09T01:25:32Z",
+      "side": 1,
+      "message": "You shouldn\u0027t need to add the template radii here since they\u0027ll be added inside checkDistance, right?",
+      "revId": "a3be073ad585462246c893bc2ea66e16ad51f642",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
