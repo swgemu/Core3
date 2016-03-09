@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_b1366b02",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/dantooine/drakka_judarrl.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-09T09:51:32Z",
+      "side": 1,
+      "message": "This mob already gets the interesting bit added by the quest logic when it is spawned and therefore this is redundant and unnecessary.",
+      "revId": "92848c81a43f645c59d57ecf9feb7d0957b09718",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_7140d356",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/tatooine/hero_of_tat/hero_of_tat_hermit.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-09T09:51:32Z",
+      "side": 1,
+      "message": "Do other hero of tat mobs (bh/pirate/etc.) need the same bit set?",
+      "revId": "92848c81a43f645c59d57ecf9feb7d0957b09718",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_513b4feb",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/tatooine/serene_floater.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-09T09:51:32Z",
+      "side": 1,
+      "message": "This mob already gets the interesting bit added by the quest logic when it is spawned and therefore this is redundant and unnecessary.",
+      "revId": "92848c81a43f645c59d57ecf9feb7d0957b09718",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
