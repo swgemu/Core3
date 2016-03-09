@@ -78,7 +78,7 @@ function FsSad2:acceptNextTask(pPlayer)
 				self:finishOldTask(pPlayer, i)
 
 				if (i == 8) then
-					self:completeSeries(pPlayer, questID)
+					self:completeSeries(pPlayer)
 				else
 					local newQuestID = getPlayerQuestID("fs_quests_sad2_task" .. i + 1)
 					self:startTask(pPlayer, newQuestID, i + 1)
@@ -89,7 +89,7 @@ function FsSad2:acceptNextTask(pPlayer)
 	end
 end
 
-function FsSad2:completeSeries(pPlayer, questID)
+function FsSad2:completeSeries(pPlayer)
 	QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_QUESTS_SAD2_TASKS)
 	QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_QUESTS_SAD2_FINISH)
 	VillageJediManagerCommon.setCompletedQuestThisPhase(pPlayer)

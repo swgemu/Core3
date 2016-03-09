@@ -10,11 +10,11 @@ function villageDageerinPhase3ConvoHandler:getInitialScreen(pPlayer, pNpc, pConv
 		return convoTemplate:getScreen("intro_not_eligible")
 	elseif (QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_QUESTS_SAD2_FINISH)) then
 		return convoTemplate:getScreen("intro_completed_quest")
-	elseif (FsSad:hasActiveNonReturnTask(pPlayer)) then
+	elseif (FsSad2:hasActiveNonReturnTask(pPlayer)) then
 		return convoTemplate:getScreen("intro_on_task")
-	elseif (FsSad:hasActiveReturnTask(pPlayer) and FsSad:hasExceededLimit(pPlayer)) then
+	elseif (FsSad2:hasActiveReturnTask(pPlayer) and FsSad2:hasExceededLimit(pPlayer)) then
 		return convoTemplate:getScreen("intro_max_tasks_for_day")
-	elseif ((FsSad:hasActiveNonReturnTask(pPlayer) or FsSad:hasActiveReturnTask(pPlayer)) and not SuiRadiationSensor:hasSensor(pPlayer)) then
+	elseif ((FsSad2:hasActiveNonReturnTask(pPlayer) or FsSad2:hasActiveReturnTask(pPlayer)) and not SuiRadiationSensor:hasSensor(pPlayer)) then
 		return convoTemplate:getScreen("intro_need_new_sensor")
 	elseif (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_QUESTS_SAD2_RETURN1)) then
 		return convoTemplate:getScreen("intro_completed_one")
@@ -31,7 +31,7 @@ function villageDageerinPhase3ConvoHandler:getInitialScreen(pPlayer, pNpc, pConv
 	elseif (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_QUESTS_SAD2_RETURN7)) then
 		return convoTemplate:getScreen("intro_completed_seven")
 	elseif (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_QUESTS_SAD2_RETURN8)) then
-		if (FsSad:hasFullInventory(pPlayer)) then
+		if (FsSad2:hasFullInventory(pPlayer)) then
 			return convoTemplate:getScreen("intro_full_inventory")
 		else
 			return convoTemplate:getScreen("intro_reward")
@@ -53,10 +53,10 @@ function villageDageerinPhase3ConvoHandler:runScreenHandlers(conversationTemplat
 		SuiRadiationSensor:giveSensor(conversingPlayer)
 
 		if (screenID == "good_luck") then
-			FsSad:acceptNextTask(conversingPlayer)
+			FsSad2:acceptNextTask(conversingPlayer)
 		end
 	elseif (screenID == "come_back_when_eliminated" or screenID == "intro_reward") then
-		FsSad:acceptNextTask(conversingPlayer)
+		FsSad2:acceptNextTask(conversingPlayer)
 	end
 
 	return conversationScreen
