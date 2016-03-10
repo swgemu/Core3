@@ -590,6 +590,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		return 1;
 
 	destructedObject->clearOptionBit(OptionBitmask::INTERESTING);
+	destructedObject->clearOptionBit(OptionBitmask::JTLINTERESTING);
 
 	destructedObject->setPosture(CreaturePosture::DEAD, !isCombatAction, !isCombatAction);
 

@@ -55,6 +55,7 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 	lua->setGlobalInt("INVULNERABLE", OptionBitmask::INVULNERABLE);
 	lua->setGlobalInt("FACTIONAGGRO", OptionBitmask::FACTIONAGGRO);
 	lua->setGlobalInt("INTERESTING", OptionBitmask::INTERESTING);
+	lua->setGlobalInt("JTLINTERESTING", OptionBitmask::JTLINTERESTING);
 
 	lua->setGlobalInt("PACK", CreatureFlag::PACK);
 	lua->setGlobalInt("HERD", CreatureFlag::HERD);

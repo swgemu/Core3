@@ -5,7 +5,7 @@ HyperdriveResearchFacilityScreenPlay = ScreenPlay:new {
 
 	screenplayName = "HyperdriveResearchFacilityScreenPlay",
 
-	buildingID =  479815
+	buildingID = 479815
 }
 
 registerScreenPlay("HyperdriveResearchFacilityScreenPlay", true)
@@ -54,8 +54,6 @@ function HyperdriveResearchFacilityScreenPlay:spawnImperials(pBuilding)
 
 		building:spawnChildSceneObject("object/tangible/gcw/flip_banner_onpole_imperial.iff", 6.7, -12.0, 41.4, 479820, 1, 0, 0, 0)
 		building:spawnChildSceneObject("object/tangible/gcw/flip_banner_onpole_imperial.iff", 0.2, -12.0, 41.4, 479820, 1, 0, 0, 0)
-
-		building:spawnChildSceneObject("object/tangible/furniture/imperial/warren_warning_sign.iff", 35.5, -20.0, 112.6, 479828, 1, 0, 0, 0)
 
 		--imperials outside
 		building:spawnChildCreature("imperial_trooper", 300, -1100, 76.0, 4520, 0, 0)
@@ -249,8 +247,6 @@ function HyperdriveResearchFacilityScreenPlay:spawnRebels(pBuilding)
 		building:spawnChildSceneObject("object/tangible/gcw/flip_banner_onpole_rebel.iff", 6.7, -12.0, 41.4, 479820, 1, 0, 0, 0)
 		building:spawnChildSceneObject("object/tangible/gcw/flip_banner_onpole_rebel.iff", 0.2, -12.0, 41.4, 479820, 1, 0, 0, 0)
 
-		building:spawnChildSceneObject("object/tangible/furniture/imperial/warren_warning_sign.iff", 35.5, -20.0, 112.6, 479828, 1, 0, 0, 0)
-
 		--rebels outside
 		building:spawnChildCreature("rebel_trooper", 300, -1130.5, 77.2, 4511.5, 180, 0)
 		building:spawnChildCreature("rebel_trooper", 300, -1136.9, 77.2, 4511.5, 180, 0)
@@ -334,7 +330,7 @@ function HyperdriveResearchFacilityScreenPlay:spawnRebels(pBuilding)
 		building:spawnChildCreature("rebel_staff_sergeant", 300, -48.7, -20.0, 9.2, 120, 479823)
 		building:spawnChildCreature("rebel_staff_sergeant", 300, -50.5, -20.0, 7.2, 160, 479823)
 		building:spawnChildCreature("rebel_major", 300, -60.7, -20.0, 11.7, -90, 479823)
-		building:spawnChildCreature("rebel_commandant", 1200, -60.7, -20.0, 14.0, -90, 479823)
+		building:spawnChildCreature("rebel_army_captain", 1200, -60.7, -20.0, 14.0, -90, 479823)
 		building:spawnChildCreature("rebel_surface_marshall", 300, -59.1, -20.0, 6.9, 180, 479823)
 		building:spawnChildCreature("rebel_second_lieutenant", 300, -62.6, -20.0, 6.9, 180, 479823)
 		building:spawnChildCreature("rebel_surface_marshall", 300, -66.1, -20.0, 6.9, 180, 479823)
