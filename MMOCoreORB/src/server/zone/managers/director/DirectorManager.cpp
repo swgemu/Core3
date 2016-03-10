@@ -440,6 +440,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("INVULNERABLE", OptionBitmask::INVULNERABLE);
 	luaEngine->setGlobalInt("FACTIONAGGRO", OptionBitmask::FACTIONAGGRO);
 	luaEngine->setGlobalInt("INTERESTING", OptionBitmask::INTERESTING);
+	luaEngine->setGlobalInt("JTLINTERESTING", OptionBitmask::JTLINTERESTING);
 
 	luaEngine->setGlobalInt("OPEN", ContainerPermissions::OPEN);
 	luaEngine->setGlobalInt("MOVEIN", ContainerPermissions::MOVEIN);
