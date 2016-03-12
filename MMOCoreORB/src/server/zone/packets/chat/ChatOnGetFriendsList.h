@@ -2,19 +2,17 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
-#ifndef FRIENDSLISTMESSAGE_H_
-#define FRIENDSLISTMESSAGE_H_
+#ifndef CHATONGETFRIENDSLIST_H_
+#define CHATONGETFRIENDSLIST_H_
 
 #include "engine/engine.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-/*#include "../../objects/player/Player.h"
-#include "../../objects/player/FriendsList.h"*/
 
-class FriendsListMessage : public BaseMessage {
+class ChatOnGetFriendsList : public BaseMessage {
 public:
-	FriendsListMessage(PlayerObject* ghost) : BaseMessage() {
+	ChatOnGetFriendsList(PlayerObject* ghost) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0xE97AB594); // CRC
 
@@ -34,6 +32,7 @@ public:
 		}
 
 	}
+
 };
 
-#endif /*FRIENDSLISTMESSAGE_H_*/
+#endif /*CHATONGETFRIENDSLIST_H_*/

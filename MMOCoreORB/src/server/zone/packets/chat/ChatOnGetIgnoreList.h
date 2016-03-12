@@ -2,16 +2,16 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
-#ifndef IGNORELISTMESSAGE_H_
-#define IGNORELISTMESSAGE_H_
+#ifndef CHATONGETIGNORELIST_H_
+#define CHATONGETIGNORELIST_H_
 
 #include "engine/engine.h"
 
 #include "server/zone/objects/player/PlayerObject.h"
 
-class IgnoreListMessage : public BaseMessage {
+class ChatOnGetIgnoreList : public BaseMessage {
 public:
-	IgnoreListMessage(PlayerObject* ghost) : BaseMessage() {
+	ChatOnGetIgnoreList(PlayerObject* ghost) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0xF8C275B0); // CRC
 
@@ -30,4 +30,4 @@ public:
 	}
 };
 
-#endif /*IGNORELISTMESSAGE_H_*/
+#endif /*CHATONGETIGNORELIST_H_*/

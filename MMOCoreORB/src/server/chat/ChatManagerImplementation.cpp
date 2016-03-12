@@ -416,7 +416,7 @@ int ChatManagerImplementation::checkRoomExpirations() {
 		if (room == NULL)
 			continue;
 
-		if (room->getLastJoinTime() / (1000*60*60)  > ChatManager::ROOMEXPIRATIONTIME) { //in hours
+		if (ROOMEXPIRATIONTIME > 0 && room->getLastJoinTime() / (1000*60*60)  > ROOMEXPIRATIONTIME) { //in hours
 			destroyRoom(room);
 			expired++;
 		}
