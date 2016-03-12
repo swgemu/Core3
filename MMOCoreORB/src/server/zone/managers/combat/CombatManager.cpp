@@ -2107,6 +2107,8 @@ void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObj
 
 	assert(animationCRC != 0);
 
+	uint64 weaponID = (weapon != NULL ? weapon->getObjectID() : 0);
+
 	CreatureObject *dcreo = defenderObject->asCreatureObject();
 	if(dcreo != NULL) { // All of this funkiness only applies to creo targets, tano's don't animate hits or posture changes
 
@@ -2127,12 +2129,12 @@ void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObj
 			}
 
 		} else { // Primary target attack - play default animation
-			attacker->doCombatAnimation(dcreo, animationCRC, hit, data.getTrails());
+			attacker->doCombatAnimation(dcreo, animationCRC, hit, data.getTrails(), weaponID);
 		}
 
 	} else {
 		if(data.getPrimaryTarget() == defenderObject->getObjectID()){ // Tano target attack - play default animation
-			attacker->doCombatAnimation(defenderObject, animationCRC, hit, data.getTrails());
+			attacker->doCombatAnimation(defenderObject, animationCRC, hit, data.getTrails(), weaponID);
 		}
 	}
 

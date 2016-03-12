@@ -82,7 +82,39 @@ public:
 	}
 
 	String getAnimation(TangibleObject* attacker, TangibleObject* defender, WeaponObject* weapon, uint8 hitLocation, int damage) const {
-		return animation;
+
+		if (weapon == NULL) {
+			warning("Null weapon in FireHeavyWeapon::getAnimation");
+			return "";
+		}
+
+		SharedWeaponObjectTemplate* weaponData = cast<SharedWeaponObjectTemplate*>(weapon->getObjectTemplate());
+		if (weaponData == NULL) {
+			warning("Null weaponData in FireHeavyWeapon::getAnimation");
+			return "";
+		}
+
+		if(attacker == NULL || defender == NULL) {
+			warning("Null TangibleObject in ThrowGrenade::getAnimation()");
+			return "";
+		}
+
+		String type = weaponData->getAnimationType();
+		if(type.isEmpty())
+			return "throw_grenade";
+
+		int range = attacker->getDistanceTo(defender);
+
+		String distance = "";
+		if(range < 10) {
+			distance = "_near_";
+		} else if(range < 20) {
+			distance = "_medium_";
+		} else {
+			distance = "_far_";
+		}
+
+		return "throw_grenade" + distance + type;
 	}
 
 	float getCommandDuration(CreatureObject *object, const UnicodeString& arguments) const {
