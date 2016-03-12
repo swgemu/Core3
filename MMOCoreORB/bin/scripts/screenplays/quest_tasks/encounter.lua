@@ -186,7 +186,7 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 function Encounter:createEncounter(pCreatureObject)
 	Logger:log("Spawning mobiles in encounter " .. self.taskName .. ".", LT_INFO)
-	local spawnedObjects = SpawnMobiles.spawnMobiles(pCreatureObject, self.taskName, self.spawnObjectList)
+	local spawnedObjects = SpawnMobiles.spawnMobiles(pCreatureObject, self.taskName, self.spawnObjectList, true)
 
 	if spawnedObjects ~= nil then
 		Logger:log("Set spawned mobiles to follow in encounter " .. self.taskName .. ".", LT_INFO)
