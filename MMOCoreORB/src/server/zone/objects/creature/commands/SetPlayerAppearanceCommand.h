@@ -71,8 +71,12 @@ public:
 
 		// Required to reset a target to its normal template
 		if (templateName == "") {
-			creature->sendSystemMessage("The target's player appearance temple has been reset to its default.");
-			targetCreature->switchZone(targetCreature->getZone()->getZoneName(), targetCreature->getPositionX(), targetCreature->getPositionZ(), targetCreature->getPositionY(), targetCreature->getParentID());
+			Zone* zone = targetCreature->getZone();
+
+			if (zone != NULL) {
+				creature->sendSystemMessage("The target's player appearance template has been reset to its default.");
+				targetCreature->switchZone(zone->getZoneName(), targetCreature->getPositionX(), targetCreature->getPositionZ(), targetCreature->getPositionY(), targetCreature->getParentID());
+			}
 		}
 
 		return SUCCESS;
