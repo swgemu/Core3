@@ -2141,9 +2141,9 @@ void CreatureObjectImplementation::executeObjectControllerAction(
 }
 
 void CreatureObjectImplementation::doCombatAnimation(TangibleObject* defender,
-		uint32 animcrc, byte hit, byte trails) {
+		uint32 animcrc, byte hit, byte trails, uint64 weaponID) {
 
-	CombatAction* action = new CombatAction(asCreatureObject(), defender, animcrc, hit, trails);
+	CombatAction* action = new CombatAction(asCreatureObject(), defender, animcrc, hit, trails, weaponID);
 	broadcastMessage(action, true);
 }
 
