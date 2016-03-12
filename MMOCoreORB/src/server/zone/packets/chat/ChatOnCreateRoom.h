@@ -16,7 +16,7 @@ public:
 		insertShort(4); // Op Count
 		insertInt(0x35D7CC9F); // Opcode
 
-		insertInt(error); // Error Code
+		insertInt(24); // Error Code (override for now to stop error spam on login)
 
 		insertInt(room->getRoomID()); // ChatRoom ID
 
