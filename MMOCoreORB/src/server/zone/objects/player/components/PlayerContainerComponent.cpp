@@ -88,13 +88,14 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 	if (object->isWeaponObject() && containmentType == 4) {
 		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>( object);
 		int bladeColor = weapon->getBladeColor();
+		PlayerObject* ghost = creo->getPlayerObject();
 
 		if (weapon->isJediWeapon()){
 			if (bladeColor == 31) {
 				errorDescription = "@jedi_spam:lightsaber_no_color";
 				return TransferErrorCode::PLAYERUSEMASKERROR;
 			}
-			if (weapon->getCraftersName() != creo->getFirstName()) {
+			if (weapon->getCraftersName() != creo->getFirstName() && !ghost->isPrivileged()) {
 				errorDescription = "@jedi_spam:not_your_lightsaber";
 				return TransferErrorCode::PLAYERUSEMASKERROR;
 			}
