@@ -264,6 +264,9 @@ class PlayerObject extends IntangibleObject {
 	@rawTemplate(value = "uint32, PlayerQuestData")
 	protected DeltaVectorMap playerQuestsData;
 
+	@dereferenced
+	protected Vector<unsigned int> completedPadawanTrials;
+
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
 	public static final int ROLEPLAYER = 4;
@@ -1795,6 +1798,17 @@ class PlayerObject extends IntangibleObject {
 			rating = PVP_RATING_FLOOR;
 
 		pvpRating = rating;
+	}
+	
+		
+	public void addCompletedPadawanTrial(unsigned int trialNumber) {
+		completedPadawanTrials.add(trialNumber);
+	}
+	
+	@local
+	@dirty
+	public Vector<unsigned int> getCompletedPadawanTrials() {
+		return completedPadawanTrials;
 	}
 }
 
