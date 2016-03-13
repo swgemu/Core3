@@ -128,7 +128,9 @@
 
 #include "server/zone/objects/player/badges/Badge.h"
 
+
 #include "server/zone/packets/group/GroupObjectDeltaMessage6.h"
+#include "server/zone/managers/jedi/JediManager.h"
 
 #include <iostream>
 
@@ -687,7 +689,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		StringIdChatParameter toVictim;
 
 		toVictim.setStringId("base_player", "prose_victim_incap");
-		toVictim.setTT(destructor->getDisplayedName());
+		toVictim.setTT(destructor->getObjectID());
 
 		playerCreature->sendSystemMessage(toVictim);
 
@@ -696,7 +698,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 			StringIdChatParameter toKiller;
 
 			toKiller.setStringId("base_player", "prose_target_incap");
-			toKiller.setTT(playerCreature->getDisplayedName());
+			toKiller.setTT(playerCreature->getObjectID());
 
 			destructor->asCreatureObject()->sendSystemMessage(toKiller);
 		}
@@ -708,23 +710,10 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath, bool isCombatAction) {
 	StringIdChatParameter stringId;
 
-	ThreatMap* threatMap = player->getThreatMap();
-
 	if (attacker->isPlayerCreature()) {
 		stringId.setStringId("base_player", "prose_target_dead");
-		stringId.setTT(player->getDisplayedName());
+		stringId.setTT(player->getObjectID());
 		(cast<CreatureObject*>(attacker))->sendSystemMessage(stringId);
-
-		Reference<ThreatMap*> copyThreatMap = new ThreatMap(*threatMap);
-		PlayerManager* pManager = _this.getReferenceUnsafeStaticCast();
-		ManagedReference<CreatureObject*> playerRef = player->asCreatureObject();
-
-		EXECUTE_TASK_3(pManager, playerRef, copyThreatMap, {
-				if (playerRef_p != NULL) {
-					Locker locker(playerRef_p);
-					pManager_p->doPvpDeathRatingUpdate(playerRef_p, copyThreatMap_p);
-				}
-		});
 	}
 
 	if (player->isRidingMount()) {
@@ -739,7 +728,7 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 	sendActivateCloneRequest(player, typeofdeath);
 
 	stringId.setStringId("base_player", "prose_victim_dead");
-	stringId.setTT(attacker->getDisplayedName());
+	stringId.setTT(attacker->getObjectID());
 	player->sendSystemMessage(stringId);
 
 	player->updateTimeOfDeath();
@@ -772,12 +761,6 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 
 	CombatManager::instance()->freeDuelList(player, false);
 
-	threatMap->removeAll(true);
-
-	player->removeDefenders();
-	player->dropFromDefenderLists();
-	player->setTargetID(0, true);
-
 	player->notifyObjectKillObservers(attacker);
 }
 
@@ -793,10 +776,20 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 		return;
 
 	ghost->removeSuiBoxType(SuiWindowType::CLONE_REQUEST);
+	ghost->removeSuiBoxType(SuiWindowType::CLONE_REQUEST_DECAY);
 
 	ManagedReference<SuiListBox*> cloneMenu = new SuiListBox(player, SuiWindowType::CLONE_REQUEST);
 	cloneMenu->setCallback(new CloningRequestSuiCallback(player->getZoneServer(), typeofdeath));
 	cloneMenu->setPromptTitle("@base_player:revive_title");
+
+	/*
+	if (typeofdeath == 1) {
+		cloneMenu = new SuiListBox(player, SuiWindowType::CLONE_REQUEST);//no decay - GM command, deathblow or factional death
+	} else if (typeofdeath == 0) {
+		cloneMenu = new SuiListBox(player, SuiWindowType::CLONE_REQUEST_DECAY);
+	} else if (ghost->getFactionStatus() == FactionStatus::OVERT) {//TODO: Do proper check if faction death
+		cloneMenu = new SuiListBox(player, SuiWindowType::CLONE_REQUEST_FACTIONAL);
+	}*/
 
 	uint64 preDesignatedFacilityOid = ghost->getCloningFacility();
 	ManagedReference<SceneObject*> preDesignatedFacility = server->getObject(preDesignatedFacilityOid);
@@ -955,16 +948,9 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 	if (ghost->hasPvpTef())
 		ghost->schedulePvpTefRemovalTask(true);
 
-
-	SortedVector<ManagedReference<SceneObject*> > insurableItems = getInsurableItems(player, false);
-
 	// Decay
-	if (typeofdeath == 0 && insurableItems.size() > 0) {
-
-		ManagedReference<SuiListBox*> suiCloneDecayReport = new SuiListBox(player, SuiWindowType::CLONE_REQUEST_DECAY, SuiListBox::HANDLESINGLEBUTTON);
-		suiCloneDecayReport->setPromptTitle("DECAY REPORT");
-		suiCloneDecayReport->setPromptText("The following report summarizes the status of your items after the decay event.");
-		suiCloneDecayReport->addMenuItem("\\#00FF00DECAYED ITEMS");
+	if (typeofdeath == 0) {
+		SortedVector<ManagedReference<SceneObject*> > insurableItems = getInsurableItems(player, false);
 
 		for (int i = 0; i < insurableItems.size(); i++) {
 			SceneObject* item = insurableItems.get(i);
@@ -984,23 +970,9 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 					//5% Decay for uninsured items
 					obj->inflictDamage(obj, 0, 0.05 * obj->getMaxCondition(), true, true);
 				}
-
-				// Calculate condition percentage for decay report
-				int max = obj->getMaxCondition();
-				int min = max - obj->getConditionDamage();
-				int condPercentage = ( min / (float)max ) * 100.0f;
-				String line = " - " + obj->getDisplayedName() + " (@"+String::valueOf(condPercentage)+"%)";
-
-				suiCloneDecayReport->addMenuItem(line, item->getObjectID());
 			}
 		}
-
-		ghost->addSuiBox(suiCloneDecayReport);
-		player->sendMessage(suiCloneDecayReport->generateMessage());
-
 	}
-
-
 
 	Reference<Task*> task = new PlayerIncapacitationRecoverTask(player, true);
 	task->schedule(3 * 1000);
@@ -5212,3 +5184,65 @@ void PlayerManagerImplementation::doPvpDeathRatingUpdate(CreatureObject* player,
 		player->sendSystemMessage(toVictim);
 	}
 }
+
+void PlayerManagerImplementation::startJediPadawanTrial(CreatureObject* creature, int trialNumber) {
+
+ 	if (creature == NULL)
+ 		return;
+
+ 	creature->setScreenPlayState("trials:padawan:currentTrial", trialNumber);
+
+ 	switch (trialNumber) {
+ 	case JediManager::PADAWAN_TRIAL_ARCHITECT:
+ 		 DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialArchitechScreenPlay");
+ 		break;
+ 	case JediManager::PADAWAN_TRIAL_ARTIST:
+ 		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialArtistScreenPlay");
+ 		break;
+ 	case JediManager::PADAWAN_TRIAL_BADCAT:
+ 		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialBadCatScreenPlay");
+ 		break;
+ 	case JediManager::PADAWAN_TRIAL_CHEF:
+ 		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialChefScreenPlay");
+ 		break;
+ 	case JediManager::PADAWAN_TRIAL_OLD_MUSICIAN:
+ 		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialOldMusicianScreenPlay");
+ 		break;
+ 	case JediManager::PADAWAN_TRIAL_PANNAQA:
+ 		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialPannaqaScreenPlay");
+ 		break;
+ 	case JediManager::PADAWAN_TRIAL_PEOPLES_SOLDIER:
+ 		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialPeoplesSoldierScreenPlay");
+ 		break;
+ 	case JediManager::PADAWAN_TRIAL_SOB_STORY:
+ 		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialSobStoryScreenPlay");
+ 		break;
+ 	case JediManager::PADAWAN_TRIAL_SPICE_MOM:
+ 		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialSpiceMomScreenPlay");
+ 		break;
+ 	case JediManager::PADAWAN_TRIAL_SURVEYOR:
+ 		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialSurveyorScreenPlay");
+ 		break;
+ 	case JediManager::PADAWAN_TRIAL_POLITICIAN:
+ 		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialPoliticianScreenPlay");
+ 		break;
+ 	case JediManager::PADAWAN_TRIAL_THE_RING:
+ 		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialTheRingScreenPlay");
+ 		break;
+ 	case JediManager::PADAWAN_TRIAL_BAZ_NITCH:
+ 		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialBazNitchScreenPlay");
+ 		break;
+ 	case JediManager::PADAWAN_TRIAL_SLUDGE_PANTHER:
+ 		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialSludgePantherScreenPlay");
+ 		break;
+ 	case JediManager::PADAWAN_TRIAL_FALUMPASET:
+ 		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialFalumpasetScreenPlay");
+ 		break;
+ 	case JediManager::PADAWAN_TRIAL_CRAFT_LIGHTSABER:
+ 		DirectorManager::instance()->startScreenPlay(creature, "JediPadawanTrialCraftLightsaberScreenPlay");
+ 		break;
+ 	default:
+ 		return;
+ 		break;
+ 	}
+ }

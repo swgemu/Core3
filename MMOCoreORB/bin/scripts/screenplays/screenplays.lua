@@ -161,6 +161,17 @@ includeFile("village/convos/phase2/whip_phase2_conv_handler.lua")
 includeFile("village/convos/phase2/dageerin_phase2_conv_handler.lua")
 includeFile("village/convos/phase3/dageerin_phase3_conv_handler.lua")
 
+-- Jedi Padawan Trials
+includeFile("jedi/padawan/jedi_padawan_trial.lua")
+
+includeFile("jedi/padawan/trials/trial_architect.lua")
+includeFile("jedi/padawan/convos/trials_padawan_architect_01.lua")
+includeFile("jedi/padawan/convos/trials_padawan_architect_02.lua")
+
+includeFile("jedi/padawan/trials/trial_artist.lua")
+includeFile("jedi/padawan/convos/trials_padawan_artist_01.lua")
+includeFile("jedi/padawan/convos/trials_padawan_artist_02.lua")
+
 -- Events
 includeFile("events/conversations/bestine_artist_conv_handler.lua")
 includeFile("events/conversations/imperial_commander_conv_handler.lua")
