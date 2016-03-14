@@ -234,6 +234,7 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attack
 	Reference<CreatureObject*> victimRef = victim;
 	uint8 attribute = this->attribute;
 	uint32 strength = this->strength;
+	uint32 secondaryStrength = this->secondaryStrength;
 
 	EXECUTE_TASK_6(attackerRef, victimRef, attribute, damage, woundsToApply, secondaryStrength, {
 			Locker locker(victimRef_p);
