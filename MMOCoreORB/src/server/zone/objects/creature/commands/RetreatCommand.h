@@ -68,7 +68,7 @@ public:
 
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-		if (ghost != NULL)
+		if (ghost == NULL)
 			return GENERALERROR;
 
 		ManagedReference<GroupObject*> group = player->getGroup();
