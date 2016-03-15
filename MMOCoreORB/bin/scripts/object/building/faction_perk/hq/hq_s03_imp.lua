@@ -184,7 +184,7 @@ object_building_faction_perk_hq_hq_s03_imp = object_building_faction_perk_hq_sha
 			{ mobile="fbase_specialist_noncom_hard", x=5.5, z=-20.75, y=35.5, cellid=10, respawn=300, containmentType=-1, heading=3.14},
 			{ mobile="fbase_imperial_master_sergeant_hard", x=-2.3, z=-20.75, y=35.5, cellid=10, respawn=300, containmentType=-1, heading=3.14},
 		 	{ mobile="fbase_imperial_first_lieutenant_hard", x=1.7, z=-20.75, y=32.45, cellid=10, respawn=300, containmentType=-1, heading=3.14},
-			{ mobile="imperial_recruiter", x=-5, z=-20.75, y=32, cellid=10, containmentType=-1, respawn=60, heading=1.57},
+			{ mobile="fbase_imperial_recruiter", x=-5, z=-20.75, y=32, cellid=10, containmentType=-1, respawn=60, heading=1.57},
 
 		},
 

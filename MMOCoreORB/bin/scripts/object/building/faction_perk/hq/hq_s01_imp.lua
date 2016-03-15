@@ -130,7 +130,7 @@ object_building_faction_perk_hq_hq_s01_imp = object_building_faction_perk_hq_sha
 
 			{ mobile="fbase_imperial_first_lieutenant", x=3.6, z=0, y=1.8, cellid=4, respawn=300, containmentType=-1, heading=0},
 			{ mobile="fbase_imperial_medic", x=-3.8, z=0, y=-2.3, cellid=6, respawn=300, containmentType=-1, heading=0},
-			{ mobile="imperial_recruiter", x=-1, z=0, y=-5.5, cellid=3, containmentType=-1, respawn=60, heading=0},
+			{ mobile="fbase_imperial_recruiter", x=-1, z=0, y=-5.5, cellid=3, containmentType=-1, respawn=60, heading=0},
 		},
 
 }
