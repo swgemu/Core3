@@ -452,20 +452,19 @@ void GCWManagerImplementation::initializeBaseTimers(BuildingObject* building) {
 	baseData->setLastVulnerableTime(Time());
 
 	Time endTime(baseData->getPlacmenetTime());
-	endTime.addMiliTime(vulnerabilityDuration*1000 + getInitialVulnerabilityDelay()*1000);
+	endTime.addMiliTime((vulnerabilityDuration * 1000) + (getInitialVulnerabilityDelay() * 1000));
 	baseData->setVulnerabilityEndTime(endTime);
 
 	if (getInitialVulnerabilityDelay() == 0) {
 		Time nextVuln(baseData->getPlacmenetTime());
-		nextVuln.addMiliTime(vulnerabilityFrequency*1000);
+		nextVuln.addMiliTime(vulnerabilityFrequency * 1000);
 		baseData->setNextVulnerableTime(nextVuln);
 	} else {
 		Time nextVuln(baseData->getPlacmenetTime());
-		nextVuln.addMiliTime(getInitialVulnerabilityDelay()*1000);
+		nextVuln.addMiliTime(getInitialVulnerabilityDelay() * 1000);
 		baseData->setNextVulnerableTime(nextVuln);
 	}
 
-	baseData->setTerminalDamaged(false);
 	baseData->setLastResetTime(Time(0)); // set it to a long, long time ago
 }
 
@@ -569,7 +568,7 @@ void GCWManagerImplementation::endVulnerability(BuildingObject* building) {
 	else
 		nextTime = baseData->getLastVulnerableTime();
 
-	int64 intPeriodsPast = (llabs(nextTime.miliDifference())) / (vulnerabilityFrequency*1000);
+	int64 intPeriodsPast = (llabs(nextTime.miliDifference())) / (vulnerabilityFrequency * 1000);
 
 	// TODO: use periodspast to get the amount of time to add and avoid the loop
 	while (nextTime.isPast()) {
@@ -584,9 +583,15 @@ void GCWManagerImplementation::endVulnerability(BuildingObject* building) {
 
 	block.release();
 
-	// TODO: check the destruction task list and remove the destruction task
 	if (!dropEndTask(building->getObjectID()))
-		info("No endtask found to remove while scheduling new startvulnerability task",true);
+		info("No endtask found to remove while scheduling new startvulnerability task", true);
+
+	Reference<Task*> destroyTask = getDestroyTask(building->getObjectID());
+
+	if (destroyTask != NULL) {
+		destroyTask->cancel();
+		dropDestroyTask(building->getObjectID());
+	}
 
 	// schedule
 	scheduleVulnerabilityStart(building);
@@ -680,16 +685,16 @@ void GCWManagerImplementation::refreshExpiredVulnerability(BuildingObject* build
 	if (!testTime.isPast()) {
 		// if we're still in a vuln period
 
-		info("Loaded while vulnerable in refresh",true);
+		info("Loaded while vulnerable in refresh", true);
 		baseData->setLastVulnerableTime(thisStartTime);
 
 		// testTime should the same thing as vEnd
 		Time vEnd(thisStartTime);
-		vEnd.addMiliTime((vulnerabilityDuration*1000));
+		vEnd.addMiliTime((vulnerabilityDuration * 1000));
 		baseData->setVulnerabilityEndTime(vEnd);
 
 		Time nStartTime(thisStartTime);
-		nStartTime.addMiliTime(vulnerabilityFrequency*1000);
+		nStartTime.addMiliTime(vulnerabilityFrequency * 1000);
 		baseData->setNextVulnerableTime(nStartTime);
 
 		initializeNewVulnerability(baseData);
@@ -700,11 +705,11 @@ void GCWManagerImplementation::refreshExpiredVulnerability(BuildingObject* build
 	} else {
 		baseData->setLastVulnerableTime(thisStartTime);
 		Time nStartTime(thisStartTime);
-		nStartTime.addMiliTime(vulnerabilityFrequency*1000);
+		nStartTime.addMiliTime(vulnerabilityFrequency * 1000);
 		baseData->setNextVulnerableTime(nStartTime);
 
 		Time vEnd(nStartTime);
-		vEnd.addMiliTime(vulnerabilityDuration*1000);
+		vEnd.addMiliTime(vulnerabilityDuration * 1000);
 		baseData->setVulnerabilityEndTime(vEnd);
 
 		baseData->setState(DestructibleBuildingDataComponent::INVULNERABLE);
@@ -727,9 +732,6 @@ void GCWManagerImplementation::checkVulnerabilityData(BuildingObject* building) 
 	Time currentTime;
 	Time vulnTime = baseData->getNextVulnerableTime();
 	Time nextEnd = baseData->getVulnerabilityEndTime();
-
-	int64 vulnDif = vulnTime.miliDifference();
-	int64 endDif = nextEnd.miliDifference();
 
 	if (!vulnTime.isPast()) {
 		scheduleVulnerabilityStart(building);
@@ -764,7 +766,7 @@ String GCWManagerImplementation::getVulnerableStatus(BuildingObject* building, C
 	dif = dif - (hours * 3600);
 	int minutes = (int) ceil(dif / 60.f);
 
-	return "@player_structure:next_vulnerability_prompt "+ String::valueOf(days) + " days, " + String::valueOf(hours) + " hours, " + String::valueOf(minutes) + " minutes";
+	return "@player_structure:next_vulnerability_prompt " + String::valueOf(days) + " days, " + String::valueOf(hours) + " hours, " + String::valueOf(minutes) + " minutes";
 }
 
 bool GCWManagerImplementation::isBaseVulnerable(BuildingObject* building) {
@@ -1022,7 +1024,6 @@ void GCWManagerImplementation::renewUplinkBand(BuildingObject* building) {
 
 	// 10 possible codes bands to guess
 	int secretCode = System::random(0x9);
-	//info("New uplink band is " + String::valueOf(secretCode), true);
 
 	Locker block(building);
 	baseData->setUplinkBand(secretCode);
@@ -1103,7 +1104,7 @@ void GCWManagerImplementation::failSecuritySlice(TangibleObject* securityTermina
 		error("ERROR:  could not get base data for base");
 		return;
 	}
-	//info("Failing slice",true);
+
 	baseData->setTerminalBeingRepaired(false);
 	baseData->setTerminalDamaged(true);
 }
@@ -1528,9 +1529,10 @@ void GCWManagerImplementation::doBaseDestruction(BuildingObject* building) {
 
 	int baseType = building->getFactionBaseType();
 
-	if (baseType == PLAYERFACTIONBASE) {
-		unregisterGCWBase(building);
-
+	if (baseType == STATICFACTIONBASE) {
+		building->notifyObservers(ObserverEventType::FACTIONBASEFLIPPED);
+		return;
+	} else if (baseType == PLAYERFACTIONBASE) {
 		ManagedReference<CreatureObject*> owner = building->getOwnerCreatureObject();
 
 		if (owner != NULL && owner->isPlayerCreature()) {
@@ -1548,12 +1550,11 @@ void GCWManagerImplementation::doBaseDestruction(BuildingObject* building) {
 
 			owner->sendSystemMessage(message);
 		}
-
-		StructureManager::instance()->destroyStructure(building);
-
-	} else if (baseType == STATICFACTIONBASE) {
-		building->notifyObservers(ObserverEventType::FACTIONBASEFLIPPED);
 	}
+
+	unregisterGCWBase(building);
+
+	StructureManager::instance()->destroyStructure(building);
 }
 
 void GCWManagerImplementation::broadcastBuilding(BuildingObject* building, StringIdChatParameter& params) {
@@ -1839,7 +1840,6 @@ void GCWManagerImplementation::notifyInstallationDestruction(InstallationObject*
 		Locker clock(building, installation);
 
 		if (building->containsChildObject(installation)) {
-			//info("removed child",true);
 			building->getChildObjects()->removeElement(installation);
 		}
 

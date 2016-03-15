@@ -110,13 +110,13 @@ int DestroyStructureSessionImplementation::destroyStructure() {
 	if (structureObject == NULL || structureObject->getZone() == NULL)
 		return cancelSession();
 
-	if(structureObject->isGCWBase()) {
+	if (structureObject->isGCWBase()) {
 		Zone* zone = structureObject->getZone();
-		if(zone == NULL)
+		if (zone == NULL)
 			return cancelSession();
 
 		GCWManager* gcwMan = zone->getGCWManager();
-		if(gcwMan == NULL)
+		if (gcwMan == NULL)
 			return cancelSession();
 
 		gcwMan->doBaseDestruction(structureObject);

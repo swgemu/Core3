@@ -46,7 +46,7 @@ void CampTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		return;
 	}
 
-	if (!player->isInRange(terminal, 7)) {
+	if (!player->isInRange(terminal, 16)) {
 		return;
 	}
 
@@ -116,7 +116,7 @@ void CampTerminalMenuComponent::disbandCamp(SceneObject* sceneObject,
 		return;
 	}
 
-	if (!player->isInRange(terminal, 7)) {
+	if (!player->isInRange(terminal, 16)) {
 		return;
 	}
 
@@ -175,7 +175,7 @@ void CampTerminalMenuComponent::assumeCampOwnership(SceneObject* sceneObject,
 		return;
 	}
 
-	if (!player->isInRange(terminal, 7)) {
+	if (!player->isInRange(terminal, 16)) {
 		return;
 	}
 
@@ -223,7 +223,7 @@ void CampTerminalMenuComponent::showCampStatus(SceneObject* sceneObject,
 		return;
 	}
 
-	if (!player->isInRange(terminal, 7)) {
+	if (!player->isInRange(terminal, 16)) {
 		return;
 	}
 

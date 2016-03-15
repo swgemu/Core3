@@ -33,7 +33,7 @@ private:
 
 	Time lastVulnerableTime; // serialized
 	Time nextVulnerableTime; // serialized
-	Time vulnerabilityEndTime; //se rialized
+	Time vulnerabilityEndTime; //serialized
 	Time placementTime; // serialized
 	Time lastResetTime; // serialized
 	int uplinkBand; // secret code used to jam the uplink

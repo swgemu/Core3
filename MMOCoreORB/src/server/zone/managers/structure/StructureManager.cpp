@@ -40,7 +40,6 @@
 #include "server/zone/objects/player/sui/callbacks/StructureSelectSignSuiCallback.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/objects/terrain/layer/boundaries/BoundaryRectangle.h"
-#include "server/zone/managers/gcw/GCWManager.h"
 #include "tasks/DestroyStructureTask.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/managers/creature/PetManager.h"
@@ -94,7 +93,7 @@ void StructureManager::loadPlayerStructures(const String& zoneName) {
 						GCWManager* gcwMan = zone->getGCWManager();
 
 						if (gcwMan != NULL) {
-							gcwMan->registerGCWBase(cast<BuildingObject*>(object.get()),false);
+							gcwMan->registerGCWBase(cast<BuildingObject*>(object.get()), false);
 						}
 					}
 				}
@@ -909,8 +908,7 @@ void StructureManager::reportStructureStatus(CreatureObject* creature,
 			"@player_structure:condition_prompt "
 					+ String::valueOf(structure->getDecayPercentage()) + "%");
 
-	if (!structure->isCivicStructure()) {
-
+	if (!structure->isCivicStructure() && !structure->isGCWBase()) {
 		// property tax
 		float propertytax = 0.f;
 		if(!structure->isCivicStructure() && structure->getCityRegion() != NULL){
@@ -946,7 +944,6 @@ void StructureManager::reportStructureStatus(CreatureObject* creature,
 			"@player_structure:maintenance_mods_prompt "
 					+ structure->getMaintenanceMods());
 	}
-
 
 	if (structure->isInstallationObject() && !structure->isGeneratorObject() && !structure->isCivicStructure()) {
 		InstallationObject* installation = cast<InstallationObject*>(structure);
