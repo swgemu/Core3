@@ -161,7 +161,7 @@ object_building_faction_perk_hq_hq_s04_imp_pvp = object_building_faction_perk_hq
 			{ mobile="fbase_stormtrooper_bombardier_extreme", x=14.2, z=-13.75, y=-10, cellid=10, respawn=300, containmentType=-1, heading=0},
 			{ mobile="fbase_storm_commando_extreme", x=15, z=-13.75, y=-4,cellid=10, respawn=300, containmentType=-1, heading=0},
 			{ mobile="fbase_imperial_colonel_extreme", x=15.9, z=-13.75, y=-17.25,cellid=10, respawn=300, containmentType=-1, heading=0},
-			{ mobile="imperial_recruiter", x=11.5, z=-11.5, y=-21, cellid=10, containmentType=-1, respawn=60, heading=1.59},
+			{ mobile="fbase_imperial_recruiter", x=11.5, z=-11.5, y=-21, cellid=10, containmentType=-1, respawn=60, heading=1.59},
 
 		},
 
