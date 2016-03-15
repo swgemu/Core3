@@ -24,12 +24,12 @@
 #include "server/zone/packets/player/PlayerObjectDeltaMessage3.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage8.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage9.h"
-#include "server/zone/packets/player/FriendListMessage.h"
-#include "server/zone/packets/player/IgnoreListMessage.h"
-#include "server/zone/packets/player/AddFriendInitiateMessage.h"
-#include "server/zone/packets/player/AddFriendMessage.h"
-#include "server/zone/packets/player/AddIgnoreMessage.h"
-#include "server/zone/packets/player/FriendStatusChangeMessage.h"
+#include "server/zone/packets/chat/ChatOnGetFriendsList.h"
+#include "server/zone/packets/chat/ChatOnGetIgnoreList.h"
+#include "server/zone/packets/chat/ChatOnAddFriend.h"
+#include "server/zone/packets/chat/ChatOnChangeFriendStatus.h"
+#include "server/zone/packets/chat/ChatOnChangeIgnoreStatus.h"
+#include "server/zone/packets/chat/ChatFriendsListUpdate.h"
 #include "server/zone/packets/player/PlayerObjectMessage6.h"
 #include "server/zone/packets/player/PlayerObjectMessage8.h"
 #include "server/zone/packets/player/PlayerObjectMessage9.h"
@@ -350,8 +350,8 @@ void PlayerObjectImplementation::notifySceneReady() {
 		ChatRoom* room = chatManager->getChatRoom(chatRooms.get(i));
 		if (room != NULL) {
 			int roomType = room->getChatRoomType();
-			if (roomType == ChatRoom::AUCTION || roomType == ChatRoom::PLANET || roomType == ChatRoom::GUILD)
-				continue; //Auction is handled in SelectCharacterCallback and Planet is handled above.
+			if (roomType == ChatRoom::PLANET || roomType == ChatRoom::GUILD)
+				continue; //Planet and Guild are handled above.
 
 			room->sendTo(creature);
 			chatManager->handleChatEnterRoomById(creature, room->getRoomID(), -1);
@@ -379,10 +379,10 @@ void PlayerObjectImplementation::sendFriendLists() {
 	friendList.resetUpdateCounter();
 	ignoreList.resetUpdateCounter();
 
-	FriendsListMessage* flist = new FriendsListMessage(_this.getReferenceUnsafeStaticCast());
+	ChatOnGetFriendsList* flist = new ChatOnGetFriendsList(_this.getReferenceUnsafeStaticCast());
 	getParent().get()->sendMessage(flist);
 
-	IgnoreListMessage* ilist = new IgnoreListMessage(_this.getReferenceUnsafeStaticCast());
+	ChatOnGetIgnoreList* ilist = new ChatOnGetIgnoreList(_this.getReferenceUnsafeStaticCast());
 	getParent().get()->sendMessage(ilist);
 
 	DeltaMessage* delta = new PlayerObjectDeltaMessage9(_this.getReferenceUnsafeStaticCast());
@@ -1023,14 +1023,14 @@ void PlayerObjectImplementation::addFriend(const String& name, bool notifyClient
 	playerToAddGhost->updateToDatabase();
 
 	if (notifyClient && strongParent != NULL) {
-		AddFriendInitiateMessage* init = new AddFriendInitiateMessage();
+		ChatOnAddFriend* init = new ChatOnAddFriend();
 		strongParent->sendMessage(init);
 
-		AddFriendMessage* add = new AddFriendMessage(strongParent->getObjectID(),	nameLower, zoneServer->getGalaxyName(), true);
+		ChatOnChangeFriendStatus* add = new ChatOnChangeFriendStatus(strongParent->getObjectID(),	nameLower, zoneServer->getGalaxyName(), true);
 		strongParent->sendMessage(add);
 
 		if (playerToAdd->isOnline()) {
-			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(nameLower, zoneServer->getGalaxyName(), true);
+			ChatFriendsListUpdate* notifyStatus = new ChatFriendsListUpdate(nameLower, zoneServer->getGalaxyName(), true);
 			strongParent->sendMessage(notifyStatus);
 		}
 
@@ -1094,7 +1094,7 @@ void PlayerObjectImplementation::removeFriend(const String& name, bool notifyCli
 	ManagedReference<SceneObject*> parent = getParent().get();
 
 	if (notifyClient && parent != NULL) {
-		AddFriendMessage* add = new AddFriendMessage(parent->getObjectID(),	nameLower, zoneServer->getGalaxyName(), false);
+		ChatOnChangeFriendStatus* add = new ChatOnChangeFriendStatus(parent->getObjectID(),	nameLower, zoneServer->getGalaxyName(), false);
 		parent->sendMessage(add);
 
 		friendList.removePlayer(nameLower);
@@ -1195,7 +1195,7 @@ void PlayerObjectImplementation::addIgnore(const String& name, bool notifyClient
 	ManagedReference<SceneObject*> parent = getParent().get();
 
 	if (notifyClient && parent != NULL) {
-		AddIgnoreMessage* add = new AddIgnoreMessage(parent->getObjectID(),	nameLower, server->getZoneServer()->getGalaxyName(), true);
+		ChatOnChangeIgnoreStatus* add = new ChatOnChangeIgnoreStatus(parent->getObjectID(),	nameLower, server->getZoneServer()->getGalaxyName(), true);
 		parent->sendMessage(add);
 
 		ignoreList.add(nameLower);
@@ -1233,7 +1233,7 @@ void PlayerObjectImplementation::removeIgnore(const String& name, bool notifyCli
 	}
 
 	if (notifyClient && parent != NULL) {
-		AddIgnoreMessage* add = new AddIgnoreMessage(parent->getObjectID(),	nameLower, server->getZoneServer()->getGalaxyName(), false);
+		ChatOnChangeIgnoreStatus* add = new ChatOnChangeIgnoreStatus(parent->getObjectID(),	nameLower, server->getZoneServer()->getGalaxyName(), false);
 		parent->sendMessage(add);
 
 		ignoreList.removePlayer(nameLower);
@@ -1292,7 +1292,7 @@ void PlayerObjectImplementation::notifyOnline() {
 		ManagedReference<CreatureObject*> player = chatManager->getPlayer(friendList.getReversePlayer(i));
 
 		if (player != NULL) {
-			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(firstName, zoneServer->getGalaxyName(), true);
+			ChatFriendsListUpdate* notifyStatus = new ChatFriendsListUpdate(firstName, zoneServer->getGalaxyName(), true);
 			player->sendMessage(notifyStatus);
 		}
 	}
@@ -1302,7 +1302,7 @@ void PlayerObjectImplementation::notifyOnline() {
 		ManagedReference<CreatureObject*> player = chatManager->getPlayer(name);
 
 		if (player != NULL) {
-			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(name, zoneServer->getGalaxyName(), true);
+			ChatFriendsListUpdate* notifyStatus = new ChatFriendsListUpdate(name, zoneServer->getGalaxyName(), true);
 			parent->sendMessage(notifyStatus);
 		}
 	}
@@ -1345,7 +1345,7 @@ void PlayerObjectImplementation::notifyOffline() {
 		ManagedReference<CreatureObject*> player = chatManager->getPlayer(friendList.getReversePlayer(i));
 
 		if (player != NULL) {
-			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(firstName, server->getZoneServer()->getGalaxyName(), false);
+			ChatFriendsListUpdate* notifyStatus = new ChatFriendsListUpdate(firstName, server->getZoneServer()->getGalaxyName(), false);
 			player->sendMessage(notifyStatus);
 		}
 	}

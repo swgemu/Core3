@@ -12,6 +12,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/login/packets/ErrorMessage.h"
 #include "server/chat/ChatManager.h"
+#include "server/chat/room/ChatRoom.h"
 #include "server/login/account/Account.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/PlayerObject.h"
@@ -638,6 +639,9 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	JediManager::instance()->onPlayerCreated(playerCreature);
 
 	chatManager->sendMail("system", "@newbie_tutorial/newbie_mail:welcome_subject", "@newbie_tutorial/newbie_mail:welcome_body", playerCreature->getFirstName());
+
+	//Join auction chat room
+	ghost->addChatRoom(chatManager->getAuctionRoom()->getRoomID());
 
 	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(playerCreature, SuiWindowType::NONE);
 	box->setPromptTitle("PLEASE NOTE");

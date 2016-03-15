@@ -185,13 +185,6 @@ public:
 			chatManager->addPlayer(player);
 			chatManager->loadMail(player);
 
-			//Join auction chat room (this causes Auction tab to be recreated on login if deleted)
-			ManagedReference<ChatRoom*> auctionChat = chatManager->getAuctionRoom();
-			if(auctionChat != NULL) {
-				auctionChat->sendTo(player);
-				chatManager->handleChatEnterRoomById(player, auctionChat->getRoomID(), -1, true);
-			}
-
 			ghost->notifyOnline();
 
 			PlayerManager* playerManager = zoneServer->getPlayerManager();
