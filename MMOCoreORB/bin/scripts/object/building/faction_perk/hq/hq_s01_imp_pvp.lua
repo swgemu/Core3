@@ -116,7 +116,7 @@ object_building_faction_perk_hq_hq_s01_imp_pvp = object_building_faction_perk_hq
 			{ mobile="fbase_stormtrooper_medic", x=-3.8, z=0, y=-2.3, cellid=6, respawn=300, containmentType=-1, heading=3.14},
 			{ mobile="fbase_dark_trooper", x=-0.1, z=0, y=-2.8, cellid=3, respawn=300, containmentType=-1, heading=0},
 			{ mobile="fbase_stormtrooper_captain", x=3.5, z=0, y=-4, cellid=5, respawn=300, containmentType=-1, heading=4.71},
-			{ mobile="imperial_recruiter", x=-1, z=0, y=-5.5, cellid=3, containmentType=-1, respawn=60, heading=0},
+			{ mobile="fbase_imperial_recruiter", x=-1, z=0, y=-5.5, cellid=3, containmentType=-1, respawn=60, heading=0},
 		},
 }
 

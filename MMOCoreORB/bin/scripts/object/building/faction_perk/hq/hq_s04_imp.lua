@@ -193,7 +193,7 @@ object_building_faction_perk_hq_hq_s04_imp = object_building_faction_perk_hq_sha
 			{ mobile="fbase_sand_trooper_hard", x=14.2, z=-13.75, y=-10, cellid=10, respawn=300, containmentType=-1, heading=0},
 			{ mobile="fbase_dark_trooper_hard", x=15, z=-13.75, y=-4,cellid=10, respawn=300, containmentType=-1, heading=0},
 			{ mobile="fbase_imperial_colonel_hard", x=15.9, z=-13.75, y=-17.25,cellid=10, respawn=300, containmentType=-1, heading=0},
-			{ mobile="imperial_recruiter", x=11.5, z=-11.5, y=-21, cellid=10, respawn=60, containmentType=-1, heading=1.59},
+			{ mobile="fbase_imperial_recruiter", x=11.5, z=-11.5, y=-21, cellid=10, respawn=60, containmentType=-1, heading=1.59},
 
 		},
 

@@ -167,7 +167,7 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 			{ mobile="fbase_rebel_colonel_extreme", x=16.1, z=-13.75, y=-16.8, cellid=10, respawn=300, containmentType=-1, heading=0},
 			{ mobile="fbase_rebel_commando_extreme", x=14.2, z=-13.75, y=-10, cellid=10, respawn=300, containmentType=-1, heading=0},
 			{ mobile="fbase_rebel_guard_captain_extreme", x=15, z=-13.75, y=-4, cellid=10, respawn=300, containmentType=-1, heading=0},
-			{ mobile="rebel_recruiter", x=11.5, z=-11.5, y=-21, cellid=10, containmentType=-1, respawn=60, heading=1.59},
+			{ mobile="fbase_rebel_recruiter", x=11.5, z=-11.5, y=-21, cellid=10, containmentType=-1, respawn=60, heading=1.59},
 
 		},
 

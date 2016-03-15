@@ -158,7 +158,7 @@ object_building_faction_perk_hq_hq_s03_imp_pvp = object_building_faction_perk_hq
 			{ mobile="fbase_imperial_army_captain_hard", x=5.5, z=-20.75, y=35.5, cellid=10, respawn=300, containmentType=-1, heading=3.14},
 			{ mobile="fbase_stormtrooper_squad_leader_hard", x=-2.3, z=-20.75, y=35.5, cellid=10, respawn=300, containmentType=-1, heading=3.14},
 		 	{ mobile="fbase_imperial_colonel_hard", x=1.7, z=-20.75, y=32.45, cellid=10, respawn=300, containmentType=-1, heading=3.14},
-			{ mobile="imperial_recruiter", x=-4.9, z=-20.75, y=31.5, cellid=10, containmentType=-1, respawn=60, heading=1.57},
+			{ mobile="fbase_imperial_recruiter", x=-4.9, z=-20.75, y=31.5, cellid=10, containmentType=-1, respawn=60, heading=1.57},
 
 		},
 

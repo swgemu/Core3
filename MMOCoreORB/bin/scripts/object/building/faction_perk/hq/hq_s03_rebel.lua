@@ -189,7 +189,7 @@ object_building_faction_perk_hq_hq_s03_rebel = object_building_faction_perk_hq_s
 			{ mobile="fbase_rebel_warrant_officer_ii_hard", x=2.6, z=-20.75, y=29.9, cellid=10, containmentType=-1, respawn=300, heading=3.14},
 			{ mobile="fbase_rebel_master_sergeant_hard", x=5.8, z=-20.75, y=29.9, cellid=10, containmentType=-1, respawn=300, heading=4.71},
 			{ mobile="fbase_rebel_first_lieutenant_hard", x=5.5, z=-20.75, y=35, cellid=10, containmentType=-1, respawn=600, heading=3.14},
-			{ mobile="rebel_recruiter", x=-2, z=-20.75, y=34, cellid=10, containmentType=-1, respawn=60, heading=3.14},
+			{ mobile="fbase_rebel_recruiter", x=-2, z=-20.75, y=34, cellid=10, containmentType=-1, respawn=60, heading=3.14},
 
 		},
 }
