@@ -3,42 +3,42 @@
 
 --This File is part of Core3.
 
---This program is free software; you can redistribute 
---it and/or modify it under the terms of the GNU Lesser 
+--This program is free software; you can redistribute
+--it and/or modify it under the terms of the GNU Lesser
 --General Public License as published by the Free Software
---Foundation; either version 2 of the License, 
+--Foundation; either version 2 of the License,
 --or (at your option) any later version.
 
---This program is distributed in the hope that it will be useful, 
---but WITHOUT ANY WARRANTY; without even the implied warranty of 
---MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+--This program is distributed in the hope that it will be useful,
+--but WITHOUT ANY WARRANTY; without even the implied warranty of
+--MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 --See the GNU Lesser General Public License for
 --more details.
 
---You should have received a copy of the GNU Lesser General 
+--You should have received a copy of the GNU Lesser General
 --Public License along with this program; if not, write to
 --the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
---Linking Engine3 statically or dynamically with other modules 
---is making a combined work based on Engine3. 
---Thus, the terms and conditions of the GNU Lesser General Public License 
+--Linking Engine3 statically or dynamically with other modules
+--is making a combined work based on Engine3.
+--Thus, the terms and conditions of the GNU Lesser General Public License
 --cover the whole combination.
 
---In addition, as a special exception, the copyright holders of Engine3 
---give you permission to combine Engine3 program with free software 
---programs or libraries that are released under the GNU LGPL and with 
---code included in the standard release of Core3 under the GNU LGPL 
---license (or modified versions of such code, with unchanged license). 
---You may copy and distribute such a system following the terms of the 
---GNU LGPL for Engine3 and the licenses of the other code concerned, 
---provided that you include the source code of that other code when 
+--In addition, as a special exception, the copyright holders of Engine3
+--give you permission to combine Engine3 program with free software
+--programs or libraries that are released under the GNU LGPL and with
+--code included in the standard release of Core3 under the GNU LGPL
+--license (or modified versions of such code, with unchanged license).
+--You may copy and distribute such a system following the terms of the
+--GNU LGPL for Engine3 and the licenses of the other code concerned,
+--provided that you include the source code of that other code when
 --and as the GNU LGPL requires distribution of source code.
 
---Note that people who make modified versions of Engine3 are not obligated 
---to grant this special exception for their modified versions; 
---it is their choice whether to do so. The GNU Lesser General Public License 
---gives permission to release a modified version without this exception; 
---this exception also makes it possible to release a modified version 
+--Note that people who make modified versions of Engine3 are not obligated
+--to grant this special exception for their modified versions;
+--it is their choice whether to do so. The GNU Lesser General Public License
+--gives permission to release a modified version without this exception;
+--this exception also makes it possible to release a modified version
 
 
 object_building_faction_perk_hq_hq_s01_rebel = object_building_faction_perk_hq_shared_hq_s01_rebel:new {
@@ -125,7 +125,7 @@ object_building_faction_perk_hq_hq_s01_rebel = object_building_faction_perk_hq_s
 
 			{ mobile="fbase_rebel_first_lieutenant", x=3.6, z=0, y=1.8, cellid=4, respawn=300, containmentType=-1, heading=0},
 			{ mobile="fbase_rebel_warrant_officer_ii", x=-3.8, z=0, y=-2.3, cellid=6, respawn=300, containmentType=-1, heading=0},
-			{ mobile="rebel_recruiter", x=-1, z=0, y=-5.5, cellid=3, containmentType=-1, respawn=60, heading=0},
+			{ mobile="fbase_rebel_recruiter", x=-1, z=0, y=-5.5, cellid=3, containmentType=-1, respawn=360, heading=0},
 		},
 
 }
