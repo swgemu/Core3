@@ -22,6 +22,7 @@
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/creature/conversation/ConversationObserver.h"
 
+
 void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	AiAgentImplementation::fillAttributeList(msg, object);
 

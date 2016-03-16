@@ -53,12 +53,14 @@ class DroidObject extends AiAgent {
 	 * List of installed droid modules
 	 */
 	@dereferenced
-	protected Vector<BaseDroidModuleComponent> modules;       
+	protected transient Vector<BaseDroidModuleComponent> modules;
 
 	/**
 	 * Droid hit chance
 	 */
 	protected float hitChance;
+
+	public native void initializeTransientMembers();
 
 	/**
 	 * Droid species for Identification
