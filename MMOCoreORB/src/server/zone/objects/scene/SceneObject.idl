@@ -275,6 +275,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract int notifyObjectRemovedFromChild(SceneObject object, SceneObject child) {
 		return 0;
 	}
+
+	@reference
+	public native abstract SceneObject getCraftedComponentsSatchel();
 	
 	/**
 	 * Calls the appropriate UI Listener Function
