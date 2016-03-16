@@ -297,46 +297,32 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 				droid->setMaxHAM(i,maxHam/10,false);
 			}
 		}
+        
+		// this will change to use stacked modules. we wont care about non droid modules as they arent needed.
+		ManagedReference<SceneObject*> craftingComponentsSatchel = droid->getCraftedComponentsSatchel();
+		
+		// Empty our old bag if it exists
+		for (int i=craftingComponentsSatchel->getContainerObjectsSize(); i>=0; i--) {
+			ManagedReference<SceneObject*> sceno = craftingComponentsSatchel->getContainerObject(i);
+			sceno->destroyObjectFromWorld(true);
+		}
+		craftingComponentsSatchel->removeAllContainerObjects();
 
-		// Transfer crafting components from deed to droid
-		ManagedReference<SceneObject*> craftingComponents = getSlottedObject("crafted_components");
-		if(craftingComponents != NULL) {
-			SceneObject* satchel = craftingComponents->getContainerObject(0);
-			// remove all items form satchel and add int he new items
-			Vector<ManagedReference<SceneObject*> > toRemove;
-			for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {
-				ManagedReference<SceneObject*> sceno = satchel->getContainerObject(i);
-				if (sceno != NULL) {
-					toRemove.add(sceno);
-				}
-			}
-			satchel->removeAllContainerObjects();
-			for(int i=0;i<toRemove.size();i++) {
-				SceneObject* component = toRemove.get(i);
-				Locker componenetLocker(component);
-				component->destroyObjectFromWorld(true);
-			}
-			// this will change to use stacked modules. we wont care about non droid modules as they arent needed.
-			String key;
-			ManagedReference<DroidComponent*> comp = NULL;
-			HashTableIterator<String, ManagedReference<DroidComponent*> > iterator = modules.iterator();
+		// Insert our stacked droid modules into the droid's crafted components container
+		String key;
+		ManagedReference<DroidComponent*> comp = NULL;
+		HashTableIterator<String, ManagedReference<DroidComponent*> > iterator = modules.iterator();
 
-			for(int i = 0; i < modules.size(); ++i) {
-				iterator.getNextKeyAndValue(key, comp);
-				if (comp) {
-					satchel->transferObject(comp, -1, false);
-					DataObjectComponentReference* data = comp->getDataObjectComponent();
-					BaseDroidModuleComponent* module = NULL;
-					if(data != NULL && data->get() != NULL && data->get()->isDroidModuleData()) {
-						module = cast<BaseDroidModuleComponent*>(data->get());
-						module->initialize(droid);
-					}
-				}
+		for(int i = 0; i < modules.size(); ++i) {
+			iterator.getNextKeyAndValue(key, comp);
+			if (comp) {
+				ManagedReference<TangibleObject*> cloneComponent = cast<TangibleObject*>(ObjectManager::instance()->cloneObject(comp));
+				cloneComponent->setParent(NULL);
+				craftingComponentsSatchel->transferObject(cloneComponent, -1, false);
 			}
-			droid->transferObject(craftingComponents, 4, false);
-			craftingComponents->setSendToClient(false);
 		}
 
+		// Create our transient modules based on the stored physical components
 		droid->initDroidModules();
 
 		//Set weapon stats
