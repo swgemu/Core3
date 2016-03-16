@@ -1589,6 +1589,63 @@ bool SceneObjectImplementation::hasObjectInSlottedContainer(SceneObject* object)
 	return false;
 }
 
+Reference<SceneObject*> SceneObjectImplementation::getCraftedComponentsSatchel() {
+    
+	Reference<SceneObject*> sceno = asSceneObject();
+	if (sceno == NULL)
+		return NULL;
+
+	Reference<ZoneServer*> zServer = getZoneServer();
+
+	if(zServer == NULL)
+		return NULL;
+	
+	ManagedReference<SceneObject*> craftingComponents = sceno->getSlottedObject("crafted_components");
+	ManagedReference<SceneObject*> craftingComponentsSatchel = NULL;
+	
+    
+	if(craftingComponents == NULL) {
+
+		/// Add Components to crafted object
+		String craftingComponentsPath = "object/tangible/crafting/crafting_components_container.iff";
+		craftingComponents = zServer->createObject(craftingComponentsPath.hashCode(), 1);
+
+		Locker componentsLocker(craftingComponents);
+		
+		craftingComponents->setSendToClient(false);
+		sceno->transferObject(craftingComponents, 4, false);
+
+		craftingComponents->setContainerDefaultDenyPermission(ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
+		craftingComponents->setContainerDefaultAllowPermission(0);
+		craftingComponents->setContainerDenyPermission("owner", ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
+		craftingComponents->setContainerDenyPermission("admin", ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
+		craftingComponents->setContainerAllowPermission("owner", 0);
+		craftingComponents->setContainerAllowPermission("admin", 0);
+		craftingComponents->setContainerInheritPermissionsFromParent(false);
+
+		//String craftingComponentsSatchelPath = "object/tangible/container/base/base_container_volume.iff";
+		String craftingComponentsSatchelPath = "object/tangible/hopper/crafting_station_hopper/crafting_station_ingredient_hopper_large.iff";
+		craftingComponentsSatchel = zServer->createObject(craftingComponentsSatchelPath.hashCode(), 1);
+
+		Locker satchelLocker(craftingComponentsSatchel, craftingComponents);
+		
+		craftingComponentsSatchel->setContainerInheritPermissionsFromParent(false);
+		craftingComponentsSatchel->setContainerDefaultDenyPermission(ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
+		craftingComponentsSatchel->setContainerDefaultAllowPermission(0);
+		craftingComponentsSatchel->setContainerAllowPermission("admin", ContainerPermissions::OPEN);
+		craftingComponentsSatchel->setContainerDenyPermission("admin", ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
+		craftingComponentsSatchel->setContainerAllowPermission("owner", 0);
+		craftingComponentsSatchel->setContainerDenyPermission("owner", ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
+
+		craftingComponents->transferObject(craftingComponentsSatchel, -1, false);
+
+	} else {
+		craftingComponentsSatchel = craftingComponents->getContainerObject(0);
+	}
+	
+	return craftingComponentsSatchel;
+}
+
 int SceneObjectImplementation::getArrangementDescriptorSize() {
 	return templateObject->getArrangementDescriptors()->size();
 }
