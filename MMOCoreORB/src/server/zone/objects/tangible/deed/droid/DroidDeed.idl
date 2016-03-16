@@ -32,7 +32,9 @@ class DroidDeed extends Deed {
 		combatRating = 0;	
 		overallQuality = 0;	
 	}
-	
+
+	public abstract native void onCloneObject(SceneObject objectToClone);
+
 	public native void initializeTransientMembers();
 	
 	/**
@@ -69,9 +71,16 @@ class DroidDeed extends Deed {
 	public boolean isDroidDeedObject() {
 		return true;
 	}
-	
+
 	@local
 	@dirty
 	protected native void processModule(BaseDroidModuleComponent module, unsigned int crc);
+        
+	@local
+	public HashTable<string,DroidComponent> getModules() {
+		return modules;
+	}
+
+	public abstract native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
 	
 }

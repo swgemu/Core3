@@ -224,44 +224,14 @@ void DroidStimpackModuleDataComponent::initialize(DroidObject* droid) {
 		info("droidComponent was null");
 		return;
 	}
-
-	droidComponent->dropSlottedObject("crafted_components");
-	ManagedReference<SceneObject*> craftingComponents = droidComponent->getSlottedObject("crafted_components");
-
-	if (craftingComponents == NULL) {
-		// create the satchel and container as it would not be present as this object doesnt use components.
-		ManagedReference<SceneObject*> craftingComponentsSatchel = NULL;
-		String craftingComponentsPath = "object/tangible/crafting/crafting_components_container.iff";
-		craftingComponents = droidComponent->getZoneServer()->createObject(craftingComponentsPath.hashCode(), 1);
-		craftingComponents->removeAllContainerObjects();
-		craftingComponents->setSendToClient(false);
-		droidComponent->transferObject(craftingComponents, 4, false);
-
-		Locker locker(craftingComponents);
-		craftingComponents->setContainerDefaultDenyPermission(ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
-		craftingComponents->setContainerDefaultAllowPermission(0);
-		craftingComponents->setContainerDenyPermission("owner", ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
-		craftingComponents->setContainerDenyPermission("admin", ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
-		craftingComponents->setContainerAllowPermission("owner", 0);
-		craftingComponents->setContainerAllowPermission("admin", 0);
-		craftingComponents->setContainerInheritPermissionsFromParent(false);
-		locker.release();
-
-		String craftingComponentsSatchelPath = "object/tangible/hopper/crafting_station_hopper/crafting_station_ingredient_hopper_large.iff";
-		craftingComponentsSatchel = droidComponent->getZoneServer()->createObject(craftingComponentsSatchelPath.hashCode(), 1);
-
-		Locker locker2(craftingComponentsSatchel);
-		craftingComponentsSatchel->setContainerVolumeLimit(capacity);
-		craftingComponentsSatchel->setContainerInheritPermissionsFromParent(false);
-		craftingComponentsSatchel->setContainerDefaultDenyPermission(ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
-		craftingComponentsSatchel->setContainerDefaultAllowPermission(0);
-		craftingComponentsSatchel->setContainerAllowPermission("admin", ContainerPermissions::OPEN);
-		craftingComponentsSatchel->setContainerDenyPermission("admin", ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
-		craftingComponentsSatchel->setContainerAllowPermission("owner", 0);
-		craftingComponentsSatchel->setContainerDenyPermission("owner", ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
-		craftingComponentsSatchel->sendTo(droid, true);
-		craftingComponents->transferObject(craftingComponentsSatchel, -1, false);
+	
+	//This will instantiate the crafted_components slotted container and satchel if they do not exist
+	ManagedReference<SceneObject*> satchel = droidComponent->getCraftedComponentsSatchel();
+	if (satchel != NULL) {
+		satchel->setContainerVolumeLimit(capacity);
 	}
+
+	
 }
 
 int DroidStimpackModuleDataComponent::handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller) {
@@ -271,10 +241,10 @@ int DroidStimpackModuleDataComponent::handleObjectMenuSelect(CreatureObject* pla
 		player->sendSystemMessage("@pet/droid_modules:stimpack_error");
 		return 0;
 	}
-
+	
 	if (selectedID == LOAD_STIMPACK) {
 		Locker crossLoker(droid, player);
-
+		
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 		if (inventory == NULL) {
 			player->sendSystemMessage("@pet/droid_modules:no_stimpacks");

@@ -162,7 +162,18 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@local
 	public abstract native void loadTemplateData(SharedObjectTemplate templateData);
-	
+
+
+	/**
+	* Acts as a copy constructor for ManagedObjects. This function will be invoked by the cloneObject function in the object manager.
+	* @pre { objectToClone is a valid pointer }
+	* @post { SceneObject members are properly initialized using data from objectToClone }
+	* @param objectToClone objectToClone is the source object being used to clone into the current SceneObject
+	*/
+	public abstract void onCloneObject(SceneObject objectToClone) {
+		//TODO: Move container clone and other sceno cases here
+	}
+
 	public abstract native void createComponents();
 	public abstract native void createContainerComponent();
 	public abstract native void createObjectMenuComponent();
@@ -276,6 +287,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract int notifyObjectRemovedFromChild(SceneObject object, SceneObject child) {
 		return 0;
 	}
+
+	@reference
+	public native abstract SceneObject getCraftedComponentsSatchel();
 	
 	/**
 	 * Calls the appropriate UI Listener Function
