@@ -697,7 +697,7 @@ void CreatureObjectImplementation::setCombatState() {
 			stateBitmask &= ~CreatureState::PEACE;
 
 		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(asCreatureObject());
-		dcreo3->updateCreatureBitmask(0x80);
+		dcreo3->updateCreatureBitmask(getOptionsBitmask());
 		dcreo3->updateState();
 		dcreo3->close();
 
