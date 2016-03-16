@@ -53,12 +53,14 @@ class DroidObject extends AiAgent {
 	 * List of installed droid modules
 	 */
 	@dereferenced
-	protected Vector<BaseDroidModuleComponent> modules;       
+	protected transient Vector<BaseDroidModuleComponent> modules;
 
 	/**
 	 * Droid hit chance
 	 */
 	protected float hitChance;
+
+	public native void initializeTransientMembers();
 
 	/**
 	 * Droid species for Identification
@@ -533,5 +535,10 @@ class DroidObject extends AiAgent {
 			return attackSpeed;
 		else
 			return super.calculateAttackSpeed(level);
+	}
+        
+        @local
+	public HashTable<string,DroidComponent> getModules() {
+		return modules;
 	}
 }
