@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_0c7cda1f",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2528,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-16T21:41:48Z",
+      "side": 1,
+      "message": "You want (distanceTo(pos) - radius) ** 2, which is the same as squaredDistanceTo(pos) + radius ** 2 - distanceTo(pos)*radius. What you have is not equivalent.",
+      "range": {
+        "startLine": 2528,
+        "startChar": 4,
+        "endLine": 2528,
+        "endChar": 136
+      },
+      "revId": "2b3f18b33d311a0b99364997b129e70ae1c0947b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_6c879610",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2529,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-16T21:41:48Z",
+      "side": 1,
+      "message": "This could be pre-calculated considering this will get called for every target in a single AE attack, but I\u0027m not sure this would be more efficient once you correct your math in the above line.",
+      "range": {
+        "startLine": 2529,
+        "startChar": 15,
+        "endLine": 2529,
+        "endChar": 54
+      },
+      "revId": "2b3f18b33d311a0b99364997b129e70ae1c0947b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2c799e2f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 3329,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-16T21:41:48Z",
+      "side": 1,
+      "message": "I must admint, I\u0027m a bit confused by this. Why are you multiplying by the height of the terrain to get the bounding sphere radius square?",
+      "range": {
+        "startLine": 3329,
+        "startChar": 1,
+        "endLine": 3329,
+        "endChar": 52
+      },
+      "revId": "2b3f18b33d311a0b99364997b129e70ae1c0947b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_cc758233",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CurePackCommand.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-16T21:41:48Z",
+      "side": 1,
+      "message": "check yo math again!",
+      "range": {
+        "startLine": 219,
+        "startChar": 8,
+        "endLine": 219,
+        "endChar": 116
+      },
+      "revId": "2b3f18b33d311a0b99364997b129e70ae1c0947b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
