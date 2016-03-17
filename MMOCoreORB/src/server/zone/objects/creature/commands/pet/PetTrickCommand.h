@@ -98,6 +98,10 @@ public:
 
 		// Perform trick animation
 		String animation = "trick_" + String::valueOf(trickNumber);
+
+		if (pet->getPosture() == CreaturePosture::SITTING)
+			animation = "sit_" + animation;
+
 		pet->doAnimation(animation);
 
 		// Set cooldown

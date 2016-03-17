@@ -55,6 +55,37 @@ void CreatureManagerImplementation::setCreatureTemplateManager() {
 	CreaturePosture::instance()->loadMovementData();
 }
 
+void CreatureManagerImplementation::loadLuaConfig() {
+	info("Loading configuration file.", true);
+
+	Lua* lua = new Lua();
+	lua->init();
+
+	lua->runFile("scripts/managers/creature_manager.lua");
+
+	LuaObject luaObject = lua->getGlobalObject("aiSpeciesData");
+
+	if (luaObject.isValidTable()) {
+		for (int i = 1; i <= luaObject.getTableSize(); ++i) {
+			LuaObject speciesData = luaObject.getObjectAt(i);
+
+			if (speciesData.isValidTable()) {
+				int speciesID = speciesData.getIntAt(1);
+				String skeleton = speciesData.getStringAt(2);
+				bool canSit = speciesData.getBooleanAt(3);
+				bool canLieDown = speciesData.getBooleanAt(4);
+
+				Reference<AiSpeciesData*> data = new AiSpeciesData(speciesID, skeleton, canSit, canLieDown);
+
+				aiSpeciesData.add(speciesID, data);
+			}
+
+			speciesData.pop();
+		}
+	}
+
+	luaObject.pop();
+}
 
 CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC, float x, float z, float y, uint64 parentID) {
 	CreatureObject* creature = createCreature(templateCRC);
