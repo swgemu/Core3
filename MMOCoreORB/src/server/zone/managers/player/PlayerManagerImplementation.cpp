@@ -774,7 +774,6 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 
 	threatMap->removeAll(true);
 
-	player->removeDefenders();
 	player->dropFromDefenderLists();
 	player->setTargetID(0, true);
 
@@ -792,7 +791,13 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 	if (ghost == NULL)
 		return;
 
-	ghost->removeSuiBoxType(SuiWindowType::CLONE_REQUEST);
+	ManagedReference<SuiBox*> cloneBox = ghost->getSuiBoxFromWindowType(SuiWindowType::CLONE_REQUEST);
+
+	if (cloneBox != NULL) {
+		cloneBox->clearOptions();
+		player->sendMessage(cloneBox->generateMessage());
+		return;
+	}
 
 	ManagedReference<SuiListBox*> cloneMenu = new SuiListBox(player, SuiWindowType::CLONE_REQUEST);
 	cloneMenu->setCallback(new CloningRequestSuiCallback(player->getZoneServer(), typeofdeath));
