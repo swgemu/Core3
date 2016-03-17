@@ -774,7 +774,6 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 
 	threatMap->removeAll(true);
 
-	player->removeDefenders();
 	player->dropFromDefenderLists();
 	player->setTargetID(0, true);
 
