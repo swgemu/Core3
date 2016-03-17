@@ -4115,74 +4115,73 @@ void PlayerManagerImplementation::cancelProposeUnitySession(CreatureObject* resp
 	respondingPlayer->removePendingTask( "propose_unity" );
 }
 
-void PlayerManagerImplementation::promptDivorce(CreatureObject* player){
-
-	if( player == NULL || !player->isPlayerCreature())
+void PlayerManagerImplementation::promptDivorce(CreatureObject* player) {
+	if (player == NULL || !player->isPlayerCreature())
 		return;
 
 	// Check if player is married
 	PlayerObject* playerGhost = player->getPlayerObject();
-	if( !playerGhost->isMarried() ){
-		player->sendSystemMessage( "You are not united with anyone!" );
+
+	if (playerGhost == NULL)
+		return;
+
+	if (!playerGhost->isMarried()) {
+		player->sendSystemMessage("You are not united with anyone!");
 		return;
 	}
 
 	// Build and confirmation window
 	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, SuiWindowType::CONFIRM_DIVORCE);
 	suiBox->setCallback(new ConfirmDivorceSuiCallback(server));
-	suiBox->setPromptTitle("Confirm Divorce?"); // "Accept Unity Proposal?"
-	suiBox->setPromptText( "Do you wish to nullify your unity with " + playerGhost->getSpouseName() + "?" );
+	suiBox->setPromptTitle("Confirm Divorce?");
+	suiBox->setPromptText("Do you wish to nullify your unity with " + playerGhost->getSpouseName() + "?");
 	suiBox->setCancelButton(true, "@no");
 	suiBox->setOkButton(true, "@yes");
 
 	playerGhost->addSuiBox(suiBox);
 	player->sendMessage(suiBox->generateMessage());
-
 }
 
-void PlayerManagerImplementation::grantDivorce(CreatureObject* player){
-
-	if( player == NULL || !player->isPlayerCreature())
+void PlayerManagerImplementation::grantDivorce(CreatureObject* player) {
+	if (player == NULL || !player->isPlayerCreature())
 		return;
 
 	// Check if player is married
 	PlayerObject* playerGhost = player->getPlayerObject();
-	if( !playerGhost->isMarried() )
+
+	if (playerGhost == NULL || !playerGhost->isMarried())
 		return;
 
 	// Find spouse
 	CreatureObject* spouse = getPlayer(playerGhost->getSpouseName());
 
+	StringIdChatParameter msg;
+	msg.setStringId("unity", "prose_end_unity"); // "Your union with %TO has ended."
+
 	// Remove spouse name from both players
-	if( spouse != NULL && spouse->isPlayerCreature() ){
-		Locker slocker( spouse, player );
+	if (spouse != NULL && spouse->isPlayerCreature()) {
+		Locker slocker(spouse, player);
 
 		PlayerObject* spouseGhost = spouse->getPlayerObject();
-		spouseGhost->removeSpouse();
+
+		if (spouseGhost != NULL)
+			spouseGhost->removeSpouse();
+
 		playerGhost->removeSpouse();
 
-		StringIdChatParameter spouseMsg;
-		spouseMsg.setStringId("unity", "prose_end_unity"); // "Your union with %TO has ended."
-		spouseMsg.setTO( player->getFirstName() );
-		spouse->sendSystemMessage( spouseMsg );
+		msg.setTO(player->getFirstName());
+		spouse->sendSystemMessage(msg);
 
-		StringIdChatParameter playerMsg;
-		playerMsg.setStringId("unity", "prose_end_unity"); //  "Your union with %TO has ended."
-		playerMsg.setTO( spouse->getFirstName() );
-		player->sendSystemMessage( playerMsg );
+		msg.setTO(spouse->getFirstName());
+		player->sendSystemMessage(msg);
 
-	}
-	else{
+	} else {
 		// If spouse player is null (perhaps it's been deleted), we can still remove the spouse from the current player
-
-		StringIdChatParameter playerMsg;
-		playerMsg.setStringId("unity", "prose_end_unity"); //  "Your union with %TO has ended."
-		playerMsg.setTO( playerGhost->getSpouseName() );
-		player->sendSystemMessage( playerMsg );
+		msg.setTO(playerGhost->getSpouseName());
+		player->sendSystemMessage(msg);
 
 		playerGhost->removeSpouse();
 	}
-
 }
 
 void PlayerManagerImplementation::claimVeteranRewards(CreatureObject* player){

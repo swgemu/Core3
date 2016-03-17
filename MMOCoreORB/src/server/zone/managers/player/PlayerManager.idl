@@ -255,6 +255,7 @@ class PlayerManager extends Observer implements Logger {
 	 * @pre player locked
 	 * @post player locked
 	 */
+	@arg1preLocked
 	public native void grantDivorce(CreatureObject player);	
 
 	/**
