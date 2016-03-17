@@ -169,7 +169,6 @@ core3_IDLS =	autogen/server/zone/objects/tangible/eventperk/ShuttleBeacon.cpp \
 				autogen/server/zone/objects/scene/SceneObject.cpp \
 				autogen/server/zone/objects/area/ActiveArea.cpp \
 				autogen/server/zone/objects/area/BadgeActiveArea.cpp \
-				autogen/server/zone/objects/area/GarageArea.cpp \
 				autogen/server/zone/objects/area/CampSiteActiveArea.cpp \
 				autogen/server/zone/objects/area/MissionSpawnActiveArea.cpp \
 				autogen/server/zone/objects/area/MissionReconActiveArea.cpp \
@@ -394,6 +393,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/building/components/CityHallZoneComponent.cpp \
 		server/zone/objects/building/components/DestructibleBuildingDataComponent.cpp \
 		server/zone/objects/structure/components/StructureZoneComponent.cpp \
+		server/zone/objects/structure/components/GarageZoneComponent.cpp \
 		server/zone/objects/tangible/components/FireHeavyWeaponMenuComponent.cpp \
 		server/zone/objects/tangible/components/SurveyDroidMenuComponent.cpp \
 		server/zone/objects/tangible/components/ThrowGrenadeMenuComponent.cpp \

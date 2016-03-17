@@ -74,7 +74,6 @@ includeFile("weapon/serverobjects.lua")
 -- Server Objects
 includeFile("active_area.lua")
 includeFile("camp_area.lua")
-includeFile("garage_area.lua")
 includeFile("badge_area.lua")
 includeFile("region_area.lua")
 includeFile("mission_spawn_area.lua")

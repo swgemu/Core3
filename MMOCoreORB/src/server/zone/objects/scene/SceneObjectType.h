@@ -327,7 +327,6 @@ public:
 	const static int MISSIONSPAWNAREA = 0x2000002;
 	const static int MISSIONRECONAREA = 0x2000003;
 	const static int SPAWNAREA = 0x2000004;
-	const static int GARAGEAREA = 0x2000006;
 	const static int ACTIVEAREA = 0x2000007;
 	const static int CAMPAREA = 0x2000009;
 	const static int FSVILLAGEAREA = 0x200000A;
