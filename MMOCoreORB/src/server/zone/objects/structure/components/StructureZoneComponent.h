@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-#include "server/zone/objects/scene/components/SceneObjectComponent.h"
+#include "server/zone/objects/scene/components/ZoneComponent.h"
 
 namespace server {
  namespace zone {

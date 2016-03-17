@@ -93,7 +93,6 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<FsVillageArea>(SceneObjectType::FSVILLAGEAREA);
 	objectFactory.registerObject<ActiveArea>(SceneObjectType::ACTIVEAREA);
 	objectFactory.registerObject<BadgeActiveArea>(SceneObjectType::BADGEAREA);
-	objectFactory.registerObject<GarageArea>(SceneObjectType::GARAGEAREA);
 	objectFactory.registerObject<MissionSpawnActiveArea>(SceneObjectType::MISSIONSPAWNAREA);
 	objectFactory.registerObject<MissionReconActiveArea>(SceneObjectType::MISSIONRECONAREA);
 	objectFactory.registerObject<SpawnArea>(SceneObjectType::SPAWNAREA);
