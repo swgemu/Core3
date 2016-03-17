@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_4c35f244",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/droid/DroidDeedImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-03-17T08:16:28Z",
+      "side": 1,
+      "message": "This *should* even fix any old deeds which were previously affected by the bug.",
+      "range": {
+        "startLine": 321,
+        "startChar": 4,
+        "endLine": 321,
+        "endChar": 73
+      },
+      "revId": "a5073c42d0a42517fe809aa70f36f6f52997134e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
