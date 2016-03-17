@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_8c2b0aeb",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SetBiographyCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-03-17T08:12:49Z",
+      "side": 1,
+      "message": "This is necessary to allow the player to retrieve their biography a second time from the server. Otherwise they are permanently stuck in the \"retrieving bio...\" state. This is a giant hack, but so is SOE.",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 30
+      },
+      "revId": "48d6c184a9ab5befa44710a8dfbf98c63c5c4810",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
