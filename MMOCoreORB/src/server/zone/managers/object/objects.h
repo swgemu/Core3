@@ -121,7 +121,6 @@
 #include "server/zone/objects/area/SarlaccArea.h"
 #include "server/zone/objects/area/FsVillageArea.h"
 #include "server/zone/objects/area/BadgeActiveArea.h"
-#include "server/zone/objects/area/GarageArea.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/area/MissionSpawnActiveArea.h"
 #include "server/zone/objects/area/MissionReconActiveArea.h"
