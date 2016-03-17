@@ -31,6 +31,9 @@ public:
 		PlayerObject* ghost = player->getPlayerObject();
 
 		ghost->setBiography(arguments);
+		
+		ghost->sendDestroyTo(player);
+		ghost->sendTo(player, true);
 
 		return SUCCESS;
 	}
