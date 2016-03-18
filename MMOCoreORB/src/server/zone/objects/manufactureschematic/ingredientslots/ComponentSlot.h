@@ -129,6 +129,7 @@ public:
 		} else {
 
 			itemToUse = incomingTano;
+			itemToUse->setUseCount(1, true);
 		}
 
 		Vector<ManagedReference<TangibleObject*> > itemsToAdd;
