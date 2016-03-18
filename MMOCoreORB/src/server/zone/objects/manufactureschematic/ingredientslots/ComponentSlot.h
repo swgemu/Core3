@@ -108,28 +108,32 @@ public:
 
 		ObjectManager* objectManager = ObjectManager::instance();
 		ManagedReference<TangibleObject*> itemToUse = NULL;
+		
+		
+		
+		itemToUse = cast<TangibleObject*>( objectManager->cloneObject(incomingTano));
+		Locker ilocker(itemToUse);
+		
+		itemToUse->setParent(NULL);
+		
+		if (itemToUse->hasAntiDecayKit()) {
+			itemToUse->removeAntiDecayKit();
+		}
 
 		if(incomingTano->getUseCount() > slotNeeds) {
-
+			
 			incomingTano->decreaseUseCount(slotNeeds);
-
-			itemToUse = cast<TangibleObject*>( objectManager->cloneObject(incomingTano));
-
-			Locker ilocker(itemToUse);
-
-			if (itemToUse->hasAntiDecayKit()) {
-				itemToUse->removeAntiDecayKit();
-			}
-
 			itemToUse->setUseCount((slotNeeds > 1 ? slotNeeds : 0), false);
-			itemToUse->setParent(NULL);
-			itemToUse->sendTo(player, true); // Without this, the new object does not appear in the crafting slot
-			itemToUse->sendAttributeListTo(player);
-
 		} else {
-
-			itemToUse = incomingTano;
+			
+			incomingTano->destroyObjectFromWorld(true);
+			incomingTano->destroyObjectFromDatabase(true);
 		}
+		
+		itemToUse->sendTo(player, true); // Without this, the new object does not appear in the crafting slot
+		itemToUse->sendAttributeListTo(player);
+		
+		ilocker.release();
 
 		Vector<ManagedReference<TangibleObject*> > itemsToAdd;
 
