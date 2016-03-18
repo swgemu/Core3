@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_8c79cafe",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/CreatureManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2016-03-18T00:57:05Z",
+      "side": 1,
+      "message": "delete lua",
+      "revId": "ca6b0a3c3c01e53c56582b1c8b0ced4ce63a872d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
