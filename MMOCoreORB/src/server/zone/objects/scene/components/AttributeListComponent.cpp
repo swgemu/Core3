@@ -11,6 +11,6 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
-void AttributeListComponent::fillAttributeList(AttributeListMessage* alm, CreatureObject* creature, SceneObject* object) {
+void AttributeListComponent::fillAttributeList(AttributeListMessage* alm, CreatureObject* creature, SceneObject* object) const {
 	object->fillAttributeList(alm, creature);
 }

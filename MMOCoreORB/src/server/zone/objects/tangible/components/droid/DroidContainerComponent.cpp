@@ -8,7 +8,7 @@
 #include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
-bool DroidContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) {
+bool DroidContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
 
 	ManagedReference<SceneObject*> p = sceneObject->getParent();
 
@@ -35,7 +35,7 @@ bool DroidContainerComponent::checkContainerPermission(SceneObject* sceneObject,
 	}
 	return false;
 }
-int DroidContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) {
+int DroidContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
 	if (object->isContainerObject() && !object->isResourceContainer()) {
 		errorDescription = "@container_error_message:container12";
 		return TransferErrorCode::INVALIDTYPE;

@@ -14,7 +14,7 @@
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/managers/city/CityRemoveAmenityTask.h"
 
-void TrainerMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void TrainerMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
 	ManagedReference<CityRegion*> city = sceneObject->getCityRegion();
@@ -23,7 +23,7 @@ void TrainerMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Obje
 		menuResponse->addRadialMenuItem(72, 3, "@city/city:mt_remove"); // Remove
 }
 
-int TrainerMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int TrainerMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 	if (selectedID == 72) {
 		ManagedReference<CityRegion*> city = sceneObject->getCityRegion();
 

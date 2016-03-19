@@ -6,7 +6,7 @@
 #include "server/zone/objects/tangible/components/generic/CoaMessageDataComponent.h"
 #include "server/zone/managers/player/BadgeList.h"
 
-int FactionRecruiterContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) {
+int FactionRecruiterContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
 
 	if (sceneObject == object) {
 		return TransferErrorCode::CANTADDTOITSELF;
@@ -44,7 +44,7 @@ int FactionRecruiterContainerComponent::canAddObject(SceneObject* sceneObject, S
 	return TransferErrorCode::INVALIDTYPE;
 }
 
-bool FactionRecruiterContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow, bool notifyRoot) {
+bool FactionRecruiterContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow, bool notifyRoot) const {
 	CoaMessageDataComponent* data = object->getDataObjectComponent()->castTo<CoaMessageDataComponent*>();
 
 	if (data == NULL) {

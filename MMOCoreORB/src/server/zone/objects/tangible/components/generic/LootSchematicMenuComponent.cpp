@@ -15,7 +15,7 @@
 #include "server/zone/templates/tangible/LootSchematicTemplate.h"
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 
-void LootSchematicMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void LootSchematicMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 
 	if (!sceneObject->isTangibleObject())
 		return;
@@ -41,7 +41,7 @@ void LootSchematicMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject
 
 }
 
-int LootSchematicMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int LootSchematicMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 	if (!sceneObject->isTangibleObject())
 		return 0;
 

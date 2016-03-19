@@ -13,8 +13,8 @@
 
 class StructureTerminalMenuComponent : public ObjectMenuComponent {
 public:
-	void fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* creature);
-	int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID);
+	void fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* creature) const;
+	int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) const;
 };
 
 #endif /* STRUCTURETERMINALMENUCOMPONENT_H_ */

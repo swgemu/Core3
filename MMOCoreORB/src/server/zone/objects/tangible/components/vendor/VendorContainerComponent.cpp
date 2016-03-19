@@ -10,7 +10,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 
-bool VendorContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) {
+bool VendorContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
 
 	if (!sceneObject->isVendor())
 		return false;

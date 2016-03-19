@@ -12,7 +12,7 @@
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
 
-int SaberInventoryContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) {
+int SaberInventoryContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
 
 	ManagedReference<SceneObject*> p = sceneObject->getParent();
 
@@ -72,7 +72,7 @@ int SaberInventoryContainerComponent::canAddObject(SceneObject* sceneObject, Sce
  * Is called when this object has been inserted with an object
  * @param object object that has been inserted
  */
-int SaberInventoryContainerComponent::notifyObjectInserted(SceneObject* sceneObject, SceneObject* object) {
+int SaberInventoryContainerComponent::notifyObjectInserted(SceneObject* sceneObject, SceneObject* object) const {
 	ManagedReference<WeaponObject*> weao = cast<WeaponObject*>( sceneObject->getParent().get().get());
 
 	Locker locker(weao);
@@ -104,7 +104,7 @@ int SaberInventoryContainerComponent::notifyObjectInserted(SceneObject* sceneObj
  * Is called when an object was removed
  * @param object object that has been inserted
  */
-int SaberInventoryContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) {
+int SaberInventoryContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) const {
 	ManagedReference<WeaponObject*> weao = cast<WeaponObject*>( sceneObject->getParent().get().get());
 
 		if (weao->isJediWeapon()) {
@@ -136,7 +136,7 @@ int SaberInventoryContainerComponent::notifyObjectRemoved(SceneObject* sceneObje
 	return sceneObject->notifyObjectRemoved(object);
 }
 
-bool SaberInventoryContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) {
+bool SaberInventoryContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
 	ManagedReference<WeaponObject*> saber = cast<WeaponObject*>( sceneObject->getParent().get().get());
 
 	if (saber == NULL)

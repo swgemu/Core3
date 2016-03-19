@@ -14,7 +14,7 @@
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 
 void DiceMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
-		ObjectMenuResponse* menuResponse, CreatureObject* player) {
+		ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 
 	if (!sceneObject->isDiceObject())
 		return;
@@ -52,7 +52,7 @@ void DiceMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 }
 
 int DiceMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
-		CreatureObject* player, byte selectedID) {
+		CreatureObject* player, byte selectedID) const {
 	if (!sceneObject->isDiceObject())
 		return 0;
 
@@ -150,7 +150,7 @@ int DiceMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	return 0;
 }
 
-void DiceMenuComponent::doRoll(CreatureObject* player, DiceTemplate* diceTemplate, int sides, const String& sidesText, int numRoll) {
+void DiceMenuComponent::doRoll(CreatureObject* player, DiceTemplate* diceTemplate, int sides, const String& sidesText, int numRoll) const {
 
 	StringIdChatParameter self("dice/dice", diceTemplate->getSelfSingleResult());
 	StringIdChatParameter others("dice/dice", diceTemplate->getOthersSingleResult());

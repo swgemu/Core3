@@ -16,12 +16,12 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/region/CityRegion.h"
 
-void InsuranceTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void InsuranceTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 }
 
-int InsuranceTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int InsuranceTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 	if (!sceneObject->isTangibleObject())
 		return 0;
 

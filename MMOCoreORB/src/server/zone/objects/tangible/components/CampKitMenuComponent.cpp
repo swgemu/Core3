@@ -24,7 +24,7 @@
 #include "server/zone/objects/region/Region.h"
 
 void CampKitMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
-		ObjectMenuResponse* menuResponse, CreatureObject* player) {
+		ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 
 	if (!sceneObject->isCampKit())
 		return;
@@ -35,7 +35,7 @@ void CampKitMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 }
 
 int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
-		CreatureObject* player, byte selectedID) {
+		CreatureObject* player, byte selectedID) const {
 	if (!sceneObject->isTangibleObject())
 		return 0;
 

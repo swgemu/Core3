@@ -17,7 +17,7 @@
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/managers/creature/PetManager.h"
 
-void InstallationObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void InstallationObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (!sceneObject->isInstallationObject())
 		return;
 
@@ -57,7 +57,7 @@ void InstallationObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneO
 
 }
 
-int InstallationObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int InstallationObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 	if (!sceneObject->isInstallationObject())
 		return 1;
 

@@ -10,14 +10,14 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
-void FireHeavyWeaponMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void FireHeavyWeaponMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (sceneObject == NULL || !sceneObject->isWeaponObject() || player == NULL)
 		return;
 
 	WeaponObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 }
 
-int FireHeavyWeaponMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int FireHeavyWeaponMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 	if (!sceneObject->isWeaponObject() || !player->isPlayerCreature() || !sceneObject->isASubChildOf(player))
 		return 0;
 
@@ -26,5 +26,6 @@ int FireHeavyWeaponMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 
 		return 1;
 	}
+
 	return WeaponObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
 }

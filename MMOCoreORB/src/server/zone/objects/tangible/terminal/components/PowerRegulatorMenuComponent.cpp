@@ -19,7 +19,7 @@
 #include "server/zone/managers/gcw/GCWManager.h"
 
 
-void PowerRegulatorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void PowerRegulatorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
 
@@ -45,7 +45,7 @@ void PowerRegulatorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	menuResponse->addRadialMenuItem(20, 3, "@hq:mnu_set_overload"); // Set to overload
 }
 
-int PowerRegulatorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int PowerRegulatorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 	if (player->isDead() || player->isIncapacitated() || selectedID != 20)
 		return 1;
 

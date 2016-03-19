@@ -9,7 +9,7 @@
 #include "server/zone/objects/tangible/components/HeroRingDataComponent.h"
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
 
-void HeroRingMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void HeroRingMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
@@ -28,7 +28,7 @@ void HeroRingMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Obj
 
 }
 
-int HeroRingMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int HeroRingMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 
 	if (selectedID == 20) { // Restore Life
 
@@ -94,7 +94,7 @@ int HeroRingMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 
 }
 
-String HeroRingMenuComponent::getCooldownString(uint32 delta) {
+String HeroRingMenuComponent::getCooldownString(uint32 delta) const {
 
 	int seconds = delta / 1000;
 

@@ -19,7 +19,7 @@
 
 #include "server/zone/ZoneServer.h"
 
-void ForceShrineMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player){
+void ForceShrineMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
@@ -28,7 +28,7 @@ void ForceShrineMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, 
 
 }
 
-int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) {
+int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) const {
 	if (selectedID != 213)
 		return 0;
 
@@ -115,7 +115,7 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 	return 0;
 }
 
-void ForceShrineMenuComponent::findTrainerObject(CreatureObject* player, PlayerObject* ghost) {
+void ForceShrineMenuComponent::findTrainerObject(CreatureObject* player, PlayerObject* ghost) const {
 
 	// Trainer number. Pick a random trainer, there are at least 600 in the galaxy.
 	ZoneServer* zserv = player->getZoneServer();

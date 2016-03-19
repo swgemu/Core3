@@ -18,7 +18,7 @@
 #include "server/zone/managers/vendor/VendorManager.h"
 
 void VendorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
-		ObjectMenuResponse* menuResponse, CreatureObject* player) {
+		ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 
 	if(!sceneObject->isVendor())
 		return;
@@ -100,7 +100,7 @@ void VendorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 }
 
 int VendorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
-		CreatureObject* player, byte selectedID) {
+		CreatureObject* player, byte selectedID) const {
 
 	if (!sceneObject->isVendor())
 		return 0;

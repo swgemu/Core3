@@ -15,7 +15,7 @@
 
 
 
-void ShellfishHarvesterMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void ShellfishHarvesterMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 
 	if (!sceneObject->isTangibleObject())
 		return;
@@ -28,7 +28,7 @@ void ShellfishHarvesterMenuComponent::fillObjectMenuResponse(SceneObject* sceneO
 
 }
 
-int ShellfishHarvesterMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int ShellfishHarvesterMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 	if (!sceneObject->isASubChildOf(player))
 		return 0;
 

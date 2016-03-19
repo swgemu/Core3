@@ -17,7 +17,7 @@ public:
 	 * @post { this object is locked, menuResponse is complete}
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
-	virtual void fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
+	virtual void fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const;
 
 	/**
 	 * Handles the radial selection sent by the client, must be overridden by inherited objects
@@ -27,12 +27,12 @@ public:
 	 * @param selectedID selected menu id
 	 * @returns 0 if successful
 	 */
-	virtual int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID);
+	virtual int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const;
 
 private:
-	String getFaction(TangibleObject* disk);
+	String getFaction(TangibleObject* disk) const;
 
-	bool isDecoded(TangibleObject* disk);
+	bool isDecoded(TangibleObject* disk) const;
 };
 
 

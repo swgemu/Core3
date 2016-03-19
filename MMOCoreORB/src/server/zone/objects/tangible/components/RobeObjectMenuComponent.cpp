@@ -14,11 +14,11 @@
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
-void RobeObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void RobeObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 }
 
 
-int RobeObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int RobeObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 	return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
 }

@@ -20,7 +20,7 @@ public:
 	 * @post { this object is locked, menuResponse is complete}
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
-	virtual void fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
+	virtual void fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const;
 
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
@@ -30,15 +30,15 @@ public:
 	 * @param selectedID selected menu id
 	 * @returns 0 if successfull
 	 */
-	virtual int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID);
+	virtual int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const;
 
-	void disbandCamp(SceneObject* sceneObject, CreatureObject* player);
+	void disbandCamp(SceneObject* sceneObject, CreatureObject* player) const;
 
-	void assumeCampOwnership(SceneObject* sceneObject, CreatureObject* player);
+	void assumeCampOwnership(SceneObject* sceneObject, CreatureObject* player) const;
 
-	void showCampStatus(SceneObject* sceneObject, CreatureObject* player);
+	void showCampStatus(SceneObject* sceneObject, CreatureObject* player) const;
 
-	void awardCampExperience(PlayerObject* ghost, CampSiteActiveArea* campArea);
+	void awardCampExperience(PlayerObject* ghost, CampSiteActiveArea* campArea) const;
 };
 
 

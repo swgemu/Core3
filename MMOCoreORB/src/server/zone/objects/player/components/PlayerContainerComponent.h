@@ -18,18 +18,18 @@ public:
 	 * @param error error string that the player will receive on error
 	 * @return returns 0 on success, or error code
 	 */
-	int canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription);
+	int canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const;
 
 	/**
 	 * Is called when this object has been inserted with an object
 	 * @param object object that has been inserted
 	 */
-	int notifyObjectInserted(SceneObject* sceneObject, SceneObject* object);
+	int notifyObjectInserted(SceneObject* sceneObject, SceneObject* object) const;
 
 	/**
 	 * Is called when an object was removed
 	 * @param object object that has been inserted
 	 */
-	int notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination);
+	int notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) const;
 
 };

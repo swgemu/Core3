@@ -7,7 +7,7 @@
 #include "PlaceableLootContainerComponent.h"
 #include "server/zone/objects/tangible/Container.h"
 
-bool PlaceableLootContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) {
+bool PlaceableLootContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
 	ContainerPermissions* permissions = sceneObject->getContainerPermissions();
 
 	if(!sceneObject->isContainerObject())
@@ -26,7 +26,7 @@ bool PlaceableLootContainerComponent::checkContainerPermission(SceneObject* scen
 	return false;
 }
 
-int PlaceableLootContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) {
+int PlaceableLootContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
 
 	if(sceneObject->getContainerObjectsSize() >= 0){
 		errorDescription = "@event_perk:chest_can_not_add"; //You do not have permission to add items to this container.

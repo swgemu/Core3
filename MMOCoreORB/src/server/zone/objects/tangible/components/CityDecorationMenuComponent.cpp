@@ -15,7 +15,7 @@
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/city/CityDecorationTask.h"
 
-void CityDecorationMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void CityDecorationMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
 	ManagedReference<CityRegion*> city = player->getCityRegion();
@@ -37,7 +37,7 @@ void CityDecorationMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 
 }
 
-int CityDecorationMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int CityDecorationMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 	if (!sceneObject->isTangibleObject())
 		return 0;
 
@@ -68,7 +68,7 @@ int CityDecorationMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
 }
 
-bool CityDecorationMenuComponent::isInInventory(SceneObject* sceneObject, CreatureObject* player){
+bool CityDecorationMenuComponent::isInInventory(SceneObject* sceneObject, CreatureObject* player) const {
 	return sceneObject->isASubChildOf(player);
 }
 

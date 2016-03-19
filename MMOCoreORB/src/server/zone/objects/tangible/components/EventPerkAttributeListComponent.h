@@ -23,7 +23,7 @@ public:
 	 * @post { this object is locked, menuResponse is complete}
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
-	void fillAttributeList(AttributeListMessage* alm, CreatureObject* player, SceneObject* sceneObject) {
+	void fillAttributeList(AttributeListMessage* alm, CreatureObject* player, SceneObject* sceneObject) const {
 
 		if(!sceneObject->isTangibleObject())
 			return;

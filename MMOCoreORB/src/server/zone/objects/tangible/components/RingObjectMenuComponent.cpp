@@ -12,7 +12,7 @@
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-void RingObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void RingObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (!sceneObject->isTangibleObject())
 		return;
 
@@ -42,7 +42,7 @@ void RingObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, O
 
 }
 
-int RingObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int RingObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 	if (selectedID == 22) { // Propose Unity
 		if (!sceneObject->isASubChildOf(player))
 			return 0;

@@ -12,12 +12,12 @@
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/objects/cell/CellObject.h"
 
-void ElevatorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* creature) {
+void ElevatorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* creature) const {
 	menuResponse->addRadialMenuItem(198, 3, "@elevator_text:up");
 	menuResponse->addRadialMenuItem(199, 3, "@elevator_text:down");
 }
 
-int ElevatorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) {
+int ElevatorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) const {
 	ManagedReference<SceneObject*> parent = creature->getParent().get();
 
 	if (parent == NULL || !parent->isCellObject() || parent != sceneObject->getParent().get())

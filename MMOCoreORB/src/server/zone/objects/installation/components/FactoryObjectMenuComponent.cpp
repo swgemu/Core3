@@ -11,7 +11,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/installation/factory/FactoryObject.h"
 
-void FactoryObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void FactoryObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (!sceneObject->isFactory())
 		return;
 
@@ -40,7 +40,7 @@ void FactoryObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject
 	}
 }
 
-int FactoryObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int FactoryObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 	if (!sceneObject->isFactory())
 		return 1;
 

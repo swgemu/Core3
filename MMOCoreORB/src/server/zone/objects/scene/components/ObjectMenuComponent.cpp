@@ -12,7 +12,7 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-void ObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void ObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	//All objects in a cell can be picked up, if the player is on the structures permission list.
 	//This opens the door to allow admins to be able to drop/pickup items in public structures
 	if (sceneObject == NULL)
@@ -52,7 +52,7 @@ void ObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Objec
 }
 
 
-int ObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int ObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 	switch (selectedID) {
 	case 10: //Pick Up
 	{

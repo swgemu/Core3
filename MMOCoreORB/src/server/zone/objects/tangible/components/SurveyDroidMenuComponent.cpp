@@ -12,7 +12,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sessions/InterplanetarySurveyDroidSession.h"
 
-void SurveyDroidMenuComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void SurveyDroidMenuComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (droidObject == NULL || !droidObject->isTangibleObject() || player == NULL) {
 		return;
 	}
@@ -20,7 +20,7 @@ void SurveyDroidMenuComponent::fillObjectMenuResponse(SceneObject* droidObject, 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(droidObject, menuResponse, player);
 }
 
-int SurveyDroidMenuComponent::handleObjectMenuSelect(SceneObject* droidObject, CreatureObject* player, byte selectedID) {
+int SurveyDroidMenuComponent::handleObjectMenuSelect(SceneObject* droidObject, CreatureObject* player, byte selectedID) const {
 	if (!droidObject->isTangibleObject()) {
 		return 0;
 	}

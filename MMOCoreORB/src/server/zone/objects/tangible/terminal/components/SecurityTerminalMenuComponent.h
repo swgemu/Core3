@@ -24,7 +24,7 @@ public:
 	 * @post { this object is locked, menuResponse is complete}
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
-	void fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
+	void fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const;
 
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
@@ -34,7 +34,7 @@ public:
 	 * @param selectedID selected menu id
 	 * @returns 0 if successfull
 	 */
-	int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID);
+	int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const;
 
 
 };
