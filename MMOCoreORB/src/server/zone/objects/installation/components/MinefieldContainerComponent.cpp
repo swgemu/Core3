@@ -9,7 +9,7 @@
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
 
-bool MinefieldContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) {
+bool MinefieldContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
 	if (sceneObject == NULL || !sceneObject->isTangibleObject())
 		return false;
 
@@ -41,7 +41,7 @@ bool MinefieldContainerComponent::checkContainerPermission(SceneObject* sceneObj
 	return ContainerComponent::checkContainerPermission(sceneObject, creature, permission);
 }
 
-int MinefieldContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) {
+int MinefieldContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
 	CreatureObject* creo = dynamic_cast<CreatureObject*>(sceneObject);
 
 	if (object->getGameObjectType() != SceneObjectType::MINE) {
@@ -61,7 +61,7 @@ int MinefieldContainerComponent::canAddObject(SceneObject* sceneObject, SceneObj
  * Is called when this object has been inserted with an object
  * @param object object that has been inserted
  */
-int MinefieldContainerComponent::notifyObjectInserted(SceneObject* sceneObject, SceneObject* object) {
+int MinefieldContainerComponent::notifyObjectInserted(SceneObject* sceneObject, SceneObject* object) const {
 	ManagedReference<InstallationObject*> installation = cast<InstallationObject*>(sceneObject);
 	if (installation == NULL)
 		return 1;
@@ -79,7 +79,7 @@ int MinefieldContainerComponent::notifyObjectInserted(SceneObject* sceneObject, 
  * Is called when an object was removed
  * @param object object that has been inserted
  */
-int MinefieldContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) {
+int MinefieldContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) const {
 	if (sceneObject == NULL || object == NULL)
 		return 1;
 

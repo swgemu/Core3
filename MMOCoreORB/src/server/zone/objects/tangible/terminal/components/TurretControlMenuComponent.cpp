@@ -20,7 +20,7 @@
 #include "TurretControlTerminalDataComponent.h"
 
 
-void TurretControlMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void TurretControlMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
 	ManagedReference<PlayerObject*> thisPlayer = player->getPlayerObject();
 
@@ -50,7 +50,7 @@ void TurretControlMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject
 	}
 }
 
-int TurretControlMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int TurretControlMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 	if (sceneObject == NULL || !sceneObject->isTangibleObject() || player == NULL)
 		return 0;
 

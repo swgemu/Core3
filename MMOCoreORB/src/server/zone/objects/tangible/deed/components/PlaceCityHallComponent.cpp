@@ -17,7 +17,7 @@
 #include "server/zone/objects/player/sui/callbacks/PlaceCityHallSuiCallback.h"
 #include "server/zone/objects/area/ActiveArea.h"
 
-int PlaceCityHallComponent::placeStructure(StructureDeed* deed, CreatureObject* creature, float x, float y, int angle) {
+int PlaceCityHallComponent::placeStructure(StructureDeed* deed, CreatureObject* creature, float x, float y, int angle) const {
 	PlayerObject* ghost = creature->getPlayerObject();
 
 	if (ghost == NULL)
@@ -62,7 +62,7 @@ int PlaceCityHallComponent::placeStructure(StructureDeed* deed, CreatureObject* 
 	return 0;
 }
 
-int PlaceCityHallComponent::notifyStructurePlaced(StructureDeed* deed, CreatureObject* creature, StructureObject* structure) {
+int PlaceCityHallComponent::notifyStructurePlaced(StructureDeed* deed, CreatureObject* creature, StructureObject* structure) const {
 	PlaceStructureComponent::notifyStructurePlaced(deed, creature, structure);
 
 	PlayerObject* ghost = creature->getPlayerObject();

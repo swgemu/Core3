@@ -36,7 +36,7 @@ using namespace server::zone::objects::creature;
 
 class HolocronMenuComponent : public TangibleObjectMenuComponent {
 public:
-	int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID);
+	int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const;
 };
 
 

@@ -10,14 +10,13 @@
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-LuaObjectMenuComponent::LuaObjectMenuComponent(String className) {
-	luaClassName = className;
+LuaObjectMenuComponent::LuaObjectMenuComponent(const String& className) : luaClassName(className) {
 }
 
 LuaObjectMenuComponent::~LuaObjectMenuComponent(){
 }
 
-void LuaObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void LuaObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (sceneObject == NULL)
 		return;
 
@@ -32,7 +31,7 @@ void LuaObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Ob
 }
 
 
-int LuaObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int LuaObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 	if (sceneObject == NULL)
 		return 0;
 

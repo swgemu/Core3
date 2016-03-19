@@ -15,7 +15,7 @@
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/region/CityRegion.h"
 
-int PlaceStructureComponent::placeStructure(StructureDeed* deed, CreatureObject* creature, float x, float y, int angle) {
+int PlaceStructureComponent::placeStructure(StructureDeed* deed, CreatureObject* creature, float x, float y, int angle) const {
 	Zone* zone = creature->getZone();
 
 	if (zone != NULL)
@@ -24,7 +24,7 @@ int PlaceStructureComponent::placeStructure(StructureDeed* deed, CreatureObject*
 	return 0;
 }
 
-int PlaceStructureComponent::notifyStructurePlaced(StructureDeed* deed, CreatureObject* creature, StructureObject* structureObject) {
+int PlaceStructureComponent::notifyStructurePlaced(StructureDeed* deed, CreatureObject* creature, StructureObject* structureObject) const {
 	structureObject->setSurplusMaintenance(deed->getSurplusMaintenance());
 	structureObject->setSurplusPower(deed->getSurplusPower());
 

@@ -12,7 +12,7 @@
 //#include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/managers/structure/tasks/DestroyStructureTask.h"
 
-void DestructibleBuildingMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void DestructibleBuildingMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::BUILDING).get().get());
 
@@ -35,7 +35,7 @@ void DestructibleBuildingMenuComponent::fillObjectMenuResponse(SceneObject* scen
 	return;
 }
 
-int DestructibleBuildingMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int DestructibleBuildingMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::BUILDING).get().get());
 
@@ -59,7 +59,7 @@ int DestructibleBuildingMenuComponent::handleObjectMenuSelect(SceneObject* scene
 	return 0;
 }
 
-int DestructibleBuildingMenuComponent::sendSelfDestructMessage(BuildingObject* building, String message) {
+int DestructibleBuildingMenuComponent::sendSelfDestructMessage(BuildingObject* building, const String& message) const {
 	for (uint32 i = 1; i <= building->getTotalCellNumber(); ++i) {
 		ManagedReference<CellObject*> cellObject = building->getCell(i);
 

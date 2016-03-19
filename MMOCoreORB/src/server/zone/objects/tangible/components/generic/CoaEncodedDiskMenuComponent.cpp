@@ -7,7 +7,7 @@
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-void CoaEncodedDiskMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void CoaEncodedDiskMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
 	TangibleObject* disk = cast<TangibleObject*>(sceneObject);
@@ -29,7 +29,7 @@ void CoaEncodedDiskMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	}
 }
 
-int CoaEncodedDiskMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int CoaEncodedDiskMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 	if (!player->isPlayerCreature()) {
 		return 0;
 	}
@@ -121,7 +121,7 @@ int CoaEncodedDiskMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
 }
 
-String CoaEncodedDiskMenuComponent::getFaction(TangibleObject* disk) {
+String CoaEncodedDiskMenuComponent::getFaction(TangibleObject* disk) const {
 	String name = disk->getObjectNameStringIdFile();
 	String faction;
 
@@ -134,7 +134,7 @@ String CoaEncodedDiskMenuComponent::getFaction(TangibleObject* disk) {
 	return faction;
 }
 
-bool CoaEncodedDiskMenuComponent::isDecoded(TangibleObject* disk) {
+bool CoaEncodedDiskMenuComponent::isDecoded(TangibleObject* disk) const {
 	String name = disk->getObjectNameStringIdName();
 
 	if (name.contains("decoded")) {

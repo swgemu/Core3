@@ -14,7 +14,7 @@
 #include "server/zone/objects/tangible/firework/FireworkObject.h"
 
 void FireworkMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
-		ObjectMenuResponse* menuResponse, CreatureObject* player) {
+		ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 
 	if (!sceneObject->isFireworkObject())
 		return;
@@ -25,7 +25,7 @@ void FireworkMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 }
 
 int FireworkMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
-		CreatureObject* player, byte selectedID) {
+		CreatureObject* player, byte selectedID) const {
 	if (!sceneObject->isFireworkObject())
 		return 0;
 

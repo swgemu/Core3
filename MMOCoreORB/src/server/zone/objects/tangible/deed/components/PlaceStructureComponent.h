@@ -36,8 +36,8 @@ using namespace server::zone::objects::structure;
 
 class PlaceStructureComponent : public SceneObjectComponent {
 public:
-	virtual int placeStructure(StructureDeed* deed, CreatureObject* creature, float x, float y, int angle);
-	virtual int notifyStructurePlaced(StructureDeed* deed, CreatureObject* creature, StructureObject* structure);
+	virtual int placeStructure(StructureDeed* deed, CreatureObject* creature, float x, float y, int angle) const;
+	virtual int notifyStructurePlaced(StructureDeed* deed, CreatureObject* creature, StructureObject* structure) const;
 };
 
 

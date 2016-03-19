@@ -15,7 +15,7 @@
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
 
-int PlaceGCWBaseComponent::placeStructure(StructureDeed* deed, CreatureObject* creature, float x, float y, int angle) {
+int PlaceGCWBaseComponent::placeStructure(StructureDeed* deed, CreatureObject* creature, float x, float y, int angle) const {
 
 	PlayerObject* ghost = creature->getPlayerObject();
 
@@ -51,7 +51,7 @@ int PlaceGCWBaseComponent::placeStructure(StructureDeed* deed, CreatureObject* c
 	return 0;
 }
 
-int PlaceGCWBaseComponent::notifyStructurePlaced(StructureDeed* deed, CreatureObject* creature, StructureObject* structure) {
+int PlaceGCWBaseComponent::notifyStructurePlaced(StructureDeed* deed, CreatureObject* creature, StructureObject* structure) const {
 	PlaceStructureComponent::notifyStructurePlaced(deed, creature, structure);
 
 	Zone* zone = creature->getZone();

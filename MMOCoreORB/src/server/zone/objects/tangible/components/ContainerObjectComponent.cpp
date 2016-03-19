@@ -9,7 +9,7 @@
 #include "ContainerObjectComponent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
-bool ContainerObjectComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) {
+bool ContainerObjectComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
 	//if (permission == )
 
 	Container* container = dynamic_cast<Container*>(sceneObject);

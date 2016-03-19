@@ -15,7 +15,7 @@
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
 
-bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeArea) {
+bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeArea) const {
 	if (newZone == NULL)
 		return false;
 
@@ -71,7 +71,7 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 	return true;
 }
 
-bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea) {
+bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea) const {
 	if (zone == NULL)
 		return false;
 
@@ -117,7 +117,7 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 	return true;
 }
 
-bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow, bool notifyRoot) {
+bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow, bool notifyRoot) const {
 	Zone* newZone = dynamic_cast<Zone*>(sceneObject);
 	Zone* zone = object->getZone();
 
@@ -202,7 +202,7 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 }
 
 
-bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient) {
+bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient) const {
 	Zone* zone = dynamic_cast<Zone*>(sceneObject);
 
 	if (object->isActiveArea())

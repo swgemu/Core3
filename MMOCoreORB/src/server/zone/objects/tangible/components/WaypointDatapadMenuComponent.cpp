@@ -13,7 +13,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
 
-void WaypointDatapadMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void WaypointDatapadMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (sceneObject == NULL || !sceneObject->isTangibleObject() || player == NULL) {
 		return;
 	}
@@ -28,15 +28,15 @@ void WaypointDatapadMenuComponent::fillObjectMenuResponse(SceneObject* sceneObje
 
 }
 
-int WaypointDatapadMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int WaypointDatapadMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 	if (!sceneObject->isASubChildOf(player))
 		return 0;
 
 	if (selectedID == 6)
-	JediManager::instance()->useItem(sceneObject, JediManager::ITEMWAYPOINTDATAPAD, player);
+		JediManager::instance()->useItem(sceneObject, JediManager::ITEMWAYPOINTDATAPAD, player);
 
 	if (selectedID == 7)
-	JediManager::instance()->useItem(sceneObject, JediManager::ITEMTHEATERDATAPAD, player);
+		JediManager::instance()->useItem(sceneObject, JediManager::ITEMTHEATERDATAPAD, player);
 
 	return 0;
 }

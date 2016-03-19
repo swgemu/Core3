@@ -19,7 +19,7 @@
 
 
 void CampTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
-		ObjectMenuResponse* menuResponse, CreatureObject* player) {
+		ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 
 	if (!sceneObject->isTerminal())
 		return;
@@ -80,7 +80,7 @@ void CampTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 }
 
 int CampTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
-		CreatureObject* player, byte selectedID) {
+		CreatureObject* player, byte selectedID) const {
 	if (!sceneObject->isTangibleObject())
 		return 0;
 
@@ -108,7 +108,7 @@ int CampTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 }
 
 void CampTerminalMenuComponent::disbandCamp(SceneObject* sceneObject,
-		CreatureObject* player) {
+		CreatureObject* player) const {
 
 	Terminal* terminal = cast<Terminal*>(sceneObject);
 	if(terminal == NULL) {
@@ -167,7 +167,7 @@ void CampTerminalMenuComponent::disbandCamp(SceneObject* sceneObject,
 }
 
 void CampTerminalMenuComponent::assumeCampOwnership(SceneObject* sceneObject,
-		CreatureObject* player) {
+		CreatureObject* player) const {
 
 	Terminal* terminal = cast<Terminal*>(sceneObject);
 	if(terminal == NULL) {
@@ -215,7 +215,7 @@ void CampTerminalMenuComponent::assumeCampOwnership(SceneObject* sceneObject,
 }
 
 void CampTerminalMenuComponent::showCampStatus(SceneObject* sceneObject,
-		CreatureObject* player) {
+		CreatureObject* player) const {
 
 	Terminal* terminal = cast<Terminal*>(sceneObject);
 	if(terminal == NULL) {
@@ -292,7 +292,7 @@ void CampTerminalMenuComponent::showCampStatus(SceneObject* sceneObject,
 }
 
 void CampTerminalMenuComponent::awardCampExperience(PlayerObject* ghost,
-		CampSiteActiveArea* campArea) {
+		CampSiteActiveArea* campArea) const {
 
 }
 

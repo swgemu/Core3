@@ -49,12 +49,12 @@ using namespace server::zone::objects::player;
 class ForceShrineMenuComponent : public TangibleObjectMenuComponent {
 
 public:
-	virtual int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID);
+	virtual int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const;
 
-	virtual void fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
+	virtual void fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const;
 
 	// This finds a trainer for jedi unlocks.
-	virtual void findTrainerObject(CreatureObject* player, PlayerObject* ghost);
+	virtual void findTrainerObject(CreatureObject* player, PlayerObject* ghost) const;
 
 };
 

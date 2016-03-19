@@ -11,7 +11,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 
-int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) {
+int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
 	if (sceneObject == object) {
 		errorDescription = "@container_error_message:container02"; //You cannot add something to itself.
 
@@ -97,7 +97,7 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 	return 0;
 }
 
-bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) {
+bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
 	ContainerPermissions* permissions = sceneObject->getContainerPermissions();
 
 	if (permissions->getOwnerID() == creature->getObjectID()) {
@@ -139,7 +139,7 @@ bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, Crea
 	return permission & (allowPermissions & ~denyPermissions);
 }
 
-bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow, bool notifyRoot) {
+bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow, bool notifyRoot) const {
 	if (sceneObject == object) {
 		return false;
 	}
@@ -248,7 +248,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 	return true;
 }
 
-bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient) {
+bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient) const {
 	VectorMap<String, ManagedReference<SceneObject*> >* slottedObjects = sceneObject->getSlottedObjects();
 	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = sceneObject->getContainerObjects();
 
@@ -355,7 +355,7 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
  * Is called when this object has been inserted with an object
  * @param object object that has been inserted
  */
-int ContainerComponent::notifyObjectInserted(SceneObject* sceneObject, SceneObject* object) {
+int ContainerComponent::notifyObjectInserted(SceneObject* sceneObject, SceneObject* object) const {
 	return sceneObject->notifyObjectInserted(object);
 }
 
@@ -363,7 +363,7 @@ int ContainerComponent::notifyObjectInserted(SceneObject* sceneObject, SceneObje
  * Is called when an object was removed
  * @param object object that has been inserted
  */
-int ContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) {
+int ContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) const {
 	return sceneObject->notifyObjectRemoved(object);
 }
 

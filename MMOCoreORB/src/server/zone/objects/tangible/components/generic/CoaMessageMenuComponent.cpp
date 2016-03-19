@@ -7,14 +7,14 @@
 #include "server/zone/objects/player/sui/callbacks/CoaMessageFragmentSuiCallback.h"
 #include "server/zone/objects/tangible/components/generic/CoaMessageDataComponent.h"
 
-void CoaMessageMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void CoaMessageMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
 	menuResponse->addRadialMenuItem(20,3,"@sui:read_option"); // Read
 
 }
 
-int CoaMessageMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int CoaMessageMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 	if (!player->isPlayerCreature()) {
 		return 0;
 	}

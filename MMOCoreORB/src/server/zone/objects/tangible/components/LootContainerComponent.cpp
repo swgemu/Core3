@@ -9,7 +9,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 
-int LootContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) {
+int LootContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) const {
 	if (destination != NULL) {
 		ManagedReference<SceneObject*> rootParent = destination->getParent();
 
@@ -40,7 +40,7 @@ int LootContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneO
 }
 
 
-bool LootContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) {
+bool LootContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
 	ContainerPermissions* permissions = sceneObject->getContainerPermissions();
 	if(permission == ContainerPermissions::MOVEIN)
 		return false;
@@ -51,7 +51,7 @@ bool LootContainerComponent::checkContainerPermission(SceneObject* sceneObject, 
 	return false;
 }
 
-int LootContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) {
+int LootContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
 
 	if(sceneObject->getContainerObjectsSize() >= 0){
 		errorDescription = "@error_message:remove_only_corpse"; //You cannot place items into a corpse.

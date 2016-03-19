@@ -10,7 +10,7 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/chat/StringIdChatParameter.h"
 
-void FlagGameMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void FlagGameMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
 	FlagGameDataComponent* data = cast<FlagGameDataComponent*>(sceneObject->getDataObjectComponent()->get());
@@ -63,7 +63,7 @@ void FlagGameMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Obj
 	}
 }
 
-int FlagGameMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int FlagGameMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 
 	FlagGameDataComponent* data = cast<FlagGameDataComponent*>(sceneObject->getDataObjectComponent()->get());
 

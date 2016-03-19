@@ -8,7 +8,7 @@
 #include "server/zone/objects/creature/ai/DroidObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
-bool DroidDatapadContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) {
+bool DroidDatapadContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
 	ManagedReference<SceneObject*> p = sceneObject->getParent();
 
 	if (p == NULL || !p->isDroidObject()) {
@@ -34,7 +34,7 @@ bool DroidDatapadContainerComponent::checkContainerPermission(SceneObject* scene
 	}
 	return false;
 }
-int DroidDatapadContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) {
+int DroidDatapadContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
 	if (!object->isManufactureSchematic()) {
 		errorDescription = "@container_error_message:container12";
 		return TransferErrorCode::INVALIDTYPE;

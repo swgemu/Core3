@@ -8,7 +8,7 @@
 #include "GCWBaseContainerComponent.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
 
-bool GCWBaseContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) {
+bool GCWBaseContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
 
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject);
 
@@ -20,7 +20,7 @@ bool GCWBaseContainerComponent::checkContainerPermission(SceneObject* sceneObjec
 
 }
 
-bool GCWBaseContainerComponent::checkContainerPermission(BuildingObject* building, CreatureObject* creature, uint16 permission, bool sendMessage) {
+bool GCWBaseContainerComponent::checkContainerPermission(BuildingObject* building, CreatureObject* creature, uint16 permission, bool sendMessage) const {
 	if (permission == ContainerPermissions::WALKIN) {
 		if (building == NULL) {
 			return false;
@@ -39,7 +39,7 @@ bool GCWBaseContainerComponent::checkContainerPermission(BuildingObject* buildin
 	return StructureContainerComponent::checkContainerPermission(building, creature, permission);
 }
 
-bool GCWBaseContainerComponent::checkPVPPermission(BuildingObject* building, CreatureObject* creature, uint16 permission, bool sendMessage) {
+bool GCWBaseContainerComponent::checkPVPPermission(BuildingObject* building, CreatureObject* creature, uint16 permission, bool sendMessage) const {
 	PlayerObject* player = creature->getPlayerObject();
 	if (player == NULL) {
 		return false;
@@ -83,7 +83,7 @@ bool GCWBaseContainerComponent::checkPVPPermission(BuildingObject* building, Cre
 	}
 }
 
-bool GCWBaseContainerComponent::checkPVEPermission(BuildingObject* building, CreatureObject* creature, uint16 permission, bool sendMessage) {
+bool GCWBaseContainerComponent::checkPVEPermission(BuildingObject* building, CreatureObject* creature, uint16 permission, bool sendMessage) const {
 	PlayerObject* player = creature->getPlayerObject();
 
 	if (player == NULL) {

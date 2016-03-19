@@ -14,7 +14,7 @@
 #include "server/zone/templates/tangible/SkillBuffTemplate.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
-void SkillBuffObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void SkillBuffObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 
 	if(!sceneObject->isTangibleObject())
 		return;
@@ -27,7 +27,7 @@ void SkillBuffObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObje
 
 }
 
-int SkillBuffObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int SkillBuffObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
 
 	if (!sceneObject->isASubChildOf(player))
 		return 0;

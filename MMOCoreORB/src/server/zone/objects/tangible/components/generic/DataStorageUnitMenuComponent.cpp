@@ -14,7 +14,7 @@
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 
 void DataStorageUnitMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
-		ObjectMenuResponse* menuResponse, CreatureObject* player) {
+		ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 
 	if(!sceneObject->isTangibleObject())
 		return;
@@ -29,7 +29,7 @@ void DataStorageUnitMenuComponent::fillObjectMenuResponse(SceneObject* sceneObje
 }
 
 int DataStorageUnitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
-		CreatureObject* player, byte selectedID) {
+		CreatureObject* player, byte selectedID) const {
 
 	if (selectedID != 20 && selectedID != 18) {
 		return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);

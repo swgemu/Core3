@@ -18,7 +18,7 @@
 
 
 void FireworkShowMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
-		ObjectMenuResponse* menuResponse, CreatureObject* player) {
+		ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 
 	if (!sceneObject->isFireworkObject())
 		return;
@@ -52,7 +52,7 @@ void FireworkShowMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 }
 
 int FireworkShowMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
-		CreatureObject* player, byte selectedID) {
+		CreatureObject* player, byte selectedID) const {
 
 	if(!sceneObject->isASubChildOf(player))
 		return 0;
@@ -92,7 +92,7 @@ int FireworkShowMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	return 0;
 }
 
-void FireworkShowMenuComponent::addEvent(CreatureObject* player, FireworkObject* fireworkShow) {
+void FireworkShowMenuComponent::addEvent(CreatureObject* player, FireworkObject* fireworkShow) const {
 
 	DataObjectComponent* data = fireworkShow->getDataObjectComponent()->get();
 
@@ -159,7 +159,7 @@ void FireworkShowMenuComponent::addEvent(CreatureObject* player, FireworkObject*
 	player->sendMessage(suiBox->generateMessage());
 }
 
-void FireworkShowMenuComponent::showData(CreatureObject* player, FireworkObject* fireworkShow) {
+void FireworkShowMenuComponent::showData(CreatureObject* player, FireworkObject* fireworkShow) const {
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 	if (ghost == NULL || ghost->hasSuiBoxWindowType(SuiWindowType::FIREWORK_SHOW_ADDEVENT) || ghost->hasSuiBoxWindowType(SuiWindowType::FIREWORK_SHOW_REMOVEEVENT)
 			|| ghost->hasSuiBoxWindowType(SuiWindowType::FIREWORK_SHOW_REORDERSHOW) || ghost->hasSuiBoxWindowType(SuiWindowType::FIREWORK_SHOW_MODIFYEVENT)
@@ -197,7 +197,7 @@ void FireworkShowMenuComponent::showData(CreatureObject* player, FireworkObject*
 	player->sendMessage(suiBox->generateMessage());
 }
 
-void FireworkShowMenuComponent::removeEvent(CreatureObject* player, FireworkObject* fireworkShow) {
+void FireworkShowMenuComponent::removeEvent(CreatureObject* player, FireworkObject* fireworkShow) const {
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 	if (ghost == NULL || ghost->hasSuiBoxWindowType(SuiWindowType::FIREWORK_SHOW_ADDEVENT) || ghost->hasSuiBoxWindowType(SuiWindowType::FIREWORK_SHOW_REMOVEEVENT)
 			|| ghost->hasSuiBoxWindowType(SuiWindowType::FIREWORK_SHOW_REORDERSHOW) || ghost->hasSuiBoxWindowType(SuiWindowType::FIREWORK_SHOW_MODIFYEVENT)
@@ -235,7 +235,7 @@ void FireworkShowMenuComponent::removeEvent(CreatureObject* player, FireworkObje
 	player->sendMessage(suiBox->generateMessage());
 }
 
-void FireworkShowMenuComponent::modifyEvent(CreatureObject* player, FireworkObject* fireworkShow) {
+void FireworkShowMenuComponent::modifyEvent(CreatureObject* player, FireworkObject* fireworkShow) const {
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 	if (ghost == NULL || ghost->hasSuiBoxWindowType(SuiWindowType::FIREWORK_SHOW_ADDEVENT) || ghost->hasSuiBoxWindowType(SuiWindowType::FIREWORK_SHOW_REMOVEEVENT)
 			|| ghost->hasSuiBoxWindowType(SuiWindowType::FIREWORK_SHOW_REORDERSHOW) || ghost->hasSuiBoxWindowType(SuiWindowType::FIREWORK_SHOW_MODIFYEVENT)
@@ -273,7 +273,7 @@ void FireworkShowMenuComponent::modifyEvent(CreatureObject* player, FireworkObje
 	player->sendMessage(suiBox->generateMessage());
 }
 
-void FireworkShowMenuComponent::reorderShow(CreatureObject* player, FireworkObject* fireworkShow) {
+void FireworkShowMenuComponent::reorderShow(CreatureObject* player, FireworkObject* fireworkShow) const {
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 	if (ghost == NULL || ghost->hasSuiBoxWindowType(SuiWindowType::FIREWORK_SHOW_ADDEVENT) || ghost->hasSuiBoxWindowType(SuiWindowType::FIREWORK_SHOW_REMOVEEVENT)
 			|| ghost->hasSuiBoxWindowType(SuiWindowType::FIREWORK_SHOW_REORDERSHOW) || ghost->hasSuiBoxWindowType(SuiWindowType::FIREWORK_SHOW_MODIFYEVENT)

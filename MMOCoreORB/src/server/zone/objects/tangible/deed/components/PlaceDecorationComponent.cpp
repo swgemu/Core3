@@ -14,7 +14,7 @@
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/managers/structure/StructureManager.h"
 
-int PlaceDecorationComponent::placeStructure(StructureDeed* deed, CreatureObject* creature, float x, float y, int angle) {
+int PlaceDecorationComponent::placeStructure(StructureDeed* deed, CreatureObject* creature, float x, float y, int angle) const {
 	if(creature == NULL || creature->getZoneServer() == NULL || creature->getCityRegion() == NULL)
 		return 1;
 

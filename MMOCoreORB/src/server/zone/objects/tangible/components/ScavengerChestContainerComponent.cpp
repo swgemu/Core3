@@ -4,7 +4,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/components/EventPerkDataComponent.h"
 
-bool ScavengerChestContainerComponent::checkContainerPermission(SceneObject* container, CreatureObject* creature, uint16 permission) {
+bool ScavengerChestContainerComponent::checkContainerPermission(SceneObject* container, CreatureObject* creature, uint16 permission) const {
 	ContainerPermissions* permissions = container->getContainerPermissions();
 
 	if(!container->isEventPerkItem())
@@ -52,7 +52,7 @@ bool ScavengerChestContainerComponent::checkContainerPermission(SceneObject* con
 	return false;
 }
 
-int ScavengerChestContainerComponent::notifyObjectRemoved(SceneObject* container, SceneObject*, SceneObject* destination) {
+int ScavengerChestContainerComponent::notifyObjectRemoved(SceneObject* container, SceneObject*, SceneObject* destination) const {
 	if (destination == NULL)
 		return 0;
 

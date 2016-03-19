@@ -27,8 +27,8 @@ using namespace server::zone::objects::area;
 
 class ZoneContainerComponent : public ContainerComponent {
 protected:
-	bool insertActiveArea(Zone* zone, ActiveArea* activeArea);
-	bool removeActiveArea(Zone* zone, ActiveArea* activeArea);
+	bool insertActiveArea(Zone* zone, ActiveArea* activeArea) const;
+	bool removeActiveArea(Zone* zone, ActiveArea* activeArea) const;
 public:
 	/**
 	 * Tries to add/link object
@@ -39,7 +39,7 @@ public:
 	 * @param notifyClient if true in range objects will be updated with the change
 	 * @return returns true if the object has been successfully added
 	 */
-	virtual bool transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient = false, bool allowOverflow = false, bool notifyRoot = true);
+	virtual bool transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient = false, bool allowOverflow = false, bool notifyRoot = true) const;
 
 	/**
 	 * Tries to remove/unlink object
@@ -49,7 +49,7 @@ public:
 	 * @param notifyClient not used currently
 	 * @return returns true if the object has been successfully removed
 	 */
-	virtual bool removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient);
+	virtual bool removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient) const;
 
 	/**
 	 * Evaluates if this object has the necessary free slots to be able to add the specified SceneObject
