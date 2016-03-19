@@ -38,7 +38,7 @@ using namespace server::zone;
 class VendorZoneComponent : public ZoneComponent {
 
 public:
-	void notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) {
+	void notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) const {
 		ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
 
 		if (target == NULL || !target->isPlayerCreature())

@@ -45,6 +45,7 @@ object_building_corellia_garage_corellia = object_building_corellia_shared_garag
 	gameObjectType = 528,
 	planetMapCategory = "garage",
 	zoneComponent = "GarageZoneComponent",
+	dataObjectComponent = "GarageDataComponent",
 }
 
 ObjectTemplates:addTemplate(object_building_corellia_garage_corellia, "object/building/corellia/garage_corellia.iff")

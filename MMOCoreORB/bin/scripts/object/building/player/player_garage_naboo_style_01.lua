@@ -52,6 +52,7 @@ object_building_player_player_garage_naboo_style_01 = object_building_player_sha
 	uniqueStructure = true,
 	cityMaintenanceBase = 20000,
 	zoneComponent = "GarageZoneComponent",
+	dataObjectComponent = "GarageDataComponent",
 	length = 5,
 	width = 5,
 	childObjects = {

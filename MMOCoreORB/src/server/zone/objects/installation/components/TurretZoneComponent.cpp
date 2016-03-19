@@ -14,7 +14,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/objects/installation/components/TurretObserver.h"
 
-void TurretZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zne) {
+void TurretZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zne) const {
 	if (zne == NULL)
 		return;
 
@@ -37,7 +37,7 @@ void TurretZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zne
 	installation->registerObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
 }
 
-void TurretZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* entry) {
+void TurretZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* entry) const {
 	ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
 
 	if (!sceneObject->isTurret() || target == NULL || !target->isPlayerCreature())
@@ -59,7 +59,7 @@ void TurretZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* 
 	}
 }
 
-void TurretZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) {
+void TurretZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) const {
 	ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
 
 	if (!sceneObject->isTurret() || target == NULL || !target->isPlayerCreature())

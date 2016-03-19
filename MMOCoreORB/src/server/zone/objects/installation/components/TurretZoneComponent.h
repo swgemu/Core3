@@ -19,11 +19,11 @@
 class TurretZoneComponent : public ZoneComponent {
 
 public:
-	void notifyInsertToZone(SceneObject* sceneObject, Zone* zne);
+	void notifyInsertToZone(SceneObject* sceneObject, Zone* zne) const;
 
-	void notifyInsert(SceneObject* sceneObject, QuadTreeEntry* entry);
+	void notifyInsert(SceneObject* sceneObject, QuadTreeEntry* entry) const;
 
-	void notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry);
+	void notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) const;
 };
 
 #endif /* TURRETZONECOMPONENT_H_ */

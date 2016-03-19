@@ -37,8 +37,8 @@ using namespace server::zone;
 class StructureZoneComponent : public ZoneComponent {
 
 public:
-	void notifyInsertToZone(SceneObject* sceneObject, Zone* zone);
-	void notifyRemoveFromZone(SceneObject* sceneObject);
+	void notifyInsertToZone(SceneObject* sceneObject, Zone* zone) const;
+	void notifyRemoveFromZone(SceneObject* sceneObject) const;
 };
 
 #endif /* STRUCTUREZONECOMPONENT_H_ */

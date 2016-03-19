@@ -17,12 +17,8 @@
 class DetectorZoneComponent : public ZoneComponent {
 
 public:
-	void notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry);
+	void notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) const;
 
 };
-
-
-
-
 
 #endif /* DETECTORZONECOMPONENT_H_ */

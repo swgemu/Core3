@@ -9,11 +9,10 @@
 #include "server/zone/objects/scene/SceneObject.h"
 
 class GarageZoneComponent : public StructureZoneComponent {
-	SortedVector<SceneObject*> notifiedPlayers;
 
 public:
-	void notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry);
-	void notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry);
+	void notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) const;
+	void notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) const;
 };
 
-#endif /* STRUCTUREZONECOMPONENT_H_ */
+#endif /* GARAGEZONECOMPONENT_H_ */

@@ -10,7 +10,7 @@
 class PersonnelPerkZoneComponent : public ZoneComponent {
 
 public:
-	void notifyInsertToZone(SceneObject* sceneObject, Zone* zne);
+	void notifyInsertToZone(SceneObject* sceneObject, Zone* zne) const;
 };
 
 

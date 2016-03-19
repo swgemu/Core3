@@ -12,7 +12,7 @@
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/ZoneServer.h"
 
-void CityHallZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) {
+void CityHallZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) const {
 	ManagedReference<CityRegion*> cityRegion = sceneObject->getCityRegion().get();
 
 	if (cityRegion != NULL ) {

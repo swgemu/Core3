@@ -14,7 +14,6 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 
-#include "MinefieldDataComponent.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/combat/CreatureAttackData.h"
@@ -23,7 +22,7 @@
 #include "MinefieldAttackTask.h"
 #include "server/zone/objects/installation/components/TurretObserver.h"
 
-void MinefieldZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) {
+void MinefieldZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) const {
 	// if we don't have any mines, just exit
 	if(sceneObject->getContainerObjectsSize() == 0 )
 		return;
@@ -70,7 +69,7 @@ void MinefieldZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, Quad
 	return;
 }
 
-void MinefieldZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zne){
+void MinefieldZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zne) const {
 	if(zne == NULL)
 		return;
 
@@ -93,8 +92,4 @@ void MinefieldZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* 
 			}
 		}
 	}
-
-
-
 }
-

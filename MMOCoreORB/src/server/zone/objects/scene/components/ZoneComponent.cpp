@@ -21,7 +21,7 @@
 #include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
 
 
-void ZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) {
+void ZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) const {
 	info("inserting to zone");
 
 	if (newZone == NULL)
@@ -34,7 +34,7 @@ void ZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) 
 	insertChildObjectsToZone(sceneObject, newZone);
 }
 
-void ZoneComponent::insertChildObjectsToZone(SceneObject* sceneObject, Zone* zone) {
+void ZoneComponent::insertChildObjectsToZone(SceneObject* sceneObject, Zone* zone) const {
 	SortedVector<ManagedReference<SceneObject*> >* childObjects = sceneObject->getChildObjects();
 
 	//Insert all outdoor child objects to zone
@@ -51,7 +51,7 @@ void ZoneComponent::insertChildObjectsToZone(SceneObject* sceneObject, Zone* zon
 	}
 }
 
-void ZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) {
+void ZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) const {
 	ZoneServer* zoneServer = sceneObject->getZoneServer();
 	Zone* zone = sceneObject->getZone();
 
@@ -88,7 +88,7 @@ void ZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float
 	}
 }
 
-void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) {
+void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) const {
 	try {
 		CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) sceneObject->getCloseObjects();
 		CloseObjectsVector* parentCloseObjectsVector = (CloseObjectsVector*) sceneObject->getRootParent().get()->getCloseObjects();
@@ -152,7 +152,7 @@ void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) {
 	}
 }
 
-void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool sendPackets) {
+void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool sendPackets) const {
 	ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
 	Zone* zone = sceneObject->getZone();
 	ManagedReference<SceneObject*> sceneObjectRootParent = sceneObject->getRootParent().get();
@@ -244,7 +244,7 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 		zone->wlock();
 }
 
-void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* newParent, bool lightUpdate, bool sendPackets) {
+void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* newParent, bool lightUpdate, bool sendPackets) const {
 	ManagedReference<Zone*> zone = sceneObject->getZone();
 	ManagedReference<SceneObject*> oldParent = sceneObject->getParent();
 
@@ -340,7 +340,7 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 	zone->wlock();
 }
 
-void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility) {
+void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility) const {
 	Zone* zone = sceneObject->getZone();
 	ManagedReference<SceneObject*> thisLocker = sceneObject;
 
@@ -405,14 +405,14 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	}
 }
 
-void ZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) {
+void ZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) const {
 	/*ManagedReference<SceneObject*> thisLocker = sceneObject;
 	Zone* zone = sceneObject->getZone();
 
 	zone->removeObject(sceneObject);*/
 }
 
-void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) {
+void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) const {
 	ManagedReference<SceneObject*> par = sceneObject->getParent();
 
 	if (!sceneObject->isActiveArea()) {
@@ -543,6 +543,6 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 	}
 }
 
-void ZoneComponent::notifySelfPositionUpdate(SceneObject* sceneObject) {
+void ZoneComponent::notifySelfPositionUpdate(SceneObject* sceneObject) const {
 	sceneObject->notifySelfPositionUpdate();
 }

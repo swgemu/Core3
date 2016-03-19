@@ -33,9 +33,9 @@ using namespace server::zone;
 class ShuttleInstallationZoneComponent : public StructureZoneComponent {
 
 public:
-	void notifyInsertToZone(SceneObject* sceneObject, Zone* zone);
-	void notifyRemoveFromZone(SceneObject* sceneObject);
-	void destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy);
+	void notifyInsertToZone(SceneObject* sceneObject, Zone* zone) const;
+	void notifyRemoveFromZone(SceneObject* sceneObject) const;
+	void destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) const;
 };
 
 #endif /* SHUTTLEINSTALLATIONZONECOMPONENT_H_ */

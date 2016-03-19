@@ -36,7 +36,7 @@ using namespace server::zone;
 
 class CityHallZoneComponent : public ZoneComponent {
 public:
-	void destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy);
+	void destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) const;
 };
 
 

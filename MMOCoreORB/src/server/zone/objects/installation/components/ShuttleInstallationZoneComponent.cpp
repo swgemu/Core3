@@ -17,16 +17,15 @@
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/region/CityRegion.h"
 
-void ShuttleInstallationZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zone) {
+void ShuttleInstallationZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zone) const {
 	StructureZoneComponent::notifyInsertToZone(sceneObject, zone);
-
 }
 
-void ShuttleInstallationZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) {
+void ShuttleInstallationZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) const {
 	StructureZoneComponent::notifyRemoveFromZone(sceneObject);
-
 }
-void ShuttleInstallationZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) {
+
+void ShuttleInstallationZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) const {
 	if (sceneObject->isStructureObject()) {
 
 		StructureObject* structureObject = cast<StructureObject*>(sceneObject);
@@ -71,4 +70,3 @@ void ShuttleInstallationZoneComponent::destroyObjectFromWorld(SceneObject* scene
 
 	ZoneComponent::destroyObjectFromWorld(sceneObject, sendSelfDestroy);
 }
-

@@ -45,6 +45,7 @@ object_building_naboo_parking_garage_naboo_style_1 = object_building_naboo_share
 	gameObjectType = 528,
 	planetMapCategory = "garage",
 	zoneComponent = "GarageZoneComponent",
+	dataObjectComponent = "GarageDataComponent",
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_parking_garage_naboo_style_1, "object/building/naboo/parking_garage_naboo_style_1.iff")

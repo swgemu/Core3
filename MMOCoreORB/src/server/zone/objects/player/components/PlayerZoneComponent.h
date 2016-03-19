@@ -12,15 +12,15 @@
 
 class PlayerZoneComponent : public ZoneComponent {
 public:
-	void notifyInsert(SceneObject* sceneObject, QuadTreeEntry* entry);
+	void notifyInsert(SceneObject* sceneObject, QuadTreeEntry* entry) const;
 
-	void notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry);
+	void notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) const;
 
-	void switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID = 0, bool toggleInvisibility = false);
+	void switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID = 0, bool toggleInvisibility = false) const;
 
-	void notifyInsertToZone(SceneObject* sceneObject, Zone* newZone);
+	void notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) const;
 
-	void teleport(SceneObject* sceneObject, float newPositionX, float newPositionZ, float newPositionY, uint64 parentID = 0);
+	void teleport(SceneObject* sceneObject, float newPositionX, float newPositionZ, float newPositionY, uint64 parentID = 0) const;
 
 	/**
 	 * Updates position of this object to the rest of in range objects
@@ -28,7 +28,7 @@ public:
 	 * @post { this object is locked, in range objects are updated with the new position }
 	 * @param lightUpdate if true a standalone message is sent to the in range objects
 	 */
-	void updateZone(SceneObject* sceneObject, bool lightUpdate, bool sendPackets = true);
+	void updateZone(SceneObject* sceneObject, bool lightUpdate, bool sendPackets = true) const;
 
 	/**
 	 * Updates position and/or parent of this object and to the rest of in range objects
@@ -37,9 +37,9 @@ public:
 	 * @param newParent cellObject where this object is
 	 * @param lightUpdate if true a standalone message is sent to the in range objects
 	 */
-	void updateZoneWithParent(SceneObject* sceneObject, SceneObject* newParent, bool lightUpdate, bool sendPackets = true);
+	void updateZoneWithParent(SceneObject* sceneObject, SceneObject* newParent, bool lightUpdate, bool sendPackets = true) const;
 
-	void notifySelfPositionUpdate(SceneObject* sceneObject);
+	void notifySelfPositionUpdate(SceneObject* sceneObject) const;
 
 };
 
