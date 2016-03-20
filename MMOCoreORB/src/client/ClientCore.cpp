@@ -30,28 +30,9 @@ void ClientCore::run() {
 
 	int rounds = 0;
 
-	while (true) {
-		int index = System::random(instances - 1);
+	loginCharacter(0);
 
-		if (System::random(100) < 80)
-			loginCharacter(index);
-		else
-			logoutCharacter(index);
-
-	#ifdef WITH_STM
-		try {
-			//TransactionalMemoryManager::commitPureTransaction();
-		} catch (const TransactionAbortedException& e) {
-		}
-	#endif
-
-		debug(String::valueOf(connectCount) + " connects, " + String::valueOf(disconnectCount) + " disconnects. " +
-				String::valueOf(++rounds) + " rounds");
-
-		Thread::sleep(10 + System::random(40));
-	}
-
-	//handleCommands();
+	handleCommands();
 
 	for (int i = 0; i < instances; ++i) {
 		Zone* zone = zones.get(i);
