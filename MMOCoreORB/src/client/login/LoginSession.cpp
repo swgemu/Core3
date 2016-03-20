@@ -75,7 +75,7 @@ void LoginSession::run() {
 	Time timeout;
 	timeout.addMiliTime(2000);
 
-	sessionFinalized.timedWait(this, &timeout);
+	sessionFinalized.wait(this); //timedWait(this, &timeout);
 
 	unlock();
 

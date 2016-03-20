@@ -27,6 +27,7 @@ ZoneClient::ZoneClient(int port) {
 	zone = NULL;
 
 	basePacketHandler = new BasePacketHandler("ZoneClient", this);
+	zonePacketHandler = NULL;
 }
 
 ZoneClient::~ZoneClient() {
