@@ -16,7 +16,7 @@ ZoneClient::ZoneClient(int port) {
 	client = new BaseClient("localhost", port);
 	client->setHandler(this);
 
-	client->setLogging(false);
+	client->setLogging(true);
 	client->setLoggingName("ZoneClient");
 
 	player = NULL;

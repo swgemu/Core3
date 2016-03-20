@@ -13,7 +13,7 @@
 ZonePacketHandler::ZonePacketHandler(const String& s, Zone * z) : Logger(s) {
 	zone = z;
 
-	setLogging(false);
+	setLogging(true);
 	setGlobalLogging(true);
 }
 

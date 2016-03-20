@@ -16,7 +16,7 @@
 LoginClient::LoginClient(int port, const String& loggingName) {
 	client = new BaseClient("localhost", port);
 
-	client->setLogging(false);
+	client->setLogging(true);
 	client->setLoggingName(loggingName);
 
 	loginSession = NULL;
