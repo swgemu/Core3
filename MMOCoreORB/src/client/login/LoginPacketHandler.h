@@ -18,6 +18,8 @@ class LoginPacketHandler : public Logger {
 public:
 	LoginPacketHandler(LoginSession* session) : Logger("LoginPacketHandler") {
 		loginSession = session;
+
+		setLogging(true);
 	}
 
 	~LoginPacketHandler() {

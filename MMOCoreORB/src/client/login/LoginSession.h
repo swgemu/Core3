@@ -10,6 +10,8 @@
 
 #include "engine/engine.h"
 
+class LoginClient;
+
 class LoginSession : public Mutex, public Runnable, public Logger, public Object {
 	Condition sessionFinalized;
 
@@ -22,6 +24,8 @@ class LoginSession : public Mutex, public Runnable, public Logger, public Object
 	int instance;
 
 	class LoginClientThread* loginThread;
+
+	Reference<LoginClient*> login;
 
 public:
 	LoginSession(int instance);

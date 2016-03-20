@@ -31,7 +31,7 @@ LoginSession::~LoginSession() {
 int accountSuffix = 0;
 
 void LoginSession::run() {
-	Reference<LoginClient*> login = new LoginClient(44453, "LoginClient" + String::valueOf(instance));
+	login = new LoginClient(44453, "LoginClient" + String::valueOf(instance));
 	login->setLoginSession(this);
 	login->initialize();
 
