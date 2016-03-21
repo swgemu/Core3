@@ -66,10 +66,9 @@ int LootSchematicMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		String skillNeeded = schematicData->getRequiredSkill();
 
 		if((!skillNeeded.isEmpty() && !player->hasSkill(skillNeeded))) {
-			StringIdChatParameter* noSkill = NULL;
-			noSkill = new StringIdChatParameter("@loot_schematic:not_enough_skill"); // You must have %TO skill in order to understand this.
-			noSkill->setTO(skillNeeded);
-			player->sendSystemMessage(*noSkill);
+			StringIdChatParameter noSkill("@loot_schematic:not_enough_skill"); // You must have %TO skill in order to understand this.
+			noSkill.setTO(skillNeeded);
+			player->sendSystemMessage(noSkill);
 			return 0;
 		}
 
