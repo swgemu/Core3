@@ -1,5 +1,6 @@
 victor_questp_slums = Creature:new {
-	objectName = "@npc_name:human_base_female",
+	objectName = "",
+	randomNameType = NAME_GENERIC,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -22,13 +23,13 @@ victor_questp_slums = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_victor_questp_slums.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "victorQuestpSlumsConvoTemplate",
 	attacks = {
 	}
 }

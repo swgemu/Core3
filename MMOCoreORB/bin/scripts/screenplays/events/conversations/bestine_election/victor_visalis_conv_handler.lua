@@ -8,67 +8,78 @@ function victorVisalisConvoHandler:setThemePark(themeParkNew)
 	self.themePark = themeParkNew
 end
 
+function victorVisalisConvoHandler:victorNoRoom(pPlayer)
+	local playerID = CreatureObject(pPlayer):getObjectID()
+	local electionNum = BestineElectionScreenPlay:getElectionNumber()
+	local playerCampaign = readData(playerID..":bestine_election:victorNoRoom")
+	return (playerCampaign ~= nil) and (playerCampaign >= electionNum)
+end
+
+function victorVisalisConvoHandler:victorNegQuest(pPlayer)
+	local playerID = CreatureObject(pPlayer):getObjectID()
+	local electionNum = BestineElectionScreenPlay:getElectionNumber()
+	local playerCampaign = readData(playerID..":bestine_election:victorNegQuest")
+	return (playerCampaign ~= nil) and (playerCampaign >= electionNum)
+end
+
+
 function victorVisalisConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 	local electionNum = BestineElectionScreenPlay:getElectionNumber()
 	local playerID = CreatureObject(pPlayer):getObjectID()
-	local electionPhase = BestineElectionScreenPlay:getCurrentPhase()
-
-	if electionPhase == 1 then
-		if self:hasNoRoomVar(pPlayer) then
+	if (not BestineElectionScreenPlay:isElectionEnabled()) then 
+		return convoTemplate:getScreen("noOffice_noElection")
+	end
+	if (BestineElectionScreenPlay:getCurrentPhase() == 1) then
+		if self:victorNoRoom(pPlayer) then
 			return convoTemplate:getScreen("returned_noroom")
-		elseif self:hasNQuestVar(pPlayer) then
-			return convoTemplate:getScreen("nquest_return")
-		elseif tonumber(getQuestStatus(playerID..":bestine_election:SeanCampaign")) == electionNum then
-			return convoTemplate:getScreen("rival_player")
-		elseif tonumber(getQuestStatus(playerID..":bestine_election:VictorCampaign")) == electionNum then
-			return convoTemplate:getScreen("ask_voted")
 		end
-		return convoTemplate:getScreen("convo_start")
+
+		if self:victorNegQuest(pPlayer) then
+			return convoTemplate:getScreen("nquest_return")
+		end
+
+		if BestineElectionScreenPlay:votedSean(pPlayer) then
+			return convoTemplate:getScreen("voted_sean_this_election")
+		end
+	
+		if BestineElectionScreenPlay:votedVictor(pPlayer) then
+			return convoTemplate:getScreen("voted_victor_this_election")
+		end
+	
+		if BestineElectionScreenPlay:SeanCampaign(pPlayer) then
+			return convoTemplate:getScreen("rival_player")
+		end
+
+		if BestineElectionScreenPlay:VictorCampaign(pPlayer) then		
+			return convoTemplate:getScreen("campaign_returned")
+		end
+	end			
+	if (BestineElectionScreenPlay:getCurrentPhase() == 2) then
+		if getQuestStatus("bestine_election:electionWinner") == "Sean" then
+		   return convoTemplate:getScreen("noOffice_noElection")
+		end
+
+		if getQuestStatus("bestine_election:electionWinner") == "Victor" then
+			return convoTemplate:getScreen("victor_inOffice")
+		end
+
 	end
-	if electionPhase == 2 then
-		--TODO: Phase 2
-	 	return convoTemplate:getScreen("noOffice_noElection")
-	end
-	return convoTemplate:getScreen("noOffice_noElection")
+	return convoTemplate:getScreen("convo_start")
 end
-
-function victorVisalisConvoHandler:hasNQuestVar(pPlayer)
-	local playerID = CreatureObject(pPlayer):getObjectID()
-	local electionNum = BestineElectionScreenPlay:getElectionNumber()
-	local playerCampaign = tonumber(getQuestStatus(playerID..":bestine_election:VictorNegativeQuests"))
-	return (playerCampaign == electionNum)
-end
-
-function victorVisalisConvoHandler:hasNoRoomVar(pPlayer)
-	local playerID = CreatureObject(pPlayer):getObjectID()
-	local electionNum = BestineElectionScreenPlay:getElectionNumber()
-	playerCampaign = tonumber(getQuestStatus(playerID..":bestine_election:victor_noroom"))
-	return (playerCampaign == electionNum)
-end
-
 
 function victorVisalisConvoHandler:doNegativeQuests(pPlayer)
-	local playerID = CreatureObject(pPlayer):getObjectID()
 	local electionNum = BestineElectionScreenPlay:getElectionNumber()
-	setQuestStatus(playerID..":bestine_election:VictorNegativeQuests",electionNum)
-	setQuestStatus(playerID..":bestine_election:SeanCampaign",0)
-	removeQuestStatus(playerID..":bestine_election:searched")
-	removeQuestStatus(playerID..":bestine_election:already_searched")
+	local playerID = CreatureObject(pPlayer):getObjectID()	
+	writeData(playerID..":bestine_election:victorNegQuest",electionNum)
+	deleteData(playerID..":bestine_election:SeanCampaign")
 end
 
 function victorVisalisConvoHandler:hasNegativeEvidence(pPlayer)
 	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
-	if pInventory ~= nil then
-		if getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/sean_questn_gpapers.iff" , true) then
-			return true
-	 elseif getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/sean_questn_tdisk.iff", true) then
-			return true
-      elseif getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/sean_questn_alog.iff", true) then
-			return true
-		end
-	end
-	return false
+	return (pInventory ~= nil) and getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/sean_questn_gpapers.iff" , true) 
+	or getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/sean_questn_tdisk.iff", true) 
+	or getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/sean_questn_alog.iff", true)
 end
 
 function victorVisalisConvoHandler:removeNegativeEvidence(pPlayer)
@@ -92,58 +103,160 @@ function victorVisalisConvoHandler:removeNegativeEvidence(pPlayer)
 	end
 end
 
-
-
 function victorVisalisConvoHandler:giveDiskandJoinCampaign(pPlayer)
 	local playerID = CreatureObject(pPlayer):getObjectID()
 	local electionNum = BestineElectionScreenPlay:getElectionNumber()
 
 	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
-	if pInventory == nil then
-		return
+	if pInventory ~= nil then
+		local pDisk = giveItem(pInventory, "object/tangible/loot/quest/victor_campaign_disk.iff", -1)
+		if (pDisk == nil) then
+			CreatureObject(pPlayer):sendSystemMessage("Error: Unable to generate item victor_campaign_disk.iff")
+			return
+		end
+		local rivalDisk = getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/sean_campaign_disk.iff" , true)
+		if rivalDisk ~= nil then
+			SceneObject(rivalDisk):destroyObjectFromWorld()
+			SceneObject(rivalDisk):destroyObjectFromDatabase()
+		end
+		self:removeNegativeEvidence(pPlayer)
+		writeData(playerID..":bestine_election:VictorCampaign",electionNum)
+		deleteData(playerID..":bestine_election:SeanCampaign")
+		deleteData(playerID..":bestine_election:victorNegQuest")
+		deleteData(playerID..":bestine_election:seanNegQuest")
 	end
-
-	local pDisk = giveItem(pInventory, "object/tangible/loot/quest/victor_campaign_disk.iff", -1)
-	if (pDisk == nil) then
-		CreatureObject(pPlayer):sendSystemMessage("Error: Unable to generate item victor_campaign_disk.iff")
-		return
-	end
-	self:removeNegativeEvidence(pPlayer)
-	setQuestStatus(playerID..":bestine_election:VictorCampaign",electionNum)
-	removeQuestStatus(playerID..":bestine_election:SeanCampaign")
-	removeQuestStatus(playerID..":bestine_election:victor_noroom")
-	removeQuestStatus(playerID..":bestine_election:VictorNegativeQuests")
-	removeQuestStatus(playerID..":bestine_election:searched")
-	removeQuestStatus(playerID..":bestine_election:already_searched")
 	return
 end
 
-function victorVisalisConvoHandler:checkVictorVote(pPlayer)
-	local playerID = CreatureObject(pPlayer):getObjectID()
+function victorVisalisConvoHandler:giveElectionReward(pPlayer)
 	local electionNum = BestineElectionScreenPlay:getElectionNumber()
-	if tonumber(getQuestStatus(playerID..":bestine_election:VictorCampaign")) == electionNum then
-		local playerCampaign = tonumber(getQuestStatus(playerID..":bestine_election:votedVictor"))
-		return (playerCampaign == electionNum)
+	local playerID = CreatureObject(pPlayer):getObjectID()
+	if (BestineElectionScreenPlay:getCurrentPhase() == 1) then
+		electionNum = electionNum - 1
 	end
+	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+	if pInventory ~= nil then
+		createLoot(pInventory, "bestine_election_victor_visalis_rewards", 0, true)
+	end
+	writeData(playerID .. ":bestine_election:receivedVictorReward", electionNum)
+	deleteData(playerID..":bestine_election:VotedVictor")
 end
 
-function victorVisalisConvoHandler:GiveMainReward(pPlayer)
-	local playerID = CreatureObject(pPlayer):getObjectID()
-	local electionNum = BestineElectionScreenPlay:getElectionNumber()
-
+function victorVisalisConvoHandler:giveTuskenReward(pPlayer)
 	if (pPlayer == nil) then
 		return
 	end
-
+	local electionNum = BestineElectionScreenPlay:getElectionNumber()
+	if (BestineElectionScreenPlay:getCurrentPhase() == 1) then
+		electionNum = electionNum - 1
+	end
+	local playerID = CreatureObject(pPlayer):getObjectID()
 	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+	if pInventory ~= nil then
+		createLoot(pInventory, "bestine_election_tusken_quest", 0, true)
+		--CreatureObject(pPlayer):sendSystemMessage("@theme_park/messages:theme_park_reward")
+	end
+	writeData(playerID .. ":bestine_election:receivedTuskenReward", electionNum)
+	CreatureObject(pPlayer):removeScreenPlayState(1, "victorTuskenQuest")
+	deleteData(playerID .. ":bestine_election:tuskenWaypointID")
+end
 
-	if pInventory == nil then
+function victorVisalisConvoHandler:receivedElectionReward(pPlayer)
+	local electionNum = BestineElectionScreenPlay:getElectionNumber()
+	local playerID = CreatureObject(pPlayer):getObjectID()	
+	if (BestineElectionScreenPlay:getCurrentPhase() == 1) then
+		electionNum = electionNum - 1
+	end
+	local playerCampaign = readData(playerID..":bestine_election:receivedVictorReward")
+	if (playerCampaign == 0) then 
+		return false
+	end
+	if (playerCampaign <= electionNum) then
+		return true;
+	end
+	return false
+end
+
+function victorVisalisConvoHandler:checkForStones(pPlayer)
+local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+	return (pInventory ~= nil) and (getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/carved_stone.iff", true)) or (getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/smooth_stone.iff", true))
+end
+
+function victorVisalisConvoHandler:checkforTuskenHead(pPlayer)
+	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+	return (pInventory ~= nil) and (getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/tusken_head.iff", true)) and (CreatureObject(pPlayer):hasScreenPlayState(1, "victorTuskenQuest"))
+end
+
+function victorVisalisConvoHandler:checkForTuskenReward(pPlayer)
+	local electionNum = BestineElectionScreenPlay:getElectionNumber()
+	local playerID = CreatureObject(pPlayer):getObjectID()
+	if (BestineElectionScreenPlay:getCurrentPhase() == 1) then
+		electionNum = electionNum - 1
+	end
+	local electionPlayerRewarded = readData(playerID .. ":bestine_election:receivedTuskenReward")
+	if electionPlayerRewarded ~= nil then
+		if (electionPlayerRewarded <= electionNum) then	
+			return false
+		end
+	end
+	return true
+end
+
+function victorVisalisConvoHandler:giveTuskenQuest(pPlayer)
+	local electionNum = BestineElectionScreenPlay:getElectionNumber()
+	local pObj = CreatureObject(pPlayer):getPlayerObject()
+	local playerID = CreatureObject(pPlayer):getObjectID()
+	
+	tuskenWaypointID = PlayerObject(pObj):addWaypoint("tatooine", "Fort Tusken", "", -3960, 6233, WAYPOINT_COLOR_PURPLE, true, true, 0,0)
+	CreatureObject(pPlayer):setScreenPlayState(1, "victorTuskenQuest")
+	writeData(playerID .. ":bestine:tuskenWaypointID", tuskenWaypointID)
+end
+
+
+function victorVisalisConvoHandler:waypointTusken(pPlayer)
+	local electionNum = BestineElectionScreenPlay:getElectionNumber()
+	local pObj = CreatureObject(pPlayer):getPlayerObject()
+	local playerID = CreatureObject(pPlayer):getObjectID()
+	
+	tuskenWaypointID = PlayerObject(pObj):addWaypoint("tatooine", "Fort Tusken", "", -3960, 6233, WAYPOINT_COLOR_PURPLE, true, true, 0,0)
+	writeData(playerID .. ":bestine:tuskenWaypointID", tuskenWaypointID)
+	CreatureObject(pPlayer):setScreenPlayState(1, "victorTuskenQuest")
+end
+
+function victorVisalisConvoHandler:removeTuskenQuest(pPlayer)
+	local pObj = CreatureObject(pPlayer):getPlayerObject()
+	if pObj == nil then
 		return
 	end
-	createLoot(pInventory, victor_visalis_rewards, 0, true)
-	setQuestStatus(playerID.."bestine_election:RewardGivenVictor",electionNum)
-	removeQuestStatus(playerID.."bestine_election:votedVictor")
-	return
+	local playerID = CreatureObject(pPlayer):getObjectID()
+	local wayID = readData(playerID .. ":bestine:tuskenWaypointID")
+	PlayerObject(pObj):removeWaypoint(wayID, true)
+	removeQuestStatus(playerID .. ":bestine:tuskenWaypointID")
+	CreatureObject(pPlayer):removeScreenPlayState(1, "victorTuskenQuest")
+end
+
+function victorVisalisConvoHandler:votedVictorCurrentElection(pPlayer)
+	if (BestineElectionScreenPlay:getCurrentPhase() == 1) then
+		local electionNum = BestineElectionScreenPlay:getElectionNumber()
+		local playerID = CreatureObject(pPlayer):getObjectID()
+		local playerCampaign = readData(playerID..":bestine_election:VotedVictor")
+		return (playerCampaign ~= nil) and (playerCampaign ~= 0) and (playerCampaign >= electionNum)
+	end
+end
+
+function victorVisalisConvoHandler:votedSeanCurrentElection(pPlayer)
+	if victorVisalisConvoHandler:votedVictorCurrentElection(pPlayer) then
+		return false
+	end
+	
+	if (BestineElectionScreenPlay:getCurrentPhase() == 1) then
+		local electionNum = BestineElectionScreenPlay:getElectionNumber()
+		local playerCampaign = readData(playerID..":bestine_election:VotedSean")
+		if (playerCampaign >= electionNum) then
+			return true;
+		end
+	end
+	return false;
 end
 
 function victorVisalisConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
@@ -153,61 +266,87 @@ function victorVisalisConvoHandler:runScreenHandlers(conversationTemplate, conve
 	local clonedConversation = LuaConversationScreen(conversationScreen)
 	local electionNum = BestineElectionScreenPlay:getElectionNumber()
 	local playerID = CreatureObject(conversingPlayer):getObjectID()
-
-	if screenID == "nquest_return" then
-		if self:hasNegativeEvidence(conversingPlayer) then
-			clonedConversation:addOption("@conversation/victor_visalis:s_6ac98e49","nquest_found") --I have it, yes.
-		else
-			clonedConversation:addOption("@conversation/victor_visalis:s_da9a29e9","nquest_notfound")--No, not yet.
-	 	end
-	end
-
-	if screenID == "nquest_found" then
-		if BestineElectionScreenPlay:hasFullInventory(conversingPlayer) then
-			clonedConversation:addOption("@conversation/victor_visalis:s_9e0196ed","joincampaign_noroom") --Yes, I am sure.
-		else
-			clonedConversation:addOption("@conversation/victor_visalis:s_9e0196ed","nquest_joincampaign") --Yes, I am sure.
+			
+	if (screenID == "victor_inOffice") then--I am now in office, this much is true. However, I have matters on my mind to which I must attend. Is there something you need?
+		if (victorVisalisConvoHandler:checkForTuskenReward(conversingPlayer) == false) and CreatureObject(conversingPlayer):hasScreenPlayState(1, "victorTuskenQuest") then
+			clonedConversation:addOption("@conversation/victor_visalis:s_edafb11b","inoffice_ontuskenquest")--How goes your work now that you're in office?s_edafb11b
+		else clonedConversation:addOption("@conversation/victor_visalis:s_edafb11b","start_tusken_quest")
 		end
-			clonedConversation:addOption("@conversation/victor_visalis:s_5c46daeb","neg_quests_changed_mind")--I've changed my mind.
+
+		if self:checkforTuskenHead(conversingPlayer) then
+			clonedConversation:addOption("@conversation/victor_visalis:s_6641e79e","destroyed_target")-- I have destroyed the intended target.s_6641e79e
+		end
+		if (self:checkforTuskenHead(conversingPlayer) == false) and CreatureObject(conversingPlayer):hasScreenPlayState(1, "victorTuskenQuest") then
+			clonedConversation:addOption("@conversation/victor_visalis:s_42c394e0","retell_tusken_quest") --I'm lost. What do I need to do?
+			clonedConversation:addOption("@conversation/victor_visalis:s_cbb4f307","still_looking") --I'm still looking for our target.
+			clonedConversation:addOption("@conversation/victor_visalis:s_f70821a3","quit_tusken_quest") --I quit!
+		end
+		--I found these weird stones.
+		if self:checkForStones(conversingPlayer) then
+			clonedConversation:addOption("@conversation/victor_visalis:s_380817dd","found_stones") -- I found these weird stones.
+		end
+		--Hey wait! What about my reward for voting for you?
+		if BestineElectionScreenPlay:votedVictor(conversingPlayer) then
+			if self:receivedElectionReward(conversingPlayer) then
+				clonedConversation:addOption("@conversation/victor_visalis:s_82af0027","already_received_election_reward")--Hey wait! What about my reward for voting for you?
+			elseif BestineElectionScreenPlay:hasFullInventory(conversingPlayer) then
+				clonedConversation:addOption("@conversation/victor_visalis:s_82af0027","election_reward_noroom")--Hey wait! What about my reward for voting for you?
+			else
+				clonedConversation:addOption("@conversation/victor_visalis:s_82af0027","give_election_reward")--Hey wait! What about my reward for voting for you?
+			end
+		end
+		--Now that another election has begun, are you planning to get re-elected?
+	if getQuestStatus("bestine_election:electionWinner") == "Victor" then
+			if self:votedVictorCurrentElection(conversingPlayer) then
+				clonedConversation:addOption("@conversation/victor_visalis:s_de1eacb3","new_election_votedvictor") --Now that another election has begun, are you planning to get re-elected?
+			elseif self:votedSeanCurrentElection(conversingPlayer) then
+				clonedConversation:addOption("@conversation/victor_visalis:s_de1eacb3","new_election_votedsean") --Now that another election has begun, are you planning to get re-elected?
+			end
+			clonedConversation:addOption("@conversation/victor_visalis:s_de1eacb3","new_election_default") --Now that another election has begun, are you planning to get re-elected?
+		end
 	end
 
-	if screenID == "givedisk_joincampaign" then
-		self:giveDiskandJoinCampaign(conversingPlayer)
+	if (screenID == "new_election_default") then
+		if BestineElectionScreenPlay:votedVictor(conversingPlayer) then
+			clonedConversation:addOption("@conversation/victor_visalis:s_435f07d4","give_election_reward")--Hey wait! What about my reward for voting for you in the last election?
+		end
+		clonedConversation:addOption("@conversation/victor_visalis:s_bae6b22d","proposed_changes")--What are your proposed changes for Bestine?
+		clonedConversation:addOption("@conversation/victor_visalis:s_d6a9a15d","here_to_vote")--I'm here to vote for you.
+		clonedConversation:addOption("@conversation/victor_visalis:s_1a50f0d3","about_tuskens")--Tell me more about the Tuskens.
+		clonedConversation:addOption("@conversation/victor_visalis:s_87b97dc","need_to_go")--I need to go. I'm sorry.
 	end
+	
 
-	if screenID == "nquest_joincampaign" then
-		self:giveDiskandJoinCampaign(conversingPlayer)
+	if (screenID == "tusken_quest_complete") then
+		clonedConversation:addOption("@conversation/victor_visalis:s_30e8118","goodbye_friend")--Just checking up on things. Bye!
+		if self:checkForStones(conversingPlayer) then
+			clonedConversation:addOption("@conversation/victor_visalis:s_380817dd","found_stones") --I found these weird stones.
+		end
 	end
-
+	
 	if screenID == "here_to_vote3" then
 		if BestineElectionScreenPlay:hasFullInventory(conversingPlayer) then
-			clonedConversation:addOption("@conversation/victor_visalis:s_5492e753","joincampaign_noroom") --I wish to join your campaign.
+			clonedConversation:addOption("@conversation/victor_visalis:s_5492e753","joincampaign_noroom") -- I wish to join your campaign.
 		else
-			clonedConversation:addOption("@conversation/victor_visalis:s_5492e753","givedisk_joincampaign")--I wish to join your campaign.
+			clonedConversation:addOption("@conversation/victor_visalis:s_5492e753","givedisk_joincampaign") -- I wish to join your campaign.
 		end
-			clonedConversation:addOption("@conversation/victor_visalis:s_d041eb82","changed_mind")--I don't want to join your campaign.
-			clonedConversation:addOption("@conversation/victor_visalis:s_9201d81b","need_to_go")--I have to go. Bye!
+		clonedConversation:addOption("@conversation/victor_visalis:s_d041eb82","changed_mind") -- I don't want to join your campaign.
+		clonedConversation:addOption("@conversation/victor_visalis:s_9201d81b","need_to_go") -- I have to go. Bye!
 	end
 
-	if screenID == "returned_noroom" then
-			if BestineElectionScreenPlay:hasFullInventory(conversingPlayer) then
-				clonedConversation:addOption("@conversation/victor_visalis:s_c82e9a2f","returned_stillnoroom")--Yes, please.
-			else
-				clonedConversation:addOption("@conversation/victor_visalis:s_c82e9a2f","returned_maderoom") -- Yes, please.
-			end
-				clonedConversation:addOption("@conversation/victor_visalis:s_ee26e33e","need_to_go")--No thanks!
-	end
 
-	if screenID == "returned_maderoom" then
-			giveDiskandJoinCampaign(conversingPlayer)
+	if screenID == "destroyed_target" then
+		victorVisalisConvoHandler:giveTuskenReward(conversingPlayer)
 	end
-
-	if screenID == "joincampaign_noroom" then
-			setQuestStatus(playerID..":bestine_election:victor_noroom",electionNum)
+	if screenID == "action_nquest" then
+			self:doNegativeQuests(conversingPlayer)
 	end
-
-	if screenID == "ask_voted" then
-		if self:checkVictorVote(conversingPlayer) == true then
+	if (screenID == "returned_noroom_still") or (screenID == "joincampaign_noroom") then
+		writeData(playerID..":bestine_election:victorNoRoom")
+	end
+	
+	if screenID == "campaign_returned" then
+		if BestineElectionScreenPlay:votedVictor(conversingPlayer) then
 			clonedConversation:addOption("@conversation/victor_visalis:s_798f58f7","checkForVote_true") -- Yes and I voted for you.
 		else
 			clonedConversation:addOption("@conversation/victor_visalis:s_798f58f7","checkForVote_false") -- Yes and I voted for you.
@@ -215,14 +354,59 @@ function victorVisalisConvoHandler:runScreenHandlers(conversationTemplate, conve
 		clonedConversation:addOption("@conversation/victor_visalis:s_6cf7afee","need_to_go")--I should go.
 		clonedConversation:addOption("@conversation/victor_visalis:s_700330a5","cant_find_evidence")--I can't find evidence.
 	end
-	if screenID == "returned_stillnoroom" then
-		setQuestStatus(playerID..":bestine_election:victor_noroom",electionNum)
+	
+	
+	if screenID == "returned_noroom" then
+		if BestineElectionScreenPlay:hasFullInventory(conversingPlayer) then
+			clonedConversation:addOption("@conversation/victor_visalis:s_c82e9a2f","returned_noroom_still")--Yes, please.
+		else
+			clonedConversation:addOption("@conversation/victor_visalis:s_c82e9a2f","returned_maderoom") -- Yes, please.
+		end
+		clonedConversation:addOption("@conversation/victor_visalis:s_ee26e33e","need_to_go")--No thanks!
+	end
+	
+	if screenID == "nquest_return" then
+		if self:hasNegativeEvidence(conversingPlayer) then
+			clonedConversation:addOption("@conversation/victor_visalis:s_6ac98e49","nquest_found") --I have it, yes.
+		else
+			clonedConversation:addOption("@conversation/victor_visalis:s_da9a29e9","nquest_notfound")--No, not yet.
+	 	end
+	end
+	
+	if screenID == "nquest_found" then
+		if BestineElectionScreenPlay:hasFullInventory(conversingPlayer) then
+			clonedConversation:addOption("@conversation/victor_visalis:s_9e0196ed","joincampaign_noroom") --Yes, I am sure.
+		else
+			clonedConversation:addOption("@conversation/victor_visalis:s_9e0196ed","nquest_joincampaign") --Yes, I am sure.
+		end
+		clonedConversation:addOption("@conversation/victor_visalis:s_5c46daeb","nquest_changed_mind")--I've changed my mind.
+	end
+	
+	if (screenID == "givedisk_joincampaign") or (screenID == "nquest_joincampaign") or (screenID == "returned_maderoom")  then
+		self:giveDiskandJoinCampaign(conversingPlayer)
+	end
+	
+	if (screenID == "new_election_votedvictor") then
+		self:giveElectionReward(conversingPlayer)
+	end
+	
+	if (screenID == "accept_tusken_quest") then
+		self:giveTuskenQuest(conversingPlayer)
+	end
+	if (screenID == "retell_tusken_quest") or (screenID == "still_looking") then
+		self:waypointTusken(conversingPlayer)
+	end
+	
+	if (screenID == "quit_tusken_quest") then
+		self:removeTuskenQuest(conversingPlayer)
 	end
 
-	if screenID == "action_nquest" then
-			self:doNegativeQuests(conversingPlayer)
+	if screenID == "destroyed_target" then
+		self:giveTuskenReward(conversingPlayer)
 	end
-
+	if screenID == "give_election_reward" then
+		self:giveElectionReward(conversingPlayer)
+	end
 	return conversationScreen
 end
 

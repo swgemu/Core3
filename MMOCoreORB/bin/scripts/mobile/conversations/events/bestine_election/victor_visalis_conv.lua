@@ -10,10 +10,10 @@ convo_start = ConvoScreen:new {
 	leftDialog = "@conversation/victor_visalis:s_aa1a9de6", --Can you feel that? The Sand People are getting restless. I can sense it from here. Bestine will not be safe unless we recruit more Imperial Troopers to defend the city. If my... opponent wins the election, I am afraid of what may happen to the people of Bestine. But enough of this. How may I help you?
 	stopConversation = "false",
 	options = {
-		{"@conversation/victor_visalis:s_bae6b22d","proposed_changes"}, --What are your proposed changes for Bestine?
+		{"@conversation/victor_visalis:s_540ac7e9","proposed_changes"}, --Continue.
 		{"@conversation/victor_visalis:s_d6a9a15d","here_to_vote"}, --I'm here to vote for you.
 		{"@conversation/victor_visalis:s_1a50f0d3","about_tuskens"}, --Tell me more about the Tuskens.
-		{"@conversation/victor_visalis:s_87b97dc","need_to_go"}, --I need to go. I'm sorry.
+		{"@conversation/victor_visalis:s_87b97dc","need_to_go"}, --I need to go. I'm sorry.	
 	}
 }
 victorVisalisConvoTemplate:addScreen(convo_start);
@@ -91,6 +91,7 @@ about_tuskens2 = ConvoScreen:new {
 }
 victorVisalisConvoTemplate:addScreen(about_tuskens2);
 
+
 noOffice_noElection = ConvoScreen:new {
 	id = "noOffice_noElection",
 	leftDialog = "@conversation/victor_visalis:s_57218e96", --I am much too occupied at the moment. You may return when the election begins again. Speak with Bestine's citizens. They usually speak of it.
@@ -105,26 +106,26 @@ rival_player = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		{"@conversation/victor_visalis:s_b826b85a","action_nquest"}, --I want to join your campaign.
-		{"@conversation/victor_visalis:s_67dbab18","have_to_go"}, --Sorry, I have to go.
+		{"@conversation/victor_visalis:s_67dbab18","need_to_go"}, --Sorry, I have to go.
 	}
 }
 victorVisalisConvoTemplate:addScreen(rival_player);
 
-votedVictorCurrentElection = ConvoScreen:new {
-	id = "votedVictorCurrentElection",
+voted_victor_this_election = ConvoScreen:new {
+	id = "voted_victor_this_election",
 	leftDialog = "@conversation/victor_visalis:s_82dcbdca", --Ah, thanks for voting for me in this election. I really appreciate it. If I win, come back and speak to me so that I can reward your loyalty.
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(votedVictorCurrentElection);
+victorVisalisConvoTemplate:addScreen(voted_victor_this_election);
 
-votedSeanCurrentElection = ConvoScreen:new {
-	id = "votedSeanCurrentElection",
+voted_sean_this_election = ConvoScreen:new {
+	id = "voted_sean_this_election",
 	leftDialog = "@conversation/victor_visalis:s_66e44ee", --I'm surprised you voted for Sean Trenwell in this election. I don't see how anyone could justify doing that, but apparently you found his ideas palatable. I can't imagine what had to happen to make that possible, and frankly, I don't want to know.
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(votedSeanCurrentElection);
+victorVisalisConvoTemplate:addScreen(voted_sean_this_election);
 
 nquest_joincampaign = ConvoScreen:new {
 	id = "nquest_joincampaign",
@@ -150,13 +151,13 @@ returned_maderoom = ConvoScreen:new {
 }
 victorVisalisConvoTemplate:addScreen(returned_maderoom);
 
-returned_stillnoroom = ConvoScreen:new {
-	id = "returned_stillnoroom",
+returned_noroom_still = ConvoScreen:new {
+	id = "returned_noroom_still",
 	leftDialog = "@conversation/victor_visalis:s_a58217e0", --You'll need to come back when you have more room.
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(returned_stillnoroom);
+victorVisalisConvoTemplate:addScreen(returned_noroom_still);
 
 joincampaign_noroom = ConvoScreen:new {
 	id = "joincampaign_noroom",
@@ -197,6 +198,17 @@ need_to_go = ConvoScreen:new {
 	options = {}
 }
 victorVisalisConvoTemplate:addScreen(need_to_go);
+
+
+goodbye_friend = ConvoScreen:new {
+	id = "goodbye_friend",
+	leftDialog = "@conversation/victor_visalis:s_26684a50", --Very well. Be safe, my friend.
+	stopConversation = "true",
+	options = {}
+}
+victorVisalisConvoTemplate:addScreen(goodbye_friend);
+
+
 
 changed_mind = ConvoScreen:new {
 	id = "changed_mind",
@@ -246,21 +258,27 @@ nquest_notfound = ConvoScreen:new {
 }
 victorVisalisConvoTemplate:addScreen(nquest_notfound);
 
-neg_quests_changed_mind = ConvoScreen:new {
-	id = "neg_quests_changed_mind",
+nquest_changed_mind = ConvoScreen:new {
+	id = "nquest_changed_mind",
 	leftDialog = "@conversation/victor_visalis:s_d987b9fe", --Very well, then. Be sure to return when you've seen that our views are the right path.
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(neg_quests_changed_mind);
+victorVisalisConvoTemplate:addScreen(nquest_changed_mind);
 
-ask_voted = ConvoScreen:new {
-	id = "ask_voted",
+campaign_returned = ConvoScreen:new {
+	id = "campaign_returned",
 	leftDialog = "@conversation/victor_visalis:s_c2b746c2", --You have returned. Did you find the proper evidence the governor requires?
 	stopConversation = "false",
-	options = { }
+	options = {
+		--{"@conversation/victor_visalis:s_798f58f7","checkForVote_true"}, --Yes and I voted for you.
+		--{"@conversation/victor_visalis:s_798f58f7","checkForVote_false"}, --Yes and I voted for you.
+		--{"@conversation/victor_visalis:s_700330a5","cant_find_evidence"}, --I can't find any evidence. 
+		--{"@conversation/victor_visalis:s_8999ec9b","decided_no_vote"}, --I decided not to vote for you.
+		--{"@conversation/victor_visalis:s_dea56128","have_to_go"}, --I have to go.
+	}
 }
-victorVisalisConvoTemplate:addScreen(ask_voted);
+victorVisalisConvoTemplate:addScreen(campaign_returned);
 
 checkForVote_true = ConvoScreen:new {
 	id = "checkForVote_true",
@@ -277,5 +295,194 @@ checkForVote_false = ConvoScreen:new {
 	options = {}
 }
 victorVisalisConvoTemplate:addScreen(checkForVote_false);
+
+test1 = ConvoScreen:new {
+	id = "test1",
+	leftDialog = "@conversation/victor_visalis:s_a19e3981", -- I am now in office, this much is true. However, I have matters on my mind to which I must attend. Is there something you need?
+	stopConversation = "false",
+	options = {}
+}
+victorVisalisConvoTemplate:addScreen(test1);
+
+test2 = ConvoScreen:new {
+	id = "test2",
+	leftDialog = "@conversation/victor_visalis:s_a19e3981", -- I am now in office, this much is true. However, I have matters on my mind to which I must attend. Is there something you need?
+	stopConversation = "false",
+	options = {}
+}
+victorVisalisConvoTemplate:addScreen(test2);
+
+victor_inOffice = ConvoScreen:new {
+	id = "victor_inOffice",
+	leftDialog = "@conversation/victor_visalis:s_a19e3981", -- I am now in office, this much is true. However, I have matters on my mind to which I must attend. Is there something you need?
+	stopConversation = "false",
+	options = {}
+}
+victorVisalisConvoTemplate:addScreen(victor_inOffice);
+
+new_election_votedvictor = ConvoScreen:new {
+	id = "new_election_votedvictor",
+	leftDialog = "@conversation/victor_visalis:s_578e3372", --Of course, and I thank you for voting for me. I greatly appreciate it. If I win, come back and speak to me so that I can reward your loyalty.
+	stopConversation = "true",
+	options = {}
+}
+victorVisalisConvoTemplate:addScreen(new_election_votedvictor);
+
+new_election_votedsean = ConvoScreen:new {
+	id = "new_election_votedsean",
+	leftDialog = "@conversation/victor_visalis:s_5bccff58", --That is my intention, though I'm surprised to discover that you already voted for Sean Trenwell. I don't see how anyone could justify doing that, but apparently you found his ideas palatable. I can't imagine what had to happen to make that possible, and frankly, I don't want to know.
+	stopConversation = "true",
+	options = {}
+}
+victorVisalisConvoTemplate:addScreen(new_election_votedsean);
+
+new_election_default = ConvoScreen:new {
+	id = "new_election_default",
+	leftDialog = "@conversation/victor_visalis:s_e8aff3cd", --Absolutely. I fully intend to win over Mr.Trenwell once again. We need to keep his meddlesome ideas out of Bestine. Bestine needs more defense and it is defense that I shall give them! Keep me in office and vote in the next election with the governor.
+	stopConversation = "false",
+	options = {
+		
+	}
+}
+victorVisalisConvoTemplate:addScreen(new_election_default);
+
+tusken_quest_complete = ConvoScreen:new {
+	id = "tusken_quest_complete",
+	leftDialog = "@conversation/victor_visalis:s_ce06af62", --Things are going extremely well. Thank you for your help earlier. Bestine is now a safer place. Is there anything I can help you with?
+	stopConversation = "false",
+	options = {}
+}
+victorVisalisConvoTemplate:addScreen(tusken_quest_complete);
+
+inoffice_offertuskenquest = ConvoScreen:new {
+	id = "inoffice_offertuskenquest",
+	leftDialog = "@conversation/victor_visalis:s_113169f8", --You? What could you do? I-ugh. Very well. You may help us. I need for you to go to the Fortress. Our spies have witnessed a power never seen before and it lurks there. A 'brand' of Sand People never mentioned in any book. We think it may be the leading power in the Tusken community, if one could call it that. Kill it. Bring back some significant proof that you've killed it, yes?
+	stopConversation = "false",
+	options = {
+			{"@conversation/victor_visalis:s_23e4ded2","decline_tusken_quest"}, --Um.. no.
+			{"@conversation/victor_visalis:s_177e9cb7","accept_tusken_quest"}, --Yes! I will help you!
+	}
+}
+victorVisalisConvoTemplate:addScreen(inoffice_offertuskenquest);
+
+inoffice_ontuskenquest = ConvoScreen:new {
+	id = "inoffice_ontuskenquest",
+	leftDialog = "@conversation/victor_visalis:s_f594d753", -- Everything's going well. I am awaiting word from Fort Tusken. Excuse me. I must return to my work.
+	stopConversation = "true",
+	options = { }
+}
+victorVisalisConvoTemplate:addScreen(inoffice_ontuskenquest);
+
+destroyed_target = ConvoScreen:new {
+	id = "destroyed_target",
+	leftDialog = "@conversation/victor_visalis:s_df711673", -- Ah yes! Indeed you have. Perhaps now the Sand People will leave the people of Bestine alone. I am grateful. Here is your reward.
+	stopConversation = "true",
+	options = { }
+}
+victorVisalisConvoTemplate:addScreen(destroyed_target);
+
+
+tusken_reward_given = ConvoScreen:new {
+	id = "tusken_reward_given",
+	leftDialog = "@conversation/victor_visalis:s_81eb46c0", --I see that I have already given you your reward for this particular task. Unfortunately, I cannot give you another. I wish you well. Please continue to serve Bestine. Our city is already in debt to you.
+	stopConversation = "true",
+	options = { }
+}
+victorVisalisConvoTemplate:addScreen(tusken_reward_given);
+
+retell_tusken_quest = ConvoScreen:new {
+	id = "retell_tusken_quest",
+	leftDialog = "@conversation/victor_visalis:s_269510f1", --You must travel to the site of the Sand People Fortress and search it for a very powerful Tusken Raider. The Sand People place significance on this particular leader. It has never been seen before, has never been mentioned in any book. We can only assume that, with its destruction, the Sand People will leave the people of Bestine alone for good. My contacts have mentioned an extensive cave system below the Fortress. Search there first.
+	stopConversation = "true",
+	options = { }
+}
+victorVisalisConvoTemplate:addScreen(retell_tusken_quest);
+
+still_looking = ConvoScreen:new {
+	id = "still_looking",
+	leftDialog = "@conversation/victor_visalis:s_e955e18", --Our 'target' is in the Fortress. I am unsure of the direct location of where it may be hiding. Most likely,  it could be within the cave system beneath the actual Fortress. Return to me when you have succeeded in your task. Remember, I need proof you have eliminated the target.
+	stopConversation = "true",
+	options = { }
+}
+victorVisalisConvoTemplate:addScreen(still_looking);
+
+quit_tusken_quest = ConvoScreen:new {
+	id = "quit_tusken_quest",
+	leftDialog = "@conversation/victor_visalis:s_7ce36b97", --I am disappointed. Very well. You have been released from your mission.
+	stopConversation = "true",
+	options = { }
+}
+victorVisalisConvoTemplate:addScreen(quit_tusken_quest);
+
+found_stones = ConvoScreen:new {
+	id = "found_stones",
+	leftDialog = "@conversation/victor_visalis:s_8d1a9cd2", --Odd. I've never seen objects like these before. However, they do seem to be very valuable. You may be able to find more information regarding these stones in the new market place. A merchant may know what to do with them. I hear that many of the merchants come and go regularly so you may not be able to find this particular merchant immediately. Keep your eye out though. Merchants can be fickle about their business hours.
+	stopConversation = "true",
+	options = { }
+}
+victorVisalisConvoTemplate:addScreen(found_stones);
+
+already_received_election_reward = ConvoScreen:new {
+	id = "already_received_election_reward",
+	leftDialog = "@conversation/victor_visalis:s_24f8534b", --Greedy, are you? You already received a 'reward' from me. I must return to my duties. Now, be gone.
+	stopConversation = "true",
+	options = { }
+}
+victorVisalisConvoTemplate:addScreen(already_received_election_reward);
+
+give_election_reward = ConvoScreen:new {
+	id = "give_election_reward",
+	leftDialog = "@conversation/victor_visalis:s_cc9cab18", --Oh yes! It almost slipped my mind. Here you are.
+	stopConversation = "true",
+	options = { }
+}
+victorVisalisConvoTemplate:addScreen(give_election_reward);
+
+election_reward_noroom = ConvoScreen:new {
+	id = "election_reward_noroom",
+	leftDialog = "@conversation/victor_visalis:s_adc1f0dc", --Return when you have more room. I must return to my duties.
+	stopConversation = "true",
+	options = { }
+}
+victorVisalisConvoTemplate:addScreen(election_reward_noroom);
+
+
+start_tusken_quest = ConvoScreen:new {
+	id = "start_tusken_quest",
+	leftDialog = "@conversation/victor_visalis:s_6775ddea", --Stressful.  I will use my place in office to my advantage during this dangerous time. We must strike at the heart of the Sand People resistance. I have sent some of Bestine's toughest soldiers to the Tusken Fortress. Unfortunately, they have not returned to us. I fear for the worst. For the first time in my life, I am at a loss...
+	stopConversation = "false",
+	options = {
+		{"@conversation/victor_visalis:s_390b2857","inoffice_offertuskenquest"}, --Let me help!
+		{"@conversation/victor_visalis:s_e9a49e3","tough_deal"}, --Sounds like a tough deal.
+	}
+}
+victorVisalisConvoTemplate:addScreen(start_tusken_quest);
+
+decline_tusken_quest = ConvoScreen:new {
+	id = "decline_tusken_quest",
+	leftDialog = "@conversation/victor_visalis:s_3516c87", --I see that you're a coward. Very well.
+	stopConversation = "true",
+	options = {}
+}
+victorVisalisConvoTemplate:addScreen(decline_tusken_quest);
+
+accept_tusken_quest = ConvoScreen:new {
+	id = "accept_tusken_quest",
+	leftDialog = "@conversation/victor_visalis:s_72a766a9", --Good. Leave with haste. Our target may leave for a more... safe place soon. We must strike when it least expects it and when it is most vulnerable. Travel to Fort Tusken and search there. I wish you luck. 
+	stopConversation = "true",
+	options = {}
+}
+victorVisalisConvoTemplate:addScreen(accept_tusken_quest);
+
+tough_deal = ConvoScreen:new {
+	id = "tough_deal",
+	leftDialog = "@conversation/victor_visalis:s_e52ed44", -- It is my hope that my soldiers will return. I must return to my duties. Good day.
+	stopConversation = "true",
+	options = {}
+}
+victorVisalisConvoTemplate:addScreen(tough_deal);
+
+
+
 
 addConversationTemplate("victorVisalisConvoTemplate", victorVisalisConvoTemplate);
