@@ -1,24 +1,26 @@
 //#include "..\login\LoginSession.h"
 
-#include "Zone.h"
+#include "client/zone/Zone.h"
 
 /*#include "packets/zone/SelectCharacterMessage.h"
 #include "packets/zone/ClientCreateCharacter.h"
 #include "packets/zone/ClientIDMessage.h"*/
-#include "ZoneClientThread.h"
+#include "client/zone/ZoneClientThread.h"
 
 #include "engine/service/proto/packets/SessionIDRequestMessage.h"
 #include "../../server/zone/packets/zone/ClientIDMessage.h"
 #include "../../server/zone/packets/zone/SelectCharacter.h"
 #include "../../server/zone/packets/charcreation/ClientCreateCharacter.h"
-#include "managers/objectcontroller/ObjectController.h"
-#include "managers/object/ObjectManager.h"
+#include "client/zone/managers/objectcontroller/ObjectController.h"
+#include "client/zone/managers/object/ObjectManager.h"
+#include "client/ClientCore.h"
 
 int Zone::createdChar = 0;
 
-Zone::Zone(int instance, uint64 characterObjectID, uint32 account, uint32 session) : Thread(), Mutex("Zone") {
+Zone::Zone(ClientCore *core, int instance, uint64 characterObjectID, uint32 account, uint32 session) : Thread(), Mutex("Zone") {
 	//loginSession = login;
 
+	this->core = core;
 	characterID = characterObjectID;
 	accountID = account;
 	sessionID = session;

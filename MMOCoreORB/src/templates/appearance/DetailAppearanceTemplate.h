@@ -15,6 +15,10 @@ class DetailAppearanceTemplate : public AppearanceTemplate {
 	AppearanceTemplate* firstMesh;
 
 public:
+	virtual uint32 getType() {
+		return 'DTAL';
+	}
+	
 	DetailAppearanceTemplate() {
 		firstMesh = NULL;
 	}

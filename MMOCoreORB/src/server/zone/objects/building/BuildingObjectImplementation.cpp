@@ -732,7 +732,8 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 	if (getZone() == NULL)
 		return;
 
-	addTemplateSkillMods(player);
+	
+	emplateSkillMods(player);
 
 	Locker acessLock(&paidAccessListMutex);
 

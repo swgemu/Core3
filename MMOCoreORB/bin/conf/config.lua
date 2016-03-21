@@ -134,7 +134,7 @@ ZonesEnabled = {
 
 
 -- directory of tres with live.cfg
-TrePath = "/home/swgemu/Desktop/SWGEmu"
+TrePath = "/Users/gregslomin/Documents/StarWarsGalaxies"
 
 TreFiles = {
 	"default_patch.tre",

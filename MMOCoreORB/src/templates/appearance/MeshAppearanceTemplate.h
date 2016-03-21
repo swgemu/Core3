@@ -11,56 +11,33 @@
 #include "engine/engine.h"
 #include "templates/appearance/AppearanceTemplate.h"
 
-class MeshVertex : public Object {
-protected:
-	float x, y, z;
-
-public:
-	MeshVertex() : x(0), y(0), z(0) {
-
-	}
-
-	MeshVertex(const MeshVertex& vert) : Object() {
-		x = vert.x;
-		y = vert.y;
-		z = vert.z;
-	}
-
-	void readObject(IffStream* iffStream) {
-		x = iffStream->getFloat();
-		y = iffStream->getFloat();
-		z = iffStream->getFloat();
-
-	}
-
-	inline float getX() {
-		return x;
-	}
-
-	inline float getY() {
-		return y;
-	}
-
-	inline float getZ() {
-		return z;
-	}
-
-	friend class MeshAppearanceTemplate;
-};
-
 class MeshTriangle : public Object {
 protected:
-	int vertex1, vertex2, vertex3;
+	int verts[3];
 
 public:
-	MeshTriangle() : vertex1(0), vertex2(0), vertex3(0) {
-
+	MeshTriangle() {
+		verts[0] = 0;
+		verts[1] = 1;
+		verts[2] = 2;
 	}
 
 	MeshTriangle(const MeshTriangle& mesh) : Object() {
-		vertex1 = mesh.vertex1;
-		vertex2 = mesh.vertex2;
-		vertex3 = mesh.vertex3;
+		verts[0] = mesh.verts[0];
+		verts[1] = mesh.verts[1];
+		verts[2] = mesh.verts[2];
+	}
+	
+	const int* getVerts() const {
+		return verts;
+	}
+	
+	const int* getVerts() {
+		return verts;
+	}
+	
+	void set(uint8 index, uint32 value) {
+		verts[index] = value;
 	}
 
 	friend class MeshData;
@@ -69,7 +46,7 @@ public:
 
 class MeshData : public Object {
 protected:
-	Vector<MeshVertex> vertices;
+	Vector<Vector3> vertices;
 	Vector<MeshTriangle> triangles;
 
 public:
@@ -83,13 +60,36 @@ public:
 	}
 
 	void readObject(IffStream* iffStream);
+	
+	Vector<Vector3>* getVerts() {
+		return &vertices;
+	}
+	
+	const Vector<Vector3>* getVerts() const {
+		return &vertices;
+	}
+	
+	Vector<MeshTriangle>* getTriangles() {
+		return &triangles;
+	}
+	
+	void transformMeshData(Matrix4 transform) {
+		for(int i=0; i<vertices.size(); i++) {
+			Vector3 &vert = vertices.get(i);
+			vert = vert * transform;
+		}
+	}
+
+	const Vector<MeshTriangle>* getTriangles() const {
+		return &triangles;
+	}
 
 	friend class MeshAppearanceTemplate;
 
 };
 
 class MeshAppearanceTemplate : public AppearanceTemplate {
-	Vector<MeshData>* meshes;
+	Vector<Reference<MeshData*> > meshes;
 	//Vector<Triangle> triangles;
 
 	AABBTree* aabbTree;
@@ -97,6 +97,9 @@ class MeshAppearanceTemplate : public AppearanceTemplate {
 	//String file;
 
 public:
+	virtual uint32 getType() {
+		return 'MESH';
+	}
 	MeshAppearanceTemplate() {
 		aabbTree = NULL;
 		meshes = NULL;
@@ -142,6 +145,10 @@ public:
 
 	inline Sphere* getBoundingSphere() {
 		return boundingSphere;
+	}
+	
+	Vector<Reference<MeshData*> > getMeshes() {
+		return meshes;
 	}
 
 };
