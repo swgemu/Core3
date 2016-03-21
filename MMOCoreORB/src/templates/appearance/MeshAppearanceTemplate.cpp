@@ -10,8 +10,6 @@
 void MeshAppearanceTemplate::parse(IffStream* iffStream) {
 	//file = iffStream->getFileName();
 
-	meshes = new Vector<MeshData>();
-
 	iffStream->openForm('MESH');
 
 	uint32 version = iffStream->getNextFormType();
@@ -24,30 +22,27 @@ void MeshAppearanceTemplate::parse(IffStream* iffStream) {
 	iffStream->closeForm(version);
 	iffStream->closeForm('MESH');
 
-	if (meshes->size() != 0) {
+	if (meshes.size() != 0) {
 		createAABB();
 	}
-
-	delete meshes;
-	meshes = NULL;
 }
 
 void MeshAppearanceTemplate::createAABB() {
 	Vector<Triangle*> triangles;
 
-	for (int k = 0; k < meshes->size(); ++k) {
-		MeshData* meshData = &meshes->get(k);
+	for (int k = 0; k < meshes.size(); ++k) {
+		MeshData* meshData = meshes.get(k);
 
 		for (int i = 0; i < meshData->triangles.size(); ++i) {
 			MeshTriangle* tri = &meshData->triangles.get(i);
+			
+			int pointA = tri->verts[0];
+			int pointB = tri->verts[1];
+			int pointC = tri->verts[2];
 
-			int pointA = tri->vertex1;
-			int pointB = tri->vertex2;
-			int pointC = tri->vertex3;
-
-			MeshVertex* vert1 = &meshData->vertices.get(pointA);
-			MeshVertex* vert2 = &meshData->vertices.get(pointB);
-			MeshVertex* vert3 = &meshData->vertices.get(pointC);
+			Vector3* vert1 = &meshData->vertices.get(pointA);
+			Vector3* vert2 = &meshData->vertices.get(pointB);
+			Vector3* vert3 = &meshData->vertices.get(pointC);
 
 			Vector3 trian[3];
 			trian[0] = Vector3(vert1->getX(), vert1->getY(), vert1->getZ());
@@ -148,9 +143,9 @@ void MeshAppearanceTemplate::parseVertexData(IffStream* iffStream, int idx) {
 	iffStream->openChunk('INFO');
 	iffStream->closeChunk();
 
-	MeshData meshData;
-	meshData.readObject(iffStream);
-	meshes->add(meshData);
+	Reference<MeshData*> meshData = new MeshData;
+	meshData->readObject(iffStream);
+	meshes.add(meshData);
 
 	iffStream->closeForm(nextVersion);
 
@@ -173,10 +168,13 @@ void MeshData::readObject(IffStream* iffStream) {
 	int vertexDataChunkSize = vertexDataChunk->getChunkSize();
 
 	int intBytesPerVertex = vertexDataChunkSize / numVertices;
-
+	
 	for (int i = 0; i < numVertices; ++i) {
-		MeshVertex vert;
-		vert.readObject(iffStream);
+		float x = iffStream->getFloat();
+		float y = iffStream->getFloat();
+		float z = iffStream->getFloat();
+		
+		Vector3 vert(x, y, z);
 
 		vertices.add(vert);
 
@@ -198,9 +196,9 @@ void MeshData::readObject(IffStream* iffStream) {
 		int c = indexData->readShort();
 
 		MeshTriangle triangle;
-		triangle.vertex1 = a;
-		triangle.vertex2 = b;
-		triangle.vertex3 = c;
+		triangle.verts[0] = a;
+		triangle.verts[1] = b;
+		triangle.verts[2] = c;
 
 		triangles.add(triangle);
 	}

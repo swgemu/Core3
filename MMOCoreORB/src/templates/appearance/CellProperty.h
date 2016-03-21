@@ -5,14 +5,15 @@
  *      Author: TheAnswer
  */
 
-#ifndef SRC_SERVER_ZONE_TEMPLATES_APPEARANCE_CELLPROPERTY_H_
-#define SRC_SERVER_ZONE_TEMPLATES_APPEARANCE_CELLPROPERTY_H_
+#ifndef CELLPROPERTY_H_
+#define CELLPROPERTY_H_
 
 #include "engine/engine.h"
 
 #include "templates/IffTemplate.h"
+#include "templates/collision/BaseBoundingVolume.h"
 
-class MeshAppearanceTemplate;
+class AppearanceTemplate;
 class FloorMesh;
 
 class CellProperty : public IffTemplate, public Logger {
@@ -21,8 +22,9 @@ protected:
 	bool canSeeParentCell;
 	int numberOfPortals;
 	FloorMesh* floorMesh;
-	MeshAppearanceTemplate* appearanceTemplate;
+	AppearanceTemplate* appearanceTemplate;
 	int cellID;
+	BaseBoundingVolume *boundingVolume;
 
 public:
 	CellProperty();
@@ -33,7 +35,7 @@ public:
 
 	void readObject(IffStream* iffStream);
 
-	MeshAppearanceTemplate* getAppearanceTemplate() {
+	AppearanceTemplate* getAppearanceTemplate() {
 		return appearanceTemplate;
 	}
 
@@ -57,7 +59,9 @@ public:
 		return numberOfPortals;
 	}
 
+	void load_0004(IffStream* iffStream);
+	void load_0005(IffStream* iffStream);
 };
 
 
-#endif /* SRC_SERVER_ZONE_TEMPLATES_APPEARANCE_CELLPROPERTY_H_ */
+#endif /* CELLPROPERTY_H_ */

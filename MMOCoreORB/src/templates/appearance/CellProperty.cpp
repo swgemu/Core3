@@ -1,7 +1,7 @@
 #include "CellProperty.h"
 
 #include "templates/manager/TemplateManager.h"
-#include "templates/appearance/MeshAppearanceTemplate.h"
+#include "templates/appearance/AppearanceTemplate.h"
 #include "templates/appearance/PathNode.h"
 #include "templates/appearance/FloorMesh.h"
 #include "engine/util/u3d/AStarAlgorithm.h"
@@ -35,56 +35,104 @@ CellProperty& CellProperty::operator=(const CellProperty& c) {
 	return *this;
 }
 
+void CellProperty::load_0005(IffStream* iffStream) {
+	iffStream->openForm('0005');
+	
+	Chunk* dataChunk = iffStream->openChunk('DATA');
+	
+	numberOfPortals = iffStream->getInt();
+	
+	canSeeParentCell = iffStream->getByte();
+	
+	iffStream->getString(name);
+	
+	String meshFile;
+	iffStream->getString(meshFile);
+	
+	if (meshFile.length() > 1) {
+		AppearanceTemplate* app = TemplateManager::instance()->getAppearanceTemplate(meshFile);
+		if (app != NULL) {
+			appearanceTemplate = app;
+		} else {
+			info("Error reading mesh " + meshFile, true);
+		}
+	}
+	
+	int readCase2 = iffStream->getByte();
+	
+	if (dataChunk->hasData()) {
+		String floorFile;
+		iffStream->getString(floorFile);
+		
+		if (floorFile.length() > 1) {
+			floorMesh = TemplateManager::instance()->getFloorMesh(floorFile);
+		}
+	}
+	
+	iffStream->closeChunk();
+	
+	// get bounding volume, usually CMSH
+	boundingVolume = BoundingVolumeFactory::getVolume(iffStream);
+	
+	iffStream->closeForm('0005');
+}
+void CellProperty::load_0004(IffStream* iffStream) {
+	iffStream->openForm('0004');
+	
+	Chunk* dataChunk = iffStream->openChunk('DATA');
+	
+	numberOfPortals = iffStream->getInt();
+	
+	canSeeParentCell = iffStream->getByte();
+	
+	iffStream->getString(name);
+	
+	String meshFile;
+	iffStream->getString(meshFile);
+	
+	if (meshFile.length() > 1) {
+		AppearanceTemplate* app = TemplateManager::instance()->getAppearanceTemplate(meshFile);
+		if (app != NULL) {
+			appearanceTemplate = app;
+		} else {
+			info("Error reading mesh " + meshFile, true);
+		}
+	}
+	
+	int readCase2 = iffStream->getByte();
+	
+	if (dataChunk->hasData()) {
+		String floorFile;
+		iffStream->getString(floorFile);
+		
+		if (floorFile.length() > 1) {
+			floorMesh = TemplateManager::instance()->getFloorMesh(floorFile);
+		}
+	}
+	
+	iffStream->closeChunk();
+	
+	iffStream->closeForm('0005');
+}
+
 void CellProperty::readObject(IffStream* iffStream) {
 	iffStream->openForm('CELL');
-
+	
 	try {
 		uint32 nextForm = iffStream->getNextFormType();
-
-		if (nextForm != '0005') {
+		
+		if(nextForm == '0004') {
+			load_0004(iffStream);
+		} else if(nextForm == '0005') {
+			load_0005(iffStream);
+		} else {
 			String message = String("wrong cell form ") + iffStream->getFileName();
 			error(message);
-
+			
 			throw Exception(message);
 		}
-
-		iffStream->openForm('0005');
-
-		Chunk* dataChunk = iffStream->openChunk('DATA');
-
-		numberOfPortals = iffStream->getInt();
-
-		canSeeParentCell = iffStream->getByte();
-
-		iffStream->getString(name);
-
-		String meshFile;
-		iffStream->getString(meshFile);
-
-		if (meshFile.length() > 1) {
-			AppearanceTemplate* app = TemplateManager::instance()->getAppearanceTemplate(meshFile);
-
-			if (app != NULL) {
-				appearanceTemplate = dynamic_cast<MeshAppearanceTemplate*>(app->getFirstMesh());
-			}
-		}
-
-		int readCase2 = iffStream->getByte();
-
-		if (dataChunk->hasData()) {
-			String floorFile;
-			iffStream->getString(floorFile);
-
-			if (floorFile.length() > 1) {
-				floorMesh = TemplateManager::instance()->getFloorMesh(floorFile);
-
-				floorMesh->setCellID(cellID);
-			}
-		}
-
-		iffStream->closeChunk();
-
-		iffStream->closeForm('0005');
+		
+		
 	} catch (Exception& e) {
 		error(e.getMessage());
 		error("parsing CELL for " + iffStream->getFileName());
@@ -92,6 +140,6 @@ void CellProperty::readObject(IffStream* iffStream) {
 	} catch (...) {
 		error("parsing CELL for " + iffStream->getFileName());
 	}
-
+	
 	iffStream->closeForm('CELL');
 }

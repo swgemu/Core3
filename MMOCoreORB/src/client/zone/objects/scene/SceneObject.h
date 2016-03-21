@@ -3,15 +3,18 @@
 
 #include "engine/engine.h"
 #include "variables/StringId.h"
+#include "templates/SharedObjectTemplate.h"
+#include "client/renderer/ClientRenderer.h"
 
 class ZoneClient;
 class Zone;
-
-class SceneObject : public Coordinate, public Mutex, public Logger {
+class WorldSnapshotNode;
+class ClientAppearance;
+class SceneObject : public Coordinate, public Mutex, public Logger, public osg::Group {
 protected:
 	uint64 objectID;
 	uint32 objectCRC;
-
+	
 	uint32 movementCounter;
 
 	SceneObject* parent;
@@ -27,13 +30,17 @@ protected:
 	int containerVolumeLimit;
 	int gameObjectType;
 	int containmentType;
-
+	SharedObjectTemplate* templateObject;
 	ZoneClient* client;
 	Zone* zone;
-
+	osg::ref_ptr<osg::MatrixTransform> transform;
+	Reference<PortalLayout*> portalLayout;
+	ClientAppearance *appearance;
 public:
-	SceneObject(LuaObject* templateData);
+	SceneObject(SharedObjectTemplate *shot);
 	~SceneObject();
+	
+	virtual void addToScene();
 
 	const static int CELLOBJECT = 11;
 	const static int PLAYEROBJECT = 12;
@@ -235,6 +242,8 @@ public:
 
 	bool transferObject(SceneObject* object, int containmentType);
 	bool removeObject(SceneObject* object);
+	
+	void loadSnapshotNode(WorldSnapshotNode* node);
 
 	StringId& getObjectName() {
 		return objectName;
@@ -262,6 +271,10 @@ public:
 
 	inline uint32 getSlottedObjectsSize() {
 		return slottedObjects.size();
+	}
+	
+	virtual void initializePortalLayout(PortalLayout *layout) {
+			
 	}
 
 	inline SceneObject* getSlottedObject(int idx) {
@@ -299,6 +312,12 @@ public:
 	inline void setZone(Zone* zn) {
 		zone = zn;
 	}
+	
+	inline SharedObjectTemplate* getTemplate() {
+		return templateObject;
+	}
+	
+	osg::ref_ptr<osg::MatrixTransform> getTransformNode();
 };
 
 #endif /*SCENEOBJECT_H_*/

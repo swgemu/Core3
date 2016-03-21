@@ -1052,6 +1052,10 @@ int TemplateManager::addClientTemplate(lua_State* L) {
 	return 0;
 }
 
+void TemplateManager::addClientTemplate(uint32 crc, String name) {
+	clientTemplateCRCMap->put(crc, name);
+}
+
 StructureFootprint* TemplateManager::loadStructureFootprint(const String& filePath) {
 	if (filePath.isEmpty())
 		return NULL;
