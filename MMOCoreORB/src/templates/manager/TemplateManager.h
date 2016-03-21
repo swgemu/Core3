@@ -81,9 +81,9 @@ public:
 	TemplateManager();
 	~TemplateManager();
 
-	void registerTemplateObjects();
+	virtual void registerTemplateObjects();
 
-	void loadLuaTemplates();
+	virtual void loadLuaTemplates();
 
 	/**
 	 * Attempts to get the slot descriptor. If the slot descriptor isn't loaded, attempt to load it.
@@ -129,7 +129,9 @@ public:
 	static int crcString(lua_State* L);
 	static int addTemplateCRC(lua_State* L);
 	static int addClientTemplate(lua_State* L);
-
+	
+	void addClientTemplate(uint32 crc, String templateName);
+	
 	PlanetMapCategory* getPlanetMapCategoryByName(const String& name) {
 		return planetMapCategoryList.get(name);
 	}

@@ -53,12 +53,13 @@ all: #build
 	#cp build/unix/src/core3 bin
 
 build: idl gtest
-	cd build/unix && make -j4 UNITTEST_DIRECTIVES="$(UNITTEST_DIRECTIVES)" #CC=clang CXX=clang++
+	cd build/unix && make -j12 UNITTEST_DIRECTIVES="$(UNITTEST_DIRECTIVES)" #CC=clang CXX=clang++
 	cp build/unix/src/client/core3* bin
 	cp build/unix/src/core3* bin
 	#cd bin/conf && svnversion > rev.txt
 	cd bin/conf && git log --pretty=format:'%h was %an, %ar, message: %s' -10 > rev.txt
-	rm build/unix/src/core3
+	cd bin && install_name_tool -change /Users/victor/ClionProjects/engine3/MMOEngine/build/unix/Debug/libengine3.dylib /Users/gregslomin/Core3/MMOEngine/lib/osx/libengine3.dylib core3client
+	rm build/unix/src/core3client
 	#done
 	
 unittest: UNITTEST_DIRECTIVES = -fprofile-arcs -ftest-coverage

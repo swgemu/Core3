@@ -10,7 +10,7 @@ protected:
 	Reference<SceneObject*> follow;
 
 public:
-	PlayerCreature(LuaObject* templateData);
+	PlayerCreature(SharedObjectTemplate* templateData);
 
 	void insertToZone(Zone* zone);
 	void updatePosition(float x, float z, float y);
