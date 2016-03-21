@@ -55,45 +55,48 @@ public:
 
 		//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
 		insertInt(0);
-		insertInt(0);
+		insertInt(0); // component general efficiency
 
 		//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
-		insertInt(0);
+		insertInt(0); // component energy efficiency
+		insertInt(0); // component energy requirements
 
 		//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
-		insertInt(0);
+		insertInt(0); // component mass
+		insertInt(0); // component names
 
 		//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
-		insertInt(0);
+		insertInt(0);  // component creators?
+		insertInt(0); // max weapon damage
 
 		//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
-		insertInt(0);
+		insertInt(0); // min weapon damage
+		insertInt(0); // shield effectiveness
 
 		//const Archive::AutoDeltaPackedMap<int,int,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
-		insertInt(0);
+		insertInt(0); // armor effectiveness
+		
+		insertInt(0); // energy drain per shot
 
 		//const Archive::AutoDeltaPackedMap<int,int,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
-		insertInt(0);
+		insertInt(0); // weapon refire rate
+		insertInt(0); // weapon ammo current
 
 		//const Archive::AutoDeltaPackedMap<int,ulong,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
-		insertInt(0);
+		insertInt(0); // weapon ammo maximum
+		insertInt(0); // weapon ammo type
 
-		insertFloat(ship->getTotalMass()); //const Archive::AutoDeltaVariable<float>::`vftable'
+		insertFloat(ship->getTotalMass()); // Total component mass 	//const Archive::AutoDeltaVariable<float>::`vftable'
 		insertFloat(2.f); //shield recharge rate
 
-		insertFloat(500.f); //const Archive::AutoDeltaVariable<float>::`vftable'
+		insertFloat(500.f); // Capacitor energy maximum	//const Archive::AutoDeltaVariable<float>::`vftable'
 
 
-		insertFloat(20.f); // const Archive::AutoDeltaVariable<float>::`vftable'
-		insertFloat(50.f); //const Archive::AutoDeltaVariable<float>::`vftable'
-		insertFloat(50.f);// const Archive::AutoDeltaVariable<float>::`vftable'
+		insertFloat(20.f); // Capacitor energy charge rate // const Archive::AutoDeltaVariable<float>::`vftable'
+		
+		
+		insertFloat(50.f); // Engine Acceleration rate	//const Archive::AutoDeltaVariable<float>::`vftable'
+		insertFloat(50.f); // Engine Deceleration rate	//const Archive::AutoDeltaVariable<float>::`vftable'
 
 		insertFloat(10.472f); //Max Yaw Acceleration
 		insertFloat(10.472f); //Max Pitch Acceleration
