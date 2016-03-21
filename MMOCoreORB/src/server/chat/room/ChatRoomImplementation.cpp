@@ -111,7 +111,26 @@ void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
 	delete msg;
 }
 
-void ChatRoomImplementation::broadcastMessageCheckIgnore(BaseMessage* msg, String& senderName) {
+void ChatRoomImplementation::broadcastMessages(Vector<BaseMessage*>* messages) {
+	Locker locker(_this.getReferenceUnsafeStaticCast());
+
+	for (int i = 0; i < playerList.size(); ++i) {
+		CreatureObject* player = playerList.get(i);
+
+		for (int j = 0; j < messages->size(); ++j) {
+			BaseMessage* msg = messages->get(j);
+			player->sendMessage(msg->clone());
+		}
+	}
+
+	for (int j = 0; j < messages->size(); ++j) {
+		delete messages->get(j);
+	}
+
+	messages->removeAll();
+}
+
+void ChatRoomImplementation::broadcastMessageCheckIgnore(BaseMessage* msg, const String& senderName) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 	String lowerName = senderName.toLowerCase();
 	PlayerManager* playerManager = server->getPlayerManager();
