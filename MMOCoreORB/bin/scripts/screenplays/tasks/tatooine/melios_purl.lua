@@ -19,7 +19,7 @@ melios_purl_missions =
 			{
 				{ npcTemplate = "melios_womp_rat", planetName = "tatooine", npcName = "Mutant Womp Rat" }
 			},
-			secondarySpawns = {	},
+			secondarySpawns = {},
 			itemSpawns = {
 				{ itemTemplate = "object/tangible/mission/quest_item/melios_purl_q2_needed.iff", itemName = "" }
 			},
@@ -29,7 +29,7 @@ melios_purl_missions =
 			}
 		},
 		{
-			missionType = "retrieve",
+			missionType = "deliver",
 			primarySpawns =
 			{
 				{ npcTemplate = "aroy_sekun", planetName = "tatooine", npcName = "Aroy Sekun" }
@@ -61,6 +61,7 @@ npcMapMeliosPurl =
 MeliosPurl = ThemeParkLogic:new {
 	numberOfActs = 1,
 	npcMap = npcMapMeliosPurl,
+	permissionMap = {},
 	className = "MeliosPurl",
 	screenPlayState = "melios_purl_quest",
 	distance = 800

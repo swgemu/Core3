@@ -908,6 +908,7 @@ schematics = {
 {path="object/draft_schematic/chemistry/med_stimpack_c.iff"},
 {path="object/draft_schematic/chemistry/med_stimpack_d.iff"},
 {path="object/draft_schematic/chemistry/med_stimpack_e.iff"},
+{path="object/draft_schematic/chemistry/quest_stimpack_a.iff"},
 {path="object/draft_schematic/chemistry/medpack_wound_action_a.iff"},
 {path="object/draft_schematic/chemistry/medpack_wound_health_a.iff"},
 {path="object/draft_schematic/chemistry/medpack_wound_action_b.iff"},

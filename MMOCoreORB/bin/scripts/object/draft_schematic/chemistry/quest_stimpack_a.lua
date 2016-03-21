@@ -43,6 +43,38 @@
 
 object_draft_schematic_chemistry_quest_stimpack_a = object_draft_schematic_chemistry_shared_quest_stimpack_a:new {
 
+templateType = DRAFTSCHEMATIC,
+
+   customObjectName = "Small Stimpack - A+",
+
+   craftingToolTab = 64, -- (See DraftSchematicObjectTemplate.h)
+   complexity = 14, 
+   size = 3, 
+
+   xpType = "crafting_medicine_general", 
+   xp = 40, 
+
+   assemblySkill = "medicine_assembly", 
+   experimentingSkill = "medicine_experimentation", 
+   customizationSkill = "medicine_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
+   ingredientTitleNames = {"organic_element", "inorganic_element"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"organic", "inorganic"},
+   resourceQuantities = {8, 8},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/medicine/crafted/crafted_stimpack_sm_s1_a.iff",
+
+   additionalTemplates = {
+             }
+
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_quest_stimpack_a, "object/draft_schematic/chemistry/quest_stimpack_a.iff")
