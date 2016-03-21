@@ -152,8 +152,10 @@ function mission_target_conv_handler:handleScreenOtherEscort(pConversationTempla
 
 	if self.themePark:isValidConvoString(stfFile, ":otherescort_" .. missionNumber) then
 		clonedScreen:setDialogTextStringId(stfFile .. ":otherescort_" .. missionNumber)
-	else
+	elseif self.themePark:isValidConvoString(stfFile, ":otherescort") then
 		clonedScreen:setDialogTextStringId(stfFile .. ":otherescort")
+	else
+		clonedScreen:setDialogTextStringId(stfFile .. ":dontknowyou_" .. missionNumber)
 	end
 
 	return pConversationScreen
