@@ -13,7 +13,7 @@
 #include "zone/objects/player/PlayerObject.h"
 #include "zone/objects/creature/CreatureObject.h"
 #include "zone/objects/ObjectMap.h"
-
+#include "zone/managers/templates/TemplateManager.h"
 #include "zone/Zone.h"
 
 ObjectFactory<SceneObject* (LuaObject*), uint32> ObjectManager::objectFactory;
@@ -21,20 +21,22 @@ Lua* ObjectManager::luaInstance = NULL;
 Mutex ObjectManager::luaMutex;
 
 ObjectManager::ObjectManager() : Mutex("ObjectManager"), Logger("ObjectManager") {
-	luaMutex.lock();
+	//luaMutex.lock();
+//
+//	if (luaInstance == NULL) {
+//		luaInstance = new Lua();
+//		luaInstance->init();
+//
+//		info("loading object templates...");
+//		registerFunctions();
+//		luaInstance->runFile("scripts/object/clientmain.lua");
+//
+//		registerObjectTypes();
+//	}
+	
+	//TemplateManager::instance()->loadLuaTemplates();;
 
-	if (luaInstance == NULL) {
-		luaInstance = new Lua();
-		luaInstance->init();
-
-		info("loading object templates...");
-		registerFunctions();
-		luaInstance->runFile("scripts/object/clientmain.lua");
-
-		registerObjectTypes();
-	}
-
-	luaMutex.unlock();
+	//luaMutex.unlock();
 
 	objectMap = new ObjectMap();
 
@@ -106,6 +108,7 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 objectID) {
 
 	SceneObject* object = NULL;
 
+	return NULL;
 	try {
 		luaMutex.lock();
 
@@ -208,10 +211,10 @@ uint32 ObjectManager::getObjectMapSize() {
 
 
 void ObjectManager::registerFunctions() {
-	//lua generic
-	lua_register(luaInstance->getLuaState(), "includeFile", includeFile);
-	lua_register(luaInstance->getLuaState(), "crcString", crcString);
-	lua_register(luaInstance->getLuaState(), "addTemplateCRC", addTemplateCRC);
+//	//lua generic
+//	lua_register(luaInstance->getLuaState(), "includeFile", includeFile);
+//	lua_register(luaInstance->getLuaState(), "crcString", crcString);
+//	lua_register(luaInstance->getLuaState(), "addTemplateCRC", addTemplateCRC);
 }
 
 int ObjectManager::includeFile(lua_State* L) {
@@ -232,13 +235,25 @@ int ObjectManager::crcString(lua_State* L) {
 	return 1;
 }
 
-int ObjectManager::addTemplateCRC(lua_State* L) {
-	/*String ascii =  lua_tostring(L, -2);
-	uint32 value = (uint32) lua_tonumber(L, -1);
-
-	uint32 crc = (uint32) ascii.hashCode();
-
-	TemplateManager::instance()->addTemplate(crc, ascii);*/
-
-	return 0;
-}
+//int ObjectManager::addTemplateCRC(lua_State* L) {
+//	String ascii =  lua_tostring(L, -2);
+//	
+//	LuaObject obj(L);
+//	
+//	uint32 crc = (uint32) ascii.hashCode();
+//	
+//	TemplateManager::instance()->addTemplate(crc, ascii, &obj);
+//	
+//	//	uint64 seconds = Logger::getElapsedTime();
+//	
+//	int val = loadedTemplatesCount.increment();
+//	
+//	if (ConfigManager::instance()->isProgressMonitorActivated()) {
+//		if (val % 159 == 0)
+//			printf("\r\tLoading templates: [%d%%]\t", (int) (float(val) / 15998.f * 100.f));
+//	}
+//	
+//	//System::out << str;
+//	
+//	return 0;
+//}
