@@ -13,7 +13,7 @@
 
 class PlayerObject : public IntangibleObject {
 public:
-	PlayerObject(LuaObject* templateData);
+	PlayerObject(SharedObjectTemplate* templateData);
 };
 
 

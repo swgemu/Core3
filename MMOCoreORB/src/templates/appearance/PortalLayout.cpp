@@ -181,3 +181,38 @@ void PortalLayout::parseCELSForm(IffStream* iffStream) {
 Vector<PathNode*>* PortalLayout::getPath(PathNode* node1, PathNode* node2) {
 	return AStarAlgorithm<PathGraph, PathNode>::search<uint32>(node1->getPathGraph(), node1, node2);
 }
+
+uint32 PortalLayout::loadCRC(IffStream* iffStream) {
+	uint32 crc = 0;
+	try {
+		iffStream->openForm('PRTO');
+		
+		uint32 type = iffStream->getNextFormType();
+		
+		iffStream->openForm(type);
+		
+		
+		Chunk *chunk = iffStream->openChunk();
+		while(chunk != NULL && chunk->getChunkID() != 'CRC ') // Yes the space is intentional
+		{
+			iffStream->closeChunk();
+			chunk = iffStream->openChunk();
+		}
+		
+		if(chunk->getChunkID() == 'CRC ')
+			crc = iffStream->getUnsignedInt();
+		
+		iffStream->closeChunk('CRC ');
+		
+		iffStream->closeForm(type);
+		
+		iffStream->closeForm('PRTO');
+	} catch (Exception& e) {
+		String err = "unable to parse portal crc ";
+		err += iffStream->getFileName();
+		static Logger logger;
+		logger.error(err);
+	}
+	
+	return crc;
+}

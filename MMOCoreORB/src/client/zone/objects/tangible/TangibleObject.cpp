@@ -7,7 +7,7 @@
 
 #include "TangibleObject.h"
 
-TangibleObject::TangibleObject(LuaObject* templateData) : SceneObject(templateData) {
+TangibleObject::TangibleObject(SharedObjectTemplate* templateData) : SceneObject(templateData) {
 	complexity = 0;
 
 	volume = 0;

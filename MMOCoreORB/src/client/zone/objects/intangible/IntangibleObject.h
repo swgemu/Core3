@@ -13,7 +13,7 @@
 
 class IntangibleObject : public SceneObject {
 public:
-	IntangibleObject(LuaObject* templateData);
+	IntangibleObject(SharedObjectTemplate* templateData);
 };
 
 #endif /* INTANGIBLEOBJECT_H_ */
