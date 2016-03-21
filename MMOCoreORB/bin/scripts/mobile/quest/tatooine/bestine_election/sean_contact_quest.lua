@@ -1,5 +1,5 @@
 sean_contact_quest = Creature:new {
-	objectName = "@npc_name:bith_base_male",
+	objectName = "",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,

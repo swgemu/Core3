@@ -106,10 +106,20 @@ includeFile("village/convos/phase2/whip_phase2_conv_handler.lua")
 includeFile("village/convos/phase2/dageerin_phase2_conv_handler.lua")
 includeFile("village/convos/phase3/dageerin_phase3_conv_handler.lua")
 
--- Events
-includeFile("events/conversations/bestine_election/tour_aryon_conv_handler.lua")
+-- Events - Bestine Election
+includeFile("events/conversations/bestine_election/bestine_election_questp_conv_handler.lua")
+includeFile("events/conversations/bestine_election/bestine_capitol_conv_handler.lua")
+includeFile("events/conversations/bestine_election/bestine_rumor_conv_handler.lua")
 includeFile("events/conversations/bestine_election/hutt_informant_conv_handler.lua")
+includeFile("events/conversations/bestine_election/indigo_siyan_conv_handler.lua")
+includeFile("events/conversations/bestine_election/keanna_likyna_conv_handler.lua")
+includeFile("events/conversations/bestine_election/sean_questn_university_conv_handler.lua")
+includeFile("events/conversations/bestine_election/sean_trenwell_conv_handler.lua")
+includeFile("events/conversations/bestine_election/tour_aryon_conv_handler.lua")
+includeFile("events/conversations/bestine_election/victor_questn_cantina_conv_handler.lua")
+includeFile("events/conversations/bestine_election/victor_questn_capitol_conv_handler.lua")
 includeFile("events/conversations/bestine_election/victor_visalis_conv_handler.lua")
+-- Events
 includeFile("events/conversations/bestine_artist_conv_handler.lua")
 includeFile("events/conversations/imperial_commander_conv_handler.lua")
 includeFile("events/conversations/imperial_coordinator_conv_handler.lua")

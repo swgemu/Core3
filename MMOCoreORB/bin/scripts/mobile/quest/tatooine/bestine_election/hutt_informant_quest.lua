@@ -1,6 +1,6 @@
 hutt_informant_quest = Creature:new {
-	objectName = "@npc_name:rodian_base_male",
-	customName = "Osso",
+	objectName = "",
+	randomNameType = NAME_GENERIC,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,

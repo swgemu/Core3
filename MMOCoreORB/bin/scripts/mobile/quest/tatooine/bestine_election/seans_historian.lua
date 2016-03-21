@@ -1,5 +1,5 @@
 seans_historian = Creature:new {
-	objectName = "@npc_name:human_base_female",
+	objectName = "",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
