@@ -3,15 +3,17 @@
 
 #include "engine/engine.h"
 #include "variables/StringId.h"
+#include "zone/templates/SharedObjectTemplate.h"
+#include "renderer/ClientRenderer.h"
 
 class ZoneClient;
 class Zone;
-
-class SceneObject : public Coordinate, public Mutex, public Logger {
+class WorldSnapshotNode;
+class SceneObject : public Coordinate, public Mutex, public Logger, public osg::Group {
 protected:
 	uint64 objectID;
 	uint32 objectCRC;
-
+	
 	uint32 movementCounter;
 
 	SceneObject* parent;
@@ -27,13 +29,17 @@ protected:
 	int containerVolumeLimit;
 	int gameObjectType;
 	int containmentType;
-
+	SharedObjectTemplate* templateObject;
 	ZoneClient* client;
 	Zone* zone;
-
+	osg::MatrixTransform * transform;
+	Reference<PortalLayout*> portalLayout;
 public:
-	SceneObject(LuaObject* templateData);
+	SceneObject(SharedObjectTemplate *shot);
+	SceneObject(LuaObject *shot);
 	~SceneObject();
+	
+	void addToScene();
 
 	const static int CELLOBJECT = 11;
 	const static int PLAYEROBJECT = 12;
@@ -235,6 +241,8 @@ public:
 
 	bool transferObject(SceneObject* object, int containmentType);
 	bool removeObject(SceneObject* object);
+	
+	void loadSnapshotNode(WorldSnapshotNode* node);
 
 	StringId& getObjectName() {
 		return objectName;
@@ -298,6 +306,10 @@ public:
 
 	inline void setZone(Zone* zn) {
 		zone = zn;
+	}
+	
+	inline SharedObjectTemplate* getTemplate() {
+		return templateObject;
 	}
 };
 

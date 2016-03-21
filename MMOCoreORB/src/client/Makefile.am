@@ -40,24 +40,38 @@
 # this exception also makes it possible to release a modified version 
 # which carries forward this exception.
 
-AM_CXXFLAGS=-ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-unused-parameter
+AM_CXXFLAGS= $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11
 
 ENGINE3_PATH=../../../../../MMOEngine
+ENGINE3_MOCK_PATH=../../../../utils
+
+GTEST_PATH=../../../../utils/gtest-1.6.0
+
+GMOCK_PATH=../../../../utils/gmock-1.6.0
+
+AUTOGEN_PATH=../../../../src/autogen
 
 #CC = clang
 #CXX = clang++
 
 INCLUDES =  $(SYSTEM_INCLUDES) \
-	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
-	    -I$(ENGINE3_PATH)/include -I$(ENGINE3_PATH)/src -I/usr/include/lua5.1 -I/usr/include/mysql \
-	   	-I/usr/local/BerkeleyDB.5.0/include -I../../../../utils
-			
+-I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
+-I$(ENGINE3_PATH)/include -I$(ENGINE3_PATH)/src -I$(ENGINE3_MOCK_PATH) -I/usr/include/lua5.1 -I/usr/include/mysql \
+-I/usr/local/BerkeleyDB.5.0/include \
+-I/usr/include/db5.0 \
+-I$(GTEST_PATH)/include \
+-I$(GMOCK_PATH)/include \
+-I$(AUTOGEN_PATH)
+
 LIBS =	$(SYSTEM_LIBS)  \
-	-L../../../build/unix/src/client \
-	-L/usr/local/BerkeleyDB.5.0/lib \
-	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua \
-	-L$(ENGINE3_PATH)/lib/unix -L$(ENGINE3_PATH)/external/ptmalloc3 \
-	-lengine3 -lmysqlclient -llua -lz -ldb
+$(USER_LD_FLAGS) \
+-L../../../build/unix/src/client \
+-L/usr/local/BerkeleyDB.5.0/lib \
+-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua \
+-L$(ENGINE3_PATH)/lib/unix \
+-L/usr/local/lib \
+-L$(GTEST_PATH)/lib \
+-lmysqlclient -lz -lengine3 -llua -ldb-5.3 -lssl -lcrypto -lgtest -losg -losgUtil -losgTerrain -losgViewer -lOpenThreads -losgGA
 
 bin_PROGRAMS = core3client
 
@@ -66,16 +80,65 @@ core3client_SOURCES = \
 		login/LoginClient.cpp \
 		login/LoginSession.cpp \
 		login/LoginPacketHandler.cpp \
+		renderer/ClientRenderer.cpp \
+		conf/ConfigManager.cpp \
+		tre3/TreeFile.cpp \
 		zone/Zone.cpp \
 		zone/ZoneClient.cpp \
 		zone/ZonePacketHandler.cpp \
 		zone/ZoneClientThread.cpp \
+		zone/templates/snapshot/WorldSnapshotIff.cpp \
+		zone/managers/customization/CustomizationIdManager.cpp \
+		zone/templates/appearance/FloorMesh.cpp \
+		zone/objects/terrain/layer/affectors/AffectorHeightFractal.cpp \
+		zone/objects/terrain/layer/filters/FilterFractal.cpp \
+		zone/objects/terrain/layer/Layer.cpp \ 
+		zone/objects/terrain/MapFractal.cpp \
+		zone/objects/terrain/ProceduralTerrainAppearance.cpp \
+		zone/objects/terrain/TerrainGenerator.cpp \
+		zone/objects/terrain/TargaBitmap.cpp \
+		zone/objects/terrain/layer/filters/FilterBitmap.cpp \
+		zone/objects/terrain/SpaceTerrainAppearance.cpp \
+		zone/managers/terrain/TerrainCache.cpp \
+		zone/templates/appearance/CellProperty.cpp \
+		zone/templates/appearance/PortalLayout.cpp \
+		zone/templates/appearance/PathGraph.cpp \
+		zone/templates/appearance/DetailAppearanceTemplate.cpp \
+		zone/templates/appearance/BoundingVolumes.cpp \
+		zone/templates/faction/FactionRanks.cpp \
+		zone/templates/appearance/MeshAppearanceTemplate.cpp \
+		zone/templates/customization/AssetCustomizationManagerTemplate.cpp \
+		zone/templates/datatables/DataTableIff.cpp \
+		zone/templates/datatables/DataTableCell.cpp \
+		zone/templates/tangible/SharedCreatureObjectTemplate.cpp \
+		zone/templates/tangible/PlayerCreatureTemplate.cpp \
+		zone/templates/tangible/SharedBuildingObjectTemplate.cpp \
+		zone/templates/tangible/SharedStructureObjectTemplate.cpp \
+		zone/templates/tangible/SharedWeaponObjectTemplate.cpp \
+		zone/templates/params/RangedIntCustomizationVariables.cpp \
+		zone/templates/params/PaletteColorCustomizationVariables.cpp \
+		zone/templates/SharedTangibleObjectTemplate.cpp \
+		zone/templates/SharedObjectTemplate.cpp \
+		zone/managers/templates/DataArchiveStore.cpp \
+		zone/managers/terrain/TerrainManager.cpp \
 		zone/managers/object/ObjectManager.cpp \
 		zone/managers/objectcontroller/ObjectController.cpp \
+		zone/managers/templates/TemplateManager.cpp \
 		zone/objects/scene/SceneObject.cpp \
 		zone/objects/scene/variables/StringId.cpp \
 		zone/objects/creature/CreatureObject.cpp \
+		zone/objects/creature/CreatureAttribute.cpp \
 		zone/objects/tangible/TangibleObject.cpp \
 		zone/objects/intangible/IntangibleObject.cpp \
 		zone/objects/player/PlayerObject.cpp \
-		zone/objects/player/PlayerCreature.cpp  
+		zone/objects/player/PlayerCreature.cpp \
+		recast/Recast.cpp \
+		recast/RecastAlloc.cpp \
+		recast/RecastArea.cpp \
+		recast/RecastContour.cpp \
+		recast/RecastFilter.cpp \
+		recast/RecastLayers.cpp \
+		recast/RecastMesh.cpp \
+		recast/RecastMeshDetail.cpp \
+		recast/RecastRasterization.cpp \
+		recast/RecastRegion.cpp

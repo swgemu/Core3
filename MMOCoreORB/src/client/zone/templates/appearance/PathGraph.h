@@ -1,0 +1,130 @@
+/*
+ * PathGraph.h
+ *
+ *  Created on: 02/12/2010
+ *      Author: victor
+ */
+
+#ifndef PATHGRAPH_H_
+#define PATHGRAPH_H_
+
+#include "PathNode.h"
+#include "../IffTemplate.h"
+#include <osg/Node>
+#include <osg/Geometry>
+#include <osg/Notify>
+#include <osg/MatrixTransform>
+#include <osg/Texture2D>
+#include <osgViewer/Viewer>
+#include <osg/Shape>
+#include <osg/ShapeDrawable>
+#include <osgGA/StateSetManipulator>
+
+class FloorMesh;
+class MeshData;
+class PathGraph : public Logger, IffTemplate {
+	enum PathGraphType
+	{
+		Cell,
+		Building,
+		City,
+
+		None,
+	};
+
+
+	
+
+
+protected:
+	void connectNodes(Vector<PathEdge>& pathEdges);
+
+public:
+	Vector<PathNode*> pathNodes;
+	Vector<PathEdge> pathEdges;
+	
+	PathGraphType type;
+	
+	Vector<int> edgeCounts;
+	Vector<int> edgeStarts;
+	
+	FloorMesh* floorMesh;
+	
+	Vector<Sphere*> boundingSpheres;
+	
+	PathGraph(FloorMesh* floor) {
+		floorMesh = floor;
+		type = None;
+	}
+	
+	PathGraph() {
+		floorMesh = NULL;
+		type = City;
+	}
+
+	~PathGraph() {
+		while (pathNodes.size() > 0)
+			delete pathNodes.get(0);
+	}
+	
+	void mergeNodes();
+
+	void readObject(IffStream* iffStream);
+
+	float calculateManhattanDistance(PathNode* node1, PathNode* node2) {
+		/*return abs(node1->getX() - node2->getX()) + abs(node1->getY() - node2->getY())
+				+ abs(node1->getZ() - node2->getZ());*/
+
+		return node1->getPosition().squaredDistanceTo(node2->getPosition());
+	}
+
+	PathNode* getNode(int globalNumberID);
+
+	inline PathNode* findNearestNode(float x, float z, float y) {
+		return findNearestNode(Vector3(x, y, z));
+	}
+
+	PathNode* findNearestNode(const Vector3& pointAlfa);
+	PathNode* findNearestGlobalNode(const Vector3& pointAlfa);
+	PathNode* findGlobalNode(int globalNodeID);
+
+	inline void addPathNode(PathNode* pathNode) {
+		pathNodes.add(pathNode);
+	}
+	
+	inline Vector<PathEdge>* getPathEdges() {
+		return &pathEdges;
+	}
+
+	inline Vector<PathNode*>* getPathNodes() {
+		return &pathNodes;
+	}
+
+	inline Vector<PathNode*> getGlobalNodes() {
+		Vector<PathNode*> nodes;
+
+		for (int i = 0; i < pathNodes.size(); ++i) {
+			if (pathNodes.get(i)->getGlobalGraphNodeID() != -1)
+				nodes.add(pathNodes.get(i));
+		}
+
+		return nodes;
+	}
+
+	void linkNodes();
+	inline FloorMesh* getFloorMesh() {
+		return floorMesh;
+	}
+
+	inline PathGraphType getType() const {
+		return type;
+	}
+	
+	virtual Vector<MeshData*> getTransformedMeshData(Matrix4 transform);
+	
+	osg::ref_ptr<osg::Node> draw();
+
+};
+
+
+#endif /* PATHGRAPH_H_ */

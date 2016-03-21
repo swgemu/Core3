@@ -1,56 +1,103 @@
 #include "SceneObject.h"
 #include "../../managers/object/ObjectManager.h"
 #include "../../Zone.h"
+#include "zone/templates/SharedObjectTemplate.h"
+#include "zone/templates/snapshot/WorldSnapshotNode.h"
+#include "zone/templates/appearance/AppearanceTemplate.h"
+#include "zone/templates/appearance/PortalLayout.h"
+#include "zone/managers/templates/TemplateManager.h"
 
-SceneObject::SceneObject(LuaObject* templateData) : Logger("SceneObject") {
+SceneObject::SceneObject(SharedObjectTemplate* templateData) : Logger("SceneObject") {
 	parent = NULL;
-
+	
 	objectID = 0;
-
-	slottedObjects.setNullValue(NULL);
-	objectName.setStringId(String(templateData->getStringField("objectName")));
-
-	detailedDescription.setStringId(String(templateData->getStringField("detailedDescription")));
-
-	containerType = templateData->getIntField("containerType");
-	containerVolumeLimit = templateData->getIntField("containerVolumeLimit");
-
-	gameObjectType = templateData->getIntField("gameObjectType");
-
-	objectCRC = templateData->getIntField("clientObjectCRC");
-
-	LuaObject arrangements = templateData->getObjectField("arrangementDescriptors");
-
-	for (int i = 1; i <= arrangements.getTableSize(); ++i) {
-		arrangementDescriptors.add(arrangements.getStringAt(i));
+	objectName.setStringId(templateData->getObjectName());
+	//customName = templateData->getCustomName();
+	//detailedDescription.setStringId(templateData->getDetailedDescription());
+	
+	gameObjectType = templateData->getGameObjectType();
+	//clientObjectCRC = templateData->getClientObjectCRC();
+	containerType = templateData->getContainerType();
+	containerVolumeLimit = templateData->getContainerVolumeLimit();
+	
+	if (templateData->getCollisionActionBlockFlags() == 255) { //loading meshes for line of sight
+		templateData->getPortalLayout();
+		templateData->getAppearanceTemplate();
 	}
-
-	arrangements.pop();
-
-	LuaObject slots = templateData->getObjectField("slotDescriptors");
-
-	for (int i = 1; i <= slots.getTableSize(); ++i) {
-		slotDescriptors.add(slots.getStringAt(i));
-	}
-
-	slots.pop();
-
+	
+	//	if (templateData->getPlanetMapCategory() != NULL)
+	//		planetMapCategory = templateData->getPlanetMapCategory()->getCrc();
+	//
+	//	if (templateData->getPlanetMapSubCategory() != NULL)
+	//		planetMapSubCategory = templateData->getPlanetMapSubCategory()->getCrc();
+	//
+	templateObject = templateData;
+	
+	//dataObjectComponent = ComponentManager::instance()->getDataObjectComponent(templateData->getDataObjectComponent());
 	containmentType = 4;
-
+	
 	initializePosition(0.f, 0.f, 0.f);
-
+	
 	movementCounter = 0;
-
+	
 	setGlobalLogging(true);
 	setLogging(false);
-
+	
 	String fullPath;
 	objectName.getFullPath(fullPath);
-
+	
 	client = NULL;
 	zone = NULL;
-
+	
 	info("created " + fullPath);
+}
+
+SceneObject::SceneObject(LuaObject* templateData) : Logger("SceneObject") {
+
+}
+
+void SceneObject::addToScene() {
+
+	
+	transform  = new osg::MatrixTransform( );
+	Vector3 position = getPosition();
+	
+	osg::Quat nodeQuat(direction.getX(), direction.getY(), direction.getZ(), direction.getW() );
+	osg::Matrix mat = osg::Matrix(nodeQuat) * osg::Matrix::translate( osg::Vec3f(position.getX(), position.getY(), position.getZ()) ) * osg::Matrix::rotate(osg::DegreesToRadians(90.f), 1, 0, 0) * osg::Matrix::rotate(osg::DegreesToRadians(180.f), 0, 0, 1) * osg::Matrix::scale(-1, 1, 1);
+	transform->setMatrix(mat);
+	addChild(transform);
+	
+	AppearanceTemplate *tmpl = getTemplate()->getAppearanceTemplate();
+	
+	if(portalLayout)
+		transform->addChild(portalLayout->draw());
+	
+	if(tmpl) {
+		transform->addChild(tmpl->draw());
+	} else {
+		osg::TessellationHints* hints = new osg::TessellationHints;
+		hints->setDetailRatio(0.25f);
+		osg::Geode* geode2 = new osg::Geode();
+		geode2->addDrawable( new osg::ShapeDrawable( new osg::Sphere(osg::Vec3(position.getX(), position.getZ()+0.5, position.getY()), 2.0), hints ) );
+		
+		//geode2->getOrCreateStateSet()->setAttribute( new osg::PolygonMode(osg::PolygonMode::FRONT_AND_BACK,osg::PolygonMode::LINE) );
+		transform->addChild(geode2);
+	}
+	
+}
+
+void SceneObject::loadSnapshotNode(WorldSnapshotNode* node) {
+	Vector3 position = node->getPosition();
+	setPosition(position.getX(), position.getY(), position.getZ());
+	direction = node->getDirection();
+	
+	if(!node->getParentID()) { // don't draw cell contents
+		if(node->getUnknown2() != 0) {
+			
+			String name = TemplateManager::instance()->getTemplateFile(node->getUnknown2());
+			portalLayout = TemplateManager::instance()->getPortalLayout(name);
+		}
+	}
 }
 
 SceneObject::~SceneObject() {

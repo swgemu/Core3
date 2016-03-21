@@ -13,12 +13,14 @@
 #include "../../server/zone/packets/charcreation/ClientCreateCharacter.h"
 #include "managers/objectcontroller/ObjectController.h"
 #include "managers/object/ObjectManager.h"
+#include "ClientCore.h"
 
 int Zone::createdChar = 0;
 
-Zone::Zone(int instance, uint64 characterObjectID, uint32 account, uint32 session) : Thread(), Mutex("Zone") {
+Zone::Zone(ClientCore *core, int instance, uint64 characterObjectID, uint32 account, uint32 session) : Thread(), Mutex("Zone") {
 	//loginSession = login;
 
+	this->core = core;
 	characterID = characterObjectID;
 	accountID = account;
 	sessionID = session;

@@ -4,10 +4,14 @@
 
 #include "zone/Zone.h"
 #include "zone/managers/object/ObjectManager.h"
-
+#include "conf/ConfigManager.h"
+#include "zone/managers/templates/DataArchiveStore.h"
+#include "zone/managers/templates/TemplateManager.h"
 #include "ClientCore.h"
 
+
 #include "login/LoginSession.h"
+
 
 ClientCore::ClientCore(int instances) : Core("log/core3client.log"), Logger("CoreClient") {
 	ClientCore::instances = instances;
@@ -16,7 +20,14 @@ ClientCore::ClientCore(int instances) : Core("log/core3client.log"), Logger("Cor
 }
 
 void ClientCore::initialize() {
+	renderer = NULL;
 	info("starting up client..");
+	
+	ConfigManager::instance()->loadConfigData();
+	DataArchiveStore::instance()->loadTres(ConfigManager::instance()->getTrePath(), ConfigManager::instance()->getTreFiles());
+	TemplateManager *manager = TemplateManager::instance();//new TemplateManager();
+	
+	manager->loadLuaTemplates();
 }
 
 int connectCount = 0, disconnectCount = 0;
@@ -25,22 +36,44 @@ void ClientCore::run() {
 	for (int i = 0; i < instances; ++i) {
 		zones.add(NULL);
 	}
+//	viewer.setThreadingModel(osgViewer::Viewer::SingleThreaded);
+//	viewer.setCameraManipulator(new osgGA::TrackballManipulator());
+//	viewer.setUpThreading();
+//	viewer.realize();
+//	renderer = new ClientRenderer(NULL, NULL, &viewer);
+//	
+//	renderer->run();
+	
+	viewer.setThreadingModel(osgViewer::Viewer::SingleThreaded);
+	viewer.setCameraManipulator(new osgGA::TrackballManipulator());
+	viewer.setUpThreading();
+	//viewer.realize();
+
 
 	info("initialized", true);
 
 	int rounds = 0;
 
-	loginCharacter(0);
+	ClientCore* cCore = this;
+	Core::getTaskManager()->executeTask([=] {
+		loginCharacter(0);
+		
+		handleCommands();
 
-	handleCommands();
-
-	for (int i = 0; i < instances; ++i) {
-		Zone* zone = zones.get(i);
-		if (zone != NULL)
-			zone->disconnect();
+	}, "input");
+	
+	while(true) {
+		if(renderer)
+			renderer->frame();
+		Thread::sleep(50);
 	}
-
-	Thread::sleep(10000);
+//	for (int i = 0; i < instances; ++i) {
+//		Zone* zone = zones.get(i);
+//		if (zone != NULL)
+//			zone->disconnect();
+//	}
+//
+//	Thread::sleep(10000);
 }
 
 void ClientCore::loginCharacter(int index) {
@@ -64,7 +97,7 @@ void ClientCore::loginCharacter(int index) {
 		uint32 acc = loginSession->getAccountID();
 		uint32 session = loginSession->getSessionID();
 
-		zone = new Zone(index, objid, acc, session);
+		zone = new Zone(this, index, objid, acc, session);
 		zone->start();
 
 		zones.set(index, zone);
@@ -96,8 +129,6 @@ void ClientCore::handleCommands() {
 
 			Thread::sleep(500);
 
-			continue;
-
 			System::out << "> ";
 
 			char line[256];
@@ -128,6 +159,10 @@ void ClientCore::handleCommands() {
 			} else if (firstToken == "lurk") {
 				for (int i = 0; i < zones.size(); ++i)
 					zones.get(i)->lurk();
+			} else if (firstToken == "render") {
+//				ClientRenderer renderer(NULL, NULL);
+//				
+//				renderer.start();
 			} else if (firstToken == "info") {
 				for (int i = 0; i < zones.size(); ++i) {
 					uint32 size = zones.get(i)->getObjectManager()->getObjectMapSize();
@@ -176,10 +211,12 @@ int main(int argc, char* argv[]) {
 
 		if (argc > 1)
 			instances = Integer::valueOf(arguments.get(0));
-
+		
 		ClientCore core(instances);
-
 		core.start();
+		
+		
+
 	} catch (Exception& e) {
 		System::out << e.getMessage() << "\n";
 		e.printStackTrace();

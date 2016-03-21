@@ -13,7 +13,7 @@
 #include "zone/objects/player/PlayerObject.h"
 #include "zone/objects/creature/CreatureObject.h"
 #include "zone/objects/ObjectMap.h"
-
+#include "zone/managers/templates/TemplateManager.h"
 #include "zone/Zone.h"
 
 ObjectFactory<SceneObject* (LuaObject*), uint32> ObjectManager::objectFactory;
@@ -21,20 +21,22 @@ Lua* ObjectManager::luaInstance = NULL;
 Mutex ObjectManager::luaMutex;
 
 ObjectManager::ObjectManager() : Mutex("ObjectManager"), Logger("ObjectManager") {
-	luaMutex.lock();
+	//luaMutex.lock();
+//
+//	if (luaInstance == NULL) {
+//		luaInstance = new Lua();
+//		luaInstance->init();
+//
+//		info("loading object templates...");
+//		registerFunctions();
+//		luaInstance->runFile("scripts/object/clientmain.lua");
+//
+//		registerObjectTypes();
+//	}
+	
+	//TemplateManager::instance()->loadLuaTemplates();;
 
-	if (luaInstance == NULL) {
-		luaInstance = new Lua();
-		luaInstance->init();
-
-		info("loading object templates...");
-		registerFunctions();
-		luaInstance->runFile("scripts/object/clientmain.lua");
-
-		registerObjectTypes();
-	}
-
-	luaMutex.unlock();
+	//luaMutex.unlock();
 
 	objectMap = new ObjectMap();
 
@@ -51,22 +53,22 @@ ObjectManager::~ObjectManager() {
 
 void ObjectManager::registerObjectTypes() {
 	info("registering object types");
-	//objectFactory.registerObject<SceneObject>(0);
-	objectFactory.registerObject<CreatureObject>(SceneObject::CREATURE);
-	objectFactory.registerObject<CreatureObject>(SceneObject::NPCCREATURE);
-	objectFactory.registerObject<CreatureObject>(SceneObject::DROIDCREATURE);
-	objectFactory.registerObject<CreatureObject>(SceneObject::PROBOTCREATURE);
-
-	objectFactory.registerObject<PlayerCreature>(SceneObject::PLAYERCREATURE);
-	objectFactory.registerObject<PlayerObject>(SceneObject::PLAYEROBJECT);
-
-	objectFactory.registerObject<TangibleObject>(SceneObject::GENERICITEM);
-	objectFactory.registerObject<TangibleObject>(SceneObject::WEARABLECONTAINER);
-
-	objectFactory.registerObject<TangibleObject>(SceneObject::ARMOR);
-	objectFactory.registerObject<TangibleObject>(SceneObject::BODYARMOR); //chest plates
-
-	objectFactory.registerObject<TangibleObject>(SceneObject::CONTAINER); //chest plates
+	objectFactory.registerObject<SceneObject>(0);
+//	objectFactory.registerObject<CreatureObject>(SceneObject::CREATURE);
+//	objectFactory.registerObject<CreatureObject>(SceneObject::NPCCREATURE);
+//	objectFactory.registerObject<CreatureObject>(SceneObject::DROIDCREATURE);
+//	objectFactory.registerObject<CreatureObject>(SceneObject::PROBOTCREATURE);
+//
+//	objectFactory.registerObject<PlayerCreature>(SceneObject::PLAYERCREATURE);
+//	objectFactory.registerObject<PlayerObject>(SceneObject::PLAYEROBJECT);
+//
+//	objectFactory.registerObject<TangibleObject>(SceneObject::GENERICITEM);
+//	objectFactory.registerObject<TangibleObject>(SceneObject::WEARABLECONTAINER);
+//
+//	objectFactory.registerObject<TangibleObject>(SceneObject::ARMOR);
+//	objectFactory.registerObject<TangibleObject>(SceneObject::BODYARMOR); //chest plates
+//
+//	objectFactory.registerObject<TangibleObject>(SceneObject::CONTAINER); //chest plates
 
 
 
@@ -103,49 +105,53 @@ void ObjectManager::registerObjectTypes() {
 
 SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 objectID) {
 	Locker _locker(this);
+	SharedObjectTemplate *shot = TemplateManager::instance()->getTemplate(objectCRC);
+	SceneObject *obj = new SceneObject(shot);
+	obj->setObjectID(objectID);
+	obj->setZone(zone);
+	objectMap->put(objectID, obj);
+	//object = objectFactory.createObject(shot->getGameObjectType(),
+//	return NULL;
+//	try {
+//		luaMutex.lock();
+//
+//		LuaFunction getTemplate(luaInstance->getLuaState(), "getTemplate", 1);
+//		getTemplate << objectCRC; // push first argument
+//		getTemplate.callFunction();
+//
+//		LuaObject result(luaInstance->getLuaState());
+//
+//		if (!result.isValidTable()) {
+//			luaMutex.unlock();
+//			return NULL;
+//		}
+//
+//		uint32 gameObjectType = result.getIntField("gameObjectType");
+//
+//		object = objectFactory.createObject(gameObjectType, &result);
+//
+//		luaMutex.unlock();
+//
+//		if (object == NULL)
+//			return object;
+//
+//		object->setObjectID(objectID);
+//		object->setZone(zone);
+//
+//		StringBuffer logName;
+//		logName << object->getLoggingName() << " 0x" << hex << objectID;
+//		object->setLoggingName(logName.toString());
+//
+//		objectMap->put(objectID, object);
+//
+//	} catch (Exception& e) {
+//		error("exception caught in SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC)");
+//		error(e.getMessage());
+//
+//		e.printStackTrace();
+//	}
 
-	SceneObject* object = NULL;
-
-	try {
-		luaMutex.lock();
-
-		LuaFunction getTemplate(luaInstance->getLuaState(), "getTemplate", 1);
-		getTemplate << objectCRC; // push first argument
-		getTemplate.callFunction();
-
-		LuaObject result(luaInstance->getLuaState());
-
-		if (!result.isValidTable()) {
-			luaMutex.unlock();
-			return NULL;
-		}
-
-		uint32 gameObjectType = result.getIntField("gameObjectType");
-
-		object = objectFactory.createObject(gameObjectType, &result);
-
-		luaMutex.unlock();
-
-		if (object == NULL)
-			return object;
-
-		object->setObjectID(objectID);
-		object->setZone(zone);
-
-		StringBuffer logName;
-		logName << object->getLoggingName() << " 0x" << hex << objectID;
-		object->setLoggingName(logName.toString());
-
-		objectMap->put(objectID, object);
-
-	} catch (Exception& e) {
-		error("exception caught in SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC)");
-		error(e.getMessage());
-
-		e.printStackTrace();
-	}
-
-	return object;
+	return obj;
 }
 
 SceneObject* ObjectManager::getObject(uint64 objectID) {
@@ -208,10 +214,10 @@ uint32 ObjectManager::getObjectMapSize() {
 
 
 void ObjectManager::registerFunctions() {
-	//lua generic
-	lua_register(luaInstance->getLuaState(), "includeFile", includeFile);
-	lua_register(luaInstance->getLuaState(), "crcString", crcString);
-	lua_register(luaInstance->getLuaState(), "addTemplateCRC", addTemplateCRC);
+//	//lua generic
+//	lua_register(luaInstance->getLuaState(), "includeFile", includeFile);
+//	lua_register(luaInstance->getLuaState(), "crcString", crcString);
+//	lua_register(luaInstance->getLuaState(), "addTemplateCRC", addTemplateCRC);
 }
 
 int ObjectManager::includeFile(lua_State* L) {
@@ -232,13 +238,25 @@ int ObjectManager::crcString(lua_State* L) {
 	return 1;
 }
 
-int ObjectManager::addTemplateCRC(lua_State* L) {
-	/*String ascii =  lua_tostring(L, -2);
-	uint32 value = (uint32) lua_tonumber(L, -1);
-
-	uint32 crc = (uint32) ascii.hashCode();
-
-	TemplateManager::instance()->addTemplate(crc, ascii);*/
-
-	return 0;
-}
+//int ObjectManager::addTemplateCRC(lua_State* L) {
+//	String ascii =  lua_tostring(L, -2);
+//	
+//	LuaObject obj(L);
+//	
+//	uint32 crc = (uint32) ascii.hashCode();
+//	
+//	TemplateManager::instance()->addTemplate(crc, ascii, &obj);
+//	
+//	//	uint64 seconds = Logger::getElapsedTime();
+//	
+//	int val = loadedTemplatesCount.increment();
+//	
+//	if (ConfigManager::instance()->isProgressMonitorActivated()) {
+//		if (val % 159 == 0)
+//			printf("\r\tLoading templates: [%d%%]\t", (int) (float(val) / 15998.f * 100.f));
+//	}
+//	
+//	//System::out << str;
+//	
+//	return 0;
+//}
