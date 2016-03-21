@@ -5,8 +5,8 @@
  *      Author: TheAnswer
  */
 
-#ifndef SRC_SERVER_ZONE_TEMPLATES_APPEARANCE_CELLPROPERTY_H_
-#define SRC_SERVER_ZONE_TEMPLATES_APPEARANCE_CELLPROPERTY_H_
+#ifndef CELLPROPERTY_H_
+#define CELLPROPERTY_H_
 
 #include "engine/engine.h"
 
@@ -60,4 +60,4 @@ public:
 };
 
 
-#endif /* SRC_SERVER_ZONE_TEMPLATES_APPEARANCE_CELLPROPERTY_H_ */
+#endif /* CELLPROPERTY_H_ */

@@ -81,9 +81,9 @@ public:
 	TemplateManager();
 	~TemplateManager();
 
-	void registerTemplateObjects();
+	virtual void registerTemplateObjects();
 
-	void loadLuaTemplates();
+	virtual void loadLuaTemplates();
 
 	/**
 	 * Attempts to get the slot descriptor. If the slot descriptor isn't loaded, attempt to load it.

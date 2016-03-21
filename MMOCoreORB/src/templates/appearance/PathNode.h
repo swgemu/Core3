@@ -59,15 +59,15 @@ public:
 	}
 
 	void readObject(IffStream* iffStream) {
-		id = iffStream->getInt();
-		var2 = iffStream->getInt();
-		globalGraphNodeID = iffStream->getInt();
-		type = static_cast<PathNodeType>(iffStream->getInt());
+		id = iffStream->getInt(); // index
+		var2 = iffStream->getInt(); // ID
+		globalGraphNodeID = iffStream->getInt(); // Key
+		type = static_cast<PathNodeType>(iffStream->getInt()); // type
 
-		x = iffStream->getFloat();
+		x = iffStream->getFloat(); // position
 		z = iffStream->getFloat();
 		y = iffStream->getFloat();
-		radius = iffStream->getFloat();
+		radius = iffStream->getFloat(); //radius
 	}
 
 	inline float getX() const {
