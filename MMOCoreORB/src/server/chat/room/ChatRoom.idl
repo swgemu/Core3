@@ -253,29 +253,13 @@ class ChatRoom extends ManagedObject {
 //////////////////////////////////////////////////////////////////////////////////////////
 
 	public native void broadcastMessage(BaseMessage msg);
-	public native void broadcastMessageCheckIgnore(BaseMessage msg, string senderName );
+	public native void broadcastMessageCheckIgnore(BaseMessage msg, final string senderName );
 
 	@dirty
 	public native int checkEnterPermission(CreatureObject player);
 
 	@local
-	public synchronized void broadcastMessages(Vector<BaseMessage> messages) {
-		for (int i = 0; i < playerList.size(); ++i) {
-			CreatureObject player = playerList.get(i);
-
-			for (int j = 0; j < messages.size(); ++j) {
-				BaseMessage msg = messages.get(j);
-				player.sendMessage(msg.clone());
-			}
-		}
-
-		for (int j = 0; j < messages.size(); ++j) {
-			BaseMessage msg = messages.get(j);
-			msg.finalize();
-		}
-
-		messages.removeAll();
-	}
+	public native void broadcastMessages(Vector<BaseMessage> messages);
 
 	@dirty
 	public ChatRoom getParent() {

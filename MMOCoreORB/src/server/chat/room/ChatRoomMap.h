@@ -24,7 +24,7 @@ public:
 		rooms.put(key, room);
 	}
 
-	ChatRoom* get(uint32 key) {
+	Reference<ChatRoom*> get(uint32 key) {
 		return rooms.get(key);
 	}
 
