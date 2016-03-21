@@ -91,6 +91,10 @@ public:
 	void insertWaterBoundary(Boundary* boundary) {
 		waterBoundaries.add(boundary);
 	}
+	
+	Vector<Boundary*>* const getWaterBoundaries() {
+		return &waterBoundaries;
+	}
 
 	/**
 	 * Returns the size of the terrain.

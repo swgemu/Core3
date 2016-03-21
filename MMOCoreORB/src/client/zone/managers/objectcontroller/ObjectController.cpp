@@ -8,7 +8,7 @@
 #include "ObjectController.h"
 
 #include "../../Zone.h"
-#include "zone/objects/scene/SceneObject.h"
+#include "client/zone/objects/scene/SceneObject.h"
 
 #include "../../../../server/zone/packets/object/ObjectControllerMessage.h"
 

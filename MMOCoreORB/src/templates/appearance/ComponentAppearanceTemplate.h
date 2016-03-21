@@ -12,20 +12,58 @@
 #include "templates/appearance/AppearanceTemplate.h"
 #include "templates/manager/TemplateManager.h"
 
+class ComponentMeshAppearanceTemplate : public Object {
+	Matrix4 transform;
+	AppearanceTemplate *mesh;
+public:
+	ComponentMeshAppearanceTemplate(Matrix4 transform, AppearanceTemplate *mesh) {
+		this->transform = transform;
+		this->mesh = mesh;
+	}
+	
+	Matrix4& getTransform() {
+		return transform;
+	}
+	
+	AppearanceTemplate* getMeshTemplate() {
+		return mesh;
+	}
+	
+	const Matrix4& getTransform() const {
+		return transform;
+	}
+	
+	const AppearanceTemplate* getMeshTemplate() const {
+		return mesh;
+	}
+};
+
+
 class ComponentAppearanceTemplate : public AppearanceTemplate {
-	AppearanceTemplate* firstMesh;
+	Vector<Reference<ComponentMeshAppearanceTemplate*> > meshes;
 
 public:
+	virtual uint32 getType() {
+		return 'CMPA';
+	}
 	ComponentAppearanceTemplate() {
-		firstMesh = NULL;
 	}
 
 	~ComponentAppearanceTemplate() {
 	}
-
+	
+	const Vector<Reference<ComponentMeshAppearanceTemplate*> > getComponents() const {
+		return meshes;
+	}
 
 	void readObject(IffStream* templateData) {
 		parse(templateData);
+	}
+	
+	// TODO: This needs to be deprecated IMMEDIATELY it is only here to allow the server to continue compiling
+	// This functionality is 100% broken
+	AppearanceTemplate* getFirstMesh() {
+		return const_cast<AppearanceTemplate*>(meshes.get(0)->getMeshTemplate());
 	}
 
 	void parse(IffStream* iffStream) {
@@ -35,14 +73,16 @@ public:
 		iffStream->openForm(version);
 
 		AppearanceTemplate::readObject(iffStream);
-
-		iffStream->openForm('RADR');
-		iffStream->closeForm('RADR');
+		
+		if(iffStream->getNextFormType() == 'RADR') {
+			iffStream->openForm('RADR');
+			iffStream->closeForm('RADR');
+		}
 
 		int subChunks = iffStream->getRemainingSubChunksNumber();// dataChunk->getChunksSize();
 
-		//loading first child only
-		for (int i = 0; i < 1 /*subChunks*/; ++i) {
+		// load *all* components
+		for (int i = 0; i < subChunks; ++i) {
 			iffStream->openChunk('PART');
 
 			// int var1 = iffStream->getInt();
@@ -54,19 +94,22 @@ public:
 			iffStream->getString(meshFile);
 
 			AppearanceTemplate* templ = TemplateManager::instance()->getAppearanceTemplate("appearance/" + meshFile);
-
-			if (i == 0)
-				firstMesh = templ->getFirstMesh();
-
+	
+			Matrix4 mat;
+			for (int x = 0; x < 3; x++) {
+				for (int y = 0; y < 4; y++)
+				{
+					mat[x][y] = iffStream->getFloat();
+				}
+			}
+			
+			meshes.add(new ComponentMeshAppearanceTemplate(mat, templ));
+			
 			iffStream->closeChunk('PART');
 		}
 
 		iffStream->closeForm(version);
 		iffStream->closeForm('CMPA');
-	}
-
-	AppearanceTemplate* getFirstMesh() {
-		return firstMesh;
 	}
 
 };

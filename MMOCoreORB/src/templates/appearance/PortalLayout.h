@@ -11,7 +11,7 @@
 #include "templates/IffTemplate.h"
 #include "templates/appearance/CellProperty.h"
 
-class MeshAppearanceTemplate;
+class AppearanceTemplate;
 class PathNode;
 class FloorMesh;
 class PathGraph;
@@ -23,6 +23,10 @@ class PortalLayout : public IffTemplate, public Logger {
 public:
 	PortalLayout();
 	~PortalLayout();
+	
+	PathGraph *getPathGraph() {
+		return pathGraph;
+	}
 
 	void readObject(IffStream* templateData) {
 		parse(templateData);
@@ -52,14 +56,19 @@ public:
 		return cellProperties.get(cellIndex).getFloorMesh();
 	}
 
-	inline MeshAppearanceTemplate* getMeshAppearanceTemplate(int cellIndex) {
+	inline AppearanceTemplate* getAppearanceTemplate(int cellIndex) {
 		return cellProperties.get(cellIndex).getAppearanceTemplate();
+	}
+	
+	inline CellProperty getCellProperty(int cellIndex) {
+		return cellProperties.get(cellIndex);
 	}
 
 	inline int getAppearanceTemplatesSize() {
 		return cellProperties.size();
 	}
 
+	static uint32 loadCRC(IffStream* iffStream);
 };
 
 #endif /* PORTALLAYOUT_H_ */

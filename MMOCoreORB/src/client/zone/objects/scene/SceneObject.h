@@ -3,15 +3,19 @@
 
 #include "engine/engine.h"
 #include "variables/StringId.h"
+#include "templates/SharedObjectTemplate.h"
+#include "client/renderer/ClientRenderer.h"
 
 class ZoneClient;
 class Zone;
-
-class SceneObject : public Coordinate, public Mutex, public Logger {
+class WorldSnapshotNode;
+class ClientAppearance;
+class MeshData;
+class SceneObject : public Coordinate, public Mutex, public Logger, public osg::Group {
 protected:
 	uint64 objectID;
 	uint32 objectCRC;
-
+	
 	uint32 movementCounter;
 
 	SceneObject* parent;
@@ -27,14 +31,20 @@ protected:
 	int containerVolumeLimit;
 	int gameObjectType;
 	int containmentType;
-
+	SharedObjectTemplate* templateObject;
 	ZoneClient* client;
 	Zone* zone;
-
+	osg::ref_ptr<osg::MatrixTransform> transform;
+	Reference<PortalLayout*> portalLayout;
+	ClientAppearance *appearance;
+	
+	
 public:
-	SceneObject(LuaObject* templateData);
+	SceneObject(SharedObjectTemplate *shot);
 	~SceneObject();
-
+	
+	virtual void addToScene();
+	Matrix4 getMatrix4Transform();
 	const static int CELLOBJECT = 11;
 	const static int PLAYEROBJECT = 12;
 	const static int ARMOR = 0x100;
@@ -227,14 +237,19 @@ public:
 	const static int SKIRT = 0x1000012;
 	const static int ITHOGARB = 0x1000013;
 
+	void setTransform(osg::ref_ptr<osg::MatrixTransform> trans) {
+		transform = trans;
+	}
 	virtual void parseBaseline3(Message* message) {
 	}
 
 	virtual void parseBaseline6(Message* message) {
 	}
 
-	bool transferObject(SceneObject* object, int containmentType);
+	bool transferObject(SceneObject* object, int containmentType, bool ignoreCapacity = false);
 	bool removeObject(SceneObject* object);
+	
+	void loadSnapshotNode(WorldSnapshotNode* node);
 
 	StringId& getObjectName() {
 		return objectName;
@@ -262,6 +277,10 @@ public:
 
 	inline uint32 getSlottedObjectsSize() {
 		return slottedObjects.size();
+	}
+	
+	virtual void initializePortalLayout(PortalLayout *layout) {
+			
 	}
 
 	inline SceneObject* getSlottedObject(int idx) {
@@ -299,6 +318,26 @@ public:
 	inline void setZone(Zone* zn) {
 		zone = zn;
 	}
+	
+	inline SharedObjectTemplate* getTemplate() {
+		return templateObject;
+	}
+	
+	inline ClientAppearance* getAppearance() {
+		return appearance;
+	}
+	
+	virtual void createChildObjects() {
+		
+	}
+	
+	virtual bool isBuildingObject() {
+		return false;
+	}
+	
+	virtual Vector<Reference<MeshData*> > getTransformedMeshData();
+	
+	osg::ref_ptr<osg::MatrixTransform> getTransformNode();
 };
 
 #endif /*SCENEOBJECT_H_*/

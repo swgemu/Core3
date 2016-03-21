@@ -8,7 +8,7 @@ protected:
 	uint32 actionCount;
 
 public:
-	CreatureObject(LuaObject* templateData);
+	CreatureObject(SharedObjectTemplate* templateData);
 
 	void parseBaseline3(Message* message);
 
