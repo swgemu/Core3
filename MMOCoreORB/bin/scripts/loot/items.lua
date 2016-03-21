@@ -163,6 +163,11 @@ includeFile("items/bestine_election/bestine_quest_painting.lua")
 includeFile("items/bestine_election/bestine_quest_rug.lua")
 includeFile("items/bestine_election/bestine_quest_statue.lua")
 includeFile("items/bestine_election/bestine_quest_sword.lua")
+includeFile("items/bestine_election/bestine_quest_tusken_rifle.lua")
+includeFile("items/bestine_election/carved_stone.lua")
+includeFile("items/bestine_election/smooth_stone.lua")
+includeFile("items/bestine_election/tusken_head.lua")
+includeFile("items/bestine_election/victor_baton_gaderiffi.lua")
 
 --coa sub-folder
 includeFile("items/coa/coa_decoder_housing.lua")

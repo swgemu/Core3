@@ -6,9 +6,8 @@ huttInformantConvoHandler = Object:new {
 
 
 function huttInformantConvoHandler:destroyDisk(pPlayer)
-	local playerID = CreatureObject(pPlayer):getObjectID()
 	local electionNum = BestineElectionScreenPlay:getElectionNumber()
-
+	local playerID = CreatureObject(pPlayer):getObjectID()
 	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 	if pInventory ~= nil then
 		local pDisk = getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/sean_history_disk.iff" , true)
@@ -22,7 +21,7 @@ function huttInformantConvoHandler:destroyDisk(pPlayer)
 		return
 		end
 	end
-	setQuestStatus(playerID..":bestine_election:hutt",electionNum)
+	writeData(playerID..":bestine_election:hutt",electionNum)
 	return
 end
 
