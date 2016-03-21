@@ -44,8 +44,8 @@ ObjectManager::ObjectManager() : DOBObjectManager() {
 	databaseManager = ObjectDatabaseManager::instance();
 	databaseManager->loadDatabases(ServerCore::truncateDatabases());
 
-	templateManager = TemplateManager::instance();
-	templateManager->loadLuaTemplates();
+	//templateManager = TemplateManager::instance();
+	//templateManager->loadLuaTemplates();
 
 	registerObjectTypes();
 

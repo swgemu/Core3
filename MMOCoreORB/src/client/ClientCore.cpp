@@ -6,8 +6,10 @@
 #include "zone/managers/object/ObjectManager.h"
 
 #include "ClientCore.h"
+#include "renderer/ClientRenderer.h"
 
 #include "login/LoginSession.h"
+
 
 ClientCore::ClientCore(int instances) : Core("log/core3client.log"), Logger("CoreClient") {
 	ClientCore::instances = instances;
@@ -93,10 +95,13 @@ void ClientCore::handleCommands() {
 	while (true) {
 		try {
 			String command;
+			
+			ClientRenderer renderer(NULL, NULL);
+			
+			renderer.start();
+			return;
 
 			Thread::sleep(500);
-
-			continue;
 
 			System::out << "> ";
 
@@ -128,6 +133,10 @@ void ClientCore::handleCommands() {
 			} else if (firstToken == "lurk") {
 				for (int i = 0; i < zones.size(); ++i)
 					zones.get(i)->lurk();
+			} else if (firstToken == "render") {
+				ClientRenderer renderer(NULL, NULL);
+				
+				renderer.start();
 			} else if (firstToken == "info") {
 				for (int i = 0; i < zones.size(); ++i) {
 					uint32 size = zones.get(i)->getObjectManager()->getObjectMapSize();
@@ -176,10 +185,10 @@ int main(int argc, char* argv[]) {
 
 		if (argc > 1)
 			instances = Integer::valueOf(arguments.get(0));
-
+		
 		ClientCore core(instances);
-
 		core.start();
+
 	} catch (Exception& e) {
 		System::out << e.getMessage() << "\n";
 		e.printStackTrace();

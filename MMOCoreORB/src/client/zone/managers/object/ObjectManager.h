@@ -24,6 +24,8 @@ class ObjectManager : public Mutex, public Logger {
 	Zone* zone;
 
 	void registerObjectTypes();
+	
+	HashTable<uint32, String> clientTemplateCRCMap;
 
 public:
 	ObjectManager();
