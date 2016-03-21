@@ -24,6 +24,7 @@ include server.chat.StringIdChatParameter;
 include server.chat.WaypointChatParameter;
 include server.chat.StringIdChatParameterVector;
 include server.chat.WaypointChatParameterVector;
+include system.util.SynchronizedVectorMap;
 
 class ChatManager extends ManagedService implements Logger {
 	ZoneServer server;
@@ -124,6 +125,7 @@ class ChatManager extends ManagedService implements Logger {
 	//////////////// ROOM CREATE & DESTROY ///////////////
 
 	@preLocked
+	@reference
 	public native ChatRoom createPersistentRoomByFullPath(CreatureObject player, final string path, final string title, int requestID);
 
 	@arg1PreLocked
@@ -135,11 +137,18 @@ class ChatManager extends ManagedService implements Logger {
 	@preLocked
 	private native void enableRoom(CreatureObject player, ChatRoom room, int requestID);
 
+	@reference
 	public native ChatRoom createRoom(final string roomName, ChatRoom parent = null);
+	
+	@reference
 	public native ChatRoom createPersistentRoom(final string roomName, ChatRoom parent = null);
+	
 	public native void destroyRoom(ChatRoom room);
 	public native void destroyRooms();
+	
+	@reference
 	public native ChatRoom createGroupRoom(unsigned long groupID, CreatureObject creator);
+	
 	public native void handleChatCreateRoom(CreatureObject player, byte permissionFlag, byte moderationFlag, final string roomPath, final string roomTitle, int requestID);
 	public native void sendChatOnCreateRoomError(CreatureObject player, int requestID, int error);
 	public native void handleChatDestroyRoom(CreatureObject player, unsigned int roomID, int requestID);
@@ -157,7 +166,10 @@ class ChatManager extends ManagedService implements Logger {
 
 	//////////////////// ROOM SEARCHING /////////////////
 
+	@reference
 	public native ChatRoom getChatRoomByFullPath(final string path);
+	
+	@reference
 	public native ChatRoom getChatRoomByGamePath(ChatRoom game, final string path);
 	public native string getRoomNameFromPath(final string path);
 
@@ -365,10 +377,12 @@ class ChatManager extends ManagedService implements Logger {
 		playerManager = manager;
 	}
 
+	@reference
 	public synchronized ChatRoom getChatRoom(unsigned int id) {
 		return roomMap.get(id);
 	}
 
+	@reference
 	public synchronized ChatRoom getGameRoom(final string game) {
 		return gameRooms.get(game);
 	}

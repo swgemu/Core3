@@ -223,7 +223,7 @@ void ChatManagerImplementation::loadSpatialChatTypes() {
 void ChatManagerImplementation::initiateRooms() {
 	gameRooms.setNullValue(NULL);
 
-	ChatRoom* mainRoom = createRoom("SWG");
+	Reference<ChatRoom*> mainRoom = createRoom("SWG");
 	mainRoom->setPrivate();
 	gameRooms.put("SWG", mainRoom);
 
@@ -239,7 +239,7 @@ void ChatManagerImplementation::initiateRooms() {
 	guildRoom = createRoom("guild", systemRoom);
 	guildRoom->setPrivate();
 
-	ChatRoom* generalRoom = createRoom("Chat", galaxyRoom);
+	Reference<ChatRoom*> generalRoom = createRoom("Chat", galaxyRoom);
 	generalRoom->setCanEnter(true);
 	generalRoom->setAllowSubrooms(true);
 	generalRoom->setTitle("public chat for this server, can create rooms here");
@@ -259,10 +259,10 @@ void ChatManagerImplementation::initiatePlanetRooms() {
 
 		Locker locker(zone);
 
-		ChatRoom* zoneRoom = createRoom(zone->getZoneName(), galaxyRoom);
+		Reference<ChatRoom*> zoneRoom = createRoom(zone->getZoneName(), galaxyRoom);
 		zoneRoom->setPrivate();
 
-		ChatRoom* planetaryChat = createRoom("Planet", zoneRoom);
+		Reference<ChatRoom*> planetaryChat = createRoom("Planet", zoneRoom);
 		planetaryChat->setPrivate();
 
 		planetaryChat->setChatRoomType(ChatRoom::PLANET);
@@ -370,7 +370,7 @@ void ChatManagerImplementation::loadPersistentRooms() {
 int ChatManagerImplementation::checkRoomPaths() {
 	//ChatManager locked
 
-	Vector<ChatRoom*> roomsToDelete;
+	Vector<Reference<ChatRoom*> > roomsToDelete;
 	int deleted = 0;
 
 	HashTableIterator<unsigned int, ManagedReference<ChatRoom* > > iter = roomMap->iterator();
@@ -411,7 +411,7 @@ int ChatManagerImplementation::checkRoomExpirations() {
 	HashTableIterator<unsigned int, ManagedReference<ChatRoom* > > iter = roomMap->iterator();
 
 	while (iter.hasNext()) {
-		ChatRoom* room = iter.next();
+		Reference<ChatRoom*> room = iter.next();
 
 		if (room == NULL)
 			continue;
@@ -426,7 +426,7 @@ int ChatManagerImplementation::checkRoomExpirations() {
 
 }
 
-ChatRoom* ChatManagerImplementation::createRoom(const String& roomName, ChatRoom* parent) {
+Reference<ChatRoom*> ChatManagerImplementation::createRoom(const String& roomName, ChatRoom* parent) {
 	ManagedReference<ChatRoom*> room = cast<ChatRoom*>(ObjectManager::instance()->createObject("ChatRoom", 0 , ""));
 
 	if (parent != NULL) {
@@ -443,7 +443,7 @@ ChatRoom* ChatManagerImplementation::createRoom(const String& roomName, ChatRoom
 	return room;
 }
 
-ChatRoom* ChatManagerImplementation::createPersistentRoom(const String& roomName, ChatRoom* parent) {
+Reference<ChatRoom*> ChatManagerImplementation::createPersistentRoom(const String& roomName, ChatRoom* parent) {
 	//There should always be a valid parent room for a persistent room.
 	if (parent == NULL)
 		return NULL;
@@ -460,12 +460,12 @@ ChatRoom* ChatManagerImplementation::createPersistentRoom(const String& roomName
 	return room;
 }
 
-ChatRoom* ChatManagerImplementation::getChatRoomByGamePath(ChatRoom* game, const String& path) {
+Reference<ChatRoom*> ChatManagerImplementation::getChatRoomByGamePath(ChatRoom* game, const String& path) {
 	StringTokenizer tokenizer(path);
 	tokenizer.setDelimeter(".");
 
 	String channel;
-	ChatRoom* room = game;
+	Reference<ChatRoom*> room = game;
 
 	while (tokenizer.hasMoreTokens()) {
 		tokenizer.getStringToken(channel);
@@ -483,7 +483,7 @@ ChatRoom* ChatManagerImplementation::getChatRoomByGamePath(ChatRoom* game, const
 		return room;
 }
 
-ChatRoom* ChatManagerImplementation::getChatRoomByFullPath(const String& path) {
+Reference<ChatRoom*> ChatManagerImplementation::getChatRoomByFullPath(const String& path) {
 	StringTokenizer tokenizer(path);
 	tokenizer.setDelimeter(".");
 
@@ -493,7 +493,7 @@ ChatRoom* ChatManagerImplementation::getChatRoomByFullPath(const String& path) {
 	String game;
 	tokenizer.getStringToken(game);
 
-	ChatRoom* gameRoom = getGameRoom(game);
+	Reference<ChatRoom*> gameRoom = getGameRoom(game);
 
 	if (gameRoom == NULL)
 		return NULL;
@@ -507,11 +507,12 @@ ChatRoom* ChatManagerImplementation::getChatRoomByFullPath(const String& path) {
 	return getChatRoomByGamePath(gameRoom, gamePath);
 }
 
-void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
-	if (room == NULL)
+void ChatManagerImplementation::destroyRoom(ChatRoom* roomArg) {
+	if (roomArg == NULL)
 		return;
 
 	ManagedReference<ChatManager*> chatManager = _this.getReferenceUnsafeStaticCast();
+	Reference<ChatRoom*> room = roomArg;
 
 	EXECUTE_TASK_2(room, chatManager, {
 		//Notify all players to remove the room from their Channel Browser.
@@ -598,19 +599,18 @@ void ChatManagerImplementation::enableRoom(CreatureObject* player, ChatRoom* roo
 void ChatManagerImplementation::destroyRooms() {
 	Locker _locker(_this.getReferenceUnsafeStaticCast());
 
-	HashTableIterator<unsigned int, ManagedReference<ChatRoom* > > iter = roomMap->iterator();
+//	finalize does nothing and you cant force to delete anything unless theres no strong references left
+/*	HashTableIterator<unsigned int, ManagedReference<ChatRoom* > > iter = roomMap->iterator();
 
 	while (iter.hasNext()) {
 		ChatRoom* room = iter.next();
 		room->finalize();
 	}
-
+*/
 	roomMap->removeAll();
 
 	gameRooms.removeAll();
 }
-
-
 
 void ChatManagerImplementation::handleChatRoomMessage(CreatureObject* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter) {
 	String name = sender->getFirstName();
@@ -636,7 +636,7 @@ void ChatManagerImplementation::handleChatRoomMessage(CreatureObject* sender, co
 		fullName = getTaggedName(senderGhost, name);
 	}
 
-	ChatRoom* channel = getChatRoom(roomID);
+	Reference<ChatRoom*> channel = getChatRoom(roomID);
 
 	if (channel == NULL)
 		return;
@@ -1244,16 +1244,16 @@ void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantM
 	sender->sendMessage(amsg);
 }
 
-ChatRoom* ChatManagerImplementation::createGroupRoom(uint64 groupID, CreatureObject* creator) {
+Reference<ChatRoom*> ChatManagerImplementation::createGroupRoom(uint64 groupID, CreatureObject* creator) {
 	// Pre: creator locked;
 	// Post: creator locked.
 
-	ManagedReference<ChatRoom*> groupChatRoom;
+	Reference<ChatRoom*> groupChatRoom;
 
 	StringBuffer name;
 	name << groupID;
 
-	ChatRoom* newGroupRoom = createRoom(name.toString(), groupRoom);
+	Reference<ChatRoom*> newGroupRoom = createRoom(name.toString(), groupRoom);
 	newGroupRoom->setPrivate();
 
 	groupChatRoom = createRoom("GroupChat", newGroupRoom);
@@ -1816,7 +1816,7 @@ void ChatManagerImplementation::handleChatCreateRoom(CreatureObject* player, uin
 
 }
 
-ChatRoom* ChatManagerImplementation::createPersistentRoomByFullPath(CreatureObject* player, const String& path, const String& title, int requestID) {
+Reference<ChatRoom*> ChatManagerImplementation::createPersistentRoomByFullPath(CreatureObject* player, const String& path, const String& title, int requestID) {
 	//ChatManager locked
 
 	StringTokenizer tokenizer(path);
@@ -1825,7 +1825,7 @@ ChatRoom* ChatManagerImplementation::createPersistentRoomByFullPath(CreatureObje
 	String game;
 	tokenizer.getStringToken(game);
 
-	ChatRoom* gameRoom = getGameRoom(game);
+	Reference<ChatRoom*> gameRoom = getGameRoom(game);
 
 	if (gameRoom == NULL)
 		return NULL;
@@ -1849,7 +1849,7 @@ ChatRoom* ChatManagerImplementation::createPersistentRoomByFullPath(CreatureObje
 		tokenizer.getStringToken(channel);
 		String channelLower = channel.toLowerCase(); //Subrooms are stored in lower case to prevent close duplicates.
 		unsigned int subRoomID = parent->getSubRoom(channelLower);
-		ChatRoom* subRoom = getChatRoom(subRoomID);
+		Reference<ChatRoom*> subRoom = getChatRoom(subRoomID);
 
 		if (subRoom == NULL) { //Found first node that doesn't already exist.
 			persistentPath = persistentPath + channelLower;
@@ -1918,16 +1918,14 @@ ChatRoom* ChatManagerImplementation::createPersistentRoomByFullPath(CreatureObje
 		return NULL;
 	}
 
-	ChatRoom* newRoom = createPersistentRoom(channel, parent);
+	Reference<ChatRoom*> newRoom = createPersistentRoom(channel, parent);
 
 	return newRoom;
-
 }
 
 void ChatManagerImplementation::sendChatOnCreateRoomError(CreatureObject* player, int requestID, int error) {
 	ChatOnCreateRoom* errorPacket = new ChatOnCreateRoom(player, requestID, error);
 	player->sendMessage(errorPacket);
-
 }
 
 String ChatManagerImplementation::getRoomNameFromPath(const String& path) {
@@ -1940,7 +1938,6 @@ String ChatManagerImplementation::getRoomNameFromPath(const String& path) {
 		tokenizer.getStringToken(name);
 
 	return name;
-
 }
 
 void ChatManagerImplementation::handleChatDestroyRoom(CreatureObject* player, uint32 roomID, int requestID) {
@@ -1962,18 +1959,17 @@ void ChatManagerImplementation::handleChatDestroyRoom(CreatureObject* player, ui
 }
 
 void ChatManagerImplementation::handleChatLeaveRoom(CreatureObject* player, const String& roomPath) {
-	ChatRoom* room = getChatRoomByFullPath(roomPath);
+	Reference<ChatRoom*> room = getChatRoomByFullPath(roomPath);
 
 	if (room == NULL)
 		return;
 
 	Locker clocker(room, player);
 	room->removePlayer(player);
-
 }
 
 void ChatManagerImplementation::handleChatQueryRoom(CreatureObject* player, const String& roomPath, int requestID) {
-	ChatRoom* room = getChatRoomByFullPath(roomPath);
+	Reference<ChatRoom*> room = getChatRoomByFullPath(roomPath);
 	if (player == NULL || room == NULL)
 		return;
 
@@ -1981,7 +1977,6 @@ void ChatManagerImplementation::handleChatQueryRoom(CreatureObject* player, cons
 
 	ChatQueryRoomResults* packet = new ChatQueryRoomResults(room, requestID);
 	player->sendMessage(packet);
-
 }
 
 void ChatManagerImplementation::broadcastQueryResultsToRoom(ChatRoom* room) {
@@ -1992,7 +1987,6 @@ void ChatManagerImplementation::broadcastQueryResultsToRoom(ChatRoom* room) {
 
 	ChatQueryRoomResults* notification = new ChatQueryRoomResults(room);
 	room->broadcastMessage(notification);
-
 }
 
 void ChatManagerImplementation::handleChatInvitePlayer(CreatureObject* inviter, const String& inviteeName, const String& roomPath, int requestID) {
@@ -2059,7 +2053,6 @@ void ChatManagerImplementation::handleChatInvitePlayer(CreatureObject* inviter, 
 
 	//Update the room list for all players in the room.
 	broadcastQueryResultsToRoom(room);
-
 }
 
 void ChatManagerImplementation::sendChatOnInviteResult(CreatureObject* inviter, const String& inviteeName, const String& roomPath, int error, int requestID) {
@@ -2147,7 +2140,6 @@ void ChatManagerImplementation::handleChatUninvitePlayer(CreatureObject* uninvit
 
 	//Remove the room from uninvitee's channel browser.
 	room->sendDestroyTo(uninvitee); //Done last in the off chance they uninvited themself so the error displays the proper room path.
-
 }
 
 void ChatManagerImplementation::sendChatOnUninviteResult(CreatureObject* uninviter, const String& uninviteeName, const String& roomPath, int error, int requestID) {
@@ -2157,7 +2149,6 @@ void ChatManagerImplementation::sendChatOnUninviteResult(CreatureObject* uninvit
 
 void ChatManagerImplementation::handleChatKickPlayer(CreatureObject* kicker, const String& kickeeName, const String& roomPath) {
 	//Nothing locked
-
 	if (kicker == NULL)
 		return;
 
@@ -2272,7 +2263,6 @@ void ChatManagerImplementation::handleChatAddModerator(CreatureObject* oper, con
 
 	if (!room->hasPlayer(oper))
 		sendChatOnAddModeratorResult(oper, opeeName, roomPath, ChatManager::SUCCESS, requestID);
-
 }
 
 void ChatManagerImplementation::sendChatOnAddModeratorResult(CreatureObject* oper, const String& opeeName, const String& roomPath, int error, int requestID) {
@@ -2429,7 +2419,6 @@ void ChatManagerImplementation::handleChatBanPlayer(CreatureObject* banner, cons
 	//Remove the room from banee's channel browser.
 	if (room->isPrivate())
 		room->sendDestroyTo(banee); //Done last in the off chance they banned themself so the error displays the proper room path.
-
 }
 
 
