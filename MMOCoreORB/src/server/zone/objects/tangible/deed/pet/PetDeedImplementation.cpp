@@ -211,9 +211,24 @@ int PetDeedImplementation::calculatePetLevel() {
 	}
 	return Genetics::calculateAgentLevel(avgHam, dps, chanceHit, regen, armor, effective, kinResist, energyResist, blastResist, heatResist, coldResist, elecResist, acidResist, stunResist);
 }
+
 void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	ManagedReference<ManufactureSchematic*> manufact = values->getManufactureSchematic();
 	float clFactor = 0;
+
+	if (manufact == NULL) {
+		String templateName;
+		SharedObjectTemplate* templ = getObjectTemplate();
+
+		if (templ != NULL) {
+			templateName = templ->getFullTemplateString();
+		}
+
+		error("null manufacture schematic in PetDeedImplementation::updateCraftingValues for " + templateName);
+
+		return;
+	}
+
 	for (int i = 0; i < manufact->getSlotCount(); ++i) {
 		// Dna Component Slots
 		Reference<IngredientSlot* > iSlot = manufact->getSlot(i);

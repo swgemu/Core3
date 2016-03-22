@@ -120,9 +120,13 @@ public:
 
 			Locker locker(prototype);
 			Locker mlock(manuSchematic, prototype);
+
 			craftingManager->setInitialCraftingValues(prototype,manuSchematic,CraftingManager::GREATSUCCESS);
+
 			Reference<CraftingValues*> craftingValues = manuSchematic->getCraftingValues();
+
 			int nRows = craftingValues->getVisibleExperimentalPropertyTitleSize();
+
 			prototype->updateCraftingValues(craftingValues, true);
 
 			if (quality > 0) {
