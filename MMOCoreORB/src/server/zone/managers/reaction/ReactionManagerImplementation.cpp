@@ -95,6 +95,9 @@ void ReactionManagerImplementation::loadLuaConfig() {
 	}
 
 	info("Loaded " + String::valueOf(emoteReactionFines.size()) + " emote reaction records.", true);
+
+	delete lua;
+	lua = NULL;
 }
 
 void ReactionManagerImplementation::sendChatReaction(AiAgent* npc, int type, int state, bool force) {

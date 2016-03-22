@@ -52,5 +52,8 @@ void VendorOutfitManager::loadLuaOutfits() {
 	info("Loaded " + String::valueOf(outfits.size()) + " unique outfits", true);
 
 	Luaoutfits.pop();
+
+	delete lua;
+	lua = NULL;
 }
 

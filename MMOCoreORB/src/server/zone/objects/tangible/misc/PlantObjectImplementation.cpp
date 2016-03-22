@@ -141,6 +141,11 @@ void PlantObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cre
 }
 
 void PlantObjectImplementation::sendResourceSUI(CreatureObject* player, int type) {
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
 	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::GROWABLE_PLANT, SuiListBox::HANDLETWOBUTTON);
 	suiBox->setCallback(new GrowablePlantSuiCallback(player->getZoneServer()));
 	suiBox->setPromptTitle("@plant_grow:select_resource_sub");
@@ -152,11 +157,6 @@ void PlantObjectImplementation::sendResourceSUI(CreatureObject* player, int type
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 	ManagedReference<SceneObject*> sceneObject = NULL;
-
-	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
-
-	if (ghost == NULL)
-		return;
 
 	for (int i=0; i< inventory->getContainerObjectsSize(); i++) {
 		sceneObject = inventory->getContainerObject(i);
@@ -183,7 +183,7 @@ void PlantObjectImplementation::sendResourceSUI(CreatureObject* player, int type
 
 	if (suiBox->getMenuSize() > 0) {
 		ghost->closeSuiWindowType(SuiWindowType::GROWABLE_PLANT);
-		player->getPlayerObject()->addSuiBox(suiBox);
+		ghost->addSuiBox(suiBox);
 		player->sendMessage(suiBox->generateMessage());
 	} else {
 		if (type == 1)

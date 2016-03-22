@@ -161,6 +161,9 @@ void GCWManagerImplementation::loadLuaConfig() {
 	strongholdsObject.pop();
 
 	info("Loaded " + String::valueOf(imperialStrongholds.size()) + " imperial strongholds and " + String::valueOf(rebelStrongholds.size()) + " rebel strongholds.");
+
+	delete lua;
+	lua = NULL;
 }
 
 void GCWManagerImplementation::performGCWTasks() {

@@ -20,6 +20,11 @@ void MissionNpcSpawnMap::loadSpawnPointsFromLua() {
 		LuaObject universeObject = lua->getGlobalObject("universe");
 
 		spawnMap.readObject(&universeObject);
+
+		universeObject.pop();
+
+		delete lua;
+		lua = NULL;
 	}
 	catch (Exception& e) {
 		info(e.getMessage(), true);

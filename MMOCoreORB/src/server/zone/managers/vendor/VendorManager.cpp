@@ -47,6 +47,8 @@ void VendorManager::loadLuaVendors() {
 
 	menu.pop();
 
+	delete lua;
+	lua = NULL;
 }
 
 bool VendorManager::isValidVendorName(const String& name) {

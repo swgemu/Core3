@@ -33,6 +33,8 @@ void SkillModManager::init() {
 	if (!lua->runFile("scripts/managers/skill_mod_manager.lua")) {
 		error("Cannot read configuration, using default");
 		setDefaults();
+		delete lua;
+		lua = NULL;
 		return;
 	}
 

@@ -22,6 +22,7 @@ int InterplanetarySurveyDroidSessionImplementation::cancelSession() {
 	clearSession();
 	return 0;
 }
+
 bool InterplanetarySurveyDroidSessionImplementation::hasSurveyTool() {
 	ManagedReference<CreatureObject*> player = this->player.get();
 
@@ -44,28 +45,35 @@ bool InterplanetarySurveyDroidSessionImplementation::hasSurveyTool() {
 			return true;
 		}
 	}
+
 	return false;
 }
+
 void InterplanetarySurveyDroidSessionImplementation::initalizeDroid(TangibleObject* droid) {
 	droidObject = droid;
 	ManagedReference<CreatureObject*> player = this->player.get();
+
 	if (!hasSurveyTool()) {
 		player->sendSystemMessage("@pet/droid_modules:survey_no_survey_tools");
 		cancelSession();
 		return;
 	}
+
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+	if (inventory == NULL) {
+		cancelSession();
+		return;
+	}
+
+	Locker invLocker(inventory);
+
 	// fire up sui box
 	droidSuiBox = new SuiListBox(player, SuiWindowType::SURVERY_DROID_MENU, 2);
 	droidSuiBox->setPromptTitle("@pet/droid_modules:survey_select_tool_title");
 	droidSuiBox->setPromptText("@pet/droid_modules:survey_select_tool_prompt");
 	droidSuiBox->setUsingObject(droid);
 	droidSuiBox->setCallback(new SurveyDroidSessionSuiCallback(player->getZoneServer()));
-	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-	Locker invLocker(inventory.get());
-	if (inventory == NULL) {
-		cancelSession();
-		return;
-	}
 
 	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 		ManagedReference<SceneObject*> sceno = inventory->getContainerObject(i);
@@ -74,18 +82,20 @@ void InterplanetarySurveyDroidSessionImplementation::initalizeDroid(TangibleObje
 			droidSuiBox->addMenuItem(sceno->getDisplayedName(), sceno->getObjectID());
 		}
 	}
+
 	step = 1;
 	droidSuiBox->setCancelButton(true, "@cancel");
 	player->getPlayerObject()->addSuiBox(droidSuiBox);
 	player->sendMessage(droidSuiBox->generateMessage());
-
 }
+
 void InterplanetarySurveyDroidSessionImplementation::handleMenuSelect(CreatureObject* pl, uint64 menuID, SuiListBox* suiBox) {
 	ManagedReference<CreatureObject*> player = this->player.get();
 	ManagedReference<TangibleObject*> tangibleObject = this->droidObject.get();
 
 	if (tangibleObject == NULL || player == NULL || player != pl)
 		return;
+
 	// which did he pick? first or second callback?
 	if (step == 1) {
 		// Get the id back
@@ -144,5 +154,4 @@ void InterplanetarySurveyDroidSessionImplementation::handleMenuSelect(CreatureOb
 		tangibleObject->decreaseUseCount();
 		cancelSession();
 	}
-
 }

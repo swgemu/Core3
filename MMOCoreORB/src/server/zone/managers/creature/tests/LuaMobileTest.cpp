@@ -733,4 +733,6 @@ TEST_F(LuaMobileTest, LuaSpawnManagerTest) {
 
 		spawns.pop();
 	}
+
+	delete lua;
 }

@@ -1071,7 +1071,7 @@ void StructureManager::promptPayUncondemnMaintenance(CreatureObject* creature,
 
 	int uncondemnCost = -structure->getSurplusMaintenance();
 
-	ManagedReference<SuiMessageBox*> sui;
+	ManagedReference<SuiMessageBox*> sui = NULL;
 	String text;
 
 	if (creature->getCashCredits() + creature->getBankCredits()

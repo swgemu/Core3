@@ -119,6 +119,7 @@ void DroidMaintenanceSessionImplementation::sendMaintenanceTransferBox(){
 	if (offplanet) {
 		PlanetManager* planetManager = creature->getZone()->getPlanetManager();
 		if (planetManager == NULL) {
+			cancelSession();
 			return;
 		}
 		int fee = planetManager->getTravelFare(selectedStructure->getZone()->getZoneName(),creature->getZone()->getZoneName());

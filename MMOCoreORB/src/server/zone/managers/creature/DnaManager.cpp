@@ -37,8 +37,12 @@ DnaManager::DnaManager() : Logger("DnaManager") {
 	lua->setGlobalInt("HARDINESS", DnaManager::HARDINESS);
 	lua->setGlobalInt("INTELLIGENCE", DnaManager::INTELLIGENCE);
 }
-DnaManager::~DnaManager() {
 
+DnaManager::~DnaManager() {
+	if (lua != NULL) {
+		delete lua;
+		lua = NULL;
+	}
 }
 
 void DnaManager::loadSampleData() {

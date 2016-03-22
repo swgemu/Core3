@@ -601,8 +601,10 @@ void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendS
 void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, SceneObject* selfObject, bool lockZone) {
 	ZoneServer* zoneServer = getZoneServer();
 
-	if (zoneServer == NULL || zoneServer->isServerLoading())
+	if (zoneServer == NULL || zoneServer->isServerLoading()) {
+		delete message;
 		return;
+	}
 
 	if (parent.get() != NULL) {
 		ManagedReference<SceneObject*> grandParent = getRootParent().get();
@@ -644,7 +646,6 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 			closeobjects->safeCopyTo(*closeNoneReference);
 			maxInRangeObjectCount = closeNoneReference->size();
 		}
-
 
 	} catch (Exception& e) {
 		error(e.getMessage());
@@ -690,8 +691,13 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* messages, SceneObject* selfObject) {
 	ZoneServer* zoneServer = getZoneServer();
 
-	if (zoneServer == NULL || zoneServer->isServerLoading())
+	if (zoneServer == NULL || zoneServer->isServerLoading()) {
+		while (!messages->isEmpty()) {
+			delete messages->remove(0);
+		}
+
 		return;
+	}
 
 	if (parent.get() != NULL) {
 		ManagedReference<SceneObject*> grandParent = getRootParent().get();

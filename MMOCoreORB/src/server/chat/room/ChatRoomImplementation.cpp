@@ -34,7 +34,6 @@ void ChatRoomImplementation::init(ZoneServer* serv, ChatRoom* parent, const Stri
 	invitedList.setNoDuplicateInsertPlan();
 	moderatorList.setNoDuplicateInsertPlan();
 	bannedList.setNoDuplicateInsertPlan();
-
 }
 
 void ChatRoomImplementation::sendTo(CreatureObject* player) {
@@ -61,7 +60,6 @@ void ChatRoomImplementation::addPlayer(CreatureObject* player) {
 	Locker plocker(player);
 	PlayerObject* ghost = player->getPlayerObject();
 	ghost->addChatRoom(getRoomID());
-
 }
 
 void ChatRoomImplementation::removePlayer(CreatureObject* player, bool disconnecting) {
@@ -78,7 +76,6 @@ void ChatRoomImplementation::removePlayer(CreatureObject* player, bool disconnec
 	broadcastMessage(msg);
 
 	playerList.drop(player->getFirstName());
-
 }
 
 void ChatRoomImplementation::removeAllPlayers() {
@@ -138,18 +135,24 @@ void ChatRoomImplementation::broadcastMessageCheckIgnore(BaseMessage* msg, const
 	bool godMode = false;
 	ManagedReference<PlayerObject*> senderPlayer = NULL;
 
-	if (playerManager == NULL)
+	if (playerManager == NULL) {
+		delete msg;
 		return;
+	}
 
 	sender = playerManager->getPlayer(lowerName);
 
-	if (sender == NULL)
+	if (sender == NULL) {
+		delete msg;
 		return;
+	}
 
 	senderPlayer = sender->getPlayerObject();
 
-	if (senderPlayer == NULL)
+	if (senderPlayer == NULL) {
+		delete msg;
 		return;
+	}
 
 	if (senderPlayer->hasGodMode())
 		godMode = true;
@@ -271,5 +274,4 @@ int ChatRoomImplementation::checkEnterPermission(CreatureObject* player) {
 	}
 
 	return ChatManager::FAIL;
-
 }

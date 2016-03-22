@@ -38,10 +38,12 @@ public:
 
 			String planetName = luaPlanetObj.getStringField("name");
 
-			Reference<PlanetSpawnMap*> planet = new PlanetSpawnMap();
+			Reference<PlanetSpawnMap*> planet = NULL;
 
 			if (planetSpawnMaps.contains(planetName.hashCode())) {
 				planet = planetSpawnMaps.get(planetName.hashCode());
+			} else {
+				planet = new PlanetSpawnMap();
 			}
 
 			planet->readObject(&luaPlanetObj);

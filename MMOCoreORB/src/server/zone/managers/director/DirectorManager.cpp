@@ -1470,6 +1470,8 @@ int DirectorManager::updateCellPermissionGroup(lua_State* L) {
 		GroupObject* group = obj->getGroup();
 		if (group != NULL) {
 			group->broadcastMessage(perm);
+		} else {
+			delete perm;
 		}
 	} else {
 		// do single creature

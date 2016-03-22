@@ -90,8 +90,10 @@ void InstallationObjectImplementation::fillAttributeList(AttributeListMessage* a
 void InstallationObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf) {
 	Zone* zone = getZone();
 
-	if (zone == NULL)
+	if (zone == NULL) {
+		delete message;
 		return;
+	}
 
 	Locker zoneLocker(zone);
 

@@ -51,6 +51,9 @@ void PetManagerImplementation::loadLuaConfig() {
 	luaObject.pop();
 
 	info("Loaded " + String::valueOf(mountSpeedData.size()) + " mount speeds.", true);
+
+	delete lua;
+	lua = NULL;
 }
 
 void PetManagerImplementation::loadValidMountScaleRanges() {

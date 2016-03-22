@@ -2062,7 +2062,6 @@ void CombatManager::sendMitigationCombatSpam(CreatureObject* defender, TangibleO
 
 	CombatSpam* spam = new CombatSpam(defender, NULL, defender, item, damage, file, stringName, color);
 	defender->sendMessage(spam);
-
 }
 
 void CombatManager::broadcastCombatSpam(TangibleObject* attacker, TangibleObject* defender, TangibleObject* item, int damage, const String& file, const String& stringName, byte color) {
@@ -2096,8 +2095,6 @@ void CombatManager::broadcastCombatSpam(TangibleObject* attacker, TangibleObject
 }
 
 void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObject * defenderObject, WeaponObject* weapon, const CreatureAttackData & data, int damage, uint8 hit, uint8 hitLocation) {
-	CombatAction* combatAction = NULL;
-
 	String animation = data.getCommand()->getAnimation(attacker, defenderObject, weapon, hitLocation, damage);
 
 	uint32 animationCRC = 0;
@@ -2110,15 +2107,15 @@ void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObj
 	uint64 weaponID = (weapon != NULL ? weapon->getObjectID() : 0);
 
 	CreatureObject *dcreo = defenderObject->asCreatureObject();
-	if(dcreo != NULL) { // All of this funkiness only applies to creo targets, tano's don't animate hits or posture changes
+	if (dcreo != NULL) { // All of this funkiness only applies to creo targets, tano's don't animate hits or posture changes
 
 		dcreo->updatePostures(false); // Commit pending posture changes to the client and notify observers
 
-		if(data.getPrimaryTarget() != defenderObject->getObjectID()){ // Check if we should play the default animation or one of several reaction animations
+		if (data.getPrimaryTarget() != defenderObject->getObjectID()){ // Check if we should play the default animation or one of several reaction animations
 
-			if(hit == HIT) {
+			if (hit == HIT) {
 
-				if(data.changesDefenderPosture() && (!dcreo->isIncapacitated() && !dcreo->isDead())) {
+				if (data.changesDefenderPosture() && (!dcreo->isIncapacitated() && !dcreo->isDead())) {
 					dcreo->doCombatAnimation(STRING_HASHCODE("change_posture")); // We're not the primary target, but we are the victim of a posture change attack
 				} else {
 					dcreo->doCombatAnimation(STRING_HASHCODE("get_hit_medium")); // We're not the primary target but were hit - play the got hit animation
@@ -2137,8 +2134,6 @@ void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObj
 			attacker->doCombatAnimation(defenderObject, animationCRC, hit, data.getTrails(), weaponID);
 		}
 	}
-
-
 
 	if(data.changesAttackerPosture())
 		attacker->updatePostures(false);

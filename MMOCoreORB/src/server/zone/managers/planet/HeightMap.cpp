@@ -234,6 +234,9 @@ void HeightMap::convert(const String& path) {
 	}
 
 	writer->close();
+
+	delete writer;
+	delete reader;
 }
 
 void HeightMap::readPlaneForConversion(FileInputStream* file, float* buffer, int planeX, int planeY) {

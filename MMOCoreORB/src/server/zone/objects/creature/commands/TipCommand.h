@@ -57,6 +57,12 @@ private:
 	int performBankTip(CreatureObject* player, CreatureObject* targetPlayer,
 			int amount) const {
 
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+		if (ghost == NULL) {
+			player->sendSystemMessage("@base_player:tip_error"); // There was an error processing your /tip request. Please try again.
+			return GENERALERROR;
+		}
+
 		// Player must have sufficient bank funds
 		int cash = player->getBankCredits();
 		if (amount > cash) {
@@ -77,12 +83,6 @@ private:
 		confirmbox->setPromptText("@base_player:tip_wire_prompt"); // A surcharge of 5% will be added to your requested bank-to-bank transfer amount. Would you like to continue?
 		confirmbox->setCancelButton(true, "@no");
 		confirmbox->setOkButton(true, "@yes");
-
-		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
-		if (ghost == NULL) {
-			player->sendSystemMessage("@base_player:tip_error"); // There was an error processing your /tip request. Please try again.
-			return GENERALERROR;
-		}
 
 		ghost->addSuiBox(confirmbox);
 		player->sendMessage(confirmbox->generateMessage());
