@@ -726,6 +726,9 @@ void ZoneServerImplementation::loadLoginMessage() {
 
 	loginMessage += "\nLatest Commits:\n";
 	loginMessage += ConfigManager::instance()->getRevision();
+
+	delete reader;
+	delete file;
 }
 
 void ZoneServerImplementation::changeLoginMessage(const String& motd) {
@@ -764,6 +767,9 @@ void ZoneServerImplementation::changeLoginMessage(const String& motd) {
 	}
 
 	loginMessage = finalMOTD;
+
+	delete writer;
+	delete file;
 }
 
 /*Account* ZoneServerImplementation::getAccount(uint32 accountID) {
