@@ -21,41 +21,40 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if(!creature->isPlayerCreature())
+		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 
 		ManagedReference<CraftingManager*> craftingManager = player->getZoneServer()->getCraftingManager();
-		if(craftingManager == NULL) {
+		if (craftingManager == NULL) {
 			return GENERALERROR;
 		}
 
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
-		if(inventory == NULL) {
+		if (inventory == NULL) {
 			creature->sendSystemMessage("Error locating target inventory");
 			return GENERALERROR;
 		}
 
 		try {
-
 			StringTokenizer tokenizer(arguments.toString());
 
-			if(!tokenizer.hasMoreTokens()) {
+			if (!tokenizer.hasMoreTokens()) {
 				creature->sendSystemMessage("Usage: /GenerateCraftedItem SERVERSCRIPTPATH [Quantity] [Quality] [Template Number]");
 				return GENERALERROR;
 			}
 
 			String file;
 			tokenizer.getStringToken(file);
+
 			if (file.indexOf("draft_schematic") == -1)
 				file = "object/draft_schematic/" + file;
 
@@ -65,24 +64,24 @@ public:
 			ManagedReference<DraftSchematic* > draftSchematic =
 					creature->getZoneServer()->createObject(file.hashCode(), 0).castTo<DraftSchematic*>();
 
-			if(draftSchematic == NULL || !draftSchematic->isValidDraftSchematic()) {
+			if (draftSchematic == NULL || !draftSchematic->isValidDraftSchematic()) {
 				creature->sendSystemMessage("File entered not valid, please be sure to use the draft schematics server script path not client path");
 				return GENERALERROR;
 			}
 
 			ManagedReference<ManufactureSchematic* > manuSchematic = ( draftSchematic->createManufactureSchematic()).castTo<ManufactureSchematic*>();
 
-			if(manuSchematic == NULL) {
+			if (manuSchematic == NULL) {
 				creature->sendSystemMessage("Error creating ManufactureSchematic from DraftSchematic");
 				return GENERALERROR;
 			}
 
 			int quantity = 1;
 
-			if(tokenizer.hasMoreTokens())
+			if (tokenizer.hasMoreTokens())
 				quantity = tokenizer.getIntToken();
 
-			if(quantity == 0)
+			if (quantity == 0)
 				quantity = 1;
 
 			int quality = 0;
@@ -113,7 +112,7 @@ public:
 			ManagedReference<TangibleObject *> prototype =  (
 					creature->getZoneServer()->createObject(targetTemplate, 2)).castTo<TangibleObject*>();
 
-			if(prototype == NULL) {
+			if (prototype == NULL) {
 				creature->sendSystemMessage("Unable to create target item, is it implemented yet?");
 				return GENERALERROR;
 			}
@@ -121,9 +120,11 @@ public:
 			Locker locker(prototype);
 			Locker mlock(manuSchematic, prototype);
 
-			craftingManager->setInitialCraftingValues(prototype,manuSchematic,CraftingManager::GREATSUCCESS);
+			craftingManager->setInitialCraftingValues(prototype, manuSchematic, CraftingManager::GREATSUCCESS);
 
 			Reference<CraftingValues*> craftingValues = manuSchematic->getCraftingValues();
+			craftingValues->setManufactureSchematic(manuSchematic);
+			craftingValues->setPlayer(player);
 
 			int nRows = craftingValues->getVisibleExperimentalPropertyTitleSize();
 
@@ -169,9 +170,9 @@ public:
 
 			prototype->updateToDatabase();
 
-			if(quantity > 1) {
-
+			if (quantity > 1) {
 				ManagedReference<FactoryCrate* > crate = prototype->createFactoryCrate(true);
+
 				if (crate == NULL) {
 					prototype->destroyObjectFromDatabase(true);
 					return GENERALERROR;
@@ -185,6 +186,7 @@ public:
 					crate->destroyObjectFromDatabase(true);
 					return GENERALERROR;
 				}
+
 				crate->sendTo(creature, true);
 
 			} else {
@@ -192,6 +194,7 @@ public:
 					prototype->destroyObjectFromDatabase(true);
 					return GENERALERROR;
 				}
+
 				prototype->sendTo(creature, true);
 			}
 
