@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_c71c7d6d",
+        "filename": "MMOCoreORB/bin/scripts/object/draft_schematic/chemistry/quest_stimpack_a.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-03-22T01:48:19Z",
+      "side": 1,
+      "message": "This is the wrong targetTemplate. This schematic should not just make a normal small stimpack a. The template you are looking for is object/tangible/component/chemistry/quest_stimpack_a.iff\n\nYou will need to set up that template as well.",
+      "revId": "dfa6e02f484761859ceb9af4077fd2ed52f1203f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
