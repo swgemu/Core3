@@ -1423,7 +1423,7 @@ void GCWManagerImplementation::randomizePowerRegulatorSwitches(BuildingObject* b
 		flipPowerSwitch(building, switchStates, System::random(powerSwitchCount - 1));
 
 	// Make sure the switches arent all set on
-	bool doubleCheck = false;
+	bool doubleCheck = true;
 
 	for (int i = 0; i < powerSwitchCount; i++)
 		doubleCheck &= switchStates.get(i);
