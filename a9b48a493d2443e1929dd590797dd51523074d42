@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_c76b1d84",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/component/ComponentImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-23T21:30:55Z",
+      "side": 1,
+      "message": "Truncating the number after the millions digit is not the right way to do this. The core of the problem is that StringBuffer::operator\u003c\u003c(float) uses %g and not %f to print a float. Changing this would certainly break more than it fixes, so we need to be using snprintf here to stringify the number and then stick that into the StringBuffer. You can use the fact that the precision *should* (read: make sure this happens) be set and then handling it like you do except use snprintf (%.1f) in your else.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 4
+      },
+      "revId": "a9b48a493d2443e1929dd590797dd51523074d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
