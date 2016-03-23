@@ -49,8 +49,8 @@ ForceLightningSingle1Command = {
 	speed = 4.0,
 	forceCost = 75,
 	visMod = 25,
-	
-	accuracySkillMod = "forcelightning_accuracy";
+
+	accuracySkillMod = "forcelightning_accuracy",
 
 	animation = "force_lightning_1_particle_level_1", 
 	animType = GENERATE_INTENSITY,
@@ -66,4 +66,3 @@ ForceLightningSingle1Command = {
 }
 
 AddCommand(ForceLightningSingle1Command)
-

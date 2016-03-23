@@ -56,6 +56,7 @@ namespace creature {
 		int inflictDamage(lua_State* L);
 		//int playEffect(lua_State* L);
 		int isFeigningDeath(lua_State* L);
+		int isForceChoked(lua_State* L);
 		int hasState(lua_State* L);
 		int setState(lua_State* L);
 		int setPosture(lua_State* L);

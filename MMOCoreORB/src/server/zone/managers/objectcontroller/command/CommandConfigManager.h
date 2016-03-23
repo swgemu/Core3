@@ -97,6 +97,7 @@ public:
 	static const int SHIPOPERATIONS = 61; // 61: S:shipOperations
 	static const int SHIPGUNNER = 62; // 62: S:shipGunner
 	static const int SHIPINTERIOR = 63; // 63: S:shipInterior
+	static const int FORCECHOKE = 75; // 75: S:forceChoke
 
 	static const int TEMPSCRIPT = 64; // 64: tempScript
 	static const int TARGETTYPE = 65; // 65: targetType

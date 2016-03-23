@@ -1281,6 +1281,9 @@ class CreatureObject extends TangibleObject {
 
 	@preLocked
 	public native void setRalliedState(int durationSeconds = 5);
+	
+	@preLocked
+	public native void setForceChokedState(int durationSeconds = 5);
 
 	@preLocked
 	public native void setAimingState(int durationSeconds = 5);
@@ -1966,6 +1969,11 @@ class CreatureObject extends TangibleObject {
 	@read
 	public boolean isRallied() {
 		return stateBitmask & CreatureState.RALLIED;
+	}
+	
+	@read
+	public boolean isForceChoked() {
+		return stateBitmask & CreatureState.FORCECHOKE;
 	}
 
 	@read

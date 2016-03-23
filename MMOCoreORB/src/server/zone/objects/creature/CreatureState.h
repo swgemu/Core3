@@ -48,6 +48,7 @@ public:
 		PILOTINGSHIP             = 0x20000000,
 		SHIPOPERATIONS           = 0x40000000,
 		SHIPGUNNER               = 0x80000000,
+		FORCECHOKE				 = 0x100000000,
 		SHIPINTERIOR             = (uint64) 1 << 32,
 		PILOTINGPOBSHIP          = (uint64) 1 << 33
 	};
@@ -100,6 +101,9 @@ public:
 			break;
 		case ONFIRE:
 			name = "fire";
+			break;
+		case FORCECHOKE:
+			name = "forcechoke";
 			break;
 		}
 

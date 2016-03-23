@@ -852,6 +852,9 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 			case CreatureState::RALLIED:
 				showFlyText("combat_effects", "go_rally", 0, 0xFF, 0);
 				break;
+			case CreatureState::FORCECHOKE:
+				showFlyText("combat_effects", "choke", 0, 0xFF, 0);
+				break;
 			case CreatureState::BERSERK:
 				playEffect("clienteffect/combat_special_attacker_berserk.cef");
 				break;
@@ -2273,6 +2276,18 @@ void CreatureObjectImplementation::setRalliedState(int durationSeconds) {
 
 		state->setStartFlyText("combat_effects", "go_rally", 0, 0xFF, 0);
 		state->setEndFlyText("combat_effects", "no_rally", 0xFF, 0, 0);
+
+		addBuff(state);
+	}
+}
+
+void CreatureObjectImplementation::setForceChokedState(int durationSeconds) {
+	if (!hasState(CreatureState::FORCECHOKE)) {
+		Reference<StateBuff*> state = new StateBuff(asCreatureObject(), CreatureState::FORCECHOKE, durationSeconds);
+
+		Locker locker(state);
+
+		state->setStartFlyText("combat_effects", "choke", 0, 0xFF, 0);
 
 		addBuff(state);
 	}

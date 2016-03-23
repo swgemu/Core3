@@ -674,6 +674,9 @@ public:
 		case CommandEffect::STUN:
 			defender->setStunnedState(duration);
 			break;
+		case CommandEffect::FORCECHOKE:
+			defender->setForceChokedState(duration);
+			break;
 		case CommandEffect::KNOCKDOWN:
 			if (!defender->checkKnockdownRecovery()) {
 				if (defender->getPosture() != CreaturePosture::UPRIGHT)

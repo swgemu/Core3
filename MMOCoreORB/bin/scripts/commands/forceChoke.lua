@@ -44,34 +44,33 @@
 ForceChokeCommand = {
 	name = "forcechoke",
 
-	minDamage = 300,
-	maxDamage = 400,
+	minDamage = 175,
+	maxDamage = 375,
 	speed = 6.0,
 	forceCost = 400,
 	visMod = 25,
 	attackType = FORCEATTACK,
-	accuracySkillMod = "forcechoke_accuracy";
+	accuracyBonus = 95,
 
 	animation = "force_choke_1_particle_level_1", 
 	animType = GENERATE_INTENSITY,
 
 	combatSpam = "forcechoke",
 
-	poolsToDamage = RANDOM_ATTRIBUTE,
+	poolsToDamage = HEALTH_ATTRIBUTE,
 	damageType = LIGHTSABER_DAMAGE,
 
 	range = 32,
 
-	dotEffects = {
-	  DotEffect( 
+	stateEffects = {
+	  StateEffect( 
 		FORCECHOKE, 
 		{ "", "" },
-		0,
-		false,
-		-1,
-		100,
-		500, 
-		35
+		{ "force_defense" },
+    { "jedi_state_defense" },
+    95,
+    0,
+    25
 	  )
 	},
 }

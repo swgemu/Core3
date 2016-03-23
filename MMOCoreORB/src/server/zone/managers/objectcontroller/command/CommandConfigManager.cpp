@@ -172,6 +172,8 @@ void CommandConfigManager::loadCommandData(const String& filename) {
 			if (!state) stateMask |= CreatureState::TUMBLING;
 			row->getValue(CommandConfigManager::RALLIED, state);
 			if (!state) stateMask |= CreatureState::RALLIED;
+			row->getValue(CommandConfigManager::FORCECHOKE, state);
+			if (!state) stateMask |= CreatureState::FORCECHOKE;
 			row->getValue(CommandConfigManager::STUNNED, state);
 			if (!state) stateMask |= CreatureState::STUNNED;
 			row->getValue(CommandConfigManager::BLINDED, state);
@@ -365,6 +367,7 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalLong("COMBATATTITUDEAGGRESSIVE_STATE", CreatureState::COMBATATTITUDEAGGRESSIVE);
 	setGlobalLong("TUMBLING_STATE", CreatureState::TUMBLING);
 	setGlobalLong("RALLIED_STATE", CreatureState::RALLIED);
+	setGlobalLong("FORCECHOKE_STATE", CreatureState::FORCECHOKE);
 	setGlobalLong("STUNNED_STATE", CreatureState::STUNNED);
 	setGlobalLong("FEIGNDEATH_STATE", CreatureState::FEIGNDEATH);
 	setGlobalLong("BLINDED_STATE", CreatureState::BLINDED);

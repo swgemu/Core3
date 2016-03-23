@@ -62,6 +62,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getDistanceTo", &LuaSceneObject::getDistanceTo },
 		{ "getServerObjectCRC", &LuaSceneObject::getServerObjectCRC },
 		{ "isFeigningDeath", &LuaCreatureObject::isFeigningDeath},
+		{ "isForceChoked", &LuaCreatureObject::isForceChoked},
 		{ "hasState", &LuaCreatureObject::hasState},
 		{ "setState", &LuaCreatureObject::setState},
 		{ "setLootRights", &LuaCreatureObject::setLootRights},
@@ -182,6 +183,11 @@ int LuaCreatureObject::addDotState(lua_State* L) {
 
 int LuaCreatureObject::isFeigningDeath(lua_State* L) {
 	lua_pushnumber(L, realObject->isFeigningDeath());
+	return 1;
+}
+
+int LuaCreatureObject::isForceChoked(lua_State* L) {
+	lua_pushnumber(L, realObject->isForceChoked());
 	return 1;
 }
 
