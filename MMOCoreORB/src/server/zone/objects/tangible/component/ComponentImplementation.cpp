@@ -48,9 +48,18 @@ void ComponentImplementation::fillAttributeList(AttributeListMessage* alm,
 
 			StringBuffer displayvalue;
 
-			displayvalue << Math::getPrecision(value, precision);
+			if( value < 1.0E6 )
+			{
+				displayvalue << Math::getPrecision(value, precision);
 
-			displayvalue << footer;
+				displayvalue << footer;
+			}
+			else
+			{
+				displayvalue << Math::getPrecision(value/(1.0E6f), 2);
+					
+				displayvalue << " Million";
+			}
 
 			alm->insertAttribute(attribute, displayvalue.toString());
 		}
