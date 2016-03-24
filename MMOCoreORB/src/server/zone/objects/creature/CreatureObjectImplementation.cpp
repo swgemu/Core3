@@ -852,6 +852,9 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 			case CreatureState::RALLIED:
 				showFlyText("combat_effects", "go_rally", 0, 0xFF, 0);
 				break;
+			case CommandEffect::FORCECHOKE:
+				showFlyText("combat_effects", "choke", 0, 0xFF, 0);
+				break;
 			case CreatureState::BERSERK:
 				playEffect("clienteffect/combat_special_attacker_berserk.cef");
 				break;
@@ -3318,6 +3321,26 @@ float CreatureObjectImplementation::getTemplateRadius() {
 		return 0;
 
 	return creoTempl->getCollisionRadius()*getHeight();
+}
+
+bool CreatureObjectImplementation::hasEffect(uint8 effectType) {
+	switch (effectType) {
+	case CommandEffect::FORCECHOKE:
+		if (isCreatureObject() && (hasEffect(CommandEffect::FORCECHOKE))) {
+
+			ManagedReference<SceneObject*> parent = getParent().get();
+			CreatureObject* creo = cast<CreatureObject*>(parent.get());
+
+			ManagedReference<Buff*> effect = new Buff(creo, STRING_HASHCODE("forcechoke"), 35, BuffType::SKILL);
+
+			Locker locker(effect);
+			effect->setStartFlyText("combat_effects", "choke", 0, 0xFF, 0);
+			addBuff(effect);
+		}
+		return true;
+	}
+
+	return true;
 }
 
 bool CreatureObjectImplementation::hasEffectImmunity(uint8 effectType) {
