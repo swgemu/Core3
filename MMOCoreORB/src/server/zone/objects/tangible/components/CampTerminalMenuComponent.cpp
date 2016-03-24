@@ -74,9 +74,9 @@ void CampTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		area == NULL;
 	}
 
-	if (area != NULL && cast<CampSiteActiveArea*> (area.get()) != NULL &&
-			cast<CampSiteActiveArea*> (area.get())->isAbandoned())
+	if (area != NULL && area->isCampArea() && (area.castTo<CampSiteActiveArea*>())->isAbandoned()) {
 		menuResponse->addRadialMenuItem(183, 3, "@camp:mnu_assume_ownership");
+	}
 }
 
 int CampTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
@@ -102,7 +102,6 @@ int CampTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject,
 				player, selectedID);
 	}
-
 
 	return 0;
 }

@@ -29,7 +29,7 @@ int JukeboxObserverImplementation::notifyObserverEvent(unsigned int eventType, O
 
 		SceneObject* sceno = cast<SceneObject*>(arg1);
 
-		if (!sceno->isPlayerCreature())
+		if (sceno == NULL || !sceno->isPlayerCreature())
 			return 0;
 
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(sceno);

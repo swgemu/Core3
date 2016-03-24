@@ -27,8 +27,10 @@ public:
 		Locker locker(tano);
 
 		if (tano->getServerObjectCRC() == 0x46BD798B) { // Jukebox
-			Jukebox* jbox = cast<Jukebox*>(tano.get());
-			jbox->stopPlaying();
+			Jukebox* jbox = tano.castTo<Jukebox*>();
+
+			if (jbox != NULL)
+				jbox->stopPlaying();
 		}
 
 		tano->destroyObjectFromWorld(true);

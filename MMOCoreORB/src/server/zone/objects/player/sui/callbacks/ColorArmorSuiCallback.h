@@ -20,27 +20,29 @@ public:
 	void run(CreatureObject* creature, SuiBox* sui, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);
 
-		SuiColorBox* cBox = cast<SuiColorBox*>( sui);
-
-		if(!creature->isPlayerCreature())
+		if (!sui->isColorPicker() || cancelPressed)
 			return;
 
-		if(!cancelPressed) {
+		if (!creature->isPlayerCreature())
+			return;
 
-			int index = Integer::valueOf(args->get(0).toString());
+		SuiColorBox* cBox = cast<SuiColorBox*>(sui);
 
-			String palette = cBox->getColorPalette();
+		int index = Integer::valueOf(args->get(0).toString());
 
-			ManagedReference<SceneObject*> armorRehue = cBox->getUsingObject();
+		String palette = cBox->getColorPalette();
 
-			ManagedReference<TangibleObject*> armorRehueTano = cast<TangibleObject*>(armorRehue.get());
+		ManagedReference<SceneObject*> armorRehue = cBox->getUsingObject();
 
-			if (armorRehueTano != NULL) {
-				Locker locker(armorRehueTano, creature);
+		if (armorRehue == NULL)
+			return;
 
-				armorRehueTano->setCustomizationVariable(palette, index, true);
-			}
+		ManagedReference<TangibleObject*> armorRehueTano = armorRehue->asTangibleObject();
 
+		if (armorRehueTano != NULL) {
+			Locker locker(armorRehueTano, creature);
+
+			armorRehueTano->setCustomizationVariable(palette, index, true);
 		}
 	}
 };

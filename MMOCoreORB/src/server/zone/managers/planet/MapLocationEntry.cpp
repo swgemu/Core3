@@ -72,7 +72,7 @@ void MapLocationEntry::setObject(SceneObject *obj) {
 	if (object->isVendor()) {
 		newName = newName.subString(8); // Removes the "Vendor: " prefix
 	} else if (object->isCreatureObject()) { // Try FirstName + LastName if it's a creature
-		CreatureObject* creature = cast<CreatureObject*>(object.get());
+		CreatureObject* creature = object->asCreatureObject();
 
 		String fName = creature->getFirstName();
 		String lName = creature->getLastName();

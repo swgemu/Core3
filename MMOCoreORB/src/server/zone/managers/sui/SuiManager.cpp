@@ -652,18 +652,22 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 			item->createChildObjects();
 
 			if (item->isEventPerkDeed()) {
-				EventPerkDeed* deed = cast<EventPerkDeed*>(item.get());
+				EventPerkDeed* deed = item.castTo<EventPerkDeed*>();
 				deed->setOwner(player);
 				ghost->addEventPerk(deed);
 			}
 
 			if (item->isEventPerkItem()) {
 				if (item->getServerObjectCRC() == 0x46BD798B) { // Jukebox
-					Jukebox* jbox = cast<Jukebox*>(item.get());
-					jbox->setOwner(player);
+					Jukebox* jbox = item.castTo<Jukebox*>();
+
+					if (jbox != NULL)
+						jbox->setOwner(player);
 				} else if (item->getServerObjectCRC() == 0x255F612C) { // Shuttle Beacon
-					ShuttleBeacon* beacon = cast<ShuttleBeacon*>(item.get());
-					beacon->setOwner(player);
+					ShuttleBeacon* beacon = item.castTo<ShuttleBeacon*>();
+
+					if (beacon != NULL)
+						beacon->setOwner(player);
 				}
 				ghost->addEventPerk(item);
 			}
@@ -692,7 +696,7 @@ void SuiManager::handleDiagnose(CreatureObject* player, SuiBox* suiBox, uint32 c
 }
 
 void SuiManager::handleConsentBox(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (suiBox->isListBox() || cancel != 0)
+	if (!suiBox->isListBox() || cancel != 0)
 		return;
 
 	if (args->size() < 1)
@@ -703,7 +707,7 @@ void SuiManager::handleConsentBox(CreatureObject* player, SuiBox* suiBox, uint32
 	if (index == -1)
 		return;
 
-	SuiListBox* suiList = cast<SuiListBox*>( suiBox);
+	SuiListBox* suiList = cast<SuiListBox*>(suiBox);
 
 	String name = suiList->getMenuItemName(index);
 	UnconsentCommand::unconscent(player, name);

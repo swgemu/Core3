@@ -30,10 +30,13 @@ public:
 
 		ManagedReference<SceneObject*> object = suiBox->getUsingObject();
 
-		if (!object->isVendor() || object == NULL)
+		if (object == NULL || !object->isVendor())
 			return;
 
 		TangibleObject* vendor = cast<TangibleObject*>(object.get());
+
+		if (vendor == NULL)
+			return;
 
 		Locker clocker(vendor, player);
 
