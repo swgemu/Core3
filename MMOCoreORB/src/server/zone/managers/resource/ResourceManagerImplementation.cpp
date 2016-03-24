@@ -60,6 +60,11 @@ void ResourceManagerImplementation::loadSurveyData() {
 int ResourceManagerImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	if (eventType == ObserverEventType::POSTURECHANGED) {
 		CreatureObject* creature = cast<CreatureObject*>( observable);
+
+		if (creature == NULL) {
+			return 0;
+		}
+
 		// Cancel Sampling on posture change
 		Reference<SampleTask*> task = creature->getPendingTask("sample").castTo<SampleTask*>( );
 		Reference<SampleResultsTask*> sampleResultsTask = creature->getPendingTask("sampleresults").castTo<SampleResultsTask*>( );

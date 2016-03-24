@@ -54,7 +54,6 @@ include server.zone.objects.scene.components.AttributeListComponent;
 include server.zone.objects.scene.components.DataObjectComponentReference;
 include server.zone.objects.scene.variables.ContainerPermissions;
 import server.zone.objects.region.CityRegion;
-import server.zone.objects.creature.CreatureObject;
 import engine.util.u3d.Matrix4;
 import system.thread.ReadWriteLock;
 import system.thread.Mutex;
@@ -285,7 +284,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param value value from packet
 	 */
 	@dirty
-	public abstract void synchronizedUIListen(SceneObject player, int value) {
+	public abstract void synchronizedUIListen(CreatureObject player, int value) {
 		Logger.info("Unhandled synchronizedUIListen", true);
 	}
 	
@@ -297,7 +296,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param value value from packet
 	 */
 	@dirty
-	public abstract void synchronizedUIStopListen(SceneObject player, int value) {
+	public abstract void synchronizedUIStopListen(CreatureObject player, int value) {
 		Logger.info("Unhandled synchronizedUIStopListen", true);
 	}
 	

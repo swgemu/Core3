@@ -286,17 +286,19 @@ bool SlicingSessionImplementation::hasPrecisionLaserKnife(bool removeItem) {
 		uint32 objType = sceno->getGameObjectType();
 
 		if (objType == SceneObjectType::LASERKNIFE) {
-			PrecisionLaserKnife* knife = cast<PrecisionLaserKnife*>( sceno.get());
-			if (removeItem) {
-				Locker locker(knife);
-				knife->useCharge(player);
+			PrecisionLaserKnife* knife = sceno.castTo<PrecisionLaserKnife*>();
+
+			if (knife != NULL) {
+				if (removeItem) {
+					Locker locker(knife);
+					knife->useCharge(player);
+				}
+				return 1;
 			}
-			return 1;
 		}
 	}
 
 	return 0;
-
 }
 
 bool SlicingSessionImplementation::hasWeaponUpgradeKit() {

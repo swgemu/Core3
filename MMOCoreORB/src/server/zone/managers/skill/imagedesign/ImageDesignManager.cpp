@@ -313,6 +313,10 @@ CustomizationData* ImageDesignManager::getCustomizationData(const String& specie
 	uint32 templateCRC = String::hashCode("object/creature/player/" + speciesGender + ".iff");
 
 	PlayerCreatureTemplate* tmpl = dynamic_cast<PlayerCreatureTemplate*>(templateManager->getTemplate(templateCRC));
+
+	if (tmpl == NULL)
+		return NULL;
+
 	CustomizationData* customization = tmpl->getCustomizationData(customizationName);
 
 	if (customization == NULL)

@@ -116,17 +116,17 @@ void ManufactureSchematicImplementation::setDraftSchematic(DraftSchematic* schem
 	draftSchematic = schematic;
 }
 
-void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* player, int value) {
+void ManufactureSchematicImplementation::synchronizedUIListen(CreatureObject* player, int value) {
 
-	if(!player->isPlayerCreature() || draftSchematic == NULL)
+	if (!player->isPlayerCreature() || draftSchematic == NULL)
 		return;
 
 	Reference<CraftingSession*> session = player->getActiveSession(SessionFacadeType::CRAFTING).castTo<CraftingSession*>();
-	if(session == NULL || session->getSchematic() != _this.getReferenceUnsafeStaticCast()) {
+	if (session == NULL || session->getSchematic() != _this.getReferenceUnsafeStaticCast()) {
 		return;
 	}
 
-	if(!initialized)
+	if (!initialized)
 		initializeIngredientSlots();
 
 	possibleSyncIssue = false;
@@ -138,7 +138,7 @@ void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* playe
 	session->sendIngredientForUIListen();
 }
 
-void ManufactureSchematicImplementation::sendMsco7(SceneObject* player) {
+void ManufactureSchematicImplementation::sendMsco7(CreatureObject* player) {
 
 	ManufactureSchematicObjectMessage7* mcso7 = new ManufactureSchematicObjectMessage7(_this.getReferenceUnsafeStaticCast());
 
@@ -255,7 +255,7 @@ void ManufactureSchematicImplementation::sendMsco7(SceneObject* player) {
 	player->sendMessage(mcso7);
 }
 
-void ManufactureSchematicImplementation::synchronizedUIStopListen(SceneObject* player, int value) {
+void ManufactureSchematicImplementation::synchronizedUIStopListen(CreatureObject* player, int value) {
 
 }
 

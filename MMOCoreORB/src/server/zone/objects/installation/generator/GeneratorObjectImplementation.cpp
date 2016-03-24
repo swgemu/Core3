@@ -26,11 +26,11 @@ void GeneratorObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 	menuResponse->addRadialMenuItemToRadialID(118, 78, 3, "@harvester:manage"); //Operate Machinery
 }
 
-void GeneratorObjectImplementation::synchronizedUIListen(SceneObject* player, int value) {
-	if (!player->isPlayerCreature() || !isOnAdminList(cast<CreatureObject*>(player)) || getZone() == NULL)
+void GeneratorObjectImplementation::synchronizedUIListen(CreatureObject* player, int value) {
+	if (!player->isPlayerCreature() || !isOnAdminList(player) || getZone() == NULL)
 		return;
 
-	addOperator(cast<CreatureObject*>(player));
+	addOperator(player);
 
 	updateInstallationWork();
 
@@ -40,11 +40,11 @@ void GeneratorObjectImplementation::synchronizedUIListen(SceneObject* player, in
 	activateUiSync();
 }
 
-void GeneratorObjectImplementation::synchronizedUIStopListen(SceneObject* player, int value) {
+void GeneratorObjectImplementation::synchronizedUIStopListen(CreatureObject* player, int value) {
 	if (!player->isPlayerCreature())
 		return;
 
-	removeOperator(cast<CreatureObject*>(player));
+	removeOperator(player);
 }
 
 int GeneratorObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

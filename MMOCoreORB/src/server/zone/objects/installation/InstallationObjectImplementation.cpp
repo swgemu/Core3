@@ -783,7 +783,11 @@ void InstallationObjectImplementation::createChildObjects() {
 	}
 }
 
-float InstallationObjectImplementation::getHitChance(){
+float InstallationObjectImplementation::getHitChance() {
 		SharedInstallationObjectTemplate* inso = dynamic_cast<SharedInstallationObjectTemplate*>(getObjectTemplate());
+
+		if (inso == NULL)
+			return 0;
+
 		return inso->getChanceHit();
 }

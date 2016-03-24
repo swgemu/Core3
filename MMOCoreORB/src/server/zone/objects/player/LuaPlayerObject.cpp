@@ -502,16 +502,22 @@ int LuaPlayerObject::addEventPerk(lua_State* L) {
 
 	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(realObject->getParent().get().get());
 
-	if (item->isEventPerkDeed() && creature != NULL) {
-		EventPerkDeed* deed = cast<EventPerkDeed*>(item);
-		deed->setOwner(creature);
-	} else if (item->isEventPerkItem() && creature != NULL) {
-		if (item->getServerObjectCRC() == 0x46BD798B) { // Jukebox
-			Jukebox* jbox = cast<Jukebox*>(item);
-			jbox->setOwner(creature);
-		} else if (item->getServerObjectCRC() == 0x255F612C) { // Shuttle Beacon
-			ShuttleBeacon* beacon = cast<ShuttleBeacon*>(item);
-			beacon->setOwner(creature);
+	if (creature != NULL) {
+		if (item->isEventPerkDeed()) {
+			EventPerkDeed* deed = cast<EventPerkDeed*>(item);
+			deed->setOwner(creature);
+		} else if (item->isEventPerkItem()) {
+			if (item->getServerObjectCRC() == 0x46BD798B) { // Jukebox
+				Jukebox* jbox = cast<Jukebox*>(item);
+
+				if (jbox != NULL)
+					jbox->setOwner(creature);
+			} else if (item->getServerObjectCRC() == 0x255F612C) { // Shuttle Beacon
+				ShuttleBeacon* beacon = cast<ShuttleBeacon*>(item);
+
+				if (beacon != NULL)
+					beacon->setOwner(creature);
+			}
 		}
 	}
 

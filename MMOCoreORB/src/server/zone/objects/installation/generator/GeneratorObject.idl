@@ -38,7 +38,7 @@ class GeneratorObject extends InstallationObject {
 	 * @param value value from packet
 	 */
 	@preLocked
-	public native void synchronizedUIListen(SceneObject player, int value);
+	public native void synchronizedUIListen(CreatureObject player, int value);
 
 	/**
 	 * Calls the appropriate UI Stop Listener Function
@@ -48,7 +48,7 @@ class GeneratorObject extends InstallationObject {
 	 * @param value value from packet
 	 */
 	@preLocked
-	public native void synchronizedUIStopListen(SceneObject player, int value);
+	public native void synchronizedUIStopListen(CreatureObject player, int value);
 
 	@dirty
 	public boolean isGeneratorObject() {

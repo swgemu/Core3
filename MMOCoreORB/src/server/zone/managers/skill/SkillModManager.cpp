@@ -187,11 +187,11 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 
 void SkillModManager::verifyStructureSkillMods(TangibleObject* tano) {
 
-	if(!tano->isCreatureObject())
+	if (!tano->isCreatureObject())
 		return;
 
 	CreatureObject* creature = cast<CreatureObject*>(tano);
-	if(creature == NULL)
+	if (creature == NULL)
 		return;
 
 	//Locker locker(creature);
@@ -201,19 +201,19 @@ void SkillModManager::verifyStructureSkillMods(TangibleObject* tano) {
 
 	ManagedReference<SceneObject*> parent = creature->getRootParent();
 
-	if(parent == NULL) {
-		if(creature->getCurrentCamp() != NULL) {
+	if (parent == NULL) {
+		if (creature->getCurrentCamp() != NULL) {
 			ManagedReference<CampSiteActiveArea*> campArea = creature->getCurrentCamp();
 			parent = campArea->getCamp();
 		}
 	}
 
-	if(parent != NULL && parent->isStructureObject()) {
-		StructureObject* structure = cast<StructureObject*>(parent.get());
+	if (parent != NULL && parent->isStructureObject()) {
+		StructureObject* structure = parent.castTo<StructureObject*>();
 
 		VectorMap<String, int>* templateMods = structure->getTemplateSkillMods();
 
-		for(int i = 0; i < templateMods->size(); ++i) {
+		for (int i = 0; i < templateMods->size(); ++i) {
 
 			String name = templateMods->elementAt(i).getKey();
 			int value = templateMods->get(name);
@@ -227,7 +227,7 @@ void SkillModManager::verifyStructureSkillMods(TangibleObject* tano) {
 	}
 
 
-	if(!compareMods(mods, creature, STRUCTURE)) {
+	if (!compareMods(mods, creature, STRUCTURE)) {
 		error("Structure mods don't match for " + creature->getFirstName());
 	}
 }

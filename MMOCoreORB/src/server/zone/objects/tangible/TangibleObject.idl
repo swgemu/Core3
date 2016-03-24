@@ -228,7 +228,7 @@ class TangibleObject extends SceneObject {
 	 * @param player CreatureObject using the item
 	 * @param value value from packet
 	 */
-	public native abstract void synchronizedUIListen(SceneObject player, int value);
+	public native abstract void synchronizedUIListen(CreatureObject player, int value);
 	
 	/**
 	 * Calls the appropriate UI Stop Listener Function
@@ -237,7 +237,7 @@ class TangibleObject extends SceneObject {
 	 * @param player CreatureObject using the item
 	 * @param value value from packet
 	 */
-	public native abstract void synchronizedUIStopListen(SceneObject player, int value);
+	public native abstract void synchronizedUIStopListen(CreatureObject player, int value);
 	
 	/**
 	 * Sets the active defender

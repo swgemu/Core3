@@ -88,13 +88,18 @@ void GeneticLabratory::recalculateResist(CraftingValues* craftingValues) {
 
 }
 void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
-
-	if(manufactureSchematic == NULL || manufactureSchematic->getDraftSchematic() == NULL)
+	if (manufactureSchematic == NULL)
 		return;
+
 	ManagedReference<DraftSchematic* > draftSchematic = manufactureSchematic->getDraftSchematic();
+
+	if (draftSchematic == NULL)
+		return;
+
 	CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
 	float value, maxPercentage, currentPercentage, weightedSum;
 	String itemName;
+
 	// These 2 values are pretty standard, adding these
 	itemName = "xp";
 	value = float(draftSchematic->getXpAmount());
@@ -103,29 +108,53 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	value = manufactureSchematic->getComplexity();
 	craftingValues->addExperimentalProperty("", itemName, value, value, 0, true, CraftingManager::OVERRIDECOMBINE);
 	float modifier = calculateAssemblyValueModifier(assemblySuccess);
+
 	// Cast component to genetic
 	if (!prototype->isComponent())
 		return;
 
 	GeneticComponent* genetic = cast<GeneticComponent*>(prototype);
+
+	if (genetic == NULL)
+		return;
+
 	HashTable<String, ManagedReference<DnaComponent*> > slots;
+
 	for (int i = 0; i < manufactureSchematic->getSlotCount(); ++i) {
 		// Dna Component Slots
 		Reference<IngredientSlot* > iSlot = manufactureSchematic->getSlot(i);
-		ComponentSlot* cSlot = cast<ComponentSlot*>(iSlot.get());
+		ComponentSlot* cSlot = iSlot.castTo<ComponentSlot*>();
+
+		if (cSlot == NULL)
+			continue;
+
 		ManagedReference<TangibleObject*> tano = cSlot->getPrototype();
-		ManagedReference<DnaComponent*> component = cast<DnaComponent*>( tano.get());
-		slots.put(cSlot->getSlotName(),component);
+
+		if (tano == NULL)
+			continue;
+
+		ManagedReference<DnaComponent*> component = tano.castTo<DnaComponent*>();
+
+		if (component == NULL)
+			continue;
+
+		slots.put(cSlot->getSlotName(), component);
 	}
+
 	// At this point we have all the DNA slots. Update the craftingvalue accordingly
 	DnaComponent* phy = slots.get("physique_profile").get();
 	DnaComponent* pro = slots.get("prowess_profile").get();
 	DnaComponent* men = slots.get("mental_profile").get();
 	DnaComponent* psy = slots.get("psychological_profile").get();
 	DnaComponent* agr = slots.get("aggression_profile").get();
+
+	if (phy == NULL || pro == NULL || men == NULL || psy == NULL || agr == NULL)
+		return;
+
 	// REVAMP FROM HERE DOWN.
 	// STEP 1. Determine Attributes
 	uint32 harMax, fortMax, endMax,intMax, dexMax,cleMax,depMax,couMax,fieMax,powMax;
+
 	// Calculate the max values i.e. the weighter resource avergae.
 	fortMax = Genetics::physiqueFormula(phy->getForititude(),pro->getForititude(),men->getForititude(),psy->getForititude(),agr->getForititude());
 	harMax = Genetics::physiqueFormula(phy->getHardiness(),pro->getHardiness(),men->getHardiness(),psy->getHardiness(),agr->getHardiness());
@@ -137,6 +166,7 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	couMax = Genetics::physchologicalFormula(phy->getCourage(),pro->getCourage(),men->getCourage(),psy->getCourage(),agr->getCourage());
 	fieMax = Genetics::aggressionFormula(phy->getFierceness(),pro->getFierceness(),men->getFierceness(),psy->getFierceness(),agr->getFierceness());
 	powMax = Genetics::aggressionFormula(phy->getPower(),pro->getPower(),men->getPower(),psy->getPower(),agr->getPower());
+
 	// acknowledge any specials found in the experimentation line. this means specials will not modify later by experimentaiton as its an overlay value.
 	bool spBlast = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::BLAST);
 	bool spKinetic = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::KINETIC);
@@ -147,6 +177,7 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	bool spAcid = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::ACID);
 	bool spStun = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::STUN);
 	bool spSaber = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::LIGHTSABER);
+
 	// Calculate resists
 	// 1 percent: (1000 - 0) / 100.0f;
 	float blastMax, energyMax, kineticMax,heatMax,coldMax,electricMax,acidMax,stunMax,saberMax;
@@ -159,8 +190,9 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	acidMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::ACID,100.0f);
 	stunMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::STUN,100.0f);
 	saberMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::LIGHTSABER,100.0f);
+
 	// lets clear the special bit if it moved to effective range.
-	if(saberMax == 0) {
+	if (saberMax == 0) {
 		spSaber = false;
 		saberMax = 100;
 	}
@@ -188,11 +220,11 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 		spElectric = false;
 		electricMax = 100;
 	}
-	if(acidMax == 0) {
+	if (acidMax == 0) {
 		spAcid = false;
 		acidMax = 100;
 	}
-	if(stunMax == 0) {
+	if (stunMax == 0) {
 		spStun = false;
 		stunMax = 100;
 	}
@@ -210,29 +242,39 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	craftingValues->addExperimentalProperty("expPsychologicalProfile","courage",0,couMax,0,false,CraftingManager::LINEARCOMBINE);
 	craftingValues->addExperimentalProperty("expAggressionProfile","fierceness",0,fieMax,0,false,CraftingManager::LINEARCOMBINE);
 	craftingValues->addExperimentalProperty("expAggressionProfile","power",0,powMax,0,false,CraftingManager::LINEARCOMBINE);
+
 	String title;
 	int armorBase = 0;
 	int effectiveness = 0;
-	for(int i=0;i<craftingValues->getExperimentalPropertySubtitleSize();i++) {
+
+	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); i++) {
 		title = craftingValues->getExperimentalPropertySubtitle(i);
+
 		if (craftingValues->isHidden(title))
 			continue;
+
 		// We need to accoutn for assembly percentage. do some swapping around as well.
 		float maxValue = craftingValues->getMaxValue(title);
 		float initialValue = Genetics::initialValue(craftingValues->getMaxValue(title));
+
 		// determine max percentage
 		craftingValues->setMaxPercentage(title, maxValue/1000.0f);
 		craftingValues->setMaxValue(title,1000);
+
 		// using assembly to accoutn for a 1 +% increase
 		currentPercentage = getAssemblyPercentage(initialValue) * modifier;
+
 		//craftingValues->setMaxPercentage(title, maxPercentage);
 		craftingValues->setCurrentPercentage(title, currentPercentage);
+
 		if (title == "fortitude") {
 			armorBase = craftingValues->getCurrentValue(title);
 		}
 	}
+
 	int armorValue = armorBase/500;
 	effectiveness = (int)(((armorBase - (armorValue * 500)) / 50) * 5);
+
 	// Store off armor data
 	craftingValues->addExperimentalProperty("resists","dna_comp_armor_kinetic",spKinetic ? kineticMax : kineticMax < 0 ? -1 : effectiveness,kineticMax,0,true,CraftingManager::OVERRIDECOMBINE);
 	craftingValues->addExperimentalProperty("resists","dna_comp_armor_blast",spBlast ? blastMax : blastMax < 0 ? -1 : effectiveness, blastMax,0,true,CraftingManager::OVERRIDECOMBINE);
@@ -243,6 +285,7 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	craftingValues->addExperimentalProperty("resists","dna_comp_armor_acid",spAcid ? acidMax : acidMax < 0 ? -1 : effectiveness ,acidMax,0,true,CraftingManager::OVERRIDECOMBINE);
 	craftingValues->addExperimentalProperty("resists","dna_comp_armor_stun",spStun ? stunMax : stunMax < 0 ? -1 : effectiveness ,stunMax,0,true,CraftingManager::OVERRIDECOMBINE);
 	craftingValues->addExperimentalProperty("resists","dna_comp_armor_saber",spSaber ? saberMax : saberMax < 0 ? -1 : effectiveness ,saberMax,0,true,CraftingManager::OVERRIDECOMBINE);
+
 	// Store off special information
 	craftingValues->addExperimentalProperty("specials","kineticeffectiveness",spKinetic ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
 	craftingValues->addExperimentalProperty("specials","blasteffectiveness",spBlast ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
@@ -253,17 +296,20 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	craftingValues->addExperimentalProperty("specials","acideffectiveness",spAcid ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
 	craftingValues->addExperimentalProperty("specials","stuneffectiveness",spStun ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
 	craftingValues->addExperimentalProperty("specials","lightsabereffectiveness",spSaber ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
+
 	int quality = ( ((float)phy->getQuality() * 0.2)+ ((float)pro->getQuality()*0.2) + ((float)men->getQuality()*0.2) + ((float)psy->getQuality()*0.2) + ((float)agr->getQuality()*0.2));
 	bool ranged = false;
 	int odds = 0;
 	float menQual = men->getQuality() - 1;
 	float psyQual = psy->getQuality() - 1;
+
 	if (men->isRanged() || psy->isRanged()) {
 		int chance = System::random(100-(assemblySuccess * 10)); // so amazing success 100, critical falure is 20
 		// did you roll exceed (7 - Quality) * 10 (VHQ is 0) so always works
 		if (chance >= (menQual * 10) || chance >= (psyQual * 10))
 			ranged = true;
 	}
+
 	odds = quality * 100;
 	// check for specials here, then we have base assemble work completed.
 	// update crafting values, and/or experimentRow should handle resist calc changes. update crafting values should determine armor setup
@@ -273,6 +319,7 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	genetic->setSpecialAttackTwo(sp2);
 	genetic->setRanged(ranged);
 	genetic->setQuality(quality);
+
 	// determine avg sample levels to choose a level of this template for output generation
 	int level = Genetics::physchologicalFormula(phy->getLevel(),pro->getLevel(),men->getLevel(), psy->getLevel() ,agr->getLevel());
 	genetic->setLevel(level);

@@ -130,10 +130,12 @@ void SpawnAreaMap::loadStaticSpawns() {
 
 				creatureObject->setDirection(Math::deg2rad(heading));
 				
-				if (creatureObject->isJunkDealer()){
-					cast<JunkdealerCreature*>(creatureObject.get())->setJunkDealerConversationType(junkDealerConversationType);
-					cast<JunkdealerCreature*>(creatureObject.get())->setJunkDealerBuyerType(junkDealerBuyingType);
+				if (creatureObject->isJunkDealer()) {
+					JunkdealerCreature* jdc = creatureObject.castTo<JunkdealerCreature*>();
+					jdc->setJunkDealerConversationType(junkDealerConversationType);
+					jdc->setJunkDealerBuyerType(junkDealerBuyingType);
 				}
+
 				if (!moodString.isEmpty()) {
 					creatureObject->setMoodString(moodString);
 

@@ -138,6 +138,9 @@ public:
 		for (int j = 0; j < closeObjects.size(); j++) {
 			SceneObject* obj = cast<SceneObject*>(closeObjects.get(j));
 
+			if (obj == NULL)
+				continue;
+
 			SharedObjectTemplate* objectTemplate = obj->getObjectTemplate();
 
 			if (objectTemplate != NULL) {

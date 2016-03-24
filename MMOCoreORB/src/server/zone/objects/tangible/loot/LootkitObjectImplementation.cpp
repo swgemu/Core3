@@ -31,15 +31,18 @@ void LootkitObjectImplementation::fillAttributeList(AttributeListMessage* alm, C
 void LootkitObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
 
-	LootkitObjectTemplate* LootkitData = dynamic_cast<LootkitObjectTemplate*>(templateData);
+	LootkitObjectTemplate* lootkitData = dynamic_cast<LootkitObjectTemplate*>(templateData);
 
-	components = LootkitData->getComponents();
-	attributes = LootkitData->getAttributes();
+	if (lootkitData == NULL)
+		return;
 
-	comps = LootkitData->getComps();
-	reward = LootkitData->getReward();
+	components = lootkitData->getComponents();
+	attributes = lootkitData->getAttributes();
 
-	deleteComponents = LootkitData->getDeleteComponents();
+	comps = lootkitData->getComps();
+	reward = lootkitData->getReward();
+
+	deleteComponents = lootkitData->getDeleteComponents();
 }
 
 Reference<CreatureObject*> LootkitObjectImplementation::getPlayer() {

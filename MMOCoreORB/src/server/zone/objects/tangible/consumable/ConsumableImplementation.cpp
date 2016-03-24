@@ -238,7 +238,7 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 
 		setModifiers(buff, true);
 
-		DelayedBuff* delayedBuff = cast<DelayedBuff*>(buff.get());
+		DelayedBuff* delayedBuff = buff.castTo<DelayedBuff*>();
 
 		delayedBuff->init(&eventTypes);
 
