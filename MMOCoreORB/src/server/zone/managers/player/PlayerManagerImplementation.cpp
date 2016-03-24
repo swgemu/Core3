@@ -711,13 +711,14 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 	ThreatMap* threatMap = player->getThreatMap();
 
 	if (attacker->isPlayerCreature()) {
+		ManagedReference<CreatureObject*> playerRef = player->asCreatureObject();
+
 		stringId.setStringId("base_player", "prose_target_dead");
 		stringId.setTT(player->getDisplayedName());
-		(cast<CreatureObject*>(attacker))->sendSystemMessage(stringId);
+		playerRef->sendSystemMessage(stringId);
 
 		Reference<ThreatMap*> copyThreatMap = new ThreatMap(*threatMap);
 		PlayerManager* pManager = _this.getReferenceUnsafeStaticCast();
-		ManagedReference<CreatureObject*> playerRef = player->asCreatureObject();
 
 		EXECUTE_TASK_3(pManager, playerRef, copyThreatMap, {
 				if (playerRef_p != NULL) {
@@ -752,7 +753,7 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 
 	if (attacker->getFaction() != 0) {
 		if (attacker->isPlayerCreature() || attacker->isPet()) {
-			CreatureObject* attackerCreature = cast<CreatureObject*>(attacker);
+			CreatureObject* attackerCreature = attacker->asCreatureObject();
 
 			if (attackerCreature->isPet()) {
 				CreatureObject* owner = attackerCreature->getLinkedCreature().get();
@@ -4583,9 +4584,9 @@ bool PlayerManagerImplementation::canGroupMemberHarvestCorpse(CreatureObject* pl
 
 		if (creature->isInRange(groupMember, 256.0f)) {
 
-			CreatureObject* groupMemberCreature = dynamic_cast<CreatureObject*>(groupMember.get());
+			CreatureObject* groupMemberCreature = groupMember->asCreatureObject();
 
-			if (creature->hasSkillToHarvestMe(groupMemberCreature)) {
+			if (groupMemberCreature != NULL && creature->hasSkillToHarvestMe(groupMemberCreature)) {
 				return true;
 			}
 		}

@@ -59,11 +59,11 @@ void RecycleToolImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuR
 }
 
 int RecycleToolImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	Reference<PlayerObject*> playerObject = player->getPlayerObject();
-
-	if(isASubChildOf(player)) {
-
+	if (isASubChildOf(player)) {
 		SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(_this.getReferenceUnsafeStaticCast()->getServerObjectCRC());
+
+		if (templateData == NULL || !templateData->isRecycleToolTemplate())
+			return 1;
 
 		RecycleToolTemplate* recycleToolData = dynamic_cast<RecycleToolTemplate*>(templateData);
 
@@ -97,6 +97,8 @@ int RecycleToolImplementation::handleObjectMenuSelect(CreatureObject* player, by
 			setSelectedTypeName(resourceTypes.get(5));
 			break;
 		}
+
+		return 0;
 	}
 
 	return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);

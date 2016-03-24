@@ -146,9 +146,8 @@ void FireworkShowMenuComponent::addEvent(CreatureObject* player, FireworkObject*
 		if (data != NULL && data->isFireworkShowData())
 			continue;
 
-		if (sceneObject->isFireworkObject() && sceneObject->getObjectID() != fireworkShow->getObjectID()) {
-			TangibleObject* tano = cast<TangibleObject*>(sceneObject);
-			String itemWithUseCount = sceneObject->getDisplayedName() + " (" + tano->getUseCount() + ")";
+		if (sceneObject->getObjectID() != fireworkShow->getObjectID()) {
+			String itemWithUseCount = sceneObject->getDisplayedName() + " (" + firework->getUseCount() + ")";
 			suiBox->addMenuItem(itemWithUseCount, sceneObject->getObjectID());
 		}
 	}

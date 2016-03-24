@@ -15,7 +15,11 @@ int InstrumentObserverImplementation::notifyObserverEvent(unsigned int eventType
 		return 0;
 	}
 
-	SceneObject* creature = cast<SceneObject*>( observable);
+	SceneObject* creature = cast<SceneObject*>(observable);
+
+	if (creature == NULL) {
+		return 0;
+	}
 
 	ManagedReference<Instrument* > instrument = this->instrument.get();
 

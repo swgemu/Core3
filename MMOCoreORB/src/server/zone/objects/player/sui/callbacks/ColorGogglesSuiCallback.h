@@ -21,28 +21,29 @@ public:
 	void run(CreatureObject* creature, SuiBox* sui, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);
 
-		SuiColorBox* cBox = cast<SuiColorBox*>( sui);
-
-		if(!creature->isPlayerCreature())
+		if (!sui->isColorPicker() || cancelPressed)
 			return;
 
-		if(!cancelPressed) {
+		if (!creature->isPlayerCreature())
+			return;
 
-			int index = Integer::valueOf(args->get(0).toString());
+		SuiColorBox* cBox = cast<SuiColorBox*>(sui);
 
-			String palette = cBox->getColorPalette();
+		int index = Integer::valueOf(args->get(0).toString());
 
-			ManagedReference<SceneObject*> goggles = cBox->getUsingObject();
+		String palette = cBox->getColorPalette();
 
-			ManagedReference<TangibleObject*> gogglesTano = cast<TangibleObject*>(goggles.get());
+		ManagedReference<SceneObject*> goggles = cBox->getUsingObject();
 
-			if (gogglesTano != NULL) {
-				Locker locker(gogglesTano, creature);
+		if (goggles == NULL)
+			return;
 
-				gogglesTano->setCustomizationVariable(palette, index, true);
-			}
+		ManagedReference<TangibleObject*> gogglesTano = goggles->asTangibleObject();
 
+		if (gogglesTano != NULL) {
+			Locker locker(gogglesTano, creature);
 
+			gogglesTano->setCustomizationVariable(palette, index, true);
 		}
 	}
 };

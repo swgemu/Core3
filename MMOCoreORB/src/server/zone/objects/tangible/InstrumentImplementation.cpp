@@ -71,13 +71,13 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 			}
 		}
 
-		ManagedReference<SceneObject*> playerParent = player->getParent();
+		ManagedReference<SceneObject*> playerParent = player->getParent().get();
 
 		if (playerParent != NULL) {
 			if (!playerParent->isCellObject()) {
 				return 1;
 			} else {
-				CellObject* cell = cast<CellObject*>( playerParent.get());
+				CellObject* cell = playerParent.castTo<CellObject*>();
 
 				StructureObject* structureObject = dynamic_cast<StructureObject*>(cell->getParent().get().get());
 
@@ -148,7 +148,10 @@ void InstrumentImplementation::spawnNonAdmin(CreatureObject* player) {
 	}
 
 	if (spawnedObject->getZone() == NULL) {
-		Instrument* instrument = cast<Instrument*>( spawnedObject.get());
+		Instrument* instrument = spawnedObject.castTo<Instrument*>();
+
+		if (instrument == NULL)
+			return;
 
 		Locker locker(instrument);
 
