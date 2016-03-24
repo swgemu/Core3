@@ -49,7 +49,7 @@ ForceLightningSingle2Command = {
 	speed = 4.0,
 	forceCost = 150,
 	visMod = 25,
-	accuracySkillMod = "forcelightning_accuracy";
+	accuracySkillMod = "forcelightning_accuracy",
 
 	stateEffects = {
 	  StateEffect(
@@ -63,7 +63,7 @@ ForceLightningSingle2Command = {
 	  )
 	},
 
-	animation = "force_lightning_1_particle_level_3", 
+	animation = "force_lightning_1_particle_level_3",
 	animType = GENERATE_INTENSITY,
 
 	combatSpam = "forcelightningsingle2",
@@ -77,4 +77,3 @@ ForceLightningSingle2Command = {
 }
 
 AddCommand(ForceLightningSingle2Command)
-
