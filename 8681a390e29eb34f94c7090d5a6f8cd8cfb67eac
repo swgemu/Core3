@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_47b06ddd",
+        "filename": "MMOCoreORB/bin/scripts/commands/forceChoke.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-24T22:19:44Z",
+      "side": 1,
+      "message": "This needs to be randomly distributed among pools some way. I\u0027m not sure the exact implementation, but the screenshots have mixed-color flytext for the damage.",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 9
+      },
+      "revId": "8681a390e29eb34f94c7090d5a6f8cd8cfb67eac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_47994d6d",
+        "filename": "MMOCoreORB/bin/scripts/commands/forceChoke.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-24T22:19:44Z",
+      "side": 1,
+      "message": "Make this a DamageOfHit.",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 8
+      },
+      "revId": "8681a390e29eb34f94c7090d5a6f8cd8cfb67eac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_a794e937",
+        "filename": "MMOCoreORB/bin/scripts/mobile/dathomir/axkva_min.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-24T22:19:44Z",
+      "side": 1,
+      "message": "This goes against the screenshots we have of axkva doing almost dead on 10x the amount of damage  as NS\u0027s.",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 23
+      },
+      "revId": "8681a390e29eb34f94c7090d5a6f8cd8cfb67eac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_67b571cc",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 3326,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-24T22:19:44Z",
+      "side": 1,
+      "message": "What is the point of this function?",
+      "range": {
+        "startLine": 3326,
+        "startChar": 0,
+        "endLine": 3326,
+        "endChar": 62
+      },
+      "revId": "8681a390e29eb34f94c7090d5a6f8cd8cfb67eac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_679ed158",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 3329,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-24T22:19:44Z",
+      "side": 1,
+      "message": "This would cause infinite recursion -- how did you not get a stack overflow?\n\nOh, I see... you never call this function outside of this recursion.",
+      "range": {
+        "startLine": 3329,
+        "startChar": 29,
+        "endLine": 3329,
+        "endChar": 64
+      },
+      "revId": "8681a390e29eb34f94c7090d5a6f8cd8cfb67eac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_07ca754f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 3338,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-24T22:19:44Z",
+      "side": 1,
+      "message": "Why are you setting a buff *and* adding it as a DOT? It\u0027s one or the other. If you need to add flytext, do it in the same place you send the system message.",
+      "range": {
+        "startLine": 3331,
+        "startChar": 0,
+        "endLine": 3338,
+        "endChar": 19
+      },
+      "revId": "8681a390e29eb34f94c7090d5a6f8cd8cfb67eac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_e7a9817c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTime.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-24T22:19:44Z",
+      "side": 1,
+      "message": "Looking at screens, this shouldn\u0027t randomize, and besides that, you are changing a member each tick, which is not a good idea.",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 67
+      },
+      "revId": "8681a390e29eb34f94c7090d5a6f8cd8cfb67eac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_c7ac7d8f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTime.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-24T22:19:44Z",
+      "side": 1,
+      "message": "Remove all of this.",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 2
+      },
+      "revId": "8681a390e29eb34f94c7090d5a6f8cd8cfb67eac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_a7bb89c3",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTime.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-24T22:19:44Z",
+      "side": 1,
+      "message": "This isn\u0027t modified -- no need to store it in a temporary variable.",
+      "range": {
+        "startLine": 355,
+        "startChar": 1,
+        "endLine": 355,
+        "endChar": 30
+      },
+      "revId": "8681a390e29eb34f94c7090d5a6f8cd8cfb67eac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_87b685db",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTime.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-24T22:19:44Z",
+      "side": 1,
+      "message": "completely unnecessary.",
+      "range": {
+        "startLine": 356,
+        "startChar": 1,
+        "endLine": 356,
+        "endChar": 35
+      },
+      "revId": "8681a390e29eb34f94c7090d5a6f8cd8cfb67eac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
