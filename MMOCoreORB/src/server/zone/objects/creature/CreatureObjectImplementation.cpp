@@ -852,6 +852,9 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 			case CreatureState::RALLIED:
 				showFlyText("combat_effects", "go_rally", 0, 0xFF, 0);
 				break;
+			case CommandEffect::FORCECHOKE:
+				showFlyText("combat_effects", "choke", 0, 0xFF, 0);
+				break;
 			case CreatureState::BERSERK:
 				playEffect("clienteffect/combat_special_attacker_berserk.cef");
 				break;
