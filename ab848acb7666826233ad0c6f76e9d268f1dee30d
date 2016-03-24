@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_47e70de5",
+        "filename": "MMOCoreORB/src/server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-24T23:10:48Z",
+      "side": 1,
+      "message": "this should be one line (compiler will optimize though)",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 79
+      },
+      "revId": "ab848acb7666826233ad0c6f76e9d268f1dee30d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_67ec91c8",
+        "filename": "MMOCoreORB/src/server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-24T23:10:48Z",
+      "side": 1,
+      "message": "This might cause compiler errors (-Werror) depending on the compiler since the name ilocker has already been used once. Rename one or scope the previous one.",
+      "range": {
+        "startLine": 141,
+        "startChar": 3,
+        "endLine": 141,
+        "endChar": 27
+      },
+      "revId": "ab848acb7666826233ad0c6f76e9d268f1dee30d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
