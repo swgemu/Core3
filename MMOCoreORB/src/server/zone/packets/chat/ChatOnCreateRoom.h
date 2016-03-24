@@ -16,7 +16,7 @@ public:
 		insertShort(4); // Op Count
 		insertInt(0x35D7CC9F); // Opcode
 
-		insertInt(24); // Error Code (override for now to stop error spam on login)
+		insertInt(error); // Error Code
 
 		insertInt(room->getRoomID()); // ChatRoom ID
 
@@ -76,7 +76,7 @@ public:
 	ChatOnCreateRoom(CreatureObject* player, int requestID, int error) : BaseMessage() {
 		insertShort(4); // Op Count
 		insertInt(0x35D7CC9F); // Opcode
-		insertInt(error); // Error Code
+		insertInt(24); // Error Code (override to stop error spam due to autojoin client bug)
 
 		insertInt(0); // ChatRoom ID
 		insertInt(0); // Private Flag.
