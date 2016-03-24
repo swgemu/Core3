@@ -99,7 +99,7 @@ public:
 				incomingTano = crate->extractObject(crate->getUseCount());
 		}
 
-		if(incomingTano == NULL) {
+		if (incomingTano == NULL) {
 			error("Incoming object is NULL");
 			return false;
 		}
@@ -116,10 +116,11 @@ public:
 			itemToUse->removeAntiDecayKit();
 		}
 
-		if(incomingTano->getUseCount() > slotNeeds) {
+		if (incomingTano->getUseCount() > slotNeeds) {
 			incomingTano->decreaseUseCount(slotNeeds);
 			itemToUse->setUseCount((slotNeeds > 1 ? slotNeeds : 0), false);
 		} else {
+			Locker tLocker(incomingTano);
 			incomingTano->destroyObjectFromWorld(true);
 			incomingTano->destroyObjectFromDatabase(true);
 		}
