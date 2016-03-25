@@ -501,12 +501,13 @@ function DeathWatchBunkerScreenPlay:respawnHaldo(creatureObject)
 	end
 end
 
-function DeathWatchBunkerScreenPlay:boxLooted(pSceneObject, pCreature, selectedID)
-	if selectedID ~= 16 then
+function DeathWatchBunkerScreenPlay:boxLooted(pSceneObject, pCreature, radialID)
+	if (radialID ~= 16) then
 		return 0
 	end
 
 	local objectID = SceneObject(pSceneObject):getObjectID()
+
 	if readData(objectID .. ":dwb:spawned") ~= 1 then
 		local boxId = readData(objectID .. ":dwb:lootbox")
 		writeData(objectID .. ":dwb:spawned", 1)
@@ -514,15 +515,32 @@ function DeathWatchBunkerScreenPlay:boxLooted(pSceneObject, pCreature, selectedI
 		--spawn enemies
 		if boxId == 1 then
 			local spawn = deathWatchSpecialSpawns["lootbox1mob1"]
-			spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+			local pMobile = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+
+			if (pMobile ~= nil) then
+				createEvent(self.containerRespawnTime, "DeathWatchBunkerScreenPlay", "despawnMobile", pMobile, "")
+			end
 		elseif boxId == 2 then
 			local spawn = deathWatchSpecialSpawns["lootbox2mob1"]
-			spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+			local pMobile = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+
+			if (pMobile ~= nil) then
+				createEvent(self.containerRespawnTime, "DeathWatchBunkerScreenPlay", "despawnMobile", pMobile, "")
+			end
 		elseif boxId == 3 then
 			local spawn = deathWatchSpecialSpawns["lootbox3mob1"]
-			spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+			local pMobile = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+
+			if (pMobile ~= nil) then
+				createEvent(self.containerRespawnTime, "DeathWatchBunkerScreenPlay", "despawnMobile", pMobile, "")
+			end
+
 			local spawn = deathWatchSpecialSpawns["lootbox3mob2"]
-			spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+			pMobile = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+
+			if (pMobile ~= nil) then
+				createEvent(self.containerRespawnTime, "DeathWatchBunkerScreenPlay", "despawnMobile", pMobile, "")
+			end
 		end
 
 		createEvent(self.containerRespawnTime, "DeathWatchBunkerScreenPlay", "refillContainer", pSceneObject, "")
@@ -531,14 +549,22 @@ function DeathWatchBunkerScreenPlay:boxLooted(pSceneObject, pCreature, selectedI
 	return 0
 end
 
+function DeathWatchBunkerScreenPlay:despawnMobile(pMobile)
+	if (pMobile == nil) then
+		return
+	end
+
+	SceneObject(pMobile):destroyObjectFromWorld()
+end
+
 function DeathWatchBunkerScreenPlay:refillContainer(pSceneObject)
 	if (pSceneObject == nil) then
 		return
 	end
 
-	writeData(SceneObject(pSceneObject):getObjectID() .. ":dwb:spawned", 0)
-
 	if (SceneObject(pSceneObject):getContainerObjectsSize() == 0) then
+		writeData(SceneObject(pSceneObject):getObjectID() .. ":dwb:spawned", 0)
+		
 		createLoot(pSceneObject, "death_watch_bunker_lootbox", 1, false)
 		if getRandomNumber(100) > 95 then
 			createLoot(pSceneObject, "death_watch_bunker_lootbox", 1, false)
@@ -558,7 +584,7 @@ function DeathWatchBunkerScreenPlay:poisonEvent(pSceneObject)
 
 					if pObject ~= nil then
 						if (SceneObject(pObject):isPlayerCreature() and not self:hasRebreather(pObject)
-							and not CreatureObject(pObject):isDead() 
+							and not CreatureObject(pObject):isDead()
 							and (not CreatureObject(pObject):isIncapacitated() or CreatureObject(pObject):isFeigningDeath())) then
 							createEvent(500, "DeathWatchBunkerScreenPlay", "doPoison", pObject, "")
 						end
