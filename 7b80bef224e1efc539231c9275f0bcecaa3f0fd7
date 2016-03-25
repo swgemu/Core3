@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "da7095c5_0754b552",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-25T21:07:47Z",
+      "side": 1,
+      "message": "Remove this, you aren\u0027t using state code (plus state won\u0027t ever be CommandEffect::FORCECHOKE ....)",
+      "range": {
+        "startLine": 855,
+        "startChar": 0,
+        "endLine": 857,
+        "endChar": 10
+      },
+      "revId": "7b80bef224e1efc539231c9275f0bcecaa3f0fd7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_a765c946",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTime.cpp",
         "patchSetId": 15
