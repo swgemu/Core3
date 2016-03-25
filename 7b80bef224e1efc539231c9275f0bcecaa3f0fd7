@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_a765c946",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTime.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-25T20:55:18Z",
+      "side": 1,
+      "message": "randomize the strength in initDot() and just use it here... we know it should tick for the same each time.",
+      "range": {
+        "startLine": 343,
+        "startChar": 1,
+        "endLine": 343,
+        "endChar": 78
+      },
+      "revId": "7b80bef224e1efc539231c9275f0bcecaa3f0fd7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_475aad84",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTime.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-03-25T20:55:18Z",
+      "side": 1,
+      "message": "Remove this, it should only show on initial application (which it should just by removing this)",
+      "range": {
+        "startLine": 358,
+        "startChar": 3,
+        "endLine": 358,
+        "endChar": 67
+      },
+      "revId": "7b80bef224e1efc539231c9275f0bcecaa3f0fd7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
