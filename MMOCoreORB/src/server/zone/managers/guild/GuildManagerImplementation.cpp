@@ -49,6 +49,7 @@
 #include "server/zone/objects/guild/sui/GuildTransferLeaderAckSuiCallback.h"
 #include "server/zone/objects/guild/sui/GuildTransferLotsSuiCallback.h"
 #include "server/zone/objects/guild/sui/GuildVoteSuiCallback.h"
+#include "server/zone/objects/guild/sui/GuildAdminInfoSuiCallback.h"
 #include "server/zone/objects/creature/commands/sui/ListGuildsResponseSuiCallback.h"
 
 #include "server/zone/packets/scene/SceneObjectCreateMessage.h"
@@ -467,7 +468,7 @@ void GuildManagerImplementation::sendGuildCreateNameTo(CreatureObject* player, G
 	player->sendMessage(inputBox->generateMessage());
 }
 
-void GuildManagerImplementation::sendGuildChangeNameTo(CreatureObject* player, GuildObject* guild, GuildTerminal* terminal) {
+void GuildManagerImplementation::sendGuildChangeNameTo(CreatureObject* player, GuildObject* guild) {
 	if (guild == NULL)
 		return;
 
@@ -488,8 +489,6 @@ void GuildManagerImplementation::sendGuildChangeNameTo(CreatureObject* player, G
 	inputBox->setPromptTitle("@guild:namechange_name_title"); // Change Guild Name
 	inputBox->setPromptText("@guild:namechange_name_prompt"); // Enter the name to which you wish to change your guild. Guild names must be between 1 and 25 characters. Name changes take approximately 7 days to take effect.
 	inputBox->setMaxInputSize(24);
-	inputBox->setUsingObject(terminal);
-	inputBox->setForceCloseDistance(32);
 
 	player->getPlayerObject()->addSuiBox(inputBox);
 	player->sendMessage(inputBox->generateMessage());
@@ -550,7 +549,7 @@ void GuildManagerImplementation::sendGuildCreateAbbrevTo(CreatureObject* player,
 	player->sendMessage(inputBox->generateMessage());
 }
 
-void GuildManagerImplementation::sendGuildChangeAbbrevTo(CreatureObject* player, GuildObject* guild, GuildTerminal* terminal) {
+void GuildManagerImplementation::sendGuildChangeAbbrevTo(CreatureObject* player, GuildObject* guild) {
 	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::GUILD_CHANGE_ABBREV);
 
 	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::GUILD_CHANGE_ABBREV);
@@ -558,8 +557,6 @@ void GuildManagerImplementation::sendGuildChangeAbbrevTo(CreatureObject* player,
 	inputBox->setPromptTitle("@guild:namechange_abbrev_title"); // Change Guild Abbreviation
 	inputBox->setPromptText("@guild:namechange_abbrev_prompt"); // Enter the abbreviation for your guild's new name. Guild abbreviations must be between 1 and 5 characters in length.
 	inputBox->setMaxInputSize(4);
-	inputBox->setUsingObject(terminal);
-	inputBox->setForceCloseDistance(32);
 
 	player->getPlayerObject()->addSuiBox(inputBox);
 	player->sendMessage(inputBox->generateMessage());
@@ -1874,6 +1871,9 @@ void GuildManagerImplementation::sendAdminGuildInfoTo(CreatureObject* player, Gu
 	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(player, SuiWindowType::ADMIN_GUILDINFO);
 
 	box->setPromptTitle("Guild Info");
+	box->setOkButton(true, "@guild:menu_namechange");
+	box->setCancelButton(true, "@cancel");
+	box->setCallback(new GuildAdminInfoSuiCallback(server, guild));
 
 	StringBuffer promptText;
 	promptText << "Guild Name: " << guild->getGuildName() << " <" << guild->getGuildAbbrev() << ">" << endl;
@@ -1976,6 +1976,7 @@ void GuildManagerImplementation::sendAdminGuildInfoTo(CreatureObject* player, Gu
 
 	box->setPromptText(promptText.toString());
 
+	player->getPlayerObject()->addSuiBox(box);
 	player->sendMessage(box->generateMessage());
 
 	return;

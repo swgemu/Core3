@@ -108,11 +108,11 @@ class GuildManager extends ManagedService implements Logger {
 
 	public native void sendGuildCreateNameTo(CreatureObject player, GuildTerminal guildTerminal);
 
-	public native void sendGuildChangeNameTo(CreatureObject player, GuildObject guild, GuildTerminal guildTerminal);
+	public native void sendGuildChangeNameTo(CreatureObject player, GuildObject guild);
 
 	public native void sendGuildCreateAbbrevTo(CreatureObject player, GuildTerminal guildTerminal);
 
-	public native void sendGuildChangeAbbrevTo(CreatureObject player, GuildObject guild, GuildTerminal guildTerminal);
+	public native void sendGuildChangeAbbrevTo(CreatureObject player, GuildObject guild);
 
 	public native void sendGuildInformationTo(CreatureObject player, GuildObject guild, GuildTerminal guildTerminal);
 

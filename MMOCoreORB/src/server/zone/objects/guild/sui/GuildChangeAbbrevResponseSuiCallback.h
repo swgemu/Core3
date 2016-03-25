@@ -3,7 +3,6 @@
 #define GUILDCHANGEABBREVRESPONSESUICALLBACK_H_
 
 #include "server/zone/managers/guild/GuildManager.h"
-#include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
 #include "server/zone/objects/player/sui/SuiCallback.h"
 
 class GuildChangeAbbrevResponseSuiCallback : public SuiCallback {
@@ -51,20 +50,6 @@ public:
 		}
 
 		String guildAbbrev = args->get(0).toString();
-
-		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
-
-		if (obj == NULL || !obj->isTerminal()) {
-			guild->resetRename();
-			return;
-		}
-
-		Terminal* terminal = cast<Terminal*>( obj.get());
-
-		if (!terminal->isGuildTerminal()) {
-			guild->resetRename();
-			return;
-		}
 
 		if (guildManager->validateGuildAbbrev(player, guildAbbrev, guild)) {
 			guild->setPendingNewAbbrev(guildAbbrev);

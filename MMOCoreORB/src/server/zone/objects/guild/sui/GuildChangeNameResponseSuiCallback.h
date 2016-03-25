@@ -3,7 +3,6 @@
 #define GUILDCHANGENAMERESPONSESUICALLBACK_H_
 
 #include "server/zone/managers/guild/GuildManager.h"
-#include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
@@ -39,18 +38,6 @@ public:
 
 		String guildName = args->get(0).toString();
 
-		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
-
-		if (obj == NULL || !obj->isTerminal())
-			return;
-
-		Terminal* terminal = cast<Terminal*>( obj.get());
-
-		if (!terminal->isGuildTerminal())
-			return;
-
-		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
-
 		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
 		//Check if this player is already creating a guild...
@@ -61,7 +48,7 @@ public:
 			Locker glocker(guild, player);
 
 			guild->setPendingNewName(guildName);
-			guildManager->sendGuildChangeAbbrevTo(player, guild, guildTerminal);
+			guildManager->sendGuildChangeAbbrevTo(player, guild);
 			return;
 		}
 

@@ -241,7 +241,7 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		break;
 	case 192:
 		if (guildObject != NULL) {
-			guildManager->sendGuildChangeNameTo(player, guildObject, _this.getReferenceUnsafeStaticCast());
+			guildManager->sendGuildChangeNameTo(player, guildObject);
 		}
 		break;
 	default:
