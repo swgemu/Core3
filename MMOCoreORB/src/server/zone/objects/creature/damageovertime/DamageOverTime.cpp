@@ -157,11 +157,8 @@ uint32 DamageOverTime::initDot(CreatureObject* victim, CreatureObject* attacker)
 		break;
 	case CommandEffect::FORCECHOKE:
 		nextTick.addMiliTime(6000);
-		strength = (float)strength * (1.f - (System::random(25) / 100.f));
-
-		if (victim->isPlayerCreature() && attacker->isPlayerCreature()) {
-			strength /= 4;
-		}
+		strength = (float)(strength * 0.01f) + (strength * (System::random(100) * 0.01f));
+		victim->showFlyText("combat_effects", "choke", 0xFF, 0, 0);
 
 		break;
 	}
@@ -346,25 +343,24 @@ uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* 
 	if (victim->isIncapacitated() && victim->isFeigningDeath() == false)
 		return 0;
 
-	int damage = (int)(strength);
 	Reference<CreatureObject*> attackerRef = attacker;
 	Reference<CreatureObject*> victimRef = victim;
 
-	EXECUTE_TASK_3(victimRef, attackerRef, damage, {
+	EXECUTE_TASK_4(victimRef, attackerRef, attribute, strength, {
 			Locker locker(victimRef_p);
 
 			Locker crossLocker(attackerRef_p, victimRef_p);
 
-			victimRef_p->inflictDamage(attackerRef_p, CreatureAttribute::HEALTH, damage_p, true);
-			victimRef_p->inflictDamage(attackerRef_p, CreatureAttribute::ACTION, damage_p, true);
-			victimRef_p->inflictDamage(attackerRef_p, CreatureAttribute::MIND, damage_p, true);
+			victimRef_p->inflictDamage(attackerRef_p, attribute_p, strength_p, true);
 			if (victimRef_p->hasAttackDelay())
 				victimRef_p->removeAttackDelay();
 
 			victimRef_p->playEffect("clienteffect/pl_force_choke.cef", "");
+			victimRef_p->sendSystemMessage("@combat_effects:choke_single");
 	});
 
-	return damage;
+	return strength;
+
 }
 
 float DamageOverTime::reduceTick(float reduction) {
