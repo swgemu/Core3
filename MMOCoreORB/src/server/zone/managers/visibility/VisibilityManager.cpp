@@ -225,7 +225,7 @@ void VisibilityManager::loadConfiguration() {
 
 		delete lua;
 
-	} catch(Exception e) {
+	} catch (Exception& e) {
 		error(e.getMessage());
 	}
 }

@@ -10,6 +10,8 @@
 
 #include "engine/engine.h"
 
+#include "engine/util/u3d/QuadTree.h"
+
 #ifdef WITH_STM
 class QuadTreeReference : public TransactionalReference<QuadTree*> {
 #else

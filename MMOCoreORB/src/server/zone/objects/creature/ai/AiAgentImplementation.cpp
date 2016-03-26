@@ -73,7 +73,7 @@
 #include "server/zone/templates/mobile/MobileOutfit.h"
 #include "server/zone/templates/mobile/MobileOutfitGroup.h"
 #include "server/zone/templates/SharedObjectTemplate.h"
-#include "server/zone//ZoneReference.h"
+#include "server/zone/ZoneReference.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/objects/scene/variables/DeltaVector.h"

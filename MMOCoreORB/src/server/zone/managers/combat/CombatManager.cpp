@@ -1859,8 +1859,9 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	numberOfPoolsDamaged += ((bool)(poolsToDamage & ACTION) && data.getActionDamageMultiplier() > 0.0f);
 	numberOfPoolsDamaged += ((bool)(poolsToDamage & MIND) && data.getMindDamageMultiplier() > 0.0f);
 
-	int numSpillOverPools = 3-numberOfPoolsDamaged;
-	float spillMultPerPool = (0.1f * numSpillOverPools) / numberOfPoolsDamaged;
+	int numSpillOverPools = 3 - numberOfPoolsDamaged;
+
+	float spillMultPerPool = (0.1f * numSpillOverPools) / MAX(numberOfPoolsDamaged, 1);
 	int totalSpillOver = 0; // Accumulate our total spill damage
 
 	if (poolsToDamage & HEALTH) {

@@ -19,7 +19,7 @@ class SuiCreatePageMessage : public BaseMessage {
 	int optionCount;
 
 public:
-	SuiCreatePageMessage(SuiPageData* sui) {
+	SuiCreatePageMessage(SuiPageData* sui) : optionOffset(0), optionCount(0) {
 		insertShort(0x02);
 		insertInt(0xD44B7259);
 

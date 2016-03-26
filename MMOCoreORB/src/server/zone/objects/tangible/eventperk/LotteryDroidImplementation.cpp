@@ -256,7 +256,7 @@ void LotteryDroidImplementation::sendLotteryInfoSUI(CreatureObject* player) {
 
 	int payout = creditPool * payoutPercent;
 
-	uint64 timeLimit = gameDuration * 3600 * 1000;
+	uint64 timeLimit = ((uint64)gameDuration) * 3600 * 1000;
 	Time* startTime = getGameStartTime();
 
 	Time currentTime;
@@ -391,7 +391,7 @@ CreatureObject* LotteryDroidImplementation::getDeedOwner() {
 
 String LotteryDroidImplementation::getTimeLeft(int timeLeft) {
 
-	float hours = timeLeft / (3600 * 1000);
+	float hours = (float)timeLeft / (3600.f * 1000.f);
 	int minHours = 0;
 
 	if (hours < 1)

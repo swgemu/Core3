@@ -255,7 +255,10 @@ void ObjectVersionUpdateManager::updateTangibleObjectsVersion6() {
 
 	uint64 dummyKey;
 	ObjectDatabaseIterator schemIterator(schemdb);
-	schemIterator.getNextKey(dummyKey);
+
+	if (!schemIterator.getNextKey(dummyKey))
+		return;
+
 	if(dummyKey == 0)
 		return;
 

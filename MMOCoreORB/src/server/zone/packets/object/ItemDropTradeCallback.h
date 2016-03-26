@@ -44,9 +44,6 @@ public:
 		ManagedReference<PlayerObject*> playerObject = NULL;
 		bool godMode = false;
 
-		if (player == NULL)
-			return;
-
 		playerObject = player->getPlayerObject();
 
 		if (playerObject == NULL)
