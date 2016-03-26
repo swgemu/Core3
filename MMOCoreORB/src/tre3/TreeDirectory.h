@@ -30,11 +30,11 @@ public:
 		return *this;
 	}
 
-	int compare(Reference<TreeFileRecord*>& o1, const Reference<TreeFileRecord*>& o2) const {
+	int compare(const Reference<TreeFileRecord*>& o1, const Reference<TreeFileRecord*>& o2) const {
 		return o1->compareTo(*o2.get());
 	}
 
-	int compare(Reference<TreeFileRecord*>& o1, const String& fileName) const {
+	int compare(const Reference<TreeFileRecord*>& o1, const String& fileName) const {
 		return o1->compareTo(fileName);
 	}
 
@@ -45,7 +45,7 @@ public:
 	    while (l <= r) {
         	m = (l + r) / 2;
 
-        	Reference<TreeFileRecord*>& obj = Vector<Reference<TreeFileRecord*> >::elementData[m];
+        	const Reference<TreeFileRecord*>& obj = Vector<Reference<TreeFileRecord*> >::elementData[m];
         	cmp = compare(obj, fileName);
 
         	if (cmp == 0)
