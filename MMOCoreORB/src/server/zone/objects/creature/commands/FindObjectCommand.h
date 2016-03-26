@@ -42,9 +42,11 @@ public:
 					Vector3 worldPosition = targetObject->getWorldPosition();
 
 					ManagedReference<WaypointObject*> obj = server->getZoneServer()->createObject(0xc456e788, 1).castTo<WaypointObject*>();
+
+					Locker waypointGuard(obj);
+
 					obj->setPlanetCRC(targetObject->getPlanetCRC());
 					obj->setPosition(worldPosition.getX(), 0, worldPosition.getY());
-
 					obj->setActive(true);
 
 					ghost->addWaypoint(obj, false, true);
@@ -83,7 +85,7 @@ public:
 				if (object == NULL)
 					continue;
 
-				if(object == creature)
+				if (object == creature)
 					continue;
 
 				results.deleteAll();
