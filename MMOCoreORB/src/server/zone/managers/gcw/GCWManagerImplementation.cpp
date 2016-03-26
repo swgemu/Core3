@@ -26,6 +26,7 @@
 #include "server/zone/managers/gcw/tasks/SecurityRepairTask.h"
 #include "server/zone/managers/gcw/tasks/BaseShutdownTask.h"
 #include "server/zone/managers/gcw/tasks/BaseRebootTask.h"
+#include "server/zone/managers/gcw/GCWBaseShutdownObserver.h"
 
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
@@ -1601,7 +1602,12 @@ void GCWManagerImplementation::startAbortSequenceDelay(BuildingObject* building,
 
 	creature->sendSystemMessage("@hq:vulnerability_reset_request_received"); // Structure shutdown request received. Please stand by while the command is processed. Remain with the terminal.
 	Reference<Task*> newTask = new BaseShutdownTask(_this.getReferenceUnsafeStaticCast(), building, creature, hqTerminal);
-	newTask->schedule(60000);
+	creature->addPendingTask("base_shutdown", newTask, 60000);
+
+	GCWBaseShutdownObserver* observer = new GCWBaseShutdownObserver();
+	observer->setObserverType(ObserverType::GCWBASESHUTDOWN);
+	creature->registerObserver(ObserverEventType::PARENTCHANGED, observer);
+	creature->registerObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
 }
 
 void GCWManagerImplementation::abortShutdownSequence(BuildingObject* building, CreatureObject* creature) {

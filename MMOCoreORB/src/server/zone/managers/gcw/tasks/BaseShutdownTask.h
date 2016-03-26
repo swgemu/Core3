@@ -31,6 +31,8 @@ public:
 
 		Locker locker(player);
 
+		player->removePendingTask("base_shutdown");
+
 		if (player->getParentID() == 0) {
 			player->sendSystemMessage("@hq:vulnerability_reset_no_longer_in_structure"); // You don't appear to be in the structure any longer. Aborting structure shutdown.
 			return;
@@ -44,6 +46,23 @@ public:
 
 		if (ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TERMINAL))
 			ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
+
+		Observer* shutdownObserver = NULL;
+		SortedVector<ManagedReference<Observer* > > observers = player->getObservers(ObserverEventType::PARENTCHANGED);
+
+		for (int i = 0; i < observers.size(); i++) {
+			Observer* observer = observers.get(i);
+
+			if (observer->isObserverType(ObserverType::GCWBASESHUTDOWN)) {
+				shutdownObserver = observer;
+				break;
+			}
+		}
+
+		if (shutdownObserver != NULL) {
+			player->dropObserver(ObserverEventType::PARENTCHANGED, shutdownObserver);
+			player->dropObserver(ObserverEventType::OBJECTDESTRUCTION, shutdownObserver);
+		}
 
 		ManagedReference<SuiMessageBox*> suiMessageBox = new SuiMessageBox(player, SuiWindowType::HQ_TERMINAL);
 		suiMessageBox->setPromptTitle("@faction/faction_hq/faction_hq_response:terminal_response27"); // Confirm Facility Shutdown

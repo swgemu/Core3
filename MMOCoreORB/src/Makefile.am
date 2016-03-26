@@ -97,7 +97,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/tangible/eventperk/ShuttleBeacon.cpp \
+core3_IDLS =	autogen/server/zone/managers/gcw/GCWBaseShutdownObserver.cpp \
+				autogen/server/zone/objects/tangible/eventperk/ShuttleBeacon.cpp \
 				autogen/server/utils/LambdaObserver.cpp \
 				autogen/server/zone/objects/tangible/misc/FsCraftingComponentObject.cpp \
 				autogen/server/zone/objects/tangible/misc/CustomIngredient.cpp \
@@ -546,6 +547,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/faction/FactionManager.cpp \
 		server/zone/managers/faction/FactionMap.cpp \
 		server/zone/managers/gcw/GCWManagerImplementation.cpp \
+		server/zone/managers/gcw/GCWBaseShutdownObserverImplementation.cpp \
 		server/zone/managers/components/ComponentManager.cpp \
 		server/zone/managers/planet/HeightMap.cpp \
 		server/zone/managers/visibility/VisibilityManager.cpp \

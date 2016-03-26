@@ -1,0 +1,18 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.
+*/
+
+package server.zone.managers.gcw;
+import engine.core.ManagedObject;
+import engine.util.Observer;
+import engine.util.Observable;
+
+class GCWBaseShutdownObserver extends Observer implements Logger {
+
+	public GCWBaseShutdownObserver() {
+		Logger.setLoggingName("GCWBaseShutdownObserver");
+	}
+
+	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+}
