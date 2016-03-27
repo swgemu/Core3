@@ -11,7 +11,7 @@ import system.lang.ref.Reference;
 import system.net.SocketAddress;
 import system.net.Socket;
 
-import server.zone.objects.scene.SceneObject;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneServer;
 
 import engine.service.proto.events.BaseClientNetStatusCheckupEvent;
@@ -36,7 +36,7 @@ class ZoneClientSession extends ManagedObject {
 	protected VectorMap<unsigned int, unsigned long> bannedCharacters;
 	
 	@weakReference
-	protected SceneObject player;
+	protected CreatureObject player;
 
 	protected unsigned int sessionID;
 
@@ -70,7 +70,7 @@ class ZoneClientSession extends ManagedObject {
 	public native string getAddress();
 	
 	// setters and getters
-	public native void setPlayer(SceneObject playerCreature);
+	public native void setPlayer(CreatureObject playerCreature);
 
 	public void setSessionID(unsigned int id) {
 		sessionID = id;
@@ -102,7 +102,7 @@ class ZoneClientSession extends ManagedObject {
 	
 	@reference
 	@dirty
-	public native SceneObject getPlayer();
+	public native CreatureObject getPlayer();
 
 	public unsigned int getSessionID() {
 		return sessionID;

@@ -37,12 +37,7 @@ public:
 
 	void run() {
 		//Get the player sending the loot selections.
-		ManagedReference<SceneObject*> scene = client->getPlayer();
-
-		if (scene == NULL)
-			return;
-
-		CreatureObject* player = cast<CreatureObject*>(scene.get());
+		ManagedReference<CreatureObject*> player = client->getPlayer();
 
 		if (player == NULL)
 			return;
@@ -73,9 +68,9 @@ public:
 			LootLotteryBallot* ballot = new LootLotteryBallot(player, lootIDs);
 			session->addPlayerSelections(player, ballot);
 
-		} else
+		} else {
 			return;
-
+		}
 	}
 };
 

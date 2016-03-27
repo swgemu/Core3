@@ -36,12 +36,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<SceneObject*> scene = client->getPlayer();
-
-		if (scene == NULL)
-			return;
-
-		CreatureObject* deoper = cast<CreatureObject*>(scene.get());
+		ManagedReference<CreatureObject*> deoper = client->getPlayer();
 
 		if (deoper == NULL)
 			return;
@@ -49,7 +44,6 @@ public:
 		ManagedReference<ChatManager*> chatManager = server->getChatManager();
 		if (chatManager != NULL)
 			chatManager->handleChatRemoveModerator(deoper, deopeeName, roomPath, requestID);
-
 	}
 
 };

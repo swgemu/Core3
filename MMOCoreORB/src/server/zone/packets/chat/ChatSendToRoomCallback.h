@@ -8,7 +8,7 @@
 #ifndef CHATSENDTOROOMCALLBACK_H_
 #define CHATSENDTOROOMCALLBACK_H_
 
-#include "../MessageCallback.h"
+#include "server/zone/packets/MessageCallback.h"
 #include "server/chat/ChatManager.h"
 
 class ChatSendToRoomCallback : public MessageCallback {
@@ -34,18 +34,15 @@ public:
 	}
 
 	void run() {
-		ManagedReference<SceneObject*> scene = client->getPlayer();
-
-		if (scene == NULL)
-			return;
-
-		CreatureObject* player = cast<CreatureObject*>(scene.get());
+		ManagedReference<CreatureObject*> player = client->getPlayer();
 
 		if (player == NULL)
 			return;
 
 		ChatManager* chatManager = server->getZoneServer()->getChatManager();
-		chatManager->handleChatRoomMessage(player, chatMessage, roomID, counter);
+
+		if (chatManager != NULL)
+			chatManager->handleChatRoomMessage(player, chatMessage, roomID, counter);
 	}
 
 };

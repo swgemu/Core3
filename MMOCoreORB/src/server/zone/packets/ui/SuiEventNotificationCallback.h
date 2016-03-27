@@ -8,7 +8,7 @@
 #ifndef SUIEVENTNOTIFICATIONCALLBACK_H_
 #define SUIEVENTNOTIFICATIONCALLBACK_H_
 
-#include "../MessageCallback.h"
+#include "server/zone/packets/MessageCallback.h"
 #include "server/zone/managers/sui/SuiManager.h"
 
 class SuiEventNotificationCallback : public MessageCallback {
@@ -40,12 +40,10 @@ public:
 	}
 
 	void run() {
-		ManagedReference<SceneObject*> playerClient = client->getPlayer();
+		ManagedReference<CreatureObject*> playerCreature = client->getPlayer();
 
-		if (playerClient == NULL)
+		if (playerCreature == NULL)
 			return;
-
-		CreatureObject* playerCreature = cast<CreatureObject*>( playerClient.get());
 
 		server->getSuiManager()->handleSuiEventNotification(pageId, playerCreature, eventIndex, &arguments);
 	}

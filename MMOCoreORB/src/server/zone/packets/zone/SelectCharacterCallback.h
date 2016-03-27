@@ -8,7 +8,7 @@
 #ifndef SELECTCHARACTERCALLBACK_H_
 #define SELECTCHARACTERCALLBACK_H_
 
-#include "../MessageCallback.h"
+#include "server/zone/packets/MessageCallback.h"
 
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
@@ -70,7 +70,7 @@ public:
 		ManagedReference<SceneObject*> obj = zoneServer->getObject(characterID, true);
 
 		if (obj != NULL && obj->isPlayerCreature()) {
-			CreatureObject* player = cast<CreatureObject*>( obj.get());
+			CreatureObject* player = obj->asCreatureObject();
 
 			Locker _locker(player);
 
@@ -107,7 +107,7 @@ public:
 			}
 
 			player->setClient(client);
-			client->setPlayer(obj);
+			client->setPlayer(player);
 
 			String zoneName = ghost->getSavedTerrainName();
 			Zone* zone = zoneServer->getZone(zoneName);

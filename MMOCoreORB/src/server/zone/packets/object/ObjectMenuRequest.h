@@ -125,7 +125,7 @@ public:
 		counter = message->parseByte();
 		//menuResponse->setCounter(counter);
 
-		/*SceneObject* player = client->getPlayer();
+		/*CreatureObject* player = client->getPlayer();
 
 		if (player != NULL)
 			player->info("received object menu request");*/
@@ -134,12 +134,7 @@ public:
 
 	void run() {
 		//menuResponse->setCounter(counter);
-		ManagedReference<SceneObject*> scene = client->getPlayer();
-
-		if (scene == NULL)
-			return;
-
-		CreatureObject* player = cast<CreatureObject*>(scene.get());
+		ManagedReference<CreatureObject*> player = client->getPlayer();
 
 		if (player == NULL)
 			return;
@@ -154,6 +149,5 @@ public:
 
 		RadialManager* radialManager = server->getZoneServer()->getRadialManager();
 		radialManager->handleObjectMenuRequest(player, menuResponse, objectID);
-
 	}
 };

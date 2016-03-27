@@ -8,7 +8,7 @@
 #include "engine/engine.h"
 
 #include "server/chat/room/ChatRoom.h"
-#include "../MessageCallback.h"
+#include "server/zone/packets/MessageCallback.h"
 
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneProcessServer.h"
@@ -89,14 +89,9 @@ public:
 		ZoneServer* zoneServer = server->getZoneServer();
 		ChatManager* chatManager = zoneServer->getChatManager();
 
-		ManagedReference<SceneObject*> strongRef = client->getPlayer();
+		ManagedReference<CreatureObject*> player = client->getPlayer();
 
-		if (strongRef == NULL)
-			return;
-
-		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(strongRef.get());
-
-		if (player != NULL)
+		if (player != NULL && chatManager != NULL)
 			chatManager->sendRoomList(player);
 	}
 };

@@ -6,7 +6,7 @@
 #define COMMANDQUEUEENQUEUE_H_
 
 #include "ObjectControllerMessage.h"
-#include "../MessageCallback.h"
+#include "server/zone/packets/MessageCallback.h"
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
@@ -52,12 +52,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<SceneObject*> sceneObject = client->getPlayer();
-
-		if (sceneObject == NULL)
-			return;
-
-		CreatureObject* player = sceneObject->asCreatureObject();
+		ManagedReference<CreatureObject*> player = client->getPlayer();
 
 		if (player == NULL)
 			return;

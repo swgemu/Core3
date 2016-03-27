@@ -36,12 +36,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<SceneObject*> scene = client->getPlayer();
-
-		if (scene == NULL)
-			return;
-
-		CreatureObject* banner = cast<CreatureObject*>(scene.get());
+		ManagedReference<CreatureObject*> banner = client->getPlayer();
 
 		if (banner == NULL)
 			return;
@@ -49,7 +44,6 @@ public:
 		ManagedReference<ChatManager*> chatManager = server->getChatManager();
 		if (chatManager != NULL)
 			chatManager->handleChatBanPlayer(banner, baneeName, roomPath, requestID);
-
 	}
 
 };

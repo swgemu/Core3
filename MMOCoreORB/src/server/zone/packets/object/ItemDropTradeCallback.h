@@ -31,23 +31,17 @@ public:
 	}
 
 	void run() {
-		ManagedReference<SceneObject*> scene = client->getPlayer();
-
-		if (scene == NULL)
-			return;
-
-		CreatureObject* player = cast<CreatureObject*>(scene.get());
+		ManagedReference<CreatureObject*> player = client->getPlayer();
 
 		if (player == NULL)
 			return;
 
-		ManagedReference<PlayerObject*> playerObject = NULL;
-		bool godMode = false;
-
-		playerObject = player->getPlayerObject();
+		ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
 
 		if (playerObject == NULL)
 			return;
+
+		bool godMode = false;
 
 		if (playerObject->hasGodMode())
 			godMode = true;
@@ -64,8 +58,6 @@ public:
 		if (targetPlayer->getPlayerObject()->isIgnoring(player->getFirstName().toLowerCase()) && !godMode)
 			return;
 
-		PlayerObject* ghost = player->getPlayerObject();
-
 		ManagedReference<TradeSession*> playerTradeContainer = player->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
 		if (player->isInCombat() || (playerTradeContainer != NULL && playerTradeContainer->getTradeTargetPlayer() == targetToTrade))
@@ -79,8 +71,6 @@ public:
 		playerTradeContainer->setTradeTargetPlayer(targetToTrade);
 
 		Locker clocker(targetPlayer, player);
-
-		PlayerObject* targetGhost = targetPlayer->getPlayerObject();
 
 		ManagedReference<TradeSession*> targetTradeContainer = targetPlayer->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 

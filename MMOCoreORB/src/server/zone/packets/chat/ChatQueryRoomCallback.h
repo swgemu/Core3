@@ -29,19 +29,14 @@ public:
 	}
 
 	void run() {
-		ManagedReference<SceneObject*> scene = client->getPlayer();
-
-		if (scene == NULL)
-			return;
-
-		CreatureObject* player = cast<CreatureObject*>(scene.get());
+		ManagedReference<CreatureObject*> player = client->getPlayer();
 
 		if (player == NULL)
 			return;
 
 		ChatManager* chatManager = server->getChatManager();
-		chatManager->handleChatQueryRoom(player, roomPath, requestID);
-
+		if (chatManager != NULL)
+			chatManager->handleChatQueryRoom(player, roomPath, requestID);
 	}
 
 };

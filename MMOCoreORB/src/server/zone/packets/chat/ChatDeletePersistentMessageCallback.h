@@ -9,7 +9,7 @@
 #define CHATDELETEPERSISTENTMESSAGECALLBACK_H_
 
 
-#include "../MessageCallback.h"
+#include "server/zone/packets/MessageCallback.h"
 #include "server/chat/ChatManager.h"
 
 class ChatDeletePersistentMessageCallback : public MessageCallback {
@@ -25,22 +25,17 @@ public:
 	}
 
 	void run() {
-		ManagedReference<SceneObject*> scene = client->getPlayer();
-
-		if (scene == NULL)
-			return;
-
-		CreatureObject* player = cast<CreatureObject*>(scene.get());
+		ManagedReference<CreatureObject*> player = client->getPlayer();
 
 		if (player == NULL)
 			return;
 
 		ChatManager* chatManager = server->getChatManager();
-		chatManager->deletePersistentMessage(player, mailid);
+		if (chatManager != NULL)
+			chatManager->deletePersistentMessage(player, mailid);
 	}
 
 };
-
 
 
 #endif /* CHATDELETEPERSISTENTMESSAGECALLBACK_H_ */

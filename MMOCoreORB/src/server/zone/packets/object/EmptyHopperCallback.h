@@ -39,12 +39,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<SceneObject*> scene = client->getPlayer();
-
-		if (scene == NULL)
-			return;
-
-		CreatureObject* player = cast<CreatureObject*>(scene.get());
+		ManagedReference<CreatureObject*> player = client->getPlayer();
 
 		if (player == NULL)
 			return;
@@ -80,7 +75,6 @@ public:
 				player->sendSystemMessage("You are too far away");
 				return;
 			}
-
 
 			SceneObject* inventory = player->getSlottedObject("inventory");
 
@@ -149,11 +143,8 @@ public:
 		}
 
 		//if (byte1 == 0 && player->getInventory()->getUnequippedItemCount() >= InventoryImplementation::MAXUNEQUIPPEDCOUNT)
-
-
 	}
 };
-
 
 
 #endif /* EMPTYHOPPERCALLBACK_H_ */

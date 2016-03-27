@@ -65,7 +65,7 @@ public:
 		
 		taskqueue = 3;
 		
-		ManagedReference<SceneObject*> player = client->getPlayer();
+		ManagedReference<CreatureObject*> player = client->getPlayer();
 		
 		if (player != NULL) {
 			Zone* zone = player->getLocalZone();
@@ -103,7 +103,7 @@ public:
 		//info("datatransform", true);
 	}
 
-	void bounceBack(SceneObject* object, ValidatedPosition& pos) {
+	void bounceBack(CreatureObject* object, ValidatedPosition& pos) {
 		Vector3 teleportPoint = pos.getPosition();
 		uint64 teleportParentID = pos.getParent();
 
@@ -111,12 +111,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<SceneObject*> sceneObject = client->getPlayer();
-
-		if (sceneObject == NULL)
-			return;
-
-		CreatureObject* object = sceneObject->asCreatureObject();
+		ManagedReference<CreatureObject*> object = client->getPlayer();
 		
 		if (object == NULL)
 			return;
@@ -156,11 +151,13 @@ public:
 					object->updateZone(light);
 			}
 		}
-
 	}
 
 	void updatePosition(CreatureObject* object) {
 		PlayerObject* ghost = object->getPlayerObject();
+
+		if (ghost == NULL)
+			return;
 
 		if (isnan(positionX) || isnan(positionY) || isnan(positionZ))
 			return;
@@ -293,7 +290,6 @@ public:
 			object->updateZone(false);
 		else
 			object->updateZone(true);
-
 	}
 };
 

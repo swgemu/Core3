@@ -1163,12 +1163,7 @@ void ChatManagerImplementation::handleSpatialChatInternalMessage(CreatureObject*
 
 //TODO: Refactor into a sendInstantMessage() method that returns a returnCode.
 void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message) {
-	ManagedReference<SceneObject*> scene = message->getClient()->getPlayer();
-
-	if (scene == NULL)
-		return;
-
-	CreatureObject* sender = cast<CreatureObject*>(scene.get());
+	ManagedReference<CreatureObject*> sender = message->getClient()->getPlayer();
 
 	bool godMode = false;
 

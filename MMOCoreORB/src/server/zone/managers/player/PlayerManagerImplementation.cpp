@@ -4502,10 +4502,10 @@ bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSe
 	for (int i = 0; i < clients.size(); ++i) {
 		ZoneClientSession* session = clients.get(i);
 
-		ManagedReference<SceneObject*> player = session->getPlayer();
+		ManagedReference<CreatureObject*> player = session->getPlayer();
 
 		if (player != NULL) {
-			Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
+			Reference<PlayerObject*> ghost = player->getPlayerObject();
 
 			if (ghost != NULL && ghost->getAdminLevel() > 0)
 				continue;

@@ -9,7 +9,7 @@
 #define GETMAPLOCATIONSCALLBACK_H_
 
 
-#include "../MessageCallback.h"
+#include "server/zone/packets/MessageCallback.h"
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -30,12 +30,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<SceneObject*> scene = client->getPlayer();
-
-		if (scene == NULL)
-			return;
-
-		CreatureObject* object = cast<CreatureObject*>(scene.get());
+		ManagedReference<CreatureObject*> object = client->getPlayer();
 
 		if (object == NULL)
 			return;

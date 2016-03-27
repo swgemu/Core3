@@ -5,7 +5,7 @@
  *      Author: theanswer
  */
 
-#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "ObjectControllerMessageCallback.h"
 
@@ -33,7 +33,7 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 		StringBuffer msg;
 		msg << "unregistered 0x" << hex << type << " object controller message received";
 
-		//SceneObject* player = client->getPlayer();
+		//CreatureObject* player = client->getPlayer();
 		client->error(msg.toString());
 		return;
 	}
@@ -64,7 +64,7 @@ void ObjectControllerMessageCallback::run() {
 	if (client == NULL)
 		return;
 
-	ManagedReference<SceneObject*> player = client->getPlayer();
+	ManagedReference<CreatureObject*> player = client->getPlayer();
 
 	if (player == NULL || objectControllerCallback == NULL)
 		return;

@@ -8,7 +8,7 @@
 #ifndef AUCTIONQUERYHEADERSMESSAGECALLBACK_H_
 #define AUCTIONQUERYHEADERSMESSAGECALLBACK_H_
 
-#include "../MessageCallback.h"
+#include "server/zone/packets/MessageCallback.h"
 
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/managers/auction/AuctionManager.h"
@@ -41,16 +41,10 @@ public:
 		unk1 = message->parseByte(); //Becomes one when using a vendor.
 		offset = message->parseShort();
 
-
 	}
 
 	void run() {
-		ManagedReference<SceneObject*> scene = client->getPlayer();
-
-		if (scene == NULL)
-			return;
-
-		CreatureObject* player = cast<CreatureObject*>(scene.get());
+		ManagedReference<CreatureObject*> player = client->getPlayer();
 
 		if (player == NULL)
 			return;
@@ -59,7 +53,8 @@ public:
 
 		AuctionManager* auctionManager = server->getZoneServer()->getAuctionManager();
 
-		auctionManager->getData(player, extent, vendorID, screen, category, counter, offset);
+		if (auctionManager != NULL)
+			auctionManager->getData(player, extent, vendorID, screen, category, counter, offset);
 	}
 };
 

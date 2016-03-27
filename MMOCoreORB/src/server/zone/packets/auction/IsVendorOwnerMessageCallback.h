@@ -8,7 +8,7 @@
 #ifndef ISVENDOROWNERMESSAGECALLBACK_H_
 #define ISVENDOROWNERMESSAGECALLBACK_H_
 
-#include "../MessageCallback.h"
+#include "server/zone/packets/MessageCallback.h"
 
 #include "IsVendorOwnerResponseMessage.h"
 #include "server/zone/objects/region/CityRegion.h"
@@ -39,12 +39,7 @@ public:
 		if (zone == NULL)
 			return;
 
-		ManagedReference<SceneObject*> scene = client->getPlayer();
-
-		if (scene == NULL)
-			return;
-
-		CreatureObject* player = cast<CreatureObject*>(scene.get());
+		ManagedReference<CreatureObject*> player = client->getPlayer();
 
 		if (player == NULL)
 			return;
@@ -54,13 +49,11 @@ public:
 
 
 		ManagedReference<CityRegion*> cityRegion = sceno->getCityRegion();
-		if(cityRegion != NULL)
+		if (cityRegion != NULL)
 			vendorRegion = cityRegion->getRegionName();
-
 
 		IsVendorOwnerResponseMessage* msg = new IsVendorOwnerResponseMessage(sceno, player, planetString, vendorRegion);
 		client->sendMessage(msg);
-
 	}
 };
 

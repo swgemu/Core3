@@ -33,12 +33,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<SceneObject*> scene = client->getPlayer();
-
-		if (scene == NULL)
-			return;
-
-		CreatureObject* player = cast<CreatureObject*>(scene.get());
+		ManagedReference<CreatureObject*> player = client->getPlayer();
 
 		if (player == NULL)
 			return;
@@ -55,7 +50,6 @@ public:
 			Locker locker(player);
 			chatManager->handleChatLeaveRoom(player, roomPath);
 		}
-
 	}
 
 };

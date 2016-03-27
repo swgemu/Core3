@@ -10,7 +10,6 @@
 
 
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
 #include "ObjectControllerMessageCallback.h"
 #include "server/zone/objects/player/sessions/crafting/CraftingSession.h"
 #include "server/zone/managers/player/PlayerManager.h"
@@ -42,24 +41,19 @@ public:
 	}
 
 	void run() {
-		ManagedReference<SceneObject*> scene = client->getPlayer();
-
-		if (scene == NULL)
-			return;
-
-		CreatureObject* player = cast<CreatureObject*>(scene.get());
+		ManagedReference<CreatureObject*> player = client->getPlayer();
 
 		if (player == NULL)
 			return;
 
 		Reference<CraftingSession*> session = player->getActiveSession(SessionFacadeType::CRAFTING).castTo<CraftingSession*>();
 
-		if(session == NULL) {
+		if (session == NULL) {
 			//warning("Trying to add an ingredient when no session exists");
 			return;
 		}
 
-		if(session->getState() > 2){
+		if (session->getState() > 2){
 			//warning("Trying to add an ingredient when the item is already assembled");
 			return;
 		}
@@ -72,7 +66,7 @@ public:
 
 		ManagedReference<SceneObject* > object = player->getZoneServer()->getObject(objectID);
 
-		if(object == NULL || !object->isTangibleObject()) {
+		if (object == NULL || !object->isTangibleObject()) {
 			player->sendSystemMessage("@ui_craft:err_invalid_ingredient");
 			return;
 		}

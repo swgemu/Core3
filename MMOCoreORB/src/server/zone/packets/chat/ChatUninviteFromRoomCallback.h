@@ -36,12 +36,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<SceneObject*> scene = client->getPlayer();
-
-		if (scene == NULL)
-			return;
-
-		CreatureObject* uninviter = cast<CreatureObject*>(scene.get());
+		ManagedReference<CreatureObject*> uninviter = client->getPlayer();
 
 		if (uninviter == NULL)
 			return;
@@ -49,7 +44,6 @@ public:
 		ManagedReference<ChatManager*> chatManager = server->getChatManager();
 		if (chatManager != NULL)
 			chatManager->handleChatUninvitePlayer(uninviter, uninviteeName, roomPath, requestID);
-
 	}
 
 };

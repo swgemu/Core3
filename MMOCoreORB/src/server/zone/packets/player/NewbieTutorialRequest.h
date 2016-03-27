@@ -8,7 +8,7 @@
 #ifndef NEWBIETUTORIALREQUEST_H_
 #define NEWBIETUTORIALREQUEST_H_
 
-#include "../MessageCallback.h"
+#include "server/zone/packets/MessageCallback.h"
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -73,30 +73,25 @@ public:
 		if (client == NULL)
 			return;
 
-		ManagedReference<SceneObject*> sceneObject = client->getPlayer();
-
-		if (sceneObject == NULL)
-			return;
-
-		CreatureObject* player = cast<CreatureObject*>(sceneObject.get());
+		ManagedReference<CreatureObject*> player = client->getPlayer();
 
 		if (player == NULL)
 			return;
 
-		Locker locker(sceneObject);
+		Locker locker(player);
 
-		//sceneObject->info("received response: " + response, true);
+		//player->info("received response: " + response, true);
 
 		if (response == "zoomCamera") {
-			sceneObject->notifyObservers(ObserverEventType::NEWBIETUTORIALZOOMCAMERA, NULL, 0);
+			player->notifyObservers(ObserverEventType::NEWBIETUTORIALZOOMCAMERA, NULL, 0);
 		} else if (response == "chatbox") {
-			sceneObject->notifyObservers(ObserverEventType::CHAT, NULL, 0);
+			player->notifyObservers(ObserverEventType::CHAT, NULL, 0);
 		} else if (response == "closeHolocron") {
-			sceneObject->notifyObservers(ObserverEventType::NEWBIETUTORIALHOLOCRON, NULL, 0);
+			player->notifyObservers(ObserverEventType::NEWBIETUTORIALHOLOCRON, NULL, 0);
 		} else if (response == "openInventory") {
-			sceneObject->notifyObservers(ObserverEventType::NEWBIEOPENINVENTORY);
+			player->notifyObservers(ObserverEventType::NEWBIEOPENINVENTORY);
 		} else if (response == "closeInventory") {
-			sceneObject->notifyObservers(ObserverEventType::NEWBIECLOSEINVENTORY);
+			player->notifyObservers(ObserverEventType::NEWBIECLOSEINVENTORY);
 		} else if (response == "clientReady") {
 			if (player->getZone() != NULL && player->getParent() != NULL) {
 				ManagedReference<SceneObject*> par = player->getParent();
