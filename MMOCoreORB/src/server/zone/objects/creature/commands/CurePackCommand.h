@@ -57,20 +57,16 @@ public:
 			for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 				SceneObject* object = inventory->getContainerObject(i);
 
-				if (!object->isTangibleObject())
+				if (!object->isPharmaceuticalObject())
 					continue;
 
-				TangibleObject* item = cast<TangibleObject*>( object);
+				PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>(object);
 
-				if (item->isPharmaceuticalObject()) {
-					PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>( item);
+				if (pharma->isCurePack()) {
+					CurePack* curePack = cast<CurePack*>(pharma);
 
-					if (pharma->isCurePack()) {
-						CurePack* curePack = cast<CurePack*>( pharma);
-
-						if (curePack->getMedicineUseRequired() <= medicineUse && curePack->getState() == state)
-							return curePack;
-					}
+					if (curePack->getMedicineUseRequired() <= medicineUse && curePack->getState() == state)
+						return curePack;
 				}
 			}
 		}

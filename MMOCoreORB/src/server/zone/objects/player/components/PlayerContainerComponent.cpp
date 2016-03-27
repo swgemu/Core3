@@ -20,7 +20,7 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 	CreatureObject* creo = dynamic_cast<CreatureObject*>(sceneObject);
 
 	if (object->isTangibleObject() && containmentType == 4) {
-		TangibleObject* wearable = cast<TangibleObject*>( object);
+		TangibleObject* wearable = cast<TangibleObject*>(object);
 
 		SharedTangibleObjectTemplate* tanoData = dynamic_cast<SharedTangibleObjectTemplate*>(wearable->getObjectTemplate());
 		Vector<uint32>* races = tanoData->getPlayerRaces();
@@ -54,7 +54,7 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 	if (object->isArmorObject() && containmentType == 4) {
 		PlayerManager* playerManager = sceneObject->getZoneServer()->getPlayerManager();
 
-		if (!playerManager->checkEncumbrancies(dynamic_cast<CreatureObject*>(sceneObject), cast<ArmorObject*>( object))) {
+		if (!playerManager->checkEncumbrancies(creo, cast<ArmorObject*>(object))) {
 			errorDescription = "You lack the necessary secondary stats to equip this item";
 
 			return TransferErrorCode::NOTENOUGHENCUMBRANCE;
@@ -62,7 +62,7 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 	}
 
 	if (object->isWearableObject() && containmentType == 4) {
-		ManagedReference<WearableObject*> wearable = cast<WearableObject*>( object);
+		WearableObject* wearable = cast<WearableObject*>(object);
 		SharedTangibleObjectTemplate* wearableData = dynamic_cast<SharedTangibleObjectTemplate*>(wearable->getObjectTemplate());
 
 		Vector<String> skillsRequired = wearableData->getCertificationsRequired();
@@ -86,14 +86,15 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 	}
 
 	if (object->isWeaponObject() && containmentType == 4) {
-		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>( object);
+		WeaponObject* weapon = cast<WeaponObject*>(object);
 		int bladeColor = weapon->getBladeColor();
 
-		if (weapon->isJediWeapon()){
+		if (weapon->isJediWeapon()) {
 			if (bladeColor == 31) {
 				errorDescription = "@jedi_spam:lightsaber_no_color";
 				return TransferErrorCode::PLAYERUSEMASKERROR;
 			}
+
 			if (weapon->getCraftersName() != creo->getFirstName()) {
 				errorDescription = "@jedi_spam:not_your_lightsaber";
 				return TransferErrorCode::PLAYERUSEMASKERROR;

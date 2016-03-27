@@ -166,9 +166,9 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 	loadNameMap();
 }
 
-bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
+bool PlayerManagerImplementation::createPlayer(ClientCreateCharacterCallback* callback) {
 	PlayerCreationManager* pcm = PlayerCreationManager::instance();
-	return pcm->createCharacter(data);
+	return pcm->createCharacter(callback);
 }
 
 void PlayerManagerImplementation::loadLuaConfig() {
@@ -468,8 +468,7 @@ bool PlayerManagerImplementation::checkExistentNameInDatabase(const String& name
 	return false;
 }
 
-bool PlayerManagerImplementation::checkPlayerName(MessageCallback* messageCallback) {
-	ClientCreateCharacterCallback* callback = cast<ClientCreateCharacterCallback*>( messageCallback);
+bool PlayerManagerImplementation::checkPlayerName(ClientCreateCharacterCallback* callback) {
 	ZoneClientSession* client = callback->getClient();
 
 	NameManager* nm = processor->getNameManager();

@@ -158,10 +158,8 @@ public:
 			ManagedReference<SceneObject*> object =
 					server->getZoneServer()->getObject(target);
 
-			if (object != NULL && object->isCreatureObject()
-					&& (cast<CreatureObject*>(object.get()))->getPlayerObject()
-							!= NULL) {
-				targetPlayer = cast<CreatureObject*>( object.get());
+			if (object != NULL && object->isPlayerCreature()) {
+				targetPlayer = object->asCreatureObject();
 			} else if (object != NULL) {
 				StringIdChatParameter ptip("base_player",
 						"prose_tip_invalid_param"); // /TIP: invalid amount ("%TO") parameter.

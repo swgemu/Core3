@@ -20,6 +20,8 @@
 #include "server/zone/objects/tangible/tool/smuggler/PrecisionLaserKnife.h"
 
 void SecurityTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
+	if (!sceneObject->isTangibleObject())
+		return;
 
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
 
@@ -46,7 +48,7 @@ void SecurityTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObj
 }
 
 int SecurityTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const {
-	if (sceneObject == NULL || !sceneObject->isTangibleObject() || player == NULL || player->isDead() || player->isIncapacitated() || selectedID != 20)
+	if (!sceneObject->isTangibleObject() || player->isDead() || player->isIncapacitated() || selectedID != 20)
 		return 1;
 
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());

@@ -141,12 +141,7 @@ public:
 		}
 	}
 
-	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, DotPack* pharma)	const {
-		DotPack* dotPack = NULL;
-
-		if (pharma->isPoisonDeliveryUnit() || pharma->isDiseaseDeliveryUnit())
-			dotPack = cast<DotPack*>( pharma);
-
+	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, DotPack* dotPack) const {
 		int dotPower = dotPack->calculatePower(creature);
 
 		//sendDotMessage(creature, creatureTarget, dotPower);

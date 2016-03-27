@@ -196,38 +196,47 @@ void DroidTrapModuleDataComponent::handlePetCommand(String cmd, CreatureObject* 
 
 
 void DroidTrapModuleDataComponent::handleInsertTrap(CreatureObject* player, TangibleObject* input) {
+	if (input == NULL) {
+		return;
+	}
+
 	// we need to send the invlid stimpack message just wher eis a good question
-	if (!player->hasSkill("outdoors_scout_novice") || !compatibleTrap(player,input->getServerObjectCRC()) ) {
+	if (!player->hasSkill("outdoors_scout_novice") || !compatibleTrap(player, input->getServerObjectCRC()) ) {
 		player->sendSystemMessage("@pet/droid_modules:insufficient_skill");
 		return;
 	}
 
 	ManagedReference<DroidObject*> droid = getDroidObject();
-	Locker dlock(droid);
-	Locker crossLock(player,droid);
+
 	if (droid == NULL) {
 		return;
 	}
-	if (input == NULL) {
-		return;
-	}
+
+	Locker dlock(droid);
+	Locker crossLock(player, droid);
+
 	if(droid->getLinkedCreature().get() != player) {
 		return;
 	}
+
 	int loaded = 0;
 	if (trap != NULL) {
 		loaded = trap->getUseCount();
 	}
 
 	int allowed = (modules * 10) - loaded;
+
 	Locker locker(input);
+
 	// adding to existing trap
 	if (trap == NULL) {
 		// add the trap into the unit
 		ObjectManager* objectManager = ObjectManager::instance();
+
 		if (allowed > input->getUseCount()) {
 			// just clone it and set old one to 0 uses to destroy it so it transfer correctly as we dont store this directly in the droid
 			ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(input));
+
 			if (protoclone != NULL) {
 				Locker cloneLocker(protoclone);
 
@@ -248,6 +257,7 @@ void DroidTrapModuleDataComponent::handleInsertTrap(CreatureObject* player, Tang
 		} else {
 			// should technically never happen as you cant experiment traps use count but someone might config base useCount > 10
 			ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(input));
+
 			if (protoclone != NULL) {
 				Locker cloneLocker(protoclone);
 

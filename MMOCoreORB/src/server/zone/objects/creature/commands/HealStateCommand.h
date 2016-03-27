@@ -137,20 +137,16 @@ public:
 			for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 				SceneObject* object = inventory->getContainerObject(i);
 
-				if (!object->isTangibleObject())
+				if (!object->isPharmaceuticalObject())
 					continue;
 
-				TangibleObject* item = cast<TangibleObject*>( object);
+				PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>(object);
 
-				if (item->isPharmaceuticalObject()) {
-					PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>( item);
+				if (pharma->isStatePack()) {
+					StatePack* statePack = cast<StatePack*>(pharma);
 
-					if (pharma->isStatePack()) {
-						StatePack* statePack = cast<StatePack*>( pharma);
-
-						if (statePack->getMedicineUseRequired() <= medicineUse && statePack->getState() == state)
-							return statePack;
-					}
+					if (statePack->getMedicineUseRequired() <= medicineUse && statePack->getState() == state)
+						return statePack;
 				}
 			}
 		}
@@ -197,8 +193,9 @@ public:
 					return GENERALERROR;
 				}
 			}
-		} else
+		} else {
 			object = creature;
+		}
 
 		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
 

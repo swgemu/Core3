@@ -469,6 +469,10 @@ void PlayerObjectImplementation::setFactionStatus(int status) {
 	factionStatus = status;
 
 	CreatureObject* creature = cast<CreatureObject*>(getParent().get().get());
+
+	if (creature == NULL)
+		return;
+
 	uint32 pvpStatusBitmask = creature->getPvpStatusBitmask();
 
 	if (factionStatus == FactionStatus::COVERT) {

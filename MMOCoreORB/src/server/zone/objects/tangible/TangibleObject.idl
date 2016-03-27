@@ -639,12 +639,7 @@ class TangibleObject extends SceneObject {
 	public void setSliced(boolean slice) {
 		sliced = slice;
 	}
-	
-	@dirty
-	public abstract boolean isPharmaceuticalObject() {
-		return false;
-	}
-	
+
 	public void setCustomizationString(final string vars) {
 		customizationVariables.parseFromClientString(vars);
 	}

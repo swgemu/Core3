@@ -459,10 +459,11 @@ public:
 
 			static const char* rangedAttacks[] = {"fire_1_single", "fire_3_single", "fire_5_single"};
 
-			String intensity = getIntensity((weapon != NULL ? (((uint32)weapon->getMaxDamage()) >> 2) : 0), damage);
+			String intensity = getIntensity(((uint32)weapon->getMaxDamage()) >> 2, damage);
 			StringBuffer buffer;
-			if(!attacker->isCreature()) {
-				if(weapon->isRangedWeapon()) {
+
+			if (!attacker->isCreature()) {
+				if (weapon->isRangedWeapon()) {
 
 					buffer << rangedAttacks[System::random(2)];
 
@@ -472,8 +473,8 @@ public:
 						buffer << "_face";
 
 				} else {
-					if(hitLocation == 0)
-						hitLocation = System::random(5)+1;
+					if (hitLocation == 0)
+						hitLocation = System::random(5) + 1;
 
 					switch(hitLocation) {
 					case CombatManager::HIT_BODY:
@@ -486,7 +487,7 @@ public:
 						buffer << chestLocations[LEFT]; // these are purposely backwards - It's mirrored
 						break;
 					case CombatManager::HIT_LLEG:
-						buffer << legLocations[System::random(1)+1];
+						buffer << legLocations[System::random(1) + 1];
 						break;
 					case CombatManager::HIT_RLEG:
 						buffer << legLocations[System::random(1)];
@@ -540,7 +541,7 @@ public:
 		if(animation.isEmpty())
 			return getDefaultAttackAnimation(attacker, weapon, hitLocation, damage);
 
-		return generateAnimation(hitLocation, (weapon != NULL ? (((uint32)weapon->getMaxDamage()) >> 2) : 0), damage);
+		return generateAnimation(hitLocation, ((uint32)weapon->getMaxDamage()) >> 2, damage);
 
 	}
 

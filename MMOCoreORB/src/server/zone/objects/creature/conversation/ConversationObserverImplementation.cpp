@@ -31,7 +31,8 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 	//Try to convert parameters to correct types.
 	CreatureObject* npc = NULL;
 	CreatureObject* player = NULL;
-	int selectedOption;
+	int selectedOption = 0;
+
 	try {
 		npc = cast<CreatureObject* >(observable);
 

@@ -96,27 +96,23 @@ public:
 		for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 			SceneObject* item = inventory->getContainerObject(i);
 
-			if (!item->isTangibleObject())
+			if (!item->isPharmaceuticalObject())
 				continue;
 
-			TangibleObject* tano = cast<TangibleObject*>( item);
+			PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>(item);
 
-			if (tano->isPharmaceuticalObject()) {
-				PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>( tano);
+			if (melee && pharma->isStimPack() && !pharma->isRangedStimPack() && !pharma->isPetStimPack() && !pharma->isDroidRepairKit()) {
+				StimPack* stimPack = cast<StimPack*>(pharma);
 
-				if (melee && pharma->isStimPack() && !pharma->isRangedStimPack() && !pharma->isPetStimPack() && !pharma->isDroidRepairKit()) {
-					StimPack* stimPack = cast<StimPack*>(pharma);
+				if (stimPack->getMedicineUseRequired() <= medicineUse)
+					return stimPack;
+			}
 
-					if (stimPack->getMedicineUseRequired() <= medicineUse)
-						return stimPack;
-				}
+			if (pharma->isRangedStimPack()) {
+				RangedStimPack* stimPack = cast<RangedStimPack*>(pharma);
 
-				if (pharma->isRangedStimPack()) {
-					RangedStimPack* stimPack = cast<RangedStimPack*>(pharma);
-
-					if (stimPack->getMedicineUseRequired() <= combatMedicineUse && stimPack->getRange(creature))
-						return stimPack;
-				}
+				if (stimPack->getMedicineUseRequired() <= combatMedicineUse && stimPack->getRange(creature))
+					return stimPack;
 			}
 		}
 

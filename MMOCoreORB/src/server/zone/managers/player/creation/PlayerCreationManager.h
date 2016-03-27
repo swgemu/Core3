@@ -8,6 +8,7 @@
 
 #include "engine/engine.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
+#include "server/zone/packets/charcreation/ClientCreateCharacterCallback.h"
 
 class Skill;
 
@@ -117,7 +118,7 @@ public:
 	/**
 	 * Attempts to create a character, validating the information passed back by the client.
 	 */
-	bool createCharacter(MessageCallback* data);
+	bool createCharacter(ClientCreateCharacterCallback* callback);
 
 	/**
 	 * Returns the requested maximum attribute limit for the specified race.

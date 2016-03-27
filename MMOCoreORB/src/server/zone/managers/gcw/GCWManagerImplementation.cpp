@@ -1822,7 +1822,6 @@ void GCWManagerImplementation::notifyInstallationDestruction(InstallationObject*
 	installation->broadcastMessage(explodeLoc, false);
 
 	uint64 ownerid = installation->getOwnerObjectID();
-	BuildingObject* building = NULL;
 
 	ZoneServer* server = zone->getZoneServer();
 
@@ -1843,28 +1842,31 @@ void GCWManagerImplementation::notifyInstallationDestruction(InstallationObject*
 	}
 
 	if (ownerObject->isGCWBase()) {
-		building = cast<BuildingObject*>(ownerObject.get());
+		BuildingObject* building = cast<BuildingObject*>(ownerObject.get());
 
 		Locker _lock(installation);
-		Locker clock(building, installation);
 
-		if (building->containsChildObject(installation)) {
-			building->getChildObjects()->removeElement(installation);
-		}
+		if (building != NULL) {
+			Locker clock(building, installation);
 
-		DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+			if (building->containsChildObject(installation)) {
+				building->getChildObjects()->removeElement(installation);
+			}
 
-		if (baseData != NULL && baseData->hasTurret(installation->getObjectID())) {
-			if (installation->isTurret())
-				notifyTurretDestruction(building, installation);
-		} else if (baseData != NULL && baseData->hasMinefield(installation->getObjectID())) {
-			if (installation->isMinefield())
-				notifyMinefieldDestruction(building, installation);
+			DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+			if (baseData != NULL && baseData->hasTurret(installation->getObjectID())) {
+				if (installation->isTurret())
+					notifyTurretDestruction(building, installation);
+			} else if (baseData != NULL && baseData->hasMinefield(installation->getObjectID())) {
+				if (installation->isMinefield())
+					notifyMinefieldDestruction(building, installation);
+			} else {
+				clock.release();
+				StructureManager::instance()->destroyStructure(installation);
+			}
 		} else {
-			clock.release();
-			Locker tlock(ownerObject, installation);
 			StructureManager::instance()->destroyStructure(installation);
-			tlock.release();
 		}
 	} else if (ownerObject->isCreatureObject()) {
 		Locker plock(ownerObject);

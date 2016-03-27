@@ -722,6 +722,9 @@ void EntertainingSessionImplementation::setEntertainerBuffDuration(CreatureObjec
 		break;
 	}
 
+	if (data == NULL)
+		return;
+
 	data->setDuration(duration);
 }
 
@@ -745,6 +748,9 @@ int EntertainingSessionImplementation::getEntertainerBuffDuration(CreatureObject
 		break;
 	}
 
+	if (data == NULL)
+		return 0;
+
 	return data->getDuration();
 }
 
@@ -767,11 +773,16 @@ int EntertainingSessionImplementation::getEntertainerBuffStrength(CreatureObject
 
 		break;
 	}
+
+	if (data == NULL)
+		return 0;
+
 	return data->getStrength();
 }
 
 int EntertainingSessionImplementation::getEntertainerBuffStartTime(CreatureObject* creature, int performanceType) {
 	EntertainingData* data = NULL;
+
 	switch(performanceType) {
 	case PerformanceType::DANCE:
 		if (!watchers.contains(creature))
@@ -788,6 +799,10 @@ int EntertainingSessionImplementation::getEntertainerBuffStartTime(CreatureObjec
 
 		break;
 	}
+
+	if (data == NULL)
+		return 0;
+
 	return data->getTimeStarted();
 }
 
@@ -810,6 +825,10 @@ void EntertainingSessionImplementation::setEntertainerBuffStrength(CreatureObjec
 
 		break;
 	}
+
+	if (data == NULL)
+		return;
+
 	data->setStrength(strength);
 }
 

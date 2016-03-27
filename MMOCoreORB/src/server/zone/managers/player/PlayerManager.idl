@@ -12,7 +12,7 @@ import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.objects.group.GroupObject;
 import server.zone.ZoneProcessServer;
 import server.zone.managers.object.ObjectManager;
-import server.zone.packets.MessageCallback;
+include server.zone.packets.charcreation.ClientCreateCharacterCallback;
 import server.zone.objects.tangible.TangibleObject;
 import engine.core.ManagedObject;
 import server.zone.ZoneServer;
@@ -116,10 +116,10 @@ class PlayerManager extends Observer implements Logger {
 	public native boolean kickUser(final string name, final string admin, string reason, boolean doBan = true);
 
 	@local
-	public native boolean createPlayer(MessageCallback callback);
+	public native boolean createPlayer(ClientCreateCharacterCallback callback);
 
 	@local
-	public native boolean checkPlayerName(MessageCallback callback);
+	public native boolean checkPlayerName(ClientCreateCharacterCallback callback);
 
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 

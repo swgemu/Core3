@@ -2105,7 +2105,7 @@ void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObj
 
 	assert(animationCRC != 0);
 
-	uint64 weaponID = (weapon != NULL ? weapon->getObjectID() : 0);
+	uint64 weaponID = weapon->getObjectID();
 
 	CreatureObject *dcreo = defenderObject->asCreatureObject();
 	if (dcreo != NULL) { // All of this funkiness only applies to creo targets, tano's don't animate hits or posture changes

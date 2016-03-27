@@ -141,19 +141,15 @@ public:
 			for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 				SceneObject* object = inventory->getContainerObject(i);
 
-				if (!object->isTangibleObject())
+				if (!object->isPharmaceuticalObject())
 					continue;
 
-				TangibleObject* item = cast<TangibleObject*>( object);
+				PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>(object);
 
-				if (item->isPharmaceuticalObject()) {
-					PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>( item);
+				if (pharma->isDroidReconstructionKit()) {
+					WoundPack* woundPack = cast<WoundPack*>(pharma);
 
-					if (pharma->isDroidReconstructionKit()) {
-						WoundPack* woundPack = cast<WoundPack*>( pharma);
-
-						return woundPack;
-					}
+					return woundPack;
 				}
 			}
 		}

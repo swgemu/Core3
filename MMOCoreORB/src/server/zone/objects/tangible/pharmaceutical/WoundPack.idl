@@ -54,11 +54,11 @@ class WoundPack extends PharmaceuticalObject {
 		if (!templateData.isWoundPackTemplate())
 			return;
 
-		WoundPackTemplate stimPackTemplate = (WoundPackTemplate) templateData;
+		WoundPackTemplate woundPackTemplate = (WoundPackTemplate) templateData;
 
-		effectiveness = stimPackTemplate.getEffectiveness();
-		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
-		attribute = stimPackTemplate.getAttribute();
+		effectiveness = woundPackTemplate.getEffectiveness();
+		super.medicineUseRequired = woundPackTemplate.getMedicineUse();
+		attribute = woundPackTemplate.getAttribute();
 	}
 	
 	/**

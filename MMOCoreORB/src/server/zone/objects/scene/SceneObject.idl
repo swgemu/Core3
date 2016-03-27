@@ -1557,7 +1557,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isFactoryCrate() {
 		return false;
 	}
-	
+
+	@dirty
+	public abstract boolean isPharmaceuticalObject() {
+		return false;
+	}
+
 	@read
 	public boolean isFishingPoleObject() {
 		return gameObjectType == SceneObjectType.FISHINGPOLE;

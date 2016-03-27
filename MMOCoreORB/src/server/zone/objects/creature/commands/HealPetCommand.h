@@ -42,20 +42,15 @@ public:
 			for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 				SceneObject* item = inventory->getContainerObject(i);
 
-				if (!item->isTangibleObject())
+				if (!item->isPharmaceuticalObject())
 					continue;
 
-				TangibleObject* tano = cast<TangibleObject*>( item);
+				PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>(item);
 
-				if (tano->isPharmaceuticalObject()) {
-					PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>( tano);
+				if (pharma->isPetStimPack()) {
+					StimPack* stimPack = cast<StimPack*>(pharma);
 
-					if (pharma->isPetStimPack()) {
-						StimPack* stimPack = cast<StimPack*>( pharma);
-
-						return stimPack;
-					}
-
+					return stimPack;
 				}
 			}
 		}

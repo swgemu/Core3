@@ -55,14 +55,14 @@ public:
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
 		if (session == NULL || playerManager == NULL) {
-			ManagedReference<CreatureObject*> pl = cast<CreatureObject*>( suiBox->getUsingObject().get().get());
+			ManagedReference<CreatureObject*> pl = cast<CreatureObject*>(suiBox->getUsingObject().get().get());
 			if (pl != NULL)
 				pl->dropActiveSession(SessionFacadeType::PLAYERMANAGEMENT);
 
 			return;
 		}
 
-		if (args->size() < 1 || cancelPressed) {
+		if (args->size() < 1 || cancelPressed || !suiBox->isListBox()) {
 			session->cancelSession();
 			return;
 		}
@@ -73,22 +73,23 @@ public:
 		String firstName = "";
 		int tablevel = 0;
 
-		if(index != -1) {
-			SuiListBox* listBox = cast<SuiListBox*>( suiBox);
+		if (index != -1) {
+			SuiListBox* listBox = cast<SuiListBox*>(suiBox);
 
 			String listString = listBox->getMenuItemName(index);
+
 			while(listString.contains("\t")) {
 				listString = listString.replaceFirst("\t", "");
 				tablevel++;
 			}
+
 			listString = listString.trim();
 
 			String playerName = "";
 			uint32 galaxyID = 0;
 			String galaxyName = "";
 
-			if(tablevel == 1) {
-
+			if (tablevel == 1) {
 				StringTokenizer tokenizer(listString);
 
 				try {
@@ -101,11 +102,9 @@ public:
 					player->sendSystemMessage(e.getMessage());
 					galaxyID = -1;
 				}
-
 			}
 
-			if(tablevel == 2) {
-
+			if (tablevel == 2) {
 				String firstName;
 				StringTokenizer tokenizer(listString);
 				tokenizer.getStringToken(firstName);
@@ -114,10 +113,7 @@ public:
 				playerName = firstName;
 			}
 
-
-
 			if (otherPressed) {
-
 				session->ban(tablevel, galaxyID, galaxyName, playerName);
 				return;
 			}

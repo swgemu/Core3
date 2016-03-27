@@ -82,33 +82,23 @@ public:
 	}
 
 	String getAnimation(TangibleObject* attacker, TangibleObject* defender, WeaponObject* weapon, uint8 hitLocation, int damage) const {
-
-		if (weapon == NULL) {
-			warning("Null weapon in FireHeavyWeapon::getAnimation");
-			return "";
-		}
-
 		SharedWeaponObjectTemplate* weaponData = cast<SharedWeaponObjectTemplate*>(weapon->getObjectTemplate());
-		if (weaponData == NULL) {
-			warning("Null weaponData in FireHeavyWeapon::getAnimation");
-			return "";
-		}
 
-		if(attacker == NULL || defender == NULL) {
-			warning("Null TangibleObject in ThrowGrenade::getAnimation()");
+		if (weaponData == NULL) {
+			warning("Null weaponData in ThrowGrenadeCommand::getAnimation");
 			return "";
 		}
 
 		String type = weaponData->getAnimationType();
-		if(type.isEmpty())
+		if (type.isEmpty())
 			return "throw_grenade";
 
 		int range = attacker->getWorldPosition().distanceTo(defender->getWorldPosition());
 
 		String distance = "";
-		if(range < 10) {
+		if (range < 10) {
 			distance = "_near_";
-		} else if(range < 20) {
+		} else if (range < 20) {
 			distance = "_medium_";
 		} else {
 			distance = "_far_";

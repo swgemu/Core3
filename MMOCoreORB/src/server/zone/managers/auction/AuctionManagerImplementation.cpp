@@ -405,7 +405,7 @@ String AuctionManagerImplementation::getVendorUID(SceneObject* vendor) {
 
 int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObject* object, SceneObject* vendor, int price, bool premium, bool stockroomSale) {
 
-	if(vendor == NULL) {
+	if (vendor == NULL) {
 		error("NULL Vendor");
 		return ItemSoldMessage::UNKNOWNERROR;
 	}
@@ -416,12 +416,13 @@ int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObj
 	if (player->getPlayerObject()->getVendorCount() > player->getSkillMod("manage_vendor"))
 		return ItemSoldMessage::TOOMANYITEMS;
 
-	if(vendor->isVendor()) {
+	if (vendor->isVendor()) {
 
-		VendorDataComponent* vendorData = NULL;
-		DataObjectComponentReference* data = vendor->getDataObjectComponent();
-		if(data != NULL && data->get() != NULL && data->get()->isVendorData())
-			vendorData = cast<VendorDataComponent*>(data->get());
+		VendorDataComponent* vendorData = cast<VendorDataComponent*>(vendor->getDataObjectComponent()->get());
+
+		if (vendorData == NULL) {
+			return ItemSoldMessage::UNKNOWNERROR;
+		}
 
 		if (player->getObjectID() == vendorData->getOwnerId()) {
 			if (stockroomSale) {
@@ -440,7 +441,7 @@ int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObj
 			return ItemSoldMessage::INVALIDSALEPRICE;
 	}
 
-	if(vendor->isBazaarTerminal()) {
+	if (vendor->isBazaarTerminal()) {
 		if (auctionMap->getCommodityCount(player) >= MAXSALES)
 			return ItemSoldMessage::TOOMANYITEMS;
 
