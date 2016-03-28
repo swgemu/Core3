@@ -51,6 +51,9 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 		return 0;
 	}
 
+	if (npc == NULL)
+		return 0;
+
 	switch (eventType) {
 	case ObserverEventType::POSITIONCHANGED:
 		if (npc != NULL) { //the observable in this case is the player

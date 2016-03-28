@@ -1479,28 +1479,15 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 	}
 
 	CreatureObject* player = cast<CreatureObject*>(receiver.get());
-	PlayerObject* ghost = player->getPlayerObject();
-
-	/*StringIdChatParameter test("base_player", "sale_fee");
-	test.setDI(100);
-	test.setUnknownByte(1);*/
 
 	ManagedReference<PersistentMessage*> mail = new PersistentMessage();
 	mail->setSenderName(sendername);
 	mail->setSubject(header);
 	mail->setBody(body);
-	//mail->setParameterizedBody(test);
 	mail->setReceiverObjectID(receiverObjectID);
 	mail->setTimeStamp(currentTime);
 
 	ObjectManager::instance()->persistObject(mail, 1, "mail");
-
-	/*Locker _locker(player);
-
-	ghost->addPersistentMessage(mail->getObjectID());
-
-	if (player->isOnline())
-		mail->sendTo(player, false);*/
 
 	Reference<SendMailTask*> sendMailTask = new SendMailTask(player, mail, sendername);
 	sendMailTask->execute();
@@ -1567,15 +1554,6 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 
 	ObjectManager::instance()->persistObject(mail, 1, "mail");
 
-	/*
-	PlayerObject* ghost = receiver->getPlayerObject();
-
-	ghost->addPersistentMessage(mail->getObjectID());
-
-	if (receiver->isOnline())
-		mail->sendTo(receiver, false);
-	 */
-
 	Reference<SendMailTask*> sendMailTask = new SendMailTask(receiver, mail, sendername);
 	sendMailTask->execute();
 
@@ -1630,15 +1608,6 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 
 	Reference<SendMailTask*> sendMailTask = new SendMailTask(receiver, mail, sendername);
 	sendMailTask->execute();
-/*
-	PlayerObject* ghost = receiver->getPlayerObject();
-
-	ghost->addPersistentMessage(mail->getObjectID());
-
-	if (receiver->isOnline())
-		mail->sendTo(receiver, false);
-
-		*/
 
 	return IM_SUCCESS;
 }

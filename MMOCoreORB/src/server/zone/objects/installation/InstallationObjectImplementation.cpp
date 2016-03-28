@@ -42,6 +42,9 @@
 void InstallationObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	StructureObjectImplementation::loadTemplateData(templateData);
 
+	if (!templateData->isSharedInstallationObjectTemplate())
+		return;
+
 	SharedInstallationObjectTemplate* inso = dynamic_cast<SharedInstallationObjectTemplate*>(templateData);
 
 	installationType = inso->getInstallationType();

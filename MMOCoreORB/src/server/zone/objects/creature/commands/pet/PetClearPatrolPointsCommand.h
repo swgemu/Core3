@@ -52,7 +52,7 @@ public:
 		}
 
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target, true);
-		if (targetObject != NULL || targetObject->isPlayerCreature() ) {
+		if (targetObject != NULL && targetObject->isPlayerCreature()) {
 			CreatureObject* player = cast<CreatureObject*>(targetObject.get());
 			player->sendSystemMessage("@pet/pet_menu:patrol_removed"); // Patrol points forgotten
 		}

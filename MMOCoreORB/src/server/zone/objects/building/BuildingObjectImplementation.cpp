@@ -66,12 +66,17 @@ void BuildingObjectImplementation::loadTemplateData(
 		SharedObjectTemplate* templateData) {
 	StructureObjectImplementation::loadTemplateData(templateData);
 
-	SharedBuildingObjectTemplate* buildingData =
-			dynamic_cast<SharedBuildingObjectTemplate*> (templateData);
-
 	containerVolumeLimit = 0xFFFFFFFF;
 
 	containerType = 2;
+
+	optionsBitmask = 0x00000100;
+
+	SharedBuildingObjectTemplate* buildingData =
+			dynamic_cast<SharedBuildingObjectTemplate*> (templateData);
+
+	if (buildingData == NULL)
+		return;
 
 	totalCellNumber = buildingData->getTotalCellNumber();
 
@@ -79,8 +84,6 @@ void BuildingObjectImplementation::loadTemplateData(
 
 	if (portalLayout != NULL)
 		totalCellNumber = portalLayout->getFloorMeshNumber() - 1; //remove the exterior floor
-
-	optionsBitmask = 0x00000100;
 
 	publicStructure = buildingData->isPublicStructure();
 
@@ -150,6 +153,11 @@ void BuildingObjectImplementation::createCellObjects() {
 	for (int i = 0; i < totalCellNumber; ++i) {
 
 		Reference<SceneObject*> newCell = getZoneServer()->createObject(0xAD431713, getPersistenceLevel());
+
+		if (newCell == NULL || !newCell->isCellObject()) {
+			error("could not create cell");
+			continue;
+		}
 
 		Locker clocker(newCell, asBuildingObject());
 
@@ -638,7 +646,7 @@ void BuildingObjectImplementation::broadcastCellPermissions() {
 		else if (obj->isVehicleObject() || obj->isMount()) {
 			SceneObject* rider = obj->getSlottedObject("rider");
 
-			if (rider != NULL) {
+			if (rider != NULL && rider->isPlayerCreature()) {
 				updateCellPermissionsTo(cast<CreatureObject*>(rider));
 			}
 		}
@@ -667,7 +675,7 @@ void BuildingObjectImplementation::broadcastCellPermissions(uint64 objectid) {
 		} else if (obj->isVehicleObject() || obj->isMount()) {
 			SceneObject* rider = obj->getSlottedObject("rider");
 
-			if (rider != NULL) {
+			if (rider != NULL && rider->isPlayerCreature()) {
 				CreatureObject* creo = cast<CreatureObject*>(rider);
 				cell->sendPermissionsTo(creo, isAllowedEntry(creo));
 			}

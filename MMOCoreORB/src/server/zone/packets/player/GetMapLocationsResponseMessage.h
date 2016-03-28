@@ -28,8 +28,11 @@ public:
 
 		int totalEntries = 0;
 
+		unsigned int faction = 0;
 		TangibleObject* play = cast<TangibleObject*>(player);
-		unsigned int faction = play->getFaction();
+
+		if (play != NULL)
+			faction = play->getFaction();
 
 		try {
 			for (int i = 0; i < mapLocations->size(); ++i) {

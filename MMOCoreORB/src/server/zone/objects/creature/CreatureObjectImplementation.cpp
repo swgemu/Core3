@@ -183,6 +183,9 @@ void CreatureObjectImplementation::loadTemplateData(
 	SharedCreatureObjectTemplate* creoData =
 			dynamic_cast<SharedCreatureObjectTemplate*> (templateData);
 
+	if (creoData == NULL)
+		return;
+
 	slopeModPercent = creoData->getSlopeModPercent();
 	slopeModAngle = creoData->getSlopeModAngle();
 	swimHeight = creoData->getSwimHeight();

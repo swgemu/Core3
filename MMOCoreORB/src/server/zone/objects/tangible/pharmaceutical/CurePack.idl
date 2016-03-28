@@ -57,13 +57,13 @@ class CurePack extends PharmaceuticalObject {
 		if (!templateData.isCurePackTemplate())
 			return;
 		
-		CurePackTemplate stimPackTemplate = (CurePackTemplate) templateData;
+		CurePackTemplate curePackTemplate = (CurePackTemplate) templateData;
 		
-		effectiveness = stimPackTemplate.getEffectiveness();
-		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
-		area = stimPackTemplate.getArea();
-		state = stimPackTemplate.getState();
-		commandToExecute = stimPackTemplate.getCommandToExecute();
+		effectiveness = curePackTemplate.getEffectiveness();
+		super.medicineUseRequired = curePackTemplate.getMedicineUse();
+		area = curePackTemplate.getArea();
+		state = curePackTemplate.getState();
+		commandToExecute = curePackTemplate.getCommandToExecute();
 	}
 	
 	/**
