@@ -67,23 +67,23 @@ class DotPack extends PharmaceuticalObject {
 	@local
 	public void loadTemplateData(SharedObjectTemplate templateData) {
 		super.loadTemplateData(templateData);
-		
+
 		if (!templateData.isDotPackTemplate())
 			return;
-		
-		DotPackTemplate stimPackTemplate = (DotPackTemplate) templateData;
-		
-		effectiveness = stimPackTemplate.getEffectiveness();
-		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
-		duration = stimPackTemplate.getDuration();
-		area = stimPackTemplate.getArea();
-		hasArea = stimPackTemplate.isArea();
-		range = stimPackTemplate.getRange();
-		rangeMod = stimPackTemplate.getRangeMod();
-		pool = stimPackTemplate.getPool();
-		dotType = stimPackTemplate.getDotType();
-		potency = stimPackTemplate.getPotency();
-		commandToExecute = stimPackTemplate.getCommandToExecute();
+
+		DotPackTemplate dotPackTemplate = (DotPackTemplate) templateData;
+
+		effectiveness = dotPackTemplate.getEffectiveness();
+		super.medicineUseRequired = dotPackTemplate.getMedicineUse();
+		duration = dotPackTemplate.getDuration();
+		area = dotPackTemplate.getArea();
+		hasArea = dotPackTemplate.isArea();
+		range = dotPackTemplate.getRange();
+		rangeMod = dotPackTemplate.getRangeMod();
+		pool = dotPackTemplate.getPool();
+		dotType = dotPackTemplate.getDotType();
+		potency = dotPackTemplate.getPotency();
+		commandToExecute = dotPackTemplate.getCommandToExecute();
 	}
 	
 	/**

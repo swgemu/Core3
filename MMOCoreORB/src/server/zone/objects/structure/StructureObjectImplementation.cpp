@@ -35,6 +35,9 @@
 void StructureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
 
+	if (!templateData->isSharedStructureObjectTemplate())
+		return;
+
 	SharedStructureObjectTemplate* structureTemplate = dynamic_cast<SharedStructureObjectTemplate*>(templateData);
 
 	structureTemplate->getPortalLayout();

@@ -433,7 +433,11 @@ void SlicingSessionImplementation::handleUseFlowAnalyzer() {
 		uint32 objType = sceno->getGameObjectType();
 
 		if (objType == SceneObjectType::FLOWANALYZER) {
-			SlicingTool* node = cast<SlicingTool*>( sceno.get());
+			SlicingTool* node = cast<SlicingTool*>(sceno.get());
+
+			if (node == NULL)
+				continue;
+
 			nodeCable = node->calculateSuccessRate();
 
 			if (nodeCable) // PASSED

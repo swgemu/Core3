@@ -1187,10 +1187,14 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 	ChatManager* chatMan = zoneServer->getChatManager();
 
 	SharedTangibleObjectTemplate* tanoData = dynamic_cast<SharedTangibleObjectTemplate*>(clothing->getObjectTemplate());
+
+	if (tanoData == NULL || chatMan == NULL)
+		return false;
+
 	Vector<uint32>* races = tanoData->getPlayerRaces();
 	String race = creature->getObjectTemplate()->getFullTemplateString();
 
-	if(clothing->isWearableObject()) {
+	if (clothing->isWearableObject()) {
 		if (!races->contains(race.hashCode())) {
 			UnicodeString message;
 
@@ -1229,7 +1233,7 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 	creature->broadcastObject(clothing, true);
 
 	UnicodeString message;
-	if(clothing->isWeaponObject())
+	if (clothing->isWeaponObject())
 		message = "@player_structure:wear_yes_weapon";
 	else
 		message = "@player_structure:wear_yes";

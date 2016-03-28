@@ -377,6 +377,10 @@ StimPack* DroidStimpackModuleDataComponent::findStimPack() {
 	StimPack* pack = NULL;
 	float biggest = 0;
 	DroidComponent* container = cast<DroidComponent*>(getParent());
+
+	if (container == NULL)
+		return NULL;
+
 	ManagedReference<SceneObject*> craftingComponents = container->getSlottedObject("crafted_components");
 
 	if (craftingComponents != NULL) {

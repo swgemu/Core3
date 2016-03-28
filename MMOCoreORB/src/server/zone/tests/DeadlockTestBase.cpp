@@ -181,7 +181,7 @@ void DeadlockDetector::detectDeadlock() {
 			}
 
 			if (lastLockable != NULL) {
-				if (lastTrace->monitorLike)
+				if (lastTrace != NULL && lastTrace->monitorLike)
 					throw DeadlockException(lock->lockable, "Monitor trying to perform a lock!");
 
 				//ASSERT_FALSE(lastTrace->monitorLike) << "Monitor trying to perform a lock!";
