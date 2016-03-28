@@ -659,7 +659,7 @@ ResourceSpawn* ResourceSpawner::getRecycledVersion(ResourceSpawn* resource) {
 	int recycleType = startingEntry->getRecycleToolType();
 
 	ResourceTreeEntry* recycledEntry = NULL;
-	ManagedReference<ResourceSpawn*> recycledVersion;
+	ManagedReference<ResourceSpawn*> recycledVersion = NULL;
 
 	switch(recycleType) {
 	case RecycleTool::NOTYPE:
@@ -733,6 +733,9 @@ ResourceSpawn* ResourceSpawner::getRecycledVersion(ResourceSpawn* resource) {
 		recycledEntry = resourceTree->getEntry("gemstone_mixed_low_quality");
 		break;
 	}
+
+	if (recycledEntry == NULL)
+		return NULL;
 
 	if (resourceMap->containsType(recycledEntry->getFinalClass())) {
 		recycledVersion = resourceMap->get(recycledEntry->getFinalClass().toLowerCase());

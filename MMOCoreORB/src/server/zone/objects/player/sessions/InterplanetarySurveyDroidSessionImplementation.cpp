@@ -19,7 +19,9 @@ int InterplanetarySurveyDroidSessionImplementation::cancelSession() {
 		player->dropActiveSession(SessionFacadeType::INTERPLANETARYSURVEYDROID);
 		player->getPlayerObject()->removeSuiBoxType(SuiWindowType::SURVERY_DROID_MENU);
 	}
+
 	clearSession();
+
 	return 0;
 }
 
@@ -78,6 +80,7 @@ void InterplanetarySurveyDroidSessionImplementation::initalizeDroid(TangibleObje
 	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 		ManagedReference<SceneObject*> sceno = inventory->getContainerObject(i);
 		uint32 objType = sceno->getGameObjectType();
+
 		if (objType == SceneObjectType::SURVEYTOOL) {
 			droidSuiBox->addMenuItem(sceno->getDisplayedName(), sceno->getObjectID());
 		}
@@ -101,19 +104,30 @@ void InterplanetarySurveyDroidSessionImplementation::handleMenuSelect(CreatureOb
 		// Get the id back
 		uint64 chosen = droidSuiBox->getMenuObjectID(menuID);
 		ManagedReference<SceneObject*> obj = pl->getZoneServer()->getObject(chosen);
+
 		if (obj == NULL) {
 			player->sendSystemMessage("@pet/droid_modules:survey_no_survey_tools");
 			cancelSession();
 			return;
 		}
+
 		Locker toolLock(obj);
-		SurveyTool* tool;
-		tool = cast<SurveyTool*>( obj.get());
+
+		SurveyTool* tool = cast<SurveyTool*>(obj.get());
+
+		if (tool == NULL) {
+			player->sendSystemMessage("@pet/droid_modules:survey_no_survey_tools");
+			cancelSession();
+			return;
+		}
+
 		setTool(tool);
+
 		// reset title and prompt and menu
 		droidSuiBox->removeAllMenuItems();
 		droidSuiBox->setPromptTitle("@pet/droid_modules:survey_planet_title");
 		droidSuiBox->setPromptText("@pet/droid_modules:survey_planet_prompt");
+
 		// Loop planets and add them in
 		pl->getZoneServer()->getResourceManager()->addPlanetsToListBox(droidSuiBox);
 		player->getPlayerObject()->addSuiBox(droidSuiBox);
@@ -121,24 +135,40 @@ void InterplanetarySurveyDroidSessionImplementation::handleMenuSelect(CreatureOb
 		step = 2;
 	} else {
 		// picked planet let rock and roll.
-		Locker toolObject(this->toolObject.get());
-		Locker droidLocker(this->droidObject.get());
-		Component* component = dynamic_cast<Component*>(tangibleObject.get());
-		float quality = component->getAttributeValue("mechanism_quality");
 		ManagedReference<SurveyTool*> tool = this->toolObject.get();
+
+		if (tool == NULL) {
+			cancelSession();
+			return;
+		}
+
+		Locker toolObject(tool);
+		Locker droidLocker(this->droidObject.get());
+
+		Component* component = dynamic_cast<Component*>(tangibleObject.get());
+
+		if (component == NULL) {
+			cancelSession();
+			return;
+		}
+
+		float quality = component->getAttributeValue("mechanism_quality");
 		unsigned long chosen = droidSuiBox->getMenuObjectID(menuID);
 		this->targetPlanet = pl->getZoneServer()->getResourceManager()->getPlanetByIndex(chosen);
 		int duration = 1000 * (3600 - (27 * quality));
 		int minutes = duration/60000;
+
 		StringBuffer buffer;
 		buffer << "Droid sent, ETA for the report is ";
 		buffer << minutes;
 		buffer << " minutes.";
 		pl->sendSystemMessage(buffer.toString());
+
 		// Create a bogus task to run to show the output to the console
 		ManagedReference<InterplanetarySurvey*> data = new InterplanetarySurvey();
 		Time expireTime;
 		uint64 currentTime = expireTime.getMiliTime();
+
 		// TEst case: add this for the future and persist it.
 		data->setPlanet(this->targetPlanet);
 		data->setSurveyToolType(tool->getToolType());
@@ -146,11 +176,15 @@ void InterplanetarySurveyDroidSessionImplementation::handleMenuSelect(CreatureOb
 		data->setCurTime(currentTime);
 		data->setTimeStamp(duration);
 		data->setSurveyType(tool->getSurveyType());
+
 		Reference<InterplanetarySurveyTask*> task = new InterplanetarySurveyTask(data.get());
-		task->schedule(duration);		// remove the tools form the world
+		task->schedule(duration); // remove the tools form the world
+
 		ObjectManager::instance()->persistObject(data, 1, "surveys");
+
 		tool->destroyObjectFromWorld(true);
 		tool->destroyObjectFromDatabase(true);
+
 		tangibleObject->decreaseUseCount();
 		cancelSession();
 	}

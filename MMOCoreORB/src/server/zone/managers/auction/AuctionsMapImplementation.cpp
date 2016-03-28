@@ -252,7 +252,7 @@ void AuctionsMapImplementation::updateUID(SceneObject* vendor, const String& old
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 	
 	if (vendor == NULL) {
-		logger.error("NULL vendor while updating UID  Vendor Is Bazaar: " + String::valueOf(vendor->isBazaarTerminal()));
+		logger.error("NULL vendor while updating UID");
 		return;
 	}
 

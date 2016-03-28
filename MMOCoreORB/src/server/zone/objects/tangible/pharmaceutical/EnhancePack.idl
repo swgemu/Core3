@@ -74,16 +74,16 @@ class EnhancePack extends PharmaceuticalObject {
 	@local
 	public void loadTemplateData(SharedObjectTemplate templateData) {
 		super.loadTemplateData(templateData);
-		
+
 		if (!templateData.isEnhancePackTemplate())
 			return;
-		
-		EnhancePackTemplate stimPackTemplate = (EnhancePackTemplate) templateData;
-		
-		effectiveness = stimPackTemplate.getEffectiveness();
-		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
-		duration = stimPackTemplate.getDuration();
-		attribute = stimPackTemplate.getAttribute();
+
+		EnhancePackTemplate enhancePackTemplate = (EnhancePackTemplate) templateData;
+
+		effectiveness = enhancePackTemplate.getEffectiveness();
+		super.medicineUseRequired = enhancePackTemplate.getMedicineUse();
+		duration = enhancePackTemplate.getDuration();
+		attribute = enhancePackTemplate.getAttribute();
 	}
 	
 	/**

@@ -51,20 +51,21 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 		return 0;
 	}
 
+	if (npc == NULL)
+		return 0;
+
 	switch (eventType) {
 	case ObserverEventType::POSITIONCHANGED:
-		if (npc != NULL) { //the observable in this case is the player
-			ManagedReference<ConversationSession*> session = npc->getActiveSession(SessionFacadeType::CONVERSATION).castTo<ConversationSession*>();
+		//the observable in this case is the player
+		ManagedReference<ConversationSession*> session = npc->getActiveSession(SessionFacadeType::CONVERSATION).castTo<ConversationSession*>();
 
-			if (session != NULL) {
-				ManagedReference<CreatureObject*> sessionNpc = session->getNPC();
+		if (session != NULL) {
+			ManagedReference<CreatureObject*> sessionNpc = session->getNPC();
 
-				if (sessionNpc == NULL || npc->getDistanceTo(sessionNpc) > 7.f) {
-					cancelConversationSession(npc, session->getNPC().get(), true);
-					return 0;
-				}
+			if (sessionNpc == NULL || npc->getDistanceTo(sessionNpc) > 7.f) {
+				cancelConversationSession(npc, session->getNPC().get(), true);
+				return 0;
 			}
-
 		}
 
 		return 0;

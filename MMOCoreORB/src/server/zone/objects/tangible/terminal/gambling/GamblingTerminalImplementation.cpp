@@ -370,28 +370,32 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 			switch (event) {
 				case JOINTERMINAL: {
 
+					StringIdChatParameter textOthers("gambling/default_interface","prose_player_join_other");
+
 					if (player != NULL) {
 						StringIdChatParameter textPlayer("gambling/default_interface","prose_player_join");
 						textPlayer.setTO(getMachineTypeText());
 						player->sendSystemMessage(textPlayer);
+
+						textOthers.setTT(player->getFirstName());
 					}
 
-					StringIdChatParameter textOthers("gambling/default_interface","prose_player_join_other");
-					textOthers.setTT(player->getFirstName());
 					notifyOthers(player, &textOthers);
 
 					break;
 				}
 				case LEAVETERMINAL: {
 
+					StringIdChatParameter textOthers("gambling/default_interface","prose_player_leave_other");
+
 					if (player != NULL) {
 						StringIdChatParameter textPlayer("gambling/default_interface","prose_player_leave");
 						textPlayer.setTO(getMachineTypeText());
 						player->sendSystemMessage(textPlayer);
+
+						textOthers.setTT(player->getFirstName());
 					}
 
-					StringIdChatParameter textOthers("gambling/default_interface","prose_player_leave_other");
-					textOthers.setTT(player->getFirstName());
 					notifyOthers(player, &textOthers);
 
 					break;
