@@ -175,7 +175,7 @@ public:
 
 				// Award loot group to all players in range
 				for (int i = 0; i < closeObjects.size(); i++) {
-					SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i));
+					SceneObject* targetObject = static_cast<SceneObject*>(closeObjects.get(i));
 
 					if (targetObject->isPlayerCreature() && creature->isInRange(targetObject, range)) {
 

@@ -60,7 +60,7 @@ public:
 		}
 
 		for (int i = 0; i < objects.size(); ++i) {
-			SceneObject* object = cast<SceneObject*>(objects.get(i));
+			SceneObject* object = static_cast<SceneObject*>(objects.get(i));
 
 			if (object->isCreatureObject() && checkDistance(creature, object, 32)) {
 				CreatureObject* creo = cast<CreatureObject*>(object);

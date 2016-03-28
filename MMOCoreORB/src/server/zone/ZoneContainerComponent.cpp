@@ -51,7 +51,7 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 	newZone->getInRangeObjects(activeArea->getPositionX(), activeArea->getPositionY(), range, &objects, false);
 
 	for (int i = 0; i < objects.size(); ++i) {
-		SceneObject* object = cast<SceneObject*>(objects.get(i));
+		SceneObject* object = static_cast<SceneObject*>(objects.get(i));
 
 		if (!object->isTangibleObject()) {
 			continue;
@@ -94,7 +94,7 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 	zoneLocker.release();
 
 	for (int i = 0; i < objects.size(); ++i) {
-		SceneObject* object = cast<SceneObject*>(objects.get(i));
+		SceneObject* object = static_cast<SceneObject*>(objects.get(i));
 
 	//	Locker olocker(object);
 

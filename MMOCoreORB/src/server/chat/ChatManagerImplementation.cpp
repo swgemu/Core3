@@ -957,7 +957,7 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* player, con
 
 	try {
 		for (int i = 0; i < closeEntryObjects.size(); ++i) {
-			SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i));
+			SceneObject* object = static_cast<SceneObject*>(closeEntryObjects.get(i));
 
 			if (player->isInRange(object, range)) {
 
@@ -1082,7 +1082,7 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* player, Str
 
 	try {
 		for (int i = 0; i < closeEntryObjects.size(); ++i) {
-			SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i));
+			SceneObject* object = static_cast<SceneObject*>(closeEntryObjects.get(i));
 
 			if (player->isInRange(object, 128)) {
 

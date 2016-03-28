@@ -171,7 +171,7 @@ public:
 			//Deal area damage if specified
 			if (damage) {
 				for (int i = 0; i < closeObjects.size(); i++) {
-					SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i));
+					SceneObject* targetObject = static_cast<SceneObject*>(closeObjects.get(i));
 					if (targetObject->isPlayerCreature() || targetObject->isPet()) {
 						targetPlayer = cast<CreatureObject*>(targetObject);
 

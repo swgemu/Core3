@@ -110,7 +110,7 @@ bool CollisionManager::checkSphereCollision(const Vector3& origin, float radius,
 	for (int i = 0; i < objects.size(); ++i) {
 		AABBTree* aabbTree = NULL;
 
-		SceneObject* scno = cast<SceneObject*>(objects.get(i).get());
+		SceneObject* scno = static_cast<SceneObject*>(objects.get(i).get());
 
 		try {
 			aabbTree = getAABBTree(scno, -1);
@@ -672,7 +672,7 @@ bool CollisionManager::checkShipCollision(ShipObject* ship, const Vector3& targe
 	for (int i = 0; i < objects.size(); ++i) {
 		AABBTree* aabbTree = NULL;
 
-		SceneObject* scno = cast<SceneObject*>(objects.get(i).get());
+		SceneObject* scno = static_cast<SceneObject*>(objects.get(i).get());
 
 		try {
 			aabbTree = getAABBTree(scno, -1);

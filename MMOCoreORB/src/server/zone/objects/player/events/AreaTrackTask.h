@@ -75,7 +75,7 @@ public:
 			zone->getInRangeObjects(player->getPositionX(), player->getPositionY(), 512, &objects, true);
 
 			for (int i = 0; i < objects.size(); ++i) {
-				SceneObject* object = cast<SceneObject*>(objects.get(i).get());
+				SceneObject* object = static_cast<SceneObject*>(objects.get(i).get());
 				results.deleteAll();
 
 				if(object == player || !object->isCreatureObject()) {

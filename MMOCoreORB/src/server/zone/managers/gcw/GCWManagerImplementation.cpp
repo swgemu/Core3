@@ -1579,7 +1579,7 @@ void GCWManagerImplementation::broadcastBuilding(BuildingObject* building, Strin
 
 	// send message to all the players in range
 	for (int i = 0; i < closeObjects.size(); i++) {
-		SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i));
+		SceneObject* targetObject = static_cast<SceneObject*>(closeObjects.get(i));
 
 		if (targetObject->isPlayerCreature() && building->isInRange(targetObject, range)) {
 			CreatureObject* targetPlayer = cast<CreatureObject*>(targetObject);

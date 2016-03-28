@@ -2085,7 +2085,7 @@ void CombatManager::broadcastCombatSpam(TangibleObject* attacker, TangibleObject
 	}
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
-		SceneObject* object = cast<SceneObject*>( closeObjects.get(i));
+		SceneObject* object = static_cast<SceneObject*>( closeObjects.get(i));
 
 		if (object->isPlayerCreature() && attacker->isInRange(object, COMBAT_SPAM_RANGE)) {
 			CreatureObject* receiver = cast<CreatureObject*>( object);
@@ -2492,7 +2492,7 @@ Reference<SortedVector<ManagedReference<TangibleObject*> >* > CombatManager::get
 		}
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
-			SceneObject* object = cast<SceneObject*>(closeObjects.get(i));
+			SceneObject* object = static_cast<SceneObject*>(closeObjects.get(i));
 
 			TangibleObject* tano = object->asTangibleObject();
 			CreatureObject* creo = object->asCreatureObject();

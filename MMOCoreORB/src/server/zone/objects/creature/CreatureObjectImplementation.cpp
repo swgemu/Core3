@@ -293,7 +293,7 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 	vec->safeCopyTo(closeObjects);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
-		SceneObject* obj = cast<SceneObject*> (closeObjects.get(i));
+		SceneObject* obj = static_cast<SceneObject*> (closeObjects.get(i));
 
 		if (obj != asCreatureObject()) {
 			if (obj != grandParent) {
@@ -794,7 +794,7 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 					}
 
 					for (int i = 0; i < closeSceneObjects.size(); ++i) {
-						SceneObject* object = cast<SceneObject*> (closeSceneObjects.get(i).get());
+						SceneObject* object = static_cast<SceneObject*> (closeSceneObjects.get(i).get());
 
 						if (object->getParent().get() == getParent().get()) {
 							SitOnObject* soo = new SitOnObject(asCreatureObject(), getPositionX(), getPositionZ(), getPositionY());

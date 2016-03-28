@@ -403,7 +403,7 @@ void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* objec
 	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = getCloseObjects();
 
 	for (int i = 0; i < closeObjects->size(); ++i) {
-		SceneObject* obj = cast<SceneObject*>(closeObjects->get(i).get());
+		SceneObject* obj = static_cast<SceneObject*>(closeObjects->get(i).get());
 
 		if ((obj->isCreatureObject() && isPublicStructure()) || isStaticBuilding()) {
 

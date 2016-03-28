@@ -731,7 +731,7 @@ bool PlanetManagerImplementation::isInObjectsNoBuildZone(float x, float y, float
 	zone->getInRangeObjects(x, y, 512, &closeObjects, true);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
-		SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
+		SceneObject* obj = static_cast<SceneObject*>(closeObjects.get(i));
 
 		SharedObjectTemplate* objectTemplate = obj->getObjectTemplate();
 

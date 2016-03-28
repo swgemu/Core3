@@ -112,7 +112,7 @@ public:
 			vec->safeCopyTo(closeObjects);
 
 			for (int i = 0; i < closeObjects.size(); i++) {
-				SceneObject* object = cast<SceneObject*>( closeObjects.get(i));
+				SceneObject* object = static_cast<SceneObject*>( closeObjects.get(i));
 
 				if (!object->isCreatureObject())
 					continue;

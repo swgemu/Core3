@@ -285,7 +285,7 @@ void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
 	zone->getInRangeObjects(camp->getWorldPositionX(), camp->getWorldPositionY(), campStructureData->getRadius(), closeObjects, true);
 
 	for (int i = 0; i < closeObjects->size(); ++i) {
-		SceneObject* scno = cast<SceneObject*>(closeObjects->get(i).get());
+		SceneObject* scno = static_cast<SceneObject*>(closeObjects->get(i).get());
 		if (scno->isPlayerCreature())
 			visitors.add(scno->getObjectID());
 	}

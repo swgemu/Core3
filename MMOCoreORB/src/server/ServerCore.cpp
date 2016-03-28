@@ -354,10 +354,6 @@ void ServerCore::handleCommands() {
 			} else if (command == "fixQueue") {
 				if (zoneServer != NULL)
 					zoneServer->fixScheduler();
-			} else if (command == "crash") {
-				zoneServer = NULL;
-
-				zoneServer->fixScheduler();
 			} else if (command == "save") {
 				ObjectManager::instance()->createBackup();
 				//ObjectDatabaseManager::instance()->checkpoint();
