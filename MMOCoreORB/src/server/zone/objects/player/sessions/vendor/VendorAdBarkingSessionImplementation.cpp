@@ -56,10 +56,9 @@ void VendorAdBarkingSessionImplementation::sendPhraseOptions() {
 	phrases->addMenuItem("@map_loc_cat_n:vendor_resources", 8);
 	phrases->addMenuItem("@map_loc_cat_n:vendor_tools", 9);
 	phrases->addMenuItem("@map_loc_cat_n:vendor_weapons", 10);
-	phrases->addMenuItem("@map_loc_cat_n:vendor_junk", 11);
-	phrases->addMenuItem("@map_loc_cat_n:vendor_pets", 12);
-	phrases->addMenuItem("@map_loc_cat_n:vendor_medical", 13);
-	phrases->addMenuItem("@map_loc_cat_n:vendor_ships", 14);
+	phrases->addMenuItem("@map_loc_cat_n:vendor_pets", 11);
+	phrases->addMenuItem("@map_loc_cat_n:vendor_medical", 12);
+	phrases->addMenuItem("@map_loc_cat_n:vendor_ships", 13);
 
 	owner->getPlayerObject()->addSuiBox(phrases);
 	owner->sendMessage(phrases->generateMessage());
