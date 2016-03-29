@@ -161,7 +161,7 @@ public:
 
 		if (creature->isAiAgent()) {
 			AiAgent* agent = cast<AiAgent*>(creature.get());
-			ManagedReference<SceneObject*> parent = player->getParent().get();
+			ManagedReference<CellObject*> parent = player->getParent().get().castTo<CellObject*>();
 
 			float respawn = agent->getRespawnTimer() * 1000;
 
@@ -186,8 +186,8 @@ public:
 			agent->setFollowObject(player);
 			agent->storeFollowObject();
 
-			agent->setHomeLocation(player->getPositionX(), player->getPositionZ(), player->getPositionY(), (parent != NULL && parent->isCellObject()) ? parent : NULL);
-			agent->setNextStepPosition(player->getPositionX(), player->getPositionZ(), player->getPositionY(), (parent != NULL && parent->isCellObject()) ? parent : NULL);
+			agent->setHomeLocation(player->getPositionX(), player->getPositionZ(), player->getPositionY(), parent);
+			agent->setNextStepPosition(player->getPositionX(), player->getPositionZ(), player->getPositionY(), parent);
 			agent->clearPatrolPoints();
 
 			agent->setCreatureBitmask(CreatureFlag::PET);

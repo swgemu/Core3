@@ -37,14 +37,14 @@ public:
 		if (obj == NULL)
 			return INVALIDTARGET;
 
-		ManagedReference<SceneObject*> cell = obj->getParent();
+		ManagedReference<CellObject*> cell = obj->getParent().get().castTo<CellObject*>();
 
 		int cellid = 0;
 		uint32 buildingTemplate = 0;
 
-		if (cell != NULL && cell->isCellObject()) {
-			cellid = (cast<CellObject*>(cell.get()))->getCellNumber();
-			ManagedReference<SceneObject*> building = cell->getParent();
+		if (cell != NULL) {
+			cellid = cell->getCellNumber();
+			ManagedReference<SceneObject*> building = cell->getParent().get();
 			buildingTemplate = building->getServerObjectCRC();
 		}
 
@@ -67,9 +67,9 @@ public:
 			if (home != NULL) {
 				cell = home->getCell();
 
-				if (cell != NULL && cell->isCellObject()) {
-					cellid = (cast<CellObject*>(cell.get()))->getCellNumber();
-					ManagedReference<SceneObject*> building = cell->getParent();
+				if (cell != NULL) {
+					cellid = cell->getCellNumber();
+					ManagedReference<SceneObject*> building = cell->getParent().get();
 					buildingTemplate = building->getServerObjectCRC();
 				}
 
@@ -84,9 +84,9 @@ public:
 				PatrolPoint nextPosition = objCreo->getNextPosition();
 				cell = nextPosition.getCell();
 
-				if (cell != NULL && cell->isCellObject()) {
-					cellid = (cast<CellObject*>(cell.get()))->getCellNumber();
-					ManagedReference<SceneObject*> building = cell->getParent();
+				if (cell != NULL) {
+					cellid = cell->getCellNumber();
+					ManagedReference<SceneObject*> building = cell->getParent().get();
 					buildingTemplate = building->getServerObjectCRC();
 				}
 

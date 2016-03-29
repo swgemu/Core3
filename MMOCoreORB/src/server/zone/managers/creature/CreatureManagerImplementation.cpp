@@ -486,15 +486,10 @@ void CreatureManagerImplementation::placeCreature(CreatureObject* creature, floa
 	if (creature == NULL)
 		return;
 
-	Reference<SceneObject*> cellParent = NULL;
+	Reference<CellObject*> cellParent = NULL;
 
 	if (parentID != 0) {
-		cellParent = zoneServer->getObject(parentID);
-
-		if (cellParent != NULL && !cellParent->isCellObject()) {
-			error("trying to set a parent that is not a cell to creature");
-			cellParent = NULL;
-		}
+		cellParent = zoneServer->getObject(parentID).castTo<CellObject*>();
 	}
 
 	//addCreatureToMap(creature);

@@ -23,8 +23,8 @@ public:
 	}
 
 	void getCoordinate(SceneObject* object1, SceneObject* object2, float distanceFromObject1, WorldCoordinates* newPosition) const {
-		ManagedReference<SceneObject*> object1Cell = object1->getParent().get();
-		ManagedReference<SceneObject*> object2Cell = object2->getParent().get();
+		ManagedReference<CellObject*> object1Cell = object1->getParent().get().castTo<CellObject*>();
+		ManagedReference<CellObject*> object2Cell = object2->getParent().get().castTo<CellObject*>();
 		Vector3 object1Position = object1->getPosition();
 		Vector3 object2Position = object2->getPosition();
 
@@ -148,7 +148,7 @@ public:
 		getCoordinate(targetPlayer, player, maxMovement, &newPosition);
 		targetPlayer->setPosition(newPosition.getX(), newPosition.getZ(), newPosition.getY());
 		targetPlayer->incrementMovementCounter();
-		ManagedReference<SceneObject*> cell = newPosition.getCell();
+		ManagedReference<CellObject*> cell = newPosition.getCell();
 		uint64 parentID = 0;
 
 		if (cell != NULL) {

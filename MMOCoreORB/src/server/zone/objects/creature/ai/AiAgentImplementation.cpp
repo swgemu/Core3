@@ -1127,7 +1127,7 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range) {
 		runTrajectory = runTrajectory * (fleeRange / runTrajectory.length());
 		runTrajectory += getPosition();
 
-		setNextPosition(runTrajectory.getX(), getZone()->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent().get());
+		setNextPosition(runTrajectory.getX(), getZone()->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent().get().castTo<CellObject*>());
 	}
 }
 
@@ -1297,7 +1297,7 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 
 	initializePosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY());
 
-	SceneObject* cell = homeLocation.getCell();
+	CellObject* cell = homeLocation.getCell();
 
 	setNextPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY());
 	nextStepPosition.setPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY());
@@ -1545,7 +1545,7 @@ void AiAgentImplementation::updateCurrentPosition(PatrolPoint* pos) {
 	setPosition(nextPosition->getPositionX(), nextPosition->getPositionZ(),
 			nextPosition->getPositionY());
 
-	SceneObject* cell = nextPosition->getCell();
+	CellObject* cell = nextPosition->getCell();
 
 	/*StringBuffer reachedPosition;
 	reachedPosition << "(" << positionX << ", " << positionY << ")";
@@ -1554,7 +1554,7 @@ void AiAgentImplementation::updateCurrentPosition(PatrolPoint* pos) {
 	if (getZone() == NULL)
 		return;
 
-	if (cell != NULL && cell->getParent() != NULL)
+	if (cell != NULL && cell->getParent().get() != NULL)
 		updateZoneWithParent(cell, false, false);
 	else
 		updateZone(false, false);
@@ -1635,7 +1635,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	while (!found && getPatrolPointSize() != 0) {
 		// the first position in patrolPoints is where we want to move to
 		PatrolPoint targetPosition = getNextPosition();
-		SceneObject* targetCoordinateCell = targetPosition.getCell();
+		CellObject* targetCoordinateCell = targetPosition.getCell();
 
 		/*
 		 * PRE-STEP: calculate z if we need to for our target location
@@ -1787,7 +1787,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 				msg << "Next Position: path distance: " << nextPositionDebug.getWorldPosition().distanceTo(getWorldPosition()) << " maxDist:" << maxDist;
 				movementMarker->setCustomObjectName(msg.toString(), false);
 
-				CellObject* cellObject = dynamic_cast<CellObject*>(nextPositionDebug.getCell());
+				CellObject* cellObject = nextPositionDebug.getCell();
 
 				if (cellObject != NULL) {
 					cellObject->transferObject(movementMarker, -1, true);
@@ -1801,7 +1801,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 				for (int i = 0; i < path->size(); ++i) {
 					WorldCoordinates* coord = &path->get(i);
-					SceneObject* coordCell = coord->getCell();
+					CellObject* coordCell = coord->getCell();
 
 					movementMarker = getZoneServer()->createObject(STRING_HASHCODE("object/path_waypoint/path_waypoint.iff"), 0);
 
@@ -1980,7 +1980,7 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 
 		ManagedReference<SceneObject*> strongParent = getParent().get();
 		if (strongParent != NULL && strongParent->isCellObject()) {
-			newPoint.setCell(strongParent);
+			newPoint.setCell(strongParent.castTo<CellObject*>());
 		}
 
 		if (newPoint.getCell() == NULL && zone != NULL) {
@@ -2087,7 +2087,7 @@ int AiAgentImplementation::setDestination() {
 			return setDestination();
 		}
 
-		setNextPosition(getPositionX(), getPositionZ(), getPositionY(), getParent().get()); // sets patrolPoints[0] to current position
+		setNextPosition(getPositionX(), getPositionZ(), getPositionY(), getParent().get().castTo<CellObject*>()); // sets patrolPoints[0] to current position
 		checkNewAngle(); // sends update zone packet
 		if (getPatrolPointSize() > 0) {
 			PatrolPoint patrolPoint = getNextPosition();
@@ -2107,7 +2107,7 @@ int AiAgentImplementation::setDestination() {
 		}
 
 		clearPatrolPoints();
-		setNextPosition(followCopy->getPositionX(), followCopy->getPositionZ(), followCopy->getPositionY(), followCopy->getParent().get());
+		setNextPosition(followCopy->getPositionX(), followCopy->getPositionZ(), followCopy->getPositionY(), followCopy->getParent().get().castTo<CellObject*>());
 		break;
 	default:
 		setOblivious();
@@ -2288,7 +2288,7 @@ void AiAgentImplementation::activateWaitEvent() {
 		waitEvent->schedule(UPDATEMOVEMENTINTERVAL * 10);
 }
 
-void AiAgentImplementation::setNextPosition(float x, float z, float y, SceneObject* cell) {
+void AiAgentImplementation::setNextPosition(float x, float z, float y, CellObject* cell) {
 	Locker locker(&targetMutex);
 
 	PatrolPoint point(x, z, y, cell);
@@ -2296,7 +2296,7 @@ void AiAgentImplementation::setNextPosition(float x, float z, float y, SceneObje
 	patrolPoints.add(0, point);
 }
 
-void AiAgentImplementation::setNextStepPosition(float x, float z, float y, SceneObject* cell) {
+void AiAgentImplementation::setNextStepPosition(float x, float z, float y, CellObject* cell) {
 	Locker locker(&targetMutex);
 
 	PatrolPoint point(x, z, y, cell);
@@ -2584,7 +2584,7 @@ bool AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 	//Face player.
 	faceObject(player);
 
-	PatrolPoint current(coordinates.getPosition(), getParent().get());
+	PatrolPoint current(coordinates.getPosition(), getParent().get().castTo<CellObject*>());
 
 	broadcastNextPositionUpdate(&current);
 

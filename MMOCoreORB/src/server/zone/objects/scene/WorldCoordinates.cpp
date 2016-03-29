@@ -6,7 +6,7 @@
  */
 
 #include "WorldCoordinates.h"
-#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/cell/CellObject.h"
 
 WorldCoordinates::WorldCoordinates() : Object() {
 
@@ -30,16 +30,16 @@ WorldCoordinates& WorldCoordinates::operator=(const WorldCoordinates& c) {
 WorldCoordinates::WorldCoordinates(SceneObject* obj) : Object() {
 	point = obj->getPosition();
 
-	ManagedReference<SceneObject*> parent = obj->getParent().get();
+	ManagedReference<CellObject*> parent = obj->getParent().get().castTo<CellObject*>();
 
-	if (parent != NULL && obj != parent && parent->isCellObject())
+	if (parent != NULL && obj != parent)
 		cell = parent;
 }
 
-WorldCoordinates::WorldCoordinates(const Vector3& position, SceneObject* parent) : Object() {
+WorldCoordinates::WorldCoordinates(const Vector3& position, CellObject* parent) : Object() {
 	point = position;
 
-	if (parent != NULL && parent->isCellObject())
+	if (parent != NULL)
 		cell = parent;
 }
 
