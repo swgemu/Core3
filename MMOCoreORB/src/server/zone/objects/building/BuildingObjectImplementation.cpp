@@ -1328,9 +1328,11 @@ void BuildingObjectImplementation::createChildObjects() {
 
 			if (obj->isTurret() || obj->isMinefield() || obj->isDetector()) {
 				TangibleObject* tano = cast<TangibleObject*>(obj.get());
-				tano->setFaction(getFaction());
-				tano->setDetailedDescription("DEFAULT BASE TURRET");
-				tano->setPvpStatusBitmask(getPvpStatusBitmask() | tano->getPvpStatusBitmask());
+				if (tano != NULL) {
+					tano->setFaction(getFaction());
+					tano->setDetailedDescription("DEFAULT BASE TURRET");
+					tano->setPvpStatusBitmask(getPvpStatusBitmask() | tano->getPvpStatusBitmask());
+				}
 
 				InstallationObject* installation = cast<InstallationObject*>(obj.get());
 				if (installation != NULL) {

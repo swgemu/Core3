@@ -148,9 +148,12 @@ LoginClient* LoginServerImplementation::getLoginClient(ServiceClient* session) {
 
 bool LoginServerImplementation::handleError(ServiceClient* client, Exception& e) {
 	BaseClientProxy* bclient = cast<BaseClientProxy*>(client);
-	bclient->setError();
 
-	bclient->disconnect();
+	if (bclient != NULL) {
+		bclient->setError();
+
+		bclient->disconnect();
+	}
 
 	return true;
 }

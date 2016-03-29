@@ -224,7 +224,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		if (generated || !isASubChildOf(player))
 			return 1;
 
-		if (player->isInCombat() || player->isRidingMount() || player->isSwimming() || player->isDead() || player->isIncapacitated() ){
+		if (player->isInCombat() || player->isRidingMount() || player->isSwimming() || player->isDead() || player->isIncapacitated()) {
 			player->sendSystemMessage("@pet/pet_menu:cant_call"); // "You cannot call this pet right now."
 			return 1;
 		}
@@ -245,32 +245,32 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
 			Reference<SceneObject*> obj =  datapad->getContainerObject(i).castTo<SceneObject*>();
 
-			if (obj != NULL && obj->isPetControlDevice() ){
+			if (obj != NULL && obj->isPetControlDevice()) {
 				Reference<PetControlDevice*> petDevice = cast<PetControlDevice*>(obj.get());
-				if( petDevice != NULL && petDevice->getPetType() == PetManager::DROIDPET){
+				if (petDevice != NULL && petDevice->getPetType() == PetManager::DROIDPET) {
 					droidsInDatapad++;
 				}
 			}
 		}
 
-		if( droidsInDatapad >= maxStoredDroids){
+		if (droidsInDatapad >= maxStoredDroids) {
 			player->sendSystemMessage("You have too many droids in your datapad");
 			return 1;
 		}
 
 		Reference<CreatureManager*> creatureManager = player->getZone()->getCreatureManager();
-		if( creatureManager == NULL )
+		if (creatureManager == NULL)
 			return 1;
 
 		CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
 		Reference<CreatureTemplate*> creatureTemplate =  creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
-		if( creatureTemplate == NULL ){
+		if (creatureTemplate == NULL) {
 			player->sendSystemMessage("wrong droid template;mobileTemplate=[" + mobileTemplate + "]" );
 			return 1;
 		}
 
 		Reference<PetControlDevice*> controlDevice = (server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1)).castTo<PetControlDevice*>();
-		if( controlDevice == NULL ){
+		if (controlDevice == NULL) {
 			player->sendSystemMessage("wrong droid control device template " + controlDeviceObjectTemplate);
 			return 1;
 		}
@@ -278,7 +278,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		Locker locker(controlDevice);
 
 		Reference<CreatureObject*> creatureObject = creatureManager->createCreature(generatedObjectTemplate.hashCode(), true, mobileTemplate.hashCode() );
-		if( creatureObject == NULL ){
+		if (creatureObject == NULL) {
 			controlDevice->destroyObjectFromDatabase(true);
 			player->sendSystemMessage("wrong droid templates;mobileTemplate=[" + mobileTemplate + "];generatedObjectTemplate=[" + generatedObjectTemplate + "]" );
 			return 1;
@@ -287,7 +287,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		Locker clocker(creatureObject, player);
 
 		Reference<DroidObject*> droid = creatureObject.castTo<DroidObject*>();
-		if( droid == NULL ) {
+		if (droid == NULL) {
 			controlDevice->destroyObjectFromDatabase(true);
 			creatureObject->destroyObjectFromDatabase(true);
 			return 1;
@@ -313,39 +313,45 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 		// Transfer crafting components from deed to droid
 		ManagedReference<SceneObject*> craftingComponents = getSlottedObject("crafted_components");
-		if(craftingComponents != NULL) {
+		if (craftingComponents != NULL) {
 			SceneObject* satchel = craftingComponents->getContainerObject(0);
+
 			// remove all items form satchel and add int he new items
 			Vector<ManagedReference<SceneObject*> > toRemove;
+
 			for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {
 				ManagedReference<SceneObject*> sceno = satchel->getContainerObject(i);
 				if (sceno != NULL) {
 					toRemove.add(sceno);
 				}
 			}
+
 			satchel->removeAllContainerObjects();
-			for(int i=0;i<toRemove.size();i++) {
+
+			for (int i = 0; i < toRemove.size(); i++) {
 				SceneObject* component = toRemove.get(i);
 				Locker componenetLocker(component);
 				component->destroyObjectFromWorld(true);
 			}
+
 			// this will change to use stacked modules. we wont care about non droid modules as they arent needed.
 			String key;
 			ManagedReference<DroidComponent*> comp = NULL;
 			HashTableIterator<String, ManagedReference<DroidComponent*> > iterator = modules.iterator();
 
-			for(int i = 0; i < modules.size(); ++i) {
+			for (int i = 0; i < modules.size(); ++i) {
 				iterator.getNextKeyAndValue(key, comp);
+
 				if (comp) {
 					satchel->transferObject(comp, -1, false);
-					DataObjectComponentReference* data = comp->getDataObjectComponent();
-					BaseDroidModuleComponent* module = NULL;
-					if(data != NULL && data->get() != NULL && data->get()->isDroidModuleData()) {
-						module = cast<BaseDroidModuleComponent*>(data->get());
-						module->initialize(droid);
+					BaseDroidModuleComponent* data = cast<BaseDroidModuleComponent*>(comp->getDataObjectComponent()->get());
+
+					if (data != NULL) {
+						data->initialize(droid);
 					}
 				}
 			}
+
 			droid->transferObject(craftingComponents, 4, false);
 			craftingComponents->setSendToClient(false);
 		}
@@ -364,16 +370,18 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 		// Copy color customization from deed to droid
 		CustomizationVariables* customVars = getCustomizationVariables();
-		if( customVars != NULL ){
+		if (customVars != NULL) {
 			for (int i = 0; i < customVars->size(); ++i) {
 				uint8 id = customVars->elementAt(i).getKey();
 				int16 val = customVars->elementAt(i).getValue();
 
 				String name = CustomizationIdManager::instance()->getCustomizationVariable(id);
-				if( name.contains( "color" ) ){
-					droid->setCustomizationVariable( name, val, true );
+
+				if (name.contains("color")) {
+					droid->setCustomizationVariable(name, val, true);
 				}
 			}
+
 			droid->refreshPaint();
 		}
 
@@ -401,6 +409,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		if (deedContainer != NULL) {
 			destroyObjectFromWorld(true);
 		}
+
 		generated = true;
 		destroyObjectFromDatabase(true);
 

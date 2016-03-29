@@ -119,6 +119,10 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 
 bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow, bool notifyRoot) const {
 	Zone* newZone = dynamic_cast<Zone*>(sceneObject);
+
+	if (newZone == NULL)
+		return false;
+
 	Zone* zone = object->getZone();
 
 	if (object->isActiveArea())

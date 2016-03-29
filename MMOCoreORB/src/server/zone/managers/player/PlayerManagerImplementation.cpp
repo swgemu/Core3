@@ -1956,8 +1956,10 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(CreatureObject* playe
 int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 
 	if (eventType == ObserverEventType::POSTURECHANGED) {
-		CreatureObject* creature = cast<CreatureObject*>( observable);
+		CreatureObject* creature = cast<CreatureObject*>(observable);
 
+		if (creature == NULL)
+			return 1;
 
 		if (creature->hasState(CreatureState::ALERT)) { // This can apply to TKA AND Jedi meditate since they share the same sysmsgs / moods.
 			creature->sendSystemMessage("@teraskasi:med_end");

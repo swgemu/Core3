@@ -1297,7 +1297,8 @@ bool FishingManagerImplementation::isPlaying(CreatureObject* player) {
 int FishingManagerImplementation::notifyCloseContainer(CreatureObject* player, SceneObject* container) {
 	removeMarker(player, container);
 
-	player->dropActiveSession(SessionFacadeType::FISHING);
+	if (player != NULL)
+		player->dropActiveSession(SessionFacadeType::FISHING);
 
 	return 1;
 }

@@ -157,7 +157,7 @@ void VendorDataComponent::runVendorUpdate() {
 			StringIdChatParameter body("@auction:vendor_status_deleted");
 			if (cman != NULL)
 				cman->sendMail(sender, subject, body, owner->getFirstName());
-			VendorManager::instance()->destroyVendor(strongParent);
+			VendorManager::instance()->destroyVendor(vendor);
 			vendorCheckTask->cancel();
 			return;
 		}
@@ -185,7 +185,7 @@ void VendorDataComponent::runVendorUpdate() {
 			StringIdChatParameter body("@auction:vendor_status_deleted");
 			if (cman != NULL)
 				cman->sendMail(sender, subject, body, owner->getFirstName());
-			VendorManager::instance()->destroyVendor(strongParent);
+			VendorManager::instance()->destroyVendor(vendor);
 			vendorCheckTask->cancel();
 		}
 

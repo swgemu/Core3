@@ -19,17 +19,24 @@
 int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
 	CreatureObject* creo = dynamic_cast<CreatureObject*>(sceneObject);
 
+	if (creo == NULL) {
+		return TransferErrorCode::PLAYERUSEMASKERROR;
+	}
+
 	if (object->isTangibleObject() && containmentType == 4) {
 		TangibleObject* wearable = cast<TangibleObject*>(object);
 
 		SharedTangibleObjectTemplate* tanoData = dynamic_cast<SharedTangibleObjectTemplate*>(wearable->getObjectTemplate());
-		Vector<uint32>* races = tanoData->getPlayerRaces();
-		String race = creo->getObjectTemplate()->getFullTemplateString();
 
-		if (!races->contains(race.hashCode())) {
-			errorDescription = "You lack the necessary requirements to wear this object";
+		if (tanoData != NULL) {
+			Vector<uint32>* races = tanoData->getPlayerRaces();
+			String race = creo->getObjectTemplate()->getFullTemplateString();
 
-			return TransferErrorCode::PLAYERUSEMASKERROR;
+			if (!races->contains(race.hashCode())) {
+				errorDescription = "You lack the necessary requirements to wear this object";
+
+				return TransferErrorCode::PLAYERUSEMASKERROR;
+			}
 		}
 
 		if (creo->isPlayerCreature()) {
@@ -49,55 +56,56 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 				}
 			}
 		}
-	}
 
-	if (object->isArmorObject() && containmentType == 4) {
-		PlayerManager* playerManager = sceneObject->getZoneServer()->getPlayerManager();
+		if (object->isArmorObject()) {
+			PlayerManager* playerManager = sceneObject->getZoneServer()->getPlayerManager();
 
-		if (!playerManager->checkEncumbrancies(creo, cast<ArmorObject*>(object))) {
-			errorDescription = "You lack the necessary secondary stats to equip this item";
+			if (!playerManager->checkEncumbrancies(creo, cast<ArmorObject*>(object))) {
+				errorDescription = "You lack the necessary secondary stats to equip this item";
 
-			return TransferErrorCode::NOTENOUGHENCUMBRANCE;
+				return TransferErrorCode::NOTENOUGHENCUMBRANCE;
+			}
 		}
-	}
 
-	if (object->isWearableObject() && containmentType == 4) {
-		WearableObject* wearable = cast<WearableObject*>(object);
-		SharedTangibleObjectTemplate* wearableData = dynamic_cast<SharedTangibleObjectTemplate*>(wearable->getObjectTemplate());
+		if (object->isWearableObject()) {
+			if (tanoData != NULL) {
+				Vector<String> skillsRequired = tanoData->getCertificationsRequired();
 
-		Vector<String> skillsRequired = wearableData->getCertificationsRequired();
+				if (skillsRequired.size() > 0) {
+					bool hasSkill = false;
 
-		if (skillsRequired.size() > 0) {
-			bool hasSkill = false;
-			for (int i = 0; i < skillsRequired.size(); i++) {
-				String skill = skillsRequired.get(i);
-				if (!skill.isEmpty() && creo->hasSkill(skill)) {
-					hasSkill = true;
-					break;
+					for (int i = 0; i < skillsRequired.size(); i++) {
+						String skill = skillsRequired.get(i);
+
+						if (!skill.isEmpty() && creo->hasSkill(skill)) {
+							hasSkill = true;
+							break;
+						}
+					}
+
+					if (!hasSkill) {
+						errorDescription = "@error_message:insufficient_skill"; // You lack the skill to use this item.
+
+						return TransferErrorCode::PLAYERUSEMASKERROR;
+					}
 				}
 			}
-
-			if (!hasSkill) {
-				errorDescription = "@error_message:insufficient_skill"; // You lack the skill to use this item.
-
-				return TransferErrorCode::PLAYERUSEMASKERROR;
-			}
 		}
-	}
 
-	if (object->isWeaponObject() && containmentType == 4) {
-		WeaponObject* weapon = cast<WeaponObject*>(object);
-		int bladeColor = weapon->getBladeColor();
+		if (object->isWeaponObject()) {
+			WeaponObject* weapon = cast<WeaponObject*>(object);
+			int bladeColor = weapon->getBladeColor();
 
-		if (weapon->isJediWeapon()) {
-			if (bladeColor == 31) {
-				errorDescription = "@jedi_spam:lightsaber_no_color";
-				return TransferErrorCode::PLAYERUSEMASKERROR;
-			}
+			if (weapon->isJediWeapon()) {
+				if (bladeColor == 31) {
+					errorDescription = "@jedi_spam:lightsaber_no_color";
+					return TransferErrorCode::PLAYERUSEMASKERROR;
+				}
 
-			if (weapon->getCraftersName() != creo->getFirstName()) {
-				errorDescription = "@jedi_spam:not_your_lightsaber";
-				return TransferErrorCode::PLAYERUSEMASKERROR;
+				if (weapon->getCraftersName() != creo->getFirstName()) {
+					errorDescription = "@jedi_spam:not_your_lightsaber";
+					return TransferErrorCode::PLAYERUSEMASKERROR;
+				}
 			}
 		}
 	}
@@ -111,6 +119,10 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
  */
 int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, SceneObject* object) const {
 	CreatureObject* creo = dynamic_cast<CreatureObject*>(sceneObject);
+
+	if (creo == NULL) {
+		return 0;
+	}
 
 	if (object->isArmorObject()) {
 		PlayerManager* playerManager = sceneObject->getZoneServer()->getPlayerManager();
@@ -167,6 +179,10 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
  */
 int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) const {
 	CreatureObject* creo = dynamic_cast<CreatureObject*>(sceneObject);
+
+	if (creo == NULL) {
+		return 0;
+	}
 
 	if (object->isArmorObject()) {
 		PlayerManager* playerManager = creo->getZoneServer()->getPlayerManager();
