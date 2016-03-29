@@ -607,11 +607,11 @@ int ResourceSpawner::randomizeValue(int min, int max) {
 	int randomStat = System::random(max - min) + min;
 	bool aboveBreakpoint = System::random(10) == 7;
 
-	if ((aboveBreakpoint && randomStat <= breakpoint) || (!aboveBreakpoint
+	if ((aboveBreakpoint && randomStat < breakpoint) || (!aboveBreakpoint
 			&& randomStat > breakpoint)) {
 
 		if (aboveBreakpoint) {
-			while (randomStat <= breakpoint)
+			while (randomStat < breakpoint)
 				randomStat = System::random(max - min) + min;
 		} else {
 			while (randomStat > breakpoint)
