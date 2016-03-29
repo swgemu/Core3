@@ -29,6 +29,8 @@
 #include "server/zone/managers/minigames/GamblingManager.h"
 #include "server/zone/managers/minigames/ForageManager.h"
 
+#include "ZoneRenderer.h"
+
 ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& name) {
 	processor = serv;
 	server = processor->getZoneServer();
@@ -81,6 +83,10 @@ void ZoneImplementation::initializeTransientMembers() {
 }
 
 void ZoneImplementation::startManagers() {
+	if (zoneName == "naboo") {
+		zoneRenderer = new ZoneRenderer(_this.get());
+	}
+
 	planetManager->initialize();
 
 	creatureManager->initialize();
@@ -505,6 +511,10 @@ void ZoneImplementation::addSceneObject(SceneObject* object) {
 	}
 
 	registerObjectWithPlanetaryMap(object);
+
+	if (zoneRenderer != NULL) {
+		zoneRenderer->addSceneObject(object);
+	}
 }
 
 //TODO: Do we need to send out some type of update when this happens?

@@ -9,7 +9,10 @@
 #define MESHAPPEARANCETEMPLATE_H_
 
 #include "engine/engine.h"
+
 #include "AppearanceTemplate.h"
+
+#include <osg/Node>
 
 class MeshVertex : public Object {
 protected:
@@ -109,6 +112,9 @@ public:
 
 		delete boundingSphere;
 		boundingSphere = NULL;
+
+		delete meshes;
+		meshes = NULL;
 	}
 
 	void createAABB();
@@ -116,6 +122,8 @@ public:
 	void readObject(IffStream* templateData) {
 		parse(templateData);
 	}
+
+	osg::ref_ptr<osg::Node> draw();
 
 	void parse(IffStream* iffStream);
 	void parseSPS(IffStream* iffStream);

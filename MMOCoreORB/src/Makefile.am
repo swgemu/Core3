@@ -40,7 +40,7 @@
 # this exception also makes it possible to release a modified version 
 # which carries forward this exception.
 
-AM_CXXFLAGS= $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11
+AM_CXXFLAGS= $(UNITTEST_DIRECTIVES) -ggdb -O2 -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11 -Wno-strict-aliasing -march=native -DGTEST_USE_OWN_TR1_TUPLE=1 -Wno-deprecated-register
 
 ENGINE3_PATH=../../../../MMOEngine
 ENGINE3_MOCK_PATH=../../../utils
@@ -57,7 +57,7 @@ AUTOGEN_PATH=../../../src/autogen
 INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
             -I$(ENGINE3_PATH)/include -I$(ENGINE3_PATH)/src -I$(ENGINE3_MOCK_PATH) -I/usr/include/lua5.1 -I/usr/include/mysql \
-	    -I/usr/local/BerkeleyDB.5.0/include \
+	    -I/usr/local/BerkeleyDB.5.3/include \
 	    -I/usr/include/db5.0 \
 	    -I$(GTEST_PATH)/include \
 	    -I$(GMOCK_PATH)/include \
@@ -66,12 +66,12 @@ INCLUDES =  $(SYSTEM_INCLUDES) \
 LIBS =	$(SYSTEM_LIBS)  \
 	$(USER_LD_FLAGS) \
 	-L../../../build/unix/src/client \
-	-L/usr/local/BerkeleyDB.5.0/lib \
+	-L/usr/local/BerkeleyDB.5.3/lib \
 	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua \
 	-L$(ENGINE3_PATH)/lib/unix \
 	-L/usr/local/lib \
 	-L$(GTEST_PATH)/lib \
-	-lmysqlclient -lz -lengine3 -llua -ldb-5.0 -lssl -lcrypto -lgtest
+	-lz -lengine3 -lmysqlclient_r -llua -ldb-5.3 -lssl -lcrypto -lgtest -losg -losgViewer -lOpenThreads -losgGA -losgTerrain -losgText
 	
 #AM_LDFLAGS = -pagezero_size 10000 -image_base 100000000
 #AM_LDFLAGS = --enable-stdcall-fixup
@@ -539,6 +539,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/ZonePacketHandler.cpp \
 		server/zone/ZoneProcessServerImplementation.cpp \
 		server/zone/ZoneImplementation.cpp \
+		server/zone/ZoneRenderer.cpp \
 		server/zone/QuadTreeReference.cpp \
 		server/zone/ZoneContainerComponent.cpp \
 		server/zone/managers/crafting/CraftingManagerImplementation.cpp \

@@ -40,6 +40,8 @@ import server.zone.objects.region.CityRegion;
 
 import system.thread.atomic.AtomicInteger;
 
+import server.zone.ZoneRenderer;
+
 @mock
 class Zone extends SceneObject {
 	private string zoneName;
@@ -77,6 +79,8 @@ class Zone extends SceneObject {
 	protected AtomicInteger spawnedAiAgents;
 
 	private transient boolean managersStarted;
+	
+	protected transient ZoneRenderer zoneRenderer;
 
 	public native Zone(ZoneProcessServer processor, final string zoneName);
 	public native void initializeTransientMembers();
@@ -238,6 +242,11 @@ class Zone extends SceneObject {
 
 	public ChatRoom getPlanetChatRoom() {
 		return planetChatRoom;
+	}
+	
+	@local
+	public ZoneRenderer getZoneRenderer() {
+		return zoneRenderer;
 	}
 
 }

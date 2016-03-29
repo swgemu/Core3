@@ -8,7 +8,7 @@
 
 #include "server/zone/Zone.h"
 
-#include "../db/ServerDatabase.h"
+#include "server/db/ServerDatabase.h"
 
 #include "server/login/LoginServer.h"
 #include "server/login/account/Account.h"

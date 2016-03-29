@@ -7,6 +7,24 @@
 
 #include "MeshAppearanceTemplate.h"
 
+#include <osg/Node>
+#include <osgViewer/Viewer>
+
+#include <osg/Geometry>
+#include <osg/Notify>
+#include <osg/MatrixTransform>
+#include <osg/Texture2D>
+
+#include <osg/LineWidth>
+#include <osg/Billboard>
+
+#include <osgGA/TrackballManipulator>
+#include <osgGA/FlightManipulator>
+#include <osgGA/DriveManipulator>
+
+#include <osgDB/Registry>
+#include <osgDB/ReadFile>
+
 void MeshAppearanceTemplate::parse(IffStream* iffStream) {
 	//file = iffStream->getFileName();
 
@@ -28,8 +46,75 @@ void MeshAppearanceTemplate::parse(IffStream* iffStream) {
 		createAABB();
 	}
 
-	delete meshes;
-	meshes = NULL;
+	/*delete meshes;
+	meshes = NULL;*/
+}
+
+osg::ref_ptr<osg::Node> MeshAppearanceTemplate::draw() {
+	/*osg::Group* group = new osg::Group();
+
+	for (int i = 0; i < meshes->size(); i++) {
+		group->addChild(meshes->get(i).draw());
+	}
+
+	return group;*/
+
+	osg::ref_ptr<osg::Group> rootGroup = new osg::Group();
+
+	for (int i = 0; i < meshes->size(); ++i) {
+		MeshData* meshData = &meshes->get(i);
+
+		osg::ref_ptr< osg::Geode > geode( new osg::Geode() );
+		//geode->setName(name.toStdString() + ":FloorTriangleNode" + QString::number(i).toStdString());
+		osg::ref_ptr<osg::Geometry> geometry( new osg::Geometry() );
+
+
+		osg::Vec3Array* verts = new osg::Vec3Array();
+		osg::Vec4Array* colors = new osg::Vec4Array();
+
+		for( unsigned int i = 0; i < meshData->vertices.size(); ++i ) {
+			MeshVertex& vertex = meshData->vertices.get(i);
+
+			float x = vertex.getX();
+			float y = vertex.getY();
+			float z = vertex.getZ();
+
+			verts->push_back( osg::Vec3( x, y, z ) );
+
+			colors->push_back(osg::Vec4(0.f, 0.5f, 0, 0.5f) );
+		}
+
+		geometry->setVertexArray( verts );
+
+		osg::DrawElementsUShort* drawElements =
+				new osg::DrawElementsUShort( osg::PrimitiveSet::TRIANGLES );
+
+		// Populate primitive set with indices.
+		for( unsigned int j = 0; j < meshData->triangles.size(); ++j ) {
+			drawElements->push_back( meshData->triangles.get(j).vertex1 );
+			drawElements->push_back( meshData->triangles.get(j).vertex2 );
+			drawElements->push_back( meshData->triangles.get(j).vertex3 );
+		}
+
+		// Add primitive set to this geometry node.
+		geometry->addPrimitiveSet(drawElements);
+		geometry->setColorArray(colors);
+		geometry->setColorBinding(osg::Geometry::BIND_PER_VERTEX);
+
+		osg::VertexBufferObject *vbo = new osg::VertexBufferObject;
+		verts->setVertexBufferObject(vbo);
+
+		osg::ElementBufferObject* ebo = new osg::ElementBufferObject;
+		drawElements->setElementBufferObject(ebo);
+
+		geometry->setUseVertexBufferObjects((NULL != vbo));
+
+		geode->addDrawable(geometry.get());
+
+		rootGroup->addChild(geode);
+	}
+
+	return rootGroup;
 }
 
 void MeshAppearanceTemplate::createAABB() {

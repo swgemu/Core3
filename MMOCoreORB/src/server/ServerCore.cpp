@@ -21,12 +21,16 @@
 #include "web/WebServer.h"
 
 #include "server/zone/ZoneServer.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneRenderer.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
+
+#include "engine/util/u3d/QuadTree.h"
 
 ManagedReference<ZoneServer*> ServerCore::zoneServerRef = NULL;
 SortedVector<String> ServerCore::arguments;
@@ -283,6 +287,19 @@ void ServerCore::shutdown() {
 }
 
 void ServerCore::handleCommands() {
+
+	Zone* zone = zoneServerRef->getZone("naboo");
+
+	if (zone != NULL) {
+		ZoneRenderer* renderer = zone->getZoneRenderer();
+
+		if (renderer != NULL) {
+			auto viewer = renderer->createViewer();
+
+			renderer->runViewer(viewer.get());
+		}
+	}
+
 	while (true) {
 
 #ifdef WITH_STM
@@ -297,7 +314,7 @@ void ServerCore::handleCommands() {
 			System::out << "> ";
 
 			char line[256];
-			fgets(line, sizeof(line), stdin);
+			char* result = fgets(line, sizeof(line), stdin);
 
 			fullCommand = line;
 			fullCommand = fullCommand.replaceFirst("\n", "");
