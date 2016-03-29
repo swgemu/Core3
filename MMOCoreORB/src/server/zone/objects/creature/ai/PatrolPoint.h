@@ -25,13 +25,13 @@ public:
 		addSerializableVariables();
 	}
 
-	PatrolPoint(const Vector3& pos, SceneObject* cell = NULL) : position(pos, cell) {
+	PatrolPoint(const Vector3& pos, CellObject* cell = NULL) : position(pos, cell) {
 		reached = false;
 
 		addSerializableVariables();
 	}
 
-	PatrolPoint(float posX, float posZ, float posY, SceneObject* cell = NULL) : position(Vector3(posX, posY, posZ), cell) {
+	PatrolPoint(float posX, float posZ, float posY, CellObject* cell = NULL) : position(Vector3(posX, posY, posZ), cell) {
 		reached = false;
 
 		addSerializableVariables();
@@ -122,7 +122,7 @@ public:
 		return position.getZ();
 	}
 	
-	inline SceneObject* getCell() {
+	inline CellObject* getCell() {
 		return position.getCell();
 	}
 	
@@ -155,9 +155,8 @@ public:
 		position.setY(y);
 	}
 	
-	inline void setCell(SceneObject* cell) {
-		if ((cell != NULL && cell->isCellObject()) || cell == NULL)
-			position.setCell(cell);
+	inline void setCell(CellObject* cell) {
+		position.setCell(cell);
 	}
 	
 	inline void setReached(bool value) {

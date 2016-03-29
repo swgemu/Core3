@@ -257,12 +257,10 @@ int LuaAiAgent::setNextPosition(lua_State* L) {
 		return 0;
 
 	uint64 cellID = lua_tointeger(L, -1);
-	SceneObject* cell = NULL;
+	CellObject* cell = NULL;
 
 	if (cellID != 0) {
-		cell = zoneServer->getObject(cellID);
-		if (cell != NULL && !cell->isCellObject())
-			cell = NULL;
+		cell = zoneServer->getObject(cellID).castTo<CellObject*>();
 	}
 
 	float y = lua_tonumber(L, -2);
@@ -978,7 +976,7 @@ int LuaAiAgent::sendReactionChat(lua_State* L) {
 }
 
 int LuaAiAgent::addPatrolPoint(lua_State* L) {
-	SceneObject* cell = static_cast<SceneObject*>(lua_touserdata(L, -1));
+	CellObject* cell = (CellObject*) lua_touserdata(L, -1);
 	float y = lua_tonumber(L, -2);
 	float z = lua_tonumber(L, -3);
 	float x = lua_tonumber(L, -4);
@@ -1011,7 +1009,7 @@ int LuaAiAgent::setConvoTemplate(lua_State* L) {
 }
 
 int LuaAiAgent::setHomeLocation(lua_State* L) {
-	SceneObject* cell = static_cast<SceneObject*>(lua_touserdata(L, -1));
+	CellObject* cell = (CellObject*) lua_touserdata(L, -1);
 	float y = lua_tonumber(L, -2);
 	float z = lua_tonumber(L, -3);
 	float x = lua_tonumber(L, -4);

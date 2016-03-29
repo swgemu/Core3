@@ -49,13 +49,13 @@ public:
 			ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target, true);
 
 			if (targetObject != NULL || targetObject->isPlayerCreature() ) {
-				CreatureObject* player = cast<CreatureObject*>(targetObject.get());
+				CreatureObject* player = targetObject->asCreatureObject();
 
 				PatrolPoint point;
 				point.setPositionX(player->getPositionX());
 				point.setPositionY(player->getPositionY());
 				point.setPositionZ(player->getPositionZ());
-				point.setCell(player->getParent().get());
+				point.setCell(player->getParent().get().castTo<CellObject*>());
 
 				controlDevice->addPatrolPoint(point);
 

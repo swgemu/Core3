@@ -418,7 +418,7 @@ bool DroidObjectImplementation::sendConversationStartTo(SceneObject* player) {
 	//Face player.
 	faceObject(player);
 
-	PatrolPoint current(coordinates.getPosition(), getParent().get());
+	PatrolPoint current(coordinates.getPosition(), getParent().get().castTo<CellObject*>());
 
 	broadcastNextPositionUpdate(&current);
 

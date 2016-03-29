@@ -335,9 +335,9 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	if (zone == NULL)
 		return;
 
-	ManagedReference<SceneObject*> parent = player->getParent().get();
+	ManagedReference<CellObject*> parent = player->getParent().get().castTo<CellObject*>();
 
-	if (parent != NULL && parent->isCellObject())
+	if (parent != NULL)
 		parent->transferObject(controlledObject, -1, true);
 	else
 		zone->transferObject(controlledObject, -1, true);
@@ -376,8 +376,8 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 		droid->addPendingTask("droid_skill_mod", droidSkillModTask, 3000); // 3 sec
 	}
 
-	pet->setHomeLocation(player->getPositionX(), player->getPositionZ(), player->getPositionY(), (parent != NULL && parent->isCellObject()) ? parent : NULL);
-	pet->setNextStepPosition(player->getPositionX(), player->getPositionZ(), player->getPositionY(), (parent != NULL && parent->isCellObject()) ? parent : NULL);
+	pet->setHomeLocation(player->getPositionX(), player->getPositionZ(), player->getPositionY(), parent);
+	pet->setNextStepPosition(player->getPositionX(), player->getPositionZ(), player->getPositionY(), parent);
 	pet->clearPatrolPoints();
 	if (petType == PetManager::CREATUREPET) {
 		pet->setCreatureBitmask(CreatureFlag::PET);

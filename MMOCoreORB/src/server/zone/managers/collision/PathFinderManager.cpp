@@ -32,8 +32,8 @@ Vector<WorldCoordinates>* PathFinderManager::findPath(const WorldCoordinates& po
 	if (isnan(pointB.getX()) || isnan(pointB.getY()) || isnan(pointB.getZ()))
 		return NULL;
 
-	SceneObject* cellA = pointA.getCell();
-	SceneObject* cellB = pointB.getCell();
+	CellObject* cellA = pointA.getCell();
+	CellObject* cellB = pointB.getCell();
 
 	if (cellA == NULL && cellB == NULL) { // world -> world
 		return findPathFromWorldToWorld(pointA, pointB);
@@ -102,7 +102,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const Worl
 }
 
 Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB) {
-	CellObject* targetCell = cast<CellObject*>( pointB.getCell());
+	CellObject* targetCell = pointB.getCell();
 
 	if (targetCell == NULL)
 		return NULL;
@@ -189,7 +189,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 
 			path->add(WorldCoordinates(coord.getWorldPosition(), NULL));
 		} else { // we are inside the building
-			SceneObject* pathCell = building->getCell(cellID);
+			CellObject* pathCell = building->getCell(cellID);
 
 			path->add(WorldCoordinates(pathNode->getPosition(), pathCell));
 
@@ -321,7 +321,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToWorld(const World
 
 	path->add(pointA);
 
-	CellObject* ourCell = cast<CellObject*>( pointA.getCell());
+	CellObject* ourCell = pointA.getCell();
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>( ourCell->getParent().get().get());
 	int ourCellID = ourCell->getCellNumber();
 	SharedObjectTemplate* templateObject = ourCell->getParent().get()->getObjectTemplate();
@@ -429,7 +429,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToWorld(const World
 
 			path->add(WorldCoordinates(coord.getWorldPosition(), NULL));
 		} else { // we are inside the building
-			SceneObject* pathCell = building->getCell(cellID);
+			CellObject* pathCell = building->getCell(cellID);
 
 			path->add(WorldCoordinates(pathNode->getPosition(), pathCell));
 		}
@@ -443,7 +443,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToWorld(const World
 	return path;
 }
 
-void PathFinderManager::addTriangleNodeEdges(const Vector3& source, const Vector3& goal, Vector<Triangle*>* trianglePath, Vector<WorldCoordinates>* path, SceneObject* cell) {
+void PathFinderManager::addTriangleNodeEdges(const Vector3& source, const Vector3& goal, Vector<Triangle*>* trianglePath, Vector<WorldCoordinates>* path, CellObject* cell) {
 	Vector3 startPoint = Vector3(source.getX(), source.getZ(), source.getY());
 	Vector3 goalPoint = Vector3(goal.getX(), goal.getZ(), goal.getY());
 
@@ -501,8 +501,8 @@ void PathFinderManager::addTriangleNodeEdges(const Vector3& source, const Vector
 Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB) {
 	//info ("findPathFromCellToDifferentCell", true);
 
-	CellObject* ourCell = cast<CellObject*>( pointA.getCell());
-	CellObject* targetCell = cast<CellObject*>( pointB.getCell());
+	CellObject* ourCell = pointA.getCell();
+	CellObject* targetCell = pointB.getCell();
 
 	int ourCellID = ourCell->getCellNumber();
 	int targetCellID = targetCell->getCellNumber();
@@ -619,7 +619,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 
 			path->add(WorldCoordinates(coord.getWorldPosition(), NULL));
 		} else {
-			SceneObject* pathCell = building1->getCell(cellID);
+			CellObject* pathCell = building1->getCell(cellID);
 
 			WorldCoordinates coord(pathNode->getPosition(), pathCell);
 
@@ -661,8 +661,8 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 }
 
 Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB) {
-	CellObject* ourCell = cast<CellObject*>( pointA.getCell());
-	CellObject* targetCell = cast<CellObject*>( pointB.getCell());
+	CellObject* ourCell = pointA.getCell();
+	CellObject* targetCell = pointB.getCell();
 
 	if (ourCell != targetCell)
 		return findPathFromCellToDifferentCell(pointA, pointB);
