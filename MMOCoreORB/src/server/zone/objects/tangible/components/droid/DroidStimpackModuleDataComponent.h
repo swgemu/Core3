@@ -25,27 +25,47 @@ protected:
 	int loaded;
 public:
 	int rate;
+
 	DroidStimpackModuleDataComponent();
+
 	~DroidStimpackModuleDataComponent();
+
 	String getModuleName();
+
 	void initializeTransientMembers();
+
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* droid);
+
 	int getBatteryDrain();
+
 	String toString();
-	// crafting droid module specific
+
 	void onCall();
+
 	void onStore();
+
 	bool isStackable() { return true; }
+
 	void copy(BaseDroidModuleComponent* other);
+
 	void addToStack(BaseDroidModuleComponent* other);
+
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
+
 	void fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
+
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller);
-	void initialize(CreatureObject* droid);
+
+	void initialize(DroidObject* droid);
+
 	void sendLoadUI(CreatureObject* player);
+
 	void handleInsertStimpack(CreatureObject* player, StimPack* pack);
+
 	void countUses();
+
 	StimPack* compatibleStimpack(float power);
+
 	StimPack* findStimPack();
 };
 

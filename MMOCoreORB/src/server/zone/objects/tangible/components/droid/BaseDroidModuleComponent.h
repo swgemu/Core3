@@ -70,42 +70,67 @@ protected:
 
 public:
 	BaseDroidModuleComponent();
+
 	~BaseDroidModuleComponent();
+
 	virtual String getModuleName();
+
 	void initializeTransientMembers();
+
 	// initialize the model based on the over all droid
-	virtual void initialize(CreatureObject* droid);
+	virtual void initialize(DroidObject* droid);
+
 	// attribultes to be added by module
 	virtual void fillAttributeList(AttributeListMessage* msg, CreatureObject* droid);
+
 	// add some object response menus
 	virtual void fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
+
 	// handle menu selections
 	virtual int handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller);
+
 	// add some skills to the player when active
 	virtual void loadSkillMods(CreatureObject* player);
+
 	// remove some skills mod when not active
 	virtual void unloadSkillMods(CreatureObject* player);
+
 	// check if skil mods of the module are based on range to the pet
 	virtual bool skillsByRange();
+
 	// Interface for Pet Manager to pass spacial commands to the droid for component processing
 	virtual void handlePetCommand(String cmd, CreatureObject* speaker) ;
+
 	// get drain amount when this module is active
 	virtual int getBatteryDrain();
+
 	// toggle this module form active to inactive i.e. auto harvest modules, barkers etc..
 	virtual void deactivate();
+
 	// does this module provide some kind of station effect
 	virtual bool actsAsCraftingStation();
+
 	// string rep of the module
 	virtual String toString();
+
 	virtual void onCall();
+
 	virtual void onStore();
+
 	virtual bool isDroidModuleData() { return true; }
+
 	virtual bool isStackable() { return false; }
+
 	virtual bool isCombatModule() { return false; }
+
 	virtual void addToStack(BaseDroidModuleComponent* other) {}
+
 	virtual void copy(BaseDroidModuleComponent* other){}
+
 	ManagedReference<DroidObject*> getDroidObject();
+
 	virtual void updateCraftingValues(CraftingValues* values, bool firstUpdate);
+
 	virtual void setSpecies(int s) { species = s;}
 };
 

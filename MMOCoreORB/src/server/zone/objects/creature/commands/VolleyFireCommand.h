@@ -80,27 +80,25 @@ public:
 			return false;
 
 		for (int i = 0; i < group->getGroupSize(); i++) {
-			ManagedReference<SceneObject*> member = group->getGroupMember(i);
+			ManagedReference<CreatureObject*> member = group->getGroupMember(i);
 
 			if (!member->isPlayerCreature() || !member->isInRange(leader, 128.0))
 				continue;
 
-			ManagedReference<CreatureObject*> memberPlayer = cast<CreatureObject*>( member.get());
-
-			if (!isValidGroupAbilityTarget(leader, memberPlayer, false))
+			if (!isValidGroupAbilityTarget(leader, member, false))
 				continue;
 
-			if (!memberPlayer->isInCombat())
+			if (!member->isInCombat())
 				continue;
 
-			Locker clocker(memberPlayer, leader);
+			Locker clocker(member, leader);
 
 			String queueAction = "volleyfireattack";
 			uint64 queueActionCRC = queueAction.hashCode();
 
-			memberPlayer->executeObjectControllerAction(queueActionCRC, (uint64)target, "");
+			member->executeObjectControllerAction(queueActionCRC, (uint64)target, "");
 
-			checkForTef(leader, memberPlayer);
+			checkForTef(leader, member);
 		}
 
 		return true;

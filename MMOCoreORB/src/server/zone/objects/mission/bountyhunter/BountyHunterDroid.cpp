@@ -106,7 +106,7 @@ Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droid
 		return NULL;
 	}
 
-	Vector<ManagedReference<ActiveArea*> >* areas = player->getActiveAreas();
+	SortedVector<ManagedReference<ActiveArea*> >* areas = player->getActiveAreas();
 	for (int i = 0; i < areas->size(); i++) {
 		if (areas->get(i)->isMunicipalZone()) {
 			player->sendSystemMessage("@mission/mission_generic:probe_droid_bad_location"); // You must move to a different area to call down a probe droid from orbit.

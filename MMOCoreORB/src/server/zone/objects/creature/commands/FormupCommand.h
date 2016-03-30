@@ -70,29 +70,25 @@ public:
 
 		for (int i = 0; i < group->getGroupSize(); i++) {
 
-			ManagedReference<SceneObject*> member = group->getGroupMember(i);
+			ManagedReference<CreatureObject*> member = group->getGroupMember(i);
 
 			if (member == NULL || !member->isPlayerCreature() || member->getZone() != leader->getZone())
 				continue;
 
-			CreatureObject* memberPlayer = cast<CreatureObject*>( member.get());
-
-			if (!isValidGroupAbilityTarget(leader, memberPlayer, false))
+			if (!isValidGroupAbilityTarget(leader, member, false))
 				continue;
 
-			Locker clocker(memberPlayer, leader);
+			Locker clocker(member, leader);
 
-			sendCombatSpam(memberPlayer);
+			sendCombatSpam(member);
 
-			if (memberPlayer->isDizzied())
-
-					memberPlayer->removeStateBuff(CreatureState::DIZZY);
+			if (member->isDizzied())
+				member->removeStateBuff(CreatureState::DIZZY);
 					
+			if (member->isStunned())
+				member->removeStateBuff(CreatureState::STUNNED);
 
-			if (memberPlayer->isStunned())
-					memberPlayer->removeStateBuff(CreatureState::STUNNED);
-
-			checkForTef(leader, memberPlayer);
+			checkForTef(leader, member);
 		}
 
 		return true;

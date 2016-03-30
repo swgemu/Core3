@@ -135,14 +135,14 @@ public:
 		//Determine eligible group members to give credits.
 		Vector<CreatureObject*> payees;
 		for (int i = 0; i < group->getGroupSize(); ++i) {
-			ManagedReference<SceneObject*> object = group->getGroupMember(i);
+			ManagedReference<CreatureObject*> object = group->getGroupMember(i);
 			if (object == NULL || !object->isPlayerCreature())
 				continue;
 
-			ManagedReference<CreatureObject*> member = cast<CreatureObject*>(object.get());
-			if (member == NULL || !member->isInRange(corpse, 128.f))
+			if (!object->isInRange(corpse, 128.f))
 				continue;
-			payees.add(member);
+
+			payees.add(object);
 		}
 
 		if (payees.size() == 0)
@@ -208,7 +208,7 @@ public:
 
 	bool membersInRange() {
 		for (int i = 0; i < group->getGroupSize(); ++i) {
-			ManagedReference<SceneObject*> member = group->getGroupMember(i);
+			ManagedReference<CreatureObject*> member = group->getGroupMember(i);
 			if (member == NULL || !member->isPlayerCreature())
 				continue;
 

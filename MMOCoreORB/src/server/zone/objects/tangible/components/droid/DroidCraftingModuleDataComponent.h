@@ -26,31 +26,56 @@ protected:
 
 public:
 	DroidCraftingModuleDataComponent();
+
 	~DroidCraftingModuleDataComponent();
+
 	String getModuleName();
+
 	void initializeTransientMembers();
-	void initialize(CreatureObject* droid);
+
+	void initialize(DroidObject* droid);
+
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* droid);
+
 	void fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
+
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller);
+
 	void loadSkillMods(CreatureObject* player);
+
 	void unloadSkillMods(CreatureObject* player);
+
 	bool skillsByRange();
-	void handlePetCommand(String cmd, CreatureObject* speaker) ;
+
+	void handlePetCommand(String cmd, CreatureObject* speaker);
+
 	int getBatteryDrain();
+
 	void deactivate();
+
 	bool actsAsCraftingStation();
+
 	String toString();
+
 	// crafting droid module specific
 	CraftingStation* getCraftingStation();
+
 	bool isWeaponDroidGeneric();
+
 	bool isFoodChemical();
+
 	bool isClothingArmor();
+
 	bool isStructureFurniture();
+
 	bool isShip();
+
 	bool validCraftingType(int type);
+
 	void onCall();
+
 	void onStore();
+
 	void copy(BaseDroidModuleComponent* other);
 };
 

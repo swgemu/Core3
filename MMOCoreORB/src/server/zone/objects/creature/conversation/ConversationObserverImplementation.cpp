@@ -71,21 +71,30 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 		return 0;
 	}
 	case ObserverEventType::STOPCONVERSATION:
-		cancelConversationSession(player, npc);
+		if (player != NULL)
+			cancelConversationSession(player, npc);
+
 		//Keep observer.
 		return 0;
 
 	case ObserverEventType::STARTCONVERSATION: {
-		//Cancel any existing sessions.
-		cancelConversationSession(player, npc);
-		//Create a new session.
-		createConversationSession(player, npc);
-		createPositionObserver(player);
+		if (player != NULL) {
+			//Cancel any existing sessions.
+			cancelConversationSession(player, npc);
+
+			//Create a new session.
+			createConversationSession(player, npc);
+			createPositionObserver(player);
+		}
+
 		break;
 	}
 	default:
 		break;
 	}
+
+	if (player == NULL)
+		return 0;
 
 	//Select next conversation screen.
 	Reference<ConversationScreen*> conversationScreen = getNextConversationScreen(player, selectedOption, npc);

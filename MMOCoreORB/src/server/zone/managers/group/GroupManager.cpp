@@ -117,7 +117,6 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* target)
 
 		joinGroup(target);
 	}
-
 }
 
 void GroupManager::joinGroup(CreatureObject* player) {
@@ -238,7 +237,7 @@ GroupObject* GroupManager::createGroup(CreatureObject* leader) {
 	Locker locker(group);
 
 	group->initializeLeader(leader);
-	group->startChatRoom();
+	group->startChatRoom(leader);
 	group->setZone(leader->getZone());
 
 	group->sendTo(leader, true);
@@ -263,7 +262,7 @@ GroupObject* GroupManager::createGroup(CreatureObject* leader) {
 			group->setBandSong(session->getPerformanceName());
 
 			for (int i = 0; i < group->getGroupSize(); ++i) {
-				Reference<CreatureObject*> groupMember = (group->getGroupMember(i)).castTo<CreatureObject*>();
+				Reference<CreatureObject*> groupMember = group->getGroupMember(i);
 				if (groupMember == leader) {
 					continue;
 				} else {
@@ -283,7 +282,7 @@ GroupObject* GroupManager::createGroup(CreatureObject* leader) {
 		}
 	} else {
 		for (int i = 0; i < group->getGroupSize(); ++i) {
-			Reference<CreatureObject*> groupMember = (group->getGroupMember(i)).castTo<CreatureObject*>();
+			Reference<CreatureObject*> groupMember = group->getGroupMember(i);
 			if (groupMember->isPlayingMusic()) {
 				ManagedReference<Facade*> facade = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING);
 				ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*> (facade.get());
@@ -384,7 +383,7 @@ void GroupManager::disbandGroup(ManagedReference<GroupObject*> group, CreatureOb
 		}
 
 		for (int i = 0; i < group->getGroupSize(); i++) {
-			Reference<CreatureObject*> play = ( group->getGroupMember(i)).castTo<CreatureObject*>();
+			Reference<CreatureObject*> play = group->getGroupMember(i);
 
 			if (play->isPlayerCreature()) {
 				play->sendSystemMessage("@group:disbanded"); //"The group has been disbanded."
@@ -426,7 +425,7 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 			return;
 		}
 
-		Reference<CreatureObject*> leader = (group->getLeader()).castTo<CreatureObject*>();
+		Reference<CreatureObject*> leader = group->getLeader();
 
 		if (player != leader) {
 			player->sendSystemMessage("@group:must_be_leader");
@@ -436,7 +435,7 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 
 		if (group->getGroupSize() - 1 < 2) {
 			for (int i = 0; i < group->getGroupSize(); i++) {
-				Reference<CreatureObject*> play = (group->getGroupMember(i)).castTo<CreatureObject*>();
+				Reference<CreatureObject*> play = group->getGroupMember(i);
 
 				play->sendSystemMessage("@group:disbanded");
 			}
@@ -526,7 +525,7 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 		message.setTU(newLeader);
 
 		for (int i = 0; i < group->getGroupSize(); i++) {
-			Reference<CreatureObject*> play = ( group->getGroupMember(i)).castTo<CreatureObject*>();
+			Reference<CreatureObject*> play = group->getGroupMember(i);
 
 			if (play->isPlayerCreature())
 				play->sendSystemMessage(message);
@@ -582,13 +581,13 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 
 		//Notify group leader of the new rule with a system message.
 		StringIdChatParameter leaderMsg(promptText);
-		ManagedReference<CreatureObject*> leader = group->getLeader().castTo<CreatureObject*>();
+		ManagedReference<CreatureObject*> leader = group->getLeader();
 		if (leader != NULL)
 			leader->sendSystemMessage(leaderMsg);
 
 		//Notify group members of the new rule with an SUI box.
 		for (int i = 0; i < group->getGroupSize(); ++i) {
-			ManagedReference<CreatureObject*> member = (group->getGroupMember(i)).castTo<CreatureObject*>();
+			ManagedReference<CreatureObject*> member = group->getGroupMember(i);
 
 			if (member == NULL || !member->isPlayerCreature() || member == group->getLeader())
 				continue;
@@ -660,7 +659,7 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 		sui->setCallback(new GroupLootPickLooterSuiCallback(leader->getZoneServer()));
 
 		for (int i = 0; i < group->getGroupSize(); ++i) {
-			ManagedReference<CreatureObject*> member = (group->getGroupMember(i)).castTo<CreatureObject*>();
+			ManagedReference<CreatureObject*> member = group->getGroupMember(i);
 				if (member == NULL || !member->isPlayerCreature())
 					continue;
 
@@ -683,18 +682,17 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 		notificationLeader.setTU(group->getMasterLooterID());
 
 		//Send system message to leader.
-		CreatureObject* groupLeader = cast<CreatureObject*>(group->getLeader().get());
+		CreatureObject* groupLeader = group->getLeader();
 		groupLeader->sendSystemMessage(notificationLeader);
 
 		//Send system message to members.
-		if (group->getLeader()->getObjectID() == group->getMasterLooterID())
+		if (groupLeader->getObjectID() == group->getMasterLooterID())
 			group->sendSystemMessage(notificationLeader, false);
 		else {
 			StringIdChatParameter notificationOther("group","set_new_master_looter"); //"The Group Leader has set %TT as the master looter."
 			notificationOther.setTT(group->getMasterLooterID());
 			group->sendSystemMessage(notificationOther, false);
 		}
-
 	}
 
 	void GroupManager::createLottery(GroupObject* group, AiAgent* corpse) {
@@ -732,11 +730,10 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 
 		//Add group members within range to the Lottery.
 		for (int i = 0; i < group->getGroupSize(); ++i) {
-			ManagedReference<SceneObject*> object = group->getGroupMember(i);
-			if (object == NULL || !object->isPlayerCreature())
+			ManagedReference<CreatureObject*> member = group->getGroupMember(i);
+			if (member == NULL || !member->isPlayerCreature())
 				continue;
 
-			CreatureObject* member = cast<CreatureObject*>(object.get());
 			if (!member->isInRange(corpse, 128.f)) {
 				StringIdChatParameter tooFar("group","too_far_away_for_lottery__");
 				member->sendSystemMessage(tooFar); //"You are too far away from the creature to participate in the lottery."
@@ -769,12 +766,11 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 		//Determine members eligible to receive loot.
 		Vector<CreatureObject*> candidates;
 		for (int i = 0; i < group->getGroupSize(); ++i) {
-			ManagedReference<SceneObject*> object = group->getGroupMember(i);
-			if (object == NULL || !object->isPlayerCreature())
+			ManagedReference<CreatureObject*> member = group->getGroupMember(i);
+			if (member == NULL || !member->isPlayerCreature())
 				continue;
 
-			ManagedReference<CreatureObject*> member = cast<CreatureObject*>(object.get());
-			if (member == NULL || !member->isInRange(corpse, 128.f))
+			if (!member->isInRange(corpse, 128.f))
 				continue;
 
 			candidates.add(member);
@@ -809,7 +805,7 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 		}
 
 		//Reschedule corpse destruction.
-		ManagedReference<CreatureObject*> leader = group->getLeader().castTo<CreatureObject*>();
+		ManagedReference<CreatureObject*> leader = group->getLeader();
 		if (leader != NULL) {
 			Locker lclocker(leader, corpse);
 			leader->getZoneServer()->getPlayerManager()->rescheduleCorpseDestruction(leader, corpse);

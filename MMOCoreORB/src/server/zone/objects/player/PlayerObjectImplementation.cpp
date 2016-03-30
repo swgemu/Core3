@@ -1662,7 +1662,7 @@ void PlayerObjectImplementation::checkForNewSpawns() {
 		return;
 	}
 
-	SortedVector<ManagedReference<ActiveArea* > > areas = *dynamic_cast<SortedVector<ManagedReference<ActiveArea* > >* >(creature->getActiveAreas());
+	SortedVector<ManagedReference<ActiveArea* > > areas = *creature->getActiveAreas();
 	Vector<SpawnArea*> spawnAreas;
 	int totalWeighting = 0;
 

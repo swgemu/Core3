@@ -26,17 +26,18 @@ public:
 		if (creature->isPlayerCreature()) {
 			ManagedReference<CreatureObject*> player = creature;
 			ManagedReference<GroupObject*> group = player->getGroup();
+
 			if (group == NULL) {
 				player->sendSystemMessage("@error_message:not_grouped");
+				return GENERALERROR;
 			}
-			else if (group->getLeader() == player) {
-				for (int i = 0; i < group->getGroupSize(); i++) {
-					SceneObject* member = group->getGroupMember(i);
-					if (member->isPlayerCreature()) {
-						CreatureObject* memberPlayer = cast<CreatureObject*>( member);
-						memberPlayer->sendSystemMessage("Squad Leader " + player->getFirstName() + ": " + arguments.toString());
-					}
 
+			if (group->getLeader() == player) {
+				for (int i = 0; i < group->getGroupSize(); i++) {
+					CreatureObject* member = group->getGroupMember(i);
+					if (member->isPlayerCreature()) {
+						member->sendSystemMessage("Squad Leader " + player->getFirstName() + ": " + arguments.toString());
+					}
 				}
 			} else {
 				player->sendSystemMessage("@error_message:not_group_leader");

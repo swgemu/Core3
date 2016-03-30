@@ -186,9 +186,9 @@ void MissionObjectiveImplementation::awardReward() {
 		playerCount = group->getNumberOfPlayerMembers();
 
 		for(int i = 0; i < group->getGroupSize(); i++) {
-			Reference<CreatureObject*> groupMember = group->getGroupMember(i)->isPlayerCreature() ? (group->getGroupMember(i)).castTo<CreatureObject*>() : NULL;
+			Reference<CreatureObject*> groupMember = group->getGroupMember(i);
 
-			if (groupMember != NULL) {
+			if (groupMember != NULL && groupMember->isPlayerCreature()) {
 				//Play mission complete sound.
 				groupMember->sendMessage(pmm->clone());
 

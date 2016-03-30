@@ -448,7 +448,11 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 	//remove when done
 	//return;
 
-	SceneObject* scno = cast<SceneObject*>( obj);
+	SceneObject* scno = cast<SceneObject*>(obj);
+
+	if (scno == NULL)
+		return;
+
 	bool objectInThisBuilding = scno->getRootParent() == asBuildingObject();
 
 	for (int i = 0; i < cells.size(); ++i) {

@@ -135,5 +135,10 @@ unsigned char TargaBitmap::getData(int offset) {
 	if (offset < 0 || offset >= header.width * header.height)
 		throw ArrayIndexOutOfBoundsException(offset);
 
-	return dynamic_cast<TargaBlackPixel*>(pixelData[offset])->val;
+	TargaBlackPixel* tbp = dynamic_cast<TargaBlackPixel*>(pixelData[offset]);
+
+	if (tbp == NULL)
+		throw Exception("pixelData[" + String::valueOf(offset) + "] is not a TargaBlackPixel");
+
+	return tbp->val;
 }

@@ -8,7 +8,7 @@
 #ifndef GROUPLIST_H_
 #define GROUPLIST_H_
 
-#include "../scene/variables/DeltaVector.h"
+#include "server/zone/objects/scene/variables/DeltaVector.h"
 #include "GroupMember.h"
 
 class GroupList : public DeltaVector<GroupMember> {

@@ -36,13 +36,15 @@ public:
 		if (group == NULL) {
 			return;
 		}
+
 		Locker locker(group);
 
 		// Filter the group by planet.
 		Vector<Reference<CreatureObject*> > groupMembersOnPlanet;
-		for(int i = 0; i < group->getGroupSize(); i++) {
-			if (group->getGroupMember(i) != NULL && group->getGroupMember(i)->isPlayerCreature()) {
-				Reference<CreatureObject*> groupMember = (group->getGroupMember(i)).castTo<CreatureObject*>();
+		for (int i = 0; i < group->getGroupSize(); i++) {
+			Reference<CreatureObject*> groupMember = group->getGroupMember(i);
+
+			if (groupMember != NULL && groupMember->isPlayerCreature()) {
 				Zone* zone = groupMember->getZone();
 
 				if (zone != NULL && zone->getZoneCRC() == planetCRC) {
@@ -59,7 +61,8 @@ public:
 		float totalX = 0;
 		float totalY = 0;
 		float totalZ = 0;
-		for(int i = 0; i< groupMembersOnPlanet.size(); i++) {
+
+		for (int i = 0; i < groupMembersOnPlanet.size(); i++) {
 			if (groupMembersOnPlanet.get(i) != NULL) {
 				CreatureObject* groupMember = groupMembersOnPlanet.get(i);
 				Vector3 groupMemberPostion = groupMember->getWorldPosition();
@@ -68,28 +71,36 @@ public:
 				totalZ += groupMemberPostion.getZ();
 			}
 		}
+
 		Vector3 averageGroupMemberLocation = Vector3(totalX / groupMembersOnPlanet.size(), totalY / groupMembersOnPlanet.size(), totalZ / groupMembersOnPlanet.size());
 
 		// Find all of the missions for the group members on the planet.
 		Vector<Reference<MissionObject*> > missionsOnPlanet;
-		for(int i = 0; i< groupMembersOnPlanet.size(); i++) {
+
+		for (int i = 0; i < groupMembersOnPlanet.size(); i++) {
 			CreatureObject* groupMember = groupMembersOnPlanet.get(i);
+
 			if (groupMember != NULL) {
 				SceneObject* datapad = groupMember->getSlottedObject("datapad");
 				if (datapad == NULL) {
 					continue;
 				}
+
 				int numberOfMissionsForMember = 0;
+
 				Locker clocker(groupMember, group);
-				for(int k = 0; k < datapad->getContainerObjectsSize(); k++) {
+
+				for (int k = 0; k < datapad->getContainerObjectsSize(); k++) {
 					if (datapad->getContainerObject(k) != NULL && datapad->getContainerObject(k)->isMissionObject()) {
 						numberOfMissionsForMember++;
 						Reference<MissionObject*> mission = datapad->getContainerObject(k).castTo<MissionObject*>();
+
 						if (mission->getWaypointToMission() != NULL && mission->getWaypointToMission()->getPlanetCRC() == planetCRC) {
 							missionsOnPlanet.add(mission);
 						}
 					}
 				}
+
 				if (numberOfMissionsForMember >= 2) {
 					continue;
 				}
@@ -100,11 +111,12 @@ public:
 		Reference<MissionObject*> nearestMission = NULL;
 		if (missionsOnPlanet.size() == 1) {
 			nearestMission = missionsOnPlanet.get(0);
-		}
-		else {
+		} else {
 			float shortestDistanceSoFar = std::numeric_limits<float>::max();
-			for(int i = 0; i< missionsOnPlanet.size(); i++) {
+
+			for (int i = 0; i < missionsOnPlanet.size(); i++) {
 				float disstanceToMission = calculateManhattanDistanceToMission(averageGroupMemberLocation, missionsOnPlanet.get(i));
+
 				if (disstanceToMission < shortestDistanceSoFar) {
 					shortestDistanceSoFar = disstanceToMission;
 					nearestMission = missionsOnPlanet.get(i);
@@ -114,7 +126,7 @@ public:
 
 		// If a mission was found, add the nearest mission waypoint for all members. Otherwise if a mission
 		// was not found then remove the nearest mission waypoint for all members.
-		for(int i = 0; i< groupMembersOnPlanet.size(); i++) {
+		for (int i = 0; i < groupMembersOnPlanet.size(); i++) {
 			CreatureObject* groupMember = groupMembersOnPlanet.get(i);
 
 			Locker clocker(groupMember, group);
@@ -147,9 +159,7 @@ private:
 
 		if (nearestMissionForGroup == NULL) {
 			ghost->removeWaypointBySpecialType(WaypointObject::SPECIALTYPE_NEARESTMISSIONFORGROUP, true);
-		}
-
-		else {
+		} else {
 			Zone* zone = nearestMissionForGroup->getZone();
 			uint32 crc = zone ? zone->getZoneCRC() : 0;
 

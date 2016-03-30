@@ -28,23 +28,39 @@ protected:
 
 public:
 	DroidPersonalityModuleDataComponent();
+
 	~DroidPersonalityModuleDataComponent();
+
 	String getModuleName();
+
 	void initializeTransientMembers();
-	void initialize(CreatureObject* droid);
+
+	void initialize(DroidObject* droid);
+
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* droid);
-	void handlePetCommand(String cmd, CreatureObject* speaker) ;
+
+	void handlePetCommand(String cmd, CreatureObject* speaker);
+
 	int getBatteryDrain();
+
 	void deactivate();
+
 	String toString();
-	// crafting droid module specific
+
 	void onCall();
+
 	void onStore();
+
 	void copy(BaseDroidModuleComponent* other);
+
 	void notifyEvent(unsigned int eventType, ManagedObject* arg1, int64 arg2,bool forced = false);
+
 	void quip(String message,DroidObject* droid);
+
 	String getPersonalityBase();
+
 	uint32 getPersonalityConversationTemplate();
+
 	String getPersonalityStf() { return personalityStf; }
 };
 

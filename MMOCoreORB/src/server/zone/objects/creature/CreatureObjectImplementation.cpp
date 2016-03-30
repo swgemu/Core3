@@ -2582,16 +2582,19 @@ void CreatureObjectImplementation::notifyPostureChange(int newPosture) {
 void CreatureObjectImplementation::updateGroupMFDPositions() {
 	Reference<CreatureObject*> creo = _this.getReferenceUnsafeStaticCast();
 
-	if(group != NULL) {
+	if (group != NULL) {
 		GroupList* list = group->getGroupList();
-		if(list != NULL) {
-			for(int i=0; i<list->size(); i++) {
+		if (list != NULL) {
+			for (int i = 0; i < list->size(); i++) {
 
-				Reference<SceneObject*> member = list->get(i).get();
+				Reference<CreatureObject*> member = list->get(i).get();
 
-				CloseObjectsVector* cev =  (CloseObjectsVector*)member->getCloseObjects();
+				if (member == NULL || creo == member)
+					continue;
 
-				if(member == NULL || creo == member || cev == NULL || cev->contains(creo.get()))
+				CloseObjectsVector* cev = (CloseObjectsVector*)member->getCloseObjects();
+
+				if (cev == NULL || cev->contains(creo.get()))
 					continue;
 
 				ClientMfdStatusUpdateMessage *msg = new ClientMfdStatusUpdateMessage(creo);

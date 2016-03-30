@@ -528,7 +528,7 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 
 		if (sceneObject->isTangibleObject()) {
 			TangibleObject* tano = sceneObject->asTangibleObject();
-			Vector<ManagedReference<ActiveArea*> >* activeAreas =  tano->getActiveAreas();
+			SortedVector<ManagedReference<ActiveArea*> >* activeAreas =  tano->getActiveAreas();
 
 			while (activeAreas->size() > 0) {
 				Locker _alocker(sceneObject->getContainerLock());

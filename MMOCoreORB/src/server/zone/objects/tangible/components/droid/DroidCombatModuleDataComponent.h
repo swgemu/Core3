@@ -23,17 +23,29 @@ protected:
 
 public:
 	DroidCombatModuleDataComponent();
+
 	~DroidCombatModuleDataComponent();
+
 	String getModuleName();
+
 	void initializeTransientMembers();
+
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* droid);
+
 	int getBatteryDrain() { return 0;}
+
 	String toString();
+
 	bool isStackable() { return true; }
+
 	void copy(BaseDroidModuleComponent* other);
+
 	void addToStack(BaseDroidModuleComponent* other);
+
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
-	void initialize(CreatureObject* droid);
+
+	void initialize(DroidObject* droid);
+
 	bool isCombatModule() { return true; }
 };
 

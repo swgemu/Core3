@@ -1212,19 +1212,17 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 
 			crossLocker.release();
 
-			ManagedReference<SceneObject*> groupLeader = group->getLeader();
+			ManagedReference<CreatureObject*> groupLeader = group->getLeader();
 
 			if (groupLeader == NULL || !groupLeader->isPlayerCreature())
 				continue;
 
-			CreatureObject* squadLeader = groupLeader.castTo<CreatureObject*>();
-
-			Locker squadLock(squadLeader, destructedObject);
+			Locker squadLock(groupLeader, destructedObject);
 
 			//If he is a squad leader, and is in range of this player, then add the combat exp for him to use.
-			if (squadLeader->hasSkill("outdoors_squadleader_novice") && pos.distanceTo(attacker->getWorldPosition()) <= ZoneServer::CLOSEOBJECTRANGE) {
-				int v = slExperience.get(squadLeader) + combatXp;
-				slExperience.put(squadLeader, v);
+			if (groupLeader->hasSkill("outdoors_squadleader_novice") && pos.distanceTo(attacker->getWorldPosition()) <= ZoneServer::CLOSEOBJECTRANGE) {
+				int v = slExperience.get(groupLeader) + combatXp;
+				slExperience.put(groupLeader, v);
 			}
 		}
 	}
@@ -4578,18 +4576,13 @@ bool PlayerManagerImplementation::canGroupMemberHarvestCorpse(CreatureObject* pl
 	int groupSize = group->getGroupSize();
 
 	for (int i = 0; i < groupSize; i++) {
-		ManagedReference<SceneObject*> groupMember = group->getGroupMember(i);
+		ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
 
 		if (player->getObjectID() == groupMember->getObjectID())
 			continue;
 
-		if (creature->isInRange(groupMember, 256.0f)) {
-
-			CreatureObject* groupMemberCreature = groupMember->asCreatureObject();
-
-			if (groupMemberCreature != NULL && creature->hasSkillToHarvestMe(groupMemberCreature)) {
-				return true;
-			}
+		if (creature->isInRange(groupMember, 256.0f) && creature->hasSkillToHarvestMe(groupMember)) {
+			return true;
 		}
 	}
 

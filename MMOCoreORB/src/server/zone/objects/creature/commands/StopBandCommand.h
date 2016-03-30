@@ -30,7 +30,7 @@ public:
 			return GENERALERROR;
 		}
 
-		Reference<CreatureObject*> leader = (group->getLeader()).castTo<CreatureObject*>();
+		Reference<CreatureObject*> leader = group->getLeader();
 
 		if (leader == NULL || creature != leader) {
 			creature->sendSystemMessage("You must be the band leader to stop the band's song.");
@@ -52,12 +52,12 @@ public:
 			Locker locker(group);
 
 			for (int i = 0; i < group->getGroupSize(); ++i) {
-				Reference<CreatureObject*> groupMember = (group->getGroupMember(i)).castTo<CreatureObject*>();
-
-				Locker clocker(groupMember, group);
+				Reference<CreatureObject*> groupMember = group->getGroupMember(i);
 
 				if (groupMember == NULL || !groupMember->isPlayingMusic())
 					continue;
+
+				Locker clocker(groupMember, group);
 
 				ManagedReference<EntertainingSession*> bandMemberSession = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 

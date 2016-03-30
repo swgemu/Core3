@@ -8,11 +8,11 @@
 #ifndef GROUPMEMBER_H_
 #define GROUPMEMBER_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/scene/variables/StringId.h"
 
 class GroupMember : public Variable {
-	ManagedReference<SceneObject*> creature;
+	ManagedReference<CreatureObject*> creature;
 
 public:
 	GroupMember() {
@@ -23,7 +23,7 @@ public:
 		creature = obj.creature;
 	}
 
-	GroupMember(SceneObject* obj) {
+	GroupMember(CreatureObject* obj) {
 		creature = obj;
 	}
 
@@ -31,23 +31,23 @@ public:
 		return creature.get() == member.creature.get();
 	}
 
-	bool operator==(SceneObject* member) const {
+	bool operator==(CreatureObject* member) const {
 		return creature.get() == member;
 	}
 
-	void operator=(SceneObject* obj) {
+	void operator=(CreatureObject* obj) {
 		creature = obj;
 	}
 
-	Reference<SceneObject*> operator->() const {
+	Reference<CreatureObject*> operator->() const {
 		return creature.get();
 	}
 
-	Reference<SceneObject*> get() {
+	Reference<CreatureObject*> get() {
 		return creature.get();
 	}
 
-	operator Reference<SceneObject*>() const {
+	operator Reference<CreatureObject*>() const {
 		return creature.get();
 	}
 
@@ -65,7 +65,6 @@ public:
 		creature.toBinaryStream(stream);
 
 		if (creature != NULL) {
-			StringId* stringId = creature->getObjectName();
 			name = creature->getCustomObjectName().toString();
 		}
 
@@ -86,8 +85,6 @@ public:
 
 		return true;
 	}
-
-
 
 };
 

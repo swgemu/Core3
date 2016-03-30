@@ -43,18 +43,15 @@ public:
 			return;
 		}
 
-		ManagedReference<SceneObject*> leader = group->getLeader();
+		ManagedReference<CreatureObject*> leader = group->getLeader();
 
 		// Make sure new leader isn't a pet
 		if (leader == NULL || !leader->isPlayerCreature()) {
 			for (int i = 1; i < group->getGroupSize(); i++) {
-				ManagedReference<SceneObject*> scno = group->getGroupMember(i);
+				ManagedReference<CreatureObject*> member = group->getGroupMember(i);
 
-				if (scno == NULL)
-					continue;
-
-				if (scno->isPlayerCreature())
-					group->makeLeader(scno);
+				if (member->isPlayerCreature())
+					group->makeLeader(member);
 
 				break;
 			}

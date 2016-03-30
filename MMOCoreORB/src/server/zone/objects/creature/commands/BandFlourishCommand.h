@@ -76,21 +76,19 @@ public:
 			Locker locker(group);
 
 			for (int i = 0; i < group->getGroupSize(); i++) {
-				Reference<CreatureObject*> groupMember = (group->getGroupMember(i)).castTo<CreatureObject*>();
+				Reference<CreatureObject*> groupMember = group->getGroupMember(i);
 
 				Locker clocker(groupMember, group);
 
 				if (groupMember != player && groupMember->isPlayerCreature()) {
-					CreatureObject* member = cast<CreatureObject*>(groupMember.get());
-
-					ManagedReference<Facade*> pfacade = member->getActiveSession(SessionFacadeType::ENTERTAINING);
+					ManagedReference<Facade*> pfacade = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING);
 
 					ManagedReference<EntertainingSession*> psession = dynamic_cast<EntertainingSession*>(pfacade.get());
 
 					if (psession == NULL)
 						continue;
 
-					ManagedReference<Instrument*> pinstrument = psession->getInstrument(member);
+					ManagedReference<Instrument*> pinstrument = psession->getInstrument(groupMember);
 					int playerInstrumentType = pinstrument == NULL ? -1 : pinstrument->getInstrumentType();
 
 					if (psession->isAcceptingBandFlourishes()) {
@@ -98,7 +96,7 @@ public:
 						//Handle dance flourish
 						if (!musicflourish && psession->isDancing()) {
 							params.setStringId("performance", "flourish_perform_band_member");
-							member->sendSystemMessage(params);
+							groupMember->sendSystemMessage(params);
 							psession->doFlourish(Integer::valueOf(number), false);
 						}
 
@@ -106,19 +104,22 @@ public:
 						if (musicflourish && psession->isPlayingMusic()) {
 							if (instrumentType < 1 || (playerInstrumentType == instrumentType)) {
 								params.setStringId("performance", "flourish_perform_band_member");
-								member->sendSystemMessage(params);
+								groupMember->sendSystemMessage(params);
 								psession->doFlourish(Integer::valueOf(number), false);
 							}
 						}
 					}
 				}
-				if(groupMember != player && groupMember->isDroidObject()) {
+
+				if (groupMember != player && groupMember->isDroidObject()) {
 					// is the droid playing music?
 					DroidObject* droid = cast<DroidObject*>(groupMember.get());
 					BaseDroidModuleComponent* module = droid->getModule("playback_module");
-					if(module != NULL) {
+
+					if (module != NULL) {
 						DroidPlaybackModuleDataComponent* entertainer = cast<DroidPlaybackModuleDataComponent*>(module);
-						if(entertainer != NULL) {
+
+						if (entertainer != NULL) {
 							if (entertainer->isActive() && musicflourish && (instrumentType == entertainer->getCurrentInstrument() || instrumentType < 1)) {
 								entertainer->doFlourish(Integer::valueOf(number));
 							}

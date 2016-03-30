@@ -86,22 +86,20 @@ public:
 			return GENERALERROR;
 
 		for (int i = 1; i < group->getGroupSize(); ++i) {
-			ManagedReference<SceneObject*> member = group->getGroupMember(i);
+			ManagedReference<CreatureObject*> member = group->getGroupMember(i);
 
 			if (member == NULL || !member->isPlayerCreature() || member->getZone() != creature->getZone())
 				continue;
 
-			ManagedReference<CreatureObject*> memberPlayer = cast<CreatureObject*>( member.get());
-
-			if (!isValidGroupAbilityTarget(creature, memberPlayer, false))
+			if (!isValidGroupAbilityTarget(creature, member, false))
 				continue;
 
-			Locker clocker(memberPlayer, player);
+			Locker clocker(member, player);
 
-			sendCombatSpam(memberPlayer);
-			doRetreat(memberPlayer);
+			sendCombatSpam(member);
+			doRetreat(member);
 
-			checkForTef(player, memberPlayer);
+			checkForTef(player, member);
 		}
 
 		if (!ghost->getCommandMessageString(STRING_HASHCODE("retreat")).isEmpty() && creature->checkCooldownRecovery("command_message")) {

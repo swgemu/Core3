@@ -198,10 +198,10 @@ void EntertainingSessionImplementation::addHealingXpGroup(int xp) {
 	int groupSize = group->getGroupSize();
 	ManagedReference<PlayerManager*> playerManager = entertainer->getZoneServer()->getPlayerManager();
 
-	for(int i = 0; i < groupSize; ++i) {
-		ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i)->isPlayerCreature() ? group->getGroupMember(i).castTo<CreatureObject*>() : NULL;
+	for (int i = 0; i < groupSize; ++i) {
+		ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
 
-		if (groupMember != NULL) {
+		if (groupMember != NULL && groupMember->isPlayerCreature()) {
 			Locker clocker(groupMember, entertainer);
 
 			if (groupMember->isEntertaining() && groupMember->isInRange(entertainer, 40.0f)
@@ -210,10 +210,8 @@ void EntertainingSessionImplementation::addHealingXpGroup(int xp) {
 
 				if (playerManager != NULL)
 					playerManager->awardExperience(groupMember, healxptype, xp, true);
-
 			}
 		}
-
 	}
 }
 
@@ -1029,12 +1027,10 @@ void EntertainingSessionImplementation::increaseEntertainerBuff(CreatureObject* 
 }
 
 void EntertainingSessionImplementation::awardEntertainerExperience() {
-	ManagedReference<CreatureObject*> entertainer = this->entertainer.get();
-	ManagedReference<PlayerManager*> playerManager = entertainer->getZoneServer()->getPlayerManager();
+	ManagedReference<CreatureObject*> player = this->entertainer.get();
+	ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
 
-	CreatureObject* player = entertainer->isPlayerCreature() ? cast<CreatureObject*>(entertainer.get()) : NULL;
-
-	if (player != NULL) {
+	if (player->isPlayerCreature()) {
 		if (flourishXp > 0 && (isDancing() || isPlayingMusic())) {
 			String xptype;
 
@@ -1046,18 +1042,18 @@ void EntertainingSessionImplementation::awardEntertainerExperience() {
 			int groupBonusPercent = 0;
 			int groupBonus  = 0;
 
-			if(player->getGroup() != NULL) {
+			ManagedReference<GroupObject*> group = player->getGroup();
 
-				ManagedReference<GroupObject*> group = player->getGroup();
+			if (group != NULL) {
 				int groupSize = group->getGroupSize();
 
-				for(int i = 0; i < groupSize; ++i) {
-					ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i)->isPlayerCreature() ? group->getGroupMember(i).castTo<CreatureObject*>() : NULL;
+				for (int i = 0; i < groupSize; ++i) {
+					ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
 
-					if (groupMember != NULL) {
-						Locker clocker(groupMember, entertainer);
+					if (groupMember != NULL && groupMember->isPlayerCreature()) {
+						Locker clocker(groupMember, player);
 
-						if (groupMember->isEntertaining() && groupMember->isInRange(entertainer, 40.0f)
+						if (groupMember->isEntertaining() && groupMember->isInRange(player, 40.0f)
 								&& groupMember->hasSkill("social_entertainer_novice")) {
 							++groupBonusPercent;
 						}

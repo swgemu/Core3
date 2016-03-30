@@ -765,7 +765,7 @@ class TangibleObject extends SceneObject {
 
 	@local
 	@dirty
-	public Vector<ActiveArea> getActiveAreas() {
+	public SortedVector<ActiveArea> getActiveAreas() {
 		return activeAreas;
 	}
 

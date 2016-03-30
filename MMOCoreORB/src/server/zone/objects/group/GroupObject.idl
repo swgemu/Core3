@@ -72,21 +72,21 @@ class GroupObject extends SceneObject {
 	@dirty
 	public native void sendSystemMessage(@dereferenced StringIdChatParameter param, CreatureObject excluded);
 
-	public native void addMember(SceneObject newMember);
+	public native void addMember(CreatureObject newMember);
 	@preLocked
-	public native void removeMember(SceneObject member);
+	public native void removeMember(CreatureObject member);
 
 	@preLocked
 	public native void disband();
-	public native void makeLeader(SceneObject player);
+	public native void makeLeader(CreatureObject player);
 
 	@dirty
-	public native boolean hasMember(SceneObject member);
+	public native boolean hasMember(CreatureObject member);
 	@dirty
 	public native boolean hasMember(unsigned long member);
 
 	@preLocked
-	public native void startChatRoom();
+	public native void startChatRoom(CreatureObject leader);
 
 	@preLocked
 	public native void destroyChatRoom();
@@ -118,17 +118,17 @@ class GroupObject extends SceneObject {
 
 	@reference
 	@dirty
-	public SceneObject getGroupMember(int index) {
+	public CreatureObject getGroupMember(int index) {
 		return groupMembers.getSafe(index);
 	}
 
-	public void initializeLeader(SceneObject player) {
+	public void initializeLeader(CreatureObject player) {
 		groupMembers.add(player);
 	}
 
 	@reference
 	@dirty
-	public SceneObject getLeader() {
+	public CreatureObject getLeader() {
 		if (groupMembers.size() == 0) {
 			return null;
 		} else {
@@ -195,7 +195,7 @@ class GroupObject extends SceneObject {
 		masterLooterID = newID;
 	}
 
-	public boolean checkMasterLooter(SceneObject object) {
+	public boolean checkMasterLooter(CreatureObject object) {
 		return object.getObjectID() == masterLooterID;
 	}
 

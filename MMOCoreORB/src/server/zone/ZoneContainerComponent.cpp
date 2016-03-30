@@ -283,7 +283,7 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 
 		if (object->isTangibleObject()) {
 			TangibleObject* tano = cast<TangibleObject*>(object);
-			Vector<ManagedReference<ActiveArea*> >* activeAreas = tano->getActiveAreas();
+			SortedVector<ManagedReference<ActiveArea*> >* activeAreas = tano->getActiveAreas();
 
 			while (activeAreas->size() > 0) {
 				Locker _alocker(object->getContainerLock());

@@ -72,39 +72,36 @@ public:
 			return false;
 
 		for (int i = 0; i < group->getGroupSize(); i++) {
+			ManagedReference<CreatureObject*> member = group->getGroupMember(i);
 
-			ManagedReference<SceneObject*> member = group->getGroupMember(i);
-
-			if (!member->isPlayerCreature() || member == NULL || member->getZone() != leader->getZone())
+			if (member == NULL || !member->isPlayerCreature() || member->getZone() != leader->getZone())
 				continue;
 
-			ManagedReference<CreatureObject*> memberPlayer = cast<CreatureObject*>( member.get());
-
-			if (!isValidGroupAbilityTarget(leader, memberPlayer, false))
+			if (!isValidGroupAbilityTarget(leader, member, false))
 				continue;
 
-			Locker clocker(memberPlayer, leader);
+			Locker clocker(member, leader);
 
-			sendCombatSpam(memberPlayer);
+			sendCombatSpam(member);
 
-			ManagedReference<WeaponObject*> weapon = memberPlayer->getWeapon();
+			ManagedReference<WeaponObject*> weapon = member->getWeapon();
 
 			if (!weapon->isRangedWeapon())
 				continue;
 
 			int duration = 300;
 
-			ManagedReference<Buff*> buff = new Buff(memberPlayer, actionCRC, duration, BuffType::SKILL);
+			ManagedReference<Buff*> buff = new Buff(member, actionCRC, duration, BuffType::SKILL);
 
 			Locker locker(buff);
 
 			buff->setSkillModifier("private_aim", amount);
 			buff->setStartFlyText("combat_effects", "go_steady", 0, 0xFF, 0); // there is no corresponding no_steady fly text
 
-			memberPlayer->addBuff(buff);
+			member->addBuff(buff);
 			//			memberPlayer->showFlyText("combat_effects", "go_steadied", 0, 0xFF, 0); // there is no corresponding no_steady fly text
 
-			checkForTef(leader, memberPlayer);
+			checkForTef(leader, member);
 		}
 
 		return true;

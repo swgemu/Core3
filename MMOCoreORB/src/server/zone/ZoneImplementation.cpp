@@ -391,7 +391,7 @@ void ZoneImplementation::updateActiveAreas(TangibleObject* tano) {
 
 	Locker _alocker(tano->getContainerLock());
 
-	SortedVector<ManagedReference<ActiveArea* > > areas = *dynamic_cast<SortedVector<ManagedReference<ActiveArea* > >* >(tano->getActiveAreas());
+	SortedVector<ManagedReference<ActiveArea* > > areas = *tano->getActiveAreas();
 
 	_alocker.release();
 

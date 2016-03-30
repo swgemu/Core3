@@ -23,23 +23,38 @@ protected:
 
 public:
 	DroidItemStorageModuleDataComponent();
+
 	~DroidItemStorageModuleDataComponent();
+
 	String getModuleName();
+
 	void initializeTransientMembers();
+
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* droid);
+
 	int getBatteryDrain() { return 0;}
+
 	String toString();
-	// crafting droid module specific
+
 	void onCall();
+
 	void onStore();
+
 	bool isStackable() { return true; }
+
 	void copy(BaseDroidModuleComponent* other);
+
 	void addToStack(BaseDroidModuleComponent* other);
+
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
+
 	int getStorageRating();
+
 	void fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
+
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller);
-	void initialize(CreatureObject* droid);
+
+	void initialize(DroidObject* droid);
 };
 
 

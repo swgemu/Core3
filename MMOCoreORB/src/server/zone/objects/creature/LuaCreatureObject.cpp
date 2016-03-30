@@ -765,7 +765,7 @@ int LuaCreatureObject::getGroupMember(lua_State* L) {
 		return 1;
 	}
 
-	SceneObject* creo = group->getGroupMember(i);
+	CreatureObject* creo = group->getGroupMember(i);
 
 	if (creo == NULL) {
 		realObject->info("LuaCreatureObject::getGroupMember GroupMember is NULL.");

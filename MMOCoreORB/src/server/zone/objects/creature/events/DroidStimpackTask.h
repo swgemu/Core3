@@ -33,41 +33,42 @@ public:
 
 	void run() {
 		Locker lock(droid);
-		Locker crosslocker(target,droid);
+		Locker crosslocker(target, droid);
 
 		droid->removePendingTask("droid_request_stimpack");
-		if( droid == NULL){
+		if (droid == NULL) {
 			return;
 		}
 
 		DroidStimpackModuleDataComponent* module = cast<DroidStimpackModuleDataComponent*>(droid->getModule("stimpack_module"));
-		if(module == NULL) {
+		if (module == NULL) {
 			target->sendSystemMessage("@pet/droid_modules:not_stimpack_droid");
 			return;
 		}
+
 		DroidComponent* droidComponent = cast<DroidComponent*>(module->getParent());
 
-		if(droidComponent == NULL) {
+		if (droidComponent == NULL) {
 			target->sendSystemMessage("@pet/droid_modules:stimpack_error");
 			return;
 		}
 
 		// Check if droid is spawned
-		if( droid->getLocalZone() == NULL ){  // Not outdoors
+		if (droid->getLocalZone() == NULL) {  // Not outdoors
+			ManagedReference<SceneObject*> parent = droid->getParent().get();
 
-			ManagedWeakReference<SceneObject*> parent = droid->getParent();
-			if( parent == NULL || !parent.get()->isCellObject() ){ // Not indoors either
+			if (parent == NULL || !parent->isCellObject()) { // Not indoors either
 				return;
 			}
 		}
 
 		// Check droid states
-		if( droid->isDead() || droid->isIncapacitated() || target->isDead()){
+		if (droid->isDead() || droid->isIncapacitated() || target->isDead()) {
 			return;
 		}
 
 		// Droid must have power
-		if( !droid->hasPower() ){
+		if (!droid->hasPower()) {
 			droid->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
 			return;
 		}
@@ -79,12 +80,14 @@ public:
 		}
 
 		// target must be in range
-		if (!target->isInRange(droid,20)){
+		if (!target->isInRange(droid, 20)) {
 			// 20 meter range same as max possible range stim
 			target->sendSystemMessage("@pet/droid_modules:stimpack_too_far_away");
 			return;
 		}
+
 		StimPack* stimpack = module->findStimPack();
+
 		// droid has to have a stimpack to give
 		if (stimpack == NULL) {
 			target->sendSystemMessage("@pet/droid_modules:stimpack_supply_empty");
@@ -94,19 +97,18 @@ public:
 		// target must be the owner or in the owners group
 		ManagedReference<GroupObject*> group = target->getGroup();
 		bool groupMember = false;
+
 		if (group != NULL) {
-			Locker locker(group);
-			for(int i=0;i<group->getGroupSize();i++) {
-				ManagedReference<SceneObject*> member = group->getGroupMember(i);
-				if(member->isPlayerObject()) {
-					ManagedReference<CreatureObject*> memberPlayer = cast<CreatureObject*>( member.get());
-					if (memberPlayer == target) {
-						groupMember = true;
-					}
+			for (int i = 0; i < group->getGroupSize(); i++) {
+				ManagedReference<CreatureObject*> member = group->getGroupMember(i);
+
+				if (member->isPlayerCreature() && member == target) {
+					groupMember = true;
 				}
 			}
 		}
-		if( droid->getLinkedCreature() != target) {
+
+		if (droid->getLinkedCreature() != target) {
 			if (!groupMember) {
 				target->sendSystemMessage("@pet/droid_modules:stimpack_cant_use_droid");
 				return;
@@ -116,16 +118,21 @@ public:
 		// check droid cooldown on dispensing
 		if (droid->getCooldownTimerMap()->isPast("RequestStimpack")) {
 			Locker locker(stimpack);
+
 			// use the stim pack
 			target->playEffect("clienteffect/healing_healdamage.cef", "");
 			droid->doAnimation("heal_other");
+
 			uint32 stimPower = stimpack->calculatePower(droid, target);
 			uint32 healthHealed = target->healDamage(droid, CreatureAttribute::HEALTH, stimPower);
 			uint32 actionHealed = target->healDamage(droid, CreatureAttribute::ACTION, stimPower, true, false);
+
 			stimpack->decreaseUseCount();
 			droid->getCooldownTimerMap()->updateToCurrentAndAddMili("RequestStimpack",module->rate);
+
 			// send heal message
 			StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
+
 			if (healthHealed > 0 && actionHealed > 0) {
 				msgBody << healthHealed << " health and " << actionHealed << " action";
 			} else if (healthHealed > 0) {
@@ -133,8 +140,10 @@ public:
 			} else if (actionHealed > 0) {
 				msgBody << actionHealed << " action";
 			}
+
 			msgTail << " damage.";
 			msgTarget << droidName << " heals you for " << msgBody.toString() << msgTail.toString();
+
 			target->sendSystemMessage(msgTarget.toString());
 			droid->usePower(1);
 			return;

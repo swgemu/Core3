@@ -77,7 +77,7 @@ public:
 
 		for (int i = 0; i < group->getGroupSize(); i++) {
 
-			ManagedReference<SceneObject*> member = group->getGroupMember(i);
+			ManagedReference<CreatureObject*> member = group->getGroupMember(i);
 
 			if (member == NULL)
 				continue;
@@ -85,16 +85,14 @@ public:
 			if (!member->isPlayerCreature())
 				continue;
 
-			CreatureObject* memberPlayer = cast<CreatureObject*>( member.get());
-
-			if (!isValidGroupAbilityTarget(leader, memberPlayer, false))
+			if (!isValidGroupAbilityTarget(leader, member, false))
 				continue;
 
-			Locker clocker(memberPlayer, leader);
+			Locker clocker(member, leader);
 
 			for (int j = 0; j < 9; j++) {
-				wounds[1] += memberPlayer->getWounds(j);
-				memberPlayer->setWounds(j, 0);
+				wounds[1] += member->getWounds(j);
+				member->setWounds(j, 0);
 			}
 
 			wounds[0]++;
@@ -111,7 +109,7 @@ public:
 		int totalWoundsApplied = 0;
 		for (int i = 0; i < group->getGroupSize(); i++) {
 
-			ManagedReference<SceneObject*> member = group->getGroupMember(i);
+			ManagedReference<CreatureObject*> member = group->getGroupMember(i);
 
 			if (member == NULL)
 				continue;
@@ -119,14 +117,12 @@ public:
 			if (!member->isPlayerCreature())
 				continue;
 
-			CreatureObject* memberPlayer = cast<CreatureObject*>( member.get());
-
-			if (!isValidGroupAbilityTarget(leader, memberPlayer, false))
+			if (!isValidGroupAbilityTarget(leader, member, false))
 				continue;
 
-			Locker clocker(memberPlayer, leader);
+			Locker clocker(member, leader);
 
-			sendCombatSpam(memberPlayer);
+			sendCombatSpam(member);
 
 			int woundsApplied = 0;
 			for (int j = 0; j < 9; j++) {
@@ -140,7 +136,7 @@ public:
 				if (totalWoundsApplied + woundsToApply > wounds[1])
 					woundsToApply = wounds[1] - totalWoundsApplied;
 
-				memberPlayer->addWounds(j, woundsToApply, true, false);
+				member->addWounds(j, woundsToApply, true, false);
 
 				woundsApplied += woundsToApply;
 				totalWoundsApplied += woundsToApply;
@@ -149,7 +145,7 @@ public:
 					break;
 			}
 
-			checkForTef(leader, memberPlayer);
+			checkForTef(leader, member);
 
 			if (totalWoundsApplied >= wounds[1])
 				break;
