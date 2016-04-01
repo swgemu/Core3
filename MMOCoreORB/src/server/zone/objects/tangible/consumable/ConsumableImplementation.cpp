@@ -266,8 +266,11 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 			int currentfilling = ghost->getFoodFilling();
 			ghost->setFoodFilling(round(currentfilling * (100 - nutrition) / 100.0f), true);
 		} else if (effect == "slow_dot" && player->getDamageOverTimeList() != NULL) {
-			player->getDamageOverTimeList()->multiplyAllDOTDurations ((100 - nutrition) / 100.f);
-			player->sendSystemMessage("@combat_effects:slow_dot_done"); // The remaining duration of DOTs affecting you have been reduced by %DI%.
+			float multiplier = (100 - nutrition) / 100.f;
+			player->getDamageOverTimeList()->multiplyAllDOTDurations(multiplier);
+			StringIdChatParameter params("@combat_effects:slow_dot_done"); // The remaining duration of DOTs affecting you have been reduced by %DI%.
+			params.setDI(multiplier);
+			player->sendSystemMessage(params);
 		}
 
 		break;
