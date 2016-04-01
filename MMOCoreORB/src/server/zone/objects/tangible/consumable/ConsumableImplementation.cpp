@@ -265,9 +265,11 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 			//Tilla till reduces food stomach filling by a percentage
 			int currentfilling = ghost->getFoodFilling();
 			ghost->setFoodFilling(round(currentfilling * (100 - nutrition) / 100.0f), true);
-		} else if (effect == "slow_dot" && player->getDamageOverTimeList() != NULL) {
-			player->getDamageOverTimeList()->multiplyAllDOTDurations ((100 - nutrition) / 100.f);
-			player->sendSystemMessage("@combat_effects:slow_dot_done"); // The remaining duration of DOTs affecting you have been reduced by %DI%.
+		} else if (effect == "slow_dot" && player->getDamageOverTimeList()->hasDot()) {
+			player->getDamageOverTimeList()->multiplyAllDOTDurations((100 - nutrition) / 100.f);
+			StringIdChatParameter params("@combat_effects:slow_dot_done"); // The remaining duration of DOTs affecting you have been reduced by %DI%.
+			params.setDI(nutrition);
+			player->sendSystemMessage(params);
 		}
 
 		break;
