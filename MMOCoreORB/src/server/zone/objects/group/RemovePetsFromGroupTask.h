@@ -50,10 +50,10 @@ public:
 			for (int i = 1; i < group->getGroupSize(); i++) {
 				ManagedReference<CreatureObject*> member = group->getGroupMember(i);
 
-				if (member->isPlayerCreature())
+				if (member->isPlayerCreature()) {
 					group->makeLeader(member);
-
-				break;
+					break;
+				}
 			}
 		}
 

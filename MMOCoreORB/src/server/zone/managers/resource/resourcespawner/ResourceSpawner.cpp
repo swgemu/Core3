@@ -651,11 +651,18 @@ Vector<String>& ResourceSpawner::getJtlResources() {
 bool ResourceSpawner::isRecycledResource(ResourceSpawn* resource) {
 	ResourceTreeEntry* entry = resourceTree->getEntry(resource->getType());
 
+	if (entry == NULL)
+		return false;
+
 	return entry->isRecycled();
 }
 
 ResourceSpawn* ResourceSpawner::getRecycledVersion(ResourceSpawn* resource) {
 	ResourceTreeEntry* startingEntry = resourceTree->getEntry(resource->getType());
+
+	if (startingEntry == NULL)
+		return NULL;
+
 	int recycleType = startingEntry->getRecycleToolType();
 
 	ResourceTreeEntry* recycledEntry = NULL;
