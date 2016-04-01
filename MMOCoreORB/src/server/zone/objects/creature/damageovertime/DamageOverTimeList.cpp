@@ -328,7 +328,6 @@ void DamageOverTimeList::clear(CreatureObject* creature) {
 
 void DamageOverTimeList::multiplyAllDOTDurations(float multiplier) {
 	Locker locker(&guard);
-	dot = false;
 
 	if(!hasDot())
 		return;

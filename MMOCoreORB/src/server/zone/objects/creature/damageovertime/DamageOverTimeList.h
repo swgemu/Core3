@@ -14,6 +14,7 @@
 class DamageOverTimeList : private VectorMap<uint64, Vector<DamageOverTime> > {
 protected:
 	Time nextTick;
+	// TODO: why is this boolean here? what purpose does it serve?
 	bool dot;
 	Mutex guard;
 public:

@@ -227,7 +227,6 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		Locker locker(buff);
 
 		setModifiers(buff, true);
-		//buff->parseSkillModifierString(generateModifierString());
 		break;
 	}
 
@@ -265,9 +264,11 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 			//Tilla till reduces food stomach filling by a percentage
 			int currentfilling = ghost->getFoodFilling();
 			ghost->setFoodFilling(round(currentfilling * (100 - nutrition) / 100.0f), true);
-		} else if (effect == "slow_dot" && player->getDamageOverTimeList() != NULL) {
-			player->getDamageOverTimeList()->multiplyAllDOTDurations ((100 - nutrition) / 100.f);
-			player->sendSystemMessage("@combat_effects:slow_dot_done"); // The remaining duration of DOTs affecting you have been reduced by %DI%.
+		} else if (effect == "slow_dot" && player->getDamageOverTimeList()->hasDot()) {
+			player->getDamageOverTimeList()->multiplyAllDOTDurations((100 - nutrition) / 100.f);
+			StringIdChatParameter params("@combat_effects:slow_dot_done"); // The remaining duration of DOTs affecting you have been reduced by %DI%.
+			params.setDI(nutrition);
+			player->sendSystemMessage(params);
 		}
 
 		break;
@@ -289,9 +290,9 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 	if (isDrink())
 		ghost->setDrinkFilling(ghost->getDrinkFilling() + filling, true);
 
-	StringIdChatParameter stringId("base_player", "prose_consume_item");
+	StringIdChatParameter stringId("base_player", "prose_consume_item"); // You consume %TT.
 	stringId.setTT(getObjectID());
-	player->sendSystemMessage(stringId);//player->sendSystemMessage("base_player", "prose_consume_item", objectID);
+	player->sendSystemMessage(stringId);
 
 	// Play the client effect sound depending on species/gender.
 	// Get the species.
@@ -322,7 +323,6 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 
 	}
 	//Consume a charge from the item, destroy it if it reaches 0 charges remaining.
-	//useCharge(player);
 	decreaseUseCount();
 
 	return 0;
