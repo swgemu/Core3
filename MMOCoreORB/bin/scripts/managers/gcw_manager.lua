@@ -1,8 +1,8 @@
 --frequency of sanity check in seconds
-gcwCheckTimer = 7200
+gcwCheckTimer = 3600
 
 --Amount of time in seconds that a base will be vulnerable
-vulnerabilityDuration = 10800  
+vulnerabilityDuration = 10800
 
 -- Amount of time in seconds between base vulnerabilities.  
 vulnerabilityFrequency = 172800
