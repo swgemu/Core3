@@ -39,7 +39,7 @@ nym_droideka = Creature:new {
 			}
 		}
 	},
-	defaultAttack = "creaturerangedattack",
+	defaultAttack = "attack",
 	defaultWeapon = "object/weapon/ranged/droid/droid_droideka_ranged.iff",
 }
 

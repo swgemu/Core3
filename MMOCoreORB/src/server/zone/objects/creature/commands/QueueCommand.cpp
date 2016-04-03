@@ -117,8 +117,15 @@ void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 er
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr, 0, 3, 0);
 		break;
-	case INVALIDWEAPON: // this only gets returned from combat commands
-		switch (creature->getWeapon()->getAttackType()) {
+	case INVALIDWEAPON: { // this only gets returned from combat commands
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+		int attackType = -1;
+
+		if (weapon != NULL) {
+			attackType = weapon->getAttackType();
+		}
+
+		switch (attackType) {
 		case WeaponObject::RANGEDATTACK:
 			creature->sendSystemMessage("@cbt_spam:no_attack_ranged_single");
 			break;
@@ -133,7 +140,7 @@ void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 er
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr);
 		break;
-
+	}
 	case TOOFAR:
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr, 0, 4, 0);

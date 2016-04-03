@@ -19,6 +19,7 @@ includeFile("weapon/creature_spit_spray_green.lua")
 includeFile("weapon/creature_spit_spray_red.lua")
 includeFile("weapon/creature_spit_spray_toxicgreen.lua")
 includeFile("weapon/creature_spit_spray_yellow.lua")
+includeFile("weapon/droid_probot_ranged.lua")
 
 -- npc weapons
 includeFile("weapon/groups/dark_trooper_weapons.lua")

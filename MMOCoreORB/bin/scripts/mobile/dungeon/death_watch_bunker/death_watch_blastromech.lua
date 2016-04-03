@@ -37,7 +37,7 @@ death_watch_blastromech = Creature:new {
 	},
 	conversationTemplate = "",
 	defaultWeapon = "object/weapon/ranged/droid/droid_astromech_ranged.iff",
-	defaultAttack = "creaturerangedattack",
+	defaultAttack = "attack",
 }
 
 CreatureTemplates:addCreatureTemplate(death_watch_blastromech, "death_watch_blastromech")

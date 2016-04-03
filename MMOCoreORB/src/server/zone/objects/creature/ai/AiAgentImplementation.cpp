@@ -168,6 +168,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	float maxDmg = npcTemplate->getDamageMax();
 	float speed = calculateAttackSpeed(level);
 	bool allowedWeapon = true;
+
 	if (petDeed != NULL) {
 		minDmg = petDeed->getMinDamage();
 		maxDmg = petDeed->getMaxDamage();
@@ -175,8 +176,10 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	}
 
 	Vector<WeaponObject*> weapons;
-	Vector<String> wepgroups = npcTemplate->getWeapons();
+
 	if (allowedWeapon) {
+		Vector<String> wepgroups = npcTemplate->getWeapons();
+
 		for (int i = 0; i < wepgroups.size(); ++i) {
 			Vector<String> weptemps = CreatureTemplateManager::instance()->getWeapons(wepgroups.get(i));
 
@@ -221,7 +224,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 		if (petDeed != NULL) {
 			defaultWeapon->setAttackSpeed(petDeed->getAttackSpeed());
-		} else if(isPet()){
+		} else if (isPet()) {
 			defaultWeapon->setAttackSpeed(speed);
 		}
 	}
@@ -254,6 +257,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		baseHAM.add(mind/10);
 		baseHAM.add(mind/10);
 	}
+
 	hamList.removeAll();
 	for (int i = 0; i < 9; ++i) {
 		hamList.add(baseHAM.get(i));
@@ -264,15 +268,14 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		maxHamList.add(baseHAM.get(i));
 	}
 
-
 	objectName = npcTemplate->getObjectName();
 
-	if(npcTemplate->getRandomNameType() != NameManagerType::TAG) {
+	if (npcTemplate->getRandomNameType() != NameManagerType::TAG) {
 		NameManager* nm = server->getNameManager();
 
 		int templSpecies = getSpecies();
 
-		if(!npcTemplate->getRandomNameTag()) {
+		if (!npcTemplate->getRandomNameTag()) {
 			setCustomObjectName(nm->makeCreatureName(npcTemplate->getRandomNameType(), templSpecies), false);
 		} else {
 			String newName = nm->makeCreatureName(npcTemplate->getRandomNameType(), templSpecies);

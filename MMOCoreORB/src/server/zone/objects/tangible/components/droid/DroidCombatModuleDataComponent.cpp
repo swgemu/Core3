@@ -93,8 +93,7 @@ void DroidCombatModuleDataComponent::copy(BaseDroidModuleComponent* other) {
 }
 
 void DroidCombatModuleDataComponent::initialize(DroidObject* droid) {
-	// create the weapons and set them on the droid
-	// also change the ham values
+	// calculate and set the weapon values
 	int maxHam = droid->getBaseHAM(0);
 	int minDmg = DroidMechanics::determineMinDamage(droid->getSpecies(), rating);
 	int maxDmg = DroidMechanics::determineMaxDamage(droid->getSpecies(), rating);
@@ -105,27 +104,4 @@ void DroidCombatModuleDataComponent::initialize(DroidObject* droid) {
 	droid->setMaxDamage(maxDmg);
 	droid->setMinDamage(minDmg);
 	droid->setAttackSpeed(speed);
-
-	// load correct weapon
-	if (droid->getSpecies() == DroidObject::R_SERIES) { // r-series are the ranged one users.
-		String weaponTemplate = "object/weapon/ranged/droid/droid_astromech_ranged.iff";
-
-		ManagedReference<WeaponObject*> weao = (droid->getZoneServer()->createObject(weaponTemplate.hashCode(), 1)).castTo<WeaponObject*>();
-		if (weao != NULL) {
-			ManagedReference<WeaponObject*> oldWeapon = droid->getSlottedObject("default_weapon").castTo<WeaponObject*>();
-
-			if (oldWeapon != NULL && oldWeapon->isPersistent()) {
-				Locker oldWeaponLocker(oldWeapon);
-				oldWeapon->destroyObjectFromDatabase(true);
-			}
-
-			droid->dropSlottedObject("default_weapon");
-
-			Locker locker(weao);
-
-			if (!droid->transferObject(weao, 4, false)) {
-				weao->destroyObjectFromDatabase(true);
-			}
-		}
-	}
 }

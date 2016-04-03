@@ -994,14 +994,14 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 	}
 }
 
-void PetControlDeviceImplementation::setDefaultCommands(){
-
+void PetControlDeviceImplementation::setDefaultCommands() {
 	trainedCommands.put(PetManager::STAY, "stay");
 	trainedCommands.put(PetManager::FOLLOW, "follow");
 	trainedCommands.put(PetManager::STORE, "store");
+
 	ManagedReference<DroidObject*> droid = this->controlledObject.get().castTo<DroidObject*>();
 	if (droid != NULL) {
-		if(droid->isCombatDroid()) {
+		if (droid->isCombatDroid()) {
 			trainedCommands.put(PetManager::ATTACK, "attack");
 			trainedCommands.put(PetManager::GUARD, "guard");
 		}
@@ -1009,6 +1009,7 @@ void PetControlDeviceImplementation::setDefaultCommands(){
 		trainedCommands.put(PetManager::ATTACK, "attack");
 		trainedCommands.put(PetManager::GUARD, "guard");
 	}
+
 	trainedCommands.put(PetManager::FRIEND, "friend");
 	trainedCommands.put(PetManager::FOLLOWOTHER, "followother");
 	trainedCommands.put(PetManager::PATROL, "patrol");
@@ -1016,17 +1017,20 @@ void PetControlDeviceImplementation::setDefaultCommands(){
 	trainedCommands.put(PetManager::CLEARPATROLPOINTS, "clearpatrolpoints");
 	trainedCommands.put(PetManager::FORMATION1, "formation1");
 	trainedCommands.put(PetManager::FORMATION2, "formation2");
-	if(droid != NULL) {
-		if(droid->isCombatDroid() && (droid->getSpecies() == DroidObject::R_SERIES || droid->getSpecies() == DroidObject::PROBOT))
+
+	if (droid != NULL) {
+		int species = droid->getSpecies();
+
+		if (droid->isCombatDroid() && (species == DroidObject::PROBOT || species == DroidObject::DZ70))
 			trainedCommands.put(PetManager::RANGED_ATTACK, "ranged attack");
 	} else {
 		trainedCommands.put(PetManager::RANGED_ATTACK, "ranged attack");
 	}
-	trainedCommands.put(PetManager::GROUP, "group");
 
+	trainedCommands.put(PetManager::GROUP, "group");
 }
 
-void PetControlDeviceImplementation::setTrainingCommand( unsigned int commandID ){
+void PetControlDeviceImplementation::setTrainingCommand(unsigned int commandID) {
 
 	// we set to 0 to flag completion so skip all this then.
 	if (commandID == 0) {
@@ -1039,25 +1043,25 @@ void PetControlDeviceImplementation::setTrainingCommand( unsigned int commandID 
 		return;
 
 	AiAgent* pet = cast<AiAgent*>(controlledObject.get());
-	if( pet == NULL )
+	if (pet == NULL)
 		return;
 
 	ManagedReference<CreatureObject*> owner = pet->getLinkedCreature().get();
 	if (owner == NULL || !owner->isPlayerCreature())
 		return;
 
-	if( petType == PetManager::DROIDPET) {
+	if (petType == PetManager::DROIDPET) {
 		ManagedReference<DroidObject*> droid = this->controlledObject.get().castTo<DroidObject*>();
 		if (droid == NULL)
 			return;
 
 		// Check power on droids
-		if( !droid->hasPower() ){
+		if (!droid->hasPower()) {
 			droid->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
 			return;
 		}
 
-		if(((commandID == PetManager::ATTACK || commandID == PetManager::GUARD) && !droid->isCombatDroid()) ||
+		if (((commandID == PetManager::ATTACK || commandID == PetManager::GUARD) && !droid->isCombatDroid()) ||
 			(commandID == PetManager::RANGED_ATTACK && (!droid->isCombatDroid() || !droid->hasRangedWeapon())) ||
 			(commandID == PetManager::RECHARGEOTHER && !droid->isPowerDroid()) ||
 			(commandID == PetManager::TRANSFER) ||
@@ -1068,8 +1072,8 @@ void PetControlDeviceImplementation::setTrainingCommand( unsigned int commandID 
 			return;
 		}
 	}
-	else if(petType == PetManager::CREATUREPET){
-		if(((commandID == PetManager::ATTACK || commandID == PetManager::FOLLOW || commandID == PetManager::STORE) && !owner->hasSkill("outdoors_creaturehandler_novice") ) ||
+	else if (petType == PetManager::CREATUREPET) {
+		if (((commandID == PetManager::ATTACK || commandID == PetManager::FOLLOW || commandID == PetManager::STORE) && !owner->hasSkill("outdoors_creaturehandler_novice") ) ||
 			(commandID == PetManager::STAY && !owner->hasSkill("outdoors_creaturehandler_training_01")) ||
 			(commandID == PetManager::GUARD && !owner->hasSkill("outdoors_creaturehandler_training_02")) ||
 			(commandID == PetManager::FRIEND && !owner->hasSkill("outdoors_creaturehandler_support_03")) ||
@@ -1086,8 +1090,8 @@ void PetControlDeviceImplementation::setTrainingCommand( unsigned int commandID 
 			(commandID == PetManager::RECHARGEOTHER))
 				return;
 	}
-	else if(petType == PetManager::FACTIONPET){
-		if(commandID == PetManager::RECHARGEOTHER ||
+	else if (petType == PetManager::FACTIONPET) {
+		if (commandID == PetManager::RECHARGEOTHER ||
 			(commandID == PetManager::TRANSFER) ||
 			(commandID == PetManager::SPECIAL_ATTACK1) ||
 			(commandID == PetManager::SPECIAL_ATTACK2) ||
@@ -1103,10 +1107,11 @@ void PetControlDeviceImplementation::setTrainingCommand( unsigned int commandID 
 		message << stf << ":start_convo_4";
 		StringIdChatParameter chat;
 		chat.setStringId(message.toString());
-		pet->getZoneServer()->getChatManager()->broadcastChatMessage(pet,chat,0,0,0);
+		pet->getZoneServer()->getChatManager()->broadcastChatMessage(pet, chat, 0, 0, 0);
 	} else {
 		pet->showFlyText("npc_reaction/flytext","alert", 204, 0, 0);  // "?"
 	}
+
 	trainingCommand = commandID;
 }
 
@@ -1126,7 +1131,7 @@ void PetControlDeviceImplementation::trainAsMount(CreatureObject* player) {
 		return;
 
 	AiAgent* pet = cast<AiAgent*>(controlledObject.get());
-	if( pet == NULL )
+	if (pet == NULL)
 		return;
 
 	assert(pet->isLockedByCurrentThread());
@@ -1149,6 +1154,7 @@ void PetControlDeviceImplementation::addPatrolPoint(PatrolPoint& point) {
 PatrolPoint PetControlDeviceImplementation::getPatrolPoint(int idx) {
 	return patrolPoints.get(idx);
 }
+
 bool PetControlDeviceImplementation::isValidPet(AiAgent* pet) {
 	PetDeed* deed = pet->getPetDeed();
 
@@ -1175,7 +1181,7 @@ void PetControlDeviceImplementation::setVitality(int vit) {
 			return;
 
 		CreatureObject* pet = cast<CreatureObject*>(controlledObject.get());
-		if(pet == NULL )
+		if (pet == NULL )
 			return;
 
 		float hamPenaltyModifier = 0;
@@ -1198,11 +1204,13 @@ void PetControlDeviceImplementation::setVitality(int vit) {
 			pet->setMaxHAM(0, pet->getMaxHAM(0) + change, true);
 			vitalityHealthPenalty = newVitalityHealthPenalty;
 		}
+
 		if (newVitalityActionPenalty != vitalityActionPenalty) {
 			int change = vitalityActionPenalty - newVitalityActionPenalty;
 			pet->setMaxHAM(3, pet->getMaxHAM(3) + change, true);
 			vitalityActionPenalty = newVitalityActionPenalty;
 		}
+
 		if (newVitalityMindPenalty != vitalityMindPenalty) {
 			int change = vitalityMindPenalty - newVitalityMindPenalty;
 			pet->setMaxHAM(6, pet->getMaxHAM(6) + change, true);
@@ -1210,5 +1218,3 @@ void PetControlDeviceImplementation::setVitality(int vit) {
 		}
 	}
 }
-
-

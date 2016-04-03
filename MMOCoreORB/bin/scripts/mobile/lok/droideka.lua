@@ -39,7 +39,7 @@ droideka = Creature:new {
 	},
 	conversationTemplate = "",
 	defaultWeapon = "object/weapon/ranged/droid/droid_droideka_ranged.iff",
-	defaultAttack = "creaturerangedattack",
+	defaultAttack = "attack",
 }
 
 CreatureTemplates:addCreatureTemplate(droideka, "droideka")

@@ -256,6 +256,10 @@ class DroidObject extends AiAgent {
 	@local
 	public native void initDroidModules();
 
+	@local
+	@preLocked
+	public native void initDroidWeapons();
+
 	/**
 	 * Returns a crafting station of the given type if droid has the appropriate module. Returns NULL otherwise.
 	 */

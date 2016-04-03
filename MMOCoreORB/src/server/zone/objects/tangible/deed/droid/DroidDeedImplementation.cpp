@@ -220,7 +220,6 @@ void DroidDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRes
 int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 
 	if (selectedID == 20) {
-
 		if (generated || !isASubChildOf(player))
 			return 1;
 
@@ -263,7 +262,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 			return 1;
 
 		CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
-		Reference<CreatureTemplate*> creatureTemplate =  creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
+		Reference<CreatureTemplate*> creatureTemplate =  creatureTemplateManager->getTemplate(mobileTemplate.hashCode());
 		if (creatureTemplate == NULL) {
 			player->sendSystemMessage("wrong droid template;mobileTemplate=[" + mobileTemplate + "]" );
 			return 1;
@@ -277,10 +276,10 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 		Locker locker(controlDevice);
 
-		Reference<CreatureObject*> creatureObject = creatureManager->createCreature(generatedObjectTemplate.hashCode(), true, mobileTemplate.hashCode() );
+		Reference<CreatureObject*> creatureObject = creatureManager->createCreature(generatedObjectTemplate.hashCode(), true, mobileTemplate.hashCode());
 		if (creatureObject == NULL) {
 			controlDevice->destroyObjectFromDatabase(true);
-			player->sendSystemMessage("wrong droid templates;mobileTemplate=[" + mobileTemplate + "];generatedObjectTemplate=[" + generatedObjectTemplate + "]" );
+			player->sendSystemMessage("wrong droid templates;mobileTemplate=[" + mobileTemplate + "];generatedObjectTemplate=[" + generatedObjectTemplate + "]");
 			return 1;
 		}
 
@@ -293,21 +292,21 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 			return 1;
 		}
 
-		droid->loadTemplateData( creatureTemplate );
+		droid->loadTemplateData(creatureTemplate);
 		droid->setCustomObjectName(StringIdManager::instance()->getStringId(*droid->getObjectName()), true);
 		droid->createChildObjects();
 		droid->setControlDevice(controlDevice);
 
-		float maxHam = DroidMechanics::determineHam(overallQuality,species);
+		float maxHam = DroidMechanics::determineHam(overallQuality, species);
 		for (int i = 0; i < 9; ++i) {
 			if (i % 3 == 0) {
-				droid->setBaseHAM(i,maxHam,false);
-				droid->setHAM(i,maxHam,false);
-				droid->setMaxHAM(i,maxHam,false);
+				droid->setBaseHAM(i, maxHam, false);
+				droid->setHAM(i, maxHam, false);
+				droid->setMaxHAM(i, maxHam, false);
 			} else {
-				droid->setBaseHAM(i,maxHam/10,false);
-				droid->setHAM(i,maxHam/10,false);
-				droid->setMaxHAM(i,maxHam/10,false);
+				droid->setBaseHAM(i, maxHam / 10, false);
+				droid->setHAM(i, maxHam / 10, false);
+				droid->setMaxHAM(i, maxHam / 10, false);
 			}
 		}
 
@@ -357,16 +356,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		}
 
 		droid->initDroidModules();
-
-		//Set weapon stats
-		WeaponObject* weapon = droid->getSlottedObject("default_weapon").castTo<WeaponObject*>();
-
-		if (weapon != NULL) {
-			Locker locker(weapon);
-			weapon->setMinDamage(droid->getDamageMin());
-			weapon->setMaxDamage(droid->getDamageMax());
-			weapon->setAttackSpeed(droid->getAttackSpeed());
-		}
+		droid->initDroidWeapons();
 
 		// Copy color customization from deed to droid
 		CustomizationVariables* customVars = getCustomizationVariables();
