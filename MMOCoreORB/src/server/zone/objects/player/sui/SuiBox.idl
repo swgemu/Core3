@@ -249,12 +249,12 @@ class SuiBox extends ManagedObject implements Logger {
 	public abstract boolean isSlicingBox() {
 		return false;
 	}
-	
+
 	public abstract boolean isCharacterBuilderBox() {
 		return false;
 	}
 
-	public boolean isColorPicker() {
+	public abstract boolean isColorPicker() {
 		return false;
 	}
 
@@ -263,7 +263,7 @@ class SuiBox extends ManagedObject implements Logger {
 	public native void setOtherButton(boolean value, final string backText);
 
 	public native void setOkButton(boolean value, final string okText);
-	
+
 	public native void setForceCloseDistance(float dist);
 
 	public native void setForceCloseDisabled();
