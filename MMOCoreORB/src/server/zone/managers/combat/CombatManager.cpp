@@ -2018,7 +2018,7 @@ void CombatManager::sendMitigationCombatSpam(CreatureObject* defender, TangibleO
 
 	switch (type) {
 	case PSG:
-		color = 0; //white, unconfirmed
+		color = 1; //green, confirmed
 		file = "cbt_spam";
 		stringName = "shield_damaged";
 		break;
@@ -2029,7 +2029,7 @@ void CombatManager::sendMitigationCombatSpam(CreatureObject* defender, TangibleO
 		item = NULL;
 		break;
 	case FORCEFEEDBACK:
-		color = 0; //white, unconfirmed
+		color = 2; //red, confirmed
 		file = "cbt_spam";
 		stringName = "forcefeedback_hit";
 		item = NULL;
@@ -2041,7 +2041,7 @@ void CombatManager::sendMitigationCombatSpam(CreatureObject* defender, TangibleO
 		item = NULL;
 		break;
 	case FORCEARMOR:
-		color = 0; //white, unconfirmed
+		color = 1; //green, confirmed
 		file = "cbt_spam";
 		stringName = "forcearmor_hit";
 		item = NULL;
