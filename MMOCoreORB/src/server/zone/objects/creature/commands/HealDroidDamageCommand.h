@@ -76,7 +76,7 @@ public:
 		}
 
 		if (!droid->isHealableBy(creature)) {
-			creature->sendSystemMessage("@healing:pvp_no_help"); //It would be unwise to help such a patient.
+			creature->sendSystemMessage("@error_message:droid_repair_opposite_faction"); //It would be unwise to repair a droid such as this.
 			return false;
 		}
 
