@@ -2018,7 +2018,7 @@ void CombatManager::sendMitigationCombatSpam(CreatureObject* defender, TangibleO
 
 	switch (type) {
 	case PSG:
-		color = 0; //white, unconfirmed
+		color = 1; //green, confirmed
 		file = "cbt_spam";
 		stringName = "shield_damaged";
 		break;
