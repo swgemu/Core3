@@ -518,10 +518,10 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 		//info("entering addDotState with CRC:" + String::valueOf(dotCRC), true);
 		float damMod = attacker->isAiAgent() ? cast<AiAgent*>(attacker)->getSpecialDamageMult() : 1.f;
 		defender->addDotState(attacker, dotType, data.getCommand()->getNameCRC(),
-				effect.isDotDamageofHit() ? damageToApply * effect.getPrimaryPercent() / 100.0f 
+				effect.isDotDamageofHit() ? damageToApply * effect.getPrimaryPercent() / 100.0f
 					: effect.getDotStrength() * damMod,
 				pool, effect.getDotDuration(), potency, resist,
-				effect.isDotDamageofHit() ? damageToApply * effect.getSecondaryPercent() / 100.0f 
+				effect.isDotDamageofHit() ? damageToApply * effect.getSecondaryPercent() / 100.0f
 					: effect.getDotStrength() * damMod);
 	}
 }
@@ -561,9 +561,9 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 		if (defender->hasDotImmunity(type))
 			continue;
 
-		if (weapon->getDotPotency(i)*(1.f-resist/100.f) > System::random(100) && 
-			defender->addDotState(attacker, type, weapon->getObjectID(), 
-								  weapon->getDotStrength(i), weapon->getDotAttribute(i), 
+		if (weapon->getDotPotency(i)*(1.f-resist/100.f) > System::random(100) &&
+			defender->addDotState(attacker, type, weapon->getObjectID(),
+								  weapon->getDotStrength(i), weapon->getDotAttribute(i),
 								  weapon->getDotDuration(i), -1, 0,
 								  (int)(weapon->getDotStrength(i)/5.f)) > 0) // Unresisted, reduce use count.
 			if (weapon->getDotUses(i) > 0) weapon->setDotUses(weapon->getDotUses(i) - 1, i);
@@ -809,11 +809,14 @@ float CombatManager::getDefenderToughnessModifier(CreatureObject* defender, int 
 	if (damType != WeaponObject::LIGHTSABER && jediToughness > 0)
 		damage *= 1.f - (jediToughness / 100.f);
 
+	int jediBonus = defender->getSkillMod("saber_block");
 	float foodMitigatedDamage = damage;
-	int foodBonus = defender->getSkillMod("mitigate_damage");
-	if (foodBonus > 0) {
-		damage *= 1.f - (foodBonus / 100.f);
-		foodMitigation.add((int)(foodMitigatedDamage -= damage)); //save value for later combat spam
+	if (((jediBonus > 0) && (!defender->getWeapon()->isJediWeapon())) || (jediBonus <= 0)) {
+		int foodBonus = defender->getSkillMod("mitigate_damage");
+		if (foodBonus > 0) {
+			damage *= 1.f - (foodBonus / 100.f);
+			foodMitigation.add((int)(foodMitigatedDamage -= damage)); //save value for later combat spam
+		}
 	}
 
 	return damage < 0 ? 0 : damage;
@@ -1314,7 +1317,7 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 		} else {
 			// player
 			static uint8 bodyHitLocations[] = {HIT_BODY, HIT_BODY, HIT_LARM, HIT_RARM};
-			
+
 			ArmorObject* healthArmor = getArmorObject(defender, bodyHitLocations[System::random(3)]);
 			ArmorObject* mindArmor = getArmorObject(defender, HIT_HEAD);
 			ArmorObject* actionArmor = getArmorObject(defender, HIT_LLEG); // This hits both the pants and feet regardless
@@ -2018,18 +2021,18 @@ void CombatManager::sendMitigationCombatSpam(CreatureObject* defender, TangibleO
 
 	switch (type) {
 	case PSG:
-		color = 0; //white, unconfirmed
+		color = 1; //green, confirmed
 		file = "cbt_spam";
 		stringName = "shield_damaged";
 		break;
 	case FORCESHIELD:
-		color = 0; //white, unconfirmed
+		color = 1; //green, unconfirmed
 		file = "cbt_spam";
 		stringName = "forceshield_hit";
 		item = NULL;
 		break;
 	case FORCEFEEDBACK:
-		color = 0; //white, unconfirmed
+		color = 2; //red, confirmed
 		file = "cbt_spam";
 		stringName = "forcefeedback_hit";
 		item = NULL;
@@ -2041,7 +2044,7 @@ void CombatManager::sendMitigationCombatSpam(CreatureObject* defender, TangibleO
 		item = NULL;
 		break;
 	case FORCEARMOR:
-		color = 0; //white, unconfirmed
+		color = 1; //green, confirmed
 		file = "cbt_spam";
 		stringName = "forcearmor_hit";
 		item = NULL;
