@@ -66,7 +66,7 @@ public:
 		}
 
 		if (stimPack == NULL) {
-			creature->sendSystemMessage("No valid droid repair kit found.");
+			creature->sendSystemMessage("@error_message:droid_repair_no_damage_kit"); //No valid droid damage repair kit was found in your inventory.
 			return false;
 		}
 
@@ -81,9 +81,9 @@ public:
 		}
 
 		if (!droid->hasDamage(CreatureAttribute::HEALTH) && !droid->hasDamage(CreatureAttribute::ACTION) && !droid->hasDamage(CreatureAttribute::MIND)) {
-			StringBuffer message;
-			message << droid->getDisplayedName() << " has no damage to heal.";
-			creature->sendSystemMessage(message.toString());
+			StringIdChatParameter stringId("error_message", "droid_repair_no_damage"); // It appears %TO has no damage to repair.
+			stringId.setTO(droid);
+			creature->sendSystemMessage(stringId);
 			return false;
 		}
 
@@ -116,6 +116,11 @@ public:
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
+		if (!creature->hasSkill("crafting_droidengineer_novice")) {
+			creature->sendSystemMessage("@error_message:droid_repair_not_droid_engineer"); //You must be a droid engineer to use this tool kit.
+			return GENERALERROR;
+		}
+
 		int result = doCommonMedicalCommandChecks(creature);
 
 		if (result != SUCCESS)
@@ -123,8 +128,11 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL || !object->isDroidObject()) {
-			creature->sendSystemMessage("Invalid Target.");
+		if (object == NULL) {
+			creature->sendSystemMessage("@error_message:droid_repair_no_target"); //You must target a droid pet to use these tools.
+			return GENERALERROR;
+		} else if (!object->isDroidObject()) {
+			creature->sendSystemMessage("@error_message:droid_repair_target_not_droid"); //Your target is not able to be repaired with these tools.
 			return GENERALERROR;
 		}
 
@@ -132,10 +140,8 @@ public:
 
 		Locker clocker(droid, creature);
 
-		if (!droid->isPet() || droid->isDead() || droid->isAttackableBy(creature)) {
-			creature->sendSystemMessage("Invalid Target.");
-			return GENERALERROR;
-		}
+		if (!droid->isPet() || droid->isDead() || droid->isAttackableBy(creature))
+			return INVALIDTARGET;
 
 		if(!checkDistance(creature, droid, range))
 			return TOOFAR;
