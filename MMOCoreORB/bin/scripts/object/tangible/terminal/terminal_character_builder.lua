@@ -58,7 +58,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 
 	glowyBadgeIds = {12, 14, 15, 16, 17, 19, 20, 21, 23, 30, 38, 39, 71, 105, 106, 107},
 
-	itemList = {
+	itemList = { --[[
 		"Character Options",
 		{
 			"Learn Skill",
@@ -2862,7 +2862,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				"Protective Liquid Coating", "object/tangible/loot/dungeon/death_watch_bunker/emulsion_protection.iff",
 				"Binary Liquid", "object/tangible/loot/dungeon/death_watch_bunker/binary_liquid.iff"
 			}
-		}
+		}--]]
 	}
 }
 
