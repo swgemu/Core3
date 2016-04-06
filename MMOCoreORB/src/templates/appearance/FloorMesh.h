@@ -10,8 +10,8 @@
 
 #include "engine/engine.h"
 #include "templates/IffTemplate.h"
-#include "PathNode.h"
-#include "PathGraph.h"
+#include "templates/appearance/PathNode.h"
+#include "templates/appearance/PathGraph.h"
 
 class PortalLayout;
 

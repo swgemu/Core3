@@ -1,9 +1,9 @@
 #include "CellProperty.h"
 
 #include "server/zone/managers/templates/TemplateManager.h"
-#include "MeshAppearanceTemplate.h"
-#include "PathNode.h"
-#include "FloorMesh.h"
+#include "templates/appearance/MeshAppearanceTemplate.h"
+#include "templates/appearance/PathNode.h"
+#include "templates/appearance/FloorMesh.h"
 #include "engine/util/u3d/AStarAlgorithm.h"
 
 CellProperty::CellProperty() : Object(), Logger("CellProperty"), canSeeParentCell(false), numberOfPortals(0),

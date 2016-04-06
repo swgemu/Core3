@@ -27,8 +27,8 @@
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
 
-#include "server/zone/templates/appearance/MeshAppearanceTemplate.h"
-#include "server/zone/templates/appearance/PortalLayout.h"
+#include "templates/appearance/MeshAppearanceTemplate.h"
+#include "templates/appearance/PortalLayout.h"
 #include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
 #include "server/zone/managers/city/PayPropertyTaxTask.h"
 

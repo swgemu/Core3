@@ -10,7 +10,7 @@
 
 #include "TemplateVariable.h"
 #include "TargaBitmap.h"
-#include "server/zone/managers/templates/DataArchiveStore.h"
+#include "templates/manager/DataArchiveStore.h"
 
 class BitMapFamily : public TemplateVariable<'MFAM'> {
 	int var1;

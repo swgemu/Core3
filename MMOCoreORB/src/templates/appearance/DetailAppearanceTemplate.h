@@ -9,7 +9,7 @@
 #define DETAILAPPEARANCETEMPLATE_H_
 
 #include "engine/engine.h"
-#include "AppearanceTemplate.h"
+#include "templates/appearance/AppearanceTemplate.h"
 
 class DetailAppearanceTemplate : public AppearanceTemplate {
 	AppearanceTemplate* firstMesh;

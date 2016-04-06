@@ -9,7 +9,7 @@
 #define COMPONENTAPPEARANCETEMPLATE_H_
 
 #include "engine/engine.h"
-#include "AppearanceTemplate.h"
+#include "templates/appearance/AppearanceTemplate.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 
 class ComponentAppearanceTemplate : public AppearanceTemplate {

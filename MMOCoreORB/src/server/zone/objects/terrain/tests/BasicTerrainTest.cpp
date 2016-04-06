@@ -8,7 +8,7 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 
-#include "server/zone/managers/templates/DataArchiveStore.h"
+#include "templates/manager/DataArchiveStore.h"
 #include "server/zone/objects/terrain/ProceduralTerrainAppearance.h"
 #include "server/zone/objects/terrain/SpaceTerrainAppearance.h"
 #include "server/zone/objects/terrain/TargaBitmap.h"

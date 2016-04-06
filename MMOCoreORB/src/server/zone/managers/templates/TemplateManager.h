@@ -20,8 +20,8 @@
 
 #include "tre3/TreeArchive.h"
 
-#include "PlanetMapCategoryList.h"
-#include "PlanetMapCategory.h"
+#include "templates/manager/PlanetMapCategoryList.h"
+#include "templates/manager/PlanetMapCategory.h"
 
 class TemplateCRCMap;
 class ClientTemplateCRCMap;

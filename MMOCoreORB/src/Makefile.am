@@ -806,7 +806,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/terrain/TerrainManager.cpp \
 		server/zone/managers/terrain/TerrainCache.cpp \
 		server/zone/managers/templates/TemplateManager.cpp \
-		server/zone/managers/templates/DataArchiveStore.cpp \
+		templates/manager/DataArchiveStore.cpp \
 		server/zone/managers/mission/MissionManagerImplementation.cpp \
 		server/zone/managers/mission/spawnmaps/MissionNpcSpawnMap.cpp \
 		server/zone/managers/mission/spawnmaps/NpcSpawnPoint.cpp \
@@ -865,12 +865,12 @@ core3_SOURCES =	$(core3_IDLS) \
 		templates/datatables/DataTableCell.cpp \
 		templates/snapshot/WorldSnapshotIff.cpp \
 		server/zone/templates/SharedTangibleObjectTemplate.cpp \
-		server/zone/templates/appearance/FloorMesh.cpp \
-		server/zone/templates/appearance/CellProperty.cpp \
-		server/zone/templates/appearance/MeshAppearanceTemplate.cpp \
-		server/zone/templates/appearance/DetailAppearanceTemplate.cpp \
-		server/zone/templates/appearance/PortalLayout.cpp \
-		server/zone/templates/appearance/PathGraph.cpp \
+		templates/appearance/FloorMesh.cpp \
+		templates/appearance/CellProperty.cpp \
+		templates/appearance/MeshAppearanceTemplate.cpp \
+		templates/appearance/DetailAppearanceTemplate.cpp \
+		templates/appearance/PortalLayout.cpp \
+		templates/appearance/PathGraph.cpp \
 		server/zone/templates/intangible/DraftSchematicObjectTemplate.cpp \
 		server/zone/templates/SharedObjectTemplate.cpp \
 		templates/params/PaletteColorCustomizationVariables.cpp \

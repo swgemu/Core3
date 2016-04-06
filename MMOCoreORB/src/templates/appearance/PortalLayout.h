@@ -9,7 +9,7 @@
 #define PORTALLAYOUT_H_
 
 #include "templates/IffTemplate.h"
-#include "CellProperty.h"
+#include "templates/appearance/CellProperty.h"
 
 class MeshAppearanceTemplate;
 class PathNode;

@@ -45,7 +45,7 @@
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "templates/ChildObject.h"
-#include "server/zone/templates/appearance/MeshAppearanceTemplate.h"
+#include "templates/appearance/MeshAppearanceTemplate.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/objects/scene/components/ZoneComponent.h"
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"

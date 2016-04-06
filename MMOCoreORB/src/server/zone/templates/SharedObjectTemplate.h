@@ -13,7 +13,7 @@
 #include "templates/LuaTemplate.h"
 #include "templates/IffTemplate.h"
 #include "templates/ChildObject.h"
-#include "server/zone/managers/templates/PlanetMapCategory.h"
+#include "templates/manager/PlanetMapCategory.h"
 #include "templates/slots/SlotDescriptor.h"
 #include "templates/slots/ArrangementDescriptor.h"
 #include "server/zone/objects/scene/components/SceneObjectComponent.h"

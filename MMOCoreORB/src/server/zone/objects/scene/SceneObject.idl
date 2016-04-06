@@ -43,7 +43,7 @@ include server.zone.objects.scene.TransferErrorCode;
 include server.zone.objects.scene.variables.PendingTasksMap;
 include server.zone.objects.scene.SessionFacadeType;
 include server.zone.objects.scene.ObserverType;
-include server.zone.managers.templates.PlanetMapCategory;
+include templates.manager.PlanetMapCategory;
 include server.zone.managers.templates.TemplateManager;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.area.ActiveArea;

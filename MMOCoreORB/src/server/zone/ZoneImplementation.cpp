@@ -19,9 +19,9 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/templates/SharedObjectTemplate.h"
-#include "server/zone/templates/appearance/PortalLayout.h"
-#include "server/zone/templates/appearance/FloorMesh.h"
-#include "server/zone/templates/appearance/PathGraph.h"
+#include "templates/appearance/PortalLayout.h"
+#include "templates/appearance/FloorMesh.h"
+#include "templates/appearance/PathGraph.h"
 
 #include "server/zone/managers/structure/StructureManager.h"
 

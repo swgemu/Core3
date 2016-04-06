@@ -7,7 +7,7 @@
 
 #include "engine/engine.h"
 
-#include "server/zone/managers/templates/PlanetMapCategory.h"
+#include "templates/manager/PlanetMapCategory.h"
 #include "server/zone/managers/planet/MapLocationTable.h"
 #include "server/zone/managers/planet/MapLocationEntry.h"
 #include "server/zone/managers/templates/TemplateManager.h"

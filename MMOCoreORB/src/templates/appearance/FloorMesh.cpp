@@ -7,7 +7,7 @@
 
 #include "FloorMesh.h"
 
-#include "MeshAppearanceTemplate.h"
+#include "templates/appearance/MeshAppearanceTemplate.h"
 
 void FloorMeshTriangleNode::readObject(IffStream* iffStream) {
 	int pointA = iffStream->getInt();

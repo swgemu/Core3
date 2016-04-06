@@ -6,7 +6,7 @@
  */
 
 #include "MapLocationTable.h"
-#include "server/zone/managers/templates/PlanetMapCategory.h"
+#include "templates/manager/PlanetMapCategory.h"
 #include "server/zone/objects/scene/SceneObject.h"
 
 void MapLocationTable::transferObject(SceneObject* object) {

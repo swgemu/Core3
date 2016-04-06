@@ -9,7 +9,7 @@
 #include "gmock/gmock.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
-#include "server/zone/managers/templates/DataArchiveStore.h"
+#include "templates/manager/DataArchiveStore.h"
 #include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
 #include "server/zone/managers/objectcontroller/command/CommandList.h"
 #include "server/conf/ConfigManager.h"

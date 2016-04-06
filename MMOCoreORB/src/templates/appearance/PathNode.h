@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-#include "PathEdge.h"
+#include "templates/appearance/PathEdge.h"
 
 class PathGraph;
 

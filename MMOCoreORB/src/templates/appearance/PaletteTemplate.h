@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-#include "PaletteColor.h"
+#include "templates/appearance/PaletteColor.h"
 
 class PaletteTemplate : public Object {
 	Vector<PaletteColor> colors;

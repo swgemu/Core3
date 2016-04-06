@@ -7,7 +7,7 @@
 
 #include "TemplateManager.h"
 #include "TemplateCRCMap.h"
-#include "PortalLayoutMap.h"
+#include "templates/manager/PortalLayoutMap.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 #include "server/zone/templates/intangible/SharedConstructionContractObjectTemplate.h"
@@ -99,18 +99,17 @@
 
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "templates/customization/AssetCustomizationManagerTemplate.h"
-#include "server/zone/templates/appearance/PortalLayout.h"
-#include "server/zone/templates/appearance/PaletteTemplate.h"
-#include "server/zone/templates/appearance/AppearanceRedirect.h"
-#include "server/zone/templates/appearance/FloorMesh.h"
-#include "server/zone/templates/appearance/MeshAppearanceTemplate.h"
-#include "server/zone/templates/appearance/DetailAppearanceTemplate.h"
-#include "server/zone/templates/appearance/ComponentAppearanceTemplate.h"
+#include "templates/appearance/PortalLayout.h"
+#include "templates/appearance/PaletteTemplate.h"
+#include "templates/appearance/AppearanceRedirect.h"
+#include "templates/appearance/FloorMesh.h"
+#include "templates/appearance/MeshAppearanceTemplate.h"
+#include "templates/appearance/DetailAppearanceTemplate.h"
+#include "templates/appearance/ComponentAppearanceTemplate.h"
 #include "templates/footprint/StructureFootprint.h"
 #include "templates/slots/SlotId.h"
 #include "server/zone/managers/customization/CustomizationIdManager.h"
@@ -124,7 +123,7 @@
 
 #include "server/conf/ConfigManager.h"
 
-#include "DataArchiveStore.h"
+#include "templates/manager/DataArchiveStore.h"
 
 Lua* TemplateManager::luaTemplatesInstance = NULL;
 
