@@ -13,47 +13,47 @@ void GeneticComponentImplementation::initializeTransientMembers() {
 }
 
 void GeneticComponentImplementation::resetResists(CraftingValues* values) {
-	if (stunResist > 0 && !isSpecialResist(WeaponObject::STUN)) {
+	if (stunResist > 0 && !isSpecialResist(SharedWeaponObjectTemplate::STUN)) {
 		stunResist = 0;
 		values->setCurrentValue("dna_comp_armor_stun", 0);
 		values->setCurrentPercentage("dna_comp_armor_stun",0);
 	}
-	if (kinResist > 0  && !isSpecialResist(WeaponObject::KINETIC)) {
+	if (kinResist > 0  && !isSpecialResist(SharedWeaponObjectTemplate::KINETIC)) {
 		kinResist = 0;
 		values->setCurrentValue("dna_comp_armor_kinetic", 0);
 		values->setCurrentPercentage("dna_comp_armor_kinetic",0);
 	}
-	if (saberResist > 0 && !isSpecialResist(WeaponObject::LIGHTSABER)) {
+	if (saberResist > 0 && !isSpecialResist(SharedWeaponObjectTemplate::LIGHTSABER)) {
 		saberResist = 0;
 		values->setCurrentValue("dna_comp_armor_saber", 0);
 		values->setCurrentPercentage("dna_comp_armor_saber",0);
 	}
-	if (elecResist > 0 && !isSpecialResist(WeaponObject::ELECTRICITY)){
+	if (elecResist > 0 && !isSpecialResist(SharedWeaponObjectTemplate::ELECTRICITY)){
 		elecResist = 0;
 		values->setCurrentValue("dna_comp_armor_electric", 0);
 		values->setCurrentPercentage("dna_comp_armor_electric",0);
 	}
-	if (acidResist > 0 && !isSpecialResist(WeaponObject::ACID)) {
+	if (acidResist > 0 && !isSpecialResist(SharedWeaponObjectTemplate::ACID)) {
 		acidResist = 0;
 		values->setCurrentValue("dna_comp_armor_acid", 0);
 		values->setCurrentPercentage("dna_comp_armor_acid",0);
 	}
-	if (coldResist > 0 && !isSpecialResist(WeaponObject::COLD)) {
+	if (coldResist > 0 && !isSpecialResist(SharedWeaponObjectTemplate::COLD)) {
 		coldResist = 0;
 		values->setCurrentValue("dna_comp_armor_cold", 0);
 		values->setCurrentPercentage("dna_comp_armor_cold",0);
 	}
-	if (heatResist > 0 && !isSpecialResist(WeaponObject::HEAT)) {
+	if (heatResist > 0 && !isSpecialResist(SharedWeaponObjectTemplate::HEAT)) {
 		heatResist = 0;
 		values->setCurrentValue("dna_comp_armor_heat", 0);
 		values->setCurrentPercentage("dna_comp_armor_heat",0);
 	}
-	if (blastResist > 0 && !isSpecialResist(WeaponObject::BLAST)) {
+	if (blastResist > 0 && !isSpecialResist(SharedWeaponObjectTemplate::BLAST)) {
 		blastResist = 0;
 		values->setCurrentValue("dna_comp_armor_blast", 0);
 		values->setCurrentPercentage("dna_comp_armor_blast",0);
 	}
-	if (energyResist > 0 && !isSpecialResist(WeaponObject::ENERGY)) {
+	if (energyResist > 0 && !isSpecialResist(SharedWeaponObjectTemplate::ENERGY)) {
 		energyResist = 0;
 		values->setCurrentValue("dna_comp_armor_energy", 0);
 		values->setCurrentPercentage("dna_comp_armor_energy",0);
@@ -83,23 +83,23 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 	stunResist = values->getCurrentValue("dna_comp_armor_stun");
 	saberResist = values->getCurrentValue("dna_comp_armor_saber");
 	if (values->getCurrentValue("kineticeffectiveness") > 0)
-		setSpecialResist(WeaponObject::KINETIC);
+		setSpecialResist(SharedWeaponObjectTemplate::KINETIC);
 	if (values->getCurrentValue("blasteffectiveness") > 0)
-		setSpecialResist(WeaponObject::BLAST);
+		setSpecialResist(SharedWeaponObjectTemplate::BLAST);
 	if (values->getCurrentValue("energyeffectiveness") > 0)
-		setSpecialResist(WeaponObject::ENERGY);
+		setSpecialResist(SharedWeaponObjectTemplate::ENERGY);
 	if (values->getCurrentValue("heateffectiveness") > 0)
-		setSpecialResist(WeaponObject::HEAT);
+		setSpecialResist(SharedWeaponObjectTemplate::HEAT);
 	if (values->getCurrentValue("coldeffectiveness") > 0)
-		setSpecialResist(WeaponObject::COLD);
+		setSpecialResist(SharedWeaponObjectTemplate::COLD);
 	if (values->getCurrentValue("electricityeffectiveness") > 0)
-		setSpecialResist(WeaponObject::ELECTRICITY);
+		setSpecialResist(SharedWeaponObjectTemplate::ELECTRICITY);
 	if (values->getCurrentValue("acideffectiveness") > 0)
-		setSpecialResist(WeaponObject::ACID);
+		setSpecialResist(SharedWeaponObjectTemplate::ACID);
 	if (values->getCurrentValue("stuneffectiveness") > 0)
-		setSpecialResist(WeaponObject::STUN);
+		setSpecialResist(SharedWeaponObjectTemplate::STUN);
 	if (values->getCurrentValue("lightsabereffectiveness") > 0)
-		setSpecialResist(WeaponObject::LIGHTSABER);
+		setSpecialResist(SharedWeaponObjectTemplate::LIGHTSABER);
 
 	if (fortitude > 500) {
 		armorRating = 1;

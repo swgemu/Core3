@@ -36,23 +36,23 @@ void ArmorComponentImplementation::updateCraftingValues(CraftingValues* values, 
 	int specialResists = values->getCurrentValue("armor_special_type");
 
 	if(specialResists != CraftingValues::VALUENOTFOUND) {
-		if (specialResists & WeaponObject::KINETIC)
+		if (specialResists & SharedWeaponObjectTemplate::KINETIC)
 			addProperty("kineticeffectiveness", specialbase + kinetic, 10, expProp);
-		if (specialResists & WeaponObject::ENERGY)
+		if (specialResists & SharedWeaponObjectTemplate::ENERGY)
 			addProperty("energyeffectiveness", specialbase + energy, 10, expProp);
-		if (specialResists & WeaponObject::BLAST)
+		if (specialResists & SharedWeaponObjectTemplate::BLAST)
 			addProperty("blasteffectiveness", specialbase + blast, 10, expProp);
-		if (specialResists & WeaponObject::STUN)
+		if (specialResists & SharedWeaponObjectTemplate::STUN)
 			addProperty("stuneffectiveness", specialbase + stun, 10, expProp);
-		if (specialResists & WeaponObject::LIGHTSABER)
+		if (specialResists & SharedWeaponObjectTemplate::LIGHTSABER)
 			addProperty("restraineffectiveness", specialbase + lightSaber, 10, expProp);
-		if (specialResists & WeaponObject::HEAT)
+		if (specialResists & SharedWeaponObjectTemplate::HEAT)
 			addProperty("heateffectiveness", specialbase + heat, 10, expProp);
-		if (specialResists & WeaponObject::COLD)
+		if (specialResists & SharedWeaponObjectTemplate::COLD)
 			addProperty("coldeffectiveness", specialbase + cold, 10, expProp);
-		if (specialResists & WeaponObject::ACID)
+		if (specialResists & SharedWeaponObjectTemplate::ACID)
 			addProperty("acideffectiveness", specialbase + acid, 10, expProp);
-		if (specialResists & WeaponObject::ELECTRICITY)
+		if (specialResists & SharedWeaponObjectTemplate::ELECTRICITY)
 			addProperty("electricaleffectiveness", specialbase + electricity, 10, expProp);
 	}
 }
@@ -76,31 +76,31 @@ void ArmorComponentImplementation::calculateSpecialProtection(CraftingValues* cr
 String ArmorComponentImplementation::getStringType(int type) {
 
 	switch(type) {
-	case WeaponObject::KINETIC:
+	case SharedWeaponObjectTemplate::KINETIC:
 		return "kineticeffectiveness";
 		break;
-	case WeaponObject::ENERGY:
+	case SharedWeaponObjectTemplate::ENERGY:
 		return "energyeffectiveness";
 	break;
-	case WeaponObject::ELECTRICITY:
+	case SharedWeaponObjectTemplate::ELECTRICITY:
 		return "electricaleffectiveness";
 		break;
-	case WeaponObject::STUN:
+	case SharedWeaponObjectTemplate::STUN:
 		return "stuneffectiveness";
 		break;
-	case WeaponObject::BLAST:
+	case SharedWeaponObjectTemplate::BLAST:
 		return "blasteffectiveness";
 		break;
-	case WeaponObject::HEAT:
+	case SharedWeaponObjectTemplate::HEAT:
 		return "heateffectiveness";
 		break;
-	case WeaponObject::COLD:
+	case SharedWeaponObjectTemplate::COLD:
 		return "coldeffectiveness";
 		break;
-	case WeaponObject::ACID:
+	case SharedWeaponObjectTemplate::ACID:
 		return "acideffectiveness";
 		break;
-	case WeaponObject::LIGHTSABER:
+	case SharedWeaponObjectTemplate::LIGHTSABER:
 		return "restraineffectiveness";
 		break;
 	default:
@@ -110,22 +110,22 @@ String ArmorComponentImplementation::getStringType(int type) {
 
 void ArmorComponentImplementation::setProtectionValue(int type, float value) {
 
-	if (type & WeaponObject::KINETIC)
+	if (type & SharedWeaponObjectTemplate::KINETIC)
 		setKinetic(value);
-	if (type & WeaponObject::ENERGY)
+	if (type & SharedWeaponObjectTemplate::ENERGY)
 		setEnergy(value);
-	if (type & WeaponObject::BLAST)
+	if (type & SharedWeaponObjectTemplate::BLAST)
 		setBlast(value);
-	if (type & WeaponObject::STUN)
+	if (type & SharedWeaponObjectTemplate::STUN)
 		setStun(value);
-	if (type & WeaponObject::LIGHTSABER)
+	if (type & SharedWeaponObjectTemplate::LIGHTSABER)
 		setLightSaber(value);
-	if (type & WeaponObject::HEAT)
+	if (type & SharedWeaponObjectTemplate::HEAT)
 		setHeat(value);
-	if (type & WeaponObject::COLD)
+	if (type & SharedWeaponObjectTemplate::COLD)
 		setCold(value);
-	if (type & WeaponObject::ACID)
+	if (type & SharedWeaponObjectTemplate::ACID)
 		setAcid(value);
-	if (type & WeaponObject::ELECTRICITY)
+	if (type & SharedWeaponObjectTemplate::ELECTRICITY)
 		setElectricity(value);
 }

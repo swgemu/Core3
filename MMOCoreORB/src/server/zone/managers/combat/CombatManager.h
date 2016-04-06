@@ -46,31 +46,8 @@ public:
 	const static int MIND = 4;
 	const static int RANDOM = 8;
 
-	const static int ANYWEAPON = 0xFFFFFFFF;
-	const static int THROWNWEAPON = 0x1;
-	const static int HEAVYWEAPON = 0x2;
-	const static int MINEWEAPON = 0x4;
-	const static int SPECIALHEAVYWEAPON = 0x8;
-	const static int UNARMEDWEAPON = 0x10;
-	const static int ONEHANDMELEEWEAPON = 0x20;
-	const static int TWOHANDMELEEWEAPON = 0x40;
-	const static int POLEARMWEAPON = 0x80;
-	const static int PISTOLWEAPON = 0x100;
-	const static int CARBINEWEAPON = 0x200;
-	const static int RIFLEWEAPON = 0x400;
-	const static int GRENADEWEAPON = 0x800;
-	const static int LIGHTNINGRIFLEWEAPON = 0x1000;
-	const static int ONEHANDJEDIWEAPON = 0x2000;
-	const static int TWOHANDJEDIWEAPON = 0x4000;
-	const static int POLEARMJEDIWEAPON = 0x8000;
-
 	// hitLocations
 	enum HitLocations { HIT_NONE, HIT_BODY, HIT_LARM, HIT_RARM, HIT_LLEG, HIT_RLEG, HIT_HEAD };
-
-	// multiple weapon type scenarios
-	const static int MELEEWEAPON = 0xF0;
-	const static int RANGEDWEAPON = 0x1F0B; // these are all weapons derived from ranged in the client
-	const static int JEDIWEAPON = 0xE000;
 
 	//Mitigation types
 	const static int PSG = 0x1;
@@ -81,9 +58,7 @@ public:
 	const static int ARMOR = 0x6;
 	const static int FOOD = 0x7;
 
-	// does not need to be bitmasked, these are just used so we know if we use a weapon or not in a command (not a bool for extensibility)
-	const static int WEAPONATTACK = 0x0;
-	const static int FORCEATTACK = 0x1;
+
 
 	Vector<uint32> defaultMeleeAttacks;
 	Vector<uint32> defaultRangedAttacks;

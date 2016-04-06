@@ -126,10 +126,10 @@ void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 er
 		}
 
 		switch (attackType) {
-		case WeaponObject::RANGEDATTACK:
+		case SharedWeaponObjectTemplate::RANGEDATTACK:
 			creature->sendSystemMessage("@cbt_spam:no_attack_ranged_single");
 			break;
-		case WeaponObject::MELEEATTACK:
+		case SharedWeaponObjectTemplate::MELEEATTACK:
 			creature->sendSystemMessage("@cbt_spam:no_attack_melee_single");
 			break;
 		default:

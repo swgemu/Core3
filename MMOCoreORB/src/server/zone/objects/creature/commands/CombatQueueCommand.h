@@ -62,7 +62,7 @@ protected:
 	VectorMap<uint8, StateEffect> stateEffects;
 	Vector<DotEffect> dotEffects;
 
-	uint8 attackType;
+	bool forceAttack;
 	uint8 trails;
 	uint8 animType;
 
@@ -114,10 +114,10 @@ public:
 		animType = GENERATE_NONE;
 
 
-		attackType = CombatManager::WEAPONATTACK;
+		forceAttack = false;
 		trails = CombatManager::DEFAULTTRAIL;
 
-		weaponType = CombatManager::ANYWEAPON;
+		weaponType = SharedWeaponObjectTemplate::ANYWEAPON;
 	}
 
 	int doCombatAction(CreatureObject* creature, const uint64& target, const UnicodeString& arguments = "", ManagedReference<WeaponObject*> weapon = NULL) const {
@@ -828,12 +828,12 @@ public:
 
 	}
 
-	uint8 getAttackType() const {
-		return attackType;
+	bool isForceAttack() const {
+		return forceAttack;
 	}
 
-	void setAttackType(uint8 attackType) {
-		this->attackType = attackType;
+	void setForceAttack(bool forceAttack) {
+		this->forceAttack = forceAttack;
 	}
 
 	uint8 getTrails() const {

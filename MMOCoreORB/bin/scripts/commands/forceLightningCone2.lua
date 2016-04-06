@@ -72,7 +72,7 @@ ForceLightningCone2Command = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	attackType = FORCEATTACK,
+	forceAttack = true,
 	damageType = ELECTRICITY_DAMAGE,
 
 	range = 32

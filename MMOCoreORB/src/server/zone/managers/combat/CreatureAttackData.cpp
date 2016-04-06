@@ -62,7 +62,7 @@ CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 
 	splashDamage = data.splashDamage;
 
-	attackType= data.attackType;
+	forceAttack = data.forceAttack;
 	trails = data.trails;
 
 	combatSpam = data.combatSpam;
@@ -88,7 +88,7 @@ void CreatureAttackData::fillFromBase() {
 	coneRange = baseCommand->getConeRange();
 	range = baseCommand->getRange();
 	areaRange = baseCommand->getAreaRange();
-	attackType = baseCommand->getAttackType();
+	forceAttack = baseCommand->isForceAttack();
 	trails = baseCommand->getTrails();
 	combatSpam = baseCommand->getCombatSpam();
 	splashDamage = baseCommand->isSplashDamage();
@@ -154,8 +154,8 @@ void CreatureAttackData::setVariable(const String& var, const String& val) {
 	case 0xFEC2FA79: // STRING_HASHCODE("areaRange")
 		areaRange = Integer::valueOf(val);
 		break;
-	case 0x708615B8: // STRING_HASHCODE("attackType")
-		attackType = Integer::valueOf(val);
+	case STRING_HASHCODE("forceAttack"):
+		forceAttack = (bool)Integer::valueOf(val);
 		break;
 	case 0x550ED3F5: // STRING_HASHCODE("trails")
 		trails = Integer::valueOf(val);
