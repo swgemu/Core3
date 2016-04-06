@@ -9,7 +9,7 @@
 #define APPEARANCETEMPLATE_H_
 
 #include "engine/engine.h"
-#include "../IffTemplate.h"
+#include "templates/IffTemplate.h"
 
 class AppearanceTemplate/* : public IffTemplate*/ {
 public:

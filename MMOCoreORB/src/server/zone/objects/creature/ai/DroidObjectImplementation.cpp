@@ -10,7 +10,7 @@
 #include "server/zone/templates/mobile/ConversationScreen.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
-#include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
+#include "templates/customization/AssetCustomizationManagerTemplate.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
 #include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidCraftingModuleDataComponent.h"

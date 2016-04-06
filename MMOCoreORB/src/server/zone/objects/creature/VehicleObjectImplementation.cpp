@@ -19,7 +19,7 @@
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/creature/sui/RepairVehicleSuiCallback.h"
 #include "server/zone/objects/region/CityRegion.h"
-#include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
+#include "templates/customization/AssetCustomizationManagerTemplate.h"
 
 
 void VehicleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {

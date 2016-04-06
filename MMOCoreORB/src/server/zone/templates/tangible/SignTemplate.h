@@ -9,7 +9,7 @@
 #define SIGNTEMPLATE_H_
 
 #include "engine/engine.h"
-#include "server/zone/templates/ChildObject.h"
+#include "templates/ChildObject.h"
 
 class SignTemplate : public ChildObject {
 

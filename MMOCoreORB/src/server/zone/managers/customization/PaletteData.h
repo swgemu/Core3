@@ -9,7 +9,7 @@
 #define PALETTEDATA_H_
 
 #include "engine/engine.h"
-#include "server/zone/templates/datatables/DataTableRow.h"
+#include "templates/datatables/DataTableRow.h"
 
 class PaletteData : public Object {
 protected:

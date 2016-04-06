@@ -7,7 +7,7 @@
 
 #include "CustomizationIdManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
-#include "server/zone/templates/datatables/DataTableIff.h"
+#include "templates/datatables/DataTableIff.h"
 
 CustomizationIdManager::CustomizationIdManager() {
 	setLoggingName("CustomizationIdManager");

@@ -8,10 +8,8 @@
 #ifndef STRINGIDPARAM_H_
 #define STRINGIDPARAM_H_
 
-#include "TemplateBase.h"
-
-
-#include "primitives/StringParam.h"
+#include "templates/params/TemplateBase.h"
+#include "templates/params/primitives/StringParam.h"
 
 class StringIdParamData {
 	StringParam file;

@@ -6,7 +6,7 @@
  */
 
 #include "StringIdManager.h"
-#include "server/zone/templates/string/StringFile.h"
+#include "templates/string/StringFile.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/templates/DataArchiveStore.h"
 

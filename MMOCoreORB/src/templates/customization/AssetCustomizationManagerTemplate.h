@@ -9,9 +9,8 @@
 #define ASSETCUSTOMIZATIONMANAGERTEMPLATE_H_
 
 #include "engine/engine.h"
-#include "../IffTemplate.h"
-
-#include "CustomizationVariable.h"
+#include "templates/IffTemplate.h"
+#include "templates/customization/CustomizationVariable.h"
 
 class AssetCustomizationManagerTemplate : public IffTemplate, public Singleton<AssetCustomizationManagerTemplate> {
 	byte* ulstTable;

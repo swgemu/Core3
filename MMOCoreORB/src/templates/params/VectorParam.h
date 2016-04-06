@@ -8,7 +8,7 @@
 #ifndef VECTORPARAM_H_
 #define VECTORPARAM_H_
 
-#include "TemplateBase.h"
+#include "templates/params/TemplateBase.h"
 
 /*
 template <class Type>

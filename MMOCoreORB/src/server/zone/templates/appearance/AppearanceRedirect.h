@@ -8,7 +8,7 @@
 #ifndef APPEARANCEREDIRECT_H_
 #define APPEARANCEREDIRECT_H_
 
-#include "../IffTemplate.h"
+#include "templates/IffTemplate.h"
 
 class AppearanceRedirect : public IffTemplate {
 	String redirectFile;

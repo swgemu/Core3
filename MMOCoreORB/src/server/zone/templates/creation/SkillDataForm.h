@@ -9,7 +9,7 @@
 #define SKILLDATAFORM_H_
 
 #include "engine/engine.h"
-#include "server/zone/templates/IffTemplate.h"
+#include "templates/IffTemplate.h"
 
 class SkillDataForm : public IffTemplate {
 	VectorMap<String, String> professionInfoPaths;

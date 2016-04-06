@@ -14,7 +14,7 @@ import server.zone.objects.waypoint.WaypointObject;
 include server.zone.packets.resource.SurveyMessage;
 
 include server.zone.objects.scene.SessionFacadeType;
-include server.zone.templates.customization.CustomizationVariable;
+include templates.customization.CustomizationVariable;
 
 class SurveySession extends Facade {
 	@weakReference

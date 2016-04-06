@@ -14,7 +14,7 @@
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "CustomizationData.h"
 #include "CustomizationDataMap.h"
-#include "server/zone/templates/params/PaletteColorCustomizationVariable.h"
+#include "templates/params/PaletteColorCustomizationVariable.h"
 
 class ImageDesignManager : public Singleton<ImageDesignManager>, public Object, public Logger {
 	void loadCustomizationData();

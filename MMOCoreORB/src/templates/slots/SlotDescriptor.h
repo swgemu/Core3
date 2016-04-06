@@ -9,7 +9,7 @@
 #define SLOTDESCRIPTOR_H_
 
 #include "engine/engine.h"
-#include "../IffTemplate.h"
+#include "templates/IffTemplate.h"
 
 class SlotDescriptor : public IffTemplate {
 	Vector<String> slots;

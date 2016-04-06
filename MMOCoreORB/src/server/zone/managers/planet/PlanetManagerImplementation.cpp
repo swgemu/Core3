@@ -17,10 +17,10 @@
 #include "server/zone/managers/gcw/GCWManager.h"
 
 #include "engine/util/iffstream/IffStream.h"
-#include "server/zone/templates/snapshot/WorldSnapshotIff.h"
-#include "server/zone/templates/datatables/DataTableIff.h"
-#include "server/zone/templates/datatables/DataTableRow.h"
-#include "server/zone/templates/datatables/DataTableCell.h"
+#include "templates/snapshot/WorldSnapshotIff.h"
+#include "templates/datatables/DataTableIff.h"
+#include "templates/datatables/DataTableRow.h"
+#include "templates/datatables/DataTableCell.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 
 #include "server/zone/managers/planet/MapLocationType.h"

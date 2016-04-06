@@ -8,7 +8,7 @@
 #ifndef INTEGERPARAM_H_
 #define INTEGERPARAM_H_
 
-#include "../TemplateBase.h"
+#include "templates/params/TemplateBase.h"
 
 class IntegerParam : public TemplateBase<int> {
 

@@ -9,7 +9,7 @@
 #define LUATEMPLATE_H_
 
 #include "engine/engine.h"
-#include "TemplateData.h"
+#include "templates/TemplateData.h"
 
 class LuaTemplate : public virtual TemplateData {
 public:

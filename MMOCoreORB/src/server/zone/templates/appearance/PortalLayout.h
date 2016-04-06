@@ -8,7 +8,7 @@
 #ifndef PORTALLAYOUT_H_
 #define PORTALLAYOUT_H_
 
-#include "../IffTemplate.h"
+#include "templates/IffTemplate.h"
 #include "CellProperty.h"
 
 class MeshAppearanceTemplate;

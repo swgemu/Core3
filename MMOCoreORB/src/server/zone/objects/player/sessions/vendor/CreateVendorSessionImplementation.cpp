@@ -18,7 +18,7 @@
 
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 #include "server/zone/templates/tangible/VendorCreatureTemplate.h"
-#include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
+#include "templates/customization/AssetCustomizationManagerTemplate.h"
 
 int CreateVendorSessionImplementation::initializeSession() {
 

@@ -9,8 +9,8 @@
 #define WORLDSNAPSHOTIFF_H_
 
 #include "engine/engine.h"
-#include "../IffTemplate.h"
-#include "WorldSnapshotNode.h"
+#include "templates/IffTemplate.h"
+#include "templates/snapshot/WorldSnapshotNode.h"
 
 class WorldSnapshotIff : public IffTemplate {
 	Vector<WorldSnapshotNode> nodes;

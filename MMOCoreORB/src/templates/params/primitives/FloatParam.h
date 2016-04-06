@@ -8,7 +8,7 @@
 #ifndef FLOATPARAM_H_
 #define FLOATPARAM_H_
 
-#include "../TemplateBase.h"
+#include "templates/params/TemplateBase.h"
 
 class FloatParam : public TemplateBase<float> {
 	float min;

@@ -8,7 +8,7 @@
 #ifndef STRINGPARAM_H_
 #define STRINGPARAM_H_
 
-#include "../TemplateBase.h"
+#include "templates/params/TemplateBase.h"
 
 class StringParam : public TemplateBase<String> {
 public:

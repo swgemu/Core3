@@ -11,7 +11,7 @@
 #include "engine/engine.h"
 #include "StartingLocation.h"
 
-#include "server/zone/templates/datatables/DataTableIff.h"
+#include "templates/datatables/DataTableIff.h"
 
 class StartingLocationList : public SortedVector<StartingLocation> {
 

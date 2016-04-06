@@ -6,7 +6,7 @@
 #define MANUFACTURESCHEMATICOBJECTDELTAMESSAGE7_H_
 
 #include "../BaseLineMessage.h"
-#include "server/zone/templates/params/RangedIntCustomizationVariable.h"
+#include "templates/params/RangedIntCustomizationVariable.h"
 
 class ManufactureSchematicObjectDeltaMessage7 : public DeltaMessage {
 public:

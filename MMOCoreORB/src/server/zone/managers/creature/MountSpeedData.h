@@ -3,7 +3,7 @@
 #define MOUNTSPEEDDATA_H_
 
 #include "engine/engine.h"
-#include "server/zone/templates/params/primitives/StringParam.h"
+#include "templates/params/primitives/StringParam.h"
 
 namespace server {
 namespace zone {

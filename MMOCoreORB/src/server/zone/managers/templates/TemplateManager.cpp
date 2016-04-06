@@ -103,7 +103,7 @@
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
-#include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
+#include "templates/customization/AssetCustomizationManagerTemplate.h"
 #include "server/zone/templates/appearance/PortalLayout.h"
 #include "server/zone/templates/appearance/PaletteTemplate.h"
 #include "server/zone/templates/appearance/AppearanceRedirect.h"
@@ -111,10 +111,10 @@
 #include "server/zone/templates/appearance/MeshAppearanceTemplate.h"
 #include "server/zone/templates/appearance/DetailAppearanceTemplate.h"
 #include "server/zone/templates/appearance/ComponentAppearanceTemplate.h"
-#include "server/zone/templates/footprint/StructureFootprint.h"
-#include "server/zone/templates/slots/SlotId.h"
+#include "templates/footprint/StructureFootprint.h"
+#include "templates/slots/SlotId.h"
 #include "server/zone/managers/customization/CustomizationIdManager.h"
-#include "server/zone/templates/params/PaletteColorCustomizationVariable.h"
+#include "templates/params/PaletteColorCustomizationVariable.h"
 
 #include "tre3/TreeArchive.h"
 

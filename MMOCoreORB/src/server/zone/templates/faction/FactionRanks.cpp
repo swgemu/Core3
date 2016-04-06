@@ -6,7 +6,7 @@
  */
 
 #include "FactionRanks.h"
-#include "server/zone/templates/datatables/DataTableIff.h"
+#include "templates/datatables/DataTableIff.h"
 
 FactionRanks::FactionRanks() {
 

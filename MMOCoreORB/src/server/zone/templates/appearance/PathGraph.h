@@ -9,7 +9,7 @@
 #define PATHGRAPH_H_
 
 #include "PathNode.h"
-#include "../IffTemplate.h"
+#include "templates/IffTemplate.h"
 
 class FloorMesh;
 

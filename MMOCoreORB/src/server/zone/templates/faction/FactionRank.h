@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-#include "server/zone/templates/datatables/DataTableRow.h"
+#include "templates/datatables/DataTableRow.h"
 
 class FactionRank : public Object {
 protected:

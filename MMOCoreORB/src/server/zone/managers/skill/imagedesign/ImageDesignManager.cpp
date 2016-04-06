@@ -12,8 +12,8 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/templates/tangible/PlayerCreatureTemplate.h"
-#include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
-#include "server/zone/templates/customization/BasicRangedIntCustomizationVariable.h"
+#include "templates/customization/AssetCustomizationManagerTemplate.h"
+#include "templates/customization/BasicRangedIntCustomizationVariable.h"
 
 
 ImageDesignManager::ImageDesignManager() {

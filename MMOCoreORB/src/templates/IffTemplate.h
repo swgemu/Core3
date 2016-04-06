@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 #include "engine/util/iffstream/IffStream.h"
-#include "TemplateData.h"
+#include "templates/TemplateData.h"
 
 class IffTemplate : public virtual TemplateData {
 public:

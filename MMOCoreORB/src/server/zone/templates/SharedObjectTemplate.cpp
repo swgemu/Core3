@@ -10,8 +10,8 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
 #include "server/zone/managers/director/DirectorManager.h"
-#include "server/zone/templates/slots/SlotDescriptor.h"
-#include "server/zone/templates/slots/ArrangementDescriptor.h"
+#include "templates/slots/SlotDescriptor.h"
+#include "templates/slots/ArrangementDescriptor.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/ServerCore.h"
 

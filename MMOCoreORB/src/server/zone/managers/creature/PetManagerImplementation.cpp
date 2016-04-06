@@ -13,9 +13,9 @@
 #include "server/zone/objects/intangible/tasks/PetControlDeviceStoreObjectTask.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/intangible/tasks/EnqueuePetCommand.h"
-#include "server/zone/templates/datatables/DataTableIff.h"
-#include "server/zone/templates/datatables/DataTableRow.h"
-#include "server/zone/templates/params/primitives/StringParam.h"
+#include "templates/datatables/DataTableIff.h"
+#include "templates/datatables/DataTableRow.h"
+#include "templates/params/primitives/StringParam.h"
 #include "server/chat/ChatManager.h"
 
 void PetManagerImplementation::loadLuaConfig() {

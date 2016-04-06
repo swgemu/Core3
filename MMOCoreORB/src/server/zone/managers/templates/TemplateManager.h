@@ -13,10 +13,10 @@
 #include "engine/util/ObjectFactory.h"
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "server/zone/templates/footprint/StructureFootprint.h"
-#include "server/zone/templates/slots/SlotId.h"
-#include "server/zone/templates/slots/SlotDescriptor.h"
-#include "server/zone/templates/slots/ArrangementDescriptor.h"
+#include "templates/footprint/StructureFootprint.h"
+#include "templates/slots/SlotId.h"
+#include "templates/slots/SlotDescriptor.h"
+#include "templates/slots/ArrangementDescriptor.h"
 
 #include "tre3/TreeArchive.h"
 

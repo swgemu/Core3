@@ -9,7 +9,7 @@
 #define LOOTITEMTEMPLATE_H_
 
 #include "engine/engine.h"
-#include "LuaTemplate.h"
+#include "templates/LuaTemplate.h"
 
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/managers/crafting/CraftingManager.h"

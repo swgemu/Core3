@@ -13,7 +13,7 @@
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
-#include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
+#include "templates/customization/AssetCustomizationManagerTemplate.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/callbacks/CustomVehicleSuiCallback.h"
