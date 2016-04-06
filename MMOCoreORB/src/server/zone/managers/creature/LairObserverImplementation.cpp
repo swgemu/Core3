@@ -15,7 +15,7 @@
 #include "server/zone/Zone.h"
 #include "HealLairObserverEvent.h"
 #include "server/zone/managers/creature/CreatureManager.h"
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "templates/manager/TemplateManager.h"
 #include "LairAggroTask.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"

@@ -8,7 +8,7 @@
 #ifndef CLONINGBUILDINGOBJECTTEMPLATE_H_
 #define CLONINGBUILDINGOBJECTTEMPLATE_H_
 
-#include "SharedBuildingObjectTemplate.h"
+#include "templates/tangible/SharedBuildingObjectTemplate.h"
 #include "server/zone/objects/building/cloning/CloneSpawnPoint.h"
 
 class CloningBuildingObjectTemplate : public SharedBuildingObjectTemplate {

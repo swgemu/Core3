@@ -8,7 +8,7 @@
 #ifndef FACTORYOBJECTTEMPLATE_H_
 #define FACTORYOBJECTTEMPLATE_H_
 
-#include "../tangible/SharedInstallationObjectTemplate.h"
+#include "templates/tangible/SharedInstallationObjectTemplate.h"
 
 class FactoryObjectTemplate : public SharedInstallationObjectTemplate {
 public:

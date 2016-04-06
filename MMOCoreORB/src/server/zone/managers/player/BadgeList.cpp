@@ -1,5 +1,5 @@
 #include "BadgeList.h"
-#include "server/conf/ConfigManager.h"
+#include "conf/ConfigManager.h"
 #include "templates/datatables/DataTableIff.h"
 #include "templates/manager/DataArchiveStore.h"
 

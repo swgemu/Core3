@@ -1,34 +1,39 @@
 /*
- * SharedIntangibleObjectTemplate.h
+ * SharedStaticObjectTemplate.h
  *
  *  Created on: 06/05/2010
  *      Author: victor
  */
 
-#ifndef SHAREDINTANGIBLEOBJECTTEMPLATE_H_
-#define SHAREDINTANGIBLEOBJECTTEMPLATE_H_
+#ifndef SHAREDSTATICOBJECTTEMPLATE_H_
+#define SHAREDSTATICOBJECTTEMPLATE_H_
 
 
-#include "SharedObjectTemplate.h"
+#include "templates/SharedObjectTemplate.h"
+#include "tangible/SharedBuildingObjectTemplate.h"
 
 
-class SharedIntangibleObjectTemplate : public SharedObjectTemplate {
+class SharedStaticObjectTemplate : public SharedObjectTemplate {
 protected:
 
 
 public:
-	SharedIntangibleObjectTemplate() {
+	SharedStaticObjectTemplate() {
 
 	}
 
-	~SharedIntangibleObjectTemplate() {
+	~SharedStaticObjectTemplate() {
 
+	}
+
+	void readObject(LuaObject* templateData) {
+		SharedObjectTemplate::readObject(templateData);
 	}
 
 	void readObject(IffStream* iffStream) {
 		uint32 nextType = iffStream->getNextFormType();
 
-		if (nextType != 'SITN') {
+		if (nextType != 'STAT') {
 			//Logger::console.error("expecting SHOT got " + String::hexvalueOf((int)nextType));
 
 			SharedObjectTemplate::readObject(iffStream);
@@ -36,7 +41,7 @@ public:
 			return;
 		}
 
-		iffStream->openForm('SITN');
+		iffStream->openForm('STAT');
 
 		uint32 derv = iffStream->getNextFormType();
 
@@ -68,14 +73,10 @@ public:
 			readObject(iffStream);
 		}
 
-		iffStream->closeForm('SITN');
-	}
-
-	void readObject(LuaObject* templateData) {
-		SharedObjectTemplate::readObject(templateData);
+		iffStream->closeForm('STAT');
 	}
 
 };
 
 
-#endif /* SHAREDINTANGIBLEOBJECTTEMPLATE_H_ */
+#endif /* SHAREDSTATICOBJECTTEMPLATE_H_ */

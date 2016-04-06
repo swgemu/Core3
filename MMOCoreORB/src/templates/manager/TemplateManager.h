@@ -11,17 +11,16 @@
 #include "engine/engine.h"
 
 #include "engine/util/ObjectFactory.h"
-#include "server/zone/templates/SharedObjectTemplate.h"
 
+#include "templates/SharedObjectTemplate.h"
 #include "templates/footprint/StructureFootprint.h"
 #include "templates/slots/SlotId.h"
 #include "templates/slots/SlotDescriptor.h"
 #include "templates/slots/ArrangementDescriptor.h"
-
-#include "tre3/TreeArchive.h"
-
 #include "templates/manager/PlanetMapCategoryList.h"
 #include "templates/manager/PlanetMapCategory.h"
+
+#include "tre3/TreeArchive.h"
 
 class TemplateCRCMap;
 class ClientTemplateCRCMap;
@@ -73,8 +72,6 @@ public:
 protected:
 	//this is only to be used when loading client dervs
 	LuaObject* getLuaObject(const String& iffTemplateName);
-
-
 
 public:
 	TemplateCRCMap& getTemplateCRCMap() const {
@@ -173,7 +170,7 @@ public:
 		return slotDefinitions.get(slotName);
 	}
 
-	friend class server::zone::templates::SharedObjectTemplate;
+	friend class SharedObjectTemplate;
 };
 
 

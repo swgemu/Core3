@@ -384,7 +384,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/misc/CustomIngredientImplementation.cpp \
 		server/zone/objects/tangible/misc/FsCraftingComponentObjectImplementation.cpp \
 		server/zone/managers/player/PermissionLevelList.cpp \
-		server/zone/objects/creature/CreatureAttribute.cpp \
 		server/zone/objects/creature/components/TrainerMenuComponent.cpp \
 		server/zone/objects/creature/components/SarlaccMenuComponent.cpp \
 		server/zone/objects/creature/components/PetMenuComponent.cpp \
@@ -435,7 +434,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/creature/LairObserverImplementation.cpp \
 		server/zone/managers/creature/DynamicSpawnObserverImplementation.cpp \
 		server/zone/managers/creature/SpawnObserverImplementation.cpp \
-		templates/customization/CustomizationIdManager.cpp \
 		server/zone/managers/director/ScreenPlayObserverImplementation.cpp \
 		server/zone/managers/director/PersistentEventImplementation.cpp \
 		server/zone/managers/director/QuestVectorMapImplementation.cpp \
@@ -508,7 +506,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/player/creation/PlayerCreationManager.cpp \
 		tre3/TreeFile.cpp \
 		server/zone/managers/vendor/VendorOutfitManager.cpp \
-		server/conf/ConfigManager.cpp \
+		conf/ConfigManager.cpp \
 		server/features/Features.cpp \
 		server/db/ServerDatabase.cpp \
 		server/db/MantisDatabase.cpp \
@@ -805,8 +803,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/objectcontroller/command/CommandConfigManager.cpp \
 		server/zone/managers/terrain/TerrainManager.cpp \
 		server/zone/managers/terrain/TerrainCache.cpp \
-		server/zone/managers/templates/TemplateManager.cpp \
-		templates/manager/DataArchiveStore.cpp \
 		server/zone/managers/mission/MissionManagerImplementation.cpp \
 		server/zone/managers/mission/spawnmaps/MissionNpcSpawnMap.cpp \
 		server/zone/managers/mission/spawnmaps/NpcSpawnPoint.cpp \
@@ -855,34 +851,38 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/mission/DestroyMissionLairObserverImplementation.cpp \
 		server/zone/objects/installation/components/TurretObserverImplementation.cpp \
 		server/zone/objects/mission/bountyhunter/BountyHunterDroid.cpp \
-		templates/crafting/ValuesMap.cpp \
-		templates/string/StringFile.cpp \
-		templates/faction/FactionRanks.cpp \
+		server/zone/templates/intangible/DraftSchematicObjectTemplate.cpp \
+		server/zone/templates/tangible/CampStructureTemplate.cpp \
+		server/zone/templates/tangible/PlayerCreatureTemplate.cpp \
+		server/zone/templates/SharedTangibleObjectTemplate.cpp \
 		server/zone/templates/mobile/LuaConversationScreen.cpp \
 		server/zone/templates/mobile/CreatureTemplate.cpp \
 		server/zone/templates/mobile/LuaConversationTemplate.cpp \
-		templates/datatables/DataTableIff.cpp \
-		templates/datatables/DataTableCell.cpp \
-		templates/snapshot/WorldSnapshotIff.cpp \
-		server/zone/templates/SharedTangibleObjectTemplate.cpp \
+		server/zone/objects/tangible/components/CityDecorationMenuComponent.cpp \
+		templates/SharedObjectTemplate.cpp \
 		templates/appearance/FloorMesh.cpp \
 		templates/appearance/CellProperty.cpp \
 		templates/appearance/MeshAppearanceTemplate.cpp \
 		templates/appearance/DetailAppearanceTemplate.cpp \
 		templates/appearance/PortalLayout.cpp \
 		templates/appearance/PathGraph.cpp \
-		server/zone/templates/intangible/DraftSchematicObjectTemplate.cpp \
-		server/zone/templates/SharedObjectTemplate.cpp \
+		templates/crafting/ValuesMap.cpp \
+		templates/customization/AssetCustomizationManagerTemplate.cpp \
+		templates/customization/CustomizationIdManager.cpp \
+		templates/datatables/DataTableIff.cpp \
+		templates/datatables/DataTableCell.cpp \
+		templates/faction/FactionRanks.cpp \
+		templates/manager/DataArchiveStore.cpp \
+		templates/manager/TemplateManager.cpp \
 		templates/params/PaletteColorCustomizationVariables.cpp \
 		templates/params/RangedIntCustomizationVariables.cpp \
-		server/zone/templates/tangible/SharedBuildingObjectTemplate.cpp \
-		server/zone/templates/tangible/SharedStructureObjectTemplate.cpp \
-		server/zone/templates/tangible/CampStructureTemplate.cpp \
-		server/zone/templates/tangible/SharedCreatureObjectTemplate.cpp \
-		server/zone/templates/tangible/PlayerCreatureTemplate.cpp \
-		server/zone/templates/tangible/SharedWeaponObjectTemplate.cpp \
-		templates/customization/AssetCustomizationManagerTemplate.cpp \
-		server/zone/objects/tangible/components/CityDecorationMenuComponent.cpp \
+		templates/params/creature/CreatureAttribute.cpp \
+		templates/string/StringFile.cpp \
+		templates/snapshot/WorldSnapshotIff.cpp \
+		templates/tangible/SharedCreatureObjectTemplate.cpp \
+		templates/tangible/SharedBuildingObjectTemplate.cpp \
+		templates/tangible/SharedStructureObjectTemplate.cpp \
+		templates/tangible/SharedWeaponObjectTemplate.cpp \
 		main.cpp
 		
 

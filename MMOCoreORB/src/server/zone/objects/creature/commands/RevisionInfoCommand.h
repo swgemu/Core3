@@ -9,7 +9,7 @@
 #define REVISIONINFOCOMMAND_H_
 
 #include "engine/engine.h"
-#include "server/conf/ConfigManager.h"
+#include "conf/ConfigManager.h"
 
 class RevisionInfoCommand {
 public:

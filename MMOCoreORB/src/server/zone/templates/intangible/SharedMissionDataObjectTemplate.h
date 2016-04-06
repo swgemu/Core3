@@ -8,7 +8,7 @@
 #ifndef SHAREDMISSIONDATAOBJECTTEMPLATE_H_
 #define SHAREDMISSIONDATAOBJECTTEMPLATE_H_
 
-#include "../SharedIntangibleObjectTemplate.h"
+#include "templates/SharedIntangibleObjectTemplate.h"
 
 class SharedMissionDataObjectTemplate : public SharedIntangibleObjectTemplate {
 

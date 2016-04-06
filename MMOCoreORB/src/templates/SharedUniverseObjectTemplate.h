@@ -1,39 +1,32 @@
 /*
- * SharedStaticObjectTemplate.h
+ * SharedUniverseObjectTemplate.h
  *
  *  Created on: 06/05/2010
  *      Author: victor
  */
 
-#ifndef SHAREDSTATICOBJECTTEMPLATE_H_
-#define SHAREDSTATICOBJECTTEMPLATE_H_
+#ifndef SHAREDUNIVERSEOBJECTTEMPLATE_H_
+#define SHAREDUNIVERSEOBJECTTEMPLATE_H_
 
+#include "templates/SharedObjectTemplate.h"
 
-#include "SharedObjectTemplate.h"
-#include "tangible/SharedBuildingObjectTemplate.h"
-
-
-class SharedStaticObjectTemplate : public SharedObjectTemplate {
+class SharedUniverseObjectTemplate : public SharedObjectTemplate {
 protected:
 
 
 public:
-	SharedStaticObjectTemplate() {
+	SharedUniverseObjectTemplate() {
 
 	}
 
-	~SharedStaticObjectTemplate() {
+	~SharedUniverseObjectTemplate() {
 
-	}
-
-	void readObject(LuaObject* templateData) {
-		SharedObjectTemplate::readObject(templateData);
 	}
 
 	void readObject(IffStream* iffStream) {
 		uint32 nextType = iffStream->getNextFormType();
 
-		if (nextType != 'STAT') {
+		if (nextType != 'SUNI') {
 			//Logger::console.error("expecting SHOT got " + String::hexvalueOf((int)nextType));
 
 			SharedObjectTemplate::readObject(iffStream);
@@ -41,7 +34,7 @@ public:
 			return;
 		}
 
-		iffStream->openForm('STAT');
+		iffStream->openForm('SUNI');
 
 		uint32 derv = iffStream->getNextFormType();
 
@@ -52,8 +45,8 @@ public:
 		}
 
 		/*while (derv != 0) {
-					if (derv != '
-				}*/
+							if (derv != '
+						}*/
 
 		iffStream->openForm(derv);
 
@@ -73,10 +66,10 @@ public:
 			readObject(iffStream);
 		}
 
-		iffStream->closeForm('STAT');
+		iffStream->closeForm('SUNI');
 	}
 
 };
 
 
-#endif /* SHAREDSTATICOBJECTTEMPLATE_H_ */
+#endif /* SHAREDUNIVERSEOBJECTTEMPLATE_H_ */

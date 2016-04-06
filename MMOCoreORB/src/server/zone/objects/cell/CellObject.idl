@@ -10,7 +10,7 @@ import engine.lua.LuaObject;
 import system.util.VectorMap;
 import server.zone.Zone;
 include server.zone.objects.scene.variables.ContainerPermissions;
-import server.zone.templates.SharedObjectTemplate;
+include templates.SharedObjectTemplate;
 
 @lua
 class CellObject extends SceneObject {

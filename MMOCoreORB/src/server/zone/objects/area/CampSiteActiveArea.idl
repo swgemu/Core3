@@ -16,7 +16,7 @@ include server.zone.templates.tangible.CampStructureTemplate;
 include system.thread.Mutex;
 import system.lang.ref.Reference;
 import system.lang.Time;
-include server.zone.templates.TemplateReference;
+include templates.TemplateReference;
 
 class CampSiteActiveArea extends ActiveArea {
 

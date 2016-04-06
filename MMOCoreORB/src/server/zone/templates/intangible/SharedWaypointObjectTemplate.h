@@ -8,7 +8,7 @@
 #ifndef SHAREDWAYPOINTOBJECTTEMPLATE_H_
 #define SHAREDWAYPOINTOBJECTTEMPLATE_H_
 
-#include "../SharedIntangibleObjectTemplate.h"
+#include "templates/SharedIntangibleObjectTemplate.h"
 
 class SharedWaypointObjectTemplate : public SharedIntangibleObjectTemplate {
 

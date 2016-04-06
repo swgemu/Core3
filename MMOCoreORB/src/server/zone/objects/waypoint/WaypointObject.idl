@@ -5,7 +5,7 @@ import engine.core.ManagedReference;
 import server.zone.objects.intangible.IntangibleObject;
 import engine.service.proto.BaseMessage;
 import server.zone.Zone;
-import server.zone.templates.SharedObjectTemplate;
+include templates.SharedObjectTemplate;
 include system.lang.String;
 
 class WaypointObject extends IntangibleObject {

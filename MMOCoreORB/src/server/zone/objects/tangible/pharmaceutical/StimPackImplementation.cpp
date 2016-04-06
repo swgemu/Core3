@@ -1,6 +1,6 @@
 
 #include "server/zone/objects/tangible/pharmaceutical/StimPack.h"
-#include "server/zone/templates/tangible/StimPackTemplate.h"
+#include "templates/tangible/StimPackTemplate.h"
 #include "server/zone/managers/object/ObjectManager.h"
 
 bool StimPackImplementation::isPetStimPack() {

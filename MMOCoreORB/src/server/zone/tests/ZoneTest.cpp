@@ -12,7 +12,7 @@
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/area/ActiveArea.h"
-#include "server/conf/ConfigManager.h"
+#include "conf/ConfigManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
 class ZoneTest : public ::testing::Test {

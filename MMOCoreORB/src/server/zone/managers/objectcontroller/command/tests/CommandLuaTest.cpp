@@ -8,11 +8,11 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 
-#include "server/zone/templates/SharedObjectTemplate.h"
+#include "templates/SharedObjectTemplate.h"
 #include "templates/manager/DataArchiveStore.h"
 #include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
 #include "server/zone/managers/objectcontroller/command/CommandList.h"
-#include "server/conf/ConfigManager.h"
+#include "conf/ConfigManager.h"
 #include "server/zone/objects/creature/commands/CombatQueueCommand.h"
 
 class CommandLuaTest : public ::testing::Test {

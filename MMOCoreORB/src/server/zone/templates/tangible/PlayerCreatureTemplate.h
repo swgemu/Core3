@@ -8,7 +8,7 @@
 #ifndef PLAYERCREATURETEMPLATE_H_
 #define PLAYERCREATURETEMPLATE_H_
 
-#include "SharedCreatureObjectTemplate.h"
+#include "templates/tangible/SharedCreatureObjectTemplate.h"
 #include "server/zone/managers/skill/imagedesign/CustomizationDataMap.h"
 
 class PlayerCreatureTemplate : public SharedCreatureObjectTemplate {

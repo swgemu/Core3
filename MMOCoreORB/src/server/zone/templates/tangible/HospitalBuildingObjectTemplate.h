@@ -8,7 +8,7 @@
 #ifndef HOSPITALBUILDINGOBJECTTEMPLATE_H_
 #define HOSPITALBUILDINGOBJECTTEMPLATE_H_
 
-#include "SharedBuildingObjectTemplate.h"
+#include "templates/tangible/SharedBuildingObjectTemplate.h"
 
 class HospitalBuildingObjectTemplate : public SharedBuildingObjectTemplate {
 	int medicalRating;

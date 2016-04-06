@@ -3,8 +3,8 @@
 		See file COPYING for copying conditions. */
 
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "CreatureState.h"
-#include "CreatureFlag.h"
+#include "templates/params/creature/CreatureState.h"
+#include "templates/params/creature/CreatureFlag.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
@@ -37,7 +37,7 @@
 #include "server/zone/packets/ui/NewbieTutorialEnableHudElement.h"
 #include "server/zone/packets/ui/OpenHolocronToPageMessage.h"
 #include "server/zone/packets/object/Animation.h"
-#include "server/zone/objects/creature/CreaturePosture.h"
+#include "templates/params/creature/CreaturePosture.h"
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
 #include "server/zone/objects/creature/events/CommandQueueActionEvent.h"
 #include "server/zone/Zone.h"
@@ -53,7 +53,7 @@
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/area/CampSiteActiveArea.h"
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "templates/manager/TemplateManager.h"
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
@@ -74,7 +74,7 @@
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/resource/resourcespawner/SampleTask.h"
 
-#include "server/zone/templates/tangible/SharedCreatureObjectTemplate.h"
+#include "templates/tangible/SharedCreatureObjectTemplate.h"
 
 #include "variables/Skill.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"

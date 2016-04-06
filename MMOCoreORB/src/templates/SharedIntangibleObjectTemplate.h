@@ -1,33 +1,34 @@
 /*
- * SharedCellObjectTemplate.h
+ * SharedIntangibleObjectTemplate.h
  *
  *  Created on: 06/05/2010
  *      Author: victor
  */
 
-#ifndef SHAREDCELLOBJECTTEMPLATE_H_
-#define SHAREDCELLOBJECTTEMPLATE_H_
-
-#include "SharedObjectTemplate.h"
+#ifndef SHAREDINTANGIBLEOBJECTTEMPLATE_H_
+#define SHAREDINTANGIBLEOBJECTTEMPLATE_H_
 
 
-class SharedCellObjectTemplate : public SharedObjectTemplate {
+#include "templates/SharedObjectTemplate.h"
+
+
+class SharedIntangibleObjectTemplate : public SharedObjectTemplate {
 protected:
 
 
 public:
-	SharedCellObjectTemplate() {
+	SharedIntangibleObjectTemplate() {
 
 	}
 
-	~SharedCellObjectTemplate() {
+	~SharedIntangibleObjectTemplate() {
 
 	}
 
 	void readObject(IffStream* iffStream) {
 		uint32 nextType = iffStream->getNextFormType();
 
-		if (nextType != 'CCLT') {
+		if (nextType != 'SITN') {
 			//Logger::console.error("expecting SHOT got " + String::hexvalueOf((int)nextType));
 
 			SharedObjectTemplate::readObject(iffStream);
@@ -35,7 +36,7 @@ public:
 			return;
 		}
 
-		iffStream->openForm('CCLT');
+		iffStream->openForm('SITN');
 
 		uint32 derv = iffStream->getNextFormType();
 
@@ -46,8 +47,8 @@ public:
 		}
 
 		/*while (derv != 0) {
-							if (derv != '
-						}*/
+					if (derv != '
+				}*/
 
 		iffStream->openForm(derv);
 
@@ -67,11 +68,14 @@ public:
 			readObject(iffStream);
 		}
 
-		iffStream->closeForm('CCLT');
+		iffStream->closeForm('SITN');
 	}
 
+	void readObject(LuaObject* templateData) {
+		SharedObjectTemplate::readObject(templateData);
+	}
 
 };
 
 
-#endif /* SHAREDCELLOBJECTTEMPLATE_H_ */
+#endif /* SHAREDINTANGIBLEOBJECTTEMPLATE_H_ */

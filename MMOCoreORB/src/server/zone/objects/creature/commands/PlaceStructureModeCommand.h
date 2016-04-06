@@ -9,8 +9,8 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 #include "server/zone/packets/player/EnterStructurePlacementModeMessage.h"
-#include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "templates/tangible/SharedBuildingObjectTemplate.h"
+#include "templates/manager/TemplateManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/player/sessions/PlaceStructureSession.h"
 

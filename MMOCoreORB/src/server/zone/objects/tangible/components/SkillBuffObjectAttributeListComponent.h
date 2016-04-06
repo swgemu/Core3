@@ -8,7 +8,7 @@
 #ifndef SKILLBUFFATTRIBUTELISTCOMPONENT_H_
 #define SKILLBUFFATTRIBUTELISTCOMPONENT_H_
 
-#include "server/zone/templates/tangible/SkillBuffTemplate.h"
+#include "templates/tangible/SkillBuffTemplate.h"
 #include "server/zone/objects/scene/components/AttributeListComponent.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 

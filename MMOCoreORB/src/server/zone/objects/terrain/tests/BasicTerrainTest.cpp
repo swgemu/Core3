@@ -12,7 +12,7 @@
 #include "server/zone/objects/terrain/ProceduralTerrainAppearance.h"
 #include "server/zone/objects/terrain/SpaceTerrainAppearance.h"
 #include "server/zone/objects/terrain/TargaBitmap.h"
-#include "server/conf/ConfigManager.h"
+#include "conf/ConfigManager.h"
 
 class BasicTerrainTest : public ::testing::Test {
 public:

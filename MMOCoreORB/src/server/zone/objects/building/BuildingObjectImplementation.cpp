@@ -12,7 +12,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/structure/StructureObject.h"
 
-#include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
+#include "templates/tangible/SharedBuildingObjectTemplate.h"
 #include "templates/appearance/PortalLayout.h"
 #include "templates/appearance/FloorMesh.h"
 #include "templates/appearance/PathNode.h"

@@ -9,7 +9,7 @@
 
 #include "LoginMessageProcessorTask.h"
 
-#include "server/conf/ConfigManager.h"
+#include "conf/ConfigManager.h"
 #include "server/login/account/AccountManager.h"
 #include "server/login/account/Account.h"
 

@@ -9,7 +9,7 @@
 #include "server/zone/objects/tangible/components/droid/DroidStimpackModuleDataComponent.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/tangible/pharmaceutical/StimPack.h"
-#include "server/zone/objects/creature/CreatureAttribute.h"
+#include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/objects/tangible/component/droid/DroidComponent.h"
 
 namespace server {

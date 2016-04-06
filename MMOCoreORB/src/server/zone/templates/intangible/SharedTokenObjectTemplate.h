@@ -8,7 +8,7 @@
 #ifndef SHAREDTOKENOBJECTTEMPLATE_H_
 #define SHAREDTOKENOBJECTTEMPLATE_H_
 
-#include "../SharedIntangibleObjectTemplate.h"
+#include "templates/SharedIntangibleObjectTemplate.h"
 
 class SharedTokenObjectTemplate : public SharedIntangibleObjectTemplate {
 

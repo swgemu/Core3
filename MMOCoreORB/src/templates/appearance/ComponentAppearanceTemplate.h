@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 #include "templates/appearance/AppearanceTemplate.h"
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "templates/manager/TemplateManager.h"
 
 class ComponentAppearanceTemplate : public AppearanceTemplate {
 	AppearanceTemplate* firstMesh;

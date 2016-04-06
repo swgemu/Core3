@@ -13,8 +13,8 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.ai.AiAgent;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.TangibleObject;
-include server.zone.templates.TemplateReference;
-import server.zone.templates.SharedObjectTemplate;
+include templates.TemplateReference;
+include templates.SharedObjectTemplate;
 import server.zone.objects.area.MissionSpawnActiveArea;
 include server.zone.managers.mission.spawnmaps.NpcSpawnPoint;
 
