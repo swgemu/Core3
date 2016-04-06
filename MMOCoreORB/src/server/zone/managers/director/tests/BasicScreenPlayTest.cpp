@@ -10,7 +10,7 @@
 
 #include "gtest/gtest.h"
 #include "server/zone/managers/director/DirectorManager.h"
-#include "server/conf/ConfigManager.h"
+#include "conf/ConfigManager.h"
 
 class BasicScreenPlayTest : public ::testing::Test {
 public:

@@ -8,10 +8,15 @@
 #ifndef SHAREDDRAFTSCHEMATICOBJECTTEMPLATE_H_
 #define SHAREDDRAFTSCHEMATICOBJECTTEMPLATE_H_
 
-#include "../SharedIntangibleObjectTemplate.h"
+#include "templates/SharedIntangibleObjectTemplate.h"
 
 class SharedDraftSchematicObjectTemplate : public SharedIntangibleObjectTemplate {
 public:
+	enum LabType {
+		RESOURCE_LAB = 0x00,
+		GENETIC_LAB = 0x01,
+		DROID_LAB = 0x02
+	};
 	SharedDraftSchematicObjectTemplate() {
 
 	}

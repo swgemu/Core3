@@ -6,7 +6,7 @@
 #define STRUCTUREMANAGER_H_
 
 #include "engine/engine.h"
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "templates/manager/TemplateManager.h"
 
 namespace server {
 namespace zone {

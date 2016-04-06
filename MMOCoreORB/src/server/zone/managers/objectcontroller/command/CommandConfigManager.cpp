@@ -31,9 +31,9 @@
 #include "server/zone/objects/creature/commands/pet/PetClearPatrolPointsCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetGetPatrolPointCommand.h"
 
-#include "server/zone/objects/creature/CreatureState.h"
-#include "server/zone/objects/creature/CreaturePosture.h"
-#include "server/zone/objects/creature/CreatureLocomotion.h"
+#include "templates/params/creature/CreatureState.h"
+#include "templates/params/creature/CreaturePosture.h"
+#include "templates/params/creature/CreatureLocomotion.h"
 #include "templates/datatables/DataTableIff.h"
 #include "templates/datatables/DataTableRow.h"
 #include "server/zone/ZoneProcessServer.h"

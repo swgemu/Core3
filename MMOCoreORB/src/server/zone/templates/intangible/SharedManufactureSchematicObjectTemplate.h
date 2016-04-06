@@ -9,7 +9,7 @@
 #define SHAREDMANUFACTURESCHEMATICOBJECTTEMPLATE_H_
 
 
-#include "../SharedIntangibleObjectTemplate.h"
+#include "templates/SharedIntangibleObjectTemplate.h"
 
 class SharedManufactureSchematicObjectTemplate : public SharedIntangibleObjectTemplate {
 

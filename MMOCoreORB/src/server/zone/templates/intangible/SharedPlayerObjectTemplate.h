@@ -8,7 +8,7 @@
 #ifndef SHAREDPLAYEROBJECTTEMPLATE_H_
 #define SHAREDPLAYEROBJECTTEMPLATE_H_
 
-#include "../SharedIntangibleObjectTemplate.h"
+#include "templates/SharedIntangibleObjectTemplate.h"
 
 class SharedPlayerObjectTemplate : public SharedIntangibleObjectTemplate {
 protected:

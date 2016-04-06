@@ -1,7 +1,7 @@
 #include "server/zone/objects/tangible/eventperk/FlagGame.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/CreatureFlag.h"
+#include "templates/params/creature/CreatureFlag.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/templates/tangible/EventPerkDeedTemplate.h"

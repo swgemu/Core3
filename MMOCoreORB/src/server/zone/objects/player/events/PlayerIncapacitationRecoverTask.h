@@ -8,7 +8,7 @@
 #ifndef PLAYERINCAPACITATIONRECOVERTASK_H_
 #define PLAYERINCAPACITATIONRECOVERTASK_H_
 
-#include "server/zone/objects/creature/CreatureAttribute.h"
+#include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 #include "server/zone/packets/creature/CreatureObjectMessage6.h"

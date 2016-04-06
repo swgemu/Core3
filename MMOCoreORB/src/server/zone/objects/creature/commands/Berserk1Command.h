@@ -6,7 +6,7 @@
 #define BERSERK1COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/CreatureAttribute.h"
+#include "templates/params/creature/CreatureAttribute.h"
 
 class Berserk1Command : public QueueCommand {
 public:

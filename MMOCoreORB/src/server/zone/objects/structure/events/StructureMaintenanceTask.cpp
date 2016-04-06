@@ -13,7 +13,7 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
-#include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
+#include "templates/tangible/SharedStructureObjectTemplate.h"
 #include "server/zone/objects/region/CityRegion.h"
 
 void StructureMaintenanceTask::run() {

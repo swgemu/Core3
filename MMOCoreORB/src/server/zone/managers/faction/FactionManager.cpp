@@ -8,7 +8,7 @@
 #include "FactionManager.h"
 #include "FactionMap.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "templates/manager/TemplateManager.h"
 
 FactionManager::FactionManager() {
 	setLoggingName("FactionManager");

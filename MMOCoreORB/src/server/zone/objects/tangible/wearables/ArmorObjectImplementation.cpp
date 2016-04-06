@@ -9,7 +9,7 @@
 #include "server/zone/templates/tangible/ArmorObjectTemplate.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
-#include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
+#include "templates/tangible/SharedWeaponObjectTemplate.h"
 
 void ArmorObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();

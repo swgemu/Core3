@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 #include "server/zone/objects/creature/ai/variables/CreatureAttackMap.h"
-#include "server/zone/objects/creature/CreatureFlag.h"
+#include "templates/params/creature/CreatureFlag.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/loot/lootgroup/LootGroupCollection.h"
 #include "MobileOutfit.h"

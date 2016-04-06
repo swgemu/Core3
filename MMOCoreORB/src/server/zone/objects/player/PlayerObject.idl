@@ -23,7 +23,7 @@ import server.zone.objects.structure.StructureObject;
 import server.zone.objects.tangible.tool.CraftingTool;
 import server.zone.objects.tangible.tool.SurveyTool;
 import server.zone.objects.waypoint.WaypointObject;
-import server.zone.templates.SharedObjectTemplate;
+include templates.SharedObjectTemplate;
 import server.zone.Zone;
 import server.zone.ZoneClientSession;
 import system.util.SortedVector;

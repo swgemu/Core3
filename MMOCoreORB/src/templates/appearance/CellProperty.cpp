@@ -1,6 +1,6 @@
 #include "CellProperty.h"
 
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "templates/manager/TemplateManager.h"
 #include "templates/appearance/MeshAppearanceTemplate.h"
 #include "templates/appearance/PathNode.h"
 #include "templates/appearance/FloorMesh.h"

@@ -12,7 +12,7 @@ import server.zone.managers.planet.PlanetManager;
 import server.zone.Zone;
 import server.zone.objects.area.ActiveArea;
 include server.zone.objects.scene.SessionFacadeType;
-include server.zone.templates.tangible.SharedStructureObjectTemplate;
+include templates.tangible.SharedStructureObjectTemplate;
 
 class PlaceStructureSession extends Facade {
 	protected CreatureObject creatureObject;

@@ -44,8 +44,8 @@ include server.zone.objects.scene.variables.PendingTasksMap;
 include server.zone.objects.scene.SessionFacadeType;
 include server.zone.objects.scene.ObserverType;
 include templates.manager.PlanetMapCategory;
-include server.zone.managers.templates.TemplateManager;
-import server.zone.templates.SharedObjectTemplate;
+include templates.manager.TemplateManager;
+include templates.SharedObjectTemplate;
 import server.zone.objects.area.ActiveArea;
 include server.zone.objects.scene.components.ZoneComponent;
 include server.zone.objects.scene.components.ObjectMenuComponent;
@@ -165,6 +165,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	public abstract native void createComponents();
 	public abstract native void createContainerComponent();
+	public abstract native void createObjectMenuComponent();
 
 	/**
 	 * Initializes the transient members of SceneObject, must call the inherited object method first.

@@ -13,10 +13,10 @@ import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneServer;
 import server.zone.objects.tangible.pharmaceutical.PharmaceuticalObject;
-include server.zone.templates.tangible.StatePackTemplate;
+include templates.tangible.StatePackTemplate;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
-include server.zone.objects.creature.CreatureState;
+include templates.params.creature.CreatureState;
 
 class StatePack extends PharmaceuticalObject {
 	protected unsigned long state;

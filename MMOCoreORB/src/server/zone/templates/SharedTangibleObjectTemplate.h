@@ -10,7 +10,7 @@
 
 #include "server/zone/objects/draftschematic/resourceweight/ResourceWeight.h"
 
-#include "SharedObjectTemplate.h"
+#include "templates/SharedObjectTemplate.h"
 
 class StructureFootprint;
 

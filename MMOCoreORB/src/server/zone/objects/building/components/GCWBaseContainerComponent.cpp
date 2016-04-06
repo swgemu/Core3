@@ -6,7 +6,7 @@
  */
 
 #include "GCWBaseContainerComponent.h"
-#include "server/zone/objects/creature/CreatureFlag.h"
+#include "templates/params/creature/CreatureFlag.h"
 
 bool GCWBaseContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
 

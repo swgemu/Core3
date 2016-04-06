@@ -8,7 +8,7 @@
 #ifndef STIMPACKTEMPLATE_H_
 #define STIMPACKTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "server/zone/templates/SharedTangibleObjectTemplate.h"
 
 class StimPackTemplate : public SharedTangibleObjectTemplate {
 	int medicineUse;

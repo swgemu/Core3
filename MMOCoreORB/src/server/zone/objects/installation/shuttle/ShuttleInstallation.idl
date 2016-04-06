@@ -15,7 +15,7 @@ import server.zone.packets.object.ObjectMenuResponse;
 import engine.service.proto.BasePacket;
 import system.lang.ref.Reference;
 import server.zone.Zone;
-import server.zone.templates.SharedObjectTemplate;
+include templates.SharedObjectTemplate;
 import system.util.VectorMap;
 import server.zone.objects.tangible.terminal.ticketcollector.TicketCollector;
 import server.zone.objects.tangible.terminal.travel.TravelTerminal;

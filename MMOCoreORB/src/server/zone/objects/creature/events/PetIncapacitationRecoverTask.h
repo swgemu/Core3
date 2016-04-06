@@ -2,7 +2,7 @@
 #ifndef PETINCAPACITATIONRECOVERTASK_H_
 #define PETINCAPACITATIONRECOVERTASK_H_
 
-#include "server/zone/objects/creature/CreatureAttribute.h"
+#include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 

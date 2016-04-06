@@ -8,7 +8,7 @@
 #ifndef SHAREDSTRUCTUREOBJECTTEMPLATE_H_
 #define SHAREDSTRUCTUREOBJECTTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "server/zone/templates/SharedTangibleObjectTemplate.h"
 
 class SharedStructureObjectTemplate : public SharedTangibleObjectTemplate {
 protected:

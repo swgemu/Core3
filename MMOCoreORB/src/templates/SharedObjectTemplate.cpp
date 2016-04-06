@@ -6,20 +6,13 @@
  */
 
 #include "SharedObjectTemplate.h"
-#include "server/zone/managers/templates/TemplateManager.h"
-#include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/managers/components/ComponentManager.h"
-#include "server/zone/managers/director/DirectorManager.h"
+#include "templates/manager/TemplateManager.h"
 #include "templates/slots/SlotDescriptor.h"
 #include "templates/slots/ArrangementDescriptor.h"
-#include "server/zone/objects/area/ActiveArea.h"
-#include "server/ServerCore.h"
 
 SharedObjectTemplate::SharedObjectTemplate() {
 	portalLayout = NULL;
 	appearanceTemplate = NULL;
-	objectMenuComponent = NULL;
-	containerComponent = NULL;
 	loadedPortalLayout = false, loadedAppearanceTemplate = false;
 
 	snapToTerrain = false;
@@ -187,22 +180,7 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 			componentName = Lua::getStringParameter(state);
 		}
 
-		objectMenuComponent = ComponentManager::instance()->getComponent<SceneObjectComponent*>(componentName);
-
-		if (objectMenuComponent == NULL) {
-			Lua* lua = DirectorManager::instance()->getLuaInstance();
-			LuaObject test = lua->getGlobalObject(componentName);
-
-			if (test.isValidTable()) {
-				objectMenuComponent = new LuaObjectMenuComponent(componentName);
-				TemplateManager::instance()->info("New " + componentType + " ObjectMenuComponent created: '" + componentName + "' for " + getFullTemplateString());
-				ComponentManager::instance()->putComponent(componentName, objectMenuComponent);
-			} else {
-				TemplateManager::instance()->error("ObjectMenuComponent of type " + componentType + " not found: '" + componentName + "' for " + getFullTemplateString());
-			}
-
-			test.pop();
-		}
+		objectMenuComponent = componentName;
 
 	} else if (varName == "attributeListComponent") {
 		attributeListComponent = Lua::getStringParameter(state);
@@ -224,23 +202,7 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 			componentType = "unknown";
 			componentName = Lua::getStringParameter(state);
 		}
-
-		containerComponent = ComponentManager::instance()->getComponent<SceneObjectComponent*>(componentName);
-
-		if (containerComponent == NULL) {
-			Lua* lua = DirectorManager::instance()->getLuaInstance();
-			LuaObject test = lua->getGlobalObject(componentName);
-
-			if (test.isValidTable()) {
-				containerComponent = new LuaContainerComponent(componentName);
-				TemplateManager::instance()->info("New " + componentType + " ContainerComponent created: '" + componentName + "' for " + getFullTemplateString());
-				ComponentManager::instance()->putComponent(componentName, containerComponent);
-			} else {
-				TemplateManager::instance()->error("ContainerComponent of type " + componentType + " not found: '" + componentName + "' for " + getFullTemplateString());
-			}
-
-			test.pop();
-		}
+		containerComponent = componentName;
 		//containerComponent = Lua::getStringParameter(state);
 	} else if (varName == "totalCellNumber") {
 		totalCellNumber = Lua::getIntParameter(state);
@@ -507,105 +469,6 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 	clientTemplateFileName = templateData->getStringField("clientTemplateFileName");
 	
 	return;
-
-	//Deprecated
-	/*TemplateManager* templateManager = TemplateManager::instance();
-
-	objectName = templateData->getStringField("objectName");
-	detailedDescription = templateData->getStringField("detailedDescription");
-	lookAtText = templateData->getStringField("lookAtText");
-
-	snapToTerrain = templateData->getByteField("snapToTerrain");
-	containerType = templateData->getIntField("containerType");
-	containerVolumeLimit = templateData->getIntField("containerVolumeLimit");
-
-	tintPallete = templateData->getStringField("tintPallete");
-
-	String arrangementDescriptorFilename = templateData->getStringField("arrangementDescriptorFilename");
-
-	arrangementDescriptors = templateManager->getArrangementDescriptor(arrangementDescriptorFilename);
-
-
-	String slotDescriptorFilename = templateData->getStringField("slotDescriptorFilename");
-
-	slotDescriptors = templateManager->getSlotDescriptor(slotDescriptorFilename);
-
-	appearanceFilename = templateData->getStringField("appearanceFilename");
-	appearanceTemplate = NULL;
-	portalLayoutFilename = templateData->getStringField("portalLayoutFilename");
-	portalLayout = NULL;
-
-	clientDataFile = templateData->getStringField("clientDataFile");
-
-	collisionMaterialFlags = templateData->getIntField("collisionMaterialFlags");
-	collisionMaterialPassFlags = templateData->getIntField("collisionMaterialPassFlags");
-
-	LuaObject scaleObject = templateData->getObjectField("scale");
-
-	if (scaleObject.isValidTable()) {
-		scale.removeAll(2, 0);
-
-		for (int i = 1; i <= scaleObject.getTableSize(); ++i) {
-			scale.add(scaleObject.getFloatAt(i));
-		}
-
-		scaleObject.pop();
-	} else {
-		scaleObject.pop();
-
-		scale.add(templateData->getFloatField("scale"));
-	}
-
-	collisionMaterialBlockFlags = templateData->getIntField("collisionMaterialBlockFlags");
-	collisionActionFlags = templateData->getIntField("collisionActionFlags");
-	collisionActionPassFlags = templateData->getIntField("collisionActionPassFlags");
-	collisionActionBlockFlags = templateData->getIntField("collisionActionBlockFlags");
-	gameObjectType = templateData->getIntField("gameObjectType");
-
-
-	sendToClient = templateData->getByteField("sendToClient");
-	scaleThresholdBeforeExtentTest = templateData->getFloatField("scaleThresholdBeforeExtentTest");
-	clearFloraRadius = templateData->getFloatField("clearFloraRadius");
-	surfaceType = templateData->getIntField("surfaceType");
-	noBuildRadius = templateData->getFloatField("noBuildRadius");
-	onlyVisibleInTools = templateData->getByteField("onlyVisibleInTools");
-	locationReservationRadius = templateData->getFloatField("locationReservationRadius");
-
-	//server data
-	clientObjectCRC = templateData->getIntField("clientObjectCRC");
-
-	templateType = templateData->getIntField("templateType");
-
-	planetMapCategory = templateManager->getPlanetMapCategoryByName(templateData->getStringField("planetMapCategory"));
-	planetMapSubCategory = templateManager->getPlanetMapCategoryByName(templateData->getStringField("planetMapSubCategory"));
-
-	LuaObject luaItemList = templateData->getObjectField("childObjects");
-
-	int size = luaItemList.getTableSize();
-
-	L = luaItemList.getLuaState();
-
-	for (int i = 0; i < size; ++i) {
-		lua_rawgeti(L, -1, i + 1);
-		LuaObject a(L);
-
-		ChildObject object;
-		object.parseFromLua(&a);
-
-		childObjects.add(object);
-
-		a.pop();
-	}
-
-	luaItemList.pop();
-
-	zoneComponent = templateData->getStringField("zoneComponent");
-	objectMenuComponent = templateData->getStringField("objectMenuComponent");
-	containerComponent = templateData->getStringField("containerComponent");
-
-	totalCellNumber = templateData->getIntField("totalCellNumber");
-
-	clientGameObjectType = templateData->getIntField("clientGameObjectType");*/
 }
 
 PortalLayout* SharedObjectTemplate::getPortalLayout() {

@@ -8,7 +8,7 @@
 #include "server/zone/objects/creature/buffs/PerformanceBuff.h"
 #include "server/zone/managers/skill/Performance.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/CreatureAttribute.h"
+#include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/buffs/PerformanceBuffType.h"
 
 void PerformanceBuffImplementation::activate(bool applyModifiers) {

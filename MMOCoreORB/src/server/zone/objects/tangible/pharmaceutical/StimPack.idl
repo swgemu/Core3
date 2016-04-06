@@ -15,7 +15,7 @@ import server.zone.ZoneServer;
 import server.zone.objects.tangible.pharmaceutical.PharmaceuticalObject;
 import system.lang.Math;
 import system.lang.String;
-include server.zone.templates.tangible.StimPackTemplate;
+include templates.tangible.StimPackTemplate;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 

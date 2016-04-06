@@ -6,7 +6,7 @@
  */
 
 #include "DetailAppearanceTemplate.h"
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "templates/manager/TemplateManager.h"
 
 void DetailAppearanceTemplate::parse(IffStream* iffStream) {
 	iffStream->openForm('DTLA');

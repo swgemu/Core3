@@ -8,7 +8,7 @@
 #ifndef RECREATIONBUILDINGOBJECTTEMPLATE_H_
 #define RECREATIONBUILDINGOBJECTTEMPLATE_H_
 
-#include "SharedBuildingObjectTemplate.h"
+#include "templates/tangible/SharedBuildingObjectTemplate.h"
 
 class RecreationBuildingObjectTemplate : public SharedBuildingObjectTemplate {
 	int medicalRating;

@@ -10,7 +10,7 @@
 #include "server/login/LoginServer.h"
 #include "server/login/account/Account.h"
 #include "server/login/account/AccountManager.h"
-#include "server/conf/ConfigManager.h"
+#include "conf/ConfigManager.h"
 #include "mongoose/mongoose.h"
 #include "servlets/Servlet.h"
 #include "WebCredentials.h"
