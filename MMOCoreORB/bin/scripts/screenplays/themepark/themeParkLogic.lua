@@ -1811,7 +1811,7 @@ function ThemeParkLogic:goToNextMission(pConversingPlayer)
 	writeData(playerID .. ":hasPreReqItem", 0)
 	writeData(playerID .. ":breechTriggered", 0)
 	writeStringData(playerID .. ":activeScreenPlay", "")
-	CreatureObject(pConversingPlayer):setScreenPlayState(math.pow(2, missionNumber - 1), self.screenPlayState .. "_mission_" .. npcName)
+	CreatureObject(pConversingPlayer):setScreenPlayState(2 ^ (missionNumber - 1), self.screenPlayState .. "_mission_" .. npcName)
 
 	if missionNumber == #npcData.missions then
 		CreatureObject(pConversingPlayer):setScreenPlayState(npcNumber, self.screenPlayState)
