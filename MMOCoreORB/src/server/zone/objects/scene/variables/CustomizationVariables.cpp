@@ -6,7 +6,7 @@
 
 #include "engine/db/BinaryData.h"
 
-#include "server/zone/managers/customization/CustomizationIdManager.h"
+#include "templates/customization/CustomizationIdManager.h"
 
 CustomizationVariables::CustomizationVariables() : VectorMap<uint8, int16>(1, 1) {
 	removeAll();

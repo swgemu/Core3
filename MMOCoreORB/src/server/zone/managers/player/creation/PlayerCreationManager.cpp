@@ -27,7 +27,7 @@
 #include "server/ServerCore.h"
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/objects/ship/ShipObject.h"
-#include "server/zone/managers/customization/CustomizationIdManager.h"
+#include "templates/customization/CustomizationIdManager.h"
 #include "server/zone/managers/skill/imagedesign/ImageDesignManager.h"
 #include "templates/customization/AssetCustomizationManagerTemplate.h"
 #include "templates/params/PaletteColorCustomizationVariable.h"

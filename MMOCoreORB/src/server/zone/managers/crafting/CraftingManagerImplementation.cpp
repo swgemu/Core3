@@ -210,15 +210,15 @@ String CraftingManagerImplementation::checkBioSkillMods(const String& property) 
 void CraftingManagerImplementation::configureLabratories() {
 	ResourceLabratory* resLab = new ResourceLabratory();
 	resLab->initialize(zoneServer.get());
-	labs.put(static_cast<int>(RESOURCE_LAB),resLab); //RESOURCE_LAB
+	labs.put(static_cast<int>(DraftSchematicObjectTemplate::RESOURCE_LAB),resLab); //RESOURCE_LAB
 
 	GeneticLabratory* genLab = new GeneticLabratory();
 	genLab->initialize(zoneServer.get());
-	labs.put(static_cast<int>(GENETIC_LAB), genLab); //GENETIC_LAB
+	labs.put(static_cast<int>(DraftSchematicObjectTemplate::GENETIC_LAB), genLab); //GENETIC_LAB
 
 	DroidLabratory* droidLab = new DroidLabratory();
 	droidLab->initialize(zoneServer.get());
-	labs.put(static_cast<int>(DROID_LAB), droidLab); //DROID_LAB
+	labs.put(static_cast<int>(DraftSchematicObjectTemplate::DROID_LAB), droidLab); //DROID_LAB
 
 }
 void CraftingManagerImplementation::setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess) {

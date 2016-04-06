@@ -18,7 +18,7 @@
 #include "server/zone/templates/tangible/DroidDeedTemplate.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"
-#include "server/zone/managers/customization/CustomizationIdManager.h"
+#include "templates/customization/CustomizationIdManager.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "server/zone/objects/manufactureschematic/ingredientslots/IngredientSlot.h"
 #include "server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h"

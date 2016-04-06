@@ -9,9 +9,8 @@
 #define CUSTOMIZATIONIDMANAGER_H_
 
 #include "engine/engine.h"
-#include "PaletteData.h"
-#include "HairAssetData.h"
-#include "server/zone/managers/skill/imagedesign/CustomizationData.h"
+#include "templates/customization/PaletteData.h"
+#include "templates/customization/HairAssetData.h"
 
 class CustomizationIdManager : public Object, public Logger, public Singleton<CustomizationIdManager> {
 	HashTable<String, int> customizationIds;

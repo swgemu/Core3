@@ -43,10 +43,6 @@ class CraftingManager extends ZoneManager {
 	public static final short BARELYSUCCESSFUL = 7;
 	public static final short CRITICALFAILURE = 8;
 
-	public static final int RESOURCE_LAB = 0x00;
-	public static final int GENETIC_LAB = 0x01;
-	public static final int DROID_LAB = 0x02;
-
 	@dereferenced
 	private transient SortedVector<string> bioMods;
 	

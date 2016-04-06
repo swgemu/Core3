@@ -97,8 +97,6 @@
 #include "server/conf/ConfigManager.h"
 #include "server/zone/templates/installation/FactoryObjectTemplate.h"
 
-#include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
-#include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
@@ -112,16 +110,13 @@
 #include "templates/appearance/ComponentAppearanceTemplate.h"
 #include "templates/footprint/StructureFootprint.h"
 #include "templates/slots/SlotId.h"
-#include "server/zone/managers/customization/CustomizationIdManager.h"
+#include "templates/customization/CustomizationIdManager.h"
 #include "templates/params/PaletteColorCustomizationVariable.h"
 
 #include "tre3/TreeArchive.h"
 
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/conf/ConfigManager.h"
 
 #include "templates/manager/DataArchiveStore.h"
 
@@ -774,8 +769,8 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("LEGS_HITLOCATION", WearablesDeltaVector::LEGS);
 	luaTemplatesInstance->setGlobalInt("HEAD_HITLOCATION", WearablesDeltaVector::HEAD);
 
-	luaTemplatesInstance->setGlobalInt("GENETIC_LAB", CraftingManager::GENETIC_LAB);
-	luaTemplatesInstance->setGlobalInt("RESOURCE_LAB", CraftingManager::RESOURCE_LAB);
+	luaTemplatesInstance->setGlobalInt("GENETIC_LAB", DraftSchematicObjectTemplate::GENETIC_LAB);
+	luaTemplatesInstance->setGlobalInt("RESOURCE_LAB", DraftSchematicObjectTemplate::RESOURCE_LAB);
 
 	luaTemplatesInstance->setGlobalInt("STATIC", EventPerkDeedTemplate::STATIC);
 	luaTemplatesInstance->setGlobalInt("THEATER", EventPerkDeedTemplate::THEATER);

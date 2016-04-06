@@ -6,7 +6,6 @@
  */
 
 #include "CustomizationIdManager.h"
-#include "server/zone/managers/templates/TemplateManager.h"
 #include "templates/datatables/DataTableIff.h"
 
 CustomizationIdManager::CustomizationIdManager() {
@@ -85,5 +84,3 @@ void CustomizationIdManager::readObject(IffStream* iffStream) {
 
 	info("loaded " + String::valueOf(customizationIds.size()) + " customization ids", true);
 }
-
-

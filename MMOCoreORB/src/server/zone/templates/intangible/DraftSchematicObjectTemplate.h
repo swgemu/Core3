@@ -81,6 +81,12 @@ protected:
 	bool disableFactory;
 
 public:
+	enum LabType {
+		RESOURCE_LAB = 0x00,
+		GENETIC_LAB = 0x01,
+		DROID_LAB = 0x02
+	};
+
 	DraftSchematicObjectTemplate();
 
 	~DraftSchematicObjectTemplate();

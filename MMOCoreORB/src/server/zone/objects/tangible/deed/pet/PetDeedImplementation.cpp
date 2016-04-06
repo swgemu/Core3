@@ -26,7 +26,7 @@
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/templates/tangible/PetDeedTemplate.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/managers/customization/CustomizationIdManager.h"
+#include "templates/customization/CustomizationIdManager.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/creature/DnaManager.h"
