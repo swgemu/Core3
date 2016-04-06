@@ -150,24 +150,24 @@ void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player,int qu
 	prototype->setArmorRating(deed->getArmor());
 	prototype->setSpecialAttackOne(deed->getSpecial1());
 	prototype->setSpecialAttackTwo(deed->getSpecial2());
-	if (deed->isSpecialResist(WeaponObject::STUN))
-		prototype->setSpecialResist(WeaponObject::STUN);
-	if (deed->isSpecialResist(WeaponObject::KINETIC))
-		prototype->setSpecialResist(WeaponObject::KINETIC);
-	if (deed->isSpecialResist(WeaponObject::ENERGY))
-		prototype->setSpecialResist(WeaponObject::ENERGY);
-	if (deed->isSpecialResist(WeaponObject::BLAST))
-		prototype->setSpecialResist(WeaponObject::BLAST);
-	if (deed->isSpecialResist(WeaponObject::HEAT))
-		prototype->setSpecialResist(WeaponObject::HEAT);
-	if (deed->isSpecialResist(WeaponObject::COLD))
-		prototype->setSpecialResist(WeaponObject::COLD);
-	if (deed->isSpecialResist(WeaponObject::ELECTRICITY))
-		prototype->setSpecialResist(WeaponObject::ELECTRICITY);
-	if (deed->isSpecialResist(WeaponObject::ACID))
-		prototype->setSpecialResist(WeaponObject::ACID);
-	if (deed->isSpecialResist(WeaponObject::LIGHTSABER))
-		prototype->setSpecialResist(WeaponObject::LIGHTSABER);
+	if (deed->isSpecialResist(SharedWeaponObjectTemplate::STUN))
+		prototype->setSpecialResist(SharedWeaponObjectTemplate::STUN);
+	if (deed->isSpecialResist(SharedWeaponObjectTemplate::KINETIC))
+		prototype->setSpecialResist(SharedWeaponObjectTemplate::KINETIC);
+	if (deed->isSpecialResist(SharedWeaponObjectTemplate::ENERGY))
+		prototype->setSpecialResist(SharedWeaponObjectTemplate::ENERGY);
+	if (deed->isSpecialResist(SharedWeaponObjectTemplate::BLAST))
+		prototype->setSpecialResist(SharedWeaponObjectTemplate::BLAST);
+	if (deed->isSpecialResist(SharedWeaponObjectTemplate::HEAT))
+		prototype->setSpecialResist(SharedWeaponObjectTemplate::HEAT);
+	if (deed->isSpecialResist(SharedWeaponObjectTemplate::COLD))
+		prototype->setSpecialResist(SharedWeaponObjectTemplate::COLD);
+	if (deed->isSpecialResist(SharedWeaponObjectTemplate::ELECTRICITY))
+		prototype->setSpecialResist(SharedWeaponObjectTemplate::ELECTRICITY);
+	if (deed->isSpecialResist(SharedWeaponObjectTemplate::ACID))
+		prototype->setSpecialResist(SharedWeaponObjectTemplate::ACID);
+	if (deed->isSpecialResist(SharedWeaponObjectTemplate::LIGHTSABER))
+		prototype->setSpecialResist(SharedWeaponObjectTemplate::LIGHTSABER);
 
 	Locker locker(inventory);
 	if (inventory->transferObject(prototype, -1, true, false)) {
@@ -236,24 +236,24 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 	prototype->setRanged(creatureTemplate->getWeapons().size() > 0);
 	prototype->setArmorRating(creatureTemplate->getArmor());
 
-	if (creatureTemplate->isSpecialProtection(WeaponObject::STUN))
-		prototype->setSpecialResist(WeaponObject::STUN);
-	if (creatureTemplate->isSpecialProtection(WeaponObject::KINETIC))
-		prototype->setSpecialResist(WeaponObject::KINETIC);
-	if (creatureTemplate->isSpecialProtection(WeaponObject::ENERGY))
-		prototype->setSpecialResist(WeaponObject::ENERGY);
-	if (creatureTemplate->isSpecialProtection(WeaponObject::BLAST))
-		prototype->setSpecialResist(WeaponObject::BLAST);
-	if (creatureTemplate->isSpecialProtection(WeaponObject::HEAT))
-		prototype->setSpecialResist(WeaponObject::HEAT);
-	if (creatureTemplate->isSpecialProtection(WeaponObject::COLD))
-		prototype->setSpecialResist(WeaponObject::COLD);
-	if (creatureTemplate->isSpecialProtection(WeaponObject::ELECTRICITY))
-		prototype->setSpecialResist(WeaponObject::ELECTRICITY);
-	if (creatureTemplate->isSpecialProtection(WeaponObject::ACID))
-		prototype->setSpecialResist(WeaponObject::ACID);
-	if (creatureTemplate->isSpecialProtection(WeaponObject::LIGHTSABER))
-		prototype->setSpecialResist(WeaponObject::LIGHTSABER);
+	if (creatureTemplate->isSpecialProtection(SharedWeaponObjectTemplate::STUN))
+		prototype->setSpecialResist(SharedWeaponObjectTemplate::STUN);
+	if (creatureTemplate->isSpecialProtection(SharedWeaponObjectTemplate::KINETIC))
+		prototype->setSpecialResist(SharedWeaponObjectTemplate::KINETIC);
+	if (creatureTemplate->isSpecialProtection(SharedWeaponObjectTemplate::ENERGY))
+		prototype->setSpecialResist(SharedWeaponObjectTemplate::ENERGY);
+	if (creatureTemplate->isSpecialProtection(SharedWeaponObjectTemplate::BLAST))
+		prototype->setSpecialResist(SharedWeaponObjectTemplate::BLAST);
+	if (creatureTemplate->isSpecialProtection(SharedWeaponObjectTemplate::HEAT))
+		prototype->setSpecialResist(SharedWeaponObjectTemplate::HEAT);
+	if (creatureTemplate->isSpecialProtection(SharedWeaponObjectTemplate::COLD))
+		prototype->setSpecialResist(SharedWeaponObjectTemplate::COLD);
+	if (creatureTemplate->isSpecialProtection(SharedWeaponObjectTemplate::ELECTRICITY))
+		prototype->setSpecialResist(SharedWeaponObjectTemplate::ELECTRICITY);
+	if (creatureTemplate->isSpecialProtection(SharedWeaponObjectTemplate::ACID))
+		prototype->setSpecialResist(SharedWeaponObjectTemplate::ACID);
+	if (creatureTemplate->isSpecialProtection(SharedWeaponObjectTemplate::LIGHTSABER))
+		prototype->setSpecialResist(SharedWeaponObjectTemplate::LIGHTSABER);
 
 	CreatureAttackMap* attackMap = creatureTemplate->getAttacks();
 	if (attackMap->size() > 0) {

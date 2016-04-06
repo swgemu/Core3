@@ -242,16 +242,16 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 	String ap;
 
 	switch (armorPiercing) {
-	case NONE:
+	case SharedWeaponObjectTemplate::NONE:
 		ap = "None";
 		break;
-	case LIGHT:
+	case SharedWeaponObjectTemplate::LIGHT:
 		ap = "Light";
 		break;
-	case MEDIUM:
+	case SharedWeaponObjectTemplate::MEDIUM:
 		ap = "Medium";
 		break;
-	case HEAVY:
+	case SharedWeaponObjectTemplate::HEAVY:
 		ap = "Heavy";
 		break;
 	default:
@@ -270,31 +270,31 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 	StringBuffer dmgtxt;
 
 	switch (damageType) {
-	case KINETIC:
+	case SharedWeaponObjectTemplate::KINETIC:
 		dmgtxt << "Kinetic";
 		break;
-	case ENERGY:
+	case SharedWeaponObjectTemplate::ENERGY:
 		dmgtxt << "Energy";
 		break;
-	case ELECTRICITY:
+	case SharedWeaponObjectTemplate::ELECTRICITY:
 		dmgtxt << "Electricity";
 		break;
-	case STUN:
+	case SharedWeaponObjectTemplate::STUN:
 		dmgtxt << "Stun";
 		break;
-	case BLAST:
+	case SharedWeaponObjectTemplate::BLAST:
 		dmgtxt << "Blast";
 		break;
-	case HEAT:
+	case SharedWeaponObjectTemplate::HEAT:
 		dmgtxt << "Heat";
 		break;
-	case COLD:
+	case SharedWeaponObjectTemplate::COLD:
 		dmgtxt << "Cold";
 		break;
-	case ACID:
+	case SharedWeaponObjectTemplate::ACID:
 		dmgtxt << "Acid";
 		break;
-	case LIGHTSABER:
+	case SharedWeaponObjectTemplate::LIGHTSABER:
 		dmgtxt << "Lightsaber";
 		break;
 	default:

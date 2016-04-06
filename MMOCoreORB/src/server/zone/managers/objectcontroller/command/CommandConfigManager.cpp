@@ -481,15 +481,15 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("FORCEATTACK", CombatManager::FORCEATTACK);
 
 	// damage types
-	setGlobalInt("KINETIC_DAMAGE", WeaponObject::KINETIC);
-	setGlobalInt("ENERGY_DAMAGE", WeaponObject::ENERGY);
-	setGlobalInt("BLAST_DAMAGE", WeaponObject::BLAST);
-	setGlobalInt("STUN_DAMAGE", WeaponObject::STUN);
-	setGlobalInt("LIGHTSABER_DAMAGE", WeaponObject::LIGHTSABER);
-	setGlobalInt("HEAT_DAMAGE", WeaponObject::HEAT);
-	setGlobalInt("COLD_DAMAGE", WeaponObject::COLD);
-	setGlobalInt("ACID_DAMAGE", WeaponObject::ACID);
-	setGlobalInt("ELECTRICITY_DAMAGE", WeaponObject::ELECTRICITY);
+	setGlobalInt("KINETIC_DAMAGE", SharedWeaponObjectTemplate::KINETIC);
+	setGlobalInt("ENERGY_DAMAGE", SharedWeaponObjectTemplate::ENERGY);
+	setGlobalInt("BLAST_DAMAGE", SharedWeaponObjectTemplate::BLAST);
+	setGlobalInt("STUN_DAMAGE", SharedWeaponObjectTemplate::STUN);
+	setGlobalInt("LIGHTSABER_DAMAGE", SharedWeaponObjectTemplate::LIGHTSABER);
+	setGlobalInt("HEAT_DAMAGE", SharedWeaponObjectTemplate::HEAT);
+	setGlobalInt("COLD_DAMAGE", SharedWeaponObjectTemplate::COLD);
+	setGlobalInt("ACID_DAMAGE", SharedWeaponObjectTemplate::ACID);
+	setGlobalInt("ELECTRICITY_DAMAGE", SharedWeaponObjectTemplate::ELECTRICITY);
     
 	// JediQueueCommand buff types
 	setGlobalInt("BASE_BUFF", JediQueueCommand::BASE_BUFF);

@@ -695,9 +695,9 @@ int CombatManager::getAttackerAccuracyModifier(TangibleObject* attacker, Creatur
 	attackerAccuracy += creoAttacker->getSkillMod("attack_accuracy") + creoAttacker->getSkillMod("dead_eye");
 
 	// FS skill mods
-	if (weapon->getAttackType() == WeaponObject::MELEEATTACK)
+	if (weapon->getAttackType() == SharedWeaponObjectTemplate::MELEEATTACK)
 		attackerAccuracy += creoAttacker->getSkillMod("melee_accuracy");
-	else if (weapon->getAttackType() == WeaponObject::RANGEDATTACK)
+	else if (weapon->getAttackType() == SharedWeaponObjectTemplate::RANGEDATTACK)
 		attackerAccuracy += creoAttacker->getSkillMod("ranged_accuracy");
 
 	// now apply overall weapon defense mods
@@ -726,9 +726,9 @@ int CombatManager::getAttackerAccuracyBonus(CreatureObject* attacker, WeaponObje
 	bonus += attacker->getSkillMod("private_attack_accuracy");
 	bonus += attacker->getSkillMod("private_accuracy_bonus");
 
-	if (weapon->getAttackType() == WeaponObject::MELEEATTACK)
+	if (weapon->getAttackType() == SharedWeaponObjectTemplate::MELEEATTACK)
 		bonus += attacker->getSkillMod("private_melee_accuracy_bonus");
-	if (weapon->getAttackType() == WeaponObject::RANGEDATTACK)
+	if (weapon->getAttackType() == SharedWeaponObjectTemplate::RANGEDATTACK)
 		bonus += attacker->getSkillMod("private_ranged_accuracy_bonus");
 
 	return bonus;
@@ -806,7 +806,7 @@ float CombatManager::getDefenderToughnessModifier(CreatureObject* defender, int 
 	}
 
 	int jediToughness = defender->getSkillMod("jedi_toughness");
-	if (damType != WeaponObject::LIGHTSABER && jediToughness > 0)
+	if (damType != SharedWeaponObjectTemplate::LIGHTSABER && jediToughness > 0)
 		damage *= 1.f - (jediToughness / 100.f);
 
 	float foodMitigatedDamage = damage;
@@ -865,10 +865,10 @@ int CombatManager::calculateDamageRange(TangibleObject* attacker, CreatureObject
 	if (defenderGhost != NULL) {
 		String mitString;
 		switch (attackType){
-		case WeaponObject::MELEEATTACK:
+		case SharedWeaponObjectTemplate::MELEEATTACK:
 			mitString = "melee_damage_mitigation_";
 			break;
-		case WeaponObject::RANGEDATTACK:
+		case SharedWeaponObjectTemplate::RANGEDATTACK:
 			mitString = "ranged_damage_mitigation_";
 			break;
 		default:
@@ -901,9 +901,9 @@ float CombatManager::applyDamageModifiers(CreatureObject* attacker, WeaponObject
 			damage += attacker->getSkillMod(weaponDamageMods->get(i));
 		}
 
-		if (weapon->getAttackType() == WeaponObject::MELEEATTACK)
+		if (weapon->getAttackType() == SharedWeaponObjectTemplate::MELEEATTACK)
 			damage += attacker->getSkillMod("private_melee_damage_bonus");
-		if (weapon->getAttackType() == WeaponObject::RANGEDATTACK)
+		if (weapon->getAttackType() == SharedWeaponObjectTemplate::RANGEDATTACK)
 			damage += attacker->getSkillMod("private_ranged_damage_bonus");
 	}
 
@@ -933,10 +933,10 @@ int CombatManager::getSpeedModifier(CreatureObject* attacker, WeaponObject* weap
 
 	speedMods += attacker->getSkillMod("private_speed_bonus");
 
-	if (weapon->getAttackType() == WeaponObject::MELEEATTACK) {
+	if (weapon->getAttackType() == SharedWeaponObjectTemplate::MELEEATTACK) {
 		speedMods += attacker->getSkillMod("private_melee_speed_bonus");
 		speedMods += attacker->getSkillMod("melee_speed");
-	} else if (weapon->getAttackType() == WeaponObject::RANGEDATTACK) {
+	} else if (weapon->getAttackType() == SharedWeaponObjectTemplate::RANGEDATTACK) {
 		speedMods += attacker->getSkillMod("private_ranged_speed_bonus");
 		speedMods += attacker->getSkillMod("ranged_speed");
 	}
@@ -950,31 +950,31 @@ int CombatManager::getArmorObjectReduction(ArmorObject* armor, int damageType) {
 	float resist = 0;
 
 	switch (damageType) {
-	case WeaponObject::KINETIC:
+	case SharedWeaponObjectTemplate::KINETIC:
 		resist = armor->getKinetic();
 		break;
-	case WeaponObject::ENERGY:
+	case SharedWeaponObjectTemplate::ENERGY:
 		resist = armor->getEnergy();
 		break;
-	case WeaponObject::ELECTRICITY:
+	case SharedWeaponObjectTemplate::ELECTRICITY:
 		resist = armor->getElectricity();
 		break;
-	case WeaponObject::STUN:
+	case SharedWeaponObjectTemplate::STUN:
 		resist = armor->getStun();
 		break;
-	case WeaponObject::BLAST:
+	case SharedWeaponObjectTemplate::BLAST:
 		resist = armor->getBlast();
 		break;
-	case WeaponObject::HEAT:
+	case SharedWeaponObjectTemplate::HEAT:
 		resist = armor->getHeat();
 		break;
-	case WeaponObject::COLD:
+	case SharedWeaponObjectTemplate::COLD:
 		resist = armor->getCold();
 		break;
-	case WeaponObject::ACID:
+	case SharedWeaponObjectTemplate::ACID:
 		resist = armor->getAcid();
 		break;
-	case WeaponObject::LIGHTSABER:
+	case SharedWeaponObjectTemplate::LIGHTSABER:
 		resist = armor->getLightSaber();
 		break;
 	}
@@ -1005,31 +1005,31 @@ int CombatManager::getArmorNpcReduction(AiAgent* defender, int damageType) {
 	float resist = 0;
 
 	switch (damageType) {
-	case WeaponObject::KINETIC:
+	case SharedWeaponObjectTemplate::KINETIC:
 		resist = defender->getKinetic();
 		break;
-	case WeaponObject::ENERGY:
+	case SharedWeaponObjectTemplate::ENERGY:
 		resist = defender->getEnergy();
 		break;
-	case WeaponObject::ELECTRICITY:
+	case SharedWeaponObjectTemplate::ELECTRICITY:
 		resist = defender->getElectricity();
 		break;
-	case WeaponObject::STUN:
+	case SharedWeaponObjectTemplate::STUN:
 		resist = defender->getStun();
 		break;
-	case WeaponObject::BLAST:
+	case SharedWeaponObjectTemplate::BLAST:
 		resist = defender->getBlast();
 		break;
-	case WeaponObject::HEAT:
+	case SharedWeaponObjectTemplate::HEAT:
 		resist = defender->getHeat();
 		break;
-	case WeaponObject::COLD:
+	case SharedWeaponObjectTemplate::COLD:
 		resist = defender->getCold();
 		break;
-	case WeaponObject::ACID:
+	case SharedWeaponObjectTemplate::ACID:
 		resist = defender->getAcid();
 		break;
-	case WeaponObject::LIGHTSABER:
+	case SharedWeaponObjectTemplate::LIGHTSABER:
 		resist = defender->getLightSaber();
 		break;
 	}
@@ -1041,31 +1041,31 @@ int CombatManager::getArmorVehicleReduction(VehicleObject* defender, int damageT
 	float resist = 0;
 
 	switch (damageType) {
-	case WeaponObject::KINETIC:
+	case SharedWeaponObjectTemplate::KINETIC:
 		resist = defender->getKinetic();
 		break;
-	case WeaponObject::ENERGY:
+	case SharedWeaponObjectTemplate::ENERGY:
 		resist = defender->getEnergy();
 		break;
-	case WeaponObject::ELECTRICITY:
+	case SharedWeaponObjectTemplate::ELECTRICITY:
 		resist = defender->getElectricity();
 		break;
-	case WeaponObject::STUN:
+	case SharedWeaponObjectTemplate::STUN:
 		resist = defender->getStun();
 		break;
-	case WeaponObject::BLAST:
+	case SharedWeaponObjectTemplate::BLAST:
 		resist = defender->getBlast();
 		break;
-	case WeaponObject::HEAT:
+	case SharedWeaponObjectTemplate::HEAT:
 		resist = defender->getHeat();
 		break;
-	case WeaponObject::COLD:
+	case SharedWeaponObjectTemplate::COLD:
 		resist = defender->getCold();
 		break;
-	case WeaponObject::ACID:
+	case SharedWeaponObjectTemplate::ACID:
 		resist = defender->getAcid();
 		break;
-	case WeaponObject::LIGHTSABER:
+	case SharedWeaponObjectTemplate::LIGHTSABER:
 		resist = defender->getLightSaber();
 		break;
 	}
@@ -1264,7 +1264,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 	if (attacker->isPlayerCreature())
 		damage *= 1.5;
 
-	if (data.getAttackType() == CombatManager::WEAPONATTACK && weapon->getAttackType() == WeaponObject::MELEEATTACK)
+	if (data.getAttackType() == CombatManager::WEAPONATTACK && weapon->getAttackType() == SharedWeaponObjectTemplate::MELEEATTACK)
 		damage *= 1.25;
 
 	//info("damage to be dealt is " + String::valueOf(damage), true);
@@ -1319,7 +1319,7 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 			ArmorObject* mindArmor = getArmorObject(defender, HIT_HEAD);
 			ArmorObject* actionArmor = getArmorObject(defender, HIT_LLEG); // This hits both the pants and feet regardless
 			ArmorObject* psgArmor = getPSGArmor(defender);
-			if (psgArmor != NULL && !psgArmor->isVulnerable(WeaponObject::BLAST)) {
+			if (psgArmor != NULL && !psgArmor->isVulnerable(SharedWeaponObjectTemplate::BLAST)) {
 				float armorReduction =  psgArmor->getBlast();
 				if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
 
@@ -1331,7 +1331,7 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 			healthDamage = damage;
 			actionDamage = damage;
 			mindDamage = damage;
-			if (healthArmor != NULL && !healthArmor->isVulnerable(WeaponObject::BLAST) && (pool & HEALTH)) {
+			if (healthArmor != NULL && !healthArmor->isVulnerable(SharedWeaponObjectTemplate::BLAST) && (pool & HEALTH)) {
 				float armorReduction = healthArmor->getBlast();
 				if (armorReduction > 0)
 					healthDamage *= (1.f - (armorReduction / 100.f));
@@ -1341,7 +1341,7 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 				healthArmor->inflictDamage(healthArmor, 0, healthDamage * 0.1, true, true);
 				return (int)healthDamage * 0.1;
 			}
-			if (mindArmor != NULL && !mindArmor->isVulnerable(WeaponObject::BLAST) && (pool & MIND)) {
+			if (mindArmor != NULL && !mindArmor->isVulnerable(SharedWeaponObjectTemplate::BLAST) && (pool & MIND)) {
 				float armorReduction = mindArmor->getBlast();
 				if (armorReduction > 0)
 					mindDamage *= (1.f - (armorReduction / 100.f));
@@ -1351,7 +1351,7 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 				mindArmor->inflictDamage(mindArmor, 0, mindDamage * 0.1, true, true);
 				return (int)mindDamage * 0.1;
 			}
-			if (actionArmor != NULL && !actionArmor->isVulnerable(WeaponObject::BLAST) && (pool & ACTION)) {
+			if (actionArmor != NULL && !actionArmor->isVulnerable(SharedWeaponObjectTemplate::BLAST) && (pool & ACTION)) {
 				float armorReduction = actionArmor->getBlast();
 				if (armorReduction > 0)
 					actionDamage *= (1.f - (armorReduction / 100.f));
@@ -1409,7 +1409,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 	if (attacker->isPlayerCreature())
 		damage *= 1.5;
 
-	if (data.getAttackType() == CombatManager::WEAPONATTACK && weapon->getAttackType() == WeaponObject::MELEEATTACK)
+	if (data.getAttackType() == CombatManager::WEAPONATTACK && weapon->getAttackType() == SharedWeaponObjectTemplate::MELEEATTACK)
 		damage *= 1.25;
 
 	if (defender->isKnockedDown())
@@ -1417,7 +1417,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 
 	// Toughness reduction
 	if (data.getAttackType() == CombatManager::FORCEATTACK)
-		damage = getDefenderToughnessModifier(defender, WeaponObject::FORCEATTACK, data.getDamageType(), damage, foodMitigation);
+		damage = getDefenderToughnessModifier(defender, SharedWeaponObjectTemplate::RANGEDATTACK, data.getDamageType(), damage, foodMitigation);
 	else
 		damage = getDefenderToughnessModifier(defender, weapon->getAttackType(), weapon->getDamageType(), damage, foodMitigation);
 
@@ -1469,7 +1469,7 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 	weaponAccuracy = getWeaponRangeModifier(attacker->getWorldPosition().distanceTo(targetCreature->getWorldPosition()) - targetCreature->getTemplateRadius() - attacker->getTemplateRadius(), weapon);
 	// accounts for steadyaim, general aim, and specific weapon aim, these buffs will clear after a completed combat action
 	if (creoAttacker != NULL) {
-		if (weapon->getAttackType() == WeaponObject::RANGEDATTACK) weaponAccuracy += creoAttacker->getSkillMod("private_aim");
+		if (weapon->getAttackType() == SharedWeaponObjectTemplate::RANGEDATTACK) weaponAccuracy += creoAttacker->getSkillMod("private_aim");
 	}
 	//info("Attacker weapon accuracy is " + String::valueOf(weaponAccuracy), true);
 
@@ -1521,7 +1521,7 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 
 		// saber block is special because it's just a % chance to block based on the skillmod
 		if (def == "saber_block") {
-			if (!attacker->isTurret() && (weapon->getAttackType() == WeaponObject::RANGEDATTACK) && ((System::random(100)) < targetCreature->getSkillMod(def)))
+			if (!attacker->isTurret() && (weapon->getAttackType() == SharedWeaponObjectTemplate::RANGEDATTACK) && ((System::random(100)) < targetCreature->getSkillMod(def)))
 				return RICOCHET;
 			else return HIT;
 		}
@@ -2577,31 +2577,31 @@ int CombatManager::getArmorTurretReduction(CreatureObject* attacker, TangibleObj
 			if (turretData != NULL) {
 
 				switch (damageType) {
-				case WeaponObject::KINETIC:
+				case SharedWeaponObjectTemplate::KINETIC:
 					resist = turretData->getKinetic();
 					break;
-				case WeaponObject::ENERGY:
+				case SharedWeaponObjectTemplate::ENERGY:
 					resist = turretData->getEnergy();
 					break;
-				case WeaponObject::ELECTRICITY:
+				case SharedWeaponObjectTemplate::ELECTRICITY:
 					resist = turretData->getElectricity();
 					break;
-				case WeaponObject::STUN:
+				case SharedWeaponObjectTemplate::STUN:
 					resist = turretData->getStun();
 					break;
-				case WeaponObject::BLAST:
+				case SharedWeaponObjectTemplate::BLAST:
 					resist = turretData->getBlast();
 					break;
-				case WeaponObject::HEAT:
+				case SharedWeaponObjectTemplate::HEAT:
 					resist = turretData->getHeat();
 					break;
-				case WeaponObject::COLD:
+				case SharedWeaponObjectTemplate::COLD:
 					resist = turretData->getCold();
 					break;
-				case WeaponObject::ACID:
+				case SharedWeaponObjectTemplate::ACID:
 					resist = turretData->getAcid();
 					break;
-				case WeaponObject::LIGHTSABER:
+				case SharedWeaponObjectTemplate::LIGHTSABER:
 					resist = turretData->getLightSaber();
 					break;
 				}

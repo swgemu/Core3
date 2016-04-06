@@ -59,6 +59,34 @@ protected:
 	uint32 weaponType;
 
 public:
+	
+	const static int NONE = 0;
+	const static int LIGHT = 1;
+	const static int MEDIUM = 2;
+	const static int HEAVY = 3;
+	
+	const static int KINETIC = 1;
+	const static int ENERGY = 2;
+	const static int BLAST = 4;
+	const static int STUN = 8;
+	const static int LIGHTSABER = 16;
+	const static int HEAT = 32;
+	const static int COLD = 64;
+	const static int ACID = 128;
+	const static int ELECTRICITY = 256;
+	
+	const static int MELEEATTACK = 0;
+	const static int RANGEDATTACK = 1;
+	const static int FORCEATTACK = 2;
+	const static int TRAPATTACK = 3;
+	const static int GRENADEATTACK = 4;
+	const static int HEAVYACIDBEAMATTACK = 14;
+	const static int HEAVYLIGHTNINGBEAMATTACK = 15;
+	const static int HEAVYPARTICLEBEAMATTACK = 17;
+	const static int HEAVYROCKETLAUNCHERATTACK = 18;
+	const static int HEAVYLAUNCHERATTACK = 19;
+	
+	
 	SharedWeaponObjectTemplate() {
 		damageType = 0;
 
