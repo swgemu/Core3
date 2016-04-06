@@ -771,6 +771,8 @@ int DirectorManager::checkInt64Lua(lua_State* L) {
 		return 0;
 	}
 
+	instance()->info("Lua version: " + String::valueOf(*lua_version(L)), true);
+
 	uint64 data = lua_tointeger(L, -1);
 
 	uint64 bigNumber = 0x01000000;

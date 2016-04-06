@@ -40,7 +40,7 @@ end
 -- @param argument the argument to use for the function.
 function Task:callFunctionIfNotNil(theFunction, returnIfNil, ...)
 	if theFunction ~= nil then
-		return theFunction(self, unpack({...}))
+		return theFunction(self, table.unpack({...}))
 	else
 		Logger:log("The function to call is nil in " .. Task.taskName .. ".", LT_INFO)
 		return returnIfNil
@@ -56,7 +56,7 @@ function Task:start(pCreatureObject, ...)
 
 	if not self:hasTaskStarted(pCreatureObject) then
 		Logger:log("Starting task " .. self.taskName, LT_INFO)
-		if self:callFunctionIfNotNil(self.taskStart, true, pCreatureObject, unpack({...})) then
+		if self:callFunctionIfNotNil(self.taskStart, true, pCreatureObject, table.unpack({...})) then
 			Logger:log(self.taskName .. " started.", LT_INFO)
 			self:setTaskStarted(pCreatureObject)
 		end

@@ -56,9 +56,9 @@ AUTOGEN_PATH=../../../src/autogen
 
 INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
-            -I$(ENGINE3_PATH)/include -I$(ENGINE3_PATH)/src -I$(ENGINE3_MOCK_PATH) -I/usr/include/lua5.1 -I/usr/include/mysql \
-	    -I/usr/local/BerkeleyDB.5.0/include \
-	    -I/usr/include/db5.0 \
+            -I$(ENGINE3_PATH)/include -I$(ENGINE3_PATH)/src -I$(ENGINE3_MOCK_PATH) -I/usr/local/include -I/usr/include/mysql \
+	    -I/usr/local/BerkeleyDB.5.3/include \
+	    -I/usr/include/db5.3 \
 	    -I$(GTEST_PATH)/include \
 	    -I$(GMOCK_PATH)/include \
 	    -I$(AUTOGEN_PATH)
@@ -66,12 +66,12 @@ INCLUDES =  $(SYSTEM_INCLUDES) \
 LIBS =	$(SYSTEM_LIBS)  \
 	$(USER_LD_FLAGS) \
 	-L../../../build/unix/src/client \
-	-L/usr/local/BerkeleyDB.5.0/lib \
-	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua \
+	-L/usr/local/BerkeleyDB.5.3/lib \
+	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql \
 	-L$(ENGINE3_PATH)/lib/unix \
 	-L/usr/local/lib \
 	-L$(GTEST_PATH)/lib \
-	-lmysqlclient -lz -lengine3 -llua -ldb-5.0 -lssl -lcrypto -lgtest
+	-lmysqlclient -lz -lengine3 -llua -ldb-5.3 -lssl -lcrypto -lgtest
 	
 #AM_LDFLAGS = -pagezero_size 10000 -image_base 100000000
 #AM_LDFLAGS = --enable-stdcall-fixup
