@@ -59,6 +59,65 @@ protected:
 	uint32 weaponType;
 
 public:
+	enum APType {
+		NONE,
+		LIGHT,
+		MEDIUM,
+		HEAVY
+	};
+	enum DamageType {
+		KINETIC = 1,
+		ENERGY = 2,
+		BLAST = 4,
+		STUN = 8,
+		LIGHTSABER = 16,
+		HEAT = 32,
+		COLD = 64,
+		ACID = 128,
+		ELECTRICITY = 256
+	};
+	
+	// multiple weapon type scenarios
+	enum WeaponClass {
+		MELEEWEAPON = 0xF0,
+		RANGEDWEAPON = 0x1F0B, // these are all weapons derived from ranged in the client
+		JEDIWEAPON = 0xE000,
+	};
+	
+	enum WeaponAttackType {
+		MELEEATTACK = 0,
+		RANGEDATTACK = 1,
+		FORCEATTACK = 2,
+		TRAPATTACK = 3,
+		GRENADEATTACK = 4,
+		HEAVYACIDBEAMATTACK = 14,
+		HEAVYLIGHTNINGBEAMATTACK = 15,
+		HEAVYPARTICLEBEAMATTACK = 17,
+		HEAVYROCKETLAUNCHERATTACK = 18,
+		HEAVYLAUNCHERATTACK = 19
+	};
+	
+	enum WeaponType {
+		ANYWEAPON = 0xFFFFFFFF,
+		THROWNWEAPON = 0x1,
+		HEAVYWEAPON = 0x2,
+		MINEWEAPON = 0x4,
+		SPECIALHEAVYWEAPON = 0x8,
+		UNARMEDWEAPON = 0x10,
+		ONEHANDMELEEWEAPON = 0x20,
+		TWOHANDMELEEWEAPON = 0x40,
+		POLEARMWEAPON = 0x80,
+		PISTOLWEAPON = 0x100,
+		CARBINEWEAPON = 0x200,
+		RIFLEWEAPON = 0x400,
+		GRENADEWEAPON = 0x800,
+		LIGHTNINGRIFLEWEAPON = 0x1000,
+		ONEHANDJEDIWEAPON = 0x2000,
+		TWOHANDJEDIWEAPON = 0x4000,
+		POLEARMJEDIWEAPON = 0x8000
+	};
+	
+	
 	SharedWeaponObjectTemplate() {
 		damageType = 0;
 

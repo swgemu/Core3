@@ -50,7 +50,7 @@ ForceIntimidate1Command = {
 	accuracySkillMod = "forceintimidate_accuracy",
 	coneAngle = 30,
 	coneAction = true,
-	attackType = FORCEATTACK,
+	forceAttack = true,
 	visMod = 25,
 
 	stateEffects = {

@@ -46,7 +46,7 @@ protected:
     VectorMap<uint8, StateEffect>* stateEffects;
     Vector<DotEffect>* dotEffects;
 
-	uint8 attackType;
+	bool forceAttack;
 	uint8 trails;
 
 	String combatSpam;
@@ -169,12 +169,12 @@ public:
 		return dotEffects;
 	}
 
-	uint8 getAttackType() const {
-		return attackType;
+	bool isForceAttack() const {
+		return forceAttack;
 	}
 
-	void setAttackType(uint8 attackType) {
-		this->attackType = attackType;
+	void setForceAttack(bool forceAttack) {
+		this->forceAttack = forceAttack;
 	}
 
 	uint8 getTrails() const {

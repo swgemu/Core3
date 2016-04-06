@@ -68,7 +68,7 @@ ForceKnockdown1Command = {
 
 	poolsToDamage = NO_ATTRIBUTE,
 
-	attackType = FORCEATTACK,
+	forceAttack = true,
 
 	range = 32
 }

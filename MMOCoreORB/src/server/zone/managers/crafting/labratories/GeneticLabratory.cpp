@@ -168,28 +168,28 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	powMax = Genetics::aggressionFormula(phy->getPower(),pro->getPower(),men->getPower(),psy->getPower(),agr->getPower());
 
 	// acknowledge any specials found in the experimentation line. this means specials will not modify later by experimentaiton as its an overlay value.
-	bool spBlast = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::BLAST);
-	bool spKinetic = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::KINETIC);
-	bool spEnergy = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::ENERGY);
-	bool spHeat = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::HEAT);
-	bool spCold = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::COLD);
-	bool spElectric = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::ELECTRICITY);
-	bool spAcid = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::ACID);
-	bool spStun = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::STUN);
-	bool spSaber = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::LIGHTSABER);
+	bool spBlast = Genetics::hasASpecial(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::BLAST);
+	bool spKinetic = Genetics::hasASpecial(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::KINETIC);
+	bool spEnergy = Genetics::hasASpecial(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::ENERGY);
+	bool spHeat = Genetics::hasASpecial(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::HEAT);
+	bool spCold = Genetics::hasASpecial(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::COLD);
+	bool spElectric = Genetics::hasASpecial(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::ELECTRICITY);
+	bool spAcid = Genetics::hasASpecial(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::ACID);
+	bool spStun = Genetics::hasASpecial(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::STUN);
+	bool spSaber = Genetics::hasASpecial(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::LIGHTSABER);
 
 	// Calculate resists
 	// 1 percent: (1000 - 0) / 100.0f;
 	float blastMax, energyMax, kineticMax,heatMax,coldMax,electricMax,acidMax,stunMax,saberMax;
-	blastMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::BLAST,100.0f);
-	kineticMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::KINETIC,60.0f);
-	energyMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::ENERGY,60.0f);
-	heatMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::HEAT,100.0f);
-	coldMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::COLD,100.0f);
-	electricMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::ELECTRICITY,100.0f);
-	acidMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::ACID,100.0f);
-	stunMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::STUN,100.0f);
-	saberMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::LIGHTSABER,100.0f);
+	blastMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::BLAST,100.0f);
+	kineticMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::KINETIC,60.0f);
+	energyMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::ENERGY,60.0f);
+	heatMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::HEAT,100.0f);
+	coldMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::COLD,100.0f);
+	electricMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::ELECTRICITY,100.0f);
+	acidMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::ACID,100.0f);
+	stunMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::STUN,100.0f);
+	saberMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,SharedWeaponObjectTemplate::LIGHTSABER,100.0f);
 
 	// lets clear the special bit if it moved to effective range.
 	if (saberMax == 0) {
