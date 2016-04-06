@@ -297,10 +297,9 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 
 	// need to calculate damage here to get proper client spam
 	int damage = 0;
-	Vector<int> foodMitigation; //used to save the food mitigation value for combat spam sent later.
 
 	if (damageMultiplier != 0)
-		damage = calculateDamage(attacker, weapon, defender, data, foodMitigation) * damageMultiplier;
+		damage = calculateDamage(attacker, weapon, defender, data) * damageMultiplier;
 
 	damageMultiplier = 1.0f;
 
@@ -360,10 +359,6 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 			applyWeaponDots(attacker, defender, weapon);
 
 		}
-
-		//Send defensive buff combat spam last.
-		if (!foodMitigation.isEmpty())
-			sendMitigationCombatSpam(defender, weapon, foodMitigation.get(0), FOOD);
 	}
 
 	broadcastCombatAction(attacker, defender, weapon, data, damage, hitVal, hitLocation);
@@ -403,10 +398,9 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 
 	// need to calculate damage here to get proper client spam
 	int damage = 0;
-	Vector<int> foodMitigation; //used to save the food mitigation value for combat spam sent later.
 
 	if (damageMultiplier != 0)
-		damage = calculateDamage(attacker, weapon, defenderObject, data, foodMitigation) * damageMultiplier;
+		damage = calculateDamage(attacker, weapon, defenderObject, data) * damageMultiplier;
 
 	damageMultiplier = 1.0f;
 	int hitVal = getHitChance(attacker, defenderObject, weapon, damage, data.getAccuracyBonus());
@@ -457,11 +451,6 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 
 		if (damageMultiplier != 0 && damage != 0)
 			damage = applyDamage(attacker, weapon, defenderObject, damage, damageMultiplier, poolsToDamage, hitLocation, data);
-
-
-		//Send defensive buff combat spam last.
-		if (!foodMitigation.isEmpty())
-			sendMitigationCombatSpam(defenderObject, weapon, foodMitigation.get(0), FOOD);
 	} else {
 		damage = 0;
 	}
@@ -793,7 +782,7 @@ int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender)
 	return targetDefense;
 }
 
-float CombatManager::getDefenderToughnessModifier(CreatureObject* defender, int attackType, int damType, float damage, Vector<int>& foodMitigation) {
+float CombatManager::getDefenderToughnessModifier(CreatureObject* defender, int attackType, int damType, float damage) {
 	ManagedReference<WeaponObject*> weapon = defender->getWeapon();
 
 	Vector<String>* defenseToughMods = weapon->getDefenderToughnessModifiers();
@@ -808,13 +797,6 @@ float CombatManager::getDefenderToughnessModifier(CreatureObject* defender, int 
 	int jediToughness = defender->getSkillMod("jedi_toughness");
 	if (damType != WeaponObject::LIGHTSABER && jediToughness > 0)
 		damage *= 1.f - (jediToughness / 100.f);
-
-	float foodMitigatedDamage = damage;
-	int foodBonus = defender->getSkillMod("mitigate_damage");
-	if (foodBonus > 0) {
-		damage *= 1.f - (foodBonus / 100.f);
-		foodMitigation.add((int)(foodMitigatedDamage -= damage)); //save value for later combat spam
-	}
 
 	return damage < 0 ? 0 : damage;
 }
@@ -1380,7 +1362,7 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 	}
 }
 
-float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data, Vector<int>& foodMitigation) {
+float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data) {
 	float damage = 0;
 	int diff = 0;
 
@@ -1417,9 +1399,9 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 
 	// Toughness reduction
 	if (data.getAttackType() == CombatManager::FORCEATTACK)
-		damage = getDefenderToughnessModifier(defender, WeaponObject::FORCEATTACK, data.getDamageType(), damage, foodMitigation);
+		damage = getDefenderToughnessModifier(defender, WeaponObject::FORCEATTACK, data.getDamageType(), damage);
 	else
-		damage = getDefenderToughnessModifier(defender, weapon->getAttackType(), weapon->getDamageType(), damage, foodMitigation);
+		damage = getDefenderToughnessModifier(defender, weapon->getAttackType(), weapon->getDamageType(), damage);
 
 	// PvP Damage Reduction.
 	if (attacker->isPlayerCreature() && defender->isPlayerCreature()) {
@@ -1433,7 +1415,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 	return damage;
 }
 
-float CombatManager::calculateDamage(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data, Vector<int>& foodMitigation) {
+float CombatManager::calculateDamage(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data) {
 	float damage = 0;
 
 	int diff = calculateDamageRange(attacker, defender, weapon);
@@ -1448,7 +1430,7 @@ float CombatManager::calculateDamage(TangibleObject* attacker, WeaponObject* wea
 		damage *= 1.5f;
 
 	// Toughness reduction
-	damage = getDefenderToughnessModifier(defender, weapon->getAttackType(), weapon->getDamageType(), damage, foodMitigation);
+	damage = getDefenderToughnessModifier(defender, weapon->getAttackType(), weapon->getDamageType(), damage);
 
 	return damage;
 }
@@ -1864,11 +1846,19 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	float spillMultPerPool = (0.1f * numSpillOverPools) / MAX(numberOfPoolsDamaged, 1);
 	int totalSpillOver = 0; // Accumulate our total spill damage
 
+	// from screenshots, it appears that food mitigation and armor mitigation were independently calculated
+	// and then added together.
+	int foodBonus = defender->getSkillMod("mitigate_damage");
+	int foodMitigation = 0;
+	if (foodBonus > 0)
+		foodMitigation = (int)(damage * foodBonus / 100.f);
+
 	if (poolsToDamage & HEALTH) {
 		static uint8 bodyLocations[] = {HIT_BODY, HIT_BODY, HIT_LARM, HIT_RARM};
 		hitLocation = bodyLocations[System::random(3)];
 
 		healthDamage = getArmorReduction(attacker, weapon, defender, damage * data.getHealthDamageMultiplier(), hitLocation, data) * damageMultiplier;
+		healthDamage -= MIN(healthDamage, foodMitigation * data.getHealthDamageMultiplier());
 
 		int spilledDamage = (int)(healthDamage*spillMultPerPool); // Cut our damage by the spill percentage
 		healthDamage -= spilledDamage; // subtract spill damage from total damage
@@ -1892,6 +1882,7 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 		hitLocation = legLocations[System::random(1)];
 
 		actionDamage = getArmorReduction(attacker, weapon, defender, damage * data.getActionDamageMultiplier(), hitLocation, data) * damageMultiplier;
+		actionDamage -= MIN(actionDamage, foodMitigation * data.getActionDamageMultiplier());
 
 		int spilledDamage = (int)(actionDamage*spillMultPerPool);
 		actionDamage -= spilledDamage;
@@ -1913,6 +1904,7 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	if (poolsToDamage & MIND) {
 		hitLocation = HIT_HEAD;
 		mindDamage = getArmorReduction(attacker, weapon, defender, damage * data.getMindDamageMultiplier(), hitLocation, data) * damageMultiplier;
+		mindDamage -= MIN(mindDamage, foodMitigation * data.getMindDamageMultiplier());
 
 		int spilledDamage = (int)(mindDamage*spillMultPerPool);
 		mindDamage -= spilledDamage;
@@ -1952,6 +1944,9 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	if(attacker->isPlayerCreature())
 		showHitLocationFlyText(attacker->asCreatureObject(), defender, hitLocation);
 
+	//Send defensive buff combat spam last.
+	if (foodMitigation > 0)
+		sendMitigationCombatSpam(defender, weapon, foodMitigation, FOOD);
 
 	return totalDamage;
 }
