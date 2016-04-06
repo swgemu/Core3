@@ -7,9 +7,7 @@
 
 #include "TemplateManager.h"
 #include "TemplateCRCMap.h"
-#include "templates/manager/PortalLayoutMap.h"
 
-#include "server/zone/templates/SharedObjectTemplate.h"
 #include "server/zone/templates/intangible/SharedConstructionContractObjectTemplate.h"
 #include "server/zone/templates/intangible/SharedManufactureSchematicObjectTemplate.h"
 #include "server/zone/templates/intangible/SharedDraftSchematicObjectTemplate.h"
@@ -21,25 +19,13 @@
 #include "server/zone/templates/intangible/SharedTokenObjectTemplate.h"
 #include "server/zone/templates/intangible/SharedWaypointObjectTemplate.h"
 #include "server/zone/templates/tangible/SharedBattlefieldMarkerObjectTemplate.h"
-#include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
 #include "server/zone/templates/tangible/SharedCountingObjectTemplate.h"
 #include "server/zone/templates/tangible/NonPlayerCreatureObjectTemplate.h"
-#include "server/zone/templates/tangible/SharedCreatureObjectTemplate.h"
-#include "server/zone/templates/tangible/SharedFactoryObjectTemplate.h"
-#include "server/zone/templates/tangible/SharedInstallationObjectTemplate.h"
-#include "server/zone/templates/tangible/SharedResourceContainerObjectTemplate.h"
-#include "server/zone/templates/tangible/SharedShipObjectTemplate.h"
-#include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
-#include "server/zone/templates/tangible/StimPackTemplate.h"
-#include "server/zone/templates/tangible/SkillBuffTemplate.h"
 #include "server/zone/templates/tangible/ConsumableTemplate.h"
 #include "server/zone/templates/tangible/InstrumentObjectTemplate.h"
-#include "server/zone/templates/tangible/RangedStimPackTemplate.h"
 #include "server/zone/templates/tangible/EnhancePackTemplate.h"
 #include "server/zone/templates/tangible/CurePackTemplate.h"
-#include "server/zone/templates/tangible/StatePackTemplate.h"
 #include "server/zone/templates/tangible/DotPackTemplate.h"
-#include "server/zone/templates/tangible/WoundPackTemplate.h"
 #include "server/zone/templates/tangible/ArmorObjectTemplate.h"
 #include "server/zone/templates/tangible/CharacterBuilderTerminalTemplate.h"
 #include "server/zone/templates/tangible/LootkitObjectTemplate.h"
@@ -59,14 +45,6 @@
 #include "server/zone/templates/tangible/CamoKitTemplate.h"
 #include "server/zone/templates/tangible/VehicleObjectTemplate.h"
 #include "server/zone/templates/tangible/XpPurchaseTemplate.h"
-#include "server/zone/templates/universe/SharedGroupObjectTemplate.h"
-#include "server/zone/templates/universe/SharedGuildObjectTemplate.h"
-#include "server/zone/templates/universe/SharedJediManagerTemplate.h"
-#include "server/zone/templates/SharedCellObjectTemplate.h"
-#include "server/zone/templates/SharedIntangibleObjectTemplate.h"
-#include "server/zone/templates/SharedStaticObjectTemplate.h"
-#include "server/zone/templates/SharedTangibleObjectTemplate.h"
-#include "server/zone/templates/SharedUniverseObjectTemplate.h"
 #include "server/zone/templates/tangible/tool/SurveyToolTemplate.h"
 #include "server/zone/templates/tangible/tool/RecycleToolTemplate.h"
 #include "server/zone/templates/tangible/tool/CraftingToolTemplate.h"
@@ -93,14 +71,30 @@
 #include "server/zone/templates/tangible/tool/RepairToolTemplate.h"
 #include "server/zone/templates/tangible/VehicleCustomKitTemplate.h"
 #include "server/zone/templates/tangible/DroidCustomKitTemplate.h"
-
-#include "server/conf/ConfigManager.h"
 #include "server/zone/templates/installation/FactoryObjectTemplate.h"
+#include "server/zone/templates/tangible/WoundPackTemplate.h"
+#include "server/zone/templates/SharedTangibleObjectTemplate.h"
 
-#include "server/zone/objects/creature/CreatureState.h"
-#include "server/zone/objects/creature/CreatureFlag.h"
-#include "server/zone/objects/creature/CreatureAttribute.h"
+
+#include "templates/universe/SharedGroupObjectTemplate.h"
+#include "templates/universe/SharedGuildObjectTemplate.h"
+#include "templates/universe/SharedJediManagerTemplate.h"
+
+#include "templates/tangible/StatePackTemplate.h"
+
+#include "templates/tangible/SharedResourceContainerObjectTemplate.h"
+#include "templates/tangible/SharedShipObjectTemplate.h"
+#include "templates/tangible/SharedInstallationObjectTemplate.h"
+#include "templates/tangible/SharedBuildingObjectTemplate.h"
+#include "templates/tangible/SharedCreatureObjectTemplate.h"
+#include "templates/tangible/SharedFactoryObjectTemplate.h"
+#include "templates/tangible/SharedWeaponObjectTemplate.h"
+#include "templates/tangible/StimPackTemplate.h"
+#include "templates/tangible/SkillBuffTemplate.h"
+#include "templates/tangible/RangedStimPackTemplate.h"
+
 #include "templates/customization/AssetCustomizationManagerTemplate.h"
+#include "templates/params/PaletteColorCustomizationVariable.h"
 #include "templates/appearance/PortalLayout.h"
 #include "templates/appearance/PaletteTemplate.h"
 #include "templates/appearance/AppearanceRedirect.h"
@@ -110,15 +104,26 @@
 #include "templates/appearance/ComponentAppearanceTemplate.h"
 #include "templates/footprint/StructureFootprint.h"
 #include "templates/slots/SlotId.h"
+
 #include "templates/customization/CustomizationIdManager.h"
-#include "templates/params/PaletteColorCustomizationVariable.h"
 
 #include "tre3/TreeArchive.h"
 
-#include "server/zone/managers/director/DirectorManager.h"
-#include "server/zone/managers/components/ComponentManager.h"
+#include "templates/manager/PortalLayoutMap.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/SharedCellObjectTemplate.h"
+#include "templates/SharedIntangibleObjectTemplate.h"
+#include "templates/SharedStaticObjectTemplate.h"
+#include "templates/SharedUniverseObjectTemplate.h"
+
+#include "templates/params/creature/CreatureState.h"
+#include "templates/params/creature/CreatureFlag.h"
+#include "templates/params/creature/CreatureAttribute.h"
 
 #include "templates/manager/DataArchiveStore.h"
+
+#include "conf/ConfigManager.h"
+
 
 Lua* TemplateManager::luaTemplatesInstance = NULL;
 
@@ -130,9 +135,6 @@ TemplateManager::TemplateManager() {
 	setLogging(false);
 	setGlobalLogging(true);
 	setLoggingName("TemplateManager");
-
-	// preload lua files for component checks
-	DirectorManager::instance()->getLuaInstance();
 
 	registerTemplateObjects();
 
@@ -228,15 +230,6 @@ void TemplateManager::loadAssetCustomizationManager() {
 	AssetCustomizationManagerTemplate::instance()->readObject(iffStream);
 
 	delete iffStream;
-
-	/*printf("getting cust vars\n");
-	//uint32 appearanceFileCRC, VectorMap<String, Reference<CustomizationVariable*> >& variables, bool skipShared
-	VectorMap<String, Reference<CustomizationVariable*> > variables;
-	AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(STRING_HASHCODE("appearance/wp_mle_sword_lightsaber_blade_anakin.lsb"), variables, false);
-
-	for (int i = 0; i < variables.size(); ++i) {
-		printf("%s\n", variables.elementAt(i).getKey().toCharArray());
-	}*/
 
 	info("loading customization id manager", true);
 
@@ -379,9 +372,13 @@ void TemplateManager::loadPlanetMapCategories() {
 }
 
 void TemplateManager::loadLuaTemplates() {
+	
+	if( loadedTemplatesCount > 0 ) {
+		error("Templates already loaded");
+		return;
+	}
+	
 	info("Loading object templates", true);
-
-	int count = ComponentManager::instance()->size();
 
 	try {
 		bool val = luaTemplatesInstance->runFile("scripts/object/main.lua");
@@ -397,7 +394,7 @@ void TemplateManager::loadLuaTemplates() {
 
 	printf("\n");
 	info("Finished loading object templates", true);
-	info(String::valueOf(ComponentManager::instance()->size() - count) + " ObjectMenuComponents loaded", true);
+	
 	info(String::valueOf(portalLayoutMap->size()) + " portal layouts loaded", true);
 	info(String::valueOf(floorMeshMap->size()) + " floor meshes loaded", true);
 	info(String::valueOf(structureFootprints.size()) + " structure footprints.", true);

@@ -11,7 +11,7 @@
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
-#include "server/zone/objects/creature/CreatureEmote.h"
+#include "templates/params/creature/CreatureEmote.h"
 
 class PetEmoteCommand : public QueueCommand {
 public:

@@ -28,7 +28,7 @@
 #include "server/zone/objects/resource/ResourceSpawn.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
 #include "server/zone/Zone.h"
-#include "server/zone/templates/tangible/SharedInstallationObjectTemplate.h"
+#include "templates/tangible/SharedInstallationObjectTemplate.h"
 #include "SyncrhonizedUiListenInstallationTask.h"
 #include "server/zone/objects/installation/components/TurretObserver.h"
 #include "server/zone/objects/tangible/TangibleObject.h"

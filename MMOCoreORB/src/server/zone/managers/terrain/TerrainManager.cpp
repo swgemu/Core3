@@ -7,7 +7,7 @@
 
 #include "TerrainManager.h"
 #include "server/zone/Zone.h"
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "templates/manager/TemplateManager.h"
 #include "server/zone/objects/terrain/ProceduralTerrainAppearance.h"
 #include "server/zone/objects/terrain/TerrainGenerator.h"
 #include "server/zone/objects/terrain/SpaceTerrainAppearance.h"

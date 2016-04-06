@@ -16,7 +16,6 @@
 #include "templates/manager/PlanetMapCategory.h"
 #include "templates/slots/SlotDescriptor.h"
 #include "templates/slots/ArrangementDescriptor.h"
-#include "server/zone/objects/scene/components/SceneObjectComponent.h"
 #include "templates/params/primitives/IntegerParam.h"
 #include "templates/params/StringIdParam.h"
 #include "templates/params/primitives/StringParam.h"
@@ -27,10 +26,6 @@ class PortalLayout;
 class AppearanceTemplate;
 class SlotDescriptor;
 class ArrangementDescriptor;
-
-namespace server {
-namespace zone {
-namespace templates {
 
 
 class SharedObjectTemplate : public LuaTemplate, public IffTemplate {
@@ -88,9 +83,9 @@ protected:
 	AppearanceTemplate* appearanceTemplate;
 	bool loadedPortalLayout, loadedAppearanceTemplate;
 	String zoneComponent, attributeListComponent;
-	SceneObjectComponent* containerComponent;
-	SceneObjectComponent* objectMenuComponent;
-
+	String containerComponent;
+	String objectMenuComponent;
+	
 	String dataObjectComponent;
 
 	bool inheritPermissionsFromParent;
@@ -394,7 +389,7 @@ public:
 		return templateFileName;
 	}
 
-	inline SceneObjectComponent* getContainerComponent() {
+	inline String getContainerComponent() const {
 		return containerComponent;
 	}
 
@@ -402,7 +397,7 @@ public:
 		return zoneComponent;
 	}
 
-	inline SceneObjectComponent* getObjectMenuComponent() {
+	inline String getObjectMenuComponent() const {
 		return objectMenuComponent;
 	}
 
@@ -738,11 +733,5 @@ public:
 	}
 };
 
-
-}
-}
-}
-
-using namespace server::zone::templates;
 
 #endif /* SHAREDOBJECTTEMPLATE_H_ */

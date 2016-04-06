@@ -10,8 +10,8 @@
 
 #include "engine/engine.h"
 
-#include "server/zone/templates/SharedObjectTemplate.h"
-#include "server/zone/templates/TemplateReference.h"
+#include "templates/SharedObjectTemplate.h"
+#include "templates/TemplateReference.h"
 
 class TemplateCRCMap : public HashTable<uint32, TemplateReference<SharedObjectTemplate*> > {
 	int hash(const uint32& k) const {

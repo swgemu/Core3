@@ -8,7 +8,7 @@
 #ifndef TEMPLATEREFERENCE_H_
 #define TEMPLATEREFERENCE_H_
 
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "templates/manager/TemplateManager.h"
 
 template<class O> class TemplateReference : public Reference<O> {
 public:

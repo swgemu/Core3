@@ -8,7 +8,7 @@
 #ifndef SHAREDDRAFTSCHEMATICOBJECTTEMPLATE_H_
 #define SHAREDDRAFTSCHEMATICOBJECTTEMPLATE_H_
 
-#include "../SharedIntangibleObjectTemplate.h"
+#include "templates/SharedIntangibleObjectTemplate.h"
 
 class SharedDraftSchematicObjectTemplate : public SharedIntangibleObjectTemplate {
 public:

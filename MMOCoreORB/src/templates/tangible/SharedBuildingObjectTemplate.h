@@ -8,9 +8,9 @@
 #ifndef SHAREDBUILDINGOBJECTTEMPLATE_H_
 #define SHAREDBUILDINGOBJECTTEMPLATE_H_
 
-#include "SharedStructureObjectTemplate.h"
+#include "templates/tangible/SharedStructureObjectTemplate.h"
 #include "templates/ChildCreatureObject.h"
-#include "server/zone/templates/tangible/SignTemplate.h"
+#include "templates/tangible/SignTemplate.h"
 
 class SharedBuildingObjectTemplate : public SharedStructureObjectTemplate {
 	StringParam terrainModificationFileName;

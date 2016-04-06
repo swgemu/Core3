@@ -14,7 +14,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneServer;
 import server.zone.objects.tangible.pharmaceutical.PharmaceuticalObject;
 import system.lang.StringBuffer;
-include server.zone.objects.creature.CreatureState;
+include templates.params.creature.CreatureState;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.templates.tangible.CurePackTemplate;
 

@@ -20,7 +20,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/ai/Creature.h"
-#include "server/zone/templates/tangible/SharedCreatureObjectTemplate.h"
+#include "templates/tangible/SharedCreatureObjectTemplate.h"
 #include "server/zone/objects/tangible/component/genetic/GeneticComponent.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"

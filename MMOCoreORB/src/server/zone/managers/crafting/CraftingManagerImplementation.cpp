@@ -210,6 +210,7 @@ String CraftingManagerImplementation::checkBioSkillMods(const String& property) 
 void CraftingManagerImplementation::configureLabratories() {
 	ResourceLabratory* resLab = new ResourceLabratory();
 	resLab->initialize(zoneServer.get());
+	
 	labs.put(static_cast<int>(DraftSchematicObjectTemplate::RESOURCE_LAB),resLab); //RESOURCE_LAB
 
 	GeneticLabratory* genLab = new GeneticLabratory();

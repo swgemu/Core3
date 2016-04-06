@@ -12,7 +12,7 @@
 #include "engine/util/iffstream/IffStream.h"
 #include "engine/util/Singleton.h"
 
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "templates/manager/TemplateManager.h"
 #include "templates/datatables/DataTableIff.h"
 #include "templates/datatables/DataTableRow.h"
 

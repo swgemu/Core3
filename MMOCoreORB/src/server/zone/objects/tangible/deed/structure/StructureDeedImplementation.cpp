@@ -9,8 +9,8 @@
 #include "server/zone/templates/tangible/StructureDeedTemplate.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-#include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "templates/tangible/SharedStructureObjectTemplate.h"
+#include "templates/manager/TemplateManager.h"
 
 void StructureDeedImplementation::initializeTransientMembers() {
 	DeedImplementation::initializeTransientMembers();

@@ -13,7 +13,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
-#include "server/zone/objects/creature/CreatureAttribute.h"
+#include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/objects/player/sessions/survey/sui/SurveyGMinigameSuiCallback.h"
 #include "server/zone/objects/player/sessions/survey/sui/SurveyCMinigameSuiCallback.h"
 #include "server/zone/managers/resource/resourcespawner/SampleTask.h"

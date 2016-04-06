@@ -10,7 +10,7 @@
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage3.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "templates/manager/TemplateManager.h"
 #include "server/zone/templates/tangible/PlayerCreatureTemplate.h"
 #include "templates/customization/AssetCustomizationManagerTemplate.h"
 #include "templates/customization/BasicRangedIntCustomizationVariable.h"

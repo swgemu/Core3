@@ -10,8 +10,8 @@ import server.zone.objects.mission.MissionObject;
 import server.zone.objects.mission.MissionObjective;
 import server.zone.objects.mission.MissionObserver;
 import server.zone.objects.scene.SceneObject;
-include server.zone.templates.TemplateReference;
-import server.zone.templates.SharedObjectTemplate;
+include templates.TemplateReference;
+include templates.SharedObjectTemplate;
 import server.zone.objects.area.MissionReconActiveArea;
 
 class ReconMissionObjective extends MissionObjective {

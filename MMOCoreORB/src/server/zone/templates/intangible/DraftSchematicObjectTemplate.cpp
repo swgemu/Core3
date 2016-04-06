@@ -6,7 +6,7 @@
  */
 
 #include "DraftSchematicObjectTemplate.h"
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "templates/manager/TemplateManager.h"
 
 DraftSchematicObjectTemplate::DraftSchematicObjectTemplate() {
 	craftingToolTab = 0;

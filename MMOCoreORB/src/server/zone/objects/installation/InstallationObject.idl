@@ -16,7 +16,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.packets.object.ObjectMenuResponse;
-import server.zone.templates.SharedObjectTemplate;
+include templates.SharedObjectTemplate;
 import server.zone.objects.installation.SyncrhonizedUiListenInstallationTask;
 import server.zone.objects.resource.ResourceSpawn;
 import server.zone.objects.resource.ResourceContainer;

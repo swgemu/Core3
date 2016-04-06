@@ -8,7 +8,7 @@
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/objects/tangible/tool/recycle/RecycleTool.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
-#include "server/zone/objects/creature/CreatureAttribute.h"
+#include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/packets/resource/ResourceListForSurveyMessage.h"
 #include "server/zone/packets/resource/SurveyMessage.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"

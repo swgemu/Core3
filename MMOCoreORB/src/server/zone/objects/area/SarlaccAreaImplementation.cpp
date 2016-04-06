@@ -1,7 +1,7 @@
 #include "server/zone/objects/area/SarlaccArea.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/creature/CreatureAttribute.h"
+#include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/objects/area/events/SarlaccEruptTask.h"
 #include "server/zone/Zone.h"

@@ -1,32 +1,33 @@
 /*
- * SharedUniverseObjectTemplate.h
+ * SharedCellObjectTemplate.h
  *
  *  Created on: 06/05/2010
  *      Author: victor
  */
 
-#ifndef SHAREDUNIVERSEOBJECTTEMPLATE_H_
-#define SHAREDUNIVERSEOBJECTTEMPLATE_H_
+#ifndef SHAREDCELLOBJECTTEMPLATE_H_
+#define SHAREDCELLOBJECTTEMPLATE_H_
 
-#include "SharedObjectTemplate.h"
+#include "templates/SharedObjectTemplate.h"
 
-class SharedUniverseObjectTemplate : public SharedObjectTemplate {
+
+class SharedCellObjectTemplate : public SharedObjectTemplate {
 protected:
 
 
 public:
-	SharedUniverseObjectTemplate() {
+	SharedCellObjectTemplate() {
 
 	}
 
-	~SharedUniverseObjectTemplate() {
+	~SharedCellObjectTemplate() {
 
 	}
 
 	void readObject(IffStream* iffStream) {
 		uint32 nextType = iffStream->getNextFormType();
 
-		if (nextType != 'SUNI') {
+		if (nextType != 'CCLT') {
 			//Logger::console.error("expecting SHOT got " + String::hexvalueOf((int)nextType));
 
 			SharedObjectTemplate::readObject(iffStream);
@@ -34,7 +35,7 @@ public:
 			return;
 		}
 
-		iffStream->openForm('SUNI');
+		iffStream->openForm('CCLT');
 
 		uint32 derv = iffStream->getNextFormType();
 
@@ -66,10 +67,11 @@ public:
 			readObject(iffStream);
 		}
 
-		iffStream->closeForm('SUNI');
+		iffStream->closeForm('CCLT');
 	}
+
 
 };
 
 
-#endif /* SHAREDUNIVERSEOBJECTTEMPLATE_H_ */
+#endif /* SHAREDCELLOBJECTTEMPLATE_H_ */
