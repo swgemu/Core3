@@ -7,8 +7,8 @@
 
 #include "PerformanceManager.h"
 #include "server/db/ServerDatabase.h"
-#include "server/zone/templates/datatables/DataTableIff.h"
-#include "server/zone/templates/datatables/DataTableRow.h"
+#include "templates/datatables/DataTableIff.h"
+#include "templates/datatables/DataTableRow.h"
 #include "server/zone/objects/tangible/Instrument.h"
 
 PerformanceManager::PerformanceManager() :

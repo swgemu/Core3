@@ -25,8 +25,8 @@
 #include "server/zone/objects/player/sessions/crafting/events/CreateObjectTask.h"
 #include "server/zone/objects/player/sessions/crafting/events/UpdateToolCountdownTask.h"
 
-#include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
-#include "server/zone/templates/params/RangedIntCustomizationVariable.h"
+#include "templates/customization/AssetCustomizationManagerTemplate.h"
+#include "templates/params/RangedIntCustomizationVariable.h"
 
 
 int CraftingSessionImplementation::initializeSession(CraftingTool* tool, CraftingStation* station) {

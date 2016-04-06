@@ -12,7 +12,7 @@ import server.zone.objects.draftschematic.DraftSchematic;
 
 import server.zone.managers.crafting.CraftingManager;
 include server.zone.objects.scene.SessionFacadeType;
-include server.zone.templates.customization.CustomizationVariable;
+include templates.customization.CustomizationVariable;
 
 class CraftingSession extends Facade {
 	@weakReference

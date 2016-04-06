@@ -9,7 +9,7 @@
 #define CUSTOMIZATIONDATA_H_
 
 #include "engine/engine.h"
-#include "server/zone/templates/datatables/DataTableRow.h"
+#include "templates/datatables/DataTableRow.h"
 
 class CustomizationData : public Object {
 	String speciesGender;

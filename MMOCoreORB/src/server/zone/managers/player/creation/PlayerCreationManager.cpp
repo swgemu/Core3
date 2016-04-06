@@ -20,8 +20,8 @@
 #include "server/zone/packets/charcreation/ClientCreateCharacterCallback.h"
 #include "server/zone/packets/charcreation/ClientCreateCharacterSuccess.h"
 #include "server/zone/managers/templates/TemplateManager.h"
-#include "server/zone/templates/datatables/DataTableIff.h"
-#include "server/zone/templates/datatables/DataTableRow.h"
+#include "templates/datatables/DataTableIff.h"
+#include "templates/datatables/DataTableRow.h"
 #include "server/zone/templates/creation/SkillDataForm.h"
 #include "server/zone/templates/tangible/PlayerCreatureTemplate.h"
 #include "server/ServerCore.h"
@@ -29,9 +29,9 @@
 #include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/managers/customization/CustomizationIdManager.h"
 #include "server/zone/managers/skill/imagedesign/ImageDesignManager.h"
-#include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
-#include "server/zone/templates/params/PaletteColorCustomizationVariable.h"
-#include "server/zone/templates/customization/BasicRangedIntCustomizationVariable.h"
+#include "templates/customization/AssetCustomizationManagerTemplate.h"
+#include "templates/params/PaletteColorCustomizationVariable.h"
+#include "templates/customization/BasicRangedIntCustomizationVariable.h"
 #include "server/zone/managers/jedi/JediManager.h"
 
 PlayerCreationManager::PlayerCreationManager() :

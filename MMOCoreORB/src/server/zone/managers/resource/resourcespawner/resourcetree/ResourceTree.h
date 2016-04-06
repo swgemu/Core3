@@ -13,10 +13,9 @@
 
 #include "ResourceTreeNode.h"
 #include "ResourceTreeEntry.h"
-#include "server/zone/templates/datatables/DataTableIff.h"
-#include "server/zone/templates/datatables/DataTableRow.h"
-#include "server/zone/templates/datatables/DataTableCell.h"
-//#include "../ResourceSpawner.h"
+#include "templates/datatables/DataTableIff.h"
+#include "templates/datatables/DataTableRow.h"
+#include "templates/datatables/DataTableCell.h"
 
 /**
  * The ResourceTree class is a representation of the

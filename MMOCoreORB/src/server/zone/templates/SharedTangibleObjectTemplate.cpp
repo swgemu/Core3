@@ -7,9 +7,9 @@
 
 #include "SharedTangibleObjectTemplate.h"
 #include "server/zone/managers/templates/TemplateManager.h"
-#include "server/zone/templates/footprint/StructureFootprint.h"
-#include "params/PaletteColorCustomizationVariables.h"
-#include "params/RangedIntCustomizationVariables.h"
+#include "templates/footprint/StructureFootprint.h"
+#include "templates/params/PaletteColorCustomizationVariables.h"
+#include "templates/params/RangedIntCustomizationVariables.h"
 
 SharedTangibleObjectTemplate::SharedTangibleObjectTemplate() {
 	numberExperimentalProperties = new Vector<short>();

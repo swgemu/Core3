@@ -11,9 +11,9 @@
 #include "engine/engine.h"
 #include "CustomizationData.h"
 
-#include "server/zone/templates/datatables/DataTableIff.h"
-#include "server/zone/templates/datatables/DataTableRow.h"
-#include "server/zone/templates/datatables/DataTableCell.h"
+#include "templates/datatables/DataTableIff.h"
+#include "templates/datatables/DataTableRow.h"
+#include "templates/datatables/DataTableCell.h"
 
 class CustomizationDataMap : public VectorMap<String, CustomizationData> {
 public:

@@ -20,7 +20,7 @@ import server.zone.objects.tangible.deed.Deed;
 include server.zone.objects.building.components.DestructibleBuildingDataComponent;
 include server.zone.objects.installation.components.TurretDataComponent;
 include server.zone.objects.tangible.terminal.components.TurretControlTerminalDataComponent;
-include server.zone.templates.ChildObject;
+include templates.ChildObject;
 include server.chat.StringIdChatParameter;
 include server.zone.managers.faction.FactionManager;
 

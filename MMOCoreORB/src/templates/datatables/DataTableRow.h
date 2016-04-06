@@ -9,7 +9,7 @@
 #define DATATABLEROW_H_
 
 #include "engine/engine.h"
-#include "DataTableCell.h"
+#include "templates/datatables/DataTableCell.h"
 
 class DataTableRow {
 	Vector<DataTableCell*> cells;

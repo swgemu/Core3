@@ -8,7 +8,7 @@
 #ifndef BOOLPARAM_H_
 #define BOOLPARAM_H_
 
-#include "../TemplateBase.h"
+#include "templates/params/TemplateBase.h"
 
 class BoolParam : public TemplateBase<bool> {
 public:

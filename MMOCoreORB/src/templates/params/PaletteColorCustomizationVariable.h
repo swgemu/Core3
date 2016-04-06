@@ -10,10 +10,10 @@
 
 #include "engine/engine.h"
 
-#include "Param.h"
-#include "primitives/StringParam.h"
-#include "primitives/IntegerParam.h"
-#include "RangedIntCustomizationVariable.h"
+#include "templates/params/Param.h"
+#include "templates/params/primitives/StringParam.h"
+#include "templates/params/primitives/IntegerParam.h"
+#include "templates/params/RangedIntCustomizationVariable.h"
 
 class PaletteColorCustomizationVariable : public RangedIntCustomizationVariable {
 protected:

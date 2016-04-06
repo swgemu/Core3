@@ -9,10 +9,8 @@
 #define PALETTECOLORCUSTOMIZATIONVARIABLES_H_
 
 #include "engine/engine.h"
-
-#include "PaletteColorCustomizationVariable.h"
-
-#include "Param.h"
+#include "templates/params/PaletteColorCustomizationVariable.h"
+#include "templates/params/Param.h"
 
 class PaletteColorCustomizationVariables : public Param {
 protected:

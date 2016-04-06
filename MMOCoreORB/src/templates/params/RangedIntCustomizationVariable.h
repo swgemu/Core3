@@ -8,10 +8,10 @@
 #ifndef RANGEDINTCUSTOMIZATIONVARIABLE_H_
 #define RANGEDINTCUSTOMIZATIONVARIABLE_H_
 
-#include "Param.h"
-#include "primitives/StringParam.h"
-#include "primitives/IntegerParam.h"
-#include "../customization/CustomizationVariable.h"
+#include "templates/params/Param.h"
+#include "templates/params/primitives/StringParam.h"
+#include "templates/params/primitives/IntegerParam.h"
+#include "templates/customization/CustomizationVariable.h"
 
 
 class RangedIntCustomizationVariable : public CustomizationVariable, public Param {

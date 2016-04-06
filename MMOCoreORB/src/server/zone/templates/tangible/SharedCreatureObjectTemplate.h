@@ -9,7 +9,7 @@
 #define SHAREDCREATUREOBJECTTEMPLATE_H_
 
 #include "../SharedTangibleObjectTemplate.h"
-#include "../params/VectorParam.h"
+#include "templates/params/VectorParam.h"
 
 class SharedCreatureObjectTemplate: public SharedTangibleObjectTemplate {
 protected:

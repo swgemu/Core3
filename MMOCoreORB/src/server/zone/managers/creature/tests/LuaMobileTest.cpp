@@ -20,7 +20,7 @@
 #include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
 #include "server/zone/managers/objectcontroller/command/CommandList.h"
 #include "server/zone/managers/creature/SpawnAreaMap.h"
-#include "server/zone/templates/string/StringFile.h"
+#include "templates/string/StringFile.h"
 
 class LuaMobileTest : public ::testing::Test {
 protected:

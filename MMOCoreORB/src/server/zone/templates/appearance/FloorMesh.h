@@ -9,7 +9,7 @@
 #define FLOORMESH_H_
 
 #include "engine/engine.h"
-#include "../IffTemplate.h"
+#include "templates/IffTemplate.h"
 #include "PathNode.h"
 #include "PathGraph.h"
 

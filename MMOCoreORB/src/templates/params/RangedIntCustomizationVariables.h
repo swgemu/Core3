@@ -9,8 +9,7 @@
 #define RANGEDINTCUSTOMIZATIONVARIABLES_H_
 
 #include "engine/engine.h"
-
-#include "RangedIntCustomizationVariable.h"
+#include "templates/params/RangedIntCustomizationVariable.h"
 
 class RangedIntCustomizationVariables : public Param {
 protected:

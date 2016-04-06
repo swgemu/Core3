@@ -9,7 +9,7 @@
 #define PLANETMAPCATEGORY_H_
 
 #include "engine/engine.h"
-#include "server/zone/templates/datatables/DataTableRow.h"
+#include "templates/datatables/DataTableRow.h"
 
 class PlanetMapCategory : public Object {
 

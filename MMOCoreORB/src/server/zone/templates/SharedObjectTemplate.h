@@ -10,18 +10,18 @@
 
 #include "engine/engine.h"
 
-#include "LuaTemplate.h"
-#include "IffTemplate.h"
-#include "ChildObject.h"
+#include "templates/LuaTemplate.h"
+#include "templates/IffTemplate.h"
+#include "templates/ChildObject.h"
 #include "server/zone/managers/templates/PlanetMapCategory.h"
-#include "server/zone/templates/slots/SlotDescriptor.h"
-#include "server/zone/templates/slots/ArrangementDescriptor.h"
+#include "templates/slots/SlotDescriptor.h"
+#include "templates/slots/ArrangementDescriptor.h"
 #include "server/zone/objects/scene/components/SceneObjectComponent.h"
-#include "params/primitives/IntegerParam.h"
-#include "params/StringIdParam.h"
-#include "params/primitives/StringParam.h"
-#include "params/primitives/BoolParam.h"
-#include "params/primitives/FloatParam.h"
+#include "templates/params/primitives/IntegerParam.h"
+#include "templates/params/StringIdParam.h"
+#include "templates/params/primitives/StringParam.h"
+#include "templates/params/primitives/BoolParam.h"
+#include "templates/params/primitives/FloatParam.h"
 
 class PortalLayout;
 class AppearanceTemplate;

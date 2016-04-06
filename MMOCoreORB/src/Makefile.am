@@ -855,14 +855,14 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/mission/DestroyMissionLairObserverImplementation.cpp \
 		server/zone/objects/installation/components/TurretObserverImplementation.cpp \
 		server/zone/objects/mission/bountyhunter/BountyHunterDroid.cpp \
-		server/zone/templates/string/StringFile.cpp \
+		templates/string/StringFile.cpp \
 		server/zone/templates/faction/FactionRanks.cpp \
 		server/zone/templates/mobile/LuaConversationScreen.cpp \
 		server/zone/templates/mobile/CreatureTemplate.cpp \
 		server/zone/templates/mobile/LuaConversationTemplate.cpp \
-		server/zone/templates/datatables/DataTableIff.cpp \
-		server/zone/templates/datatables/DataTableCell.cpp \
-		server/zone/templates/snapshot/WorldSnapshotIff.cpp \
+		templates/datatables/DataTableIff.cpp \
+		templates/datatables/DataTableCell.cpp \
+		templates/snapshot/WorldSnapshotIff.cpp \
 		server/zone/templates/SharedTangibleObjectTemplate.cpp \
 		server/zone/templates/appearance/FloorMesh.cpp \
 		server/zone/templates/appearance/CellProperty.cpp \
@@ -872,15 +872,15 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/templates/appearance/PathGraph.cpp \
 		server/zone/templates/intangible/DraftSchematicObjectTemplate.cpp \
 		server/zone/templates/SharedObjectTemplate.cpp \
-		server/zone/templates/params/PaletteColorCustomizationVariables.cpp \
-		server/zone/templates/params/RangedIntCustomizationVariables.cpp \
+		templates/params/PaletteColorCustomizationVariables.cpp \
+		templates/params/RangedIntCustomizationVariables.cpp \
 		server/zone/templates/tangible/SharedBuildingObjectTemplate.cpp \
 		server/zone/templates/tangible/SharedStructureObjectTemplate.cpp \
 		server/zone/templates/tangible/CampStructureTemplate.cpp \
 		server/zone/templates/tangible/SharedCreatureObjectTemplate.cpp \
 		server/zone/templates/tangible/PlayerCreatureTemplate.cpp \
 		server/zone/templates/tangible/SharedWeaponObjectTemplate.cpp \
-		server/zone/templates/customization/AssetCustomizationManagerTemplate.cpp \
+		templates/customization/AssetCustomizationManagerTemplate.cpp \
 		server/zone/objects/tangible/components/CityDecorationMenuComponent.cpp \
 		main.cpp
 		

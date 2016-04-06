@@ -6,8 +6,8 @@
  */
 
 #include "AssetCustomizationManagerTemplate.h"
-#include "../params/PaletteColorCustomizationVariable.h"
-#include "BasicRangedIntCustomizationVariable.h"
+#include "templates/params/PaletteColorCustomizationVariable.h"
+#include "templates/customization/BasicRangedIntCustomizationVariable.h"
 
 AssetCustomizationManagerTemplate::AssetCustomizationManagerTemplate() {
 	ulstTable = NULL;

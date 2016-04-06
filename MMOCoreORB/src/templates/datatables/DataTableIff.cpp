@@ -5,9 +5,9 @@
  *      Author: crush
  */
 
-#include "DataTableIff.h"
-#include "DataTableCell.h"
-#include "DataTableRow.h"
+#include "templates/datatables/DataTableIff.h"
+#include "templates/datatables/DataTableCell.h"
+#include "templates/datatables/DataTableRow.h"
 
 DataTableIff::DataTableIff() {
 
