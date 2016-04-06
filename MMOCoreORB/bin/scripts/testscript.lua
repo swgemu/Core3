@@ -1,4 +1,4 @@
-function printf(...) io.write(string.format(unpack({...}))) end
+function printf(...) io.write(string.format(table.unpack({...}))) end
 
 local creature = LuaCreatureObject(nil)
 
