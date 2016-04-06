@@ -7,7 +7,7 @@
 
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/CreatureAttribute.h"
+#include "templates/params/creature/CreatureAttribute.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/combat/CombatManager.h"

@@ -8,7 +8,7 @@
 #ifndef STATEEFFECT_H_
 #define STATEEFFECT_H_
 
-#include "server/zone/objects/creature/CreatureState.h"
+#include "templates/params/creature/CreatureState.h"
 
 #include "engine/engine.h"
 

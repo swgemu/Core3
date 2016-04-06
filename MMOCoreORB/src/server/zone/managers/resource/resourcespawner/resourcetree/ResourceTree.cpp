@@ -11,7 +11,7 @@
 #include "ResourceTree.h"
 #include "ResourceTreeEntry.h"
 #include "ResourceAttribute.h"
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "templates/manager/TemplateManager.h"
 #include "../ResourceSpawner.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/objects/tangible/tool/recycle/RecycleTool.h"

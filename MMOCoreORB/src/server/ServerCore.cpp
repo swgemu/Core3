@@ -23,7 +23,7 @@
 #include "server/zone/ZoneServer.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "templates/manager/TemplateManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"

@@ -14,7 +14,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneServer;
 import server.zone.objects.tangible.pharmaceutical.StimPack;
-include server.zone.templates.tangible.RangedStimPackTemplate;
+include templates.tangible.RangedStimPackTemplate;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 

@@ -7,7 +7,7 @@ import engine.service.ServiceClient;
 import engine.core.ManagedService;
 import engine.service.Message;
 import engine.log.Logger;
-import server.conf.ConfigManager;
+import conf.ConfigManager;
 import server.login.LoginClient;
 import server.login.LoginProcessServerImplementation;
 import server.login.LoginHandler;

@@ -12,7 +12,7 @@
 #include "server/zone/objects/creature/buffs/DurationBuff.h"
 #include "server/zone/objects/creature/buffs/SpiceBuff.h"
 #include "server/zone/objects/creature/buffs/DelayedBuff.h"
-#include "server/zone/objects/creature/CreatureAttribute.h"
+#include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/templates/tangible/ConsumableTemplate.h"
 #include "server/zone/objects/tangible/consumable/DelayedBuffObserver.h"

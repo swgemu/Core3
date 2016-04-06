@@ -26,7 +26,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
-#include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
+#include "templates/tangible/SharedStructureObjectTemplate.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 

@@ -13,7 +13,7 @@
 
 #include "server/zone/Zone.h"
 
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "templates/manager/TemplateManager.h"
 
 class CmdStartScene : public BaseMessage {
 public:

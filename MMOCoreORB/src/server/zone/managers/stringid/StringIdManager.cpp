@@ -7,7 +7,7 @@
 
 #include "StringIdManager.h"
 #include "templates/string/StringFile.h"
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "templates/manager/TemplateManager.h"
 #include "templates/manager/DataArchiveStore.h"
 
 void StringIdManager::populateDatabase() {

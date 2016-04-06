@@ -1,23 +1,23 @@
 /*
- * SharedFactoryObjectTemplate.h
+ * SharedResourceContainerObjectTemplate.h
  *
  *  Created on: 06/05/2010
  *      Author: victor
  */
 
-#ifndef SHAREDFACTORYOBJECTTEMPLATE_H_
-#define SHAREDFACTORYOBJECTTEMPLATE_H_
+#ifndef SHAREDRESOURCECONTAINEROBJECTTEMPLATE_H_
+#define SHAREDRESOURCECONTAINEROBJECTTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "server/zone/templates/SharedTangibleObjectTemplate.h"
 
-class SharedFactoryObjectTemplate : public SharedTangibleObjectTemplate {
+class SharedResourceContainerObjectTemplate : public SharedTangibleObjectTemplate {
 
 public:
-	SharedFactoryObjectTemplate() {
+	SharedResourceContainerObjectTemplate() {
 
 	}
 
-	~SharedFactoryObjectTemplate() {
+	~SharedResourceContainerObjectTemplate() {
 
 	}
 
@@ -28,7 +28,7 @@ public:
 	void readObject(IffStream* iffStream) {
 		uint32 nextType = iffStream->getNextFormType();
 
-		if (nextType != 'SFOT') {
+		if (nextType != 'RCCT') {
 			//Logger::console.error("expecting SHOT got " + String::hexvalueOf((int)nextType));
 
 			SharedTangibleObjectTemplate::readObject(iffStream);
@@ -36,7 +36,7 @@ public:
 			return;
 		}
 
-		iffStream->openForm('SFOT');
+		iffStream->openForm('RCCT');
 
 		uint32 derv = iffStream->getNextFormType();
 
@@ -47,8 +47,8 @@ public:
 		}
 
 		/*while (derv != 0) {
-						if (derv != '
-					}*/
+								if (derv != '
+							}*/
 
 		iffStream->openForm(derv);
 
@@ -68,9 +68,8 @@ public:
 			readObject(iffStream);
 		}
 
-		iffStream->closeForm('SFOT');
+		iffStream->closeForm('RCCT');
 	}
 };
 
-
-#endif /* SHAREDFACTORYOBJECTTEMPLATE_H_ */
+#endif /* SHAREDRESOURCECONTAINEROBJECTTEMPLATE_H_ */

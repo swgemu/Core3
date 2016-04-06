@@ -5,7 +5,7 @@
 #ifndef CREATESPAWNINGELEMENTCOMMAND_H_
 #define CREATESPAWNINGELEMENTCOMMAND_H_
 
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "templates/manager/TemplateManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/Zone.h"
@@ -15,7 +15,7 @@
 #include "server/zone/templates/mobile/LairTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
-#include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
+#include "templates/tangible/SharedStructureObjectTemplate.h"
 
 class CreateSpawningElementCommand : public QueueCommand {
 public:

@@ -13,7 +13,7 @@ import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneServer;
 include server.zone.templates.tangible.FireworkObjectTemplate;
-include server.zone.templates.SharedObjectTemplate;
+include templates.SharedObjectTemplate;
 
 class FireworkObject extends TangibleObject {	
 	protected string fireworkObject;

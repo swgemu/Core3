@@ -39,10 +39,10 @@
 
 #include "server/zone/objects/area/areashapes/CircularAreaShape.h"
 
-#include "server/conf/ConfigManager.h"
+#include "conf/ConfigManager.h"
 
 #include "PlanetTravelPoint.h"
-#include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
+#include "templates/tangible/SharedStructureObjectTemplate.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/terrain/layer/boundaries/BoundaryRectangle.h"
 

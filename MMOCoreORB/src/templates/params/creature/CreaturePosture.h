@@ -8,7 +8,7 @@
 #include "engine/engine.h"
 #include "templates/datatables/DataTableIff.h"
 #include "templates/datatables/DataTableRow.h"
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "templates/manager/TemplateManager.h"
 
 #include "CreatureLocomotion.h"
 

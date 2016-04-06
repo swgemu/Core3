@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "templates/manager/TemplateManager.h"
 
 class CharacterBuilderMenuNode : public Object {
 	WeakReference<CharacterBuilderMenuNode*> parentNode;

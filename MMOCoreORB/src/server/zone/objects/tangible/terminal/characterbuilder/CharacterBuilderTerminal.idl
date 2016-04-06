@@ -10,7 +10,7 @@ import engine.lua.LuaObject;
 import system.util.VectorMap;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.Zone;
-import server.zone.templates.SharedObjectTemplate;
+include templates.SharedObjectTemplate;
 include server.zone.objects.tangible.terminal.characterbuilder.CharacterBuilderMenuNode;
 
 class CharacterBuilderTerminal extends Terminal {

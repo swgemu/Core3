@@ -8,7 +8,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/packets/object/SitOnObject.h"
-#include "server/zone/objects/creature/CreatureState.h"
+#include "templates/params/creature/CreatureState.h"
 
 class SitServerCommand : public QueueCommand {
 public:

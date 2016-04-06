@@ -9,7 +9,7 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-#include "server/zone/objects/creature/CreatureAttribute.h"
+#include "templates/params/creature/CreatureAttribute.h"
 
 class CreatureObjectDeltaMessage3 : public DeltaMessage {
 	CreatureObject* creo;

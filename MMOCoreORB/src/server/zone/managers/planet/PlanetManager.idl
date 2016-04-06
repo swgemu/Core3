@@ -31,7 +31,7 @@ include server.zone.managers.planet.PlanetTravelPoint;
 include engine.lua.LuaObject;
 include server.zone.objects.building.ShuttleMap;
 include server.zone.objects.building.tasks.ShuttleDepartureTask;
-include server.zone.objects.creature.CreaturePosture;
+include templates.params.creature.CreaturePosture;
 include server.zone.managers.planet.ClientPoiDataTable;
 include server.zone.managers.planet.TravelFare;
 import server.zone.objects.area.ActiveArea;

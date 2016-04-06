@@ -8,7 +8,7 @@
 #ifndef SHAREDSHIPOBJECTTEMPLATE_H_
 #define SHAREDSHIPOBJECTTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "server/zone/templates/SharedTangibleObjectTemplate.h"
 
 class SharedShipObjectTemplate : public SharedTangibleObjectTemplate {
 	StringParam interiorLayoutFileName;

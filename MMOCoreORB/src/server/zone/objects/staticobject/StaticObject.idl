@@ -7,7 +7,7 @@ package server.zone.objects.staticobject;
 import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
-import server.zone.templates.SharedObjectTemplate;
+include templates.SharedObjectTemplate;
 
 class StaticObject extends SceneObject {
 	public StaticObject() {

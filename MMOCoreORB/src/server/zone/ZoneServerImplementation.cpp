@@ -13,7 +13,7 @@
 #include "server/login/LoginServer.h"
 #include "server/login/account/Account.h"
 
-#include "server/conf/ConfigManager.h"
+#include "conf/ConfigManager.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"

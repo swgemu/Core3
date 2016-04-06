@@ -6,7 +6,7 @@
 #define CREATUREOBJECTDELTAMESSAGE1_H_
 
 #include "../../packets/DeltaMessage.h"
-#include "../../objects/creature/CreatureAttribute.h"
+#include "templates/params/creature/CreatureAttribute.h"
 
 class CreatureObjectDeltaMessage1 : public DeltaMessage {
 	CreatureObjectImplementation* creo;

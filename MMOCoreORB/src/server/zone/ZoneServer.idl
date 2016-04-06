@@ -30,7 +30,7 @@ import server.zone.ZoneClientSession;
 import server.zone.ZoneHandler;
 import server.zone.Zone;
 import server.chat.ChatManager;
-import server.conf.ConfigManager;
+import conf.ConfigManager;
 import server.zone.managers.object.ObjectManager;
 import server.zone.managers.player.PlayerManager;
 import server.zone.managers.objectcontroller.ObjectController;

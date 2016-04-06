@@ -8,7 +8,7 @@
 #ifndef SHAREDCONSTRUCTIONCONTRACTOBJECTTEMPLATE_H_
 #define SHAREDCONSTRUCTIONCONTRACTOBJECTTEMPLATE_H_
 
-#include "../SharedIntangibleObjectTemplate.h"
+#include "templates/SharedIntangibleObjectTemplate.h"
 
 class SharedConstructionContractObjectTemplate : public SharedIntangibleObjectTemplate {
 

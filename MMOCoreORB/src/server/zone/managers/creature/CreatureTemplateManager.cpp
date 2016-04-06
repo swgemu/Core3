@@ -7,7 +7,7 @@
 
 #include "CreatureTemplateManager.h"
 #include "SpawnGroup.h"
-#include "server/conf/ConfigManager.h"
+#include "conf/ConfigManager.h"
 #include "server/zone/managers/name/NameManager.h"
 
 AtomicInteger CreatureTemplateManager::loadedMobileTemplates;

@@ -14,7 +14,7 @@ import server.zone.objects.creature.CreatureObject;
 import system.util.VectorMap;
 import system.lang.ref.Reference;
 import system.util.Vector;
-include server.zone.templates.SharedObjectTemplate;
+include templates.SharedObjectTemplate;
 
 class LootkitObject extends TangibleObject {	
 	
