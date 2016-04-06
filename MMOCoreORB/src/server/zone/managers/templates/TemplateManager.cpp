@@ -606,20 +606,20 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalShort("ACTION", CreatureAttribute::ACTION);
 	luaTemplatesInstance->setGlobalShort("MIND", CreatureAttribute::MIND);
 
-	luaTemplatesInstance->setGlobalInt("KINETIC", WeaponObject::KINETIC);
-	luaTemplatesInstance->setGlobalInt("ENERGY", WeaponObject::ENERGY);
-	luaTemplatesInstance->setGlobalInt("ELECTRICITY", WeaponObject::ELECTRICITY);
-	luaTemplatesInstance->setGlobalInt("STUN", WeaponObject::STUN);
-	luaTemplatesInstance->setGlobalInt("BLAST", WeaponObject::BLAST);
-	luaTemplatesInstance->setGlobalInt("HEAT", WeaponObject::HEAT);
-	luaTemplatesInstance->setGlobalInt("COLD", WeaponObject::COLD);
-	luaTemplatesInstance->setGlobalInt("ACID", WeaponObject::ACID);
-	luaTemplatesInstance->setGlobalInt("LIGHTSABER", WeaponObject::LIGHTSABER);
+	luaTemplatesInstance->setGlobalInt("KINETIC", SharedWeaponObjectTemplate::KINETIC);
+	luaTemplatesInstance->setGlobalInt("ENERGY", SharedWeaponObjectTemplate::ENERGY);
+	luaTemplatesInstance->setGlobalInt("ELECTRICITY", SharedWeaponObjectTemplate::ELECTRICITY);
+	luaTemplatesInstance->setGlobalInt("STUN", SharedWeaponObjectTemplate::STUN);
+	luaTemplatesInstance->setGlobalInt("BLAST", SharedWeaponObjectTemplate::BLAST);
+	luaTemplatesInstance->setGlobalInt("HEAT", SharedWeaponObjectTemplate::HEAT);
+	luaTemplatesInstance->setGlobalInt("COLD", SharedWeaponObjectTemplate::COLD);
+	luaTemplatesInstance->setGlobalInt("ACID", SharedWeaponObjectTemplate::ACID);
+	luaTemplatesInstance->setGlobalInt("LIGHTSABER", SharedWeaponObjectTemplate::LIGHTSABER);
 
-	luaTemplatesInstance->setGlobalInt("NONE", WeaponObject::NONE);
-	luaTemplatesInstance->setGlobalInt("LIGHT", WeaponObject::LIGHT);
-	luaTemplatesInstance->setGlobalInt("MEDIUM", WeaponObject::MEDIUM);
-	luaTemplatesInstance->setGlobalInt("HEAVY", WeaponObject::HEAVY);
+	luaTemplatesInstance->setGlobalInt("NONE", SharedWeaponObjectTemplate::NONE);
+	luaTemplatesInstance->setGlobalInt("LIGHT", SharedWeaponObjectTemplate::LIGHT);
+	luaTemplatesInstance->setGlobalInt("MEDIUM", SharedWeaponObjectTemplate::MEDIUM);
+	luaTemplatesInstance->setGlobalInt("HEAVY", SharedWeaponObjectTemplate::HEAVY);
 
 	luaTemplatesInstance->setGlobalInt("ATTACKABLE", CreatureFlag::ATTACKABLE);
 	luaTemplatesInstance->setGlobalInt("AGGRESSIVE", CreatureFlag::AGGRESSIVE);
@@ -637,16 +637,16 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("INTERESTING", OptionBitmask::INTERESTING);
 	luaTemplatesInstance->setGlobalInt("JTLINTERESTING", OptionBitmask::JTLINTERESTING);
 
-	luaTemplatesInstance->setGlobalInt("MELEEATTACK", WeaponObject::MELEEATTACK);
-	luaTemplatesInstance->setGlobalInt("RANGEDATTACK", WeaponObject::RANGEDATTACK);
-	luaTemplatesInstance->setGlobalInt("FORCEATTACK", WeaponObject::FORCEATTACK);
-	luaTemplatesInstance->setGlobalInt("TRAPATTACK", WeaponObject::TRAPATTACK);
-	luaTemplatesInstance->setGlobalInt("GRENADEATTACK", WeaponObject::GRENADEATTACK);
-	luaTemplatesInstance->setGlobalInt("HEAVYACIDBEAMATTACK", WeaponObject::HEAVYACIDBEAMATTACK);
-	luaTemplatesInstance->setGlobalInt("HEAVYLIGHTNINGBEAMATTACK", WeaponObject::HEAVYLIGHTNINGBEAMATTACK);
-	luaTemplatesInstance->setGlobalInt("HEAVYPARTICLEBEAMATTACK", WeaponObject::HEAVYPARTICLEBEAMATTACK);
-	luaTemplatesInstance->setGlobalInt("HEAVYROCKETLAUNCHERATTACK", WeaponObject::HEAVYROCKETLAUNCHERATTACK);
-	luaTemplatesInstance->setGlobalInt("HEAVYLAUNCHERATTACK", WeaponObject::HEAVYLAUNCHERATTACK);
+	luaTemplatesInstance->setGlobalInt("MELEEATTACK", SharedWeaponObjectTemplate::MELEEATTACK);
+	luaTemplatesInstance->setGlobalInt("RANGEDATTACK", SharedWeaponObjectTemplate::RANGEDATTACK);
+	luaTemplatesInstance->setGlobalInt("FORCEATTACK", SharedWeaponObjectTemplate::FORCEATTACK);
+	luaTemplatesInstance->setGlobalInt("TRAPATTACK", SharedWeaponObjectTemplate::TRAPATTACK);
+	luaTemplatesInstance->setGlobalInt("GRENADEATTACK", SharedWeaponObjectTemplate::GRENADEATTACK);
+	luaTemplatesInstance->setGlobalInt("HEAVYACIDBEAMATTACK", SharedWeaponObjectTemplate::HEAVYACIDBEAMATTACK);
+	luaTemplatesInstance->setGlobalInt("HEAVYLIGHTNINGBEAMATTACK", SharedWeaponObjectTemplate::HEAVYLIGHTNINGBEAMATTACK);
+	luaTemplatesInstance->setGlobalInt("HEAVYPARTICLEBEAMATTACK", SharedWeaponObjectTemplate::HEAVYPARTICLEBEAMATTACK);
+	luaTemplatesInstance->setGlobalInt("HEAVYROCKETLAUNCHERATTACK", SharedWeaponObjectTemplate::HEAVYROCKETLAUNCHERATTACK);
+	luaTemplatesInstance->setGlobalInt("HEAVYLAUNCHERATTACK", SharedWeaponObjectTemplate::HEAVYLAUNCHERATTACK);
 
 	luaTemplatesInstance->setGlobalInt("ANYWEAPON", CombatManager::ANYWEAPON);
 	luaTemplatesInstance->setGlobalInt("THROWNWEAPON", CombatManager::THROWNWEAPON);

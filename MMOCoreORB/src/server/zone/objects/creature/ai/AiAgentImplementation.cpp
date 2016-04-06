@@ -2399,109 +2399,109 @@ void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, Creatur
 	else if (getArmor() == 3)
 		alm->insertAttribute("armorrating", "Heavy");
 
-	if (isSpecialProtection(WeaponObject::KINETIC)) {
+	if (isSpecialProtection(SharedWeaponObjectTemplate::KINETIC)) {
 		StringBuffer txt;
 		txt << Math::getPrecision(getKinetic(), 1) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_kinetic", txt.toString());
 	}
 
-	if (isSpecialProtection(WeaponObject::ENERGY)) {
+	if (isSpecialProtection(SharedWeaponObjectTemplate::ENERGY)) {
 		StringBuffer txt;
 		txt << Math::getPrecision(getEnergy(), 1) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_energy", txt.toString());
 	}
 
-	if (isSpecialProtection(WeaponObject::ELECTRICITY)) {
+	if (isSpecialProtection(SharedWeaponObjectTemplate::ELECTRICITY)) {
 		StringBuffer txt;
 		txt << Math::getPrecision(getElectricity(), 1) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_electrical", txt.toString());
 	}
 
-	if (isSpecialProtection(WeaponObject::STUN)) {
+	if (isSpecialProtection(SharedWeaponObjectTemplate::STUN)) {
 		StringBuffer txt;
 		txt << Math::getPrecision(getStun(), 1) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_stun", txt.toString());
 	}
 
-	if (isSpecialProtection(WeaponObject::BLAST)) {
+	if (isSpecialProtection(SharedWeaponObjectTemplate::BLAST)) {
 		StringBuffer txt;
 		txt << Math::getPrecision(getBlast(), 1) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_blast", txt.toString());
 	}
 
-	if (isSpecialProtection(WeaponObject::HEAT)) {
+	if (isSpecialProtection(SharedWeaponObjectTemplate::HEAT)) {
 		StringBuffer txt;
 		txt << Math::getPrecision(getHeat(), 1) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_heat", txt.toString());
 	}
 
-	if (isSpecialProtection(WeaponObject::COLD)) {
+	if (isSpecialProtection(SharedWeaponObjectTemplate::COLD)) {
 		StringBuffer txt;
 		txt << Math::getPrecision(getCold(), 1) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_cold", txt.toString());
 	}
 
-	if (isSpecialProtection(WeaponObject::ACID)) {
+	if (isSpecialProtection(SharedWeaponObjectTemplate::ACID)) {
 		StringBuffer txt;
 		txt << Math::getPrecision(getAcid(), 1) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_acid", txt.toString());
 	}
 
-	if (isSpecialProtection(WeaponObject::LIGHTSABER)) {
+	if (isSpecialProtection(SharedWeaponObjectTemplate::LIGHTSABER)) {
 		StringBuffer txt;
 		txt << Math::getPrecision(getLightSaber(), 1) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_restraint", txt.toString());
 	}
 
-	if (getKinetic() > 0 && !isSpecialProtection(WeaponObject::KINETIC)) {
+	if (getKinetic() > 0 && !isSpecialProtection(SharedWeaponObjectTemplate::KINETIC)) {
 		StringBuffer txt;
 		txt << Math::getPrecision(getKinetic(), 1) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_kinetic", txt.toString());
 	}
 
-	if (getEnergy() > 0 && !isSpecialProtection(WeaponObject::ENERGY)) {
+	if (getEnergy() > 0 && !isSpecialProtection(SharedWeaponObjectTemplate::ENERGY)) {
 		StringBuffer txt;
 		txt << Math::getPrecision(getEnergy(), 1) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_energy", txt.toString());
 	}
 
-	if (getElectricity() > 0 && !isSpecialProtection(WeaponObject::ELECTRICITY)) {
+	if (getElectricity() > 0 && !isSpecialProtection(SharedWeaponObjectTemplate::ELECTRICITY)) {
 		StringBuffer txt;
 		txt << Math::getPrecision(getElectricity(), 1) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_electrical", txt.toString());
 	}
 
-	if (getStun() > 0 && !isSpecialProtection(WeaponObject::STUN)) {
+	if (getStun() > 0 && !isSpecialProtection(SharedWeaponObjectTemplate::STUN)) {
 		StringBuffer txt;
 		txt << Math::getPrecision(getStun(), 1) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_stun", txt.toString());
 	}
 
-	if (getBlast() > 0 && !isSpecialProtection(WeaponObject::BLAST)) {
+	if (getBlast() > 0 && !isSpecialProtection(SharedWeaponObjectTemplate::BLAST)) {
 		StringBuffer txt;
 		txt << Math::getPrecision(getBlast(), 1) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_blast", txt.toString());
 	}
 
-	if (getHeat() > 0 && !isSpecialProtection(WeaponObject::HEAT)) {
+	if (getHeat() > 0 && !isSpecialProtection(SharedWeaponObjectTemplate::HEAT)) {
 		StringBuffer txt;
 		txt << Math::getPrecision(getHeat(), 1) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_heat", txt.toString());
 	}
 
-	if (getCold() > 0 && !isSpecialProtection(WeaponObject::COLD)) {
+	if (getCold() > 0 && !isSpecialProtection(SharedWeaponObjectTemplate::COLD)) {
 		StringBuffer txt;
 		txt << Math::getPrecision(getCold(), 1) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_cold", txt.toString());
 	}
 
-	if (getAcid() > 0 && !isSpecialProtection(WeaponObject::ACID)) {
+	if (getAcid() > 0 && !isSpecialProtection(SharedWeaponObjectTemplate::ACID)) {
 		StringBuffer txt;
 		txt << Math::getPrecision(getAcid(), 1) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_acid", txt.toString());
 	}
 
-	if (getLightSaber() > 0 && !isSpecialProtection(WeaponObject::LIGHTSABER)) {
+	if (getLightSaber() > 0 && !isSpecialProtection(SharedWeaponObjectTemplate::LIGHTSABER)) {
 		StringBuffer txt;
 		txt << Math::getPrecision(getLightSaber(), 1) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_restraint", txt.toString());
@@ -3219,23 +3219,23 @@ void AiAgentImplementation::setMaxHAM(int type, int value, bool notifyClient) {
 	}
 
 float AiAgentImplementation::getEffectiveResist() {
-	if (!isSpecialProtection(WeaponObject::ACID) && getAcid() > 0)
+	if (!isSpecialProtection(SharedWeaponObjectTemplate::ACID) && getAcid() > 0)
 		return getAcid();
-	if (!isSpecialProtection(WeaponObject::BLAST) && getBlast() > 0)
+	if (!isSpecialProtection(SharedWeaponObjectTemplate::BLAST) && getBlast() > 0)
 		return getBlast();
-	if (!isSpecialProtection(WeaponObject::COLD) && getCold() > 0)
+	if (!isSpecialProtection(SharedWeaponObjectTemplate::COLD) && getCold() > 0)
 		return getCold();
-	if (!isSpecialProtection(WeaponObject::ELECTRICITY) && getElectricity() > 0)
+	if (!isSpecialProtection(SharedWeaponObjectTemplate::ELECTRICITY) && getElectricity() > 0)
 		return getElectricity();
-	if (!isSpecialProtection(WeaponObject::ENERGY) && getEnergy() > 0)
+	if (!isSpecialProtection(SharedWeaponObjectTemplate::ENERGY) && getEnergy() > 0)
 		return getEnergy();
-	if (!isSpecialProtection(WeaponObject::HEAT) && getHeat() > 0)
+	if (!isSpecialProtection(SharedWeaponObjectTemplate::HEAT) && getHeat() > 0)
 		return getHeat();
-	if (!isSpecialProtection(WeaponObject::KINETIC) && getKinetic() > 0)
+	if (!isSpecialProtection(SharedWeaponObjectTemplate::KINETIC) && getKinetic() > 0)
 		return getKinetic();
-	if (!isSpecialProtection(WeaponObject::LIGHTSABER) && getLightSaber() > 0)
+	if (!isSpecialProtection(SharedWeaponObjectTemplate::LIGHTSABER) && getLightSaber() > 0)
 		return getLightSaber();
-	if (!isSpecialProtection(WeaponObject::STUN) && getStun() > 0)
+	if (!isSpecialProtection(SharedWeaponObjectTemplate::STUN) && getStun() > 0)
 		return getStun();
 	return 0;
 }

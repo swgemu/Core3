@@ -109,63 +109,63 @@ public:
 	void readObject(LuaObject* templateData);
 
 	inline float getKinetic() {
-		if (isSpecialProtection(WeaponObject::KINETIC))
+		if (isSpecialProtection(SharedWeaponObjectTemplate::KINETIC))
 			return kinetic - 100;
 		else
 			return kinetic;
 	}
 
 	inline float getEnergy() {
-		if (isSpecialProtection(WeaponObject::ENERGY))
+		if (isSpecialProtection(SharedWeaponObjectTemplate::ENERGY))
 			return energy - 100;
 		else
 			return energy;
 	}
 
 	inline float getElectricity() {
-		if (isSpecialProtection(WeaponObject::ELECTRICITY))
+		if (isSpecialProtection(SharedWeaponObjectTemplate::ELECTRICITY))
 			return electricity - 100;
 		else
 			return electricity;
 	}
 
 	inline float getStun() {
-		if (isSpecialProtection(WeaponObject::STUN))
+		if (isSpecialProtection(SharedWeaponObjectTemplate::STUN))
 			return stun - 100;
 		else
 			return stun;
 	}
 
 	inline float getBlast() {
-		if (isSpecialProtection(WeaponObject::BLAST))
+		if (isSpecialProtection(SharedWeaponObjectTemplate::BLAST))
 			return blast - 100;
 		else
 			return blast;
 	}
 
 	inline float getHeat() {
-		if (isSpecialProtection(WeaponObject::HEAT))
+		if (isSpecialProtection(SharedWeaponObjectTemplate::HEAT))
 			return heat - 100;
 		else
 			return heat;
 	}
 
 	inline float getCold() {
-		if (isSpecialProtection(WeaponObject::COLD))
+		if (isSpecialProtection(SharedWeaponObjectTemplate::COLD))
 			return cold - 100;
 		else
 			return cold;
 	}
 
 	inline float getAcid() {
-		if (isSpecialProtection(WeaponObject::ACID))
+		if (isSpecialProtection(SharedWeaponObjectTemplate::ACID))
 			return acid - 100;
 		else
 			return acid;
 	}
 
 	inline float getLightSaber() {
-		if (isSpecialProtection(WeaponObject::LIGHTSABER))
+		if (isSpecialProtection(SharedWeaponObjectTemplate::LIGHTSABER))
 			return lightSaber - 100;
 		else
 			return lightSaber;
@@ -389,31 +389,31 @@ public:
 
 	inline bool isSpecialProtection(int resistType) {
 		switch (resistType) {
-		case WeaponObject::KINETIC:
+		case SharedWeaponObjectTemplate::KINETIC:
 			return kinetic > 100;
 			break;
-		case WeaponObject::ENERGY:
+		case SharedWeaponObjectTemplate::ENERGY:
 			return energy > 100;
 			break;
-		case WeaponObject::ELECTRICITY:
+		case SharedWeaponObjectTemplate::ELECTRICITY:
 			return electricity > 100;
 			break;
-		case WeaponObject::STUN:
+		case SharedWeaponObjectTemplate::STUN:
 			return stun > 100;
 			break;
-		case WeaponObject::BLAST:
+		case SharedWeaponObjectTemplate::BLAST:
 			return blast > 100;
 			break;
-		case WeaponObject::HEAT:
+		case SharedWeaponObjectTemplate::HEAT:
 			return heat > 100;
 			break;
-		case WeaponObject::COLD:
+		case SharedWeaponObjectTemplate::COLD:
 			return cold > 100;
 			break;
-		case WeaponObject::ACID:
+		case SharedWeaponObjectTemplate::ACID:
 			return acid > 100;
 			break;
-		case WeaponObject::LIGHTSABER:
+		case SharedWeaponObjectTemplate::LIGHTSABER:
 			return lightSaber > 100;
 			break;
 		}

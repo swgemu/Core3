@@ -136,7 +136,7 @@ public:
 		float av = 0, bv = 0, cv = 0, dv = 0, ev = 0;
 		bool any = false;
 		switch(type) {
-			case WeaponObject::ACID:
+			case SharedWeaponObjectTemplate::ACID:
 				any = hasASpecial(a,b,c,d,e,type) || hasVulnerability(a->getAcid(),b->getAcid(),c->getAcid(), d->getAcid(), e->getAcid());
 				av = normalize(a->getAcid(),a->isSpecialResist(type),any);
 				bv = normalize(b->getAcid(),b->isSpecialResist(type),any);
@@ -144,7 +144,7 @@ public:
 				dv = normalize(d->getAcid(),d->isSpecialResist(type),any);
 				ev = normalize(e->getAcid(),e->isSpecialResist(type),any);
 				break;
-			case WeaponObject::BLAST:
+			case SharedWeaponObjectTemplate::BLAST:
 				any = hasASpecial(a,b,c,d,e,type) || hasVulnerability(a->getBlast(),b->getBlast(),c->getBlast(), d->getBlast(), e->getBlast());
 				av = normalize(a->getBlast(),a->isSpecialResist(type),any);
 				bv = normalize(b->getBlast(),b->isSpecialResist(type),any);
@@ -152,7 +152,7 @@ public:
 				dv = normalize(d->getBlast(),d->isSpecialResist(type),any);
 				ev = normalize(e->getBlast(),e->isSpecialResist(type),any);
 				break;
-			case WeaponObject::COLD:
+			case SharedWeaponObjectTemplate::COLD:
 				any = hasASpecial(a,b,c,d,e,type)|| hasVulnerability(a->getCold(),b->getCold(),c->getCold(), d->getCold(), e->getCold());
 				av = normalize(a->getCold(),a->isSpecialResist(type),any);
 				bv = normalize(b->getCold(),b->isSpecialResist(type),any);
@@ -160,7 +160,7 @@ public:
 				dv = normalize(d->getCold(),d->isSpecialResist(type),any);
 				ev = normalize(e->getCold(),e->isSpecialResist(type),any);
 				break;
-			case WeaponObject::ELECTRICITY:
+			case SharedWeaponObjectTemplate::ELECTRICITY:
 				any = hasASpecial(a,b,c,d,e,type)|| hasVulnerability(a->getElectric(),b->getElectric(),c->getElectric(), d->getElectric(), e->getElectric());
 				av = normalize(a->getElectric(),a->isSpecialResist(type),any);
 				bv = normalize(b->getElectric(),b->isSpecialResist(type),any);
@@ -168,7 +168,7 @@ public:
 				dv = normalize(d->getElectric(),d->isSpecialResist(type),any);
 				ev = normalize(e->getElectric(),e->isSpecialResist(type),any);
 				break;
-			case WeaponObject::ENERGY:
+			case SharedWeaponObjectTemplate::ENERGY:
 				any = hasASpecial(a,b,c,d,e,type)|| hasVulnerability(a->getEnergy(),b->getEnergy(),c->getEnergy(), d->getEnergy(), e->getEnergy());
 				av = normalize(a->getEnergy(),a->isSpecialResist(type),any);
 				bv = normalize(b->getEnergy(),b->isSpecialResist(type),any);
@@ -176,7 +176,7 @@ public:
 				dv = normalize(d->getEnergy(),d->isSpecialResist(type),any);
 				ev = normalize(e->getEnergy(),e->isSpecialResist(type),any);
 				break;
-			case WeaponObject::HEAT:
+			case SharedWeaponObjectTemplate::HEAT:
 				any = hasASpecial(a,b,c,d,e,type)|| hasVulnerability(a->getHeat(),b->getHeat(),c->getHeat(), d->getHeat(), e->getHeat());
 				av = normalize(a->getHeat(),a->isSpecialResist(type),any);
 				bv = normalize(b->getHeat(),b->isSpecialResist(type),any);
@@ -184,7 +184,7 @@ public:
 				dv = normalize(d->getHeat(),d->isSpecialResist(type),any);
 				ev = normalize(e->getHeat(),e->isSpecialResist(type),any);
 				break;
-			case WeaponObject::KINETIC:
+			case SharedWeaponObjectTemplate::KINETIC:
 				any = hasASpecial(a,b,c,d,e,type)|| hasVulnerability(a->getKinetic(),b->getKinetic(),c->getKinetic(), d->getKinetic(), e->getKinetic());
 				av = normalize(a->getKinetic(),a->isSpecialResist(type),any);
 				bv = normalize(b->getKinetic(),b->isSpecialResist(type),any);
@@ -192,7 +192,7 @@ public:
 				dv = normalize(d->getKinetic(),d->isSpecialResist(type),any);
 				ev = normalize(e->getKinetic(),e->isSpecialResist(type),any);
 				break;
-			case WeaponObject::LIGHTSABER:
+			case SharedWeaponObjectTemplate::LIGHTSABER:
 				any = hasASpecial(a,b,c,d,e,type)|| hasVulnerability(a->getSaber(),b->getSaber(),c->getSaber(), d->getSaber(), e->getSaber());
 				av = normalize(a->getSaber(),a->isSpecialResist(type),any);
 				bv = normalize(b->getSaber(),b->isSpecialResist(type),any);
@@ -200,7 +200,7 @@ public:
 				dv = normalize(d->getSaber(),d->isSpecialResist(type),any);
 				ev = normalize(e->getSaber(),e->isSpecialResist(type),any);
 				break;
-			case WeaponObject::STUN:
+			case SharedWeaponObjectTemplate::STUN:
 				any = hasASpecial(a,b,c,d,e,type)|| hasVulnerability(a->getStun(),b->getStun(),c->getStun(), d->getStun(), e->getStun());
 				av = normalize(a->getStun(),a->isSpecialResist(type),any);
 				bv = normalize(b->getStun(),b->isSpecialResist(type),any);
