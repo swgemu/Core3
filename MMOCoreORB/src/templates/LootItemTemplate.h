@@ -10,9 +10,7 @@
 
 #include "engine/engine.h"
 #include "templates/LuaTemplate.h"
-
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-#include "server/zone/managers/crafting/CraftingManager.h"
+#include "templates/crafting/ValuesMap.h"
 
 class LootItemTemplate: public LuaTemplate {
 protected:
@@ -24,7 +22,7 @@ protected:
 	int junkMinValue;
 	int junkMaxValue;
 
-	CraftingValues craftingValues;
+	ValuesMap craftingValues;
 
 	Vector<String> customizationStringNames;
 	Vector<Vector<int> > customizationValues;
@@ -74,7 +72,7 @@ public:
 					float max = row.getFloatAt(3);
 					float prec = 0;
 					bool hidden = false;
-					short combineType = CraftingManager::LINEARCOMBINE;
+					short combineType = ValuesMap::LINEARCOMBINE;
 
 					if (row.getTableSize() > 3)
 						prec = row.getFloatAt(4);
@@ -206,7 +204,7 @@ public:
 		return &customizationValues;
 	}
 
-	CraftingValues getCraftingValuesCopy() {
+	ValuesMap getValuesMapCopy() {
 		return craftingValues;
 	}
 

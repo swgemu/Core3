@@ -39,7 +39,7 @@ include system.thread.ReadWriteLock;
 include server.zone.objects.creature.ai.variables.CurrentFoundPath;
 import server.zone.objects.creature.ai.bt.Behavior;
 import server.zone.objects.creature.ai.bt.CompositeBehavior;
-include server.zone.templates.AiTemplate;
+include templates.AiTemplate;
 import server.zone.objects.intangible.ControlDevice;
 import server.zone.objects.creature.ai.events.AiTrackingTask;
 import system.thread.atomic.AtomicInteger;

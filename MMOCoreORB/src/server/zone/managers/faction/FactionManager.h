@@ -11,7 +11,7 @@
 #include "engine/engine.h"
 #include "FactionMap.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/templates/faction/FactionRanks.h"
+#include "templates/faction/FactionRanks.h"
 
 class FactionMap;
 

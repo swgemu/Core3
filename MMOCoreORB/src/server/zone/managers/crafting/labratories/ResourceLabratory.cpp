@@ -48,10 +48,10 @@ void ResourceLabratory::setInitialCraftingValues(TangibleObject* prototype, Manu
 	// These 2 values are pretty standard, adding these
 	itemName = "xp";
 	value = float(draftSchematic->getXpAmount());
-	craftingValues->addExperimentalProperty("", itemName, value, value, 0, true, CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("", itemName, value, value, 0, true, ValuesMap::OVERRIDECOMBINE);
 	itemName = "complexity";
 	value = manufactureSchematic->getComplexity();
-	craftingValues->addExperimentalProperty("", itemName, value, value, 0, true, CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("", itemName, value, value, 0, true, ValuesMap::OVERRIDECOMBINE);
 	float modifier = calculateAssemblyValueModifier(assemblySuccess);
 	int subtitleCounter = 0;
 
@@ -213,7 +213,7 @@ bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, Manufactu
 					short combineType = craftingValues->getCombineType(property);
 
 					switch(combineType) {
-					case CraftingManager::LINEARCOMBINE:
+					case ValuesMap::LINEARCOMBINE:
 						currentvalue += propertyvalue;
 						min += propertyvalue;
 						max += propertyvalue;
@@ -223,7 +223,7 @@ bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, Manufactu
 
 						craftingValues->setCurrentValue(property, currentvalue);
 						break;
-					case CraftingManager::PERCENTAGECOMBINE:
+					case ValuesMap::PERCENTAGECOMBINE:
 						currentvalue += propertyvalue;
 						min += propertyvalue;
 						max += propertyvalue;
@@ -233,12 +233,12 @@ bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, Manufactu
 
 						craftingValues->setCurrentPercentage(property, currentvalue);
 						break;
-					case CraftingManager::BITSETCOMBINE:
+					case ValuesMap::BITSETCOMBINE:
 						currentvalue = (int)currentvalue | (int)propertyvalue;
 
 						craftingValues->setCurrentValue(property , currentvalue);
 						break;
-					case CraftingManager::OVERRIDECOMBINE:
+					case ValuesMap::OVERRIDECOMBINE:
 						// Do nothing because the values should override whatever is
 						// on the component
 						break;
@@ -253,7 +253,7 @@ bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, Manufactu
 					experimentalTitle = component->getAttributeTitle(property);
 
 					craftingValues->addExperimentalProperty(experimentalTitle, property,
-						currentvalue, currentvalue, precision, component->getAttributeHidden(property), CraftingManager::LINEARCOMBINE);
+						currentvalue, currentvalue, precision, component->getAttributeHidden(property), ValuesMap::LINEARCOMBINE);
 					craftingValues->setCurrentPercentage(property, 0);
 					craftingValues->setMaxPercentage(property, 0);
 					craftingValues->setCurrentValue(property, currentvalue);

@@ -21,14 +21,7 @@ include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 class CraftingManager extends ZoneManager {
 	private transient SchematicMap schematicMap;
-	
-	// Ingredient math types
-	public static final short RESOURCECOMBINE = 0x00;
-	public static final short LINEARCOMBINE = 0x01;
-	public static final short PERCENTAGECOMBINE = 0x02;
-	public static final short BITSETCOMBINE = 0x03;
-	public static final short OVERRIDECOMBINE = 0x04;
-	
+
 	public static final short CR = 1;
 	public static final short CD = 2;
 	public static final short DR = 3;
@@ -39,7 +32,7 @@ class CraftingManager extends ZoneManager {
 	public static final short OQ = 8;
 	public static final short SR = 9;
 	public static final short UT = 10;
-	
+
 	public static final short AMAZINGSUCCESS = 0;
 	public static final short GREATSUCCESS = 1;
 	public static final short GOODSUCCESS = 2;
@@ -49,12 +42,11 @@ class CraftingManager extends ZoneManager {
 	public static final short OK = 6;
 	public static final short BARELYSUCCESSFUL = 7;
 	public static final short CRITICALFAILURE = 8;
-	
+
 	public static final int RESOURCE_LAB = 0x00;
 	public static final int GENETIC_LAB = 0x01;
 	public static final int DROID_LAB = 0x02;
-	
-	
+
 	@dereferenced
 	private transient SortedVector<string> bioMods;
 	

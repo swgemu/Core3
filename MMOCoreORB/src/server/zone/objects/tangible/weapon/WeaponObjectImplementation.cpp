@@ -624,7 +624,7 @@ void WeaponObjectImplementation::updateCraftingValues(CraftingValues* values, bo
 	}
 
 	value = values->getCurrentValue("woundchance");
-	if(value != CraftingValues::VALUENOTFOUND)
+	if (value != ValuesMap::VALUENOTFOUND)
 		setWoundsRatio(value);
 
 	//value = craftingValues->getCurrentValue("roundsused");
@@ -632,23 +632,23 @@ void WeaponObjectImplementation::updateCraftingValues(CraftingValues* values, bo
 		//_this.getReferenceUnsafeStaticCast()->set_______(value);
 
 	value = values->getCurrentValue("zerorangemod");
-	if(value != CraftingValues::VALUENOTFOUND)
+	if (value != ValuesMap::VALUENOTFOUND)
 		setPointBlankAccuracy((int)value);
 
 	value = values->getCurrentValue("maxrange");
-	if(value != CraftingValues::VALUENOTFOUND)
+	if (value != ValuesMap::VALUENOTFOUND)
 		setMaxRange((int)value);
 
 	value = values->getCurrentValue("maxrangemod");
-	if(value != CraftingValues::VALUENOTFOUND)
+	if (value != ValuesMap::VALUENOTFOUND)
 		setMaxRangeAccuracy((int)value);
 
 	value = values->getCurrentValue("midrange");
-	if(value != CraftingValues::VALUENOTFOUND)
+	if (value != ValuesMap::VALUENOTFOUND)
 		setIdealRange((int)value);
 
 	value = values->getCurrentValue("midrangemod");
-	if(value != CraftingValues::VALUENOTFOUND)
+	if (value != ValuesMap::VALUENOTFOUND)
 		setIdealAccuracy((int)value);
 
 	//value = craftingValues->getCurrentValue("charges");
@@ -656,7 +656,7 @@ void WeaponObjectImplementation::updateCraftingValues(CraftingValues* values, bo
 	//	setUsesRemaining((int)value);
 
 	value = values->getCurrentValue("hitpoints");
-	if(value != CraftingValues::VALUENOTFOUND)
+	if (value != ValuesMap::VALUENOTFOUND)
 		setMaxCondition((int)value);
 
 	setConditionDamage(0);

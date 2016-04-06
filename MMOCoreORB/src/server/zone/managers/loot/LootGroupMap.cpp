@@ -7,8 +7,8 @@
 
 #include "LootGroupMap.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
-#include "server/zone/templates/LootItemTemplate.h"
-#include "server/zone/templates/LootGroupTemplate.h"
+#include "templates/LootItemTemplate.h"
+#include "templates/LootGroupTemplate.h"
 
 Lua* LootGroupMap::lua = NULL;
 int LootGroupMap::ERROR_CODE = NO_ERROR;

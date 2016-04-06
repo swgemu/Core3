@@ -67,7 +67,7 @@
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
 #include "server/zone/packets/scene/UpdateTransformMessage.h"
 #include "server/zone/packets/scene/UpdateTransformWithParentMessage.h"
-#include "server/zone/templates/AiTemplate.h"
+#include "templates/AiTemplate.h"
 #include "server/zone/templates/tangible/SharedCreatureObjectTemplate.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/templates/mobile/MobileOutfit.h"

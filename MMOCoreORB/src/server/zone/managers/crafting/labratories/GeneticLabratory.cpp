@@ -103,10 +103,10 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	// These 2 values are pretty standard, adding these
 	itemName = "xp";
 	value = float(draftSchematic->getXpAmount());
-	craftingValues->addExperimentalProperty("", itemName, value, value, 0, true, CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("", itemName, value, value, 0, true, ValuesMap::OVERRIDECOMBINE);
 	itemName = "complexity";
 	value = manufactureSchematic->getComplexity();
-	craftingValues->addExperimentalProperty("", itemName, value, value, 0, true, CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("", itemName, value, value, 0, true, ValuesMap::OVERRIDECOMBINE);
 	float modifier = calculateAssemblyValueModifier(assemblySuccess);
 
 	// Cast component to genetic
@@ -232,16 +232,16 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	// Step 2. At this point we know the max values for all stats and we have calculated any armor specials needed
 	// So now we need to setup the min and initial values of stats and define the experimental attributes. // Ranges are 0 to 100 for any one of these
 	// set current value to be 70% less than max calculated as the experimentation range. i.e.
-	craftingValues->addExperimentalProperty("expPhysiqueProfile","fortitude",0,fortMax,0,false,CraftingManager::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expPhysiqueProfile","hardiness",0,harMax,0,false,CraftingManager::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expProwessProfile","dexterity",0,dexMax,0,false,CraftingManager::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expProwessProfile","endurance",0,endMax,0,false,CraftingManager::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expMentalProfile","intellect",0,intMax,0,false,CraftingManager::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expMentalProfile","cleverness",0,cleMax,0,false,CraftingManager::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expPsychologicalProfile","dependability",0,depMax,0,false,CraftingManager::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expPsychologicalProfile","courage",0,couMax,0,false,CraftingManager::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expAggressionProfile","fierceness",0,fieMax,0,false,CraftingManager::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expAggressionProfile","power",0,powMax,0,false,CraftingManager::LINEARCOMBINE);
+	craftingValues->addExperimentalProperty("expPhysiqueProfile", "fortitude", 0, fortMax, 0, false, ValuesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalProperty("expPhysiqueProfile", "hardiness", 0, harMax, 0, false, ValuesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalProperty("expProwessProfile", "dexterity", 0, dexMax, 0, false, ValuesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalProperty("expProwessProfile", "endurance", 0, endMax, 0, false, ValuesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalProperty("expMentalProfile", "intellect", 0, intMax, 0, false, ValuesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalProperty("expMentalProfile", "cleverness", 0, cleMax, 0, false, ValuesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalProperty("expPsychologicalProfile", "dependability", 0, depMax, 0, false, ValuesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalProperty("expPsychologicalProfile", "courage", 0, couMax, 0, false, ValuesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalProperty("expAggressionProfile", "fierceness", 0, fieMax, 0, false, ValuesMap::LINEARCOMBINE);
+	craftingValues->addExperimentalProperty("expAggressionProfile", "power", 0, powMax, 0, false, ValuesMap::LINEARCOMBINE);
 
 	String title;
 	int armorBase = 0;
@@ -276,26 +276,26 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	effectiveness = (int)(((armorBase - (armorValue * 500)) / 50) * 5);
 
 	// Store off armor data
-	craftingValues->addExperimentalProperty("resists","dna_comp_armor_kinetic",spKinetic ? kineticMax : kineticMax < 0 ? -1 : effectiveness,kineticMax,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists","dna_comp_armor_blast",spBlast ? blastMax : blastMax < 0 ? -1 : effectiveness, blastMax,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists","dna_comp_armor_energy",spEnergy ? energyMax : energyMax < 0 ? -1 : effectiveness, energyMax,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists","dna_comp_armor_heat",spHeat ? heatMax : heatMax < 0 ? -1 :  effectiveness ,heatMax,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists","dna_comp_armor_cold",spCold ? coldMax : coldMax < 0 ? -1 : effectiveness ,coldMax,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists","dna_comp_armor_electric",spElectric ? electricMax : electricMax < 0 ? -1 : effectiveness ,electricMax,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists","dna_comp_armor_acid",spAcid ? acidMax : acidMax < 0 ? -1 : effectiveness ,acidMax,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists","dna_comp_armor_stun",spStun ? stunMax : stunMax < 0 ? -1 : effectiveness ,stunMax,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists","dna_comp_armor_saber",spSaber ? saberMax : saberMax < 0 ? -1 : effectiveness ,saberMax,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_kinetic", spKinetic ? kineticMax : kineticMax < 0 ? -1 : effectiveness, kineticMax, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_blast", spBlast ? blastMax : blastMax < 0 ? -1 : effectiveness, blastMax, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_energy", spEnergy ? energyMax : energyMax < 0 ? -1 : effectiveness, energyMax, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_heat", spHeat ? heatMax : heatMax < 0 ? -1 :  effectiveness, heatMax, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_cold", spCold ? coldMax : coldMax < 0 ? -1 : effectiveness, coldMax, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_electric", spElectric ? electricMax : electricMax < 0 ? -1 : effectiveness, electricMax, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_acid", spAcid ? acidMax : acidMax < 0 ? -1 : effectiveness, acidMax, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_stun", spStun ? stunMax : stunMax < 0 ? -1 : effectiveness, stunMax, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_saber", spSaber ? saberMax : saberMax < 0 ? -1 : effectiveness, saberMax, 0, true, ValuesMap::OVERRIDECOMBINE);
 
 	// Store off special information
-	craftingValues->addExperimentalProperty("specials","kineticeffectiveness",spKinetic ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("specials","blasteffectiveness",spBlast ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("specials","energyeffectiveness",spEnergy ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("specials","heateffectiveness",spHeat ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("specials","coldeffectiveness",spCold ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("specials","electricityeffectiveness",spElectric ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("specials","acideffectiveness",spAcid ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("specials","stuneffectiveness",spStun ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("specials","lightsabereffectiveness",spSaber ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("specials", "kineticeffectiveness", spKinetic ? 1 : 0, 1, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("specials", "blasteffectiveness", spBlast ? 1 : 0, 1, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("specials", "energyeffectiveness", spEnergy ? 1 : 0, 1, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("specials", "heateffectiveness", spHeat ? 1 : 0, 1, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("specials", "coldeffectiveness", spCold ? 1 : 0, 1, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("specials", "electricityeffectiveness", spElectric ? 1 : 0, 1, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("specials", "acideffectiveness", spAcid ? 1 : 0, 1, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("specials", "stuneffectiveness", spStun ? 1 : 0, 1, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("specials", "lightsabereffectiveness", spSaber ? 1 : 0, 1, 0, true, ValuesMap::OVERRIDECOMBINE);
 
 	int quality = ( ((float)phy->getQuality() * 0.2)+ ((float)pro->getQuality()*0.2) + ((float)men->getQuality()*0.2) + ((float)psy->getQuality()*0.2) + ((float)agr->getQuality()*0.2));
 	bool ranged = false;

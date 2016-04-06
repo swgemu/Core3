@@ -12,7 +12,7 @@
 
 class LootItemTemplate;
 //class LootGroupTemplate;
-#include "server/zone/templates/LootGroupTemplate.h"
+#include "templates/LootGroupTemplate.h"
 
 class LootGroupMap : public Singleton<LootGroupMap>, public Object, public Logger {
 public:

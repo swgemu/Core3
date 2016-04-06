@@ -6,10 +6,10 @@
  */
 
 #include "gtest/gtest.h"
-#include "server/zone/templates/LootItemTemplate.h"
+#include "templates/LootItemTemplate.h"
 #include "server/zone/templates/SharedObjectTemplate.h"
 #include "server/zone/templates/tangible/SharedCreatureObjectTemplate.h"
-#include "server/zone/templates/LootGroupTemplate.h"
+#include "templates/LootGroupTemplate.h"
 #include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/managers/creature/DnaManager.h"
 #include "server/zone/managers/loot/LootGroupMap.h"

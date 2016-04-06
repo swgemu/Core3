@@ -19,7 +19,7 @@ import server.zone.ZoneServer;
 import server.zone.objects.tangible.TangibleObject;
 include server.zone.managers.loot.LootGroupMap;
 include server.zone.managers.loot.lootgroup.LootGroupCollection;
-include server.zone.templates.LootItemTemplate;
+include templates.LootItemTemplate;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.objects.tangible.weapon.WeaponObject;
 

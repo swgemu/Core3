@@ -9,7 +9,7 @@
 #define SHAREDBUILDINGOBJECTTEMPLATE_H_
 
 #include "SharedStructureObjectTemplate.h"
-#include "../ChildCreatureObject.h"
+#include "templates/ChildCreatureObject.h"
 #include "server/zone/templates/tangible/SignTemplate.h"
 
 class SharedBuildingObjectTemplate : public SharedStructureObjectTemplate {

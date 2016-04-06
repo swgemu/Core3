@@ -855,8 +855,9 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/mission/DestroyMissionLairObserverImplementation.cpp \
 		server/zone/objects/installation/components/TurretObserverImplementation.cpp \
 		server/zone/objects/mission/bountyhunter/BountyHunterDroid.cpp \
+		templates/crafting/ValuesMap.cpp \
 		templates/string/StringFile.cpp \
-		server/zone/templates/faction/FactionRanks.cpp \
+		templates/faction/FactionRanks.cpp \
 		server/zone/templates/mobile/LuaConversationScreen.cpp \
 		server/zone/templates/mobile/CreatureTemplate.cpp \
 		server/zone/templates/mobile/LuaConversationTemplate.cpp \

@@ -12,10 +12,11 @@
 #include "system/util/SortedVector.h"
 #include "server/zone/objects/structure/StructurePermissionList.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/player/variables/AbilityList.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/templates/TemplateCRCMap.h"
 #include "server/zone/templates/SharedTangibleObjectTemplate.h"
-#include "server/zone/templates/LootItemTemplate.h"
+#include "templates/LootItemTemplate.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/templates/TemplateReference.h"
 #include "server/zone/templates/tangible/LootSchematicTemplate.h"
@@ -327,7 +328,7 @@ void ObjectVersionUpdateManager::updateTangibleObjectsVersion6() {
 
 		Reference<LootItemTemplate*> lootTmpl = lootIter.next();
 
-		CraftingValues craftingValues = lootTmpl->getCraftingValuesCopy();
+		ValuesMap craftingValues = lootTmpl->getValuesMapCopy();
 
 		for (int i = 0; i < craftingValues.getExperimentalPropertySubtitleSize(); ++i) {
 
