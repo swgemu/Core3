@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_27ca1850",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1980,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-06T11:23:11Z",
+      "side": 1,
+      "message": "You forgot the !",
+      "revId": "0252968e4d18de2b2311e2c3d1bdec505d7d48d3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
