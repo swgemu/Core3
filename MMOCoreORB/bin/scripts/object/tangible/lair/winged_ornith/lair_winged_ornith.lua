@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_winged_ornith_lair_winged_ornith = object_tangible_lair_winged_ornith_shared_lair_winged_ornith:new {
-	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	objectMenuComponent = "LairMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_winged_ornith_lair_winged_ornith, "object/tangible/lair/winged_ornith/lair_winged_ornith.iff")

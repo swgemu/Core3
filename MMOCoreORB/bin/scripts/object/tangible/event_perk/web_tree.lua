@@ -42,7 +42,7 @@
 
 
 object_tangible_event_perk_web_tree = object_tangible_event_perk_shared_web_tree:new {
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
 }

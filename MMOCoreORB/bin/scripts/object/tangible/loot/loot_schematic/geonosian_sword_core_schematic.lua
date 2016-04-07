@@ -43,7 +43,7 @@
 
 object_tangible_loot_loot_schematic_geonosian_sword_core_schematic = object_tangible_loot_loot_schematic_shared_geonosian_sword_core_schematic:new {
 	templateType = LOOTSCHEMATIC,
-	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	objectMenuComponent = "LootSchematicMenuComponent",
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	requiredSkill = "crafting_weaponsmith_master",
 	targetDraftSchematic = "object/draft_schematic/weapon/component/sword_core_geo.iff",

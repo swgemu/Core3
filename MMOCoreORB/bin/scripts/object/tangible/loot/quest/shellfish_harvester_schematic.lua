@@ -44,7 +44,7 @@
 object_tangible_loot_quest_shellfish_harvester_schematic = object_tangible_loot_quest_shared_shellfish_harvester_schematic:new {
 	
 	templateType = LOOTSCHEMATIC,
-	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	objectMenuComponent = "LootSchematicMenuComponent",
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	targetDraftSchematic = "object/draft_schematic/item/item_shellfish_harvester.iff",
 	targetUseCount = -1

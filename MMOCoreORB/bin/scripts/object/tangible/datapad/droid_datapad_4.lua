@@ -42,7 +42,7 @@
 
 
 object_tangible_datapad_droid_datapad_4 = object_tangible_datapad_shared_droid_datapad_4:new {
-	containerComponent = {"cpp", "DroidDatapadContainerComponent"},	
+	containerComponent = "DroidDatapadContainerComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_datapad_droid_datapad_4, "object/tangible/datapad/droid_datapad_4.iff")

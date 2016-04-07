@@ -43,7 +43,7 @@
 
 object_tangible_loot_quest_schematic_carbine_e11_quest = object_tangible_loot_quest_shared_schematic_carbine_e11_quest:new {
 	templateType = LOOTSCHEMATIC,
-	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	objectMenuComponent = "LootSchematicMenuComponent",
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	requiredSkill = "crafting_weaponsmith_firearms_03",
 	targetDraftSchematic = "object/draft_schematic/weapon/rifle_light_blaster_e11_carbine_quest.iff",

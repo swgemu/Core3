@@ -44,7 +44,7 @@
 object_tangible_item_quest_crowd_pleaser_music_reward = object_tangible_item_quest_crowd_pleaser_shared_music_reward:new {
 	templateType = XPPURCHASE,
 	attributeListComponent = "XpPurchaseAttributeListComponent",
-	objectMenuComponent = {"cpp", "XpPurchaseMenuComponent"},
+	objectMenuComponent = "XpPurchaseMenuComponent",
 	requiredSkill = "social_musician_novice",
 	grantType = "ability",
 	grantName = "startMusic+western",

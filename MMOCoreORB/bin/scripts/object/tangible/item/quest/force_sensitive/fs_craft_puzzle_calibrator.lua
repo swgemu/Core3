@@ -42,7 +42,7 @@
 
 
 object_tangible_item_quest_force_sensitive_fs_craft_puzzle_calibrator = object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_calibrator:new {
-	objectMenuComponent = {"Lua", "FsCrafting1CalibratorMenuComponent"},
+	objectMenuComponent = "FsCrafting1CalibratorMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_fs_craft_puzzle_calibrator, "object/tangible/item/quest/force_sensitive/fs_craft_puzzle_calibrator.iff")

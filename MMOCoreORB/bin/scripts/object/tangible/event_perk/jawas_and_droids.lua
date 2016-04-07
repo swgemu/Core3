@@ -48,7 +48,7 @@ object_tangible_event_perk_jawas_and_droids = object_tangible_poi_base_shared_po
 
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 
 	childObjects = {
 		{ templateFile = "object/mobile/cll8_binary_load_lifter.iff", x = -3.45964, z = 0, y = -2.49066, ow = 0.91916, ox = 0, oy = 0.39389, oz = 0, cellid = -1, containmentType = -1 },

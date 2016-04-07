@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_hutt_thug_lair_hutt_thug_npc = object_tangible_lair_hutt_thug_shared_lair_hutt_thug_npc:new {
-	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	objectMenuComponent = "LairMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_hutt_thug_lair_hutt_thug_npc, "object/tangible/lair/hutt_thug/lair_hutt_thug_npc.iff")

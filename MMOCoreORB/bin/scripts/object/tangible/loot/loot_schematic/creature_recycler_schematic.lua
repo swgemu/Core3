@@ -43,7 +43,7 @@
 
 object_tangible_loot_loot_schematic_creature_recycler_schematic = object_tangible_loot_loot_schematic_shared_creature_recycler_schematic:new {
 	templateType = LOOTSCHEMATIC,
-	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	objectMenuComponent = "LootSchematicMenuComponent",
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	requiredSkill = "crafting_artisan_engineering_01",
 	targetDraftSchematic = "object/draft_schematic/item/item_recycler_creature.iff",

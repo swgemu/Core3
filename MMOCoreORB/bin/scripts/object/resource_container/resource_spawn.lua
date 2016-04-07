@@ -19,22 +19,22 @@ object_resource_container_resource_spawn = object_resource_container_shared_simp
 				"object/creature/player/wookiee_female.iff",
 				"object/creature/player/zabrak_male.iff",
 				"object/creature/player/zabrak_female.iff" },
-	
+
 	level = 10,
-	
+
 	maxCondition = 1000,
-	
+
 	useCount = 1,
-	
+
 	optionsBitmask = 256, --Default all objects to not display ham bars.
 	pvpStatusBitmask = 0,
-	objectMenuComponent = {"cpp", "TangibleObjectMenuComponent"},
+	objectMenuComponent = "TangibleObjectMenuComponent",
 	attributeListComponent = "AttributeListComponent",
 
 	sliceable = 0,
-	
-      templateType = RESOURCESPAWN,
-      gameObjectType = 4259840
+
+	templateType = RESOURCESPAWN,
+	gameObjectType = 4259840
 }
 
 ObjectTemplates:addTemplate(object_resource_container_resource_spawn, "object/resource_container/resource_spawn.iff")

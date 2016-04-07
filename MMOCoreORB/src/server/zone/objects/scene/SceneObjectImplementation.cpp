@@ -376,6 +376,9 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 }
 
 void SceneObjectImplementation::setObjectMenuComponent(const String& name) {
+	if (name.isEmpty())
+		return;
+
 	objectMenuComponent = ComponentManager::instance()->getComponent<ObjectMenuComponent*>(name);
 
 	if (objectMenuComponent == NULL) {
@@ -395,6 +398,9 @@ void SceneObjectImplementation::setObjectMenuComponent(const String& name) {
 }
 
 void SceneObjectImplementation::setContainerComponent(const String& name) {
+	if (name.isEmpty())
+		return;
+
 	containerComponent = ComponentManager::instance()->getComponent<ContainerComponent*>(name);
 
 	if (containerComponent == NULL) {

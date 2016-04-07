@@ -43,7 +43,7 @@
 
 object_tangible_scout_camp_camp_basic = object_tangible_scout_camp_shared_camp_basic:new {
 	templateType = CAMPKIT,
-	objectMenuComponent = {"cpp", "CampKitMenuComponent"},
+	objectMenuComponent = "CampKitMenuComponent",
 	spawnObjectTemplate = "object/building/poi/scout_camp_s0.iff",
 
 	numberExperimentalProperties = {1, 1, 1, 1},

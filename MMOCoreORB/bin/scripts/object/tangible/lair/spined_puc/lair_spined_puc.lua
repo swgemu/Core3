@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_spined_puc_lair_spined_puc = object_tangible_lair_spined_puc_shared_lair_spined_puc:new {
-	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	objectMenuComponent = "LairMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_spined_puc_lair_spined_puc, "object/tangible/lair/spined_puc/lair_spined_puc.iff")

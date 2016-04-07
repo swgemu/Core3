@@ -45,7 +45,7 @@ object_tangible_scout_trap_trap_ranged_def_1 = object_tangible_scout_trap_shared
 
 	-- Glow Juice Trap
 	templateType = TRAP,
-	objectMenuComponent = {"cpp", "TrapMenuComponent"},
+	objectMenuComponent = "TrapMenuComponent",
 
 	useCount = 5,
 	skillRequired = 10,

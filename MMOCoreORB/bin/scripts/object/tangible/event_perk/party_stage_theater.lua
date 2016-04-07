@@ -48,7 +48,7 @@ object_tangible_event_perk_party_stage_theater = object_tangible_poi_base_shared
 
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 
 	childObjects = {
 		{ templateFile = "object/tangible/microphone/microphone.iff", x = -0.05, z = 1.35, y = -0.52, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },

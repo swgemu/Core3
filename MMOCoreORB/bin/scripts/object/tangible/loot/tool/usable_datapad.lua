@@ -45,7 +45,7 @@ object_tangible_loot_tool_usable_datapad = object_tangible_loot_tool_shared_usab
 	customName = "Data Storage Unit",
 	dataObjectComponent = "DataStorageUnitDataComponent",
 	attributeListComponent = "DataStorageUnitAttributeListComponent",
-	objectMenuComponent = {"cpp", "DataStorageUnitMenuComponent"},
+	objectMenuComponent = "DataStorageUnitMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_tool_usable_datapad, "object/tangible/loot/tool/usable_datapad.iff")

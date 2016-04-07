@@ -48,7 +48,7 @@ object_tangible_event_perk_imperial_landing_party_atat_theater = object_tangible
 
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 
 	childObjects = {
 		{ templateFile = "object/static/structure/general/banner_imperial_style_01.iff", x = -3.89, z = 11.13, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },

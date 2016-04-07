@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_kliknik_lair_kliknik_forest = object_tangible_lair_kliknik_shared_lair_kliknik_forest:new {
-	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	objectMenuComponent = "LairMenuComponent",
 	customName = "a forest kliknik lair"
 }
 

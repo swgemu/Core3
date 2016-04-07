@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_crystal_snake_lair_crystal_snake_swamp = object_tangible_lair_crystal_snake_shared_lair_crystal_snake_swamp:new {
-	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	objectMenuComponent = "LairMenuComponent",
 	customName = "a swamp crystal snake lair"
 }
 

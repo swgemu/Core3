@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_graul_lair_graul = object_tangible_lair_graul_shared_lair_graul:new {
-	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	objectMenuComponent = "LairMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_graul_lair_graul, "object/tangible/lair/graul/lair_graul.iff")

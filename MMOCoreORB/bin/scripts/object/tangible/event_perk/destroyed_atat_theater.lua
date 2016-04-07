@@ -48,7 +48,7 @@ object_tangible_event_perk_destroyed_atat_theater = object_tangible_poi_base_sha
 
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 
 	childObjects = {
 		{ templateFile = "object/static/structure/general/atat_debris_01.iff", x = -3.06, z = 0, y = -6.2, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },

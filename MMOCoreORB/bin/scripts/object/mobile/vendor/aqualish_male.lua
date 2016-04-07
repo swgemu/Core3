@@ -47,9 +47,9 @@ object_mobile_vendor_aqualish_male = object_mobile_vendor_shared_aqualish_male:n
 	optionsBitmask = 386,
 	pvpStatusBitmask = 0,
 
-	objectMenuComponent = {"cpp", "VendorMenuComponent"},
+	objectMenuComponent = "VendorMenuComponent",
 	dataObjectComponent = "VendorDataComponent",	
-	containerComponent = {"cpp", "VendorContainerComponent"},
+	containerComponent = "VendorContainerComponent",
 	zoneComponent = "VendorZoneComponent",
 
 	noTrade = 1,

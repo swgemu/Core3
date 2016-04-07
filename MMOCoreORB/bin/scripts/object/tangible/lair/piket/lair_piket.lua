@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_piket_lair_piket = object_tangible_lair_piket_shared_lair_piket:new {
-	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	objectMenuComponent = "LairMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_piket_lair_piket, "object/tangible/lair/piket/lair_piket.iff")

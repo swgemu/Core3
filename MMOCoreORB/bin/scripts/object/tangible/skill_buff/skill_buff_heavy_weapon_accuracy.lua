@@ -43,7 +43,7 @@
 
 object_tangible_skill_buff_skill_buff_heavy_weapon_accuracy = object_tangible_skill_buff_shared_skill_buff_heavy_weapon_accuracy:new {
 	templateType = SKILLBUFF,
-	objectMenuComponent = {"cpp", "SkillBuffObjectMenuComponent"},
+	objectMenuComponent = "SkillBuffObjectMenuComponent",
 	attributeListComponent = "SkillBuffObjectAttributeListComponent",
 	
 	duration = 300,

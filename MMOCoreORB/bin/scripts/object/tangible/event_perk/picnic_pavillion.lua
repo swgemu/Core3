@@ -48,7 +48,7 @@ object_tangible_event_perk_picnic_pavillion = object_tangible_poi_base_shared_po
 
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 
 	childObjects = {
 		{ templateFile = "object/tangible/furniture/modern/dining_table_modern_style_01.iff", x = 0.0709, z = -0.4487, y = 0.0219, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },

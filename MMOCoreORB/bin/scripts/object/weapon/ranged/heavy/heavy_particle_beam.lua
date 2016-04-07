@@ -43,7 +43,7 @@
 
 object_weapon_ranged_heavy_heavy_particle_beam = object_weapon_ranged_heavy_shared_heavy_particle_beam:new {
 
-	objectMenuComponent = {"cpp", "FireHeavyWeaponMenuComponent"},
+	objectMenuComponent = "FireHeavyWeaponMenuComponent",
 
 	playerRaces = { "object/creature/player/bothan_male.iff",
 				"object/creature/player/bothan_female.iff",

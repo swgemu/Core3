@@ -97,7 +97,7 @@ object_tangible_wearables_ring_ring_mark_hero = object_tangible_wearables_ring_s
 
 	noTrade = 1,
 
-	objectMenuComponent = {"cpp", "HeroRingMenuComponent"},
+	objectMenuComponent = "HeroRingMenuComponent",
 	attributeListComponent = "HeroRingAttributeListComponent",
 	dataObjectComponent = "HeroRingDataComponent",
 }

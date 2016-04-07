@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_shaupaut_lair_shaupaut = object_tangible_lair_shaupaut_shared_lair_shaupaut:new {
-	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	objectMenuComponent = "LairMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_shaupaut_lair_shaupaut, "object/tangible/lair/shaupaut/lair_shaupaut.iff")

@@ -9,7 +9,7 @@
 #define SHAREDGROUPOBJECTTEMPLATE_H_
 
 
-#include "../SharedUniverseObjectTemplate.h"
+#include "templates/SharedUniverseObjectTemplate.h"
 
 class SharedGroupObjectTemplate : public SharedUniverseObjectTemplate {
 

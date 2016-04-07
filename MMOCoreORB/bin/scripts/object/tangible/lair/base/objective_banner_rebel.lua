@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_objective_banner_rebel = object_tangible_lair_base_shared_objective_banner_rebel:new {
-	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	objectMenuComponent = "LairMenuComponent",
 	objectName = "@obj_n:rebel_banner",
 }
 

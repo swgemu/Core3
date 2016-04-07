@@ -162,48 +162,11 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 	} else if (varName == "zoneComponent") {
 		zoneComponent = Lua::getStringParameter(state);
 	} else if (varName == "objectMenuComponent") {
-		LuaObject componentObject(state);// = templateData->getObjectField("scale");
-		String componentName = "";
-		String componentType = "";
-		if (componentObject.isValidTable()) {
-			if (componentObject.getTableSize() > 1) {
-				componentType = componentObject.getStringAt(1);
-				componentName = componentObject.getStringAt(2);
-			} else {
-				componentType = "unknown";
-				componentName = componentObject.getStringAt(1);
-			}
-
-			componentObject.pop();
-		} else {
-			componentType = "unknown";
-			componentName = Lua::getStringParameter(state);
-		}
-
-		objectMenuComponent = componentName;
-
+		objectMenuComponent = Lua::getStringParameter(state);
 	} else if (varName == "attributeListComponent") {
 		attributeListComponent = Lua::getStringParameter(state);
 	} else if (varName == "containerComponent") {
-		LuaObject componentObject(state);// = templateData->getObjectField("scale");
-		String componentName = "";
-		String componentType = "";
-		if (componentObject.isValidTable()) {
-			if (componentObject.getTableSize() > 1) {
-				componentType = componentObject.getStringAt(1);
-				componentName = componentObject.getStringAt(2);
-			} else {
-				componentType = "unknown";
-				componentName = componentObject.getStringAt(1);
-			}
-
-			componentObject.pop();
-		} else {
-			componentType = "unknown";
-			componentName = Lua::getStringParameter(state);
-		}
-		containerComponent = componentName;
-		//containerComponent = Lua::getStringParameter(state);
+		containerComponent = Lua::getStringParameter(state);
 	} else if (varName == "totalCellNumber") {
 		totalCellNumber = Lua::getIntParameter(state);
 	} else if (varName == "dataObjectComponent") {

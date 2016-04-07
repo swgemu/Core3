@@ -42,7 +42,7 @@
 
 
 object_tangible_terminal_terminal_city = object_tangible_terminal_shared_terminal_city:new {
-	objectMenuComponent = {"cpp", "CityManagementMenuComponent"}
+	objectMenuComponent = "CityManagementMenuComponent"
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_terminal_city, "object/tangible/terminal/terminal_city.iff")

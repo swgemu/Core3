@@ -42,7 +42,7 @@
 
 
 object_intangible_data_item_data_geiger_counter = object_intangible_data_item_shared_data_geiger_counter:new {
-	objectMenuComponent = {"Lua", "radiationSensorMenuComponent"},
+	objectMenuComponent = "radiationSensorMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_intangible_data_item_data_geiger_counter, "object/intangible/data_item/data_geiger_counter.iff")

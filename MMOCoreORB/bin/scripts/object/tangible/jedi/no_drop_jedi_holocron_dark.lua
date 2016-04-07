@@ -42,7 +42,7 @@
 
 
 object_tangible_jedi_no_drop_jedi_holocron_dark = object_tangible_jedi_shared_no_drop_jedi_holocron_dark:new {
-	objectMenuComponent = {"cpp", "HolocronMenuComponent"},
+	objectMenuComponent = "HolocronMenuComponent",
 
 	noTrade = 1
 }

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_base_objective_dantari_monolith = object_tangible_lair_base_shared_objective_dantari_monolith:new {
-	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	objectMenuComponent = "LairMenuComponent",
 	objectName = "@lair_n:dantari_monilith",
 }
 

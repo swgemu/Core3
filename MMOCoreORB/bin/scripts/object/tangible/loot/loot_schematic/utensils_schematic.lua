@@ -43,7 +43,7 @@
 
 object_tangible_loot_loot_schematic_utensils_schematic = object_tangible_loot_loot_schematic_shared_utensils_schematic:new {
 	templateType = LOOTSCHEMATIC,
-	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	objectMenuComponent = "LootSchematicMenuComponent",
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	requiredSkill = "crafting_chef_novice",
 	targetDraftSchematic = "object/draft_schematic/furniture/furniture_utensils.iff",

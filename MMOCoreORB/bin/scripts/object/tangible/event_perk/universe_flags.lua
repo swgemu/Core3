@@ -48,7 +48,7 @@ object_tangible_event_perk_universe_flags = object_tangible_poi_base_shared_poi_
 
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 
 	childObjects = {
 		{ templateFile = "object/static/structure/endor/endr_imprv_flagpole_s01.iff", x = 10, z = 0, y = 0, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },

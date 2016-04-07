@@ -43,7 +43,7 @@
 
 object_tangible_loot_loot_schematic_couch_blue_schematic = object_tangible_loot_loot_schematic_shared_couch_blue_schematic:new {
 	templateType = LOOTSCHEMATIC,
-	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	objectMenuComponent = "LootSchematicMenuComponent",
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	requiredSkill = "crafting_architect_production_03",
 	targetDraftSchematic = "object/draft_schematic/furniture/furniture_couch_blue.iff",

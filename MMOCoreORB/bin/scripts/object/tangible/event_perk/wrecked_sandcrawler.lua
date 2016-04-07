@@ -48,7 +48,7 @@ object_tangible_event_perk_wrecked_sandcrawler = object_tangible_poi_base_shared
 
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 
 	childObjects = {
 		{templateFile = "object/static/particle/pt_lair_med_burn.iff", x = -6.22401, z = 5.29996, y = -2.26188, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },

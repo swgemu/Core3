@@ -48,7 +48,7 @@ object_tangible_event_perk_fenced_enclosure = object_tangible_poi_base_shared_po
 
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 
 	childObjects = {
 		{ templateFile = "object/static/structure/corellia/corl_imprv_column_s02.iff", x = -8.05763, z = -0.00032, y = 0.92422, ow = 0.91712, ox = 0, oy = 0.39861, oz = 0, cellid = -1, containmentType = -1 },

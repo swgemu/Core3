@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_boar_wolf_lair_boar_wolf_mountain = object_tangible_lair_boar_wolf_shared_lair_boar_wolf_mountain:new {
-	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	objectMenuComponent = "LairMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_boar_wolf_lair_boar_wolf_mountain, "object/tangible/lair/boar_wolf/lair_boar_wolf_mountain.iff")

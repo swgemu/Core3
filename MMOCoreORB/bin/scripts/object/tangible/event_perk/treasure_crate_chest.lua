@@ -43,10 +43,10 @@
 
 object_tangible_event_perk_treasure_crate_chest = object_tangible_container_drum_large_plain_crate_s04:new {
 	gameObjectType = 16412,
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
-	containerComponent = {"cpp", "ScavengerChestContainerComponent"},
+	containerComponent = "ScavengerChestContainerComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_treasure_crate_chest, "object/tangible/event_perk/treasure_crate_chest.iff")
