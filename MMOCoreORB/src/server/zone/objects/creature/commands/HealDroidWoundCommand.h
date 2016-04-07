@@ -40,7 +40,7 @@ public:
 			return;
 
 		StringIdChatParameter stringId("healing", "droid_repair_wound_self"); // You have repaired %TO and healed a total of %DI wounds.
-		stringId.setTO(droid);
+		stringId.setTO(droid->getObjectID());
 		stringId.setDI(woundsHealed);
 		creature->sendSystemMessage(stringId);
 
@@ -48,8 +48,8 @@ public:
 
 		if (droidOwner != NULL && droidOwner != creature) {
 			StringIdChatParameter stringId("healing", "droid_repair_wound_other"); // %TT has repaired %TO and healed a total of %DI wounds.
-			stringId.setTT(creature);
-			stringId.setTO(droid);
+			stringId.setTT(creature->getObjectID());
+			stringId.setTO(droid->getObjectID());
 			stringId.setDI(woundsHealed);
 			droidOwner->sendSystemMessage(stringId);
 		}
@@ -193,7 +193,7 @@ public:
 
 		if (attribute == CreatureAttribute::UNKNOWN) {
 			StringIdChatParameter stringId("error_message", "droid_repair_no_wounds"); // It appears %TO has no wounds to repair.
-			stringId.setTO(droid);
+			stringId.setTO(droid->getObjectID());
 			creature->sendSystemMessage(stringId);
 			return 0;
 		}

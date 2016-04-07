@@ -8,7 +8,7 @@
 #ifndef SHAREDTANGIBLEOBJECTTEMPLATE_H_
 #define SHAREDTANGIBLEOBJECTTEMPLATE_H_
 
-#include "server/zone/objects/draftschematic/resourceweight/ResourceWeight.h"
+#include "templates/crafting/resourceweight/ResourceWeight.h"
 
 #include "templates/SharedObjectTemplate.h"
 

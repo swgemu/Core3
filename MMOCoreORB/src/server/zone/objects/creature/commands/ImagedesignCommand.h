@@ -61,7 +61,7 @@ public:
 		if (designer != playerTarget) {
 			StringIdChatParameter stringIdNotGrp;
 			stringIdNotGrp.setStringId("@image_designer:not_in_same_group");
-			stringIdNotGrp.setTT(playerTarget);
+			stringIdNotGrp.setTT(playerTarget->getObjectID());
 
 			if (!designer->isGrouped() || designer->getGroupID() != playerTarget->getGroupID()) {
 				//You must be within the same group as %TT in order to use your Image Design abilites.
@@ -92,7 +92,7 @@ public:
 		if (playerTarget->containsActiveSession(SessionFacadeType::IMAGEDESIGN) && playerTarget != designer) {
 			StringIdChatParameter stringId;
 			stringId.setStringId("@image_designer:outstanding_offer"); //%TT already has an outstanding Image Design offer.
-			stringId.setTT(playerTarget);
+			stringId.setTT(playerTarget->getObjectID());
 
 			designer->sendSystemMessage(stringId);
 

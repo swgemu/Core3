@@ -73,8 +73,6 @@ public:
 		return *this;
 	}
 #endif
-
-	void set(SceneObject* obj);
 	void set(StringId* sid);
 	void set(StringId& sid);
 

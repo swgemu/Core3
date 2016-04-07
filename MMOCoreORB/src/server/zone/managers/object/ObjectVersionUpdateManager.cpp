@@ -15,7 +15,7 @@
 #include "server/zone/objects/player/variables/AbilityList.h"
 #include "templates/manager/TemplateManager.h"
 #include "templates/manager/TemplateCRCMap.h"
-#include "server/zone/templates/SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 #include "templates/LootItemTemplate.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "templates/TemplateReference.h"

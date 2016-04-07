@@ -8,7 +8,7 @@
 #ifndef CONSUMABLETEMPLATE_H_
 #define CONSUMABLETEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class ConsumableTemplate : public SharedTangibleObjectTemplate {
 	int duration;

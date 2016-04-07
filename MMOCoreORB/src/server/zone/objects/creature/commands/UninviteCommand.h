@@ -46,7 +46,7 @@ public:
 
 				StringIdChatParameter stringId;
 				stringId.setStringId("group", "uninvite_target");
-				stringId.setTT(play);
+				stringId.setTT(play->getObjectID());
 				creature->sendSystemMessage(stringId);
 			}
 

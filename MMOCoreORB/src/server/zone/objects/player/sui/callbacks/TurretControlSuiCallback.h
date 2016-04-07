@@ -111,7 +111,7 @@ public:
 
 		turretData->scheduleFireTask(targetCreature, control);
 		param.setStringId("hq","attack_targets"); // "Turret is now attacking %TO.");
-		param.setTO(targetCreature);
+		param.setTO(targetCreature->getObjectID());
 		player->sendSystemMessage(param);
 
 		clocker.release();

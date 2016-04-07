@@ -8,7 +8,7 @@
 #ifndef SHAREDCREATUREOBJECTTEMPLATE_H_
 #define SHAREDCREATUREOBJECTTEMPLATE_H_
 
-#include "server/zone/templates/SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 #include "templates/params/VectorParam.h"
 
 class SharedCreatureObjectTemplate: public SharedTangibleObjectTemplate {

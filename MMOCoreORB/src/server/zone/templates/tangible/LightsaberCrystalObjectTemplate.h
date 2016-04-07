@@ -8,7 +8,7 @@
 #ifndef LIGHTSABERCRYSTALOBJECTTEMPLATE_H_
 #define LIGHTSABERCRYSTALOBJECTTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class LightsaberCrystalObjectTemplate : public SharedTangibleObjectTemplate {
 	String postTunedName;

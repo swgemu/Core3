@@ -722,7 +722,7 @@ void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal)
 							StringIdChatParameter textOther("gambling/default_interface","winner_to_other");
 							textOther.setDI(winnings->get(i));
 							textOther.setTO(player->getFirstName());
-							textOther.setTO(player);
+							textOther.setTO(player->getObjectID());
 							terminal->notifyOthers(player, &textOther);
 
 							StringIdChatParameter textPlayer("gambling/default_interface","winner_to_winner");

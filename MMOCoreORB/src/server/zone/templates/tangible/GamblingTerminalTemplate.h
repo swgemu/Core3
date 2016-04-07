@@ -8,7 +8,7 @@
 #ifndef GAMBLINGTERMINALTEMPLATE_H_
 #define GAMBLINGTERMINALTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class GamblingTerminalTemplate : public SharedTangibleObjectTemplate {
 	int machineType;

@@ -1742,7 +1742,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 		if (!failed) {
 			if (effectType == CommandEffect::NEXTATTACKDELAY) {
 				StringIdChatParameter stringId("combat_effects", "delay_applied_other");
-				stringId.setTT(targetCreature);
+				stringId.setTT(targetCreature->getObjectID());
 				stringId.setDI(effect.getStateLength());
 				creature->sendSystemMessage(stringId);
 			}

@@ -549,7 +549,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 
 				StringIdChatParameter stringId;
 				stringId.setStringId("@faction_perk:bonus_base_name"); //You received a: %TO.
-				stringId.setTO(apron);
+				stringId.setTO(apron->getObjectID());
 				player->sendSystemMessage(stringId);
 
 			} else if (templatePath == "enhance_character") {
@@ -657,7 +657,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 
 				StringIdChatParameter stringId;
 				stringId.setStringId("@faction_perk:bonus_base_name"); //You received a: %TO.
-				stringId.setTO(item);
+				stringId.setTO(item->getObjectID());
 				player->sendSystemMessage(stringId);
 
 			} else {

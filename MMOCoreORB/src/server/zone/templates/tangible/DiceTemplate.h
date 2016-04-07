@@ -8,7 +8,7 @@
 #ifndef DICETEMPLATE_H_
 #define DICETEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class DiceTemplate: public SharedTangibleObjectTemplate {
 protected:

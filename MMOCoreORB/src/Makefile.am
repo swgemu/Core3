@@ -40,7 +40,7 @@
 # this exception also makes it possible to release a modified version 
 # which carries forward this exception.
 
-AM_CXXFLAGS= $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11
+AM_CXXFLAGS= $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11 
 
 ENGINE3_PATH=../../../../MMOEngine
 ENGINE3_MOCK_PATH=../../../utils
@@ -854,12 +854,12 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/templates/intangible/DraftSchematicObjectTemplate.cpp \
 		server/zone/templates/tangible/CampStructureTemplate.cpp \
 		server/zone/templates/tangible/PlayerCreatureTemplate.cpp \
-		server/zone/templates/SharedTangibleObjectTemplate.cpp \
 		server/zone/templates/mobile/LuaConversationScreen.cpp \
 		server/zone/templates/mobile/CreatureTemplate.cpp \
 		server/zone/templates/mobile/LuaConversationTemplate.cpp \
 		server/zone/objects/tangible/components/CityDecorationMenuComponent.cpp \
 		templates/SharedObjectTemplate.cpp \
+		templates/SharedTangibleObjectTemplate.cpp \
 		templates/appearance/FloorMesh.cpp \
 		templates/appearance/CellProperty.cpp \
 		templates/appearance/MeshAppearanceTemplate.cpp \

@@ -8,7 +8,7 @@
 #ifndef CRAFTINGSTATIONTEMPLATE_H_
 #define CRAFTINGSTATIONTEMPLATE_H_
 
-#include "../../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class CraftingStationTemplate : public SharedTangibleObjectTemplate {
 private:

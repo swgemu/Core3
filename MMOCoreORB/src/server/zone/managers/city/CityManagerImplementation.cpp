@@ -208,7 +208,7 @@ CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const S
 	city->rescheduleUpdateEvent(cityUpdateInterval * 60); //Minutes
 
 	StringIdChatParameter params("city/city", "new_city_body");
-	params.setTO(mayor);
+	params.setTO(mayor->getObjectID());
 	UnicodeString subject = "@city/city:new_city_subject"; // New City Established!
 
 	ChatManager* chatManager = zoneServer->getChatManager();
@@ -582,7 +582,7 @@ void CityManagerImplementation::withdrawFromCityTreasury(CityRegion* city, Creat
 
 	StringIdChatParameter emailBody("@city/city:treasury_withdraw_body");
 	emailBody.setDI(value);
-	emailBody.setTO(mayor);
+	emailBody.setTO(mayor->getObjectID());
 	emailBody.setTT(reason);
 
 	sendMail(city, "@city/city:treasury_withdraw_from", "@city/city:treasury_withdraw_subject", emailBody, NULL);
@@ -1034,7 +1034,7 @@ void CityManagerImplementation::sendMaintenanceEmail(CityRegion* city, int maint
 			*/
 			StringIdChatParameter emailBody("@city/city:city_maint_body");
 			emailBody.setDI(maint);
-			emailBody.setTO(mayor);
+			emailBody.setTO(mayor->getObjectID());
 
 			Locker clock(mayor, city);
 			ChatManager* chatManager = zoneServer->getChatManager();
@@ -1053,7 +1053,7 @@ void CityManagerImplementation::sendMaintenanceRepairEmail(CityRegion* city, Str
 			"structure_repaired_subject", "Structure Repaired"
 			*/
 			StringIdChatParameter emailBody("@city/city:structure_repaired_body");
-			emailBody.setTO(mayor);
+			emailBody.setTO(mayor->getObjectID());
 			emailBody.setTT(structure->getObjectName()->getFullPath());
 
 			Locker clock(mayor, city);
@@ -1074,7 +1074,7 @@ void CityManagerImplementation::sendMaintenanceDecayEmail(CityRegion* city, Stru
 			*/
 			StringIdChatParameter emailBody("@city/city:structure_damaged_body");
 			emailBody.setTO(structure->getObjectName()->getFullPath());
-			emailBody.setTT(mayor);
+			emailBody.setTT(mayor->getObjectID());
 			emailBody.setDI(maintenanceDue);
 
 			Locker clock(mayor, city);
@@ -1094,7 +1094,7 @@ void CityManagerImplementation::sendMaintenanceDestroyEmail(CityRegion* city, Sc
 			"structure_destroyed_maint_subject", "Insufficient Maintenance, Structure DESTROYED"
 			*/
 			StringIdChatParameter emailBody("@city/city:structure_destroyed_maint_body");
-			emailBody.setTO(mayor);
+			emailBody.setTO(mayor->getObjectID());
 			emailBody.setTT(object->getObjectName()->getFullPath());
 
 			Locker clock(mayor, city);

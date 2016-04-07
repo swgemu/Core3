@@ -1,7 +1,7 @@
 #ifndef RECYCLETOOLTEMPLATE_H_
 #define RECYCLETOOLTEMPLATE_H_
 
-#include "../../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 #include "../ContainerTemplate.h"
 
 class RecycleToolTemplate : public ContainerTemplate {

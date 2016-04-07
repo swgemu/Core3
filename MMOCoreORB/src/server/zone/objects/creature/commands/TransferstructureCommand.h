@@ -109,7 +109,7 @@ public:
 
 		if (abilityRequired != "" && !ghost->hasAbility(abilityRequired)) {
 			StringIdChatParameter params("@player_structure:not_able_to_own"); //%NT is not able to own this structure.
-			params.setTT(targetCreature);
+			params.setTT(targetCreature->getObjectID());
 			creature->sendSystemMessage(params);
 			return GENERALERROR;
 		}
@@ -152,7 +152,7 @@ public:
 			if ( !bForceTransfer) {
 				System::out << "lotsize: " << lotSize << endl;
 				StringIdChatParameter params("@player_structure:not_able_to_own"); //%NT is not able to own this structure.
-				params.setTT(targetCreature);
+				params.setTT(targetCreature->getObjectID());
 				creature->sendSystemMessage(params);
 			} else {
 

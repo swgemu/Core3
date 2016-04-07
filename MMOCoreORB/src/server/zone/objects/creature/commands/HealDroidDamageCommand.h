@@ -82,7 +82,7 @@ public:
 
 		if (!droid->hasDamage(CreatureAttribute::HEALTH) && !droid->hasDamage(CreatureAttribute::ACTION) && !droid->hasDamage(CreatureAttribute::MIND)) {
 			StringIdChatParameter stringId("error_message", "droid_repair_no_damage"); // It appears %TO has no damage to repair.
-			stringId.setTO(droid);
+			stringId.setTO(droid->getObjectID());
 			creature->sendSystemMessage(stringId);
 			return false;
 		}
@@ -100,7 +100,7 @@ public:
 			return;
 
 		StringIdChatParameter stringId("healing", "droid_repair_damage_self"); // You have repaired %TO and healed a total of %DI point of damage.
-		stringId.setTO(droid);
+		stringId.setTO(droid->getObjectID());
 		stringId.setDI(healthDamage + actionDamage + mindDamage);
 		creature->sendSystemMessage(stringId);
 
@@ -108,7 +108,7 @@ public:
 
 		if (droidOwner != NULL && droidOwner != creature) {
 			StringIdChatParameter stringId("healing", "droid_repair_damage_other"); // %TT has repaired %TO and healed a total of %DI point of damage.
-			stringId.setTT(creature);
+			stringId.setTT(creature->getObjectID());
 			stringId.setDI(healthDamage + actionDamage + mindDamage);
 			droidOwner->sendSystemMessage(stringId);
 		}

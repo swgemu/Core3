@@ -8,7 +8,7 @@
 #ifndef CREATUREHABITATTEMPLATE_H_
 #define CREATUREHABITATTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class CreatureHabitatTemplate: public SharedTangibleObjectTemplate {
 

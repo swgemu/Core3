@@ -151,7 +151,7 @@ public:
 		//Send initial system message to the looter.
 		StringIdChatParameter lootSelf("base_player", "prose_coin_loot"); //"You loot %DI credits from %TT."
 		lootSelf.setDI(lootCredits);
-		lootSelf.setTT(corpse);
+		lootSelf.setTT(corpse->getObjectID());
 		player->sendSystemMessage(lootSelf);
 
 		//Send initial system message to everyone in group except the looter.

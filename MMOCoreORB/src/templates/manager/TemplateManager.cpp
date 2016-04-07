@@ -72,7 +72,7 @@
 #include "server/zone/templates/tangible/DroidCustomKitTemplate.h"
 #include "server/zone/templates/installation/FactoryObjectTemplate.h"
 #include "server/zone/templates/tangible/WoundPackTemplate.h"
-#include "server/zone/templates/SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 #include "templates/resource/ResourceSpawnTemplate.h"
 

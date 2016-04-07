@@ -70,7 +70,7 @@ int VetHarvesterDeedImplementation::useObject(CreatureObject* creature) {
 	}
 
 	StringIdChatParameter messageBody("veteran", "harvester_converted"); // Your harvester %TT has been converted to use 0 power.
-	messageBody.setTT(harvester);
+	messageBody.setTT(harvester->getObjectID());
 
 	ManagedReference<ChatManager*> cman = zone->getChatManager();
 

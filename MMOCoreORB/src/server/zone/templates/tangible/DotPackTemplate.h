@@ -8,7 +8,7 @@
 #ifndef DOTPACKTEMPLATE_H_
 #define DOTPACKTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class DotPackTemplate : public SharedTangibleObjectTemplate {
 	float effectiveness;

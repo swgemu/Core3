@@ -287,8 +287,8 @@ void ManufactureSchematicImplementation::initializeIngredientSlots() {
 
 		Reference<IngredientSlot* > ingredientSlot = NULL;
 		Reference<DraftSlot* > draftSlot = draftSchematic->getDraftSlot(i);
-
-		ingredientNames.add(StringId(draftSlot->getStringId()));
+		
+		ingredientNames.add(StringId(draftSlot->getStringIdFile(), draftSlot->getStringIdName()));
 		ingredientTypes.add(0);
 		slotOIDs.add(Vector<uint64>());
 		slotQuantities.add(Vector<int>());
@@ -329,7 +329,7 @@ void ManufactureSchematicImplementation::initializeIngredientSlots() {
 
 		ingredientSlot->setContentType(draftSlot->getResourceType());
 		ingredientSlot->setQuantityNeeded(draftSlot->getQuantity());
-		ingredientSlot->setSlotName(draftSlot->getStringId().getStringID());
+		ingredientSlot->setSlotName(draftSlot->getStringIdName());
 
 		ingredientSlots.add(ingredientSlot.get());
 	}
