@@ -8,7 +8,7 @@
 #ifndef CRAFTINGTOOLTEMPLATE_H_
 #define CRAFTINGTOOLTEMPLATE_H_
 
-#include "../../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class CraftingToolTemplate : public SharedTangibleObjectTemplate {
 private:

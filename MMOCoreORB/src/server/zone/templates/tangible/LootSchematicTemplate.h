@@ -8,7 +8,7 @@
 #ifndef LOOTSCHEMATICTEMPLATE_H_
 #define LOOTSCHEMATICTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class LootSchematicTemplate: public SharedTangibleObjectTemplate {
 protected:

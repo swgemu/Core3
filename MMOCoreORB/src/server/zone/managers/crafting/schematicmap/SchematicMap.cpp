@@ -9,8 +9,8 @@
  */
 
 #include "SchematicMap.h"
-#include "server/zone/objects/draftschematic/draftslot/DraftSlot.h"
-#include "server/zone/objects/draftschematic/resourceweight/ResourceWeight.h"
+#include "templates/crafting/draftslot/DraftSlot.h"
+#include "templates/crafting/resourceweight/ResourceWeight.h"
 #include "engine/engine.h"
 
 //VectorMap<uint32, ManagedReference<DraftSchematic* > > SchematicMap::schematicIdMap;

@@ -68,7 +68,7 @@ public:
 
 		if (maskScent) {
 			StringIdChatParameter success("skl_use", "sys_scentmask_success");
-			success.setTT(target);
+			success.setTT(target->getObjectID());
 
 			creature->sendSystemMessage(success);
 		}

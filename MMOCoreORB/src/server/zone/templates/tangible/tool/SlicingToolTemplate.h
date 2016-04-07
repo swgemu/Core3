@@ -8,7 +8,7 @@
 #ifndef SLICINGTOOLTEMPLATE_H_
 #define SLICINGTOOLTEMPLATE_H_
 
-#include "../../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class SlicingToolTemplate : public SharedTangibleObjectTemplate {
 private:

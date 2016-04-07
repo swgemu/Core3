@@ -6,12 +6,12 @@
 #define DRAFTSLOT_H_
 
 #include "engine/engine.h"
-#include "server/zone/objects/scene/variables/StringId.h"
 
 class DraftSlot : public Object {
 private:
 
-	StringId stringId;
+	String stringIdFile;
+	String stringIdName;
 
 	// resource name in stf format
 	String resourceType;
@@ -44,9 +44,9 @@ public:
 	}
 
 	void insertToMessage(BaseMessage* msg) {
-		msg->insertAscii(stringId.getFile()); // ex: craft_food_ingredients_n
+		msg->insertAscii(stringIdFile); // ex: craft_food_ingredients_n
 		msg->insertInt(0);
-		msg->insertAscii(stringId.getStringID()); // ex: dried_fruit
+		msg->insertAscii(stringIdName); // ex: dried_fruit
 
 		if (slotType == OPTIONALIDENTICALSLOT || slotType == OPTIONALMIXEDSLOT)
 			msg->insertByte(1);  // ex: additive is optional so insertByte(1);
@@ -55,9 +55,9 @@ public:
 
 		msg->insertInt(1);
 
-		msg->insertAscii(stringId.getFile()); // ex: craft_food_ingredients_n
+		msg->insertAscii(stringIdFile); // ex: craft_food_ingredients_n
 		msg->insertInt(0);
-		msg->insertAscii(stringId.getStringID()); // ex: dried_fruit
+		msg->insertAscii(stringIdName); // ex: dried_fruit
 
 		UnicodeString uniResourceType(resourceType);
 		msg->insertUnicode(uniResourceType); // ex: organic
@@ -79,6 +79,14 @@ public:
     {
         return contribution;
     }
+	
+	String getStringIdFile() const {
+		return stringIdFile;
+	}
+	
+	String getStringIdName() const {
+		return stringIdName;
+	}
 
     uint32 getQuantity() const
     {
@@ -93,11 +101,6 @@ public:
     int getSlotType() const
     {
         return slotType;
-    }
-
-    StringId getStringId() const
-    {
-        return stringId;
     }
 
     void setContribution(float contribution)
@@ -122,7 +125,8 @@ public:
 
     void setStringId(String file, String name)
     {
-        stringId.setStringId(file, name);
+		stringIdFile = file;
+		stringIdName = name;
     }
 };
 

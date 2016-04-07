@@ -28,7 +28,7 @@ int LootContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneO
 					group->sendSystemMessage(params);
 				} else {
 					StringIdChatParameter params("base_player", "prose_item_looted_self"); //You looted: %TT.
-					params.setTT(object);
+					params.setTT(object->getObjectID());
 
 					creature->sendSystemMessage(params);
 				}

@@ -72,7 +72,7 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* target)
 	if (target->isGrouped()) {
 		StringIdChatParameter stringId;
 		stringId.setStringId("group", "already_grouped");
-		stringId.setTT(target);
+		stringId.setTT(target->getObjectID());
 		leader->sendSystemMessage(stringId);
 		//leader->sendSystemMessage("group", "already_grouped", player->getObjectID());
 
@@ -82,7 +82,7 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* target)
 	if (target->getGroupInviterID() == leader->getObjectID()) {
 		StringIdChatParameter stringId;
 		stringId.setStringId("group", "considering_your_group");
-		stringId.setTT(target);
+		stringId.setTT(target->getObjectID());
 		leader->sendSystemMessage(stringId);
 		//leader->sendSystemMessage("group", "considering_your_group", player->getObjectID());
 
@@ -90,7 +90,7 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* target)
 	} else if (target->getGroupInviterID() != 0) {
 		StringIdChatParameter stringId;
 		stringId.setStringId("group", "considering_other_group"); // %TT is considering joining another group.
-		stringId.setTT(target);
+		stringId.setTT(target->getObjectID());
 		leader->sendSystemMessage(stringId);
 
 		return;
@@ -522,7 +522,7 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 
 		StringIdChatParameter message;
 		message.setStringId("group", "new_leader"); // %TU is now the group leader.
-		message.setTU(newLeader);
+		message.setTU(newLeader->getObjectID());
 
 		for (int i = 0; i < group->getGroupSize(); i++) {
 			Reference<CreatureObject*> play = group->getGroupMember(i);
@@ -844,8 +844,8 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 
 			if (stillGrouped && group != NULL) {
 				StringIdChatParameter unable("group", "unable_to_transfer"); //"Unable to transfer %TO to %TT.  The item is available on the corpse for %TT to retrieve.
-				unable.setTO(object);
-				unable.setTT(winner);
+				unable.setTO(object->getObjectID());
+				unable.setTT(winner->getObjectID());
 				group->sendSystemMessage(unable, winner);
 			}
 

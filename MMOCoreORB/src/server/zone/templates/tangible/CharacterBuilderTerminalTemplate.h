@@ -8,7 +8,7 @@
 #ifndef CHARACTERBUILDTERTERMINALTEMPLATE_H_
 #define CHARACTERBUILDTERTERMINALTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 #include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderMenuNode.h"
 
 class CharacterBuilderTerminalTemplate : public SharedTangibleObjectTemplate {

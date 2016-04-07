@@ -8,7 +8,7 @@
 #ifndef DROIDCUSTOMKITTEMPLATE_H_
 #define DROIDCUSTOMKITTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class DroidCustomKitTemplate : public SharedTangibleObjectTemplate {
 

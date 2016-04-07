@@ -2910,7 +2910,7 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject
 
 		StringIdChatParameter param("base_player", "prose_coin_loot"); //You loot %DI credits from %TT.
 		param.setDI(cashCredits);
-		param.setTT(ai);
+		param.setTT(ai->getObjectID());
 
 		player->sendSystemMessage(param);
 	}

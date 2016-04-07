@@ -8,7 +8,7 @@
 #ifndef SHAREDCOUNTINGOBJECTTEMPLATE_H_
 #define SHAREDCOUNTINGOBJECTTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class SharedCountingObjectTemplate : public SharedTangibleObjectTemplate {
 

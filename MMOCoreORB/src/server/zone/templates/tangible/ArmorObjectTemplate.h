@@ -9,7 +9,7 @@
 #define ARMOROBJECTTEMPLATE_H_
 
 
-#include "server/zone/templates/SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
 

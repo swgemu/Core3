@@ -1411,7 +1411,7 @@ void GuildManagerImplementation::sponsorPlayer(CreatureObject* player, const Str
 
 	if (target->isInGuild()) {
 		StringIdChatParameter params;
-		params.setTU(target);
+		params.setTU(target->getObjectID());
 		params.setStringId("@guild:sponsor_already_in_guild"); // %TU is already in a guild.
 		player->sendSystemMessage(params);
 		return;
@@ -1419,7 +1419,7 @@ void GuildManagerImplementation::sponsorPlayer(CreatureObject* player, const Str
 
 	StringIdChatParameter params;
 	params.setStringId("@guild:sponsor_self"); // You sponsor %TU for membership in %TT.
-	params.setTU(target);
+	params.setTU(target->getObjectID());
 	params.setTT(guild->getGuildName());
 	player->sendSystemMessage(params);
 
