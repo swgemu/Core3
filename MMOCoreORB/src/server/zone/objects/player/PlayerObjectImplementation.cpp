@@ -67,7 +67,7 @@
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/managers/faction/FactionManager.h"
-#include "server/zone/templates/intangible/SharedPlayerObjectTemplate.h"
+#include "templates/intangible/SharedPlayerObjectTemplate.h"
 #include "server/zone/objects/player/sessions/TradeSession.h"
 #include "server/zone/objects/player/events/StoreSpawnedChildrenTask.h"
 #include "server/zone/objects/player/events/BountyHunterTefRemovalTask.h"

@@ -91,8 +91,6 @@ public:
 		}
 
 		screensTable.pop();
-
-		ConversationManager::instance()->getConversationObserver(crc);
 	}
 
 	String getLuaClassHandler() {
