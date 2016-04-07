@@ -8,7 +8,7 @@
 #ifndef SHAREDRESOURCECONTAINEROBJECTTEMPLATE_H_
 #define SHAREDRESOURCECONTAINEROBJECTTEMPLATE_H_
 
-#include "server/zone/templates/SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class SharedResourceContainerObjectTemplate : public SharedTangibleObjectTemplate {
 

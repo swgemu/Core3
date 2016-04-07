@@ -8,7 +8,7 @@
 #ifndef VEHICLECUSTOMKITTEMPLATE_H_
 #define VEHICLECUSTOMKITTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class VehicleCustomKitTemplate : public SharedTangibleObjectTemplate {
 

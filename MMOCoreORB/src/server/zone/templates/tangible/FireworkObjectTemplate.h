@@ -8,7 +8,7 @@
 #ifndef FIREWORKOBJECTTEMPLATE_H_
 #define FIREWORKOBJECTTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class FireworkObjectTemplate : public SharedTangibleObjectTemplate {
 	String fireworkObject;

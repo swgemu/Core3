@@ -189,7 +189,7 @@ public:
 
 							StringIdChatParameter tomaster;
 							tomaster.setStringId("@pet/droid_modules:hit_by_detonation_master");
-							tomaster.setTT(object);
+							tomaster.setTT(object->getObjectID());
 							tomaster.setDI((int)amount);
 							player->sendSystemMessage(tomaster);
 						}

@@ -4,7 +4,7 @@
  */
 #ifndef DROIDCRAFTINGMODULETEMPLATE_H_
 #define DROIDCRAFTINGMODULETEMPLATE_H_
-#include "server/zone/templates/SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 class DroidCraftingModuleTemplate : public SharedTangibleObjectTemplate {
 
 protected:

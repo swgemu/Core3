@@ -8,7 +8,7 @@
 #ifndef DROIDCOMPONENTTEMPLATE_H_
 #define DROIDCOMPONENTTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class DroidComponentTemplate : public SharedTangibleObjectTemplate {
 

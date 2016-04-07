@@ -108,7 +108,7 @@ public:
 
 		if (droidOwner != NULL && droidOwner != creature) {
 			StringIdChatParameter stringId("healing", "droid_repair_damage_other"); // %TT has repaired %TO and healed a total of %DI point of damage.
-			stringId.setTT(creature);
+			stringId.setTT(creature->getObjectID());
 			stringId.setDI(healthDamage + actionDamage + mindDamage);
 			droidOwner->sendSystemMessage(stringId);
 		}

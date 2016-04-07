@@ -28,7 +28,7 @@ private:
 		if (amount > cash) {
 			StringIdChatParameter ptnsfc("base_player", "prose_tip_nsf_cash"); // You lack the cash funds to tip %DI credits to %TT.
 			ptnsfc.setDI(amount);
-			ptnsfc.setTT(targetPlayer);
+			ptnsfc.setTT(targetPlayer->getObjectID());
 			player->sendSystemMessage(ptnsfc);
 			return GENERALERROR;
 		}
@@ -43,12 +43,12 @@ private:
 
 		StringIdChatParameter tiptarget("base_player", "prose_tip_pass_target"); // %TT tips you %DI credits.
 		tiptarget.setDI(amount);
-		tiptarget.setTT(player);
+		tiptarget.setTT(player->getObjectID());
 		targetPlayer->sendSystemMessage(tiptarget);
 
 		StringIdChatParameter tipself("base_player", "prose_tip_pass_self"); // You successfully tip %DI credits to %TT.
 		tipself.setDI(amount);
-		tipself.setTT(targetPlayer);
+		tipself.setTT(targetPlayer->getObjectID());
 		player->sendSystemMessage(tipself);
 
 		return SUCCESS;

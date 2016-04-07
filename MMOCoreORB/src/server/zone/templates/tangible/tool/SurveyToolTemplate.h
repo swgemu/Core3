@@ -8,7 +8,7 @@
 #ifndef SURVEYTOOLTEMPLATE_H_
 #define SURVEYTOOLTEMPLATE_H_
 
-#include "../../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class SurveyToolTemplate : public SharedTangibleObjectTemplate {
 private:

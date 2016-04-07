@@ -8,7 +8,7 @@
 #ifndef ENHANCEPACKTEMPLATE_H_
 #define ENHANCEPACKTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class EnhancePackTemplate : public SharedTangibleObjectTemplate {
 	int medicineUse;

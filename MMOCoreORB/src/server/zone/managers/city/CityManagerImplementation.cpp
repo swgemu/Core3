@@ -1074,7 +1074,7 @@ void CityManagerImplementation::sendMaintenanceDecayEmail(CityRegion* city, Stru
 			*/
 			StringIdChatParameter emailBody("@city/city:structure_damaged_body");
 			emailBody.setTO(structure->getObjectName()->getFullPath());
-			emailBody.setTT(mayor);
+			emailBody.setTT(mayor->getObjectID());
 			emailBody.setDI(maintenanceDue);
 
 			Locker clock(mayor, city);

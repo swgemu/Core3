@@ -9,8 +9,8 @@
 #define DRAFTSCHEMATICOBJECTTEMPLATE_H_
 
 #include "SharedDraftSchematicObjectTemplate.h"
-#include "../SharedTangibleObjectTemplate.h"
-#include "server/zone/objects/draftschematic/draftslot/DraftSlot.h"
+#include "templates/SharedTangibleObjectTemplate.h"
+#include "templates/crafting/draftslot/DraftSlot.h"
 
 class DraftSchematicObjectTemplate : public SharedDraftSchematicObjectTemplate {
 protected:

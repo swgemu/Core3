@@ -8,7 +8,7 @@
 #ifndef LIVESAMPLETEMPLATE_H_
 #define LIVESAMPLETEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class LiveSampleTemplate: public SharedTangibleObjectTemplate {
 protected:

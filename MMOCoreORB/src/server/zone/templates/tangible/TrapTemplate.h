@@ -8,7 +8,7 @@
 #ifndef TRAPTEMPLATE_H_
 #define TRAPTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class TrapTemplate: public SharedTangibleObjectTemplate {
 protected:

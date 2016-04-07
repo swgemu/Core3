@@ -1,7 +1,7 @@
 #ifndef XPPURCHASETEMPLATE_H
 #define XPPURCHASETEMPLATE_H
 
-#include "server/zone/templates/SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class XpPurchaseTemplate: public SharedTangibleObjectTemplate {
 protected:

@@ -8,7 +8,7 @@
 #ifndef CAMPKITTEMPLATE_H_
 #define CAMPKITTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class CampKitTemplate : public SharedTangibleObjectTemplate {
 	String spawnObjectTemplate;

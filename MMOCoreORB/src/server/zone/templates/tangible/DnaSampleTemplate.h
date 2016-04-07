@@ -8,7 +8,7 @@
 #ifndef DNASAMPLETEMPLATE_H_
 #define DNASAMPLETEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class DnaSampleTemplate: public SharedTangibleObjectTemplate {
 protected:

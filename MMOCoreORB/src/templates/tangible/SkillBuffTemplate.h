@@ -8,7 +8,7 @@
 #ifndef SKILLBUFFTEMPLATE_H_
 #define SKILLBUFFTEMPLATE_H_
 
-#include "server/zone/templates/SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class SkillBuffTemplate : public SharedTangibleObjectTemplate {
 	int duration;
