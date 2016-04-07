@@ -8,7 +8,7 @@
 #ifndef CUREPACKTEMPLATE_H_
 #define CUREPACKTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class CurePackTemplate : public SharedTangibleObjectTemplate {
 	float effectiveness;

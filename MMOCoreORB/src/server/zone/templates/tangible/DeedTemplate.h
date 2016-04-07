@@ -8,7 +8,7 @@
 #ifndef DEEDTEMPLATE_H_
 #define DEEDTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class DeedTemplate : public SharedTangibleObjectTemplate {
 	String generatedObjectTemplate;

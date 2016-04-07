@@ -854,12 +854,12 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/templates/intangible/DraftSchematicObjectTemplate.cpp \
 		server/zone/templates/tangible/CampStructureTemplate.cpp \
 		server/zone/templates/tangible/PlayerCreatureTemplate.cpp \
-		server/zone/templates/SharedTangibleObjectTemplate.cpp \
 		server/zone/templates/mobile/LuaConversationScreen.cpp \
 		server/zone/templates/mobile/CreatureTemplate.cpp \
 		server/zone/templates/mobile/LuaConversationTemplate.cpp \
 		server/zone/objects/tangible/components/CityDecorationMenuComponent.cpp \
 		templates/SharedObjectTemplate.cpp \
+		templates/SharedTangibleObjectTemplate.cpp \
 		templates/appearance/FloorMesh.cpp \
 		templates/appearance/CellProperty.cpp \
 		templates/appearance/MeshAppearanceTemplate.cpp \

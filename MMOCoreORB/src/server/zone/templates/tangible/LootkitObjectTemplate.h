@@ -8,7 +8,7 @@
 #ifndef LOOTKITOBJECTTEMPLATE_H_
 #define LOOTKITOBJECTTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class LootkitObjectTemplate: public SharedTangibleObjectTemplate {
 protected:

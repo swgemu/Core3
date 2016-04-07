@@ -113,7 +113,7 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 
 	if (!player->isInRange(missionTerminal, 6)) {
 		StringIdChatParameter stringId("ui", "radial_out_of_range_prose"); // %TT is too far away to '%TO'.
-		stringId.setTT(missionTerminal);
+		stringId.setTT(missionTerminal->getObjectID());
 		stringId.setTO("ui_radial", "terminal_mission_list"); // List Missions
 		player->sendSystemMessage(stringId);
 		return;

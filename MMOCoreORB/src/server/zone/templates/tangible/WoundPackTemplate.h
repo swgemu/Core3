@@ -8,7 +8,7 @@
 #ifndef WOUNDPACKTEMPLATE_H_
 #define WOUNDPACKTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class WoundPackTemplate : public SharedTangibleObjectTemplate {
 	int medicineUse;

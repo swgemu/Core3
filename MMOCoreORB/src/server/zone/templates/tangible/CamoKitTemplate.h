@@ -8,7 +8,7 @@
 #ifndef CAMOKITTEMPLATE_H_
 #define CAMOKITTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class CamoKitTemplate : public SharedTangibleObjectTemplate {
 	String effectiveZone;

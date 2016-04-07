@@ -8,7 +8,7 @@
 #ifndef POWERUPTEMPLATE_H_
 #define POWERUPTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 #include "server/zone/objects/tangible/powerup/PowerupStat.h"
 
 class PowerupTemplate: public SharedTangibleObjectTemplate {

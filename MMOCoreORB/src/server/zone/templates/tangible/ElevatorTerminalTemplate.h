@@ -8,7 +8,7 @@
 #ifndef ELEVATORTERMINALTEMPLATE_H_
 #define ELEVATORTERMINALTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class ElevatorTerminalTemplate : public SharedTangibleObjectTemplate {
 	byte movementType;

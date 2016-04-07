@@ -8,7 +8,7 @@
 #ifndef CONTAINERTEMPLATE_H_
 #define CONTAINERTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class ContainerTemplate : public SharedTangibleObjectTemplate {
 	bool lock;

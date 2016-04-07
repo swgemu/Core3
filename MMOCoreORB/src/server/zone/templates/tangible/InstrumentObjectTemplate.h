@@ -8,7 +8,7 @@
 #ifndef INSTRUMENTOBJECTTEMPLATE_H_
 #define INSTRUMENTOBJECTTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class InstrumentObjectTemplate : public SharedTangibleObjectTemplate {
 	int instrumentType;

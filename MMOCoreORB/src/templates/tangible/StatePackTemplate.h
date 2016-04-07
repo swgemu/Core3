@@ -8,7 +8,7 @@
 #ifndef STATEPACKTEMPLATE_H_
 #define STATEPACKTEMPLATE_H_
 
-#include "server/zone/templates/SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class StatePackTemplate : public SharedTangibleObjectTemplate {
 	int medicineUse;

@@ -8,7 +8,7 @@
 #ifndef SHAREDFACTORYOBJECTTEMPLATE_H_
 #define SHAREDFACTORYOBJECTTEMPLATE_H_
 
-#include "server/zone/templates/SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class SharedFactoryObjectTemplate : public SharedTangibleObjectTemplate {
 

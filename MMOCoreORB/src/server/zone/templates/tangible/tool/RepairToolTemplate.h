@@ -8,7 +8,7 @@
 #ifndef REPAIRTOOLTEMPLATE_H_
 #define REPAIRTOOLTEMPLATE_H_
 
-#include "../../SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 
 class RepairToolTemplate : public SharedTangibleObjectTemplate {
 

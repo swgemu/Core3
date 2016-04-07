@@ -4,7 +4,7 @@
  */
 #ifndef DROIDPERSONALITYMODULETEMPLATE_H_
 #define DROIDPERSONALITYMODULETEMPLATE_H_
-#include "server/zone/templates/SharedTangibleObjectTemplate.h"
+#include "templates/SharedTangibleObjectTemplate.h"
 class DroidPersonalityModuleTemplate : public SharedTangibleObjectTemplate {
 
 protected:
