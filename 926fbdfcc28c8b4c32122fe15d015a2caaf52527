@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_c77ebce4",
+        "filename": "MMOCoreORB/src/server/zone/ZoneImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-07T04:30:13Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be included twice.",
+      "revId": "926fbdfcc28c8b4c32122fe15d015a2caaf52527",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_071d94bd",
+        "filename": "MMOCoreORB/src/server/zone/objects/structure/StructureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-07T04:30:13Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be included twice.",
+      "revId": "926fbdfcc28c8b4c32122fe15d015a2caaf52527",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_e71f40b6",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/Instrument.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-07T04:30:13Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be included twice.",
+      "revId": "926fbdfcc28c8b4c32122fe15d015a2caaf52527",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_47238c05",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/TangibleObject.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-07T04:30:13Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be included twice.",
+      "revId": "926fbdfcc28c8b4c32122fe15d015a2caaf52527",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_670c9095",
+        "filename": "MMOCoreORB/src/server/zone/templates/intangible/SharedDraftSchematicObjectTemplate.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-07T04:30:13Z",
+      "side": 1,
+      "message": "This enum was already put in DraftSchematicObjectTemplate. Remove this one.",
+      "revId": "926fbdfcc28c8b4c32122fe15d015a2caaf52527",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8788c4e8",
+        "filename": "MMOCoreORB/src/templates/manager/TemplateManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-07T04:30:13Z",
+      "side": 1,
+      "message": "This is already included. You don\u0027t need to add it again.",
+      "revId": "926fbdfcc28c8b4c32122fe15d015a2caaf52527",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_276d3833",
+        "filename": "MMOCoreORB/src/templates/manager/TemplateManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-07T04:30:13Z",
+      "side": 1,
+      "message": "This is already included. You don\u0027t need to add it again.",
+      "revId": "926fbdfcc28c8b4c32122fe15d015a2caaf52527",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_476aac1b",
+        "filename": "MMOCoreORB/src/templates/manager/TemplateManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-07T04:30:13Z",
+      "side": 1,
+      "message": "This is already included. You don\u0027t need to add it again.",
+      "revId": "926fbdfcc28c8b4c32122fe15d015a2caaf52527",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_678330cd",
+        "filename": "MMOCoreORB/src/templates/manager/TemplateManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-07T04:30:13Z",
+      "side": 1,
+      "message": "You don\u0027t need to add this include twice.",
+      "revId": "926fbdfcc28c8b4c32122fe15d015a2caaf52527",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_e7766006",
+        "filename": "MMOCoreORB/src/templates/manager/TemplateManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-07T04:30:13Z",
+      "side": 1,
+      "message": "Just remove this.",
+      "revId": "926fbdfcc28c8b4c32122fe15d015a2caaf52527",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

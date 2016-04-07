@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_0774b4fb",
+        "filename": "MMOCoreORB/src/templates/SharedObjectTemplate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-07T04:30:13Z",
+      "side": 0,
+      "message": "We really should change all containerComponents (and objectMenuComponents) to just be string params in the lua templates instead of LuaObjects and then remove all this stuff as well. That can be in a later patch.",
+      "revId": "db8098fbbb252dcfa90f7ceba142ab5d1ede96c1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
