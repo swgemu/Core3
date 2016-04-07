@@ -38,7 +38,7 @@
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
-#include "server/zone/templates/installation/FactoryObjectTemplate.h"
+#include "templates/installation/FactoryObjectTemplate.h"
 
 void FactoryObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	InstallationObjectImplementation::loadTemplateData(templateData);
