@@ -12,7 +12,7 @@ import server.zone.objects.area.ActiveArea;
 import server.zone.objects.area.CampSiteObserver;
 import server.zone.objects.area.events.CampDespawnTask;
 import server.zone.objects.area.events.CampAbandonTask;
-include server.zone.templates.tangible.CampStructureTemplate;
+include templates.tangible.CampStructureTemplate;
 include system.thread.Mutex;
 import system.lang.ref.Reference;
 import system.lang.Time;

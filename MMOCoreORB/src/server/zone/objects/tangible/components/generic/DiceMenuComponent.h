@@ -8,8 +8,8 @@
 #ifndef DICEMENUCOMPONENT_H_
 #define DICEMENUCOMPONENT_H_
 
-#include "../TangibleObjectMenuComponent.h"
-#include "server/zone/templates/tangible/DiceTemplate.h"
+#include "server/zone/objects/tangible/components//TangibleObjectMenuComponent.h"
+#include "templates/tangible/DiceTemplate.h"
 
 
 class DiceMenuComponent : public TangibleObjectMenuComponent {

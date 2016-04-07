@@ -14,7 +14,7 @@
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/templates/tangible/tool/SurveyToolTemplate.h"
+#include "templates/tangible/tool/SurveyToolTemplate.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"

@@ -8,7 +8,7 @@
 #ifndef DROIDDEEDTEMPLATE_H_
 #define DROIDDEEDTEMPLATE_H_
 
-#include "DeedTemplate.h"
+#include "templates/tangible/DeedTemplate.h"
 
 class DroidDeedTemplate : public DeedTemplate {
 
@@ -32,15 +32,14 @@ public:
 		species = templateData->getIntField("species");
     }
 
-	String getControlDeviceObjectTemplate()
-	{
+	String getControlDeviceObjectTemplate() {
 		return controlDeviceObjectTemplate;
 	}
 
-	String getMobileTemplate()
-	{
+	String getMobileTemplate() {
 		return mobileTemplate;
 	}
+
 	int getSpecies() {
 		return species;
 	}

@@ -14,7 +14,6 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"
-#include "server/zone/templates/tangible/DnaSampleTemplate.h"
 #include "server/zone/objects/tangible/component/dna/DnaComponent.h"
 #include "server/zone/objects/tangible/deed/pet/PetDeed.h"
 #include "server/zone/managers/crafting/labratories/Genetics.h"

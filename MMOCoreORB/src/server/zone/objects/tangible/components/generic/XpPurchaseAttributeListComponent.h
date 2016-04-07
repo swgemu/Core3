@@ -1,7 +1,7 @@
 #ifndef XPPURCHASEATTIBUTELISTCOMPONENT_H_
 #define XPPURCHASEATTIBUTELISTCOMPONENT_H_
 
-#include "server/zone/templates/tangible/XpPurchaseTemplate.h"
+#include "templates/tangible/XpPurchaseTemplate.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 
 class XpPurchaseAttributeListComponent: public AttributeListComponent {

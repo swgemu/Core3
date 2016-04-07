@@ -17,7 +17,7 @@ include templates.params.creature.CreatureState;
 include templates.params.creature.CreatureAttribute;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
-include server.zone.templates.tangible.DotPackTemplate;
+include templates.tangible.DotPackTemplate;
 
 class DotPack extends PharmaceuticalObject {
 	protected float effectiveness;

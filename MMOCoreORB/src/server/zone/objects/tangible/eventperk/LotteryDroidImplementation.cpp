@@ -5,7 +5,6 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/templates/tangible/EventPerkDeedTemplate.h"
 #include "server/zone/objects/tangible/tasks/RemoveEventPerkItemTask.h"
 #include "server/zone/objects/tangible/tasks/LotteryDroidPulseTask.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"

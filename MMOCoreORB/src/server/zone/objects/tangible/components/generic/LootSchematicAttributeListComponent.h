@@ -8,7 +8,7 @@
 #ifndef LOOTSCHEMATICATTIBUTELISTCOMPONENT_H_
 #define LOOTSCHEMATICATTIBUTELISTCOMPONENT_H_
 
-#include "server/zone/templates/tangible/LootSchematicTemplate.h"
+#include "templates/tangible/LootSchematicTemplate.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 
 class LootSchematicAttributeListComponent: public AttributeListComponent {

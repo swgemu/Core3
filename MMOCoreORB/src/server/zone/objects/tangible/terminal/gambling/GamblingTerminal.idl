@@ -16,7 +16,7 @@ import system.lang.ref.Reference;
 import server.zone.managers.minigames.GamblingBet;
 import server.zone.managers.minigames.events.GamblingEvent;
 import server.chat.StringIdChatParameter;
-include server.zone.templates.tangible.GamblingTerminalTemplate;
+include templates.tangible.GamblingTerminalTemplate;
 include server.zone.objects.player.sui.SuiWindowType;
 
 class GamblingTerminal extends Terminal {

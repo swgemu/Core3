@@ -9,7 +9,7 @@
 #include "CreatureHabitatMenuComponent.h"
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/objects/scene/components/DataObjectComponentReference.h"
-#include "server/zone/templates/tangible/LiveSampleTemplate.h"
+#include "templates/tangible/LiveSampleTemplate.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"

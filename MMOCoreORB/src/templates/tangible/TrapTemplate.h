@@ -73,8 +73,7 @@ public:
 		defenseMod = templateData->getStringField("defenseMod");
 	}
 
-	int getActionCost()
-	{
+	int getActionCost() {
 	    return actionCost;
 	}
 
@@ -82,28 +81,23 @@ public:
 		return duration;
 	}
 
-	const String& getAnimation()
-	{
+	const String& getAnimation() {
 	    return animation;
 	}
 
-	const String& getSuccessMessage()
-	{
+	const String& getSuccessMessage() {
 	    return successMessage;
 	}
 
-	const String& getFailMessage()
-	{
+	const String& getFailMessage() {
 	    return failMessage;
 	}
 
-	const String& getStartSpam()
-	{
+	const String& getStartSpam() {
 	    return startSpam;
 	}
 
-	const String& getStopSpam()
-	{
+	const String& getStopSpam() {
 	    return stopSpam;
 	}
 
@@ -111,28 +105,23 @@ public:
 		return defenseMod;
 	}
 
-	int getHealthCost()
-	{
+	int getHealthCost() {
 	    return healthCost;
 	}
 
-	float getMaxDamage()
-	{
+	float getMaxDamage() {
 	    return maxDamage;
 	}
 
-	float getMaxRange()
-	{
+	float getMaxRange() {
 	    return maxRange;
 	}
 
-	float getMinDamage()
-	{
+	float getMinDamage() {
 	    return minDamage;
 	}
 
-	int getMindCost()
-	{
+	int getMindCost() {
 	    return mindCost;
 	}
 
@@ -144,15 +133,9 @@ public:
 		return poolToDamage;
 	}
 
-	uint64 getState()
-	{
+	uint64 getState() {
 	    return state;
 	}
 };
-
-
-
-
-
 
 #endif /* TRAPTEMPLATE_H_ */

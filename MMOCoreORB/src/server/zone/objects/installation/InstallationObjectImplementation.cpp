@@ -36,8 +36,8 @@
 #include "components/TurretDataComponent.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
-#include "server/zone/templates/tangible/ArmorObjectTemplate.h"
 #include "server/zone/objects/tangible/OptionBitmask.h"
+#include "templates/params/creature/CreatureFlag.h"
 
 void InstallationObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	StructureObjectImplementation::loadTemplateData(templateData);

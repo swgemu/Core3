@@ -12,7 +12,7 @@
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/templates/tangible/LootSchematicTemplate.h"
+#include "templates/tangible/LootSchematicTemplate.h"
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 
 void LootSchematicMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {

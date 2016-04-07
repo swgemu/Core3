@@ -6,7 +6,7 @@
 #define VEHICLEDECAYTASK_H_
 
 #include "server/zone/objects/creature/VehicleObject.h"
-#include "server/zone/templates/tangible/VehicleObjectTemplate.h"
+#include "templates/tangible/VehicleObjectTemplate.h"
 
 class VehicleDecayTask : public Task {
 	ManagedWeakReference<TangibleObject*> vehicleObj;

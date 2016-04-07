@@ -2,7 +2,7 @@
 #define RECYCLETOOLTEMPLATE_H_
 
 #include "templates/SharedTangibleObjectTemplate.h"
-#include "../ContainerTemplate.h"
+#include "templates/tangible/ContainerTemplate.h"
 
 class RecycleToolTemplate : public ContainerTemplate {
 private:

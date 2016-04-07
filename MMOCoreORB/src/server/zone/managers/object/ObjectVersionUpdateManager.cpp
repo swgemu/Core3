@@ -19,7 +19,7 @@
 #include "templates/LootItemTemplate.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "templates/TemplateReference.h"
-#include "server/zone/templates/tangible/LootSchematicTemplate.h"
+#include "templates/tangible/LootSchematicTemplate.h"
 #include "templates/tangible/SharedFactoryObjectTemplate.h"
 #include "server/zone/managers/loot/LootGroupMap.h"
 #include "server/zone/managers/loot/LootManager.h"

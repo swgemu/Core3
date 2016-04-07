@@ -13,7 +13,7 @@
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneProcessServer.h"
-#include "server/zone/templates/tangible/LootkitObjectTemplate.h"
+#include "templates/tangible/LootkitObjectTemplate.h"
 
 void LootkitObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm,object);

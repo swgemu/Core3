@@ -7,7 +7,7 @@
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/templates/tangible/tool/RecycleToolTemplate.h"
+#include "templates/tangible/tool/RecycleToolTemplate.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
 void RecycleToolImplementation::initializeTransientMembers() {

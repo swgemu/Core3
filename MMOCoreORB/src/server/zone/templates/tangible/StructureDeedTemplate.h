@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-#include "DeedTemplate.h"
+#include "templates/tangible/DeedTemplate.h"
 #include "server/zone/objects/tangible/deed/components/PlaceStructureComponent.h"
 #include "server/zone/managers/components/ComponentManager.h"
 

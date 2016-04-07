@@ -7,7 +7,7 @@
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/callbacks/XpPurchaseSuiCallback.h"
 
-#include "server/zone/templates/tangible/XpPurchaseTemplate.h"
+#include "templates/tangible/XpPurchaseTemplate.h"
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 
 void XpPurchaseMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {

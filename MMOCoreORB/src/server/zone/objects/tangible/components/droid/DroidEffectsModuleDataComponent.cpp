@@ -7,7 +7,7 @@
 #include "server/zone/objects/tangible/component/droid/DroidComponent.h"
 #include "server/zone/objects/creature/events/DroidEffectsTask.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/templates/tangible/DroidEffectsModuleTemplate.h"
+#include "templates/tangible/DroidEffectsModuleTemplate.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/callbacks/SelectDroidEffectSuiCallback.h"
 #include "server/zone/objects/player/PlayerObject.h"

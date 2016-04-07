@@ -10,7 +10,7 @@
 #include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/events/DroidTrapTask.h"
-#include "server/zone/templates/tangible/TrapTemplate.h"
+#include "templates/tangible/TrapTemplate.h"
 
 const String DroidTrapModuleDataComponent::EMPTY_TRAP_MESSAGE = "@pet/droid_modules:no_trap_loaded";
 DroidTrapModuleDataComponent::DroidTrapModuleDataComponent() {

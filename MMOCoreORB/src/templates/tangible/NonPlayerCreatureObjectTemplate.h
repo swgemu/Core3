@@ -9,9 +9,6 @@
 #define NONPLAYERCREATUREOBJECTTEMPLATE_H_
 
 #include "templates/tangible/SharedCreatureObjectTemplate.h"
-#include "templates/manager/TemplateManager.h"
-#include "templates/params/creature/CreatureFlag.h"
-#include "server/zone/objects/creature/ai/variables/CreatureAttackMap.h"
 
 class NonPlayerCreatureObjectTemplate : public SharedCreatureObjectTemplate {
 

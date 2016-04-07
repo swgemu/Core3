@@ -9,7 +9,6 @@
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/managers/minigames/GamblingManager.h"
 #include "server/chat/StringIdChatParameter.h"
-#include "server/zone/templates/tangible/GamblingTerminalTemplate.h"
 #include "server/zone/objects/player/sui/slotmachinebox/SuiSlotMachineBox.h"
 //#include "server/zone/objects/player/sui/slotmachinebox/SuiSabaccStartBox.h"
 #include "server/zone/managers/minigames/events/GamblingEvent.h"

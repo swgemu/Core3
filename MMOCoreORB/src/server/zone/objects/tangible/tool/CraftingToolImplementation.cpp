@@ -9,7 +9,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/templates/tangible/tool/CraftingToolTemplate.h"
+#include "templates/tangible/tool/CraftingToolTemplate.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/objects/manufactureschematic/ingredientslots/IngredientSlot.h"
 #include "server/zone/managers/crafting/CraftingManager.h"

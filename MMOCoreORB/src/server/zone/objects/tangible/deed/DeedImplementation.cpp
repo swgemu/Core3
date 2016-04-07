@@ -6,7 +6,7 @@
  */
 
 #include "server/zone/objects/tangible/deed/Deed.h"
-#include "server/zone/templates/tangible/DeedTemplate.h"
+#include "templates/tangible/DeedTemplate.h"
 
 void DeedImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);

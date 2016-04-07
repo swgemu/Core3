@@ -4,7 +4,6 @@
 #include "templates/params/creature/CreatureFlag.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/templates/tangible/EventPerkDeedTemplate.h"
 #include "server/zone/objects/tangible/components/FlagGameMenuComponent.h"
 #include "server/zone/objects/tangible/components/FlagGameDataComponent.h"
 #include "server/zone/objects/tangible/tasks/FlagGamePulseTask.h"

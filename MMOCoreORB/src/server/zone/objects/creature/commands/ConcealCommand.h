@@ -6,7 +6,7 @@
 #define CONCEALCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/templates/tangible/CamoKitTemplate.h"
+#include "templates/tangible/CamoKitTemplate.h"
 
 class ConcealCommand : public QueueCommand {
 public:

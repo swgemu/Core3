@@ -7,7 +7,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/events/ThrowTrapTask.h"
-#include "server/zone/templates/tangible/TrapTemplate.h"
+#include "templates/tangible/TrapTemplate.h"
 
 class ThrowTrapCommand: public CombatQueueCommand {
 public:

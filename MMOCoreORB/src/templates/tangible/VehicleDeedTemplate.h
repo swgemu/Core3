@@ -8,7 +8,7 @@
 #ifndef VEHICLEDEEDTEMPLATE_H_
 #define VEHICLEDEEDTEMPLATE_H_
 
-#include "DeedTemplate.h"
+#include "templates/tangible/DeedTemplate.h"
 
 class VehicleDeedTemplate : public DeedTemplate {
 private:

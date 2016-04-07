@@ -11,7 +11,7 @@
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/templates/tangible/LightsaberCrystalObjectTemplate.h"
+#include "templates/tangible/LightsaberCrystalObjectTemplate.h"
 #include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/player/PlayerObject.h"

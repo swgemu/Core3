@@ -5,7 +5,7 @@
 #include "DroidPersonalityModuleDataComponent.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/tangible/component/droid/DroidComponent.h"
-#include "server/zone/templates/tangible/DroidPersonalityModuleTemplate.h"
+#include "templates/tangible/DroidPersonalityModuleTemplate.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/managers/reaction/ReactionManager.h"
 

@@ -10,7 +10,7 @@
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 #include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
-#include "server/zone/templates/tangible/ContainerTemplate.h"
+#include "templates/tangible/ContainerTemplate.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 

@@ -36,8 +36,4 @@ public:
 };
 
 
-
-
-
-
 #endif /* LIVESAMPLETEMPLATE_H_ */

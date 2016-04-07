@@ -10,7 +10,7 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/creature/sui/JukeboxSelectionSuiCallback.h"
-#include "server/zone/templates/tangible/EventPerkDeedTemplate.h"
+#include "templates/tangible/EventPerkDeedTemplate.h"
 #include "server/zone/objects/tangible/tasks/RemoveEventPerkItemTask.h"
 #include "server/zone/managers/player/JukeboxSong.h"
 

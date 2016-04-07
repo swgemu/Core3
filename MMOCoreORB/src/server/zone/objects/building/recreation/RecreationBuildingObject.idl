@@ -8,7 +8,7 @@ import server.zone.objects.building.BuildingObject;
 import engine.lua.LuaObject;
 import server.zone.Zone;
 import server.zone.objects.cell.CellObject;
-include server.zone.templates.tangible.RecreationBuildingObjectTemplate;
+include templates.tangible.RecreationBuildingObjectTemplate;
 include server.zone.managers.skill.SkillModManager;
 
 

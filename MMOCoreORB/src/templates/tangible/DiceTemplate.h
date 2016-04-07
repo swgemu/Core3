@@ -75,9 +75,4 @@ public:
 
 };
 
-
-
-
-
-
 #endif /* DICETEMPLATE_H_ */

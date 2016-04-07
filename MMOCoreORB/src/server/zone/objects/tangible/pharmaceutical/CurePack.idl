@@ -16,7 +16,7 @@ import server.zone.objects.tangible.pharmaceutical.PharmaceuticalObject;
 import system.lang.StringBuffer;
 include templates.params.creature.CreatureState;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
-include server.zone.templates.tangible.CurePackTemplate;
+include templates.tangible.CurePackTemplate;
 
 
 class CurePack extends PharmaceuticalObject {

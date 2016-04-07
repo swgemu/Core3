@@ -8,7 +8,7 @@ import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
 import server.zone.objects.creature.CreatureObject;
-include server.zone.templates.tangible.MissionTerminalTemplate;
+include templates.tangible.MissionTerminalTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.Zone;
 

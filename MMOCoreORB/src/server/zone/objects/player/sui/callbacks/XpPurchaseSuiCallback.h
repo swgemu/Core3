@@ -6,7 +6,7 @@
 #include "server/zone/objects/scene/SceneObjectType.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/gcw/GCWManager.h"
-#include "server/zone/templates/tangible/XpPurchaseTemplate.h"
+#include "templates/tangible/XpPurchaseTemplate.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 

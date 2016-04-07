@@ -9,7 +9,7 @@
 #include"server/zone/ZoneServer.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-#include "server/zone/templates/tangible/VehicleDeedTemplate.h"
+#include "templates/tangible/VehicleDeedTemplate.h"
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/managers/player/PlayerManager.h"

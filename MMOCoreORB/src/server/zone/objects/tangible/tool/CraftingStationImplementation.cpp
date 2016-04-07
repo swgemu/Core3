@@ -10,7 +10,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/templates/tangible/tool/CraftingStationTemplate.h"
+#include "templates/tangible/tool/CraftingStationTemplate.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/objects/area/ActiveArea.h"

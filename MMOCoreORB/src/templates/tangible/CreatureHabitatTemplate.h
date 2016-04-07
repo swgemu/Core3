@@ -32,9 +32,4 @@ public:
 
 };
 
-
-
-
-
-
 #endif /* CREATUREHABITATTEMPLATE_H_ */

@@ -9,7 +9,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
 import engine.lua.LuaObject;
 include templates.SharedObjectTemplate;
-include server.zone.templates.tangible.InstrumentObjectTemplate;
+include templates.tangible.InstrumentObjectTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.managers.object.ObjectManager;

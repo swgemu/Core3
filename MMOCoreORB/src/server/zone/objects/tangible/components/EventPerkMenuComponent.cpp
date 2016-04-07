@@ -5,7 +5,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/templates/tangible/EventPerkDeedTemplate.h"
+#include "templates/tangible/EventPerkDeedTemplate.h"
 #include "server/chat/StringIdChatParameter.h"
 
 void EventPerkMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {

@@ -30,7 +30,7 @@
 #include "tasks/ClearDefenderListsTask.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h"
-#include "server/zone/templates/tangible/tool/RepairToolTemplate.h"
+#include "templates/tangible/tool/RepairToolTemplate.h"
 #include "server/zone/objects/tangible/tool/repair/RepairTool.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/creature/PetManager.h"

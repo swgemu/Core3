@@ -2,7 +2,7 @@
 #ifndef EVENTPERKDEEDTEMPLATE_H_
 #define EVENTPERKDEEDTEMPLATE_H_
 
-#include "DeedTemplate.h"
+#include "templates/tangible/DeedTemplate.h"
 
 class EventPerkDeedTemplate : public DeedTemplate {
 private:
@@ -43,8 +43,7 @@ public:
 		allowzones.pop();
     }
 
-	int getPerkType()
-	{
+	int getPerkType() {
 		return perkType;
 	}
 

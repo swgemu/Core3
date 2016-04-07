@@ -11,7 +11,7 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
 
-#include "server/zone/templates/tangible/tool/RepairToolTemplate.h"
+#include "templates/tangible/tool/RepairToolTemplate.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 
 void RepairToolImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
