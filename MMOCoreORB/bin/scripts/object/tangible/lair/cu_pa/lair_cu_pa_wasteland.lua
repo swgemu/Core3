@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_cu_pa_lair_cu_pa_wasteland = object_tangible_lair_cu_pa_shared_lair_cu_pa_wasteland:new {
-	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	objectMenuComponent = "LairMenuComponent",
 	customName = "a wasteland cu pa lair"
 }
 

@@ -64,7 +64,7 @@ object_weapon_base_base_weapon = object_weapon_base_shared_base_weapon:new {
 			"object/creature/player/zabrak_male.iff",
 			"object/creature/player/zabrak_female.iff" },
 
-	objectMenuComponent = {"cpp", "WeaponObjectMenuComponent"},
+	objectMenuComponent = "WeaponObjectMenuComponent",
 
 }
 

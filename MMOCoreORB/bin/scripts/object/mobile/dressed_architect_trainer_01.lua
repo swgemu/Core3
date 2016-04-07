@@ -43,7 +43,7 @@
 
 object_mobile_dressed_architect_trainer_01 = object_mobile_shared_dressed_architect_trainer_01:new {
 
-objectMenuComponent = {"cpp", "TrainerMenuComponent"}
+objectMenuComponent = "TrainerMenuComponent"
 
 }
 

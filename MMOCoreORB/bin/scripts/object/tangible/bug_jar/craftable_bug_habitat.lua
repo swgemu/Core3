@@ -44,7 +44,7 @@
 object_tangible_bug_jar_craftable_bug_habitat = object_tangible_bug_jar_shared_craftable_bug_habitat:new {
 
 	templateType = CREATUREHABITAT,
-	objectMenuComponent = {"cpp", "CreatureHabitatMenuComponent"},
+	objectMenuComponent = "CreatureHabitatMenuComponent",
 
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},

@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_bark_mite_lair_bark_mite_hills = object_tangible_lair_bark_mite_shared_lair_bark_mite_hills:new {
-	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	objectMenuComponent = "LairMenuComponent",
 	objectName = "@lair_n:barkmite_hills"
 }
 

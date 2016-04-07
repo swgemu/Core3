@@ -43,7 +43,7 @@
 
 object_tangible_loot_loot_schematic_radio_schematic = object_tangible_loot_loot_schematic_shared_radio_schematic:new {
 	templateType = LOOTSCHEMATIC,
-	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	objectMenuComponent = "LootSchematicMenuComponent",
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	requiredSkill = "crafting_artisan_master",
 	targetDraftSchematic = "object/draft_schematic/furniture/furniture_radio.iff",

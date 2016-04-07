@@ -44,7 +44,7 @@
 object_tangible_firework_show = object_tangible_firework_shared_show:new {
 	
 	templateType = FIREWORK,
-	objectMenuComponent = {"cpp", "FireworkShowMenuComponent"},
+	objectMenuComponent = "FireworkShowMenuComponent",
 	dataObjectComponent = "FireworkShowDataComponent",
 	fireworkObject = "object/static/firework/show_launcher.iff",
 	showPackage = true,

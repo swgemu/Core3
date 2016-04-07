@@ -48,7 +48,7 @@ object_tangible_event_perk_rsf_stage_theater = object_tangible_poi_base_shared_p
 
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 
 	childObjects = {
 		{ templateFile = "object/static/structure/naboo/nboo_imprv_flagpole_s01.iff", x = 5.96, z = 1.35, y = 7.72, ow = 1, ox = 0, oy = 0.9789, oz = 0, cellid = -1, containmentType = -1 },

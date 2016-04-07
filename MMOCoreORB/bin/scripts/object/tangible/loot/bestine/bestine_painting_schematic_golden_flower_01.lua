@@ -43,7 +43,7 @@
 
 object_tangible_loot_bestine_bestine_painting_schematic_golden_flower_01 = object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_01:new {
 	templateType = LOOTSCHEMATIC,
-	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	objectMenuComponent = "LootSchematicMenuComponent",
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	requiredSkill = "crafting_architect_production_03",
 	targetDraftSchematic = "object/draft_schematic/furniture/bestine/painting_bestine_golden_flower_01.iff",

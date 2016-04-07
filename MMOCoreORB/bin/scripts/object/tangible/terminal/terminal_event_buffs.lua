@@ -43,7 +43,7 @@
 
 object_tangible_terminal_terminal_event_buffs = object_tangible_terminal_shared_terminal_skill:new {
 	customName = "Buffs",
-	objectMenuComponent = {"Lua", "buffTerminalMenuComponent"},
+	objectMenuComponent = "buffTerminalMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_terminal_event_buffs, "object/tangible/terminal/terminal_event_buffs.iff")

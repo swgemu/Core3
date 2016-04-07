@@ -53,7 +53,6 @@
 #include "server/zone/templates/tangible/CloningBuildingObjectTemplate.h"
 #include "server/zone/templates/tangible/HospitalBuildingObjectTemplate.h"
 #include "server/zone/templates/tangible/RecreationBuildingObjectTemplate.h"
-#include "server/zone/templates/resource_container/ResourceSpawnTemplate.h"
 #include "server/zone/templates/tangible/DeedTemplate.h"
 #include "server/zone/templates/tangible/StructureDeedTemplate.h"
 #include "server/zone/templates/tangible/VehicleDeedTemplate.h"
@@ -75,6 +74,7 @@
 #include "server/zone/templates/tangible/WoundPackTemplate.h"
 #include "server/zone/templates/SharedTangibleObjectTemplate.h"
 
+#include "templates/resource/ResourceSpawnTemplate.h"
 
 #include "templates/universe/SharedGroupObjectTemplate.h"
 #include "templates/universe/SharedGuildObjectTemplate.h"

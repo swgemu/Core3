@@ -43,10 +43,10 @@
 
 object_tangible_event_perk_skeleton_chest = object_tangible_container_drum_warren_drum_skeleton:new {
 	gameObjectType = 16412,
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
-	containerComponent = {"cpp", "ScavengerChestContainerComponent"},
+	containerComponent = "ScavengerChestContainerComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_skeleton_chest, "object/tangible/event_perk/skeleton_chest.iff")

@@ -43,7 +43,7 @@
 
 object_tangible_loot_quest_schematic_apron_s01_quest_04 = object_tangible_loot_quest_shared_schematic_apron_s01_quest_04:new {
 templateType = LOOTSCHEMATIC,
-	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	objectMenuComponent = "LootSchematicMenuComponent",
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	requiredSkill = "crafting_tailor_field_03",
 	targetDraftSchematic = "object/draft_schematic/clothing/clothing_apron_field_01_quest_04.iff",

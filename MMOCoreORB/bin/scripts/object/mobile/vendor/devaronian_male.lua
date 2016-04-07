@@ -47,9 +47,9 @@ object_mobile_vendor_devaronian_male = object_mobile_vendor_shared_devaronian_ma
 	optionsBitmask = 386,
 	pvpStatusBitmask = 0,
 
-	objectMenuComponent = {"cpp", "VendorMenuComponent"},
+	objectMenuComponent = "VendorMenuComponent",
 	dataObjectComponent = "VendorDataComponent",	
-	containerComponent = {"cpp", "VendorContainerComponent"},
+	containerComponent = "VendorContainerComponent",
 	zoneComponent = "VendorZoneComponent",
 
 	noTrade = 1,

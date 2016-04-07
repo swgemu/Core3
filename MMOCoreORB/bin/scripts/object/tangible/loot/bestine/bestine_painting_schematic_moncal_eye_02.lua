@@ -43,7 +43,7 @@
 
 object_tangible_loot_bestine_bestine_painting_schematic_moncal_eye_02 = object_tangible_loot_bestine_shared_bestine_painting_schematic_moncal_eye_02:new {
 	templateType = LOOTSCHEMATIC,
-	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	objectMenuComponent = "LootSchematicMenuComponent",
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	requiredSkill = "crafting_architect_production_03",
 	targetDraftSchematic = "object/draft_schematic/furniture/bestine/painting_bestine_moncal_eye_02.iff",

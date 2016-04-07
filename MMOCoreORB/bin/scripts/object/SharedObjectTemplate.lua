@@ -81,18 +81,18 @@ SharedObjectTemplate = Object:new {
 ]]
 
 -- the default values moved to object/base/base_object.lua
-	
-	 clientTemplateFileName = "", 
-	 planetMapCategory = "",
-	 planetMapSubCategory = "",
-	 autoRegisterWithPlanetMap = 1,
-	 
-	 zoneComponent = "ZoneComponent",
-	 objectMenuComponent = {"cpp", "ObjectMenuComponent"},
-	 containerComponent = {"cpp", "ContainerComponent"},
-	 attributeListComponent = "AttributeListComponent",
-	 
-	 childObjects = { }, -- { { templateFile = "", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = 0 } }
-	 
-	 templateType = SHOT
+
+	clientTemplateFileName = "",
+	planetMapCategory = "",
+	planetMapSubCategory = "",
+	autoRegisterWithPlanetMap = 1,
+
+	zoneComponent = "ZoneComponent",
+	objectMenuComponent = "ObjectMenuComponent",
+	containerComponent = "ContainerComponent",
+	attributeListComponent = "AttributeListComponent",
+
+	childObjects = { }, -- { { templateFile = "", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = 0 } }
+
+	templateType = SHOT
 }

@@ -42,7 +42,7 @@
 
 
 object_tangible_item_quest_force_sensitive_fs_craft_puzzle_analyzer = object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_analyzer:new {
-	objectMenuComponent = {"Lua", "FsCrafting1AnalyzerMenuComponent"},
+	objectMenuComponent = "FsCrafting1AnalyzerMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_fs_craft_puzzle_analyzer, "object/tangible/item/quest/force_sensitive/fs_craft_puzzle_analyzer.iff")

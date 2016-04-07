@@ -8,10 +8,7 @@
 #ifndef SHAREDSTATICOBJECTTEMPLATE_H_
 #define SHAREDSTATICOBJECTTEMPLATE_H_
 
-
 #include "templates/SharedObjectTemplate.h"
-#include "tangible/SharedBuildingObjectTemplate.h"
-
 
 class SharedStaticObjectTemplate : public SharedObjectTemplate {
 protected:

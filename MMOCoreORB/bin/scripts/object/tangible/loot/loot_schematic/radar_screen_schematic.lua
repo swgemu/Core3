@@ -43,7 +43,7 @@
 
 object_tangible_loot_loot_schematic_radar_screen_schematic = object_tangible_loot_loot_schematic_shared_radar_screen_schematic:new {
 	templateType = LOOTSCHEMATIC,
-	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	objectMenuComponent = "LootSchematicMenuComponent",
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	requiredSkill = "crafting_architect_production_04",
 	targetDraftSchematic = "object/draft_schematic/furniture/furniture_radar_table.iff",

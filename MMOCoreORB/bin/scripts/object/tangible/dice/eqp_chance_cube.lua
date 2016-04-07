@@ -44,7 +44,7 @@
 object_tangible_dice_eqp_chance_cube = object_tangible_dice_shared_eqp_chance_cube:new {
 
 	templateType = DICE,
-	objectMenuComponent = {"cpp", "DiceMenuComponent"},
+	objectMenuComponent = "DiceMenuComponent",
 
 	sides = 2,
 	sidesText = "chance cube",

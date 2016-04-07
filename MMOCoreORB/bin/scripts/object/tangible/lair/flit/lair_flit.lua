@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_flit_lair_flit = object_tangible_lair_flit_shared_lair_flit:new {
-	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	objectMenuComponent = "LairMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_flit_lair_flit, "object/tangible/lair/flit/lair_flit.iff")

@@ -48,7 +48,7 @@ object_tangible_event_perk_imperial_recruiting_station = object_tangible_poi_bas
 
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 
 	childObjects = {
 		{ templateFile = "object/static/structure/tatooine/palette_supply_02.iff", x = 1.71, z = 0, y = -3.89, ow = 0.00079, ox = 0, oy = -1, oz = 0, cellid = -1, containmentType = -1 },

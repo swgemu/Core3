@@ -43,7 +43,7 @@
 
 object_tangible_loot_loot_schematic_tatooine_tapestry_schematic = object_tangible_loot_loot_schematic_shared_tatooine_tapestry_schematic:new {
 	templateType = LOOTSCHEMATIC,
-	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	objectMenuComponent = "LootSchematicMenuComponent",
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	requiredSkill = "crafting_tailor_field_01",
 	targetDraftSchematic = "object/draft_schematic/furniture/furniture_tatooine_tapestry.iff",

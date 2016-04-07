@@ -48,9 +48,9 @@ object_mobile_vendor_wookiee_female = object_mobile_vendor_shared_wookiee_female
 	optionsBitmask = 386,
 	pvpStatusBitmask = 0,
 
-	objectMenuComponent = {"cpp", "VendorMenuComponent"},
+	objectMenuComponent = "VendorMenuComponent",
 	dataObjectComponent = "VendorDataComponent",	
-	containerComponent = {"cpp", "VendorContainerComponent"},
+	containerComponent = "VendorContainerComponent",
 	zoneComponent = "VendorZoneComponent",
 
 	noTrade = 1,

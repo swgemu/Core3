@@ -43,7 +43,7 @@
 
 object_tangible_loot_loot_schematic_spear_rack_schematic = object_tangible_loot_loot_schematic_shared_spear_rack_schematic:new {
 	templateType = LOOTSCHEMATIC,
-	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	objectMenuComponent = "LootSchematicMenuComponent",
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	requiredSkill = "crafting_weaponsmith_munitions_04",
 	targetDraftSchematic = "object/draft_schematic/furniture/furniture_spear_stand.iff",

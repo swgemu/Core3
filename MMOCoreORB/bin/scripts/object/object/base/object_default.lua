@@ -48,9 +48,9 @@ clientTemplateFileName = "",
 	 autoRegisterWithPlanetMap = 1,
 	 
 	 zoneComponent = "ZoneComponent",
-	 objectMenuComponent = {"cpp", "ObjectMenuComponent"},
+	 objectMenuComponent = "ObjectMenuComponent",
 	 attributeListComponent = "AttributeListComponent",
-	 containerComponent = {"cpp", "ContainerComponent"}
+	 containerComponent = "ContainerComponent"
 }
 
 ObjectTemplates:addTemplate(object_object_base_object_default, "object/object/base/object_default.iff")

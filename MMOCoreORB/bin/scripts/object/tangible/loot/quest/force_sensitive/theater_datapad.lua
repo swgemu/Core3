@@ -43,7 +43,7 @@
 
 object_tangible_loot_quest_force_sensitive_theater_datapad = object_tangible_loot_quest_force_sensitive_shared_theater_datapad:new {
 
-	objectMenuComponent = {"cpp", "WaypointDatapadMenuComponent"},
+	objectMenuComponent = "WaypointDatapadMenuComponent",
 	
 	noTrade = 1,
 	

@@ -43,10 +43,10 @@
 
 object_tangible_event_perk_sparking_treasure_box_chest = object_tangible_container_drum_poi_prize_box_on:new {
 	gameObjectType = 16412,
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
-	containerComponent = {"cpp", "ScavengerChestContainerComponent"},
+	containerComponent = "ScavengerChestContainerComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_sparking_treasure_box_chest, "object/tangible/event_perk/sparking_treasure_box_chest.iff")

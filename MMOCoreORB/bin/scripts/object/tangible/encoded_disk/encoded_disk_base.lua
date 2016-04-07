@@ -42,7 +42,7 @@
 
 
 object_tangible_encoded_disk_encoded_disk_base = object_tangible_encoded_disk_shared_encoded_disk_base:new {
-	objectMenuComponent = {"cpp", "CoaEncodedDiskMenuComponent"},
+	objectMenuComponent = "CoaEncodedDiskMenuComponent",
 	noTrade = 1
 }
 

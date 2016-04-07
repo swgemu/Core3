@@ -42,7 +42,7 @@
 
 
 object_tangible_npc_tatooine_special_sarlacc = object_tangible_npc_tatooine_special_shared_sarlacc:new {
-	objectMenuComponent = {"cpp", "SarlaccMenuComponent"}
+	objectMenuComponent = "SarlaccMenuComponent"
 }
 
 ObjectTemplates:addTemplate(object_tangible_npc_tatooine_special_sarlacc, "object/tangible/npc/tatooine_special/sarlacc.iff")

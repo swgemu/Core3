@@ -43,7 +43,7 @@
 
 object_tangible_loot_loot_schematic_slave_brazier_schematic = object_tangible_loot_loot_schematic_shared_slave_brazier_schematic:new {
 	templateType = LOOTSCHEMATIC,
-	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	objectMenuComponent = "LootSchematicMenuComponent",
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	requiredSkill = "crafting_architect_production_04",
 	targetDraftSchematic = "object/draft_schematic/furniture/furniture_slave_brazier.iff",

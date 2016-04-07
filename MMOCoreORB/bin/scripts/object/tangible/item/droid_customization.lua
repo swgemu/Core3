@@ -43,7 +43,7 @@
 
 object_tangible_item_droid_customization = object_tangible_item_shared_droid_customization:new {
 	templateType = DROIDCUSTOMKIT,
-	objectMenuComponent = {"cpp", "DroidCustomKitObjectMenuComponent"},
+	objectMenuComponent = "DroidCustomKitObjectMenuComponent",
 
 	numberExperimentalProperties = {1, 1, 1, 1, 2},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "CD", "OQ"},

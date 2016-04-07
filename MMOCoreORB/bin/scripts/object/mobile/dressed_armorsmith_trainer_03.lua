@@ -43,7 +43,7 @@
 
 object_mobile_dressed_armorsmith_trainer_03 = object_mobile_shared_dressed_armorsmith_trainer_03:new {
 
-	objectMenuComponent = {"cpp", "TrainerMenuComponent"}
+	objectMenuComponent = "TrainerMenuComponent"
 
 }
 

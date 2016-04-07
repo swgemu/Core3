@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_thune_lair_thune = object_tangible_lair_thune_shared_lair_thune:new {
-	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	objectMenuComponent = "LairMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_thune_lair_thune, "object/tangible/lair/thune/lair_thune.iff")

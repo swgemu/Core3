@@ -42,7 +42,7 @@
 
 
 object_tangible_treasure_map_treasure_map_quest = object_tangible_treasure_map_shared_treasure_map_quest:new {
-	objectMenuComponent = {"Lua", "TreasureMapMenuComponent"}
+	objectMenuComponent = "TreasureMapMenuComponent"
 }
 
 ObjectTemplates:addTemplate(object_tangible_treasure_map_treasure_map_quest, "object/tangible/treasure_map/treasure_map_bh.iff")

@@ -43,10 +43,10 @@
 
 object_tangible_event_perk_radiologcally_shielded_chest = object_tangible_container_drum_warren_reactor_core:new {
 	gameObjectType = 16412,
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
-	containerComponent = {"cpp", "ScavengerChestContainerComponent"},
+	containerComponent = "ScavengerChestContainerComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_radiologcally_shielded_chest, "object/tangible/event_perk/radiologically_shielded_chest.iff")

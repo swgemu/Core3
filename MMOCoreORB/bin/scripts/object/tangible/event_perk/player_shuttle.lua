@@ -42,7 +42,7 @@
 
 
 object_tangible_event_perk_player_shuttle = object_tangible_event_perk_shared_player_shuttle:new {
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
 }

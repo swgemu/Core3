@@ -44,7 +44,7 @@
 object_tangible_dice_eqp_configurable_group_dice = object_tangible_dice_shared_eqp_configurable_group_dice:new {
 
 	templateType = DICE,
-	objectMenuComponent = {"cpp", "DiceMenuComponent"},
+	objectMenuComponent = "DiceMenuComponent",
 	dataObjectComponent = "DiceDataComponent",
 
 	sides = 0,

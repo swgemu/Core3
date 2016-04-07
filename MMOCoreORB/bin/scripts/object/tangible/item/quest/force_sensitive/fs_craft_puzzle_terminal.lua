@@ -42,7 +42,7 @@
 
 
 object_tangible_item_quest_force_sensitive_fs_craft_puzzle_terminal = object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_terminal:new {
-	objectMenuComponent = {"Lua", "SensorArrayAccessTerminalMenuComponent"},
+	objectMenuComponent = "SensorArrayAccessTerminalMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_fs_craft_puzzle_terminal, "object/tangible/item/quest/force_sensitive/fs_craft_puzzle_terminal.iff")

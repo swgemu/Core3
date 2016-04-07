@@ -42,7 +42,7 @@
 
 
 object_tangible_encoded_disk_encoded_disk_base = object_tangible_encoded_disk_shared_encoded_disk_base:new {
-	objectMenuComponent = {"Lua", "EncodedDiskMenuComponent"}
+	objectMenuComponent = "EncodedDiskMenuComponent"
 }
 
 ObjectTemplates:addTemplate(object_tangible_encoded_disk_encoded_disk_base, "object/tangible/treasure_map/treasure_map_encoded_disk.iff")

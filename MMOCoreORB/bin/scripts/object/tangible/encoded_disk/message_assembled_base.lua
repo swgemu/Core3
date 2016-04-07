@@ -43,7 +43,7 @@
 
 object_tangible_encoded_disk_message_assembled_base = object_tangible_encoded_disk_shared_message_assembled_base:new {
 	dataObjectComponent = "CoaMessageDataComponent",
-	objectMenuComponent = {"cpp", "CoaMessageMenuComponent"},
+	objectMenuComponent = "CoaMessageMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_encoded_disk_message_assembled_base, "object/tangible/encoded_disk/message_assembled_base.iff")

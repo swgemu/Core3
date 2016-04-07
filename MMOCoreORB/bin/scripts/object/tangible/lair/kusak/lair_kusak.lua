@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_kusak_lair_kusak = object_tangible_lair_kusak_shared_lair_kusak:new {
-	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	objectMenuComponent = "LairMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kusak_lair_kusak, "object/tangible/lair/kusak/lair_kusak.iff")

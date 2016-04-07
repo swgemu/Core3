@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_flit_lair_flit_mountain = object_tangible_lair_flit_shared_lair_flit_mountain:new {
-	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	objectMenuComponent = "LairMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_flit_lair_flit_mountain, "object/tangible/lair/flit/lair_flit_mountain.iff")

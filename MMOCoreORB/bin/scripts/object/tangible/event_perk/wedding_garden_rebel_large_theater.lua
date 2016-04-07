@@ -48,7 +48,7 @@ object_tangible_event_perk_wedding_garden_rebel_large_theater = object_tangible_
 
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 
 	childObjects = {
 		{ templateFile = "object/mobile/dressed_rebel_crewman_human_male_01.iff", x = 3.84, z = 0, y = -12.53, ow = 0.99076, ox = 0, oy = -0.13563, oz = 0, cellid = -1, containmentType = -1 },

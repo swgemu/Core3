@@ -42,7 +42,7 @@
 
 
 object_tangible_event_perk_tie_bomber = object_tangible_event_perk_shared_tie_bomber:new {
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
 }

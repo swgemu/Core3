@@ -8,7 +8,7 @@
 #ifndef SHAREDJEDIMANAGERTEMPLATE_H_
 #define SHAREDJEDIMANAGERTEMPLATE_H_
 
-#include "../SharedUniverseObjectTemplate.h"
+#include "templates/SharedUniverseObjectTemplate.h"
 
 class SharedJediManagerTemplate : public SharedUniverseObjectTemplate {
 

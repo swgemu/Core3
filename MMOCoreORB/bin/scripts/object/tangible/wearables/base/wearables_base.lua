@@ -63,7 +63,7 @@ object_tangible_wearables_base_wearables_base = object_tangible_wearables_base_s
 			"object/creature/player/zabrak_male.iff",
 			"object/creature/player/zabrak_female.iff" },
 
-	objectMenuComponent = {"cpp", "WearableObjectMenuComponent"},
+	objectMenuComponent = "WearableObjectMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_wearables_base, "object/tangible/wearables/base/wearables_base.iff")

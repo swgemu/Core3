@@ -43,7 +43,7 @@
 
 object_tangible_loot_bestine_bestine_painting_schematic_house = object_tangible_loot_bestine_shared_bestine_painting_schematic_house:new {
 	templateType = LOOTSCHEMATIC,
-	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	objectMenuComponent = "LootSchematicMenuComponent",
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	requiredSkill = "crafting_architect_production_03",
 	targetDraftSchematic = "object/draft_schematic/furniture/bestine/painting_bestine_house.iff",

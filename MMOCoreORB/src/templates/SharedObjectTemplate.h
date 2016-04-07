@@ -389,7 +389,7 @@ public:
 		return templateFileName;
 	}
 
-	inline String getContainerComponent() const {
+	inline const String& getContainerComponent() {
 		return containerComponent;
 	}
 
@@ -397,7 +397,7 @@ public:
 		return zoneComponent;
 	}
 
-	inline String getObjectMenuComponent() const {
+	inline const String& getObjectMenuComponent() {
 		return objectMenuComponent;
 	}
 

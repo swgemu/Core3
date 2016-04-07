@@ -48,7 +48,7 @@ object_tangible_event_perk_crashed_tie_bomber_theater = object_tangible_poi_base
 
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 
 	childObjects = {
 		{ templateFile = "object/static/particle/pt_lair_med_burn.iff", x = -1.60, z = 2.84, y = 3.24, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },

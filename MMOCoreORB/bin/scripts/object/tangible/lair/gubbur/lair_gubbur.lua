@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_gubbur_lair_gubbur = object_tangible_lair_gubbur_shared_lair_gubbur:new {
-	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	objectMenuComponent = "LairMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gubbur_lair_gubbur, "object/tangible/lair/gubbur/lair_gubbur.iff")

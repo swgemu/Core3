@@ -8,7 +8,7 @@
 #ifndef RESOURCESPAWNTEMPLATE_H_
 #define RESOURCESPAWNTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "templates/SharedObjectTemplate.h"
 
 class ResourceSpawnTemplate : public SharedObjectTemplate {
 private:

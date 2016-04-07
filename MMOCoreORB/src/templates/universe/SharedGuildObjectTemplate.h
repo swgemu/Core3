@@ -8,7 +8,7 @@
 #ifndef SHAREDGUILDOBJECTTEMPLATE_H_
 #define SHAREDGUILDOBJECTTEMPLATE_H_
 
-#include "../SharedUniverseObjectTemplate.h"
+#include "templates/SharedUniverseObjectTemplate.h"
 
 class SharedGuildObjectTemplate : public SharedUniverseObjectTemplate {
 

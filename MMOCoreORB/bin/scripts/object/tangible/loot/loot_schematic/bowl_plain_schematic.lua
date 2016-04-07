@@ -43,7 +43,7 @@
 
 object_tangible_loot_loot_schematic_bowl_plain_schematic = object_tangible_loot_loot_schematic_shared_bowl_plain_schematic:new {
 	templateType = LOOTSCHEMATIC,
-	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	objectMenuComponent = "LootSchematicMenuComponent",
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	requiredSkill = "crafting_artisan_domestic_02",
 	targetDraftSchematic = "object/draft_schematic/furniture/furniture_bowl_plain.iff",

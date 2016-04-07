@@ -43,7 +43,7 @@
 
 object_tangible_dungeon_death_watch_bunker_door_control_terminal = object_tangible_dungeon_death_watch_bunker_shared_door_control_terminal:new {
 	
-	objectMenuComponent = {"Lua", "deathWatchDoorControlTerminal"},
+	objectMenuComponent = "deathWatchDoorControlTerminal",
 	maxCondition = 0,
 }
 

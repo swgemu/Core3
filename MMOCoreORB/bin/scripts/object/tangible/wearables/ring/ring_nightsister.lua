@@ -42,7 +42,7 @@
 
 
 object_tangible_wearables_ring_ring_nightsister = object_tangible_wearables_ring_shared_ring_nightsister:new {
-	objectMenuComponent = {"cpp", "RingObjectMenuComponent"},
+	objectMenuComponent = "RingObjectMenuComponent",
 	playerRaces = { "object/creature/player/bothan_male.iff",
 				"object/creature/player/bothan_female.iff",
 				"object/creature/player/human_male.iff",

@@ -48,7 +48,7 @@ object_tangible_event_perk_crashed_xwing_theater = object_tangible_poi_base_shar
 
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 
 	childObjects = {
 		{ templateFile = "object/static/structure/general/xwing.iff", x = 0, z = 0, y = 1.61, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },

@@ -48,9 +48,9 @@ object_object_base_base_object = object_object_base_shared_base_object:new {
 	 autoRegisterWithPlanetMap = 1,
 	 
 	 zoneComponent = "ZoneComponent",
-	 objectMenuComponent = {"cpp", "ObjectMenuComponent"},
+	 objectMenuComponent = "ObjectMenuComponent",
 	 attributeListComponent = "AttributeListComponent",
-	 containerComponent = {"cpp", "ContainerComponent"}
+	 containerComponent = "ContainerComponent"
 }
 
 ObjectTemplates:addTemplate(object_object_base_base_object, "object/object/base/base_object.iff")

@@ -44,7 +44,7 @@
 object_tangible_scout_trap_trap_enraging_spur = object_tangible_scout_trap_shared_trap_enraging_spur:new {
 
 	templateType = TRAP,
-	objectMenuComponent = {"cpp", "TrapMenuComponent"},
+	objectMenuComponent = "TrapMenuComponent",
 
 	useCount = 5,
 	skillRequired = 10,

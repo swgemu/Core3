@@ -43,7 +43,7 @@
 
 object_mobile_dressed_scout_trainer_02 = object_mobile_shared_dressed_scout_trainer_02:new {
 	planetMapCategory = "trainer_scout",
-	objectMenuComponent = {"cpp", "TrainerMenuComponent"}
+	objectMenuComponent = "TrainerMenuComponent"
 }
 
 ObjectTemplates:addTemplate(object_mobile_dressed_scout_trainer_02, "object/mobile/dressed_scout_trainer_02.iff")

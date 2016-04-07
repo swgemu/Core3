@@ -44,7 +44,7 @@
 object_tangible_scout_trap_trap_state_def_1 = object_tangible_scout_trap_shared_trap_state_def_1:new {
 	-- Stink Bomb
 	templateType = TRAP,
-	objectMenuComponent = {"cpp", "TrapMenuComponent"},
+	objectMenuComponent = "TrapMenuComponent",
 
 	useCount = 5,
 	skillRequired = 15,

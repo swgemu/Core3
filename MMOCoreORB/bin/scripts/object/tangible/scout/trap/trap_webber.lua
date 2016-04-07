@@ -44,7 +44,7 @@
 object_tangible_scout_trap_trap_webber = object_tangible_scout_trap_shared_trap_webber:new {
 	-- Adhesive Mesh
 	templateType = TRAP,
-	objectMenuComponent = {"cpp", "TrapMenuComponent"},
+	objectMenuComponent = "TrapMenuComponent",
 
 	useCount = 5,
 	skillRequired = 30,

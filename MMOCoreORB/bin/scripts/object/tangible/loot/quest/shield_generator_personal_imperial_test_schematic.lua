@@ -44,7 +44,7 @@
 object_tangible_loot_quest_shield_generator_personal_imperial_test_schematic = object_tangible_loot_quest_shared_shield_generator_personal_imperial_test_schematic:new {
 
 	templateType = LOOTSCHEMATIC,
-	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	objectMenuComponent = "LootSchematicMenuComponent",
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	requiredSkill = "crafting_armorsmith_master", 
 	targetDraftSchematic = "object/draft_schematic/armor/shield_generator_personal_imperial_test.iff",

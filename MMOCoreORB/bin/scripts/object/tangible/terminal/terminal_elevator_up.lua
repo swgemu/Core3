@@ -42,7 +42,7 @@
 
 
 object_tangible_terminal_terminal_elevator_up = object_tangible_terminal_shared_terminal_elevator_up:new {
-	objectMenuComponent = {"cpp", "ElevatorUpMenuComponent"}
+	objectMenuComponent = "ElevatorUpMenuComponent"
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_terminal_elevator_up, "object/tangible/terminal/terminal_elevator_up.iff")

@@ -48,7 +48,7 @@ object_tangible_event_perk_graveyard = object_tangible_poi_base_shared_poi_base:
 
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 
 	childObjects = {
 		{ templateFile = "object/static/structure/general/gravestone_generic_style_01.iff", x = -1.4951, z = 0, y = -2.6957, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },

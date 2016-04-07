@@ -42,7 +42,7 @@
 
 
 object_tangible_event_perk_banner_tatooine_style_01 = object_tangible_event_perk_shared_banner_tatooine_style_01:new {
-	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
+	objectMenuComponent = "EventPerkMenuComponent",
 	dataObjectComponent = "EventPerkDataComponent",
 	attributeListComponent = "EventPerkAttributeListComponent",
 }

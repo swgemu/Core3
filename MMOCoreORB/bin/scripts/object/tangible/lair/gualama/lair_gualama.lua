@@ -42,7 +42,7 @@
 
 
 object_tangible_lair_gualama_lair_gualama = object_tangible_lair_gualama_shared_lair_gualama:new {
-	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	objectMenuComponent = "LairMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gualama_lair_gualama, "object/tangible/lair/gualama/lair_gualama.iff")
