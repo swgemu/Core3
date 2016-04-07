@@ -851,7 +851,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/mission/DestroyMissionLairObserverImplementation.cpp \
 		server/zone/objects/installation/components/TurretObserverImplementation.cpp \
 		server/zone/objects/mission/bountyhunter/BountyHunterDroid.cpp \
-		server/zone/templates/intangible/DraftSchematicObjectTemplate.cpp \
+		templates/intangible/DraftSchematicObjectTemplate.cpp \
 		templates/tangible/CampStructureTemplate.cpp \
 		server/zone/templates/tangible/PlayerCreatureTemplate.cpp \
 		server/zone/templates/mobile/LuaConversationScreen.cpp \
