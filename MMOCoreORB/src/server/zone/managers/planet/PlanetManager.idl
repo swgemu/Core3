@@ -22,7 +22,7 @@ import server.zone.managers.gcw.GCWManager;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 include server.zone.managers.planet.RegionMap;
-include server.zone.managers.terrain.TerrainManager;
+include terrain.manager.TerrainManager;
 include server.zone.managers.planet.MissionTargetMap;
 include templates.snapshot.WorldSnapshotNode;
 include templates.snapshot.WorldSnapshotIff;
@@ -91,7 +91,7 @@ class PlanetManager extends ManagedService implements Logger {
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 
-		terrainManager = new TerrainManager(zone);
+		terrainManager = new TerrainManager();
 
 		if (terrainManager.initialize("terrain/" + zone.getZoneName() + ".trn")) {
 			Logger.info("Loaded terrain file successfully.");

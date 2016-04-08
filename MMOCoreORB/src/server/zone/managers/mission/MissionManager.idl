@@ -16,7 +16,7 @@ import server.zone.objects.region.Region;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.group.GroupObject;
 import server.zone.managers.stringid.StringIdManager;
-include server.zone.managers.terrain.TerrainManager;
+include terrain.manager.TerrainManager;
 include server.zone.managers.mission.LairObjectsToSpawnMap;
 include server.zone.managers.mission.BountyTargetListElement;
 include server.zone.managers.mission.spawnmaps.MissionNpcSpawnMap;
