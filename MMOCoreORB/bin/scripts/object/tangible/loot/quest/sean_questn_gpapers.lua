@@ -42,7 +42,7 @@
 
 
 object_tangible_loot_quest_sean_questn_gpapers = object_tangible_loot_quest_shared_sean_questn_gpapers:new {
-
+noTrade = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_sean_questn_gpapers, "object/tangible/loot/quest/sean_questn_gpapers.iff")

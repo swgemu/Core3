@@ -42,7 +42,7 @@
 
 
 object_tangible_loot_quest_sean_questp_ctestimony = object_tangible_loot_quest_shared_sean_questp_ctestimony:new {
-
+noTrade = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_sean_questp_ctestimony, "object/tangible/loot/quest/sean_questp_ctestimony.iff")

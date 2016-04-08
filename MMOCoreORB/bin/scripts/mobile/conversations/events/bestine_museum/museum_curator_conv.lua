@@ -5,6 +5,24 @@ museumCuratorConvoTemplate = ConvoTemplate:new {
 	screens = {}
 }
 
+
+noEventAndNoArtwork = ConvoScreen:new {
+  id = "noEventAndNoArtwork",
+  leftDialog = "@conversation/lilas_dinhint:s_aaa43f7b", --  Hello and welcome to the Bestine Museum.
+  stopConversation = "true",
+  options = {
+      --Thank you. s_b9b27823
+       --Can you tell me anything about Sean Trenwell?s_8b3d6e46
+       --I'm back for the testimonial for Sean Trenwell you had offered..s_26c02ad3
+       -- How long until you look for another work of art to feature? s_9558d37a
+       
+      
+  }
+}
+museumCuratorConvoTemplate:addScreen(noEventAndNoArtwork);
+
+--I hope you enjoy your visit. Feel free to look around. s_cccdca43
+
 init_votephase = ConvoScreen:new {
 	id = "init_votephase",
 	leftDialog = "@conversation/lilas_dinhint:s_605d9185", -- Hello and welcome to the Bestine Museum. I hope you enjoy your visit. While I've got your ear, you should know that we are currently seeking a new work of art to feature. Would you like to help?
@@ -239,7 +257,8 @@ museumCuratorConvoTemplate:addScreen(hello_no_voting);
 
 already_voted = ConvoScreen:new {
 	id = "already_voted",
-	leftDialog = "@conversation/lilas_dinhint:s_375a5dc0", -- Thank you for taking part in our contest. Check back when the event ends to see who won. Note that the event is 15 days from beginning to end and that the winning work of art will be on display for 30 days. That 30 days includes the 15 days between events as well as the 15 days of the next event. Thanks again!
+	leftDialog = "@conversation/lilas_dinhint:s_5492284e",--Thank you for taking part. 
+	-- Thank you for taking part in our contest. Check back when the event ends to see who won. Note that the event is 15 days from beginning to end and that the winning work of art will be on display for 30 days. That 30 days includes the 15 days between events as well as the 15 days of the next event. Thanks again!
 	stopConversation = "true",
 	options = {}
 }
@@ -276,6 +295,63 @@ schematic_purchased = ConvoScreen:new {
 	options = {}
 }
 museumCuratorConvoTemplate:addScreen(schematic_purchased);
+
+back_for_testimony = ConvoScreen:new {
+  id = "back_for_testimony",
+  leftDialog = "@conversation/lilas_dinhint:s_71561c79", -- Ah, of course. I remember you now. I have everything prepared and loaded onto this datapad that you can show to Mrs. Aryon.
+  stopConversation = "false",
+  options = {}
+}
+museumCuratorConvoTemplate:addScreen(back_for_testimony);
+
+about_sean_trenwell = ConvoScreen:new {
+  id = "about_sean_trenwell",
+  leftDialog = "@conversation/lilas_dinhint:s_7c297430", -- Mr. Trenwell? Yes, of course. Many of our latest additions and newest programs have only been possible thanks to funding provided by the efforts of Mr. Trenwell. His large personal contributions - both in time and money - have been generous beyond expectations.
+  stopConversation = "false",
+  options = {}
+}
+museumCuratorConvoTemplate:addScreen(about_sean_trenwell);
+
+ask_for_testimony = ConvoScreen:new {
+  id = "ask_for_testimony",
+  leftDialog = "@conversation/lilas_dinhint:s_7b488371", -- Indeed, I would be quite happy to do exactly that. I'll load that into this datapad that you can then take to Mrs. Aryon.
+  stopConversation = "false",
+  options = {}
+}
+museumCuratorConvoTemplate:addScreen(ask_for_testimony);
+
+whatever_im_leaving = ConvoScreen:new {
+  id = "whatever_im_leaving",
+  leftDialog = "@conversation/lilas_dinhint:s_eb35002", -- Ah... yes. Okay than.
+  stopConversation = "true",
+  options = {}
+}
+museumCuratorConvoTemplate:addScreen(whatever_im_leaving);
+
+NoRoomSeanTestimony_returned = ConvoScreen:new {
+  id = "NoRoomSeanTestimony_returned",
+  leftDialog = "@conversation/lilas_dinhint:s_71561c79", -- Ah, of course. I remember you now. I have everything prepared and loaded onto this datapad that you can show to Mrs. Aryon.
+  stopConversation = "false",
+  options = {}
+}
+museumCuratorConvoTemplate:addScreen(NoRoomSeanTestimony_returned);
+
+NoRoomSeanTestimony = ConvoScreen:new {
+  id = "NoRoomSeanTestimony",
+  leftDialog = "@conversation/lilas_dinhint:s_4f010def", -- It would seem that you have no room in your inventory to hold this datapad with my testimonial. I'm afraid you'll have to make some room before I can give it to you. Please speak to me again after you've done that.
+  stopConversation = "false",
+  options = {}
+}
+museumCuratorConvoTemplate:addScreen(NoRoomSeanTestimony);
+
+giveSeansTestimony = ConvoScreen:new {
+  id = "giveSeansTestimony",
+  leftDialog = "@conversation/lilas_dinhint:s_1042bed3", -- Here you are. I'm glad to help Mr. Trenwell and in this small way repay his generosity to the museum.
+  stopConversation = "true",
+  options = {}
+}
+museumCuratorConvoTemplate:addScreen(giveSeansTestimony);
+
 
 
 addConversationTemplate("museumCuratorConvoTemplate", museumCuratorConvoTemplate);

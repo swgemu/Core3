@@ -42,7 +42,7 @@
 
 
 object_tangible_loot_quest_tusken_head = object_tangible_loot_quest_shared_tusken_head:new {
-
+noTrade = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_tusken_head, "object/tangible/loot/quest/tusken_head.iff")

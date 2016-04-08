@@ -42,7 +42,7 @@
 
 
 object_tangible_loot_quest_victor_questn_dseal = object_tangible_loot_quest_shared_victor_questn_dseal:new {
-
+noTrade = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_victor_questn_dseal, "object/tangible/loot/quest/victor_questn_dseal.iff")

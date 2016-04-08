@@ -42,7 +42,7 @@
 
 
 object_tangible_loot_quest_victor_questp_receipt = object_tangible_loot_quest_shared_victor_questp_receipt:new {
-
+noTrade = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_victor_questp_receipt, "object/tangible/loot/quest/victor_questp_receipt.iff")

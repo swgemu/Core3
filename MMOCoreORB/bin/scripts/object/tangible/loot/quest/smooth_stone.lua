@@ -42,7 +42,7 @@
 
 
 object_tangible_loot_quest_smooth_stone = object_tangible_loot_quest_shared_smooth_stone:new {
-
+noTrade = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_smooth_stone, "object/tangible/loot/quest/smooth_stone.iff")

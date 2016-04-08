@@ -42,7 +42,7 @@
 
 
 object_tangible_loot_quest_victor_campaign_disk = object_tangible_loot_quest_shared_victor_campaign_disk:new {
-
+noTrade = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_victor_campaign_disk, "object/tangible/loot/quest/victor_campaign_disk.iff")

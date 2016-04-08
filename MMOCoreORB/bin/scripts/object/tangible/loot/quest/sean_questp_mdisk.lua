@@ -42,7 +42,7 @@
 
 
 object_tangible_loot_quest_sean_questp_mdisk = object_tangible_loot_quest_shared_sean_questp_mdisk:new {
-
+noTrade = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_sean_questp_mdisk, "object/tangible/loot/quest/sean_questp_mdisk.iff")

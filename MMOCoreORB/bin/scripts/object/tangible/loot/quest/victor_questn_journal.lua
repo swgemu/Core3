@@ -42,7 +42,7 @@
 
 
 object_tangible_loot_quest_victor_questn_journal = object_tangible_loot_quest_shared_victor_questn_journal:new {
-
+noTrade = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_victor_questn_journal, "object/tangible/loot/quest/victor_questn_journal.iff")

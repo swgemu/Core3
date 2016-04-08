@@ -42,7 +42,7 @@
 
 
 object_tangible_loot_quest_sean_questn_alog = object_tangible_loot_quest_shared_sean_questn_alog:new {
-
+noTrade = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_sean_questn_alog, "object/tangible/loot/quest/sean_questn_alog.iff")

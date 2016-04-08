@@ -8,6 +8,33 @@ function MuseumCuratorConvoHandler:setThemePark(themeParkNew)
 	self.themePark = themeParkNew
 end
 
+function MuseumCuratorConvoHandler:giveSeansTestimony(pPlayer)
+local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+
+  if (pInventory ~= nil) then
+    local pItem = giveItem(pInventory, "object/tangible/loot/quest/sean_questp_ctestimony.iff", -1)
+
+    if (pItem ~= nil) then
+      CreatureObject(pPlayer):sendSystemMessage("@system_msg:give_item_success")
+    end
+   end
+end
+
+
+function MuseumCuratorConvoHandler:talkAboutSeanTrenwell(pPlayer)
+  local playerID = CreatureObject(pPlayer):getObjectID()
+  if BestineElectionScreenPlay:SeanCampaign(pPlayer) then
+    if (readData(playerID..":bestine_museum:sean_museum_noroom") == 0) then
+    local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+    if (pInventory ~= nil) and getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/sean_questp_ctestimony.iff", true) then
+      return false
+    end
+    end
+  end
+  return true
+end
+
+
 function MuseumCuratorConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
 	local screen = LuaConversationScreen(conversationScreen)
 
@@ -22,19 +49,31 @@ function MuseumCuratorConvoHandler:runScreenHandlers(conversationTemplate, conve
 	local conversationScreen = screen:cloneScreen()
 	local clonedConversation = LuaConversationScreen(conversationScreen)
 	local currentPhase = BestineMuseumScreenPlay:getCurrentPhase()
-
+  local playerID = CreatureObject(conversingPlayer):getObjectID()
+  
 	if (currentPhase == 1) then
 		local artists = BestineMuseumScreenPlay:getCurrentArtists()
 		local currentArtists = BestineMuseumScreenPlay:splitString(artists, ",")
 		if (screenID == "init_votephase") then
+		if (BestineMuseumScreenPlay:hasAlreadyVoted(conversingPlayer)) then
+      clonedConversation:addOption("@conversation/lilas_dinhint:s_537ad9f6", "already_voted")
+    else       
 			clonedConversation:addOption("@conversation/lilas_dinhint:s_26152411", "explain_contest")
 			if (BestineMuseumScreenPlay:hasTalkedToAnyArtist(conversingPlayer)) then
 				clonedConversation:addOption("@conversation/lilas_dinhint:s_911a27f8", "pick_artist")
 			end
+		end
 			if (BestineMuseumScreenPlay:getWinningPainting() ~= "" and (not BestineMuseumScreenPlay:hasAlreadyPurchased(conversingPlayer) or BestineMuseumScreenPlay.restrictSinglePurchase == false)) then
 				clonedConversation:addOption("@conversation/lilas_dinhint:s_e649bf0a", "schematic_cost")
 			end
-			clonedConversation:addOption("@conversation/lilas_dinhint:s_6b5b28b2", "enjoy_visit_votephase")
+			if MuseumCuratorConvoHandler:talkAboutSeanTrenwell(conversingPlayer) then
+       if readData(playerID..":bestine_museum:sean_museum_noroom") == 1 then
+         clonedConversation:addOption("@conversation/lilas_dinhint:s_26c02ad3", "back_for_testimony")--I'm back for the testimonial for Sean Trenwell you had offered..
+       else
+        clonedConversation:addOption("@conversation/lilas_dinhint:s_8b3d6e46", "about_sean_trenwell")--Can you tell me anything about Sean Trenwell?
+       end
+      end
+			clonedConversation:addOption("@conversation/lilas_dinhint:s_d543ced9", "enjoy_visit_votephase")
 		elseif (screenID == "seek_out_artists" or string.find(screenID, "find_") ~= nil) then
 			for i = 1, 3, 1 do
 				local artistTemplate = BestineMuseumScreenPlay:getArtistTemplate(tonumber(currentArtists[i]))
@@ -76,6 +115,13 @@ function MuseumCuratorConvoHandler:runScreenHandlers(conversationTemplate, conve
 			if (screenID == "init_buyphase" or BestineMuseumScreenPlay.restrictSinglePurchase == false) then
 				clonedConversation:addOption("@conversation/lilas_dinhint:s_47df8332", "schematic_cost")
 			end
+			 if MuseumCuratorConvoHandler:talkAboutSeanTrenwell(conversingPlayer) then
+       if readData(playerID..":bestine_museum:sean_museum_noroom") == 1 then
+         clonedConversation:addOption("@conversation/lilas_dinhint:s_26c02ad3", "back_for_testimony")--I'm back for the testimonial for Sean Trenwell you had offered..
+       else
+        clonedConversation:addOption("@conversation/lilas_dinhint:s_8b3d6e46", "about_sean_trenwell")--Can you tell me anything about Sean Trenwell?
+       end
+      end
 
 			if (timeLeftInSecs <= 3600) then -- Less than an hour
 				clonedConversation:addOption("@conversation/lilas_dinhint:s_9558d37a", "in_less_than_an_hour")
@@ -90,7 +136,7 @@ function MuseumCuratorConvoHandler:runScreenHandlers(conversationTemplate, conve
 			elseif (timeLeftInSecs >= 604800) then -- More than a week
 				clonedConversation:addOption("@conversation/lilas_dinhint:s_9558d37a", "in_more_than_a_week")
 			end
-
+      
 			if (screenID == "init_buyphase") then
 				clonedConversation:addOption("@conversation/lilas_dinhint:s_6b5b28b2", "thanks_for_visiting")
 			end
@@ -112,6 +158,27 @@ function MuseumCuratorConvoHandler:runScreenHandlers(conversationTemplate, conve
 	elseif (screenID == "schematic_purchased") then
 		BestineMuseumScreenPlay:doSchematicPurchase(conversingPlayer)
 	end
+	
+	if (screenID == "about_sean_trenwell") then
+    clonedConversation:addOption("@conversation/lilas_dinhint:s_6d1148d8", "ask_for_testimony")
+    clonedConversation:addOption("@conversation/lilas_dinhint:s_7552be07", "whatever_im_leaving")
+  end 
+  
+  if (screenID == "giveSeansTestimony") then
+    self:giveSeansTestimony(conversingPlayer)
+  end
+  
+  if (screenID == "ask_for_testimony" or screenID == "NoRoomSeanTestimony_returned") then
+     local pInventory = SceneObject(conversingPlayer):getSlottedObject("inventory")
+     if (pInventory == nil or SceneObject(pInventory):isContainerFullRecursive()) then
+      clonedConversation:addOption("@conversation/lilas_dinhint:s_b67247f1", "NoRoomSeanTestimony")
+      writeData(playerID..":bestine_museum:sean_museum_noroom",1)
+     else 
+       clonedConversation:addOption("@conversation/lilas_dinhint:s_b67247f1", "giveSeansTestimony")
+       deleteData(playerID..":bestine_museum:sean_museum_noroom")
+     end
+  end
+  print(screenID)
 	return conversationScreen
 end
 
@@ -126,11 +193,7 @@ function MuseumCuratorConvoHandler:getInitialScreen(pPlayer, pNpc, pConversation
 	local currentPhase = BestineMuseumScreenPlay:getCurrentPhase()
 
 	if (currentPhase == 1) then
-		if (BestineMuseumScreenPlay:hasAlreadyVoted(pPlayer)) then
-			return convoTemplate:getScreen("already_voted")
-		else
-			return convoTemplate:getScreen("init_votephase")
-		end
+		return convoTemplate:getScreen("init_votephase")
 	elseif (currentPhase == 2) then
 		if BestineMuseumScreenPlay:hasAlreadyPurchased(pPlayer) then
 			return convoTemplate:getScreen("hello_already_purchased")
