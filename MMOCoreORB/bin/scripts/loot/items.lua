@@ -156,6 +156,20 @@ includeFile("items/armor/ubese_armor_jacket.lua")
 includeFile("items/armor/ubese_armor_pants.lua")
 includeFile("items/armor/ubese_armor_shirt.lua")
 
+--bestine_election sub-folder
+includeFile("items/bestine_election/bestine_quest_badge.lua")
+includeFile("items/bestine_election/bestine_history_quest_painting.lua")
+includeFile("items/bestine_election/bestine_quest_imp_banner.lua")
+includeFile("items/bestine_election/bestine_quest_painting.lua")
+includeFile("items/bestine_election/bestine_quest_rug.lua")
+includeFile("items/bestine_election/bestine_quest_statue.lua")
+includeFile("items/bestine_election/bestine_quest_sword.lua")
+includeFile("items/bestine_election/bestine_quest_tusken_rifle.lua")
+includeFile("items/bestine_election/carved_stone.lua")
+includeFile("items/bestine_election/smooth_stone.lua")
+includeFile("items/bestine_election/tusken_head.lua")
+includeFile("items/bestine_election/victor_baton_gaderiffi.lua")
+
 --coa sub-folder
 includeFile("items/coa/coa_decoder_housing.lua")
 includeFile("items/coa/coa_decoder_power.lua")
