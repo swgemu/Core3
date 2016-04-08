@@ -10,28 +10,15 @@
 
 
 #include "engine/engine.h"
-#include "server/zone/objects/terrain/TerrainAppearance.h"
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-
+#include "terrain/TerrainAppearance.h"
 #include "engine/util/lru/SynchronizedLRUCache.h"
-
+#include "gmock/gmock.h"
 #include "TerrainCache.h"
-
-namespace server {
- namespace zone {
-  class Zone;
- }
-}
-
-using namespace server::zone;
 
 class ProceduralTerrainAppearance;
 
 class TerrainManager : public Logger, public Object {
 	Reference<TerrainAppearance*> terrainData;
-
-	Zone* zone;
 
 	TerrainCache* heightCache;
 
@@ -41,8 +28,7 @@ protected:
 	void clearCache(TerrainGenerator* generator);
 
 public:
-	TerrainManager(Zone* planet);
-	TerrainManager(ManagedWeakReference<Zone*> planet);
+	TerrainManager();
 
 	~TerrainManager();
 
@@ -63,8 +49,6 @@ public:
 	float getLowestHeight(float x0, float y0, float x1, float y1, int stepping = 1);
 	float getHighestHeightDifference(float x0, float y0, float x1, float y1, int stepping = 1);
 
-	int notifyPositionUpdate(CreatureObject* object);
-
 	void addTerrainModification(float x, float y, const String& terrainModificationFilename, uint64 objectid);
 	void removeTerrainModification(uint64 objectid);
 
@@ -73,7 +57,7 @@ public:
 	float getCachedHeight(float x, float y);
 	float getUnCachedHeight(float x, float y);
 
-	float getHeight(float x, float y);
+	virtual float getHeight(float x, float y);
 
 	float getMin() {
 		if (terrainData) {
@@ -118,6 +102,11 @@ public:
 	int getCacheEvictCount() {
 		return heightCache->getEvictCount();
 	}
+};
+
+class MockTerrainManager : public TerrainManager {
+public:
+	MOCK_METHOD2(getHeight,float(float x, float y));
 };
 
 

@@ -10,7 +10,7 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
-#include "server/zone/managers/terrain/TerrainManager.h"
+#include "terrain/manager/TerrainManager.h"
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 

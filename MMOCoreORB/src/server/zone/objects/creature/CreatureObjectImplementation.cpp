@@ -69,7 +69,7 @@
 #include "server/zone/packets/object/SitOnObject.h"
 
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/managers/terrain/TerrainManager.h"
+#include "terrain/manager/TerrainManager.h"
 #include "server/zone/managers/resource/resourcespawner/SampleTask.h"
 
 #include "templates/creature/SharedCreatureObjectTemplate.h"
@@ -2610,8 +2610,20 @@ void CreatureObjectImplementation::notifySelfPositionUpdate() {
 		if (planetManager != NULL) {
 			TerrainManager* terrainManager = planetManager->getTerrainManager();
 
-			if (terrainManager != NULL)
-				terrainManager->notifyPositionUpdate(asCreatureObject());
+			if (terrainManager != NULL) {
+				float waterHeight;
+				
+				Reference<CreatureObject*> creature = _this.getReferenceUnsafeStaticCast();
+				
+				if (creature->getParent() == NULL && terrainManager->getWaterHeight(creature->getPositionX(), creature->getPositionY(), waterHeight)) {
+					
+					if (creature->getPositionZ() + creature->getSwimHeight() - waterHeight < 0.2) {
+						
+						if (creature->hasState(CreatureState::ONFIRE))
+							creature->healDot(CreatureState::ONFIRE, 100);
+					}
+				}
+			}
 		}
 	}
 
