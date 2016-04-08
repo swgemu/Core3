@@ -78,6 +78,10 @@ LIBS =	$(SYSTEM_LIBS)  \
 
 bin_PROGRAMS = core3 #odb3
 
+noinst_LIBRARIES = libcore3templates.a
+
+core3_LDADD = libcore3templates.a
+
 #engine/engine.h.gch:
 #	$(CXX) $(INCLUDES) $(ENGINE3_PATH)/src/engine/engine.h
 
@@ -855,7 +859,9 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/conversation/LuaConversationScreen.cpp \
 		server/zone/objects/creature/ai/CreatureTemplate.cpp \
 		server/zone/objects/creature/conversation/LuaConversationTemplate.cpp \
-		templates/SharedObjectTemplate.cpp \
+		main.cpp	
+	
+libcore3templates_a_SOURCES = templates/SharedObjectTemplate.cpp \
 		templates/SharedTangibleObjectTemplate.cpp \
 		templates/appearance/FloorMesh.cpp \
 		templates/appearance/CellProperty.cpp \
@@ -882,9 +888,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		templates/string/StringFile.cpp \
 		templates/snapshot/WorldSnapshotIff.cpp \
 		templates/tangible/SharedStructureObjectTemplate.cpp \
-		templates/tangible/SharedWeaponObjectTemplate.cpp \
-		main.cpp
-		
+		templates/tangible/SharedWeaponObjectTemplate.cpp 		
 
 #BUILT_SOURCES = engine/engine.h.gch \
 #				server/zone/objects/scene/SceneObject.h.gch
