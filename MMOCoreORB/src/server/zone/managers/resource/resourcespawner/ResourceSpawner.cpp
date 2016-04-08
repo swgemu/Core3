@@ -102,7 +102,7 @@ void ResourceSpawner::addJtlResource(const String& resourceName) {
 	jtlResources.add(resourceName);
 }
 
-void ResourceSpawner::setSpawningParameters(bool loadFromScript, const int dur, const float throt,
+void ResourceSpawner::setSpawningParameters(bool loadFromScript, const int dur, const int throt,
 		const int override, const int spawnquantity) {
 
 	scriptLoading = loadFromScript;
@@ -112,10 +112,10 @@ void ResourceSpawner::setSpawningParameters(bool loadFromScript, const int dur, 
 
 	spawnThrottling = throt;
 
-	if (spawnThrottling > .9f)
-		spawnThrottling = .9f;
-	if (spawnThrottling < .1f)
-		spawnThrottling = .1f;
+	if (spawnThrottling > 90)
+		spawnThrottling = 90;
+	if (spawnThrottling < 10)
+		spawnThrottling = 10;
 
 	if (lowerGateOverride < 1)
 		lowerGateOverride = 1;
@@ -603,21 +603,23 @@ int ResourceSpawner::randomizeValue(int min, int max) {
 	if (min > lowerGateOverride)
 		min = lowerGateOverride;
 
-	int breakpoint = (int) (spawnThrottling * (max - min)) + min;
 	int randomStat = System::random(max - min) + min;
-	bool aboveBreakpoint = System::random(10) == 7;
 
-	if ((aboveBreakpoint && randomStat < breakpoint) || (!aboveBreakpoint
-			&& randomStat > breakpoint)) {
+	if (spawnThrottling < 90) {
+		int breakpoint = ((spawnThrottling * (max - min)) / 100) + min;
+		bool aboveBreakpoint = System::random(9) == 7;
 
-		if (aboveBreakpoint) {
-			while (randomStat < breakpoint)
-				randomStat = System::random(max - min) + min;
-		} else {
-			while (randomStat > breakpoint)
-				randomStat = System::random(max - min) + min;
+		if ((aboveBreakpoint && randomStat < breakpoint) || (!aboveBreakpoint && randomStat > breakpoint)) {
+			if (aboveBreakpoint) {
+				while (randomStat < breakpoint)
+					randomStat = System::random(max - min) + min;
+			} else {
+				while (randomStat > breakpoint)
+					randomStat = System::random(max - min) + min;
+			}
 		}
 	}
+
 	return randomStat;
 }
 

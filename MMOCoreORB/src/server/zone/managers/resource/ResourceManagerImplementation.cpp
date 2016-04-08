@@ -108,7 +108,7 @@ bool ResourceManagerImplementation::loadConfigData() {
 	shiftInterval = lua->getGlobalInt("averageShiftTime");
 
 	int aveduration = lua->getGlobalInt("aveduration");
-	float spawnThrottling = float(lua->getGlobalInt("spawnThrottling")) / 100.0f;
+	int spawnThrottling = lua->getGlobalInt("spawnThrottling");
 	int lowerGateOverride = lua->getGlobalInt("lowerGateOverride");
 	int maxSpawnQuantity = lua->getGlobalInt("maxSpawnQuantity");
 
