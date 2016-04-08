@@ -8,7 +8,7 @@
 #ifndef CREATURETEMPLATEREFERENCE_H_
 #define CREATURETEMPLATEREFERENCE_H_
 
-#include "server/zone/templates/mobile/CreatureTemplate.h"
+#include "server/zone/objects/creature/ai/CreatureTemplate.h"
 
 class CreatureTemplateReference : public Reference<CreatureTemplate*> {
 public:

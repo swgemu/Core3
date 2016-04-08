@@ -852,9 +852,9 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/installation/components/TurretObserverImplementation.cpp \
 		server/zone/objects/mission/bountyhunter/BountyHunterDroid.cpp \
 		server/zone/objects/tangible/components/CityDecorationMenuComponent.cpp \
-		server/zone/templates/mobile/LuaConversationScreen.cpp \
-		server/zone/templates/mobile/CreatureTemplate.cpp \
-		server/zone/templates/mobile/LuaConversationTemplate.cpp \
+		server/zone/objects/creature/conversation/LuaConversationScreen.cpp \
+		server/zone/objects/creature/ai/CreatureTemplate.cpp \
+		server/zone/objects/creature/conversation/LuaConversationTemplate.cpp \
 		templates/SharedObjectTemplate.cpp \
 		templates/SharedTangibleObjectTemplate.cpp \
 		templates/appearance/FloorMesh.cpp \

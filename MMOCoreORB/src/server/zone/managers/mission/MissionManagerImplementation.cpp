@@ -29,7 +29,7 @@
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
-#include "server/zone/templates/mobile/LairTemplate.h"
+#include "templates/mobile/LairTemplate.h"
 #include "server/zone/managers/planet/HuntingTargetEntry.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/objects/area/MissionReconActiveArea.h"
@@ -262,7 +262,7 @@ void MissionManagerImplementation::createCraftingMissionObjectives(MissionObject
 		return;
 	}
 
-	if (mission->getFaction() != FactionManager::FACTIONNEUTRAL && !enableFactionalCraftingMissions) {
+	if (mission->getFaction() != Factions::FACTIONNEUTRAL && !enableFactionalCraftingMissions) {
 		//Faction mission, but faction missions are disabled.
 		return;
 	}
@@ -497,9 +497,9 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 			}
 		} else if (missionTerminal->isEntertainerTerminal()) {
 			if (i < (bagSize / maximumNumberOfMissionTypesInOneTerminal)) {
-				randomizeGenericEntertainerMission(player, mission, FactionManager::FACTIONNEUTRAL, MissionTypes::DANCER);
+				randomizeGenericEntertainerMission(player, mission, Factions::FACTIONNEUTRAL, MissionTypes::DANCER);
 			} else if (i < (bagSize * 2 / maximumNumberOfMissionTypesInOneTerminal)) {
-				randomizeGenericEntertainerMission(player, mission, FactionManager::FACTIONNEUTRAL, MissionTypes::MUSICIAN);
+				randomizeGenericEntertainerMission(player, mission, Factions::FACTIONNEUTRAL, MissionTypes::MUSICIAN);
 			} else {
 				mission->setTypeCRC(0);
 			}
@@ -516,10 +516,10 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 					randomizeImperialReconMission(player, mission);
 					numberOfReconMissions++;
 				} else if (enableFactionalEntertainerMissions && numberOfDancerMissions < 6) {
-					randomizeGenericEntertainerMission(player, mission, FactionManager::FACTIONIMPERIAL, MissionTypes::DANCER);
+					randomizeGenericEntertainerMission(player, mission, Factions::FACTIONIMPERIAL, MissionTypes::DANCER);
 					numberOfDancerMissions++;
 				} else if (enableFactionalEntertainerMissions && numberOfMusicianMissions < 6) {
-					randomizeGenericEntertainerMission(player, mission, FactionManager::FACTIONIMPERIAL, MissionTypes::MUSICIAN);
+					randomizeGenericEntertainerMission(player, mission, Factions::FACTIONIMPERIAL, MissionTypes::MUSICIAN);
 					numberOfMusicianMissions++;
 				} else {
 					mission->setTypeCRC(0, true);
@@ -538,10 +538,10 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 					randomizeRebelReconMission(player, mission);
 					numberOfReconMissions++;
 				} else if (enableFactionalEntertainerMissions && numberOfDancerMissions < 6) {
-					randomizeGenericEntertainerMission(player, mission, FactionManager::FACTIONREBEL, MissionTypes::DANCER);
+					randomizeGenericEntertainerMission(player, mission, Factions::FACTIONREBEL, MissionTypes::DANCER);
 					numberOfDancerMissions++;
 				} else if (enableFactionalEntertainerMissions && numberOfMusicianMissions < 6) {
-					randomizeGenericEntertainerMission(player, mission, FactionManager::FACTIONREBEL, MissionTypes::MUSICIAN);
+					randomizeGenericEntertainerMission(player, mission, Factions::FACTIONREBEL, MissionTypes::MUSICIAN);
 					numberOfMusicianMissions++;
 				} else {
 					mission->setTypeCRC(0, true);
@@ -580,7 +580,7 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 }
 
 void MissionManagerImplementation::randomizeDestroyMission(CreatureObject* player, MissionObject* mission) {
-	randomizeGenericDestroyMission(player, mission, FactionManager::FACTIONNEUTRAL);
+	randomizeGenericDestroyMission(player, mission, Factions::FACTIONNEUTRAL);
 }
 
 void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject* player, MissionObject* mission, const uint32 faction) {
@@ -714,12 +714,12 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	mission->setMissionDescription("mission/mission_destroy_neutral" +  messageDifficulty + missionType, "m" + String::valueOf(randTexts) + "d");
 
 	switch (faction) {
-	case FactionManager::FACTIONIMPERIAL:
+	case Factions::FACTIONIMPERIAL:
 		mission->setRewardFactionPointsImperial(factionPointsReward * 2);
 		mission->setRewardFactionPointsRebel(-factionPointsReward);
 		generateRandomFactionalDestroyMissionDescription(player, mission, "imperial");
 		break;
-	case FactionManager::FACTIONREBEL:
+	case Factions::FACTIONREBEL:
 		mission->setRewardFactionPointsImperial(-factionPointsReward);
 		mission->setRewardFactionPointsRebel(factionPointsReward * 2);
 		generateRandomFactionalDestroyMissionDescription(player, mission, "rebel");
@@ -734,7 +734,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 }
 
 void MissionManagerImplementation::randomizeSurveyMission(CreatureObject* player, MissionObject* mission) {
-	randomizeGenericSurveyMission(player, mission, FactionManager::FACTIONNEUTRAL);
+	randomizeGenericSurveyMission(player, mission, Factions::FACTIONNEUTRAL);
 }
 
 void MissionManagerImplementation::randomizeGenericSurveyMission(CreatureObject* player, MissionObject* mission, const uint32 faction) {
@@ -813,7 +813,7 @@ void MissionManagerImplementation::randomizeGenericSurveyMission(CreatureObject*
 }
 
 void MissionManagerImplementation::randomizeBountyMission(CreatureObject* player, MissionObject* mission) {
-	randomizeGenericBountyMission(player, mission, FactionManager::FACTIONNEUTRAL);
+	randomizeGenericBountyMission(player, mission, Factions::FACTIONNEUTRAL);
 }
 
 void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject* player, MissionObject* mission, const uint32 faction) {
@@ -991,7 +991,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 }
 
 void MissionManagerImplementation::randomizeDeliverMission(CreatureObject* player, MissionObject* mission) {
-	randomizeGenericDeliverMission(player, mission, FactionManager::FACTIONNEUTRAL);
+	randomizeGenericDeliverMission(player, mission, Factions::FACTIONNEUTRAL);
 }
 
 void MissionManagerImplementation::randomizeGenericDeliverMission(CreatureObject* player, MissionObject* mission, const uint32 faction) {
@@ -1010,9 +1010,9 @@ void MissionManagerImplementation::randomizeGenericDeliverMission(CreatureObject
 
 String MissionManagerImplementation::getDeliveryMissionFileName(const uint32 faction) {
 	switch (faction) {
-	case FactionManager::FACTIONIMPERIAL:
+	case Factions::FACTIONIMPERIAL:
 		return "mission/mission_deliver_imperial_easy";
-	case FactionManager::FACTIONREBEL:
+	case Factions::FACTIONREBEL:
 		return "mission/mission_deliver_rebel_easy";
 	default:
 		return "mission/mission_deliver_neutral_easy";
@@ -1021,9 +1021,9 @@ String MissionManagerImplementation::getDeliveryMissionFileName(const uint32 fac
 
 int MissionManagerImplementation::getDeliverMissionNumberOfMissions(const uint32 faction) {
 	switch (faction) {
-	case FactionManager::FACTIONIMPERIAL:
+	case Factions::FACTIONIMPERIAL:
 		return 24;
-	case FactionManager::FACTIONREBEL:
+	case Factions::FACTIONREBEL:
 		return 24;
 	default:
 		return 29;
@@ -1032,9 +1032,9 @@ int MissionManagerImplementation::getDeliverMissionNumberOfMissions(const uint32
 
 int MissionManagerImplementation::getDeliverMissionSpawnType(const uint32 faction) {
 	switch (faction) {
-	case FactionManager::FACTIONIMPERIAL:
+	case Factions::FACTIONIMPERIAL:
 		return NpcSpawnPoint::IMPERIALSPAWN;
-	case FactionManager::FACTIONREBEL:
+	case Factions::FACTIONREBEL:
 		return NpcSpawnPoint::REBELSPAWN;
 	default:
 		return NpcSpawnPoint::NEUTRALSPAWN;
@@ -1114,11 +1114,11 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 	mission->setRewardCredits(baseCredits + deliverDistanceCredits);
 
 	switch (faction) {
-	case FactionManager::FACTIONIMPERIAL:
+	case Factions::FACTIONIMPERIAL:
 		mission->setRewardFactionPointsImperial(5);
 		mission->setRewardFactionPointsRebel(0);
 		break;
-	case FactionManager::FACTIONREBEL:
+	case Factions::FACTIONREBEL:
 		mission->setRewardFactionPointsImperial(0);
 		mission->setRewardFactionPointsRebel(5);
 		break;
@@ -1169,7 +1169,7 @@ NpcSpawnPoint* MissionManagerImplementation::getFreeNpcSpawnPoint(unsigned const
 }
 
 void MissionManagerImplementation::randomizeCraftingMission(CreatureObject* player, MissionObject* mission) {
-	randomizeGenericCraftingMission(player, mission, FactionManager::FACTIONNEUTRAL);
+	randomizeGenericCraftingMission(player, mission, Factions::FACTIONNEUTRAL);
 }
 
 void MissionManagerImplementation::randomizeGenericCraftingMission(CreatureObject* player, MissionObject* mission, const uint32 faction) {
@@ -1186,11 +1186,11 @@ void MissionManagerImplementation::randomizeGenericCraftingMission(CreatureObjec
 	String fileName = "";
 
 	switch (faction) {
-	case FactionManager::FACTIONIMPERIAL:
+	case Factions::FACTIONIMPERIAL:
 		maximumMissionNumber = 34;
 		fileName = "mission/mission_npc_crafting_imperial_easy";
 		break;
-	case FactionManager::FACTIONREBEL:
+	case Factions::FACTIONREBEL:
 		maximumMissionNumber = 34;
 		fileName = "mission/mission_npc_crafting_rebel_easy";
 		break;
@@ -1241,7 +1241,7 @@ void MissionManagerImplementation::randomizeGenericEntertainerMission(CreatureOb
 	}
 
 	int numberOfMissions = 49;
-	if (faction != FactionManager::FACTIONNEUTRAL) {
+	if (faction != Factions::FACTIONNEUTRAL) {
 		numberOfMissions = 34;
 	}
 	int randTexts = System::random(numberOfMissions) + 1;
@@ -1266,13 +1266,13 @@ void MissionManagerImplementation::randomizeGenericEntertainerMission(CreatureOb
 	mission->setFaction(faction);
 
 	switch (faction) {
-	case FactionManager::FACTIONIMPERIAL:
+	case Factions::FACTIONIMPERIAL:
 		mission->setRewardFactionPointsImperial(5);
 		mission->setRewardFactionPointsRebel(0);
 		mission->setMissionTitle("mission/mission_npc_" + missionString + "_imperial_easy", "m" + String::valueOf(randTexts) + "t");
 		mission->setMissionDescription("mission/mission_npc_" + missionString + "_imperial_easy", "m" + String::valueOf(randTexts) + "o");
 		break;
-	case FactionManager::FACTIONREBEL:
+	case Factions::FACTIONREBEL:
 		mission->setRewardFactionPointsImperial(0);
 		mission->setRewardFactionPointsRebel(5);
 		mission->setMissionTitle("mission/mission_npc_" + missionString + "_rebel_easy", "m" + String::valueOf(randTexts) + "t");
@@ -1292,11 +1292,11 @@ void MissionManagerImplementation::randomizeGenericEntertainerMission(CreatureOb
 }
 
 void MissionManagerImplementation::randomizeHuntingMission(CreatureObject* player, MissionObject* mission) {
-	randomizeGenericHuntingMission(player, mission, FactionManager::FACTIONNEUTRAL);
+	randomizeGenericHuntingMission(player, mission, Factions::FACTIONNEUTRAL);
 }
 
 void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject* player, MissionObject* mission, const uint32 faction) {
-	LairSpawn* randomLairSpawn = getRandomLairSpawn(player, FactionManager::FACTIONNEUTRAL, MissionTypes::HUNTING);
+	LairSpawn* randomLairSpawn = getRandomLairSpawn(player, Factions::FACTIONNEUTRAL, MissionTypes::HUNTING);
 
 	if (randomLairSpawn == NULL) {
 		mission->setTypeCRC(0);
@@ -1434,7 +1434,7 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 	mission->setRewardCredits(50 + reward);
 
 	switch (faction) {
-	case FactionManager::FACTIONIMPERIAL:
+	case Factions::FACTIONIMPERIAL:
 	{
 		int randTexts = System::random(48)+1; // There are actually 50 imperial recon missions including bugged m19
 		if (randTexts >= 19)
@@ -1448,7 +1448,7 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 		mission->setMissionDescription("mission/mission_npc_recon_imperial_easy", "m" + String::valueOf(randTexts) + "o");
 		break;
 	}
-	case FactionManager::FACTIONREBEL:
+	case Factions::FACTIONREBEL:
 	{
 		int randTexts = System::random(49) + 1;
 		mission->setMissionNumber(randTexts);
@@ -1480,46 +1480,46 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 }
 
 void MissionManagerImplementation::randomizeReconMission(CreatureObject* player, MissionObject* mission) {
-	randomizeGenericReconMission(player, mission, FactionManager::FACTIONNEUTRAL);
+	randomizeGenericReconMission(player, mission, Factions::FACTIONNEUTRAL);
 }
 
 void MissionManagerImplementation::randomizeImperialDestroyMission(CreatureObject* player, MissionObject* mission) {
-	randomizeGenericDestroyMission(player, mission, FactionManager::FACTIONIMPERIAL);
+	randomizeGenericDestroyMission(player, mission, Factions::FACTIONIMPERIAL);
 }
 
 void MissionManagerImplementation::randomizeImperialDeliverMission(CreatureObject* player, MissionObject* mission) {
-	randomizeGenericDeliverMission(player, mission, FactionManager::FACTIONIMPERIAL);
+	randomizeGenericDeliverMission(player, mission, Factions::FACTIONIMPERIAL);
 }
 
 void MissionManagerImplementation::randomizeImperialCraftingMission(CreatureObject* player, MissionObject* mission) {
-	randomizeGenericCraftingMission(player, mission, FactionManager::FACTIONIMPERIAL);
+	randomizeGenericCraftingMission(player, mission, Factions::FACTIONIMPERIAL);
 }
 
 void MissionManagerImplementation::randomizeImperialReconMission(CreatureObject* player, MissionObject* mission) {
-	randomizeGenericReconMission(player, mission, FactionManager::FACTIONIMPERIAL);
+	randomizeGenericReconMission(player, mission, Factions::FACTIONIMPERIAL);
 }
 
 void MissionManagerImplementation::randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission) {
-	randomizeGenericDestroyMission(player, mission, FactionManager::FACTIONREBEL);
+	randomizeGenericDestroyMission(player, mission, Factions::FACTIONREBEL);
 }
 
 void MissionManagerImplementation::randomizeRebelDeliverMission(CreatureObject* player, MissionObject* mission) {
-	randomizeGenericDeliverMission(player, mission, FactionManager::FACTIONREBEL);
+	randomizeGenericDeliverMission(player, mission, Factions::FACTIONREBEL);
 }
 
 void MissionManagerImplementation::randomizeRebelCraftingMission(CreatureObject* player, MissionObject* mission) {
-	randomizeGenericCraftingMission(player, mission, FactionManager::FACTIONREBEL);
+	randomizeGenericCraftingMission(player, mission, Factions::FACTIONREBEL);
 }
 
 void MissionManagerImplementation::randomizeRebelReconMission(CreatureObject* player, MissionObject* mission) {
-	randomizeGenericReconMission(player, mission, FactionManager::FACTIONREBEL);
+	randomizeGenericReconMission(player, mission, Factions::FACTIONREBEL);
 }
 
 void MissionManagerImplementation::generateRandomFactionalDestroyMissionDescription(CreatureObject* player, MissionObject* mission, const String& faction) {
 	String difficultyString = faction;
 	int randomMax;
 
-	if (player->getFaction() == FactionManager::FACTIONIMPERIAL || player->getFaction() == FactionManager::FACTIONREBEL) {
+	if (player->getFaction() == Factions::FACTIONIMPERIAL || player->getFaction() == Factions::FACTIONREBEL) {
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
 		if (ghost->getFactionStatus() == FactionStatus::OVERT || ghost->getFactionStatus() == FactionStatus::COVERT) {
@@ -1602,7 +1602,7 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 	if (type == MissionTypes::DESTROY) {
 		String missionGroup;
 
-		if (faction == FactionManager::FACTIONNEUTRAL) {
+		if (faction == Factions::FACTIONNEUTRAL) {
 			missionGroup = zone->getZoneName() + "_destroy_missions";
 		} else {
 			bool neutralMission = true;
@@ -1617,7 +1617,7 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 
 			if (neutralMission) {
 				missionGroup = "factional_neutral_destroy_missions";
-			} else if (faction == FactionManager::FACTIONIMPERIAL) {
+			} else if (faction == Factions::FACTIONIMPERIAL) {
 				missionGroup = "factional_imperial_destroy_missions";
 			} else {
 				missionGroup = "factional_rebel_destroy_missions";

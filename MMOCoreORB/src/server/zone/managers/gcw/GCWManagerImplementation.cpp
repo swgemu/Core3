@@ -192,9 +192,9 @@ void GCWManagerImplementation::performGCWTasks() {
 		if (building == NULL)
 			continue;
 
-		if (building->getFaction() == FactionManager::FACTIONREBEL)
+		if (building->getFaction() == Factions::FACTIONREBEL)
 			rebelCheck++;
-		else if (building->getFaction() == FactionManager::FACTIONIMPERIAL)
+		else if (building->getFaction() == Factions::FACTIONIMPERIAL)
 			imperialCheck++;
 
 		verifyTurrets(building);
@@ -310,9 +310,9 @@ bool GCWManagerImplementation::hasTooManyBasesNearby(int x, int y) {
 void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool initializeBase) {
 	if (!hasBase(building)) {
 
-		if (building->getFaction() == FactionManager::FACTIONIMPERIAL)
+		if (building->getFaction() == Factions::FACTIONIMPERIAL)
 			imperialBases++;
-		else if (building->getFaction() == FactionManager::FACTIONREBEL)
+		else if (building->getFaction() == Factions::FACTIONREBEL)
 			rebelBases++;
 
 		if (initializeBase) {
@@ -359,9 +359,9 @@ void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool in
 		int pointsValue = getPointValue(templateString);
 
 		if (pointsValue > -1) {
-			if (building->getFaction() == FactionManager::FACTIONREBEL)
+			if (building->getFaction() == Factions::FACTIONREBEL)
 				setRebelScore(getRebelScore() + pointsValue);
-			else if (building->getFaction() == FactionManager::FACTIONIMPERIAL)
+			else if (building->getFaction() == Factions::FACTIONIMPERIAL)
 				setImperialScore(getImperialScore() + pointsValue);
 		} else {
 			info("ERROR looking up value for GCW Base: " + templateString, true);
@@ -376,10 +376,10 @@ void GCWManagerImplementation::unregisterGCWBase(BuildingObject* building) {
 	if (hasBase(building)) {
 		dropBase(building);
 
-		if (building->getFaction() == FactionManager::FACTIONIMPERIAL)
+		if (building->getFaction() == Factions::FACTIONIMPERIAL)
 			imperialBases--;
 
-		else if (building->getFaction() == FactionManager::FACTIONREBEL)
+		else if (building->getFaction() == Factions::FACTIONREBEL)
 			rebelBases--;
 
 		String templateString = building->getObjectTemplate()->getFullTemplateString();
@@ -387,9 +387,9 @@ void GCWManagerImplementation::unregisterGCWBase(BuildingObject* building) {
 		int pointsValue = getPointValue(templateString);
 
 		if (pointsValue > -1) {
-			if (building->getFaction() == FactionManager::FACTIONREBEL)
+			if (building->getFaction() == Factions::FACTIONREBEL)
 				setRebelScore(getRebelScore() - pointsValue);
-			else if (building->getFaction() == FactionManager::FACTIONIMPERIAL)
+			else if (building->getFaction() == Factions::FACTIONIMPERIAL)
 				setImperialScore(getImperialScore() - pointsValue);
 
 		} else
@@ -2468,7 +2468,7 @@ float GCWManagerImplementation::getGCWDiscount(CreatureObject* creature) {
 			discount -= loserBonus /100.f;
 	}
 
-	if (creature->getFaction() == FactionManager::FACTIONIMPERIAL && racialPenaltyEnabled && getRacialPenalty(creature->getSpecies()) > 0)
+	if (creature->getFaction() == Factions::FACTIONIMPERIAL && racialPenaltyEnabled && getRacialPenalty(creature->getSpecies()) > 0)
 		discount *= getRacialPenalty(creature->getSpecies());
 
 	return discount;
@@ -2477,13 +2477,13 @@ float GCWManagerImplementation::getGCWDiscount(CreatureObject* creature) {
 int GCWManagerImplementation::isStrongholdCity(String& city) {
 	for (int i = 0; i < imperialStrongholds.size(); i++) {
 		if (city.contains(imperialStrongholds.get(i))) {
-			return FactionManager::FACTIONIMPERIAL;
+			return Factions::FACTIONIMPERIAL;
 		}
 	}
 
 	for (int i = 0; i < rebelStrongholds.size(); i++) {
 		if (city.contains(rebelStrongholds.get(i))) {
-			return FactionManager::FACTIONREBEL;
+			return Factions::FACTIONREBEL;
 		}
 	}
 

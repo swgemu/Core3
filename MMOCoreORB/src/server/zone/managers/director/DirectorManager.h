@@ -20,8 +20,9 @@ class ScreenPlayTask;
 
 namespace server {
 namespace zone {
-namespace templates {
-namespace mobile {
+namespace objects {
+namespace creature {
+namespace conversation {
 
 	class ConversationScreen;
 	class ConversationTemplate;
@@ -29,8 +30,9 @@ namespace mobile {
 }
 }
 }
+}
 
-using namespace server::zone::templates::mobile;
+using namespace server::zone::objects::creature::conversation;
 
 namespace server {
  namespace zone {

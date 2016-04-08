@@ -23,7 +23,7 @@ include server.zone.objects.tangible.terminal.components.TurretControlTerminalDa
 include templates.ChildObject;
 include server.chat.StringIdChatParameter;
 include server.zone.managers.faction.FactionManager;
-
+include templates.faction.Factions;
 class GCWManager extends ManagedService implements Logger {
 
 	public static final int NOTAFACTIONBASE = 0;
@@ -97,7 +97,7 @@ class GCWManager extends ManagedService implements Logger {
 		imperialScore = 0;
 		rebelBases = 0;
 		rebelScore = 0;
-		winningFaction = FactionManager.FACTIONNEUTRAL;
+		winningFaction = Factions.FACTIONNEUTRAL;
 
 		gcwCheckTimer = 3600;
 		vulnerabilityDuration = 7200;
@@ -372,9 +372,9 @@ class GCWManager extends ManagedService implements Logger {
 	@local
 	private void updateWinningFaction() {
 		if (getRebelScore() > getImperialScore()) {
-			winningFaction = FactionManager.FACTIONREBEL;
+			winningFaction = Factions.FACTIONREBEL;
 		} else if (getImperialScore() > getRebelScore()) {
-			winningFaction = FactionManager.FACTIONIMPERIAL;
+			winningFaction = Factions.FACTIONIMPERIAL;
 		}
 	}
 

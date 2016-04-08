@@ -24,7 +24,7 @@ import engine.core.ManagedObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.tangible.weapon.WeaponObject;
 include templates.SharedObjectTemplate;
-import server.zone.templates.mobile.CreatureTemplate;
+import server.zone.objects.creature.ai.CreatureTemplate;
 import server.zone.objects.creature.events.DespawnCreatureOnPlayerDissappear;
 include server.zone.objects.creature.ai.variables.CreatureAttackMap;
 import engine.util.u3d.Coordinate;

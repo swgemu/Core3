@@ -12,7 +12,7 @@
 #include "server/zone/objects/manufactureschematic/ingredientslots/IngredientSlot.h"
 #include "server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h"
 #include "templates/tangible/PetDeedTemplate.h"
-#include "server/zone/templates/mobile/CreatureTemplate.h"
+#include "server/zone/objects/creature/ai/CreatureTemplate.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"

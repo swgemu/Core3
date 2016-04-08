@@ -7,23 +7,22 @@ package server.zone.objects.creature.conversation;
 import engine.core.ManagedObject;
 
 import server.zone.objects.creature.conversation.ConversationObserver;
-include server.zone.templates.mobile.ConversationTemplate;
+include server.zone.objects.creature.conversation.ConversationTemplate;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.creature.conversation.screenhandlers.ScreenHandler;
-include server.zone.templates.mobile.ConversationTemplate;
-include server.zone.templates.mobile.ConversationScreen;
+include server.zone.objects.creature.conversation.ConversationScreen;
 include server.zone.managers.director.DirectorManager;
 
-class LuaConversationObserver extends ConversationObserver {	
+class LuaConversationObserver extends ConversationObserver {
 	public LuaConversationObserver(ConversationTemplate conversationTemplate) {
 		super(conversationTemplate);
 	}
-	
+
 	@local
 	public ConversationScreen getNextConversationScreen(CreatureObject conversingPlayer, int selectedOption, CreatureObject conversingNPC) {
 		return DirectorManager.instance().getNextConversationScreen(super.conversationTemplate.getLuaClassHandler(), super.conversationTemplate, conversingPlayer, selectedOption, conversingNPC);
 	}
-	
+
 	@local
 	public ConversationScreen runScreenHandlers(CreatureObject conversingPlayer, CreatureObject conversingNPC, int selectedOption, ConversationScreen conversationScreen) {
 		return DirectorManager.instance().runScreenHandlers(super.conversationTemplate.getLuaClassHandler(), super.conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen);

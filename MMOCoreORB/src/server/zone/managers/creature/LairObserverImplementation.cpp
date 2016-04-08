@@ -17,7 +17,7 @@
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "templates/manager/TemplateManager.h"
 #include "LairAggroTask.h"
-#include "server/zone/templates/mobile/CreatureTemplate.h"
+#include "server/zone/objects/creature/ai/CreatureTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/DisseminateExperienceTask.h"
 

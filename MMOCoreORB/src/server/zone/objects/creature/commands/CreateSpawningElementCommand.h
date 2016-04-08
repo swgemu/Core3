@@ -12,7 +12,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
-#include "server/zone/templates/mobile/LairTemplate.h"
+#include "templates/mobile/LairTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "templates/tangible/SharedStructureObjectTemplate.h"

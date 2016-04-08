@@ -6,7 +6,7 @@
  */
 
 #include "server/zone/managers/creature/CreatureManager.h"
-#include "server/zone/templates/mobile/CreatureTemplate.h"
+#include "server/zone/objects/creature/ai/CreatureTemplate.h"
 #include "CreatureTemplateManager.h"
 #include "DnaManager.h"
 #include "SpawnAreaMap.h"

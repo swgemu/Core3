@@ -7,8 +7,8 @@ package server.zone.objects.creature.conversation;
 import engine.util.Observer;
 import engine.util.Observable;
 
-include server.zone.templates.mobile.ConversationTemplate;
-include server.zone.templates.mobile.ConversationScreen;
+include server.zone.objects.creature.conversation.ConversationTemplate;
+include server.zone.objects.creature.conversation.ConversationScreen;
 include server.zone.objects.creature.CreatureObject;
 include server.zone.objects.creature.conversation.screenhandlers.ScreenHandler;
 

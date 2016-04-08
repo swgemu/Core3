@@ -16,8 +16,9 @@
 
 namespace server {
 namespace zone {
-namespace templates {
-namespace mobile {
+namespace objects {
+namespace creature {
+namespace conversation {
 
 class ConversationOption : public Object {
 	StringIdChatParameter optionText;
@@ -340,7 +341,8 @@ public:
 }
 }
 }
+}
 
-using namespace server::zone::templates::mobile;
+using namespace server::zone::objects::creature::conversation;
 
 #endif /* CONVERSATIONSCREEN_H_ */

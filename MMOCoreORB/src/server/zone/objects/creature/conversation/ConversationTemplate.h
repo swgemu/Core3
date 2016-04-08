@@ -13,8 +13,9 @@
 
 namespace server {
 namespace zone {
-namespace templates {
-namespace mobile {
+namespace objects {
+namespace creature {
+namespace conversation {
 
 class ConversationTemplate : public Object, public Logger {
 public:
@@ -120,7 +121,8 @@ public:
 }
 }
 }
+}
 
-using namespace server::zone::templates::mobile;
+using namespace server::zone::objects::creature::conversation;
 
 #endif /* CONVERSATIONTEMPLATE_H_ */
