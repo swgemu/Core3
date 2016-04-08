@@ -5,7 +5,7 @@
 #include "server/zone/objects/tangible/component/genetic/GeneticComponent.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
-#include "server/zone/templates/mobile/CreatureTemplate.h"
+#include "server/zone/objects/creature/ai/CreatureTemplate.h"
 #include "server/zone/managers/crafting/labratories/Genetics.h"
 
 void GeneticComponentImplementation::initializeTransientMembers() {

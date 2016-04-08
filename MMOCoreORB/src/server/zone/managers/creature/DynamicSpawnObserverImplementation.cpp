@@ -1,7 +1,7 @@
 #include "server/zone/managers/creature/DynamicSpawnObserver.h"
 #include "server/zone/objects/creature/events/RespawnCreatureTask.h"
 #include "server/zone/objects/creature/events/DespawnDynamicSpawnTask.h"
-#include "server/zone/templates/mobile/CreatureTemplate.h"
+#include "server/zone/objects/creature/ai/CreatureTemplate.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/objects/creature/ai/Creature.h"

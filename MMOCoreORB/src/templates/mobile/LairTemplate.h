@@ -9,12 +9,7 @@
 #define LAIRTEMPLATE_H_
 
 #include "engine/engine.h"
-#include "server/zone/managers/faction/FactionManager.h"
-
-namespace server {
-namespace zone {
-namespace templates {
-namespace mobile {
+#include "templates/faction/Factions.h"
 
 class LairTemplate : public Object {
 public:
@@ -92,9 +87,9 @@ public:
 			String factionString = templateData->getStringField("faction");
 
 			if (factionString == "imperial") {
-				faction = FactionManager::FACTIONIMPERIAL;
+				faction = Factions::FACTIONIMPERIAL;
 			} else if (factionString == "rebel") {
-				faction = FactionManager::FACTIONREBEL;
+				faction = Factions::FACTIONREBEL;
 			}
 		}
 
@@ -268,13 +263,5 @@ public:
 		return buildingType;
 	}
 };
-
-}
-}
-}
-}
-
-using namespace server::zone::templates::mobile;
-
 
 #endif /* LAIRTEMPLATE_H_ */

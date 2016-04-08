@@ -63,10 +63,10 @@ bool DeliverMissionScreenHandler::isSameSpawnPoint(const float& positionX, const
 void DeliverMissionScreenHandler::performPickupConversation(ConversationScreen* conversationScreen, MissionObject* mission) {
 	if (mission->getTypeCRC() == MissionTypes::DELIVER) {
 		switch (mission->getFaction()) {
-		case FactionManager::FACTIONIMPERIAL:
+		case Factions::FACTIONIMPERIAL:
 			conversationScreen->setDialogText("@mission/mission_deliver_imperial_easy:m" + String::valueOf(mission->getMissionNumber()) + "p");
 			break;
-		case FactionManager::FACTIONREBEL:
+		case Factions::FACTIONREBEL:
 			conversationScreen->setDialogText("@mission/mission_deliver_rebel_easy:m" + String::valueOf(mission->getMissionNumber()) + "p");
 			break;
 		default:
@@ -75,10 +75,10 @@ void DeliverMissionScreenHandler::performPickupConversation(ConversationScreen* 
 		}
 	} else {
 		switch (mission->getFaction()) {
-		case FactionManager::FACTIONIMPERIAL:
+		case Factions::FACTIONIMPERIAL:
 			conversationScreen->setDialogText("@mission/mission_npc_crafting_imperial_easy:m" + String::valueOf(mission->getMissionNumber()) + "p");
 			break;
-		case FactionManager::FACTIONREBEL:
+		case Factions::FACTIONREBEL:
 			conversationScreen->setDialogText("@mission/mission_npc_crafting_rebel_easy:m" + String::valueOf(mission->getMissionNumber()) + "p");
 			break;
 		default:
@@ -91,10 +91,10 @@ void DeliverMissionScreenHandler::performPickupConversation(ConversationScreen* 
 void DeliverMissionScreenHandler::performDeliverConversation(ConversationScreen* conversationScreen, MissionObject* mission) {
 	if (mission->getTypeCRC() == MissionTypes::DELIVER) {
 		switch (mission->getFaction()) {
-		case FactionManager::FACTIONIMPERIAL:
+		case Factions::FACTIONIMPERIAL:
 			conversationScreen->setDialogText("@mission/mission_deliver_imperial_easy:m" + String::valueOf(mission->getMissionNumber()) + "r");
 			break;
-		case FactionManager::FACTIONREBEL:
+		case Factions::FACTIONREBEL:
 			conversationScreen->setDialogText("@mission/mission_deliver_rebel_easy:m" + String::valueOf(mission->getMissionNumber()) + "r");
 			break;
 		default:
@@ -103,10 +103,10 @@ void DeliverMissionScreenHandler::performDeliverConversation(ConversationScreen*
 		}
 	} else {
 		switch (mission->getFaction()) {
-		case FactionManager::FACTIONIMPERIAL:
+		case Factions::FACTIONIMPERIAL:
 			conversationScreen->setDialogText("@mission/mission_npc_crafting_imperial_easy:m" + String::valueOf(mission->getMissionNumber()) + "r");
 			break;
-		case FactionManager::FACTIONREBEL:
+		case Factions::FACTIONREBEL:
 			conversationScreen->setDialogText("@mission/mission_npc_crafting_rebel_easy:m" + String::valueOf(mission->getMissionNumber()) + "r");
 			break;
 		default:

@@ -9,11 +9,11 @@
 #define CREATURETEMPLATEMANAGER_H_
 
 #include "engine/engine.h"
-#include "server/zone/templates/mobile/CreatureTemplate.h"
-#include "server/zone/templates/mobile/ConversationTemplate.h"
-#include "server/zone/templates/mobile/LairTemplate.h"
-#include "server/zone/templates/mobile/PatrolPathTemplate.h"
-#include "server/zone/templates/mobile/MobileOutfitGroup.h"
+#include "server/zone/objects/creature/ai/CreatureTemplate.h"
+#include "server/zone/objects/creature/conversation/ConversationTemplate.h"
+#include "templates/mobile/LairTemplate.h"
+#include "templates/mobile/PatrolPathTemplate.h"
+#include "templates/mobile/MobileOutfitGroup.h"
 #include "SpawnGroup.h"
 
 namespace server {

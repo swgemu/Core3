@@ -14,7 +14,7 @@
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/templates/mobile/CreatureTemplate.h"
+#include "server/zone/objects/creature/ai/CreatureTemplate.h"
 #include "templates/tangible/DroidDeedTemplate.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"

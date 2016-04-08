@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-#include "PatrolPathNode.h"
+#include "templates/mobile/PatrolPathNode.h"
 
 class PatrolPathTemplate : public Object {
 	VectorMap<String, PatrolPathNode> pathMap;

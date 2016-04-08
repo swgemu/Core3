@@ -7,7 +7,7 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/object/StartNpcConversation.h"
 #include "server/zone/packets/object/StopNpcConversation.h"
-#include "server/zone/templates/mobile/ConversationScreen.h"
+#include "server/zone/objects/creature/conversation/ConversationScreen.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
 #include "templates/customization/AssetCustomizationManagerTemplate.h"

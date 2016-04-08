@@ -20,7 +20,7 @@ import server.zone.managers.mission.spawnmaps.NpcSpawnPoint;
 include server.zone.objects.mission.MissionTypes;
 include server.zone.managers.faction.FactionManager;
 include server.zone.packets.scene.AttributeListMessage;
-
+include templates.faction.Factions;
 class MissionObject extends IntangibleObject {
 	protected WaypointObject waypointToMission;
 
@@ -104,7 +104,7 @@ class MissionObject extends IntangibleObject {
 
 		targetObjectId = 0;
 
-		faction = FactionManager.FACTIONNEUTRAL;
+		faction = Factions.FACTIONNEUTRAL;
 
 		missionNumber = 0;
 		missionLevel = 0;

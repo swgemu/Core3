@@ -1,8 +1,8 @@
 
 #include "server/zone/managers/mission/DestroyMissionLairObserver.h"
-#include "server/zone/templates/mobile/LairTemplate.h"
+#include "templates/mobile/LairTemplate.h"
 #include "server/zone/managers/creature/HealLairObserverEvent.h"
-#include "server/zone/templates/mobile/CreatureTemplate.h"
+#include "server/zone/objects/creature/ai/CreatureTemplate.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/objects/creature/ai/Creature.h"

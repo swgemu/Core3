@@ -22,7 +22,7 @@ include server.zone.managers.mission.BountyTargetListElement;
 include server.zone.managers.mission.spawnmaps.MissionNpcSpawnMap;
 include server.zone.managers.mission.spawnmaps.NpcSpawnPoint;
 import server.zone.managers.creature.LairSpawn;
-import server.zone.templates.mobile.CreatureTemplate;
+import server.zone.objects.creature.ai.CreatureTemplate;
 import system.thread.Mutex;
 
 class MissionManager extends Observer implements Logger {

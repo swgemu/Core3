@@ -91,10 +91,10 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 	//Select spawn type.
 	int spawnType = NpcSpawnPoint::NEUTRALSPAWN;
 	switch (mission->getFaction()) {
-	case FactionManager::FACTIONIMPERIAL:
+	case Factions::FACTIONIMPERIAL:
 		spawnType = NpcSpawnPoint::IMPERIALSPAWN;
 		break;
-	case FactionManager::FACTIONREBEL:
+	case Factions::FACTIONREBEL:
 		spawnType = NpcSpawnPoint::REBELSPAWN;
 		break;
 	default:

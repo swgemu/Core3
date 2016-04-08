@@ -8,7 +8,7 @@
 #ifndef MOBILEOUTFITGROUP_H_
 #define MOBILEOUTFITGROUP_H_
 
-#include "MobileOutfit.h"
+#include "templates/mobile/MobileOutfit.h"
 
 class MobileOutfitGroup : public Object {
 	Vector<MobileOutfit> outfits;

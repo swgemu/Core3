@@ -38,6 +38,7 @@
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/tangible/tool/antidecay/AntiDecayKit.h"
+#include "templates/faction/Factions.h"
 #include "engine/engine.h"
 
 
@@ -48,7 +49,7 @@ void TangibleObjectImplementation::initializeTransientMembers() {
 
 	setLoggingName("TangibleObject");
 
-	if (faction !=  FactionManager::FACTIONREBEL && faction != FactionManager::FACTIONIMPERIAL) {
+	if (faction !=  Factions::FACTIONREBEL && faction != Factions::FACTIONIMPERIAL) {
 		faction = 0;
 	}
 }
@@ -980,15 +981,15 @@ bool TangibleObjectImplementation::isCityFountain(){
 }
 
 bool TangibleObjectImplementation::isRebel() const {
-	return faction == FactionManager::FACTIONREBEL;
+	return faction == Factions::FACTIONREBEL;
 }
 
 bool TangibleObjectImplementation::isImperial() const {
-	return faction == FactionManager::FACTIONIMPERIAL;
+	return faction == Factions::FACTIONIMPERIAL;
 }
 
 bool TangibleObjectImplementation::isNeutral() const {
-	return faction == FactionManager::FACTIONNEUTRAL;
+	return faction == Factions::FACTIONNEUTRAL;
 }
 
 TangibleObject* TangibleObject::asTangibleObject() {

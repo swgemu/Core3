@@ -5,6 +5,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/eventperk/FlagGame.h"
 #include "server/zone/managers/faction/FactionManager.h"
+#include "templates/faction/Factions.h"
 
 namespace server {
 namespace zone {
@@ -28,9 +29,9 @@ public:
 
 		uint32 factionControl = game->getFactionControl();
 
-		if (factionControl == FactionManager::FACTIONREBEL) {
+		if (factionControl == Factions::FACTIONREBEL) {
 			game->increaseRebelScore();
-		} else if (factionControl == FactionManager::FACTIONIMPERIAL) {
+		} else if (factionControl == Factions::FACTIONIMPERIAL) {
 			game->increaseImperialScore();
 		}
 

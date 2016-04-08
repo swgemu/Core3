@@ -13,12 +13,13 @@
 #include "templates/params/creature/CreatureFlag.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/loot/lootgroup/LootGroupCollection.h"
-#include "MobileOutfit.h"
+#include "templates/mobile/MobileOutfit.h"
 
 namespace server {
 namespace zone {
-namespace templates {
-namespace mobile {
+namespace objects {
+namespace creature {
+namespace ai {
 
 class CreatureTemplate : public Object {
 protected:
@@ -426,7 +427,8 @@ public:
 }
 }
 }
+}
 
-using namespace server::zone::templates::mobile;
+using namespace server::zone::objects::creature::ai;
 
 #endif /* CREATURETEMPLATE_H_ */
