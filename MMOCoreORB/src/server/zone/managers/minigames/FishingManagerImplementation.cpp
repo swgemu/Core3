@@ -14,7 +14,7 @@
 #include "server/zone/objects/tangible/fishing/FishingBaitObject.h"
 #include "server/zone/objects/tangible/fishing/FishObject.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
-#include "server/zone/managers/terrain/TerrainManager.h"
+#include "terrain/manager/TerrainManager.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/planet/PlanetManager.h"

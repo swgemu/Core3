@@ -23,7 +23,7 @@
 #include "server/zone/packets/object/DataTransformWithParent.h"
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/managers/terrain/TerrainManager.h"
+#include "terrain/manager/TerrainManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
 #include "templates/manager/TemplateManager.h"
 #include "server/zone/managers/director/DirectorManager.h"
