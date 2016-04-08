@@ -6,11 +6,12 @@
  */
 
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
-#include "server/zone/templates/tangible/StructureDeedTemplate.h"
+#include "templates/tangible/StructureDeedTemplate.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "templates/tangible/SharedStructureObjectTemplate.h"
 #include "templates/manager/TemplateManager.h"
+#include "server/zone/managers/components/ComponentManager.h"
 
 void StructureDeedImplementation::initializeTransientMembers() {
 	DeedImplementation::initializeTransientMembers();
@@ -18,7 +19,7 @@ void StructureDeedImplementation::initializeTransientMembers() {
 	StructureDeedTemplate* templ = dynamic_cast<StructureDeedTemplate*>(templateObject.get());
 
 	if (templ != NULL)
-		placeStructureComponent = templ->getStructurePlacementComponent();
+		placeStructureComponent = ComponentManager::instance()->getComponent<PlaceStructureComponent*>(templ->getStructurePlacementComponent());
 
 	setLoggingName("StructureDeed");
 }

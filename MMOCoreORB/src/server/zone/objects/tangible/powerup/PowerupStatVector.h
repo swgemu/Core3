@@ -8,7 +8,7 @@
 #ifndef POWERUPSTATVECTOR_H_
 #define POWERUPSTATVECTOR_H_
 
-#include "PowerupStat.h"
+#include "templates/tangible/PowerupStat.h"
 
 class PowerupStatVector : public Vector<PowerupStat> {
 public:

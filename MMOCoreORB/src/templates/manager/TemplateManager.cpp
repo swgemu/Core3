@@ -98,6 +98,7 @@
 #include "templates/tangible/LootSchematicTemplate.h"
 #include "templates/tangible/MissionTerminalTemplate.h"
 #include "templates/tangible/PetDeedTemplate.h"
+#include "templates/tangible/PowerupTemplate.h"
 #include "templates/tangible/RangedStimPackTemplate.h"
 #include "templates/tangible/SharedBattlefieldMarkerObjectTemplate.h"
 #include "templates/tangible/SharedCountingObjectTemplate.h"
@@ -108,14 +109,12 @@
 #include "templates/tangible/SkillBuffTemplate.h"
 #include "templates/tangible/StatePackTemplate.h"
 #include "templates/tangible/StimPackTemplate.h"
+#include "templates/tangible/StructureDeedTemplate.h"
 #include "templates/tangible/TrapTemplate.h"
 #include "templates/tangible/VehicleCustomKitTemplate.h"
 #include "templates/tangible/VehicleDeedTemplate.h"
 #include "templates/tangible/WoundPackTemplate.h"
 #include "templates/tangible/XpPurchaseTemplate.h"
-
-#include "server/zone/templates/tangible/StructureDeedTemplate.h"
-#include "server/zone/templates/tangible/PowerupTemplate.h"
 
 #include "templates/universe/SharedGroupObjectTemplate.h"
 #include "templates/universe/SharedGuildObjectTemplate.h"

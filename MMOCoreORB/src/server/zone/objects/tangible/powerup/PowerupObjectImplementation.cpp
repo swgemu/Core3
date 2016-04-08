@@ -7,7 +7,7 @@
 
 
 #include "server/zone/objects/tangible/powerup/PowerupObject.h"
-#include "server/zone/templates/tangible/PowerupTemplate.h"
+#include "templates/tangible/PowerupTemplate.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 

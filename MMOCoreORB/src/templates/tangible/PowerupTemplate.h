@@ -9,7 +9,7 @@
 #define POWERUPTEMPLATE_H_
 
 #include "templates/SharedTangibleObjectTemplate.h"
-#include "server/zone/objects/tangible/powerup/PowerupStat.h"
+#include "templates/tangible/PowerupStat.h"
 
 class PowerupTemplate: public SharedTangibleObjectTemplate {
 protected:
