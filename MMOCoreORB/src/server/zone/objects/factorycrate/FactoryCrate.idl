@@ -9,7 +9,7 @@ import engine.lua.LuaObject;
 
 import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
-include server.zone.objects.tangible.OptionBitmask;
+include templates.params.OptionBitmask;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;

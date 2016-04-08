@@ -13,16 +13,13 @@
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
+#include "templates/tangible/ArmorObjectTemplate.h"
 
 class WearablesDeltaVector : public DeltaVector<ManagedReference<TangibleObject*> > {
 protected:
 	VectorMap<uint8, Vector<ManagedReference<ArmorObject*> > > protectionArmorMap;
 
 public:
-
-	// hit locations (for serverside armor checks)
-	enum SuitLocations { NOLOCATION = 0x0, CHEST = 0x1, ARMS = 0x2, LEGS = 0x4, HEAD = 0x8 };
-
 
 	WearablesDeltaVector() : DeltaVector<ManagedReference<TangibleObject*> >() {
 		protectionArmorMap.setAllowOverwriteInsertPlan();
@@ -47,17 +44,17 @@ public:
 			ManagedReference<ArmorObject*> armor = cast<ArmorObject*>(element.get());
 			uint8 hitLocations = armor->getHitLocation();
 
-			if (hitLocations & CHEST)
-				addArmor(CHEST, armor);
+			if (hitLocations & ArmorObjectTemplate::CHEST)
+				addArmor(ArmorObjectTemplate::CHEST, armor);
 
-			if (hitLocations & ARMS)
-				addArmor(ARMS, armor);
+			if (hitLocations & ArmorObjectTemplate::ARMS)
+				addArmor(ArmorObjectTemplate::ARMS, armor);
 
-			if (hitLocations & LEGS)
-				addArmor(LEGS, armor);
+			if (hitLocations & ArmorObjectTemplate::LEGS)
+				addArmor(ArmorObjectTemplate::LEGS, armor);
 
-			if (hitLocations & HEAD)
-				addArmor(HEAD, armor);
+			if (hitLocations & ArmorObjectTemplate::HEAD)
+				addArmor(ArmorObjectTemplate::HEAD, armor);
 		}
 
 		return DeltaVector<ManagedReference<TangibleObject*> >::add(element, message, updates);
@@ -70,17 +67,17 @@ public:
 			ManagedReference<ArmorObject*> armor = cast<ArmorObject*>(element.get());
 			uint8 hitLocations = armor->getHitLocation();
 
-			if (hitLocations & CHEST)
-				removeArmor(CHEST, armor);
+			if (hitLocations & ArmorObjectTemplate::CHEST)
+				removeArmor(ArmorObjectTemplate::CHEST, armor);
 
-			if (hitLocations & ARMS)
-				removeArmor(ARMS, armor);
+			if (hitLocations & ArmorObjectTemplate::ARMS)
+				removeArmor(ArmorObjectTemplate::ARMS, armor);
 
-			if (hitLocations & LEGS)
-				removeArmor(LEGS, armor);
+			if (hitLocations & ArmorObjectTemplate::LEGS)
+				removeArmor(ArmorObjectTemplate::LEGS, armor);
 
-			if (hitLocations & HEAD)
-				removeArmor(HEAD, armor);
+			if (hitLocations & ArmorObjectTemplate::HEAD)
+				removeArmor(ArmorObjectTemplate::HEAD, armor);
 		}
 
 		return DeltaVector<ManagedReference<TangibleObject*> >::remove(index, message, updates);
@@ -94,11 +91,11 @@ public:
 		// HIT_LOCATION has a circular dependency nightmare with CombatManager and CreatureObject
 		switch(hl) {
 		case 1: // HIT_BODY
-			return protectionArmorMap.get((uint8)CHEST); // CHEST
+			return protectionArmorMap.get((uint8)ArmorObjectTemplate::CHEST); // CHEST
 		case 2: // HIT_LARM
 		case 3: // HIT_RARM
 		{
-			Vector<ManagedReference<ArmorObject*> > armArmor = protectionArmorMap.get((uint8)ARMS); // ARMS
+			Vector<ManagedReference<ArmorObject*> > armArmor = protectionArmorMap.get((uint8)ArmorObjectTemplate::ARMS); // ARMS
 			Vector<ManagedReference<ArmorObject*> > armorAtLocation;
 
 			if(armArmor.isEmpty())
@@ -126,12 +123,12 @@ public:
 		}
 		case 4: // HIT_LLEG
 		case 5: // HIT_RLEG
-			return protectionArmorMap.get((uint8)LEGS); // LEGS
+			return protectionArmorMap.get((uint8)ArmorObjectTemplate::LEGS); // LEGS
 		case 6: // HIT_HEAD
-			return protectionArmorMap.get((uint8)HEAD); // HEAD
+			return protectionArmorMap.get((uint8)ArmorObjectTemplate::HEAD); // HEAD
 		}
 
-		return protectionArmorMap.get((uint8)NOLOCATION);
+		return protectionArmorMap.get((uint8)ArmorObjectTemplate::NOLOCATION);
 	}
 
 

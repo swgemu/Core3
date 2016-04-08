@@ -3,8 +3,8 @@
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.h"
 #include "server/zone/managers/skill/SkillManager.h"
-#include "server/zone/templates/tangible/CharacterBuilderTerminalTemplate.h"
-#include "CharacterBuilderMenuNode.h"
+#include "templates/tangible/CharacterBuilderTerminalTemplate.h"
+#include "templates/tangible/CharacterBuilderMenuNode.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 

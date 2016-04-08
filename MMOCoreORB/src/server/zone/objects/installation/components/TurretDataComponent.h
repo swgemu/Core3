@@ -10,7 +10,7 @@
 #include "engine/engine.h"
 #include "server/zone/objects/scene/components/DataObjectComponent.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
-#include "templates/tangible/SharedInstallationObjectTemplate.h"
+#include "templates/installation/SharedInstallationObjectTemplate.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 

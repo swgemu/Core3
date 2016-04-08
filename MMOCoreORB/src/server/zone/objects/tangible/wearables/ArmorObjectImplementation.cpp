@@ -6,7 +6,7 @@
  */
 
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
-#include "server/zone/templates/tangible/ArmorObjectTemplate.h"
+#include "templates/tangible/ArmorObjectTemplate.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 #include "templates/tangible/SharedWeaponObjectTemplate.h"
@@ -46,15 +46,15 @@ void ArmorObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 	lightSaber = armorTemplate->getLightSaber();
 
 	hitLocation = armorTemplate->getHitLocation();
-	if (hitLocation == WearablesDeltaVector::NOLOCATION) {
+	if (hitLocation == ArmorObjectTemplate::NOLOCATION) {
 		if (hasArrangementDescriptor("chest2"))
-			hitLocation |= WearablesDeltaVector::CHEST;
+			hitLocation |= ArmorObjectTemplate::CHEST;
 		if (hasArrangementDescriptor("bicep_r") || hasArrangementDescriptor("bicep_l") || hasArrangementDescriptor("bracer_upper_r") || hasArrangementDescriptor("bracer_upper_l") || hasArrangementDescriptor("gloves"))
-			hitLocation |= WearablesDeltaVector::ARMS;
+			hitLocation |= ArmorObjectTemplate::ARMS;
 		if (hasArrangementDescriptor("shoes") || hasArrangementDescriptor("pants1"))
-			hitLocation |= WearablesDeltaVector::LEGS;
+			hitLocation |= ArmorObjectTemplate::LEGS;
 		if (hasArrangementDescriptor("hat"))
-			hitLocation |= WearablesDeltaVector::HEAD;
+			hitLocation |= ArmorObjectTemplate::HEAD;
 	}
 
 	setSliceable(true);

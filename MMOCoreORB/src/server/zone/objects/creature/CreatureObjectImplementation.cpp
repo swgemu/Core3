@@ -74,7 +74,7 @@
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/resource/resourcespawner/SampleTask.h"
 
-#include "templates/tangible/SharedCreatureObjectTemplate.h"
+#include "templates/creature/SharedCreatureObjectTemplate.h"
 
 #include "variables/Skill.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"

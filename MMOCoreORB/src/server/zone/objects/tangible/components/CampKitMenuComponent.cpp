@@ -18,7 +18,7 @@
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "templates/tangible/CampKitTemplate.h"
-#include "templates/tangible/CampStructureTemplate.h"
+#include "templates/building/CampStructureTemplate.h"
 #include "server/zone/objects/area/CampSiteActiveArea.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/objects/region/Region.h"

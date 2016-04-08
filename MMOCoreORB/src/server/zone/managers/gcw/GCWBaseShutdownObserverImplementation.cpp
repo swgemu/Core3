@@ -4,7 +4,7 @@
  */
 
 #include "server/zone/managers/gcw/GCWBaseShutdownObserver.h"
-#include "server/zone/objects/scene/ObserverEventType.h"
+#include "templates/params/ObserverEventType.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
 int GCWBaseShutdownObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {

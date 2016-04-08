@@ -13,7 +13,7 @@ include templates.tangible.InstrumentObjectTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.managers.object.ObjectManager;
-include server.zone.objects.scene.ObserverEventType;
+include templates.params.ObserverEventType;
 import server.zone.objects.tangible.InstrumentObserver;
 
 class Instrument extends TangibleObject {

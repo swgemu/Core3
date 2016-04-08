@@ -10,7 +10,7 @@
 #include "engine/engine.h"
 #include "server/zone/objects/scene/components/DataObjectComponent.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
-#include "templates/tangible/SharedInstallationObjectTemplate.h"
+#include "templates/installation/SharedInstallationObjectTemplate.h"
 
 class MinefieldDataComponent : public DataObjectComponent {
 protected:

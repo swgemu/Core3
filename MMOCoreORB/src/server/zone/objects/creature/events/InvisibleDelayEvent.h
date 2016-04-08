@@ -16,7 +16,7 @@
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
-#include "server/zone/templates/tangible/PlayerCreatureTemplate.h"
+#include "templates/creature/PlayerCreatureTemplate.h"
 
 class InvisibleDelayEvent: public Task {
 	ManagedReference<CreatureObject*> player;

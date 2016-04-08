@@ -19,7 +19,7 @@ import system.lang.ref.Reference;
 import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.managers.minigames.FishingSession;
-include server.zone.objects.scene.ObserverEventType;
+include templates.params.ObserverEventType;
 
 class FishingManager extends Observer implements Logger {	
 	@dereferenced

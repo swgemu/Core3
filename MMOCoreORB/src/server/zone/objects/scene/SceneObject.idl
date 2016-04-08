@@ -26,7 +26,7 @@ import engine.core.Task;
 import engine.util.u3d.Vector3;
 include engine.util.Facade;
 import engine.util.Observable;
-include server.zone.objects.scene.ObserverEventType;
+include templates.params.ObserverEventType;
 include server.zone.ZoneReference;
 include server.zone.objects.scene.SceneObjectType;
 import server.zone.ZoneProcessServer;

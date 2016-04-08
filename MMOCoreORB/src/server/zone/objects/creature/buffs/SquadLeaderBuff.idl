@@ -12,7 +12,7 @@ import server.zone.objects.creature.buffs.Buff;
 import server.zone.objects.creature.buffs.SquadLeaderBuffObserver;
 include server.zone.managers.object.ObjectManager;
 include server.zone.objects.creature.buffs.BuffType;
-include server.zone.objects.scene.ObserverEventType;
+include templates.params.ObserverEventType;
 include server.zone.objects.scene.SceneObjectType;
 
 class SquadLeaderBuff extends Buff {

@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "templates/tangible/SharedCreatureObjectTemplate.h"
+#include "templates/creature/SharedCreatureObjectTemplate.h"
 
 void SharedCreatureObjectTemplate::parseVariableData(const String& varName, Chunk* data) {
 	if (varName == "gender") {

@@ -8,7 +8,7 @@
 #ifndef SHAREDINSTALLATIONOBJECTTEMPLATE_H_
 #define SHAREDINSTALLATIONOBJECTTEMPLATE_H_
 
-#include "SharedStructureObjectTemplate.h"
+#include "templates/tangible/SharedStructureObjectTemplate.h"
 
 class SharedInstallationObjectTemplate : public SharedStructureObjectTemplate {
 	uint32 installationType;

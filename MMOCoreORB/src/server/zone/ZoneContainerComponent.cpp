@@ -13,7 +13,7 @@
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
-#include "templates/tangible/SharedBuildingObjectTemplate.h"
+#include "templates/building/SharedBuildingObjectTemplate.h"
 
 bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeArea) const {
 	if (newZone == NULL)

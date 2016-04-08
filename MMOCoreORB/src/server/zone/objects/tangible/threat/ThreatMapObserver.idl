@@ -13,7 +13,7 @@ import engine.core.Task;
 import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.objects.tangible.TangibleObject;
-include server.zone.objects.scene.ObserverEventType;
+include templates.params.ObserverEventType;
 
 class ThreatMapObserver extends Observer {
 	

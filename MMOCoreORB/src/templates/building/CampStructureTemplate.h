@@ -8,7 +8,7 @@
 #ifndef CAMPSTRUCTURETEMPLATE_H_
 #define CAMPSTRUCTURETEMPLATE_H_
 
-#include "templates/tangible/SharedBuildingObjectTemplate.h"
+#include "templates/building/SharedBuildingObjectTemplate.h"
 
 class CampStructureTemplate : public SharedBuildingObjectTemplate {
 protected:

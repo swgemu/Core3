@@ -14,7 +14,7 @@ import engine.core.Task;
 import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.objects.creature.CreatureObject;
-include server.zone.objects.scene.ObserverEventType;
+include templates.params.ObserverEventType;
 import server.zone.objects.tangible.eventperk.Jukebox;
 
 class JukeboxObserver extends Observer {

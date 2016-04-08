@@ -14,7 +14,7 @@ import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.intangible.PetControlDevice;
-include server.zone.objects.scene.ObserverEventType;
+include templates.params.ObserverEventType;
 
 
 class PetControlObserver extends Observer {

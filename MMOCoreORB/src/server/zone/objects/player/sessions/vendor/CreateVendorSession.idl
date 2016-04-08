@@ -18,7 +18,7 @@ include server.zone.objects.player.sui.listbox.SuiListBox;
 include server.zone.objects.player.sui.inputbox.SuiInputBox;
 include server.zone.managers.vendor.VendorSelectionNode;
 import server.zone.managers.auction.AuctionManager;
-include templates.tangible.VendorCreatureTemplate;
+include templates.creature.VendorCreatureTemplate;
 
 
 class CreateVendorSession extends Facade {

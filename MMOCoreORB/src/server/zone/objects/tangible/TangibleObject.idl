@@ -15,7 +15,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.Zone;
 import server.zone.objects.area.ActiveArea;
 import server.zone.objects.player.PlayerObject;
-include server.zone.objects.tangible.OptionBitmask;
+include templates.params.OptionBitmask;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 import server.zone.objects.factorycrate.FactoryCrate;
 include server.zone.objects.scene.SceneObjectType;

@@ -9,11 +9,7 @@
 #define CUSTOMIZATIONDATAMAP_H_
 
 #include "engine/engine.h"
-#include "CustomizationData.h"
-
-#include "templates/datatables/DataTableIff.h"
-#include "templates/datatables/DataTableRow.h"
-#include "templates/datatables/DataTableCell.h"
+#include "templates/customization/CustomizationData.h"
 
 class CustomizationDataMap : public VectorMap<String, CustomizationData> {
 public:

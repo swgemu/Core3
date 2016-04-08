@@ -8,7 +8,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/objects/intangible/ControlDevice.h"
-#include "templates/tangible/SharedCreatureObjectTemplate.h"
+#include "templates/creature/SharedCreatureObjectTemplate.h"
 
 class DismountCommand : public QueueCommand {
 	Vector<uint32> restrictedBuffCRCs;

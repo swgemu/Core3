@@ -1,26 +1,26 @@
 /*
- * RecreationBuildingObject.h
+ * HospitalBuildingObject.h
  *
  *  Created on: 14/01/2012
  *      Author: kyle
  */
 
-#ifndef RECREATIONBUILDINGOBJECTTEMPLATE_H_
-#define RECREATIONBUILDINGOBJECTTEMPLATE_H_
+#ifndef HOSPITALBUILDINGOBJECTTEMPLATE_H_
+#define HOSPITALBUILDINGOBJECTTEMPLATE_H_
 
-#include "templates/tangible/SharedBuildingObjectTemplate.h"
+#include "templates/building/SharedBuildingObjectTemplate.h"
 
-class RecreationBuildingObjectTemplate : public SharedBuildingObjectTemplate {
+class HospitalBuildingObjectTemplate : public SharedBuildingObjectTemplate {
 	int medicalRating;
 	int healthWoundRegenRate;
 	int actionWoundRegenRate;
 	int mindWoundRegenRate;
 
 public:
-	RecreationBuildingObjectTemplate() : medicalRating(0), healthWoundRegenRate(0), actionWoundRegenRate(0), mindWoundRegenRate(0) {
+	HospitalBuildingObjectTemplate() : medicalRating(0), healthWoundRegenRate(0), actionWoundRegenRate(0), mindWoundRegenRate(0) {
 	}
 
-	~RecreationBuildingObjectTemplate() {
+	~HospitalBuildingObjectTemplate() {
 	}
 
 	void readObject(LuaObject* templateData) {
@@ -33,7 +33,7 @@ public:
 
 	}
 
-	bool isRecreationBuildingObjectTemplate() {
+	bool isHospitalBuildingObjectTemplate() {
 		return true;
 	}
 
@@ -55,4 +55,4 @@ public:
 };
 
 
-#endif /* RECREATIONBUILDINGOBJECTTEMPLATE_H_ */
+#endif /* HOSPITALBUILDINGOBJECTTEMPLATE_H_ */

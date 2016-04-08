@@ -7,7 +7,7 @@ package server.zone.objects.player.sui.characterbuilderbox;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.sui.listbox.SuiListBox;
 
-include server.zone.objects.tangible.terminal.characterbuilder.CharacterBuilderMenuNode;
+include templates.tangible.CharacterBuilderMenuNode;
 import server.zone.objects.creature.CreatureObject;
 
 class SuiCharacterBuilderBox extends SuiListBox {

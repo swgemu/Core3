@@ -23,7 +23,7 @@
 #include "templates/datatables/DataTableIff.h"
 #include "templates/datatables/DataTableRow.h"
 #include "templates/creation/SkillDataForm.h"
-#include "server/zone/templates/tangible/PlayerCreatureTemplate.h"
+#include "templates/creature/PlayerCreatureTemplate.h"
 #include "server/ServerCore.h"
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/objects/ship/ShipObject.h"

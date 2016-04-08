@@ -28,7 +28,7 @@
 #include "server/zone/objects/resource/ResourceSpawn.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
 #include "server/zone/Zone.h"
-#include "templates/tangible/SharedInstallationObjectTemplate.h"
+#include "templates/installation/SharedInstallationObjectTemplate.h"
 #include "SyncrhonizedUiListenInstallationTask.h"
 #include "server/zone/objects/installation/components/TurretObserver.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
@@ -36,7 +36,7 @@
 #include "components/TurretDataComponent.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
-#include "server/zone/objects/tangible/OptionBitmask.h"
+#include "templates/params/OptionBitmask.h"
 #include "templates/params/creature/CreatureFlag.h"
 
 void InstallationObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

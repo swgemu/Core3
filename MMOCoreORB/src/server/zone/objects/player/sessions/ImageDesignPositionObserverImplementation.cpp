@@ -4,7 +4,7 @@
 */
 
 #include "server/zone/objects/player/sessions/ImageDesignPositionObserver.h"
-#include "server/zone/objects/scene/ObserverEventType.h"
+#include "templates/params/ObserverEventType.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/sessions/ImageDesignSession.h"
 

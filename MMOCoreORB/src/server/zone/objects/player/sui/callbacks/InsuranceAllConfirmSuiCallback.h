@@ -10,7 +10,7 @@
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/objects/tangible/OptionBitmask.h"
+#include "templates/params/OptionBitmask.h"
 
 class InsuranceAllConfirmSuiCallback : public SuiCallback {
 public:

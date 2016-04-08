@@ -12,7 +12,7 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "templates/tangible/SharedStructureObjectTemplate.h"
-#include "templates/tangible/SharedBuildingObjectTemplate.h"
+#include "templates/building/SharedBuildingObjectTemplate.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"

@@ -851,13 +851,10 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/mission/DestroyMissionLairObserverImplementation.cpp \
 		server/zone/objects/installation/components/TurretObserverImplementation.cpp \
 		server/zone/objects/mission/bountyhunter/BountyHunterDroid.cpp \
-		templates/intangible/DraftSchematicObjectTemplate.cpp \
-		templates/tangible/CampStructureTemplate.cpp \
-		server/zone/templates/tangible/PlayerCreatureTemplate.cpp \
+		server/zone/objects/tangible/components/CityDecorationMenuComponent.cpp \
 		server/zone/templates/mobile/LuaConversationScreen.cpp \
 		server/zone/templates/mobile/CreatureTemplate.cpp \
 		server/zone/templates/mobile/LuaConversationTemplate.cpp \
-		server/zone/objects/tangible/components/CityDecorationMenuComponent.cpp \
 		templates/SharedObjectTemplate.cpp \
 		templates/SharedTangibleObjectTemplate.cpp \
 		templates/appearance/FloorMesh.cpp \
@@ -866,12 +863,17 @@ core3_SOURCES =	$(core3_IDLS) \
 		templates/appearance/DetailAppearanceTemplate.cpp \
 		templates/appearance/PortalLayout.cpp \
 		templates/appearance/PathGraph.cpp \
+		templates/building/CampStructureTemplate.cpp \
+		templates/building/SharedBuildingObjectTemplate.cpp \
 		templates/crafting/ValuesMap.cpp \
+		templates/creature/PlayerCreatureTemplate.cpp \
+		templates/creature/SharedCreatureObjectTemplate.cpp \
 		templates/customization/AssetCustomizationManagerTemplate.cpp \
 		templates/customization/CustomizationIdManager.cpp \
 		templates/datatables/DataTableIff.cpp \
 		templates/datatables/DataTableCell.cpp \
 		templates/faction/FactionRanks.cpp \
+		templates/intangible/DraftSchematicObjectTemplate.cpp \
 		templates/manager/DataArchiveStore.cpp \
 		templates/manager/TemplateManager.cpp \
 		templates/params/PaletteColorCustomizationVariables.cpp \
@@ -879,8 +881,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		templates/params/creature/CreatureAttribute.cpp \
 		templates/string/StringFile.cpp \
 		templates/snapshot/WorldSnapshotIff.cpp \
-		templates/tangible/SharedCreatureObjectTemplate.cpp \
-		templates/tangible/SharedBuildingObjectTemplate.cpp \
 		templates/tangible/SharedStructureObjectTemplate.cpp \
 		templates/tangible/SharedWeaponObjectTemplate.cpp \
 		main.cpp

@@ -39,7 +39,7 @@
 #include "server/chat/ChatManager.h"
 #include "server/chat/ChatMessage.h"
 #include "server/zone/managers/loot/LootManager.h"
-#include "server/zone/objects/scene/ObserverEventType.h"
+#include "templates/params/ObserverEventType.h"
 #include "templates/params/creature/CreatureAttribute.h"
 #include "templates/params/creature/CreatureState.h"
 #include "templates/params/creature/CreaturePosture.h"

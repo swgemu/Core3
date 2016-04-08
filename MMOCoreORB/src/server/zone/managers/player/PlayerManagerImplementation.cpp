@@ -37,7 +37,7 @@
 #include "server/zone/objects/player/sessions/TradeSession.h"
 #include "server/zone/objects/player/sessions/ProposeUnitySession.h"
 #include "server/zone/objects/player/sessions/VeteranRewardSession.h"
-#include "server/zone/objects/tangible/OptionBitmask.h"
+#include "templates/params/OptionBitmask.h"
 #include "server/zone/managers/player/JukeboxSong.h"
 #include "server/zone/managers/player/QuestInfo.h"
 
@@ -47,7 +47,7 @@
 #include "server/zone/objects/group/GroupObject.h"
 
 #include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/templates/tangible/CloningBuildingObjectTemplate.h"
+#include "templates/building/CloningBuildingObjectTemplate.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
@@ -60,7 +60,7 @@
 #include "server/zone/objects/player/events/LogoutTask.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
 
-#include "server/zone/objects/building/cloning/CloneSpawnPoint.h"
+#include "templates/building/CloneSpawnPoint.h"
 
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"

@@ -10,8 +10,6 @@
 
 
 #include "templates/SharedTangibleObjectTemplate.h"
-#include "server/zone/objects/tangible/wearables/ArmorObject.h"
-#include "server/zone/managers/combat/CombatManager.h"
 
 class ArmorObjectTemplate : public SharedTangibleObjectTemplate {
 	int healthEncumbrance;
@@ -36,6 +34,10 @@ class ArmorObjectTemplate : public SharedTangibleObjectTemplate {
 	uint8 hitLocation;
 
 public:
+
+	// hit locations (for serverside armor checks)
+	enum SuitLocations { NOLOCATION = 0x0, CHEST = 0x1, ARMS = 0x2, LEGS = 0x4, HEAD = 0x8 };
+
 	ArmorObjectTemplate() {
 		healthEncumbrance = 0;
 		actionEncumbrance = 0;
@@ -56,7 +58,7 @@ public:
 		vulnerabilites = 0;
 		specialResists = 0;
 
-		hitLocation = WearablesDeltaVector::NOLOCATION;
+		hitLocation = NOLOCATION;
 	}
 
 	~ArmorObjectTemplate() {

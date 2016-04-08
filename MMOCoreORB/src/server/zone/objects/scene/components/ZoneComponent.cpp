@@ -18,7 +18,7 @@
 #include "server/zone/packets/scene/GameSceneChangedMessage.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
-#include "templates/tangible/SharedBuildingObjectTemplate.h"
+#include "templates/building/SharedBuildingObjectTemplate.h"
 
 
 void ZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) const {

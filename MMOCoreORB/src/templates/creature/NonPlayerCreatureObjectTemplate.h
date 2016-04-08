@@ -8,7 +8,7 @@
 #ifndef NONPLAYERCREATUREOBJECTTEMPLATE_H_
 #define NONPLAYERCREATUREOBJECTTEMPLATE_H_
 
-#include "templates/tangible/SharedCreatureObjectTemplate.h"
+#include "templates/creature/SharedCreatureObjectTemplate.h"
 
 class NonPlayerCreatureObjectTemplate : public SharedCreatureObjectTemplate {
 

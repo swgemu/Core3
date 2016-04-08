@@ -1,7 +1,7 @@
 #ifndef VEHICLEOBJECTTEMPLATE_H_
 #define VEHICLEOBJECTTEMPLATE_H_
 
-#include "templates/tangible/SharedCreatureObjectTemplate.h"
+#include "templates/creature/SharedCreatureObjectTemplate.h"
 
 class VehicleObjectTemplate : public SharedCreatureObjectTemplate {
 	int decayRate, decayCycle;

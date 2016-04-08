@@ -12,8 +12,8 @@
 #include "system/lang/ref/Reference.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
-#include "CustomizationData.h"
-#include "CustomizationDataMap.h"
+#include "templates/customization/CustomizationData.h"
+#include "templates/customization/CustomizationDataMap.h"
 #include "templates/params/PaletteColorCustomizationVariable.h"
 
 class ImageDesignManager : public Singleton<ImageDesignManager>, public Object, public Logger {

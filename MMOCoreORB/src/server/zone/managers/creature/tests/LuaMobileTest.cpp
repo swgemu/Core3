@@ -8,7 +8,7 @@
 #include "gtest/gtest.h"
 #include "templates/LootItemTemplate.h"
 #include "templates/SharedObjectTemplate.h"
-#include "templates/tangible/SharedCreatureObjectTemplate.h"
+#include "templates/creature/SharedCreatureObjectTemplate.h"
 #include "templates/LootGroupTemplate.h"
 #include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/managers/creature/DnaManager.h"

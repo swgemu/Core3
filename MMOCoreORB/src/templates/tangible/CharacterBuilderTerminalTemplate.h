@@ -9,7 +9,7 @@
 #define CHARACTERBUILDTERTERMINALTEMPLATE_H_
 
 #include "templates/SharedTangibleObjectTemplate.h"
-#include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderMenuNode.h"
+#include "templates/tangible/CharacterBuilderMenuNode.h"
 
 class CharacterBuilderTerminalTemplate : public SharedTangibleObjectTemplate {
 	Reference<CharacterBuilderMenuNode*> rootNode;

@@ -8,8 +8,8 @@
 #ifndef PLAYERCREATURETEMPLATE_H_
 #define PLAYERCREATURETEMPLATE_H_
 
-#include "templates/tangible/SharedCreatureObjectTemplate.h"
-#include "server/zone/managers/skill/imagedesign/CustomizationDataMap.h"
+#include "templates/creature/SharedCreatureObjectTemplate.h"
+#include "templates/customization/CustomizationDataMap.h"
 
 class PlayerCreatureTemplate : public SharedCreatureObjectTemplate {
 	CustomizationDataMap dataMap;

@@ -11,7 +11,7 @@ import system.util.VectorMap;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.Zone;
 include templates.SharedObjectTemplate;
-include server.zone.objects.tangible.terminal.characterbuilder.CharacterBuilderMenuNode;
+include templates.tangible.CharacterBuilderMenuNode;
 
 class CharacterBuilderTerminal extends Terminal {
 	public transient CharacterBuilderMenuNode rootNode;

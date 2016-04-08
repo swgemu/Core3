@@ -8,7 +8,7 @@
 #ifndef VENDORCREATURETEMPLATE_H_
 #define VENDORCREATURETEMPLATE_H_
 
-#include "templates/tangible/SharedCreatureObjectTemplate.h"
+#include "templates/creature/SharedCreatureObjectTemplate.h"
 
 class VendorCreatureTemplate : public SharedCreatureObjectTemplate {
 	Vector<String> outfits;

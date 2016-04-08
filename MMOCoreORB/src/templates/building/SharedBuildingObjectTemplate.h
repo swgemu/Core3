@@ -10,7 +10,7 @@
 
 #include "templates/tangible/SharedStructureObjectTemplate.h"
 #include "templates/ChildCreatureObject.h"
-#include "templates/tangible/SignTemplate.h"
+#include "templates/building/SignTemplate.h"
 
 class SharedBuildingObjectTemplate : public SharedStructureObjectTemplate {
 	StringParam terrainModificationFileName;
