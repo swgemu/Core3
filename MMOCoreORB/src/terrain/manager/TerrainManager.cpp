@@ -6,25 +6,14 @@
  */
 
 #include "TerrainManager.h"
-#include "server/zone/Zone.h"
 #include "templates/manager/TemplateManager.h"
-#include "server/zone/objects/terrain/ProceduralTerrainAppearance.h"
-#include "server/zone/objects/terrain/TerrainGenerator.h"
-#include "server/zone/objects/terrain/SpaceTerrainAppearance.h"
+#include "terrain/ProceduralTerrainAppearance.h"
+#include "terrain/TerrainGenerator.h"
+#include "terrain/SpaceTerrainAppearance.h"
 
 #define USE_CACHED_HEIGHT
 
-TerrainManager::TerrainManager(Zone* planet) : Logger("TerrainManager") {
-	zone = planet;
-
-	heightCache = NULL;
-
-	min = max = 0;
-}
-
-TerrainManager::TerrainManager(ManagedWeakReference<Zone*> planet) : Logger("TerrainManager") {
-	zone = planet.get();
-
+TerrainManager::TerrainManager() : Logger("TerrainManager") {
 	heightCache = NULL;
 
 	min = max = 0;
@@ -77,7 +66,7 @@ float TerrainManager::getHighestHeight(float x0, float y0, float x1, float y1, i
 
 	for (int i = (int)y0; i < (int)y0 + deltaY; i += stepping) {
 		for (int j = (int)x0; j < (int)x0 + deltaX; j += stepping) {
-			float height = zone->getHeight(j, i);
+			float height = getHeight(j, i);
 
 			if (height > maxHeight)
 				maxHeight = height;
@@ -95,7 +84,7 @@ float TerrainManager::getLowestHeight(float x0, float y0, float x1, float y1, in
 
 	for (int i = (int)y0; i < (int)y0 + deltaY; i += stepping) {
 		for (int j = (int)x0; j < (int)x0 + deltaX; j += stepping) {
-			float height = zone->getHeight(j, i);
+			float height = getHeight(j, i);
 
 			if (height < minHeight)
 				minHeight = height;
@@ -107,23 +96,6 @@ float TerrainManager::getLowestHeight(float x0, float y0, float x1, float y1, in
 
 float TerrainManager::getHighestHeightDifference(float x0, float y0, float x1, float y1, int stepping) {
 	return getHighestHeight(x0, y0, x1, y1, stepping) - getLowestHeight(x0, y0, x1, y1, stepping);
-}
-
-int TerrainManager::notifyPositionUpdate(CreatureObject* object) {
-	CreatureObject* creature = cast<CreatureObject*>( object);
-
-	float waterHeight;
-
-	if (creature->getParent() == NULL && getWaterHeight(creature->getPositionX(), creature->getPositionY(), waterHeight)) {
-
-		if (creature->getPositionZ() + creature->getSwimHeight()- waterHeight < 0.2) {
-
-			if (creature->hasState(CreatureState::ONFIRE))
-				creature->healDot(CreatureState::ONFIRE, 100);
-		}
-	}
-
-	return 0;
 }
 
 void TerrainManager::addTerrainModification(float x, float y, const String& terrainModificationFilename, uint64 objectid) {

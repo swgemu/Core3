@@ -10,7 +10,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/tangible/terminal/gambling/GamblingTerminal.h"
-#include "server/zone/managers/terrain/TerrainManager.h"
+#include "terrain/manager/TerrainManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/ZoneServer.h"

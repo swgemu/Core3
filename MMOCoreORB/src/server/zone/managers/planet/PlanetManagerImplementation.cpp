@@ -44,7 +44,7 @@
 #include "PlanetTravelPoint.h"
 #include "templates/tangible/SharedStructureObjectTemplate.h"
 #include "server/zone/managers/structure/StructureManager.h"
-#include "server/zone/objects/terrain/layer/boundaries/BoundaryRectangle.h"
+#include "terrain/layer/boundaries/BoundaryRectangle.h"
 
 ClientPoiDataTable PlanetManagerImplementation::clientPoiDataTable;
 Mutex PlanetManagerImplementation::poiMutex;
@@ -696,7 +696,7 @@ bool PlanetManagerImplementation::validateRegionName(const String& name) {
 void PlanetManagerImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 
-	terrainManager = new TerrainManager(zone);
+	terrainManager = new TerrainManager();
 }
 
 
