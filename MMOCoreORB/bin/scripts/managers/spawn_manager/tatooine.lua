@@ -344,6 +344,11 @@ tatooine_static_spawns = {
 	{"junk_dealer",0,-5131.9,75,-6585,96,0, "", "","stationary",JUNKGENERIC,JUNKCONVGENERIC},
 	{"junk_dealer",0,-1392,185,-3847.9,8,0, "", "","stationary",JUNKGENERIC,JUNKCONVGENERIC},
 	{"junk_dealer",0,-2750.9,5,2057,132,0, "", "","stationary",JUNKGENERIC,JUNKCONVGENERIC},
+	--
+	{"junk_dealer",0,-1118,12,-3686,-140,0, "", "","stationary",JUNKCLOTHESANDJEWELLERY+JUNKARMOUR+JUNKWEAPONS,JUNKCONVGENERIC},
+	{"junk_dealer",0,-1135,12,-3683,15,0, "", "","stationary",JUNKGENERIC,JUNKCONVGENERIC},
+	{"junk_dealer",0,-1026,10,-3557,5,0, "", "","stationary",JUNKGENERIC,JUNKCONVGENERIC},
+--
 	{"junk_dealer",0,1308.1,7,3085.2,1,0, "", "","stationary",JUNKGENERIC,JUNKCONVGENERIC},
 	{"junk_dealer",0,3905.3,33, 2362.9,-90,0, "", "","stationary",JUNKGENERIC,JUNKCONVGENERIC},
 	{"junk_nado",60,4.4,-0.5,1.3,-133,1255997, "", "Nado","stationary",JUNKGENERIC,JUNKCONVNADOWATTOS},

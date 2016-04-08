@@ -1,5 +1,7 @@
 seans_historian = Creature:new {
-	objectName = "@npc_name:human_base_female",
+	objectName = "",
+	randomNameType = NAME_GENERIC,
+  randomNameTag = false,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -22,13 +24,13 @@ seans_historian = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE + INTERESTING,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_seans_historian.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "seansHistorianConvoTemplate",
 	attacks = {
 	}
 }

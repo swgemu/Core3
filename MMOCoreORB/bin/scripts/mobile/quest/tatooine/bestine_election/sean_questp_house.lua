@@ -1,5 +1,6 @@
 sean_questp_house = Creature:new {
-	objectName = "@npc_name:twilek_base_female",
+	objectName = "",
+	customName = "Edaekomeu Ossilei",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -22,13 +23,13 @@ sean_questp_house = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE + INTERESTING,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_sean_questp_house.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "seanQuestpHouseConvoTemplate",
 	attacks = {
 	}
 }
