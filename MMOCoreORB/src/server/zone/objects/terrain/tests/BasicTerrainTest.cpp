@@ -9,9 +9,9 @@
 #include "gmock/gmock.h"
 
 #include "templates/manager/DataArchiveStore.h"
-#include "server/zone/objects/terrain/ProceduralTerrainAppearance.h"
-#include "server/zone/objects/terrain/SpaceTerrainAppearance.h"
-#include "server/zone/objects/terrain/TargaBitmap.h"
+#include "terrain/ProceduralTerrainAppearance.h"
+#include "terrain/SpaceTerrainAppearance.h"
+#include "terrain/TargaBitmap.h"
 #include "conf/ConfigManager.h"
 
 class BasicTerrainTest : public ::testing::Test {

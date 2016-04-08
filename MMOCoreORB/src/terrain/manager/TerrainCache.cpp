@@ -8,7 +8,7 @@
 #include "TerrainCache.h"
 #include "TerrainManager.h"
 
-#include "server/zone/objects/terrain/TerrainGenerator.h"
+#include "terrain/TerrainGenerator.h"
 
 #include "system/util/Vector.h"
 

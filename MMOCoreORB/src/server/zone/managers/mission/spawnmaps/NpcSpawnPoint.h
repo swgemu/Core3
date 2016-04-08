@@ -12,7 +12,7 @@
 #include "engine/orb/object/DistributedObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/creature/CreatureManager.h"
-#include "server/zone/managers/terrain/TerrainManager.h"
+#include "terrain/manager/TerrainManager.h"
 #include <iostream>
 #include <fstream>
 
