@@ -2,76 +2,80 @@
 --If you kill a factional NPC, and it is allied with another faction, then you also lose faction with the ally.
 --If you kill a factional NPC, and it is enemies with another faction, then you gain faction with the enemy.
 
---AddFaction
---	faction    - This is the string key faction that the relationship describes.
---  enemies    - This is a comma delimited list of string key factions that this faction is enemies with.
---  allies     - This is a comma delimited list of string key factions that this faction is allies with.
+-- { faction,playerAllowed,enemies,allies,adjustFactor },
+--	faction       - This is the string key faction that the relationship describes.
+-- playerAllowed - Player's are able to earn or lose points with this faction.
+-- enemies       - This is a comma delimited list of string key factions that this faction is enemies with.
+-- allies        - This is a comma delimited list of string key factions that this faction is allies with.
+-- adjustFactor  - This factor affects the amount of faction gained/lost when killing a mobile
 
-addFaction("rebel","imperial","")
-addFaction("imperial","rebel","")
-addFaction("aakuans","binayre,fed_dub,liberation_party","")
-addFaction("afarathu","corsec","")
-addFaction("alkhara","tusken_raider","")
-addFaction("bandit","townsperson","")
-addFaction("beldonnas_league","followers_of_lord_nyax,lost_aqualish","corsec")
-addFaction("binayre","aakuans,corsec,fed_dub","")
-addFaction("bloodrazor","canyon_corsair,nym","")
-addFaction("borvo","gungan,jabba,trade_federation","")
-addFaction("canyon_corsair","bloodrazor,nym","")
-addFaction("cobral","restuss","")
-addFaction("cor_swoop","smashball","")
-addFaction("corsec","afarathu,followers_of_lord_nyax,monumenter,rogue_corsec,lost_aqualish","beldonnas_league")
-addFaction("dantari_raiders","kunga_tribe,mokk_tribe,janta_tribe","")
-addFaction("desert_demon","swoop","")
-addFaction("donkuwah_tribe","gondula_tribe,panshee_tribe","")
-addFaction("drall","corsec,fed_dub","")
-addFaction("endor_marauder","gondula_tribe,panshee_tribe","")
-addFaction("fed_dub","binayre,drall,liberation_party,lost_aqualish","")
-addFaction("flail","hidden_daggers","")
-addFaction("followers_of_lord_nyax","beldonnas_league,corsec","")
-addFaction("fs_villager","sith_shadow","")
-addFaction("garyn","restuss","")
-addFaction("gondula_tribe","donkuwah_tribe,korga_tribe,pubam,endor_marauder","panshee_tribe")
-addFaction("gungan","borvo,plasma_thief,swamp_rat","")
-addFaction("hidden_daggers","beldonnas_league,corsec,flail","rogue_corsec")
-addFaction("hutt","naboo_security_force,narmle,nym,corsec,imperial","jabba,borvo")
-addFaction("jabba","borvo,valarian","hutt")
-addFaction("janta_tribe","kunga_tribe,dantari_raiders","")
-addFaction("jawa","tusken_raider","")
-addFaction("kobola","narmle,spice_collective","")
-addFaction("korga_tribe","gondula_tribe,panshee_tribe","")
-addFaction("kunga_tribe","dantari_raiders,mokk_tribe","")
-addFaction("liberation_party","corsec,fed_dub","")
-addFaction("lok_mercenaries","bloodrazor,canyon_corsair","")
-addFaction("lost_aqualish","beldonnas_league,corsec,fed_dub","")
-addFaction("meatlump","beldonnas_league,corsec,rogue_corsec","")
-addFaction("mokk_tribe","dantari_raiders,janta_tribe","")
-addFaction("monumenter","beldonnas_league,corsec","")
-addFaction("naboo","borvo","")
-addFaction("naboo_pirate","naboo_security_force","")
-addFaction("naboo_security_force","borvo,naboo_pirate,plasma_thief,swamp_rat,trade_federation","")
-addFaction("narmle","kobola,spice_collective","restuss")
-addFaction("nightsister","mtn_clan,imperial","")
-addFaction("nym","bloodrazor,canyon_corsair","")
-addFaction("olag_greck","beldonnas_league,corsec","")
-addFaction("panshee_tribe","donkuwah_tribe,korga_tribe,pubam,endor_marauder","gondula_tribe")
-addFaction("pirate","","")
-addFaction("plasma_thief","gungan","")
-addFaction("pubam","gondula_tribe,panshee_tribe","")
-addFaction("restuss","cobral,garyn","narmle")
-addFaction("rogue_corsec","corsec","hidden_daggers")
-addFaction("rorgungan","spice_collective","")
-addFaction("sif","rebel,imperial","hutt")
-addFaction("mtn_clan","nightsister","")
-addFaction("sith_shadow","fs_villager","rebel,imperial")
-addFaction("sith_shadow_nonaggro","fs_villager","rebel,imperial")
-addFaction("smashball","cor_swoop,corsec","")
-addFaction("spice_collective","narmle,kobola,rorgungan","")
-addFaction("spider_nightsister","mtn_clan","")
-addFaction("swamp_rat","gungan","")
-addFaction("swoop","desert_demon","")
-addFaction("thug","townsperson","")
-addFaction("townsperson","bandit,thug","rebel,imperial")
-addFaction("trade_federation","borvo,naboo_security_force","")
-addFaction("tusken_raider","alkhara,jawa","")
-addFaction("valarian","jabba","")
+factionList = {
+	{ "rebel", true, "imperial", "", 1.0 },
+	{ "imperial", true, "rebel", "", 1.0 },
+	{ "aakuans", true, "binayre,fed_dub,liberation_party", "", 1.0 },
+	{ "afarathu", true, "corsec", "", 1.0 },
+	{ "alkhara", true, "tusken_raider", "", 1.0 },
+	{ "bandit", true, "townsperson", "", 1.0 },
+	{ "beldonnas_league", true, "followers_of_lord_nyax,lost_aqualish", "corsec", 1.0 },
+	{ "binayre", true, "aakuans,corsec,fed_dub", "", 1.0 },
+	{ "bloodrazor", true, "canyon_corsair,nym", "", 1.0 },
+	{ "borvo", true, "gungan,jabba,trade_federation", "", 1.0 },
+	{ "canyon_corsair", true, "bloodrazor,nym", "", 1.0 },
+	{ "cobral", true, "restuss", "", 1.0 },
+	{ "cor_swoop", true, "smashball", "", 1.0 },
+	{ "corsec", true, "afarathu,followers_of_lord_nyax,monumenter,rogue_corsec,lost_aqualish", "beldonnas_league", 1.0 },
+	{ "dantari_raiders", true, "kunga_tribe,mokk_tribe,janta_tribe", "", 1.0 },
+	{ "desert_demon", true, "swoop", "", 1.0 },
+	{ "donkuwah_tribe", true, "gondula_tribe,panshee_tribe", "", 1.0 },
+	{ "drall", true, "corsec,fed_dub", "", 1.0 },
+	{ "endor_marauder", true, "gondula_tribe,panshee_tribe", "", 1.0 },
+	{ "fed_dub", true, "binayre,drall,liberation_party,lost_aqualish", "", 1.0 },
+	{ "flail", true, "hidden_daggers", "", 1.0 },
+	{ "followers_of_lord_nyax", true, "beldonnas_league,corsec", "", 1.0 },
+	{ "fs_villager", true, "sith_shadow", "", 0.0 },
+	{ "garyn", true, "restuss", "", 1.0 },
+	{ "gondula_tribe", true, "donkuwah_tribe,korga_tribe,pubam,endor_marauder", "panshee_tribe", 1.0 },
+	{ "gungan", true, "borvo,plasma_thief,swamp_rat", "", 1.0 },
+	{ "hidden_daggers", true, "beldonnas_league,corsec,flail", "rogue_corsec", 1.0 },
+	{ "hutt", true, "naboo_security_force,narmle,nym,corsec,imperial", "jabba,borvo", 1.0 },
+	{ "jabba", true, "borvo,valarian", "hutt", 1.0 },
+	{ "janta_tribe", true, "kunga_tribe,dantari_raiders", "", 1.0 },
+	{ "jawa", true, "tusken_raider", "", 1.0 },
+	{ "kobola", true, "narmle,spice_collective", "", 1.0 },
+	{ "korga_tribe", true, "gondula_tribe,panshee_tribe", "", 1.0 },
+	{ "kunga_tribe", true, "dantari_raiders,mokk_tribe", "", 1.0 },
+	{ "liberation_party", true, "corsec,fed_dub", "", 1.0 },
+	{ "lok_mercenaries", true, "bloodrazor,canyon_corsair", "", 1.0 },
+	{ "lost_aqualish", true, "beldonnas_league,corsec,fed_dub", "", 1.0 },
+	{ "meatlump", true, "beldonnas_league,corsec,rogue_corsec", "", 1.0 },
+	{ "mokk_tribe", true, "dantari_raiders,janta_tribe", "", 1.0 },
+	{ "monumenter", true, "beldonnas_league,corsec", "", 1.0 },
+	{ "mtn_clan", true, "nightsister", "", 1.0 },
+	{ "naboo", true, "borvo", "", 1.0 },
+	{ "naboo_pirate", true, "naboo_security_force", "", 1.0 },
+	{ "naboo_security_force", true, "borvo,naboo_pirate,plasma_thief,swamp_rat,trade_federation", "", 1.0 },
+	{ "narmle", true, "kobola,spice_collective", "restuss", 1.0 },
+	{ "nightsister", true, "mtn_clan,imperial", "", 1.0 },
+	{ "nym", true, "bloodrazor,canyon_corsair", "", 1.0 },
+	{ "olag_greck", true, "beldonnas_league,corsec", "", 1.0 },
+	{ "panshee_tribe", true, "donkuwah_tribe,korga_tribe,pubam,endor_marauder", "gondula_tribe", 1.0 },
+	{ "pirate", true, "", "", 1.0 },
+	{ "plasma_thief", true, "gungan", "", 1.0 },
+	{ "pubam", true, "gondula_tribe,panshee_tribe", "", 1.0 },
+	{ "restuss", true, "cobral,garyn", "narmle", 1.0 },
+	{ "rogue_corsec", true, "corsec", "hidden_daggers", 1.0 },
+	{ "rorgungan", true, "spice_collective", "", 1.0 },
+	{ "sif", true, "rebel,imperial", "hutt", 1.0 },
+	{ "sith_shadow", true, "fs_villager", "rebel,imperial", 0.0 },
+	{ "sith_shadow_nonaggro", true, "fs_villager", "rebel,imperial", 0.0 },
+	{ "smashball", true, "cor_swoop,corsec", "", 1.0 },
+	{ "spice_collective", true, "narmle,kobola,rorgungan", "", 1.0 },
+	{ "spider_nightsister", true, "mtn_clan", "", 1.0 },
+	{ "swamp_rat", true, "gungan", "", 1.0 },
+	{ "swoop", true, "desert_demon", "", 1.0 },
+	{ "thug", true, "townsperson", "", 1.0 },
+	{ "townsperson", true, "bandit,thug", "rebel,imperial", 1.0 },
+	{ "trade_federation", true, "borvo,naboo_security_force", "", 1.0 },
+	{ "tusken_raider", true, "alkhara,jawa", "", 1.0 },
+	{ "valarian", true, "jabba", "", 1.0 },
+}
