@@ -36,7 +36,7 @@ public:
 	void SetUp() {
 		// Perform setup of common constructs here.
 		mockZone = new MockZone();
-		terrainManager = new TerrainManager(mockZone);
+		terrainManager = new TerrainManager();
 	}
 
 	void TearDown() {

@@ -14,7 +14,7 @@
 
 #include "server/zone/objects/player/Races.h"
 
-#include "server/zone/objects/terrain/RegionNames.h"
+#include "terrain/RegionNames.h"
 
 class PlayersNearYouMessage : public ObjectControllerMessage {
 public:
