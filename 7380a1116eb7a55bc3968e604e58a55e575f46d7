@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_a7186885",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/conversation/LuaConversationObserver.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-08T09:53:47Z",
+      "side": 1,
+      "message": "This is included twice. Remove 1.",
+      "revId": "7380a1116eb7a55bc3968e604e58a55e575f46d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
