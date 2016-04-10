@@ -105,9 +105,9 @@ public:
 		} else if (container == "vendors") {
 			return sendVendorInfo(creature, targetObj);
 		} else if (container == "veteranrewards") {
-			return sendVeteranRewardInfo( creature, targetObj );
-		} else if( container == "faction") {
-			return sendFactionInfo( creature, targetObj );
+			return sendVeteranRewardInfo(creature, targetObj);
+		} else if(container == "faction") {
+			return sendFactionInfo(creature, targetObj);
 		} else if (container == "screenplaystate") {
 			if (!args.hasMoreTokens()) {
 				creature->sendSystemMessage("SYNTAX: /snoop [player] screenplaystate <stateName> [state]");
@@ -126,6 +126,10 @@ public:
 			} else {
 				creature->sendSystemMessage(targetObj->getFirstName() + " state check for screenplayState '" + stateName + "': " + String::valueOf(state) + ".");
 			}
+		} else if (container == "activescreenplay") {
+			String key = String::valueOf(targetObj->getObjectID()) + ":activeScreenPlay";
+			String data = DirectorManager::instance()->getStringSharedMemory(key);
+			creature->sendSystemMessage(targetObj->getFirstName() + " active screenplay: " + data);
 		} else if (container == "buffs") {
 			return sendBuffs(creature, targetObj);
 		} else {

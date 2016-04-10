@@ -90,6 +90,8 @@ namespace server {
 		QuestVectorMap* createQuestVectorMap(const String& keyString);
 		void removeQuestVectorMap(const String& keyString);
 
+		String getStringSharedMemory(const String& key);
+
 		virtual Lua* getLuaInstance();
 		int runScreenPlays();
 

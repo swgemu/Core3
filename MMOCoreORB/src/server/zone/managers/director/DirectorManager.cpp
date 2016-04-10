@@ -212,6 +212,10 @@ void DirectorManager::removeQuestStatus(const String& key) {
 		ObjectManager::instance()->destroyObjectFromDatabase(status->_getObjectID());
 }
 
+String DirectorManager::getStringSharedMemory(const String& key) {
+	return sharedMemory->getString(key);
+}
+
 void DirectorManager::startGlobalScreenPlays() {
 	for (int i = 0; i < screenPlays.size(); ++i) {
 		String screenPlay = screenPlays.elementAt(i).getKey();
