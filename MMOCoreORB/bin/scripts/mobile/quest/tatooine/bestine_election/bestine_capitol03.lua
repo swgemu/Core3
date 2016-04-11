@@ -23,7 +23,7 @@ bestine_capitol03 = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE + INTERESTING,
+	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_bestine_capitol03.iff"},

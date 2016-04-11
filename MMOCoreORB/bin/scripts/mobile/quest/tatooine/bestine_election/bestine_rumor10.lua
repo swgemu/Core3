@@ -1,7 +1,6 @@
 bestine_rumor10 = Creature:new {
 	objectName = "@mob/creature_names:commoner_bothan_female",
-	--customName = "Sola Nosconda",
-	randomNameType = NAME_GENERIC,
+	customName = "Sola Nosconda",
 	randomNameTag = true,
 	socialGroup = "townsperson",
 	faction = "townsperson",
@@ -25,7 +24,7 @@ bestine_rumor10 = Creature:new {
 	ferocity = 3,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE + INTERESTING,
+	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
 	diet = CARNIVORE,
 	templates = {"object/mobile/dressed_bestine_rumor10.iff"},
 	lootGroups = {},
