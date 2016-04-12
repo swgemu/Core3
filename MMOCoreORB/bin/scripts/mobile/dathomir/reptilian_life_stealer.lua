@@ -28,7 +28,7 @@ reptilian_life_stealer = Creature:new {
 	templates = {"object/mobile/reptilian_flier_hue.iff"},
 	scale = 1.5,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"strongpoison",""},

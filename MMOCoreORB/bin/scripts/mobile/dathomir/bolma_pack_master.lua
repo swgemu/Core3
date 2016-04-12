@@ -28,7 +28,7 @@ bolma_pack_master = Creature:new {
 	templates = {"object/mobile/bolma_hue.iff"},
 	scale = 1.05,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"blindattack",""}

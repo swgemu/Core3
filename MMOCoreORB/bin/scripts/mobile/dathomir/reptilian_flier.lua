@@ -28,7 +28,7 @@ reptilian_flier = Creature:new {
 	templates = {"object/mobile/reptilian_flier.iff"},
 	controlDeviceTemplate = "object/intangible/pet/pet_control.iff",
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"",""},

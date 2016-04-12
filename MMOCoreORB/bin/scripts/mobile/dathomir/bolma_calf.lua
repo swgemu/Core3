@@ -29,7 +29,7 @@ bolma_calf = Creature:new {
 	templates = {"object/mobile/bolma_calf.iff"},
 	scale = 0.65,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

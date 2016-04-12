@@ -37,7 +37,7 @@ lowland_brackaset = Creature:new {
 			lootChance = 1200000
 		}
 	},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

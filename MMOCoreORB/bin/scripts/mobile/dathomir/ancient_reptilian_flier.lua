@@ -29,7 +29,7 @@ ancient_reptilian_flier = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/pet_control.iff",
 	scale = 1.1,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"",""},

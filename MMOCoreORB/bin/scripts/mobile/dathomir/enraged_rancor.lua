@@ -38,7 +38,7 @@ enraged_rancor = Creature:new {
 			lootChance = 2600000
 		}
 	},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"knockdownattack",""},

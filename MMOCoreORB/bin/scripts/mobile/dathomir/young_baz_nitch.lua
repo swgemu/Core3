@@ -28,7 +28,7 @@ young_baz_nitch = Creature:new {
 	templates = {"object/mobile/young_baz_nitch.iff"},
 	scale = 0.8,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

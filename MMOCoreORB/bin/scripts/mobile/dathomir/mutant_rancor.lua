@@ -38,7 +38,7 @@ mutant_rancor = Creature:new {
 			lootChance = 2500000
 		}
 	},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"creatureareableeding",""},

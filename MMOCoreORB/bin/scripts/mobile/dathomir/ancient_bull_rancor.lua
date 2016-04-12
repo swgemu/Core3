@@ -38,7 +38,7 @@ ancient_bull_rancor = Creature:new {
 			lootChance = 2960000
 		}
 	},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"creatureareableeding",""},

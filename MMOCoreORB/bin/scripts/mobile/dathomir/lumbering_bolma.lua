@@ -28,7 +28,7 @@ lumbering_bolma = Creature:new {
 	templates = {"object/mobile/bolma_hue.iff"},
 	scale = 1.15,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"intimidationattack",""},

@@ -29,7 +29,7 @@ female_malkloc_plainswalker = Creature:new {
 	templates = {"object/mobile/malkloc_hue.iff"},
 	scale = 1.15,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"stunattack",""},

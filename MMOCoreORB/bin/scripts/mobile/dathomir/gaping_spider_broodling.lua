@@ -28,7 +28,7 @@ gaping_spider_broodling = Creature:new {
 	templates = {"object/mobile/gaping_spider_broodling.iff"},
 	scale = 0.75,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"",""},

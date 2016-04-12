@@ -28,7 +28,7 @@ gaping_spider = Creature:new {
 	templates = {"object/mobile/gaping_spider.iff"},
 	controlDeviceTemplate = "object/intangible/pet/gaping_spider_hue.iff",
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"mildpoison",""},

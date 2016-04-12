@@ -29,7 +29,7 @@ bolma_youth = Creature:new {
 	templates = {"object/mobile/bolma_youth.iff"},
 	scale = 0.8,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -43,7 +43,7 @@ dathomir_prisoner = Creature:new {
 			}
 		}
 	},
-	weapons = {},
+	weapons = {"npc_default_unarmed"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/townperson",
 	attacks = brawlermid

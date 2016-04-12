@@ -29,7 +29,7 @@ shear_mite_broodling = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/shear_mite_hue.iff",
 	scale = 0.75,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"posturedownattack",""}

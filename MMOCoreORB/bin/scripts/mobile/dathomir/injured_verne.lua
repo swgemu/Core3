@@ -28,7 +28,7 @@ injured_verne = Creature:new {
 	templates = {"object/mobile/verne.iff"},
 	scale = 0.9,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

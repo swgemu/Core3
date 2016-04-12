@@ -28,7 +28,7 @@ purbole_youth = Creature:new {
 	templates = {"object/mobile/purbole_youth.iff"},
 	scale = 0.8,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"stunattack",""}

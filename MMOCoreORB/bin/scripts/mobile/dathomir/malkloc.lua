@@ -28,7 +28,7 @@ malkloc = Creature:new {
 	templates = {"object/mobile/malkloc.iff"},
 	controlDeviceTemplate = "object/intangible/pet/malkloc_hue.iff",
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"intimidationattack",""}

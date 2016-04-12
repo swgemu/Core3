@@ -29,7 +29,7 @@ bolma_male = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/bolma_hue.iff",
 	scale = 1.15,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"",""},

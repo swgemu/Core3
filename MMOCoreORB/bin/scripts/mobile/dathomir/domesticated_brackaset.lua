@@ -35,7 +35,7 @@ domesticated_brackaset = Creature:new {
 			lootChance = 1460000
 		}
 	},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"intimidationattack",""}

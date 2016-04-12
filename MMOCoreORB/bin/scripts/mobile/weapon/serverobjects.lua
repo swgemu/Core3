@@ -2,6 +2,8 @@
 
 -- creature default attack
 includeFile("weapon/creature_default_weapon.lua")
+-- npc default attack
+includeFile("weapon/npc_default_unarmed.lua")
 
 -- creature spit attacks
 includeFile("weapon/creature_spit_heavy_flame.lua")
@@ -49,7 +51,6 @@ includeFile("weapon/groups/unarmed_weapons.lua")
 includeFile("weapon/groups/novice_weapons.lua")
 includeFile("weapon/groups/corsec_police_weapons.lua")
 includeFile("weapon/groups/geonosian_mercenary_weapons.lua")
-
 
 -- Groups gotten from swgemu
 includeFile("weapon/groups/battle_droid_weapons.lua")

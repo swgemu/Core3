@@ -39,7 +39,7 @@ gnarled_rancor = Creature:new {
 			lootChance = 1920000
 		}
 	},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"knockdownattack",""}
