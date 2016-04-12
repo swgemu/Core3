@@ -1834,9 +1834,12 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	else
 		xpType = weapon->getXpType();
 
-	int numberOfPoolsDamaged = ((bool)(poolsToDamage & HEALTH) && data.getHealthDamageMultiplier() > 0.0f);
-	numberOfPoolsDamaged += ((bool)(poolsToDamage & ACTION) && data.getActionDamageMultiplier() > 0.0f);
-	numberOfPoolsDamaged += ((bool)(poolsToDamage & MIND) && data.getMindDamageMultiplier() > 0.0f);
+	bool healthDamaged = (!!(poolsToDamage & HEALTH) && data.getHealthDamageMultiplier() > 0.0f);
+	bool actionDamaged = (!!(poolsToDamage & ACTION) && data.getActionDamageMultiplier() > 0.0f);
+	bool mindDamaged   = (!!(poolsToDamage & MIND)   && data.getMindDamageMultiplier()   > 0.0f);
+
+	int numberOfPoolsDamaged = (healthDamaged ? 1 : 0) + (actionDamaged ? 1 : 0) + (mindDamaged ? 1 : 0);
+	Vector<int> poolsToWound;
 
 	int numSpillOverPools = 3 - numberOfPoolsDamaged;
 
@@ -1850,7 +1853,7 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	if (foodBonus > 0)
 		foodMitigation = (int)(damage * foodBonus / 100.f);
 
-	if (poolsToDamage & HEALTH) {
+	if (healthDamaged) {
 		static uint8 bodyLocations[] = {HIT_BODY, HIT_BODY, HIT_LARM, HIT_RARM};
 		hitLocation = bodyLocations[System::random(3)];
 
@@ -1863,18 +1866,10 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 
 		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)healthDamage, true, xpType, true, true);
 
-
-		if (System::random(100) < ratio)
-			defender->addWounds(CreatureAttribute::HEALTH, 1, true);
-
-		if (System::random(100) < ratio)
-			defender->addWounds(CreatureAttribute::STRENGTH, 1, true);
-
-		if (System::random(100) < ratio)
-			defender->addWounds(CreatureAttribute::CONSTITUTION, 1, true);
+		poolsToWound.add(CreatureAttribute::HEALTH);
 	}
 
-	if (poolsToDamage & ACTION) {
+	if (actionDamaged) {
 		static uint8 legLocations[] = {HIT_LLEG, HIT_RLEG};
 		hitLocation = legLocations[System::random(1)];
 
@@ -1887,18 +1882,10 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 
 		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (int)actionDamage, true, xpType, true, true);
 
-
-		if (System::random(100) < ratio)
-			defender->addWounds(CreatureAttribute::ACTION, 1, true);
-
-		if (System::random(100) < ratio)
-			defender->addWounds(CreatureAttribute::QUICKNESS, 1, true);
-
-		if (System::random(100) < ratio)
-			defender->addWounds(CreatureAttribute::STAMINA, 1, true);
+		poolsToWound.add(CreatureAttribute::ACTION);
 	}
 
-	if (poolsToDamage & MIND) {
+	if (mindDamaged) {
 		hitLocation = HIT_HEAD;
 		mindDamage = getArmorReduction(attacker, weapon, defender, damage * data.getMindDamageMultiplier(), hitLocation, data) * damageMultiplier;
 		mindDamage -= MIN(mindDamage, foodMitigation * data.getMindDamageMultiplier());
@@ -1909,14 +1896,7 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 
 		defender->inflictDamage(attacker, CreatureAttribute::MIND, (int)mindDamage, true, xpType, true, true);
 
-		if (System::random(100) < ratio)
-			defender->addWounds(CreatureAttribute::MIND, 1, true);
-
-		if (System::random(100) < ratio)
-			defender->addWounds(CreatureAttribute::FOCUS, 1, true);
-
-		if (System::random(100) < ratio)
-			defender->addWounds(CreatureAttribute::WILLPOWER, 1, true);
+		poolsToWound.add(CreatureAttribute::MIND);
 	}
 
 	if (numSpillOverPools > 0) {
@@ -1937,6 +1917,12 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 		defender->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, totalDamage);
 	}
 
+	if (poolsToWound.size() > 0 && System::random(100) < ratio) {
+		int poolToWound = poolsToWound.get(System::random(poolsToWound.size()));
+		defender->addWounds(poolToWound,     1, true);
+		defender->addWounds(poolToWound + 1, 1, true);
+		defender->addWounds(poolToWound + 2, 1, true);
+	}
 
 	if(attacker->isPlayerCreature())
 		showHitLocationFlyText(attacker->asCreatureObject(), defender, hitLocation);
