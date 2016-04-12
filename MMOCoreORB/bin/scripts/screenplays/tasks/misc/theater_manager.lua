@@ -36,8 +36,7 @@ TheaterManagerScreenPlay = ScreenPlay:new {
 	enabled = 1,
 
 	-- Number of promotions required for each promotional phase (strings match values 10, 20, 30)
-	--requiredPromotions = { 10, 20, 30 },
-	requiredPromotions = { 2, 2, 2 },
+	requiredPromotions = { 10, 20, 30 },
 
 	-- Time in miliseconds between steps of audition
 	auditionHeartbeat = 15 * 1000, -- 15 seconds
@@ -46,8 +45,7 @@ TheaterManagerScreenPlay = ScreenPlay:new {
 	performanceHeartbeat = 15 * 1000, -- 15 seconds
 
 	-- Time before player can re-attempt a step, strings match 24 hours. This value is in seconds not miliseconds
-	--failureTimerReset = 24 * 60 * 60, -- 24 hours
-	failureTimerReset = 5 * 60, -- 5 minutes for testing
+	failureTimerReset = 24 * 60 * 60, -- 24 hours
 
 	-- List of performances used by auditions and performances
 	songs = { "ballad", "ceremonial", "folk", "jazz", "rock", "starwars1", "starwars2", "starwars3", "virtuoso", "waltz" },
