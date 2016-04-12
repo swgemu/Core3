@@ -70,7 +70,7 @@ object_weapon_ranged_creature_creature_spit_large_toxicgreen = object_weapon_ran
 
 	-- can be dodge, counterattack, or block or a combination
 	-- Secondary defense when equipped
-	defenderSecondaryDefenseModifiers = { "dodge" },
+	defenderSecondaryDefenseModifiers = { "unarmed_passive_defense" },
 
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "unarmed_speed" },

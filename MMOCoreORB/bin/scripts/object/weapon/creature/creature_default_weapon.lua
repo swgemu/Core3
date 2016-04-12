@@ -72,7 +72,7 @@ object_weapon_creature_creature_default_weapon = object_weapon_creature_shared_c
 	
 	-- can be dodge, counterattack, or block or a combination
 	-- Secondary defense when equipped
-	defenderSecondaryDefenseModifiers = { "dodge", "counterattack" },
+	defenderSecondaryDefenseModifiers = { "unarmed_passive_defense" },
 	
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "unarmed_speed" },
