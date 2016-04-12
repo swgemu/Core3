@@ -54,7 +54,7 @@ void MissionObjectiveImplementation::activate() {
 			timeRemaining = 1;
 		}
 
-		failTask = new FailMissionAfterCertainTimeTask(_this.getReferenceUnsafeStaticCast());
+		failTask = new FailMissionAfterCertainTimeTask(mission.get());
 		failTask->schedule(timeRemaining);
 	}
 }
