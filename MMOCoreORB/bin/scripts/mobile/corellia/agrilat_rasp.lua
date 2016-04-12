@@ -29,7 +29,7 @@ agrilat_rasp = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/horned_rasp_hue.iff",
 	scale = 1.05,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

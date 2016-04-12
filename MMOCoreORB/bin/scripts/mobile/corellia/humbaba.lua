@@ -29,7 +29,7 @@ humbaba = Creature:new {
 	templates = {"object/mobile/falumpaset_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/falumpaset_hue.iff",
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

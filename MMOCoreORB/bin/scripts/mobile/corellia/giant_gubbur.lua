@@ -28,7 +28,7 @@ giant_gubbur = Creature:new {
 	templates = {"object/mobile/giant_gubbur.iff"},
 	scale = 1.5,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

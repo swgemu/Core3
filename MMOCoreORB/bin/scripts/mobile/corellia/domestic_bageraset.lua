@@ -28,7 +28,7 @@ domestic_bageraset = Creature:new {
 
 	templates = {"object/mobile/bageraset_hue.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"stunattack",""}

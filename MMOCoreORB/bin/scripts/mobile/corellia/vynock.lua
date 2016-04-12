@@ -28,7 +28,7 @@ vynock = Creature:new {
 	templates = {"object/mobile/vynock.iff"},
 	controlDeviceTemplate = "object/intangible/pet/vynock_hue.iff",
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"stunattack",""}

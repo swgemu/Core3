@@ -29,7 +29,7 @@ bloodstained_prowler = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/gurreck_hue.iff",
 	scale = 1.35,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"knockdownattack",""},

@@ -28,7 +28,7 @@ howling_plumed_rasp = Creature:new {
 	templates = {"object/mobile/plumed_rasp_hue.iff"},
 	scale = 0.95,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

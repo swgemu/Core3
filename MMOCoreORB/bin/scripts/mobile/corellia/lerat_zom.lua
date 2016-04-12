@@ -36,7 +36,7 @@ lerat_zom = Creature:new {
 			}
 		}
 	},
-	weapons = {},
+	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/slang",
 	attacks = brawlermaster

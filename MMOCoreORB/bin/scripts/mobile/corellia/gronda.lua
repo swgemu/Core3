@@ -28,7 +28,7 @@ gronda = Creature:new {
 	templates = {"object/mobile/gronda.iff"},
 	controlDeviceTemplate = "object/intangible/pet/gronda_hue.iff",
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"",""},

@@ -29,7 +29,7 @@ violent_krahbu = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/krahbu_hue.iff",
 	scale = 1.15,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"",""},

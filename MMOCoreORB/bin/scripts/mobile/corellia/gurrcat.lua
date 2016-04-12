@@ -27,7 +27,7 @@ gurrcat = Creature:new {
 
 	templates = {"object/mobile/gurrcat.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"intimidationattack",""}

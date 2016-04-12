@@ -28,7 +28,7 @@ gubbur = Creature:new {
 	templates = {"object/mobile/gubbur_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/gubbur_hue.iff",
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

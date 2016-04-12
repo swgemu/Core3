@@ -29,7 +29,7 @@ female_dire_cat = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/narglatch_hue.iff",
 	scale = 0.9,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"",""},

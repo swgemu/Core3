@@ -27,7 +27,7 @@ vrelt = Creature:new {
 
 	templates = {"object/mobile/vrelt.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

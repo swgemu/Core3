@@ -28,7 +28,7 @@ murra = Creature:new {
 	templates = {"object/mobile/murra.iff"},
 	controlDeviceTemplate = "object/intangible/pet/murra_hue.iff",
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"posturedownattack",""}

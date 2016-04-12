@@ -27,7 +27,7 @@ gulginaw = Creature:new {
 
 	templates = {"object/mobile/gulginaw.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"",""},

@@ -29,7 +29,7 @@ swamp_humbaba = Creature:new {
 	templates = {"object/mobile/savage_humbaba.iff"},
 	scale = 1.1,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"",""},

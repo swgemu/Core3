@@ -29,7 +29,7 @@ blood_thirsty_monarch = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/corellian_butterfly_hue.iff",
 	scale = 1.3,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"stunattack",""},

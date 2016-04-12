@@ -28,7 +28,7 @@ domestic_humbaba = Creature:new {
 
 	templates = {"object/mobile/savage_humbaba.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"posturedownattack",""}

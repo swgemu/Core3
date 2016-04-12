@@ -29,7 +29,7 @@ war_gronda = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/gronda_hue.iff",
 	scale = 1.1,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"knockdownattack",""},

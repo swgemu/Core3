@@ -29,7 +29,7 @@ crazed_durni = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/durni_hue.iff",
 	scale = 1.15,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"",""},

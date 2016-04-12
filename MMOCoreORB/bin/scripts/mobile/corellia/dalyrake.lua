@@ -28,7 +28,7 @@ dalyrake = Creature:new {
 	templates = {"object/mobile/dalyrake.iff"},
 	controlDeviceTemplate = "object/intangible/pet/dalyrake_hue.iff",
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"",""},

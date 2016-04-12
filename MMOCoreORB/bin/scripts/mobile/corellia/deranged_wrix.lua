@@ -28,7 +28,7 @@ deranged_wrix = Creature:new {
 	templates = {"object/mobile/deranged_wrix.iff"},
 	scale = 1.1,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"stunattack",""},

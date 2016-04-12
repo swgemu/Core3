@@ -29,7 +29,7 @@ giant_dalyrake = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/dalyrake_hue.iff",
 	scale = 1.5,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"mildpoison",""},

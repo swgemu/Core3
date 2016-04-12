@@ -28,7 +28,7 @@ corellian_butterfly = Creature:new {
 	templates = {"object/mobile/corellian_butterfly.iff"},
 	controlDeviceTemplate = "object/intangible/pet/corellian_butterfly_hue.iff",
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -28,7 +28,7 @@ canoid = Creature:new {
 	templates = {"object/mobile/canoid.iff"},
 	controlDeviceTemplate = "object/intangible/pet/boar_wolf_hue.iff",
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"",""},

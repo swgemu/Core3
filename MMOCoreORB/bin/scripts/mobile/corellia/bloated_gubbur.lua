@@ -28,7 +28,7 @@ bloated_gubbur = Creature:new {
 	templates = {"object/mobile/gubbur_hue.iff"},
 	scale = 1.25,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

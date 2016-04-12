@@ -28,7 +28,7 @@ krahbu = Creature:new {
 	templates = {"object/mobile/krahbu.iff"},
 	controlDeviceTemplate = "object/intangible/pet/krahbu_hue.iff",
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"intimidationattack",""}

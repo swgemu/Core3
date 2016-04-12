@@ -29,7 +29,7 @@ giant_carrion_spat = Creature:new {
 	templates = {"object/mobile/giant_carrion_spat.iff"},
 	controlDeviceTemplate = "object/intangible/pet/carrion_spat_hue.iff",
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"dizzyattack",""},

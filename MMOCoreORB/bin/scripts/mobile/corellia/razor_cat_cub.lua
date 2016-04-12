@@ -28,7 +28,7 @@ razor_cat_cub = Creature:new {
 	templates = {"object/mobile/corellian_sand_panther_cub.iff"},
 	scale = 0.8,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"",""},

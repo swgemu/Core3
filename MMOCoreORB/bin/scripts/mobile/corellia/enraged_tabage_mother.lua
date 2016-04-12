@@ -29,7 +29,7 @@ enraged_tabage_mother = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/langlatch_hue.iff",
 	scale = 1.25,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"stunattack",""}

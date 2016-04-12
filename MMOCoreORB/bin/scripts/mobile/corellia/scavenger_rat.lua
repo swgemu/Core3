@@ -27,7 +27,7 @@ scavenger_rat = Creature:new {
 
 	templates = {"object/mobile/womp_rat.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

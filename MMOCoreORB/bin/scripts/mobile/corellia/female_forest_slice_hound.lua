@@ -29,7 +29,7 @@ female_forest_slice_hound = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/corellian_slice_hound_hue.iff",
 	scale = 1.05,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"posturedownattack",""}

@@ -35,7 +35,7 @@ sharnaff_reckless_ravager = Creature:new {
 			lootChance = 1680000
 		}
 	},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"dizzyattack",""},

@@ -28,7 +28,7 @@ gronda_juggernaut = Creature:new {
 	templates = {"object/mobile/gronda_hue.iff"},
 	scale = 1.4,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"knockdownattack",""},

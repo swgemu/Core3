@@ -35,7 +35,7 @@ sharnaff = Creature:new {
 			lootChance = 1620000
 		}
 	},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"dizzyattack",""},

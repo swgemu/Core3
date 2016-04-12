@@ -29,7 +29,7 @@ acicular_defender = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/swirl_prong_hue.iff",
 	scale = 1.2,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"blindattack",""}

@@ -29,7 +29,7 @@ grand_wrix = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/gurreck_hue.iff",
 	scale = 1.25,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"knockdownattack",""},

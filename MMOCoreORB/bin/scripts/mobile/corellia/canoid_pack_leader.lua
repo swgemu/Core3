@@ -28,7 +28,7 @@ canoid_pack_leader = Creature:new {
 	templates = {"object/mobile/canoid_pack_leader.iff"},
 	scale = 1.25,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"intimidationattack",""}

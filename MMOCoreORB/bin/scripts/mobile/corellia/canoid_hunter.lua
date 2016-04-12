@@ -29,7 +29,7 @@ canoid_hunter = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/boar_wolf_hue.iff",
 	scale = 1.1,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"intimidationattack",""}

@@ -28,7 +28,7 @@ plumed_rasp = Creature:new {
 	templates = {"object/mobile/plumed_rasp.iff"},
 	controlDeviceTemplate = "object/intangible/pet/plumed_rasp_hue.iff",
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

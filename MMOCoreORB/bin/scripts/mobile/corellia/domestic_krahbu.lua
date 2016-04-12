@@ -28,7 +28,7 @@ domestic_krahbu = Creature:new {
 
 	templates = {"object/mobile/krahbu_hue.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

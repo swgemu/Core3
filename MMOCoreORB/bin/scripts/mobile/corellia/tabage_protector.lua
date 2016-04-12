@@ -29,7 +29,7 @@ tabage_protector = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/langlatch_hue.iff",
 	scale = 1.2,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"stunattack",""},

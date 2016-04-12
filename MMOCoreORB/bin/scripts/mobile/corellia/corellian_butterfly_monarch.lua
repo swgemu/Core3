@@ -28,7 +28,7 @@ corellian_butterfly_monarch = Creature:new {
 	templates = {"object/mobile/corellian_butterfly_monarch.iff"},
 	scale = 1.25,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"knockdownattack",""},

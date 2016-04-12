@@ -29,7 +29,7 @@ carrion_spat_corpsereaver = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/carrion_spat_hue.iff",
 	scale = 1.2,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"blindattack",""},
