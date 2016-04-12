@@ -25,6 +25,7 @@
 #include "server/zone/managers/object/ObjectManager.h"
 #include "templates/manager/TemplateManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/director/DirectorManager.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
@@ -434,6 +435,13 @@ void ServerCore::handleCommands() {
 						server->getPlayerManager()->getCleanupCharacterCount();
 				}
 
+			} else if ( command == "test" ) {
+				// get lua
+				Lua* lua = DirectorManager::instance()->getLuaInstance();
+
+				// create the lua function
+				Reference<LuaFunction*> func = lua->createFunction("Tests", arguments, 0);
+				func->callFunction();
 			} else
 				System::out << "unknown command (" << command << ")\n";
 		} catch (SocketException& e) {
