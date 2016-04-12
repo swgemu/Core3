@@ -111,6 +111,11 @@ class GuildObject extends SceneObject {
 
 	public native void rescheduleUpdateEvent(unsigned int seconds);
 
+	public synchronized void cancelUpdateEvent() {
+		if (guildUpdateEvent != null)
+			guildUpdateEvent.cancel();
+	}
+
 	@local
 	@dirty
 	public Time getNextUpdateTime() {

@@ -1025,9 +1025,17 @@ void ObjectManager::onCommitData() {
 	}
 
 	//Spawn the delete characters task.
-	if (!deleteCharactersTask->isScheduled()) {
+	if (deleteCharactersTask != NULL && !deleteCharactersTask->isScheduled()) {
 		deleteCharactersTask->updateDeletedCharacters();
 		int mins = ConfigManager::instance()->getPurgeDeletedCharacters();
 		deleteCharactersTask->schedule(mins * 60 * 1000);
 	}
+}
+
+void ObjectManager::cancelDeleteCharactersTask() {
+	if (deleteCharactersTask->isScheduled()) {
+		deleteCharactersTask->cancel();
+	}
+
+	deleteCharactersTask = NULL;
 }

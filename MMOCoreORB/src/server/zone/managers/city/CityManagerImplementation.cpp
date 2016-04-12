@@ -789,6 +789,19 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 
 }
 
+void CityManagerImplementation::cancelAllCityEvents() {
+	Locker locker(_this.getReferenceUnsafeStaticCast());
+
+	for (int i = 0; i < cities.size(); i++) {
+		CityRegion* city = cities.get(i);
+
+		if (city == NULL)
+			continue;
+
+		city->cancelEvents();
+	}
+}
+
 void CityManagerImplementation::processIncomeTax(CityRegion* city) {
 	int incomeTax = city->getIncomeTax();
 

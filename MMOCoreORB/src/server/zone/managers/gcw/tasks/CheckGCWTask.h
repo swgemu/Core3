@@ -10,18 +10,24 @@
 #include "engine/engine.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace gcw {
+namespace tasks {
+
 class CheckGCWTask : public Task {
 	ManagedWeakReference<GCWManager*> gcwManager;
 
 public:
-	CheckGCWTask(GCWManager* manager){
+	CheckGCWTask(GCWManager* manager) {
 		gcwManager = manager;
 	}
 
 	void run() {
 		ManagedReference<GCWManager*> strongRef = gcwManager.get();
 
-		if (strongRef == NULL){
+		if (strongRef == NULL) {
 			return;
 		}
 
@@ -30,7 +36,12 @@ public:
 	}
 };
 
+}
+}
+}
+}
+}
 
-
+using namespace server::zone::managers::gcw::tasks;
 
 #endif /* CHECKGCWTASK_H_ */

@@ -18,6 +18,7 @@ import engine.service.proto.BaseMessage;
 import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.objects.player.sui.listbox.SuiListBox;
+import server.zone.managers.resource.ResourceShiftTask;
 
 include server.zone.managers.resource.resourcespawner.ResourceSpawner;
 include server.zone.managers.resource.resourcespawner.resourcetree.ResourceTree;
@@ -30,13 +31,16 @@ include server.zone.objects.resource.ResourceSpawn;
  */
 class ResourceManager extends Observer implements Logger {
 	private transient ZoneProcessServer processor;
+
 	@weakReference
 	private ZoneServer zoneServer;
 	private transient ResourceSpawner resourceSpawner;
 	private transient ObjectManager objectManager;
 	private transient int shiftInterval;
 	private transient Lua lua;
-	
+
+	protected transient ResourceShiftTask resourceShiftTask;
+
 	public static final int RESOURCE_DEED_QUANTITY = 30000;
 	
 	public ResourceManager(ZoneServer server, ZoneProcessServer impl, 

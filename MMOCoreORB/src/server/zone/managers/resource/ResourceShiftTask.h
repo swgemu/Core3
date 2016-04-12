@@ -13,7 +13,10 @@
 
 #include "engine/engine.h"
 
-class ResourceSpawner;
+namespace server {
+namespace zone {
+namespace managers {
+namespace resource {
 
 class ResourceShiftTask : public Task {
 	ManagedReference<ResourceManager* > resourceManager;
@@ -27,5 +30,12 @@ public:
 		resourceManager->shiftResources();
 	}
 };
+
+}
+}
+}
+}
+
+using namespace server::zone::managers::resource;
 
 #endif /* RESOURCESHIFTTASK_H_ */

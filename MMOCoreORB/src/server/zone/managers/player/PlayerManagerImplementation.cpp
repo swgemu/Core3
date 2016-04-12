@@ -4539,6 +4539,36 @@ int PlayerManagerImplementation::getOnlineCharCount(unsigned int accountId) {
 }
  */
 
+void PlayerManagerImplementation::disconnectAllPlayers() {
+	Locker locker(&onlineMapMutex);
+
+	HashTableIterator<uint32, Vector<Reference<ZoneClientSession*> > > iter = onlineZoneClientMap.iterator();
+
+	while (iter.hasNext()) {
+		Vector<Reference<ZoneClientSession*> > clients = iter.next();
+
+		for (int i = 0; i < clients.size(); i++) {
+			ZoneClientSession* session = clients.get(i);
+
+			if (session != NULL) {
+				CreatureObject* player = session->getPlayer();
+
+				if (player != NULL) {
+					PlayerObject* ghost = player->getPlayerObject();
+
+					if (ghost != NULL) {
+						Locker locker(player);
+						ghost->setLinkDead(true);
+						ghost->disconnect(true, true);
+					}
+				}
+			}
+		}
+	}
+
+	info("All players disconnected", true);
+}
+
 bool PlayerManagerImplementation::shouldRescheduleCorpseDestruction(CreatureObject* player, CreatureObject* ai) {
 
 	if(player == NULL || ai == NULL)

@@ -16,6 +16,7 @@ import server.zone.objects.player.PlayerObject;
 import system.thread.Mutex;
 import server.zone.objects.tangible.deed.structure.StructureDeed;
 import server.zone.objects.tangible.deed.Deed;
+import server.zone.managers.gcw.tasks.CheckGCWTask;
 
 include server.zone.objects.building.components.DestructibleBuildingDataComponent;
 include server.zone.objects.installation.components.TurretDataComponent;
@@ -24,6 +25,7 @@ include templates.ChildObject;
 include server.chat.StringIdChatParameter;
 include server.zone.managers.faction.FactionManager;
 include templates.faction.Factions;
+
 class GCWManager extends ManagedService implements Logger {
 
 	public static final int NOTAFACTIONBASE = 0;
@@ -31,25 +33,21 @@ class GCWManager extends ManagedService implements Logger {
 	public static final int STATICFACTIONBASE = 2;
 
 	private Zone zone;
-	
+
 	@dereferenced 
 	protected transient SortedVector<BuildingObject > gcwBaseList;
-	
+
 	@dereferenced
 	protected transient VectorMap<unsigned long, Reference<Task> > gcwStartTasks;
-	
+
 	@dereferenced
 	protected transient VectorMap<unsigned long, Reference<Task> > gcwEndTasks;
 
 	@dereferenced
-	protected transient Vector<string> dnaNucleotides;
-
-	@dereferenced
-	protected transient Vector<string> dnaPairs;
-	
-	@dereferenced
 	protected transient VectorMap<unsigned long, Reference<Task> > gcwDestroyTasks;
-	
+
+	protected transient CheckGCWTask checkGCWTask;
+
 	@dereferenced
 	protected transient Mutex baseMutex;
 
@@ -59,12 +57,18 @@ class GCWManager extends ManagedService implements Logger {
 	@dereferenced
 	protected transient HashTable<int, float> racialPenaltyMap;
 
+	@dereferenced
+	protected transient Vector<string> dnaNucleotides;
+
+	@dereferenced
+	protected transient Vector<string> dnaPairs;
+
 	private transient int rebelBases;
 	private transient int rebelScore;
 	private transient int imperialBases;
 	private transient int imperialScore;
 	private transient int winningFaction;
-	
+
 	public transient int gcwCheckTimer;
 	public transient int vulnerabilityDuration; 
 	public transient int vulnerabilityFrequency; 
@@ -84,7 +88,7 @@ class GCWManager extends ManagedService implements Logger {
 	public transient int loserBonus;
 	public transient boolean spawnDefenses;
 	public transient int initialVulnerabilityDelay;
-	
+
 	public transient boolean racialPenaltyEnabled;
 
 	@dereferenced
@@ -148,6 +152,7 @@ class GCWManager extends ManagedService implements Logger {
 
 	public native void performGCWTasks();
 	private native void verifyTurrets(BuildingObject building);
+	public native void cancelAllTasks();
 
 	public native boolean canPlaceMoreBases(CreatureObject creature);
 	public native int getBaseCount(CreatureObject creature);

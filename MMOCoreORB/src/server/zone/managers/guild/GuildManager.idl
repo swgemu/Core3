@@ -62,6 +62,7 @@ class GuildManager extends ManagedService implements Logger {
 	public native void loadLuaConfig();
 
 	private native void scheduleGuildUpdates();
+	public native void cancelAllGuildUpdates();
 	public native void processGuildUpdate(GuildObject guild);
 	private native void processGuildElection(GuildObject guild);
 	private native void destroyGuild(GuildObject guild, @dereferenced StringIdChatParameter mailbody);

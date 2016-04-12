@@ -97,6 +97,8 @@ class CityManager extends ManagedService implements Logger {
 
 	public native void processCityUpdate(CityRegion city);
 
+	public native void cancelAllCityEvents();
+
 	/**
 	 * Processes income tax from all citizens
 	 * @pre city locked

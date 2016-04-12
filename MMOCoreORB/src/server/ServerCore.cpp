@@ -163,7 +163,7 @@ void ServerCore::initialize() {
 			int statusAllowedConnections =
 					configManager->getStatusAllowedConnections();
 
-			statusServer->start(statusPort);
+			statusServer->start(statusPort, statusAllowedConnections);
 		}
 
 		if (webServer != NULL) {
@@ -195,11 +195,11 @@ void ServerCore::initialize() {
 
 		info("initialized", true);
 		
-		if(arguments.contains("playercleanup") && zoneServer != NULL){
+		if (arguments.contains("playercleanup") && zoneServer != NULL) {
 			zoneServer->getPlayerManager()->cleanupCharacters();
 		}
 
-		if(arguments.contains("playercleanupstats") && zoneServer != NULL){
+		if (arguments.contains("playercleanupstats") && zoneServer != NULL) {
 			zoneServer->getPlayerManager()->getCleanupCharacterCount();
 		}
 		
@@ -219,12 +219,31 @@ void ServerCore::run() {
 }
 
 void ServerCore::shutdown() {
-	info("shutting down server..");
+	info("shutting down server..", true);
+
+	ObjectManager::instance()->cancelDeleteCharactersTask();
+	ObjectManager::instance()->cancelUpdateModifiedObjectsTask();
+
+	ZoneServer* zoneServer = zoneServerRef.get();
+
+	if (zoneServer != NULL) {
+		zoneServer->setServerStateLocked();
+
+		PlayerManager* playerManager = zoneServer->getPlayerManager();
+
+		playerManager->disconnectAllPlayers();
+	}
+
+	Thread::sleep(5000);
+
+	ObjectManager::instance()->createBackup();
+
+	while (ObjectManager::instance()->isObjectUpdateInProcess())
+		Thread::sleep(500);
 
 	ObjectManager::instance()->cancelUpdateModifiedObjectsTask();
-	ObjectDatabaseManager::instance()->checkpoint();
 
-	info("database checkpoint done", true);
+	info("database backup done", true);
 
 	if (statusServer != NULL) {
 		statusServer->stop();
@@ -238,8 +257,6 @@ void ServerCore::shutdown() {
 
 		webServer = NULL;
 	}
-
-	ZoneServer* zoneServer = zoneServerRef.get();
 
 	if (zoneServer != NULL) {
 		zoneServer->stop();
@@ -278,7 +295,7 @@ void ServerCore::shutdown() {
 
 	//zoneServerRef = NULL;
 
-	info("server closed");
+	info("server closed", true);
 
 	//exit(1);
 }
@@ -360,8 +377,7 @@ void ServerCore::handleCommands() {
 				//ObjectDatabaseManager::instance()->checkpoint();
 			} else if (command == "help") {
 				System::out << "available commands:\n";
-				System::out
-						<< "\texit, logQuadTree, info, icap, dcap, fixQueue, crash.\n";
+				System::out << "\texit, logQuadTree, info, lock, unlock, icap, dcap, fixQueue, save, chars, lookupcrc, rev, broadcast, shutdown.\n";
 			} else if (command == "chars") {
 				uint32 num = 0;
 

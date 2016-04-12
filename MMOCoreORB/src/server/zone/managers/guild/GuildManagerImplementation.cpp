@@ -156,6 +156,18 @@ void GuildManagerImplementation::scheduleGuildUpdates() {
 	}
 }
 
+void GuildManagerImplementation::cancelAllGuildUpdates() {
+	for (int i = 0; i < guildList.size(); ++i) {
+		GuildObject* guild = guildList.getValueAt(i);
+
+		if (guild == NULL) {
+			continue;
+		}
+
+		guild->cancelUpdateEvent();
+	}
+}
+
 void GuildManagerImplementation::processGuildUpdate(GuildObject* guild) {
 	info("Processing guild update for: " + guild->getGuildName() + " <" + guild->getGuildAbbrev() + ">");
 

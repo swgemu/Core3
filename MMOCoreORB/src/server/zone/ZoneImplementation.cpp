@@ -94,22 +94,15 @@ void ZoneImplementation::startManagers() {
 }
 
 void ZoneImplementation::stopManagers() {
-	//if (zoneID > 45) //TODO: Change back to 9 sometimes. We use Zone 10 (Space Corellia) as a "prison" for the CSRs sending bad players there
-	//	return;
-
-	/*if (creatureManager != NULL) {
-		creatureManager->stop();
-
+	if (creatureManager != NULL) {
 		creatureManager->finalize();
 		creatureManager = NULL;
 	}
 
 	if (planetManager != NULL) {
-		planetManager->stop();
-
 		planetManager->finalize();
 		planetManager = NULL;
-	}*/
+	}
 }
 
 float ZoneImplementation::getHeight(float x, float y) {

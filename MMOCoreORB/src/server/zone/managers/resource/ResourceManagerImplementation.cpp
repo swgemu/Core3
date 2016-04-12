@@ -164,8 +164,9 @@ void ResourceManagerImplementation::loadDefaultConfig() {
 }
 
 void ResourceManagerImplementation::stop() {
-
-
+	if (resourceShiftTask != NULL && resourceShiftTask->isScheduled()) {
+		resourceShiftTask->cancel();
+	}
 }
 
 void ResourceManagerImplementation::startResourceSpawner() {
@@ -173,8 +174,8 @@ void ResourceManagerImplementation::startResourceSpawner() {
 
 	resourceSpawner->start();
 
-	Reference<ResourceShiftTask*> resourceShift = new ResourceShiftTask(_this.getReferenceUnsafeStaticCast());
-	resourceShift->schedule(shiftInterval);
+	resourceShiftTask = new ResourceShiftTask(_this.getReferenceUnsafeStaticCast());
+	resourceShiftTask->schedule(shiftInterval);
 }
 
 void ResourceManagerImplementation::shiftResources() {
@@ -182,8 +183,7 @@ void ResourceManagerImplementation::shiftResources() {
 
 	resourceSpawner->shiftResources();
 
-	Reference<ResourceShiftTask*> resourceShift = new ResourceShiftTask(_this.getReferenceUnsafeStaticCast());
-	resourceShift->schedule(shiftInterval);
+	resourceShiftTask->schedule(shiftInterval);
 }
 
 int ResourceManagerImplementation::getResourceRecycleType(ResourceSpawn* resource) {

@@ -176,6 +176,14 @@ class CityRegion extends ManagedObject implements Logger {
 	@preLocked
 	public native void scheduleCitizenAssessment(unsigned int seconds);
 
+	public synchronized void cancelEvents() {
+		if (cityUpdateEvent != null)
+			cityUpdateEvent.cancel();
+
+		if (citizenAssessmentEvent != null)
+			citizenAssessmentEvent.cancel();
+	}
+
 	@preLocked
 	public native void destroyActiveAreas();
 	@preLocked

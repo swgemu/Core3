@@ -4,7 +4,6 @@
 
 #include "StatusServer.h"
 #include "StatusHandler.h"
-//#include "../zone/managers/item/ItemManager.h"
 
 StatusServer::StatusServer(ConfigManager* conf, ZoneServer* server)
 		: StreamServiceThread("StatusServer") {
@@ -12,7 +11,6 @@ StatusServer::StatusServer(ConfigManager* conf, ZoneServer* server)
 	configManager = conf;
 	statusHandler = new StatusHandler(this);
 
-	oid = 0;
 	lastStatus = true;
 
 	statusInterval = configManager->getStatusInterval();
@@ -23,7 +21,7 @@ StatusServer::StatusServer(ConfigManager* conf, ZoneServer* server)
 }
 
 StatusServer::~StatusServer() {
-	//obj->finalize();
+
 }
 
 void StatusServer::init() {
@@ -31,11 +29,6 @@ void StatusServer::init() {
 	lastStatus = true;
 
 	setHandler(statusHandler);
-
-	if (zoneServer != NULL) {
-		//oid = zoneServer->getItemManager()->getNextStaticObjectID();
-		//obj = new Attachment(oid, 0, "", "", 1);
-	}
 
 	info("initialized", true);
 }
@@ -52,10 +45,10 @@ void StatusServer::shutdown() {
 ServiceClient* StatusServer::createConnection(Socket* sock, SocketAddress& addr) {
 	Packet* pack = getStatusXMLPacket();
 
-try {
-	sock->send(pack);
-} catch (...) {
-}
+	try {
+		sock->send(pack);
+	} catch (...) {
+	}
 
 	sock->close();
 	delete sock;
@@ -69,8 +62,6 @@ try {
 
 Packet* StatusServer::getStatusXMLPacket() {
 	Packet* pack = new Packet();
-
-	timestamp.updateToCurrentTime();
 
 	StringBuffer str;
 	str << "<?xml version=\"1.0\" standalone=\"yes\"?>" << endl;
@@ -108,14 +99,6 @@ bool StatusServer::testZone() {
 	}
 
 	timestamp.updateToCurrentTime();
-
-	/*try {
-		zoneServer->transferObject(obj);
-
-		return zoneServer->removeObject(oid) == obj;
-	} catch (...) {
-		return false;
-	}*/
 
 	return true;
 }

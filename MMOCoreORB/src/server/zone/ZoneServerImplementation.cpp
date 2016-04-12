@@ -295,12 +295,17 @@ void ZoneServerImplementation::stop() {
 
 void ZoneServerImplementation::timedShutdown(int minutes) {
 	Reference<Task*> task = new ShutdownTask(_this.getReferenceUnsafeStaticCast(), minutes);
-	task->schedule(60 * 1000);
 
-	String str = "Server will shutdown in " + String::valueOf(minutes) + " minutes";
-	Logger::console.info(str, true);
+	if (minutes <= 0) {
+		task->execute();
+	} else {
+		task->schedule(60 * 1000);
 
-	getChatManager()->broadcastGalaxy(NULL, str);
+		String str = "Server will shutdown in " + String::valueOf(minutes) + " minutes";
+		Logger::console.info(str, true);
+
+		getChatManager()->broadcastGalaxy(NULL, str);
+	}
 }
 
 void ZoneServerImplementation::shutdown() {
@@ -310,7 +315,7 @@ void ZoneServerImplementation::shutdown() {
 
 	info("shutting down zones", true);
 
-	for (int i = 0; i < 45; ++i) {
+	for (int i = 0; i < zones->size(); ++i) {
 		ManagedReference<Zone*> zone = zones->get(i);
 
 		if (zone != NULL) {
@@ -329,22 +334,41 @@ void ZoneServerImplementation::shutdown() {
 }
 
 void ZoneServerImplementation::stopManagers() {
-	info("stopping managers..");
+	info("stopping managers..", true);
 
 	if (resourceManager != NULL) {
 		resourceManager->stop();
 		resourceManager = NULL;
 	}
 
-	playerManager = NULL;
-	chatManager = NULL;
-	radialManager = NULL;
+	if (guildManager != NULL) {
+		guildManager->cancelAllGuildUpdates();
+		guildManager = NULL;
+	}
+
+	if (cityManager != NULL) {
+		cityManager->cancelAllCityEvents();
+		cityManager = NULL;
+	}
+
 	craftingManager = NULL;
 	lootManager = NULL;
-	auctionManager = NULL;
 	missionManager = NULL;
-	guildManager = NULL;
-	cityManager = NULL;
+	chatManager = NULL;
+	radialManager = NULL;
+	auctionManager = NULL;
+	petManager = NULL;
+	reactionManager = NULL;
+
+	if (playerManager != NULL) {
+		playerManager->finalize();
+		playerManager = NULL;
+	}
+
+	if (processor != NULL) {
+		processor->finalize();
+		processor = NULL;
+	}
 
 	info("managers stopped", true);
 }

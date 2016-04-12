@@ -51,8 +51,8 @@ void GCWManagerImplementation::start() {
 	// randomize a bit so every zone doesn't run it's check at the same time
 	uint64 timer = (uint64)(System::random(gcwCheckTimer / 4) + gcwCheckTimer) * 1000;
 
-	CheckGCWTask* task = new CheckGCWTask(_this.getReferenceUnsafeStaticCast());
-	task->schedule(timer);
+	checkGCWTask = new CheckGCWTask(_this.getReferenceUnsafeStaticCast());
+	checkGCWTask->schedule(timer);
 
 	updateWinningFaction();
 }
@@ -115,7 +115,6 @@ void GCWManagerImplementation::loadLuaConfig() {
 				addPointValue(templateString, pointsValue);
 			}
 			baseObject.pop();
-
 		}
 	}
 
@@ -205,8 +204,7 @@ void GCWManagerImplementation::performGCWTasks() {
 
 	updateWinningFaction();
 
-	CheckGCWTask* task = new CheckGCWTask(_this.getReferenceUnsafeStaticCast());
-	task->schedule(gcwCheckTimer * 1000);
+	checkGCWTask->schedule(gcwCheckTimer * 1000);
 }
 
 void GCWManagerImplementation::verifyTurrets(BuildingObject* building) {
@@ -241,6 +239,39 @@ void GCWManagerImplementation::verifyTurrets(BuildingObject* building) {
 	if (!(hasDefense == baseData->hasDefense())) {
 		building->broadcastCellPermissions();
 	}
+}
+
+void GCWManagerImplementation::cancelAllTasks() {
+	Locker locker(_this.getReferenceUnsafeStaticCast());
+
+	for (int i = 0; i < gcwDestroyTasks.size(); i++) {
+		Task* task = gcwDestroyTasks.get(i);
+
+		if (task != NULL && task->isScheduled())
+			task->cancel();
+	}
+
+	gcwDestroyTasks.removeAll();
+
+	for (int i = 0; i < gcwStartTasks.size(); i++) {
+		Task* task = gcwStartTasks.get(i);
+
+		if (task != NULL && task->isScheduled())
+			task->cancel();
+	}
+
+	gcwStartTasks.removeAll();
+
+	for (int i = 0; i < gcwEndTasks.size(); i++) {
+		Task* task = gcwEndTasks.get(i);
+
+		if (task != NULL && task->isScheduled())
+			task->cancel();
+	}
+
+	gcwEndTasks.removeAll();
+
+	checkGCWTask->cancel();
 }
 
 bool GCWManagerImplementation::canPlaceMoreBases(CreatureObject* creature) {
