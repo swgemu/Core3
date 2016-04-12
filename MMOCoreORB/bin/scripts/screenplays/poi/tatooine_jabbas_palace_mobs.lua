@@ -1,4 +1,5 @@
 local ObjectManager = require("managers.object.object_manager")
+
 TatooineJabbasPalaceMobsScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 
@@ -66,7 +67,7 @@ function TatooineJabbasPalaceMobsScreenPlay:spawnStatics()
 	spawnMobile("tatooine", "protocol_droid_3po_red", 60, 10.71, 0.2, 84.27, 216, 1177479)
 	spawnMobile("tatooine", "ra7_bug_droid", 60, 13.33, 0.2, 88.72, 111.64,1177479)
 
-	pNpc = spawnMobile("tatooine", "outlaw", 300, 9.0, 5.8, 73.0, 153, 1177470)
+	local pNpc = spawnMobile("tatooine", "outlaw", 300, 9.0, 5.8, 73.0, 153, 1177470)
 	self:setMoodString(pNpc, "angry")
 
 	pNpc = spawnMobile("tatooine", "commoner_naboo", 60, -33.8, 0.1, 76.6, 329, 1177491)
@@ -175,14 +176,14 @@ function TatooineJabbasPalaceMobsScreenPlay:spawnMobiles()
 	for i,v in ipairs(self.jabba_band) do
 		local pMobile = spawnMobile("tatooine", v[1], v[2], v[3], v[4], v[5], v[6], v[7])
 		if (pMobile ~= nil) then
-		CreatureObject(pMobile):setCustomObjectName(v[8])
-		CreatureObject(pMobile):setMoodString(pMobile, v[9])
+			CreatureObject(pMobile):setCustomObjectName(v[8])
+			CreatureObject(pMobile):setMoodString(v[9])
 		end
 	end
 
 
 	for i,v in ipairs(self.bomar_monks) do
-		pMobile = spawnMobile("tatooine", v[1], v[2], v[3], v[4], v[5], v[6], v[7])
+		local pMobile = spawnMobile("tatooine", v[1], v[2], v[3], v[4], v[5], v[6], v[7])
 		if (pMobile ~= nil) then
 			writeData(SceneObject(pMobile):getObjectID() .. ":currentLoc", 1)
 			writeStringData(SceneObject(pMobile):getObjectID() .. ":name", v[9])
@@ -195,7 +196,7 @@ function TatooineJabbasPalaceMobsScreenPlay:spawnMobiles()
 	end
 
 	for i,v in ipairs(self.gamorrean_guards) do
-		pMobile = spawnMobile("tatooine", v[1], v[2], v[3], v[4], v[5], v[6], v[7])
+		local pMobile = spawnMobile("tatooine", v[1], v[2], v[3], v[4], v[5], v[6], v[7])
 		if (pMobile ~= nil) then
 			writeData(SceneObject(pMobile):getObjectID() .. ":currentLoc", 1)
 			writeStringData(SceneObject(pMobile):getObjectID() .. ":name", v[9])
@@ -208,7 +209,7 @@ function TatooineJabbasPalaceMobsScreenPlay:spawnMobiles()
 	end
 
 	for i,v in ipairs(self.droid_spawns) do
-		pMobile = spawnMobile("tatooine", v[1], v[2], v[3], v[4], v[5], v[6], v[7])
+		local pMobile = spawnMobile("tatooine", v[1], v[2], v[3], v[4], v[5], v[6], v[7])
 		if (pMobile ~= nil) then
 			writeData(SceneObject(pMobile):getObjectID() .. ":currentLoc", 1)
 			writeStringData(SceneObject(pMobile):getObjectID() .. ":name", v[9])
@@ -226,14 +227,20 @@ function TatooineJabbasPalaceMobsScreenPlay:palaceConverseJawa(pMobile)
 	if AiAgent(pMobile):isInCombat() or CreatureObject(pMobile):isDead() then
 		return 0
 	end
-		local int = getRandomNumber(1,4)
-		if int == 1 then action = "explain" end
-		if int == 2 then action = "bow" end
-		if int == 3 then action = "yes" end
-		if int == 4 then action = "shrug_hands" end
+
+	local action
+	local int = getRandomNumber(1,4)
+	if int == 1 then action = "explain"
+	elseif int == 2 then action = "bow"
+	elseif int == 3 then action = "yes"
+	elseif int == 4 then action = "shrug_hands" end
+
+	if (action ~= nil) then
 		CreatureObject(pMobile):doAnimation(action)
-		createEvent(getRandomNumber(40,70) * 100, "TatooineJabbasPalaceMobsScreenPlay", "palaceConverseJawa", pMobile, "")
-		return 0
+	end
+
+	createEvent(getRandomNumber(40,70) * 100, "TatooineJabbasPalaceMobsScreenPlay", "palaceConverseJawa", pMobile, "")
+	return 0
 end
 
 
@@ -241,22 +248,28 @@ function TatooineJabbasPalaceMobsScreenPlay:palaceConverse(pMobile)
 	if AiAgent(pMobile):isInCombat() or CreatureObject(pMobile):isDead() then
 		return 0
 	end
-		local int = getRandomNumber(1,12)
-		if int == 1 then action = "check_wrist_device" end
-		if int == 2 then action = "angry" end
-		if int == 3 then action = "cover_mouth" end
-		if int == 4 then action = "dismiss" end
-		if int == 5 then action = "duck" end
-		if int == 6 then action = "embarrassed" end
-		if int == 7 then action = "explain" end
-		if int == 8 then action = "get_hit_light" end
-		if int == 9 then action = "laugh_titter" end
-		if int == 10 then action = "nod_head_once" end
-		if int == 11 then action = "scratch_head" end
-		if int == 12 then action = "shrug_hands" end
+
+	local action
+	local int = getRandomNumber(1,12)
+	if int == 1 then action = "check_wrist_device"
+	elseif int == 2 then action = "angry"
+	elseif int == 3 then action = "cover_mouth"
+	elseif int == 4 then action = "dismiss"
+	elseif int == 5 then action = "duck"
+	elseif int == 6 then action = "embarrassed"
+	elseif int == 7 then action = "explain"
+	elseif int == 8 then action = "get_hit_light"
+	elseif int == 9 then action = "laugh_titter"
+	elseif int == 10 then action = "nod_head_once"
+	elseif int == 11 then action = "scratch_head"
+	elseif int == 12 then action = "shrug_hands" end
+
+	if (action ~= nil) then
 		CreatureObject(pMobile):doAnimation(action)
-		createEvent(getRandomNumber(40,70) * 100, "TatooineJabbasPalaceMobsScreenPlay", "palaceConverse", pMobile, "")
-		return 0
+	end
+
+	createEvent(getRandomNumber(40,70) * 100, "TatooineJabbasPalaceMobsScreenPlay", "palaceConverse", pMobile, "")
+	return 0
 end
 
 
@@ -271,183 +284,183 @@ function TatooineJabbasPalaceMobsScreenPlay:JabbaPatrol(pMobile)
 
 	if (name == "guard1") then
 		if (curLoc == 1) then
-		nextLoc = { 6.4, .2, 130.7, 1177466 }
+			nextLoc = { 6.4, .2, 130.7, 1177466 }
 		else
-		nextLoc = { 0.6, 5.8, 80.4, 1177469 }
+			nextLoc = { 0.6, 5.8, 80.4, 1177469 }
 		end
 	end
 
 	if (name == "guard2") then
 		if (curLoc == 1) then
-		nextLoc = { -22.22, 10.76, 64.30, 1177489 }
+			nextLoc = { -22.22, 10.76, 64.30, 1177489 }
 		else
-		nextLoc = { 1, 5.8, 80, 1177469 }
+			nextLoc = { 1, 5.8, 80, 1177469 }
 		end
 	end
 
 	if (name == "guard3") then
 		if (curLoc == 1) then
-		nextLoc = { -24.89, 6.6, 90.77, 1177490 }
+			nextLoc = { -24.89, 6.6, 90.77, 1177490 }
 		else
-		nextLoc = { -11, 5.8, 88, 1177469 }
+			nextLoc = { -11, 5.8, 88, 1177469 }
 		end
 	end
 
 	if (name == "guard4") then
 		if (curLoc == 1) then
-		nextLoc = { -4.8, .2, 134.3, 1177466 }
+			nextLoc = { -4.8, .2, 134.3, 1177466 }
 		else
-		nextLoc = { -1, 5.8, 98, 1177469 }
+			nextLoc = { -1, 5.8, 98, 1177469 }
 		end
 	end
 
 	if (name == "guard5") then
 		if (curLoc == 1) then
-		nextLoc = { 10, 5.8, 71, 1177470 }
+			nextLoc = { 10, 5.8, 71, 1177470 }
 		else
-		nextLoc = {-25, 3, 61, 1177474}
+			nextLoc = {-25, 3, 61, 1177474}
 		end
 	end
 
 	if (name == "guard6") then
 		if (curLoc == 1) then
-		nextLoc = {-25.9, 0.2, 82.1, 1177475}
+			nextLoc = {-25.9, 0.2, 82.1, 1177475}
 		else
-		nextLoc ={-50.89, 0.2, 82.37, 1177476}
+			nextLoc ={-50.89, 0.2, 82.37, 1177476}
 		end
 	end
 
 	if (name == "guard7") then
 		if (curLoc == 1) then
-		nextLoc = {-19.74, .2, 82.23, 1177475}
+			nextLoc = {-19.74, .2, 82.23, 1177475}
 		else
-		nextLoc = {-2.04, .2, 82.61, 1177480}
+			nextLoc = {-2.04, .2, 82.61, 1177480}
 		end
 	end
 
 	if (name == "guard8") then
 		if (curLoc == 1) then
-		nextLoc = {-23.73, .82, 76.52, 1177475}
+			nextLoc = {-23.73, .82, 76.52, 1177475}
 		else
-		nextLoc = {-13, 5, 59, 1177474}
+			nextLoc = {-13, 5, 59, 1177474}
 		end
 	end
 
 	if (name == "guard9") then
 		if (curLoc == 1) then
-		nextLoc = {-32.17, 3, 55.89, 1177481}
+			nextLoc = {-32.17, 3, 55.89, 1177481}
 		else
-		nextLoc = {-37, 3, 46, 1177486}
+			nextLoc = {-37, 3, 46, 1177486}
 		end
 	end
 
 	if (name == "guard10") then
 		if (curLoc == 1) then
-		nextLoc = {-23.78, 3.6, 53.73, 1177487}
+			nextLoc = {-23.78, 3.6, 53.73, 1177487}
 		else
-		nextLoc = {-25, 5, 34, 1177487}
+			nextLoc = {-25, 5, 34, 1177487}
 		end
 	end
 
 	if (name == "guard11") then
 		if (curLoc == 1) then
-		nextLoc = {11.75, .2, -3.62, 1177484}
+			nextLoc = {11.75, .2, -3.62, 1177484}
 		else
-		nextLoc =  {6, 4, 26, 1177487}
+			nextLoc =  {6, 4, 26, 1177487}
 		end
 	end
 
 	if (name == "guard12") then
 		if (curLoc == 1) then
-		nextLoc = {14.12, 5.55, 66.95, 1177471}
+			nextLoc = {14.12, 5.55, 66.95, 1177471}
 		else
-		nextLoc = {16.2, -11, 46.2, 1177502}
+			nextLoc = {16.2, -11, 46.2, 1177502}
 		end
 	end
 
 	if (name == "guard13") then
 		if (curLoc == 1) then
-		nextLoc = {-28.84, 8.89, 17.1, 1177485}
+			nextLoc = {-28.84, 8.89, 17.1, 1177485}
 		else
-		nextLoc = {.14, 2, 53.1, 1177487}
+			nextLoc = {.14, 2, 53.1, 1177487}
 		end
 	end
 
 
 	if (name == "bmonk1") then
 		if (curLoc == 1) then
-		nextLoc = {-24, 6.6, 86, 1177490}
+			nextLoc = {-24, 6.6, 86, 1177490}
 		else
-		nextLoc = {-8.94, 3, 55.95, 1177474}
+			nextLoc = {-8.94, 3, 55.95, 1177474}
 		end
 	end
 	if (name == "bmonk2") then
 		if (curLoc == 1) then
-		nextLoc = {8.6, 5.8, 95.2, 1177468}
+			nextLoc = {8.6, 5.8, 95.2, 1177468}
 		else
-		nextLoc = {-2, .2, 104, 1177467}
+			nextLoc = {-2, .2, 104, 1177467}
 		end
 	end
 	if (name == "bmonk3") then
 		if (curLoc == 1) then
-		--nextLoc = {-25, 3, 61, 1177474}
-		nextLoc = {21, -11, 45.1, 1177502}
+			--nextLoc = {-25, 3, 61, 1177474}
+			nextLoc = {21, -11, 45.1, 1177502}
 		else
-		nextLoc =  {-18, 5.8, 73, 1177489}
+			nextLoc =  {-18, 5.8, 73, 1177489}
 		end
 	end
 	if (name == "bmonk4") then
 		if (curLoc == 1) then
-		nextLoc = {19.2, 10, 1.5, 1177500}
+			nextLoc = {19.2, 10, 1.5, 1177500}
 		else
-		nextLoc = {7, 6, 50, 1177487}
+			nextLoc = {7, 6, 50, 1177487}
 		end
 	end
 	if (name == "bmonk5") then
 		if (curLoc == 1) then
-		nextLoc = {5.8, 5.8, 60.53, 1177470}
+			nextLoc = {5.8, 5.8, 60.53, 1177470}
 		else
-		nextLoc = {24, .2, -9, 1177484}
+			nextLoc = {24, .2, -9, 1177484}
 		end
 	end
 
 	if (name == "bmonk6") then
 		if (curLoc == 1) then
-		nextLoc = {-18, 7, 9, 1177501}
+			nextLoc = {-18, 7, 9, 1177501}
 		else
-		nextLoc = {24, .2, -9, 1177484}
+			nextLoc = {24, .2, -9, 1177484}
 		end
 	end
 
 	if (name == "droid1") then
 		if (curLoc == 1) then
-		nextLoc = {27.42, 0.2, 90.02, 1177479}
+			nextLoc = {27.42, 0.2, 90.02, 1177479}
 		else
-		nextLoc = {19.73, 0.2, 90.51, 1177479}
+			nextLoc = {19.73, 0.2, 90.51, 1177479}
 		end
 	end
 
 	if (name == "droid4") then
 		if (curLoc == 1) then
-		nextLoc = {8.97, 0.2, 88.26, 1177479}
+			nextLoc = {8.97, 0.2, 88.26, 1177479}
 		else
-		nextLoc = {17.42, 0.2, 81.22, 1177479}
+			nextLoc = {17.42, 0.2, 81.22, 1177479}
 		end
 	end
 
 	if (name == "droid6") then
 		if (curLoc == 1) then
-		nextLoc = {38, .2, -5.53, 1177499}
+			nextLoc = {38, .2, -5.53, 1177499}
 		else
-		nextLoc = {43.29, .2, 7.14, 1177499}
+			nextLoc = {43.29, .2, 7.14, 1177499}
 		end
 	end
 
 	if (name == "random2") then
 		if (curLoc == 1) then
-		nextLoc = {-7.9, 3, 59.61, 1177474}
+			nextLoc = {-7.9, 3, 59.61, 1177474}
 		else
-		nextLoc = {-25, 3, 61, 1177474}
+			nextLoc = {-25, 3, 61, 1177474}
 		end
 	end
 
