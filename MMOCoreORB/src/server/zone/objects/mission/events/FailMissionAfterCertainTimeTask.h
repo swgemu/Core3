@@ -5,7 +5,7 @@
 #ifndef FAILMISSIONAFTERCERTAINTIMETASK_H_
 #define FAILMISSIONAFTERCERTAINTIMETASK_H_
 
-#include "server/zone/objects/mission/MissionObjective.h"
+#include "server/zone/objects/mission/MissionObject.h"
 
 namespace server {
 namespace zone {
@@ -14,28 +14,32 @@ namespace mission {
 namespace events {
 
 class FailMissionAfterCertainTimeTask : public Task {
-	ManagedWeakReference<MissionObjective*> objective;
+	ManagedWeakReference<MissionObject*> object;
 
 public:
-	FailMissionAfterCertainTimeTask(MissionObjective* objective) {
-		this->objective = objective;
+	FailMissionAfterCertainTimeTask(MissionObject* object) {
+		this->object = object;
 	}
 
 	void run() {
-		ManagedReference<MissionObjective*> objectiveRef = objective.get();
+		ManagedReference<MissionObject*> objectRef = object.get();
 
-		if (objectiveRef != NULL) {
-			//Fail mission.
-			ManagedReference<CreatureObject*> owner = objectiveRef->getPlayerOwner();
-			if (owner != NULL) {
-				Locker locker(owner);
+		if (objectRef != NULL) {
+			ManagedReference<MissionObjective*> objectiveRef = objectRef->getMissionObjective();
 
-				owner->sendSystemMessage("Mission expired");
+			if (objectiveRef != NULL) {
+				//Fail mission.
+				ManagedReference<CreatureObject*> owner = objectiveRef->getPlayerOwner();
+				if (owner != NULL) {
+					Locker locker(owner);
 
-				objectiveRef->fail();
-			} else
-				objectiveRef->fail();
+					owner->sendSystemMessage("Mission expired");
 
+					objectiveRef->fail();
+				} else {
+					objectiveRef->fail();
+				}
+			}
 		}
 	}
 };
