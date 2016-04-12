@@ -29,7 +29,7 @@ rhoa_kwi_pack_leader = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/kwi_hue.iff",
 	scale = 1.3,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"posturedownattack",""},

@@ -28,7 +28,7 @@ giant_cavern_spider_recluse = Creature:new {
 	templates = {"object/mobile/gaping_spider_recluse.iff"},
 	scale = 2.0,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"creatureareacombo",""},

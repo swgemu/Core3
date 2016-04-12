@@ -28,7 +28,7 @@ shear_mite = Creature:new {
 	templates = {"object/mobile/shear_mite.iff"},
 	controlDeviceTemplate = "object/intangible/pet/shear_mite_hue.iff",
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"blindattack",""}

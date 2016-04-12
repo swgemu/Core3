@@ -36,7 +36,7 @@ brackaset_male = Creature:new {
 			lootChance = 1600000
 		}
 	},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"",""},

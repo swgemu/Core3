@@ -29,7 +29,7 @@ chasmal_spider = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/gaping_spider_hue.iff",
 	scale = 1.1,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"strongpoison",""},

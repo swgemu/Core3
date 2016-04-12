@@ -29,7 +29,7 @@ craggy_bolma = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/bolma_hue.iff",
 	scale = 1.3,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

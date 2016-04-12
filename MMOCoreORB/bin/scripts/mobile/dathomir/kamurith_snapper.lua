@@ -28,7 +28,7 @@ kamurith_snapper = Creature:new {
 	templates = {"object/mobile/voritor_lizard_hue.iff"},
 	scale = 1.1,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"dizzyattack",""},

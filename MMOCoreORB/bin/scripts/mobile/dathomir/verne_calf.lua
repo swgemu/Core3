@@ -28,7 +28,7 @@ verne_calf = Creature:new {
 	templates = {"object/mobile/verne_calf.iff"},
 	scale = 0.85,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

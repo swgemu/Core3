@@ -35,7 +35,7 @@ surefoot_brackaset = Creature:new {
 			lootChance = 1920000
 		}
 	},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"stunattack",""},

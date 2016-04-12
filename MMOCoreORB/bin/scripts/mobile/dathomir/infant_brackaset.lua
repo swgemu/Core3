@@ -28,7 +28,7 @@ infant_brackaset = Creature:new {
 	templates = {"object/mobile/infant_brackaset.iff"},
 	scale = 0.6,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

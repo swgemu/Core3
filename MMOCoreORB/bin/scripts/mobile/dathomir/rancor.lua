@@ -38,7 +38,7 @@ rancor = Creature:new {
 			lootChance = 2000000
 		}
 	},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"stunattack",""},

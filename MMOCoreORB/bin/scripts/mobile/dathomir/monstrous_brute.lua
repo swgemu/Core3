@@ -38,7 +38,7 @@ monstrous_brute = Creature:new {
 			lootChance = 2740000
 		}
 	},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"knockdownattack",""},

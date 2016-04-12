@@ -28,7 +28,7 @@ alpha_bolma = Creature:new {
 	templates = {"object/mobile/alpha_bolma.iff"},
 	scale = 1.2,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"intimidationattack",""}

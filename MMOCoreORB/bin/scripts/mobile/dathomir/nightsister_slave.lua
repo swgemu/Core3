@@ -38,7 +38,7 @@ nightsister_slave = Creature:new {
 			}
 		}
 	},
-	weapons = {},
+	weapons = {"npc_default_unarmed"},
 	conversationTemplate = "",
 	attacks = brawlermid
 }

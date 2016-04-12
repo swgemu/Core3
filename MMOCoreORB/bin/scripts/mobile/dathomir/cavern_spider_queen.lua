@@ -28,7 +28,7 @@ cavern_spider_queen = Creature:new {
 	templates = {"object/mobile/gaping_spider_queen.iff"},
 	scale = 1.3,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"knockdownattack",""},

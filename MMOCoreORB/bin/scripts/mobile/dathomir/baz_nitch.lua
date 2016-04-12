@@ -28,7 +28,7 @@ baz_nitch = Creature:new {
 	templates = {"object/mobile/baz_nitch.iff"},
 	controlDeviceTemplate = "object/intangible/pet/nuna_hue.iff",
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

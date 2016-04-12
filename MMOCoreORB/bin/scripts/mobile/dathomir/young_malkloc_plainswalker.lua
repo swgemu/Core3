@@ -28,7 +28,7 @@ young_malkloc_plainswalker = Creature:new {
 	templates = {"object/mobile/young_malkloc.iff"},
 	scale = 0.9,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"posturedownattack",""}

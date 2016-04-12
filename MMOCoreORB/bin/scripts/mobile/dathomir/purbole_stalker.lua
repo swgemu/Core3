@@ -29,7 +29,7 @@ purbole_stalker = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/purbole_hue.iff",
 	scale = 1.05,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"dizzyattack",""},

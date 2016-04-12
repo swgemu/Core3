@@ -28,7 +28,7 @@ purbole = Creature:new {
 	templates = {"object/mobile/purbole.iff"},
 	controlDeviceTemplate = "object/intangible/pet/purbole_hue.iff",
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"stunattack",""}

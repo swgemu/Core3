@@ -38,7 +38,7 @@ nightsister_bull_rancor = Creature:new {
 			lootChance = 2300000
 		}
 	},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"creatureareadisease",""},

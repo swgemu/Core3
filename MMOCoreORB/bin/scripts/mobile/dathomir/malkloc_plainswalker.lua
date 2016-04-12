@@ -28,7 +28,7 @@ malkloc_plainswalker = Creature:new {
 	templates = {"object/mobile/malkloc_hue.iff"},
 	scale = 1.2,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"dizzyattack",""},

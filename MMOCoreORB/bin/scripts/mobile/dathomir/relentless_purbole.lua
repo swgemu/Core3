@@ -29,7 +29,7 @@ relentless_purbole = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/purbole_hue.iff",
 	scale = 1.2,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"stunattack",""},
