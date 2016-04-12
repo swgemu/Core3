@@ -30,7 +30,7 @@ lesser_plains_bol = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/bol_hue.iff",
 	scale = 0.9,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

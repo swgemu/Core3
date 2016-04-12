@@ -29,7 +29,7 @@ huurton_huntress = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/huurton_hue.iff",
 	scale = 1.15,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"knockdownattack",""},

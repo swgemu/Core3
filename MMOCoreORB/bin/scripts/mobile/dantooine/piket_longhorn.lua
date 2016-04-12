@@ -29,7 +29,7 @@ piket_longhorn = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/piket_hue.iff",
 	scale = 1.1,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"blindattack",""},

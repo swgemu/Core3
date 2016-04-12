@@ -30,7 +30,7 @@ piket_plains_walker = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/piket_hue.iff",
 	scale = 1.05,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"dizzyattack",""}

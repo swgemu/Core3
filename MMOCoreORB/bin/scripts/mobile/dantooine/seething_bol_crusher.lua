@@ -28,7 +28,7 @@ seething_bol_crusher = Creature:new {
 	templates = {"object/mobile/seething_bol_crusher.iff"},
 	scale = 1.25,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"mediumdisease",""},

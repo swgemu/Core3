@@ -29,7 +29,7 @@ swift_charging_bol = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/bol_hue.iff",
 	scale = 1.1,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"knockdownattack",""},

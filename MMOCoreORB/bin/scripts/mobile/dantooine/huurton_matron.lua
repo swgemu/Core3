@@ -28,7 +28,7 @@ huurton_matron = Creature:new {
 	templates = {"object/mobile/huurton_hue.iff"},
 	scale = 1.1,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"blindattack",""},

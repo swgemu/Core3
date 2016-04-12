@@ -42,7 +42,7 @@ dark_side_savage = Creature:new {
 			}
 		}
 	},
-	weapons = {},
+	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
 	attacks = merge(tkamaster,brawlermaster)
 }

@@ -28,7 +28,7 @@ huurton_pup = Creature:new {
 	templates = {"object/mobile/huurton_pup.iff"},
 	scale = 0.65,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -35,7 +35,7 @@ vexed_voritor_lizard = Creature:new {
 			lootChance = 2040000
 		}
 	},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"knockdownattack",""},

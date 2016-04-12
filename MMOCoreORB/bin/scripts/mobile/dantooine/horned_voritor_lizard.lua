@@ -35,7 +35,7 @@ horned_voritor_lizard = Creature:new {
 			lootChance = 2060000
 		}
 	},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"strongpoison",""},

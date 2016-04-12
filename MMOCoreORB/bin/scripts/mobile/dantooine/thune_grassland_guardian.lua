@@ -30,7 +30,7 @@ thune_grassland_guardian = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/thune_hue.iff",
 	scale = 1.1,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"dizzyattack",""},

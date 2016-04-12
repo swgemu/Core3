@@ -28,7 +28,7 @@ quenker_relic_reaper = Creature:new {
 	templates = {"object/mobile/quenker_relic_reaper.iff"},
 	scale = 1.25,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"blindattack",""},

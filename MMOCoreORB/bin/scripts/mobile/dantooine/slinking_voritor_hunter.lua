@@ -35,7 +35,7 @@ slinking_voritor_hunter = Creature:new {
 			lootChance = 2140000
 		}
 	},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"posturedownattack",""},

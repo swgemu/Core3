@@ -29,7 +29,7 @@ piket = Creature:new {
 	templates = {"object/mobile/piket.iff"},
 	controlDeviceTemplate = "object/intangible/pet/piket_hue.iff",
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"",""},

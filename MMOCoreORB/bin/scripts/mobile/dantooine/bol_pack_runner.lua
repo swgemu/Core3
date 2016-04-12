@@ -28,7 +28,7 @@ bol_pack_runner = Creature:new {
 	templates = {"object/mobile/bol_pack_runner.iff"},
 	scale = 0.95,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"stunattack",""},

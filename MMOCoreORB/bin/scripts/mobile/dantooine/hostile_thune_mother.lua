@@ -29,7 +29,7 @@ hostile_thune_mother = Creature:new {
 	templates = {"object/mobile/thune_hue.iff"},
 	scale = 1.05,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"",""},

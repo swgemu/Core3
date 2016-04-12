@@ -29,7 +29,7 @@ baby_bol = Creature:new {
 	templates = {"object/mobile/baby_bol.iff"},
 	scale = 0.7,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 	}

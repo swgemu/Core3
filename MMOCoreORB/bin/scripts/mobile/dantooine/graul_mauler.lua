@@ -29,7 +29,7 @@ graul_mauler = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/graul_hue.iff",
 	scale = 1.05,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"posturedownattack",""},

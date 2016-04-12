@@ -35,7 +35,7 @@ grassland_voritor_tracker = Creature:new {
 			lootChance = 1900000
 		}
 	},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"knockdownattack",""},

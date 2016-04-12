@@ -36,7 +36,7 @@ spiked_slasher = Creature:new {
 			lootChance = 2160000
 		}
 	},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"strongpoison",""},

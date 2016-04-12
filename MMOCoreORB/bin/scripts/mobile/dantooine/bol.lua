@@ -27,7 +27,7 @@ bol = Creature:new {
 
 	templates = {"object/mobile/bol.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"knockdownattack",""},

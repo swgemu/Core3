@@ -28,7 +28,7 @@ graul_marauder = Creature:new {
 	templates = {"object/mobile/graul_hue.iff"},
 	scale = 1.35,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"creatureareableeding",""},

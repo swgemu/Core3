@@ -28,7 +28,7 @@ fierce_piket_protector = Creature:new {
 	templates = {"object/mobile/piket_hue.iff"},
 	scale = 1.15,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_default_weapon"},
 	conversationTemplate = "",
 	attacks = {
 		{"dizzyattack",""},
