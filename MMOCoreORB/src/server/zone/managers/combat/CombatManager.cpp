@@ -765,21 +765,32 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* defender, WeaponOb
 int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender) {
 	if (defender->isIntimidated() || defender->isBerserked()) return 0;
 
-	int targetDefense = 0;
+	int targetSecDefense = 0;
 	ManagedReference<WeaponObject*> weapon = defender->getWeapon();
-
 	Vector<String>* defenseAccMods = weapon->getDefenderSecondaryDefenseModifiers();
 
-	for (int i = 0; i < defenseAccMods->size(); ++i) {
-		String mod = defenseAccMods->get(i);
-		targetDefense += defender->getSkillMod(mod);
-		targetDefense += defender->getSkillMod("private_" + mod);
+	if (defender->isPlayerCreature()) {
+
+		for (int i = 0; i < defenseAccMods->size(); ++i) {
+			String mod = defenseAccMods->get(i);
+			targetSecDefense += defender->getSkillMod(mod);
+			targetSecDefense += defender->getSkillMod("private_" + mod);
+		}
+	} else if (defender->isCreature() || defender->isDroidSpecies() || defender->isNonPlayerCreatureObject()) {
+
+		for (int i = 1; i < defenseAccMods->size(); ++i) {
+			String mod = defenseAccMods->get(i);
+			targetSecDefense += defender->getSkillMod(mod);
+			targetSecDefense += defender->getSkillMod("private_" + mod);
+		}
 	}
 
-	if (targetDefense > 125)
-		targetDefense = 125;
+	if (targetSecDefense > 125)
+		targetSecDefense = 125;
+	else if (targetSecDefense <= 1)
+		targetSecDefense = System::random(75) + 25; //randomize this number
 
-	return targetDefense;
+	return targetSecDefense;
 }
 
 float CombatManager::getDefenderToughnessModifier(CreatureObject* defender, int attackType, int damType, float damage) {
@@ -1485,7 +1496,7 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 	float attackerRoll = (float)System::random(249) + 1.f;
 	float defenderRoll = (float)System::random(150) + 25.f;
 
-	// TODO (dannuic): add the trapmods in here somewhere (defense down trapmods)
+	// TODO (dannuic): add the trap mods in here somewhere (defense down trap mods)
 	float accTotal = hitChanceEquation(attackerAccuracy + weaponAccuracy + accuracyBonus + postureAccuracy + bonusAccuracy, attackerRoll, targetDefense + postureDefense, defenderRoll);
 
 	//info("Final hit chance is " + String::valueOf(accTotal), true);
@@ -1496,7 +1507,7 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 	//info("Attack hit successfully", true);
 
 	// now we have a successful hit, so calculate secondary defenses if there is a damage component
-	if (damage > 0) {
+	if (targetCreature->isPlayerCreature() && damage > 0) {
 		ManagedReference<WeaponObject*> targetWeapon = targetCreature->getWeapon();
 		Vector<String>* defenseAccMods = targetWeapon->getDefenderSecondaryDefenseModifiers();
 		String def = defenseAccMods->get(0); // FIXME: this is hacky, but a lot faster than using contains()
@@ -1508,15 +1519,15 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 			else return HIT;
 		}
 
-		targetDefense = getDefenderSecondaryDefenseModifier(targetCreature);
+		int targetSecDefense = getDefenderSecondaryDefenseModifier(targetCreature);
 
-		//info("Secondary defenses are " + String::valueOf(targetDefense), true);
+		//info("Secondary defenses are " + String::valueOf(targetSecDefense), true);
 
-		if (targetDefense <= 0)
+		if (targetSecDefense <= 0)
 			return HIT; // no secondary defenses
 
 		// add in a random roll
-		targetDefense += System::random(199) + 1;
+		targetSecDefense += System::random(199) + 1;
 
 		//TODO: posture defense (or a simplified version thereof: +10 standing, -20 prone, 0 crouching) might be added in to this calculation, research this
 		//TODO: dodge and counterattack might get a  +25 bonus (even when triggered via DA), research this
@@ -1524,10 +1535,10 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 		int cobMod = targetCreature->getSkillMod("private_center_of_being");
 		//info("Center of Being mod is " + String::valueOf(cobMod), true);
 
-		targetDefense += cobMod;
-		//info("Final modified secondary defense is " + String::valueOf(targetDefense), true);
+		targetSecDefense += cobMod;
+		//info("Final modified secondary defense is " + String::valueOf(targetSecDefense), true);
 
-		if (targetDefense > 50 + attackerAccuracy + weaponAccuracy + accuracyBonus + postureAccuracy + bonusAccuracy + attackerRoll) { // successful secondary defense, return type of defense
+		if (targetSecDefense > 50 + attackerAccuracy + weaponAccuracy + accuracyBonus + postureAccuracy + bonusAccuracy + attackerRoll) { // successful secondary defense, return type of defense
 
 			//info("Secondaries defenses prevailed", true);
 			// this means use defensive acuity, which mean random 1, 2, or 3
@@ -1544,6 +1555,34 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 				return System::random(2) + 1;
 			else // shouldn't get here
 				return HIT; // no secondary defenses available on this weapon
+		}
+	} else if ((targetCreature->isCreature() || targetCreature->isDroidSpecies() || targetCreature->isNonPlayerCreatureObject()) && damage > 0) {
+		ManagedReference<WeaponObject*> targetWeapon = targetCreature->getWeapon();
+		Vector<String>* defenseAccMods = targetWeapon->getDefenderSecondaryDefenseModifiers();
+		String def = defenseAccMods->get(0);
+
+		int targetSecDefense = getDefenderSecondaryDefenseModifier(targetCreature);
+
+		if (targetSecDefense <= 0)
+			return HIT;
+
+		targetSecDefense += System::random(199) + 1;
+
+		if (targetSecDefense > 25 + attackerAccuracy + weaponAccuracy + accuracyBonus + postureAccuracy + bonusAccuracy + attackerRoll) {
+
+			if (targetWeapon == NULL)
+				return System::random(2) + 1;
+
+			if (def == "block")
+				return BLOCK;
+			else if (def == "dodge")
+				return DODGE;
+			else if (def == "counterattack")
+				return COUNTER;
+			else if (def == "unarmed_passive_defense")
+				return System::random(2) + 1;
+			else
+				return HIT;
 		}
 	}
 
