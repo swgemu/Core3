@@ -99,6 +99,8 @@ DirectorManager::DirectorManager() : Logger("DirectorManager") {
 
 	questVectorMaps.setNullValue(NULL);
 	questVectorMaps.setNoDuplicateInsertPlan();
+
+	masterScreenPlayVersion.set(0);
 }
 
 void DirectorManager::loadPersistentEvents() {
@@ -523,6 +525,10 @@ int DirectorManager::loadScreenPlays(Lua* luaEngine) {
 		return 1;
 
 	return 0;
+}
+
+void DirectorManager::reloadScreenPlays() {
+	masterScreenPlayVersion.increment();
 }
 
 int DirectorManager::writeScreenPlayData(lua_State* L) {
@@ -2217,6 +2223,13 @@ int DirectorManager::dropObserver(lua_State* L) {
 
 Lua* DirectorManager::getLuaInstance() {
 	Lua* lua = localLua.get();
+	uint32* version = localScreenPlayVersion.get();
+
+	if (version == NULL) {
+		version = new uint32;
+		*version = 0;
+		localScreenPlayVersion.set(version);
+	}
 
 	if (lua == NULL) {
 		lua = new Lua();
@@ -2230,12 +2243,24 @@ Lua* DirectorManager::getLuaInstance() {
 		localLua.set(lua);
 	}
 
+	if (*version != masterScreenPlayVersion.get()) {
+		loadScreenPlays(lua);
+		*version = masterScreenPlayVersion.get();
+	}
+
 	return lua;
 }
 
 int DirectorManager::runScreenPlays() {
 	Lua* lua = localLua.get();
+	uint32* version = localScreenPlayVersion.get();
 	int ret = 0;
+
+	if (version == NULL) {
+		version = new uint32;
+		*version = 0;
+		localScreenPlayVersion.set(version);
+	}
 
 	if (lua == NULL) {
 		lua = new Lua();
@@ -2247,6 +2272,11 @@ int DirectorManager::runScreenPlays() {
 			AiMap::instance()->loadTemplates(lua);
 
 		localLua.set(lua);
+	}
+
+	if (*version != masterScreenPlayVersion.get()) {
+		ret = loadScreenPlays(lua);
+		*version = masterScreenPlayVersion.get();
 	}
 
 	return ret || ERROR_CODE;

@@ -18,17 +18,19 @@ function Tests:aiMoveTest()
 		return
 	end
 
-	local player = spawnSceneObject("corellia", "object/creature/player/human_male.iff", 0, 0, 0, 0, 0)
+	if AiAgent(agent):getNumberOfPlayersInRange() == 0 then
+		local player = spawnSceneObject("corellia", "object/creature/player/human_male.iff", spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, 0)
 
-	if player == nil then
-		AiAgent(agent):info("Error creating player (return nil) in Tests:aiMoveTest.")
-		return
-	end
+		if player == nil then
+			AiAgent(agent):info("Error creating player (return nil) in Tests:aiMoveTest.")
+			return
+		end
 
-	if not SceneObject(player):isPlayerCreature() then
-		AiAgent(agent):info("Did not create a PlayerCreature in Tests:aiMoveTest.")
-		SceneObject(player):destroyObjectFromWorld()
-		return
+		if not SceneObject(player):isPlayerCreature() then
+			AiAgent(agent):info("Did not create a PlayerCreature in Tests:aiMoveTest.")
+			SceneObject(player):destroyObjectFromWorld()
+			return
+		end
 	end
 
 	AiAgent(agent):setAiTemplate("")
@@ -65,5 +67,6 @@ function Tests:aiMoveEvent(agent, coords)
 		AiAgent(agent):executeBehavior()
 	else
 		AiAgent(agent):info("Destination Reached.")
+		SceneObject(agent):destroyObjectFromWorld()
 	end
 end

@@ -442,6 +442,8 @@ void ServerCore::handleCommands() {
 				// create the lua function
 				Reference<LuaFunction*> func = lua->createFunction("Tests", arguments, 0);
 				func->callFunction();
+			} else if ( command == "reloadscreenplays" ) {
+				DirectorManager::instance()->reloadScreenPlays();
 			} else
 				System::out << "unknown command (" << command << ")\n";
 		} catch (SocketException& e) {
