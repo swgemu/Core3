@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_4aa07190",
+        "filename": "MMOCoreORB/bin/scripts/mobile/dathomir/singing_mountain_clan_rancor.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-13T01:24:06Z",
+      "side": 1,
+      "message": "remove this line",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 10
+      },
+      "revId": "2ecf26c2920dc07baaa444212a533edca3b1cb41",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
