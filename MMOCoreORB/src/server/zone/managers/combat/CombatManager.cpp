@@ -763,6 +763,9 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* defender, WeaponOb
 }
 
 int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender) {
+	if (!defender->isPlayerCreature())
+		return MIN(125, defender->getLevel());
+
 	if (defender->isIntimidated() || defender->isBerserked()) return 0;
 
 	int targetDefense = 0;
