@@ -1819,7 +1819,6 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	if (poolsToDamage == 0 || damageMultiplier == 0)
 		return 0;
 
-	float ratio = weapon->getWoundsRatio();
 	float healthDamage = 0.f, actionDamage = 0.f, mindDamage = 0.f;
 
 	if (defender->isPlayerCreature() && defender->getPvpStatusBitmask() == CreatureFlag::NONE) {
@@ -1862,16 +1861,6 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 		totalSpillOver += spilledDamage;  // accumulate spill damage
 
 		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)healthDamage, true, xpType, true, true);
-
-
-		if (System::random(100) < ratio)
-			defender->addWounds(CreatureAttribute::HEALTH, 1, true);
-
-		if (System::random(100) < ratio)
-			defender->addWounds(CreatureAttribute::STRENGTH, 1, true);
-
-		if (System::random(100) < ratio)
-			defender->addWounds(CreatureAttribute::CONSTITUTION, 1, true);
 	}
 
 	if (poolsToDamage & ACTION) {
@@ -1886,16 +1875,6 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 		totalSpillOver += spilledDamage;
 
 		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (int)actionDamage, true, xpType, true, true);
-
-
-		if (System::random(100) < ratio)
-			defender->addWounds(CreatureAttribute::ACTION, 1, true);
-
-		if (System::random(100) < ratio)
-			defender->addWounds(CreatureAttribute::QUICKNESS, 1, true);
-
-		if (System::random(100) < ratio)
-			defender->addWounds(CreatureAttribute::STAMINA, 1, true);
 	}
 
 	if (poolsToDamage & MIND) {
@@ -1908,15 +1887,6 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 		totalSpillOver += spilledDamage;
 
 		defender->inflictDamage(attacker, CreatureAttribute::MIND, (int)mindDamage, true, xpType, true, true);
-
-		if (System::random(100) < ratio)
-			defender->addWounds(CreatureAttribute::MIND, 1, true);
-
-		if (System::random(100) < ratio)
-			defender->addWounds(CreatureAttribute::FOCUS, 1, true);
-
-		if (System::random(100) < ratio)
-			defender->addWounds(CreatureAttribute::WILLPOWER, 1, true);
 	}
 
 	if (numSpillOverPools > 0) {
@@ -1935,8 +1905,14 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	int totalDamage =  (int) (healthDamage + actionDamage + mindDamage);
 	if(totalDamage != 0) {
 		defender->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, totalDamage);
-	}
 
+		// add attrition wounds (only affects HAM)
+		if (System::random(100) < weapon->getWoundsRatio()) {
+			defender->addWounds(CreatureAttribute::HEALTH, 1, true);
+			defender->addWounds(CreatureAttribute::ACTION, 1, true);
+			defender->addWounds(CreatureAttribute::MIND, 1, true);
+		}
+	}
 
 	if(attacker->isPlayerCreature())
 		showHitLocationFlyText(attacker->asCreatureObject(), defender, hitLocation);
