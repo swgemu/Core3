@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_4ad871ef",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/SceneObjectImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1612,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-13T11:22:08Z",
+      "side": 1,
+      "message": "You removed the locker on craftingComponents. It\u0027s needed or we\u0027ll trigger @preLocked asserts on the following calls.\n\nThe same is true for the locker on craftingComponentsSatchel that you removed from below.",
+      "revId": "e45bca9bfd950c81ccd9f7c111cd4f4ec6c35a3f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_eae4e5ad",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/droid/DroidDeedImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-13T11:22:08Z",
+      "side": 1,
+      "message": "i should start at size - 1",
+      "revId": "e45bca9bfd950c81ccd9f7c111cd4f4ec6c35a3f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0ae2799f",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/droid/DroidDeedImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-13T11:22:08Z",
+      "side": 1,
+      "message": "you should also destroy from database.",
+      "revId": "e45bca9bfd950c81ccd9f7c111cd4f4ec6c35a3f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

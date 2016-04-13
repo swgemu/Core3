@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_caf32172",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidStimpackModuleDataComponent.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-13T11:22:08Z",
+      "side": 0,
+      "message": "You need to retain this call as it sets the container capacity based on crafted values. This is where the stimpacks are put that are loaded into the module.",
+      "revId": "8e2576cb9a400466e03e50ccb570bd5a64ce81b8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_aaeeed89",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/droid/DroidDeedImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-13T11:22:08Z",
+      "side": 0,
+      "message": "Don\u0027t remove this. This is where the droid\u0027s members are set up based on what modules it has (inventory is created if it has item storage module, armor rating and resists are set if it has armor module, etc.)",
+      "revId": "8e2576cb9a400466e03e50ccb570bd5a64ce81b8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
