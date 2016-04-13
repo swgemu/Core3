@@ -1864,14 +1864,11 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)healthDamage, true, xpType, true, true);
 
 
-		if (System::random(100) < ratio)
+		if (healthDamage > 0 && System::random(100) < ratio) {
 			defender->addWounds(CreatureAttribute::HEALTH, 1, true);
-
-		if (System::random(100) < ratio)
 			defender->addWounds(CreatureAttribute::STRENGTH, 1, true);
-
-		if (System::random(100) < ratio)
 			defender->addWounds(CreatureAttribute::CONSTITUTION, 1, true);
+		}
 	}
 
 	if (poolsToDamage & ACTION) {
@@ -1888,14 +1885,11 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (int)actionDamage, true, xpType, true, true);
 
 
-		if (System::random(100) < ratio)
+		if (actionDamage > 0 && System::random(100) < ratio) {
 			defender->addWounds(CreatureAttribute::ACTION, 1, true);
-
-		if (System::random(100) < ratio)
 			defender->addWounds(CreatureAttribute::QUICKNESS, 1, true);
-
-		if (System::random(100) < ratio)
 			defender->addWounds(CreatureAttribute::STAMINA, 1, true);
+		}
 	}
 
 	if (poolsToDamage & MIND) {
@@ -1909,14 +1903,11 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 
 		defender->inflictDamage(attacker, CreatureAttribute::MIND, (int)mindDamage, true, xpType, true, true);
 
-		if (System::random(100) < ratio)
+		if (mindDamage > 0 && System::random(100) < ratio) {
 			defender->addWounds(CreatureAttribute::MIND, 1, true);
-
-		if (System::random(100) < ratio)
 			defender->addWounds(CreatureAttribute::FOCUS, 1, true);
-
-		if (System::random(100) < ratio)
 			defender->addWounds(CreatureAttribute::WILLPOWER, 1, true);
+		}
 	}
 
 	if (numSpillOverPools > 0) {
@@ -1936,7 +1927,6 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	if(totalDamage != 0) {
 		defender->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, totalDamage);
 	}
-
 
 	if(attacker->isPlayerCreature())
 		showHitLocationFlyText(attacker->asCreatureObject(), defender, hitLocation);
