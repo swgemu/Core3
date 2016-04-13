@@ -64,7 +64,7 @@ object_weapon_ranged_vehicle_vehicle_atst_ranged = object_weapon_ranged_vehicle_
 
 	defenderDefenseModifiers = { "ranged_defense" },
 
-	defenderSecondaryDefenseModifiers = { "block" },
+	defenderSecondaryDefenseModifiers = { "unarmed_passive_defense" },
 
 	speedModifiers = { "rifle_speed" },
 

@@ -63,7 +63,7 @@ object_weapon_ranged_droid_droid_astromech_ranged = object_weapon_ranged_droid_s
 
 	defenderDefenseModifiers = { "ranged_defense" },
 
-	defenderSecondaryDefenseModifiers = { "block" },
+	defenderSecondaryDefenseModifiers = { "unarmed_passive_defense" },
 
 	speedModifiers = { "rifle_speed" },
 

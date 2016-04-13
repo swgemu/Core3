@@ -64,7 +64,7 @@ object_weapon_ranged_droid_droid_droideka_ranged = object_weapon_ranged_droid_sh
 
 	defenderDefenseModifiers = { "ranged_defense" },
 
-	defenderSecondaryDefenseModifiers = { "block" },
+	defenderSecondaryDefenseModifiers = { "unarmed_passive_defense" },
 
 	speedModifiers = { "rifle_speed" },
 
