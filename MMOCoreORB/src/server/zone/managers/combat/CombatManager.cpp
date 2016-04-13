@@ -724,10 +724,7 @@ int CombatManager::getAttackerAccuracyBonus(CreatureObject* attacker, WeaponObje
 }
 
 int CombatManager::getDefenderDefenseModifier(CreatureObject* defender, WeaponObject* weapon, TangibleObject* attacker) {
-	if (!defender->isPlayerCreature())
-		return MIN(125, defender->getLevel());
-
-	int targetDefense = 0;
+	int targetDefense = defender->isPlayerCreature() ? 0 : defender->getLevel();
 	int buffDefense = 0;
 
 	Vector<String>* defenseAccMods = weapon->getDefenderDefenseModifiers();
@@ -763,12 +760,9 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* defender, WeaponOb
 }
 
 int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender) {
-	if (!defender->isPlayerCreature())
-		return MIN(125, defender->getLevel());
-
 	if (defender->isIntimidated() || defender->isBerserked()) return 0;
 
-	int targetDefense = 0;
+	int targetDefense = defender->isPlayerCreature() ? 0 : defender->getLevel();
 	ManagedReference<WeaponObject*> weapon = defender->getWeapon();
 
 	Vector<String>* defenseAccMods = weapon->getDefenderSecondaryDefenseModifiers();
