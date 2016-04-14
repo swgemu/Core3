@@ -120,6 +120,16 @@ public:
 		weaponType = SharedWeaponObjectTemplate::ANYWEAPON;
 	}
 
+	void onFail(uint32 actioncntr, CreatureObject* creature, uint32 errorNumber) const {
+		// evidence shows that this has a custom OOR message.
+		if (errorNumber == TOOFAR) {
+			creature->sendSystemMessage("@cbt_spam:out_of_range_single"); // That target is out of range.
+			QueueCommand::onFail(actioncntr, creature, GENERALERROR);
+		} else {
+			QueueCommand::onFail(actioncntr, creature, errorNumber);
+		}
+	}
+
 	int doCombatAction(CreatureObject* creature, const uint64& target, const UnicodeString& arguments = "", ManagedReference<WeaponObject*> weapon = NULL) const {
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
 		PlayerManager* playerManager = server->getPlayerManager();
