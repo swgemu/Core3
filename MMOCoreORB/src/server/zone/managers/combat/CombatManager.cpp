@@ -1918,7 +1918,7 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	}
 
 	if (poolsToWound.size() > 0 && System::random(100) < ratio) {
-		int poolToWound = poolsToWound.get(System::random(poolsToWound.size()));
+		int poolToWound = poolsToWound.get(System::random(poolsToWound.size() - 1));
 		defender->addWounds(poolToWound,     1, true);
 		defender->addWounds(poolToWound + 1, 1, true);
 		defender->addWounds(poolToWound + 2, 1, true);
