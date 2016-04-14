@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_8abbe971",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidStimpackModuleDataComponent.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-14T11:39:46Z",
+      "side": 1,
+      "message": "You\u0027re doing too much and it won\u0027t work. This method returns the satchel, not the crafting components container. All you need to do is get it, Null check, and set the volume limit if not Null.",
+      "revId": "677a5b9f98e77bb87f07b9d9cda5bb6764e3d5a6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2ab09d8a",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidStimpackModuleDataComponent.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-14T11:39:46Z",
+      "side": 1,
+      "message": "The size check should be removed. At this point there won\u0027t be anything in the satchel.",
+      "revId": "677a5b9f98e77bb87f07b9d9cda5bb6764e3d5a6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
