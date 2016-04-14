@@ -30,6 +30,7 @@
 #include "server/zone/packets/chat/ChatOnChangeFriendStatus.h"
 #include "server/zone/packets/chat/ChatOnChangeIgnoreStatus.h"
 #include "server/zone/packets/chat/ChatFriendsListUpdate.h"
+#include "server/zone/packets/object/CombatSpam.h"
 #include "server/zone/packets/player/PlayerObjectMessage6.h"
 #include "server/zone/packets/player/PlayerObjectMessage8.h"
 #include "server/zone/packets/player/PlayerObjectMessage9.h"
@@ -1572,13 +1573,10 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 	if (creature == NULL)
 		return;
 
-	/*if (!creature->isInQuadTree() && creature->getParent() != NULL && creature->getParent()->isCellObject() && creature->getClient() == NULL) {
-		SceneObject* building = creature->getParent()->getParent();
-
-		if (building != NULL && building->getZone() != NULL)
-			//creature->insertToZone(building->getZone());
-			building->getZone()->transferObject(creature, -1, true);
-	}*/
+	ZoneServer* zoneServer = creature->getZoneServer();
+	if (zoneServer == NULL) {
+		return;
+	}
 
 	if (isLinkDead()) {
 		if (logoutTimeStamp.isPast()) {
@@ -1621,8 +1619,21 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 			!creature->hasBuff(STRING_HASHCODE("private_feign_buff")) && (commandQueue->size() == 0) && 
 			creature->isNextActionPast() && !creature->isDead() && !creature->isIncapacitated() &&
 			cooldownTimerMap->isPast("autoAttackDelay")) {
-			creature->executeObjectControllerAction(STRING_HASHCODE("attack"), creature->getTargetID(), "");
-			cooldownTimerMap->updateToCurrentAndAddMili("autoAttackDelay", (int)(CombatManager::instance()->calculateWeaponAttackSpeed(creature, creature->getWeapon(), 1.f) * 1000.f));
+
+			ManagedReference<SceneObject*> targetObject = zoneServer->getObject(creature->getTargetID());
+			if (targetObject != NULL) {
+				if (targetObject->isInRange(creature, creature->getWeapon()->getMaxRange())) {
+					creature->executeObjectControllerAction(STRING_HASHCODE("attack"), creature->getTargetID(), "");
+				} else {
+					CombatSpam* spam = new CombatSpam(creature, NULL, creature, NULL, 0, "cbt_spam", "out_of_range", 2); // That target is out of range. (red)
+					creature->sendMessage(spam);
+				}
+
+				// as long as the target is still valid, we still want to continue to queue auto attacks
+				cooldownTimerMap->updateToCurrentAndAddMili("autoAttackDelay", (int)(CombatManager::instance()->calculateWeaponAttackSpeed(creature, creature->getWeapon(), 1.f) * 1000.f));
+			} else {
+				creature->setTargetID(0);
+			}
 		}
 
 		if (!getZoneServer()->isServerLoading() && cooldownTimerMap->isPast("weatherEvent")) {

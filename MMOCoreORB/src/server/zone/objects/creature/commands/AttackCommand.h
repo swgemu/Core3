@@ -24,7 +24,15 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return doCombatAction(creature, target);
+		int result = doCombatAction(creature, target);
+
+		// evidence shows that this has a custom OOR message.
+		if (result == TOOFAR) {
+			creature->sendSystemMessage("@cbt_spam:out_of_range_single"); // That target is out of range.
+			return GENERALERROR;
+		}
+
+		return result;
 	}
 };
 

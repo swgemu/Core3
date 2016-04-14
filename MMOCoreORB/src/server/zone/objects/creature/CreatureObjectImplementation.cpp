@@ -68,8 +68,6 @@
 
 #include "server/zone/packets/object/SitOnObject.h"
 
-#include "server/zone/packets/object/CombatSpam.h"
-
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/resource/resourcespawner/SampleTask.h"
