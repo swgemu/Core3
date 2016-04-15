@@ -16,6 +16,7 @@ import system.util.Vector;
 include server.zone.managers.creature.CreatureMap;
 include server.zone.managers.creature.SpawnAreaMap;
 include server.zone.managers.creature.AiMap;
+include server.zone.managers.creature.AiSpeciesData;
 import engine.util.u3d.Vector3;
 import system.thread.Mutex;
 
@@ -27,6 +28,9 @@ class CreatureManager extends ZoneManager {
 	
 	@dereferenced
 	protected SpawnAreaMap spawnAreaMap;
+
+	@dereferenced
+	protected Vector<Reference<AiSpeciesData> > aiSpeciesData;
 	
 	protected transient CreatureTemplateManager creatureTemplateManager;
 	
@@ -60,7 +64,10 @@ class CreatureManager extends ZoneManager {
 	
 	public void initialize() {
 		loadSpawnAreas();
+		loadLuaConfig();
 	}
+
+	public native void loadLuaConfig();
 
 	public native SceneObject spawn(unsigned int lairTemplate, int difficultyLevel, int difficulty, float x, float z, float y, float size);
 
@@ -148,6 +155,11 @@ class CreatureManager extends ZoneManager {
 	@local
 	public Vector<SpawnArea> getWorldSpawnAreas() {
 		return spawnAreaMap.getWorldSpawnAreas();
+	}
+
+	@local
+	public AiSpeciesData getAiSpeciesData(unsigned int speciesID) {
+		return aiSpeciesData.get(speciesID);
 	}
 
 	public native SpawnArea getSpawnArea(final string areaname);
