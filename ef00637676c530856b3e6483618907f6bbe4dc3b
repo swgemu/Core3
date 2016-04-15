@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_0d8db37b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-15T20:59:19Z",
+      "side": 1,
+      "message": "This is local to the scope of the electionMobiles for loop, and is would be declared as a global if used outside the scope of this loop.",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 12
+      },
+      "revId": "ef00637676c530856b3e6483618907f6bbe4dc3b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ed8f1f74",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-15T20:59:19Z",
+      "side": 1,
+      "message": "This creates/sets the global variable pNpc since we are no longer within the electionMobiles loop. You need to explicitly declare every variable \u0027local\u0027 whenever you want it to leave scope at the end of the block, which is always the case (don\u0027t use globals in screenplay code -- that\u0027s what the shared memory area is for).",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 6
+      },
+      "revId": "ef00637676c530856b3e6483618907f6bbe4dc3b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ade9271c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-15T20:59:19Z",
+      "side": 1,
+      "message": "You have now changed the value of the global pNpc, and not a local variable.",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 6
+      },
+      "revId": "ef00637676c530856b3e6483618907f6bbe4dc3b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_cdeedb22",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-15T20:59:19Z",
+      "side": 1,
+      "message": "This is correct, but the locality of the pNpc variable only persists from the line that \"local\" is declared until the end of the block (which, in this case, is the end of the function). Therefore, all the other non-local pNpc declarations are globals even though you declare it local down here.",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 11
+      },
+      "revId": "ef00637676c530856b3e6483618907f6bbe4dc3b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_6df30f0b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-15T20:59:19Z",
+      "side": 1,
+      "message": "Check your indentation in the definition of this function.",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 3
+      },
+      "revId": "ef00637676c530856b3e6483618907f6bbe4dc3b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
