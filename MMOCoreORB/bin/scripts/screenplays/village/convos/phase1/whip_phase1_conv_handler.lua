@@ -32,7 +32,7 @@ function villageWhipPhase1ConvoHandler:runScreenHandlers(conversationTemplate, c
 		VillageJediManagerCommon.setActiveQuestThisPhase(conversingPlayer)
 		FsReflex1:setRescueCount(conversingPlayer, 0)
 		FsReflex1:startQuest(conversingPlayer)
-	elseif (screenID == "intro_quest_failed") then
+	elseif (screenID == "intro_quest_failed" or screenID == "intro_quest_inprogress") then
 		FsReflex1:restartQuest(conversingPlayer)
 	elseif (screenID == "intro_quest_continue") then
 		clonedConversation:setDialogTextDI(5 - FsReflex1:getRescueCount(conversingPlayer))
