@@ -1,0 +1,922 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_6a445574",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "Same with this entire file, formatting needs to be fixed. Use tabs instead of spaces.",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8a49a98d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "These aren\u0027t needed since it\u0027s not using the themepark logic, you can remove them and just ScreenPlay:new {}",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ea80658d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "For testing sake on Nova, set some temporary low values. 48 hours and 48 hours should be sufficient.",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0a7ef9ae",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "pNpc needs to be nil checked here",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_aa4a6d81",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "nil check pNpc",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ca4fa191",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "nil check pNpc",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2a5e5d46",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "pNpc and pActiveArea need local here. Previous uses of these variables were inside for statements and out of scope from this portion.",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_4a5b9154",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "nil check pMobile",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ea570525",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "nil check pSnd",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0a55991c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "nil check pMobile, also rename it like pSnd above so that it\u0027s less confusing",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2a25fdc1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "These two functions have pretty obscure names that makes following their intention from other parts of the code confusing, please rename them to something that tells what they do.",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_aa310d0d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "nil check pActiveArea and pMovingObject here",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ca36c103",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "nil check pNpc",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_6a3bf5eb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "nil check pActiveArea and pMovingObject",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2a773dd6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "This entire file has massive formatting issues. If you don\u0027t have it already, get Eclipse\u0027s Lua development tools, it\u0027ll fix your formatting issues pretty easily.",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8a7209e4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "Store the template object path to a variable here and compare the variable for each check, that way you\u0027re not calling getTemplateObjectPath() so many times",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8a40c957",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_capitol_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "If there is no handling of screens necessary, remove the unnecessary variable declarations here",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_4a22b1ba",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "Typo in function name",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ea2e25a5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "Formatting of this if block is a bit messy",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0a2cb9aa",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "Formatting here needs cleaning as well",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_aa182d85",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_rumor_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "Remove the unnecessary variables here",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ca1d6175",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/hutt_informant_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "nil check pInventory",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_6a121564",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_contact_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "Fix the formatting in this file",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8a176951",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_contact_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "nil check pObj, and it could use a better name",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2a0c1d42",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_contact_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "nil check pInventory",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_4a095130",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_questn_university_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "Fix formatting in this file",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ea05c514",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_questn_university_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "local playerCampaign",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8d0ea333",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_trenwell_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "fix formatting in this file",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0a035910",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_trenwell_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "local playerCampaign",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_adffe700",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_trenwell_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "local playerCampaign",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2d13d75d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/seans_historian_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "Fix formatting in this file",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_4d108b4e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/seans_historian_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "Just use return pHistoryDisk ~\u003d nil",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ed1cff6c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/seans_historian_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "nil check and give better variable name",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_6d20ef9b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/stone_merchant_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "Fix formatting in this file",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8d2543ad",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/stone_merchant_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "pSmoothStone",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2d3af7cd",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/stone_merchant_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "pCarvedStone",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_4d372be4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/stone_merchant_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "pReward",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ed339ff4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/tour_aryon_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "If this if isnt used, remove it",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0d3133ec",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_questn_cantina_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "Fix formatting",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ad4da774",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_questn_cantina_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "nil check pInventory",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_cd525b13",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_questn_cantina_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "local playerCampaign",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2d419739",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_questn_capitol_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "Fix formatting",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_6d578f03",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_questn_capitol_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "nil check pInventory",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8d5c6327",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_questn_capitol_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "local playerCampaign",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_4d3e4bba",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "remove this",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ed4abf54",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "pRivalDisk",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0d48535a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be inside the nil check? If their inv is null, they didnt receive the reward",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ed615fd4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "nil check",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_4d65ebdf",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "local tuskenWaypointID",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0d5ff30f",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "nil check",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ad9b67c8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "local tuskenWaypointID",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_cda01bf7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/museum_curator_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "fix formatting on this file",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_6da54f03",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/tatooine_fort_tusken.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "fix formatting on this file",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8daa23d3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/tatooine_fort_tusken.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-04-15T02:54:48Z",
+      "side": 1,
+      "message": "you\u0027re going to need to do an isPet() and pet owner check in case a player\u0027s pet gets the killing blow here",
+      "revId": "a7900a366007d4d88be9e8ca7aae21760a93f5d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
