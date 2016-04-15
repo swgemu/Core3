@@ -30,6 +30,9 @@ public:
 		if (pet->hasRidingCreature())
 			return GENERALERROR;
 
+		if (pet->getPosture() != CreaturePosture::UPRIGHT && pet->getPosture() != CreaturePosture::KNOCKEDDOWN)
+			pet->setPosture(CreaturePosture::UPRIGHT);
+
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target, true);
 		if (targetObject == NULL || !targetObject->isCreatureObject() ) { // pets should be able to follow other mobiles as a command. i found multiple references to this. -- washu
 			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
