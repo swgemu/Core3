@@ -27,6 +27,9 @@ public:
 		if (pet->hasRidingCreature())
 			return GENERALERROR;
 
+		if (pet->getPosture() != CreaturePosture::UPRIGHT && pet->getPosture() != CreaturePosture::KNOCKEDDOWN)
+			pet->setPosture(CreaturePosture::UPRIGHT);
+
 		// Check if droid has power
 		if( controlDevice->getPetType() == PetManager::DROIDPET ) {
 			ManagedReference<DroidObject*> droidPet = cast<DroidObject*>(pet.get());

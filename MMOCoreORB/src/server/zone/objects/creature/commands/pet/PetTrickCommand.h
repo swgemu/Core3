@@ -96,8 +96,15 @@ public:
 		mindHeal = MIN( mindHeal, pet->getMaxHAM(CreatureAttribute::MIND) - pet->getHAM(CreatureAttribute::MIND) );
 		pet->inflictDamage(pet, CreatureAttribute::MIND, -mindHeal, false);
 
+		if (pet->getPosture() != CreaturePosture::UPRIGHT && pet->getPosture() != CreaturePosture::SITTING)
+			pet->setPosture(CreaturePosture::UPRIGHT);
+
 		// Perform trick animation
 		String animation = "trick_" + String::valueOf(trickNumber);
+
+		if (pet->getPosture() == CreaturePosture::SITTING)
+			animation = "sit_" + animation;
+
 		pet->doAnimation(animation);
 
 		// Set cooldown
