@@ -207,12 +207,19 @@ function GoToTheater:handleDespawnTheater(pCreatureObject)
 		return
 	end
 
-	if (self:areMobilesInCombat(pCreatureObject) or self:areMobilesFollowing(pCreatureObject)) then
+	if (self:areMobilesInCombat(pCreatureObject) or self:areMobilesFollowing(pCreatureObject) or self:isOwnerInRangeOfTheater(pCreatureObject)) then
 		createEvent(self.despawnTime / 2, self.taskName, "handleDespawnTheater", pCreatureObject, "")
 		return
 	end
 
 	self:finish(pCreatureObject)
+end
+
+function GoToTheater:isOwnerInRangeOfTheater(pCreatureObject)
+	local theaterId = readData(SceneObject(pCreatureObject):getObjectID() .. self.taskName .. THEATER_ID_STRING)
+	local pTheater = getSceneObject(theaterId)
+
+	return pTheater ~= nil and CreatureObject(pCreatureObject):isInRangeWithObject(pTheater, 128)
 end
 
 function GoToTheater:areMobilesInCombat(pCreatureObject)
