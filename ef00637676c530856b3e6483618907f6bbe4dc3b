@@ -114,6 +114,178 @@
       "revId": "ef00637676c530856b3e6483618907f6bbe4dc3b",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_4ddacb79",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_contact_conv_handler.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-15T21:26:26Z",
+      "side": 1,
+      "message": "Isn\u0027t used",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 38
+      },
+      "revId": "ef00637676c530856b3e6483618907f6bbe4dc3b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_ede63f44",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_contact_conv_handler.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-15T21:26:26Z",
+      "side": 1,
+      "message": "Isn\u0027t used.",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 69
+      },
+      "revId": "ef00637676c530856b3e6483618907f6bbe4dc3b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_0de4d339",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_trenwell_conv_handler.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-15T21:26:26Z",
+      "side": 1,
+      "message": "When using a long boolean return like this, be sure to group your logic with parentheses to be explicit about your intention. The way this currently reads, it only nil-checks pInventory for the first getContainerObjectByTemplate call, which I imagine is not your intention.\n\nYou probably also want to indent all the lines except for the first here to indicate line continuation (ie, that this is one logical statement).",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 106
+      },
+      "revId": "ef00637676c530856b3e6483618907f6bbe4dc3b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_add04754",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_trenwell_conv_handler.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-15T21:26:26Z",
+      "side": 1,
+      "message": "this needs to be local, but why even use a variable here?",
+      "range": {
+        "startLine": 223,
+        "startChar": 4,
+        "endLine": 223,
+        "endChar": 11
+      },
+      "revId": "ef00637676c530856b3e6483618907f6bbe4dc3b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_cdd57b44",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_trenwell_conv_handler.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-15T21:26:26Z",
+      "side": 1,
+      "message": "typo (I\u0027m assuming you meant not to be a separate word)\n\nalso, you can use deMorgan\u0027s rules to simplify this statement to `not (a or b)`",
+      "range": {
+        "startLine": 263,
+        "startChar": 61,
+        "endLine": 263,
+        "endChar": 89
+      },
+      "revId": "ef00637676c530856b3e6483618907f6bbe4dc3b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_6dca2fa3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-15T21:26:26Z",
+      "side": 1,
+      "message": "Needs a nil check (as well as pPlayer)",
+      "range": {
+        "startLine": 208,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 57
+      },
+      "revId": "ef00637676c530856b3e6483618907f6bbe4dc3b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_8dcf83b0",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/museum_curator_conv_handler.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-15T21:26:26Z",
+      "side": 1,
+      "message": "missed a tab",
+      "revId": "ef00637676c530856b3e6483618907f6bbe4dc3b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_2dc43791",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/tatooine_fort_tusken.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-15T21:26:26Z",
+      "side": 1,
+      "message": "Add an isPet here and set pAttacker to the pet\u0027s owner if it\u0027s true.",
+      "revId": "ef00637676c530856b3e6483618907f6bbe4dc3b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
