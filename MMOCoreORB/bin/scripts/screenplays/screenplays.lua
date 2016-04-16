@@ -24,6 +24,7 @@ require("sui.custom.SuiProcessorPuzzle")
 require("sui.custom.SuiRadiationSensor")
 require("sui.custom.SuiReceiverPuzzle")
 
+includeFile("helperfuncs.lua")
 
 -- Theme parks
 includeFile("themepark/conversations/goru_conv_handler.lua")
@@ -112,6 +113,7 @@ includeFile("village/intro/old_man_intro_encounter.lua")
 includeFile("village/intro/sith_shadow_encounter.lua")
 includeFile("village/intro/sith_shadow_intro_theater.lua")
 includeFile("village/multiple/fs_survey.lua")
+includeFile("village/multiple/fs_counterstrike.lua")
 includeFile("village/outro/mellichae_outro_theater.lua")
 includeFile("village/outro/old_man_outro_encounter.lua")
 includeFile("village/phase1/fs_crafting1_goto1.lua")
