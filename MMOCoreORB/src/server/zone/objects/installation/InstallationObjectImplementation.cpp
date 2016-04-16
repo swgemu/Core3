@@ -60,11 +60,8 @@ void InstallationObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	BaseMessage* buio6 = new InstallationObjectMessage6(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(buio6);
 
-
-	if((this->isTurret() || isMinefield()) && player->isCreatureObject()){
-			sendPvpStatusTo(cast<CreatureObject*>(player));
-	}
-
+	if ((getObjectTemplate()->getGameObjectType() == SceneObjectType::MINEFIELD || getObjectTemplate()->getGameObjectType() == SceneObjectType::DESTRUCTIBLE) && player->isCreatureObject())
+		sendPvpStatusTo(cast<CreatureObject*>(player));
 }
 
 void InstallationObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {

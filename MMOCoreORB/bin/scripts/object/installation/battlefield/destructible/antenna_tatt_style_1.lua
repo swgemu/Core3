@@ -42,7 +42,8 @@
 
 
 object_installation_battlefield_destructible_antenna_tatt_style_1 = object_installation_battlefield_destructible_shared_antenna_tatt_style_1:new {
-
+	pvpStatusBitmask = ATTACKABLE,
+	maxCondition = 1000,
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_antenna_tatt_style_1, "object/installation/battlefield/destructible/antenna_tatt_style_1.iff")

@@ -42,7 +42,8 @@
 
 
 object_installation_battlefield_destructible_bfield_base_gate_impl = object_installation_battlefield_destructible_shared_bfield_base_gate_impl:new {
-
+	pvpStatusBitmask = ATTACKABLE,
+	maxCondition = 20000,
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_bfield_base_gate_impl, "object/installation/battlefield/destructible/bfield_base_gate_impl.iff")
