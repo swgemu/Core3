@@ -77,6 +77,7 @@ villageMobileSpawns = {
 	[3] = {
 		{ "dageerin", 5238.25, 78.5, -4189.05, 97, "", "villageDageerinPhase3ConvoTemplate" },
 		{ "fs_cll8_binary_load_lifter", 5193.25, 78.5, -4195.6, -34, "", "" },
+		{ "captain_sarguillo", 5313.9, 78.5, -4161.5, -72, "", "villageSarguilloPhase3ConvoTemplate" },
 
 		{ "fs_villager_male", 5346.7, 78.5, -4062.15, -46, "", "" },
 		{ "fs_villager_female", 5199.3, 78.5, -4128.55, -142, "", "" },
