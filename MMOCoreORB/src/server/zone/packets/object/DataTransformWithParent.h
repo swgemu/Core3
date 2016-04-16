@@ -163,10 +163,10 @@ public:
 		if (ghost == NULL)
 			return;
 
-		if (isnan(positionX) || isnan(positionY) || isnan(positionZ))
+		if (std::isnan(positionX) || std::isnan(positionY) || std::isnan(positionZ))
 			return;
 
-		if (isinf(positionX) || isinf(positionY) || isinf(positionZ))
+		if (std::isinf(positionX) || std::isinf(positionY) || std::isinf(positionZ))
 			return;
 
 		if (ghost->isTeleporting())

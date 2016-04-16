@@ -26,10 +26,10 @@ PathFinderManager::PathFinderManager() : Logger("PathFinderManager") {
 }
 
 Vector<WorldCoordinates>* PathFinderManager::findPath(const WorldCoordinates& pointA, const WorldCoordinates& pointB) {
-	if (isnan(pointA.getX()) || isnan(pointA.getY()) || isnan(pointA.getZ()))
+	if (std::isnan(pointA.getX()) || std::isnan(pointA.getY()) || std::isnan(pointA.getZ()))
 		return NULL;
 
-	if (isnan(pointB.getX()) || isnan(pointB.getY()) || isnan(pointB.getZ()))
+	if (std::isnan(pointB.getX()) || std::isnan(pointB.getY()) || std::isnan(pointB.getZ()))
 		return NULL;
 
 	CellObject* cellA = pointA.getCell();
