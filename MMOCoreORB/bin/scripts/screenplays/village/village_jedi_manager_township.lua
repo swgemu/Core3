@@ -23,6 +23,10 @@ function VillageJediManagerTownship.setCurrentPhaseInit()
 	end
 end
 
+function VillageJediManagerTownship.getVillagePhaseChangeTime()
+	return VILLAGE_PHASE_CHANGE_TIME
+end
+
 function VillageJediManagerTownship.setCurrentPhaseID(phaseID)
 	setQuestStatus("Village:phaseID", phaseID)
 end
@@ -59,6 +63,11 @@ function VillageJediManagerTownship:switchToNextPhase()
 	VillageJediManagerTownship:despawnSceneObjects(currentPhase)
 	VillageJediManagerTownship:handlePhaseChangeActiveQuests(phaseID, currentPhase)
 
+	-- Despawn camps going into phase 4
+	if (currentPhase == 3) then
+		FsCounterStrike:despawnAllCamps()
+	end
+
 	currentPhase = currentPhase + 1
 
 	if currentPhase > VILLAGE_TOTAL_NUMBER_OF_PHASES then
@@ -69,6 +78,11 @@ function VillageJediManagerTownship:switchToNextPhase()
 	VillageJediManagerTownship.setCurrentPhaseID(phaseID + 1)
 	VillageJediManagerTownship:spawnMobiles(currentPhase, false)
 	VillageJediManagerTownship:spawnSceneObjects(currentPhase, false)
+
+	-- Spawn camps going into phase 3
+	if (currentPhase == 3) then
+		FsCounterStrike:pickPhaseCamps()
+	end
 
 	Logger:log("Switching village phase to " .. currentPhase, LT_INFO)
 
@@ -81,9 +95,14 @@ end
 function VillageJediManagerTownship:start()
 	if (isZoneEnabled("dathomir")) then
 		Logger:log("Starting the Village Township Screenplay.", LT_INFO)
+		local currentPhase = VillageJediManagerTownship.getCurrentPhase()
 		VillageJediManagerTownship.setCurrentPhaseInit()
-		VillageJediManagerTownship:spawnMobiles(VillageJediManagerTownship.getCurrentPhase(), true)
-		VillageJediManagerTownship:spawnSceneObjects(VillageJediManagerTownship.getCurrentPhase(), true)
+		VillageJediManagerTownship:spawnMobiles(currentPhase, true)
+		VillageJediManagerTownship:spawnSceneObjects(currentPhase, true)
+
+		if (currentPhase == 3) then
+			FsCounterStrike:pickPhaseCamps()
+		end
 	end
 end
 
@@ -214,6 +233,8 @@ function VillageJediManagerTownship:doOnlinePhaseChangeFails(pCreature, currentP
 	elseif (currentPhase == 2) then
 		FsReflex2:doPhaseChangeFail(pCreature)
 		FsSad:doPhaseChangeFail(pCreature)
+	elseif (currentPhase == 3) then
+		FsCounterStrike:doPhaseChangeFail(pCreature)
 	end
 end
 
