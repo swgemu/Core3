@@ -24,6 +24,7 @@ require("sui.custom.SuiProcessorPuzzle")
 require("sui.custom.SuiRadiationSensor")
 require("sui.custom.SuiReceiverPuzzle")
 
+includeFile("helperfuncs.lua")
 
 -- Theme parks
 includeFile("themepark/conversations/goru_conv_handler.lua")
@@ -136,6 +137,7 @@ includeFile("village/phase2/fs_sad_1_theaters/fs_sad_1_theater_6.lua")
 includeFile("village/phase2/fs_sad_1_theaters/fs_sad_1_theater_7.lua")
 includeFile("village/phase2/fs_sad_1_theaters/fs_sad_1_theater_8.lua")
 includeFile("village/phase2/fs_sad.lua")
+includeFile("village/phase3/fs_counterstrike.lua")
 includeFile("village/phase3/fs_sad_2_theaters/fs_sad_2_theater_1.lua")
 includeFile("village/phase3/fs_sad_2_theaters/fs_sad_2_theater_2.lua")
 includeFile("village/phase3/fs_sad_2_theaters/fs_sad_2_theater_3.lua")
@@ -160,6 +162,7 @@ includeFile("village/convos/phase1/fs_reflex1_prisoner_conv_handler.lua")
 includeFile("village/convos/phase2/whip_phase2_conv_handler.lua")
 includeFile("village/convos/phase2/dageerin_phase2_conv_handler.lua")
 includeFile("village/convos/phase3/dageerin_phase3_conv_handler.lua")
+includeFile("village/convos/phase3/sarguillo_phase3_conv_handler.lua")
 
 -- Events
 includeFile("events/conversations/bestine_artist_conv_handler.lua")

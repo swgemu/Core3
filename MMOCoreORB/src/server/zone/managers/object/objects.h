@@ -100,6 +100,7 @@
 #include "server/zone/objects/tangible/pharmaceutical/VitalityPack.h"
 #include "server/zone/objects/tangible/pharmaceutical/WoundPack.h"
 #include "server/zone/objects/tangible/misc/FsPuzzlePack.h"
+#include "server/zone/objects/tangible/misc/FsCsObject.h"
 #include "server/zone/objects/tangible/misc/PlantObject.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/tangible/sign/SignObject.h"
