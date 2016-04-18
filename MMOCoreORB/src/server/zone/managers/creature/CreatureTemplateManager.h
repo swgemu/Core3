@@ -15,6 +15,7 @@
 #include "templates/mobile/PatrolPathTemplate.h"
 #include "templates/mobile/MobileOutfitGroup.h"
 #include "SpawnGroup.h"
+#include "AiSpeciesData.h"
 
 namespace server {
 namespace zone {
@@ -24,6 +25,7 @@ namespace creature {
 class CreatureTemplateManager : public Singleton<CreatureTemplateManager>, public Object, public Logger {
 protected:
 	VectorMap<uint32, Vector<String> > weaponMap;
+	Vector<Reference<AiSpeciesData*> > aiSpeciesData;
 	Reference<Lua*> lua;
 	HashTable<uint32, Reference<CreatureTemplate*> > hashTable;
 
@@ -46,6 +48,7 @@ public:
 	virtual ~CreatureTemplateManager();
 
 	int loadTemplates();
+	void loadLuaConfig();
 	static int includeFile(lua_State* L);
 	static int addTemplate(lua_State* L);
 	static int addWeapon(lua_State* L);
@@ -120,6 +123,10 @@ public:
 
 	SpawnGroup* getDestroyMissionGroup(uint32 crc) {
 		return destroyMissionGroupMap.get(crc);
+	}
+
+	AiSpeciesData* getAiSpeciesData(uint32 speciesID) {
+		return aiSpeciesData.get(speciesID);
 	}
 
 };

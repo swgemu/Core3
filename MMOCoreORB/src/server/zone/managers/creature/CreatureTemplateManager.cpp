@@ -75,6 +75,35 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 	lua->setGlobalInt("NAME_SCOUTTROOPER", NameManagerType::SCOUTTROOPER);
 	lua->setGlobalInt("NAME_DARKTROOPER", NameManagerType::DARKTROOPER);
 	lua->setGlobalInt("NAME_SWAMPTROOPER", NameManagerType::SWAMPTROOPER);
+
+	loadLuaConfig();
+}
+
+void CreatureTemplateManager::loadLuaConfig() {
+	lua->runFile("scripts/managers/creature_manager.lua");
+
+	LuaObject luaObject = lua->getGlobalObject("aiSpeciesData");
+
+	if (luaObject.isValidTable()) {
+		for (int i = 1; i <= luaObject.getTableSize(); ++i) {
+			LuaObject speciesData = luaObject.getObjectAt(i);
+
+			if (speciesData.isValidTable()) {
+				int speciesID = speciesData.getIntAt(1);
+				String skeleton = speciesData.getStringAt(2);
+				bool canSit = speciesData.getBooleanAt(3);
+				bool canLieDown = speciesData.getBooleanAt(4);
+
+				Reference<AiSpeciesData*> data = new AiSpeciesData(speciesID, skeleton, canSit, canLieDown);
+
+				aiSpeciesData.add(speciesID, data);
+			}
+
+			speciesData.pop();
+		}
+	}
+
+	luaObject.pop();
 }
 
 CreatureTemplateManager::~CreatureTemplateManager() {
