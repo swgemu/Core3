@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_77521015",
+        "filename": "MMOCoreORB/src/Makefile.am",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-18T12:28:07Z",
+      "side": 1,
+      "message": "You change the path here but you didn\u0027t move the test. Instead, you added a second test of the same name at the new path.",
+      "revId": "aed3012e999b918607cbc4ef2aa45e093f709368",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
