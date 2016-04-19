@@ -95,6 +95,7 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 		if (object->isWeaponObject()) {
 			WeaponObject* weapon = cast<WeaponObject*>(object);
 			int bladeColor = weapon->getBladeColor();
+			PlayerObject* ghost = creo->getPlayerObject();
 
 			if (weapon->isJediWeapon()) {
 				if (bladeColor == 31) {
@@ -102,7 +103,7 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 					return TransferErrorCode::PLAYERUSEMASKERROR;
 				}
 
-				if (weapon->getCraftersName() != creo->getFirstName()) {
+				if (weapon->getCraftersName() != creo->getFirstName() && !ghost->isPrivileged()) {
 					errorDescription = "@jedi_spam:not_your_lightsaber";
 					return TransferErrorCode::PLAYERUSEMASKERROR;
 				}
