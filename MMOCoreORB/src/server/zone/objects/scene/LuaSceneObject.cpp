@@ -84,6 +84,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "cancelPendingTask", &LuaSceneObject::cancelPendingTask },
 		{ "getChildObject", &LuaSceneObject::getChildObject },
 		{ "getContainerOwnerID", &LuaSceneObject::getContainerOwnerID },
+		{ "info", &LuaSceneObject::info },
 		{ 0, 0 }
 
 };
@@ -772,4 +773,12 @@ int LuaSceneObject::getContainerOwnerID(lua_State *L) {
 	lua_pushnumber(L, realObject->getContainerPermissions()->getOwnerID());
 
 	return 1;
+}
+
+int LuaSceneObject::info(lua_State* L) {
+	String msg = lua_tostring(L, -1);
+
+	realObject->info(msg, true);
+
+	return 0;
 }

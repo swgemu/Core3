@@ -99,6 +99,7 @@ namespace scene {
 		int cancelPendingTask(lua_State* L);
 		int getChildObject(lua_State* L);
 		int getContainerOwnerID(lua_State* L);
+		int info(lua_State* L);
 
 	protected:
 		SceneObject* _getRealSceneObject() {
