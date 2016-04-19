@@ -34,6 +34,9 @@ public:
 		if (pet->hasRidingCreature())
 			return GENERALERROR;
 
+		if (pet->getPosture() != CreaturePosture::UPRIGHT && pet->getPosture() != CreaturePosture::KNOCKEDDOWN)
+			pet->setPosture(CreaturePosture::UPRIGHT);
+
 		Reference<TangibleObject*> targetObject = server->getZoneServer()->getObject(target, true).castTo<TangibleObject*>();
 		if (targetObject == NULL || !targetObject->isAttackableBy(pet) ) {
 			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
