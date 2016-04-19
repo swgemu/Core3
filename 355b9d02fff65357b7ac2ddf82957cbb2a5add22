@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_b7bae808",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/CreatureTemplateManager.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-19T10:48:42Z",
+      "side": 1,
+      "message": "Don\u0027t delete lua here.",
+      "revId": "355b9d02fff65357b7ac2ddf82957cbb2a5add22",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
