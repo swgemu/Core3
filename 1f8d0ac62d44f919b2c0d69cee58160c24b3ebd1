@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_77d53042",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/CreatureManager.idl",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-19T08:59:40Z",
+      "side": 1,
+      "message": "You aren\u0027t using this.",
+      "revId": "1f8d0ac62d44f919b2c0d69cee58160c24b3ebd1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_17cab4a1",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/CreatureTemplateManager.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-19T08:59:40Z",
+      "side": 1,
+      "message": "Don\u0027t instantiate a new Lua here as there\u0027s already one created in the ctor that you can use.",
+      "revId": "1f8d0ac62d44f919b2c0d69cee58160c24b3ebd1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
