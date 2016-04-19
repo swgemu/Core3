@@ -1913,9 +1913,7 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	}
 
 	int totalDamage =  (int) (healthDamage + actionDamage + mindDamage);
-	if(totalDamage != 0) {
-		defender->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, totalDamage);
-	}
+	defender->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, totalDamage);
 
 	if (poolsToWound.size() > 0 && System::random(100) < ratio) {
 		int poolToWound = poolsToWound.get(System::random(poolsToWound.size() - 1));
@@ -1980,8 +1978,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, T
 
 	defender->inflictDamage(attacker, 0, damage, true, xpType, true, true);
 
-	if(damage != 0)
-		defender->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, damage);
+	defender->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, damage);
 
 	return damage;
 }

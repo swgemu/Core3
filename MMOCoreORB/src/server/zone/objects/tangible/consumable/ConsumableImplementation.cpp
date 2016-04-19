@@ -47,12 +47,8 @@ void ConsumableImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 
 	modifiers = *consumable->getModifiers();
 	buffName = consumable->getBuffName();
-	//protected string modifierString;
 
-	//buffCRC = consumable->getBuffCRC();
 	buffCRC = buffName.hashCode();
-
-	//consumableType = consumable->getConsumableType(); set by the subobject
 
 	foragedFood = consumable->getForagedFood();
 

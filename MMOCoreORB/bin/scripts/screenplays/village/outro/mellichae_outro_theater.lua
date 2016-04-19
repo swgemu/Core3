@@ -240,7 +240,7 @@ function MellichaeOutroTheater:onDamageReceived(pObject, pAttacker, damage)
 		local creoOwnerId = readData(SceneObject(pObject):getObjectID() .. ":mell:encounter:belongs:to")
 		local numOfShrines = readData(creoOwnerId .. ":totalNum:Shrines:Red")
 
-		if (numOfShrines ~= nil and numOfShrines > 0) then
+		if (numOfShrines ~= nil and numOfShrines > 0 and damage > 0) then
 			CreatureObject(pObject):healDamage(damage, 0)
 			CreatureObject(pObject):healDamage(damage, 3)
 			CreatureObject(pObject):healDamage(damage, 6)
@@ -277,6 +277,8 @@ function MellichaeOutroTheater:onDamageReceived(pObject, pAttacker, damage)
 				end
 			end
 			return 1
+		else
+			return 0
 		end
 	end
 end
