@@ -86,7 +86,7 @@ public:
 	bool load(engine::util::IffStream* iffStream);
 
 	void parseFromIffStream(engine::util::IffStream* iffStream);
-	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0014'>);
+	void parseFromIffStream(engine::util::IffStream* iffStream, uint32 version);
 
 	void insertWaterBoundary(Boundary* boundary) {
 		waterBoundaries.add(boundary);

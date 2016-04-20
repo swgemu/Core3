@@ -34,7 +34,6 @@ end
 function Tests:aiMoveTest()
 	-- in a test zone, create a creature at a point, and have it move to another
 	-- point. Do this outside (we can try to create an inside test later).
-	-- TODO: use creature_test zone (won't load due to being version 0013)
 	local spawnPoint = getSpawnPoint("corellia", 0, 0, 0, 100)
 	local agent = spawnMobile("corellia", "bark_mite", 0, spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, 0)
 
@@ -93,7 +92,7 @@ end
 function Tests:aiAggroTest()
 	-- in a test zone, create a creature at a point, and have it move to another
 	-- point. Do this outside (we can try to create an inside test later).
-	-- TODO: use creature_test zone (won't load due to being version 0013)
+	-- TODO: use corellia zone (won't load due to being version 0013)
 	local spawnPoint = getSpawnPoint("corellia", 0, 0, 0, 100)
 	local agent = spawnMobile("corellia", "acklay", 0, spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, 0)
 
