@@ -81,10 +81,12 @@ void ProceduralTerrainAppearance::parseFromIffStream(engine::util::IffStream* if
 	uint32 version = iffStream->getNextFormType();
 
 	iffStream->openForm(version);
-
 	switch (version) {
-	case '0014':
-		parseFromIffStream(iffStream, Version<'0014'>());
+	// known terrain versions
+	case '0013': // old test-style
+	case '0014': // normal zones
+	//case '0015': // Post-CU zones: TODO: add these
+		parseFromIffStream(iffStream, version);
 		break;
 	default:
 		error("unknown version in ProceduralTerrainAppearance::parseFromIffStream " + String::valueOf(version));
@@ -94,7 +96,7 @@ void ProceduralTerrainAppearance::parseFromIffStream(engine::util::IffStream* if
 	iffStream->closeForm(version);
 }
 
-void ProceduralTerrainAppearance::parseFromIffStream(engine::util::IffStream* iffStream, Version<'0014'>) {
+void ProceduralTerrainAppearance::parseFromIffStream(engine::util::IffStream* iffStream, uint32 version) {
 	iffStream->openChunk('DATA');
 
 	iffStream->getString(terrainFile);
@@ -111,6 +113,22 @@ void ProceduralTerrainAppearance::parseFromIffStream(engine::util::IffStream* if
 	iffStream->getString(globalWaterTableShader);
 
 	timeCycle = iffStream->getFloat(); // i have docs on how this works somewhere..
+
+	if (version == '0013') {
+		// just ignore all this -- no idea what it's used for (anything?)
+		String discard;
+		iffStream->getString(discard);
+		iffStream->getString(discard);
+		iffStream->getFloat();
+		iffStream->getString(discard);
+		iffStream->getFloat();
+		iffStream->getString(discard);
+		iffStream->getFloat();
+		iffStream->getString(discard);
+		iffStream->getFloat();
+		iffStream->getUnsignedInt();
+		iffStream->getString(discard);
+	}
 
 	floraCollidableMinDistance = iffStream->getUnsignedInt();
 	floraCollidableMaxDistance = iffStream->getFloat();
@@ -136,11 +154,15 @@ void ProceduralTerrainAppearance::parseFromIffStream(engine::util::IffStream* if
 	radialFarTileBorder = iffStream->getFloat();
 	radialFarSeed = iffStream->getUnsignedInt();
 
-	iffStream->closeForm('DATA');
+	// TODO: 0015 -- extra byte here
+
+	iffStream->closeChunk('DATA');
 
 	terrainGenerator->readObject(iffStream);
 
 	terrainMaps->readObject(iffStream);
+
+	// TODO: some other stuff down here for version 0015 (everything else is the same)
 }
 
 bool ProceduralTerrainAppearance::getWater(float x, float y, float& waterHeight) {
