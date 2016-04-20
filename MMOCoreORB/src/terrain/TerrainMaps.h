@@ -11,7 +11,7 @@
 #include "TemplateVariable.h"
 #include "TerrainMap.h"
 
-class TerrainMaps : public TemplateVariable<'0001'> {
+class TerrainMaps : public IffTemplateVariable {
 	float var1;
 	float var2;
 	int var3;
@@ -20,22 +20,27 @@ class TerrainMaps : public TemplateVariable<'0001'> {
 	TerrainMap<'WMAP'> waterMap;
 	TerrainMap<'SMAP'> seedMap;
 public:
+	void readObject(engine::util::IffStream* iffStream) {
+		parseFromIffStream(iffStream);
+	}
+
 	void parseFromIffStream(engine::util::IffStream* iffStream) {
-		/*uint32 version = iffStream->getNextFormType();
+		uint32 version = iffStream->getNextFormType();
 
 		iffStream->openForm(version);
 
 		switch (version) {
+		case '0000':
+			break; // valid version, no maps inside, so no parsing
 		case '0001':
 			parseFromIffStream(iffStream, Version<'0001'>());
 			break;
 		default:
-			System::out << "unknown MAPS version 0x" << hex << version;
+			System::out << "unknown MAPS version " << String::valueOf(version);
 			break;
 		}
 
-		iffStream->closeForm(version);*/
-		parseFromIffStream(iffStream, Version<'0001'>());
+		iffStream->closeForm(version);
 	}
 
 	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0001'>) {
