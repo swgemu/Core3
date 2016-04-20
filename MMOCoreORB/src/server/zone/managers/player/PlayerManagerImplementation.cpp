@@ -1262,8 +1262,59 @@ bool PlayerManagerImplementation::checkEncumbrancies(CreatureObject* player, Arm
 
 	if (healthEncumb >= strength || healthEncumb >= constitution ||
 			actionEncumb >= quickness || actionEncumb >= stamina ||
-			mindEncumb >= focus || mindEncumb >= willpower)
+			mindEncumb >= focus || mindEncumb >= willpower) {
+		player->sendSystemMessage("@system_msg:equip_armor_fail"); // You are not healthy enough to wear this armor!
+
+		if (healthEncumb >= strength) {
+			int statStr = healthEncumb - (player->getHAM(CreatureAttribute::STRENGTH));
+			StringIdChatParameter params("@system_msg:equip_armor_fail_prose"); // You need %DI more %TT to wear this armor.
+			params.setDI(statStr);
+			params.setTT("@att_n:strength");
+			player->sendSystemMessage(params);
+		}
+
+		if (healthEncumb >= constitution) {
+			int statCon = healthEncumb - (player->getHAM(CreatureAttribute::CONSTITUTION));
+			StringIdChatParameter params("@system_msg:equip_armor_fail_prose");
+			params.setDI(statCon);
+			params.setTT("@att_n:constitution");
+			player->sendSystemMessage(params);
+		}
+
+		if (actionEncumb >= quickness) {
+			int statQuick = actionEncumb - (player->getHAM(CreatureAttribute::QUICKNESS));
+			StringIdChatParameter params("@system_msg:equip_armor_fail_prose");
+			params.setDI(statQuick);
+			params.setTT("@att_n:quickness");
+			player->sendSystemMessage(params);
+		}
+
+		if (actionEncumb >= stamina) {
+			int statStam = actionEncumb - (player->getHAM(CreatureAttribute::STAMINA));
+			StringIdChatParameter params("@system_msg:equip_armor_fail_prose");
+			params.setDI(statStam);
+			params.setTT("@att_n:stamina");
+			player->sendSystemMessage(params);
+		}
+
+		if (mindEncumb >= focus) {
+			int statFoc = mindEncumb - (player->getHAM(CreatureAttribute::FOCUS));
+			StringIdChatParameter params("@system_msg:equip_armor_fail_prose");
+			params.setDI(statFoc);
+			params.setTT("@att_n:focus");
+			player->sendSystemMessage(params);
+		}
+
+		if (mindEncumb >= willpower) {
+			int statWill = mindEncumb - (player->getHAM(CreatureAttribute::WILLPOWER));
+			StringIdChatParameter params("@system_msg:equip_armor_fail_prose");
+			params.setDI(statWill);
+			params.setTT("@att_n:willpower");
+			player->sendSystemMessage(params);
+		}
+
 		return false;
+	}
 	else
 		return true;
 }
