@@ -1262,8 +1262,59 @@ bool PlayerManagerImplementation::checkEncumbrancies(CreatureObject* player, Arm
 
 	if (healthEncumb >= strength || healthEncumb >= constitution ||
 			actionEncumb >= quickness || actionEncumb >= stamina ||
-			mindEncumb >= focus || mindEncumb >= willpower)
+			mindEncumb >= focus || mindEncumb >= willpower) {
+		player->sendSystemMessage("@system_msg:equip_armor_fail"); // You are not healthy enough to wear this armor!
+
+		if (healthEncumb >= strength) {
+			int statStr = (healthEncumb - strength) + 1;
+			StringIdChatParameter params("@system_msg:equip_armor_fail_prose"); // You need %DI more %TT to wear this armor.
+			params.setDI(statStr);
+			params.setTT("@att_n:strength");
+			player->sendSystemMessage(params);
+		}
+
+		if (healthEncumb >= constitution) {
+			int statCon = (healthEncumb - constitution) + 1;
+			StringIdChatParameter params("@system_msg:equip_armor_fail_prose");
+			params.setDI(statCon);
+			params.setTT("@att_n:constitution");
+			player->sendSystemMessage(params);
+		}
+
+		if (actionEncumb >= quickness) {
+			int statQuick = (actionEncumb - quickness) + 1;
+			StringIdChatParameter params("@system_msg:equip_armor_fail_prose");
+			params.setDI(statQuick);
+			params.setTT("@att_n:quickness");
+			player->sendSystemMessage(params);
+		}
+
+		if (actionEncumb >= stamina) {
+			int statStam = (actionEncumb - stamina) + 1;
+			StringIdChatParameter params("@system_msg:equip_armor_fail_prose");
+			params.setDI(statStam);
+			params.setTT("@att_n:stamina");
+			player->sendSystemMessage(params);
+		}
+
+		if (mindEncumb >= focus) {
+			int statFoc = (mindEncumb - focus) + 1;
+			StringIdChatParameter params("@system_msg:equip_armor_fail_prose");
+			params.setDI(statFoc);
+			params.setTT("@att_n:focus");
+			player->sendSystemMessage(params);
+		}
+
+		if (mindEncumb >= willpower) {
+			int statWill = (mindEncumb - willpower) + 1;
+			StringIdChatParameter params("@system_msg:equip_armor_fail_prose");
+			params.setDI(statWill);
+			params.setTT("@att_n:willpower");
+			player->sendSystemMessage(params);
+		}
+
 		return false;
+	}
 	else
 		return true;
 }
@@ -1333,7 +1384,7 @@ void PlayerManagerImplementation::awardBadge(PlayerObject* ghost, uint32 badgeId
 
 void PlayerManagerImplementation::awardBadge(PlayerObject* ghost, const Badge* badge) {
 	if (badge == NULL) {
-		ghost->error("Failed to award null badge.");	
+		ghost->error("Failed to award null badge.");
 		return;
 	}
 
@@ -1351,7 +1402,7 @@ void PlayerManagerImplementation::awardBadge(PlayerObject* ghost, const Badge* b
 	ghost->setBadge(badgeId);
 	stringId.setStringId("badge_n", "prose_grant");
 	player->sendSystemMessage(stringId);
-	
+
 	if (badge->getHasMusic()) {
 		String music = badge->getMusic();
 		PlayMusicMessage* musicMessage = new PlayMusicMessage(music);
@@ -3754,7 +3805,7 @@ SortedVector<String> PlayerManagerImplementation::getTeachableSkills(CreatureObj
 
 		if (!(skillName.contains("novice") || skillName.contains("force_sensitive") || skillName.contains("force_rank") || skillName.contains("force_title")) && skillManager->canLearnSkill(skillName, student, false))
 			skills.put(skillName);
-	}	
+	}
 
 	return skills;
 }
