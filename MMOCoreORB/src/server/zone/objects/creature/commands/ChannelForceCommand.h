@@ -6,13 +6,14 @@
 #define CHANNELFORCECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/player/events/ChannelForceRegenTask.h"
+#include "server/zone/objects/creature/buffs/ChannelForceBuff.h"
+#include "templates/params/creature/CreatureAttribute.h"
 
 class ChannelForceCommand : public QueueCommand {
 public:
 
 	ChannelForceCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+: QueueCommand(name, server) {
 
 	}
 
@@ -67,20 +68,18 @@ public:
 		}
 
 		// Give Force, and subtract HAM.
-
 		playerObject->setForcePower(playerObject->getForcePower() + forceBonus);
 
-		creature->setMaxHAM(CreatureAttribute::HEALTH, maxHealth - forceBonus, true);
-		creature->setMaxHAM(CreatureAttribute::ACTION, maxAction - forceBonus, true);
-		creature->setMaxHAM(CreatureAttribute::MIND, maxMind - forceBonus, true);
+		// Setup buffs.
+		ManagedReference<Buff*> buff = new ChannelForceBuff(creature, STRING_HASHCODE("channelforcebuff"), forceBonus, 8 * 20);
 
-		creature->setHAM(CreatureAttribute::HEALTH, health - forceBonus, true);
-		creature->setHAM(CreatureAttribute::ACTION, action - forceBonus, true);
-		creature->setHAM(CreatureAttribute::MIND, mind - forceBonus, true);
+		buff->setAttributeModifier(CreatureAttribute::HEALTH, -forceBonus);
+		buff->setAttributeModifier(CreatureAttribute::ACTION, -forceBonus);
+		buff->setAttributeModifier(CreatureAttribute::MIND, -forceBonus);
 
-		// Setup task.
-		Reference<ChannelForceRegenTask*> cfTask = new ChannelForceRegenTask(creature, forceBonus);
-		creature->addPendingTask("channelForceRegenTask", cfTask, 6000);
+		Locker locker(buff);
+
+		creature->addBuff(buff);
 
 		return SUCCESS;
 	}
