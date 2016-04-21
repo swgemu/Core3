@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_77bf70d1",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1314,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-21T03:56:57Z",
+      "side": 1,
+      "message": "You don\u0027t want \u003e\u003d, you just want \u003e. Otherwise you\u0027d get messages for \"you need 0 more %TT...\"",
+      "range": {
+        "startLine": 1268,
+        "startChar": 2,
+        "endLine": 1314,
+        "endChar": 3
+      },
+      "revId": "4c7f70c7d888a34ffc02f53a12c9209de5d2cd80",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
