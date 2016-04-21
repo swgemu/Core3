@@ -30,12 +30,6 @@ public:
 	void loadData();
 
 	/**
-	 * Lua Interface function that adds a faction relationship to the FactionMap.
-	 * @param L The Lua State containing the data.
-	 */
-	static int addFaction(lua_State* L);
-
-	/**
 	 * Awards points to the player based on the faction they killed.
 	 * @pre: player locked
 	 * @post: player locked

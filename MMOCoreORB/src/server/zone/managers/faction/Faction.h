@@ -12,8 +12,10 @@
 
 class Faction : public Object {
 	String factionName;
+	bool playerAllowed;
 	SortedVector<String> enemies;
 	SortedVector<String> allies;
+	float adjustFactor;
 
 public:
 
@@ -22,12 +24,16 @@ public:
 
 	Faction(const String& name) : Object() {
 		factionName = name;
+		playerAllowed = true;
+		adjustFactor = 1.0;
 	}
 
 	Faction(const Faction& f) : Object() {
 		factionName = f.factionName;
+		playerAllowed = f.playerAllowed;
 		enemies = f.enemies;
 		allies = f.allies;
+		adjustFactor = f.adjustFactor;
 	}
 
 	Faction& operator= (const Faction& f) {
@@ -35,8 +41,10 @@ public:
 			return *this;
 
 		factionName = f.factionName;
+		playerAllowed = f.playerAllowed;
 		enemies = f.enemies;
 		allies = f.allies;
+		adjustFactor = f.adjustFactor;
 
 		return *this;
 	}
@@ -69,12 +77,28 @@ public:
 		return factionName;
 	}
 
+	void setPlayerAllowed(bool allowed) {
+		playerAllowed = allowed;
+	}
+
+	void setAdjustFactor(float factor) {
+		adjustFactor = factor;
+	}
+
 	SortedVector<String>* getEnemies() {
 		return &enemies;
 	}
 
 	SortedVector<String>* getAllies() {
 		return &allies;
+	}
+
+	bool isPlayerAllowed() const {
+		return playerAllowed;
+	}
+
+	float getAdjustFactor() const {
+		return adjustFactor;
 	}
 };
 
