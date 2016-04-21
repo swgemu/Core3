@@ -31,6 +31,7 @@ public:
 	int setFactionStatus(lua_State* L);
 	int increaseFactionStanding(lua_State* L);
 	int decreaseFactionStanding(lua_State* L);
+	int setFactionStanding(lua_State* L);
 	int addWaypoint(lua_State* L);
 	int removeWaypoint(lua_State* L);
 	int removeWaypointBySpecialType(lua_State* L);

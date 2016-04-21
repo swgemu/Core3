@@ -26,6 +26,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "isCovert", &LuaPlayerObject::isCovert },
 		{ "increaseFactionStanding", &LuaPlayerObject::increaseFactionStanding },
 		{ "decreaseFactionStanding", &LuaPlayerObject::decreaseFactionStanding },
+		{ "setFactionStanding", &LuaPlayerObject::setFactionStanding },
 		{ "addWaypoint", &LuaPlayerObject::addWaypoint },
 		{ "removeWaypoint", &LuaPlayerObject::removeWaypoint },
 		{ "removeWaypointBySpecialType", &LuaPlayerObject::removeWaypointBySpecialType },
@@ -154,6 +155,15 @@ int LuaPlayerObject::decreaseFactionStanding(lua_State* L) {
 	const char* str = lua_tostring(L, -2);
 
 	realObject->decreaseFactionStanding(str, val);
+
+	return 0;
+}
+
+int LuaPlayerObject::setFactionStanding(lua_State* L) {
+	float val = lua_tonumber(L, -1);
+	const char* str = lua_tostring(L, -2);
+
+	realObject->setFactionStanding(str, val);
 
 	return 0;
 }
