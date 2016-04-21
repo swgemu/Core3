@@ -6,13 +6,14 @@
 #define CHANNELFORCECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/player/events/ChannelForceRegenTask.h"
+#include "server/zone/objects/creature/buffs/ChannelForceBuff.h"
+#include "templates/params/creature/CreatureAttribute.h"
 
 class ChannelForceCommand : public QueueCommand {
 public:
 
 	ChannelForceCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+: QueueCommand(name, server) {
 
 	}
 
@@ -67,20 +68,35 @@ public:
 		}
 
 		// Give Force, and subtract HAM.
-
 		playerObject->setForcePower(playerObject->getForcePower() + forceBonus);
 
-		creature->setMaxHAM(CreatureAttribute::HEALTH, maxHealth - forceBonus, true);
-		creature->setMaxHAM(CreatureAttribute::ACTION, maxAction - forceBonus, true);
-		creature->setMaxHAM(CreatureAttribute::MIND, maxMind - forceBonus, true);
+		// Setup buffs.
+		uint32 buffCRC = STRING_HASHCODE("channelforcebuff");
+		Reference<Buff*> buff = creature->getBuff(buffCRC);
+		int duration = ChannelForceBuff::FORCE_CHANNEL_TICK_SECONDS * 20;
+		if (buff == NULL) {
+			buff = new ChannelForceBuff(creature, buffCRC, duration);
 
-		creature->setHAM(CreatureAttribute::HEALTH, health - forceBonus, true);
-		creature->setHAM(CreatureAttribute::ACTION, action - forceBonus, true);
-		creature->setHAM(CreatureAttribute::MIND, mind - forceBonus, true);
+			buff->setAttributeModifier(CreatureAttribute::HEALTH, -forceBonus);
+			buff->setAttributeModifier(CreatureAttribute::ACTION, -forceBonus);
+			buff->setAttributeModifier(CreatureAttribute::MIND, -forceBonus);
 
-		// Setup task.
-		Reference<ChannelForceRegenTask*> cfTask = new ChannelForceRegenTask(creature, forceBonus);
-		creature->addPendingTask("channelForceRegenTask", cfTask, 6000);
+			creature->addBuff(buff);
+		} else {
+			Locker locker(buff, creature);
+
+			buff->setAttributeModifier(CreatureAttribute::HEALTH,
+									   buff->getAttributeModifierValue(CreatureAttribute::HEALTH)-forceBonus);
+			buff->setAttributeModifier(CreatureAttribute::ACTION,
+									   buff->getAttributeModifierValue(CreatureAttribute::ACTION)-forceBonus);
+			buff->setAttributeModifier(CreatureAttribute::MIND,
+									   buff->getAttributeModifierValue(CreatureAttribute::MIND)-forceBonus);
+
+			creature->renewBuff(buffCRC, duration + buff->getTimeLeft());
+			Reference<ChannelForceBuff*> channelBuff = buff.castTo<ChannelForceBuff*>();
+			if (channelBuff != NULL)
+				channelBuff->activateRegenTick();
+		}
 
 		return SUCCESS;
 	}
