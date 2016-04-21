@@ -1550,6 +1550,24 @@ void PlayerObjectImplementation::decreaseFactionStanding(const String& factionNa
 	}
 }
 
+void PlayerObjectImplementation::setFactionStanding(const String& factionName, float newAmount) {
+	CreatureObject* player = cast<CreatureObject*>( parent.get().get());
+
+	if (player == NULL)
+		return;
+
+	newAmount = MAX(-5000, newAmount);
+
+	if (factionStandingList.isPvpFaction(factionName)) {
+		if (player->getFaction() == factionName.hashCode())
+			newAmount = MIN(FactionManager::instance()->getFactionPointsCap(player->getFactionRank()), newAmount);
+		else
+			newAmount = MIN(1000, newAmount);
+	}
+
+	factionStandingList.put(factionName, newAmount);
+}
+
 float PlayerObjectImplementation::getFactionStanding(const String& factionName) {
 	return factionStandingList.getFactionStanding(factionName);
 }

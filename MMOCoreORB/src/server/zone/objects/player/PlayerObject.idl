@@ -658,6 +658,8 @@ class PlayerObject extends IntangibleObject {
 	 */
 	public native void increaseFactionStanding(final string factionName, float amount);
 	public native void decreaseFactionStanding(final string factionName, float amount);
+	public native void setFactionStanding(final string factionName, float amount);
+
 	public native float getFactionStanding(final string factionName);
 	
 	public void setScreenPlayData(final string screenPlay, final string variable, final string data) {
