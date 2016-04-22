@@ -49,8 +49,8 @@ templateType = CONSUMABLE,
 
 	effectType = 0,
 
-	fillingMin = 20,
-	fillingMax = 29,
+	fillingMin = 29,
+	fillingMax = 20,
 
 	flavorMin = 540, -- no valid info found for live flavor numbers
 	flavorMax = 1080,
