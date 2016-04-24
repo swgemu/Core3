@@ -30,9 +30,9 @@ function villageFsReflex1PrisonerConvoHandler:runScreenHandlers(conversationTemp
 		QuestManager.completeQuest(conversingPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_02)
 		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_03)
 		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_04)
-		Reflex1Escort:start(conversingPlayer, conversingNPC)
+		FsReflex1Escort:start(conversingPlayer, conversingNPC)
 	elseif (screenID == "intro_inprogress") then
-		Reflex1Escort:setEscortFollow(conversingPlayer, conversingNPC)
+		FsReflex1Escort:setEscortFollow(conversingPlayer, conversingNPC)
 	end
 
 	return conversationScreen
