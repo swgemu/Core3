@@ -1,8 +1,8 @@
-bruce_mcbrain = Creature:new {
-	objectName = "",
-	customName = "Bruce Mcbrain",
-	socialGroup = "jabba",
-	faction = "jabba",
+corvette_rebel_adar = Creature:new {
+	objectName = "@npc_name:human_base_male",
+	customName = "Adar Tallon",
+	socialGroup = "rebel",
+	faction = "rebel",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -23,15 +23,15 @@ bruce_mcbrain = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_neutral_bruce.iff"},
+	templates = {"object/mobile/dressed_corvette_rebel_adar.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "corvetteTallonConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(bruce_mcbrain, "bruce_mcbrain")
+CreatureTemplates:addCreatureTemplate(corvette_rebel_adar, "corvette_rebel_adar")

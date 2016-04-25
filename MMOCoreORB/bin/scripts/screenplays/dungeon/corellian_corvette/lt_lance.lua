@@ -11,6 +11,7 @@ ticketTakerLtLance = CorvetteTicketTakerLogic:new {
 	helpMeString = "@conversation/corvette_rebel_pilot:s_1a003c0e", -- Ah no. I hear you can help me intercept a Corellian corvette controlled by the Empire?
 	nevermindString = "@conversation/corvette_rebel_pilot:s_1a71d76e", -- Um... nothing. Nevermind.
 	aboutMissionString = "@conversation/corvette_rebel_pilot:s_1ab00f5e", -- [Tell him about your mission]
+	whenCanWeGoString = "@conversation/corvette_rebel_pilot:s_62aa5014" -- Good, when can we go?
 }
 
 registerScreenPlay("ticketTakerLtLance", true)

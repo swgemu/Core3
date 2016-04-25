@@ -3,13 +3,13 @@ lt_lance = Creature:new {
 	customName = "Lt. Lance",
 	socialGroup = "rebel",
 	faction = "rebel",
-	level = 20,
-	chanceHit = 0.33,
-	damageMin = 190,
-	damageMax = 200,
-	baseXp = 1803,
-	baseHAM = 5000,
-	baseHAMmax = 6100,
+	level = 100,
+	chanceHit = 1,
+	damageMin = 645,
+	damageMax = 1000,
+	baseXp = 9429,
+	baseHAM = 24000,
+	baseHAMmax = 30000,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",
@@ -22,15 +22,16 @@ lt_lance = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = PACK + KILLER,
-	optionsBitmask = AIENABLED + CONVERSABLE,
+	creatureBitmask = PACK,
+	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lieutenant_lance.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_medium"},
+	weapons = {},
 	conversationTemplate = "corvetteLtLanceConvoTemplate",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(lt_lance, "lt_lance")

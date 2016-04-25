@@ -271,7 +271,6 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "trainer_imagedesigner", 0,-21.8004,2.12878,74.6487,184,2365437)
 
 	--Outside
-	--{"adar",60,-5448.03,21,-2674.92,253.163,0, "calm", "Adar Tallon"},
 	pNpc = spawnMobile(self.planet, "artisan",60,-5537.5,21,-2614.06,180.005,0)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile(self.planet, "artisan",60,-5596.05,21,-2761.83,180.005,0)
