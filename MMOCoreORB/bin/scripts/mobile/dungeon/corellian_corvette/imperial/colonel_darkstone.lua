@@ -1,4 +1,4 @@
-darkstone = Creature:new {
+colonel_darkstone = Creature:new {
 	objectName = "",
 	customName = "Colonel Darkstone",
 	socialGroup = "imperial",
@@ -34,4 +34,4 @@ darkstone = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(darkstone, "darkstone")
+CreatureTemplates:addCreatureTemplate(colonel_darkstone, "colonel_darkstone")

@@ -68,8 +68,6 @@ function TatooineImperialOasisBaseScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "dark_trooper",360,-5357.5,8.0,2751.4,130,0)
 	spawnMobile("tatooine", "elite_sand_trooper",360,-5343.4,4.7,2733,120,0)
 	spawnMobile("tatooine", "imperial_probe_drone",360,-5322.4,7.1,2711.5,179,0)
-	--Corvette rescue mission npc to be added later...
-	--spawnMobile("tatooine", "colonel_darkstone",0,-5321.4,6.8,2702,158,0)
 	spawnMobile("tatooine", "sand_trooper",360,-5289.8,7.5,2707,30,0)
 	spawnMobile("tatooine", "sand_trooper",360,-5292.8,7.2,2709.2,40,0)
 	spawnMobile("tatooine", "storm_commando",600,-5310.7,8.5,2660.7,3,0)

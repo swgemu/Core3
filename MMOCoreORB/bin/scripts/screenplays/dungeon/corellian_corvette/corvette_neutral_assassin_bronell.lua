@@ -4,7 +4,7 @@ bronellIntel =	{
 			itemTemplates = { "object/tangible/loot/dungeon/corellian_corvette/neutral_assassin_filler01.iff", "object/tangible/loot/dungeon/corellian_corvette/neutral_assassin_filler02.iff", "object/tangible/loot/dungeon/corellian_corvette/neutral_assassin_intel.iff" },
 		}
 
-bronellTicketInfo = { depPlanet = "tatooine", faction = "neutral", missionType = "assassination" }
+bronellTicketInfo = { depPlanet = "tatooine", faction = "neutral", missionType = "assassinate" }
 
 bronellCompensation = { { compType = "credits", amount = 500 } }
 

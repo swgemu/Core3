@@ -1,6 +1,11 @@
-
+--common
+includeFile("dungeon/corellian_corvette/common/protocol_droid_h6p0.lua")
+includeFile("dungeon/corellian_corvette/common/corvette_r2.lua")
+includeFile("dungeon/corellian_corvette/common/corvette_r3.lua")
+includeFile("dungeon/corellian_corvette/common/corvette_r4.lua")
+includeFile("dungeon/corellian_corvette/common/corvette_r5.lua")
 --Imperial
-includeFile("dungeon/corellian_corvette/imperial/darkstone.lua")
+includeFile("dungeon/corellian_corvette/imperial/colonel_darkstone.lua")
 includeFile("dungeon/corellian_corvette/imperial/ds_297.lua")
 includeFile("dungeon/corellian_corvette/imperial/lt_velso.lua")
 includeFile("dungeon/corellian_corvette/imperial/rebel_admiral.lua")
@@ -12,7 +17,7 @@ includeFile("dungeon/corellian_corvette/imperial/rebel_first_mate.lua")
 includeFile("dungeon/corellian_corvette/imperial/rebel_midshipman.lua")
 includeFile("dungeon/corellian_corvette/imperial/rebel_rear_admiral.lua")
 includeFile("dungeon/corellian_corvette/imperial/rebel_sailor.lua")
-includeFile("dungeon/corellian_corvette/imperial/sabol.lua")
+includeFile("dungeon/corellian_corvette/imperial/lt_sabol.lua")
 
 --Neutral
 includeFile("dungeon/corellian_corvette/neutral/bronell.lua")

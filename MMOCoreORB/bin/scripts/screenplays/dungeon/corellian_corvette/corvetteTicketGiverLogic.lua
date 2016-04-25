@@ -237,6 +237,23 @@ function CorvetteTicketGiverLogic:giveTicket(pPlayer)
 	end
 end
 
+function CorvetteTicketGiverLogic:hasTicket(pPlayer)
+	local player = CreatureObject(pPlayer)
+	local activeQuest = getQuestStatus(player:getObjectID() .. ":activeCorvetteQuest")
+	local pInventory = player:getSlottedObject("inventory")
+	if pInventory == nil then
+		return false
+	end
+	local pItem = getContainerObjectByTemplate(pInventory, ticketTemplate, true)
+	local ticket = LuaTicketObject(pItem)
+	
+	if (pItem ~= nil and activeQuest == self.giverName) then
+		return true
+	end
+	return false
+end
+	
+
 function CorvetteTicketGiverLogic:giveReward(pPlayer)
 	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 	if pInventory == nil then

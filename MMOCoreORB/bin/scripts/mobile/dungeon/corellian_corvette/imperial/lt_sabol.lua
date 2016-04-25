@@ -1,4 +1,4 @@
-sabol = Creature:new {
+lt_sabol = Creature:new {
 	objectName = "",
 	customName = "Lt. Sabol",
 	socialGroup = "imperial",
@@ -23,7 +23,7 @@ sabol = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + INTERESTING,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corvette_imperial_sabol.iff"},
@@ -34,4 +34,4 @@ sabol = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(sabol, "sabol")
+CreatureTemplates:addCreatureTemplate(lt_sabol, "lt_sabol")
