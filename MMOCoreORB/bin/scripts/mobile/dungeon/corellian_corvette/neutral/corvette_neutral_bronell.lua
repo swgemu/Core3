@@ -1,6 +1,6 @@
-bruce_mcbrain = Creature:new {
+corvette_neutral_bronell = Creature:new {
 	objectName = "",
-	customName = "Bruce Mcbrain",
+	customName = "Bronell",
 	socialGroup = "jabba",
 	faction = "jabba",
 	level = 100,
@@ -23,15 +23,14 @@ bruce_mcbrain = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_neutral_bruce.iff"},
+	templates = {"object/mobile/dressed_corvette_neutral_bronell.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "corvetteBronellConvoTemplate",
+	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(bruce_mcbrain, "bruce_mcbrain")
+CreatureTemplates:addCreatureTemplate(corvette_neutral_bronell, "corvette_neutral_bronell")

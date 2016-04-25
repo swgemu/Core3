@@ -1,8 +1,8 @@
-bronell = Creature:new {
+corvette_imperial_velso = Creature:new {
 	objectName = "",
-	customName = "Bronell",
-	socialGroup = "jabba",
-	faction = "jabba",
+	customName = "Lt. Velso",
+	socialGroup = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -23,14 +23,15 @@ bronell = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + CONVERSABLE,
+	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_neutral_bronell.iff"},
+	templates = {"object/mobile/dressed_corvette_imperial_velso.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "corvetteBronellConvoTemplate",
-	attacks = {}
+	conversationTemplate = "corvetteVelsoConvoTemplate",
+	attacks = {
+	}
 }
 
-CreatureTemplates:addCreatureTemplate(bronell, "bronell")
+CreatureTemplates:addCreatureTemplate(corvette_imperial_velso, "corvette_imperial_velso")

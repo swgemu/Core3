@@ -13,6 +13,7 @@ function CorvetteTicketTakerConvoHandler:runScreenHandlers(pConversationTemplate
 	local screen = LuaConversationScreen(pConversationScreen)
 	local screenID = screen:getScreenID()
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+	
 	if screenID == "start" then
 		pConversationScreen = self:handleScreenStart(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "continue" then
@@ -68,7 +69,7 @@ function CorvetteTicketTakerConvoHandler:handleScreenStart(pConversationTemplate
 			clonedScreen:addOption(self.ticketTaker.helpMeString, "wrong_faction_too_many")
 		elseif player:getGroupSize() > 10 then
 			clonedScreen:addOption(self.ticketTaker.helpMeString, "too_many")
-		elseif rightFaction == false then
+		elseif ThemeParkLogic:isOnLeave(pConversingPlayer) or rightFaction == false then
 			clonedScreen:addOption(self.ticketTaker.helpMeString, "wrong_faction")
 		else
 			clonedScreen:addOption(self.ticketTaker.helpMeString, "continue")

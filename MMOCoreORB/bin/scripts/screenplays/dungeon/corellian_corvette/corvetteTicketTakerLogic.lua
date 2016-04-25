@@ -37,8 +37,19 @@ function CorvetteTicketTakerLogic:checkFaction(pPlayer)
 	if self.faction == 0 then
 		return true
 	end
-	--TODO: add group faction checks
-	return false
+	
+	if (CreatureObject(pPlayer):isGrouped()) then
+		local groupSize = CreatureObject(pPlayer):getGroupSize()
+		for i = 0, groupSize - 1, 1 do
+			local pMember = CreatureObject(pPlayer):getGroupMember(i)
+			if pMember ~= nil then
+				if (not ThemeParkLogic:isInFaction(self.ticketTaker.faction,pMember) or ThemeParkLogic:isOnLeave(pMember) ) then
+					return false
+				end
+			end
+		end
+	end
+	return true
 end
 
 function CorvetteTicketTakerLogic:validateTicket(pPlayer)

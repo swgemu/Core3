@@ -1,6 +1,6 @@
-crowley = Creature:new {
-	objectName = "@npc_name:twilek_base_female",
-	customName = "Master Sergeant Crowley",
+corvette_rebel_pashna = Creature:new {
+	objectName = "@npc_name:moncal_base_male",
+	customName = "Pashna Starkiller",
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 100,
@@ -23,15 +23,15 @@ crowley = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_rebel_crowley.iff"},
+	templates = {"object/mobile/dressed_corvette_rebel_pashna.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "corvettePashnaConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(crowley, "crowley")
+CreatureTemplates:addCreatureTemplate(corvette_rebel_pashna, "corvette_rebel_pashna")

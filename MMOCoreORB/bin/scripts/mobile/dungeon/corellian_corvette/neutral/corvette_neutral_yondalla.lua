@@ -1,8 +1,8 @@
-adar = Creature:new {
-	objectName = "@npc_name:human_base_male",
-	customName = "Adar Tallon",
-	socialGroup = "rebel",
-	faction = "rebel",
+corvette_neutral_yondalla = Creature:new {
+	objectName = "",
+	customName = "Yondalla",
+	socialGroup = "jabba",
+	faction = "jabba",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -23,15 +23,15 @@ adar = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_rebel_adar.iff"},
+	templates = {"object/mobile/dressed_corvette_neutral_yondalla.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "corvetteYondallaConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(adar, "adar")
+CreatureTemplates:addCreatureTemplate(corvette_neutral_yondalla, "corvette_neutral_yondalla")

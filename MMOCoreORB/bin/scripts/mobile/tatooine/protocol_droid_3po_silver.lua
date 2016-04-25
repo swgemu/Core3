@@ -1,8 +1,7 @@
-pashna = Creature:new {
-	objectName = "@npc_name:moncal_base_male",
-	customName = "Pashna Starkiller",
-	socialGroup = "rebel",
-	faction = "rebel",
+protocol_droid_3po_silver = Creature:new {
+	objectName = "@mob/creature_names:protocol_droid_3po_silver",
+	socialGroup = "",
+	faction = "",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -22,11 +21,11 @@ pashna = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = PACK,
+	creatureBitmask = NONE,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_rebel_pashna.iff"},
+	templates = {"object/mobile/3po_protocol_droid_silver.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
@@ -34,4 +33,4 @@ pashna = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(pashna, "pashna")
+CreatureTemplates:addCreatureTemplate(protocol_droid_3po_silver, "protocol_droid_3po_silver")

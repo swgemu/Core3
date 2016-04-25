@@ -204,6 +204,10 @@ function CorvetteTicketGiverLogic:removeIntel(pPlayer, intelNumber)
 end
 
 function CorvetteTicketGiverLogic:giveCompensation(pPlayer)
+	if pPlayer == nil then
+		return
+	end
+	
 	for i = 1, # self.compensation do
 		local comp = self.compensation[i]
 		ObjectManager.withCreatureAndPlayerObject(pPlayer, function(creature, player)
@@ -212,7 +216,8 @@ function CorvetteTicketGiverLogic:giveCompensation(pPlayer)
 				creature:addCashCredits(amount, true)
 				creature:sendSystemMessageWithDI("@new_player:credits_reward", amount)
 			elseif comp.compType == "faction" then
-				player:increaseFactionStanding(faction, comp.amount)
+				player:increaseFactionStanding(comp.faction, comp.amount)
+				--creature:sendSystemMessageWithTO("@base_player:prose_award_faction", comp.amount)
 			end
 		end)
 	end
@@ -236,6 +241,33 @@ function CorvetteTicketGiverLogic:giveTicket(pPlayer)
 		setQuestStatus(player:getObjectID() .. ":activeCorvetteQuestType", self.ticketInfo.missionType)
 	end
 end
+
+function CorvetteTicketGiverLogic:hasTicket(pPlayer)
+	local player = CreatureObject(pPlayer)
+	local activeQuest = getQuestStatus(player:getObjectID() .. ":activeCorvetteQuest")
+	local pInventory = player:getSlottedObject("inventory")
+	if pInventory == nil then
+		return false
+	end
+	local pItem = getContainerObjectByTemplate(pInventory, ticketTemplate, true)
+	local ticket = LuaTicketObject(pItem)
+	if (pItem ~= nil and activeQuest == self.giverName) then
+		return true
+	end
+	return false
+end
+
+function CorvetteTicketGiverLogic:hasDocuments(pPlayer)
+	local player = CreatureObject(pPlayer)
+	local pInventory = player:getSlottedObject("inventory")
+	if pInventory == nil then
+		return false
+	end
+	local templates = self.intelMap.itemTemplates
+	
+	return getContainerObjectByTemplate(pInventory, templates[1], true) or getContainerObjectByTemplate(pInventory, templates[2], true) or getContainerObjectByTemplate(pInventory, templates[3], true)
+end
+	
 
 function CorvetteTicketGiverLogic:giveReward(pPlayer)
 	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
