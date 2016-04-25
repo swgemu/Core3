@@ -1,8 +1,8 @@
-lt_velso = Creature:new {
+corvette_neutral_bruce = Creature:new {
 	objectName = "",
-	customName = "Lt. Velso",
-	socialGroup = "imperial",
-	faction = "imperial",
+	customName = "Bruce Mcbrain",
+	socialGroup = "jabba",
+	faction = "jabba",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -23,15 +23,15 @@ lt_velso = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_imperial_velso.iff"},
+	templates = {"object/mobile/dressed_corvette_neutral_bruce.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "corvetteBruceConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(lt_velso, "lt_velso")
+CreatureTemplates:addCreatureTemplate(corvette_neutral_bruce, "corvette_neutral_bruce")
