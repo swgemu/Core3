@@ -1,8 +1,8 @@
-dr_bledsoe = Creature:new {
+corvette_imperial_darkstone = Creature:new {
 	objectName = "",
-	customName = "Dr. Bledsoe",
-	socialGroup = "townsperson",
-	faction = "townsperson",
+	customName = "Colonel Darkstone",
+	socialGroup = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -23,15 +23,15 @@ dr_bledsoe = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/human_male.iff"},
+	templates = {"object/mobile/dressed_corvette_imperial_darkstone.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "corvetteDarkstoneConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(dr_bledsoe, "dr_bledsoe")
+CreatureTemplates:addCreatureTemplate(corvette_imperial_darkstone, "corvette_imperial_darkstone")

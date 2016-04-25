@@ -1,5 +1,3 @@
-
-
 lt_lance = { planetName = "corellia", npcTemplate = "lt_lance", x = -6518.5, z = 398.0, y = 6044.1, direction = -18, cellID = 0, position = STAND }
 
 ticketTakerLtLance = CorvetteTicketTakerLogic:new {
@@ -11,6 +9,7 @@ ticketTakerLtLance = CorvetteTicketTakerLogic:new {
 	helpMeString = "@conversation/corvette_rebel_pilot:s_1a003c0e", -- Ah no. I hear you can help me intercept a Corellian corvette controlled by the Empire?
 	nevermindString = "@conversation/corvette_rebel_pilot:s_1a71d76e", -- Um... nothing. Nevermind.
 	aboutMissionString = "@conversation/corvette_rebel_pilot:s_1ab00f5e", -- [Tell him about your mission]
+	whenCanWeGoString = "@conversation/corvette_rebel_pilot:s_62aa5014" -- Good, when can we go?
 }
 
 registerScreenPlay("ticketTakerLtLance", true)
