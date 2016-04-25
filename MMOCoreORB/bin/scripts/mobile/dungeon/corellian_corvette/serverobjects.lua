@@ -1,4 +1,9 @@
-
+--common
+includeFile("dungeon/corellian_corvette/common/protocol_droid_h6p0.lua")
+includeFile("dungeon/corellian_corvette/common/corvette_r2.lua")
+includeFile("dungeon/corellian_corvette/common/corvette_r3.lua")
+includeFile("dungeon/corellian_corvette/common/corvette_r4.lua")
+includeFile("dungeon/corellian_corvette/common/corvette_r5.lua")
 --Imperial
 includeFile("dungeon/corellian_corvette/imperial/darkstone.lua")
 includeFile("dungeon/corellian_corvette/imperial/ds_297.lua")

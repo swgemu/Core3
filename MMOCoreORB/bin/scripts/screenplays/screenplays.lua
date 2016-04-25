@@ -93,12 +93,17 @@ includeFile("dungeon/death_watch_bunker/conversations/deathWatchWorkshopDroidCon
 includeFile("dungeon/geonosian_lab/geo_lab.lua")
 includeFile("dungeon/warren/warren.lua")
 includeFile("dungeon/corellian_corvette/corellianCorvette.lua")
+includeFile("dungeon/corellian_corvette/corvetteMenuComponents.lua")
+includeFile("dungeon/corellian_corvette/conversations/corvetteRepairDroidConvoHandler.lua")
+includeFile("dungeon/corellian_corvette/corvetteContainerComponent.lua")
 includeFile("dungeon/corellian_corvette/corvetteTicketGiverConvoHandler.lua")
 includeFile("dungeon/corellian_corvette/corvetteTicketTakerConvoHandler.lua")
 includeFile("dungeon/corellian_corvette/bronell.lua")
+includeFile("dungeon/corellian_corvette/bruce.lua")
 includeFile("dungeon/corellian_corvette/ds_297.lua")
 includeFile("dungeon/corellian_corvette/klaatu.lua")
 includeFile("dungeon/corellian_corvette/lt_lance.lua")
+includeFile("dungeon/corellian_corvette/yondalla.lua")
 
 -- Village
 includeFile("village/village_gm_commands.lua")

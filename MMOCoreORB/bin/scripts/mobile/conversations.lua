@@ -73,7 +73,11 @@ includeFile("conversations/themepark/logic/mission_target_conv.lua")
 
 -- Corellian Corvette
 includeFile("conversations/dungeon/corellian_corvette/bronell_conv.lua")
+includeFile("conversations/dungeon/corellian_corvette/bruce_conv.lua")
+includeFile("conversations/dungeon/corellian_corvette/yondalla_conv.lua")
 includeFile("conversations/dungeon/corellian_corvette/ds_297_conv.lua")
+includeFile("conversations/dungeon/corellian_corvette/h6p0_conv.lua")
+includeFile("conversations/dungeon/corellian_corvette/imo_vledmo_conv.lua")
 includeFile("conversations/dungeon/corellian_corvette/klaatu_conv.lua")
 includeFile("conversations/dungeon/corellian_corvette/lt_lance_conv.lua")
 
