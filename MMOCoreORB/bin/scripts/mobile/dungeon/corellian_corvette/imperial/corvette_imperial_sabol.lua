@@ -1,6 +1,6 @@
-darkstone = Creature:new {
+corvette_imperial_sabol = Creature:new {
 	objectName = "",
-	customName = "Colonel Darkstone",
+	customName = "Lt. Sabol",
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 100,
@@ -23,10 +23,10 @@ darkstone = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + INTERESTING,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_imperial_darkstone.iff"},
+	templates = {"object/mobile/dressed_corvette_imperial_sabol.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
@@ -34,4 +34,4 @@ darkstone = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(darkstone, "darkstone")
+CreatureTemplates:addCreatureTemplate(corvette_imperial_sabol, "corvette_imperial_sabol")

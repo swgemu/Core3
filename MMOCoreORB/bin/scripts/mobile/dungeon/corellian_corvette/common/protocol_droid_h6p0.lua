@@ -1,7 +1,8 @@
-klaatu = Creature:new {
-	objectName = "@mob/creature_names:klaatu",
-	socialGroup = "townsperson",
-	faction = "townsperson",
+protocol_droid_h6p0 = Creature:new {
+	objectName = "@mob/creature_names:protocol_droid_3po_silver",
+	customName = "H-6P0",
+	socialGroup = "",
+	faction = "",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -10,7 +11,7 @@ klaatu = Creature:new {
 	baseHAM = 24000,
 	baseHAMmax = 30000,
 	armor = 0,
-	resists = {15,15,15,15,15,15,15,-1,-1},
+	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -21,16 +22,15 @@ klaatu = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = PACK,
+	creatureBitmask = HERD,
 	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/klaatu.iff"},
+	templates = {"object/mobile/3po_protocol_droid_silver.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "corvetteKlaatuConvoTemplate",
-	outfit = "klaatu_outfit",
+	conversationTemplate = "corvetteRepairDroidConvoTemplate",
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(klaatu, "klaatu")
+CreatureTemplates:addCreatureTemplate(protocol_droid_h6p0, "protocol_droid_h6p0")

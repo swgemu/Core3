@@ -1,8 +1,8 @@
-pashna = Creature:new {
-	objectName = "@npc_name:moncal_base_male",
-	customName = "Pashna Starkiller",
-	socialGroup = "rebel",
-	faction = "rebel",
+corvette_imperial_velso = Creature:new {
+	objectName = "",
+	customName = "Lt. Velso",
+	socialGroup = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -26,7 +26,7 @@ pashna = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_rebel_pashna.iff"},
+	templates = {"object/mobile/dressed_corvette_imperial_velso.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
@@ -34,4 +34,4 @@ pashna = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(pashna, "pashna")
+CreatureTemplates:addCreatureTemplate(corvette_imperial_velso, "corvette_imperial_velso")

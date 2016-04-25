@@ -1,8 +1,8 @@
-yondalla = Creature:new {
+corvette_imperial_darkstone = Creature:new {
 	objectName = "",
-	customName = "Yondalla",
-	socialGroup = "townsperson",
-	faction = "townsperson",
+	customName = "Colonel Darkstone",
+	socialGroup = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -26,7 +26,7 @@ yondalla = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_neutral_yondalla.iff"},
+	templates = {"object/mobile/dressed_corvette_imperial_darkstone.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
@@ -34,4 +34,4 @@ yondalla = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(yondalla, "yondalla")
+CreatureTemplates:addCreatureTemplate(corvette_imperial_darkstone, "corvette_imperial_darkstone")

@@ -1,4 +1,4 @@
-bronell = Creature:new {
+corvette_neutral_bronell = Creature:new {
 	objectName = "",
 	customName = "Bronell",
 	socialGroup = "jabba",
@@ -23,7 +23,7 @@ bronell = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + CONVERSABLE,
+	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corvette_neutral_bronell.iff"},
@@ -33,4 +33,4 @@ bronell = Creature:new {
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(bronell, "bronell")
+CreatureTemplates:addCreatureTemplate(corvette_neutral_bronell, "corvette_neutral_bronell")
