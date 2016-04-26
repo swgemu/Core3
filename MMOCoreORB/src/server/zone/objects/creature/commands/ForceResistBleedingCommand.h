@@ -15,15 +15,17 @@ public:
 
 		buffCRC = BuffCRC::JEDI_RESIST_BLEEDING;
 
-		overrideableCRCs.add(BuffCRC::JEDI_RESIST_BLEEDING);
-
 		skillMods.put("resistance_bleeding", 25);
 		skillMods.put("absorption_bleeding", 25);
 
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-		return doJediSelfBuffCommand(creature);
+		if (creature->hasBuff(BuffCRC::JEDI_RESIST_BLEEDING)) {
+			creature->removeBuff(BuffCRC::JEDI_RESIST_BLEEDING);
+			return SUCCESS;
+		} else
+			return doJediSelfBuffCommand(creature);
 	}
 
 };

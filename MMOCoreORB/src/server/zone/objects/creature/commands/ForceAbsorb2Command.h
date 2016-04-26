@@ -17,7 +17,6 @@ public:
 		buffCRC = BuffCRC::JEDI_FORCE_ABSORB_2;
 
 		overrideableCRCs.add(BuffCRC::JEDI_FORCE_ABSORB_1);
-		overrideableCRCs.add(BuffCRC::JEDI_FORCE_ABSORB_2);
 
 		singleUseEventTypes.add(ObserverEventType::FORCEBUFFHIT);
 
@@ -25,7 +24,11 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-		return doJediSelfBuffCommand(creature);
+		if (creature->hasBuff(BuffCRC::JEDI_FORCE_ABSORB_2)) {
+			creature->removeBuff(BuffCRC::JEDI_FORCE_ABSORB_2);
+			return SUCCESS;
+		} else
+			return doJediSelfBuffCommand(creature);
 	}
 
 };

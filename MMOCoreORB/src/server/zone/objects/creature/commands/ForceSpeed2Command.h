@@ -15,13 +15,17 @@ public:
 
 		buffCRC = BuffCRC::JEDI_FORCE_SPEED_2;
 
-		blockingCRCs.add(BuffCRC::JEDI_FORCE_SPEED_1);
-		blockingCRCs.add(BuffCRC::JEDI_FORCE_SPEED_2);
+		overrideableCRCs.add(BuffCRC::JEDI_FORCE_SPEED_1);
+
 		skillMods.put("combat_haste", 25);
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-		return doJediSelfBuffCommand(creature);
+		if (creature->hasBuff(BuffCRC::JEDI_FORCE_SPEED_2)) {
+			creature->removeBuff(BuffCRC::JEDI_FORCE_SPEED_2);
+			return SUCCESS;
+		} else
+			return doJediSelfBuffCommand(creature);
 	}
 
 };

@@ -15,15 +15,17 @@ public:
 
 		buffCRC = BuffCRC::JEDI_RESIST_DISEASE;
 
-		overrideableCRCs.add(BuffCRC::JEDI_RESIST_DISEASE);
-
 		skillMods.put("resistance_disease", 25);
 		skillMods.put("absorption_disease", 25);
 
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-		return doJediSelfBuffCommand(creature);
+		if (creature->hasBuff(BuffCRC::JEDI_RESIST_DISEASE)) {
+			creature->removeBuff(BuffCRC::JEDI_RESIST_DISEASE);
+			return SUCCESS;
+		} else
+			return doJediSelfBuffCommand(creature);
 	}
 
 };
