@@ -112,8 +112,18 @@ public:
 		// Follow owner if command is trained
 		if (controlDevice->hasTrainedCommand( PetManager::FOLLOW)) {
 			// Always a chance the pet will just be stubborn
-			if (System::random(100) <= 90 ){
-				pet->setFollowObject( pet->getLinkedCreature().get() );
+			if (System::random(100) <= 90) {
+				// attempt peace if the pet is in combat
+				if (pet->isInCombat())
+					CombatManager::instance()->attemptPeace(pet);
+
+				pet->setFollowObject(pet->getLinkedCreature().get());
+				pet->storeFollowObject();
+
+				Locker clocker(controlDevice, pet);
+				controlDevice->setLastCommand(PetManager::FOLLOW);
+
+				pet->activateInterrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
 			} else {
 				pet->doAnimation("confused");
 				pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
