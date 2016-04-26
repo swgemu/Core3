@@ -78,6 +78,7 @@
 #include "server/zone/objects/player/sui/LuaSuiPageData.h"
 #include "server/zone/objects/player/sui/SuiBoxPage.h"
 #include "server/zone/objects/tangible/powerup/PowerupObject.h"
+#include "server/zone/managers/frs/FrsManager.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -340,6 +341,9 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getQuestVectorMap", getQuestVectorMap);
 	lua_register(luaEngine->getLuaState(), "createQuestVectorMap", createQuestVectorMap);
 	lua_register(luaEngine->getLuaState(), "removeQuestVectorMap", removeQuestVectorMap);
+	lua_register(luaEngine->getLuaState(), "getForceRankVotingPetitioners", getForceRankVotingPetitioners);
+	lua_register(luaEngine->getLuaState(), "addForceRankVotingPetitioner", addForceRankVotingPetitioner);
+	lua_register(luaEngine->getLuaState(), "getForceRankSeatsAvailable", getForceRankSeatsAvailable);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -3112,4 +3116,95 @@ void DirectorManager::removeQuestVectorMap(const String& keyString) {
 
 	if (questMap != NULL)
 		ObjectManager::instance()->destroyObjectFromDatabase(questMap->_getObjectID());
+}
+
+int DirectorManager::getForceRankVotingPetitioners(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getForceRankVotingPetitioners");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String side = lua_tostring(L, -2);
+	int rank = lua_tonumber(L, -1);
+
+	int enclave = 0;
+
+	if (side == "light") {
+		enclave = 4;
+	} else if (side == "dark") {
+		enclave = 8;
+	}
+
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+
+	FrsManager* frsManager = zoneServer->getFrsManager();
+
+	if (frsManager != NULL) {
+		frsManager->getVotingPetitioners(enclave, rank);
+	}  else {
+		lua_pushnil(L);
+	}
+
+	return 1;
+}
+
+int DirectorManager::getForceRankSeatsAvailable(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getForceRankSeatsAvailable");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String side = lua_tostring(L, -2);
+	int rank = lua_tonumber(L, -1);
+
+	int enclave = 0;
+
+	if (side == "light") {
+		enclave = 4;
+	} else if (side == "dark") {
+		enclave = 8;
+	}
+
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+
+	FrsManager* frsManager = zoneServer->getFrsManager();
+
+	if (frsManager != NULL) {
+		lua_pushinteger(L, frsManager->checkSeatAvailability(enclave, rank));
+	} else {
+		lua_pushnil(L);
+	}
+
+	return 1;
+}
+
+int DirectorManager::addForceRankVotingPetitioner(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::addForceRankVotingPetitioner");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -2);
+	int rank = lua_tonumber(L, -1);
+
+	int enclave = 0;
+
+	if (creature->isRebel()) {
+		enclave = 4;
+	} else if (creature->isImperial()) {
+		enclave = 8;
+	}
+
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+
+	FrsManager* frsManager = zoneServer->getFrsManager();
+
+	if (frsManager != NULL) {
+		frsManager->addForceRankVotingPetitioner(creature, enclave, rank);
+	}
+
+	return 0;
 }

@@ -181,6 +181,9 @@ namespace server {
 		static int getQuestVectorMap(lua_State* L);
 		static int removeQuestVectorMap(lua_State* L);
 		static int createQuestVectorMap(lua_State* L);
+		static int getForceRankVotingPetitioners(lua_State* L);
+		static int addForceRankVotingPetitioner(lua_State* L);
+		static int getForceRankSeatsAvailable(lua_State* L);
 
 	private:
 		void setupLuaPackagePath(Lua* luaEngine);

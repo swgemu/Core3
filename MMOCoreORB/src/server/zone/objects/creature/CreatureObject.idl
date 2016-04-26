@@ -46,6 +46,7 @@ import system.lang.Long;
 import engine.service.proto.BasePacket;
 import server.zone.packets.scene.AttributeListMessage;
 import system.thread.Mutex;
+import server.zone.objects.forcerank.ForceRankObject;
 
 @mock
 class CreatureObject extends TangibleObject {
@@ -113,11 +114,13 @@ class CreatureObject extends TangibleObject {
 	@weakReference
 	protected GuildObject guild;
 
+	protected ForceRankObject frsObject;
+
 	protected unsigned long targetID;
 	protected byte moodID;
 	protected int performanceCounter;
 	protected int instrumentID;
-	
+
 	@dereferenced
 	protected DeltaVector<int> hamList;
 
@@ -246,7 +249,7 @@ class CreatureObject extends TangibleObject {
 		super.setCountdownTimer(newCount, notifyClient);
 		cooldownTimerMap.updateToCurrentAndAddMili("incapTimer", getUseCount()*1000);
 	}
-		
+
 	/**
 	 * Sends a CommandQueueRemove ObjectControllerMessage to the owner client of this object
 	 * @pre { }
@@ -377,7 +380,7 @@ class CreatureObject extends TangibleObject {
 	 */
 	@preLocked
 	public native abstract void setPosture(int newPosture, boolean immedate = true, boolean notifyClient = true);
-	
+
 	@preLocked
 	public native abstract void updatePostures(boolean immediate = true);
 
@@ -675,7 +678,7 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	@arg1preLocked
 	public native void removeBuff(Buff buff);
-	
+
 	@preLocked
 	public native boolean removeStateBuff(unsigned long state);
 
@@ -685,7 +688,7 @@ class CreatureObject extends TangibleObject {
 	 */
 	@preLocked
 	public native void clearBuffs(boolean updateclient);
-	
+
 	/**
 	 * Renews the buff and all secondary buffs associated with it.
 	 * @param buffCRC The buff to renew from the list
@@ -736,25 +739,25 @@ class CreatureObject extends TangibleObject {
 
 	@preLocked
 	public abstract int addDotState(CreatureObject attacker,
-									unsigned long dotType,
-									unsigned long objectID,
-									unsigned int strength,
-									byte type,
-									unsigned int duration,
-									float potency,
-									unsigned int defense,
-									int secondaryStrength = 0) {
+			unsigned long dotType,
+			unsigned long objectID,
+			unsigned int strength,
+			byte type,
+			unsigned int duration,
+			float potency,
+			unsigned int defense,
+			int secondaryStrength = 0) {
 
 		return damageOverTimeList.addDot(this,
-										 attacker,
-										 objectID,
-										 duration, 
-										 dotType,
-										 type,
-										 strength,
-										 potency,
-										 defense,
-										 secondaryStrength);
+				attacker,
+				objectID,
+				duration, 
+				dotType,
+				type,
+				strength,
+				potency,
+				defense,
+				secondaryStrength);
 	}
 
 	@preLocked
@@ -1333,7 +1336,7 @@ class CreatureObject extends TangibleObject {
 	public void removeAttackDelay() {
 		cooldownTimerMap.updateToCurrentTime("nextAttackDelay");
 	}
-	
+
 	@dirty
 	public boolean hasIncapTimer() {
 		return !cooldownTimerMap.isPast("incapTimer");
@@ -1388,8 +1391,8 @@ class CreatureObject extends TangibleObject {
 	public boolean checkKnockdownRecovery() {
 		return cooldownTimerMap.isPast("knockdownRecovery");
 	}
-	
-	
+
+
 	// Updates directional arrows and planet names for group members out of range
 	@dirty 
 	public native void updateGroupMFDPositions();
@@ -1414,7 +1417,7 @@ class CreatureObject extends TangibleObject {
 	 * Returns the given ScreenPlayState.
 	 * Takes the screenPlayStatesMutex.
 	 * @param screenPlay ScreenPlay to retrieve
-         */
+	 */
 	public unsigned long getScreenPlayState(final string screenPlay) {
 		synchronized (screenPlayStatesMutex) {
 			return screenPlayStates.get(screenPlay);
@@ -1426,7 +1429,7 @@ class CreatureObject extends TangibleObject {
 	 * Takes the screenPlayStatesMutex.
 	 * @param screenPlay ScreenPlay to modify
 	 * @param state the State to set
-         */
+	 */
 	public void setScreenPlayState(final string screenPlay, unsigned long state) {
 		synchronized (screenPlayStatesMutex) {
 			screenPlayStates.put(screenPlay, state);
@@ -1460,7 +1463,7 @@ class CreatureObject extends TangibleObject {
 
 	@dirty
 	public native void doCombatAnimation(TangibleObject defender, unsigned int animationCRC, byte hit, byte trails, unsigned long weaponID=0);
-	
+
 	@dirty
 	public native void doCombatAnimation(unsigned int animationCRC);
 
@@ -2037,7 +2040,7 @@ class CreatureObject extends TangibleObject {
 	public boolean isOnFire() {
 		return stateBitmask & CreatureState.ONFIRE;
 	}
-	
+
 	@read
 	public boolean isFeigningDeath() {
 		return stateBitmask & CreatureState.FEIGNDEATH;
@@ -2155,5 +2158,13 @@ class CreatureObject extends TangibleObject {
 
 	@preLocked
 	public abstract void reloadTemplate() {
+	}
+
+	public ForceRankObject getForceRankObject() {
+		return frsObject;
+	}
+
+	public void setForceRankObject(ForceRankObject obj) {
+		frsObject = obj;
 	}
 }

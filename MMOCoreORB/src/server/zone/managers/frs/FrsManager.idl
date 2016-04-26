@@ -1,0 +1,148 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+ */
+
+package server.zone.managers.frs;
+
+import engine.core.ManagedService;
+import server.zone.ZoneProcessServer;
+import server.zone.ZoneServer;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.player.PlayerObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.managers.object.ObjectManager;
+import server.zone.objects.forcerank.ForceRankObject;
+import engine.lua.Lua;
+import engine.lua.LuaObject;
+import system.util.Vector;
+import system.util.VectorMap;
+include server.zone.objects.scene.variables.DeltaSet;
+include server.chat.StringIdChatParameter;
+
+class FrsManager extends ManagedService implements Logger {
+	private transient ZoneServer server;
+	private transient ZoneProcessServer processor;
+	private transient Lua lua;
+
+	public static final int PETITION_INTERVAL         = 86400000;
+	public static final int VOTING_INTERVAL           = 86400000;
+	public static final int ACCEPTANCE_INTERVAL       = 86400000;
+	public static final int MAINTENANCE_INTERVAL      = 86400000;
+
+	public static final int REQUEST_DEMOTION_DURATION = 604800;
+	public static final int VOTE_CHALLENGE_DURATION   = 604800;
+
+	public static final int BASE_MAINTENANCE_COST     = 100;
+	public static final int REQUEST_DEMOTION_COST     = 2500;
+	public static final int VOTE_CHALLENGE_COST       = 2000;
+
+	public static final int MAX_PETITIONERS           = 11;
+	public static final int MISSED_VOTE_PENALTY       = 100;
+
+	@dereferenced
+	private transient VectorMap<int, int> frsMaximums;
+
+	@dereferenced
+	private VectorMap<unsigned long, int> lightMemberList;
+
+	@dereferenced
+	private VectorMap<unsigned long, int> darkMemberList;
+
+	@dereferenced
+	protected VectorMap<unsigned long, int> lightPetitioningList;
+
+	@dereferenced
+	protected VectorMap<unsigned long, int> darkPetitioningList;
+
+	@dereferenced
+	protected VectorMap<unsigned long, unsigned long> petitionerVotes;
+
+	@dereferenced
+	private VectorMap<unsigned long, unsigned long> challengeList;
+
+	private int maintenanceInterval;
+
+	public FrsManager(ZoneServer serv, ZoneProcessServer proc) {
+		Logger.setLoggingName("FRSManager");
+		Logger.setLogging(true);
+		Logger.setGlobalLogging(true);
+
+		server = serv;
+		processor = proc;
+
+		lightMemberList.setNoDuplicateInsertPlan();
+		darkMemberList.setNoDuplicateInsertPlan();
+		challengeList.setNoDuplicateInsertPlan();
+	}
+
+	public native void initialize();
+
+	public native boolean loadConfigFile();
+
+	public native void loadConfigData();
+
+	public native void loadRankMembers();
+
+	public native void updateEnclaveMember(CreatureObject creo, int rank, boolean remove);
+
+	public native int checkSeatAvailability(int enclave, int rank);
+
+	public native void processRankMaintenance();
+
+	@local
+	public VectorMap<unsigned long, int> getMemberList(int enclave) {
+		if (enclave == 4)
+			return lightMemberList;
+		else
+			return darkMemberList;
+	}
+
+	public native void getVotingPetitioners(int enclave, int rank);
+
+	public void addForceRankVotingPetitioner(CreatureObject player, int enclave, int rank) {
+		if (enclave == 4)
+			lightPetitioningList.add(player.getObjectID(), rank);
+		else if (enclave == 8)
+			darkPetitioningList.add(player.getObjectID(), rank);
+	}
+}

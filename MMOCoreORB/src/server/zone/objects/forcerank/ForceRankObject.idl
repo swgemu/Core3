@@ -1,0 +1,63 @@
+package server.zone.objects.forcerank;
+
+import engine.core.ManagedObject;
+import server.zone.objects.creature.CreatureObject;
+
+class ForceRankObject extends ManagedObject {
+
+	protected int rank;
+	protected int enclave;
+	protected CreatureObject creature;
+
+	protected int challengeID;
+
+	public ForceRankObject() {
+		rank = 0;
+		enclave = 0;
+		creature = null;
+
+		challengeID = 0;
+	}
+
+	public void setCreature(CreatureObject creo) {
+		if (creature == creo)
+			return;
+
+		creature = creo;
+	}
+
+	@read
+	public unsigned long getCreatureID() {
+		if (creature == null)
+			return 0;
+		else
+			return creature.getObjectID();
+	}
+
+	public void setRank(int newRank) {
+		rank = newRank;
+	}
+
+	@read
+	public int getRank() {
+		return rank;
+	}
+
+	public void setEnclave(int newEnclave) {
+		enclave = newEnclave;
+	}
+
+	@read
+	public int getEnclave() {
+		return enclave;
+	}
+
+	public void setChallengeID(int id) {
+		challengeID = id;
+	}
+
+	@read
+	public int getChallengeID() {
+		return challengeID;
+	}
+}

@@ -39,6 +39,7 @@
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/managers/frs/FrsManager.h"
 
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -79,6 +80,7 @@ ZoneServerImplementation::ZoneServerImplementation(ConfigManager* config) :
 	resourceManager = NULL;
 	craftingManager = NULL;
 	lootManager = NULL;
+	frsManager = NULL;
 
 	stringIdManager = NULL;
 	creatureTemplateManager = NULL;
@@ -253,6 +255,8 @@ void ZoneServerImplementation::startManagers() {
 	guildManager->loadLuaConfig();
 	guildManager->loadGuilds();
 
+	frsManager->initialize();
+
 	chatManager->initiatePlanetRooms();
 	chatManager->loadPersistentRooms();
 
@@ -345,6 +349,7 @@ void ZoneServerImplementation::stopManagers() {
 	missionManager = NULL;
 	guildManager = NULL;
 	cityManager = NULL;
+	frsManager = NULL;
 
 	info("managers stopped", true);
 }

@@ -51,6 +51,7 @@ import server.zone.managers.creature.DnaManager;
 import server.zone.managers.creature.PetManager;
 import server.zone.managers.guild.GuildManager;
 import server.zone.managers.city.CityManager;
+import server.zone.managers.frs.FrsManager;
 
 class ZoneServer extends ManagedService implements Logger {
 	private transient DatagramServiceThread datagramService;
@@ -72,6 +73,7 @@ class ZoneServer extends ManagedService implements Logger {
 	private ChatManager chatManager;
 	private RadialManager radialManager;
 	private CityManager cityManager;
+	private FrsManager frsManager;
 
 	private ResourceManager resourceManager;
 	private CraftingManager craftingManager;
@@ -326,6 +328,11 @@ class ZoneServer extends ManagedService implements Logger {
 	@dirty
 	public CityManager getCityManager() {
 		return cityManager;
+	}
+	
+	@dirty
+	public FrsManager getFrsManager() {
+		return frsManager;
 	}
 	
 	@dirty
