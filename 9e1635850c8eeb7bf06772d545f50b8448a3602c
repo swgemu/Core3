@@ -1,0 +1,1160 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_17e8747b",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/sean_questp_market_conv.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "call it noroom_returned_noroom as that\u0027s what you\u0027re adding in the convo handler and to be consistent with the other questp convos",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_37ed788c",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/sean_questp_market_conv.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "You\u0027re not using this screen and, in fact, I don\u0027t see that dialog in the stf. It seems to be from a different stf. Go ahead and remove this screen.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_b7a66852",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/victor_questn_capitol_conv.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "The convo handler is looking for a screen named noroom_returned_fullinv. Either rename this or change it in the handler.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_57634c1a",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/victor_questn_capitol_conv.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "I think it makes more sense if you swapped this dialog and the one in noroom_returned_noroom. noroom_returned_noroom is shown when they choose the yes option but still are full. This one is when they choose the no option.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_d76c3c39",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_museum/museum_curator_conv.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "You were going to change this back",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_178394cd",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_museum/museum_curator_conv.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "This should be true",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_378818e7",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_museum/museum_curator_conv.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "This is the same as back_for_testimony. Remove this one.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_777e90e6",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_museum/museum_curator_conv.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "This should be true.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_b7ee68b3",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/tatooine/bestine_election/hutt_informant_quest.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you have INVULNERABLE here like all the others?",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9780048d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "You aren\u0027t using this. remove it.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_b77d08b4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "remove this function",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_974804ce",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "make this an elseif of the ikyna/siyan check",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_b74508b5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "make this an elseif of the ikyna/siyan check",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_574a6c84",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questn_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "you aren\u0027t using this. remove it",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_179f1405",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questn_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "check quest \u003d\u003d \"\" instead.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_37a49856",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questn_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "check quest \u003d\u003d \"\" instead.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_d788bcc8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questn_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "check quest \u003d\u003d \"\" instead.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_57958ce2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questn_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "return \"\"",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_57bcac6c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questn_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "you don\u0027t use this. remove it.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_77c1b0e3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questn_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "you don\u0027t use this. remove it.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_17b6348b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questn_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "Instead of independent checks, string them together with elseifs",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_37bb3874",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questn_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "elseif\n\nalso, use objectName instead of getting the path again",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_d7af5c2a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questn_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "use objectName",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_779a1016",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questn_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "You already checked this. Remove this block.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_f7ace037",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questn_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "elseif\n\nalso, put this before the negQuest checks",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_97a9e426",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questn_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "this should add the s_90ec63e0 dialog option",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_7768d0f5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questn_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "The no option should always be added. You should add a second yes option for when their inventory is full still (just like you do for the capitol above). Have him respond with the s_f7347f40 dialog. You\u0027ll need to add it to the convo template.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_774f7093",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "remove this",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_f785c0ad",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "check quest \u003d\u003d \"\" instead.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_d753dc6a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "since you\u0027re declaring SLUMS above, just use it here.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_f7506060",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "use HOSPITAL",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_974d64c7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "use MARKET",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_b74ae8aa",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "use HOUSE",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_979244f5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "check quest \u003d\u003d \"\" instead.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_175ab483",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "you don\u0027t use this. remove it",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_f7fe2038",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "this should be named giveQuestpItem",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_b78f48cc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "check quest \u003d\u003d \"\" instead.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_57c7cc12",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "use SLUMS",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_77cc5036",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "use HOSPITAL",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_17d154cd",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "use MARKET",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_37d6d8c6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "use HOUSE",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_375fb874",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "return \"\"",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_d7dafce8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "you don\u0027t use this. remove it",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_f7d700be",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "you don\u0027t use this. remove it",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_f7694026",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "instead of disconnected if statements, use elseifs\n\nalso, use objectName instead of getting the path again",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9776c405",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "elseif\n\nalso, use objectName",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_b773c814",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_57602c35",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_77653044",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_97e484ad",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_57eeec8c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "should use noroom_returned_giveitem",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_77f3f073",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "should use noroom_returned_giveitem",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_b7e1889c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "elseif\n\nalso, the way you have this written won\u0027t work correctly. For the convos that have a quest_start4, they\u0027ll have this option added onto both start3 and start4. I think you should change the last quest_start in each convo to quest_start_final and just check for that here. That way you know you\u0027ll be adding the option to the correct screen regardless of the which convo it is.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_d7019c3a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "elseif\n\nalso, you should check for noroom_returned_giveitem here too",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_1744f472",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/hutt_informant_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "remove this",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_97fb2447",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/hutt_informant_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "you don\u0027t use this. remove it",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_3749f88b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_contact_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "remove this",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_d75d1c4a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_contact_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "remove this function",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_176dd404",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_contact_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "There is no hDisk. You need to store the the object you get from the inventory into a local called hDisk, nil check hDisk, and then this and the following line are fine.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_377258e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_contact_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "you should get and nil check pGhost before you destroy the disk.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_d7767cd8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_contact_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "this return is unnecessary",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_f77380e5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_contact_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_971fa4b7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/museum_curator_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "Make this an elseif of the schematic_cost and schematic_purchased chain.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_b71c28c3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/museum_curator_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_57790cfb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/museum_curator_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "elseif\n\nalso, check for back_for_testimony instead of NoRoomSeanTestimony_returned. You\u0027re removing the latter as a duplicate and the former is the one you actually use when you add the option above.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_170cf493",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/tatooine_fort_tusken.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "returning 1 here will cause the observer to be removed. It won\u0027t get reapplied when the mob respawns. You should return 0 instead to keep the observer.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_3711f8ac",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/tatooine_fort_tusken.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "The other witch doctor has the loot observer added to it. Why not this one?",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_57126cb5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/tatooine_fort_tusken.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 1,
+      "message": "No chance for a head from this executioner? The other 2 have it.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

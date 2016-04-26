@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_37033875",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/serverobjects.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 0,
+      "message": "You delete this entry but aren\u0027t deleting or renaming the actual file.",
+      "revId": "6c371202b62c85c81b418ec5ce24f7be40144665",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_d7f75c8b",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/serverobjects.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 0,
+      "message": "You delete this entry but aren\u0027t deleting or renaming the actual file.",
+      "revId": "6c371202b62c85c81b418ec5ce24f7be40144665",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_f75aa04f",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/museum_curator_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 0,
+      "message": "I know you didn\u0027t add it, but remove this.",
+      "revId": "6c371202b62c85c81b418ec5ce24f7be40144665",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9757a426",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/museum_curator_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 0,
+      "message": "remove this function",
+      "revId": "6c371202b62c85c81b418ec5ce24f7be40144665",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_771770a4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/tatooine_fort_tusken.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-04-26T15:00:27Z",
+      "side": 0,
+      "message": "Is there a reason that this tusken observer doesn\u0027t have the quest loot observer added to it? All the others do.",
+      "revId": "6c371202b62c85c81b418ec5ce24f7be40144665",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
