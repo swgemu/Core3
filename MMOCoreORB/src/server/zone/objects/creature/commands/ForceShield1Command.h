@@ -16,8 +16,6 @@ public:
 
 		blockingCRCs.add(BuffCRC::JEDI_FORCE_SHIELD_2);
 
-		overrideableCRCs.add(BuffCRC::JEDI_FORCE_SHIELD_1);
-
 		singleUseEventTypes.add(ObserverEventType::FORCEBUFFHIT);
 
 		skillMods.put("force_shield", 25);

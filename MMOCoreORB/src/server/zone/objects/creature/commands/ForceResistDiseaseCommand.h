@@ -15,8 +15,6 @@ public:
 
 		buffCRC = BuffCRC::JEDI_RESIST_DISEASE;
 
-		overrideableCRCs.add(BuffCRC::JEDI_RESIST_DISEASE);
-
 		skillMods.put("resistance_disease", 25);
 		skillMods.put("absorption_disease", 25);
 

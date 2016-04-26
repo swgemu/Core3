@@ -16,8 +16,6 @@ public:
 
 		blockingCRCs.add(BuffCRC::JEDI_FORCE_ABSORB_2);
 
-		overrideableCRCs.add(BuffCRC::JEDI_FORCE_ABSORB_1);
-
 		singleUseEventTypes.add(ObserverEventType::FORCEBUFFHIT);
 
 		// Skill mods.

@@ -16,7 +16,6 @@ public:
 
 		buffCRC = BuffCRC::JEDI_FORCE_FEEDBACK_2;
 
-		overrideableCRCs.add(BuffCRC::JEDI_FORCE_FEEDBACK_2);
 		overrideableCRCs.add(BuffCRC::JEDI_FORCE_FEEDBACK_1);
 
 		singleUseEventTypes.add(ObserverEventType::FORCEBUFFHIT);
@@ -26,7 +25,6 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		return doJediSelfBuffCommand(creature);
 	}
 

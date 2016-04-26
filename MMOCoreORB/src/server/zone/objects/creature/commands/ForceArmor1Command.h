@@ -16,15 +16,12 @@ public:
 
 		blockingCRCs.add(BuffCRC::JEDI_FORCE_ARMOR_2);
 
-		overrideableCRCs.add(BuffCRC::JEDI_FORCE_ARMOR_1);
-
 		singleUseEventTypes.add(ObserverEventType::FORCEBUFFHIT);
 
 		skillMods.put("force_armor", 25);
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		return doJediSelfBuffCommand(creature);
 	}
 

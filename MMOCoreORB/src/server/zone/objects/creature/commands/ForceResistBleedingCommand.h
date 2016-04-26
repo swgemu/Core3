@@ -15,8 +15,6 @@ public:
 
 		buffCRC = BuffCRC::JEDI_RESIST_BLEEDING;
 
-		overrideableCRCs.add(BuffCRC::JEDI_RESIST_BLEEDING);
-
 		skillMods.put("resistance_bleeding", 25);
 		skillMods.put("absorption_bleeding", 25);
 

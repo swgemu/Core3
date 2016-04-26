@@ -59,6 +59,12 @@ public:
 
     
 	int doJediSelfBuffCommand(CreatureObject* creature) const {
+		// first and foremost, we need to toggle this buff off if we already have it
+		if (creature->hasBuff(buffCRC)) {
+			creature->removeBuff(buffCRC);
+			return SUCCESS;
+		}
+
 		// Do checks first.
 		int res = doCommonJediSelfChecks(creature);
 

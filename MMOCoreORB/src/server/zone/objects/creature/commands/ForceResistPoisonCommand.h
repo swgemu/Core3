@@ -15,8 +15,6 @@ public:
 
 		buffCRC = BuffCRC::JEDI_RESIST_POISON;
 
-		overrideableCRCs.add(BuffCRC::JEDI_RESIST_POISON);
-
 		skillMods.put("resistance_poison", 25);
 		skillMods.put("absorption_poison", 25);
 

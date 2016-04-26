@@ -16,7 +16,6 @@ public:
 		buffCRC = BuffCRC::JEDI_FORCE_ARMOR_2;
 
 		overrideableCRCs.add(BuffCRC::JEDI_FORCE_ARMOR_1);
-		overrideableCRCs.add(BuffCRC::JEDI_FORCE_ARMOR_2);
 
 		singleUseEventTypes.add(ObserverEventType::FORCEBUFFHIT);
 

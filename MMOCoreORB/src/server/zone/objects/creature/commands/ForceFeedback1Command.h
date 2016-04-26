@@ -16,8 +16,6 @@ public:
 
 		buffCRC = BuffCRC::JEDI_FORCE_FEEDBACK_1;
 
-		overrideableCRCs.add(BuffCRC::JEDI_FORCE_FEEDBACK_1);
-
 		blockingCRCs.add(BuffCRC::JEDI_FORCE_FEEDBACK_2);
 
 		singleUseEventTypes.add(ObserverEventType::FORCEBUFFHIT);
