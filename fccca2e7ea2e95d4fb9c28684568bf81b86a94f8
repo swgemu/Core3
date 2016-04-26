@@ -1,0 +1,435 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_7a2bd582",
+        "filename": "MMOCoreORB/bin/scripts/managers/frs_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T22:31:06Z",
+      "side": 1,
+      "message": "This comment doesn\u0027t match your definition.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 32
+      },
+      "revId": "fccca2e7ea2e95d4fb9c28684568bf81b86a94f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_1a20999a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/force_rank/enclaveVotingTerminalMenuComponents.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T22:31:06Z",
+      "side": 1,
+      "message": "Why do you have empty conditionals here? Don\u0027t do that. If you are stubbing this, then stub where the call will actually be made.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "fccca2e7ea2e95d4fb9c28684568bf81b86a94f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_3a255dab",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/custom/SuiFRSVoting.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T22:31:06Z",
+      "side": 1,
+      "message": "? -- once again, if you are stubbing, stub the actual call",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 3
+      },
+      "revId": "fccca2e7ea2e95d4fb9c28684568bf81b86a94f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_da39c1d9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/custom/SuiFRSVoting.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T22:31:06Z",
+      "side": 1,
+      "message": "Then what\u0027s the point?",
+      "range": {
+        "startLine": 62,
+        "startChar": 46,
+        "endLine": 62,
+        "endChar": 56
+      },
+      "revId": "fccca2e7ea2e95d4fb9c28684568bf81b86a94f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9a3349f6",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T22:31:06Z",
+      "side": 1,
+      "message": "These should be in the config file you set up.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 57
+      },
+      "revId": "fccca2e7ea2e95d4fb9c28684568bf81b86a94f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_7a52f514",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T22:31:06Z",
+      "side": 1,
+      "message": "I\u0027ll only say this once, but it\u0027s a pervasive problem. Why are you setting enclave 4 and 8 as light and dark? I see no place where these values get used other than to check against int 4 and int 8. This is called a magic number and is completely wrong. Instead, at the very least create a const and use a symbolic value (a type-safe enum would be MUCH preferable).",
+      "range": {
+        "startLine": 133,
+        "startChar": 56,
+        "endLine": 133,
+        "endChar": 63
+      },
+      "revId": "fccca2e7ea2e95d4fb9c28684568bf81b86a94f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_fa3605e7",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManager.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T22:31:06Z",
+      "side": 1,
+      "message": "So if enclave is ANYTHING but 4, you want this to return (hint: no you don\u0027t.)",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 25
+      },
+      "revId": "fccca2e7ea2e95d4fb9c28684568bf81b86a94f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_5a4db171",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T22:31:06Z",
+      "side": 1,
+      "message": "combine these two functions and don\u0027t maintain the lua instance. It should only be local just for the config file.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 1
+      },
+      "revId": "fccca2e7ea2e95d4fb9c28684568bf81b86a94f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_1a573904",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T22:31:06Z",
+      "side": 1,
+      "message": "never directly call run on a task. If you want to spawn this in another thread immediately, you need to call execute(). Even better, use the EXECUTE_TASK_# macros to do this.",
+      "range": {
+        "startLine": 170,
+        "startChar": 2,
+        "endLine": 170,
+        "endChar": 28
+      },
+      "revId": "fccca2e7ea2e95d4fb9c28684568bf81b86a94f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_3a5c7d25",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T22:31:06Z",
+      "side": 1,
+      "message": "no run",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 181,
+        "endChar": 28
+      },
+      "revId": "fccca2e7ea2e95d4fb9c28684568bf81b86a94f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_ba308de9",
+        "filename": "MMOCoreORB/src/server/zone/managers/frs/FrsManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T22:31:06Z",
+      "side": 1,
+      "message": "You call this from directormanager (which manages thread-safe lua for you) and then you push the results to the lua instance managed by FRS manager (which is different from the instance that called this function). This is very wrong.",
+      "revId": "fccca2e7ea2e95d4fb9c28684568bf81b86a94f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_da40e137",
+        "filename": "MMOCoreORB/src/server/zone/objects/forcerank/ForceRankObject.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T22:31:06Z",
+      "side": 1,
+      "message": "you have a ctor that does something. That usually means you also need a copy ctor and an assignment operator. But in the end, this is a glorified struct, why are you going through the trouble of making it a full on managed object?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 2
+      },
+      "revId": "fccca2e7ea2e95d4fb9c28684568bf81b86a94f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9a4a6954",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/FRSMaintenanceTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T22:31:06Z",
+      "side": 1,
+      "message": "You are storing too many members here. You literally only need to store creature, everything else can be gotten in the body of run the same way you get them in the ctor. Furthermore, it should be a weakref.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 50
+      },
+      "revId": "fccca2e7ea2e95d4fb9c28684568bf81b86a94f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_fa3da5bc",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/FRSMaintenanceTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T22:31:06Z",
+      "side": 1,
+      "message": "configure the periodicity in the config file.",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 45
+      },
+      "revId": "fccca2e7ea2e95d4fb9c28684568bf81b86a94f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_ba472d4b",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/FRSMaintenanceTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T22:31:06Z",
+      "side": 1,
+      "message": "you don\u0027t need floor here. You have integer division, so you will get an integer back.",
+      "range": {
+        "startLine": 44,
+        "startChar": 17,
+        "endLine": 44,
+        "endChar": 52
+      },
+      "revId": "fccca2e7ea2e95d4fb9c28684568bf81b86a94f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_5a74d19b",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/FRSMaintenanceTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T22:31:06Z",
+      "side": 1,
+      "message": "If creo actually needs to be locked here, move it outside the for loop. In actuality, you need to re-evaluate where creature needs to be locked and lock just before that (to prevent a giant performance hit).",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 28
+      },
+      "revId": "fccca2e7ea2e95d4fb9c28684568bf81b86a94f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_7a799592",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/FRSMaintenanceTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T22:31:06Z",
+      "side": 1,
+      "message": "these numbers seem arbitrary. What are they and why are you subtracting them here?",
+      "range": {
+        "startLine": 91,
+        "startChar": 77,
+        "endLine": 91,
+        "endChar": 83
+      },
+      "revId": "fccca2e7ea2e95d4fb9c28684568bf81b86a94f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_1a6e59ca",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/FRSMaintenanceTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T22:31:06Z",
+      "side": 1,
+      "message": "how many times are you going to loop through the entire skill list? At least memoize the force rank skills when you do it the first time...",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 3
+      },
+      "revId": "fccca2e7ea2e95d4fb9c28684568bf81b86a94f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_3a731db3",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/FRSMaintenanceTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T22:31:06Z",
+      "side": 1,
+      "message": "okay, now I see why you used 4 and 8 for the enclaves. This needs to be made clear by using consts or enums, the same both here and there.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 34
+      },
+      "revId": "fccca2e7ea2e95d4fb9c28684568bf81b86a94f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
