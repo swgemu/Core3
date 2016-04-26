@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_da122158",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuff.idl",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T21:52:16Z",
+      "side": 1,
+      "message": "I wouldn\u0027t store these like this at all. cfTick is completely un-descriptive, it needs to be named after what it actually is -- the total HAM subtracted per bar. Furthermore, completely remove the amountOfTicks (and all the tick-based logic in its entirety) and calculate the amount to heal per tick based on the (duration - elapsed) time, which you can get with Buff::getTimeLeft().",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "bfb769d0ad6367c8b6ffbb8314b2f521f56cdc77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_3a0ebd35",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuff.idl",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T21:52:16Z",
+      "side": 1,
+      "message": "You don\u0027t use this variable.",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "bfb769d0ad6367c8b6ffbb8314b2f521f56cdc77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_d70bdc29",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuff.idl",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T21:52:16Z",
+      "side": 1,
+      "message": "this should perhaps be more descriptive. I don\u0027t know what value is (or what cfTick is) without looking at the implementation.",
+      "range": {
+        "startLine": 25,
+        "startChar": 87,
+        "endLine": 25,
+        "endChar": 96
+      },
+      "revId": "bfb769d0ad6367c8b6ffbb8314b2f521f56cdc77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_3717b853",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuff.idl",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T21:52:16Z",
+      "side": 1,
+      "message": "You don\u0027t need to pass name and CRC if the CRC is always just the hash of the name. Just pass the name and hash it in the ctor.",
+      "range": {
+        "startLine": 25,
+        "startChar": 46,
+        "endLine": 25,
+        "endChar": 85
+      },
+      "revId": "bfb769d0ad6367c8b6ffbb8314b2f521f56cdc77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_d7251c0b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuff.idl",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T21:52:16Z",
+      "side": 1,
+      "message": "Why is there a number of ticks *and* a duration? This is where you get your inconsistencies and have to rely on calls to fixHAM() (which is a hacky kludge, try not to do that...)",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "bfb769d0ad6367c8b6ffbb8314b2f521f56cdc77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_5afff101",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T21:52:16Z",
+      "side": 1,
+      "message": "Why do you even have this method if it doesn\u0027t do anything?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 1
+      },
+      "revId": "bfb769d0ad6367c8b6ffbb8314b2f521f56cdc77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_b702e809",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T21:52:16Z",
+      "side": 1,
+      "message": "Don\u0027t force false here. In fact, I would force true here and use the attribute modifiers to do the work for you.",
+      "range": {
+        "startLine": 21,
+        "startChar": 31,
+        "endLine": 21,
+        "endChar": 36
+      },
+      "revId": "bfb769d0ad6367c8b6ffbb8314b2f521f56cdc77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_1a09792c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T21:52:16Z",
+      "side": 1,
+      "message": "Your tick immediately adds some of the HAM that you just subtracted. Don\u0027t do that, instead just schedule the next tick here.",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 14
+      },
+      "revId": "bfb769d0ad6367c8b6ffbb8314b2f521f56cdc77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_7a043515",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T21:52:16Z",
+      "side": 1,
+      "message": "Don\u0027t force false here. In fact, I would force true here and use the attribute modifiers to do the work for you.",
+      "range": {
+        "startLine": 29,
+        "startChar": 33,
+        "endLine": 29,
+        "endChar": 38
+      },
+      "revId": "bfb769d0ad6367c8b6ffbb8314b2f521f56cdc77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_f708602f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T21:52:16Z",
+      "side": 1,
+      "message": "This is a complete misuse of fixHAM(). This function will remove powerboost and should *only* be called in loadFromDatabase() (or similar functions). Do not rely on this in normal game logic. That being said, you need to add logic to handle channel force inside fixHAM() similar to how powerboost is handled.",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 33
+      },
+      "revId": "bfb769d0ad6367c8b6ffbb8314b2f521f56cdc77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9a1ca96c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T21:52:16Z",
+      "side": 1,
+      "message": "You need to use the attributeModifiers vector here. It\u0027s a bit special since the modifiers will change every 8 seconds, but that guarantees that when the buff gets removed that the attributes get reset properly. What you need to do is calculate the amount of ham to heal by using the fact that you want to linearly increase the HAM over a period of duration (mod \u003d getTimeLeft()/tickLength; healAmount \u003d MAX(0, -attr/mod); \u003c--- this ensures that your assumption that attr is negative holds true). You do this for each attribute in HAM (you can calculate mod once, obviously), then you modify the attribute in the attributeModifiers vector and heal by that amount. when deactivate gets called (and you force removeModifiers to be true), it will fix the HAM for you with whatever is left over.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 71
+      },
+      "revId": "bfb769d0ad6367c8b6ffbb8314b2f521f56cdc77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_fa0fe52c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T21:52:16Z",
+      "side": 1,
+      "message": "Store the event as a reference in the buff. You\u0027ve got a memory leak here.",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 108
+      },
+      "revId": "bfb769d0ad6367c8b6ffbb8314b2f521f56cdc77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_97056416",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T21:52:16Z",
+      "side": 1,
+      "message": "This is why you should not have a duration and a number of ticks. Just use the duration and calculate the amount you need to heal based on the passed time. The way you currently have it, you cannot guarantee that the timing lines up with the buff, so when you go to deactivate the buff too early, you are relying on fixHAM to do something it\u0027s not supposed to be doing.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 2
+      },
+      "revId": "bfb769d0ad6367c8b6ffbb8314b2f521f56cdc77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_77369005",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffTickEvent.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T21:52:16Z",
+      "side": 1,
+      "message": "This should be stored as a ChannelForceBuff weakref",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 40
+      },
+      "revId": "bfb769d0ad6367c8b6ffbb8314b2f521f56cdc77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_ba196d7b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffTickEvent.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T21:52:16Z",
+      "side": 1,
+      "message": "You lock the buff here, then lock the creo in doHamTick, then xlock the buff against the creo in the buff. Fix that.",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 24
+      },
+      "revId": "bfb769d0ad6367c8b6ffbb8314b2f521f56cdc77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
