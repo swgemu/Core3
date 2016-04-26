@@ -12,11 +12,9 @@ public:
 
 	ForceArmor2Command(const String& name, ZoneProcessServer* server)
 		: JediQueueCommand(name, server) {
-
 		buffCRC = BuffCRC::JEDI_FORCE_ARMOR_2;
 
 		overrideableCRCs.add(BuffCRC::JEDI_FORCE_ARMOR_1);
-		overrideableCRCs.add(BuffCRC::JEDI_FORCE_ARMOR_2);
 
 		singleUseEventTypes.add(ObserverEventType::FORCEBUFFHIT);
 
@@ -24,7 +22,11 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-		return doJediSelfBuffCommand(creature);
+		if (creature->hasBuff(BuffCRC::JEDI_FORCE_ARMOR_2)) {
+			creature->removeBuff(BuffCRC::JEDI_FORCE_ARMOR_2);
+			return SUCCESS;
+		} else
+			return doJediSelfBuffCommand(creature);
 	}
 
 	void handleBuff(SceneObject* creature, ManagedObject* object, int64 param) {

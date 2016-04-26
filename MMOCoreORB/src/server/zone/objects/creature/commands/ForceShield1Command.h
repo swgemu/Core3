@@ -16,8 +16,6 @@ public:
 
 		blockingCRCs.add(BuffCRC::JEDI_FORCE_SHIELD_2);
 
-		overrideableCRCs.add(BuffCRC::JEDI_FORCE_SHIELD_1);
-
 		singleUseEventTypes.add(ObserverEventType::FORCEBUFFHIT);
 
 		skillMods.put("force_shield", 25);
@@ -25,7 +23,11 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-		return doJediSelfBuffCommand(creature);
+		if (creature->hasBuff(BuffCRC::JEDI_FORCE_SHIELD_1)) {
+			creature->removeBuff(BuffCRC::JEDI_FORCE_SHIELD_1);
+			return SUCCESS;
+		} else
+			return doJediSelfBuffCommand(creature);
 	}
 
 	void handleBuff(SceneObject* creature, ManagedObject* object, int64 param) {
