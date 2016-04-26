@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_7a875562",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuff.idl",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T23:43:40Z",
+      "side": 1,
+      "message": "since you made this transient and didn\u0027t initialize it in initializeTransientMembers, if the server goes down, you stop ticking HAM up and will just get all of it back when the buff wears off. I like that this is transient, but initialize it in initializeTransientMembers().",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "d3e27d04274d6c2e702aa7518e520f0fe471bae0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_5a829153",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuff.idl",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T23:43:40Z",
+      "side": 1,
+      "message": "remove this from the ctor, it\u0027s unused.",
+      "range": {
+        "startLine": 24,
+        "startChar": 68,
+        "endLine": 24,
+        "endChar": 79
+      },
+      "revId": "d3e27d04274d6c2e702aa7518e520f0fe471bae0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_ba5e4d11",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T23:43:40Z",
+      "side": 1,
+      "message": "make sure this is NULL before creating a new one. If it\u0027s not NULL, then you need to unschedule it.",
+      "range": {
+        "startLine": 13,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 84
+      },
+      "revId": "d3e27d04274d6c2e702aa7518e520f0fe471bae0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_5a9b71c9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T23:43:40Z",
+      "side": 1,
+      "message": "since you never need to access this task outside of the buff/task, you don\u0027t need to use the pending task apparatus to track it.",
+      "range": {
+        "startLine": 14,
+        "startChar": 2,
+        "endLine": 14,
+        "endChar": 72
+      },
+      "revId": "d3e27d04274d6c2e702aa7518e520f0fe471bae0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_7aa0b5f4",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T23:43:40Z",
+      "side": 1,
+      "message": "unschedule instead of using the pending task apparatus",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 21
+      },
+      "revId": "d3e27d04274d6c2e702aa7518e520f0fe471bae0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_da954189",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T23:43:40Z",
+      "side": 1,
+      "message": "you aren\u0027t actually using this anymore, but you should be (after you redefine it)",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "d3e27d04274d6c2e702aa7518e520f0fe471bae0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_3a81dd4a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T23:43:40Z",
+      "side": 1,
+      "message": "20? You\u0027re assuming something about duration here. Don\u0027t assume.",
+      "range": {
+        "startLine": 37,
+        "startChar": 53,
+        "endLine": 37,
+        "endChar": 55
+      },
+      "revId": "d3e27d04274d6c2e702aa7518e520f0fe471bae0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_1a7c1972",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T23:43:40Z",
+      "side": 1,
+      "message": "I\u0027m confused here. Why are you making this a negative number? duration is necessarily positive, so healAmount will always be 0.",
+      "range": {
+        "startLine": 37,
+        "startChar": 33,
+        "endLine": 37,
+        "endChar": 50
+      },
+      "revId": "d3e27d04274d6c2e702aa7518e520f0fe471bae0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_1aa5f903",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T23:43:40Z",
+      "side": 1,
+      "message": "This deactivates the entire buff if one mod gets fully healed. Also, you aren\u0027t modifying attributeModifiers anywhere, so when you deactivate, it will overheal you. You need to addMaxHAM and then change the value stored in attributeModifiers.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 3
+      },
+      "revId": "d3e27d04274d6c2e702aa7518e520f0fe471bae0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_daaea1e7",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T23:43:40Z",
+      "side": 1,
+      "message": "There is no reason to do this since you are storing the task in the buff.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 138
+      },
+      "revId": "d3e27d04274d6c2e702aa7518e520f0fe471bae0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_faab65d4",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T23:43:40Z",
+      "side": 1,
+      "message": "There should be an else here to create a new tick if it is null",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "d3e27d04274d6c2e702aa7518e520f0fe471bae0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9ab8292c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffTickEvent.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T23:43:40Z",
+      "side": 1,
+      "message": "now creo never gets locked in doHamTick(), and it needs to be.",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "d3e27d04274d6c2e702aa7518e520f0fe471bae0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_bab5ed32",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ChannelForceCommand.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-26T23:43:40Z",
+      "side": 1,
+      "message": "You can remove this locker.",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 22
+      },
+      "revId": "d3e27d04274d6c2e702aa7518e520f0fe471bae0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
