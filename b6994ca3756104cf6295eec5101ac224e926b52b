@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_faca856d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuff.idl",
+        "patchSetId": 14
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-27T21:00:56Z",
+      "side": 1,
+      "message": "You are storing a weakref to creo in the Buff object already. Don\u0027t store a strong ref as well.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 58
+      },
+      "revId": "b6994ca3756104cf6295eec5101ac224e926b52b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_dacd4188",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuff.idl",
+        "patchSetId": 14
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-27T21:00:56Z",
+      "side": 1,
+      "message": "First, don\u0027t do this. Second, you\u0027d still need to set this if it\u0027s NULL.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "b6994ca3756104cf6295eec5101ac224e926b52b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_1ab419f1",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-27T21:00:56Z",
+      "side": 1,
+      "message": "You still need to pass applyModifiers here instead of true.",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 37
+      },
+      "revId": "b6994ca3756104cf6295eec5101ac224e926b52b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_3ab9dde9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-27T21:00:56Z",
+      "side": 1,
+      "message": "You still need to pass removeModifiers here instead of true.",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 38
+      },
+      "revId": "b6994ca3756104cf6295eec5101ac224e926b52b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9ac7c964",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-27T21:00:56Z",
+      "side": 1,
+      "message": "This is all wrong. You don\u0027t lock an object and then crosslock it to something. The point of adding @preLocked to doHamTick was to make sure that this buff was locked coming into the call. Remove the first locker.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 74
+      },
+      "revId": "b6994ca3756104cf6295eec5101ac224e926b52b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_bac40d60",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-27T21:00:56Z",
+      "side": 1,
+      "message": "This is where you should be getting the creature strong ref from the weakref, and null checking it. BEFORE you crosslock. Look in your task code (in this very patch) for an example of what you should be doing.",
+      "range": {
+        "startLine": 47,
+        "startChar": 20,
+        "endLine": 47,
+        "endChar": 34
+      },
+      "revId": "b6994ca3756104cf6295eec5101ac224e926b52b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
