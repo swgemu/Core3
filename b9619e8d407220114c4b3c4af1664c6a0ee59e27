@@ -2,6 +2,236 @@
   "comments": [
     {
       "key": {
+        "uuid": "9a6a9dd7_5a2cd14a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuff.idl",
+        "patchSetId": 13
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-27T02:58:44Z",
+      "side": 1,
+      "message": "You are expecting buff to be locked coming into this. use @preLocked",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "b9619e8d407220114c4b3c4af1664c6a0ee59e27",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_ba688d88",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-27T02:58:44Z",
+      "side": 1,
+      "message": "on second thought, you should pass applyModifiers here",
+      "range": {
+        "startLine": 19,
+        "startChar": 31,
+        "endLine": 19,
+        "endChar": 35
+      },
+      "revId": "b9619e8d407220114c4b3c4af1664c6a0ee59e27",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9a54a9cb",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-27T02:58:44Z",
+      "side": 1,
+      "message": "you need to unschedule the event if it wasn\u0027t NULL.",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 3
+      },
+      "revId": "b9619e8d407220114c4b3c4af1664c6a0ee59e27",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_ba516dda",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-27T02:58:44Z",
+      "side": 1,
+      "message": "why check for null creo here? you never use it.",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 29
+      },
+      "revId": "b9619e8d407220114c4b3c4af1664c6a0ee59e27",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_5a05b1c0",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-27T02:58:44Z",
+      "side": 1,
+      "message": "on second thought, you should pass removeModifiers here",
+      "range": {
+        "startLine": 31,
+        "startChar": 33,
+        "endLine": 31,
+        "endChar": 37
+      },
+      "revId": "b9619e8d407220114c4b3c4af1664c6a0ee59e27",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_3a147df4",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-27T02:58:44Z",
+      "side": 1,
+      "message": "Why are you using creature.get() all over the place -- you need to get the weakref ONCE, store it in a ref or managedref, and check it for NULL. Also, you should be locking at the last possible second (ie, just before you actually need to set or read something from creature).",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 31
+      },
+      "revId": "b9619e8d407220114c4b3c4af1664c6a0ee59e27",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_da71c178",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-27T02:58:44Z",
+      "side": 1,
+      "message": "This is still wrong. You need to calculate the healAmountPerTick. How you calculate this depends on how sure you are about your tick length. If you assume the tick length is fixed and immutable, just calculate the tick heal amount on instantiation and make sure it doesn\u0027t overheal. This is probably safe.",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 33
+      },
+      "revId": "b9619e8d407220114c4b3c4af1664c6a0ee59e27",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_7a0af5d3",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-27T02:58:44Z",
+      "side": 1,
+      "message": "you will use the precalculated value here, but within a MAX(-modifier, precalcValue) to ensure that you can never go positive.",
+      "range": {
+        "startLine": 51,
+        "startChar": 6,
+        "endLine": 51,
+        "endChar": 16
+      },
+      "revId": "b9619e8d407220114c4b3c4af1664c6a0ee59e27",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9a6b4985",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-27T02:58:44Z",
+      "side": 1,
+      "message": "The main problem with this is that you should be checking that you don\u0027t go over BEFORE you do anything with the healAmount. Furthermore, it\u0027s fine if the task keeps getting scheduled while the buff is active, there shouldn\u0027t be (much of a) mismatch between the ending times, and on the last execution (if there is one) it will just not do anything because you will be checking to make sure it\u0027s valid.",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 191
+      },
+      "revId": "b9619e8d407220114c4b3c4af1664c6a0ee59e27",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_fa6e0596",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-27T02:58:44Z",
+      "side": 1,
+      "message": "don\u0027t manually deactivate this. The buff system will do that for you.",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 19
+      },
+      "revId": "b9619e8d407220114c4b3c4af1664c6a0ee59e27",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a6a9dd7_1a41790b",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
         "patchSetId": 13
@@ -18,6 +248,29 @@
         "startChar": 0,
         "endLine": 58,
         "endChar": 55
+      },
+      "revId": "b9619e8d407220114c4b3c4af1664c6a0ee59e27",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_baff2daa",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffTickEvent.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-27T02:58:44Z",
+      "side": 1,
+      "message": "You lock buff here, and lock creo inside the doHamTick call. You need to xlock there. You also need to strictly regulate what is locked and what needs to be locked going into doHamTick, so use @preLocked directives.",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 22
       },
       "revId": "b9619e8d407220114c4b3c4af1664c6a0ee59e27",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
