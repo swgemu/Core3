@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_1a41790b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1520
+      },
+      "writtenOn": "2016-04-27T02:01:40Z",
+      "side": 1,
+      "message": "Added a return and seperated the modifiervalue getter, as it would restore the first attribute to max only, instead of action and mind too.\n\nAlso return is needed since if it\u0027s the last tick, the cfBuffEvent will be NULL when deactivating, so it will result in server instability.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 55
+      },
+      "revId": "b9619e8d407220114c4b3c4af1664c6a0ee59e27",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
