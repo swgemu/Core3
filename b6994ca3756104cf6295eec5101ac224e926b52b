@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "9a6a9dd7_7aa675c3",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuff.idl",
+        "patchSetId": 14
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-27T21:01:52Z",
+      "side": 1,
+      "message": "Third, NULL isn\u0027t defined in idl.",
+      "parentUuid": "9a6a9dd7_dacd4188",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "b6994ca3756104cf6295eec5101ac224e926b52b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a6a9dd7_1ab419f1",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
         "patchSetId": 14
