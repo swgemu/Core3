@@ -140,6 +140,30 @@
     },
     {
       "key": {
+        "uuid": "9a6a9dd7_1ae739e6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-29T23:30:35Z",
+      "side": 1,
+      "message": "Addendum... this would be the correct amount if you pre-calculate it. The healAmount should not be changing per tick.",
+      "parentUuid": "9a6a9dd7_fac60549",
+      "range": {
+        "startLine": 51,
+        "startChar": 32,
+        "endLine": 51,
+        "endChar": 45
+      },
+      "revId": "c2dbce166cf410fe432c3fd8143aaaaf0adcaaac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a6a9dd7_9ac34938",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
         "patchSetId": 16
