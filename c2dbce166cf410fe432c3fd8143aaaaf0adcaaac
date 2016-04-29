@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_bac08d2b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuff.idl",
+        "patchSetId": 16
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-29T23:22:53Z",
+      "side": 1,
+      "message": "This should be a static const since it never changes, and should be all uppercase to signify that. ie, static final int FORCE_CHANNEL_TICK_SECONDS \u003d 8;",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "c2dbce166cf410fe432c3fd8143aaaaf0adcaaac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_1ab099dc",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuff.idl",
+        "patchSetId": 16
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-29T23:22:53Z",
+      "side": 1,
+      "message": "Not sure why you are storing a copy of the attribute mods, and also clashing with the name.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 46
+      },
+      "revId": "c2dbce166cf410fe432c3fd8143aaaaf0adcaaac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_7abbd5c4",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuff.idl",
+        "patchSetId": 16
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-29T23:22:53Z",
+      "side": 1,
+      "message": "This is mislabled. This is actually secondsToUpdate if you define the number of ticks to be 20. Furthermore, this should also be calculated in activate() using the secondsToUpdate value using the formula `numberOfTicks \u003d duration/secondsToUpdate`",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "c2dbce166cf410fe432c3fd8143aaaaf0adcaaac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_3ab55dcd",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-29T23:22:53Z",
+      "side": 1,
+      "message": "What\u0027s the point of this?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 42
+      },
+      "revId": "c2dbce166cf410fe432c3fd8143aaaaf0adcaaac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_dac9c15b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-29T23:22:53Z",
+      "side": 1,
+      "message": "why did you change these?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 56
+      },
+      "revId": "c2dbce166cf410fe432c3fd8143aaaaf0adcaaac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_fac60549",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-29T23:22:53Z",
+      "side": 1,
+      "message": "This *would* be the correct formula if you had calculated the number of ticks correctly. As it is now, you are actually dividing by the seconds to update.",
+      "range": {
+        "startLine": 51,
+        "startChar": 32,
+        "endLine": 51,
+        "endChar": 45
+      },
+      "revId": "c2dbce166cf410fe432c3fd8143aaaaf0adcaaac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9ac34938",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-04-29T23:22:53Z",
+      "side": 1,
+      "message": "Why did you change this?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 87
+      },
+      "revId": "c2dbce166cf410fe432c3fd8143aaaaf0adcaaac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
