@@ -102,6 +102,7 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
 core3_IDLS =	autogen/server/zone/managers/gcw/GCWBaseShutdownObserver.cpp \
+				autogen/server/zone/objects/creature/buffs/ChannelForceBuff.cpp \
 				autogen/server/zone/objects/tangible/eventperk/ShuttleBeacon.cpp \
 				autogen/server/utils/LambdaObserver.cpp \
 				autogen/server/zone/objects/tangible/misc/FsCraftingComponentObject.cpp \
@@ -680,6 +681,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/buffs/SquadLeaderBuffObserverImplementation.cpp \
 		server/zone/objects/creature/buffs/PrivateSkillMultiplierBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/BuffList.cpp \
+		server/zone/objects/creature/buffs/ChannelForceBuffImplementation.cpp \
 		server/zone/objects/tangible/components/vendor/VendorContainerComponent.cpp \
 		server/zone/objects/tangible/components/vendor/VendorDataComponent.cpp \
 		server/zone/objects/tangible/components/vendor/VendorMenuComponent.cpp \
