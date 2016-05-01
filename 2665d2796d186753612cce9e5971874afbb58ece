@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_fa504560",
+        "filename": "MMOCoreORB/src/server/login/account/Account.idl",
+        "patchSetId": 21
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2016-05-01T12:20:34Z",
+      "side": 1,
+      "message": "@reference",
+      "revId": "2665d2796d186753612cce9e5971874afbb58ece",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9a4d89c7",
+        "filename": "MMOCoreORB/src/server/login/account/GalaxyAccountInfo.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2016-05-01T12:20:34Z",
+      "side": 1,
+      "message": "auto\u0026 so it doesnt copy all the elements",
+      "revId": "2665d2796d186753612cce9e5971874afbb58ece",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_ba4acdaa",
+        "filename": "MMOCoreORB/src/server/login/account/GalaxyAccountInfoMap.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2016-05-01T12:20:34Z",
+      "side": 1,
+      "message": "auto\u0026 to avoid copying",
+      "revId": "2665d2796d186753612cce9e5971874afbb58ece",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
