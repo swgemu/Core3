@@ -184,6 +184,13 @@ void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 er
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr);
 		break;
+	case INSUFFICIENTHAM:
+		prm.setStringId("cbt_spam", "pool_drain_fail_single");
+		creature->sendSystemMessage(prm);
+
+		if (addToQueue)
+			creature->clearQueueAction(actioncntr);
+		break;
 	default:
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr);
