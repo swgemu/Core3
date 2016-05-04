@@ -76,7 +76,9 @@ public:
 		int duration = ChannelForceBuff::FORCE_CHANNEL_TICK_SECONDS * 20;
 		if (buff == NULL) {
 			buff = new ChannelForceBuff(creature, buffCRC, duration);
-
+			
+			Locker locker(buff);
+			
 			buff->setAttributeModifier(CreatureAttribute::HEALTH, -forceBonus);
 			buff->setAttributeModifier(CreatureAttribute::ACTION, -forceBonus);
 			buff->setAttributeModifier(CreatureAttribute::MIND, -forceBonus);
