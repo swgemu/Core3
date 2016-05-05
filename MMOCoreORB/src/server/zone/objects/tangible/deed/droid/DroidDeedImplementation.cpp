@@ -374,6 +374,8 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 					data->initialize(droid);
 			}
 		}
+		
+		modules.removeAll();
 
 		// Create our transient modules based on the stored physical components
 		droid->initDroidModules();
