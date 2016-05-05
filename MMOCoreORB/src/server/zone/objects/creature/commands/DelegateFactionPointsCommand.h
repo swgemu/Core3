@@ -23,9 +23,14 @@ public:
 		Locker clocker(targetPlayer, creature);
 
 		uint32 currentFaction = creature->getFaction();
+		ManagedReference<PlayerObject*> delegator = creature->getPlayerObject();
+		int delStatus = delegator->getFactionStatus();
 
 		if (currentFaction == 0) {
-			creature->sendSystemMessage("@base_player:must_be_declared");
+			creature->sendSystemMessage("@base_player:must_be_declared"); // You must be declared to a faction before you may use that command.
+			return GENERALERROR;
+		} else if (!delStatus == 2) {
+			creature->sendSystemMessage("@pet_menu:not_declared"); // You must be Declared and Overt to use that.
 			return GENERALERROR;
 		}
 
@@ -49,11 +54,9 @@ public:
 		uint32 charge = ceil((float)tipAmount * ratio);
 
 		if (ownerPlayerObject->getFactionStanding(faction) < charge + 200) {
-			//not sure of the message
 			StringIdChatParameter param("faction_recruiter", "not_enough_standing_spend");
 			param.setDI(200);
 			param.setTO(faction);
-
 			creature->sendSystemMessage(param);
 			return GENERALERROR;
 		}
@@ -80,8 +83,8 @@ public:
 		if (target == 0)
 			return INVALIDTARGET;
 
-		//The player has SOMETHING targetted.
-		//Lets first check if its a player, cause if it is we can skip some stuff.
+		//The player has SOMETHING targeted.
+		//Lets first check if it's a player, cause if it is we can skip some stuff.
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
 		if (object == NULL)
@@ -102,9 +105,14 @@ public:
 		PlayerObject* ownerPlayerObject = creature->getPlayerObject();
 
 		uint32 currentFaction = creature->getFaction();
+		ManagedReference<PlayerObject*> delegator = creature->getPlayerObject();
+		int delStatus = delegator->getFactionStatus();
 
 		if (currentFaction == 0) {
-			creature->sendSystemMessage("@base_player:must_be_declared");
+			creature->sendSystemMessage("@base_player:must_be_declared"); // You must be declared to a faction before you may use that command.
+			return GENERALERROR;
+		} else if (!delStatus == 2) {
+			creature->sendSystemMessage("@pet_menu:not_declared"); // You must be Declared and Overt to use that.
 			return GENERALERROR;
 		}
 
