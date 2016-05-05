@@ -93,7 +93,11 @@ public:
 									   buff->getAttributeModifierValue(CreatureAttribute::ACTION)-forceBonus);
 			buff->setAttributeModifier(CreatureAttribute::MIND,
 									   buff->getAttributeModifierValue(CreatureAttribute::MIND)-forceBonus);
-
+			
+			creature->addMaxHAM(CreatureAttribute::HEALTH, -forceBonus);
+			creature->addMaxHAM(CreatureAttribute::ACTION, -forceBonus);
+			creature->addMaxHAM(CreatureAttribute::MIND, -forceBonus);
+			
 			creature->renewBuff(buffCRC, duration + buff->getTimeLeft());
 			Reference<ChannelForceBuff*> channelBuff = buff.castTo<ChannelForceBuff*>();
 			if (channelBuff != NULL)
