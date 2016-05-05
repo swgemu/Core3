@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_1d573304",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DelegateFactionPointsCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-05-05T22:32:17Z",
+      "side": 1,
+      "message": "You need to check to make sure this is a player first, and then NULL check delegator.",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 74
+      },
+      "revId": "875d465add219ce59a9e30b9a87c2f8d2455508d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9d4a6354",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DelegateFactionPointsCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-05-05T22:32:17Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure this should be the same message as if you don\u0027t have a faction. The pet_menu message is for when you try to pull out a faction pet while not special forces.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 104
+      },
+      "revId": "875d465add219ce59a9e30b9a87c2f8d2455508d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_bd47274b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DelegateFactionPointsCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1525
+      },
+      "writtenOn": "2016-05-05T22:32:17Z",
+      "side": 1,
+      "message": "Why is all this code duplicated? Remove one or the other.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 23
+      },
+      "revId": "875d465add219ce59a9e30b9a87c2f8d2455508d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
