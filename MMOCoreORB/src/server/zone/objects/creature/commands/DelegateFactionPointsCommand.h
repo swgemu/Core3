@@ -24,11 +24,6 @@ public:
 
 		uint32 currentFaction = creature->getFaction();
 
-		if (currentFaction == 0) {
-			creature->sendSystemMessage("@base_player:must_be_declared");
-			return GENERALERROR;
-		}
-
 		String faction;
 
 		if (creature->isImperial()) {
@@ -36,30 +31,28 @@ public:
 		} else
 			faction = "rebel";
 
-		PlayerObject* ownerPlayerObject = creature->getPlayerObject();
+		PlayerObject* delegator = creature->getPlayerObject();
 		PlayerObject* targetPlayerObject = targetPlayer->getPlayerObject();
 
 		int delegateRatioFrom = FactionManager::instance()->getRankDelegateRatioFrom(creature->getFactionRank());
 		int delegateRatioTo = FactionManager::instance()->getRankDelegateRatioTo(creature->getFactionRank());
 
-		int currentFactionPoints = ownerPlayerObject->getFactionStanding(faction);
+		int currentFactionPoints = delegator->getFactionStanding(faction);
 
 		float ratio = (float) delegateRatioFrom / (float)delegateRatioTo;
 
 		uint32 charge = ceil((float)tipAmount * ratio);
 
-		if (ownerPlayerObject->getFactionStanding(faction) < charge + 200) {
-			//not sure of the message
+		if (delegator->getFactionStanding(faction) < charge + 200) {
 			StringIdChatParameter param("faction_recruiter", "not_enough_standing_spend");
-			param.setDI(200);
+			param.setDI(charge + 200);
 			param.setTO(faction);
-
 			creature->sendSystemMessage(param);
 			return GENERALERROR;
 		}
 
 		targetPlayerObject->increaseFactionStanding(faction, tipAmount);
-		ownerPlayerObject->decreaseFactionStanding(faction, charge);
+		delegator->decreaseFactionStanding(faction, charge);
 
 		return SUCCESS;
 	}
@@ -80,8 +73,8 @@ public:
 		if (target == 0)
 			return INVALIDTARGET;
 
-		//The player has SOMETHING targetted.
-		//Lets first check if its a player, cause if it is we can skip some stuff.
+		//The player has SOMETHING targeted.
+		//Lets first check if it's a player, cause if it is we can skip some stuff.
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
 		if (object == NULL)
@@ -94,17 +87,19 @@ public:
 
 		Locker clocker(targetCreature, creature);
 
+		ManagedReference<PlayerObject*> delegator = creature->getPlayerObject();
 		PlayerObject* targetPlayerObject = targetCreature->getPlayerObject();
 
 		if (targetPlayerObject == NULL)
 			return INVALIDTARGET;
-
-		PlayerObject* ownerPlayerObject = creature->getPlayerObject();
+		else if (delegator == NULL)
+			return GENERALERROR;
 
 		uint32 currentFaction = creature->getFaction();
+		int delStatus = delegator->getFactionStatus();
 
-		if (currentFaction == 0) {
-			creature->sendSystemMessage("@base_player:must_be_declared");
+		if (currentFaction == 0 || !delStatus == 2) {
+			creature->sendSystemMessage("@base_player:must_be_declared"); // You must be declared to a faction before you may use that command.
 			return GENERALERROR;
 		}
 
@@ -118,7 +113,7 @@ public:
 		int delegateRatioFrom = FactionManager::instance()->getRankDelegateRatioFrom(creature->getFactionRank());
 		int delegateRatioTo = FactionManager::instance()->getRankDelegateRatioTo(creature->getFactionRank());
 
-		int currentFactionPoints = ownerPlayerObject->getFactionStanding(faction);
+		int currentFactionPoints = delegator->getFactionStanding(faction);
 
 		if (currentFactionPoints < 200) {
 			StringIdChatParameter param("faction_recruiter", "not_enough_standing_spend");
@@ -133,13 +128,13 @@ public:
 			ManagedReference<SuiTransferBox*> sui = new SuiTransferBox(creature, SuiWindowType::DELEGATE_TRANSFER);
 			sui->setCallback(new DelegateSuiCallback(server->getZoneServer()));
 			sui->setPromptTitle("@player_structure:select_amount"); //Select Amount
-			sui->setPromptText("Current faction points:" + String::valueOf(ownerPlayerObject->getFactionStanding(faction)));
+			sui->setPromptText("Current faction points:" + String::valueOf(delegator->getFactionStanding(faction)));
 			sui->addFrom("Total amount", String::valueOf(currentFactionPoints), String::valueOf(currentFactionPoints), String::valueOf(delegateRatioFrom));
 			sui->addTo("Delegate amount", "0", "0", String::valueOf(delegateRatioTo));
 			sui->setUsingObject(targetCreature);
 			sui->setForceCloseDistance(15.f);
 
-			ownerPlayerObject->addSuiBox(sui);
+			delegator->addSuiBox(sui);
 			creature->sendMessage(sui->generateMessage());
 
 			return SUCCESS;
