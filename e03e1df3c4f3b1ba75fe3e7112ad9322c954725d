@@ -1,0 +1,718 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_3abb1d74",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/tour_aryon_conv.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "This screen is the same as hello_no_election and isn\u0027t used anywhere. Remove it.",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9a57c926",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/tour_aryon_conv.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "This screen is the same as have_evidence and is never used. Remove it.",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_fa5a854f",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/tour_aryon_conv.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "This response makes no sense here.",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_da2461c8",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/tour_aryon_conv.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "Please add a comment with the dialog text",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_3a40fd55",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/tour_aryon_conv.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "You have the wrong dialog text in the comment",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9ae6e943",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "You moved this to the wrong place. It will never be true now given the check on line 24. This should be an elseif of the same depth as line 24.",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_dadc6177",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questn_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "check quest \u003d\u003d \"\" instead",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_fad92584",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questn_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "When I said to use objectName instead, I meant the local objectName that you declare above (that already had the template path).",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_3af8fde4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "When I said to use objectName instead, I meant the local objectName that you declare above (which was already getting the template path).",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_bae3ad32",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/hutt_informant_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "You don\u0027t use this, remove it.",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_1acad9a1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_contact_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "There is no hDisk. You need to store the the object you get from the inventory into a local called hDisk, nil check hDisk, and then this and the following line are fine.",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_3acf9db2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_contact_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "you should get and nil check pGhost before you destroy the disk.",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_dac30189",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_contact_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "this return is unnecessary",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_fac0457e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_contact_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_1a0f39e3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/seans_historian_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "You don\u0027t use this, remove it.",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_daf8e1c6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/seans_historian_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_faf5a5cb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/seans_historian_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_3a2b1d32",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/seans_historian_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be a deleteScreenPlayData call?",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9a0269b3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/seans_historian_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_1a265969",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/seans_historian_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_ba8f2dcc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/stone_merchant_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "You should add local strings for templates of the two stones similar to what you do with the items in the questn and questp convo handlers. Use them throughout this handler.",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_5abcd16c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/stone_merchant_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "You can consolidate the 3 search for functions into one function that takes the template as an argument. Where you call this one you can just call the new function twice (one for each stone).",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_fa1cc515",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/stone_merchant_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "instead of reading this twice, read it once and store in a local var. Then you can nil check and value check the local.",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9a190925",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/stone_merchant_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "This should be a readScreenPlayData call like the carved stone above. Do the same thing here as I said to do with the carved stone.",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_7ac195e3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/stone_merchant_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "I would consolidate the 2 reward functions into one that takes a stone template as an arg.",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9a9269f5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/stone_merchant_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "This return is unnecessary.",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_da1f8108",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/stone_merchant_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "Your error mentions the wrong item",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_1ab6598b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/stone_merchant_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "This return is unnecessary.",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_ba164df0",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/stone_merchant_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_5ad37138",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/stone_merchant_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "elseif\n\nalso, this screenID isn\u0027t in the convo template nor do I see it getting added as an option target. Is this supposed to be returned_have_stones?",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_7ad8b553",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/stone_merchant_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_1addf942",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/stone_merchant_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_3ae23d04",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/stone_merchant_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_daaf812a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/tour_aryon_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_faacc537",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/tour_aryon_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_ba540d22",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/tour_aryon_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "You\u0027re overwriting the time you just got. Remove this.",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_5a31310a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/tour_aryon_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "Make this \u003c instead of \u003c\u003d",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_7a367505",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/tour_aryon_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "\u003c not \u003c\u003d",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_1a3bb9ec",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/tour_aryon_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "120960 should be 1209600",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9abd8905",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/museum_curator_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "Make this an elseif of the schematic_cost and schematic_purchased chain.",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_babacd08",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/museum_curator_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_5a37f1b0",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/museum_curator_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-05-06T06:53:02Z",
+      "side": 1,
+      "message": "elseif\n\nalso, check for back_for_testimony instead of NoRoomSeanTestimony_returned.",
+      "revId": "e03e1df3c4f3b1ba75fe3e7112ad9322c954725d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
