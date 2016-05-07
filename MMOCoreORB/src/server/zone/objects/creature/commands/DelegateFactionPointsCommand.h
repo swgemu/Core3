@@ -98,7 +98,7 @@ public:
 		uint32 currentFaction = creature->getFaction();
 		int delStatus = delegator->getFactionStatus();
 
-		if (currentFaction == 0 || !delStatus == 2) {
+		if (currentFaction == 0 || delStatus != 2) {
 			creature->sendSystemMessage("@base_player:must_be_declared"); // You must be declared to a faction before you may use that command.
 			return GENERALERROR;
 		}
