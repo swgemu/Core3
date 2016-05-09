@@ -21,22 +21,13 @@ gerak_vurtimis = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_commoner_fat_human_male_01.iff"},
-	lootGroups = {
-		{
-			groups = {
-				{group = "junk", chance = 4000000},
-				{group = "wearables_common", chance = 3000000},
-				{group = "loot_kit_parts", chance = 2000000},
-				{group = "tailor_components", chance = 1000000},
-			}
-		}
-	},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/townperson",
