@@ -133,7 +133,7 @@ void ForceShrineMenuComponent::findTrainerObject(CreatureObject* player, PlayerO
 	Vector3 coords;
 	String zoneName = "";
 
-	// This specifies the number of attempts at a retry. The first is min, second int is max amount of attemps.
+	// This specifies the number of attempts at a retry. The first is min, second int is max amount of attempts.
 	int counter = 0;
 	int retriesCounter = 40;
 
@@ -168,6 +168,10 @@ void ForceShrineMenuComponent::findTrainerObject(CreatureObject* player, PlayerO
 			continue;
 		}
 
+		if (!(trainerCreo->getOptionsBitmask() & OptionBitmask::CONVERSE)) {
+			continue;
+		}
+
 		ManagedReference<CityRegion*> city = trainerCreo->getCityRegion();
 
 		// Make sure it's not a player-city trainer.
@@ -182,5 +186,5 @@ void ForceShrineMenuComponent::findTrainerObject(CreatureObject* player, PlayerO
 	}
 
 	ghost->setTrainerCoordinates(coords);
-	ghost->setTrainerZoneName(zoneName); // For the Waypoint.
+	ghost->setTrainerZoneName(zoneName); // For the waypoint.
 }
