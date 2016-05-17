@@ -38,6 +38,7 @@ dolac_dark_jedi_knight = Creature:new {
 	},
 	weapons = {"dark_jedi_weapons_gen3"},
 	conversationTemplate = "",
+	reactionStf = "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:npc_breech_2",
 	attacks = merge(lightsabermaster,forcepowermaster)
 }
 

@@ -90,7 +90,7 @@ dolac_legasi_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "dark_jedi_master", planetName = "dathomir", npcName = "" }
+				{ npcTemplate = "dolac_dark_jedi_master", planetName = "dathomir", npcName = "" }
 			},
 			secondarySpawns =
 			{

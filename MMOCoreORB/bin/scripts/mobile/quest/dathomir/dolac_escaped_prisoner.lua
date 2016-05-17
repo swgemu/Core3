@@ -34,6 +34,7 @@ dolac_escaped_prisoner = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "dolac_legasi_mission_target_convotemplate",
+	reactionStf = "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:npc_breech_1",
 	attacks = brawlermaster
 }
 
