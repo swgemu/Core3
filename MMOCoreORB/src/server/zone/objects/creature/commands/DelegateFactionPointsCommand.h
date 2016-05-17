@@ -77,23 +77,38 @@ public:
 		//Lets first check if it's a player, cause if it is we can skip some stuff.
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL)
+		StringIdChatParameter params("@cmd_err:target_type_prose"); // Your target for %TO was invalid.
+		params.setTO("Delegate Faction");
+
+		if (object == NULL) {
+			creature->sendSystemMessage(params);
 			return INVALIDTARGET;
+		}
 
 		CreatureObject* targetCreature = dynamic_cast<CreatureObject*>(object.get());
 
-		if (targetCreature == NULL)
+		if (targetCreature == NULL) {
+			creature->sendSystemMessage(params);
 			return INVALIDTARGET;
+		}
 
 		Locker clocker(targetCreature, creature);
 
 		ManagedReference<PlayerObject*> delegator = creature->getPlayerObject();
 		PlayerObject* targetPlayerObject = targetCreature->getPlayerObject();
 
-		if (targetPlayerObject == NULL)
+		if (targetPlayerObject == NULL) {
+			creature->sendSystemMessage(params);
 			return INVALIDTARGET;
-		else if (delegator == NULL)
+		} else if (delegator == NULL)
 			return GENERALERROR;
+
+		uint64 delegatorID = creature->getObjectID();
+
+		if (targetCreature->getObjectID() == delegatorID) {
+			creature->sendSystemMessage("@error_message:target_self_disallowed"); // You cannot target yourself with this command.
+			return INVALIDTARGET;
+		}
 
 		uint32 currentFaction = creature->getFaction();
 		int delStatus = delegator->getFactionStatus();
