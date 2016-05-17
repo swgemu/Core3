@@ -6,7 +6,7 @@ mozo_bondog_missions =
 			{
 				{ npcTemplate = "mozo_escaped_tkm", planetName = "dathomir", npcName = "Escaped Prisoner" }
 			},
-			secondarySpawns = 
+			secondarySpawns =
 			{
 				{ npcTemplate = "nightsister_rancor_tamer", planetName = "dathomir", npcName = "" }
 			},
@@ -130,7 +130,7 @@ DolacLegasi = ThemeParkLogic:new {
 	npcMap = npcMapDolacLegasi,
 	className = "DolacLegasi",
 	screenPlayState = "dolac_legasi_quest",
-	distance = 800,
+	distance = 1000,
 	faction = FACTIONIMPERIAL
 }
 
