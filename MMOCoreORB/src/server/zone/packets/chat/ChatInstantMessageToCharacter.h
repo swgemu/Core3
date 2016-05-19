@@ -23,6 +23,7 @@ class ChatInstantMessageToCharacter : public MessageCallback {
 	String galaxy;
 	String name;
 	UnicodeString message;
+	String systemMessage;
 
 	uint32 sequence;
 public:
@@ -38,6 +39,7 @@ public:
 		pack->parseAscii(name);
 		
 		pack->parseUnicode(message);
+		pack->parseAscii(systemMessage);
 		
 		pack->shiftOffset(4);
 		
@@ -61,6 +63,10 @@ public:
 
 	inline String& getGame() {
 		return game;
+	}
+
+	inline String& getSystemMessage() {
+		return systemMessage;
 	}
 
 	inline UnicodeString& getMessage() {

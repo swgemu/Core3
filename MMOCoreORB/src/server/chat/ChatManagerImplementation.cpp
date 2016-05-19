@@ -1207,8 +1207,21 @@ void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantM
 
 	ManagedReference<CreatureObject*> receiver = getPlayer(fname);
 
-	if (receiver == NULL || !receiver->isOnline()) {
+	if (!receiver->isOnline()) {
 		BaseMessage* amsg = new ChatOnSendInstantMessage(sequence, IM_OFFLINE);
+		sender->sendMessage(amsg);
+
+		return;
+
+	}
+
+	if (receiver == NULL || !receiver->isPlayerCreature()) {
+		StringIdChatParameter noexist;
+		noexist.setStringId("@ui:im_recipient_invalid_prose"); // "There is no person by the name '%TU' in this Galaxy."
+		noexist.setTU(fname);
+		sender->sendSystemMessage(noexist);
+
+		BaseMessage* amsg = new ChatOnSendInstantMessage(sequence, FAIL);
 		sender->sendMessage(amsg);
 
 		return;
@@ -1224,6 +1237,11 @@ void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantM
 	UnicodeString text = message->getMessage();
 
 	if (text.length() > IM_MAXSIZE) {
+		StringIdChatParameter toolong;
+		toolong.setStringId("@ui:im_failed_insufficient_privs_prose"); // "Your message to %TU was not sent because it was too long."
+		toolong.setTU(fname);
+		sender->sendSystemMessage(toolong);
+
 		BaseMessage* amsg = new ChatOnSendInstantMessage(sequence, IM_TOOLONG);
 		sender->sendMessage(amsg);
 
@@ -1460,7 +1478,7 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
 
 	if (receiverObjectID == 0) {
-		error("unexistent name for persistent message");
+		error("nonexistent name for persistent message");
 		return;
 	}
 
@@ -1588,8 +1606,7 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 
 	PlayerObject* ghost = receiver->getPlayerObject();
 
-	if (ghost == NULL ||
-			(ghost->isIgnoring(sendername) && !godMode))
+	if (ghost == NULL || (ghost->isIgnoring(sendername) && !godMode))
 		return IM_IGNORED;
 
 	ManagedReference<PersistentMessage*> mail = new PersistentMessage();

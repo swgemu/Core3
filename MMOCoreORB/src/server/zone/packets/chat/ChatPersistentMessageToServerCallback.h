@@ -190,7 +190,7 @@ public:
 		ManagedReference<SceneObject*> receiver = server->getZoneServer()->getObject(receiverObjectID);
 		ManagedReference<PlayerObject*> sender = player->getPlayerObject();
 
-		if (receiver == NULL || !receiver->isPlayerCreature() || sender == NULL)
+		if (sender == NULL)
 			return 0;
 
 		bool godMode = false;
@@ -203,12 +203,23 @@ public:
 		CreatureObject* receiverPlayer = cast<CreatureObject*>(receiver.get());
 		ManagedReference<PlayerObject*> ghost = receiverPlayer->getPlayerObject();
 
-		if (ghost == NULL || (ghost->isIgnoring(player->getFirstName().toLowerCase()) && !godMode)) {
-			StringIdChatParameter err("ui_pm", "recipient_ignored_prose");
+		if (ghost == NULL || !ghost->isPlayerCreature()) {
+			StringIdChatParameter noname;
+			noname.setStringId("@ui_pm:recipient_invalid_prose"); // "Are you sure you have the correct name? There is no player named '%TT'."
+			noname.setTT(recipientName);
+			player->sendSystemMessage(noname);
+
+			return ChatManager::FAIL;
+
+		}
+
+		if (ghost->isIgnoring(player->getFirstName().toLowerCase()) && !godMode) {
+			StringIdChatParameter err("ui_pm", "recipient_ignored_prose"); // "Your Mail Message has not been delivered to '%TT' because the recipient has chosen not to receive mail from you at this time."
 			err.setTT(recipientName);
 			player->sendSystemMessage(err);
 
 			return ChatManager::IM_IGNORED;
+
 		}
 
 		return chatManager->sendMail(player->getFirstName(), header, body, recipientName, &stringIdParameters, &waypointParameters);
