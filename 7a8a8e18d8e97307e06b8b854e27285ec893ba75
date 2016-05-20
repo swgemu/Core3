@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_5da12ba8",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1210,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-05-20T00:22:07Z",
+      "side": 1,
+      "message": "You need to NULL check receiver before this call.",
+      "range": {
+        "startLine": 1210,
+        "startChar": 1,
+        "endLine": 1210,
+        "endChar": 29
+      },
+      "revId": "7a8a8e18d8e97307e06b8b854e27285ec893ba75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_bdc40760",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-05-20T00:22:07Z",
+      "side": 1,
+      "message": "This message should not be sent by the server. Return the proper error code in ChatOnSendInstantMessage instead.",
+      "range": {
+        "startLine": 1220,
+        "startChar": 2,
+        "endLine": 1220,
+        "endChar": 56
+      },
+      "revId": "7a8a8e18d8e97307e06b8b854e27285ec893ba75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_7da66fc3",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1243,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-05-20T00:22:07Z",
+      "side": 1,
+      "message": "This is not sent by the server either. This is sent by the client when the proper error code is returned in the OnSendIM packet. (Error #16). You need to add these as static definitions the same way \"IM_OFFLINE\" is defined.",
+      "range": {
+        "startLine": 1240,
+        "startChar": 2,
+        "endLine": 1243,
+        "endChar": 37
+      },
+      "revId": "7a8a8e18d8e97307e06b8b854e27285ec893ba75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_1dabb38a",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatInstantMessageToCharacter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-05-20T00:22:07Z",
+      "side": 1,
+      "message": "\"systemMessage\" should be a Unicode String. I\u0027m not sure what the purpose of adding this was though.",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 34
+      },
+      "revId": "7a8a8e18d8e97307e06b8b854e27285ec893ba75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_dd945b46",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatPersistentMessageToServerCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-05-20T00:22:07Z",
+      "side": 1,
+      "message": "\"getPlayerObject\" will always either return a valid Player or NULL.",
+      "range": {
+        "startLine": 206,
+        "startChar": 23,
+        "endLine": 206,
+        "endChar": 49
+      },
+      "revId": "7a8a8e18d8e97307e06b8b854e27285ec893ba75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_3db0f7f3",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatPersistentMessageToServerCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-05-20T00:22:07Z",
+      "side": 1,
+      "message": "Same as ChatOnSendInstantMessage. Return the proper error code in the packet instead of hard coding the string.",
+      "range": {
+        "startLine": 210,
+        "startChar": 3,
+        "endLine": 210,
+        "endChar": 37
+      },
+      "revId": "7a8a8e18d8e97307e06b8b854e27285ec893ba75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_fd911f53",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatPersistentMessageToServerCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-05-20T00:22:07Z",
+      "side": 1,
+      "message": "Same here. Return the proper error code. In this case it is 9.",
+      "range": {
+        "startLine": 217,
+        "startChar": 3,
+        "endLine": 217,
+        "endChar": 65
+      },
+      "revId": "7a8a8e18d8e97307e06b8b854e27285ec893ba75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
