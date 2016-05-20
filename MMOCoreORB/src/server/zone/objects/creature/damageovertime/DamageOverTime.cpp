@@ -140,19 +140,19 @@ uint32 DamageOverTime::initDot(CreatureObject* victim, CreatureObject* attacker)
 
 	switch(type) {
 	case CreatureState::BLEEDING:
-		absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_bleeding")));
+		absorptionMod = MAX(0, MIN(50, victim->getSkillMod("absorption_bleeding")));
 		nextTick.addMiliTime(20000);
 		break;
-	case CreatureState::POISONED:
-		absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_poison")));
+	case CreatureState::ONFIRE:
+		absorptionMod = MAX(0, MIN(50, victim->getSkillMod("absorption_fire")));
 		nextTick.addMiliTime(10000);
 		break;
-	case CreatureState::ONFIRE:
-		absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_fire")));
+	case CreatureState::POISONED:
+		absorptionMod = MAX(0, MIN(50, victim->getSkillMod("absorption_poison")));
 		nextTick.addMiliTime(10000);
 		break;
 	case CreatureState::DISEASED:
-		absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_disease")));
+		absorptionMod = MAX(0, MIN(50, victim->getSkillMod("absorption_disease")));
 		nextTick.addMiliTime(40000);
 		break;
 	case CommandEffect::FORCECHOKE:
@@ -177,7 +177,7 @@ uint32 DamageOverTime::doBleedingTick(CreatureObject* victim, CreatureObject* at
 		return 0;
 
 	uint32 attr = victim->getHAM(attribute);
-	int absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_bleeding")));
+	int absorptionMod = MAX(0, MIN(50, victim->getSkillMod("absorption_bleeding")));
 
 	// absorption reduces the strength of a dot by the given %.
 	int damage = (int)(strength * (1.f - absorptionMod / 100.f));
@@ -213,7 +213,7 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attack
 		return 0;
 
 	uint32 attr = victim->getHAM(attribute);
-	int absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_fire")));
+	int absorptionMod = MAX(0, MIN(50, victim->getSkillMod("absorption_fire")));
 
 	// absorption reduces the strength of a dot by the given %.
 	int damage = (int)(strength * (1.f - absorptionMod / 100.f));
@@ -267,7 +267,7 @@ uint32 DamageOverTime::doPoisonTick(CreatureObject* victim, CreatureObject* atta
 		return 0;
 
 	uint32 attr = victim->getHAM(attribute);
-	int absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_poison")));
+	int absorptionMod = MAX(0, MIN(50, victim->getSkillMod("absorption_poison")));
 
 	// absorption reduces the strength of a dot by the given %.
 	int damage = (int)(strength * (1.f - absorptionMod / 100.f));
@@ -300,7 +300,7 @@ uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim, CreatureObject* att
 	if (victim->isIncapacitated() && victim->isFeigningDeath() == false)
 		return 0;
 
-	int absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_disease")));
+	int absorptionMod = MAX(0, MIN(50, victim->getSkillMod("absorption_disease")));
 
 	// absorption reduces the strength of a dot by the given %.
 	// make sure that the CM dots modify the strength
