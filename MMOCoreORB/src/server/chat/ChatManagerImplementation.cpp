@@ -1207,8 +1207,27 @@ void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantM
 
 	ManagedReference<CreatureObject*> receiver = getPlayer(fname);
 
-	if (receiver == NULL || !receiver->isOnline()) {
+	uint64 receiverObjectID = server->getPlayerManager()->getObjectID(fname);
+
+	if (receiver == NULL || receiverObjectID == 0) {
+		StringIdChatParameter noexist;
+		noexist.setStringId("@ui:im_recipient_invalid_prose"); // "There is no person by the name '%TU' in this Galaxy."
+		noexist.setTU(fname);
+		sender->sendSystemMessage(noexist);
+		BaseMessage* amsg = new ChatOnSendInstantMessage(sequence, NOAVATAR);
+		sender->sendMessage(amsg);
+
+		return;
+
+	} else if (receiver->isPlayerCreature() && !receiver->isOnline()) {
 		BaseMessage* amsg = new ChatOnSendInstantMessage(sequence, IM_OFFLINE);
+		sender->sendMessage(amsg);
+
+		return;
+	}
+
+	if (receiver->getPlayerObject()->isIgnoring(sender->getFirstName()) && !godMode) {
+		BaseMessage* amsg = new ChatOnSendInstantMessage(sequence, IM_IGNORED);
 		sender->sendMessage(amsg);
 
 		return;
@@ -1460,7 +1479,7 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
 
 	if (receiverObjectID == 0) {
-		error("unexistent name for persistent message");
+		error("nonexistent name for persistent message");
 		return;
 	}
 
@@ -1588,8 +1607,7 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 
 	PlayerObject* ghost = receiver->getPlayerObject();
 
-	if (ghost == NULL ||
-			(ghost->isIgnoring(sendername) && !godMode))
+	if (ghost == NULL || (ghost->isIgnoring(sendername) && !godMode))
 		return IM_IGNORED;
 
 	ManagedReference<PersistentMessage*> mail = new PersistentMessage();
