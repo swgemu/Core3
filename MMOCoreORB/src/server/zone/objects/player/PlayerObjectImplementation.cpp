@@ -1657,7 +1657,7 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 
 			ManagedReference<SceneObject*> targetObject = zoneServer->getObject(creature->getTargetID());
 			if (targetObject != NULL) {
-				if (targetObject->isInRange(creature, MAX(10, creature->getWeapon()->getMaxRange()))) {
+				if (targetObject->isInRange(creature, MAX(10, creature->getWeapon()->getMaxRange()) + targetObject->getTemplateRadius() + creature->getTemplateRadius())) {
 					creature->executeObjectControllerAction(STRING_HASHCODE("attack"), creature->getTargetID(), "");
 				} else {
 					CombatSpam* spam = new CombatSpam(creature, NULL, creature, NULL, 0, "cbt_spam", "out_of_range", 2); // That target is out of range. (red)
