@@ -2461,8 +2461,10 @@ void CreatureObjectImplementation::queueDizzyFallEvent() {
 	if (hasDizzyEvent())
 		return;
 
-	dizzyFallDownEvent = new DizzyFallDownEvent(asCreatureObject());
-	dizzyFallDownEvent->schedule(200);
+	if (!isCreature() || !isDroidSpecies() || !isWalkerSpecies()) {
+		dizzyFallDownEvent = new DizzyFallDownEvent(asCreatureObject());
+		dizzyFallDownEvent->schedule(200);
+	}
 }
 
 void CreatureObjectImplementation::activateStateRecovery() {
