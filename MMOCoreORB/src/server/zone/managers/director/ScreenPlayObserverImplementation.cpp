@@ -29,7 +29,8 @@ int ScreenPlayObserverImplementation::notifyObserverEvent(uint32 eventType, Obse
 		}
 
 		if (!lua_isnumber(lua->getLuaState(), -1)) {
-			assert(printf("ScreenPlayObserver %s:%s didnt return a valid value in an observer handler\n", play.toCharArray(), key.toCharArray()) && 0);
+			printf("ScreenPlayObserver %s:%s didnt return a valid value in an observer handler\n", play.toCharArray(), key.toCharArray())
+			assert(false);
 		}
 
 		ret = lua->getIntParameter(lua->getLuaState());
