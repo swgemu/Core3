@@ -2397,7 +2397,7 @@ void CreatureObjectImplementation::setIntimidatedState(int durationSeconds) {
 		Locker blocker(multBuff);
 
 		multBuff->setSkillModifier("private_damage_divisor", 2);
-	
+
 		addBuff(multBuff);
 	}
 }
@@ -2461,8 +2461,10 @@ void CreatureObjectImplementation::queueDizzyFallEvent() {
 	if (hasDizzyEvent())
 		return;
 
-	dizzyFallDownEvent = new DizzyFallDownEvent(asCreatureObject());
-	dizzyFallDownEvent->schedule(200);
+	if (isPlayerCreature() || isNonPlayerCreatureObject()) {
+		dizzyFallDownEvent = new DizzyFallDownEvent(asCreatureObject());
+		dizzyFallDownEvent->schedule(200);
+	}
 }
 
 void CreatureObjectImplementation::activateStateRecovery() {
@@ -2612,13 +2614,13 @@ void CreatureObjectImplementation::notifySelfPositionUpdate() {
 
 			if (terrainManager != NULL) {
 				float waterHeight;
-				
+
 				Reference<CreatureObject*> creature = _this.getReferenceUnsafeStaticCast();
-				
+
 				if (creature->getParent() == NULL && terrainManager->getWaterHeight(creature->getPositionX(), creature->getPositionY(), waterHeight)) {
-					
+
 					if (creature->getPositionZ() + creature->getSwimHeight() - waterHeight < 0.2) {
-						
+
 						if (creature->hasState(CreatureState::ONFIRE))
 							creature->healDot(CreatureState::ONFIRE, 100);
 					}
