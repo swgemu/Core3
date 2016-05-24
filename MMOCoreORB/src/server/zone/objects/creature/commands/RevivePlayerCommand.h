@@ -58,17 +58,18 @@ public:
 				PlayerObject* ghost = consentOwner->getPlayerObject();
 
 				if (!ghost->hasInConsentList(player->getFirstName().toLowerCase())) {
-					creature->sendSystemMessage("@healing_response:must_be_grouped"); //You must be grouped with or have consent from your resuscitation target!
-					return false;
+					if ((player->getWeapon() != NULL && player->getWeapon()->isJediWeapon()) || player->hasSkill("force_title_jedi_rank_02")) {
+						creature->sendSystemMessage("@healing_response:jedi_must_consent"); // You must have consent from a jedi resuscitation target!
+						return false;
+					} else {
+						creature->sendSystemMessage("@healing_response:must_be_grouped"); //You must be grouped with or have consent from your resuscitation target!
+						return false;
+					}
 				}
-				/*if (!player->hasConsentFrom(consentOwner)) {
-					creature->sendSystemMessage("@healing_response:must_be_grouped"); //You must be grouped with or have consent from your resuscitation target!
-					return false;
-				}*/
+
 			} else {
 				return false;
 			}
-
 		}
 
 		if (creature->getHAM(CreatureAttribute::MIND) < mindCostNew) {
