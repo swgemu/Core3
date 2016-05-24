@@ -60,11 +60,11 @@ public:
 				if (!ghost->hasInConsentList(player->getFirstName().toLowerCase())) {
 					creature->sendSystemMessage("@healing_response:must_be_grouped"); //You must be grouped with or have consent from your resuscitation target!
 					return false;
-				}
-				/*if (!player->hasConsentFrom(consentOwner)) {
-					creature->sendSystemMessage("@healing_response:must_be_grouped"); //You must be grouped with or have consent from your resuscitation target!
+				} else if (!ghost->hasInConsentList(player->getFirstName().toLowerCase()) && (player->getWeapon()->isJediWeapon() || player->hasSkill("force_title_jedi_rank_02"))) {
+					creature->sendSystemMessage("@healing_response:jedi_must_consent"); // You must have consent from a jedi resuscitation target!
 					return false;
-				}*/
+				}
+
 			} else {
 				return false;
 			}
