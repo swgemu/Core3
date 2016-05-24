@@ -1,6 +1,6 @@
 mountain_dewback = Creature:new {
 	objectName = "@mob/creature_names:mountain_dewback",
-	socialGroup = "self",
+	socialGroup = "dewback",
 	faction = "",
 	level = 20,
 	chanceHit = 0.32,

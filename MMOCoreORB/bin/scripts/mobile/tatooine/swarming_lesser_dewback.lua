@@ -1,6 +1,6 @@
 swarming_lesser_dewback = Creature:new {
 	objectName = "@mob/creature_names:swarming_lesser_dewback",
-	socialGroup = "self",
+	socialGroup = "dewback",
 	faction = "",
 	level = 15,
 	chanceHit = 0.31,
