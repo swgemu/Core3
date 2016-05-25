@@ -29,6 +29,7 @@
 #include "server/zone/managers/minigames/GamblingManager.h"
 #include "server/zone/managers/minigames/ForageManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/managers/money/MoneyManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/DnaManager.h"
 #include "server/zone/managers/creature/PetManager.h"
@@ -258,6 +259,8 @@ void ZoneServerImplementation::startManagers() {
 
 	//Loads the FactionManager LUA Config.
 	FactionManager::instance()->loadData();
+
+	MoneyManager::instance()->loadData();
 
 	cityManager->loadCityRegions();
 
