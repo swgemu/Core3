@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_dd253b0b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ConsentCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-05-25T04:10:47Z",
+      "side": 1,
+      "message": "It\u0027s not your code, but this is a pointless cast. You can remove this line entirely and modify the line below to use creature instead of player.",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 59
+      },
+      "revId": "00e9c859091f9e46cda9dfa8448c9f3e0dfeed5e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9d1fc3b7",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ConsentCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-05-25T04:10:47Z",
+      "side": 1,
+      "message": "ghost needs to be NULL checked before it\u0027s used.",
+      "range": {
+        "startLine": 45,
+        "startChar": 6,
+        "endLine": 45,
+        "endChar": 11
+      },
+      "revId": "00e9c859091f9e46cda9dfa8448c9f3e0dfeed5e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_bd1c07c3",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ConsentCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-05-25T04:10:47Z",
+      "side": 1,
+      "message": "playerTarget needs to be NULL checked before it\u0027s used.",
+      "range": {
+        "startLine": 93,
+        "startChar": 19,
+        "endLine": 93,
+        "endChar": 31
+      },
+      "revId": "00e9c859091f9e46cda9dfa8448c9f3e0dfeed5e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_5d792bfb",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ConsentCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-05-25T04:10:47Z",
+      "side": 1,
+      "message": "This code should probably be inside of the consent function. Currently it will only display this message if the arguments are empty.",
+      "range": {
+        "startLine": 95,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 4
+      },
+      "revId": "00e9c859091f9e46cda9dfa8448c9f3e0dfeed5e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_7d7e6fe6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DragIncapacitatedPlayerCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-05-25T04:10:47Z",
+      "side": 1,
+      "message": "In my opinion it would probably be best to only allocate this stringID when it\u0027s needed instead of every time the command is called.",
+      "range": {
+        "startLine": 211,
+        "startChar": 2,
+        "endLine": 213,
+        "endChar": 25
+      },
+      "revId": "00e9c859091f9e46cda9dfa8448c9f3e0dfeed5e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_1d83b3cd",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/UnconsentCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-05-25T04:10:47Z",
+      "side": 1,
+      "message": "Same as before, this cast is completely unnecessary.",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 59
+      },
+      "revId": "00e9c859091f9e46cda9dfa8448c9f3e0dfeed5e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_3d88f7e6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/UnconsentCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-05-25T04:10:47Z",
+      "side": 1,
+      "message": "ghost must be NULL checked before it is used. getPlayerObject is not guaranteed to return a valid pointer.",
+      "range": {
+        "startLine": 68,
+        "startChar": 9,
+        "endLine": 68,
+        "endChar": 14
+      },
+      "revId": "00e9c859091f9e46cda9dfa8448c9f3e0dfeed5e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9d76e305",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/UnconsentCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-05-25T04:10:47Z",
+      "side": 1,
+      "message": "You are switching between creature and player even though they are the same object. Removing the cast above should fix this though.",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 11
+      },
+      "revId": "00e9c859091f9e46cda9dfa8448c9f3e0dfeed5e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_fd691f26",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/UnconsentCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-05-25T04:10:47Z",
+      "side": 1,
+      "message": "Move this into the check below. It\u0027s not necessary to allocate this unless the check passes.",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 44
+      },
+      "revId": "00e9c859091f9e46cda9dfa8448c9f3e0dfeed5e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_dd6c5b39",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/UnconsentCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-05-25T04:10:47Z",
+      "side": 1,
+      "message": "playerTarget must also be NULL checked as there is no guarantee that the cast will succeed.",
+      "range": {
+        "startLine": 89,
+        "startChar": 7,
+        "endLine": 89,
+        "endChar": 19
+      },
+      "revId": "00e9c859091f9e46cda9dfa8448c9f3e0dfeed5e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
