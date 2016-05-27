@@ -52,6 +52,7 @@ int SkillBuffObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 
 	unsigned int buffCRC = skillBuff->getBuffCRC();
 	int duration = skillBuff->getDuration();
+	int absorption = skillBuff->getAbsorption();
 	VectorMap<String, float>* modifiers = skillBuff->getModifiers();
 
 	// Check if buff of same type is already active

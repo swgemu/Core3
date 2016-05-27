@@ -57,6 +57,10 @@ public:
 		durationstring << seconds << "s";
 
 		alm->insertAttribute("duration", durationstring.toString());
+
+		StringBuffer absorptionstring;
+		int absorption = (int) floor(skillBuff->getAbsorption());
+		alm->insertAttribute("absorption", absorptionstring.toString());
 	}
 
 };
