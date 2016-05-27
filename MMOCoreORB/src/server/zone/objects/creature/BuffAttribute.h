@@ -42,9 +42,11 @@ public:
 		switch(attribute) {
 		case POISON:
 			name = "resistance_poison";
+			name = "absorption_poison";
 			break;
 		case DISEASE:
 			name = "resistance_disease";
+			name = "absorption_disease";
 			break;
 		default:
 			name = "unknown";

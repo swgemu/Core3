@@ -96,9 +96,9 @@ class StatePack extends PharmaceuticalObject {
 		super.fillAttributeList(msg, object);
 		
 		string attributeName = CreatureState.instance().getName(state);
-		string enhace = "@obj_attr_n:state_type_" + attributeName;
+		string enhance = "@obj_attr_n:state_type_" + attributeName;
 		
-		msg.insertAttribute("examine_heal_state", enhace);
+		msg.insertAttribute("examine_heal_state", enhance);
 		
 		msg.insertAttribute("healing_ability", super.medicineUseRequired);
 	}

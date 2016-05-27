@@ -24,6 +24,7 @@ import server.zone.managers.player.PlayerManager;
 class EnhancePack extends PharmaceuticalObject {
 	protected float effectiveness;
 	protected float duration;
+	protected float absorption;
 	protected byte attribute;
 	
 	public EnhancePack() {
@@ -31,6 +32,7 @@ class EnhancePack extends PharmaceuticalObject {
 		
 		effectiveness = 0;
 		duration = 0;
+		absorption = 0;
 		attribute = 0;
 	}
 	
@@ -41,6 +43,7 @@ class EnhancePack extends PharmaceuticalObject {
 		setUseCount(values.getCurrentValue("charges"));
 		
 		duration = values.getCurrentValue("duration");
+		absorption = values.getCurrentValue("absorption");
 	}
 	
 	/**
@@ -56,11 +59,13 @@ class EnhancePack extends PharmaceuticalObject {
 		super.fillAttributeList(msg, object);
 		
 		string attributeName = BuffAttribute.getName(attribute);
-		string enhace = "examine_enhance_" + attributeName;
+		string enhance = "examine_enhance_" + attributeName;
 		string durationStr = "examine_duration_" + attributeName;
+		string absorptionStr = "examine_absorption_" + attributeName;
 		
-		msg.insertAttribute(enhace, Math.getPrecision(effectiveness, 0));
+		msg.insertAttribute(enhance, Math.getPrecision(effectiveness, 0));
 		msg.insertAttribute(durationStr, Math.getPrecision(duration, 0));
+		msg.insertAttribute(absorptionStr, Math.getPrecision(absorption, 0));
 		
 		msg.insertAttribute("healing_ability", super.medicineUseRequired);
 	}
@@ -84,6 +89,7 @@ class EnhancePack extends PharmaceuticalObject {
 		super.medicineUseRequired = enhancePackTemplate.getMedicineUse();
 		duration = enhancePackTemplate.getDuration();
 		attribute = enhancePackTemplate.getAttribute();
+		absorption = enhancePackTemplate.getAbsorption();
 	}
 	
 	/**
@@ -120,6 +126,10 @@ class EnhancePack extends PharmaceuticalObject {
 	@dirty
 	public float getEffectiveness() {
 		return effectiveness;
+	}
+	
+	public float getAbsorption() {
+		return absorption;
 	}
 	
 	@dirty
