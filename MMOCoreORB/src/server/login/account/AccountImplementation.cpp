@@ -22,16 +22,17 @@ void AccountImplementation::initializeTransientMembers() {
 	created = 0;
 	banExpires = 0;
 	banAdmin = 0;
+	initSqlData = false;
 }
 
 
 void AccountImplementation::updateFromDatabase() {
 
 	Locker locker(_this.getReferenceUnsafeStaticCast());
+	initSqlData = true;
 	updateAccount();
 	updateCharacters();
 	updateGalaxyBans();
-
 }
 
 Reference<GalaxyAccountInfo*> AccountImplementation::getGalaxyAccountInfo(const String& galaxyName) {
@@ -65,7 +66,7 @@ void AccountImplementation::updateAccount() {
 
 		setActive(result->getBoolean(0));
 		setAdminLevel(result->getInt(1));
-
+		
 		setBanReason(result->getString(2));
 		setBanExpires(result->getUnsignedInt(3));
 		setBanAdmin(result->getUnsignedInt(4));
@@ -133,6 +134,9 @@ CharacterListEntry* AccountImplementation::getCharacterBan(const uint32 galaxy, 
 }
 
 CharacterList* AccountImplementation::getCharacterList() {
+	if(characterList == NULL)
+		updateCharacters();
+	
 	return characterList;
 }
 
