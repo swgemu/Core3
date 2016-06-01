@@ -31,7 +31,6 @@ void AccountImplementation::updateFromDatabase() {
 	updateAccount();
 	updateCharacters();
 	updateGalaxyBans();
-
 }
 
 Reference<GalaxyAccountInfo*> AccountImplementation::getGalaxyAccountInfo(const String& galaxyName) {
@@ -65,7 +64,7 @@ void AccountImplementation::updateAccount() {
 
 		setActive(result->getBoolean(0));
 		setAdminLevel(result->getInt(1));
-
+		
 		setBanReason(result->getString(2));
 		setBanExpires(result->getUnsignedInt(3));
 		setBanAdmin(result->getUnsignedInt(4));
@@ -133,6 +132,9 @@ CharacterListEntry* AccountImplementation::getCharacterBan(const uint32 galaxy, 
 }
 
 CharacterList* AccountImplementation::getCharacterList() {
+	if(characterList == NULL)
+		updateCharacters();
+	
 	return characterList;
 }
 

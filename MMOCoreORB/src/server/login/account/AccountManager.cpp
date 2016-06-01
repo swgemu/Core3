@@ -231,8 +231,53 @@ Account* AccountManager::createAccount(const String& username, const String& pas
 
 ManagedReference<Account*> AccountManager::getAccount(uint32 accountID, bool forceSqlUpdate) {
 
-	String passwordStored;
-	return getAccount(accountID, passwordStored, forceSqlUpdate);
+	Reference<Account*> account = NULL;
+	ManagedReference<ManagedObject*> accObj = NULL;
+	
+	
+	static uint64 databaseID = ObjectDatabaseManager::instance()->getDatabaseID("accounts");
+	
+	uint64 oid = (accountID | (databaseID << 48));
+	
+	accObj = Core::getObjectBroker()->lookUp(oid).castTo<ManagedObject*>();
+	
+	if(accObj == NULL) {
+		
+		// Lazily create account object
+		accObj = ObjectManager::instance()->createObject("Account", 3, "accounts", oid);
+		
+		if(accObj == NULL) {
+			//error("Error creating account object with account ID " + String::hexvalueOf((int64)oid));
+			return NULL;
+		}
+	} else if(!forceSqlUpdate) {
+		return accObj.castTo<Account*>();
+	}
+	
+	account = accObj.castTo<Account*>();
+	if(account == NULL) {
+		return NULL;
+	}
+	
+	StringBuffer query;
+	query << "SELECT a.active, a.username, a.password, a.salt, a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level FROM accounts a WHERE a.account_id = '" << accountID << "' LIMIT 1;";
+	
+	Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query.toString());
+	if (result->next()) {
+		Locker locker(account);
+		
+		account->setActive(result->getBoolean(0));
+		account->setUsername(result->getString(1));
+		account->setSalt(result->getString(3));
+		account->setAccountID(accountID);
+		account->setStationID(result->getUnsignedInt(5));
+		account->setTimeCreated(result->getUnsignedInt(6));
+		account->setAdminLevel(result->getInt(7));
+		account->updateFromDatabase();
+		return account;
+	}
+	
+	return NULL;
 }
 
 ManagedReference<Account*> AccountManager::getAccount(uint32 accountID, String& passwordStored, bool forceSqlUpdate) {
