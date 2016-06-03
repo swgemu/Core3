@@ -43,7 +43,29 @@
 
 object_tangible_food_crafted_drink_jaar = object_tangible_food_crafted_shared_drink_jaar:new {
 
+	templateType = CONSUMABLE,
+	
+	duration = 30,
+  filling = 11,
+  nutrition = 10,
 
+  effectType = 0,
+
+  fillingMin = 11,
+  fillingMax = 7,
+  flavorMin = 0,
+  flavorMax = 0,
+  nutritionMin = 20,
+  nutritionMax = 30,
+  quantityMin = 5,
+  quantityMax = 10,
+  speciesRestriction = "4",
+
+  modifiers = { "wookiee_roar", 0 },
+
+  buffName = "",
+  buffCRC = 0,
+	
 	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "DR", "OQ", "OQ", "PE", "FL", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 2, 2, 1},
