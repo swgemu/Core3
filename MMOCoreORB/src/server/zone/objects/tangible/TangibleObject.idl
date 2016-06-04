@@ -78,13 +78,20 @@ class TangibleObject extends SceneObject {
 	protected DeltaVector<SceneObject> defenderList;
 	
 	protected boolean sliceable;
-	protected boolean sliced;	
+	protected boolean sliced;
+	
+	protected boolean didUpdateUseCount;
 
 	@dereferenced
 	protected SortedVector<ActiveArea> activeAreas;
 
 	protected SceneObject antiDecayKitObject;
-	
+
+
+	protected void setDidUpdateUseCount() {
+		didUpdateUseCount = true;
+	}
+
 	/**
 	 * TangibleObject constructor, used to initialized the object
 	 * @pre { templateData is a valid SharedTangibleObjectTemplate LuaObject that contains the necessary values to initialize CreatureObject }
@@ -101,6 +108,8 @@ class TangibleObject extends SceneObject {
 		antiDecayKitObject = null;
 
 		luaStringData.setNoDuplicateInsertPlan();
+
+		didUpdateUseCount = false;
 	}
 	
 	public void initializeMembers() {

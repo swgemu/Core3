@@ -82,6 +82,8 @@ void AbilityList::loadFromNames(Vector<String>& abilities) {
 
 	for (int i = 0; i < abilities.size(); ++i) {
 		String name = abilities.get(i);
+		if(name.beginsWith("language"))
+			continue;
 
 		Ability* ability = skillManager->getAbility(name);
 

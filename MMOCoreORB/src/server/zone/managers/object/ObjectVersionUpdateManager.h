@@ -28,8 +28,6 @@ public:
 	int getVariableDataOffset(const uint32& variableHashCode, ObjectInputStream* stream);
 	ObjectOutputStream* changeVariableData(const uint32& variableHashCode, ObjectInputStream* object, Stream* newVariableData);
 
-
-	void updateTangibleObjectsVersion6();
 	void updateResidences();
 	void setResidence(uint64 buildingID, bool isResidence);
 	void verifyResidenceVariables();

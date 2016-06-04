@@ -97,6 +97,15 @@ void TangibleObjectImplementation::notifyLoadFromDatabase() {
 			adk->setUsed(true);
 		}
 	}
+	
+	if(!didUpdateUseCount) {
+		
+		
+		if (useCount == 1 && TemplateManager::instance()->shouldMigrateTemplate(getServerObjectCRC())) {
+			setUseCount(0);
+		}
+		didUpdateUseCount = true;
+	}
 }
 
 void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {

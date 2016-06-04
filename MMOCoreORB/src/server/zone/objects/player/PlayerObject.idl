@@ -85,6 +85,8 @@ class PlayerObject extends IntangibleObject {
 
 	protected boolean onLoadScreen;
 
+	protected boolean didUpdatePVPRating;
+
 	protected boolean muted;
 	protected string mutedReason;
 
@@ -359,6 +361,8 @@ class PlayerObject extends IntangibleObject {
 		drinkFillingMax = 0;
 
 		reactionFines = 0;
+
+		didUpdatePVPRating = false;
 
 		Logger.setLoggingName("PlayerObject");
 	}
@@ -1780,6 +1784,10 @@ class PlayerObject extends IntangibleObject {
 
 	public boolean hasOnKillerList(unsigned int playerID) {
 		return killerList.contains(playerID);
+	}
+
+	protected void setDidUpdatePVPRating() {
+		didUpdatePVPRating = true;
 	}
 
 	@read

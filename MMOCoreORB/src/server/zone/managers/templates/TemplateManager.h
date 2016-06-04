@@ -51,14 +51,17 @@ class TemplateManager : public Singleton<TemplateManager>, public Logger, public
 	VectorMap<String, Reference<SlotId*> > slotDefinitions;
 	VectorMap<String, Reference<SlotDescriptor*> > slotDescriptors;
 	VectorMap<String, Reference<ArrangementDescriptor*> > arrangementDescriptors;
-
+	
+	SortedVector<uint32> migrationTemplateKeys;
+	
 	ReadWriteLock appearanceMapLock;
 
 	void loadTreArchive();
 	void loadSlotDefinitions();
 	void loadPlanetMapCategories();
 	void loadAssetCustomizationManager();
-
+	void createUseCountMigrationTemplateList();
+	
 public:
 	static Lua* luaTemplatesInstance;
 	static AtomicInteger loadedTemplatesCount;
@@ -152,6 +155,10 @@ public:
 		}
 
 		return NULL;
+	}
+	
+	inline bool shouldMigrateTemplate(uint32 hash) {
+		return !(migrationTemplateKeys.contains(hash));
 	}
 
 	/**
