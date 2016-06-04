@@ -85,6 +85,10 @@ class PlayerObject extends IntangibleObject {
 
 	protected boolean onLoadScreen;
 
+	// not sent to client
+	protected unsigned long objectConfigBitmask;
+	protected static final int UPDATED_PVPRATING = 0x1;
+
 	protected boolean muted;
 	protected string mutedReason;
 
@@ -359,6 +363,8 @@ class PlayerObject extends IntangibleObject {
 		drinkFillingMax = 0;
 
 		reactionFines = 0;
+
+objectConfigBitmask = 0;
 
 		Logger.setLoggingName("PlayerObject");
 	}
@@ -1780,6 +1786,14 @@ class PlayerObject extends IntangibleObject {
 
 	public boolean hasOnKillerList(unsigned int playerID) {
 		return killerList.contains(playerID);
+	}
+
+	protected void setDidUpdatePVPRating() {
+		objectConfigBitmask = (objectConfigBitmask | UPDATED_PVPRATING);
+	}
+
+	protected boolean didUpdatePVPRating() {
+		return objectConfigBitmask & UPDATED_PVPRATING;
 	}
 
 	@read

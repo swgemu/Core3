@@ -62,7 +62,12 @@ class TangibleObject extends SceneObject {
 	protected boolean isCraftedEnhancedItem;
 	
 	protected unsigned int pvpStatusBitmask;
-	
+
+	//Not used in the client
+	protected unsigned long objectConfigBitmask;
+
+	protected static final int UPDATED_USECOUNT = 0x1;
+
 	protected byte objectVisible;
 	protected string craftersName;
 
@@ -78,13 +83,23 @@ class TangibleObject extends SceneObject {
 	protected DeltaVector<SceneObject> defenderList;
 	
 	protected boolean sliceable;
-	protected boolean sliced;	
+	protected boolean sliced;
 
 	@dereferenced
 	protected SortedVector<ActiveArea> activeAreas;
 
 	protected SceneObject antiDecayKitObject;
-	
+
+
+	protected void setDidUpdateUseCount() {
+		objectConfigBitmask = (objectConfigBitmask | UPDATED_USECOUNT);
+	}
+
+	@local
+	protected boolean didUpdateUseCount() {
+		return (objectConfigBitmask & UPDATED_USECOUNT);
+	}
+
 	/**
 	 * TangibleObject constructor, used to initialized the object
 	 * @pre { templateData is a valid SharedTangibleObjectTemplate LuaObject that contains the necessary values to initialize CreatureObject }
@@ -101,6 +116,8 @@ class TangibleObject extends SceneObject {
 		antiDecayKitObject = null;
 
 		luaStringData.setNoDuplicateInsertPlan();
+
+		objectConfigBitmask = 0;
 	}
 	
 	public void initializeMembers() {
