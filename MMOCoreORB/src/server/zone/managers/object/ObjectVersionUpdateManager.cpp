@@ -284,7 +284,7 @@ void ObjectVersionUpdateManager::updateTangibleObjectsVersion6() {
 		uint32 key = 0;
 		iter.getNextKeyAndValue(key, tmpl);
 
-		if(tmpl->isSharedTangibleObjectTemplate()) {
+		if(tmpl != NULL && tmpl->isSharedTangibleObjectTemplate()) {
 			SharedTangibleObjectTemplate *tanotmp = tmpl.castTo<SharedTangibleObjectTemplate*>();
 			LootSchematicTemplate *lootSchem = tmpl.castTo<LootSchematicTemplate*>();
 
@@ -326,7 +326,10 @@ void ObjectVersionUpdateManager::updateTangibleObjectsVersion6() {
 	while(lootIter.hasNext()) {
 
 		Reference<LootItemTemplate*> lootTmpl = lootIter.next();
-
+		
+		if (lootTmpl == NULL)
+			continue;
+		
 		CraftingValues craftingValues = lootTmpl->getCraftingValuesCopy();
 
 		for (int i = 0; i < craftingValues.getExperimentalPropertySubtitleSize(); ++i) {
@@ -453,7 +456,7 @@ void ObjectVersionUpdateManager::updateTangibleObjectsVersion6() {
 
 			if(useCount == 1) { // We're moving 1->0, we don't need to do anything else
 				if(templateKeys.contains(objCRC)) {
-					info("Skipping: [" + templateMap.get(objCRC)->getTemplateFileName() + "] useCount: " + String::valueOf(useCount));
+					//info("Skipping: [" + templateMap.get(objCRC)->getTemplateFileName() + "] useCount: " + String::valueOf(useCount));
 				} else {
 					// change useCount to 0
 					info("Found tangible object to migrate: " + templateMap.get(objCRC)->getTemplateFileName());
