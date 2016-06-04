@@ -135,6 +135,11 @@ void PlayerObjectImplementation::notifyLoadFromDatabase() {
 	lastValidatedPosition.update(getParent().get());
 
 	clientLastMovementStamp = 0;
+	
+	if(!didUpdatePVPRating) {
+		setPvpRating(1200);
+		didUpdatePVPRating = true;
+	}
 
 }
 

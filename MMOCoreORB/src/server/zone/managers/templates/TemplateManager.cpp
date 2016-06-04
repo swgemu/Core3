@@ -121,6 +121,12 @@
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/templates/TemplateReference.h"
+#include "server/zone/templates/LootItemTemplate.h"
+#include "server/zone/templates/tangible/LootSchematicTemplate.h"
+#include "server/zone/managers/loot/LootGroupMap.h"
+#include "server/zone/managers/loot/LootManager.h"
 
 #include "server/conf/ConfigManager.h"
 
@@ -151,6 +157,8 @@ TemplateManager::TemplateManager() {
 	portalLayoutMap = new PortalLayoutMap();
 	floorMeshMap = new FloorMeshMap();
 	appearanceMap = new AppearanceMap();
+	
+	migrationTemplateKeys.setInsertPlan(SortedVector<uint32>::NO_DUPLICATE);
 
 	registerFunctions();
 	registerGlobals();
@@ -159,6 +167,96 @@ TemplateManager::TemplateManager() {
 	loadSlotDefinitions();
 	loadPlanetMapCategories();
 	loadAssetCustomizationManager();
+	
+	createUseCountMigrationTemplateList();
+}
+
+void TemplateManager::createUseCountMigrationTemplateList() {
+	TemplateCRCMap& templateMap = TemplateManager::instance()->getTemplateCRCMap();
+	
+	
+	info("Building tangible object template list for migration", true);
+	
+	HashTableIterator<uint32, TemplateReference<SharedObjectTemplate*> > iter = templateMap.iterator();
+	while(iter.hasNext()) {
+		TemplateReference<SharedObjectTemplate*> tmpl;
+		uint32 key = 0;
+		iter.getNextKeyAndValue(key, tmpl);
+		
+		if(tmpl != NULL && tmpl->isSharedTangibleObjectTemplate()) {
+			SharedTangibleObjectTemplate *tanotmp = tmpl.castTo<SharedTangibleObjectTemplate*>();
+			LootSchematicTemplate *lootSchem = tmpl.castTo<LootSchematicTemplate*>();
+			
+			// Add all templates that still have a use Count > 1
+			// Also add all loot schematic templates as well as factory crates
+			if((tanotmp->getUseCount() > 0) ||
+			   (lootSchem != NULL && lootSchem->getTargetUseCount() > 1) ||
+			   tmpl->getGameObjectType() == SceneObjectType::FACTORYCRATE) {
+				migrationTemplateKeys.put(key);
+				info("Adding Tangible Template: " + tanotmp->getTemplateFileName(), true);
+				continue;
+			}
+			
+			
+			Vector<String>* subGroups = tanotmp->getExperimentalSubGroupTitles();
+			
+			for(int i=0; i<subGroups->size(); i++) {
+				String subGroupTitle = subGroups->get(i).toLowerCase();
+				
+				if(subGroupTitle == "usecount" ||
+				   subGroupTitle == "quantity" ||
+				   subGroupTitle == "charges" ||
+				   subGroupTitle == "uses" ||
+				   subGroupTitle == "charge") {
+					migrationTemplateKeys.put(key);
+					info("Adding Tangible Template: " + tanotmp->getTemplateFileName(), true);
+					continue;
+				}
+			}
+		}
+	}
+	
+	LootGroupMap* lootMap =  LootGroupMap::instance();
+	lootMap->initialize();
+	
+	HashTable<String, Reference<LootItemTemplate*> > itemTemplates = lootMap->itemTemplates;
+	HashTableIterator<String, Reference<LootItemTemplate*> > lootIter = itemTemplates.iterator();
+	
+	while(lootIter.hasNext()) {
+		
+		Reference<LootItemTemplate*> lootTmpl = lootIter.next();
+		
+		if (lootTmpl == NULL)
+			continue;
+		
+		CraftingValues craftingValues = lootTmpl->getCraftingValuesCopy();
+		
+		for (int i = 0; i < craftingValues.getExperimentalPropertySubtitleSize(); ++i) {
+			
+			String subtitle = craftingValues.getExperimentalPropertySubtitle(i);
+			
+			// if a loot template contains any of the following subtitles then it will be generated in stacks
+			// add the base template to the exclusion list
+			if (subtitle == "useCount" ||
+				subtitle == "quantity" ||
+				subtitle == "charges" ||
+				subtitle == "uses" ||
+				subtitle == "charge") {
+				
+				uint32 hash = lootTmpl->getDirectObjectTemplate().hashCode();
+				
+				SharedObjectTemplate *tmpl = templateMap.get(hash);
+				
+				if(tmpl == NULL) {
+					info("Null shared object template from loot template" + lootTmpl->getDirectObjectTemplate(), false);
+					continue;
+				}
+				
+				migrationTemplateKeys.put(hash);
+				info("Adding Tangible Template: " + tmpl->getTemplateFileName(), true);
+			}
+		}
+	}
 }
 
 TemplateManager::~TemplateManager() {

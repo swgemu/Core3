@@ -78,7 +78,9 @@ class TangibleObject extends SceneObject {
 	protected DeltaVector<SceneObject> defenderList;
 	
 	protected boolean sliceable;
-	protected boolean sliced;	
+	protected boolean sliced;
+	
+	protected boolean didUpdateUseCount;
 
 	@dereferenced
 	protected SortedVector<ActiveArea> activeAreas;
@@ -101,6 +103,8 @@ class TangibleObject extends SceneObject {
 		antiDecayKitObject = null;
 
 		luaStringData.setNoDuplicateInsertPlan();
+
+		didUpdateUseCount = false;
 	}
 	
 	public void initializeMembers() {
