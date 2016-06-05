@@ -128,7 +128,6 @@ class ChatManager extends ManagedService implements Logger {
 	@reference
 	public native ChatRoom createPersistentRoomByFullPath(CreatureObject player, final string path, final string title, int requestID);
 
-	@arg1PreLocked
 	public native void deleteRoom(ChatRoom room);
 
 	@arg1PreLocked
