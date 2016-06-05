@@ -262,6 +262,7 @@ class ChatRoom extends ManagedObject {
 	public native void broadcastMessages(Vector<BaseMessage> messages);
 
 	@dirty
+	@reference
 	public ChatRoom getParent() {
 		return manager.getChatRoom(parentRoomID);
 	}

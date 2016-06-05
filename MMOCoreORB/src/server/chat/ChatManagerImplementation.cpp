@@ -524,12 +524,15 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* roomArg) {
 		room_p->removeAllPlayers();
 
 		//Check if this room has existing sub rooms.
-		if (room_p->getSubRoomsSize() > 0) //Disable the room but don't delete it.
+		if (room_p->getSubRoomsSize() > 0) { //Disable the room but don't delete it.
 			chatManager_p->disableRoom(room_p);
-		else //Safe to delete the room.
-			chatManager_p->deleteRoom(room_p);
 
-		locker.release();
+			locker.release();
+		} else { //Safe to delete the room.
+			locker.release();
+
+			chatManager_p->deleteRoom(room_p);
+		}
 
 		//Remove from the owner's list of created rooms.
 		ManagedReference<CreatureObject*> owner = room_p->getZoneServer()->getObject(room_p->getOwnerID()).castTo<CreatureObject*>();
@@ -544,31 +547,36 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* roomArg) {
 }
 
 void ChatManagerImplementation::deleteRoom(ChatRoom* room) {
-	//room locked
+	//room unlocked
 	ManagedReference<ChatRoom*> parent = room->getParent();
+	ManagedReference<ChatManager*> chatManager = _this.getReferenceUnsafeStaticCast();
 
 	if (parent != NULL) {
+		Locker locker(parent);
+
 		parent->removeSubRoom(room->getName());
 
 		if (parent->isDisabled()) {
 			if (parent->getSubRoomsSize() < 1) {
-				ManagedReference<ChatManager*> chatManager = _this.getReferenceUnsafeStaticCast();
 				EXECUTE_TASK_2(parent, chatManager, {
-					Locker locker(parent_p);
+					//Locker locker(parent_p);
 					chatManager_p->deleteRoom(parent_p);
 				});
 			}
 		}
 	}
 
-	Locker clocker(_this.getReferenceUnsafeStaticCast(), room);
-	roomMap->remove(room->getRoomID());
-	ObjectManager::instance()->destroyObjectFromDatabase(room->_getObjectID());
+	ManagedReference<ChatRoom*> strongRef = room;
+
+	EXECUTE_TASK_2(strongRef, chatManager, {
+		Locker roomLocker(chatManager_p);
+		chatManager_p->removeRoom(strongRef_p);
+		ObjectManager::instance()->destroyObjectFromDatabase(strongRef_p->_getObjectID());
+	});
 }
 
 void ChatManagerImplementation::disableRoom(ChatRoom* room) {
 	//room prelocked
-
 	room->setDisabled(true);
 
 	room->removeAllModerators();
