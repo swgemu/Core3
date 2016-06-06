@@ -39,6 +39,19 @@ public:
 	inline bool isSearchable() {
 		return searchable == true;
 	}
+
+	int put(const ManagedReference<AuctionItem*>& o) {
+		Locker locker(this);
+
+		return SortedVector<ManagedReference<AuctionItem*> >::put(o);
+	}
+
+	bool drop(const ManagedReference<AuctionItem*>& o) {
+		Locker locker(this);
+
+		return SortedVector<ManagedReference<AuctionItem*> >::drop(o);
+	}
+
 };
 
 class TerminalRegionList : public VectorMap<uint64, Reference<TerminalItemList*> >, public ReadWriteLock {
