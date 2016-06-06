@@ -99,10 +99,16 @@ bool ContainerObjectsMap::parseFromBinaryStream(ObjectInputStream* stream) {
 	case NORMAL_LOAD:
 		return containerObjects.parseFromBinaryStream(stream);
 	case DELAYED_LOAD:
-		if (oids == NULL)
-			oids = new VectorMap<uint64, uint64>();
+		if (oids == NULL) {
+			auto vector = new VectorMap<uint64, uint64>();
+			bool res = vector->parseFromBinaryStream(stream);
 
-		return oids->parseFromBinaryStream(stream);
+			if (!oids.compareAndSet(NULL, vector)) {
+				delete vector;
+			}
+
+			return true;
+		}
 	default:
 		return containerObjects.parseFromBinaryStream(stream);
 	}
