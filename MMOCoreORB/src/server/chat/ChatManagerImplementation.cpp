@@ -1261,11 +1261,15 @@ Reference<ChatRoom*> ChatManagerImplementation::createGroupRoom(uint64 groupID, 
 
 	groupChatRoom = createRoom("GroupChat", newGroupRoom);
 
+	Locker groupLocker(groupChatRoom);
+
 	groupChatRoom->setTitle(name.toString());
 	groupChatRoom->setPrivate();
 	groupChatRoom->setCanEnter(true);
 	groupChatRoom->setChatRoomType(ChatRoom::GROUP);
 	groupChatRoom->setOwnerID(groupID);
+
+	groupLocker.release();
 
 	groupChatRoom->sendTo(creator);
 	handleChatEnterRoomById(creator, groupChatRoom->getRoomID(), -1, true);
@@ -1756,6 +1760,8 @@ void ChatManagerImplementation::handleChatCreateRoom(CreatureObject* player, uin
 	if (newRoom == NULL)
 		return;
 
+	Locker newRoomlocker(newRoom);
+
 	//Set the room flags as specified by the player.
 	if (permissionFlag == 0)
 		newRoom->setPrivate();
@@ -1779,6 +1785,8 @@ void ChatManagerImplementation::handleChatCreateRoom(CreatureObject* player, uin
 
 	newRoom->setCanEnter(true);
 	newRoom->setChatRoomType(ChatRoom::CUSTOM);
+
+	newRoomlocker.release();
 
 	Locker plocker(player, _this.getReferenceUnsafeStaticCast());
 	ghost->addOwnedChatRoom(newRoom->getRoomID());

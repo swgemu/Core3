@@ -667,11 +667,16 @@ ChatRoom* GuildManagerImplementation::createGuildChannels(GuildObject* guild) {
 	guildLobby->setPrivate();
 
 	ManagedReference<ChatRoom*> guildChat = chatManager->createRoom("GuildChat", guildLobby);
+
+	Locker glocker(guildChat);
+
 	guildChat->setPrivate();
 	guildChat->setTitle(String::valueOf(guild->getGuildID()));
 	guildChat->setOwnerID(guild->getObjectID());
 	guildChat->setCanEnter(true);
 	guildChat->setChatRoomType(ChatRoom::GUILD);
+
+	glocker.release();
 
 	Locker locker(guild);
 

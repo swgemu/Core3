@@ -180,7 +180,7 @@ String ChatRoomImplementation::getGalaxyName() {
 }
 
 String ChatRoomImplementation::getModeratorName(int index) {
-	Locker locker(_this.getReferenceUnsafeStaticCast());
+	ReadLocker locker(_this.getReferenceUnsafeStaticCast());
 
 	String name = "";
 	uint64 objectID = moderatorList.get(index);
@@ -193,7 +193,7 @@ String ChatRoomImplementation::getModeratorName(int index) {
 }
 
 String ChatRoomImplementation::getInvitedName(int index) {
-	Locker locker(_this.getReferenceUnsafeStaticCast());
+	ReadLocker locker(_this.getReferenceUnsafeStaticCast());
 
 	String name = "";
 	uint64 objectID = invitedList.get(index);
@@ -206,7 +206,7 @@ String ChatRoomImplementation::getInvitedName(int index) {
 }
 
 String ChatRoomImplementation::getBannedName(int index) {
-	Locker locker(_this.getReferenceUnsafeStaticCast());
+	ReadLocker locker(_this.getReferenceUnsafeStaticCast());
 
 	String name = "";
 	uint64 objectID = bannedList.get(index);
@@ -274,4 +274,10 @@ int ChatRoomImplementation::checkEnterPermission(CreatureObject* player) {
 	}
 
 	return ChatManager::FAIL;
+}
+
+CreatureObject* ChatRoomImplementation::getPlayer(int idx) {
+	ReadLocker locker(_this.getReferenceUnsafeStaticCast());
+
+	return playerList.get(idx);
 }

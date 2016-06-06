@@ -152,9 +152,7 @@ class ChatRoom extends ManagedObject {
 	}
 	
 	@dirty
-	public CreatureObject getPlayer(int idx) {
-		return playerList.get(idx);
-	}
+	public native CreatureObject getPlayer(int idx);
 
 	@dirty
 	public synchronized boolean hasPlayer(CreatureObject player) {
