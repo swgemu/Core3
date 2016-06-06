@@ -1137,7 +1137,10 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 					continue;
 
 				if(!item->isAuction() && item->getExpireTime() <= now) {
-					expireSale(item);
+					auto chatManager = _this.getReferenceUnsafeStaticCast();
+					EXECUTE_TASK_2(chatManager, item, {
+							chatManager_p->expireSale(item_p);
+					});
 					continue;
 				}
 

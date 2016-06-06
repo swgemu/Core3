@@ -138,6 +138,7 @@ void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* 
 
 		Reference<TerminalItemList*> list = vendorList.get(0);
 		if (list != NULL) {
+			ReadLocker rlocker(list);
 
 			for (int j = 0; j < list->size(); ++j) {
 				ManagedReference<AuctionItem*> item = list->get(j);
