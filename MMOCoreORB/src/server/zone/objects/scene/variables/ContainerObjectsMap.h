@@ -20,7 +20,7 @@ namespace server {
    		int operationMode;
 
    		VectorMap<uint64, ManagedReference<SceneObject*> > containerObjects;
-   		VectorMap<uint64, uint64>* oids;
+   		AtomicReference<VectorMap<uint64, uint64>*> oids;
 
    		Mutex loadMutex;
    	public:
