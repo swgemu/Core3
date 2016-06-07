@@ -801,11 +801,15 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 }
 
 void ChatManagerImplementation::sendRoomList(CreatureObject* player) {
-	Locker _locker(_this.getReferenceUnsafeStaticCast());
-
 	ChatRoomList* crl = new ChatRoomList();
 
-	HashTableIterator<unsigned int, ManagedReference<ChatRoom* > > iter = roomMap->iterator();
+	ReadLocker _locker(_this.getReferenceUnsafeStaticCast());
+
+	ChatRoomMap roomMapCopy(*roomMap);
+
+	_locker.release();
+
+	HashTableIterator<unsigned int, ManagedReference<ChatRoom* > > iter = roomMapCopy.iterator();
 
 	while (iter.hasNext()) {
 		ChatRoom* room = iter.next();
