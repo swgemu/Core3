@@ -3175,13 +3175,13 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 			if (droid == NULL) {
 				continue;
 			}
-			// only the player can benefit form thier droid
+			// only the player can benefit from their own droid
 			if( droid->getLinkedCreature() != player ) {
 				continue;
 			}
 			// check the droid
 			station = droid->getCraftingStation(type);
-			if (station != NULL) {
+			if (station != NULL && droid->hasPower()){
 				return station;
 			}
 		}
