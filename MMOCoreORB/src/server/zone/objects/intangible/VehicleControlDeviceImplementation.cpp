@@ -225,7 +225,7 @@ void VehicleControlDeviceImplementation::destroyObjectFromDatabase(bool destroyC
 	if (controlledObject != NULL) {
 		Locker locker(controlledObject);
 
-		//ManagedReference<CreatureObject*> object = controlledObject.castTo<CreatureObject*>()->getLinkedCreature();
+		ManagedReference<CreatureObject*> player = controlledObject.castTo<CreatureObject*>()->getLinkedCreature();
 		ManagedReference<CreatureObject*> object = controlledObject->getSlottedObject("rider").castTo<CreatureObject*>();
 
 		if (object != NULL) {
@@ -246,6 +246,7 @@ void VehicleControlDeviceImplementation::destroyObjectFromDatabase(bool destroyC
 		}
 
 		controlledObject->destroyObjectFromDatabase(true);
+		//NEE FIX THIS MAKE NEW BOOL? player->sendSystemMessage("@pet_menu:vehicle_released"); // You destroy that vehicle.
 	}
 
 	IntangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
@@ -282,7 +283,7 @@ bool VehicleControlDeviceImplementation::canBeTradedTo(CreatureObject* player, C
 	}
 
 	if( vehiclesInDatapad >= maxStoredVehicles){
-		player->sendSystemMessage("That person has too many vehicles in their datapad");
+		player->sendSystemMessage("That player has too many vehicles in their datapad");
 		receiver->sendSystemMessage("@pet/pet_menu:has_max_vehicle"); // You already have the maximum number of vehicles that you can own.
 		return false;
 	}

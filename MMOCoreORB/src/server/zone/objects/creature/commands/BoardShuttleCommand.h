@@ -72,6 +72,11 @@ public:
 			return GENERALERROR;
 		}
 
+		if (creature->isRidingMount()) {
+			creature->sendSystemMessage("@travel:no_pets"); //You cannot board the shuttle when you are riding on a pet or in a vehicle.
+			return GENERALERROR;
+		}
+
 		// Get tickets user has in inventory for this location
 		SortedVector<ManagedReference<TicketObject*> > tickets = findTicketsInInventory(creature, closestPoint);
 
@@ -206,7 +211,7 @@ public:
 
 		Locker ticketLocker(ticketObject);
 
-		//remove the ticket from inventory and destory it.
+		//remove the ticket from inventory and destroy it.
 		ticketObject->destroyObjectFromWorld(true);
 		ticketObject->destroyObjectFromDatabase(true);
 
@@ -253,6 +258,7 @@ private:
 		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		ManagedReference<SuiListBox*> suiListBox = new SuiListBox(player, SuiWindowType::TRAVEL_TICKET_SELECTION);
+		creature->sendSystemMessage("@travel:boarding_ticket_selection"); //You must select a ticket to use before boarding.
 		suiListBox->setPromptTitle("Select Destination");
 		suiListBox->setPromptText("Select Destination");
 

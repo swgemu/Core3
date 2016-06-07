@@ -245,7 +245,7 @@ int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject
 	ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
 
 	if (linkedCreature != NULL) {
-		linkedCreature->sendSystemMessage("@pet/pet_menu:veh_disabled");
+		linkedCreature->sendSystemMessage("@pet/pet_menu:veh_disabled"); // Your vehicle has been disabled!
 
 		ManagedReference<VehicleObject*> vehicle = _this.getReferenceUnsafeStaticCast();
 		String vehicleName = vehicle->getDisplayedName();
@@ -253,6 +253,12 @@ int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject
 		{
 			UnicodeString disabledName = "(disabled) " + vehicleName;
 			vehicle->setCustomObjectName(disabledName, true);
+		}
+
+		if (linkedCreature->isRidingMount()) {
+			linkedCreature->dismount();
+			linkedCreature->isKnockedDown();
+			return true;
 		}
 
 		try {
