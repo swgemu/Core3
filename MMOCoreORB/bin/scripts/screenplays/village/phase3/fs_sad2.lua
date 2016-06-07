@@ -49,6 +49,27 @@ function FsSad2:getTasksSinceLastTimestamp(pPlayer)
 	return tonumber(count)
 end
 
+function FsSad2:recreateCampIfDespawned(pPlayer)
+	local curQuest = -1
+	for i = 1, 8, 1 do
+		local questID = getPlayerQuestID("fs_quests_sad2_task" .. i)
+
+		if QuestManager.hasActiveQuest(pPlayer, questID) then
+			curQuest = i
+		end
+	end
+
+	if (curQuest == -1) then
+		return
+	end
+
+	local FsSad2Theater = self.theaterTable[curQuest]
+
+	if (not FsSad2Theater:hasTaskStarted(pPlayer)) then
+		FsSad2Theater:start(pPlayer)
+	end
+end
+
 function FsSad2:acceptNextTask(pPlayer)
 	local lastTimestamp = self:getLastTimestamp(pPlayer)
 
@@ -83,7 +104,6 @@ function FsSad2:acceptNextTask(pPlayer)
 					local newQuestID = getPlayerQuestID("fs_quests_sad2_task" .. i + 1)
 					self:startTask(pPlayer, newQuestID, i + 1)
 				end
-			else
 			end
 		end
 	end
@@ -126,7 +146,7 @@ function FsSad2:doPhaseChangeFail(pPlayer)
 			QuestManager.resetQuest(pPlayer, questID)
 		end
 	end
-	
+
 	SuiRadiationSensor:removeSensor(pPlayer)
 end
 

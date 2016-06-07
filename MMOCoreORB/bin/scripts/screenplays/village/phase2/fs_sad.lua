@@ -49,6 +49,27 @@ function FsSad:getTasksSinceLastTimestamp(pPlayer)
 	return tonumber(count)
 end
 
+function FsSad:recreateCampIfDespawned(pPlayer)
+	local curQuest = -1
+	for i = 1, 8, 1 do
+		local questID = getPlayerQuestID("fs_quests_sad_task" .. i)
+
+		if QuestManager.hasActiveQuest(pPlayer, questID) then
+			curQuest = i
+		end
+	end
+
+	if (curQuest == -1) then
+		return
+	end
+
+	local FsSadTheater = self.theaterTable[curQuest]
+
+	if (not FsSadTheater:hasTaskStarted(pPlayer)) then
+		FsSadTheater:start(pPlayer)
+	end
+end
+
 function FsSad:acceptNextTask(pPlayer)
 	local lastTimestamp = self:getLastTimestamp(pPlayer)
 
