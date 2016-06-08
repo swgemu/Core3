@@ -51,8 +51,8 @@ object_tangible_event_perk_imperial_landing_party_atat_theater = object_tangible
 	objectMenuComponent = "EventPerkMenuComponent",
 
 	childObjects = {
-		{ templateFile = "object/static/structure/general/banner_imperial_style_01.iff", x = -3.89, z = 11.13, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/structure/general/banner_imperial_style_01.iff", x = 10.34, z = 11.35, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/general/banner_imperial_style_01.iff", x = -3.89, z = 0, y = 11.13, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/general/banner_imperial_style_01.iff", x = 10.34, z = 0, y = 11.35, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/mobile/dressed_stormtrooper_m.iff", x = 0.01, z = 0, y = 18.61, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/mobile/dressed_stormtrooper_m.iff", x = -1.75, z = 0, y = 16.25, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/mobile/dressed_stormtrooper_m.iff", x = 4.13, z = 0, y = 16.87, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
@@ -64,7 +64,7 @@ object_tangible_event_perk_imperial_landing_party_atat_theater = object_tangible
 		{ templateFile = "object/mobile/dressed_stormtrooper_m.iff", x = 2, z = 0, y = 16.5, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/mobile/dressed_stormtrooper_m.iff", x = 0.14, z = 0, y = 16.61, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/mobile/dressed_tie_fighter_m.iff", x = 10.48, z = 0, y = -5.67, ow = 0.73934, ox = 0, oy = -0.67334, oz = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/mobile/atat.iff", x = 2.84  -1.76, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/mobile/atat.iff", x = 2.84, z = 0, y = -1.76, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
 	},
 }
 
