@@ -57,6 +57,8 @@ function villageDageerinPhase3ConvoHandler:runScreenHandlers(conversationTemplat
 		end
 	elseif (screenID == "come_back_when_eliminated" or screenID == "intro_reward") then
 		FsSad2:acceptNextTask(conversingPlayer)
+	elseif (screenID == "intro_on_task") then
+		FsSad2:recreateCampIfDespawned(conversingPlayer)
 	end
 
 	return conversationScreen
