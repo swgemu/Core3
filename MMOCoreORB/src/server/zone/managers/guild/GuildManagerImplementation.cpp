@@ -245,8 +245,9 @@ void GuildManagerImplementation::processGuildUpdate(GuildObject* guild) {
 			params.setStringId("@guild:open_elections_email_body"); // Your guild has started an election for a new guild leader! You may vote at the guild terminal in your PA Hall. If you are a full member of the guild, you may opt to run for the position of guild leader by registering at the guild terminal. A new guild leader will be elected in exactly two weeks. The guild member with the most votes at that time will become guild leader.
 		} else {
 			CreatureObject* leaderCreo = leader.castTo<CreatureObject*>();
+			auto leaderGhost = leaderCreo->getPlayerObject();
 
-			if (leaderCreo->getPlayerObject()->getDaysSinceLastLogout() >= 30) {
+			if ((leaderGhost == NULL) || (leaderGhost->getDaysSinceLastLogout() >= 30)) {
 				startElections = true;
 				params.setStringId("@guild:open_elections_absent_email_body"); // Your guild leader has not logged in for an extended period of time. In order to enable your guild to continue to operate efficiently, the guild leader voting system has been enabled. You may vote at the guild terminal in your PA Hall. If you are a full member of the guild, you may opt to run for the position of guild leader by registering at the guild terminal. A new guild leader will be elected in exactly two weeks. The guild member with the most votes at that time will become guild leader.
 			}
