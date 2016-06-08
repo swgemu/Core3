@@ -239,7 +239,7 @@ int VehicleObjectImplementation::healDamage(TangibleObject* healer, int damageTy
 	return TangibleObjectImplementation::healDamage(healer, damageType, damage, notifyClient);
 }
 
-int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
+int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition, bool isCombatAction) {
 	unlock();
 
 	ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();

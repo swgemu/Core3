@@ -203,7 +203,7 @@ class VehicleObject extends CreatureObject {
 	 */
 	@preLocked
 	@arg1preLocked
-	public native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
+	public native int notifyObjectDestructionObservers(TangibleObject attacker, int condition, boolean isCombatAction);
 
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
