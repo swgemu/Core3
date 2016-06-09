@@ -65,8 +65,10 @@ public:
 			if(type.toLowerCase() == "-c") {
 				targetCreature = playerManager->getPlayer(name);
 
-				if (targetCreature != NULL)
+				if (targetCreature != NULL) {
 					account = targetCreature->getPlayerObject()->getAccount();
+					account->updateFromDatabase();
+				}
 				
 			} else if(type.toLowerCase() == "-a") {
 
