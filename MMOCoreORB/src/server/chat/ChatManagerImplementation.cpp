@@ -790,7 +790,7 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 			if (ghost == NULL)
 				continue;
 
-			if (!ghost->isIgnoring(firstName) && creature->isInRange(sender, range)) {
+			if ((!ghost->isIgnoring(firstName) || !sender->isPlayerCreature()) && creature->isInRange(sender, range)) {
 				Emote* emsg = new Emote(creature, sender, targetid, emoteid, showtext);
 				creature->sendMessage(emsg);
 
@@ -1001,7 +1001,7 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* player, con
 					if (ghost == NULL)
 						continue;
 
-					if (!ghost->isIgnoring(firstName) || godMode) {
+					if (!ghost->isIgnoring(firstName) || !player->isPlayerCreature() || godMode) {
 						SpatialChat* cmsg = NULL;
 
 						if (param == NULL) {
@@ -1113,7 +1113,7 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* player, Str
 					if (ghost == NULL)
 						continue;
 
-					if (!ghost->isIgnoring(firstName) || godMode) {
+					if (!ghost->isIgnoring(firstName) || !player->isPlayerCreature() || godMode) {
 						SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodType, spatialChatType);
 
 						creature->sendMessage(cmsg);

@@ -1160,10 +1160,7 @@ class PlayerObject extends IntangibleObject {
 		return friendList.size();
 	}
 	
-	@dirty
-	public boolean isIgnoring(final string name) {
-		return ignoreList.contains(name);
-	}
+	public native boolean isIgnoring(final string name);
 	
 	public void addReverseFriend(final string name) {
 		friendList.addReversePlayer(name);
