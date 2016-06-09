@@ -712,8 +712,12 @@ void ChatManagerImplementation::handleChatEnterRoomById(CreatureObject* player, 
 	}
 
 	//Add player to the room and notify everyone in room.
-	room->addPlayer(player);
-	room->broadcastMessage(coer);
+	if(room->hasPlayer(player)) {
+		player->sendMessage(coer);
+	} else {
+		room->addPlayer(player);
+		room->broadcastMessage(coer);
+	}
 
 }
 
