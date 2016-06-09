@@ -83,8 +83,10 @@ public:
 					try {
 						account = AccountManager::getAccount(Long::valueOf(name), true);
 					} catch(Exception& e) {
-
+						
 					}
+				} else {
+					account->updateFromDatabase();
 				}
 			}  else if(type.toLowerCase() == "-b") {
 				creature->sendSystemMessage("Coming soon");
