@@ -290,9 +290,9 @@ public:
 	const static int PETDEED = 0x800003;
 	const static int DROIDDEED = 0x800004;
 	const static int VEHICLEDEED = 0x800005;
+	const static int RESOURCEDEED = 0x800006;
 
 	// Not in client **********
-	const static int RESOURCEDEED = 0x800006;
 	const static int EVENTPERKDEED = 0x800007;
 	const static int VETHARVESTERDEED = 0x800008;
 	// ************************
