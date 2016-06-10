@@ -86,6 +86,8 @@ public:
 						
 					}
 				} else {
+					Locker accLocker(account);
+
 					account->updateFromDatabase();
 				}
 			}  else if(type.toLowerCase() == "-b") {
