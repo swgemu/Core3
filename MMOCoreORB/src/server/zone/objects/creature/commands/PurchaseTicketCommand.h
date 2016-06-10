@@ -171,6 +171,7 @@ public:
 				suiBox->setPromptText("You do not have sufficient funds for that.");
 
 				creature->sendMessage(suiBox->generateMessage());
+				creature->sendSystemMessage("@travel:short_funds"); //You do not have enough money to complete the ticket purchase.
 				return GENERALERROR;
 			}
 
