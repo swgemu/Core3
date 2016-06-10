@@ -34,7 +34,7 @@ public:
 		if (droid == NULL)
 			return GENERALERROR;
 
-		// we nee the owner
+		// we need the owner
 		ManagedReference<CreatureObject*> owner = droid->getLinkedCreature();
 
 		if (owner == NULL)
@@ -64,19 +64,22 @@ public:
 		Reference<CreatureObject*> target = server->getZoneServer()->getObject(targetID, true).castTo<CreatureObject*>();
 		if (target == NULL || !target->isCreature()) {
 			droid->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
-			return GENERALERROR;
+			owner->sendSystemMessage("@droid_modules:invalid_trap_target"); // "That is not a valid target."
+			return INVALIDTARGET;
 		}
 
 		// target must be attackable
 		if (!(target->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE)) {
 			droid->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
-			return GENERALERROR;
+			owner->sendSystemMessage("@droid_modules:invalid_trap_target"); // "That is not a valid target."
+			return INVALIDTARGET;
 		}
 
 		// Check range to target
 		if (!checkDistance(droid, target, 64.0f)) { // traps via launcher get their own range
 			droid->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
-			return GENERALERROR;
+			owner->sendSystemMessage("@droid_modules:target_too_far"); // "That target is out of range."
+			return TOOFAR;
 		}
 
 		// check droid state
@@ -129,7 +132,7 @@ public:
 			}
 
 			int trapBonus = module->getTrapBonus();
-			// trapping skill gets modified by the droids trap bonus
+			// trapping skill gets modified by the droid's trap bonus
 			int bonus = DroidMechanics::determineDroidSkillBonus(trappingSkill,trapBonus,trappingSkill);
 
 			if (trapBonus > trappingSkill)
