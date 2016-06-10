@@ -69,11 +69,11 @@ public:
 
 		// Reschedule task if next effect is valid
 		uint64 delay = (uint64)module->getCurrentDelay() * 1000;
-		if( delay > 0 && module->nextEffect() ){
+		if (delay > 0 && module->nextEffect()) {
 			reschedule( delay );
+		} else {
+			droid->removePendingTask("droid_effects");
 		}
-
-		droid->removePendingTask("droid_effects");
 
 	}
 
