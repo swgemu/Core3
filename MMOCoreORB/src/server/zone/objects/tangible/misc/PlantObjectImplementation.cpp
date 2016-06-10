@@ -203,6 +203,8 @@ void PlantObjectImplementation::sendResourceSUI(CreatureObject* player, int type
 void PlantObjectImplementation::initializePlant(int size) {
 	lastPulse.updateToCurrentTime();
 
+	plantSize = size;
+
 	if (size == 1) {
 		idealWaterLevel = 30 + System::random(40);
 		idealNutrientLevel = 30 + System::random(40);
