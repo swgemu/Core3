@@ -2648,3 +2648,7 @@ void PlayerObjectImplementation::doFieldFactionChange(int newStatus) {
 	parent->sendMessage(inputbox->generateMessage());
 }
 
+bool PlayerObjectImplementation::isIgnoring(const String& name) {
+	return !name.isEmpty() && ignoreList.contains(name);
+}
+
