@@ -1586,7 +1586,7 @@ void CombatManager::doLightsaberBlock(TangibleObject* attacker, WeaponObject* we
 
 void CombatManager::showHitLocationFlyText(CreatureObject *attacker, CreatureObject *defender, uint8 location) {
 
-	if (defender->isVehicleObject() || defender->isTurret())
+	if (defender->isVehicleObject())
 		return;
 
 	ShowFlyText* fly = NULL;
