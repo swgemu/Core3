@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_006a6c1a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CombatQueueCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-06-11T14:02:27Z",
+      "side": 1,
+      "message": "You should have an \u0026\u0026 instead of ||.\n\nAdditionally, isInBountyMission shouldn\u0027t be in CreatureObject. It should probably be in MissionManager instead. I know you didn\u0027t add it, but it\u0027s out of place and needs to be moved. That will probably take a fair amount of refactoring to do.\n\nOn top of that, that method makes the assumption that the first arg is the BH and the second arg is the target. You\u0027re only checking it one way. If creature is a BH with targetCreature\u0027s mission then it will properly return true but if targetCreature is a BH with creature\u0027s mission it will return false. The method needs to either be changed to check both ways or you need to call it twice. I think the former would probably be more logically aligned with the method\u0027s name though we\u0027d need to see where else it is used to determine the best course to take.",
+      "revId": "ceffd4154c467c6cbc7da6e5c7dd4a22da11cb74",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
