@@ -41,13 +41,11 @@
 --this exception also makes it possible to release a modified version
 
 
-object_tangible_deed_event_perk_bantha_static_deed = object_tangible_deed_event_perk_shared_bantha_static_deed:new {
-	templateType = EVENTPERKDEED,
-	gameObjectType = 8388615,
-	noTrade = 1,
-
-	generatedObjectTemplate = "object/tangible/event_perk/static_bantha_saddle.iff",
-	perkType = STATIC,
+object_tangible_event_perk_static_bantha_saddle = object_mobile_shared_bantha_saddle:new {
+	objectMenuComponent = "EventPerkMenuComponent",
+	dataObjectComponent = "EventPerkDataComponent",
+	attributeListComponent = "EventPerkAttributeListComponent",
+	customName = "a bantha mount"
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_bantha_static_deed, "object/tangible/deed/event_perk/bantha_static_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_event_perk_static_bantha_saddle, "object/tangible/event_perk/static_bantha_saddle.iff")
