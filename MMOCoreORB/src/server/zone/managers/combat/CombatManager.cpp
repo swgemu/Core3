@@ -1607,6 +1607,10 @@ void CombatManager::showHitLocationFlyText(CreatureObject *attacker, CreatureObj
 		fly = new ShowFlyText(defender, "combat_effects", "hit_rleg", 0, 0xFF, 0);
 		break;
 	}
+
+	if (defender->isVehicleObject() || defender->isTurret())
+		return;
+
 	if(fly != NULL)
 		attacker->sendMessage(fly);
 }
