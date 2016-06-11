@@ -16,7 +16,7 @@ public:
 
 	DragIncapacitatedPlayerCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
-		
+
 		maxRange = 31.0;
 		maxMovement = 5.0;
 		needsConsent = true;
@@ -90,7 +90,7 @@ public:
 		if (sqDistance > maxRange*maxRange) {
 			StringIdChatParameter stringId("healing_response", "healing_response_b1"); //"Your maximum drag range is %DI meters! Try getting closer."
 			stringId.setDI(maxRange);
-			player->sendSystemMessage(stringId); 
+			player->sendSystemMessage(stringId);
 			return;
 		}
 
@@ -162,6 +162,7 @@ public:
 
 		//Visuals.
 		targetPlayer->showFlyText("base_player", "fly_drag", 255, 0, 0);
+		//TODO: Figure out why all players--except for the dragged corpsed player--are only seeing the initial 5m first drag onscreen serverside but not any subsequent drags.
 
 		StringIdChatParameter stringId("healing_response", "healing_response_b5"); //"Attempting to drag %TT to your location..."
 		stringId.setTT(targetPlayer->getObjectID());
@@ -208,8 +209,25 @@ public:
 		}
 
 		if (!CollisionManager::checkLineOfSight(creature, targetPlayer)) {
-			creature->sendSystemMessage("@container_error_message:container18");
+			StringIdChatParameter nocansee;
+			nocansee.setStringId("@container_error_message:container18_prose"); //You can't see %TT. You may have to move closer to it.
+			nocansee.setTT(target);
+			creature->sendSystemMessage(nocansee);
 			return GENERALERROR;
+		}
+
+		if (targetPlayer->getLocalZone() == NULL) {
+			player->sendSystemMessage("@error_message:corpse_drag_inside"); //You cannot drag a corpse within a building. Go outside to have your corpse ejected.
+			return GENERALERROR;
+		}
+
+		if (creature->getLocalZone() == NULL) {
+			if (targetPlayer->getLocalZone() != NULL) {
+				player->sendSystemMessage("@error_message:corpse_drag_into"); //You cannot drag a corpse into a structure.
+				return GENERALERROR;
+			} else
+
+			return true;
 		}
 
 		Reference<CellObject*> targetCell = creature->getParent().castTo<CellObject*>();
@@ -219,7 +237,10 @@ public:
 
 			if (!perms->hasInheritPermissionsFromParent()) {
 				if (!targetCell->checkContainerPermission(targetPlayer, ContainerPermissions::WALKIN)) {
-					creature->sendSystemMessage("@container_error_message:container18");
+					StringIdChatParameter nocansee;
+					nocansee.setStringId("@container_error_message:container18_prose");
+					nocansee.setTT(target);
+					creature->sendSystemMessage(nocansee);
 					return GENERALERROR;
 				}
 			}

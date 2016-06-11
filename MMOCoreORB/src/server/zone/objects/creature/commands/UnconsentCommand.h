@@ -24,7 +24,7 @@ public:
 		PlayerObject* ghost = player->getPlayerObject();
 		ghost->removeFromConsentList(name);
 
-		StringIdChatParameter stringId("base_player", "prose_unconsent");
+		StringIdChatParameter stringId("base_player", "prose_unconsent"); //You revoke your consent from %TO.
 		stringId.setTO(name);
 		player->sendSystemMessage(stringId);
 	}
@@ -40,7 +40,12 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		CreatureObject* player = cast<CreatureObject*>(creature);
+		PlayerObject* ghost = creature->getPlayerObject();
+
+		if (arguments.isEmpty() && !creature->getTargetID()) {
+			creature->sendSystemMessage("@error_message:syntax_unconsent"); //syntax: /unconsent {optionally, use commas to seperate several player names}
+			return GENERALERROR;
+		} //TODO: How can we allow unconsent to be fired from toolbar with the command icon??
 
 		if (!arguments.isEmpty()) {
 			StringTokenizer tokenizer(arguments.toString());
@@ -51,22 +56,36 @@ public:
 				tokenizer.getStringToken(name);
 				name = name.toLowerCase();
 
-				unconscent(player, name);
+				PlayerManager* playerManager = server->getPlayerManager();
+				bool validName = playerManager->existsName(name);
+
+				if (!validName) {
+					creature->sendSystemMessage("@ui_cmnty:friend_location_failed_noname"); //No player with that name exists.
+					return GENERALERROR;
+				}
+
+				if (ghost != NULL && !ghost->hasInConsentList(name)) {
+					creature->sendSystemMessage("That player isn't on your consent list.");
+					return GENERALERROR;
+				}
+
+				if (server->getZoneServer()->getPlayerManager()->existsName(name))
+					unconscent(creature, name);
 			}
 		} else {
 
 			ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+			CreatureObject* playerTarget = cast<CreatureObject*>( object.get());
 
 			if (object == NULL || !object->isPlayerCreature() || object == creature)
 				return INVALIDTARGET;
 
-			CreatureObject* playerTarget = cast<CreatureObject*>( object.get());
+			if (playerTarget != NULL && playerTarget->isPlayerCreature())
+				unconscent(creature, playerTarget->getFirstName().toLowerCase());
+				StringIdChatParameter stringId2("base_player", "prose_lost_consent"); //%TO no longer consents you.
+				stringId2.setTO(creature->getObjectID());
+				playerTarget->sendSystemMessage(stringId2);
 
-			unconscent(player, playerTarget->getFirstName().toLowerCase());
-
-			StringIdChatParameter stringId2("base_player", "prose_lost_consent");
-			stringId2.setTO(creature->getObjectID());
-			playerTarget->sendSystemMessage(stringId2);
 		}
 
 		return SUCCESS;
