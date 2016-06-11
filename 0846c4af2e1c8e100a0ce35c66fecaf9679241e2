@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_807e7ce3",
+        "filename": "MMOCoreORB/src/server/zone/managers/faction/Faction.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2016-06-11T13:21:07Z",
+      "side": 0,
+      "message": "initialize both your new added members",
+      "revId": "0846c4af2e1c8e100a0ce35c66fecaf9679241e2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
