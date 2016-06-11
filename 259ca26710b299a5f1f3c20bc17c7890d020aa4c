@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_c0731414",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/dathomir/dolac_dark_jedi_knight.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-06-11T14:15:07Z",
+      "side": 1,
+      "message": "Doing this will only cause these npcs to say broken strings. The breech strings are already used by the quest logic and should be playing as a player engages or approaches the mob (depending on mission type).\n\nThere shouldn\u0027t be a bug here that needs fixing unless something broke breech strings for all task globally.",
+      "revId": "259ca26710b299a5f1f3c20bc17c7890d020aa4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
