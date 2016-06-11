@@ -1586,6 +1586,9 @@ void CombatManager::doLightsaberBlock(TangibleObject* attacker, WeaponObject* we
 
 void CombatManager::showHitLocationFlyText(CreatureObject *attacker, CreatureObject *defender, uint8 location) {
 
+	if (defender->isVehicleObject() || defender->isTurret())
+		return;
+
 	ShowFlyText* fly = NULL;
 	switch(location) {
 	case HIT_HEAD:
@@ -1607,6 +1610,7 @@ void CombatManager::showHitLocationFlyText(CreatureObject *attacker, CreatureObj
 		fly = new ShowFlyText(defender, "combat_effects", "hit_rleg", 0, 0xFF, 0);
 		break;
 	}
+
 	if(fly != NULL)
 		attacker->sendMessage(fly);
 }
