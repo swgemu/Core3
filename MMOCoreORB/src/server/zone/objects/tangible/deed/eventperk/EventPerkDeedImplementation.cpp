@@ -223,6 +223,13 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 
 		zone->transferObject(object, -1, true);
 
+		if (object->getServerObjectCRC() == 0x28ABB380) // object/tangible/event_perk/static_atat.iff
+			object->setCustomObjectName("AT-AT", true);
+		else if (object->getServerObjectCRC() == 0xA8BA6347) // object/tangible/event_perk/static_atst.iff
+			object->setCustomObjectName("AT-ST", true);
+		else if (object->getServerObjectCRC() == 0x64F88E41) // object/tangible/event_perk/static_bantha_saddle.iff
+			object->setCustomObjectName("a bantha mount", true);
+
 		object->createChildObjects();
 		parseChildObjects(object);
 

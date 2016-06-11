@@ -46,7 +46,7 @@ object_tangible_deed_event_perk_atat_static_deed = object_tangible_deed_event_pe
 	gameObjectType = 8388615,
 	noTrade = 1,
 
-	generatedObjectTemplate = "object/mobile/atat.iff",
+	generatedObjectTemplate = "object/tangible/event_perk/static_atat.iff",
 	perkType = STATIC,
 }
 
