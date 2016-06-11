@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_403aa437",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1612,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2016-06-11T12:50:44Z",
+      "side": 1,
+      "message": "put this check before up in the beginning of the method before the \"fly\" message is created otherwise youre leaking memory",
+      "revId": "739eccf0041915863717820d12ff56fcce6358ac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
