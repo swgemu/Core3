@@ -30,13 +30,8 @@ int PlaceableLootContainerComponent::canAddObject(SceneObject* sceneObject, Scen
 
 	if(sceneObject->getContainerObjectsSize() >= 0){
 		errorDescription = "@event_perk:chest_can_not_add"; //You do not have permission to add items to this container.
-		 return TransferErrorCode::INVALIDTYPE;
+		return TransferErrorCode::CANTADD;
 	}
 
 	return 1;
 }
-
-
-
-
-
