@@ -55,6 +55,10 @@ public:
 
 		Locker clocker(vehicle, creature);
 
+		if (vehicle->getPosture() == CreaturePosture::LYINGDOWN || vehicle->getPosture() == CreaturePosture::SITTING) {
+			vehicle->setPosture(CreaturePosture::UPRIGHT);
+		}
+
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -151,7 +155,6 @@ public:
 		if(vehicle->getSpeedMultiplierMod() != 0)
 			newSpeed *= vehicle->getSpeedMultiplierMod();
 
-
 		// Add our change to the buffer history
 		changeBuffer->add(SpeedModChange(newSpeed / creature->getRunSpeed()));
 
@@ -159,7 +162,6 @@ public:
 
 		creature->setRunSpeed(newSpeed);
 		creature->addMountedCombatSlow();
-
 
 		return SUCCESS;
 	}
