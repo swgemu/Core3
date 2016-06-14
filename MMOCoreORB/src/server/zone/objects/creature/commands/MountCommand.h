@@ -48,12 +48,22 @@ public:
 			return INVALIDTARGET;
 		}
 
+		CreatureObject* mount = cast<CreatureObject*>( object.get());
+		ManagedReference<CreatureObject*> rider = object.get()->getSlottedObject("rider").castTo<CreatureObject*>();
+
 		if (!object->isVehicleObject() && !object->isMount())
 			return INVALIDTARGET;
 
 		CreatureObject* vehicle = cast<CreatureObject*>( object.get());
 
 		Locker clocker(vehicle, creature);
+
+		if (mount->getPosture() == CreaturePosture::LYINGDOWN) {
+			mount->setPosture(CreaturePosture::UPRIGHT);
+		} else if (mount->getPosture() == CreaturePosture::SITTING) {
+			if (rider->getLocomotion() != CreatureLocomotion::STATIONARY)
+				mount->setPosture(CreaturePosture::UPRIGHT);
+		}
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -151,7 +161,6 @@ public:
 		if(vehicle->getSpeedMultiplierMod() != 0)
 			newSpeed *= vehicle->getSpeedMultiplierMod();
 
-
 		// Add our change to the buffer history
 		changeBuffer->add(SpeedModChange(newSpeed / creature->getRunSpeed()));
 
@@ -159,7 +168,6 @@ public:
 
 		creature->setRunSpeed(newSpeed);
 		creature->addMountedCombatSlow();
-
 
 		return SUCCESS;
 	}
