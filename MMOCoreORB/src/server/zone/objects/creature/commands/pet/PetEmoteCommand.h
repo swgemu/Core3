@@ -93,6 +93,7 @@ public:
 			}
 		} else {
 			pet->doAnimation("happy");
+			pet->setPosture(CreaturePosture::UPRIGHT);
 		}
 
 		return SUCCESS;
@@ -121,6 +122,11 @@ public:
 				pet->storeFollowObject();
 
 				Locker clocker(controlDevice, pet);
+
+				if (pet->getPosture() == CreaturePosture::LYINGDOWN || pet->getPosture() == CreaturePosture::SITTING) {
+					pet->setPosture(CreaturePosture::UPRIGHT);
+				}
+
 				controlDevice->setLastCommand(PetManager::FOLLOW);
 
 				pet->activateInterrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
@@ -136,6 +142,5 @@ public:
 		return SUCCESS;
 	}
 };
-
 
 #endif /* PETEMOTECOMMAND_H_ */
