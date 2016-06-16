@@ -132,8 +132,10 @@ public:
 		}
 
 		//Check to see if this point can be reached from this location.
-		if (!pmDeparture->isTravelToLocationPermitted(departurePoint, arrivalPlanet, arrivalPoint))
+		if (!pmDeparture->isTravelToLocationPermitted(departurePoint, arrivalPlanet, arrivalPoint)) {
+			creature->sendSystemMessage("Shuttle boosters insufficient for destination. Interplanetary travel permitted only at STARPORTS.");
 			return GENERALERROR;
+		}
 
 		if (roundTrip && !pmArrival->isTravelToLocationPermitted(arrivalPoint, departurePlanet, departurePoint))
 			return GENERALERROR; //If they are doing a round trip, make sure they can travel back.
