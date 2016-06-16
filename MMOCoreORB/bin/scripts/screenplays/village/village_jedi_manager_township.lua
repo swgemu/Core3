@@ -10,9 +10,9 @@ VillageJediManagerTownship = ScreenPlay:new {
 
 VILLAGE_TOTAL_NUMBER_OF_PHASES = 3 -- Temporarily set to 3 for testing until fourth phase begins development
 
-local VILLAGE_PHASE_CHANGE_TIME = 48 * 60 * 60 * 1000 -- Testing value.
+--local VILLAGE_PHASE_CHANGE_TIME = 48 * 60 * 60 * 1000 -- Testing value.
 --local VILLAGE_PHASE_CHANGE_TIME = 5 * 60 * 1000
---local VILLAGE_PHASE_CHANGE_TIME = 3 * 7 * 24 * 60 * 60 * 1000 -- Three Weeks.
+local VILLAGE_PHASE_CHANGE_TIME = 1 * 7 * 24 * 60 * 60 * 1000 -- Three Weeks.
 
 -- Set the current Village Phase for the first time.
 function VillageJediManagerTownship.setCurrentPhaseInit()

@@ -43,6 +43,19 @@
 
 object_tangible_beta_beta_terminal_wound = object_tangible_beta_shared_beta_terminal_wound:new {
 
+	gameObjectType = 16400,
+			
+	maxCondition = 0,
+
+	templateType = CHARACTERBUILDERTERMINAL,
+
+	itemList = {
+		"Buff Character (5,000 Credits)", "enhance_character",
+		"Heal Mind Wounds and Battle Fatigue (Free)", "cleanse_character",
+		"Remove Buffs and Empty Stomach (Free)", "reset_buffs",
+		"Clear DoTs (Free)", "clear_dots",
+	}
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_beta_beta_terminal_wound, "object/tangible/beta/beta_terminal_wound.iff")

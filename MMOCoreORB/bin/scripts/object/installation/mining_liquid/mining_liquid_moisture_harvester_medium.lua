@@ -43,10 +43,10 @@
 
 object_installation_mining_liquid_mining_liquid_moisture_harvester_medium = object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_medium:new {
 	lotSize = 1,
-	baseMaintenanceRate = 60,
+	baseMaintenanceRate = 5,
 	-- SOLAR = 1; CHEMICAL = 2; FLORA = 3; GAS = 4; GEOTHERMAL = 5; MINERAL = 6; WATER = 7; WIND = 8; FUSION = 9;
 	installationType = 7,
-	basePowerRate = 50,
+	basePowerRate = 10,
 	width = 3,
 	length = 3,
 	objectMenuComponent = "InstallationObjectMenuComponent",

@@ -137,6 +137,24 @@ object_building_poi_scout_camp_s5 = object_building_poi_shared_scout_camp_s5:new
 			ox = 0, oy = 1, oz = 0, ow = 0,
 			cellid = -1,
 			containmentType = -1},
+
+		 {templateFile = "object/tangible/terminal/terminal_bank.iff", 
+			x = 0.5, z = 0, y = -3.5, 
+			ox = 0, oy = .72, oz = 0, ow = -.75, 
+			cellid = -1, 
+			containmentType = -1},
+		
+		{templateFile = "object/tangible/terminal/terminal_insurance.iff", 
+			x = 16, z = 0, y = 9.8, 
+			ox = 0, oy = .72, oz = 0, ow = -.75, 
+			cellid = -1, 
+			containmentType = -1},
+			
+		{templateFile = "object/tangible/beta/beta_terminal_wound.iff", 
+			x = 4.5, z = 0, y = 11.0, 
+			ox = 0, oy = .72, oz = 0, ow = -.75, 
+			cellid = -1, 
+			containmentType = -1},
 	}
 }
 

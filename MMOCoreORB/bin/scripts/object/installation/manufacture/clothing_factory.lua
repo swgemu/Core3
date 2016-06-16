@@ -44,7 +44,7 @@
 object_installation_manufacture_clothing_factory = object_installation_manufacture_shared_clothing_factory:new {
 	templateType = FACTORY,
 	lotSize = 1,
-	baseMaintenanceRate = 50,
+	baseMaintenanceRate = 15,
 	basePowerRate = 50,
 	width = 3,
 	length = 3,

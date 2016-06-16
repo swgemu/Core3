@@ -43,8 +43,8 @@
 
 object_building_player_player_guildhall_tatooine_style_02 = object_building_player_shared_player_guildhall_tatooine_style_02:new {
 	lotSize = 5,
-	baseMaintenanceRate = 100,
-	allowedZones = {"dantooine", "lok", "tatooine"},
+	baseMaintenanceRate = 12,
+	allowedZones = {"corellia", "dantooine", "lok", "naboo", "rori", "talus", "tatooine"},
 	publicStructure = 0,
 	constructionMarker = "object/building/player/construction/construction_player_guildhall_tatooine_style_02.iff",
 	length = 5,

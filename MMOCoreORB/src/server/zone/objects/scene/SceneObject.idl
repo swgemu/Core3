@@ -1163,6 +1163,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public native void rotate(int degrees);
 	
 	/**
+	* Rotate on the "Roll" X Axis and "Pitch" Y Axis. 
+	*/
+	public native void rotateXaxis(int degrees); 
+	public native void rotateYaxis(int degrees);
+	
+	/**
 	 * Sets this objects direction so that the object is facing the specified object.
 	 * @param obj The object to face.
 	 * @param notifyClient if true, updates the client with the new direction

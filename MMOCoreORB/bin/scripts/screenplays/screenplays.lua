@@ -181,6 +181,7 @@ includeFile("events/coa2Screenplay.lua")
 includeFile("events/eventPromoter.lua")
 includeFile("events/lifeDay.lua")
 includeFile("events/buffTerminalMenuComponent.lua")
+includeFile("events/AuroraSupplyCoordinator.lua")
 
 -- Hero of Tatooine
 includeFile("tasks/hero_of_tatooine/conversations/hermitConvoHandler.lua")
@@ -477,3 +478,21 @@ includeFile("record_keepers/record_keepers.lua")
 
 --Tests
 includeFile("tests/tests.lua")
+
+-- Buff Terminals
+includeFile("hondo/buff_terminals.lua")
+
+-- Merchants
+includeFile("hondo/merchants/merchant_system.lua")
+includeFile("hondo/merchants/housing_iken_wilyens.lua")
+includeFile("hondo/merchants/housing_duag_hauser.lua")
+includeFile("hondo/merchants/housing_mlo_lemo.lua")
+includeFile("hondo/merchants/vehicles_crazy_larry.lua")
+includeFile("hondo/merchants/facilities_industra_baggins.lua")
+includeFile("hondo/merchants/helper_u8l7.lua")
+includeFile("hondo/merchants/armor_volrik_lonugs.lua")
+includeFile("hondo/merchants/armor_jabba_nal_yaro.lua")
+includeFile("hondo/merchants/armor_jabba_cyan_yaro.lua")
+includeFile("hondo/merchants/weapons_yivvits.lua")
+
+

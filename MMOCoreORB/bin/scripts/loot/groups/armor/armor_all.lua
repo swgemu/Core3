@@ -102,6 +102,32 @@ armor_all = {
 		{itemTemplate = "kashyyykian_hunting_armor_bracer_r", weight = 49263},
 		{itemTemplate = "kashyyykian_hunting_armor_chest_plate", weight = 49263},
 		{itemTemplate = "kashyyykian_hunting_armor_leggings", weight = 49263},
+			-- Extremement Rare
+		
+		{itemTemplate = "atat_house_loot_deed", weight = 20000},
+		{itemTemplate = "bespin_house_loot_deed", weight = 20000},
+		{itemTemplate = "commando_house_loot_deed", weight = 30000},
+		{itemTemplate = "emperors_house_loot_deed", weight = 30000},
+		{itemTemplate = "gen_large_win_s01_loot_deed", weight = 30000},
+		{itemTemplate = "gen_large_win_s02_loot_deed", weight = 30000},
+		{itemTemplate = "gen_medium_win_s01_loot_deed", weight = 35000},
+		{itemTemplate = "gen_medium_win_s02_loot_deed", weight = 35000},
+		{itemTemplate = "gen_small_win_s01_loot_deed", weight = 35000},
+		{itemTemplate = "gen_small_win_s02_loot_deed", weight = 35000},
+		{itemTemplate = "hangar_house_loot_deed", weight = 30000},
+		{itemTemplate = "jabbas_house_loot_deed", weight = 20000},
+		{itemTemplate = "jedi_house_loot_deed", weight = 30000},
+		{itemTemplate = "musty_house_loot_deed", weight = 20000},
+		{itemTemplate = "nab_small_win_s01_loot_deed", weight = 35000},
+		{itemTemplate = "rebel_house_loot_deed", weight = 30000},
+		{itemTemplate = "relaxation_house_loot_deed", weight = 30000},
+		{itemTemplate = "sandcrawler_house_loot_deed", weight = 30000},
+		{itemTemplate = "sith_house_loot_deed", weight = 30000},
+		{itemTemplate = "tat_small_win_s01_loot_deed", weight = 35000},
+		{itemTemplate = "tree_house_loot_deed", weight = 20000},
+		{itemTemplate = "vehicle_house_loot_deed", weight = 30000},
+		{itemTemplate = "vipbunker_house_loot_deed", weight = 30000},
+		{itemTemplate = "yt1300_house_loot_deed", weight = 20000},
 	}
 }
 

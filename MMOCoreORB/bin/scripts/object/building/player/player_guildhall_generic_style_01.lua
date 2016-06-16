@@ -43,7 +43,7 @@
 
 object_building_player_player_guildhall_generic_style_01 = object_building_player_shared_player_guildhall_generic_style_01:new {
 	lotSize = 5,
-	baseMaintenanceRate = 100,
+	baseMaintenanceRate = 12,
 	allowedZones = {"corellia", "dantooine", "lok", "naboo", "rori", "talus", "tatooine"},
 	publicStructure = 0,
 	constructionMarker = "object/building/player/construction/construction_player_guildhall_corellia_style_01.iff",

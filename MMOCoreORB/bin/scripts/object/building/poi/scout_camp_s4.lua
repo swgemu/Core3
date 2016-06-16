@@ -146,6 +146,18 @@ object_building_poi_scout_camp_s4 = object_building_poi_shared_scout_camp_s4:new
 			ox = 0, oy = -.49, oz = 0, ow = .86,
 			cellid = -1,
 			containmentType = -1},
+		
+		{templateFile = "object/tangible/terminal/terminal_insurance.iff", 
+			x = 6.5, z = 0, y = -1, 
+			ox = 0, oy = .75, oz = 0, ow = -.75, 
+			cellid = -1, 
+			containmentType = -1},
+			
+	    {templateFile = "object/tangible/terminal/terminal_bank.iff", 
+			x = 4.5, z = 0, y = 7.5, 
+			ox = 0, oy = .75, oz = 0, ow = .75, 
+			cellid = -1, 
+			containmentType = -1},
 
 	}
 }

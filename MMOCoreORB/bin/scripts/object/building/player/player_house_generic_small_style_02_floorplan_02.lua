@@ -43,7 +43,7 @@
 
 object_building_player_player_house_generic_small_style_02_floorplan_02 = object_building_player_shared_player_house_generic_small_style_02_floorplan_02:new {
 	lotSize = 2,
-	baseMaintenanceRate = 16,
+	baseMaintenanceRate = 2,
 	allowedZones = {"corellia", "dantooine", "lok", "naboo", "rori", "talus", "tatooine"},
 	publicStructure = 0,
 	skillMods = {

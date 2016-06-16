@@ -124,6 +124,18 @@ object_building_poi_scout_camp_s3 = object_building_poi_shared_scout_camp_s3:new
 			ox = 0, oy = .78, oz = 0, ow = .61,
 			cellid = -1,
 			containmentType = -1},
+		
+		 {templateFile = "object/tangible/terminal/terminal_mission_rebel.iff", 
+			x = .66, z = 0, y = -2.9, 
+			ox = 0, oy = -.13, oz = 0, ow = .99, 
+			cellid = -1, 
+			containmentType = -1},
+			
+		    {templateFile = "object/tangible/terminal/terminal_mission_imperial.iff", 
+			x = 1.82, z = 0, y = 3.5, 
+			ox = 0, oy = -.99, oz = 0, ow = .13, 
+			cellid = -1, 
+			containmentType = -1},
 
 	}
 }

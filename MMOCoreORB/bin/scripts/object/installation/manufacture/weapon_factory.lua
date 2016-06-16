@@ -44,7 +44,7 @@
 object_installation_manufacture_weapon_factory = object_installation_manufacture_shared_weapon_factory:new {
 	templateType = FACTORY,
 	lotSize = 1,
-	baseMaintenanceRate = 50,
+	baseMaintenanceRate = 15,
 	basePowerRate = 50,
 	objectMenuComponent = "FactoryObjectMenuComponent",
 	length = 3,

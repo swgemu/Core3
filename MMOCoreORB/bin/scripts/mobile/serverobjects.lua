@@ -42,3 +42,6 @@ includeFile("lair/serverobjects.lua")
 
 -- Outfits
 includeFile("outfits/serverobjects.lua")
+
+-- Legend of Hondo Mobiles
+includeFile("hondo/serverobjects.lua")

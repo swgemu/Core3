@@ -47,5 +47,6 @@
 -- Server Objects
 includeFile("weapon/melee/sword/base/crafted_lightsaber_base.lua")
 includeFile("weapon/melee/sword/base/crafted_sword_base.lua")
+includeFile("weapon/melee/sword/base/generic_lightsaber_base.lua")
 includeFile("weapon/melee/sword/base/lightsaber_base.lua")
 includeFile("weapon/melee/sword/base/sword_base.lua")

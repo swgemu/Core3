@@ -1,10 +1,10 @@
 --Should all created players start with God Mode? 1 = yes, 0 = no
 freeGodMode = 0;
 --How many cash credits new characters start with after creating a character (changed during test phase, normal value is 100)
-startingCash = 100
+startingCash = 5000
 --startingCash = 100000
 --How many bank credits new characters start with after creating a character (changed during test phase, normal value is 1000)
-startingBank = 1000
+startingBank = 5000
 --startingBank = 100000
 --How many skill points a new characters start with
 skillPoints = 250
@@ -41,20 +41,30 @@ mineralTool = "object/tangible/survey_tool/survey_tool_mineral.iff"
 
 chemicalTool = "object/tangible/survey_tool/survey_tool_liquid.iff"
 
+windTool = "object/tangible/survey_tool/survey_tool_wind.iff"
+
 slitherhorn = "object/tangible/instrument/slitherhorn.iff"
 
 marojMelon = "object/tangible/food/foraged/foraged_fruit_s1.iff"
 
 x31Speeder = "object/tangible/deed/vehicle_deed/landspeeder_x31_deed.iff"
 
+backpack = "object/tangible/wearables/backpack/backpack_s01.iff"
+
+armorHead = "object/tangible/wearables/armor/tantel/armor_tantel_skreej_helmet.iff"
+
+armorChest = "object/tangible/wearables/armor/tantel/armor_tantel_skreej_chest_plate.iff"
+
+armorFeet = "object/tangible/wearables/armor/tantel/armor_tantel_skreej_boots.iff"
+
 professionSpecificItems = {
 	combat_brawler = { brawlerOneHander, brawlerTwoHander, brawlerPolearm },
 	combat_marksman = { marksmanPistol, marksmanCarbine, marksmanRifle },
-	crafting_artisan = { genericTool, mineralTool, chemicalTool },
+	crafting_artisan = { genericTool, mineralTool, chemicalTool, windTool },
 	jedi = { },
 	outdoors_scout = { genericTool },
 	science_medic = { foodTool },
 	social_entertainer = { slitherhorn }
 }
 
-commonStartingItems = { marojMelon, survivalKnife, x31Speeder }
+commonStartingItems = { marojMelon, survivalKnife, x31Speeder, backpack, armorHead, armorChest, armorFeet }

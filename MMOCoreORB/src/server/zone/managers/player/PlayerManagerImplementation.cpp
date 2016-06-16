@@ -3175,13 +3175,13 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 			if (droid == NULL) {
 				continue;
 			}
-			// only the player can benefit from their own droid
+			// only the player can benefit form thier droid
 			if( droid->getLinkedCreature() != player ) {
 				continue;
 			}
 			// check the droid
 			station = droid->getCraftingStation(type);
-			if (station != NULL && droid->hasPower()){
+			if (station != NULL) {
 				return station;
 			}
 		}
@@ -4912,19 +4912,36 @@ void PlayerManagerImplementation::enhanceCharacter(CreatureObject* player) {
 
 	bool message = true;
 
-	message = message && doEnhanceCharacter(0x98321369, player, medicalBuff, medicalDuration, BuffType::MEDICAL, 0); // medical_enhance_health
-	message = message && doEnhanceCharacter(0x815D85C5, player, medicalBuff, medicalDuration, BuffType::MEDICAL, 1); // medical_enhance_strength
-	message = message && doEnhanceCharacter(0x7F86D2C6, player, medicalBuff, medicalDuration, BuffType::MEDICAL, 2); // medical_enhance_constitution
-	message = message && doEnhanceCharacter(0x4BF616E2, player, medicalBuff, medicalDuration, BuffType::MEDICAL, 3); // medical_enhance_action
-	message = message && doEnhanceCharacter(0x71B5C842, player, medicalBuff, medicalDuration, BuffType::MEDICAL, 4); // medical_enhance_quickness
-	message = message && doEnhanceCharacter(0xED0040D9, player, medicalBuff, medicalDuration, BuffType::MEDICAL, 5); // medical_enhance_stamina
+	// Legend of Hondo Customization
+	if (player->getCashCredits() < 5000){
+		player->sendSystemMessage("Sorry, you don't have enough cash on hand to purchase a buff.");
+		return;
+	} else if (player->getCashCredits() >= 5000){
+		// Charge player for buffs
+		player->subtractCashCredits(5000);
+		
+		// Reduce the buffs to secondary stats.
+		// Further reduced the regen stats.
+		// medicalBuff and performanceBuff are set in player_manager.lua
+		int myHAM = medicalBuff;
+		int myHAMCost = performanceBuff;
+		int myRegen = performanceBuff / 4;
+	
 
-	message = message && doEnhanceCharacter(0x11C1772E, player, performanceBuff, performanceDuration, BuffType::PERFORMANCE, 6); // performance_enhance_dance_mind
-	message = message && doEnhanceCharacter(0x2E77F586, player, performanceBuff, performanceDuration, BuffType::PERFORMANCE, 7); // performance_enhance_music_focus
-	message = message && doEnhanceCharacter(0x3EC6FCB6, player, performanceBuff, performanceDuration, BuffType::PERFORMANCE, 8); // performance_enhance_music_willpower
+		message = message && doEnhanceCharacter(0x98321369, player, myHAM, medicalDuration, BuffType::MEDICAL, 0); // medical_enhance_health
+		message = message && doEnhanceCharacter(0x815D85C5, player, myHAMCost, medicalDuration, BuffType::MEDICAL, 1); // medical_enhance_strength
+		message = message && doEnhanceCharacter(0x7F86D2C6, player, myRegen, medicalDuration, BuffType::MEDICAL, 2); // medical_enhance_constitution
+		message = message && doEnhanceCharacter(0x4BF616E2, player, myHAM, medicalDuration, BuffType::MEDICAL, 3); // medical_enhance_action
+		message = message && doEnhanceCharacter(0x71B5C842, player, myHAMCost, medicalDuration, BuffType::MEDICAL, 4); // medical_enhance_quickness
+		message = message && doEnhanceCharacter(0xED0040D9, player, myRegen, medicalDuration, BuffType::MEDICAL, 5); // medical_enhance_stamina
 
-	if (message && player->isPlayerCreature())
-		player->sendSystemMessage("An unknown force strengthens you for battles yet to come.");
+		message = message && doEnhanceCharacter(0x11C1772E, player, myHAM, performanceDuration, BuffType::PERFORMANCE, 6); // performance_enhance_dance_mind
+		message = message && doEnhanceCharacter(0x2E77F586, player, myHAMCost, performanceDuration, BuffType::PERFORMANCE, 7); // performance_enhance_music_focus
+		message = message && doEnhanceCharacter(0x3EC6FCB6, player, myRegen, performanceDuration, BuffType::PERFORMANCE, 8); // performance_enhance_music_willpower
+
+		if (message && player->isPlayerCreature())
+			player->sendSystemMessage("Your stats have been increased. Have a wonderful day!");
+	}
 }
 
 void PlayerManagerImplementation::sendAdminJediList(CreatureObject* player) {

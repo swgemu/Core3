@@ -173,10 +173,6 @@ includeFile("conversations/village/phase2/whip_phase2_conv.lua")
 includeFile("conversations/village/phase2/elder_phase2_conv.lua")
 includeFile("conversations/village/phase2/dageerin_phase2_conv.lua")
 includeFile("conversations/village/phase3/dageerin_phase3_conv.lua")
-includeFile("conversations/village/phase4/sarguillo_phase4_conv.lua")
-includeFile("conversations/village/phase4/sivarra_phase4_conv.lua")
-includeFile("conversations/village/phase4/chief_engineer_phase4_conv.lua")
-includeFile("conversations/village/phase4/fs_gadget_specialist_phase4_conv.lua")
 
 -- Race Tracks
 includeFile("conversations/racetracks/agrilatswampconversation.lua")
@@ -198,3 +194,17 @@ includeFile("conversations/record_keepers/record_keeper_rebel_conv.lua")
 
 -- Personality Conversations
 includeFile("conversations/pet/pets_conv.lua")
+includeFile("conversations/events/Aurora_Supply_Coordinator_conv.lua")
+
+-- Merchants
+includeFile("conversations/hondo/merchants/crazy_larry_conv.lua")
+includeFile("conversations/hondo/merchants/iken_wilyens_conv.lua")
+includeFile("conversations/hondo/merchants/duag_hauser_conv.lua")
+includeFile("conversations/hondo/merchants/industra_baggins_conv.lua")
+includeFile("conversations/hondo/merchants/u8l7_conv.lua")
+includeFile("conversations/hondo/merchants/volrik_lonugs_conv.lua")
+includeFile("conversations/hondo/merchants/nal_yaro_conv.lua")
+includeFile("conversations/hondo/merchants/cyan_yaro_conv.lua")
+includeFile("conversations/hondo/merchants/yivvits_conv.lua")
+includeFile("conversations/hondo/merchants/mlo_lemo_conv.lua")
+

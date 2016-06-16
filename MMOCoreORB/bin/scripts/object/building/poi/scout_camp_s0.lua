@@ -86,7 +86,13 @@ object_building_poi_scout_camp_s0 = object_building_poi_shared_scout_camp_s0:new
 			x = .863, z = 0, y = -2.75,
 			ox = 0, oy = 0, oz = -.009319, ow = -.999957,
 			cellid = -1,
-			containmentType = -1}
+			containmentType = -1},
+
+		 {templateFile = "object/tangible/terminal/terminal_mission_scout.iff", 
+			x = -1, z = 0, y = -1, 
+			ox = 0, oy = .5, oz = 0, ow = .87, 
+			cellid = -1, 
+			containmentType = -1},
 	}
 }
 

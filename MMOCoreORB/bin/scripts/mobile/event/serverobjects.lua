@@ -4,4 +4,4 @@ includeFile("event/life_day/kkatamk.lua")
 includeFile("event/life_day/oraalarri.lua")
 includeFile("event/life_day/radrrl.lua")
 includeFile("event/life_day/tebeurra.lua")
-
+includeFile("event/Aurora_Supply_Coordinator.lua")
