@@ -13,6 +13,8 @@ class EventPerkDeed extends Deed {
 
 	protected int perkType;
 
+	protected unsigned long generatedTimeToLive;
+
 	@dereferenced
 	protected Time purchaseTime;
 
@@ -29,6 +31,8 @@ class EventPerkDeed extends Deed {
 		Logger.setLoggingName("EventPerkDeed");
 
 		perkType = 0;
+
+		generatedTimeToLive = 0;
 
 		purchaseTime.updateToCurrentTime();
 

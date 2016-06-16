@@ -47,6 +47,7 @@ object_tangible_deed_event_perk_lottery_droid_deed = object_tangible_deed_event_
 	noTrade = 1,
 
 	generatedObjectTemplate = "object/tangible/event_perk/lottery_droid.iff",
+	generatedTimeToLive = 1296000000, -- 15 Days
 	perkType = GAME,
 }
 
