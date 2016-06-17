@@ -30,6 +30,11 @@ public:
 		if (zone == NULL)
 			return GENERALERROR;
 
+		if (creature->getActiveSessionsCount()) {
+			creature->sendSystemMessage("@error_message:wrong_state"); //You cannot complete that action while in your current state.
+			return GENERALERROR;
+		}
+
 		String zoneName = zone->getZoneName();
 		uint64 parentID = 0;
 
