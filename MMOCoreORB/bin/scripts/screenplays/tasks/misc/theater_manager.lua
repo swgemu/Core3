@@ -814,6 +814,27 @@ function TheaterManagerScreenPlay:startPromotion(pPlayer)
 	end
 end
 
+function TheaterManagerScreenPlay:recreatePromotionObservers(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	dropObserver(WASWATCHED, pPlayer)
+	dropObserver(WASLISTENEDTO, pPlayer)
+
+	local series = self:getCurrentSeries(pPlayer)
+
+	if (series == 0) then
+		return
+	end
+
+	if (series == 2) then
+		createObserver(WASLISTENEDTO, "TheaterManagerScreenPlay", "notifyPromotionObserver", pPlayer, 1)
+	elseif (series == 1) then
+		createObserver(WASWATCHED, "TheaterManagerScreenPlay", "notifyPromotionObserver", pPlayer, 1)
+	end
+end
+
 -- Gets the required promotions for the player's current step
 function TheaterManagerScreenPlay:getRequiredPromotions(step)
 	if (step == 5) then
@@ -850,8 +871,12 @@ end
 
 -- Observer function triggered by someone watching the player perform
 function TheaterManagerScreenPlay:notifyPromotionObserver(pPlayer, pEntertained)
-	if (pPlayer == nil or pEntertained == nil) then
+	if (pPlayer == nil) then
 		return 1
+	end
+
+	if (pEntertained == nil) then
+		return 0
 	end
 
 	local currentStep = self:getCurrentStep(pPlayer)
