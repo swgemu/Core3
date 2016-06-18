@@ -46,6 +46,8 @@ namespace tangible {
 		int getLuaStringData(lua_State *L);
 		int setLuaStringData(lua_State *L);
 		int deleteLuaStringData(lua_State *L);
+		int setOptionBit(lua_State* L);
+		int clearOptionBit(lua_State* L);
 
 	protected:
 		TangibleObject* realObject;

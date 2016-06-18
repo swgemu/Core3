@@ -101,6 +101,10 @@ DirectorManager::DirectorManager() : Logger("DirectorManager") {
 	questVectorMaps.setNoDuplicateInsertPlan();
 
 	masterScreenPlayVersion.set(0);
+
+	//screenplayLogger = new Logger();
+	//screenplayLogger.setLoggingName("ScreenplayLog");
+	//screenplayLogger.setFileLogger("log/screenplays.log");
 }
 
 void DirectorManager::loadPersistentEvents() {
@@ -263,6 +267,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getServerEventTimeLeft", getServerEventTimeLeft);
 	lua_register(luaEngine->getLuaState(), "createObserver", createObserver);
 	lua_register(luaEngine->getLuaState(), "dropObserver", dropObserver);
+	lua_register(luaEngine->getLuaState(), "hasObserver", hasObserver);
 	lua_register(luaEngine->getLuaState(), "spawnMobile", spawnMobile);
 	lua_register(luaEngine->getLuaState(), "spawnEventMobile", spawnEventMobile);
 	lua_register(luaEngine->getLuaState(), "spatialChat", spatialChat);
@@ -2165,6 +2170,24 @@ int DirectorManager::createObserver(lua_State* L) {
 	return 0;
 }
 
+int DirectorManager::hasObserver(lua_State* L) {
+	int numberOfArguments = lua_gettop(L);
+	if (numberOfArguments != 2) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::hasObserver");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	SceneObject* sceneObject = (SceneObject*) lua_touserdata(L, -1);
+	uint32 eventType = lua_tointeger(L, -2);
+
+	SortedVector<ManagedReference<Observer* > > observers = sceneObject->getObservers(eventType);
+
+	lua_pushboolean(L, observers.size() > 0);
+
+	return 1;
+}
+
 int DirectorManager::dropObserver(lua_State* L) {
 	int numberOfArguments = lua_gettop(L);
 	if (numberOfArguments != 2 && numberOfArguments != 4) {
@@ -3112,4 +3135,17 @@ void DirectorManager::removeQuestVectorMap(const String& keyString) {
 
 	if (questMap != NULL)
 		ObjectManager::instance()->destroyObjectFromDatabase(questMap->_getObjectID());
+}
+
+int DirectorManager::writeLog(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::writeLog");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String logString = lua_tostring(L, -1);
+	//screenplayLogger->log(logString);
+
+	return 0;
 }

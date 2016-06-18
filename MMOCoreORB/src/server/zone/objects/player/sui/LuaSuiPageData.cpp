@@ -58,7 +58,7 @@ int LuaSuiPageData::_getObject(lua_State* L) {
 }
 
 int LuaSuiPageData::setTargetNetworkId(lua_State* L) {
-	int targetId = lua_tonumber(L, -1);
+	uint64 targetId = lua_tonumber(L, -1);
 
 	realObject->setTargetNetworkId(targetId);
 
