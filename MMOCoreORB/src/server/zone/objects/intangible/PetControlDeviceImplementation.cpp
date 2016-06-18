@@ -133,6 +133,11 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	int maxLevelofPets = 10;
 	int level = pet->getLevel();
 
+	if (pet->getCreatureTemplate() == NULL) {
+		player->sendSystemMessage("Invalid creature to spawn!"); // Old npc without a npc template?
+		return;
+	}
+
 	if (petType == PetManager::CREATUREPET) {
 		ManagedReference<Creature*> creaturePet = cast<Creature*>(pet.get());
 		if (creaturePet == NULL)
