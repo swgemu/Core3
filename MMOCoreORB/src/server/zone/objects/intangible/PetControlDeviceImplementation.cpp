@@ -138,6 +138,11 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		if (creaturePet == NULL)
 			return;
 
+		if (creaturePet->getCreatureTemplate() == NULL) {
+			player->sendSystemMessage("Invalid creature to spawn!"); // Old npc without a npc template?
+			return;
+		}
+
 		bool ch = player->hasSkill("outdoors_creaturehandler_novice");
 
 		if (ch) {
