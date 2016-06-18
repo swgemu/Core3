@@ -1,7 +1,7 @@
 sith_shadow_pirate = Creature:new {
 	objectName = "@mob/creature_names:shadow_pirate",
 	socialGroup = "sith_shadow",
-	faction = "sith_shadow_nonaggro",
+	faction = "sith_shadow",
 	level = 32,
 	chanceHit = 0.39,
 	damageMin = 290,

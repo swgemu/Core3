@@ -24,5 +24,10 @@ SuiMessageBox.new = function (defaultCallback, defaultFunction)
 		self.setProperty("btnOk", "Text", text)
 	end
 
+	self.hideCancelButton = function (text)
+		self.setProperty("btnCancel", "Enabled", "false")
+		self.setProperty("btnCancel", "Visible", "false")
+	end
+
 	return self
 end

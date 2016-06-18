@@ -1,6 +1,8 @@
 gadget_specialist = Creature:new {
 	objectName = "@mob/creature_names:quest_gadget_specialist",
 	socialGroup = "townsperson",
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	faction = "",
 	level = 19,
 	chanceHit = 0.33,
@@ -22,15 +24,14 @@ gadget_specialist = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_combatmedic_trainer_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "villageGadgetSpecialistPhase4ConvoTemplate",
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(gadget_specialist, "gadget_specialist")

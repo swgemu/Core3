@@ -836,7 +836,10 @@ class TangibleObject extends SceneObject {
 
 	@preLocked
 	public void setLuaStringData(final string key, final string data) {
-		luaStringData.put(key, data);
+		if (luaStringData.contains(key))
+			luaStringData.get(key) = data;
+		else
+			luaStringData.put(key, data);
 	}
 	
 	@preLocked
