@@ -43,7 +43,7 @@ function FsCrafting1AnalyzerMenuComponent:handleObjectMenuSelect(pSceneObject, p
 	if (pSceneObject == nil or pPlayer == nil) then
 		return 0
 	end
-
+	printf("obj id: " .. SceneObject(pSceneObject):getObjectID() .. "\n")
 	if (selectedID == 20) then
 		if (not QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CRAFT_PUZZLE_QUEST_00)) then
 			CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_crafting:msg_cant_use_yet")

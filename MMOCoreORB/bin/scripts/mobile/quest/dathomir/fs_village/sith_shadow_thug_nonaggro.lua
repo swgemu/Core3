@@ -1,5 +1,5 @@
 sith_shadow_thug_nonaggro = Creature:new {
-	objectName = "@mob/creature_names:shadow_thug",
+	objectName = "@mob/creature_names:shadow_thug_nonaggro",
 	socialGroup = "sith_shadow",
 	faction = "sith_shadow_nonaggro",
 	level = 127,

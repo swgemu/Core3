@@ -24,6 +24,7 @@ require("sui.custom.SuiProcessorPuzzle")
 require("sui.custom.SuiRadiationSensor")
 require("sui.custom.SuiReceiverPuzzle")
 
+includeFile("helperfuncs.lua")
 
 -- Theme parks
 includeFile("themepark/conversations/goru_conv_handler.lua")
@@ -145,6 +146,9 @@ includeFile("village/phase3/fs_sad_2_theaters/fs_sad_2_theater_6.lua")
 includeFile("village/phase3/fs_sad_2_theaters/fs_sad_2_theater_7.lua")
 includeFile("village/phase3/fs_sad_2_theaters/fs_sad_2_theater_8.lua")
 includeFile("village/phase3/fs_sad2.lua")
+includeFile("village/phase4/fs_crafting4_goto.lua")
+includeFile("village/phase4/fs_crafting4_theater.lua")
+includeFile("village/phase4/fs_crafting4.lua")
 includeFile("village/convos/convohelpers/experience_converter.lua")
 includeFile("village/convos/fs_experience_converter_conv_handler.lua")
 includeFile("village/convos/elder_conv_handler.lua")
@@ -160,6 +164,8 @@ includeFile("village/convos/phase1/fs_reflex1_prisoner_conv_handler.lua")
 includeFile("village/convos/phase2/whip_phase2_conv_handler.lua")
 includeFile("village/convos/phase2/dageerin_phase2_conv_handler.lua")
 includeFile("village/convos/phase3/dageerin_phase3_conv_handler.lua")
+includeFile("village/convos/phase4/fs_gadget_specialist_phase4_conv_handler.lua")
+includeFile("village/convos/phase4/chief_engineer_phase4_conv_handler.lua")
 
 -- Events
 includeFile("events/conversations/bestine_artist_conv_handler.lua")

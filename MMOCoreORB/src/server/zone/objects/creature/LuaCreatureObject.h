@@ -87,8 +87,6 @@ namespace creature {
 		int getGroupSize(lua_State* L);
 		int getGroupMember(lua_State* L);
 		int setOptionsBitmask(lua_State* L);
-		int setOptionBit(lua_State* L);
-		int clearOptionBit(lua_State* L);
 		int addDotState(lua_State* L);
 		int checkCooldownRecovery(lua_State* L);
 		int addCooldown(lua_State* L);
