@@ -47,6 +47,16 @@ function QuestManager.completeQuest(pCreatureObject, quest)
 	end)
 end
 
+-- Un-Complete the quest for the player and set quest active again.
+-- @param pCreatureObject pointer to the creature object of the player.
+-- @param quest the index number for the quest to complete.
+function QuestManager.uncompleteQuest(pCreatureObject, quest)
+	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
+		playerObject:clearCompletedQuestsBit(quest)
+		playerObject:setActiveQuestsBit(quest, QUEST_ACTIVE)
+	end)
+end
+
 -- Checks if the player has a quest completed.
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param quest the index number for the quest to check if it is completed.

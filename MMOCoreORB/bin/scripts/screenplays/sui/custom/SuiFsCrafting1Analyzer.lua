@@ -15,7 +15,7 @@ function SuiFsCrafting1Analyzer:openAnalyzer(pPlayer, pAnalyzer)
 	if (pPlayer == nil or pAnalyzer == nil) then
 		return
 	end
-
+	printf("analyzer id:" .. SceneObject(pAnalyzer):getObjectID() .. "\n")
 	-- Run function once to set values if they do not exist when sui is opened
 	local analyzed = self:getAnalyzedTable(pPlayer)
 

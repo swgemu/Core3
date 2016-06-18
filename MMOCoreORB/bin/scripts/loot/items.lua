@@ -469,6 +469,12 @@ includeFile("items/painting/spitting_rawl_poster.lua")
 includeFile("items/painting/valley_view_painting.lua")
 
 --quest sub-folder
+includeFile("items/quest/fs_tracking_device_assembly_bracket_01.lua")
+includeFile("items/quest/fs_tracking_device_assembly_bracket_02.lua")
+includeFile("items/quest/fs_tracking_device_assembly_bracket_03.lua")
+includeFile("items/quest/fs_tracking_device_case_01.lua")
+includeFile("items/quest/fs_tracking_device_case_02.lua")
+includeFile("items/quest/fs_tracking_device_case_03.lua")
 includeFile("items/quest/waypoint_datapad.lua")
 includeFile("items/quest/theater_datapad.lua")
 includeFile("items/quest/village_ardanium_ii.lua")

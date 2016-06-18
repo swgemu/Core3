@@ -112,6 +112,7 @@ namespace server {
 		static int getServerEventTimeLeft(lua_State* L);
 		static int createObserver(lua_State* L);
 		static int dropObserver(lua_State* L);
+		static int hasObserver(lua_State* L);
 		static int spawnMobile(lua_State* L);
 		static int spawnEventMobile(lua_State* L);
 		static int spawnSceneObject(lua_State* L);
@@ -181,6 +182,7 @@ namespace server {
 		static int getQuestVectorMap(lua_State* L);
 		static int removeQuestVectorMap(lua_State* L);
 		static int createQuestVectorMap(lua_State* L);
+		static int writeLog(lua_State* L);
 
 	private:
 		void setupLuaPackagePath(Lua* luaEngine);

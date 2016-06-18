@@ -8,7 +8,7 @@ VillageJediManagerTownship = ScreenPlay:new {
 	screenplayName = "VillageJediManagerTownship"
 }
 
-VILLAGE_TOTAL_NUMBER_OF_PHASES = 3 -- Temporarily set to 3 for testing until fourth phase begins development
+VILLAGE_TOTAL_NUMBER_OF_PHASES = 4
 
 local VILLAGE_PHASE_CHANGE_TIME = 48 * 60 * 60 * 1000 -- Testing value.
 --local VILLAGE_PHASE_CHANGE_TIME = 5 * 60 * 1000
@@ -21,6 +21,10 @@ function VillageJediManagerTownship.setCurrentPhaseInit()
 		VillageJediManagerTownship.setCurrentPhaseID(1)
 		createServerEvent(VILLAGE_PHASE_CHANGE_TIME, "VillageJediManagerTownship", "switchToNextPhase", "VillagePhaseChange")
 	end
+end
+
+function VillageJediManagerTownship.getVillagePhaseChangeTime()
+	return VILLAGE_PHASE_CHANGE_TIME
 end
 
 function VillageJediManagerTownship.setCurrentPhaseID(phaseID)
@@ -81,9 +85,10 @@ end
 function VillageJediManagerTownship:start()
 	if (isZoneEnabled("dathomir")) then
 		Logger:log("Starting the Village Township Screenplay.", LT_INFO)
+		local currentPhase = VillageJediManagerTownship.getCurrentPhase()
 		VillageJediManagerTownship.setCurrentPhaseInit()
-		VillageJediManagerTownship:spawnMobiles(VillageJediManagerTownship.getCurrentPhase(), true)
-		VillageJediManagerTownship:spawnSceneObjects(VillageJediManagerTownship.getCurrentPhase(), true)
+		VillageJediManagerTownship:spawnMobiles(currentPhase, true)
+		VillageJediManagerTownship:spawnSceneObjects(currentPhase, true)
 	end
 end
 
