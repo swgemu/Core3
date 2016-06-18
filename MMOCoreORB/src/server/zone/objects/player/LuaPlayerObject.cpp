@@ -70,6 +70,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "canActivateQuest", &LuaPlayerObject::canActivateQuest },
 		{ "getSuiBox", &LuaPlayerObject::getSuiBox },
 		{ "addSuiBox", &LuaPlayerObject::addSuiBox },
+		{ "removeSuiBox", &LuaPlayerObject::removeSuiBox },
 		{ 0, 0 }
 };
 
@@ -607,4 +608,11 @@ int LuaPlayerObject::addSuiBox(lua_State* L) {
 	realObject->addSuiBox(box);
 
 	return 0;
+}
+
+int LuaPlayerObject::removeSuiBox(lua_State* L) {
+	uint32 pageId = lua_tointeger(L, -1);
+	realObject->removeSuiBox(pageId, true);
+
+	return 1;
 }
