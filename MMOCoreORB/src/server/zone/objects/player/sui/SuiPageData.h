@@ -62,7 +62,7 @@ public:
 		return forceCloseDistance;
 	}
 
-	void setTargetNetworkId(int id) {
+	void setTargetNetworkId(uint64 id) {
 		targetNetworkId = id;
 	}
 

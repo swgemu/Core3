@@ -77,6 +77,8 @@ villageMobileSpawns = {
 	[3] = {
 		{ "dageerin", 5238.25, 78.5, -4189.05, 97, "", "villageDageerinPhase3ConvoTemplate" },
 		{ "fs_cll8_binary_load_lifter", 5193.25, 78.5, -4195.6, -34, "", "" },
+		{ "captain_sarguillo", 5313.9, 78.5, -4161.5, -72, "", "" },
+		{ "rohak_village_elder", 5306, 78, -4145, 0, "", "" },
 
 		{ "fs_villager_male", 5346.7, 78.5, -4062.15, -46, "", "" },
 		{ "fs_villager_female", 5199.3, 78.5, -4128.55, -142, "", "" },
@@ -95,7 +97,17 @@ villageMobileSpawns = {
 		{ "fs_villager_generic", 5280.2, 78.5, -4112.55, 146, "", "" },
 		{ "fs_villager_generic", 5273.2, 78.5, -4122.7, -20, "", "" },
 	},
-	[4] = {},
+	[4] = {
+		{ "fs_villager_engineer", 5388.8, 78.5, -4122.7, 86, "", "villageChiefEngineerPhase4ConvoTemplate" },
+		{ "sivarra_mechaux", 5159.1, 78.58, -4113.01, 116, "", "" },
+		{ "fs_surgical_droid_21b", 5155.7, 78.6, -4116.25, 26, "", "" },
+		{ "whip", 5283.66, 78.5, -4226.31, -143, "", "" },
+		{ "rohak_village_elder", 5298.78, 78.5, -4173.89, 24, "", "" },
+
+		{ "fs_villager_male", 5346.7, 78.5, -4062.15, -46, "", "fsVillageConvo6MaleTemplate" },
+		{ "fs_villager_male", 5369.4, 78.5, -4205.65, 30, "", "" },
+		{ "fs_villager_generic", 5197.7, 78.5, -4071.7, 122, "", "fsVillageConvo7Template" },
+	},
 }
 
 villageObjectSpawns = {
@@ -179,5 +191,29 @@ villageObjectSpawns = {
 		{ "object/static/structure/general/palette_supply_01.iff", 5298.1, 78.5, -4112.8, -5.73 },
 		{ "object/static/structure/general/palette_supply_02.iff", 5298.1, 78.5, -4108.85, -88.24 },
 	},
-	[4] = {},
+	[4] = {
+		{ "object/static/structure/dantooine/dant_large_rock_hut_no_flora_05m.iff", 5314.1, 78.5, -4027.25, -17.41 },
+		{ "object/static/structure/dantooine/dant_large_rock_hut_no_flora_05m.iff", 5358.3, 78.5, -4040.8, 64.53 },
+		{ "object/static/structure/dantooine/dant_large_rock_hut_no_flora_05m.iff", 5316.3, 78.5, -4070.6, -118.43 },
+		{ "object/static/structure/dantooine/dant_large_rock_hut_no_flora_05m.iff", 5300.7, 78.5, -4062.65, -156.25 },
+		{ "object/static/structure/dantooine/dant_large_communal_no_flora_10m.iff", 5231.5, 78.5, -4172.45, -60 },
+		{ "object/static/structure/dantooine/dant_fence_8m.iff", 5275.1, 78.5, -4104.5, 168.8 },
+		{ "object/static/structure/dantooine/dant_fence_8m.iff", 5268.15, 78.5, -4107.9, 139 },
+		{ "object/static/structure/dantooine/dant_fence_8m.iff", 5264.9, 78.5, -4114.55, 92 },
+		{ "object/static/structure/dantooine/dant_fence_8m.iff", 5266.1, 78.5, -4122.35, 70.26 },
+		{ "object/static/structure/dantooine/dant_fence_8m.iff", 5268.75, 78.5, -4129.90, 70.26 },
+		{ "object/static/structure/dantooine/dant_fence_8m.iff", 5271.9, 78.5, -4137.35, 64.53 },
+		{ "object/static/structure/general/ins_shield_generator.iff", 5277.1, 78.5, -4117.3, -22.35 },
+		{ "object/static/structure/tatooine/wall_pristine_tatooine_large_style_02.iff", 5362.15, 78.5, -4027.82, -60 },
+		{ "object/static/structure/tatooine/wall_pristine_tatooine_large_style_02.iff", 5339, 78.5, -4019.23, -74.399 },
+		{ "object/static/structure/tatooine/wall_pristine_tatooine_large_style_02.iff", 5323, 78.5, -4015.6, -82 },
+		{ "object/static/structure/tatooine/wall_pristine_tatooine_large_style_02.iff", 5280.75, 78.5, -4242.65, 87.1 },
+		{ "object/static/structure/tatooine/wall_gate_tatooine_wide_style_01.iff", 5264.65, 78.5, -4242.1, 94.54 },
+		{ "object/static/structure/tatooine/wall_gate_tatooine_style_03.iff", 5351, 78.5, -4022.5, -73.999 },
+		{ "object/static/structure/tatooine/pillar_pristine_large_style_01.iff", 5273.15, 78.5, -4242.3, 1.15 },
+		{ "object/static/structure/tatooine/pillar_pristine_large_style_01.iff", 5346.5, 78.5, -4022.05, -164.28 },
+		{ "object/static/structure/tatooine/pillar_pristine_large_style_01.iff", 5330.35, 78.5, -4017.57, -169.2 },
+		{ "object/static/structure/tatooine/pillar_pristine_large_style_01.iff", 5354.1, 78.5, -4024.2, -160.8 },
+		{ "object/static/structure/tatooine/pillar_pristine_large_style_01.iff", 5257.25, 78.5, -4241, 9.74 },
+	},
 }

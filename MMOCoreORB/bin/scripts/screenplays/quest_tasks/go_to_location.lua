@@ -69,6 +69,12 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 function GoToLocation:taskStart(pCreatureObject)
 	Logger:log("Spawning " .. self.taskName .. " active area location.", LT_INFO)
+	
+	local spawnPlanet = self.spawnPlanet
+	
+	if (spawnPlanet == "") then
+		spawnPlanet = SceneObject(pCreatureObject):getZoneName()
+	end
 
 	local point = self.spawnPoint
 
@@ -82,15 +88,15 @@ function GoToLocation:taskStart(pCreatureObject)
 			tempY = point.y
 		end
 
-		local tempPoint = getSpawnArea(self.spawnPlanet, tempX, tempY, self.randomMinDistance, self.randomMaxDistance, 20, 15, true)
+		local tempPoint = getSpawnArea(spawnPlanet, tempX, tempY, self.randomMinDistance, self.randomMaxDistance, 20, 15, true)
 		point.x = tempPoint[1]
 		point.y = tempPoint[3]
 	end
 
-	local pActiveArea = self:setupActiveArea(pCreatureObject, point, self.spawnPlanet, self.spawnRadius)
+	local pActiveArea = self:setupActiveArea(pCreatureObject, point, spawnPlanet, self.spawnRadius)
 	if pActiveArea ~= nil then
 		local waypointId = ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-			return playerObject:addWaypoint(self.spawnPlanet, self.waypointDescription, "", point.x, point.y, WAYPOINTORANGE, true, true, 0)
+			return playerObject:addWaypoint(spawnPlanet, self.waypointDescription, "", point.x, point.y, WAYPOINTORANGE, true, true, 0)
 		end)
 
 		if waypointId ~= nil then
