@@ -263,6 +263,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getServerEventTimeLeft", getServerEventTimeLeft);
 	lua_register(luaEngine->getLuaState(), "createObserver", createObserver);
 	lua_register(luaEngine->getLuaState(), "dropObserver", dropObserver);
+	lua_register(luaEngine->getLuaState(), "hasObserver", hasObserver);
 	lua_register(luaEngine->getLuaState(), "spawnMobile", spawnMobile);
 	lua_register(luaEngine->getLuaState(), "spawnEventMobile", spawnEventMobile);
 	lua_register(luaEngine->getLuaState(), "spatialChat", spatialChat);
@@ -2163,6 +2164,24 @@ int DirectorManager::createObserver(lua_State* L) {
 	sceneObject->registerObserver(eventType, observer);
 
 	return 0;
+}
+
+int DirectorManager::hasObserver(lua_State* L) {
+	int numberOfArguments = lua_gettop(L);
+	if (numberOfArguments != 2) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::hasObserver");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	SceneObject* sceneObject = (SceneObject*) lua_touserdata(L, -1);
+	uint32 eventType = lua_tointeger(L, -2);
+
+	SortedVector<ManagedReference<Observer* > > observers = sceneObject->getObservers(eventType);
+
+	lua_pushboolean(L, observers.size() > 0);
+
+	return 1;
 }
 
 int DirectorManager::dropObserver(lua_State* L) {

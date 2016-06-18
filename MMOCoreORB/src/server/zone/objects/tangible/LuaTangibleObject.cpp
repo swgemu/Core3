@@ -36,6 +36,8 @@ Luna<LuaTangibleObject>::RegType LuaTangibleObject::Register[] = {
 		{ "getLuaStringData", &LuaTangibleObject::getLuaStringData },
 		{ "setLuaStringData", &LuaTangibleObject::setLuaStringData },
 		{ "deleteLuaStringData", &LuaTangibleObject::deleteLuaStringData },
+		{ "setOptionBit", &LuaTangibleObject::setOptionBit},
+		{ "clearOptionBit", &LuaTangibleObject::clearOptionBit},
 		{ 0, 0 }
 };
 
@@ -222,8 +224,8 @@ int LuaTangibleObject::isInvisible(lua_State* L) {
 }
 
 int LuaTangibleObject::setLuaStringData(lua_State *L) {
-	String key = lua_tostring(L, -1);
-	String data = lua_tostring(L, -2);
+	String key = lua_tostring(L, -2);
+	String data = lua_tostring(L, -1);
 
 	realObject->setLuaStringData(key, data);
 	return 0;
@@ -244,4 +246,24 @@ int LuaTangibleObject::getLuaStringData(lua_State *L) {
 	lua_pushstring(L, data.toCharArray());
 
 	return 1;
+}
+
+int LuaTangibleObject::setOptionBit(lua_State* L) {
+	uint32 bit = lua_tointeger(L, -1);
+
+	Locker locker(realObject);
+
+	realObject->setOptionBit(bit, true);
+
+	return 0;
+}
+
+int LuaTangibleObject::clearOptionBit(lua_State* L) {
+	uint32 bit = lua_tointeger(L, -1);
+
+	Locker locker(realObject);
+
+	realObject->clearOptionBit(bit, true);
+
+	return 0;
 }

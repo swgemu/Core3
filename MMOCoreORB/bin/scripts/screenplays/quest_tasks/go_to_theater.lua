@@ -130,7 +130,7 @@ function GoToTheater:taskStart(pCreatureObject)
 				spawnedMobilesList = spawnedMobilesWithLocList
 			end
 			
-			if spawnedMobilesList ~= nil then
+			if spawnedMobilesList ~= nil or #self.mobileList == 0 then
 				if self:setupActiveArea(pCreatureObject, spawnPoint) then
 					local waypointId
 
@@ -206,44 +206,14 @@ function GoToTheater:handleDespawnTheater(pCreatureObject)
 	if (not self:hasTaskStarted(pCreatureObject)) then
 		return
 	end
-
-	if (self:areMobilesInCombat(pCreatureObject) or self:areMobilesFollowing(pCreatureObject) or self:isOwnerInRangeOfTheater(pCreatureObject)) then
+	local pPlayerObj = CreatureObject(pCreatureObject):getPlayerObject()
+	
+	if (pPlayerObj ~= nil and PlayerObject(pPlayerObj):isOnline()) then
 		createEvent(self.despawnTime / 2, self.taskName, "handleDespawnTheater", pCreatureObject, "")
 		return
 	end
 
 	self:finish(pCreatureObject)
-end
-
-function GoToTheater:isOwnerInRangeOfTheater(pCreatureObject)
-	local theaterId = readData(SceneObject(pCreatureObject):getObjectID() .. self.taskName .. THEATER_ID_STRING)
-	local pTheater = getSceneObject(theaterId)
-
-	return pTheater ~= nil and CreatureObject(pCreatureObject):isInRangeWithObject(pTheater, 128)
-end
-
-function GoToTheater:areMobilesInCombat(pCreatureObject)
-	local spawnedObjects = self:getSpawnedMobileList(pCreatureObject)
-
-	for i = 1, #spawnedObjects, 1 do
-		if (spawnedObjects[i] ~= nil and AiAgent(spawnedObjects[i]):isInCombat()) then
-			return true
-		end
-	end
-
-	return false
-end
-
-function GoToTheater:areMobilesFollowing(pCreatureObject)
-	local spawnedObjects = self:getSpawnedMobileList(pCreatureObject)
-
-	for i = 1, #spawnedObjects, 1 do
-		if (spawnedObjects[i] ~= nil and AiAgent(spawnedObjects[i]):getFollowObject() == pCreatureObject) then
-			return true
-		end
-	end
-
-	return false
 end
 
 function GoToTheater:removeTheaterWaypoint(pCreatureObject)

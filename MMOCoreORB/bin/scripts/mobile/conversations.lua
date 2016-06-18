@@ -173,10 +173,8 @@ includeFile("conversations/village/phase2/whip_phase2_conv.lua")
 includeFile("conversations/village/phase2/elder_phase2_conv.lua")
 includeFile("conversations/village/phase2/dageerin_phase2_conv.lua")
 includeFile("conversations/village/phase3/dageerin_phase3_conv.lua")
-includeFile("conversations/village/phase4/sarguillo_phase4_conv.lua")
-includeFile("conversations/village/phase4/sivarra_phase4_conv.lua")
-includeFile("conversations/village/phase4/chief_engineer_phase4_conv.lua")
 includeFile("conversations/village/phase4/fs_gadget_specialist_phase4_conv.lua")
+includeFile("conversations/village/phase4/chief_engineer_phase4_conv.lua")
 
 -- Race Tracks
 includeFile("conversations/racetracks/agrilatswampconversation.lua")
