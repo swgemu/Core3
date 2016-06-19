@@ -26,10 +26,10 @@ void PersistentMessageImplementation::sendTo(CreatureObject* player, bool sendBo
 }
 
 
-void PersistentMessageImplementation::addStringIdParameter(StringIdChatParameter& param) {
+void PersistentMessageImplementation::addStringIdParameter(const StringIdChatParameter& param) {
 	stringIdParameters.add(param);
 }
 
-void PersistentMessageImplementation::addWaypointParameter(WaypointChatParameter& param) {
+void PersistentMessageImplementation::addWaypointParameter(const WaypointChatParameter& param) {
 	waypointParameters.add(param);
 }

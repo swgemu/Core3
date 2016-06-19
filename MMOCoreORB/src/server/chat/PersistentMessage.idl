@@ -131,8 +131,8 @@ class PersistentMessage extends ManagedObject {
 	}
 	
 	@local
-	public native void addStringIdParameter(@dereferenced StringIdChatParameter param);
+	public native void addStringIdParameter(final @dereferenced StringIdChatParameter param);
 	
 	@local
-	public native void addWaypointParameter(@dereferenced WaypointChatParameter param);
+	public native void addWaypointParameter(final @dereferenced WaypointChatParameter param);
 }

@@ -364,7 +364,7 @@ class ChatManager extends ManagedService implements Logger {
 	public native unicode formatMessage(final unicode message);
 
 	@local
-	public native int sendMail(final string sendername, final unicode subject, @dereferenced StringIdChatParameter body, final string recipientName, WaypointObject waypoint = null);
+	public native int sendMail(final string sendername, final unicode subject, final @dereferenced StringIdChatParameter body, final string recipientName, WaypointObject waypoint = null);
 
 	@local
 	public native int sendMail(final string sendername, final unicode subject, final unicode body, final string recipientName, StringIdChatParameterVector stringIdParameters, WaypointChatParameterVector waypointParameters);
