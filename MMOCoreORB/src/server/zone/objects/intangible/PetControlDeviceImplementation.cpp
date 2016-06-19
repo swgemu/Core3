@@ -134,7 +134,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	int level = pet->getLevel();
 
 	if (pet->getCreatureTemplate() == NULL) {
-		player->sendSystemMessage("Invalid creature to spawn!"); // Old npc without a npc template?
+		player->sendSystemMessage("@pet_menu:invalid_crafted_pet"); // This pet has invalid stats and cannot be called.
 		return;
 	}
 
