@@ -1498,19 +1498,27 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 		return;
 	}
 
-	CreatureObject* player = cast<CreatureObject*>(receiver.get());
+	Core::getTaskManager()->executeTask([=] () {
+		CreatureObject* player = cast<CreatureObject*>(receiver.get());
 
-	ManagedReference<PersistentMessage*> mail = new PersistentMessage();
-	mail->setSenderName(sendername);
-	mail->setSubject(header);
-	mail->setBody(body);
-	mail->setReceiverObjectID(receiverObjectID);
-	mail->setTimeStamp(currentTime);
+		ManagedReference<PersistentMessage*> mail = new PersistentMessage();
+		mail->setSenderName(sendername);
+		mail->setSubject(header);
+		mail->setBody(body);
+		mail->setReceiverObjectID(receiverObjectID);
+		mail->setTimeStamp(currentTime);
 
-	ObjectManager::instance()->persistObject(mail, 1, "mail");
+		ObjectManager::instance()->persistObject(mail, 1, "mail");
 
-	Reference<SendMailTask*> sendMailTask = new SendMailTask(player, mail, sendername);
-	sendMailTask->execute();
+		Locker locker(player);
+
+		PlayerObject* ghost = player->getPlayerObject();
+
+		ghost->addPersistentMessage(mail->getObjectID());
+
+		if (player->isOnline())
+			mail->sendTo(player, false);
+	}, "SendMailLambda3");
 }
 
 int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeString& subject, const UnicodeString& body, const String& recipientName, StringIdChatParameterVector* stringIdParameters, WaypointChatParameterVector* waypointParameters) {
@@ -1527,8 +1535,7 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 
 	sender = playerManager->getPlayer(sendername.toLowerCase());
 
-	if (sender)
-	{
+	if (sender != NULL) {
 		if (sender->isPlayerCreature()) {
 			ManagedReference<PlayerObject*> senderPlayer = NULL;
 			senderPlayer = sender->getPlayerObject();
@@ -1540,12 +1547,6 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 				godMode = true;
 		}
 	}
-
-	CreatureObject* receiver = cast<CreatureObject*>(obj.get());
-	PlayerObject* receiverPlayerObject = receiver->getPlayerObject();
-
-	if ((receiverPlayerObject == NULL) || (receiverPlayerObject->isIgnoring(sendername) && !godMode))
-		return IM_IGNORED;
 
 	ManagedReference<PersistentMessage*> mail = new PersistentMessage();
 	mail->setSenderName(sendername);
@@ -1572,10 +1573,26 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 
 	mail->setReceiverObjectID(receiverObjectID);
 
-	ObjectManager::instance()->persistObject(mail, 1, "mail");
+	Core::getTaskManager()->executeTask([=] () {
+		Locker locker(obj);
 
-	Reference<SendMailTask*> sendMailTask = new SendMailTask(receiver, mail, sendername);
-	sendMailTask->execute();
+		CreatureObject* receiver = cast<CreatureObject*>(obj.get());
+		PlayerObject* receiverPlayerObject = receiver->getPlayerObject();
+
+		if ((receiverPlayerObject == NULL) || (receiverPlayerObject->isIgnoring(sendername) && !godMode))
+			return;
+
+		PlayerObject* ghost = receiver->getPlayerObject();
+
+		ghost->addPersistentMessage(mail->getObjectID());
+
+		if (receiver->isOnline())
+			mail->sendTo(receiver, false);
+
+		locker.release();
+
+		ObjectManager::instance()->persistObject(mail, 1, "mail");
+	}, "SendMailLambda2");
 
 	return IM_SUCCESS;
 }
@@ -1589,11 +1606,11 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 	if (obj == NULL || !obj->isPlayerCreature())
 		return IM_OFFLINE;
 
-	CreatureObject* receiver = cast<CreatureObject*>(obj.get());
+	ManagedReference<CreatureObject*> receiver = cast<CreatureObject*>(obj.get());
 	sender = playerManager->getPlayer(sendername.toLowerCase());
+	ManagedReference<WaypointObject*> waypointObject = waypoint;
 
-	if (sender)
-	{
+	if (sender != NULL) {
 		if (sender->isPlayerCreature()) {
 			ManagedReference<PlayerObject*> senderPlayer = NULL;
 			senderPlayer = sender->getPlayerObject();
@@ -1606,28 +1623,37 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 		}
 	}
 
-	PlayerObject* ghost = receiver->getPlayerObject();
-
-	if (ghost == NULL ||
-			(ghost->isIgnoring(sendername) && !godMode))
-		return IM_IGNORED;
-
 	ManagedReference<PersistentMessage*> mail = new PersistentMessage();
 	mail->setSenderName(sendername);
 	mail->setSubject(subject);
 	mail->addStringIdParameter(body);
 
-	if (waypoint != NULL) {
-		WaypointChatParameter waypointParam(waypoint);
+	if (waypointObject != NULL) {
+		WaypointChatParameter waypointParam(waypointObject);
 		mail->addWaypointParameter(waypointParam);
 	}
 
 	mail->setReceiverObjectID(receiverObjectID);
 
-	ObjectManager::instance()->persistObject(mail, 1, "mail");
+	Core::getTaskManager()->executeTask([=] () {
+		Locker locker(receiver);
 
-	Reference<SendMailTask*> sendMailTask = new SendMailTask(receiver, mail, sendername);
-	sendMailTask->execute();
+		PlayerObject* ghost = receiver->getPlayerObject();
+
+		if (ghost == NULL ||
+				(ghost->isIgnoring(sendername) && !godMode))
+			return;
+
+		ghost->addPersistentMessage(mail->getObjectID());
+
+		if (receiver->isOnline())
+			mail->sendTo(receiver, false);
+
+		locker.release();
+
+		ObjectManager::instance()->persistObject(mail, 1, "mail");
+
+	}, "SendMailLambda");
 
 	return IM_SUCCESS;
 }
