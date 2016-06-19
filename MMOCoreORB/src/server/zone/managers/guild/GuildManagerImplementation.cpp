@@ -938,7 +938,10 @@ void GuildManagerImplementation::sendTransferAckTo(CreatureObject* player, const
 }
 
 void GuildManagerImplementation::transferLeadership(CreatureObject* newLeader, CreatureObject* oldLeader, bool election) {
-	GuildObject* guild = newLeader->getGuildObject().get();
+	ManagedReference<GuildObject*> guild = newLeader->getGuildObject().get();
+
+	if (guild == NULL)
+		return;
 
 	Locker glock(guild);
 	guild->setGuildLeaderID(newLeader->getObjectID());
