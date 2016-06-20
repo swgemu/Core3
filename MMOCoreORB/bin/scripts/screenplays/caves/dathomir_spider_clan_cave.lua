@@ -67,7 +67,6 @@ function SpiderClanCaveScreenPlay:spawnMobiles()
         spawnMobile("dathomir", "spiderclan_sentry", 900, 43.0, -46.1, -94.3, 67, 3695705)
 
         --Cell[3695706]
-        spawnMobile("dathomir", "spiderclan_sentinel", 900, 28.9, -46.0, -52.8, 151, 3695706)
         spawnMobile("dathomir", "spiderclan_sentinel", 900, 19.3, -47.7, -133.4, 11, 3695706)
         spawnMobile("dathomir", "spiderclan_sentry", 900, -1.5, -45.1, -135.2, -145, 3695706)
         spawnMobile("dathomir", "spiderclan_auspex", 900, -7.7, -45.0, -136.9, 121, 3695706)
