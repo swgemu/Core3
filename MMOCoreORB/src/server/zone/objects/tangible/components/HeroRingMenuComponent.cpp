@@ -71,6 +71,8 @@ int HeroRingMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 		player->healDamage(player, CreatureAttribute::HEALTH, 200);
 		player->healDamage(player, CreatureAttribute::ACTION, 200);
 		player->healDamage(player, CreatureAttribute::MIND, 200);
+		
+		player->removeFeignedDeath();
 
 		data->setCharges(charges - 1);
 
