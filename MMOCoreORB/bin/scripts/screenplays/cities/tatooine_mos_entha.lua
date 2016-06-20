@@ -51,6 +51,26 @@ TatooineMosEnthaScreenPlay = CityScreenPlay:new {
 		{"stormtrooper", "rebel_staff_corporal", 1623.03,7.45177,3516.22,42.7463,0, "", ""},
 		{"stormtrooper_captain", "rebel_army_captain", 1400.2,7,3090.2,241.546,0, "", ""},
 		{"stormtrooper_rifleman", "rebel_resistance_anarchist", 1256,7.7102,2954.3,306.009,0, "", ""},
+		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 41.2,-0.5,29.7,63,4005523, "angry", "angry"},
+		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1625.6,7,3029.5,-179,0, "", ""},
+		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1815.9,7,3182,40,0, "", ""},
+		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1795.9,7,3213,36,0, "", ""},
+		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1576.5,7,3315.1,49,0, "", ""},
+		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1448,7,3174.5,174,0, "", ""},
+		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1302.3,7,3165.4,28,0, "", ""},
+		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1293,7,3263.3,176,0, "", ""},
+		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1481.7,7,3065.9,-173,0, "", ""},
+		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1388.9,7,3082.9,-88,0, "", ""},
+		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1526.2,7,3238.6,151,0, "", ""},
+		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1424.1,7,3251.1,-70,0, "", ""},
+		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1287.6,7.7,2922.1,129,0, "", ""},
+		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1570.4,11,3248.28,-141,0, "", ""},
+		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1571.71,11,3249.69,-141,0, "", ""},
+		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1571.56,11,3247.83,-141,0, "", ""},
+		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1632.1,7,3142,122,0, "", ""},
+		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1444.9,7,3344.9,-105,0, "", ""},
+		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1447.4,7,3346.4,-105,0, "", ""},
+		{"mos_entha_police_officer", "mos_entha_police_officer_rebel", 1448.8,7,3344.5,-105,0, "", ""},
 
 	},
 }
@@ -113,8 +133,6 @@ function TatooineMosEnthaScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile(self.planet, "mercenary",60,54.6956,-0.521137,38.1243,180.008,4005523)
 	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "mos_entha_police_officer",300,41.2,-0.5,29.7,63,4005523)
-	self:setMoodString(pNpc, "npc_sitting_chair")
 	pNpc = spawnMobile(self.planet, "chassis_dealer",60,2.14833,0.639422,67.5897,224.216,4005520)
 	self:setMoodString(pNpc, "neutral")
 	pNpc = spawnMobile(self.planet, "farmer",300,-36.1846,1.63942,64.2406,180.002,4005525)
@@ -483,26 +501,6 @@ function TatooineMosEnthaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "jawa_warlord",300,1347.83,7,3060.74,47.0278,0)
 	spawnMobile(self.planet, "jawa_warlord",300,1608.4,7,3328.1,-21,0)
 	spawnMobile(self.planet, "jawa_warlord",300,1572.44,7,3337.29,83.3917,0)
-
-	spawnMobile(self.planet, "mos_entha_police_officer",300,1625.6,7,3029.5,-179,0)
-	spawnMobile(self.planet, "mos_entha_police_officer",300,1815.9,7,3182,40,0)
-	spawnMobile(self.planet, "mos_entha_police_officer",300,1795.9,7,3213,36,0)
-	spawnMobile(self.planet, "mos_entha_police_officer",300,1576.5,7,3315.1,49,0)
-	spawnMobile(self.planet, "mos_entha_police_officer",300,1448,7,3174.5,174,0)
-	spawnMobile(self.planet, "mos_entha_police_officer",300,1302.3,7,3165.4,28,0)
-	spawnMobile(self.planet, "mos_entha_police_officer",300,1293,7,3263.3,176,0)
-	spawnMobile(self.planet, "mos_entha_police_officer",300,1481.7,7,3065.9,-173,0)
-	spawnMobile(self.planet, "mos_entha_police_officer",300,1388.9,7,3082.9,-88,0)
-	spawnMobile(self.planet, "mos_entha_police_officer",300,1526.2,7,3238.6,151,0)
-	spawnMobile(self.planet, "mos_entha_police_officer",300,1424.1,7,3251.1,-70,0)
-	spawnMobile(self.planet, "mos_entha_police_officer",300,1287.6,7.7,2922.1,129,0)
-	spawnMobile(self.planet, "mos_entha_police_officer",300,1570.4,11,3248.28,-141,0)
-	spawnMobile(self.planet, "mos_entha_police_officer",300,1571.71,11,3249.69,-141,0)
-	spawnMobile(self.planet, "mos_entha_police_officer",300,1571.56,11,3247.83,-141,0)
-	spawnMobile(self.planet, "mos_entha_police_officer",300,1632.1,7,3142,122,0)
-	spawnMobile(self.planet, "mos_entha_police_officer",300,1444.9,7,3344.9,-105,0)
-	spawnMobile(self.planet, "mos_entha_police_officer",300,1447.4,7,3346.4,-105,0)
-	spawnMobile(self.planet, "mos_entha_police_officer",300,1448.8,7,3344.5,-105,0)
 
 	--Creatures
 	spawnMobile(self.planet, "desert_razorback",300,1085.48,5.82507,3065.96,107.775,0)
