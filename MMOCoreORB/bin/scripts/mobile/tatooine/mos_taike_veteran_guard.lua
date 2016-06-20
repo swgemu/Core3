@@ -2,8 +2,8 @@ mos_taike_veteran_guard = Creature:new {
 	objectName = "@mob/creature_names:mos_taike_guard_old",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
-	socialGroup = "townsperson",
-	faction = "townsperson",
+	socialGroup = "imperial",
+	faction = "imperial",
 	level = 21,
 	chanceHit = 0.33,
 	damageMin = 190,
@@ -22,13 +22,24 @@ mos_taike_veteran_guard = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/mos_taike_guard_old.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 5000000},
+				{group = "rifles", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "melee_weapons", chance = 1000000},
+				{group = "carbines", chance = 1000000},
+				{group = "wearables_common", chance = 1000000}
+			}
+		}
+	},
 	weapons = {},
 	outfit = "mos_taike_guard_old_outfit",
 	conversationTemplate = "",

@@ -19,6 +19,11 @@ CorelliaDoabaGuerfelScreenPlay = CityScreenPlay:new {
 		{"stormtrooper", "rebel_crewman", 3141.3, 290, 4984.9, -89, 0, "npc_imperial", "neutral"},
 		{"stormtrooper_rifleman", "rebel_lance_corporal", 3133.4, 300, 5169.9, 178, 0, "npc_imperial", "neutral"},
 		{"stormtrooper_squad_leader", "rebel_network_leader", 3141.1, 290, 4975.7, -95, 0, "npc_imperial", "conversation"},
+		{"corsec_commissioner", "corsec_commissioner", 3154.04,300,5173.07,180.005,0, "conversation", "conversation"},
+		{"corsec_inspector_sergeant", "corsec_inspector_sergeant", 3121,285,5006.4,-161,0, "", ""},
+		{"corsec_master_sergeant", "corsec_master_sergeant", 3300.28,308,5496.49,180.005,0, "npc_imperial", "conversation"},
+		{"corsec_sergeant", "corsec_sergeant", 3154.04,300,5172.07,0,0, "npc_imperial", "conversation"},
+		{"corsec_trooper", "corsec_trooper", 3119.2,285,5002.2,20,0, "", ""},
 
 	},
 }
@@ -216,14 +221,6 @@ function CorelliaDoabaGuerfelScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "commoner", 60,3303.05,300,5351.87,319.052,0)
 	spawnMobile(self.planet, "commoner", 60,3411.89,308,5515.19,208.425,0)
 	spawnMobile(self.planet, "commoner", 60,3431.28,308,5563.41,159.884,0)
-	pNpc = spawnMobile(self.planet, "corsec_chief",300,3154.04,300,5173.07,180.005,0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "corsec_chief",360,3121,285,5006.4,-161,0)
-	pNpc = spawnMobile(self.planet, "corsec_master_sergeant",300,3300.28,308,5496.49,180.005,0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "corsec_sergeant",300,3154.04,300,5172.07,0,0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "corsec_trooper", 360,3119.2,285,5002.2,20,0)
 	pNpc = spawnMobile(self.planet, "farmer_rancher",60,3196.61,295.033,5073.8,350.188,0)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile(self.planet, "farmer",60,3196.61,295.206,5074.8,180.005,0)

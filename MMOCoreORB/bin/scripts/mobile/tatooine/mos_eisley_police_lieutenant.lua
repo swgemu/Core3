@@ -40,7 +40,7 @@ mos_eisley_police_lieutenant = Creature:new {
 			}
 		}
 	},
-	weapons = {"rebel_weapons_light"},
+	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(brawlermid,marksmanmid)

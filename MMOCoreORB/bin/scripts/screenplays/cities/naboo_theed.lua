@@ -17,6 +17,12 @@ NabooTheedScreenPlay = CityScreenPlay:new {
 		{"stormtrooper_groupleader", "rebel_resistance_leader", -5969.83, 6, 4246.76, 173.432, 0, "npc_imperial", "conversation"},
 		{"stormtrooper_rifleman", "rebel_gungan_bomber", -5160.99, 6.52214, 4159.54, 216.801, 0, "", ""},
 		{"stormtrooper_rifleman", "rebel_gungan_bomber", -4845.17, 6.43094, 4167.68, 222.445, 0, "", ""},
+		{"naboo_police", "naboo_police", -5138.49,6,4228.36,0,0, "", ""},
+		{"naboo_police", "naboo_police", -4911.53,6,4089.7,127.784,0, "",""},
+		{"naboo_police", "naboo_police", -5889.07,6,4235.87,170.679,0, "", ""},
+		{"naboo_police", "naboo_police", -6012.09,6,4241.61,83.2023,0, "", ""},
+		{"naboo_police_chief", "naboo_police_chief", -5555.25,6,4241.44,63.404,0, "npc_imperial", ""},
+		{"naboo_police_officer", "naboo_police_officer", -5544.22,6,4232.32,267.981,0, "npc_imperial", ""},
 	},
 }
 
@@ -59,7 +65,6 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "commoner",60,-6036.18,6,4286.85,147.238,0)
 	spawnMobile(self.planet, "commoner",60,-6055.49,6,4319.64,186.501,0)
 	spawnMobile(self.planet, "commoner",60,-6040.72,6,4260.46,325.963,0)
-	spawnMobile(self.planet, "commoner",60,-6012.09,6,4241.61,83.2023,0)
 	spawnMobile(self.planet, "commoner",60,-5291.01,6,4428.53,322.605,0)
 	spawnMobile(self.planet, "commoner",60,-5282.92,6,4405.65,279.205,0)
 	spawnMobile(self.planet, "commoner",60,-5280.52,6,4372.79,226.645,0)
@@ -123,7 +128,6 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "commoner",60,-5968.83,6,4287.92,169.112,0)
 	spawnMobile(self.planet, "commoner",60,-5996.87,6,4269.75,70.6282,0)
 	spawnMobile(self.planet, "commoner",60,-5928.72,6,4217.24,56.7839,0)
-	spawnMobile(self.planet, "commoner",60,-5889.07,6,4235.87,170.679,0)
 	spawnMobile(self.planet, "commoner",60,-5727.93,6,4316.95,342.377,0)
 	spawnMobile(self.planet, "commoner",60,-5741.57,6,4304.91,133.504,0)
 	spawnMobile(self.planet, "commoner",60,-5757.67,6,4411.04,296.772,0)
@@ -161,8 +165,6 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "commoner",60,-5547.21,6,4383.24,155.163,0)
 	spawnMobile(self.planet, "commoner",60,-5554.8,6,4319.26,256.528,0)
 	spawnMobile(self.planet, "commoner",60,-5541.38,6,4302.99,60.5745,0)
-	spawnMobile(self.planet, "commoner",60,-5555.25,6,4241.44,63.404,0)
-	spawnMobile(self.planet, "commoner",60,-5544.22,6,4232.32,267.981,0)
 	spawnMobile(self.planet, "commoner",60,-5558.64,6,4283.8,12.7491,0)
 	spawnMobile(self.planet, "commoner",60,-5599.43,6,4261.62,241.361,0)
 	spawnMobile(self.planet, "commoner",60,-5583.5,6,4237.52,344.261,0)
@@ -197,8 +199,6 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "miner",60,-4965.4,6,4194.15,180.005,0)
 	pNpc = spawnMobile(self.planet, "miner",60,-5886.59,6,4369.23,180.005,0)
 	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "naboo_police",300,-5138.49,6,4228.36,0,0)
-	spawnMobile(self.planet, "naboo_police",300,-4911.53,6,4089.7,127.784,0)
 	pNpc = spawnMobile(self.planet, "official",300,-5886.59,6,4368.23,0,0)
 	self:setMoodString(pNpc, "conversation")
 
