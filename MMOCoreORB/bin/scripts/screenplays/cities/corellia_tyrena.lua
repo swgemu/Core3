@@ -67,6 +67,27 @@ CorelliaTyrenaScreenPlay = CityScreenPlay:new {
 		{"stormtrooper_sniper", "rebel_master_sergeant", -5094.14,21,-2270.16,45.8873,0, "npc_imperial", "neutral"},
 		{"stormtrooper_squad_leader", "specforce_wilderness_operative", -5613.85,21,-2584,33.2059,0, "npc_imperial", "conversation"},
 		{"stormtrooper_squad_leader", "specforce_wilderness_operative", -5103.81,21,-2266.4,126.218,0, "npc_imperial", "neutral"},
+		{"corsec_agent", "corsec_agent", -5412.5,20.8978,-2794.47,215.747,0, "", ""},
+		{"corsec_cadet", "corsec_cadet", -4945.07,21,-2489.35,89.6921,0, "", ""},
+		{"corsec_chief", "corsec_chief", -5000.34,28.1,-2520.6,135.004,0, "npc_accusing", "conversation"},
+		{"corsec_agent", "corsec_agent", -5467.56,21,-2791.59,180.005,0, "npc_imperial", "conversation"},
+		{"corsec_detective", "corsec_detective", -4999.24,28.1,-2520.6,180.005,0, "npc_imperial", "conversation"},
+		{"corsec_inspector_sergeant", "corsec_inspector_sergeant", -5061.36,21,-2532.53,0,0, "npc_imperial", "conversation"},
+		{"corsec_investigator", "corsec_investigator", -5491.88,30.0036,-2808.63,180.005,0, "npc_imperial", "conversation"},
+		{"corsec_investigator", "corsec_investigator", -5159.41,21,-2569.03,0,0, "npc_imperial", "conversation"},
+		{"corsec_major", "corsec_major", -5010.49,28.1,-2496.09,135.004,0, "npc_imperial", "conversation"},
+		{"corsec_sergeant", "corsec_sergeant", -5059.87,21,-2606.63,195.299,0, "", ""},
+		{"corsec_trooper", "corsec_trooper", -5506.2,21,-2634.5,102,0, "", ""},
+		{"corsec_trooper", "corsec_trooper", -5626.49,21,-2812.58,261.279,0, "", ""},
+		{"corsec_trooper", "corsec_trooper", -5470.84,21,-2565.16,107.104,0, "", ""},
+		{"corsec_trooper", "corsec_trooper", -5470.71,21,-2566.52,107.123,0, "", ""},
+		{"corsec_trooper", "corsec_trooper", -5061.36,21,-2531.53,180.005,0, "", ""},
+		{"corsec_trooper", "corsec_trooper", -5060.41,21,-2604.37,195.315,0, "", ""},
+		{"corsec_trooper", "corsec_trooper", -4944.48,21,-2488.58,42.466,0, "", ""},
+		{"corsec_trooper", "corsec_trooper", -5363.23,24.87,-2595.04,64.2702,0, "", ""},
+		{"corsec_trooper", "corsec_trooper", -5069.93,21,-2474.8,135.004,0, "", ""},
+		{"corsec_trooper", "corsec_trooper", -5401.3,21,-2613.1,58,0, "", ""},
+		{"corsec_trooper", "corsec_trooper", -5058.83,21,-2579.08,135.145,0, "", ""},
 
 	},
 }
@@ -332,37 +353,8 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile(self.planet, "corellia_times_investigator",60,-5491.88,30.0036,-2809.63,0,0)
 	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "corsec_agent", 60,-5412.5,20.8978,-2794.47,215.747,0)
-	spawnMobile(self.planet, "corsec_cadet", 60,-4945.07,21,-2489.35,89.6921,0)
-	pNpc = spawnMobile(self.planet, "corsec_chief",300,-5000.34,28.1,-2520.6,135.004,0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "corsec_deserter",300,-5467.56,21,-2791.59,180.005,0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "corsec_detective",300,-4999.24,28.1,-2520.6,180.005,0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "corsec_inspector_sergeant",300,-5061.36,21,-2532.53,0,0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "corsec_investigator",300,-5491.88,30.0036,-2808.63,180.005,0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "corsec_investigator",300,-5159.41,21,-2569.03,0,0)
-	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile(self.planet, "corsec_major",300,-5010.49,28.1,-2496.09,135.004,0)
-	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile(self.planet, "rogue_corsec_trooper",300,-5059.06,21,-2399.08,180.005,0)
 	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "corsec_sergeant", 300,-5059.87,21,-2606.63,195.299,0)
-	spawnMobile(self.planet, "corsec_trooper", 300,-5506.2,21,-2634.5,102,0)
-	spawnMobile(self.planet, "corsec_trooper", 300,-5626.49,21,-2812.58,261.279,0)
-	spawnMobile(self.planet, "corsec_trooper", 300,-5470.84,21,-2565.16,107.104,0)
-	spawnMobile(self.planet, "corsec_trooper", 300,-5470.71,21,-2566.52,107.123,0)
-	pNpc = spawnMobile(self.planet, "corsec_trooper",300,-5061.36,21,-2531.53,180.005,0)
-	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "corsec_trooper", 300,-5060.41,21,-2604.37,195.315,0)
-	spawnMobile(self.planet, "corsec_trooper", 300,-4944.48,21,-2488.58,42.466,0)
-	spawnMobile(self.planet, "corsec_trooper", 300,-5363.23,24.87,-2595.04,64.2702,0)
-	spawnMobile(self.planet, "corsec_trooper", 300,-5069.93,21,-2474.8,135.004,0)
-	spawnMobile(self.planet, "corsec_trooper", 300,-5401.3,21,-2613.1,58,0)
-	spawnMobile(self.planet, "corsec_trooper", 300,-5058.83,21,-2579.08,135.145,0)
 
 	--Misc Outside
 	spawnMobile(self.planet, "eg6_power_droid", 60,-5605.25,21,-2721.9,155.92,0)

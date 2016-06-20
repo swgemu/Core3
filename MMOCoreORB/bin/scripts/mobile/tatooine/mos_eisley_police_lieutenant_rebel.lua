@@ -1,9 +1,9 @@
-mos_eisley_police_lieutenant = Creature:new {
+mos_eisley_police_lieutenant_rebel = Creature:new {
 	objectName = "@mob/creature_names:mos_eisley_police_lieutenant",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
-	socialGroup = "imperial",
-	faction = "imperial",
+	socialGroup = "rebel",
+	faction = "rebel",
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,
@@ -30,20 +30,20 @@ mos_eisley_police_lieutenant = Creature:new {
 	templates = {"object/mobile/dressed_tatooine_mos_eisley_police_officer.iff"},
 	lootGroups = {
 		{
-			groups = {
-				{group = "junk", chance = 5000000},
-				{group = "rifles", chance = 1000000},
-				{group = "pistols", chance = 1000000},
-				{group = "melee_weapons", chance = 1000000},
-				{group = "carbines", chance = 1000000},
-				{group = "wearables_common", chance = 1000000}
+		groups = {
+			group = "junk", chance = 5000000},
+			{group = "rifles", chance = 1000000},
+			{group = "pistols", chance = 1000000},
+			{group = "melee_weapons", chance = 1000000},
+			group = "carbines", chance = 1000000},
+			group = "wearables_common", chance = 1000000}
 			}
 		}
 	},
-	weapons = {"imperial_weapons_light"},
+	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(brawlermid,marksmanmid)
 }
 
-CreatureTemplates:addCreatureTemplate(mos_eisley_police_lieutenant, "mos_eisley_police_lieutenant")
+CreatureTemplates:addCreatureTemplate(mos_eisley_police_lieutenant_rebel, "mos_eisley_police_lieutenant_rebel")

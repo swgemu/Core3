@@ -85,6 +85,16 @@ CorelliaKorVellaScreenPlay = CityScreenPlay:new {
 		{"stormtrooper_sniper", "rebel_scout", -3602.47, 86, 3214.02, 44.6678, 0, "", ""},
 		{"stormtrooper_sniper", "rebel_scout", -3613.06, 86, 3212.07, 47.9151, 0, "", ""},
 		{"stormtrooper_sniper", "rebel_scout", -3715.75, 86.0549, 3169.75, 326.9, 0, "", ""},
+		{"corsec_detective", "corsec_detective", -3408.26, 86, 3049.35, 180, 0, "", ""},
+		{"corsec_investigator", "corsec_investigator", -3520.73, 78, 3125.57, 0, 0, "", ""},
+		{"corsec_investigator", "corsec_investigator", -3102.24, 31, 2988.47, 266, 0, "", ""},
+		{"corsec_lieutenant", "corsec_lieutenant", -3587.81, 86, 3135.7, 180, 0, "", ""},
+		{"corsec_lieutenant", "corsec_lieutenant", -3450.64, 78, 3031.31, 180, 0, "", ""},
+		{"corsec_sergeant", "corsec_sergeant", -3149.45, 31, 2771.7, 282.9, 0, "", ""},
+		{"corsec_agent", "corsec_agent", -3151.32, 31, 2772.13, 282.871, 0, "", ""},
+		{"corsec_trooper", "corsec_trooper", -3103.98, 31, 2988.38, 266.9, 0, "", ""},
+		{"corsec_trooper", "corsec_trooper", -3102.95, 31, 2989.56, 266.9, 0, "", ""},
+		{"corsec_major", "corsec_major", -3150.16, 31.1, 2773.0, 282, 0, "", ""},
 
 	},
 }
@@ -118,22 +128,12 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	--corsec not in buildings
 	spawnMobile(self.planet, "chiss_male", 360, -3101.09, 31, 2905.97, 180, 0)
 	spawnMobile(self.planet, "corellia_times_reporter", 360, -3100.88, 31, 2890.25, 180, 0)
-	spawnMobile(self.planet, "corsec_detective", 360, -3408.26, 86, 3049.35, 180, 0)
-	spawnMobile(self.planet, "corsec_inspector_sergeant", 360, -3520.73, 78, 3125.57, 0, 0)
-	spawnMobile(self.planet, "corsec_inspector_sergeant", 360, -3102.24, 31, 2988.47, 266, 0)
-	spawnMobile(self.planet, "corsec_lieutenant", 360, -3587.81, 86, 3135.7, 180, 0)
-	spawnMobile(self.planet, "corsec_lieutenant", 360, -3450.64, 78, 3031.31, 180, 0)
 	spawnMobile(self.planet, "ithorian_male", 360, -3177.78, 31, 2889.93, 0, 0)
-	spawnMobile(self.planet, "corsec_major", 360, -3150.16, 31.1, 2773.0, 282, 0)
 	spawnMobile(self.planet, "medic", 360, -3172.38, 31, 2880.85, 0, 0)
 	spawnMobile(self.planet, "rogue_corsec_trooper", 360, -3340.49, 86, 3292.76, 100.151, 0)
 	spawnMobile(self.planet, "rogue_corsec_trooper", 360, -3332.89, 86, 3303.69, 68.6738, 0)
 	spawnMobile(self.planet, "rogue_corsec_trooper", 360, -3330.1, 86, 3290.98, 104.099, 0)
 	spawnMobile(self.planet, "sullustan_male", 360, -3177.78, 31, 2891.03, 180, 0)
-	spawnMobile(self.planet, "corsec_sergeant", 360, -3149.45, 31, 2771.7, 282.9, 0)
-	spawnMobile(self.planet, "corsec_trooper", 360, -3151.32, 31, 2772.13, 282.871, 0)
-	spawnMobile(self.planet, "corsec_trooper", 360, -3103.98, 31, 2988.38, 266.9, 0)
-	spawnMobile(self.planet, "corsec_trooper", 360, -3102.95, 31, 2989.56, 266.9, 0)
 
 	--misc
 	spawnMobile(self.planet, "cll8_binary_load_lifter", 60, -3654.48, 86, 3081.81, 26.971, 0)
