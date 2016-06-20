@@ -47,13 +47,13 @@ NabooKaadaraScreenPlay = CityScreenPlay:new {
 		{"stormtrooper", "rebel_trooper", 18.6, 0.3, 9.5, -90, 1741439, "", ""},
 		{"stormtrooper", "rebel_trooper", -7.2, 0.3, -3.2, -111, 1741443, "", ""},
 		{"stormtrooper", "rebel_trooper", -18.4, 0.3, -6.6, -101, 1741443, "", ""},
-		{"stormtrooper", "rebel_trooper", 5095.7, -192, 6744.4, 136, 0, "", ""},
-		{"stormtrooper", "rebel_trooper", 5105.6, -192, 6733.9, 136, 0, "", ""},
+		{"naboo_police", "naboo_police", 5095.7, -192, 6744.4, 136, 0, "", ""},
+		{"naboo_police", "naboo_police", 5105.6, -192, 6733.9, 136, 0, "", ""},
 		{"stormtrooper", "rebel_trooper", 5137.7, -192, 6692.9, 136, 0, "", ""},
 		{"stormtrooper", "rebel_trooper", 5148.6, -192, 6682.4, 136, 0, "", ""},
 		{"stormtrooper", "rebel_trooper", 5023.0, -192, 6714.8, -40, 0, "", ""},
-		{"stormtrooper", "rebel_trooper", 5011.7, -192, 6728.2, -40, 0, "", ""},
-		{"stormtrooper", "rebel_trooper", 4985.0, -192, 6763.0, 88, 0, "", ""},
+		{"naboo_police_chief", "naboo_police_chief", 5011.7, -192, 6728.2, -40, 0, "", ""},
+		{"naboo_police_officer", "naboo_police_officer", 4985.0, -192, 6763.0, 88, 0, "", ""},
 
 	},
 }
