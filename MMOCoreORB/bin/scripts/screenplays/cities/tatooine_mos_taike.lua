@@ -15,7 +15,8 @@ TatooineMosTaikeScreenPlay = CityScreenPlay:new {
 		{"stormtrooper_bombardier", "rebel_surface_marshall", 3855.6,27.5,2325.3,-50,0, "", ""},
 		{"assault_trooper_squad_leader", "alliance_intelligence_case_officer", 3858.4,27.5,2328.6,-50,0, "", ""},
 		{"assault_trooper", "rebel_major_general", 3951.7,53.5,2265.1,-114,0, "", ""},
-
+		{"mos_taike_cantina_owner", "mos_taike_cantina_owner_rebel", 9.6,0.4,-0.6,23,1154122, "conversation", "conversation"},
+		{"mos_taike_veteran_guard", "mos_taike_veteran_guard_rebel", 3775.0,8.6,2369.7,0,0, "npc_accusing", "calm"},
 	},
 }
 
@@ -43,8 +44,6 @@ function TatooineMosTaikeScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_use_terminal_high")
 	pNpc = spawnMobile(self.planet, "patron_ithorian",60,10.4,0.4,0.6,-150,1154122)
 	self:setMoodString(pNpc, "npc_standing_drinking")
-	pNpc = spawnMobile(self.planet, "patron_ithorian",60,9.6,0.4,-0.6,23,1154122)
-	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile(self.planet, "sullustan_male",60,9.0,0.4,-9.8,172,1154122)
 	self:setMoodString(pNpc, "sad")
 	pNpc = spawnMobile(self.planet, "entertainer",60,1.0,0.4,-4.7,173,1154122)
@@ -54,7 +53,7 @@ function TatooineMosTaikeScreenPlay:spawnMobiles()
 	pNpc = spawnMobile(self.planet, "businessman",60,5.9,0.4,1.8,-90,1154122)
 	self:setMoodString(pNpc, "npc_sitting_chair")
 	pNpc = spawnMobile(self.planet, "mercenary",60,4.5,0.4,0.6,0,1154122)
-	self:setMoodString(pNpc, "npc_sitting_table_eating")
+	self:setMoodString(pNpc, "npc_sitting_chair")
 	pNpc = spawnMobile(self.planet, "commoner_tatooine",60,9.1,0.4,-5.1,127,1154122)
 	self:setMoodString(pNpc, "entertained")
 	pNpc = spawnMobile(self.planet, "noble",60,10.4,0.4,5.6,-158,1154122)
@@ -83,7 +82,6 @@ function TatooineMosTaikeScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "informant_npc_lvl_3", 1, -1.97807, -9.54192, 9.62469, -45, 1154131)
 		--commoners
 	spawnMobile(self.planet, "commoner_tatooine", 1, 3860.7, 28.0, 2361.1, 180, 0)
-	spawnMobile(self.planet, "commoner_tatooine", 1, 3775.0, 8.6, 2369.7, 0, 0)
 	spawnMobile(self.planet, "commoner_tatooine", 1, 4.9, -0.4, -3.8, -150, 1400866)
 	spawnMobile(self.planet, "commoner_tatooine", 1, 3.1, -0.4, -5.8, -45, 1400866)
 		--thugs

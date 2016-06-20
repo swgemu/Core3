@@ -1,6 +1,6 @@
 mos_entha_police_officer = Creature:new {
 	objectName = "@mob/creature_names:mos_entha_police_officer",
-	randomNameType = NAME_STORMTROOPER,
+	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
@@ -27,7 +27,21 @@ mos_entha_police_officer = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_swamp_trooper_m.iff"},
+	templates = {"object/mobile/dressed_eisley_officer_aqualish_female_01.iff",
+    "object/mobile/dressed_eisley_officer_aqualish_male_01.iff",
+    "object/mobile/dressed_eisley_officer_bothan_female_01.iff",
+    "object/mobile/dressed_eisley_officer_bothan_male_01.iff",
+    "object/mobile/dressed_eisley_officer_human_female_01.iff",
+    "object/mobile/dressed_eisley_officer_human_male_01.iff",
+    "object/mobile/dressed_eisley_officer_quarren_male_01.iff",
+    "object/mobile/dressed_eisley_officer_rodian_female_01.iff",
+    "object/mobile/dressed_eisley_officer_rodian_male_01.iff",
+    "object/mobile/dressed_eisley_officer_trandoshan_female_01.iff",
+    "object/mobile/dressed_eisley_officer_trandoshan_male_01.iff",
+    "object/mobile/dressed_eisley_officer_twilek_female_01.iff",
+    "object/mobile/dressed_eisley_officer_twilek_male_01.iff",
+    "object/mobile/dressed_eisley_officer_zabrak_female_01.iff",
+    "object/mobile/dressed_eisley_officer_zabrak_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {
