@@ -28,7 +28,7 @@ class DelayedBuff extends Buff {
 	protected Vector<int> eventTypes;
 
 	public DelayedBuff(CreatureObject creo, unsigned int buffcrc, int effectCount) {
-		super(creo, buffcrc, 1380, BuffType.FOOD);
+		super(creo, buffcrc, 3600, BuffType.FOOD);
 
 		usesRemaining = effectCount;
 		player = creo;
