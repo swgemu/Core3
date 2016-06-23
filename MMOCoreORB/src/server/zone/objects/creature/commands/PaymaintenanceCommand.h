@@ -36,6 +36,17 @@ public:
 
 		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature, targetid);
 
+		ManagedReference<SceneObject*> currenttarget = server->getZoneServer()->getObject(target);
+
+		if (creature->getTargetID() == 0 || !currenttarget->isStructureObject()) {
+			creature->sendSystemMessage("You must TARGET the actual STRUCTURE before you can execute that command upon it.");
+			return INVALIDTARGET;
+		}
+
+		if (obj->getObjectID() != creature->getTargetID()) {
+			creature->sendSystemMessage("You must move closer to the currently targeted structure before performing that action.");
+			return GENERALERROR;
+		}
 
 		if (obj == NULL || !obj->isStructureObject())
 			return INVALIDTARGET;
