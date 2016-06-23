@@ -1582,16 +1582,14 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 		if ((receiverPlayerObject == NULL) || (receiverPlayerObject->isIgnoring(sendername) && !godMode))
 			return;
 
+		ObjectManager::instance()->persistObject(mail, 1, "mail");
+
 		PlayerObject* ghost = receiver->getPlayerObject();
 
 		ghost->addPersistentMessage(mail->getObjectID());
 
 		if (receiver->isOnline())
 			mail->sendTo(receiver, false);
-
-		locker.release();
-
-		ObjectManager::instance()->persistObject(mail, 1, "mail");
 	}, "SendMailLambda2");
 
 	return IM_SUCCESS;
@@ -1644,15 +1642,12 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 				(ghost->isIgnoring(sendername) && !godMode))
 			return;
 
+		ObjectManager::instance()->persistObject(mail, 1, "mail");
+
 		ghost->addPersistentMessage(mail->getObjectID());
 
 		if (receiver->isOnline())
 			mail->sendTo(receiver, false);
-
-		locker.release();
-
-		ObjectManager::instance()->persistObject(mail, 1, "mail");
-
 	}, "SendMailLambda");
 
 	return IM_SUCCESS;
