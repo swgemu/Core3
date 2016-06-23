@@ -30,6 +30,11 @@ public:
 
 		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature, target);
 
+		if (obj->getObjectID() != creature->getTargetID()) {
+			creature->sendSystemMessage("You must move closer to the currently targeted structure before performing that action.");
+			return GENERALERROR;
+		}
+
 		if (obj == NULL || !obj->isStructureObject()) {
 			creature->sendSystemMessage("@player_structure:no_building"); //You must be in a building, be near an installation, or have one targeted to do that.
 			return INVALIDTARGET;
