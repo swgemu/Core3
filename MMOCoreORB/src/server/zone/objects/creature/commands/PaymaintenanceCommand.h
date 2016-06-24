@@ -30,12 +30,9 @@ public:
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
-		uint64 targetid = target;
-		if(targetid <= 0)
-			targetid = creature->getTargetID();
+		uint64 targetid = creature->getTargetID();
 
 		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature, targetid);
-
 
 		if (obj == NULL || !obj->isStructureObject())
 			return INVALIDTARGET;
