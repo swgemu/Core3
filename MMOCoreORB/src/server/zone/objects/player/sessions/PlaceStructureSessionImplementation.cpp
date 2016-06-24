@@ -104,6 +104,45 @@ void PlaceStructureSessionImplementation::removeTemporaryNoBuildZone() {
 	}
 }
 
+int PlaceStructureSessionImplementation::cancelSession() {
+	ManagedReference<CreatureObject*> placer = creatureObject.get();
+
+	if (placer != NULL) {
+		if (placer->getWorldPosition().distanceTo(constructionBarricade->getWorldPosition()) > 128) {
+
+			if (constructionBarricade != NULL) {
+				Locker locker(constructionBarricade);
+
+				constructionBarricade->destroyObjectFromWorld(true);
+			}
+
+			String serverTemplatePath = deedObject->getGeneratedObjectTemplate();
+
+			StructureManager* structureManager = StructureManager::instance();
+
+			ManagedReference<StructureObject*> structureObject = structureManager->placeStructure(creatureObject, serverTemplatePath, positionX, positionY, directionAngle);
+
+			removeTemporaryNoBuildZone();
+
+			if (structureObject == NULL) {
+				ManagedReference<SceneObject*> inventory = creatureObject->getSlottedObject("inventory");
+				if (inventory != NULL)
+					inventory->transferObject(deedObject, +1, true);
+					return cancelSession();
+			}
+		}
+		placer->dropActiveSession(SessionFacadeType::PLACESTRUCTURE);
+	}
+
+	placer->sendSystemMessage("@player_structure:invalid_target"); //Your original structure target is no longer valid. Aborting.
+	return clearSession();
+}
+
+int PlaceStructureSessionImplementation::clearSession() {
+
+	return 0;
+}
+
 int PlaceStructureSessionImplementation::completeSession() {
 	if (constructionBarricade != NULL) {
 		Locker locker(constructionBarricade);

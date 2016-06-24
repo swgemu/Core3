@@ -60,13 +60,7 @@ class PlaceStructureSession extends Facade {
 	
 	public native int completeSession();
 	
-	public int cancelSession() {
-		creatureObject.dropActiveSession(SessionFacadeType.PLACESTRUCTURE);
-		
-		return 0;
-	}
+	public native int cancelSession();
 	
-	public int clearSession() {
-		return 0;
-	}
+	public native int clearSession();
 }
