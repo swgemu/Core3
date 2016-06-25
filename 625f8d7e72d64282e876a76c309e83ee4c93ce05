@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_8b63fdb0",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/PurchaseTicketCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1526
+      },
+      "writtenOn": "2016-06-25T12:02:19Z",
+      "side": 1,
+      "message": "Please do not add custom string messages. If you can\u0027t find an existing string, it means an error likely did not exist in the live game and should not be added.",
+      "revId": "625f8d7e72d64282e876a76c309e83ee4c93ce05",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
