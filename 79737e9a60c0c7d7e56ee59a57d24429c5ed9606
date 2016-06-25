@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_cb51f5d9",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/PlaceableLootContainerComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1526
+      },
+      "writtenOn": "2016-06-25T11:58:51Z",
+      "side": 1,
+      "message": "The goal is not to add custom strings, if there is no string for an error, chances are the error didnt exist live. In this case, use @container_error_message:container28",
+      "revId": "79737e9a60c0c7d7e56ee59a57d24429c5ed9606",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
