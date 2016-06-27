@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_abf041ca",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/dathomir/dolac_legasi.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-06-27T09:40:01Z",
+      "side": 1,
+      "message": "There\u0027s no reason to create a new template for this. You aren\u0027t changing anything between the two.",
+      "revId": "d5b835d7ac0e5f70288e7510e0ab9c5dea1c8249",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
