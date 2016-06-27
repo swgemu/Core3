@@ -28,7 +28,8 @@ public:
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
-		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature, target);
+		uint64 targetid = creature->getTargetID();
+		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature, targetid);
 
 		if (obj == NULL || !obj->isStructureObject()) {
 			creature->sendSystemMessage("@player_structure:no_building"); //You must be in a building, be near an installation, or have one targeted to do that.
