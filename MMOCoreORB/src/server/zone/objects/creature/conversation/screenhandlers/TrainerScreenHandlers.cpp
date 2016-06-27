@@ -140,7 +140,7 @@ void TrainerTrainableSkillsScreenHandler::getTrainableSkillsList(CreatureObject*
 		return;
 	}
 
-	if (SkillManager::instance()->fullfillsSkillPrerequisitesAndXp(skill->getSkillName(), conversingPlayer)) {
+	if (SkillManager::instance()->fulfillsSkillPrerequisitesAndXp(skill->getSkillName(), conversingPlayer)) {
 		if (!trainableSkillList->contains(skill->getSkillName())) {
 			trainableSkillList->add(skill->getSkillName());
 		}
@@ -211,7 +211,7 @@ void TrainerNextSkillsScreenHandler::getNextSkillsList(CreatureObject* conversin
 		return;
 	}
 
-	if (SkillManager::instance()->fullfillsSkillPrerequisites(skill->getSkillName(), conversingPlayer)) {
+	if (SkillManager::instance()->fulfillsSkillPrerequisites(skill->getSkillName(), conversingPlayer)) {
 		if (!nextSkillList->contains(skill->getSkillName())) {
 			nextSkillList->add(skill->getSkillName());
 		}
@@ -316,7 +316,7 @@ ConversationScreen* TrainerTrainSkillScreenHandler::handleScreen(CreatureObject*
 		canLearnSkill = true;
 	} else {
 		//Check if the player lacks skill points.
-		playerLacksSkillPoints = SkillManager::instance()->fullfillsSkillPrerequisitesAndXp(skill->getSkillName(), conversingPlayer);
+		playerLacksSkillPoints = SkillManager::instance()->fulfillsSkillPrerequisitesAndXp(skill->getSkillName(), conversingPlayer);
 	}
 
 	int skillCost = skill->getMoneyRequired();

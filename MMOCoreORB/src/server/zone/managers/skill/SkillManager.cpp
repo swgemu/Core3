@@ -603,7 +603,7 @@ bool SkillManager::canLearnSkill(const String& skillName, CreatureObject* creatu
 		return false;
 	}
 
-	if (!fullfillsSkillPrerequisites(skillName, creature)) {
+	if (!fulfillsSkillPrerequisites(skillName, creature)) {
 		return false;
 	}
 
@@ -629,8 +629,8 @@ bool SkillManager::canLearnSkill(const String& skillName, CreatureObject* creatu
 	return true;
 }
 
-bool SkillManager::fullfillsSkillPrerequisitesAndXp(const String& skillName, CreatureObject* creature) {
-	if (!fullfillsSkillPrerequisites(skillName, creature)) {
+bool SkillManager::fulfillsSkillPrerequisitesAndXp(const String& skillName, CreatureObject* creature) {
+	if (!fulfillsSkillPrerequisites(skillName, creature)) {
 		return false;
 	}
 
@@ -651,10 +651,14 @@ bool SkillManager::fullfillsSkillPrerequisitesAndXp(const String& skillName, Cre
 	return true;
 }
 
-bool SkillManager::fullfillsSkillPrerequisites(const String& skillName, CreatureObject* creature) {
+bool SkillManager::fulfillsSkillPrerequisites(const String& skillName, CreatureObject* creature) {
 	Skill* skill = skillMap.get(skillName.hashCode());
 
 	if (skill == NULL) {
+		return false;
+	}
+
+	if (skillName.contains("admin_") && !creature->getPlayerObject()->isPrivileged()) {
 		return false;
 	}
 

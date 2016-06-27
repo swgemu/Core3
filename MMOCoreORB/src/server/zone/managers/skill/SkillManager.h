@@ -80,30 +80,30 @@ public:
 	void surrenderAllSkills(CreatureObject* creature, bool notifyClient = true);
 
 	/**
-	 * Checks if the player can learn the skill (fullfills skill prerequisites, enough skill points and enough XP).
+	 * Checks if the player can learn the skill (fulfills skill prerequisites, enough skill points and enough XP).
 	 * @param skillName the name of the skill to check if the player can learn.
-	 * @param creature the player creatur.
+	 * @param creature the player creature.
 	 * @param noXpRequired XP check is skipped if this is set to true (used for character builder terminals and
 	 * grant skill command).
-	 * @return true if the player fullfills the requirements.
+	 * @return true if the player fulfills the requirements.
 	 */
 	bool canLearnSkill(const String& skillName, CreatureObject* creature, bool noXpRequired);
 
 	/**
-	 * Checks if the player fullfills the skill prerequisites and has enough XP for the skill.
+	 * Checks if the player fulfills the skill prerequisites and has enough XP for the skill.
 	 * @param skillName the name of the skill to check.
-	 * @param creature the player creatur.
-	 * @return true if the player fullfills the requirements.
+	 * @param creature the player creature.
+	 * @return true if the player fulfills the requirements.
 	 */
-	bool fullfillsSkillPrerequisitesAndXp(const String& skillName, CreatureObject* creature);
+	bool fulfillsSkillPrerequisitesAndXp(const String& skillName, CreatureObject* creature);
 
 	/**
-	 * Checks if the player fullfills the skill prerequisites.
+	 * Checks if the player fulfills the skill prerequisites.
 	 * @param skillName the name of the skill to check.
-	 * @param creature the player creatur.
-	 * @return true if the player fullfills the requirements.
+	 * @param creature the player creature.
+	 * @return true if the player fulfills the requirements.
 	 */
-	bool fullfillsSkillPrerequisites(const String& skillName, CreatureObject* creature);
+	bool fulfillsSkillPrerequisites(const String& skillName, CreatureObject* creature);
 
 	bool knightPrereqsMet(CreatureObject* creature, const String& skillNameBeingDropped);
 
