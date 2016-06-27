@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_ab0281b2",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/PlaceableLootContainerComponent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-06-27T09:18:24Z",
+      "side": 1,
+      "message": "It\u0027s already not possible to add any items to these containers. This component is used by magseals and other containers at POIs. Looking at the mantis, it\u0027s the ScavengerChestContainerComponent that you want to modify.",
+      "revId": "ff8536d6f42b82ebebf3c2e6b38c7692887a10a9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
