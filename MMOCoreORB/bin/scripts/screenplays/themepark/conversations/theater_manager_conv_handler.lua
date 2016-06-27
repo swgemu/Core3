@@ -181,6 +181,8 @@ function TheaterManagerConvoHandler:runScreenHandlers(conversationTemplate, conv
 		TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
 		writeData(playerID .. ":theater_manager:acceptedSecondAudition", 0)
 		TheaterManagerScreenPlay:startAudition(conversingPlayer)
+	elseif (screenID == "init_hasnt_entertained_ten" or screenID == "init_hasnt_entertained_twenty" or screenID == "init_hasnt_entertained_thirty") then
+		TheaterManagerScreenPlay:recreatePromotionObservers(conversingPlayer)
 	end
 
 	return conversationScreen
