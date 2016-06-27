@@ -7,6 +7,7 @@
 class EventPerkDeedTemplate : public DeedTemplate {
 private:
 	int perkType;
+	uint64 generatedTimeToLive;
 	SortedVector<String> allowedZones;
 
 public:
@@ -21,6 +22,7 @@ public:
 
 	EventPerkDeedTemplate() {
 		perkType = UNKNOWN;
+		generatedTimeToLive = 0;
 		allowedZones.removeAll();
 	}
 
@@ -31,6 +33,7 @@ public:
 	void readObject(LuaObject* templateData) {
 		DeedTemplate::readObject(templateData);
 		perkType = templateData->getIntField("perkType");
+		generatedTimeToLive = templateData->getLongField("generatedTimeToLive");
 
 		LuaObject allowzones = templateData->getObjectField("allowedZones");
 
@@ -45,6 +48,10 @@ public:
 
 	int getPerkType() {
 		return perkType;
+	}
+
+	uint64 getGeneratedTimeToLive() {
+		return generatedTimeToLive;
 	}
 
 	inline bool isAllowedZone(const String& zoneName) {

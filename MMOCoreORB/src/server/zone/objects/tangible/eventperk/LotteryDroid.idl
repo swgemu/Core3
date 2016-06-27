@@ -29,7 +29,6 @@ class LotteryDroid extends CreatureObject {
 	public final static int GAMESETUP = 0;
 	public final static int GAMESTARTED = 1;
 	public final static int GAMEENDED = 2;
-	public final static unsigned long TIMETOLIVE = 1296000000; // 15 Days
 
 	@dereferenced
 	protected Vector<unsigned long> playerList;
@@ -73,9 +72,6 @@ class LotteryDroid extends CreatureObject {
 	public native void endGame();
 
 	@preLocked
-	public native void activateRemoveEvent(boolean immediate = false);
-
-	@preLocked
 	public native void startLottery(CreatureObject player);
 
 	public native void sendDurationSUI(CreatureObject player);
@@ -92,7 +88,7 @@ class LotteryDroid extends CreatureObject {
 
 	public native void sendLotteryInfoSUI(CreatureObject player);
 
-	public native string getTimeLeft(int timeLeft);
+	public native string getTimeLeft(unsigned long timeLeft);
 
 	public native CreatureObject getDeedOwner();
 

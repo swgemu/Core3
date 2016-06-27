@@ -27,6 +27,7 @@ void EventPerkDeedImplementation::loadTemplateData(SharedObjectTemplate* templat
 	if (deedData == NULL)
 		return;
 
+	generatedTimeToLive = deedData->getGeneratedTimeToLive();
 	perkType = deedData->getPerkType();
 }
 
@@ -227,6 +228,17 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		parseChildObjects(object);
 
 		generated = true;
+
+		if (removeEventPerkDeedTask != NULL && generatedTimeToLive > 0) {
+			Time currentTime;
+			uint64 timeDelta = currentTime.getMiliTime() - purchaseTime.getMiliTime();
+
+			if (timeDelta >= generatedTimeToLive)
+				removeEventPerkDeedTask->execute();
+			else
+				removeEventPerkDeedTask->reschedule(generatedTimeToLive - timeDelta);
+		}
+
 		destroyObjectFromWorld(true);
 
 		return 0;
@@ -313,16 +325,21 @@ void EventPerkDeedImplementation::destroyObjectFromDatabase(bool destroyContaine
 }
 
 void EventPerkDeedImplementation::activateRemoveEvent(bool immediate) {
+	uint64 timeToLive = EventPerkDeedTemplate::TIME_TO_LIVE;
+
+	if (generated && generatedTimeToLive > 0)
+		timeToLive = generatedTimeToLive;
+
 	if (removeEventPerkDeedTask == NULL) {
 		removeEventPerkDeedTask = new RemoveEventPerkDeedTask(_this.getReferenceUnsafeStaticCast());
 
 		Time currentTime;
 		uint64 timeDelta = currentTime.getMiliTime() - purchaseTime.getMiliTime();
 
-		if (timeDelta >= EventPerkDeedTemplate::TIME_TO_LIVE || immediate) {
+		if (timeDelta >= timeToLive || immediate) {
 			removeEventPerkDeedTask->execute();
 		} else {
-			removeEventPerkDeedTask->schedule(EventPerkDeedTemplate::TIME_TO_LIVE - timeDelta);
+			removeEventPerkDeedTask->schedule(timeToLive - timeDelta);
 		}
 	} else if (immediate) {
 		if (removeEventPerkDeedTask->isScheduled()) {
@@ -334,7 +351,6 @@ void EventPerkDeedImplementation::activateRemoveEvent(bool immediate) {
 }
 
 String EventPerkDeedImplementation::getDurationString() {
-
 	Time currentTime;
 	uint32 timeDelta = currentTime.getMiliTime() - purchaseTime.getMiliTime();
 	uint32 timestamp = (EventPerkDeedTemplate::TIME_TO_LIVE - timeDelta) / 1000;
