@@ -223,8 +223,8 @@ includeFile("quest/dantooine/xaan_bandit.lua")
 includeFile("quest/dantooine/xaan_talmaron.lua")
 
 -- Dathomir
-includeFile("quest/dathomir/dolac_dark_jedi_knight.lua")
 includeFile("quest/dathomir/dolac_escaped_prisoner.lua")
+includeFile("quest/dathomir/dolac_dark_jedi_knight.lua")
 includeFile("quest/dathomir/dolac_legasi.lua")
 includeFile("quest/dathomir/gruthashaal.lua")
 includeFile("quest/dathomir/mozo_bondog.lua")
