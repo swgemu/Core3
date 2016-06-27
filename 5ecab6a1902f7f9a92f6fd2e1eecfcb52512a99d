@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_2bdd1143",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/PetControlDeviceImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-06-27T09:33:50Z",
+      "side": 1,
+      "message": "This message doesn\u0027t match the check and would therefore be misleading.",
+      "revId": "5ecab6a1902f7f9a92f6fd2e1eecfcb52512a99d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
