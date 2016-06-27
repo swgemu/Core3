@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_8b945d38",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/PlaceableLootContainerComponent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-06-27T12:08:16Z",
+      "side": 1,
+      "message": "Why are you changing this? What implications will it have?",
+      "revId": "a56b4f1bd0e3b2e1ed97539b259a9e3efb4fe846",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_6b8f8924",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/ScavengerChestContainerComponent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-06-27T12:08:16Z",
+      "side": 1,
+      "message": "This method will never get called with the change you made to it\u0027s signature. This method is for checking if a player has permission. It is not for checking if the item can be added. You need to add a canAddObject method to this component to perform the no trade check.",
+      "revId": "a56b4f1bd0e3b2e1ed97539b259a9e3efb4fe846",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_cb725549",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/ScavengerChestContainerComponent.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-06-27T12:08:16Z",
+      "side": 1,
+      "message": "You can\u0027t just add an arg to an inherited method. Changing this will break inheritance.",
+      "revId": "a56b4f1bd0e3b2e1ed97539b259a9e3efb4fe846",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
