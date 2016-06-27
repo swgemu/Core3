@@ -56,7 +56,6 @@ public:
 
 		if(creo->canFeignDeath()) {
 			creo->feignDeath();
-
 		} else {
 			creo->sendSystemMessage("@cbt_spam:feign_fail_single");
 		}

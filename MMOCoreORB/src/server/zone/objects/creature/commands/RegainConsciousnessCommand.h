@@ -66,6 +66,8 @@ public:
 			creature->sendSystemMessage(message);
 
 			// Revive user by setting posture to standing.
+			
+			creature->removeFeignedDeath();
 
 			creature->setPosture(CreaturePosture::UPRIGHT);
 

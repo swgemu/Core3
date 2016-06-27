@@ -108,7 +108,9 @@ public:
 		incapTask->cancel();
 		player->removePendingTask("incapacitationRecovery");
 		player->addCooldown("tkaForceOfWill", 3600 * 1000);
-
+		
+		player->removeFeignedDeath();
+		
 		return SUCCESS;
 	}
 };
