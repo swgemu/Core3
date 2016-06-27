@@ -4,7 +4,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/components/EventPerkDataComponent.h"
 
-bool ScavengerChestContainerComponent::checkContainerPermission(SceneObject* container, CreatureObject* creature, uint16 permission) const {
+bool ScavengerChestContainerComponent::checkContainerPermission(SceneObject* container, SceneObject* object, CreatureObject* creature, uint16 permission) const {
 	ContainerPermissions* permissions = container->getContainerPermissions();
 
 	if(!container->isEventPerkItem())
@@ -30,17 +30,26 @@ bool ScavengerChestContainerComponent::checkContainerPermission(SceneObject* con
 	ManagedReference<CreatureObject*> owner = deed->getOwner().get();
 
 	if (permission == ContainerPermissions::MOVEIN) {
+
+		if (object == NULL)
+			return false;
+
+		if (object->isNoTrade()) {
+			creature->sendSystemMessage("@container_error_message:container28"); //You cannot put this item into this container.
+			return TransferErrorCode::INVALIDTYPE;
+		}
+
 		if (creature == owner) {
 			return true;
 		} else {
-			creature->sendSystemMessage("@event_perk:chest_can_not_add");
+			creature->sendSystemMessage("@event_perk:chest_can_not_add"); //You do not have permission to add items to this container.
 			return false;
 		}
 	} else if (permission == ContainerPermissions::MOVEOUT) {
 		if (creature == owner) {
 			return true;
 		} else if (chest->isOnLootedList(creature->getObjectID())) {
-			creature->sendSystemMessage("@event_perk:chest_only_one_item");
+			creature->sendSystemMessage("@event_perk:chest_only_one_item"); //You've already taken your reward from this chest.
 			return false;
 		}
 
