@@ -24,6 +24,13 @@ includeFile("conversations/themepark/nym/nym_conv.lua")
 includeFile("conversations/themepark/nym/sergeant_moore_conv.lua")
 includeFile("conversations/themepark/nym/kole_conv.lua")
 
+-- Nightsister Themepark
+includeFile("conversations/themepark/nightsister/baritha_conv.lua")
+includeFile("conversations/themepark/nightsister/fath_hray_conv.lua")
+includeFile("conversations/themepark/nightsister/diax_conv.lua")
+includeFile("conversations/themepark/nightsister/kais_conv.lua")
+includeFile("conversations/themepark/nightsister/gethzerion_conv.lua")
+
 -- Bestine Museum
 includeFile("conversations/events/bestine_museum/bestine_artist01_conv.lua")
 includeFile("conversations/events/bestine_museum/bestine_artist02_conv.lua")
