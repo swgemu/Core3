@@ -1,0 +1,353 @@
+
+baritha_missions =
+{
+  {
+    missionType = "escort",
+    primarySpawns =
+    {
+	--HOW CAN WE SPAWN THESE 3 AT THE DATH PRISON POI AREA SPECIFIC WP's??
+      { npcTemplate = "theme_park_imperial_sergeant", planetName = "dathomir", npcName = "" }
+    },
+    secondarySpawns =
+    {
+      { npcTemplate = "theme_park_imperial_trooper", planetName = "dathomir", npcName = "Prison Guard" },
+      { npcTemplate = "theme_park_imperial_trooper", planetName = "dathomir", npcName = "Prison Guard" }
+    },
+    itemSpawns =
+    {
+
+    },
+    rewards =
+    {
+      { rewardType = "faction", faction = "nightsister", amount = 5 }
+    }
+  },
+  {
+    missionType = "escort",
+    primarySpawns =
+    {
+      { npcTemplate = "theme_park_nightsister_outcast", planetName = "dathomir", npcName = "a Reformed Nightsister" }
+    },
+    secondarySpawns =
+    {
+      { npcTemplate = "singing_mountain_clan_guardian", planetName = "dathomir", npcName = "" },
+      { npcTemplate = "singing_mountain_clan_guardian", planetName = "dathomir", npcName = "" }
+    },
+    itemSpawns =
+    {
+
+    },
+    rewards =
+    {
+      { rewardType = "faction", faction = "nightsister", amount = 10 }
+    }
+  },
+  {
+    missionType = "escort",
+    primarySpawns =
+    {
+	--HOW CAN WE SPAWN THIS 1 ALSO AT THE DATHOMIR PRISON POI AREA SPECIFIC WP??
+      { npcTemplate = "theme_park_imperial_staff_corporal", planetName = "dathomir", npcName = "" }
+    },
+    secondarySpawns =
+    {
+
+    },
+    itemSpawns =
+    {
+
+    },
+    rewards =
+    {
+      { rewardType = "faction", faction = "nightsister", amount = 15 }
+    }
+  }
+}
+
+fath_hray_missions =
+{
+  {
+    missionType = "escort",
+    primarySpawns =
+    {
+      { npcTemplate = "theme_park_nightsister_rancor", planetName = "dathomir", npcName = "an Escaped Rancor" }
+    },
+    secondarySpawns =
+    {
+      { npcTemplate = "singing_mountain_clan_rancor_tamer", planetName = "dathomir", npcName = "" },
+      { npcTemplate = "singing_mountain_clan_rancor_tamer", planetName = "dathomir", npcName = "" },
+      { npcTemplate = "nightsister_rancor_tamer", planetName = "dathomir", npcName = "" }
+    },
+    itemSpawns =
+    {
+
+    },
+    rewards =
+    {
+      { rewardType = "faction", faction = "nightsister", amount = 10 },
+      { rewardType = "credits", amount = 350 }
+    }
+  },
+  {
+    missionType = "assassinate",
+    primarySpawns =
+    {
+      { npcTemplate = "singing_mountain_clan_huntress", planetName = "dathomir", npcName = "" }
+    },
+    secondarySpawns =
+    {
+      { npcTemplate = "singing_mountain_clan_scout", planetName = "dathomir", npcName = "" },
+      { npcTemplate = "singing_mountain_clan_rancor_tamer", planetName = "dathomir", npcName = "" },
+      { npcTemplate = "singing_mountain_clan_rancor_tamer", planetName = "dathomir", npcName = "" }
+    },
+    itemSpawns =
+    {
+
+    },
+    rewards =
+    {
+      { rewardType = "faction", faction = "nightsister", amount = 15 },
+      { rewardType = "credits", amount = 750 }
+    }
+  }
+}
+
+diax_missions =
+{
+  {
+    missionType = "assassinate",
+    primarySpawns =
+    {
+      { npcTemplate = "nightsister_spell_weaver", planetName = "dathomir", npcName = "Daverda" }
+    },
+    secondarySpawns =
+    {
+
+    },
+    itemSpawns =
+    {
+
+    },
+    rewards =
+    {
+      { rewardType = "faction", faction = "nightsister", amount = 10 },
+      { rewardType = "credits", amount = 100 }
+    }
+  },
+  {
+    missionType = "confiscate",
+    primarySpawns =
+    {
+      { npcTemplate = "singing_mountain_clan_arch_witch", planetName = "dathomir", npcName = "" }
+    },
+    secondarySpawns =
+    {
+
+    },
+    itemSpawns =
+    {
+      { itemTemplate = "object/tangible/mission/quest_item/diax_q2_needed.iff", itemName = "" }
+    },
+    rewards =
+    {
+      { rewardType = "faction", faction = "nightsister", amount = 15 },
+      { rewardType = "credits", amount = 75 },
+      --DO WE NEED A NEW TEMPLATE FOR THE 'STIMPACK B' REWARD ITEM WITH SPECIAL STATS??
+      { rewardType = "loot",  lootGroup = "object/tangible/medicine/crafted/medpack_damage_b.iff" }
+    }
+  }
+}
+
+kais_missions =
+{
+  {
+    missionType = "confiscate",
+    primarySpawns =
+    {
+      { npcTemplate = "gaping_spider_queen", planetName = "dathomir", npcName = "" }
+    },
+    secondarySpawns =
+    {
+
+    },
+    itemSpawns =
+    {
+      { itemTemplate = "object/tangible/mission/quest_item/kais_q1_needed.iff", itemName = "" }
+    },
+    rewards =
+    {
+      { rewardType = "faction", faction = "nightsister", amount = 5 }
+    }
+  },
+  {
+    missionType = "confiscate",
+    primarySpawns =
+    {
+      { npcTemplate = "malkloc", planetName = "dathomir", npcName = "" }
+    },
+    secondarySpawns =
+    {
+
+    },
+    itemSpawns =
+    {
+      { itemTemplate = "object/tangible/mission/quest_item/kais_q2_needed.iff", itemName = "" }
+    },
+    rewards =
+    {
+      { rewardType = "faction", faction = "nightsister", amount = 10 }
+    }
+  },
+  {
+    missionType = "deliver",
+    primarySpawns =
+    {
+      { npcTemplate = "theme_park_imperial_stealth_operative", planetName = "dathomir", npcName = "an Imperial Prison Guard" }
+    },
+    secondarySpawns =
+    {
+
+    },
+    itemSpawns =
+    {
+      { itemTemplate = "object/tangible/mission/quest_item/kais_q3_needed.iff", itemName = "Powdered Poison" }
+    },
+    rewards =
+    {
+      { rewardType = "faction", faction = "nightsister", amount = 15 }
+    }
+  }
+}
+
+gethzerion_missions =
+{
+  {
+    missionType = "confiscate",
+    primarySpawns =
+    {
+      { npcTemplate = "nightsister_slave", planetName = "dathomir", npcName = "Dal" }
+    },
+    secondarySpawns =
+    {
+
+    },
+    itemSpawns =
+    {
+      { itemTemplate = "object/tangible/container/jar/jar_guts_s01.iff", itemName = "Heart of former 'Prime Slave'" }
+    },
+    rewards =
+    {
+      { rewardType = "faction", faction = "nightsister", amount = 10 },
+    }
+  },
+  {
+    missionType = "assassinate",
+    primarySpawns =
+    {
+      { npcTemplate = "singing_mountain_clan_scout", planetName = "dathomir", npcName = "" },
+      { npcTemplate = "singing_mountain_clan_scout", planetName = "dathomir", npcName = "" },
+      { npcTemplate = "singing_mountain_clan_scout", planetName = "dathomir", npcName = "" }
+    },
+    secondarySpawns =
+    {
+
+    },
+    itemSpawns =
+    {
+
+    },
+    rewards =
+    {
+      { rewardType = "faction", faction = "nightsister", amount = 15 }
+    }
+  },
+  {
+    missionType = "assassinate",
+    primarySpawns =
+    {
+      { npcTemplate = "singing_mountain_clan_arch_witch", planetName = "dathomir", npcName = "Aelta" }
+    },
+    secondarySpawns =
+    {
+
+    },
+    itemSpawns =
+    {
+
+    },
+    rewards =
+    {
+      { rewardType = "faction", faction = "nightsister", amount = 20 }
+    }
+  },
+  {
+    missionType = "confiscate",
+    primarySpawns =
+    {
+      { npcTemplate = "singing_mountain_clan_arch_witch", planetName = "dathomir", npcName = "Chastina" }
+    },
+    secondarySpawns =
+    {
+      { npcTemplate = "singing_mountain_clan_dragoon", planetName = "dathomir", npcName = "" },
+      { npcTemplate = "singing_mountain_clan_dragoon", planetName = "dathomir", npcName = "" }
+    },
+    itemSpawns =
+    {
+      { itemTemplate = "object/tangible/loot/misc/slave_collar.iff", itemName = "Augwynne's Necklace" }
+    },
+    rewards =
+    {
+      { rewardType = "faction", faction = "nightsister", amount = 30 },
+    }
+  }
+}
+
+npcMapNightsister =
+{
+  {
+    spawnData = { planetName = "dathomir", npcTemplate = "baritha", x = -3975, z = 131.5, y = -160, direction = 180, cellID = 0, position = STAND },
+    npcNumber = 1,
+    stfFile = "@static_npc/dathomir/baritha",
+    missions = baritha_missions
+  },
+  {
+    spawnData = { planetName = "dathomir", npcTemplate = "fath_hray", x = -12, z = 7.2, y = -36.7, direction = 10, cellID = 189384, position = STAND },
+    npcNumber = 2,
+    stfFile = "@static_npc/dathomir/dathomir_nightsisterstronghold_fath_hray",
+    missions = fath_hray_missions
+  },
+  {
+    spawnData = { planetName = "dathomir", npcTemplate = "diax", x = -20.5, z = 7.2, y = -27.4, direction = 140, cellID = 189384, position = STAND },
+    npcNumber = 4,
+    stfFile = "@static_npc/dathomir/diax",
+    missions = diax_missions
+  },
+  {
+    spawnData = { planetName = "dathomir", npcTemplate = "kais", x = 14.2, z = 7.2, y = -15, direction = -100, cellID = 189382, position = STAND },
+    npcNumber = 8,
+    stfFile = "@static_npc/dathomir/kais",
+    missions = kais_missions
+  },
+  {
+    spawnData = { planetName = "dathomir", npcTemplate = "gethzerion", x = -2, z = 7.2, y = -1, direction = -130, cellID = 189383, position = STAND },
+    npcNumber = 16,
+    stfFile = "@static_npc/dathomir/gethzerion",
+    missions = gethzerion_missions
+  }
+}
+
+ThemeParkNightsister = ThemeParkLogic:new {
+  numberOfActs = 1,
+  npcMap = npcMapNightsister,
+  className = "ThemeParkNightsister",
+  screenPlayState = "nightsister_theme_park"
+}
+
+registerScreenPlay("ThemeParkNightsister", true)
+
+theme_park_nightsister_mission_giver_conv_handler = mission_giver_conv_handler:new {
+  themePark = ThemeParkNightsister
+}
+theme_park_nightsister_mission_target_conv_handler = mission_target_conv_handler:new {
+  themePark = ThemeParkNightsister
+}
