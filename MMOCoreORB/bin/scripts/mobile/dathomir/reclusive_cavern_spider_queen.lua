@@ -1,7 +1,7 @@
 reclusive_cavern_spider_queen = Creature:new {
 	objectName = "@mob/creature_names:cave_gaping_spider_recluse_queen",
-	socialGroup = "spider",
-	faction = "",
+	socialGroup = "spider_nightsister",
+	faction = "spider_nightsister",
 	level = 70,
 	chanceHit = 0.65,
 	damageMin = 510,
