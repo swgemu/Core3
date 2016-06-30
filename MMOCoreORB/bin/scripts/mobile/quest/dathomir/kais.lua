@@ -21,12 +21,14 @@ kais = Creature:new {
 	tamingChance = 0.000000,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = NONE,
+	creatureBitmask = PACK,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_kais.iff"},
 	lootGroups = {},
 	weapons = {},
+	conversationTemplate = "theme_park_nightsister_mission_giver_convotemplate",
 	attacks = {}
 }
 
