@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_8b30dd57",
+        "filename": "MMOCoreORB/bin/scripts/mobile/thug/criminal.lua",
+        "patchSetId": 14
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-06-30T01:11:20Z",
+      "side": 1,
+      "message": "Don\u0027t change this. There\u0027s documented evidence that criminals were attackable live.",
+      "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_2b351146",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/tatooine_bestine.lua",
+        "patchSetId": 14
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-06-30T01:11:20Z",
+      "side": 1,
+      "message": "nil check pNpc first",
+      "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_4b3ac537",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/tatooine_bestine.lua",
+        "patchSetId": 14
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-06-30T01:11:20Z",
+      "side": 1,
+      "message": "nil check pNpc",
+      "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_eb3e3929",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 14
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-06-30T01:11:20Z",
+      "side": 1,
+      "message": "Remove your debug output",
+      "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_0b3ccd2e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 14
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-06-30T01:11:20Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_ab4841cd",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 14
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-06-30T01:11:20Z",
+      "side": 1,
+      "message": "Why aren\u0027t you setting to electionWinner?",
+      "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_cb4575b4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 14
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-06-30T01:11:20Z",
+      "side": 1,
+      "message": "Remove debugs",
+      "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_6b1229b6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 14
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-06-30T01:11:20Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
