@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "9a6a9dd7_0b6a8d1a",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/tour_aryon_conv.lua",
+        "patchSetId": 14
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-06-30T02:02:28Z",
+      "side": 1,
+      "message": "Please add a comment with the dialog text",
+      "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_ab760105",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/tour_aryon_conv.lua",
+        "patchSetId": 14
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-06-30T02:02:28Z",
+      "side": 1,
+      "message": "You have the wrong dialog text in the comment",
+      "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a6a9dd7_8b30dd57",
         "filename": "MMOCoreORB/bin/scripts/mobile/thug/criminal.lua",
         "patchSetId": 14
@@ -132,6 +166,193 @@
       "writtenOn": "2016-06-30T01:11:20Z",
       "side": 1,
       "message": "Remove",
+      "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_4b1165ab",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 14
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-06-30T02:02:28Z",
+      "side": 1,
+      "message": "All of your returns within each handleObjectMenuSelect should return 0.",
+      "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_eb25d90a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 14
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-06-30T02:02:28Z",
+      "side": 1,
+      "message": "Be consistent in your name formatting. I assume you used the _ since you put Registry after MenuComponent. Don\u0027t do that.",
+      "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_0b236d06",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 14
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-06-30T02:02:28Z",
+      "side": 1,
+      "message": "Don\u0027t encapsulate the following stuff within this check. You\u0027re only guaranteeing pInventory isn\u0027t nil for it so it might be nil when you call giveItem later. Instead just return here if pInventory is nil.",
+      "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_ab1fe1b6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 14
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-06-30T02:02:28Z",
+      "side": 1,
+      "message": "Is there a reason you don\u0027t check if they already have one of these (like you do in the other components)? A player will be able to use this multiple times and get multiples of the item. Is that intentional?",
+      "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_cb1c95c4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 14
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-06-30T02:02:28Z",
+      "side": 1,
+      "message": "Same as above, be consistent in your name format",
+      "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_6b79c9fb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 14
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-06-30T02:02:28Z",
+      "side": 1,
+      "message": "Just return if pInventory is nil.",
+      "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_8b7e9de3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 14
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-06-30T02:02:28Z",
+      "side": 1,
+      "message": "Since you have a container component in this file, I would remove the \u0027Menu\u0027 from the file name.",
+      "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_2b83d1cd",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 14
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-06-30T02:02:28Z",
+      "side": 1,
+      "message": "Just call getTemplateObjectPath once and store the return in a local var to use in this check.",
+      "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_4b8885e7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 14
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-06-30T02:02:28Z",
+      "side": 1,
+      "message": "In addition to the spatial chat, you need to destroy pObj from world and database.",
+      "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_eb6cf938",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 14
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-06-30T02:02:28Z",
+      "side": 1,
+      "message": "You need to return a transfer error code. In this case, TRANSFERSUCCESS.",
+      "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_2b0c3194",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/stone_merchant_conv_handler.lua",
+        "patchSetId": 14
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-06-30T02:02:28Z",
+      "side": 1,
+      "message": "this screenID isn\u0027t in the convo template nor do I see it getting added as an option target. Is this supposed to be returned_have_stones?",
       "revId": "decf5809710e6f79a94abbcbc4f285df2f9a42ff",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
