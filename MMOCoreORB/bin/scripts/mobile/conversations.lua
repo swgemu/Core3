@@ -61,6 +61,7 @@ includeFile("conversations/tasks/hero_of_tatooine/hero_of_tat_ranchers_wife_conv
 
 -- Events
 includeFile("conversations/events/event_promoter_conv.lua")
+includeFile("conversations/events/race_droid_conv.lua")
 
 -- Epic Quests
 includeFile("conversations/themepark/epic_quests/goru_conv.lua")

@@ -222,8 +222,8 @@ int LuaTangibleObject::isInvisible(lua_State* L) {
 }
 
 int LuaTangibleObject::setLuaStringData(lua_State *L) {
-	String key = lua_tostring(L, -1);
-	String data = lua_tostring(L, -2);
+	String key = lua_tostring(L, -2);
+	String data = lua_tostring(L, -1);
 
 	realObject->setLuaStringData(key, data);
 	return 0;
