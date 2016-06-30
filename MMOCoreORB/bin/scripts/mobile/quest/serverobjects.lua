@@ -282,6 +282,12 @@ includeFile("quest/dathomir/fs_village/sivarra_mechaux.lua")
 includeFile("quest/dathomir/fs_village/villager_force_sensitive_village.lua")
 includeFile("quest/dathomir/fs_village/whip.lua")
 includeFile("quest/dathomir/fs_village/wounded_villager.lua")
+includeFile("quest/dathomir/theme_park_nightsister_outcast.lua")
+includeFile("quest/dathomir/theme_park_nightsister_rancor.lua")
+includeFile("quest/dathomir/theme_park_imperial_sergeant.lua")
+includeFile("quest/dathomir/theme_park_imperial_staff_corporal.lua")
+includeFile("quest/dathomir/theme_park_imperial_stealth_operative.lua")
+includeFile("quest/dathomir/theme_park_imperial_trooper.lua")
 
 -- Endor
 includeFile("quest/endor/charal.lua")
