@@ -385,6 +385,8 @@ function ThemeParkLogic:handleMissionAccept(npcNumber, missionNumber, pConversin
 		return self:handleDestroyMissionAccept(mission, pConversingPlayer, missionNumber)
 	elseif mission.missionType == "hunt" then
 		return self:handleHuntMissionAccept(mission, pConversingPlayer, missionNumber)
+	elseif mission.missionType == "recon" then
+    return self:handleReconMissionAccept(mission, pConversingPlayer, missionNumber)
 	end
 end
 
@@ -487,6 +489,20 @@ function ThemeParkLogic:handleHuntMissionAccept(mission, pConversingPlayer, miss
 	else
 		return false
 	end
+end
+
+function ThemeParkLogic:handleReconMissionAccept(mission, pConversingPlayer, missionNumber)
+  if (pConversingPlayer == nil) then
+    return false
+  end
+
+  if self:startReconMission(mission, pConversingPlayer) == true then
+    self:writeData(pConversingPlayer, ":activeMission", 1)
+    self:writeData(pConversingPlayer, ":requiredLocationReached", 0)
+    return true
+  else
+    return false
+  end
 end
 
 function ThemeParkLogic:handleConfiscateMissionAccept(mission, pConversingPlayer, missionNumber)
@@ -600,6 +616,37 @@ function ThemeParkLogic:notifyKilledHuntTarget(pAttacker, pVictim)
 		return 1
 	end
 	return 0
+end
+
+function ThemeParkLogic:startReconMission(mission, pConversingPlayer)
+  if pConversingPlayer == nil then
+    return false
+  end
+
+  self:updateWaypoint(pConversingPlayer, mission.reconTarget.planetName, mission.reconTarget.waypointX, mission.reconTarget.waypointY, "target")
+  createObserver(DESTINATIONREACHED, self.className, "notifyArrivedReconTarget", pConversingPlayer)
+
+  return true
+end
+
+function ThemeParkLogic:notifyArrivedReconTarget(pExplorer, pLocation)
+  if pLocation == nil or pExplorer == nil then
+    return 0
+  end
+
+  local waypointNumber = self:getActiveWaypointNumber(pExplorer)
+  local missionNumber = self:getCurrentMissionNumber(waypointNumber, pExplorer)
+  local mission = self:getMission(waypointNumber, missionNumber)
+
+  if mission == nil then
+    return 0
+  end
+
+  if (WaypointObject(pLocation):getObjectID() == mission.reconTarget.waypointTemplate) then
+    self:completeMission(pExplorer)
+    return 1
+  end
+  return 0
 end
 
 function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
@@ -1229,6 +1276,8 @@ function ThemeParkLogic:getDefaultWaypointName(pConversingPlayer, direction)
 			return "Deliver " .. missionItemName
 		elseif currentMissionType == "hunt" then
 			return "Hunt " .. mission.huntTarget.npcName
+		elseif currentMissionType == "recon" then
+      return "Recon " .. mission.reconTarget.waypointName
 		elseif currentMissionType == "escort" then
 			return "Escort " .. mainNpcName
 		elseif currentMissionType == "retrieve" then
