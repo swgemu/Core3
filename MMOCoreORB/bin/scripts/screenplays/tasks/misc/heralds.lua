@@ -22,7 +22,7 @@ heraldScreenPlay = ScreenPlay:new {
 		-- These require returning to the herald and will need to be handled by the themepark logic
 		--{ planet = "dathomir", template = "herald_dathomir_olof", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0, stringFile = "herald_dathomir_nsister_cave_olof" },
 		--{ planet = "dathomir", template = "herald_dathomir_azzenaj", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0, stringFile = "herald_dathomir_nsister_cave_azzenaj" },
-		--{ planet = "dathomir", template = "herald_dathomir_leandra", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0, stringFile = "herald_dathomir_nsister_cave_leandra" },
+		--{ planet = "dathomir", template = "herald_dathomir_leandra", x = -4082, z = 132.7, y = -210, angle = -25, cell = 0, destX = -1200, destY = 6254, stringFile = "herald_dathomir_nsister_cave_leandra" },
 
 		{ planet = "endor", template = "herald_commoner", x = 3212.71, z = 24.5, y = -3452.25, angle = 41.7, cell = 0, destX = -1709, destY = -29, stringFile = "herald_endor_jinda_spiritualists" },
 		{ planet = "endor", template = "herald_commoner", x = 3246.3, z = 24, y = -3492.1, angle = 323, cell = 0, destX = 2274, destY = 3473, stringFile = "herald_endor_korga_cave" },
