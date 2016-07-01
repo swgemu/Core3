@@ -2635,7 +2635,6 @@ void PlayerManagerImplementation::updatePermissionLevel(CreatureObject* targetPl
 		return;
 	}
 
-	//Locker clocker(targetPlayer, player);
 	Locker locker(targetPlayer);
 	ManagedReference<PlayerObject*> ghost = targetPlayer->getPlayerObject();
 
@@ -2653,8 +2652,8 @@ void PlayerManagerImplementation::updatePermissionLevel(CreatureObject* targetPl
 
 	if (currentPermissionLevel != 0) {
 		Vector<String>* skillsToBeRemoved = permissionLevelList->getPermissionSkills(currentPermissionLevel);
-		if(skillsToBeRemoved != NULL) {
-			for(int i = 0; i < skillsToBeRemoved->size(); i++) {
+		if (skillsToBeRemoved != NULL) {
+			for (int i = 0; i < skillsToBeRemoved->size(); i++) {
 				String skill = skillsToBeRemoved->get(i);
 				targetPlayer->sendSystemMessage("Staff skill revoked: " + skill);
 				skillManager->surrenderSkill(skill, targetPlayer, true);
@@ -2662,10 +2661,12 @@ void PlayerManagerImplementation::updatePermissionLevel(CreatureObject* targetPl
 		}
 	}
 
-	if(permissionLevel != 0) {
+	ghost->setAdminLevel(permissionLevel);
+
+	if (permissionLevel != 0) {
 		Vector<String>* skillsToBeAdded = permissionLevelList->getPermissionSkills(permissionLevel);
-		if(skillsToBeAdded != NULL) {
-			for(int i = 0; i < skillsToBeAdded->size(); ++i) {
+		if (skillsToBeAdded != NULL) {
+			for (int i = 0; i < skillsToBeAdded->size(); ++i) {
 				String skill = skillsToBeAdded->get(i);
 				targetPlayer->sendSystemMessage("Staff skill granted: " + skill);
 				skillManager->awardSkill(skill, targetPlayer, false, true, true);
@@ -2673,7 +2674,6 @@ void PlayerManagerImplementation::updatePermissionLevel(CreatureObject* targetPl
 		}
 	}
 
-	ghost->setAdminLevel(permissionLevel);
 	updatePermissionName(targetPlayer, permissionLevel);
 }
 

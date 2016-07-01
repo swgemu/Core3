@@ -658,7 +658,7 @@ bool SkillManager::fulfillsSkillPrerequisites(const String& skillName, CreatureO
 		return false;
 	}
 
-	if (skillName.contains("admin_") && !creature->getPlayerObject()->isPrivileged()) {
+	if (skillName.contains("admin_") && !(creature->getPlayerObject()->getAdminLevel() > 0)) {
 		return false;
 	}
 
