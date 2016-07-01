@@ -282,6 +282,14 @@ includeFile("quest/dathomir/fs_village/sivarra_mechaux.lua")
 includeFile("quest/dathomir/fs_village/villager_force_sensitive_village.lua")
 includeFile("quest/dathomir/fs_village/whip.lua")
 includeFile("quest/dathomir/fs_village/wounded_villager.lua")
+includeFile("quest/dathomir/theme_park_singing_mountain_clan_arch_witch.lua")
+includeFile("quest/dathomir/theme_park_singing_mountain_clan_dragoon.lua")
+includeFile("quest/dathomir/theme_park_singing_mountain_clan_initiate.lua")
+includeFile("quest/dathomir/theme_park_singing_mountain_clan_arch_witch_peila.lua")
+includeFile("quest/dathomir/theme_park_singing_mountain_clan_rancor_tamer.lua")
+includeFile("quest/dathomir/theme_park_commoner_old.lua")
+includeFile("quest/dathomir/theme_park_smc_rancor_pygmy_shando.lua")
+includeFile("quest/dathomir/theme_park_smc_rancor_pygmy_maufel.lua")
 
 -- Endor
 includeFile("quest/endor/charal.lua")
@@ -406,6 +414,7 @@ includeFile("quest/naboo/vana_thug.lua")
 includeFile("quest/naboo/veers.lua")
 includeFile("quest/naboo/zazzi.lua")
 includeFile("quest/naboo/zim_zam_blattis.lua")
+includeFile("quest/naboo/theme_park_naboo_holy_man.lua")
 
 -- Rori
 includeFile("quest/rori/ablest.lua")
