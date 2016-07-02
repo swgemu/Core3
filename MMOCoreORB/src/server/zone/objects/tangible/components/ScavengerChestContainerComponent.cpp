@@ -52,6 +52,16 @@ bool ScavengerChestContainerComponent::checkContainerPermission(SceneObject* con
 	return false;
 }
 
+int ScavengerChestContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
+
+	if (object->isNoTrade()) {
+		errorDescription = "@container_error_message:container28"; //You cannot put this item into this container.
+		return TransferErrorCode::INVALIDTYPE;
+	}
+
+	return ContainerComponent::canAddObject(sceneObject, object, containmentType, errorDescription);
+}
+
 int ScavengerChestContainerComponent::notifyObjectRemoved(SceneObject* container, SceneObject*, SceneObject* destination) const {
 	if (destination == NULL)
 		return 0;
