@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_6b4a2985",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/MountCommand.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-02T06:11:42Z",
+      "side": 1,
+      "message": "Put this after all the checks. No need to make them stand unless the player is actually going to mount.\n\nThe way you have it someone could actually cause another player\u0027s pet to stand up by trying to mount it since you have this before the linked creature check.",
+      "revId": "49c77aa94e3f4628a7e1f467e0ab83bdfb35aced",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
