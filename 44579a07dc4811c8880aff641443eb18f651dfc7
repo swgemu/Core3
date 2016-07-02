@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_ab80418c",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/ScavengerChestContainerComponent.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-02T06:06:10Z",
+      "side": 1,
+      "message": "return ContainerComponent::canAddObject(sceneObject, object, containmentType, errorDescription);",
+      "revId": "44579a07dc4811c8880aff641443eb18f651dfc7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
