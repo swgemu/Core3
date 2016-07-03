@@ -23,8 +23,10 @@ public:
 			return INVALIDLOCOMOTION;
 		}
 
-		if (!checkStateMask(creature))
+		if (!checkStateMask(creature) || creature->isKneeling() || creature->isProne() || creature->isKnockedDown() || creature->isSitting()) {
+			creature->sendSystemMessage("@error_message:wrong_state"); //You cannot complete that action while in your current state.
 			return INVALIDSTATE;
+		}
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
@@ -46,7 +48,7 @@ public:
 			y = tokenizer.getFloatToken();
 			angle = tokenizer.getIntToken() * 90;
 
-			// Validate player position -vs- attemped placement
+			// Validate player position -vs- attempted placement
 			Zone* zone = creature->getZone();
 
 			if (zone == NULL)
@@ -56,14 +58,14 @@ public:
 			Vector3 playerPosition = creature->getPosition();
 			float distance = position.distanceTo(playerPosition);
 
-			// Client will only scoll about 100m from the placement start position
+			// Client will only scroll about 100m from the placement start position
 			if (distance > 100.0f) {
 				CreatureObject* player = cast<CreatureObject*>(creature);
 
 				player->sendSystemMessage("@system_msg:out_of_range");
 
 				player->error(player->getFirstName()
-					+ " attemped invalid placeStructure on "
+					+ " attempted invalid placeStructure on "
 					+ zone->getZoneName()
 					+ " @ x: " + String::valueOf(x)
 					+ ", y: " + String::valueOf(y)
@@ -82,7 +84,6 @@ public:
 		}
 
 		//We want to begin the session here.
-
 		ManagedReference<StructureDeed*> deed = server->getZoneServer()->getObject(deedID).castTo<StructureDeed*>();
 
 		if (deed != NULL)

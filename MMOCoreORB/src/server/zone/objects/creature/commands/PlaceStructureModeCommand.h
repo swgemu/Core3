@@ -33,8 +33,10 @@ public:
 			return INVALIDLOCOMOTION;
 		}
 
-		if (!checkStateMask(creature))
+		if (!checkStateMask(creature) || creature->isKneeling() || creature->isProne() || creature->isKnockedDown() || creature->isSitting()) {
+			creature->sendSystemMessage("@error_message:wrong_state"); //You cannot complete that action while in your current state.
 			return INVALIDSTATE;
+		}
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
