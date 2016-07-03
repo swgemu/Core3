@@ -82,6 +82,18 @@ public:
 		if (zone == NULL || obj->getObjectTemplate() == NULL)
 			return;
 
+		ManagedReference<PlanetManager*> citynearPoi = zone->getPlanetManager();
+		// We don't want players to exploit block entrances or exits to POI areas & buildings
+		// but we still want CSRs and ADMINs to be able to place whatever for server-events & such...
+		if (!mayor->getPlayerObject()->isPrivileged()) {
+			if (!citynearPoi->isBuildingPermittedAt(obj->getPositionX(), obj->getPositionY(), mayor)) {
+				StringIdChatParameter msg;
+				msg.setStringId("@player_structure:not_permitted"); //"Building is not permitted here."
+				mayor->sendSystemMessage(msg);
+				return;
+			}
+		}
+
 		Reference<SceneObject*> objTooClose = zone->getPlanetManager()->findObjectTooCloseToDecoration(mayor->getPositionX(), mayor->getPositionY(), obj->getObjectTemplate()->getNoBuildRadius());
 
 		if (objTooClose != NULL && !obj->isCityStreetLamp()) {
