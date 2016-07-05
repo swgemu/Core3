@@ -11,18 +11,17 @@
 
 class SpatialChat: public ObjectControllerMessage {
 public:
-	SpatialChat(uint64 senderid, uint64 recvid, const UnicodeString& message, uint64 target, uint32 moodid,
-			uint32 mood2, uint8 langID) :
-		ObjectControllerMessage(recvid, 0x0B, 0xF4) {
-		insertLong(senderid);
-		insertLong(target);
+	SpatialChat(uint64 senderID, uint64 targetID, uint64 chatTargetID, const UnicodeString& message, uint16 volume, uint32 spatialChatType, uint32 moodType, uint32 chatFlags, uint8 languageID) :
+		ObjectControllerMessage(targetID, 0x0B, 0xF4) {
+		insertLong(senderID);
+		insertLong(chatTargetID);
 		insertUnicode(message);
 
-		insertShort(0x32);
-		insertShort((uint16) mood2);
-		insertShort((uint16) moodid);
-		insertByte(0);
-		insertByte(langID);
+		insertShort(volume);
+		insertShort((uint16) spatialChatType);
+		insertShort((uint16) moodType);
+		insertByte(chatFlags);
+		insertByte(languageID);
 
 		insertLong(0);
 		insertInt(0);
@@ -31,18 +30,17 @@ public:
 		setCompression(true);
 	}
 
-	SpatialChat(uint64 senderid, uint64 recvid, const String& file, const String& stringid, uint64 target, uint32 moodid,
-			uint32 mood2, uint8 langID) :
-		ObjectControllerMessage(recvid, 0x0B, 0xF4) {
-		insertLong(senderid);
-		insertLong(target);
+	SpatialChat(uint64 senderID, uint64 targetID, uint64 chatTargetID, const String& file, const String& stringid, uint16 volume, uint32 spatialChatType, uint32 moodType, uint32 chatFlags, uint8 languageID) :
+		ObjectControllerMessage(targetID, 0x0B, 0xF4) {
+		insertLong(senderID);
+		insertLong(chatTargetID);
 		insertUnicode(UnicodeString("@" + file + ":" + stringid));
 
-		insertShort(0x32);
-		insertShort((uint16) mood2);
-		insertShort((uint16) moodid);
-		insertByte(0);
-		insertByte(langID);
+		insertShort(volume);
+		insertShort((uint16) spatialChatType);
+		insertShort((uint16) moodType);
+		insertByte(chatFlags);
+		insertByte(languageID);
 
 		insertLong(0);
 		insertInt(0);
@@ -51,17 +49,17 @@ public:
 		setCompression(true);
 	}
 
-	SpatialChat(uint64 senderid, uint64 recvid, StringIdChatParameter& stringid, uint64 target, uint16 moodid, uint16 mood2) :
-		ObjectControllerMessage(recvid, 0x0B, 0xF4) {
+	SpatialChat(uint64 senderID, uint64 targetID, uint64 chatTargetID, StringIdChatParameter& stringid, uint16 volume, uint16 spatialChatType, uint16 moodType, uint32 chatFlags, uint8 languageID) :
+		ObjectControllerMessage(targetID, 0x0B, 0xF4) {
 
-		insertLong(senderid);
-		insertLong(target);
+		insertLong(senderID);
+		insertLong(chatTargetID);
 		insertInt(0);
-		insertShort(0x32);
-		insertShort(mood2);
-		insertShort(moodid);
-		insertByte(0);
-		insertByte(0);
+		insertShort(volume);
+		insertShort(spatialChatType);
+		insertShort(moodType);
+		insertByte(chatFlags);
+		insertByte(languageID);
 
 		int offset = getOffset();
 
@@ -71,16 +69,9 @@ public:
 
 		int size = (getOffset() - offset - 4) / 2;
 
-		//System::out << "size: " << size << endl;
-
 		insertInt(offset, size);
 
 		insertInt(0);
-		/*insertInt(0);
-		insertInt(0);
-		insertLong(0);
-		insertLong(0);*/
-
 		setCompression(true);
 	}
 };

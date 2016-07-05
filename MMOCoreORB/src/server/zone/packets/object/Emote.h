@@ -9,30 +9,13 @@
 
 class Emote : public ObjectControllerMessage {
 public:
-	Emote(CreatureObject* creo, CreatureObject* play, uint64 target, uint32 emoteid, bool showtext)
-			: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0x12E) {
+	Emote(uint64 senderID, uint64 targetID, uint64 emoteTargetID, uint32 emoteID, bool doAnim = true, bool doText = true)
+			: ObjectControllerMessage(targetID, 0x0B, 0x12E) {
 
-		insertLong(play->getObjectID());
-		insertLong(target);
-		insertInt(emoteid);
-
-		if (showtext)
-			insertByte(3);
-		else
-			insertByte(1);
-	}
-
-	Emote(CreatureObject* emoter, uint64 targetid, uint32 emoteid, bool showtext)
-			: ObjectControllerMessage(emoter->getObjectID(), 0x0B, 0x12E) {
-
-		insertLong(emoter->getObjectID());
-		insertLong(targetid);
-		insertInt(emoteid);
-
-		if (showtext)
-			insertByte(3);
-		else
-			insertByte(1);
+		insertLong(senderID);
+		insertLong(emoteTargetID);
+		insertInt(emoteID);
+		insertByte((doAnim ? 0x01 : 0) | (doText ? 0x02 : 0));
 	}
 
 };
