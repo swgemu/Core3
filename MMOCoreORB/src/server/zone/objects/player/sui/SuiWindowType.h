@@ -198,6 +198,11 @@ public:
 		LOTTERY_INFO					   = 356,
 		LOTTERY_REGISTRATION			   = 357,
 
+		// NPC Actor
+		NPC_ACTOR_RACE_SETUP			   = 360,
+		NPC_ACTOR_GENDER_SETUP			   = 361,
+		NPC_ACTOR_NAME_SETUP			   = 362,
+
 
 		// Ranger 400 - 401
 		RANGER_TRACK_OPTIONS               = 400,
