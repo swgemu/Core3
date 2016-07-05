@@ -64,7 +64,7 @@ class CreateVendorSession extends Facade {
 
 	public native void createVendor(string name);
 
-	private native void randomizeVendorLooks(CreatureObject vendor);
+	public native void randomizeVendorLooks(CreatureObject vendor);
 	
 	private native void randomizeVendorClothing(CreatureObject vendor, VendorCreatureTemplate vendorTempl);
 	
