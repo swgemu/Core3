@@ -40,8 +40,8 @@ public:
 				return;
 
 			if(server != NULL) {
-
-				Emote* emsg = new Emote(creature, creature, 0, 72, false);
+				uint64 objectID = creature->getObjectID();
+				Emote* emsg = new Emote(objectID, objectID, 0, 72, true, false);
 				creature->broadcastMessage(emsg, true);
 				creature->sendSystemMessage("@skl_use:sys_scan_begin"); // You begin to examine the environment for information.
 
