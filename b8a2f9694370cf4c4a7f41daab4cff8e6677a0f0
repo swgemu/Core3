@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_8679b495",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1033,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T12:46:19Z",
+      "side": 1,
+      "message": "You are making so that spatial chat observers are  only notified to pets and players. This will break some things (like the DWB voice terminal, warren turret terminal, etc.).",
+      "revId": "b8a2f9694370cf4c4a7f41daab4cff8e6677a0f0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_a64ab853",
+        "filename": "MMOCoreORB/src/server/zone/packets/object/Emote.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T12:46:19Z",
+      "side": 1,
+      "message": "What is emoteTargetID? You don\u0027t use it.",
+      "revId": "b8a2f9694370cf4c4a7f41daab4cff8e6677a0f0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_c647ac4a",
+        "filename": "MMOCoreORB/src/server/zone/packets/object/SpatialChat.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T12:46:19Z",
+      "side": 1,
+      "message": "You aren\u0027t using chatTargetID. You also aren\u0027t using volume.",
+      "revId": "b8a2f9694370cf4c4a7f41daab4cff8e6677a0f0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

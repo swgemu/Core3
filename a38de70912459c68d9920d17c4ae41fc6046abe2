@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_6674a09c",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T12:46:19Z",
+      "side": 0,
+      "message": "I would put this before the skill needed check so you don\u0027t have to call hasGodMode() twice.",
+      "revId": "a38de70912459c68d9920d17c4ae41fc6046abe2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_266ea8ca",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T12:46:19Z",
+      "side": 0,
+      "message": "You put a godmode bypass in the other method. Why not here too?",
+      "revId": "a38de70912459c68d9920d17c4ae41fc6046abe2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_e66750e9",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1110,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T12:46:19Z",
+      "side": 0,
+      "message": "You\u0027re removing the observer notification?",
+      "revId": "a38de70912459c68d9920d17c4ae41fc6046abe2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
