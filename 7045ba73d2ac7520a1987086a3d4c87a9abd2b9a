@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_86877461",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/village/phase4/chief_engineer_phase4_conv.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T15:57:31Z",
+      "side": 0,
+      "message": "intro_not_eligible",
+      "revId": "7045ba73d2ac7520a1987086a3d4c87a9abd2b9a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

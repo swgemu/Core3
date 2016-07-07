@@ -1,0 +1,242 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_66826054",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/village/phase4/chief_engineer_phase4_conv.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T15:57:31Z",
+      "side": 1,
+      "message": "intro_not_eligible",
+      "revId": "e6db7e927898f0e1a437c05f5278c493e33a572e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_46815c49",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/village/phase4/chief_engineer_phase4_conv.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T15:57:31Z",
+      "side": 1,
+      "message": "This seems to be the wrong dialog",
+      "revId": "e6db7e927898f0e1a437c05f5278c493e33a572e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_e6951089",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/naboo_keren.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T15:57:31Z",
+      "side": 1,
+      "message": "Should these spawn when it\u0027s not phase 4? Perhaps you should spawn them via the village screenplays.",
+      "revId": "e6db7e927898f0e1a437c05f5278c493e33a572e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_06acc4ec",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/custom/SuiFsCrafting1Analyzer.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T15:57:31Z",
+      "side": 1,
+      "message": "Remove your debug statements.",
+      "revId": "e6db7e927898f0e1a437c05f5278c493e33a572e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_267c6872",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase4/chief_engineer_phase4_conv_handler.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T15:57:31Z",
+      "side": 1,
+      "message": "I would put this outside of the inventory nil check.",
+      "revId": "e6db7e927898f0e1a437c05f5278c493e33a572e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_a6b8782b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase1/fs_crafting1.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T15:57:31Z",
+      "side": 1,
+      "message": "Remove your debug statements.",
+      "revId": "e6db7e927898f0e1a437c05f5278c493e33a572e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_069364a4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase4/fs_crafting4.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T15:57:31Z",
+      "side": 1,
+      "message": "You don\u0027t need to return a value here.",
+      "revId": "e6db7e927898f0e1a437c05f5278c493e33a572e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_a68f1875",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase4/fs_crafting4.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T15:57:31Z",
+      "side": 1,
+      "message": "Need to return 1 or 0",
+      "revId": "e6db7e927898f0e1a437c05f5278c493e33a572e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_c68c8c82",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase4/fs_crafting4.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T15:57:31Z",
+      "side": 1,
+      "message": "You already checked these above.",
+      "revId": "e6db7e927898f0e1a437c05f5278c493e33a572e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_66e9001a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase4/fs_crafting4.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T15:57:31Z",
+      "side": 1,
+      "message": "You should remove this.",
+      "revId": "e6db7e927898f0e1a437c05f5278c493e33a572e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_86ee9421",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase4/fs_crafting4.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T15:57:31Z",
+      "side": 1,
+      "message": "You don\u0027t need to return a value here.",
+      "revId": "e6db7e927898f0e1a437c05f5278c493e33a572e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_26f3080c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase4/fs_crafting4.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T15:57:31Z",
+      "side": 1,
+      "message": "return 1 or 0",
+      "revId": "e6db7e927898f0e1a437c05f5278c493e33a572e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_46f87ce5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase4/fs_crafting4.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T15:57:31Z",
+      "side": 1,
+      "message": "Also destroy from db",
+      "revId": "e6db7e927898f0e1a437c05f5278c493e33a572e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_c6b56c32",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T15:57:31Z",
+      "side": 1,
+      "message": "You didn\u0027t add the implementation for this.",
+      "revId": "e6db7e927898f0e1a437c05f5278c493e33a572e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
