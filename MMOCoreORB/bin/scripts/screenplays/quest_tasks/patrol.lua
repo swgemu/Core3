@@ -139,6 +139,7 @@ function Patrol:taskFinish(pCreature)
 	local playerID = SceneObject(pCreature):getObjectID()
 	deleteData(playerID .. ":patrolWaypointsReached")
 	deleteData(playerID .. ":failedPatrol")
+	dropObserver(OBJECTDESTRUCTION, self.taskName, "playerKilled", pCreature)
 	self:waypointCleanup(pCreature)
 	return true
 end
