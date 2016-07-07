@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_86a0d4f5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/race_droid.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T13:46:55Z",
+      "side": 1,
+      "message": "Was this just for debugging?",
+      "revId": "c1f2d7a4db86fee5513152252dbcbb36b1e96da5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_46aabcd5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/race_droid.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T13:46:55Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be :eventPerkRace:nextPointAreaID ?",
+      "revId": "c1f2d7a4db86fee5513152252dbcbb36b1e96da5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_26a54804",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/race_droid.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T13:46:55Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you be using race_show_status1, race_show_status2, and race_show_status3 for this?\n\nAlso, with a max of 15 waypoints, this could be quite the sys message spam. Seems to me that it would be cleaner to send this list in an sui.",
+      "revId": "c1f2d7a4db86fee5513152252dbcbb36b1e96da5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_669b40ca",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/race_droid.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-07T13:46:55Z",
+      "side": 1,
+      "message": "The string file contains intialize_droid_warning - \"WARNING: Once you intialize the droid the course will become active and you will not be able to make any further adjustments. Use \"View Race Parameters\" if you need to check your settings and \"Set Race Parameters\" if you need to make changes.\"\n\nSounds like you need to send a warning when they choose this option instead of just initializing it.",
+      "revId": "c1f2d7a4db86fee5513152252dbcbb36b1e96da5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
