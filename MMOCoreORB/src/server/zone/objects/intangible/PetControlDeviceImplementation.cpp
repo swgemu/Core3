@@ -50,6 +50,11 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 			player->sendSystemMessage("@pet/pet_menu:private_house"); // You cannot call pets in a private building.
 			return;
 		}
+
+		if (building->isStaticObject() && (building->getClientObjectCRC() == 3550315323 || building->getClientObjectCRC() == 2882030964)) {
+			player->sendSystemMessage("Pets are not permitted inside the Enclave.");
+			return;
+		}
 	}
 
 	if (!isASubChildOf(player))
@@ -65,6 +70,11 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 
 	if (ghost->hasActivePet(pet))
 		return;
+
+	if (petType == PetManager::FACTIONPET && player->hasSkill("force_title_jedi_rank_03")) {
+		player->sendSystemMessage("Jedi of KNIGHT rank or higher may not use faction pets.");
+		return;
+	}
 
 	if (vitality <= 0) {
 		player->sendSystemMessage("@pet/pet_menu:dead_pet"); // This pet is dead. Select DESTROY from the radial menu to delete this pet control device.

@@ -24,7 +24,6 @@ require("sui.custom.SuiProcessorPuzzle")
 require("sui.custom.SuiRadiationSensor")
 require("sui.custom.SuiReceiverPuzzle")
 
-
 -- Theme parks
 includeFile("themepark/conversations/goru_conv_handler.lua")
 includeFile("themepark/conversations/mission_giver_conv_handler.lua")
@@ -99,6 +98,10 @@ includeFile("dungeon/corellian_corvette/bronell.lua")
 includeFile("dungeon/corellian_corvette/ds_297.lua")
 includeFile("dungeon/corellian_corvette/klaatu.lua")
 includeFile("dungeon/corellian_corvette/lt_lance.lua")
+
+-- Enclaves
+includeFile("enclaves/yavin4_light_enclave.lua")
+includeFile("enclaves/yavin4_dark_enclave.lua")
 
 -- Village
 includeFile("village/village_gm_commands.lua")
