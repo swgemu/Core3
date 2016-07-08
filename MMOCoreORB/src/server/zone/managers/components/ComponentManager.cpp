@@ -115,6 +115,7 @@
 #include "server/zone/objects/tangible/components/ArmorObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/PlaceableLootContainerComponent.h"
 #include "server/zone/objects/tangible/components/ScavengerChestContainerComponent.h"
+#include "server/zone/objects/tangible/components/ScavengerDroidContainerComponent.h"
 #include "server/zone/objects/tangible/tool/recycle/RecycleToolContainerComponent.h"
 #include "server/zone/objects/structure/components/DecorationDataComponent.h"
 #include "server/zone/objects/tangible/components/CityDecorationMenuComponent.h"
@@ -301,6 +302,7 @@ ComponentManager::ComponentManager() {
 	components.put("PlaceableLootContainerComponent", new PlaceableLootContainerComponent());
 
 	components.put("ScavengerChestContainerComponent", new ScavengerChestContainerComponent());
+	components.put("ScavengerDroidContainerComponent", new ScavengerDroidContainerComponent());
 
 	dataObjectFactory.registerObject<DecorationDataComponent>("DecorationDataComponent");
 
