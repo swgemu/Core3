@@ -227,6 +227,12 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		object->createChildObjects();
 		parseChildObjects(object);
 
+		// object/tangible/event_perk/race_droid.iff
+		// Values stored using setLuaStringData because the perk is handled from lua
+		if (object->getServerObjectCRC() == 0x785C60BF) {
+			object->setLuaStringData("ownerID", String::valueOf(player->getObjectID()));
+		}
+
 		generated = true;
 
 		if (removeEventPerkDeedTask != NULL && generatedTimeToLive > 0) {

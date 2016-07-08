@@ -35,6 +35,11 @@ SuiListBox.new = function (defaultCallback, defaultFunction)
 		self.setProperty("btnCancel", "Text", text)
 	end
 
+	self.hideCancelButton = function ()
+		self.setProperty("btnCancel", "Enabled", "false")
+		self.setProperty("btnCancel", "Visible", "false")
+	end
+
 	self.setOkButtonText = function (text)
 		self.setProperty("btnOk", "Text", text)
 	end
