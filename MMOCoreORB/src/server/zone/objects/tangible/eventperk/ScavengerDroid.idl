@@ -1,0 +1,108 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.eventperk;
+
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.creature.CreatureObject;
+import system.util.VectorMap;
+import server.zone.Zone;
+
+class ScavengerDroid extends CreatureObject {
+	@dereferenced
+	protected Time gameStartTime;
+
+	@dereferenced
+	protected Time gameEndTime;
+
+	protected int gameStatus;
+
+	@weakReference
+	protected CreatureObject currentWinner;
+
+	public final static int GAMESETUP = 0;
+	public final static int GAMESTARTED = 1;
+	public final static int GAMEENDED = 2;
+
+	@dereferenced
+	protected VectorMap<unsigned long, Vector<string> > turnedInItemList;
+
+	@dereferenced
+	protected Vector<string> itemList;
+
+	public ScavengerDroid() {
+		Logger.setLoggingName("ScavengerDroid");
+
+		gameStatus = 0;
+		currentWinner = null;
+	}
+
+	@preLocked
+	@arg1preLocked
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+
+	@local
+	@dirty
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+
+	public native CreatureObject getDeedOwner();
+
+	@preLocked
+	@arg1preLocked
+	public native void startGame(CreatureObject player);
+
+	@preLocked
+	@arg1preLocked
+	public native void updatePlayerScore(CreatureObject player);
+
+	public native void sendItemListSUI(CreatureObject player);
+
+	public native void sendSetupInstructionsSUI(CreatureObject player);
+
+	public native void sendGameInstructionsSUI(CreatureObject player);
+
+	@read
+	public int getGameStatus() {
+		return gameStatus;
+	}
+
+	@read
+	public int getItemListSize() {
+		return itemList.size();
+	}
+
+	@preLocked
+	public void addToItemList(string item) {
+		itemList.add(item);
+	}
+
+	public boolean hasItemInItemList(string item) {
+		return itemList.contains(item);
+	}
+
+	@preLocked
+	public void clearItemList() {
+		itemList.removeAll();
+	}
+
+	public boolean hasItemInPlayerItemList(unsigned long playerID, final string item) {
+		if (!turnedInItemList.contains(playerID))
+			return false;
+
+		return turnedInItemList.get(playerID).contains(item);
+	}
+
+	@preLocked
+	@arg1preLocked
+	public native void addToPlayerItemList(unsigned long playerID, final string item);
+
+	public native void announceToPlayers(final string msg);
+
+	public int getTurnedInItemListSize(unsigned long playerID) {
+		if (!turnedInItemList.contains(playerID))
+			return 0;
+
+		return turnedInItemList.get(playerID).size();
+	}
+}

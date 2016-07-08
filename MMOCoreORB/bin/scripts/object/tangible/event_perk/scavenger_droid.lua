@@ -41,13 +41,12 @@
 --this exception also makes it possible to release a modified version
 
 
-object_tangible_deed_event_perk_scavenger_droid_deed = object_tangible_deed_event_perk_shared_scavenger_droid_deed:new {
-	templateType = EVENTPERKDEED,
-	gameObjectType = 8388615,
-	noTrade = 1,
-
-	generatedObjectTemplate = "object/tangible/event_perk/scavenger_droid.iff",
-	perkType = GAME,
+object_tangible_event_perk_scavenger_droid = object_mobile_shared_3po_protocol_droid:new {
+	gameObjectType = 16414,
+	dataObjectComponent = "EventPerkDataComponent",
+	attributeListComponent = "EventPerkAttributeListComponent",
+	containerComponent = "ScavengerDroidContainerComponent",
+	objectName = "@event_perk:name_scavenger_droid"
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_event_perk_scavenger_droid_deed, "object/tangible/deed/event_perk/scavenger_droid_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_event_perk_scavenger_droid, "object/tangible/event_perk/scavenger_droid.iff")

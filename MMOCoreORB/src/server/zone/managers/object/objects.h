@@ -64,6 +64,7 @@
 #include "server/zone/objects/tangible/eventperk/Jukebox.h"
 #include "server/zone/objects/tangible/eventperk/LotteryDroid.h"
 #include "server/zone/objects/tangible/eventperk/ScavengerChest.h"
+#include "server/zone/objects/tangible/eventperk/ScavengerDroid.h"
 #include "server/zone/objects/tangible/eventperk/ShuttleBeacon.h"
 #include "server/zone/objects/tangible/component/Component.h"
 #include "server/zone/objects/tangible/component/armor/ArmorComponent.h"
