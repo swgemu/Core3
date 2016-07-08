@@ -9,6 +9,7 @@ import server.zone.ZoneServer;
 import server.chat.room.ChatRoom;
 import server.chat.room.ChatRoomMap;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.scene.SceneObject;
 import engine.service.proto.BaseMessage;
 import server.zone.managers.player.PlayerMap;
 import server.zone.managers.player.PlayerManager;
@@ -87,6 +88,14 @@ class ChatManager extends ManagedService implements Logger {
 	public static final int IM_MAXSIZE = 255;
 	public static final int PM_MAXSIZE = 4000;
 	public static final int PM_LIFESPAN = 15552000; // 6 months, in seconds
+	
+	// Spatial Chat Flags
+	public static final int CF_PRIVATE = 0x01; // Only the target will see message (difference from TARGET_ONLY?)
+	public static final int CF_UNK1 = 0x02; // ??
+	public static final int CF_UNK2 = 0x04; // ??
+	public static final int CF_TARGET_ONLY = 0x08; // Sends message only to target
+	public static final int CF_TARGET_GROUP_ONLY = 0x10; // Sends only to target and its group members
+	public static final int CF_TARGET_SOURCE_GROUP_ONLY = 0x100; // Sends to the target and its group members, as well as the source and its group members
 
 	public native ChatManager(ZoneServer serv, int initsize);
 
@@ -338,7 +347,7 @@ class ChatManager extends ManagedService implements Logger {
 	public native void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter message);
 
 	@local
-	public native void broadcastChatMessage(CreatureObject player, @dereferenced StringIdChatParameter message, unsigned long target = 0, unsigned int moodType = 0, unsigned int spatialChatType = 0, int languageID = 1);
+	public native void broadcastChatMessage(CreatureObject player, @dereferenced StringIdChatParameter message, unsigned long target = 0, unsigned int spatialChatType = 0, unsigned int moodType = 0, unsigned int chatFlags = 0, int languageID = 1);
 
 	public native void handleSpatialChatInternalMessage(CreatureObject player, final unicode args);
 	public native void handleGroupChat(CreatureObject player, final unicode message);
@@ -348,9 +357,10 @@ class ChatManager extends ManagedService implements Logger {
 	public native void handleChatRoomMessage(CreatureObject sender, final unicode message, unsigned int roomID, unsigned int counter);
 	public native void handleSocialInternalMessage(CreatureObject sender, final unicode arguments);
 	public native void broadcastMessage(BaseMessage message);
-	public native void broadcastChatMessage(CreatureObject player, final unicode message, unsigned long target = 0, unsigned int moodType = 0, unsigned int spatialChatType = 0, int languageID = 1);
+	public native void broadcastChatMessage(CreatureObject player, final unicode message, unsigned long target = 0, unsigned int spatialChatType = 0, unsigned int moodType = 0, unsigned int chatFlags = 0, int languageID = 1);
 	public native void broadcastGalaxy(CreatureObject player, final string message);
 	public native void broadcastGalaxy(final string message, final string faction);
+	public native void notifySpatialChatObservers(SceneObject target, SceneObject source, final unicode message);
 
 	//////////////////////////////////////////////////////
 
@@ -427,6 +437,5 @@ class ChatManager extends ManagedService implements Logger {
 	public string getSocialType(unsigned int id) {
 		return socialTypes.get(id);
 	}
-
 }
 
