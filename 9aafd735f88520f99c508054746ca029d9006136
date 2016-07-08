@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_c651ecd9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/dathomir_nightsister_stronghold.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 0,
+      "message": "Only remove the ones you\u0027re using in your new screenplay.",
+      "revId": "9aafd735f88520f99c508054746ca029d9006136",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

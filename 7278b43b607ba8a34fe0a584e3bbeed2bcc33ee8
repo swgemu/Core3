@@ -1,0 +1,412 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_a654f8ca",
+        "filename": "MMOCoreORB/bin/scripts/mobile/dathomir/baritha.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "Move each of the mission giver\u0027s mobile template file to the quest/dathomir directory.",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_066fe493",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/dathomir/theme_park_imperial_sergeant.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "Don\u0027t include interesting. The themepark logic will add that when the mob is spawned.",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_e6719078",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/dathomir/theme_park_imperial_sergeant.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "Remove the loot groups. This is an escort npc.",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_8631b4a4",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/dathomir/theme_park_imperial_staff_corporal.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "Remove the interesting bit.",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_2626a869",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/dathomir/theme_park_imperial_staff_corporal.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "Remove the loot.",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_a6f078ca",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/dathomir/theme_park_imperial_stealth_operative.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "remove the interesting bit.",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_462b9c30",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/dathomir/theme_park_nightsister_outcast.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "ATTACKABLE",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_a602b8b2",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/dathomir/theme_park_nightsister_outcast.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "Don\u0027t include the interesting bit.",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_a6195824",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/dathomir/theme_park_nightsister_rancor.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "ATTACKABLE",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_8663f4b0",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/nightsister/themeParkNightsister.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "Fix your tabbing in this file. Use tabs, not spaces.",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_465ddce8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/nightsister/themeParkNightsister.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "Why would you want to? None of your links say that they should. The wiki even says that he\u0027s in the vicinity, which the prison is not.",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_2658e8f9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/nightsister/themeParkNightsister.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "Don\u0027t create a new template for these troopers. Just use the regular imperial_trooper template.",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_665ee0eb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/nightsister/themeParkNightsister.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "Your ign links shows this reward as 10 faction (as does the wiki link).",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_06f604d8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/nightsister/themeParkNightsister.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "Same as above. I don\u0027t think you should.",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_061da40f",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/nightsister/themeParkNightsister.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "Both of your links say no reward for this step.",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_c616ccf1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/nightsister/themeParkNightsister.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "Don\u0027t include this NS tamer. The bug on live was that it spawned a tamer instead of a rancor. I\u0027m fine with you fixing it to spawn a rancor but don\u0027t also spawn the tamer.",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_66d34039",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/nightsister/themeParkNightsister.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "The wiki says this is a nightsister initiate.",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_86d8d454",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/nightsister/themeParkNightsister.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "the wiki says it\u0027s a singing mountain clan huntress.",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_26dd4843",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/nightsister/themeParkNightsister.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "You need to create a loot item and loot group for this and use the loot group here. You can set the stats in the loot item template.\n\nAlso, that object template needs to be set up (gameObjectType, templateType, etc.).",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_46e2bc04",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/nightsister/themeParkNightsister.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "For confiscate missions, you need to create a new mobile template. The new mobile needs to have a 100% chance to drop the quest item (so you need to create a new loot item/group for it to use).\n\nThis applies to all confiscate missions.",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_e6e67016",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/nightsister/themeParkNightsister.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "the wiki and ign links both say 10 points.",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_c6ed6cf1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/nightsister/themeParkNightsister.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "both of your links call him a Coerced Guard",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_06e4c40b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/nightsister/themeParkNightsister.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "The wiki link and the ign link say the reward is 5.",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_86bf74d0",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/nightsister/themeParkNightsister.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-08T11:06:30Z",
+      "side": 1,
+      "message": "the wiki says the reward is 10 points.",
+      "revId": "7278b43b607ba8a34fe0a584e3bbeed2bcc33ee8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
