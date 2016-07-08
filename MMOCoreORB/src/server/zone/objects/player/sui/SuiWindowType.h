@@ -198,6 +198,10 @@ public:
 		LOTTERY_INFO					   = 356,
 		LOTTERY_REGISTRATION			   = 357,
 
+		// Scavenger Droid
+		SCAVENGER_INFO					   = 370,
+		SCAVENGER_ITEM_LIST				   = 371,
+
 
 		// Ranger 400 - 401
 		RANGER_TRACK_OPTIONS               = 400,
