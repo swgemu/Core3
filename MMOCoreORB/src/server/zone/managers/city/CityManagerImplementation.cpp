@@ -1313,6 +1313,8 @@ void CityManagerImplementation::expandCity(CityRegion* city) {
 	if (zone == NULL)
 		return;
 
+	bool rankCapped = isCityRankCapped(zone->getZoneName(), newRank);
+
 	ManagedReference<SceneObject*> obj = zoneServer->getObject(city->getMayorID());
 
 	if (obj != NULL && obj->isPlayerCreature()) {
@@ -1325,19 +1327,22 @@ void CityManagerImplementation::expandCity(CityRegion* city) {
 
 		UnicodeString subject = "@city/city:city_expand_subject"; // City Expansion!
 
-		if (isCityRankCapped(zone->getZoneName(), newRank)) {
+		if (rankCapped) {
 			params.setStringId("city/city", "city_expand_cap_body");
 			subject = "@city/city:city_expand_cap_subject"; // City Expansion Capped!
-			newRank = currentRank;
 		}
 
 		ChatManager* chatManager = zoneServer->getChatManager();
 		chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), NULL);
 	}
 
-	city->setCityRank(newRank);
-	city->setRadius(radiusPerRank.get(newRank - 1));
-	city->sendStructureValidMails();
+	if (rankCapped) {
+		city->destroyAllStructuresForRank(newRank, true);
+	} else {
+		city->setCityRank(newRank);
+		city->setRadius(radiusPerRank.get(newRank - 1));
+		city->sendStructureValidMails();
+	}
 }
 
 void CityManagerImplementation::destroyCity(CityRegion* city) {
