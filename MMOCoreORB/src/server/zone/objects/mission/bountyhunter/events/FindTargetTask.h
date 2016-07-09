@@ -43,9 +43,9 @@ class FindTargetTask : public Task, public Logger {
 		droid->setPosture(CreaturePosture::SITTING, true);
 
 		if (arakyd) {
-			player->sendSystemMessage("@mission/mission_generic:probe_droid_takeoff");
+			player->sendSystemMessage("@mission/mission_generic:probe_droid_takeoff"); // Target data received. Commencing interplanetary search pattern.
 		} else {
-			player->sendSystemMessage("Biological scan received. Commencing planetary search pattern.");
+			player->sendSystemMessage("@mission/mission_generic:seeker_droid_launched"); // Biological scan received. Commencing planetary seach pattern.
 		}
 
 		reschedule(5 * 1000);
