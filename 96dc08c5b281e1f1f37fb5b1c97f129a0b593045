@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_662b40ec",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/themepark_loot/gaping_spider_poison_sacs_ns_kais.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-10T23:31:21Z",
+      "side": 1,
+      "message": "Don\u0027t give this a custom name. It\u0027ll already have the correct name considering that it\u0027s an item created specifically for this quest.",
+      "revId": "96dc08c5b281e1f1f37fb5b1c97f129a0b593045",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_8630d457",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/themepark_loot/healing_salve_ns_diax.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-10T23:31:21Z",
+      "side": 1,
+      "message": "Don\u0027t give it a custom name.",
+      "revId": "96dc08c5b281e1f1f37fb5b1c97f129a0b593045",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_463abc37",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/themepark_loot/heart_of_slave_ns_geth.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-10T23:31:21Z",
+      "side": 1,
+      "message": "According to the screenshot on the wiki, this shouldn\u0027t have a custom name.",
+      "revId": "96dc08c5b281e1f1f37fb5b1c97f129a0b593045",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_26354846",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/themepark_loot/malkloc_heart_ns_kais.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-10T23:31:21Z",
+      "side": 1,
+      "message": "Don\u0027t give it a custom name.",
+      "revId": "96dc08c5b281e1f1f37fb5b1c97f129a0b593045",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_e63e7029",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/themepark_loot/slave_collar_ns_geth.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-10T23:31:21Z",
+      "side": 1,
+      "message": "According to the screenshot on the wiki, this should not have a custom name.",
+      "revId": "96dc08c5b281e1f1f37fb5b1c97f129a0b593045",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_a64878cd",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/themepark_reward/stim_b_ns_diax.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-10T23:31:21Z",
+      "side": 1,
+      "message": "You can\u0027t just put all this on the loot item template. You need to properly set up the item\u0027s object template.\n\nYou can then set stats here via a craftingValues table.",
+      "revId": "96dc08c5b281e1f1f37fb5b1c97f129a0b593045",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_c6456cb4",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/themepark_reward/stim_b_ns_diax.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-10T23:31:21Z",
+      "side": 1,
+      "message": "Compare medic stims to pet stims and you should be able to figure it out.",
+      "revId": "96dc08c5b281e1f1f37fb5b1c97f129a0b593045",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_a6f15897",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/dathomir/gaping_spider_queen_quest.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-10T23:31:21Z",
+      "side": 1,
+      "message": "You need to override the default loot chance and set it to 100% for each confiscate mission target.",
+      "revId": "96dc08c5b281e1f1f37fb5b1c97f129a0b593045",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_063cc42e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/nightsister/themeParkNightsister.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-10T23:31:21Z",
+      "side": 1,
+      "message": "For each npc that is inside a cell, you need to include the worldPosition as well or the return waypoints won\u0027t have the correct coordinates.",
+      "revId": "96dc08c5b281e1f1f37fb5b1c97f129a0b593045",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
