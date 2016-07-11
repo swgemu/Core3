@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_c61c8cc4",
+        "filename": "MMOCoreORB/bin/scripts/object/tangible/event_perk/scavenger_droid.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-11T00:18:00Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you include the EventPerkMenuComponent as well? So the owner can check expiration time, etc.",
+      "revId": "3da6d240e0d5f43b813ed0b229764103646f6081",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_667900fc",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/ScavengerDroidContainerComponent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-11T00:18:00Z",
+      "side": 1,
+      "message": "It\u0027s already locked coming in (in GiveItemCommand).",
+      "revId": "3da6d240e0d5f43b813ed0b229764103646f6081",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_861774a3",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/ScavengerDroidContainerComponent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-11T00:18:00Z",
+      "side": 1,
+      "message": "I think it would be better to change your checks so that the default return isn\u0027t success. It\u0027s much easier to guarantee the correct conditions are met for adding instead of trying to think of all the possible restrictions. As you have it now, this method will return success if the gameStatus is ended.\n\nSo change this to cantadd and then in the the setup block, just add an else return success. In the started block, invert the hasItemInItemList check and return success.",
+      "revId": "3da6d240e0d5f43b813ed0b229764103646f6081",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_260c6894",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/ScavengerDroidContainerComponent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-11T00:18:00Z",
+      "side": 1,
+      "message": "null check after cast",
+      "revId": "3da6d240e0d5f43b813ed0b229764103646f6081",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_46115cab",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/ScavengerDroidContainerComponent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-11T00:18:00Z",
+      "side": 1,
+      "message": "I would put this before line 82 so it shows before the messages sent by updatePlayerScore.",
+      "revId": "3da6d240e0d5f43b813ed0b229764103646f6081",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_867e94e3",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/ScavengerDroidContainerComponent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-11T00:18:00Z",
+      "side": 1,
+      "message": "What should you be doing with the objects? You\u0027re updating the lists but not actually removing the object from the player.",
+      "revId": "3da6d240e0d5f43b813ed0b229764103646f6081",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_a6c39837",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/ScavengerDroid.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-11T00:18:00Z",
+      "side": 1,
+      "message": "You don\u0027t use this.",
+      "revId": "3da6d240e0d5f43b813ed0b229764103646f6081",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_e625100b",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/ScavengerDroid.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-11T00:18:00Z",
+      "side": 1,
+      "message": "I would change this map to use oids for keys instead of creos.",
+      "revId": "3da6d240e0d5f43b813ed0b229764103646f6081",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_06236406",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/ScavengerDroidImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-11T00:18:00Z",
+      "side": 1,
+      "message": "get a strong ref before null checking",
+      "revId": "3da6d240e0d5f43b813ed0b229764103646f6081",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_268308ce",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/ScavengerDroidImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-11T00:18:00Z",
+      "side": 1,
+      "message": "get a strong ref before you null check",
+      "revId": "3da6d240e0d5f43b813ed0b229764103646f6081",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_46887ce7",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/ScavengerDroidImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-11T00:18:00Z",
+      "side": 1,
+      "message": "get strong ref and null check before using",
+      "revId": "3da6d240e0d5f43b813ed0b229764103646f6081",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_a61f18b7",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/eventperk/ScavengerDroidImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-11T00:18:00Z",
+      "side": 1,
+      "message": "ManagedReference\u003c\u003e",
+      "revId": "3da6d240e0d5f43b813ed0b229764103646f6081",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
