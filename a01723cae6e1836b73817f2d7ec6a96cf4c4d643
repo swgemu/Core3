@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_66c7c013",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/themepark_reward/stim_b_ns_diax.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-11T05:06:14Z",
+      "side": 1,
+      "message": "Nothing below this line belongs here. That\u0027s all stuff for the object template file.",
+      "revId": "a01723cae6e1836b73817f2d7ec6a96cf4c4d643",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_c64a4cac",
+        "filename": "MMOCoreORB/bin/scripts/object/tangible/medicine/crafted/medpack_damage_b.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-11T05:06:14Z",
+      "side": 1,
+      "message": "You have to assign the templateType, gameObjectType, etc. here or the stim won\u0027t be functional.",
+      "revId": "a01723cae6e1836b73817f2d7ec6a96cf4c4d643",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_a64dd8c6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/nightsister/themeParkNightsister.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-11T05:06:14Z",
+      "side": 1,
+      "message": "You mistook my meaning. You have to have the cell coords in the spawnData. The world coords go in a different field. Look at another themepark with interior quest giver to see the format.",
+      "revId": "a01723cae6e1836b73817f2d7ec6a96cf4c4d643",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
