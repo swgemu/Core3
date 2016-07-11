@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_86f3f472",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/themepark_reward/stim_b_ns_diax.lua",
+        "patchSetId": 12
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-11T12:46:01Z",
+      "side": 1,
+      "message": "This shouldn\u0027t have a custom name according to the screenshot on the wiki.\n\nEven though the screenshot on the wiki is post-CU, it shows different values for the stats from the scrapbook guide. While other things might have changed, I doubt they would have modified this obscure quest reward\u0027s uses remaining as part of the CU. I believe that means it didn\u0027t have static stats but had a range of stats that it could drop with. You can use a craftingValues table here in the loot item template to setup the ranges.",
+      "revId": "4417740f87f5dec4fcc0689f0dbe707bb7385568",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_66eee08d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/nightsister/themeParkNightsister.lua",
+        "patchSetId": 12
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-11T12:46:01Z",
+      "side": 1,
+      "message": "What\u0027s with the extra \"gethzerion\" in there?",
+      "revId": "4417740f87f5dec4fcc0689f0dbe707bb7385568",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
