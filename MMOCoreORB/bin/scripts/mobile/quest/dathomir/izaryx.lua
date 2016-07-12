@@ -23,13 +23,13 @@ izaryx = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_izaryx.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "theme_park_singing_mountain_clan_mission_giver_convotemplate",
 	attacks = {
 	}
 }
