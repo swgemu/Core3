@@ -1,6 +1,6 @@
-vurlene = Creature:new {
+vhaunda = Creature:new {
 	objectName = "",
-	customName = "Vurlene",
+	customName = "Vhaunda",
 	socialGroup = "mtn_clan",
 	faction = "mtn_clan",
 	level = 100,
@@ -23,15 +23,15 @@ vurlene = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_vurlene.iff"},
+	templates = {"object/mobile/dressed_vhaunda.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "theme_park_singing_mountain_clan_mission_giver_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(vurlene, "vurlene")
+CreatureTemplates:addCreatureTemplate(vhaunda, "vhaunda")
