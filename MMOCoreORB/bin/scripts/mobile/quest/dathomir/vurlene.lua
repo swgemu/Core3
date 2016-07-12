@@ -1,13 +1,13 @@
-izaryx = Creature:new {
+vurlene = Creature:new {
 	objectName = "",
-	customName = "Izaryx",
+	customName = "Vurlene",
 	socialGroup = "mtn_clan",
 	faction = "mtn_clan",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
 	damageMax = 1000,
-	baseXp = 0,
+	baseXp = 9429,
 	baseHAM = 24000,
 	baseHAMmax = 30000,
 	armor = 0,
@@ -23,15 +23,15 @@ izaryx = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_izaryx.iff"},
+	templates = {"object/mobile/dressed_vurlene.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "theme_park_smc_vurlene_aujante_mission_giver_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(izaryx, "izaryx")
+CreatureTemplates:addCreatureTemplate(vurlene, "vurlene")
