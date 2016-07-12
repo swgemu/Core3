@@ -1,0 +1,36 @@
+theme_park_nightsister_rancor = Creature:new {
+  objectName = "@mob/creature_names:nightsister_rancor",
+  socialGroup = "nightsister",
+  faction = "nightsister",
+  level = 55,
+  chanceHit = 0.5,
+  damageMin = 395,
+  damageMax = 500,
+  baseXp = 5373,
+  baseHAM = 10000,
+  baseHAMmax = 12000,
+  armor = 1,
+  resists = {130,160,5,200,200,200,5,5,-1},
+  meatType = "meat_carnivore",
+  meatAmount = 950,
+  hideType = "hide_leathery",
+  hideAmount = 876,
+  boneType = "bone_mammal",
+  boneAmount = 776,
+  milk = 0,
+  tamingChance = 0,
+  ferocity = 10,
+  pvpBitmask = ATTACKABLE,
+  creatureBitmask = NONE,
+  optionsBitmask = AIENABLED + CONVERSABLE,
+  diet = CARNIVORE,
+
+  templates = {"object/mobile/rancor.iff"},
+  scale = 1.05,
+  lootGroups = {},
+  weapons = {},
+  conversationTemplate = "theme_park_nightsister_mission_target_convotemplate",
+  attacks = {}
+}
+
+CreatureTemplates:addCreatureTemplate(theme_park_nightsister_rancor, "theme_park_nightsister_rancor")

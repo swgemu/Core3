@@ -616,6 +616,11 @@ includeFile("items/task_reward/valarian_dagger.lua")
 includeFile("items/task_reward/zicx_bug_jar.lua")
 
 --themepark_loot sub-folder
+includeFile("items/themepark_loot/slave_collar_ns_geth.lua")
+includeFile("items/themepark_loot/heart_of_slave_ns_geth.lua")
+includeFile("items/themepark_loot/malkloc_heart_ns_kais.lua")
+includeFile("items/themepark_loot/gaping_spider_poison_sacs_ns_kais.lua")
+includeFile("items/themepark_loot/healing_salve_ns_diax.lua")
 includeFile("items/themepark_loot/big_creature_cage.lua")
 includeFile("items/themepark_loot/charal_commlink.lua")
 includeFile("items/themepark_loot/charal_ewok_spleen.lua")
@@ -644,6 +649,7 @@ includeFile("items/themepark_loot/themepark_loot_shipping_manifest.lua")
 includeFile("items/themepark_loot/themepark_loot_transponder.lua")
 
 --themepark_reward sub-folder
+includeFile("items/themepark_reward/stim_b_ns_diax.lua")
 includeFile("items/themepark_reward/armor_marauder_bicep_l.lua")
 includeFile("items/themepark_reward/armor_marauder_bicep_r.lua")
 includeFile("items/themepark_reward/armor_marauder_boots.lua")
