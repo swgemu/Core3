@@ -21,14 +21,14 @@ aujante_klee = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = NONE,
-	optionsBitmask = AIENABLED,
+	creatureBitmask = PACK,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_aujante_klee.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "theme_park_singing_mountain_clan_mission_giver_convotemplate",
 	attacks = {
 	}
 }
