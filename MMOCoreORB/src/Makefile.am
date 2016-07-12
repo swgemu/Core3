@@ -101,7 +101,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/managers/gcw/GCWBaseShutdownObserver.cpp \
+core3_IDLS =	autogen/server/zone/objects/tangible/eventperk/ScavengerDroid.cpp \
+				autogen/server/zone/managers/gcw/GCWBaseShutdownObserver.cpp \
 				autogen/server/zone/objects/creature/buffs/ChannelForceBuff.cpp \
 				autogen/server/zone/objects/tangible/eventperk/ShuttleBeacon.cpp \
 				autogen/server/utils/LambdaObserver.cpp \
@@ -458,6 +459,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/PersonnelPerkZoneComponent.cpp \
 		server/zone/objects/tangible/components/PlaceableLootContainerComponent.cpp \
 		server/zone/objects/tangible/components/ScavengerChestContainerComponent.cpp \
+		server/zone/objects/tangible/components/ScavengerDroidContainerComponent.cpp \
 		server/zone/objects/scene/components/ContainerComponent.cpp \
 		server/zone/objects/scene/components/DataObjectComponentReference.cpp \
 		server/zone/objects/scene/components/DataObjectComponent.cpp \
@@ -615,6 +617,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/eventperk/ShuttleBeaconImplementation.cpp \
 		server/zone/objects/tangible/eventperk/FlagGameImplementation.cpp \
 		server/zone/objects/tangible/eventperk/LotteryDroidImplementation.cpp \
+		server/zone/objects/tangible/eventperk/ScavengerDroidImplementation.cpp \
 		server/zone/objects/tangible/eventperk/JukeboxImplementation.cpp \
 		server/zone/objects/tangible/eventperk/JukeboxObserverImplementation.cpp \
 		server/zone/objects/tangible/components/droid/DroidPlaybackObserverImplementation.cpp \
