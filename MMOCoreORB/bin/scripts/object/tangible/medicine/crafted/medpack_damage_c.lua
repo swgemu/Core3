@@ -43,6 +43,24 @@
 
 object_tangible_medicine_crafted_medpack_damage_c = object_tangible_medicine_crafted_shared_medpack_damage_c:new {
 
+	gameObjectType = 8236,
+	templateType = STIMPACK,
+	useCount = 6,
+	medicineUse = 48,
+	effectiveness = 300,
+	medicineClass = STIM_C,
+	
+	--TODO: WE NEED TO FIGURE OUT HOW TO DELINEATE THIS PARTICULAR STIM TO HEAL ALL 3 HAM VALUES
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 1},
+	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "XX"},
+	experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_effectiveness", "exp_charges", "expEaseOfUse", "null"},
+	experimentalSubGroupTitles = {"null", "null", "power", "charges", "skillmodmin", "hitpoints"},
+	experimentalMin = {0, 0, 100, 20, 35, 1000},
+	experimentalMax = {0, 0, 400, 40, 50, 1000},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 4},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_damage_c, "object/tangible/medicine/crafted/medpack_damage_c.iff")

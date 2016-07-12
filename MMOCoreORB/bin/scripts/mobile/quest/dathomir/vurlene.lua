@@ -1,6 +1,6 @@
-zideera = Creature:new {
+vurlene = Creature:new {
 	objectName = "",
-	customName = "Zideera",
+	customName = "Vurlene",
 	socialGroup = "mtn_clan",
 	faction = "mtn_clan",
 	level = 100,
@@ -23,15 +23,15 @@ zideera = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_zideera.iff"},
+	templates = {"object/mobile/dressed_vurlene.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "theme_park_singing_mountain_clan3_mission_giver_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(zideera, "zideera")
+CreatureTemplates:addCreatureTemplate(vurlene, "vurlene")
