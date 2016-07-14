@@ -1374,6 +1374,18 @@ function ThemeParkLogic:getSpawnPoints(numberOfSpawns, x, y, pConversingPlayer)
 	return spawnPoints
 end
 
+function ThemeParkLogic:hasEnoughFaction(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+	
+	return CreatureObject(pPlayer):getFactionStanding() >= 3000
+end
+
+function ThemeParkLogic:requiresEnoughFaction()
+	return self.requiresEnoughFaction ~= nil and self.requiresEnoughFaction == true
+end
+
 function ThemeParkLogic:hasEliteCombatProfession(pPlayer)
 	if (pPlayer == nil) then
 		return false

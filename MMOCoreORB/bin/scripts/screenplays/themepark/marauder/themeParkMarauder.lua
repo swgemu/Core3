@@ -402,7 +402,9 @@ ThemeParkMarauder = ThemeParkLogic:new {
 	numberOfActs = 1,
 	npcMap = npcMapMarauder,
 	className = "ThemeParkMarauder",
-	screenPlayState = "marauder_theme_park"
+	screenPlayState = "marauder_theme_park",
+	faction = "endor_marauder",
+	requiresEnoughFaction = true
 }
 
 registerScreenPlay("ThemeParkMarauder", true)

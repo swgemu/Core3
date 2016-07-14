@@ -76,6 +76,8 @@ ThemeParkNym = ThemeParkLogic:new {
 	screenPlayState = "nym_theme_park",
 	missionDescriptionStf = "",
 	missionCompletionMessageStf = "",
+	faction = "nym",
+	requiresEnoughFaction = true
 }
 
 -- Customer observer function to handle instant unlocking of area near hacker

@@ -340,7 +340,9 @@ ThemeParkNightsister = ThemeParkLogic:new {
 	numberOfActs = 1,
 	npcMap = npcMapNightsister,
 	className = "ThemeParkNightsister",
-	screenPlayState = "nightsister_theme_park"
+	screenPlayState = "nightsister_theme_park",
+	faction = "nightsister",
+	requiresEnoughFaction = true
 }
 
 registerScreenPlay("ThemeParkNightsister", true)

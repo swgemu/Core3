@@ -650,7 +650,9 @@ ThemeParkJabba = ThemeParkLogic:new {
 	screenPlayState = "jabba_theme_park",
 	distance = 850,
 	missionDescriptionStf = "@theme_park_jabba/quest_details:jabbas_palace_",
-	missionCompletionMessageStf = "@theme_park/messages:jabba_completion_message"
+	missionCompletionMessageStf = "@theme_park/messages:jabba_completion_message",
+	faction = "jabba",
+	requiresEnoughFaction = true
 }
 
 registerScreenPlay("ThemeParkJabba", true)
