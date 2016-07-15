@@ -47,9 +47,15 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 			building = strongRef.castTo<BuildingObject*>();
 
 		if (building == NULL || building->isPrivateStructure()) {
-			player->sendSystemMessage("@pet/pet_menu:private_house"); // You cannot call pets in a private building.
+			// To disallow players from calling any PETS while inside: DWB, Geo Cave, & The Warren...
+			if (building->isStaticObject() && (building->getClientObjectCRC() == 599067335 || building->getClientObjectCRC() == 3223964695 || building->getClientObjectCRC() == 2436238099)) {
+				player->sendSystemMessage("This facility's defense system inhibits your ability to call pets while inside.");
+			} else {
+				player->sendSystemMessage("@pet/pet_menu:private_house"); // You cannot call pets in a private building.
+			}
 			return;
 		}
+
 	}
 
 	if (!isASubChildOf(player))

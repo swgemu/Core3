@@ -69,6 +69,12 @@ function GeonosianLabScreenPlay:start()
 end
 
 function GeonosianLabScreenPlay:spawnActiveAreas()
+	-- To disallow entry by PETS...
+	local pActiveArea = spawnActiveArea("yavin4", "object/active_area.iff", -6451.9, 92.0, -378.3, -40, 1627781)
+	if pActiveArea ~= nil then
+		createObserver(ENTEREDAREA, "GeonosianLabScreenPlay", "notifyPetEnteredDeny", pActiveArea)
+	end
+
 	local pActiveArea = spawnActiveArea("yavin4", "object/active_area.iff", -6435.5, 85.6, -367, 10, 1627783)
 	if pActiveArea ~= nil then
 		createObserver(ENTEREDAREA, "GeonosianLabScreenPlay", "notifyEnteredPoisonGas", pActiveArea)
@@ -335,7 +341,7 @@ function GeonosianLabScreenPlay:notifyEnteredLab(pBuilding, pPlayer)
 	if pPlayer == nil or not SceneObject(pPlayer):isCreatureObject() then
 		return 0
 	end
-
+	
 	if (CreatureObject(pPlayer):isAiAgent()) then
 		return 0
 	end
@@ -353,6 +359,22 @@ function GeonosianLabScreenPlay:notifyEnteredLab(pBuilding, pPlayer)
 	CreatureObject(pPlayer):removeScreenPlayState(1, "geonosian_lab_tenloss")
 
 	CreatureObject(pPlayer):sendSystemMessage("@dungeon/geonosian_madbio:relock") --Security systems at this facility have been cycled and reset.
+	
+	return 0
+	
+end
+
+function GeonosianLabScreenPlay:notifyPetEnteredDeny(pArea, pMovingObject)
+	if (pMovingObject == nil or SceneObject(pMovingObject):isPlayerCreature()) then
+		return 0
+	end
+
+	if (SceneObject(pMovingObject):isAiAgent() and AiAgent(pMovingObject):isPet()) then
+		local pPetowner = CreatureObject(pMovingObject):getOwner()
+		AiAgent(pMovingObject):clearCombatState()
+		AiAgent(pMovingObject):doDespawn()
+		CreatureObject(pPetowner):sendSystemMessage("A magnetic defense shield repels your pet into datapad storage.")
+	end
 
 	return 0
 end

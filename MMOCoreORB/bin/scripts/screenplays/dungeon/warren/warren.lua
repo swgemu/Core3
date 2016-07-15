@@ -89,6 +89,11 @@ function WarrenScreenPlay:lockDoors()
 end
 
 function WarrenScreenPlay:spawnActiveAreas()
+-- To disallow entry by PETS
+	local pActiveArea = spawnActiveArea("dantooine", "object/active_area.iff", -546.0, 1.3, -3850.1, 65, 8575674)
+	if pActiveArea ~= nil then
+		createObserver(ENTEREDAREA, "WarrenScreenPlay", "notifyPetEnteredDeny", pActiveArea)
+	end
 end
 
 function WarrenScreenPlay:spawnSceneObjects()
@@ -626,7 +631,6 @@ function WarrenScreenPlay:deactivateElevator()
 end
 
 function WarrenScreenPlay:notifyEnteredWarren(pBuilding, pPlayer)
-
 	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
 		return 0
 	end
@@ -643,6 +647,21 @@ function WarrenScreenPlay:notifyEnteredWarren(pBuilding, pPlayer)
 			--Kick them out to the front door.
 			SceneObject(pPlayer):teleport(self.frontDoor.x, self.frontDoor.z, self.frontDoor.y, 0)
 		end
+	end
+
+	return 0
+end
+
+function WarrenScreenPlay:notifyPetEnteredDeny(pArea, pMovingObject)
+	if (pMovingObject == nil or SceneObject(pMovingObject):isPlayerCreature()) then
+		return 0
+	end
+
+	if (SceneObject(pMovingObject):isAiAgent() and AiAgent(pMovingObject):isPet()) then
+		local pPetowner = CreatureObject(pMovingObject):getOwner()
+		AiAgent(pMovingObject):clearCombatState()
+		AiAgent(pMovingObject):doDespawn()
+		CreatureObject(pPetowner):sendSystemMessage("A magnetic defense shield repels your pet into datapad storage.")
 	end
 
 	return 0
