@@ -213,6 +213,12 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 	local spawnedSceneObject = LuaSceneObject(nil)
 	local spawnedPointer
 
+	-- To disallow entry by PETS
+	local pActiveArea = spawnActiveArea("endor", "object/active_area.iff", -4664.4, 4.4, 4318.9, -90, 5996315)
+	if pActiveArea ~= nil then
+		createObserver(ENTEREDAREA, "DeathWatchBunkerScreenPlay", "notifyPetEnteredDeny", pActiveArea)
+	end
+
 	-- Door Access Terminal Outside
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -18.016,-12,-8.55806, 5996315, 1, 0, 0, 0)
 	spawnedSceneObject:_setObject(spawnedPointer)
@@ -787,6 +793,21 @@ function DeathWatchBunkerScreenPlay:doBombDroidAction(pBombDroid)
 	AiAgent(pBombDroid):setWait(0)
 	AiAgent(pBombDroid):setNextPosition(droidLoc.x, droidLoc.z, droidLoc.y, droidLoc.cell)
 	AiAgent(pBombDroid):executeBehavior()
+end
+
+function DeathWatchBunkerScreenPlay:notifyPetEnteredDeny(pArea, pMovingObject)
+	if (pMovingObject == nil or SceneObject(pMovingObject):isPlayerCreature()) then
+		return 0
+	end
+
+	if (SceneObject(pMovingObject):isAiAgent() and AiAgent(pMovingObject):isPet()) then
+		local pPetowner = CreatureObject(pMovingObject):getOwner()
+		AiAgent(pMovingObject):clearCombatState()
+		AiAgent(pMovingObject):doDespawn()
+		CreatureObject(pPetowner):sendSystemMessage("A magnetic defense shield repels your pet into datapad storage.")
+	end
+
+	return 0
 end
 
 function DeathWatchBunkerScreenPlay:notifyEnteredVoiceTerminalArea(pArea, pPlayer)
