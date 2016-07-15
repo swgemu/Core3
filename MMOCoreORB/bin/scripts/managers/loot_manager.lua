@@ -1,43 +1,43 @@
 --Copyright (C) 2007 <SWGEmu>
- 
+
 --This File is part of Core3.
- 
---This program is free software; you can redistribute 
---it and/or modify it under the terms of the GNU Lesser 
+
+--This program is free software; you can redistribute
+--it and/or modify it under the terms of the GNU Lesser
 --General Public License as published by the Free Software
---Foundation; either version 2 of the License, 
+--Foundation; either version 2 of the License,
 --or (at your option) any later version.
- 
---This program is distributed in the hope that it will be useful, 
---but WITHOUT ANY WARRANTY; without even the implied warranty of 
---MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+--This program is distributed in the hope that it will be useful,
+--but WITHOUT ANY WARRANTY; without even the implied warranty of
+--MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 --See the GNU Lesser General Public License for
 --more details.
- 
---You should have received a copy of the GNU Lesser General 
+
+--You should have received a copy of the GNU Lesser General
 --Public License along with this program; if not, write to
 --the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
---Linking Engine3 statically or dynamically with other modules 
---is making a combined work based on Engine3. 
---Thus, the terms and conditions of the GNU Lesser General Public License 
+
+--Linking Engine3 statically or dynamically with other modules
+--is making a combined work based on Engine3.
+--Thus, the terms and conditions of the GNU Lesser General Public License
 --cover the whole combination.
- 
---In addition, as a special exception, the copyright holders of Engine3 
---give you permission to combine Engine3 program with free software 
---programs or libraries that are released under the GNU LGPL and with 
---code included in the standard release of Core3 under the GNU LGPL 
---license (or modified versions of such code, with unchanged license). 
---You may copy and distribute such a system following the terms of the 
---GNU LGPL for Engine3 and the licenses of the other code concerned, 
---provided that you include the source code of that other code when 
+
+--In addition, as a special exception, the copyright holders of Engine3
+--give you permission to combine Engine3 program with free software
+--programs or libraries that are released under the GNU LGPL and with
+--code included in the standard release of Core3 under the GNU LGPL
+--license (or modified versions of such code, with unchanged license).
+--You may copy and distribute such a system following the terms of the
+--GNU LGPL for Engine3 and the licenses of the other code concerned,
+--provided that you include the source code of that other code when
 --and as the GNU LGPL requires distribution of source code.
- 
---Note that people who make modified versions of Engine3 are not obligated 
---to grant this special exception for their modified versions; 
---it is their choice whether to do so. The GNU Lesser General Public License 
---gives permission to release a modified version without this exception; 
---this exception also makes it possible to release a modified version 
+
+--Note that people who make modified versions of Engine3 are not obligated
+--to grant this special exception for their modified versions;
+--it is their choice whether to do so. The GNU Lesser General Public License
+--gives permission to release a modified version without this exception;
+--this exception also makes it possible to release a modified version
 --which carries forward this exception.
 
 --Determines how often exceptional and legendary items can drop.
@@ -478,19 +478,12 @@ lootableClothingStatMods = {
 }
 
 lootableOneHandedMeleeStatMods = {
-	"aim",
-	"alert",
 	"berserk",
 	"blind_defense",
 	"block",
 	"camouflage",
-	"carbine_accuracy",
-	"carbine_aim",
-	"carbine_hit_while_moving",
-	"carbine_speed",
 	"combat_bleeding_defense",
 	"counterattack",
-	"cover",
 	"dizzy_defense",
 	"dodge",
 	"droid_find_chance",
@@ -499,10 +492,6 @@ lootableOneHandedMeleeStatMods = {
 	"droid_track_speed",
 	"foraging",
 	"group_slope_move",
-	"heavy_rifle_lightning_accuracy",
-	"heavy_rifle_lightning_speed",
-	"heavyweapon_accuracy",
-	"heavyweapon_speed",
 	"intimidate",
 	"intimidate_defense",
 	"knockdown_defense",
@@ -510,13 +499,6 @@ lootableOneHandedMeleeStatMods = {
 	"onehandmelee_accuracy",
 	"onehandmelee_damage",
 	"onehandmelee_speed",
-	"pistol_accuracy",
-	"pistol_aim",
-	"pistol_hit_while_moving",
-	"pistol_speed",
-	"pistol_accuracy_while_standing",
-	"polearm_accuracy",
-	"polearm_speed",
 	"posture_change_down_defense",
 	"posture_change_up_defense",
 	"ranged_defense",
@@ -525,42 +507,22 @@ lootableOneHandedMeleeStatMods = {
 	"resistance_disease",
 	"resistance_fire",
 	"resistance_poison",
-	"rifle_accuracy",
-	"rifle_aim",
-	"rifle_hit_while_moving",
-	"rifle_speed",
 	"slope_move",
-	"steadyaim",
 	"stun_defense",
-	"take_cover",
 	"tame_aggro",
 	"tame_non_aggro",
 	"thrown_accuracy",
 	"thrown_speed",
-	"twohandmelee_accuracy",
-	"twohandmelee_damage",
-	"twohandmelee_speed",
-	"unarmed_accuracy",
-	"unarmed_damage",
-	"unarmed_speed",
-	"volley",
 	"warcry"
 }
 
 lootableTwoHandedMeleeStatMods = {
-	"aim",
-	"alert",
 	"berserk",
 	"blind_defense",
 	"block",
 	"camouflage",
-	"carbine_accuracy",
-	"carbine_aim",
-	"carbine_hit_while_moving",
-	"carbine_speed",
 	"combat_bleeding_defense",
 	"counterattack",
-	"cover",
 	"dizzy_defense",
 	"dodge",
 	"droid_find_chance",
@@ -569,24 +531,10 @@ lootableTwoHandedMeleeStatMods = {
 	"droid_track_speed",
 	"foraging",
 	"group_slope_move",
-	"heavy_rifle_lightning_accuracy",
-	"heavy_rifle_lightning_speed",
-	"heavyweapon_accuracy",
-	"heavyweapon_speed",
 	"intimidate",
 	"intimidate_defense",
 	"knockdown_defense",
 	"melee_defense",
-	"onehandmelee_accuracy",
-	"onehandmelee_damage",
-	"onehandmelee_speed",
-	"pistol_accuracy",
-	"pistol_aim",
-	"pistol_hit_while_moving",
-	"pistol_speed",
-	"pistol_accuracy_while_standing",
-	"polearm_accuracy",
-	"polearm_speed",
 	"posture_change_down_defense",
 	"posture_change_up_defense",
 	"ranged_defense",
@@ -595,14 +543,8 @@ lootableTwoHandedMeleeStatMods = {
 	"resistance_disease",
 	"resistance_fire",
 	"resistance_poison",
-	"rifle_accuracy",
-	"rifle_aim",
-	"rifle_hit_while_moving",
-	"rifle_speed",
 	"slope_move",
-	"steadyaim",
 	"stun_defense",
-	"take_cover",
 	"tame_aggro",
 	"tame_non_aggro",
 	"thrown_accuracy",
@@ -610,27 +552,16 @@ lootableTwoHandedMeleeStatMods = {
 	"twohandmelee_accuracy",
 	"twohandmelee_damage",
 	"twohandmelee_speed",
-	"unarmed_accuracy",
-	"unarmed_damage",
-	"unarmed_speed",
-	"volley",
 	"warcry"
 }
 
 lootableUnarmedStatMods = {
-	"aim",
-	"alert",
 	"berserk",
 	"blind_defense",
 	"block",
 	"camouflage",
-	"carbine_accuracy",
-	"carbine_aim",
-	"carbine_hit_while_moving",
-	"carbine_speed",
 	"combat_bleeding_defense",
 	"counterattack",
-	"cover",
 	"dizzy_defense",
 	"dodge",
 	"droid_find_chance",
@@ -639,24 +570,10 @@ lootableUnarmedStatMods = {
 	"droid_track_speed",
 	"foraging",
 	"group_slope_move",
-	"heavy_rifle_lightning_accuracy",
-	"heavy_rifle_lightning_speed",
-	"heavyweapon_accuracy",
-	"heavyweapon_speed",
 	"intimidate",
 	"intimidate_defense",
 	"knockdown_defense",
 	"melee_defense",
-	"onehandmelee_accuracy",
-	"onehandmelee_damage",
-	"onehandmelee_speed",
-	"pistol_accuracy",
-	"pistol_aim",
-	"pistol_hit_while_moving",
-	"pistol_speed",
-	"pistol_accuracy_while_standing",
-	"polearm_accuracy",
-	"polearm_speed",
 	"posture_change_down_defense",
 	"posture_change_up_defense",
 	"ranged_defense",
@@ -665,42 +582,26 @@ lootableUnarmedStatMods = {
 	"resistance_disease",
 	"resistance_fire",
 	"resistance_poison",
-	"rifle_accuracy",
-	"rifle_aim",
-	"rifle_hit_while_moving",
-	"rifle_speed",
 	"slope_move",
-	"steadyaim",
 	"stun_defense",
-	"take_cover",
 	"tame_aggro",
 	"tame_non_aggro",
 	"thrown_accuracy",
 	"thrown_speed",
-	"twohandmelee_accuracy",
-	"twohandmelee_damage",
-	"twohandmelee_speed",
 	"unarmed_accuracy",
 	"unarmed_damage",
 	"unarmed_speed",
-	"volley",
 	"warcry"
 }
 
 lootablePistolStatMods = {
 	"aim",
 	"alert",
-	"berserk",
 	"blind_defense",
 	"block",
 	"camouflage",
-	"carbine_accuracy",
-	"carbine_aim",
-	"carbine_hit_while_moving",
-	"carbine_speed",
 	"combat_bleeding_defense",
 	"counterattack",
-	"cover",
 	"dizzy_defense",
 	"dodge",
 	"droid_find_chance",
@@ -709,24 +610,14 @@ lootablePistolStatMods = {
 	"droid_track_speed",
 	"foraging",
 	"group_slope_move",
-	"heavy_rifle_lightning_accuracy",
-	"heavy_rifle_lightning_speed",
-	"heavyweapon_accuracy",
-	"heavyweapon_speed",
-	"intimidate",
 	"intimidate_defense",
 	"knockdown_defense",
 	"melee_defense",
-	"onehandmelee_accuracy",
-	"onehandmelee_damage",
-	"onehandmelee_speed",
 	"pistol_accuracy",
 	"pistol_aim",
 	"pistol_hit_while_moving",
 	"pistol_speed",
 	"pistol_accuracy_while_standing",
-	"polearm_accuracy",
-	"polearm_speed",
 	"posture_change_down_defense",
 	"posture_change_up_defense",
 	"ranged_defense",
@@ -735,39 +626,22 @@ lootablePistolStatMods = {
 	"resistance_disease",
 	"resistance_fire",
 	"resistance_poison",
-	"rifle_accuracy",
-	"rifle_aim",
-	"rifle_hit_while_moving",
-	"rifle_speed",
 	"slope_move",
 	"steadyaim",
 	"stun_defense",
-	"take_cover",
 	"tame_aggro",
 	"tame_non_aggro",
 	"thrown_accuracy",
 	"thrown_speed",
-	"twohandmelee_accuracy",
-	"twohandmelee_damage",
-	"twohandmelee_speed",
-	"unarmed_accuracy",
-	"unarmed_damage",
-	"unarmed_speed",
-	"volley",
-	"warcry"
+	"volley"
 }
 
 lootableRifleStatMods = {
 	"aim",
 	"alert",
-	"berserk",
 	"blind_defense",
 	"block",
 	"camouflage",
-	"carbine_accuracy",
-	"carbine_aim",
-	"carbine_hit_while_moving",
-	"carbine_speed",
 	"combat_bleeding_defense",
 	"counterattack",
 	"cover",
@@ -781,22 +655,9 @@ lootableRifleStatMods = {
 	"group_slope_move",
 	"heavy_rifle_lightning_accuracy",
 	"heavy_rifle_lightning_speed",
-	"heavyweapon_accuracy",
-	"heavyweapon_speed",
-	"intimidate",
 	"intimidate_defense",
 	"knockdown_defense",
 	"melee_defense",
-	"onehandmelee_accuracy",
-	"onehandmelee_damage",
-	"onehandmelee_speed",
-	"pistol_accuracy",
-	"pistol_aim",
-	"pistol_hit_while_moving",
-	"pistol_speed",
-	"pistol_accuracy_while_standing",
-	"polearm_accuracy",
-	"polearm_speed",
 	"posture_change_down_defense",
 	"posture_change_up_defense",
 	"ranged_defense",
@@ -817,20 +678,12 @@ lootableRifleStatMods = {
 	"tame_non_aggro",
 	"thrown_accuracy",
 	"thrown_speed",
-	"twohandmelee_accuracy",
-	"twohandmelee_damage",
-	"twohandmelee_speed",
-	"unarmed_accuracy",
-	"unarmed_damage",
-	"unarmed_speed",
-	"volley",
-	"warcry"
+	"volley"
 }
 
 lootableCarbineStatMods = {
 	"aim",
 	"alert",
-	"berserk",
 	"blind_defense",
 	"block",
 	"camouflage",
@@ -840,7 +693,6 @@ lootableCarbineStatMods = {
 	"carbine_speed",
 	"combat_bleeding_defense",
 	"counterattack",
-	"cover",
 	"dizzy_defense",
 	"dodge",
 	"droid_find_chance",
@@ -849,24 +701,9 @@ lootableCarbineStatMods = {
 	"droid_track_speed",
 	"foraging",
 	"group_slope_move",
-	"heavy_rifle_lightning_accuracy",
-	"heavy_rifle_lightning_speed",
-	"heavyweapon_accuracy",
-	"heavyweapon_speed",
-	"intimidate",
 	"intimidate_defense",
 	"knockdown_defense",
 	"melee_defense",
-	"onehandmelee_accuracy",
-	"onehandmelee_damage",
-	"onehandmelee_speed",
-	"pistol_accuracy",
-	"pistol_aim",
-	"pistol_hit_while_moving",
-	"pistol_speed",
-	"pistol_accuracy_while_standing",
-	"polearm_accuracy",
-	"polearm_speed",
 	"posture_change_down_defense",
 	"posture_change_up_defense",
 	"ranged_defense",
@@ -875,42 +712,23 @@ lootableCarbineStatMods = {
 	"resistance_disease",
 	"resistance_fire",
 	"resistance_poison",
-	"rifle_accuracy",
-	"rifle_aim",
-	"rifle_hit_while_moving",
-	"rifle_speed",
 	"slope_move",
 	"steadyaim",
 	"stun_defense",
-	"take_cover",
 	"tame_aggro",
 	"tame_non_aggro",
 	"thrown_accuracy",
 	"thrown_speed",
-	"twohandmelee_accuracy",
-	"twohandmelee_damage",
-	"twohandmelee_speed",
-	"unarmed_accuracy",
-	"unarmed_damage",
-	"unarmed_speed",
-	"volley",
-	"warcry"
+	"volley"
 }
 
 lootablePolearmStatMods = {
-	"aim",
-	"alert",
 	"berserk",
 	"blind_defense",
 	"block",
 	"camouflage",
-	"carbine_accuracy",
-	"carbine_aim",
-	"carbine_hit_while_moving",
-	"carbine_speed",
 	"combat_bleeding_defense",
 	"counterattack",
-	"cover",
 	"dizzy_defense",
 	"dodge",
 	"droid_find_chance",
@@ -919,22 +737,10 @@ lootablePolearmStatMods = {
 	"droid_track_speed",
 	"foraging",
 	"group_slope_move",
-	"heavy_rifle_lightning_accuracy",
-	"heavy_rifle_lightning_speed",
-	"heavyweapon_accuracy",
-	"heavyweapon_speed",
 	"intimidate",
 	"intimidate_defense",
 	"knockdown_defense",
 	"melee_defense",
-	"onehandmelee_accuracy",
-	"onehandmelee_damage",
-	"onehandmelee_speed",
-	"pistol_accuracy",
-	"pistol_aim",
-	"pistol_hit_while_moving",
-	"pistol_speed",
-	"pistol_accuracy_while_standing",
 	"polearm_accuracy",
 	"polearm_speed",
 	"posture_change_down_defense",
@@ -945,42 +751,23 @@ lootablePolearmStatMods = {
 	"resistance_disease",
 	"resistance_fire",
 	"resistance_poison",
-	"rifle_accuracy",
-	"rifle_aim",
-	"rifle_hit_while_moving",
-	"rifle_speed",
 	"slope_move",
-	"steadyaim",
 	"stun_defense",
-	"take_cover",
 	"tame_aggro",
 	"tame_non_aggro",
 	"thrown_accuracy",
 	"thrown_speed",
-	"twohandmelee_accuracy",
-	"twohandmelee_damage",
-	"twohandmelee_speed",
-	"unarmed_accuracy",
-	"unarmed_damage",
-	"unarmed_speed",
-	"volley",
 	"warcry"
 }
 
 lootableHeavyWeaponStatMods = {
 	"aim",
 	"alert",
-	"berserk",
 	"blind_defense",
 	"block",
 	"camouflage",
-	"carbine_accuracy",
-	"carbine_aim",
-	"carbine_hit_while_moving",
-	"carbine_speed",
 	"combat_bleeding_defense",
 	"counterattack",
-	"cover",
 	"dizzy_defense",
 	"dodge",
 	"droid_find_chance",
@@ -993,20 +780,9 @@ lootableHeavyWeaponStatMods = {
 	"heavy_rifle_lightning_speed",
 	"heavyweapon_accuracy",
 	"heavyweapon_speed",
-	"intimidate",
 	"intimidate_defense",
 	"knockdown_defense",
 	"melee_defense",
-	"onehandmelee_accuracy",
-	"onehandmelee_damage",
-	"onehandmelee_speed",
-	"pistol_accuracy",
-	"pistol_aim",
-	"pistol_hit_while_moving",
-	"pistol_speed",
-	"pistol_accuracy_while_standing",
-	"polearm_accuracy",
-	"polearm_speed",
 	"posture_change_down_defense",
 	"posture_change_up_defense",
 	"ranged_defense",
@@ -1015,26 +791,13 @@ lootableHeavyWeaponStatMods = {
 	"resistance_disease",
 	"resistance_fire",
 	"resistance_poison",
-	"rifle_accuracy",
-	"rifle_aim",
-	"rifle_hit_while_moving",
-	"rifle_speed",
 	"slope_move",
 	"steadyaim",
 	"stun_defense",
-	"take_cover",
 	"tame_aggro",
 	"tame_non_aggro",
 	"thrown_accuracy",
 	"thrown_speed",
-	"twohandmelee_accuracy",
-	"twohandmelee_damage",
-	"twohandmelee_speed",
-	"unarmed_accuracy",
-	"unarmed_damage",
-	"unarmed_speed",
-	"volley",
-	"warcry"
+	"volley"
 }
-
 
