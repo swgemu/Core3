@@ -94,7 +94,6 @@ class ScavengerDroid extends CreatureObject {
 	}
 
 	@preLocked
-	@arg1preLocked
 	public native void addToPlayerItemList(unsigned long playerID, final string item);
 
 	public native void announceToPlayers(final string msg);
