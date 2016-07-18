@@ -1,0 +1,548 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_714d3872",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "The electionMobiles, capitalMobiles, and rumorMobiles are all always being spawned, their tables are setup identically, and the for loops that spawn and initialize them are identical (besides the tour container component, but that doesn\u0027t matter).\n\nI would combine them into one table so you only need the one for loop to spawn them. You can use comments to separate them into the different blocks within the table.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_f1406837",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "This is only getting called in determineWinner(). So if sean wins, they get spawned. but then if there\u0027s a server restart, sean is still the winner but they aren\u0027t spawned. You need to add a check for phase/winner inside spawnMobiles() and call this where appropriate.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_d130c4ea",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "Why are you saving this? I don\u0027t see you using it. Besides, if you did need the id, you could get it with getServerEventID(\"ElectionPhaseChange\")",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_515cb425",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "use self:getElectionNumber() instead. It already handles the nil check.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_113e3cb9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "Instead of checking who \u003d\u003d \"\", I would make sure that who is either \"Sean\" or \"Victor\"",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_b14af053",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "You can remove this as you\u0027ll be setting it right after incrementing the vote count below.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_d147644a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "I would combine these two into one function and just add a second arg to specify which campaign.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_7174589c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "Same with these. Combine into one function with a second arg to specify which npc.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9179ec95",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "You don\u0027t use this, remove it.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_316ee0ca",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "Again, you can combine these two functions into one.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_517354b1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "pPlayer \u003d\u003d false ?\n\nAlso, instead of check who \u003d\u003d \"\", I would make sure it\u0027s either \"Sean\" or \"Victor\".",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_91524c12",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "I would change the isCreatureObject check to an isPlayerCreature check. We don\u0027t need them to face pets or other npcs.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_3157c004",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "Same as above, change to isPlayerCreature",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_f195c888",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "Add a default return false just in case",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_f13948d9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "Don\u0027t return a value here.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_f1ae28e7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "I kinda think you out to get the strTerminalName before you do this check and check if the name contains questn and questn is search or if the name contains questp and questp is searched then send this message.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_d15e8412",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "The victor questn item giver has the desk menu component so this whole block is unnecessary here.\n\nReally, there\u0027s one victor item and one sean item given by objects with this component so you really can skip the tblQuest[2] check altogether (and the parsing of the string into a table since you just need to check if it starts with \"victor\" or \"sean\".",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_91a00cf6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "Instead of having multiple inventory getters and nil checks, I would just get it once and nil check it before you check which quest the terminal is associated with.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_31a58004",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "I think you should be using @city/bestine/terminal_items:inv_full in each of these.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_719bf8c9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you be giving sean_questn_tdisk here?",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_51aa74d5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be download_complete since it\u0027s coming from a terminal with the radial option of \"Download\"",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_11acfcec",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "There\u0027s no object with the desk component that gives a questp item. They are both questn items so you can remove the questp searched check.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_b1b8b02b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "Like in the terminal component above, there\u0027s only 1 object for each npc given by objects with the desk component. This tblQuest[2] check is unnecessary.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_d1b52432",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "again, get and nil check the inventory before checking the name.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9187ac61",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "I think @city/bestine/terminal_items:receivemsg is the appropriate message for here.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_71821854",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "There\u0027s no questp item given by a desk so this block can be removed.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_317ca072",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this give sean_questn_alog ?",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_51811449",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "I think @city/bestine/terminal_items:receive1 is the appropriate message for here.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_11939ca4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "Just call getTemplateObjectPath once and store it in a local var. Then use that local in these checks.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_b18f5075",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "Don\u0027t you also need to destroy the object from world and db?\n\nAlso, return 1 (TRANSFERSUCCESS) within here.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_71e9b819",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/seans_historian_conv_handler.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "This is deleted when hquest_find is written so this deletion isn\u0027t needed, right?\n\nAlso, you should delete historyq_searched or it\u0027ll cause problems if the player tries to do this quest again.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_e60bd029",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/seans_historian_conv_handler.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-18T20:37:54Z",
+      "side": 1,
+      "message": "Rename this. You already have a local var named playerID declared on line 58 above. It\u0027s also a deceptive name since it\u0027s not an oid but a PlayerObject that you are getting.\n\nAlso also, fix your tabbing here for readability.",
+      "revId": "13248d1972cd255143727970ba22fe30fc50f72a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
