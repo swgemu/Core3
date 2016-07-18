@@ -58,7 +58,7 @@ public:
 				PlayerObject* ghost = consentOwner->getPlayerObject();
 
 				if (!ghost->hasInConsentList(player->getFirstName().toLowerCase())) {
-					if ((player->getWeapon() != NULL && player->getWeapon()->isJediWeapon()) || player->hasSkill("force_title_jedi_rank_02")) {
+					if ((consentOwner->getWeapon() != NULL && consentOwner->getWeapon()->isJediWeapon()) || consentOwner->hasSkill("force_title_jedi_rank_02")) {
 						creature->sendSystemMessage("@healing_response:jedi_must_consent"); // You must have consent from a jedi resuscitation target!
 						return false;
 					} else {
