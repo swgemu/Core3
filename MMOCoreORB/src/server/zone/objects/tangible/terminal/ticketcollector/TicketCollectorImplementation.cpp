@@ -23,7 +23,16 @@
 
 void TicketCollectorImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (JediManager::instance()->getJediProgressionType() == JediManager::VILLAGEJEDIPROGRESSION) {
-		ManagedReference<PlanetManager*> pMan = zone->getPlanetManager();
+		Zone* thisZone = getZone();
+
+		if (thisZone == NULL)
+			return;
+
+		ManagedReference<PlanetManager*> pMan = thisZone->getPlanetManager();
+
+		if (pMan == NULL)
+			return;
+
 		PlanetTravelPoint* ptp = pMan->getNearestPlanetTravelPoint(_this.getReferenceUnsafeStaticCast(), 64.f);
 
 		if (ptp != NULL && ptp->isInterplanetary()) {
@@ -39,7 +48,16 @@ int TicketCollectorImplementation::handleObjectMenuSelect(CreatureObject* player
 	if (selectedID == 20) {
 		player->executeObjectControllerAction(0x5DCD41A2); //boardShuttle
 	} else if (selectedID == 193 && JediManager::instance()->getJediProgressionType() == JediManager::VILLAGEJEDIPROGRESSION) {
-		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+		Zone* thisZone = getZone();
+
+		if (thisZone == NULL)
+			return 0;
+
+		ManagedReference<PlanetManager*> planetManager = thisZone->getPlanetManager();
+
+		if (planetManager == NULL)
+			return 0;
+
 		PlanetTravelPoint* ptp = planetManager->getNearestPlanetTravelPoint(_this.getReferenceUnsafeStaticCast(), 64.f);
 
 		if (ptp != NULL && ptp->isInterplanetary()) {
@@ -55,6 +73,7 @@ int TicketCollectorImplementation::handleObjectMenuSelect(CreatureObject* player
 			}
 		}
 	}
+
 	return 0;
 }
 
