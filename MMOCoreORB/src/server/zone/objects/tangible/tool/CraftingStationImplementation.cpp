@@ -16,6 +16,7 @@
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
+#include "server/zone/objects/scene/components/ContainerComponent.h"
 
 void CraftingStationImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
@@ -29,26 +30,26 @@ void CraftingStationImplementation::loadTemplateData(SharedObjectTemplate* templ
 void CraftingStationImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
-	/*ManagedReference<BuildingObject*> building = cast<BuildingObject*>(getRootParent());
+	ManagedReference<BuildingObject*> building = player->getRootParent().get().castTo<BuildingObject*>();
 
 	if(building != NULL && !isASubChildOf(player)) {
 		if(building->isOnAdminList(player) && getSlottedObject("ingredient_hopper") != NULL) {
 			menuResponse->addRadialMenuItem(68, 3, "@ui_radial:craft_hopper_input"); //Open
 		}
-	}*/
+	}
 }
 
 int CraftingStationImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 
-	/*if (selectedID == 68 && getSlottedObject("ingredient_hopper") != NULL) { // use object
+	if (selectedID == 68 && getSlottedObject("ingredient_hopper") != NULL) { // use object
 
-		ManagedReference<BuildingObject*> building = cast<BuildingObject*>(getRootParent());
+		ManagedReference<BuildingObject*> building = player->getRootParent().get().castTo<BuildingObject*>();
 
 		if(building != NULL && !isASubChildOf(player)) {
 			if(building->isOnAdminList(player))
-				sendInputHopper(player);
+				sendInputHopper(player, zone);
 		}
-	}*/
+	}
 
 	return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 }
@@ -59,9 +60,11 @@ void CraftingStationImplementation::fillAttributeList(AttributeListMessage* alm,
 	alm->insertAttribute("stationmod", Math::getPrecision(effectiveness, 2));
 }
 
-void CraftingStationImplementation::sendInputHopper(CreatureObject* player) {
+void CraftingStationImplementation::sendInputHopper(CreatureObject* player, Zone* zone) {
 
-	/*ManagedReference<SceneObject*> inputHopper = getSlottedObject("ingredient_hopper");
+	ManagedReference<SceneObject*> inputHopper = getSlottedObject("ingredient_hopper");
+	zone = player->getZone();
+	ManagedReference<BuildingObject*> building = player->getRootParent().get().castTo<BuildingObject*>();
 
 	if(inputHopper == NULL) {
 		return;
@@ -71,13 +74,17 @@ void CraftingStationImplementation::sendInputHopper(CreatureObject* player) {
 	inputHopper->closeContainerTo(player, true);
 
 	inputHopper->sendWithoutContainerObjectsTo(player);
-	inputHopper->openContainerTo(player);*/
+	inputHopper->openContainerTo(player);
+
+	//inputHopper->sendContainerObjectsTo(player);
+	//inputHopper->notifyInsertToZone(zone);
+	inputHopper->notifyObservers(ObserverEventType::OBJECTINSERTED, building);
+
 }
 
 SceneObject* CraftingStationImplementation::findCraftingTool(CreatureObject* player) {
 
-	ManagedReference<SceneObject*> inventory = player->getSlottedObject(
-			"inventory");
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 	Locker inventoryLocker(inventory);
 	SceneObject* craftingTool = NULL;
 
@@ -113,16 +120,21 @@ void CraftingStationImplementation::createChildObjects() {
 }
 
 void CraftingStationImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
-	/// useModifer is the effectiveness
+	/// useModifier is the effectiveness
 
 	effectiveness = values->getCurrentValue("usemodifier");
 
-	/*if(firstUpdate && values->hasSlotFilled("storage_compartment")) {
+	if(firstUpdate && values->hasSlotFilled("storage_compartment")) {
 		String ingredientHopperName = "object/tangible/hopper/crafting_station_hopper/crafting_station_ingredient_hopper_structure_small.iff";
 		ManagedReference<SceneObject*> ingredientHopper = server->getZoneServer()->createObject(ingredientHopperName.hashCode(), 1);
 
 		transferObject(ingredientHopper, 4, true);
-	}*/
+	}
 
-	//craftingValues->toString();
+	// craftingValues->toString();
 }
+
+//TODO: figure out why that screenshot resource bar and why 100 items aren't counting toward house max item counter
+//TODO: what happens if player PICKS UP crafting-station, does the item counter overflow player inventory?
+	// or should we make a sys msg "you cannot pickup station until the ingredient hopper is emptied first"
+//TODO: disallow placing NON-ingredient type items into the hopper?
