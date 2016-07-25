@@ -167,7 +167,7 @@ bool FactoryCrateImplementation::extractObjectToInventory(CreatureObject* player
 			if (errorDescription.length() > 1) {
 					player->sendMessage(new ChatSystemMessage(errorDescription));
 			} else {
-				inventory->error("cannot extratObjectToInventory " + String::valueOf(errorNumber));
+				inventory->error("cannot extractObjectToInventory " + String::valueOf(errorNumber));
 			}
 
 			protoclone->destroyObjectFromDatabase(true);

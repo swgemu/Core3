@@ -58,8 +58,8 @@ class CraftingStation extends ToolTangibleObject {
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
-	@dirty
-	public native void sendInputHopper(CreatureObject player);
+	@local
+	public native void sendInputHopper(CreatureObject player, Zone zone);
 
 	
 	@local
