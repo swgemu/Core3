@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "9a6a9dd7_91d80c55",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1382,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-27T01:15:48Z",
+      "side": 1,
+      "message": "getFactionSTanding() requires an argument (the faction string). Also, it must be called with a PlayerObject, not a CreatureObject.",
+      "parentUuid": "9a6a9dd7_3126e069",
+      "revId": "fa3f08fed2b8e3eca5ffe997620b97e0273b3c4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a6a9dd7_b1199024",
         "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
         "patchSetId": 1
