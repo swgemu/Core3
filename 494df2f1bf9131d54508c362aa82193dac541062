@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_71ba18e3",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/village/phase4/elder_phase4_conv.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-27T06:50:59Z",
+      "side": 1,
+      "message": "This screen seems to be extraneous. Nothing points to it and it points to itself... It also uses the same dialog and option as finish_us_off.",
+      "revId": "494df2f1bf9131d54508c362aa82193dac541062",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
