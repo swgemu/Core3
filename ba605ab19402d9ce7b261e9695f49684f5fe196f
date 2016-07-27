@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_918d6c34",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/ai/bt/decorator/Decorator.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-27T21:41:56Z",
+      "side": 1,
+      "message": "should this be newChild?",
+      "revId": "ba605ab19402d9ce7b261e9695f49684f5fe196f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
