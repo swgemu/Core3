@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_51b034f4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-27T19:11:23Z",
+      "side": 1,
+      "message": "You\u0027re only using this once. Just inline it where you use it.",
+      "revId": "ac59ffa0ded2f4167434eff69ef2a075a81ab643",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_f194e845",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-27T19:11:23Z",
+      "side": 1,
+      "message": "Instead of this nesting, just return true if requiredFaction is empty.",
+      "revId": "ac59ffa0ded2f4167434eff69ef2a075a81ab643",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_1192bc57",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-27T19:11:23Z",
+      "side": 1,
+      "message": "Why 3000?",
+      "revId": "ac59ffa0ded2f4167434eff69ef2a075a81ab643",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_b19e7062",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-27T19:11:23Z",
+      "side": 1,
+      "message": "So you return false if it\u0027s below 3000, return true if it equals 3000 and do nothing if it\u0027s greater than 3000?",
+      "revId": "ac59ffa0ded2f4167434eff69ef2a075a81ab643",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_d19be470",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-27T19:11:23Z",
+      "side": 1,
+      "message": "Make sure you are always returning true or false. As you have the function now, it\u0027s possible to get to the end and not return either.",
+      "revId": "ac59ffa0ded2f4167434eff69ef2a075a81ab643",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
