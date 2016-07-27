@@ -354,7 +354,8 @@ ThemeParkValarian = ThemeParkLogic:new {
 	className = "ThemeParkValarian",
 	screenPlayState = "theme_park_valarian",
 	requiresEliteCombat = true,
-	distance = 800
+	distance = 800,
+	requiredFaction = "valarian"
 }
 
 registerScreenPlay("ThemeParkValarian", true)
