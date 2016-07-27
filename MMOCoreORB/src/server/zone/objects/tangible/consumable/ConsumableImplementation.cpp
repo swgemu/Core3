@@ -202,17 +202,52 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 	}
 
 	case EFFECT_HEALING: {
-		int dmghealed = player->healDamage(player, 6, nutrition);
+		int healthHealed = 0, actionHealed = 0, mindHealed = 0;
 
-		if (dmghealed <= 0) {
-			player->sendSystemMessage("@healing:no_mind_to_heal_self"); //You have no mind to heal.
+		for (int i = 0; i < modifiers.size(); ++i) {
+			String key = modifiers.elementAt(i).getKey();
+
+			if (key == "health")
+				healthHealed = player->healDamage(player, 0, nutrition);
+			else if (key == "action")
+				actionHealed = player->healDamage(player, 3, nutrition);
+			else if (key == "mind")
+				mindHealed = player->healDamage(player, 6, nutrition);
+		}
+
+		if ((healthHealed + actionHealed + mindHealed) <= 0) {
+			player->sendSystemMessage("@healing:no_damage_to_heal_self"); // You have no damage to heal.
 			return 0;
 		}
 
-		StringIdChatParameter stringId("combat_effects", "food_mind_heal");
-		stringId.setDI(dmghealed);
+		StringBuffer sysMsg;
 
-		player->sendSystemMessage(stringId);
+		sysMsg << "You heal yourself for ";
+
+		if (healthHealed > 0) {
+			sysMsg << healthHealed << " health";
+
+			if (actionHealed > 0 && mindHealed > 0) {
+				sysMsg << ", ";
+			} else if (actionHealed > 0 || mindHealed > 0){
+				sysMsg << " and ";
+			}
+		}
+
+		if (actionHealed > 0) {
+			sysMsg << actionHealed << " action";
+
+			if (mindHealed > 0)
+				sysMsg << " and ";
+		}
+
+		if (mindHealed > 0) {
+			sysMsg << mindHealed << " mind";
+		}
+
+		sysMsg << ".";
+
+		player->sendSystemMessage(sysMsg.toString());
 
 		break;
 	}
@@ -379,9 +414,13 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 				alm->insertAttribute("stomach_drink", filling);
 		}
 
-		for (int i = 0; i < modifiers.size(); ++i) {
-			VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
-			alm->insertAttribute(entry->getKey() + "_heal", nutrition);
+		if (modifiers.size() == 1 && modifiers.elementAt(0).getKey() == "mind") {
+			alm->insertAttribute("mind_heal", nutrition);
+		} else {
+			for (int i = 0; i < modifiers.size(); ++i) {
+				VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
+				alm->insertAttribute("examine_heal_damage_" + entry->getKey(), nutrition);
+			}
 		}
 
 		break;
