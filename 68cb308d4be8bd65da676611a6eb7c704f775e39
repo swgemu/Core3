@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_f17b8827",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SniperShotCommand.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-27T21:59:39Z",
+      "side": 1,
+      "message": "You still have your logic messed up. Look again at my comment on patch set 4 and follow it.",
+      "revId": "68cb308d4be8bd65da676611a6eb7c704f775e39",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
