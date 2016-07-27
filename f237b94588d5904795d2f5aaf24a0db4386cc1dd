@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_b102f0b2",
+        "filename": "MMOCoreORB/src/server/zone/managers/crafting/labratories/Genetics.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-27T00:48:45Z",
+      "side": 1,
+      "message": "Can you hop on IRC at some point? I\u0027d like to chat with you about what you are doing here. I\u0027m not sure I fully understand what it is you are doing and would like you to walk me through it.",
+      "revId": "f237b94588d5904795d2f5aaf24a0db4386cc1dd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_d1ff64a9",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/pet/PetDeedImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-27T00:48:45Z",
+      "side": 1,
+      "message": "Please don\u0027t add comments to the code to explain changes you submit. Code comments should explain what\u0027s there, not what isn\u0027t there anymore.\n\nIf you want to explain a change, add a comment in gerrit (like this one) after you push the commit..",
+      "revId": "f237b94588d5904795d2f5aaf24a0db4386cc1dd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_712c584b",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/pet/PetDeedImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-27T00:48:45Z",
+      "side": 1,
+      "message": "Do you have a source that states that the cap should be 90? I didn\u0027t see one in the mantis report, though I did see a link with a guy stating he had made a CL76, so 75 is clearly worng.\n\nAlso, wouldn\u0027t you need to update the check in adjustPetLevel() and the cap in adjustPetStats()?",
+      "revId": "f237b94588d5904795d2f5aaf24a0db4386cc1dd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
