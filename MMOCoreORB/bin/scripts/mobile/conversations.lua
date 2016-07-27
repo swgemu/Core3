@@ -156,6 +156,7 @@ includeFile("conversations/trials/padawan/the_ring_01_conv.lua")
 includeFile("conversations/trials/padawan/the_ring_02_conv.lua")
 
 -- Village
+includeFile("conversations/village/fs_village_convo3_m_conv.lua")
 includeFile("conversations/village/fs_village_convo4_f_conv.lua")
 includeFile("conversations/village/fs_village_convo5_f_conv.lua")
 includeFile("conversations/village/fs_village_convo6_m_conv.lua")
@@ -174,6 +175,8 @@ includeFile("conversations/village/phase2/whip_phase2_conv.lua")
 includeFile("conversations/village/phase2/elder_phase2_conv.lua")
 includeFile("conversations/village/phase2/dageerin_phase2_conv.lua")
 includeFile("conversations/village/phase3/dageerin_phase3_conv.lua")
+includeFile("conversations/village/phase3/elder_phase3_conv.lua")
+includeFile("conversations/village/phase4/elder_phase4_conv.lua")
 includeFile("conversations/village/phase4/fs_gadget_specialist_phase4_conv.lua")
 includeFile("conversations/village/phase4/chief_engineer_phase4_conv.lua")
 
