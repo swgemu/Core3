@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_d11684f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-27T01:09:22Z",
+      "side": 1,
+      "message": "You\u0027re checking faction standing, not status.\n\nAlso, remove the bit in parenthesis. It\u0027s not relevant to this commit.",
+      "revId": "fa3f08fed2b8e3eca5ffe997620b97e0273b3c4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_512b5430",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/jabba/themeParkJabba.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-27T01:09:22Z",
+      "side": 1,
+      "message": "The ThemeParkLogic already has a member named faction, and it expects an integer. You need to add a new member for faction strings. Be sure to initialize it in ThemeParkLogic.",
+      "revId": "fa3f08fed2b8e3eca5ffe997620b97e0273b3c4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_3126e069",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1382,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-27T01:09:22Z",
+      "side": 1,
+      "message": "Why 3000?",
+      "revId": "fa3f08fed2b8e3eca5ffe997620b97e0273b3c4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_b1199024",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1386,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-07-27T01:09:22Z",
+      "side": 1,
+      "message": "Get rid of this function and requiresEnoughFaction. You can just check if the faction string is not empty.",
+      "revId": "fa3f08fed2b8e3eca5ffe997620b97e0273b3c4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
