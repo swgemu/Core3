@@ -16,7 +16,8 @@ ThemeParkLogic = ScreenPlay:new {
 	distance = 1000,
 	missionDescriptionStf = "",
 	missionCompletionMessageStf = "",
-	faction = 0
+	faction = 0,
+	requiredFaction = ""
 }
 
 function ThemeParkLogic:start()
@@ -185,6 +186,29 @@ function ThemeParkLogic:isOnLeave(pPlayer)
 	return ObjectManager.withCreaturePlayerObject(pPlayer, function(player)
 		return player:isOnLeave()
 	end)
+end
+
+function ThemeParkLogic:hasEnoughFaction(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	if (self.requiredFaction == "") then
+		return true
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+	if pGhost ~= nil then
+		local standing = PlayerObject(pGhost):getFactionStanding(self.requiredFaction)
+
+		if standing < 200 then
+			return false
+		else
+			return true
+		end
+	end
+
+	return false
 end
 
 function ThemeParkLogic:isValidConvoString(stfFile, stringid)
