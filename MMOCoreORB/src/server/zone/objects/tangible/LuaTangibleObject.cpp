@@ -224,6 +224,8 @@ int LuaTangibleObject::isInvisible(lua_State* L) {
 }
 
 int LuaTangibleObject::setLuaStringData(lua_State *L) {
+	Locker locker(realObject);
+
 	String key = lua_tostring(L, -2);
 	String data = lua_tostring(L, -1);
 
@@ -232,6 +234,8 @@ int LuaTangibleObject::setLuaStringData(lua_State *L) {
 }
 
 int LuaTangibleObject::deleteLuaStringData(lua_State* L) {
+	Locker locker(realObject);
+
 	String key = lua_tostring(L, -1);
 
 	realObject->deleteLuaStringData(key);
