@@ -111,6 +111,9 @@ int CellObjectImplementation::canAddObject(SceneObject* object, int containmentT
 		else if (object->isContainerObject())
 			count += object->getCountableObjectsRecursive();
 
+		if (object->isCraftingStation() && object->getSlottedObject("ingredient_hopper") != NULL)
+			count += object->getContainedObjectsRecursive();
+
 		if (building->getCurrentNumberOfPlayerItems() + count > building->getMaximumNumberOfPlayerItems()) {
 			errorDescription = "@container_error_message:container13";
 
@@ -174,7 +177,9 @@ int CellObjectImplementation::getCurrentNumberOfPlayerItems() {
 
 			if (!strongParent->containsChildObject(containerObject) && !containerObject->isCreatureObject() && !containerObject->isVendor()) {
 
-				if (containerObject->isContainerObject())
+				if (containerObject->isCraftingStation() && containerObject->getSlottedObject("ingredient_hopper") != NULL)
+					count += containerObject->getSlottedObject("ingredient_hopper")->getContainedObjectsRecursive();
+				else if (containerObject->isContainerObject())
 					count += containerObject->getCountableObjectsRecursive();
 
 				++count;
