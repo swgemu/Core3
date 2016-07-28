@@ -62,6 +62,14 @@ public:
 			}
 		}
 
+		if (objectToTransfer->isCraftingStation() && objectToTransfer->getSlottedObject("ingredient_hopper") != NULL) {
+			int hopperitems = objectToTransfer->getSlottedObject("ingredient_hopper")->getContainedObjectsRecursive();
+			if (hopperitems != 0) {
+				creature->sendSystemMessage("@container_error_message:container21"); //You cannot pick up a crafting station unless it is empty.
+				return GENERALERROR;
+			}
+		}
+
 		if (!objectToTransfer->checkContainerPermission(creature, ContainerPermissions::MOVECONTAINER)) {
 			creature->sendSystemMessage("@error_message:perm_no_move");
 			return GENERALERROR;

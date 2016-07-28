@@ -127,7 +127,7 @@ void CraftingToolImplementation::fillAttributeList(AttributeListMessage* alm,
 }
 
 void CraftingToolImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
-	/// useModifer is the effectiveness
+	/// useModifier is the effectiveness
 
 	effectiveness = values->getCurrentValue("usemodifier");
 

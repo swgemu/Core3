@@ -173,6 +173,17 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 
 		ManagedReference<SceneObject*> wearableParent = getParentRecursively(SceneObjectType::WEARABLECONTAINER);
 		ManagedReference<SceneObject*> playerParent = getParentRecursively(SceneObjectType::PLAYERCREATURE);
+		ManagedReference<SceneObject*> craftingParent = getParentRecursively(SceneObjectType::CRAFTINGSTATION);
+
+		if (craftingParent != NULL && craftingParent->getSlottedObject("ingredient_hopper") != NULL) {
+			ManagedReference<SceneObject*> hopper = craftingParent->getSlottedObject("ingredient_hopper");
+			ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(object);
+			if (!object->isResourceContainer()) {
+				errorDescription = "@container_error_message:container07"; // You cannot put that kind of item in that kind of container.
+
+				return TransferErrorCode::INVALIDTYPE;
+			}
+		}
 
 		// If there's a wearable container parent, return if it doesn't have enough room
 		if (wearableParent != NULL) {
