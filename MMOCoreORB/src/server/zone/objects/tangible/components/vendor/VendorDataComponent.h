@@ -39,7 +39,6 @@ protected:
 	Time inactiveTimer;
 
 	bool mail1Sent;
-	bool mail2Sent;
 
 	Vector<uint64> vendorBarks;
 	uint64 lastBark;
@@ -59,9 +58,8 @@ public:
 		VENDORCHECKINTERVAL = 60, // 60 Minutes
 		VENDORCHECKDELAY    = 20, // 20 Minutes
 
-		FIRSTWARNING        = 60 * 60 * 24 * 25, // 5 days
-		SECONDWARNING       = 60 * 60 * 24 * 50, // 10 days
-		EMPTYDELETE         = 60 * 60 * 24 * 14, // 14 days
+		EMPTYWARNING        = 60 * 60 * 24 * 14, // 14 days
+		EMPTYDELETE         = 60 * 60 * 24 * 28, // 28 days
 
 		DELETEWARNING       = 60 * 60 * 24 * 100, // 100 days
 
@@ -80,10 +78,6 @@ public:
 	void initializeTransientMembers();
 
 	void notifyObjectDestroyingFromDatabase();
-
-	void sendVendorUpdateMail(bool isEmpty);
-
-	void sendVendorDestroyMail();
 
 	void runVendorUpdate();
 
@@ -193,7 +187,6 @@ public:
 
 	inline void setEmpty() {
 		mail1Sent = false;
-		mail2Sent = false;
 
 		emptyTimer.updateToCurrentTime();
 	}

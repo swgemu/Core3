@@ -522,11 +522,11 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(CreatureObject* play
 	if(data != NULL && data->get() != NULL && data->get()->isVendorData())
 		vendorData = cast<VendorDataComponent*>(data->get());
 
-	// Someone elses Vendor (making this sell item an offer)
 	if (!vendor->isBazaarTerminal()) {
 		if(vendorData == NULL)
 			return NULL;
 
+		// Someone else's Vendor (making this sell item an offer)
 		if(vendorData->getOwnershipRightsOf(player) == 1) {
 			item->setStatus(AuctionItem::OFFERED);
 			item->setOfferToID(vendorData->getOwnerId());
@@ -543,7 +543,6 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(CreatureObject* play
 
 	updateAuctionOwner(item, player);
 	ObjectManager::instance()->persistObject(item, 0, "auctionitems");
-
 
 	return item;
 }
