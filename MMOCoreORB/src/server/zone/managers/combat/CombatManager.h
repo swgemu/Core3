@@ -75,6 +75,11 @@ public:
 	}
 
 	/**
+	* returns false on insufficient
+	*/
+	bool applySpecialAttackCost(CreatureObject* attacker, WeaponObject* weapon, const CreatureAttackData& data);
+
+	/**
 	 * Attempts combat between 2 creature objects
 	 * @pre { attacker locked }
 	 * @post { attacker locked }
@@ -220,13 +225,9 @@ protected:
 
 	/**
 	 * returns bitmask with what pools to damage
-	 */
+	*/
 	int calculatePoolsToDamage(int poolsToDamage);
 
-	/**
-	 * returns false on insufficient
-	 */
-	bool applySpecialAttackCost(CreatureObject* attacker, WeaponObject* weapon, const CreatureAttackData& data);
 };
 
 
