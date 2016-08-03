@@ -60,7 +60,7 @@ building_from_scratch = ConvoScreen:new {
 	leftDialog = "@conversation/village_elder_3:s_4d973713", -- That's what we're doing. Well, building one from scratch really. We've got the beginnings of a Mark 4 shield generator right over there.
 	stopConversation = "false",
 	options = {
-		{"@conversation/village_elder_3:s_6acff81", "like_your_enthusiasm"}, -- You're kidding. I've got to get in on this! where do I sign up?
+		{"@conversation/village_elder_3:s_6857cea2", "like_your_enthusiasm"}, -- You're kidding. I've got to get in on this! where do I sign up?
 		{"@conversation/village_elder_3:s_5d8d739e", "supply_convoys"}, -- How are you getting the resources for such a massive project?
 	}
 }

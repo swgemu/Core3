@@ -46,7 +46,7 @@ function villageChiefEngineerPhase4ConvoHandler:runScreenHandlers(conversationTe
 			clonedConversation:addOption("@conversation/fs_phase4_chief_engineer:s_4136c2df", "present_statue")
 		end
 
-		VillageJediManagerCommon.unlockBranch(conversingPlayer, "force_sensitive_combat_prowess_ranged_accuracy")
+		VillageJediManagerCommon.unlockBranch(conversingPlayer, "force_sensitive_crafting_mastery_repair")
 		QuestManager.completeQuest(conversingPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_06)
 		FsCrafting4:removeCore(conversingPlayer)
 	elseif (screenID == "no_space_for_reward") then
