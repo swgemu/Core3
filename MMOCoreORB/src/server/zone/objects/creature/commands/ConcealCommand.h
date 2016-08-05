@@ -26,6 +26,14 @@ public:
 
 		ManagedReference<CreatureObject*> targetPlayer = server->getZoneServer()->getObject(target).castTo<CreatureObject*>();
 
+		uint32 crc = STRING_HASHCODE("skill_buff_mask_scent");
+
+		// Rangers can remove their own conceal buff by targeting nothing.
+		if(targetPlayer == NULL && creature->hasBuff(crc)) {
+			creature->removeBuff(crc);
+			return SUCCESS;
+		}
+
 		if(targetPlayer == NULL || creature->getZone() == NULL || !targetPlayer->isPlayerCreature()) {
 			creature->sendSystemMessage("@skl_use:sys_conceal_notplayer"); // You can only conceal yourself or another player.
 			return INVALIDTARGET;
@@ -36,8 +44,6 @@ public:
 		if(!checkDistance(creature, targetPlayer, 10.0f)) {
 			return GENERALERROR;
 		}
-
-		uint32 crc = STRING_HASHCODE("skill_buff_mask_scent");
 
 		if(targetPlayer->hasBuff(crc) || targetPlayer->getSkillModFromBuffs("private_conceal") > 0) {
 			creature->sendSystemMessage("@skl_use:sys_target_concealed"); // Your target is already concealed.
