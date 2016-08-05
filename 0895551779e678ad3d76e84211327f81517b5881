@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_357330b3",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/ai/AiAgentImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2146,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-05T17:16:33Z",
+      "side": 1,
+      "message": "Nice catch, but you should also add the same kind of check in isConcealed() to be safe. If the order that the two were called ever got swapped, then we\u0027d have the same problem with mask scent.",
+      "revId": "0895551779e678ad3d76e84211327f81517b5881",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
