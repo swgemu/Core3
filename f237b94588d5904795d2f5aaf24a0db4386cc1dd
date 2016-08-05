@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_352570ab",
+        "filename": "MMOCoreORB/src/server/zone/managers/crafting/labratories/Genetics.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 2638
+      },
+      "writtenOn": "2016-08-05T03:02:00Z",
+      "side": 1,
+      "message": "The value of the stat on the dna template is based upon where the dna sample value (the total of the contributions from each of the 5 slots) fits within a range, from approx 60% to 85%. The higher the sample value the greater the percentage.\n\nThe reason I\u0027m converting from one range to another is to fit with the SharedLabratory.cpp::getAssemblyPercentage function. This function returns the value we want for the dna template, divided by 1000. This value is then multiplied by 1000 in the CraftingValues::recalculateValues function.\n\nAs an example, if the combined dna samples give a value of 800.\n\ninitialValue: (800 - 1 / (900 - 1)) * (1800 - 300) + 300 \u003d 1633\n\ngetAssemblyPercentage: (1633 * (0.000015 * 1633 + 0.015) * 0.01 \u003d 0.645\n\nrecalculateValues (line 102): (0.645 * (1000 - 0) + 0) \u003d 645\n\nThis gives a template value of 645, approx 80% of the original value of 800.\n\nI hope that\u0027s a clear enough explanation, the above code is kicked off in the GeneticLabratory::setInitialCraftingValues function on line 258.",
+      "parentUuid": "9a6a9dd7_b102f0b2",
+      "revId": "f237b94588d5904795d2f5aaf24a0db4386cc1dd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a6a9dd7_d1ff64a9",
         "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/pet/PetDeedImplementation.cpp",
         "patchSetId": 1
