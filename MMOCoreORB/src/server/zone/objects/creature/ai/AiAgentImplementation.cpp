@@ -2143,7 +2143,9 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 	uint64 effectiveTargetID = effectiveTarget->getObjectID();
 
 	if (!effectiveTarget->hasBuff(STRING_HASHCODE("skill_buff_mask_scent_self"))) {
-		camouflagedObjects.removeElement(effectiveTargetID);
+		if (!effectiveTarget->hasBuff(STRING_HASHCODE("skill_buff_mask_scent"))) {
+			camouflagedObjects.removeElement(effectiveTargetID);
+		}
 		return false;
 	}
 
@@ -2199,7 +2201,9 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 	uint64 effectiveTargetID = effectiveTarget->getObjectID();
 
 	if (!effectiveTarget->hasBuff(STRING_HASHCODE("skill_buff_mask_scent"))) {
-		camouflagedObjects.removeElement(effectiveTargetID);
+		if (!effectiveTarget->hasBuff(STRING_HASHCODE("skill_buff_mask_scent_self"))) {
+			camouflagedObjects.removeElement(effectiveTargetID);
+		}
 		return false;
 	}
 
