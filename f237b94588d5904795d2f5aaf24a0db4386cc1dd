@@ -68,6 +68,24 @@
       "revId": "f237b94588d5904795d2f5aaf24a0db4386cc1dd",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f53618e7",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/pet/PetDeedImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 2638
+      },
+      "writtenOn": "2016-08-05T03:07:41Z",
+      "side": 1,
+      "message": "I\u0027ve changed the the value to a theoretically unreachable value but ideally the check should be removed as I don\u0027t think there\u0027s any evidence of a cap.\nI\u0027ll remove the change I\u0027ve made and create a mantis for this once I\u0027ve found a few links of pets created with levels over 75.",
+      "parentUuid": "9a6a9dd7_712c584b",
+      "revId": "f237b94588d5904795d2f5aaf24a0db4386cc1dd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
