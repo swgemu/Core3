@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_55826c53",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ConcealBuff.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-06T03:16:29Z",
+      "side": 1,
+      "message": "Let\u0027s make this a weak ref by using the @weakReference annotation.",
+      "revId": "6f117bc9077d82222850c5c2a3f952bf63a6df55",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_75876862",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ConcealBuff.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-06T03:16:29Z",
+      "side": 1,
+      "message": "Since we\u0027re making buffGiver a weak ref, let\u0027s have the getter return a strong ref.\n\nI would do it the same way as in ControlDevice.idl \u0027s getConrolledObject()",
+      "revId": "6f117bc9077d82222850c5c2a3f952bf63a6df55",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_157cf471",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/CamoTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-06T03:16:29Z",
+      "side": 1,
+      "message": "ManagedReference\u003c\u003e",
+      "revId": "6f117bc9077d82222850c5c2a3f952bf63a6df55",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_3581f04a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/CamoTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-06T03:16:29Z",
+      "side": 1,
+      "message": "You need to lock buffGiver before making this call. Since two objects are already locked by this task, release those locks before locking buffGiver.",
+      "revId": "6f117bc9077d82222850c5c2a3f952bf63a6df55",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
