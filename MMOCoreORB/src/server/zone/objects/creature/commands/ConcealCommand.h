@@ -7,6 +7,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "templates/tangible/CamoKitTemplate.h"
+#include "server/zone/objects/creature/buffs/ConcealBuff.h"
 
 class ConcealCommand : public QueueCommand {
 public:
@@ -127,7 +128,7 @@ public:
 		int duration = 60 + (((float)(camoMod / 100.0f)) * 200);
 
 
-		ManagedReference<Buff*> buff = new Buff(targetPlayer, crc, duration, BuffType::SKILL);
+		ManagedReference<ConcealBuff*> buff = new ConcealBuff(targetPlayer, creature, crc, duration);
 
 		Locker blocker(buff);
 

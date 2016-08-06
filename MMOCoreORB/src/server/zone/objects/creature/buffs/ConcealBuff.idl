@@ -1,0 +1,29 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.creature.buffs;
+
+import engine.core.ManagedObject;
+import system.lang.ref.Reference;
+import server.zone.objects.creature.CreatureObject;
+
+import server.zone.objects.creature.buffs.Buff;
+include server.zone.objects.creature.buffs.BuffType;
+
+class ConcealBuff extends Buff {
+	@weakReference
+	protected CreatureObject buffGiver;
+
+	public ConcealBuff(CreatureObject creo, CreatureObject ranger, unsigned int buffCRC, int duration) {
+		super(creo, buffCRC, duration, BuffType.SKILL);
+
+		buffGiver = ranger;
+	}
+
+	@dirty
+	public CreatureObject getBuffGiver() {
+		CreatureObject creo = buffGiver;
+		return creo;
+	}
+}
