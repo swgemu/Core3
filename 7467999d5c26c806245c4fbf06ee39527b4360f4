@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_75ee8824",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/ConcealBuff.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-06T03:57:51Z",
+      "side": 1,
+      "message": "use @dirty",
+      "revId": "7467999d5c26c806245c4fbf06ee39527b4360f4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_55e90c19",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/CamoTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-06T03:57:51Z",
+      "side": 1,
+      "message": "You need to release clocker first.",
+      "revId": "7467999d5c26c806245c4fbf06ee39527b4360f4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
