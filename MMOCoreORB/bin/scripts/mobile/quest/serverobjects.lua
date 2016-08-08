@@ -300,6 +300,8 @@ includeFile("quest/dathomir/theme_park_nightsister_rancor.lua")
 includeFile("quest/dathomir/theme_park_imperial_sergeant.lua")
 includeFile("quest/dathomir/theme_park_imperial_staff_corporal.lua")
 includeFile("quest/dathomir/theme_park_imperial_stealth_operative.lua")
+includeFile("quest/dathomir/theme_park_commoner_old.lua")
+includeFile("quest/dathomir/zideera.lua")
 
 -- Endor
 includeFile("quest/endor/charal.lua")
