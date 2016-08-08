@@ -42,6 +42,7 @@ includeFile("themepark/jabba/themeParkJabba.lua")
 includeFile("themepark/valarian/themeParkValarian.lua")
 includeFile("themepark/marauder/themeParkMarauder.lua")
 includeFile("themepark/nightsister/themeParkNightsister.lua")
+includeFile("themepark/smc/themeParkSmcZideera.lua")
 
 -- Staff tools
 includeFile("tools/tools.lua")

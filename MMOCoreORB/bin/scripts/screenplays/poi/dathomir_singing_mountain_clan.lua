@@ -141,5 +141,4 @@ function SingingMountainClanScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "izaryx", 900, -12, 2.0, -4, 240, 2665882)
 	spawnMobile("dathomir", "vhaunda", 900, -22.3, 2.0, 5.05, 0, 2665881)
 	spawnMobile("dathomir", "vurlene", 900, -12, 3.0, 9.5, 60, 2665880)
-	spawnMobile("dathomir", "zideera", 900, -14.2, 1.9, -21.0, 0, 2665883)
 end
