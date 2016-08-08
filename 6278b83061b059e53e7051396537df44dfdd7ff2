@@ -1,0 +1,463 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b5ed00f2",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/tour_aryon_conv.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "This should be false.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_75bf68d1",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/tour_aryon_conv.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "This comment seems to have been cut off prematurely.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_750a08d4",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_museum/museum_curator_conv.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "You\u0027re not using this screen and it\u0027s identical to hello_no_voting that already exists. Remove this.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_9519e424",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "Please set these times to something appropriate for testing on Nova.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b51660f0",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "In the last patch set I commented on, you were initializing the phase to 1 if there was no current phase. I think you should keep that.\n\nActually, I see you moved that into getCurrentPhase(). I think you should put it back here and remove it from there. Once it\u0027s been set the once, it\u0027ll only ever get modified, but never deleted. So if you set it on init, the nil check in getCurrentPhase() should be unnecessary.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_55d34c38",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "I think it would be more useful to have the phase change message state the new phase and not the old one. Also, spell out that the electionNum is the election number.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_75d8c853",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "You aren\u0027t using this. Remove it.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_15ddd442",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "Change the isCreatureObject check to an isPlayerCreature check. We don\u0027t need them to face pets or other npcs.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_35e25004",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "Same as above, change to isPlayerCreature.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d5e67c16",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "Move this return to the end of the function.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f5e37803",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "Rename this. Calling it pItem implies that it\u0027s a pointer to an object. It\u0027s a string.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b5ff40aa",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "What are these comments for?",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_552cac4a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "This nil check is uneccesary. if searched \u003d\u003d 1 then it\u0027s obviously not nil.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f51cd815",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "desk, not term for both of these",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_15263469",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "Again, this nil check is unneeded.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d51f5c08",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "I still think @city/bestine/terminal_items:receivemsg is the appropriate message for here.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_352b3032",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElectionMenuComponents.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "I still think @city/bestine/terminal_items:receive1 is the appropriate message for here.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_150f14e3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_conv_handler.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "Fix your parenthesis so that the logic is explicitly defined. if (x and y) or (a and b).",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_351490f4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_questp_conv_handler.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "Remove all these debugging statements.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d5f8bcc6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/seans_historian_conv_handler.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "You aren\u0027t using playerID, remove it.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f5f5b8cb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/seans_historian_conv_handler.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "playerObject already is player\u0027s PlayerObject.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_950244b3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/seans_historian_conv_handler.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "you can\u0027t concat a pointer to a string.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_55ba6ce2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/tour_aryon_conv_handler.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "I think you should have an option on this screen to decline. Maybe the same one from the have_evidence screen (voting_not_ready).",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_15b4f4f0",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/tour_aryon_conv_handler.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "Each of these elseifs don\u0027t need the \u003e\u003d portion. If it wasn\u0027t \u003e\u003d 3600 then the first check would have returned true. So if \u003c 3600, elseif \u003c 14400, elseif \u003c 86400, etc. will suffice. The last one can just be an else with no check.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b568a088",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/museum_curator_conv_handler.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "I think you should first check if the bestine election is enabled and return false if it is not.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d5719c78",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/museum_curator_conv_handler.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "The already voted screen is in reference to the museum\u0027s voting for which artist to display. You should be checking BestineMuseumScreenPlay:hasAlreadyVoted(pPlayer) and not whether they have voted in the election.",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_956b2485",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/museum_curator_conv_handler.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 1,
+      "message": "Instead of having this block of code twice (one for each phase), I\u0027d suggest you move this after both of the currentPhase checks similar to the schematic_cost screen handling. That would also allow the options to still be added in the case that the museum is not enabled but the election is.\n\nThe following should work for adding it outside of the currentPhase checks:\n\nif self:talkAboutSeanTrenwell(conversingPlayer) and (screenID \u003d\u003d \"init_votephase\" or screenID \u003d\u003d \"init_buyphase\" or screenID \u003d\u003d \"hello_already_purchased\") then",
+      "revId": "6278b83061b059e53e7051396537df44dfdd7ff2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

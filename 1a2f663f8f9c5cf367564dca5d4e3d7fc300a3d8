@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_55058cc0",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/museum_curator_conv_handler.lua",
+        "patchSetId": 20
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-08T03:09:03Z",
+      "side": 0,
+      "message": "I feel like we need to handle if the election is enabled and the museum is not. I would probably check if the museum is enabled (like we are) and if false, check if the election is enabled. If the election is not enabled, return hello_no_voting like now, but if it is, return hello_already_purchased (and maybe we should rename that screen for clarity if we\u0027re expanding it\u0027s use).\n\nThey use the same dialog but the former has stopConversation \u003d \"true\" while the latter is false so you can add options to it. Of course, we then need to add an option that is always present for that screen (maybe whatever_im_leaving) for those who converse when not seeking the testimony.",
+      "revId": "1a2f663f8f9c5cf367564dca5d4e3d7fc300a3d8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
