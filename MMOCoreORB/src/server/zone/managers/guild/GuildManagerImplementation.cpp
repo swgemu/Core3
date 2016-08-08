@@ -1894,11 +1894,17 @@ void GuildManagerImplementation::sendAdminGuildInfoTo(CreatureObject* player, Gu
 
 	promptText << "Guild Leader: " << (leader == NULL ? "None" : leader->getFirstName()) << endl;
 
+	if (leader != NULL) {
+		PlayerObject* leaderGhost = leader->getPlayerObject();
+
+		promptText << "Days since guild leader's last logout: " << (leaderGhost == NULL ? "Unknown" : String::valueOf(leaderGhost->getDaysSinceLastLogout())) << endl;
+	}
+
 	Time* updateTime = guild->getNextUpdateTime();
 	promptText << "Next guild update: " << updateTime->getFormattedTime() << endl;
 
 	bool renamePending = guild->isRenamePending();
-	promptText << "Rename Pending?: " << (renamePending ? "Yes" : "No") << endl;
+	promptText << endl << "Rename Pending?: " << (renamePending ? "Yes" : "No") << endl;
 
 	if (renamePending) {
 		promptText << "Pending Name: " << guild->getPendingNewName() << " <" << guild->getPendingNewAbbrev() << ">" << endl;
@@ -1911,6 +1917,16 @@ void GuildManagerImplementation::sendAdminGuildInfoTo(CreatureObject* player, Gu
 			renamer = player->getZoneServer()->getObject(renamerID).castTo<CreatureObject*>();
 			promptText << "Renamer: " << (renamer == NULL ? "None" : renamer->getFirstName()) << endl;
 		}
+	}
+
+	bool electionActive = guild->isElectionEnabled();
+
+	promptText << endl << "Election Active?: " << (electionActive ? "Yes" : "No") << endl;
+
+	if (electionActive) {
+		byte electionState = guild->getElectionState();
+
+		promptText << "Election ends next update?: " << (electionState == GuildObject::ELECTION_SECOND_WEEK ? "Yes" : "No") << endl;
 	}
 
 	promptText << endl << "Guild Members (" << guild->getTotalMembers() << "):" << endl;

@@ -39,16 +39,27 @@ public:
 
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, 0);
 
-		box->setPromptTitle("Player Info"); //Register City
-		//box->setPromptText("@city/city:register_d");
+		box->setPromptTitle("Player Info");
 
 		Locker smodLocker(targetObject->getSkillModMutex());
 
 		SkillModList* skillModList = targetObject->getSkillModList();
 
 		StringBuffer promptText;
+		promptText << "Name: " << targetObject->getCustomObjectName().toString()  << endl;
 		promptText << "ObjectID: " << targetObject->getObjectID() << endl;
-		promptText << "SkillMods:" << endl;
+
+		if (ghost != NULL) {
+			promptText << "Online Status: ";
+
+			if(ghost->isOnline())
+				promptText << "ONLINE" << endl;
+			else {
+				promptText << "OFFLINE. Last On: " << ghost->getLastLogout()->getFormattedTime() << endl;
+			}
+		}
+
+		promptText << endl << "SkillMods:" << endl;
 		promptText << skillModList->getPrintableSkillModList() << endl;
 
 		smodLocker.release();
@@ -65,12 +76,12 @@ public:
 			totalSkillPointsWasted += skill->getSkillPointsRequired();
 		}
 
-		promptText << "Level: " << targetObject->getLevel() << endl;
+		promptText << endl << "Level: " << targetObject->getLevel() << endl;
 
 		if (ghost != NULL) {
 			promptText << "totalSkillPointsWasted = " << totalSkillPointsWasted << " skillPoints var:" << ghost->getSkillPoints() << endl;
 
-			promptText << "Ability list:" << endl;
+			promptText << endl << "Ability list:" << endl;
 
 			AbilityList* abilityList = ghost->getAbilityList();
 

@@ -67,7 +67,15 @@ public:
 
 				if (targetCreature != NULL)
 					account = targetCreature->getPlayerObject()->getAccount();
-				
+
+				if (account != NULL) {
+					Locker accLocker(account);
+					account->updateFromDatabase();
+				} else {
+					creature->sendSystemMessage("Error fetching Account Object from Player Object");
+					return GENERALERROR;
+				}
+
 			} else if(type.toLowerCase() == "-a") {
 
 				while(args.hasMoreTokens()) {
@@ -85,11 +93,8 @@ public:
 					} catch(Exception& e) {
 						
 					}
-				} else {
-					Locker accLocker(account);
-
-					account->updateFromDatabase();
 				}
+
 			}  else if(type.toLowerCase() == "-b") {
 				creature->sendSystemMessage("Coming soon");
 				return GENERALERROR;
