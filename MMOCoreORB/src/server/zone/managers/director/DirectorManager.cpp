@@ -341,6 +341,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getQuestVectorMap", getQuestVectorMap);
 	lua_register(luaEngine->getLuaState(), "createQuestVectorMap", createQuestVectorMap);
 	lua_register(luaEngine->getLuaState(), "removeQuestVectorMap", removeQuestVectorMap);
+	lua_register(luaEngine->getLuaState(), "adminPlaceStructure", adminPlaceStructure);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -3133,4 +3134,36 @@ void DirectorManager::removeQuestVectorMap(const String& keyString) {
 
 	if (questMap != NULL)
 		ObjectManager::instance()->destroyObjectFromDatabase(questMap->_getObjectID());
+}
+
+int DirectorManager::adminPlaceStructure(lua_State* L) {
+	Reference<CreatureObject*> creature = (CreatureObject*)lua_touserdata(L, -2);
+	String templateString = lua_tostring(L, -1);
+
+	ManagedReference<Zone*> zone = creature->getZone();
+
+	if (zone == NULL)
+		return 0;
+
+	if (creature->getParent() != NULL) {
+			DirectorManager::instance()->error("adminPlaceStructure - You were not outside.");
+			return 0;
+	}
+
+	int angle = creature->getDirectionAngle();
+
+	if (templateString.contains("housing_tatt_style02_med") || templateString.contains("player/city/cloning") || templateString.contains("player/city/hospital"))
+		angle -= 90; // Correct unusual default POB rotation
+
+	if (templateString.contains("guild_theater"))
+		angle -= 180; // Correct unusual default POB rotation
+
+	float x = creature->getPositionX();
+	float y = creature->getPositionY();
+	int persistenceLevel = 1;
+
+	// Create Structure
+	StructureObject* structureObject = StructureManager::instance()->placeStructure(creature, templateString, x, y, angle, persistenceLevel);
+
+	return 0;
 }

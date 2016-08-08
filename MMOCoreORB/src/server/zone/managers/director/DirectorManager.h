@@ -182,6 +182,7 @@ namespace server {
 		static int getQuestVectorMap(lua_State* L);
 		static int removeQuestVectorMap(lua_State* L);
 		static int createQuestVectorMap(lua_State* L);
+		static int adminPlaceStructure(lua_State* L);
 
 	private:
 		void setupLuaPackagePath(Lua* luaEngine);

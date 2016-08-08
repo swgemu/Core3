@@ -47,6 +47,7 @@ includeFile("themepark/nightsister/themeParkNightsister.lua")
 includeFile("tools/tools.lua")
 includeFile("tools/shuttle_dropoff.lua")
 includeFile("tools/firework_event.lua")
+includeFile("tools/place_structure_menu.lua")
 
 -- GCW
 includeFile("gcw/newsnet.lua")
