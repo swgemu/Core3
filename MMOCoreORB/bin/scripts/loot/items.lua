@@ -616,6 +616,7 @@ includeFile("items/task_reward/valarian_dagger.lua")
 includeFile("items/task_reward/zicx_bug_jar.lua")
 
 --themepark_loot sub-folder
+includeFile("items/themepark_loot/shoulder_pad_smc_vhaunda.lua")
 includeFile("items/themepark_loot/slave_collar_ns_geth.lua")
 includeFile("items/themepark_loot/heart_of_slave_ns_geth.lua")
 includeFile("items/themepark_loot/malkloc_heart_ns_kais.lua")

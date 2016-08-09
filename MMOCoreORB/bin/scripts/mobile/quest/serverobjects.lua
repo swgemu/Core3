@@ -223,6 +223,7 @@ includeFile("quest/dantooine/xaan_bandit.lua")
 includeFile("quest/dantooine/xaan_talmaron.lua")
 
 -- Dathomir
+includeFile("quest/dathomir/stormtrooper_squad_leader_quest.lua")
 includeFile("quest/dathomir/singing_mountain_clan_arch_witch_quest.lua")
 includeFile("quest/dathomir/nightsister_slave_quest.lua")
 includeFile("quest/dathomir/malkloc_quest.lua")
@@ -300,7 +301,12 @@ includeFile("quest/dathomir/theme_park_nightsister_rancor.lua")
 includeFile("quest/dathomir/theme_park_imperial_sergeant.lua")
 includeFile("quest/dathomir/theme_park_imperial_staff_corporal.lua")
 includeFile("quest/dathomir/theme_park_imperial_stealth_operative.lua")
+includeFile("quest/dathomir/theme_park_singing_mountain_clan_rancor_tamer.lua")
 includeFile("quest/dathomir/theme_park_commoner_old.lua")
+includeFile("quest/dathomir/theme_park_smc_rancor_pygmy_shando.lua")
+includeFile("quest/dathomir/theme_park_smc_rancor_pygmy_maufel.lua")
+includeFile("quest/dathomir/izaryx.lua")
+includeFile("quest/dathomir/vhaunda.lua")
 includeFile("quest/dathomir/zideera.lua")
 
 -- Endor
