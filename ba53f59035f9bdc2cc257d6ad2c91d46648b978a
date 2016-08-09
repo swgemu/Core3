@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d5a2fc99",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/smc/themeParkSmcZideera.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-09T04:30:48Z",
+      "side": 1,
+      "message": "Your Allakhazam source says 2 rangers (likely night sister).",
+      "revId": "ba53f59035f9bdc2cc257d6ad2c91d46648b978a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f59ff84e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/smc/themeParkSmcZideera.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-09T04:30:48Z",
+      "side": 1,
+      "message": "Your source says 2 tamers and 1 stalker.",
+      "revId": "ba53f59035f9bdc2cc257d6ad2c91d46648b978a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_359ed057",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/smc/themeParkSmcZideera.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-09T04:30:48Z",
+      "side": 1,
+      "message": "should be 1",
+      "revId": "ba53f59035f9bdc2cc257d6ad2c91d46648b978a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
