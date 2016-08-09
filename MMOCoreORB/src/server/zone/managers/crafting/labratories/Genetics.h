@@ -119,7 +119,7 @@ public:
 	 */
 	static float normalize(float a,bool special, bool override) {
 		if(a < 0)
-			return -100;
+			return -99;
 		if (special) {
 			return a;
 		}

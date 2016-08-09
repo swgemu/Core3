@@ -276,15 +276,15 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	effectiveness = (int)(((armorBase - (armorValue * 500)) / 50) * 5);
 
 	// Store off armor data
-	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_kinetic", spKinetic ? kineticMax : kineticMax < 0 ? -1 : effectiveness, kineticMax, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_blast", spBlast ? blastMax : blastMax < 0 ? -1 : effectiveness, blastMax, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_energy", spEnergy ? energyMax : energyMax < 0 ? -1 : effectiveness, energyMax, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_heat", spHeat ? heatMax : heatMax < 0 ? -1 :  effectiveness, heatMax, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_cold", spCold ? coldMax : coldMax < 0 ? -1 : effectiveness, coldMax, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_electric", spElectric ? electricMax : electricMax < 0 ? -1 : effectiveness, electricMax, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_acid", spAcid ? acidMax : acidMax < 0 ? -1 : effectiveness, acidMax, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_stun", spStun ? stunMax : stunMax < 0 ? -1 : effectiveness, stunMax, 0, true, ValuesMap::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_saber", spSaber ? saberMax : saberMax < 0 ? -1 : effectiveness, saberMax, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_kinetic", spKinetic ? kineticMax : kineticMax < 0 ? kineticMax : effectiveness, kineticMax, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_blast", spBlast ? blastMax : blastMax < 0 ? blastMax : effectiveness, blastMax, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_energy", spEnergy ? energyMax : energyMax < 0 ? energyMax : effectiveness, energyMax, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_heat", spHeat ? heatMax : heatMax < 0 ? heatMax :  effectiveness, heatMax, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_cold", spCold ? coldMax : coldMax < 0 ? coldMax : effectiveness, coldMax, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_electric", spElectric ? electricMax : electricMax < 0 ? electricMax : effectiveness, electricMax, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_acid", spAcid ? acidMax : acidMax < 0 ? acidMax : effectiveness, acidMax, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_stun", spStun ? stunMax : stunMax < 0 ? stunMax : effectiveness, stunMax, 0, true, ValuesMap::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists", "dna_comp_armor_saber", spSaber ? saberMax : saberMax < 0 ? saberMax : effectiveness, saberMax, 0, true, ValuesMap::OVERRIDECOMBINE);
 
 	// Store off special information
 	craftingValues->addExperimentalProperty("specials", "kineticeffectiveness", spKinetic ? 1 : 0, 1, 0, true, ValuesMap::OVERRIDECOMBINE);
@@ -397,9 +397,15 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 	int armorValue = currentFort/500;
 	float currentEffective = (int)(((currentFort - (armorValue * 500)) / 50) * 5);
 	title = craftingValues->getExperimentalPropertyTitle("resists");
+
 	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
-		if (subtitlesTitle == title) {
-			subtitle = craftingValues->getExperimentalPropertySubtitle(i);
+		subtitlesTitle = craftingValues->getExperimentalPropertySubtitlesTitle(i);
+		subtitle = craftingValues->getExperimentalPropertySubtitle(i);
+
+		float minValue = craftingValues->getMinValue(subtitle);
+
+		// one way of telling if resist is effective
+		if(( subtitlesTitle == "resists" ) && ( minValue == 0.0f) ) {
 			if (craftingValues->getMaxValue(subtitle) != craftingValues->getCurrentValue(i)) {
 				craftingValues->setCurrentValue(subtitle,currentEffective);
 			}
