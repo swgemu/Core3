@@ -424,21 +424,37 @@ public:
 	}
 	// Calculate the creatures overall level as a pet.
 	static int calculatePetLevel(GeneticComponent* pet) {
-		// reverse the values out.
-		int avgHam = (pet->getHealth() + pet->getAction() + pet->getMind()) / 3;
-		int statLevel = (DnaManager::instance()->levelForScore(DnaManager::HAM_LEVEL, avgHam) + 1) * 6;
-		int damageLevel = DnaManager::instance()->levelForScore(DnaManager::DPS_LEVEL, ((pet->getMaxDamage() + pet->getMinDamage()) / 2.0f) / pet->getSpeed()) * 10;
-		int hitLevel = (DnaManager::instance()->levelForScore(DnaManager::HIT_LEVEL, pet->getHit()) + 1) * 1;
-		int defenseLevel = hitLevel;
-		int regenerationLevel =  (DnaManager::instance()->levelForScore(DnaManager::REG_LEVEL, avgHam / 10) + 1)* 2;
-		int armorLevel = DnaManager::instance()->levelForScore(DnaManager::ARM_LEVEL, (pet->getArmor() * 500) + (( pet->getEffectiveArmor()) * 10.0)  );
-		int armorBase = DnaManager::instance()->valueForLevel(DnaManager::ARM_LEVEL, armorLevel);
-		int baseLevel = (((statLevel) + (damageLevel) + (regenerationLevel) + (hitLevel)) / 19.0) + 0.5;
-		int armorLevel2 = calculateArmorValue(pet, armorLevel, baseLevel, armorBase) * 2;
-		if (defenseLevel < baseLevel)
-			defenseLevel = baseLevel;
-		int level = round((((float)(statLevel + damageLevel + hitLevel + defenseLevel + armorLevel + regenerationLevel ))/22.0) + 0.5);
+
+		int hamLevel = round((float)( pet->getHealth() + pet->getAction() + pet->getMind() ) / 1000 * 0.73);
+		int dpsLevel = round((float)(( pet->getMaxDamage() * pet->getHit() / pet->getSpeed() ) / 10 * 0.99f));
+
+		int armorLevel = pet->getArmor() > 0 ? 10 : 0;
+
+		float kineticLevel = calculateResistLevel( pet->getKinetic(), 0.12f, 0.20f );
+		float energyLevel = calculateResistLevel( pet->getEnergy(), 0.10f, 0.12f );
+		float blastLevel = calculateResistLevel( pet->getBlast(), 0.02f, 0.04f );
+		float heatLevel = calculateResistLevel( pet->getHeat(), 0.02f, 0.10f );
+		float coldLevel = calculateResistLevel( pet->getCold(), 0.02f, 0.12f );
+		float electricityLevel = calculateResistLevel( pet->getElectrical(), 0.02f, 0.04f );
+		float acidLevel = calculateResistLevel( pet->getAcid(), 0.02f, 0.02f );
+		float stunLevel = calculateResistLevel( pet->getStun(), 0.02f, 0.02f );
+
+		float resistLevel = kineticLevel + energyLevel + blastLevel + heatLevel + coldLevel + electricityLevel + acidLevel + stunLevel;
+
+		int level = round((float)(hamLevel + dpsLevel + armorLevel + resistLevel));
 		return level;
+	}
+
+	static float calculateResistLevel( float resist, float positiveMultiplier, float negativeMultiplier ) {
+		float multiplier = positiveMultiplier;
+
+		if( resist < 0 ) {
+			multiplier = negativeMultiplier;
+			if( resist < -50.0f ) {
+				resist = -50.0f;
+			}
+		}
+		return resist * multiplier;
 	}
 
 	// Calculate the input creature levels
