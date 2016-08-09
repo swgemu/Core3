@@ -213,8 +213,11 @@ public:
 		return value > max ? max : value;
 	}
 
+	// Going by Mirrl's BE guide that dna template stats are 60-85% of original dna
+	// we need to convert the range of the stat values to that required in the SharedLabratory calculation
+	// stat range converted from 1-900 to 300-1800
 	static uint32 initialValue(float maxValue) {
-		return round(maxValue * ((maxValue/(float)1000)+0.15));
+		return round(((float)(maxValue - 1) / (900 - 1)) * (1800 - 300) + 300);
 	}
 
 	static float determineMinResistance(float input) {
