@@ -24,6 +24,7 @@ philosopher = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_philosopher.iff"},
@@ -39,6 +40,7 @@ philosopher = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	reactionStf = "@npc_reaction/fancy",
+	conversationTemplate = "philosopherConvoTemplate",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

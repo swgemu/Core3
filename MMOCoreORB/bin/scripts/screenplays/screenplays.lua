@@ -318,6 +318,7 @@ includeFile("tasks/yavin4/ruwan_tokai.lua")
 includeFile("tasks/misc/heralds.lua")
 includeFile("tasks/misc/theater_manager.lua")
 includeFile("tasks/misc/conversations/kidnappedNobleConvoHandler.lua")
+includeFile("tasks/misc/conversations/philosopher_conv_handler.lua")
 
 -- Caves
 includeFile("caves/corellia_afarathu_cave.lua")
