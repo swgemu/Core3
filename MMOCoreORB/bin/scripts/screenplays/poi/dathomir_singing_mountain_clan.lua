@@ -138,7 +138,8 @@ function SingingMountainClanScreenPlay:spawnMobiles()
 
 	spawnMobile("dathomir", "aujante_klee", 1800, 3.0, 3.0, -5.2 ,180, 2665884)
 	spawnMobile("dathomir", "herald_dathomir_azzenaj", 900, 533.7, 228, 4238.5, 130, 0)
-	spawnMobile("dathomir", "izaryx", 900, -12, 2.0, -4, 240, 2665882)
-	spawnMobile("dathomir", "vhaunda", 900, -22.3, 2.0, 5.05, 0, 2665881)
 	spawnMobile("dathomir", "vurlene", 900, -12, 3.0, 9.5, 60, 2665880)
+	--next to Izaryx, similar to how Nym is flanked by 2 kusak guardians non-attackable 'deco' objects...
+	spawnMobile("dathomir", "theme_park_smc_rancor_pygmy_shando", 60, -12.6, 2.0, -2.0, -125, 2665882)
+	spawnMobile("dathomir", "theme_park_smc_rancor_pygmy_maufel", 60, -11.5, 2.0, -5.7, -99, 2665882)
 end
