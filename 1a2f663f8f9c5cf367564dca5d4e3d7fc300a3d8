@@ -16,6 +16,23 @@
       "revId": "1a2f663f8f9c5cf367564dca5d4e3d7fc300a3d8",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b573c014",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/museum_curator_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-10T02:33:11Z",
+      "side": 0,
+      "message": "See my comment on patch set 20. We need to handle more scenarios (museum enabled and election not enabled. museum not enabled and election enabled. neither enabled. both enabled.)",
+      "revId": "1a2f663f8f9c5cf367564dca5d4e3d7fc300a3d8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }

@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_3511f0ac",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/tour_aryon_conv.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-10T02:33:11Z",
+      "side": 1,
+      "message": "This should be false.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d56c3c39",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-10T02:33:11Z",
+      "side": 1,
+      "message": "This should be after the two destroy calls.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_55126cb5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/bestine_election_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-10T02:33:11Z",
+      "side": 1,
+      "message": "This is still not how I want it. Make it like the following:\n\nif (npcID \u003d\u003d \"likyna\" and BestineElectionScreenPlay:isOnNegativeQuest(pPlayer, \"Victor\")) or (npcID \u003d\u003d \"siyan\" and BestineElectionScreenPlay:isOnNegativeQuest(pPlayer, \"Sean\")) then",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f5229800",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/sean_contact_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-10T02:33:11Z",
+      "side": 1,
+      "message": "That should be PlayerObject(pPlayerObj):removeWaypoint(wayID, true)",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_55602c35",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/seans_historian_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-10T02:33:11Z",
+      "side": 1,
+      "message": "This else is redundant since the default return below is the same.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_75652844",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/seans_historian_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-10T02:33:11Z",
+      "side": 1,
+      "message": "PlayerObject(pPlayerObj):removeWaypoint(wayID, true)",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_55790cfb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/tour_aryon_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-10T02:33:11Z",
+      "side": 1,
+      "message": "I still think you should add an option on this screen to decline. The same one from the have_evidence screen (s_ccae64dd that leads to voting_not_ready) looks appropriate.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_9576c405",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/museum_curator_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-10T02:33:11Z",
+      "side": 1,
+      "message": "Without checking the screenID as I suggested in my previous comment, this will add the option to every screen as long as talkAboutSeanTrenwell returns true. I think it should just be added to the 3 start screens that I mentioned before.\n\nAlso, you can keep the elseif chain as you had it before and just add this to it.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
