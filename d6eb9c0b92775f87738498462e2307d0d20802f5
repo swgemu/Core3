@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_7509a894",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/themepark_reward/polearm_smc_vhaunda.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-10T00:42:41Z",
+      "side": 1,
+      "message": "Why are you setting the min and max to exactly these values? The allakhazam guide author got one with 42-154 damage.",
+      "revId": "d6eb9c0b92775f87738498462e2307d0d20802f5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_15fe346c",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/themepark_reward/polearm_smc_vhaunda.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-10T00:42:41Z",
+      "side": 1,
+      "message": "The min for attackspeed should be higher than the max (since lower is better).",
+      "revId": "d6eb9c0b92775f87738498462e2307d0d20802f5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_35033075",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/themepark_reward/polearm_smc_vhaunda.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-10T00:42:41Z",
+      "side": 1,
+      "message": "The allakhazam author\u0027s reward had -24 to all range mods",
+      "revId": "d6eb9c0b92775f87738498462e2307d0d20802f5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d5f75c8b",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/themepark_reward/polearm_smc_vhaunda.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-10T00:42:41Z",
+      "side": 1,
+      "message": "Again, higher number should be first for these.",
+      "revId": "d6eb9c0b92775f87738498462e2307d0d20802f5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b5d740ed",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/dathomir_singing_mountain_clan.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-10T00:42:41Z",
+      "side": 1,
+      "message": "Instead of spawning these in this screenplay, I\u0027d rather you add them to your new one. Look at how the rebel theme park spawns r2-d2 to see how to do it (hint: use npcNumber \u003d -1).",
+      "revId": "d6eb9c0b92775f87738498462e2307d0d20802f5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_95f1e497",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/smc/themeParkSmcVhaundaIzaryx.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-10T00:42:41Z",
+      "side": 1,
+      "message": "This mission needs to require the player be a rebel in order to undertake it. Since it\u0027s just this missions that needs that requirement, you can add faction \u003d FACTIONREBEL, here and it will only check faction for this mission.",
+      "revId": "d6eb9c0b92775f87738498462e2307d0d20802f5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_5504ac7d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/smc/themeParkSmcVhaundaIzaryx.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-10T00:42:41Z",
+      "side": 1,
+      "message": "You don\u0027t need to create a new template for this target. Just use the standard smc arch witch.",
+      "revId": "d6eb9c0b92775f87738498462e2307d0d20802f5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f5f4d888",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/smc/themeParkSmcVhaundaIzaryx.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-10T00:42:41Z",
+      "side": 1,
+      "message": "The allakhazam guide said 2 tamers and 1 sentry.",
+      "revId": "d6eb9c0b92775f87738498462e2307d0d20802f5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
