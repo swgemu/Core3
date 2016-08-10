@@ -27,7 +27,7 @@ vhaunda_missions =
 		missionType = "assassinate",
 		primarySpawns =
 		{
-			{ npcTemplate = "theme_park_singing_mountain_clan_arch_witch", planetName = "dathomir", npcName = "Peila" }
+			{ npcTemplate = "singing_mountain_clan_arch_witch", planetName = "dathomir", npcName = "Peila" }
 		},
 		secondarySpawns =
 		{

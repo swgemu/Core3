@@ -46,7 +46,7 @@ local XpSenses =
 	{"political", 3},
 	{"slicing",  3},
 	{"merchant",  4},
-	{"resource_harvesting_inorganic",  5},
+	{"resource_harvesting_inorganic",  10},
 	{"imagedesigner", 7},
 	{"scout",  8},
 	{"creaturehandler",  9},
