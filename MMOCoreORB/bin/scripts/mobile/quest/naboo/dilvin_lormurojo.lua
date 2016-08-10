@@ -23,15 +23,14 @@ dilvin_lormurojo = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_noble_human_male_03.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "dilvin_lormurojo_mission_giver_convotemplate",
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(dilvin_lormurojo, "dilvin_lormurojo")
