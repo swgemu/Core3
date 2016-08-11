@@ -1632,7 +1632,7 @@ class PlayerObject extends IntangibleObject {
 
 	//Used when character is deleted
 	private native void removeAllFriends();
-	private native void deleteAllPersistentMessages();
+	public native void deleteAllPersistentMessages();
 	private native void deleteAllWaypoints();
 
 	@read
