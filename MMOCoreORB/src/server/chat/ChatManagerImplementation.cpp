@@ -1801,6 +1801,23 @@ void ChatManagerImplementation::deletePersistentMessage(CreatureObject* player, 
 	ObjectManager::instance()->destroyObjectFromDatabase(messageObjectID);
 }
 
+void ChatManagerImplementation::deleteAllPersistentMessages(CreatureObject* player) {
+	Locker _locker(player);
+
+	PlayerObject* ghost = player->getPlayerObject();
+
+	SortedVector<uint64>* messages = ghost->getPersistentMessages();
+
+	for (int i = messages->size(); i >= 0; --i) {
+		uint64 messageObjectID = messages->get(i);
+		ObjectManager::instance()->destroyObjectFromDatabase(messageObjectID);
+	}
+
+	messages->removeAll();
+
+	_locker.release();
+}
+
 UnicodeString ChatManagerImplementation::formatMessage(const UnicodeString& message) {
 	UnicodeString text = message;
 

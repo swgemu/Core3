@@ -6,6 +6,7 @@
 #define EMPTYMAILTARGETCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/chat/ChatManager.h"
 
 class EmptyMailTargetCommand : public QueueCommand {
 public:
@@ -22,6 +23,23 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		ManagedReference<CreatureObject* > targetCreature = server->getZoneServer()->getObject(target).castTo<CreatureObject*>();
+		StringTokenizer args(arguments.toString());
+		String firstName;
+
+		if (args.hasMoreTokens()) {
+			args.getStringToken(firstName);
+			targetCreature = server->getZoneServer()->getPlayerManager()->getPlayer(firstName);
+		}
+
+		if (targetCreature == NULL || !targetCreature->isPlayerCreature())
+			return INVALIDTARGET;
+
+		Locker clocker(targetCreature, creature);
+
+		ChatManager* chatManager = server->getZoneServer()->getChatManager();
+		chatManager->deleteAllPersistentMessages(targetCreature);
 
 		return SUCCESS;
 	}
