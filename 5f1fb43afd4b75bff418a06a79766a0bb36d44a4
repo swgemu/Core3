@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_75c1a8e3",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1813,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-11T09:26:02Z",
+      "side": 1,
+      "message": "You need to either invert the direction this loop traverses the vector or not drop inside the loop. Since you are deleting all, I would probably just not drop inside the loop and then removeAll afterwards.",
+      "revId": "5f1fb43afd4b75bff418a06a79766a0bb36d44a4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_15b6348b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/EmptyMailTargetCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-11T09:26:02Z",
+      "side": 1,
+      "message": "Locker clocker(targetCreature, creature);",
+      "revId": "5f1fb43afd4b75bff418a06a79766a0bb36d44a4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_35bb3074",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatDeleteAllPersistentMessagesCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-11T09:26:02Z",
+      "side": 1,
+      "message": "Don\u0027t blindly trust targetID as someone can craft custom packets to send a different id in an attempt to wipe someone else\u0027s mail. Verify that the target is the owner of the client session that sent this packet. Log any occurrence of a mismatch.",
+      "revId": "5f1fb43afd4b75bff418a06a79766a0bb36d44a4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
