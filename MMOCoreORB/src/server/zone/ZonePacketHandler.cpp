@@ -73,6 +73,7 @@
 #include "packets/chat/ChatPersistentMessageToServerCallback.h"
 #include "packets/chat/ChatRequestPersistentMessageCallback.h"
 #include "packets/chat/ChatDeletePersistentMessageCallback.h"
+#include "packets/chat/ChatDeleteAllPersistentMessagesCallback.h"
 #include "packets/chat/ChatEnterRoomByIdCallback.h"
 #include "packets/chat/ChatCreateRoomCallback.h"
 #include "packets/chat/ChatDestroyRoomCallback.h"
@@ -170,7 +171,7 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<ChatRemoveModeratorFromRoomCallback>(0x8A3F8E04);
 	messageCallbackFactory.registerObject<ChatBanFromRoomCallback>(0xD9FA0194);
 	messageCallbackFactory.registerObject<ChatUnbanFromRoomCallback>(0x4C8F94A9);
-
+	messageCallbackFactory.registerObject<ChatDeleteAllPersistentMessagesCallback>(0x8B1E8E72);
 }
 
 void ZonePacketHandler::registerObjectControllerMessages() {
