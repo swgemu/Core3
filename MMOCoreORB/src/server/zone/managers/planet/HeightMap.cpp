@@ -106,16 +106,16 @@ float HeightMap::getHeightFrom(FileInputStream* file, float x, float y) {
 	if (x < -7680 || x > 7680 || y < -7680 || y > 7680)
 		return 0;
 
-	byte buffer[sizeof(float)];
+	float buffer;
 
 	int tableX = (int) x + 7680;
 	int tableY = (int) y + 7680;
 
 	uint32 offset = ((7680 * 2 + 1) * tableX + tableY) * sizeof(float);
 
-	file->read(buffer, offset, sizeof(float));
+	file->read(reinterpret_cast<byte*>(&buffer), offset, sizeof(float));
 
-	return *((float*) buffer);
+	return buffer;
 }
 
 HeightMapPlane* HeightMap::streamPlaneAt(float x, float y) {
