@@ -32,6 +32,7 @@ public:
 		// Rangers can remove their own conceal buff by targeting nothing.
 		if(targetPlayer == NULL && creature->hasBuff(crc)) {
 			creature->removeBuff(crc);
+			creature->sendSystemMessage("@skl_use:sys_conceal_remove"); // You remove the camouflage. You are no longer concealed.
 			return SUCCESS;
 		}
 
@@ -40,9 +41,17 @@ public:
 			return INVALIDTARGET;
 		}
 
+		if (targetPlayer == creature && (creature->isProne() || creature->isMeditating() || creature->isSwimming())) {
+			creature->sendSystemMessage("@skl_use:sys_conceal_cant"); // You can't conceal yourself in your current posture.
+			return GENERALERROR;
+		}
+
 		Locker clocker(targetPlayer, creature);
 
 		if(!checkDistance(creature, targetPlayer, 10.0f)) {
+			StringIdChatParameter tooFar("cmd_err", "target_range_prose"); // Your target is too far away to %TO.
+			tooFar.setTO("apply the camouflage");
+			creature->sendSystemMessage(tooFar);
 			return GENERALERROR;
 		}
 
@@ -107,6 +116,62 @@ public:
 				return GENERALERROR;
 			}
 
+			if (camoKitData->getClientTemplateFileName() == "object/tangible/scout/camokit/shared_camokit_rori.iff" || camoKitData->getClientTemplateFileName() == "object/tangible/scout/camokit/shared_camokit_talus.iff") {
+				if (!creature->hasSkill("outdoors_ranger_movement_02") && zoneName == camoKitData->getEffectiveZone()) {
+					if (targetPlayer == creature) {
+						creature->sendSystemMessage("@skl_use:sys_conceal_noskill"); // You don't have the proper skill required to conceal yourself.
+						return GENERALERROR;
+					} else {
+						StringIdChatParameter param("@cmd_err:ability_prose"); // You do not have sufficient abilities to %TO.
+						param.setTO("Conceal players on this planet");
+						creature->sendSystemMessage(param);
+						return GENERALERROR;
+					}
+				}
+			}
+
+			if (camoKitData->getClientTemplateFileName() == "object/tangible/scout/camokit/shared_camokit_dantooine.iff" || camoKitData->getClientTemplateFileName() == "object/tangible/scout/camokit/shared_camokit_yavin.iff") {
+				if (!creature->hasSkill("outdoors_ranger_movement_03") && zoneName == camoKitData->getEffectiveZone()) {
+					if (targetPlayer == creature) {
+						creature->sendSystemMessage("@skl_use:sys_conceal_noskill"); // You don't have the proper skill required to conceal yourself.
+						return GENERALERROR;
+					} else {
+						StringIdChatParameter param("@cmd_err:ability_prose"); // You do not have sufficient abilities to %TO.
+						param.setTO("Conceal players on this planet");
+						creature->sendSystemMessage(param);
+						return GENERALERROR;
+					}
+				}
+			}
+
+			if (camoKitData->getClientTemplateFileName() == "object/tangible/scout/camokit/shared_camokit_endor.iff" || camoKitData->getClientTemplateFileName() == "object/tangible/scout/camokit/shared_camokit_lok.iff") {
+				if (!creature->hasSkill("outdoors_ranger_movement_04") && zoneName == camoKitData->getEffectiveZone()) {
+					if (targetPlayer == creature) {
+						creature->sendSystemMessage("@skl_use:sys_conceal_noskill"); // You don't have the proper skill required to conceal yourself.
+						return GENERALERROR;
+					} else {
+						StringIdChatParameter param("@cmd_err:ability_prose"); // You do not have sufficient abilities to %TO.
+						param.setTO("Conceal players on this planet");
+						creature->sendSystemMessage(param);
+						return GENERALERROR;
+					}
+				}
+			}
+
+			if (camoKitData->getClientTemplateFileName() == "object/tangible/scout/camokit/shared_camokit_dathomir.iff") {
+				if (!creature->hasSkill("outdoors_ranger_master") && zoneName == camoKitData->getEffectiveZone()) {
+					if (targetPlayer == creature) {
+						creature->sendSystemMessage("@skl_use:sys_conceal_noskill"); // You don't have the proper skill required to conceal yourself.
+						return GENERALERROR;
+					} else {
+						StringIdChatParameter param("@cmd_err:ability_prose"); // You do not have sufficient abilities to %TO.
+						param.setTO("Conceal players on this planet");
+						creature->sendSystemMessage(param);
+						return GENERALERROR;
+					}
+				}
+			}
+
 			if(zoneName == camoKitData->getEffectiveZone()
 					&& item->getUseCount() >= 1) {
 
@@ -125,7 +190,7 @@ public:
 
 		int camoMod = creature->getSkillMod("camouflage");
 		int cdReduction = ((float)(camoMod / 100.0f)) * 45;
-		int duration = 60 + (((float)(camoMod / 100.0f)) * 200);
+		int duration = 60 + (((float)(camoMod / 100.0f)) * 1440);
 
 
 		ManagedReference<ConcealBuff*> buff = new ConcealBuff(targetPlayer, creature, crc, duration);
