@@ -39,11 +39,9 @@ public:
 		}
 
 		ManagedReference<CreatureObject*> target = targ.get();
-		if (target == NULL)
-			return;
-
 		ManagedReference<CreatureObject*> creature = creo.get();
-		if (creature == NULL)
+
+		if (target == NULL || creature == NULL)
 			return;
 
 		Locker locker(target);
@@ -65,9 +63,8 @@ public:
 			return;
 
 		if (maskScent) {
-			StringIdChatParameter success("skl_use", "sys_scentmask_success");
+			StringIdChatParameter success("skl_use", "sys_scentmask_success"); // Due to your scent mask, a %TT ignores you.
 			success.setTT(target->getObjectID());
-
 			creature->sendSystemMessage(success);
 		}
 
@@ -80,19 +77,22 @@ public:
 			else {
 				ConcealBuff* buff = cast<ConcealBuff*>(creature->getBuff(crc));
 				if (buff != NULL) {
-					clocker.release();
-					locker.release();
-
 					ManagedReference<CreatureObject*> buffGiver = buff->getBuffGiver();
 					if (buffGiver != NULL) {
 						Locker buffGiverlocker(buffGiver);
-						if (buffGiver->hasSkill("outdoors_ranger_novice")) {
+						uint64 rangertarget = buffGiver->getTargetID();
+						uint64 creatureobj = creature->getObjectID();
+						//a BAND-AID FIX THAT *WORKED* BUT NOT SURE EXACTLY HOW/WHERE TO FIX IT ALL THE WAY YET...
+						//TRIED removePendingTask, TRIED removeBuff, TRIED adding buffTaker to 'ConcealBuff.idl'
+							//TRIED buffGiverlocker.release, TRIED everything i can think of
+						if (buffGiver->hasSkill("outdoors_ranger_novice") && rangertarget != creatureobj) {
 							playerManager->awardExperience(buffGiver, "scout", (target->getLevel() * 2), true);
 						}
 					}
+					clocker.release();
+					locker.release();
 				}
 			}
-
 		}
 	}
 };
