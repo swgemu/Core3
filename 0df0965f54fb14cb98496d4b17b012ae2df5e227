@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_357250e6",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatDeleteAllPersistentMessagesCallback.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-14T04:06:09Z",
+      "side": 1,
+      "message": "Locker locker(player);",
+      "revId": "0df0965f54fb14cb98496d4b17b012ae2df5e227",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
