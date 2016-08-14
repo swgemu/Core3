@@ -65,7 +65,7 @@ class PlanetManager extends ManagedService implements Logger {
 	public static final int SHUTTLEPORT = 0;
 	public static final int STARPORT = 1;
 
-	protected WeatherManager weatherManager;
+	protected transient WeatherManager weatherManager;
 
 	protected transient GCWManager gcwManager;
 

@@ -131,23 +131,23 @@ class ZoneServer extends ManagedService implements Logger {
 	@local
 	@dirty
 	public native ZoneClientSession createConnection(Socket sock, @dereferenced SocketAddress addr);
-	
+
 	private native void loadGalaxyName();
-	
+
 	public native void initialize();
-	
+
 	public native void shutdown();
 
 	public native void startManagers();
-	
+
 	public native void startZones();
 
 	public native void stopManagers();
-	
+
 	public native void start(int p, int mconn = 10);
-	
+
 	public native void stop();
-	
+
 	public native void timedShutdown(int minutes);
 
 	@local
