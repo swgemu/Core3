@@ -5,21 +5,14 @@
 #include "ServerCore.h"
 
 #include "db/ServerDatabase.h"
-
 #include "db/MantisDatabase.h"
 
 #include "server/chat/ChatManager.h"
-
 #include "server/login/LoginServer.h"
-
 #include "features/Features.h"
-
 #include "ping/PingServer.h"
-
 #include "status/StatusServer.h"
-
 #include "web/WebServer.h"
-
 #include "server/zone/ZoneServer.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
@@ -28,6 +21,8 @@
 #include "server/zone/managers/director/DirectorManager.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
+
+#include "engine/orb/db/CommitMasterTransactionThread.h"
 
 ManagedReference<ZoneServer*> ServerCore::zoneServerRef = NULL;
 SortedVector<String> ServerCore::arguments;
@@ -163,7 +158,7 @@ void ServerCore::initialize() {
 			int statusAllowedConnections =
 					configManager->getStatusAllowedConnections();
 
-			statusServer->start(statusPort);
+			statusServer->start(statusPort, statusAllowedConnections);
 		}
 
 		if (webServer != NULL) {
@@ -195,11 +190,11 @@ void ServerCore::initialize() {
 
 		info("initialized", true);
 		
-		if(arguments.contains("playercleanup") && zoneServer != NULL){
+		if (arguments.contains("playercleanup") && zoneServer != NULL) {
 			zoneServer->getPlayerManager()->cleanupCharacters();
 		}
 
-		if(arguments.contains("playercleanupstats") && zoneServer != NULL){
+		if (arguments.contains("playercleanupstats") && zoneServer != NULL) {
 			zoneServer->getPlayerManager()->getCleanupCharacterCount();
 		}
 		
@@ -219,47 +214,68 @@ void ServerCore::run() {
 }
 
 void ServerCore::shutdown() {
-	info("shutting down server..");
+	info("shutting down server..", true);
 
+	ObjectManager::instance()->cancelDeleteCharactersTask();
 	ObjectManager::instance()->cancelUpdateModifiedObjectsTask();
-	ObjectDatabaseManager::instance()->checkpoint();
-
-	info("database checkpoint done", true);
-
-	if (statusServer != NULL) {
-		statusServer->stop();
-
-		//delete statusServer;
-		statusServer = NULL;
-	}
-
-	if (webServer != NULL) {
-		webServer->stop();
-
-		webServer = NULL;
-	}
 
 	ZoneServer* zoneServer = zoneServerRef.get();
 
 	if (zoneServer != NULL) {
-		zoneServer->stop();
-		//zoneServer->finalize();
+		zoneServer->setServerStateLocked();
 
-		zoneServer = NULL;
+		Thread::sleep(2000);
+
+		PlayerManager* playerManager = zoneServer->getPlayerManager();
+
+		playerManager->disconnectAllPlayers();
 	}
 
 	if (loginServer != NULL) {
 		loginServer->stop();
-
-		//loginServer = NULL;
+		loginServer = NULL;
 	}
 
 	if (pingServer != NULL) {
 		pingServer->stop();
-
-		//delete pingServer;
+		delete pingServer;
 		pingServer = NULL;
 	}
+
+	if (webServer != NULL) {
+		webServer->stop();
+		webServer = NULL;
+	}
+
+	if (statusServer != NULL) {
+		statusServer->stop();
+		delete statusServer;
+		statusServer = NULL;
+	}
+
+	Thread::sleep(5000);
+
+	ObjectManager::instance()->createBackup();
+
+	while (ObjectManager::instance()->isObjectUpdateInProcess())
+		Thread::sleep(500);
+
+	ObjectManager::instance()->cancelUpdateModifiedObjectsTask();
+
+	info("database backup done", true);
+
+	ObjectManager::instance()->stopUpdateModifiedObjectsThreads();
+	CommitMasterTransactionThread::instance()->cancel();
+
+	Core::getTaskManager()->shutdown();
+
+	if (zoneServer != NULL) {
+		zoneServer->stop();
+		zoneServer = NULL;
+	}
+
+	orb = NULL;
+	configManager = NULL;
 
 	if (features != NULL) {
 		delete features;
@@ -276,11 +292,7 @@ void ServerCore::shutdown() {
 		mantisDatabase = NULL;
 	}
 
-	//zoneServerRef = NULL;
-
-	info("server closed");
-
-	//exit(1);
+	info("server closed", true);
 }
 
 void ServerCore::handleCommands() {
@@ -360,8 +372,7 @@ void ServerCore::handleCommands() {
 				//ObjectDatabaseManager::instance()->checkpoint();
 			} else if (command == "help") {
 				System::out << "available commands:\n";
-				System::out
-						<< "\texit, logQuadTree, info, icap, dcap, fixQueue, crash.\n";
+				System::out << "\texit, logQuadTree, info, lock, unlock, icap, dcap, fixQueue, save, chars, lookupcrc, rev, broadcast, shutdown.\n";
 			} else if (command == "chars") {
 				uint32 num = 0;
 

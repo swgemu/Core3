@@ -26,6 +26,7 @@
 #include "conf/ConfigManager.h"
 #include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
 #include "server/zone/objects/tangible/deed/vetharvester/VetHarvesterDeed.h"
+#include "engine/orb/db/UpdateModifiedObjectsThread.h"
 
 using namespace engine::db;
 
@@ -1063,9 +1064,23 @@ void ObjectManager::onCommitData() {
 	}
 
 	//Spawn the delete characters task.
-	if (!deleteCharactersTask->isScheduled()) {
+	if (deleteCharactersTask != NULL && !deleteCharactersTask->isScheduled()) {
 		deleteCharactersTask->updateDeletedCharacters();
 		int mins = ConfigManager::instance()->getPurgeDeletedCharacters();
 		deleteCharactersTask->schedule(mins * 60 * 1000);
+	}
+}
+
+void ObjectManager::cancelDeleteCharactersTask() {
+	if (deleteCharactersTask->isScheduled()) {
+		deleteCharactersTask->cancel();
+	}
+
+	deleteCharactersTask = NULL;
+}
+
+void ObjectManager::stopUpdateModifiedObjectsThreads() {
+	for (int i = updateModifiedObjectsThreads.size() - 1; i >= 0; --i) {
+		updateModifiedObjectsThreads.get(i)->stopWork();
 	}
 }
