@@ -205,7 +205,7 @@ villageChiefEngineerPhase4ConvoTemplate:addScreen(intro);
 
 quite_alright = ConvoScreen:new {
 	id = "quite_alright",
-	leftDialog = "@conversation/fs_phase4_chief_engineer:s_df4917e", -- "That's quite alright. Okay, first I need to... something. Maybe I'll start... no no. Obviously. Well. Something."
+	leftDialog = "@conversation/fs_phase4_chief_engineer:s_caa53683", -- "That's quite alright. Okay, first I need to... something. Maybe I'll start... no no. Obviously. Well. Something."
 	stopConversation = "true",
 	options = {}
 }
