@@ -11,6 +11,7 @@
 #include "engine/engine.h"
 
 #include "engine/util/ObjectFactory.h"
+#include "system/util/SynchronizedVectorMap.h"
 
 #include "templates/SharedObjectTemplate.h"
 #include "templates/footprint/StructureFootprint.h"
@@ -45,7 +46,7 @@ class TemplateManager : public Singleton<TemplateManager>, public Logger, public
 
 	PlanetMapCategoryList planetMapCategoryList;
 
-	VectorMap<String, Reference<StructureFootprint*> > structureFootprints;
+	SynchronizedVectorMap<String, Reference<StructureFootprint*> > structureFootprints;
 
 	VectorMap<String, Reference<SlotId*> > slotDefinitions;
 	VectorMap<String, Reference<SlotDescriptor*> > slotDescriptors;

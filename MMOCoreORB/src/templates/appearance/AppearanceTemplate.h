@@ -9,9 +9,8 @@
 #define APPEARANCETEMPLATE_H_
 
 #include "engine/engine.h"
-#include "templates/IffTemplate.h"
 
-class AppearanceTemplate/* : public IffTemplate*/ {
+class AppearanceTemplate : public Object {
 public:
 	virtual void readObject(IffStream* iffStream) {
 		iffStream->openForm('APPR');
@@ -22,8 +21,6 @@ public:
 	virtual ~AppearanceTemplate() {
 
 	}
-
-	//void readObject(IffStream* templateData) = 0;
 
 	virtual AppearanceTemplate* getFirstMesh() {
 		return NULL;
