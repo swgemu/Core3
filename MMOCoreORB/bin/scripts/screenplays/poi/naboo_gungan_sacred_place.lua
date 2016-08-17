@@ -21,7 +21,6 @@ function NabooGunganSacredPlaceScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "gungan_guard", 300,-1991,4.8,-5425.4,-111,0)
 
 	spawnMobile("naboo", "gungan_general", 360,-1953.7,8.3,-5453.6,157,0)
-	spawnMobile("naboo", "gungan_guard", 300,-1955.9,5.1,-5458.9,157,0)
 	spawnMobile("naboo", "gungan_guard", 300,-1948.4,5.5,-5456.4,157,0)
 
 	spawnMobile("naboo", "gungan_boss", 360,-2031.2,10,-5419.6,174,0)
