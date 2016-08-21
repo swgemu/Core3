@@ -33,10 +33,15 @@ public:
 
 		if (creature != player) {
 			info("Player " + player->getDisplayedName() + " attempted to erase all persistent messages for player " + creature->getDisplayedName());
+			StringIdChatParameter emptyFail("ui_pm", "delete_all_mail_fail"); // Unable to empty the mailbox of %TT.
+			emptyFail.setTT(creature->getDisplayedName());
+			player->sendSystemMessage(emptyFail);
 			return;
 		}
 
 		PlayerObject* ghost = player->getPlayerObject();
+		StringIdChatParameter emptyPass("ui_pm", "delete_all_mail_success"); //	You have successfully emptied the mailbox of %TT.
+		emptyPass.setTT(player->getDisplayedName());
 
 		if (ghost == NULL)
 			return;
@@ -44,6 +49,7 @@ public:
 		Locker locker(player);
 
 		ghost->deleteAllPersistentMessages();
+		player->sendSystemMessage(emptyPass);
 	}
 
 };

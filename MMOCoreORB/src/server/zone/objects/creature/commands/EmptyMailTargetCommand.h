@@ -24,7 +24,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<CreatureObject* > targetCreature = server->getZoneServer()->getObject(target).castTo<CreatureObject*>();
+		ManagedReference<CreatureObject* > targetCreature = server->getZoneServer()->getObject(creature->getTargetID()).castTo<CreatureObject*>();
 		StringTokenizer args(arguments.toString());
 		String firstName;
 
@@ -33,17 +33,29 @@ public:
 			targetCreature = server->getZoneServer()->getPlayerManager()->getPlayer(firstName);
 		}
 
-		if (targetCreature == NULL || !targetCreature->isPlayerCreature())
+		if (targetCreature == NULL || !targetCreature->isPlayerCreature()) {
+			creature->sendSystemMessage("@player/player_utility:invalid_target"); // "Target for this command is invalid."
 			return INVALIDTARGET;
+		}
 
 		PlayerObject* ghost = targetCreature->getPlayerObject();
 
 		if (ghost == NULL)
 			return GENERALERROR;
 
+		uint64 selfID = creature->getObjectID();
+		if (targetCreature->getObjectID() == selfID) {
+			creature->sendSystemMessage("Please use the /emptyMail command to empty your own mailbox.");
+			return GENERALERROR;
+		}
+
+		StringIdChatParameter emptyPass("ui_pm", "delete_all_mail_success"); // "You have successfully emptied the mailbox of %TT."
+		emptyPass.setTT(targetCreature->getDisplayedName());
+
 		Locker clocker(targetCreature, creature);
 
 		ghost->deleteAllPersistentMessages();
+		creature->sendSystemMessage(emptyPass);
 
 		return SUCCESS;
 	}
