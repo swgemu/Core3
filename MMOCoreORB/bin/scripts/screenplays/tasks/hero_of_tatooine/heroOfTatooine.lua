@@ -444,6 +444,7 @@ function HeroOfTatooineScreenPlay:handleSuiImplication(pPlayer, pSui, eventIndex
 		else
 			spatialChat(pBountyHunter, "@quest/hero_of_tatooine/intellect_liar:bh_lose")
 			writeData(player:getObjectID() .. ":hero_of_tat:failedIntellect", mobId)
+			createEvent(10 * 1000, "HeroOfTatooineScreenPlay", "doIntellectSpawn", pBountyHunter, "")
 		end
 	end)
 end
