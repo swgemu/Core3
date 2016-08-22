@@ -32,8 +32,10 @@ function heroOfTatBountyHunterConvoHandler:getInitialScreen(pPlayer, pNpc, pConv
 			return convoTemplate:getScreen("already_failed")
 		elseif (player:hasScreenPlayState(1, "hero_of_tatooine_intellect")) then
 			return convoTemplate:getScreen("intro_hasquest")
-		else
+		elseif (player:hasScreenPlayState(2, "hero_of_tatooine")) then
 			return convoTemplate:getScreen("intro")
+		else 
+			return convoTemplate:getScreen("intro_no_hermit")
 		end
 	end)
 end
