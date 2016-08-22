@@ -5,6 +5,14 @@ heroOfTatBountyHunterConvoTemplate = ConvoTemplate:new {
 	screens = {}
 }
 
+intro_no_hermit = ConvoScreen:new {
+	id = "intro_no_hermit",
+	leftDialog = "@conversation/quest_hero_of_tatooine_bounty_hunter:s_3769e5f8", -- 	I don't have time to talk right now. Sorry.
+	stopConversation = "true",
+	options = {}
+}
+heroOfTatBountyHunterConvoTemplate:addScreen(intro_no_hermit);
+
 intro = ConvoScreen:new {
 	id = "intro",
 	leftDialog = "@conversation/quest_hero_of_tatooine_bounty_hunter:s_bd2c41cb", -- You there. Do you know any of these smugglers here?
