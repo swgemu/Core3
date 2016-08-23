@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_78799d92",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooine.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-08-23T23:59:11Z",
+      "side": 1,
+      "message": "Evidence shows that the BH didn\u0027t despawn after a failure.",
+      "revId": "af3cafb632ec4aba3101dc9fa165a2e0f3cad891",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
