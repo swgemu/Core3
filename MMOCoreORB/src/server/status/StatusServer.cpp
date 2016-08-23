@@ -94,7 +94,7 @@ bool StatusServer::testZone() {
 	if (zoneServer == NULL)
 		return false;
 
-	if (-timestamp.miliDifference() < statusInterval) {
+	if (timestamp.miliDifference() < (statusInterval * 1000)) {
 		return lastStatus;
 	}
 
