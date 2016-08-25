@@ -307,6 +307,7 @@ createMissionGiverConvoTemplate("xarot_korlin_mission_giver_convotemplate", "xar
 
 -- Naboo
 createMissionGiverConvoTemplate("arven_wendik_mission_giver_convotemplate", "arven_wendik_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("bardo_klinj_mission_giver_convotemplate", "bardo_klinj_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("boss_nass_mission_giver_convotemplate", "boss_nass_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("damalia_korde_mission_giver_convotemplate", "damalia_korde_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("dilvin_lormurojo_mission_giver_convotemplate", "dilvin_lormurojo_mission_giver_conv_handler")
