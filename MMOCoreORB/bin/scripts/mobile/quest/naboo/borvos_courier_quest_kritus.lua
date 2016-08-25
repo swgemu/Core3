@@ -1,0 +1,35 @@
+borvos_courier_quest_kritus = Creature:new {
+	objectName = "@mob/creature_names:borvos_mercenary",
+	socialGroup = "borvo",
+	faction = "borvo",
+	level = 12,
+	chanceHit = 0.29,
+	damageMin = 130,
+	damageMax = 140,
+	baseXp = 514,
+	baseHAM = 1200,
+	baseHAMmax = 1400,
+	armor = 0,
+	resists = {5,5,5,0,0,0,0,-1,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = NONE,
+	creatureBitmask = PACK,
+	optionsBitmask = AIENABLED + CONVERSABLE,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/dressed_borvos_mercenary.iff"},
+	lootGroups = {},
+	weapons = {},
+	conversationTemplate = "kritus_morven_mission_target_convotemplate",
+	attacks = {}
+}
+
+CreatureTemplates:addCreatureTemplate(borvos_courier_quest_kritus, "borvos_courier_quest_kritus")

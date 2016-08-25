@@ -1,0 +1,36 @@
+security_officer_quest_kritus = Creature:new {
+	objectName = "@mob/creature_names:rsf_security_officer",
+	socialGroup = "naboo_security_force",
+	faction = "naboo_security_force",
+	level = 16,
+	chanceHit = 0.31,
+	damageMin = 170,
+	damageMax = 180,
+	baseXp = 1102,
+	baseHAM = 2900,
+	baseHAMmax = 3500,
+	armor = 0,
+	resists = {0,0,0,0,0,0,0,-1,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = NONE,
+	creatureBitmask = PACK,
+	optionsBitmask = AIENABLED + CONVERSABLE,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/dressed_rsf_security_officer.iff"},
+	lootGroups = {},
+	weapons = {},
+	conversationTemplate = "kritus_morven_mission_target_convotemplate",
+	reactionStf = "@npc_reaction/townperson",
+	attacks = {}
+}
+
+CreatureTemplates:addCreatureTemplate(security_officer_quest_kritus, "security_officer_quest_kritus")
