@@ -1,6 +1,6 @@
-ebenn_q3_baobab = Creature:new {
+brennis_doore = Creature:new {
 	objectName = "",
-	customName = "Ebenn Q3 Baobab",
+	customName = "Brennis Doore",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -23,15 +23,14 @@ ebenn_q3_baobab = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_noble_human_male_02.iff"},
+	templates = {"object/mobile/dressed_brennis_doore.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "brennis_doore_mission_giver_convotemplate",
+	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(ebenn_q3_baobab, "ebenn_q3_baobab")
+CreatureTemplates:addCreatureTemplate(brennis_doore, "brennis_doore")

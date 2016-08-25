@@ -1,6 +1,6 @@
-brennis_doore = Creature:new {
+kritus_morven = Creature:new {
 	objectName = "",
-	customName = "Brennis Doore",
+	customName = "Kritus Morven",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -23,15 +23,14 @@ brennis_doore = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_brennis_doore.iff"},
+	templates = {"object/mobile/dressed_kritus_morven.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "kritus_morven_mission_giver_convotemplate",
+	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(brennis_doore, "brennis_doore")
+CreatureTemplates:addCreatureTemplate(kritus_morven, "kritus_morven")
