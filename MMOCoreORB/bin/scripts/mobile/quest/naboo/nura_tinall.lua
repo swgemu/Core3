@@ -1,0 +1,38 @@
+nura_tinall = Creature:new {
+	objectName = "",
+	socialGroup = "nomad",
+	faction = "naboo",
+	level = 6,
+	chanceHit = 0.25,
+	damageMin = 50,
+	damageMax = 55,
+	baseXp = 147,
+	baseHAM = 180,
+	baseHAMmax = 220,
+	armor = 0,
+	resists = {0,0,0,0,0,0,0,-1,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = NONE,
+	creatureBitmask = PACK,
+	optionsBitmask = AIENABLED + CONVERSABLE,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/dressed_noble_human_female_01.iff",
+		"object/mobile/dressed_noble_human_female_02.iff",
+		"object/mobile/dressed_noble_human_female_03.iff",
+		"object/mobile/dressed_noble_human_female_04.iff"},
+	lootGroups = {},
+	weapons = {},
+	conversationTemplate = "ebenn_q3_baobab_mission_target_convotemplate",
+	attacks = {}
+}
+
+CreatureTemplates:addCreatureTemplate(nura_tinall, "nura_tinall")
