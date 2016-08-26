@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_78ee7d24",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/naboo/tanner_helton.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-26T04:26:59Z",
+      "side": 1,
+      "message": "Don\u0027t make deliver targets attackable.",
+      "revId": "9f5e0cb62bdf1dee272f811117723a1da58f702f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_988fd975",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/naboo/tanner_helton.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-26T04:26:59Z",
+      "side": 1,
+      "message": "Remove the loot groups.",
+      "revId": "9f5e0cb62bdf1dee272f811117723a1da58f702f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f8928d9e",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/naboo/wert_jopi.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-26T04:26:59Z",
+      "side": 1,
+      "message": "Remove the loot groups.",
+      "revId": "9f5e0cb62bdf1dee272f811117723a1da58f702f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b88c1581",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/naboo/ebenn_q3_baobab.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-26T04:26:59Z",
+      "side": 1,
+      "message": "Don\u0027t give this a custom name.",
+      "revId": "9f5e0cb62bdf1dee272f811117723a1da58f702f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_58e94119",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/naboo/ebenn_q3_baobab.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-26T04:26:59Z",
+      "side": 1,
+      "message": "Don\u0027t give this a custom name.",
+      "revId": "9f5e0cb62bdf1dee272f811117723a1da58f702f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
