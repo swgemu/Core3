@@ -207,6 +207,7 @@ includeFile("tasks/hero_of_tatooine/heroOfTatooineContainerComponents.lua")
 includeFile("tasks/hero_of_tatooine/heroOfTatooineMenuComponents.lua")
 
 -- Task/Quest
+includeFile("tasks/corellia/blk_sun_tasks.lua")
 includeFile("tasks/corellia/chertyl_ruluwoor.lua")
 includeFile("tasks/corellia/coraline_dynes.lua")
 includeFile("tasks/corellia/corran_horn.lua")
