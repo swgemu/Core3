@@ -159,8 +159,6 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile(self.planet, "entertainer",300,24.3471,1.28309,8.93357,360.011,1855549)
 	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "grobber",60,-15.4768,1,-8.20706,245.925,1855551)
-	spawnMobile(self.planet, "zekka_thyne",60,-22.3764,1.6,-15.0418,86.3112,1855554)
 	--{"commoner",60,-24,1.6,-4,160,1855554, "calm", "Pex (an elite storyteller vendor)"},
 
 	--Cantina
