@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_3846c524",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/naboo/ole_friend_quest_brennis.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-27T04:02:25Z",
+      "side": 1,
+      "message": "Don\u0027t make deliver targets attackable.",
+      "revId": "802f284a6a09b2ffc2f78b5109fa5633aec70fda",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
