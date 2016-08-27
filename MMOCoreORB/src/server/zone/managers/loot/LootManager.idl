@@ -13,7 +13,6 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.ai.AiAgent;
 import server.zone.managers.crafting.CraftingManager;
 import server.zone.managers.object.ObjectManager;
-import engine.lua.Lua;
 import engine.lua.LuaObject;
 import server.zone.ZoneServer;
 import server.zone.objects.tangible.TangibleObject;
@@ -25,7 +24,6 @@ include server.zone.objects.tangible.weapon.WeaponObject;
 
 class LootManager extends ManagedService implements Logger {
 	private transient CraftingManager craftingManager;
-	private transient Lua lua;
 	private transient ZoneServer zoneServer;
 	private transient ObjectManager objectManager;
 	
@@ -121,8 +119,7 @@ class LootManager extends ManagedService implements Logger {
 	}
 	
 	public native void initialize();
-	
-	private native boolean loadConfigFile();
+
 	private native boolean loadConfigData();
 	private native void loadDefaultConfig();
 	

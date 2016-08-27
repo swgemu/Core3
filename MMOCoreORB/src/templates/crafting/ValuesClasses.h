@@ -253,6 +253,7 @@ public:
 	}
 
 	~Subclasses(){
+		valueList.removeAll();
 	}
 
 	void addSubtitle(const String& s, const float min, const float max, const int precision, const bool filler, const int combine) {

@@ -300,12 +300,17 @@ void PlayerManagerImplementation::loadPermissionLevels() {
 		error("Couldn't load permission levels.");
 		error(e.getMessage());
 	}
-
-
 }
 
 void PlayerManagerImplementation::finalize() {
 	nameMap = NULL;
+
+	permissionLevelList->removeAll();
+	permissionLevelList = NULL;
+
+	jukeboxSongs.removeAll();
+
+	questInfo.removeAll();
 }
 
 void PlayerManagerImplementation::loadNameMap() {
