@@ -5,7 +5,6 @@
 package server.zone.managers.resource;
 
 import engine.core.ManagedObject;
-import engine.lua.Lua;
 import engine.log.Logger;
 import server.zone.ZoneServer;
 import server.zone.Zone;
@@ -35,7 +34,6 @@ class ResourceManager extends Observer implements Logger {
 	private transient ResourceSpawner resourceSpawner;
 	private transient ObjectManager objectManager;
 	private transient int shiftInterval;
-	private transient Lua lua;
 	
 	public static final int RESOURCE_DEED_QUANTITY = 30000;
 	
@@ -83,8 +81,7 @@ class ResourceManager extends Observer implements Logger {
 
 	public native ResourceSpawn getCurrentSpawn(final string restype, final string zoneName);
 	public native ResourceSpawn getResourceSpawn(final string spawnName);
-	
-	private native boolean loadConfigFile();
+
 	private native boolean loadConfigData();
 	private native void loadDefaultConfig();
 	private native void loadSurveyData();

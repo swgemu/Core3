@@ -15,10 +15,7 @@
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
 void ResourceManagerImplementation::initialize() {
-	lua = new Lua();
-	lua->init();
-
-	if(!loadConfigData()) {
+	if (!loadConfigData()) {
 
 		loadDefaultConfig();
 
@@ -31,9 +28,6 @@ void ResourceManagerImplementation::initialize() {
 	loadSurveyData();
 }
 
-bool ResourceManagerImplementation::loadConfigFile() {
-	return lua->runFile("scripts/managers/resource_manager.lua");
-}
 void ResourceManagerImplementation::loadSurveyData() {
 	info("Loading survey data form surveys.db");
 	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
@@ -89,8 +83,13 @@ int ResourceManagerImplementation::notifyObserverEvent(uint32 eventType, Observa
 }
 
 bool ResourceManagerImplementation::loadConfigData() {
-	if (!loadConfigFile())
+	Lua* lua = new Lua();
+	lua->init();
+
+	if (!lua->runFile("scripts/managers/resource_manager.lua")) {
+		delete lua;
 		return false;
+	}
 
 	bool loadFromScript = lua->getGlobalInt("buildInitialResourcesFromScript");
 
@@ -142,6 +141,8 @@ bool ResourceManagerImplementation::loadConfigData() {
 	String natpoolinc = lua->getGlobalString("nativepoolincludes");
 	String natpoolexc = lua->getGlobalString("nativepoolexcludes");
 	resourceSpawner->initializeNativePool(natpoolinc, natpoolexc);
+
+	delete lua;
 
 	return true;
 }

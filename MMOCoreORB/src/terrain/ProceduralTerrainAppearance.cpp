@@ -59,6 +59,13 @@ ProceduralTerrainAppearance::~ProceduralTerrainAppearance() {
 
 	delete terrainMaps;
 	terrainMaps = NULL;
+
+	for (int i = customTerrain.size() - 1; i >= 0; --i) {
+		delete customTerrain.get(i);
+	}
+
+	customTerrain.removeAll();
+	terrainModifications.removeAll();
 }
 
 bool ProceduralTerrainAppearance::load(IffStream* iffStream) {
