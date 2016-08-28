@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_38032575",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/epic_quests/kraytDragonSkull.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:32:39Z",
+      "side": 1,
+      "message": "You can pretty much ignore this if you do as I suggested in my comment in ThemeParkLogic.lua.",
+      "parentUuid": "5a7ca5a3_b872d547",
+      "revId": "964c39c059670389aa0f59ad80201f7b92cc8102",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_588f0124",
         "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/epic_quests/zicxBugBomb.lua",
         "patchSetId": 1
