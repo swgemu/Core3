@@ -1,0 +1,225 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b872d547",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/epic_quests/kraytDragonSkull.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 1,
+      "message": "Seems odd to return at the first spawn with a disabled zone. You might still get some mobs spawned on zones that are enabled, but not necessarily all of them. I think it would be better to change it back to how it was (nesting the spawning within an if isZoneEnabled check) so that all mobs on enabled zones will spawn. If you want to print an error you can do that in the else.\n\nActually, a better option would be to traverse the map once building a table with each zone used in the quest and check if they are all enabled before spawning any of the npcs. If any are disabled, return and spawn no mobs.",
+      "revId": "964c39c059670389aa0f59ad80201f7b92cc8102",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_588f0124",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/epic_quests/zicxBugBomb.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 1,
+      "message": "See my comments on the KraytDragonSkull quest.",
+      "revId": "964c39c059670389aa0f59ad80201f7b92cc8102",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_1899896e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/generic/businessman.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 1,
+      "message": "This seems redundant since you already have genericGiver \u003d true, in the ThemeParkLogic:new table. Can\u0027t you just check for that?",
+      "revId": "964c39c059670389aa0f59ad80201f7b92cc8102",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_78943d37",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/naboo/arven_wendik.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 1,
+      "message": "These seem redundant since they\u0027re also in the ThemeParkLogic:new table.",
+      "revId": "964c39c059670389aa0f59ad80201f7b92cc8102",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_78bbddc4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/nym/themeParkNym.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 1,
+      "message": "Since this is all on one planet, this all seems unnecessary here. You don\u0027t have any npcSpawnData that has it\u0027s own planetName anymore and you\u0027re checking the zone is enabled before calling spawnNpcs so you don\u0027t need to check it again in here.",
+      "revId": "964c39c059670389aa0f59ad80201f7b92cc8102",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d8c9d15b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 1,
+      "message": "Similar to what I mentioned on the epic quests, I don\u0027t really like returning at the first disabled zone. I think a themepark should spawn all or none of the mobs.\n\nPerhaps we can add a requiredPlanets table to quests that need more than one and traverse it first to make sure they are all enabled. If that table is empty, just check if self.planetName is enabled. I would probably do those within the start function before calling spawnNpcs. Then you can dispense with the isZoneEnabled checks within the loops in each of the functions currently called from start. If you do this, you can remove the checks from the custom functions in the epic quests as well.",
+      "revId": "964c39c059670389aa0f59ad80201f7b92cc8102",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_18b0a9dc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 1,
+      "message": "put this after the sceneObjectMap nil check",
+      "revId": "964c39c059670389aa0f59ad80201f7b92cc8102",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_5804e17d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 1,
+      "message": "Should we set the area as a no spawn / no build area so we don\u0027t have other stuff spawned/built inside while the player is en route? It could cause issues for the quest stuff spawning. We can set those to false when the player enters the area, before any quest stuff is spawned.",
+      "revId": "964c39c059670389aa0f59ad80201f7b92cc8102",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f8c60d49",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 1,
+      "message": "What if the player is on a vehicle or mount when they enter the area?",
+      "revId": "964c39c059670389aa0f59ad80201f7b92cc8102",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f8cdad5e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 1,
+      "message": "This function is getting called after the player enters the quest active area. I would just get the area\u0027s or player\u0027s zoneName early and use it throughout. No need to determine it separately for each npc spawned, each static object spawned, the spawnPoints and the breech area.",
+      "revId": "964c39c059670389aa0f59ad80201f7b92cc8102",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_98da7916",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 1,
+      "message": "Just get the player\u0027s zoneName. This function is called after the player enters the quest area so the player\u0027s zone will be where you want to spawn them.",
+      "revId": "964c39c059670389aa0f59ad80201f7b92cc8102",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_38ec85c7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1282,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 1,
+      "message": "Instead of having mission as an arg, have planetName as an arg and just use it without all the checks on it.",
+      "revId": "964c39c059670389aa0f59ad80201f7b92cc8102",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b8d735ed",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 1,
+      "message": "There\u0027s no escorts between planets so we could just get the player\u0027s zoneName for this.",
+      "revId": "964c39c059670389aa0f59ad80201f7b92cc8102",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_38b565cd",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/epic_quests/kraytDragonSkull.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 0,
+      "message": "You need to be returning true or false from this function now, right?",
+      "revId": "382f3cd85071124d221c4514cca7bef3b7ff97a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_389ec557",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/naboo/bardo_klinj.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 0,
+      "message": "remove",
+      "revId": "382f3cd85071124d221c4514cca7bef3b7ff97a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d8a2319a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/naboo/brennis_doore.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 0,
+      "message": "remove",
+      "revId": "382f3cd85071124d221c4514cca7bef3b7ff97a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f89fed4e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/naboo/ebenn_q3_baobab.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 0,
+      "message": "remove",
+      "revId": "382f3cd85071124d221c4514cca7bef3b7ff97a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_98acb98e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/naboo/rep_been.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 0,
+      "message": "remove",
+      "revId": "382f3cd85071124d221c4514cca7bef3b7ff97a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b8a9757d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/naboo/rep_been.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 0,
+      "message": "remove",
+      "revId": "382f3cd85071124d221c4514cca7bef3b7ff97a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_58b621de",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/nym/themeParkNym.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 0,
+      "message": "You can use planetName here.",
+      "revId": "382f3cd85071124d221c4514cca7bef3b7ff97a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_78099d94",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 0,
+      "message": "Seems odd to leave buildingData.building.planet when you removed planet from all of the npc spawn tables, especially because it\u0027s in the building table and not even the terminal table. I would remove it and just use the building\u0027s or activeArea\u0027s zoneName.",
+      "revId": "382f3cd85071124d221c4514cca7bef3b7ff97a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_78e2fdd6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-28T23:28:59Z",
+      "side": 0,
+      "message": "I would pass planetName as an arg to this instead of determining it within this function.",
+      "revId": "382f3cd85071124d221c4514cca7bef3b7ff97a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
