@@ -4,12 +4,12 @@ ikka_gesul_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "Orga Presari" }
+				{ npcTemplate = "thug", npcName = "Orga Presari" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "a Thug" },
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "a Thug" }
+				{ npcTemplate = "thug", npcName = "a Thug" },
+				{ npcTemplate = "thug", npcName = "a Thug" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -21,11 +21,11 @@ ikka_gesul_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "taln_solwind", planetName = "tatooine", npcName = "Taln Solwind" }
+				{ npcTemplate = "taln_solwind", npcName = "Taln Solwind" }
 			},
 			secondarySpawns = {
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "a Thug" },
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "a Thug" }
+				{ npcTemplate = "thug", npcName = "a Thug" },
+				{ npcTemplate = "thug", npcName = "a Thug" }
 			},
 			itemSpawns =
 			{
@@ -41,7 +41,7 @@ ikka_gesul_missions =
 npcMapIkkaGesul =
 	{
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "ikka_gesul", x = 1499.45, z = 7, y = 3009.43, direction = 191.517, cellID = 0, position = STAND },
+			spawnData = { npcTemplate = "ikka_gesul", x = 1499.45, z = 7, y = 3009.43, direction = 191.517, cellID = 0, position = STAND },
 			worldPosition = { x = 1500, y = 3010 },
 			npcNumber = 1,
 			stfFile = "@static_npc/tatooine/ikka_gesul",
@@ -50,10 +50,10 @@ npcMapIkkaGesul =
 	}
 
 IkkaGesul = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapIkkaGesul,
 	className = "IkkaGesul",
 	screenPlayState = "ikka_gesul_quest",
+	planetName = "tatooine",
 	distance = 800
 }
 

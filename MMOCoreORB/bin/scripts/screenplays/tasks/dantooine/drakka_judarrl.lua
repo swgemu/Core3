@@ -4,12 +4,12 @@ drakka_judarrl_missions =
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "stormtrooper_rifleman", planetName = "dantooine", npcName = "random" } 
+			{ npcTemplate = "stormtrooper_rifleman", npcName = "random" } 
 		}, 
 		secondarySpawns = 
 		{
-				{ npcTemplate = "stormtrooper_rifleman", planetName = "dantooine", npcName = "Stormtrooper Rifleman" },
-				{ npcTemplate = "stormtrooper_rifleman", planetName = "dantooine", npcName = "Stormtrooper Rifleman" }
+				{ npcTemplate = "stormtrooper_rifleman", npcName = "Stormtrooper Rifleman" },
+				{ npcTemplate = "stormtrooper_rifleman", npcName = "Stormtrooper Rifleman" }
 		},
 		itemSpawns = {}, 
 		rewards = 
@@ -22,14 +22,14 @@ drakka_judarrl_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "aroho_preni", planetName = "dantooine", npcName = "Aroho Preni (a Dantari Raider)" } 
+			{ npcTemplate = "aroho_preni", npcName = "Aroho Preni (a Dantari Raider)" } 
 		}, 
 		secondarySpawns = 
 		{
-				{ npcTemplate = "stormtrooper_commando", planetName = "dantooine", npcName = "Stormtrooper Commando" },
-				{ npcTemplate = "stormtrooper_commando", planetName = "dantooine", npcName = "Stormtrooper Commando" },				
-				{ npcTemplate = "stormtrooper_commando", planetName = "dantooine", npcName = "Stormtrooper Commando" },
-				{ npcTemplate = "stormtrooper_commando", planetName = "dantooine", npcName = "Stormtrooper Commando" }
+				{ npcTemplate = "stormtrooper_commando", npcName = "Stormtrooper Commando" },
+				{ npcTemplate = "stormtrooper_commando", npcName = "Stormtrooper Commando" },				
+				{ npcTemplate = "stormtrooper_commando", npcName = "Stormtrooper Commando" },
+				{ npcTemplate = "stormtrooper_commando", npcName = "Stormtrooper Commando" }
 		},
 		itemSpawns = {}, 
 		rewards = 
@@ -42,13 +42,13 @@ drakka_judarrl_missions =
 		missionType = "assassinate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "force_crystal_hunter", planetName = "dantooine", npcName = "Deelomae Raede (a force crystal hunter)" } 
+			{ npcTemplate = "force_crystal_hunter", npcName = "Deelomae Raede (a force crystal hunter)" } 
 		}, 
 		secondarySpawns = 
 		{
-				{ npcTemplate = "dark_side_savage", planetName = "dantooine", npcName = "random" },
-				{ npcTemplate = "dark_side_savage", planetName = "dantooine", npcName = "random" },				
-				{ npcTemplate = "dark_side_savage", planetName = "dantooine", npcName = "random" }
+				{ npcTemplate = "dark_side_savage", npcName = "random" },
+				{ npcTemplate = "dark_side_savage", npcName = "random" },				
+				{ npcTemplate = "dark_side_savage", npcName = "random" }
 		},
 		itemSpawns = {}, 
 		rewards = 
@@ -62,7 +62,7 @@ drakka_judarrl_missions =
 npcMapDrakkaJudarrl = 
 { 
 	{ 
-		spawnData = { planetName = "dantooine", npcTemplate = "drakka_judarrl", x = 73.1, z = -46, y = -141, direction = 97, cellID = 8535548, position = STAND }, 
+		spawnData = { npcTemplate = "drakka_judarrl", x = 73.1, z = -46, y = -141, direction = 97, cellID = 8535548, position = STAND }, 
 		worldPosition = { x = 4221.2, y = 4959.3 }, 
 		npcNumber = 1,   
 		stfFile = "@static_npc/dantooine/dantooine_remotehaven_drakka_judarrl", 
@@ -71,11 +71,10 @@ npcMapDrakkaJudarrl =
 }
 
 DrakkaJudarrl = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapDrakkaJudarrl,
-	permissionMap = {},
 	className = "DrakkaJudarrl",
 	screenPlayState = "drakka_judarrl_quest",
+	planetName = "dantooine",
 	distance = 1000,
 	faction = FACTIONREBEL
 }

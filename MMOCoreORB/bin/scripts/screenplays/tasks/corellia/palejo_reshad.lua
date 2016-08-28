@@ -4,7 +4,7 @@ palejo_reshad_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "sharpshooter", planetName = "corellia", npcName = "Blackmailer" }
+				{ npcTemplate = "sharpshooter", npcName = "Blackmailer" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -18,7 +18,7 @@ palejo_reshad_missions =
 npcMapPalejoReshad =
 	{
 		{
-			spawnData = { planetName = "corellia", npcTemplate = "palejo_reshad", x = 1.06, z = -0.895, y = 21.22, direction = 111.145, cellID = 3375359, position = STAND },
+			spawnData = { npcTemplate = "palejo_reshad", x = 1.06, z = -0.895, y = 21.22, direction = 111.145, cellID = 3375359, position = STAND },
 			worldPosition = { x = 6700, y = -5755 },
 			npcNumber = 1,
 			stfFile = "@static_npc/corellia/palejo_reshad",
@@ -27,10 +27,10 @@ npcMapPalejoReshad =
 	}
 
 PalejoReshad = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapPalejoReshad,
 	className = "PalejoReshad",
 	screenPlayState = "palejo_reshad_quest",
+	planetName = "corellia",
 	distance = 800
 }
 

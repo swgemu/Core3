@@ -4,11 +4,11 @@ xaan_talmaron_missions =
 		missionType = "retrieve",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "ezawo_wagli", planetName = "dantooine", npcName = "Ezawo Wagli" } 
+			{ npcTemplate = "ezawo_wagli", npcName = "Ezawo Wagli" } 
 		}, 
 		secondarySpawns = 
 		{
-				{ npcTemplate = "xaan_bandit", planetName = "dantooine", npcName = "a bandit" }	
+				{ npcTemplate = "xaan_bandit", npcName = "a bandit" }	
 		},
 		itemSpawns = 
 		{
@@ -23,13 +23,13 @@ xaan_talmaron_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "orip_erchi", planetName = "dantooine", npcName = "Orip Erchi (a space pirate)" } 
+			{ npcTemplate = "orip_erchi", npcName = "Orip Erchi (a space pirate)" } 
 		}, 
 		secondarySpawns = 
 		{
-				{ npcTemplate = "xaan_bandit", planetName = "dantooine", npcName = "a bandit" },
-				{ npcTemplate = "xaan_bandit", planetName = "dantooine", npcName = "a bandit" },
-				{ npcTemplate = "xaan_bandit", planetName = "dantooine", npcName = "a bandit" }				
+				{ npcTemplate = "xaan_bandit", npcName = "a bandit" },
+				{ npcTemplate = "xaan_bandit", npcName = "a bandit" },
+				{ npcTemplate = "xaan_bandit", npcName = "a bandit" }				
 		},
 		itemSpawns = {}, 
 		rewards = 
@@ -41,12 +41,12 @@ xaan_talmaron_missions =
 		missionType = "retrieve", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "eni_ayka", planetName = "dantooine", npcName = "Eni A'Yka" } 
+			{ npcTemplate = "eni_ayka", npcName = "Eni A'Yka" } 
 		}, 
 		secondarySpawns = 
 		{
-				{ npcTemplate = "xaan_bandit", planetName = "dantooine", npcName = "a bandit" },
-				{ npcTemplate = "xaan_bandit", planetName = "dantooine", npcName = "a bandit" }			
+				{ npcTemplate = "xaan_bandit", npcName = "a bandit" },
+				{ npcTemplate = "xaan_bandit", npcName = "a bandit" }			
 		},
 		itemSpawns = 
 		{
@@ -62,7 +62,7 @@ xaan_talmaron_missions =
 npcMapXaanTalmaron = 
 { 
 	{ 
-		spawnData = { planetName = "dantooine", npcTemplate = "xaan_talmaron", x = 0.923707, z = 0.125264, y = -4.46262, direction = 160.225, cellID = 1380125, position = STAND }, 
+		spawnData = { npcTemplate = "xaan_talmaron", x = 0.923707, z = 0.125264, y = -4.46262, direction = 160.225, cellID = 1380125, position = STAND }, 
 		worldPosition = { x = -4184.4, y = -2407.1 }, 
 		npcNumber = 1,   
 		stfFile = "@static_npc/dantooine/dantooine_imperialgarrison_xaan_talmaron", 
@@ -71,11 +71,10 @@ npcMapXaanTalmaron =
 }
 
 XaanTalmaron = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapXaanTalmaron,
-	permissionMap = {},
 	className = "XaanTalmaron",
 	screenPlayState = "xaan_talmaron_quest",
+	planetName = "dantooine",
 	distance = 1000,
 	faction = FACTIONIMPERIAL
 }

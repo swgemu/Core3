@@ -4,7 +4,7 @@ thrackan_sal_solo_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "selonian_separatist", planetName = "corellia", npcName = "a Selonian terrorist" }
+				{ npcTemplate = "selonian_separatist", npcName = "a Selonian terrorist" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -17,12 +17,12 @@ thrackan_sal_solo_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "jermo_tharrn", planetName = "corellia", npcName = "Jermo Tharrn" }
+				{ npcTemplate = "jermo_tharrn", npcName = "Jermo Tharrn" }
 			},
 			secondarySpawns =	
 			{
-				{ npcTemplate = "selonian_sentinel", planetName = "corellia", npcName = "a Selonian sentinel" },
-				{ npcTemplate = "selonian_sentinel", planetName = "corellia", npcName = "a Selonian sentinel" }
+				{ npcTemplate = "selonian_sentinel", npcName = "a Selonian sentinel" },
+				{ npcTemplate = "selonian_sentinel", npcName = "a Selonian sentinel" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -34,7 +34,7 @@ thrackan_sal_solo_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "tormyll_fassoola", planetName = "corellia", npcName = "Tormyll Fassoola" }
+				{ npcTemplate = "tormyll_fassoola", npcName = "Tormyll Fassoola" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = 
@@ -50,13 +50,13 @@ thrackan_sal_solo_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "selonian_champion", planetName = "corellia", npcName = "a Selonian leader" }
+				{ npcTemplate = "selonian_champion", npcName = "a Selonian leader" }
 			},
 			secondarySpawns =	
 			{
-				{ npcTemplate = "selonian_sentinel", planetName = "corellia", npcName = "a Selonian sentinel" },
-				{ npcTemplate = "selonian_sentinel", planetName = "corellia", npcName = "a Selonian sentinel" },
-				{ npcTemplate = "selonian_sentinel", planetName = "corellia", npcName = "a Selonian sentinel" }
+				{ npcTemplate = "selonian_sentinel", npcName = "a Selonian sentinel" },
+				{ npcTemplate = "selonian_sentinel", npcName = "a Selonian sentinel" },
+				{ npcTemplate = "selonian_sentinel", npcName = "a Selonian sentinel" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -69,7 +69,7 @@ thrackan_sal_solo_missions =
 npcMapThrackanSalSolo =
 	{
 		{
-			spawnData = { planetName = "corellia", npcTemplate = "thrackan_sal_solo", x = 0.4, z = 1.2, y = 0.8, direction = 0, cellID = 1855483, position = STAND },
+			spawnData = { npcTemplate = "thrackan_sal_solo", x = 0.4, z = 1.2, y = 0.8, direction = 0, cellID = 1855483, position = STAND },
 			worldPosition = { x = -275, y = -4720 },
 			npcNumber = 1,
 			stfFile = "@static_npc/corellia/thrackan_sal_solo",
@@ -78,10 +78,10 @@ npcMapThrackanSalSolo =
 	}
 
 ThrackanSalSolo = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapThrackanSalSolo,
 	className = "ThrackanSalSolo",
 	screenPlayState = "thrackan_sal_solo_quest",
+	planetName = "corellia",
 	distance = 800
 }
 

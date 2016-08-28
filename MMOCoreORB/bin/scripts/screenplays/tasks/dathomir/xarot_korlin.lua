@@ -4,7 +4,7 @@ xarot_korlin_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "xarot_nightsister_witch", planetName = "dathomir", npcName = "Nightsister Witch" }
+				{ npcTemplate = "xarot_nightsister_witch", npcName = "Nightsister Witch" }
 			},
 			secondarySpawns =	{},
 			itemSpawns =
@@ -20,7 +20,7 @@ xarot_korlin_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "xarot_singing_mountain_clan_witch", planetName = "dathomir", npcName = "Singing Mountain Clan Witch" }
+				{ npcTemplate = "xarot_singing_mountain_clan_witch", npcName = "Singing Mountain Clan Witch" }
 			},
 			secondarySpawns =	{},
 			itemSpawns =
@@ -36,11 +36,11 @@ xarot_korlin_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "xarot_nightsister_in_training", planetName = "dathomir", npcName = "Nightsister In Training" }
+				{ npcTemplate = "xarot_nightsister_in_training", npcName = "Nightsister In Training" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "nightsister_sentry", planetName = "dathomir", npcName = "" }
+				{ npcTemplate = "nightsister_sentry", npcName = "" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -53,7 +53,7 @@ xarot_korlin_missions =
 npcMapXarotKorlin =
 	{
 		{
-			spawnData = { planetName = "dathomir", npcTemplate = "xarot_korlin", x = 9.9, z = 1.0, y = -21.6, direction = 33, cellID = 2665369, position = STAND },
+			spawnData = { npcTemplate = "xarot_korlin", x = 9.9, z = 1.0, y = -21.6, direction = 33, cellID = 2665369, position = STAND },
 			worldPosition = { x = -6385, y = 916 },
 			npcNumber = 1,
 			stfFile = "@static_npc/dathomir/xarot_korlin",
@@ -62,10 +62,10 @@ npcMapXarotKorlin =
 	}
 
 XarotKorlin = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapXarotKorlin,
 	className = "XarotKorlin",
 	screenPlayState = "xarot_korlin_quest",
+	planetName = "dathomir",
 	distance = 800,
 	faction = FACTIONIMPERIAL
 }

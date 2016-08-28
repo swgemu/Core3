@@ -4,7 +4,7 @@ generic_businessman_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "businessman_target", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "businessman_target", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -17,7 +17,7 @@ generic_businessman_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "businessman_target", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "businessman_target", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -30,7 +30,7 @@ generic_businessman_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "businessman_target_thief_briefcase", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "businessman_target_thief_briefcase", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -46,7 +46,7 @@ generic_businessman_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "businessman_target_thief_award", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "businessman_target_thief_award", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -62,7 +62,7 @@ generic_businessman_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "businessman_target", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "businessman_target", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -78,7 +78,7 @@ generic_businessman_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "businessman_target", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "businessman_target", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -102,7 +102,6 @@ npcMapGenericBusinessman =
 	}
 
 GenericBusinessman = ThemeParkLogic:new {
-	numberOfActs = 1,
 	genericGiver = true,
 	npcMap = npcMapGenericBusinessman,
 	className = "GenericBusinessman",

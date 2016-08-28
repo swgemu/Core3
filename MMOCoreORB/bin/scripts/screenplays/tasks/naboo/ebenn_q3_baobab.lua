@@ -1,105 +1,104 @@
 ebenn_q3_baobab_missions =
-{
 	{
-		missionType = "escort",
-		primarySpawns =
 		{
-			{ npcTemplate = "rinto_liprus", planetName = "naboo", npcName = "Rinto Liprus" }
-		},
-		secondarySpawns =
-		{
+			missionType = "escort",
+			primarySpawns =
+			{
+				{ npcTemplate = "rinto_liprus", npcName = "Rinto Liprus" }
+			},
+			secondarySpawns =
+			{
 
-		},
-		itemSpawns =
-		{
+			},
+			itemSpawns =
+			{
 
+			},
+			rewards =
+			{
+				{ rewardType = "credits", amount = 100 }
+			}
 		},
-		rewards =
 		{
-			{ rewardType = "credits", amount = 100 }
-		}
-	},
-	{
-		missionType = "deliver",
-		primarySpawns =
-		{
-			{ npcTemplate = "tanner_helton", planetName = "naboo", npcName = "Tanner Helton" }
+			missionType = "deliver",
+			primarySpawns =
+			{
+				{ npcTemplate = "tanner_helton", npcName = "Tanner Helton" }
+			},
+			secondarySpawns =
+			{
+				{npcTemplate = "rsf_security_guard", npcName = ""},
+				{npcTemplate = "rsf_security_guard", npcName = ""}
+			},
+			itemSpawns =
+			{
+				{ itemTemplate = "object/tangible/mission/quest_item/ebenn_baobab_q2_needed.iff", itemName = "" }
+			},
+			rewards =
+			{
+				{ rewardType = "credits", amount = 150 }
+			}
 		},
-		secondarySpawns =
 		{
-			{npcTemplate = "rsf_security_guard", planetName = "naboo", npcName = ""},
-			{npcTemplate = "rsf_security_guard", planetName = "naboo", npcName = ""}
+			missionType = "deliver",
+			primarySpawns =
+			{
+				{ npcTemplate = "nura_tinall", npcName = "Nura Tinall" }
+			},
+			secondarySpawns =
+			{
+				{npcTemplate = "thug", npcName = ""},
+				{npcTemplate = "thug", npcName = ""},
+				{npcTemplate = "thug", npcName = ""}
+			},
+			itemSpawns =
+			{
+				{ itemTemplate = "object/tangible/mission/quest_item/ebenn_baobab_q3_needed.iff", itemName = "" }
+			},
+			rewards =
+			{
+				{ rewardType = "credits", amount = 200 }
+			}
 		},
-		itemSpawns =
 		{
-			{ itemTemplate = "object/tangible/mission/quest_item/ebenn_baobab_q2_needed.iff", itemName = "" }
-		},
-		rewards =
-		{
-			{ rewardType = "credits", amount = 150 }
-		}
-	},
-	{
-		missionType = "deliver",
-		primarySpawns =
-		{
-			{ npcTemplate = "nura_tinall", planetName = "naboo", npcName = "Nura Tinall" }
-		},
-		secondarySpawns =
-		{
-			{npcTemplate = "thug", planetName = "naboo", npcName = ""},
-			{npcTemplate = "thug", planetName = "naboo", npcName = ""},
-			{npcTemplate = "thug", planetName = "naboo", npcName = ""}
-		},
-		itemSpawns =
-		{
-			{ itemTemplate = "object/tangible/mission/quest_item/ebenn_baobab_q3_needed.iff", itemName = "" }
-		},
-		rewards =
-		{
-			{ rewardType = "credits", amount = 200 }
-		}
-	},
-	{
-		missionType = "escort",
-		primarySpawns =
-		{
-			{ npcTemplate = "wert_jopi", planetName = "naboo", npcName = "Wert Jopi" }
-		},
-		secondarySpawns =
-		{
-			{npcTemplate = "gungan_mercenary", planetName = "naboo", npcName = ""},
-			{npcTemplate = "gungan_mercenary", planetName = "naboo", npcName = ""},
-			{npcTemplate = "gungan_mercenary", planetName = "naboo", npcName = ""}
-		},
-		itemSpawns =
-		{
+			missionType = "escort",
+			primarySpawns =
+			{
+				{ npcTemplate = "wert_jopi", npcName = "Wert Jopi" }
+			},
+			secondarySpawns =
+			{
+				{npcTemplate = "gungan_mercenary", npcName = ""},
+				{npcTemplate = "gungan_mercenary", npcName = ""},
+				{npcTemplate = "gungan_mercenary", npcName = ""}
+			},
+			itemSpawns =
+			{
 
-		},
-		rewards =
-		{
-			{ rewardType = "credits", amount = 250 }
+			},
+			rewards =
+			{
+				{ rewardType = "credits", amount = 250 }
+			}
 		}
 	}
-}
 
 npcMapEbennQ3Baobab =
-{
 	{
-		spawnData = { planetName = "naboo", npcTemplate = "ebenn_q3_baobab", x = 4869.0, z = 3.8, y = -4873.0, direction = -90, cellID = 0, position = STAND },
-		npcNumber = 1,
-		stfFile = "@static_npc/naboo/ebenn_q3_baobab",
-		missions = ebenn_q3_baobab_missions
-	},
-}
+		{
+			spawnData = { npcTemplate = "ebenn_q3_baobab", x = 4869.0, z = 3.8, y = -4873.0, direction = -90, cellID = 0, position = STAND },
+			npcNumber = 1,
+			stfFile = "@static_npc/naboo/ebenn_q3_baobab",
+			missions = ebenn_q3_baobab_missions
+		},
+	}
 
 EbennQ3Baobab = ThemeParkLogic:new {
-	numberOfActs = 1,
 	faction = FACTIONREBEL,
 	npcMap = npcMapEbennQ3Baobab,
-	permissionMap = {},
 	className = "EbennQ3Baobab",
 	screenPlayState = "ebenn_q3_baobab_task",
+	planetName = "naboo",
 	distance = 1000,
 }
 

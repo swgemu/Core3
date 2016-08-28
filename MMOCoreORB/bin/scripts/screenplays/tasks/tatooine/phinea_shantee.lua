@@ -4,7 +4,7 @@ phinea_shantee_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "wookiee_brawler", planetName = "tatooine", npcName = "Chalurrekk" }
+				{ npcTemplate = "wookiee_brawler", npcName = "Chalurrekk" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -18,7 +18,7 @@ phinea_shantee_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "korrkoressk", planetName = "tatooine", npcName = "Korrkoressk" }
+				{ npcTemplate = "korrkoressk", npcName = "Korrkoressk" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -33,7 +33,7 @@ phinea_shantee_missions =
 npcMapPhineaShantee =
 	{
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "phinea_shantee", x = -10.3, z = -0.9, y = -18.7, direction = 27, cellID = 1028652, position = STAND },
+			spawnData = { npcTemplate = "phinea_shantee", x = -10.3, z = -0.9, y = -18.7, direction = 27, cellID = 1028652, position = STAND },
 			worldPosition = { x = -1420, y = -3682 },
 			npcNumber = 1,
 			stfFile = "@static_npc/tatooine/phinea_shantee",
@@ -42,10 +42,10 @@ npcMapPhineaShantee =
 	}
 
 PhineaShantee = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapPhineaShantee,
 	className = "PhineaShantee",
 	screenPlayState = "phinea_shantee_quest",
+	planetName = "tatooine",
 	distance = 800
 }
 

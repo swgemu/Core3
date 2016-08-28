@@ -4,7 +4,7 @@ mullud_bombo_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "sentellus_gavrel", planetName = "naboo", npcName = "Sentellus Gavrel" }
+				{ npcTemplate = "sentellus_gavrel", npcName = "Sentellus Gavrel" }
 			},
 			secondarySpawns = {},
 			itemSpawns = 
@@ -21,7 +21,7 @@ mullud_bombo_missions =
 npcMapMulludBombo =
 	{
 		{
-			spawnData = { planetName = "naboo", npcTemplate = "mullud_bombo", x = 5045.9, z = -192, y = 6787.1, direction = -87, cellID = 0, position = STAND },
+			spawnData = { npcTemplate = "mullud_bombo", x = 5045.9, z = -192, y = 6787.1, direction = -87, cellID = 0, position = STAND },
 			worldPosition = { x = 5046, y = 6787 },
 			npcNumber = 1,
 			stfFile = "@static_npc/naboo/mullud_bombo",
@@ -30,10 +30,10 @@ npcMapMulludBombo =
 	}
 
 MulludBombo = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapMulludBombo,
 	className = "MulludBombo",
 	screenPlayState = "mullud_bombo_quest",
+	planetName = "naboo",
 	distance = 600
 }
 

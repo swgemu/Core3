@@ -4,7 +4,7 @@ didina_lippinoss_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "bin_huusir", planetName = "corellia", npcName = "Bin Huusir" }
+				{ npcTemplate = "bin_huusir", npcName = "Bin Huusir" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -21,7 +21,7 @@ didina_lippinoss_missions =
 npcMapDidinaLippinoss =
 	{
 		{
-			spawnData = { planetName = "corellia", npcTemplate = "didina_lippinoss", x = -8.43, z = 1.6, y = -11.42, direction = 69.197, cellID = 1935530, position = STAND },
+			spawnData = { npcTemplate = "didina_lippinoss", x = -8.43, z = 1.6, y = -11.42, direction = 69.197, cellID = 1935530, position = STAND },
 			worldPosition = { x = -5508, y = -2557 },
 			npcNumber = 1,
 			stfFile = "@static_npc/corellia/didina_lippinoss",
@@ -30,10 +30,10 @@ npcMapDidinaLippinoss =
 	}
 
 DidinaLippinoss = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapDidinaLippinoss,
 	className = "DidinaLippinoss",
 	screenPlayState = "didina_lippinoss_quest",
+	planetName = "corellia",
 	distance = 800
 }
 

@@ -4,7 +4,7 @@ rovim_minnoni_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "zazzi", planetName = "naboo", npcName = "Zazzi" }
+				{ npcTemplate = "zazzi", npcName = "Zazzi" }
 			},
 			secondarySpawns = {},
 			itemSpawns = 
@@ -23,7 +23,7 @@ rovim_minnoni_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "bevon_cordh", planetName = "naboo", npcName = "Bevon Cordh" }
+				{ npcTemplate = "bevon_cordh", npcName = "Bevon Cordh" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -36,7 +36,7 @@ rovim_minnoni_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "nion_lipto", planetName = "naboo", npcName = "Ni'on Lipto" }
+				{ npcTemplate = "nion_lipto", npcName = "Ni'on Lipto" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -51,7 +51,7 @@ rovim_minnoni_missions =
 npcMapRovinMinnoni =
 	{
 		{
-			spawnData = { planetName = "naboo", npcTemplate = "rovim_minnoni", x = -5551.9, z = -150, y = -51.5, direction = -49, cellID = 0, position = STAND },
+			spawnData = { npcTemplate = "rovim_minnoni", x = -5551.9, z = -150, y = -51.5, direction = -49, cellID = 0, position = STAND },
 			worldPosition = { x = -5551, y = -51 },
 			npcNumber = 1,
 			stfFile = "@static_npc/naboo/rovim_minnoni",
@@ -60,10 +60,10 @@ npcMapRovinMinnoni =
 	}
 
 RovinMinnoni = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapRovinMinnoni,
 	className = "RovinMinnoni",
 	screenPlayState = "rovim_minnoni_quest",
+	planetName = "naboo",
 	distance = 600
 }
 

@@ -4,11 +4,11 @@ biribas_tarun_missions =
 		missionType = "retrieve",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "naboo_police_agent", planetName = "rori", npcName = "Biribas' Agent" } 
+			{ npcTemplate = "naboo_police_agent", npcName = "Biribas' Agent" } 
 		}, 
 		secondarySpawns = {
-			{ npcTemplate = "naboo_pirate", planetName = "rori", npcName = "" },
-			{ npcTemplate = "naboo_pirate", planetName = "rori", npcName = "" }
+			{ npcTemplate = "naboo_pirate", npcName = "" },
+			{ npcTemplate = "naboo_pirate", npcName = "" }
 },
 		itemSpawns = {
 			{ itemTemplate = "object/tangible/mission/quest_item/biribas_tarun_q1_needed.iff", itemName = "" }
@@ -23,11 +23,11 @@ biribas_tarun_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "dispatcher", planetName = "rori", npcName = "Dispatcher" } 
+			{ npcTemplate = "dispatcher", npcName = "Dispatcher" } 
 		}, 
 		secondarySpawns = {
-			{ npcTemplate = "naboo_gunrunner", planetName = "rori", npcName = "" },
-			{ npcTemplate = "naboo_gunrunner", planetName = "rori", npcName = "" }
+			{ npcTemplate = "naboo_gunrunner", npcName = "" },
+			{ npcTemplate = "naboo_gunrunner", npcName = "" }
 }, 
 		itemSpawns = {}, 
 		rewards = 
@@ -40,11 +40,11 @@ biribas_tarun_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "security_guards_wife", planetName = "rori", npcName = "Security Guard's Wife" } 
+			{ npcTemplate = "security_guards_wife", npcName = "Security Guard's Wife" } 
 		}, 
 		secondarySpawns = {
-			{ npcTemplate = "naboo_gunrunner", planetName = "rori", npcName = "" },
-			{ npcTemplate = "naboo_gunrunner", planetName = "rori", npcName = "" }
+			{ npcTemplate = "naboo_gunrunner", npcName = "" },
+			{ npcTemplate = "naboo_gunrunner", npcName = "" }
 }, 
 		itemSpawns = {}, 
 		rewards = 
@@ -57,12 +57,12 @@ biribas_tarun_missions =
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "naboo_dread_pirate", planetName = "rori", npcName = "Gunrunner Leader" } 
+			{ npcTemplate = "naboo_dread_pirate", npcName = "Gunrunner Leader" } 
 		}, 
 		secondarySpawns = {
-			{ npcTemplate = "naboo_gunrunner", planetName = "rori", npcName = "" },
-			{ npcTemplate = "naboo_gunrunner", planetName = "rori", npcName = "" },
-			{ npcTemplate = "thug", planetName = "rori", npcName = "" }
+			{ npcTemplate = "naboo_gunrunner", npcName = "" },
+			{ npcTemplate = "naboo_gunrunner", npcName = "" },
+			{ npcTemplate = "thug", npcName = "" }
 },
 		itemSpawns = {}, 
 		rewards = 
@@ -76,7 +76,7 @@ biribas_tarun_missions =
 npcMapBiribasTarun = 
 { 
 	{ 
-		spawnData = { planetName = "rori", npcTemplate = "biribas_tarun", x = -17.2, z = 2.3, y = 18.3, direction = 146, cellID = 4635522, position = STAND }, 
+		spawnData = { npcTemplate = "biribas_tarun", x = -17.2, z = 2.3, y = 18.3, direction = 146, cellID = 4635522, position = STAND }, 
 		worldPosition = { x = -5173.6, y = -2463.7 }, 
 		npcNumber = 1,   
 		stfFile = "@static_npc/rori/rori_narmle_biribas_tarun", 
@@ -85,11 +85,10 @@ npcMapBiribasTarun =
 }
 
 BiribasTarun = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapBiribasTarun,
-	permissionMap = {},
 	className = "BiribasTarun",
 	screenPlayState = "biribas_tarun_task",
+	planetName = "rori",
 	distance = 800
 }
 

@@ -4,7 +4,7 @@ kelvus_naria_missions =
 		missionType = "deliver",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "kelvus_imperial", planetName = "dantooine", npcName = "Imperial Corporal" } 
+			{ npcTemplate = "kelvus_imperial", npcName = "Imperial Corporal" } 
 		}, 
 		secondarySpawns = {},
 		itemSpawns = 
@@ -21,12 +21,12 @@ kelvus_naria_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "kelvus_miner", planetName = "dantooine", npcName = "random" } 
+			{ npcTemplate = "kelvus_miner", npcName = "random" } 
 		}, 
 		secondarySpawns = 
 		{				
-				{ npcTemplate = "kelvus_criminal", planetName = "dantooine", npcName = "random" },
-				{ npcTemplate = "kelvus_criminal", planetName = "dantooine", npcName = "random" }
+				{ npcTemplate = "kelvus_criminal", npcName = "random" },
+				{ npcTemplate = "kelvus_criminal", npcName = "random" }
 		},
 		itemSpawns = {}, 
 		rewards = 
@@ -39,7 +39,7 @@ kelvus_naria_missions =
 npcMapKelvusNaria = 
 { 
 	{ 
-		spawnData = { planetName = "dantooine", npcTemplate = "kelvus_naria", x = -618.741, z = 3, y = 2539.25, direction = 57.3847, cellID = 0, position = STAND }, 
+		spawnData = { npcTemplate = "kelvus_naria", x = -618.741, z = 3, y = 2539.25, direction = 57.3847, cellID = 0, position = STAND }, 
 		npcNumber = 1,   
 		stfFile = "@static_npc/dantooine/dantooine_miningoutpost_kelvus_naria", 
 		missions = kelvus_naria_missions 
@@ -47,11 +47,10 @@ npcMapKelvusNaria =
 }
 
 KelvusNaria = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapKelvusNaria,
-	permissionMap = {},
 	className = "KelvusNaria",
 	screenPlayState = "kelvus_naria_quest",
+	planetName = "dantooine",
 	distance = 1000,
 	faction = FACTIONIMPERIAL
 }

@@ -1,7 +1,6 @@
 local ObjectManager = require("managers.object.object_manager")
 
 heraldScreenPlay = ScreenPlay:new {
-	numberOfActs = 1,
 
 	heraldList = {
 		{ planet = "corellia", template = "herald_commoner", customName = "Excited Journalist", x = -5192.9, z = 21, y = -2545.55, angle = 46.5164, cell = 0, destX = 4651, destY = -5616, stringFile = "herald_corellia_imperial_strongold" },

@@ -4,11 +4,11 @@ lt_harburik_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "wend_dinard", planetName = "tatooine", npcName = "Wend Dinard" }
+				{ npcTemplate = "wend_dinard", npcName = "Wend Dinard" }
 			},
 			secondarySpawns = {
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "a Thug" },
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "a Thug" },
+				{ npcTemplate = "thug", npcName = "a Thug" },
+				{ npcTemplate = "thug", npcName = "a Thug" },
 			},
 			itemSpawns = {},
 			rewards =
@@ -21,11 +21,11 @@ lt_harburik_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "ammow_dowwop", planetName = "tatooine", npcName = "Ammow Dowwop" }
+				{ npcTemplate = "ammow_dowwop", npcName = "Ammow Dowwop" }
 			},
 			secondarySpawns = {
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "a Thug" },
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "a Thug" },
+				{ npcTemplate = "thug", npcName = "a Thug" },
+				{ npcTemplate = "thug", npcName = "a Thug" },
 			},
 			itemSpawns = {},
 			rewards =
@@ -38,7 +38,7 @@ lt_harburik_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "td334", planetName = "tatooine", npcName = "TD-334" }
+				{ npcTemplate = "td334", npcName = "TD-334" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -51,12 +51,12 @@ lt_harburik_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "noda_lovan", planetName = "tatooine", npcName = "Noda Lovan" }
+				{ npcTemplate = "noda_lovan", npcName = "Noda Lovan" }
 			},
 			secondarySpawns = {
-				{ npcTemplate = "smuggler", planetName = "tatooine", npcName = "a Smuggler" },
-				{ npcTemplate = "smuggler", planetName = "tatooine", npcName = "a Smuggler" },
-				{ npcTemplate = "smuggler", planetName = "tatooine", npcName = "a Smuggler" },
+				{ npcTemplate = "smuggler", npcName = "a Smuggler" },
+				{ npcTemplate = "smuggler", npcName = "a Smuggler" },
+				{ npcTemplate = "smuggler", npcName = "a Smuggler" },
 			},
 			itemSpawns = {},
 			rewards =
@@ -71,7 +71,7 @@ lt_harburik_missions =
 npcMapLtHarburik =
 	{
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "lt_harburik", x = 3485.35, z = 4.93, y = -4740.37, direction = 234.88, cellID = 0, position = STAND },
+			spawnData = { npcTemplate = "lt_harburik", x = 3485.35, z = 4.93, y = -4740.37, direction = 234.88, cellID = 0, position = STAND },
 			worldPosition = { x = 3485, y = -4740 },
 			npcNumber = 1,
 			stfFile = "@static_npc/tatooine/lt_harburik",
@@ -80,11 +80,10 @@ npcMapLtHarburik =
 	}
 
 LtHarburik = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapLtHarburik,
-	permissionMap = {},
 	className = "LtHarburik",
 	screenPlayState = "lt_harburik_quest",
+	planetName = "tatooine",
 	distance = 800,
 	faction = FACTIONIMPERIAL
 
