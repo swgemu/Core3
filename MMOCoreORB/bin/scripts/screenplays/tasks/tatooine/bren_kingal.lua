@@ -4,7 +4,7 @@ bren_kingal_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "thark", planetName = "tatooine", npcName = "Thark" }
+				{ npcTemplate = "thark", npcName = "Thark" }
 			},
 			secondarySpawns =	{},
 			itemSpawns =
@@ -21,7 +21,7 @@ bren_kingal_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "kli_sithrin", planetName = "tatooine", npcName = "Kli Sithrin" }
+				{ npcTemplate = "kli_sithrin", npcName = "Kli Sithrin" }
 			},
 			secondarySpawns =	{},
 			itemSpawns =
@@ -38,7 +38,7 @@ bren_kingal_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "jespral_farandan", planetName = "tatooine", npcName = "Jespral Farandan" }
+				{ npcTemplate = "jespral_farandan", npcName = "Jespral Farandan" }
 			},
 			secondarySpawns =	{},
 			itemSpawns =
@@ -55,7 +55,7 @@ bren_kingal_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "trone_thanamiroc", planetName = "tatooine", npcName = "Trone Thanamiroc" }
+				{ npcTemplate = "trone_thanamiroc", npcName = "Trone Thanamiroc" }
 			},
 			secondarySpawns =	{},
 			itemSpawns =
@@ -64,7 +64,7 @@ bren_kingal_missions =
 			},
 			staticObjects =
 			{
-				{ objectTemplate = "object/static/vehicle/static_speeder_bike.iff", planetName = "tatooine" }
+				{ objectTemplate = "object/static/vehicle/static_speeder_bike.iff" }
 			},
 			rewards =
 			{
@@ -77,7 +77,7 @@ bren_kingal_missions =
 npcMapBrenKingal =
 	{
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "bren_kingal", x = 3770.8, z = 8.3, y = 2346.7, direction = 20, cellID = 0, position = STAND },
+			spawnData = { npcTemplate = "bren_kingal", x = 3770.8, z = 8.3, y = 2346.7, direction = 20, cellID = 0, position = STAND },
 			worldPosition = { x = 3771, y = 2347 },
 			npcNumber = 1,
 			stfFile = "@static_npc/tatooine/bren_kingal",
@@ -86,11 +86,10 @@ npcMapBrenKingal =
 	}
 
 BrenKingal = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapBrenKingal,
-	permissionMap = {},
 	className = "BrenKingal",
 	screenPlayState = "bren_kingal_quest",
+	planetName = "tatooine",
 	distance = 800,
 	faction = FACTIONREBEL
 

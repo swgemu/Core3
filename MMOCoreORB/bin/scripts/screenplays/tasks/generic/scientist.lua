@@ -4,11 +4,11 @@ generic_scientist_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "scientist_target_robber", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "scientist_target_robber", npcName = "random" }
 			},
 			secondarySpawns = 
 			{
-				{ npcTemplate = "thug", planetName = "generic", npcName = "a Thug" }
+				{ npcTemplate = "thug", npcName = "a Thug" }
 			},
 			itemSpawns =
 			{
@@ -23,7 +23,7 @@ generic_scientist_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "scientist_target_spy", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "scientist_target_spy", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -39,7 +39,7 @@ generic_scientist_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "criminal", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "criminal", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -52,7 +52,7 @@ generic_scientist_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "scientist_target_crazed_scientist", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "scientist_target_crazed_scientist", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -65,7 +65,7 @@ generic_scientist_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "scientist_target_scientist", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "scientist_target_scientist", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -78,7 +78,7 @@ generic_scientist_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "scientist_target_scientist", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "scientist_target_scientist", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -99,7 +99,6 @@ npcMapGenericScientist =
 	}
 
 GenericScientist = ThemeParkLogic:new {
-	numberOfActs = 1,
 	genericGiver = true,
 	npcMap = npcMapGenericScientist,
 	className = "GenericScientist",

@@ -4,11 +4,11 @@ mozo_bondog_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "mozo_escaped_tkm", planetName = "dathomir", npcName = "Escaped Prisoner" }
+				{ npcTemplate = "mozo_escaped_tkm", npcName = "Escaped Prisoner" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "nightsister_rancor_tamer", planetName = "dathomir", npcName = "" }
+				{ npcTemplate = "nightsister_rancor_tamer", npcName = "" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -21,7 +21,7 @@ mozo_bondog_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "mozo_mercenary_warlord", planetName = "dathomir", npcName = "" }
+				{ npcTemplate = "mozo_mercenary_warlord", npcName = "" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -38,7 +38,7 @@ mozo_bondog_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "janta_clan_leader", planetName = "dathomir", npcName = "" }
+				{ npcTemplate = "janta_clan_leader", npcName = "" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -56,7 +56,7 @@ dolac_legasi_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "dolac_escaped_prisoner", planetName = "dathomir", npcName = "Escaped Prisoner" }
+				{ npcTemplate = "dolac_escaped_prisoner", npcName = "Escaped Prisoner" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -70,11 +70,11 @@ dolac_legasi_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "dolac_dark_jedi_knight", planetName = "dathomir", npcName = "" }
+				{ npcTemplate = "dolac_dark_jedi_knight", npcName = "" }
 			},
 			secondarySpawns = {
-				{ npcTemplate = "nightsister_protector", planetName = "dathomir", npcName = "" },
-				{ npcTemplate = "nightsister_protector", planetName = "dathomir", npcName = "" }
+				{ npcTemplate = "nightsister_protector", npcName = "" },
+				{ npcTemplate = "nightsister_protector", npcName = "" }
 			},
 			itemSpawns =
 			{
@@ -90,13 +90,13 @@ dolac_legasi_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "dark_jedi_master", planetName = "dathomir", npcName = "" }
+				{ npcTemplate = "dark_jedi_master", npcName = "" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "nightsister_spell_weaver", planetName = "dathomir", npcName = "" },
-				{ npcTemplate = "nightsister_protector", planetName = "dathomir", npcName = "" },
-				{ npcTemplate = "nightsister_protector", planetName = "dathomir", npcName = "" }
+				{ npcTemplate = "nightsister_spell_weaver", npcName = "" },
+				{ npcTemplate = "nightsister_protector", npcName = "" },
+				{ npcTemplate = "nightsister_protector", npcName = "" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -110,14 +110,14 @@ dolac_legasi_missions =
 npcMapDolacLegasi =
 	{
 		{
-			spawnData = { planetName = "dathomir", npcTemplate = "mozo_bondog", x = -6313, z = 128, y = 734, direction = -91, cellID = 0, position = STAND },
+			spawnData = { npcTemplate = "mozo_bondog", x = -6313, z = 128, y = 734, direction = -91, cellID = 0, position = STAND },
 			worldPosition = { x = -6313, y = 734 },
 			npcNumber = 1,
 			stfFile = "@static_npc/dathomir/dathomir_imperialprison_mozo_bondog",
 			missions = mozo_bondog_missions
 		},
 		{
-			spawnData = { planetName = "dathomir", npcTemplate = "dolac_legasi", x = -3.9, z = 0.1, y = -3.8, direction = 85, cellID = 5335777, position = STAND },
+			spawnData = { npcTemplate = "dolac_legasi", x = -3.9, z = 0.1, y = -3.8, direction = 85, cellID = 5335777, position = STAND },
 			worldPosition = { x = -6304, y = 748 },
 			npcNumber = 2,
 			stfFile = "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi",
@@ -126,10 +126,10 @@ npcMapDolacLegasi =
 	}
 
 DolacLegasi = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapDolacLegasi,
 	className = "DolacLegasi",
 	screenPlayState = "dolac_legasi_quest",
+	planetName = "dathomir",
 	distance = 1000,
 	faction = FACTIONIMPERIAL
 }

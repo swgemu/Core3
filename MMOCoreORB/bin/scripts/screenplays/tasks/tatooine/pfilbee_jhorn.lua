@@ -4,11 +4,11 @@ pfilbee_jhorn_missions =
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "greater_desert_womp_rat", planetName = "tatooine", npcName = "a greater desert womp rat" } 
+			{ npcTemplate = "greater_desert_womp_rat", npcName = "a greater desert womp rat" } 
 		}, 
 		secondarySpawns = 
 		{
-				{ npcTemplate = "greater_desert_womp_rat", planetName = "tatooine", npcName = "a greater desert womp rat" }
+				{ npcTemplate = "greater_desert_womp_rat", npcName = "a greater desert womp rat" }
 		},
 		itemSpawns = {}, 
 		rewards = {
@@ -20,11 +20,11 @@ pfilbee_jhorn_missions =
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "tatooine_mynock", planetName = "tatooine", npcName = "a tatooine mynock" } 
+			{ npcTemplate = "tatooine_mynock", npcName = "a tatooine mynock" } 
 		}, 
 		secondarySpawns = 
 		{
-				{ npcTemplate = "tatooine_mynock", planetName = "tatooine", npcName = "a tatooine mynock" }
+				{ npcTemplate = "tatooine_mynock", npcName = "a tatooine mynock" }
 		},
 		itemSpawns = {}, 
 		rewards = {
@@ -36,12 +36,12 @@ pfilbee_jhorn_missions =
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "dragonet", planetName = "tatooine", npcName = "a dragonet" } 
+			{ npcTemplate = "dragonet", npcName = "a dragonet" } 
 		}, 
 		secondarySpawns = 
 		{
-				{ npcTemplate = "dragonet", planetName = "tatooine", npcName = "a dragonet" },
-				{ npcTemplate = "dragonet", planetName = "tatooine", npcName = "a dragonet" }
+				{ npcTemplate = "dragonet", npcName = "a dragonet" },
+				{ npcTemplate = "dragonet", npcName = "a dragonet" }
 		},
 		itemSpawns = {}, 
 		rewards = {
@@ -53,13 +53,13 @@ pfilbee_jhorn_missions =
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "dune_lizard", planetName = "tatooine", npcName = "a dune lizard" } 
+			{ npcTemplate = "dune_lizard", npcName = "a dune lizard" } 
 		}, 
 		secondarySpawns = 
 		{
-				{ npcTemplate = "dune_lizard", planetName = "tatooine", npcName = "a dune lizard" },
-				{ npcTemplate = "dune_lizard", planetName = "tatooine", npcName = "a dune lizard" },
-				{ npcTemplate = "dune_lizard", planetName = "tatooine", npcName = "a dune lizard" }				
+				{ npcTemplate = "dune_lizard", npcName = "a dune lizard" },
+				{ npcTemplate = "dune_lizard", npcName = "a dune lizard" },
+				{ npcTemplate = "dune_lizard", npcName = "a dune lizard" }				
 		},
 		itemSpawns = {}, 
 		rewards = {
@@ -73,7 +73,7 @@ pfilbee_jhorn_missions =
 npcMapPfilbeeJhorn = 
 { 
 	{ 
-		spawnData = { planetName = "tatooine", npcTemplate = "pfilbee_jhorn", x = 4.9, z = 0.1, y = -3.9, direction = -90, cellID = 1279923, position = STAND }, 
+		spawnData = { npcTemplate = "pfilbee_jhorn", x = 4.9, z = 0.1, y = -3.9, direction = -90, cellID = 1279923, position = STAND }, 
 		worldPosition = { x = -1129.4, y = -3914.4 }, 
 		npcNumber = 1, 
 		stfFile = "@static_npc/tatooine/pfilbee_jhorn", 
@@ -82,11 +82,10 @@ npcMapPfilbeeJhorn =
 }
 
 PfilbeeJhorn = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapPfilbeeJhorn,
-	permissionMap = {},
 	className = "PfilbeeJhorn",
 	screenPlayState = "pfilbee_jhorn_quest",
+	planetName = "tatooine",
 	distance = 1000,
 	faction = FACTIONIMPERIAL
 }

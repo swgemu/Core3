@@ -4,7 +4,7 @@ wilhalm_skrim_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "dak_linser", planetName = "tatooine", npcName = "Dak Linser" }
+				{ npcTemplate = "dak_linser", npcName = "Dak Linser" }
 			},
 			secondarySpawns =	{},
 			itemSpawns =
@@ -21,12 +21,12 @@ wilhalm_skrim_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "nethlekvaa", planetName = "tatooine", npcName = "Nethlek'Vaa" }
+				{ npcTemplate = "nethlekvaa", npcName = "Nethlek'Vaa" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "rebel_scout", planetName = "tatooine", npcName = "a Rebel scout" },
-				{ npcTemplate = "rebel_scout", planetName = "tatooine", npcName = "a Rebel scout" }
+				{ npcTemplate = "rebel_scout", npcName = "a Rebel scout" },
+				{ npcTemplate = "rebel_scout", npcName = "a Rebel scout" }
 			},
 			itemSpawns =
 			{
@@ -42,12 +42,12 @@ wilhalm_skrim_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "ananda_dwyce", planetName = "tatooine", npcName = "Ananda Dwyce" }
+				{ npcTemplate = "ananda_dwyce", npcName = "Ananda Dwyce" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "rebel_scout", planetName = "tatooine", npcName = "a Rebel scout" },
-				{ npcTemplate = "rebel_scout", planetName = "tatooine", npcName = "a Rebel scout" }
+				{ npcTemplate = "rebel_scout", npcName = "a Rebel scout" },
+				{ npcTemplate = "rebel_scout", npcName = "a Rebel scout" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -64,7 +64,7 @@ prefect_talmont_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "akkar_plint", planetName = "tatooine", npcName = "Akkar Plint" }
+				{ npcTemplate = "akkar_plint", npcName = "Akkar Plint" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -78,7 +78,7 @@ prefect_talmont_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "gohn_bimmin", planetName = "tatooine", npcName = "Gohn Bimmin" }
+				{ npcTemplate = "gohn_bimmin", npcName = "Gohn Bimmin" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -92,7 +92,7 @@ prefect_talmont_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "tough_wookiee_brawler", planetName = "tatooine", npcName = "Snrrrlagga" }
+				{ npcTemplate = "tough_wookiee_brawler", npcName = "Snrrrlagga" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -106,7 +106,7 @@ prefect_talmont_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "nwilla_tharlyat", planetName = "tatooine", npcName = "Nwilla Thar'Lyat" }
+				{ npcTemplate = "nwilla_tharlyat", npcName = "Nwilla Thar'Lyat" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -119,7 +119,7 @@ prefect_talmont_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "klaua_jik", planetName = "tatooine", npcName = "Klaua Jik" }
+				{ npcTemplate = "klaua_jik", npcName = "Klaua Jik" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -132,7 +132,7 @@ prefect_talmont_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "harbo_linn", planetName = "tatooine", npcName = "Harbo Linn" }
+				{ npcTemplate = "harbo_linn", npcName = "Harbo Linn" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -146,14 +146,14 @@ prefect_talmont_missions =
 npcMapPrefectTalmont =
 	{
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "wilhalm_skrim", x = 28.89, z = 1.3, y = -5.98, direction = 40, cellID = 926482, position = STAND },
+			spawnData = { npcTemplate = "wilhalm_skrim", x = 28.89, z = 1.3, y = -5.98, direction = 40, cellID = 926482, position = STAND },
 			worldPosition = { x = -1182, y = -3609 },
 			npcNumber = 1,
 			stfFile = "@static_npc/tatooine/wilhalm_skrim",
 			missions = wilhalm_skrim_missions
 		},
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "prefect_talmont", x = -1.9, z = 3, y = -10, direction = 180, cellID = 926475, position = STAND },
+			spawnData = { npcTemplate = "prefect_talmont", x = -1.9, z = 3, y = -10, direction = 180, cellID = 926475, position = STAND },
 			worldPosition = { x = -1166, y = -3582 },
 			npcNumber = 2,
 			stfFile = "@static_npc/tatooine/prefect_talmont",
@@ -162,10 +162,10 @@ npcMapPrefectTalmont =
 	}
 
 PrefectTalmont = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapPrefectTalmont,
 	className = "PrefectTalmont",
 	screenPlayState = "prefect_talmont_quest",
+	planetName = "tatooine",
 	distance = 800,
 	faction = FACTIONIMPERIAL
 }

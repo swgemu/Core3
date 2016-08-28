@@ -4,7 +4,7 @@ generic_noble_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "noble_target_heirloom", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "noble_target_heirloom", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -20,7 +20,7 @@ generic_noble_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "noble_target_ledger", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "noble_target_ledger", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -36,7 +36,7 @@ generic_noble_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "noble_target_hyperdrive", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "noble_target_hyperdrive", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -52,7 +52,7 @@ generic_noble_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "noble_target_bowl", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "noble_target_bowl", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -68,7 +68,7 @@ generic_noble_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "noble_target", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "noble_target", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -81,7 +81,7 @@ generic_noble_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "noble_target", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "noble_target", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -94,7 +94,7 @@ generic_noble_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "noble_target", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "noble_target", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -107,7 +107,7 @@ generic_noble_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "noble_target", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "noble_target", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -120,7 +120,7 @@ generic_noble_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "noble_target", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "noble_target", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -136,7 +136,7 @@ generic_noble_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "noble_target", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "noble_target", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -152,7 +152,7 @@ generic_noble_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "noble_target", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "noble_target", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -168,7 +168,7 @@ generic_noble_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "noble_target", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "noble_target", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -192,7 +192,6 @@ npcMapGenericNoble =
 	}
 
 GenericNoble = ThemeParkLogic:new {
-	numberOfActs = 1,
 	genericGiver = true,
 	npcMap = npcMapGenericNoble,
 	className = "GenericNoble",

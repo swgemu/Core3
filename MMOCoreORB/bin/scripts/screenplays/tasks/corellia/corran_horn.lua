@@ -4,12 +4,12 @@ corran_horn_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "chandra_conrad", planetName = "corellia", npcName = "Chandra Conrad" }
+				{ npcTemplate = "chandra_conrad", npcName = "Chandra Conrad" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" },
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" }
+				{ npcTemplate = "thug", npcName = "a thug" },
+				{ npcTemplate = "thug", npcName = "a thug" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -21,14 +21,14 @@ corran_horn_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "obrio_caldori", planetName = "corellia", npcName = "Obrio Caldori" }
+				{ npcTemplate = "obrio_caldori", npcName = "Obrio Caldori" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" },
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" },
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" },
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" }
+				{ npcTemplate = "thug", npcName = "a thug" },
+				{ npcTemplate = "thug", npcName = "a thug" },
+				{ npcTemplate = "thug", npcName = "a thug" },
+				{ npcTemplate = "thug", npcName = "a thug" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -40,15 +40,15 @@ corran_horn_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "voydd_blancken", planetName = "corellia", npcName = "Voydd Blancken" }
+				{ npcTemplate = "voydd_blancken", npcName = "Voydd Blancken" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" },
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" },
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" },
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" },
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" }
+				{ npcTemplate = "thug", npcName = "a thug" },
+				{ npcTemplate = "thug", npcName = "a thug" },
+				{ npcTemplate = "thug", npcName = "a thug" },
+				{ npcTemplate = "thug", npcName = "a thug" },
+				{ npcTemplate = "thug", npcName = "a thug" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -61,7 +61,7 @@ corran_horn_missions =
 npcMapCorranHorn =
 	{
 		{
-			spawnData = { planetName = "corellia", npcTemplate = "corran_horn", x = -2.8, z = 2.5, y = 12.1, direction = 40, cellID = 3075353, position = STAND },
+			spawnData = { npcTemplate = "corran_horn", x = -2.8, z = 2.5, y = 12.1, direction = 40, cellID = 3075353, position = STAND },
 			worldPosition = { x = 3189, y = 5239 },
 			npcNumber = 1,
 			stfFile = "@static_npc/corellia/corran_horn",
@@ -70,10 +70,10 @@ npcMapCorranHorn =
 	}
 
 CorranHorn = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapCorranHorn,
 	className = "CorranHorn",
 	screenPlayState = "corran_horn_quest",
+	planetName = "corellia",
 	distance = 800
 }
 

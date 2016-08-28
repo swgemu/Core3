@@ -4,7 +4,7 @@ luthik_uwyr_missions =
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "ancient_reptillian", planetName = "dantooine", npcName = "Ancient Reptillian" } 
+			{ npcTemplate = "ancient_reptillian", npcName = "Ancient Reptillian" } 
 		}, 
 		secondarySpawns = {},
 		itemSpawns = {}, 
@@ -14,7 +14,7 @@ luthik_uwyr_missions =
 		missionType = "deliver", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "dark_initiate", planetName = "dantooine", npcName = "Dark Initiate" } 
+			{ npcTemplate = "dark_initiate", npcName = "Dark Initiate" } 
 		}, 
 		secondarySpawns = {}, 
 		itemSpawns = 
@@ -27,7 +27,7 @@ luthik_uwyr_missions =
 		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "untrained_padawan", planetName = "dantooine", npcName = "Untrained Padawan" } 
+			{ npcTemplate = "untrained_padawan", npcName = "Untrained Padawan" } 
 		}, 
 		secondarySpawns = {}, 
 		itemSpawns = 
@@ -44,7 +44,7 @@ luthik_uwyr_missions =
 npcMapLuthikUwyr = 
 { 
 	{ 
-		spawnData = { planetName = "dantooine", npcTemplate = "luthik_uwyr", x = 4275.4, z = 8.2, y = 5351.4, direction = -110, cellID = 0, position = STAND }, 
+		spawnData = { npcTemplate = "luthik_uwyr", x = 4275.4, z = 8.2, y = 5351.4, direction = -110, cellID = 0, position = STAND }, 
 		npcNumber = 1,   
 		stfFile = "@static_npc/dantooine/luthik_uwyr", 
 		missions = luthik_uwyr_missions 
@@ -52,11 +52,10 @@ npcMapLuthikUwyr =
 }
 
 LuthikUwyr = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapLuthikUwyr,
-	permissionMap = {},
 	className = "LuthikUwyr",
 	screenPlayState = "luthik_uwyr_quest",
+	planetName = "dantooine",
 	distance = 1000,
 	faction = FACTIONIMPERIAL
 }

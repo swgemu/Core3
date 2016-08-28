@@ -4,7 +4,7 @@ singular_nak_missions =
 		missionType = "confiscate",
 		primarySpawns =
 		{
-			{ npcTemplate = "gruthashaal", planetName = "dathomir", npcName = "Gruthashaal" }
+			{ npcTemplate = "gruthashaal", npcName = "Gruthashaal" }
 		},
 		secondarySpawns =
 		{
@@ -21,7 +21,7 @@ singular_nak_missions =
 		missionType = "deliver", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "trujhazii", planetName = "dathomir", npcName = "Trujhazii" } 
+			{ npcTemplate = "trujhazii", npcName = "Trujhazii" } 
 		}, 
 		secondarySpawns = 
 		{
@@ -38,7 +38,7 @@ singular_nak_missions =
 		missionType = "assassinate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "nightsister_stalker_quest", planetName = "dathomir", npcName = "Nightsister Stalker" } --SORT OUT BETTER NAME
+			{ npcTemplate = "nightsister_stalker_quest", npcName = "Nightsister Stalker" } --SORT OUT BETTER NAME
 		}, 
 		secondarySpawns = 
 		{
@@ -56,7 +56,7 @@ singular_nak_missions =
 npcMapSingularNak =
 {
 	{
-		spawnData = { planetName = "dathomir", npcTemplate = "singular_nak", x = 571.41, z = 6, y = 3091.62, direction = 151, cellID = 0, position = STAND },
+		spawnData = { npcTemplate = "singular_nak", x = 571.41, z = 6, y = 3091.62, direction = 151, cellID = 0, position = STAND },
 		npcNumber = 1,
 		stfFile = "@static_npc/dathomir/dathomir_tradeoutpost_singular_nak",
 		missions = singular_nak_missions
@@ -65,10 +65,10 @@ npcMapSingularNak =
 }
 
 SingularNak = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapSingularNak,
 	className = "SingularNak",
 	screenPlayState = "singular_nak_quest",
+	planetName = "dathomir",
 	distance = 400
 }
 

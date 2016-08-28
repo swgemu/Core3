@@ -4,43 +4,43 @@ THEME_PARK_NYM_BADGE = 108
 npcMapNym =
 	{
 		{
-			spawnData = { planetName = "lok", npcTemplate = "jinkins", x = 3.07003, z = 3.29302, y = -21.31, direction = 0, cellID = 6595511, position = STAND },
+			spawnData = { npcTemplate = "jinkins", x = 3.07003, z = 3.29302, y = -21.31, direction = 0, cellID = 6595511, position = STAND },
 			worldPosition = { x = 478, y = 4768 },
 			npcNumber = 1,
 			stfFile = "@celebrity/jinkins",
 		},
 		{
-			spawnData = { planetName = "lok", npcTemplate = "nym", x = 0, z = 3.27819, y = -22.9, direction = 0, cellID = 6595511, position = SIT },
+			spawnData = { npcTemplate = "nym", x = 0, z = 3.27819, y = -22.9, direction = 0, cellID = 6595511, position = SIT },
 			worldPosition = { x = 475, y = 4766 },
 			npcNumber = 3,
 			stfFile = "@celebrity/nym",
 		},
 		{
-			spawnData = { planetName = "lok", npcTemplate = "kole", x = -3, z = 3.4, y = -21.31, direction = 0, cellID = 6595511, position = STAND },
+			spawnData = { npcTemplate = "kole", x = -3, z = 3.4, y = -21.31, direction = 0, cellID = 6595511, position = STAND },
 			worldPosition = { x = 472, y = 4768 },
 			npcNumber = 2,
 			stfFile = "@celebrity/kole",
 		},
 		{
-			spawnData = { planetName = "lok", npcTemplate = "choster", x = 11.63, z = -0.894992, y = -16.56, direction = 277.008, cellID = 8145381, position = STAND },
+			spawnData = { npcTemplate = "choster", x = 11.63, z = -0.894992, y = -16.56, direction = 277.008, cellID = 8145381, position = STAND },
 			worldPosition = { x = 519, y = 5058 },
 			npcNumber = 1,
 			stfFile = "@celebrity/lok_engineer"
 		},
 		{
-			spawnData = { planetName = "lok", npcTemplate = "lok_hacker", x = -61.9, z = -65.8, y = -142.5, direction = -92, cellID = 5126333, position = STAND },
+			spawnData = { npcTemplate = "lok_hacker", x = -61.9, z = -65.8, y = -142.5, direction = -92, cellID = 5126333, position = STAND },
 			worldPosition = { x = -2847, y = -712 },
 			npcNumber = 1,
 			stfFile = "@celebrity/lok_hacker"
 		},
 		{
-			spawnData = { planetName = "lok", npcTemplate = "berema", x = 14.3, z = -0.9, y = 23.3, direction = 181, cellID = 8145380, position = SIT },
+			spawnData = { npcTemplate = "berema", x = 14.3, z = -0.9, y = 23.3, direction = 181, cellID = 8145380, position = SIT },
 			worldPosition = { x = 496, y = 5092 },
 			npcNumber = 1,
 			stfFile = "@celebrity/lok_gambler"
 		},
 		{
-			spawnData = { planetName = "lok", npcTemplate = "sergeant_moore", x = -36.1, z = 0.1, y = -14.2, direction = 90, cellID = 8145389, position = STAND },
+			spawnData = { npcTemplate = "sergeant_moore", x = -36.1, z = 0.1, y = -14.2, direction = 90, cellID = 8145389, position = STAND },
 			worldPosition = { x = 479, y = 5031 },
 			npcNumber = 1,
 			stfFile = "@celebrity/imperial_bribe"
@@ -49,7 +49,7 @@ npcMapNym =
 
 sceneObjectMapNym = {
 	{
-		spawnData = { planetName = "lok", objectTemplate = "object/tangible/terminal/terminal_nym_cave.iff", x = -60.0, z = -65.8, y = -142.4, cellID = 5126333, dw = 0.6946583704589974, dx = 0, dy = -0.7193398003386511, dz = 0 },
+		spawnData = { objectTemplate = "object/tangible/terminal/terminal_nym_cave.iff", x = -60.0, z = -65.8, y = -142.4, cellID = 5126333, dw = 0.6946583704589974, dx = 0, dy = -0.7193398003386511, dz = 0 },
 		worldPosition = { x = -3027, y = -681 },
 		customObjectName = "Terminal"
 	}
@@ -68,7 +68,6 @@ waypointMapNym = {
 }
 
 ThemeParkNym = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapNym,
 	waypointMap = waypointMapNym,
 	sceneObjectMap = sceneObjectMapNym,
@@ -76,7 +75,8 @@ ThemeParkNym = ThemeParkLogic:new {
 	screenPlayState = "nym_theme_park",
 	missionDescriptionStf = "",
 	missionCompletionMessageStf = "",
-	requiredFaction = "nym"
+	requiredFaction = "nym",
+	planetName = "lok",
 }
 
 -- Customer observer function to handle instant unlocking of area near hacker
@@ -224,11 +224,11 @@ NymContainerComponent = {}
 
 function NymContainerComponent:transferObject(pContainer, pObj, slot)
 	local pPlayer = ThemeParkNym:getObjOwner(pObj)
-	
+
 	if (pPlayer == nil) then
 		return 0
 	end
-	
+
 	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(playerCreo, playerObject)
 		local questObjectPath, correctItemMsg, wrongItemMsg, questState, questStateValue
 		if (SceneObject(pContainer):getObjectName() == "jinkins") then
@@ -336,31 +336,31 @@ end
 
 function ThemeParkNym:getObjOwner(pObj)
 	local pPlayerInv = SceneObject(pObj):getParent()
-	
+
 	if (pPlayerInv == nil) then
 		return nil
 	end
-	
+
 	local parent = SceneObject(pPlayerInv):getParent()
-	
+
 	if (parent == nil) then
 		return nil
 	end
-	
+
 	if (SceneObject(parent):isCreatureObject()) then
 		return parent
 	end
-    
+
 	return nil
 end
 
 function NymContainerComponent:canAddObject(pContainer, pObj, slot)
 	local pPlayer = ThemeParkNym:getObjOwner(pObj)
-	
+
 	if (pPlayer == nil) then
 		return -1
 	end
-	
+
 	local containerSceo = SceneObject(pContainer)
 	local creature = CreatureObject(pPlayer)
 	if (containerSceo:getObjectName() == "jinkins" and creature:hasScreenPlayState(1, "nym_theme_park_jinkinsNpc") and not creature:hasScreenPlayState(2, "nym_theme_park_jinkinsNpc")) then
@@ -385,23 +385,22 @@ theme_park_nym_conv_handler = NymConvoHandler:new {
 
 -- Custom spawnNpcs to handle setting npcs as containers for quest item turnin
 function ThemeParkNym:spawnNpcs()
+	local planetName = self.planetName
 	for i = 1, # self.npcMap do
 		local npcSpawnData = self.npcMap[i].spawnData
-		if isZoneEnabled(npcSpawnData.planetName) then
-			local pNpc = spawnMobile(npcSpawnData.planetName, npcSpawnData.npcTemplate, 1, npcSpawnData.x, npcSpawnData.z, npcSpawnData.y, npcSpawnData.direction, npcSpawnData.cellID)
-			if npcSpawnData.position == SIT then
-				CreatureObject(pNpc):setState(STATESITTINGONCHAIR)
-			end
-			if (npcSpawnData.npcTemplate == "jinkins") or (npcSpawnData.npcTemplate == "kole") or (npcSpawnData.npcTemplate == "nym") then
-				SceneObject(pNpc):setContainerComponent("NymContainerComponent")
-			end
+		local pNpc = spawnMobile(planetName, npcSpawnData.npcTemplate, 1, npcSpawnData.x, npcSpawnData.z, npcSpawnData.y, npcSpawnData.direction, npcSpawnData.cellID)
+		if npcSpawnData.position == SIT then
+			CreatureObject(pNpc):setState(STATESITTINGONCHAIR)
+		end
+		if (npcSpawnData.npcTemplate == "jinkins") or (npcSpawnData.npcTemplate == "kole") or (npcSpawnData.npcTemplate == "nym") then
+			SceneObject(pNpc):setContainerComponent("NymContainerComponent")
 		end
 	end
 end
 
 -- Overrides themepark logic to allow custom function to be called to be called
 function ThemeParkNym:start()
-	if (isZoneEnabled("lok")) then
+	if (isZoneEnabled(self.planetName)) then
 		ThemeParkNym:spawnLootObjects()
 		ThemeParkNym:spawnNpcs()
 		self:spawnSceneObjects()

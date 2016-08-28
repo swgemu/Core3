@@ -4,7 +4,7 @@ kavas_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "cie_vos", planetName = "tatooine", npcName = "Cie Vos" }
+				{ npcTemplate = "cie_vos", npcName = "Cie Vos" }
 			},
 			secondarySpawns =	{},
 			itemSpawns =
@@ -21,7 +21,7 @@ kavas_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "jabba_enforcer", planetName = "tatooine", npcName = "Jabba's enforcer" }
+				{ npcTemplate = "jabba_enforcer", npcName = "Jabba's enforcer" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -35,13 +35,13 @@ kavas_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "ysho", planetName = "tatooine", npcName = "Ysho" }
+				{ npcTemplate = "ysho", npcName = "Ysho" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "jabba_thug", planetName = "tatooine", npcName = "Jabba's thug" },
-				{ npcTemplate = "jabba_thug", planetName = "tatooine", npcName = "Jabba's thug" },
-				{ npcTemplate = "jabba_thug", planetName = "tatooine", npcName = "Jabba's thug" }
+				{ npcTemplate = "jabba_thug", npcName = "Jabba's thug" },
+				{ npcTemplate = "jabba_thug", npcName = "Jabba's thug" },
+				{ npcTemplate = "jabba_thug", npcName = "Jabba's thug" }
 			},
 			itemSpawns =
 			{
@@ -57,7 +57,7 @@ kavas_missions =
 			missionType = "retrieve",
 			primarySpawns =
 			{
-				{ npcTemplate = "kishai", planetName = "tatooine", npcName = "Ki'shai" }
+				{ npcTemplate = "kishai", npcName = "Ki'shai" }
 			},
 			secondarySpawns =	{},
 			itemSpawns =
@@ -74,7 +74,7 @@ kavas_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "jabba_enforcer", planetName = "tatooine", npcName = "Jabba's enforcer" }
+				{ npcTemplate = "jabba_enforcer", npcName = "Jabba's enforcer" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -88,7 +88,7 @@ kavas_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "kavas_jabba_assassin", planetName = "tatooine", npcName = "Jabba's assassin" }
+				{ npcTemplate = "kavas_jabba_assassin", npcName = "Jabba's assassin" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -109,7 +109,7 @@ ind_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "valarian_chief_assassin", planetName = "tatooine", npcName = "Valarian's Chief Assassin" }
+				{ npcTemplate = "valarian_chief_assassin", npcName = "Valarian's Chief Assassin" }
 			},
 			secondarySpawns =	{},
 			itemSpawns =
@@ -126,11 +126,11 @@ ind_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "valarian_compound_guard_quest", planetName = "tatooine", npcName = "Valarian's Compound Guard" }
+				{ npcTemplate = "valarian_compound_guard_quest", npcName = "Valarian's Compound Guard" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "jabba_henchman", planetName = "tatooine", npcName = "Jabba's henchman" }
+				{ npcTemplate = "jabba_henchman", npcName = "Jabba's henchman" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -143,7 +143,7 @@ ind_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "dr_kaum", planetName = "tatooine", npcName = "Dr. Kaum" }
+				{ npcTemplate = "dr_kaum", npcName = "Dr. Kaum" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -158,7 +158,7 @@ ind_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "assassin", planetName = "tatooine", npcName = "Roden Venthral" }
+				{ npcTemplate = "assassin", npcName = "Roden Venthral" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -172,12 +172,12 @@ ind_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "ind_jabba_enforcer", planetName = "tatooine", npcName = "Jabba's enforcer" },
+				{ npcTemplate = "ind_jabba_enforcer", npcName = "Jabba's enforcer" },
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "jabba_enforcer", planetName = "tatooine", npcName = "Jabba's enforcer" },
-				{ npcTemplate = "jabba_enforcer", planetName = "tatooine", npcName = "Jabba's enforcer" }
+				{ npcTemplate = "jabba_enforcer", npcName = "Jabba's enforcer" },
+				{ npcTemplate = "jabba_enforcer", npcName = "Jabba's enforcer" }
 			},
 			itemSpawns =
 			{
@@ -193,14 +193,14 @@ ind_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "ind_jabba_henchman", planetName = "tatooine", npcName = "Jabba's Delivery Boy" }
+				{ npcTemplate = "ind_jabba_henchman", npcName = "Jabba's Delivery Boy" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "jabba_enforcer", planetName = "tatooine", npcName = "Jabba's enforcer" },
-				{ npcTemplate = "jabba_enforcer", planetName = "tatooine", npcName = "Jabba's enforcer" },
-				{ npcTemplate = "jabba_enforcer", planetName = "tatooine", npcName = "Jabba's enforcer" },
-				{ npcTemplate = "jabba_enforcer", planetName = "tatooine", npcName = "Jabba's enforcer" }
+				{ npcTemplate = "jabba_enforcer", npcName = "Jabba's enforcer" },
+				{ npcTemplate = "jabba_enforcer", npcName = "Jabba's enforcer" },
+				{ npcTemplate = "jabba_enforcer", npcName = "Jabba's enforcer" },
+				{ npcTemplate = "jabba_enforcer", npcName = "Jabba's enforcer" }
 			},
 			itemSpawns =
 			{
@@ -220,7 +220,7 @@ lady_valarian_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "jabba_enforcer", planetName = "tatooine", npcName = "Una Gitori" }
+				{ npcTemplate = "jabba_enforcer", npcName = "Una Gitori" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -234,12 +234,12 @@ lady_valarian_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "tough_thug_male_rodian", planetName = "tatooine", npcName = "Soobu Javeedo" }
+				{ npcTemplate = "tough_thug_male_rodian", npcName = "Soobu Javeedo" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "a Thug" },
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "a Thug" }
+				{ npcTemplate = "thug", npcName = "a Thug" },
+				{ npcTemplate = "thug", npcName = "a Thug" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -252,14 +252,14 @@ lady_valarian_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "bodyguard_zabrak_female", planetName = "tatooine", npcName = "Kilth Saanu" }
+				{ npcTemplate = "bodyguard_zabrak_female", npcName = "Kilth Saanu" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "a Thug" },
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "a Thug" },
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "a Thug" },
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "a Thug" }
+				{ npcTemplate = "thug", npcName = "a Thug" },
+				{ npcTemplate = "thug", npcName = "a Thug" },
+				{ npcTemplate = "thug", npcName = "a Thug" },
+				{ npcTemplate = "thug", npcName = "a Thug" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -272,7 +272,7 @@ lady_valarian_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "assassin_twilek_mate", planetName = "tatooine", npcName = "Arrud Barsoomu" }
+				{ npcTemplate = "assassin_twilek_mate", npcName = "Arrud Barsoomu" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -286,11 +286,11 @@ lady_valarian_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "chadra_fan_assassin", planetName = "tatooine", npcName = "Duska Murgo" }
+				{ npcTemplate = "chadra_fan_assassin", npcName = "Duska Murgo" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "ig_assassin_droid", planetName = "tatooine", npcName = "an IG assassin droid" }
+				{ npcTemplate = "ig_assassin_droid", npcName = "an IG assassin droid" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -303,15 +303,15 @@ lady_valarian_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "brigand_assassin", planetName = "tatooine", npcName = "Siron Vurn'ke" },
+				{ npcTemplate = "brigand_assassin", npcName = "Siron Vurn'ke" },
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "weequay_thug", planetName = "tatooine", npcName = "a Weequay Thug" },
-				{ npcTemplate = "weequay_thug", planetName = "tatooine", npcName = "a Weequay Thug" },
-				{ npcTemplate = "weequay_thug", planetName = "tatooine", npcName = "a Weequay Thug" },
-				{ npcTemplate = "weequay_thug", planetName = "tatooine", npcName = "a Weequay Thug" },
-				{ npcTemplate = "weequay_thug", planetName = "tatooine", npcName = "a Weequay Thug" }
+				{ npcTemplate = "weequay_thug", npcName = "a Weequay Thug" },
+				{ npcTemplate = "weequay_thug", npcName = "a Weequay Thug" },
+				{ npcTemplate = "weequay_thug", npcName = "a Weequay Thug" },
+				{ npcTemplate = "weequay_thug", npcName = "a Weequay Thug" },
+				{ npcTemplate = "weequay_thug", npcName = "a Weequay Thug" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -326,21 +326,21 @@ lady_valarian_missions =
 npcMapThemeParkValarian =
 	{
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "lady_valarian", x = -23.84, z = 9.01, y = 0.61, direction = 147, cellID = 1076945, position = STAND },
+			spawnData = { npcTemplate = "lady_valarian", x = -23.84, z = 9.01, y = 0.61, direction = 147, cellID = 1076945, position = STAND },
 			worldPosition = { x = 3363, y = -4607 },
 			npcNumber = 4,
 			stfFile = "@static_npc/tatooine/lady_valarian",
 			missions = lady_valarian_missions
 		},
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "ind", x = -24.62, z = 9.01, y = -8.01, direction = 133.6, cellID = 1076944, position = STAND },
+			spawnData = { npcTemplate = "ind", x = -24.62, z = 9.01, y = -8.01, direction = 133.6, cellID = 1076944, position = STAND },
 			worldPosition = { x = 3366, y = -4615 },
 			npcNumber = 2,
 			stfFile = "@spawning/static_npc/tato_valarian_ind",
 			missions = ind_missions
 		},
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "kavas_urdano", x = -13.79, z = 7.01, y = -3.96, direction = 12, cellID = 1076943, position = STAND },
+			spawnData = { npcTemplate = "kavas_urdano", x = -13.79, z = 7.01, y = -3.96, direction = 12, cellID = 1076943, position = STAND },
 			worldPosition = { x = 3374, y = -4607 },
 			npcNumber = 1,
 			stfFile = "@spawning/static_npc/tato_valarian_kavas_urdano",
@@ -349,11 +349,11 @@ npcMapThemeParkValarian =
 	}
 
 ThemeParkValarian = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapThemeParkValarian,
 	className = "ThemeParkValarian",
 	screenPlayState = "theme_park_valarian",
 	requiresEliteCombat = true,
+	planetName = "tatooine",
 	distance = 800,
 	requiredFaction = "valarian"
 }

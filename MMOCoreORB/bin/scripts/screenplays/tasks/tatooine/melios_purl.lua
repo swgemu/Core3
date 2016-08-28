@@ -4,7 +4,7 @@ melios_purl_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "maikeen_storn", planetName = "tatooine", npcName = "Maikeen Storn" }
+				{ npcTemplate = "maikeen_storn", npcName = "Maikeen Storn" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -17,7 +17,7 @@ melios_purl_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "melios_womp_rat", planetName = "tatooine", npcName = "Mutant Womp Rat" }
+				{ npcTemplate = "melios_womp_rat", npcName = "Mutant Womp Rat" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {
@@ -32,7 +32,7 @@ melios_purl_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "aroy_sekun", planetName = "tatooine", npcName = "Aroy Sekun" }
+				{ npcTemplate = "aroy_sekun", npcName = "Aroy Sekun" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -50,7 +50,7 @@ melios_purl_missions =
 npcMapMeliosPurl =
 	{
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "melios_purl", x = -1.4, z = -0.2, y = 0.6, direction = 315, cellID = 4005383, position = STAND },
+			spawnData = { npcTemplate = "melios_purl", x = -1.4, z = -0.2, y = 0.6, direction = 315, cellID = 4005383, position = STAND },
 			worldPosition = { x = -1314, y = -3489 },
 			npcNumber = 1,
 			stfFile = "@static_npc/tatooine/melios_purl",
@@ -59,10 +59,10 @@ npcMapMeliosPurl =
 	}
 
 MeliosPurl = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapMeliosPurl,
 	className = "MeliosPurl",
 	screenPlayState = "melios_purl_quest",
+	planetName = "tatooine",
 	distance = 800
 }
 

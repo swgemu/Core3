@@ -4,10 +4,10 @@ stella_missions =
 			missionType = "retrieve",
 			primarySpawns =
 			{
-				{ npcTemplate = "bent_spur", planetName = "tatooine", npcName = "Bent Spur" }
+				{ npcTemplate = "bent_spur", npcName = "Bent Spur" }
 			},
 			secondarySpawns = {
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "" }
+				{ npcTemplate = "thug", npcName = "" }
 			},
 			itemSpawns =
 			{
@@ -22,7 +22,7 @@ stella_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "ulek_talstin", planetName = "tatooine", npcName = "Ulek Talstin" }
+				{ npcTemplate = "ulek_talstin", npcName = "Ulek Talstin" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -38,7 +38,7 @@ stella_missions =
 			missionType = "retrieve",
 			primarySpawns =
 			{
-				{ npcTemplate = "chaw_troillya", planetName = "tatooine", npcName = "Chaw Troillya" }
+				{ npcTemplate = "chaw_troillya", npcName = "Chaw Troillya" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -55,7 +55,7 @@ stella_missions =
 npcMapStella =
 	{
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "stella", x = -4.2, z = 0.4, y = -8.7, direction = 39, cellID = 1154122, position = STAND },
+			spawnData = { npcTemplate = "stella", x = -4.2, z = 0.4, y = -8.7, direction = 39, cellID = 1154122, position = STAND },
 			worldPosition = { x = 3772, y = 2395 },
 			npcNumber = 1,
 			stfFile = "@static_npc/tatooine/stella",
@@ -64,11 +64,10 @@ npcMapStella =
 	}
 
 Stella = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapStella,
-	permissionMap = {},
 	className = "Stella",
 	screenPlayState = "stella_task",
+	planetName = "tatooine",
 	distance = 600
 }
 

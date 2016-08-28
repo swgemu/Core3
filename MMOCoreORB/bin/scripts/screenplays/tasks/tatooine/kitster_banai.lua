@@ -4,13 +4,13 @@ kitster_banai_missions =
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "jawa_leader", planetName = "tatooine", npcName = "" }
+			{ npcTemplate = "jawa_leader", npcName = "" }
 		}, 
 		secondarySpawns =
 		{
-			{ npcTemplate = "jawa_henchman", planetName = "tatooine", npcName = "" },
-			{ npcTemplate = "jawa_henchman", planetName = "tatooine", npcName = "" },
-			{ npcTemplate = "jawa_henchman", planetName = "tatooine", npcName = "" }
+			{ npcTemplate = "jawa_henchman", npcName = "" },
+			{ npcTemplate = "jawa_henchman", npcName = "" },
+			{ npcTemplate = "jawa_henchman", npcName = "" }
 		},
 		itemSpawns =
 		{
@@ -28,7 +28,7 @@ kitster_banai_missions =
 		missionType = "assassinate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "deeng", planetName = "tatooine", npcName = "Deeng" }
+			{ npcTemplate = "deeng", npcName = "Deeng" }
 		}, 
 		secondarySpawns =
 		{
@@ -49,18 +49,18 @@ kitster_banai_missions =
 		missionType = "assassinate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "sont_toipo", planetName = "tatooine", npcName = "Sont Toipo" }
+			{ npcTemplate = "sont_toipo", npcName = "Sont Toipo" }
 		}, 
 		secondarySpawns =
 		{
-			{ npcTemplate = "moisture_farmer", planetName = "tatooine", npcName = "" },
-			{ npcTemplate = "moisture_farmer", planetName = "tatooine", npcName = "" },
-			{ npcTemplate = "moisture_farmer", planetName = "tatooine", npcName = "" },
-			{ npcTemplate = "moisture_farmer", planetName = "tatooine", npcName = "" },
-			{ npcTemplate = "moisture_farmer", planetName = "tatooine", npcName = "" },
-			{ npcTemplate = "moisture_farmer", planetName = "tatooine", npcName = "" },
-			{ npcTemplate = "moisture_farmer", planetName = "tatooine", npcName = "" },
-			{ npcTemplate = "moisture_farmer", planetName = "tatooine", npcName = "" }
+			{ npcTemplate = "moisture_farmer", npcName = "" },
+			{ npcTemplate = "moisture_farmer", npcName = "" },
+			{ npcTemplate = "moisture_farmer", npcName = "" },
+			{ npcTemplate = "moisture_farmer", npcName = "" },
+			{ npcTemplate = "moisture_farmer", npcName = "" },
+			{ npcTemplate = "moisture_farmer", npcName = "" },
+			{ npcTemplate = "moisture_farmer", npcName = "" },
+			{ npcTemplate = "moisture_farmer", npcName = "" }
 		}, 
 		itemSpawns = 
 		{
@@ -78,7 +78,7 @@ kitster_banai_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "krin_vel", planetName = "tatooine", npcName = "Krin Vel" }
+			{ npcTemplate = "krin_vel", npcName = "Krin Vel" }
 		}, 
 		secondarySpawns =
 		{
@@ -97,7 +97,7 @@ kitster_banai_missions =
 		missionType = "deliver", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "thermal_det", planetName = "tatooine", npcName = "Thermal Det" }
+			{ npcTemplate = "thermal_det", npcName = "Thermal Det" }
 		}, 
 		secondarySpawns =
 		{
@@ -117,7 +117,7 @@ kitster_banai_missions =
 npcMapKitsterBanai = 
 { 
 	{ 
-		spawnData = { planetName = "tatooine", npcTemplate = "kitster_banai", x = -2887, z = 5, y = 2494, direction = 330, cellID = 0, position = STAND },
+		spawnData = { npcTemplate = "kitster_banai", x = -2887, z = 5, y = 2494, direction = 330, cellID = 0, position = STAND },
 		npcNumber = 1,
 		stfFile = "@static_npc/tatooine/kitster_banai",
 		missions = kitster_banai_missions
@@ -125,11 +125,10 @@ npcMapKitsterBanai =
 }
 
 KitsterBanai = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapKitsterBanai,
-	permissionMap = {},
 	className = "KitsterBanai",
 	screenPlayState = "kitster_banai_quest",
+	planetName = "tatooine",
 	distance = 600
 }
 

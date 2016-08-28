@@ -4,11 +4,11 @@ rakir_banai_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "triggo_binz", planetName = "tatooine", npcName = "Triggo Binz" }
+				{ npcTemplate = "triggo_binz", npcName = "Triggo Binz" }
 			},
 			secondarySpawns = {
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "" },
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "" }
+				{ npcTemplate = "thug", npcName = "" },
+				{ npcTemplate = "thug", npcName = "" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -20,11 +20,11 @@ rakir_banai_missions =
 			missionType = "retrieve",
 			primarySpawns =
 			{
-				{ npcTemplate = "silman_voueen", planetName = "tatooine", npcName = "Silm'an Voueen" }
+				{ npcTemplate = "silman_voueen", npcName = "Silm'an Voueen" }
 			},
 			secondarySpawns = {
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "" },
-				{ npcTemplate = "jabba_thug", planetName = "tatooine", npcName = "" }
+				{ npcTemplate = "thug", npcName = "" },
+				{ npcTemplate = "jabba_thug", npcName = "" }
 			},
 			itemSpawns =
 			{
@@ -39,11 +39,11 @@ rakir_banai_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "deela_quellor", planetName = "tatooine", npcName = "Deela Quellor" }
+				{ npcTemplate = "deela_quellor", npcName = "Deela Quellor" }
 			},
 			secondarySpawns = {
-				{ npcTemplate = "jabba_thug", planetName = "tatooine", npcName = "" },
-				{ npcTemplate = "jabba_thug", planetName = "tatooine", npcName = "" }
+				{ npcTemplate = "jabba_thug", npcName = "" },
+				{ npcTemplate = "jabba_thug", npcName = "" }
 			},
 			itemSpawns = {
 			},
@@ -56,11 +56,11 @@ rakir_banai_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "wizzel", planetName = "tatooine", npcName = "Wizzel" }
+				{ npcTemplate = "wizzel", npcName = "Wizzel" }
 			},
 			secondarySpawns = {
-				{ npcTemplate = "mercenary_aggro", planetName = "tatooine", npcName = "Mercenary" },
-				{ npcTemplate = "mercenary_aggro", planetName = "tatooine", npcName = "Mercenary" }
+				{ npcTemplate = "mercenary_aggro", npcName = "Mercenary" },
+				{ npcTemplate = "mercenary_aggro", npcName = "Mercenary" }
 			},
 			itemSpawns =
 			{
@@ -77,7 +77,7 @@ rakir_banai_missions =
 npcMapRakirBanai =
 	{
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "rakir_banai", x = -5043, z = 75, y = -6600.3, direction = 214, cellID = 0, position = SIT },
+			spawnData = { npcTemplate = "rakir_banai", x = -5043, z = 75, y = -6600.3, direction = 214, cellID = 0, position = SIT },
 			npcNumber = 1,
 			stfFile = "@static_npc/tatooine/rakir_banai",
 			missions = rakir_banai_missions
@@ -85,11 +85,10 @@ npcMapRakirBanai =
 	}
 
 RakirBanai = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapRakirBanai,
-	permissionMap = {},
 	className = "RakirBanai",
 	screenPlayState = "rakir_banai_task",
+	planetName = "tatooine",
 	distance = 600
 }
 

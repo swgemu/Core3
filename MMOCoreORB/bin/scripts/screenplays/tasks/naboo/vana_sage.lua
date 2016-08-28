@@ -4,12 +4,12 @@ vana_sage_missions =
 			missionType = "retrieve",
 			primarySpawns =
 			{
-				{ npcTemplate = "vana_pilot", planetName = "naboo", npcName = "Pilot" }
+				{ npcTemplate = "vana_pilot", npcName = "Pilot" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "vana_thug", planetName = "naboo", npcName = "Thug" },
-				{ npcTemplate = "vana_thug", planetName = "naboo", npcName = "Thug" },
+				{ npcTemplate = "vana_thug", npcName = "Thug" },
+				{ npcTemplate = "vana_thug", npcName = "Thug" },
 			},
 			itemSpawns =
 			{
@@ -24,12 +24,12 @@ vana_sage_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "vana_captain", planetName = "naboo", npcName = "Captain Vanool" }
+				{ npcTemplate = "vana_captain", npcName = "Captain Vanool" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "gungan_outcast", planetName = "naboo", npcName = "Gungan Raider" },
-				{ npcTemplate = "gungan_outcast", planetName = "naboo", npcName = "Gungan Raider" },
+				{ npcTemplate = "gungan_outcast", npcName = "Gungan Raider" },
+				{ npcTemplate = "gungan_outcast", npcName = "Gungan Raider" },
 			},
 			itemSpawns = {},
 			rewards =
@@ -41,13 +41,13 @@ vana_sage_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "gungan_leader", planetName = "naboo", npcName = "Gungan Leader" }
+				{ npcTemplate = "gungan_leader", npcName = "Gungan Leader" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "gungan_thug", planetName = "naboo", npcName = "Gungan Raider" },
-				{ npcTemplate = "gungan_thug", planetName = "naboo", npcName = "Gungan Raider" },
-				{ npcTemplate = "gungan_thug", planetName = "naboo", npcName = "Gungan Raider" },
+				{ npcTemplate = "gungan_thug", npcName = "Gungan Raider" },
+				{ npcTemplate = "gungan_thug", npcName = "Gungan Raider" },
+				{ npcTemplate = "gungan_thug", npcName = "Gungan Raider" },
 			},
 			itemSpawns = {},
 			rewards =
@@ -60,7 +60,7 @@ vana_sage_missions =
 npcMapVanaSage =
 	{
 		{
-			spawnData = { planetName = "naboo", npcTemplate = "vana_sage", x = 1276.1, z = 13.0, y = 2744.8, direction = -82, cellID = 0, position = STAND },
+			spawnData = { npcTemplate = "vana_sage", x = 1276.1, z = 13.0, y = 2744.8, direction = -82, cellID = 0, position = STAND },
 			worldPosition = { x = 1276, y = 2744 },
 			npcNumber = 1,
 			stfFile = "@static_npc/naboo/vana_sage",
@@ -69,10 +69,10 @@ npcMapVanaSage =
 	}
 
 VanaSage = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapVanaSage,
 	className = "VanaSage",
 	screenPlayState = "vana_sage_quest",
+	planetName = "naboo",
 	distance = 600
 }
 

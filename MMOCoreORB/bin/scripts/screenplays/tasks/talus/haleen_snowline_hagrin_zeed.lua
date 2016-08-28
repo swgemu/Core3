@@ -4,11 +4,11 @@ haleen_snowline_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "haleen_reactionist", planetName = "talus", npcName = "" }
+				{ npcTemplate = "haleen_reactionist", npcName = "" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "haleen_thug", planetName = "talus", npcName = "a Thug" },
+				{ npcTemplate = "haleen_thug", npcName = "a Thug" },
 			},
 			itemSpawns =
 			{
@@ -23,12 +23,12 @@ haleen_snowline_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "haleen_activist", planetName = "talus", npcName = "" }
+				{ npcTemplate = "haleen_activist", npcName = "" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "haleen_reactionist2", planetName = "talus", npcName = "" },
-				{ npcTemplate = "haleen_reactionist2", planetName = "talus", npcName = "" },
+				{ npcTemplate = "haleen_reactionist2", npcName = "" },
+				{ npcTemplate = "haleen_reactionist2", npcName = "" },
 			},
 			itemSpawns =
 			{
@@ -47,11 +47,11 @@ hagrin_zeed_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "hagrin_information_broker", planetName = "talus", npcName = "Information Broker" }
+				{ npcTemplate = "hagrin_information_broker", npcName = "Information Broker" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "hagrin_thug", planetName = "talus", npcName = "a Thug" },
+				{ npcTemplate = "hagrin_thug", npcName = "a Thug" },
 			},
 			itemSpawns =
 			{
@@ -66,11 +66,11 @@ hagrin_zeed_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "hagrin_information_broker", planetName = "talus", npcName = "Information Broker" }
+				{ npcTemplate = "hagrin_information_broker", npcName = "Information Broker" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "hagrin_thug", planetName = "talus", npcName = "a Thug" },
+				{ npcTemplate = "hagrin_thug", npcName = "a Thug" },
 			},
 			itemSpawns =
 			{
@@ -85,12 +85,12 @@ hagrin_zeed_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "owetary", planetName = "talus", npcName = "Owetary" }
+				{ npcTemplate = "owetary", npcName = "Owetary" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "hagrin_fed_dub_patrolman", planetName = "talus", npcName = "" },
-				{ npcTemplate = "hagrin_fed_dub_patrolman", planetName = "talus", npcName = "" },
+				{ npcTemplate = "hagrin_fed_dub_patrolman", npcName = "" },
+				{ npcTemplate = "hagrin_fed_dub_patrolman", npcName = "" },
 			},
 			itemSpawns = {},
 			rewards =
@@ -102,12 +102,12 @@ hagrin_zeed_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "hagrin_aide", planetName = "talus", npcName = "Blackmailer" }
+				{ npcTemplate = "hagrin_aide", npcName = "Blackmailer" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "hagrin_fed_dub_patrolman", planetName = "talus", npcName = "" },
-				{ npcTemplate = "hagrin_fed_dub_patrolman", planetName = "talus", npcName = "" },
+				{ npcTemplate = "hagrin_fed_dub_patrolman", npcName = "" },
+				{ npcTemplate = "hagrin_fed_dub_patrolman", npcName = "" },
 			},
 			itemSpawns = {},
 			rewards =
@@ -120,14 +120,14 @@ hagrin_zeed_missions =
 npcMapHaleenSnowlineHagrinZeed =
 	{
 		{
-			spawnData = { planetName = "talus", npcTemplate = "haleen_snowline", x = -0.1, z = 3.12, y = 19.3, direction = 0, cellID = 6255466, position = STAND },
+			spawnData = { npcTemplate = "haleen_snowline", x = -0.1, z = 3.12, y = 19.3, direction = 0, cellID = 6255466, position = STAND },
 			worldPosition = { x = 683, y = -3152 },
 			npcNumber = 1,
 			stfFile = "@static_npc/talus/talus_dearic_haleen_snowline",
 			missions = haleen_snowline_missions
 		},
 		{
-			spawnData = { planetName = "talus", npcTemplate = "hagrin_zeed", x = -35.8, z = 1.3, y = -3.0, direction = 53, cellID = 6255471, position = SIT },
+			spawnData = { npcTemplate = "hagrin_zeed", x = -35.8, z = 1.3, y = -3.0, direction = 53, cellID = 6255471, position = SIT },
 			worldPosition = { x = 653, y = -3177 },
 			npcNumber = 2,
 			stfFile = "@static_npc/talus/talus_dearic_hagrin_zeed",
@@ -136,10 +136,10 @@ npcMapHaleenSnowlineHagrinZeed =
 	}
 
 HaleenSnowlineHagrinZeed = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapHaleenSnowlineHagrinZeed,
 	className = "HaleenSnowlineHagrinZeed",
 	screenPlayState = "haleen_snowline_hagrin_zeed_quest",
+	planetName = "talus",
 	distance = 800
 }
 

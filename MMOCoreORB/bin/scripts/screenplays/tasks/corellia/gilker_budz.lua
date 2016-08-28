@@ -4,11 +4,11 @@ gilker_budz_missions =
 			missionType = "retrieve",
 			primarySpawns =
 			{
-				{ npcTemplate = "sneeroos", planetName = "corellia", npcName = "Snee-Roos" }
+				{ npcTemplate = "sneeroos", npcName = "Snee-Roos" }
 			},
 			secondarySpawns =	
 			{
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" }
+				{ npcTemplate = "thug", npcName = "a thug" }
 			},
 			itemSpawns =
 			{
@@ -24,7 +24,7 @@ gilker_budz_missions =
 npcMapGilkerBudz =
 	{
 		{
-			spawnData = { planetName = "corellia", npcTemplate = "gilker_budz", x = -3336.21, z = 72.4231, y = 2926.19, direction = 277.144, cellID = 0, position = STAND },
+			spawnData = { npcTemplate = "gilker_budz", x = -3336.21, z = 72.4231, y = 2926.19, direction = 277.144, cellID = 0, position = STAND },
 			worldPosition = { x = -3336, y = 2926 },
 			npcNumber = 1,
 			stfFile = "@static_npc/corellia/gilker_budz",
@@ -33,10 +33,10 @@ npcMapGilkerBudz =
 	}
 
 GilkerBudz = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapGilkerBudz,
 	className = "GilkerBudz",
 	screenPlayState = "gilker_budz_quest",
+	planetName = "corellia",
 	distance = 800
 }
 

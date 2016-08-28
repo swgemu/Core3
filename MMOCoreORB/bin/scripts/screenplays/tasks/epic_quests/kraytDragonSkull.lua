@@ -4,10 +4,11 @@ huff_darklighter_missions =
 	{
 		{
 			missionType = "escort",
+			planetName = "tatooine",
 			preReq = { type = "state", screenPlayState = "krayt_skull_epic_quest", state = 2 },
 			primarySpawns =
 			{
-				{ npcTemplate = "huff_niece", planetName = "tatooine", npcName = "Huff's Niece" }
+				{ npcTemplate = "huff_niece", npcName = "Huff's Niece" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -18,9 +19,10 @@ huff_darklighter_missions =
 		},
 		{
 			missionType = "assassinate",
+			planetName = "tatooine",
 			primarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "Slaver" }
+				{ npcTemplate = "thug", npcName = "Slaver" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -35,10 +37,11 @@ huff_guard_missions =
 	{
 		{
 			missionType = "deliver",
+			planetName = "tatooine",
 			preReq = { type = "item", itemTemplate = "object/tangible/loot/quest/rifle_quest_tusken.iff", destroy = false },
 			primarySpawns =
 			{
-				{ npcTemplate = "huff_delivery_guy", planetName = "tatooine", npcName = "Delivery Guy" }
+				{ npcTemplate = "huff_delivery_guy", npcName = "Delivery Guy" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -53,10 +56,11 @@ borvo_the_hutt_missions =
 	{
 		{
 			missionType = "assassinate",
+			planetName = "naboo",
 			preReq = { type = "state", screenPlayState = "krayt_skull_epic_quest", state = 1 },
 			primarySpawns =
 			{
-				{ npcTemplate = "srio", planetName = "naboo", npcName = "Sri-O" }
+				{ npcTemplate = "srio", npcName = "Sri-O" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -67,9 +71,10 @@ borvo_the_hutt_missions =
 		},
 		{
 			missionType = "confiscate",
+			planetName = "naboo",
 			primarySpawns =
 			{
-				{ npcTemplate = "montrus", planetName = "naboo", npcName = "Montrus" }
+				{ npcTemplate = "montrus", npcName = "Montrus" }
 			},
 			secondarySpawns =	{},
 			itemSpawns =
@@ -87,10 +92,11 @@ thale_dusturnner_missions =
 	{
 		{
 			missionType = "assassinate",
+			planetName = "corellia",
 			preReq = { type = "item", itemTemplate = "object/tangible/loot/quest/huff_quest_corsec_badge.iff", destroy = false },
 			primarySpawns =
 			{
-				{ npcTemplate = "aldalad", planetName = "corellia", npcName = "Aldalad" }
+				{ npcTemplate = "aldalad", npcName = "Aldalad" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -101,9 +107,10 @@ thale_dusturnner_missions =
 		},
 		{
 			missionType = "confiscate",
+			planetName = "corellia",
 			primarySpawns =
 			{
-				{ npcTemplate = "maerzen", planetName = "corellia", npcName = "Maerzen" }
+				{ npcTemplate = "maerzen", npcName = "Maerzen" }
 			},
 			secondarySpawns =	{},
 			itemSpawns =
@@ -121,9 +128,10 @@ borvo_guard_missions =
 	{
 		{
 			missionType = "escort",
+			planetName = "naboo",
 			primarySpawns =
 			{
-				{ npcTemplate = "dagorel", planetName = "naboo", npcName = "Dagorel" }
+				{ npcTemplate = "dagorel", npcName = "Dagorel" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -134,9 +142,10 @@ borvo_guard_missions =
 		},
 		{
 			missionType = "confiscate",
+			planetName = "naboo",
 			primarySpawns =
 			{
-				{ npcTemplate = "frangee", planetName = "naboo", npcName = "Frangee" }
+				{ npcTemplate = "frangee", npcName = "Frangee" }
 			},
 			secondarySpawns =	{},
 			itemSpawns =
@@ -190,10 +199,10 @@ npcMapKraytDragonSkull =
 	}
 
 KraytDragonSkull = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapKraytDragonSkull,
 	className = "KraytDragonSkull",
 	screenPlayState = "krayt_dragon_skull",
+	requiredPlanets = { "naboo", "corellia", "tatooine" },
 	distance = 800
 }
 
@@ -284,19 +293,25 @@ end
 
 -- Custom spawnNpcs to handle setting npcs as containers for quest item turnin
 function KraytDragonSkull:spawnNpcs()
+	local planetName = self.planetName
 	for i = 1, # self.npcMap do
 		local npcSpawnData = self.npcMap[i].spawnData
-		if isZoneEnabled(npcSpawnData.planetName) then
-			local pNpc = spawnMobile(npcSpawnData.planetName, npcSpawnData.npcTemplate, 1, npcSpawnData.x, npcSpawnData.z, npcSpawnData.y, npcSpawnData.direction, npcSpawnData.cellID)
-			if pNpc ~= nil and npcSpawnData.position == SIT then
-				CreatureObject(pNpc):setState(STATESITTINGONCHAIR)
-			end
 
-			if pNpc ~= nil and npcSpawnData.npcTemplate == "borvo_the_hutt" or npcSpawnData.npcTemplate == "huff_darklighter" then
-				SceneObject(pNpc):setContainerComponent("KraytSkullContainerComponent")
-			end
+		if (npcSpawnData.planetName ~= nil and npcSpawnData.planetName ~= "") then
+			planetName = npcSpawnData.planetName
+		end
+
+		local pNpc = spawnMobile(npcSpawnData.planetName, npcSpawnData.npcTemplate, 1, npcSpawnData.x, npcSpawnData.z, npcSpawnData.y, npcSpawnData.direction, npcSpawnData.cellID)
+		if pNpc ~= nil and npcSpawnData.position == SIT then
+			CreatureObject(pNpc):setState(STATESITTINGONCHAIR)
+		end
+
+		if pNpc ~= nil and npcSpawnData.npcTemplate == "borvo_the_hutt" or npcSpawnData.npcTemplate == "huff_darklighter" then
+			SceneObject(pNpc):setContainerComponent("KraytSkullContainerComponent")
 		end
 	end
+	
+	return true
 end
 
 krayt_dragon_skull_mission_giver_conv_handler = mission_giver_conv_handler:new {

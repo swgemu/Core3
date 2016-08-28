@@ -4,12 +4,12 @@ xalox_guul_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "xalox_informant", planetName = "talus", npcName = "Bothan Informant" }
+				{ npcTemplate = "xalox_informant", npcName = "Bothan Informant" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "xalox_smuggler", planetName = "talus", npcName = "a Smuggler" },
-				{ npcTemplate = "xalox_smuggler", planetName = "talus", npcName = "a Smuggler" },
+				{ npcTemplate = "xalox_smuggler", npcName = "a Smuggler" },
+				{ npcTemplate = "xalox_smuggler", npcName = "a Smuggler" },
 			},
 			itemSpawns = {},
 			rewards =
@@ -22,12 +22,12 @@ xalox_guul_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "xalox_smuggler2", planetName = "talus", npcName = "Smuggler" },
+				{ npcTemplate = "xalox_smuggler2", npcName = "Smuggler" },
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "xalox_criminal", planetName = "talus", npcName = "a Criminal" },
-				{ npcTemplate = "xalox_criminal", planetName = "talus", npcName = "a Criminal" },
+				{ npcTemplate = "xalox_criminal", npcName = "a Criminal" },
+				{ npcTemplate = "xalox_criminal", npcName = "a Criminal" },
 			},
 			itemSpawns =
 			{
@@ -43,14 +43,14 @@ xalox_guul_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "xalox_slicer", planetName = "talus", npcName = "Data Slicer" },
+				{ npcTemplate = "xalox_slicer", npcName = "Data Slicer" },
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "xalox_criminal", planetName = "talus", npcName = "a Criminal" },
-				{ npcTemplate = "xalox_criminal", planetName = "talus", npcName = "a Criminal" },
-				{ npcTemplate = "xalox_criminal", planetName = "talus", npcName = "a Criminal" },
-				{ npcTemplate = "xalox_criminal", planetName = "talus", npcName = "a Criminal" },
+				{ npcTemplate = "xalox_criminal", npcName = "a Criminal" },
+				{ npcTemplate = "xalox_criminal", npcName = "a Criminal" },
+				{ npcTemplate = "xalox_criminal", npcName = "a Criminal" },
+				{ npcTemplate = "xalox_criminal", npcName = "a Criminal" },
 			},
 			itemSpawns = {},
 			rewards =
@@ -64,7 +64,7 @@ xalox_guul_missions =
 npcMapXaloxGuul =
 	{
 		{
-			spawnData = { planetName = "talus", npcTemplate = "xalox_guul", x = 5.3, z = -0.1, y = -3.9, direction = -90, cellID = 4965435, position = SIT },
+			spawnData = { npcTemplate = "xalox_guul", x = 5.3, z = -0.1, y = -3.9, direction = -90, cellID = 4965435, position = SIT },
 			worldPosition = { x = -2180, y = 2262 },
 			npcNumber = 1,
 			stfFile = "@static_npc/talus/talus_imperialoutpost_xalox_guul",
@@ -73,10 +73,10 @@ npcMapXaloxGuul =
 	}
 
 XaloxGuul = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapXaloxGuul,
 	className = "XaloxGuul",
 	screenPlayState = "xalox_guul_quest",
+	planetName = "talus",
 	distance = 800,
 	faction = FACTIONIMPERIAL
 }

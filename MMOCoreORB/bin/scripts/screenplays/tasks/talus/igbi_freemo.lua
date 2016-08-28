@@ -4,7 +4,7 @@ igbi_freemo_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "igbi_hutt_operative", planetName = "talus", npcName = "a Hutt operative" }
+				{ npcTemplate = "igbi_hutt_operative", npcName = "a Hutt operative" }
 			},
 			secondarySpawns =	{ },
 			itemSpawns = { },
@@ -17,12 +17,12 @@ igbi_freemo_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "igbi_hutt_hotshot", planetName = "talus", npcName = "Hutt hotshot" }
+				{ npcTemplate = "igbi_hutt_hotshot", npcName = "Hutt hotshot" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "igbi_thug", planetName = "talus", npcName = "a Thug" },
-				{ npcTemplate = "igbi_thug", planetName = "talus", npcName = "a Thug" },
+				{ npcTemplate = "igbi_thug", npcName = "a Thug" },
+				{ npcTemplate = "igbi_thug", npcName = "a Thug" },
 			},
 			itemSpawns = 
 			{
@@ -38,7 +38,7 @@ igbi_freemo_missions =
 npcMapIgbiFreemo =
 	{
 		{
-			spawnData = { planetName = "talus", npcTemplate = "igbi_freemo", x = 4541, z = 2, y = 5069, direction = 145, cellID = 0, position = STAND },
+			spawnData = { npcTemplate = "igbi_freemo", x = 4541, z = 2, y = 5069, direction = 145, cellID = 0, position = STAND },
 			worldPosition = { x = 4541, y = 5069 },
 			npcNumber = 1,
 			stfFile = "@static_npc/talus/talus_nashal_igbi_freemo",
@@ -47,10 +47,10 @@ npcMapIgbiFreemo =
 	}
 
 IgbiFreemo = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapIgbiFreemo,
 	className = "IgbiFreemo",
 	screenPlayState = "igbi_freemo_quest",
+	planetName = "talus",
 	distance = 800
 }
 

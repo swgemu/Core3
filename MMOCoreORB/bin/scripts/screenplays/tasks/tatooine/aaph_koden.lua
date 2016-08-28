@@ -4,7 +4,7 @@ aaph_koden_missions =
 		missionType = "deliver",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "talia_reede", planetName = "tatooine", npcName = "Talia Reede" }
+			{ npcTemplate = "talia_reede", npcName = "Talia Reede" }
 		}, 
 		secondarySpawns =
 		{
@@ -23,12 +23,12 @@ aaph_koden_missions =
 		missionType = "assassinate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "stormtrooper_groupleader", planetName = "tatooine", npcName = "GK-72" } 
+			{ npcTemplate = "stormtrooper_groupleader", npcName = "GK-72" } 
 		}, 
 		secondarySpawns = 
 		{
-			{ npcTemplate = "stormtrooper", planetName = "tatooine", npcName = "Imperial Storm Trooper" },
-			{ npcTemplate = "stormtrooper", planetName = "tatooine", npcName = "Imperial Storm Trooper" }
+			{ npcTemplate = "stormtrooper", npcName = "Imperial Storm Trooper" },
+			{ npcTemplate = "stormtrooper", npcName = "Imperial Storm Trooper" }
 		},
 		itemSpawns = {}, 
 		rewards = 
@@ -40,12 +40,12 @@ aaph_koden_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "talia_reede", planetName = "tatooine", npcName = "Talia Reede" } 
+			{ npcTemplate = "talia_reede", npcName = "Talia Reede" } 
 		}, 
 		secondarySpawns = {
-			{ npcTemplate = "stormtrooper", planetName = "tatooine", npcName = "Imperial Storm Trooper" },
-			{ npcTemplate = "stormtrooper", planetName = "tatooine", npcName = "Imperial Storm Trooper" },
-			{ npcTemplate = "stormtrooper", planetName = "tatooine", npcName = "Imperial Storm Trooper" },
+			{ npcTemplate = "stormtrooper", npcName = "Imperial Storm Trooper" },
+			{ npcTemplate = "stormtrooper", npcName = "Imperial Storm Trooper" },
+			{ npcTemplate = "stormtrooper", npcName = "Imperial Storm Trooper" },
 		}, 
 		itemSpawns = {}, 
 		rewards = 
@@ -59,7 +59,7 @@ aaph_koden_missions =
 npcMapAaphKoden = 
 { 
 	{ 
-		spawnData = { planetName = "tatooine", npcTemplate = "aaph_koden", x = 130.0, z = 52.0, y = -5399.6, direction = -67, cellID = 0, position = STAND },
+		spawnData = { npcTemplate = "aaph_koden", x = 130.0, z = 52.0, y = -5399.6, direction = -67, cellID = 0, position = STAND },
 		npcNumber = 1,
 		stfFile = "@static_npc/tatooine/aaph_koden",
 		missions = aaph_koden_missions
@@ -67,11 +67,10 @@ npcMapAaphKoden =
 }
 
 AaphKoden = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapAaphKoden,
-	permissionMap = {},
 	className = "AaphKoden",
 	screenPlayState = "aaph_koden_quest",
+	planetName = "tatooine",
 	distance = 600,
 	faction = FACTIONREBEL
 

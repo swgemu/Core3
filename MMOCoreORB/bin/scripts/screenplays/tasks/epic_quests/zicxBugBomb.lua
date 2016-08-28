@@ -4,18 +4,19 @@ jowir_arlensa_missions =
 	{
 		{
 			missionType = "confiscate",
+			planetName = "tatooine",
 			preReq = { type = "item", itemTemplate = "object/tangible/loot/quest/quest_item_goru_calling_card.iff", destroy = true },
 			primarySpawns =
 			{
-				{ npcTemplate = "jowir_valarian_assassin", planetName = "tatooine", npcName = "Valarian Assassin" },
+				{ npcTemplate = "jowir_valarian_assassin", npcName = "Valarian Assassin" },
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "valarian_assassin", planetName = "tatooine", npcName = "Valarian Assassin" },
-				{ npcTemplate = "valarian_enforcer", planetName = "tatooine", npcName = "Valarian Enforcer" },
-				{ npcTemplate = "valarian_enforcer", planetName = "tatooine", npcName = "Valarian Enforcer" },
-				{ npcTemplate = "valarian_henchman", planetName = "tatooine", npcName = "Valarian Henchman" },
-				{ npcTemplate = "valarian_scout", planetName = "tatooine", npcName = "Valarian Scout" },
+				{ npcTemplate = "valarian_assassin", npcName = "Valarian Assassin" },
+				{ npcTemplate = "valarian_enforcer", npcName = "Valarian Enforcer" },
+				{ npcTemplate = "valarian_enforcer", npcName = "Valarian Enforcer" },
+				{ npcTemplate = "valarian_henchman", npcName = "Valarian Henchman" },
+				{ npcTemplate = "valarian_scout", npcName = "Valarian Scout" },
 			},
 			itemSpawns =
 			{
@@ -32,15 +33,16 @@ palu_zerk_missions =
 	{
 		{
 			missionType = "escort",
+			planetName = "tatooine",
 			primarySpawns =
 			{
-				{ npcTemplate = "feinu_zerk", planetName = "tatooine", npcName = "Feinu Zerk" }
+				{ npcTemplate = "feinu_zerk", npcName = "Feinu Zerk" }
 			},
 			secondarySpawns = {
-				{ npcTemplate = "valarian_swooper_leader", planetName = "tatooine", npcName = "Valarian Swooper Leader" },
-				{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
-				{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
-				{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
+				{ npcTemplate = "valarian_swooper_leader", npcName = "Valarian Swooper Leader" },
+				{ npcTemplate = "valarian_thug", npcName = "Valarian Thug" },
+				{ npcTemplate = "valarian_thug", npcName = "Valarian Thug" },
+				{ npcTemplate = "valarian_thug", npcName = "Valarian Thug" },
 			},
 			itemSpawns = {},
 			rewards =
@@ -74,10 +76,10 @@ npcMapZicx =
 	}
 
 ZicxBugBomb = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapZicx,
 	className = "ZicxBugBomb",
 	screenPlayState = "zicx_bug_bomb",
+	requiredPlanets = { "rori", "tatooine" },
 	distance = 200,
 }
 
@@ -166,17 +168,21 @@ end
 
 -- Custom spawnNpcs to handle setting npcs as containers for quest item turnin
 function ZicxBugBomb:spawnNpcs()
+	local planetName = self.planetName
 	for i = 1, # self.npcMap do
 		local npcSpawnData = self.npcMap[i].spawnData
-		if isZoneEnabled(npcSpawnData.planetName) then
-			local pNpc = spawnMobile(npcSpawnData.planetName, npcSpawnData.npcTemplate, 1, npcSpawnData.x, npcSpawnData.z, npcSpawnData.y, npcSpawnData.direction, npcSpawnData.cellID)
 
-			if pNpc ~= nil and npcSpawnData.position == SIT then
-				CreatureObject(pNpc):setState(STATESITTINGONCHAIR)
-			end
-			if (pNpc ~= nil and npcSpawnData.npcTemplate == "goru_rainstealer") then
-				SceneObject(pNpc):setContainerComponent("ZicxContainerComponent")
-			end
+		if (npcSpawnData.planetName ~= nil and npcSpawnData.planetName ~= "") then
+			planetName = npcSpawnData.planetName
+		end
+
+		local pNpc = spawnMobile(planetName, npcSpawnData.npcTemplate, 1, npcSpawnData.x, npcSpawnData.z, npcSpawnData.y, npcSpawnData.direction, npcSpawnData.cellID)
+
+		if pNpc ~= nil and npcSpawnData.position == SIT then
+			CreatureObject(pNpc):setState(STATESITTINGONCHAIR)
+		end
+		if (pNpc ~= nil and npcSpawnData.npcTemplate == "goru_rainstealer") then
+			SceneObject(pNpc):setContainerComponent("ZicxContainerComponent")
 		end
 	end
 end
@@ -194,12 +200,3 @@ zicx_bug_bomb_mission_target_conv_handler = mission_target_conv_handler:new {
 epic_quest_zicx_bug_bomb_goru = GoruConvoHandler:new {
 	themePark = ZicxBugBomb
 }
-
--- Overrides themepark logic to allow custom function to be called to be called
-function ZicxBugBomb:start()
-	if (isZoneEnabled("rori") and isZoneEnabled("tatooine")) then
-		ZicxBugBomb:spawnNpcs()
-		self:spawnSceneObjects()
-		self:permissionObservers()
-	end
-end

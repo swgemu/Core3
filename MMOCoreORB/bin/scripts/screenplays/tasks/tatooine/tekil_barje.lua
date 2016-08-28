@@ -4,12 +4,12 @@ tekil_barje_missions =
 		missionType = "deliver",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "digger_dimms", planetName = "tatooine", npcName = "Dagonel \"Digger\" Dimms" } 
+			{ npcTemplate = "digger_dimms", npcName = "Dagonel \"Digger\" Dimms" } 
 		}, 
 		secondarySpawns = {
-			{ npcTemplate = "womp_rat", planetName = "tatooine", npcName = "Womprat" },
-			{ npcTemplate = "womp_rat", planetName = "tatooine", npcName = "Womprat" },
-			{ npcTemplate = "womp_rat", planetName = "tatooine", npcName = "Womprat" }
+			{ npcTemplate = "womp_rat", npcName = "Womprat" },
+			{ npcTemplate = "womp_rat", npcName = "Womprat" },
+			{ npcTemplate = "womp_rat", npcName = "Womprat" }
 		},
 		itemSpawns =
 		{
@@ -25,11 +25,11 @@ tekil_barje_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "digger_dimms", planetName = "tatooine", npcName = "Dagonel \"Digger\" Dimms" } 
+			{ npcTemplate = "digger_dimms", npcName = "Dagonel \"Digger\" Dimms" } 
 		}, 
 		secondarySpawns = {
-			{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "Tusken Raider" },
-			{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "Tusken Raider" }
+			{ npcTemplate = "tusken_raider", npcName = "Tusken Raider" },
+			{ npcTemplate = "tusken_raider", npcName = "Tusken Raider" }
 		}, 
 		itemSpawns = {}, 
 		rewards = 
@@ -42,10 +42,10 @@ tekil_barje_missions =
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "Tusken Raider" },
-			{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "Tusken Raider" },
-			{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "Tusken Raider" },
-			{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "Tusken Raider" }
+			{ npcTemplate = "tusken_raider", npcName = "Tusken Raider" },
+			{ npcTemplate = "tusken_raider", npcName = "Tusken Raider" },
+			{ npcTemplate = "tusken_raider", npcName = "Tusken Raider" },
+			{ npcTemplate = "tusken_raider", npcName = "Tusken Raider" }
 		}, 
 		secondarySpawns = {},
 		itemSpawns = {}, 
@@ -60,7 +60,7 @@ tekil_barje_missions =
 npcMapTekilBarje = 
 { 
 	{ 
-		spawnData = { planetName = "tatooine", npcTemplate = "tekil_barje", x = -5269.8, z = 75, y = -6567.61, direction = 237.663, cellID = 0, position = STAND }, 
+		spawnData = { npcTemplate = "tekil_barje", x = -5269.8, z = 75, y = -6567.61, direction = 237.663, cellID = 0, position = STAND }, 
 		npcNumber = 1,   
 		stfFile = "@static_npc/tatooine/tekil_barje", 
 		missions = tekil_barje_missions 
@@ -68,11 +68,10 @@ npcMapTekilBarje =
 }
 
 TekilBarje = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapTekilBarje,
-	permissionMap = {},
 	className = "TekilBarje",
 	screenPlayState = "tekil_barje_task",
+	planetName = "tatooine",
 	distance = 500
 }
 
