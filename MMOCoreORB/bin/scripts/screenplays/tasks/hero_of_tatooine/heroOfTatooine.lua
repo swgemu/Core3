@@ -1,7 +1,6 @@
 local ObjectManager = require("managers.object.object_manager")
 
 HeroOfTatooineScreenPlay = ScreenPlay:new {
-	numberOfActs = 1,
 
 	courageSpawns = { { -861, 4557 }, { -159, 5040 }, { -1264, 5379 }, { -695, 4506 }, { 16, 4068 }, { -533, 4314 }, { -1023, 5214 }, { -318, 4477 }, { -443, 4970 },
 		{ -1183, 4647 }, { -575, 4985 }, { -1618, 5272 }, { -97, 5025 }, { -471, 4715 }, { -991, 5887 }, { -998, 5240 }, { -500, 4600 }, { -1131, 6185 } },

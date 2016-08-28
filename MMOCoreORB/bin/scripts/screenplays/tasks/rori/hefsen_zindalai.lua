@@ -4,7 +4,7 @@ hefsen_zindalai_missions =
 		missionType = "deliver",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "maestro", planetName = "rori", npcName = "Maestro" }
+			{ npcTemplate = "maestro", npcName = "Maestro" }
 		}, 
 		secondarySpawns =
 		{
@@ -24,12 +24,12 @@ hefsen_zindalai_missions =
 		missionType = "escort",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "runaway_gualama", planetName = "rori", npcName = "a runaway gualama" }
+			{ npcTemplate = "runaway_gualama", npcName = "a runaway gualama" }
 		}, 
 		secondarySpawns =
 		{
-			{ npcTemplate = "blood_thirsty_borgle", planetName = "rori", npcName = "" },
-			{ npcTemplate = "blood_thirsty_borgle", planetName = "rori", npcName = "" }
+			{ npcTemplate = "blood_thirsty_borgle", npcName = "" },
+			{ npcTemplate = "blood_thirsty_borgle", npcName = "" }
 		}, 
 		itemSpawns = 
 		{
@@ -45,13 +45,13 @@ hefsen_zindalai_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "wealthy_patron", planetName = "rori", npcName = "a wealthy patron" }
+			{ npcTemplate = "wealthy_patron", npcName = "a wealthy patron" }
 		}, 
 		secondarySpawns =
 		{
-			{ npcTemplate = "bandit", planetName = "rori", npcName = "" },
-			{ npcTemplate = "bandit", planetName = "rori", npcName = "" },
-			{ npcTemplate = "bandit", planetName = "rori", npcName = "" }
+			{ npcTemplate = "bandit", npcName = "" },
+			{ npcTemplate = "bandit", npcName = "" },
+			{ npcTemplate = "bandit", npcName = "" }
 		}, 
 		itemSpawns = 
 		{
@@ -68,7 +68,7 @@ hefsen_zindalai_missions =
 npcMapHefsenZindalai = 
 { 
 	{ 
-		spawnData = { planetName = "rori", npcTemplate = "hefsen_zindalai", x = -11, z = 1.7, y = -20, direction = 0, cellID = 4635710, position = STAND },
+		spawnData = { npcTemplate = "hefsen_zindalai", x = -11, z = 1.7, y = -20, direction = 0, cellID = 4635710, position = STAND },
 		worldPosition = { x = 5298.6, y = 5896.8 },
 		npcNumber = 1,
 		stfFile = "@static_npc/rori/rori_restuss_hefsen_zindalai",
@@ -77,11 +77,10 @@ npcMapHefsenZindalai =
 }
 
 HefsenZindalai = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapHefsenZindalai,
-	permissionMap = {},
 	className = "HefsenZindalai",
 	screenPlayState = "hefsen_zindalai_quest",
+	planetName = "rori",
 	distance = 600
 }
 

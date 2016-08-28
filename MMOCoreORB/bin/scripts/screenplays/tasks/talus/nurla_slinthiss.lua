@@ -4,7 +4,7 @@ nurla_slinthiss_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "nurla_corsec_captain", planetName = "talus", npcName = "" }
+				{ npcTemplate = "nurla_corsec_captain", npcName = "" }
 			},
 			secondarySpawns =	{},
 			itemSpawns =
@@ -20,12 +20,12 @@ nurla_slinthiss_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "nurla_employee", planetName = "talus", npcName = "Nurla's Employee" }
+				{ npcTemplate = "nurla_employee", npcName = "Nurla's Employee" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "nurla_corsec_rogue", planetName = "talus", npcName = "" },
-				{ npcTemplate = "nurla_corsec_rogue", planetName = "talus", npcName = "" },
+				{ npcTemplate = "nurla_corsec_rogue", npcName = "" },
+				{ npcTemplate = "nurla_corsec_rogue", npcName = "" },
 			},
 			itemSpawns = {},
 			rewards =
@@ -37,12 +37,12 @@ nurla_slinthiss_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "nurla_businessman", planetName = "talus", npcName = "Businessman" }
+				{ npcTemplate = "nurla_businessman", npcName = "Businessman" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "nurla_jabba_enforcer", planetName = "talus", npcName = "" },
-				{ npcTemplate = "nurla_jabba_enforcer", planetName = "talus", npcName = "" },
+				{ npcTemplate = "nurla_jabba_enforcer", npcName = "" },
+				{ npcTemplate = "nurla_jabba_enforcer", npcName = "" },
 			},
 			itemSpawns =
 			{
@@ -57,12 +57,12 @@ nurla_slinthiss_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "nurla_assassin", planetName = "talus", npcName = "Assassin" }
+				{ npcTemplate = "nurla_assassin", npcName = "Assassin" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "nurla_hutt_gangster", planetName = "talus", npcName = "a Hutt gangster" },
-				{ npcTemplate = "nurla_hutt_gangster", planetName = "talus", npcName = "a Hutt gangster" },
+				{ npcTemplate = "nurla_hutt_gangster", npcName = "a Hutt gangster" },
+				{ npcTemplate = "nurla_hutt_gangster", npcName = "a Hutt gangster" },
 			},
 			itemSpawns = {},
 			rewards =
@@ -75,7 +75,7 @@ nurla_slinthiss_missions =
 npcMapNurlaSlinthiss =
 	{
 		{
-			spawnData = { planetName = "talus", npcTemplate = "nurla_slinthiss", x = -5.3, z = -0.9, y = -21, direction = 0, cellID = 3175396, position = STAND },
+			spawnData = { npcTemplate = "nurla_slinthiss", x = -5.3, z = -0.9, y = -21, direction = 0, cellID = 3175396, position = STAND },
 			worldPosition = { x = 435, y = -2948 },
 			npcNumber = 1,
 			stfFile = "@static_npc/talus/talus_dearic_nurla_slinthiss",
@@ -84,10 +84,10 @@ npcMapNurlaSlinthiss =
 	}
 
 NurlaSlinthiss = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapNurlaSlinthiss,
 	className = "NurlaSlinthiss",
 	screenPlayState = "nurla_slinthiss_quest",
+	planetName = "talus",
 	distance = 800
 }
 

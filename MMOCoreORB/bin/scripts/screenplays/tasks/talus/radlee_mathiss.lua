@@ -4,12 +4,12 @@ radlee_mathiss_missions =
 			missionType = "retrieve",
 			primarySpawns =
 			{
-				{ npcTemplate = "radlee_businessman", planetName = "talus", npcName = "a Businessman" }
+				{ npcTemplate = "radlee_businessman", npcName = "a Businessman" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "radlee_thug", planetName = "talus", npcName = "a Thug" },
-				{ npcTemplate = "radlee_thug", planetName = "talus", npcName = "a Thug" },
+				{ npcTemplate = "radlee_thug", npcName = "a Thug" },
+				{ npcTemplate = "radlee_thug", npcName = "a Thug" },
 			},
 			itemSpawns =
 			{
@@ -24,13 +24,13 @@ radlee_mathiss_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "radlee_businessman", planetName = "talus", npcName = "a CSA Representive" }
+				{ npcTemplate = "radlee_businessman", npcName = "a CSA Representive" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "radlee_thug", planetName = "talus", npcName = "a Thug" },
-				{ npcTemplate = "radlee_thug", planetName = "talus", npcName = "a Thug" },
-				{ npcTemplate = "radlee_thug", planetName = "talus", npcName = "a Thug" },
+				{ npcTemplate = "radlee_thug", npcName = "a Thug" },
+				{ npcTemplate = "radlee_thug", npcName = "a Thug" },
+				{ npcTemplate = "radlee_thug", npcName = "a Thug" },
 			},
 			itemSpawns = { },
 			rewards =
@@ -42,9 +42,9 @@ radlee_mathiss_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "radlee_criminal", planetName = "talus", npcName = "a Criminal" },
-				{ npcTemplate = "radlee_criminal", planetName = "talus", npcName = "a Criminal" },
-				{ npcTemplate = "radlee_criminal", planetName = "talus", npcName = "a Criminal" },
+				{ npcTemplate = "radlee_criminal", npcName = "a Criminal" },
+				{ npcTemplate = "radlee_criminal", npcName = "a Criminal" },
+				{ npcTemplate = "radlee_criminal", npcName = "a Criminal" },
 			},
 			secondarySpawns = { },
 			itemSpawns = { },
@@ -58,7 +58,7 @@ radlee_mathiss_missions =
 npcMapRadleeMathiss =
 	{
 		{
-			spawnData = { planetName = "talus", npcTemplate = "radlee_mathiss", x = -2.6, z = 0, y = 6.3, direction = 90, cellID = 3175391, position = STAND },
+			spawnData = { npcTemplate = "radlee_mathiss", x = -2.6, z = 0, y = 6.3, direction = 90, cellID = 3175391, position = STAND },
 			worldPosition = { x = 435, y = -2922 },
 			npcNumber = 1,
 			stfFile = "@static_npc/talus/talus_dearic_radlee_mathiss",
@@ -67,10 +67,10 @@ npcMapRadleeMathiss =
 	}
 
 RadleeMathiss = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapRadleeMathiss,
 	className = "RadleeMathiss",
 	screenPlayState = "radlee_mathiss_quest",
+	planetName = "talus",
 	distance = 800
 }
 

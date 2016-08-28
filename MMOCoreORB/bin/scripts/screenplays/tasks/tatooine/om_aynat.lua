@@ -4,7 +4,7 @@ om_aynat_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "om_aynat_escort", planetName = "tatooine", npcName = "a Sand Dragon Fresher Rep" }
+				{ npcTemplate = "om_aynat_escort", npcName = "a Sand Dragon Fresher Rep" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {
@@ -18,7 +18,7 @@ om_aynat_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "om_aynat_escort", planetName = "tatooine", npcName = "Om's Legal Advocate" }
+				{ npcTemplate = "om_aynat_escort", npcName = "Om's Legal Advocate" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {
@@ -32,7 +32,7 @@ om_aynat_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "om_aynat_chef", planetName = "tatooine", npcName = "Fallen Star Hotel Chef" }
+				{ npcTemplate = "om_aynat_chef", npcName = "Fallen Star Hotel Chef" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {
@@ -46,7 +46,7 @@ om_aynat_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "om_aynat_escort", planetName = "tatooine", npcName = "Star-Crossed Lover" }
+				{ npcTemplate = "om_aynat_escort", npcName = "Star-Crossed Lover" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {
@@ -61,7 +61,7 @@ om_aynat_missions =
 npcMapOmAynat =
 	{
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "om_aynat", x = 1615.5, z = 7.0, y = 2956.4, direction = 168, cellID = 0, position = SIT },
+			spawnData = { npcTemplate = "om_aynat", x = 1615.5, z = 7.0, y = 2956.4, direction = 168, cellID = 0, position = SIT },
 			npcNumber = 1,
 			stfFile = "@static_npc/tatooine/om_aynat",
 			missions = om_aynat_missions
@@ -69,11 +69,10 @@ npcMapOmAynat =
 	}
 
 OmAynat = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapOmAynat,
-	permissionMap = {},
 	className = "OmAynat",
 	screenPlayState = "om_aynat_task",
+	planetName = "tatooine",
 	distance = 800
 }
 

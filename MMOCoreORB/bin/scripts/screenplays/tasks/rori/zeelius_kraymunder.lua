@@ -4,7 +4,7 @@ zeelius_kraymunder_missions =
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "hermit_spider", planetName = "rori", npcName = "Hermit Spider" } 
+			{ npcTemplate = "hermit_spider", npcName = "Hermit Spider" } 
 		}, 
 		secondarySpawns = {},
 		itemSpawns = {}, 
@@ -17,11 +17,11 @@ zeelius_kraymunder_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "zeelius_partner", planetName = "rori", npcName = "Zeelius' Partner" } 
+			{ npcTemplate = "zeelius_partner", npcName = "Zeelius' Partner" } 
 		}, 
 		secondarySpawns = {
-			{ npcTemplate = "gundark_rogue", planetName = "rori", npcName = "Card Player" },
-			{ npcTemplate = "gundark_hooligan", planetName = "rori", npcName = "Card Player" }
+			{ npcTemplate = "gundark_rogue", npcName = "Card Player" },
+			{ npcTemplate = "gundark_hooligan", npcName = "Card Player" }
 }, 
 		itemSpawns = {}, 
 		rewards = 
@@ -34,7 +34,7 @@ zeelius_kraymunder_missions =
 npcMapZeeliusKraymunder = 
 { 
 	{ 
-		spawnData = { planetName = "rori", npcTemplate = "zeelius_kraymunder", x = -5318.6, z = 80.5, y = -2264.9, direction = 76, cellID = 0, position = STAND }, 
+		spawnData = { npcTemplate = "zeelius_kraymunder", x = -5318.6, z = 80.5, y = -2264.9, direction = 76, cellID = 0, position = STAND }, 
 		npcNumber = 1,   
 		stfFile = "@static_npc/rori/rori_narmle_zeelius_kraymunder", 
 		missions = zeelius_kraymunder_missions 
@@ -42,11 +42,10 @@ npcMapZeeliusKraymunder =
 }
 
 ZeeliusKraymunder = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapZeeliusKraymunder,
-	permissionMap = {},
 	className = "ZeeliusKraymunder",
 	screenPlayState = "zeelius_kraymunder_task",
+	planetName = "rori",
 	distance = 800
 }
 

@@ -4,12 +4,12 @@ brantleeMissions =
 		missionType = "retrieve",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "midgoss_dlabaninaph", planetName = "corellia", npcName = "Midgoss D'labaninaph" }
+			{ npcTemplate = "midgoss_dlabaninaph", npcName = "Midgoss D'labaninaph" }
 		},
 		secondarySpawns = 
 		{
-			{ npcTemplate = "carrion_spat", planetName = "corellia", npcName = "a carrion spat" },
-			{ npcTemplate = "carrion_spat", planetName = "corellia", npcName = "a carrion spat" }		
+			{ npcTemplate = "carrion_spat", npcName = "a carrion spat" },
+			{ npcTemplate = "carrion_spat", npcName = "a carrion spat" }		
 		},
 		itemSpawns =
 		{
@@ -25,12 +25,12 @@ brantleeMissions =
 		missionType = "retrieve",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "zoda_burb", planetName = "corellia", npcName = "Zoda Burb" } 
+			{ npcTemplate = "zoda_burb", npcName = "Zoda Burb" } 
 		},
 		secondarySpawns = 
 		{
-			{ npcTemplate = "dalyrake", planetName = "corellia", npcName = "a dalyrake" },
-			{ npcTemplate = "dalyrake", planetName = "corellia", npcName = "a dalyrake" }		
+			{ npcTemplate = "dalyrake", npcName = "a dalyrake" },
+			{ npcTemplate = "dalyrake", npcName = "a dalyrake" }		
 		},
 		itemSpawns = 
 		{
@@ -46,11 +46,11 @@ brantleeMissions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "missy", planetName = "corellia", npcName = "Missy" } 
+			{ npcTemplate = "missy", npcName = "Missy" } 
 		}, 
 		secondarySpawns = 
 		{
-			{ npcTemplate = "razor_cat", planetName = "corellia", npcName = "a razor cat" }			
+			{ npcTemplate = "razor_cat", npcName = "a razor cat" }			
 		},
 		rewards = 
 		{
@@ -65,12 +65,12 @@ daclifMissions =
 		missionType = "retrieve",
 		primarySpawns = 
 		{
-			{ npcTemplate = "windle_meeker", planetName = "corellia", npcName = "Windle Meeker" } 
+			{ npcTemplate = "windle_meeker", npcName = "Windle Meeker" } 
 		},
 		secondarySpawns = 
 		{
-			{ npcTemplate = "carrion_spat", planetName = "corellia", npcName = "a carrion spat" },
-			{ npcTemplate = "carrion_spat", planetName = "corellia", npcName = "a carrion spat" }		
+			{ npcTemplate = "carrion_spat", npcName = "a carrion spat" },
+			{ npcTemplate = "carrion_spat", npcName = "a carrion spat" }		
 		},
 		itemSpawns =
 		{
@@ -86,11 +86,11 @@ daclifMissions =
 		missionType = "deliver",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "merlyx_dolv", planetName = "corellia", npcName = "Merlyx Dolv" } 
+			{ npcTemplate = "merlyx_dolv", npcName = "Merlyx Dolv" } 
 		},
 		secondarySpawns = 
 		{
-			{ npcTemplate = "razor_cat", planetName = "corellia", npcName = "a razor cat" }		
+			{ npcTemplate = "razor_cat", npcName = "a razor cat" }		
 		},
 		itemSpawns = 
 		{
@@ -106,7 +106,7 @@ daclifMissions =
 		missionType = "retrieve",
 		primarySpawns =
 		{ 
-			{ npcTemplate = "dwynn_biuval", planetName = "corellia", npcName = "Dwynn Biuval" } 
+			{ npcTemplate = "dwynn_biuval", npcName = "Dwynn Biuval" } 
 		},
 		secondarySpawns = { },
 		itemSpawns = 
@@ -123,12 +123,12 @@ daclifMissions =
 		missionType = "deliver",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "lieutenant_mien_halloor", planetName = "corellia", npcName = "Lt. Mien Halloor" }
+			{ npcTemplate = "lieutenant_mien_halloor", npcName = "Lt. Mien Halloor" }
 		},
 		secondarySpawns = 
 		{
-			{ npcTemplate = "razor_cat", planetName = "corellia", npcName = "a razor cat" },
-			{ npcTemplate = "razor_cat", planetName = "corellia", npcName = "a razor cat" }	
+			{ npcTemplate = "razor_cat", npcName = "a razor cat" },
+			{ npcTemplate = "razor_cat", npcName = "a razor cat" }	
 		},
 		itemSpawns =
 		{
@@ -144,12 +144,12 @@ daclifMissions =
 		missionType = "escort",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "merlyx_dolv", planetName = "corellia", npcName = "Merlyx Dolv" }  
+			{ npcTemplate = "merlyx_dolv", npcName = "Merlyx Dolv" }  
 		},
 		secondarySpawns = 
 		{
-			{ npcTemplate = "mercenary_aggro", planetName = "corellia", npcName = "a mercenary" },
-			{ npcTemplate = "mercenary_aggro", planetName = "corellia", npcName = "a mercenary" }	
+			{ npcTemplate = "mercenary_aggro", npcName = "a mercenary" },
+			{ npcTemplate = "mercenary_aggro", npcName = "a mercenary" }	
 		},
 		rewards = 
 		{
@@ -160,7 +160,7 @@ daclifMissions =
 		missionType = "deliver",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "morgo_one_shot", planetName = "corellia", npcName = "Morgo One-Shot" }
+			{ npcTemplate = "morgo_one_shot", npcName = "Morgo One-Shot" }
 		},
 		secondarySpawns = { },
 		itemSpawns = 
@@ -178,7 +178,7 @@ daclifMissions =
 npcMapDiktat = 
 { 
 	{ 
-		spawnData = { planetName = "corellia", npcTemplate = "brantlee_spondoon", x = -24.7, z = 1.3, y = -0.5,
+		spawnData = { npcTemplate = "brantlee_spondoon", x = -24.7, z = 1.3, y = -0.5,
 			direction = 124, cellID = 1855463, position = STAND }, 
 		worldPosition = { x = -234.0, y = -4570.0 },
 		npcNumber = 1,   
@@ -186,7 +186,7 @@ npcMapDiktat =
 		missions = brantleeMissions
 	},
 	{ 
-		spawnData = { planetName = "corellia", npcTemplate = "daclif_gallamby", x = -35.6875, z = 1.29422,
+		spawnData = { npcTemplate = "daclif_gallamby", x = -35.6875, z = 1.29422,
 			y = -1.70805, direction = 88.4786, cellID = 1855467, position = STAND }, 
 		worldPosition = { x = -245.0, y = -4571.0 },
 		npcNumber = 2,   
@@ -196,11 +196,10 @@ npcMapDiktat =
 }
 
 diktatQuest = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapDiktat,
-	permissionMap = {},
 	className = "diktatQuest",
 	screenPlayState = "diktatQuestState",
+	planetName = "corellia",
 	distance = 1000,
 }
 

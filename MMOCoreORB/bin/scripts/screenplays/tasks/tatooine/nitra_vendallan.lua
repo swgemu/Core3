@@ -4,7 +4,7 @@ nitra_vendallan_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "nitra_vendallan_imp", planetName = "tatooine", npcName = "Drenn Biktor (an Imperial Non-Comm defector)" } 
+			{ npcTemplate = "nitra_vendallan_imp", npcName = "Drenn Biktor (an Imperial Non-Comm defector)" } 
 		}, 
 		secondarySpawns = {},
 		itemSpawns = {}, 
@@ -17,7 +17,7 @@ nitra_vendallan_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "nitra_vendallan_imp2", planetName = "tatooine", npcName = "Vil Sembian" } 
+			{ npcTemplate = "nitra_vendallan_imp2", npcName = "Vil Sembian" } 
 		}, 
 		secondarySpawns = {},
 		itemSpawns = {}, 
@@ -31,7 +31,7 @@ nitra_vendallan_missions =
 npcMapNitraVendallan = 
 { 
 	{ 
-		spawnData = { planetName = "tatooine", npcTemplate = "nitra_vendallan", x = -2.95305, z = 0.40827, y = -9.30713, direction = 12.2342, cellID = 1213345, position = STAND }, 
+		spawnData = { npcTemplate = "nitra_vendallan", x = -2.95305, z = 0.40827, y = -9.30713, direction = 12.2342, cellID = 1213345, position = STAND }, 
 		worldPosition = { x = 134.7, y = -5347.1 }, 
 		npcNumber = 1,   
 		stfFile = "@static_npc/tatooine/nitra_vendallan", 
@@ -40,11 +40,10 @@ npcMapNitraVendallan =
 }
 
 NitraVendallan = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapNitraVendallan,
-	permissionMap = {},
 	className = "NitraVendallan",
 	screenPlayState = "nitra_vendallan_quest",
+	planetName = "tatooine",
 	distance = 1000,
 	faction = FACTIONREBEL
 }

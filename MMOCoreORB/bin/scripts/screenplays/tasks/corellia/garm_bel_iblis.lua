@@ -4,13 +4,13 @@ irenez_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "tessa_wylden", planetName = "corellia", npcName = "Tessa Wylden" }
+				{ npcTemplate = "tessa_wylden", npcName = "Tessa Wylden" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" },
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" },
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" }
+				{ npcTemplate = "thug", npcName = "a thug" },
+				{ npcTemplate = "thug", npcName = "a thug" },
+				{ npcTemplate = "thug", npcName = "a thug" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -22,7 +22,7 @@ irenez_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "assassin", planetName = "corellia", npcName = "Skazz" }
+				{ npcTemplate = "assassin", npcName = "Skazz" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -35,13 +35,13 @@ irenez_missions =
 			missionType = "assassinate",
 			primarySpawns = 
 			{
-				{ npcTemplate = "tough_thug_male_rodian", planetName = "corellia", npcName = "a thug" },
+				{ npcTemplate = "tough_thug_male_rodian", npcName = "a thug" },
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" },
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" },
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" }
+				{ npcTemplate = "thug", npcName = "a thug" },
+				{ npcTemplate = "thug", npcName = "a thug" },
+				{ npcTemplate = "thug", npcName = "a thug" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -57,7 +57,7 @@ garm_bel_iblis_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "hlaano_dunlix", planetName = "corellia", npcName = "Hlaano Dunlix" }
+				{ npcTemplate = "hlaano_dunlix", npcName = "Hlaano Dunlix" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -70,12 +70,12 @@ garm_bel_iblis_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "drillen_foyle", planetName = "corellia", npcName = "Drillen Foyle" }
+				{ npcTemplate = "drillen_foyle", npcName = "Drillen Foyle" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "stormtrooper", planetName = "corellia", npcName = "a Stormtrooper" },
-				{ npcTemplate = "stormtrooper", planetName = "corellia", npcName = "a Stormtrooper" }
+				{ npcTemplate = "stormtrooper", npcName = "a Stormtrooper" },
+				{ npcTemplate = "stormtrooper", npcName = "a Stormtrooper" }
 			},
 			itemSpawns =
 			{
@@ -90,7 +90,7 @@ garm_bel_iblis_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "imperial_army_captain", planetName = "corellia", npcName = "Captain Egan Garrud" } -- 6k ham imp captain
+				{ npcTemplate = "imperial_army_captain", npcName = "Captain Egan Garrud" } -- 6k ham imp captain
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -103,13 +103,13 @@ garm_bel_iblis_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "fadulk_dikeer", planetName = "corellia", npcName = "Fadulk Di'keer" }
+				{ npcTemplate = "fadulk_dikeer", npcName = "Fadulk Di'keer" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "stormtrooper", planetName = "corellia", npcName = "a Stormtrooper" },
-				{ npcTemplate = "stormtrooper", planetName = "corellia", npcName = "a Stormtrooper" },
-				{ npcTemplate = "stormtrooper", planetName = "corellia", npcName = "a Stormtrooper" }
+				{ npcTemplate = "stormtrooper", npcName = "a Stormtrooper" },
+				{ npcTemplate = "stormtrooper", npcName = "a Stormtrooper" },
+				{ npcTemplate = "stormtrooper", npcName = "a Stormtrooper" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -121,7 +121,7 @@ garm_bel_iblis_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "kalia_kulmina", planetName = "corellia", npcName = "Kalia Kulmina" }
+				{ npcTemplate = "kalia_kulmina", npcName = "Kalia Kulmina" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -134,14 +134,14 @@ garm_bel_iblis_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "stormtrooper_groupleader", planetName = "corellia", npcName = "an Imperial Stormtrooper Commander" }
+				{ npcTemplate = "stormtrooper_groupleader", npcName = "an Imperial Stormtrooper Commander" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "storm_commando", planetName = "corellia", npcName = "an Imperial storm commando" },
-				{ npcTemplate = "storm_commando", planetName = "corellia", npcName = "an Imperial storm commando" },
-				{ npcTemplate = "dark_trooper", planetName = "corellia", npcName = "a Dark Trooper" },
-				{ npcTemplate = "dark_trooper", planetName = "corellia", npcName = "a Dark Trooper" }
+				{ npcTemplate = "storm_commando", npcName = "an Imperial storm commando" },
+				{ npcTemplate = "storm_commando", npcName = "an Imperial storm commando" },
+				{ npcTemplate = "dark_trooper", npcName = "a Dark Trooper" },
+				{ npcTemplate = "dark_trooper", npcName = "a Dark Trooper" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -154,7 +154,7 @@ garm_bel_iblis_missions =
 npcMapGarmBelIblis =
 	{
 		{
-			spawnData = { planetName = "corellia", npcTemplate = "garm_bel_iblis", x = -33.9, z = 1.3, y = -7.7, direction = 40.0, cellID = 1855467, position = STAND },
+			spawnData = { npcTemplate = "garm_bel_iblis", x = -33.9, z = 1.3, y = -7.7, direction = 40.0, cellID = 1855467, position = STAND },
 			worldPosition = { x = -243.9, y = -4577.7 },
 			npcNumber = 2,
 			stfFile = "@static_npc/corellia/garm_bel_iblis",
@@ -162,7 +162,7 @@ npcMapGarmBelIblis =
 			missions = garm_bel_iblis_missions
 		},
 		{
-			spawnData = { planetName = "corellia", npcTemplate = "irenez", x = -24.7, z = 1.3, y = -5.2, direction = 40.0, cellID = 1855463, position = STAND },
+			spawnData = { npcTemplate = "irenez", x = -24.7, z = 1.3, y = -5.2, direction = 40.0, cellID = 1855463, position = STAND },
 			worldPosition = { x = -234.0, y = -4575.0 },
 			npcNumber = 1,
 			stfFile = "@static_npc/corellia/irenez",
@@ -172,10 +172,10 @@ npcMapGarmBelIblis =
 	}
 
 GarmBelIblis = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapGarmBelIblis,
 	className = "GarmBelIblis",
 	screenPlayState = "garm_bel_iblis_quest",
+	planetName = "corellia",
 	distance = 800
 }
 

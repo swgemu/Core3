@@ -4,7 +4,7 @@ draya_korbinari_missions =
 		missionType = "assassinate",
 		primarySpawns =
 		{ 
-			{ npcTemplate = "tusk_cat", planetName = "rori", npcName = "a Tusk Cat" }
+			{ npcTemplate = "tusk_cat", npcName = "a Tusk Cat" }
 		},
 		secondarySpawns =
 		{
@@ -24,7 +24,7 @@ draya_korbinari_missions =
 		missionType = "escort",
 		primarySpawns =
 		{
-			{ npcTemplate = "draya_korbinari_thief", planetName = "rori", npcName = "a Thief" }
+			{ npcTemplate = "draya_korbinari_thief", npcName = "a Thief" }
 		},
 		secondarySpawns =
 		{
@@ -44,7 +44,7 @@ draya_korbinari_missions =
 		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "draya_korbinari_smuggler", planetName = "rori", npcName = "a Smuggler" }	
+			{ npcTemplate = "draya_korbinari_smuggler", npcName = "a Smuggler" }	
 		},
 		secondarySpawns =
 		{
@@ -64,7 +64,7 @@ draya_korbinari_missions =
 		missionType = "assassinate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "draya_korbinari_bounty_hunter", planetName = "rori", npcName = "a Bounty Hunter" }	
+			{ npcTemplate = "draya_korbinari_bounty_hunter", npcName = "a Bounty Hunter" }	
 		}, 
 		secondarySpawns =
 		{
@@ -85,7 +85,7 @@ draya_korbinari_missions =
 npcMapDrayaKorbinari = 
 { 
 	{ 
-		spawnData = { planetName = "rori", npcTemplate = "draya_korbinari", x = -18, z = 0, y = 18, direction = 120, cellID = 4635705, position = STAND },
+		spawnData = { npcTemplate = "draya_korbinari", x = -18, z = 0, y = 18, direction = 120, cellID = 4635705, position = STAND },
 		worldPosition = { x = 5305, y = 5859 }, 
 		npcNumber = 1,
 		stfFile = "@static_npc/rori/rori_restuss_draya_korbinari",
@@ -94,11 +94,10 @@ npcMapDrayaKorbinari =
 }
 
 DrayaKorbinari = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapDrayaKorbinari,
-	permissionMap = {},
 	className = "DrayaKorbinari",
 	screenPlayState = "draya_korbinari_quest",
+	planetName = "rori",
 	distance = 500,
 }
 

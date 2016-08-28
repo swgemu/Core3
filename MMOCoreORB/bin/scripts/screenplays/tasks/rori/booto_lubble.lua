@@ -4,13 +4,13 @@ booto_lubble_missions =
 		missionType = "confiscate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "luhin_jinnor", planetName = "rori", npcName = "Warrant Officer Luhin Jinnor" } 
+			{ npcTemplate = "luhin_jinnor", npcName = "Warrant Officer Luhin Jinnor" } 
 		},
 		secondarySpawns =
 		{
-			{ npcTemplate = "stormtrooper", planetName = "rori", npcName = "" },
-			{ npcTemplate = "stormtrooper", planetName = "rori", npcName = "" },
-			{ npcTemplate = "stormtrooper", planetName = "rori", npcName = "" }
+			{ npcTemplate = "stormtrooper", npcName = "" },
+			{ npcTemplate = "stormtrooper", npcName = "" },
+			{ npcTemplate = "stormtrooper", npcName = "" }
 		},
 		itemSpawns =
 		{
@@ -25,14 +25,14 @@ booto_lubble_missions =
 		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "rohd_gostervek", planetName = "rori", npcName = "Captain Rohd Gostervek" }	
+			{ npcTemplate = "rohd_gostervek", npcName = "Captain Rohd Gostervek" }	
 		},
 		secondarySpawns =
 		{
-			{ npcTemplate = "stormtrooper", planetName = "rori", npcName = "" },
-			{ npcTemplate = "stormtrooper", planetName = "rori", npcName = "" },
-			{ npcTemplate = "stormtrooper", planetName = "rori", npcName = "" },
-			{ npcTemplate = "stormtrooper", planetName = "rori", npcName = "" }
+			{ npcTemplate = "stormtrooper", npcName = "" },
+			{ npcTemplate = "stormtrooper", npcName = "" },
+			{ npcTemplate = "stormtrooper", npcName = "" },
+			{ npcTemplate = "stormtrooper", npcName = "" }
 		}, 
 		itemSpawns = 
 		{
@@ -49,7 +49,7 @@ booto_lubble_missions =
 npcMapBootoLubble = 
 { 
 	{ 
-		spawnData = { planetName = "rori", npcTemplate = "booto_lubble", x = 4.0, z = 0.7, y = 0.5, direction = 170, cellID = 4505791, position = STAND },
+		spawnData = { npcTemplate = "booto_lubble", x = 4.0, z = 0.7, y = 0.5, direction = 170, cellID = 4505791, position = STAND },
 		worldPosition = { x = 3701, y = -6488 }, 
 		npcNumber = 1,
 		stfFile = "@static_npc/rori/rori_rebeloutpost_booto_lubble",
@@ -58,11 +58,10 @@ npcMapBootoLubble =
 }
 
 BootoLubble = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapBootoLubble,
-	permissionMap = {},
 	className = "BootoLubble",
 	screenPlayState = "booto_lubble_quest",
+	planetName = "rori",
 	distance = 800,
 	faction = FACTIONREBEL
 }

@@ -4,12 +4,12 @@ jilljoo_jab_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "jilljoo_slave", planetName = "tatooine", npcName = "Sadelli" }
+				{ npcTemplate = "jilljoo_slave", npcName = "Sadelli" }
 			},
 			secondarySpawns = 
 			{
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "a Thug" },
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "a Thug" },
+				{ npcTemplate = "thug", npcName = "a Thug" },
+				{ npcTemplate = "thug", npcName = "a Thug" },
 			},
 			itemSpawns = {},
 			rewards =
@@ -21,12 +21,12 @@ jilljoo_jab_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "jilljoo_slave", planetName = "tatooine", npcName = "Soolami" }
+				{ npcTemplate = "jilljoo_slave", npcName = "Soolami" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "a Thug" },
-				{ npcTemplate = "slaver", planetName = "tatooine", npcName = "a Slaver" },
+				{ npcTemplate = "thug", npcName = "a Thug" },
+				{ npcTemplate = "slaver", npcName = "a Slaver" },
 			},
 			itemSpawns = {},
 			rewards =
@@ -38,12 +38,12 @@ jilljoo_jab_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "woff_btar", planetName = "tatooine", npcName = "Woff B'tar" }
+				{ npcTemplate = "woff_btar", npcName = "Woff B'tar" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "jabba_thug", planetName = "tatooine", npcName = "a Jabba Thug" },
-				{ npcTemplate = "jabba_thug", planetName = "tatooine", npcName = "a Jabba Thug" },
+				{ npcTemplate = "jabba_thug", npcName = "a Jabba Thug" },
+				{ npcTemplate = "jabba_thug", npcName = "a Jabba Thug" },
 			},
 			itemSpawns = {},
 			rewards =
@@ -57,7 +57,7 @@ jilljoo_jab_missions =
 npcMapJilljooJab =
 	{
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "jilljoo_jab", x = 10.58, z = -0.89, y = -3.56, direction = 237.7, cellID = 1256058, position = STAND },
+			spawnData = { npcTemplate = "jilljoo_jab", x = 10.58, z = -0.89, y = -3.56, direction = 237.7, cellID = 1256058, position = STAND },
 			worldPosition = { x = -3001, y = 2161 },
 			npcNumber = 1,
 			stfFile = "@static_npc/tatooine/jilljoo_jab",
@@ -66,10 +66,10 @@ npcMapJilljooJab =
 	}
 
 JilljooJab = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapJilljooJab,
 	className = "JilljooJab",
 	screenPlayState = "jilljoo_jab_quest",
+	planetName = "tatooine",
 	distance = 800
 }
 

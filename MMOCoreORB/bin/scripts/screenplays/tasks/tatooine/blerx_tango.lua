@@ -4,7 +4,7 @@ blerx_tango_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "jakko_mixon", planetName = "tatooine", npcName = "Jakko Mixon" }
+				{ npcTemplate = "jakko_mixon", npcName = "Jakko Mixon" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -17,11 +17,11 @@ blerx_tango_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "mellaw_doowon", planetName = "tatooine", npcName = "Mellaw Doowon" }
+				{ npcTemplate = "mellaw_doowon", npcName = "Mellaw Doowon" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "stormtrooper", planetName = "tatooine", npcName = "Imperial Stormtrooper" }
+				{ npcTemplate = "stormtrooper", npcName = "Imperial Stormtrooper" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -33,13 +33,13 @@ blerx_tango_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "baze_joz", planetName = "tatooine", npcName = "Baze Joz" }
+				{ npcTemplate = "baze_joz", npcName = "Baze Joz" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "imperial_sergeant", planetName = "tatooine", npcName = "Imperial Sergeant" },
-				{ npcTemplate = "imperial_sergeant", planetName = "tatooine", npcName = "Imperial Sergeant" },
-				{ npcTemplate = "imperial_sergeant", planetName = "tatooine", npcName = "Imperial Sergeant" }
+				{ npcTemplate = "imperial_sergeant", npcName = "Imperial Sergeant" },
+				{ npcTemplate = "imperial_sergeant", npcName = "Imperial Sergeant" },
+				{ npcTemplate = "imperial_sergeant", npcName = "Imperial Sergeant" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -53,7 +53,7 @@ blerx_tango_missions =
 npcMapBlerxTango =
 	{
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "blerx_tango", x = -19.161, z = 7.01, y = -8.1, direction = 25, cellID = 1153497, position = STAND },
+			spawnData = { npcTemplate = "blerx_tango", x = -19.161, z = 7.01, y = -8.1, direction = 25, cellID = 1153497, position = STAND },
 			worldPosition = { x = 1692, y = 3038 },
 			npcNumber = 1,
 			stfFile = "@static_npc/tatooine/blerx_tango",
@@ -62,10 +62,10 @@ npcMapBlerxTango =
 	}
 
 BlerxTango = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapBlerxTango,
 	className = "BlerxTango",
 	screenPlayState = "blerx_tango_quest",
+	planetName = "tatooine",
 	distance = 800,
 	faction = FACTIONREBEL
 

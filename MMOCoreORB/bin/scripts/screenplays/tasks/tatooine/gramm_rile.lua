@@ -4,7 +4,7 @@ gramm_rile_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "gramm_surveyor", planetName = "tatooine", npcName = "a Surveyor" }
+				{ npcTemplate = "gramm_surveyor", npcName = "a Surveyor" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -17,7 +17,7 @@ gramm_rile_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "gramm_surveyor", planetName = "tatooine", npcName = "a Farmer" }
+				{ npcTemplate = "gramm_surveyor", npcName = "a Farmer" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -30,7 +30,7 @@ gramm_rile_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "gramm_businessman", planetName = "tatooine", npcName = "a Businessman" }
+				{ npcTemplate = "gramm_businessman", npcName = "a Businessman" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -43,22 +43,22 @@ gramm_rile_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "chastina_rile", planetName = "tatooine", npcName = "Chastina Rile" }
+				{ npcTemplate = "chastina_rile", npcName = "Chastina Rile" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "", dead = "true" },
-				{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "", dead = "true" },
-				{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "", dead = "true" },
-				{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "", dead = "true" },
-				{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "", dead = "true" },
-				{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "", dead = "true" },
-				{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "", dead = "true" },
-				{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "", dead = "true" },
-				{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "", dead = "true" },
-				{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "", dead = "true" },
-				{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "", dead = "true" },
-				{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "", dead = "true" }
+				{ npcTemplate = "tusken_raider", npcName = "", dead = "true" },
+				{ npcTemplate = "tusken_raider", npcName = "", dead = "true" },
+				{ npcTemplate = "tusken_raider", npcName = "", dead = "true" },
+				{ npcTemplate = "tusken_raider", npcName = "", dead = "true" },
+				{ npcTemplate = "tusken_raider", npcName = "", dead = "true" },
+				{ npcTemplate = "tusken_raider", npcName = "", dead = "true" },
+				{ npcTemplate = "tusken_raider", npcName = "", dead = "true" },
+				{ npcTemplate = "tusken_raider", npcName = "", dead = "true" },
+				{ npcTemplate = "tusken_raider", npcName = "", dead = "true" },
+				{ npcTemplate = "tusken_raider", npcName = "", dead = "true" },
+				{ npcTemplate = "tusken_raider", npcName = "", dead = "true" },
+				{ npcTemplate = "tusken_raider", npcName = "", dead = "true" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -71,7 +71,7 @@ gramm_rile_missions =
 npcMapGrammRile =
 	{
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "gramm_rile", x = 3887.3, z = 33, y = 2348.6, direction = 300, cellID = 0, position = STAND },
+			spawnData = { npcTemplate = "gramm_rile", x = 3887.3, z = 33, y = 2348.6, direction = 300, cellID = 0, position = STAND },
 			worldPosition = { x = 3887, y = 2347 },
 			npcNumber = 1,
 			stfFile = "@static_npc/tatooine/gramm_rile",
@@ -80,10 +80,10 @@ npcMapGrammRile =
 	}
 
 GrammRile = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapGrammRile,
 	className = "GrammRile",
 	screenPlayState = "gramm_rile_quest",
+	planetName = "tatooine",
 	distance = 600
 }
 

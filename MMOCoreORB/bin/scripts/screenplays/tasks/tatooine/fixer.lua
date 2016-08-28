@@ -4,7 +4,7 @@ fixer_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "vezz_kommani", planetName = "tatooine", npcName = "Vezz Kommani" }
+				{ npcTemplate = "vezz_kommani", npcName = "Vezz Kommani" }
 			},
 			secondarySpawns =	{},
 			itemSpawns =
@@ -20,7 +20,7 @@ fixer_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "a Tusken Raider" }
+				{ npcTemplate = "tusken_raider", npcName = "a Tusken Raider" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -33,11 +33,11 @@ fixer_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "camie", planetName = "tatooine", npcName = "Camie" }
+				{ npcTemplate = "camie", npcName = "Camie" }
 			},
 			secondarySpawns =	
 			{
-				{ npcTemplate = "dewback", planetName = "tatooine", npcName = "a Dewback" }
+				{ npcTemplate = "dewback", npcName = "a Dewback" }
 			},
 			itemSpawns =
 			{
@@ -53,7 +53,7 @@ fixer_missions =
 npcMapFixer =
 	{
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "fixer", x = 1.9, z = 0.4, y = -9.1, direction = 90, cellID = 3355387, position = STAND },
+			spawnData = { npcTemplate = "fixer", x = 1.9, z = 0.4, y = -9.1, direction = 90, cellID = 3355387, position = STAND },
 			worldPosition = { x = -170, y = -5300 },
 			npcNumber = 1,
 			stfFile = "@static_npc/tatooine/fixer",
@@ -62,11 +62,10 @@ npcMapFixer =
 	}
 
 Fixer = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapFixer,
-	permissionMap = {},
 	className = "Fixer",
 	screenPlayState = "fixer_quest",
+	planetName = "tatooine",
 	distance = 600
 }
 

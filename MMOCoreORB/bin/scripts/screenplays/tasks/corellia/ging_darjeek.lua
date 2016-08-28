@@ -4,7 +4,7 @@ ging_darjeek_missions =
 			missionType = "retrieve",
 			primarySpawns =
 			{
-				{ npcTemplate = "professor_minnet", planetName = "corellia", npcName = "\"Professor\" Minnet" }
+				{ npcTemplate = "professor_minnet", npcName = "\"Professor\" Minnet" }
 			},
 			secondarySpawns =	{},
 			itemSpawns =
@@ -20,12 +20,12 @@ ging_darjeek_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "sivrool_linnaie", planetName = "corellia", npcName = "Siv'rool Linnaie" }
+				{ npcTemplate = "sivrool_linnaie", npcName = "Siv'rool Linnaie" }
 			},
 			secondarySpawns =	
 			{
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" },
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" }
+				{ npcTemplate = "thug", npcName = "a thug" },
+				{ npcTemplate = "thug", npcName = "a thug" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -37,14 +37,14 @@ ging_darjeek_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "Listening Post Guy" }
+				{ npcTemplate = "thug", npcName = "Listening Post Guy" }
 			},
 			secondarySpawns =	
 			{
-				{ npcTemplate = "smuggler", planetName = "corellia", npcName = "a smuggler" },
-				{ npcTemplate = "smuggler", planetName = "corellia", npcName = "a smuggler" },
-				{ npcTemplate = "smuggler", planetName = "corellia", npcName = "a smuggler" },
-				{ npcTemplate = "smuggler", planetName = "corellia", npcName = "a smuggler" }
+				{ npcTemplate = "smuggler", npcName = "a smuggler" },
+				{ npcTemplate = "smuggler", npcName = "a smuggler" },
+				{ npcTemplate = "smuggler", npcName = "a smuggler" },
+				{ npcTemplate = "smuggler", npcName = "a smuggler" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -57,7 +57,7 @@ ging_darjeek_missions =
 npcMapGingDarjeek =
 	{
 		{
-			spawnData = { planetName = "corellia", npcTemplate = "ging_darjeek", x = -24.6629, z = -0.519991, y = 6.12104, direction = -112, cellID = 3375365, position = STAND },
+			spawnData = { npcTemplate = "ging_darjeek", x = -24.6629, z = -0.519991, y = 6.12104, direction = -112, cellID = 3375365, position = STAND },
 			worldPosition = { x = 6708, y = -5783 },
 			npcNumber = 1,
 			stfFile = "@static_npc/corellia/ging_darjeek",
@@ -66,10 +66,10 @@ npcMapGingDarjeek =
 	}
 
 GingDarjeek = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapGingDarjeek,
 	className = "GingDarjeek",
 	screenPlayState = "ging_darjeek_quest",
+	planetName = "corellia",
 	distance = 800
 }
 

@@ -4,11 +4,11 @@ talon_karrde_missions =
 			missionType = "retrieve",
 			primarySpawns =
 			{
-				{ npcTemplate = "ara_niorri", planetName = "corellia", npcName = "Ara Niorri" }
+				{ npcTemplate = "ara_niorri", npcName = "Ara Niorri" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "male_rodian_thug_low", planetName = "corellia", npcName = "a thug" }
+				{ npcTemplate = "male_rodian_thug_low", npcName = "a thug" }
 			},
 			itemSpawns = 
 			{
@@ -23,7 +23,7 @@ talon_karrde_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "vralla", planetName = "corellia", npcName = "Vralla" }
+				{ npcTemplate = "vralla", npcName = "Vralla" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -36,12 +36,12 @@ talon_karrde_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "talon_courier", planetName = "corellia", npcName = "a Hutt courier" }
+				{ npcTemplate = "talon_courier", npcName = "a Hutt courier" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "jabba_thug", planetName = "corellia", npcName = "a Hutt thug" },
-				{ npcTemplate = "jabba_thug", planetName = "corellia", npcName = "a Hutt thug" }
+				{ npcTemplate = "jabba_thug", npcName = "a Hutt thug" },
+				{ npcTemplate = "jabba_thug", npcName = "a Hutt thug" }
 			},
 			itemSpawns = 
 			{
@@ -56,11 +56,11 @@ talon_karrde_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "talon_bcb_courier", planetName = "corellia", npcName = "a BCB courier" }
+				{ npcTemplate = "talon_bcb_courier", npcName = "a BCB courier" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "jabba_thug", planetName = "corellia", npcName = "a Hutt thug" }
+				{ npcTemplate = "jabba_thug", npcName = "a Hutt thug" }
 			},
 			itemSpawns = 
 			{
@@ -76,7 +76,7 @@ talon_karrde_missions =
 npcMapTalonKarrde =
 	{
 		{
-			spawnData = { planetName = "corellia", npcTemplate = "talon_karrde", x = 5.617, z = -0.895, y = 20.963, direction = -175, cellID = 3075433, position = STAND },
+			spawnData = { npcTemplate = "talon_karrde", x = 5.617, z = -0.895, y = 20.963, direction = -175, cellID = 3075433, position = STAND },
 			worldPosition = { x = 3255, y = 5308 },
 			npcNumber = 1,
 			stfFile = "@static_npc/corellia/talon_karrde",
@@ -85,10 +85,10 @@ npcMapTalonKarrde =
 	}
 
 TalonKarrde = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapTalonKarrde,
 	className = "TalonKarrde",
 	screenPlayState = "talon_karrde_quest",
+	planetName = "corellia",
 	distance = 800
 }
 

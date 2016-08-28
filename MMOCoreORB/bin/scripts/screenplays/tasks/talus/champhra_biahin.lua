@@ -4,11 +4,11 @@ champhra_biahin_missions =
 			missionType = "retrieve",
 			primarySpawns =
 			{
-				{ npcTemplate = "champhra_agriculturalist", planetName = "talus", npcName = "Agriculturalist" }
+				{ npcTemplate = "champhra_agriculturalist", npcName = "Agriculturalist" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "champhra_thug", planetName = "talus", npcName = "a Thug" },
+				{ npcTemplate = "champhra_thug", npcName = "a Thug" },
 			},
 			itemSpawns = 
 			{
@@ -23,11 +23,11 @@ champhra_biahin_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "champhra_farmer", planetName = "talus", npcName = "a farmer" }
+				{ npcTemplate = "champhra_farmer", npcName = "a farmer" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "champhra_thug", planetName = "talus", npcName = "a Thug" },
+				{ npcTemplate = "champhra_thug", npcName = "a Thug" },
 			},
 			itemSpawns = 
 			{
@@ -43,7 +43,7 @@ champhra_biahin_missions =
 npcMapChamphraBiahin =
 	{
 		{
-			spawnData = { planetName = "talus", npcTemplate = "champhra_biahin", x = 2.71, z = 0.18, y = 4.54, direction = 205, cellID = 3305354, position = STAND },
+			spawnData = { npcTemplate = "champhra_biahin", x = 2.71, z = 0.18, y = 4.54, direction = 205, cellID = 3305354, position = STAND },
 			worldPosition = { x = 316, y = -3055 },
 			npcNumber = 1,
 			stfFile = "@static_npc/talus/talus_dearic_champhra_biahin",
@@ -52,10 +52,10 @@ npcMapChamphraBiahin =
 	}
 
 ChamphraBiahin = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapChamphraBiahin,
 	className = "ChamphraBiahin",
 	screenPlayState = "champhra_biahin_quest",
+	planetName = "talus",
 	distance = 800
 }
 

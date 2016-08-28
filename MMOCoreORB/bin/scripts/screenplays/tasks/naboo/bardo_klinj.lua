@@ -4,12 +4,12 @@ bardo_klinj_missions =
 		missionType = "deliver",
 		primarySpawns =
 		{
-			{ npcTemplate = "imperial_courier_quest_bardo", planetName = "naboo", npcName = "an Imperial Courier" }
+			{ npcTemplate = "imperial_courier_quest_bardo", npcName = "an Imperial Courier" }
 		},
 		secondarySpawns =
 		{
-			{npcTemplate = "thug", planetName = "naboo", npcName = "Kritus' gang member"},
-			{npcTemplate = "thug", planetName = "naboo", npcName = "Kritus' gang member"}
+			{npcTemplate = "thug", npcName = "Kritus' gang member"},
+			{npcTemplate = "thug", npcName = "Kritus' gang member"}
 		},
 		itemSpawns =
 		{
@@ -24,7 +24,7 @@ bardo_klinj_missions =
 		missionType = "retrieve",
 		primarySpawns =
 		{
-			{ npcTemplate = "imperial_courier_quest_bardo2", planetName = "naboo", npcName = "Val Tula" }
+			{ npcTemplate = "imperial_courier_quest_bardo2", npcName = "Val Tula" }
 		},
 		secondarySpawns = {},
 		itemSpawns = {
@@ -39,7 +39,7 @@ bardo_klinj_missions =
 		missionType = "confiscate",
 		primarySpawns =
 		{
-			{ npcTemplate = "gungan_reject_quest_bardo", planetName = "naboo", npcName = "Mubarr" }
+			{ npcTemplate = "gungan_reject_quest_bardo", npcName = "Mubarr" }
 		},
 		secondarySpawns =
 		{
@@ -57,13 +57,13 @@ bardo_klinj_missions =
 		missionType = "escort",
 		primarySpawns =
 		{
-			{ npcTemplate = "majordomo_quest_bardo", planetName = "naboo", npcName = "Xan'lak" }
+			{ npcTemplate = "majordomo_quest_bardo", npcName = "Xan'lak" }
 		},
 		secondarySpawns =
 		{
-			{ npcTemplate = "brawler", planetName = "naboo", npcName = "Kritus' gang leader" },
-			{ npcTemplate = "thug", planetName = "naboo", npcName = "Kritus' gang member" },
-			{ npcTemplate = "thug", planetName = "naboo", npcName = "Kritus' gang member" }
+			{ npcTemplate = "brawler", npcName = "Kritus' gang leader" },
+			{ npcTemplate = "thug", npcName = "Kritus' gang member" },
+			{ npcTemplate = "thug", npcName = "Kritus' gang member" }
 		},
 		itemSpawns =
 		{
@@ -78,7 +78,7 @@ bardo_klinj_missions =
 npcMapBardoKlinj =
 {
 	{
-		spawnData = { planetName = "naboo", npcTemplate = "bardo_klinj", x = -6.5, z = 6.1, y = -8.5, direction = 90, cellID = 1661384, position = STAND },
+		spawnData = { npcTemplate = "bardo_klinj", x = -6.5, z = 6.1, y = -8.5, direction = 90, cellID = 1661384, position = STAND },
 		worldPosition = { x = 1822.5, y = 2780.5 },
 		npcNumber = 1,
 		stfFile = "@static_npc/naboo/bardo_klinj",
@@ -87,11 +87,11 @@ npcMapBardoKlinj =
 }
 
 BardoKlinj = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapBardoKlinj,
 	permissionMap = {},
 	className = "BardoKlinj",
 	screenPlayState = "bardo_klinj_task",
+	planetName = "naboo",
 	distance = 1000,
 }
 

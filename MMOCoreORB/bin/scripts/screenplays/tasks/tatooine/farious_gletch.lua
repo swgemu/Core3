@@ -4,7 +4,7 @@ farious_gletch_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "greenfingers", planetName = "tatooine", npcName = "Greenfingers" }
+				{ npcTemplate = "greenfingers", npcName = "Greenfingers" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -17,12 +17,12 @@ farious_gletch_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "gordul_koga", planetName = "tatooine", npcName = "Gordul Koga" }
+				{ npcTemplate = "gordul_koga", npcName = "Gordul Koga" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "a Thug" },
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "a Thug" }
+				{ npcTemplate = "thug", npcName = "a Thug" },
+				{ npcTemplate = "thug", npcName = "a Thug" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -34,12 +34,12 @@ farious_gletch_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "ripper", planetName = "tatooine", npcName = "Ripper" }
+				{ npcTemplate = "ripper", npcName = "Ripper" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "jabba_thug", planetName = "tatooine", npcName = "a Jabba Thug" },
-				{ npcTemplate = "jabba_thug", planetName = "tatooine", npcName = "a Jabba Thug" }
+				{ npcTemplate = "jabba_thug", npcName = "a Jabba Thug" },
+				{ npcTemplate = "jabba_thug", npcName = "a Jabba Thug" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -51,7 +51,7 @@ farious_gletch_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "professor_whisper", planetName = "tatooine", npcName = "Professor Whisper" }
+				{ npcTemplate = "professor_whisper", npcName = "Professor Whisper" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -65,7 +65,7 @@ farious_gletch_missions =
 npcMapFariousGletch =
 	{
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "farious_gletch", x = 1.7, z = -0.4, y = -5.5, direction = 315, cellID = 1278989, position = STAND },
+			spawnData = { npcTemplate = "farious_gletch", x = 1.7, z = -0.4, y = -5.5, direction = 315, cellID = 1278989, position = STAND },
 			worldPosition = { x = -1334, y = -3886 },
 			npcNumber = 1,
 			stfFile = "@static_npc/tatooine/farious_gletch",
@@ -74,10 +74,10 @@ npcMapFariousGletch =
 	}
 
 FariousGletch = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapFariousGletch,
 	className = "FariousGletch",
 	screenPlayState = "farious_gletch_quest",
+	planetName = "tatooine",
 	distance = 800
 }
 

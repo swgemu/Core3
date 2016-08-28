@@ -4,7 +4,7 @@ brennis_doore_missions =
 		missionType = "deliver",
 		primarySpawns =
 		{
-			{ npcTemplate = "grandmother_quest_brennis", planetName = "naboo", npcName = "Mia Magansitty" }
+			{ npcTemplate = "grandmother_quest_brennis", npcName = "Mia Magansitty" }
 		},
 		secondarySpawns =
 		{
@@ -23,7 +23,7 @@ brennis_doore_missions =
 		missionType = "deliver",
 		primarySpawns =
 		{
-			{ npcTemplate = "ole_friend_quest_brennis", planetName = "naboo", npcName = "Temir Tonnalo" }
+			{ npcTemplate = "ole_friend_quest_brennis", npcName = "Temir Tonnalo" }
 		},
 		secondarySpawns =
 		{
@@ -42,7 +42,7 @@ brennis_doore_missions =
 		missionType = "deliver",
 		primarySpawns =
 		{
-			{ npcTemplate = "imperial_rep_quest_brennis", planetName = "naboo", npcName = "Rille Nuder" }
+			{ npcTemplate = "imperial_rep_quest_brennis", npcName = "Rille Nuder" }
 		},
 		secondarySpawns =
 		{
@@ -62,7 +62,7 @@ brennis_doore_missions =
 npcMapBrennisDoore =
 {
 	{
-		spawnData = { planetName = "naboo", npcTemplate = "brennis_doore", x = 1740.0, z = 12.0, y = 2657.0, direction = 138, cellID = 0, position = STAND },
+		spawnData = { npcTemplate = "brennis_doore", x = 1740.0, z = 12.0, y = 2657.0, direction = 138, cellID = 0, position = STAND },
 		npcNumber = 1,
 		stfFile = "@static_npc/naboo/brennis_doore",
 		missions = brennis_doore_missions
@@ -70,11 +70,11 @@ npcMapBrennisDoore =
 }
 
 BrennisDoore = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapBrennisDoore,
 	permissionMap = {},
 	className = "BrennisDoore",
 	screenPlayState = "brennis_doore_task",
+	planetName = "naboo",
 	distance = 1000,
 }
 

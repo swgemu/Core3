@@ -4,7 +4,7 @@ luthin_dlunar_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "slarr_sloann", planetName = "corellia", npcName = "S'larr S'loann" }
+				{ npcTemplate = "slarr_sloann", npcName = "S'larr S'loann" }
 			},
 			secondarySpawns =	{},
 			itemSpawns =
@@ -20,12 +20,12 @@ luthin_dlunar_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "gnurr_fenkel", planetName = "corellia", npcName = "Gnurr Fenkel" }
+				{ npcTemplate = "gnurr_fenkel", npcName = "Gnurr Fenkel" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" },
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" },
+				{ npcTemplate = "thug", npcName = "a thug" },
+				{ npcTemplate = "thug", npcName = "a thug" },
 			},
 			itemSpawns =
 			{
@@ -41,7 +41,7 @@ luthin_dlunar_missions =
 npcMapLuthinDlunar =
 	{
 		{
-			spawnData = { planetName = "corellia", npcTemplate = "luthin_dlunar", x = -15, z = 2.3, y = 11, direction = 8, cellID = 2365927, position = STAND },
+			spawnData = { npcTemplate = "luthin_dlunar", x = -15, z = 2.3, y = 11, direction = 8, cellID = 2365927, position = STAND },
 			worldPosition = { x = 6692, y = -5608 },
 			npcNumber = 1,
 			stfFile = "@static_npc/corellia/luthin_dlunar",
@@ -50,10 +50,10 @@ npcMapLuthinDlunar =
 	}
 
 LuthinDlunar = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapLuthinDlunar,
 	className = "LuthinDlunar",
 	screenPlayState = "luthin_dlunar_quest",
+	planetName = "corellia",
 	distance = 800
 }
 

@@ -4,7 +4,7 @@ denell_kel_vannon_missions =
 			missionType = "retrieve",
 			primarySpawns =
 			{
-				{ npcTemplate = "shaedra_valouri", planetName = "corellia", npcName = "Shaedra Valouri" }
+				{ npcTemplate = "shaedra_valouri", npcName = "Shaedra Valouri" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = 
@@ -20,12 +20,12 @@ denell_kel_vannon_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "mac_varley", planetName = "corellia", npcName = "Captain Mac Varley" }
+				{ npcTemplate = "mac_varley", npcName = "Captain Mac Varley" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" },
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" }
+				{ npcTemplate = "thug", npcName = "a thug" },
+				{ npcTemplate = "thug", npcName = "a thug" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -47,7 +47,7 @@ denell_kel_vannon_missions =
 npcMapDenellKelVannon =
 	{
 		{
-			spawnData = { planetName = "corellia", npcTemplate = "denell_kelvannon", x = -3414.11, z = 74, y = 3337.52, direction = 28, cellID = 0, position = STAND },
+			spawnData = { npcTemplate = "denell_kelvannon", x = -3414.11, z = 74, y = 3337.52, direction = 28, cellID = 0, position = STAND },
 			worldPosition = { x = -3414, y = 3336 },
 			npcNumber = 1,
 			stfFile = "@static_npc/corellia/denell_kel_vannon",
@@ -56,10 +56,10 @@ npcMapDenellKelVannon =
 	}
 
 DenellKelVannon = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapDenellKelVannon,
 	className = "DenellKelVannon",
 	screenPlayState = "denell_kel_vannon_quest",
+	planetName = "corellia",
 	distance = 800
 }
 

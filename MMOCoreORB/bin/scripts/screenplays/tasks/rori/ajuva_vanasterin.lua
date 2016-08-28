@@ -4,7 +4,7 @@ ajuva_vanasterin_missions =
 		missionType = "deliver",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "jinderliss_prason", planetName = "rori", npcName = "Jinderliss Prason" }
+			{ npcTemplate = "jinderliss_prason", npcName = "Jinderliss Prason" }
 		}, 
 		secondarySpawns =
 		{
@@ -24,7 +24,7 @@ ajuva_vanasterin_missions =
 		missionType = "deliver", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "art_dealer", planetName = "rori", npcName = "Art Dealer" }
+			{ npcTemplate = "art_dealer", npcName = "Art Dealer" }
 		}, 
 		secondarySpawns =
 		{
@@ -45,7 +45,7 @@ ajuva_vanasterin_missions =
 npcMapAjuvaVanasterin = 
 { 
 	{ 
-		spawnData = { planetName = "rori", npcTemplate = "ajuva_vanasterin", x = 5203, z = 80, y = 5700, direction = 180, cellID = 0, position = STAND },
+		spawnData = { npcTemplate = "ajuva_vanasterin", x = 5203, z = 80, y = 5700, direction = 180, cellID = 0, position = STAND },
 		npcNumber = 1,
 		stfFile = "@static_npc/rori/rori_restuss_ajuva_vanasterin",
 		missions = ajuva_vanasterin_missions
@@ -53,11 +53,10 @@ npcMapAjuvaVanasterin =
 }
 
 AjuvaVanasterin = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapAjuvaVanasterin,
-	permissionMap = {},
 	className = "AjuvaVanasterin",
 	screenPlayState = "ajuva_vanasterin_quest",
+	planetName = "rori",
 	distance = 600
 }
 

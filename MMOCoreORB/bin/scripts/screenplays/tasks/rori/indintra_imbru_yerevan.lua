@@ -4,7 +4,7 @@ indintra_imbru_yerevan_missions =
 		missionType = "deliver",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "briska_gil", planetName = "rori", npcName = "Briska Gil" }
+			{ npcTemplate = "briska_gil", npcName = "Briska Gil" }
 		}, 
 		secondarySpawns =
 		{
@@ -23,7 +23,7 @@ indintra_imbru_yerevan_missions =
 		missionType = "deliver", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "shaultra_loraweet", planetName = "rori", npcName = "Shaultra Loraweet" }
+			{ npcTemplate = "shaultra_loraweet", npcName = "Shaultra Loraweet" }
 		}, 
 		secondarySpawns =
 		{
@@ -43,7 +43,7 @@ indintra_imbru_yerevan_missions =
 npcMapIndintraImbruYerevan = 
 { 
 	{ 
-		spawnData = { planetName = "rori", npcTemplate = "indintra_imbru_yerevan", x = -6.5, z = 1.6, y = -14, direction = 0, cellID = 4635647, position = STAND },
+		spawnData = { npcTemplate = "indintra_imbru_yerevan", x = -6.5, z = 1.6, y = -14, direction = 0, cellID = 4635647, position = STAND },
 		worldPosition = { x = 5143.5, y = 5639 }, 
 		npcNumber = 1,
 		stfFile = "@static_npc/rori/rori_narmle_indintra_imbru_yerevan",
@@ -52,11 +52,10 @@ npcMapIndintraImbruYerevan =
 }
 
 IndintraImbruYerevan = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapIndintraImbruYerevan,
-	permissionMap = {},
 	className = "IndintraImbruYerevan",
 	screenPlayState = "indintra_imbru_yerevan_quest",
+	planetName = "rori",
 	distance = 600
 }
 

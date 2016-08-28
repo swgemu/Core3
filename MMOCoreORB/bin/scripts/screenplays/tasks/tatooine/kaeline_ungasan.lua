@@ -4,7 +4,7 @@ kaeline_ungasan_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "flip", planetName = "tatooine", npcName = "Flip" }
+				{ npcTemplate = "flip", npcName = "Flip" }
 			},
 			secondarySpawns =	{},
 			itemSpawns =
@@ -20,7 +20,7 @@ kaeline_ungasan_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "sil_ondatek", planetName = "tatooine", npcName = "Sil Onda'tek" }
+				{ npcTemplate = "sil_ondatek", npcName = "Sil Onda'tek" }
 			},
 			secondarySpawns =	{},
 			itemSpawns =
@@ -36,7 +36,7 @@ kaeline_ungasan_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "assassin", planetName = "tatooine", npcName = "an Assassin" }
+				{ npcTemplate = "assassin", npcName = "an Assassin" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -51,7 +51,7 @@ kaeline_ungasan_missions =
 npcMapKaelineUngasan =
 	{
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "kaeline_ungasan", x = -2815.58, z = 5, y = 1940.55, direction = 335.154, cellID = 0, position = STAND },
+			spawnData = { npcTemplate = "kaeline_ungasan", x = -2815.58, z = 5, y = 1940.55, direction = 335.154, cellID = 0, position = STAND },
 			worldPosition = { x = -2816, y = 1941 },
 			npcNumber = 1,
 			stfFile = "@static_npc/tatooine/kaeline_ungasan",
@@ -60,10 +60,10 @@ npcMapKaelineUngasan =
 	}
 
 KaelineUngasan = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapKaelineUngasan,
 	className = "KaelineUngasan",
 	screenPlayState = "kaeline_ungasan_quest",
+	planetName = "tatooine",
 	distance = 800
 }
 
