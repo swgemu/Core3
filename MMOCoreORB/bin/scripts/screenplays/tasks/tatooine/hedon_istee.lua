@@ -4,7 +4,7 @@ hedon_istee_missions =
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "drognuz", planetName = "tatooine", npcName = "Drognuz" } 
+			{ npcTemplate = "drognuz", npcName = "Drognuz" } 
 		}, 
 		secondarySpawns = {},
 		itemSpawns = {}, 
@@ -17,7 +17,7 @@ hedon_istee_missions =
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "rath_kanaz", planetName = "tatooine", npcName = "Rath Kanaz" } 
+			{ npcTemplate = "rath_kanaz", npcName = "Rath Kanaz" } 
 		}, 
 		secondarySpawns = {},
 		itemSpawns = {}, 
@@ -30,7 +30,7 @@ hedon_istee_missions =
 		missionType = "deliver", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "serene_floater", planetName = "tatooine", npcName = "Serene Floater" } 
+			{ npcTemplate = "serene_floater", npcName = "Serene Floater" } 
 		}, 
 		secondarySpawns = {}, 
 		itemSpawns = 
@@ -47,7 +47,7 @@ hedon_istee_missions =
 npcMapHedonIstee = 
 { 
 	{ 
-		spawnData = { planetName = "tatooine", npcTemplate = "hedon_istee", x = 1390, z = 7, y = 3197, direction = 0, cellID = 0, position = STAND },
+		spawnData = { npcTemplate = "hedon_istee", x = 1390, z = 7, y = 3197, direction = 0, cellID = 0, position = STAND },
 		npcNumber = 1,
 		stfFile = "@static_npc/tatooine/hedon_istee",
 		missions = hedon_istee_missions
@@ -55,12 +55,11 @@ npcMapHedonIstee =
 }
 
 HedonIstee = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapHedonIstee,
-	permissionMap = {},
 	className = "HedonIstee",
 	screenPlayState = "hedon_istee_task",
 	requiresEliteCombat = true,
+	planetName = "tatooine",
 	distance = 800,
 }
 

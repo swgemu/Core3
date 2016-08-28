@@ -4,7 +4,7 @@ generic_criminal_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "criminal_target", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "criminal_target", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -17,7 +17,7 @@ generic_criminal_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "criminal_target", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "criminal_target", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -30,7 +30,7 @@ generic_criminal_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "criminal_target", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "criminal_target", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -43,7 +43,7 @@ generic_criminal_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "criminal_target", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "criminal_target", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -56,7 +56,7 @@ generic_criminal_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "criminal_target", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "criminal_target", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -72,7 +72,7 @@ generic_criminal_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "criminal_target", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "criminal_target", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -88,7 +88,7 @@ generic_criminal_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "criminal_target", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "criminal_target", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -104,7 +104,7 @@ generic_criminal_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "criminal_target", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "criminal_target", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -120,7 +120,7 @@ generic_criminal_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "criminal_target_black_sun", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "criminal_target_black_sun", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -136,7 +136,7 @@ generic_criminal_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "criminal_target_merchant", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "criminal_target_merchant", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -152,7 +152,7 @@ generic_criminal_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "criminal_target_noble", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "criminal_target_noble", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -168,7 +168,7 @@ generic_criminal_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "criminal_target_rival", planetName = "generic", npcName = "random" }
+				{ npcTemplate = "criminal_target_rival", npcName = "random" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -192,7 +192,6 @@ npcMapGenericCriminal =
 	}
 
 GenericCriminal = ThemeParkLogic:new {
-	numberOfActs = 1,
 	genericGiver = true,
 	npcMap = npcMapGenericCriminal,
 	className = "GenericCriminal",

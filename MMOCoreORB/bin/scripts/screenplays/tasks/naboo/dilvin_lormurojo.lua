@@ -4,7 +4,7 @@ dilvin_lormurojo_missions =
 		missionType = "assassinate",
 		primarySpawns =
 		{
-			{ npcTemplate = "borvos_thug", planetName = "naboo", npcName = "" }
+			{ npcTemplate = "borvos_thug", npcName = "" }
 		},
 		secondarySpawns = {},
 		itemSpawns = {},
@@ -20,7 +20,7 @@ dilvin_lormurojo_missions =
 npcMapDilvinLormurojo =
 {
 	{
-		spawnData = { planetName = "naboo", npcTemplate = "dilvin_lormurojo", x = 4892, z = 3.8, y = -4997.6, direction = 176, cellID = 0, position = STAND },
+		spawnData = { npcTemplate = "dilvin_lormurojo", x = 4892, z = 3.8, y = -4997.6, direction = 176, cellID = 0, position = STAND },
 		npcNumber = 1,
 		stfFile = "@static_npc/naboo/dilvin_lormurojo",
 		missions = dilvin_lormurojo_missions
@@ -28,11 +28,10 @@ npcMapDilvinLormurojo =
 }
 
 DilvinLormurojo = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapDilvinLormurojo,
-	permissionMap = {},
 	className = "DilvinLormurojo",
 	screenPlayState = "dilvin_lormurojo_task",
+	planetName = "naboo",
 	distance = 800,
 }
 

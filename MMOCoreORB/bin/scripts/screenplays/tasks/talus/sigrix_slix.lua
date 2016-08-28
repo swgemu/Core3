@@ -4,11 +4,11 @@ sigrix_slix_missions =
 			missionType = "retrieve",
 			primarySpawns =
 			{
-				{ npcTemplate = "cenik", planetName = "talus", npcName = "Cenik (a Spice Collective courier)" }
+				{ npcTemplate = "cenik", npcName = "Cenik (a Spice Collective courier)" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "sigrix_thug", planetName = "talus", npcName = "a Thug" },
+				{ npcTemplate = "sigrix_thug", npcName = "a Thug" },
 			},
 			itemSpawns = 
 			{
@@ -23,11 +23,11 @@ sigrix_slix_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "wooral", planetName = "talus", npcName = "Wooral" }
+				{ npcTemplate = "wooral", npcName = "Wooral" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "sigrix_selonian_warrior", planetName = "talus", npcName = "a Selonian Warrior" },
+				{ npcTemplate = "sigrix_selonian_warrior", npcName = "a Selonian Warrior" },
 			},
 			itemSpawns = 
 			{
@@ -43,7 +43,7 @@ sigrix_slix_missions =
 npcMapSigrixSlix =
 	{
 		{
-			spawnData = { planetName = "talus", npcTemplate = "sigrix_slix", x = 17.2, z = -0.9, y = -6.8, direction = 25, cellID = 4265375, position = STAND },
+			spawnData = { npcTemplate = "sigrix_slix", x = 17.2, z = -0.9, y = -6.8, direction = 25, cellID = 4265375, position = STAND },
 			worldPosition = { x = 4302, y = 5310 },
 			npcNumber = 1,
 			stfFile = "@static_npc/talus/talus_nashal_sigrix_slix",
@@ -52,10 +52,10 @@ npcMapSigrixSlix =
 	}
 
 SigrixSlix = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapSigrixSlix,
 	className = "SigrixSlix",
 	screenPlayState = "sigrix_slix_quest",
+	planetName = "talus",
 	distance = 800
 }
 

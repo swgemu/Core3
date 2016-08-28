@@ -4,7 +4,7 @@ lareen_dantara_missions =
 		missionType = "assassinate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "krahbu", planetName = "naboo", npcName = "a Crazy Krahbu" } 
+			{ npcTemplate = "krahbu", npcName = "a Crazy Krahbu" } 
 		}, 
 		secondarySpawns = {},
 		itemSpawns = {}, 
@@ -17,7 +17,7 @@ lareen_dantara_missions =
 		missionType = "assassinate", 		
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "mott", planetName = "naboo", npcName = "a Infected Mott" } 
+			{ npcTemplate = "mott", npcName = "a Infected Mott" } 
 		}, 
 		secondarySpawns = {},
 		itemSpawns = {}, 
@@ -31,7 +31,7 @@ lareen_dantara_missions =
 npcMapLareenDantara = 
 { 
 	{ 
-		spawnData = { planetName = "naboo", npcTemplate = "lareen_dantara", x = -5495.0, z = -150.0, y = -5.0, direction = 345.343, cellID = 0, position = STAND }, 
+		spawnData = { npcTemplate = "lareen_dantara", x = -5495.0, z = -150.0, y = -5.0, direction = 345.343, cellID = 0, position = STAND }, 
 		npcNumber = 1,   
 		stfFile = "@static_npc/naboo/lareen_dantara", 
 		missions = lareen_dantara_missions 
@@ -39,11 +39,10 @@ npcMapLareenDantara =
 }
 
 LareenDantara = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapLareenDantara,
-	permissionMap = {},
 	className = "LareenDantara",
 	screenPlayState = "lareen_dantara_quest",
+	planetName = "naboo",
 	distance = 800,
 }
 

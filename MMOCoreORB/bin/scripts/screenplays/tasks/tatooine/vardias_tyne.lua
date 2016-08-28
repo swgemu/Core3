@@ -4,7 +4,7 @@ vardias_tyne_missions =
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "rhalia_jinsari", planetName = "tatooine", npcName = "Rhalia Jinsari" } 
+			{ npcTemplate = "rhalia_jinsari", npcName = "Rhalia Jinsari" } 
 		}, 
 		secondarySpawns = {},
 		itemSpawns = {}, 
@@ -17,7 +17,7 @@ vardias_tyne_missions =
 		missionType = "deliver", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "chonar", planetName = "tatooine", npcName = "Brother Chonar" } 
+			{ npcTemplate = "chonar", npcName = "Brother Chonar" } 
 		}, 
 		secondarySpawns = {}, 
 		itemSpawns = 
@@ -34,7 +34,7 @@ vardias_tyne_missions =
 npcMapVardiasTyne = 
 { 
 	{ 
-		spawnData = { planetName = "tatooine", npcTemplate = "vardias_tyne", x = 104, z = 44.1, y = -5382, direction = 96, cellID = 0, position = STAND },
+		spawnData = { npcTemplate = "vardias_tyne", x = 104, z = 44.1, y = -5382, direction = 96, cellID = 0, position = STAND },
 		npcNumber = 1,
 		stfFile = "@static_npc/tatooine/vardias_tyne",
 		missions = vardias_tyne_missions 
@@ -42,11 +42,10 @@ npcMapVardiasTyne =
 }
 
 VardiasTyne = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapVardiasTyne,
-	permissionMap = {},
 	className = "VardiasTyne",
 	screenPlayState = "vardias_tyne_quest",
+	planetName = "tatooine",
 	distance = 600
 }
 

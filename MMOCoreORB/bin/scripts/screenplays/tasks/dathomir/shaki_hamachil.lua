@@ -4,7 +4,7 @@ shaki_hamachil_missions =
 		missionType = "retrieve",
 			primarySpawns =
 			{
-				{ npcTemplate = "shaki_smuggler_q1", planetName = "dathomir", npcName = "smuggler" }
+				{ npcTemplate = "shaki_smuggler_q1", npcName = "smuggler" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -21,7 +21,7 @@ shaki_hamachil_missions =
 		missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "shaki_imperial_q2", planetName = "dathomir", npcName = "an Imperial Second Lieutenant" }
+				{ npcTemplate = "shaki_imperial_q2", npcName = "an Imperial Second Lieutenant" }
 			},
 			secondarySpawns = {},
 			itemSpawns =
@@ -42,7 +42,7 @@ shaki_hamachil_missions =
 
 npcMapShakiHamachil =
 	{
-		{ spawnData = { planetName = "dathomir", npcTemplate = "shaki_hamachil", x = -101.049, z = 18, y = -1542.62, direction = 0, cellID = 0, position = STAND },
+		{ spawnData = { npcTemplate = "shaki_hamachil", x = -101.049, z = 18, y = -1542.62, direction = 0, cellID = 0, position = STAND },
 			npcNumber = 1,
 			stfFile = "@static_npc/dathomir/dathomir_researchoutpost_shaki_hamachil",
 			missions = shaki_hamachil_missions
@@ -50,10 +50,10 @@ npcMapShakiHamachil =
 	}
 
 ShakiHamachil = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapShakiHamachil,
 	className = "ShakiHamachil",
 	screenPlayState = "shaki_hamachil_quest",
+	planetName = "dathomir",
 	distance = 1200,
 	faction = FACTIONIMPERIAL
 }

@@ -4,7 +4,7 @@ lorne_prestar_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "worrt", planetName = "tatooine", npcName = "a worrt" }
+				{ npcTemplate = "worrt", npcName = "a worrt" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -17,7 +17,7 @@ lorne_prestar_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "mound_mite", planetName = "tatooine", npcName = "a mound mite" }
+				{ npcTemplate = "mound_mite", npcName = "a mound mite" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -30,7 +30,7 @@ lorne_prestar_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "a Thug" }
+				{ npcTemplate = "thug", npcName = "a Thug" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -43,13 +43,13 @@ lorne_prestar_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "tusken_warlord", planetName = "tatooine", npcName = "a Tusken warlord" }
+				{ npcTemplate = "tusken_warlord", npcName = "a Tusken warlord" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "a Tusken raider" },
-				{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "a Tusken raider" },
-				{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "a Tusken raider" },
+				{ npcTemplate = "tusken_raider", npcName = "a Tusken raider" },
+				{ npcTemplate = "tusken_raider", npcName = "a Tusken raider" },
+				{ npcTemplate = "tusken_raider", npcName = "a Tusken raider" },
 			},
 			itemSpawns = {},
 			rewards =
@@ -62,7 +62,7 @@ lorne_prestar_missions =
 npcMapLornePrestar =
 	{
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "lorne_prestar", x = 3826.5, z = 20, y = 2367.9, direction = 260, cellID = 0, position = STAND },
+			spawnData = { npcTemplate = "lorne_prestar", x = 3826.5, z = 20, y = 2367.9, direction = 260, cellID = 0, position = STAND },
 			worldPosition = { x = 3827, y = 2368 },
 			npcNumber = 1,
 			stfFile = "@static_npc/tatooine/lorne_prestar",
@@ -71,10 +71,10 @@ npcMapLornePrestar =
 	}
 
 LornePrestar = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapLornePrestar,
 	className = "LornePrestar",
 	screenPlayState = "lorne_prestar_quest",
+	planetName = "tatooine",
 	distance = 600
 }
 

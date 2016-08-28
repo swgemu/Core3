@@ -4,7 +4,7 @@ huff_zinga_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "huff_blistmok", planetName = "naboo", npcName = "Adult blistmok" }
+				{ npcTemplate = "huff_blistmok", npcName = "Adult blistmok" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -17,7 +17,7 @@ huff_zinga_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "bocatt", planetName = "naboo", npcName = "Bocatt" }
+				{ npcTemplate = "bocatt", npcName = "Bocatt" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -30,7 +30,7 @@ huff_zinga_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "sharptooth_langlatch", planetName = "naboo", npcName = "Langlatch" }
+				{ npcTemplate = "sharptooth_langlatch", npcName = "Langlatch" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -43,7 +43,7 @@ huff_zinga_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "grassland_slice_hound", planetName = "naboo", npcName = "Corellian Slice Hound" }
+				{ npcTemplate = "grassland_slice_hound", npcName = "Corellian Slice Hound" }
 			},
 			secondarySpawns = {},
 			itemSpawns = {},
@@ -58,7 +58,7 @@ huff_zinga_missions =
 npcMapHuffZinga =
 	{
 		{
-			spawnData = { planetName = "naboo", npcTemplate = "huff_zinga", x = 5155, z = -192, y = 6636, direction = 47, cellID = 0, position = STAND },
+			spawnData = { npcTemplate = "huff_zinga", x = 5155, z = -192, y = 6636, direction = 47, cellID = 0, position = STAND },
 			worldPosition = { x = 5155, y = 6636 },
 			npcNumber = 1,
 			stfFile = "@static_npc/naboo/huff_zinga",
@@ -67,10 +67,10 @@ npcMapHuffZinga =
 	}
 
 HuffZinga = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapHuffZinga,
 	className = "HuffZinga",
 	screenPlayState = "huff_zinga_quest",
+	planetName = "naboo",
 	distance = 600
 }
 

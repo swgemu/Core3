@@ -4,11 +4,11 @@ noren_krast_missions =
 			missionType = "retrieve",
 			primarySpawns =
 			{
-				{ npcTemplate = "banyon_craddok", planetName = "corellia", npcName = "Banyon Craddok" }
+				{ npcTemplate = "banyon_craddok", npcName = "Banyon Craddok" }
 			},
 			secondarySpawns =	
 			{
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" }
+				{ npcTemplate = "thug", npcName = "a thug" }
 			},
 			itemSpawns =
 			{
@@ -23,12 +23,12 @@ noren_krast_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "fugue", planetName = "corellia", npcName = "Fugue" }
+				{ npcTemplate = "fugue", npcName = "Fugue" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" },
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" }
+				{ npcTemplate = "thug", npcName = "a thug" },
+				{ npcTemplate = "thug", npcName = "a thug" }
 			},
 			itemSpawns =
 			{
@@ -43,13 +43,13 @@ noren_krast_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "jeter_corona", planetName = "corellia", npcName = "Jeter Corona" }
+				{ npcTemplate = "jeter_corona", npcName = "Jeter Corona" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" },
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" },
-				{ npcTemplate = "thug", planetName = "corellia", npcName = "a thug" }
+				{ npcTemplate = "thug", npcName = "a thug" },
+				{ npcTemplate = "thug", npcName = "a thug" },
+				{ npcTemplate = "thug", npcName = "a thug" }
 			},
 			itemSpawns =
 			{
@@ -65,7 +65,7 @@ noren_krast_missions =
 npcMapNorenKrast =
 	{
 		{
-			spawnData = { planetName = "corellia", npcTemplate = "noren_krast", x = -5203.33, z = 21.0, y = -2488.13, direction = 176.643, cellID = 0, position = STAND },
+			spawnData = { npcTemplate = "noren_krast", x = -5203.33, z = 21.0, y = -2488.13, direction = 176.643, cellID = 0, position = STAND },
 			worldPosition = { x = -5203, y = -2488 },
 			npcNumber = 1,
 			stfFile = "@static_npc/corellia/noren_krast",
@@ -74,10 +74,10 @@ npcMapNorenKrast =
 	}
 
 NorenKrast = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapNorenKrast,
 	className = "NorenKrast",
 	screenPlayState = "noren_krast_quest",
+	planetName = "corellia",
 	distance = 800
 }
 

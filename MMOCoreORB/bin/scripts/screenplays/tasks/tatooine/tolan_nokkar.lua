@@ -2,7 +2,7 @@ tolan_nokkar_missions =
 	{
 		{
 			missionType = "hunt",
-			huntTarget = { npcTemplate = "tusken_king_quest", npcName = "A Tusken King", planetName = "tatooine", waypointX = -5320, waypointY = -4442 },
+			huntTarget = { npcTemplate = "tusken_king_quest", npcName = "A Tusken King", waypointX = -5320, waypointY = -4442 },
 			rewards =
 			{
 				{ rewardType = "credits", amount = 20000 },
@@ -14,7 +14,7 @@ tolan_nokkar_missions =
 npcMapTolanNokkar =
 	{
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "tolan_nokkar", x = -5477, z = 30.0, y = -3881, direction = 118, cellID = 0, position = STAND },
+			spawnData = { npcTemplate = "tolan_nokkar", x = -5477, z = 30.0, y = -3881, direction = 118, cellID = 0, position = STAND },
 			worldPosition = { x = -5477, y = -3881 },
 			npcNumber = 1,
 			stfFile = "@spawning/static_npc/tusken_village_quest_npc",
@@ -23,10 +23,10 @@ npcMapTolanNokkar =
 	}
 
 TolanNokkar = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapTolanNokkar,
 	className = "TolanNokkar",
 	screenPlayState = "tolan_nokkar_quest",
+	planetName = "tatooine"
 }
 
 registerScreenPlay("TolanNokkar", true)

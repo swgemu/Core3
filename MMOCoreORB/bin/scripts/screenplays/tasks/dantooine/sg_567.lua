@@ -4,7 +4,7 @@ sg_567_missions =
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "sg_567_droideka", planetName = "dantooine", npcName = "(a Malfunctioning Droideka)" } 
+			{ npcTemplate = "sg_567_droideka", npcName = "(a Malfunctioning Droideka)" } 
 		}, 
 		secondarySpawns = {},
 		itemSpawns = 
@@ -19,12 +19,12 @@ sg_567_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "sg_619", planetName = "dantooine", npcName = "SG-619" } 
+			{ npcTemplate = "sg_619", npcName = "SG-619" } 
 		}, 
 		secondarySpawns = 
 		{				
-				{ npcTemplate = "rebel_specforce_sergeant", planetName = "dantooine", npcName = "random" },
-				{ npcTemplate = "specforce_major", planetName = "dantooine", npcName = "random" }
+				{ npcTemplate = "rebel_specforce_sergeant", npcName = "random" },
+				{ npcTemplate = "specforce_major", npcName = "random" }
 		},
 		itemSpawns = {}, 
 		rewards = 
@@ -38,7 +38,7 @@ sg_567_missions =
 npcMapSG567 = 
 { 
 	{ 
-		spawnData = { planetName = "dantooine", npcTemplate = "sg_567", x = -4216.85, z = 3, y = -2434.33, direction = 312.817, cellID = 0, position = STAND }, 
+		spawnData = { npcTemplate = "sg_567", x = -4216.85, z = 3, y = -2434.33, direction = 312.817, cellID = 0, position = STAND }, 
 		npcNumber = 1,   
 		stfFile = "@static_npc/dantooine/sg_567", 
 		missions = sg_567_missions 
@@ -46,11 +46,10 @@ npcMapSG567 =
 }
 
 SG567 = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapSG567,
-	permissionMap = {},
 	className = "SG567",
 	screenPlayState = "sg_567_quest",
+	planetName = "dantooine",
 	distance = 1000,
 	faction = FACTIONIMPERIAL
 }

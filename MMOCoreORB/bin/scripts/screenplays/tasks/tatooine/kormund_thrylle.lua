@@ -4,10 +4,10 @@ kormund_thrylle_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "reen_loruk", planetName = "tatooine", npcName = "Reen Loruk" }
+				{ npcTemplate = "reen_loruk", npcName = "Reen Loruk" }
 			},
 			secondarySpawns = {
-				{ npcTemplate = "kormund_probot", planetName = "tatooine", npcName = "an Imperial Probot" },
+				{ npcTemplate = "kormund_probot", npcName = "an Imperial Probot" },
 			},
 			itemSpawns =
 			{
@@ -22,12 +22,12 @@ kormund_thrylle_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "rodius_tharn", planetName = "tatooine", npcName = "Rodius Tharn" }
+				{ npcTemplate = "rodius_tharn", npcName = "Rodius Tharn" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "stormtrooper", planetName = "tatooine", npcName = "a Stormtrooper" },
-				{ npcTemplate = "stormtrooper", planetName = "tatooine", npcName = "a Stormtrooper" },
+				{ npcTemplate = "stormtrooper", npcName = "a Stormtrooper" },
+				{ npcTemplate = "stormtrooper", npcName = "a Stormtrooper" },
 			},
 			itemSpawns = {},
 			rewards =
@@ -40,7 +40,7 @@ kormund_thrylle_missions =
 npcMapKormundThrylle =
 	{
 		{
-			spawnData = { planetName = "tatooine", npcTemplate = "kormund_thrylle", x = -1043.98, z = 10, y = -3530.5, direction = 221.746, cellID = 0, position = STAND },
+			spawnData = { npcTemplate = "kormund_thrylle", x = -1043.98, z = 10, y = -3530.5, direction = 221.746, cellID = 0, position = STAND },
 			worldPosition = { x = -1044, y = -3531 },
 			npcNumber = 1,
 			stfFile = "@static_npc/tatooine/kormund_thrylle",
@@ -49,10 +49,10 @@ npcMapKormundThrylle =
 	}
 
 KormundThrylle = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapKormundThrylle,
 	className = "KormundThrylle",
 	screenPlayState = "kormund_thrylle_quest",
+	planetName = "tatooine",
 	distance = 800,
 	faction = FACTIONREBEL
 

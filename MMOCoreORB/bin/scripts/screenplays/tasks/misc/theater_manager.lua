@@ -30,7 +30,6 @@ Series legend:
 ]]
 
 TheaterManagerScreenPlay = ScreenPlay:new {
-	numberOfActs = 1,
 	screenplayName = "TheaterManagerScreenPlay",
 
 	enabled = 1,

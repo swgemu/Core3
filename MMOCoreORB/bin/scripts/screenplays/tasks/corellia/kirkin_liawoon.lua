@@ -4,10 +4,10 @@ kirkin_liawoon_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "lacnor_liawoon", planetName = "corellia", npcName = "Lacnor Liawoon" } 
+			{ npcTemplate = "lacnor_liawoon", npcName = "Lacnor Liawoon" } 
 		},
 		secondarySpawns = {
-			{ npcTemplate = "kirkin_human_thug", planetName = "corellia", npcName = "a thug" },
+			{ npcTemplate = "kirkin_human_thug", npcName = "a thug" },
 		},
 		itemSpawns = {},
 		rewards = 
@@ -19,10 +19,10 @@ kirkin_liawoon_missions =
 		missionType = "retrieve", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "kiantryl_liawoon", planetName = "corellia", npcName = "Kiantryl Liawoon" } 
+			{ npcTemplate = "kiantryl_liawoon", npcName = "Kiantryl Liawoon" } 
 		},
 		secondarySpawns = {
-			{ npcTemplate = "kirkin_human_thug", planetName = "corellia", npcName = "a thug" }
+			{ npcTemplate = "kirkin_human_thug", npcName = "a thug" }
 		},
 		itemSpawns = {
 			{ itemTemplate = "object/tangible/mission/quest_item/kirkin_liawoon_q2_needed.iff",
@@ -34,12 +34,12 @@ kirkin_liawoon_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "lacnor_liawoon", planetName = "corellia", npcName = "Lacnor Liawoon" } 
+			{ npcTemplate = "lacnor_liawoon", npcName = "Lacnor Liawoon" } 
 		},
 		secondarySpawns = {
-			{ npcTemplate = "kirkin_human_thug", planetName = "corellia", npcName = "a thug" },
-			{ npcTemplate = "kirkin_human_thug", planetName = "corellia", npcName = "a thug" },
-			{ npcTemplate = "kirkin_human_thug", planetName = "corellia", npcName = "a thug" }
+			{ npcTemplate = "kirkin_human_thug", npcName = "a thug" },
+			{ npcTemplate = "kirkin_human_thug", npcName = "a thug" },
+			{ npcTemplate = "kirkin_human_thug", npcName = "a thug" }
 		},
 		itemSpawns = {},
 		rewards = {}
@@ -49,7 +49,7 @@ kirkin_liawoon_missions =
 npcMapKirkinLiawoon = 
 { 
 	{ 
-		spawnData = { planetName = "corellia", npcTemplate = "kirkin_liawoon", x = -178.2, z = 28.0, y = -4498.0,
+		spawnData = { npcTemplate = "kirkin_liawoon", x = -178.2, z = 28.0, y = -4498.0,
 			direction = -91, cellID = 0, position = STAND }, 
 		worldPosition = { x = -178.2, y = -4498.0 },
 		npcNumber = 1,   
@@ -59,11 +59,10 @@ npcMapKirkinLiawoon =
 }
 
 KirkinLiawoon = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapKirkinLiawoon,
-	permissionMap = {},
 	className = "KirkinLiawoon",
 	screenPlayState = "kirkin_liawoon_quest",
+	planetName = "corellia",
 	distance = 1000
 }
 

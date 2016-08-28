@@ -4,12 +4,12 @@ slooni_jong_missions =
 			missionType = "retrieve",
 			primarySpawns =
 			{
-				{ npcTemplate = "slooni_smuggler", planetName = "talus", npcName = "Smuggler" }
+				{ npcTemplate = "slooni_smuggler", npcName = "Smuggler" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "talus", npcName = "a Thug" },
-				{ npcTemplate = "thug", planetName = "talus", npcName = "a Thug" }
+				{ npcTemplate = "thug", npcName = "a Thug" },
+				{ npcTemplate = "thug", npcName = "a Thug" }
 			},
 			itemSpawns =
 			{
@@ -25,11 +25,11 @@ slooni_jong_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "slooni_slave", planetName = "talus", npcName = "Twi'lek slave" }
+				{ npcTemplate = "slooni_slave", npcName = "Twi'lek slave" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "slaver", planetName = "talus", npcName = "a Slaver" },
+				{ npcTemplate = "slaver", npcName = "a Slaver" },
 			},
 			itemSpawns = {},
 			rewards =
@@ -42,12 +42,12 @@ slooni_jong_missions =
 			missionType = "escort",
 			primarySpawns =
 			{
-				{ npcTemplate = "slooni_slavemaster", planetName = "talus", npcName = "Slavemaster" }
+				{ npcTemplate = "slooni_slavemaster", npcName = "Slavemaster" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "slaver", planetName = "talus", npcName = "a Slaver" },
-				{ npcTemplate = "slaver", planetName = "talus", npcName = "a Slaver" }
+				{ npcTemplate = "slaver", npcName = "a Slaver" },
+				{ npcTemplate = "slaver", npcName = "a Slaver" }
 			},
 			itemSpawns = {},
 			rewards =
@@ -61,7 +61,7 @@ slooni_jong_missions =
 npcMapSlooniJong =
 	{
 		{
-			spawnData = { planetName = "talus", npcTemplate = "slooni_jong", x = 10.8, z = 1.7, y = -18, direction = -2, cellID = 4265440, position = STAND },
+			spawnData = { npcTemplate = "slooni_jong", x = 10.8, z = 1.7, y = -18, direction = -2, cellID = 4265440, position = STAND },
 			worldPosition = { x = 4303, y = 5090 },
 			npcNumber = 1,
 			stfFile = "@static_npc/talus/talus_nashal_slooni_jong",
@@ -70,10 +70,10 @@ npcMapSlooniJong =
 	}
 
 SlooniJong = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapSlooniJong,
 	className = "SlooniJong",
 	screenPlayState = "slooni_jong_quest",
+	planetName = "talus",
 	distance = 800
 }
 

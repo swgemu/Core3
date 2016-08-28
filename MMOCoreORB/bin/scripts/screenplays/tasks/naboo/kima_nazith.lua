@@ -4,12 +4,12 @@ kima_nazith_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "benbul_leedee", planetName = "naboo", npcName = "Benbul Leedee" }
+				{ npcTemplate = "benbul_leedee", npcName = "Benbul Leedee" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "imperial_trooper", planetName = "naboo", npcName = "" },
-				{ npcTemplate = "imperial_trooper", planetName = "naboo", npcName = "" },
+				{ npcTemplate = "imperial_trooper", npcName = "" },
+				{ npcTemplate = "imperial_trooper", npcName = "" },
 			},
 			itemSpawns = {},
 			rewards =
@@ -21,14 +21,14 @@ kima_nazith_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "hrodius_goragg", planetName = "naboo", npcName = "Hrodius Goragg" }
+				{ npcTemplate = "hrodius_goragg", npcName = "Hrodius Goragg" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "imperial_trooper", planetName = "naboo", npcName = "" },
-				{ npcTemplate = "imperial_trooper", planetName = "naboo", npcName = "" },
-				{ npcTemplate = "stormtrooper", planetName = "naboo", npcName = "" },
-				{ npcTemplate = "stormtrooper", planetName = "naboo", npcName = "" },
+				{ npcTemplate = "imperial_trooper", npcName = "" },
+				{ npcTemplate = "imperial_trooper", npcName = "" },
+				{ npcTemplate = "stormtrooper", npcName = "" },
+				{ npcTemplate = "stormtrooper", npcName = "" },
 			},
 			itemSpawns = {},
 			rewards =
@@ -40,14 +40,14 @@ kima_nazith_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "kunn_kuroosh", planetName = "naboo", npcName = "Kunn Kuroosh" }
+				{ npcTemplate = "kunn_kuroosh", npcName = "Kunn Kuroosh" }
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "stormtrooper", planetName = "naboo", npcName = "" },
-				{ npcTemplate = "stormtrooper", planetName = "naboo", npcName = "" },
-				{ npcTemplate = "stormtrooper", planetName = "naboo", npcName = "" },
-				{ npcTemplate = "stormtrooper", planetName = "naboo", npcName = "" },
+				{ npcTemplate = "stormtrooper", npcName = "" },
+				{ npcTemplate = "stormtrooper", npcName = "" },
+				{ npcTemplate = "stormtrooper", npcName = "" },
+				{ npcTemplate = "stormtrooper", npcName = "" },
 			},
 			itemSpawns = {},
 			rewards =
@@ -60,7 +60,7 @@ kima_nazith_missions =
 npcMapKimaNazith =
 	{
 		{
-			spawnData = { planetName = "naboo", npcTemplate = "kima_nazith", x = 4972, z = 360, y = -1582, direction = -178, cellID = 0, position = STAND },
+			spawnData = { npcTemplate = "kima_nazith", x = 4972, z = 360, y = -1582, direction = -178, cellID = 0, position = STAND },
 			npcNumber = 1,
 			stfFile = "@static_npc/naboo/kima_nazith",
 			missions = kima_nazith_missions
@@ -68,10 +68,10 @@ npcMapKimaNazith =
 	}
 
 KimaNazith = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapKimaNazith,
 	className = "KimaNazith",
 	screenPlayState = "kima_nazith_quest",
+	planetName = "naboo",
 	distance = 800,
 	faction = FACTIONREBEL,
 }

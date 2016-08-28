@@ -4,12 +4,12 @@ jatrian_lytus_missions =
 		missionType = "escort",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "nai", planetName = "dantooine", npcName = "Nai (a Rogue Trooper)" } 
+			{ npcTemplate = "nai", npcName = "Nai (a Rogue Trooper)" } 
 		}, 
 		secondarySpawns = 
 		{
-				{ npcTemplate = "rebel_brigadier_general", planetName = "dantooine", npcName = "random" },	
-				{ npcTemplate = "specforce_major", planetName = "dantooine", npcName = "random" }					
+				{ npcTemplate = "rebel_brigadier_general", npcName = "random" },	
+				{ npcTemplate = "specforce_major", npcName = "random" }					
 		},
 		itemSpawns = {}, 		
 		rewards = 
@@ -21,7 +21,7 @@ jatrian_lytus_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "chino", planetName = "dantooine", npcName = "Chino (an Empire Chief Inquisitor)" } 		
+			{ npcTemplate = "chino", npcName = "Chino (an Empire Chief Inquisitor)" } 		
 		}, 
 		secondarySpawns = {},
 		itemSpawns = {}, 
@@ -34,7 +34,7 @@ jatrian_lytus_missions =
 		missionType = "retrieve", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "echi", planetName = "dantooine", npcName = "Echi (a Holovid Developer)" } 
+			{ npcTemplate = "echi", npcName = "Echi (a Holovid Developer)" } 
 		}, 
 		secondarySpawns = {},
 		itemSpawns = 
@@ -50,7 +50,7 @@ jatrian_lytus_missions =
 		missionType = "deliver", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "jaaves", planetName = "dantooine", npcName = "Jaaves" } 
+			{ npcTemplate = "jaaves", npcName = "Jaaves" } 
 		}, 
 		secondarySpawns = {},
 		itemSpawns = 
@@ -67,7 +67,7 @@ jatrian_lytus_missions =
 npcMapJatrianLytus = 
 { 
 	{ 
-		spawnData = { planetName = "dantooine", npcTemplate = "jatrian_lytus", x = 3.1801, z = 0.125266, y = 3.64218, direction = 209.67, cellID = 1365879, position = STAND }, 
+		spawnData = { npcTemplate = "jatrian_lytus", x = 3.1801, z = 0.125266, y = 3.64218, direction = 209.67, cellID = 1365879, position = STAND }, 
 		worldPosition = { x = -4203.8, y = -2426.5 }, 
 		npcNumber = 1,   
 		stfFile = "@static_npc/dantooine/dantooine_imperialgarrison_jatrian_lytus", 
@@ -76,11 +76,10 @@ npcMapJatrianLytus =
 }
 
 JatrianLytus = ThemeParkLogic:new {
-	numberOfActs = 1,
 	npcMap = npcMapJatrianLytus,
-	permissionMap = {},
 	className = "JatrianLytus",
 	screenPlayState = "jatrian_lytus_quest",
+	planetName = "dantooine",
 	distance = 1000,
 	faction = FACTIONIMPERIAL
 }
