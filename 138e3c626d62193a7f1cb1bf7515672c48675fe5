@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_78175da4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:54:52Z",
+      "side": 1,
+      "message": "Your checks for this look good, but you didn\u0027t add the table to the themeparks that involve multiple planets.",
+      "revId": "138e3c626d62193a7f1cb1bf7515672c48675fe5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_383a4537",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:54:52Z",
+      "side": 1,
+      "message": "return",
+      "revId": "138e3c626d62193a7f1cb1bf7515672c48675fe5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d83eb129",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:54:52Z",
+      "side": 1,
+      "message": "return",
+      "revId": "138e3c626d62193a7f1cb1bf7515672c48675fe5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f83b6d36",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:54:52Z",
+      "side": 1,
+      "message": "Should we set the area as a no spawn / no build area so we don\u0027t have other stuff spawned/built inside while the player is en route? It could cause issues for the quest stuff spawning. We can set those to false when the player enters the area, before any quest stuff is spawned.",
+      "revId": "138e3c626d62193a7f1cb1bf7515672c48675fe5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_984839ce",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:54:52Z",
+      "side": 1,
+      "message": "What if the player is on a vehicle or mount when they enter the area?",
+      "revId": "138e3c626d62193a7f1cb1bf7515672c48675fe5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b845f5b4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:54:52Z",
+      "side": 1,
+      "message": "You should still remove planet from the building table of the buildingData in each quest that has this mission type. Actually, that will only leave template in the building table so building doesn\u0027t really need to be a table anymore.",
+      "revId": "138e3c626d62193a7f1cb1bf7515672c48675fe5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

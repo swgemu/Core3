@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_18350946",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/epic_quests/zicxBugBomb.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:54:52Z",
+      "side": 0,
+      "message": "return true",
+      "revId": "382f3cd85071124d221c4514cca7bef3b7ff97a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_389ec557",
         "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/naboo/bardo_klinj.lua",
         "patchSetId": 1
@@ -149,6 +166,23 @@
       "writtenOn": "2016-08-28T23:28:59Z",
       "side": 0,
       "message": "I would pass planetName as an arg to this instead of determining it within this function.",
+      "revId": "382f3cd85071124d221c4514cca7bef3b7ff97a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_5812a1b5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:54:52Z",
+      "side": 0,
+      "message": "You don\u0027t need this. planetName will already be the correct planet coming into this function.",
       "revId": "382f3cd85071124d221c4514cca7bef3b7ff97a8",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
