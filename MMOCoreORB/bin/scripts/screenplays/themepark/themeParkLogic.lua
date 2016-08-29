@@ -489,8 +489,8 @@ function ThemeParkLogic:handleMissionAccept(npcNumber, missionNumber, pConversin
 	local areaSpawnPoint = { }
 
 	if (mission.staticLoc ~= nil and #mission.staticLoc > 0) then
-		areaSpawnPoint[1] = #mission.staticLoc.x
-		areaSpawnPoint[3] = #mission.staticLoc.y
+		areaSpawnPoint[1] = mission.staticLoc.x
+		areaSpawnPoint[3] = mission.staticLoc.y
 		areaSpawnPoint[2] = getTerrainHeight(pConversingPlayer, areaSpawnPoint[1], areaSpawnPoint[3])
 	else
 		areaSpawnPoint = getSpawnPoint(zoneName, SceneObject(pConversingPlayer):getWorldPositionX(), SceneObject(pConversingPlayer):getWorldPositionY(), spawnDistance, (spawnDistance/2)*3)
