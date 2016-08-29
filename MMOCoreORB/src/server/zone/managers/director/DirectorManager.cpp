@@ -1933,7 +1933,7 @@ int DirectorManager::spawnBuilding(lua_State* L) {
 		instance()->error("Unable to find template for building " + script);
 		lua_pushnil(L);
 	} else {
-		StructureObject* structure = StructureManager::instance()->placeStructure(creature, script, x, y, 0, 0);
+		StructureObject* structure = StructureManager::instance()->placeStructure(creature, script, x, y, angle, 0);
 		if (structure == NULL) {
 			instance()->error("Unable to spawn building " + script);
 			lua_pushnil(L);
