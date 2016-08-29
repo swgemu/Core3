@@ -1288,7 +1288,19 @@ void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantM
 
 	ManagedReference<CreatureObject*> receiver = getPlayer(fname);
 
-	if (receiver == NULL || !receiver->isOnline()) {
+	uint64 receiverObjectID = server->getPlayerManager()->getObjectID(fname);
+
+	if (receiverObjectID == 0) {
+		StringIdChatParameter noexist;
+		noexist.setStringId("@ui:im_recipient_invalid_prose"); // "There is no person by the name '%TU' in this Galaxy."
+		noexist.setTU(fname);
+		sender->sendSystemMessage(noexist);
+		BaseMessage* amsg = new ChatOnSendInstantMessage(sequence, FAIL);
+		sender->sendMessage(amsg);
+
+		return;
+
+	} else if (receiver != NULL && !receiver->isOnline()) {
 		BaseMessage* amsg = new ChatOnSendInstantMessage(sequence, IM_OFFLINE);
 		sender->sendMessage(amsg);
 
