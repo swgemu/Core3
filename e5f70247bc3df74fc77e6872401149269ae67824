@@ -19,6 +19,91 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_582b81eb",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/victor_visalis_conv.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "This screen isn\u0027t being used and uses the same dialog as returned_noroom_still. Remove this screen.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_58d38138",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/victor_visalis_conv.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "You don\u0027t use this screen and it\u0027s the same as victor_inOffice. Remove it.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_78d8bd53",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/victor_visalis_conv.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "You don\u0027t use this screen and it\u0027s the same as victor_inOffice. Remove it.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_788d1d31",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/victor_visalis_conv.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "make this true.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f8912d53",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/victor_visalis_conv.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "This screen isn\u0027t currently used. Where should it be used?",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_d56c3c39",
         "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
         "patchSetId": 21
@@ -115,6 +200,533 @@
       "writtenOn": "2016-08-10T02:33:11Z",
       "side": 1,
       "message": "I still think you should add an option on this screen to decline. The same one from the have_evidence screen (s_ccae64dd that leads to voting_not_ready) looks appropriate.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_18abc98a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "Should you also remove the tusken head from the player when you give the reward?",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f8f5adcb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "Why the \u003c ? Is it supposed to be a once a lifetime reward and not obtainable on subsequent election cycles?",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_980279b3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "You don\u0027t use this here, remove it.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b8ff35aa",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_382b2532",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d81f9108",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f81ccd15",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_98191925",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b81655f0",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_582ce14a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_78319da1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "just call getQuestStatus once and store it in a local var then use that local in this and the next comparison.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_18266969",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_38b005f4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "You should check here if they have completed the tusken quest and return tusken_quest_complete if they have and victor_inOffice if they haven\u0027t.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_1882e900",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "This should only be returned if the election is in phase 1. Move this into the phase 1 block and return noOffice_noElection as the default return here.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d8947146",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "The way votedForWho is currently written, it will always return false if the election phase is 2, which it would be at this point. You need to rethink that.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_18dd0943",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "None of these options you\u0027re adding make sense for this screen. proposed_changes, here_to_vote, and about_tuskens are screen that should only be used during phase 1. give_election_reward was on the previous screen. I think it\u0027s better to just end the convo at this screen instead of adding any options to it. Remove all this handling for this screenID.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_38e24504",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "This screen should also have the --Hey wait! What about my reward for voting for you? and --Now that another election has begun, are you planning to get re-elected? convo branches just like victor_inOffice does since it will be what players initially see if they\u0027ve completed the tusken quest.\n\nTo streamline it, I\u0027d make that if on line 247 above check be if (screenID \u003d\u003d \"victor_inOffice\" or screenID \u003d\u003d \"tusken_questComplete\"). You can then have the common additions listed only the once and add another conditional nested inside to add the options appropriate for their tusken quest status.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d8e6b116",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f8e36d03",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "You check for this screen twice. Remove one of them.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_98f039cb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b8edf5f1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "elseif\n\nAlso, you don\u0027t need to handle returned_noroom_still since the data will already have been written so you can remove that check here.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_58baa1e2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "elseif\n\nAlso, in the convo template you indicate that you add another option to this screen that points to decided_no_vote. It looks appropriate for here, you should add it.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_78bf5dd1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_18b429f1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_38b9e5e9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d8cd5188",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f8ca8d6d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "You shouldn\u0027t be giving the reward when this screen is chosen. It\u0027s given from the give_election_reward screen. Remove this. There\u0027s nothing you need to handle at this screen.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_98c7d964",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "elseif\n\nalso, if you are going to call giveTuskenQuest from the retell_tusken_quest and still_looking screens, you should have it check if they already have a waypoint before giving them a new one otherwise a player could keep choosing those options to get additional waypoints.",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b8c41560",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_58a141a8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_78a67dc3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-29T01:23:42Z",
+      "side": 1,
+      "message": "elseif",
       "revId": "e5f70247bc3df74fc77e6872401149269ae67824",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
