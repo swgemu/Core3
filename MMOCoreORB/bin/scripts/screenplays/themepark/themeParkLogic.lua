@@ -508,6 +508,7 @@ function ThemeParkLogic:handleMissionAccept(npcNumber, missionNumber, pConversin
 	self:updateWaypoint(pConversingPlayer, zoneName, areaSpawnPoint[1], areaSpawnPoint[3], "target")
 	createObserver(ENTEREDAREA, self.className, "notifyEnteredQuestArea", pQuestArea)
 	writeData(SceneObject(pQuestArea):getObjectID() .. ":ownerID", SceneObject(pConversingPlayer):getObjectID())
+	self:writeData(pConversingPlayer, ":activeMission", 1)
 
 	return true
 end
@@ -594,7 +595,6 @@ function ThemeParkLogic:handleRetrieveMissionSpawn(mission, pConversingPlayer, m
 	end
 
 	if self:spawnMissionNpcs(mission, pConversingPlayer, pActiveArea) then
-		self:writeData(pConversingPlayer, ":activeMission", 1)
 		return true
 	else
 		return false
@@ -607,7 +607,6 @@ function ThemeParkLogic:handleEscortMissionSpawn(mission, pConversingPlayer, mis
 	end
 
 	if self:spawnMissionNpcs(mission, pConversingPlayer, pActiveArea) then
-		self:writeData(pConversingPlayer, ":activeMission", 1)
 		return true
 	else
 		return false
@@ -621,7 +620,6 @@ function ThemeParkLogic:handleDestroyMissionSpawn(mission, pConversingPlayer, mi
 
 	if self:spawnDestroyBuilding(mission, pConversingPlayer, pActiveArea) then
 		self:spawnMissionNpcs(mission, pConversingPlayer, pActiveArea)
-		self:writeData(pConversingPlayer, ":activeMission", 1)
 		return true
 	else
 		return false
@@ -634,7 +632,6 @@ function ThemeParkLogic:handleAssassinateMissionSpawn(mission, pConversingPlayer
 	end
 
 	if self:spawnMissionNpcs(mission, pConversingPlayer, pActiveArea) then
-		self:writeData(pConversingPlayer, ":activeMission", 1)
 		self:writeData(pConversingPlayer, ":killedMissionNpcs", 0)
 		return true
 	else
@@ -661,7 +658,6 @@ function ThemeParkLogic:handleConfiscateMissionSpawn(mission, pConversingPlayer,
 	end
 
 	if self:spawnMissionNpcs(mission, pConversingPlayer, pActiveArea) then
-		self:writeData(pConversingPlayer, ":activeMission", 1)
 		self:writeData(pConversingPlayer, ":requiredItemsLooted", 0)
 		return true
 	else
@@ -1290,8 +1286,6 @@ function ThemeParkLogic:giveMissionItems(mission, pConversingPlayer)
 
 	if (currentMissionType == "retrieve") then
 		writeData(playerID .. ":activeMission", 2)
-	else
-		writeData(playerID .. ":activeMission", 1)
 	end
 
 	local itemsToGive = mission.itemSpawns
