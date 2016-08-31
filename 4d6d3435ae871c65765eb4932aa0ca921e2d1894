@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_98059916",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/corellia/corsec_agent_quest_zekka.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-31T07:23:17Z",
+      "side": 1,
+      "message": "Changing the level from the template you based this on without changing any of the other stats is not a good idea because then /con is even less accurate that it already is. The cl14 mentioned in the wiki would have been nge levels anyway. Just leave the level at 17.",
+      "revId": "4d6d3435ae871c65765eb4932aa0ca921e2d1894",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f8084d2f",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/corellia/corsec_agent_quest_zekka.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-31T07:23:17Z",
+      "side": 1,
+      "message": "Assassinate targets don\u0027t need the converse bit or convo template",
+      "revId": "4d6d3435ae871c65765eb4932aa0ca921e2d1894",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_1812e962",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/corellia/criminal_quest_grobber.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-31T07:23:17Z",
+      "side": 1,
+      "message": "since you are using this for an assassinate mission as well as an escort, you should go ahead and give it loot groups.",
+      "revId": "4d6d3435ae871c65765eb4932aa0ca921e2d1894",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d80b112a",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/corellia/criminal_quest_zekka2.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-31T07:23:17Z",
+      "side": 1,
+      "message": "Assassinate targets don\u0027t need the converse bit or the convo template.",
+      "revId": "4d6d3435ae871c65765eb4932aa0ca921e2d1894",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_7b043715",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/tatooine/assassin_quest_zekka.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-31T07:23:17Z",
+      "side": 1,
+      "message": "don\u0027t change the level from the template you based this on.",
+      "revId": "4d6d3435ae871c65765eb4932aa0ca921e2d1894",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_1b09832c",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/tatooine/assassin_quest_zekka.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-31T07:23:17Z",
+      "side": 1,
+      "message": "Remove the converse bit and the convo template.",
+      "revId": "4d6d3435ae871c65765eb4932aa0ca921e2d1894",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_3817a553",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/corellia/blk_sun_tasks.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-31T07:23:17Z",
+      "side": 1,
+      "message": "I think this should actually be a retrieve mission. There\u0027s a string for that: npc_smuggle_1 and the wiki also mentions talking to him and getting the disk",
+      "revId": "4d6d3435ae871c65765eb4932aa0ca921e2d1894",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b802d509",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/corellia/blk_sun_tasks.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-31T07:23:17Z",
+      "side": 1,
+      "message": "I don\u0027t see any evidence that this should be an off planet mission. Yes, the stf mentions that the assassin works out of mos eisley, but that\u0027s when the player asks if it\u0027s anyone they should know. Remember, they are after Zekka. That means they are coming to him. If this was off planet then one of the guides surely would mention that.",
+      "revId": "4d6d3435ae871c65765eb4932aa0ca921e2d1894",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_5bfffb01",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/corellia/blk_sun_tasks.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-31T07:23:17Z",
+      "side": 1,
+      "message": "I don\u0027t think this one should have secondary spawns.",
+      "revId": "4d6d3435ae871c65765eb4932aa0ca921e2d1894",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
