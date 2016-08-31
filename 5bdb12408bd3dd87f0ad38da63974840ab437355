@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_3b5c7f25",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/EmptyMailTargetCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-31T08:29:30Z",
+      "side": 0,
+      "message": "Change target to creature-\u003egetTargetID() and this command should work on the player\u0027s target instead of having to specify a name.",
+      "revId": "5bdb12408bd3dd87f0ad38da63974840ab437355",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

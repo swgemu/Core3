@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_fb3da7bc",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/EmptyMailTargetCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-31T08:29:30Z",
+      "side": 1,
+      "message": "Don\u0027t send this message. The CSR can inform the player if they want to, but they may want to not announce their actions.",
+      "revId": "b01d39f0f2bd08130b51c6e37ed386274f13d2c3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
