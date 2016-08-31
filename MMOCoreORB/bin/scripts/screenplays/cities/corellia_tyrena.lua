@@ -160,7 +160,6 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	--Cantina
 	pNpc = spawnMobile(self.planet, "comm_operator",400,48.13,0.105,2.47,248.001,2625353)
 	self:setMoodString(pNpc, "npc_imperial")
-	--{"crev_bombaasa",60,45.2285,0.104999,0.017077,135.448,2625353, "calm", "Crev Bombaasa"},
 	pNpc = spawnMobile(self.planet, "bartender",60,8.6,-0.9,0.6,90,2625355)
 	self:setMoodString(pNpc, "neutral")
 	spawnMobile(self.planet, "trainer_dancer", 0,16.7961,-0.894993,-10.1031,3,2625355)
