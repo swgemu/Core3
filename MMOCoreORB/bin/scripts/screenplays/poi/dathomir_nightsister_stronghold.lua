@@ -170,8 +170,4 @@ function NightSisterStrongholdScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "nightsister_initiate",600,-9.30522,-31.6686,-33.0453,7,4115620)
 	spawnMobile("dathomir", "nightsister_initiate",600,5.27219,-24.4314,-26.0931,2,4115620)
 	spawnMobile("dathomir", "nightsister_initiate",600,2.20982,-11.8595,-2.93477,7,4115619)
-
-	--quest npc, herald but needs new tp logic
-	spawnMobile("dathomir", "herald_dathomir_leandra",3600,-4082,132.7,-210,330,0)
-
 end

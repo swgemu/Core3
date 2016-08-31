@@ -18,10 +18,9 @@ heraldScreenPlay = ScreenPlay:new {
 		{ planet = "dathomir", template = "herald_escaped_nightsister_slave", x = 595.5, z = 6, y = 3045.4, angle = -5, cell = 0, destX = 2427, destY = -1700, stringFile = "herald_dathomir_nightsister_forcedlabor_camp" },
 		{ planet = "dathomir", template = "herald_nightsister_rancor_tamer", x = -4157, z = 134, y = 82.6, angle = 160, cell = 0, destX = -4227, destY = -2089, stringFile = "herald_dathomir_mutant_rancor_cave" },
 		{ planet = "dathomir", template = "herald_nightsister_protector", x = -3999.9, z = 118.9, y = -65.3, angle = -130, cell = 0, destX = -2451, destY = 1522, stringFile = "herald_dathomir_singing_vs_nightsister" },
-		-- These require returning to the herald and will need to be handled by the themepark logic
-		--{ planet = "dathomir", template = "herald_dathomir_olof", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0, stringFile = "herald_dathomir_nsister_cave_olof" },
-		--{ planet = "dathomir", template = "herald_dathomir_azzenaj", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0, stringFile = "herald_dathomir_nsister_cave_azzenaj" },
-		--{ planet = "dathomir", template = "herald_dathomir_leandra", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0, stringFile = "herald_dathomir_nsister_cave_leandra" },
+		{ planet = "dathomir", template = "herald_dathomir_olof", x = -19.6, z = 1, y = 15.8, angle = -172, cell = 2665367, destX = -1217, destY = 6261, stringFile = "herald_dathomir_nsister_cave_olof" },
+		{ planet = "dathomir", template = "herald_dathomir_azzenaj", x = 533.7, z = 229.5, y = 4238.5, angle = 130, cell = 0, destX = -1217, destY = 6261, stringFile = "herald_dathomir_nsister_cave_azzenaj" },
+		{ planet = "dathomir", template = "herald_dathomir_leandra", x = -4082, z = 132.7, y = -210, angle = 330, cell = 0, destX = -1217, destY = 6261, stringFile = "herald_dathomir_nsister_cave_leandra" },
 
 		{ planet = "endor", template = "herald_commoner", x = 3212.71, z = 24.5, y = -3452.25, angle = 41.7, cell = 0, destX = -1709, destY = -29, stringFile = "herald_endor_jinda_spiritualists" },
 		{ planet = "endor", template = "herald_commoner", x = 3246.3, z = 24, y = -3492.1, angle = 323, cell = 0, destX = 2274, destY = 3473, stringFile = "herald_endor_korga_cave" },

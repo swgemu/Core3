@@ -137,7 +137,5 @@ function SingingMountainClanScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "singing_mountain_clan_outcast", 600, 268.7, 226.6, 4154.1, -151, 0)
 
 	spawnMobile("dathomir", "aujante_klee", 1800, 3.0, 3.0, -5.2 ,180, 2665884)
-	spawnMobile("dathomir", "herald_dathomir_azzenaj", 900, 533.7, 228, 4238.5, 130, 0)
 	spawnMobile("dathomir", "vurlene", 900, -12, 3.0, 9.5, 60, 2665880)
-
 end
