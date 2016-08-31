@@ -501,7 +501,7 @@ function ThemeParkLogic:handleMissionAccept(npcNumber, missionNumber, pConversin
 	if pQuestArea == nil then
 		return false
 	end
-	
+
 	ActiveArea(pQuestArea):setNoBuildArea(true)
 	ActiveArea(pQuestArea):setNoSpawnArea(true)
 
@@ -524,7 +524,7 @@ function ThemeParkLogic:notifyEnteredQuestArea(pActiveArea, pPlayer)
 	if (ownerID ~= playerID) then
 		return 0
 	end
-	
+
 	ActiveArea(pActiveArea):setNoBuildArea(false)
 	ActiveArea(pActiveArea):setNoSpawnArea(false)
 
@@ -905,7 +905,7 @@ function ThemeParkLogic:spawnDestroyMissionNpcs(mission, pConversingPlayer)
 	end
 
 	local planetName = SceneObject(pConversingPlayer):getZoneName()
-	
+
 	for i = 1, numberOfChildNpcs, 1 do
 		local targetCellObject = SceneObject(BuildingObject(pBuilding):getCell(childNpcs[i].vectorCellID))
 		local pNpc = spawnMobile(planetName, childNpcs[i].npcTemplate, 0, childNpcs[i].x, childNpcs[i].z, childNpcs[i].y, getRandomNumber(360) - 180, targetCellObject:getObjectID())
@@ -2006,6 +2006,20 @@ function ThemeParkLogic:getMissionType(activeNpcNumber, pConversingPlayer)
 	return mission.missionType
 end
 
+function ThemeParkLogic:targetNpcHasSpawned(pConversingPlayer, pTargetNpc)
+	if pConversingPlayer == nil then
+		return false
+	end
+	local objectID = readData(CreatureObject(pConversingPlayer):getObjectID() .. ":missionSpawn:no1")
+	local pTargetNpc = getSceneObject(objectID)
+
+	if pTargetNpc == nil then
+		return false
+	end
+
+	return pTargetNpc ~= nil
+end
+
 function ThemeParkLogic:escortedNpcCloseEnough(pConversingPlayer)
 	if pConversingPlayer == nil then
 		return false
@@ -2013,7 +2027,7 @@ function ThemeParkLogic:escortedNpcCloseEnough(pConversingPlayer)
 	local objectID = readData(CreatureObject(pConversingPlayer):getObjectID() .. ":missionSpawn:no1")
 	local pNpc = getSceneObject(objectID)
 
-	return pNpc ~= nil and SceneObject(pConversingPlayer):getDistanceTo(pNpc) < 64
+	return SceneObject(pConversingPlayer):getDistanceTo(pNpc) <= 64
 end
 
 function ThemeParkLogic:resetThemePark(pConversingPlayer)
