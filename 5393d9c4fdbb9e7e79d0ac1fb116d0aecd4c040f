@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b8541522",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/naboo/borvos_courier_quest_kritus2.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-31T02:25:59Z",
+      "side": 1,
+      "message": "confiscate targets do not need to be conversable. Remove this template and the converse bit above.",
+      "revId": "5393d9c4fdbb9e7e79d0ac1fb116d0aecd4c040f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_9857d926",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/naboo/borvos_scientist_quest_kritus.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-31T02:25:59Z",
+      "side": 1,
+      "message": "Based on the quest text and your links, I think you should base this guy on the scientist mob.",
+      "revId": "5393d9c4fdbb9e7e79d0ac1fb116d0aecd4c040f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f85a8d4f",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/naboo/borvos_scientist_quest_kritus.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-31T02:25:59Z",
+      "side": 1,
+      "message": "remove the loot groups",
+      "revId": "5393d9c4fdbb9e7e79d0ac1fb116d0aecd4c040f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_3849e58b",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/naboo/security_officer_quest_kritus.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-31T02:25:59Z",
+      "side": 1,
+      "message": "With the quest referring to the targets as security officers, I think it\u0027s more likely that they used the rsf_security_officer mob as the base for them rather than naboo police.",
+      "revId": "5393d9c4fdbb9e7e79d0ac1fb116d0aecd4c040f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d85d514a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/naboo/kritus_morven.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-31T02:25:59Z",
+      "side": 1,
+      "message": "These should probably be rsf_security_officer",
+      "revId": "5393d9c4fdbb9e7e79d0ac1fb116d0aecd4c040f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
