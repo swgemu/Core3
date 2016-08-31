@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_db122b58",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/consumable/ConsumableImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-31T07:41:30Z",
+      "side": 1,
+      "message": "Rather than make that assumption, I think you should have a for loop here and send 1 message per modifier.",
+      "revId": "a727bd6ebf3eba7803a2d2a46cce21f4c14eac20",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
