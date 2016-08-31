@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_7b2bd782",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1293,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-31T08:15:19Z",
+      "side": 1,
+      "message": "receiver will be null if they are not loaded into the world. getPlayer get\u0027s from ChatManager\u0027s playerMap which is added to when players log on and removed from when they are unloaded from the world (though maybe we should change that to when they are set LD). Regardless, checking if it\u0027s null would not be a good indicator of whether the player exists.",
+      "revId": "11bcce695fb2f984a3f94415e1f486c83377e8be",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_db39cbd9",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1298,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-31T08:15:19Z",
+      "side": 1,
+      "message": "Passing NOAVATAR here is not the right thing to do and won\u0027t have the desired result. That\u0027s a code for chat rooms and has a value of 4. For instant messages, a 4 is IM_OFFLINE. If there\u0027s an im result code for non-existent players, it\u0027s not currently a static in ChatManager so it\u0027s not known.",
+      "revId": "11bcce695fb2f984a3f94415e1f486c83377e8be",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_fb3607e7",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1303,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-31T08:15:19Z",
+      "side": 1,
+      "message": "The isPlayerCreature check is not needed. if receiver is not null then it will be a player since it\u0027s gotten directly from the playerMap.",
+      "revId": "11bcce695fb2f984a3f94415e1f486c83377e8be",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_9b3353f6",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatPersistentMessageToServerCallback.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-08-31T08:15:19Z",
+      "side": 1,
+      "message": "NOAVATAR is a chat room result, not an im/pm result.",
+      "revId": "11bcce695fb2f984a3f94415e1f486c83377e8be",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
