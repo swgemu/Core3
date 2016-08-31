@@ -145,8 +145,12 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 			end
 		elseif npcCompare == 0 then
 			if self.themePark:missionStatus(pConversingPlayer) == 1 then
-				if self.themePark:getMissionType(activeNpcNumber, pConversingPlayer) == "escort" and self.themePark:escortedNpcCloseEnough(pConversingPlayer) == true then
-					nextScreenName = "npc_reward_n"
+				if self.themePark:getMissionType(activeNpcNumber, pConversingPlayer) == "escort" and self.themePark:targetNpcHasSpawned(pConversingPlayer) == true then
+					if self.themePark:escortedNpcCloseEnough(pConversingPlayer) == true then
+						nextScreenName = "npc_reward_n"
+					else
+						nextScreenName = "failure"
+					end
 				else
 					nextScreenName = "npc_work_n"
 				end

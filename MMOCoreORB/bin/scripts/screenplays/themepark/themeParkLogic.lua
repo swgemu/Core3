@@ -2006,6 +2006,20 @@ function ThemeParkLogic:getMissionType(activeNpcNumber, pConversingPlayer)
 	return mission.missionType
 end
 
+function ThemeParkLogic:targetNpcHasSpawned(pConversingPlayer, pTargetNpc)
+	if pConversingPlayer == nil then
+		return false
+	end
+	local objectID = readData(CreatureObject(pConversingPlayer):getObjectID() .. ":missionSpawn:no1")
+	local pTargetNpc = getSceneObject(objectID)
+	
+	if pTargetNpc == nil then
+		return false
+	end
+	
+	return pTargetNpc ~= nil
+end
+
 function ThemeParkLogic:escortedNpcCloseEnough(pConversingPlayer)
 	if pConversingPlayer == nil then
 		return false
@@ -2013,7 +2027,7 @@ function ThemeParkLogic:escortedNpcCloseEnough(pConversingPlayer)
 	local objectID = readData(CreatureObject(pConversingPlayer):getObjectID() .. ":missionSpawn:no1")
 	local pNpc = getSceneObject(objectID)
 
-	return pNpc ~= nil and SceneObject(pConversingPlayer):getDistanceTo(pNpc) < 64
+	return SceneObject(pConversingPlayer):getDistanceTo(pNpc) <= 64
 end
 
 function ThemeParkLogic:resetThemePark(pConversingPlayer)
