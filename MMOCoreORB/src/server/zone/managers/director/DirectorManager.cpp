@@ -2613,7 +2613,7 @@ int DirectorManager::getSpawnPoint(lua_State* L) {
 	Zone* zone = ServerCore::getZoneServer()->getZone(zoneName);
 
 	if (zone == NULL) {
-		instance()->error("Zone is NULL in DirectorManager::getSpawnPoint");
+		instance()->error("Zone is NULL in DirectorManager::getSpawnPoint. zoneName = " + zoneName);
 		return 0;
 	}
 

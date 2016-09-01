@@ -112,9 +112,10 @@ void VisibilityManager::decreaseVisibility(CreatureObject* creature) {
 }
 
 VisibilityManager::VisibilityManager() : Logger("VisibilityManager") {
+	loadConfiguration();
+
 	Reference<Task*> decayTask = new VisibilityDecayTask();
 	decayTask->schedule(visDecayTickRate * 1000);
-	loadConfiguration();
 }
 
 void VisibilityManager::login(CreatureObject* creature) {

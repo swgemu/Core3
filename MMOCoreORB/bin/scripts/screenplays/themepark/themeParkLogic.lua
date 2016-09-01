@@ -484,6 +484,11 @@ function ThemeParkLogic:handleMissionAccept(npcNumber, missionNumber, pConversin
 		zoneName = mission.planetName
 	end
 
+	if (zoneName == nil or zoneName == "") then
+		printf("ERROR: Invalid zoneName in handleMissionAccept from mission #" .. missionNumber .. " in screenplay " .. self.className .. ".\n")
+		return false
+	end
+
 	local spawnDistance = self.distance
 
 	local areaSpawnPoint = { }

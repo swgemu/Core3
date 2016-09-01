@@ -311,19 +311,19 @@ public:
 		}
 	}
 
-	int getRangedAttackMod(uint loc) {
+	int getRangedAttackMod(uint8 loc) {
 		return rangedAttackMod.get(loc);
 	}
 
-	int getRangedDefenseMod(uint loc) {
+	int getRangedDefenseMod(uint8 loc) {
 		return rangedDefenseMod.get(loc);
 	}
 
-	int getMeleeAttackMod(uint loc) {
+	int getMeleeAttackMod(uint8 loc) {
 		return meleeAttackMod.get(loc);
 	}
 
-	int getMeleeDefenseMod(uint loc) {
+	int getMeleeDefenseMod(uint8 loc) {
 		return meleeDefenseMod.get(loc);
 	}
 };

@@ -116,72 +116,72 @@ void StructureManager::loadPlayerStructures(const String& zoneName) {
 	info(String::valueOf(i) + " player structures loaded for " + zoneName + ".", log);
 }
 
-int StructureManager::getStructureFootprint(SharedObjectTemplate* objectTemplate, int angle, float& l0, float& w0, float& l1, float& w1) {
-	SharedStructureObjectTemplate* serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(objectTemplate);
-
-	if (serverTemplate == NULL)
+int StructureManager::getStructureFootprint(SharedStructureObjectTemplate* objectTemplate, int angle, float& l0, float& w0, float& l1, float& w1) {
+	if (objectTemplate == NULL)
 		return 1;
 
-	StructureFootprint* structureFootprint = serverTemplate->getStructureFootprint();
+	StructureFootprint* structureFootprint = objectTemplate->getStructureFootprint();
+
+	if (structureFootprint == NULL)
+		return 1;
+
 	//float l = 5; //Along the x axis.
 	//float w = 5; //Along the y axis.
 
-	if (structureFootprint != NULL) {
-		//if (structureFootprint->getRowSize() > structureFootprint->getColSize())
-		//	angle = angle + 180;
+	//if (structureFootprint->getRowSize() > structureFootprint->getColSize())
+	//	angle = angle + 180;
 
-		float centerX = (structureFootprint->getCenterX() * 8) + 4;
-		float centerY = (structureFootprint->getCenterY() * 8) + 4;
+	float centerX = (structureFootprint->getCenterX() * 8) + 4;
+	float centerY = (structureFootprint->getCenterY() * 8) + 4;
 
-		//info ("centerX:" + String::valueOf(centerX) + " centerY:" + String::valueOf(centerY), true);
+	//info ("centerX:" + String::valueOf(centerX) + " centerY:" + String::valueOf(centerY), true);
 
-		float topLeftX = -centerX;
-		float topLeftY = (structureFootprint->getRowSize() * 8 ) - centerY;
+	float topLeftX = -centerX;
+	float topLeftY = (structureFootprint->getRowSize() * 8 ) - centerY;
 
-		float bottomRightX = (8 * structureFootprint->getColSize() - centerX);
-		float bottomRightY = -centerY;
+	float bottomRightX = (8 * structureFootprint->getColSize() - centerX);
+	float bottomRightY = -centerY;
 
-		w0 = MIN(topLeftX, bottomRightX);
-		l0 = MIN(topLeftY, bottomRightY);
+	w0 = MIN(topLeftX, bottomRightX);
+	l0 = MIN(topLeftY, bottomRightY);
 
-		w1 = MAX(topLeftX, bottomRightX);
-		l1 = MAX(topLeftY, bottomRightY);
+	w1 = MAX(topLeftX, bottomRightX);
+	l1 = MAX(topLeftY, bottomRightY);
 
-		Matrix4 translationMatrix;
-		translationMatrix.setTranslation(0, 0, 0);
+	Matrix4 translationMatrix;
+	translationMatrix.setTranslation(0, 0, 0);
 
-		float rad = (float)(angle) * Math::DEG2RAD;
+	float rad = (float)(angle) * Math::DEG2RAD;
 
-		float cosRad = cos(rad);
-		float sinRad = sin(rad);
+	float cosRad = cos(rad);
+	float sinRad = sin(rad);
 
-		Matrix3 rot;
-		rot[0][0] = cosRad;
-		rot[0][2] = -sinRad;
-		rot[1][1] = 1;
-		rot[2][0] = sinRad;
-		rot[2][2] = cosRad;
+	Matrix3 rot;
+	rot[0][0] = cosRad;
+	rot[0][2] = -sinRad;
+	rot[1][1] = 1;
+	rot[2][0] = sinRad;
+	rot[2][2] = cosRad;
 
-		Matrix4 rotateMatrix;
-		rotateMatrix.setRotationMatrix(rot);
+	Matrix4 rotateMatrix;
+	rotateMatrix.setRotationMatrix(rot);
 
-		Matrix4 moveAndRotate = (translationMatrix * rotateMatrix);
+	Matrix4 moveAndRotate = (translationMatrix * rotateMatrix);
 
-		Vector3 pointBottom(w0, 0, l0);
-		Vector3 pointTop(w1, 0, l1);
+	Vector3 pointBottom(w0, 0, l0);
+	Vector3 pointTop(w1, 0, l1);
 
-		Vector3 resultBottom = pointBottom * moveAndRotate;
-		Vector3 resultTop = pointTop * moveAndRotate;
+	Vector3 resultBottom = pointBottom * moveAndRotate;
+	Vector3 resultTop = pointTop * moveAndRotate;
 
-		w0 = MIN(resultBottom.getX(), resultTop.getX());
-		l0 = MIN(resultBottom.getZ(), resultTop.getZ());
+	w0 = MIN(resultBottom.getX(), resultTop.getX());
+	l0 = MIN(resultBottom.getZ(), resultTop.getZ());
 
-		w1 = MAX(resultTop.getX(), resultBottom.getX());
-		l1 = MAX(resultTop.getZ(), resultBottom.getZ());
+	w1 = MAX(resultTop.getX(), resultBottom.getX());
+	l1 = MAX(resultTop.getZ(), resultBottom.getZ());
 
-		//info("objectTemplate:" + objectTemplate->getFullTemplateString() + " :" + structureFootprint->toString(), true);
-		//info("angle:" + String::valueOf(angle) + " w0:" + String::valueOf(w0) + " l0:" + String::valueOf(l0) + " w1:" + String::valueOf(w1) + " l1:" + String::valueOf(l1), true);
-	}
+	//info("objectTemplate:" + objectTemplate->getFullTemplateString() + " :" + structureFootprint->toString(), true);
+	//info("angle:" + String::valueOf(angle) + " w0:" + String::valueOf(w0) + " l0:" + String::valueOf(l0) + " w1:" + String::valueOf(w1) + " l1:" + String::valueOf(l1), true);
 
 	return 0;
 }
@@ -236,7 +236,7 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature, Structure
 	SortedVector<ManagedReference<QuadTreeEntry*> > inRangeObjects;
 	zone->getInRangeObjects(x, y, 128, &inRangeObjects, true);
 
-	float placingFootprintLength0, placingFootprintWidth0, placingFootprintLength1, placingFootprintWidth1;
+	float placingFootprintLength0 = 0, placingFootprintWidth0 = 0, placingFootprintLength1 = 0, placingFootprintWidth1 = 0;
 
 	if (!getStructureFootprint(serverTemplate, angle, placingFootprintLength0, placingFootprintWidth0, placingFootprintLength1, placingFootprintWidth1)) {
 		float x0 = x + placingFootprintWidth0;
@@ -260,7 +260,7 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature, Structure
 			float l1 = 5;
 			float w1 = 5;
 
-			if (getStructureFootprint(scene->getObjectTemplate(), scene->getDirectionAngle(), l0, w0, l1, w1))
+			if (getStructureFootprint(dynamic_cast<SharedStructureObjectTemplate*>(scene->getObjectTemplate()), scene->getDirectionAngle(), l0, w0, l1, w1))
 				continue;
 
 			float xx0 = scene->getPositionX() + (w0 + 0.1);
@@ -1361,7 +1361,7 @@ bool StructureManager::isInStructureFootprint(StructureObject* structure, float 
 	Reference<SharedStructureObjectTemplate*> serverTemplate =
 				dynamic_cast<SharedStructureObjectTemplate*>(structure->getObjectTemplate());
 
-	float placingFootprintLength0, placingFootprintWidth0, placingFootprintLength1, placingFootprintWidth1;
+	float placingFootprintLength0 = 0, placingFootprintWidth0 = 0, placingFootprintLength1 = 0, placingFootprintWidth1 = 0;
 
 	if (getStructureFootprint(serverTemplate, structure->getDirectionAngle(), placingFootprintLength0, placingFootprintWidth0, placingFootprintLength1, placingFootprintWidth1) != 0)
 		return false;
