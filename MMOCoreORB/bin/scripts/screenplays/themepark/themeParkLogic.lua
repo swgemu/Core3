@@ -480,7 +480,9 @@ function ThemeParkLogic:handleMissionAccept(npcNumber, missionNumber, pConversin
 
 	local zoneName = self.planetName
 
-	if (mission.planetName ~= nil and mission.planetName ~= "") then
+	if self.genericGiver then
+		zoneName = SceneObject(pConversingPlayer):getZoneName()
+	elseif (mission.planetName ~= nil and mission.planetName ~= "") then
 		zoneName = mission.planetName
 	end
 
