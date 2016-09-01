@@ -205,7 +205,6 @@ corellia_static_spawns = {
 	{"commoner",60,-51.7918,28,-4662.65,360.011,0, "calm", "Hunter Javeezo", "stationary"},
 	{"commoner",60,15.2091,0.639422,56.8933,284.328,1935687, "calm", "Amarent Loren", "stationary"},
 	{"corsec_sergeant",300,-5410.17,20.9418,-2789.21,215.169,0, "", "", "stationary"},
-	{"crev_bombaasa",60,45.2285,0.104999,0.017077,135.448,2625353, "calm", "Crev Bombaasa", "stationary"},
 	{"dannik_malaan",60,-451.472,28,-4572.05,218.458,0, "calm", "Dannik Malaan", "stationary"},
 	{"death_watch_herald_rebel",1,-213.642,28,-4445.46,28.5501,0, "", "", "stationary"},
 	{"farmer",60,3145.1,289.991,4994.55,359.489,0, "conversation", "", "stationary"},
