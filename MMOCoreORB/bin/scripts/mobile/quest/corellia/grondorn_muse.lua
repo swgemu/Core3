@@ -1,4 +1,4 @@
-grondom_muse = Creature:new {
+grondorn_muse = Creature:new {
 	objectName = "",
 	customName = "Grondorn Muse",
 	socialGroup = "townsperson",
@@ -23,15 +23,14 @@ grondom_muse = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_grondorn_muse.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "grondorn_muse_mission_giver_convotemplate",
+	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(grondom_muse, "grondom_muse")
+CreatureTemplates:addCreatureTemplate(grondorn_muse, "grondorn_muse")
