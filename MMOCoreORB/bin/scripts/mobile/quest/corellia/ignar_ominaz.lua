@@ -23,15 +23,14 @@ ignar_ominaz = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_ignar_ominaz.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "ignar_ominaz_mission_giver_convotemplate",
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(ignar_ominaz, "ignar_ominaz")
