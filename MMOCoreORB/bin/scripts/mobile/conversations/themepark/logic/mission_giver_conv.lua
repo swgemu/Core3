@@ -307,6 +307,7 @@ createMissionGiverConvoTemplate("shaki_hamachil_mission_giver_convotemplate", "s
 createMissionGiverConvoTemplate("shibb_nisshil_mission_giver_convotemplate", "shibb_nisshil_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("singular_nak_mission_giver_convotemplate", "singular_nak_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("wallaw_loowobbli_mission_giver_convotemplate", "wallaw_loowobbli_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("warden_vinzel_haylon_mission_giver_convotemplate", "warden_vinzel_haylon_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("xarot_korlin_mission_giver_convotemplate", "xarot_korlin_mission_giver_conv_handler")
 
 -- Naboo

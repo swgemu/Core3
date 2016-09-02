@@ -1,0 +1,35 @@
+prisoner_quest_vinzel = Creature:new {
+	objectName = "@mob/creature_names:prisoner",
+	socialGroup = "prisoner",
+	faction = "",
+	level = 27,
+	chanceHit = 0.27,
+	damageMin = 260,
+	damageMax = 270,
+	baseXp = 2637,
+	baseHAM = 8100,
+	baseHAMmax = 9900,
+	armor = 0,
+	resists = {0,0,0,0,0,0,0,-1,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = PACK,
+	optionsBitmask = AIENABLED + CONVERSABLE,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/dressed_dathomir_prisoner_03.iff"},
+	lootGroups = {},
+	weapons = {},
+	conversationTemplate = "warden_vinzel_haylon_mission_target_convotemplate",
+	attacks = brawlermaster
+}
+
+CreatureTemplates:addCreatureTemplate(prisoner_quest_vinzel, "prisoner_quest_vinzel")

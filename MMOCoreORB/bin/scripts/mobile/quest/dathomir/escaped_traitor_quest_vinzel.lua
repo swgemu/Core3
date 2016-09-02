@@ -1,7 +1,5 @@
-abandoned_rebel_private = Creature:new {
+escaped_traitor_quest_vinzel = Creature:new {
 	objectName = "@mob/creature_names:abandoned_rebel_private",
-	randomNameType = NAME_GENERIC,
-	randomNameTag = true,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 27,
@@ -23,8 +21,8 @@ abandoned_rebel_private = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER,
-	optionsBitmask = AIENABLED,
+	creatureBitmask = PACK,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rebel_trooper_bith_m_01.iff",
@@ -33,22 +31,11 @@ abandoned_rebel_private = Creature:new {
 		"object/mobile/dressed_rebel_trooper_human_female_01.iff",
 		"object/mobile/dressed_rebel_trooper_human_male_01.iff",
 		"object/mobile/dressed_rebel_trooper_sullustan_male_01.iff"},
-	lootGroups = {
-		{
-			groups = {
-				{group = "junk", chance = 5000000},
-				{group = "rifles", chance = 1000000},
-				{group = "pistols", chance = 1000000},
-				{group = "melee_weapons", chance = 1000000},
-				{group = "carbines", chance = 1000000},
-				{group = "wearables_common", chance = 1000000}
-			}
-		}
-	},
-	weapons = {"rebel_weapons_heavy"},
-	conversationTemplate = "",
+	lootGroups = {},
+	weapons = {},
+	conversationTemplate = "warden_vinzel_haylon_mission_target_convotemplate",
 	reactionStf = "@npc_reaction/military",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = brawlermaster
 }
 
-CreatureTemplates:addCreatureTemplate(abandoned_rebel_private, "abandoned_rebel_private")
+CreatureTemplates:addCreatureTemplate(escaped_traitor_quest_vinzel, "escaped_traitor_quest_vinzel")
