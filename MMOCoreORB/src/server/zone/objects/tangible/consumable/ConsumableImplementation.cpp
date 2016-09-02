@@ -185,6 +185,16 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		Locker locker(buff);
 
 		setModifiers(buff, true);
+
+		// Set the sysmsg(s) for the skillmod.
+		StringIdChatParameter params("@combat_effects:skill_mod_buffed"); // Your skill in %TO has improved.
+
+		// Send a message for every modifier in this case.
+		for (int i = 0; i < modifiers.size(); ++i) {
+			params.setTO("@stat_n:" + modifiers.elementAt(i).getKey());
+			player->sendSystemMessage(params); // According to evidence, this should send before the consumed message, so we don't want to set the buff spam start.
+		}
+
 		break;
 	}
 
@@ -307,7 +317,7 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 
 	default:
 		break;
-        }
+	}
 
 	if (buff != NULL) {
 		Locker locker(buff);
