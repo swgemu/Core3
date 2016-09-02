@@ -618,6 +618,8 @@ includeFile("items/task_reward/valarian_dagger.lua")
 includeFile("items/task_reward/zicx_bug_jar.lua")
 
 --themepark_loot sub-folder
+includeFile("items/themepark_loot/healing_salve_smc_vurlene.lua")
+includeFile("items/themepark_loot/sacred_tome_smc_aujante.lua")
 includeFile("items/themepark_loot/shoulder_pad_smc_vhaunda.lua")
 includeFile("items/themepark_loot/slave_collar_ns_geth.lua")
 includeFile("items/themepark_loot/heart_of_slave_ns_geth.lua")
@@ -652,6 +654,10 @@ includeFile("items/themepark_loot/themepark_loot_shipping_manifest.lua")
 includeFile("items/themepark_loot/themepark_loot_transponder.lua")
 
 --themepark_reward sub-folder
+includeFile("items/themepark_reward/stim_d_smc_vurlene.lua")
+includeFile("items/themepark_reward/stim_c_smc_vurlene.lua")
+includeFile("items/themepark_reward/stim_b_smc_vurlene.lua")
+includeFile("items/themepark_reward/stim_a_smc_vurlene.lua")
 includeFile("items/themepark_reward/stim_b_ns_diax.lua")
 includeFile("items/themepark_reward/armor_marauder_bicep_l.lua")
 includeFile("items/themepark_reward/armor_marauder_bicep_r.lua")
