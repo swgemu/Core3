@@ -1,6 +1,6 @@
 warden_vinzel_haylon = Creature:new {
 	objectName = "",
-	customName = "Warden Vinzel Hayon",
+	customName = "Warden Vinzel Haylon",
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 100,
@@ -23,15 +23,14 @@ warden_vinzel_haylon = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_vinzel_haylon.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "warden_vinzel_haylon_mission_giver_convotemplate",
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(warden_vinzel_haylon, "warden_vinzel_haylon")
