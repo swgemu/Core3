@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_bba96f7d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SniperShotCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-02T08:53:54Z",
+      "side": 1,
+      "message": "I told you in patch set 4 how to fix this and you haven\u0027t yet. (Hint: if you have 2 calls to doCombatAction, it\u0027s wrong).",
+      "revId": "c4a5458c348620beac9a8ac9964eb8a8ce2a59ce",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
