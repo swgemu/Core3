@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_7bbbd7c4",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2467,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-02T09:03:01Z",
+      "side": 1,
+      "message": "There\u0027s already a check in AiAgentImplementation::queueDizzyFallEvent() to restrict this to only npcs. Instead of just adding another check here, we need to figure out how they are bypassing the existing one and fix that.",
+      "revId": "65ec95bc8604d15299ccb9c40ea211f9bd8156da",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
