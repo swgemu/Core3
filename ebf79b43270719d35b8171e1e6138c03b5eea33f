@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_bbd72fed",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-02T11:14:07Z",
+      "side": 1,
+      "message": "You should delete the theaterID data with the victim\u0027s oid.",
+      "revId": "ebf79b43270719d35b8171e1e6138c03b5eea33f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_dbd0ebf9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-02T11:14:07Z",
+      "side": 1,
+      "message": "You should also delete the killableCount",
+      "revId": "ebf79b43270719d35b8171e1e6138c03b5eea33f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_7b099794",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-02T11:14:07Z",
+      "side": 1,
+      "message": "You should also delete the :campNum data associated with the theaterID.\n\nAlso, delete the VillageCounterStrikeCampID: data.\n\nAlso also, do you not want to destroy the loot mob groups and surveillance droids when you despawn the camps? If not, then you need to at least prevent them from respawning if the theater has despawned.\n\n3rd also, what about removing the shield?",
+      "revId": "ebf79b43270719d35b8171e1e6138c03b5eea33f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_1bfe636c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-02T11:14:07Z",
+      "side": 1,
+      "message": "There\u0027s no string for the waypoint name?",
+      "revId": "ebf79b43270719d35b8171e1e6138c03b5eea33f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_3b031f75",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-02T11:14:07Z",
+      "side": 1,
+      "message": "you don\u0027t want to limit sending this to members who are nearby?",
+      "revId": "ebf79b43270719d35b8171e1e6138c03b5eea33f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_dbf78b8b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-02T11:14:07Z",
+      "side": 1,
+      "message": "You seem to be using it in resetCamp.\n\nYou could also use it to send remote_shield_down_by_player when someone uses the remote after it\u0027s already down.",
+      "revId": "ebf79b43270719d35b8171e1e6138c03b5eea33f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
