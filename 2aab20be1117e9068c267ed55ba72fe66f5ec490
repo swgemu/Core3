@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_1b82e300",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/themepark_reward/stim_c_smc_vurlene.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-02T08:07:51Z",
+      "side": 1,
+      "message": "instead of having the same range as the stim b, put it between the b and d ranges (40 - 55 maybe).",
+      "revId": "2aab20be1117e9068c267ed55ba72fe66f5ec490",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_7b8d1731",
+        "filename": "MMOCoreORB/bin/scripts/object/tangible/medicine/crafted/medpack_damage_c.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-02T08:07:51Z",
+      "side": 1,
+      "message": "For the skillmodmin the min should be the higher number so swap the 35 and 50.",
+      "revId": "2aab20be1117e9068c267ed55ba72fe66f5ec490",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_5b885b22",
+        "filename": "MMOCoreORB/bin/scripts/object/tangible/medicine/crafted/medpack_damage_d.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-02T08:07:51Z",
+      "side": 1,
+      "message": "For the skillmodmin the min should be the higher number so swap the 45 and 60.",
+      "revId": "2aab20be1117e9068c267ed55ba72fe66f5ec490",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_3b879f11",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/smc/themeParkSmcVurleneAujante.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-02T08:07:51Z",
+      "side": 1,
+      "message": "The loot rewards don\u0027t match up with you evidence. The wiki says the first one gives a damage stim C, the second a damage stim B and the third a damage stim A. However, the allakhazam guide lists the reward for each one as \"Randomized Damage Stimpacks\". A comment below the guide says he got 2 damage stim Cs.\n\nIt sounds to me like when the guide says randomized, it\u0027s not just meaning the stats, but what type of damage stim. I would make just one loot group that has all damage stimpack varieties as possibilities with equal weighting. Then use that loot group for the reward in each of vurlene\u0027s missions.",
+      "revId": "2aab20be1117e9068c267ed55ba72fe66f5ec490",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_db7b0b28",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/smc/themeParkSmcVurleneAujante.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-02T08:07:51Z",
+      "side": 1,
+      "message": "The allakhazam guide mentions they were attacked by a nightsister outcast. Add one as a secondary spawn.",
+      "revId": "2aab20be1117e9068c267ed55ba72fe66f5ec490",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
