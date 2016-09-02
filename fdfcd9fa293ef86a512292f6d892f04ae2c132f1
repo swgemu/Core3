@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_bbee4fb3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/dathomir/warden_vinzel_haylon.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-02T11:51:55Z",
+      "side": 1,
+      "message": "I think you should give him the name: Ezker \u0027The Brain\u0027 Keanin\n\nThat\u0027s what he\u0027s called in the ign link and http://starwars.wikia.com/wiki/Ezker_Keanin which leads me to believe that\u0027s how it was displayed in game as well.",
+      "revId": "fdfcd9fa293ef86a512292f6d892f04ae2c132f1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_9bf11398",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/dathomir/warden_vinzel_haylon.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-02T11:51:55Z",
+      "side": 1,
+      "message": "Instead of a requiredFaction, you need to add a faction. Adding a requiredFaction is to require positive faction standing. Adding a faction requires membership in the faction.",
+      "revId": "fdfcd9fa293ef86a512292f6d892f04ae2c132f1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
