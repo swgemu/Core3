@@ -323,6 +323,11 @@ includeFile("quest/dathomir/theme_park_smc_rancor_pygmy_shando.lua")
 includeFile("quest/dathomir/theme_park_smc_rancor_pygmy_maufel.lua")
 includeFile("quest/dathomir/izaryx.lua")
 includeFile("quest/dathomir/vhaunda.lua")
+includeFile("quest/dathomir/warden_vinzel_haylon.lua")
+includeFile("quest/dathomir/prisoner_quest_vinzel.lua")
+includeFile("quest/dathomir/prisoner_quest_vinzel_too.lua")
+includeFile("quest/dathomir/prisoner_quest_vinzel_riot.lua")
+includeFile("quest/dathomir/escaped_traitor_quest_vinzel.lua")
 includeFile("quest/dathomir/zideera.lua")
 
 -- Endor
