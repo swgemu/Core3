@@ -39,6 +39,7 @@ public:
 	int setDialogTextDF(lua_State* L);
 	int setDialogTextDI(lua_State* L);
 	int setCustomDialogText(lua_State* L);
+	int setStopConversation(lua_State* L);
 
 private:
 	//removed Reference<> because we are cloning in lua and returning

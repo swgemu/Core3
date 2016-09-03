@@ -26,6 +26,7 @@ Luna<LuaConversationScreen>::RegType LuaConversationScreen::Register[] = {
 		{ "setDialogTextDF", &LuaConversationScreen::setDialogTextDF},
 		{ "setDialogTextDI", &LuaConversationScreen::setDialogTextDI},
 		{ "setCustomDialogText", &LuaConversationScreen::setCustomDialogText},
+		{ "setStopConversation", &LuaConversationScreen::setStopConversation},
 		{ 0, 0 }
 };
 
@@ -212,6 +213,14 @@ int LuaConversationScreen::setDialogTextDI(lua_State* L) {
 	int num = lua_tointeger(L, -1);
 
 	realObject->setDialogTextDI(num);
+
+	return 0;
+}
+
+int LuaConversationScreen::setStopConversation(lua_State* L) {
+	bool stop = lua_toboolean(L, -1);
+
+	realObject->setStopConversation(stop);
 
 	return 0;
 }

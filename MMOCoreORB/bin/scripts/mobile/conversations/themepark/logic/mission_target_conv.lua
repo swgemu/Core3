@@ -16,16 +16,6 @@ function createMissionTargetConvoTemplate(templateName, convoHandler)
 
 	mission_target_convotemplate:addScreen(mission_target_npc_breech_n);
 
-	mission_target_missiontype = ConvoScreen:new {
-		id = "missiontype",
-		leftDialog = "",
-		stopConversation = "false",
-		options = {
-		}
-	}
-
-	mission_target_convotemplate:addScreen(mission_target_missiontype);
-
 	mission_target_invfull = ConvoScreen:new {
 		id = "inv_full",
 		leftDialog = "",
@@ -45,6 +35,36 @@ function createMissionTargetConvoTemplate(templateName, convoHandler)
 	}
 
 	mission_target_convotemplate:addScreen(mission_target_npc_smuggle_n);
+
+	mission_target_npc_more_1_n = ConvoScreen:new {
+		id = "npc_more_1_n",
+		leftDialog = ":npc_more_1_1",
+		stopConversation = "true",
+		options = {
+		}
+	}
+
+	mission_target_convotemplate:addScreen(mission_target_npc_more_1_n);
+
+	mission_target_npc_more_2_n = ConvoScreen:new {
+		id = "npc_more_2_n",
+		leftDialog = ":npc_more_2_1",
+		stopConversation = "true",
+		options = {
+		}
+	}
+
+	mission_target_convotemplate:addScreen(mission_target_npc_more_2_n);
+
+	mission_target_npc_more_3_n = ConvoScreen:new {
+		id = "npc_more_3_n",
+		leftDialog = ":npc_more_3_1",
+		stopConversation = "true",
+		options = {
+		}
+	}
+
+	mission_target_convotemplate:addScreen(mission_target_npc_more_3_n);
 
 	mission_target_npc_takeme_n = ConvoScreen:new {
 		id = "npc_takeme_n",
