@@ -281,6 +281,8 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 		}
 	}
 
+	uint32 lairTemplateCRC = getLairTemplateName().hashCode();
+
 	for(int i = 0; i < objectsToSpawn.size(); ++i) {
 
 		if (spawnNumber != 4 && spawnedCreatures.size() >= lairTemplate->getSpawnLimit())
@@ -328,6 +330,7 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 				ai->setHomeLocation(x, z, y);
 				ai->setRespawnTimer(0);
 				ai->setHomeObject(lair);
+				ai->setLairTemplateCRC(lairTemplateCRC);
 
 				spawnedCreatures.add(creo);
 			}

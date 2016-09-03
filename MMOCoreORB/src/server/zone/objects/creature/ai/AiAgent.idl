@@ -138,6 +138,7 @@ class AiAgent extends CreatureObject {
 
 	@dereferenced
 	protected transient string templateName;
+	protected unsigned int lairTemplateCRC;
 	protected unsigned int creatureBitmask;
 
 	protected int waitTime;
@@ -192,6 +193,7 @@ class AiAgent extends CreatureObject {
 		waitTime = 0;
 		waiting = false;
 		fleeRange = 192;
+		lairTemplateCRC = 0;
 	}
 
 	/**
@@ -1377,4 +1379,14 @@ class AiAgent extends CreatureObject {
 
 	@preLocked
 	public native void setConvoTemplate(final string templateString);
+
+	@preLocked
+	public void setLairTemplateCRC(unsigned int crc) {
+		lairTemplateCRC = crc;
+	}
+
+	@read
+	public unsigned int getLairTemplateCRC() {
+		return lairTemplateCRC;
+	}
 }

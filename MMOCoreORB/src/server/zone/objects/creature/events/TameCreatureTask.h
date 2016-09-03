@@ -183,6 +183,7 @@ public:
 				task->schedule(respawn);
 			}
 
+			agent->setLairTemplateCRC(0);
 			agent->setFollowObject(player);
 			agent->storeFollowObject();
 

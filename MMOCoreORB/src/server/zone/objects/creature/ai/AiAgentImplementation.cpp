@@ -3177,6 +3177,11 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 		if (!targetSocialGroup.isEmpty() && targetSocialGroup != "self" && targetSocialGroup == getSocialGroup().toLowerCase()) {
 			return false;
 		}
+
+		uint32 targetLairTemplateCRC = ai->getLairTemplateCRC();
+		if (targetLairTemplateCRC != 0 && targetLairTemplateCRC == getLairTemplateCRC()) {
+			return false;
+		}
 	}
 
 	return true;

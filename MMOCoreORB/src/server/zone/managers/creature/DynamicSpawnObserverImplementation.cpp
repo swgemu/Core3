@@ -64,6 +64,7 @@ void DynamicSpawnObserverImplementation::spawnInitialMobiles(SceneObject* buildi
 	int totalNumberToSpawn = (lairTemplate->getSpawnLimit() / 3) + spawnLimitAdjustment;
 	VectorMap<String, int> objectsToSpawn; // String mobileTemplate, int number to spawn
 	Vector<String>* mobiles = lairTemplate->getWeightedMobiles();
+	uint32 lairTemplateCRC = getLairTemplateName().hashCode();
 
 	if (totalNumberToSpawn < 1)
 		totalNumberToSpawn = 1;
@@ -126,6 +127,7 @@ void DynamicSpawnObserverImplementation::spawnInitialMobiles(SceneObject* buildi
 				ai->setRespawnTimer(0);
 				ai->resetRespawnCounter();
 				ai->setHomeObject(building);
+				ai->setLairTemplateCRC(lairTemplateCRC);
 
 				spawnedCreatures.add(creo);
 
