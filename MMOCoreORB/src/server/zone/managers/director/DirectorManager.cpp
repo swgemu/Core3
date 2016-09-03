@@ -2614,7 +2614,10 @@ int DirectorManager::getSpawnPoint(lua_State* L) {
 	Zone* zone = ServerCore::getZoneServer()->getZone(zoneName);
 
 	if (zone == NULL) {
-		instance()->error("Zone is NULL in DirectorManager::getSpawnPoint. zoneName = " + zoneName);
+		String err = "Zone is NULL in DirectorManager::getSpawnPoint. zoneName = " + zoneName;
+		luaL_traceback(L, L, err.toCharArray(), 0);
+		String trace = lua_tostring(L, -1);
+		instance()->error(trace);
 		return 0;
 	}
 
