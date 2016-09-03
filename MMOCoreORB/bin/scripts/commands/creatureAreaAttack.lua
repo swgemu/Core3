@@ -47,16 +47,15 @@ CreatureAreaAttackCommand = {
 	speedMultiplier = 1,
 
 	combatSpam = "attack",
-	animation = "creature_attack_special_2", 
+	animation = "creature_attack_special_2",
 	animType = GENERATE_INTENSITY,
 
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
 
-	range = 15,
 	areaRange = 25,
-
+	areaAction = true,
 	poolsToDamage = RANDOM_ATTRIBUTE
 }
 
