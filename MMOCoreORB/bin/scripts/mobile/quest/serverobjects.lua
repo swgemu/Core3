@@ -77,6 +77,7 @@ includeFile("quest/coa/coa3_warehouse_thug.lua")
 -- Corellia
 includeFile("quest/corellia/aldalad.lua")
 includeFile("quest/corellia/ara_niorri.lua")
+includeFile("quest/corellia/assassin_quest_zekka.lua")
 includeFile("quest/corellia/banyon_craddok.lua")
 includeFile("quest/corellia/bandleader_quest_grondorn.lua")
 includeFile("quest/corellia/bandmember_quest_grondorn.lua")
@@ -601,7 +602,6 @@ includeFile("quest/talus/xalox_smuggler.lua")
 includeFile("quest/talus/xalox_smuggler2.lua")
 
 -- Tatooine
-includeFile("quest/tatooine/assassin_quest_zekka.lua")
 includeFile("quest/tatooine/bestine_election/afroh_orah.lua")
 includeFile("quest/tatooine/bestine_election/bestine_merchant.lua")
 includeFile("quest/tatooine/bestine_election/ihatha_hawit.lua")
