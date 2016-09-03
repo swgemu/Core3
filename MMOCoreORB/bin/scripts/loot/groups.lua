@@ -242,6 +242,8 @@ includeFile("groups/task_reward/task_reward_vardias_tyne.lua")
 includeFile("groups/task_reward/task_reward_xaan_talmaron.lua")
 
 -- theme_park_loot sub-folder
+includeFile("groups/theme_park_loot/theme_park_loot_healing_salve_smc_vurlene.lua")
+includeFile("groups/theme_park_loot/theme_park_loot_sacred_tome_smc_aujante.lua")
 includeFile("groups/theme_park_loot/theme_park_loot_shoulder_pad_smc_vhaunda.lua")
 includeFile("groups/theme_park_loot/theme_park_loot_slave_collar_ns_geth.lua")
 includeFile("groups/theme_park_loot/theme_park_loot_heart_of_slave_ns_geth.lua")
@@ -277,6 +279,7 @@ includeFile("groups/theme_park_loot/theme_park_loot_shipping_manifest.lua")
 includeFile("groups/theme_park_loot/theme_park_loot_transponder.lua")
 
 -- theme_park_reward sub-folder
+includeFile("groups/theme_park_reward/theme_park_reward_smc_vurlene_stims.lua")
 includeFile("groups/theme_park_reward/theme_park_reward_smc_vhaunda_polearm.lua")
 includeFile("groups/theme_park_reward/theme_park_reward_ns_diax_stimb.lua")
 includeFile("groups/theme_park_reward/jabba_theme_park_barada.lua")
