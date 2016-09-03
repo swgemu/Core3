@@ -3,7 +3,7 @@ vurlene_missions =
 	{
 		missionType = "retrieve",
 		planetName = "naboo",
-		staticLoc = {x = -2096, y = -5401},--TODO:THIS PARAMETER ISN'T WORKING YET cuz random wp is overriding it?
+		staticLoc = { {x = -2096, y = -5401} },
 		primarySpawns =
 		{
 			{ npcTemplate = "theme_park_naboo_holy_man", npcName = "Skub" }
