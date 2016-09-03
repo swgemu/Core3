@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_3b88ffe6",
+        "filename": "MMOCoreORB/bin/scripts/loot/groups/theme_park_reward/theme_park_reward_smc_vurlene_stims.lua",
+        "patchSetId": 17
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-03T03:37:03Z",
+      "side": 1,
+      "message": "Include damage stim A as well since the wiki specifically listed them (and had a screenshot).",
+      "revId": "e42c7061a74e270b71d4b73b222165114e117acc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_db6c6b39",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/smc/themeParkSmcVurleneAujante.lua",
+        "patchSetId": 17
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-03T03:37:03Z",
+      "side": 1,
+      "message": "remove planetName from these.",
+      "revId": "e42c7061a74e270b71d4b73b222165114e117acc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_1b83c3cd",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/smc/themeParkSmcVurleneAujante.lua",
+        "patchSetId": 17
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-03T03:37:03Z",
+      "side": 1,
+      "message": "remove the planetName",
+      "revId": "e42c7061a74e270b71d4b73b222165114e117acc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_fb692726",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/smc/themeParkSmcVurleneAujante.lua",
+        "patchSetId": 17
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-03T03:37:03Z",
+      "side": 1,
+      "message": "remove planetName from these",
+      "revId": "e42c7061a74e270b71d4b73b222165114e117acc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_9b76f305",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/smc/themeParkSmcVurleneAujante.lua",
+        "patchSetId": 17
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-03T03:37:03Z",
+      "side": 1,
+      "message": "Remove planetName from these.",
+      "revId": "e42c7061a74e270b71d4b73b222165114e117acc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
