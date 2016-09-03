@@ -11,7 +11,6 @@ stim_c_smc_vurlene = {
 	},
 	customizationStringNames = {},
 	customizationValues = {},
-	--TODO: HOW DO WE VARY WHAT STATS & TYPES OF THINGS THESE CAN HEAL? (re: mind, poison, etc. )
 }
 
 addLootItemTemplate("stim_c_smc_vurlene", stim_c_smc_vurlene)

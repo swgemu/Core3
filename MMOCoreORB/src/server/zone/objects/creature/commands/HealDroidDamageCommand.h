@@ -80,7 +80,15 @@ public:
 			return false;
 		}
 
-		if (!droid->hasDamage(CreatureAttribute::HEALTH) && !droid->hasDamage(CreatureAttribute::ACTION) && !droid->hasDamage(CreatureAttribute::MIND)) {
+		Vector<byte> atts = stimPack->getAttributes();
+		bool needsHeals = false;
+
+		for (int i = 0; i < atts.size(); i++) {
+			if (droid->hasDamage(atts.get(i)))
+				needsHeals = true;
+		}
+
+		if (!needsHeals) {
 			StringIdChatParameter stringId("error_message", "droid_repair_no_damage"); // It appears %TO has no damage to repair.
 			stringId.setTO(droid->getObjectID());
 			creature->sendSystemMessage(stringId);
@@ -170,9 +178,32 @@ public:
 		uint32 stimPower = 0;
 		stimPower = stimPack->calculatePower(creature, droid, false);
 
-		int healthHealed = droid->healDamage(creature, CreatureAttribute::HEALTH, stimPower);
-		int actionHealed = droid->healDamage(creature, CreatureAttribute::ACTION, stimPower, true, false);
-		int mindHealed = droid->healDamage(creature, CreatureAttribute::MIND, stimPower, true, false);
+		Vector<byte> atts = stimPack->getAttributes();
+		int healthHealed = 0, actionHealed = 0, mindHealed = 0;
+		bool notifyObservers = true;
+
+
+		if (atts.contains(CreatureAttribute::HEALTH)) {
+			healthHealed = droid->healDamage(creature, CreatureAttribute::HEALTH, stimPower);
+			notifyObservers = false;
+		}
+
+		if (atts.contains(CreatureAttribute::ACTION)) {
+			if (notifyObservers) {
+				actionHealed = droid->healDamage(creature, CreatureAttribute::ACTION, stimPower);
+				notifyObservers = false;
+			} else {
+				actionHealed = droid->healDamage(creature, CreatureAttribute::ACTION, stimPower, true, false);
+			}
+		}
+
+		if (atts.contains(CreatureAttribute::MIND)) {
+			if (notifyObservers) {
+				mindHealed = droid->healDamage(creature, CreatureAttribute::MIND, stimPower);
+			} else {
+				mindHealed = droid->healDamage(creature, CreatureAttribute::MIND, stimPower, true, false);
+			}
+		}
 
 		sendHealMessage(creature, droid, healthHealed, actionHealed, mindHealed);
 

@@ -48,6 +48,7 @@ object_tangible_medicine_crafted_crafted_stimpack_sm_s1_b = object_tangible_medi
 	medicineUse = 10,
 	effectiveness = 150,
 	medicineClass = STIM_B,
+	attributes = {0, 3},
 
 	numberExperimentalProperties = {1, 1, 2, 2, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "XX", "XX"},

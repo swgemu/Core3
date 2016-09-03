@@ -157,7 +157,15 @@ public:
 			return false;
 		}
 
-		if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION)) {
+		Vector<byte> atts = stimPack->getAttributes();
+		bool needsHeals = false;
+
+		for (int i = 0; i < atts.size(); i++) {
+			if (creatureTarget->hasDamage(atts.get(i)))
+				needsHeals = true;
+		}
+
+		if (!needsHeals) {
 			if (creatureTarget == creature) {
 				creature->sendSystemMessage("@healing_response:healing_response_61"); //You have no damage to heal.
 			} else if (creatureTarget->isPlayerCreature()) {
@@ -187,7 +195,7 @@ public:
 		return true;
 	}
 
-	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, uint32 healthDamage, uint32 actionDamage) const {
+	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, int healthDamage, int actionDamage, int mindDamage) const {
 		if (!creature->isPlayerCreature())
 			return;
 
@@ -195,12 +203,20 @@ public:
 
 		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
 
-		if (healthDamage > 0 && actionDamage > 0) {
+		if (healthDamage > 0 && actionDamage > 0 && mindDamage > 0) {
+			msgBody << healthDamage << " health, " << actionDamage << " action, and " << mindDamage << " mind";
+		} else if (healthDamage > 0 && actionDamage > 0) {
 			msgBody << healthDamage << " health and " << actionDamage << " action";
+		} else if (healthDamage > 0 && mindDamage > 0) {
+			msgBody << healthDamage << " health and " << mindDamage << " mind";
+		} else if (actionDamage > 0 && mindDamage > 0) {
+			msgBody << actionDamage << " action and " << mindDamage << " mind";
 		} else if (healthDamage > 0) {
 			msgBody << healthDamage << " health";
 		} else if (actionDamage > 0) {
 			msgBody << actionDamage << " action";
+		} else if (mindDamage > 0) {
+			msgBody << mindDamage << " mind";
 		} else {
 			return; //No damage to heal.
 		}
@@ -237,24 +253,48 @@ public:
 		playerManager->awardExperience(player, type, amount, true);
 	}
 
-	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* targetCreature, PharmaceuticalObject* pharma) const {
-		if (pharma->isRangedStimPack()) {
-			RangedStimPack* rangeStim = cast<RangedStimPack*>( pharma);
+	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* targetCreature, StimPack* stimPack) const {
+		if (stimPack->isRangedStimPack()) {
+			RangedStimPack* rangeStim = cast<RangedStimPack*>(stimPack);
 
 			if (rangeStim == NULL)
 				return;
 
 			uint32 stimPower = rangeStim->calculatePower(creature, targetCreature);
 
-			uint32 healthHealed = targetCreature->healDamage(creature, CreatureAttribute::HEALTH, stimPower);
-			uint32 actionHealed = targetCreature->healDamage(creature, CreatureAttribute::ACTION, stimPower);
+			Vector<byte> atts = stimPack->getAttributes();
+			int healthHealed = 0, actionHealed = 0, mindHealed = 0;
+			bool notifyObservers = true;
+
+
+			if (atts.contains(CreatureAttribute::HEALTH)) {
+				healthHealed = targetCreature->healDamage(creature, CreatureAttribute::HEALTH, stimPower);
+				notifyObservers = false;
+			}
+
+			if (atts.contains(CreatureAttribute::ACTION)) {
+				if (notifyObservers) {
+					actionHealed = targetCreature->healDamage(creature, CreatureAttribute::ACTION, stimPower);
+					notifyObservers = false;
+				} else {
+					actionHealed = targetCreature->healDamage(creature, CreatureAttribute::ACTION, stimPower, true, false);
+				}
+			}
+
+			if (atts.contains(CreatureAttribute::MIND)) {
+				if (notifyObservers) {
+					mindHealed = targetCreature->healDamage(creature, CreatureAttribute::MIND, stimPower);
+				} else {
+					mindHealed = targetCreature->healDamage(creature, CreatureAttribute::MIND, stimPower, true, false);
+				}
+			}
 
 			if (creature->isPlayerCreature()) {
 				PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 				playerManager->sendBattleFatigueMessage(creature, targetCreature);
 			}
 
-			sendHealMessage(creature, targetCreature, healthHealed, actionHealed);
+			sendHealMessage(creature, targetCreature, healthHealed, actionHealed, mindHealed);
 
 			if (targetCreature != creature && !targetCreature->isPet())
 				awardXp(creature, "medical", (healthHealed + actionHealed)); //No experience for healing yourself or pets.
@@ -263,8 +303,7 @@ public:
 		}
 	}
 
-	void handleArea(CreatureObject* creature, CreatureObject* areaCenter, StimPack* pharma,
-			float range) const {
+	void handleArea(CreatureObject* creature, CreatureObject* areaCenter, StimPack* pharma, float range) const {
 
 		// TODO: Replace this with a CombatManager::getAreaTargets() call
 		
@@ -397,15 +436,39 @@ public:
 
 		uint32 stimPower = stimPack->calculatePower(creature, targetCreature);
 
-		uint32 healthHealed = targetCreature->healDamage(creature, CreatureAttribute::HEALTH, stimPower);
-		uint32 actionHealed = targetCreature->healDamage(creature, CreatureAttribute::ACTION, stimPower, true, false);
+		Vector<byte> atts = stimPack->getAttributes();
+		int healthHealed = 0, actionHealed = 0, mindHealed = 0;
+		bool notifyObservers = true;
+
+
+		if (atts.contains(CreatureAttribute::HEALTH)) {
+			healthHealed = targetCreature->healDamage(creature, CreatureAttribute::HEALTH, stimPower);
+			notifyObservers = false;
+		}
+
+		if (atts.contains(CreatureAttribute::ACTION)) {
+			if (notifyObservers) {
+				actionHealed = targetCreature->healDamage(creature, CreatureAttribute::ACTION, stimPower);
+				notifyObservers = false;
+			} else {
+				actionHealed = targetCreature->healDamage(creature, CreatureAttribute::ACTION, stimPower, true, false);
+			}
+		}
+
+		if (atts.contains(CreatureAttribute::MIND)) {
+			if (notifyObservers) {
+				mindHealed = targetCreature->healDamage(creature, CreatureAttribute::MIND, stimPower);
+			} else {
+				mindHealed = targetCreature->healDamage(creature, CreatureAttribute::MIND, stimPower, true, false);
+			}
+		}
 
 		if (creature->isPlayerCreature()) {
 			PlayerManager* playerManager = server->getPlayerManager();
 			playerManager->sendBattleFatigueMessage(creature, targetCreature);
 		}
 
-		sendHealMessage(creature, targetCreature, healthHealed, actionHealed);
+		sendHealMessage(creature, targetCreature, healthHealed, actionHealed, mindHealed);
 
 		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCostNew, false);
 

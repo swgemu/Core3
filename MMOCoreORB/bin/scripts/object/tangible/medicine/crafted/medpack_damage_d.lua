@@ -47,6 +47,7 @@ gameObjectType = 8236,
 	medicineUse = 60,
 	effectiveness = 500,
 	medicineClass = STIM_D,
+	attributes = {0, 3, 6},
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "XX"},

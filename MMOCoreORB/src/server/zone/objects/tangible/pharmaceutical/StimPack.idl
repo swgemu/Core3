@@ -15,21 +15,23 @@ import server.zone.ZoneServer;
 import server.zone.objects.tangible.pharmaceutical.PharmaceuticalObject;
 import system.lang.Math;
 import system.lang.String;
+import system.util.Vector;
 include templates.tangible.StimPackTemplate;
+include templates.params.creature.CreatureAttribute;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 class StimPack extends PharmaceuticalObject {
 	protected float effectiveness;
 	protected int medicineClass;
-	
+
 	public StimPack() {
 		setLoggingName("StimPack");
-		
+
 		effectiveness = 0;
 		medicineClass = 0;
 	}
-	
+
 	@local
 	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
 		if (isPetStimPack()) {
@@ -43,7 +45,7 @@ class StimPack extends PharmaceuticalObject {
 
 		setUseCount(values.getCurrentValue("charges"));
 	}
-	
+
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
@@ -53,17 +55,17 @@ class StimPack extends PharmaceuticalObject {
 	@local
 	public void loadTemplateData(SharedObjectTemplate templateData) {
 		super.loadTemplateData(templateData);
-		
+
 		if (!templateData.isStimPackTemplate())
 			return;
-		
+
 		StimPackTemplate stimPackTemplate = (StimPackTemplate) templateData;
-		
+
 		effectiveness = stimPackTemplate.getEffectiveness();
 		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
 		medicineClass = stimPackTemplate.getMedicineClass();
 	}
-	
+
 	@dirty
 	public abstract unsigned int calculatePower(CreatureObject healer, CreatureObject patient, boolean applyBattleFatigue = true) {
 		float power = getEffectiveness();
@@ -80,7 +82,7 @@ class StimPack extends PharmaceuticalObject {
 			return (100 + modSkill) / 100 * power;
 		}
 	}
-	
+
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
@@ -90,7 +92,7 @@ class StimPack extends PharmaceuticalObject {
 	 * @returns 0 if successfull
 	 */
 	public int handleObjectMenuSelect(CreatureObject player, byte selectedID) {
-		
+
 		if (!isASubChildOf(player))
 			return 0;
 
@@ -99,24 +101,23 @@ class StimPack extends PharmaceuticalObject {
 
 		if (isPetStimPack()) {
 			player.sendCommand("healpet", String.valueOf(super.getObjectID()), player.getTargetID());
-			
+
 			return 0;
 		} else if (isDroidRepairKit()) {
 			player.sendCommand("healdroiddamage", String.valueOf(super.getObjectID()), player.getTargetID());
-			
+
 			return 0;
 		} else if (player.getSkillMod("healing_ability") < super.medicineUseRequired) {
 			player.sendSystemMessage("@error_message:insufficient_skill"); //You lack the skill to use this item.
-			
+
 			return 0;
 		} else {
 			player.sendCommand("healdamage", String.valueOf(super.getObjectID()), player.getTargetID());
-			
+
 			return 0;
 		}
-
 	}
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -126,34 +127,19 @@ class StimPack extends PharmaceuticalObject {
 	 */
 	@local
 	@dirty
-	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
-		super.fillAttributeList(msg, object);
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
-		if (!isRangedStimPack() && !isDroidRepairKit()) {
-			msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(effectiveness, 0));
-			msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(effectiveness, 0));
-
-			if (isPetStimPack()) {
-				msg.insertAttribute("examine_heal_damage_mind", Math.getPrecision(effectiveness, 0));
-			} else {
-				msg.insertAttribute("healing_ability", super.medicineUseRequired);
-			}
-		} else if (isDroidRepairKit()) {
-			msg.insertAttribute("examine_repair_energy", Math.getPrecision(effectiveness, 0));
-		}
-	}
-	
 	@dirty
 	public float getEffectiveness() {
 		return effectiveness;
 	}
-	
+
 	/**
 	 * Added so we can split a stimpack for the stimpack droid dispenser module.
 	 */
 	@dirty
 	public native StimPack split(int charges);
-	
+
 	@dirty
 	public boolean isStimPack() {
 		return true;
@@ -164,12 +150,12 @@ class StimPack extends PharmaceuticalObject {
 
 	@dirty
 	public native boolean isDroidRepairKit();
-	
+
 	@dirty
 	public int getMedicineClass() {
 		return medicineClass;
 	}
-	
+
 	@dirty
 	public native boolean isClassA();
 	@dirty
@@ -180,4 +166,13 @@ class StimPack extends PharmaceuticalObject {
 	public native boolean isClassD();
 	@dirty
 	public native boolean isClassE();
+
+	@dirty
+	@dereferenced
+	@local
+	public Vector<byte> getAttributes() {
+		StimPackTemplate stimPackTemplate = (StimPackTemplate) getObjectTemplate();
+
+		return stimPackTemplate.getAttributes();
+	}
 }

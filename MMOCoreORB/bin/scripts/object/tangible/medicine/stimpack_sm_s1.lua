@@ -48,6 +48,7 @@ object_tangible_medicine_stimpack_sm_s1 = object_tangible_medicine_shared_stimpa
 	medicineUse = 5,
 	effectiveness = 100,
 	medicineClass = STIM_A,
+	attributes = {0, 3},
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_stimpack_sm_s1, "object/tangible/medicine/stimpack_sm_s1.iff")

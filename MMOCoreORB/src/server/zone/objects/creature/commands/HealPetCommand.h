@@ -79,7 +79,15 @@ public:
 			return false;
 		}
 
-		if (!pet->hasDamage(CreatureAttribute::HEALTH) && !pet->hasDamage(CreatureAttribute::ACTION) && !pet->hasDamage(CreatureAttribute::MIND)) {
+		Vector<byte> atts = stimPack->getAttributes();
+		bool needsHeals = false;
+
+		for (int i = 0; i < atts.size(); i++) {
+			if (pet->hasDamage(atts.get(i)))
+				needsHeals = true;
+		}
+
+		if (!needsHeals) {
 			StringBuffer message;
 			message << pet->getDisplayedName() << " has no damage to heal.";
 			creature->sendSystemMessage(message.toString());
@@ -177,12 +185,34 @@ public:
 		if (!canPerformSkill(creature, pet, stimPack, mindCostNew))
 			return GENERALERROR;
 
-		uint32 stimPower = 0;
-		stimPower = stimPack->calculatePower(creature, pet);
+		uint32 stimPower = stimPack->calculatePower(creature, pet);
 
-		int healthHealed = pet->healDamage(creature, CreatureAttribute::HEALTH, stimPower);
-		int actionHealed = pet->healDamage(creature, CreatureAttribute::ACTION, stimPower, true, false);
-		int mindHealed = pet->healDamage(creature, CreatureAttribute::MIND, stimPower, true, false);
+		Vector<byte> atts = stimPack->getAttributes();
+		int healthHealed = 0, actionHealed = 0, mindHealed = 0;
+		bool notifyObservers = true;
+
+
+		if (atts.contains(CreatureAttribute::HEALTH)) {
+			healthHealed = pet->healDamage(creature, CreatureAttribute::HEALTH, stimPower);
+			notifyObservers = false;
+		}
+
+		if (atts.contains(CreatureAttribute::ACTION)) {
+			if (notifyObservers) {
+				actionHealed = pet->healDamage(creature, CreatureAttribute::ACTION, stimPower);
+				notifyObservers = false;
+			} else {
+				actionHealed = pet->healDamage(creature, CreatureAttribute::ACTION, stimPower, true, false);
+			}
+		}
+
+		if (atts.contains(CreatureAttribute::MIND)) {
+			if (notifyObservers) {
+				mindHealed = pet->healDamage(creature, CreatureAttribute::MIND, stimPower);
+			} else {
+				mindHealed = pet->healDamage(creature, CreatureAttribute::MIND, stimPower, true, false);
+			}
+		}
 
 		if (creature->isPlayerCreature()) {
 			PlayerManager* playerManager = server->getPlayerManager();

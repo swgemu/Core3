@@ -22,28 +22,28 @@ class RangedStimPack extends StimPack {
 	protected float range;
 	protected float area;
 	protected float rangeMod;
-	
+
 	public RangedStimPack() {
 		setLoggingName("RangedStimPack");
-		
+
 		area = 0;
 		range = 0;
 		rangeMod = 0;
 	}
-	
+
 	@local
 	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
 		super.effectiveness = values.getCurrentValue("power");
 		super.medicineUseRequired = values.getCurrentValue("skillmodmin");
 		setUseCount(values.getCurrentValue("charges"));
-		
+
 		range = values.getCurrentValue("range");
-		
+
 		if (values.hasProperty("area")) {
 			area = values.getCurrentValue("area");
 		}
 	}
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -53,21 +53,8 @@ class RangedStimPack extends StimPack {
 	 */
 	@local
 	@dirty
-	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
-		super.fillAttributeList(msg, object);
-	
-		msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(super.effectiveness, 0));
-		msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(super.effectiveness, 0));
-		msg.insertAttribute("examine_heal_range", Math.getPrecision(range, 0));
-		
-		if (isArea()) {
-			msg.insertAttribute("examine_heal_area", Math.getPrecision(area, 0));
-			msg.insertAttribute("combat_healing_ability", super.medicineUseRequired);
-		} else {
-			msg.insertAttribute("combat_healing_ability", super.medicineUseRequired);
-		}
-	}
-	
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
@@ -77,25 +64,24 @@ class RangedStimPack extends StimPack {
 	 * @returns 0 if successfull
 	 */
 	public int handleObjectMenuSelect(CreatureObject player, byte selectedID) {
-		
+
 		if (!isASubChildOf(player))
 			return 0;
-	
+
 		if (selectedID != 20)
 			return 1;
 
 		if (player.getSkillMod("combat_healing_ability") < super.medicineUseRequired) {
 			player.sendSystemMessage("@error_message:insufficient_skill"); //You lack the skill to use this item.
-			
+
 			return 0;
 		} else {
 			player.sendCommand("healdamage", String.valueOf(super.getObjectID()), player.getTargetID());
 			
 			return 0;
 		}
-
 	}
-	
+
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
@@ -105,19 +91,19 @@ class RangedStimPack extends StimPack {
 	@local
 	public void loadTemplateData(SharedObjectTemplate templateData) {
 		super.loadTemplateData(templateData);
-		
+
 		if (!templateData.isRangedStimPackTemplate())
 			return;
-		
+
 		RangedStimPackTemplate stimPackTemplate = (RangedStimPackTemplate) templateData;
-		
+
 		super.effectiveness = stimPackTemplate.getEffectiveness();
 		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
 		area = stimPackTemplate.getArea();
 		range = stimPackTemplate.getRange();
 		rangeMod = stimPackTemplate.getRangeMod();
 	}
-	
+
 	@dirty
 	public unsigned int calculatePower(CreatureObject healer, CreatureObject patient, boolean applyBattleFatigue = true) {
 		float power = getEffectiveness();
@@ -130,35 +116,35 @@ class RangedStimPack extends StimPack {
 
 		return (100 + modSkill) / 100 * power;
 	}
-	
+
 	@dirty
 	public float getRange(CreatureObject creature = null) {
 		float modSkill = 0;
-		
+
 		if (creature != null) {
 			modSkill = creature.getSkillMod("healing_range");
 		}
-		
+
 		float value = (100 + rangeMod * modSkill) / 100 * range; 
-		
+
 		return value;
 	}
-	
+
 	@dirty
 	public float getEffectiveness() {
 		return super.effectiveness;
 	}
-	
+
 	@dirty
 	public float getArea() {
 		return area;
 	}
-	
+
 	@dirty
 	public boolean isArea() {
 		return area != 0;
 	}
-	
+
 	@dirty
 	public float getRangeMod() {
 		return rangeMod;
@@ -168,5 +154,4 @@ class RangedStimPack extends StimPack {
 	public boolean isRangedStimPack() {
 		return true;
 	}
-
 }

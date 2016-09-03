@@ -384,7 +384,6 @@ StimPack* DroidStimpackModuleDataComponent::findStimPack() {
 }
 
 void DroidStimpackModuleDataComponent::handleInsertStimpack(CreatureObject* player, StimPack* pack) {
-	// we need to send the invalid stimpack message just where is a good question
 	countUses();
 
 	if (player == NULL)

@@ -1,10 +1,10 @@
 /*
- * LoadStimpackSuiCallback.h
+ * SelectHarvestSuiCallback.h
  *
  */
 
-#ifndef LOADSTIMPACKSUICALLBACK_H_
-#define LOADSTIMPACKSUICALLBACK_H_
+#ifndef SELECTHARVESTSUICALLBACK_H_
+#define SELECTHARVESTSUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
@@ -27,7 +27,6 @@ public:
 		}
 
 		if (args->size() < 1) {
-			player->sendSystemMessage("@pet/droid_modules:invalid_stimpack");
 			return;
 		}
 
@@ -57,4 +56,4 @@ public:
 
 };
 
-#endif /* LOADSTIMPACKSUICALLBACK_H_ */
+#endif /* SELECTHARVESTSUICALLBACK_H_ */

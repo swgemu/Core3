@@ -49,10 +49,10 @@ class StatePack extends PharmaceuticalObject {
 		if (!templateData.isStatePackTemplate())
 			return;
 		
-		StatePackTemplate stimPackTemplate = (StatePackTemplate) templateData;
+		StatePackTemplate statePackTemplate = (StatePackTemplate) templateData;
 		
-		state = stimPackTemplate.getState();
-		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
+		state = statePackTemplate.getState();
+		super.medicineUseRequired = statePackTemplate.getMedicineUse();
 	}
 	
 	/**

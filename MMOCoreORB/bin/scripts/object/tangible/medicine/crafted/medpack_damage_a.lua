@@ -49,7 +49,7 @@ object_tangible_medicine_crafted_medpack_damage_a = object_tangible_medicine_cra
 	medicineUse = 25,
 	effectiveness = 75,
 	medicineClass = STIM_A,
-	--TODO: WE NEED TO FIGURE OUT HOW TO DELINEATE THIS PARTICULAR STIM TO HEAL ALL 3 HAM VALUES
+	attributes = {0, 3, 6},
 
 	numberExperimentalProperties = {1, 1, 2, 2, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "XX", "XX"},

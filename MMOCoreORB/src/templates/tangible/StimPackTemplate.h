@@ -14,6 +14,7 @@ class StimPackTemplate : public SharedTangibleObjectTemplate {
 	int medicineUse;
 	int medicineClass;
 	float effectiveness;
+	Vector<byte> attributes;
 
 
 public:
@@ -39,6 +40,16 @@ public:
 		medicineUse = templateData->getIntField("medicineUse");
 		effectiveness = templateData->getFloatField("effectiveness");
 		medicineClass = templateData->getIntField("medicineClass");
+
+		LuaObject atts = templateData->getObjectField("attributes");
+
+		for (int i = 0; i < atts.getTableSize(); ++i) {
+			byte att = atts.getIntAt(i + 1);
+
+			attributes.add(att);
+		}
+
+		atts.pop();
     }
 
 	inline int getMedicineUse() {
@@ -52,8 +63,13 @@ public:
 	bool isStimPackTemplate() {
 		return true;
 	}
+
 	inline int getMedicineClass() {
 		return medicineClass;
+	}
+
+	inline Vector<byte> getAttributes() {
+		return attributes;
 	}
 };
 

@@ -73,24 +73,10 @@ public:
 			return;
 		}
 
-		// target must need healing
-		if (!target->hasDamage(CreatureAttribute::HEALTH) && !target->hasDamage(CreatureAttribute::ACTION)) {
-			target->sendSystemMessage("@pet/droid_modules:stimpack_no_damage");
-			return;
-		}
-
 		// target must be in range
 		if (!target->isInRange(droid, 20)) {
 			// 20 meter range same as max possible range stim
 			target->sendSystemMessage("@pet/droid_modules:stimpack_too_far_away");
-			return;
-		}
-
-		StimPack* stimpack = module->findStimPack();
-
-		// droid has to have a stimpack to give
-		if (stimpack == NULL) {
-			target->sendSystemMessage("@pet/droid_modules:stimpack_supply_empty");
 			return;
 		}
 
@@ -115,6 +101,28 @@ public:
 			}
 		}
 
+		StimPack* stimpack = module->findStimPack();
+
+		// droid has to have a stimpack to give
+		if (stimpack == NULL) {
+			target->sendSystemMessage("@pet/droid_modules:stimpack_supply_empty");
+			return;
+		}
+
+		// target must need healing
+		Vector<byte> atts = stimpack->getAttributes();
+		bool needsHeals = false;
+
+		for (int i = 0; i < atts.size(); i++) {
+			if (target->hasDamage(atts.get(i)))
+					needsHeals = true;
+		}
+
+		if (!needsHeals) {
+			target->sendSystemMessage("@pet/droid_modules:stimpack_no_damage");
+			return;
+		}
+
 		// check droid cooldown on dispensing
 		if (droid->getCooldownTimerMap()->isPast("RequestStimpack")) {
 			Locker locker(stimpack);
@@ -124,8 +132,32 @@ public:
 			droid->doAnimation("heal_other");
 
 			uint32 stimPower = stimpack->calculatePower(droid, target);
-			uint32 healthHealed = target->healDamage(droid, CreatureAttribute::HEALTH, stimPower);
-			uint32 actionHealed = target->healDamage(droid, CreatureAttribute::ACTION, stimPower, true, false);
+
+			int healthHealed = 0, actionHealed = 0, mindHealed = 0;
+			bool notifyObservers = true;
+
+
+			if (atts.contains(CreatureAttribute::HEALTH)) {
+				healthHealed = target->healDamage(droid, CreatureAttribute::HEALTH, stimPower);
+				notifyObservers = false;
+			}
+
+			if (atts.contains(CreatureAttribute::ACTION)) {
+				if (notifyObservers) {
+					actionHealed = target->healDamage(droid, CreatureAttribute::ACTION, stimPower);
+					notifyObservers = false;
+				} else {
+					actionHealed = target->healDamage(droid, CreatureAttribute::ACTION, stimPower, true, false);
+				}
+			}
+
+			if (atts.contains(CreatureAttribute::MIND)) {
+				if (notifyObservers) {
+					mindHealed = target->healDamage(droid, CreatureAttribute::MIND, stimPower);
+				} else {
+					mindHealed = target->healDamage(droid, CreatureAttribute::MIND, stimPower, true, false);
+				}
+			}
 
 			stimpack->decreaseUseCount();
 			droid->getCooldownTimerMap()->updateToCurrentAndAddMili("RequestStimpack",module->rate);
@@ -133,12 +165,20 @@ public:
 			// send heal message
 			StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
 
-			if (healthHealed > 0 && actionHealed > 0) {
+			if (healthHealed > 0 && actionHealed > 0 && mindHealed > 0) {
+				msgBody << healthHealed << " health, " << actionHealed << " action, and " << mindHealed << "mind";
+			} else if (healthHealed > 0 && actionHealed > 0) {
 				msgBody << healthHealed << " health and " << actionHealed << " action";
+			} else if (healthHealed > 0 && mindHealed > 0) {
+				msgBody << healthHealed << " health and " << mindHealed << " mind";
+			} else if (actionHealed > 0 && mindHealed > 0) {
+				msgBody << actionHealed << " action and " << mindHealed << " mind";
 			} else if (healthHealed > 0) {
 				msgBody << healthHealed << " health";
 			} else if (actionHealed > 0) {
 				msgBody << actionHealed << " action";
+			} else if (mindHealed > 0) {
+				msgBody << mindHealed << " mind";
 			}
 
 			msgTail << " damage.";
