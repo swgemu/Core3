@@ -656,6 +656,21 @@ function WarrenScreenPlay:notifyEnteredWarren(pBuilding, pPlayer)
 	return 0
 end
 
+function WarrenScreenPlay:notifyPetEnteredDeny(pArea, pMovingObject)
+	if (pMovingObject == nil or SceneObject(pMovingObject):isPlayerCreature()) then
+		return 0
+	end
+
+	if (SceneObject(pMovingObject):isAiAgent() and AiAgent(pMovingObject):isPet()) then
+		local pPetowner = CreatureObject(pMovingObject):getOwner()
+		AiAgent(pMovingObject):clearCombatState()
+		AiAgent(pMovingObject):doDespawn()
+		CreatureObject(pPetowner):sendSystemMessage("A magnetic defense shield repels your pet into datapad storage.")
+	end
+
+	return 0
+end
+
 function WarrenScreenPlay:activateTurret(pTerminal)
 	local objectID = readData("warren:turret:objectid")
 	local pTurret = getSceneObject(objectID)
