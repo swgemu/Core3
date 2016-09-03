@@ -109,9 +109,18 @@ public:
 		}
 
 		return 0;
-
 	}
 
+	WaypointObject* getWaypointAt(float x, float y, String planet) {
+		for (int i = 0; i < vectorMap.size(); ++i) {
+			ManagedReference<WaypointObject*> value = vectorMap.elementAt(i).getValue();
+
+			if (value->getPositionX() == x && value->getPositionY() == y && value->getPlanetCRC() == planet.hashCode())
+				return value;
+		}
+
+		return NULL;
+	}
 };
 
 

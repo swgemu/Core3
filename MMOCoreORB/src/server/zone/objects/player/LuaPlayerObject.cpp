@@ -30,6 +30,8 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "addWaypoint", &LuaPlayerObject::addWaypoint },
 		{ "removeWaypoint", &LuaPlayerObject::removeWaypoint },
 		{ "removeWaypointBySpecialType", &LuaPlayerObject::removeWaypointBySpecialType },
+		{ "getWaypointAt", &LuaPlayerObject::getWaypointAt },
+		{ "updateWaypoint", &LuaPlayerObject::updateWaypoint },
 		{ "addRewardedSchematic", &LuaPlayerObject::addRewardedSchematic },
 		{ "removeRewardedSchematic", &LuaPlayerObject::removeRewardedSchematic },
 		{ "hasSchematic", &LuaPlayerObject::hasSchematic },
@@ -235,6 +237,29 @@ int LuaPlayerObject::removeWaypointBySpecialType(lua_State* L) {
 	int specialTypeID = lua_tointeger(L, -1);
 
 	realObject->removeWaypointBySpecialType(specialTypeID);
+
+	return 0;
+}
+
+int LuaPlayerObject::getWaypointAt(lua_State* L) {
+	float x = lua_tonumber(L, -3);
+	float y = lua_tonumber(L, -2);
+	String planet = lua_tostring(L, -1);
+
+	WaypointObject* waypoint = realObject->getWaypointAt(x, y, planet);
+
+	if (waypoint != NULL)
+		lua_pushlightuserdata(L, waypoint);
+	else
+		lua_pushnil(L);
+
+	return 1;
+}
+
+int LuaPlayerObject::updateWaypoint(lua_State* L) {
+	unsigned long long int waypointID = lua_tointeger(L, -1);
+
+	realObject->updateWaypoint(waypointID);
 
 	return 0;
 }

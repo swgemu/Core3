@@ -69,6 +69,11 @@ heraldScreenPlay = ScreenPlay:new {
 		{ planet = "naboo", template = "naboo_kidnapped_noble_01", x = -31.73, z = -14, y = 74, angle = 0, cell = 5535572, respawn = 3600 },
 		{ planet = "naboo", template = "naboo_kidnapped_noble_02", x = -40.97, z = -14, y = 84.07, angle = 84, cell = 5535572, respawn = 3600 },
 		{ planet = "naboo", template = "naboo_kidnapped_noble_03", x = -40.21, z = -14, y = 78.5, angle = 78, cell = 5535572, respawn = 3600 },
+	},
+
+	multiDestHeraldList = {
+		{ planet = "lok", template = "herald_lok_talia", x = 371.717, z = 11.8618, y = 5179.1, angle = 286.408, cell = 0, dest1X = -68, dest1Y = 2650, dest1String = ":s_95bfd0f3", dest2X = -3792, dest2Y = -3904, dest2String = ":s_434a59e6", stringFile = "heraldlok" },
+		{ planet = "lok", template = "herald_lok_andria", x = 221.864, z = 17.0919, y = 5154.99, angle = 342.34, cell = 0, dest1X = 3364, dest1Y = -4923, dest1String = ":s_4db27a02", dest2X = 3703, dest2Y = 2274, dest2String = ":s_7884d24e", stringFile = "heraldlok2" },
 	}
 }
 
@@ -96,6 +101,16 @@ function heraldScreenPlay:spawnMobiles()
 	for i = 1, #mobiles, 1 do
 		if isZoneEnabled(mobiles[i].planet) then
 			local pSpawn = spawnMobile(mobiles[i].planet, mobiles[i].template, mobiles[i].respawn, mobiles[i].x, mobiles[i].z, mobiles[i].y, mobiles[i].angle, mobiles[i].cell)
+		end
+	end
+
+	mobiles = self.multiDestHeraldList
+	for i = 1, #mobiles, 1 do
+		if isZoneEnabled(mobiles[i].planet) then
+			local pSpawn = spawnMobile(mobiles[i].planet, mobiles[i].template, 1, mobiles[i].x, mobiles[i].z, mobiles[i].y, mobiles[i].angle, mobiles[i].cell)
+			if pSpawn ~= nil then
+				writeData(SceneObject(pSpawn):getObjectID() .. ":multiDestHeraldID", i)
+			end
 		end
 	end
 end
@@ -158,6 +173,37 @@ function heraldScreenPlay:cleanUp(pPlayer, heraldNum)
 
 		writeData(playerID .. ":heraldArea" .. heraldNum, 0)
 		writeData(playerID .. ":herald" .. heraldNum, 0)
+	end)
+end
+
+function heraldScreenPlay:giveMultiDestWaypoint(pPlayer, heraldNum, locNum)
+	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
+		local heraldData = self.multiDestHeraldList[heraldNum]
+		local stfFile = "@conversation/" .. heraldData.stringFile
+		local x, y, destString
+
+		if locNum == 1 then
+			x = heraldData.dest1X
+			y = heraldData.dest1Y
+			destString = heraldData.dest1String
+		elseif locNum == 2 then
+			x = heraldData.dest2X
+			y = heraldData.dest2Y
+			destString = heraldData.dest2String
+		end
+
+		local pWaypoint = playerObject:getWaypointAt(x, y, heraldData.planet)
+
+		if pWaypoint ~= nil then
+			local waypoint = LuaWaypointObject(pWaypoint)
+
+			--if not waypoint:isActive() then
+			--	waypoint:setActive(1)
+			--	playerObject:updateWaypoint(waypoint:getObjectID())
+			--end
+		else
+			playerObject:addWaypoint(heraldData.planet, stfFile .. destString, "", x, y, WAYPOINTBLUE, true, true, 0)
+		end
 	end)
 end
 
@@ -323,17 +369,70 @@ function HeraldConvoHandler:getNextConversationScreen(pConversationTemplate, pCo
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
 		nextConversationScreen = conversation:getScreen(optionLink)
 
-		if nextConversationScreen ~= nil then
-			local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
-		else
+		if nextConversationScreen == nil then
 			nextConversationScreen = conversation:getScreen("init")
 		end
 	else
 		nextConversationScreen = conversation:getScreen("init")
 	end
+
 	return nextConversationScreen
 end
 
 herald_conv_handler = HeraldConvoHandler:new {
+	themePark = heraldScreenPlay
+}
+
+MultiDestHeraldConvoHandler = Object:new {
+	themePark = nil
+}
+
+function MultiDestHeraldConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+	local screen = LuaConversationScreen(conversationScreen)
+	local screenID = screen:getScreenID()
+
+	local conversationScreen = screen:cloneScreen()
+
+	if screenID == "loc1" then
+		self:handleScreenLoc(conversingPlayer, conversingNPC, 1)
+	elseif screenID == "loc2" then
+		self:handleScreenLoc(conversingPlayer, conversingNPC, 2)
+	end
+
+	return conversationScreen
+end
+
+function MultiDestHeraldConvoHandler:handleScreenLoc(pConversingPlayer, pConversingNpc, locNum)
+	local heraldNumber = readData(SceneObject(pConversingNpc):getObjectID() .. ":multiDestHeraldID")
+	heraldScreenPlay:giveMultiDestWaypoint(pConversingPlayer, heraldNumber, locNum)
+end
+
+function MultiDestHeraldConvoHandler:getNextConversationScreen(pConversationTemplate, pConversingPlayer, selectedOption)
+	local convosession = CreatureObject(pConversingPlayer):getConversationSession()
+	local lastConversationScreen = nil
+	if (convosession ~= nil) then
+		local session = LuaConversationSession(convosession)
+		lastConversationScreen = session:getLastConversationScreen()
+	end
+
+	local conversation = LuaConversationTemplate(pConversationTemplate)
+	local nextConversationScreen
+
+	if (lastConversationScreen ~= nil) then
+		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
+		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
+		nextConversationScreen = conversation:getScreen(optionLink)
+
+		if nextConversationScreen == nil then
+			nextConversationScreen = conversation:getScreen("init")
+		end
+	else
+		nextConversationScreen = conversation:getScreen("init")
+	end
+
+	return nextConversationScreen
+end
+
+multi_dest_herald_conv_handler = MultiDestHeraldConvoHandler:new {
 	themePark = heraldScreenPlay
 }

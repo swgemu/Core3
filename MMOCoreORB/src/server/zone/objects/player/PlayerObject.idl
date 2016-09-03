@@ -533,6 +533,10 @@ class PlayerObject extends IntangibleObject {
 		return waypointList.contains(objectID);
 	}
 
+	public WaypointObject getWaypointAt(float x, float y, string planet) {
+		return waypointList.getWaypointAt(x, y, planet);
+	}
+
 	@dirty
 	public void insertWaypointListToMessage(BaseMessage msg) {
 		waypointList.insertToMessage(msg);

@@ -22,15 +22,14 @@ herald_lok_talia = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_herald_lok_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "heraldLok1ConvoTemplate",
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(herald_lok_talia, "herald_lok_talia")

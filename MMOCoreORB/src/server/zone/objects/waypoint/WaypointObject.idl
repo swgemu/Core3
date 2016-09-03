@@ -8,6 +8,7 @@ import server.zone.Zone;
 include templates.SharedObjectTemplate;
 include system.lang.String;
 
+@lua
 class WaypointObject extends IntangibleObject {
 	protected unsigned int cellID; //?
 
