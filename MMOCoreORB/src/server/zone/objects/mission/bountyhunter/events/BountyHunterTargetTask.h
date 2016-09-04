@@ -50,7 +50,7 @@ public:
 	}
 
 	~BountyHunterTargetTask() {
-		cancel();
+
 	}
 
 	// TODO: add shuttle jumping and planet jumping when path finding in cities is good enough.
