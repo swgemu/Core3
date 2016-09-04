@@ -514,6 +514,11 @@ function ThemeParkLogic:handleMissionAccept(npcNumber, missionNumber, pConversin
 
 	self:updateWaypoint(pConversingPlayer, zoneName, areaSpawnPoint[1], areaSpawnPoint[3], "target")
 	createObserver(ENTEREDAREA, self.className, "notifyEnteredQuestArea", pQuestArea)
+
+	if mission.missionType == "deliver" then
+		self:giveMissionItems(mission, pConversingPlayer)
+	end
+
 	writeData(SceneObject(pQuestArea):getObjectID() .. ":ownerID", SceneObject(pConversingPlayer):getObjectID())
 	self:writeData(pConversingPlayer, ":activeMission", 1)
 
@@ -589,7 +594,6 @@ function ThemeParkLogic:handleDeliverMissionSpawn(mission, pConversingPlayer, mi
 	end
 
 	if self:spawnMissionNpcs(mission, pConversingPlayer, pActiveArea) then
-		self:giveMissionItems(mission, pConversingPlayer)
 		return true
 	else
 		return false
