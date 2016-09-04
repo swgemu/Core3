@@ -112,10 +112,6 @@ end
 -- @param pCreatureObject pointer to the creature object of the player who should be checked for being in a NPC city.
 -- return true if the player is within a NPC city.
 function Encounter:isPlayerInNpcCity(pCreatureObject)
-	if (pCreatureObject == nil or SceneObject(pCreatureObject):getZoneName() == "") then
-		return false
-	end
-
 	local pCityRegion = getCityRegionAt(SceneObject(pCreatureObject):getZoneName(), SceneObject(pCreatureObject):getWorldPositionX(), SceneObject(pCreatureObject):getWorldPositionY())
 
 	if (pCityRegion == nil) then
@@ -128,6 +124,10 @@ end
 -- Check if the player is in a position where the encounter can be spawned.
 -- @param pCreatureObject pointer to the player object of the player.
 function Encounter:isPlayerInPositionForEncounter(pCreatureObject)
+	if pCreatureObject == nil or SceneObject(pCreatureObject):getZoneName() == "" then
+		return false
+	end
+
 	return self:isPlayerOnline(pCreatureObject) and not self:isPlayerInABuilding(pCreatureObject) and not self:isPlayerInNpcCity(pCreatureObject)
 end
 
