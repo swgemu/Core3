@@ -1,7 +1,7 @@
 ruwan_tokai_missions =
 	{
 		{
-			missionType = "retrieve",
+			missionType = "deliver",
 			primarySpawns =
 			{
 				{ npcTemplate = "ruwan_warrant_officer", npcName = "" }
@@ -13,7 +13,7 @@ ruwan_tokai_missions =
 			},
 			itemSpawns =
 			{
-				{ itemTemplate = "object/tangible/mission/quest_item/ruwan_tokai_q1_needed.iff", itemName = "Death Star Fragment" }
+				{ itemTemplate = "object/tangible/mission/quest_item/ruwan_tokai_q1_needed.iff", itemName = "" }
 			},
 			rewards =
 			{
@@ -35,7 +35,7 @@ ruwan_tokai_missions =
 			},
 			itemSpawns =
 			{
-				{ itemTemplate = "object/tangible/mission/quest_item/ruwan_tokai_q2_needed.iff", itemName = "Tokai Authorization" }
+				{ itemTemplate = "object/tangible/mission/quest_item/ruwan_tokai_q2_needed.iff", itemName = "" }
 			},
 			rewards =
 			{
