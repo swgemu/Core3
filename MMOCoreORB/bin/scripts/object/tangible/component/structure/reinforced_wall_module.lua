@@ -42,7 +42,15 @@
 
 
 object_tangible_component_structure_reinforced_wall_module = object_tangible_component_structure_shared_reinforced_wall_module:new {
-
+	numberExperimentalProperties = {1, 1, 1},
+	experimentalProperties = {"XX", "XX", "MA"},
+	experimentalWeights = {1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "kineticeffectiveness"},
+	experimentalSubGroupTitles = {"null", "null", "kineticeffectiveness"},
+	experimentalMin = {0, 0, 0},
+	experimentalMax = {0, 0, 1000},
+	experimentalPrecision = {0, 0, 1},
+	experimentalCombineType = {0, 0, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_reinforced_wall_module, "object/tangible/component/structure/reinforced_wall_module.iff")

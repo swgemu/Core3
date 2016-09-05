@@ -111,3 +111,21 @@ void CustomIngredientImplementation::fillAttributeList(AttributeListMessage* alm
 		alm->insertAttribute(attrib, value);
 	}
 }
+
+void CustomIngredientImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+	String attribute;
+	float value;
+	bool hidden;
+
+	objectAttributes.removeAll();
+
+	for (int i = 0; i < values->getExperimentalPropertySubtitleSize(); ++i) {
+		attribute = values->getExperimentalPropertySubtitle(i);
+
+		value = values->getCurrentValue(attribute);
+		hidden = values->isHidden(attribute);
+
+		if (!hidden)
+			objectAttributes.put(attribute, value);
+	}
+}
