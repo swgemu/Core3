@@ -118,7 +118,7 @@ void FloorMesh::readObject(IffStream* iffStream) {
 	heurData.minerror = 0.5f; // minimum error required
 	heurData.storePrimitives = true;
 
-	aabbTree = new AABBTree(triangles, 0, heurData);
+	aabbTree = new AABBTree(triangles, 0, heurData, false);
 
 	iffStream->closeForm('FLOR');
 }

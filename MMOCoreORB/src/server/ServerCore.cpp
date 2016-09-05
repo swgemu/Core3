@@ -22,8 +22,6 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-#include "engine/orb/db/CommitMasterTransactionThread.h"
-
 ManagedReference<ZoneServer*> ServerCore::zoneServerRef = NULL;
 SortedVector<String> ServerCore::arguments;
 bool ServerCore::truncateAllData = false;
@@ -49,6 +47,8 @@ ServerCore::ServerCore(bool truncateDatabases, SortedVector<String>& args) :
 	configManager = ConfigManager::instance();
 
 	features = NULL;
+
+	handleCmds = true;
 }
 
 class ZoneStatisticsTask: public Task {
@@ -197,6 +197,10 @@ void ServerCore::initialize() {
 		if (arguments.contains("playercleanupstats") && zoneServer != NULL) {
 			zoneServer->getPlayerManager()->getCleanupCharacterCount();
 		}
+
+		if (arguments.contains("shutdown")) {
+			handleCmds = false;
+		}
 		
 	} catch (ServiceException& e) {
 		shutdown();
@@ -260,12 +264,11 @@ void ServerCore::shutdown() {
 	while (ObjectManager::instance()->isObjectUpdateInProcess())
 		Thread::sleep(500);
 
-	ObjectManager::instance()->cancelUpdateModifiedObjectsTask();
-
 	info("database backup done", true);
 
-	ObjectManager::instance()->stopUpdateModifiedObjectsThreads();
-	CommitMasterTransactionThread::instance()->cancel();
+	ObjectManager::instance()->cancelUpdateModifiedObjectsTask();
+
+	orb->shutdown();
 
 	Core::getTaskManager()->shutdown();
 
@@ -274,13 +277,7 @@ void ServerCore::shutdown() {
 		zoneServer = NULL;
 	}
 
-	orb = NULL;
 	configManager = NULL;
-
-	if (features != NULL) {
-		delete features;
-		features = NULL;
-	}
 
 	if (database != NULL) {
 		delete database;
@@ -292,11 +289,18 @@ void ServerCore::shutdown() {
 		mantisDatabase = NULL;
 	}
 
+	if (features != NULL) {
+		delete features;
+		features = NULL;
+	}
+
+	orb->finalizeInstance();
+
 	info("server closed", true);
 }
 
 void ServerCore::handleCommands() {
-	while (true) {
+	while (handleCmds) {
 
 #ifdef WITH_STM
 		Reference<Transaction*> transaction = TransactionalMemoryManager::instance()->startTransaction();
@@ -473,6 +477,8 @@ void ServerCore::handleCommands() {
 #endif
 
 	}
+
+	Thread::sleep(10000);
 }
 
 void ServerCore::processConfig() {
