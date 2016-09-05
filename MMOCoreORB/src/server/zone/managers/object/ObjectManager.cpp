@@ -27,6 +27,7 @@
 #include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
 #include "server/zone/objects/tangible/deed/vetharvester/VetHarvesterDeed.h"
 #include "engine/orb/db/UpdateModifiedObjectsThread.h"
+#include "engine/orb/db/CommitMasterTransactionThread.h"
 
 using namespace engine::db;
 
@@ -1083,4 +1084,14 @@ void ObjectManager::stopUpdateModifiedObjectsThreads() {
 	for (int i = updateModifiedObjectsThreads.size() - 1; i >= 0; --i) {
 		updateModifiedObjectsThreads.get(i)->stopWork();
 	}
+}
+
+void ObjectManager::shutdown() {
+	stopUpdateModifiedObjectsThreads();
+	CommitMasterTransactionThread::instance()->cancel();
+	databaseManager->closeDatabases();
+	databaseManager->finalizeInstance();
+	databaseManager = NULL;
+	server = NULL;
+	charactersSaved = NULL;
 }
