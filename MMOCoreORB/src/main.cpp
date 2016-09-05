@@ -41,7 +41,7 @@ public:
 int main(int argc, char* argv[]) {
 	setbuf(stdout, 0);
 
-	int ret = 0;
+	static int ret = 0;
 
 	try {
 		SortedVector<String> arguments;
@@ -84,8 +84,8 @@ int main(int argc, char* argv[]) {
 		System::out << "unreported exception caught main()\n";
 	}
 
-	pthread_exit(NULL);
+	pthread_exit(&ret);
 
-	return ret;
+	return 0;
 }
 
