@@ -69,6 +69,8 @@ class ServerCore : public Core, public Logger {
 
 	static ServerCore* instance;
 
+	bool handleCmds;
+
 public:
 	ServerCore(bool truncateDatabases, SortedVector<String>& args);
 

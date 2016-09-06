@@ -103,6 +103,9 @@ void ZoneImplementation::stopManagers() {
 		planetManager->finalize();
 		planetManager = NULL;
 	}
+
+	processor = NULL;
+	server = NULL;
 }
 
 float ZoneImplementation::getHeight(float x, float y) {

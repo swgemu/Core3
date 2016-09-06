@@ -116,6 +116,8 @@ namespace zone {
 
 		void stopUpdateModifiedObjectsThreads();
 
+		void shutdown();
+
 		bool isObjectUpdateInProcess() {
 			return objectUpdateInProcess;
 		}
