@@ -14,5 +14,5 @@ class PetTrainingConversationObserver extends ConversationObserver {
 	@dereferenced
 	PetTrainingScreenHandler screenHandler;
 
-	public native PetTrainingConversationObserver(ConversationTemplate conversationTemplate);
+	public native PetTrainingConversationObserver(unsigned int convoTemplateCRC);
 }

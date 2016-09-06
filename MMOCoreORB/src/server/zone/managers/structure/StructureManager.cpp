@@ -340,8 +340,6 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature, Structure
 		return 1;
 	}
 
-	TemplateManager* templateManager = TemplateManager::instance();
-
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 	if (ghost != NULL) {

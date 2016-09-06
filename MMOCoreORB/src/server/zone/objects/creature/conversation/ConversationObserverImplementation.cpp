@@ -8,9 +8,10 @@
 #include "server/zone/managers/conversation/ConversationManager.h"
 #include "server/zone/objects/player/sessions/ConversationSession.h"
 #include "server/zone/packets/object/StopNpcConversation.h"
+#include "server/zone/managers/creature/CreatureTemplateManager.h"
 
-ConversationObserverImplementation::ConversationObserverImplementation(ConversationTemplate* conversationTemplate) {
-	this->conversationTemplate = conversationTemplate;
+ConversationObserverImplementation::ConversationObserverImplementation(uint32 convoTemplateCRC) {
+	conversationTemplateCRC = convoTemplateCRC;
 }
 
 int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
@@ -146,6 +147,8 @@ ConversationScreen* ConversationObserverImplementation::getNextConversationScree
 		lastScreenId = session->getLastConversationScreenName();
 	}*/
 
+	ConversationTemplate* convoTemp = getConversationTemplate();
+
 	//Get last conversation screen.
 	Reference<ConversationScreen* > lastConversationScreen;
 
@@ -156,10 +159,10 @@ ConversationScreen* ConversationObserverImplementation::getNextConversationScree
 
 	if (lastConversationScreen != NULL) {
 		//Get the linked screen for the selected option.
-		nextConversationScreen = conversationTemplate->getScreen(lastConversationScreen->getOptionLink(selectedOption));
+		nextConversationScreen = convoTemp->getScreen(lastConversationScreen->getOptionLink(selectedOption));
 	} else {
 		//Get the initial screen.
-		nextConversationScreen = conversationTemplate->getInitialScreen();
+		nextConversationScreen = convoTemp->getInitialScreen();
 	}
 	return nextConversationScreen;
 }
@@ -206,4 +209,8 @@ void ConversationObserverImplementation::sendConversationScreenToPlayer(Creature
 
 		conversingPlayer->sendMessage(new StopNpcConversation(conversingPlayer, conversingNPC->getObjectID()));
 	}
+}
+
+ConversationTemplate* ConversationObserverImplementation::getConversationTemplate() {
+	return CreatureTemplateManager::instance()->getConversationTemplate(conversationTemplateCRC);
 }

@@ -42,6 +42,7 @@ NameManager::NameManager(ZoneProcessServer* serv) : Logger("NameManager") {
 }
 
 NameManager::~NameManager() {
+	server = NULL;
 
 	delete lua;
 
@@ -49,6 +50,22 @@ NameManager::~NameManager() {
 	delete(developerNames);
 	delete(reservedNames);
 	delete(fictionNames);
+
+	delete bothanData;
+	delete humanData;
+	delete ithorianData;
+	delete monCalData;
+	delete rodianData;
+	delete sullustanData;
+	delete trandoshanData;
+	delete twilekData;
+	delete wookieeData;
+	delete zabrakData;
+
+	delete energyResourceData;
+	delete mineralResourceData;
+	delete plainResourceData;
+	delete reactiveGasResourceData;
 }
 
 void NameManager::initialize() {

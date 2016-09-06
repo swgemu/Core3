@@ -35,6 +35,8 @@ protected:
 public:
 	TerrainCache(TerrainManager* terrainManager);
 
+	~TerrainCache();
+
 private:
 	bool insert(const float& k, const float& k2, const lru_value_t& v);
 

@@ -4,8 +4,8 @@
 
 #include "server/zone/objects/creature/conversation/PetTrainingConversationObserver.h"
 
-PetTrainingConversationObserverImplementation::PetTrainingConversationObserverImplementation(ConversationTemplate* conversationTemplate) :
-	ConversationObserverImplementation(conversationTemplate) {
+PetTrainingConversationObserverImplementation::PetTrainingConversationObserverImplementation(uint32 convoTemplateCRC) :
+	ConversationObserverImplementation(convoTemplateCRC) {
 	//Register screen handler.
 	registerScreenHandler(PetTrainingScreenHandler::STARTSCREENHANDLERID, &screenHandler);
 	registerScreenHandler(PetTrainingScreenHandler::PETATTACKCOMMAND, &screenHandler);

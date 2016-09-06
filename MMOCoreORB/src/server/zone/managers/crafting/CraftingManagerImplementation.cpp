@@ -17,6 +17,10 @@ void CraftingManagerImplementation::initialize() {
 	configureLabratories();
 }
 
+void CraftingManagerImplementation::stop() {
+	schematicMap = NULL;
+}
+
 void CraftingManagerImplementation::awardSchematicGroup(PlayerObject* playerObject, Vector<String>& schematicgroups, bool updateClient) {
 	schematicMap->addSchematics(playerObject, schematicgroups, updateClient);
 }

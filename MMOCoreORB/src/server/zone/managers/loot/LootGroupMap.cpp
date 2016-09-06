@@ -6,7 +6,6 @@
  */
 
 #include "LootGroupMap.h"
-#include "server/zone/managers/crafting/CraftingManager.h"
 #include "templates/LootItemTemplate.h"
 #include "templates/LootGroupTemplate.h"
 

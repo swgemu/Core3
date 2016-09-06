@@ -107,6 +107,7 @@ void CreatureTemplateManager::loadLuaConfig() {
 }
 
 CreatureTemplateManager::~CreatureTemplateManager() {
+
 }
 
 int CreatureTemplateManager::loadTemplates() {
@@ -221,6 +222,18 @@ int CreatureTemplateManager::addConversationTemplate(lua_State* L) {
 
 	LuaObject obj(L);
 	Reference<ConversationTemplate*> newTemp = new ConversationTemplate(crc);
+
+	if (instance()->conversations.containsKey(crc)) {
+		luaL_where (L, 2);
+		String luaMethodName = lua_tostring(L, -1);
+
+		lua_pop(L, 1);
+
+		instance()->error("overwriting convoTemplate " + ascii + " with " + luaMethodName);
+
+		ERROR_CODE = DUPLICATE_CONVO;
+	}
+
 	CreatureTemplateManager::instance()->conversations.put(crc, newTemp);
 
 	newTemp->readObject(&obj);

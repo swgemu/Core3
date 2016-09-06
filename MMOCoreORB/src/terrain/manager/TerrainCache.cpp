@@ -94,6 +94,12 @@ TerrainCache::TerrainCache(TerrainManager* terrainManager) :
 
 }
 
+TerrainCache::~TerrainCache() {
+	while (getSize() > 0) {
+		evict();
+	}
+}
+
 bool TerrainCache::insert(const float& k, const float& k2, const lru_value_t& v) {
 	Locker writeLock(getLock());
 

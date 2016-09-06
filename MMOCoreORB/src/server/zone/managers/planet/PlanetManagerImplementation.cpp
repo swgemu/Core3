@@ -704,6 +704,10 @@ void PlanetManagerImplementation::finalize() {
 	terrainManager = NULL;
 	gcwManager = NULL;
 	weatherManager = NULL;
+	planetTravelPointList = NULL;
+	performanceLocations = NULL;
+	zone = NULL;
+	server = NULL;
 }
 
 bool PlanetManagerImplementation::isInRangeWithPoi(float x, float y, float range) {

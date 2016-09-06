@@ -63,6 +63,8 @@ class CreatureManager extends ZoneManager {
 		loadSpawnAreas();
 	}
 
+	public native void stop();
+
 	public native SceneObject spawn(unsigned int lairTemplate, int difficultyLevel, int difficulty, float x, float z, float y, float size);
 
 	public native SceneObject spawnLair(unsigned int lairTemplate, int difficultyLevel, int difficulty, float x, float z, float y, float size = 20);

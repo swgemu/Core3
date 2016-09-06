@@ -7,7 +7,6 @@
 
 #include <engine/core/ManagedReference.h>
 #include <engine/core/ManagedWeakReference.h>
-#include <engine/util/Singleton.h>
 #include <engine/util/u3d/CloseObjectsVector.h>
 #include <engine/util/u3d/Coordinate.h>
 #include <engine/util/u3d/Quaternion.h>

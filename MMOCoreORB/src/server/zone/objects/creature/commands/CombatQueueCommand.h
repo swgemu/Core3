@@ -23,7 +23,6 @@
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
 #include "server/zone/packets/object/CombatSpam.h"
 #include "QueueCommand.h"
-#include "server/zone/managers/collision/PathFinderManager.h"
 
 class CombatQueueCommand : public QueueCommand {
 protected:

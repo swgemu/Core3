@@ -28,8 +28,7 @@ SchematicMap::SchematicMap() : objectManager(NULL) {
 }
 
 SchematicMap::~SchematicMap() {
-	while(groupMap.size() > 0)
-		delete groupMap.get(0);
+	zoneServer = NULL;
 }
 
 void SchematicMap::initialize(ZoneServer* server) {

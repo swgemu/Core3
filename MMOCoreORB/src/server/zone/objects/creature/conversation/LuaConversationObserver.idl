@@ -14,17 +14,21 @@ include server.zone.objects.creature.conversation.ConversationScreen;
 include server.zone.managers.director.DirectorManager;
 
 class LuaConversationObserver extends ConversationObserver {
-	public LuaConversationObserver(ConversationTemplate conversationTemplate) {
-		super(conversationTemplate);
+	public LuaConversationObserver(unsigned int convoTemplateCRC) {
+		super(convoTemplateCRC);
 	}
 
 	@local
 	public ConversationScreen getNextConversationScreen(CreatureObject conversingPlayer, int selectedOption, CreatureObject conversingNPC) {
-		return DirectorManager.instance().getNextConversationScreen(super.conversationTemplate.getLuaClassHandler(), super.conversationTemplate, conversingPlayer, selectedOption, conversingNPC);
+		ConversationTemplate conversationTemplate = getConversationTemplate();
+
+		return DirectorManager.instance().getNextConversationScreen(conversationTemplate.getLuaClassHandler(), conversationTemplate, conversingPlayer, selectedOption, conversingNPC);
 	}
 
 	@local
 	public ConversationScreen runScreenHandlers(CreatureObject conversingPlayer, CreatureObject conversingNPC, int selectedOption, ConversationScreen conversationScreen) {
-		return DirectorManager.instance().runScreenHandlers(super.conversationTemplate.getLuaClassHandler(), super.conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen);
+		ConversationTemplate conversationTemplate = getConversationTemplate();
+
+		return DirectorManager.instance().runScreenHandlers(conversationTemplate.getLuaClassHandler(),conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen);
 	}
 }

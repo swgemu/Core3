@@ -32,25 +32,25 @@ ConversationObserver* ConversationManager::getConversationObserver(uint32 conver
 		if (conversationTemplate != NULL) {
 			switch (conversationTemplate->getConversationTemplateType()) {
 			case ConversationTemplate::ConversationTemplateTypeNormal:
-				conversationObserver = new ConversationObserver(conversationTemplate);
+				conversationObserver = new ConversationObserver(conversationTemplateCRC);
 				break;
 			case ConversationTemplate::ConversationTemplateTypeTrainer:
-				conversationObserver = new TrainerConversationObserver(conversationTemplate);
+				conversationObserver = new TrainerConversationObserver(conversationTemplateCRC);
 				break;
 			case ConversationTemplate::ConversationTemplateTypeDeliverMission:
-				conversationObserver = new DeliverMissionConversationObserver(conversationTemplate);
+				conversationObserver = new DeliverMissionConversationObserver(conversationTemplateCRC);
 				break;
 			case ConversationTemplate::ConversationTemplateTypeInformantMission:
-				conversationObserver = new InformantMissionConversationObserver(conversationTemplate);
+				conversationObserver = new InformantMissionConversationObserver(conversationTemplateCRC);
 				break;
 			case ConversationTemplate::ConversationTemplateTypeLua:
-				conversationObserver = new LuaConversationObserver(conversationTemplate);
+				conversationObserver = new LuaConversationObserver(conversationTemplateCRC);
 				break;
 			case ConversationTemplate::ConversationTemplateTypePersonality:
-				conversationObserver = new PetTrainingConversationObserver(conversationTemplate);
+				conversationObserver = new PetTrainingConversationObserver(conversationTemplateCRC);
 				break;
 			default:
-				conversationObserver = new ConversationObserver(conversationTemplate);
+				conversationObserver = new ConversationObserver(conversationTemplateCRC);
 				break;
 			}
 

@@ -14,7 +14,7 @@ class TrainerConversationObserver extends ConversationObserver {
 	@dereferenced
 	private TrainerScreenHandlers trainerScreenHandlers;
 
-	public native TrainerConversationObserver(ConversationTemplate conversationTemplate);
+	public native TrainerConversationObserver(unsigned int convoTemplateCRC);
 
 	protected abstract native void createConversationSession(CreatureObject conversingPlayer, CreatureObject npc);
 }

@@ -5,8 +5,8 @@
 #include "server/zone/objects/creature/conversation/TrainerConversationObserver.h"
 #include "server/zone/objects/player/sessions/TrainerConversationSession.h"
 
-TrainerConversationObserverImplementation::TrainerConversationObserverImplementation(ConversationTemplate* conversationTemplate) :
-	ConversationObserverImplementation(conversationTemplate) {
+TrainerConversationObserverImplementation::TrainerConversationObserverImplementation(uint32 convoTemplateCRC) :
+	ConversationObserverImplementation(convoTemplateCRC) {
 	//Register screen handlers.
 	registerScreenHandler(TrainerScreenHandlers::INFOSCREENHANDLERID, &trainerScreenHandlers.infoScreenHandler);
 

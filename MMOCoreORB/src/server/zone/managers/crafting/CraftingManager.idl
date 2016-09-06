@@ -55,7 +55,9 @@ class CraftingManager extends ZoneManager {
 	
 	@local
 	public native void initialize();
-		
+
+	public native void stop();
+
 	@local 
 	public native void awardSchematicGroup(PlayerObject playerObject, @dereferenced Vector<string> schematicgroups, boolean updateClient = false);
 	

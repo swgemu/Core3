@@ -342,8 +342,6 @@ void ZoneServerImplementation::stopManagers() {
 	resourceManager = NULL;
 	guildManager = NULL;
 	cityManager = NULL;
-	craftingManager = NULL;
-	lootManager = NULL;
 	missionManager = NULL;
 	chatManager = NULL;
 	radialManager = NULL;
@@ -356,6 +354,16 @@ void ZoneServerImplementation::stopManagers() {
 	zoneHandler = NULL;
 	configManager = NULL;
 	phandler = NULL;
+
+	if (craftingManager != NULL) {
+		craftingManager->stop();
+		craftingManager = NULL;
+	}
+
+	if (lootManager != NULL) {
+		lootManager->stop();
+		lootManager = NULL;
+	}
 
 	if (playerManager != NULL) {
 		playerManager->finalize();

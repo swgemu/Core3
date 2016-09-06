@@ -832,10 +832,6 @@ void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
 
 	Locker _lock(city);
 
-	TemplateManager* templateManager = TemplateManager::instance();
-	if (templateManager == NULL)
-		return;
-
 	// pay city hall maintenanance first
 	ManagedReference<StructureObject*> ch = city->getCityHall();
 
@@ -1926,10 +1922,6 @@ void CityManagerImplementation::sendMaintenanceReport(CityRegion* city, Creature
 
 	PlayerObject* ghost = creature->getPlayerObject();
 	if (ghost == NULL)
-		return;
-
-	TemplateManager* templateManager = TemplateManager::instance();
-	if (templateManager == NULL)
 		return;
 
 	int totalcost = 0;
