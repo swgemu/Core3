@@ -12,7 +12,7 @@
 #include "server/zone/ZoneServer.h"
 
 class ObjectVersionUpdateManager : public Singleton<ObjectVersionUpdateManager>, public Logger, public Object {
-	Lua* luaInstance;
+
 public:
 	ObjectVersionUpdateManager();
 

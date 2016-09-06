@@ -10,7 +10,6 @@
 #include "templates/manager/PlanetMapCategory.h"
 #include "server/zone/managers/planet/MapLocationTable.h"
 #include "server/zone/managers/planet/MapLocationEntry.h"
-#include "templates/manager/TemplateManager.h"
 
 class GetMapLocationsResponseMessage : public BaseMessage {
 public:

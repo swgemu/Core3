@@ -31,7 +31,9 @@ public:
 	VendorManager();
 
 	~VendorManager() {
-
+		rootNode = NULL;
+		server = NULL;
+		nameManager = NULL;
 	}
 
 	void initialize(ZoneProcessServer* zserv);

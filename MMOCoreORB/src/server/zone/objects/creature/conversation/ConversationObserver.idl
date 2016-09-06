@@ -13,22 +13,22 @@ include server.zone.objects.creature.CreatureObject;
 include server.zone.objects.creature.conversation.screenhandlers.ScreenHandler;
 
 class ConversationObserver extends Observer implements Logger {
-	
-	protected ConversationTemplate conversationTemplate;
+
+	protected unsigned int conversationTemplateCRC;
 
 	@dereferenced
 	private VectorMap<string, ScreenHandler> screenHandlers;
 
-	public native ConversationObserver(ConversationTemplate conversationTemplate);
+	public native ConversationObserver(unsigned int convoTemplateCRC);
 
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 
 	private ConversationScreen getInitialScreen() {
-		return conversationTemplate.getInitialScreen();
+		return getConversationTemplate().getInitialScreen();
 	}
 
 	private ConversationScreen getConversationScreen(final string screenName) {
-		return conversationTemplate.getScreen(screenName);
+		return getConversationTemplate().getScreen(screenName);
 	}
 
 	protected abstract native void createConversationSession(CreatureObject conversingPlayer, CreatureObject npc);
@@ -56,4 +56,7 @@ class ConversationObserver extends Observer implements Logger {
 	public abstract native ConversationScreen runScreenHandlers(CreatureObject conversingPlayer, CreatureObject conversingNPC, int selectedOption, ConversationScreen conversationScreen);
 
 	private native void sendConversationScreenToPlayer(CreatureObject conversingPlayer, CreatureObject conversingNPC, ConversationScreen conversationScreen);
+
+	@local
+	public native ConversationTemplate getConversationTemplate();
 }

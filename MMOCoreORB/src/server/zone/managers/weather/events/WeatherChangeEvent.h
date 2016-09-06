@@ -16,7 +16,7 @@ namespace events {
 
 class WeatherChangeEvent : public Task {
 
-	ManagedReference<WeatherManager*> weatherManager;
+	ManagedWeakReference<WeatherManager*> weatherManager;
 
 public:
 	WeatherChangeEvent(WeatherManager* weatherManager) : Task() {
@@ -24,9 +24,10 @@ public:
 	}
 
 	void run() {
+		ManagedReference<WeatherManager*> wm = weatherManager.get();
 
-		if (weatherManager != NULL) {
-			weatherManager->createNewWeatherPattern();
+		if (wm != NULL) {
+			wm->createNewWeatherPattern();
 		}
 	}
 

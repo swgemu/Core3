@@ -27,8 +27,7 @@
 #define INITIAL_DATABASE_VERSION 0
 
 ObjectVersionUpdateManager::ObjectVersionUpdateManager() : Logger("ObjectVersionUpdateManager") {
-	luaInstance = new Lua();
-	luaInstance->init();
+
 }
 
 

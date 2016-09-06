@@ -47,6 +47,7 @@ WebServer::~WebServer() {
 		delete activeSessions.remove(0).getValue();
 	}
 
+	zoneServer = NULL;
 }
 
 void WebServer::start(ConfigManager* conf) {

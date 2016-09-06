@@ -10,7 +10,6 @@
 #include "engine/core/ManagedReference.h"
 #include "server/zone/managers/name/NameData.h"
 #include "server/zone/managers/name/NameUnique.h"
-#include "templates/manager/TemplateManager.h"
 
 namespace server {
 	namespace zone {

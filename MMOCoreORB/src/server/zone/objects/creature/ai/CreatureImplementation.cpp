@@ -19,7 +19,6 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
-#include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"

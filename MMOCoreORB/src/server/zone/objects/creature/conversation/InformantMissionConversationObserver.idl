@@ -14,6 +14,6 @@ class InformantMissionConversationObserver extends ConversationObserver {
 	@dereferenced
 	InformantMissionScreenHandler informantMissionScreenHandler;
 
-	public native InformantMissionConversationObserver(ConversationTemplate conversationTemplate);
+	public native InformantMissionConversationObserver(unsigned int convoTemplateCRC);
 }
 

@@ -45,7 +45,7 @@ AccountManager::AccountManager(LoginServer* loginserv) : Logger("AccountManager"
 }
 
 AccountManager::~AccountManager() {
-
+	loginServer = NULL;
 }
 
 void AccountManager::loginAccount(LoginClient* client, Message* packet) {

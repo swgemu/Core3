@@ -120,6 +120,8 @@ class LootManager extends ManagedService implements Logger {
 	
 	public native void initialize();
 
+	public native void stop();
+
 	private native boolean loadConfigData();
 	private native void loadDefaultConfig();
 	

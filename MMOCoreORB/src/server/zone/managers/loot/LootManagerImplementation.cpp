@@ -12,7 +12,6 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
-#include "templates/manager/TemplateManager.h"
 #include "templates/LootItemTemplate.h"
 #include "templates/LootGroupTemplate.h"
 #include "server/zone/ZoneServer.h"
@@ -48,6 +47,13 @@ void LootManagerImplementation::initialize() {
 	info("Loaded " + String::valueOf(lootGroupMap->countLootGroupTemplates()) + " loot groups.");
 
 	info("Initialized.", true);
+}
+
+void LootManagerImplementation::stop() {
+	lootGroupMap = NULL;
+	craftingManager = NULL;
+	objectManager = NULL;
+	zoneServer = NULL;
 }
 
 bool LootManagerImplementation::loadConfigData() {

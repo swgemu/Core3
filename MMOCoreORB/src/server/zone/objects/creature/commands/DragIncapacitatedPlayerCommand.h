@@ -8,6 +8,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/managers/collision/PathFinderManager.h"
 
 class DragIncapacitatedPlayerCommand : public QueueCommand {
 	float maxRange, maxMovement;

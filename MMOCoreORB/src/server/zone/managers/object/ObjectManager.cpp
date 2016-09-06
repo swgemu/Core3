@@ -1094,4 +1094,5 @@ void ObjectManager::shutdown() {
 	databaseManager = NULL;
 	server = NULL;
 	charactersSaved = NULL;
+	templateManager = NULL;
 }

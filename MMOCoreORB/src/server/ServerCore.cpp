@@ -294,6 +294,8 @@ void ServerCore::shutdown() {
 		features = NULL;
 	}
 
+	Logger::closeGlobalFileLogger();
+
 	orb->finalizeInstance();
 
 	info("server closed", true);

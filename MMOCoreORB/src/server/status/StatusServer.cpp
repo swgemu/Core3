@@ -21,7 +21,7 @@ StatusServer::StatusServer(ConfigManager* conf, ZoneServer* server)
 }
 
 StatusServer::~StatusServer() {
-
+	delete statusHandler;
 }
 
 void StatusServer::init() {
