@@ -17,7 +17,6 @@ import server.zone.managers.holocron.HolocronManager;
 import server.zone.managers.sui.SuiManager;
 import server.zone.managers.player.PlayerManager;
 import server.zone.managers.skill.SkillManager;
-import server.zone.managers.object.ObjectManager;
 import server.zone.managers.vendor.VendorManager;
 import server.zone.managers.minigames.FishingManager;
 import server.zone.managers.minigames.GamblingManager;

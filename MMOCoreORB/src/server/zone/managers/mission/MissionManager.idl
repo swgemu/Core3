@@ -28,10 +28,10 @@ import system.thread.Mutex;
 class MissionManager extends Observer implements Logger {
 	protected ZoneServer server;
 	transient ZoneProcessServer processor;
-		
+
 	@dereferenced
 	protected MissionNpcSpawnMap missionNpcSpawnMap;
-	
+
 	@dereferenced
 	protected Vector<string> craftingMissionItems;
 	

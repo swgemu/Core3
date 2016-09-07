@@ -17,8 +17,8 @@
 #include "server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
 #include "server/zone/objects/manufactureschematic/ingredientslots/ResourceSlot.h"
-#include "server/zone/managers/ZoneManager.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
+
 namespace server {
 namespace zone {
 namespace managers {

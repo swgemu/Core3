@@ -14,7 +14,6 @@
 #include "server/zone/objects/manufactureschematic/ingredientslots/IngredientSlot.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/managers/name/NameManager.h"
 #include "server/zone/objects/tangible/component/Component.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"

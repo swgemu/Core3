@@ -71,8 +71,6 @@ int ResourceDeedImplementation::useObject(CreatureObject* creature) {
 
 void ResourceDeedImplementation::destroyDeed() {
 	if (parent.get() != NULL) {
-		/*getParent()->removeObject(_this.getReferenceUnsafeStaticCast(), true);
-		broadcastDestroy(_this.getReferenceUnsafeStaticCast(), false);*/
 		destroyObjectFromWorld(true);
 	}
 

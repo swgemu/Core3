@@ -32,6 +32,10 @@ public:
 	HashTableIterator<uint64, ManagedReference<SceneObject*> > iterator() {
 		return objects.iterator();
 	}
+
+	HashTable<uint64, ManagedReference<SceneObject*> >* getMap() {
+		return &objects;
+	}
 };
 
 #endif /*OBJECTMAP_H_*/

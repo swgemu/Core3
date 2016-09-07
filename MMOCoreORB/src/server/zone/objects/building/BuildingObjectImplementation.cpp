@@ -29,10 +29,10 @@
 #include "server/zone/objects/scene/components/ContainerComponent.h"
 #include "server/zone/objects/scene/WorldCoordinates.h"
 
-#include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/vendor/VendorManager.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 #include "server/zone/objects/player/sui/callbacks/StructurePayAccessFeeSuiCallback.h"
 #include "server/zone/objects/building/tasks/RevokePaidAccessTask.h"
@@ -304,19 +304,18 @@ void BuildingObjectImplementation::notifyRemoveFromZone() {
 			ManagedReference<SceneObject*> obj = cell->getContainerObject(0);
 			rlocker.release();
 
-			/*obj->removeFromZone();
-
-			cell->removeObject(obj);*/
 			Locker objLocker(obj);
 
-			obj->destroyObjectFromWorld(true);
+			if (obj->isVendor()) {
+				VendorManager::instance()->destroyVendor(obj->asTangibleObject());
+			} else {
+				obj->destroyObjectFromWorld(true);
+			}
 
 			objLocker.release();
 
 			VectorMap<uint64, ManagedReference<SceneObject*> >* cont =
 					cell->getContainerObjects();
-
-			//cont->drop(obj->getObjectID());
 
 			if (cont->size() > 0) {
 				Reference<SceneObject*> test = cell->getContainerObject(0);

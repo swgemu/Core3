@@ -9,9 +9,6 @@
 #define VENDORINFOCOMMAND_H_
 
 #include "engine/engine.h"
-#include "server/zone/managers/vendor/VendorManager.h"
-#include "server/zone/managers/auction/AuctionManager.h"
-#include "server/zone/managers/auction/AuctionsMap.h"
 
 class VendorInfoCommand {
 public:

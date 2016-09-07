@@ -9,7 +9,6 @@
 #include "server/chat/ChatManager.h"
 #include "server/zone/Zone.h"
 
-#include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/cell/CellObject.h"

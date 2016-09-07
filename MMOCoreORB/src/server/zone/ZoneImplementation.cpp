@@ -114,6 +114,24 @@ void ZoneImplementation::stopManagers() {
 	regionTree = NULL;
 }
 
+void ZoneImplementation::clearZone() {
+	Locker zonelocker(_this.getReferenceUnsafeStaticCast());
+
+	HashTable<uint64, ManagedReference<SceneObject*> > tbl;
+	tbl.copyFrom(objectMap->getMap());
+
+	HashTableIterator<uint64, ManagedReference<SceneObject*> > iterator = tbl.iterator();
+
+	while (iterator.hasNext()) {
+		ManagedReference<SceneObject*> sceno = iterator.getNextValue();
+
+		if (sceno != NULL) {
+			Locker locker(sceno);
+			sceno->destroyObjectFromWorld(false);
+		}
+	}
+}
+
 float ZoneImplementation::getHeight(float x, float y) {
 	if (planetManager != NULL) {
 		TerrainManager* manager = planetManager->getTerrainManager();

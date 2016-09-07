@@ -19,7 +19,7 @@ namespace spawnmaps {
 /**
  * Class implementing methods to find a suitable spawn point for mission NPC's.
  */
-class MissionNpcSpawnMap : public ManagedObject, Logger {
+class MissionNpcSpawnMap : public Mutex, Logger {
 protected:
 	/**
 	 * Spawn points in the world.
@@ -30,7 +30,7 @@ public:
 	/**
 	 * Constructor.
 	 */
-	MissionNpcSpawnMap() : ManagedObject(), Logger("MissionNpcSpawnMap") {}
+	MissionNpcSpawnMap() : Mutex(), Logger("MissionNpcSpawnMap") {}
 	
 	/**
 	 * Destructor.

@@ -11,7 +11,6 @@
 #include "engine/engine.h"
 
 #include "server/zone/objects/region/CityRegion.h"
-#include "server/zone/managers/object/ObjectManager.h"
 
 class RegionMap : public ReadWriteLock, public Object {
 	VectorMap<String, ManagedReference<CityRegion*> > regions;

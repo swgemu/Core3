@@ -1556,11 +1556,17 @@ void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
 	ManagedReference<ChatManager*> cman = zoneServer->getChatManager();
 	ManagedReference<PlayerManager*> pman = zoneServer->getPlayerManager();
 
+	Zone* zone = vendor->getZone();
 	ManagedReference<CityRegion*> city = NULL;
-	String vendorPlanetName("@planet_n:" + vendor->getZone()->getZoneName());
+	String vendorPlanetName;
+
+	if (zone != NULL) {
+		vendorPlanetName = "@planet_n:" + zone->getZoneName();
+	}
+
 	String vendorRegionName = vendorPlanetName;
 
-	if( vendor->getCityRegion() != NULL){
+	if (vendor->getCityRegion() != NULL) {
 		city = vendor->getCityRegion().get();
 		vendorRegionName = city->getRegionName();
 	}
@@ -1573,7 +1579,7 @@ void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
 	item->setExpireTime(availableTime);
 	item->clearAuctionWithdraw();
 
-	if(playername.isEmpty()) {
+	if (playername.isEmpty()) {
 		locker.release();
 		expireBidAuction(item);
 
