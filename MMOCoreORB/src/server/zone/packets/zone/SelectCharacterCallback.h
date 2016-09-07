@@ -63,8 +63,6 @@ public:
 			return;
 		}
 
-		//ObjectManager* objectManager = zoneServer->getObjectManager();
-
 		//Logger::console.info("selected char id: 0x" + String::hexvalueOf((int64)characterID), true);
 
 		ManagedReference<SceneObject*> obj = zoneServer->getObject(characterID, true);

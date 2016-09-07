@@ -174,7 +174,7 @@ void ZoneServerImplementation::initialize() {
 	lootManager->deploy("LootManager");
 	lootManager->initialize();
 
-	resourceManager = new ResourceManager(_this.getReferenceUnsafeStaticCast(), processor, objectManager);
+	resourceManager = new ResourceManager(_this.getReferenceUnsafeStaticCast(), processor);
 	resourceManager->deploy("ResourceManager");
 
 	cityManager = new CityManager(_this.getReferenceUnsafeStaticCast());
@@ -339,7 +339,6 @@ void ZoneServerImplementation::shutdown() {
 void ZoneServerImplementation::stopManagers() {
 	info("stopping managers..", true);
 
-	resourceManager = NULL;
 	guildManager = NULL;
 	cityManager = NULL;
 	missionManager = NULL;
@@ -354,6 +353,11 @@ void ZoneServerImplementation::stopManagers() {
 	zoneHandler = NULL;
 	configManager = NULL;
 	phandler = NULL;
+
+	if (resourceManager != NULL) {
+		resourceManager->stop();
+		resourceManager = NULL;
+	}
 
 	if (craftingManager != NULL) {
 		craftingManager->stop();
@@ -381,6 +385,16 @@ void ZoneServerImplementation::stopManagers() {
 	}
 
 	info("managers stopped", true);
+}
+
+void ZoneServerImplementation::clearZones() {
+	for (int i = 0; i < zones->size(); ++i) {
+		ManagedReference<Zone*> zone = zones->get(i);
+
+		if (zone != NULL) {
+			zone->clearZone();
+		}
+	}
 }
 
 ZoneClientSession* ZoneServerImplementation::createConnection(Socket* sock, SocketAddress& addr) {

@@ -9,29 +9,24 @@ import engine.log.Logger;
 
 import server.zone.ZoneServer;
 import server.zone.ZoneProcessServer;
-import server.zone.managers.object.ObjectManager;
 
 class ZoneManager extends ManagedService implements Logger {
 	protected transient ZoneServer zoneServer;
 
 	protected transient ZoneProcessServer zoneProcessor;
-	
-	protected transient ObjectManager objectManager;
 
 	public ZoneManager(@dereferenced final string name) {
 		Logger.setLoggingName(name);
-		
+
 		Logger.setLogging(true);
 		Logger.setGlobalLogging(true);
 
 		zoneServer = null;
 		zoneProcessor = null;
-		objectManager = null;
 	}
 
 	public void setZoneProcessor(ZoneProcessServer server) {
 		zoneServer = server.getZoneServer();
 		zoneProcessor = server;
-		objectManager = zoneServer.getObjectManager();
 	}
 }

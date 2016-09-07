@@ -207,9 +207,6 @@ void CellObjectImplementation::destroyAllPlayerItems() {
 		Locker locker(containerObject);
 
 		containerObject->destroyObjectFromWorld(true);
-		//containerObject->broadcastDestroy(containerObject, false);
-		//removeObject(containerObject, false);
-
 		containerObject->destroyObjectFromDatabase(true);
 	}
 }

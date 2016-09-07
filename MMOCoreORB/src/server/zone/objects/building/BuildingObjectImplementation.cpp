@@ -29,7 +29,6 @@
 #include "server/zone/objects/scene/components/ContainerComponent.h"
 #include "server/zone/objects/scene/WorldCoordinates.h"
 
-#include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"

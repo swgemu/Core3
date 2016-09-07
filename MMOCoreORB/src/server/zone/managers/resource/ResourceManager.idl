@@ -9,7 +9,6 @@ import engine.log.Logger;
 import server.zone.ZoneServer;
 import server.zone.Zone;
 import server.zone.ZoneProcessServer;
-import server.zone.managers.object.ObjectManager;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.resource.ResourceContainer;
@@ -32,13 +31,11 @@ class ResourceManager extends Observer implements Logger {
 	@weakReference
 	private ZoneServer zoneServer;
 	private transient ResourceSpawner resourceSpawner;
-	private transient ObjectManager objectManager;
 	private transient int shiftInterval;
 	
 	public static final int RESOURCE_DEED_QUANTITY = 30000;
 	
-	public ResourceManager(ZoneServer server, ZoneProcessServer impl, 
-			ObjectManager objectMan) {
+	public ResourceManager(ZoneServer server, ZoneProcessServer impl) {
 
 		Logger.setLoggingName("ResourceManager");
 		
@@ -47,9 +44,8 @@ class ResourceManager extends Observer implements Logger {
 		
 		zoneServer = server;
 		processor = impl;
-		objectManager = objectMan;
 	
-		resourceSpawner = new ResourceSpawner(server, impl, objectMan);
+		resourceSpawner = new ResourceSpawner(server, impl);
 	
 		Logger.info("ResourceManager started");
 	}

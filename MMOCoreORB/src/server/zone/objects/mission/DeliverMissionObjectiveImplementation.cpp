@@ -14,7 +14,6 @@
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
 #include "terrain/manager/TerrainManager.h"

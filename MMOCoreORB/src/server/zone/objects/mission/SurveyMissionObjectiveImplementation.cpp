@@ -11,7 +11,6 @@
 #include "templates/params/ObserverEventType.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/resource/ResourceSpawn.h"
-#include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/ZoneServer.h"
 

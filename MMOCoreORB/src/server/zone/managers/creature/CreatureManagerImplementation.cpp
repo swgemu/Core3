@@ -21,7 +21,6 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/loot/LootManager.h"
-#include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/crafting/labratories/DroidMechanics.h"
 #include "server/zone/objects/creature/ai/Creature.h"
 #include "server/zone/objects/creature/CreatureObject.h"

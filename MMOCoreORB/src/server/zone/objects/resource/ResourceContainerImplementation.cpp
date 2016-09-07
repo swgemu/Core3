@@ -47,13 +47,9 @@ void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify
 	ManagedReference<SceneObject*> parent = getParent().get();
 	stackQuantity = quantity;
 
-	if(stackQuantity < 1) {
+	if (stackQuantity < 1) {
 
-		if(parent != NULL) {
-			/*parent->broadcastDestroy(_this.getReferenceUnsafeStaticCast(), true);
-			parent->removeObject(_this.getReferenceUnsafeStaticCast(), false);*/
-			//setParent(NULL);
-
+		if (parent != NULL) {
 			destroyObjectFromWorld(true);
 		}
 

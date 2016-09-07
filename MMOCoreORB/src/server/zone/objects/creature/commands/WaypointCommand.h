@@ -11,9 +11,6 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/Zone.h"
 
-
-#include "server/zone/managers/object/ObjectManager.h"
-
 class WaypointCommand : public QueueCommand {
 public:
 
