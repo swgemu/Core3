@@ -5,7 +5,6 @@
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/tangible/firework/components/FireworkShowDataComponent.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/managers/object/ObjectManager.h"
 
 class FireworkShowReorderShowSuiCallback : public SuiCallback {
 public:

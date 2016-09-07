@@ -4,7 +4,6 @@
 
 #include "server/zone/objects/intangible/IntangibleObject.h"
 
-#include "../../managers/object/ObjectManager.h"
 #include "server/zone/packets/intangible/IntangibleObjectMessage3.h"
 #include "server/zone/packets/intangible/IntangibleObjectMessage6.h"
 #include "server/zone/packets/intangible/IntangibleObjectDeltaMessage3.h"

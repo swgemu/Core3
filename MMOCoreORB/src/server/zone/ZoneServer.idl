@@ -148,6 +148,8 @@ class ZoneServer extends ManagedService implements Logger {
 
 	public native void stop();
 
+	public native void clearZones();
+
 	public native void timedShutdown(int minutes);
 
 	@local

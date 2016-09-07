@@ -21,7 +21,7 @@
 #include "server/zone/managers/stringid/StringIdManager.h"
 
 ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer*> serv,
-		ZoneProcessServer* impl, ObjectManager* objMan) {
+		ZoneProcessServer* impl) {
 
 	server = serv;
 	processor = impl;
@@ -38,7 +38,7 @@ ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer*> serv,
 	Logger::setLoggingName("ResourceSpawner");
 
 	nameManager = processor->getNameManager();
-	objectManager = objMan;
+	objectManager = server->getObjectManager();
 	samplingMultiplier = 1; //should be 1 for normal use
 
 	minimumPool = new MinimumPool(this);
@@ -60,6 +60,9 @@ ResourceSpawner::~ResourceSpawner() {
 	delete resourceMap;
 
 	activeResourceZones.removeAll();
+
+	server = NULL;
+	processor = NULL;
 }
 
 void ResourceSpawner::init() {

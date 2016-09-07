@@ -7,7 +7,6 @@
 #include "server/login/account/Account.h"
 #include "server/login/account/AccountManager.h"
 #include "../objects/GalaxyBanEntry.h"
-#include "server/zone/managers/object/ObjectManager.h"
 
 AccountImplementation::AccountImplementation() {
 	initializeTransientMembers();

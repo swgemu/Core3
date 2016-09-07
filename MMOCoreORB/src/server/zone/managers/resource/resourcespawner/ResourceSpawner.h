@@ -76,7 +76,7 @@ private:
 
 public:
 	ResourceSpawner(ManagedReference<ZoneServer* > serv,
-			ZoneProcessServer* impl, ObjectManager* objMan);
+			ZoneProcessServer* impl);
 	~ResourceSpawner();
 
 	void init();

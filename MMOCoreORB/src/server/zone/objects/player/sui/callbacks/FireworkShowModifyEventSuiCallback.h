@@ -9,7 +9,6 @@
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/fireworkdelaybox/SuiFireworkDelayBox.h"
-#include "server/zone/managers/object/ObjectManager.h"
 
 class FireworkShowModifyEventSuiCallback : public SuiCallback {
 public:

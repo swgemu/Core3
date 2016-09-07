@@ -133,6 +133,8 @@ class Zone extends SceneObject {
 
 	public native void stopManagers();
 
+	public native void clearZone();
+
 	@dirty
 	@mock
 	public native float getHeight(float x, float y);

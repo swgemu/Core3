@@ -12,7 +12,6 @@
 #include "TerminalListVector.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/auction/AuctionItem.h"
-#include "server/zone/managers/object/ObjectManager.h"
 
 class AuctionTerminalMap : public VectorMap<uint64, Reference<TerminalItemList*> >, public Logger, public ReadWriteLock {
 

@@ -11,6 +11,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
+#include "server/zone/managers/object/ObjectManager.h"
 #include "templates/tangible/SharedStructureObjectTemplate.h"
 #include "templates/building/SharedBuildingObjectTemplate.h"
 #include "server/zone/ZoneServer.h"

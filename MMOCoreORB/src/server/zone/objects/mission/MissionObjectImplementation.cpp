@@ -11,7 +11,6 @@
 #include "server/zone/packets/mission/MissionObjectMessage3.h"
 #include "server/zone/packets/mission/MissionObjectDeltaMessage3.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/group/GroupObject.h"
 
 

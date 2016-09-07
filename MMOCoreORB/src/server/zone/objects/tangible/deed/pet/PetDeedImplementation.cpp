@@ -463,7 +463,6 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 			return 1;
 		}
 
-		ObjectManager* objectManager = server->getZoneServer()->getObjectManager();
 		pet->setPetDeed(_this.getReferenceUnsafeStaticCast());
 		pet->loadTemplateData( petTemplate );
 		pet->setCustomObjectName(StringIdManager::instance()->getStringId(*pet->getObjectName()), true);

@@ -42,6 +42,7 @@ NameManager::NameManager(ZoneProcessServer* serv) : Logger("NameManager") {
 }
 
 NameManager::~NameManager() {
+	info("deconstructing NameManager.", true);
 	server = NULL;
 
 	delete lua;

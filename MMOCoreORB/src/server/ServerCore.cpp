@@ -220,8 +220,10 @@ void ServerCore::run() {
 void ServerCore::shutdown() {
 	info("shutting down server..", true);
 
-	ObjectManager::instance()->cancelDeleteCharactersTask();
-	ObjectManager::instance()->cancelUpdateModifiedObjectsTask();
+	ObjectManager* objectManager = ObjectManager::instance();
+
+	objectManager->cancelDeleteCharactersTask();
+	objectManager->cancelUpdateModifiedObjectsTask();
 
 	ZoneServer* zoneServer = zoneServerRef.get();
 
@@ -259,14 +261,18 @@ void ServerCore::shutdown() {
 
 	Thread::sleep(5000);
 
-	ObjectManager::instance()->createBackup();
+	objectManager->createBackup();
 
-	while (ObjectManager::instance()->isObjectUpdateInProcess())
+	while (objectManager->isObjectUpdateInProcess())
 		Thread::sleep(500);
 
 	info("database backup done", true);
 
-	ObjectManager::instance()->cancelUpdateModifiedObjectsTask();
+	objectManager->cancelUpdateModifiedObjectsTask();
+
+	if (zoneServer != NULL) {
+		zoneServer->clearZones();
+	}
 
 	orb->shutdown();
 
@@ -296,7 +302,11 @@ void ServerCore::shutdown() {
 
 	Logger::closeGlobalFileLogger();
 
+	objectManager->finalizeInstance();
+
 	orb->finalizeInstance();
+
+	zoneServerRef = NULL;
 
 	info("server closed", true);
 }

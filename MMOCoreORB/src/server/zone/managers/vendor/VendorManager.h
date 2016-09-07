@@ -31,6 +31,7 @@ public:
 	VendorManager();
 
 	~VendorManager() {
+		info("deconstructing VendorManager.", true);
 		rootNode = NULL;
 		server = NULL;
 		nameManager = NULL;

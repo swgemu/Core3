@@ -77,12 +77,7 @@ ObjectManager::ObjectManager() : DOBObjectManager() {
 }
 
 ObjectManager::~ObjectManager() {
-	//info("closing databases...", true);
-
-	//ObjectDatabaseManager::instance()->finalize();
-
-	if (updateModifiedObjectsTask->isScheduled())
-		updateModifiedObjectsTask->cancel();
+	info("deconstructing ObjectManager.", true);
 }
 
 void ObjectManager::registerObjectTypes() {

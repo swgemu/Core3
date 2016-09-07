@@ -16,7 +16,6 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/tangible/firework/components/FireworkShowDataComponent.h"
 #include "system/util/VectorMap.h"
-#include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/Zone.h"
 
 

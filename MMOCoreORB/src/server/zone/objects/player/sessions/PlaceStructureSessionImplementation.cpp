@@ -10,6 +10,7 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/structure/tasks/StructureConstructionCompleteTask.h"
+#include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
