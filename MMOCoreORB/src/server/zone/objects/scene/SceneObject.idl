@@ -783,7 +783,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	@dirty
-	public native void showFlyText(final string file, final string uax, byte red, byte green, byte blue);
+	public native void showFlyText(final string file, final string aux, byte red, byte green, byte blue, boolean isPrivate = false);
 
 	public native int getContainedObjectsRecursive();
 	

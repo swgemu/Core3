@@ -1594,22 +1594,22 @@ void CombatManager::showHitLocationFlyText(CreatureObject *attacker, CreatureObj
 	ShowFlyText* fly = NULL;
 	switch(location) {
 	case HIT_HEAD:
-		fly = new ShowFlyText(defender, "combat_effects", "hit_head", 0, 0, 0xFF);
+		fly = new ShowFlyText(defender, "combat_effects", "hit_head", 0, 0, 0xFF, 1.0f);
 		break;
 	case HIT_BODY:
-		fly = new ShowFlyText(defender, "combat_effects", "hit_body", 0xFF, 0, 0);
+		fly = new ShowFlyText(defender, "combat_effects", "hit_body", 0xFF, 0, 0, 1.0f);
 		break;
 	case HIT_LARM:
-		fly = new ShowFlyText(defender, "combat_effects", "hit_larm", 0xFF, 0, 0);
+		fly = new ShowFlyText(defender, "combat_effects", "hit_larm", 0xFF, 0, 0, 1.0f);
 		break;
 	case HIT_RARM:
-		fly = new ShowFlyText(defender, "combat_effects", "hit_rarm", 0xFF, 0, 0);
+		fly = new ShowFlyText(defender, "combat_effects", "hit_rarm", 0xFF, 0, 0, 1.0f);
 		break;
 	case HIT_LLEG:
-		fly = new ShowFlyText(defender, "combat_effects", "hit_lleg", 0, 0xFF, 0);
+		fly = new ShowFlyText(defender, "combat_effects", "hit_lleg", 0, 0xFF, 0, 1.0f);
 		break;
 	case HIT_RLEG:
-		fly = new ShowFlyText(defender, "combat_effects", "hit_rleg", 0, 0xFF, 0);
+		fly = new ShowFlyText(defender, "combat_effects", "hit_rleg", 0, 0xFF, 0, 1.0f);
 		break;
 	}
 

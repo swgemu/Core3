@@ -1415,10 +1415,15 @@ void SceneObjectImplementation::setZone(Zone* zone) {
 	this->zone = zone;
 }
 
-void SceneObjectImplementation::showFlyText(const String& file, const String& aux, uint8 red, uint8 green, uint8 blue) {
-	ShowFlyText* fly = new ShowFlyText(asSceneObject(), file, aux, red, green, blue);
+void SceneObjectImplementation::showFlyText(const String& file, const String& aux, uint8 red, uint8 green, uint8 blue, bool isPrivate) {
 
-	broadcastMessage(fly, true);
+	if (!isPrivate) {
+		ShowFlyText* fly = new ShowFlyText(asSceneObject(), file, aux, red, green, blue, 1.0f);
+		broadcastMessage(fly, true);
+	} else {
+		ShowFlyText* fly = new ShowFlyText(asSceneObject(), file, aux, red, green, blue, 0);
+		sendMessage(fly);
+	}
 }
 
 void SceneObjectImplementation::initializeChildObject(SceneObject* controllerObject) {
