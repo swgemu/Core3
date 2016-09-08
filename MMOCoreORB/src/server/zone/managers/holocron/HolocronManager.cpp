@@ -12,7 +12,6 @@
 #include "server/zone/packets/ui/RequestCategoriesResponseMessage.h"
 #include "server/db/MantisDatabase.h"
 #include "server/login/account/AccountManager.h"
-#include "server/zone/managers/player/PlayerManager.h"
 #include "BugCategory.h"
 
 void HolocronManager::loadBugCategories() {

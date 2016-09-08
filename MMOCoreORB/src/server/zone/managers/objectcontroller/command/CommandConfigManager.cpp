@@ -58,10 +58,6 @@ CommandConfigManager::CommandConfigManager(ZoneProcessServer* serv) {
 
 CommandConfigManager::~CommandConfigManager() {
 	server = NULL;
-
-	if (slashCommands != NULL)
-		delete slashCommands;
-
 	slashCommands = NULL;
 
 	ERROR_CODE = 0;

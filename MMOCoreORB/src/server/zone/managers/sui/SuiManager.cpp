@@ -27,7 +27,6 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/minigames/FishingManager.h"
 #include "server/zone/managers/minigames/GamblingManager.h"
-#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"

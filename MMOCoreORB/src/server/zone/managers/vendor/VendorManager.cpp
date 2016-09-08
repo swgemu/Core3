@@ -8,7 +8,6 @@
 #include "VendorManager.h"
 #include "server/zone/managers/vendor/sui/DestroyVendorSuiCallback.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/auction/AuctionItem.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/managers/vendor/sui/RenameVendorSuiCallback.h"

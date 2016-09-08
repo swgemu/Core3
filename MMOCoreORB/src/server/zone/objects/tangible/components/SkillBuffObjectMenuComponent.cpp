@@ -12,7 +12,6 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/creature/buffs/Buff.h"
 #include "templates/tangible/SkillBuffTemplate.h"
-#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 void SkillBuffObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 

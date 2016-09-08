@@ -8,7 +8,6 @@ import engine.lua.LuaObject;
 import engine.service.proto.BaseMessage;
 import engine.service.proto.BasePacket;
 import engine.util.u3d.Vector3;
-import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.objects.building.BuildingObject;
 import server.zone.objects.creature.commands.QueueCommand;
 import server.zone.objects.creature.CreatureObject;

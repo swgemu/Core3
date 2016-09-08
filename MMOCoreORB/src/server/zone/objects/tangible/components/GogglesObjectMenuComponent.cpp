@@ -11,7 +11,6 @@
 #include "GogglesObjectMenuComponent.h"
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/ColorGogglesSuiCallback.h"
 #include "server/zone/Zone.h"

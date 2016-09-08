@@ -20,7 +20,6 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.area.ActiveArea;
 import server.zone.managers.planet.PlanetManager;
 import server.zone.managers.creature.CreatureManager;
-import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.managers.gcw.GCWManager;
 import system.util.VectorMap;
 import system.util.SortedVector;

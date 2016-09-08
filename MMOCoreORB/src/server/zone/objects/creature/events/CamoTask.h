@@ -12,6 +12,7 @@
 #include "engine/core/ManagedReference.h"
 #include "engine/core/ManagedWeakReference.h"
 #include "system/lang/String.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/buffs/ConcealBuff.h"
 

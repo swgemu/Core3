@@ -45,7 +45,6 @@
 #include "server/chat/StringIdChatParameter.h"
 #include "server/chat/PersistentMessage.h"
 #include "server/chat/ChatMessage.h"
-#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 #include "server/chat/room/ChatRoom.h"
 #include "server/chat/room/ChatRoomMap.h"
@@ -68,7 +67,16 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 
 }
 
-void ChatManagerImplementation::finalize() {
+void ChatManagerImplementation::stop() {
+	playerManager = NULL;
+	playerMap = NULL;
+	roomMap = NULL;
+	server = NULL;
+	galaxyRoom = NULL;
+	systemRoom = NULL;
+	groupRoom = NULL;
+	guildRoom = NULL;
+	auctionRoom = NULL;
 }
 
 void ChatManagerImplementation::loadMailDatabase() {

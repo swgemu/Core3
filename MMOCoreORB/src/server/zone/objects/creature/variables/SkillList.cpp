@@ -11,7 +11,6 @@
 #include "server/ServerCore.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/skill/SkillManager.h"
-#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 bool SkillList::containsSkill(const String& skillBox) {
 	String low = skillBox.toLowerCase();

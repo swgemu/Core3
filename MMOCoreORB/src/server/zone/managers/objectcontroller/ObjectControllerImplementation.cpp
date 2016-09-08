@@ -46,14 +46,7 @@ void ObjectControllerImplementation::loadCommands() {
 }
 
 void ObjectControllerImplementation::finalize() {
-	info("deleting object controller", true);
-
-	delete configManager;
 	configManager = NULL;
-
-	CommandConfigManager::slashCommands = NULL;
-
-	delete queueCommands;
 	queueCommands = NULL;
 }
 

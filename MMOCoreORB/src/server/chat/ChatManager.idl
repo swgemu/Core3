@@ -19,7 +19,6 @@ import server.zone.objects.player.PlayerObject;
 import server.zone.packets.chat.ChatRoomList;
 import server.zone.packets.chat.ChatInstantMessageToCharacter;
 import engine.log.Logger;
-import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.objects.waypoint.WaypointObject;
 include server.chat.StringIdChatParameter;
 include server.chat.WaypointChatParameter;
@@ -99,7 +98,7 @@ class ChatManager extends ManagedService implements Logger {
 
 	public native ChatManager(ZoneServer serv, int initsize);
 
-	public native void finalize();
+	public native void stop();
 
 
 	////////////////////// STARTUP /////////////////////

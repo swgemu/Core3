@@ -10,7 +10,6 @@
 #include "server/zone/managers/space/SpaceManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
-#include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/packets/player/GetMapLocationsResponseMessage.h"
 
 #include "server/zone/objects/cell/CellObject.h"

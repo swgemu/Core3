@@ -6,8 +6,6 @@
 
 #include "engine/util/Facade.h"
 
-#include "server/zone/managers/objectcontroller/ObjectController.h"
-
 #include "server/zone/packets/scene/SceneObjectCreateMessage.h"
 #include "server/zone/packets/scene/SceneObjectDestroyMessage.h"
 #include "server/zone/packets/scene/SceneObjectCloseMessage.h"

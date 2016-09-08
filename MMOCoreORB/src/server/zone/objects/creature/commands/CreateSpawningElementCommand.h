@@ -7,7 +7,6 @@
 
 #include "templates/manager/TemplateManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/creature/CreatureManager.h"

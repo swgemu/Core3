@@ -23,6 +23,18 @@ ResourceMap::ResourceMap() {
 
 ResourceMap::~ResourceMap() {
 	removeAll();
+
+	while (typeResourceMap.size() > 0) {
+		TypeResourceMap* map = typeResourceMap.get(0);
+		delete map;
+		typeResourceMap.remove(0);
+	}
+
+	while (zoneResourceMap.size() > 0) {
+		ZoneResourceMap* map = zoneResourceMap.get(0);
+		delete map;
+		zoneResourceMap.remove(0);
+	}
 }
 
 float ResourceMap::getDensityAt(const String& resourcename, String zoneName, float x, float y) {

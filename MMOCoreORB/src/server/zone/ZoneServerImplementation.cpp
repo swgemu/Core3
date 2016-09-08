@@ -17,7 +17,6 @@
 
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
-#include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/radial/RadialManager.h"
 #include "server/zone/managers/resource/ResourceManager.h"
@@ -342,7 +341,6 @@ void ZoneServerImplementation::stopManagers() {
 	guildManager = NULL;
 	cityManager = NULL;
 	missionManager = NULL;
-	chatManager = NULL;
 	radialManager = NULL;
 	auctionManager = NULL;
 	petManager = NULL;
@@ -353,6 +351,11 @@ void ZoneServerImplementation::stopManagers() {
 	zoneHandler = NULL;
 	configManager = NULL;
 	phandler = NULL;
+
+	if (chatManager != NULL) {
+		chatManager->stop();
+		chatManager = NULL;
+	}
 
 	if (resourceManager != NULL) {
 		resourceManager->stop();
@@ -375,7 +378,7 @@ void ZoneServerImplementation::stopManagers() {
 	}
 
 	if (processor != NULL) {
-		processor->finalize();
+		processor->stop();
 		processor = NULL;
 	}
 

@@ -18,7 +18,6 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/combat/CreatureAttackData.h"
 #include "server/zone/objects/creature/commands/CombatQueueCommand.h"
-#include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "MinefieldAttackTask.h"
 #include "server/zone/objects/installation/components/TurretObserver.h"
 

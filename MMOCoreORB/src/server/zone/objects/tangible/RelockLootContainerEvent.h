@@ -9,7 +9,6 @@
 #define RELOCKLOOTCONTAINEREVENT_H_
 
 #include "engine/engine.h"
-#include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/Container.h"
 

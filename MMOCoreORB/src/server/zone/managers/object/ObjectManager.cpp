@@ -15,7 +15,6 @@
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "templates/manager/TemplateManager.h"
-#include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "templates/SharedObjectTemplate.h"
 #include "server/chat/ChatManager.h"
 #include "engine/db/berkley/BTransaction.h"

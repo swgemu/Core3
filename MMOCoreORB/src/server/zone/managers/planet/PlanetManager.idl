@@ -17,7 +17,6 @@ import system.util.Vector;
 import server.zone.objects.region.CityRegion;
 import server.zone.objects.scene.variables.StringId;
 import server.zone.managers.weather.WeatherManager;
-import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.managers.gcw.GCWManager;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;

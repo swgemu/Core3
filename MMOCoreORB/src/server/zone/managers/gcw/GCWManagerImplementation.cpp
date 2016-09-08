@@ -41,6 +41,7 @@
 #include "server/zone/objects/player/sui/callbacks/TurretControlSuiCallback.h"
 
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 
 void GCWManagerImplementation::initialize() {

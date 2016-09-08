@@ -60,7 +60,7 @@ class ZoneProcessServer extends ManagedService {
 
 	public native void initialize();
 
-	public native void finalize();
+	public native void stop();
 
 	@local
 	@dirty

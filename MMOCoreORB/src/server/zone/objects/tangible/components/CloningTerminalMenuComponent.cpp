@@ -14,7 +14,6 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/scene/SceneObjectType.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
-#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/CloningStoreSuiCallback.h"

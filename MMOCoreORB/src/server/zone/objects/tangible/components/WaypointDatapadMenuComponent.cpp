@@ -10,7 +10,6 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
 #include "server/zone/ZoneServer.h"
-#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
 
 void WaypointDatapadMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {

@@ -20,7 +20,6 @@ import engine.service.proto.BasePacket;
 import engine.service.proto.BaseMessage;
 import system.util.SortedVector;
 import system.lang.StackTrace;
-import server.zone.managers.objectcontroller.ObjectController;
 import system.lang.ref.Reference;
 import engine.core.Task;
 import engine.util.u3d.Vector3;

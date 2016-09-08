@@ -45,10 +45,6 @@ public:
 			return INVALIDPARAMETERS;
 		}
 
-		PlayerManager* playerManager = player->getZoneServer()->getPlayerManager();
-		if( playerManager == NULL )
-			return GENERALERROR;
-
 		CreatureObject* targetCreature = cast<CreatureObject*>( obj.get());
 		PlayerObject* targetGhost = targetCreature->getPlayerObject();
 

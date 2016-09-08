@@ -6,7 +6,6 @@
  */
 
 #include "engine/engine.h"
-#include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/player/sessions/LootLotterySession.h"
 #include "server/zone/objects/player/sessions/LootLotteryBallot.h"
 #include "server/zone/managers/player/PlayerManager.h"

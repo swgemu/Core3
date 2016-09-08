@@ -12,7 +12,6 @@
 #define SAMPLERESULTSTASK_H_
 
 #include "engine/engine.h"
-#include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
 class ResourceSpawner;

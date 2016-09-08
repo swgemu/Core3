@@ -12,7 +12,6 @@
 #include "server/zone/objects/player/PlayerObject.h"
 
 #include "server/zone/ZoneServer.h"
-#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
 
 int HolocronMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) const {

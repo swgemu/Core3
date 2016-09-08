@@ -13,7 +13,6 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/building/components/CityHallZoneComponent.h"
 #include "server/zone/objects/tangible/sign/SignObject.h"
-#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/guild/GuildObject.h"

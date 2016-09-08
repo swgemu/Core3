@@ -1,7 +1,6 @@
 #include "server/zone/objects/creature/buffs/ChannelForceBuff.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/buffs/ChannelForceBuffTickEvent.h"
-#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/ZoneServer.h"
 #include "templates/params/creature/CreatureAttribute.h"
 

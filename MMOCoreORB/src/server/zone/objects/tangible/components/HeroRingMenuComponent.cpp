@@ -3,7 +3,6 @@
 #include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/tangible/components/HeroRingDataComponent.h"

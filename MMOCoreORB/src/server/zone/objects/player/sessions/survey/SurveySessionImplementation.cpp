@@ -7,7 +7,6 @@
 
 #include "server/zone/objects/player/sessions/survey/SurveySession.h"
 #include "server/zone/Zone.h"
-#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"

@@ -10,6 +10,7 @@
 
 #include "engine/engine.h"
 #include "server/zone/managers/creature/LairObserver.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "system/util/SynchronizedVector.h"

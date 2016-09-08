@@ -251,7 +251,7 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 			} catch (...) {
 			}
 		} else {
-			object->info("Null closeobjects vector in ZoneContainerComponent::removeObject", true);
+			object->info("Null closeobjects vector in ZoneContainerComponent::removeObject");
 			SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
 
 			zone->getInRangeObjects(object->getPositionX(), object->getPositionY(), 512, &closeSceneObjects, false);

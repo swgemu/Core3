@@ -49,7 +49,6 @@ ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer*> serv,
 }
 
 ResourceSpawner::~ResourceSpawner() {
-
 	delete resourceTree;
 	delete minimumPool;
 	delete fixedPool;

@@ -11,7 +11,6 @@
 #include"server/zone/ZoneServer.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
-#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/combat/CreatureAttackData.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "templates/params/creature/CreatureAttribute.h"
@@ -28,7 +27,6 @@ public:
 
 	int doCombatAction(CreatureObject* creature, const uint64& target, const UnicodeString& arguments = "") const {
 			ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
-			PlayerManager* playerManager = server->getPlayerManager();
 
 			if (targetObject == NULL || !targetObject->isTangibleObject() || targetObject == creature)
 				return INVALIDTARGET;

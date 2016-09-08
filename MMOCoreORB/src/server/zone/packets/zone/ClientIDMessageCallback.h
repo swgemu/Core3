@@ -13,7 +13,6 @@
 #include "server/login/packets/ErrorMessage.h"
 #include "server/login/account/Account.h"
 #include "server/login/objects/CharacterList.h"
-#include "server/zone/managers/player/PlayerManager.h"
 #include "server/login/account/AccountManager.h"
 
 #include "ClientPermissionsMessage.h"

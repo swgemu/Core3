@@ -11,7 +11,6 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
-#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 class GotoSuiCallback : public SuiCallback {
 

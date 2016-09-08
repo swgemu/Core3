@@ -11,7 +11,6 @@
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/tangible/wearables/RobeObject.h"
-#include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
 void RobeObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
