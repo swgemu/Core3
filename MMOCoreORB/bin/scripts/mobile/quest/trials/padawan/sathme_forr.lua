@@ -1,0 +1,40 @@
+sathme_forr = Creature:new {
+	objectName = "",
+	customName = "Sathme Forr (an artist)",
+	socialGroup = "commoner",
+	faction = "",
+	level = 10,
+	chanceHit = 1,
+	damageMin = 1,
+	damageMax = 1,
+	baseXp = 1000,
+	baseHAM = 1000,
+	baseHAMmax = 1000,
+	armor = 0,
+	resists = {60,60,60,60,60,60,60,60,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = NONE,
+	creatureBitmask = PACK,
+	optionsBitmask = 136,
+	diet = HERBIVORE,
+
+	templates = 
+	  {"object/mobile/dressed_commoner_naboo_human_female_01.iff",
+		"object/mobile/dressed_commoner_naboo_human_female_02.iff",
+		"object/mobile/dressed_commoner_naboo_human_female_03.iff",
+		"object/mobile/dressed_commoner_naboo_human_female_04.iff"},
+	lootGroups = {},
+	weapons = {},
+	conversationTemplate = "trialsPadawanArtist01ConvoTemplate",
+	attacks = {}
+}
+
+CreatureTemplates:addCreatureTemplate(sathme_forr, "sathme_forr")
