@@ -7,7 +7,6 @@
 #include "MinefieldMenuComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/Zone.h"
-#include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
@@ -60,10 +59,6 @@ int MinefieldMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cre
 	if(zne == NULL)
 		return 1;
 
-	GCWManager* gcw = zne->getGCWManager();
-	if(gcw == NULL)
-		return 1;
-
 	ManagedReference<InstallationObject*> installation = cast<InstallationObject*>(sceneObject);
 	if(installation == NULL)
 		return 1;
@@ -81,11 +76,3 @@ int MinefieldMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cre
 	return 0;
 
 }
-
-
-
-
-
-
-
-

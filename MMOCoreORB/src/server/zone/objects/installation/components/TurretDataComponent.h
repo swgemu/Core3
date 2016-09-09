@@ -38,7 +38,7 @@ public:
 	}
 
 	~TurretDataComponent() {
-
+		turretFireTask = NULL;
 	}
 
 	void initializeTransientMembers();

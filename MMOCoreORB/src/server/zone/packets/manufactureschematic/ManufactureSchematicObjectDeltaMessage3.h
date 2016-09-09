@@ -8,8 +8,6 @@
 
 #include "../BaseLineMessage.h"
 
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
 class ManufactureSchematicObjectDeltaMessage3 : public DeltaMessage {
 public:
 	ManufactureSchematicObjectDeltaMessage3(SceneObject* schematic)

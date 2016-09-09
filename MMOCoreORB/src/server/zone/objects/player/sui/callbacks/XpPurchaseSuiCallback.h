@@ -5,7 +5,6 @@
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/objects/scene/SceneObjectType.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/managers/gcw/GCWManager.h"
 #include "templates/tangible/XpPurchaseTemplate.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"

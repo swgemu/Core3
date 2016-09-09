@@ -8,7 +8,6 @@
 #include "server/zone/objects/tangible/wearables/PsgArmorObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
 
 
 void PsgArmorObjectImplementation::initializeTransientMembers() {

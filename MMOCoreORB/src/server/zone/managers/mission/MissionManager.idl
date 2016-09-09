@@ -39,7 +39,8 @@ class MissionManager extends Observer implements Logger {
 	protected Vector<string> bhTargetZones;
 	
 	@dereferenced
-	protected VectorMap<unsigned int, Vector<string> > bhTargetsAtMissionLevel;
+	@rawTemplate(value = "unsigned int, Vector<String>")
+	protected VectorMap bhTargetsAtMissionLevel;
 	
 	@dereferenced
 	protected VectorMap<unsigned long, BountyTargetListElement> playerBountyList;

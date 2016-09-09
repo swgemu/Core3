@@ -203,7 +203,10 @@ public:
 	SharedObjectTemplate();
 
 	virtual ~SharedObjectTemplate() {
-
+		arrangementDescriptors = NULL;
+		slotDescriptors = NULL;
+		planetMapCategory = NULL;
+		planetMapSubCategory = NULL;
 	}
 
 	void readObject(LuaObject* templateData);

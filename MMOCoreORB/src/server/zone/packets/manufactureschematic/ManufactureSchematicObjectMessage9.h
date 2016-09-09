@@ -8,8 +8,6 @@
 
 #include "../BaseLineMessage.h"
 
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
 class ManufactureSchematicObjectMessage9 : public BaseLineMessage {
 public:
 	ManufactureSchematicObjectMessage9(uint64 oid) 

@@ -326,12 +326,12 @@ void BuildingObjectImplementation::notifyRemoveFromZone() {
 				}
 			}
 		}
+	}
 
-		if (signObject != NULL) {
-			Locker signLocker(signObject);
+	if (signObject != NULL) {
+		Locker signLocker(signObject);
 
-			signObject->destroyObjectFromWorld(true);
-		}
+		signObject->destroyObjectFromWorld(true);
 	}
 
 	TangibleObjectImplementation::notifyRemoveFromZone();

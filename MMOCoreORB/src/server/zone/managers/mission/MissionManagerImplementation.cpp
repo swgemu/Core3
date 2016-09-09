@@ -63,12 +63,15 @@ void MissionManagerImplementation::loadLuaSettings() {
 		LuaObject targetsAtMissionLevel = lua->getGlobalObject("bh_targets_at_mission_level");
 
 		for (unsigned int i = 1; i <= 3; i++) {
-			bhTargetsAtMissionLevel.put(i, new Vector<String>());
+			Vector<String> targets;
 			LuaObject level = targetsAtMissionLevel.getObjectField("level" + String::valueOf(i));
+
 			for (int j = 1; j <= level.getTableSize(); j++) {
-				bhTargetsAtMissionLevel.get(i)->add(level.getStringAt(j));
+				targets.add(level.getStringAt(j));
 			}
 			level.pop();
+
+			bhTargetsAtMissionLevel.put(i, targets);
 		}
 
 		targetsAtMissionLevel.pop();
@@ -869,7 +872,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 		Vector3 endPos = getRandomBountyTargetPosition(player, planet);
 		mission->setEndPosition(endPos.getX(), endPos.getY(), planet, true);
 
-		String targetTemplate = bhTargetsAtMissionLevel.get((unsigned int)level)->get(System::random(bhTargetsAtMissionLevel.get((unsigned int)level)->size() - 1));
+		String targetTemplate = bhTargetsAtMissionLevel.get((unsigned int)level).get(System::random(bhTargetsAtMissionLevel.get((unsigned int)level).size() - 1));
 		mission->setTargetOptionalTemplate(targetTemplate);
 
 		CreatureTemplate* creoTemplate = CreatureTemplateManager::instance()->getTemplate(mission->getTargetOptionalTemplate());

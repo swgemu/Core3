@@ -63,6 +63,7 @@ SharedTangibleObjectTemplate::~SharedTangibleObjectTemplate() {
 	delete experimentalCombineType;
 	delete playerRaces;
 	delete resourceWeights;
+	structureFootprint = NULL;
 }
 
 void SharedTangibleObjectTemplate::parseFileData(IffStream* iffStream) {
@@ -330,8 +331,6 @@ void SharedTangibleObjectTemplate::readObject(IffStream* iffStream) {
 
 void SharedTangibleObjectTemplate::readObject(LuaObject* templateData) {
 	SharedObjectTemplate::readObject(templateData);
-
-	TemplateManager* templateManager = TemplateManager::instance();
 
 	lua_State* L = templateData->getLuaState();
 

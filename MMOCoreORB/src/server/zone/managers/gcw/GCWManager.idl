@@ -145,6 +145,7 @@ class GCWManager extends ManagedService implements Logger {
 	public native void initialize();
 	public native void start();
 	public native void loadLuaConfig();
+	public native void stop();
 
 	public native void performGCWTasks();
 	private native void verifyTurrets(BuildingObject building);

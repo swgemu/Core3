@@ -5,7 +5,6 @@
  *      Author: pete
  */
 #include "DestructibleBuildingDataComponent.h"
-#include "server/zone/managers/gcw/GCWManager.h"
 
 void DestructibleBuildingDataComponent::setState(int state) {
 	if (state >= INVULNERABLE && state <= REBOOTSEQUENCE)

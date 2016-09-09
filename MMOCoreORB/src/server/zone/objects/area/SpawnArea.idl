@@ -36,7 +36,8 @@ class SpawnArea extends ActiveArea {
 	protected SpawnAreaObserver exitObserver;
 
 	@dereferenced
-	protected Vector<SpawnArea> noSpawnAreas;
+	@rawTemplate(value = "ManagedWeakReference<SpawnArea*>")
+	protected Vector noSpawnAreas;
 
 	protected int tier;
 

@@ -52,6 +52,11 @@ public:
 		uniquePatterns.setNullValue(0);
 	}
 
+	~NameData() {
+		delete firstNameRules;
+		delete lastNameRules;
+	}
+
 	NameData(const NameData& data) : Object() {
 		firstNameRules = data.firstNameRules;
 		lastNameRules = data.lastNameRules;

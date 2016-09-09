@@ -7,7 +7,6 @@ package server.zone.objects.tangible.tool;
 
 import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.objects.tangible.tool.CraftingStation;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.tangible.tool.ToolTangibleObject;

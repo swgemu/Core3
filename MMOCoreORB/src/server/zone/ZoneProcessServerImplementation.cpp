@@ -49,6 +49,7 @@ void ZoneProcessServerImplementation::stop() {
 	gamblingManager = NULL;
 	forageManager = NULL;
 	zoneServer = NULL;
+	playerCreationManager = NULL;
 
 	if (objectController != NULL) {
 		objectController->finalize();

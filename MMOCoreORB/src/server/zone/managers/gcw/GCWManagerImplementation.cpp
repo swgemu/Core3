@@ -168,6 +168,13 @@ void GCWManagerImplementation::loadLuaConfig() {
 	lua = NULL;
 }
 
+void GCWManagerImplementation::stop() {
+	gcwBaseList.removeAll();
+	gcwStartTasks.removeAll();
+	gcwEndTasks.removeAll();
+	gcwDestroyTasks.removeAll();
+}
+
 void GCWManagerImplementation::performGCWTasks() {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 

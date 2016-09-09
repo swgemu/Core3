@@ -32,6 +32,10 @@ public:
 		professionMods.setNoDuplicateInsertPlan();
 	}
 
+	~ProfessionDefaultsInfo() {
+		skill = NULL;
+	}
+
 	void readObject(IffStream* iffStream) {
 		iffStream->openForm('PRFI');
 
