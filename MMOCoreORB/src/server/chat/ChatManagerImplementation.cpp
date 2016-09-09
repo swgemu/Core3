@@ -77,6 +77,7 @@ void ChatManagerImplementation::stop() {
 	groupRoom = NULL;
 	guildRoom = NULL;
 	auctionRoom = NULL;
+	gameRooms.removeAll();
 }
 
 void ChatManagerImplementation::loadMailDatabase() {

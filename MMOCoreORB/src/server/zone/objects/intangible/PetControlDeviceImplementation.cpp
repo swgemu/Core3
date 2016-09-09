@@ -24,6 +24,7 @@
 #include "server/zone/objects/creature/events/DroidSkillModTask.h"
 #include "server/zone/objects/creature/events/DroidPowerTask.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "tasks/StorePetTask.h"
 #include "server/chat/ChatManager.h"

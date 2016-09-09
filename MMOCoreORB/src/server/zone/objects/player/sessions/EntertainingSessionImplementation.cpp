@@ -25,6 +25,7 @@
 #include "server/zone/objects/creature/buffs/PerformanceBuff.h"
 #include "server/zone/objects/creature/buffs/PerformanceBuffType.h"
 #include "server/zone/objects/mission/MissionTypes.h"
+#include "server/zone/objects/building/BuildingObject.h"
 
 void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 	ManagedReference<CreatureObject*> creo = entertainer.get();

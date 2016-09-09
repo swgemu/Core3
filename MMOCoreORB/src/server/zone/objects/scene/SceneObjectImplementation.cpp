@@ -579,7 +579,7 @@ void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, Sce
 	int maxInRangeObjectCount = 0;
 
 	if (closeobjects == NULL) {
-		info("Null closeobjects vector in SceneObjectImplementation::broadcastDestroyPrivate", true);
+		info("Null closeobjects vector in SceneObjectImplementation::broadcastDestroyPrivate");
 		zone->getInRangeObjects(getPositionX(), getPositionY(), ZoneServer::CLOSEOBJECTRANGE + 64, &closeSceneObjects, true);
 
 		maxInRangeObjectCount = closeSceneObjects.size();

@@ -32,7 +32,6 @@
 #include "SyncrhonizedUiListenInstallationTask.h"
 #include "server/zone/objects/installation/components/TurretObserver.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
-#include "server/zone/objects/building/BuildingObject.h"
 #include "components/TurretDataComponent.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"

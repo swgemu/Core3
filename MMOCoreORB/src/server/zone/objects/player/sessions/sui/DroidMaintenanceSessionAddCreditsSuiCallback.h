@@ -8,7 +8,6 @@
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/sessions/DroidMaintenanceSession.h"
-#include "server/zone/objects/structure/StructureObject.h"
 
 class DroidMaintenanceSessionAddCreditsSuiCallback : public SuiCallback {
 public:

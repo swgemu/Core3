@@ -10,7 +10,6 @@
 #include "server/zone/objects/tangible/deed/Deed.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/managers/structure/StructureManager.h"
 
@@ -33,11 +32,3 @@ int PlaceDecorationComponent::placeStructure(StructureDeed* deed, CreatureObject
 
 	return 0;
 }
-
-
-
-
-
-
-
-

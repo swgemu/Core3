@@ -83,6 +83,14 @@ void GuildManagerImplementation::loadLuaConfig() {
 	lua = NULL;
 }
 
+void GuildManagerImplementation::stop() {
+	guildList.removeAll(NULL);
+	sponsoredPlayers.removeAll();
+	chatManager = NULL;
+	processor = NULL;
+	server = NULL;
+}
+
 void GuildManagerImplementation::loadGuilds() {
 	Locker _lock(_this.getReferenceUnsafeStaticCast());
 

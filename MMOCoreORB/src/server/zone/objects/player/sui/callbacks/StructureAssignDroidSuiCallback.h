@@ -6,7 +6,6 @@
 #define STRUCTUREASSIGNDROIDSUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
-#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"
 

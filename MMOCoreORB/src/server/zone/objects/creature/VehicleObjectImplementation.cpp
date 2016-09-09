@@ -10,7 +10,6 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
-#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/managers/planet/PlanetManager.h"

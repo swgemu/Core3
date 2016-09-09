@@ -14,7 +14,7 @@ namespace player {
 namespace events {
 
 class PlayerRecoveryEvent : public Task {
-	ManagedReference<PlayerObject*> player;
+	ManagedWeakReference<PlayerObject*> player;
 	Time startTime;
 
 public:
@@ -31,15 +31,20 @@ public:
 	}
 
 	void run() {
-		ManagedReference<SceneObject*> strongParent = player->getParent();
+		ManagedReference<PlayerObject*> play = player.get();
+
+		if (play == NULL)
+			return;
+
+		ManagedReference<SceneObject*> strongParent = play->getParent();
 		
 		if (strongParent == NULL)
 			return;
 
 		Locker _locker(strongParent);
 
-		if (player->isOnline() || player->isLinkDead())
-			player->doRecovery(startTime.miliDifference());
+		if (play->isOnline() || play->isLinkDead())
+			play->doRecovery(startTime.miliDifference());
 
 
 	}

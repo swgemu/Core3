@@ -15,7 +15,6 @@
 #include "server/zone/ZoneServer.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
-#include "server/chat/ChatManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/packets/auction/ItemSoldMessage.h"
 

@@ -16,7 +16,6 @@ import server.zone.objects.tangible.pharmaceutical.PharmaceuticalObject;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include templates.tangible.EnhancePackTemplate;
-import server.zone.objects.building.BuildingObject;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.creature.BuffAttribute;
 

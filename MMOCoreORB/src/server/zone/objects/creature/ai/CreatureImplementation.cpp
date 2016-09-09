@@ -12,7 +12,6 @@
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/creature/events/DespawnCreatureTask.h"
 #include "server/zone/managers/creature/CreatureManager.h"

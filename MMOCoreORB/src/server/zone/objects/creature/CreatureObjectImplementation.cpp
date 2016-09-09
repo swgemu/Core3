@@ -62,7 +62,6 @@
 #include "server/zone/objects/creature/buffs/PrivateBuff.h"
 #include "server/zone/objects/creature/buffs/PrivateSkillMultiplierBuff.h"
 #include "server/zone/objects/creature/buffs/PlayerVehicleBuff.h"
-#include "server/zone/objects/building/hospital/HospitalBuildingObject.h"
 
 #include "server/zone/packets/object/SitOnObject.h"
 

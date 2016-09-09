@@ -5,8 +5,6 @@
  *      Author: victor
  */
 
-#include "server/zone/objects/building/tutorial/TutorialBuildingObject.h"
-
 #include "server/zone/managers/director/DirectorManager.h"
 
 namespace server {

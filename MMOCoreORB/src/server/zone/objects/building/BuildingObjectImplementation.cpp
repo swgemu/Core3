@@ -328,6 +328,9 @@ void BuildingObjectImplementation::notifyRemoveFromZone() {
 		}
 	}
 
+	childObjects.removeAll();
+	childCreatureObjects.removeAll();
+
 	if (signObject != NULL) {
 		Locker signLocker(signObject);
 

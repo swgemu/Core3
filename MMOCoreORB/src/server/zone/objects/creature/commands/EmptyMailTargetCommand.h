@@ -6,7 +6,6 @@
 #define EMPTYMAILTARGETCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/chat/ChatManager.h"
 
 class EmptyMailTargetCommand : public QueueCommand {
 public:

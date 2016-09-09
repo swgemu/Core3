@@ -338,8 +338,6 @@ void ZoneServerImplementation::shutdown() {
 void ZoneServerImplementation::stopManagers() {
 	info("stopping managers..", true);
 
-	guildManager = NULL;
-	cityManager = NULL;
 	missionManager = NULL;
 	radialManager = NULL;
 	auctionManager = NULL;
@@ -351,6 +349,16 @@ void ZoneServerImplementation::stopManagers() {
 	zoneHandler = NULL;
 	configManager = NULL;
 	phandler = NULL;
+
+	if (guildManager != NULL) {
+		guildManager->stop();
+		guildManager = NULL;
+	}
+
+	if (cityManager != NULL) {
+		cityManager->stop();
+		cityManager = NULL;
+	}
 
 	if (chatManager != NULL) {
 		chatManager->stop();

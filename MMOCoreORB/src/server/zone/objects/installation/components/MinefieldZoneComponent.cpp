@@ -13,6 +13,7 @@
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
 
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/Zone.h"

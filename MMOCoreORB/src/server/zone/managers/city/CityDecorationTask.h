@@ -9,7 +9,6 @@
 #define CITYDECORATIONTASK_H_
 
 #include "engine/engine.h"
-#include "server/chat/ChatManager.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/scene/SceneObject.h"

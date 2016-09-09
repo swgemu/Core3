@@ -15,7 +15,6 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "templates/params/creature/CreatureFlag.h"
 #include "server/zone/objects/player/FactionStatus.h"
-#include "server/zone/objects/structure/StructureObject.h"
 
 #include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
 #include "server/zone/objects/building/BuildingObject.h"

@@ -15,7 +15,7 @@ namespace tutorial {
 namespace events {
 
 class UnloadBuildingTask: public Task {
-	ManagedReference<TutorialBuildingObject*> building;
+	ManagedWeakReference<TutorialBuildingObject*> building;
 
 public:
 	UnloadBuildingTask(TutorialBuildingObject* bo) :
@@ -24,16 +24,21 @@ public:
 	}
 
 	void run() {
-		Locker _locker(building);
+		ManagedReference<TutorialBuildingObject*> blg = building.get();
+
+		if (blg == NULL)
+			return;
+
+		Locker _locker(blg);
 
 		try {
-			building->clearUnloadEvent();
+			blg->clearUnloadEvent();
 
-			building->destroyObjectFromWorld(true);
+			blg->destroyObjectFromWorld(true);
 		} catch (Exception& e) {
-			building->error("unreported exception caught in UnloadBuildingTask::run");
+			blg->error("unreported exception caught in UnloadBuildingTask::run");
 
-			building->clearUnloadEvent();
+			blg->clearUnloadEvent();
 		}
 	}
 

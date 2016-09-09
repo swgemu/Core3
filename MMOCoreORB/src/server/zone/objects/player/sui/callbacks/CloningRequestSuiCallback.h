@@ -13,7 +13,6 @@
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/scene/SceneObjectType.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
 class CloningRequestSuiCallback : public SuiCallback {

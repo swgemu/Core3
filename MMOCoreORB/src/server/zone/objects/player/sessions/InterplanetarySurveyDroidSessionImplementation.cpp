@@ -1,5 +1,4 @@
 #include "server/zone/objects/player/sessions/InterplanetarySurveyDroidSession.h"
-#include "server/chat/ChatManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"

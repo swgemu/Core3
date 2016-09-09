@@ -3,7 +3,6 @@
 
 
 #include "server/zone/packets/MessageCallback.h"
-#include "server/chat/ChatManager.h"
 
 class ChatDeleteAllPersistentMessagesCallback : public MessageCallback {
 	uint64 playerID;

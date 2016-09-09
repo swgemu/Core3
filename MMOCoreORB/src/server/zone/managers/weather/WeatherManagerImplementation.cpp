@@ -9,7 +9,6 @@
 
 #include "server/zone/managers/weather/WeatherManager.h"
 #include "server/zone/Zone.h"
-#include "server/chat/ChatManager.h"
 #include "events/WeatherChangeEvent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "templates/params/creature/CreatureAttribute.h"

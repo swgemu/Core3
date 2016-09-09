@@ -85,6 +85,8 @@ class CityManager extends ManagedService implements Logger {
 
 	public native void loadCityRegions();
 
+	public native void stop();
+
 	public native boolean validateCityName(final string name);
 
 	public native boolean isCityInRange(Zone zone, float x, float y);

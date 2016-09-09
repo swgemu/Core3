@@ -6,7 +6,6 @@ package server.zone.objects.installation;
 
 import engine.util.Observer;
 import engine.util.Observable;
-import server.zone.objects.building.BuildingObject;
 import server.zone.objects.scene.SceneObject;
 import engine.log.Logger;
 
