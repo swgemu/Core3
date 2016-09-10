@@ -81,6 +81,15 @@ public:
 		if (zone == NULL || obj->getObjectTemplate() == NULL)
 			return;
 
+		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+		// We don't want players to exploit-block entrances or exits to POI areas & buildings
+		if (!planetManager->isBuildingPermittedAt(obj->getPositionX(), obj->getPositionY(), mayor)) {
+			StringIdChatParameter msg;
+			msg.setStringId("@player_structure:not_permitted"); //"Building is not permitted here."
+			mayor->sendSystemMessage(msg);
+			return;
+		}
+
 		Reference<SceneObject*> objTooClose = zone->getPlanetManager()->findObjectTooCloseToDecoration(mayor->getPositionX(), mayor->getPositionY(), obj->getObjectTemplate()->getNoBuildRadius());
 
 		if (objTooClose != NULL && !obj->isCityStreetLamp()) {
