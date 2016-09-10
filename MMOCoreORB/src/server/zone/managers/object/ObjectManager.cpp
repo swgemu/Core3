@@ -1083,7 +1083,7 @@ void ObjectManager::stopUpdateModifiedObjectsThreads() {
 
 void ObjectManager::shutdown() {
 	stopUpdateModifiedObjectsThreads();
-	CommitMasterTransactionThread::instance()->cancel();
+	CommitMasterTransactionThread::instance()->shutdown();
 	databaseManager->closeDatabases();
 	databaseManager->finalizeInstance();
 	databaseManager = NULL;

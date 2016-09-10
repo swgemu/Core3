@@ -9,6 +9,7 @@
 #include "MessageCallbackFactory.h"
 
 #include "packets/MessageCallback.h"
+#include "packets/object/ObjectControllerMessageCallback.h"
 
 namespace server {
 namespace zone {
@@ -32,6 +33,7 @@ namespace zone {
 		ZonePacketHandler(const String& s, ZoneProcessServer* serv);
 
 		~ZonePacketHandler() {
+			delete ObjectControllerMessageCallback::objectMessageControllerFactory;
 		}
 
 		void registerMessages();

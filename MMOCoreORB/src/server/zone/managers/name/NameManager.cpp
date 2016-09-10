@@ -238,6 +238,9 @@ void NameManager::fillNames() {
 				continue;
 			}
 		}
+
+		restrictedReader.close();
+
 	} catch (FileNotFoundException&e ) {
 	}
 
