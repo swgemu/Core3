@@ -32,6 +32,7 @@ public:
 	int findBuff(Buff* buff);
 
 	String getDurationString(bool showhours = true, bool showminutes = true) const;
+	String getAbsorptionString(bool absorption = true) const;
 
 	//Getters
 	inline int getBuffListSize() const {

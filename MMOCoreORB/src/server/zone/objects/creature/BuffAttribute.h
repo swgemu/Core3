@@ -24,7 +24,7 @@ public:
 		UNKNOWN
 	};
 
-	//TODO: This entire class needs to be removed. Posion and Disease are not attributes.
+	//TODO: This entire class needs to be removed. Poison and Disease are not attributes.
 	//THEY ARE SKILLMODS
 	static const uint8 ARRAYSIZE = 11;
 
@@ -42,9 +42,11 @@ public:
 		switch(attribute) {
 		case POISON:
 			name = "resistance_poison";
+			name = "absorption_poison";
 			break;
 		case DISEASE:
 			name = "resistance_disease";
+			name = "absorption_disease";
 			break;
 		default:
 			name = "unknown";
@@ -53,7 +55,6 @@ public:
 
 		return name;
 	}
-
 
 	static uint8 getAttribute(String attribute) {
 		attribute = attribute.toLowerCase();
@@ -133,6 +134,5 @@ public:
 		return name;
 	}
 };
-
 
 #endif /* BUFFATTRIBUTE_H_ */
