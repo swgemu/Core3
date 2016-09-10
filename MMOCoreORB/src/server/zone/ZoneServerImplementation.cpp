@@ -480,6 +480,9 @@ bool ZoneServerImplementation::handleError(ZoneClientSession* client, Exception&
 Reference<SceneObject*> ZoneServerImplementation::getObject(uint64 oid, bool doLock) {
 	Reference<SceneObject*> obj = NULL;
 
+	if (isServerShuttingDown())
+		return obj;
+
 	try {
 		//lock(doLock); ObjectManager has its own mutex
 
@@ -757,6 +760,16 @@ void ZoneServerImplementation::setServerStateOnline() {
 
 	StringBuffer msg;
 	msg << dec << "server unlocked";
+	info(msg, true);
+}
+
+void ZoneServerImplementation::setServerStateShuttingDown() {
+	Locker locker(_this.getReferenceUnsafeStaticCast());
+
+	serverState = SHUTTINGDOWN;
+
+	StringBuffer msg;
+	msg << dec << "server shutting down";
 	info(msg, true);
 }
 

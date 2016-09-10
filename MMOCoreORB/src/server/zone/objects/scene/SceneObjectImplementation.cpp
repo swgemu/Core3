@@ -502,7 +502,7 @@ void SceneObjectImplementation::sendAttributeListTo(CreatureObject* object) {
 void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, SceneObject* selfObject) {
 	ZoneServer* zoneServer = getZoneServer();
 
-	if (zoneServer == NULL || zoneServer->isServerLoading())
+	if (zoneServer == NULL || zoneServer->isServerLoading() || zoneServer->isServerShuttingDown())
 		return;
 
 	if (parent != NULL) {
@@ -557,7 +557,7 @@ void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSe
 void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, SceneObject* selfObject) {
 	ZoneServer* zoneServer = getZoneServer();
 
-	if (zoneServer == NULL || zoneServer->isServerLoading())
+	if (zoneServer == NULL || zoneServer->isServerLoading() || zoneServer->isServerShuttingDown())
 		return;
 
 	if (parent.get() != NULL) {
@@ -613,7 +613,7 @@ void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendS
 void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, SceneObject* selfObject, bool lockZone) {
 	ZoneServer* zoneServer = getZoneServer();
 
-	if (zoneServer == NULL || zoneServer->isServerLoading()) {
+	if (zoneServer == NULL || zoneServer->isServerLoading() || zoneServer->isServerShuttingDown()) {
 		delete message;
 		return;
 	}
@@ -703,7 +703,7 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* messages, SceneObject* selfObject) {
 	ZoneServer* zoneServer = getZoneServer();
 
-	if (zoneServer == NULL || zoneServer->isServerLoading()) {
+	if (zoneServer == NULL || zoneServer->isServerLoading() || zoneServer->isServerShuttingDown()) {
 		while (!messages->isEmpty()) {
 			delete messages->remove(0);
 		}

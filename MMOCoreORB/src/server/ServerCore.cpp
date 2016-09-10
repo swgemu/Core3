@@ -228,7 +228,7 @@ void ServerCore::shutdown() {
 	ZoneServer* zoneServer = zoneServerRef.get();
 
 	if (zoneServer != NULL) {
-		zoneServer->setServerStateLocked();
+		zoneServer->setServerStateShuttingDown();
 
 		Thread::sleep(2000);
 
