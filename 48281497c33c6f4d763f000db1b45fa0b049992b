@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_53ffe401",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/yavin4/yith_seenath.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-10T22:47:32Z",
+      "side": 1,
+      "message": "Go with 4 since that\u0027s what the pre-cu evidence states.\n\n\"This lieutenant doesn\u0027t go anywhere without two of his best men accompanying him.\" -- I read this as he has a minimum of 2 with him at all times, not that he\u0027ll only ever have 2 with him.",
+      "revId": "48281497c33c6f4d763f000db1b45fa0b049992b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_931c9c6c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/yavin4/yith_seenath.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-10T22:47:32Z",
+      "side": 1,
+      "message": "It can be done (don\u0027t you recall the warehouse that you blow up in jabba\u0027s themepark?). However, we have 2 sources that say the objective was to kill an imperial inquisitor and his guards. It can be changed in the future easily enough, but for our purpose, let\u0027s go with emulation. In fact, I wouldn\u0027t be surprised if soe originally had the warehouse but removed it because the yavin terrain wasn\u0027t conducive to spawning buildings (and it kept failing to find locations it could spawn).",
+      "revId": "48281497c33c6f4d763f000db1b45fa0b049992b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
