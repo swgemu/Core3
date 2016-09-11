@@ -1,0 +1,361 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_93333cf6",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-11T02:24:06Z",
+      "side": 1,
+      "message": "This is already included.",
+      "revId": "339d2de5dd4f914ae8f9455ef6514bf2f78f8df4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f33dd0bc",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/village/phase2/qtqc_phase2_conv.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-11T02:24:06Z",
+      "side": 1,
+      "message": "You aren\u0027t using this screen.",
+      "revId": "339d2de5dd4f914ae8f9455ef6514bf2f78f8df4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_13572c04",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase2/quharek_phase2_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-11T02:24:06Z",
+      "side": 1,
+      "message": "You can remove this.",
+      "revId": "339d2de5dd4f914ae8f9455ef6514bf2f78f8df4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_335ca825",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase2/quharek_phase2_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-11T02:24:06Z",
+      "side": 1,
+      "message": "You can remove this.",
+      "revId": "339d2de5dd4f914ae8f9455ef6514bf2f78f8df4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_934a5c54",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase2/quharek_phase2_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-11T02:24:06Z",
+      "side": 1,
+      "message": "In the community crafting screenplay you have a member called maxCraftersPerPhase, and it\u0027s set to 100. You should probably use that member for this check, and decide which value is correct.",
+      "revId": "339d2de5dd4f914ae8f9455ef6514bf2f78f8df4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d340d437",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase2/quharek_phase2_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-11T02:24:06Z",
+      "side": 1,
+      "message": "I don\u0027t think it makes sense to have this option if they are already an active crafter.",
+      "revId": "339d2de5dd4f914ae8f9455ef6514bf2f78f8df4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b347584b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase2/quharek_phase2_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-11T02:24:06Z",
+      "side": 1,
+      "message": "Use the minIngredients member of the community crafting screenplay instead of hard coding this.",
+      "revId": "339d2de5dd4f914ae8f9455ef6514bf2f78f8df4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_5374c49b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_community_crafting.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-11T02:24:06Z",
+      "side": 1,
+      "message": "Should the rest of these have attributes?",
+      "revId": "339d2de5dd4f914ae8f9455ef6514bf2f78f8df4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_3381084b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_community_crafting.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-11T02:24:06Z",
+      "side": 1,
+      "message": "What is this for?",
+      "revId": "339d2de5dd4f914ae8f9455ef6514bf2f78f8df4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_7379c092",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_community_crafting.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-11T02:24:06Z",
+      "side": 1,
+      "message": "What is this for?",
+      "revId": "339d2de5dd4f914ae8f9455ef6514bf2f78f8df4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_136e4cca",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_community_crafting.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-11T02:24:06Z",
+      "side": 1,
+      "message": "you already have a local named pMap",
+      "revId": "339d2de5dd4f914ae8f9455ef6514bf2f78f8df4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f364f0e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_community_crafting.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-11T02:24:06Z",
+      "side": 1,
+      "message": "You already have a local named pMap",
+      "revId": "339d2de5dd4f914ae8f9455ef6514bf2f78f8df4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_9361fcd5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_community_crafting.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-11T02:24:06Z",
+      "side": 1,
+      "message": "You already have a local named statMap",
+      "revId": "339d2de5dd4f914ae8f9455ef6514bf2f78f8df4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b35e7811",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_community_crafting.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-11T02:24:06Z",
+      "side": 1,
+      "message": "You already have a local named statMap",
+      "revId": "339d2de5dd4f914ae8f9455ef6514bf2f78f8df4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_539b64c9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_community_crafting.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-11T02:24:06Z",
+      "side": 1,
+      "message": "You already have a local named statMap",
+      "revId": "339d2de5dd4f914ae8f9455ef6514bf2f78f8df4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_73a0e0f4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_community_crafting.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-11T02:24:06Z",
+      "side": 1,
+      "message": "You can remove local from these 3.",
+      "revId": "339d2de5dd4f914ae8f9455ef6514bf2f78f8df4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_93b81c2c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_community_crafting.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-11T02:24:06Z",
+      "side": 1,
+      "message": "typo",
+      "revId": "339d2de5dd4f914ae8f9455ef6514bf2f78f8df4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b3b51833",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_community_crafting.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-11T02:24:06Z",
+      "side": 1,
+      "message": "typo",
+      "revId": "339d2de5dd4f914ae8f9455ef6514bf2f78f8df4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_53828453",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_community_crafting.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-11T02:24:06Z",
+      "side": 1,
+      "message": "You can remove this",
+      "revId": "339d2de5dd4f914ae8f9455ef6514bf2f78f8df4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_73878062",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_community_crafting.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-11T02:24:06Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "339d2de5dd4f914ae8f9455ef6514bf2f78f8df4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_137c0c72",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_community_crafting.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-11T02:24:06Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "339d2de5dd4f914ae8f9455ef6514bf2f78f8df4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
