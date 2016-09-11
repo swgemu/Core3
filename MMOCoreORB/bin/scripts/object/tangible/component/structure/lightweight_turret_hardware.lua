@@ -42,7 +42,15 @@
 
 
 object_tangible_component_structure_lightweight_turret_hardware = object_tangible_component_structure_shared_lightweight_turret_hardware:new {
-
+	numberExperimentalProperties = {1, 1, 2},
+	experimentalProperties = {"XX", "XX", "MA", "UT"},
+	experimentalWeights = {1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "accuracy"},
+	experimentalSubGroupTitles = {"null", "null", "accuracy"},
+	experimentalMin = {0, 0, 0},
+	experimentalMax = {0, 0, 500},
+	experimentalPrecision = {0, 0, 1},
+	experimentalCombineType = {0, 0, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_lightweight_turret_hardware, "object/tangible/component/structure/lightweight_turret_hardware.iff")

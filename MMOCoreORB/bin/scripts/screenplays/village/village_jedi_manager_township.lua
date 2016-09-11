@@ -73,6 +73,11 @@ function VillageJediManagerTownship:switchToNextPhase()
 	VillageJediManagerTownship.setCurrentPhaseID(phaseID + 1)
 	VillageJediManagerTownship:spawnMobiles(currentPhase, false)
 	VillageJediManagerTownship:spawnSceneObjects(currentPhase, false)
+	
+	if (currentPhase == 2) then
+		VillageCommunityCrafting:createAttributeValueTables()
+		VillageCommunityCrafting:createProjectStatsTables()
+	end
 
 	Logger:log("Switching village phase to " .. currentPhase, LT_INFO)
 
@@ -376,6 +381,10 @@ function VillageJediManagerTownship:getObjOwner(pObj)
 	end
 
 	return nil
+end
+
+function VillageJediManagerTownship.initQtQcPhase2(pNpc)
+	SceneObject(pNpc):setContainerComponent("QtQcContainerComponent")
 end
 
 registerScreenPlay("VillageJediManagerTownship", true)

@@ -43,6 +43,9 @@ class CustomIngredient extends TangibleObject {
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	public native void addAttribute(final string attribute, int value);
+	
+	@local
+	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 
 	@dirty
 	public native void clearAttributes() {
