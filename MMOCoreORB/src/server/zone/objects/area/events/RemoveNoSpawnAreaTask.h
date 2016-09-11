@@ -12,7 +12,7 @@
 #include "server/zone/objects/area/ActiveArea.h"
 
 class RemoveNoSpawnAreaTask : public Task {
-	ManagedReference<ActiveArea*> area;
+	ManagedWeakReference<ActiveArea*> area;
 
 public:
 	RemoveNoSpawnAreaTask(ActiveArea* camp) {
@@ -20,12 +20,14 @@ public:
 	}
 
 	void run() {
-		if (area == NULL)
+		ManagedReference<ActiveArea*> strongArea = area.get();
+
+		if (strongArea == NULL)
 			return;
 
-		Locker locker(area);
+		Locker locker(strongArea);
 
-		area->destroyObjectFromWorld(true);
+		strongArea->destroyObjectFromWorld(true);
 	}
 };
 

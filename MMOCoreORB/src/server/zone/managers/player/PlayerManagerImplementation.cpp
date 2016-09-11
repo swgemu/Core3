@@ -3146,12 +3146,12 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 
 	//Locker locker(zone);
 
-	SortedVector < QuadTreeEntry* > *closeObjects = new SortedVector<QuadTreeEntry*>(100, 50);
 	CloseObjectsVector* vec = (CloseObjectsVector*) player->getCloseObjects();
-	vec->safeCopyTo(*closeObjects);
+	SortedVector<QuadTreeEntry*> closeObjects(vec->size(), 10);
+	vec->safeCopyTo(closeObjects);
 
-	for (int i = 0; i < closeObjects->size(); ++i) {
-		SceneObject* scno = static_cast<SceneObject*> (closeObjects->get(i));
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* scno = static_cast<SceneObject*> (closeObjects.get(i));
 		if (scno->isCraftingStation() && (fabs(scno->getPositionZ() - player->getPositionZ()) < 7.0f) && player->isInRange(scno, 7.0f)) {
 
 			station = server->getObject(scno->getObjectID()).castTo<CraftingStation*>();
