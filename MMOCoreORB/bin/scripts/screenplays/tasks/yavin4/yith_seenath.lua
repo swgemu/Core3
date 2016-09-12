@@ -72,7 +72,7 @@ yith_seenath_missions =
 npcMapYithSeenath =
 	{
 		{
-			spawnData = { npcTemplate = "yith_seenath", x = 1591.2, z = 102.0, y = 1536.1, direction = 162, cellID = 0, position = STAND },
+			spawnData = { npcTemplate = "yith_seenath", x = 1590.0, z = 101.0, y = 1536.1, direction = 162, cellID = 0, position = STAND },
 			npcNumber = 1,
 			stfFile = "@static_npc/yavin/yavin_rebelcamp_yith_seenath",
 			missions = yith_seenath_missions
