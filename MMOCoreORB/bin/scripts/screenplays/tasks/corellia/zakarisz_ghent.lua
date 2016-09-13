@@ -1,4 +1,4 @@
-talon_karrde_missions =
+zakarisz_ghent_missions =
 	{
 		{
 			missionType = "retrieve",
@@ -36,7 +36,7 @@ talon_karrde_missions =
 			missionType = "confiscate",
 			primarySpawns =
 			{
-				{ npcTemplate = "talon_courier", npcName = "a Hutt courier" }
+				{ npcTemplate = "zakarisz_ghent_courier", npcName = "a Hutt courier" }
 			},
 			secondarySpawns =
 			{
@@ -56,7 +56,7 @@ talon_karrde_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "talon_bcb_courier", npcName = "a BCB courier" }
+				{ npcTemplate = "zakarisz_ghent_bcb_courier", npcName = "a BCB courier" }
 			},
 			secondarySpawns =
 			{
@@ -73,31 +73,31 @@ talon_karrde_missions =
 		}
 	}
 
-npcMapTalonKarrde =
+npcMapZakariszGhent =
 	{
 		{
-			spawnData = { npcTemplate = "talon_karrde", x = 5.617, z = -0.895, y = 20.963, direction = -175, cellID = 3075433, position = STAND },
+			spawnData = { npcTemplate = "zakarisz_ghent", x = 5.617, z = -0.895, y = 20.963, direction = -175, cellID = 3075433, position = STAND },
 			worldPosition = { x = 3255, y = 5308 },
 			npcNumber = 1,
-			stfFile = "@static_npc/corellia/talon_karrde",
-			missions = talon_karrde_missions
+			stfFile = "@static_npc/corellia/ghent",
+			missions = zakarisz_ghent_missions
 		}
 	}
 
-TalonKarrde = ThemeParkLogic:new {
-	npcMap = npcMapTalonKarrde,
-	className = "TalonKarrde",
-	screenPlayState = "talon_karrde_quest",
+ZakariszGhent = ThemeParkLogic:new {
+	npcMap = npcMapZakariszGhent,
+	className = "ZakariszGhent",
+	screenPlayState = "zakarisz_ghent_quest",
 	planetName = "corellia",
 	distance = 800
 }
 
-registerScreenPlay("TalonKarrde", true)
+registerScreenPlay("ZakariszGhent", true)
 
-talon_karrde_mission_giver_conv_handler = mission_giver_conv_handler:new {
-	themePark = TalonKarrde
+zakarisz_ghent_mission_giver_conv_handler = mission_giver_conv_handler:new {
+	themePark = ZakariszGhent
 }
 
-talon_karrde_mission_target_conv_handler = mission_target_conv_handler:new {
-	themePark = TalonKarrde
+zakarisz_ghent_mission_target_conv_handler = mission_target_conv_handler:new {
+	themePark = ZakariszGhent
 }

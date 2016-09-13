@@ -176,6 +176,8 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "themepark_music_1")
 	pNpc = spawnMobile(self.planet, "dravis",60,-21.2103,-0.894989,24.3324,164.437,1082886)
 	self:setMoodString(pNpc, "neutral")
+	pNpc = spawnMobile(self.planet, "talon_karrde",60,-18.7,-0.9,24.9,-31.0,1082886)
+	self:setMoodString(pNpc, "npc_sitting_chair")
 
 	--western Tavern A
 	pNpc = spawnMobile(self.planet, "protocol_droid_3po",60,5.3,1.0,4.2,0,1188033)
