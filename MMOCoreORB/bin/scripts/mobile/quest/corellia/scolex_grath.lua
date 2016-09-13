@@ -1,6 +1,6 @@
-serji_x_arrogantus = Creature:new {
-	objectName = "",
-	customName = "Serji X Arrogantus",
+scolex_grath = Creature:new {
+	objectName = "@npc_name:human_base_male",
+	customName = "Scolex Grath",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -23,15 +23,14 @@ serji_x_arrogantus = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_serjix_arrogantus.iff"},
+	templates = {"object/mobile/dressed_scolex_grath.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "scolex_grath_mission_giver_convotemplate",
+	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(serji_x_arrogantus, "serji_x_arrogantus")
+CreatureTemplates:addCreatureTemplate(scolex_grath, "scolex_grath")

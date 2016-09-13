@@ -1,6 +1,6 @@
-dalla_solo = Creature:new {
+serji_x_arrogantus = Creature:new {
 	objectName = "",
-	customName = "Dalla Solo",
+	customName = "Serji X Arrogantus",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -23,15 +23,14 @@ dalla_solo = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_dalla_solo.iff"},
+	templates = {"object/mobile/dressed_serjix_arrogantus.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "serjix_arrogantus_mission_giver_convotemplate",
+	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(dalla_solo, "dalla_solo")
+CreatureTemplates:addCreatureTemplate(serji_x_arrogantus, "serji_x_arrogantus")

@@ -1,6 +1,6 @@
-scolex_grath = Creature:new {
+skinkner = Creature:new {
 	objectName = "@npc_name:human_base_male",
-	customName = "Scolex Grath",
+	customName = "Skinkner",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -23,15 +23,14 @@ scolex_grath = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_scolex_grath.iff"},
+	templates = {"object/mobile/dressed_skinkner.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "skinkner_mission_giver_convotemplate",
+	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(scolex_grath, "scolex_grath")
+CreatureTemplates:addCreatureTemplate(skinkner, "skinkner")
