@@ -1,10 +1,10 @@
 pirate_crewman = Creature:new {
-	objectName = "",
+	objectName = "@mob/creature_names:pirate",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	customName = "a Pirate Crewman",
 	socialGroup = "pirate",
-	faction = "",
+	faction = "pirate",
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 50,

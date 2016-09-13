@@ -81,7 +81,6 @@ function TalusNashalScreenPlay:spawnMobiles()
 	--spawnMobile("talus", "junk_dealer",0,4541.9,2,5278.5,-64,0)
 	spawnMobile("talus", "rebel_recruiter",1,4072,2,5289,135,0)
 	--quest
-	spawnMobile("talus", "durgur_pyne",60,3,0,4.3,342,4265614)
 	spawnMobile("talus", "green_laser",60,10.1,-0.9,19.5,293,4265379)
 	spawnMobile("talus", "jusani_zhord",60,20,1.3,-1,270,4265423)
 	--trainers

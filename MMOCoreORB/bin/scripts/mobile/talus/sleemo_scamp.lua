@@ -3,7 +3,7 @@ sleemo_scamp = Creature:new {
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	socialGroup = "sleemo_gang",
-	faction = "",
+	faction = "pirate",
 	level = 8,
 	chanceHit = 0.270000,
 	damageMin = 70,
@@ -24,6 +24,7 @@ sleemo_scamp = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_hoodlum_zabrak_male_01.iff"},

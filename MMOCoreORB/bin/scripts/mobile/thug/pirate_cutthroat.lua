@@ -1,8 +1,9 @@
 pirate_cutthroat = Creature:new {
-	objectName = "",
-	customName = "a Pirate Cutthroat",
+	objectName = "@mob/creature_names:naboo_pirate_cutthroat",
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "pirate",
-	faction = "",
+	faction = "pirate",
 	level = 8,
 	chanceHit = 0.27,
 	damageMin = 70,

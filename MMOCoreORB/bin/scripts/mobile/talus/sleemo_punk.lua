@@ -3,7 +3,7 @@ sleemo_punk = Creature:new {
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	socialGroup = "sleemo_gang",
-	faction = "",
+	faction = "pirate",
 	level = 6,
 	chanceHit = 0.250000,
 	damageMin = 50,
@@ -24,6 +24,7 @@ sleemo_punk = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = STALKER + HERD,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_hooligan_rodian_male_01.iff"},
