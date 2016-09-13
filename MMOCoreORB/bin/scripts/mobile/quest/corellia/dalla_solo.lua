@@ -1,6 +1,6 @@
-skinkner = Creature:new {
-	objectName = "@npc_name:human_base_male",
-	customName = "Skinkner",
+dalla_solo = Creature:new {
+	objectName = "",
+	customName = "Dalla Solo",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -23,15 +23,14 @@ skinkner = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_skinkner.iff"},
+	templates = {"object/mobile/dressed_dalla_solo.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "dalla_solo_mission_giver_convotemplate",
+	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(skinkner, "skinkner")
+CreatureTemplates:addCreatureTemplate(dalla_solo, "dalla_solo")
