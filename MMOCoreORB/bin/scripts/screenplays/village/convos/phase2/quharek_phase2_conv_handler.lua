@@ -8,9 +8,9 @@ function villageQuharekPhase2ConvoHandler:getInitialScreen(pPlayer, pNpc, pConve
 
 	if (VillageJediManagerTownship:getCurrentPhase() ~= 2) then
 		return convoTemplate:getScreen("intro_communitycrafting_inactive")
-	elseif (QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_02) and VillageCommunityCrafting.isOnActiveCrafterList(pPlayer)) then
+	elseif (QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_02) and VillageCommunityCrafting:isOnActiveCrafterList(pPlayer)) then
 		return convoTemplate:getScreen("intro_questcompleted_activecrafter")
-	elseif (QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_02) and not VillageCommunityCrafting.isOnActiveCrafterList(pPlayer)) then
+	elseif (QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_02) and not VillageCommunityCrafting:isOnActiveCrafterList(pPlayer)) then
 		return convoTemplate:getScreen("intro_questcompleted_notactivecrafter")
 	else
 		return convoTemplate:getScreen("intro_communitycrafting_active")
@@ -24,7 +24,7 @@ function villageQuharekPhase2ConvoHandler:runScreenHandlers(conversationTemplate
 	local clonedConversation = LuaConversationScreen(conversationScreen)
 
 	if (screenID == "intro_questcompleted_activecrafter" or screenID == "intro_questcompleted_notactivecrafter" or screenID == "intro_communitycrafting_active") then
-		if (VillageCommunityCrafting.getCurrentActiveCrafters() >= VillageCommunityCrafting.getMaxCraftersPerPhase()) then
+		if (VillageCommunityCrafting:getCurrentActiveCrafters() >= VillageCommunityCrafting:getMaxCraftersPerPhase()) then
 			clonedConversation:addOption("@conversation/quharek_phase_2:s_955b2ddb", "max_crafters") -- I hear you're looking for crafters.
 		else
 			if (not CreatureObject(conversingPlayer):hasSkill("crafting_artisan_novice")) then
@@ -35,7 +35,7 @@ function villageQuharekPhase2ConvoHandler:runScreenHandlers(conversationTemplate
 		end
 		clonedConversation:addOption("@conversation/quharek_phase_2:s_baf57f52", "what_you_want_to_know") -- I'd like to get the status of the village defenses.
 	elseif (screenID == "need_people_to_help") then
-		clonedConversation:setDialogTextDI(VillageCommunityCrafting.getMinimumIngredients())
+		clonedConversation:setDialogTextDI(VillageCommunityCrafting:getMinimumIngredients())
 	elseif (screenID == "talk_to_qtqc") then
 		VillageJediManagerCommon.setActiveQuestThisPhase(conversingPlayer)
 		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_MAIN)
