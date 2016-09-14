@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_b372f847",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/yavin4/jazeen_thurmm.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-14T23:11:28Z",
+      "side": 1,
+      "message": "Don\u0027t do this. Only the one the player should converse with should have the interesting bit. If you need to have secondary spawns that don\u0027t aggro, then add functionality for that or spawn them as static objects.",
+      "revId": "fbd4ce37ed81058f7a82629f0d14ae6f02c3ef72",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_538fe423",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/yavin4/jazeen_thurmm.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-14T23:11:28Z",
+      "side": 1,
+      "message": "Did you try it? Regardless, I doubt they spawned an actual lair for this mission on live. It\u0027s more likely it was just a few anglers at the waypoint like you have here.",
+      "revId": "fbd4ce37ed81058f7a82629f0d14ae6f02c3ef72",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
