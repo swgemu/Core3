@@ -1,8 +1,8 @@
 gravin_attal = Creature:new {
 	objectName = "",
 	customName = "Gravin Attal",
-	socialGroup = "townsperson",
-	faction = "townsperson",
+	socialGroup = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -23,13 +23,13 @@ gravin_attal = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_gravin_attal.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "gravin_attal_mission_giver_convotemplate",
 	attacks = {}
 }
 
