@@ -1,5 +1,5 @@
-talon_karrde = Creature:new {
-	objectName = "@mob/creature_names:talon_karrde",
+zakarisz_ghent = Creature:new {
+	customName = "Zakarisz Ghent",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -25,12 +25,12 @@ talon_karrde = Creature:new {
 	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_talon_karrde.iff"},
+	templates = {"object/mobile/dressed_ghent.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "talon_karrde_mission_giver_convotemplate",
+	conversationTemplate = "zakarisz_ghent_mission_giver_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(talon_karrde, "talon_karrde")
+CreatureTemplates:addCreatureTemplate(zakarisz_ghent, "zakarisz_ghent")

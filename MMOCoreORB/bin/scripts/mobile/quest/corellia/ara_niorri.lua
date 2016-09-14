@@ -32,7 +32,7 @@ ara_niorri = Creature:new {
 	},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "talon_karrde_mission_target_convotemplate",
+	conversationTemplate = "zakarisz_ghent_mission_target_convotemplate",
 	attacks ={}
 }
 

@@ -1,4 +1,4 @@
-talon_courier = Creature:new {
+zakarisz_ghent_courier = Creature:new {
 	objectName = "",
 	socialGroup = "jabba",
 	faction = "jabba",
@@ -29,7 +29,7 @@ talon_courier = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "task_loot_talon_package", chance = 10000000}
+				{group = "task_loot_zakarisz_package", chance = 10000000}
 			},
 			lootChance = 10000000
 		}
@@ -39,4 +39,4 @@ talon_courier = Creature:new {
 	attacks = merge(marksmannovice,brawlernovice)
 }
 
-CreatureTemplates:addCreatureTemplate(talon_courier, "talon_courier")
+CreatureTemplates:addCreatureTemplate(zakarisz_ghent_courier, "zakarisz_ghent_courier")

@@ -1,4 +1,4 @@
-talon_package = {
+zakarisz_package = {
   minimumLevel = 0,
   maximumLevel = -1,
   customObjectName = "Package",
@@ -12,4 +12,4 @@ talon_package = {
   }
 }
 
-addLootItemTemplate("talon_package", talon_package)
+addLootItemTemplate("zakarisz_package", zakarisz_package)

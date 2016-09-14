@@ -1,4 +1,4 @@
-talon_bcb_courier = Creature:new {
+zakarisz_ghent_bcb_courier = Creature:new {
 	objectName = "",
 	socialGroup = "townsperson",
 	faction = "townsperson",
@@ -36,8 +36,8 @@ talon_bcb_courier = Creature:new {
 	},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "talon_karrde_mission_target_convotemplate",
+	conversationTemplate = "zakarisz_ghent_mission_target_convotemplate",
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(talon_bcb_courier, "talon_bcb_courier")
+CreatureTemplates:addCreatureTemplate(zakarisz_ghent_bcb_courier, "zakarisz_ghent_bcb_courier")
