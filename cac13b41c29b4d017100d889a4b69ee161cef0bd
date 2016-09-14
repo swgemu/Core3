@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_939edc62",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/static_spawns/yavin4_static_spawns.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-14T22:52:28Z",
+      "side": 1,
+      "message": "Get rid of the random numbers and just place them where you see them in the screenshot. How you have it they\u0027d be liable to spawn on top of each other and be facing all different directions like a disorganized mess. That\u0027s not at all how they look in the screenshot.",
+      "revId": "cac13b41c29b4d017100d889a4b69ee161cef0bd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b39bd871",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/yavin4/captain_eso.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-14T22:52:28Z",
+      "side": 1,
+      "message": "Don\u0027t contradict the actual evidence from live. It actually said 3 so go with 3. And don\u0027t leave these kind of comments in the code. If you want to try and justify why you are doing something, leave a comment in gerrit (like this one).",
+      "revId": "cac13b41c29b4d017100d889a4b69ee161cef0bd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_53884422",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/yavin4/captain_eso.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-14T22:52:28Z",
+      "side": 1,
+      "message": "Only primarySpawns are set to not be aggro\u0027d by other ai. Only put one trooper in the primarySpawns table and move the others here and those two should fight these two (and the primary might join in if it gets hit by an aoe).\n\nAlso, I see no reason for you to create a new template for these guys. Use an existing one.",
+      "revId": "cac13b41c29b4d017100d889a4b69ee161cef0bd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_738d4031",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/yavin4/captain_eso.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-14T22:52:28Z",
+      "side": 1,
+      "message": "Yes, you\u0027d add a staticObjects table.",
+      "revId": "cac13b41c29b4d017100d889a4b69ee161cef0bd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_1382cc00",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/yavin4/captain_eso.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-14T22:52:28Z",
+      "side": 1,
+      "message": "The guide called this an Imperial field medic",
+      "revId": "cac13b41c29b4d017100d889a4b69ee161cef0bd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_3387c811",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/yavin4/captain_eso.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-14T22:52:28Z",
+      "side": 1,
+      "message": "The guide called this a jungle trooper",
+      "revId": "cac13b41c29b4d017100d889a4b69ee161cef0bd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
