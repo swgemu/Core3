@@ -1,3 +1,13 @@
+munitionsDepot =
+	{
+		type = "destructible",
+		buildingTemplate = "object/building/military/pirate_warehouse.iff",
+		terminal = { template = "object/tangible/terminal/terminal_destructible_building.iff", vectorCellID = 3, x = 0, z = 0.3, y = -6.0 },
+		childNpcs = {
+			{ npcTemplate = "imperial_inquisitor", npcName = "", vectorCellID = 3, x = 0, z = 0.3, y = -3.0 }
+		}
+	}
+
 yith_seenath_missions =
 	{
 		{
@@ -44,10 +54,11 @@ yith_seenath_missions =
 			}
 		},
 		{
-			missionType = "assassinate",
+			missionType = "destroy",
+			buildingSpawn = munitionsDepot,
 			primarySpawns =
 			{
-				{ npcTemplate = "imperial_inquisitor", npcName = "" }
+				{ npcTemplate = "imperial_sharpshooter", npcName = "" }
 			},
 			secondarySpawns =
 			{
@@ -55,8 +66,6 @@ yith_seenath_missions =
 				{ npcTemplate = "storm_commando", npcName = "" },
 				{ npcTemplate = "storm_commando", npcName = "" },
 				{ npcTemplate = "storm_commando", npcName = "" }
-		--TODO: string-file dialog says to "blow up a munitions depot", so later if we want to,
-		--we can add a 'theater' here sorta like we did with Jabba's tp mission
 			},
 			itemSpawns =
 			{
