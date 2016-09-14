@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_f378702d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/yavin4/yith_seenath.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-14T22:53:51Z",
+      "side": 1,
+      "message": "This contradicts the pre-cu evidence we have of this mission.",
+      "revId": "a63f62f6bfe3e7120d94841735c824b91917a5c2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
