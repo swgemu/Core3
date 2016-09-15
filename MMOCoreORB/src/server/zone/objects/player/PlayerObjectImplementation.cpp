@@ -203,8 +203,6 @@ void PlayerObjectImplementation::unloadSpawnedChildren() {
 void PlayerObjectImplementation::unload() {
 	info("unloading player");
 
-	SceneObject* savedParent = NULL;
-
 	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
 
 	MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
@@ -226,26 +224,12 @@ void PlayerObjectImplementation::unload() {
 	if (creature->getZone() != NULL) {
 		savedTerrainName = creature->getZone()->getZoneName();
 
-		//if (creature->isInQuadTree()) {
 		if (creoParent != NULL) {
 			savedParentID = creoParent->getObjectID();
-
-			savedParent = creoParent;
 		} else
 			savedParentID = 0;
 
 		creature->destroyObjectFromWorld(true);
-		//}
-	}
-
-	/*if (creoParent != NULL)
-		creoParent->removeObject(creature);*/
-
-	creature->clearUpdateToDatabaseTask();
-	//updateToDatabaseAllObjects(false);
-
-	if (savedParent != NULL) {
-		//savedParent->updateToDatabaseWithoutChildren();
 	}
 
 	creature->clearCombatState(true);
@@ -256,8 +240,6 @@ void PlayerObjectImplementation::unload() {
 
 	if (tradeContainer != NULL)
 		creature->dropActiveSession(SessionFacadeType::TRADE);
-
-	//creature->clearDots();
 
 	//Remove player from Chat Manager and all rooms.
 	ManagedReference<ChatManager*> chatManager = getZoneServer()->getChatManager();
@@ -280,12 +262,13 @@ void PlayerObjectImplementation::unload() {
 	if (group != NULL)
 		GroupManager::instance()->leaveGroup(group, creature);
 
-	updateToDatabase();
 	/*StringBuffer msg;
-	msg << "remaining ref count: " << _this.getReferenceUnsafeStaticCast()->getReferenceCount();
+	msg << "remaining play ref count: " << _this.getReferenceUnsafeStaticCast()->getReferenceCount();
+	msg << " - remaining creo ref count: " << creature->getReferenceCount();
 	info(msg.toString(), true);
 
-	_this.getReferenceUnsafeStaticCast()->printReferenceHolders();*/
+	_this.getReferenceUnsafeStaticCast()->printReferenceHolders();
+	creature->printReferenceHolders();*/
 }
 
 void PlayerObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -1906,7 +1889,7 @@ void PlayerObjectImplementation::disconnect(bool closeClient, bool doLock) {
 		return;
 	}
 
-	if (/*isInCombat() && */!isLinkDead()) {
+	if (!isLinkDead()) {
 		info("link dead");
 
 		setLinkDead();
@@ -1920,13 +1903,6 @@ void PlayerObjectImplementation::disconnect(bool closeClient, bool doLock) {
 
 	if (disconnectEvent != NULL)
 		disconnectEvent = NULL;
-
-	/*if (logoutEvent != NULL) {
-			server->removeEvent(logoutEvent);
-			delete logoutEvent;
-
-			logoutEvent = NULL;
-		}*/
 
 	ZoneClientSession* owner = creature->getClient();
 

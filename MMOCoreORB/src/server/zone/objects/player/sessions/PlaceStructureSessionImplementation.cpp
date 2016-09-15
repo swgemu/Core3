@@ -26,16 +26,23 @@
 
 
 int PlaceStructureSessionImplementation::constructStructure(float x, float y, int angle) {
+	ManagedReference<StructureDeed*> deed = deedObject.get();
+	ManagedReference<Zone*> thisZone = zone.get();
+	ManagedReference<CreatureObject*> creature = creatureObject.get();
+
+	if (deed == NULL || thisZone == NULL || creature == NULL)
+		return cancelSession();
+
 	positionX = x;
 	positionY = y;
 	directionAngle = angle;
 
 	TemplateManager* templateManager = TemplateManager::instance();
 
-	String serverTemplatePath = deedObject->getGeneratedObjectTemplate();
+	String serverTemplatePath = deed->getGeneratedObjectTemplate();
 	Reference<SharedStructureObjectTemplate*> serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(serverTemplatePath.hashCode()));
 
-	if (serverTemplate == NULL || temporaryNoBuildZone != NULL)
+	if (serverTemplate == NULL || temporaryNoBuildZone.get() != NULL)
 		return cancelSession(); //Something happened, the server template is not a structure template or temporaryNoBuildZone already set.
 
 	placeTemporaryNoBuildZone(serverTemplate);
@@ -44,10 +51,10 @@ int PlaceStructureSessionImplementation::constructStructure(float x, float y, in
 	int constructionDuration = 100; //Set the duration for 100ms as a fall back if it doesn't have a barricade template.
 
 	if (!barricadeServerTemplatePath.isEmpty()) {
-		constructionBarricade = ObjectManager::instance()->createObject(barricadeServerTemplatePath.hashCode(), 0, "");
+		ManagedReference<SceneObject*> barricade = ObjectManager::instance()->createObject(barricadeServerTemplatePath.hashCode(), 0, "");
 
-		if (constructionBarricade != NULL) {
-			constructionBarricade->initializePosition(x, 0, y); //The construction barricades are always at the terrain height.
+		if (barricade != NULL) {
+			barricade->initializePosition(x, 0, y); //The construction barricades are always at the terrain height.
 
 			StructureFootprint* structureFootprint = serverTemplate->getStructureFootprint();
 
@@ -55,24 +62,30 @@ int PlaceStructureSessionImplementation::constructStructure(float x, float y, in
 				angle = angle + 180;
 			}
 
-			constructionBarricade->rotate(angle); //All construction barricades need to be rotated 180 degrees for some reason.
-			//constructionBarricade->insertToZone(zone);
+			barricade->rotate(angle); //All construction barricades need to be rotated 180 degrees for some reason.
 
-			Locker tLocker(constructionBarricade);
+			Locker tLocker(barricade);
 
-			zone->transferObject(constructionBarricade, -1, true);
+			thisZone->transferObject(barricade, -1, true);
 
 			constructionDuration = serverTemplate->getLotSize() * 3000; //3 seconds per lot.
+
+			constructionBarricade = barricade;
 		}
 	}
 
-	Reference<Task*> task = new StructureConstructionCompleteTask(creatureObject);
+	Reference<Task*> task = new StructureConstructionCompleteTask(creature);
 	task->schedule(constructionDuration);
 
 	return 0;
 }
 
 void PlaceStructureSessionImplementation::placeTemporaryNoBuildZone(SharedStructureObjectTemplate* serverTemplate) {
+	ManagedReference<Zone*> thisZone = zone.get();
+
+	if (thisZone == NULL)
+		return;
+
 	Reference<StructureFootprint*> structureFootprint =	serverTemplate->getStructureFootprint();
 
 	//float temporaryNoBuildZoneWidth = structureFootprint->getLength() + structureFootprint->getWidth();
@@ -86,74 +99,87 @@ void PlaceStructureSessionImplementation::placeTemporaryNoBuildZone(SharedStruct
 	areaShape->setRadius(64);
 	areaShape->setAreaCenter(positionX, positionY);
 
-	temporaryNoBuildZone = (zone->getZoneServer()->createObject(STRING_HASHCODE("object/active_area.iff"), 0)).castTo<ActiveArea*>();
+	ManagedReference<ActiveArea*> noBuildZone = (thisZone->getZoneServer()->createObject(STRING_HASHCODE("object/active_area.iff"), 0)).castTo<ActiveArea*>();
 
-	Locker locker(temporaryNoBuildZone);
+	Locker locker(noBuildZone);
 
-	temporaryNoBuildZone->initializePosition(positionX, 0, positionY);
-	temporaryNoBuildZone->setAreaShape(areaShape);
-	temporaryNoBuildZone->setNoBuildArea(true);
+	noBuildZone->initializePosition(positionX, 0, positionY);
+	noBuildZone->setAreaShape(areaShape);
+	noBuildZone->setNoBuildArea(true);
 
-	zone->transferObject(temporaryNoBuildZone, -1, true);
+	thisZone->transferObject(noBuildZone, -1, true);
+
+	temporaryNoBuildZone = noBuildZone;
 }
 
 void PlaceStructureSessionImplementation::removeTemporaryNoBuildZone() {
-	if (temporaryNoBuildZone != NULL) {
-		Locker locker(temporaryNoBuildZone);
+	ManagedReference<ActiveArea*> noBuildZone = temporaryNoBuildZone.get();
 
-		temporaryNoBuildZone->destroyObjectFromWorld(true);
+	if (noBuildZone != NULL) {
+		Locker locker(noBuildZone);
+
+		noBuildZone->destroyObjectFromWorld(true);
 	}
 }
 
 int PlaceStructureSessionImplementation::completeSession() {
-	if (constructionBarricade != NULL) {
-		Locker locker(constructionBarricade);
+	ManagedReference<SceneObject*> barricade = constructionBarricade.get();
 
-		constructionBarricade->destroyObjectFromWorld(true);
+	if (barricade != NULL) {
+		Locker locker(barricade);
+
+		barricade->destroyObjectFromWorld(true);
 	}
 
-	String serverTemplatePath = deedObject->getGeneratedObjectTemplate();
+	ManagedReference<StructureDeed*> deed = deedObject.get();
+	ManagedReference<CreatureObject*> creature = creatureObject.get();
+	ManagedReference<Zone*> thisZone = zone.get();
+
+	if (deed == NULL || creature == NULL || thisZone == NULL)
+		return cancelSession();
+
+	String serverTemplatePath = deed->getGeneratedObjectTemplate();
 
 	StructureManager* structureManager = StructureManager::instance();
-	ManagedReference<StructureObject*> structureObject = structureManager->placeStructure(creatureObject, serverTemplatePath, positionX, positionY, directionAngle);
+	ManagedReference<StructureObject*> structureObject = structureManager->placeStructure(creature, serverTemplatePath, positionX, positionY, directionAngle);
 
 	removeTemporaryNoBuildZone();
 
 	if (structureObject == NULL) {
-		ManagedReference<SceneObject*> inventory = creatureObject->getSlottedObject("inventory");
+		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
 		if (inventory != NULL)
-			inventory->transferObject(deedObject, -1, true);
+			inventory->transferObject(deed, -1, true);
 
 		return cancelSession();
 	}
 
-	Locker clocker(structureObject, creatureObject);
+	Locker clocker(structureObject, creature);
 
-	structureObject->setDeedObjectID(deedObject->getObjectID());
+	structureObject->setDeedObjectID(deed->getObjectID());
 
-	deedObject->notifyStructurePlaced(creatureObject, structureObject);
+	deed->notifyStructurePlaced(creature, structureObject);
 
-	ManagedReference<PlayerObject*> ghost = creatureObject->getPlayerObject();
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 	if (ghost != NULL) {
 
 		//Create Waypoint
-		ManagedReference<WaypointObject*> waypointObject = ( zone->getZoneServer()->createObject(STRING_HASHCODE("object/waypoint/world_waypoint_blue.iff"), 1)).castTo<WaypointObject*>();
+		ManagedReference<WaypointObject*> waypointObject = ( thisZone->getZoneServer()->createObject(STRING_HASHCODE("object/waypoint/world_waypoint_blue.iff"), 1)).castTo<WaypointObject*>();
 
 		Locker locker(waypointObject);
 
 		waypointObject->setCustomObjectName(structureObject->getDisplayedName(), false);
 		waypointObject->setActive(true);
 		waypointObject->setPosition(positionX, 0, positionY);
-		waypointObject->setPlanetCRC(zone->getZoneCRC());
+		waypointObject->setPlanetCRC(thisZone->getZoneCRC());
 
 		ghost->addWaypoint(waypointObject, false, true);
 
 		locker.release();
 
 		//Create an email.
-		ManagedReference<ChatManager*> chatManager = zone->getZoneServer()->getChatManager();
+		ManagedReference<ChatManager*> chatManager = thisZone->getZoneServer()->getChatManager();
 
 		if (chatManager != NULL) {
 			UnicodeString subject = "@player_structure:construction_complete_subject";
@@ -162,7 +188,7 @@ int PlaceStructureSessionImplementation::completeSession() {
 			emailBody.setTO(structureObject->getObjectName());
 			emailBody.setDI(ghost->getLotsRemaining());
 
-			chatManager->sendMail("@player_structure:construction_complete_sender", subject, emailBody, creatureObject->getFirstName(), waypointObject);
+			chatManager->sendMail("@player_structure:construction_complete_sender", subject, emailBody, creature->getFirstName(), waypointObject);
 		}
 
 		if (structureObject->isBuildingObject()) {
@@ -172,7 +198,7 @@ int PlaceStructureSessionImplementation::completeSession() {
 				if (building->isCivicStructure() || building->isCommercialStructure())
 					building->setCustomObjectName(structureObject->getDisplayedName(), true);
 				else
-					building->setCustomObjectName(creatureObject->getFirstName() + "'s House", true);
+					building->setCustomObjectName(creature->getFirstName() + "'s House", true);
 			}
 		}
 	}

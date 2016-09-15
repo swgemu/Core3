@@ -13,7 +13,6 @@ import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.objects.player.PlayerObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneServer;
-import server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 class SlicingTool extends TangibleObject {

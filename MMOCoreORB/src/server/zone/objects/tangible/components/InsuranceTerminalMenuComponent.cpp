@@ -15,6 +15,7 @@
 #include "server/zone/objects/player/sui/callbacks/InsuranceMenuSuiCallback.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
 void InsuranceTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 

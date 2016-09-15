@@ -33,8 +33,6 @@ SchematicMap::~SchematicMap() {
 		delete group;
 		groupMap.remove(0);
 	}
-
-	zoneServer = NULL;
 }
 
 void SchematicMap::initialize(ZoneServer* server) {

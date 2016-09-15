@@ -28,8 +28,7 @@ include server.zone.objects.resource.ResourceSpawn;
  */
 class ResourceManager extends Observer implements Logger {
 	private transient ZoneProcessServer processor;
-	@weakReference
-	private ZoneServer zoneServer;
+	private transient ZoneServer zoneServer;
 	private transient ResourceSpawner resourceSpawner;
 	private transient int shiftInterval;
 	
@@ -108,5 +107,9 @@ class ResourceManager extends Observer implements Logger {
 		return resourceSpawner;
 	}
 
+	@dirty
+	public ZoneServer getZoneServer() {
+		return zoneServer;
+	}
 }
 

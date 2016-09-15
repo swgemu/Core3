@@ -26,6 +26,11 @@ public:
 		if (strongRef == NULL)
 			return;
 
+		ZoneServer* server = strongRef->getZoneServer();
+
+		if (server == NULL || server->isServerShuttingDown())
+			return;
+
 		strongRef->checkAuctions();
 		strongRef->checkVendorItems();
 	}

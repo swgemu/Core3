@@ -24,7 +24,10 @@ void StructureMaintenanceTask::run() {
 
 	ZoneServer* zoneServer = strongRef->getZoneServer();
 
-	if (zoneServer != NULL && zoneServer->isServerLoading()) {
+	if (zoneServer == NULL || zoneServer->isServerShuttingDown())
+		return;
+
+	if (zoneServer->isServerLoading()) {
 		schedule(1000);
 
 		return;

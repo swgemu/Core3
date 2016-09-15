@@ -25,6 +25,11 @@ public:
 			return;
 		}
 
+		ZoneServer* server = strongRef->getZone()->getZoneServer();
+
+		if (server == NULL || server->isServerShuttingDown())
+			return;
+
 		strongRef->performGCWTasks();
 
 	}

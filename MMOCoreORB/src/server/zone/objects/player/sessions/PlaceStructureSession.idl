@@ -15,20 +15,25 @@ include server.zone.objects.scene.SessionFacadeType;
 include templates.tangible.SharedStructureObjectTemplate;
 
 class PlaceStructureSession extends Facade {
+	@weakReference
 	protected CreatureObject creatureObject;
+	@weakReference
 	protected StructureDeed deedObject;
-	
+
 	protected float positionX;
 	protected float positionY;
-	
+
 	protected int directionAngle;
 
+	@weakReference
 	protected SceneObject constructionBarricade;
-	
+
+	@weakReference
 	protected Zone zone;
-	
+
+	@weakReference
 	protected ActiveArea temporaryNoBuildZone;
-	
+
 	public PlaceStructureSession(CreatureObject creature, StructureDeed deed) {
 		Logger.setLoggingName("PlaceStructureSession");
 		Logger.setLogging(true);

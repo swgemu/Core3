@@ -15,7 +15,6 @@ import server.zone.ZoneServer;
 import server.zone.objects.tangible.pharmaceutical.PharmaceuticalObject;
 include templates.params.creature.CreatureState;
 include templates.params.creature.CreatureAttribute;
-import server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include templates.tangible.DotPackTemplate;
 

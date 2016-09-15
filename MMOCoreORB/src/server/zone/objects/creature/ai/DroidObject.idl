@@ -15,7 +15,7 @@ import engine.util.u3d.Coordinate;
 import server.zone.objects.tangible.components.droid.BaseDroidModuleComponent;
 include server.zone.objects.tangible.tool.CraftingStation;
 include templates.SharedObjectTemplate;
-import server.zone.objects.structure.StructureObject;
+include server.zone.objects.structure.StructureObject;
 
 class DroidObject extends AiAgent {
 

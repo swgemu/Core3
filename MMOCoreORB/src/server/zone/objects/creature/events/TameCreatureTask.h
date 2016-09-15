@@ -16,22 +16,28 @@ class TameCreatureTask : public Task {
 private:
 	enum Phase { INITIAL, SECOND, FINAL} currentPhase;
 	int originalMask;
-	ManagedReference<Creature*> creature;
-	ManagedReference<CreatureObject*> player;
+	ManagedWeakReference<Creature*> mob;
+	ManagedWeakReference<CreatureObject*> play;
 	bool force;
 	bool adult;
 
 public:
 	TameCreatureTask(Creature* cre, CreatureObject* playo, int pvpMask, bool forced, bool adults) : Task() {
 		currentPhase = INITIAL;
-		creature = cre;
-		player = playo;
+		mob = cre;
+		play = playo;
 		originalMask = pvpMask;
 		force = forced;
 		adult = adults;
 	}
 
 	void run() {
+		ManagedReference<Creature*> creature = mob.get();
+		ManagedReference<CreatureObject*> player = play.get();
+
+		if (creature == NULL || player == NULL)
+			return;
+
 		Locker locker(creature);
 
 		Locker _clocker(player, creature);
@@ -98,6 +104,12 @@ public:
 	}
 
 	void success(bool adult) {
+		ManagedReference<CreatureObject*> player = play.get();
+		ManagedReference<Creature*> creature = mob.get();
+
+		if (creature == NULL || player == NULL)
+			return;
+
 		ZoneServer* zoneServer = player->getZoneServer();
 
 		String objectString = creature->getControlDeviceTemplate();
@@ -213,6 +225,11 @@ public:
 	}
 
 	void resetStatus() {
+		ManagedReference<Creature*> creature = mob.get();
+
+		if (creature == NULL)
+			return;
+
 		creature->setPvpStatusBitmask(originalMask, true);
 		if (creature->isAiAgent()) {
 			AiAgent* agent = cast<AiAgent*>(creature.get());

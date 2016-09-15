@@ -42,8 +42,6 @@ NameManager::NameManager(ZoneProcessServer* serv) : Logger("NameManager") {
 }
 
 NameManager::~NameManager() {
-	server = NULL;
-
 	delete lua;
 
 	delete(profaneNames);

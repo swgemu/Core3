@@ -109,7 +109,7 @@ void WearableObjectImplementation::generateSockets(CraftingValues* craftingValue
 		ManagedReference<ManufactureSchematic*> manuSchematic = craftingValues->getManufactureSchematic();
 		if(manuSchematic != NULL) {
 			ManagedReference<DraftSchematic*> draftSchematic = manuSchematic->getDraftSchematic();
-			ManagedReference<CreatureObject*> player = manuSchematic->getCrafter();
+			ManagedReference<CreatureObject*> player = manuSchematic->getCrafter().get();
 
 			if (player != NULL && draftSchematic != NULL) {
 				String assemblySkill = draftSchematic->getAssemblySkill();

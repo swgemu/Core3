@@ -6,6 +6,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/structure/StructureObject.h"
 #include "templates/tangible/EventPerkDeedTemplate.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/managers/planet/PlanetManager.h"

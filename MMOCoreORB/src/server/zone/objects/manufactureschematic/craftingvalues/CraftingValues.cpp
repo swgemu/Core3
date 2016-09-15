@@ -62,7 +62,7 @@ void CraftingValues::setManufactureSchematic(ManufactureSchematic* manu) {
 }
 
 ManufactureSchematic* CraftingValues::getManufactureSchematic() {
-	return schematic;
+	return schematic.get();
 }
 
 void CraftingValues::setPlayer(CreatureObject* play) {
@@ -70,7 +70,7 @@ void CraftingValues::setPlayer(CreatureObject* play) {
 }
 
 CreatureObject* CraftingValues::getPlayer() {
-	return player;
+	return player.get();
 }
 
 void CraftingValues::recalculateValues(bool initial) {

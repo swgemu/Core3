@@ -24,7 +24,6 @@ import server.zone.objects.area.ActiveArea;
 import system.lang.Time;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.TangibleObject;
-include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.objects.installation.HopperList;
 
 include engine.util.u3d.QuadTreeEntry;

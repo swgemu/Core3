@@ -5,15 +5,20 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 
 class StoreSpawnedChildrenTask : public Task {
-	ManagedReference<CreatureObject*> player;
+	ManagedWeakReference<CreatureObject*> play;
 	Vector<ManagedReference<CreatureObject*> > children;
 public:
 	StoreSpawnedChildrenTask(CreatureObject* creo, Vector<ManagedReference<CreatureObject*> >& ch) :
-		player(creo), children(ch) {
+		play(creo), children(ch) {
 
 	}
 
 	void run() {
+		ManagedReference<CreatureObject*> player = play.get();
+
+		if (player == NULL)
+			return;
+
 		Locker locker(player);
 
 		for (int i = 0; i < children.size(); ++i) {

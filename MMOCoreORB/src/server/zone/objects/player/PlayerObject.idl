@@ -34,7 +34,6 @@ import system.util.SynchronizedSortedVector;
 include server.login.account.GalaxyAccountInfo;
 include server.zone.objects.creature.variables.Skill;
 include server.zone.objects.draftschematic.DraftSchematic;
-include server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.objects.player.badges.Badge;
 include server.zone.objects.player.badges.Badges;
 include server.zone.objects.player.events.BountyHunterTefRemovalTaskMap;

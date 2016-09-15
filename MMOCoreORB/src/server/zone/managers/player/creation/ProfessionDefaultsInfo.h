@@ -33,7 +33,7 @@ public:
 	}
 
 	~ProfessionDefaultsInfo() {
-		skill = NULL;
+
 	}
 
 	void readObject(IffStream* iffStream) {

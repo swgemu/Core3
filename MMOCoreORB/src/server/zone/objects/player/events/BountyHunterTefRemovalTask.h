@@ -14,7 +14,7 @@ namespace player {
 namespace events {
 
 class BountyHunterTefRemovalTask: public Task {
-	ManagedReference<PlayerObject*> bountyHunter;
+	ManagedWeakReference<PlayerObject*> bountyHunter;
 	uint64 targetId;
 
 public:

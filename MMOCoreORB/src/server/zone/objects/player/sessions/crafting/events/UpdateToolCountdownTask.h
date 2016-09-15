@@ -10,19 +10,25 @@
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
 
 class UpdateToolCountdownTask : public Task {
-	ManagedReference<TangibleObject* > craftingTool;
-	ManagedReference<CreatureObject* > crafter;
+	ManagedWeakReference<TangibleObject* > craftTool;
+	ManagedWeakReference<CreatureObject* > player;
 	int timeLeft;
 
 public:
 	UpdateToolCountdownTask(CreatureObject* pl, TangibleObject* tool, int time) : Task() {
-		craftingTool = tool;
-		crafter = pl;
+		craftTool = tool;
+		player = pl;
 		timeLeft = time;
 	}
 
 	void run() {
 		try {
+			ManagedReference<TangibleObject* > craftingTool = craftTool.get();
+			ManagedReference<CreatureObject* > crafter = player.get();
+
+			if (craftingTool == NULL || crafter == NULL)
+				return;
+
 			Locker locker(crafter);
 
 			Locker clocker(craftingTool, crafter);

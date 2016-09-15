@@ -22,7 +22,7 @@ include templates.creature.VendorCreatureTemplate;
 
 
 class CreateVendorSession extends Facade {
-	@weakreference
+	@weakReference
 	protected CreatureObject player;
 
 	VendorSelectionNode currentNode;

@@ -11,6 +11,7 @@
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/player/sui/callbacks/ShuttleBeaconSuiCallback.h"
 
 void ShuttleBeaconImplementation::initializeTransientMembers() {

@@ -18,7 +18,6 @@ import system.lang.String;
 import system.util.Vector;
 include templates.tangible.StimPackTemplate;
 include templates.params.creature.CreatureAttribute;
-import server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 class StimPack extends PharmaceuticalObject {

@@ -5,6 +5,7 @@
  *      Author: root
  */
 #include "MinefieldContainerComponent.h"
+#include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "templates/params/creature/CreatureFlag.h"

@@ -11,15 +11,21 @@
 #include "server/zone/managers/group/GroupManager.h"
 
 class StorePetTask : public Task {
-	ManagedReference<CreatureObject*> player;
-	ManagedReference<AiAgent*> pet;
+	ManagedWeakReference<CreatureObject*> play;
+	ManagedWeakReference<AiAgent*> pt;
 public:
 	StorePetTask(CreatureObject* player, AiAgent* pet) {
-		this->player = player;
-		this->pet = pet;
+		this->play = player;
+		this->pt = pet;
 	}
 
 	void run() {
+		ManagedReference<CreatureObject*> player = play.get();
+		ManagedReference<AiAgent*> pet = pt.get();
+
+		if (player == NULL || pet == NULL)
+			return;
+
 		Locker locker(player);
 		Locker clocker(pet, player);
 

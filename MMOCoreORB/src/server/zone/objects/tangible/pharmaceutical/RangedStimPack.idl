@@ -15,7 +15,6 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneServer;
 import server.zone.objects.tangible.pharmaceutical.StimPack;
 include templates.tangible.RangedStimPackTemplate;
-import server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 class RangedStimPack extends StimPack {

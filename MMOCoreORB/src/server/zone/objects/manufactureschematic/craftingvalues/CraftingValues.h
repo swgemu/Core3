@@ -50,8 +50,8 @@ class CraftingValues : public Serializable, public Logger {
 
 	bool doHide;
 
-	ManagedReference<ManufactureSchematic*> schematic;
-	ManagedReference<CreatureObject*> player;
+	ManagedWeakReference<ManufactureSchematic*> schematic;
+	ManagedWeakReference<CreatureObject*> player;
 	VectorMap<String, bool> slots;
 
 public:

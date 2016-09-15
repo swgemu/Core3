@@ -3,7 +3,6 @@
 		See file COPYING for copying conditions.*/
 
 #include "server/zone/objects/tangible/component/Component.h"
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
 
 void ComponentImplementation::initializeTransientMembers() {

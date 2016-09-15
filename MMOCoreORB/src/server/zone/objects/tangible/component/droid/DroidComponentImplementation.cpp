@@ -3,7 +3,6 @@
 		See file COPYING for copying conditions.*/
 
 #include "server/zone/objects/tangible/component/droid/DroidComponent.h"
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
 
 void DroidComponentImplementation::initializeTransientMembers() {

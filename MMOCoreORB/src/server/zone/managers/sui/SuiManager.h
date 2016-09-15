@@ -47,10 +47,6 @@ namespace server {
 	  public:
 	  	SuiManager();
 
-	  	~SuiManager() {
-	  		server = NULL;
-	  	}
-
 	  	void handleSuiEventNotification(uint32 boxID, CreatureObject* player, uint32 cancel, Vector<UnicodeString>* args);
 
 	  	//Handlers

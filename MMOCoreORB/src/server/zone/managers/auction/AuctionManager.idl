@@ -147,5 +147,10 @@ class AuctionManager extends ManagedService implements Logger {
 	@dirty
 	@local
 	public native boolean checkItemCategory(int category, AuctionItem item);
+
+	@dirty
+	public ZoneServer getZoneServer() {
+		return zoneServer;
+	}
 }
 

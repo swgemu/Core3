@@ -63,7 +63,6 @@ SharedTangibleObjectTemplate::~SharedTangibleObjectTemplate() {
 	delete experimentalCombineType;
 	delete playerRaces;
 	delete resourceWeights;
-	structureFootprint = NULL;
 }
 
 void SharedTangibleObjectTemplate::parseFileData(IffStream* iffStream) {

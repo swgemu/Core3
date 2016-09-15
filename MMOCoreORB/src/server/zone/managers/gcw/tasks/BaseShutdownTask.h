@@ -7,20 +7,25 @@
 #include "server/zone/objects/player/sui/callbacks/BaseShutdownSuiCallback.h"
 
 class BaseShutdownTask : public Task {
-	ManagedReference<BuildingObject*> buildingObject;
-	ManagedReference<GCWManager*> gcwManager;
-	ManagedReference<CreatureObject*> player;
-	ManagedReference<SceneObject*> hqTerminal;
+	ManagedWeakReference<BuildingObject*> building;
+	ManagedWeakReference<GCWManager*> gcwMan;
+	ManagedWeakReference<CreatureObject*> play;
+	ManagedWeakReference<SceneObject*> terminal;
 
 public:
-	BaseShutdownTask(GCWManager* gcwMan, BuildingObject* building, CreatureObject* creature, SceneObject* term) {
-		gcwManager = gcwMan;
-		buildingObject = building;
-		hqTerminal = term;
-		player = creature;
+	BaseShutdownTask(GCWManager* gcwManager, BuildingObject* buildingObject, CreatureObject* creature, SceneObject* term) {
+		gcwMan = gcwManager;
+		building = buildingObject;
+		terminal = term;
+		play = creature;
 	}
 
 	void run() {
+		ManagedReference<BuildingObject*> buildingObject = building.get();
+		ManagedReference<GCWManager*> gcwManager = gcwMan.get();
+		ManagedReference<CreatureObject*> player = play.get();
+		ManagedReference<SceneObject*> hqTerminal = terminal.get();
+
 		if (gcwManager == NULL || buildingObject == NULL || hqTerminal == NULL || player == NULL)
 			return;
 

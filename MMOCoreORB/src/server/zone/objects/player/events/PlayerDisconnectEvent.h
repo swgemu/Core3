@@ -16,7 +16,7 @@ namespace player {
 namespace events {
 
 class PlayerDisconnectEvent : public Task {
-	ManagedReference<PlayerObject*> player;
+	ManagedWeakReference<PlayerObject*> player;
 	bool isSafeArea;
 public:
 	PlayerDisconnectEvent(PlayerObject* pl, bool isSafe) : Task(2000) {
@@ -25,23 +25,28 @@ public:
 	}
 
 	void run() {
-		ManagedReference<SceneObject*> par = player->getParent();
+		ManagedReference<PlayerObject*> play = player.get();
+
+		if (play == NULL)
+			return;
+
+		ManagedReference<SceneObject*> par = play->getParent();
 
 		Locker locker(par);
 
 		try {
-			player->clearDisconnectEvent();
+			play->clearDisconnectEvent();
 
-			player->setLinkDead(isSafeArea);
+			play->setLinkDead(isSafeArea);
 
-			if (player->isOnline())
-				player->disconnect(true, false);
+			if (play->isOnline())
+				play->disconnect(true, false);
 
 
 		} catch (Exception& e) {
-			player->error("Unreported Exception caught in PlayerDisconnectEvent::activate");
+			play->error("Unreported Exception caught in PlayerDisconnectEvent::activate");
 
-			player->clearDisconnectEvent();
+			play->clearDisconnectEvent();
 		}
 	}
 

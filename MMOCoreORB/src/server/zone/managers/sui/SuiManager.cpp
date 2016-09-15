@@ -31,7 +31,6 @@
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/installation/factory/FactoryObject.h"
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/player/sui/keypadbox/SuiKeypadBox.h"
 #include "server/zone/objects/player/sui/callbacks/LuaSuiCallback.h"
 #include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.h"

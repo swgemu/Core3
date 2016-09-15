@@ -7,7 +7,6 @@
 
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "templates/tangible/ArmorObjectTemplate.h"
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 #include "templates/tangible/SharedWeaponObjectTemplate.h"
 

@@ -59,9 +59,6 @@ ResourceSpawner::~ResourceSpawner() {
 	delete resourceMap;
 
 	activeResourceZones.removeAll();
-
-	server = NULL;
-	processor = NULL;
 }
 
 void ResourceSpawner::init() {

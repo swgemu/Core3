@@ -24,6 +24,11 @@ public:
 	}
 
 	void run() {
+		ZoneServer* server = resourceManager->getZoneServer();
+
+		if (server == NULL || server->isServerShuttingDown())
+			return;
+
 		resourceManager->shiftResources();
 	}
 };

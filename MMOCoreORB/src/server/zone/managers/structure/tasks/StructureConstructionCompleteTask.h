@@ -13,7 +13,7 @@
 #include "server/zone/objects/player/sessions/PlaceStructureSession.h"
 
 class StructureConstructionCompleteTask : public Task {
-	ManagedReference<CreatureObject*> creatureObject;
+	ManagedWeakReference<CreatureObject*> creatureObject;
 
 public:
 	StructureConstructionCompleteTask(CreatureObject* creature) : Task() {
@@ -21,9 +21,14 @@ public:
 	}
 
 	void run() {
-		Locker lock(creatureObject);
+		ManagedReference<CreatureObject*> creature = creatureObject.get();
 
-		ManagedReference<PlaceStructureSession*> session = creatureObject->getActiveSession(SessionFacadeType::PLACESTRUCTURE).castTo<PlaceStructureSession*>();
+		if (creature == NULL)
+			return;
+
+		Locker lock(creature);
+
+		ManagedReference<PlaceStructureSession*> session = creature->getActiveSession(SessionFacadeType::PLACESTRUCTURE).castTo<PlaceStructureSession*>();
 
 		if (session == NULL)
 			return;

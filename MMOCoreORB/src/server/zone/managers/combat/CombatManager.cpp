@@ -28,6 +28,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/installation/components/TurretDataComponent.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/packets/object/ShowFlyText.h"
 
 #define COMBAT_SPAM_RANGE 85

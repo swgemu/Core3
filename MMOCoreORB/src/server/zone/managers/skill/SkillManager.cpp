@@ -32,7 +32,6 @@ SkillManager::SkillManager()
 }
 
 SkillManager::~SkillManager() {
-	rootNode = NULL;
 	delete performanceManager;
 }
 

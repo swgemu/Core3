@@ -33,8 +33,11 @@ public:
 	void run() {
 		ZoneServer* zoneServer = ServerCore::getZoneServer();
 
-		if (zoneServer != NULL && zoneServer->isServerLoading()) {
-			schedule(1000);
+		if (zoneServer == NULL || zoneServer->isServerShuttingDown())
+			return;
+
+		if (zoneServer->isServerLoading()) {
+			schedule(10000);
 
 			return;
 		}
