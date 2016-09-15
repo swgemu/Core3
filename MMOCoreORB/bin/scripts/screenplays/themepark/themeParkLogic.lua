@@ -923,7 +923,6 @@ function ThemeParkLogic:spawnDestroyMissionNpcs(mission, pConversingPlayer)
 
 		if (pNpc ~= nil) then
 			local npcName = self:getNpcName(childNpcs[i].npcName)
-
 			CreatureObject(pNpc):setCustomObjectName(npcName)
 			if i == 1 and self:isValidConvoString(stfFile, ":npc_breech_" .. missionNumber) then
 				local pBreechArea = spawnActiveArea(planetName, "object/active_area.iff", childNpcs[i].x, childNpcs[i].z, childNpcs[i].y, 20, childNpcs[i].vectorCellID)
@@ -935,7 +934,6 @@ function ThemeParkLogic:spawnDestroyMissionNpcs(mission, pConversingPlayer)
 			end
 		end
 	end
-
 	return true
 end
 
@@ -1267,11 +1265,14 @@ function ThemeParkLogic:spawnNpc(npcTemplate, position, pConversingPlayer, spawn
 	if pConversingPlayer == nil then
 		return nil
 	end
-
+	local npcName = ""
 	local pNpc = spawnMobile(planetName, npcTemplate.npcTemplate, 0, position[1], position[2], position[3], getRandomNumber(360) - 180, position[4])
 
 	if pNpc ~= nil and SceneObject(pNpc):isCreatureObject() then
-		local npcName = self:getNpcName(npcTemplate.npcName)
+		local npcName = readStringData(CreatureObject(pConversingPlayer):getObjectID() .. ":missionSpawn:mainNpcName")
+		if npcName == "" then
+			local npcName = self:getNpcName(npcTemplate.npcName)
+		end
 		CreatureObject(pNpc):setCustomObjectName(npcName)
 		writeData(CreatureObject(pConversingPlayer):getObjectID() .. ":missionSpawn:no" .. spawnNumber, CreatureObject(pNpc):getObjectID())
 	end
@@ -1384,6 +1385,7 @@ function ThemeParkLogic:getDefaultWaypointName(pConversingPlayer, direction)
 
 		local mainNpc = mission.primarySpawns
 		local mainNpcName = self:getNpcName(mainNpc[1].npcName)
+		writeStringData(CreatureObject(pConversingPlayer):getObjectID() .. ":missionSpawn:mainNpcName", mainNpcName)
 		local missionItem = mission.itemSpawns
 
 		if currentMissionType == "deliver" then
