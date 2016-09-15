@@ -259,14 +259,15 @@ function mission_target_conv_handler:handleScreenNpcMoreOne(pConversationTemplat
 	end
 
 	local mission = self.themePark:getMission(npcNumber, missionNumber)
-
+	local playerID = SceneObject(pConversingPlayer):getObjectID()
+	
 	if mission.missionType == "deliver" then
 		if self.themePark:hasRequiredItem(pConversingPlayer) == true then
 			self.themePark:removeDeliverItem(pConversingPlayer)
 			self.themePark:completeMission(pConversingPlayer)
 		end
 	elseif mission.missionType == "retrieve" then
-		local playerID = SceneObject(pConversingPlayer):getObjectID()
+		
 		local activeMission = readData(playerID .. ":activeMission")
 
 		if activeMission ~= 2 then
@@ -307,14 +308,14 @@ function mission_target_conv_handler:handleScreenNpcMoreTwo(pConversationTemplat
 	end
 
 	local mission = self.themePark:getMission(npcNumber, missionNumber)
-
+	local playerID = SceneObject(pConversingPlayer):getObjectID()
+	
 	if mission.missionType == "deliver" then
 		if self.themePark:hasRequiredItem(pConversingPlayer) == true then
 			self.themePark:removeDeliverItem(pConversingPlayer)
 			self.themePark:completeMission(pConversingPlayer)
 		end
 	elseif mission.missionType == "retrieve" then
-		local playerID = SceneObject(pConversingPlayer):getObjectID()
 		local activeMission = readData(playerID .. ":activeMission")
 
 		if activeMission ~= 2 then
