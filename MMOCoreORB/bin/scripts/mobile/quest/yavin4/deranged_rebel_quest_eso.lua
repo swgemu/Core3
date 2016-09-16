@@ -1,0 +1,42 @@
+deranged_rebel_quest_eso = Creature:new {
+	objectName = "@mob/creature_names:rebel_commando",
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
+	socialGroup = "thug",
+	faction = "thug",
+	level = 25,
+	chanceHit = 0.36,
+	damageMin = 240,
+	damageMax = 250,
+	baseXp = 2637,
+	baseHAM = 7200,
+	baseHAMmax = 8800,
+	armor = 0,
+	resists = {0,0,40,0,0,0,0,-1,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = AIENABLED,
+	diet = HERBIVORE,
+
+	templates = {
+		"object/mobile/dressed_rebel_commando_human_male_01.iff",
+		"object/mobile/dressed_rebel_commando_moncal_male_01.iff",
+		"object/mobile/dressed_rebel_commando_rodian_male_01.iff"},
+	lootGroups = {},
+	weapons = {"rebel_weapons_heavy"},
+	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",
+	attacks = merge(commandomaster,marksmanmaster,brawlermaster,pistoleermaster)
+}
+
+CreatureTemplates:addCreatureTemplate(deranged_rebel_quest_eso, "deranged_rebel_quest_eso")
