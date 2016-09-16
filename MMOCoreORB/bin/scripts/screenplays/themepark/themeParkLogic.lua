@@ -508,7 +508,7 @@ function ThemeParkLogic:handleMissionAccept(npcNumber, missionNumber, pConversin
 	if pQuestArea == nil then
 		return false
 	end
-	
+
 	ActiveArea(pQuestArea):setNoBuildArea(true)
 	ActiveArea(pQuestArea):setNoSpawnArea(true)
 
@@ -536,7 +536,7 @@ function ThemeParkLogic:notifyEnteredQuestArea(pActiveArea, pPlayer)
 	if (ownerID ~= playerID) then
 		return 0
 	end
-	
+
 	ActiveArea(pActiveArea):setNoBuildArea(false)
 	ActiveArea(pActiveArea):setNoSpawnArea(false)
 
@@ -733,6 +733,9 @@ function ThemeParkLogic:spawnMissionStaticObjects(mission, pConversingPlayer, x,
 		local spawnPoint = getSpawnPoint(planetName, x, y, 5, 10)
 		if spawnPoint ~= nil then
 			local pObject = spawnSceneObject(planetName, mission.staticObjects[i].objectTemplate, spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, 0, 0, 0, 0)
+			if mission.staticObjects[i].objectName ~= nil and mission.staticObjects[i].objectName ~= "" then
+				SceneObject(pObject):setCustomObjectName(mission.staticObjects[i].objectName)
+			end
 			writeData(playerID .. ":missionStaticObject:no" .. i, SceneObject(pObject):getObjectID())
 		end
 	end
@@ -916,7 +919,7 @@ function ThemeParkLogic:spawnDestroyMissionNpcs(mission, pConversingPlayer)
 	end
 
 	local planetName = SceneObject(pConversingPlayer):getZoneName()
-	
+
 	for i = 1, numberOfChildNpcs, 1 do
 		local targetCellObject = SceneObject(BuildingObject(pBuilding):getCell(childNpcs[i].vectorCellID))
 		local pNpc = spawnMobile(planetName, childNpcs[i].npcTemplate, 0, childNpcs[i].x, childNpcs[i].z, childNpcs[i].y, getRandomNumber(360) - 180, targetCellObject:getObjectID())

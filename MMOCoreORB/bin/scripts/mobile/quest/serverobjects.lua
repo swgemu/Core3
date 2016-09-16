@@ -769,6 +769,8 @@ includeFile("quest/tatooine/woff_btar.lua")
 includeFile("quest/tatooine/ysho.lua")
 
 -- Yavin 4
+includeFile("quest/yavin4/captain_eso.lua")
+includeFile("quest/yavin4/deranged_rebel_quest_eso.lua")
 includeFile("quest/yavin4/gins_darone.lua")
 includeFile("quest/yavin4/gins_rebel_specforce_sergeant.lua")
 includeFile("quest/yavin4/gins_stranded_rebel_officer.lua")
