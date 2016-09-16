@@ -391,6 +391,7 @@ createMissionGiverConvoTemplate("tolan_nokkar_mission_giver_convotemplate", "tol
 createMissionGiverConvoTemplate("vardias_tyne_mission_giver_convotemplate", "vardias_tyne_mission_giver_conv_handler")
 
 --Yavin4
+createMissionGiverConvoTemplate("captain_eso_mission_giver_convotemplate","captain_eso_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("gins_darone_mission_giver_convotemplate","gins_darone_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("jazeen_thurmm_mission_giver_convotemplate","jazeen_thurmm_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("lian_byrne_mission_giver_convotemplate","lian_byrne_mission_giver_conv_handler")

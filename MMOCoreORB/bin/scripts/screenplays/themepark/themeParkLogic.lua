@@ -741,6 +741,9 @@ function ThemeParkLogic:spawnMissionStaticObjects(mission, pConversingPlayer, x,
 		local spawnPoint = getSpawnPoint(planetName, x, y, 5, 10)
 		if spawnPoint ~= nil then
 			local pObject = spawnSceneObject(planetName, mission.staticObjects[i].objectTemplate, spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, 0, 0, 0, 0)
+			if mission.staticObjects[i].objectName ~= nil and mission.staticObjects[i].objectName ~= "" then
+				SceneObject(pObject):setCustomObjectName(mission.staticObjects[i].objectName)
+			end
 			writeData(playerID .. ":missionStaticObject:no" .. i, SceneObject(pObject):getObjectID())
 		end
 	end
