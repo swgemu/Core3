@@ -128,13 +128,21 @@ public:
 		int delegateRatioFrom = FactionManager::instance()->getRankDelegateRatioFrom(creature->getFactionRank());
 		int delegateRatioTo = FactionManager::instance()->getRankDelegateRatioTo(creature->getFactionRank());
 
+		uint32 targetsRank = targetCreature->getFactionRank();
+		int targetsCap = FactionManager::instance()->getFactionPointsCap(targetsRank);
+
 		int currentFactionPoints = delegator->getFactionStanding(faction);
+		int targetsCurrentPoints = targetPlayerObject->getFactionStanding(faction);
+
+		if (targetsCurrentPoints == targetsCap) {
+			creature->sendSystemMessage("That player has reached the faction points limit for their current rank.");
+			return GENERALERROR;
+		}
 
 		if (currentFactionPoints < 200) {
-			StringIdChatParameter param("faction_recruiter", "not_enough_standing_spend");
+			StringIdChatParameter param("faction_recruiter", "not_enough_standing_spend"); //"You do not have enough faction standing to spend. You must maintain at least %DI to remain part of the %TO faction."
 			param.setDI(200);
 			param.setTO(faction);
-
 			creature->sendSystemMessage(param);
 			return GENERALERROR;
 		}
