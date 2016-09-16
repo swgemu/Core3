@@ -14,7 +14,7 @@ class FactionStandingList : public Serializable {
 	String factionRank;
 	int rebelPoints;
 	int imperialPoints;
-	VectorMap<String, float> factions;
+	SynchronizedVectorMap<String, float> factions;
 	//int huttPoints; //Disabled
 
 public:
@@ -151,9 +151,9 @@ public:
 		message->insertInt(listSize);
 
 		for (int i = 0; i < listSize; ++i) {
-			VectorMapEntry<String, float>* entry = &factions.elementAt(i);
+			auto key = factions.getKey(i);
 
-			message->insertAscii(entry->getKey());
+			message->insertAscii(key);
 		}
 
 		message->insertInt(listSize);
