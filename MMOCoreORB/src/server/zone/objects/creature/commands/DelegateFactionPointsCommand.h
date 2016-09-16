@@ -128,13 +128,16 @@ public:
 		int delegateRatioFrom = FactionManager::instance()->getRankDelegateRatioFrom(creature->getFactionRank());
 		int delegateRatioTo = FactionManager::instance()->getRankDelegateRatioTo(creature->getFactionRank());
 
+		uint32 targetsRank = targetCreature->getFactionRank();
+		int targetsCap = FactionManager::instance()->getFactionPointsCap(targetsRank);
+
 		int currentFactionPoints = delegator->getFactionStanding(faction);
+		int targetsCurrentPoints = targetPlayerObject->getFactionStanding(faction);
 
 		if (currentFactionPoints < 200) {
-			StringIdChatParameter param("faction_recruiter", "not_enough_standing_spend");
+			StringIdChatParameter param("faction_recruiter", "not_enough_standing_spend"); //"You do not have enough faction standing to spend. You must maintain at least %DI to remain part of the %TO faction."
 			param.setDI(200);
 			param.setTO(faction);
-
 			creature->sendSystemMessage(param);
 			return GENERALERROR;
 		}
@@ -159,6 +162,11 @@ public:
 
 		if (tipAmount == 0)
 			return GENERALERROR;
+
+		if ((targetsCurrentPoints + tipAmount) > targetsCap)) {
+			creature->sendSystemMessage("@faction_recruiter:invalid_amount_entered"); //That is an invalid amount.
+			return GENERALERROR;
+		}
 
 		return doDelegate(creature, targetCreature, tipAmount);
 	}
