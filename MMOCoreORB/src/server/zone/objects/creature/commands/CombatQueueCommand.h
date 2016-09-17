@@ -122,6 +122,8 @@ public:
 		// evidence shows that this has a custom OOR message.
 		if (errorNumber == TOOFAR) {
 			creature->sendSystemMessage("@cbt_spam:out_of_range_single"); // That target is out of range.
+			CombatSpam* spam = new CombatSpam(creature, NULL, creature, NULL, 0, "cbt_spam", "out_of_range", 10); // That target is out of range. (red)
+			creature->sendMessage(spam);
 			QueueCommand::onFail(actioncntr, creature, GENERALERROR);
 		} else {
 			QueueCommand::onFail(actioncntr, creature, errorNumber);
@@ -217,7 +219,7 @@ public:
 			return TOOCLOSE;
 
 		if (!CollisionManager::checkLineOfSight(creature, targetObject)) {
-			creature->sendSystemMessage("@container_error_message:container18");
+			creature->sendSystemMessage("@cbt_spam:los_fail"); // "You lost sight of your target."
 			return GENERALERROR;
 		}
 
@@ -229,7 +231,7 @@ public:
 
 				if (!perms->hasInheritPermissionsFromParent()) {
 					if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
-						creature->sendSystemMessage("@container_error_message:container18");
+						creature->sendSystemMessage("@combat_effects:cansee_fail"); // You cannot see your target.
 						return GENERALERROR;
 					}
 				}
