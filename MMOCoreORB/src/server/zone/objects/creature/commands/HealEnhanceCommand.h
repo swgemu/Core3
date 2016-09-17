@@ -131,7 +131,7 @@ public:
 		}
 
 		if (enhancer != patient && !CollisionManager::checkLineOfSight(enhancer, patient)) {
-			enhancer->sendSystemMessage("@container_error_message:container18");
+			enhancer->sendSystemMessage("@healing:no_line_of_sight");
 			return false;
 		}
 

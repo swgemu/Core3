@@ -539,7 +539,7 @@ int ForceHealQueueCommand::runCommandWithTarget(CreatureObject* creature, Creatu
 		return TOOFAR;
 
 	if (!CollisionManager::checkLineOfSight(creature, targetCreature)) {
-		creature->sendSystemMessage("@container_error_message:container18"); // not in sight?!?
+		creature->sendSystemMessage("@healing:no_line_of_sight"); // You cannot see your target.
 		return GENERALERROR;
 	}
 

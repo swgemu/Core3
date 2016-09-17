@@ -42,7 +42,7 @@ public:
 			Locker clocker(player, creature);
 
 			if (!CollisionManager::checkLineOfSight(creature, player)) {
-				creature->sendSystemMessage("@container_error_message:container18");
+				creature->sendSystemMessage("@combat_effects:cansee_fail");// You cannot see your target.
 				return GENERALERROR;
 			}
 
@@ -62,7 +62,7 @@ public:
 			Locker clocker(pet, creature);
 
 			if (!CollisionManager::checkLineOfSight(creature, pet)) {
-				creature->sendSystemMessage("@container_error_message:container18");
+				creature->sendSystemMessage("@combat_effects:cansee_fail");// You cannot see your target.
 				return GENERALERROR;
 			}
 
