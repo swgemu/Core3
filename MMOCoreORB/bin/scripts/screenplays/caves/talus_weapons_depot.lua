@@ -40,28 +40,28 @@ function TalusWeaponsDepotScreenPlay:spawnSceneObjects()
 end
 
 function TalusWeaponsDepotScreenPlay:flipBase(pBuilding)
+	if (pBuilding == nil) then
+		return 1
+	end
 
-	ObjectManager.withBuildingObject(pBuilding, function(building)
-		building:destroyChildObjects()
+	BuildingObject(pBuilding):destroyChildObjects()
 
-		if building:getFaction() == FACTIONIMPERIAL then
-			self:spawnRebels(pBuilding)
-		elseif building:getFaction() == FACTIONREBEL then
-			self:spawnImperials(pBuilding)
-		end
-	end)
+	if building:getFaction() == FACTIONIMPERIAL then
+		self:spawnRebels(pBuilding)
+	elseif building:getFaction() == FACTIONREBEL then
+		self:spawnImperials(pBuilding)
+	end
 
 	return 0
 end
 
 function TalusWeaponsDepotScreenPlay:spawnImperials(pBuilding)
-
 	ObjectManager.withBuildingObject(pBuilding, function(building)
 		building:initializeStaticGCWBase(FACTIONIMPERIAL)
 
 		building:spawnChildSceneObject("object/tangible/gcw/flip_banner_onpole_imperial.iff", 25.3, -12.0, 29.0, 9686140, .7, 0, .7, 0)
 
-	   	building:spawnChildCreature("talus", "stormtrooper", 300, 15.5, -12.0, 28.3, -92, 9686140)
+		building:spawnChildCreature("talus", "stormtrooper", 300, 15.5, -12.0, 28.3, -92, 9686140)
 		building:spawnChildCreature("talus", "imperial_major", 300, 57.1, -12.0, 59.1, -97, 9686143)
 		building:spawnChildCreature("talus", "imperial_staff_sergeant", 300, 55.7, -12.0, 64.7, 12, 9686143)
 		building:spawnChildCreature("talus", "stormtrooper", 300, 35.0, -12.0, 55.7, -78, 9686143)
@@ -102,18 +102,16 @@ function TalusWeaponsDepotScreenPlay:spawnImperials(pBuilding)
 		building:spawnChildCreature("talus", "imperial_high_general", 300, -133.6, -50.0, 56.2, 88, 9686179)
 		building:spawnChildCreature("talus", "storm_commando", 300, -136.5, -50.0, 49.6, 89, 9686179)
 		building:spawnChildCreature("talus", "storm_commando", 300, -136.4, -50.0, 58.8, 89, 9686179)
-
 	end)
 end
 
 function TalusWeaponsDepotScreenPlay:spawnRebels(pBuilding)
-
 	ObjectManager.withBuildingObject(pBuilding, function(building)
 		building:initializeStaticGCWBase(FACTIONREBEL)
 
 		building:spawnChildSceneObject("object/tangible/gcw/flip_banner_onpole_rebel.iff", 25.3, -12.0, 29.0, 9686140, .7, 0, .7, 0)
 
-	   	building:spawnChildCreature("talus", "rebel_trooper", 300, 13.9, -12.0, 27.5, -68, 9686140)
+		building:spawnChildCreature("talus", "rebel_trooper", 300, 13.9, -12.0, 27.5, -68, 9686140)
 		building:spawnChildCreature("talus", "rebel_major", 300, 55.0, -12.0, 55.9, -7, 9686143)
 		building:spawnChildCreature("talus", "rebel_staff_sergeant", 300, 54.9, -12.0, 62.5, -179, 9686143)
 		building:spawnChildCreature("talus", "rebel_trooper", 300, 39.2, -12.0, 60.6, -96, 9686143)
@@ -154,7 +152,6 @@ function TalusWeaponsDepotScreenPlay:spawnRebels(pBuilding)
 		building:spawnChildCreature("talus", "rebel_high_general", 300, -136.6, -50.0, 54.2, 89, 9686179)
 		building:spawnChildCreature("talus", "senior_specforce_heavy_weapons_specialist", 300, -139.5, -50.0, 48.6, 89, 9686179)
 		building:spawnChildCreature("talus", "senior_specforce_heavy_weapons_specialist", 300, -139.4, -50.0, 59.8, 89, 9686179)
-
 	end)
 end
 

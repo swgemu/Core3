@@ -12,10 +12,13 @@ function MirlaConversationHandler:runScreenHandlers(pConversationTemplate, pConv
 		local code = readStringData("warren:mirla:password")
 		screen:setDialogTextTO(code)
 	elseif (screenID == "mirla_2") then
-		ObjectManager.withCreatureAndPlayerObject(pConversingPlayer, function(player, playerObject)
-			playerObject:awardBadge(38) --Warren Compassion
-			player:setScreenPlayState(WarrenScreenPlay.states.mirla.started, "warren");
-		end)
+		local pGhost = CreatureObject(pConversingPlayer):getPlayerObject()
+
+		if (pGhost ~= nil) then
+			PlayerObject(pGhost):awardBadge(38) --Warren Compassion
+		end
+
+		CreatureObject(pConversingPlayer):setScreenPlayState(WarrenScreenPlay.states.mirla.started, "warren");
 	end
 
 	return pConversationScreen

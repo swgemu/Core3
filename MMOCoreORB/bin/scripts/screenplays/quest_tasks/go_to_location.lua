@@ -68,10 +68,17 @@ end
 -- Start the GoToLocation.
 -- @param pCreatureObject pointer to the creature object of the player.
 function GoToLocation:taskStart(pCreatureObject)
+	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+
+	if (pGhost == nil) then
+		Logger:log("Failed to spawn " .. self.taskName .. " location.", LT_ERROR)
+		return false
+	end
+
 	Logger:log("Spawning " .. self.taskName .. " active area location.", LT_INFO)
-	
+
 	local spawnPlanet = self.spawnPlanet
-	
+
 	if (spawnPlanet == "") then
 		spawnPlanet = SceneObject(pCreatureObject):getZoneName()
 	end
@@ -95,9 +102,7 @@ function GoToLocation:taskStart(pCreatureObject)
 
 	local pActiveArea = self:setupActiveArea(pCreatureObject, point, spawnPlanet, self.spawnRadius)
 	if pActiveArea ~= nil then
-		local waypointId = ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-			return playerObject:addWaypoint(spawnPlanet, self.waypointDescription, "", point.x, point.y, WAYPOINTORANGE, true, true, 0)
-		end)
+		local waypointId = PlayerObject(pGhost):addWaypoint(spawnPlanet, self.waypointDescription, "", point.x, point.y, WAYPOINTORANGE, true, true, 0)
 
 		if waypointId ~= nil then
 			writeData(SceneObject(pCreatureObject):getObjectID() .. self.taskName .. WAYPOINT_ID_STRING, waypointId)
@@ -116,13 +121,17 @@ end
 -- Handle the task finish event.
 -- @param pCreatureObject pointer to the creature object of the player that the event was triggered for.
 function GoToLocation:taskFinish(pCreatureObject)
+	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+
+	if (pGhost == nil) then
+		return false
+	end
+
 	Logger:log("Despawning " .. self.taskName .. " location.", LT_INFO)
 	local playerID = SceneObject(pCreatureObject):getObjectID()
 	local waypointId = readData(playerID .. self.taskName .. WAYPOINT_ID_STRING)
 
-	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-		playerObject:removeWaypoint(waypointId, true)
-	end)
+	PlayerObject(pGhost):removeWaypoint(waypointId, true)
 
 	local areaID = readData(playerID .. self.taskName .. ACTIVE_AREA_ID_STRING)
 	local pArea = getSceneObject(areaID)

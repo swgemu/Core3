@@ -24,22 +24,22 @@ function HyperdriveResearchFacilityScreenPlay:start()
 end
 
 function HyperdriveResearchFacilityScreenPlay:flipBase(pBuilding)
+	if (pBuilding == nil) then
+		return 1
+	end
 
-	ObjectManager.withBuildingObject(pBuilding, function(building)
-		building:destroyChildObjects()
+	BuildingObject(pBuilding):destroyChildObjects()
 
-		if building:getFaction() == FACTIONIMPERIAL then
-			self:spawnRebels(pBuilding)
-		elseif building:getFaction() == FACTIONREBEL then
-			self:spawnImperials(pBuilding)
-		end
-	end)
+	if BuildingObject(pBuilding):getFaction() == FACTIONIMPERIAL then
+		self:spawnRebels(pBuilding)
+	elseif BuildingObject(pBuilding):getFaction() == FACTIONREBEL then
+		self:spawnImperials(pBuilding)
+	end
 
 	return 0
 end
 
 function HyperdriveResearchFacilityScreenPlay:spawnImperials(pBuilding)
-
 	ObjectManager.withBuildingObject(pBuilding, function(building)
 		building:initializeStaticGCWBase(FACTIONIMPERIAL)
 
@@ -227,7 +227,6 @@ function HyperdriveResearchFacilityScreenPlay:spawnImperials(pBuilding)
 end
 
 function HyperdriveResearchFacilityScreenPlay:spawnRebels(pBuilding)
-
 	ObjectManager.withBuildingObject(pBuilding, function(building)
 		building:initializeStaticGCWBase(FACTIONREBEL)
 

@@ -96,9 +96,8 @@ end
 -- @param pCreatureObject pointer to the creature object of the player who should be checked if online.
 -- @return true if the player is online.
 function Encounter:isPlayerOnline(pCreatureObject)
-	return ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-		return playerObject:isOnline()
-	end) == true
+	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+	return pGhost ~= nil and PlayerObject(pGhost):isOnline()
 end
 
 -- Check if the player is in a building or not.

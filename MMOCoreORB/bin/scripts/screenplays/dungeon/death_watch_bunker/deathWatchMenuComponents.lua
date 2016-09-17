@@ -148,18 +148,16 @@ function deathWatchWaterValve:handleObjectMenuSelect(pSceneObject, pPlayer, sele
 		return 0
 	end
 
-	return ObjectManager.withCreatureObject(pPlayer, function(creature)
-		if not creature:hasScreenPlayState(32, "death_watch_foreman_stage") or creature:hasScreenPlayState(64, "death_watch_foreman_stage") then
-			creature:sendSystemMessage("@dungeon/death_watch:access_denied")
-			return 0
-		end
-
-		local terminalNumber = readData(SceneObject(pSceneObject):getObjectID() .. ":dwb:terminal")
-
-		DeathWatchBunkerScreenPlay:doValveSwitch(pPlayer, terminalNumber)
-
+	if not CreatureObject(pPlayer):hasScreenPlayState(32, "death_watch_foreman_stage") or CreatureObject(pPlayer):hasScreenPlayState(64, "death_watch_foreman_stage") then
+		CreatureObject(pPlayer):sendSystemMessage("@dungeon/death_watch:access_denied")
 		return 0
-	end)
+	end
+
+	local terminalNumber = readData(SceneObject(pSceneObject):getObjectID() .. ":dwb:terminal")
+
+	DeathWatchBunkerScreenPlay:doValveSwitch(pPlayer, terminalNumber)
+
+	return 0
 end
 
 deathWatchMandalorianCraftingTerminal = { }

@@ -524,35 +524,39 @@ function TheaterManagerScreenPlay:getExpectedPerformance(pPlayer, type)
 		return nil
 	end
 
-	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
-		local performance, currentPerformance
-		if (player:isDancing() or player:isPlayingMusic()) then
-			currentPerformance = player:getPerformanceName()
-		end
-		if (type == 1) then
-			while performance == nil do
-				local performanceName = self.dances[getRandomNumber(#self.dances)]
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
-				if (playerObject:hasAbility("startDance+" .. performanceName) and (currentPerformance == nil or performanceName ~= currentPerformance)) then
-					performance = self:getPerformanceKey(1, performanceName)
-				end
+	if (pGhost == nil) then
+		return nil
+	end
+
+	local performance, currentPerformance
+	if (CreatureObject(pPlayer):isDancing() or CreatureObject(pPlayer):isPlayingMusic()) then
+		currentPerformance = player:getPerformanceName()
+	end
+	if (type == 1) then
+		while performance == nil do
+			local performanceName = self.dances[getRandomNumber(#self.dances)]
+
+			if (playerObject:hasAbility("startDance+" .. performanceName) and (currentPerformance == nil or performanceName ~= currentPerformance)) then
+				performance = self:getPerformanceKey(1, performanceName)
 			end
-			return performance
-		elseif (type == 2) then
-			while performance == nil do
-				local performanceName = self.songs[getRandomNumber(#self.songs)]
-				if (playerObject:hasAbility("startMusic+" .. performanceName) and (currentPerformance == nil or performanceName ~= currentPerformance)) then
-					performance = self:getPerformanceKey(2, performanceName)
-				end
-			end
-			return performance
-		elseif (type == 3) then
-			return getRandomNumber(self.flourishes)
-		else
-			printf("Invalid audition type in TheaterManagerScreenPlay:getExpectedPerformance() \n")
-			return 0
 		end
-	end)
+		return performance
+	elseif (type == 2) then
+		while performance == nil do
+			local performanceName = self.songs[getRandomNumber(#self.songs)]
+			if (PlayerObject(pGhost):hasAbility("startMusic+" .. performanceName) and (currentPerformance == nil or performanceName ~= currentPerformance)) then
+				performance = self:getPerformanceKey(2, performanceName)
+			end
+		end
+		return performance
+	elseif (type == 3) then
+		return getRandomNumber(self.flourishes)
+	else
+		printf("Invalid audition type in TheaterManagerScreenPlay:getExpectedPerformance() \n")
+		return 0
+	end
 end
 
 -- Checks if the player is a valid entertainer capable of talking to the theater manager

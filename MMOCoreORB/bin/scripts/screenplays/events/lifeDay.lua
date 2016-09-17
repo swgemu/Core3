@@ -69,36 +69,42 @@ function lifeDayScreenplay:getRandomEnabledPlanet()
 end
 
 function lifeDayScreenplay:removeWaypoint(pPlayer)
-	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, ghost)
-		local oldWaypointID = readData(player:getObjectID() .. "lifeDayWaypointID")
+	local playerID = SceneObject(pPlayer):getObjectID()
+	local oldWaypointID = readData(playerID .. "lifeDayWaypointID")
 
-		if oldWaypointID ~= "" and oldWaypointID ~= nil and oldWaypointID ~= 0 then
-			ghost:removeWaypoint(oldWaypointID, true)
-			writeData(player:getObjectID() .. "lifeDayWaypointID", 0)
+	if oldWaypointID ~= "" and oldWaypointID ~= nil and oldWaypointID ~= 0 then
+		local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+		if (pGhost ~= nil) then
+			PlayerObject(pGhost):removeWaypoint(oldWaypointID, true)
 		end
-	end)
+
+		writeData(playerID .. "lifeDayWaypointID", 0)
+	end
 end
 
 function lifeDayScreenplay:giveWaypoint(pPlayer)
-	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, ghost)
-		self:removeWaypoint(pPlayer)
+	self:removeWaypoint(pPlayer)
 
-		local num = self:getRandomEnabledPlanet()
+	local num = self:getRandomEnabledPlanet()
 
-		if num == "" or num == 0 or num == nil then
-			player:sendSystemMessage("Error finding a planet.")
-			return
-		end
+	if num == "" or num == 0 or num == nil then
+		CreatureObject(pPlayer):sendSystemMessage("Error finding a planet.")
+		return
+	end
 
-		local playerID = player:getObjectID()
-		local newWaypointID = ghost:addWaypoint(self.waypoints[num].planet, "@quest/lifeday/lifeday:waypoint_name", "", self.waypoints[num].x, self.waypoints[num].y, 2, true, true, 0, 0) -- Life Day Celebration
+	local playerID = CreatureObject(pPlayer):getObjectID()
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost ~= nil) then
+		local newWaypointID = PlayerObject(pGhost):addWaypoint(self.waypoints[num].planet, "@quest/lifeday/lifeday:waypoint_name", "", self.waypoints[num].x, self.waypoints[num].y, 2, true, true, 0, 0) -- Life Day Celebration
 		writeData(playerID .. "lifeDayWaypointID", newWaypointID)
 		writeData(playerID .. ":lifeDayState", 1)
 
-		player:sendSystemMessage("@quest/lifeday/lifeday:waypoint_updated") -- A waypoint to a planet holding a Life Day celebration was added to your datapad.
+		CreatureObject(pPlayer):sendSystemMessage("@quest/lifeday/lifeday:waypoint_updated") -- A waypoint to a planet holding a Life Day celebration was added to your datapad.
 
 		createEvent(3600000, "lifeDayScreenplay", "removeWaypoint", pPlayer, "")
-	end)
+	end
 end
 
 function lifeDayScreenplay:giveRandomGift(pPlayer)

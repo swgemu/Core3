@@ -3,21 +3,19 @@ local ObjectManager = require("managers.object.object_manager")
 heroOfTatIntercomConvoHandler = {  }
 
 function heroOfTatIntercomConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	return ObjectManager.withCreatureObject(pPlayer, function(player)
-		local pConversationSession = player:getConversationSession()
-		local pLastConversationScreen = nil
-		if (pConversationSession ~= nil) then
-			local conversationSession = LuaConversationSession(pConversationSession)
-			pLastConversationScreen = conversationSession:getLastConversationScreen()
-		end
-		local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-		if (pLastConversationScreen ~= nil) then
-			local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-			local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-			return conversationTemplate:getScreen(optionLink)
-		end
-		return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
-	end)
+	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
+	local pLastConversationScreen = nil
+	if (pConversationSession ~= nil) then
+		local conversationSession = LuaConversationSession(pConversationSession)
+		pLastConversationScreen = conversationSession:getLastConversationScreen()
+	end
+	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
+	if (pLastConversationScreen ~= nil) then
+		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
+		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
+		return conversationTemplate:getScreen(optionLink)
+	end
+	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
 end
 
 function heroOfTatIntercomConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)

@@ -31,28 +31,29 @@ function TalusDetainmentCenterScreenPlay:start()
 end
 
 function TalusDetainmentCenterScreenPlay:flipBase(pBuilding)
-	ObjectManager.withBuildingObject(pBuilding, function(building)
-		building:destroyChildObjects()
+	if (pBuilding == nil) then
+		return 1
+	end
 
-		if building:getFaction() == FACTIONIMPERIAL then
-			self:spawnRebels(pBuilding)
-		elseif building:getFaction() == FACTIONREBEL then
-			self:spawnImperials(pBuilding)
-		end
-	end)
+	BuildingObject(pBuilding):destroyChildObjects()
+
+	if building:getFaction() == FACTIONIMPERIAL then
+		self:spawnRebels(pBuilding)
+	elseif building:getFaction() == FACTIONREBEL then
+		self:spawnImperials(pBuilding)
+	end
 
 	return 0
 end
 
 function TalusDetainmentCenterScreenPlay:spawnImperials(pBuilding)
-
 	ObjectManager.withBuildingObject(pBuilding, function(building)
 		building:initializeStaticGCWBase(FACTIONIMPERIAL)
 
 		building:spawnChildSceneObject("object/tangible/gcw/flip_banner_onpole_imperial.iff", 3.5, -9.0, 35.1, 9686212, 1, 0, 0, 0)
 
 		building:spawnChildCreature("imperial_staff_corporal", 300, 3.5, -9.0, 32.6, 179, 9686212)
-   		building:spawnChildCreature("command_security_guard", 300, 4.8, -9.0, 35.1, 179, 9686212)
+		building:spawnChildCreature("command_security_guard", 300, 4.8, -9.0, 35.1, 179, 9686212)
 		building:spawnChildCreature("command_security_guard", 300, 2.2, -9.0, 35.1, 179, 9686212)
 		building:spawnChildCreature("imperial_warrant_officer_i", 300, -52.6, -9.0, -6.6, -88, 9686214)
 		building:spawnChildCreature("imperial_private", 300, -58.4, -9.0, 7.1, 150, 9686214)
@@ -83,19 +84,17 @@ function TalusDetainmentCenterScreenPlay:spawnImperials(pBuilding)
 		building:spawnChildCreature("imperial_inquisitor", 900, -80.5, -23.0, 259.4, 88, 9686223)
 		building:spawnChildCreature("stormtrooper_colonel", 600, 45.2, -23.0, 276.3, -179, 9686225)
 		building:spawnChildCreature("senior_prophet_of_the_dark_side", 10800, -2.7, -23.0, 268.5, 90, 9686224)
-
 	end)
 end
 
 function TalusDetainmentCenterScreenPlay:spawnRebels(pBuilding)
-
 	ObjectManager.withBuildingObject(pBuilding, function(building)
 		building:initializeStaticGCWBase(FACTIONREBEL)
 
 		building:spawnChildSceneObject("object/tangible/gcw/flip_banner_onpole_rebel.iff", 3.5, -9.0, 35.1, 9686212, 1, 0, 0, 0)
 
 		building:spawnChildCreature("rebel_staff_corporal", 300, 5.3, -9.0, 29.7, -1, 9686212)
-   		building:spawnChildCreature("specforce_marine", 300, 6.9, -9.0, 33.9, 0, 9686212)
+		building:spawnChildCreature("specforce_marine", 300, 6.9, -9.0, 33.9, 0, 9686212)
 		building:spawnChildCreature("specforce_marine", 300, 0.0, -9.0, 33.9, -6, 9686212)
 		building:spawnChildCreature("rebel_warrant_officer_i", 300, -48.1, -9.0, -6.6, 90, 9686214)
 		building:spawnChildCreature("rebel_corporal", 300, -58.4, -9.0, 3.2, 0, 9686214)
@@ -126,7 +125,6 @@ function TalusDetainmentCenterScreenPlay:spawnRebels(pBuilding)
 		building:spawnChildCreature("rebel_lieutenant_general", 600, -79.8, -23.0, 259.1, 89, 9686223)
 		building:spawnChildCreature("specops_alliance_free_agent", 600, 43.2, -23.0, 278.3, -177, 9686225)
 		building:spawnChildCreature("lesser_prophet_of_the_light_side", 10800, -3.7, -23.0, 269.5, 90, 9686224)
-
 	end)
 end
 

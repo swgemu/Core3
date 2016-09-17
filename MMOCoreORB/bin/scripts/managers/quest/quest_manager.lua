@@ -9,28 +9,42 @@ local QUEST_COMPLETED = 1
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param quest the index number for the quest to activate.
 function QuestManager.activateQuest(pCreatureObject, quest)
+	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
 	if (QuestManager.shouldSendSystemMessage(pCreatureObject, quest)) then
 		CreatureObject(pCreatureObject):sendSystemMessage("@quest/quests:quest_journal_updated")
 	end
 
-	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-		playerObject:setActiveQuestsBit(quest, QUEST_ACTIVE)
-	end)
+	PlayerObject(pGhost):setActiveQuestsBit(quest, QUEST_ACTIVE)
 end
 
 -- Checks if the player has a quest active.
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param quest the index number for the quest to check if it is active.
 function QuestManager.hasActiveQuest(pCreatureObject, quest)
-	return ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-		return playerObject:hasActiveQuestBitSet(quest)
-	end) == true
+	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+
+	if (pGhost == nil) then
+		return false
+	end
+
+	return PlayerObject(pGhost):hasActiveQuestBitSet(quest)
 end
 
 -- Complete the quest for the player.
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param quest the index number for the quest to complete.
 function QuestManager.completeQuest(pCreatureObject, quest)
+	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
 	if (QuestManager.shouldSendSystemMessage(pCreatureObject, quest)) then
 		local summary = QuestManager.getJournalSummary(quest)
 
@@ -41,39 +55,49 @@ function QuestManager.completeQuest(pCreatureObject, quest)
 		CreatureObject(pCreatureObject):sendSystemMessage("@quest/quests:task_complete")
 	end
 
-	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-		playerObject:clearActiveQuestsBit(quest)
-		playerObject:setCompletedQuestsBit(quest, QUEST_COMPLETED)
-	end)
+	PlayerObject(pGhost):clearActiveQuestsBit(quest)
+	PlayerObject(pGhost):setCompletedQuestsBit(quest, QUEST_COMPLETED)
 end
 
 -- Un-Complete the quest for the player and set quest active again.
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param quest the index number for the quest to complete.
 function QuestManager.uncompleteQuest(pCreatureObject, quest)
-	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-		playerObject:clearCompletedQuestsBit(quest)
-		playerObject:setActiveQuestsBit(quest, QUEST_ACTIVE)
-	end)
+	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	PlayerObject(pGhost):clearCompletedQuestsBit(quest)
+	PlayerObject(pGhost):setActiveQuestsBit(quest, QUEST_ACTIVE)
 end
 
 -- Checks if the player has a quest completed.
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param quest the index number for the quest to check if it is completed.
 function QuestManager.hasCompletedQuest(pCreatureObject, quest)
-	return ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-		return playerObject:hasCompletedQuestsBitSet(quest)
-	end) == true
+	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+
+	if (pGhost == nil) then
+		return false
+	end
+
+	return PlayerObject(pGhost):hasCompletedQuestsBitSet(quest)
 end
 
 -- Reset the quest for the player.
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param quest the index number for the quest to reset.
 function QuestManager.resetQuest(pCreatureObject, quest)
-	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-		playerObject:clearActiveQuestsBit(quest)
-		playerObject:clearCompletedQuestsBit(quest)
-	end)
+	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	PlayerObject(pGhost):clearActiveQuestsBit(quest)
+	PlayerObject(pGhost):clearCompletedQuestsBit(quest)
 end
 
 function QuestManager.failQuest(pCreatureObject, quest)
