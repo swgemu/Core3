@@ -206,15 +206,17 @@ end
 function CorvetteTicketGiverLogic:giveCompensation(pPlayer)
 	for i = 1, # self.compensation do
 		local comp = self.compensation[i]
-		ObjectManager.withCreatureAndPlayerObject(pPlayer, function(creature, player)
-			if comp.compType == "credits" then
-				local amount = (comp.amount / 2) + getRandomNumber(comp.amount)
-				creature:addCashCredits(amount, true)
-				creature:sendSystemMessageWithDI("@new_player:credits_reward", amount)
-			elseif comp.compType == "faction" then
-				player:increaseFactionStanding(faction, comp.amount)
+		if comp.compType == "credits" then
+			local amount = (comp.amount / 2) + getRandomNumber(comp.amount)
+			CreatureObject(pPlayer):addCashCredits(amount, true)
+			CreatureObject(pPlayer):sendSystemMessageWithDI("@new_player:credits_reward", amount)
+		elseif comp.compType == "faction" then
+			local pGhost = CreatureObject(pPlayer):getObjectID()
+
+			if (pGhost ~= nil) then
+				PlayerObject(pGhost):increaseFactionStanding(comp.faction, comp.amount)
 			end
-		end)
+		end
 	end
 end
 

@@ -144,6 +144,12 @@ function fs_experience_converter_conv_handler:notifyTransfer(pCreature, pSui, ev
 		return
 	end
 
+	local pGhost = CreatureObject(pCreature):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
 	local objId = CreatureObject(pCreature):getObjectID()
 
 	if (objId == nil) then
@@ -177,10 +183,7 @@ function fs_experience_converter_conv_handler:notifyTransfer(pCreature, pSui, ev
 		local ratio = ExperienceConverter:getExperienceRatio(optionsNameFromUnformatted, expTransferType)
 
 		-- Add Options: 1 = string name, 2 = amount, 3 = ratio
-		local optionsFrom = {}
-		ObjectManager.withCreaturePlayerObject(pCreature, function(playerObject)
-			optionsFrom = {optionsNameFrom, playerObject:getExperience(optionsNameFromUnformatted), ratio}
-		end)
+		local optionsFrom = {optionsNameFrom, PlayerObject(pGhost):getExperience(optionsNameFromUnformatted), ratio}
 		local optionsTo = {experienceTypeFS, 0, 1}
 		local suiManager = LuaSuiManager()
 		suiManager:sendTransferBox(pCreature, pCreature, "@quest/force_sensitive/utils:xp_transfer_prompt", "How much of that Experience do you wish to convert to: " .. experienceTypeFS, "@ok", "fs_experience_converter_conv_handler", "transferExperiencePoints", optionsTo, optionsFrom)
@@ -191,6 +194,12 @@ function fs_experience_converter_conv_handler:transferExperiencePoints(pCreature
 	local cancelPressed = (eventIndex == 1)
 
 	if (pCreature == nil or cancelPressed) then
+		return
+	end
+
+	local pGhost = CreatureObject(pCreature):getPlayerObject()
+
+	if (pGhost == nil) then
 		return
 	end
 
@@ -221,40 +230,40 @@ function fs_experience_converter_conv_handler:transferExperiencePoints(pCreature
 
 
 	if (experienceTypeFS ~= nil) then
-		ObjectManager.withCreatureAndPlayerObject(pCreature, function(creatureObject, playerObject)
-			local optionsName = ExperienceConverter:getExperienceForConversion(pCreature, ExperienceConverter:getSuiTransferExperienceType(objId))
-			local optionsChoice = tonumber(ExperienceConverter:getSuiTransferExperienceSelection(creatureObject:getObjectID()))
-			local optionsNameFrom = tostring(optionsName[optionsChoice])
-			local optionsNameFromUnformatted = string.sub(optionsNameFrom, 8, string.len(optionsNameFrom))
-			ExperienceConverter:deleteSuiTransferExperienceSelection(objId)
-			ExperienceConverter:deleteSuiTransferExperienceType(objId)
-			local expFsUnformatted = string.sub(experienceTypeFS, 8, string.len(experienceTypeFS))
-			local expFsCurrent = playerObject:getExperience(expFsUnformatted)
-			local expNormal = playerObject:getExperience(optionsNameFromUnformatted)
-			local ratio = ExperienceConverter:getExperienceRatio(optionsNameFromUnformatted, expTransferType)
-			local xpToLose = (tonumber(arg1) * ratio) * -1
+		local optionsName = ExperienceConverter:getExperienceForConversion(pCreature, ExperienceConverter:getSuiTransferExperienceType(objId))
+		local optionsChoice = tonumber(ExperienceConverter:getSuiTransferExperienceSelection(CreatureObject(pCreature):getObjectID()))
+		local optionsNameFrom = tostring(optionsName[optionsChoice])
+		local optionsNameFromUnformatted = string.sub(optionsNameFrom, 8, string.len(optionsNameFrom))
 
-			-- If they are capped (or will be), don't let them transfer any more xp. The cap for any FS exp type seems to be 5100000.
-			if (expFsCurrent >= playerObject:getExperienceCap(expFsUnformatted) or (expFsCurrent + tonumber(arg1) > playerObject:getExperienceCap(expFsUnformatted))) then
-				creatureObject:sendSystemMessage("@quest/force_sensitive/utils:convert_at_fs_skill_cap")
-				return
-			elseif (expNormal + xpToLose < 0) then -- check for negative.
-				creatureObject:sendSystemMessage("@quest/force_sensitive/utils:convert_not_enough_xp")
-				return
-			end
+		ExperienceConverter:deleteSuiTransferExperienceSelection(objId)
+		ExperienceConverter:deleteSuiTransferExperienceType(objId)
 
-			local messageString = LuaStringIdChatParameter("@quest/force_sensitive/utils:xp_convert_lose")
-			messageString:setTO(optionsNameFrom)
-			local messageString2 = LuaStringIdChatParameter("@quest/force_sensitive/utils:xp_convert_gain")
-			messageString2:setTO(experienceTypeFS)
-			messageString2:setDI(tonumber(arg1))
-			messageString:setDI(xpToLose * -1)
-			creatureObject:awardExperience(optionsNameFromUnformatted, xpToLose, false)
-			creatureObject:awardExperience(expFsUnformatted, tonumber(arg1), false)
+		local expFsUnformatted = string.sub(experienceTypeFS, 8, string.len(experienceTypeFS))
+		local expFsCurrent = PlayerObject(pGhost):getExperience(expFsUnformatted)
+		local expNormal = PlayerObject(pGhost):getExperience(optionsNameFromUnformatted)
+		local ratio = ExperienceConverter:getExperienceRatio(optionsNameFromUnformatted, expTransferType)
+		local xpToLose = (tonumber(arg1) * ratio) * -1
 
-			creatureObject:sendSystemMessage(messageString:_getObject())
-			creatureObject:sendSystemMessage(messageString2:_getObject())
-		end)
+		-- If they are capped (or will be), don't let them transfer any more xp. The cap for any FS exp type seems to be 5100000.
+		if (expFsCurrent >= PlayerObject(pGhost):getExperienceCap(expFsUnformatted) or (expFsCurrent + tonumber(arg1) > PlayerObject(pGhost):getExperienceCap(expFsUnformatted))) then
+			CreatureObject(pCreature):sendSystemMessage("@quest/force_sensitive/utils:convert_at_fs_skill_cap")
+			return
+		elseif (expNormal + xpToLose < 0) then -- check for negative.
+			CreatureObject(pCreature):sendSystemMessage("@quest/force_sensitive/utils:convert_not_enough_xp")
+			return
+		end
+
+		local messageString = LuaStringIdChatParameter("@quest/force_sensitive/utils:xp_convert_lose")
+		messageString:setTO(optionsNameFrom)
+		local messageString2 = LuaStringIdChatParameter("@quest/force_sensitive/utils:xp_convert_gain")
+		messageString2:setTO(experienceTypeFS)
+		messageString2:setDI(tonumber(arg1))
+		messageString:setDI(xpToLose * -1)
+		CreatureObject(pCreature):awardExperience(optionsNameFromUnformatted, xpToLose, false)
+		CreatureObject(pCreature):awardExperience(expFsUnformatted, tonumber(arg1), false)
+
+		CreatureObject(pCreature):sendSystemMessage(messageString:_getObject())
+		CreatureObject(pCreature):sendSystemMessage(messageString2:_getObject())
 	end
 end
 

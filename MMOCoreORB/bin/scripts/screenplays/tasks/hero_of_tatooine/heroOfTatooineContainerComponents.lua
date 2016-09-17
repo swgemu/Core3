@@ -17,16 +17,14 @@ function heroOfTatooineRockCrevice:canAddObject(pCrevice, pIngredient, slot)
 		return TRANSFERCANTADD
 	end
 
-	return ObjectManager.withCreatureObject(pParent, function(player)
-		if (not player:hasScreenPlayState(1, "hero_of_tatooine_altruism") or player:hasScreenPlayState(2, "hero_of_tatooine_altruism")) then
-			return TRANSFERCANTADD
-		elseif (SceneObject(pIngredient):getTemplateObjectPath() ~= "object/tangible/item/quest/hero_of_tatooine/explosives.iff") then
-			player:sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_no_reason")
-			return TRANSFERCANTADD
-		else
-			return TRANSFERCANADD
-		end
-	end)
+	if (not CreatureObject(pParent):hasScreenPlayState(1, "hero_of_tatooine_altruism") or CreatureObject(pParent):hasScreenPlayState(2, "hero_of_tatooine_altruism")) then
+		return TRANSFERCANTADD
+	elseif (SceneObject(pIngredient):getTemplateObjectPath() ~= "object/tangible/item/quest/hero_of_tatooine/explosives.iff") then
+		CreatureObject(pParent):sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_no_reason")
+		return TRANSFERCANTADD
+	else
+		return TRANSFERCANADD
+	end
 end
 
 function heroOfTatooineRockCrevice:transferObject(pCrevice, pIngredient, slot)

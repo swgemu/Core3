@@ -7,29 +7,28 @@ function tutorialQuartermasterConvoHandler:runScreenHandlers(conversationTemplat
 	local screenID = screen:getScreenID()
 
 	if (screenID == "you_may_leave") then
-		ObjectManager.withCreatureAndPlayerObject(conversingPlayer, function(player, playerObject)
-			local playerID = player:getObjectID()
+		local playerID = CreatureObject(conversingPlayer):getObjectID()
 
-			local pInventory = player:getSlottedObject("inventory")
+		local pInventory = CreatureObject(conversingPlayer):getSlottedObject("inventory")
 
-			if pInventory == nil then
-				return conversationScreen
-			end
+		if pInventory == nil then
+			return conversationScreen
+		end
 
-			local pInvItem = getContainerObjectByTemplate(pInventory, "object/tangible/loot/dungeon/death_watch_bunker/viewscreen_s2.iff", false)
+		local pInvItem = getContainerObjectByTemplate(pInventory, "object/tangible/loot/dungeon/death_watch_bunker/viewscreen_s2.iff", false)
 
-			if (pInvItem ~= nil) then
-				SceneObject(pInvItem):destroyObjectFromWorld()
-				SceneObject(pInvItem):destroyObjectFromDatabase()
-			end
+		if (pInvItem ~= nil) then
+			SceneObject(pInvItem):destroyObjectFromWorld()
+			SceneObject(pInvItem):destroyObjectFromDatabase()
+		end
 
-			local terminalID = readData(playerID .. ":tutorial:travelTerminal")
-			local pTerminal = getSceneObject(terminalID)
-			if (pTerminal ~= nil) then
-				setAuthorizationState(pTerminal, true)
-				TutorialScreenPlay:markRoomComplete(conversingPlayer, "r11")
-			end
-		end)
+		local terminalID = readData(playerID .. ":tutorial:travelTerminal")
+		local pTerminal = getSceneObject(terminalID)
+		if (pTerminal ~= nil) then
+			setAuthorizationState(pTerminal, true)
+			TutorialScreenPlay:markRoomComplete(conversingPlayer, "r11")
+		end
+
 		CreatureObject(conversingNPC):clearOptionBit(CONVERSABLE)
 	end
 
@@ -38,7 +37,7 @@ end
 
 function tutorialQuartermasterConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-	
+
 	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 
 	if pInventory == nil then

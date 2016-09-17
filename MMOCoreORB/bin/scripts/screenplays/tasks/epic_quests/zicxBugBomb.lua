@@ -94,31 +94,29 @@ function ZicxContainerComponent:transferObject(pContainer, pObj, slot)
 
 	local objectTemplate = SceneObject(pObj):getTemplateObjectPath()
 
-	return ObjectManager.withCreatureObject(pPlayer, function(player)
-		if (not player:hasScreenPlayState(1, "zicx_bug_bomb_goruNpc") or player:hasScreenPlayState(8, "zicx_bug_bomb_goruNpc")) then
-			return 0
-		elseif (objectTemplate == "object/tangible/loot/quest/quest_item_zicx_bug_jar.iff") then
-			if (not player:hasScreenPlayState(4, "zicx_bug_bomb_goruNpc")) then
-				spatialChat(pContainer, "@epic_quest/zicx_bug_bomb/rori_goru_rainstealer:get_the_bile")
-			else
-				spatialChat(pContainer, "@epic_quest/zicx_bug_bomb/rori_goru_rainstealer:give_a_minute")
-			end
-			player:setScreenPlayState(2, "zicx_bug_bomb_goruNpc")
-		elseif (objectTemplate == "object/tangible/loot/quest/quest_item_sarlacc_bile_jar.iff") then
-			if (not player:hasScreenPlayState(2, "zicx_bug_bomb_goruNpc")) then
-				spatialChat(pContainer, "@epic_quest/zicx_bug_bomb/rori_goru_rainstealer:get_the_bugs")
-			else
-				spatialChat(pContainer, "@epic_quest/zicx_bug_bomb/rori_goru_rainstealer:give_a_minute")
-			end
-			player:setScreenPlayState(4, "zicx_bug_bomb_goruNpc")
-		else
-			spatialChat(pContainer, "@epic_quest/zicx_bug_bomb/rori_goru_rainstealer:what_is_this")
-			return 0
-		end
-		SceneObject(pObj):destroyObjectFromWorld()
-		SceneObject(pObj):destroyObjectFromDatabase()
+	if (not CreatureObject(pPlayer):hasScreenPlayState(1, "zicx_bug_bomb_goruNpc") or CreatureObject(pPlayer):hasScreenPlayState(8, "zicx_bug_bomb_goruNpc")) then
 		return 0
-	end)
+	elseif (objectTemplate == "object/tangible/loot/quest/quest_item_zicx_bug_jar.iff") then
+		if (not CreatureObject(pPlayer):hasScreenPlayState(4, "zicx_bug_bomb_goruNpc")) then
+			spatialChat(pContainer, "@epic_quest/zicx_bug_bomb/rori_goru_rainstealer:get_the_bile")
+		else
+			spatialChat(pContainer, "@epic_quest/zicx_bug_bomb/rori_goru_rainstealer:give_a_minute")
+		end
+		CreatureObject(pPlayer):setScreenPlayState(2, "zicx_bug_bomb_goruNpc")
+	elseif (objectTemplate == "object/tangible/loot/quest/quest_item_sarlacc_bile_jar.iff") then
+		if (not CreatureObject(pPlayer):hasScreenPlayState(2, "zicx_bug_bomb_goruNpc")) then
+			spatialChat(pContainer, "@epic_quest/zicx_bug_bomb/rori_goru_rainstealer:get_the_bugs")
+		else
+			spatialChat(pContainer, "@epic_quest/zicx_bug_bomb/rori_goru_rainstealer:give_a_minute")
+		end
+		CreatureObject(pPlayer):setScreenPlayState(4, "zicx_bug_bomb_goruNpc")
+	else
+		spatialChat(pContainer, "@epic_quest/zicx_bug_bomb/rori_goru_rainstealer:what_is_this")
+		return 0
+	end
+	SceneObject(pObj):destroyObjectFromWorld()
+	SceneObject(pObj):destroyObjectFromDatabase()
+	return 0
 end
 
 function ZicxContainerComponent:canAddObject(pContainer, pObj, slot)
@@ -128,13 +126,11 @@ function ZicxContainerComponent:canAddObject(pContainer, pObj, slot)
 		return -1
 	end
 
-	return ObjectManager.withCreatureObject(pPlayer, function(player)
-		if (player:hasScreenPlayState(1, "zicx_bug_bomb_goruNpc") and not player:hasScreenPlayState(8, "zicx_bug_bomb_goruNpc")) then
-			return true
-		else
-			return -1
-		end
-	end)
+	if (CreatureObject(pPlayer):hasScreenPlayState(1, "zicx_bug_bomb_goruNpc") and not CreatureObject(pPlayer):hasScreenPlayState(8, "zicx_bug_bomb_goruNpc")) then
+		return true
+	else
+		return -1
+	end
 end
 
 function ZicxBugBomb:getObjOwner(pObj)

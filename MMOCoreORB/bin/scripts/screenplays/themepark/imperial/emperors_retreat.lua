@@ -3,7 +3,7 @@ local ObjectManager = require("managers.object.object_manager")
 EmperorsRetreatScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 
-	screenplayName = "EmperorsRetreatScreenPlay",
+		screenplayName = "EmperorsRetreatScreenPlay",
 }
 
 registerScreenPlay("EmperorsRetreatScreenPlay", true)
@@ -32,33 +32,31 @@ function EmperorElevatorMenuComponent:fillObjectMenuResponse(pSceneObject, pMenu
 end
 
 function EmperorElevatorMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
-	ObjectManager.withCreatureObject(pPlayer, function(creature)
-		if (selectedID ~= 198) or (not creature:hasScreenPlayState(16, "imperial_theme_park")) then
-			creature:sendSystemMessage("@theme_park_imperial/warning:emperor")
-			return 0
-		end
+	if (pPlayer == nil) then
+		return 0
+	end
 
-		local obj = SceneObject(pSceneObject)
+	if (selectedID ~= 198) or (not CreatureObject(pPlayer):hasScreenPlayState(16, "imperial_theme_park")) then
+		CreatureObject(pPlayer):sendSystemMessage("@theme_park_imperial/warning:emperor")
+		return 0
+	end
 
-		if (creature:getParent() ~= obj:getParent()) then
-			return 0
-		end
+	if (CreatureObject(pPlayer):getParent() ~= SceneObject(pSceneObject):getParent()) then
+		return 0
+	end
 
-		local z = obj:getPositionZ() + 20
-		local x = creature:getPositionX()
-		local y = creature:getPositionY()
+	local z = SceneObject(pSceneObject):getPositionZ() + 20
+	local x = CreatureObject(pPlayer):getPositionX()
+	local y = CreatureObject(pPlayer):getPositionY()
 
-		creature:playEffect("clienteffect", "elevator_ascend.cef")
-		creature:teleport(x, z, y, obj:getParentID())
-	end)
+	CreatureObject(pPlayer):playEffect("clienteffect", "elevator_ascend.cef")
+	CreatureObject(pPlayer):teleport(x, z, y, SceneObject(pSceneObject):getParentID())
 
 	return 0
 end
 
 function EmperorsRetreatScreenPlay:setMoodString(pNpc, mood)
-	ObjectManager.withCreatureObject(pNpc, function(npc)
-		npc:setMoodString(mood)
-	end)
+	CreatureObject(pNpc):setMoodString(mood)
 end
 
 function EmperorsRetreatScreenPlay:retreatPatrolDestReached(pMobile)

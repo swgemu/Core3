@@ -32,6 +32,12 @@ function villageChiefEngineerPhase4ConvoHandler:isOnQuestOneThroughFive(pPlayer)
 end
 
 function villageChiefEngineerPhase4ConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+	local pGhost = CreatureObject(conversingPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return conversationScreen
+	end
+
 	local screen = LuaConversationScreen(conversationScreen)
 	local screenID = screen:getScreenID()
 	local conversationScreen = screen:cloneScreen()
@@ -116,19 +122,13 @@ function villageChiefEngineerPhase4ConvoHandler:runScreenHandlers(conversationTe
 	elseif (screenID == "excellent_continue") then
 		VillageJediManagerCommon.setActiveQuestThisPhase(conversingPlayer)
 	elseif (screenID == "waypoint_keren") then
-		ObjectManager.withCreaturePlayerObject(conversingPlayer, function(playerObject)
-			playerObject:addWaypoint("naboo", "Keren - Gadget Specialist", "", 1215, 2740, WAYPOINTYELLOW, true, true, 0)
-		end)
+		PlayerObject(pGhost):addWaypoint("naboo", "Keren - Gadget Specialist", "", 1215, 2740, WAYPOINTYELLOW, true, true, 0)
 		FsCrafting4:activateQuest(conversingPlayer)
 	elseif (screenID == "waypoint_coronet") then
-		ObjectManager.withCreaturePlayerObject(conversingPlayer, function(playerObject)
-			playerObject:addWaypoint("corellia", "Coronet - Gadget Specialist", "", 19, -4775, WAYPOINTYELLOW, true, true, 0)
-		end)
+		PlayerObject(pGhost):addWaypoint("corellia", "Coronet - Gadget Specialist", "", 19, -4775, WAYPOINTYELLOW, true, true, 0)
 		FsCrafting4:activateQuest(conversingPlayer)
 	elseif (screenID == "waypoint_mos_entha") then
-		ObjectManager.withCreaturePlayerObject(conversingPlayer, function(playerObject)
-			playerObject:addWaypoint("tatooine", "Mos Entha - Gadget Specialist", "", 1209, 2923, WAYPOINTYELLOW, true, true, 0)
-		end)
+		PlayerObject(pGhost):addWaypoint("tatooine", "Mos Entha - Gadget Specialist", "", 1209, 2923, WAYPOINTYELLOW, true, true, 0)
 		FsCrafting4:activateQuest(conversingPlayer)
 	elseif (screenID == "return_to_me") then
 		FsCrafting4:activateQuest(conversingPlayer)

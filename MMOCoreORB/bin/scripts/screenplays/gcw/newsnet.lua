@@ -40,9 +40,11 @@ function NewsnetMenuComponent:handleObjectMenuSelect(pObject, pPlayer, selectedI
 	end
 
 	-- Close open Newsnet SUIs and send the player a new one.
-	ObjectManager.withCreaturePlayerObject(pPlayer, function(ghost)
-	        ghost:closeSuiWindowType( NEWSNET_INFO )
-	end)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost ~= nil) then
+		PlayerObject(pGhost):closeSuiWindowType( NEWSNET_INFO )
+	end
 
 	local suiManager = LuaSuiManager()
 	suiManager:sendMessageBox(pObject, pPlayer, "@gcw:" .. planet .. "_newsnet_name", "@gcw:" .. headline, "@ok", "NewsnetMenuComponent", "notifyOkPressed", NEWSNET_INFO)

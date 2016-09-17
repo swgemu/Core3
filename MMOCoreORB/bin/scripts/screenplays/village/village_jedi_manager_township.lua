@@ -73,7 +73,7 @@ function VillageJediManagerTownship:switchToNextPhase()
 	VillageJediManagerTownship.setCurrentPhaseID(phaseID + 1)
 	VillageJediManagerTownship:spawnMobiles(currentPhase, false)
 	VillageJediManagerTownship:spawnSceneObjects(currentPhase, false)
-	
+
 	if (currentPhase == 2) then
 		VillageCommunityCrafting:createAttributeValueTables()
 		VillageCommunityCrafting:createProjectStatsTables()
@@ -204,11 +204,13 @@ function VillageJediManagerTownship:handlePhaseChangeActiveQuests(phaseID, curre
 		local pPlayer = getSceneObject(playerID)
 
 		if (pPlayer ~= nil) then
-			ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
-				if (playerObject:isOnline()) then
+			local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+			if (pGhost ~= nil) then
+				if (PlayerObject(pGhost):isOnline()) then
 					self:doOnlinePhaseChangeFails(pPlayer, currentPhase)
 				end
-			end)
+			end
 		end
 	end
 

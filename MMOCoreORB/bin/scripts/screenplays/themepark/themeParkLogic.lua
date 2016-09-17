@@ -195,15 +195,19 @@ function ThemeParkLogic:cellPermissionsObserver(pRegion, pCreature)
 end
 
 function ThemeParkLogic:setCellPermissions(permissions, pCreature)
-	ObjectManager.withCreaturePlayerObject(pCreature, function(ghost)
-		for i = 1, # permissions.permissions, 1 do
-			if self:hasPermission(permissions.permissions[i].conditions, pCreature) == true or ghost:hasGodMode() then
-				ghost:addPermissionGroup(permissions.regionName .. i, true)
-			else
-				ghost:removePermissionGroup(permissions.regionName .. i, true)
-			end
+	local pGhost = CreatureObject(pCreature):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	for i = 1, # permissions.permissions, 1 do
+		if self:hasPermission(permissions.permissions[i].conditions, pCreature) == true or PlayerObject(pGhost):hasGodMode() then
+			PlayerObject(pGhost):addPermissionGroup(permissions.regionName .. i, true)
+		else
+			PlayerObject(pGhost):removePermissionGroup(permissions.regionName .. i, true)
 		end
-	end)
+	end
 end
 
 function ThemeParkLogic:hasFullInventory(pPlayer)
@@ -262,9 +266,13 @@ function ThemeParkLogic:isOnLeave(pPlayer)
 		return false
 	end
 
-	return ObjectManager.withCreaturePlayerObject(pPlayer, function(player)
-		return player:isOnLeave()
-	end)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return false
+	end
+
+	return PlayerObject(pGhost):isOnLeave()
 end
 
 function ThemeParkLogic:hasEnoughFaction(pPlayer)
@@ -508,7 +516,7 @@ function ThemeParkLogic:handleMissionAccept(npcNumber, missionNumber, pConversin
 	if pQuestArea == nil then
 		return false
 	end
-	
+
 	ActiveArea(pQuestArea):setNoBuildArea(true)
 	ActiveArea(pQuestArea):setNoSpawnArea(true)
 
@@ -536,7 +544,7 @@ function ThemeParkLogic:notifyEnteredQuestArea(pActiveArea, pPlayer)
 	if (ownerID ~= playerID) then
 		return 0
 	end
-	
+
 	ActiveArea(pActiveArea):setNoBuildArea(false)
 	ActiveArea(pActiveArea):setNoSpawnArea(false)
 
@@ -877,19 +885,18 @@ function ThemeParkLogic:normalizeNpc(pNpc, level, ham)
 	end
 
 	AiAgent(pNpc):setLevel(level)
-	ObjectManager.withCreatureObject(pNpc, function(npc)
-		for i = 0, 8, 1 do
-			if (i % 3 == 0) then
-				npc:setHAM(i, ham)
-				npc:setBaseHAM(i, ham)
-				npc:setMaxHAM(i, ham)
-			else
-				npc:setHAM(i, ham / 100)
-				npc:setBaseHAM(i, ham / 100)
-				npc:setMaxHAM(i, ham / 100)
-			end
+
+	for i = 0, 8, 1 do
+		if (i % 3 == 0) then
+			CreatureObject(pNpc):setHAM(i, ham)
+			CreatureObject(pNpc):setBaseHAM(i, ham)
+			CreatureObject(pNpc):setMaxHAM(i, ham)
+		else
+			CreatureObject(pNpc):setHAM(i, ham / 100)
+			CreatureObject(pNpc):setBaseHAM(i, ham / 100)
+			CreatureObject(pNpc):setMaxHAM(i, ham / 100)
 		end
-	end)
+	end
 end
 
 function ThemeParkLogic:spawnDestroyMissionNpcs(mission, pConversingPlayer)
@@ -916,7 +923,7 @@ function ThemeParkLogic:spawnDestroyMissionNpcs(mission, pConversingPlayer)
 	end
 
 	local planetName = SceneObject(pConversingPlayer):getZoneName()
-	
+
 	for i = 1, numberOfChildNpcs, 1 do
 		local targetCellObject = SceneObject(BuildingObject(pBuilding):getCell(childNpcs[i].vectorCellID))
 		local pNpc = spawnMobile(planetName, childNpcs[i].npcTemplate, 0, childNpcs[i].x, childNpcs[i].z, childNpcs[i].y, getRandomNumber(360) - 180, targetCellObject:getObjectID())
@@ -1488,9 +1495,13 @@ function ThemeParkLogic:notifyEnteredEscortArea(pActiveArea, pCreature)
 end
 
 function ThemeParkLogic:updateWaypoint(pConversingPlayer, planetName, x, y, direction)
-	ObjectManager.withCreaturePlayerObject(pConversingPlayer, function(ghost)
-		ghost:addWaypoint(planetName, self:getMissionDescription(pConversingPlayer, direction), "", x, y, WAYPOINTPURPLE, true, true, WAYPOINTTHEMEPARK, 0)
-	end)
+	local pGhost = CreatureObject(pConversingPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	PlayerObject(pGhost):addWaypoint(planetName, self:getMissionDescription(pConversingPlayer, direction), "", x, y, WAYPOINTPURPLE, true, true, WAYPOINTTHEMEPARK, 0)
 end
 
 function ThemeParkLogic:getSpawnPoints(numberOfSpawns, x, y, planetName, pConversingPlayer)
@@ -1792,15 +1803,23 @@ function ThemeParkLogic:handleMissionReward(pConversingPlayer)
 end
 
 function ThemeParkLogic:givePermission(pConversingPlayer, permissionGroup)
-	ObjectManager.withCreaturePlayerObject(pConversingPlayer, function(ghost)
-		ghost:addPermissionGroup(permissionGroup, true)
-	end)
+	local pGhost = CreatureObject(pConversingPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	PlayerObject(pGhost):addPermissionGroup(permissionGroup, true)
 end
 
 function ThemeParkLogic:giveBadge(pConversingPlayer, badge)
-	ObjectManager.withCreaturePlayerObject(pConversingPlayer, function(ghost)
-		ghost:awardBadge(badge)
-	end)
+	local pGhost = CreatureObject(pConversingPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	PlayerObject(pGhost):awardBadge(badge)
 end
 
 function ThemeParkLogic:giveLoot(pConversingPlayer, lootGroup)
@@ -1843,9 +1862,13 @@ function ThemeParkLogic:giveCredits(pConversingPlayer, amount)
 end
 
 function ThemeParkLogic:giveFaction(pConversingPlayer, faction, points)
-	ObjectManager.withCreaturePlayerObject(pConversingPlayer, function(playerObject)
-		playerObject:increaseFactionStanding(faction, points)
-	end)
+	local pGhost = CreatureObject(pConversingPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	PlayerObject(pGhost):increaseFactionStanding(faction, points)
 end
 
 function ThemeParkLogic:giveItemReward(pConversingPlayer, itemTemplate)
@@ -1890,39 +1913,43 @@ function ThemeParkLogic:giveItem(pConversingPlayer, itemList)
 end
 
 function ThemeParkLogic:cleanUpMission(pConversingPlayer)
-	ObjectManager.withCreatureAndPlayerObject(pConversingPlayer, function(creature, playerObject)
-		local playerID = creature:getObjectID()
-		playerObject:removeWaypointBySpecialType(WAYPOINTTHEMEPARK)
-		local npcNumber = self:getActiveNpcNumber(pConversingPlayer)
-		local currentMissionType = self:getMissionType(npcNumber, pConversingPlayer)
+	local playerID = CreatureObject(pConversingPlayer):getObjectID()
 
-		if (currentMissionType == "destroy") then
-			local buildingID = readData(playerID .. ":destroyableBuildingID")
-			if (buildingID ~= 0) then
-				dropObserver(OBJECTDESTRUCTION, getSceneObject(buildingID))
-				destroyBuilding(buildingID)
-			end
-			writeData(playerID .. ":destroyableBuildingID", 0)
-		end
+	local pGhost = CreatureObject(pConversingPlayer):getPlayerObject()
 
-		local numberOfObjects = readData(playerID .. ":missionStaticObjects")
-		for i = 1, numberOfObjects, 1 do
-			local objectID = readData(playerID .. ":missionStaticObject:no" .. i)
-			local pObj = getSceneObject(objectID)
-			if pObj ~= nil then
-				SceneObject(pObj):destroyObjectFromWorld()
-			end
-		end
+	if (pGhost ~= nil) then
+		PlayerObject(pGhost):removeWaypointBySpecialType(WAYPOINTTHEMEPARK)
+	end
 
-		local numberOfSpawns = readData(playerID .. ":missionSpawns")
-		for i = 1, numberOfSpawns, 1 do
-			local objectID = readData(playerID .. ":missionSpawn:no" .. i)
-			local pNpc = getSceneObject(objectID)
-			if pNpc ~= nil then
-				SceneObject(pNpc):destroyObjectFromWorld()
-			end
+	local npcNumber = self:getActiveNpcNumber(pConversingPlayer)
+	local currentMissionType = self:getMissionType(npcNumber, pConversingPlayer)
+
+	if (currentMissionType == "destroy") then
+		local buildingID = readData(playerID .. ":destroyableBuildingID")
+		if (buildingID ~= 0) then
+			dropObserver(OBJECTDESTRUCTION, getSceneObject(buildingID))
+			destroyBuilding(buildingID)
 		end
-	end)
+		writeData(playerID .. ":destroyableBuildingID", 0)
+	end
+
+	local numberOfObjects = readData(playerID .. ":missionStaticObjects")
+	for i = 1, numberOfObjects, 1 do
+		local objectID = readData(playerID .. ":missionStaticObject:no" .. i)
+		local pObj = getSceneObject(objectID)
+		if pObj ~= nil then
+			SceneObject(pObj):destroyObjectFromWorld()
+		end
+	end
+
+	local numberOfSpawns = readData(playerID .. ":missionSpawns")
+	for i = 1, numberOfSpawns, 1 do
+		local objectID = readData(playerID .. ":missionSpawn:no" .. i)
+		local pNpc = getSceneObject(objectID)
+		if pNpc ~= nil then
+			SceneObject(pNpc):destroyObjectFromWorld()
+		end
+	end
 end
 
 function ThemeParkLogic:removeDeliverItem(pConversingPlayer)
@@ -1981,20 +2008,26 @@ function ThemeParkLogic:followPlayer(pConversingNpc, pConversingPlayer)
 		return
 	end
 
-	ObjectManager.withCreatureAndPlayerObject(pConversingPlayer, function(playerCreo, player)
-		local npc = AiAgent(pConversingNpc)
-		npc:setFollowObject(pConversingPlayer)
-		if (playerCreo:getFaction() == FACTIONREBEL or playerCreo:getFaction() == FACTIONIMPERIAL) and not player:isOnLeave() then
-			local npcCreo = LuaCreatureObject(pConversingNpc)
-			npcCreo:setFaction(playerCreo:getFaction())
-			if player:isOvert() then
-				npcCreo:setPvpStatusBitmask(5)
-			elseif player:isCovert() then
-				npcCreo:setPvpStatusBitmask(1)
-			end
+	local pGhost = CreatureObject(pConversingPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	AiAgent(pConversingNpc):setFollowObject(pConversingPlayer)
+
+	local playerFaction = CreatureObject(pConversingPlayer)
+	if (playerFaction == FACTIONREBEL or playerFaction == FACTIONIMPERIAL) and not PlayerObject(pGhost):isOnLeave() then
+		CreatureObject(pConversingNpc):setFaction(playerFaction)
+
+		if PlayerObject(pGhost):isOvert() then
+			CreatureObject(pConversingNpc):setPvpStatusBitmask(5)
+		elseif PlayerObject(pGhost):isCovert() then
+			CreatureObject(pConversingNpc):setPvpStatusBitmask(1)
 		end
-		npc:setAiTemplate("follow")
-	end)
+	end
+
+	AiAgent(pConversingNpc):setAiTemplate("follow")
 end
 
 function ThemeParkLogic:getMissionType(activeNpcNumber, pConversingPlayer)
@@ -2035,17 +2068,15 @@ function ThemeParkLogic:resetThemePark(pConversingPlayer)
 	-- reset currnt missions
 	self:resetCurrentMission(pConversingPlayer)
 	-- wipe all missions out
-	ObjectManager.withCreatureObject(pConversingPlayer, function(creature)
-		-- clear the root state
-		local state = creature:getScreenPlayState(self.screenPlayState)
-		creature:removeScreenPlayState(state, self.screenPlayState)
-		-- clear all missions
-		for i = 1, #self.npcMap do
-			local name = self.npcMap[i].spawnData.npcTemplate
-			local npcState = creature:getScreenPlayState(self.screenPlayState .. "_mission_" .. name)
-			creature:removeScreenPlayState(npcState, self.screenPlayState .. "_mission_" .. name)
-		end
-	end)
+	-- clear the root state
+	local state = CreatureObject(pConversingPlayer):getScreenPlayState(self.screenPlayState)
+	CreatureObject(pConversingPlayer):removeScreenPlayState(state, self.screenPlayState)
+	-- clear all missions
+	for i = 1, #self.npcMap do
+		local name = self.npcMap[i].spawnData.npcTemplate
+		local npcState = CreatureObject(pConversingPlayer):getScreenPlayState(self.screenPlayState .. "_mission_" .. name)
+		CreatureObject(pConversingPlayer):removeScreenPlayState(npcState, self.screenPlayState .. "_mission_" .. name)
+	end
 end
 
 function ThemeParkLogic:resetCurrentMission(pConversingPlayer)

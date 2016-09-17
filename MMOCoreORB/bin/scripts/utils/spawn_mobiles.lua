@@ -92,7 +92,7 @@ function SpawnMobiles.generateSpawnPoints(pSceneObject, mobileList, forceSpawn)
 	local spawnPoints = {}
 
 	local zoneName = SceneObject(pSceneObject):getZoneName()
-	
+
 	for spawnObjectNumber = 1, #mobileList, 1 do
 		local spawnPointParams = SpawnMobiles.getSpawnPointParameters(pSceneObject, mobileList, spawnPoints, spawnObjectNumber)
 		if spawnPointParams ~= nil then
@@ -128,7 +128,7 @@ function SpawnMobiles.spawnMobileObjects(pSceneObject, mobileList, spawnPoints)
 			spawnPoints[spawnNumber][3],
 			0,
 			SceneObject(pSceneObject):getParentID())
-			AiAgent(spawnedObject):setNoAiAggro()
+		AiAgent(spawnedObject):setNoAiAggro()
 		table.insert(spawnedObjects, spawnedObject)
 		if spawnedObject == nil then
 			success = false
@@ -202,15 +202,15 @@ function SpawnMobiles.spawnMobilesWithLocAndPrefix(pSceneObject, prefix, mobileL
 	local baseX = SceneObject(pSceneObject):getWorldPositionX()
 	local baseZ = SceneObject(pSceneObject):getWorldPositionZ()
 	local baseY = SceneObject(pSceneObject):getWorldPositionY()
-	
+
 	for i = 1, #mobileList, 1 do
 		local newX = baseX + mobileList[i].x
 		local newY = baseY + mobileList[i].y
 		local newZ = getTerrainHeight(pSceneObject, newX, newY)
-		
+
 		table.insert(spawnPoints, { newX, newZ, newY })
 	end
-	
+
 	if spawnPoints ~= nil and #spawnPoints > 0 then
 		return SpawnMobiles.generateMobileObjects(pSceneObject, prefix, mobileList, spawnPoints)
 	else
@@ -305,7 +305,7 @@ end
 -- @return true if the mobile is from the spawn, false otherwise.
 function SpawnMobiles.isFromSpawn(pSceneObject, prefix, pMobile)
 	local spawnedMobiles = SpawnMobiles.getSpawnedMobiles(pSceneObject, prefix)
-	local objectIdToCheck = ObjectManager.withSceneObject(pMobile, function(mobile) return mobile:getObjectID() end)
+	local objectIdToCheck = SceneObject(pMobile):getObjectID()
 
 	if spawnedMobiles ~= nil then
 		for i = 1, #spawnedMobiles, 1 do

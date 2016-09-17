@@ -156,9 +156,13 @@ function FsMedicPuzzle:cureSymptoms(pPlayer, pNpc, pPack)
 end
 
 function FsMedicPuzzle:cleanUp(pPlayer)
-	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
-		playerObject:removeRewardedSchematic("object/draft_schematic/item/quest_item/fs_medic_puzzle_heal_pack.iff", true)
-	end)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	PlayerObject(pGhost):removeRewardedSchematic("object/draft_schematic/item/quest_item/fs_medic_puzzle_heal_pack.iff", true)
 end
 
 function FsMedicPuzzle:doPhaseChange(pPlayer)

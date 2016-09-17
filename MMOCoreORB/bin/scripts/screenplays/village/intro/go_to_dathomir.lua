@@ -35,14 +35,18 @@ function GoToDathomir:onSuccessfulSpawn(pCreatureObject)
 		return
 	end
 
+	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
 	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.FS_VILLAGE_ELDER)
 	CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/intro:force_sensitive")
-	
-	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-		if (not playerObject:isJedi()) then
-			playerObject:setJediState(1)
-		end
-	end)
+
+	if (not PlayerObject(pGhost):isJedi()) then
+		PlayerObject(pGhost):setJediState(1)
+	end
 
 	awardSkill(pCreatureObject, "force_title_jedi_novice")
 end

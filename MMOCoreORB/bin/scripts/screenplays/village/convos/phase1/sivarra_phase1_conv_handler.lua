@@ -56,9 +56,11 @@ function villageSivarraPhase1ConvoHandler:runScreenHandlers(conversationTemplate
 		FsMedicPuzzle:setCuredVillagerCount(conversingPlayer, 0)
 		VillageJediManagerCommon.setActiveQuestThisPhase(conversingPlayer)
 
-		ObjectManager.withCreaturePlayerObject(conversingPlayer, function(playerObject)
-			playerObject:addRewardedSchematic("object/draft_schematic/item/quest_item/fs_medic_puzzle_heal_pack.iff", 2, -1, true)
-		end)
+		local pGhost = CreatureObject(conversingPlayer):getPlayerObject()
+
+		if (pGhost ~= nil) then
+			PlayerObject(pGhost):addRewardedSchematic("object/draft_schematic/item/quest_item/fs_medic_puzzle_heal_pack.iff", 2, -1, true)
+		end
 	elseif (screenID == "intro_completed_first_set") then
 		QuestManager.completeQuest(conversingPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_01)
 		VillageJediManagerCommon.unlockBranch(conversingPlayer, "force_sensitive_heightened_senses_persuasion")

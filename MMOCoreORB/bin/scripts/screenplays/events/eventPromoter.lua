@@ -107,44 +107,48 @@ function eventPromoterScreenplay:handleSuiPurchase(pPlayer, pSui, eventIndex, ar
 end
 
 function eventPromoterScreenplay:giveItem(pPlayer, deedData)
-	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
-		local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
-		if (pInventory == nil) then
+	if (pGhost == nil) then
+		return
+	end
+
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+
+	if (pInventory == nil) then
+		return
+	end
+
+	if (CreatureObject(pPlayer):getCashCredits() < deedData.cost) then
+		CreatureObject(pPlayer):sendSystemMessage("@dispenser:insufficient_funds")
+		return
+	elseif (SceneObject(pInventory):isContainerFullRecursive()) then
+		CreatureObject(pPlayer):sendSystemMessage("@event_perk:promoter_full_inv")
+		return
+	elseif (not PlayerObject(pGhost):isPrivileged()) then
+		if (PlayerObject(pGhost):hasEventPerk("shuttle_beacon")) then
+			CreatureObject(pPlayer):sendSystemMessage("@event_perk:only_one_shuttle_beacon")
+			return
+		elseif (PlayerObject(pGhost):getEventPerkCount() >= 5) then
+			CreatureObject(pPlayer):sendSystemMessage("@event_perk:pro_too_many_perks")
 			return
 		end
+	end
 
-		if (player:getCashCredits() < deedData.cost) then
-			player:sendSystemMessage("@dispenser:insufficient_funds")
-			return
-		elseif (SceneObject(pInventory):isContainerFullRecursive()) then
-			player:sendSystemMessage("@event_perk:promoter_full_inv")
-			return
-		elseif (not playerObject:isPrivileged()) then
-			if (playerObject:hasEventPerk("shuttle_beacon")) then
-				player:sendSystemMessage("@event_perk:only_one_shuttle_beacon")
-				return
-			elseif (playerObject:getEventPerkCount() >= 5) then
-				player:sendSystemMessage("@event_perk:pro_too_many_perks")
-				return
-			end
-		end
+	CreatureObject(pPlayer):subtractCashCredits(deedData.cost)
 
-		player:subtractCashCredits(deedData.cost)
+	local templatePath
+	if string.find(deedData.template, ".iff") then
+		templatePath = deedData.template
+	else
+		templatePath = "object/tangible/deed/event_perk/" .. deedData.template .. ".iff"
+	end
 
-		local templatePath
-		if string.find(deedData.template, ".iff") then
-			templatePath = deedData.template
-		else
-			templatePath = "object/tangible/deed/event_perk/" .. deedData.template .. ".iff"
-		end
+	local pItem = giveItem(pInventory, templatePath, -1)
 
-		local pItem = giveItem(pInventory, templatePath, -1)
-
-		if (pItem ~= nil) then
-			playerObject:addEventPerk(pItem)
-		end
-	end)
+	if (pItem ~= nil) then
+		PlayerObject(pGhost):addEventPerk(pItem)
+	end
 end
 
 
@@ -156,17 +160,15 @@ function eventPromoterConvoHandler:getInitialScreen(pPlayer, npc, pConversationT
 end
 
 function eventPromoterConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	return ObjectManager.withCreatureObject(conversingPlayer, function(player)
-		local screen = LuaConversationScreen(conversationScreen)
-		local screenID = screen:getScreenID()
-		local conversationScreen = screen:cloneScreen()
-		local clonedConversation = LuaConversationScreen(conversationScreen)
+	local screen = LuaConversationScreen(conversationScreen)
+	local screenID = screen:getScreenID()
+	local conversationScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(conversationScreen)
 
-		if (string.find(screenID, "sale") ~= nil) then
-			eventPromoterScreenplay:sendSaleSui(conversingNPC, conversingPlayer, screenID)
-		end
-		return conversationScreen
-	end)
+	if (string.find(screenID, "sale") ~= nil) then
+		eventPromoterScreenplay:sendSaleSui(conversingNPC, conversingPlayer, screenID)
+	end
+	return conversationScreen
 end
 
 function eventPromoterConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)

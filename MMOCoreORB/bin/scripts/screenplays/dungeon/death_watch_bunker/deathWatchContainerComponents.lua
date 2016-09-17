@@ -20,68 +20,66 @@ function deathWatchJetpackCraftingDroid:canAddObject(pDroid, pIngredient, slot)
 	local number = readData(SceneObject(pDroid):getObjectID() .. ":dwb:craftingterminal")
 	local statusPrefix = "dwb:craftingTerminal" .. number .. ":"
 
-	return ObjectManager.withCreatureObject(pParent, function(creature)
-		local template = SceneObject(pIngredient):getTemplateObjectPath()
-		local userid = readData(statusPrefix .. "user")
+	local template = SceneObject(pIngredient):getTemplateObjectPath()
+	local userid = readData(statusPrefix .. "user")
 
-		if userid ~= 0 and userid ~= creature:getObjectID() then
-			creature:sendSystemMessage("@dungeon/death_watch:same_user_only")
-			return TRANSFERCANTADD
-		end
-
-		if creature:hasSkill(DeathWatchBunkerScreenPlay.terminalSkills[8]) == false then
-			creature:sendSystemMessage(DeathWatchBunkerScreenPlay.terminalSkillMessage[4])
-			return TRANSFERCANTADD
-		end
-
-		local droidId = SceneObject(pDroid):getObjectID()
-
-		local hasMineral = readData(statusPrefix .. "alummineral")
-		local hasJetpackBase = readData(statusPrefix .. "jetpackbase")
-		local hasJetpackStabilizer = readData(statusPrefix .. "jetpackstabilizer")
-		local hasDuctedFan = readData(statusPrefix .. "ductedfan")
-		local hasInjectorTank = readData(statusPrefix .. "injectortank")
-		local hasDispersionUnit = readData(statusPrefix .. "dispersionunit")
-
-		if template == DeathWatchBunkerScreenPlay.bunkerItems.jetPackBase then
-			if hasJetpackBase == 0 then
-				return TRANSFERCANADD
-			else
-				creature:sendSystemMessage("@dungeon/death_watch:already_has_component")
-			end
-		elseif template == DeathWatchBunkerScreenPlay.bunkerItems.jetPackStabilizer then
-			if hasJetpackStabilizer == 0 then
-				return TRANSFERCANADD
-			else
-				creature:sendSystemMessage("@dungeon/death_watch:already_has_component")
-			end
-		elseif template == DeathWatchBunkerScreenPlay.bunkerItems.ductedFan then
-			if hasDuctedFan == 0 then
-				return TRANSFERCANADD
-			else
-				creature:sendSystemMessage("@dungeon/death_watch:already_has_component")
-			end
-		elseif template == DeathWatchBunkerScreenPlay.bunkerItems.injectorTank then
-			if hasInjectorTank == 0 then
-				return TRANSFERCANADD
-			else
-				creature:sendSystemMessage("@dungeon/death_watch:already_has_component")
-			end
-		elseif template == DeathWatchBunkerScreenPlay.bunkerItems.dispersionUnit then
-			if hasDispersionUnit == 0 then
-				return TRANSFERCANADD
-			else
-				creature:sendSystemMessage("@dungeon/death_watch:already_has_component")
-			end
-		elseif template == DeathWatchBunkerScreenPlay.bunkerItems.alumMineral then
-			if hasMineral == 0 then
-				return TRANSFERCANADD
-			else
-				creature:sendSystemMessage("@dungeon/death_watch:already_has_component")
-			end
-		end
+	if userid ~= 0 and userid ~= CreatureObject(pParent):getObjectID() then
+		CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:same_user_only")
 		return TRANSFERCANTADD
-	end)
+	end
+
+	if CreatureObject(pParent):hasSkill(DeathWatchBunkerScreenPlay.terminalSkills[8]) == false then
+		CreatureObject(pParent):sendSystemMessage(DeathWatchBunkerScreenPlay.terminalSkillMessage[4])
+		return TRANSFERCANTADD
+	end
+
+	local droidId = SceneObject(pDroid):getObjectID()
+
+	local hasMineral = readData(statusPrefix .. "alummineral")
+	local hasJetpackBase = readData(statusPrefix .. "jetpackbase")
+	local hasJetpackStabilizer = readData(statusPrefix .. "jetpackstabilizer")
+	local hasDuctedFan = readData(statusPrefix .. "ductedfan")
+	local hasInjectorTank = readData(statusPrefix .. "injectortank")
+	local hasDispersionUnit = readData(statusPrefix .. "dispersionunit")
+
+	if template == DeathWatchBunkerScreenPlay.bunkerItems.jetPackBase then
+		if hasJetpackBase == 0 then
+			return TRANSFERCANADD
+		else
+			CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:already_has_component")
+		end
+	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.jetPackStabilizer then
+		if hasJetpackStabilizer == 0 then
+			return TRANSFERCANADD
+		else
+			CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:already_has_component")
+		end
+	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.ductedFan then
+		if hasDuctedFan == 0 then
+			return TRANSFERCANADD
+		else
+			CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:already_has_component")
+		end
+	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.injectorTank then
+		if hasInjectorTank == 0 then
+			return TRANSFERCANADD
+		else
+			CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:already_has_component")
+		end
+	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.dispersionUnit then
+		if hasDispersionUnit == 0 then
+			return TRANSFERCANADD
+		else
+			CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:already_has_component")
+		end
+	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.alumMineral then
+		if hasMineral == 0 then
+			return TRANSFERCANADD
+		else
+			CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:already_has_component")
+		end
+	end
+	return TRANSFERCANTADD
 end
 
 function deathWatchJetpackCraftingDroid:transferObject(pDroid, pIngredient, slot)
@@ -350,24 +348,22 @@ function deathWatchCraftingDroid:transferObject(pDroid, pIngredient, slot)
 
 		DeathWatchBunkerScreenPlay:startCraftingProcess(pParent, pDroid)
 	else
-		ObjectManager.withCreatureObject(pParent, function(creature)
-			creature:sendSystemMessage("@dungeon/death_watch:items_still_needed")
-			if hasBL == 0 then
-				creature:sendSystemMessage("@dungeon/death_watch:binary_liquid")
-			end
+		CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:items_still_needed")
+		if hasBL == 0 then
+			CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:binary_liquid")
+		end
 
-			if hasPLC == 0 then
-				creature:sendSystemMessage("@dungeon/death_watch:emulsifier")
-			end
+		if hasPLC == 0 then
+			CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:emulsifier")
+		end
 
-			if hasArmorPart == 0 then
-				creature:sendSystemMessage(DeathWatchBunkerScreenPlay.partStrings[number])
-			end
+		if hasArmorPart == 0 then
+			CreatureObject(pParent):sendSystemMessage(DeathWatchBunkerScreenPlay.partStrings[number])
+		end
 
-			if hasMineral == 0 then
-				creature:sendSystemMessage("@dungeon/death_watch:alum_mineral")
-			end
-		end)
+		if hasMineral == 0 then
+			CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:alum_mineral")
+		end
 	end
 
 	return TRANSFERSUCCESS

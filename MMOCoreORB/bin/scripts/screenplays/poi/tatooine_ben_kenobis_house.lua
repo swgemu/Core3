@@ -9,10 +9,10 @@ registerScreenPlay("TatooineBenKenobisHouse", true)
 function TatooineBenKenobisHouse:start()
 	if (isZoneEnabled("tatooine")) then
 		local pCell = getSceneObject(3565386)
-		ObjectManager.withSceneObject(pCell, function(cell)
-			cell:setContainerInheritPermissionsFromParent(false)
-			cell:setContainerDefaultDenyPermission(WALKIN)
-			cell:clearContainerDefaultAllowPermission(WALKIN)
-		end)
+		if (pCell ~= nil) then
+			SceneObject(pCell):setContainerInheritPermissionsFromParent(false)
+			SceneObject(pCell):setContainerDefaultDenyPermission(WALKIN)
+			SceneObject(pCell):clearContainerDefaultAllowPermission(WALKIN)
+		end
 	end
 end

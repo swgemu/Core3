@@ -378,35 +378,43 @@ function GeonosianLabScreenPlay:setupPermissionGroups()
 	for i = 1, #self.lockedCells, 1 do
 		local pCell = getSceneObject(self.lockedCells[i])
 		if pCell ~= nil then
-			ObjectManager.withSceneObject(pCell, function(cell)
-				cell:setContainerInheritPermissionsFromParent(false)
-				cell:clearContainerDefaultDenyPermission(WALKIN)
-				cell:clearContainerDefaultAllowPermission(WALKIN)
-				cell:setContainerAllowPermission("GeoLabKeypad" .. i, WALKIN)
-				cell:setContainerDenyPermission("GeoLabKeypad" .. i, MOVEIN)
-			end)
+			SceneObject(pCell):setContainerInheritPermissionsFromParent(false)
+			SceneObject(pCell):clearContainerDefaultDenyPermission(WALKIN)
+			SceneObject(pCell):clearContainerDefaultAllowPermission(WALKIN)
+			SceneObject(pCell):setContainerAllowPermission("GeoLabKeypad" .. i, WALKIN)
+			SceneObject(pCell):setContainerDenyPermission("GeoLabKeypad" .. i, MOVEIN)
 		end
 	end
 end
 
 function GeonosianLabScreenPlay:givePermission(pPlayer, permissionGroup)
-	ObjectManager.withCreaturePlayerObject(pPlayer, function(ghost)
-		ghost:addPermissionGroup(permissionGroup, true)
-	end)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost ~= nil) then
+		PlayerObject(pGhost):addPermissionGroup(permissionGroup, true)
+	end
 end
 
 function GeonosianLabScreenPlay:removePermission(pPlayer, permissionGroup)
-	ObjectManager.withCreaturePlayerObject(pPlayer, function(ghost)
-		if (ghost:hasPermissionGroup(permissionGroup)) then
-			ghost:removePermissionGroup(permissionGroup, true)
-		end
-	end)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	if (PlayerObject(pGhost):hasPermissionGroup(permissionGroup)) then
+		PlayerObject(pGhost):removePermissionGroup(permissionGroup, true)
+	end
 end
 
 function GeonosianLabScreenPlay:hasPermission(pPlayer, permissionGroup)
-	return ObjectManager.withCreaturePlayerObject(pPlayer, function(ghost)
-		return ghost:hasPermissionGroup(permissionGroup)
-	end)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return false
+	end
+
+	return PlayerObject(pGhost):hasPermissionGroup(permissionGroup)
 end
 
 function GeonosianLabScreenPlay:notifyEnteredPoisonGas(pActiveArea, pMovingObject)

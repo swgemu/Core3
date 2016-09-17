@@ -648,14 +648,18 @@ function FsCrafting4ComputerCoreMenuComponent:setConnection(pCore, pPlayer, conn
 		return
 	end
 
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
 	local coreID = SceneObject(pCore):getObjectID()
 	local pageId = readData(coreID .. ":pageID")
 
 	if (pageId ~= 0) then
-		ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
-			playerObject:removeSuiBox(pageId)
-			deleteData(coreID .. ":pageID")
-		end)
+		PlayerObject(pGhost):removeSuiBox(pageId)
+		deleteData(coreID .. ":pageID")
 	end
 
 	local sui = SuiListBox.new("FsCrafting4", "setConnectionCallback")
