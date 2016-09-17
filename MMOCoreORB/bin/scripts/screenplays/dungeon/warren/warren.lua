@@ -252,18 +252,16 @@ function WarrenScreenPlay:fillContainers()
 	for k, v in pairs(self.questItems) do
 		local pContainer = getSceneObject(v.oid)
 
-		ObjectManager.withSceneObject(pContainer, function(container)
-			container:setContainerComponent("RespawnContainerContentsComponent")
-			container:setContainerInheritPermissionsFromParent(false)
-			container:setContainerDefaultDenyPermission(MOVEIN)
-			container:setContainerDefaultAllowPermission(OPEN + MOVEOUT)
+		SceneObject(pContainer):setContainerComponent("RespawnContainerContentsComponent")
+		SceneObject(pContainer):setContainerInheritPermissionsFromParent(false)
+		SceneObject(pContainer):setContainerDefaultDenyPermission(MOVEIN)
+		SceneObject(pContainer):setContainerDefaultAllowPermission(OPEN + MOVEOUT)
 
-			if (container:getContainerObjectsSize() < 1) then
-				for j, item in pairs(v.items) do
-					giveItem(pContainer, item, -1)
-				end
+		if (SceneObject(pContainer):getContainerObjectsSize() < 1) then
+			for j, item in pairs(v.items) do
+				giveItem(pContainer, item, -1)
 			end
-		end)
+		end
 	end
 end
 
@@ -367,23 +365,33 @@ function WarrenScreenPlay:initializeDungeon()
 end
 
 function WarrenScreenPlay:givePermission(pPlayer, permissionGroup)
-	ObjectManager.withCreaturePlayerObject(pPlayer, function(ghost)
-		ghost:addPermissionGroup(permissionGroup, true)
-	end)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost ~= nil) then
+		PlayerObject(pGhost):addPermissionGroup(permissionGroup, true)
+	end
 end
 
 function WarrenScreenPlay:removePermission(pPlayer, permissionGroup)
-	ObjectManager.withCreaturePlayerObject(pPlayer, function(ghost)
-		if (ghost:hasPermissionGroup(permissionGroup)) then
-			ghost:removePermissionGroup(permissionGroup, true)
-		end
-	end)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	if (PlayerObject(pGhost):hasPermissionGroup(permissionGroup)) then
+		PlayerObject(pGhost):removePermissionGroup(permissionGroup, true)
+	end
 end
 
 function WarrenScreenPlay:hasPermission(pPlayer, permissionGroup)
-	return ObjectManager.withCreaturePlayerObject(pPlayer, function(ghost)
-		return ghost:hasPermissionGroup(permissionGroup)
-	end)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return false
+	end
+
+	return PlayerObject(pGhost):hasPermissionGroup(permissionGroup)
 end
 
 function WarrenScreenPlay:notifyUseCRTerminal(pTerminal, pPlayer)

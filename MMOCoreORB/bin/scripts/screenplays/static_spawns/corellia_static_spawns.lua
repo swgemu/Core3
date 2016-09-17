@@ -2,12 +2,12 @@
 local ObjectManager = require("managers.object.object_manager")
 
 CorelliaStaticSpawnsScreenPlay = ScreenPlay:new
-{
-	numberOfActs = 1,
+	{
+		numberOfActs = 1,
 
-	screenplayName = "CorelliaStaticSpawnsScreenPlay",
+		screenplayName = "CorelliaStaticSpawnsScreenPlay",
 
-	turret = { template = "object/installation/turret/turret_dish_sm.iff", x = 4111.26, z = 24, y = -1274.28 }
+		turret = { template = "object/installation/turret/turret_dish_sm.iff", x = 4111.26, z = 24, y = -1274.28 }
 
 }
 
@@ -38,10 +38,13 @@ function CorelliaStaticSpawnsScreenPlay:spawnSceneObjects()
 end
 
 function CorelliaStaticSpawnsScreenPlay:notifyTurretDestroyed(pTurret, pPlayer)
-	ObjectManager.withSceneObject(pTurret, function(turret)
-		turret:destroyObjectFromWorld()
-		createEvent(1800, "CorelliaStaticSpawnsScreenPlay", "respawnTurret", pTurret, "")
-	end)
+	if (pTurret == nil) then
+		return 1
+	end
+
+	SceneObject(pTurret):destroyObjectFromWorld()
+	createEvent(1800, "CorelliaStaticSpawnsScreenPlay", "respawnTurret", pTurret, "")
+
 	CreatureObject(pPlayer):clearCombatState(1)
 	return 0
 end

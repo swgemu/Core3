@@ -135,9 +135,11 @@ function GoToTheater:taskStart(pCreatureObject)
 					local waypointId
 
 					if (self.createWaypoint) then
-						ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-							waypointId = playerObject:addWaypoint(zoneName, self.waypointDescription, "", spawnPoint[1], spawnPoint[3], WAYPOINTYELLOW, true, true, 0)
-						end)
+						local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+						
+						if (pGhost ~= nil) then
+							waypointId = PlayerObject(pGhost):addWaypoint(zoneName, self.waypointDescription, "", spawnPoint[1], spawnPoint[3], WAYPOINTYELLOW, true, true, 0)
+						end
 					end
 
 					if waypointId ~= nil or not self.createWaypoint then
@@ -217,12 +219,16 @@ function GoToTheater:handleDespawnTheater(pCreatureObject)
 end
 
 function GoToTheater:removeTheaterWaypoint(pCreatureObject)
+	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+	
+	if (pGhost == nil) then
+		return
+	end
+	
 	local playerID = SceneObject(pCreatureObject):getObjectID()
 	local waypointId = readData(playerID .. self.taskName .. WAYPOINT_ID_STRING)
 
-	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-		playerObject:removeWaypoint(waypointId, true)
-	end)
+	PlayerObject(pGhost):removeWaypoint(waypointId, true)
 end
 
 return GoToTheater

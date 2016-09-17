@@ -127,6 +127,12 @@ function SuiFsCrafting1Analyzer:getAnalyzedTable(pPlayer)
 end
 
 function SuiFsCrafting1Analyzer:analyzeComponentCallback(pPlayer, pSui, eventIndex, rowIndex)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
 	if (eventIndex == 1) then
 		return
 	end
@@ -201,9 +207,7 @@ function SuiFsCrafting1Analyzer:analyzeComponentCallback(pPlayer, pSui, eventInd
 	SceneObject(pComponent):destroyObjectFromDatabase()
 	CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_crafting:phase1_msg_component_analyzed")
 
-	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
-		playerObject:addRewardedSchematic(self.componentSchematics[componentNum], 2, 1, true)
-	end)
+	PlayerObject(pGhost):addRewardedSchematic(self.componentSchematics[componentNum], 2, 1, true)
 end
 
 function SuiFsCrafting1Analyzer:doAccessSchematic(pPlayer, pAnalyzer)
@@ -243,6 +247,12 @@ function SuiFsCrafting1Analyzer:doAccessSchematic(pPlayer, pAnalyzer)
 end
 
 function SuiFsCrafting1Analyzer:accessSchematicCallback(pPlayer, pSui, eventIndex, rowIndex)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
 	if (eventIndex == 1) then
 		return
 	end
@@ -281,14 +291,12 @@ function SuiFsCrafting1Analyzer:accessSchematicCallback(pPlayer, pSui, eventInde
 
 	local selectedSchem = self.componentSchematics[schemList[rowIndex]]
 
-	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(creature, playerObject)
-		if (playerObject:hasSchematic(selectedSchem)) then
-			creature:sendSystemMessage("@quest/force_sensitive/fs_crafting:phase1_msg_schematic_already_loaded")
-		else
-			creature:sendSystemMessage("@quest/force_sensitive/fs_crafting:phase1_msg_schematic_loaded")
-			playerObject:addRewardedSchematic(selectedSchem, 2, 1, true)
-		end
-	end)
+	if (PlayerObject(pGhost):hasSchematic(selectedSchem)) then
+		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_crafting:phase1_msg_schematic_already_loaded")
+	else
+		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_crafting:phase1_msg_schematic_loaded")
+		PlayerObject(pGhost):addRewardedSchematic(selectedSchem, 2, 1, true)
+	end
 
 	self:doAccessSchematic(pPlayer, pAnalyzer)
 end

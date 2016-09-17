@@ -13,17 +13,21 @@ function RaceTrack:createRaceTrack()
 	self:createResetBestTimeEvent()
 end
 
-function RaceTrack:startRacing(pObject)
-	ObjectManager.withCreatureAndPlayerObject(pObject, function(creatureObject, playerObject)
-		clearScreenPlayData(pObject,self.trackConfig.trackName )
-		self:createResetPlayerUnfinishedEvent(pObject)
-		local waypointID = playerObject:addWaypoint(self.trackConfig.planetName,self.trackConfig.trackCheckpoint .. "0",self.trackConfig.trackCheckpoint .. "0",self.trackConfig.waypoints[1].x,self.trackConfig.waypoints[1].y,WAYPOINTWHITE,true,true,WAYPOINTRACETRACK)
-		local time = getTimestampMilli()
-		writeScreenPlayData(pObject, self.trackConfig.trackName, "starttime", time)
-		writeScreenPlayData(pObject, self.trackConfig.trackName, "waypoint", 1)
-		creatureObject:sendSystemMessage("@theme_park/racing/racing:go_fly")
-		creatureObject:playMusicMessage("sound/music_combat_bfield_lp.snd")
-	end)
+function RaceTrack:startRacing(pPlayer)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	clearScreenPlayData(pPlayer, self.trackConfig.trackName)
+	self:createResetPlayerUnfinishedEvent(pPlayer)
+	local waypointID = PlayerObject(pGhost):addWaypoint(self.trackConfig.planetName,self.trackConfig.trackCheckpoint .. "0",self.trackConfig.trackCheckpoint .. "0",self.trackConfig.waypoints[1].x,self.trackConfig.waypoints[1].y,WAYPOINTWHITE,true,true,WAYPOINTRACETRACK)
+	local time = getTimestampMilli()
+	writeScreenPlayData(pPlayer, self.trackConfig.trackName, "starttime", time)
+	writeScreenPlayData(pPlayer, self.trackConfig.trackName, "waypoint", 1)
+	CreatureObject(pPlayer):sendSystemMessage("@theme_park/racing/racing:go_fly")
+	CreatureObject(pPlayer):playMusicMessage("sound/music_combat_bfield_lp.snd")
 end
 
 function RaceTrack:processWaypoint(pActiveArea, pObject)
@@ -52,26 +56,35 @@ function RaceTrack:roundNumber(num)
 end
 
 
-function RaceTrack:actuallyProcessWaypoint(pObject,index)
-	ObjectManager.withCreatureAndPlayerObject(pObject, function(creatureObject,playerObject)
-		local waypointID = playerObject:addWaypoint(self.trackConfig.planetName,self.trackConfig.trackCheckpoint .. index,self.trackConfig.trackCheckpoint .. index,self.trackConfig.waypoints[index+1].x,self.trackConfig.waypoints[index+1].y,WAYPOINTWHITE,true,true,WAYPOINTRACETRACK)
-		local seconds = self:getLaptime(pObject)
-		creatureObject:sendSystemMessage(self.trackConfig.trackLaptime .. index)
-		creatureObject:sendSystemMessage("Time " .. self:roundNumber(seconds/1000) .. "s")
-		writeScreenPlayData(pObject,self.trackConfig.trackName, "waypoint", index+1)
-		creatureObject:playMusicMessage("sound/music_combat_bfield_lp.snd")
-	end)
+function RaceTrack:actuallyProcessWaypoint(pPlayer, index)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	local waypointID = PlayerObject(pGhost):addWaypoint(self.trackConfig.planetName,self.trackConfig.trackCheckpoint .. index,self.trackConfig.trackCheckpoint .. index,self.trackConfig.waypoints[index+1].x,self.trackConfig.waypoints[index+1].y,WAYPOINTWHITE,true,true,WAYPOINTRACETRACK)
+	local seconds = self:getLaptime(pPlayer)
+	CreatureObject(pPlayer):sendSystemMessage(self.trackConfig.trackLaptime .. index)
+	CreatureObject(pPlayer):sendSystemMessage("Time " .. self:roundNumber(seconds/1000) .. "s")
+	writeScreenPlayData(pPlayer,self.trackConfig.trackName, "waypoint", index+1)
+	CreatureObject(pPlayer):playMusicMessage("sound/music_combat_bfield_lp.snd")
 end
 
-function  RaceTrack:finalWaypoint(pActiveArea, pObject)
-	ObjectManager.withCreatureAndPlayerObject(pObject, function(creatureObject,playerObject)
-		creatureObject:playMusicMessage("sound/music_combat_bfield_vict.snd")
-		self:checkPersonalTime(pObject)
-		self:checkServerRecordTime(pObject)
-		clearScreenPlayData(pObject,self.trackConfig.trackName )
-		playerObject:removeWaypointBySpecialType(WAYPOINTRACETRACK)
-	end)
+function RaceTrack:finalWaypoint(pActiveArea, pPlayer)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	CreatureObject(pPlayer):playMusicMessage("sound/music_combat_bfield_vict.snd")
+	self:checkPersonalTime(pPlayer)
+	self:checkServerRecordTime(pPlayer)
+	clearScreenPlayData(pPlayer,self.trackConfig.trackName )
+	PlayerObject(pGhost):removeWaypointBySpecialType(WAYPOINTRACETRACK)
 end
+
 function RaceTrack:getLaptime(pObject)
 	local startTime = readScreenPlayData(pObject, self.trackConfig.trackName, "starttime")
 	local seconds = getTimestampMilli() - tonumber(startTime)
@@ -80,57 +93,59 @@ function RaceTrack:getLaptime(pObject)
 end
 
 
-function RaceTrack:checkPersonalTime(pObject)
-	ObjectManager.withCreatureObject(pObject, function(creatureObject)
-		local seconds = self:getLaptime(pObject)
-		creatureObject:sendSystemMessage("@theme_park/racing/racing:finish_message")
-		creatureObject:sendSystemMessage("Time " .. self:roundNumber(seconds/1000) .. "s")
-		local personalTime = tonumber(readScreenPlayData(pObject, self.trackConfig.trackName ..".STATS", "PersonalRecordTime"))
+function RaceTrack:checkPersonalTime(pPlayer)
+	local seconds = self:getLaptime(pPlayer)
+	CreatureObject(pPlayer):sendSystemMessage("@theme_park/racing/racing:finish_message")
+	CreatureObject(pPlayer):sendSystemMessage("Time " .. self:roundNumber(seconds/1000) .. "s")
+	local personalTime = tonumber(readScreenPlayData(pPlayer, self.trackConfig.trackName ..".STATS", "PersonalRecordTime"))
 
-		if personalTime == nil then
-			personalTime = 9999999999
-		end
+	if personalTime == nil then
+		personalTime = 9999999999
+	end
 
-		if personalTime > seconds then
-			writeScreenPlayData(pObject, self.trackConfig.trackName ..".STATS", "PersonalRecordTime",seconds)
-			creatureObject:sendSystemMessage("@theme_park/racing/racing:new_record")
-		end
-	end)
+	if personalTime > seconds then
+		writeScreenPlayData(pPlayer, self.trackConfig.trackName ..".STATS", "PersonalRecordTime",seconds)
+		CreatureObject(pPlayer):sendSystemMessage("@theme_park/racing/racing:new_record")
+	end
 end
 
-function RaceTrack:checkServerRecordTime(pObject)
-	ObjectManager.withCreatureAndPlayerObject(pObject, function(creatureObject,playerObject)
-		local resPos =0
-		local seconds = self:getLaptime(pObject)
-		for lc = 1, 5 , 1 do
-			local recordTime = readSharedMemory(self.trackConfig.trackName ..".recordtime."..lc)
-			if recordTime == 0 then
-				recordTime = 9999999999
-			end
-			if seconds < recordTime then
-				resPos=lc
-				break
-			end
-		end
+function RaceTrack:checkServerRecordTime(pPlayer)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
-		if self.trackConfig.debugMode==1 then
-			printf("Position :"..resPos)
-		end
+	if (pGhost == nil) then
+		return
+	end
 
-		if resPos>0 then
-			self:adjustResultPositions(resPos,creatureObject:getFirstName(),seconds)
-			if resPos==1 and playerObject:hasBadge(self.trackConfig.badgeToAward) == false then
-				creatureObject:sendSystemMessage("@theme_park/racing/racing:beat_the_record")
-				playerObject:awardBadge(self.trackConfig.badgeToAward)
+	local resPos =0
+	local seconds = self:getLaptime(pPlayer)
+	for lc = 1, 5 , 1 do
+		local recordTime = readSharedMemory(self.trackConfig.trackName ..".recordtime."..lc)
+		if recordTime == 0 then
+			recordTime = 9999999999
+		end
+		if seconds < recordTime then
+			resPos=lc
+			break
+		end
+	end
+
+	if self.trackConfig.debugMode==1 then
+		printf("Position :"..resPos)
+	end
+
+	if resPos>0 then
+		self:adjustResultPositions(resPos, CreatureObject(pPlayer):getFirstName(),seconds)
+		if resPos==1 and PlayerObject(pGhost):hasBadge(self.trackConfig.badgeToAward) == false then
+			CreatureObject(pPlayer):sendSystemMessage("@theme_park/racing/racing:beat_the_record")
+			PlayerObject(pGhost):awardBadge(self.trackConfig.badgeToAward)
+		else
+			if resPos==1 then
+				CreatureObject(pPlayer):sendSystemMessage("@theme_park/racing/racing:beat_the_record")
 			else
-				if resPos==1 then
-					creatureObject:sendSystemMessage("@theme_park/racing/racing:beat_the_record")
-				else
-					creatureObject:sendSystemMessage("Congratulations! You have beaten position ".. resPos .. " for this track! Record saved")
-				end
+				CreatureObject(pPlayer):sendSystemMessage("Congratulations! You have beaten position ".. resPos .. " for this track! Record saved")
 			end
 		end
-	end)
+	end
 end
 
 function RaceTrack:adjustResultPositions(resPos,playerName,seconds)
@@ -161,32 +176,28 @@ function RaceTrack:getWaypointIndex(pActiveArea)
 end
 
 function RaceTrack:displayPersonalBestTime(pObject,trackConfig)
-	ObjectManager.withCreatureObject(pObject, function(creatureObject)
-		local personalTime = tonumber(readScreenPlayData(pObject, self.trackConfig.trackName ..".STATS", "PersonalRecordTime"))
-		creatureObject:sendSystemMessage("@theme_park/racing/racing:whats_my_time")
-		if personalTime == nil then
-			creatureObject:sendSystemMessage("No Time Set!")
-		else
-			creatureObject:sendSystemMessage("Time " .. self:roundNumber(personalTime/1000) .. "s")
-		end
-	end)
+	local personalTime = tonumber(readScreenPlayData(pObject, self.trackConfig.trackName ..".STATS", "PersonalRecordTime"))
+	CreatureObject(pObject):sendSystemMessage("@theme_park/racing/racing:whats_my_time")
+	if personalTime == nil then
+		CreatureObject(pObject):sendSystemMessage("No Time Set!")
+	else
+		CreatureObject(pObject):sendSystemMessage("Time " .. self:roundNumber(personalTime/1000) .. "s")
+	end
 end
 
 function RaceTrack:displayTrackBestTime(pObject,trackConfig)
-	ObjectManager.withCreatureObject(pObject, function(creatureObject)
-		local numericPositions = {"1st","2nd","3rd","4th","5th"}
-		creatureObject:sendSystemMessage("Record Holders")
-		local results =""
-		for lc = 1, 5 , 1 do
-			local recordTime = tonumber(readSharedMemory(self.trackConfig.trackName ..".recordtime."..lc))
-			if recordTime == 0 then
-				results=results .. numericPositions[lc].." : No Time Set!\n"
-			else
-				results=results .. numericPositions[lc].." : " .. self:roundNumber(recordTime/1000) .. "s by " .. readStringSharedMemory(self.trackConfig.trackName ..".recordholder."..lc) .."\n"
-			end
+	local numericPositions = {"1st","2nd","3rd","4th","5th"}
+	CreatureObject(pObject):sendSystemMessage("Record Holders")
+	local results =""
+	for lc = 1, 5 , 1 do
+		local recordTime = tonumber(readSharedMemory(self.trackConfig.trackName ..".recordtime."..lc))
+		if recordTime == 0 then
+			results=results .. numericPositions[lc].." : No Time Set!\n"
+		else
+			results=results .. numericPositions[lc].." : " .. self:roundNumber(recordTime/1000) .. "s by " .. readStringSharedMemory(self.trackConfig.trackName ..".recordholder."..lc) .."\n"
 		end
-		creatureObject:sendSystemMessage(results)
-	end)
+	end
+	CreatureObject(pObject):sendSystemMessage(results)
 end
 
 function RaceTrack:createResetBestTimeEvent()
@@ -215,19 +226,23 @@ function RaceTrack:createResetPlayerUnfinishedEvent(pObject)
 end
 
 function RaceTrack:resetPlayerUnfinishedEventHandler(pObject)
-	ObjectManager.withCreaturePlayerObject(pObject, function(playerObject)
-		local startTime = tonumber(readScreenPlayData(pObject, self.trackConfig.trackName , "starttime"))
-		if not(startTime == nil) then
-			local time = getTimestampMilli()
-			if  math.abs((time/1000) - (startTime/1000)) > (self.trackConfig.expiryTime-5) then
-				clearScreenPlayData(pObject,self.trackConfig.trackName )
-				playerObject:removeWaypointBySpecialType(WAYPOINTRACETRACK)
-				if self.trackConfig.debugMode==1 then
-					printf("Reset Player for :" .. self.trackConfig.trackName .. "\n")
-				end
+	local pGhost = CreatureObject(pObject):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	local startTime = tonumber(readScreenPlayData(pObject, self.trackConfig.trackName , "starttime"))
+	if not(startTime == nil) then
+		local time = getTimestampMilli()
+		if  math.abs((time/1000) - (startTime/1000)) > (self.trackConfig.expiryTime-5) then
+			clearScreenPlayData(pObject,self.trackConfig.trackName )
+			PlayerObject(pGhost):removeWaypointBySpecialType(WAYPOINTRACETRACK)
+			if self.trackConfig.debugMode==1 then
+				printf("Reset Player for :" .. self.trackConfig.trackName .. "\n")
 			end
 		end
-	end)
+	end
 end
 
 return RaceTrack

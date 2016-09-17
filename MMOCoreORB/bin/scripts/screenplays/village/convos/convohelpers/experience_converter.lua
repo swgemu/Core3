@@ -32,46 +32,46 @@ local unlockableFSBranches = {
 
 -- These are the 3 types of FS experience for regex searches, full strings not needed for each type, just least specific.
 local XpCombat =
-{
-	{"combat_general", 3},
-	{"squadleader", 90},
-	{"bountyhunter", 1},
-	{"combat_melee", 30},
-	{"combat_ranged", 30}
-}
+	{
+		{"combat_general", 3},
+		{"squadleader", 90},
+		{"bountyhunter", 1},
+		{"combat_melee", 30},
+		{"combat_ranged", 30}
+	}
 
 local XpSenses =
-{
-	{"bio_engineer_dna_harvesting", 3},
-	{"political", 3},
-	{"slicing",  3},
-	{"merchant",  4},
-	{"resource_harvesting_inorganic",  10},
-	{"imagedesigner", 7},
-	{"scout",  8},
-	{"creaturehandler",  9},
-	{"dance",  10},
-	{"music",  10},
-	{"entertainer_healing",  10},
-	{"camp",  10},
-	{"medical",  10},
-	{"trapping",  25},
-}
+	{
+		{"bio_engineer_dna_harvesting", 3},
+		{"political", 3},
+		{"slicing",  3},
+		{"merchant",  4},
+		{"resource_harvesting_inorganic",  10},
+		{"imagedesigner", 7},
+		{"scout",  8},
+		{"creaturehandler",  9},
+		{"dance",  10},
+		{"music",  10},
+		{"entertainer_healing",  10},
+		{"camp",  10},
+		{"medical",  10},
+		{"trapping",  25},
+	}
 
 local XpCrafting =
-{
-	{"crafting_bio_engineer_creature",  4},
-	{"crafting_bio_engineer_tissue",  5},
-	{"crafting_c", 5},
-	{"crafting_d", 5},
-	{"crafting_f", 5},
-	{"crafting_m", 5},
-	{"crafting_sc", 5},
-	{"crafting_sp", 5},
-	{"crafting_w", 5},
-	{"crafting_general", 8},
-	{"crafting_structure_general", 35}
-}
+	{
+		{"crafting_bio_engineer_creature",  4},
+		{"crafting_bio_engineer_tissue",  5},
+		{"crafting_c", 5},
+		{"crafting_d", 5},
+		{"crafting_f", 5},
+		{"crafting_m", 5},
+		{"crafting_sc", 5},
+		{"crafting_sp", 5},
+		{"crafting_w", 5},
+		{"crafting_general", 8},
+		{"crafting_structure_general", 35}
+	}
 
 ExperienceConverter = ScreenPlay:new {}
 
@@ -184,8 +184,13 @@ function ExperienceConverter:getHighestBoxForTrainer(selection)
 end
 
 function ExperienceConverter:getExperienceForConversion(pCreature, theType)
-
 	if (pCreature == nil) then
+		return nil
+	end
+
+	local pGhost = CreatureObject(pCreature):getPlayerObject()
+
+	if (pGhost == nil) then
 		return nil
 	end
 
@@ -201,11 +206,7 @@ function ExperienceConverter:getExperienceForConversion(pCreature, theType)
 		inputTable = XpSenses
 	end
 
-	local expList = {}
-
-	ObjectManager.withCreaturePlayerObject(pCreature, function(playerObject)
-		expList = playerObject:getExperienceList()
-	end)
+	local expList = PlayerObject(pGhost):getExperienceList()
 
 	if (expList == nil) then
 		return nil

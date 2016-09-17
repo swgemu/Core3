@@ -51,45 +51,48 @@ function TreasureMapMenuComponent:doSearchArea(pObject, pPlayer)
 		return 0
 	end
 
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return 0
+	end
+
 	local mapType = TreasureMapMenuComponent:getMapType(pObject)
 
-	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(creature, player)
-		local mapData = treasureMapData[mapType]
-		local playerID = creature:getObjectID()
-		local waypointID = readData(playerID .. ":treasureMapSearchAreaWaypointID")
-		local searchAreaID = readData(playerID .. ":treasureMapSearchAreaActiveAreaID")
+	local mapData = treasureMapData[mapType]
+	local playerID = CreatureObject(pPlayer):getObjectID()
+	local waypointID = readData(playerID .. ":treasureMapSearchAreaWaypointID")
+	local searchAreaID = readData(playerID .. ":treasureMapSearchAreaActiveAreaID")
 
-		if (waypointID == 0 or searchAreaID == 0) then
-			creature:sendSystemMessage("@treasure_map/treasure_map:sys_no_waypoint") -- You must store the treasure's waypoint in your datapad before you can search for it!
-			return 0
-		end
+	if (waypointID == 0 or searchAreaID == 0) then
+		CreatureObject(pPlayer):sendSystemMessage("@treasure_map/treasure_map:sys_no_waypoint") -- You must store the treasure's waypoint in your datapad before you can search for it!
+		return 0
+	end
 
-		if (TangibleObject(pPlayer):hasActiveArea(searchAreaID) == false) then
-			creature:sendSystemMessage("@treasure_map/treasure_map:sys_cant_pinpoint") -- You are not close enough to pinpoint the treasure's location.
-			return 0
-		end
+	if (TangibleObject(pPlayer):hasActiveArea(searchAreaID) == false) then
+		CreatureObject(pPlayer):sendSystemMessage("@treasure_map/treasure_map:sys_cant_pinpoint") -- You are not close enough to pinpoint the treasure's location.
+		return 0
+	end
 
-		local pWaypoint = getSceneObject(waypointID)
+	local pWaypoint = getSceneObject(waypointID)
 
-		local pActiveArea = getSceneObject(searchAreaID)
-		SceneObject(pActiveArea):destroyObjectFromWorld()
-		local zoneName = SceneObject(pPlayer):getZoneName()
+	local pActiveArea = getSceneObject(searchAreaID)
+	SceneObject(pActiveArea):destroyObjectFromWorld()
+	local zoneName = SceneObject(pPlayer):getZoneName()
 
-		local spawnPoint
-		ObjectManager.withSceneObject(pWaypoint, function(waypoint)
-			if (mapType == 4) then
-				spawnPoint = getSpawnPoint(zoneName, waypoint:getWorldPositionX(), waypoint:getWorldPositionY(), 15, 30, true)
-			else
-				spawnPoint = getSpawnPoint(zoneName, waypoint:getWorldPositionX(), waypoint:getWorldPositionY(), 30, 60)
-			end
-		end)
+	local spawnPoint
 
-		creature:sendSystemMessage("@treasure_map/treasure_map:sys_pinpoint") -- You have successfully pinpointed the exact location of the treasure!
-		local waypointID = player:addWaypoint(mapData.planet, "@treasure_map/treasure_map:waypoint_name", "", spawnPoint[1], spawnPoint[3], WAYPOINTGREEN, true, true, WAYPOINTTREASUREMAP, 0)
-		writeData(playerID .. ":treasureMapExactWaypointID", waypointID)
-		deleteData(playerID .. ":treasureMapSearchAreaWaypointID")
-		deleteData(playerID .. ":treasureMapSearchAreaActiveAreaID")
-	end)
+	if (mapType == 4) then
+		spawnPoint = getSpawnPoint(zoneName, SceneObject(pWaypoint):getWorldPositionX(), SceneObject(pWaypoint):getWorldPositionY(), 15, 30, true)
+	else
+		spawnPoint = getSpawnPoint(zoneName, SceneObject(pWaypoint):getWorldPositionX(), SceneObject(pWaypoint):getWorldPositionY(), 30, 60)
+	end
+
+	CreatureObject(pPlayer):sendSystemMessage("@treasure_map/treasure_map:sys_pinpoint") -- You have successfully pinpointed the exact location of the treasure!
+	local waypointID = PlayerObject(pGhost):addWaypoint(mapData.planet, "@treasure_map/treasure_map:waypoint_name", "", spawnPoint[1], spawnPoint[3], WAYPOINTGREEN, true, true, WAYPOINTTREASUREMAP, 0)
+	writeData(playerID .. ":treasureMapExactWaypointID", waypointID)
+	deleteData(playerID .. ":treasureMapSearchAreaWaypointID")
+	deleteData(playerID .. ":treasureMapSearchAreaActiveAreaID")
 end
 
 function TreasureMapMenuComponent:doExtractTreasure(pObject, pPlayer)
@@ -102,14 +105,12 @@ function TreasureMapMenuComponent:doExtractTreasure(pObject, pPlayer)
 
 	local mapData = treasureMapData[mapType]
 	local waypointID = readData(playerID .. ":treasureMapExactWaypointID")
-	local x, z, y
 
 	local pWaypoint = getSceneObject(waypointID)
-	ObjectManager.withSceneObject(pWaypoint, function(waypoint)
-		x = waypoint:getWorldPositionX()
-		y = waypoint:getWorldPositionY()
-		z = getTerrainHeight(pPlayer, x, y)
-	end)
+
+	local x = SceneObject(pWaypoint):getWorldPositionX()
+	local y = SceneObject(pWaypoint):getWorldPositionY()
+	local z = getTerrainHeight(pPlayer, x, y)
 
 	if (SceneObject(pPlayer):getDistanceToPosition(x, z, y) > 5) then
 		CreatureObject(pPlayer):sendSystemMessage("@treasure_map/treasure_map:sys_dist_far") -- You aren't close enough to extract the treasure.
@@ -247,9 +248,11 @@ function TreasureMapMenuComponent:removeTreasureChest(pChest)
 	local chestOwnerID = readData(chestID .. ":ownerID")
 	local pOwner = getSceneObject(chestOwnerID)
 
-	ObjectManager.withCreaturePlayerObject(pOwner, function(owner)
-		owner:removeWaypointBySpecialType(WAYPOINTTREASUREMAP)
-	end)
+	local pGhost = CreatureObject(pOwner):getPlayerObject()
+
+	if (pGhost ~= nil) then
+		PlayerObject(pGhost):removeWaypointBySpecialType(WAYPOINTTREASUREMAP)
+	end
 
 	deleteData(chestOwnerID .. ":treasureChestID")
 	deleteData(chestID .. ":ownerID")
@@ -270,6 +273,12 @@ function TreasureMapMenuComponent:doReadMap(pObject, pPlayer)
 end
 
 function TreasureMapMenuComponent:handleTreasureMapSuiCallback(pCreature, pSui, eventIndex)
+	local pGhost = CreatureObject(pCreature):getPlayerObject()
+
+	if (pGhost == nil) then
+		return 0
+	end
+
 	local cancelPressed = (eventIndex == 1)
 
 	if (cancelPressed or pCreature == nil) then
@@ -285,38 +294,36 @@ function TreasureMapMenuComponent:handleTreasureMapSuiCallback(pCreature, pSui, 
 
 	local mapType = TreasureMapMenuComponent:getMapType(pUsingObject)
 
-	ObjectManager.withCreatureAndPlayerObject(pCreature, function(creature, player)
-		local mapData = treasureMapData[mapType]
-		if (creature:getZoneName() ~= mapData.planet) then
-			creature:sendSystemMessage("@treasure_map/treasure_map:wrong_planet") -- The coordinates stored in the map data do not appear to be for this planet.
-			return 0
-		end
-		local playerID = creature:getObjectID()
+	local mapData = treasureMapData[mapType]
+	if (CreatureObject(pCreature):getZoneName() ~= mapData.planet) then
+		CreatureObject(pCreature):sendSystemMessage("@treasure_map/treasure_map:wrong_planet") -- The coordinates stored in the map data do not appear to be for this planet.
+		return 0
+	end
+	local playerID = CreatureObject(pCreature):getObjectID()
 
-		local currentWaypointID = readData(playerID .. ":treasureMapSearchAreaWaypointID")
-		local exactWaypointID = readData(playerID .. ":treasureMapExactWaypointID")
-		local pExactWaypoint = getSceneObject(currentWaypointID)
-		local pWaypoint = getSceneObject(currentWaypointID)
+	local currentWaypointID = readData(playerID .. ":treasureMapSearchAreaWaypointID")
+	local exactWaypointID = readData(playerID .. ":treasureMapExactWaypointID")
+	local pExactWaypoint = getSceneObject(currentWaypointID)
+	local pWaypoint = getSceneObject(currentWaypointID)
 
-		if (pWaypoint ~= nil or pExactWaypoint ~= nil) then
-			creature:sendSystemMessage("@treasure_map/treasure_map:sys_waypoint_exists") -- A waypoint to this location already exists in your datapad.
-			return 0
-		end
+	if (pWaypoint ~= nil or pExactWaypoint ~= nil) then
+		CreatureObject(pCreature):sendSystemMessage("@treasure_map/treasure_map:sys_waypoint_exists") -- A waypoint to this location already exists in your datapad.
+		return 0
+	end
 
-		local spawnPoint
-		local zoneName = SceneObject(pCreature):getZoneName()
+	local spawnPoint
+	local zoneName = SceneObject(pCreature):getZoneName()
 
-		if (mapType == 4) then
-			spawnPoint = getSpawnPoint(zoneName, mapData.x, mapData.y, 1, 50, true)
-		else
-			spawnPoint = getSpawnPoint(zoneName, mapData.x, mapData.y, 1, 2000)
-		end
+	if (mapType == 4) then
+		spawnPoint = getSpawnPoint(zoneName, mapData.x, mapData.y, 1, 50, true)
+	else
+		spawnPoint = getSpawnPoint(zoneName, mapData.x, mapData.y, 1, 2000)
+	end
 
-		local waypointID = player:addWaypoint(mapData.planet, "@treasure_map/treasure_map:waypoint_name", "", spawnPoint[1], spawnPoint[3], WAYPOINTGREEN, true, true, WAYPOINTTREASUREMAP, 0)
-		local activeAreaID = self:spawnSearchArea(mapType, pCreature, spawnPoint[1], spawnPoint[3])
-		writeData(playerID .. ":treasureMapSearchAreaWaypointID", waypointID)
-		writeData(playerID .. ":treasureMapSearchAreaActiveAreaID", activeAreaID)
-	end)
+	local waypointID = PlayerObject(pGhost):addWaypoint(mapData.planet, "@treasure_map/treasure_map:waypoint_name", "", spawnPoint[1], spawnPoint[3], WAYPOINTGREEN, true, true, WAYPOINTTREASUREMAP, 0)
+	local activeAreaID = self:spawnSearchArea(mapType, pCreature, spawnPoint[1], spawnPoint[3])
+	writeData(playerID .. ":treasureMapSearchAreaWaypointID", waypointID)
+	writeData(playerID .. ":treasureMapSearchAreaActiveAreaID", activeAreaID)
 end
 
 function TreasureMapMenuComponent:spawnSearchArea(mapType, pCreature, x, y)

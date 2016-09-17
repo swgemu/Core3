@@ -458,9 +458,12 @@ function BestineMuseumScreenPlay:createArtistWaypoint(pPlayer, id)
 	local artistData = artistMobiles[id]
 	local artistName = string.gsub(artistTemplate, "_", " ")
 	artistName = string.gsub(" "..artistName, "%W%l", string.upper):sub(2)
-	ObjectManager.withCreaturePlayerObject(pPlayer, function(player)
-		player:addWaypoint("tatooine", artistName, "", artistData.x, artistData.y, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
-	end)
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost ~= nil) then
+		PlayerObject(pGhost):addWaypoint("tatooine", artistName, "", artistData.x, artistData.y, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
+	end
 end
 
 function BestineMuseumScreenPlay:getArtistID(mobile)

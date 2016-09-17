@@ -76,6 +76,12 @@ function SuiArrayPuzzle:noCallback(pPlayer, pSui, eventIndex, ...)
 end
 
 function SuiArrayPuzzle:defaultCallback(pPlayer, pSui, eventIndex, ...)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
 	local cancelPressed = (eventIndex == 1)
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local pageId = readData(playerID .. ":arrayPuzzle:Pid")
@@ -113,9 +119,7 @@ function SuiArrayPuzzle:defaultCallback(pPlayer, pSui, eventIndex, ...)
 		return
 	end
 
-	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
-		playerObject:addSuiBox(pSui)
-	end)
+	PlayerObject(pGhost):addSuiBox(pSui)
 
 	local args = {...}
 

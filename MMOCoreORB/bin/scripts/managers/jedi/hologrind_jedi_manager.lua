@@ -60,7 +60,7 @@ function HologrindJediManager:getGrindableProfessionList()
 		--{ "pilot_neutral_tatooine", 		PILOT_TATOOINE },
 		--{ "pilot_imperial_navy_tatooine", 	PILOT_IMPERIAL_NAVY_TATOOINE },
 		{ "combat_unarmed_master", 		COMBAT_UNARMED_MASTER  },
-		--{ "pilot_rebel_navy_naboo", 		PILOT_REBEL_NAVY_NABOO }
+	--{ "pilot_rebel_navy_naboo", 		PILOT_REBEL_NAVY_NABOO }
 	}
 	return grindableProfessions
 end
@@ -70,44 +70,57 @@ end
 -- @param pCreatureObject pointer to the creature object of the created player.
 function HologrindJediManager:onPlayerCreated(pCreatureObject)
 	local skillList = self:getGrindableProfessionList()
-	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-		for i = 1, NUMBEROFPROFESSIONSTOMASTER, 1 do
-			local numberOfSkillsInList = #skillList
-			local skillNumber = getRandomNumber(1, numberOfSkillsInList)
-			playerObject:addHologrindProfession(skillList[skillNumber][2])
-			table.remove(skillList, skillNumber)
-		end
-	end)
+
+	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	for i = 1, NUMBEROFPROFESSIONSTOMASTER, 1 do
+		local numberOfSkillsInList = #skillList
+		local skillNumber = getRandomNumber(1, numberOfSkillsInList)
+		PlayerObject(pGhost):addHologrindProfession(skillList[skillNumber][2])
+		table.remove(skillList, skillNumber)
+	end
 end
 
 -- Check and count the number of mastered hologrind professions.
 -- @param pCreatureObject pointer to the creature object of the player which should get its number of mastered professions counted.
 -- @return the number of mastered hologrind professions.
 function HologrindJediManager:getNumberOfMasteredProfessions(pCreatureObject)
-	return ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-		local professions = playerObject:getHologrindProfessions()
-		local masteredNumberOfProfessions = 0
-		for i = 1, #professions, 1 do
-			if playerObject:hasBadge(professions[i]) then
-				masteredNumberOfProfessions = masteredNumberOfProfessions + 1
-			end
+	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+
+	if (pGhost == nil) then
+		return 0
+	end
+
+	local professions = playerObject:getHologrindProfessions()
+	local masteredNumberOfProfessions = 0
+	for i = 1, #professions, 1 do
+		if PlayerObject(pGhost):hasBadge(professions[i]) then
+			masteredNumberOfProfessions = masteredNumberOfProfessions + 1
 		end
-		return masteredNumberOfProfessions
-	end)
+	end
+	return masteredNumberOfProfessions
 end
 
 -- Check if the player is jedi.
 -- @param pCreatureObject pointer to the creature object of the player to check if he is jedi.
 -- @return returns if the player is jedi or not.
 function HologrindJediManager:isJedi(pCreatureObject)
-	return ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-		return playerObject:isJedi()
-	end)
+	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+
+	if (pGhost == nil) then
+		return false
+	end
+
+	return PlayerObject(pGhost):isJedi()
 end
 
 -- Sui window ok pressed callback function.
 function HologrindJediManager:notifyOkPressed()
-	-- Do nothing.
+-- Do nothing.
 end
 
 -- Send a sui window to the player about unlocking jedi and award jedi status and force sensitive skill.
@@ -120,10 +133,14 @@ end
 -- Award skill and jedi status to the player.
 -- @param pCreatureObject pointer to the creature object of the player who unlocked jedi.
 function HologrindJediManager:awardJediStatusAndSkill(pCreatureObject)
-	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-		awardSkill(pCreatureObject, "force_title_jedi_novice")
-		playerObject:setJediState(1)
-	end)
+	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	awardSkill(pCreatureObject, "force_title_jedi_novice")
+	PlayerObject(pGhost):setJediState(1)
 end
 
 -- Check if the player has mastered all hologrind professions and send sui window and award skills.
@@ -188,15 +205,20 @@ function HologrindJediManager:sendHolocronMessage(pCreatureObject)
 		CreatureObject(pCreatureObject):sendSystemMessage("@jedi_spam:holocron_quiet")
 		return true
 	else
-		ObjectManager.withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject)
-			local professions = playerObject:getHologrindProfessions()
-			for i = 1, #professions, 1 do
-				if not playerObject:hasBadge(professions[i]) then
-					local professionText = self:getProfessionStringIdFromBadgeNumber(professions[i])
-					creatureObject:sendSystemMessageWithTO("@jedi_spam:holocron_light_information", "@skl_n:" .. professionText)
-				end
+		local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+
+		if (pGhost == nil) then
+			return false
+		end
+
+		local professions = PlayerObject(pGhost):getHologrindProfessions()
+		for i = 1, #professions, 1 do
+			if not PlayerObject(pGhost):hasBadge(professions[i]) then
+				local professionText = self:getProfessionStringIdFromBadgeNumber(professions[i])
+				CreatureObject(pCreatureObject):sendSystemMessageWithTO("@jedi_spam:holocron_light_information", "@skl_n:" .. professionText)
 			end
-		end)
+		end
+
 		return false
 	end
 end
