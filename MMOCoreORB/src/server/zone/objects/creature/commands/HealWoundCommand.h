@@ -155,7 +155,7 @@ public:
 		}
 
 		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
-			creature->sendSystemMessage("@container_error_message:container18");
+			creature->sendSystemMessage("@healing:no_line_of_sight");
 			return false;
 		}
 

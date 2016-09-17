@@ -23,6 +23,28 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
+
+		CreatureObject* player = cast<CreatureObject*>( targetObject.get());
+
+		Locker clocker(player, creature);
+
+		PlayerManager* playerManager = server->getPlayerManager();
+
+		if (!CollisionManager::checkLineOfSight(creature, player)) {
+			creature->sendSystemMessage("@cbt_spam:los_recycle"); //You cannot see your target.
+			return GENERALERROR;
+		}
+
+		WeaponObject* weapon = creature->getWeapon();
+
+		int maxRange = weapon->getMaxRange();
+
+		if(!checkDistance(creature, player, maxRange)) {
+			creature->sendSystemMessage("@error_message:target_out_of_range");//Your target is out of range for this action.
+			return TOOFAR;
+		}
+
 		return doCombatAction(creature, target);
 	}
 
