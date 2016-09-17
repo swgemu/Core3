@@ -31,18 +31,17 @@ function CorellianCorvetteScreenPlay:initialize()
 		for j = 1, #building.buildingIds, 1 do
 			local pCorvette = getSceneObject(building.buildingIds[j])
 			if pCorvette ~= nil then
-				ObjectManager.withSceneObject(pCorvette, function(corvette)
-					if not corvette:isBuildingObject() then
-						print("Corvette id isn't a building: " .. building.buildingIds[j])
-					else
-						writeData("corvetteActive:" .. corvette:getObjectID(), 0)
-						self:ejectAllPlayers(pCorvette)
-						writeData("corvettePlayerCount:" .. SceneObject(pCorvette):getObjectID(), 0)
-						createObserver(ENTEREDBUILDING, "CorellianCorvetteScreenPlay", "onEnterCorvette", pCorvette)
-						createObserver(EXITEDBUILDING, "CorellianCorvetteScreenPlay", "onExitCorvette", pCorvette)
-						num = num + 1
-					end
-				end)
+				if not SceneObject(pCorvette):isBuildingObject() then
+					print("Corvette id isn't a building: " .. building.buildingIds[j])
+				else
+					local corvetteID = SceneObject(pCorvette):getObjectID()
+					writeData("corvetteActive:" .. corvetteID, 0)
+					self:ejectAllPlayers(pCorvette)
+					writeData("corvettePlayerCount:" .. corvetteID, 0)
+					createObserver(ENTEREDBUILDING, "CorellianCorvetteScreenPlay", "onEnterCorvette", pCorvette)
+					createObserver(EXITEDBUILDING, "CorellianCorvetteScreenPlay", "onExitCorvette", pCorvette)
+					num = num + 1
+				end
 			else
 				print("Corvette id isn't valid: " .. building.buildingIds[j])
 			end
@@ -103,11 +102,15 @@ function CorellianCorvetteScreenPlay:transportPlayer(pPlayer)
 	local corvetteId = readData(SceneObject(pPlayer):getObjectID() .. "corvetteId")
 	local pCorvette = getSceneObject(corvetteId)
 
-	ObjectManager.withBuildingObject(pCorvette, function(corvette)
-		self:startQuest(pCorvette, questType)
-		local cellId = SceneObject(corvette:getCell(1)):getObjectID()
-		SceneObject(pPlayer):switchZone("dungeon1", -42.9, 0, 0.1, cellId)
-	end)
+	self:startQuest(pCorvette, questType)
+
+	local pCell = BuildingObject(pCorvette):getCell(1)
+
+	if (pCell == nil) then
+		return
+	end
+
+	SceneObject(pPlayer):switchZone("dungeon1", -42.9, 0, 0.1, SceneObject(pCell):getObjectID())
 end
 
 function CorellianCorvetteScreenPlay:startQuest(pCorvette, questType)
@@ -118,15 +121,14 @@ function CorellianCorvetteScreenPlay:startQuest(pCorvette, questType)
 end
 
 function CorellianCorvetteScreenPlay:getBuildingFaction(pCorvette)
-	return ObjectManager.withSceneObject(pCorvette, function(corvette)
-		if string.find(corvette:getTemplateObjectPath(), "imperial") ~= nil then
-			return "imperial"
-		elseif string.find(corvette:getTemplateObjectPath(), "rebel") ~= nil then
-			return "rebel"
-		else
-			return "neutral"
-		end
-	end)
+	local templatePath = SceneObject(pCorvette):getTemplateObjectPath()
+	if string.find(templatePath, "imperial") ~= nil then
+		return "imperial"
+	elseif string.find(templatePath, "rebel") ~= nil then
+		return "rebel"
+	else
+		return "neutral"
+	end
 end
 
 function CorellianCorvetteScreenPlay:onEnterCorvette(pCorvette, pPlayer)
@@ -177,10 +179,11 @@ function CorellianCorvetteScreenPlay:handleQuestFailure(pCorvette)
 end
 
 function CorellianCorvetteScreenPlay:ejectAllPlayers(pCorvette)
-	ObjectManager.withBuildingObject(pCorvette, function(corvette)
-		local playersToEject = {}
-		for i = 1, 66, 1 do
-			local pCell = corvette:getCell(i)
+	local playersToEject = {}
+	for i = 1, 66, 1 do
+		local pCell = BuildingObject(pCorvette):getCell(i)
+
+		if (pCell ~= nil) then
 			for j = 1, SceneObject(pCell):getContainerObjectsSize(), 1 do
 				local pObject = SceneObject(pCell):getContainerObject(j - 1)
 				if SceneObject(pObject):isPlayerCreature() then
@@ -188,12 +191,12 @@ function CorellianCorvetteScreenPlay:ejectAllPlayers(pCorvette)
 				end
 			end
 		end
+	end
 
-		for i = 1, #playersToEject, 1 do
-			local pObject = playersToEject[i]
-			createEvent(1000, "CorellianCorvetteScreenPlay", "ejectPlayer", pObject, "")
-		end
-	end)
+	for i = 1, #playersToEject, 1 do
+		local pObject = playersToEject[i]
+		createEvent(1000, "CorellianCorvetteScreenPlay", "ejectPlayer", pObject, "")
+	end
 end
 
 function CorellianCorvetteScreenPlay:ejectPlayer(pPlayer)

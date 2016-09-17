@@ -5,36 +5,32 @@ heroOfTatFarmerConvoHandler = {  }
 -- 1 - Started farmer quest, 2 - Completed farmer quest
 
 function heroOfTatFarmerConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	return ObjectManager.withCreatureObject(pPlayer, function(player)
-		local pConversationSession = player:getConversationSession()
-		local pLastConversationScreen = nil
-		if (pConversationSession ~= nil) then
-			local conversationSession = LuaConversationSession(pConversationSession)
-			pLastConversationScreen = conversationSession:getLastConversationScreen()
-		end
-		local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-		if (pLastConversationScreen ~= nil) then
-			local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-			local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-			return conversationTemplate:getScreen(optionLink)
-		end
-		return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
-	end)
+	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
+	local pLastConversationScreen = nil
+	if (pConversationSession ~= nil) then
+		local conversationSession = LuaConversationSession(pConversationSession)
+		pLastConversationScreen = conversationSession:getLastConversationScreen()
+	end
+	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
+	if (pLastConversationScreen ~= nil) then
+		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
+		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
+		return conversationTemplate:getScreen(optionLink)
+	end
+	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
 end
 
 function heroOfTatFarmerConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	return ObjectManager.withCreatureObject(pPlayer, function(player)
-		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-		if (player:hasScreenPlayState(2, "hero_of_tatooine_altruism")) then
-			return convoTemplate:getScreen("intro_completed")
-		elseif (player:hasScreenPlayState(1, "hero_of_tatooine_altruism")) then
-			return convoTemplate:getScreen("intro_has_quest")
-		elseif (readData(CreatureObject(pNpc):getObjectID() .. ":gaveQuest") == 1) then
-			return convoTemplate:getScreen("intro_someone_else_started")
-		else
-			return convoTemplate:getScreen("intro")
-		end
-	end)
+	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+	if (CreatureObject(pPlayer):hasScreenPlayState(2, "hero_of_tatooine_altruism")) then
+		return convoTemplate:getScreen("intro_completed")
+	elseif (CreatureObject(pPlayer):hasScreenPlayState(1, "hero_of_tatooine_altruism")) then
+		return convoTemplate:getScreen("intro_has_quest")
+	elseif (readData(CreatureObject(pNpc):getObjectID() .. ":gaveQuest") == 1) then
+		return convoTemplate:getScreen("intro_someone_else_started")
+	else
+		return convoTemplate:getScreen("intro")
+	end
 end
 
 function heroOfTatFarmerConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)

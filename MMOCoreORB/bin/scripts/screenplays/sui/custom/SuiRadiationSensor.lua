@@ -38,6 +38,12 @@ function SuiRadiationSensor:updateSensor(pCreature)
 		return
 	end
 
+	local pGhost = CreatureObject(pCreature):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
 	local playerID = SceneObject(pCreature):getObjectID()
 	local sensorPid = readData(playerID .. ":radiationSensorPid")
 
@@ -45,11 +51,7 @@ function SuiRadiationSensor:updateSensor(pCreature)
 		return
 	end
 
-	local pBox
-
-	ObjectManager.withCreaturePlayerObject(pCreature, function(playerObject)
-		pBox = playerObject:getSuiBox(sensorPid)
-	end)
+	local pBox = PlayerObject(pGhost):getSuiBox(sensorPid)
 
 	if (pBox == nil) then
 		printf("Error in SuiRadiationSensor:updateSensor, suiBox is nil.\n")

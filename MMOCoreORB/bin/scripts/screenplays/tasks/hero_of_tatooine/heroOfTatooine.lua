@@ -2,44 +2,44 @@ local ObjectManager = require("managers.object.object_manager")
 
 HeroOfTatooineScreenPlay = ScreenPlay:new {
 
-	courageSpawns = { { -861, 4557 }, { -159, 5040 }, { -1264, 5379 }, { -695, 4506 }, { 16, 4068 }, { -533, 4314 }, { -1023, 5214 }, { -318, 4477 }, { -443, 4970 },
-		{ -1183, 4647 }, { -575, 4985 }, { -1618, 5272 }, { -97, 5025 }, { -471, 4715 }, { -991, 5887 }, { -998, 5240 }, { -500, 4600 }, { -1131, 6185 } },
+		courageSpawns = { { -861, 4557 }, { -159, 5040 }, { -1264, 5379 }, { -695, 4506 }, { 16, 4068 }, { -533, 4314 }, { -1023, 5214 }, { -318, 4477 }, { -443, 4970 },
+			{ -1183, 4647 }, { -575, 4985 }, { -1618, 5272 }, { -97, 5025 }, { -471, 4715 }, { -991, 5887 }, { -998, 5240 }, { -500, 4600 }, { -1131, 6185 } },
 
-	altruismSpawns = { { 2123, 1291 }, { 2470, 1394 }, { 2511, 1357 }, { 2439, 1294 }, { 3196, 1272 }, { 3303, 1107 }, { 2123, 1291 }, { 2494, 1714 }, { 2545, 1741 },
-		{ 2778, 1507 }, { 5100, 800 }, { 2168, 1293 }, { 2488, 1676 }, { 3640, -44 }, { 1839, 966 }, { 2570, 1164 }, { 2478, 687 }, { 1003, 1240 }, { 2560, 1324 }, { 2437, 1421 } },
+		altruismSpawns = { { 2123, 1291 }, { 2470, 1394 }, { 2511, 1357 }, { 2439, 1294 }, { 3196, 1272 }, { 3303, 1107 }, { 2123, 1291 }, { 2494, 1714 }, { 2545, 1741 },
+			{ 2778, 1507 }, { 5100, 800 }, { 2168, 1293 }, { 2488, 1676 }, { 3640, -44 }, { 1839, 966 }, { 2570, 1164 }, { 2478, 687 }, { 1003, 1240 }, { 2560, 1324 }, { 2437, 1421 } },
 
-	intellectSpawns = {
-		{ x1 = 59.5, z1 = 52, y1 = -5372.23, x2 = 57.56, z2 = 52, y2 = -5366.43, bhX = 59.4, bhZ = 52, bhY = -5368.9, bhAngle = 84 },
-		{ x1 = -1370.11, z1 = 12, y1 = -3639.83, x2 = -1363.3, z2 = 12, y2 = -3642.07, bhX = -1367, bhZ = 12, bhY = -3642.2, bhAngle = -168 },
-		{ x1 = 3481.75, z1 = 5, y1 = -4641.05, x2 = 3486.69, z2 = 5, y2 = -4645.42, bhX = 3483.8, bhZ = 5, bhY = -4644.1, bhAngle = -145 },
-		{ x1 = 1541.44, z1 = 7, y1 = 3126.77, x2 = 1551.83, z2 = 7, y2 = 3124.25, bhX = 1546.2, bhZ = 7, bhY = 3124.3, bhAngle = -165 },
-		{ x1 = -2890.04, z1 = 5, y1 = 2198.77, x2 = -2893.69, z2 = 5, y2 = 2204.23, bhX = -2890.9, bhZ = 5, bhY = 2201.9, bhAngle = 57 },
-		{ x1 = 3793.97, z1 = 11.62, y1 = 2389.19, x2 = 3794.33, z2 = 11.66, y2 = 2396.27, bhX = 3795.4, bhZ = 11.9, bhY = 2392.4, bhAngle = 91 },
-		{ x1 = -5166.3, z1 = 75, y1 = -6620.24, x2 = -5171.38, z2 = 75, y2 = -6624.75, bhX = -5169.4, bhZ = 75, bhY = -6621.8, bhAngle = -42 }
-	},
+		intellectSpawns = {
+			{ x1 = 59.5, z1 = 52, y1 = -5372.23, x2 = 57.56, z2 = 52, y2 = -5366.43, bhX = 59.4, bhZ = 52, bhY = -5368.9, bhAngle = 84 },
+			{ x1 = -1370.11, z1 = 12, y1 = -3639.83, x2 = -1363.3, z2 = 12, y2 = -3642.07, bhX = -1367, bhZ = 12, bhY = -3642.2, bhAngle = -168 },
+			{ x1 = 3481.75, z1 = 5, y1 = -4641.05, x2 = 3486.69, z2 = 5, y2 = -4645.42, bhX = 3483.8, bhZ = 5, bhY = -4644.1, bhAngle = -145 },
+			{ x1 = 1541.44, z1 = 7, y1 = 3126.77, x2 = 1551.83, z2 = 7, y2 = 3124.25, bhX = 1546.2, bhZ = 7, bhY = 3124.3, bhAngle = -165 },
+			{ x1 = -2890.04, z1 = 5, y1 = 2198.77, x2 = -2893.69, z2 = 5, y2 = 2204.23, bhX = -2890.9, bhZ = 5, bhY = 2201.9, bhAngle = 57 },
+			{ x1 = 3793.97, z1 = 11.62, y1 = 2389.19, x2 = 3794.33, z2 = 11.66, y2 = 2396.27, bhX = 3795.4, bhZ = 11.9, bhY = 2392.4, bhAngle = 91 },
+			{ x1 = -5166.3, z1 = 75, y1 = -6620.24, x2 = -5171.38, z2 = 75, y2 = -6624.75, bhX = -5169.4, bhZ = 75, bhY = -6621.8, bhAngle = -42 }
+		},
 
-	honorSpawns = { { 4650, -3860 }, { 4091, -4310 }, { 4835, -4845 }, { 5946, -5233 }, { 6390, -5220 }, { 5966, -5224 }, { 5513, -5362 }, { 4467, -5192 }, { 5267, -4349 },
-		{ 6377, -4623 }, { 5912, -5135 }, { 4704, -4399 }, { 4612, -3969 }, { 4614, -4978 }, { 6337, -5325 }, { 4373, -3956 }, { 5930, -5933 }, { 6144, -4800 },
-	},
+		honorSpawns = { { 4650, -3860 }, { 4091, -4310 }, { 4835, -4845 }, { 5946, -5233 }, { 6390, -5220 }, { 5966, -5224 }, { 5513, -5362 }, { 4467, -5192 }, { 5267, -4349 },
+			{ 6377, -4623 }, { 5912, -5135 }, { 4704, -4399 }, { 4612, -3969 }, { 4614, -4978 }, { 6337, -5325 }, { 4373, -3956 }, { 5930, -5933 }, { 6144, -4800 },
+		},
 
-	honorFailPoints = {
-		pirate1 = {{-6.53, 0.03, -3.21, 4005941}, {-6.20, 0.57, 10.92, 4005939}},
-		pirate2 = {{-5.3, 0.03, -1.4, 4005941}, {-6.20, 0.57, 10.92, 4005939}},
-	},
+		honorFailPoints = {
+			pirate1 = {{-6.53, 0.03, -3.21, 4005941}, {-6.20, 0.57, 10.92, 4005939}},
+			pirate2 = {{-5.3, 0.03, -1.4, 4005941}, {-6.20, 0.57, 10.92, 4005939}},
+		},
 
-	honorSuccessPoints = {
-		pirate1 = {{-5.4, 0.31, -3.2, 4005941}, {-6.20, 0.57, 10.92, 4005939}},
-		pirate2 = {{-6.20, 0.57, 10.92, 4005939}},
-		rancher = {{-6.6, 0.03, -1.8, 4005941}},
-		trooper1 = {{-7.86, -3.97, -8.18, 4005942}, {-6.1, 0.03, -4.2, 4005941}, {-6.20, 0.57, 10.92, 4005939}},
-		trooper2 = {{-5.53, -3.97, -8.51, 4005942}, {-6.20, 0.57, 10.92, 4005939}}
-	},
+		honorSuccessPoints = {
+			pirate1 = {{-5.4, 0.31, -3.2, 4005941}, {-6.20, 0.57, 10.92, 4005939}},
+			pirate2 = {{-6.20, 0.57, 10.92, 4005939}},
+			rancher = {{-6.6, 0.03, -1.8, 4005941}},
+			trooper1 = {{-7.86, -3.97, -8.18, 4005942}, {-6.1, 0.03, -4.2, 4005941}, {-6.20, 0.57, 10.92, 4005939}},
+			trooper2 = {{-5.53, -3.97, -8.51, 4005942}, {-6.20, 0.57, 10.92, 4005939}}
+		},
 
-	spawnTimers = {
-		initial = { 20, 30 }, -- Time in minutes for first spawn after server start
-		respawn = { 60, 180 }, -- Time in minutes before respawning after despawn
-		life = { 15, 60 }, -- Time in minutes to keep mob in world before despawn
-	}
+		spawnTimers = {
+			initial = { 20, 30 }, -- Time in minutes for first spawn after server start
+			respawn = { 60, 180 }, -- Time in minutes before respawning after despawn
+			life = { 15, 60 }, -- Time in minutes to keep mob in world before despawn
+		}
 }
 
 registerScreenPlay("HeroOfTatooineScreenPlay", true)
@@ -237,21 +237,19 @@ function HeroOfTatooineScreenPlay:notifyDefeatedBoar(pVictim, pAttacker)
 end
 
 function HeroOfTatooineScreenPlay:clearInventory(pCreature)
-	ObjectManager.withCreatureObject(pCreature, function(creature)
-		local pInventory = creature:getSlottedObject("inventory")
 
-		if pInventory == nil then
-			return 0
-		end
-		ObjectManager.withSceneObject(pInventory, function(inventory)
-			local numberOfItems = inventory:getContainerObjectsSize()
-			for i = 0, numberOfItems - 1, 1 do
-				local pItem = inventory:getContainerObject(0)
-				SceneObject(pItem):destroyObjectFromWorld()
-				SceneObject(pItem):destroyObjectFromDatabase()
-			end
-		end)
-	end)
+	local pInventory = CreatureObject(pCreature):getSlottedObject("inventory")
+
+	if pInventory == nil then
+		return 0
+	end
+
+	local numberOfItems = SceneObject(pInventory):getContainerObjectsSize()
+	for i = 0, numberOfItems - 1, 1 do
+		local pItem = SceneObject(pInventory):getContainerObject(0)
+		SceneObject(pItem):destroyObjectFromWorld()
+		SceneObject(pItem):destroyObjectFromDatabase()
+	end
 end
 
 function HeroOfTatooineScreenPlay:notifyMarkOfCourageLooted(pItem, pLooter)
@@ -259,10 +257,14 @@ function HeroOfTatooineScreenPlay:notifyMarkOfCourageLooted(pItem, pLooter)
 		return 1
 	end
 
-	ObjectManager.withCreatureAndPlayerObject(pLooter, function(player, playerObject)
-		playerObject:awardBadge(7)
-		player:setScreenPlayState(16, "hero_of_tatooine")
-	end)
+	local pGhost = CreatureObject(pLooter):getPlayerObject()
+
+	if (pGhost == nil) then
+		return 1
+	end
+
+	PlayerObject(pGhost):awardBadge(7)
+	CreatureObject(pLooter):setScreenPlayState(16, "hero_of_tatooine")
 
 	return 1
 end
@@ -401,6 +403,12 @@ function HeroOfTatooineScreenPlay:handleSuiImplication(pPlayer, pSui, eventIndex
 		return
 	end
 
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
 	local mobId = readData("hero_of_tat:intellect_mob_id")
 
 	if (mobId == 0) then
@@ -415,36 +423,35 @@ function HeroOfTatooineScreenPlay:handleSuiImplication(pPlayer, pSui, eventIndex
 
 
 	local liarNum = arg0 + 1
-	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
-		if (liarNum == 3) then
-			local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 
-			if (pInventory == nil) then
-				return
-			end
+	if (liarNum == 3) then
+		local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 
-			if (SceneObject(pInventory):isContainerFullRecursive()) then
-				player:setScreenPlayState(2, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor
-				player:sendSystemMessage("@quest/hero_of_tatooine/system_messages:intellect_inv_full")
-			else
-				local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_intellect.iff", -1)
-
-				if (pMark == nil) then
-					player:setScreenPlayState(2, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor
-					player:sendSystemMessage("Error creating object. Please file a bug report.")
-				end
-			end
-
-			player:setScreenPlayState(8, "hero_of_tatooine")
-			player:setScreenPlayState(2, "hero_of_tatooine_intellect")
-			playerObject:awardBadge(POI_TWOLIARS)
-			spatialChat(pBountyHunter, "@quest/hero_of_tatooine/intellect_liar:bh_win")
-			createEvent(10 * 1000, "HeroOfTatooineScreenPlay", "doIntellectSpawn", pBountyHunter, "")
-		else
-			spatialChat(pBountyHunter, "@quest/hero_of_tatooine/intellect_liar:bh_lose")
-			writeData(player:getObjectID() .. ":hero_of_tat:failedIntellect", mobId)
+		if (pInventory == nil) then
+			return
 		end
-	end)
+
+		if (SceneObject(pInventory):isContainerFullRecursive()) then
+			CreatureObject(pPlayer):setScreenPlayState(2, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor
+			CreatureObject(pPlayer):sendSystemMessage("@quest/hero_of_tatooine/system_messages:intellect_inv_full")
+		else
+			local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_intellect.iff", -1)
+
+			if (pMark == nil) then
+				CreatureObject(pPlayer):setScreenPlayState(2, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor
+				CreatureObject(pPlayer):sendSystemMessage("Error creating object. Please file a bug report.")
+			end
+		end
+
+		CreatureObject(pPlayer):setScreenPlayState(8, "hero_of_tatooine")
+		CreatureObject(pPlayer):setScreenPlayState(2, "hero_of_tatooine_intellect")
+		PlayerObject(pGhost):awardBadge(POI_TWOLIARS)
+		spatialChat(pBountyHunter, "@quest/hero_of_tatooine/intellect_liar:bh_win")
+		createEvent(10 * 1000, "HeroOfTatooineScreenPlay", "doIntellectSpawn", pBountyHunter, "")
+	else
+		spatialChat(pBountyHunter, "@quest/hero_of_tatooine/intellect_liar:bh_lose")
+		writeData(CreatureObject(pPlayer):getObjectID() .. ":hero_of_tat:failedIntellect", mobId)
+	end
 end
 
 function HeroOfTatooineScreenPlay:destroyIntellectMobs()
@@ -590,25 +597,38 @@ function HeroOfTatooineScreenPlay:getCavePlayerWithQuestCount()
 end
 
 function HeroOfTatooineScreenPlay:giveAltruismWaypoint(pPlayer)
-	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
-		local oldWaypointID = tonumber(getQuestStatus(player:getObjectID() .. ":altruismWaypointID"))
-		if (oldWaypointID ~= 0) then
-			playerObject:removeWaypoint(oldWaypointID, true)
-			removeQuestStatus(player:getObjectID() .. ":altruismWaypointID")
-		end
-		local waypointID = playerObject:addWaypoint("tatooine", "Kidnapped Family", "", 6555, -1311, WAYPOINT_COLOR_PURPLE, true, true, 0, 1)
-		setQuestStatus(player:getObjectID() .. ":altruismWaypointID", waypointID)
-	end)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	local playerID = CreatureObject(pPlayer):getObjectID()
+	local oldWaypointID = tonumber(getQuestStatus(playerID .. ":altruismWaypointID"))
+
+	if (oldWaypointID ~= 0) then
+		PlayerObject(pGhost):removeWaypoint(oldWaypointID, true)
+		removeQuestStatus(playerID .. ":altruismWaypointID")
+	end
+
+	local waypointID = PlayerObject(pGhost):addWaypoint("tatooine", "Kidnapped Family", "", 6555, -1311, WAYPOINT_COLOR_PURPLE, true, true, 0, 1)
+	setQuestStatus(playerID .. ":altruismWaypointID", waypointID)
 end
 
 function HeroOfTatooineScreenPlay:removeAltruismWaypoint(pPlayer)
-	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
-		local oldWaypointID = tonumber(getQuestStatus(player:getObjectID() .. ":altruismWaypointID"))
-		if (oldWaypointID ~= 0) then
-			playerObject:removeWaypoint(oldWaypointID, true)
-			removeQuestStatus(player:getObjectID() .. ":altruismWaypointID")
-		end
-	end)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	local playerID = CreatureObject(pPlayer):getObjectID()
+	local oldWaypointID = tonumber(getQuestStatus(playerID .. ":altruismWaypointID"))
+
+	if (oldWaypointID ~= 0) then
+		PlayerObject(pGhost):removeWaypoint(oldWaypointID, true)
+		removeQuestStatus(playerID .. ":altruismWaypointID")
+	end
 end
 
 function HeroOfTatooineScreenPlay:destroyCaveWall(pCrevice)
@@ -701,6 +721,13 @@ function HeroOfTatooineScreenPlay:completeEscort(pPlayer)
 	if (pPlayer == nil) then
 		return
 	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
 	local wifeID = readData("hero_of_tat:farmerWifeId")
 	local pWife = getSceneObject(wifeID)
 
@@ -709,34 +736,32 @@ function HeroOfTatooineScreenPlay:completeEscort(pPlayer)
 		AiAgent(pWife):setAiTemplate("idlewait")
 	end
 
-	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
-		writeData("hero_of_tat:altruismEscortStatus", 0)
-		player:sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_quest_success")
+	writeData("hero_of_tat:altruismEscortStatus", 0)
+	CreatureObject(pPlayer):sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_quest_success")
 
-		local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 
-		if (pInventory == nil) then
-			return 0
+	if (pInventory == nil) then
+		return 0
+	end
+
+	if (SceneObject(pInventory):isContainerFullRecursive()) then
+		CreatureObject(pPlayer):setScreenPlayState(1, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor
+		CreatureObject(pPlayer):sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_inv_full")
+	else
+		local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_altruism.iff", -1)
+
+		if (pMark == nil) then
+			CreatureObject(pPlayer):setScreenPlayState(1, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor
+			CreatureObject(pPlayer):sendSystemMessage("Error creating object. Please file a bug report.")
 		end
+	end
 
-		if (SceneObject(pInventory):isContainerFullRecursive()) then
-			player:setScreenPlayState(1, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor
-			player:sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_inv_full")
-		else
-			local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_altruism.iff", -1)
-
-			if (pMark == nil) then
-				player:setScreenPlayState(1, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor
-				player:sendSystemMessage("Error creating object. Please file a bug report.")
-			end
-		end
-
-		playerObject:awardBadge(10)
-		player:setScreenPlayState(4, "hero_of_tatooine")
-		player:setScreenPlayState(2, "hero_of_tatooine_altruism")
-		self:removeAltruismWaypoint(pPlayer)
-		createEvent(3000, "HeroOfTatooineScreenPlay", "despawnAltruismObjects", pPlayer, "")
-	end)
+	PlayerObject(pGhost):awardBadge(10)
+	CreatureObject(pPlayer):setScreenPlayState(4, "hero_of_tatooine")
+	CreatureObject(pPlayer):setScreenPlayState(2, "hero_of_tatooine_altruism")
+	self:removeAltruismWaypoint(pPlayer)
+	createEvent(3000, "HeroOfTatooineScreenPlay", "despawnAltruismObjects", pPlayer, "")
 end
 
 function HeroOfTatooineScreenPlay:doHonorChange()
@@ -853,31 +878,29 @@ function HeroOfTatooineScreenPlay:pirateLeaderDamage(pLeader, pPlayer, damage)
 		return 0
 	end
 
-	return ObjectManager.withCreatureObject(pLeader, function(leader)
-		if ((leader:getHAM(0) <= (leader:getMaxHAM(0) * 0.8)) or (leader:getHAM(3) <= (leader:getMaxHAM(3) * 0.8)) or (leader:getHAM(6) <= (leader:getMaxHAM(6) * 0.8))) then
-			local spawnLoc = { x = leader:getPositionX(), z = leader:getPositionZ(), y = leader:getPositionY(), cell = leader:getParentID(), angle = leader:getDirectionAngle() }
-			local spawnHam = { h = leader:getHAM(0), a = leader:getHAM(3), m = leader:getHAM(6) }
-			local leaderName = SceneObject(pLeader):getCustomObjectName()
-			SceneObject(pLeader):destroyObjectFromWorld()
+	if ((leader:getHAM(0) <= (CreatureObject(pLeader):getMaxHAM(0) * 0.8)) or (CreatureObject(pLeader):getHAM(3) <= (CreatureObject(pLeader):getMaxHAM(3) * 0.8)) or (CreatureObject(pLeader):getHAM(6) <= (CreatureObject(pLeader):getMaxHAM(6) * 0.8))) then
+		local spawnLoc = { x = CreatureObject(pLeader):getPositionX(), z = CreatureObject(pLeader):getPositionZ(), y = CreatureObject(pLeader):getPositionY(), cell = CreatureObject(pLeader):getParentID(), angle = CreatureObject(pLeader):getDirectionAngle() }
+		local spawnHam = { h = CreatureObject(pLeader):getHAM(0), a = CreatureObject(pLeader):getHAM(3), m = CreatureObject(pLeader):getHAM(6) }
+		local leaderName = SceneObject(pLeader):getCustomObjectName()
+		SceneObject(pLeader):destroyObjectFromWorld()
 
-			local pNewLeader = spawnMobile("tatooine", "hero_of_tat_pirate_leader_converse", 0, spawnLoc.x, spawnLoc.z, spawnLoc.y, spawnLoc.angle, spawnLoc.cell)
+		local pNewLeader = spawnMobile("tatooine", "hero_of_tat_pirate_leader_converse", 0, spawnLoc.x, spawnLoc.z, spawnLoc.y, spawnLoc.angle, spawnLoc.cell)
 
-			if (pNewLeader == nil) then
-				return 1
-			end
-
-			SceneObject(pNewLeader):setCustomObjectName(leaderName)
-			CreatureObject(pNewLeader):setPvpStatusBitmask(0)
-			CreatureObject(pNewLeader):setHAM(0, spawnHam.h)
-			CreatureObject(pNewLeader):setHAM(3, spawnHam.a)
-			CreatureObject(pNewLeader):setHAM(6, spawnHam.m)
-
-			spatialChat(pNewLeader, "@quest/pirates:dont_hurt_us")
+		if (pNewLeader == nil) then
 			return 1
-		else
-			return 0
 		end
-	end)
+
+		SceneObject(pNewLeader):setCustomObjectName(leaderName)
+		CreatureObject(pNewLeader):setPvpStatusBitmask(0)
+		CreatureObject(pNewLeader):setHAM(0, spawnHam.h)
+		CreatureObject(pNewLeader):setHAM(3, spawnHam.a)
+		CreatureObject(pNewLeader):setHAM(6, spawnHam.m)
+
+		spatialChat(pNewLeader, "@quest/pirates:dont_hurt_us")
+		return 1
+	else
+		return 0
+	end
 end
 
 function HeroOfTatooineScreenPlay:spawnAggroLeader(pOldLeader, pPlayer, screenID)
@@ -885,45 +908,50 @@ function HeroOfTatooineScreenPlay:spawnAggroLeader(pOldLeader, pPlayer, screenID
 		return
 	end
 
-	ObjectManager.withCreatureObject(pOldLeader, function(leader)
-		local spawnLoc = { x = leader:getPositionX(), z = leader:getPositionZ(), y = leader:getPositionY(), cell = leader:getParentID(), angle = leader:getDirectionAngle() }
-		local spawnHam = { h = leader:getHAM(0), a = leader:getHAM(3), m = leader:getHAM(6) }
-		local leaderName = SceneObject(pOldLeader):getCustomObjectName()
-		SceneObject(pOldLeader):destroyObjectFromWorld()
+	local spawnLoc = { x = CreatureObject(pOldLeader):getPositionX(), z = CreatureObject(pOldLeader):getPositionZ(), y = CreatureObject(pOldLeader):getPositionY(), cell = CreatureObject(pOldLeader):getParentID(), angle = CreatureObject(pOldLeader):getDirectionAngle() }
+	local spawnHam = { h = CreatureObject(pOldLeader):getHAM(0), a = CreatureObject(pOldLeader):getHAM(3), m = CreatureObject(pOldLeader):getHAM(6) }
+	local leaderName = SceneObject(pOldLeader):getCustomObjectName()
+	SceneObject(pOldLeader):destroyObjectFromWorld()
 
-		local pNewLeader = spawnMobile("tatooine", "hero_of_tat_pirate_leader", 0, spawnLoc.x, spawnLoc.z, spawnLoc.y, spawnLoc.angle, spawnLoc.cell)
+	local pNewLeader = spawnMobile("tatooine", "hero_of_tat_pirate_leader", 0, spawnLoc.x, spawnLoc.z, spawnLoc.y, spawnLoc.angle, spawnLoc.cell)
 
-		if (pNewLeader == nil) then
-			return
-		end
+	if (pNewLeader == nil) then
+		return
+	end
 
-		SceneObject(pNewLeader):setCustomObjectName(leaderName)
-		CreatureObject(pNewLeader):setHAM(0, spawnHam.h)
-		CreatureObject(pNewLeader):setHAM(3, spawnHam.a)
-		CreatureObject(pNewLeader):setHAM(6, spawnHam.m)
+	SceneObject(pNewLeader):setCustomObjectName(leaderName)
+	CreatureObject(pNewLeader):setHAM(0, spawnHam.h)
+	CreatureObject(pNewLeader):setHAM(3, spawnHam.a)
+	CreatureObject(pNewLeader):setHAM(6, spawnHam.m)
 
-		if (screenID == "lets_get_em") then
-			spatialChat(pNewLeader, "@conversation/quest_hero_of_tatooine_pirate_leader:s_cacfa6a2")
-		elseif (screenID == "is_that_so") then
-			spatialChat(pNewLeader, "@conversation/quest_hero_of_tatooine_pirate_leader:s_5a3d905f")
-		elseif (screenID == "teach_a_lesson") then
-			spatialChat(pNewLeader, "@conversation/quest_hero_of_tatooine_pirate_leader:s_d9706ae2")
-		end
+	if (screenID == "lets_get_em") then
+		spatialChat(pNewLeader, "@conversation/quest_hero_of_tatooine_pirate_leader:s_cacfa6a2")
+	elseif (screenID == "is_that_so") then
+		spatialChat(pNewLeader, "@conversation/quest_hero_of_tatooine_pirate_leader:s_5a3d905f")
+	elseif (screenID == "teach_a_lesson") then
+		spatialChat(pNewLeader, "@conversation/quest_hero_of_tatooine_pirate_leader:s_d9706ae2")
+	end
 
-		CreatureObject(pNewLeader):engageCombat(pPlayer)
-	end)
+	CreatureObject(pNewLeader):engageCombat(pPlayer)
 end
 
 function HeroOfTatooineScreenPlay:giveHonorWaypoint(pPlayer)
-	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
-		local oldWaypointID = tonumber(getQuestStatus(player:getObjectID() .. ":honorWaypointID"))
-		if (oldWaypointID ~= 0) then
-			playerObject:removeWaypoint(oldWaypointID, true)
-			removeQuestStatus(player:getObjectID() .. ":honorWaypointID")
-		end
-		local waypointID = playerObject:addWaypoint("tatooine", "Ranch House", "", 4993, -4682, WAYPOINT_COLOR_PURPLE, true, true, 0, 1)
-		setQuestStatus(player:getObjectID() .. ":honorWaypointID", waypointID)
-	end)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	local playerID = CreatureObject(pPlayer):getObjectID()
+	local oldWaypointID = tonumber(getQuestStatus(playerID .. ":honorWaypointID"))
+
+	if (oldWaypointID ~= 0) then
+		PlayerObject(pGhost):removeWaypoint(oldWaypointID, true)
+		removeQuestStatus(playerID .. ":honorWaypointID")
+	end
+
+	local waypointID = PlayerObject(pGhost):addWaypoint("tatooine", "Ranch House", "", 4993, -4682, WAYPOINT_COLOR_PURPLE, true, true, 0, 1)
+	setQuestStatus(playerID .. ":honorWaypointID", waypointID)
 end
 
 function HeroOfTatooineScreenPlay:initRanchHouse()
@@ -933,13 +961,11 @@ function HeroOfTatooineScreenPlay:initRanchHouse()
 		return
 	end
 
-	ObjectManager.withSceneObject(pBedroom, function(bedroom)
-		bedroom:setContainerInheritPermissionsFromParent(false)
-		bedroom:clearContainerDefaultDenyPermission(WALKIN)
-		bedroom:clearContainerDefaultAllowPermission(WALKIN)
-		bedroom:setContainerAllowPermission("heroOfTatRanchBedroom", WALKIN)
-		bedroom:setContainerDenyPermission("heroOfTatRanchBedroom", MOVEIN)
-	end)
+	SceneObject(pBedroom):setContainerInheritPermissionsFromParent(false)
+	SceneObject(pBedroom):clearContainerDefaultDenyPermission(WALKIN)
+	SceneObject(pBedroom):clearContainerDefaultAllowPermission(WALKIN)
+	SceneObject(pBedroom):setContainerAllowPermission("heroOfTatRanchBedroom", WALKIN)
+	SceneObject(pBedroom):setContainerDenyPermission("heroOfTatRanchBedroom", MOVEIN)
 
 	--TODO: Droid temporary until we can come up with a way to make TANO's conversible
 	--local pObject = spawnSceneObject("tatooine", "object/tangible/terminal/terminal_elevator_up.iff", -6.33, -3.57, -7.27, 4005942, 0.0436, 0, -0.999, 0)
@@ -1017,10 +1043,8 @@ function HeroOfTatooineScreenPlay:doFailHonorPhase(pPlayer)
 		return
 	end
 
-	ObjectManager.withCreatureObject(pPlayer, function(player)
-		player:sendSystemMessage("@quest/hero_of_tatooine/system_messages:failed")
-		player:removeScreenPlayState(1, "hero_of_tatooine_honor")
-	end)
+	CreatureObject(pPlayer):sendSystemMessage("@quest/hero_of_tatooine/system_messages:failed")
+	CreatureObject(pPlayer):removeScreenPlayState(1, "hero_of_tatooine_honor")
 end
 
 function HeroOfTatooineScreenPlay:doSuccessHonorPhase(pPlayer)
@@ -1028,30 +1052,35 @@ function HeroOfTatooineScreenPlay:doSuccessHonorPhase(pPlayer)
 		return
 	end
 
-	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
-		player:sendSystemMessage("@quest/hero_of_tatooine/system_messages:success")
-		player:setScreenPlayState(2, "hero_of_tatooine_honor")
-		playerObject:awardBadge(8)
-		player:setScreenPlayState(32, "hero_of_tatooine")
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
-		local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+	if (pGhost == nil) then
+		return
+	end
 
-		if (pInventory == nil) then
-			return
+
+	CreatureObject(pPlayer):sendSystemMessage("@quest/hero_of_tatooine/system_messages:success")
+	CreatureObject(pPlayer):setScreenPlayState(2, "hero_of_tatooine_honor")
+	PlayerObject(pGhost):awardBadge(8)
+	CreatureObject(pPlayer):setScreenPlayState(32, "hero_of_tatooine")
+
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+
+	if (pInventory == nil) then
+		return
+	end
+
+	if (SceneObject(pInventory):isContainerFullRecursive()) then
+		CreatureObject(pPlayer):setScreenPlayState(8, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor
+		CreatureObject(pPlayer):sendSystemMessage("@quest/hero_of_tatooine/system_messages:honor_inv_full")
+	else
+		local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_honor.iff", -1)
+
+		if (pMark == nil) then
+			CreatureObject(pPlayer):setScreenPlayState(8, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor
+			CreatureObject(pPlayer):sendSystemMessage("Error creating object. Please file a bug report.")
 		end
-
-		if (SceneObject(pInventory):isContainerFullRecursive()) then
-			player:setScreenPlayState(8, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor
-			player:sendSystemMessage("@quest/hero_of_tatooine/system_messages:honor_inv_full")
-		else
-			local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_honor.iff", -1)
-
-			if (pMark == nil) then
-				player:setScreenPlayState(8, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor
-				player:sendSystemMessage("Error creating object. Please file a bug report.")
-			end
-		end
-	end)
+	end
 end
 
 function HeroOfTatooineScreenPlay:doRanchHouseCleanup(pPlayer)
@@ -1343,74 +1372,65 @@ function HeroOfTatooineScreenPlay:onEnteredRanchHouse(pHouse, pObject)
 end
 
 function HeroOfTatooineScreenPlay:isMissingMark(pPlayer)
-	return ObjectManager.withCreatureObject(pPlayer, function(player)
-		if (player:hasScreenPlayState(1, "hero_of_tatooine_missing_marks") or player:hasScreenPlayState(2, "hero_of_tatooine_missing_marks") or player:hasScreenPlayState(4, "hero_of_tatooine_missing_marks")
-			or player:hasScreenPlayState(8, "hero_of_tatooine_missing_marks") or player:hasScreenPlayState(16, "hero_of_tatooine_missing_marks")) then
-			return true
-		else
-			return false
-		end
-	end)
+	return (CreatureObject(pPlayer):hasScreenPlayState(1, "hero_of_tatooine_missing_marks") or CreatureObject(pPlayer):hasScreenPlayState(2, "hero_of_tatooine_missing_marks") or CreatureObject(pPlayer):hasScreenPlayState(4, "hero_of_tatooine_missing_marks") or CreatureObject(pPlayer):hasScreenPlayState(8, "hero_of_tatooine_missing_marks") or CreatureObject(pPlayer):hasScreenPlayState(16, "hero_of_tatooine_missing_marks"))
 end
 
 function HeroOfTatooineScreenPlay:giveMissingMarks(pPlayer)
-	return ObjectManager.withCreatureObject(pPlayer, function(player)
-		local pInventory = player:getSlottedObject("inventory")
+	local pInventory = player:getSlottedObject("inventory")
 
-		if (pInventory == nil) then
+	if (pInventory == nil) then
+		return false
+	end
+
+	if (CreatureObject(pPlayer):hasScreenPlayState(1, "hero_of_tatooine_missing_marks")) then
+		local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_altruism.iff", -1)
+
+		if (pMark ~= nil) then
+			CreatureObject(pPlayer):removeScreenPlayState(1, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor, 16 - Ring
+		else
 			return false
 		end
+	end
 
-		if (player:hasScreenPlayState(1, "hero_of_tatooine_missing_marks")) then
-			local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_altruism.iff", -1)
+	if (CreatureObject(pPlayer):hasScreenPlayState(2, "hero_of_tatooine_missing_marks")) then
+		local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_intellect.iff", -1)
 
-			if (pMark ~= nil) then
-				player:removeScreenPlayState(1, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor, 16 - Ring
-			else
-				return false
-			end
+		if (pMark ~= nil) then
+			CreatureObject(pPlayer):removeScreenPlayState(2, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor, 16 - Ring
+		else
+			return false
 		end
+	end
 
-		if (player:hasScreenPlayState(2, "hero_of_tatooine_missing_marks")) then
-			local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_intellect.iff", -1)
+	if (CreatureObject(pPlayer):hasScreenPlayState(4, "hero_of_tatooine_missing_marks")) then
+		local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_courage.iff", -1)
 
-			if (pMark ~= nil) then
-				player:removeScreenPlayState(2, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor, 16 - Ring
-			else
-				return false
-			end
+		if (pMark ~= nil) then
+			CreatureObject(pPlayer):removeScreenPlayState(4, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor, 16 - Ring
+		else
+			return false
 		end
+	end
 
-		if (player:hasScreenPlayState(4, "hero_of_tatooine_missing_marks")) then
-			local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_courage.iff", -1)
+	if (CreatureObject(pPlayer):hasScreenPlayState(8, "hero_of_tatooine_missing_marks")) then
+		local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_honor.iff", -1)
 
-			if (pMark ~= nil) then
-				player:removeScreenPlayState(4, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor, 16 - Ring
-			else
-				return false
-			end
+		if (pMark ~= nil) then
+			CreatureObject(pPlayer):removeScreenPlayState(8, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor, 16 - Ring
+		else
+			return false
 		end
+	end
 
-		if (player:hasScreenPlayState(8, "hero_of_tatooine_missing_marks")) then
-			local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_honor.iff", -1)
+	if (CreatureObject(pPlayer):hasScreenPlayState(16, "hero_of_tatooine_missing_marks")) then
+		local pMark = giveItem(pInventory, "object/tangible/wearables/ring/ring_mark_hero.iff", -1)
 
-			if (pMark ~= nil) then
-				player:removeScreenPlayState(8, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor, 16 - Ring
-			else
-				return false
-			end
+		if (pMark ~= nil) then
+			CreatureObject(pPlayer):removeScreenPlayState(16, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor, 16 - Ring
+		else
+			return false
 		end
+	end
 
-		if (player:hasScreenPlayState(16, "hero_of_tatooine_missing_marks")) then
-			local pMark = giveItem(pInventory, "object/tangible/wearables/ring/ring_mark_hero.iff", -1)
-
-			if (pMark ~= nil) then
-				player:removeScreenPlayState(16, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor, 16 - Ring
-			else
-				return false
-			end
-		end
-
-		return true
-	end)
+	return true
 end

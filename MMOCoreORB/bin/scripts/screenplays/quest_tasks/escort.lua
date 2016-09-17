@@ -71,19 +71,24 @@ function Escort:handleEscortDespawn(pEscort)
 end
 
 function Escort:taskStart(pCreatureObject, pEscort)
+	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+
+	if (pGhost == nil) then
+		Logger:log("Failed to start " .. self.taskName .. " escort.", LT_ERROR)
+		return false
+	end
+
 	local playerID = SceneObject(pCreatureObject):getObjectID()
 	local escortID = SceneObject(pEscort):getObjectID()
 
 	local pActiveArea = self:setupActiveArea(pCreatureObject, self.returnPoint, self.returnPlanet, self.areaRadius)
 	if pActiveArea ~= nil then
-		local waypointId = ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-			return playerObject:addWaypoint(self.returnPlanet, self.waypointDescription, "", self.returnPoint.x, self.returnPoint.y, WAYPOINTORANGE, true, true, 0)
-		end)
+		local waypointId = PlayerObject(pGhost):addWaypoint(self.returnPlanet, self.waypointDescription, "", self.returnPoint.x, self.returnPoint.y, WAYPOINTORANGE, true, true, 0)
 
 		if waypointId ~= nil then
 			writeData(playerID .. self.taskName .. "waypointID", waypointId)
 			writeData(playerID .. ":escortInProgress", 1)
-			
+
 			self:setEscortFollow(pCreatureObject, pEscort)
 			writeData(SceneObject(pActiveArea):getObjectID() .. self.taskName .. "escortID", escortID)
 			self:callFunctionIfNotNil(self.onSuccessfulSpawn, nil, pCreatureObject, pEscort)
@@ -100,7 +105,7 @@ end
 function Escort:setEscortFollow(pCreatureObject, pEscort)
 	local playerID = SceneObject(pCreatureObject):getObjectID()
 	local escortID = SceneObject(pEscort):getObjectID()
-	
+
 	AiAgent(pEscort):setAiTemplate("follow")
 	AiAgent(pEscort):setFollowObject(pCreatureObject)
 
@@ -109,12 +114,16 @@ function Escort:setEscortFollow(pCreatureObject, pEscort)
 end
 
 function Escort:taskFinish(pCreatureObject)
+	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+
+	if (pGhost == nil) then
+		return false
+	end
+
 	local playerID = SceneObject(pCreatureObject):getObjectID()
 	local waypointId = readData(playerID .. self.taskName .. "waypointID")
 
-	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-		playerObject:removeWaypoint(waypointId, true)
-	end)
+	PlayerObject(pGhost):removeWaypoint(waypointId, true)
 
 	local areaID = readData(playerID .. self.taskName .. "areaID")
 	local pArea = getSceneObject(areaID)

@@ -44,9 +44,11 @@ function villageQuharekPhase2ConvoHandler:runScreenHandlers(conversationTemplate
 		VillageCommunityCrafting:incrementCurrentActiveCrafters()
 		VillageCommunityCrafting:addDefaultPlayerStatsToStatTables(conversingPlayer)
 
-		ObjectManager.withCreaturePlayerObject(conversingPlayer, function(playerObject)
-			playerObject:addWaypoint("dathomir", "@npc_name:qtqc", "", 5193, -4195, WAYPOINTYELLOW, true, true, 0)
-		end)
+		local pGhost = CreatureObject(conversingPlayer):getPlayerObject()
+
+		if (pGhost ~= nil) then
+			PlayerObject(pGhost):addWaypoint("dathomir", "@npc_name:qtqc", "", 5193, -4195, WAYPOINTYELLOW, true, true, 0)
+		end
 	elseif (screenID == "see_attributes") then
 		VillageCommunityCrafting:sendPlayerProjectAttributes(conversingPlayer, conversingNPC)
 	elseif (string.match(screenID, "_slot_")) then

@@ -133,17 +133,22 @@ PROFESSIONBADGES = {
 -- @param upperLimit only count up to this limit.
 -- @return the number of badges in the list that the player has been awarded
 function Glowing:countBadgesInListToUpperLimit(pCreatureObject, list, upperLimit)
+	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+
+	if (pGhost == nil) then
+		return 0
+	end
+
 	local numberOfBadges = 0
-	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-		for i = 1, #list, 1 do
-			if playerObject:hasBadge(list[i]) then
-				numberOfBadges = numberOfBadges + 1
-				if numberOfBadges >= upperLimit then
-					break
-				end
+	for i = 1, #list, 1 do
+		if PlayerObject(pGhost):hasBadge(list[i]) then
+			numberOfBadges = numberOfBadges + 1
+			if numberOfBadges >= upperLimit then
+				break
 			end
 		end
-	end)
+	end
+
 	return numberOfBadges
 end
 
@@ -197,7 +202,7 @@ function Glowing:onPlayerLoggedIn(pCreatureObject)
 	if not self:isGlowing(pCreatureObject) then
 		self:registerObservers(pCreatureObject)
 	end
-	
+
 	if VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE)
 		and not VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE) then
 		if VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE) then

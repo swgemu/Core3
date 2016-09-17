@@ -5,22 +5,22 @@ lifeDayOraalarriConvoHandler = Object:new {}
 function lifeDayOraalarriConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 
-	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, ghost)
-		local playerID = player:getObjectID()
-		if readScreenPlayData(pPlayer, readStringSharedMemory("lifeDayScreenplayName"), "complete") == "1" then
-			return convoTemplate:getScreen("return_complete")
-		elseif readData(playerID .. ":lifeDayState") == 1 or readData(playerID .. ":lifeDayState") == 2 then
-			return convoTemplate:getScreen("greetings")
-		elseif readData(playerID .. ":lifeDayState") == 3 then
-			if ghost:getCharacterAgeInDays() >= 30  then
-				return convoTemplate:getScreen("have_spoken")
-			else
-				return convoTemplate:getScreen("no_gift")
-			end
+	local playerID = CreatureObject(pPlayer):getObjectID()
+	if readScreenPlayData(pPlayer, readStringSharedMemory("lifeDayScreenplayName"), "complete") == "1" then
+		return convoTemplate:getScreen("return_complete")
+	elseif readData(playerID .. ":lifeDayState") == 1 or readData(playerID .. ":lifeDayState") == 2 then
+		return convoTemplate:getScreen("greetings")
+	elseif readData(playerID .. ":lifeDayState") == 3 then
+		local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+		if pGhost ~= nil and PlayerObject(pGhost):getCharacterAgeInDays() >= 30  then
+			return convoTemplate:getScreen("have_spoken")
 		else
-			return convoTemplate:getScreen("im_sorry")
+			return convoTemplate:getScreen("no_gift")
 		end
-	end)
+	else
+		return convoTemplate:getScreen("im_sorry")
+	end
 end
 
 function lifeDayOraalarriConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)

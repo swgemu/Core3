@@ -54,10 +54,13 @@ function Patrol:setupPatrolPoints(pCreature)
 		writeData(areaID .. self.taskName .. "waypointNum", i)
 		writeData(playerID .. self.taskName .. "waypointNum" .. i, areaID)
 		createObserver(ENTEREDAREA, self.taskName, "handleEnteredAreaEvent", pActiveArea)
-		ObjectManager.withCreaturePlayerObject(pCreature, function(ghost)
-			local waypointID = ghost:addWaypoint(planetName, self.waypointName, "", spawnPoint[1], spawnPoint[3], WAYPOINTYELLOW, true, true, 0, 0)
+		
+		local pGhost = CreatureObject(pCreature):getPlayerObject()
+		
+		if (pGhost ~= nil) then
+			local waypointID = PlayerObject(pGhost):addWaypoint(planetName, self.waypointName, "", spawnPoint[1], spawnPoint[3], WAYPOINTYELLOW, true, true, 0, 0)
 			writeData(areaID .. self.taskName .. "waypointID", waypointID)
-		end)
+		end
 	end
 end
 
@@ -89,9 +92,11 @@ function Patrol:destroyWaypoint(pCreature, num)
 	local waypointNum = readData(areaID .. self.taskName .. "waypointNum")
 	local waypointID = readData(areaID .. self.taskName .. "waypointID")
 
-	ObjectManager.withCreaturePlayerObject(pCreature, function(ghost)
-		ghost:removeWaypoint(waypointID, true)
-	end)
+	local pGhost = CreatureObject(pCreature):getPlayerObject()
+	
+	if (pGhost ~= nil) then
+		PlayerObject(pGhost):removeWaypoint(waypointID, true)
+	end
 
 	local pActiveArea = getSceneObject(areaID)
 

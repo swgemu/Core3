@@ -19,36 +19,34 @@ function squillLairMenuComponent:handleObjectMenuSelect(pObject, pPlayer, select
 		return 0
 	end
 
-	return ObjectManager.withCreatureObject(pPlayer, function(creature)
-		if (selectedID == 120) then
-			if (readData(creature:getObjectID() .. ":hero_of_tat:searched_squill_lair") == 1) then
-				creature:sendSystemMessage("@quest/hero_of_tatooine/system_messages:already_search")
-				return 0
-			end
-
-			local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
-
-			if (pInventory == nil) then
-				return 0
-			end
-
-			if (SceneObject(pInventory):isContainerFullRecursive()) then
-				creature:sendSystemMessage("@quest/hero_of_tatooine/system_messages:inventory")
-				return 0
-			end
-
-			local pSkull = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/squill_skull.iff", -1)
-
-			if (pSkull == nil) then
-				creature:sendSystemMessage("Error: Unable to generate item.")
-				return 0
-			end
-
-			creature:sendSystemMessage("@quest/hero_of_tatooine/system_messages:receive")
-			writeData(creature:getObjectID() .. ":hero_of_tat:searched_squill_lair", 1)
+	if (selectedID == 120) then
+		if (readData(CreatureObject(pPlayer):getObjectID() .. ":hero_of_tat:searched_squill_lair") == 1) then
+			CreatureObject(pPlayer):sendSystemMessage("@quest/hero_of_tatooine/system_messages:already_search")
+			return 0
 		end
-		return 0
-	end)
+
+		local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+
+		if (pInventory == nil) then
+			return 0
+		end
+
+		if (SceneObject(pInventory):isContainerFullRecursive()) then
+			CreatureObject(pPlayer):sendSystemMessage("@quest/hero_of_tatooine/system_messages:inventory")
+			return 0
+		end
+
+		local pSkull = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/squill_skull.iff", -1)
+
+		if (pSkull == nil) then
+			CreatureObject(pPlayer):sendSystemMessage("Error: Unable to generate item.")
+			return 0
+		end
+
+		CreatureObject(pPlayer):sendSystemMessage("@quest/hero_of_tatooine/system_messages:receive")
+		writeData(CreatureObject(pPlayer):getObjectID() .. ":hero_of_tat:searched_squill_lair", 1)
+	end
+	return 0
 end
 
 explosivesCrateMenuComponent = { }
@@ -77,29 +75,27 @@ function explosivesCrateMenuComponent:handleObjectMenuSelect(pObject, pPlayer, s
 		return 0
 	end
 
-	return ObjectManager.withCreatureObject(pPlayer, function(creature)
-		if (selectedID == 120) then
-			local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+	if (selectedID == 120) then
+		local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 
-			if (pInventory == nil) then
-				return 0
-			end
-
-			if (SceneObject(pInventory):isContainerFullRecursive()) then
-				creature:sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_inventory_full")
-				return 0
-			end
-
-			local pExplosives = giveItem(pInventory, "object/tangible/item/quest/hero_of_tatooine/explosives.iff", -1)
-
-			if (pExplosives == nil) then
-				creature:sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_null_object")
-				return 0
-			end
-
-			creature:sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_got_object")
-			SceneObject(pObject):destroyObjectFromWorld()
+		if (pInventory == nil) then
+			return 0
 		end
-		return 0
-	end)
+
+		if (SceneObject(pInventory):isContainerFullRecursive()) then
+			CreatureObject(pPlayer):sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_inventory_full")
+			return 0
+		end
+
+		local pExplosives = giveItem(pInventory, "object/tangible/item/quest/hero_of_tatooine/explosives.iff", -1)
+
+		if (pExplosives == nil) then
+			CreatureObject(pPlayer):sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_null_object")
+			return 0
+		end
+
+		CreatureObject(pPlayer):sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_got_object")
+		SceneObject(pObject):destroyObjectFromWorld()
+	end
+	return 0
 end
