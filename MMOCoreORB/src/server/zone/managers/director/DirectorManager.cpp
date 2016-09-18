@@ -260,6 +260,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "createEventActualTime", createEventActualTime);
 	lua_register(luaEngine->getLuaState(), "createServerEvent", createServerEvent);
 	lua_register(luaEngine->getLuaState(), "hasServerEvent", hasServerEvent);
+	lua_register(luaEngine->getLuaState(), "rescheduleServerEvent", rescheduleServerEvent);
 	lua_register(luaEngine->getLuaState(), "getServerEventID", getServerEventID);
 	lua_register(luaEngine->getLuaState(), "getServerEventTimeLeft", getServerEventTimeLeft);
 	lua_register(luaEngine->getLuaState(), "createObserver", createObserver);
@@ -987,6 +988,7 @@ int DirectorManager::createEvent(lua_State* L) {
 			pevent->setArgs(args);
 			pevent->setTimeStamp(mili);
 			pevent->setCurTime(currentTime);
+			pevent->setScreenplayTask(task);
 
 			StringBuffer eventName;
 			eventName << key << ":" << play << obj->getObjectID();
@@ -1067,6 +1069,7 @@ int DirectorManager::createServerEvent(lua_State* L) {
 	pevent->setEventName(eventName);
 	pevent->setKey(key);
 	pevent->setScreenplay(play);
+	pevent->setScreenplayTask(task);
 
 	if (persistentEvents.put(eventName.hashCode(), pevent) != NULL) {
 		instance()->error("Persistent event with " + eventName + " already exists!");
@@ -1100,6 +1103,40 @@ int DirectorManager::hasServerEvent(lua_State* L) {
 		lua_pushboolean(L, false);
 
 	return 1;
+}
+
+int DirectorManager::rescheduleServerEvent(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::rescheduleServerEvent");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String eventName = lua_tostring(L, -2);
+	uint32 mili = lua_tonumber(L, -1);
+
+	Reference<PersistentEvent*> pEvent = getServerEvent(eventName);
+
+	if (pEvent == NULL) {
+		instance()->error("Unable to find server event " + eventName + " in DirectorManager::rescheduleServerEvent");
+		return 0;
+	}
+
+	Reference<ScreenPlayTask*> task = pEvent->getScreenplayTask();
+
+	if (task == NULL) {
+		instance()->error("Unable to find task for server event " + eventName + " in DirectorManager::rescheduleServerEvent");
+		return 0;
+	}
+
+	Time curTime;
+	uint64 currentTime = curTime.getMiliTime();
+
+	pEvent->setTimeStamp(mili);
+	pEvent->setCurTime(currentTime);
+	task->reschedule(mili);
+
+	return 0;
 }
 
 int DirectorManager::getServerEventTimeLeft(lua_State* L) {

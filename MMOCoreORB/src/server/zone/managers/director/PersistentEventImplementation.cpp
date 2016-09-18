@@ -26,4 +26,6 @@ void PersistentEventImplementation::loadTransientTask() {
 	} else { // If not, schedule in 1s
 		task->schedule(1000);
 	}
+
+	screenplayTask = task;
 }

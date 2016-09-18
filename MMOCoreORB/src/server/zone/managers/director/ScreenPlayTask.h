@@ -11,6 +11,8 @@
 #include "engine/engine.h"
 #include "DirectorManager.h"
 #include "server/zone/managers/director/PersistentEvent.h"
+#include "server/ServerCore.h"
+#include "server/zone/ZoneServer.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 
