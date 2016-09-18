@@ -135,7 +135,7 @@ function RecruiterConvoHandler:runScreenHandlers(conversationTemplate, conversin
 		recruiterScreenplay:sendPurchaseSui(conversingNPC, conversingPlayer, screenID)
 
 	elseif (screenID == "greet_neutral_start") then
-		self:addJoinMilitaryOption(recruiterScreenplay:getRecruiterFaction(conversingNPC), clonedConversation, playerObject, conversingNPC)
+		self:addJoinMilitaryOption(recruiterScreenplay:getRecruiterFaction(conversingNPC), clonedConversation, PlayerObject(pGhost), conversingNPC)
 
 	elseif (screenID == "show_gcw_score") then
 		local zoneName = SceneObject(conversingNPC):getZoneName()
@@ -156,7 +156,7 @@ function RecruiterConvoHandler:getInitialScreen(pPlayer, pNpc, conversationTempl
 	end
 
 	local faction = CreatureObject(pPlayer):getFaction()
-	local factionStanding = playerObject:getFactionStanding(recruiterScreenplay:getRecruiterFaction(pNpc))
+	local factionStanding = PlayerObject(pGhost):getFactionStanding(recruiterScreenplay:getRecruiterFaction(pNpc))
 
 	if (CreatureObject(pPlayer):isChangingFactionStatus() and readData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus") ~= 1) then
 		recruiterScreenplay:handleGoCovert(pPlayer)
