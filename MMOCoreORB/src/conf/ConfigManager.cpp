@@ -12,6 +12,7 @@ ConfigManager::ConfigManager() {
 	makeWeb = true;
 
 	orbNamingDirectoryAddress = "";
+	orbNamingDirectoryPort = 44419;
 
 	dBHost = "127.0.0.1";
 	dBPort = 3306;
@@ -71,6 +72,7 @@ bool ConfigManager::loadConfigData() {
 	makeWeb = getGlobalByte("MakeWeb");
 
 	orbNamingDirectoryAddress = getGlobalString("ORB");
+	orbNamingDirectoryPort = getGlobalShort("ORBPort");
 
 	dBHost = getGlobalString("DBHost");
 	dBPort = getGlobalShort("DBPort");
