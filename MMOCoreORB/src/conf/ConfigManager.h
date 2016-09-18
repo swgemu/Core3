@@ -7,11 +7,8 @@
 
 #include "engine/engine.h"
 
-
 namespace conf {
-
 	class ConfigManager : public Singleton<ConfigManager>, public Lua {
-
 		bool makeLogin;
 		bool makeZone;
 		bool makePing;
@@ -19,6 +16,7 @@ namespace conf {
 		bool makeWeb;
 
 		String orbNamingDirectoryAddress;
+		uint16 orbNamingDirectoryPort;
 
 		String dBHost;
 		uint16 dBPort;
@@ -110,6 +108,10 @@ namespace conf {
 
 		inline String& getORBNamingDirectoryAddress() {
 			return orbNamingDirectoryAddress;
+		}
+
+		inline uint16 getORBNamingDirectoryPort() {
+			return orbNamingDirectoryPort;
 		}
 
 		inline String& getDBHost() {

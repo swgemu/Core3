@@ -22,6 +22,10 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+#include "engine/util/u3d/QuadTree.h"
+
+#include "engine/orb/db/CommitMasterTransactionThread.h"
+
 ManagedReference<ZoneServer*> ServerCore::zoneServerRef = NULL;
 SortedVector<String> ServerCore::arguments;
 bool ServerCore::truncateAllData = false;
@@ -87,7 +91,7 @@ void ServerCore::initialize() {
 		String& orbaddr = configManager->getORBNamingDirectoryAddress();
 		orb = DistributedObjectBroker::initialize(orbaddr,
 //				DistributedObjectBroker::NAMING_DIRECTORY_PORT);
-				44419);
+				configManager->getORBNamingDirectoryPort());
 
 		orb->setCustomObjectManager(objectManager);
 
