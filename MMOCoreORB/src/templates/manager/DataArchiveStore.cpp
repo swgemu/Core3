@@ -53,8 +53,10 @@ byte* DataArchiveStore::getData(const String& path, int& size) {
 
 	data = treeDirectory->getBytes(path, size);
 
-	if (size == 0)
+	if (size == 0) {
+		delete [] data;
 		return NULL;
+	}
 
 	return data;
 }

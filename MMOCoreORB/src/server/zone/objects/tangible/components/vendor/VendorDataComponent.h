@@ -171,6 +171,7 @@ public:
 	}
 
 	inline bool isEmpty() {
+		ManagedReference<AuctionManager*> auctionManager = auctionMan.get();
 
 		if (auctionManager == NULL)
 			return false;

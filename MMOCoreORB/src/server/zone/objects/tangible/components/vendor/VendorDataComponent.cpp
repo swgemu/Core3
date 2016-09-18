@@ -21,7 +21,7 @@
 
 VendorDataComponent::VendorDataComponent() : AuctionTerminalDataComponent(), adBarkingMutex() {
 	ownerId = 0;
-	auctionManager = NULL;
+	auctionMan = NULL;
 	initialized = false;
 	vendorSearchEnabled = false;
 	disabled = false;
@@ -327,10 +327,9 @@ void VendorDataComponent::handleWithdrawMaintanence(int value) {
 
 void VendorDataComponent::setVendorSearchEnabled(bool enabled) {
 	ManagedReference<SceneObject*> strongParent = parent.get();
-	if (strongParent == NULL || strongParent->getZoneServer() == NULL)
-		return;
+	ManagedReference<AuctionManager*> auctionManager = auctionMan.get();
 
-	if(strongParent == NULL || strongParent->getZone() == NULL)
+	if (auctionManager == NULL || strongParent == NULL || strongParent->getZoneServer() == NULL || strongParent->getZone() == NULL)
 		return;
 
 	vendorSearchEnabled = enabled;

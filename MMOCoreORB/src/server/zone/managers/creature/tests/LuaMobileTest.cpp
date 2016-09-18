@@ -45,8 +45,8 @@ public:
 	~LuaMobileTest() {
 		lootGroupMap = NULL;
 		templateManager = NULL;
-		list = NULL;
 		delete commandConfigManager;
+		delete list;
 	}
 
 	void SetUp() {

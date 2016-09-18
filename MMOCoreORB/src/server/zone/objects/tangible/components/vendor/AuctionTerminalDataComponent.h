@@ -16,7 +16,7 @@
 class AuctionTerminalDataComponent : public DataObjectComponent {
 protected:
 
-	ManagedReference<AuctionManager*> auctionManager;
+	ManagedWeakReference<AuctionManager*> auctionMan;
 	String uid;
 
 public:
@@ -32,7 +32,7 @@ public:
 	void initializeTransientMembers() {
 		ManagedReference<SceneObject*> strongParent = parent.get();
 		if(strongParent != NULL && strongParent->getZoneServer() != NULL) {
-			auctionManager = strongParent->getZoneServer()->getAuctionManager();
+			auctionMan = strongParent->getZoneServer()->getAuctionManager();
 			if(uid.isEmpty())
 				updateUID();
 		}
@@ -40,6 +40,7 @@ public:
 
 	void updateUID() {
 		ManagedReference<SceneObject*> strongParent = parent.get();
+		ManagedReference<AuctionManager*> auctionManager = auctionMan.get();
 
 		if(auctionManager == NULL || strongParent == NULL || strongParent->getZone() == NULL)
 			return;

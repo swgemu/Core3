@@ -19,13 +19,20 @@ class CommandLuaTest : public ::testing::Test {
 public:
 	Vector<uint32> animList;
 	Logger logger;
+	CommandConfigManager* man;
+	CommandList* list;
+
 	CommandLuaTest() : logger("CommandLuaTest") {
 		// Perform creation setup here.
 		ConfigManager::instance()->loadConfigData();
 		DataArchiveStore::instance()->loadTres(ConfigManager::instance()->getTrePath(), ConfigManager::instance()->getTreFiles());
+		man = new CommandConfigManager(NULL);
+		list = new CommandList();
 	}
 
 	~CommandLuaTest() {
+		delete man;
+		delete list;
 	}
 
 	void SetUp() {
@@ -40,78 +47,62 @@ public:
 };
 
 TEST_F(CommandLuaTest, LoadCommandLuas) {
-	CommandConfigManager* man = new CommandConfigManager(NULL);
-	CommandList* list = new CommandList();
-
 	man->registerSpecialCommands(list);
 	man->loadSlashCommandsFile();
 
-
 	ASSERT_EQ(CommandConfigManager::ERROR_CODE, 0);
-
-	delete man;
 }
 
 // This ensures that nobody inserts an invalid animation name, or uses an invalid generation type
 TEST_F(CommandLuaTest, CheckAnimationCRCS) {
 	loadAnimList();
 
-	CommandConfigManager* man = new CommandConfigManager(NULL);
-	CommandList* list = new CommandList();
-
-	man->registerSpecialCommands(list);
-	man->loadSlashCommandsFile();
-
-
-	ASSERT_EQ(CommandConfigManager::ERROR_CODE, 0);
-
 	HashTableIterator<uint32, Reference<QueueCommand*> > iter = list->iterator();
-		while(iter.hasNext()) {
-			Reference<QueueCommand*> command = iter.getNextValue();
-			if(command->isCombatCommand()) {
-				CombatQueueCommand* combatCommand = command.castTo<CombatQueueCommand*>();
-				uint8 animType = combatCommand->getAnimType();
-				String commandName = combatCommand->getQueueCommandName();
 
+	while (iter.hasNext()) {
+		Reference<QueueCommand*> command = iter.getNextValue();
 
-				if (animType == CombatQueueCommand::GENERATE_NONE) {
-					String anim = combatCommand->getAnimationString();
-					if(!anim.isEmpty()) {
-						ASSERT_TRUE(animList.contains(anim.hashCode()));
-					}
-				} else if (animType == CombatQueueCommand::GENERATE_RANGED) {
-					String anim = combatCommand->generateAnimation(CombatManager::HIT_HEAD, 50, 25);
-					ASSERT_TRUE(anim.endsWith("_light_face"));
-					ASSERT_TRUE(animList.contains(anim.hashCode()));
+		if (command->isCombatCommand()) {
+			CombatQueueCommand* combatCommand = command.castTo<CombatQueueCommand*>();
+			uint8 animType = combatCommand->getAnimType();
+			String commandName = combatCommand->getQueueCommandName();
 
-					anim = combatCommand->generateAnimation(CombatManager::HIT_HEAD, 50, 200);
-					ASSERT_TRUE(anim.endsWith("_medium_face"));
-					ASSERT_TRUE(animList.contains(anim.hashCode()));
-
-					anim = combatCommand->generateAnimation(CombatManager::HIT_BODY, 50, 25);
-					ASSERT_TRUE(anim.endsWith("_light"));
-					ASSERT_FALSE(anim.contains("_face"));
-					ASSERT_TRUE(animList.contains(anim.hashCode()));
-
-					anim = combatCommand->generateAnimation(CombatManager::HIT_BODY, 50, 200);
-					ASSERT_TRUE(anim.endsWith("_medium"));
-					ASSERT_FALSE(anim.contains("_face"));
-					ASSERT_TRUE(animList.contains(anim.hashCode()));
-				} else if(animType == CombatQueueCommand::GENERATE_INTENSITY) {
-					String anim = combatCommand->generateAnimation(CombatManager::HIT_BODY, 50, 25);
-					ASSERT_TRUE(anim.endsWith("_light"));
-					ASSERT_FALSE(anim.contains("_face"));
-					ASSERT_TRUE(animList.contains(anim.hashCode()));
-
-					anim = combatCommand->generateAnimation(CombatManager::HIT_BODY, 50, 200);
-					ASSERT_TRUE(anim.endsWith("_medium"));
-					ASSERT_FALSE(anim.contains("_face"));
+			if (animType == CombatQueueCommand::GENERATE_NONE) {
+				String anim = combatCommand->getAnimationString();
+				if(!anim.isEmpty()) {
 					ASSERT_TRUE(animList.contains(anim.hashCode()));
 				}
+			} else if (animType == CombatQueueCommand::GENERATE_RANGED) {
+				String anim = combatCommand->generateAnimation(CombatManager::HIT_HEAD, 50, 25);
+				ASSERT_TRUE(anim.endsWith("_light_face"));
+				ASSERT_TRUE(animList.contains(anim.hashCode()));
+
+				anim = combatCommand->generateAnimation(CombatManager::HIT_HEAD, 50, 200);
+				ASSERT_TRUE(anim.endsWith("_medium_face"));
+				ASSERT_TRUE(animList.contains(anim.hashCode()));
+
+				anim = combatCommand->generateAnimation(CombatManager::HIT_BODY, 50, 25);
+				ASSERT_TRUE(anim.endsWith("_light"));
+				ASSERT_FALSE(anim.contains("_face"));
+				ASSERT_TRUE(animList.contains(anim.hashCode()));
+
+				anim = combatCommand->generateAnimation(CombatManager::HIT_BODY, 50, 200);
+				ASSERT_TRUE(anim.endsWith("_medium"));
+				ASSERT_FALSE(anim.contains("_face"));
+				ASSERT_TRUE(animList.contains(anim.hashCode()));
+			} else if (animType == CombatQueueCommand::GENERATE_INTENSITY) {
+				String anim = combatCommand->generateAnimation(CombatManager::HIT_BODY, 50, 25);
+				ASSERT_TRUE(anim.endsWith("_light"));
+				ASSERT_FALSE(anim.contains("_face"));
+				ASSERT_TRUE(animList.contains(anim.hashCode()));
+
+				anim = combatCommand->generateAnimation(CombatManager::HIT_BODY, 50, 200);
+				ASSERT_TRUE(anim.endsWith("_medium"));
+				ASSERT_FALSE(anim.contains("_face"));
+				ASSERT_TRUE(animList.contains(anim.hashCode()));
 			}
 		}
-
-	delete man;
+	}
 }
 
 void CommandLuaTest::loadAnimList() {

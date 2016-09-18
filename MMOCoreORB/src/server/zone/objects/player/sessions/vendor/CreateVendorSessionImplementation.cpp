@@ -8,8 +8,6 @@
 #include "server/zone/objects/player/sessions/vendor/CreateVendorSession.h"
 #include "server/zone/ZoneServer.h"
 
-#include "server/zone/managers/auction/AuctionManager.h"
-
 #include "server/zone/managers/vendor/VendorManager.h"
 #include "server/zone/managers/vendor/VendorSelectionNode.h"
 #include "server/zone/objects/player/sessions/vendor/sui/CreateVendorSuiCallback.h"
