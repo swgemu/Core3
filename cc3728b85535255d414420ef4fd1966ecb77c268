@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_93801c8d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/caves/talus_detainment_center.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 0,
+      "message": "not removing this one?",
+      "revId": "cc3728b85535255d414420ef4fd1966ecb77c268",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b37d18b4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/caves/talus_detainment_center.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 0,
+      "message": "or this one?",
+      "revId": "cc3728b85535255d414420ef4fd1966ecb77c268",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_136dec04",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/caves/talus_weapons_depot.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 0,
+      "message": "not removing this one?",
+      "revId": "cc3728b85535255d414420ef4fd1966ecb77c268",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_337268e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/caves/talus_weapons_depot.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 0,
+      "message": "or this one?",
+      "revId": "cc3728b85535255d414420ef4fd1966ecb77c268",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_33bb4874",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/naboo_weapon_testing_facility.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 0,
+      "message": "not removing this one?",
+      "revId": "cc3728b85535255d414420ef4fd1966ecb77c268",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d3af742a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/naboo_weapon_testing_facility.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 0,
+      "message": "or this one?",
+      "revId": "cc3728b85535255d414420ef4fd1966ecb77c268",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_73c1c0e3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/rori_hyperdrive_research_facility.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 0,
+      "message": "Didn\u0027t remove this one",
+      "revId": "cc3728b85535255d414420ef4fd1966ecb77c268",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_13b64c8b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/rori_hyperdrive_research_facility.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 0,
+      "message": "or this one",
+      "revId": "cc3728b85535255d414420ef4fd1966ecb77c268",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_33ed888c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase1/sivarra_phase1_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 0,
+      "message": "PlayerObject(pGhost):",
+      "revId": "cc3728b85535255d414420ef4fd1966ecb77c268",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

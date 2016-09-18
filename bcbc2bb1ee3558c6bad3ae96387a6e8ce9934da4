@@ -1,0 +1,378 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_534a8484",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/hologrind_jedi_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "return 0",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d37694d8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/caves/talus_detainment_center.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "there\u0027s no building",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f37390e5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/caves/talus_detainment_center.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "there\u0027s no building",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_5363641a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/caves/talus_weapons_depot.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "there\u0027s no building",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_7368e0f5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/caves/talus_weapons_depot.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "there\u0027s no building",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b3a67852",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/deathWatchHaldoConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "There\u0027s no player",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_93a9fc26",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/deathWatchLutinNightstalkerConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "conversingPlayer",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f3acf037",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/eventPromoter.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "there\u0027s no playerObject",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_53bcc46c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/racetracks/racetrackengine.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "pPlayer",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f385d0ad",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooine.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "put this after you nil check pPlayer",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_93925cf5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooine.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "there\u0027s no player anymore",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b38f58cc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooine.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "no player anymore",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_33a4a856",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooineContainerComponents.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "pParent",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d388d4c8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooineContainerComponents.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "pParent",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_739a2016",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooineMenuComponents.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "There\u0027s no creature anymore",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_139f2c05",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooineMenuComponents.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "no creature",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_5395a4e2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/naboo/librarian.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "conversingPlayer",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f3fe3038",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1916,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "there\u0027s no creature anymore",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_93fb3c47",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1918,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "pConversingPlayer",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b3f8b84a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 2011,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "pConversingPlayer",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d301b43a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/treasure_map/TreasureMapMenuComponent.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "pOwner",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_13e88c7b",
+        "filename": "MMOCoreORB/bin/scripts/utils/spawn_mobiles.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:24:13Z",
+      "side": 1,
+      "message": "should be pMobile",
+      "revId": "bcbc2bb1ee3558c6bad3ae96387a6e8ce9934da4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
