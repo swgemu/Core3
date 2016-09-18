@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_3349088c",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/yavin4/captain_eso.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:38:37Z",
+      "side": 1,
+      "message": "the prima guide said he had the imperial weapons heavy weapon group. don\u0027t change it.",
+      "revId": "0c7feaff2460627c15bcf00e8593b83505763053",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d35d344a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/yavin4/captain_eso.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:38:37Z",
+      "side": 1,
+      "message": "I said to use an existing template instead of creating a new one and all you do is rename the template you\u0027re creating?",
+      "revId": "0c7feaff2460627c15bcf00e8593b83505763053",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_13440c73",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-18T02:38:37Z",
+      "side": 1,
+      "message": "and",
+      "revId": "0c7feaff2460627c15bcf00e8593b83505763053",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
