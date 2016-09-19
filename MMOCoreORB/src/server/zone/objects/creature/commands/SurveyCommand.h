@@ -24,13 +24,13 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (creature->isPlayerCreature()) {
+		//if (creature->isPlayerCreature()) {
 
-			ManagedReference<SurveySession*> session = creature->getActiveSession(SessionFacadeType::SURVEY).castTo<SurveySession*>();
-			if(session == NULL) {
-				creature->sendSystemMessage("@ui:survey_notool");
-			}
-		}
+			//ManagedReference<SurveySession*> session = creature->getActiveSession(SessionFacadeType::SURVEY).castTo<SurveySession*>();
+			//if(session == NULL) {
+				//creature->sendSystemMessage("@ui:survey_notool");
+			//}
+		//}
 
 		return SUCCESS;
 	}
