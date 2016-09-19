@@ -24,14 +24,6 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (creature->isPlayerCreature()) {
-
-			ManagedReference<SurveySession*> session = creature->getActiveSession(SessionFacadeType::SURVEY).castTo<SurveySession*>();
-			if(session == NULL) {
-				creature->sendSystemMessage("@ui:survey_notool");
-			}
-		}
-
 		return SUCCESS;
 	}
 
