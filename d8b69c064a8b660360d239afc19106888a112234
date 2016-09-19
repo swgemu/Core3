@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_569b52c9",
+        "filename": "MMOCoreORB/Makefile",
+        "patchSetId": 34
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1538
+      },
+      "writtenOn": "2016-09-19T07:20:02Z",
+      "side": 1,
+      "message": "Build fail.  Changed to \u00274\u0027",
+      "range": {
+        "startLine": 57,
+        "startChar": 25,
+        "endLine": 57,
+        "endChar": 37
+      },
+      "revId": "d8b69c064a8b660360d239afc19106888a112234",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
