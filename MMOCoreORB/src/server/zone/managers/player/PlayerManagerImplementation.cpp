@@ -3239,7 +3239,7 @@ String PlayerManagerImplementation::banAccount(PlayerObject* admin, Account* acc
 	account->setBanReason(reason);
 	account->setBanExpires(System::getMiliTime() + seconds*1000);
 	account->setBanAdmin(admin->getAccountID());
-	
+
 	try {
 
 		Reference<CharacterList*> characters = account->getCharacterList();
@@ -3288,11 +3288,11 @@ String PlayerManagerImplementation::unbanAccount(PlayerObject* admin, Account* a
 	} catch(Exception& e) {
 		return "Exception unbanning account: " + e.getMessage();
 	}
-	
+
 	Locker locker(account);
 	account->setBanExpires(System::getMiliTime());
 	account->setBanReason(reason);
-	
+
 	return "Account Successfully Unbanned";
 }
 
@@ -3315,26 +3315,26 @@ String PlayerManagerImplementation::banFromGalaxy(PlayerObject* admin, Account* 
 	} catch(Exception& e) {
 		return "Exception banning from galaxy: " + e.getMessage();
 	}
-	
+
 	Locker locker(account);
-	
+
 	Time current;
 	Time expires;
-	
+
 	expires.addMiliTime(seconds*10000);
-	
+
 	Reference<GalaxyBanEntry*> ban = new GalaxyBanEntry();
-	
+
 	ban->setAccountID(account->getAccountID());
 	ban->setBanAdmin(admin->getAccountID());
 	ban->setGalaxyID(galaxy);
-	
+
 	ban->setCreationDate(current);
-	
+
 	ban->setBanExpiration(expires);
-	
+
 	ban->setBanReason(reason);
-	
+
 	account->addGalaxyBan(ban, galaxy);
 
 	try {
@@ -3393,7 +3393,7 @@ String PlayerManagerImplementation::unbanFromGalaxy(PlayerObject* admin, Account
 
 	Locker locker(account);
 	account->removeGalaxyBan(galaxy);
-	
+
 	return "Successfully Unbanned from Galaxy";
 }
 
@@ -3411,7 +3411,7 @@ String PlayerManagerImplementation::banCharacter(PlayerObject* admin, Account* a
 	String escapedName = name;
 	Database::escapeString(escapedName);
 
-	
+
 	try {
 		StringBuffer query;
 		query << "INSERT INTO character_bans values (NULL, " << account->getAccountID() << ", " << admin->getAccountID() << ", " << galaxyID << ", '" << escapedName << "', " <<  "now(), UNIX_TIMESTAMP() + " << seconds << ", '" << escapedReason << "');";
@@ -3420,24 +3420,24 @@ String PlayerManagerImplementation::banCharacter(PlayerObject* admin, Account* a
 	} catch(Exception& e) {
 		return "Exception banning character: " + e.getMessage();
 	}
-	
+
 	Locker locker(account);
-	
+
 	Reference<CharacterList*> characters = account->getCharacterList();
-	
+
 	for (int i=0; i<characters->size(); i++) {
 		CharacterListEntry& entry = characters->get(i);
-		
+
 		if (entry.getFirstName() == name && entry.getGalaxyID() == galaxyID) {
 			Time expires;
 			expires.addMiliTime(seconds*1000);
-			
+
 			entry.setBanReason(reason);
 			entry.setBanAdmin(admin->getAccountID());
 			entry.setBanExpiration(expires);
 		}
 	}
-	
+
 	locker.release();
 
 	try {
@@ -3490,13 +3490,13 @@ String PlayerManagerImplementation::unbanCharacter(PlayerObject* admin, Account*
 
 	Locker locker(account);
 	CharacterListEntry *entry = account->getCharacterBan(galaxyID, name);
-	
+
 	if (entry != NULL) {
 		Time now;
 		entry->setBanExpiration(now);
 		entry->setBanReason(reason);
 	}
-	
+
 	return "Character Successfully Unbanned";
 }
 
@@ -4817,6 +4817,34 @@ bool PlayerManagerImplementation::shouldDeleteCharacter(uint64 characterID, int 
 
 }
 
+bool PlayerManagerImplementation::doWookieeJaar(CreatureObject* player, float durationModifier) {
+	if (player == NULL)
+		return false;
+
+	uint32 crc = STRING_HASHCODE("wookieeroar");
+	float duration = 30;
+
+	if (durationModifier > 1.0f) {
+		durationModifier = 1.0f;
+	}
+
+	float durationIncrease = 1.f + durationModifier;
+	duration *= durationIncrease;
+	int newDuration = (int) duration;
+
+	ManagedReference<Buff*> jaar = new Buff(player, crc, duration, BuffType::SKILL);
+
+	Locker locker(jaar);
+
+	player->addBuff(jaar);
+
+	player->updateCooldownTimer("innate_roar", (newDuration + duration) * 1000);
+	player->executeObjectControllerAction(crc);
+
+	return true;
+
+}
+
 bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamModifier, float cooldownModifier) {
 	if (player == NULL)
 		return false;
@@ -4876,8 +4904,8 @@ bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamMo
 		cooldownModifier = 1.0f;
 	}
 
-	float coodownReduction = 1.f - cooldownModifier;
-	cooldown *= coodownReduction;
+	float cooldownReduction = 1.f - cooldownModifier;
+	cooldown *= cooldownReduction;
 	int newCooldown = (int) cooldown;
 
 	if (player->getHAM(CreatureAttribute::HEALTH) <= newHamCost || player->getHAM(CreatureAttribute::ACTION) <= newHamCost || player->getHAM(CreatureAttribute::MIND) <= newHamCost) {
