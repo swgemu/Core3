@@ -289,7 +289,7 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		if (modifiers.isEmpty())
 			return 0;
 
-		//TODO: Handle each instant effect on its own...
+		//Must handle each instant effect on its own...
 		String effect = modifiers.elementAt(0).getKey();
 
 		if (effect == "burst_run") {
@@ -302,7 +302,7 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 				return 0;
 
 		} else if (effect == "food_reduce") {
-			//Tilla till reduces food stomach filling by a percentage
+			//T'illa T'ill reduces food stomach filling by a percentage
 			int currentfilling = ghost->getFoodFilling();
 			ghost->setFoodFilling(round(currentfilling * (100 - nutrition) / 100.0f), true);
 		} else if (effect == "slow_dot" && player->getDamageOverTimeList()->hasDot()) {
@@ -310,6 +310,20 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 			StringIdChatParameter params("@combat_effects:slow_dot_done"); // The remaining duration of DOTs affecting you have been reduced by %DI%.
 			params.setDI(nutrition);
 			player->sendSystemMessage(params);
+		} else if (effect == "wookiee_roar") {
+			float cooldownModifier = (float) duration / 100.f;
+			float roarModifier = (float) nutrition / 100.f;
+			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+
+			if (!playerManager->doWookieeJaar(player, roarModifier, cooldownModifier))
+				return 0;
+		} else if (effect == "enhanced_regen") {
+			float cooldownModifier = (float) duration / 100.f;
+			float regenModifier = (float) nutrition / 100.f;
+			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+
+			if (!playerManager->doKarkanRegen(player, regenModifier, cooldownModifier))
+				return 0;
 		}
 
 		break;
