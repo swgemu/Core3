@@ -29,7 +29,7 @@ void DroidObjectImplementation::initializeTransientMembers() {
 
 void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	AiAgentImplementation::fillAttributeList(msg, object);
-	
+
 	ManagedReference<ControlDevice*> device = getControlDevice().get();
 
 	if (device != NULL && device->isASubChildOf(object)) {
@@ -153,8 +153,11 @@ int DroidObjectImplementation::rechargeFromBattery(CreatureObject* player) {
 		return 0;
 	}
 
-	// Reset power to max
+	// Reset power to max and heal droid's BF
 	power = MAX_POWER;
+	ManagedReference<DroidObject*> droidPet = cast<DroidObject*>(player);
+	int droidsBf = droidPet->getShockWounds();
+	droidPet->addShockWounds(-droidsBf, true, false);
 
 	// Consume battery
 	Locker locker(batteryTano);
@@ -178,6 +181,9 @@ void DroidObjectImplementation::rechargeFromDroid() {
 void DroidObjectImplementation::rechargeOtherDroid(DroidObject* otherDroid) {
 	otherDroid->rechargeFromDroid();
 	usePower(100);
+	// and heal that droid's BF too
+	int otherdroidsBf = otherDroid->getShockWounds();
+	otherDroid->addShockWounds(-otherdroidsBf, true, false);
 }
 
 void DroidObjectImplementation::handleLowPower() {
