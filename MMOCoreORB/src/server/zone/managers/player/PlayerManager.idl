@@ -429,6 +429,8 @@ class PlayerManager extends Observer implements Logger {
 	public native boolean shouldDeleteCharacter(unsigned long characterID, int galaxyID);
 
 	public native boolean doBurstRun(CreatureObject player, float hamModifier, float cooldownModifier);
+	
+	public native boolean doWookieeJaar(CreatureObject player, float durationModifier);
 
 	/**
 	 * Enhances the target character with doc/ent buffs
