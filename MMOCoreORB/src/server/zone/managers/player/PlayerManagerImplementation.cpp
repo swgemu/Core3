@@ -4817,6 +4817,34 @@ bool PlayerManagerImplementation::shouldDeleteCharacter(uint64 characterID, int 
 
 }
 
+bool PlayerManagerImplementation::doWookieeJaar(CreatureObject* player, float durationModifier) {
+	if (player == NULL)
+		return false;
+
+	uint32 crc = STRING_HASHCODE("wookieeroar");
+	float duration = 30;
+
+	if (durationModifier > 1.0f) {
+		durationModifier = 1.0f;
+	}
+
+	float durationIncrease = 1.f + durationModifier;
+	duration *= durationIncrease;
+	int newDuration = (int) duration;
+
+	ManagedReference<Buff*> jaar = new Buff(player, crc, duration, BuffType::FOOD);
+
+	Locker locker(jaar);
+
+	player->addBuff(jaar);
+
+	player->updateCooldownTimer("wookieeroar", (newDuration + duration) * 1000);
+	player->executeObjectControllerAction(crc);
+
+	return true;
+
+}
+
 bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamModifier, float cooldownModifier) {
 	if (player == NULL)
 		return false;
@@ -4876,8 +4904,8 @@ bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamMo
 		cooldownModifier = 1.0f;
 	}
 
-	float coodownReduction = 1.f - cooldownModifier;
-	cooldown *= coodownReduction;
+	float cooldownReduction = 1.f - cooldownModifier;
+	cooldown *= cooldownReduction;
 	int newCooldown = (int) cooldown;
 
 	if (player->getHAM(CreatureAttribute::HEALTH) <= newHamCost || player->getHAM(CreatureAttribute::ACTION) <= newHamCost || player->getHAM(CreatureAttribute::MIND) <= newHamCost) {
