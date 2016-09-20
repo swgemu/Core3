@@ -32,9 +32,11 @@ public:
 		if( player == NULL )
 			return GENERALERROR;
 
-		// Recharge
+		// Recharge and heal BF
 		Locker plocker(player, creature);
 		droidPet->rechargeFromBattery(player);
+		int droidsBf = droidPet->getShockWounds();
+		droidPet->addShockWounds(-droidsBf, true, false);
 
 		return SUCCESS;
 	}

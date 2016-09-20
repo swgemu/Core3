@@ -56,6 +56,8 @@ public:
 		// Recharge other droid
 		Locker clocker(targetDroid, droidPet);
 		droidPet->rechargeOtherDroid( targetDroid );
+		int otherdroidsBf = targetDroid->getShockWounds();
+		targetDroid->addShockWounds(-otherdroidsBf, true, false);
 
 		return SUCCESS;
 	}
