@@ -8,6 +8,7 @@ import engine.core.ManagedObject;
 import system.lang.System;
 import system.util.Vector;
 include server.zone.objects.scene.SceneObject;
+include server.zone.managers.director.ScreenPlayTask;
 
 class PersistentEvent extends ManagedObject {
 	protected int timeStamp;
@@ -17,12 +18,26 @@ class PersistentEvent extends ManagedObject {
 	protected string args;
 	protected string eventName;
 	protected boolean eventExecuted;
+	
+	@weakReference
+	protected ScreenPlayTask screenplayTask;
 
 	@weakReference
 	protected SceneObject obj;
 
 	public PersistentEvent() {
 		eventExecuted = false;
+	}
+	
+	@local
+	public void setScreenplayTask(ScreenPlayTask task) {
+		screenplayTask = task;
+	}
+
+	@local
+	@read
+	public ScreenPlayTask getScreenplayTask() {
+		return screenplayTask;
 	}
 
 	@read

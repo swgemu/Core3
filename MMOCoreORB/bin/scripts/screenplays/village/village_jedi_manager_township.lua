@@ -82,7 +82,9 @@ function VillageJediManagerTownship:switchToNextPhase()
 	Logger:log("Switching village phase to " .. currentPhase, LT_INFO)
 
 	-- Schedule another persistent event.
-	if (not hasServerEvent("VillagePhaseChange")) then
+	if (hasServerEvent("VillagePhaseChange")) then
+		rescheduleServerEvent("VillagePhaseChange", VILLAGE_PHASE_CHANGE_TIME)
+	else
 		createServerEvent(VILLAGE_PHASE_CHANGE_TIME, "VillageJediManagerTownship", "switchToNextPhase", "VillagePhaseChange")
 	end
 end

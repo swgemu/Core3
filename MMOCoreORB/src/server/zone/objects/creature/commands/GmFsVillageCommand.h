@@ -55,7 +55,7 @@ public:
 			creature->sendSystemMessage("   getCurrentPhase  -- returns the currently active Village phase.");
 			creature->sendSystemMessage("   getCurrentPhaseID  -- returns the currently active Village phase id.");
 			creature->sendSystemMessage("   getCurrentPhaseDuration  -- returns the time left in the currently active phase.");
-			creature->sendSystemMessage("   changeCurrentPhase  -- triggers the village phase change (this will cause issues with the phase event timer. Use for testing only).");
+			creature->sendSystemMessage("   changeCurrentPhase  -- triggers the village phase change.");
 			return SUCCESS;
 		} else if (argFunction == "" || functionName == "") {
 			creature->sendSystemMessage("Syntax: /gmFsVillage <command>    /gmFsVillage ? for help");
