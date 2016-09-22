@@ -1,6 +1,6 @@
-karrek_flim = Creature:new {
+vinya_maysor = Creature:new {
 	objectName = "",
-	customName = "Karrek Flim",
+	customName = "Vinya Maysor",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -23,15 +23,14 @@ karrek_flim = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_karrek_film.iff"},
+	templates = {"object/mobile/dressed_vinya_maysor.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "viceprex_tasks_mission_giver_convotemplate",
+	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(karrek_flim, "karrek_flim")
+CreatureTemplates:addCreatureTemplate(vinya_maysor, "vinya_maysor")

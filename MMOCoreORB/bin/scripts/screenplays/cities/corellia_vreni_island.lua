@@ -71,7 +71,6 @@ function VreniIslandScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "entertainer",60,-22.5021,1.6,4.63468,179.972,2775415)
 	spawnMobile("corellia", "info_broker",60,-22.5017,1.59973,3.53494,359.971,2775415)
 	spawnMobile("corellia", "informant_npc_lvl_3",0,-5559,23.4,-6220,90,0)
-	spawnMobile("corellia", "karrek_flim",60,-6.11988,1.6,-7.43599,219.682,2775417)
 	spawnMobile("corellia", "noble",60,-24.96,1.6,-4.79578,14.5444,2775419)
 	spawnMobile("corellia", "r2",60,-5528,23.4,-6195.05,84.2678,0)                -- "R2-P2" When/if option customName is available to spawnMobile function
 	spawnMobile("corellia", "scientist",60,-5557.29,23.4,-6203.08,226.081,0)
