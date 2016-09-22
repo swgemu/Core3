@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_d61f6208",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/talus/pirate_quest_durgur.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-22T21:53:31Z",
+      "side": 1,
+      "message": "This guy should be one of the sleemo gang. The quest specifically says he is.",
+      "revId": "66a46dba05a2901b1f1bcdd20654b34403e49a1a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_16263a69",
+        "filename": "MMOCoreORB/bin/scripts/mobile/talus/sleemo_delinquent.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-22T21:53:31Z",
+      "side": 1,
+      "message": "This contradicts the evidence we have (prima guide). They are not supposed to have a faction. This applies to all of the sleemos and pirates that you\u0027ve changed.",
+      "revId": "66a46dba05a2901b1f1bcdd20654b34403e49a1a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_362b3632",
+        "filename": "MMOCoreORB/bin/scripts/mobile/thug/pirate_cutthroat.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-22T21:53:31Z",
+      "side": 1,
+      "message": "This mob should not be called \"a naboo pirate cuttroat\"",
+      "revId": "66a46dba05a2901b1f1bcdd20654b34403e49a1a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f61cde15",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/talus/durgur_pyne.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-22T21:53:31Z",
+      "side": 1,
+      "message": "I think it\u0027s safe to assume that the backup is behind the scenes. AKA, they kept you from having 20+ targets to deal with or something. You don\u0027t need to include these here.",
+      "revId": "66a46dba05a2901b1f1bcdd20654b34403e49a1a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
