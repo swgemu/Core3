@@ -56,6 +56,8 @@ public:
 
 	void loadMap(Zone* z);
 
+	void unloadMap();
+
 	Vector<ManagedReference<SpawnArea*> >* getWorldSpawnAreas() {
 		return &worldSpawnAreas;
 	}

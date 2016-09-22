@@ -116,6 +116,8 @@ void ZoneImplementation::stopManagers() {
 void ZoneImplementation::clearZone() {
 	Locker zonelocker(_this.getReferenceUnsafeStaticCast());
 
+	creatureManager->unloadSpawnAreas();
+
 	HashTable<uint64, ManagedReference<SceneObject*> > tbl;
 	tbl.copyFrom(objectMap->getMap());
 

@@ -79,6 +79,9 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 
 	Locker zoneLocker(zone);
 
+	if (!activeArea->isInQuadTree())
+		return false;
+
 	QuadTree* regionTree = zone->getRegionTree();
 
 	regionTree->remove(activeArea);

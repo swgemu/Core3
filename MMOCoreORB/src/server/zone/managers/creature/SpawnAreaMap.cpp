@@ -298,3 +298,19 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	}
 
 }
+
+void SpawnAreaMap::unloadMap() {
+	noSpawnAreas.removeAll();
+	worldSpawnAreas.removeAll();
+
+	for (int i = 0; i < size(); i++) {
+		SpawnArea* area = get(i);
+
+		if (area != NULL) {
+			Locker locker(area);
+			area->destroyObjectFromWorld(false);
+		}
+	}
+
+	removeAll();
+}

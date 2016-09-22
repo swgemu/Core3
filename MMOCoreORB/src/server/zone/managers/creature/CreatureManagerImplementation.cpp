@@ -575,6 +575,10 @@ void CreatureManagerImplementation::loadSpawnAreas() {
 	spawnAreaMap.loadMap(zone);
 }
 
+void CreatureManagerImplementation::unloadSpawnAreas() {
+	spawnAreaMap.unloadMap();
+}
+
 int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition, bool isCombatAction) {
 	if (destructedObject->isDead())
 		return 1;

@@ -105,9 +105,11 @@ class CreatureManager extends ZoneManager {
 	@arg1preLocked
 	@arg2preLocked
 	public native int notifyDestruction(TangibleObject destructor, AiAgent destructedObject, int condition, boolean isCombatAction);
-	
+
 	public native void loadSpawnAreas();
-	
+
+	public native void unloadSpawnAreas();
+
 	private native boolean createCreatureChildrenObjects(CreatureObject creature, unsigned int templateCRC, boolean persistent = false, unsigned int mobileTemplateCRC = 0);
 	
 	public native void spawnRandomCreaturesAround(SceneObject creature);
