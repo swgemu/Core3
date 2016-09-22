@@ -1,0 +1,48 @@
+pirate_quest_durgur = Creature:new {
+	objectName = "@mob/creature_names:sleemo_scamp",
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
+	socialGroup = "sleemo_gang",
+	faction = "",
+	level = 15,
+	chanceHit = 0.31,
+	damageMin = 160,
+	damageMax = 170,
+	baseXp = 960,
+	baseHAM = 2400,
+	baseHAMmax = 3000,
+	armor = 0,
+	resists = {0,0,0,0,0,0,0,-1,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = PACK,
+	optionsBitmask = AIENABLED + CONVERSABLE,
+	diet = HERBIVORE,
+
+	templates = {
+		"object/mobile/dressed_criminal_pirate_human_male_01.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_male_01.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_male_02.iff",
+		"object/mobile/dressed_criminal_thug_bothan_male_01.iff",
+		"object/mobile/dressed_criminal_thug_human_male_01.iff",
+		"object/mobile/dressed_criminal_thug_human_male_02.iff",
+		"object/mobile/dressed_criminal_thug_rodian_male_01.iff",
+		"object/mobile/dressed_criminal_thug_trandoshan_male_01.iff",
+		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff"
+	},
+	lootGroups = {},
+	weapons = {},
+	conversationTemplate = "durgur_pyne_mission_target_convotemplate",
+	reactionStf = "@npc_reaction/slang",
+	attacks = merge(brawlermaster, teraskasinovice)
+}
+
+CreatureTemplates:addCreatureTemplate(pirate_quest_durgur, "pirate_quest_durgur")

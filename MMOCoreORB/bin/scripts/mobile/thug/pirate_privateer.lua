@@ -1,5 +1,5 @@
 pirate_privateer = Creature:new {
-	objectName = "",
+	objectName = "@mob/creature_names:pirate",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	customName = "a Privateer Pirate",
