@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_760a0ed4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 1526
+      },
+      "writtenOn": "2016-09-22T05:50:59Z",
+      "side": 1,
+      "message": "This declaration isn\u0027t needed, because the variable isn\u0027t used outside the if block.",
+      "revId": "ddffecf24f49cbe9c21a6eda8e650a93c5b79a1c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_160f1ae3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1271,
+      "author": {
+        "id": 1526
+      },
+      "writtenOn": "2016-09-22T05:50:59Z",
+      "side": 1,
+      "message": "I see what you\u0027re going for here, but it has a potential for a few issues. You aren\u0027t checking which npc is being spawned, so you could end up renaming secondary NPC\u0027s. You\u0027re going to want to do a check against the spawn number to make sure its only the primary spawn. Something like:\n\nlocal npcName\nif (spawnNumber \u003d\u003d 1) then\n local playerID \u003d CreatureObject(pConversingPlayer):getObjectID()\n npcName \u003d readStringData(playerID  .. \":missionSpawn:mainNpcName\")\n deleteStringData(playerID  .. \":missionSpawn:mainNpcName\")\nend\n\nAfter that block, you can do your npcName \u003d\u003d \"\" block as normal.\n\nYou need to make sure you always delete any data you store in memory with writeStringData/writeData after you\u0027re done with it, otherwise it takes up memory until a restart.",
+      "revId": "ddffecf24f49cbe9c21a6eda8e650a93c5b79a1c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
