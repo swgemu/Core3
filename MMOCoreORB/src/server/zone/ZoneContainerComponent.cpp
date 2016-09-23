@@ -77,10 +77,10 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 
 	ManagedReference<SceneObject*> thisLocker = activeArea;
 
-	Locker zoneLocker(zone);
-
 	if (!activeArea->isInQuadTree())
 		return false;
+
+	Locker zoneLocker(zone);
 
 	QuadTree* regionTree = zone->getRegionTree();
 
