@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_d6a2029a",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/talus/rebel_sgt_quest_gravin.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-23T21:57:02Z",
+      "side": 1,
+      "message": "It\u0027s supposed to be a rebel supply sergeant. I would use the rebel_staff_sergeant template as a base for this guy.",
+      "revId": "8390bcdd64e9ad69389fde4400b0e9a94935b5a4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
