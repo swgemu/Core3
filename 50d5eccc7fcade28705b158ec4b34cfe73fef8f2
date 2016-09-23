@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_d6cd2288",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/talus/green_laser.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-23T02:50:24Z",
+      "side": 1,
+      "message": "Yes, they don\u0027t match. According to http://starwars.wikia.com/wiki/Federation_of_the_Double_Worlds , Fed-dub \"was independent of the central government on Corellia, and often maintained adversarial relationships with the other planets of the system.\" I wouldn\u0027t mix them because they\u0027d be unlikely to work together. Since this takes place on Talus, it\u0027s likely that it was actually the Fed-Dub that were after him. The npc\u0027s breech string even says \"Fed-Dub officer! Give up!\" We can just assume that green laser was mixed up or wasn\u0027t really sure who it was that was on his trail.",
+      "revId": "50d5eccc7fcade28705b158ec4b34cfe73fef8f2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
