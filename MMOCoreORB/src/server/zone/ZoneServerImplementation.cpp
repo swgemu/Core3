@@ -405,7 +405,18 @@ void ZoneServerImplementation::clearZones() {
 		ManagedReference<Zone*> zone = zones->get(i);
 
 		if (zone != NULL) {
-			zone->clearZone();
+			EXECUTE_TASK_1(zone, {
+					zone_p->clearZone();
+			});
+		}
+	}
+
+	for (int i = 0; i < zones->size(); ++i) {
+		Zone* zone = zones->get(i);
+
+		if (zone != NULL) {
+			while (!zone->isZoneCleared())
+				Thread::sleep(500);
 		}
 	}
 

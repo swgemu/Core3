@@ -42,6 +42,7 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& na
 	mapLocations = new MapLocationTable();
 
 	managersStarted = false;
+	zoneCleared = false;
 
 	//galacticTime = new Time();
 
@@ -133,6 +134,8 @@ void ZoneImplementation::clearZone() {
 			sceno->destroyObjectFromWorld(false);
 		}
 	}
+
+	zoneCleared = true;
 
 	info("zone clear", true);
 }

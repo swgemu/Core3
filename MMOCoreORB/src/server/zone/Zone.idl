@@ -76,6 +76,7 @@ class Zone extends SceneObject {
 	protected AtomicInteger spawnedAiAgents;
 
 	private transient boolean managersStarted;
+	private transient boolean zoneCleared;
 
 	public native Zone(ZoneProcessServer processor, final string zoneName);
 	public native void initializeTransientMembers();
@@ -180,6 +181,10 @@ class Zone extends SceneObject {
 
 	public boolean hasManagersStarted() {
 		return managersStarted;
+	}
+
+	public boolean isZoneCleared() {
+		return zoneCleared;
 	}
 
 	public int getSpawnedAiAgents() {
