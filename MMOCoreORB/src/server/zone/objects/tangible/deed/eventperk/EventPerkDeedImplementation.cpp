@@ -128,7 +128,9 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		CloseObjectsVector* vec = (CloseObjectsVector*) player->getCloseObjects();
 
 		if (vec == NULL) {
+#ifdef COV_DEBUG
 			error("Player has NULL closeObjectsVector in EventPerkDeedImplementation::handleObjectMenuSelect");
+#endif
 			return 1;
 		}
 

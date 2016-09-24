@@ -109,7 +109,9 @@ public:
 			Zone* zone = creature->getZone();
 
 			if (creature->getCloseObjects() == NULL) {
+#ifdef COV_DEBUG
 				creature->info("Null closeobjects vector in GrantBadgeCommand::doQueueCommand", true);
+#endif
 				zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
 			}
 			else {

@@ -794,7 +794,9 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 	if (vec != NULL) {
 		vec->safeCopyTo(closeEntryObjects);
 	} else {
+#ifdef COV_DEBUG
 		sender->info("Null closeobjects vector in ChatManager::handleSocialInternalMessage", true);
+#endif
 		zone->getInRangeObjects(sender->getWorldPositionX(), sender->getWorldPositionX(), 128, &closeEntryObjects, true);
 	}
 
@@ -997,7 +999,9 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 	if (closeObjects != NULL) {
 		closeObjects->safeCopyTo(closeEntryObjects);
 	} else {
+#ifdef COV_DEBUG
 		sourceCreature->info("Null closeobjects vector in ChatManager::broadcastChatMessage", true);
+#endif
 		zone->getInRangeObjects(sourceCreature->getWorldPositionX(), sourceCreature->getWorldPositionY(), 128, &closeEntryObjects, true);
 	}
 
@@ -1132,7 +1136,9 @@ void ChatManagerImplementation::broadcastChatMessage(CreatureObject* sourceCreat
 	if (closeObjects != NULL) {
 		closeObjects->safeCopyTo(closeEntryObjects);
 	} else {
+#ifdef COV_DEBUG
 		sourceCreature->info("Null closeobjects vector in ChatManager::broadcastChatMessage(StringId)", true);
+#endif
 		zone->getInRangeObjects(sourceCreature->getWorldPositionX(), sourceCreature->getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
 	}
 

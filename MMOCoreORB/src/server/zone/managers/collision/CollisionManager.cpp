@@ -371,7 +371,9 @@ void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, Sor
 
 		getWorldFloorCollisions(x, y, zone, result, closeObjects);
 	} else {
+#ifdef COV_DEBUG
 		zone->info("Null closeobjects vector in CollisionManager::getWorldFloorCollisions", true);
+#endif
 		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 
 		zone->getInRangeObjects(x, y, 128, &closeObjects, true);
@@ -457,7 +459,9 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	int maxInRangeObjectCount = 0;
 
 	if (object1->getCloseObjects() == NULL) {
+#ifdef COV_DEBUG
 		object1->info("Null closeobjects vector in CollisionManager::checkLineOfSight for " + object1->getDisplayedName(), true);
+#endif
 
 		closeObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
 		zone->getInRangeObjects(object1->getPositionX(), object1->getPositionY(), 512, closeObjects, true);
