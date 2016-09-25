@@ -1352,7 +1352,6 @@ function ThemeParkLogic:getMissionDescription(pConversingPlayer, direction)
 		npcNumber = npcNumber * 2
 	end
 	if curMission ~= nil and curMission.missionDescription ~= "" and curMission.missionDescription ~= nil and direction == "target" then
-		CreatureObject(pConversingPlayer):sendSystemMessage(curMission.missionDescription)
 		return curMission.missionDescription
 	elseif self.missionDescriptionStf == "" then
 		local stfFile = self:getStfFile(activeNpcNumber)
@@ -1360,7 +1359,6 @@ function ThemeParkLogic:getMissionDescription(pConversingPlayer, direction)
 			return self:getDefaultWaypointName(pConversingPlayer, direction)
 		else
 			if direction == "target" then
-				CreatureObject(pConversingPlayer):sendSystemMessage(stfFile .. ":waypoint_description_" .. missionNumber)
 				return stfFile .. ":waypoint_name_" .. missionNumber
 			else
 				return stfFile .. ":return_waypoint_name_" .. missionNumber
@@ -1369,7 +1367,6 @@ function ThemeParkLogic:getMissionDescription(pConversingPlayer, direction)
 	else
 		if direction == "target" then
 			local message = self.missionDescriptionStf .. missionNumber
-			CreatureObject(pConversingPlayer):sendSystemMessage(message)
 			return message
 		else
 			return self.missionDescriptionStf .. "return"
@@ -1504,7 +1501,24 @@ function ThemeParkLogic:updateWaypoint(pConversingPlayer, planetName, x, y, dire
 		return
 	end
 
-	PlayerObject(pGhost):addWaypoint(planetName, self:getMissionDescription(pConversingPlayer, direction), "", x, y, WAYPOINTPURPLE, true, true, WAYPOINTTHEMEPARK, 0)
+	local activeNpcNumber = self:getActiveNpcNumber(pConversingPlayer)
+	local missionNumber = self:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
+	local stfFile = self:getStfFile(activeNpcNumber)
+
+	local waypointID = PlayerObject(pGhost):addWaypoint(planetName, self:getMissionDescription(pConversingPlayer, direction), "", x, y, WAYPOINTPURPLE, true, true, WAYPOINTTHEMEPARK, 0)
+
+	local pWaypoint = getSceneObject(waypointID)
+	
+	if (pWaypoint == nil) then
+		return
+	end
+
+	if direction == "target" and self:isValidConvoString(stfFile, ":waypoint_description_" .. missionNumber) then
+		WaypointObject(pWaypoint):setQuestDetails(stfFile .. ":waypoint_description_" .. missionNumber)
+	elseif direction == "return" and self:isValidConvoString(stfFile, ":return_waypoint_description_" .. missionNumber) then
+		WaypointObject(pWaypoint):setQuestDetails(stfFile .. ":return_waypoint_description_" .. missionNumber)
+	end
+
 end
 
 function ThemeParkLogic:getSpawnPoints(numberOfSpawns, x, y, planetName, pConversingPlayer)
@@ -1692,8 +1706,6 @@ function ThemeParkLogic:completeMission(pConversingPlayer)
 
 	if self.missionCompletionMessageStf ~= "" then
 		CreatureObject(pConversingPlayer):sendSystemMessage(self.missionCompletionMessageStf)
-	elseif self:isValidConvoString(stfFile, ":return_waypoint_description_" .. missionNumber) then
-		CreatureObject(pConversingPlayer):sendSystemMessage(stfFile .. ":return_waypoint_description_" .. missionNumber)
 	else
 		CreatureObject(pConversingPlayer):sendSystemMessage("@theme_park/messages:static_completion_message")
 	end

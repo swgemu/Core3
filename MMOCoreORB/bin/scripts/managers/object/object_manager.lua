@@ -32,6 +32,7 @@ _localLuaPlayerObject = LuaPlayerObject(nil)
 _localLuaBuildingObject = LuaBuildingObject(nil)
 _localLuaCityRegion = LuaCityRegion(nil)
 _localLuaActiveArea = LuaActiveArea(nil)
+_localLuaWaypointObject = LuaWaypointObject(nil)
 
 AiAgent = function(pAiAgent)
   if (pAiAgent == nil) then
@@ -232,6 +233,16 @@ ActiveArea = function(pActiveArea)
   _localLuaActiveArea:_setObject(pActiveArea)
 
   return _localLuaActiveArea
+end
+
+WaypointObject = function(pWaypoint)
+  if (pWaypoint == nil) then
+    return nil
+  end
+
+  _localLuaWaypointObject:_setObject(pWaypoint)
+
+  return _localLuaWaypointObject
 end
 
 local ObjectManager = Object:new {}
