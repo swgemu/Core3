@@ -71,7 +71,7 @@ object_tangible_crafting_station_weapon_tool = object_tangible_crafting_station_
 
 	toolType = 7,
 	complexityLevel = 20,
-	enabledTabs = {1,16,32,4096,65536,524288},
+	enabledTabs = {1,16,32,4096,65536,524288,2148007936},
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},

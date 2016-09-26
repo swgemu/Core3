@@ -262,7 +262,7 @@ CraftingStation* DroidObjectImplementation::getCraftingStation(int type) {
 
 				if (craftingStation != NULL) {
 					// case here to check each type
-					if (craftingModule->validCraftingType(type) || (type == CraftingTool::JEDI && craftingModule->isWeaponDroidGeneric()) || (type == CraftingTool::GENERIC && craftingModule->isWeaponDroidGeneric())) {
+					if (craftingModule->validCraftingType(type) || (type == CraftingTool::JEDI && craftingModule->isWeaponDroidGeneric())) {
 						return craftingStation;
 					}
 				}
