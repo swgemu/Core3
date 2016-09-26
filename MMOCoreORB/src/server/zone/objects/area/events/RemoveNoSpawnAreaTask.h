@@ -25,6 +25,11 @@ public:
 		if (strongArea == NULL)
 			return;
 
+		ZoneServer* zoneServer = strongArea->getZoneServer();
+
+		if (zoneServer == NULL || zoneServer->isServerShuttingDown())
+			return;
+
 		Locker locker(strongArea);
 
 		strongArea->destroyObjectFromWorld(true);
