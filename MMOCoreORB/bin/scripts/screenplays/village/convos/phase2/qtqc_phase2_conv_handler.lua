@@ -18,7 +18,7 @@ function villageQtQcPhase2ConvoHandler:runScreenHandlers(conversationTemplate, c
 	local screenID = screen:getScreenID()
 	local conversationScreen = screen:cloneScreen()
 	local clonedConversation = LuaConversationScreen(conversationScreen)
-	printf("screenid: " .. screenID .. "\n")
+
 	if (screenID == "intro") then
 		if (VillageCommunityCrafting:isOnActiveCrafterList(conversingPlayer) and not QuestManager.hasCompletedQuest(conversingPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_01)) then
 			clonedConversation:addOption("@conversation/qtqc_phase_2:s_3a6af75d", "schematics_given") -- I need the schematics for the village defenses.
