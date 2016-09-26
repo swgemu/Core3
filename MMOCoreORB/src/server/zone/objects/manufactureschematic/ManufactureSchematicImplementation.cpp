@@ -490,40 +490,39 @@ void ManufactureSchematicImplementation::cleanupIngredientSlots(CreatureObject* 
 
 bool ManufactureSchematicImplementation::isReadyForAssembly() {
 
-	if(ingredientSlots.isEmpty() || !initialized)
+	if (ingredientSlots.isEmpty() || !initialized)
 		return false;
+
 	// store off all component objects we find
 	int componetSlotItemCount = 0;
 	HashSet<uint64> usedObjectIds;
-	bool usingIdentical = false;
+
 	for (int i = 0; i < ingredientSlots.size(); ++i) {
 
 		Reference<IngredientSlot* > slot = ingredientSlots.get(i);
 
-		// null slots should happen unless something bad happened
-		if(slot == NULL)
+		// null slots shouldn't happen unless something bad happened
+		if (slot == NULL)
 			return false;
 
-		if(slot->isOptional()) // Skip before adding as it can be blank
+		if (slot->isOptional()) // Skip as it can be blank
 			continue;
 
-		if(!slot->isFull())
+		if (!slot->isFull())
 			return false;
 
 		if (slot->isComponentSlot()) {
 			Vector<uint64> v = slot->getOIDVector();
 			componetSlotItemCount += slot->getSlotQuantity();
-			for (int i=0;i<v.size();i++) {
+			for (int i = 0; i < v.size(); i++) {
 				usedObjectIds.add(v.get(i));
 			}
 		}
-		// If we are using idenitcal slots, we may have duplicate objectid i.e. factory crate
-		if(slot->requiresIdentical())
-			usingIdentical = true;
 	}
+
 	if (componetSlotItemCount != usedObjectIds.size())
-		if(!usingIdentical)
-			return false;
+		return false;
+
 	return true;
 }
 

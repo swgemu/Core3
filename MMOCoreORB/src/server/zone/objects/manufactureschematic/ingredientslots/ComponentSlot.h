@@ -239,11 +239,15 @@ public:
 	}
 
 	Vector<uint64> getOIDVector() {
-		Vector<uint64> oid;
-		for(int i = 0; i < getSlotQuantity(); ++i) {
-			oid.add(getPrototype()->getObjectID());
+		Vector<uint64> oids;
+		for (int i = 0; i < getSlotQuantity(); ++i) {
+			uint64 oid = contents.get(i)->getObjectID();
+
+			if (!oids.contains(oid))
+				oids.add(oid);
 		}
-		return oid;
+
+		return oids;
 	}
 
 	// We add 1 for each item in the slot
