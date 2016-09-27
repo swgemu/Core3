@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_f964cfe6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchBunker.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T23:07:01Z",
+      "side": 1,
+      "message": "Remove all this stuff you added to the 3 screenplays. I see nothing in the evidence that says a player can\u0027t take a pet inside, just that they can\u0027t call one while inside.",
+      "revId": "e47bcf244704d65265d3600ae17773fb75050a67",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d96793e9",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/PetControlDeviceImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T23:07:01Z",
+      "side": 1,
+      "message": "Don\u0027t invent a new message for this. Just leave it using the existing one.",
+      "revId": "e47bcf244704d65265d3600ae17773fb75050a67",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
