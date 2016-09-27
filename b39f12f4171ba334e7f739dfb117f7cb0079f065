@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_390ec735",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/pet/PetRechargeCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:55:56Z",
+      "side": 1,
+      "message": "Move this out of the command and into rechargeFromBattery",
+      "revId": "b39f12f4171ba334e7f739dfb117f7cb0079f065",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d9123358",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/pet/PetRechargeOtherCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:55:56Z",
+      "side": 1,
+      "message": "Move this out of the command and into rechargeFromDroid",
+      "revId": "b39f12f4171ba334e7f739dfb117f7cb0079f065",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
