@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_392567ab",
+        "filename": "MMOCoreORB/src/server/zone/packets/object/ShowFlyText.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T21:17:04Z",
+      "side": 1,
+      "message": "If there are multiple options, why are you leaving it hard coded?",
+      "revId": "755f78cd44f95a2417d6f27850721794de20d23d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
