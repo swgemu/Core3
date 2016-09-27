@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_b93097e9",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1306,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T21:28:01Z",
+      "side": 1,
+      "message": "As Reoze told you on the very first patch set, you should not be sending that message as a system message. You need to find the correct error code to return and the client will display the message on it\u0027s own.",
+      "revId": "8a2efcaf4553b85da471e3e3858a31191a2b5e0d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_99335bf6",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1307,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T21:28:01Z",
+      "side": 1,
+      "message": "FAIL is a chat room result, not an im/pm result.",
+      "revId": "8a2efcaf4553b85da471e3e3858a31191a2b5e0d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_594dc371",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T21:28:01Z",
+      "side": 1,
+      "message": "Don\u0027t change this. How you have it, it\u0027s possible for receiver to be NULL when it gets to the isIgnoring() check below.",
+      "revId": "8a2efcaf4553b85da471e3e3858a31191a2b5e0d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f9360fe7",
+        "filename": "MMOCoreORB/src/server/zone/packets/chat/ChatPersistentMessageToServerCallback.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T21:28:01Z",
+      "side": 1,
+      "message": "FAIL is a chat room result, not an im/pm result.",
+      "revId": "8a2efcaf4553b85da471e3e3858a31191a2b5e0d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
