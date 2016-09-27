@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_592623bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T21:13:39Z",
+      "side": 1,
+      "message": "What about non-smugglers that delegate?",
+      "revId": "6b703cc9c8ca20bd054ee6c333521e6c536300cc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_792bdf82",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DelegateFactionPointsCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T21:13:39Z",
+      "side": 1,
+      "message": "I don\u0027t think this is going far enough. What if the target is 500 points below cap and the other player is trying to delegate 1000?",
+      "revId": "6b703cc9c8ca20bd054ee6c333521e6c536300cc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
