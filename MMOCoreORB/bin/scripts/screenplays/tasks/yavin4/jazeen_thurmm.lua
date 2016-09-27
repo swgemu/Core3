@@ -11,10 +11,10 @@ jazeen_thurmm_missions =
 			},
 			staticObjects =
 			{
-				{ objectTemplate = "object/mobile/kaadu.iff" },
-				{ objectTemplate = "object/mobile/dressed_commoner_tatooine_nikto_male_04.iff" },
-				{ objectTemplate = "object/mobile/dressed_commoner_tatooine_aqualish_female_07.iff" },
-				{ objectTemplate = "object/mobile/dressed_commoner_tatooine_ishitib_male_02.iff" }
+				{ objectTemplate = "object/mobile/kaadu.iff", objectName = "a pack kaadu" },
+				{ objectTemplate = "object/mobile/dressed_commoner_tatooine_nikto_male_04.iff", objectName = "a Surveyor" },
+				{ objectTemplate = "object/mobile/dressed_commoner_tatooine_aqualish_female_07.iff", objectName = "a Surveyor" },
+				{ objectTemplate = "object/mobile/dressed_commoner_tatooine_ishitib_male_02.iff", objectName = "a Surveyor" }
 			},
 			itemSpawns =
 			{
