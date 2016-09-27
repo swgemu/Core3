@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_599b83c9",
+        "filename": "MMOCoreORB/src/server/zone/managers/city/CityDecorationTask.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T23:16:46Z",
+      "side": 1,
+      "message": "use variable names that make sense.",
+      "revId": "a51ec080cded1d7c23c0ea31043ec1f5e4ddfa58",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b95e5711",
+        "filename": "MMOCoreORB/src/server/zone/managers/city/CityDecorationTask.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T23:16:46Z",
+      "side": 1,
+      "message": "Event coordinators won\u0027t be mayors placing deco in a city and therefore this doesn\u0027t apply to them. You should remove the isPrivileged exception.",
+      "revId": "a51ec080cded1d7c23c0ea31043ec1f5e4ddfa58",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
