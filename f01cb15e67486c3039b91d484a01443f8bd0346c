@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_5974e39b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/corellia/dalla_solo.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T22:59:18Z",
+      "side": 1,
+      "message": "The picture in your evidence shows him standing.",
+      "revId": "f01cb15e67486c3039b91d484a01443f8bd0346c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b947374b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/corellia/serjix_arrogantus.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T22:59:18Z",
+      "side": 1,
+      "message": "The picture in your evidence shows him standing",
+      "revId": "f01cb15e67486c3039b91d484a01443f8bd0346c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
