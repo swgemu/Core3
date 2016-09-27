@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_f93dafbc",
+        "filename": "MMOCoreORB/src/server/zone/objects/waypoint/WaypointObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T21:57:19Z",
+      "side": 1,
+      "message": "IntangibleObject",
+      "revId": "416f2d6f9fc867daea8cbf66e88011b6b34800a0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
