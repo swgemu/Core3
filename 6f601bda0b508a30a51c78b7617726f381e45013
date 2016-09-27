@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_59ff0302",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:44:44Z",
+      "side": 1,
+      "message": "Don\u0027t add the extra tab here.",
+      "revId": "6f601bda0b508a30a51c78b7617726f381e45013",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_79043f15",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:44:44Z",
+      "side": 1,
+      "message": "pConversingPlayer is already nil checked below. Don\u0027t add a redundant check.",
+      "revId": "6f601bda0b508a30a51c78b7617726f381e45013",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
