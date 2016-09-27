@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_19574b04",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CripplingShotCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T21:45:59Z",
+      "side": 1,
+      "message": "Don\u0027t add a bunch of redundant checks to this command.",
+      "revId": "8deef960b813a9433d7658e6d092c07cae4c71d4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_395c8725",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CurePackCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T21:45:59Z",
+      "side": 1,
+      "message": "Include the actual string as a comment everywhere you add a string.",
+      "revId": "8deef960b813a9433d7658e6d092c07cae4c71d4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
