@@ -1,0 +1,361 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_564a7284",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/victor_visalis_conv.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:38:35Z",
+      "side": 1,
+      "message": "This screen isn\u0027t being used and uses the same dialog as returned_noroom_still. Remove this screen.",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_764f6e93",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/victor_visalis_conv.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:38:35Z",
+      "side": 1,
+      "message": "this should be true",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_1644fa72",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/victor_visalis_conv.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:38:35Z",
+      "side": 1,
+      "message": "This screen isn\u0027t currently used. Where should it be used?",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_3649f68b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineElection.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:38:35Z",
+      "side": 1,
+      "message": "This is redundant. You check the same thing below.",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_9657aa26",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:38:35Z",
+      "side": 1,
+      "message": "I\u0027m failing to understand the purpose of this function.\n\nProvided it\u0027s phase 1, you\u0027ll always return true here since a player cannot have voted for both candidates in the current election.",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b6542622",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:38:35Z",
+      "side": 1,
+      "message": "Then if you change the logic of the above check so it can be false, the rest of this makes no sense. If the player voted for victor in any previous election but not the current one, it won\u0027t check if they ever voted for sean and it\u0027ll return true here.\n\nI\u0027m still not sure what you are even trying to do with this function. Looking at where it\u0027s used, and reading the relevant string, I think they should be used when a new election has started and victor is the incumbant (won the previous election).\n\nTherefore, after checking that it\u0027s phase 1, you need to check the election winner (you aren\u0027t deleting that data when switching back to phase 1, which is good for this). If the election winner was victor, return true. It doesn\u0027t matter how a person voted previously (which is what I\u0027m guessing you were going for here).",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_76368e05",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:38:35Z",
+      "side": 1,
+      "message": "This function seems unnecessary. You use it in two places.\n\nIn runScreenHandlers you use it nested within the inOffice_newElection check which will only return true if it\u0027s phase 1 so a BestineElectionScreenPlay:votedForWho call would work just as well.\n\nThe other place you use it is in inCampaign. That function has already returns false if the phase isn\u0027t 1, so again, checking BestineElectionScreenPlay:votedForWho will suffice.\n\nI would remove this function.",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_163b9aec",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:38:35Z",
+      "side": 1,
+      "message": "Where or for what is this used?",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_36401656",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:38:35Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you also remove the tusken head from the player when you give the reward?",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d62442c8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:38:35Z",
+      "side": 1,
+      "message": "Making it \u003c\u003d will prevent a player from getting the reward again or even starting the quest again (on subsequent election cycles). I don\u0027t think that\u0027s correct.",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_962ecaa4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:38:35Z",
+      "side": 1,
+      "message": "You don\u0027t use this here, remove it.",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b62bc693",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:38:35Z",
+      "side": 1,
+      "message": "I think you need to go back to the structure of your previous patch set 21 where you were checking for the current phase before these other checks. I wanted you to link the checks via the use of elseifs, not change the overall structure of the checks.",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_56183284",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:38:35Z",
+      "side": 1,
+      "message": "the not hasTuskenHead check is redundant since if they had it we wouldn\u0027t make it to this elseif.",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_761d2e73",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:38:35Z",
+      "side": 1,
+      "message": "I would decouple this check from the above if elseif chain so that this option will always show if they have stones, regardless of whether they have a head or are on the tusken quest.",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f6213eb5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:38:35Z",
+      "side": 1,
+      "message": "remove the not",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_1612ba62",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:38:35Z",
+      "side": 1,
+      "message": "These options should be showing during phase 1 when Victor was the one elected in the previous election cycle. This is the wrong place for them. You should add them to convo_start when appropriate.",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_3617b653",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:38:35Z",
+      "side": 1,
+      "message": "None of these options you\u0027re adding make sense for this screen. proposed_changes, here_to_vote, and about_tuskens are screen that should only be used during phase 1. give_election_reward was on the previous screen. I think it\u0027s better to just end the convo at this screen instead of adding any options to it. Remove all this handling for this screenID.",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d60be229",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:38:35Z",
+      "side": 1,
+      "message": "I liked it better how you had it before where \"I found these weird stones.\" was added if they have them, but \"Just checking up on things. Bye!\" was always an option regardless.",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f6085e2f",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:38:35Z",
+      "side": 1,
+      "message": "You don\u0027t need to handle returned_noroom_still since the data will already have been written so you can remove that check from here.",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_96056a16",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:38:35Z",
+      "side": 1,
+      "message": "You should also add the --{\"@conversation/victor_visalis:s_8999ec9b\",\"decided_no_vote\"}, --I decided not to vote for you. \n\noption as you previously indicated on the convo template.",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d65d224a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/museum_curator_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-27T20:38:35Z",
+      "side": 1,
+      "message": "remove this.",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
