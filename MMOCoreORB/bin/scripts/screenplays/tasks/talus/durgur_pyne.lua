@@ -25,7 +25,7 @@ durgur_pyne_missions =
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "sleemo_vandal", npcName = "" },
+				{ npcTemplate = "sleemo_punk", npcName = "" },
 				{ npcTemplate = "sleemo_scamp", npcName = "" },
 				{ npcTemplate = "sleemo_scamp", npcName = "" }
 			},
