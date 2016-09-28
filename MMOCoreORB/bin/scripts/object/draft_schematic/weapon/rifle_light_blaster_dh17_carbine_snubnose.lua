@@ -48,15 +48,15 @@ object_draft_schematic_weapon_rifle_light_blaster_dh17_carbine_snubnose = object
    customObjectName = "DH17 Short Carbine",
 
    craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 25, 
-   size = 2, 
+   complexity = 25,
+   size = 2,
 
-   xpType = "crafting_weapons_general", 
-   xp = 105, 
+   xpType = "crafting_weapons_general",
+   xp = 105,
 
-   assemblySkill = "weapon_assembly", 
-   experimentingSkill = "weapon_experimentation", 
-   customizationSkill = "weapon_customization", 
+   assemblySkill = "weapon_assembly",
+   experimentingSkill = "weapon_experimentation",
+   customizationSkill = "weapon_customization",
 
    customizationOptions = {},
    customizationStringNames = {},
@@ -64,17 +64,15 @@ object_draft_schematic_weapon_rifle_light_blaster_dh17_carbine_snubnose = object
 
    ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
    ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "powerhandler", "barrel", "scope", "stock"},
-   ingredientSlotType = {0, 0, 0, 1, 1, 3, 1},
+   ingredientSlotType = {0, 0, 0, 1, 1, 3, 3},
    resourceTypes = {"metal", "metal_ferrous", "metal", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff", "object/tangible/component/weapon/shared_stock.iff"},
    resourceQuantities = {30, 15, 7, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
    ingredientAppearance = {"", "", "", "", "", "scope", ""},
 
-
    targetTemplate = "object/weapon/ranged/carbine/carbine_dh17_snubnose.iff",
 
-   additionalTemplates = {
-             }
+   additionalTemplates = {}
 
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_rifle_light_blaster_dh17_carbine_snubnose, "object/draft_schematic/weapon/rifle_light_blaster_dh17_carbine_snubnose.iff")
