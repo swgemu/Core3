@@ -16,6 +16,24 @@
       "revId": "755f78cd44f95a2417d6f27850721794de20d23d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_9954bbcb",
+        "filename": "MMOCoreORB/src/server/zone/packets/object/ShowFlyText.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 2675
+      },
+      "writtenOn": "2016-09-28T06:53:08Z",
+      "side": 1,
+      "message": "In my opinion, leaving it hard coded as it is now would probably be the better solution as I can\u0027t find any instance that anything other than \u00275\u0027 is used, and I/we don\u0027t know enough about the other flags for them to be a valid option.",
+      "parentUuid": "1a76adc5_392567ab",
+      "revId": "755f78cd44f95a2417d6f27850721794de20d23d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
