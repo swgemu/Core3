@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_996b5b85",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/ai/DroidObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-28T08:51:05Z",
+      "side": 1,
+      "message": "This will cause a seg fault because droidPet will always be NULL.",
+      "revId": "9fff6a6ddcec357d7d2f0e295daac988a8ed59d4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b9689788",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/ai/DroidObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-28T08:51:05Z",
+      "side": 1,
+      "message": "I said to move this into rechargeFromDroid",
+      "revId": "9fff6a6ddcec357d7d2f0e295daac988a8ed59d4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
