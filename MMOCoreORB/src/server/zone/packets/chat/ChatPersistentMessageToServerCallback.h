@@ -184,7 +184,11 @@ public:
 		uint64 receiverObjectID = server->getPlayerManager()->getObjectID(recipientName);
 
 		if (receiverObjectID == 0) {
-			return 0;
+			StringIdChatParameter noname;
+			noname.setStringId("@ui_pm:recipient_invalid_prose"); // "Are you sure you have the correct name? There is no player named '%TT'."
+			noname.setTT(recipientName);
+			player->sendSystemMessage(noname);
+			return ChatManager::NOAVATAR;
 		}
 
 		ManagedReference<SceneObject*> receiver = server->getZoneServer()->getObject(receiverObjectID);
@@ -204,7 +208,7 @@ public:
 		ManagedReference<PlayerObject*> ghost = receiverPlayer->getPlayerObject();
 
 		if (ghost == NULL || (ghost->isIgnoring(player->getFirstName().toLowerCase()) && !godMode)) {
-			StringIdChatParameter err("ui_pm", "recipient_ignored_prose");
+			StringIdChatParameter err("ui_pm", "recipient_ignored_prose"); // "Your Mail Message has not been delivered to '%TT' because the recipient has chosen not to receive mail from you at this time."
 			err.setTT(recipientName);
 			player->sendSystemMessage(err);
 

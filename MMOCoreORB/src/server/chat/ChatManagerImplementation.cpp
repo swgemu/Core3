@@ -1303,7 +1303,15 @@ void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantM
 
 	ManagedReference<CreatureObject*> receiver = getPlayer(fname);
 
-	if (receiver == NULL || !receiver->isOnline()) {
+	uint64 receiverObjectID = server->getPlayerManager()->getObjectID(fname);
+
+	if (receiverObjectID == 0) {
+		BaseMessage* amsg = new ChatOnSendInstantMessage(sequence, NOAVATAR);// *This needs to be "There is no person by the name '%TU' in this Galaxy.", but it's not matching up with that error code?!
+		sender->sendMessage(amsg);
+
+		return;
+
+	} else if (receiver == NULL || !receiver->isOnline()) {
 		BaseMessage* amsg = new ChatOnSendInstantMessage(sequence, IM_OFFLINE);
 		sender->sendMessage(amsg);
 
