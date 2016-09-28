@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_d971d378",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchBunker.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-28T08:46:40Z",
+      "side": 1,
+      "message": "You forgot to remove these notify functions that aren\u0027t used anymore in this patch set.",
+      "revId": "95173cbaaa1b6f543753bc5357bd9aa50d77da5e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
