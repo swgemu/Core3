@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_592ce34a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DelegateFactionPointsCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-28T09:06:34Z",
+      "side": 1,
+      "message": "The second check is redundant. It will never be true if the first was false.\n\nAlso, the way you have this written, a delegation will never happen.",
+      "revId": "5925926732ad322807d29c0ff55a8bdbdeba6fb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b9ff37aa",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DelegateFactionPointsCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-28T09:06:34Z",
+      "side": 1,
+      "message": "Is there no client string for this? If not, you can make this one clearer. The player won\u0027t necessarily be at their cap. They may be too close for the amount of points the player has tried to delegate.",
+      "revId": "5925926732ad322807d29c0ff55a8bdbdeba6fb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
