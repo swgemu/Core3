@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_f9f5afcb",
+        "filename": "MMOCoreORB/src/server/zone/managers/city/CityDecorationTask.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-28T08:59:38Z",
+      "side": 1,
+      "message": "How does cityDeco make sense as the name of a pointer to the planetManager?",
+      "revId": "f06aedb792bc833c254090979c85e8cd8250dc94",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d9f8f3c6",
+        "filename": "MMOCoreORB/src/server/zone/managers/city/CityDecorationTask.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-28T08:59:38Z",
+      "side": 1,
+      "message": "Remove this line completely.",
+      "revId": "f06aedb792bc833c254090979c85e8cd8250dc94",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
