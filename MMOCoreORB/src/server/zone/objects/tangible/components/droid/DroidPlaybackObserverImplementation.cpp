@@ -18,13 +18,16 @@ int DroidPlaybackObserverImplementation::notifyObserverEvent(unsigned int eventT
 	if (sceno == NULL) {
 		return 1;
 	}
+
 	if(!sceno->isPlayerCreature()) {
 		return 1;
 	}
+
 	CreatureObject* player = dynamic_cast<CreatureObject*>(sceno);
 	if (player == NULL) {
 		return 1;
 	}
+
 	// make a task and lock the module to run it.
 
 	if (eventType == ObserverEventType::STARTENTERTAIN) {
@@ -32,21 +35,25 @@ int DroidPlaybackObserverImplementation::notifyObserverEvent(unsigned int eventT
 		if(playingSession == NULL) {
 			return 1;
 		}
+
 		if(!playingSession->isPlayingMusic()) {
 			return 1;
 		}
+
 		String song = playingSession->getPerformanceName();
 		int instrument = playingSession->getInstrument(player)->getInstrumentType();
-		Reference<Task*> task = new DroidPlaybackEvent(module,player,song,instrument,DroidPlaybackEvent::SET_TRACK);
+
+		Reference<Task*> task = new DroidPlaybackEvent(module.get(), player, song, instrument, DroidPlaybackEvent::SET_TRACK);
 		task->execute();
 	}
-	if (eventType == ObserverEventType::CHANGEENTERTAIN) {
-		Reference<Task*> task = new DroidPlaybackEvent(module,player,"",-1,DroidPlaybackEvent::CHANGE_SONG);
+	else if (eventType == ObserverEventType::CHANGEENTERTAIN) {
+		Reference<Task*> task = new DroidPlaybackEvent(module.get(), player, "", -1, DroidPlaybackEvent::CHANGE_SONG);
 		task->execute();
 	}
-	if (eventType == ObserverEventType::STOPENTERTAIN) {
-		Reference<Task*> task = new DroidPlaybackEvent(module,player,"",-1,DroidPlaybackEvent::STOP_PLAYING);
+	else if (eventType == ObserverEventType::STOPENTERTAIN) {
+		Reference<Task*> task = new DroidPlaybackEvent(module.get(), player, "", -1, DroidPlaybackEvent::STOP_PLAYING);
 		task->execute();
 	}
+
 	return 0;
 }
