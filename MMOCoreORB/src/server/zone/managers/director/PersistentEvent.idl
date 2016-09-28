@@ -36,6 +36,7 @@ class PersistentEvent extends ManagedObject {
 
 	@local
 	@read
+	@weakReference
 	public ScreenPlayTask getScreenplayTask() {
 		return screenplayTask;
 	}

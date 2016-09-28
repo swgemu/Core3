@@ -17,7 +17,7 @@ namespace events {
 
 class DroidPlaybackEvent : public Task {
 
-	ManagedReference<DroidPlaybackModuleDataComponent*> module;
+	Reference<DroidPlaybackModuleDataComponent*> module;
 	ManagedReference<CreatureObject*> player;
 	int action;
 	String song;

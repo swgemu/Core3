@@ -1122,7 +1122,7 @@ int DirectorManager::rescheduleServerEvent(lua_State* L) {
 		return 0;
 	}
 
-	Reference<ScreenPlayTask*> task = pEvent->getScreenplayTask();
+	Reference<ScreenPlayTask*> task = pEvent->getScreenplayTask().get();
 
 	if (task == NULL) {
 		instance()->error("Unable to find task for server event " + eventName + " in DirectorManager::rescheduleServerEvent");
