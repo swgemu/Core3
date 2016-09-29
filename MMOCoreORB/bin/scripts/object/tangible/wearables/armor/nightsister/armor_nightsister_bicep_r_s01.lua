@@ -62,6 +62,10 @@ object_tangible_wearables_armor_nightsister_armor_nightsister_bicep_r_s01 = obje
 				"object/mobile/vendor/trandoshan_female.iff",
 				"object/mobile/vendor/twilek_female.iff",
 				"object/mobile/vendor/zabrak_female.iff" },
+				
+	gameObjectType = 261,
+  clientGameObjectType = 261,
+  customName = "Nightsister Melee Armguard",
 	
 	-- Damage types in WeaponObject
 	vulnerability = ELECTRICITY + ACID + STUN + LIGHTSABER,
