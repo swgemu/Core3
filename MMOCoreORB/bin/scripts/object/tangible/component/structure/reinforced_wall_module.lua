@@ -49,7 +49,7 @@ object_tangible_component_structure_reinforced_wall_module = object_tangible_com
 	experimentalSubGroupTitles = {"null", "null", "kineticeffectiveness"},
 	experimentalMin = {0, 0, 0},
 	experimentalMax = {0, 0, 1000},
-	experimentalPrecision = {0, 0, 1},
+	experimentalPrecision = {0, 0, 0},
 	experimentalCombineType = {0, 0, 1},
 }
 
