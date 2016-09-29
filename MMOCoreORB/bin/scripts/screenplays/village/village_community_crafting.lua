@@ -71,7 +71,7 @@ end
 
 function VillageCommunityCrafting:getMinimumIngredients()
 	local currentPhase = VillageJediManagerTownship.getCurrentPhase()
-	return self.phaseInfo[currentPhase].ingredients.minIngredients
+	return self.phaseInfo[currentPhase].minIngredients
 end
 
 function VillageCommunityCrafting:incrementCurrentActiveCrafters()
@@ -105,7 +105,7 @@ function VillageCommunityCrafting:addToActiveCrafterList(pPlayer)
 	local playerID = tostring(SceneObject(pPlayer):getObjectID())
 
 	if (not crafterMap:hasMapRow(playerID)) then
-		crafterMap:addMapRow(playerID, tostring(os.time()))
+		crafterMap:addMapRow(playerID, tostring(0))
 	else
 		printf("Error in crafterMap, attempting to add existing player " .. SceneObject(pPlayer):getCustomObjectName() .. " to active community crafter list.\n")
 	end
@@ -142,6 +142,37 @@ function VillageCommunityCrafting:isOnActiveCrafterList(pPlayer)
 	local playerID = tostring(SceneObject(pPlayer):getObjectID())
 
 	return crafterMap:hasMapRow(playerID)
+end
+
+function VillageCommunityCrafting:getIngredientsNeededByPlayer(pPlayer)
+	local phaseID = VillageJediManagerTownship:getCurrentPhaseID()
+	local currentPhase = VillageJediManagerTownship.getCurrentPhase()
+
+	local pMap = getQuestVectorMap("VillageCCStatsTable:" .. phaseID .. ":quantity")
+
+	if (pMap == nil) then
+		printf("Error in VillageCommunityCrafting:getIngredientsNeededByPlayer, unable to get active crafter list.")
+		return -1
+	end
+
+	local crafterMap = LuaQuestVectorMap(pMap)
+	local playerID = tostring(SceneObject(pPlayer):getObjectID())
+
+	local minIngredients = self.phaseInfo[currentPhase].minIngredients
+
+	if (not crafterMap:hasMapRow(playerID)) then
+		return minIngredients
+	end
+
+	local curIngredients = crafterMap:getMapRow(playerID)
+
+	local neededIngredients = minIngredients - curIngredients
+
+	if (neededIngredients < 0) then
+		neededIngredients = 0
+	end
+
+	return neededIngredients
 end
 
 function VillageCommunityCrafting:isCurrentPhaseIngredient(pObj)
@@ -495,8 +526,10 @@ function VillageCommunityCrafting:sendPlayerProjectSlotAttributes(pPlayer, pNpc,
 		local playerName = nameMap:getMapRow(playerID)
 		local playerQuality = tonumber(qualityMap:getMapRow(playerID))
 		local playerQuantity = tonumber(quantityMap:getMapRow(playerID))
-		local dataTable = { playerName, playerQuality, playerQuantity }
-		table.insert(statTable, dataTable)
+		if (playerQuantity ~= nil and playerQuantity > 0) then
+			local dataTable = { playerName, playerQuality, playerQuantity }
+			table.insert(statTable, dataTable)
+		end
 	end
 
 	if (type == "quality") then
@@ -525,10 +558,10 @@ function VillageCommunityCrafting:sendPlayerProjectSlotAttributes(pPlayer, pNpc,
 end
 
 function VillageCommunityCrafting.qualitySort(a,b)
-	return a[2] < b[2]
+	return b[2] < a[2]
 end
 function VillageCommunityCrafting.quantitySort(a,b)
-	return a[3] < b[3]
+	return b[3] < a[3]
 end
 
 function VillageCommunityCrafting:calculateIngredientQuality(pObj, pPlayer)
@@ -566,7 +599,13 @@ function VillageCommunityCrafting:calculateIngredientQuality(pObj, pPlayer)
 
 	for i = 1, #ingredientData.attributes, 1 do
 		local attribName = ingredientData.attributes[i]
-		local attribValue = LuaCustomIngredient(pObj):getValueOf(attribName)
+		local attribValue
+
+		if (SceneObject(pObj):getGameObjectType() == 4194316) then
+			attribValue = LuaCustomIngredient(pObj):getValueOf(attribName)
+		else
+			attribValue = LuaComponent(pObj):getAttributeValue(attribName)
+		end
 
 		if (attribValue > minValue and attribValue < maxValue) then
 			attribValue = (attribValue - minValue) / (maxValue - minValue)
@@ -686,8 +725,7 @@ function QtQcContainerComponent:transferObject(pContainer, pObj, slot)
 		return 0
 	end
 
-	--local ingredientsNeeded = VillageCommunityCrafting:getIngredientsNeededByPlayer(pPlayer)
-	local ingredientsNeeded = 20
+	local ingredientsNeeded = VillageCommunityCrafting:getIngredientsNeededByPlayer(pPlayer)
 
 	if (ingredientsNeeded == 0) then
 		CreatureObject(pPlayer):sendSystemMessage("@crafting:cc_thank_you_done")
