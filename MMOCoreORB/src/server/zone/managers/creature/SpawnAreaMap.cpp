@@ -185,6 +185,8 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	float y = areaObj.getFloatAt(3);
 	int tier = areaObj.getIntAt(5);
 
+	error("Area object table size = " + String::valueOf(areaObj.getTableSize()));
+
 	if (tier == UNDEFINEDAREA)
 		return;
 
