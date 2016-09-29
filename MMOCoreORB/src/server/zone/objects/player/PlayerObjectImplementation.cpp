@@ -1713,6 +1713,9 @@ void PlayerObjectImplementation::checkForNewSpawns() {
 	Vector<SpawnArea*> spawnAreas;
 	int totalWeighting = 0;
 
+	bool includeWorldSpawnArea = true;
+	SpawnArea* worldSpawnArea;
+
 	for (int i = 0; i < areas.size(); ++i) {
 		ManagedReference<ActiveArea*> area = areas.get(i);
 
@@ -1730,8 +1733,22 @@ void PlayerObjectImplementation::checkForNewSpawns() {
 			continue;
 		}
 
+		if (!(spawnArea->getTier() & SpawnAreaMap::WORLDSPAWNAREA)) {
+			worldSpawnArea = spawnArea;
+			continue;
+		}
+
+		if ((spawnArea->getTier() & SpawnAreaMap::NOWORLDSPAWNAREA)) {
+			includeWorldSpawnArea = false;
+		}
+
 		spawnAreas.add(spawnArea);
 		totalWeighting += spawnArea->getTotalWeighting();
+	}
+
+	if (includeWorldSpawnArea) {
+		spawnAreas.add(worldSpawnArea);
+		totalWeighting += worldSpawnArea->getTotalWeighting();
 	}
 
 	int choice = System::random(totalWeighting - 1);
