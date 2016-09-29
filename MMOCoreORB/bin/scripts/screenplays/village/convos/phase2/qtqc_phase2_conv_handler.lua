@@ -28,12 +28,20 @@ function villageQtQcPhase2ConvoHandler:runScreenHandlers(conversationTemplate, c
 
 		if (VillageCommunityCrafting:isOnActiveCrafterList(conversingPlayer)) then
 			clonedConversation:addOption("@conversation/qtqc_phase_2:s_ebcb651f", "put_in_inventory") -- I'd like to add an ingredient to the village defenses.
-			
-			--TODO: add item count check
-			clonedConversation:addOption("@conversation/qtqc_phase_2:s_2ce1f012", "needs_multiple_items") -- How many more items do I need to contribute?
+
+			local ingredientsNeeded = VillageCommunityCrafting:getIngredientsNeededByPlayer(conversingPlayer)
+			if (ingredientsNeeded > 1) then
+				clonedConversation:addOption("@conversation/qtqc_phase_2:s_2ce1f012", "needs_multiple_items") -- How many more items do I need to contribute?
+			elseif (ingredientsNeeded == 1) then
+				clonedConversation:addOption("@conversation/qtqc_phase_2:s_2ce1f012", "needs_one_item") -- How many more items do I need to contribute?
+			else
+				clonedConversation:addOption("@conversation/qtqc_phase_2:s_2ce1f012", "needs_no_items") -- How many more items do I need to contribute?
+			end
 		end
 
 		clonedConversation:addOption("@conversation/qtqc_phase_2:s_baf57f52", "what_you_want_to_know") -- I'd like to get the status of the village defenses.
+	elseif (screenID == "needs_multiple_items") then
+		clonedConversation:setDialogTextDI(VillageCommunityCrafting:getIngredientsNeededByPlayer(conversingPlayer))
 	elseif (screenID == "schematics_given") then
 		VillageCommunityCrafting:giveSchematics(conversingPlayer)
 		QuestManager.completeQuest(conversingPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_01)
