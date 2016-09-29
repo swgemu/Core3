@@ -79,6 +79,7 @@
 #include "server/zone/objects/player/sui/SuiBoxPage.h"
 #include "server/zone/objects/tangible/powerup/PowerupObject.h"
 #include "server/zone/objects/resource/ResourceSpawn.h"
+#include "server/zone/objects/tangible/component/Component.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -517,6 +518,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaSuiBoxPage>::Register(luaEngine->getLuaState());
 	Luna<LuaPowerupObject>::Register(luaEngine->getLuaState());
 	Luna<LuaWaypointObject>::Register(luaEngine->getLuaState());
+	Luna<LuaComponent>::Register(luaEngine->getLuaState());
 }
 
 int DirectorManager::loadScreenPlays(Lua* luaEngine) {
