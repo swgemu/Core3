@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dad5f5cf_716318b2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase2/qtqc_phase2_conv_handler.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-30T21:53:24Z",
+      "side": 1,
+      "message": "I don\u0027t see this screen in the convo template, though I do see it in Quharek\u0027s convo template.",
+      "range": {
+        "startLine": 43,
+        "startChar": 22,
+        "endLine": 43,
+        "endChar": 41
+      },
+      "revId": "d8e0e62d77210577ff989f32948cc626a0952cf2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
