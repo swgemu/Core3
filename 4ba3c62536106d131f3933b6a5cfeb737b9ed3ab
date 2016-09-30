@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dad5f5cf_b15180da",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-30T21:37:51Z",
+      "side": 1,
+      "message": "It looks like you missed some stuff when resolving a merge conflict.",
+      "range": {
+        "startLine": 1532,
+        "startChar": 16,
+        "endLine": 1532,
+        "endChar": 23
+      },
+      "revId": "4ba3c62536106d131f3933b6a5cfeb737b9ed3ab",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
