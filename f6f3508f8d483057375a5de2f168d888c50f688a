@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dad5f5cf_d14a0427",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1717,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-30T21:27:58Z",
+      "side": 1,
+      "message": "There\u0027s really no reason for it, but since it is possible for a planet to have more than one world spawn area defined, I would change this to a vector. Add all world spawn areas to the vector as you go through the first loop then if includeWorldSpawnArea is true, add each of them to spawnAreas and add each of their totalWeightings to the overall total.",
+      "range": {
+        "startLine": 1717,
+        "startChar": 12,
+        "endLine": 1717,
+        "endChar": 26
+      },
+      "revId": "f6f3508f8d483057375a5de2f168d888c50f688a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_f147081c",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-30T21:27:58Z",
+      "side": 1,
+      "message": "Since you potentially calling getTier() 3 times per iteration of the loop, I would probably just call it once and store it in a var before use.",
+      "range": {
+        "startLine": 1736,
+        "startChar": 19,
+        "endLine": 1736,
+        "endChar": 26
+      },
+      "revId": "f6f3508f8d483057375a5de2f168d888c50f688a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
