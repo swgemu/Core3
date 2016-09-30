@@ -136,13 +136,13 @@ public:
 		PlayerManager* playerManager = server->getPlayerManager();
 
 		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
-			creature->sendSystemMessage("@container_error_message:container18");
+			creature->sendSystemMessage("@healing:no_line_of_sight"); // You cannot see your target.
 			return GENERALERROR;
 		}
 
 		float modSkill = (float) creature->getSkillMod("combat_medic_effectiveness");
 		int healPower = (int) (System::random(500)+800) * modSkill / 100;
-		
+
 		// Check BF
 		healPower = (int) (healPower * (1 - creature->calculateBFRatio()) * (1 - creatureTarget->calculateBFRatio()));
 

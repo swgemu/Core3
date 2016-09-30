@@ -539,13 +539,13 @@ int ForceHealQueueCommand::runCommandWithTarget(CreatureObject* creature, Creatu
 		return TOOFAR;
 
 	if (!CollisionManager::checkLineOfSight(creature, targetCreature)) {
-		creature->sendSystemMessage("@container_error_message:container18"); // not in sight?!?
+		creature->sendSystemMessage("@healing:no_line_of_sight"); // You cannot see your target.
 		return GENERALERROR;
 	}
 
 	if (!targetCreature->isHealableBy(creature)) {
 		// TEF etc.? Do we need extra TEF checks?
-		creature->sendSystemMessage("@healing:pvp_no_help");
+		creature->sendSystemMessage("@healing:pvp_no_help"); // It would be unwise to help such a patient.
 		return GENERALERROR;
 	}
 	// continue with the common path
