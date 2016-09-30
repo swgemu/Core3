@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dad5f5cf_91bd5c05",
+        "filename": "MMOCoreORB/bin/scripts/managers/spawn_manager/corellia.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-09-30T11:33:29Z",
+      "side": 1,
+      "message": "I\u0027ll redo this formatting in next patch set. We are using tab as indentation character in most files so this file should do as well.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "a12b243864f1342d5cc706be787b1b517edd82fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
