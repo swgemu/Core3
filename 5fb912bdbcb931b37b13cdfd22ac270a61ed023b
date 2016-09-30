@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dad5f5cf_f16e2896",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/ai/DroidObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-30T22:00:01Z",
+      "side": 1,
+      "message": "It\u0027s clear that you haven\u0027t even bothered to try and test this.",
+      "range": {
+        "startLine": 157,
+        "startChar": 62,
+        "endLine": 157,
+        "endChar": 70
+      },
+      "revId": "5fb912bdbcb931b37b13cdfd22ac270a61ed023b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
