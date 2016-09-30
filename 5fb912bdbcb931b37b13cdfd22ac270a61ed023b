@@ -70,6 +70,30 @@
       "revId": "5fb912bdbcb931b37b13cdfd22ac270a61ed023b",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_91023cb3",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/ai/DroidObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1809
+      },
+      "writtenOn": "2016-09-30T22:26:31Z",
+      "side": 1,
+      "message": "I didn\u0027t deem it functional because it\u0027s not the version i tested.  Unfortunately in my haste i mixed 2 versions together.  It was a mistake and i apologize for not noticing it myself and therefore wasting your valuable time.  This type of sloppy oversight won\u0027t ever happen again sir.  I will be pushing the FULLY tested version soon.",
+      "parentUuid": "dad5f5cf_d1f8c4c6",
+      "range": {
+        "startLine": 157,
+        "startChar": 62,
+        "endLine": 157,
+        "endChar": 70
+      },
+      "revId": "5fb912bdbcb931b37b13cdfd22ac270a61ed023b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
