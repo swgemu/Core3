@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dad5f5cf_b168a088",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CripplingShotCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-30T22:04:20Z",
+      "side": 1,
+      "message": "When I said don\u0027t add a bunch of redundant checks, I meant for you to remove them all, not just the one my comment was on.",
+      "range": {
+        "startLine": 34,
+        "startChar": 58,
+        "endLine": 34,
+        "endChar": 60
+      },
+      "revId": "6b0d2dfd81884f7fed4edf1babbdd264c690cc2d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_5105b4c0",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CurePackCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-09-30T22:04:20Z",
+      "side": 1,
+      "message": "When I said to add a comment with the string text everywhere you add a string, I meant for you to check your entire patch and add it everywhere you add a string.",
+      "range": {
+        "startLine": 334,
+        "startChar": 57,
+        "endLine": 334,
+        "endChar": 60
+      },
+      "revId": "6b0d2dfd81884f7fed4edf1babbdd264c690cc2d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
