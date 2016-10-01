@@ -13,17 +13,19 @@
 class SceneObject;
 class ObjectMap;
 class Zone;
-
+class SharedObjectTemplate;
 class ObjectManager : public Mutex, public Logger {
 	ObjectMap* objectMap;
 
-	static ObjectFactory<SceneObject* (LuaObject*), uint32> objectFactory;
+	static ObjectFactory<SceneObject* (SharedObjectTemplate*), uint32> objectFactory;
 	static Lua* luaInstance;
 	static Mutex luaMutex;
 
 	Zone* zone;
 
 	void registerObjectTypes();
+	
+	HashTable<uint32, String> clientTemplateCRCMap;
 
 public:
 	ObjectManager();

@@ -7,16 +7,18 @@
 
 #include "system/lang.h"
 #include "engine/engine.h"
+#include "client/renderer/ClientRenderer.h"
 
 class Zone;
-
+class CmdStartScene;
 class ClientCore : public Core, public Logger {
 	int instances;
-
+	osgViewer::Viewer viewer;
 	Vector<Zone*> zones;
-
+	ClientRenderer *renderer;
+	String zoneName;
 public:
-	ClientCore(int instances);
+	ClientCore(int instances, String zoneName);
 
 	void initialize();
 
@@ -24,8 +26,14 @@ public:
 
 	void loginCharacter(int index);
 	void logoutCharacter(int index);
+	
+	void handleStartScene(CmdStartScene *packet);
 
 	void handleCommands();
+	
+	ClientRenderer* getRenderer() { return renderer; }
+	void setRenderer(ClientRenderer* r) { renderer = r; }
+	osgViewer::Viewer *getViewer() { return &viewer; }
 };
 
 #endif /*CLIENTCORE_H_*/

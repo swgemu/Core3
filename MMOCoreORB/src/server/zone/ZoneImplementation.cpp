@@ -42,6 +42,7 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& na
 	mapLocations = new MapLocationTable();
 
 	managersStarted = false;
+	zoneCleared = false;
 
 	//galacticTime = new Time();
 
@@ -116,6 +117,8 @@ void ZoneImplementation::stopManagers() {
 void ZoneImplementation::clearZone() {
 	Locker zonelocker(_this.getReferenceUnsafeStaticCast());
 
+	info("clearing zone", true);
+
 	creatureManager->unloadSpawnAreas();
 
 	HashTable<uint64, ManagedReference<SceneObject*> > tbl;
@@ -131,6 +134,10 @@ void ZoneImplementation::clearZone() {
 			sceno->destroyObjectFromWorld(false);
 		}
 	}
+
+	zoneCleared = true;
+
+	info("zone clear", true);
 }
 
 float ZoneImplementation::getHeight(float x, float y) {

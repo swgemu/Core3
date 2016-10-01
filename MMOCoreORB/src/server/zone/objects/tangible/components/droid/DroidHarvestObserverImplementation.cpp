@@ -13,9 +13,14 @@
 #include "server/zone/objects/creature/events/DroidPlaybackEvent.h"
 
 int DroidHarvestObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
+	Reference<DroidHarvestModuleDataComponent*> mod = module.get();
+
+	if (mod == NULL)
+		return 1;
+
 	// check params we should have the player around here
 	if (eventType == ObserverEventType::DESTINATIONREACHED) {
-		module->harvestDestinationReached();
+		mod->harvestDestinationReached();
 		return 0;
 	}
 
@@ -23,9 +28,11 @@ int DroidHarvestObserverImplementation::notifyObserverEvent(unsigned int eventTy
 	if (sceno == NULL) {
 		return 1;
 	}
+
 	if(sceno->isPlayerCreature()) {
 		return 1;
 	}
+
 	CreatureObject* target = dynamic_cast<CreatureObject*>(sceno);
 	if (target == NULL) {
 		return 1;
@@ -34,7 +41,8 @@ int DroidHarvestObserverImplementation::notifyObserverEvent(unsigned int eventTy
 
 	if (eventType == ObserverEventType::KILLEDCREATURE) {
 		// observable needs to be the droid owner, arg1 should be the target
-		module->creatureHarvestCheck(target);
+		mod->creatureHarvestCheck(target);
 	}
+
 	return 0;
 }

@@ -42,3 +42,10 @@ void WaypointObjectImplementation::insertToMessage(BaseMessage* msg) {
 	msg->writeByte(color);
 	msg->writeByte(active);
 }
+
+void WaypointObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
+	IntangibleObjectImplementation::fillAttributeList(alm, object);
+
+	if (questDetails.length() > 0)
+		alm->insertAttribute("quest_details", questDetails);
+}

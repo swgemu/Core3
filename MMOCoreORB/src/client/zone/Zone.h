@@ -16,7 +16,7 @@ class LoginSession;
 class ZoneClientThread;
 class ObjectController;
 class ObjectManager;
-
+class ClientCore;
 class Zone : public Thread, public Mutex, public Logger {
 	//LoginSession* loginSession;
 
@@ -38,14 +38,16 @@ class Zone : public Thread, public Mutex, public Logger {
 	Vector<PlayerCreature*> playerArray;
 
 	ObjectManager* objectManager;
-
+	
 	int instance;
 
 	Time startTime;
 	bool started;
 
 public:
-	Zone(int instance, uint64 characterObjectID, uint32 account, uint32 session);
+	ClientCore *core;
+	String name;
+	Zone(ClientCore *core, int instance, uint64 characterObjectID, uint32 account, uint32 session);
 	~Zone();
 
 	static int createdChar;

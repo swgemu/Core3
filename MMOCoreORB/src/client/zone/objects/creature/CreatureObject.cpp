@@ -1,6 +1,6 @@
 #include "CreatureObject.h"
 
-CreatureObject::CreatureObject(LuaObject* templateData) : TangibleObject(templateData) {
+CreatureObject::CreatureObject(SharedObjectTemplate* templateData) : TangibleObject(templateData) {
 	setLoggingName("CreatureObject");
 
 	actionCount = 0;

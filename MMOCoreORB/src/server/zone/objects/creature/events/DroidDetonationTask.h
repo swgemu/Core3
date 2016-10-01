@@ -145,7 +145,9 @@ public:
 					closeObjects.removeAll(vec->size(), 10);
 					vec->safeCopyTo(closeObjects);
 				} else {
+#ifdef COV_DEBUG
 					droid->info("Null closeobjects vector in DroudDetonationTask::run", true);
+#endif
 					droid->getZone()->getInRangeObjects(droid->getWorldPositionX(), droid->getWorldPositionY(), 40, &closeObjects, true);
 				}
 

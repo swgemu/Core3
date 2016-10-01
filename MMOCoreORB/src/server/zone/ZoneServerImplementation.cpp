@@ -399,13 +399,28 @@ void ZoneServerImplementation::stopManagers() {
 }
 
 void ZoneServerImplementation::clearZones() {
+	info("clearing all zones..", true);
+
 	for (int i = 0; i < zones->size(); ++i) {
 		ManagedReference<Zone*> zone = zones->get(i);
 
 		if (zone != NULL) {
-			zone->clearZone();
+			EXECUTE_TASK_1(zone, {
+					zone_p->clearZone();
+			});
 		}
 	}
+
+	for (int i = 0; i < zones->size(); ++i) {
+		Zone* zone = zones->get(i);
+
+		if (zone != NULL) {
+			while (!zone->isZoneCleared())
+				Thread::sleep(500);
+		}
+	}
+
+	info("all zones clear", true);
 }
 
 ZoneClientSession* ZoneServerImplementation::createConnection(Socket* sock, SocketAddress& addr) {

@@ -7,6 +7,6 @@
 
 #include "IntangibleObject.h"
 
-IntangibleObject::IntangibleObject(LuaObject* templateData) : SceneObject(templateData) {
+IntangibleObject::IntangibleObject(SharedObjectTemplate* templateData) : SceneObject(templateData) {
 	setLoggingName("IntangibleObject");
 }

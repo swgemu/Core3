@@ -1,15 +1,25 @@
-#include "Zone.h"
 #include "ZonePacketHandler.h"
-
+#include "client/zone/Zone.h"
 /*#include "packets/scene/SceneObjectCreateMessage.h"
 #include "packets/scene/UpdateTransformMessage.h"*/
-#include "ZoneClient.h"
+#include "client/zone/ZoneClient.h"
 #include "../../server/zone/packets/zone/SelectCharacter.h"
 #include "../../server/zone/packets/zone/CmdSceneReady.h"
-#include "managers/object/ObjectManager.h"
-#include "managers/objectcontroller/ObjectController.h"
+#include "client/zone/managers/object/ObjectManager.h"
+#include "client/zone/managers/objectcontroller/ObjectController.h"
 #include "../../server/zone/packets/charcreation/ClientCreateCharacter.h"
+#include "client/ClientCore.h"
+#include "client/renderer/ClientRenderer.h"
+#include <osgGA/TerrainManipulator>
 
+#include <osgTerrain/Terrain>
+#include <osgTerrain/TerrainTile>
+#include <osgTerrain/GeometryTechnique>
+#include <osgTerrain/DisplacementMappingTechnique>
+#include <osgTerrain/Layer>
+#include <osg/Shape>
+#include <osg/ShapeDrawable>
+#include <osgGA/StateSetManipulator>
 ZonePacketHandler::ZonePacketHandler(const String& s, Zone * z) : Logger(s) {
 	zone = z;
 
@@ -104,20 +114,20 @@ void ZonePacketHandler::handleClientPermissionsMessage(Message* pack) {
 	BaseClient* client = (BaseClient*) pack->getClient();
 
 	if (zone->getCharacterID() == 0) {
-		//client->info("enter new Character Name to create", true);
-		/*char name[256];
-				fgets(name, sizeof(name), stdin);*/
-
+		client->info("enter new Character Name to create", true);
+		char name[256];
+		fgets(name, sizeof(name), stdin);
+		
 		client->info("creating new character");
+//
+//		String name = "character";
+//		name += ('a' + System::random(22));
+//		name += ('a' + System::random(22));
+//		name += ('a' + System::random(22));
+//		name += ('a' + System::random(22));
+//		name += ('a' + System::random(22));
 
-		String name = "character";
-		name += ('a' + System::random(22));
-		name += ('a' + System::random(22));
-		name += ('a' + System::random(22));
-		name += ('a' + System::random(22));
-		name += ('a' + System::random(22));
-
-		client->info("name " + name);
+		client->info("name " + String(name));
 
 		String charName = name;
 		charName = charName.replaceFirst("\n", "");
@@ -145,6 +155,9 @@ void ZonePacketHandler::handleCmdStartScene(Message* pack) {
 	float x = pack->parseFloat();
 	float z = pack->parseFloat();
 	float y = pack->parseFloat();
+	
+	String snapshotFile = terrain.subString(terrain.lastIndexOf('/')+1, terrain.length());
+	snapshotFile = snapshotFile.subString(0, snapshotFile.length()-4); // - .trn
 
 	String race;
 	pack->parseAscii(race);
@@ -152,6 +165,14 @@ void ZonePacketHandler::handleCmdStartScene(Message* pack) {
 	uint64 galacticTime = pack->parseLong();
 
 	zone->setCharacterID(selfPlayerObjectID);
+	osgViewer::Viewer *viewer = zone->core->getViewer();
+	
+	zone->name = snapshotFile;
+	
+	ClientRenderer::instance()->initialize(zone->core, zone, Vector3(x, y, z), viewer);
+	zone->core->setRenderer(ClientRenderer::instance());
+	
+	zone->core->getRenderer()->run();
 
 	BaseMessage* msg = new CmdSceneReady();
 	client->sendPacket(msg);
@@ -178,6 +199,8 @@ void ZonePacketHandler::handleSceneObjectCreateMessage(Message* pack) {
 
 	SceneObject* object = objectManager->createObject(crc, objectID);
 
+	object->setPosition(x, y, z);
+	zone->core->getRenderer()->addObject(object);
 	if (object == NULL) {
 		StringBuffer infoMsg;
 		infoMsg << "unknown crc 0x" << hex << crc << " received in SceneObjectCreateMessage";

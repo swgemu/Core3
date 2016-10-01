@@ -13,6 +13,13 @@
 #include "server/zone/ZoneServer.h"
 
 void CityHallZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) const {
+	ZoneServer* zoneServer = sceneObject->getZoneServer();
+
+	if (zoneServer == NULL || zoneServer->isServerShuttingDown()) {
+		ZoneComponent::destroyObjectFromWorld(sceneObject, sendSelfDestroy);
+		return;
+	}
+
 	ManagedReference<CityRegion*> cityRegion = sceneObject->getCityRegion().get();
 
 	if (cityRegion != NULL ) {
@@ -24,7 +31,7 @@ void CityHallZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, boo
 
 		clocker.release();
 
-		CityManager* cityManager = sceneObject->getZoneServer()->getCityManager();
+		CityManager* cityManager = zoneServer->getCityManager();
 
 		cityManager->destroyCity(cityRegion);
 	}

@@ -1912,7 +1912,9 @@ float AiAgentImplementation::getWorldZ(const Vector3& position) {
 	} else {
 		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 
+#ifdef COV_DEBUG
 		zone->info("Null closeobjects vector in AiAgentImplementation::getWorldZ", true);
+#endif
 
 		Vector3 worldPosition = getWorldPosition();
 		zone->getInRangeObjects(worldPosition.getX(), worldPosition.getY(), 128, &closeObjects, true);
@@ -1967,7 +1969,9 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 	if (closeobjects != NULL) {
 		closeobjects->safeCopyTo(closeObjects);
 	} else {
+#ifdef COV_DEBUG
 		zone->info("Null closeobjects vector in AiAgentImplementation::generatePatrol", true);
+#endif
 
 		Vector3 worldPosition = getWorldPosition();
 		zone->getInRangeObjects(worldPosition.getX(), worldPosition.getY(), 128, &closeObjects, true);
@@ -2956,7 +2960,9 @@ void AiAgentImplementation::broadcastInterrupt(int64 msg) {
 
 			try {
 				if (closeobjects == NULL) {
+#ifdef COV_DEBUG
 					aiAgent_p->info("Null closeobjects vector in AiAgentImplementation::broadcastInterrupt", true);
+#endif
 					zone->getInRangeObjects(aiAgent_p->getPositionX(), aiAgent_p->getPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeAiAgents, true);
 				} else {
 					closeAiAgents.removeAll(closeobjects->size(), 10);

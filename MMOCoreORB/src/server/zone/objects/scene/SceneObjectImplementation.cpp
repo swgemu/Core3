@@ -525,7 +525,9 @@ void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, Scen
 	int maxInRangeObjectCount = 0;
 
 	if (closeobjects == NULL) {
+#ifdef COV_DEBUG
 		info("Null closeobjects vector in SceneObjectImplementation::broadcastObjectPrivate", true);
+#endif
 		zone->getInRangeObjects(getPositionX(), getPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeSceneObjects, true);
 
 		maxInRangeObjectCount = closeSceneObjects.size();
@@ -579,7 +581,9 @@ void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, Sce
 	int maxInRangeObjectCount = 0;
 
 	if (closeobjects == NULL) {
-		info("Null closeobjects vector in SceneObjectImplementation::broadcastDestroyPrivate");
+#ifdef COV_DEBUG
+		info("Null closeobjects vector in SceneObjectImplementation::broadcastDestroyPrivate", true);
+#endif
 		zone->getInRangeObjects(getPositionX(), getPositionY(), ZoneServer::CLOSEOBJECTRANGE + 64, &closeSceneObjects, true);
 
 		maxInRangeObjectCount = closeSceneObjects.size();
@@ -645,7 +649,9 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 
 	try {
 		if (closeobjects == NULL) {
+#ifdef COV_DEBUG
 			info(String::valueOf(getObjectID()) + " Null closeobjects vector in SceneObjectImplementation::broadcastMessagePrivate", true);
+#endif
 			closeSceneObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
 			zone->getInRangeObjects(getPositionX(), getPositionY(), ZoneServer::CLOSEOBJECTRANGE, closeSceneObjects, true);
 
@@ -743,7 +749,9 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 	try {
 
 		if (closeobjects == NULL) {
+#ifdef COV_DEBUG
 			info(String::valueOf(getObjectID()) + " Null closeobjects vector in SceneObjectImplementation::broadcastMessagesPrivate", true);
+#endif
 			zone->getInRangeObjects(getPositionX(), getPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeSceneObjects, true);
 
 			maxInRangeObjectCount = closeSceneObjects.size();
@@ -799,7 +807,9 @@ int SceneObjectImplementation::inRangeObjects(unsigned int gameObjectType, float
 	int maxInRangeObjectCount = 0;
 
 	if (closeobjects == NULL) {
+#ifdef COV_DEBUG
 		info("Null closeobjects vector in SceneObjectImplementation::inRangeObjects", true);
+#endif
 		zone->getInRangeObjects(getPositionX(), getPositionY(), range, &closeSceneObjects, true);
 
 		maxInRangeObjectCount = closeSceneObjects.size();

@@ -86,7 +86,9 @@ public:
 		if (vec != NULL) {
 			vec->safeCopyTo(closeEntryObjects);
 		} else {
+#ifdef COV_DEBUG
 			droid->info("Null closeobjects vector in DroidMerchantBarkerTask::run()", true);
+#endif
 			zone->getInRangeObjects(droid->getWorldPositionX(), droid->getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeEntryObjects, true);
 		}
 

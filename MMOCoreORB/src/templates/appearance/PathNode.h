@@ -15,42 +15,25 @@
 class PathGraph;
 
 class PathNode : public Object {
-	enum PathNodeType
-	{
-		CellPortal           = 0,
-		CellWaypoint         = 1,
-		CellPOI              = 2,
-
-		BuildingEntrance     = 3,
-		BuildingCell         = 4,
-		BuildingPortal       = 5,
-
-		CityBuildingEntrance = 6,
-		CityWaypoint         = 7,
-		CityPOI              = 8,
-		CityBuilding         = 9,
-		CityEntrance         = 10,
-
-		BuildingCellPart     = 11,
-
-		Invalid              = 12,
-	};
+protected:
 
 	Vector<PathNode*> children;
 
 	uint32 id;
 	int var2, globalGraphNodeID;
-	PathNodeType type;
+	int type;
 	float x, z, y, radius;
 
 	PathGraph* pathGraph;
 
 public:
+
+	
 	PathNode(PathGraph* graph) {
 		pathGraph = graph;
 		id = 0;
 		var2 = globalGraphNodeID = 0;
-		type = Invalid;
+		type = 0;
 		x = z = y = radius = 0;
 	}
 
@@ -59,15 +42,17 @@ public:
 	}
 
 	void readObject(IffStream* iffStream) {
-		id = iffStream->getInt();
-		var2 = iffStream->getInt();
-		globalGraphNodeID = iffStream->getInt();
-		type = static_cast<PathNodeType>(iffStream->getInt());
+		id = iffStream->getInt(); // index
+		var2 = iffStream->getInt(); // ID
+		globalGraphNodeID = iffStream->getInt(); // Key
+		type = iffStream->getInt();
 
-		x = iffStream->getFloat();
+		x = iffStream->getFloat(); // position
 		z = iffStream->getFloat();
 		y = iffStream->getFloat();
-		radius = iffStream->getFloat();
+		radius = iffStream->getFloat(); //radius
+		if(radius == 0.0f)
+			radius = 0.5f;
 	}
 
 	inline float getX() const {
@@ -96,7 +81,7 @@ public:
 		return radius;
 	}
 
-	inline PathNodeType getType() const {
+	inline int getType() const {
 		return type;
 	}
 

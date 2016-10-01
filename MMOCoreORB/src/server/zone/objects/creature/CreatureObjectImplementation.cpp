@@ -780,7 +780,9 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 					//Locker locker(thisZone);
 
 					if (closeobjects == NULL) {
+#ifdef COV_DEBUG
 						info("Null closeobjects vector in CreatureObjectImplementation::setState", true);
+#endif
 						thisZone->getInRangeObjects(getWorldPositionX(), getWorldPositionY(), ZoneServer::CLOSEOBJECTRANGE, &closeSceneObjects, true);
 						maxInRangeObjects = closeSceneObjects.size();
 					} else {

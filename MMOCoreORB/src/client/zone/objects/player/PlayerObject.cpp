@@ -7,6 +7,6 @@
 
 #include "PlayerObject.h"
 
-PlayerObject::PlayerObject(LuaObject* templateData) : IntangibleObject(templateData) {
+PlayerObject::PlayerObject(SharedObjectTemplate* templateData) : IntangibleObject(templateData) {
 	setLoggingName("PlayerObject");
 }

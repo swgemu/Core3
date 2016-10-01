@@ -13,7 +13,7 @@
 
 
 ZoneClient::ZoneClient(int port) {
-	client = new BaseClient("localhost", port);
+	client = new BaseClient("127.0.0.1", port);
 	client->setHandler(this);
 
 	client->setLogging(true);

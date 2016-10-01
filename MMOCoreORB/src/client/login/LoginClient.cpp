@@ -14,7 +14,7 @@
 #include "LoginClient.h"
 
 LoginClient::LoginClient(int port, const String& loggingName) {
-	client = new BaseClient("localhost", port);
+	client = new BaseClient("127.0.0.1", port);
 
 	client->setLogging(true);
 	client->setLoggingName(loggingName);
