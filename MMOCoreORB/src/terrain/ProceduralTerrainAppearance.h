@@ -90,6 +90,8 @@ public:
 	void insertWaterBoundary(Boundary* boundary) {
 		waterBoundaries.add(boundary);
 	}
+	
+	void getWaterBoundariesInAABB(const AABB& bounds, Vector<const Boundary*>* boundariesOut) const;
 
 	void getWaterBoundariesInAABB(const AABB& bounds, Vector<const Boundary*>* boundariesOut) const;
 
@@ -112,6 +114,7 @@ public:
 	bool getUseGlobalWaterTable() {
 		return useGlobalWaterTable;
 	}
+
 	ReadWriteLock* getGuard() {
 		return &guard;
 	}

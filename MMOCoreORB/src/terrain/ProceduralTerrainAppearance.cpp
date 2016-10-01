@@ -85,6 +85,9 @@ bool ProceduralTerrainAppearance::load(IffStream* iffStream) {
 
 void ProceduralTerrainAppearance::getWaterBoundariesInAABB(const AABB& bounds, Vector<const Boundary*>* boundaries) const {
 	for (const auto& boundary : waterBoundaries) {
+		if(boundary->containsPoint(bounds.getXMin(), bounds.getYMin()) || boundary->containsPoint(bounds.getXMin(), bounds.getYMin()))
+			boundaries->add(boundary);
+		
 		AABB boundsBox = AABB(Vector3(boundary->getMinX(), -FLT_MAX, boundary->getMinY()), Vector3(boundary->getMaxX(), FLT_MAX, boundary->getMaxY()));
 		Vector3 center = boundsBox.center() - bounds.center();
 		Vector3 boundaryExtents = boundsBox.extents();
@@ -92,7 +95,6 @@ void ProceduralTerrainAppearance::getWaterBoundariesInAABB(const AABB& bounds, V
 
 		if(fabs(center.getX()) > (boundaryExtents.getX() + extents.getX())) continue;
 	   	if(fabs(center.getY()) > (boundaryExtents.getY() + extents.getY())) continue;
-
 		boundaries->add(boundary);
 	}
 }
