@@ -91,6 +91,8 @@ public:
 	void insertWaterBoundary(Boundary* boundary) {
 		waterBoundaries.add(boundary);
 	}
+	
+	void getWaterBoundariesInAABB(const AABB& bounds, Vector<const Boundary*>* boundariesOut) const;
 
 	/**
 	 * Returns the size of the terrain.
@@ -104,6 +106,9 @@ public:
 	float getHeight(float x, float y);
 	int getEnvironmentID(float x, float y);
 
+	float getGlobalWaterTableHeight() {
+		return globalWaterTableHeight;
+	}
 	ReadWriteLock* getGuard() {
 		return &guard;
 	}
