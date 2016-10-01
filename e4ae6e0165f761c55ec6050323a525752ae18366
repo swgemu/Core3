@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dad5f5cf_51885422",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 1527,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-01T12:11:34Z",
+      "side": 1,
+      "message": "You should put this at the start of the function.",
+      "range": {
+        "startLine": 1527,
+        "startChar": 1,
+        "endLine": 1527,
+        "endChar": 4
+      },
+      "revId": "e4ae6e0165f761c55ec6050323a525752ae18366",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_718d5831",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 1531,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-01T12:11:34Z",
+      "side": 1,
+      "message": "Remove these 3 lines. They look to be leftover when you were merging a conflict while rebasing. The addWaypoint call is above.",
+      "range": {
+        "startLine": 1531,
+        "startChar": 4,
+        "endLine": 1531,
+        "endChar": 5
+      },
+      "revId": "e4ae6e0165f761c55ec6050323a525752ae18366",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
