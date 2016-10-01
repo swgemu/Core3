@@ -22,6 +22,30 @@
       "revId": "a12b243864f1342d5cc706be787b1b517edd82fb",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_11416c0b",
+        "filename": "MMOCoreORB/bin/scripts/managers/spawn_manager/corellia.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-10-01T08:14:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dad5f5cf_91bd5c05",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "a12b243864f1342d5cc706be787b1b517edd82fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
