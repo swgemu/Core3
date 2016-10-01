@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dad5f5cf_31b910ea",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1717,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-10-01T08:14:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dad5f5cf_d14a0427",
+      "range": {
+        "startLine": 1717,
+        "startChar": 12,
+        "endLine": 1717,
+        "endChar": 26
+      },
+      "revId": "f6f3508f8d483057375a5de2f168d888c50f688a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dad5f5cf_f147081c",
         "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2016-09-30T21:27:58Z",
       "side": 1,
       "message": "Since you potentially calling getTier() 3 times per iteration of the loop, I would probably just call it once and store it in a var before use.",
+      "range": {
+        "startLine": 1736,
+        "startChar": 19,
+        "endLine": 1736,
+        "endChar": 26
+      },
+      "revId": "f6f3508f8d483057375a5de2f168d888c50f688a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_d1cd2488",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-10-01T08:14:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dad5f5cf_f147081c",
       "range": {
         "startLine": 1736,
         "startChar": 19,
