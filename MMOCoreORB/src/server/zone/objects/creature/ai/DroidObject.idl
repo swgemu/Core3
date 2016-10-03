@@ -161,7 +161,7 @@ class DroidObject extends AiAgent {
 	public int getMaximumHAM() {
 		return maximumHam;
 	}
-	
+
 	@preLocked
 	public void setMaximumHAM(int idx) {
 		maximumHam = idx;
@@ -217,7 +217,7 @@ class DroidObject extends AiAgent {
 	 */
 	@preLocked
 	@arg1preLocked
-	public native int rechargeFromBattery(CreatureObject player);
+	public native int rechargeFromBattery(CreatureObject player, DroidObject droidPet);
 
 	/**
 	 * Handles droid being recharged by another droid

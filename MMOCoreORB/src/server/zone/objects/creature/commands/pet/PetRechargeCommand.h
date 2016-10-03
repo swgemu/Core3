@@ -34,7 +34,7 @@ public:
 
 		// Recharge
 		Locker plocker(player, creature);
-		droidPet->rechargeFromBattery(player);
+		droidPet->rechargeFromBattery(player, droidPet);
 
 		return SUCCESS;
 	}
