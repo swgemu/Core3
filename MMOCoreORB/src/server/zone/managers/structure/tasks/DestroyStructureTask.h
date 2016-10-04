@@ -89,9 +89,9 @@ public:
 							Locker plocker(playerCreature);
 
 							if (destroyQuestStructure) {
-								playerCreature->inflictDamage(structureObject, 0, 9999999, true, true);
-								playerCreature->inflictDamage(structureObject, 3, 9999999, true, true);
-								playerCreature->inflictDamage(structureObject, 6, 9999999, true, true);
+								playerCreature->inflictDamage(playerCreature, 0, 9999999, true, true);
+								playerCreature->inflictDamage(playerCreature, 3, 9999999, true, true);
+								playerCreature->inflictDamage(playerCreature, 6, 9999999, true, true);
 							}
 
 							playerCreature->teleport(x, z, y, 0);
