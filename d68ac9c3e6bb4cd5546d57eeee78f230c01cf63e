@@ -87,6 +87,24 @@
     },
     {
       "key": {
+        "uuid": "dad5f5cf_11fe4c6c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1848
+      },
+      "writtenOn": "2016-10-04T21:50:09Z",
+      "side": 1,
+      "message": "this has to do with the ability to do the quests during phase1 after winning the election and up until the next election is won/lost.  ill clean it up.",
+      "parentUuid": "1a76adc5_9657aa26",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_b6542622",
         "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
         "patchSetId": 23
@@ -172,6 +190,24 @@
     },
     {
       "key": {
+        "uuid": "dad5f5cf_31035075",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1848
+      },
+      "writtenOn": "2016-10-04T21:50:09Z",
+      "side": 1,
+      "message": "the reward was only granted once even though you can do the actual quest more than once. (i remember this from live)",
+      "parentUuid": "1a76adc5_d62442c8",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_962ecaa4",
         "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
         "patchSetId": 23
@@ -200,6 +236,24 @@
       "writtenOn": "2016-09-27T20:38:35Z",
       "side": 1,
       "message": "I think you need to go back to the structure of your previous patch set 21 where you were checking for the current phase before these other checks. I wanted you to link the checks via the use of elseifs, not change the overall structure of the checks.",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_b1d740ed",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1848
+      },
+      "writtenOn": "2016-10-04T21:50:09Z",
+      "side": 1,
+      "message": "that was before i realized that in phase 1 after winning the election, people can still do the quests while the current election is going on.  so i tore up this code to reflect that but need to clean \u0026 tighten it back down.",
+      "parentUuid": "1a76adc5_b62bc693",
       "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -308,6 +362,24 @@
     },
     {
       "key": {
+        "uuid": "dad5f5cf_5104d47d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1848
+      },
+      "writtenOn": "2016-10-04T21:50:09Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "1a76adc5_d60be229",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_f6085e2f",
         "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
         "patchSetId": 23
@@ -319,6 +391,24 @@
       "writtenOn": "2016-09-27T20:38:35Z",
       "side": 1,
       "message": "You don\u0027t need to handle returned_noroom_still since the data will already have been written so you can remove that check from here.",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_7109d894",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1848
+      },
+      "writtenOn": "2016-10-04T21:50:09Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "1a76adc5_f6085e2f",
       "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
