@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "9a6a9dd7_57310c0a",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/sean_questp_market_conv.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1848
+      },
+      "writtenOn": "2016-10-04T21:50:09Z",
+      "side": 1,
+      "message": "oops this is from sean_questn_university",
+      "parentUuid": "9a6a9dd7_37ed788c",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a6a9dd7_b7a66852",
         "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/bestine_election/victor_questn_capitol_conv.lua",
         "patchSetId": 10
@@ -1118,6 +1136,24 @@
       "writtenOn": "2016-04-26T15:00:27Z",
       "side": 1,
       "message": "returning 1 here will cause the observer to be removed. It won\u0027t get reapplied when the mob respawns. You should return 0 instead to keep the observer.",
+      "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_173b94ec",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/tatooine_fort_tusken.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1848
+      },
+      "writtenOn": "2016-10-04T21:50:09Z",
+      "side": 1,
+      "message": "good to know!",
+      "parentUuid": "9a6a9dd7_170cf493",
       "revId": "9e1635850c8eeb7bf06772d545f50b8448a3602c",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
