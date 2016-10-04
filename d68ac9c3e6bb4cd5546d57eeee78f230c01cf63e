@@ -70,6 +70,23 @@
     },
     {
       "key": {
+        "uuid": "dad5f5cf_91f1dc97",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1848
+      },
+      "writtenOn": "2016-10-04T22:20:06Z",
+      "side": 1,
+      "message": "i started rewriting this and adding to it because i read and remembered that the quests they give after winning the election were able to be done when the next election started.  this is a mess and will be cleaned up before i publish it again.",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_9657aa26",
         "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
         "patchSetId": 23
@@ -139,6 +156,24 @@
     },
     {
       "key": {
+        "uuid": "dad5f5cf_b1ee60b3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1848
+      },
+      "writtenOn": "2016-10-04T22:20:06Z",
+      "side": 1,
+      "message": "again during phase 1 after winning election some checks need to be done in order for the player that didnt vote for the rival to do the quest up until the next election (new phase2)",
+      "parentUuid": "1a76adc5_76368e05",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_163b9aec",
         "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
         "patchSetId": 23
@@ -156,6 +191,24 @@
     },
     {
       "key": {
+        "uuid": "dad5f5cf_512b74eb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1848
+      },
+      "writtenOn": "2016-10-04T22:20:06Z",
+      "side": 1,
+      "message": "i may have been testing various ways to check variables.",
+      "parentUuid": "1a76adc5_163b9aec",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_36401656",
         "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
         "patchSetId": 23
@@ -167,6 +220,24 @@
       "writtenOn": "2016-09-27T20:38:35Z",
       "side": 1,
       "message": "Shouldn\u0027t you also remove the tusken head from the player when you give the reward?",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_7130f856",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1848
+      },
+      "writtenOn": "2016-10-04T22:20:06Z",
+      "side": 1,
+      "message": "yes!",
+      "parentUuid": "1a76adc5_36401656",
       "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -219,6 +290,24 @@
       "writtenOn": "2016-09-27T20:38:35Z",
       "side": 1,
       "message": "You don\u0027t use this here, remove it.",
+      "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_1135ec45",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1848
+      },
+      "writtenOn": "2016-10-04T22:20:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_962ecaa4",
       "revId": "d68ac9c3e6bb4cd5546d57eeee78f230c01cf63e",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
