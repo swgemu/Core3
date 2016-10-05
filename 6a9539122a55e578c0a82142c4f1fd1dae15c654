@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dad5f5cf_b14ae0aa",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/talus/durgur_pyne.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-05T22:17:49Z",
+      "side": 1,
+      "message": "It wasn\u0027t actually bugged. It just doesn\u0027t have an object name, only a custom one, and you were overwriting the customName to nothing. You could simply put something in npcName and it\u0027d work fine.",
+      "range": {
+        "startLine": 28,
+        "startChar": 21,
+        "endLine": 28,
+        "endChar": 32
+      },
+      "revId": "6a9539122a55e578c0a82142c4f1fd1dae15c654",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
