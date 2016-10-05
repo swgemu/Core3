@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dad5f5cf_71655844",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/corellia/viceprex_tasks.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-05T22:12:42Z",
+      "side": 1,
+      "message": "Why aren\u0027t you using object/tangible/mission/quest_item/karrek_film_q1_needed.iff ?",
+      "range": {
+        "startLine": 57,
+        "startChar": 45,
+        "endLine": 57,
+        "endChar": 61
+      },
+      "revId": "5fbf3ffececa63df7ee0cab2b193c3f03a701554",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_115acc83",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/corellia/viceprex_tasks.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-05T22:12:42Z",
+      "side": 1,
+      "message": "Why aren\u0027t you using object/tangible/mission/quest_item/karrek_film_q2_needed.iff ?",
+      "range": {
+        "startLine": 76,
+        "startChar": 45,
+        "endLine": 76,
+        "endChar": 61
+      },
+      "revId": "5fbf3ffececa63df7ee0cab2b193c3f03a701554",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
