@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dad5f5cf_f1694826",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1309,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-05T21:51:19Z",
+      "side": 1,
+      "message": "Because you\u0027re trying to use a chatroom error code as if it were an IM error code. You\u0027re passing a 4 which for IMs is the error code for the player being offline.\n\nAs we\u0027ve stated before, we do not have the correct error code defined in ChatManager.idl since it\u0027s unknown. You would need to try and figure out what the correct one is, define it in the .idl, and then use it here.",
+      "range": {
+        "startLine": 1309,
+        "startChar": 61,
+        "endLine": 1309,
+        "endChar": 69
+      },
+      "revId": "169c2821767995a9d7ed2e432441dfdaefb95f22",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
