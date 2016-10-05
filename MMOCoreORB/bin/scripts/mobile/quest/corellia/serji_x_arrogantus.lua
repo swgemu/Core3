@@ -1,6 +1,6 @@
 serji_x_arrogantus = Creature:new {
 	objectName = "",
-	customName = "Serji X Arrogantus",
+	customName = "Serji-X Arrogantus",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
