@@ -29,7 +29,7 @@ void DroidObjectImplementation::initializeTransientMembers() {
 
 void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	AiAgentImplementation::fillAttributeList(msg, object);
-	
+
 	ManagedReference<ControlDevice*> device = getControlDevice().get();
 
 	if (device != NULL && device->isASubChildOf(object)) {
@@ -153,8 +153,10 @@ int DroidObjectImplementation::rechargeFromBattery(CreatureObject* player) {
 		return 0;
 	}
 
-	// Reset power to max
+	// Reset power to max and heal droid's BF
 	power = MAX_POWER;
+	int droidsbf = getShockWounds();
+	addShockWounds(-droidsbf, true, false);
 
 	// Consume battery
 	Locker locker(batteryTano);
@@ -167,8 +169,10 @@ int DroidObjectImplementation::rechargeFromBattery(CreatureObject* player) {
 }
 
 void DroidObjectImplementation::rechargeFromDroid() {
-	// Reset power to max
+	// Reset power to max and heal that droid's BF too
 	power = MAX_POWER;
+	int droidsbf = getShockWounds();
+	addShockWounds(-droidsbf, true, false);
 
 	showFlyText("npc_reaction/flytext","recharged", 0, 153, 0);  // "*Recharged*"
 	doAnimation("power_up");
