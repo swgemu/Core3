@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dad5f5cf_318830e7",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/ai/DroidObject.idl",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-05T21:42:58Z",
+      "side": 1,
+      "message": "Adding this argument is unnecessary. Remove it.",
+      "range": {
+        "startLine": 220,
+        "startChar": 74,
+        "endLine": 220,
+        "endChar": 82
+      },
+      "revId": "5e007eff45d92a80ad2fb626cbbb41167dc591e1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
