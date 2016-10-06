@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dad5f5cf_51bcd46c",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/talus/defector_quest_lethin.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-06T01:30:56Z",
+      "side": 1,
+      "message": "I don\u0027t think a defector should still be an imperial.",
+      "range": {
+        "startLine": 4,
+        "startChar": 12,
+        "endLine": 4,
+        "endChar": 20
+      },
+      "revId": "cfc66da812e55cbe88904bbc68159a1c803ca5f6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
