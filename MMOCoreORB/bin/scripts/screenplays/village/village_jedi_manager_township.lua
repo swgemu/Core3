@@ -62,6 +62,7 @@ function VillageJediManagerTownship:switchToNextPhase()
 	VillageJediManagerTownship:despawnMobiles(currentPhase)
 	VillageJediManagerTownship:despawnSceneObjects(currentPhase)
 	VillageJediManagerTownship:handlePhaseChangeActiveQuests(phaseID, currentPhase)
+	VillageCommunityCrafting:doEndOfPhaseCheck()
 
 	currentPhase = currentPhase + 1
 

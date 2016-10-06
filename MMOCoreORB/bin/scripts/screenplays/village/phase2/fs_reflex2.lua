@@ -86,7 +86,7 @@ function FsReflex2:setFetchCount(pCreature, count)
 end
 
 function FsReflex2:doPhaseChangeFail(pCreature)
-	if (QuestManager.hasCompletedQuest(pCreature, QuestManager.quests.FS_REFLEX_FETCH_QUEST_04)) then
+	if (QuestManager.hasCompletedQuest(pCreature, QuestManager.quests.FS_REFLEX_FETCH_QUEST_00) or not QuestManager.hasActiveQuest(pCreature, QuestManager.quests.FS_REFLEX_FETCH_QUEST_00)) then
 		return
 	end
 

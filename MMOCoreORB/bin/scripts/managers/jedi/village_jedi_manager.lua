@@ -55,6 +55,23 @@ function VillageJediManager:onPlayerLoggedIn(pCreatureObject)
 
 	Glowing:onPlayerLoggedIn(pCreatureObject)
 
+	if (QuestManager.hasActiveQuest(pCreatureObject, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_MAIN) and not QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_MAIN) and not VillageCommunityCrafting:isOnActiveCrafterList(pCreatureObject)) then
+		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_MAIN)
+		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_01)
+		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_02)
+	end
+
+	if (QuestManager.hasActiveQuest(pCreatureObject, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_MAIN) and not QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_MAIN) and not VillageCommunityCrafting:isOnActiveCrafterList(pCreatureObject)) then
+		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_MAIN)
+		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_01)
+		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_02)
+	end
+	
+	if (not VillageCommunityCrafting:isOnActiveCrafterList(pCreatureObject)) then
+		VillageCommunityCrafting:removeSchematics(pCreatureObject, 2)
+		VillageCommunityCrafting:removeSchematics(pCreatureObject, 3)
+	end
+
 	-- Any quests below are run from township because they are not a standard task
 	if (VillageJediManagerTownship:getCurrentPhase() ~= 1) then
 		if (QuestManager.hasActiveQuest(pCreatureObject, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_01) or
