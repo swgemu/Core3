@@ -1,8 +1,8 @@
 lethin_bludder = Creature:new {
 	objectName = "",
 	customName = "Lethin Bludder",
-	socialGroup = "townsperson",
-	faction = "townsperson",
+	socialGroup = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -23,15 +23,14 @@ lethin_bludder = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lethin_bludder.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "lethin_bludder_mission_giver_convotemplate",
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(lethin_bludder, "lethin_bludder")
