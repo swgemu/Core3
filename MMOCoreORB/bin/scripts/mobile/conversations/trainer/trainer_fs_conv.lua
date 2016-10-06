@@ -138,7 +138,7 @@ trainer_fs_convoscreen13 = ConvoScreen:new {
 }
 trainer_fs_convotemplate:addScreen(trainer_fs_convoscreen13);
 
-addConversationTemplate("trainer_fs_convotemplate", trainer_fs_convotemplate);
+createTrainerConversationTemplate("trainer_fs", "trainer_fs", "trainer_fs_convotemplate")
 
 -- -- not sure where to put:
 -- @skill_teacher:too_complicated 	-> I can't teach you anything. Everything I know is entirely too complicated for you.

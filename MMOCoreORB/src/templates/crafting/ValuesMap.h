@@ -19,6 +19,7 @@ public:
 	static const short PERCENTAGECOMBINE = 0x02;
 	static const short BITSETCOMBINE = 0x03;
 	static const short OVERRIDECOMBINE = 0x04;
+	static const short LIMITEDCOMBINE = 0x05;
 
 	void addExperimentalProperty(const String& title, const String& subtitle,
 			const float min, const float max, const int precision,

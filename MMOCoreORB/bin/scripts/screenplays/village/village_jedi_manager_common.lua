@@ -78,6 +78,8 @@ function VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
 	local phaseID = VillageJediManagerTownship:getCurrentPhaseID()
 	VillageJediManagerCommon.addToActiveQuestList(pPlayer)
 	setQuestStatus(SceneObject(pPlayer):getObjectID() .. ":village:lastActiveQuest", phaseID)
+	
+	CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/utils:quest_accepted")
 end
 
 function VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer)
@@ -130,7 +132,6 @@ function VillageJediManagerCommon.addToActiveQuestList(pPlayer)
 	else
 		printf("Error in VillageJediManagerCommon.addToActiveQuestList, attempting to add existing player " .. SceneObject(pPlayer):getCustomObjectName() .. " to active quest list.\n")
 	end
-
 end
 
 function VillageJediManagerCommon.removeFromActiveQuestList(pPlayer)

@@ -50,7 +50,7 @@ object_tangible_component_structure_reinforced_wall_module = object_tangible_com
 	experimentalMin = {0, 0, 0},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 1},
-	experimentalCombineType = {0, 0, 1},
+	experimentalCombineType = {0, 0, 5},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_reinforced_wall_module, "object/tangible/component/structure/reinforced_wall_module.iff")
