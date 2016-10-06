@@ -1,4 +1,5 @@
 local ObjectManager = require("managers.object.object_manager")
+local QuestManager = require("managers.quest.quest_manager")
 
 VillageCommunityCrafting = ScreenPlay:new {
 	maxCraftersPerPhase = 200,
@@ -49,7 +50,12 @@ VillageCommunityCrafting = ScreenPlay:new {
 		},
 		[3] = {
 			schematic = "object/draft_schematic/community_crafting/village_shields.iff",
-			minIngredients = 20
+			keyName = "village_shields",
+			ingredients = {},
+			secondarySchematics = {},
+			minIngredients = 20,
+			ingredientMinValue = 0,
+			ingredientMaxValue = 1000
 		}
 	}
 }
@@ -131,6 +137,11 @@ end
 
 function VillageCommunityCrafting:isOnActiveCrafterList(pPlayer)
 	local phaseID = VillageJediManagerTownship:getCurrentPhaseID()
+	local currentPhase = VillageJediManagerTownship.getCurrentPhase()
+
+	if (currentPhase ~= 2 and currentPhase ~= 3) then
+		return false
+	end
 
 	local pMap = VillageCommunityCrafting:getActiveCrafterList(phaseID)
 
@@ -708,6 +719,67 @@ function VillageCommunityCrafting:giveSchematics(pPlayer)
 	end
 end
 
+function VillageCommunityCrafting:removeSchematics(pPlayer, phase)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	local ingredientList = self.phaseInfo[phase].ingredients
+
+	for i = 1, #ingredientList, 1 do
+		PlayerObject(pGhost):removeRewardedSchematic(ingredientList[i].schematic, true)
+	end
+
+	local secondaryList = self.phaseInfo[phase].secondarySchematics
+
+	for i = 1, #secondaryList, 1 do
+		PlayerObject(pGhost):removeRewardedSchematic(secondaryList[i], true)
+	end
+end
+
+function VillageCommunityCrafting:doEndOfPhaseCheck()
+	local phaseID = VillageJediManagerTownship:getCurrentPhaseID()
+	local currentPhase = VillageJediManagerTownship.getCurrentPhase()
+
+	local pMap = self:getActiveCrafterList(phaseID)
+
+	if (pMap == nil) then
+		return
+	end
+
+	local crafterMap = LuaQuestVectorMap(pMap)
+
+	local mapSize = crafterMap:getMapSize()
+
+	for i = 0, mapSize - 1, 1 do
+		local playerID = crafterMap:getMapKeyAtIndex(i)
+
+		local pPlayer = getCreatureObject(tonumber(playerID))
+
+		if (pPlayer ~= nil) then
+			local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+			if (pGhost ~= nil and PlayerObject(pGhost):isOnline()) then
+				if (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_MAIN) and not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_MAIN)) then
+					QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_MAIN)
+					QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_01)
+					QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_02)
+				end
+
+				if (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_MAIN) and not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_MAIN)) then
+					QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_MAIN)
+					QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_01)
+					QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_02)
+				end
+
+				self:removeSchematics(pPlayer, currentPhase)
+			end
+		end
+	end
+end
+
 QtQcContainerComponent = {}
 
 function QtQcContainerComponent:transferObject(pContainer, pObj, slot)
@@ -729,6 +801,10 @@ function QtQcContainerComponent:transferObject(pContainer, pObj, slot)
 
 	if (ingredientsNeeded == 0) then
 		CreatureObject(pPlayer):sendSystemMessage("@crafting:cc_thank_you_done")
+		
+		if (currentPhase == 2) then
+			VillageJediManagerCommon.unlockBranch(pPlayer, "force_sensitive_crafting_mastery_technique")
+		end
 	elseif (ingredientsNeeded == 1) then
 		CreatureObject(pPlayer):sendSystemMessage("@crafting:cc_thank_you_one")
 	else

@@ -50,7 +50,7 @@ object_tangible_component_structure_lightweight_turret_hardware = object_tangibl
 	experimentalMin = {0, 0, 0},
 	experimentalMax = {0, 0, 500},
 	experimentalPrecision = {0, 0, 1},
-	experimentalCombineType = {0, 0, 1},
+	experimentalCombineType = {0, 0, 5},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_lightweight_turret_hardware, "object/tangible/component/structure/lightweight_turret_hardware.iff")

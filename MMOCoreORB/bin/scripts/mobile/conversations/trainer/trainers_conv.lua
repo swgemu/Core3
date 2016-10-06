@@ -244,7 +244,7 @@ createTrainerConversationTemplate("trainer_weaponsmith", "crafting_weaponsmith_m
 
 -- ****** Create force sensitive conversation templates ******
 -- Need a non-valid master skill...
---createTrainerConversationTemplate("trainer_fs", "trainer_fs", "trainer_fs_convotemplate")
+createTrainerConversationTemplate("trainer_fs", "trainer_fs", "trainer_fs_convotemplate")
 
 
 

@@ -242,6 +242,17 @@ bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, Manufactu
 						// Do nothing because the values should override whatever is
 						// on the component
 						break;
+					case ValuesMap::LIMITEDCOMBINE:
+						currentvalue += propertyvalue;
+
+						if (currentvalue < min)
+							currentvalue = min;
+
+						if (currentvalue > max)
+							currentvalue = max;
+
+						craftingValues->setCurrentValue(property, currentvalue);
+						break;
 					default:
 						break;
 					}
