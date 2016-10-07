@@ -132,15 +132,13 @@ public:
 			}
 		}
 
-		// TODO add check that you're not in a cantina with droid bonus
-
 		if (creature->isInCombat()) {
-			creature->sendSystemMessage("You cannot do that while in Combat.");
+			creature->sendSystemMessage("You cannot heal your own wounds while still in Combat.");
 			return false;
 		}
 
 		if (creatureTarget->isInCombat()) {
-			creature->sendSystemMessage("You cannot do that while your target is in Combat.");
+			creature->sendSystemMessage("You cannot heal your target's wounds while they are in Combat.");
 			return false;
 		}
 
@@ -155,7 +153,7 @@ public:
 		}
 
 		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
-			creature->sendSystemMessage("@container_error_message:container18");
+			creature->sendSystemMessage("@healing:no_line_of_sight"); // You cannot see your target.
 			return false;
 		}
 

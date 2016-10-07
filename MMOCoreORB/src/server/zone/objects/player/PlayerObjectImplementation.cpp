@@ -1571,9 +1571,6 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 			if (targetObject != NULL) {
 				if (targetObject->isInRange(creature, MAX(10, creature->getWeapon()->getMaxRange()) + targetObject->getTemplateRadius() + creature->getTemplateRadius())) {
 					creature->executeObjectControllerAction(STRING_HASHCODE("attack"), creature->getTargetID(), "");
-				} else {
-					CombatSpam* spam = new CombatSpam(creature, NULL, creature, NULL, 0, "cbt_spam", "out_of_range", 2); // That target is out of range. (red)
-					creature->sendMessage(spam);
 				}
 
 				// as long as the target is still valid, we still want to continue to queue auto attacks
