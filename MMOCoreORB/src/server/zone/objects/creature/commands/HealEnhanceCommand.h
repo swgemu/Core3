@@ -111,7 +111,7 @@ public:
 		}
 
 		if (enhancer->isInCombat()) {
-			enhancer->sendSystemMessage("You cannot do that while in Combat.");
+			enhancer->sendSystemMessage("You cannot HealEnhance yourself while in Combat.");
 			return false;
 		}
 
@@ -121,7 +121,7 @@ public:
 		}
 
 		if (patient->isInCombat()) {
-			enhancer->sendSystemMessage("You cannot do that while your target is in Combat.");
+			enhancer->sendSystemMessage("You cannot HealEnhance your target while they are still in Combat.");
 			return false;
 		}
 
@@ -131,7 +131,7 @@ public:
 		}
 
 		if (enhancer != patient && !CollisionManager::checkLineOfSight(enhancer, patient)) {
-			enhancer->sendSystemMessage("@container_error_message:container18");
+			enhancer->sendSystemMessage("@healing:no_line_of_sight"); // You cannot see your target.
 			return false;
 		}
 
