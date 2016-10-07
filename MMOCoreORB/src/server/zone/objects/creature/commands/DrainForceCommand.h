@@ -44,7 +44,7 @@ public:
 			return TOOFAR;
 
 		if (!CollisionManager::checkLineOfSight(creature, targetCreature)) {
-			creature->sendSystemMessage("@container_error_message:container18");
+			creature->sendSystemMessage("@combat_effects:cansee_fail");//You cannot see your target.
 			return GENERALERROR;
 		}
 

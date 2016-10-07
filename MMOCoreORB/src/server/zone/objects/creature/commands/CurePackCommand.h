@@ -319,7 +319,7 @@ public:
 		}
 
 		if (!creatureTarget->isHealableBy(creature)) {
-			creature->sendSystemMessage("@healing:pvp_no_help");
+			creature->sendSystemMessage("@healing:pvp_no_help"); //It would be unwise to help such a patient.
 			return false;
 		}
 
@@ -331,7 +331,7 @@ public:
 		PlayerManager* playerManager = server->getPlayerManager();
 
 		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
-			creature->sendSystemMessage("@container_error_message:container18");
+			creature->sendSystemMessage("@healing:no_line_of_sight"); //You cannot see your target.
 			return false;
 		}
 
