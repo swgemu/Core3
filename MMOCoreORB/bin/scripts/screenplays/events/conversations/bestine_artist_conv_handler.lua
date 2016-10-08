@@ -1,6 +1,6 @@
 local ObjectManager = require("managers.object.object_manager")
 
-BestineArtistConvoHandler = Object:new {
+BestineArtistConvoHandler = conv_handler:new {
 	themePark = nil
 }
 
@@ -8,15 +8,15 @@ function BestineArtistConvoHandler:setThemePark(themeParkNew)
 	self.themePark = themeParkNew
 end
 
-function BestineArtistConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function BestineArtistConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	local screenID = screen:getScreenID()
-	local npcName = SceneObject(conversingNPC):getObjectName()
-	local playerID = SceneObject(conversingPlayer):getObjectID()
+	local npcName = SceneObject(pNpc):getObjectName()
+	local playerID = SceneObject(pPlayer):getObjectID()
 	local talkedPrev = readData(playerID .. ":bestine_election_" .. npcName)
 
 	if (npcName == "bestine_artist01") then
@@ -119,21 +119,21 @@ function BestineArtistConvoHandler:runScreenHandlers(conversationTemplate, conve
 
 	if (screenID == "painting_response_curvote" or screenID == "painting_response_curvote_prev" or screenID == "painting_response_wonvote") then
 		if (screenID == "painting_response_curvote" or screenID == "painting_response_curvote_prev") then
-			local artistId = string.sub(SceneObject(conversingNPC):getObjectName(), 16)
+			local artistId = string.sub(SceneObject(pNpc):getObjectName(), 16)
 
-			if (BestineMuseumScreenPlay:hasTalkedToArtist(conversingPlayer, artistId) == false) then
-				BestineMuseumScreenPlay:writeToTalkedList(conversingPlayer, artistId)
+			if (BestineMuseumScreenPlay:hasTalkedToArtist(pPlayer, artistId) == false) then
+				BestineMuseumScreenPlay:writeToTalkedList(pPlayer, artistId)
 			end
 		end
 
 		writeData(playerID .. ":bestine_election_" .. npcName, 1)
 	end
-	return conversationScreen
+	return pConvScreen
 end
 
 
-function BestineArtistConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function BestineArtistConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	local artistId = string.sub(SceneObject(pNpc):getObjectName(), 16)
 	local wonVote = BestineMuseumScreenPlay:getWinningArtistID() == artistId
 	local curVote = BestineMuseumScreenPlay:isCurrentArtist(artistId)
@@ -145,20 +145,4 @@ function BestineArtistConvoHandler:getInitialScreen(pPlayer, pNpc, pConversation
 	else
 		return convoTemplate:getScreen("init_novote")
 	end
-end
-
-function BestineArtistConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-	local pLastConversationScreen = nil
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-		return conversationTemplate:getScreen(optionLink)
-	end
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
 end

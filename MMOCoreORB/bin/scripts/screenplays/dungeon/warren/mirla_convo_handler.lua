@@ -1,31 +1,30 @@
 local ObjectManager = require("managers.object.object_manager")
 
-MirlaConversationHandler = Object:new {}
+MirlaConversationHandler = conv_handler:new {}
 
-function MirlaConversationHandler:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNPC, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
+function MirlaConversationHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 
 	local screenID = screen:getScreenID()
 
 	if (screenID == "mirla_password") then
-		local screen = LuaConversationScreen(pConversationScreen)
 		local code = readStringData("warren:mirla:password")
 		screen:setDialogTextTO(code)
 	elseif (screenID == "mirla_2") then
-		local pGhost = CreatureObject(pConversingPlayer):getPlayerObject()
+		local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 		if (pGhost ~= nil) then
 			PlayerObject(pGhost):awardBadge(38) --Warren Compassion
 		end
 
-		CreatureObject(pConversingPlayer):setScreenPlayState(WarrenScreenPlay.states.mirla.started, "warren");
+		CreatureObject(pPlayer):setScreenPlayState(WarrenScreenPlay.states.mirla.started, "warren");
 	end
 
-	return pConversationScreen
+	return pConvScreen
 end
 
-function MirlaConversationHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function MirlaConversationHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	if (CreatureObject(pPlayer):hasScreenPlayState(WarrenScreenPlay.states.mirla.done, "warren")) then
 		return convoTemplate:getScreen("mirla_done")
@@ -34,26 +33,4 @@ function MirlaConversationHandler:getInitialScreen(pPlayer, pNpc, pConversationT
 	end
 
 	return convoTemplate:getScreen("mirla_start")
-end
-
-function MirlaConversationHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-
-	local pLastConversationScreen = nil
-
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-
-		return conversationTemplate:getScreen(optionLink)
-	end
-
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
 end

@@ -1,7 +1,7 @@
 tutorialBankerConvoTemplate = ConvoTemplate:new {
-	initialScreen = "",
+	initialScreen = "intro",
 	templateType = "Lua",
-	luaClassHandler = "tutorialBankerConvoHandler",
+	luaClassHandler = "conv_handler",
 	screens = {}
 }
 

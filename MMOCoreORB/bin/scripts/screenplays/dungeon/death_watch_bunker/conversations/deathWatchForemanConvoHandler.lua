@@ -11,26 +11,10 @@ local ObjectManager = require("managers.object.object_manager")
 128 - Received mineral
 ]]
 
-deathWatchForemanConvoHandler = {  }
+deathWatchForemanConvoHandler = conv_handler:new {}
 
-function deathWatchForemanConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-	local pLastConversationScreen = nil
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-		return conversationTemplate:getScreen(optionLink)
-	end
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
-end
-
-function deathWatchForemanConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function deathWatchForemanConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	-- Player has not spoken to Foreman before
 	if (not CreatureObject(pPlayer):hasScreenPlayState(1, "death_watch_foreman_stage")) then
@@ -113,60 +97,60 @@ function deathWatchForemanConvoHandler:getInitialScreen(pPlayer, pNpc, pConversa
 	end
 end
 
-function deathWatchForemanConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function deathWatchForemanConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 
 	local screenID = screen:getScreenID()
 
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 	if (screenID == "great_remember_medicine") then
-		CreatureObject(conversingPlayer):setScreenPlayState(1, "death_watch_foreman_stage")
+		CreatureObject(pPlayer):setScreenPlayState(1, "death_watch_foreman_stage")
 	end
 	if (screenID == "what_i_expected") then
-		CreatureObject(conversingPlayer):removeScreenPlayState(2, "death_watch_foreman_stage")
-		CreatureObject(conversingPlayer):removeScreenPlayState(1, "death_watch_haldo")
-		CreatureObject(conversingPlayer):removeScreenPlayState(2, "death_watch_haldo")
-		CreatureObject(conversingPlayer):removeScreenPlayState(4, "death_watch_haldo")
+		CreatureObject(pPlayer):removeScreenPlayState(2, "death_watch_foreman_stage")
+		CreatureObject(pPlayer):removeScreenPlayState(1, "death_watch_haldo")
+		CreatureObject(pPlayer):removeScreenPlayState(2, "death_watch_haldo")
+		CreatureObject(pPlayer):removeScreenPlayState(4, "death_watch_haldo")
 	end
 	if (screenID == "great_remember_medicine" or screenID == "return_great_remember_medicine") then
-		DeathWatchBunkerScreenPlay:startForemanQuestStage(1, conversingPlayer)
-		CreatureObject(conversingPlayer):setScreenPlayState(2, "death_watch_foreman_stage")
+		DeathWatchBunkerScreenPlay:startForemanQuestStage(1, pPlayer)
+		CreatureObject(pPlayer):setScreenPlayState(2, "death_watch_foreman_stage")
 	end
 	if (screenID == "return_battery_cleaned_no_haldo_kill" or screenID == "return_battery_cleaned_killed_haldo") then
-		local pInventory = CreatureObject(conversingPlayer):getSlottedObject("inventory")
+		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 
 		if (pInventory ~= nil) then
 			local pBatt = getContainerObjectByTemplate(pInventory, "object/tangible/dungeon/death_watch_bunker/drill_battery_clean.iff", true)
 
 			if (pBatt == nil) then
-				CreatureObject(conversingPlayer):sendSystemMessage("Error: Battery not found in inventory.")
+				CreatureObject(pPlayer):sendSystemMessage("Error: Battery not found in inventory.")
 				return 0
 			end
 
 			SceneObject(pBatt):destroyObjectFromWorld()
 			SceneObject(pBatt):destroyObjectFromDatabase()
-			CreatureObject(conversingPlayer):setScreenPlayState(16, "death_watch_foreman_stage")
+			CreatureObject(pPlayer):setScreenPlayState(16, "death_watch_foreman_stage")
 		end
 	end
-	if ((screenID == "thank_you_didnt_kill" or screenID == "thank_you_killed") and not CreatureObject(conversingPlayer):hasScreenPlayState(4, "death_watch_foreman_stage")) then
-		CreatureObject(conversingPlayer):setScreenPlayState(4, "death_watch_foreman_stage")
+	if ((screenID == "thank_you_didnt_kill" or screenID == "thank_you_killed") and not CreatureObject(pPlayer):hasScreenPlayState(4, "death_watch_foreman_stage")) then
+		CreatureObject(pPlayer):setScreenPlayState(4, "death_watch_foreman_stage")
 	end
 
 	if (screenID == "up_for_danger" or screenID == "speak_to_treadwell") then
-		CreatureObject(conversingPlayer):setScreenPlayState(8, "death_watch_foreman_stage")
+		CreatureObject(pPlayer):setScreenPlayState(8, "death_watch_foreman_stage")
 	end
 	if (screenID == "come_back_after_pumps" or screenID == "remember_tricky_pumps") then
-		CreatureObject(conversingPlayer):setScreenPlayState(32, "death_watch_foreman_stage")
-		CreatureObject(conversingPlayer):removeScreenPlayState(2, "death_watch_foreman_stage_failed")
-		DeathWatchBunkerScreenPlay:startForemanQuestStage(2, conversingPlayer)
+		CreatureObject(pPlayer):setScreenPlayState(32, "death_watch_foreman_stage")
+		CreatureObject(pPlayer):removeScreenPlayState(2, "death_watch_foreman_stage_failed")
+		DeathWatchBunkerScreenPlay:startForemanQuestStage(2, pPlayer)
 	end
 	if (screenID == "ore_reward") then
-		CreatureObject(conversingPlayer):setScreenPlayState(128, "death_watch_foreman_stage")
+		CreatureObject(pPlayer):setScreenPlayState(128, "death_watch_foreman_stage")
 	end
 	if (screenID == "ore_reward" or screenID == "more_ore") then
-		DeathWatchBunkerScreenPlay:storeTime(conversingPlayer)
-		local pInventory = CreatureObject(conversingPlayer):getSlottedObject("inventory")
+		DeathWatchBunkerScreenPlay:storeTime(pPlayer)
+		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 
 		if (pInventory == nil) then
 			return 0
@@ -175,15 +159,15 @@ function deathWatchForemanConvoHandler:runScreenHandlers(conversationTemplate, c
 		local pOre = giveItem(pInventory, "object/tangible/loot/dungeon/death_watch_bunker/mining_drill_reward.iff", -1)
 
 		if (pOre == nil) then
-			CreatureObject(conversingPlayer):sendSystemMessage("Error: Unable to generate item.")
+			CreatureObject(pPlayer):sendSystemMessage("Error: Unable to generate item.")
 			return 0
 		end
 	end
 	if (screenID == "found_him_yet") then
-		local pInventory = CreatureObject(conversingPlayer):getSlottedObject("inventory")
+		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 		if (pInventory ~= nil) then
 			if (getContainerObjectByTemplate(pInventory, "object/tangible/dungeon/death_watch_bunker/drill_battery.iff", true) ~= nil) then
-				if (not CreatureObject(conversingPlayer):hasScreenPlayState(4, "death_watch_haldo")) then
+				if (not CreatureObject(pPlayer):hasScreenPlayState(4, "death_watch_haldo")) then
 					clonedConversation:addOption("@conversation/death_watch_foreman:s_829888a9", "thank_you_didnt_kill")
 				else
 					clonedConversation:addOption("@conversation/death_watch_foreman:s_829888a9", "thank_you_killed")
@@ -194,7 +178,7 @@ function deathWatchForemanConvoHandler:runScreenHandlers(conversationTemplate, c
 		clonedConversation:addOption("@conversation/death_watch_foreman:s_baac9005", "what_i_expected")
 	end
 	if (screenID == "pump_room_upstairs") then
-		if (not CreatureObject(conversingPlayer):hasScreenPlayState(4, "death_watch_haldo")) then
+		if (not CreatureObject(pPlayer):hasScreenPlayState(4, "death_watch_haldo")) then
 			clonedConversation:addOption("@conversation/death_watch_foreman:s_d4b1da9f", "tricky_pumps_no_haldo_kill")
 		else
 			clonedConversation:addOption("@conversation/death_watch_foreman:s_d4b1da9f", "tricky_pumps_haldo_kill")
@@ -202,7 +186,7 @@ function deathWatchForemanConvoHandler:runScreenHandlers(conversationTemplate, c
 		clonedConversation:addOption("@conversation/death_watch_foreman:s_3055077f", "choice_is_yours")
 	end
 	if (screenID == "pump_success_haldo_kill" or screenID == "pump_success_no_haldo_kill") then
-		local pInventory = CreatureObject(conversingPlayer):getSlottedObject("inventory")
+		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 
 		if (pInventory == nil) then
 			return 0
@@ -222,5 +206,5 @@ function deathWatchForemanConvoHandler:runScreenHandlers(conversationTemplate, c
 			end
 		end
 	end
-	return conversationScreen
+	return pConvScreen
 end

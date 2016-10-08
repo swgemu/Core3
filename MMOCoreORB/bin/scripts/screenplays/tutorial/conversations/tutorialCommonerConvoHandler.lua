@@ -1,18 +1,14 @@
 local ObjectManager = require("managers.object.object_manager")
 
-tutorialCommonerConvoHandler = Object:new { }
+tutorialCommonerConvoHandler = conv_handler:new {}
 
-function tutorialCommonerConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	return conversationScreen
-end
-
-function tutorialCommonerConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function tutorialCommonerConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	local commonerNum = readData(SceneObject(pNpc):getObjectID() .. ":tutorial:commonerNum")
 
 	return convoTemplate:getScreen("initCommoner" .. commonerNum)
 end
 
-function tutorialCommonerConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
+function tutorialCommonerConvoHandler:getNextConversationScreen(pConvTemplate, pPlayer, selectedOption, pNpc)
+	return self:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 end

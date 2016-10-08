@@ -2,53 +2,20 @@ local ExperienceConverter = require("screenplays.village.convos.convohelpers.exp
 local ObjectManager = require("managers.object.object_manager")
 local Logger = require("utils.logger")
 
-fs_experience_converter_conv_handler = Object:new {}
+fs_experience_converter_conv_handler = conv_handler:new {}
 
-function fs_experience_converter_conv_handler:getNextConversationScreen(pConversationTemplate, pConversingPlayer, selectedOption)
-	local convosession = CreatureObject(pConversingPlayer):getConversationSession()
-
-	local lastConversationScreen = nil
-
-	if (convosession ~= nil) then
-		local session = LuaConversationSession(convosession)
-		lastConversationScreen = session:getLastConversationScreen()
-	end
-
-	local conversation = LuaConversationTemplate(pConversationTemplate)
-
-	local nextConversationScreen
-
-	if (lastConversationScreen ~= nil) then
-		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
-
-		--Get the linked screen for the selected option.
-		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
-
-		nextConversationScreen = conversation:getScreen(optionLink)
-
-		if nextConversationScreen ~= nil then
-			local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
-		else
-			nextConversationScreen = conversation:getScreen("init")
-		end
-	else
-		nextConversationScreen = conversation:getScreen("init")
-	end
-	return nextConversationScreen
-end
-
-function fs_experience_converter_conv_handler:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
+function fs_experience_converter_conv_handler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 
 	local screenID = screen:getScreenID()
 
 	if screenID == "init" then
-		pConversationScreen = fs_experience_converter_conv_handler.handleInit(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+		pConvScreen = self:handleInit(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "cs_jsPlumb_1_7" then
-		local nextUnlockableBranches = ExperienceConverter:getNextUnlockableBranches(pConversingPlayer)
+		local nextUnlockableBranches = ExperienceConverter:getNextUnlockableBranches(pPlayer)
 
-		pConversationScreen = screen:cloneScreen()
-		local clonedConversation = LuaConversationScreen(pConversationScreen)
+		pConvScreen = screen:cloneScreen()
+		local clonedConversation = LuaConversationScreen(pConvScreen)
 
 		if (nextUnlockableBranches ~= nil) then
 			local insertionStringFormatted = nextUnlockableBranches[1]
@@ -60,17 +27,17 @@ function fs_experience_converter_conv_handler:runScreenHandlers(pConversationTem
 			clonedConversation:setCustomDialogText("I sense you are unable to learn any new skills at this time.")
 		end
 	elseif screenID == "cs_jsPlumb_1_17" then -- Unlocking new branches.
-		fs_experience_converter_conv_handler:chooseBranchToUnlock(pConversingPlayer)
+		self:chooseBranchToUnlock(pPlayer)
 	elseif screenID == "cs_jsPlumb_1_11" then -- Transferring Experience of first type.
-		fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pConversingPlayer, 0)
+		self:chooseExperienceTypeForRatio(pPlayer, 0)
 	elseif screenID == "cs_jsPlumb_1_126" then -- Transferring Experience of second type.
-		fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pConversingPlayer, 1)
+		self:chooseExperienceTypeForRatio(pPlayer, 1)
 	elseif screenID == "cs_jsPlumb_1_139" then -- Transferring Experience of third type.
-		fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pConversingPlayer, 2)
+		self:chooseExperienceTypeForRatio(pPlayer, 2)
 	elseif screenID == "cs_jsPlumb_1_152" then -- Transferring Experience of fourth type.
-		fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pConversingPlayer, 3)
+		self:chooseExperienceTypeForRatio(pPlayer, 3)
 	end
-	return pConversationScreen
+	return pConvScreen
 end
 
 function fs_experience_converter_conv_handler:chooseBranchToUnlock(pCreature)
@@ -227,8 +194,6 @@ function fs_experience_converter_conv_handler:transferExperiencePoints(pCreature
 		return
 	end
 
-
-
 	if (experienceTypeFS ~= nil) then
 		local optionsName = ExperienceConverter:getExperienceForConversion(pCreature, ExperienceConverter:getSuiTransferExperienceType(objId))
 		local optionsChoice = tonumber(ExperienceConverter:getSuiTransferExperienceSelection(CreatureObject(pCreature):getObjectID()))
@@ -267,17 +232,17 @@ function fs_experience_converter_conv_handler:transferExperiencePoints(pCreature
 	end
 end
 
-function fs_experience_converter_conv_handler.handleInit(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
+function fs_experience_converter_conv_handler:handleInit(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local conversationTemplate = LuaConversationTemplate(pConvTemplate)
 	local nextScreen = nil
 
 	-- Paemos - "beckon" animation.
-	CreatureObject(pConversingNpc):doAnimation("beckon")
+	CreatureObject(pNpc):doAnimation("beckon")
 
 	-- See if they have a quest to unlock, or having XP to convert.
-	if (ExperienceConverter.qualifiesForConversation(pConversingPlayer) == true) then
+	if (ExperienceConverter:qualifiesForConversation(pPlayer) == true) then
 		nextScreen = "cs_jsPlumb_1_5"
-	elseif ((ExperienceConverter.qualifiesForConversation(pConversingPlayer) == false) or nextScreen == nil) then
+	elseif ((ExperienceConverter:qualifiesForConversation(pPlayer) == false) or nextScreen == nil) then
 		nextScreen = "cs_jsPlumb_1_19"
 	end
 

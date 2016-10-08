@@ -210,16 +210,16 @@ function heraldScreenPlay:giveMultiDestWaypoint(pPlayer, heraldNum, locNum)
 	if pWaypoint ~= nil then
 		local waypoint = LuaWaypointObject(pWaypoint)
 
-		--if not waypoint:isActive() then
-		--	waypoint:setActive(1)
-		--	playerObject:updateWaypoint(waypoint:getObjectID())
-		--end
+		if not waypoint:isActive() then
+			waypoint:setActive(1)
+			PlayerObject(pGhost):updateWaypoint(waypoint:getObjectID())
+		end
 	else
 		PlayerObject(pGhost):addWaypoint(heraldData.planet, stfFile .. destString, "", x, y, WAYPOINTBLUE, true, true, 0)
 	end
 end
 
-HeraldConvoHandler = Object:new {
+HeraldConvoHandler = conv_handler:new {
 	themePark = nil
 }
 
@@ -227,36 +227,36 @@ function HeraldConvoHandler:setThemePark(themeParkNew)
 	self.themePark = themeParkNew
 end
 
-function HeraldConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function HeraldConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
 
-	local conversationScreen = screen:cloneScreen()
+	local pConvScreen = screen:cloneScreen()
 
 	if screenID == "init" then
-		conversationScreen = self:handleScreenInit(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+		pConvScreen = self:handleScreenInit(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "npc_1_1" then
-		conversationScreen = self:handleScreenNpc1(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+		pConvScreen = self:handleScreenNpc1(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "npc_2_1" then
-		conversationScreen = self:handleScreenNpc2(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+		pConvScreen = self:handleScreenNpc2(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "npc_3_1" then
-		conversationScreen = self:handleScreenNpc3(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+		pConvScreen = self:handleScreenNpc3(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "npc_4_1" then
-		conversationScreen = self:handleScreenNpc4(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+		pConvScreen = self:handleScreenNpc4(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "npc_work_1" then
-		conversationScreen = self:handleScreenNpcWork(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+		pConvScreen = self:handleScreenNpcWork(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "npc_reset" then
-		conversationScreen = self:handleScreenNpcReset(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+		pConvScreen = self:handleScreenNpcReset(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "npc_backtowork_1" then
-		conversationScreen = self:handleScreenNpcBackToWork(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+		pConvScreen = self:handleScreenNpcBackToWork(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	end
-	return conversationScreen
+	return pConvScreen
 end
 
-function HeraldConvoHandler:handleScreenNpc1(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local clonedScreen = LuaConversationScreen(pConversationScreen)
+function HeraldConvoHandler:handleScreenNpc1(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local clonedScreen = LuaConversationScreen(pConvScreen)
 
-	local heraldNumber = readData(SceneObject(pConversingNpc):getObjectID() .. ":heraldID")
+	local heraldNumber = readData(SceneObject(pNpc):getObjectID() .. ":heraldID")
 	local stfFile = "@spawning/static_npc/" .. self.themePark.heraldList[heraldNumber].stringFile
 
 	clonedScreen:setDialogTextStringId(stfFile .. ":npc_1_1")
@@ -266,37 +266,37 @@ function HeraldConvoHandler:handleScreenNpc1(pConversationTemplate, pConversingP
 	clonedScreen:addOption(stfFile .. ":player_2_1", "npc_3_1")
 	clonedScreen:addOption(stfFile .. ":player_3_1", "npc_4_1")
 
-	return pConversationScreen
+	return pConvScreen
 end
 
-function HeraldConvoHandler:handleScreenNpc2(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local clonedScreen = LuaConversationScreen(pConversationScreen)
+function HeraldConvoHandler:handleScreenNpc2(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local clonedScreen = LuaConversationScreen(pConvScreen)
 
-	local heraldNumber = readData(SceneObject(pConversingNpc):getObjectID() .. ":heraldID")
+	local heraldNumber = readData(SceneObject(pNpc):getObjectID() .. ":heraldID")
 	local heraldData = self.themePark.heraldList[heraldNumber]
 	local stfFile = "@spawning/static_npc/" .. heraldData.stringFile
-	heraldScreenPlay:createLoc(pConversingPlayer, heraldNumber)
+	heraldScreenPlay:createLoc(pPlayer, heraldNumber)
 
 	clonedScreen:setDialogTextStringId(stfFile .. ":npc_2_1")
 
-	return pConversationScreen
+	return pConvScreen
 end
 
-function HeraldConvoHandler:handleScreenNpc3(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local clonedScreen = LuaConversationScreen(pConversationScreen)
+function HeraldConvoHandler:handleScreenNpc3(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local clonedScreen = LuaConversationScreen(pConvScreen)
 
-	local heraldNumber = readData(SceneObject(pConversingNpc):getObjectID() .. ":heraldID")
+	local heraldNumber = readData(SceneObject(pNpc):getObjectID() .. ":heraldID")
 	local stfFile = "@spawning/static_npc/" .. self.themePark.heraldList[heraldNumber].stringFile
 
 	clonedScreen:setDialogTextStringId(stfFile .. ":npc_3_1")
 
-	return pConversationScreen
+	return pConvScreen
 end
 
-function HeraldConvoHandler:handleScreenNpc4(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local clonedScreen = LuaConversationScreen(pConversationScreen)
+function HeraldConvoHandler:handleScreenNpc4(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local clonedScreen = LuaConversationScreen(pConvScreen)
 
-	local heraldNumber = readData(SceneObject(pConversingNpc):getObjectID() .. ":heraldID")
+	local heraldNumber = readData(SceneObject(pNpc):getObjectID() .. ":heraldID")
 	local stfFile = "@spawning/static_npc/" .. self.themePark.heraldList[heraldNumber].stringFile
 
 	clonedScreen:setDialogTextStringId(stfFile .. ":npc_4_1")
@@ -305,13 +305,13 @@ function HeraldConvoHandler:handleScreenNpc4(pConversationTemplate, pConversingP
 	clonedScreen:addOption(stfFile .. ":player_1_1", "npc_2_1")
 	clonedScreen:addOption(stfFile .. ":player_2_1", "npc_3_1")
 
-	return pConversationScreen
+	return pConvScreen
 end
 
-function HeraldConvoHandler:handleScreenNpcWork(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local clonedScreen = LuaConversationScreen(pConversationScreen)
+function HeraldConvoHandler:handleScreenNpcWork(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local clonedScreen = LuaConversationScreen(pConvScreen)
 
-	local heraldNumber = readData(SceneObject(pConversingNpc):getObjectID() .. ":heraldID")
+	local heraldNumber = readData(SceneObject(pNpc):getObjectID() .. ":heraldID")
 	local stfFile = "@spawning/static_npc/" .. self.themePark.heraldList[heraldNumber].stringFile
 
 	clonedScreen:setDialogTextStringId(stfFile .. ":npc_work_1")
@@ -321,128 +321,76 @@ function HeraldConvoHandler:handleScreenNpcWork(pConversationTemplate, pConversi
 	clonedScreen:addOption(stfFile .. ":player_sorry", "npc_backtowork_1")
 	clonedScreen:addOption(stfFile .. ":player_reset", "npc_reset")
 
-	return pConversationScreen
+	return pConvScreen
 end
 
-function HeraldConvoHandler:handleScreenNpcBackToWork(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local clonedScreen = LuaConversationScreen(pConversationScreen)
+function HeraldConvoHandler:handleScreenNpcBackToWork(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local clonedScreen = LuaConversationScreen(pConvScreen)
 
-	local heraldNumber = readData(SceneObject(pConversingNpc):getObjectID() .. ":heraldID")
+	local heraldNumber = readData(SceneObject(pNpc):getObjectID() .. ":heraldID")
 	local stfFile = "@spawning/static_npc/" .. self.themePark.heraldList[heraldNumber].stringFile
 
-	heraldScreenPlay:cleanUp(pConversingPlayer, heraldNumber)
-	heraldScreenPlay:createLoc(pConversingPlayer, heraldNumber)
+	heraldScreenPlay:cleanUp(pPlayer, heraldNumber)
+	heraldScreenPlay:createLoc(pPlayer, heraldNumber)
 
 	clonedScreen:setDialogTextStringId(stfFile .. ":npc_backtowork_1")
 
-	return pConversationScreen
+	return pConvScreen
 end
 
-function HeraldConvoHandler:handleScreenNpcReset(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local clonedScreen = LuaConversationScreen(pConversationScreen)
+function HeraldConvoHandler:handleScreenNpcReset(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local clonedScreen = LuaConversationScreen(pConvScreen)
 
-	local heraldNumber = readData(SceneObject(pConversingNpc):getObjectID() .. ":heraldID")
+	local heraldNumber = readData(SceneObject(pNpc):getObjectID() .. ":heraldID")
 	local stfFile = "@spawning/static_npc/" .. self.themePark.heraldList[heraldNumber].stringFile
 
-	heraldScreenPlay:cleanUp(pConversingPlayer, heraldNumber)
+	heraldScreenPlay:cleanUp(pPlayer, heraldNumber)
 
 	clonedScreen:setDialogTextStringId(stfFile .. ":npc_reset")
 
-	return pConversationScreen
+	return pConvScreen
 end
 
 
-function HeraldConvoHandler:handleScreenInit(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local convoTemplate = LuaConversationTemplate(conversationTemplate)
+function HeraldConvoHandler:handleScreenInit(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	local nextScreenName
-	local heraldNumber = readData(SceneObject(conversingNPC):getObjectID() .. ":heraldID")
-	local activeHerald = readData(CreatureObject(conversingPlayer):getObjectID() .. ":herald" .. heraldNumber)
+	local heraldNumber = readData(SceneObject(pNpc):getObjectID() .. ":heraldID")
+	local activeHerald = readData(CreatureObject(pPlayer):getObjectID() .. ":herald" .. heraldNumber)
 	if activeHerald ~= 0 then
 		nextScreenName = "npc_work_1"
 	else
 		nextScreenName = "npc_1_1"
 	end
-	return self:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, convoTemplate:getScreen(nextScreenName))
-end
-
-function HeraldConvoHandler:getNextConversationScreen(pConversationTemplate, pConversingPlayer, selectedOption)
-	local convosession = CreatureObject(pConversingPlayer):getConversationSession()
-	local lastConversationScreen = nil
-	if (convosession ~= nil) then
-		local session = LuaConversationSession(convosession)
-		lastConversationScreen = session:getLastConversationScreen()
-	end
-
-	local conversation = LuaConversationTemplate(pConversationTemplate)
-	local nextConversationScreen
-
-	if (lastConversationScreen ~= nil) then
-		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
-		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
-		nextConversationScreen = conversation:getScreen(optionLink)
-
-		if nextConversationScreen == nil then
-			nextConversationScreen = conversation:getScreen("init")
-		end
-	else
-		nextConversationScreen = conversation:getScreen("init")
-	end
-
-	return nextConversationScreen
+	return self:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, convoTemplate:getScreen(nextScreenName))
 end
 
 herald_conv_handler = HeraldConvoHandler:new {
 	themePark = heraldScreenPlay
 }
 
-MultiDestHeraldConvoHandler = Object:new {
+MultiDestHeraldConvoHandler = conv_handler:new {
 	themePark = nil
 }
 
-function MultiDestHeraldConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function MultiDestHeraldConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
 
-	local conversationScreen = screen:cloneScreen()
+	local pConvScreen = screen:cloneScreen()
 
 	if screenID == "loc1" then
-		self:handleScreenLoc(conversingPlayer, conversingNPC, 1)
+		self:handleScreenLoc(pPlayer, pNpc, 1)
 	elseif screenID == "loc2" then
-		self:handleScreenLoc(conversingPlayer, conversingNPC, 2)
+		self:handleScreenLoc(pPlayer, pNpc, 2)
 	end
 
-	return conversationScreen
+	return pConvScreen
 end
 
-function MultiDestHeraldConvoHandler:handleScreenLoc(pConversingPlayer, pConversingNpc, locNum)
-	local heraldNumber = readData(SceneObject(pConversingNpc):getObjectID() .. ":multiDestHeraldID")
-	heraldScreenPlay:giveMultiDestWaypoint(pConversingPlayer, heraldNumber, locNum)
-end
-
-function MultiDestHeraldConvoHandler:getNextConversationScreen(pConversationTemplate, pConversingPlayer, selectedOption)
-	local convosession = CreatureObject(pConversingPlayer):getConversationSession()
-	local lastConversationScreen = nil
-	if (convosession ~= nil) then
-		local session = LuaConversationSession(convosession)
-		lastConversationScreen = session:getLastConversationScreen()
-	end
-
-	local conversation = LuaConversationTemplate(pConversationTemplate)
-	local nextConversationScreen
-
-	if (lastConversationScreen ~= nil) then
-		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
-		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
-		nextConversationScreen = conversation:getScreen(optionLink)
-
-		if nextConversationScreen == nil then
-			nextConversationScreen = conversation:getScreen("init")
-		end
-	else
-		nextConversationScreen = conversation:getScreen("init")
-	end
-
-	return nextConversationScreen
+function MultiDestHeraldConvoHandler:handleScreenLoc(pPlayer, pNpc, locNum)
+	local heraldNumber = readData(SceneObject(pNpc):getObjectID() .. ":multiDestHeraldID")
+	heraldScreenPlay:giveMultiDestWaypoint(pPlayer, heraldNumber, locNum)
 end
 
 multi_dest_herald_conv_handler = MultiDestHeraldConvoHandler:new {

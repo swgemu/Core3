@@ -19,47 +19,24 @@ Librarian = ThemeParkLogic:new {
 
 registerScreenPlay("Librarian", true)
 
-librarian_handler = Object:new {
-	}
+librarian_handler = conv_handler:new {}
 
-function librarian_handler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-
-	local pLastConversationScreen = nil
-
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-
-		return conversationTemplate:getScreen(optionLink)
-	end
-
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
-end
-
-function librarian_handler:getInitialScreen(pPlayer, npc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function librarian_handler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	local objectID = CreatureObject(pPlayer):getObjectID()
 	writeData(objectID .. ":librarian", 1)
 
 	return convoTemplate:getScreen("want_trivia")
 end
 
-function librarian_handler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local pGhost = CreatureObject(conversingPlayer):getPlayerObject()
+function librarian_handler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
-		return conversationScreen
+		return pConvScreen
 	end
 
-	local screen = LuaConversationScreen(conversationScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
 
 	local rightResponses = { "winner_is_you", "you_are_right", "good_answer", "correct", "correctamundo", "you_got_it" }
@@ -68,10 +45,10 @@ function librarian_handler:runScreenHandlers(conversationTemplate, conversingPla
 		"buzz_wrong_answer", "couldnt_be_wronger", "most_wrong", "bad_answer", "most_unfortunate",
 		"most_incorrect", "worst_answer_ever", "wrongest", "wrong_squared", "you_are_weakest_link", "not_even_trying" }
 
-	local objectID = CreatureObject(conversingPlayer):getObjectID()
+	local objectID = CreatureObject(pPlayer):getObjectID()
 
-	conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	if (string.find(screenID, "question") ~= nil) then
 		local questionNum = string.match(screenID, '%d+')
@@ -111,7 +88,7 @@ function librarian_handler:runScreenHandlers(conversationTemplate, conversingPla
 		PlayerObject(pGhost):awardBadge(111)
 	end
 
-	return conversationScreen
+	return pConvScreen
 end
 
 function librarian_handler:shuffleAnswers(array)

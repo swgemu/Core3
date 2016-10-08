@@ -1,10 +1,10 @@
 local ObjectManager = require("managers.object.object_manager")
 local QuestManager = require("managers.quest.quest_manager")
 
-villageDageerinPhase2ConvoHandler = {  }
+villageDageerinPhase2ConvoHandler = conv_handler:new {}
 
-function villageDageerinPhase2ConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function villageDageerinPhase2ConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	if (VillageJediManagerTownship:getCurrentPhase() ~= 2) then
 		return convoTemplate:getScreen("intro_not_eligible")
@@ -45,37 +45,21 @@ function villageDageerinPhase2ConvoHandler:getInitialScreen(pPlayer, pNpc, pConv
 	end
 end
 
-function villageDageerinPhase2ConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function villageDageerinPhase2ConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
 
 	if (screenID == "tracking_device" or screenID == "intro_need_new_sensor") then
-		SuiRadiationSensor:giveSensor(conversingPlayer)
+		SuiRadiationSensor:giveSensor(pPlayer)
 
 		if (screenID == "tracking_device") then
-			FsSad:acceptNextTask(conversingPlayer)
+			FsSad:acceptNextTask(pPlayer)
 		end
 	elseif (screenID == "come_back_when_eliminated" or screenID == "intro_reward") then
-		FsSad:acceptNextTask(conversingPlayer)
+		FsSad:acceptNextTask(pPlayer)
 	elseif (screenID == "intro_on_task") then
-		FsSad:recreateCampIfDespawned(conversingPlayer)
+		FsSad:recreateCampIfDespawned(pPlayer)
 	end
 
-	return conversationScreen
-end
-
-function villageDageerinPhase2ConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-	local pLastConversationScreen = nil
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-		return conversationTemplate:getScreen(optionLink)
-	end
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
+	return pConvScreen
 end

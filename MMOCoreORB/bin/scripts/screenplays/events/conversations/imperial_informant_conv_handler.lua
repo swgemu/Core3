@@ -1,11 +1,11 @@
 local ObjectManager = require("managers.object.object_manager")
 
-imperialInformantConvoHandler = Object:new {}
+imperialInformantConvoHandler = conv_handler:new {}
 
-function imperialInformantConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function imperialInformantConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
-	local npcID = SceneObject(npc):getObjectID()
+	local npcID = SceneObject(pNpc):getObjectID()
 	local playersNpcID = readData(SceneObject(pPlayer):getObjectID() .. ":coaTargetID")
 
 	if npcID == playersNpcID then
@@ -15,35 +15,13 @@ function imperialInformantConvoHandler:getInitialScreen(pPlayer, npc, pConversat
 	end
 end
 
-function imperialInformantConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function imperialInformantConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
 
 	if screenID == "m1_informant_report" then
-		Coa2Screenplay:progressMissionOne(conversingPlayer, "imperial")
+		Coa2Screenplay:progressMissionOne(pPlayer, "imperial")
 	end
 
-	return conversationScreen
-end
-
-function imperialInformantConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-
-	local pLastConversationScreen = nil
-
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-
-		return conversationTemplate:getScreen(optionLink)
-	end
-
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
+	return pConvScreen
 end

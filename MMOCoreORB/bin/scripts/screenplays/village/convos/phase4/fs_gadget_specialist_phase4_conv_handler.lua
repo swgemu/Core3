@@ -1,10 +1,10 @@
 local ObjectManager = require("managers.object.object_manager")
 local QuestManager = require("managers.quest.quest_manager")
 
-villageGadgetSpecialistPhase4ConvoHandler = {  }
+villageGadgetSpecialistPhase4ConvoHandler = conv_handler:new {}
 
-function villageGadgetSpecialistPhase4ConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function villageGadgetSpecialistPhase4ConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	if (readData(SceneObject(pPlayer):getObjectID() .. ":returningForCraftingKit") == 1) then
 		return convoTemplate:getScreen("return_to_buy")
@@ -13,15 +13,15 @@ function villageGadgetSpecialistPhase4ConvoHandler:getInitialScreen(pPlayer, pNp
 	end
 end
 
-function villageGadgetSpecialistPhase4ConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function villageGadgetSpecialistPhase4ConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
-	local playerID = SceneObject(conversingPlayer):getObjectID()
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
+	local playerID = SceneObject(pPlayer):getObjectID()
 
 	if (screenID == "intro") then
-		local curQuestNum = FsCrafting4:getActiveQuestNum(conversingPlayer)
+		local curQuestNum = FsCrafting4:getActiveQuestNum(pPlayer)
 
 		if (curQuestNum == 1) then
 			clonedConversation:addOption("@conversation/fs_gadget_specialist:s_79fe19ed", "who_gave_idea")
@@ -39,9 +39,9 @@ function villageGadgetSpecialistPhase4ConvoHandler:runScreenHandlers(conversatio
 
 		clonedConversation:addOption("@conversation/fs_gadget_specialist:s_5542b04b", "quite_alright")
 	elseif (screenID == "one_other_thing" or screenID == "return_to_buy") then
-		local pInventory = CreatureObject(conversingPlayer):getSlottedObject("inventory")
+		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 
-		if (CreatureObject(conversingPlayer):getCashCredits() < 530) then
+		if (CreatureObject(pPlayer):getCashCredits() < 530) then
 			clonedConversation:addOption("@conversation/fs_gadget_specialist:s_a8749106", "not_enough_funds")
 		elseif (pInventory == nil or SceneObject(pInventory):isContainerFullRecursive()) then
 			clonedConversation:addOption("@conversation/fs_gadget_specialist:s_a8749106", "not_enough_space")
@@ -51,7 +51,7 @@ function villageGadgetSpecialistPhase4ConvoHandler:runScreenHandlers(conversatio
 
 		clonedConversation:addOption("@conversation/fs_gadget_specialist:s_8fe6a678", "offering_to_help")
 	elseif (screenID == "place_in_inventory") then
-		local pInventory = CreatureObject(conversingPlayer):getSlottedObject("inventory")
+		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 
 		if (pInventory ~= nil) then
 			local pTracker = getContainerObjectByTemplate(pInventory, "object/tangible/loot/collectible/collectible_rewards/fs_tracking_device.iff", true)
@@ -60,10 +60,10 @@ function villageGadgetSpecialistPhase4ConvoHandler:runScreenHandlers(conversatio
 				local pItem = giveItem(pInventory, "object/tangible/loot/collectible/kits/fs_tracking_device_kit.iff", -1)
 
 				if (pItem ~= nil) then
-					CreatureObject(conversingPlayer):subtractCashCredits(530)
-					QuestManager.completeQuest(conversingPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_01)
-					QuestManager.activateQuest(conversingPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_02)
-					deleteData(SceneObject(conversingPlayer):getObjectID() .. ":returningForCraftingKit")
+					CreatureObject(pPlayer):subtractCashCredits(530)
+					QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_01)
+					QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_02)
+					deleteData(SceneObject(pPlayer):getObjectID() .. ":returningForCraftingKit")
 					TangibleObject(pItem):setLuaStringData("ownerID", playerID)
 					createObserver(OBJECTREMOVEDFROMZONE, "FsCrafting4", "notifyTrackingKitDestroyed", pItem, 1)
 				end
@@ -73,21 +73,5 @@ function villageGadgetSpecialistPhase4ConvoHandler:runScreenHandlers(conversatio
 		writeData(playerID .. ":returningForCraftingKit", 1)
 	end
 
-	return conversationScreen
-end
-
-function villageGadgetSpecialistPhase4ConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-	local pLastConversationScreen = nil
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-		return conversationTemplate:getScreen(optionLink)
-	end
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
+	return pConvScreen
 end

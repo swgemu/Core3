@@ -1,5 +1,5 @@
 philosopherConvoTemplate = ConvoTemplate:new {
-	initialScreen = "",
+	initialScreen = "init",
 	templateType = "Lua",
 	luaClassHandler = "philosopherConvoHandler",
 	screens = {}

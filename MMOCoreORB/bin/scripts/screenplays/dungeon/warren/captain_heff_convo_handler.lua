@@ -1,22 +1,22 @@
 local ObjectManager = require("managers.object.object_manager")
 
-CaptainHeffConversationHandler = Object:new {}
+CaptainHeffConversationHandler = conv_handler:new {}
 
-function CaptainHeffConversationHandler:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNPC, selectedOption, pConversationScreen)
-	local pGhost = CreatureObject(pConversingPlayer):getPlayerObject()
+function CaptainHeffConversationHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
-		return pConversationScreen
+		return pConvScreen
 	end
 
-	local screen = LuaConversationScreen(pConversationScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
 
 	if (screenID == "heff_1") then
 		PlayerObject(pGhost):awardBadge(39)
 		PlayerObject(pGhost):increaseFactionStanding("imperial", 500)
 
-		local pDatapad = SceneObject(pConversingPlayer):getSlottedObject("datapad")
+		local pDatapad = SceneObject(pPlayer):getSlottedObject("datapad")
 
 		if (pDatapad ~= nil) then
 			for i = 1, 4, 1 do
@@ -36,11 +36,11 @@ function CaptainHeffConversationHandler:runScreenHandlers(pConversationTemplate,
 		end
 	end
 
-	return pConversationScreen
+	return pConvScreen
 end
 
-function CaptainHeffConversationHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function CaptainHeffConversationHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
@@ -66,26 +66,4 @@ function CaptainHeffConversationHandler:getInitialScreen(pPlayer, pNpc, pConvers
 		end
 	end
 	return convoTemplate:getScreen("heff_bye")
-end
-
-function CaptainHeffConversationHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-
-	local pLastConversationScreen = nil
-
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-
-		return conversationTemplate:getScreen(optionLink)
-	end
-
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
 end

@@ -1,5 +1,5 @@
 eventPromoterConvoTemplate = ConvoTemplate:new {
-	initialScreen = "",
+	initialScreen = "welcome",
 	templateType = "Lua",
 	luaClassHandler = "eventPromoterConvoHandler",
 	screens = {}

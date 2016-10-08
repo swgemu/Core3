@@ -1,21 +1,21 @@
 local ObjectManager = require("managers.object.object_manager")
 
-BiogenicScientistHumanConvoHandler = Object:new {}
+BiogenicScientistHumanConvoHandler = conv_handler:new {}
 
-function BiogenicScientistHumanConvoHandler:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNPC, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
+function BiogenicScientistHumanConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	if screenID == "since_youre_here" or screenID == "i_hope_so" then
-		CreatureObject(pConversingPlayer):setScreenPlayState(1, "geonosian_lab_tenloss");
-		GeonosianLabScreenPlay:giveGeoItem(pConversingPlayer, "object/tangible/loot/loot_schematic/geonosian_tenloss_dxr6_schematic.iff")
+		CreatureObject(pPlayer):setScreenPlayState(1, "geonosian_lab_tenloss");
+		GeonosianLabScreenPlay:giveGeoItem(pPlayer, "object/tangible/loot/loot_schematic/geonosian_tenloss_dxr6_schematic.iff")
 	end
 
-	return pConversationScreen
+	return pConvScreen
 end
 
-function BiogenicScientistHumanConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function BiogenicScientistHumanConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	if (CreatureObject(pPlayer):hasScreenPlayState(1, "geonosian_lab_tenloss")) then
 		return convoTemplate:getScreen("go_on_ahead")
@@ -24,26 +24,4 @@ function BiogenicScientistHumanConvoHandler:getInitialScreen(pPlayer, pNpc, pCon
 	end
 
 	return convoTemplate:getScreen("thanks_so_much")
-end
-
-function BiogenicScientistHumanConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-
-	local pLastConversationScreen = nil
-
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-
-		return conversationTemplate:getScreen(optionLink)
-	end
-
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
 end

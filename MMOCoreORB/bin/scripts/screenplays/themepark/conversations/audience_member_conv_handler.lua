@@ -1,13 +1,13 @@
 local ObjectManager = require("managers.object.object_manager")
 
-audienceMemberConvoHandler = Object:new { }
+audienceMemberConvoHandler = conv_handler:new { }
 
-function audienceMemberConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+function audienceMemberConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 
-	local npcID = SceneObject(conversingNPC):getObjectID()
+	local npcID = SceneObject(pNpc):getObjectID()
 	local phrase = readStringData(npcID .. ":theater_manager:convoResponse")
 	local phraseTO = readStringData(npcID .. ":theater_manager:convoResponseTO")
 
@@ -21,14 +21,9 @@ function audienceMemberConvoHandler:runScreenHandlers(conversationTemplate, conv
 		clonedConversation:setDialogTextTO(tostring(phraseTO))
 	end
 
-	return conversationScreen
+	return pConvScreen
 end
 
-function audienceMemberConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-	return convoTemplate:getScreen("init")
-end
-
-function audienceMemberConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
+function audienceMemberConvoHandler:getNextConversationScreen(pConvTemplate, pPlayer, selectedOption, pNpc)
+	return self:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 end

@@ -1,6 +1,6 @@
 local ObjectManager = require("managers.object.object_manager")
 
-CorvetteTicketTakerConvoHandler = Object:new {
+CorvetteTicketTakerConvoHandler = conv_handler:new {
 	ticketTaker = nil
 }
 
@@ -8,58 +8,29 @@ function CorvetteTicketTakerConvoHandler:setTicketTaker(taker)
 	self.ticketTaker = taker
 end
 
-function CorvetteTicketTakerConvoHandler:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNPC, selectedOption, pConversationScreen)
-	local player = CreatureObject(pConversingPlayer)
-	local screen = LuaConversationScreen(pConversationScreen)
+function CorvetteTicketTakerConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local player = CreatureObject(pPlayer)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	if screenID == "start" then
-		pConversationScreen = self:handleScreenStart(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+		pConvScreen = self:handleScreenStart(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "continue" then
-		pConversationScreen = self:handleScreenContinue(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+		pConvScreen = self:handleScreenContinue(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "authorization" then
-		self.ticketTaker:validateTicket(pConversingPlayer)
+		self.ticketTaker:validateTicket(pPlayer)
 	end
-	return pConversationScreen
+	return pConvScreen
 end
 
-function CorvetteTicketTakerConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function CorvetteTicketTakerConvoHandler:handleScreenStart(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
+	pConvScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConvScreen)
 
-	return convoTemplate:getScreen("start")
-
-end
-
-function CorvetteTicketTakerConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-
-	local pLastConversationScreen = nil
-
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-
-		return conversationTemplate:getScreen(optionLink)
-	end
-
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
-end
-
-function CorvetteTicketTakerConvoHandler:handleScreenStart(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
-	pConversationScreen = screen:cloneScreen()
-	local clonedScreen = LuaConversationScreen(pConversationScreen)
-
-	local player = CreatureObject(pConversingPlayer)
+	local player = CreatureObject(pPlayer)
 	local activeStep = tonumber(getQuestStatus(player:getObjectID() .. ":activeCorvetteStep"))
-	local rightFaction = self.ticketTaker:checkFaction(pConversingPlayer)
+	local rightFaction = self.ticketTaker:checkFaction(pPlayer)
 
 	clonedScreen:removeAllOptions()
 
@@ -77,17 +48,17 @@ function CorvetteTicketTakerConvoHandler:handleScreenStart(pConversationTemplate
 
 	clonedScreen:addOption(self.ticketTaker.goodbyeString, "goodbye")
 
-	return pConversationScreen
+	return pConvScreen
 end
 
-function CorvetteTicketTakerConvoHandler:handleScreenContinue(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
-	pConversationScreen = screen:cloneScreen()
-	local clonedScreen = LuaConversationScreen(pConversationScreen)
+function CorvetteTicketTakerConvoHandler:handleScreenContinue(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
+	pConvScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConvScreen)
 
-	local player = CreatureObject(pConversingPlayer)
+	local player = CreatureObject(pPlayer)
 	local activeStep = tonumber(getQuestStatus(player:getObjectID() .. ":activeCorvetteStep"))
-	local rightFaction = self.ticketTaker:checkFaction(pConversingPlayer)
+	local rightFaction = self.ticketTaker:checkFaction(pPlayer)
 
 	clonedScreen:removeAllOptions()
 
@@ -105,5 +76,5 @@ function CorvetteTicketTakerConvoHandler:handleScreenContinue(pConversationTempl
 
 	clonedScreen:addOption(self.ticketTaker.nevermindString, "goodbye2")
 
-	return pConversationScreen
+	return pConvScreen
 end

@@ -1,6 +1,6 @@
 local ObjectManager = require("managers.object.object_manager")
 
-CorvetteTicketGiverConvoHandler = Object:new {
+CorvetteTicketGiverConvoHandler = conv_handler:new {
 	ticketGiver = nil
 }
 
@@ -8,51 +8,51 @@ function CorvetteTicketGiverConvoHandler:setTicketGiver(giver)
 	self.ticketGiver = giver
 end
 
-function CorvetteTicketGiverConvoHandler:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNPC, selectedOption, pConversationScreen)
-	local player = CreatureObject(pConversingPlayer)
+function CorvetteTicketGiverConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local player = CreatureObject(pPlayer)
 	local playerID = player:getObjectID()
-	local screen = LuaConversationScreen(pConversationScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	if screenID == "go_get_intel" then
 		setQuestStatus(playerID .. ":activeCorvetteQuest", self.ticketGiver.giverName)
 		setQuestStatus(playerID .. ":activeCorvetteStep", "1")
-		self.ticketGiver:randomizeIntelLocs(pConversingPlayer)
+		self.ticketGiver:randomizeIntelLocs(pPlayer)
 	elseif screenID == "has_intel" or screenID == "other_documents" then
-		pConversationScreen = self:handleScreenHasIntel(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+		pConvScreen = self:handleScreenHasIntel(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "reset" or screenID == "reset2" or screenID == "reset3" then
 		removeQuestStatus(playerID .. ":activeCorvetteQuest")
 		removeQuestStatus(playerID .. ":activeCorvetteStep")
 		removeQuestStatus(playerID .. ":corvetteIntelAcquired")
 		removeQuestStatus(playerID .. ":corvetteIntelLocs")
 		removeQuestStatus(playerID .. ":activeCorvetteQuestType")
-		self.ticketGiver:removeDocuments(pConversingPlayer)
+		self.ticketGiver:removeDocuments(pPlayer)
 	elseif  screenID == "bad_intel_1" then
-		self.ticketGiver:removeIntel(pConversingPlayer, 1)
-		self.ticketGiver:giveCompensation(pConversingPlayer)
+		self.ticketGiver:removeIntel(pPlayer, 1)
+		self.ticketGiver:giveCompensation(pPlayer)
 	elseif  screenID == "bad_intel_2" then
-		self.ticketGiver:removeIntel(pConversingPlayer, 2)
-		self.ticketGiver:giveCompensation(pConversingPlayer)
+		self.ticketGiver:removeIntel(pPlayer, 2)
+		self.ticketGiver:giveCompensation(pPlayer)
 	elseif  screenID == "good_intel" then
 		removeQuestStatus(playerID .. ":corvetteIntelAcquired")
 		removeQuestStatus(playerID .. ":corvetteIntelLocs")
 		setQuestStatus(playerID .. ":activeCorvetteStep", "2")
-		self.ticketGiver:removeIntel(pConversingPlayer, 3)
-		self.ticketGiver:giveTicket(pConversingPlayer)
+		self.ticketGiver:removeIntel(pPlayer, 3)
+		self.ticketGiver:giveTicket(pPlayer)
 	elseif  screenID == "reward" then
-		pConversationScreen = self:handleScreenReward(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+		pConvScreen = self:handleScreenReward(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "give_reward" then
 		removeQuestStatus(playerID .. ":activeCorvetteQuest")
 		removeQuestStatus(playerID .. ":activeCorvetteStep")
 		removeQuestStatus(playerID .. ":activeCorvetteQuestType")
-		self.ticketGiver:removeDocuments(pConversingPlayer)
+		self.ticketGiver:removeDocuments(pPlayer)
 		self.ticketGiver:giveReward(PConversingPlayer)
 	end
-	return pConversationScreen
+	return pConvScreen
 end
 
-function CorvetteTicketGiverConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function CorvetteTicketGiverConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	local player = CreatureObject(pPlayer)
 	local activeQuest = getQuestStatus(player:getObjectID() .. ":activeCorvetteQuest")
 	local activeStep = tonumber(getQuestStatus(player:getObjectID() .. ":activeCorvetteStep"))
@@ -74,36 +74,14 @@ function CorvetteTicketGiverConvoHandler:getInitialScreen(pPlayer, pNpc, pConver
 	end
 end
 
-function CorvetteTicketGiverConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
+function CorvetteTicketGiverConvoHandler:handleScreenReward(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
+	pConvScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConvScreen)
 
-	local pLastConversationScreen = nil
-
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-
-		return conversationTemplate:getScreen(optionLink)
-	end
-
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
-end
-
-function CorvetteTicketGiverConvoHandler:handleScreenReward(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
-	pConversationScreen = screen:cloneScreen()
-	local clonedScreen = LuaConversationScreen(pConversationScreen)
-
-	local pInventory = CreatureObject(pConversingPlayer):getSlottedObject("inventory")
+	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 	if pInventory == nil then
-		return pConversationScreen
+		return pConvScreen
 	end
 
 	if SceneObject(pInventory):isContainerFullRecursive() then
@@ -112,17 +90,17 @@ function CorvetteTicketGiverConvoHandler:handleScreenReward(pConversationTemplat
 		clonedScreen:addOption(text, "cant_give_reward")
 	end
 
-	return pConversationScreen
+	return pConvScreen
 end
 
-function CorvetteTicketGiverConvoHandler:handleScreenHasIntel(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
-	pConversationScreen = screen:cloneScreen()
-	local clonedScreen = LuaConversationScreen(pConversationScreen)
+function CorvetteTicketGiverConvoHandler:handleScreenHasIntel(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
+	pConvScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConvScreen)
 
-	local pInventory = CreatureObject(pConversingPlayer):getSlottedObject("inventory")
+	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 	if pInventory == nil then
-		return pConversationScreen
+		return pConvScreen
 	end
 
 	local templates = self.ticketGiver.intelMap.itemTemplates
@@ -131,7 +109,7 @@ function CorvetteTicketGiverConvoHandler:handleScreenHasIntel(pConversationTempl
 	local intel3 = getContainerObjectByTemplate(pInventory, templates[3], true)
 
 	if intel1 ~= nil and intel2 ~= nil and intel3 ~= nil then
-		return pConversationScreen
+		return pConvScreen
 	end
 
 	local text1, text2, text3, link1, link2, link3
@@ -161,5 +139,5 @@ function CorvetteTicketGiverConvoHandler:handleScreenHasIntel(pConversationTempl
 		clonedScreen:addOption(text3, link3)
 	end
 
-	return pConversationScreen
+	return pConvScreen
 end

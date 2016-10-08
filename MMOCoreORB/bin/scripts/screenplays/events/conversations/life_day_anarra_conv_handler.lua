@@ -1,9 +1,9 @@
 local ObjectManager = require("managers.object.object_manager")
 
-lifeDayAnarraConvoHandler = Object:new {}
+lifeDayAnarraConvoHandler = conv_handler:new {}
 
-function lifeDayAnarraConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function lifeDayAnarraConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	local playerID = SceneObject(pPlayer):getObjectID()
 	if readScreenPlayData(pPlayer, readStringSharedMemory("lifeDayScreenplayName"), "complete") == "1" or readData(playerID .. ":lifeDayAnarra") == 1 then
@@ -15,15 +15,15 @@ function lifeDayAnarraConvoHandler:getInitialScreen(pPlayer, npc, pConversationT
 	end
 end
 
-function lifeDayAnarraConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function lifeDayAnarraConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
-	local playerID = SceneObject(conversingPlayer):getObjectID()
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
+	local playerID = SceneObject(pPlayer):getObjectID()
 
 	if screenID == "appreciate_freedom" then
-		if TangibleObject(conversingPlayer):isImperial() == true then
+		if TangibleObject(pPlayer):isImperial() == true then
 			clonedConversation:addOption("@conversation/lifeday04c:s_b8b7ef2b", "work_for_empire") -- Yes. Go on.
 		else
 			clonedConversation:addOption("@conversation/lifeday04c:s_b8b7ef2b", "share_our_tale") -- Yes. Go on.
@@ -34,27 +34,5 @@ function lifeDayAnarraConvoHandler:runScreenHandlers(conversationTemplate, conve
 			writeData(playerID .. ":lifeDayState", 3)
 		end
 	end
-	return conversationScreen
-end
-
-function lifeDayAnarraConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-
-	local pLastConversationScreen = nil
-
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-
-		return conversationTemplate:getScreen(optionLink)
-	end
-
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
+	return pConvScreen
 end

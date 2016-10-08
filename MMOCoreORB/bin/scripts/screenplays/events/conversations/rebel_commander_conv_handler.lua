@@ -1,9 +1,9 @@
 local ObjectManager = require("managers.object.object_manager")
 
-rebelCommanderConvoHandler = Object:new {}
+rebelCommanderConvoHandler = conv_handler:new {}
 
-function rebelCommanderConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function rebelCommanderConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	local state = tonumber(readScreenPlayData(pPlayer, "rebel_coa2", "state"))
 
@@ -34,45 +34,23 @@ function rebelCommanderConvoHandler:getInitialScreen(pPlayer, npc, pConversation
 	return convoTemplate:getScreen("m4_finish_incomplete")
 end
 
-function rebelCommanderConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function rebelCommanderConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
 
 	if screenID == "m4_finish" then
-		Coa2Screenplay:finishMissionFour(conversingPlayer, "rebel")
+		Coa2Screenplay:finishMissionFour(pPlayer, "rebel")
 	elseif screenID == "m5_begin_no" then
-		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 11)
+		writeScreenPlayData(pPlayer, "rebel_coa2", "state", 11)
 	elseif screenID == "m5_begin_yes" or screenID == "m5_refused_yes" then
-		Coa2Screenplay:startMissionFive(conversingPlayer, conversingNPC, "rebel")
+		Coa2Screenplay:startMissionFive(pPlayer, pNpc, "rebel")
 	elseif screenID == "m5_active_abort" then
-		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 11)
-		Coa2Screenplay:cleanupMission(conversingPlayer, "rebel")
+		writeScreenPlayData(pPlayer, "rebel_coa2", "state", 11)
+		Coa2Screenplay:cleanupMission(pPlayer, "rebel")
 	elseif screenID == "m5_active_restart" then
-		Coa2Screenplay:cleanupMission(conversingPlayer, "rebel")
-		Coa2Screenplay:startMissionFive(conversingPlayer, conversingNPC, "rebel")
+		Coa2Screenplay:cleanupMission(pPlayer, "rebel")
+		Coa2Screenplay:startMissionFive(pPlayer, pNpc, "rebel")
 	end
 
-	return conversationScreen
-end
-
-function rebelCommanderConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-
-	local pLastConversationScreen = nil
-
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-
-		return conversationTemplate:getScreen(optionLink)
-	end
-
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
+	return pConvScreen
 end

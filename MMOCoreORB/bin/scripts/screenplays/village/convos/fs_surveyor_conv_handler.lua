@@ -1,10 +1,10 @@
 local ObjectManager = require("managers.object.object_manager")
 local QuestManager = require("managers.quest.quest_manager")
 
-villageSurveyorConvoHandler = {  }
+villageSurveyorConvoHandler = conv_handler:new {}
 
-function villageSurveyorConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function villageSurveyorConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	local phase = VillageJediManagerTownship:getCurrentPhase()
 
 	if (phase ~= 2 and phase ~= 3) then
@@ -30,19 +30,19 @@ function villageSurveyorConvoHandler:getInitialScreen(pPlayer, pNpc, pConversati
 	end
 end
 
-function villageSurveyorConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function villageSurveyorConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 	local phase = VillageJediManagerTownship:getCurrentPhase()
 
 	if (screenID == "intro_in_progress") then
-		local hasQuest = FsSurvey:hasSurveyorQuest(conversingPlayer, phase)
+		local hasQuest = FsSurvey:hasSurveyorQuest(pPlayer, phase)
 
 		if (hasQuest == "") then
 			clonedConversation:setDialogTextStringId("@quest/force_sensitive/fs_survey:wrong_phase")
-			return conversationScreen
+			return pConvScreen
 		end
 		local pQuest = getQuestInfo(hasQuest)
 
@@ -53,32 +53,16 @@ function villageSurveyorConvoHandler:runScreenHandlers(conversationTemplate, con
 		clonedConversation:addOption("@quest/force_sensitive/fs_survey:yes_task", "sample_phase_" .. phase)
 		clonedConversation:addOption("@quest/force_sensitive/fs_survey:no_task", "sorry_to_hear_that")
 	elseif (screenID == "sample_phase_2") then
-		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.SURVEY_PHASE2_MAIN)
-		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.SURVEY_PHASE2_01)
-		VillageJediManagerCommon.setActiveQuestThisPhase(conversingPlayer)
-		createObserver(SAMPLE, "FsSurvey", "sampleEventHandler", conversingPlayer, 1)
+		QuestManager.activateQuest(pPlayer, QuestManager.quests.SURVEY_PHASE2_MAIN)
+		QuestManager.activateQuest(pPlayer, QuestManager.quests.SURVEY_PHASE2_01)
+		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
+		createObserver(SAMPLE, "FsSurvey", "sampleEventHandler", pPlayer, 1)
 	elseif (screenID == "sample_phase_3") then
-		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.SURVEY_PHASE3_MAIN)
-		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.SURVEY_PHASE3_01)
-		VillageJediManagerCommon.setActiveQuestThisPhase(conversingPlayer)
-		createObserver(SAMPLE, "FsSurvey", "sampleEventHandler", conversingPlayer, 1)
+		QuestManager.activateQuest(pPlayer, QuestManager.quests.SURVEY_PHASE3_MAIN)
+		QuestManager.activateQuest(pPlayer, QuestManager.quests.SURVEY_PHASE3_01)
+		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
+		createObserver(SAMPLE, "FsSurvey", "sampleEventHandler", pPlayer, 1)
 	end
 
-	return conversationScreen
-end
-
-function villageSurveyorConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-	local pLastConversationScreen = nil
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-		return conversationTemplate:getScreen(optionLink)
-	end
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
+	return pConvScreen
 end

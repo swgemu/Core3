@@ -1,22 +1,17 @@
 local ObjectManager = require("managers.object.object_manager")
 
-philosopherConvoHandler = Object:new { }
+philosopherConvoHandler = conv_handler:new {}
 
-function philosopherConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+function philosopherConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	clonedConversation:setDialogTextStringId("@static_npc/philosopher:philosopher_" .. getRandomNumber(50))
 
-	return conversationScreen
+	return pConvScreen
 end
 
-function philosopherConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-	return convoTemplate:getScreen("init")
-end
-
-function philosopherConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
+function philosopherConvoHandler:getNextConversationScreen(pConvTemplate, pPlayer, selectedOption, pNpc)
+	return self:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 end

@@ -1,10 +1,10 @@
 local ObjectManager = require("managers.object.object_manager")
 local QuestManager = require("managers.quest.quest_manager")
 
-villageSivarraPhase1ConvoHandler = {  }
+villageSivarraPhase1ConvoHandler = conv_handler:new {}
 
-function villageSivarraPhase1ConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function villageSivarraPhase1ConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	if (VillageJediManagerTownship:getCurrentPhase() ~= 1) then
 		return convoTemplate:getScreen("intro_cant_talk")
@@ -44,73 +44,57 @@ function villageSivarraPhase1ConvoHandler:getInitialScreen(pPlayer, pNpc, pConve
 	end
 end
 
-function villageSivarraPhase1ConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function villageSivarraPhase1ConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	if (screenID == "great_explain") then
-		QuestManager.setCurrentQuestID(conversingPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_01)
-		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_01)
-		FsMedicPuzzle:setCuredVillagerCount(conversingPlayer, 0)
-		VillageJediManagerCommon.setActiveQuestThisPhase(conversingPlayer)
+		QuestManager.setCurrentQuestID(pPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_01)
+		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_01)
+		FsMedicPuzzle:setCuredVillagerCount(pPlayer, 0)
+		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
 
-		local pGhost = CreatureObject(conversingPlayer):getPlayerObject()
+		local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 		if (pGhost ~= nil) then
 			PlayerObject(pGhost):addRewardedSchematic("object/draft_schematic/item/quest_item/fs_medic_puzzle_heal_pack.iff", 2, -1, true)
 		end
 	elseif (screenID == "intro_completed_first_set") then
-		QuestManager.completeQuest(conversingPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_01)
-		VillageJediManagerCommon.unlockBranch(conversingPlayer, "force_sensitive_heightened_senses_persuasion")
+		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_01)
+		VillageJediManagerCommon.unlockBranch(pPlayer, "force_sensitive_heightened_senses_persuasion")
 	elseif (screenID == "intro_completed_second_set") then
-		QuestManager.completeQuest(conversingPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_02)
+		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_02)
 
-		local pInventory = SceneObject(conversingPlayer):getSlottedObject("inventory")
+		local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 
 		if (pInventory ~= nil) then
 			createLoot(pInventory, "sivarra_reward_necklace", -1, true)
 		end
 	elseif (screenID == "intro_completed_third_set") then
-		QuestManager.completeQuest(conversingPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_03)
-		QuestManager.completeQuest(conversingPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_FINISH)
+		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_03)
+		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_FINISH)
 
-		local pInventory = SceneObject(conversingPlayer):getSlottedObject("inventory")
+		local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 
 		if (pInventory ~= nil) then
 			local pPlant = giveItem(pInventory, "object/tangible/loot/plant_grow/plant_stage_1.iff", -1, true)
 
 			if (pPlant == nil) then
-				CreatureObject(conversingPlayer):sendSystemMessage("Error: Unable to generate item.")
+				CreatureObject(pPlayer):sendSystemMessage("Error: Unable to generate item.")
 			end
 		end
-		VillageJediManagerCommon.setCompletedQuestThisPhase(conversingPlayer)
-		FsMedicPuzzle:cleanUp(conversingPlayer)
+		VillageJediManagerCommon.setCompletedQuestThisPhase(pPlayer)
+		FsMedicPuzzle:cleanUp(pPlayer)
 	elseif (screenID == "talk_droids_again") then
-		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_02)
+		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_02)
 	elseif (screenID == "talk_droids_round_three") then
-		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_03)
+		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_03)
 	elseif (screenID == "intro_in_progress") then
-		local count = tostring(FsMedicPuzzle:getPatientsLeftToTreat(conversingPlayer))
+		local count = tostring(FsMedicPuzzle:getPatientsLeftToTreat(pPlayer))
 		clonedConversation:setDialogTextTO(count)
 	end
 
-	return conversationScreen
-end
-
-function villageSivarraPhase1ConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-	local pLastConversationScreen = nil
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-		return conversationTemplate:getScreen(optionLink)
-	end
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
+	return pConvScreen
 end

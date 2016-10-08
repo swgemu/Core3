@@ -1,7 +1,7 @@
 biogenicScientistGeneric03ConvoTemplate = ConvoTemplate:new {
-	initialScreen = "",
+	initialScreen = "init_talk",
 	templateType = "Lua",
-	luaClassHandler = "BiogenicScientistGeneric03ConvoHandler",
+	luaClassHandler = "conv_handler",
 	screens = {}
 }
 

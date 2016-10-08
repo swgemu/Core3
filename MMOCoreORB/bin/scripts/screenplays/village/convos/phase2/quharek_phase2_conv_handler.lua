@@ -1,10 +1,10 @@
 local ObjectManager = require("managers.object.object_manager")
 local QuestManager = require("managers.quest.quest_manager")
 
-villageQuharekPhase2ConvoHandler = {  }
+villageQuharekPhase2ConvoHandler = conv_handler:new {}
 
-function villageQuharekPhase2ConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function villageQuharekPhase2ConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	if (VillageJediManagerTownship:getCurrentPhase() ~= 2) then
 		return convoTemplate:getScreen("intro_communitycrafting_inactive")
@@ -17,17 +17,17 @@ function villageQuharekPhase2ConvoHandler:getInitialScreen(pPlayer, pNpc, pConve
 	end
 end
 
-function villageQuharekPhase2ConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function villageQuharekPhase2ConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	if (screenID == "intro_questcompleted_activecrafter" or screenID == "intro_questcompleted_notactivecrafter" or screenID == "intro_communitycrafting_active") then
 		if (VillageCommunityCrafting:getCurrentActiveCrafters() >= VillageCommunityCrafting:getMaxCraftersPerPhase()) then
 			clonedConversation:addOption("@conversation/quharek_phase_2:s_955b2ddb", "max_crafters") -- I hear you're looking for crafters.
 		else
-			if (not CreatureObject(conversingPlayer):hasSkill("crafting_artisan_novice")) then
+			if (not CreatureObject(pPlayer):hasSkill("crafting_artisan_novice")) then
 				clonedConversation:addOption("@conversation/quharek_phase_2:s_955b2ddb", "not_skilled") -- I hear you're looking for crafters.
 			else
 				clonedConversation:addOption("@conversation/quharek_phase_2:s_955b2ddb", "need_people_to_help") -- I hear you're looking for crafters.
@@ -37,43 +37,27 @@ function villageQuharekPhase2ConvoHandler:runScreenHandlers(conversationTemplate
 	elseif (screenID == "need_people_to_help") then
 		clonedConversation:setDialogTextDI(VillageCommunityCrafting:getMinimumIngredients())
 	elseif (screenID == "talk_to_qtqc") then
-		VillageJediManagerCommon.setActiveQuestThisPhase(conversingPlayer)
-		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_MAIN)
-		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_01)
-		VillageCommunityCrafting:addToActiveCrafterList(conversingPlayer)
+		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
+		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_MAIN)
+		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_01)
+		VillageCommunityCrafting:addToActiveCrafterList(pPlayer)
 		VillageCommunityCrafting:incrementCurrentActiveCrafters()
-		VillageCommunityCrafting:addDefaultPlayerStatsToStatTables(conversingPlayer)
+		VillageCommunityCrafting:addDefaultPlayerStatsToStatTables(pPlayer)
 
-		local pGhost = CreatureObject(conversingPlayer):getPlayerObject()
+		local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 		if (pGhost ~= nil) then
 			PlayerObject(pGhost):addWaypoint("dathomir", "@npc_name:qtqc", "", 5193, -4195, WAYPOINTYELLOW, true, true, 0)
 		end
 	elseif (screenID == "see_attributes") then
-		VillageCommunityCrafting:sendPlayerProjectAttributes(conversingPlayer, conversingNPC)
+		VillageCommunityCrafting:sendPlayerProjectAttributes(pPlayer, pNpc)
 	elseif (string.match(screenID, "_slot_")) then
 		local startPos, endPos = string.find(screenID, "_slot_")
 		local tableType = string.sub(screenID, 1, startPos - 1)
 		local slotNum = string.sub(screenID, endPos + 1)
 
-		VillageCommunityCrafting:sendPlayerProjectSlotAttributes(conversingPlayer, conversingNPC, tableType, slotNum)
+		VillageCommunityCrafting:sendPlayerProjectSlotAttributes(pPlayer, pNpc, tableType, slotNum)
 	end
 
-	return conversationScreen
-end
-
-function villageQuharekPhase2ConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-	local pLastConversationScreen = nil
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-		return conversationTemplate:getScreen(optionLink)
-	end
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
+	return pConvScreen
 end

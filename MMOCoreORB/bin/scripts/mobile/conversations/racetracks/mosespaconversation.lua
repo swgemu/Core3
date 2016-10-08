@@ -1,7 +1,7 @@
 mosespa_conversationtemplate = ConvoTemplate:new {
 	initialScreen = "mosespa_initial",
 	templateType = "Lua",
-	luaClassHandler = "mosespa_conversationtemplate",
+	luaClassHandler = "mosespa_racetrack_convo_handler",
 	screens = {}
 }
 

@@ -1,5 +1,5 @@
 audienceMemberConvoTemplate = ConvoTemplate:new {
-	initialScreen = "",
+	initialScreen = "init",
 	templateType = "Lua",
 	luaClassHandler = "audienceMemberConvoHandler",
 	screens = {}

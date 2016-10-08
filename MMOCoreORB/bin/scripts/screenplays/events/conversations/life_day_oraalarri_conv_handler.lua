@@ -1,9 +1,9 @@
 local ObjectManager = require("managers.object.object_manager")
 
-lifeDayOraalarriConvoHandler = Object:new {}
+lifeDayOraalarriConvoHandler = conv_handler:new {}
 
-function lifeDayOraalarriConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function lifeDayOraalarriConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	local playerID = CreatureObject(pPlayer):getObjectID()
 	if readScreenPlayData(pPlayer, readStringSharedMemory("lifeDayScreenplayName"), "complete") == "1" then
@@ -23,48 +23,26 @@ function lifeDayOraalarriConvoHandler:getInitialScreen(pPlayer, npc, pConversati
 	end
 end
 
-function lifeDayOraalarriConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function lifeDayOraalarriConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	if screenID == "speak_to_others" then
-		writeData(SceneObject(conversingPlayer):getObjectID() .. ":lifeDayState", 2)
+		writeData(SceneObject(pPlayer):getObjectID() .. ":lifeDayState", 2)
 	elseif screenID == "have_gifts" then
-		if CreatureObject(conversingPlayer):getSpecies() == 4 then
+		if CreatureObject(pPlayer):getSpecies() == 4 then
 			clonedConversation:addOption("@conversation/lifeday04b:s_afabf3ac", "gift_wookiee") -- What sort of gifts?
 		else
 			clonedConversation:addOption("@conversation/lifeday04b:s_afabf3ac", "gift_non_wookiee") -- What sort of gifts?
 		end
 	elseif screenID == "gift_non_wookiee" or screenID == "enjoy_other_gift" then
-		lifeDayScreenplay:giveRandomGift(conversingPlayer)
+		lifeDayScreenplay:giveRandomGift(pPlayer)
 	elseif screenID == "enjoy_robe" then
-		lifeDayScreenplay:giveRobe(conversingPlayer)
+		lifeDayScreenplay:giveRobe(pPlayer)
 	elseif screenID == "no_gift" then
-		lifeDayScreenplay:noGift(conversingPlayer)
+		lifeDayScreenplay:noGift(pPlayer)
 	end
-	return conversationScreen
-end
-
-function lifeDayOraalarriConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-
-	local pLastConversationScreen = nil
-
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-
-		return conversationTemplate:getScreen(optionLink)
-	end
-
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
+	return pConvScreen
 end

@@ -1,27 +1,11 @@
 local ObjectManager = require("managers.object.object_manager")
 
-heroOfTatFarmerConvoHandler = {  }
+heroOfTatFarmerConvoHandler = conv_handler:new {}
 
 -- 1 - Started farmer quest, 2 - Completed farmer quest
 
-function heroOfTatFarmerConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-	local pLastConversationScreen = nil
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-		return conversationTemplate:getScreen(optionLink)
-	end
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
-end
-
-function heroOfTatFarmerConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function heroOfTatFarmerConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	if (CreatureObject(pPlayer):hasScreenPlayState(2, "hero_of_tatooine_altruism")) then
 		return convoTemplate:getScreen("intro_completed")
 	elseif (CreatureObject(pPlayer):hasScreenPlayState(1, "hero_of_tatooine_altruism")) then
@@ -33,28 +17,28 @@ function heroOfTatFarmerConvoHandler:getInitialScreen(pPlayer, pNpc, pConversati
 	end
 end
 
-function heroOfTatFarmerConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function heroOfTatFarmerConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 
 	local screenID = screen:getScreenID()
 
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	if (screenID == "in_your_debt") then
-		CreatureObject(conversingPlayer):sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_quest_fail")
-		writeData(CreatureObject(conversingNPC):getObjectID() .. ":gaveQuest", 1)
-		CreatureObject(conversingPlayer):subtractCashCredits(10000)
-		HeroOfTatooineScreenPlay:doGiverDespawn(conversingNPC)
+		CreatureObject(pPlayer):sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_quest_fail")
+		writeData(CreatureObject(pNpc):getObjectID() .. ":gaveQuest", 1)
+		CreatureObject(pPlayer):subtractCashCredits(10000)
+		HeroOfTatooineScreenPlay:doGiverDespawn(pNpc)
 	elseif (screenID == "sincerest_gratitude") then
-		HeroOfTatooineScreenPlay:giveAltruismWaypoint(conversingPlayer)
-		writeData(CreatureObject(conversingNPC):getObjectID() .. ":gaveQuest", 1)
-		CreatureObject(conversingPlayer):setScreenPlayState(1, "hero_of_tatooine_altruism")
-		HeroOfTatooineScreenPlay:doGiverDespawn(conversingNPC)
+		HeroOfTatooineScreenPlay:giveAltruismWaypoint(pPlayer)
+		writeData(CreatureObject(pNpc):getObjectID() .. ":gaveQuest", 1)
+		CreatureObject(pPlayer):setScreenPlayState(1, "hero_of_tatooine_altruism")
+		HeroOfTatooineScreenPlay:doGiverDespawn(pNpc)
 	elseif (screenID == "here_is_loc_again") then
-		HeroOfTatooineScreenPlay:giveAltruismWaypoint(conversingPlayer)
+		HeroOfTatooineScreenPlay:giveAltruismWaypoint(pPlayer)
 	elseif (screenID == "a_lot_of_money") then
-		if(CreatureObject(conversingPlayer):getCashCredits() >= 10000) then
+		if(CreatureObject(pPlayer):getCashCredits() >= 10000) then
 			clonedConversation:addOption("@conversation/quest_hero_of_tatooine_farmer:s_5cdaed70", "in_your_debt")
 		else
 			clonedConversation:addOption("@conversation/quest_hero_of_tatooine_farmer:s_2e1d6626", "ill_go_myself")
@@ -62,8 +46,8 @@ function heroOfTatFarmerConvoHandler:runScreenHandlers(conversationTemplate, con
 		clonedConversation:addOption("@conversation/quest_hero_of_tatooine_farmer:s_d5adc7c6", "very_dangerous")
 		clonedConversation:addOption("@conversation/quest_hero_of_tatooine_farmer:s_2fdb8fbd", "ill_go_myself")
 	elseif (screenID == "thanks_for_offering") then
-		CreatureObject(conversingPlayer):removeScreenPlayState(1, "hero_of_tatooine_altruism")
+		CreatureObject(pPlayer):removeScreenPlayState(1, "hero_of_tatooine_altruism")
 	end
 
-	return conversationScreen
+	return pConvScreen
 end

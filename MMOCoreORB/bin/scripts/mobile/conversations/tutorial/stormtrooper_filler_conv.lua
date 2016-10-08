@@ -1,5 +1,5 @@
 stormtrooperFillerConvoTemplate = ConvoTemplate:new {
-	initialScreen = "",
+	initialScreen = "moveAlong",
 	templateType = "Lua",
 	luaClassHandler = "tutorialStormtrooperFillerConvoHandler",
 	screens = {}

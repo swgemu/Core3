@@ -1,25 +1,9 @@
 local ObjectManager = require("managers.object.object_manager")
 
-deathWatchCommanderDkrnConvoHandler = {  }
+deathWatchCommanderDkrnConvoHandler = conv_handler:new {}
 
-function deathWatchCommanderDkrnConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-	local pLastConversationScreen = nil
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-		return conversationTemplate:getScreen(optionLink)
-	end
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
-end
-
-function deathWatchCommanderDkrnConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function deathWatchCommanderDkrnConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
@@ -37,22 +21,22 @@ function deathWatchCommanderDkrnConvoHandler:getInitialScreen(pPlayer, pNpc, pCo
 	end
 end
 
-function deathWatchCommanderDkrnConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local pGhost = CreatureObject(conversingPlayer):getPlayerObject()
+function deathWatchCommanderDkrnConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
-		return conversationScreen
+		return pConvScreen
 	end
 
-	local screen = LuaConversationScreen(conversationScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
 
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 	if (screenID == "good_now_go") then
-		CreatureObject(conversingPlayer):setScreenPlayState(1, "death_watch_bunker_imperial_sidequest")
+		CreatureObject(pPlayer):setScreenPlayState(1, "death_watch_bunker_imperial_sidequest")
 	elseif (screenID == "return_intro") then
-		local pInventory =  CreatureObject(conversingPlayer):getSlottedObject("inventory")
+		local pInventory =  CreatureObject(pPlayer):getSlottedObject("inventory")
 
 		if (pInventory ~= nil) then
 			local pSample = getContainerObjectByTemplate(pInventory, "object/tangible/loot/dungeon/death_watch_bunker/blood_vial.iff", true)
@@ -64,11 +48,11 @@ function deathWatchCommanderDkrnConvoHandler:runScreenHandlers(conversationTempl
 		clonedConversation:addOption("@conversation/death_watch_imperial_herald:s_55aa1278", "more_info")
 		clonedConversation:addOption("@conversation/death_watch_imperial_herald:s_f70821a3", "sorry_to_hear")
 	elseif (screenID == "sorry_to_hear") then
-		CreatureObject(conversingPlayer):removeScreenPlayState(1, "death_watch_bunker_imperial_sidequest")
+		CreatureObject(pPlayer):removeScreenPlayState(1, "death_watch_bunker_imperial_sidequest")
 	elseif (screenID == "excellent_reward") then
 		PlayerObject(pGhost):increaseFactionStanding("imperial", 500)
-		CreatureObject(conversingPlayer):setScreenPlayState(2, "death_watch_bunker_imperial_sidequest")
+		CreatureObject(pPlayer):setScreenPlayState(2, "death_watch_bunker_imperial_sidequest")
 	end
 
-	return conversationScreen
+	return pConvScreen
 end
