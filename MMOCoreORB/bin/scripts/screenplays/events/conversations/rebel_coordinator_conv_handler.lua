@@ -1,9 +1,9 @@
 local ObjectManager = require("managers.object.object_manager")
 
-rebelCoordinatorConvoHandler = Object:new {}
+rebelCoordinatorConvoHandler = conv_handler:new {}
 
-function rebelCoordinatorConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function rebelCoordinatorConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 	local state = tonumber(readScreenPlayData(pPlayer, "rebel_coa2", "state"))
@@ -49,71 +49,49 @@ function rebelCoordinatorConvoHandler:getInitialScreen(pPlayer, npc, pConversati
 	return convoTemplate:getScreen("m1_begin")
 end
 
-function rebelCoordinatorConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function rebelCoordinatorConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
 
 	if screenID == "m1_begin_no" then
-		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 1)
+		writeScreenPlayData(pPlayer, "rebel_coa2", "state", 1)
 	elseif screenID == "m1_begin_yes" or screenID == "m1_refused_yes" then
-		Coa2Screenplay:startMissionOne(conversingPlayer, conversingNPC, "rebel")
+		Coa2Screenplay:startMissionOne(pPlayer, pNpc, "rebel")
 	elseif screenID == "m1_active_abort" then
-		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 1)
-		Coa2Screenplay:cleanupMission(conversingPlayer)
+		writeScreenPlayData(pPlayer, "rebel_coa2", "state", 1)
+		Coa2Screenplay:cleanupMission(pPlayer)
 	elseif screenID == "m1_active_restart" then
-		Coa2Screenplay:cleanupMission(conversingPlayer)
-		Coa2Screenplay:startMissionOne(conversingPlayer, conversingNPC, "rebel")
+		Coa2Screenplay:cleanupMission(pPlayer)
+		Coa2Screenplay:startMissionOne(pPlayer, pNpc, "rebel")
 	elseif screenID == "m1_finish_encoded" then
-		Coa2Screenplay:finishMissionOne(conversingPlayer, "rebel")
+		Coa2Screenplay:finishMissionOne(pPlayer, "rebel")
 	elseif screenID == "m1_finish_decoded" then
-		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 4)
-		Coa2Screenplay:cleanupMission(conversingPlayer)
+		writeScreenPlayData(pPlayer, "rebel_coa2", "state", 4)
+		Coa2Screenplay:cleanupMission(pPlayer)
 	elseif screenID == "m2_begin_no" then
-		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 5)
+		writeScreenPlayData(pPlayer, "rebel_coa2", "state", 5)
 	elseif screenID == "m2_begin_yes" or screenID == "m2_refused_yes" then
-		Coa2Screenplay:startMissionTwo(conversingPlayer, conversingNPC, "rebel")
+		Coa2Screenplay:startMissionTwo(pPlayer, pNpc, "rebel")
 	elseif screenID == "m2_active_abort" then
-		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 5)
-		Coa2Screenplay:cleanupMission(conversingPlayer)
+		writeScreenPlayData(pPlayer, "rebel_coa2", "state", 5)
+		Coa2Screenplay:cleanupMission(pPlayer)
 	elseif screenID == "m2_active_restart" then
-		Coa2Screenplay:cleanupMission(conversingPlayer)
-		Coa2Screenplay:startMissionTwo(conversingPlayer, conversingNPC, "rebel")
+		Coa2Screenplay:cleanupMission(pPlayer)
+		Coa2Screenplay:startMissionTwo(pPlayer, pNpc, "rebel")
 	elseif screenID == "m2_finish" then
-		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 8)
-		Coa2Screenplay:cleanupMission(conversingPlayer)
+		writeScreenPlayData(pPlayer, "rebel_coa2", "state", 8)
+		Coa2Screenplay:cleanupMission(pPlayer)
 	elseif screenID == "m2_finish_yes" then
-		Coa2Screenplay:startMissionThree(conversingPlayer, conversingNPC, "rebel")
+		Coa2Screenplay:startMissionThree(pPlayer, pNpc, "rebel")
 	elseif screenID == "m3_begin_yes" then
-		Coa2Screenplay:startMissionThree(conversingPlayer, conversingNPC, "rebel")
+		Coa2Screenplay:startMissionThree(pPlayer, pNpc, "rebel")
 	elseif screenID == "m3_active_abort" then
-		writeScreenPlayData(conversingPlayer, "rebel_coa2", "state", 8)
-		Coa2Screenplay:cleanupMission(conversingPlayer)
+		writeScreenPlayData(pPlayer, "rebel_coa2", "state", 8)
+		Coa2Screenplay:cleanupMission(pPlayer)
 	elseif screenID == "m3_active_restart" then
-		Coa2Screenplay:cleanupMission(conversingPlayer)
-		Coa2Screenplay:startMissionThree(conversingPlayer, conversingNPC, "rebel")
+		Coa2Screenplay:cleanupMission(pPlayer)
+		Coa2Screenplay:startMissionThree(pPlayer, pNpc, "rebel")
 	end
 
-	return conversationScreen
-end
-
-function rebelCoordinatorConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-
-	local pLastConversationScreen = nil
-
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-
-		return conversationTemplate:getScreen(optionLink)
-	end
-
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
+	return pConvScreen
 end

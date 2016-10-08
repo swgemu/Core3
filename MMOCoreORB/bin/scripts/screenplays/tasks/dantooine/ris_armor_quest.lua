@@ -45,11 +45,11 @@ function risArmorQuest:spawnMobiles()
 end
 
 
-risArmorQuestConvoHandler = Object:new {}
+risArmorQuestConvoHandler = conv_handler:new {}
 
-function risArmorQuestConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
+function risArmorQuestConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	-- 1 = quest 1, 2 = quest 2, 4 = quest 3, 8 = quest 4, 16 = quest 5, 32 = quest 6, 64 = completed
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	if (not CreatureObject(pPlayer):hasSkill("crafting_armorsmith_master")) then
 		return convoTemplate:getScreen("not_master_armorsmith")
@@ -72,68 +72,68 @@ function risArmorQuestConvoHandler:getInitialScreen(pPlayer, npc, pConversationT
 	end
 end
 
-function risArmorQuestConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function risArmorQuestConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	if (screenID == "quest_1_start") then
 		clonedConversation:setDialogTextDI("50000")
-		if (CreatureObject(conversingPlayer):getCashCredits() < 50000) then
+		if (CreatureObject(pPlayer):getCashCredits() < 50000) then
 			clonedConversation:addOption("@quest_armorsmith:yes_to_quest_1_start", "not_enough_money")
 		else
 			clonedConversation:addOption("@quest_armorsmith:yes_to_quest_1_start", "quest_1_start_yes")
 		end
 		clonedConversation:addOption("@quest_armorsmith:no_to_quest_1_start", "quest_1_start_no")
 	elseif (screenID == "quest_1_start_yes") then
-		CreatureObject(conversingPlayer):subtractCashCredits(50000)
-		CreatureObject(conversingPlayer):setScreenPlayState(1, "ris_armor_quest")
+		CreatureObject(pPlayer):subtractCashCredits(50000)
+		CreatureObject(pPlayer):setScreenPlayState(1, "ris_armor_quest")
 	elseif (screenID == "quest_1_description") then
-		self:teachSchematic(conversingPlayer, risArmorQuest.questSchematics.quest1)
-		CreatureObject(conversingPlayer):setScreenPlayState(2, "ris_armor_quest")
+		self:teachSchematic(pPlayer, risArmorQuest.questSchematics.quest1)
+		CreatureObject(pPlayer):setScreenPlayState(2, "ris_armor_quest")
 	elseif (screenID == "quest_2_query") then
 		clonedConversation:setDialogTextTO(risArmorQuest.questItems.quest2.displayName)
-		if (self:hasQuestItem(conversingPlayer, risArmorQuest.questItems.quest2.template)) then
+		if (self:hasQuestItem(pPlayer, risArmorQuest.questItems.quest2.template)) then
 			clonedConversation:addOption("@quest_armorsmith:yes_to_quest_2_query", "quest_2_complete")
 		else
 			clonedConversation:addOption("@quest_armorsmith:yes_to_quest_2_query", "illegal_response")
 		end
 		clonedConversation:addOption("@quest_armorsmith:no_to_quest_2_query", "quest_2_incomplete")
 	elseif (screenID == "quest_2_complete") then
-		CreatureObject(conversingPlayer):setScreenPlayState(4, "ris_armor_quest")
-		self:removeQuestItem(conversingPlayer, risArmorQuest.questItems.quest2.template)
+		CreatureObject(pPlayer):setScreenPlayState(4, "ris_armor_quest")
+		self:removeQuestItem(pPlayer, risArmorQuest.questItems.quest2.template)
 	elseif (screenID == "quest_3_start") then
-		self:teachSchematic(conversingPlayer, risArmorQuest.questSchematics.quest3)
-		CreatureObject(conversingPlayer):setScreenPlayState(8, "ris_armor_quest")
+		self:teachSchematic(pPlayer, risArmorQuest.questSchematics.quest3)
+		CreatureObject(pPlayer):setScreenPlayState(8, "ris_armor_quest")
 	elseif (screenID == "quest_4_query") then
 		clonedConversation:setDialogTextTO(risArmorQuest.questItems.quest4.displayName)
-		if (self:hasQuestItem(conversingPlayer, risArmorQuest.questItems.quest4.template)) then
+		if (self:hasQuestItem(pPlayer, risArmorQuest.questItems.quest4.template)) then
 			clonedConversation:addOption("@quest_armorsmith:yes_to_quest_4_query", "quest_4_complete")
 		else
 			clonedConversation:addOption("@quest_armorsmith:yes_to_quest_4_query", "illegal_response")
 		end
 		clonedConversation:addOption("@quest_armorsmith:no_to_quest_4_query", "quest_4_incomplete")
 	elseif (screenID == "quest_4_complete") then
-		CreatureObject(conversingPlayer):setScreenPlayState(16, "ris_armor_quest")
-		self:removeQuestItem(conversingPlayer, risArmorQuest.questItems.quest4.template)
+		CreatureObject(pPlayer):setScreenPlayState(16, "ris_armor_quest")
+		self:removeQuestItem(pPlayer, risArmorQuest.questItems.quest4.template)
 	elseif (screenID == "quest_5_start") then
-		self:teachSchematic(conversingPlayer, risArmorQuest.questSchematics.quest5)
-		CreatureObject(conversingPlayer):setScreenPlayState(32, "ris_armor_quest")
+		self:teachSchematic(pPlayer, risArmorQuest.questSchematics.quest5)
+		CreatureObject(pPlayer):setScreenPlayState(32, "ris_armor_quest")
 	elseif (screenID == "quest_6_query") then
 		clonedConversation:setDialogTextTO(risArmorQuest.questItems.quest6.displayName)
-		if (self:hasQuestItem(conversingPlayer, risArmorQuest.questItems.quest6.template)) then
+		if (self:hasQuestItem(pPlayer, risArmorQuest.questItems.quest6.template)) then
 			clonedConversation:addOption("@quest_armorsmith:yes_to_quest_6_query", "quest_6_complete")
 		else
 			clonedConversation:addOption("@quest_armorsmith:yes_to_quest_6_query", "illegal_response")
 		end
 		clonedConversation:addOption("@quest_armorsmith:no_to_quest_6_query", "quest_6_incomplete")
 	elseif (screenID == "quest_6_complete") then
-		CreatureObject(conversingPlayer):setScreenPlayState(64, "ris_armor_quest")
-		self:removeQuestItem(conversingPlayer, risArmorQuest.questItems.quest6.template)
-		self:rewardSchematics(conversingPlayer)
+		CreatureObject(pPlayer):setScreenPlayState(64, "ris_armor_quest")
+		self:removeQuestItem(pPlayer, risArmorQuest.questItems.quest6.template)
+		self:rewardSchematics(pPlayer)
 	end
-	return conversationScreen
+	return pConvScreen
 end
 
 function risArmorQuestConvoHandler:teachSchematic(pPlayer, templateTable)
@@ -173,26 +173,4 @@ function risArmorQuestConvoHandler:removeQuestItem(pPlayer, template)
 		SceneObject(pItem):destroyObjectFromWorld()
 		SceneObject(pItem):destroyObjectFromDatabase()
 	end
-end
-
-function risArmorQuestConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-
-	local pLastConversationScreen = nil
-
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-
-		return conversationTemplate:getScreen(optionLink)
-	end
-
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
 end

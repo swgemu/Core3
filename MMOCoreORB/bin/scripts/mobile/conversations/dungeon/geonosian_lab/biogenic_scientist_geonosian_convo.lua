@@ -1,7 +1,7 @@
 biogenicScientistGeonosianConvoTemplate = ConvoTemplate:new {
-	initialScreen = "",
+	initialScreen = "thanks_for_rescuing",
 	templateType = "Lua",
-	luaClassHandler = "BiogenicScientistGeonosianConvoHandler",
+	luaClassHandler = "conv_handler",
 	screens = {}
 }
 

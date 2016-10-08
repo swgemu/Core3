@@ -1,20 +1,19 @@
-OevittPiboiConversationHandler = Object:new {
-	}
+OevittPiboiConversationHandler = conv_handler:new {}
 
-function OevittPiboiConversationHandler:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNPC, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
+function OevittPiboiConversationHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 
 	local screenID = screen:getScreenID()
 
 	if (screenID == "escapee_2") then
-		WarrenScreenPlay:givePasskey1(pConversingPlayer)
+		WarrenScreenPlay:givePasskey1(pPlayer)
 	end
 
-	return pConversationScreen
+	return pConvScreen
 end
 
-function OevittPiboiConversationHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function OevittPiboiConversationHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 
@@ -27,26 +26,4 @@ function OevittPiboiConversationHandler:getInitialScreen(pPlayer, pNpc, pConvers
 	end
 
 	return convoTemplate:getScreen("escapee_start")
-end
-
-function OevittPiboiConversationHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-
-	local pLastConversationScreen = nil
-
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-
-		return conversationTemplate:getScreen(optionLink)
-	end
-
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
 end

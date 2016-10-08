@@ -1,5 +1,5 @@
 villageElderPhase4ConvoTemplate = ConvoTemplate:new {
-	initialScreen = "",
+	initialScreen = "intro",
 	templateType = "Lua",
 	luaClassHandler = "villageElderConvoHandler",
 	screens = {}

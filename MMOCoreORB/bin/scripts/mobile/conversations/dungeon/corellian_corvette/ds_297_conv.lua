@@ -1,5 +1,5 @@
 corvetteDS297ConvoTemplate = ConvoTemplate:new {
-	initialScreen = "",
+	initialScreen = "start",
 	templateType = "Lua",
 	luaClassHandler = "ticketTakerDS297ConvoHandler",
 	screens = {}

@@ -1,7 +1,7 @@
 tutorialCloneDroidConvoTemplate = ConvoTemplate:new {
-	initialScreen = "",
+	initialScreen = "intro",
 	templateType = "Lua",
-	luaClassHandler = "tutorialCloneDroidConvoHandler",
+	luaClassHandler = "conv_handler",
 	screens = {}
 }
 

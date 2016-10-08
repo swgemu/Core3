@@ -1,25 +1,9 @@
 local ObjectManager = require("managers.object.object_manager")
 
-heroOfTatIntellectLiarConvoHandler = {  }
+heroOfTatIntellectLiarConvoHandler = conv_handler:new {}
 
-function heroOfTatIntellectLiarConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-	local pLastConversationScreen = nil
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-		return conversationTemplate:getScreen(optionLink)
-	end
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
-end
-
-function heroOfTatIntellectLiarConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function heroOfTatIntellectLiarConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	if (CreatureObject(pPlayer):hasScreenPlayState(1, "hero_of_tatooine_intellect") and not CreatureObject(pPlayer):hasScreenPlayState(2, "hero_of_tatooine_intellect")) then
 		return convoTemplate:getScreen("init")
 	else
@@ -27,23 +11,23 @@ function heroOfTatIntellectLiarConvoHandler:getInitialScreen(pPlayer, pNpc, pCon
 	end
 end
 
-function heroOfTatIntellectLiarConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function heroOfTatIntellectLiarConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 
 	local screenID = screen:getScreenID()
 
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 	if (screenID == "init" or screenID == "init_noquest") then
 		clonedConversation:setDialogTextStringId("@quest/hero_of_tatooine/intellect_liar:greeting_" .. getRandomNumber(11))
 	elseif (screenID == "equipment") then
 		clonedConversation:setDialogTextStringId("@quest/hero_of_tatooine/intellect_liar:equipment_" .. getRandomNumber(11))
 	elseif (screenID == "smugglers") then
-		local liarId = readData(SceneObject(conversingNPC):getObjectID() .. ":liarId")
+		local liarId = readData(SceneObject(pNpc):getObjectID() .. ":liarId")
 
 		if (liarId == 0) then
-			CreatureObject(conversingPlayer):sendSystemMessage("Unable to find Mark of Intellect smuggler data. Please file a bug report.")
-			return conversationScreen
+			CreatureObject(pPlayer):sendSystemMessage("Unable to find Mark of Intellect smuggler data. Please file a bug report.")
+			return pConvScreen
 		end
 
 		liarId = liarId - 1
@@ -69,5 +53,5 @@ function heroOfTatIntellectLiarConvoHandler:runScreenHandlers(conversationTempla
 		clonedConversation:setDialogTextStringId("@quest/hero_of_tatooine/intellect_liar:bye_" .. getRandomNumber(11))
 	end
 
-	return conversationScreen
+	return pConvScreen
 end

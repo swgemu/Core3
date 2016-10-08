@@ -1,13 +1,9 @@
 local ObjectManager = require("managers.object.object_manager")
 
-ManxTryConversationHandler = Object:new {}
+ManxTryConversationHandler = conv_handler:new {}
 
-function ManxTryConversationHandler:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNPC, selectedOption, pConversationScreen)
-	return pConversationScreen
-end
-
-function ManxTryConversationHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function ManxTryConversationHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	if (readData("warren:reactor:active") == 0) then
 		return convoTemplate:getScreen("researcher_2")
@@ -25,26 +21,4 @@ function ManxTryConversationHandler:getInitialScreen(pPlayer, pNpc, pConversatio
 	end
 
 	return convoTemplate:getScreen("researcher_start")
-end
-
-function ManxTryConversationHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-
-	local pLastConversationScreen = nil
-
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-
-		return conversationTemplate:getScreen(optionLink)
-	end
-
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
 end

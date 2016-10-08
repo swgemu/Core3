@@ -1,6 +1,6 @@
 local ObjectManager = require("managers.object.object_manager")
 
-mission_target_conv_handler = Object:new {
+mission_target_conv_handler = conv_handler:new {
 	themePark = nil
 }
 
@@ -8,51 +8,19 @@ function mission_target_conv_handler:setThemePark(themeParkNew)
 	self.themePark = themeParkNew
 end
 
-function mission_target_conv_handler:getNextConversationScreen(pConversationTemplate, pConversingPlayer, selectedOption, pConversingNpc)
-	local convosession = CreatureObject(pConversingPlayer):getConversationSession()
-
-	local lastConversationScreen = nil
-
-	if (convosession ~= nil) then
-		local session = LuaConversationSession(convosession)
-		lastConversationScreen = session:getLastConversationScreen()
-	end
-
-	local conversation = LuaConversationTemplate(pConversationTemplate)
-
-	local nextConversationScreen = nil
-
-	if (lastConversationScreen ~= nil) then
-		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
-
-		--Get the linked screen for the selected option.
-		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
-
-		nextConversationScreen = conversation:getScreen(optionLink)
-
-		if nextConversationScreen == nil then
-			nextConversationScreen = self:getInitialScreen(pConversingPlayer, pConversingNpc, pConversationTemplate)
-		end
-	else
-		nextConversationScreen = self:getInitialScreen(pConversingPlayer, pConversingNpc, pConversationTemplate)
-	end
-
-	return nextConversationScreen
-end
-
-function mission_target_conv_handler:getInitialScreen(pConversingPlayer, pConversingNpc, pConversationTemplate)
-	local playerID = SceneObject(pConversingPlayer):getObjectID()
+function mission_target_conv_handler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local playerID = SceneObject(pPlayer):getObjectID()
 	local activeMission = readData(playerID .. ":activeMission")
 	local npcID = readData(playerID .. ":missionSpawn:no1")
 	local correctNpc = true
 
-	if npcID ~= SceneObject(pConversingNpc):getObjectID() then
+	if npcID ~= SceneObject(pNpc):getObjectID() then
 		correctNpc = false
 	end
 
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
+	local conversationTemplate = LuaConversationTemplate(pConvTemplate)
 
-	local ownerID = readData(SceneObject(pConversingNpc):getObjectID() .. ":missionOwnerID")
+	local ownerID = readData(SceneObject(pNpc):getObjectID() .. ":missionOwnerID")
 	local pOwner = getCreatureObject(ownerID)
 	
 	if pOwner == nil then
@@ -73,7 +41,7 @@ function mission_target_conv_handler:getInitialScreen(pConversingPlayer, pConver
 
 	if mission.missionType == "deliver" then
 		if correctNpc == true then
-			if self.themePark:hasRequiredItem(pConversingPlayer) == true then
+			if self.themePark:hasRequiredItem(pPlayer) == true then
 				nextScreenID = "npc_smuggle_n"
 			elseif activeMission == 2 then
 				nextScreenID = "npc_smuggle_n"
@@ -91,7 +59,7 @@ function mission_target_conv_handler:getInitialScreen(pConversingPlayer, pConver
 		end
 	elseif mission.missionType == "retrieve" then
 		if correctNpc == true then
-			if activeMission ~= 2 and self.themePark:hasFullInventory(pConversingPlayer) == true then
+			if activeMission ~= 2 and self.themePark:hasFullInventory(pPlayer) == true then
 				nextScreenID = "inv_full"
 			else
 				nextScreenID = "npc_smuggle_n"
@@ -138,51 +106,51 @@ function mission_target_conv_handler:getReturnWaypointLoc(playerID, npcNumber)
 	return location
 end
 
-function mission_target_conv_handler:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
+function mission_target_conv_handler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 
 	local screenID = screen:getScreenID()
 
 	if screenID == "inv_full" then
-		pConversationScreen = self:handleScreenInvFull(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+		pConvScreen = self:handleScreenInvFull(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "otherescort_n" then
-		pConversationScreen = self:handleScreenOtherEscort(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+		pConvScreen = self:handleScreenOtherEscort(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "dontknowyou_n" then
-		pConversationScreen = self:handleScreenDontKnowYou(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+		pConvScreen = self:handleScreenDontKnowYou(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "npc_smuggle_n" then
-		pConversationScreen = self:handleScreenSmuggle(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+		pConvScreen = self:handleScreenSmuggle(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "npc_more_1_n" then
-		pConversationScreen = self:handleScreenNpcMoreOne(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+		pConvScreen = self:handleScreenNpcMoreOne(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "npc_more_2_n" then
-		pConversationScreen = self:handleScreenNpcMoreTwo(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+		pConvScreen = self:handleScreenNpcMoreTwo(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "npc_more_3_n" then
-		pConversationScreen = self:handleScreenNpcMoreThree(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+		pConvScreen = self:handleScreenNpcMoreThree(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "npc_takeme_n" then
-		pConversationScreen = self:handleScreenTakeMe(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+		pConvScreen = self:handleScreenTakeMe(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "notit_n" then
-		pConversationScreen = self:handleScreenNotIt(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+		pConvScreen = self:handleScreenNotIt(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	end
 
-	return pConversationScreen
+	return pConvScreen
 end
 
-function mission_target_conv_handler:handleScreenInvFull(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
-	pConversationScreen = screen:cloneScreen()
-	local clonedScreen = LuaConversationScreen(pConversationScreen)
+function mission_target_conv_handler:handleScreenInvFull(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
+	pConvScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConvScreen)
 
 	clonedScreen:setDialogTextStringId("@conversation/crafting_contractor:s_82c3e20a") -- It looks like your inventory is full. Talk to me again when you free up some space.
 
-	return pConversationScreen
+	return pConvScreen
 end
 
-function mission_target_conv_handler:handleScreenNotIt(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
-	pConversationScreen = screen:cloneScreen()
-	local clonedScreen = LuaConversationScreen(pConversationScreen)
+function mission_target_conv_handler:handleScreenNotIt(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
+	pConvScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConvScreen)
 
-	local npcNumber = self.themePark:getActiveNpcNumber(pConversingPlayer)
-	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
+	local npcNumber = self.themePark:getActiveNpcNumber(pPlayer)
+	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pPlayer)
 	local stfFile = self.themePark:getStfFile(npcNumber)
 
 	if self.themePark:isValidConvoString(stfFile, ":notit_" .. missionNumber) then
@@ -193,20 +161,20 @@ function mission_target_conv_handler:handleScreenNotIt(pConversationTemplate, pC
 		clonedScreen:setDialogTextStringId(stfFile .. ":not_it")
 	end
 
-	return pConversationScreen
+	return pConvScreen
 end
 
-function mission_target_conv_handler:handleScreenSmuggle(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
-	pConversationScreen = screen:cloneScreen()
-	local clonedScreen = LuaConversationScreen(pConversationScreen)
+function mission_target_conv_handler:handleScreenSmuggle(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
+	pConvScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConvScreen)
 
-	if (pConversingNpc == nil) then
+	if (pNpc == nil) then
 		return nil
 	end
 
-	local npcNumber = self.themePark:getActiveNpcNumber(pConversingPlayer)
-	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
+	local npcNumber = self.themePark:getActiveNpcNumber(pPlayer)
+	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pPlayer)
 	local stfFile = self.themePark:getStfFile(npcNumber)
 
 	clonedScreen:setDialogTextStringId(stfFile .. ":npc_smuggle_" .. missionNumber)
@@ -214,41 +182,41 @@ function mission_target_conv_handler:handleScreenSmuggle(pConversationTemplate, 
 	if self.themePark:isValidConvoString(stfFile, ":player_more_1_" .. missionNumber) then
 		clonedScreen:addOption(stfFile .. ":player_more_1_" .. missionNumber, "npc_more_1_n")
 		clonedScreen:setStopConversation(false)
-		return pConversationScreen
+		return pConvScreen
 	end
 
 	local mission = self.themePark:getMission(npcNumber, missionNumber)
 
 	if mission.missionType == "deliver" then
-		if self.themePark:hasRequiredItem(pConversingPlayer) == true then
-			self.themePark:removeDeliverItem(pConversingPlayer)
-			self.themePark:completeMission(pConversingPlayer)
+		if self.themePark:hasRequiredItem(pPlayer) == true then
+			self.themePark:removeDeliverItem(pPlayer)
+			self.themePark:completeMission(pPlayer)
 		end
 	elseif mission.missionType == "retrieve" then
-		local playerID = SceneObject(pConversingPlayer):getObjectID()
+		local playerID = SceneObject(pPlayer):getObjectID()
 		local activeMission = readData(playerID .. ":activeMission")
 
 		if activeMission ~= 2 then
 			local returnLoc = self:getReturnWaypointLoc(playerID, npcNumber)
-			self.themePark:giveMissionItems(mission, pConversingPlayer)
-			self.themePark:updateWaypoint(pConversingPlayer, returnLoc[1], returnLoc[2], returnLoc[3], "return")
+			self.themePark:giveMissionItems(mission, pPlayer)
+			self.themePark:updateWaypoint(pPlayer, returnLoc[1], returnLoc[2], returnLoc[3], "return")
 		end
 	end
 
-	return pConversationScreen
+	return pConvScreen
 end
 
-function mission_target_conv_handler:handleScreenNpcMoreOne(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
-	pConversationScreen = screen:cloneScreen()
-	local clonedScreen = LuaConversationScreen(pConversationScreen)
+function mission_target_conv_handler:handleScreenNpcMoreOne(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
+	pConvScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConvScreen)
 
-	if (pConversingNpc == nil) then
+	if (pNpc == nil) then
 		return nil
 	end
 
-	local npcNumber = self.themePark:getActiveNpcNumber(pConversingPlayer)
-	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
+	local npcNumber = self.themePark:getActiveNpcNumber(pPlayer)
+	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pPlayer)
 	local stfFile = self.themePark:getStfFile(npcNumber)
 
 	clonedScreen:setDialogTextStringId(stfFile .. ":npc_more_1_" .. missionNumber)
@@ -256,16 +224,16 @@ function mission_target_conv_handler:handleScreenNpcMoreOne(pConversationTemplat
 	if self.themePark:isValidConvoString(stfFile, ":player_more_2_" .. missionNumber) then
 		clonedScreen:addOption(stfFile .. ":player_more_2_" .. missionNumber, "npc_more_2_n")
 		clonedScreen:setStopConversation(false)
-		return pConversationScreen
+		return pConvScreen
 	end
 
 	local mission = self.themePark:getMission(npcNumber, missionNumber)
-	local playerID = SceneObject(pConversingPlayer):getObjectID()
+	local playerID = SceneObject(pPlayer):getObjectID()
 
 	if mission.missionType == "deliver" then
-		if self.themePark:hasRequiredItem(pConversingPlayer) == true then
-			self.themePark:removeDeliverItem(pConversingPlayer)
-			self.themePark:completeMission(pConversingPlayer)
+		if self.themePark:hasRequiredItem(pPlayer) == true then
+			self.themePark:removeDeliverItem(pPlayer)
+			self.themePark:completeMission(pPlayer)
 		end
 	elseif mission.missionType == "retrieve" then
 
@@ -273,31 +241,31 @@ function mission_target_conv_handler:handleScreenNpcMoreOne(pConversationTemplat
 
 		if activeMission ~= 2 then
 			local returnLoc = self:getReturnWaypointLoc(playerID, npcNumber)
-			self.themePark:giveMissionItems(mission, pConversingPlayer)
-			self.themePark:updateWaypoint(pConversingPlayer, returnLoc[1], returnLoc[2], returnLoc[3], "return")
+			self.themePark:giveMissionItems(mission, pPlayer)
+			self.themePark:updateWaypoint(pPlayer, returnLoc[1], returnLoc[2], returnLoc[3], "return")
 		end
 	elseif mission.missionType == "escort" then
 		local returnLoc = self:getReturnWaypointLoc(playerID, npcNumber)
 
-		self.themePark:createEscortReturnArea(pConversingNpc, pConversingPlayer)
-		self.themePark:followPlayer(pConversingNpc, pConversingPlayer)
-		self.themePark:updateWaypoint(pConversingPlayer, returnLoc[1], returnLoc[2], returnLoc[3], "return")
+		self.themePark:createEscortReturnArea(pNpc, pPlayer)
+		self.themePark:followPlayer(pNpc, pPlayer)
+		self.themePark:updateWaypoint(pPlayer, returnLoc[1], returnLoc[2], returnLoc[3], "return")
 	end
 
-	return pConversationScreen
+	return pConvScreen
 end
 
-function mission_target_conv_handler:handleScreenNpcMoreTwo(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
-	pConversationScreen = screen:cloneScreen()
-	local clonedScreen = LuaConversationScreen(pConversationScreen)
+function mission_target_conv_handler:handleScreenNpcMoreTwo(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
+	pConvScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConvScreen)
 
-	if (pConversingNpc == nil) then
+	if (pNpc == nil) then
 		return nil
 	end
 
-	local npcNumber = self.themePark:getActiveNpcNumber(pConversingPlayer)
-	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
+	local npcNumber = self.themePark:getActiveNpcNumber(pPlayer)
+	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pPlayer)
 	local stfFile = self.themePark:getStfFile(npcNumber)
 
 	clonedScreen:setDialogTextStringId(stfFile .. ":npc_more_2_" .. missionNumber)
@@ -305,89 +273,89 @@ function mission_target_conv_handler:handleScreenNpcMoreTwo(pConversationTemplat
 	if self.themePark:isValidConvoString(stfFile, ":player_more_3_" .. missionNumber) then
 		clonedScreen:addOption(stfFile .. ":player_more_3_" .. missionNumber, "npc_more_3_n")
 		clonedScreen:setStopConversation(false)
-		return pConversationScreen
+		return pConvScreen
 	end
 
 	local mission = self.themePark:getMission(npcNumber, missionNumber)
-	local playerID = SceneObject(pConversingPlayer):getObjectID()
+	local playerID = SceneObject(pPlayer):getObjectID()
 
 	if mission.missionType == "deliver" then
-		if self.themePark:hasRequiredItem(pConversingPlayer) == true then
-			self.themePark:removeDeliverItem(pConversingPlayer)
-			self.themePark:completeMission(pConversingPlayer)
+		if self.themePark:hasRequiredItem(pPlayer) == true then
+			self.themePark:removeDeliverItem(pPlayer)
+			self.themePark:completeMission(pPlayer)
 		end
 	elseif mission.missionType == "retrieve" then
 		local activeMission = readData(playerID .. ":activeMission")
 
 		if activeMission ~= 2 then
 			local returnLoc = self:getReturnWaypointLoc(playerID, npcNumber)
-			self.themePark:giveMissionItems(mission, pConversingPlayer)
-			self.themePark:updateWaypoint(pConversingPlayer, returnLoc[1], returnLoc[2], returnLoc[3], "return")
+			self.themePark:giveMissionItems(mission, pPlayer)
+			self.themePark:updateWaypoint(pPlayer, returnLoc[1], returnLoc[2], returnLoc[3], "return")
 		end
 	elseif mission.missionType == "escort" then
 		local returnLoc = self:getReturnWaypointLoc(playerID, npcNumber)
 
-		self.themePark:createEscortReturnArea(pConversingNpc, pConversingPlayer)
-		self.themePark:followPlayer(pConversingNpc, pConversingPlayer)
-		self.themePark:updateWaypoint(pConversingPlayer, returnLoc[1], returnLoc[2], returnLoc[3], "return")
+		self.themePark:createEscortReturnArea(pNpc, pPlayer)
+		self.themePark:followPlayer(pNpc, pPlayer)
+		self.themePark:updateWaypoint(pPlayer, returnLoc[1], returnLoc[2], returnLoc[3], "return")
 	end
 
-	return pConversationScreen
+	return pConvScreen
 end
 
-function mission_target_conv_handler:handleScreenNpcMoreThree(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
-	pConversationScreen = screen:cloneScreen()
-	local clonedScreen = LuaConversationScreen(pConversationScreen)
+function mission_target_conv_handler:handleScreenNpcMoreThree(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
+	pConvScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConvScreen)
 
-	if (pConversingNpc == nil) then
+	if (pNpc == nil) then
 		return nil
 	end
 
-	local npcNumber = self.themePark:getActiveNpcNumber(pConversingPlayer)
-	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
+	local npcNumber = self.themePark:getActiveNpcNumber(pPlayer)
+	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pPlayer)
 	local stfFile = self.themePark:getStfFile(npcNumber)
 
 	clonedScreen:setDialogTextStringId(stfFile .. ":npc_more_3_" .. missionNumber)
 
 	local mission = self.themePark:getMission(npcNumber, missionNumber)
-	local playerID = SceneObject(pConversingPlayer):getObjectID()
+	local playerID = SceneObject(pPlayer):getObjectID()
 
 	if mission.missionType == "deliver" then
-		if self.themePark:hasRequiredItem(pConversingPlayer) == true then
-			self.themePark:removeDeliverItem(pConversingPlayer)
-			self.themePark:completeMission(pConversingPlayer)
+		if self.themePark:hasRequiredItem(pPlayer) == true then
+			self.themePark:removeDeliverItem(pPlayer)
+			self.themePark:completeMission(pPlayer)
 		end
 	elseif mission.missionType == "retrieve" then
 		local activeMission = readData(playerID .. ":activeMission")
 
 		if activeMission ~= 2 then
 			local returnLoc = self:getReturnWaypointLoc(playerID, npcNumber)
-			self.themePark:giveMissionItems(mission, pConversingPlayer)
-			self.themePark:updateWaypoint(pConversingPlayer, returnLoc[1], returnLoc[2], returnLoc[3], "return")
+			self.themePark:giveMissionItems(mission, pPlayer)
+			self.themePark:updateWaypoint(pPlayer, returnLoc[1], returnLoc[2], returnLoc[3], "return")
 		end
 	elseif mission.missionType == "escort" then
 		local returnLoc = self:getReturnWaypointLoc(playerID, npcNumber)
 
-		self.themePark:createEscortReturnArea(pConversingNpc, pConversingPlayer)
-		self.themePark:followPlayer(pConversingNpc, pConversingPlayer)
-		self.themePark:updateWaypoint(pConversingPlayer, returnLoc[1], returnLoc[2], returnLoc[3], "return")
+		self.themePark:createEscortReturnArea(pNpc, pPlayer)
+		self.themePark:followPlayer(pNpc, pPlayer)
+		self.themePark:updateWaypoint(pPlayer, returnLoc[1], returnLoc[2], returnLoc[3], "return")
 	end
 
-	return pConversationScreen
+	return pConvScreen
 end
 
-function mission_target_conv_handler:handleScreenTakeMe(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
-	pConversationScreen = screen:cloneScreen()
-	local clonedScreen = LuaConversationScreen(pConversationScreen)
+function mission_target_conv_handler:handleScreenTakeMe(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
+	pConvScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConvScreen)
 
-	if (pConversingNpc == nil) then
+	if (pNpc == nil) then
 		return nil
 	end
 
-	local npcNumber = self.themePark:getActiveNpcNumber(pConversingPlayer)
-	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
+	local npcNumber = self.themePark:getActiveNpcNumber(pPlayer)
+	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pPlayer)
 	local stfFile = self.themePark:getStfFile(npcNumber)
 
 	clonedScreen:setDialogTextStringId(stfFile .. ":npc_takeme_" .. missionNumber)
@@ -395,29 +363,29 @@ function mission_target_conv_handler:handleScreenTakeMe(pConversationTemplate, p
 	if self.themePark:isValidConvoString(stfFile, ":player_more_1_" .. missionNumber) then
 		clonedScreen:addOption(stfFile .. ":player_more_1_" .. missionNumber, "npc_more_1_n")
 		clonedScreen:setStopConversation(false)
-		return pConversationScreen
+		return pConvScreen
 	end
 
-	local playerID = SceneObject(pConversingPlayer):getObjectID()
+	local playerID = SceneObject(pPlayer):getObjectID()
 	local returnLoc = self:getReturnWaypointLoc(playerID, npcNumber)
 
-	self.themePark:createEscortReturnArea(pConversingNpc, pConversingPlayer)
-	self.themePark:followPlayer(pConversingNpc, pConversingPlayer)
-	self.themePark:updateWaypoint(pConversingPlayer, returnLoc[1], returnLoc[2], returnLoc[3], "return")
+	self.themePark:createEscortReturnArea(pNpc, pPlayer)
+	self.themePark:followPlayer(pNpc, pPlayer)
+	self.themePark:updateWaypoint(pPlayer, returnLoc[1], returnLoc[2], returnLoc[3], "return")
 
-	return pConversationScreen
+	return pConvScreen
 end
 
-function mission_target_conv_handler:handleScreenOtherEscort(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
-	pConversationScreen = screen:cloneScreen()
-	local clonedScreen = LuaConversationScreen(pConversationScreen)
+function mission_target_conv_handler:handleScreenOtherEscort(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
+	pConvScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConvScreen)
 
-	if (pConversingNpc == nil) then
+	if (pNpc == nil) then
 		return nil
 	end
 
-	local ownerID = readData(CreatureObject(pConversingNpc):getObjectID() .. ":missionOwnerID")
+	local ownerID = readData(CreatureObject(pNpc):getObjectID() .. ":missionOwnerID")
 	local pOwner = getCreatureObject(ownerID)
 
 	if pOwner == nil then
@@ -438,19 +406,19 @@ function mission_target_conv_handler:handleScreenOtherEscort(pConversationTempla
 		clonedScreen:setDialogTextStringId(stfFile .. ":dontknowyou_" .. missionNumber)
 	end
 
-	return pConversationScreen
+	return pConvScreen
 end
 
-function mission_target_conv_handler:handleScreenDontKnowYou(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
-	pConversationScreen = screen:cloneScreen()
-	local clonedScreen = LuaConversationScreen(pConversationScreen)
+function mission_target_conv_handler:handleScreenDontKnowYou(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
+	pConvScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConvScreen)
 
-	if (pConversingNpc == nil) then
+	if (pNpc == nil) then
 		return nil
 	end
 
-	local ownerID = readData(CreatureObject(pConversingNpc):getObjectID() .. ":missionOwnerID")
+	local ownerID = readData(CreatureObject(pNpc):getObjectID() .. ":missionOwnerID")
 	local pOwner = getCreatureObject(ownerID)
 
 	if pOwner == nil then
@@ -467,5 +435,5 @@ function mission_target_conv_handler:handleScreenDontKnowYou(pConversationTempla
 		clonedScreen:setDialogTextStringId(stfFile .. ":dontknowyou")
 	end
 
-	return pConversationScreen
+	return pConvScreen
 end

@@ -1,31 +1,9 @@
 local QuestManager = require("managers.quest.quest_manager")
 
-oldManIntroConvoHandler = Object:new {}
+oldManIntroConvoHandler = conv_handler:new {}
 
-function oldManIntroConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-
-	local pLastConversationScreen = nil
-
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-
-		return conversationTemplate:getScreen(optionLink)
-	end
-
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
-end
-
-function oldManIntroConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function oldManIntroConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	if OldManOutroEncounter:doesOldManBelongToThePlayer(pPlayer, pNpc) then
 		return convoTemplate:getScreen("intro_mellichae")
 	elseif OldManIntroEncounter:doesOldManBelongToThePlayer(pPlayer, pNpc) then
@@ -35,24 +13,23 @@ function oldManIntroConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTe
 	end
 end
 
-
-function oldManIntroConvoHandler:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
+function oldManIntroConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 
 	local screenID = screen:getScreenID()
 
 	if screenID == "perhaps_meet_again" or screenID == "perhaps_another_time" then
-		OldManIntroEncounter:scheduleDespawnOfOldMan(pConversingPlayer)
-		CreatureObject(pConversingNpc):clearOptionBit(CONVERSABLE)
+		OldManIntroEncounter:scheduleDespawnOfOldMan(pPlayer)
+		CreatureObject(pNpc):clearOptionBit(CONVERSABLE)
 	elseif screenID == "here_is_the_crystal" then
-		OldManIntroEncounter:scheduleDespawnOfOldMan(pConversingPlayer)
-		OldManIntroEncounter:giveForceCrystalToPlayer(pConversingPlayer)
-		CreatureObject(pConversingNpc):clearOptionBit(CONVERSABLE)
+		OldManIntroEncounter:scheduleDespawnOfOldMan(pPlayer)
+		OldManIntroEncounter:giveForceCrystalToPlayer(pPlayer)
+		CreatureObject(pNpc):clearOptionBit(CONVERSABLE)
 	elseif screenID == "where_camp" then
-		QuestManager.completeQuest(pConversingPlayer, QuestManager.quests.OLD_MAN_FINAL)
-		MellichaeOutroTheater:start(pConversingPlayer)
-		CreatureObject(pConversingNpc):clearOptionBit(CONVERSABLE)
+		QuestManager.completeQuest(pPlayer, QuestManager.quests.OLD_MAN_FINAL)
+		MellichaeOutroTheater:start(pPlayer)
+		CreatureObject(pNpc):clearOptionBit(CONVERSABLE)
 	end
 
-	return pConversationScreen
+	return pConvScreen
 end

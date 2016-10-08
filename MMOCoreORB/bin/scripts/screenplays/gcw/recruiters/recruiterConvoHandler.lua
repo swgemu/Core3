@@ -1,154 +1,132 @@
 local ObjectManager = require("managers.object.object_manager")
 
-RecruiterConvoHandler = Object:new {}
+RecruiterConvoHandler = conv_handler:new {}
 
-function RecruiterConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-
-	local pLastConversationScreen = nil
-
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-
-		return conversationTemplate:getScreen(optionLink)
-	end
-
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
-end
-
-function RecruiterConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local pGhost = CreatureObject(conversingPlayer):getPlayerObject()
+function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
-		return conversationScreen
+		return pConvScreen
 	end
 
-	local screen = LuaConversationScreen(conversationScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
 
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 	if (screenID == "greet_member_start_covert" or screenID == "stay_covert" or screenID == "dont_resign_covert") then
-		self:updateScreenWithPromotions(conversingPlayer, conversationTemplate, conversationScreen, recruiterScreenplay:getRecruiterFaction(conversingNPC))
-		if (recruiterScreenplay:getFactionFromHashCode(CreatureObject(conversingPlayer):getFaction()) == "rebel") then
+		self:updateScreenWithPromotions(pPlayer, pConvTemplate, pConvScreen, recruiterScreenplay:getRecruiterFaction(pNpc))
+		if (recruiterScreenplay:getFactionFromHashCode(CreatureObject(pPlayer):getFaction()) == "rebel") then
 			clonedConversation:addOption("@conversation/faction_recruiter_rebel:s_480", "faction_purchase")
 		else
 			clonedConversation:addOption("@conversation/faction_recruiter_imperial:s_324", "faction_purchase")
 		end
 	elseif (screenID == "greet_member_start_overt" or screenID == "stay_special_forces" or screenID == "stay_overt" or screenID == "dont_resign_overt") then
-		self:updateScreenWithPromotions(conversingPlayer, conversationTemplate, conversationScreen, recruiterScreenplay:getRecruiterFaction(conversingNPC))
-		self:updateScreenWithBribe(conversingPlayer, conversingNPC, conversationTemplate, conversationScreen, recruiterScreenplay:getRecruiterFaction(conversingNPC))
-		if (recruiterScreenplay:getFactionFromHashCode(CreatureObject(conversingPlayer):getFaction()) == "rebel") then
+		self:updateScreenWithPromotions(pPlayer, pConvTemplate, pConvScreen, recruiterScreenplay:getRecruiterFaction(pNpc))
+		self:updateScreenWithBribe(pPlayer, pNpc, pConvTemplate, pConvScreen, recruiterScreenplay:getRecruiterFaction(pNpc))
+		if (recruiterScreenplay:getFactionFromHashCode(CreatureObject(pPlayer):getFaction()) == "rebel") then
 			clonedConversation:addOption("@conversation/faction_recruiter_rebel:s_480", "faction_purchase")
 		else
 			clonedConversation:addOption("@conversation/faction_recruiter_imperial:s_324", "faction_purchase")
 		end
 
 	elseif (screenID == "accept_join") then
-		CreatureObject(conversingPlayer):setFaction(recruiterScreenplay:getRecruiterFactionHashCode(conversingNPC))
+		CreatureObject(pPlayer):setFaction(recruiterScreenplay:getRecruiterFactionHashCode(pNpc))
 		PlayerObject(pGhost):setFactionStatus(1)
 
 	elseif (screenID == "accepted_go_overt") then
-		CreatureObject(conversingPlayer):setPvpStatusBit(CHANGEFACTIONSTATUS)
-		writeData(CreatureObject(conversingPlayer):getObjectID() .. ":changingFactionStatus", 1)
-		createEvent(30000, "recruiterScreenplay", "handleGoOvert", conversingPlayer, "")
+		CreatureObject(pPlayer):setPvpStatusBit(CHANGEFACTIONSTATUS)
+		writeData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus", 1)
+		createEvent(30000, "recruiterScreenplay", "handleGoOvert", pPlayer, "")
 
 	elseif (screenID == "accepted_go_covert") then
-		if (CreatureObject(conversingPlayer):hasSkill("force_title_jedi_rank_03")) then
+		if (CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_03")) then
 			return
 		end
-		CreatureObject(conversingPlayer):setPvpStatusBit(CHANGEFACTIONSTATUS)
-		writeData(CreatureObject(conversingPlayer):getObjectID() .. ":changingFactionStatus", 1)
-		createEvent(300000, "recruiterScreenplay", "handleGoCovert", conversingPlayer, "")
+		CreatureObject(pPlayer):setPvpStatusBit(CHANGEFACTIONSTATUS)
+		writeData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus", 1)
+		createEvent(300000, "recruiterScreenplay", "handleGoCovert", pPlayer, "")
 
 	elseif (screenID == "accepted_go_on_leave") then
 
-		if (CreatureObject(conversingPlayer):hasSkill("force_title_jedi_rank_03")) then
+		if (CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_03")) then
 			return
 		end
-		CreatureObject(conversingPlayer):setPvpStatusBit(CHANGEFACTIONSTATUS)
-		writeData(CreatureObject(conversingPlayer):getObjectID() .. ":changingFactionStatus", 1)
-		createEvent(300000, "recruiterScreenplay", "handleGoOnLeave", conversingPlayer, "")
+		CreatureObject(pPlayer):setPvpStatusBit(CHANGEFACTIONSTATUS)
+		writeData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus", 1)
+		createEvent(300000, "recruiterScreenplay", "handleGoOnLeave", pPlayer, "")
 
 	elseif (screenID == "accepted_resign") then
-		if (CreatureObject(conversingPlayer):hasSkill("force_title_jedi_rank_03")) then
+		if (CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_03")) then
 			return
 		end
 
 		if (PlayerObject(pGhost):isOvert()) then
-			CreatureObject(conversingPlayer):setPvpStatusBit(CHANGEFACTIONSTATUS)
-			writeData(CreatureObject(conversingPlayer):getObjectID() .. ":changingFactionStatus", 1)
-			createEvent(300000, "recruiterScreenplay", "handleResign", conversingPlayer, "")
-			return conversationScreen
+			CreatureObject(pPlayer):setPvpStatusBit(CHANGEFACTIONSTATUS)
+			writeData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus", 1)
+			createEvent(300000, "recruiterScreenplay", "handleResign", pPlayer, "")
+			return pConvScreen
 		end
-		recruiterScreenplay:handleResign(conversingPlayer)
+		recruiterScreenplay:handleResign(pPlayer)
 
 	elseif (screenID == "accepted_resume_duties") then
-		CreatureObject(conversingPlayer):setPvpStatusBit(CHANGEFACTIONSTATUS)
-		createEvent(30000, "recruiterScreenplay", "handleGoCovert", conversingPlayer, "")
-		writeData(CreatureObject(conversingPlayer):getObjectID() .. ":changingFactionStatus", 1)
+		CreatureObject(pPlayer):setPvpStatusBit(CHANGEFACTIONSTATUS)
+		createEvent(30000, "recruiterScreenplay", "handleGoCovert", pPlayer, "")
+		writeData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus", 1)
 
 	elseif (screenID == "confirm_promotion") then
-		local rank = CreatureObject(conversingPlayer):getFactionRank() + 1
+		local rank = CreatureObject(pPlayer):getFactionRank() + 1
 		clonedConversation:setDialogTextTO("faction_recruiter", getRankName(rank))
 
 	elseif (screenID == "accepted_promotion") then
-		local rank = CreatureObject(conversingPlayer):getFactionRank() + 1
+		local rank = CreatureObject(pPlayer):getFactionRank() + 1
 		local requiredPoints = getRankCost(rank)
 
-		if (PlayerObject(pGhost):getFactionStanding(recruiterScreenplay:getRecruiterFaction(conversingNPC)) < (requiredPoints + recruiterScreenplay:getMinimumFactionStanding())) then
-			local convoTemplate = LuaConversationTemplate(conversationTemplate)
+		if (PlayerObject(pGhost):getFactionStanding(recruiterScreenplay:getRecruiterFaction(pNpc)) < (requiredPoints + recruiterScreenplay:getMinimumFactionStanding())) then
+			local convoTemplate = LuaConversationTemplate(pConvTemplate)
 			local notEnoughScreen = convoTemplate:getScreen("not_enough_points")
 			local screenObject = LuaConversationScreen(notEnoughScreen)
 
-			conversationScreen = screenObject:cloneScreen()
+			pConvScreen = screenObject:cloneScreen()
 
-			screenObject = LuaConversationScreen(conversationScreen)
+			screenObject = LuaConversationScreen(pConvScreen)
 			screenObject:setDialogTextTO("faction_recruiter", getRankName(rank))
 			screenObject:setDialogTextDI(requiredPoints)
 		else
-			PlayerObject(pGhost):decreaseFactionStanding(recruiterScreenplay:getRecruiterFaction(conversingNPC), requiredPoints)
-			CreatureObject(conversingPlayer):setFactionRank(rank)
+			PlayerObject(pGhost):decreaseFactionStanding(recruiterScreenplay:getRecruiterFaction(pNpc), requiredPoints)
+			CreatureObject(pPlayer):setFactionRank(rank)
 		end
 
-	elseif screenID == "confirm_bribe" and CreatureObject(conversingPlayer):hasSkill("combat_smuggler_underworld_04") and (CreatureObject(conversingPlayer):getCashCredits() >= 100000)
-		and (getFactionPointsCap(CreatureObject(conversingPlayer):getFactionRank()) >= PlayerObject(pGhost):getFactionStanding(recruiterScreenplay:getRecruiterFaction(conversingNPC)) + 1250) then
-		self:add100kBribeOption(conversingNPC, clonedConversation)
+	elseif screenID == "confirm_bribe" and CreatureObject(pPlayer):hasSkill("combat_smuggler_underworld_04") and (CreatureObject(pPlayer):getCashCredits() >= 100000)
+		and (getFactionPointsCap(CreatureObject(pPlayer):getFactionRank()) >= PlayerObject(pGhost):getFactionStanding(recruiterScreenplay:getRecruiterFaction(pNpc)) + 1250) then
+		self:add100kBribeOption(pNpc, clonedConversation)
 
-	elseif (screenID == "accepted_bribe_20k") and CreatureObject(conversingPlayer):hasSkill("combat_smuggler_underworld_04") and (CreatureObject(conversingPlayer):getCashCredits() >= 20000)
-		and (getFactionPointsCap(CreatureObject(conversingPlayer):getFactionRank()) >= PlayerObject(pGhost):getFactionStanding(recruiterScreenplay:getRecruiterFaction(conversingNPC)) + 250) then
-		recruiterScreenplay:grantBribe(conversingNPC, conversingPlayer, 20000, 250)
+	elseif (screenID == "accepted_bribe_20k") and CreatureObject(pPlayer):hasSkill("combat_smuggler_underworld_04") and (CreatureObject(pPlayer):getCashCredits() >= 20000)
+		and (getFactionPointsCap(CreatureObject(pPlayer):getFactionRank()) >= PlayerObject(pGhost):getFactionStanding(recruiterScreenplay:getRecruiterFaction(pNpc)) + 250) then
+		recruiterScreenplay:grantBribe(pNpc, pPlayer, 20000, 250)
 
-	elseif (screenID == "accepted_bribe_100k") and CreatureObject(conversingPlayer):hasSkill("combat_smuggler_underworld_04") and (CreatureObject(conversingPlayer):getCashCredits() >= 100000)
-		and (getFactionPointsCap(CreatureObject(conversingPlayer):getFactionRank()) >= PlayerObject(pGhost):getFactionStanding(recruiterScreenplay:getRecruiterFaction(conversingNPC)) + 1250) then
-		recruiterScreenplay:grantBribe(conversingNPC, conversingPlayer, 100000, 1250)
+	elseif (screenID == "accepted_bribe_100k") and CreatureObject(pPlayer):hasSkill("combat_smuggler_underworld_04") and (CreatureObject(pPlayer):getCashCredits() >= 100000)
+		and (getFactionPointsCap(CreatureObject(pPlayer):getFactionRank()) >= PlayerObject(pGhost):getFactionStanding(recruiterScreenplay:getRecruiterFaction(pNpc)) + 1250) then
+		recruiterScreenplay:grantBribe(pNpc, pPlayer, 100000, 1250)
 
 	elseif (screenID == "fp_furniture" or screenID == "fp_weapons_armor" or screenID == "fp_installations" or screenID == "fp_uniforms" or screenID == "fp_hirelings") then
-		recruiterScreenplay:sendPurchaseSui(conversingNPC, conversingPlayer, screenID)
+		recruiterScreenplay:sendPurchaseSui(pNpc, pPlayer, screenID)
 
 	elseif (screenID == "greet_neutral_start") then
-		self:addJoinMilitaryOption(recruiterScreenplay:getRecruiterFaction(conversingNPC), clonedConversation, PlayerObject(pGhost), conversingNPC)
+		self:addJoinMilitaryOption(recruiterScreenplay:getRecruiterFaction(pNpc), clonedConversation, PlayerObject(pGhost), pNpc)
 
 	elseif (screenID == "show_gcw_score") then
-		local zoneName = SceneObject(conversingNPC):getZoneName()
+		local zoneName = SceneObject(pNpc):getZoneName()
 		clonedConversation:setDialogTextDI(getImperialScore(zoneName))
 		clonedConversation:setDialogTextTO(getRebelScore(zoneName))
 
 	end
 
-	return conversationScreen
+	return pConvScreen
 end
 
-function RecruiterConvoHandler:getInitialScreen(pPlayer, pNpc, conversationTemplate)
-	local convoTemplate = LuaConversationTemplate(conversationTemplate)
+function RecruiterConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
@@ -190,15 +168,15 @@ function RecruiterConvoHandler:addRankReviewOption(faction, screen)
 	end
 end
 
-function RecruiterConvoHandler:addJoinMilitaryOption(faction, screen, playerObject, conversingNPC)
+function RecruiterConvoHandler:addJoinMilitaryOption(faction, screen, playerObject, pNpc)
 	if (faction == "rebel") then
-		if (playerObject:getFactionStanding(recruiterScreenplay:getRecruiterFaction(conversingNPC)) < recruiterScreenplay.minimumFactionStanding) then
+		if (playerObject:getFactionStanding(recruiterScreenplay:getRecruiterFaction(pNpc)) < recruiterScreenplay.minimumFactionStanding) then
 			screen:addOption("@conversation/faction_recruiter_rebel:s_580", "neutral_need_more_points")
 		else
 			screen:addOption("@conversation/faction_recruiter_rebel:s_580", "join_military")
 		end
 	elseif (faction == "imperial") then
-		if (playerObject:getFactionStanding(recruiterScreenplay:getRecruiterFaction(conversingNPC)) < recruiterScreenplay.minimumFactionStanding) then
+		if (playerObject:getFactionStanding(recruiterScreenplay:getRecruiterFaction(pNpc)) < recruiterScreenplay.minimumFactionStanding) then
 			screen:addOption("@conversation/faction_recruiter_imperial:s_428", "neutral_need_more_points")
 		else
 			screen:addOption("@conversation/faction_recruiter_imperial:s_428", "join_military")
@@ -232,14 +210,14 @@ function RecruiterConvoHandler:add100kBribeOption(pNpc, screen)
 	end
 end
 
-function RecruiterConvoHandler:updateScreenWithBribe(pPlayer, pNpc, conversationTemplate, screen, faction)
+function RecruiterConvoHandler:updateScreenWithBribe(pPlayer, pNpc, pConvTemplate, pConvScreen, faction)
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
 		return
 	end
 
-	local screenObject = LuaConversationScreen(screen)
+	local screenObject = LuaConversationScreen(pConvScreen)
 
 	if (CreatureObject(pPlayer):hasSkill("combat_smuggler_underworld_04") and (CreatureObject(pPlayer):getCashCredits() >= 20000)
 		and (getFactionPointsCap(CreatureObject(pPlayer):getFactionRank()) >= PlayerObject(pGhost):getFactionStanding(faction) + 250)) then
@@ -247,14 +225,14 @@ function RecruiterConvoHandler:updateScreenWithBribe(pPlayer, pNpc, conversation
 	end
 end
 
-function RecruiterConvoHandler:updateScreenWithPromotions(pPlayer, conversationTemplate, screen, faction)
+function RecruiterConvoHandler:updateScreenWithPromotions(pPlayer, pConvTemplate, pConvScreen, faction)
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
 		return
 	end
 
-	local screenObject = LuaConversationScreen(screen)
+	local screenObject = LuaConversationScreen(pConvScreen)
 	local rank = CreatureObject(pPlayer):getFactionRank()
 
 	if rank < 0 or isHighestRank(rank) == true then

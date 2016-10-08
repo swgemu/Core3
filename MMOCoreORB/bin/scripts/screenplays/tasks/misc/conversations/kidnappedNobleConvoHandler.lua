@@ -1,37 +1,31 @@
 local ObjectManager = require("managers.object.object_manager")
 
-kidnappedNobleConvoHandler = {  }
+kidnappedNobleConvoHandler = conv_handler:new {}
 
-function kidnappedNobleConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-
-	return convoTemplate:getScreen("init")
-end
-
-function kidnappedNobleConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function kidnappedNobleConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 
 	local screenID = screen:getScreenID()
 
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 	if (screenID == "init") then
-		CreatureObject(conversingNPC):doAnimation("angry")
+		CreatureObject(pNpc):doAnimation("angry")
 	elseif (screenID == "of_course") then
-		CreatureObject(conversingNPC):doAnimation("nod_head_multiple")
+		CreatureObject(pNpc):doAnimation("nod_head_multiple")
 	elseif (screenID == "my_hero") then
-		CreatureObject(conversingNPC):doAnimation("celebrate")
-		local objectName = AiAgent(conversingNPC):getCreatureTemplateName()
+		CreatureObject(pNpc):doAnimation("celebrate")
+		local objectName = AiAgent(pNpc):getCreatureTemplateName()
 
-		if (readScreenPlayData(conversingPlayer, "kidnappedNoble:" .. objectName, "completed") == "") then
-			CreatureObject(conversingPlayer):awardExperience("combat_general", 250, true)
-			writeScreenPlayData(conversingPlayer, "kidnappedNoble:" .. objectName, "completed", 1)
+		if (readScreenPlayData(pPlayer, "kidnappedNoble:" .. objectName, "completed") == "") then
+			CreatureObject(pPlayer):awardExperience("combat_general", 250, true)
+			writeScreenPlayData(pPlayer, "kidnappedNoble:" .. objectName, "completed", 1)
 		end
 
-		createEvent(2000, "kidnappedNobleConvoHandler", "doRunAway", conversingNPC, "")
+		createEvent(2000, "kidnappedNobleConvoHandler", "doRunAway", pNpc, "")
 	end
 
-	return conversationScreen
+	return pConvScreen
 end
 
 function kidnappedNobleConvoHandler:doRunAway(pCreature)
@@ -59,20 +53,4 @@ function kidnappedNobleConvoHandler:destroyNoble(pCreature)
 	end
 
 	AiAgent(pCreature):doDespawn()
-end
-
-function kidnappedNobleConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-	local pLastConversationScreen = nil
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-		return conversationTemplate:getScreen(optionLink)
-	end
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
 end

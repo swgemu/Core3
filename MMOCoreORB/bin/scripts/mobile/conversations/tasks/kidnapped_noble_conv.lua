@@ -1,5 +1,5 @@
 kidnappedNobleConvoTemplate = ConvoTemplate:new {
-	initialScreen = "",
+	initialScreen = "init",
 	templateType = "Lua",
 	luaClassHandler = "kidnappedNobleConvoHandler",
 	screens = {}

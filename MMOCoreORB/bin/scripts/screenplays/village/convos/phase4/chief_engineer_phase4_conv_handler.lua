@@ -1,10 +1,10 @@
 local ObjectManager = require("managers.object.object_manager")
 local QuestManager = require("managers.quest.quest_manager")
 
-villageChiefEngineerPhase4ConvoHandler = {  }
+villageChiefEngineerPhase4ConvoHandler = conv_handler:new {}
 
-function villageChiefEngineerPhase4ConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function villageChiefEngineerPhase4ConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	if (VillageJediManagerTownship:getCurrentPhase() ~= 4) then
 		return convoTemplate:getScreen("intro_wrong_phase")
@@ -31,20 +31,20 @@ function villageChiefEngineerPhase4ConvoHandler:isOnQuestOneThroughFive(pPlayer)
 		QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_05)
 end
 
-function villageChiefEngineerPhase4ConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local pGhost = CreatureObject(conversingPlayer):getPlayerObject()
+function villageChiefEngineerPhase4ConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
-		return conversationScreen
+		return pConvScreen
 	end
 
-	local screen = LuaConversationScreen(conversationScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	if (screenID == "get_you_started") then
-		local pInventory = CreatureObject(conversingPlayer):getSlottedObject("inventory")
+		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 
 		if (pInventory == nil or SceneObject(pInventory):isContainerFullRecursive()) then
 			clonedConversation:addOption("@conversation/fs_phase4_chief_engineer:s_4136c2df", "no_space_for_reward")
@@ -52,31 +52,31 @@ function villageChiefEngineerPhase4ConvoHandler:runScreenHandlers(conversationTe
 			clonedConversation:addOption("@conversation/fs_phase4_chief_engineer:s_4136c2df", "present_statue")
 		end
 
-		VillageJediManagerCommon.unlockBranch(conversingPlayer, "force_sensitive_crafting_mastery_repair")
-		QuestManager.completeQuest(conversingPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_06)
-		FsCrafting4:removeCore(conversingPlayer)
+		VillageJediManagerCommon.unlockBranch(pPlayer, "force_sensitive_crafting_mastery_repair")
+		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_06)
+		FsCrafting4:removeCore(pPlayer)
 	elseif (screenID == "no_space_for_reward") then
-		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_07)
+		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_07)
 	elseif (screenID == "present_statue") then
-		QuestManager.completeQuest(conversingPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_00)
-		if (QuestManager.hasActiveQuest(conversingPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_07)) then
-			QuestManager.completeQuest(conversingPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_07)
+		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_00)
+		if (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_07)) then
+			QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_07)
 		end
-		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_FINISH)
-		QuestManager.completeQuest(conversingPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_FINISH)
-		VillageJediManagerCommon.setCompletedQuestThisPhase(conversingPlayer)
+		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_FINISH)
+		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_FINISH)
+		VillageJediManagerCommon.setCompletedQuestThisPhase(pPlayer)
 
-		local pInventory = SceneObject(conversingPlayer):getSlottedObject("inventory")
+		local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 
 		if (pInventory ~= nil) then
 			local pStatue = giveItem(pInventory, "object/tangible/item/quest/force_sensitive/fs_sculpture_2.iff", -1, true)
 
 			if (pStatue == nil) then
-				CreatureObject(conversingPlayer):sendSystemMessage("Error: Unable to generate item.")
+				CreatureObject(pPlayer):sendSystemMessage("Error: Unable to generate item.")
 			end
 		end
 	elseif (screenID == "intro_quest1to5") then
-		local curQuestNum = FsCrafting4:getActiveQuestNum(conversingPlayer)
+		local curQuestNum = FsCrafting4:getActiveQuestNum(pPlayer)
 
 		if (curQuestNum == 1) then
 			clonedConversation:addOption("@conversation/fs_phase4_chief_engineer:s_a2e520b8", "location_reminder")
@@ -92,7 +92,7 @@ function villageChiefEngineerPhase4ConvoHandler:runScreenHandlers(conversationTe
 
 		clonedConversation:addOption("@conversation/fs_phase4_chief_engineer:s_a69082f1", "good_come_back")
 	elseif (screenID == "intro_quest6") then
-		local pInventory = CreatureObject(conversingPlayer):getSlottedObject("inventory")
+		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 
 		if (pInventory ~= nil) then
 			local pCore = getContainerObjectByTemplate(pInventory, "object/tangible/item/quest/force_sensitive/fs_crafting4_computer_core.iff", true)
@@ -105,7 +105,7 @@ function villageChiefEngineerPhase4ConvoHandler:runScreenHandlers(conversationTe
 		end
 		clonedConversation:addOption("@conversation/fs_phase4_chief_engineer:s_4294034a", "please_hurry")
 	elseif (screenID == "intro_quest7") then
-		local pInventory = CreatureObject(conversingPlayer):getSlottedObject("inventory")
+		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 
 		if (pInventory == nil or SceneObject(pInventory):isContainerFullRecursive()) then
 			clonedConversation:addOption("@conversation/fs_phase4_chief_engineer:s_6516bd5a", "no_space_for_reward")
@@ -113,42 +113,26 @@ function villageChiefEngineerPhase4ConvoHandler:runScreenHandlers(conversationTe
 			clonedConversation:addOption("@conversation/fs_phase4_chief_engineer:s_6516bd5a", "present_statue")
 		end
 	elseif (screenID == "intro") then
-		if (VillageJediManagerCommon.hasActiveQuestThisPhase(conversingPlayer)) then
+		if (VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
 			clonedConversation:addOption("@conversation/fs_phase4_chief_engineer:s_59f5cee6", "very_kind")
 		else
 			clonedConversation:addOption("@conversation/fs_phase4_chief_engineer:s_59f5cee6", "yes_there_is")
 		end
 		clonedConversation:addOption("@conversation/fs_phase4_chief_engineer:s_5542b04b", "quite_alright")
 	elseif (screenID == "excellent_continue") then
-		VillageJediManagerCommon.setActiveQuestThisPhase(conversingPlayer)
+		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
 	elseif (screenID == "waypoint_keren") then
 		PlayerObject(pGhost):addWaypoint("naboo", "Keren - Gadget Specialist", "", 1215, 2740, WAYPOINTYELLOW, true, true, 0)
-		FsCrafting4:activateQuest(conversingPlayer)
+		FsCrafting4:activateQuest(pPlayer)
 	elseif (screenID == "waypoint_coronet") then
 		PlayerObject(pGhost):addWaypoint("corellia", "Coronet - Gadget Specialist", "", 19, -4775, WAYPOINTYELLOW, true, true, 0)
-		FsCrafting4:activateQuest(conversingPlayer)
+		FsCrafting4:activateQuest(pPlayer)
 	elseif (screenID == "waypoint_mos_entha") then
 		PlayerObject(pGhost):addWaypoint("tatooine", "Mos Entha - Gadget Specialist", "", 1209, 2923, WAYPOINTYELLOW, true, true, 0)
-		FsCrafting4:activateQuest(conversingPlayer)
+		FsCrafting4:activateQuest(pPlayer)
 	elseif (screenID == "return_to_me") then
-		FsCrafting4:activateQuest(conversingPlayer)
+		FsCrafting4:activateQuest(pPlayer)
 	end
 
-	return conversationScreen
-end
-
-function villageChiefEngineerPhase4ConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-	local pLastConversationScreen = nil
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-		return conversationTemplate:getScreen(optionLink)
-	end
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
+	return pConvScreen
 end

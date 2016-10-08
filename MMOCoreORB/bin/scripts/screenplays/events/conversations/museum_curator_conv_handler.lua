@@ -1,6 +1,6 @@
 local ObjectManager = require("managers.object.object_manager")
 
-MuseumCuratorConvoHandler = Object:new {
+MuseumCuratorConvoHandler = conv_handler:new {
 	themePark = nil
 }
 
@@ -8,19 +8,19 @@ function MuseumCuratorConvoHandler:setThemePark(themeParkNew)
 	self.themePark = themeParkNew
 end
 
-function MuseumCuratorConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function MuseumCuratorConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	local screenID = screen:getScreenID()
 	if (screenID == "hello_no_voting") then
-		return conversationScreen
+		return pConvScreen
 	end
 
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 	local currentPhase = BestineMuseumScreenPlay:getCurrentPhase()
 
 	if (currentPhase == 1) then
@@ -28,10 +28,10 @@ function MuseumCuratorConvoHandler:runScreenHandlers(conversationTemplate, conve
 		local currentArtists = BestineMuseumScreenPlay:splitString(artists, ",")
 		if (screenID == "init_votephase") then
 			clonedConversation:addOption("@conversation/lilas_dinhint:s_26152411", "explain_contest")
-			if (BestineMuseumScreenPlay:hasTalkedToAnyArtist(conversingPlayer)) then
+			if (BestineMuseumScreenPlay:hasTalkedToAnyArtist(pPlayer)) then
 				clonedConversation:addOption("@conversation/lilas_dinhint:s_911a27f8", "pick_artist")
 			end
-			if (BestineMuseumScreenPlay:getWinningPainting() ~= "" and (not BestineMuseumScreenPlay:hasAlreadyPurchased(conversingPlayer) or BestineMuseumScreenPlay.restrictSinglePurchase == false)) then
+			if (BestineMuseumScreenPlay:getWinningPainting() ~= "" and (not BestineMuseumScreenPlay:hasAlreadyPurchased(pPlayer) or BestineMuseumScreenPlay.restrictSinglePurchase == false)) then
 				clonedConversation:addOption("@conversation/lilas_dinhint:s_e649bf0a", "schematic_cost")
 			end
 			clonedConversation:addOption("@conversation/lilas_dinhint:s_6b5b28b2", "enjoy_visit_votephase")
@@ -47,14 +47,14 @@ function MuseumCuratorConvoHandler:runScreenHandlers(conversationTemplate, conve
 					elseif (tonumber(currentArtists[i]) == 6) then clonedConversation:addOption("@conversation/lilas_dinhint:s_39a4e8fa", "find_boulo_siesi")
 					end
 				else
-					BestineMuseumScreenPlay:createArtistWaypoint(conversingPlayer, tonumber(currentArtists[i]))
+					BestineMuseumScreenPlay:createArtistWaypoint(pPlayer, tonumber(currentArtists[i]))
 				end
 			end
 			clonedConversation:addOption("@conversation/lilas_dinhint:s_b9059b2b", "pleasure_all_mine")
 			clonedConversation:addOption("@conversation/lilas_dinhint:s_463a0bda", "thanks_for_visiting")
 		elseif (screenID == "pick_artist") then
 			for i = 1, 3, 1 do
-				if BestineMuseumScreenPlay:hasTalkedToArtist(conversingPlayer, currentArtists[i]) then
+				if BestineMuseumScreenPlay:hasTalkedToArtist(pPlayer, currentArtists[i]) then
 					if (tonumber(currentArtists[i]) == 1) then clonedConversation:addOption("@conversation/lilas_dinhint:s_e09f0f8", "picked_vanvi_hotne")
 					elseif (tonumber(currentArtists[i]) == 2) then clonedConversation:addOption("@conversation/lilas_dinhint:s_b824fcc0", "picked_kolka_zteht")
 					elseif (tonumber(currentArtists[i]) == 3) then clonedConversation:addOption("@conversation/lilas_dinhint:s_ce4aa2ab", "picked_giaal_itotr")
@@ -68,7 +68,7 @@ function MuseumCuratorConvoHandler:runScreenHandlers(conversationTemplate, conve
 		elseif (string.find(screenID, "picked") ~= nil) then
 			local pickedArtist = string.sub(screenID, 8)
 			local pickedArtistID = BestineMuseumScreenPlay:getArtistID(pickedArtist)
-			BestineMuseumScreenPlay:doVote(conversingPlayer, pickedArtistID)
+			BestineMuseumScreenPlay:doVote(pPlayer, pickedArtistID)
 		end
 	elseif (currentPhase == 2) then
 		local timeLeftInSecs = BestineMuseumScreenPlay:getPhaseTimeLeft() / 1000
@@ -97,8 +97,8 @@ function MuseumCuratorConvoHandler:runScreenHandlers(conversationTemplate, conve
 		end
 	end
 	if (screenID == "schematic_cost") then
-		if(CreatureObject(conversingPlayer):getCashCredits() >= 48000) then
-			local pInventory = SceneObject(conversingPlayer):getSlottedObject("inventory")
+		if(CreatureObject(pPlayer):getCashCredits() >= 48000) then
+			local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 
 			if (pInventory == nil or SceneObject(pInventory):isContainerFullRecursive()) then
 				clonedConversation:addOption("@conversation/lilas_dinhint:s_90b0871f", "full_inventory")
@@ -110,14 +110,14 @@ function MuseumCuratorConvoHandler:runScreenHandlers(conversationTemplate, conve
 		end
 		clonedConversation:addOption("@conversation/lilas_dinhint:s_3f115c47", "thanks_for_visiting")
 	elseif (screenID == "schematic_purchased") then
-		BestineMuseumScreenPlay:doSchematicPurchase(conversingPlayer)
+		BestineMuseumScreenPlay:doSchematicPurchase(pPlayer)
 	end
-	return conversationScreen
+	return pConvScreen
 end
 
 
-function MuseumCuratorConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function MuseumCuratorConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	if (BestineMuseumScreenPlay:isMuseumEnabled() == false) then
 		return convoTemplate:getScreen("hello_no_voting")
@@ -139,20 +139,4 @@ function MuseumCuratorConvoHandler:getInitialScreen(pPlayer, pNpc, pConversation
 		end
 	end
 	return convoTemplate:getScreen("hello_no_voting")
-end
-
-function MuseumCuratorConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-	local pLastConversationScreen = nil
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-		return conversationTemplate:getScreen(optionLink)
-	end
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
 end

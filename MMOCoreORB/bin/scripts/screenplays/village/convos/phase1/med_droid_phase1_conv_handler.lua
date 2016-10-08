@@ -1,10 +1,10 @@
 local ObjectManager = require("managers.object.object_manager")
 local QuestManager = require("managers.quest.quest_manager")
 
-villageMedicalDroidPhase1ConvoHandler = {  }
+villageMedicalDroidPhase1ConvoHandler = conv_handler:new {}
 
-function villageMedicalDroidPhase1ConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function villageMedicalDroidPhase1ConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	if not QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_03) and
 		not QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_02) and
@@ -17,35 +17,19 @@ function villageMedicalDroidPhase1ConvoHandler:getInitialScreen(pPlayer, pNpc, p
 	return convoTemplate:getScreen("intro")
 end
 
-function villageMedicalDroidPhase1ConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function villageMedicalDroidPhase1ConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	if (screenID == "intro_has_symptoms" or screenID == "currently_suffering_from") then
 		if (screenID == "currently_suffering_from") then
-			FsMedicPuzzle:giveSymptoms(conversingPlayer, conversingNPC)
+			FsMedicPuzzle:giveSymptoms(pPlayer, pNpc)
 		end
-		local symptoms = FsMedicPuzzle:getSymptoms(conversingPlayer, conversingNPC)
+		local symptoms = FsMedicPuzzle:getSymptoms(pPlayer, pNpc)
 		clonedConversation:setDialogTextTO(symptoms)
 	end
 
-	return conversationScreen
-end
-
-function villageMedicalDroidPhase1ConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-	local pLastConversationScreen = nil
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-		return conversationTemplate:getScreen(optionLink)
-	end
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
+	return pConvScreen
 end

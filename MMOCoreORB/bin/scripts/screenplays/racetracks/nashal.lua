@@ -57,43 +57,17 @@ function nashal_racetrack_screenplay:enteredWaypoint(pActiveArea, pObject)
 	return self:processWaypoint(pActiveArea, pObject)
 end
 
-nashal_racetrack_convo_handler = Object:new {}
+nashal_racetrack_convo_handler = conv_handler:new {}
 
-function nashal_racetrack_convo_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
-	local convosession = CreatureObject(conversingPlayer):getConversationSession()
-	local lastConversationScreen = nil
-	local conversation = LuaConversationTemplate(conversationTemplate)
-	local nextConversationScreen
-	if ( conversation ~= nil ) then
-		-- checking to see if we have a next screen
-		if ( convosession ~= nil ) then
-			local session = LuaConversationSession(convosession)
-			if ( session ~= nil ) then
-				lastConversationScreen = session:getLastConversationScreen()
-			else
-				print("session was not good in getNextScreen")
-			end
-		end
-		if ( lastConversationScreen == nil ) then
-			nextConversationScreen = conversation:getInitialScreen()
-		else
-			local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
-			local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
-			nextConversationScreen = conversation:getScreen(optionLink)
-		end
-	end
-	return nextConversationScreen
-end
-
-function nashal_racetrack_convo_handler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function nashal_racetrack_convo_handler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
 	if ( screenID == "cs_jsPlumb_1_116" ) then
-		nashal_racetrack_screenplay:startRacing(conversingPlayer)
+		nashal_racetrack_screenplay:startRacing(pPlayer)
 	elseif ( screenID == "cs_jsPlumb_1_181" ) then -- Personal Best
-		nashal_racetrack_screenplay:displayPersonalBestTime(conversingPlayer)
+		nashal_racetrack_screenplay:displayPersonalBestTime(pPlayer)
 	elseif ( screenID == "cs_jsPlumb_1_207" ) then -- Track Best
-		nashal_racetrack_screenplay:displayTrackBestTime(conversingPlayer)
+		nashal_racetrack_screenplay:displayTrackBestTime(pPlayer)
 	end
-	return conversationScreen
+	return pConvScreen
 end

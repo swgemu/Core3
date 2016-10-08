@@ -1,28 +1,12 @@
 local ObjectManager = require("managers.object.object_manager")
 
-heroOfTatBountyHunterConvoHandler = {  }
+heroOfTatBountyHunterConvoHandler = conv_handler:new {}
 
 -- 1 - Started farmer quest, 2 - Completed farmer quest
 
-function heroOfTatBountyHunterConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-	local pLastConversationScreen = nil
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-		return conversationTemplate:getScreen(optionLink)
-	end
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
-end
-
-function heroOfTatBountyHunterConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
+function heroOfTatBountyHunterConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local npcId = CreatureObject(pNpc):getObjectID()
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	if (CreatureObject(pPlayer):hasScreenPlayState(2, "hero_of_tatooine_intellect")) then
 		return convoTemplate:getScreen("intro_completed")
 	elseif (readData(CreatureObject(pPlayer):getObjectID() .. ":hero_of_tat:failedIntellect") == npcId) then
@@ -36,19 +20,19 @@ function heroOfTatBountyHunterConvoHandler:getInitialScreen(pPlayer, pNpc, pConv
 	end
 end
 
-function heroOfTatBountyHunterConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function heroOfTatBountyHunterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 
 	local screenID = screen:getScreenID()
 
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	if (screenID == "give_it_a_shot") then
-		CreatureObject(conversingPlayer):setScreenPlayState(1, "hero_of_tatooine_intellect")
+		CreatureObject(pPlayer):setScreenPlayState(1, "hero_of_tatooine_intellect")
 	elseif (screenID == "thats_great") then
-		HeroOfTatooineScreenPlay:sendImplicateSui(conversingPlayer, conversingNPC)
+		HeroOfTatooineScreenPlay:sendImplicateSui(pPlayer, pNpc)
 	end
 
-	return conversationScreen
+	return pConvScreen
 end

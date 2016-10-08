@@ -1,16 +1,12 @@
 local ObjectManager = require("managers.object.object_manager")
 
-tutorialNervousGuyConvoHandler = Object:new { }
+tutorialNervousGuyConvoHandler = conv_handler:new {}
 
-function tutorialNervousGuyConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	return conversationScreen
-end
-
-function tutorialNervousGuyConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function tutorialNervousGuyConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	return convoTemplate:getScreen("intro" .. getRandomNumber(1,5))
 end
 
-function tutorialNervousGuyConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
+function tutorialNervousGuyConvoHandler:getNextConversationScreen(pConvTemplate, pPlayer, selectedOption, pNpc)
+	return self:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 end

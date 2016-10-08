@@ -1,7 +1,7 @@
 biogenicCrazyGuyConvoTemplate = ConvoTemplate:new {
-	initialScreen = "",
+	initialScreen = "are_you_here",
 	templateType = "Lua",
-	luaClassHandler = "BiogenicCrazyGuyConvoHandler",
+	luaClassHandler = "conv_handler",
 	screens = {}
 }
 

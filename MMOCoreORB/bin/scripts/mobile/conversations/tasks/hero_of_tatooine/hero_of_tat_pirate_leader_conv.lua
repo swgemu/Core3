@@ -1,5 +1,5 @@
 heroOfTatPirateLeaderConvoTemplate = ConvoTemplate:new {
-	initialScreen = "",
+	initialScreen = "intro",
 	templateType = "Lua",
 	luaClassHandler = "heroOfTatPirateLeaderConvoHandler",
 	screens = {}

@@ -1,38 +1,34 @@
 local ObjectManager = require("managers.object.object_manager")
 
-TheaterManagerConvoHandler = { }
+TheaterManagerConvoHandler = conv_handler:new {}
 
-function TheaterManagerConvoHandler:setThemePark(themeParkNew)
-	self.themePark = themeParkNew
-end
+function TheaterManagerConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 
-function TheaterManagerConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
-
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	local screenID = screen:getScreenID()
-	local playerID = SceneObject(conversingPlayer):getObjectID()
+	local playerID = SceneObject(pPlayer):getObjectID()
 
-	local currentStep = TheaterManagerScreenPlay:getCurrentStep(conversingPlayer)
+	local currentStep = TheaterManagerScreenPlay:getCurrentStep(pPlayer)
 
-	local pTheater = TheaterManagerScreenPlay:getTheaterBuilding(conversingPlayer)
+	local pTheater = TheaterManagerScreenPlay:getTheaterBuilding(pPlayer)
 
 	if (pTheater == nil) then
 		printf("Error in TheaterManagerConvoHandler:runScreenHandlers(), unable to get theater building object.\n")
-		return conversationScreen
+		return pConvScreen
 	end
 
 	local theaterID = SceneObject(pTheater):getObjectID()
 	local showRunning = readData(theaterID .. ":theater_manager:show_running")
 
-	if (screenID == "init_first_time" and TheaterManagerScreenPlay:getCurrentSeries(conversingPlayer) ~= 0) then
+	if (screenID == "init_first_time" and TheaterManagerScreenPlay:getCurrentSeries(pPlayer) ~= 0) then
 		-- Initial convo
-		TheaterManagerScreenPlay:setCurrentSeries(conversingPlayer, 0)
+		TheaterManagerScreenPlay:setCurrentSeries(pPlayer, 0)
 	elseif (screenID == "what_type_of_audition") then
 		-- Convo options for type of series
-		if (CreatureObject(conversingPlayer):hasSkill("social_entertainer_music_02")) then
+		if (CreatureObject(pPlayer):hasSkill("social_entertainer_music_02")) then
 			if (showRunning ~= 0 and showRunning ~= nil) then
 				clonedConversation:addOption("@conversation/quest_crowd_pleaser_manager:s_183e8ee4", "someone_on_stage")
 			else
@@ -42,7 +38,7 @@ function TheaterManagerConvoHandler:runScreenHandlers(conversationTemplate, conv
 			clonedConversation:addOption("@conversation/quest_crowd_pleaser_manager:s_183e8ee4", "not_skilled_enough")
 		end
 
-		if (CreatureObject(conversingPlayer):hasSkill("social_entertainer_dance_02")) then
+		if (CreatureObject(pPlayer):hasSkill("social_entertainer_dance_02")) then
 			if (showRunning ~= 0 and showRunning ~= nil) then
 				clonedConversation:addOption("@conversation/quest_crowd_pleaser_manager:s_9172f29c", "someone_on_stage")
 			else
@@ -55,36 +51,36 @@ function TheaterManagerConvoHandler:runScreenHandlers(conversationTemplate, conv
 		clonedConversation:addOption("@conversation/quest_crowd_pleaser_manager:s_414898b2", "come_back_when_ready")
 	elseif (screenID == "init_passed_audition") then
 		-- Passed audition
-		TheaterManagerScreenPlay:doPayout(conversingPlayer, 500)
-		TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
+		TheaterManagerScreenPlay:doPayout(pPlayer, 500)
+		TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
 	elseif (screenID == "make_audition_preperations") then
 		-- Accepted audition, not started
 		writeData(playerID .. ":theater_manager:acceptedAudition", 1)
 	elseif (screenID == "audition_starts_in_30_music") then
 		-- Started audition
-		TheaterManagerScreenPlay:setCurrentSeries(conversingPlayer, 2)
+		TheaterManagerScreenPlay:setCurrentSeries(pPlayer, 2)
 		if (currentStep == 0) then
-			TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
-			TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
+			TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
+			TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
 		end
 		writeData(playerID .. ":theater_manager:acceptedAudition", 0)
-		TheaterManagerScreenPlay:startAudition(conversingPlayer)
+		TheaterManagerScreenPlay:startAudition(pPlayer)
 	elseif (screenID == "audition_starts_in_30_dance") then
 		-- Started audition
-		TheaterManagerScreenPlay:setCurrentSeries(conversingPlayer, 1)
+		TheaterManagerScreenPlay:setCurrentSeries(pPlayer, 1)
 		if (currentStep == 0) then
-			TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
-			TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
+			TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
+			TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
 		end
 		writeData(playerID .. ":theater_manager:acceptedAudition", 0)
-		TheaterManagerScreenPlay:startAudition(conversingPlayer)
+		TheaterManagerScreenPlay:startAudition(pPlayer)
 	elseif (screenID == "go_entertain_ten") then
 		-- Accepted promo one
-		TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
-		TheaterManagerScreenPlay:startPromotion(conversingPlayer)
+		TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
+		TheaterManagerScreenPlay:startPromotion(pPlayer)
 	elseif (screenID == "init_entertained_ten") then
 		-- Completed promo one
-		TheaterManagerScreenPlay:completePromotionPhase(conversingPlayer)
+		TheaterManagerScreenPlay:completePromotionPhase(pPlayer)
 	elseif (screenID == "init_first_show" or screenID == "stomach_of_steel") then
 		-- Convo for first show
 		if (showRunning ~= 0 and showRunning ~= nil) then
@@ -101,20 +97,20 @@ function TheaterManagerConvoHandler:runScreenHandlers(conversationTemplate, conv
 	elseif (screenID == "starts_in_two_min") then
 		-- Started first show
 		if (currentStep ~= 7) then
-			TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
+			TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
 		end
-		TheaterManagerScreenPlay:beginPerformance(conversingPlayer)
+		TheaterManagerScreenPlay:beginPerformance(pPlayer)
 	elseif (screenID == "init_completed_first_show") then
 		-- completed first show
-		TheaterManagerScreenPlay:doPayout(conversingPlayer, 1000)
-		TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
+		TheaterManagerScreenPlay:doPayout(pPlayer, 1000)
+		TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
 	elseif (screenID == "go_entertain_twenty") then
 		-- Accepted promo two
-		TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
-		TheaterManagerScreenPlay:startPromotion(conversingPlayer)
+		TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
+		TheaterManagerScreenPlay:startPromotion(pPlayer)
 	elseif (screenID == "init_entertained_twenty") then
 		-- Completed promo two
-		TheaterManagerScreenPlay:completePromotionPhase(conversingPlayer)
+		TheaterManagerScreenPlay:completePromotionPhase(pPlayer)
 	elseif (screenID == "open_slot_coming_up") then
 		-- Convo for second show
 		if (showRunning ~= 0 and showRunning ~= nil) then
@@ -127,20 +123,20 @@ function TheaterManagerConvoHandler:runScreenHandlers(conversationTemplate, conv
 	elseif (screenID == "starts_in_two_and_a_half") then
 		-- Started second show
 		if (currentStep ~= 12) then
-			TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
+			TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
 		end
-		TheaterManagerScreenPlay:beginPerformance(conversingPlayer)
+		TheaterManagerScreenPlay:beginPerformance(pPlayer)
 	elseif (screenID == "init_completed_second_show") then
 		-- completed second show
-		TheaterManagerScreenPlay:doPayout(conversingPlayer, 1500)
-		TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
+		TheaterManagerScreenPlay:doPayout(pPlayer, 1500)
+		TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
 	elseif (screenID == "go_entertain_thirty") then
 		-- Accepted promo three
-		TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
-		TheaterManagerScreenPlay:startPromotion(conversingPlayer)
+		TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
+		TheaterManagerScreenPlay:startPromotion(pPlayer)
 	elseif (screenID == "init_entertained_thirty") then
 		-- Completed promo three
-		TheaterManagerScreenPlay:completePromotionPhase(conversingPlayer)
+		TheaterManagerScreenPlay:completePromotionPhase(pPlayer)
 	elseif (screenID == "set_up_if_ready") then
 		-- Convo for third show
 		if (showRunning ~= 0 and showRunning ~= nil) then
@@ -153,18 +149,18 @@ function TheaterManagerConvoHandler:runScreenHandlers(conversationTemplate, conv
 	elseif (screenID == "starts_in_three") then
 		-- Started third show
 		if (currentStep ~= 17) then
-			TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
+			TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
 		end
-		TheaterManagerScreenPlay:beginPerformance(conversingPlayer)
+		TheaterManagerScreenPlay:beginPerformance(pPlayer)
 	elseif (screenID == "init_completed_third_show") then
 		-- completed third show
-		TheaterManagerScreenPlay:doPayout(conversingPlayer, 2000)
-		TheaterManagerScreenPlay:giveSkillScroll(conversingPlayer)
-		TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
-		TheaterManagerScreenPlay:completeCurrentSeries(conversingPlayer)
+		TheaterManagerScreenPlay:doPayout(pPlayer, 2000)
+		TheaterManagerScreenPlay:giveSkillScroll(pPlayer)
+		TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
+		TheaterManagerScreenPlay:completeCurrentSeries(pPlayer)
 	elseif (screenID == "init_completed_one") then
 		-- Convo for initial convo after completing one series
-		if (TheaterManagerScreenPlay:isSeriesComplete(conversingPlayer, 1)) then
+		if (TheaterManagerScreenPlay:isSeriesComplete(pPlayer, 1)) then
 			clonedConversation:addOption("@conversation/quest_crowd_pleaser_manager:s_dda95847", "full_on_dance")
 		else
 			clonedConversation:addOption("@conversation/quest_crowd_pleaser_manager:s_dda95847", "full_on_music")
@@ -172,25 +168,24 @@ function TheaterManagerConvoHandler:runScreenHandlers(conversationTemplate, conv
 		clonedConversation:addOption("@conversation/quest_crowd_pleaser_manager:s_c5a66e82", "come_see_me")
 	elseif (screenID == "prep_second_audition_dance") then
 		writeData(playerID .. ":theater_manager:acceptedSecondAudition", 1)
-		TheaterManagerScreenPlay:setCurrentSeries(conversingPlayer, 1)
+		TheaterManagerScreenPlay:setCurrentSeries(pPlayer, 1)
 	elseif (screenID == "prep_second_audition_music") then
 		writeData(playerID .. ":theater_manager:acceptedSecondAudition", 1)
-		TheaterManagerScreenPlay:setCurrentSeries(conversingPlayer, 2)
+		TheaterManagerScreenPlay:setCurrentSeries(pPlayer, 2)
 	elseif (screenID == "second_audition_starts_in_30") then
-		TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
-		TheaterManagerScreenPlay:completeCurrentStep(conversingPlayer)
+		TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
+		TheaterManagerScreenPlay:completeCurrentStep(pPlayer)
 		writeData(playerID .. ":theater_manager:acceptedSecondAudition", 0)
-		TheaterManagerScreenPlay:startAudition(conversingPlayer)
+		TheaterManagerScreenPlay:startAudition(pPlayer)
 	elseif (screenID == "init_hasnt_entertained_ten" or screenID == "init_hasnt_entertained_twenty" or screenID == "init_hasnt_entertained_thirty") then
-		TheaterManagerScreenPlay:recreatePromotionObservers(conversingPlayer)
+		TheaterManagerScreenPlay:recreatePromotionObservers(pPlayer)
 	end
 
-	return conversationScreen
+	return pConvScreen
 end
 
-
-function TheaterManagerConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function TheaterManagerConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	local pTheater = TheaterManagerScreenPlay:getTheaterBuilding(pPlayer)
 
@@ -308,24 +303,5 @@ function TheaterManagerConvoHandler:getInitialScreen(pPlayer, pNpc, pConversatio
 		return convoTemplate:getScreen("init_completed_third_show")
 	end
 
-
 	return convoTemplate:getScreen("init_event_in_progress") -- Temporary until future phases are added
-end
-
-
-
-function TheaterManagerConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-	local pLastConversationScreen = nil
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-		return conversationTemplate:getScreen(optionLink)
-	end
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
 end

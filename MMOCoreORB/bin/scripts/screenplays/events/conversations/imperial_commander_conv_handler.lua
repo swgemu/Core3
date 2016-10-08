@@ -1,9 +1,9 @@
 local ObjectManager = require("managers.object.object_manager")
 
-imperialCommanderConvoHandler = Object:new {}
+imperialCommanderConvoHandler = conv_handler:new {}
 
-function imperialCommanderConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function imperialCommanderConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	local state = tonumber(readScreenPlayData(pPlayer, "imperial_coa2", "state"))
 
@@ -28,43 +28,21 @@ function imperialCommanderConvoHandler:getInitialScreen(pPlayer, npc, pConversat
 	return convoTemplate:getScreen("m4_finish_incomplete")
 end
 
-function imperialCommanderConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function imperialCommanderConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
 
 	if screenID == "m4_finish" then
-		Coa2Screenplay:finishMissionFour(conversingPlayer, "imperial")
+		Coa2Screenplay:finishMissionFour(pPlayer, "imperial")
 	elseif screenID == "m5_begin_yes" then
-		Coa2Screenplay:startMissionFive(conversingPlayer, conversingNPC, "imperial")
+		Coa2Screenplay:startMissionFive(pPlayer, pNpc, "imperial")
 	elseif screenID == "m5_active_abort" then
-		writeScreenPlayData(conversingPlayer, "imperial_coa2", "state", 11)
-		Coa2Screenplay:cleanupMission(conversingPlayer, "imperial")
+		writeScreenPlayData(pPlayer, "imperial_coa2", "state", 11)
+		Coa2Screenplay:cleanupMission(pPlayer, "imperial")
 	elseif screenID == "m5_active_restart" then
-		Coa2Screenplay:cleanupMission(conversingPlayer, "imperial")
-		Coa2Screenplay:startMissionFive(conversingPlayer, conversingNPC, "imperial")
+		Coa2Screenplay:cleanupMission(pPlayer, "imperial")
+		Coa2Screenplay:startMissionFive(pPlayer, pNpc, "imperial")
 	end
 
-	return conversationScreen
-end
-
-function imperialCommanderConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-
-	local pLastConversationScreen = nil
-
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-
-		return conversationTemplate:getScreen(optionLink)
-	end
-
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
+	return pConvScreen
 end

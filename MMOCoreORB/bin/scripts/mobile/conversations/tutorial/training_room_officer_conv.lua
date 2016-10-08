@@ -1,5 +1,5 @@
 tutorialTrainingRoomOfficerConvoTemplate = ConvoTemplate:new {
-	initialScreen = "",
+	initialScreen = "intro",
 	templateType = "Lua",
 	luaClassHandler = "tutorialTrainingRoomOfficerConvoHandler",
 	screens = {}

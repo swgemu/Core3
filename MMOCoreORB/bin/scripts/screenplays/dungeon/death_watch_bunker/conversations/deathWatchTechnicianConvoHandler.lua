@@ -1,25 +1,9 @@
 local ObjectManager = require("managers.object.object_manager")
 
-deathWatchTechnicianConvoHandler = {  }
+deathWatchTechnicianConvoHandler = conv_handler:new {}
 
-function deathWatchTechnicianConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-	local pLastConversationScreen = nil
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-		return conversationTemplate:getScreen(optionLink)
-	end
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
-end
-
-function deathWatchTechnicianConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function deathWatchTechnicianConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	if (CreatureObject(pPlayer):hasScreenPlayState(2, "death_watch_bunker_technician_sidequest")) then
 		if (readData("dwb:ventsEnabled") == 1) then
@@ -49,17 +33,17 @@ function deathWatchTechnicianConvoHandler:getInitialScreen(pPlayer, pNpc, pConve
 	end
 end
 
-function deathWatchTechnicianConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function deathWatchTechnicianConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 
 	local screenID = screen:getScreenID()
 
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 	if (screenID == "release_the_droid" or screenID == "knew_could_count") then
-		CreatureObject(conversingPlayer):setScreenPlayState(1, "death_watch_bunker_technician_sidequest")
+		CreatureObject(pPlayer):setScreenPlayState(1, "death_watch_bunker_technician_sidequest")
 		writeData("dwb:droidEscortStatus", 1)
-		writeData("dwb:droidEscortStarter", CreatureObject(conversingPlayer):getObjectID())
+		writeData("dwb:droidEscortStarter", CreatureObject(pPlayer):getObjectID())
 		DeathWatchBunkerScreenPlay:doVentDroidStep(nil)
 	elseif (screenID == "escort_failed") then
 		if (readData("dwb:ventDroidAvailable") == 1) then
@@ -77,5 +61,5 @@ function deathWatchTechnicianConvoHandler:runScreenHandlers(conversationTemplate
 		clonedConversation:addOption("@conversation/death_watch_technician:s_cbf95857", "thanks_anyways")
 	end
 
-	return conversationScreen
+	return pConvScreen
 end

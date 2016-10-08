@@ -1,25 +1,9 @@
 local ObjectManager = require("managers.object.object_manager")
 
-heroOfTatIntercomConvoHandler = {  }
+heroOfTatIntercomConvoHandler = conv_handler:new {}
 
-function heroOfTatIntercomConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-	local pLastConversationScreen = nil
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-		return conversationTemplate:getScreen(optionLink)
-	end
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
-end
-
-function heroOfTatIntercomConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function heroOfTatIntercomConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	local playerID = CreatureObject(pPlayer):getObjectID()
 	local inProgressID = readData("hero_of_tat:ranch_player_id")
@@ -36,17 +20,17 @@ function heroOfTatIntercomConvoHandler:getInitialScreen(pPlayer, pNpc, pConversa
 	end
 end
 
-function heroOfTatIntercomConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function heroOfTatIntercomConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 
 	local screenID = screen:getScreenID()
 
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	if (screenID == "blast_it" or screenID == "go_talk_to_her") then
-		writeData(CreatureObject(conversingPlayer):getObjectID() .. ":hero_of_tat_honor:distracting_wife", 1)
+		writeData(CreatureObject(pPlayer):getObjectID() .. ":hero_of_tat_honor:distracting_wife", 1)
 	end
 
-	return conversationScreen
+	return pConvScreen
 end

@@ -1,5 +1,5 @@
 heraldLok1ConvoTemplate = ConvoTemplate:new {
-	initialScreen = "",
+	initialScreen = "init",
 	templateType = "Lua",
 	luaClassHandler = "multi_dest_herald_conv_handler",
 	screens = {}

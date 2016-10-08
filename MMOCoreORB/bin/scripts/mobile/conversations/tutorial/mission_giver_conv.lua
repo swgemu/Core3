@@ -1,5 +1,5 @@
 tutorialMissionGiverConvoTemplate = ConvoTemplate:new {
-	initialScreen = "",
+	initialScreen = "intro",
 	templateType = "Lua",
 	luaClassHandler = "tutorialMissionGiverConvoHandler",
 	screens = {}

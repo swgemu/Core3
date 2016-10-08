@@ -1,5 +1,5 @@
 tutorialRoomTwoGreeterConvoTemplate = ConvoTemplate:new {
-	initialScreen = "",
+	initialScreen = "intro",
 	templateType = "Lua",
 	luaClassHandler = "tutorialRoomTwoGreeterConvoHandler",
 	screens = {}

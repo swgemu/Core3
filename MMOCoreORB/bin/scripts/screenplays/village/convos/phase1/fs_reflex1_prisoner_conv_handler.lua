@@ -1,10 +1,10 @@
 local ObjectManager = require("managers.object.object_manager")
 local QuestManager = require("managers.quest.quest_manager")
 
-villageFsReflex1PrisonerConvoHandler = {  }
+villageFsReflex1PrisonerConvoHandler = conv_handler:new {}
 
-function villageFsReflex1PrisonerConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function villageFsReflex1PrisonerConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local npcID = SceneObject(pNpc):getObjectID()
 
@@ -22,34 +22,18 @@ function villageFsReflex1PrisonerConvoHandler:getInitialScreen(pPlayer, pNpc, pC
 	return convoTemplate:getScreen("intro")
 end
 
-function villageFsReflex1PrisonerConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function villageFsReflex1PrisonerConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
 
 	if (screenID == "intro") then
-		QuestManager.completeQuest(conversingPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_02)
-		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_03)
-		QuestManager.activateQuest(conversingPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_04)
-		FsReflex1Escort:start(conversingPlayer, conversingNPC)
+		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_02)
+		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_03)
+		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_04)
+		FsReflex1Escort:start(pPlayer, pNpc)
 	elseif (screenID == "intro_inprogress") then
-		FsReflex1Escort:setEscortFollow(conversingPlayer, conversingNPC)
+		FsReflex1Escort:setEscortFollow(pPlayer, pNpc)
 	end
 
-	return conversationScreen
-end
-
-function villageFsReflex1PrisonerConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-	local pLastConversationScreen = nil
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-		return conversationTemplate:getScreen(optionLink)
-	end
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
+	return pConvScreen
 end

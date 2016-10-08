@@ -1,25 +1,9 @@
 local ObjectManager = require("managers.object.object_manager")
 
-deathWatchLutinNightstalkerConvoHandler = {  }
+deathWatchLutinNightstalkerConvoHandler = conv_handler:new {}
 
-function deathWatchLutinNightstalkerConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
-	local pLastConversationScreen = nil
-	if (pConversationSession ~= nil) then
-		local conversationSession = LuaConversationSession(pConversationSession)
-		pLastConversationScreen = conversationSession:getLastConversationScreen()
-	end
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	if (pLastConversationScreen ~= nil) then
-		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-		return conversationTemplate:getScreen(optionLink)
-	end
-	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
-end
-
-function deathWatchLutinNightstalkerConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+function deathWatchLutinNightstalkerConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
@@ -38,36 +22,36 @@ function deathWatchLutinNightstalkerConvoHandler:getInitialScreen(pPlayer, pNpc,
 
 end
 
-function deathWatchLutinNightstalkerConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
+function deathWatchLutinNightstalkerConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
 
 	local screenID = screen:getScreenID()
 
-	local pGhost = CreatureObject(conversingPlayer):getPlayerObject()
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
-		return conversationScreen
+		return pConvScreen
 	end
 
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local pConvScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	if (screenID == "excellent_travel_to_bunker") then
-		CreatureObject(conversingPlayer):setScreenPlayState(1, "death_watch_bunker_rebel_sidequest")
+		CreatureObject(pPlayer):setScreenPlayState(1, "death_watch_bunker_rebel_sidequest")
 	elseif (screenID == "return_intro") then
-		if (CreatureObject(conversingPlayer):hasScreenPlayState(2, "death_watch_bunker_rebel_sidequest")) then
+		if (CreatureObject(pPlayer):hasScreenPlayState(2, "death_watch_bunker_rebel_sidequest")) then
 			clonedConversation:addOption("@conversation/death_watch_rebel_herald:s_9b06da0", "excellent_reward")
 		end
 		clonedConversation:addOption("@conversation/death_watch_rebel_herald:s_dc839e59", "please_be_quick")
 		clonedConversation:addOption("@conversation/death_watch_rebel_herald:s_6f2c6f44", "more_information")
 		clonedConversation:addOption("@conversation/death_watch_rebel_herald:s_f70821a3", "this_distresses_me")
 	elseif (screenID == "this_distresses_me") then
-		CreatureObject(conversingPlayer):removeScreenPlayState(1, "death_watch_bunker_rebel_sidequest")
-		CreatureObject(conversingPlayer):removeScreenPlayState(2, "death_watch_bunker_rebel_sidequest")
+		CreatureObject(pPlayer):removeScreenPlayState(1, "death_watch_bunker_rebel_sidequest")
+		CreatureObject(pPlayer):removeScreenPlayState(2, "death_watch_bunker_rebel_sidequest")
 	elseif (screenID == "excellent_reward") then
 		PlayerObject(pGhost):increaseFactionStanding("rebel", 30)
-		CreatureObject(conversingPlayer):setScreenPlayState(4, "death_watch_bunker_rebel_sidequest")
+		CreatureObject(pPlayer):setScreenPlayState(4, "death_watch_bunker_rebel_sidequest")
 	end
 
-	return conversationScreen
+	return pConvScreen
 end
