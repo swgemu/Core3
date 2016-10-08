@@ -878,7 +878,7 @@ function HeroOfTatooineScreenPlay:pirateLeaderDamage(pLeader, pPlayer, damage)
 		return 0
 	end
 
-	if ((leader:getHAM(0) <= (CreatureObject(pLeader):getMaxHAM(0) * 0.8)) or (CreatureObject(pLeader):getHAM(3) <= (CreatureObject(pLeader):getMaxHAM(3) * 0.8)) or (CreatureObject(pLeader):getHAM(6) <= (CreatureObject(pLeader):getMaxHAM(6) * 0.8))) then
+	if ((CreatureObject(pLeader):getHAM(0) <= (CreatureObject(pLeader):getMaxHAM(0) * 0.8)) or (CreatureObject(pLeader):getHAM(3) <= (CreatureObject(pLeader):getMaxHAM(3) * 0.8)) or (CreatureObject(pLeader):getHAM(6) <= (CreatureObject(pLeader):getMaxHAM(6) * 0.8))) then
 		local spawnLoc = { x = CreatureObject(pLeader):getPositionX(), z = CreatureObject(pLeader):getPositionZ(), y = CreatureObject(pLeader):getPositionY(), cell = CreatureObject(pLeader):getParentID(), angle = CreatureObject(pLeader):getDirectionAngle() }
 		local spawnHam = { h = CreatureObject(pLeader):getHAM(0), a = CreatureObject(pLeader):getHAM(3), m = CreatureObject(pLeader):getHAM(6) }
 		local leaderName = SceneObject(pLeader):getCustomObjectName()
