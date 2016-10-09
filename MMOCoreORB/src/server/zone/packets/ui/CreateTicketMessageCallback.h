@@ -22,7 +22,7 @@ public:
 	CreateTicketMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server), categoryId(0), subCategoryId(0) {
 
-		taskqueue = 8;
+		taskqueue = 7;
 	}
 
 

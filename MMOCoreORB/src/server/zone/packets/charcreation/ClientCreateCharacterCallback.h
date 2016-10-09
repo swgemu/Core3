@@ -31,7 +31,7 @@ public:
 	ClientCreateCharacterCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server), species(0), height(0), tutflag(0) {
 
-		taskqueue = 8;
+		taskqueue = 7;
 
 	}
 

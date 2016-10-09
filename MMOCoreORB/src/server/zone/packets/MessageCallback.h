@@ -33,7 +33,7 @@ namespace packets {
 
 			setLoggingName("MessageCallback");
 			
-			taskqueue = 1;
+			taskqueue = -1;
 		}
 
 		virtual ~MessageCallback() {

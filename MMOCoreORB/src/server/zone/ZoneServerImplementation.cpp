@@ -478,7 +478,13 @@ void ZoneServerImplementation::processMessage(Message* message) {
 	Task* task = zonePacketHandler->generateMessageTask(client, message);
 
 	if (task != NULL) {
-		Core::getTaskManager()->executeTask(task, ((MessageCallback*)task)->getTaskQueue());
+		int queue = ((MessageCallback*)task)->getTaskQueue();
+
+		if (queue >= 0) {
+			Core::getTaskManager()->executeTask(task, queue);
+		} else {
+			Core::getTaskManager()->executeTask(task);
+		}
 	}
 
 	delete message;
