@@ -52,6 +52,10 @@ public:
 		iffStream->closeForm(version);
 	}
 
+	float checkInfluence(float x, float y) {
+		return 0;
+	}
+
 	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0001'>) {
 		informationHeader.readObject(iffStream);
 
@@ -199,19 +203,19 @@ public:
 		return result;
 	}
 
-	float getMinX() {
+	float getMinX() const {
 		return minX;
 	}
 
-	float getMaxX() {
+	float getMaxX() const {
 		return maxX;
 	}
 
-	float getMinY() {
+	float getMinY() const {
 		return minY;
 	}
 
-	float getMaxY() {
+	float getMaxY() const {
 		return maxY;
 	}
 

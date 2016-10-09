@@ -147,8 +147,12 @@ public:
 		initialize();
 	}
 
-	float getLocalWaterTableHeight() {
+	float getLocalWaterTableHeight() const {
 		return localWaterTableHeight;
+	}
+
+	float checkInfluence(float x, float y) {
+		return 0;
 	}
 
 	float process(float x, float y) {
@@ -240,19 +244,19 @@ public:
 		newY1 = y1 - v7;
 	}
 
-	float getMinX() {
+	float getMinX() const {
 		return x0;
 	}
 
-	float getMaxX() {
+	float getMaxX() const {
 		return x1;
 	}
 
-	float getMinY() {
+	float getMinY() const {
 		return y0;
 	}
 
-	float getMaxY() {
+	float getMaxY() const {
 		return y1;
 	}
 

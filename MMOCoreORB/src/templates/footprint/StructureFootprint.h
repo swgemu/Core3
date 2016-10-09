@@ -99,6 +99,11 @@ public:
 
 		return str.toString();
 	}
+	
+	inline AABB getSquaredBoundingBox() {
+		float longest = MAX(rowSize, colSize);
+		return AABB(Vector3(centerX-longest, centerY-longest, -10000), Vector3(centerX+longest, centerY+longest, 10000));
+	}
 
 	inline float getRowSize() {
 		return rowSize;

@@ -28,7 +28,9 @@ public:
 		return false;
 	}
 
-	virtual float getLocalWaterTableHeight() {
+	virtual float checkInfluence(float x, float y) = 0;
+
+	virtual float getLocalWaterTableHeight() const {
 		return -16000;
 	}
 
@@ -44,10 +46,10 @@ public:
 		return false;
 	}
 
-	virtual float getMinX() = 0;
-	virtual float getMaxX() = 0;
-	virtual float getMinY() = 0;
-	virtual float getMaxY() = 0;
+	virtual float getMinX() const = 0;
+	virtual float getMaxX() const = 0;
+	virtual float getMinY() const = 0;
+	virtual float getMaxY() const = 0;
 
 	virtual void translateBoundary(float x, float y) = 0;
 };

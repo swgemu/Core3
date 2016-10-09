@@ -84,8 +84,13 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 		clientDataFile = Lua::getStringParameter(state);
 	} else if (varName == "collisionMaterialFlags") {
 		collisionMaterialFlags = Lua::getIntParameter(state);
+
 	} else if (varName == "collisionMaterialPassFlags") {
 		collisionMaterialPassFlags = Lua::getIntParameter(state);
+		if(collisionMaterialFlags != 1) {
+			static Logger logger("MaterialFlags");
+			logger.info("MATERIAL FLAGS: " + String::valueOf(collisionMaterialFlags) + " " + getTemplateFileName(), true);
+		}
 	} else if (varName == "collisionMaterialBlockFlags") {
 		collisionMaterialBlockFlags = Lua::getIntParameter(state);
 	} else if (varName == "collisionActionFlags") {
@@ -237,10 +242,22 @@ void SharedObjectTemplate::parseVariableData(const String& varName, Chunk* data)
 		clientDataFile.parse(data);
 	} else if (varName == "collisionMaterialFlags") {
 		collisionMaterialFlags.parse(data);
+		if(collisionMaterialFlags > 0) {
+			static Logger logger("MaterialFlags");
+			logger.info("MATERIAL FLAGS: " + String::valueOf(collisionMaterialFlags) + " " + getTemplateFileName(), true);
+		}
 	} else if (varName == "collisionMaterialPassFlags") {
 		collisionMaterialPassFlags.parse(data);
+		if(collisionMaterialPassFlags > 0) {
+			static Logger logger("MaterialFlags");
+			logger.info("MATERIALPFLAGS: " + String::valueOf(collisionMaterialPassFlags) + " " + getTemplateFileName(), true);
+		}
 	} else if (varName == "collisionMaterialBlockFlags") {
 		collisionMaterialBlockFlags.parse(data);
+		if(collisionMaterialBlockFlags > 0) {
+			static Logger logger("MaterialFlags");
+			logger.info("MATERIALBFLAGS: " + String::valueOf(collisionMaterialBlockFlags) + " " + getTemplateFileName(), true);
+		}
 	} else if (varName == "collisionActionFlags") {
 		collisionActionFlags.parse(data);
 	} else if (varName == "collisionActionPassFlags") {
