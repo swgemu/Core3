@@ -477,6 +477,7 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("BLAST_DAMAGE", SharedWeaponObjectTemplate::BLAST);
 	setGlobalInt("STUN_DAMAGE", SharedWeaponObjectTemplate::STUN);
 	setGlobalInt("LIGHTSABER_DAMAGE", SharedWeaponObjectTemplate::LIGHTSABER);
+	setGlobalInt("FORCEPOWER_DAMAGE", SharedWeaponObjectTemplate::FORCEPOWER);
 	setGlobalInt("HEAT_DAMAGE", SharedWeaponObjectTemplate::HEAT);
 	setGlobalInt("COLD_DAMAGE", SharedWeaponObjectTemplate::COLD);
 	setGlobalInt("ACID_DAMAGE", SharedWeaponObjectTemplate::ACID);

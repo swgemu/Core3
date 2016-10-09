@@ -61,7 +61,7 @@ MindBlast2Command = {
 		{},
 		55,
 		0,
-		10
+		15
 	  ),
 
 	  StateEffect(
@@ -71,7 +71,7 @@ MindBlast2Command = {
 		{},
 		55,
 		0,
-		10
+		15
 	  ),
 
 	  StateEffect(
@@ -81,7 +81,7 @@ MindBlast2Command = {
 		{},
 		55,
 		0,
-		10
+		15
 	  )
 	},
 
@@ -93,7 +93,7 @@ MindBlast2Command = {
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
 	forceAttack = true,
-	damageType = LIGHTSABER_DAMAGE,
+	damageType = FORCEPOWER_DAMAGE,
 
 	range = 32
 }

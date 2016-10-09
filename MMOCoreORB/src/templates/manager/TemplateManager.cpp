@@ -606,6 +606,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("COLD", SharedWeaponObjectTemplate::COLD);
 	luaTemplatesInstance->setGlobalInt("ACID", SharedWeaponObjectTemplate::ACID);
 	luaTemplatesInstance->setGlobalInt("LIGHTSABER", SharedWeaponObjectTemplate::LIGHTSABER);
+	luaTemplatesInstance->setGlobalInt("FORCEPOWER", SharedWeaponObjectTemplate::FORCEPOWER);
 
 	luaTemplatesInstance->setGlobalInt("NONE", SharedWeaponObjectTemplate::NONE);
 	luaTemplatesInstance->setGlobalInt("LIGHT", SharedWeaponObjectTemplate::LIGHT);
