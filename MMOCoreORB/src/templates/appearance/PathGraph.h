@@ -25,7 +25,7 @@ class PathGraph : public IffTemplate {
 
 
 	Vector<PathNode*> pathNodes;
-	//Vector<PathEdge> pathEdges;
+	Vector<PathEdge> pathEdges;
 
 	PathGraphType type;
 
@@ -69,6 +69,10 @@ public:
 
 	inline void addPathNode(PathNode* pathNode) {
 		pathNodes.add(pathNode);
+	}
+	
+	inline Vector<PathEdge>* getPathEdges() {
+		return &pathEdges;
 	}
 
 	inline Vector<PathNode*>* getPathNodes() {

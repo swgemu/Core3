@@ -80,6 +80,10 @@ public:
 	inline String getTerrainModificationFile() {
 		return terrainModificationFileName.get();
 	}
+	
+	inline String getInteriorLayoutFileName() {
+		return interiorLayoutFileName;
+	}
 
 	inline Vector3 getEjectionPoint() {
 		return ejectionPoint;

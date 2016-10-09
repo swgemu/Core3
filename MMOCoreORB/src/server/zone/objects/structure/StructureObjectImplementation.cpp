@@ -144,17 +144,6 @@ String StructureObjectImplementation::getMaintenanceMods() {
 	return "-";
 }
 
-AABBTree* StructureObjectImplementation::getAABBTree() {
-	PortalLayout* portalLayout = templateObject->getPortalLayout();
-
-	if (portalLayout == NULL)
-		return NULL;
-
-	MeshAppearanceTemplate* app = portalLayout->getMeshAppearanceTemplate(0);
-
-	return app->getAABBTree();
-}
-
 String StructureObjectImplementation::getTimeString(uint32 timestamp) {
 	String abbrvs[4] = {"seconds", "minutes", "hours", "days"};
 
