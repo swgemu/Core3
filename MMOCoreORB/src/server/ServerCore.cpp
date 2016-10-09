@@ -485,8 +485,11 @@ void ServerCore::handleCommands() {
 				func->callFunction();
 			} else if ( command == "reloadscreenplays" ) {
 				DirectorManager::instance()->reloadScreenPlays();
-			} else
+			} else if ( command == "clearstats" ) {
+				Core::getTaskManager()->clearWorkersTaskStats();
+			} else {
 				System::out << "unknown command (" << command << ")\n";
+			}
 		} catch (SocketException& e) {
 			System::out << "[ServerCore] " << e.getMessage();
 		} catch (ArrayIndexOutOfBoundsException& e) {
