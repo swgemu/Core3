@@ -40,8 +40,6 @@ void PathGraph::readObject(IffStream* iffStream) {
 
 	iffStream->openChunk('PEDG');
 
-	Vector<PathEdge> pathEdges;
-
 	int pathEdgeSize = iffStream->getInt();
 
 	for (int i = 0; i < pathEdgeSize; ++i) {
