@@ -8,7 +8,7 @@
 #include "server/zone/objects/player/sessions/FindSession.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
@@ -17,8 +17,10 @@
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/managers/planet/MapLocationType.h"
-
+#include "server/zone/packets/ui/CreateClientPathMessage.h"
 #include "server/zone/objects/player/sessions/sui/FindSessionSuiCallback.h"
+#include "server/zone/objects/scene/WorldCoordinates.h"
+#include "server/zone/managers/collision/PathFinderManager.h"
 
 void FindSessionImplementation::initalizeFindMenu() {
 	ManagedReference<CreatureObject* > player = this->player.get();
@@ -151,6 +153,30 @@ void FindSessionImplementation::findPlanetaryObject(String& maplocationtype) {
 	objY = object->getWorldPositionY();
 
 	addWaypoint(objX, objY, wptName);
+
+
+
+	WorldCoordinates start(player);
+	WorldCoordinates end(object);
+
+	BuildingObject *building = object.castTo<BuildingObject*>();
+
+	if (building) {
+		end = WorldCoordinates(building->getEjectionPoint(), NULL);
+	}
+
+	Vector<WorldCoordinates>* path = PathFinderManager::instance()->findPath(start, end, zone);
+
+	if (path && path->size()) {
+		CreateClientPathMessage *msg = new CreateClientPathMessage();
+		for (int i=0; i<path->size(); i++) {
+			const WorldCoordinates& point = path->get(i);
+			msg->addCoordinate(point.getX(), point.getZ(), point.getY());
+		}
+		player->sendMessage(msg);
+	}
+
+	delete path;
 
 	cancelSession();
 }

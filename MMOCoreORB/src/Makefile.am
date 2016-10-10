@@ -40,7 +40,8 @@
 # this exception also makes it possible to release a modified version 
 # which carries forward this exception.
 
-AM_CXXFLAGS= $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11 
+DEFAULT_FLAGS= $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11 -march=native
+AM_CXXFLAGS = $(DEFAULT_FLAGS) -O0
 
 ENGINE3_PATH=../../../../MMOEngine
 ENGINE3_MOCK_PATH=../../../utils
@@ -76,11 +77,15 @@ LIBS =	$(SYSTEM_LIBS)  \
 #AM_LDFLAGS = -pagezero_size 10000 -image_base 100000000
 #AM_LDFLAGS = --enable-stdcall-fixup
 
-bin_PROGRAMS = core3 #odb3
+bin_PROGRAMS = core3  #odb3
 
-noinst_LIBRARIES = libcore3templates.a libcore3terrain.a
+libcore3pathfinding_a_CXXFLAGS = $(DEFAULT_FLAGS) -Ofast
+noinst_LIBRARIES = libcore3templates.a libcore3terrain.a libcore3pathfinding.a
 
-core3_LDADD = libcore3templates.a libcore3terrain.a
+core3_LDADD = libcore3templates.a libcore3terrain.a libcore3pathfinding.a
+
+core3client_LDADD = libcore3templates.a libcore3terrain.a libcore3pathfinding.a
+core3client_LDFLAGS = -losg -losgUtil -losgTerrain -losgViewer -lOpenThreads -losgGA -ljemalloc
 
 #engine/engine.h.gch:
 #	$(CXX) $(INCLUDES) $(ENGINE3_PATH)/src/engine/engine.h
@@ -101,7 +106,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/creature/buffs/ConcealBuff.cpp \
+core3_IDLS =	autogen/server/zone/objects/pathfinding/NavMeshRegion.cpp \
+				autogen/server/zone/objects/creature/buffs/ConcealBuff.cpp \
 				autogen/server/zone/objects/tangible/eventperk/ScavengerDroid.cpp \
 				autogen/server/zone/managers/gcw/GCWBaseShutdownObserver.cpp \
 				autogen/server/zone/objects/creature/buffs/ChannelForceBuff.cpp \
@@ -567,6 +573,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/player/PlayerManagerImplementation.cpp \
 		server/zone/managers/player/BadgeList.cpp \
 		server/zone/managers/collision/PathFinderManager.cpp \
+		server/zone/managers/collision/NavMeshManager.cpp \
+		server/zone/managers/collision/NavMeshJob.cpp \
 		server/zone/managers/collision/CollisionManager.cpp \
 		server/zone/managers/guild/GuildManagerImplementation.cpp \
 		server/zone/objects/guild/GuildMemberInfo.cpp \
@@ -746,6 +754,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/conversation/screenhandlers/DeliverMissionScreenHandler.cpp \
 		server/zone/objects/creature/conversation/screenhandlers/PetTrainingScreenHandler.cpp \
 		server/zone/objects/creature/conversation/screenhandlers/InformantMissionScreenHandler.cpp \
+		server/zone/objects/pathfinding/NavMeshRegionImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
 		server/zone/objects/player/sui/callbacks/DelegateSuiCallback.cpp \
 		server/zone/objects/player/sui/callbacks/LuaSuiCallback.cpp \
@@ -876,6 +885,7 @@ libcore3templates_a_SOURCES = templates/SharedObjectTemplate.cpp \
 		templates/appearance/FloorMesh.cpp \
 		templates/appearance/CellProperty.cpp \
 		templates/appearance/MeshAppearanceTemplate.cpp \
+		templates/appearance/MeshData.cpp \
 		templates/appearance/DetailAppearanceTemplate.cpp \
 		templates/appearance/PortalLayout.cpp \
 		templates/appearance/PathGraph.cpp \
@@ -886,6 +896,15 @@ libcore3templates_a_SOURCES = templates/SharedObjectTemplate.cpp \
 		templates/creature/SharedCreatureObjectTemplate.cpp \
 		templates/customization/AssetCustomizationManagerTemplate.cpp \
 		templates/customization/CustomizationIdManager.cpp \
+		templates/collision/BoundingVolumeFactory.cpp \
+		templates/collision/BaseBoundingVolume.cpp \
+		templates/collision/SphereVolume.cpp \
+		templates/collision/BoxVolume.cpp \
+		templates/collision/CylinderVolume.cpp \
+		templates/collision/CompositeVolume.cpp \
+		templates/collision/ComponentVolume.cpp \
+		templates/collision/DetailVolume.cpp \
+		templates/collision/CollisionMeshVolume.cpp \
 		templates/datatables/DataTableIff.cpp \
 		templates/datatables/DataTableCell.cpp \
 		templates/faction/FactionRanks.cpp \
@@ -899,6 +918,54 @@ libcore3templates_a_SOURCES = templates/SharedObjectTemplate.cpp \
 		templates/snapshot/WorldSnapshotIff.cpp \
 		templates/tangible/SharedStructureObjectTemplate.cpp \
 		templates/tangible/SharedWeaponObjectTemplate.cpp 		
+
+libcore3pathfinding_a_SOURCES = \
+		pathfinding/recast/Recast.cpp \
+		pathfinding/recast/RecastAlloc.cpp \
+		pathfinding/recast/RecastArea.cpp \
+		pathfinding/recast/RecastContour.cpp \
+		pathfinding/recast/RecastFilter.cpp \
+		pathfinding/recast/RecastLayers.cpp \
+		pathfinding/recast/RecastMesh.cpp \
+		pathfinding/recast/RecastMeshDetail.cpp \
+		pathfinding/recast/RecastRasterization.cpp \
+		pathfinding/recast/RecastRegion.cpp \
+		pathfinding/recast/DetourCommon.cpp \
+		pathfinding/recast/DetourNavMesh.cpp \
+		pathfinding/recast/DetourNavMeshBuilder.cpp \
+		pathfinding/recast/DetourNavMeshQuery.cpp \
+		pathfinding/recast/DetourNode.cpp \
+		pathfinding/recast/DetourAlloc.cpp \
+		pathfinding/ChunkyTriMesh.cpp \
+		pathfinding/RecastNavMesh.cpp \
+		pathfinding/RecastNavMeshBuilder.cpp \
+		pathfinding/RecastTileBuilder.cpp
+
+core3client_SOURCES = \
+	client/ClientCore.cpp \
+	client/login/LoginClient.cpp \
+	client/login/LoginSession.cpp \
+	client/login/LoginPacketHandler.cpp \
+	client/renderer/ClientRenderer.cpp \
+	client/zone/Zone.cpp \
+	client/zone/ZoneClient.cpp \
+	client/zone/ZonePacketHandler.cpp \
+	client/zone/ZoneClientThread.cpp \
+	client/zone/managers/object/ObjectManager.cpp \
+	client/zone/managers/objectcontroller/ObjectController.cpp \
+	client/zone/objects/scene/SceneObject.cpp \
+	client/zone/objects/scene/variables/StringId.cpp \
+	client/zone/objects/creature/CreatureObject.cpp \
+	client/zone/objects/tangible/TangibleObject.cpp \
+	client/zone/objects/intangible/IntangibleObject.cpp \
+	client/zone/objects/player/PlayerObject.cpp \
+	client/zone/objects/player/PlayerCreature.cpp \
+	client/zone/objects/appearance/ClientMeshAppearance.cpp \
+	client/zone/objects/building/ClientCell.cpp \
+	client/zone/objects/building/ClientBuilding.cpp \
+	client/zone/managers/appearance/AppearanceManager.cpp \
+	conf/ConfigManager.cpp \
+	tre3/TreeFile.cpp
 
 #BUILT_SOURCES = engine/engine.h.gch \
 #				server/zone/objects/scene/SceneObject.h.gch
