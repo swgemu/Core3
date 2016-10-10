@@ -8,7 +8,7 @@ function record_keeper_conv_handler:setThemePark(keeperNew)
 	self.keeper = keeperNew
 end
 
-function record_keeper_conv_handler:getInitialScreen(pPlayer, pConvTemplate)
+function record_keeper_conv_handler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	-- is this a factionol record keeper?
 	if self.keeper == nil then
