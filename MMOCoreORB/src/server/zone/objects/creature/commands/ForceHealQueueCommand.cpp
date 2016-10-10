@@ -370,11 +370,10 @@ int ForceHealQueueCommand::calculateForceCost(CreatureObject* creature, Creature
 		int amountHealed = attrs.sumHAM();
 		// Wounds
 		amountHealed += attrs.sumWounds();
-		/*
-		 * Is BF being charged for?
-		 *
+		// Battle Fatigue
 		amountHealed += attrs.healedBF;
-		 */
+		// States
+		amountHealed += attrs.healedStates;
 
 #ifdef DEBUG_FORCE_HEALS
 		creature->sendSystemMessage("[calculatedForceCost] amountHealed = " + String::valueOf(amountHealed));
