@@ -1283,8 +1283,8 @@ function ThemeParkLogic:spawnNpc(npcTemplate, position, pConversingPlayer, spawn
 			npcName = readStringData(playerID  .. ":missionSpawn:mainNpcName")
 			deleteStringData(playerID  .. ":missionSpawn:mainNpcName")
 		end
-		if npcName == "" then
-			local npcName = self:getNpcName(npcTemplate.npcName)
+		if npcName == nil or npcName == "" then
+			npcName = self:getNpcName(npcTemplate.npcName)
 		end
 		CreatureObject(pNpc):setCustomObjectName(npcName)
 		writeData(CreatureObject(pConversingPlayer):getObjectID() .. ":missionSpawn:no" .. spawnNumber, CreatureObject(pNpc):getObjectID())
