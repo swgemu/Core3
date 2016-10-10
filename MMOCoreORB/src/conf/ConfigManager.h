@@ -62,6 +62,8 @@ namespace conf {
 
 		int pingAllowedConnections;
 
+		int maxNavMeshJobs;
+
 		String messageOfTheDay;
 
 		Vector<String> treFiles;
@@ -260,6 +262,10 @@ namespace conf {
 
 		inline int getPurgeDeletedCharacters() {
 			return purgeDeletedCharacters;
+		}
+
+		inline int getMaxNavMeshJobs() {
+			return maxNavMeshJobs;
 		}
 
 		inline void setProgressMonitors(bool val) {

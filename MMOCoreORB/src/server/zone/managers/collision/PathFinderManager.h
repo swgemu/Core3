@@ -11,6 +11,9 @@
 #include "engine/engine.h"
 
 #include "server/zone/objects/scene/WorldCoordinates.h"
+#include "server/zone/objects/pathfinding/NavMeshRegion.h"
+#include "pathfinding/recast/DetourCommon.h"
+#include "pathfinding/recast/DetourNavMeshQuery.h"
 
 namespace server {
  namespace zone {
@@ -32,12 +35,12 @@ using namespace server::zone::objects::creature;
 using namespace server::zone::objects::cell;
 
 class FloorMesh;
-
+class dtQueryFilter;
 class PathFinderManager : public Singleton<PathFinderManager>, public Logger, public Object {
 public:
 	PathFinderManager();
 
-	Vector<WorldCoordinates>* findPath(const WorldCoordinates& pointA, const WorldCoordinates& pointB);
+	Vector<WorldCoordinates>* findPath(const WorldCoordinates& pointA, const WorldCoordinates& pointB, Zone* zone);
 
 	void filterPastPoints(Vector<WorldCoordinates>* path, SceneObject* object);
 
@@ -52,15 +55,20 @@ public:
 	int getFloorPath(const Vector3& pointA, const Vector3& pointB, FloorMesh* floor, Vector<Triangle*>*& nodes);
 
 protected:
-	Vector<WorldCoordinates>* findPathFromWorldToWorld(const WorldCoordinates& pointA, const WorldCoordinates& pointB);
-	Vector<WorldCoordinates>* findPathFromWorldToCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB);
+	Vector<WorldCoordinates>* findPathFromWorldToWorld(const WorldCoordinates& pointA, Vector<WorldCoordinates>& endPoints, Zone* zone, bool allowPartial);
+	Vector<WorldCoordinates>* findPathFromWorldToWorld(const WorldCoordinates& pointA, const WorldCoordinates& pointB, Zone *zone);
+	Vector<WorldCoordinates>* findPathFromWorldToCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB, Zone *zone);
 
-	Vector<WorldCoordinates>* findPathFromCellToWorld(const WorldCoordinates& pointA, const WorldCoordinates& pointB);
+	Vector<WorldCoordinates>* findPathFromCellToWorld(const WorldCoordinates& pointA, const WorldCoordinates& pointB, Zone *zone);
 	Vector<WorldCoordinates>* findPathFromCellToCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB);
 
 	Vector<WorldCoordinates>* findPathFromCellToDifferentCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB);
 
 	void addTriangleNodeEdges(const Vector3& source, const Vector3& goal, Vector<Triangle*>* trianglePath, Vector<WorldCoordinates>* path, CellObject* cell);
+
+private:
+	dtQueryFilter m_filter;
+	ThreadLocal<dtNavMeshQuery*> m_navQuery;
 };
 
 

@@ -94,6 +94,7 @@ protected:
 	SortedVector<String> loadedDerivedFiles;
 
 	bool noTrade;
+	bool updatesNavMesh;
 
 public:
 	const static int SHOT = 'SHOT';
@@ -730,6 +731,10 @@ public:
 	}
 	virtual bool isPlayerCreatureTemplate() {
 		return false;
+	}
+
+	virtual bool isNavUpdatesEnabled() {
+		return updatesNavMesh;
 	}
 };
 
