@@ -333,6 +333,8 @@ public:
 	const static int FSVILLAGEAREA = 0x200000A;
 	const static int SARLACCAREA = 0x200000B;
 
+	const static int NAVMESHAREA = 0x200000C;
+
 	const static int SHIP = 0x20000000;
 	const static int SHIPFIGHTER = 0x20000001;
 	const static int SHIPCAPITAL = 0x20000002;

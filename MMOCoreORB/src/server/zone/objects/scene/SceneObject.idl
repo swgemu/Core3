@@ -35,6 +35,7 @@ import server.zone.ZoneServer;
 import server.zone.objects.building.BuildingObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.staticobject.StaticObject;
 import server.zone.packets.scene.AttributeListMessage;
 import engine.util.Observer;
 include server.zone.objects.scene.variables.StringId;
@@ -59,16 +60,19 @@ import system.thread.Mutex;
 include server.zone.objects.scene.variables.ContainerObjectsMap;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.creature.ai.AiAgent;
+include templates.appearance.MeshData;
+include templates.collision.BaseBoundingVolume;
+
 
 @mock
 class SceneObject extends QuadTreeEntry implements Logger {
 	protected transient ZoneProcessServer server;
-	
+
 	protected transient ZoneComponent zoneComponent;
 	protected transient ObjectMenuComponent objectMenuComponent;
 	protected transient AttributeListComponent attributeListComponent;
 	protected transient ContainerComponent containerComponent;
-	
+
 	protected transient SharedObjectTemplate templateObject;
 	
 	protected boolean sendToClient;
@@ -1797,12 +1801,25 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@dirty
 	public abstract native unsigned int getPlanetCRC();
-	
+
+
+	// TODO: Change this to isClientObject
 	@read
 	public boolean isStaticObject() {
 		return staticObject;
 	}
-	
+
+	@dirty
+	public abstract boolean isStaticObjectClass() {
+	    return false;
+	}
+
+    @dirty
+    @local
+    public abstract StaticObject asStaticObject() {
+        return null;
+    }
+
 	@dirty
 	public abstract boolean isContainerObject() {
 		return false;
@@ -1999,15 +2016,23 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isEventPerkDeed() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isEventPerkItem() {
 		return false;
 	}
-	
+
 	@dirty
 	public native boolean isDataPad();
 
 	public native abstract float getTemplateRadius();
+
+	@local
+	@dereferenced
+	public abstract native Vector<Reference<MeshData> > getTransformedMeshData(final Matrix4 parentTransform);
+
+	@dirty
+	@local
+	public abstract native final BaseBoundingVolume getBoundingVolume();
 }
 
