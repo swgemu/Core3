@@ -10,6 +10,7 @@ import server.zone.Zone;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.area.areashapes.AreaShape;
+import server.zone.objects.pathfinding.NavMeshRegion;
 
 class ActiveArea extends SceneObject {
 	protected boolean noBuildArea;
@@ -77,6 +78,17 @@ class ActiveArea extends SceneObject {
 		return false;
 	}
 
+	@dirty
+	public abstract boolean isNavRegion() {
+		return false;
+	}
+
+    @dirty
+    @local
+    public abstract NavMeshRegion asNavRegion() {
+        return null;
+    }
+
 	@read
 	public boolean isNoBuildArea() {
 		return noBuildArea;
@@ -91,7 +103,7 @@ class ActiveArea extends SceneObject {
 	public native boolean containsPoint(float x, float y, unsigned long cellid);
 
 	@dirty
-	public native boolean containsPoint(float x, float y);
+	public abstract native boolean containsPoint(float x, float y);
 
 	@dirty
 	public float getRadius2() {

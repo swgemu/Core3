@@ -61,7 +61,7 @@ public:
 		iffStream->closeChunk('DATA');
 	}
 
-	float process(float x, float y) {
+	float checkInfluence(float x, float y)  {
 		float v3 = centerX - x;
 		float v4 = centerY - y;
 		float result;
@@ -84,6 +84,10 @@ public:
 		return result;
 	}
 
+	float process(float x, float y) {
+		return checkInfluence(x, y);
+	}
+
 	bool isEnabled() {
 		return informationHeader.isEnabled();
 	}
@@ -93,19 +97,19 @@ public:
 		centerY += y;
 	}
 
-	float getMinX() {
+	float getMinX() const {
 		return centerX - radius;
 	}
 
-	float getMaxX() {
+	float getMaxX() const {
 		return centerX + radius;
 	}
 
-	float getMinY() {
+	float getMinY() const {
 		return centerY - radius;
 	}
 
-	float getMaxY() {
+	float getMaxY() const {
 		return centerY + radius;
 	}
 };

@@ -26,6 +26,7 @@
 #include "server/zone/managers/minigames/FishingManager.h"
 #include "server/zone/managers/minigames/GamblingManager.h"
 #include "server/zone/managers/minigames/ForageManager.h"
+#include "terrain/ProceduralTerrainAppearance.h"
 
 ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& name) {
 	processor = serv;
@@ -151,6 +152,20 @@ float ZoneImplementation::getHeight(float x, float y) {
 	return 0;
 }
 
+float ZoneImplementation::getHeightNoCache(float x, float y) {
+	if (planetManager != NULL) {
+		TerrainManager* manager = planetManager->getTerrainManager();
+
+		if (manager != NULL) {
+			ProceduralTerrainAppearance *appearance = manager->getProceduralTerrainAppearance();
+			if (appearance != NULL)
+				return appearance->getHeight(x, y);
+		}
+	}
+
+	return 0;
+}
+
 void ZoneImplementation::insert(QuadTreeEntry* entry) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
@@ -172,6 +187,54 @@ void ZoneImplementation::update(QuadTreeEntry* entry) {
 
 void ZoneImplementation::inRange(QuadTreeEntry* entry, float range) {
 	quadTree->safeInRange(entry, range);
+}
+
+int ZoneImplementation::getInRangeSolidObjects(float x, float y, float range, SortedVector<ManagedReference<QuadTreeEntry*> >* objects, bool readLockZone) {
+	bool readlock = readLockZone && !_this.getReferenceUnsafeStaticCast()->isLockedByCurrentThread();
+
+	try {
+		_this.getReferenceUnsafeStaticCast()->rlock(readlock);
+
+		quadTree->inRange(x, y, range, *objects);
+
+		_this.getReferenceUnsafeStaticCast()->runlock(readlock);
+	} catch (...) {
+		_this.getReferenceUnsafeStaticCast()->runlock(readlock);
+	}
+
+	if (objects->size() > 0) {
+		for (int i = objects->size()-1; i >= 0; i--) {
+			SceneObject* sceno = cast<SceneObject*>(objects->get(i).get());
+
+			if (sceno->getParentID() != 0) {
+				objects->remove(i);
+				continue;
+			}
+
+			if (sceno->isCreatureObject() || sceno->isLairObject()) {
+				objects->remove(i);
+				continue;
+			}
+
+			if (sceno->getGameObjectType() == SceneObjectType::FURNITURE) {
+				objects->remove(i);
+				continue;
+			}
+
+			SharedObjectTemplate *shot = sceno->getObjectTemplate();
+
+			if (shot == NULL) {
+				objects->remove(i);
+				continue;
+			}
+
+			if (!shot->getCollisionMaterialFlags() || !shot->getCollisionMaterialBlockFlags() || !shot->isNavUpdatesEnabled()) {
+				objects->remove(i);
+				continue;
+			}
+		}
+	}
+	return objects->size();
 }
 
 int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<QuadTreeEntry*> >* objects, bool readLockZone) {
@@ -310,6 +373,29 @@ int ZoneImplementation::getInRangeActiveAreas(float x, float y, SortedVector<Man
 	}
 
 //	_this.getReferenceUnsafeStaticCast()->runlock(readlock);
+
+	return objects->size();
+}
+
+int ZoneImplementation::getInRangeNavMeshes(float x, float y, float range, SortedVector<ManagedReference<NavMeshRegion*> >* objects, bool readlock) {
+	Zone* thisZone = _this.getReferenceUnsafeStaticCast();
+
+	SortedVector<ManagedReference<QuadTreeEntry*> > entryObjects;
+
+	try {
+		thisZone->rlock(readlock);
+		regionTree->inRange(x, y, range, entryObjects);
+		thisZone->runlock(readlock);
+	}catch (...) {
+		thisZone->runlock(readlock);
+		throw;
+	}
+
+	for (int i = 0; i < entryObjects.size(); ++i) {
+		NavMeshRegion* obj = dynamic_cast<NavMeshRegion*>(entryObjects.get(i).get());
+		if (obj)
+			objects->put(obj);
+	}
 
 	return objects->size();
 }

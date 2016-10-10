@@ -74,6 +74,7 @@ int PlaceCityHallComponent::notifyStructurePlaced(StructureDeed* deed, CreatureO
 			Locker locker(city);
 
 			city->setCityHall(structure);
+			city->createNavRegion();
 			city->setLoaded();
 
 			locker.release();

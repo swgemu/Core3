@@ -25,10 +25,17 @@ include server.zone.objects.region.events.CityUpdateEvent;
 include server.zone.objects.region.events.CitizenAssessmentEvent;
 include server.zone.objects.region.CityStructureInventory;
 include system.thread.atomic.AtomicInteger;
+include pathfinding.RecastNavMesh;
 import system.thread.Mutex;
+import engine.util.u3d.AABB;
+import system.thread.Mutex;
+include system.util.SynchronizedVector;
+import server.zone.objects.pathfinding.NavMeshRegion;
 
 @lua
 class CityRegion extends ManagedObject implements Logger {
+
+	protected transient NavMeshRegion navmeshRegion;
 
 	protected byte cityRank;
 
@@ -158,6 +165,10 @@ class CityRegion extends ManagedObject implements Logger {
 	public native void initialize();
 	public native void initializeTransientMembers();
 
+	@dirty
+	@local
+	public native void updateNavmesh(@dereferenced final AABB bounds, final string queue);
+
 	/**
 	 * Gets called when this objects is loaded from database
 	 * @pre { this locked }
@@ -178,6 +189,7 @@ class CityRegion extends ManagedObject implements Logger {
 
 	@preLocked
 	public native void destroyActiveAreas();
+
 	@preLocked
 	public native void cancelTasks();
 
@@ -235,6 +247,16 @@ class CityRegion extends ManagedObject implements Logger {
 	public boolean hasAssessmentPending() {
 		return assessmentPending;
 	}
+
+	@local
+	@dirty
+	public RecastNavMesh getNavMesh() {
+        if(navmeshRegion == null)
+        	return null;
+
+		return navmeshRegion.getNavMesh();
+	}
+
 
 	@preLocked
 	public void setAssessmentPending(boolean pend) {
@@ -397,6 +419,12 @@ class CityRegion extends ManagedObject implements Logger {
 	public double getCityTreasury() {
 		return cityTreasury;
 	}
+
+    @preLocked
+	public native void createNavRegion(final string queue);
+
+    @preLocked
+	public native void createNavRegion();
 
 	@dirty
 	public boolean isMayor(unsigned long objectid) {
