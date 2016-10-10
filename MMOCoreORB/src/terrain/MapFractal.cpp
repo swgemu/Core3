@@ -16,21 +16,23 @@ MapFractal::MapFractal() {
 	rand = NULL;
 
 	bias = 0;
-	biasValue = 0;
+	biasValue = 0.5;
 	gainType = 0;
-	gainValue = 0;
-	octaves = 0;
+	gainValue = 0.7;
+	octaves = 2;
 	octavesParam = 0;
-	amplitude = 0;
-	xFrequency = 0;
-	yFrequency = 0;
+	amplitude = 0.5;
+	xFrequency = 0.01;
+	yFrequency = 0.01;
 	xOffset = 0;
 	zOffset = 0;
 	combination = 0;
 
-	offset32 = 0;
+	offset32 = 1.0;
 
 	unkown = false;
+
+	setSeed(0);
 }
 
 float MapFractal::getNoise(float x, float y, int i, int j) {
@@ -40,23 +42,61 @@ float MapFractal::getNoise(float x, float y, int i, int j) {
 	double result = 0;
 
 	switch (combination) {
-	case 0:
-	case 1:
-		result = calculateCombination1(v39, v41);
-		break;
-	case 2:
-		result = calculateCombination2(v39, v41);
-		break;
-	case 3:
-		result = calculateCombination3(v39, v41);
-		break;
-	case 4:
-		result = calculateCombination4(v39, v41);
-		break;
-	case 5:
-		result = calculateCombination5(v39, v41);
-		break;
+		case 0:
+		case 1:
+			result = calculateCombination1(v39, v41);
+			break;
+		case 2:
+			result = calculateCombination2(v39, v41);
+			break;
+		case 3:
+			result = calculateCombination3(v39, v41);
+			break;
+		case 4:
+			result = calculateCombination4(v39, v41);
+			break;
+		case 5:
+			result = calculateCombination5(v39, v41);
+			break;
 	}
+
+	if (bias) {
+		result = pow(result, log(biasValue) / log05);
+	}
+
+	if (gainType) {
+		if (result < 0.001) {
+			result = 0;
+
+			return result;
+		}
+
+		if (result > 0.999) {
+			result = 1.0;
+
+			return result;
+		}
+
+		double v40 = log(1.0 - gainValue) / log05;
+
+		if (result < 0.5) {
+			result = pow(result * 2, v40) * 0.5;
+
+			return result;
+		}
+
+		result = 1.0 - pow((1.0 - result) * 2, v40) * 0.5;
+	}
+
+	return result;
+}
+
+float MapFractal::getNoise(float x, int i, int j) {
+	float v39 = x * xFrequency;
+
+	double result = 0;
+
+	result = calculateCombination1(v39);
 
 	if (bias) {
 		result = pow(result, log(biasValue) / log05);
@@ -156,6 +196,30 @@ double MapFractal::calculateCombination1(float v39, float v41) {
 		coord[1] = v42 * v48;
 
 		v33 = noise->noise2(coord) * v47 + v33;
+		v48 = v48 * octavesParam; // + 24 octaves param
+		v47 = v47 * amplitude; // + 28 amplitude
+	}
+
+	if (unkown) // v6 + 52 initialized to 0
+		v33 = sin(v33 + v39);
+
+	result = (v33 * offset32 + 1.0) * 0.5; //  v6 + 32 initialized to 1.0
+
+	return result;
+}
+
+double MapFractal::calculateCombination1(float v39) {
+	float v48 = 1, v47 = 1;
+	double result = 0;
+
+	float v36 = v39 + xOffset; // + 12 = x.offset
+	float v33 = 0;
+	double coord[1];
+
+	for (int i = 0; i < octaves; ++i) {
+		coord[0] = v36 * v48;
+
+		v33 = noise->noise1(coord[0]) * v47 + v33;
 		v48 = v48 * octavesParam; // + 24 octaves param
 		v47 = v47 * amplitude; // + 28 amplitude
 	}

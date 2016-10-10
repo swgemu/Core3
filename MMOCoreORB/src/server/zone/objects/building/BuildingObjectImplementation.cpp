@@ -51,16 +51,16 @@
 
 #include "server/zone/managers/planet/MapLocationType.h"
 #include "server/zone/objects/building/components/GCWBaseContainerComponent.h"
+#include "templates/appearance/AppearanceTemplate.h"
+
+#include "server/zone/managers/collision/CollisionManager.h"
 
 void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();
 
 	setLoggingName("BuildingObject");
-	
 	updatePaidAccessList();
-	
 	registeredPlayerIdList.removeAll();
-	
 }
 
 void BuildingObjectImplementation::loadTemplateData(
@@ -288,10 +288,39 @@ Vector3 BuildingObjectImplementation::getEjectionPoint() {
 		ejectionPoint.setZ(zone->getHeight(ejectionPoint.getX(), ejectionPoint.getY()));
 
 		return ejectionPoint;
-	} else if (signObject == NULL)
-		return worldPosition;
+	} else {
+		SharedBuildingObjectTemplate *templateData = dynamic_cast<SharedBuildingObjectTemplate*>(getObjectTemplate());
+		if (templateData) {
+			PortalLayout* portalLayout = templateData->getPortalLayout();
 
-	return signObject->getPosition();
+			if (portalLayout != NULL) {
+				const Vector<CellProperty>& cells = portalLayout->getCellProperties();
+				if(cells.size() > 0) {
+					const CellProperty& cell = cells.get(0);
+					if (cell.getNumberOfPortals() > 0) {
+						const CellPortal* portal = cell.getPortal(0);
+						const AABB& box = portalLayout->getPortalBounds(portal->getGeometryIndex());
+
+						Vector3 center = box.center();
+						Matrix4 rotation;
+						rotation.setRotationMatrix(direction.toMatrix3());
+
+						Matrix4 translation;
+						translation.setTranslation(getPositionX(), getPositionZ(), -getPositionY());
+						Matrix4 transform = rotation * translation;
+
+						Vector3 dPos = (Vector3(center.getX(), center.getY(), -center.getZ()) * transform);
+
+						return Vector3(dPos.getX(), -dPos.getZ(), dPos.getY());
+					}
+				}
+			}
+		}
+	}
+	if(signObject)
+		return signObject->getPosition();
+
+	return worldPosition;
 }
 
 void BuildingObjectImplementation::notifyRemoveFromZone() {
@@ -1663,4 +1692,56 @@ BuildingObject* BuildingObject::asBuildingObject() {
 
 BuildingObject* BuildingObjectImplementation::asBuildingObject() {
 	return _this.getReferenceUnsafeStaticCast();
+}
+
+Vector<Reference<MeshData*> > BuildingObjectImplementation::getTransformedMeshData(Matrix4* parentTransform) {
+	if(getObjectTemplate()->getTemplateFileName().contains("starport")) {
+		info("found starport", true);
+	}
+
+	Vector<Reference<MeshData*> > data;
+
+	Matrix4 rotation;
+	rotation.setRotationMatrix(direction.toMatrix3());
+
+	Matrix4 translation;
+	translation.setTranslation(getPositionX(), getPositionZ(), -getPositionY());
+	Matrix4 transform = rotation * translation;
+
+	PortalLayout *pl = getObjectTemplate()->getPortalLayout();
+	if(pl) {
+		if(pl->getCellTotalNumber() > 0) {
+			AppearanceTemplate *appr = pl->getAppearanceTemplate(0);
+			data.addAll(appr->getTransformedMeshData(transform * *parentTransform));
+
+			const CellProperty tmpl = pl->getCellProperty(0);
+
+			for (int i=0; i<tmpl.getNumberOfPortals(); i++) {
+				const CellPortal* portal = tmpl.getPortal(i);
+				const MeshData* mesh = pl->getPortalGeometry(portal->getGeometryIndex());
+
+				if(portal->hasDoorTransform()) {
+					Matrix4 doorTransform = portal->getDoorTransform();
+					doorTransform.swapLtoR();
+					data.add(MeshData::makeCopyNegateZ(mesh, (doorTransform * transform) * *parentTransform));
+				} else
+					data.add(MeshData::makeCopyNegateZ(mesh, transform * *parentTransform));
+			}
+		}
+	}
+	data.addAll(SceneObjectImplementation::getTransformedMeshData(parentTransform));
+	return data;
+}
+
+const BaseBoundingVolume* BuildingObjectImplementation::getBoundingVolume() {
+	PortalLayout *pl = getObjectTemplate()->getPortalLayout();
+	if(pl) {
+		if(pl->getCellTotalNumber() > 0) {
+			AppearanceTemplate *appr = pl->getAppearanceTemplate(0);
+			return appr->getBoundingVolume();
+		}
+	} else {
+		return SceneObjectImplementation::getBoundingVolume();
+	}
+	return NULL;
 }
