@@ -1690,3 +1690,39 @@ SceneObject* SceneObject::asSceneObject() {
 	return this;
 }
 
+inline String matrix4tostring(const Matrix4& matrix) {
+	String str = "{" + String::valueOf(matrix[0][0]) + "," + String::valueOf(matrix[0][1]) + "," + String::valueOf(matrix[0][2]) + "," + String::valueOf(matrix[0][3]) + "},\n";
+	str += "{" + String::valueOf(matrix[1][0]) + "," + String::valueOf(matrix[1][1]) + "," + String::valueOf(matrix[1][2]) + "," + String::valueOf(matrix[1][3]) + "},\n";
+	str += "{" + String::valueOf(matrix[2][0]) + "," + String::valueOf(matrix[2][1]) + "," + String::valueOf(matrix[2][2]) + "," + String::valueOf(matrix[2][3]) + "},\n";
+	str += "{" + String::valueOf(matrix[3][0]) + "," + String::valueOf(matrix[3][1]) + "," + String::valueOf(matrix[3][2]) + "," + String::valueOf(matrix[3][3]) + "},\n";
+	return str;
+}
+
+Vector<Reference<MeshData*> > SceneObjectImplementation::getTransformedMeshData(Matrix4* parentTransform) {
+	const AppearanceTemplate *appearance = getObjectTemplate()->getAppearanceTemplate();
+	if(appearance == NULL) {
+		Vector<Reference<MeshData*> > emptyData;
+		return emptyData;
+	}
+
+	Matrix4 rotation;
+	rotation.setRotationMatrix(direction.toMatrix3());
+
+	Matrix4 translation;
+	translation.setTranslation(getPositionX(), getPositionZ(), -getPositionY());
+	Matrix4 transform = rotation * translation;
+
+	Vector<Reference<MeshData*> > meshes = appearance->getTransformedMeshData(transform * *parentTransform );
+	return meshes;
+}
+
+const BaseBoundingVolume* SceneObjectImplementation::getBoundingVolume() {
+	if (templateObject != NULL) {
+		AppearanceTemplate *appr = templateObject->getAppearanceTemplate();
+		if (appr != NULL) {
+			return appr->getBoundingVolume();
+		}
+	}
+	return NULL;
+}
+

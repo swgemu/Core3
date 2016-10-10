@@ -28,6 +28,7 @@
 #include "templates/appearance/PortalLayout.h"
 #include "templates/tangible/SharedStructureObjectTemplate.h"
 #include "server/zone/managers/city/PayPropertyTaxTask.h"
+#include "server/zone/objects/pathfinding/NavMeshRegion.h"
 
 void StructureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
@@ -48,6 +49,66 @@ void StructureObjectImplementation::initializeTransientMembers() {
 }
 
 void StructureObjectImplementation::finalize() {
+}
+
+void StructureObjectImplementation::createNavRegion() {
+
+	if(navmeshRegion != NULL) {
+		RecastNavMesh* mesh = navmeshRegion->getNavMesh();
+		if(mesh == NULL || !mesh->isLoaded()) {
+			Core::getTaskManager()->executeTask([=] {
+				navmeshRegion->updateNavMesh(navmeshRegion->getBoundingBox());
+			}, "cityregion_navmesh_update");
+			return;
+		}
+	}
+
+
+	// player city regions will store their region persistently
+	navmeshRegion = zone->getZoneServer()->createObject(STRING_HASHCODE("object/region_navmesh.iff"),
+														isPersistent()).castTo<NavMeshRegion *>();
+
+
+	if (navmeshRegion == NULL || !navmeshRegion->isRegion()) {
+		error("Failed to create navmesh region");
+		return;
+	}
+
+	Locker clocker(navmeshRegion, _this.getReferenceUnsafeStaticCast());
+
+	String name = String::valueOf(getObjectID());
+
+
+	float length = 32.0f;
+
+	for(const auto& child : childObjects) {
+		const BaseBoundingVolume* boundingVolume = child->getBoundingVolume();
+		if (boundingVolume) {
+			const AABB& box = boundingVolume->getBoundingBox();
+			float distance = (child->getWorldPosition() - getWorldPosition()).length();
+			float radius = box.extents()[box.longestAxis()];
+			if(distance + radius > length)
+				length = radius * 1.25f;
+		}
+	}
+
+	const BaseBoundingVolume* boundingVolume = getBoundingVolume();
+	if (boundingVolume) {
+		const AABB& box = boundingVolume->getBoundingBox();
+		float radius = box.extents()[box.longestAxis()];
+		if(radius > length)
+			length = radius * 1.25f;
+	}
+
+	Vector3 position = Vector3(getPositionX(), 0, getPositionY());
+	navmeshRegion->initializeNavRegion(position, length, zone, name);
+
+	zone->transferObject(navmeshRegion, -1, false);
+
+	//Core::getTaskManager()->executeTask([=]{
+	//updateNavmesh(navmeshRegion->getBoundingBox());
+	//}, "cityregion_updateNavMesh");
+
 }
 
 void StructureObjectImplementation::notifyLoadFromDatabase() {
@@ -144,16 +205,16 @@ String StructureObjectImplementation::getMaintenanceMods() {
 	return "-";
 }
 
-AABBTree* StructureObjectImplementation::getAABBTree() {
-	PortalLayout* portalLayout = templateObject->getPortalLayout();
-
-	if (portalLayout == NULL)
-		return NULL;
-
-	MeshAppearanceTemplate* app = portalLayout->getMeshAppearanceTemplate(0);
-
-	return app->getAABBTree();
-}
+//AABBTree* StructureObjectImplementation::getAABBTree() {
+//	PortalLayout* portalLayout = templateObject->getPortalLayout();
+//
+//	if (portalLayout == NULL)
+//		return NULL;
+//
+//	MeshAppearanceTemplate* app = portalLayout->getAppearanceTemplate(0);
+//
+//	return app->getAABBTree();
+//}
 
 String StructureObjectImplementation::getTimeString(uint32 timestamp) {
 	String abbrvs[4] = {"seconds", "minutes", "hours", "days"};

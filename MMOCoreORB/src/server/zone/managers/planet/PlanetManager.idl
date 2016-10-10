@@ -37,6 +37,8 @@ import server.zone.objects.area.ActiveArea;
 import system.thread.Mutex;
 import engine.util.u3d.CloseObjectsVector;
 include server.zone.managers.collision.IntersectionResults;
+include server.zone.objects.pathfinding.NavMeshRegion;
+include templates.appearance.MeshData;
 
 class PlanetManager extends ManagedService implements Logger {
 	protected Zone zone;
@@ -82,6 +84,12 @@ class PlanetManager extends ManagedService implements Logger {
 	@dereferenced
 	protected static transient Mutex poiMutex;
 
+	@dereferenced
+    protected VectorMap<string, NavMeshRegion> navmeshes;
+
+    @dereferenced
+    protected transient VectorMap<string, NavMeshRegion> pendingNavMeshes;
+
 	public PlanetManager(Zone planet, ZoneProcessServer srv) {
 		zone = planet;
 		server = srv;
@@ -126,7 +134,10 @@ class PlanetManager extends ManagedService implements Logger {
 	private native void loadPlanetObjects(LuaObject lua);
 
 	@local
-	private native void loadBadgeAreas(LuaObject lua);
+    private native void loadBadgeAreas(LuaObject lua);
+
+    @local
+    private native void loadNavAreas(LuaObject lua);
 
 	private native void loadLuaConfig();
 
@@ -329,4 +340,11 @@ class PlanetManager extends ManagedService implements Logger {
 	public native void addPlayerCityTravelPoint(PlanetTravelPoint ptp);
 
 	public native void removePlayerCityTravelPoint(final string cityName);
+
+	@local
+	@dereferenced
+	public native VectorMap<string, NavMeshRegion> getNavMeshes();
+
+	@local
+	public native void addNavMesh(NavMeshRegion region);
 }
