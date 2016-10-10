@@ -757,7 +757,6 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 				ghost->addExperience("political", 750, true);
 			}
 		}
-
 		updateCityVoting(city);
 
 		int citizens = city->getCitizenCount();

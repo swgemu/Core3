@@ -10,86 +10,10 @@
 
 #include "engine/engine.h"
 #include "templates/appearance/AppearanceTemplate.h"
-
-class MeshVertex : public Object {
-protected:
-	float x, y, z;
-
-public:
-	MeshVertex() : x(0), y(0), z(0) {
-
-	}
-
-	MeshVertex(const MeshVertex& vert) : Object() {
-		x = vert.x;
-		y = vert.y;
-		z = vert.z;
-	}
-
-	void readObject(IffStream* iffStream) {
-		x = iffStream->getFloat();
-		y = iffStream->getFloat();
-		z = iffStream->getFloat();
-
-	}
-
-	inline float getX() {
-		return x;
-	}
-
-	inline float getY() {
-		return y;
-	}
-
-	inline float getZ() {
-		return z;
-	}
-
-	friend class MeshAppearanceTemplate;
-};
-
-class MeshTriangle : public Object {
-protected:
-	int vertex1, vertex2, vertex3;
-
-public:
-	MeshTriangle() : vertex1(0), vertex2(0), vertex3(0) {
-
-	}
-
-	MeshTriangle(const MeshTriangle& mesh) : Object() {
-		vertex1 = mesh.vertex1;
-		vertex2 = mesh.vertex2;
-		vertex3 = mesh.vertex3;
-	}
-
-	friend class MeshData;
-	friend class MeshAppearanceTemplate;
-};
-
-class MeshData : public Object {
-protected:
-	Vector<MeshVertex> vertices;
-	Vector<MeshTriangle> triangles;
-
-public:
-	MeshData() {
-
-	}
-
-	MeshData(const MeshData& data) : Object(){
-		vertices = data.vertices;
-		triangles = data.triangles;
-	}
-
-	void readObject(IffStream* iffStream);
-
-	friend class MeshAppearanceTemplate;
-
-};
+#include "templates/appearance/MeshData.h"
 
 class MeshAppearanceTemplate : public AppearanceTemplate {
-	Vector<MeshData>* meshes;
+	Vector<Reference<MeshData*> > meshes;
 	//Vector<Triangle> triangles;
 
 	AABBTree* aabbTree;
@@ -97,9 +21,11 @@ class MeshAppearanceTemplate : public AppearanceTemplate {
 	//String file;
 
 public:
+	virtual uint32 getType() const {
+		return 'MESH';
+	}
 	MeshAppearanceTemplate() {
 		aabbTree = NULL;
-		meshes = NULL;
 		boundingSphere = NULL;
 	}
 
@@ -121,7 +47,7 @@ public:
 	void parseSPS(IffStream* iffStream);
 	void parseVertexData(IffStream* iffStream, int idx);
 
-	bool testCollide(float x, float z, float y, float radius);
+	bool testCollide(float x, float z, float y, float radius) const;
 
 	AppearanceTemplate* getFirstMesh() {
 		return this;
@@ -144,6 +70,36 @@ public:
 		return boundingSphere;
 	}
 
+	const Vector<Reference<MeshData*> >& getMeshes() const {
+		return meshes;
+	}
+
+	virtual bool testCollide(const Sphere& testsphere) const {
+		return aabbTree->testCollide(testsphere);
+	}
+
+	/**
+	 * Checks for intersection against ray, stops on any intersection
+	 * @return intersectionDistance, triangle which it intersects
+	 */
+	virtual bool intersects(const Ray& ray, float distance, float& intersectionDistance, Triangle*& triangle, bool checkPrimitives = false) const {
+		return aabbTree->intersects(ray, distance, intersectionDistance, triangle, checkPrimitives);
+	}
+
+	/**
+	 * Checks for all intersections
+	 */
+	virtual int intersects(const Ray& ray, float maxDistance, SortedVector<IntersectionResult>& result) const {
+		return aabbTree->intersects(ray, maxDistance, result);
+	}
+
+	virtual Vector<Reference<MeshData* > > getTransformedMeshData(const Matrix4& parentTransform) const {
+		Vector<Reference<MeshData* > > newMeshes;
+		for(int i=0; i<meshes.size(); i++) {
+			newMeshes.add(MeshData::makeCopyNegateZ(meshes.get(i), parentTransform));
+		}
+		return newMeshes;
+	}
 };
 
 #endif /* MESHAPPEARANCETEMPLATE_H_ */

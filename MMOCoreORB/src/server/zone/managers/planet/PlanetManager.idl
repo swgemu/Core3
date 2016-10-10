@@ -37,6 +37,8 @@ import server.zone.objects.area.ActiveArea;
 import system.thread.Mutex;
 import engine.util.u3d.CloseObjectsVector;
 include server.zone.managers.collision.IntersectionResults;
+include server.zone.objects.pathfinding.NavMeshRegion;
+include templates.appearance.MeshData;
 
 class PlanetManager extends ManagedService implements Logger {
 	protected Zone zone;
@@ -81,6 +83,9 @@ class PlanetManager extends ManagedService implements Logger {
 
 	@dereferenced
 	protected static transient Mutex poiMutex;
+
+	@dereferenced
+	protected transient VectorMap<string, NavMeshRegion> pendingNavMeshes;
 
 	public PlanetManager(Zone planet, ZoneProcessServer srv) {
 		zone = planet;
@@ -127,6 +132,9 @@ class PlanetManager extends ManagedService implements Logger {
 
 	@local
 	private native void loadBadgeAreas(LuaObject lua);
+
+	@local
+	private native void loadNavAreas(LuaObject lua);
 
 	private native void loadLuaConfig();
 

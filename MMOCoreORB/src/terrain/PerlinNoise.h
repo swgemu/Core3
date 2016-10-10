@@ -61,6 +61,30 @@ public:
 		rand = r;
 	}
 
+	float noise1(double arg)
+	{
+		int bx0, bx1, b00, b10, b01, b11, negx;
+		double rx0, rx1;
+		float *q;
+		double t, sx, u, v, vec[1];
+
+		vec[0] = arg;
+		if (start) {
+			start = 0;
+			init();
+		}
+
+		setup(0, bx0,bx1, rx0,rx1,negx);
+
+		sx = s_curve(rx0);
+
+		u = rx0 * g1[ p[ bx0 ] ];
+		v = rx1 * g1[ p[ bx1 ] ];
+
+		return lerp(sx, u, v);
+	}
+
+
 	float noise2(double vec[2]) {
 		int bx0, bx1, by0, by1, b00, b10, b01, b11, negx, negy;
 		double rx0, rx1, ry0, ry1;
