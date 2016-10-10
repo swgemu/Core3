@@ -12,9 +12,12 @@
 #include "templates/appearance/AppearanceTemplate.h"
 
 class DetailAppearanceTemplate : public AppearanceTemplate {
-	AppearanceTemplate* firstMesh;
-
+	const AppearanceTemplate* firstMesh;
 public:
+	virtual uint32 getType() const {
+		return 'DTAL';
+	}
+
 	DetailAppearanceTemplate() {
 		firstMesh = NULL;
 	}
@@ -28,8 +31,34 @@ public:
 
 	void parse(IffStream* iffStream);
 
-	AppearanceTemplate* getFirstMesh() {
+	const AppearanceTemplate* getFirstMesh() const {
 		return firstMesh;
+	}
+
+	virtual bool testCollide(const Sphere& testsphere) const {
+		return firstMesh->testCollide(testsphere);
+	}
+
+	/**
+	 * Checks for intersection against ray, stops on any intersection
+	 * @return intersectionDistance, triangle which it intersects
+	 */
+	virtual bool intersects(const Ray& ray, float distance, float& intersectionDistance, Triangle*& triangle, bool checkPrimitives = false) const {
+		return firstMesh->intersects(ray, distance, intersectionDistance, triangle, checkPrimitives);
+	}
+
+	/**
+	 * Checks for all intersections
+	 */
+	virtual int intersects(const Ray& ray, float maxDistance, SortedVector<IntersectionResult>& result) const {
+		return firstMesh->intersects(ray, maxDistance, result);
+	}
+
+	virtual Vector<Reference<MeshData* > > getTransformedMeshData(const Matrix4& parentTransform) const {
+		Vector<Reference<MeshData* > > meshes;
+		if(firstMesh != NULL)
+			meshes.addAll(firstMesh->getTransformedMeshData(parentTransform));
+		return meshes;
 	}
 
 };
