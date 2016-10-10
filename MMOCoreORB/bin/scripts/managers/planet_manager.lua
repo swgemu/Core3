@@ -328,6 +328,12 @@ yavin4 = {
 		{"badge_yav_temple_blueleaf",-875,-2047,30,22},
 	},
 
+	navAreas = {
+	    {"massassi_temple",-3050,-2950,250},
+	    {"light_jedi_enclave",-5575,4901,100},
+	    {"dark_jedi_enclave",5080,306,100}
+	},
+
 	planetObjects = {
 		{templateFile = "object/tangible/terminal/terminal_character_builder.iff", ox = 0, oy = -0.705623, oz = 0, ow = 0.708587, x = -6917.18, z = 73, y = -5732.25, parentid = 0},
 		{templateFile = "object/tangible/terminal/terminal_character_builder.iff", ox = 0, oy = 0.723339, oz = 0, ow = -0.690493, x = 4057.69, z = 37, y = -6217.54, parentid = 0},

@@ -50,7 +50,9 @@ public:
 	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0001'>);
 
 	float getNoise(float x, float y, int i = 0, int  j = 0);
+	float getNoise(float x, int i = 0, int j = 0);
 
+	double calculateCombination1(float v39);
 	double calculateCombination1(float xfreq, float yfreq);
 	double calculateCombination2(float xfreq, float yfreq);
 	double calculateCombination3(float xfreq, float yfreq);
