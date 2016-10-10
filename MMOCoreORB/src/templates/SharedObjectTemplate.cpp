@@ -15,6 +15,7 @@ SharedObjectTemplate::SharedObjectTemplate() {
 	appearanceTemplate = NULL;
 	loadedPortalLayout = false, loadedAppearanceTemplate = false;
 
+	updatesNavMesh = true;
 	snapToTerrain = false;
 	containerType = 0;
 	containerVolumeLimit = 0;
@@ -193,6 +194,8 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 		}
 
 		obj.pop();
+	} else if (varName == "enableNavMeshUpdates") {
+		updatesNavMesh = Lua::getBooleanParameter(state);
 	} else {
 		//Logger::console.error("unknown variable " + varName);
 		templateData->pop();
@@ -226,13 +229,10 @@ void SharedObjectTemplate::parseVariableData(const String& varName, Chunk* data)
 		
 		if (arrangementDescriptorFilename.parse(data))
 			arrangementDescriptors = templateManager->getArrangementDescriptor(arrangementDescriptorFilename.get());
-		
 	} else if (varName == "appearanceFilename") {
 		appearanceFilename.parse(data);
-
 	} else if (varName == "portalLayoutFilename") {
 		portalLayoutFilename.parse(data);
-
 	} else if (varName == "clientDataFile") {
 		clientDataFile.parse(data);
 	} else if (varName == "collisionMaterialFlags") {

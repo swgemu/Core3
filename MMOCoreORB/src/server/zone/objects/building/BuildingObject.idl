@@ -24,24 +24,28 @@ import system.lang.StackTrace;
 include server.zone.objects.cell.CellObject;
 include engine.util.u3d.CloseObjectsVector;
 import system.thread.Mutex;
+import engine.util.u3d.Matrix4;
+include templates.appearance.MeshData;
+include templates.collision.BaseBoundingVolume;
+
 
 class BuildingObject extends StructureObject {
 	@dereferenced
 	protected VectorMap<unsigned int, CellObject> cells;
 
 	protected int totalCellNumber;
-	
+
 	protected SignObject signObject;
-	
+
 	protected unsigned long deedObjectID;
-	
+
 	protected int accessFee;
 	protected int accessDuration;
 	protected transient unsigned int lastAccessFeeChange;
-	
+
 	@dereferenced
 	protected transient Mutex paidAccessListMutex; 
-	
+
 	@dereferenced
 	protected VectorMap<unsigned long, unsigned int> paidAccessList;
 
@@ -436,7 +440,7 @@ class BuildingObject extends StructureObject {
 	public int getFactionBaseType() {
 		return factionBaseType;
 	}
-	
+
 	/**
 	 * Adds the desired sign as a child object, removing any current sign
 	 * @param SignTemplate sign config from structure lua
@@ -445,5 +449,13 @@ class BuildingObject extends StructureObject {
 	 */
 	@local
 	@preLocked
-	public native void changeSign( SignTemplate signConfig );	
+	public native void changeSign( SignTemplate signConfig );
+
+	@local
+	@dereferenced
+	public abstract native Vector<Reference<MeshData> > getTransformedMeshData(final Matrix4 parentTransform);
+
+	@dirty
+	@local
+	public abstract native final BaseBoundingVolume getBoundingVolume();
 }
