@@ -54,7 +54,6 @@ all: #build
 
 build: idl gtest
 	cd build/unix && make -j4 UNITTEST_DIRECTIVES="$(UNITTEST_DIRECTIVES)" #CC=clang CXX=clang++
-	cp build/unix/src/client/core3* bin
 	cp build/unix/src/core3* bin
 	cd bin/conf && git log --pretty=format:'%h was %an, %ar, message: %s' -10 > rev.txt
 	rm build/unix/src/core3

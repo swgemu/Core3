@@ -58,21 +58,17 @@ bool CollisionManager::checkLineOfSightInBuilding(SceneObject* object1, SceneObj
 
 	// we check interior cells
 	for (int i = 1; i < portalLayout->getAppearanceTemplatesSize(); ++i) {
-		MeshAppearanceTemplate* app = portalLayout->getMeshAppearanceTemplate(i);
-
-		AABBTree* aabbTree = app->getAABBTree();
-
-		if (aabbTree == NULL)
+		const AppearanceTemplate *tmpl = portalLayout->getAppearanceTemplate(i);
+		if(tmpl == NULL)
 			continue;
 
-		if (aabbTree->intersects(ray, distance, intersectionDistance, triangle, true))
+		if(tmpl->intersects(ray, distance, intersectionDistance, triangle, true))
 			return false;
 	}
 
 	return true;
 }
-
-AABBTree* CollisionManager::getAABBTree(SceneObject* scno, int collisionBlockFlags) {
+const AppearanceTemplate* CollisionManager::getCollisionAppearance(SceneObject* scno, int collisionBlockFlags) {
 	SharedObjectTemplate* templateObject = scno->getObjectTemplate();
 
 	if (templateObject == NULL)
@@ -82,23 +78,8 @@ AABBTree* CollisionManager::getAABBTree(SceneObject* scno, int collisionBlockFla
 		return NULL;
 
 	PortalLayout* portalLayout = templateObject->getPortalLayout();
-	MeshAppearanceTemplate* mesh = NULL;
 
-	if (portalLayout != NULL) {
-		mesh = portalLayout->getMeshAppearanceTemplate(0);
-	} else {
-		AppearanceTemplate* appTemplate = templateObject->getAppearanceTemplate();
-
-		if (appTemplate == NULL)
-			return NULL;
-
-		mesh = dynamic_cast<MeshAppearanceTemplate*>(appTemplate->getFirstMesh());
-	}
-
-	if (mesh == NULL)
-		return NULL;
-
-	return mesh->getAABBTree();
+	return (portalLayout != NULL) ? portalLayout->getAppearanceTemplate(0) : templateObject->getAppearanceTemplate();
 }
 
 bool CollisionManager::checkSphereCollision(const Vector3& origin, float radius, Zone* zone) {
@@ -108,37 +89,33 @@ bool CollisionManager::checkSphereCollision(const Vector3& origin, float radius,
 	zone->getInRangeObjects(origin.getX(), origin.getY(), 512, &objects, true);
 
 	for (int i = 0; i < objects.size(); ++i) {
-		AABBTree* aabbTree = NULL;
 
 		SceneObject* scno = static_cast<SceneObject*>(objects.get(i).get());
 
 		try {
-			aabbTree = getAABBTree(scno, -1);
+			SharedObjectTemplate* templateObject = scno->getObjectTemplate();
 
-			if (aabbTree == NULL)
+			if (templateObject == NULL)
 				continue;
 
+			if (!(templateObject->getCollisionActionBlockFlags() & 255))
+				continue;
+
+			Sphere sphere(convertToModelSpace(sphereOrigin, scno), radius);
+
+			PortalLayout* portalLayout = templateObject->getPortalLayout();
+			if (portalLayout != NULL) {
+				if(portalLayout->getAppearanceTemplate(0)->testCollide(sphere))
+					return true;
+			} else {
+				if(scno->getObjectTemplate()->getAppearanceTemplate()->testCollide(sphere))
+					return true;
+			}
+
 		} catch (Exception& e) {
-			aabbTree = NULL;
+
 		} catch (...) {
 			throw;
-		}
-
-		if (aabbTree != NULL) {
-			//moving ray to model space
-
-			try {
-				Sphere sphere(convertToModelSpace(sphereOrigin, scno), radius);
-				//structure->info("checking ray with building dir" + String::valueOf(structure->getDirectionAngle()), true);
-
-				if (aabbTree->testCollide(sphere)) {
-					return true;
-				}
-			} catch (Exception& e) {
-				scno->error(e.getMessage());
-			} catch (...) {
-				throw;
-			}
 		}
 	}
 
@@ -162,17 +139,11 @@ bool CollisionManager::checkLineOfSightWorldToCell(const Vector3& rayOrigin, con
 	if (cellObject->getCellNumber() >= portalLayout->getAppearanceTemplatesSize())
 		return true;
 
-	MeshAppearanceTemplate* app = portalLayout->getMeshAppearanceTemplate(cellObject->getCellNumber());
-
-	AABBTree* aabbTree = app->getAABBTree();
-
-	if (aabbTree == NULL)
-		return true;
-
+	const AppearanceTemplate* app = portalLayout->getAppearanceTemplate(cellObject->getCellNumber());
 	float intersectionDistance;
 	Triangle* triangle = NULL;
 
-	if (aabbTree->intersects(ray, distance, intersectionDistance, triangle, true))
+	if (app->intersects(ray, distance, intersectionDistance, triangle, true))
 		return false;
 
 	return true;
@@ -213,9 +184,9 @@ bool CollisionManager::checkMovementCollision(CreatureObject* creature, float x,
 		if (object == NULL)
 			continue;
 
-		AABBTree* tree = getAABBTree(object, 255);
+		const AppearanceTemplate* appearance = getCollisionAppearance(object, 255);
 
-		if (tree == NULL)
+		if (appearance == NULL)
 			continue;
 
 		Ray ray = convertToModelSpace(rayStart, rayEnd, object);
@@ -227,7 +198,7 @@ bool CollisionManager::checkMovementCollision(CreatureObject* creature, float x,
 
 		float intersectionDistance;
 
-		if (tree->intersects(ray, maxDistance, intersectionDistance, triangle, true)) {
+		if (appearance->intersects(ray, maxDistance, intersectionDistance, triangle, true)) {
 			String str = object->getObjectTemplate()->getFullTemplateString();
 
 			object->info("intersecting with me " + str, true);
@@ -389,14 +360,12 @@ void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, Sor
 	for (int i = 0; i < inRangeObjects.size(); ++i) {
 		SceneObject* sceno = static_cast<SceneObject*>(inRangeObjects.get(i).get());
 
-		AABBTree* aabbTree = getAABBTree(sceno, 255);
+		const AppearanceTemplate* app = getCollisionAppearance(sceno, 255);
+		if (app != NULL) {
+			Ray ray = convertToModelSpace(rayStart, rayEnd, sceno);
 
-		if (aabbTree == NULL)
-			continue;
-
-		Ray ray = convertToModelSpace(rayStart, rayEnd, sceno);
-
-		aabbTree->intersects(ray, 16384 * 2, *result);
+			app->intersects(ray, 16384 * 2, *result);
+		}
 	}
 }
 
@@ -406,15 +375,12 @@ void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, Sor
 
 	for (int i = 0; i < inRangeObjects.size(); ++i) {
 		SceneObject* sceno = static_cast<SceneObject*>(inRangeObjects.get(i));
+		const AppearanceTemplate* app = getCollisionAppearance(sceno, 255);
+		if (app != NULL) {
+			Ray ray = convertToModelSpace(rayStart, rayEnd, sceno);
 
-		AABBTree* aabbTree = getAABBTree(sceno, 255);
-
-		if (aabbTree == NULL)
-			continue;
-
-		Ray ray = convertToModelSpace(rayStart, rayEnd, sceno);
-
-		aabbTree->intersects(ray, 16384 * 2, *result);
+			app->intersects(ray, 16384 * 2, *result);
+		}
 	}
 }
 
@@ -429,12 +395,12 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 		return false;
 
 	if (object1->isAiAgent() || object2->isAiAgent()) {
-		Vector<WorldCoordinates>* path = PathFinderManager::instance()->findPath(object1, object2);
+		//Vector<WorldCoordinates>* path = PathFinderManager::instance()->findPath(object1, object2, zone);
 
-		if (path == NULL)
-			return false;
-		else
-			delete path;
+//		if (path == NULL)
+//			return false;
+//		else
+//			delete path;
 	}
 
 	ManagedReference<SceneObject*> rootParent1 = object1->getRootParent();
@@ -489,7 +455,7 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 
 	try {
 		for (int i = 0; i < (closeObjects != NULL ? closeObjects->size() : closeObjectsNonReference->size()); ++i) {
-			AABBTree* aabbTree = NULL;
+			const AppearanceTemplate* app = NULL;
 
 			SceneObject* scno;
 
@@ -500,22 +466,22 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 			}
 
 			try {
-				aabbTree = getAABBTree(scno, 255);
+				app = getCollisionAppearance(scno, 255);
 
-				if (aabbTree == NULL)
+				if (app == NULL)
 					continue;
 
 			} catch (Exception& e) {
-				aabbTree = NULL;
+				app = NULL;
 			}
 
-			if (aabbTree != NULL) {
+			if (app != NULL) {
 				//moving ray to model space
 				Ray ray = convertToModelSpace(rayOrigin, rayEnd, scno);
 
 				//structure->info("checking ray with building dir" + String::valueOf(structure->getDirectionAngle()), true);
 
-				if (aabbTree->intersects(ray, dist, intersectionDistance, triangle, true)) {
+				if (app->intersects(ray, dist, intersectionDistance, triangle, true)) {
 					return false;
 				}
 			}
@@ -674,23 +640,23 @@ bool CollisionManager::checkShipCollision(ShipObject* ship, const Vector3& targe
 	zone->getInRangeObjects(targetPosition.getX(), targetPosition.getY(), 512, &objects, true);
 
 	for (int i = 0; i < objects.size(); ++i) {
-		AABBTree* aabbTree = NULL;
+		const AppearanceTemplate *app = NULL;
 
 		SceneObject* scno = static_cast<SceneObject*>(objects.get(i).get());
 
 		try {
-			aabbTree = getAABBTree(scno, -1);
+			app = getCollisionAppearance(scno, -1);
 
-			if (aabbTree == NULL)
+			if (app == NULL)
 				continue;
 
 		} catch (Exception& e) {
-			aabbTree = NULL;
+			app = NULL;
 		} catch (...) {
 			throw;
 		}
 
-		if (aabbTree != NULL) {
+		if (app != NULL) {
 			//moving ray to model space
 
 			try {
@@ -698,7 +664,7 @@ bool CollisionManager::checkShipCollision(ShipObject* ship, const Vector3& targe
 
 				//structure->info("checking ray with building dir" + String::valueOf(structure->getDirectionAngle()), true);
 
-				if (aabbTree->intersects(ray, dist, intersectionDistance, triangle, true)) {
+				if (app->intersects(ray, dist, intersectionDistance, triangle, true)) {
 
 					//rayOrigin.set(rayOrigin.getX(), rayOrigin.getY(), rayOrigin.getZ());
 					Vector3 direction = rayEnd - rayOrigin;
@@ -771,13 +737,13 @@ bool CollisionManager::checkLineOfSightInParentCell(SceneObject* object, Vector3
 
 	SharedObjectTemplate* objectTemplate = parent->getRootParent().get()->getObjectTemplate();
 	PortalLayout* portalLayout = objectTemplate->getPortalLayout();
-	MeshAppearanceTemplate* appearanceMesh = NULL;
+	const AppearanceTemplate* appearanceMesh = NULL;
 
 	if (portalLayout == NULL)
 		return true;
 
 	try {
-		appearanceMesh = portalLayout->getMeshAppearanceTemplate(cell->getCellNumber());
+		appearanceMesh = portalLayout->getAppearanceTemplate(cell->getCellNumber());
 	} catch (Exception& e) {
 		return true;
 	}
@@ -786,11 +752,6 @@ bool CollisionManager::checkLineOfSightInParentCell(SceneObject* object, Vector3
 		//info("null appearance mesh ");
 		return true;
 	}
-
-	AABBTree* aabbTree = appearanceMesh->getAABBTree();
-
-	if (aabbTree == NULL)
-		return true;
 
 	//switching Y<->Z, adding 0.1 to account floor
 	Vector3 startPoint = object->getPosition();
@@ -809,13 +770,13 @@ bool CollisionManager::checkLineOfSightInParentCell(SceneObject* object, Vector3
 	Triangle* triangle = NULL;
 
 	//nothing in the middle
-	if (aabbTree->intersects(ray, distance, intersectionDistance, triangle, true))
+	if (appearanceMesh->intersects(ray, distance, intersectionDistance, triangle, true))
 		return false;
 
 	Ray ray2(endPoint, Vector3(0, -1, 0));
 
 	//check if we are in the cell with dir (0, -1, 0)
-	if (!aabbTree->intersects(ray2, 64000.f, intersectionDistance, triangle, true))
+	if (!appearanceMesh->intersects(ray2, 64000.f, intersectionDistance, triangle, true))
 		return false;
 
 	return true;

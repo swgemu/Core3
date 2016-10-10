@@ -36,6 +36,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.region.CityRegion;
+import server.zone.objects.pathfinding.NavMeshRegion;
 
 import system.thread.atomic.AtomicInteger;
 
@@ -93,6 +94,9 @@ class Zone extends SceneObject {
 	}
 
 	@local
+	public native int getInRangeSolidObjects(float x, float y, float range, SortedVector<QuadTreeEntry> objects, boolean readLockZone);
+
+	@local
 	public native int getInRangeObjects(float x, float y, float range, SortedVector<QuadTreeEntry> objects, boolean readLockZone);
 
 	@local
@@ -110,6 +114,9 @@ class Zone extends SceneObject {
 	public native int getInRangeActiveAreas(float x, float y, float range, SortedVector<ActiveArea> objects, boolean readLockZone);
 	@local
 	public native int getInRangeActiveAreas(float x, float y, float range, ActiveAreasVector objects, boolean readLockZone);
+
+    @local
+    public native int getInRangeNavMeshes(float x, float y, float range, SortedVector<NavMeshRegion> objects, boolean readLockZone);
 
 	@local
 	@dereferenced
@@ -138,6 +145,11 @@ class Zone extends SceneObject {
 	@dirty
 	@mock
 	public native float getHeight(float x, float y);
+
+	@dirty
+	@mock
+	public native float getHeightNoCache(float x, float y);
+
 
 	@arg1preLocked
 	@preLocked
