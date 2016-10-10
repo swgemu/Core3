@@ -226,13 +226,10 @@ void SharedObjectTemplate::parseVariableData(const String& varName, Chunk* data)
 		
 		if (arrangementDescriptorFilename.parse(data))
 			arrangementDescriptors = templateManager->getArrangementDescriptor(arrangementDescriptorFilename.get());
-		
 	} else if (varName == "appearanceFilename") {
 		appearanceFilename.parse(data);
-
 	} else if (varName == "portalLayoutFilename") {
 		portalLayoutFilename.parse(data);
-
 	} else if (varName == "clientDataFile") {
 		clientDataFile.parse(data);
 	} else if (varName == "collisionMaterialFlags") {
