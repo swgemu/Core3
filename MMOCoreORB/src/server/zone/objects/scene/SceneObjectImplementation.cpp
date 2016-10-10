@@ -1690,3 +1690,27 @@ SceneObject* SceneObject::asSceneObject() {
 	return this;
 }
 
+Vector<Reference<MeshData*> > SceneObjectImplementation::getTransformedMeshData(const Matrix4* parentTransform) {
+	const AppearanceTemplate *appearance = getObjectTemplate()->getAppearanceTemplate();
+	if(appearance == NULL) {
+		Vector<Reference<MeshData*> > emptyData;
+		return emptyData;
+	}
+
+	Matrix4 transform;
+	transform.setRotationMatrix(direction.toMatrix3());
+	transform.setTranslation(getPositionX(), getPositionZ(), -getPositionY());
+
+	return appearance->getTransformedMeshData(transform * *parentTransform );
+}
+
+const BaseBoundingVolume* SceneObjectImplementation::getBoundingVolume() {
+	if (templateObject != NULL) {
+		AppearanceTemplate *appr = templateObject->getAppearanceTemplate();
+		if (appr != NULL) {
+			return appr->getBoundingVolume();
+		}
+	}
+	return NULL;
+}
+

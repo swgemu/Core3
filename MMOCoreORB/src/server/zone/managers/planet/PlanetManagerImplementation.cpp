@@ -46,6 +46,8 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "terrain/layer/boundaries/BoundaryRectangle.h"
 
+#include "server/zone/managers/collision/NavMeshManager.h"
+
 ClientPoiDataTable PlanetManagerImplementation::clientPoiDataTable;
 Mutex PlanetManagerImplementation::poiMutex;
 
@@ -100,7 +102,8 @@ void PlanetManagerImplementation::initialize() {
 	}
 
 	if (zone->getZoneName() == "tatooine") {
-		Reference<ActiveArea*> area = zone->getZoneServer()->createObject(STRING_HASHCODE("object/sarlacc_area.iff"), 0).castTo<ActiveArea*>();
+		Reference<ActiveArea*> area = zone->getZoneServer()->createObject(
+				STRING_HASHCODE("object/sarlacc_area.iff"), 0).castTo<ActiveArea *>();
 
 		Locker locker(area);
 		area->setRadius(30.f);
@@ -109,7 +112,8 @@ void PlanetManagerImplementation::initialize() {
 
 		locker.release();
 
-		Reference<ActiveArea*> preArea = zone->getZoneServer()->createObject(STRING_HASHCODE("object/sarlacc_area.iff"), 0).castTo<ActiveArea*>();
+		Reference<ActiveArea*> preArea = zone->getZoneServer()->createObject(
+				STRING_HASHCODE("object/sarlacc_area.iff"), 0).castTo<ActiveArea *>();
 
 		Locker locker2(preArea);
 
@@ -165,6 +169,10 @@ void PlanetManagerImplementation::loadLuaConfig() {
 		loadBadgeAreas(&badges);
 		badges.pop();
 
+		LuaObject navAreas = luaObject.getObjectField("navAreas");
+		loadNavAreas(&navAreas);
+		navAreas.pop();
+
 	} else {
 		warning("Configuration settings not found.");
 	}
@@ -190,6 +198,27 @@ void PlanetManagerImplementation::loadLuaConfig() {
 
 	if ((starportLandingTime = lua->getGlobalInt("starportLandingTime")) <= 0)
 	  starportLandingTime = 120;
+
+	ReadLocker rLock(&regionMap);
+	int numRegions = regionMap.getTotalRegions();
+	for(int i=0; i<numRegions; i++) {
+		CityRegion* city = regionMap.getRegion(i);
+
+		Reference<RecastNavMesh*> mesh = city->getNavMesh();
+		if(mesh == NULL || !mesh->isLoaded()) {
+			Locker locker(city);
+			city->createNavRegion(NavMeshManager::MeshQueue);
+		}
+	}
+
+	if (pendingNavMeshes.size() > 0) {
+		for (int i = pendingNavMeshes.size() - 1; i >= 0; i--) {
+			NavMeshRegion *region = pendingNavMeshes.get(i);
+			region->updateNavMesh(region->getBoundingBox());
+			zone->transferObject(region, -1, false);
+			pendingNavMeshes.remove(i);
+		}
+	}
 
 	delete lua;
 	lua = NULL;
@@ -271,8 +300,36 @@ void PlanetManagerImplementation::loadBadgeAreas(LuaObject* badges) {
 		obj->initializePosition(x, 0, y);
 
 		zone->transferObject(obj, -1, false);
-
+		objLocker.release();
 		badge.pop();
+	}
+}
+
+void PlanetManagerImplementation::loadNavAreas(LuaObject* regions) {
+	if (!regions->isValidTable())
+		return;
+
+	uint32 hashCode = STRING_HASHCODE("object/region_navmesh.iff");
+
+	for (int i = 1; i <= regions->getTableSize(); ++i) {
+		lua_State* L = regions->getLuaState();
+		lua_rawgeti(L, -1, i);
+
+		LuaObject region(L);
+
+		String name = region.getStringAt(1);
+		float x = region.getFloatAt(2);
+		float y = region.getFloatAt(3);
+		float radius = region.getFloatAt(4);
+
+		ManagedReference<NavMeshRegion*> navmeshRegion = server->getZoneServer()->createObject(hashCode, 0).castTo<NavMeshRegion*>();
+
+		Locker objLocker(navmeshRegion);
+		Vector3 position(x, 0, y);
+		navmeshRegion->initializeNavRegion(position, radius, zone, name, false);
+		navmeshRegion->disableMeshUpdates(true);
+		pendingNavMeshes.put(name, navmeshRegion);
+		region.pop();
 	}
 }
 
@@ -551,7 +608,9 @@ void PlanetManagerImplementation::loadClientRegions() {
 
 	DataTableIff dtiff;
 	dtiff.readObject(iffStream);
-
+	
+	HashSet<String> loadedNavRegions;
+	String zoneName = zone->getZoneName();
 	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
 		String regionName;
 		float x, y, radius;
@@ -561,6 +620,10 @@ void PlanetManagerImplementation::loadClientRegions() {
 		row->getValue(1, x);
 		row->getValue(2, y);
 		row->getValue(3, radius);
+
+		if(regionName.contains("an_outpost")) {
+			regionName = regionName + String::valueOf(i);
+		}
 
 		ManagedReference<CityRegion*> cityRegion = regionMap.getRegion(regionName);
 

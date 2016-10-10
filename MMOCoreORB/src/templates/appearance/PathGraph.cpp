@@ -40,8 +40,6 @@ void PathGraph::readObject(IffStream* iffStream) {
 
 	iffStream->openChunk('PEDG');
 
-	Vector<PathEdge> pathEdges;
-
 	int pathEdgeSize = iffStream->getInt();
 
 	for (int i = 0; i < pathEdgeSize; ++i) {
@@ -122,6 +120,16 @@ PathNode* PathGraph::findNearestGlobalNode(const Vector3& pointAlfa) {
 	}
 
 	return node;
+}
+
+Vector<const PathNode*> PathGraph::getEntrances() {
+	Vector<const PathNode*> vec;
+	for (const PathNode *node : pathNodes) {
+		if(node->getType() == PathNode::BuildingEntrance) {
+			vec.add(node);
+		}
+	}
+	return vec;
 }
 
 PathNode* PathGraph::findNearestNode(const Vector3& pointAlfa) {

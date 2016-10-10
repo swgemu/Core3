@@ -26,7 +26,11 @@ class StaticObject extends SceneObject {
 	public void loadTemplateData(SharedObjectTemplate templateData) {
 		super.loadTemplateData(templateData);
 	}
-	
+
 	@dirty
 	public native void sendBaselinesTo(SceneObject player);
+
+    @dirty
+    @local
+    public native abstract StaticObject asStaticObject();
 }
