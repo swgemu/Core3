@@ -34,6 +34,8 @@ class PortalLayout;
 class AppearanceTemplate;
 class TreeDirectory;
 class PaletteTemplate;
+class InteriorMap;
+class InteriorLayoutTemplate;
 
 class TemplateManager : public Singleton<TemplateManager>, public Logger, public Object {
 	TemplateCRCMap* templateCRCMap;
@@ -43,6 +45,7 @@ class TemplateManager : public Singleton<TemplateManager>, public Logger, public
 	PortalLayoutMap* portalLayoutMap;
 	FloorMeshMap* floorMeshMap;
 	AppearanceMap* appearanceMap;
+	InteriorMap* interiorMap;
 
 	PlanetMapCategoryList planetMapCategoryList;
 
@@ -82,9 +85,9 @@ public:
 	TemplateManager();
 	~TemplateManager();
 
-	void registerTemplateObjects();
+	virtual void registerTemplateObjects();
 
-	void loadLuaTemplates();
+	virtual void loadLuaTemplates();
 
 	/**
 	 * Attempts to get the slot descriptor. If the slot descriptor isn't loaded, attempt to load it.
@@ -117,6 +120,7 @@ public:
 
 	FloorMesh* getFloorMesh(const String& fileName);
 	PortalLayout* getPortalLayout(const String& fileName);
+	InteriorLayoutTemplate* getInteriorLayout(const String& fileName);
 	AppearanceTemplate* getAppearanceTemplate(const String& fileName);
 	AppearanceTemplate* instantiateAppearanceTemplate(IffStream* iffStream);
 	PaletteTemplate* getPaletteTemplate(const String& fileName);
@@ -130,6 +134,8 @@ public:
 	static int crcString(lua_State* L);
 	static int addTemplateCRC(lua_State* L);
 	static int addClientTemplate(lua_State* L);
+
+	void addClientTemplate(uint32 crc, const String& templateName);
 
 	PlanetMapCategory* getPlanetMapCategoryByName(const String& name) {
 		return planetMapCategoryList.get(name);

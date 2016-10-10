@@ -8,7 +8,7 @@
 #include "server/zone/objects/player/sessions/FindSession.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
@@ -17,8 +17,14 @@
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/managers/planet/MapLocationType.h"
-
+#include "server/zone/packets/ui/CreateClientPathMessage.h"
 #include "server/zone/objects/player/sessions/sui/FindSessionSuiCallback.h"
+#include "server/zone/objects/scene/WorldCoordinates.h"
+#include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/managers/collision/PathFinderManager.h"
+#include "templates/building/SharedBuildingObjectTemplate.h"
+#include "templates/appearance/PortalLayout.h"
+#include "templates/appearance/CellProperty.h"
 
 void FindSessionImplementation::initalizeFindMenu() {
 	ManagedReference<CreatureObject* > player = this->player.get();
@@ -151,6 +157,51 @@ void FindSessionImplementation::findPlanetaryObject(String& maplocationtype) {
 	objY = object->getWorldPositionY();
 
 	addWaypoint(objX, objY, wptName);
+
+	WorldCoordinates start(player);
+	WorldCoordinates end(object);
+	Vector<WorldCoordinates> entrances;
+	Reference<Vector<WorldCoordinates>*> path = NULL;
+
+	if (object->isBuildingObject()) {
+		BuildingObject* building = object->asBuildingObject();
+		SharedBuildingObjectTemplate *templateData = static_cast<SharedBuildingObjectTemplate*>(object->getObjectTemplate());
+		PortalLayout* portalLayout = templateData->getPortalLayout();
+
+		if (portalLayout != NULL) {
+			const Vector<CellProperty>& cells = portalLayout->getCellProperties();
+			if(cells.size() > 0) {
+				const CellProperty& cell = cells.get(0);
+				for (int i=0; i<cell.getNumberOfPortals(); i++) {
+					const CellPortal* portal = cell.getPortal(i);
+					const AABB& box = portalLayout->getPortalBounds(portal->getGeometryIndex());
+
+					Vector3 center = box.center();
+					center.setZ(center.getZ()+5.0f);
+					Matrix4 transform;
+					transform.setRotationMatrix(building->getDirection()->toMatrix3());
+					transform.setTranslation(building->getPositionX(), building->getPositionZ(), -building->getPositionY());
+
+					Vector3 dPos = (Vector3(center.getX(), center.getY(), -center.getZ()) * transform);
+					entrances.add(WorldCoordinates(Vector3(dPos.getX(), -dPos.getZ(), dPos.getY()), NULL));
+				}
+				path = PathFinderManager::instance()->findPathFromWorldToWorld(start, entrances, zone, false);
+			}
+		}
+	}
+
+	if (path == NULL) {
+		path = PathFinderManager::instance()->findPath(start, end, zone);
+	}
+
+	if (path && path->size()) {
+		CreateClientPathMessage *msg = new CreateClientPathMessage();
+		for (int i=0; i<path->size(); i++) {
+			const WorldCoordinates& point = path->get(i);
+			msg->addCoordinate(point.getX(), point.getZ(), point.getY());
+		}
+		player->sendMessage(msg);
+	}
 
 	cancelSession();
 }

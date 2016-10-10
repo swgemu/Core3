@@ -21,6 +21,7 @@
 #include "templates/building/HospitalBuildingObjectTemplate.h"
 #include "templates/building/RecreationBuildingObjectTemplate.h"
 #include "templates/building/SharedBuildingObjectTemplate.h"
+#include "templates/building/InteriorLayoutTemplate.h"
 
 #include "templates/creature/NonPlayerCreatureObjectTemplate.h"
 #include "templates/creature/PlayerCreatureTemplate.h"
@@ -153,6 +154,7 @@ TemplateManager::TemplateManager() {
 	portalLayoutMap = new PortalLayoutMap();
 	floorMeshMap = new FloorMeshMap();
 	appearanceMap = new AppearanceMap();
+	interiorMap = new InteriorMap();
 
 	registerFunctions();
 	registerGlobals();
@@ -178,6 +180,9 @@ TemplateManager::~TemplateManager() {
 
 	delete floorMeshMap;
 	floorMeshMap = NULL;
+
+	delete interiorMap;
+	interiorMap = NULL;
 
 	delete appearanceMap;
 	appearanceMap = NULL;
@@ -955,7 +960,33 @@ PortalLayout* TemplateManager::getPortalLayout(const String& fileName) {
 	}
 
 	return portalLayout;
-	//return NULL;
+}
+
+InteriorLayoutTemplate* TemplateManager::getInteriorLayout(const String& fileName) {
+	Locker _locker(&appearanceMapLock);
+
+	InteriorLayoutTemplate* interior = interiorMap->get(fileName);
+
+	if (interior == NULL) {
+		IffStream* iffStream = openIffFile(fileName);
+
+		if (iffStream != NULL) {
+			try {
+				interior = new InteriorLayoutTemplate();
+				interior->readObject(iffStream);
+			} catch (Exception& e) {
+				delete interior;
+				interior = NULL;
+			}
+
+			delete iffStream;
+			iffStream = NULL;
+
+			interiorMap->put(fileName, interior);
+		}
+	}
+
+	return interior;
 }
 
 SharedObjectTemplate* TemplateManager::getTemplate(uint32 key) {
@@ -1044,6 +1075,10 @@ int TemplateManager::addClientTemplate(lua_State* L) {
 
 	TemplateManager::instance()->clientTemplateCRCMap->put(crc, ascii);
 	return 0;
+}
+
+void TemplateManager::addClientTemplate(uint32 crc, const String& name) {
+	clientTemplateCRCMap->put(crc, name);
 }
 
 StructureFootprint* TemplateManager::loadStructureFootprint(const String& filePath) {

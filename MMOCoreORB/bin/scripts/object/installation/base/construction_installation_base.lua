@@ -42,7 +42,7 @@
 
 
 object_installation_base_construction_installation_base = object_installation_base_shared_construction_installation_base:new {
-
+    enableNavMeshUpdates = false
 }
 
 ObjectTemplates:addTemplate(object_installation_base_construction_installation_base, "object/installation/base/construction_installation_base.iff")

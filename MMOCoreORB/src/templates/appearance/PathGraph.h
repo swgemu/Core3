@@ -25,7 +25,7 @@ class PathGraph : public IffTemplate {
 
 
 	Vector<PathNode*> pathNodes;
-	//Vector<PathEdge> pathEdges;
+	Vector<PathEdge> pathEdges;
 
 	PathGraphType type;
 
@@ -64,11 +64,16 @@ public:
 	}
 
 	PathNode* findNearestNode(const Vector3& pointAlfa);
+	Vector<const PathNode*> getEntrances();
 	PathNode* findNearestGlobalNode(const Vector3& pointAlfa);
 	PathNode* findGlobalNode(int globalNodeID);
 
 	inline void addPathNode(PathNode* pathNode) {
 		pathNodes.add(pathNode);
+	}
+
+	inline Vector<PathEdge>* getPathEdges() {
+		return &pathEdges;
 	}
 
 	inline Vector<PathNode*>* getPathNodes() {

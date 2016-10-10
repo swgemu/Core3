@@ -42,7 +42,8 @@
 
 
 object_installation_mining_ore_construction_construction_mining_ore_harvester_style_heavy = object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_heavy:new {
-	gameObjectType = 4096
+	gameObjectType = 4096,
+	enableNavMeshUpdates = false
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_ore_construction_construction_mining_ore_harvester_style_heavy, "object/installation/mining_ore/construction/construction_mining_ore_harvester_style_heavy.iff")
