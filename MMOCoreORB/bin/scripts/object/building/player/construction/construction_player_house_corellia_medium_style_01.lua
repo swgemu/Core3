@@ -42,7 +42,8 @@
 
 
 object_building_player_construction_construction_player_house_corellia_medium_style_01 = object_building_player_construction_shared_construction_player_house_corellia_medium_style_01:new {
-	gameObjectType = 4096
+	gameObjectType = 4096,
+	enableNavMeshUpdates = false
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_construction_player_house_corellia_medium_style_01, "object/building/player/construction/construction_player_house_corellia_medium_style_01.iff")

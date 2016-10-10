@@ -56,6 +56,8 @@ ConfigManager::ConfigManager() {
 	enabledZones.setNoDuplicateInsertPlan();
 
 	purgeDeletedCharacters = 10; //Default is 10 minutes.
+
+	maxNavMeshJobs = 6;
 }
 
 bool ConfigManager::loadConfigData() {
@@ -120,6 +122,8 @@ bool ConfigManager::loadConfigData() {
 	progressMonitors = getGlobalBoolean("ProgressMonitors");
 
 	purgeDeletedCharacters = getGlobalInt("PurgeDeletedCharacters");
+
+	maxNavMeshJobs = getGlobalInt("MaxNavMeshJobs");
 
 	return true;
 }
