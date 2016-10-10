@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_908f9475",
+        "filename": "MMOCoreORB/src/templates/appearance/AppearanceTemplate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-10T16:40:28Z",
+      "side": 1,
+      "message": "You can remove this comment",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 21
+      },
+      "revId": "c1b1fba98000b0f86c4dbdffd31984409c3c1578",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_30f828e5",
+        "filename": "MMOCoreORB/src/templates/appearance/CellProperty.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-10T16:40:28Z",
+      "side": 1,
+      "message": "Is this needed? In CellProperty, you\u0027re calling readObject for both 0004 and 0005 forms.",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "c1b1fba98000b0f86c4dbdffd31984409c3c1578",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_b08c1881",
+        "filename": "MMOCoreORB/src/templates/appearance/ComponentAppearanceTemplate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-10T16:40:28Z",
+      "side": 1,
+      "message": "Shouldn\u0027t that be inverse?",
+      "range": {
+        "startLine": 22,
+        "startChar": 35,
+        "endLine": 22,
+        "endChar": 51
+      },
+      "revId": "c1b1fba98000b0f86c4dbdffd31984409c3c1578",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_50e92c19",
+        "filename": "MMOCoreORB/src/templates/appearance/ComponentAppearanceTemplate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-10T16:40:28Z",
+      "side": 1,
+      "message": "inverseTransform",
+      "range": {
+        "startLine": 31,
+        "startChar": 9,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "c1b1fba98000b0f86c4dbdffd31984409c3c1578",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_70eeb024",
+        "filename": "MMOCoreORB/src/templates/appearance/PathGraph.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-10T16:40:28Z",
+      "side": 1,
+      "message": "Why have an arg that you don\u0027t use?",
+      "range": {
+        "startLine": 125,
+        "startChar": 48,
+        "endLine": 125,
+        "endChar": 72
+      },
+      "revId": "c1b1fba98000b0f86c4dbdffd31984409c3c1578",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_10f3a40b",
+        "filename": "MMOCoreORB/src/templates/appearance/PortalLayout.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-10T16:40:28Z",
+      "side": 1,
+      "message": "What\u0027s this for? I don\u0027t see it implemented.",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "c1b1fba98000b0f86c4dbdffd31984409c3c1578",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_d0dc3c77",
+        "filename": "MMOCoreORB/src/templates/building/InteriorLayoutTemplate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-10T16:40:28Z",
+      "side": 1,
+      "message": "Do you need this?",
+      "range": {
+        "startLine": 69,
+        "startChar": 6,
+        "endLine": 69,
+        "endChar": 15
+      },
+      "revId": "c1b1fba98000b0f86c4dbdffd31984409c3c1578",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f0d94084",
+        "filename": "MMOCoreORB/src/templates/collision/BoxVolume.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-10T16:40:28Z",
+      "side": 1,
+      "message": "This doesn\u0027t match the chunk you opened.",
+      "range": {
+        "startLine": 16,
+        "startChar": 18,
+        "endLine": 16,
+        "endChar": 22
+      },
+      "revId": "c1b1fba98000b0f86c4dbdffd31984409c3c1578",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f092a09e",
+        "filename": "MMOCoreORB/src/terrain/ProceduralTerrainAppearance.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-10T16:40:28Z",
+      "side": 1,
+      "message": "You\u0027re doing the same check twice. That can\u0027t be intentional.",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 128
+      },
+      "revId": "c1b1fba98000b0f86c4dbdffd31984409c3c1578",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_d0951c89",
+        "filename": "MMOCoreORB/src/terrain/ProceduralTerrainAppearance.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-10T16:40:28Z",
+      "side": 1,
+      "message": "Since you\u0027re adding here, should you go ahead and continue?",
+      "range": {
+        "startLine": 91,
+        "startChar": 3,
+        "endLine": 91,
+        "endChar": 29
+      },
+      "revId": "c1b1fba98000b0f86c4dbdffd31984409c3c1578",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
