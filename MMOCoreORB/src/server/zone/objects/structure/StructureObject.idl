@@ -17,10 +17,13 @@ import engine.util.u3d.AABBNode;
 import engine.util.u3d.Vector3;
 import system.lang.Time;
 include server.zone.objects.structure.StructurePermissionList;
+import server.zone.objects.pathfinding.NavMeshRegion;
 
 class StructureObject extends TangibleObject {
 	protected transient StructureMaintenanceTask structureMaintenanceTask;
 	//protected transient StructurePowerTask structurePowerTask;
+
+	protected NavMeshRegion navmeshRegion;
 
 	@dereferenced
 	protected StructurePermissionList structurePermissionList;
@@ -394,7 +397,7 @@ class StructureObject extends TangibleObject {
 	
 	@dirty
 	public native boolean isCampStructure();
-	
+
 	@dirty
 	public boolean isRedeedable() {
 		if (isCivicStructure()) {
@@ -403,11 +406,7 @@ class StructureObject extends TangibleObject {
 			return (getRedeedCost() < surplusMaintenance);
 		}
 	}
-	
-	@local
-	@dirty
-	public native AABBTree getAABBTree();
-	
+
 	/**
 	 * Adds this object's skill mod map to the target object's skill mod map
 	 * @param targetObject The targeted object containing the SkillModMap which will be affected.
@@ -448,4 +447,17 @@ class StructureObject extends TangibleObject {
 		structurePermissionList.migrateLists(super.getZoneServer(), getOwnerObjectID());
 		permissionsFixed = true;
 	}
+
+    @dirty
+	public NavMeshRegion getNavMeshRegion() {
+	    return navmeshRegion;
+	}
+
+    @dirty
+	public boolean hasNavmesh() {
+	    return navmeshRegion != null;
+	}
+
+    @preLocked
+	public native abstract void createNavRegion();
 }

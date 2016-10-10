@@ -85,6 +85,7 @@
 #include "server/zone/managers/player/QuestInfo.h"
 #include "server/zone/objects/player/events/ForceMeditateTask.h"
 #include "server/zone/objects/player/sui/callbacks/FieldFactionChangeSuiCallback.h"
+#include "server/zone/packets/ui/DestroyClientPathMessage.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -721,6 +722,13 @@ void PlayerObjectImplementation::removeWaypoint(uint64 waypointID, bool notifyCl
 		sendMessage(msg);
 	} else {
 		waypointList.drop(waypointID);
+	}
+
+	ManagedReference<SceneObject*> sceno = currentClientPathWaypoint.get();
+	if (sceno != NULL && sceno->getObjectID() == waypointID) {
+		DestroyClientPathMessage *msg = new DestroyClientPathMessage();
+		sendMessage(msg);
+		currentClientPathWaypoint = NULL;
 	}
 
 	if (destroy && waypoint->isPersistent()) {

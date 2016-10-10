@@ -1,0 +1,128 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.pathfinding;
+
+import server.zone.objects.region.Region;
+import server.zone.objects.scene.SceneObject;
+import engine.util.u3d.AABB;
+import engine.util.u3d.Vector3;
+include pathfinding.RecastNavMesh;
+
+class NavMeshRegion extends Region {
+
+    protected string meshName;
+    protected SceneObject owner;
+    protected RecastNavMesh navMesh;
+
+    // Disables notifyEnter/Exit updates for static city regions
+    protected boolean disableUpdates;
+
+    // Original bounds of the recastNavMesh, this is absolutely required to stay constant in order to rebuild tiles correctly
+    @dereferenced
+    protected transient AABB meshBounds;
+
+    // List of objects this navmesh currently has built in it's scene.
+	@dereferenced
+	protected HashSet<unsigned long> containedObjects;
+
+	public NavMeshRegion() {
+		super();
+		disableUpdates = false;
+		navMesh = null;
+		owner = null;
+		meshName = "navmesh";
+	}
+
+	@local
+	@preLocked
+	public native void initializeNavRegion(@dereferenced Vector3 position, float radius, Zone zone, string name, boolean buildMesh = true);
+
+	public native void initializeTransientMembers();
+
+	@preLocked
+	public native void initialize();
+
+	public native void notifyEnter(SceneObject object);
+
+	public native void notifyExit(SceneObject object);
+
+	@local
+	@dirty
+	public native final AABB getMeshBounds() {
+		return meshBounds;
+	}
+
+    @local
+    @dirty
+    public RecastNavMesh getNavMesh() {
+       return navMesh;
+    }
+
+    @local
+    @preLocked
+    public void setNavMesh(RecastNavMesh mesh) {
+        navMesh = mesh;
+    }
+
+    @local
+    @preLocked
+    public void disableMeshUpdates(boolean disable) {
+        disableUpdates = disable;
+    }
+
+	@dirty
+	public boolean isRegion() {
+		return true;
+	}
+
+    @dirty
+    public boolean isNavRegion() {
+        return true;
+    }
+
+    public native NavMeshRegion asNavRegion();
+
+    @dirty
+    public boolean objectInMesh(SceneObject obj) {
+        return containedObjects.contains(obj.getObjectID());
+    }
+
+    @dirty
+    public string getMeshName() {
+        return meshName;
+    }
+
+    @preLocked
+    public void setMeshName(final string name) {
+        meshName = name;
+    }
+
+	@dirty
+	public native boolean isInRange(float x, float y, float range);
+
+    // Update a navmesh using the specified bounds
+    // The bounds will be expanded to a minimum of the terrain chunk size (generally 32m)
+    // Bounding boxes will be merged automatically during build time if they completely contain another area
+    @local
+    public native void updateNavMesh(@dereferenced final AABB area);
+
+    // Updates a navmesh using the specified scene object
+    // toRemove specifies whether we are adding or removing to the navmesh
+    @preLocked
+    public native void updateNavMesh(SceneObject object, boolean toRemove);
+
+    @local
+    @preLocked
+    public native void setRadius(float f);
+
+    @local
+    @dirty
+    @dereferenced
+    public native AABB getBoundingBox();
+
+    @dirty
+    public abstract native boolean containsPoint(float x, float y);
+}
+

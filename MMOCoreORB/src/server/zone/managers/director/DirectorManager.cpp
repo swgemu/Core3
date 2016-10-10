@@ -80,6 +80,9 @@
 #include "server/zone/objects/tangible/powerup/PowerupObject.h"
 #include "server/zone/objects/resource/ResourceSpawn.h"
 #include "server/zone/objects/tangible/component/Component.h"
+#include "server/zone/objects/pathfinding/NavMeshRegion.h"
+#include "server/zone/managers/collision/NavMeshManager.h"
+
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -346,6 +349,9 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getQuestVectorMap", getQuestVectorMap);
 	lua_register(luaEngine->getLuaState(), "createQuestVectorMap", createQuestVectorMap);
 	lua_register(luaEngine->getLuaState(), "removeQuestVectorMap", removeQuestVectorMap);
+
+	//Navigation Mesh Management
+	lua_register(luaEngine->getLuaState(), "createNavMesh", createNavMesh);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -3179,4 +3185,45 @@ void DirectorManager::removeQuestVectorMap(const String& keyString) {
 
 	if (questMap != NULL)
 		ObjectManager::instance()->destroyObjectFromDatabase(questMap->_getObjectID());
+}
+
+int DirectorManager::createNavMesh(lua_State *L) {
+
+    if (checkArgumentCount(L, 6) == 1) {
+        instance()->error("incorrect number of arguments passed to DirectorManager::createNavMesh");
+        ERROR_CODE = INCORRECT_ARGUMENTS;
+        return 0;
+    }
+    String name  = lua_tostring(L, -1);
+    bool dynamic = lua_toboolean(L, -2);
+    float radius = lua_tonumber(L, -3);
+    float z      = lua_tonumber(L, -4);
+    float x      = lua_tonumber(L, -5);
+    String zoneName  = lua_tostring(L, -6);
+
+    Zone* zone = ServerCore::getZoneServer()->getZone(zoneName);
+
+    if (zone == NULL) {
+       instance()-> error("Zone == NULL in DirectorManager::createNavMesh (" + zoneName + ")");
+        ERROR_CODE = INCORRECT_ARGUMENTS;
+        return 0;
+    }
+
+    ManagedReference<NavMeshRegion*> navmeshRegion = ServerCore::getZoneServer()->createObject(STRING_HASHCODE("object/region_navmesh.iff"), 0).castTo<NavMeshRegion*>();
+    if (name.length() == 0) {
+        name = String::valueOf(navmeshRegion->getObjectID());
+    }
+
+    Core::getTaskManager()->scheduleTask([=]{
+        String str = name;
+        Vector3 position = Vector3(x, 0, z);
+
+		Locker locker(navmeshRegion);
+
+        navmeshRegion->disableMeshUpdates(!dynamic);
+        navmeshRegion->initializeNavRegion(position, radius, zone, str);
+        zone->transferObject(navmeshRegion, -1, false);
+    }, "create_lua_navmesh", 1000);
+    lua_pushlightuserdata(L, navmeshRegion);
+    return 1;
 }
