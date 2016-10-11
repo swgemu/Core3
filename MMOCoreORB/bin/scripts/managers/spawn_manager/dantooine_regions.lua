@@ -1,31 +1,3 @@
-JUNKNOTSELLABLE = 0
-JUNKGENERIC = 1
-JUNKCLOTHESANDJEWELLERY = 2
-JUNKWEAPONS = 4
-JUNKARMOUR = 8
-JUNKTUSKEN = 16
-JUNKJEDI = 32
-JUNKJAWA = 64
-
-JUNKCONVGENERIC = 1
-JUNKCONVARMS = 2
-JUNKCONVFINARY = 3
-JUNKCONVDENDERRORI = 4
-JUNKCONVDENDERTHEED = 5
-JUNKCONVLILABORVO = 6
-JUNKCONVMALIKVISTAL = 7
-JUNKCONVNADOWATTOS = 8
-JUNKCONVNATHANTAIKE = 9
-JUNKCONVOLLOBOJABBAS = 10
-JUNKCONVQUICHDANTOOINE = 11
-JUNKCONVREGGINYM = 12
-JUNKCONVSHEANILAKE = 13
-JUNKCONVSNEGVALARIAN = 14
-JUNKCONVJAWAGENERIC = 15
-JUNKCONVJAWAFINARY = 16
-JUNKCONVJAWAARMS = 17
-JUNKCONVJAWATUSKEN = 18
-
 -- {"regionName", xCenter, yCenter, shape and size, tier, {"spawnGroup1", ...}, maxSpawnLimit}
 -- Shape and size is a table with the following format depending on the shape of the area:
 --   - Circle: {1, radius}
@@ -35,13 +7,7 @@ JUNKCONVJAWATUSKEN = 18
 -- That means that it is not possible to have both a spawn area and a no spawn area in the same region, but
 -- a spawn area that is also a no build zone is possible.
 
-
-UNDEFINEDAREA       = 0x0000
-SPAWNAREA           = 0x0001
-NOSPAWNAREA         = 0x0002
-WORLDSPAWNAREA      = 0x0010
-NOWORLDSPAWNAREA    = 0x0020
-NOBUILDZONEAREA     = 0x0100
+require("scripts.managers.spawn_manager.regions")
 
 dantooine_regions = {
 	{"abandoned_rebel_base_1",-6826,5517,{1,350},NOSPAWNAREA + NOBUILDZONEAREA},
@@ -230,19 +196,4 @@ dantooine_regions = {
 	{"wooden_bridge",4132,-1708,{1,30},NOSPAWNAREA + NOBUILDZONEAREA},
 	{"world_spawner",0,0,{1,-1},SPAWNAREA + WORLDSPAWNAREA,{"dantooine_world","global_hard"},2048},
 	{"worship_area",6092,-6475,{1,50},NOSPAWNAREA + NOBUILDZONEAREA},
-}
-
-dantooine_static_spawns = {
-	{"dark_jedi_master",3600,-738.2,1.7,2103.9,55,0, "", "", "stationary"},
-	{"quich_marae",60,1579.04,4,-6374.52,48.4898,0, "calm", "Quich Marae", "stationary",JUNKJEDI,JUNKCONVQUICHDANTOOINE},
-	{"r2",60,-635.747,3,2503.81,353.861,0, "calm", "R2-H5", "stationary"},
-	{"r2",60,1583.12,4,-6407.59,69.2539,0, "calm", "R2-Y8", "stationary"},
-	{"r3",60,1592.98,4,-6400.58,80.56,0, "calm", "R3-M0", "stationary"},
-	{"r4",60,-643.739,3,2506.86,129.211,0, "calm", "R4-Y9", "stationary"},
-	{"r4",60,-666.582,3,2494.33,121.479,0, "calm", "R4-A2", "stationary"},
-	{"r4",60,-4227.33,3,-2366.11,269.389,0, "calm", "R4-S7", "stationary"},
-	{"r5",60,-4228.33,3,-2367.11,48.8478,0, "calm", "R5-L5", "stationary"},
-	{"record_keeper_planet_dantooine",60,-604.016,3,2538.15,200.426,0, "calm", "Lt Nilsson (a Planet record keeper)", "stationary"},
-	{"ussox",60,1635.07,4,-6402.37,321.844,0, "calm", "Ussox", "stationary"},
-	{"ytzosh",60,1636.98,4,-6402.56,321.838,0, "calm", "Ytzosh", "stationary"},
 }

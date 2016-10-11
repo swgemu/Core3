@@ -1,33 +1,3 @@
-JUNKNOTSELLABLE = 0
-JUNKGENERIC = 1
-JUNKCLOTHESANDJEWELLERY = 2
-JUNKWEAPONS = 4
-JUNKARMOUR = 8
-JUNKTUSKEN = 16
-JUNKJEDI = 32
-JUNKJAWA = 64
-JUNKGUNGAN = 128
-JUNKCORSEC = 256
-
-JUNKCONVGENERIC = 1
-JUNKCONVARMS = 2
-JUNKCONVFINARY = 3
-JUNKCONVDENDERRORI = 4
-JUNKCONVDENDERTHEED = 5
-JUNKCONVLILABORVO = 6
-JUNKCONVMALIKVISTAL = 7
-JUNKCONVNADOWATTOS = 8
-JUNKCONVNATHANTAIKE = 9
-JUNKCONVOLLOBOJABBAS = 10
-JUNKCONVQUICHDANTOOINE = 11
-JUNKCONVREGGINYM = 12
-JUNKCONVSHEANILAKE = 13
-JUNKCONVSNEGVALARIAN = 14
-JUNKCONVJAWAGENERIC = 15
-JUNKCONVJAWAFINARY = 16
-JUNKCONVJAWAARMS = 17
-JUNKCONVJAWATUSKEN = 18
-
 -- {"regionName", xCenter, yCenter, shape and size, tier, {"spawnGroup1", ...}, maxSpawnLimit}
 -- Shape and size is a table with the following format depending on the shape of the area:
 --   - Circle: {1, radius}
@@ -37,13 +7,7 @@ JUNKCONVJAWATUSKEN = 18
 -- That means that it is not possible to have both a spawn area and a no spawn area in the same region, but
 -- a spawn area that is also a no build zone is possible.
 
-
-UNDEFINEDAREA       = 0x0000
-SPAWNAREA           = 0x0001
-NOSPAWNAREA         = 0x0002
-WORLDSPAWNAREA      = 0x0010
-NOWORLDSPAWNAREA    = 0x0020
-NOBUILDZONEAREA     = 0x0100
+require("scripts.managers.spawn_manager.regions")
 
 corellia_regions = {
 	{"abandoned_campsite",6050,6400,{1,30},NOSPAWNAREA + NOBUILDZONEAREA},
@@ -201,45 +165,4 @@ corellia_regions = {
 	{"western_mountain_forest",0,0,{1,0},UNDEFINEDAREA},
 	{"western_plains",0,0,{1,0},UNDEFINEDAREA},
 	{"world_spawner",0,0,{1,-1},SPAWNAREA + WORLDSPAWNAREA,{"corellia_world","global"},2048},
-}
-
-corellia_static_spawns = {
-	{"acun_solari",60,19.8219,-0.894996,-19.5533,0,2625356, "calm", "Acun Solari", "stationary"},
-	{"adar",60,-5448.03,21,-2674.92,253.163,0, "calm", "Adar Tallon", "stationary"},
-	{"commoner",60,-51.7918,28,-4662.65,360.011,0, "calm", "Hunter Javeezo", "stationary"},
-	{"commoner",60,15.2091,0.639422,56.8933,284.328,1935687, "calm", "Amarent Loren", "stationary"},
-	{"corsec_sergeant",300,-5410.17,20.9418,-2789.21,215.169,0, "", "", "stationary"},
-	{"death_watch_herald_rebel",1,-213.642,28,-4445.46,28.5501,0, "", "", "stationary"},
-	{"farmer",60,3145.1,289.991,4994.55,359.489,0, "conversation", "", "stationary"},
-	{"gambler",60,0.68378,0.639421,61.0666,268.449,4255423, "calm", "", "stationary"},
-	{"herald_biogenic_03",60,21.3645,1.28309,9.48413,142.744,1935823, "calm", "Teraeza Furloti", "stationary"},
-	{"info_broker",60,-3557.49,86,3158.11,180.005,0, "conversation", "", "stationary"},
-	{"jom_irimore",60,-5520,21.3,-2630.99,0,0, "calm", "Jom Irimore", "stationary"},
-	{"junk_dealer",0,6840,315,-5630,-32,0, "", "", "stationary",JUNKCLOTHESANDJEWELLERY+JUNKARMOUR,JUNKCONVFINARY},
-	{"junk_dealer",0,-14.5,1.1,1.9,89,2365767, "", "", "stationary",JUNKWEAPONS,JUNKCONVARMS},
-	{"junk_malik",0,6756.1,315,-5778,88,0, "", "Malik Pendron", "stationary",JUNKCORSEC,JUNKCONVMALIKVISTAL},
-	{"junk_dealer",0,6970,330,-5588,92,0, "", "", "stationary",JUNKGENERIC,JUNKCONVGENERIC},
-	{"junk_dealer",0,-118.2,28,-4792.9,-144,0, "", "", "stationary",JUNKGENERIC,JUNKCONVGENERIC}, 
-	{"junk_dealer",0,-14.5,1.1,2.5,88,1855505, "", "", "stationary",JUNKWEAPONS,JUNKCONVARMS},
-	{"junk_dealer",0,-14.5,1.1,2.5,88,3075358, "", "", "stationary",JUNKWEAPONS,JUNKCONVARMS},
-	{"junk_dealer",0,3402.4,308,5679,5,0, "", "", "stationary",JUNKGENERIC,JUNKCONVGENERIC},
-	{"junk_dealer",10,-3133.8,31,2975.5,7,0, "", "", "stationary",JUNKGENERIC,JUNKCONVGENERIC},
-	{"junk_dealer",0,-5639.2,21,-2799.2,-40,0, "", "", "stationary",JUNKCLOTHESANDJEWELLERY+JUNKARMOUR,JUNKCONVFINARY},
-	{"junk_dealer",0,-5203.6,21,-2285.9,-11,0, "", "", "stationary",JUNKGENERIC,JUNKCONVGENERIC},
-	{"junk_dealer",0,-14.5, 1.1, 2.5, 88, 2955424, "", "", "stationary",JUNKWEAPONS,JUNKCONVARMS},
-	{"r2",60,-1.84202,0.184067,2.59886,22.229,3375392, "calm", "R2-J0", "stationary"},
-	{"r2",60,-3697.43,87.5185,3141.62,327.074,0, "calm", "R2-Z1", "stationary"},
-	{"r2",60,-5295.88,21,-2528.24,196.589,0, "calm", "R2-B0", "stationary"},
-	{"r2",60,-5297.6,21,-2396.69,271.4,0, "calm", "R2-X2", "stationary"},
-	{"r2",60,-4954.63,21,-2376.82,26.4361,0, "calm", "R2-E3", "stationary"},
-	{"r3",60,-3423.05,80.6846,3333.75,253.023,0, "calm", "R3-U1", "stationary"},
-	{"r3",60,-3327.95,86,3233.64,315.946,0, "calm", "R3-N0", "stationary"},
-	{"r3",60,-3151.77,31,2800,265.951,0, "calm", "R3-L8", "stationary"},
-	{"r3",60,-16.1386,2.25,18.5614,173.343,1935472, "calm", "R3-X8", "stationary"},
-	{"r3",60,-5306.4,21,-2567.6,-145,0, "calm", "R3-X5", "stationary"},
-	{"r5",60,-3094.48,31,2972.63,268.321,0, "calm", "R5-W1", "stationary"},
-	{"r5",60,-3134.32,31,2801.71,82.3858,0, "calm", "R5-U7", "stationary"},
-	{"r5",60,-5400.32,21,-2614.17,236.816,0, "calm", "R5-S7", "stationary"},
-	{"r5",60,-4954.81,21,-2379.55,166.051,0, "calm", "R5-C7", "stationary"},
-	{"ulaire_roye",60,-5048.68,21,-2291.24,122.799,0, "neutral", "", "stationary"},
 }
