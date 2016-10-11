@@ -7,13 +7,7 @@
 -- That means that it is not possible to have both a spawn area and a no spawn area in the same region, but
 -- a spawn area that is also a no build zone is possible.
 
-
-UNDEFINEDAREA       = 0x0000
-SPAWNAREA           = 0x0001
-NOSPAWNAREA         = 0x0002
-WORLDSPAWNAREA      = 0x0010
-NOWORLDSPAWNAREA    = 0x0020
-NOBUILDZONEAREA     = 0x0100
+require("scripts.managers.spawn_manager.regions")
 
 yavin4_regions = {
 	{"an_outpost",0,0,{1,0},UNDEFINEDAREA},
@@ -132,7 +126,4 @@ yavin4_regions = {
 	{"yavin4_mining_outpost",0,0,{1,0},UNDEFINEDAREA},
 	{"yunteh_mountains_1",0,0,{1,0},UNDEFINEDAREA},
 	{"yunteh_mountains_2",0,0,{1,0},UNDEFINEDAREA},
-}
-
-yavin4_static_spawns = {
 }
