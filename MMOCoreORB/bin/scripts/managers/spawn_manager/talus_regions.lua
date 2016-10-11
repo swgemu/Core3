@@ -1,31 +1,3 @@
-JUNKNOTSELLABLE = 0
-JUNKGENERIC = 1
-JUNKCLOTHESANDJEWELLERY = 2
-JUNKWEAPONS = 4
-JUNKARMOUR = 8
-JUNKTUSKEN = 16
-JUNKJEDI = 32
-JUNKJAWA = 64
-
-JUNKCONVGENERIC = 1
-JUNKCONVARMS = 2
-JUNKCONVFINARY = 3
-JUNKCONVDENDERRORI = 4
-JUNKCONVDENDERTHEED = 5
-JUNKCONVLILABORVO = 6
-JUNKCONVMALIKVISTAL = 7
-JUNKCONVNADOWATTOS = 8
-JUNKCONVNATHANTAIKE = 9
-JUNKCONVOLLOBOJABBAS = 10
-JUNKCONVQUICHDANTOOINE = 11
-JUNKCONVREGGINYM = 12
-JUNKCONVSHEANILAKE = 13
-JUNKCONVSNEGVALARIAN = 14
-JUNKCONVJAWAGENERIC = 15
-JUNKCONVJAWAFINARY = 16
-JUNKCONVJAWAARMS = 17
-JUNKCONVJAWATUSKEN = 18
-
 -- {"regionName", xCenter, yCenter, shape and size, tier, {"spawnGroup1", ...}, maxSpawnLimit}
 -- Shape and size is a table with the following format depending on the shape of the area:
 --   - Circle: {1, radius}
@@ -35,13 +7,7 @@ JUNKCONVJAWATUSKEN = 18
 -- That means that it is not possible to have both a spawn area and a no spawn area in the same region, but
 -- a spawn area that is also a no build zone is possible.
 
-
-UNDEFINEDAREA       = 0x0000
-SPAWNAREA           = 0x0001
-NOSPAWNAREA         = 0x0002
-WORLDSPAWNAREA      = 0x0010
-NOWORLDSPAWNAREA    = 0x0020
-NOBUILDZONEAREA     = 0x0100
+require("scripts.managers.spawn_manager.regions")
 
 talus_regions = {
 	{"aakuan_champions_cave",5928,4656,{1,150},NOSPAWNAREA + NOBUILDZONEAREA},
@@ -250,19 +216,4 @@ talus_regions = {
 	{"yitsarin_river_canyon_6",0,0,{1,0},UNDEFINEDAREA},
 	{"yitsarin_river_canyon_7",0,0,{1,0},UNDEFINEDAREA},
 	{"yitsarin_river_canyon_8",0,0,{1,0},UNDEFINEDAREA},
-}
-
-talus_static_spawns = {
-	{"imperial_recruiter",1,-2192,0,2269,-50,0, "", "", "stationary"},
-	{"junk_dealer",0,183.6,6,-3065.1,87,0, "", "", "stationary",JUNKGENERIC,JUNKCONVGENERIC},
-	{"junk_dealer",0,4541.9,2,5278.5,-64,0, "", "", "stationary",JUNKGENERIC,JUNKCONVGENERIC},
-	{"r2",60,207.078,6,-2800.53,272.222,0, "calm", "R2-R2", "stationary"},
-	{"r2",60,504.449,6,-3026.94,180.006,0, "calm", "R2-Y2", "stationary"},
-	{"r3",60,459.915,6,-3089.68,182.021,0, "calm", "R3-U6", "stationary"},
-	{"r3",60,457.915,6,-3090.68,270.018,0, "calm", "R3-W1", "stationary"},
-	{"r3",60,664.839,6,-3061.96,180.006,0, "calm", "R3-T0", "stationary"},
-	{"r4",60,4267.23,2,5151.46,66.4568,0, "calm", "R4-M7", "stationary"},
-	{"r4",60,4531.97,2,5111.71,209.78,0, "calm", "R4-T7", "stationary"},
-	{"r5",60,411.254,6,-2862.25,208.889,0, "calm", "R5-D8", "stationary"},
-	{"r5",60,407.095,6,-3036.31,310.529,0, "calm", "R5-R2", "stationary"},
 }

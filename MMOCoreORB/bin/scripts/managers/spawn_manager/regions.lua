@@ -1,0 +1,8 @@
+-- Constants for defining region types.
+
+UNDEFINEDAREA       = 0x0000
+SPAWNAREA           = 0x0001
+NOSPAWNAREA         = 0x0002
+WORLDSPAWNAREA      = 0x0010
+NOWORLDSPAWNAREA    = 0x0020
+NOBUILDZONEAREA     = 0x0100

@@ -7,13 +7,7 @@
 -- That means that it is not possible to have both a spawn area and a no spawn area in the same region, but
 -- a spawn area that is also a no build zone is possible.
 
-
-UNDEFINEDAREA       = 0x0000
-SPAWNAREA           = 0x0001
-NOSPAWNAREA         = 0x0002
-WORLDSPAWNAREA      = 0x0010
-NOWORLDSPAWNAREA    = 0x0020
-NOBUILDZONEAREA     = 0x0100
+require("scripts.managers.spawn_manager.regions")
 
 dathomir_regions = {
 	{"a_restricted_area",0,0,{1,0},UNDEFINEDAREA},
@@ -145,12 +139,4 @@ dathomir_regions = {
 	{"worship_shrine",-6949,-3034,{1,30},NOSPAWNAREA + NOBUILDZONEAREA},
 	{"yumaou_risoath",0,0,{1,0},UNDEFINEDAREA},
 	{"fs_village",5306,-4145,{1,768},NOSPAWNAREA + NOBUILDZONEAREA},
-}
-
-dathomir_static_spawns = {
-	{"r3",60,-78.3142,18,-1629.93,144.919,0, "calm", "R3-O0", "stationary"},
-	{"r4",60,620.654,6,3085.98,191.123,0, "calm", "R4-W3", "stationary"},
-	{"r4",60,619.822,6,3097.36,339.758,0, "calm", "R4-L1", "stationary"},
-	{"r4",60,-134.195,18,-1599.14,45.5678,0, "calm", "R4-J5", "stationary"},
-	{"r5",60,627.744,6,3086.77,278.522,0, "calm", "R5-O6", "stationary"},
 }
