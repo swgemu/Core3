@@ -353,11 +353,11 @@ int LuaPlayerObject::getHologrindProfessions(lua_State* L) {
 	Vector<byte>* professions = realObject->getHologrindProfessions();
 
 	lua_newtable(L);
+
 	for (int i = 0; i < professions->size(); i++) {
 		lua_pushnumber(L, professions->get(i));
-	}
-	for (int i = professions->size(); i > 0; i--) {
-		lua_rawseti(L, -i - 1, i);
+
+		lua_rawseti(L, -2, i + 1);
 	}
 
 	return 1;
@@ -593,11 +593,12 @@ int LuaPlayerObject::getExperienceList(lua_State* L) {
 	DeltaVectorMap<String, int>* expList = realObject->getExperienceList();
 
 	lua_newtable(L);
+
 	for (int i = 0; i < expList->size(); i++) {
-		lua_pushstring(L, expList->getKeyAt(i).toCharArray());
-	}
-	for (int i = expList->size(); i > 0; i--) {
-		lua_rawseti(L, -i - 1, i);
+		const auto& value = expList->getKeyAt(i);
+
+		lua_pushstring(L, value.toCharArray());
+		lua_rawseti(L, -2, i + 1);
 	}
 
 	return 1;
