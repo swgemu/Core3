@@ -25,43 +25,7 @@ void SpawnAreaMap::loadMap(Zone* z) {
 	lua->init();
 
 	try {
-		lua->runFile("scripts/managers/spawn_manager/" + planetName + ".lua");
-
-		LuaObject obj = lua->getGlobalObject(planetName + "_regions");
-
-		if (obj.isValidTable()) {
-			info("loading spawn areas...", true);
-
-			lua_State* s = obj.getLuaState();
-
-			for (int i = 1; i <= obj.getTableSize(); ++i) {
-				lua_rawgeti(s, -1, i);
-				LuaObject areaObj(s);
-
-				if (areaObj.isValidTable()) {
-					readAreaObject(areaObj);
-				}
-
-				areaObj.pop();
-			}
-		}
-
-		obj.pop();
-
-		for (int i = 0; i < size(); ++i) {
-			SpawnArea* area = get(i);
-
-			Locker locker(area);
-
-			for (int j = 0; j < noSpawnAreas.size(); ++j) {
-				SpawnArea* notHere = noSpawnAreas.get(j);
-
-				if (area->intersectsWith(notHere)) {
-					area->addNoSpawnArea(notHere);
-				}
-			}
-		}
-
+		loadRegions();
 		loadStaticSpawns();
 	} catch (Exception& e) {
 		error(e.getMessage());
@@ -73,8 +37,51 @@ void SpawnAreaMap::loadMap(Zone* z) {
 	lua = NULL;
 }
 
+void SpawnAreaMap::loadRegions() {
+	String planetName = zone->getZoneName();
+
+	lua->runFile("scripts/managers/spawn_manager/" + planetName + "_regions.lua");
+
+	LuaObject obj = lua->getGlobalObject(planetName + "_regions");
+
+	if (obj.isValidTable()) {
+		info("loading spawn areas...", true);
+
+		lua_State* s = obj.getLuaState();
+
+		for (int i = 1; i <= obj.getTableSize(); ++i) {
+			lua_rawgeti(s, -1, i);
+			LuaObject areaObj(s);
+
+			if (areaObj.isValidTable()) {
+				readAreaObject(areaObj);
+			}
+
+			areaObj.pop();
+		}
+	}
+
+	obj.pop();
+
+	for (int i = 0; i < size(); ++i) {
+		SpawnArea* area = get(i);
+
+		Locker locker(area);
+
+		for (int j = 0; j < noSpawnAreas.size(); ++j) {
+			SpawnArea* notHere = noSpawnAreas.get(j);
+
+			if (area->intersectsWith(notHere)) {
+				area->addNoSpawnArea(notHere);
+			}
+		}
+	}
+}
+
 void SpawnAreaMap::loadStaticSpawns() {
 	String planetName = zone->getZoneName();
+
+	lua->runFile("scripts/managers/spawn_manager/" + planetName + "_static_spawns.lua");
 
 	LuaObject obj = lua->getGlobalObject(planetName + "_static_spawns");
 
@@ -129,7 +136,7 @@ void SpawnAreaMap::loadStaticSpawns() {
 				Locker objLocker(creatureObject);
 
 				creatureObject->setDirection(Math::deg2rad(heading));
-				
+
 				if (creatureObject->isJunkDealer()) {
 					JunkdealerCreature* jdc = creatureObject.castTo<JunkdealerCreature*>();
 					jdc->setJunkDealerConversationType(junkDealerConversationType);

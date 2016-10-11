@@ -1,31 +1,3 @@
-JUNKNOTSELLABLE = 0
-JUNKGENERIC = 1
-JUNKCLOTHESANDJEWELLERY = 2
-JUNKWEAPONS = 4
-JUNKARMOUR = 8
-JUNKTUSKEN = 16
-JUNKJEDI = 32
-JUNKJAWA = 64
-
-JUNKCONVGENERIC = 1
-JUNKCONVARMS = 2
-JUNKCONVFINARY = 3
-JUNKCONVDENDERRORI = 4
-JUNKCONVDENDERTHEED = 5
-JUNKCONVLILABORVO = 6
-JUNKCONVMALIKVISTAL = 7
-JUNKCONVNADOWATTOS = 8
-JUNKCONVNATHANTAIKE = 9
-JUNKCONVOLLOBOJABBAS = 10
-JUNKCONVQUICHDANTOOINE = 11
-JUNKCONVREGGINYM = 12
-JUNKCONVSHEANILAKE = 13
-JUNKCONVSNEGVALARIAN = 14
-JUNKCONVJAWAGENERIC = 15
-JUNKCONVJAWAFINARY = 16
-JUNKCONVJAWAARMS = 17
-JUNKCONVJAWATUSKEN = 18
-
 -- {"regionName", xCenter, yCenter, shape and size, tier, {"spawnGroup1", ...}, maxSpawnLimit}
 -- Shape and size is a table with the following format depending on the shape of the area:
 --   - Circle: {1, radius}
@@ -35,14 +7,7 @@ JUNKCONVJAWATUSKEN = 18
 -- That means that it is not possible to have both a spawn area and a no spawn area in the same region, but
 -- a spawn area that is also a no build zone is possible.
 
-
-UNDEFINEDAREA       = 0x0000
-SPAWNAREA           = 0x0001
-NOSPAWNAREA         = 0x0002
-WORLDSPAWNAREA      = 0x0010
-NOWORLDSPAWNAREA    = 0x0020
-NOBUILDZONEAREA     = 0x0100
-
+require("scripts.managers.spawn_manager.regions")
 
 tatooine_regions = {
 	{"alkhara_camp",-1260,5463,{1,30},NOSPAWNAREA + NOBUILDZONEAREA},
@@ -331,34 +296,4 @@ tatooine_regions = {
 	{"wind_harvest_complex",-7170,-2405,{1,50},NOSPAWNAREA + NOBUILDZONEAREA},
 	{"wind_harvest_unit",-2910,-6249,{1,50},NOSPAWNAREA + NOBUILDZONEAREA},
 	{"world_spawner",0,0,{1,-1},SPAWNAREA + WORLDSPAWNAREA,{"tatooine_world","global"},2048},
-}
-
-tatooine_static_spawns = {
-	{"businessman",60,-143.907,65,-5335.05,0,0, "conversation", "","stationary"},
-	{"death_watch_herald_imperial",60,-1157.74,12,-3525.5,200.331,0, "npc_imperial", "Commander D`krn","stationary"},
-	{"dim_u_preacher",300,7.19977,-0.255725,-7.74042,180.007,1153516, "conversation", "","stationary"},
-	{"giko",60,7.19977,-0.255725,-8.84042,0,1153516, "conversation", "Giko","stationary"},
-	{"junk_jawa",0,-6228.01, 23.63, 1868.02,10,0, "", "Jawa Trader","stationary",JUNKCLOTHESANDJEWELLERY+JUNKARMOUR,JUNKCONVJAWAFINARY},
-	{"junk_jawa",0,-6223.90, 23.70, 1887.03,10,0, "", "Jawa Trader","stationary",JUNKGENERIC,JUNKCONVJAWAGENERIC},
-	{"junk_jawa",0, -6204.08, 23.63, 1846.91,10,0, "", "Jawa Trader","stationary",JUNKWEAPONS,JUNKCONVJAWAARMS},
-	{"junk_jawa",0, -6113.37, 23.97, 1870.82,10,0, "", "Jawa Trader","stationary",JUNKTUSKEN,JUNKCONVJAWATUSKEN},
-	{"junk_ollobo",60,-6.35875,0.199999,134.272,9.69838,1177466, "calm", "Ollobo","stationary",JUNKWEAPONS,JUNKCONVOLLOBOJABBAS},
-	{"junk_dealer",0,3699.2,5,-4822,92,0, "", "","stationary",JUNKGENERIC,JUNKCONVGENERIC},
-	{"junk_dealer",0,129.9,52,-5400.9,-87,0, "", "","stationary",JUNKGENERIC,JUNKCONVGENERIC},
-	{"junk_dealer",0,-5131.9,75,-6585,96,0, "", "","stationary",JUNKGENERIC,JUNKCONVGENERIC},
-	{"junk_dealer",0,-1392,185,-3847.9,8,0, "", "","stationary",JUNKGENERIC,JUNKCONVGENERIC},
-	{"junk_dealer",0,-2750.9,5,2057,132,0, "", "","stationary",JUNKGENERIC,JUNKCONVGENERIC},
-	{"junk_dealer",0,1308.1,7,3085.2,1,0, "", "","stationary",JUNKGENERIC,JUNKCONVGENERIC},
-	{"junk_dealer",0,3905.3,33, 2362.9,-90,0, "", "","stationary",JUNKGENERIC,JUNKCONVGENERIC},
-	{"junk_nado",60,4.4,-0.5,1.3,-133,1255997, "", "Nado","stationary",JUNKGENERIC,JUNKCONVNADOWATTOS},
-	{"junk_sneg",60,-1.63376,7.01,7.35289,203.569,1076943, "calm", "Sneg the Hand","stationary",JUNKWEAPONS,JUNKCONVSNEGVALARIAN},
-	{"junk_nathan",60,3817.7,16.2,2340.5,0,0, "calm", "Nathan Blyskipper (a Junk Dealer)","stationary",JUNKJAWA,JUNKCONVNATHANTAIKE},
-	{"record_keeper_planet_tatooine",300,3385.18,4.68287,-4792.87,298.466,0, "calm", "Lt Ogo (a Planet record keeper)","stationary"},
-	{"noble",60,1455.33,7,3335.99,114.201,0, "calm", "","stationary"},
-	{"pilot",60,-143.907,65,-5334.05,180.005,0, "conversation", "","stationary"},
-	{"rancher",60,6.09977,-0.255725,-7.74042,135.004,1153516, "conversation", "","stationary"},
-	{"rodian_clan_captain",300,5.07127,2.6,6.65958,0,1105851, "conversation", "","stationary"},
-	{"rodian_clan_warchief",300,25.1612,2.6,16.6257,360.011,1153601, "conversation", "","stationary"},
-	{"smuggler",300,-17.046,2.6,17.2264,0,1153601, "conversation", "","stationary"},
-	{"trainer_imagedesigner",0,-20.9956,2.12878,73.874,90,1105854, "", "","stationary"},
 }

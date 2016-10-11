@@ -1,32 +1,3 @@
-JUNKNOTSELLABLE = 0
-JUNKGENERIC = 1
-JUNKCLOTHESANDJEWELLERY = 2
-JUNKWEAPONS = 4
-JUNKARMOUR = 8
-JUNKTUSKEN = 16
-JUNKJEDI = 32
-JUNKJAWA = 64
-JUNKGUNGAN = 128
-
-JUNKCONVGENERIC = 1
-JUNKCONVARMS = 2
-JUNKCONVFINARY = 3
-JUNKCONVDENDERRORI = 4
-JUNKCONVDENDERTHEED = 5
-JUNKCONVLILABORVO = 6
-JUNKCONVMALIKVISTAL = 7
-JUNKCONVNADOWATTOS = 8
-JUNKCONVNATHANTAIKE = 9
-JUNKCONVOLLOBOJABBAS = 10
-JUNKCONVQUICHDANTOOINE = 11
-JUNKCONVREGGINYM = 12
-JUNKCONVSHEANILAKE = 13
-JUNKCONVSNEGVALARIAN = 14
-JUNKCONVJAWAGENERIC = 15
-JUNKCONVJAWAFINARY = 16
-JUNKCONVJAWAARMS = 17
-JUNKCONVJAWATUSKEN = 18
-
 -- {"regionName", xCenter, yCenter, shape and size, tier, {"spawnGroup1", ...}, maxSpawnLimit}
 -- Shape and size is a table with the following format depending on the shape of the area:
 --   - Circle: {1, radius}
@@ -36,13 +7,7 @@ JUNKCONVJAWATUSKEN = 18
 -- That means that it is not possible to have both a spawn area and a no spawn area in the same region, but
 -- a spawn area that is also a no build zone is possible.
 
-
-UNDEFINEDAREA       = 0x0000
-SPAWNAREA           = 0x0001
-NOSPAWNAREA         = 0x0002
-WORLDSPAWNAREA      = 0x0010
-NOWORLDSPAWNAREA    = 0x0020
-NOBUILDZONEAREA     = 0x0100
+require("scripts.managers.spawn_manager.regions")
 
 rori_regions = {
 	{"a_rebel_outpost",3669,-6455,{1,200},NOSPAWNAREA + NOBUILDZONEAREA},
@@ -188,11 +153,4 @@ rori_regions = {
 	{"western_peak",0,0,{1,0},UNDEFINEDAREA},
 	{"world_spawner",0,0,{1,-1},SPAWNAREA + WORLDSPAWNAREA,{"rori_world","global"},2048},
 	{"wrecked_outpost",5085,4674,{1,50},NOSPAWNAREA + NOBUILDZONEAREA},
-}
-
-rori_static_spawns = {
-	--Rebel Outpost
-	{"junk_dender",60,-5428.2,80,-2244.2,10,0, "", "Dender", "stationary",JUNKGUNGAN,JUNKCONVDENDERRORI},
-	{"junk_dealer",60,5353.8,80,5665.9,180,0, "", "", "stationary",JUNKGENERIC,JUNKCONVGENERIC},
-	{"junk_dealer",60,5350.2,81.3,5484.8,-50,0, "", "", "stationary",JUNKGENERIC,JUNKCONVGENERIC},
 }

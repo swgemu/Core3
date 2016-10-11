@@ -7,13 +7,7 @@
 -- That means that it is not possible to have both a spawn area and a no spawn area in the same region, but
 -- a spawn area that is also a no build zone is possible.
 
-
-UNDEFINEDAREA       = 0x0000
-SPAWNAREA           = 0x0001
-NOSPAWNAREA         = 0x0002
-WORLDSPAWNAREA      = 0x0010
-NOWORLDSPAWNAREA    = 0x0020
-NOBUILDZONEAREA     = 0x0100
+require("scripts.managers.spawn_manager.regions")
 
 endor_regions = {
 	{"an_outpost",0,0,{1,0},UNDEFINEDAREA},
@@ -132,7 +126,4 @@ endor_regions = {
 	{"yawari_cliffs_7",0,0,{1,0},UNDEFINEDAREA},
 	{"yawari_cliffs_8",0,0,{1,0},UNDEFINEDAREA},
 	{"yawari_cliffs_9",0,0,{1,0},UNDEFINEDAREA},
-}
-
-endor_static_spawns = {
 }
