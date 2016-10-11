@@ -1285,11 +1285,11 @@ class AiAgent extends CreatureObject {
 		return alertedTime;
 	}
 
-	public void incrementLuaCall(string key) {
+	public void incrementLuaCall(final string key) {
 		trackingTask.incrementCall(key);
 	}
 
-	public void addToLuaTime(string key, unsigned long val) {
+	public void addToLuaTime(final string key, unsigned long val) {
 		trackingTask.addTime(key, val);
 	}
 
