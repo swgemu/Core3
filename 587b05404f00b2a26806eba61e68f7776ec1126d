@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_90e474ad",
+        "filename": "MMOCoreORB/src/pathfinding/RecastNavMesh.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_b01658f0",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_50d36c38",
         "filename": "MMOCoreORB/src/pathfinding/RecastNavMesh.h",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "const String\u0026",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_b0e1789c",
+        "filename": "MMOCoreORB/src/pathfinding/RecastNavMesh.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_50d36c38",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_50ee0c8d",
+        "filename": "MMOCoreORB/src/pathfinding/RecastNavMesh.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_70d8f053",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_10dde442",
         "filename": "MMOCoreORB/src/pathfinding/RecastNavMesh.h",
         "patchSetId": 7
@@ -64,6 +118,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "const String\u0026",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_70f31074",
+        "filename": "MMOCoreORB/src/pathfinding/RecastNavMesh.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_10dde442",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_709a3016",
+        "filename": "MMOCoreORB/src/pathfinding/RecastNavMeshBuilder.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_10b404f1",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_30b908ea",
         "filename": "MMOCoreORB/src/pathfinding/RecastNavMeshBuilder.cpp",
         "patchSetId": 7
@@ -98,6 +188,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "use Locker then .release() to avoid a deadlock if builder.build decides to throw an exception, not sure if it ever does but it won\u0027t hurt",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_109f2405",
+        "filename": "MMOCoreORB/src/pathfinding/RecastNavMeshBuilder.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_30b908ea",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_30a4a856",
+        "filename": "MMOCoreORB/src/pathfinding/RecastNavMeshBuilder.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_d0cd1c88",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_f0caa06d",
         "filename": "MMOCoreORB/src/pathfinding/RecastNavMeshBuilder.cpp",
         "patchSetId": 7
@@ -132,6 +258,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "its synchronized in the other method, should it be here too?",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f0694026",
+        "filename": "MMOCoreORB/src/pathfinding/RecastNavMeshBuilder.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "This function is only for the initial navmesh build, so it shouldn\u0027t need a lock. Although at this point both of these functions could be combined. I had issues with that initially.",
+      "parentUuid": "bada0100_f0caa06d",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_10e8847b",
+        "filename": "MMOCoreORB/src/pathfinding/RecastNavMeshBuilder.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_30e26804",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_d0e67c16",
         "filename": "MMOCoreORB/src/pathfinding/RecastNavMeshBuilder.h",
         "patchSetId": 7
@@ -166,6 +328,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "const String\u0026, const Vector\u003c\u003e\u0026",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_30ed888c",
+        "filename": "MMOCoreORB/src/pathfinding/RecastNavMeshBuilder.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_d0e67c16",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -189,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_d0019c3a",
+        "filename": "MMOCoreORB/src/pathfinding/RecastNavMeshBuilder.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_f0e38003",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_90f0f4ca",
         "filename": "MMOCoreORB/src/pathfinding/RecastNavMeshBuilder.h",
         "patchSetId": 7
@@ -200,6 +398,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "const Reference\u003c\u003e\u0026",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f0fe2038",
+        "filename": "MMOCoreORB/src/pathfinding/RecastNavMeshBuilder.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_90f0f4ca",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -223,6 +439,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_90fb1447",
+        "filename": "MMOCoreORB/src/pathfinding/RecastNavMeshBuilder.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_b0edf8f1",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_50ba8ce2",
         "filename": "MMOCoreORB/src/pathfinding/RecastNavMeshBuilder.h",
         "patchSetId": 7
@@ -234,6 +468,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "const AABB\u0026",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_b0f8984a",
+        "filename": "MMOCoreORB/src/pathfinding/RecastNavMeshBuilder.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_50ba8ce2",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -257,6 +509,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_5095ace2",
+        "filename": "MMOCoreORB/src/pathfinding/RecastNavMeshBuilder.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_70bf90d1",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_90c79464",
         "filename": "MMOCoreORB/src/pathfinding/RecastPolygon.h",
         "patchSetId": 7
@@ -268,6 +538,29 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "ugly but ok",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_9076b405",
+        "filename": "MMOCoreORB/src/pathfinding/RecastPolygon.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "public members",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 18
+      },
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -291,6 +584,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_d088bcc8",
+        "filename": "MMOCoreORB/src/pathfinding/RecastTileBuilder.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Changed this to just pass the entire vector by reference.",
+      "parentUuid": "bada0100_b0c41860",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_50a12ca8",
         "filename": "MMOCoreORB/src/server/zone/ZoneContainerComponent.cpp",
         "patchSetId": 7
@@ -302,6 +613,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "avoid dynamic object too slow, add/use isStaticObject/asStaticObject to Sceneobject",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f085c0ad",
+        "filename": "MMOCoreORB/src/server/zone/ZoneContainerComponent.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_50a12ca8",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -325,6 +654,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_909234f5",
+        "filename": "MMOCoreORB/src/server/zone/ZoneContainerComponent.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_70a6b0c3",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_10aba48a",
         "filename": "MMOCoreORB/src/server/zone/ZoneImplementation.cpp",
         "patchSetId": 7
@@ -336,6 +683,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "this is ugly as hell, maybe add a flag to the template instead",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_b08f38cc",
+        "filename": "MMOCoreORB/src/server/zone/ZoneImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_10aba48a",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -382,6 +747,30 @@
     },
     {
       "key": {
+        "uuid": "bada0100_50bccc6c",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/CollisionManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_70655044",
+      "range": {
+        "startLine": 92,
+        "startChar": 12,
+        "endLine": 92,
+        "endChar": 20
+      },
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_b073b814",
         "filename": "MMOCoreORB/src/server/zone/managers/collision/CollisionManager.cpp",
         "patchSetId": 7
@@ -393,6 +782,30 @@
       "writtenOn": "2016-10-12T22:47:13Z",
       "side": 1,
       "message": "continue",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 16
+      },
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_70c1d0e3",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/CollisionManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_b073b814",
       "range": {
         "startLine": 100,
         "startChar": 4,
@@ -428,6 +841,30 @@
     },
     {
       "key": {
+        "uuid": "bada0100_10b6448b",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/CollisionManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_50604c35",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 16
+      },
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_105ac483",
         "filename": "MMOCoreORB/src/server/zone/managers/collision/CollisionManager.cpp",
         "patchSetId": 7
@@ -439,6 +876,30 @@
       "writtenOn": "2016-10-12T22:47:13Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 11
+      },
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_30bb4874",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/CollisionManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_105ac483",
       "range": {
         "startLine": 117,
         "startChar": 3,
@@ -468,6 +929,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_d0af5c2a",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/NavMeshJob.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_d0943c46",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_f0914053",
         "filename": "MMOCoreORB/src/server/zone/managers/collision/NavMeshJob.h",
         "patchSetId": 7
@@ -479,6 +958,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "comment this out too",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f0ace037",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/NavMeshJob.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "removed entirely, not needed",
+      "parentUuid": "bada0100_f0914053",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -502,6 +999,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_90a9d426",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/NavMeshJob.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_909eb462",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_50884c22",
         "filename": "MMOCoreORB/src/server/zone/managers/collision/NavMeshManager.cpp",
         "patchSetId": 7
@@ -513,6 +1028,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "whats the extra spaces for?",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_50636c1a",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/NavMeshManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Isn\u0027t that how we make longer strings?",
+      "parentUuid": "bada0100_50884c22",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -536,6 +1069,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_7068f0f5",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/NavMeshManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_708d5031",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_1082c400",
         "filename": "MMOCoreORB/src/server/zone/managers/collision/NavMeshManager.cpp",
         "patchSetId": 7
@@ -547,6 +1098,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "(const) AABB\u0026 no need to generate extra copies",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_106de404",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/NavMeshManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_1082c400",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -587,6 +1156,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_307268e6",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/NavMeshManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Bumped it up a bit, but didn\u0027t want to make it too high.",
+      "parentUuid": "bada0100_d07bdc27",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_3087c811",
         "filename": "MMOCoreORB/src/server/zone/managers/collision/NavMeshManager.cpp",
         "patchSetId": 7
@@ -604,6 +1191,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_d0767cd8",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/NavMeshManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_3087c811",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_b09bb871",
         "filename": "MMOCoreORB/src/server/zone/managers/collision/NavMeshManager.h",
         "patchSetId": 7
@@ -615,6 +1220,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "const String\u0026",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_b0a65852",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/NavMeshManager.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "removed, unused",
+      "parentUuid": "bada0100_b09bb871",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -655,6 +1278,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_f07380e5",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/PathFinderManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Moved to a more logical sopt",
+      "parentUuid": "bada0100_b0a9787d",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_70947037",
         "filename": "MMOCoreORB/src/server/zone/managers/collision/PathFinderManager.cpp",
         "patchSetId": 7
@@ -666,6 +1307,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "line 152 creates a new vector, continue here \u003d leak",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_9080f48c",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/PathFinderManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_70947037",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -689,6 +1348,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_b07df8b3",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/PathFinderManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_90ac748e",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_1099646e",
         "filename": "MMOCoreORB/src/server/zone/managers/collision/PathFinderManager.cpp",
         "patchSetId": 7
@@ -700,6 +1377,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "line 152 creates a new vector, continue here \u003d leak + deadlock",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_504a8c84",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/PathFinderManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_1099646e",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -723,6 +1418,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_704f9093",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/PathFinderManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_309ee857",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_d0a2fc99",
         "filename": "MMOCoreORB/src/server/zone/managers/collision/PathFinderManager.cpp",
         "patchSetId": 7
@@ -734,6 +1447,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "line 152 creates a new vector, continue here \u003d leak + deadlock",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_10440473",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/PathFinderManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_d0a2fc99",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -757,6 +1488,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_3049088c",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/PathFinderManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_f09f004f",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_70bb10c5",
         "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
         "patchSetId": 7
@@ -768,6 +1517,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "no debugger running in production",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f05aa04f",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2070,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_70bb10c5",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -791,6 +1558,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_30d6e8c6",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 3205,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "it\u0027s a secret, so secret, that I don\u0027t even know myself....\n\nI blame git",
+      "parentUuid": "bada0100_10b084dc",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_d053dc6a",
         "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
         "patchSetId": 7
@@ -802,6 +1587,24 @@
       "writtenOn": "2016-10-12T22:47:13Z",
       "side": 1,
       "message": "Locker locker(navmeshRegion);",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_90579426",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 3226,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_d053dc6a",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -825,6 +1628,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_d05d1c4a",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_50b60cde",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_30b588cd",
         "filename": "MMOCoreORB/src/server/zone/managers/director/ScreenPlayObserverImplementation.cpp",
         "patchSetId": 7
@@ -836,6 +1657,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "on crash this will literally print assert(0 \u0026\u0026 msg.toCharArray());\n\nadd a printf/error call before the assert",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_b0541822",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/ScreenPlayObserverImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_30b588cd",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -859,6 +1698,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_50312c0a",
+        "filename": "MMOCoreORB/src/server/zone/managers/planet/PlanetManager.idl",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_d0c99c5b",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_f0c62049",
         "filename": "MMOCoreORB/src/server/zone/managers/planet/PlanetManagerImplementation.cpp",
         "patchSetId": 7
@@ -870,6 +1727,47 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "either use @preLocked annotation in idl or synchronize this with your own lock",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_7036b005",
+        "filename": "MMOCoreORB/src/server/zone/managers/planet/PlanetManagerImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Unused, removed both of these functions.",
+      "parentUuid": "bada0100_f0c62049",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_103ba4ec",
+        "filename": "MMOCoreORB/src/server/zone/managers/planet/PlanetManagerImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "CLion did this",
+      "range": {
+        "startLine": 116,
+        "startChar": 12,
+        "endLine": 116,
+        "endChar": 28
+      },
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -927,6 +1825,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_30402856",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_70e230d7",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_10e724e6",
         "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
         "patchSetId": 7
@@ -938,6 +1854,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "rotation+translation can be set in the same matrix",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_d0243cc8",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_10e724e6",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -990,6 +1924,30 @@
     },
     {
       "key": {
+        "uuid": "bada0100_1012c462",
+        "filename": "MMOCoreORB/src/server/zone/objects/pathfinding/NavMeshRegion.idl",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_308828e7",
+      "range": {
+        "startLine": 39,
+        "startChar": 20,
+        "endLine": 39,
+        "endChar": 39
+      },
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_d06c3c39",
         "filename": "MMOCoreORB/src/server/zone/objects/pathfinding/NavMeshRegion.idl",
         "patchSetId": 7
@@ -1001,6 +1959,30 @@
       "writtenOn": "2016-10-12T22:47:13Z",
       "side": 1,
       "message": "@preLocked",
+      "range": {
+        "startLine": 42,
+        "startChar": 20,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_701d5073",
+        "filename": "MMOCoreORB/src/server/zone/objects/pathfinding/NavMeshRegion.idl",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_d06c3c39",
       "range": {
         "startLine": 42,
         "startChar": 20,
@@ -1036,6 +2018,30 @@
     },
     {
       "key": {
+        "uuid": "bada0100_50184c84",
+        "filename": "MMOCoreORB/src/server/zone/objects/pathfinding/NavMeshRegion.idl",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_b01c18c3",
+      "range": {
+        "startLine": 56,
+        "startChar": 16,
+        "endLine": 56,
+        "endChar": 26
+      },
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_50792cfb",
         "filename": "MMOCoreORB/src/server/zone/objects/pathfinding/NavMeshRegion.idl",
         "patchSetId": 7
@@ -1047,6 +2053,30 @@
       "writtenOn": "2016-10-12T22:47:13Z",
       "side": 1,
       "message": "@preLocked",
+      "range": {
+        "startLine": 61,
+        "startChar": 16,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_b02bb893",
+        "filename": "MMOCoreORB/src/server/zone/objects/pathfinding/NavMeshRegion.idl",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_50792cfb",
       "range": {
         "startLine": 61,
         "startChar": 16,
@@ -1082,6 +2112,30 @@
     },
     {
       "key": {
+        "uuid": "bada0100_902eb4a4",
+        "filename": "MMOCoreORB/src/server/zone/objects/pathfinding/NavMeshRegion.idl",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_707eb0e6",
+      "range": {
+        "startLine": 85,
+        "startChar": 16,
+        "endLine": 85,
+        "endChar": 27
+      },
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_1083a4cd",
         "filename": "MMOCoreORB/src/server/zone/objects/pathfinding/NavMeshRegion.idl",
         "patchSetId": 7
@@ -1093,6 +2147,30 @@
       "writtenOn": "2016-10-12T22:47:13Z",
       "side": 1,
       "message": "@preLocked",
+      "range": {
+        "startLine": 100,
+        "startChar": 23,
+        "endLine": 100,
+        "endChar": 32
+      },
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f02140b5",
+        "filename": "MMOCoreORB/src/server/zone/objects/pathfinding/NavMeshRegion.idl",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_1083a4cd",
       "range": {
         "startLine": 100,
         "startChar": 23,
@@ -1122,6 +2200,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_3017c853",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/FindSessionImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_30eca8c7",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_f022a000",
         "filename": "MMOCoreORB/src/server/zone/objects/region/CityRegion.idl",
         "patchSetId": 7
@@ -1133,6 +2229,30 @@
       "writtenOn": "2016-10-12T22:47:13Z",
       "side": 1,
       "message": "@preLocked",
+      "range": {
+        "startLine": 423,
+        "startChar": 20,
+        "endLine": 423,
+        "endChar": 35
+      },
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_d00bdc29",
+        "filename": "MMOCoreORB/src/server/zone/objects/region/CityRegion.idl",
+        "patchSetId": 7
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_f022a000",
       "range": {
         "startLine": 423,
         "startChar": 20,
@@ -1162,6 +2282,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_f008602f",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/components/ZoneComponent.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_d0d0bcf9",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_f0cdc05e",
         "filename": "MMOCoreORB/src/server/zone/objects/scene/components/ZoneComponent.cpp",
         "patchSetId": 7
@@ -1173,6 +2311,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "can probably just use static_cast because of the above check",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_90055416",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/components/ZoneComponent.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_f0cdc05e",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -1202,6 +2358,30 @@
     },
     {
       "key": {
+        "uuid": "bada0100_b002d809",
+        "filename": "MMOCoreORB/src/server/zone/objects/structure/StructureObject.idl",
+        "patchSetId": 7
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_301108ad",
+      "range": {
+        "startLine": 461,
+        "startChar": 29,
+        "endLine": 461,
+        "endChar": 44
+      },
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_50c7ec12",
         "filename": "MMOCoreORB/src/server/zone/objects/structure/StructureObjectImplementation.cpp",
         "patchSetId": 7
@@ -1219,6 +2399,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_d0dafce8",
+        "filename": "MMOCoreORB/src/server/zone/objects/structure/StructureObjectImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "mostly future proofing",
+      "parentUuid": "bada0100_50c7ec12",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_b04ad8aa",
         "filename": "MMOCoreORB/src/server/zone/objects/structure/StructureObjectImplementation.cpp",
         "patchSetId": 7
@@ -1230,6 +2428,30 @@
       "writtenOn": "2016-10-12T22:47:13Z",
       "side": 1,
       "message": "cityregion?",
+      "range": {
+        "startLine": 61,
+        "startChar": 7,
+        "endLine": 61,
+        "endChar": 17
+      },
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_53fff601",
+        "filename": "MMOCoreORB/src/server/zone/objects/structure/StructureObjectImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_b04ad8aa",
       "range": {
         "startLine": 61,
         "startChar": 7,
@@ -1265,6 +2487,30 @@
     },
     {
       "key": {
+        "uuid": "bada0100_73047a15",
+        "filename": "MMOCoreORB/src/server/zone/objects/structure/StructureObjectImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_904d54c7",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 67,
+        "endChar": 15
+      },
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_90da3416",
         "filename": "MMOCoreORB/src/templates/appearance/AppearanceTemplate.h",
         "patchSetId": 7
@@ -1276,6 +2522,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "const String\u0026",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_13096e2c",
+        "filename": "MMOCoreORB/src/templates/appearance/AppearanceTemplate.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_90da3416",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -1299,6 +2563,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_330ef235",
+        "filename": "MMOCoreORB/src/templates/appearance/AppearanceTemplate.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_b0d738ed",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_5004cc7d",
         "filename": "MMOCoreORB/src/templates/appearance/CellProperty.h",
         "patchSetId": 7
@@ -1310,6 +2592,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "we dont use _ in the names in the code, dont be the exception",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_d3120658",
+        "filename": "MMOCoreORB/src/templates/appearance/CellProperty.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_5004cc7d",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -1333,6 +2633,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_f30f0a2d",
+        "filename": "MMOCoreORB/src/templates/appearance/ComponentAppearanceTemplate.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_10fe446c",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_30034875",
         "filename": "MMOCoreORB/src/templates/appearance/MeshAppearanceTemplate.h",
         "patchSetId": 7
@@ -1344,6 +2662,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "if possible return const Vector\u003c\u003e\u0026 or Vector\u0026",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_73523a15",
+        "filename": "MMOCoreORB/src/templates/appearance/MeshAppearanceTemplate.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_30034875",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -1367,6 +2703,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_931c7e6c",
+        "filename": "MMOCoreORB/src/templates/appearance/PortalLayout.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_502b6ceb",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_7030f056",
         "filename": "MMOCoreORB/src/templates/appearance/PortalLayout.h",
         "patchSetId": 7
@@ -1378,6 +2732,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "CellProperty\u0026 and/or const",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f0d700be",
+        "filename": "MMOCoreORB/src/templates/appearance/PortalLayout.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "const CellProperty\u0026 started getting pretty ugly. Can come back to it later",
+      "parentUuid": "bada0100_7030f056",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -1401,6 +2773,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_b319827b",
+        "filename": "MMOCoreORB/src/templates/building/InteriorLayoutTemplate.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_1035e445",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_303a6837",
         "filename": "MMOCoreORB/src/templates/building/InteriorLayoutTemplate.h",
         "patchSetId": 7
@@ -1412,6 +2802,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "const String\u0026 .. const",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_532616bc",
+        "filename": "MMOCoreORB/src/templates/building/InteriorLayoutTemplate.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_303a6837",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -1435,6 +2843,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_732b1a83",
+        "filename": "MMOCoreORB/src/templates/building/InteriorLayoutTemplate.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_d03e7c29",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_f03b8036",
         "filename": "MMOCoreORB/src/templates/building/SharedBuildingObjectTemplate.h",
         "patchSetId": 7
@@ -1446,6 +2872,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "const String\u0026 and fix the rest",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_13208e9a",
+        "filename": "MMOCoreORB/src/templates/building/SharedBuildingObjectTemplate.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Can\u0027t const String\u0026 this because it\u0027s a StringParam type. Added the .get() to make this more apparent.",
+      "parentUuid": "bada0100_f03b8036",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -1469,6 +2913,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_332592ab",
+        "filename": "MMOCoreORB/src/templates/collision/BoxVolume.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_9048f4cd",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_b045f8b4",
         "filename": "MMOCoreORB/src/templates/manager/PortalLayoutMap.h",
         "patchSetId": 7
@@ -1486,6 +2948,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_d339a6d9",
+        "filename": "MMOCoreORB/src/templates/manager/PortalLayoutMap.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_b045f8b4",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_701790a4",
         "filename": "MMOCoreORB/src/templates/manager/TemplateManager.h",
         "patchSetId": 7
@@ -1497,6 +2977,24 @@
       "writtenOn": "2016-10-12T21:00:06Z",
       "side": 1,
       "message": "const String\u0026",
+      "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_534db671",
+        "filename": "MMOCoreORB/src/templates/manager/TemplateManager.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T04:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_701790a4",
       "revId": "587b05404f00b2a26806eba61e68f7776ec1126d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
