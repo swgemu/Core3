@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bada0100_9361ded5",
+        "filename": "MMOCoreORB/src/server/zone/objects/area/ActiveArea.idl",
+        "patchSetId": 8
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T09:13:42Z",
+      "side": 1,
+      "message": "I see it in there, unless there\u0027s something I\u0027m missing",
+      "parentUuid": "bada0100_7379da92",
+      "range": {
+        "startLine": 82,
+        "startChar": 25,
+        "endLine": 82,
+        "endChar": 36
+      },
+      "revId": "1d951b6f92a5d8db2a31eb729d79bcbf8013a959",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_5374d69b",
         "filename": "MMOCoreORB/src/server/zone/objects/scene/SceneObject.idl",
         "patchSetId": 8
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bada0100_f364eae6",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/SceneObject.idl",
+        "patchSetId": 8
+      },
+      "lineNbr": 1813,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T09:13:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_5374d69b",
+      "range": {
+        "startLine": 1813,
+        "startChar": 25,
+        "endLine": 1813,
+        "endChar": 44
+      },
+      "revId": "1d951b6f92a5d8db2a31eb729d79bcbf8013a959",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_136e4eca",
         "filename": "MMOCoreORB/src/templates/SharedObjectTemplate.cpp",
         "patchSetId": 8
@@ -59,6 +107,30 @@
       "writtenOn": "2016-10-13T09:03:52Z",
       "side": 1,
       "message": "You didn\u0027t add this property to any Lua object templates.",
+      "range": {
+        "startLine": 197,
+        "startChar": 24,
+        "endLine": 197,
+        "endChar": 44
+      },
+      "revId": "1d951b6f92a5d8db2a31eb729d79bcbf8013a959",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_d36766e9",
+        "filename": "MMOCoreORB/src/templates/SharedObjectTemplate.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 2822
+      },
+      "writtenOn": "2016-10-13T09:13:42Z",
+      "side": 1,
+      "message": "Forgot to commit those",
+      "parentUuid": "bada0100_136e4eca",
       "range": {
         "startLine": 197,
         "startChar": 24,
