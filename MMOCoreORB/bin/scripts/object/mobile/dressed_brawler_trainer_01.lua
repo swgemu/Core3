@@ -42,9 +42,7 @@
 
 
 object_mobile_dressed_brawler_trainer_01 = object_mobile_shared_dressed_brawler_trainer_01:new {
-	planetMapCategory = "trainer_brawler",
 	objectMenuComponent = "TrainerMenuComponent"
-	
 }
 
 ObjectTemplates:addTemplate(object_mobile_dressed_brawler_trainer_01, "object/mobile/dressed_brawler_trainer_01.iff")

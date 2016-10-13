@@ -162,6 +162,8 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 	level = getTemplateLevel();
 
+	planetMapCategory = npcTemplate->getPlanetMapCategory();
+
 	float minDmg = npcTemplate->getDamageMin();
 	float maxDmg = npcTemplate->getDamageMax();
 	float speed = calculateAttackSpeed(level);
