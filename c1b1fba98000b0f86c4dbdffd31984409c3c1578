@@ -209,6 +209,30 @@
     },
     {
       "key": {
+        "uuid": "bada0100_b0e3b832",
+        "filename": "MMOCoreORB/src/terrain/ProceduralTerrainAppearance.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-10-14T05:55:59Z",
+      "side": 1,
+      "message": "Definitely not, but i\u0027ll need to test that removing the 2nd set of code doesn\u0027t break everything.",
+      "parentUuid": "bada0100_f092a09e",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 128
+      },
+      "revId": "c1b1fba98000b0f86c4dbdffd31984409c3c1578",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_d0951c89",
         "filename": "MMOCoreORB/src/terrain/ProceduralTerrainAppearance.cpp",
         "patchSetId": 3
