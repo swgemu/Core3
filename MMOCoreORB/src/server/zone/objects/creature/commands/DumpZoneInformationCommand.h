@@ -74,6 +74,7 @@ public:
 		if (buildingTemplate != 0)
 			msg << endl << TemplateManager::instance()->getTemplateFile(buildingTemplate);
 
+
 		if (cityPlayerCount != 0)
 			msg << endl << "current players in the city:" << cityPlayerCount;
 			
@@ -81,6 +82,15 @@ public:
 		
 		if (vec != NULL) {
 			msg << endl << "in range object count = " << vec->size() << endl;
+		}
+
+		for (auto& entry : *vec) {
+			ManagedReference<SceneObject*> object = entry.castTo<SceneObject*>();
+			if(object != NULL && object->isBuildingObject()) {
+				Vector3 localPos = CollisionManager::convertToModelSpace(Vector3(posX, posZ, posY), object);
+				msg << "local position relative to " << object->getDisplayedName() << endl;
+				msg << "x = " << localPos.getX() << ", y = " << localPos.getY() << ", z = " << localPos.getZ() << endl;
+			}
 		}
 
 		msg << "active areas size = " << player->getActiveAreasSize() << endl;
