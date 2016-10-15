@@ -132,12 +132,12 @@ void DroidMaintenanceSessionImplementation::sendMaintenanceTransferBox(){
 	StringBuffer promptText = "@pet/droid_modules:droid_maint_amount_prompt \n@player_structure:current_maint_pool "+ String::valueOf(selectedStructure->getSurplusMaintenance())+"cr";
 	selectedFees = 0;
 	if (offplanet) {
-		PlanetManager* planetManager = creature->getZone()->getPlanetManager();
+		PlanetManager* planetManager = zoneCreature->getPlanetManager();
 		if (planetManager == NULL) {
 			cancelSession();
 			return;
 		}
-		int fee = planetManager->getTravelFare(selectedStructure->getZone()->getZoneName(),creature->getZone()->getZoneName());
+		int fee = planetManager->getTravelFare(zoneStructure->getZoneName(),zoneCreature->getZoneName());
 		selectedFees = fee;
 		promptText << "\n@pet/droid_modules:droid_maint_diff_planet_prefix " << fee << " @pet/droid_modules:droid_maint_diff_planet_suffix \n";
 	}
