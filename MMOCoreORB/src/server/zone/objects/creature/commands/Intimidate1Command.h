@@ -31,13 +31,19 @@ public:
 		if (targetObject == NULL || !targetObject->isCreatureObject())
 			return INVALIDTARGET;
 
+		ManagedReference<CreatureObject*> targetCreature = targetObject.castTo<CreatureObject*>();
+		if (targetCreature->isSpecialTrooper() || targetCreature->isDroidSpecies() || targetCreature->isWalkerSpecies()) {
+			creature->sendSystemMessage("@combat_effects:immune_to_effect");// "The Target is immune to such an effect."
+			return GENERALERROR;
+		}
+
 		int res = doCombatAction(creature, target);
 
 		if (res == TOOFAR && creature->isPlayerCreature()) {
 			CombatSpam* msg = new CombatSpam(creature, targetObject, creature, NULL, 0, "cbt_spam", "intim_out_of_range", 0);
 			creature->sendMessage(msg);
 		}
-		
+
 		if (res == SUCCESS && creature->isPlayerCreature()) {
 			ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 

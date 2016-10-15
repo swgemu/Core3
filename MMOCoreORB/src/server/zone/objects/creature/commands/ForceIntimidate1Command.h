@@ -35,6 +35,12 @@ public:
 			return INVALIDTARGET;
 		}
 
+		ManagedReference<CreatureObject*> targetCreature = targetObject.castTo<CreatureObject*>();
+		if (targetCreature->isSpecialTrooper() || targetCreature->isDroidSpecies() || targetCreature->isWalkerSpecies()) {
+			creature->sendSystemMessage("@combat_effects:immune_to_effect");// "The Target is immune to such an effect."
+			return GENERALERROR;
+		}
+
 		CreatureObject *tarCreo = targetObject->asCreatureObject();
 
 		int res = doCombatAction(creature, target);

@@ -3349,6 +3349,9 @@ bool CreatureObjectImplementation::hasEffectImmunity(uint8 effectType) {
 	case CommandEffect::BLIND:
 	case CommandEffect::DIZZY:
 	case CommandEffect::INTIMIDATE:
+		if (isSpecialTrooper() || isDroidSpecies() || isWalkerSpecies() || isVehicleObject())
+			return true;
+		break;
 	case CommandEffect::STUN:
 	case CommandEffect::NEXTATTACKDELAY:
 		if (isDroidSpecies() || isVehicleObject() || isWalkerSpecies())
