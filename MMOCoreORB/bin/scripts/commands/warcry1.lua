@@ -44,23 +44,26 @@
 Warcry1Command = {
 	name = "warcry1",
 
-	damageMultiplier = 0,
+	damageMultiplier = 1,
+	minDamage = 10,
+	maxDamage = 15,
 	speedMultiplier = 1,
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
 	
 	accuracySkillMod = "warcry",
-	
+	accuracyBonus = 5,
+
 	stateEffects = {
-	  StateEffect( 
-		NEXTATTACKDELAY_EFFECT, 
-		{ "nextAttackDelayRecovery" },  
-		{ "warcry_defense" }, 
-		{}, 
-		100, 
-		0, 
-		10 
+	  StateEffect(
+		NEXTATTACKDELAY_EFFECT,
+		{ "nextAttackDelayRecovery" },
+		{ "warcry_defense" },
+		{},
+		100,
+		0,
+		10
 	  )
 	},
 
@@ -72,8 +75,8 @@ Warcry1Command = {
 	coneAction = true,
 	coneAngle = 15,
 
-	poolsToDamage = NO_ATTRIBUTE
+	damageType = STUN_DAMAGE,
+	poolsToDamage = ACTION_ATTRIBUTE
 }
 
 AddCommand(Warcry1Command)
-

@@ -60,16 +60,19 @@ public:
 
 		if (manager->startCombat(creature, targetCreature, false)) { //lockDefender = false because already locked above.
 			int forceSpace = playerGhost->getForcePowerMax() - playerGhost->getForcePower();
-			if (forceSpace <= 0) //Cannot Force Drain if attacker can't hold any more Force.
-				return GENERALERROR;
-
-			int maxDrain = minDamage; //Value set in command lua.
 
 			int targetForce = targetGhost->getForcePower();
 			if (targetForce <= 0) {
 				creature->sendSystemMessage("@jedi_spam:target_no_force"); //That target does not have any Force Power.
 				return GENERALERROR;
 			}
+
+			if (forceSpace <= 0) {//Cannot Force Drain if attacker can't hold any more Force.
+				creature->sendSystemMessage("@jedi_spam:holocron_force_max"); //You are already at your maximum Force power.
+				return GENERALERROR;
+			}
+
+			int maxDrain = minDamage; //Value set in command lua.
 
 			int forceDrain = targetForce >= maxDrain ? maxDrain : targetForce; //Drain whatever Force the target has, up to max.
 			if (forceDrain > forceSpace)

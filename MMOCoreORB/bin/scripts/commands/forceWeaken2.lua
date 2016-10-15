@@ -44,11 +44,14 @@
 ForceWeaken2Command = {
 	name = "forceweaken2",
 
-	damageMultiplier = 0,
+	damageMultiplier = 1,
+	minDamage = 10,
+	maxDamage = 15,
 	speed = 4.0,
 	forceCost = 400,
 	visMod = 25,
 	accuracySkillMod = "forceweaken_accuracy",
+	accuracyBonus = 10,
 	forceAttack = true,
 
 	animation = "force_weaken_1_particle_level_1", 
@@ -56,7 +59,8 @@ ForceWeaken2Command = {
 
 	combatSpam = "forceweaken2",
 
-	poolsToDamage = NO_ATTRIBUTE,
+	poolsToDamage = RANDOM_ATTRIBUTE,
+	damageType = LIGHTSABER_DAMAGE,
 
 	range = 32
 }

@@ -36,11 +36,11 @@ public:
 
 		int res = doCombatAction(creature, target);
 
+		ManagedReference<CreatureObject*> creatureTarget = targetObject.castTo<CreatureObject*>();
+
 		if (res == SUCCESS) {
 
 			// Setup debuff.
-
-			ManagedReference<CreatureObject*> creatureTarget = targetObject.castTo<CreatureObject*>();
 
 			if (creatureTarget != NULL) {
 				Locker clocker(creatureTarget, creature);
@@ -53,7 +53,6 @@ public:
 
 				creatureTarget->addBuff(buff);
 
-				CombatManager::instance()->broadcastCombatSpam(creature, creatureTarget, NULL, 0, "cbt_spam", combatSpam + "_hit", 1);
 			}
 
 		}

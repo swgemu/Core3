@@ -55,7 +55,6 @@ public:
 
 				creatureTarget->addBuff(buff);
 
-				CombatManager::instance()->broadcastCombatSpam(creature, creatureTarget, NULL, 0, "cbt_spam", combatSpam + "_hit", 1);
 			}
 
 		}
