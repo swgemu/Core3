@@ -106,14 +106,29 @@ void DroidMaintenanceSessionImplementation::sendMaintenanceTransferBox(){
 		return;
 	}
 	ManagedReference<CreatureObject*> creature = this->player.get();
+
+	if (creature == NULL) {
+		cancelSession();
+		return;
+	}
+
 	ManagedReference<DroidMaintenanceModuleDataComponent*> module = this->maintModule.get();
 	// create transfer box
 	ManagedReference<SuiTransferBox*> sui = new SuiTransferBox(creature,SuiWindowType::DROID_ADD_STRUCTURE_AMOUNT);
 	sui->setCallback(new DroidMaintenanceSessionAddCreditsSuiCallback(creature->getZoneServer()));
 	sui->setPromptTitle("@pet/droid_modules:droid_maint_amount_title"); //Select Amount
 	bool offplanet = false;
-	if (selectedStructure->getZone()->getZoneName() != creature->getZone()->getZoneName())
+	Zone* zoneStructure = selectedStructure->getZone();
+	Zone* zoneCreature = creature->getZone();
+
+	if (!zoneStructure || !zoneCreature) {
+		cancelSession();
+		return;
+	}
+
+	if (zoneStructure != zoneCreature)
 		offplanet = true;
+
 	StringBuffer promptText = "@pet/droid_modules:droid_maint_amount_prompt \n@player_structure:current_maint_pool "+ String::valueOf(selectedStructure->getSurplusMaintenance())+"cr";
 	selectedFees = 0;
 	if (offplanet) {
@@ -231,7 +246,11 @@ void DroidMaintenanceSessionImplementation::performMaintenanceRun(){
 	task->execute();
 }
 int DroidMaintenanceSessionImplementation::cancelSession() {
-	player.get()->dropActiveSession(SessionFacadeType::DROIDMAINTENANCERUN);
+	auto strongPlayeRef = player.get();
+
+	if (strongPlayeRef != nullptr)
+		strongPlayeRef->dropActiveSession(SessionFacadeType::DROIDMAINTENANCERUN);
+
 	selectedStructure = NULL;
 	structures.removeAll();
 	maintenance.removeAll();
