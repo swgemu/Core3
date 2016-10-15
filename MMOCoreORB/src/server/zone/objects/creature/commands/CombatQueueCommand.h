@@ -111,7 +111,6 @@ public:
 		animation = "";
 		animType = GENERATE_NONE;
 
-
 		forceAttack = false;
 		trails = CombatManager::DEFAULTTRAIL;
 
@@ -519,7 +518,6 @@ public:
 			else
 				return "creature_attack" + intensity;
 		}
-
 		//info("Generated Attack Animation- " + buffer.toString(), true);
 		return buffer.toString();
 	}
@@ -677,6 +675,7 @@ public:
 			defender->setDizziedState(duration);
 			break;
 		case CommandEffect::INTIMIDATE:
+		case CommandEffect::FORCEINTIM:
 			defender->setIntimidatedState(duration);
 			break;
 		case CommandEffect::STUN:

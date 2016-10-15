@@ -1759,22 +1759,27 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 			case CommandEffect::KNOCKDOWN:
 				if (!targetCreature->checkKnockdownRecovery() && targetCreature->getPosture() != CreaturePosture::UPRIGHT)
 					targetCreature->setPosture(CreaturePosture::UPRIGHT);
-				creature->sendSystemMessage("@cbt_spam:knockdown_fail");
+				creature->sendSystemMessage("@cbt_spam:knockdown_fail");// "Your attack failed to knock down your target."
 				break;
 			case CommandEffect::POSTUREDOWN:
 				if (!targetCreature->checkPostureDownRecovery() && targetCreature->getPosture() != CreaturePosture::UPRIGHT)
 					targetCreature->setPosture(CreaturePosture::UPRIGHT);
-				creature->sendSystemMessage("@cbt_spam:posture_change_fail");
+				creature->sendSystemMessage("@cbt_spam:posture_change_fail");// "Your attack failed to change your target's posture."
 				break;
 			case CommandEffect::POSTUREUP:
 				if (!targetCreature->checkPostureUpRecovery() && targetCreature->getPosture() != CreaturePosture::UPRIGHT)
 					targetCreature->setPosture(CreaturePosture::UPRIGHT);
-				creature->sendSystemMessage("@cbt_spam:posture_change_fail");
+				creature->sendSystemMessage("@cbt_spam:posture_change_fail");// "Your attack failed to change your target's posture."
 				break;
 			case CommandEffect::NEXTATTACKDELAY:
 				targetCreature->showFlyText("combat_effects", "warcry_miss", 0xFF, 0, 0 );
+				creature->sendSystemMessage("@combat_effects:immune_to_effect");// "The Target is immune to such an effect."
 				break;
 			case CommandEffect::INTIMIDATE:
+				targetCreature->showFlyText("combat_effects", "intimidated_miss", 0xFF, 0, 0 );
+				creature->sendSystemMessage("@combat_effects:immune_to_effect");// "The Target is immune to such an effect."
+				break;
+			case CommandEffect::FORCEINTIM:
 				targetCreature->showFlyText("combat_effects", "intimidated_miss", 0xFF, 0, 0 );
 				break;
 			default:
@@ -1783,7 +1788,6 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 		}
 
 		// now check combat equilibrium
-		//TODO: This should eventually be moved to happen AFTER the CombatAction is broadcast to "fix" it's animation (Mantis #4832)
 		if (!failed && (effectType == CommandEffect::KNOCKDOWN || effectType == CommandEffect::POSTUREDOWN || effectType == CommandEffect::POSTUREUP)) {
 			int combatEquil = targetCreature->getSkillMod("combat_equillibrium");
 
@@ -1802,7 +1806,6 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 				data.getCommand()->sendAttackCombatSpam(creature, targetCreature, HIT, 0, data);
 		}
 	}
-
 }
 
 int CombatManager::calculatePoolsToDamage(int poolsToDamage) {

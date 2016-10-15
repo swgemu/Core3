@@ -55,7 +55,7 @@ ForceIntimidate1Command = {
 
 	stateEffects = {
 	  StateEffect(
-		INTIMIDATE_EFFECT,
+		FORCEINTIM,
 		{},
 		{},
 		{ "force_defense" },

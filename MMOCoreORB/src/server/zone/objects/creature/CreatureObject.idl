@@ -246,7 +246,7 @@ class CreatureObject extends TangibleObject {
 		super.setCountdownTimer(newCount, notifyClient);
 		cooldownTimerMap.updateToCurrentAndAddMili("incapTimer", getUseCount()*1000);
 	}
-		
+
 	/**
 	 * Sends a CommandQueueRemove ObjectControllerMessage to the owner client of this object
 	 * @pre { }
@@ -373,11 +373,11 @@ class CreatureObject extends TangibleObject {
 	 * @post {this object is locked, this object has the new posture set }
 	 * @param newPosture posture to set
 	 * @param immediate if set true the client will immediately play the posture animation, should not be used in combat
-	 * 
+	 *
 	 */
 	@preLocked
 	public native abstract void setPosture(int newPosture, boolean immediate = true, boolean notifyClient = true);
-	
+
 	@preLocked
 	public native abstract void updatePostures(boolean immediate = true);
 
@@ -675,7 +675,7 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	@arg1preLocked
 	public native void removeBuff(Buff buff);
-	
+
 	@preLocked
 	public native boolean removeStateBuff(unsigned long state);
 
@@ -685,7 +685,7 @@ class CreatureObject extends TangibleObject {
 	 */
 	@preLocked
 	public native void clearBuffs(boolean updateclient);
-	
+
 	/**
 	 * Renews the buff and all secondary buffs associated with it.
 	 * @param buffCRC The buff to renew from the list
@@ -1333,7 +1333,7 @@ class CreatureObject extends TangibleObject {
 	public void removeAttackDelay() {
 		cooldownTimerMap.updateToCurrentTime("nextAttackDelay");
 	}
-	
+
 	@dirty
 	public boolean hasIncapTimer() {
 		return !cooldownTimerMap.isPast("incapTimer");
@@ -1388,10 +1388,9 @@ class CreatureObject extends TangibleObject {
 	public boolean checkKnockdownRecovery() {
 		return cooldownTimerMap.isPast("knockdownRecovery");
 	}
-	
-	
+
 	// Updates directional arrows and planet names for group members out of range
-	@dirty 
+	@dirty
 	public native void updateGroupMFDPositions();
 
 	// misc methods
@@ -1460,7 +1459,7 @@ class CreatureObject extends TangibleObject {
 
 	@dirty
 	public native void doCombatAnimation(TangibleObject defender, unsigned int animationCRC, byte hit, byte trails, unsigned long weaponID=0);
-	
+
 	@dirty
 	public native void doCombatAnimation(unsigned int animationCRC);
 
@@ -1800,8 +1799,8 @@ class CreatureObject extends TangibleObject {
 
 	@dirty
 	public boolean isDroidSpecies() {
-		//Determine if creature is a droid.
-		return getSpecies() >= 203 && getSpecies() <= 225 && getSpecies() != 207;
+		//Determine if creature is a droid (including unused CRAFTED dark_trooper_phase_ii's, which are droid-hybrid as per SW canon & SWG).
+		return getSpecies() >= 203 && getSpecies() <= 225;
 	}
 
 	@dirty
@@ -1813,6 +1812,12 @@ class CreatureObject extends TangibleObject {
 	@dirty
 	public boolean isProbotSpecies() {
 		return getSpecies() == 216;
+	}
+
+	@dirty
+	public boolean isSpecialTrooper() {
+		//special exception for super-mobs, such as Dark Troopers & Novatroopers & their Rebel counterparts
+		return getClientObjectCRC() == 1312348723 || getClientObjectCRC() == 2706161932 || getClientObjectCRC() == 3925561809 || getClientObjectCRC() == 4280388140 || getClientObjectCRC() == 3502200687 || getClientObjectCRC() == 2642423881 || getClientObjectCRC() == 2500972348 || getClientObjectCRC() == 998077069 || getClientObjectCRC() == 3765099034 || getClientObjectCRC() == 2842148247 || getClientObjectCRC() == 1384420995 || getClientObjectCRC() == 2927400831 || getClientObjectCRC() == 3504398153 || getClientObjectCRC() == 1895884541 || getClientObjectCRC() == 3772693403 || getClientObjectCRC() == 1003033356 || getClientObjectCRC() == 1423654472 || getClientObjectCRC() == 3388026943 || getClientObjectCRC() == 3134134224;
 	}
 
 	@dirty
@@ -2037,7 +2042,7 @@ class CreatureObject extends TangibleObject {
 	public boolean isOnFire() {
 		return stateBitmask & CreatureState.ONFIRE;
 	}
-	
+
 	@read
 	public boolean isFeigningDeath() {
 		return stateBitmask & CreatureState.FEIGNDEATH;

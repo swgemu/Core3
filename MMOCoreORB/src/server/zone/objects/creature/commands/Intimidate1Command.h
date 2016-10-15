@@ -37,7 +37,7 @@ public:
 			CombatSpam* msg = new CombatSpam(creature, targetObject, creature, NULL, 0, "cbt_spam", "intim_out_of_range", 0);
 			creature->sendMessage(msg);
 		}
-		
+
 		if (res == SUCCESS && creature->isPlayerCreature()) {
 			ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 

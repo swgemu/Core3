@@ -458,6 +458,7 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("MINDDEGRADE_EFFECT", CommandEffect::MINDDEGRADE);
 	setGlobalInt("REMOVE_COVER_EFFECT", CommandEffect::REMOVECOVER);
 	setGlobalInt("FORCECHOKE", CommandEffect::FORCECHOKE);
+	setGlobalInt("FORCEINTIM", CommandEffect::FORCEINTIM);
 	setGlobalInt("ATTACKER_FORCE_STANDING", CommandEffect::ATTACKER_FORCE_STAND);
 	setGlobalInt("ATTACKER_FORCE_CROUCH", CommandEffect::ATTACKER_FORCE_CROUCH);
 	setGlobalInt("ATTACKER_FORCE_PRONE", CommandEffect::ATTACKER_FORCE_PRONE);
@@ -481,11 +482,11 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("COLD_DAMAGE", SharedWeaponObjectTemplate::COLD);
 	setGlobalInt("ACID_DAMAGE", SharedWeaponObjectTemplate::ACID);
 	setGlobalInt("ELECTRICITY_DAMAGE", SharedWeaponObjectTemplate::ELECTRICITY);
-    
+
 	// JediQueueCommand buff types
 	setGlobalInt("BASE_BUFF", JediQueueCommand::BASE_BUFF);
 	setGlobalInt("SINGLE_USE_BUFF", JediQueueCommand::SINGLE_USE_BUFF);
-    
+
 	// force heal targets
 	setGlobalInt("FORCE_HEAL_TARGET_SELF", ForceHealQueueCommand::TARGET_SELF);
 	setGlobalInt("FORCE_HEAL_TARGET_OTHER", ForceHealQueueCommand::TARGET_OTHER);

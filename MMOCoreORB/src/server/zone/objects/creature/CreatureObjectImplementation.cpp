@@ -106,7 +106,6 @@ void CreatureObjectImplementation::initializeTransientMembers() {
 	setContainerOwnerID(getObjectID());
 	setMood(moodID);
 
-
 	setLoggingName("CreatureObject");
 }
 
@@ -2396,7 +2395,7 @@ void CreatureObjectImplementation::setIntimidatedState(int durationSeconds) {
 		Locker blocker(multBuff);
 
 		multBuff->setSkillModifier("private_damage_divisor", 2);
-	
+
 		addBuff(multBuff);
 	}
 }
@@ -2611,13 +2610,13 @@ void CreatureObjectImplementation::notifySelfPositionUpdate() {
 
 			if (terrainManager != NULL) {
 				float waterHeight;
-				
+
 				Reference<CreatureObject*> creature = _this.getReferenceUnsafeStaticCast();
-				
+
 				if (creature->getParent() == NULL && terrainManager->getWaterHeight(creature->getPositionX(), creature->getPositionY(), waterHeight)) {
-					
+
 					if (creature->getPositionZ() + creature->getSwimHeight() - waterHeight < 0.2) {
-						
+
 						if (creature->hasState(CreatureState::ONFIRE))
 							creature->healDot(CreatureState::ONFIRE, 100);
 					}
@@ -3061,7 +3060,6 @@ bool CreatureObjectImplementation::isInBountyMission(CreatureObject* bountyHunte
 		return false;
 	}
 
-
 	ManagedReference<MissionObject*> mission = missionManager->getBountyHunterMission(bountyHunter);
 
 	if (mission == NULL || target == NULL) {
@@ -3348,7 +3346,17 @@ bool CreatureObjectImplementation::hasEffectImmunity(uint8 effectType) {
 	switch (effectType) {
 	case CommandEffect::BLIND:
 	case CommandEffect::DIZZY:
+		if (isDroidSpecies() || isWalkerSpecies() || isVehicleObject())
+			return true;
+		break;
+	case CommandEffect::FORCEINTIM:
+		if (isDroidSpecies() || isWalkerSpecies() || isVehicleObject())
+			return true;
+		break;
 	case CommandEffect::INTIMIDATE:
+		if (isSpecialTrooper() || isDroidSpecies() || isWalkerSpecies() || isVehicleObject())
+			return true;
+		break;
 	case CommandEffect::STUN:
 	case CommandEffect::NEXTATTACKDELAY:
 		if (isDroidSpecies() || isVehicleObject() || isWalkerSpecies())
@@ -3401,6 +3409,7 @@ int CreatureObjectImplementation::getGender() {
 
 	return creoData->getGender();
 }
+
 
 void CreatureObjectImplementation::updateVehiclePosition(bool sendPackets) {
 	ManagedReference<SceneObject*> parent = getParent().get();
