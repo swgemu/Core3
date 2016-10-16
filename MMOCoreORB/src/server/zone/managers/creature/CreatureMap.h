@@ -18,7 +18,7 @@ public:
 	}
 
 	void put(uint64 oid, CreatureObject* creature) {
-		CreatureObject* creo = HashTable<uint64, ManagedReference<CreatureObject*> >::put(oid, creature);
+		ManagedReference<CreatureObject*> creo = HashTable<uint64, ManagedReference<CreatureObject*> >::put(oid, creature);
 		if (creo != NULL && creo != creature)
 			System::out << "CREATUREMAP OID CONFLICT\n";
 	}

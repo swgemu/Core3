@@ -59,15 +59,15 @@ public:
 		return obj.get();
 	}
 
-	String getTaskKey() {
+	const String& getTaskKey() const {
 		return taskKey;
 	}
 
-	String getScreenPlay() {
+	const String& getScreenPlay() const {
 		return screenPlay;
 	}
 
-	String getArgs() {
+	const String& getArgs() const {
 		return args;
 	}
 
@@ -75,7 +75,11 @@ public:
 		this->persistentEvent = persistentEvent;
 	}
 
-	Reference<PersistentEvent*> getPersistentEvent() {
+	Reference<PersistentEvent*>& getPersistentEvent() {
+		return persistentEvent;
+	}
+
+	const Reference<PersistentEvent*>& getPersistentEvent() const {
 		return persistentEvent;
 	}
 
