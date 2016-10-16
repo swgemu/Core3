@@ -127,7 +127,9 @@ void DirectorManager::loadPersistentEvents() {
 			Reference<PersistentEvent*> event = Core::getObjectBroker()->lookUp(objectID).castTo<PersistentEvent*>();
 			++i;
 
-			if (event != NULL && persistentEvents.put(event->getEventName().hashCode(), event) != NULL) {
+			Reference<PersistentEvent*> oldEvent = persistentEvents.put(event->getEventName().hashCode(), event);
+
+			if (event != NULL && oldEvent != NULL) {
 				error("duplicate persistent event " + event->getEventName() + " loading from database!");
 			} else if (event != NULL) {
 				event->loadTransientTask();
@@ -2392,9 +2394,9 @@ ConversationScreen* DirectorManager::runScreenHandlers(const String& luaClass, C
 
 void DirectorManager::activateEvent(ScreenPlayTask* task) {
 	ManagedReference<SceneObject*> obj = task->getSceneObject();
-	String play = task->getScreenPlay();
-	String key = task->getTaskKey();
-	String args = task->getArgs();
+	const String& play = task->getScreenPlay();
+	const String& key = task->getTaskKey();
+	const String& args = task->getArgs();
 
 	Reference<PersistentEvent*> persistentEvent = task->getPersistentEvent();
 
