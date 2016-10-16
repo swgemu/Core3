@@ -63,6 +63,7 @@ function VillageJediManagerTownship:switchToNextPhase()
 	VillageJediManagerTownship:despawnSceneObjects(currentPhase)
 	VillageJediManagerTownship:handlePhaseChangeActiveQuests(phaseID, currentPhase)
 	VillageCommunityCrafting:doEndOfPhaseCheck()
+	VillageCommunityCrafting:doEndOfPhasePrizes()
 
 	currentPhase = currentPhase + 1
 

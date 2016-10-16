@@ -25,6 +25,9 @@ class CraftingTool extends ToolTangibleObject {
 	protected float effectiveness;
 	
 	protected int complexityLevel;
+	
+	protected int forceCriticalAssembly;
+	protected int forceCriticalExperiment;
 
 	@dereferenced
 	protected Vector<unsigned int> enabledTabs;
@@ -41,6 +44,8 @@ class CraftingTool extends ToolTangibleObject {
 		Logger.setLoggingName("CraftingTool");
 		status = "@crafting:tool_status_ready";
 		effectiveness = -15;
+		forceCriticalAssembly = 0;
+		forceCriticalExperiment = 0;
 		
 		super.setContainerInheritPermissionsFromParent(false);
 		super.setContainerDefaultDenyPermission(ContainerPermissions.OPEN);
@@ -160,4 +165,22 @@ class CraftingTool extends ToolTangibleObject {
 	public native Vector<unsigned int> getToolTabs();
 	
 	public native void disperseItems();
+	
+	@dirty
+	public int getForceCriticalAssembly() {
+		return forceCriticalAssembly;
+	}
+	
+	@dirty
+	public int getForceCriticalExperiment() {
+		return forceCriticalAssembly;
+	}
+	
+	public void setForceCriticalAssembly(int amount) {
+		forceCriticalAssembly = amount;
+	}
+	
+	public void setForceCriticalExperiment(int amount) {
+		forceCriticalExperiment = amount;
+	}
 }
