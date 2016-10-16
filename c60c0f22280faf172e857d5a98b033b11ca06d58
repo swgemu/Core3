@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_93ac7e8e",
+        "filename": "MMOCoreORB/src/server/zone/objects/pathfinding/NavMeshRegion.idl",
+        "patchSetId": 16
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2016-10-16T23:06:14Z",
+      "side": 1,
+      "message": "final string",
+      "revId": "c60c0f22280faf172e857d5a98b033b11ca06d58",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f39f0a4f",
+        "filename": "MMOCoreORB/src/server/zone/objects/region/CityRegionImplementation.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2016-10-16T23:06:14Z",
+      "side": 1,
+      "message": "Reference\u003cRegion*\u003e\u0026 or just auto\u0026 would avoid unnecessary refcounting",
+      "revId": "c60c0f22280faf172e857d5a98b033b11ca06d58",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
