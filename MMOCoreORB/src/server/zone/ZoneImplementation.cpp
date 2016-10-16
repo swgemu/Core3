@@ -510,7 +510,7 @@ void ZoneImplementation::updateActiveAreas(TangibleObject* tano) {
 }
 
 void ZoneImplementation::addSceneObject(SceneObject* object) {
-	SceneObject* old = objectMap->put(object->getObjectID(), object);
+	ManagedReference<SceneObject*> old = objectMap->put(object->getObjectID(), object);
 
 	//Civic and commercial structures map registration will be handled by their city
 	if (object->isStructureObject()) {
@@ -617,7 +617,7 @@ void ZoneImplementation::updatePlanetaryMapIcon(SceneObject* object, byte icon) 
 }
 
 void ZoneImplementation::dropSceneObject(SceneObject* object)  {
-	SceneObject* oldObject = objectMap->remove(object->getObjectID());
+	ManagedReference<SceneObject*> oldObject = objectMap->remove(object->getObjectID());
 
 	unregisterObjectWithPlanetaryMap(object);
 
