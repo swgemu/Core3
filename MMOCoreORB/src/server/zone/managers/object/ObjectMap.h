@@ -21,11 +21,11 @@ public:
 	ObjectMap(int initsize) : objects(initsize), maxConnections(50000) {
 	}
 
-	SceneObject* put(uint64 oid, SceneObject* object) {
+	ManagedReference<SceneObject*> put(uint64 oid, SceneObject* object) {
 		return objects.put(oid, object);
 	}
 
-	SceneObject* remove(uint64 oid) {
+	ManagedReference<SceneObject*> remove(uint64 oid) {
 		return objects.remove(oid);
 	}
 

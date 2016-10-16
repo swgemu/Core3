@@ -24,15 +24,11 @@ public:
 	PlayerMap(int initsize) : Mutex("PlayerMap"), players(initsize), iter(&players) {
 	}
 
-	CreatureObject* put(const String& name, CreatureObject* player, bool doLock = true) {
-		CreatureObject* play = NULL;
-
+	void put(const String& name, CreatureObject* player, bool doLock = true) {
 		lock(doLock);
 
 		try {
-
-			play = players.put(name.toLowerCase(), player);
-
+			players.put(name.toLowerCase(), player);
 		} catch (Exception& e) {
 			System::out << e.getMessage();
 			e.printStackTrace();
@@ -43,8 +39,6 @@ public:
 		}
 
 		unlock(doLock);
-
-		return play;
 	}
 
 	CreatureObject* get(const String& name, bool doLock = true) {
