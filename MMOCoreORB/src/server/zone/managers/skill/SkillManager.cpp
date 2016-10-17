@@ -12,6 +12,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/badges/Badge.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/jedi/JediManager.h"
 #include "templates/manager/TemplateManager.h"
 #include "templates/datatables/DataTableIff.h"
 #include "templates/datatables/DataTableRow.h"
@@ -372,16 +373,11 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 
 	Locker locker(creature);
 
+	//If they have already surrendered the skill, then return true.
+	if (!creature->hasSkill(skill->getSkillName()))
+		return true;
+
 	SkillList* skillList = creature->getSkillList();
-
-	if(skillName == "force_title_jedi_novice" && getForceSensitiveSkillCount(creature, true) > 0) {
-		return false;
-	}
-
-	if(skillName.beginsWith("force_sensitive_") &&
-		getForceSensitiveSkillCount(creature, false) <= 24 &&
-		creature->hasSkill("force_title_jedi_rank_01"))
-		return false;
 
 	for (int i = 0; i < skillList->size(); ++i) {
 		Skill* checkSkill = skillList->get(i);
@@ -390,13 +386,8 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 			return false;
 	}
 
-	if(creature->hasSkill("force_title_jedi_rank_03") && skillName.contains("force_discipline_") && !knightPrereqsMet(creature, skillName)) {
+	if (skillName.beginsWith("force_") && !(JediManager::instance()->canSurrenderSkill(creature, skillName)))
 		return false;
-	}
-
-	//If they have already surrendered the skill, then return true.
-	if (!creature->hasSkill(skill->getSkillName()))
-		return true;
 
 	creature->removeSkill(skill, notifyClient);
 
@@ -693,29 +684,15 @@ bool SkillManager::fulfillsSkillPrerequisites(const String& skillName, CreatureO
 	}
 
 	PlayerObject* ghost = creature->getPlayerObject();
-	if(ghost == NULL || ghost->getJediState() < skill->getJediStateRequired()) {
+	if (ghost == NULL || ghost->getJediState() < skill->getJediStateRequired()) {
 		return false;
 	}
 
 	if (ghost->isPrivileged())
 		return true;
 
-	if (skillName.beginsWith("force_sensitive")) { // Check for Force Sensitive boxes.
-		int index = skillName.indexOf("0");
-		if (index != -1) {
-			String skillNameFinal = skillName.subString(0, skillName.length() - 3);
-			if (creature->getScreenPlayState("VillageUnlockScreenPlay:" + skillNameFinal) < 2) {
-				return false;
-			}
-		}
-	}
-
-	if(skillName == "force_title_jedi_rank_01" && getForceSensitiveSkillCount(creature, false) < 24) {
-		return false;
-	}
-
-	if(skillName == "force_title_jedi_rank_03" && !knightPrereqsMet(creature, "")) {
-		return false;
+	if (skillName.beginsWith("force_")) {
+		return JediManager::instance()->canLearnSkill(creature, skillName);
 	}
 
 	return true;
@@ -725,9 +702,9 @@ int SkillManager::getForceSensitiveSkillCount(CreatureObject* creature, bool inc
 	SkillList* skills =  creature->getSkillList();
 	int forceSensitiveSkillCount = 0;
 
-	for(int i = 0; i < skills->size(); ++i) {
+	for (int i = 0; i < skills->size(); ++i) {
 		String skillName = skills->get(i)->getSkillName();
-		if(skillName.contains("force_sensitive") && (includeNoviceMasterBoxes || skillName.indexOf("0") != -1)) {
+		if (skillName.contains("force_sensitive") && (includeNoviceMasterBoxes || skillName.indexOf("0") != -1)) {
 			forceSensitiveSkillCount++;
 		}
 	}
@@ -735,30 +712,30 @@ int SkillManager::getForceSensitiveSkillCount(CreatureObject* creature, bool inc
 	return forceSensitiveSkillCount;
 }
 
-bool SkillManager::knightPrereqsMet(CreatureObject* creature, const String& skillNameBeingDropped) {
+bool SkillManager::villageKnightPrereqsMet(CreatureObject* creature, const String& skillToDrop) {
 	SkillList* skillList = creature->getSkillList();
 
 	int fullTrees = 0;
 	int totalJediPoints = 0;
 
-	for(int i = 0; i < skillList->size(); ++i) {
+	for (int i = 0; i < skillList->size(); ++i) {
 		Skill* skill = skillList->get(i);
 
 		String skillName = skill->getSkillName();
-		if(skillName.contains("force_discipline_") &&
+		if (skillName.contains("force_discipline_") &&
 			(skillName.indexOf("0") != -1 || skillName.contains("novice") || skillName.contains("master") )) {
 			totalJediPoints += skill->getSkillPointsRequired();
 
-			if(skillName.indexOf("4") != -1) {
+			if (skillName.indexOf("4") != -1) {
 				fullTrees++;
 			}
 		}
 	}
 
-	if(!skillNameBeingDropped.isEmpty()) {
-		Skill* skillBeingDropped = skillMap.get(skillNameBeingDropped.hashCode());
+	if (!skillToDrop.isEmpty()) {
+		Skill* skillBeingDropped = skillMap.get(skillToDrop.hashCode());
 
-		if(skillNameBeingDropped.indexOf("4") != -1) {
+		if (skillToDrop.indexOf("4") != -1) {
 			fullTrees--;
 		}
 

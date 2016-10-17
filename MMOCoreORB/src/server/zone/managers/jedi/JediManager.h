@@ -116,6 +116,19 @@ public:
 	 */
 	void useItem(SceneObject* item, const int itemType, CreatureObject* creature);
 
+	/**
+	 * Check for force skill prerequisites
+	 * @param creature the creature object.
+	 * @param skillName the name of the skill to check the prerequisite for
+	 */
+	bool canLearnSkill(CreatureObject* creature, const String& skillName);
+
+	/**
+	 * Check to ensure force skill prerequisites are maintained
+	 * @param creature the creature object.
+	 * @param skillName the name of the skill to be surrendered
+	 */
+	bool canSurrenderSkill(CreatureObject* creature, const String& skillName);
 
 	/**
 	 * Decides what to do next pending learning an FS tree.
@@ -123,7 +136,7 @@ public:
 	 * @param creature the creature object.
 	 * @param branch String of the branch name.
 	 */
-	void onFSTreeCompleted(CreatureObject* creature, String branch);
+	void onFSTreeCompleted(CreatureObject* creature, const String& branch);
 };
 
 }

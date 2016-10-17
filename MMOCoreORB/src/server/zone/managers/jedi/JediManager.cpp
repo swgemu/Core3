@@ -114,7 +114,37 @@ void JediManager::useItem(SceneObject* item, const int itemType, CreatureObject*
 	luaUseItem->callFunction();
 }
 
-void JediManager::onFSTreeCompleted(CreatureObject* creature, String branch) {
+bool JediManager::canLearnSkill(CreatureObject* creature, const String& skillName) {
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	Reference<LuaFunction*> luaStartTask = lua->createFunction(getJediManagerName(), "canLearnSkill", 1);
+	*luaStartTask << creature;
+	*luaStartTask << skillName;
+
+	lua_State* L = luaStartTask->callFunction();
+
+	bool result = lua_toboolean(L, -1);
+
+	lua_pop(L, 1);
+
+	return result;
+}
+
+bool JediManager::canSurrenderSkill(CreatureObject* creature, const String& skillName) {
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	Reference<LuaFunction*> luaStartTask = lua->createFunction(getJediManagerName(), "canSurrenderSkill", 1);
+	*luaStartTask << creature;
+	*luaStartTask << skillName;
+
+	lua_State* L = luaStartTask->callFunction();
+
+	bool result = lua_toboolean(L, -1);
+
+	lua_pop(L, 1);
+
+	return result;
+}
+
+void JediManager::onFSTreeCompleted(CreatureObject* creature, const String& branch) {
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
 	Reference<LuaFunction*> luaStartTask = lua->createFunction(getJediManagerName(), "onFSTreeCompleted", 0);
 	*luaStartTask << creature;

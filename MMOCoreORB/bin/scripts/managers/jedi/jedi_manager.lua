@@ -62,6 +62,18 @@ function JediManager:useItem(pSceneObject, itemType, pCreatureObject)
 	-- Default behaviour for the useItem event, do nothing.
 end
 
+--Check for force skill prerequisites
+function JediManager:canLearnSkill(pPlayer, skillName)
+	-- Default behaviour for the canLearnSkill check, return false.
+	return false
+end
+
+--Check to ensure force skill prerequisites are maintained
+function JediManager:canSurrenderSkill(pPlayer, skillName)
+	-- Default behaviour for the canSurrenderSkill check, return true.
+	return true
+end
+
 function JediManager:onFSTreeCompleted(pCreatureObject, branch)
 	-- Default behaviour for the onFSTreesCompleted event, do nothing.
 end
