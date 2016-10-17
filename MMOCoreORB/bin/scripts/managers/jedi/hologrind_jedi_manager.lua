@@ -243,6 +243,10 @@ function HologrindJediManager:useItem(pSceneObject, itemType, pCreatureObject)
 	end
 end
 
+function HologrindJediManager:canLearnSkill(pPlayer, skillName)
+	return true
+end
+
 registerScreenPlay("HologrindJediManager", true)
 
 return HologrindJediManager

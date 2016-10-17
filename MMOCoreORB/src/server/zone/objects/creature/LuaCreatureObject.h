@@ -112,6 +112,8 @@ namespace creature {
 		int enhanceCharacter(lua_State* L);
 		int setWounds(lua_State* L);
 		int setShockWounds(lua_State* L);
+		int getForceSensitiveSkillCount(lua_State* L);
+		int villageKnightPrereqsMet(lua_State* L);
 	private:
 		// The pointer to the 'real object' defined in object.cc
 		CreatureObject* realObject;

@@ -88,8 +88,46 @@ function VillageJediManager:onPlayerLoggedIn(pCreatureObject)
 			FsSad:doPhaseChangeFail(pCreatureObject)
 		end
 	end
+end
 
+--Check for force skill prerequisites
+function VillageJediManager:canLearnSkill(pPlayer, skillName)
+	if string.find(skillName, "force_sensitive") ~= nil then
+		local index = string.find(skillName, "0")
+		if index ~= nil then
+			local skillNameFinal = string.sub(skillName, 1, string.len(skillName) - 3)
+			if CreatureObject(pPlayer):getScreenPlayState("VillageUnlockScreenPlay:" .. skillNameFinal) < 2 then
+				return false
+			end
+		end
+	end
 
+	if skillName == "force_title_jedi_rank_01" and CreatureObject(pPlayer):getForceSensitiveSkillCount(false) < 24 then
+		return false
+	end
+
+	if skillName == "force_title_jedi_rank_03" and not CreatureObject(pPlayer):villageKnightPrereqsMet("") then
+		return false
+	end
+
+	return true
+end
+
+--Check to ensure force skill prerequisites are maintained
+function VillageJediManager:canSurrenderSkill(pPlayer, skillName)
+	if skillName == "force_title_jedi_novice" and CreatureObject(pPlayer):getForceSensitiveSkillCount(true) > 0 then
+		return false
+	end
+
+	if string.find(skillName, "force_sensitive_") and CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_01") and CreatureObject(pPlayer):getForceSensitiveSkillCount(false) <= 24 then
+		return false
+	end
+
+	if string.find(skillName, "force_discipline_") and CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_03") and not CreatureObject(pPlayer):villageKnightPrereqsMet(skillName) then
+		return false
+	end
+
+	return true
 end
 
 -- Handling of the onFSTreesCompleted event.
