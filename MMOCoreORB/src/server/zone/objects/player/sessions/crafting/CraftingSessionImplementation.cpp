@@ -649,8 +649,12 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	int custpoints = int(crafter->getSkillMod(custskill));
 
 	// Determine the outcome of the craft, Amazing through Critical
-	assemblyResult = craftingManager.get()->calculateAssemblySuccess(crafter,
-			draftSchematic, craftingTool->getEffectiveness());
+	assemblyResult = craftingManager.get()->calculateAssemblySuccess(crafter, draftSchematic, craftingTool->getEffectiveness());
+
+	if (assemblyResult != CraftingManager::AMAZINGSUCCESS && craftingTool->getForceCriticalAssembly() > 0) {
+		assemblyResult = CraftingManager::AMAZINGSUCCESS;
+		craftingTool->setForceCriticalAssembly(craftingTool->getForceCriticalAssembly() - 1);
+	}
 
 	Locker locker(prototype);
 	//Set initial crafting percentages
@@ -911,8 +915,12 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 
 		if (experimentationPointsUsed <= experimentationPointsTotal) {
 			// Set the experimentation result ie:  Amazing Success
-			experimentationResult = craftingManager->calculateExperimentationSuccess(
-					crafter, manufactureSchematic->getDraftSchematic(), failure);
+			experimentationResult = craftingManager->calculateExperimentationSuccess(crafter, manufactureSchematic->getDraftSchematic(), failure);
+
+			if (experimentationResult != CraftingManager::AMAZINGSUCCESS && craftingTool->getForceCriticalExperiment() > 0) {
+				experimentationResult = CraftingManager::AMAZINGSUCCESS;
+				craftingTool->setForceCriticalExperiment(craftingTool->getForceCriticalExperiment() - 1);
+			}
 		} else {
 			// If this code is reached, they have likely tried to hack to
 			// get more experimenting points, so lets just give them a failure

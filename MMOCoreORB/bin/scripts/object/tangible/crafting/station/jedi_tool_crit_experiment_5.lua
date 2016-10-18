@@ -41,16 +41,49 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_tangible_component_structure_lightweight_turret = object_tangible_component_structure_shared_lightweight_turret:new {
-	numberExperimentalProperties = {1, 1, 1, 1},
-	experimentalProperties = {"XX", "XX", "BK", "BK"},
-	experimentalWeights = {1, 1, 1, 1},
-	experimentalGroupTitles = {"null", "null", "accuracy", "speed"},
-	experimentalSubGroupTitles = {"null", "null", "accuracy", "speed"},
-	experimentalMin = {0, 0, 0, 0},
-	experimentalMax = {0, 0, 1000, 1000},
-	experimentalPrecision = {0, 0, 1, 1},
-	experimentalCombineType = {0, 0, 5, 5},
-}
+object_tangible_crafting_station_jedi_tool_crit_experiment_5 = object_tangible_crafting_station_shared_jedi_tool:new {
 
-ObjectTemplates:addTemplate(object_tangible_component_structure_lightweight_turret, "object/tangible/component/structure/lightweight_turret.iff")
+	templateType = CRAFTINGTOOL,
+
+	playerRaces = { "object/creature/player/bothan_male.iff",
+				"object/creature/player/bothan_female.iff",
+				"object/creature/player/human_male.iff",
+				"object/creature/player/human_female.iff",
+				"object/creature/player/ithorian_male.iff",
+				"object/creature/player/ithorian_female.iff",
+				"object/creature/player/moncal_male.iff",
+				"object/creature/player/moncal_female.iff",
+				"object/creature/player/rodian_male.iff",
+				"object/creature/player/rodian_female.iff",
+				"object/creature/player/sullustan_male.iff",
+				"object/creature/player/sullustan_female.iff",
+				"object/creature/player/trandoshan_male.iff",
+				"object/creature/player/trandoshan_female.iff",
+				"object/creature/player/twilek_male.iff",
+				"object/creature/player/twilek_female.iff",
+				"object/creature/player/wookiee_male.iff",
+				"object/creature/player/wookiee_female.iff",
+				"object/creature/player/zabrak_male.iff",
+				"object/creature/player/zabrak_female.iff" },
+
+	customizationOptions = {},
+	customizationDefaults = {},
+	
+	forceCriticalExperiment = 5, -- Guaranteed critical experiment
+
+	toolType = 4,
+	complexityLevel = 20,
+	enabledTabs = {2048},
+
+	numberExperimentalProperties = {1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX", "CD"},
+	experimentalWeights = {1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
+	experimentalMin = {0, 0, 1000, -15},
+	experimentalMax = {0, 0, 1000, 15},
+	experimentalCombineType = {0, 0, 4, 1},
+	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {1, 1, 1, 1},
+}
+ObjectTemplates:addTemplate(object_tangible_crafting_station_jedi_tool_crit_experiment_5, "object/tangible/crafting/station/jedi_tool_crit_experiment_5.iff")
