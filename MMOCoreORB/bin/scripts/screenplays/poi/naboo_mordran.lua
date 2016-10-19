@@ -21,9 +21,9 @@ function NabooMordranScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "outcast_gungan", 300, getRandomNumber(32) + -1985, 6.4, getRandomNumber(12) + -5302, 45, 0)
 	spawnMobile("naboo", "outcast_gungan", 300, getRandomNumber(32) + -1985, 6.4, getRandomNumber(12) + -5302, 45, 0)
 	spawnMobile("naboo", "outcast_gungan", 300, getRandomNumber(32) + -1985, 6.4, getRandomNumber(12) + -5302, 45, 0)
-	spawnMobile("naboo", "gungan_reject", 360, getRandomNumber(8) + -1971, 6.4, getRandomNumber(12) + -5302, 45, 0)
-	spawnMobile("naboo", "gungan_reject", 360, getRandomNumber(8) + -1971, 6.4, getRandomNumber(12) + -5302, 45, 0)
-	spawnMobile("naboo", "exiled_gungan", 360, getRandomNumber(8) + -1971, 6.4, getRandomNumber(12) + -5302, 45, 0)
-	spawnMobile("naboo", "exiled_gungan", 360, getRandomNumber(8) + -1971, 6.4, getRandomNumber(12) + -5302, 45, 0)
+	spawnMobile("naboo", "gungan_reject", 360, getRandomNumber(8) + -1974, 6.4, getRandomNumber(12) + -5302, 45, 0)
+	spawnMobile("naboo", "gungan_reject", 360, getRandomNumber(8) + -1974, 6.4, getRandomNumber(12) + -5302, 45, 0)
+	spawnMobile("naboo", "exiled_gungan", 360, getRandomNumber(8) + -1974, 6.4, getRandomNumber(12) + -5302, 45, 0)
+	spawnMobile("naboo", "exiled_gungan", 360, getRandomNumber(8) + -1974, 6.4, getRandomNumber(12) + -5302, 45, 0)
 	
 end
