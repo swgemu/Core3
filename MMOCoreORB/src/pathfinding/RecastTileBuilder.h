@@ -49,7 +49,7 @@ struct NavMeshTileHeader {
 };
 
 
-class RecastSettings {
+class RecastSettings : public Serializable {
 public:
 	float m_cellHeight;
 	float m_agentHeight;
@@ -70,6 +70,47 @@ public:
 	float distanceBetweenPoles;
 
 	RecastSettings();
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		 stream->writeFloat(m_cellHeight);
+		 stream->writeFloat(m_agentHeight);
+		 stream->writeFloat(m_agentRadius);
+		 stream->writeFloat(m_agentMaxClimb);
+		 stream->writeFloat(m_agentMaxSlope);
+		 stream->writeFloat(m_regionMinSize);
+		 stream->writeFloat(m_regionMergeSize);
+		 stream->writeFloat(m_edgeMaxLen);
+		 stream->writeFloat(m_edgeMaxError);
+		 stream->writeFloat(m_vertsPerPoly);
+		 stream->writeFloat(m_detailSampleDist);
+		 stream->writeFloat(m_detailSampleMaxError);
+		 stream->writeFloat(m_tileSize);
+		 stream->writeFloat(m_cellSize);
+		 stream->writeInt(m_partitionType);
+		 stream->writeFloat(distanceBetweenPoles);
+
+		return true;
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		m_cellHeight = stream->readFloat();
+		m_agentHeight = stream->readFloat();
+		m_agentRadius = stream->readFloat();
+		m_agentMaxClimb = stream->readFloat();
+		m_agentMaxSlope = stream->readFloat();
+		m_regionMinSize = stream->readFloat();
+		m_regionMergeSize = stream->readFloat();
+		m_edgeMaxLen = stream->readFloat();
+		m_edgeMaxError = stream->readFloat();
+		m_vertsPerPoly = stream->readFloat();
+		m_detailSampleDist = stream->readFloat();
+		m_detailSampleMaxError = stream->readFloat();
+		m_tileSize = stream->readFloat();
+		m_cellSize = stream->readFloat();
+		m_partitionType = stream->readInt();
+		distanceBetweenPoles = stream->readFloat();
+		return true;
+	}
 };
 
 class RecastTileBuilder : public Logger {

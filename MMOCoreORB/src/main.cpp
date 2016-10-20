@@ -7,7 +7,7 @@
 #include "server/ServerCore.h"
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/tests/TestCore.h"
-
+#include "navserver/NavServerCore.h"
 #include "gtest/gtest.h"
 
 class CoreProcess : public ChildProcess {
@@ -70,6 +70,10 @@ int main(int argc, char* argv[]) {
 			testing::InitGoogleTest(&argc, argv);
 
 			ret = RUN_ALL_TESTS();
+		} else if (arguments.contains("runNavServer")) {
+			printf("Starting navmesh server");
+			NavServerCore core;
+			core.start();
 		} else {
 			bool truncateData = arguments.contains("clean");
 

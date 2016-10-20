@@ -2,8 +2,6 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
-#include "server/zone/managers/object/ObjectManager.h"
-
 #include "ObjectDatabaseCore.h"
 
 ObjectDatabaseCore::ObjectDatabaseCore() : Core("log/odb3.log"), Logger("ObjectDatabaseCore") {
@@ -14,8 +12,6 @@ void ObjectDatabaseCore::initialize() {
 	info("starting up ObjectDatabase..");
 
 	DistributedObjectBroker* orb = DistributedObjectBroker::initialize("", 44440);
-
-	orb->setCustomObjectManager(ObjectManager::instance());
 
 }
 

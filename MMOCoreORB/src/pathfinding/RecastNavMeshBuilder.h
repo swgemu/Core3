@@ -82,8 +82,7 @@ public:
 
 	static void dumpOBJ(const String& filename, Vector <Reference<MeshData*>>& data);
 
-	static Reference<MeshData*>
-	getTerrainMesh(Vector3& position, float terrainSize, TerrainManager* terrainManager, float chunkSize,
+	static Reference<MeshData*> getTerrainMesh(Vector3& position, float terrainSize, TerrainManager* terrainManager, float chunkSize,
 				   float distanceBetweenHeights);
 
 	void saveAll(const String& file);

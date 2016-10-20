@@ -40,7 +40,7 @@
 # this exception also makes it possible to release a modified version 
 # which carries forward this exception.
 
-DEFAULT_FLAGS= $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11 -march=native
+DEFAULT_FLAGS= $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11 -march=native -fno-omit-frame-pointer
 AM_CXXFLAGS = $(DEFAULT_FLAGS) -O0
 
 ENGINE3_PATH=../../../../MMOEngine
@@ -72,12 +72,12 @@ LIBS =	$(SYSTEM_LIBS)  \
 	-L$(ENGINE3_PATH)/lib/unix \
 	-L/usr/local/lib \
 	-L$(GTEST_PATH)/lib \
-	-lmysqlclient -lz -lengine3 -llua -ldb-5.3 -lssl -lcrypto -lgtest
+	-lmysqlclient -lz -lengine3 -llua -ldb-5.3 -lssl -lcrypto -lgtest -ljemalloc
 	
 #AM_LDFLAGS = -pagezero_size 10000 -image_base 100000000
 #AM_LDFLAGS = --enable-stdcall-fixup
 
-bin_PROGRAMS = core3  #odb3
+bin_PROGRAMS = core3 #odb3
 
 libcore3pathfinding_a_CXXFLAGS = $(DEFAULT_FLAGS) -Ofast
 noinst_LIBRARIES = libcore3templates.a libcore3terrain.a libcore3pathfinding.a
@@ -86,6 +86,8 @@ core3_LDADD = libcore3templates.a libcore3terrain.a libcore3pathfinding.a
 
 core3client_LDADD = libcore3templates.a libcore3terrain.a libcore3pathfinding.a
 core3client_LDFLAGS = -losg -losgUtil -losgTerrain -losgViewer -lOpenThreads -losgGA -ljemalloc
+
+core3navserver_LDADD = $(core3_LDADD)
 
 #engine/engine.h.gch:
 #	$(CXX) $(INCLUDES) $(ENGINE3_PATH)/src/engine/engine.h
@@ -106,7 +108,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/pathfinding/NavMeshRegion.cpp \
+core3_IDLS =	autogen/server/zone/objects/pathfinding/NavWorker.cpp \
+				autogen/server/zone/objects/pathfinding/NavMeshRegion.cpp \
 				autogen/server/zone/objects/creature/buffs/ConcealBuff.cpp \
 				autogen/server/zone/objects/tangible/eventperk/ScavengerDroid.cpp \
 				autogen/server/zone/managers/gcw/GCWBaseShutdownObserver.cpp \
@@ -392,6 +395,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/login/account/AccountImplementation.cpp \
 		server/login/account/GalaxyAccountInfo.cpp \
 		server/login/account/GalaxyAccountInfoMap.cpp \
+		server/zone/objects/pathfinding/NavWorkerImplementation.cpp \
 		server/zone/objects/structure/events/StructureMaintenanceTask.cpp \
 		server/zone/objects/tangible/components/ElevatorMenuComponent.cpp \
 		server/zone/objects/tangible/components/ElevatorUpMenuComponent.cpp \
@@ -866,6 +870,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/conversation/LuaConversationScreen.cpp \
 		server/zone/objects/creature/ai/CreatureTemplate.cpp \
 		server/zone/objects/creature/conversation/LuaConversationTemplate.cpp \
+		navserver/NavServerCore.cpp \
 		main.cpp
 
 libcore3terrain_a_SOURCES = terrain/ProceduralTerrainAppearance.cpp \
@@ -966,7 +971,6 @@ core3client_SOURCES = \
 	client/zone/managers/appearance/AppearanceManager.cpp \
 	conf/ConfigManager.cpp \
 	tre3/TreeFile.cpp
-
 #BUILT_SOURCES = engine/engine.h.gch \
 #				server/zone/objects/scene/SceneObject.h.gch
  

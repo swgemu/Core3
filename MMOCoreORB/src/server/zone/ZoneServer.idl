@@ -11,6 +11,7 @@ import engine.service.ServiceHandler;
 import engine.service.ServiceClient;
 import engine.service.Message;
 import engine.core.ManagedService;
+import engine.core.ManagedReference;
 import engine.core.TaskManager;
 import engine.log.Logger;
 
@@ -31,6 +32,7 @@ import server.zone.ZoneHandler;
 import server.zone.Zone;
 import server.chat.ChatManager;
 import conf.ConfigManager;
+import server.zone.objects.pathfinding.NavWorker;
 import server.zone.managers.object.ObjectManager;
 import server.zone.managers.player.PlayerManager;
 import server.zone.managers.objectcontroller.ObjectController;
@@ -52,7 +54,7 @@ import server.zone.managers.creature.PetManager;
 import server.zone.managers.guild.GuildManager;
 import server.zone.managers.city.CityManager;
 
-class ZoneServer extends ManagedService implements Logger {
+class ZoneServer extends ManagedObject implements Logger {
 	private transient DatagramServiceThread datagramService;
 
 	private transient BasePacketHandler phandler;
@@ -401,6 +403,8 @@ class ZoneServer extends ManagedService implements Logger {
 	public void setServerState(int state) {
 		serverState = state;
 	}
+
+	public native void registerNavWorker(NavWorker worker);
 
 	public native void setServerStateLocked();
 

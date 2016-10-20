@@ -15,15 +15,10 @@
 #include "server/zone/Zone.h"
 #include "engine/util/u3d/AABB.h"
 
-
 class NavMeshJob : public Object {
 protected:
-	NavMeshJob(const NavMeshJob& rhs) : Object(rhs), queue(rhs.queue) {
-		zone = rhs.zone;
-		region = rhs.region;
-	}
-	Reference<NavMeshRegion*> region;
-	WeakReference<Zone*> zone;
+	ManagedReference<NavMeshRegion*> region;
+	ManagedWeakReference<Zone*> zone;
 	Vector<AABB> areas;
 	RecastSettings settings;
 	const String& queue;
@@ -31,11 +26,20 @@ protected:
 	Mutex mutex;
 public:
 
+	NavMeshJob();
+
+	NavMeshJob(const NavMeshJob& rhs) : Object(rhs), queue(rhs.queue) {
+		zone = rhs.zone;
+		region = rhs.region;
+		areas = rhs.areas;
+		settings = rhs.settings;
+	}
+
 	Vector<AABB>& getAreas() {
 		return areas;
 	}
 
-	Reference<Zone*> getZone() {
+	ManagedReference<Zone*> getZone() {
 		return zone.get();
 	}
 
@@ -61,6 +65,10 @@ public:
 	}
 
 	void addArea(const AABB& area);
+
+	bool toBinaryStream(ObjectOutputStream* stream);
+
+	bool parseFromBinaryStream(ObjectInputStream* stream);
 
 };
 #endif

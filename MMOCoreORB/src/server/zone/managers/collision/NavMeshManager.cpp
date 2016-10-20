@@ -91,7 +91,7 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
     Locker areaLocker(job->getMutex());
     //copy and clear this vector otherwise our scene data may not be correct if a zone was added during the build process
     Vector <AABB> dirtyZones = Vector<AABB>(job->getAreas());
-    job->getAreas().removeAll();
+    //job->getAreas().removeAll();
     areaLocker.release();
 
     NavMeshRegion *region = job->getRegion();
@@ -122,6 +122,20 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
 
             meshData.addAll(sceno->getTransformedMeshData(&identity));
         }
+    }
+
+    if (workers.size() > 0) {
+        const ManagedReference<NavWorker*>& worker = workers.get(0);
+		if (worker == NULL)
+			info("NULL navmeshworker from vector", true);
+		else {
+			if (job->getZone() == NULL) {
+				info("NULL job->getZone()", true);
+			} info("job->getZone() == " + String::hexvalueOf((int64)job->getZone()->_getObjectID()), true);
+			//worker->buildMesh(*job);
+			worker->testBuild(job->getZone(), job->getRegion(), job->getAreas());
+		}
+		job->getAreas().removeAll();
     }
 
     RecastNavMeshBuilder *builder = NULL;

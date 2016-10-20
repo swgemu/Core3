@@ -29,6 +29,8 @@
 #include "terrain/ProceduralTerrainAppearance.h"
 
 ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& name) {
+	_initializeImplementation();
+
 	processor = serv;
 	server = processor->getZoneServer();
 

@@ -5,6 +5,11 @@
 #include "NavMeshManager.h"
 
 
+NavMeshJob::NavMeshJob() :queue(NavMeshManager::TileQueue) {
+    zone = NULL;
+    region = NULL;
+}
+
 void NavMeshJob::addArea(const AABB& area) {
     float size = area.extents().getX() * area.extents().getZ();
 
@@ -28,4 +33,20 @@ void NavMeshJob::addArea(const AABB& area) {
     }
 
     areas.add(area);
+}
+
+bool NavMeshJob::toBinaryStream(ObjectOutputStream* stream) {
+    TypeInfo<RecastSettings>::toBinaryStream(&settings, stream);
+    TypeInfo<ManagedReference<NavMeshRegion*>>::toBinaryStream(&region, stream);
+    TypeInfo<ManagedWeakReference<Zone*>>::toBinaryStream(&zone, stream);
+	TypeInfo<Vector<AABB>>::toBinaryStream(&areas, stream);
+    return true;
+}
+
+bool NavMeshJob::parseFromBinaryStream(ObjectInputStream* stream) {
+    TypeInfo<RecastSettings>::parseFromBinaryStream(&settings, stream);
+    TypeInfo<ManagedReference<NavMeshRegion*>>::parseFromBinaryStream(&region, stream);
+    TypeInfo<ManagedWeakReference<Zone*>>::parseFromBinaryStream(&zone, stream);
+	TypeInfo<Vector<AABB>>::parseFromBinaryStream(&areas, stream);
+    return true;
 }

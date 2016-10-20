@@ -38,6 +38,7 @@
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/managers/collision/NavMeshManager.h"
 
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -53,8 +54,9 @@
 #include "ShutdownTask.h"
 
 ZoneServerImplementation::ZoneServerImplementation(ConfigManager* config) :
-		ManagedServiceImplementation(), Logger("ZoneServer") {
+		ManagedObjectImplementation(), Logger("ZoneServer") {
 
+	_initializeImplementation();
 	configManager = config;
 
 	galaxyID = config->getZoneGalaxyID();
@@ -865,4 +867,11 @@ void ZoneServerImplementation::changeLoginMessage(const String& motd) {
 
 	delete writer;
 	delete file;
+}
+
+void ZoneServerImplementation::registerNavWorker(NavWorker* worker) {
+	if (worker == NULL)
+		info("Attempted to register null navworker", true);
+	else
+		NavMeshManager::instance()->registerWorker(worker);
 }

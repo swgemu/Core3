@@ -76,6 +76,8 @@ namespace zone {
 
 		void loadStaticObjects();
 
+		void loadNavRegions();
+
 		// object methods
 		SceneObject* createObject(uint32 objectCRC, int persistenceLevel, const String& database, uint64 oid = 0);
 

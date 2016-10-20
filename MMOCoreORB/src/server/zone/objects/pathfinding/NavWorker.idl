@@ -1,0 +1,14 @@
+package server.zone.objects.pathfinding;
+
+import engine.core.ManagedObject;
+
+include server.zone.managers.collision.NavMeshJob;
+include pathfinding.RecastNavMesh;
+include engine.util.u3d.AABB;
+
+class NavWorker extends ManagedObject {
+	public NavWorker() { }
+	public native void buildMesh(@dereferenced NavMeshJob job);
+
+	public native void testBuild(Zone zone, NavMeshRegion region, @dereferenced Vector<AABB> areas);
+}

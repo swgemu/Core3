@@ -11,9 +11,11 @@
 #include "engine/engine.h"
 #include "engine/core/LambdaFunction.h"
 #include "server/zone/objects/pathfinding/NavMeshRegion.h"
+#include "server/zone/objects/pathfinding/NavWorker.h"
 #include "pathfinding/RecastNavMesh.h"
 #include "server/zone/Zone.h"
 #include "engine/util/u3d/AABB.h"
+#include "system/util/SynchronizedVector.h"
 #include "server/zone/managers/collision/NavMeshJob.h"
 
 class NavMeshManager : public Singleton<NavMeshManager>, public Logger, public Object{
@@ -24,10 +26,15 @@ protected:
 	VectorMap<String, Reference<NavMeshJob*> > runningJobs;
 	Mutex jobQueueMutex;
 
+	SynchronizedVector<ManagedReference<NavWorker*>> workers;
 
 	void startJob(Reference<NavMeshJob*> job);
     void checkJobs();
 public:
+	void registerWorker(ManagedReference<NavWorker*> worker) {
+		workers.add(worker);
+	}
+
 	NavMeshManager();
 
 	~NavMeshManager() { }

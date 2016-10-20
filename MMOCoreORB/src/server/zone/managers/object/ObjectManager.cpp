@@ -64,6 +64,7 @@ ObjectManager::ObjectManager() : DOBObjectManager() {
 	databaseManager->loadObjectDatabase("questdata", true);
 	databaseManager->loadObjectDatabase("surveys", true);
 	databaseManager->loadObjectDatabase("accounts", true);
+	databaseManager->loadObjectDatabase("navareas", true);
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
