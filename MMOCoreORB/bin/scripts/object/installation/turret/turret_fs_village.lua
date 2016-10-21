@@ -41,17 +41,29 @@
 --this exception also makes it possible to release a modified version 
 
 
+object_installation_turret_turret_fs_village = object_installation_turret_shared_turret_block_sm:new {
+	pvpStatusBitmask = ATTACKABLE,
+	optionsBitmask = 0,
+	maxCondition = 75000,
+	zoneComponent = "TurretZoneComponent",
+	dataObjectComponent = "TurretDataComponent",
+	factionString = "fs_villager",
+	-- Damagetypes in WeaponObject
+	vulnerability = BLAST + LIGHTSABER,
+	-- LIGHT, MEDIUM, HEAVY
+	rating = LIGHT,
 
---Children folder includes
-includeFile("installation/turret/base/serverobjects.lua")
+	kinetic = 80,
+	energy = 95,
+	electricity = 80,
+	stun = 100,
+	blast = -1,
+	heat = 80,
+	cold = 80,
+	acid = 80,
+	lightSaber = -1,
+	chanceHit = 4,
+	weapon = "object/weapon/ranged/turret/turret_block_large.iff",
+}
 
--- Server Objects
-includeFile("installation/turret/turret_block_large.lua")
-includeFile("installation/turret/turret_block_med.lua")
-includeFile("installation/turret/turret_block_sm.lua")
-includeFile("installation/turret/turret_dish_large.lua")
-includeFile("installation/turret/turret_dish_sm.lua")
-includeFile("installation/turret/turret_fs_village.lua")
-includeFile("installation/turret/turret_tower_large.lua")
-includeFile("installation/turret/turret_tower_med.lua")
-includeFile("installation/turret/turret_tower_sm.lua")
+ObjectTemplates:addTemplate(object_installation_turret_turret_fs_village, "object/installation/turret/turret_fs_village.iff")
