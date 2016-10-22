@@ -47,6 +47,9 @@ includeFile("themepark/smc/themeParkSmcZideera.lua")
 includeFile("themepark/smc/themeParkSmcVhaundaIzaryx.lua")
 includeFile("themepark/smc/themeParkSmcVurleneAujante.lua")
 
+-- Screenplay utilities
+includeFile("utils/quest_spawner.lua")
+
 -- Staff tools
 includeFile("tools/tools.lua")
 includeFile("tools/shuttle_dropoff.lua")
@@ -110,6 +113,7 @@ includeFile("village/village_gm_commands.lua")
 includeFile("village/village_jedi_manager_common.lua")
 includeFile("village/village_jedi_manager_holocron.lua")
 includeFile("village/village_jedi_manager_township.lua")
+includeFile("village/village_raids.lua")
 includeFile("village/village_spawn_table.lua")
 includeFile("village/intro/glowing.lua")
 includeFile("village/intro/go_to_dathomir.lua")

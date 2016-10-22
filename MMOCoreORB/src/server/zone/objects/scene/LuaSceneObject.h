@@ -100,6 +100,7 @@ namespace scene {
 		int getChildObject(lua_State* L);
 		int getContainerOwnerID(lua_State* L);
 		int info(lua_State* L);
+		int getPlayersInRange(lua_State* L);
 
 	protected:
 		SceneObject* _getRealSceneObject() {

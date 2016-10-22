@@ -65,6 +65,10 @@ function VillageJediManagerTownship:switchToNextPhase()
 	VillageCommunityCrafting:doEndOfPhaseCheck()
 	VillageCommunityCrafting:doEndOfPhasePrizes()
 
+	if (currentPhase == 3 or currentPhase == 4) then
+		VillageRaids:despawnTurrets()
+	end
+
 	currentPhase = currentPhase + 1
 
 	if currentPhase > VILLAGE_TOTAL_NUMBER_OF_PHASES then
@@ -79,6 +83,13 @@ function VillageJediManagerTownship:switchToNextPhase()
 	if (currentPhase == 2) then
 		VillageCommunityCrafting:createAttributeValueTables()
 		VillageCommunityCrafting:createProjectStatsTables()
+	end
+
+	VillageJediManagerTownship:destroyVillageMasterObject()
+	VillageJediManagerTownship:createVillageMasterObject()
+
+	if (currentPhase == 3 or currentPhase == 4) then
+		VillageRaids:doPhaseInit()
 	end
 
 	Logger:log("Switching village phase to " .. currentPhase, LT_INFO)
@@ -98,7 +109,42 @@ function VillageJediManagerTownship:start()
 		VillageJediManagerTownship.setCurrentPhaseInit()
 		VillageJediManagerTownship:spawnMobiles(currentPhase, true)
 		VillageJediManagerTownship:spawnSceneObjects(currentPhase, true)
+		VillageJediManagerTownship:createVillageMasterObject()
 	end
+end
+
+function VillageJediManagerTownship:createVillageMasterObject()
+	local phaseID = VillageJediManagerTownship.getCurrentPhaseID()
+	local pMaster = spawnSceneObject("dathomir", "object/tangible/spawning/quest_spawner.iff", 5291, 78.5, -4126, 0, 0)
+
+	if (pMaster == nil) then
+		printf("Error in VillageJediManagerTownship:createVillageObject(), unable to create master village object.\n")
+		return
+	end
+
+	VillageJediManagerTownship:setMasterID(SceneObject(pMaster):getObjectID())
+end
+
+function VillageJediManagerTownship:destroyVillageMasterObject()
+	local pMaster = VillageJediManagerTownship:getMasterObject()
+
+	if (pMaster == nil) then
+		return
+	end
+
+	SceneObject(pMaster):destroyObjectFromWorld()
+end
+
+function VillageJediManagerTownship:setMasterID(objectID)
+	local phaseID = VillageJediManagerTownship.getCurrentPhaseID()
+	setQuestStatus("Village:masterID:" .. phaseID, objectID)
+end
+
+function VillageJediManagerTownship:getMasterObject()
+	local phaseID = VillageJediManagerTownship.getCurrentPhaseID()
+	local masterID = getQuestStatus("Village:masterID:" .. phaseID)
+
+	return getSceneObject(masterID)
 end
 
 -- Spawning functions.
