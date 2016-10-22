@@ -32,7 +32,7 @@ factionList = {
 	{ "fed_dub", true, "binayre,drall,liberation_party,lost_aqualish", "", 1.0 },
 	{ "flail", true, "hidden_daggers", "", 1.0 },
 	{ "followers_of_lord_nyax", true, "beldonnas_league,corsec", "", 1.0 },
-	{ "fs_villager", true, "sith_shadow", "", 0.0 },
+	{ "fs_villager", true, "sith_shadow,sith_shadow_nonaggro", "", 0.0 },
 	{ "garyn", true, "restuss", "", 1.0 },
 	{ "gondula_tribe", true, "donkuwah_tribe,korga_tribe,pubam,endor_marauder", "panshee_tribe", 1.0 },
 	{ "gungan", true, "borvo,plasma_thief,swamp_rat", "", 1.0 },
