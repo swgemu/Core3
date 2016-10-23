@@ -87,7 +87,8 @@ void StructureObjectImplementation::createNavRegion() {
 	}
 
 	Vector3 position = Vector3(getPositionX(), 0, getPositionY());
-	navmeshRegion->initializeNavRegion(position, length * 1.25f, zone, name);
+	// This is invoked when a new faction base is placed, always force a rebuild
+	navmeshRegion->initializeNavRegion(position, length * 1.25f, zone, name, true, true);
 
 	zone->transferObject(navmeshRegion, -1, false);
 }
