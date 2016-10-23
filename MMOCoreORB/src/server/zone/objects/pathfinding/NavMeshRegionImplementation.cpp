@@ -36,12 +36,13 @@ bool NavMeshRegionImplementation::isInRange(float x, float y, float range) {
 }
 
 void NavMeshRegionImplementation::updateNavMesh(const AABB& bounds) {
+	Locker locker(asNavRegion());
 
     RecastSettings settings;
     if (navMesh == NULL || !navMesh->isLoaded()) {
-        NavMeshManager::instance()->enqueueJob(zone, _this.getReferenceUnsafeStaticCast(), meshBounds, settings, NavMeshManager::TileQueue);
+        NavMeshManager::instance()->enqueueJob(zone, asNavRegion(), meshBounds, settings, NavMeshManager::TileQueue);
     } else {
-        NavMeshManager::instance()->enqueueJob(zone, _this.getReferenceUnsafeStaticCast(), bounds, settings, NavMeshManager::TileQueue);
+        NavMeshManager::instance()->enqueueJob(zone, asNavRegion(), bounds, settings, NavMeshManager::TileQueue);
     }
 }
 
@@ -63,7 +64,6 @@ void NavMeshRegionImplementation::initialize() {
 }
 
 void NavMeshRegionImplementation::notifyEnter(SceneObject* object) {
-
     if(disableUpdates)
         return;
 
@@ -84,27 +84,33 @@ void NavMeshRegionImplementation::notifyEnter(SceneObject* object) {
     if (shot->getCollisionMaterialFlags() == 0 || shot->getCollisionMaterialBlockFlags() == 0) // soft object
         return;
 
+    ReadLocker rlocker(&containedLock);
+
     if(!containedObjects.contains(object->getObjectID()) &&  !object->getObjectTemplate()->getTemplateFileName().contains("construction_")) {
+    	rlocker.release();
+
         updateNavMesh(object, false);
     }
 }
 
 void NavMeshRegionImplementation::notifyExit(SceneObject* object) {
-
     if(disableUpdates)
         return;
 
     info("NotifyExit: " + object->getObjectTemplate()->getTemplateFileName(), true);
     info("ContainedObjects.size(): " + String::valueOf(containedObjects.size()), true);
 
+    ReadLocker rlocker(&containedLock);
+
     if(containedObjects.contains(object->getObjectID())) {
         info(object->getObjectTemplate()->getTemplateFileName() + " caused navmesh rebuild with: collisionmaterialflags " + String::valueOf(object->getObjectTemplate()->getCollisionMaterialFlags()) + "\ncollisionmaterialblockflags " + String::valueOf(object->getObjectTemplate()->getCollisionMaterialBlockFlags())+ "\ncollisionmaterialpassflags " + String::valueOf(object->getObjectTemplate()->getCollisionMaterialPassFlags()) + "\ncollisionmaterialactionflags " + String::valueOf(object->getObjectTemplate()->getCollisionActionFlags())+ "\ncollisionmaterialactionpassflags " + String::valueOf(object->getObjectTemplate()->getCollisionActionPassFlags()) + "\ncollisionmaterialactionBlockflags " + String::valueOf(object->getObjectTemplate()->getCollisionActionBlockFlags()), true);
+
+        rlocker.release();
         updateNavMesh(object, true);
     }
 }
 
 void NavMeshRegionImplementation::updateNavMesh(SceneObject *object, bool remove) {
-
     if (disableUpdates) // We check this redundantly as to not burden the zoneContainerComponent with this logic
         return;
 
@@ -119,6 +125,8 @@ void NavMeshRegionImplementation::updateNavMesh(SceneObject *object, bool remove
         bbox = AABB(position-extents, position+extents);
         info("Rebuilding from structure extents :\n" + bbox.getMinBound()->toString() + ", " + bbox.getMaxBound()->toString(), true);
         updateNavMesh(bbox);
+
+        Locker containerLock(&containedLock);
 
         if (remove) {
             containedObjects.remove(object->getObjectID());

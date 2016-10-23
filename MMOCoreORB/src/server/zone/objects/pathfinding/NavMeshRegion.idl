@@ -8,6 +8,7 @@ import server.zone.objects.region.Region;
 import server.zone.objects.scene.SceneObject;
 import engine.util.u3d.AABB;
 import engine.util.u3d.Vector3;
+import system.thread.ReadWriteLock;
 include pathfinding.RecastNavMesh;
 
 class NavMeshRegion extends Region {
@@ -26,6 +27,9 @@ class NavMeshRegion extends Region {
     // List of objects this navmesh currently has built in it's scene.
 	@dereferenced
 	protected HashSet<unsigned long> containedObjects;
+	
+	@dereferenced
+	protected transient ReadWriteLock containedLock;
 
 	public NavMeshRegion() {
 		super();
@@ -110,7 +114,6 @@ class NavMeshRegion extends Region {
 
     // Updates a navmesh using the specified scene object
     // toRemove specifies whether we are adding or removing to the navmesh
-    @preLocked
     public native void updateNavMesh(SceneObject object, boolean toRemove);
 
     @local
