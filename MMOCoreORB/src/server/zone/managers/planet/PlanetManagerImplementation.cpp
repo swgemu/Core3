@@ -213,9 +213,12 @@ void PlanetManagerImplementation::loadLuaConfig() {
 
 	if (pendingNavMeshes.size() > 0) {
 		for (int i = pendingNavMeshes.size() - 1; i >= 0; i--) {
-			NavMeshRegion *region = pendingNavMeshes.get(i);
+			NavMeshRegion* region = pendingNavMeshes.get(i);
 			region->updateNavMesh(region->getBoundingBox());
+
+			Locker locker(zone);
 			zone->transferObject(region, -1, false);
+
 			pendingNavMeshes.remove(i);
 		}
 	}
