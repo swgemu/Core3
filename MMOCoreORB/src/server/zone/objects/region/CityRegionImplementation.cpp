@@ -60,6 +60,16 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 
 	if (isRegistered())
 		zone->getPlanetManager()->addRegion(_this.getReferenceUnsafeStaticCast());
+
+	ZoneServer *zServer = ServerCore::getZoneServer();
+	if (zServer != NULL) {
+		bool destroyNavRegions = zServer->shouldDeleteNavRegions();
+
+		if (destroyNavRegions) {
+			destroyNavRegion();
+			createNavRegion();
+		}
+	}
 }
 
 void CityRegionImplementation::initialize() {
@@ -445,10 +455,22 @@ bool CityRegionImplementation::hasZoningRights(uint64 objectid) {
 }
 
 void CityRegionImplementation::createNavRegion() {
-    createNavRegion(NavMeshManager::TileQueue);
+	// This is invoked when a new city hall is placed, always force a rebuild
+    createNavRegion(NavMeshManager::TileQueue, true);
 }
 
-void CityRegionImplementation::createNavRegion(const String& queue) {
+void CityRegionImplementation::destroyNavRegion() {
+	if (navmeshRegion != NULL) {
+		Locker locker(navmeshRegion);
+		navmeshRegion->destroyObjectFromWorld(true);
+		navmeshRegion = NULL;
+	}
+}
+
+void CityRegionImplementation::createNavRegion(const String& queue, bool forceRebuild) {
+
+	if (forceRebuild)
+		destroyNavRegion();
 
 	bool clientRegion = isClientRegion();
 
@@ -520,10 +542,10 @@ void CityRegionImplementation::createNavRegion(const String& queue) {
 		AABB box(Vector3(minx, miny, minz), Vector3(maxx, maxy, maxz));
 		Vector3 position = Vector3(box.center()[0], 0, box.center()[1]);
 		navmeshRegion->disableMeshUpdates(true);
-		navmeshRegion->initializeNavRegion(position, box.extents()[box.longestAxis()], zone, name);
+		navmeshRegion->initializeNavRegion(position, box.extents()[box.longestAxis()], zone, name, true, forceRebuild);
 	} else {
 		Vector3 position = Vector3(getPositionX(), 0, getPositionY());
-		navmeshRegion->initializeNavRegion(position, 480.0f, zone, name);
+		navmeshRegion->initializeNavRegion(position, 480.0f, zone, name, true, forceRebuild);
 	}
 
 	zone->transferObject(navmeshRegion, -1, false);

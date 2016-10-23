@@ -203,11 +203,10 @@ void PlanetManagerImplementation::loadLuaConfig() {
 	int numRegions = regionMap.getTotalRegions();
 	for(int i=0; i<numRegions; i++) {
 		CityRegion* city = regionMap.getRegion(i);
-
 		Reference<RecastNavMesh*> mesh = city->getNavMesh();
 		if(mesh == NULL || !mesh->isLoaded()) {
 			Locker locker(city);
-			city->createNavRegion(NavMeshManager::MeshQueue);
+			city->createNavRegion(NavMeshManager::MeshQueue, false);
 		}
 	}
 

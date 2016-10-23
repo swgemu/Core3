@@ -421,10 +421,13 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 
     @preLocked
-	public native void createNavRegion(final string queue);
+	public native void createNavRegion(final string queue, boolean forceRebuild);
 
     @preLocked
 	public native void createNavRegion();
+
+	@preLocked
+	public native void destroyNavRegion();
 
 	@dirty
 	public boolean isMayor(unsigned long objectid) {

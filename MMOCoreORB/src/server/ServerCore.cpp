@@ -126,6 +126,12 @@ void ServerCore::initialize() {
 			int zoneAllowedConnections =
 					configManager->getZoneAllowedConnections();
 
+			if (arguments.contains("deleteNavRegions") && zoneServer != NULL) {
+				zoneServer->setShouldDeleteNavRegions(true);
+			} else {
+				zoneServer->setShouldDeleteNavRegions(false);
+			}
+
 			ObjectDatabaseManager* dbManager =
 					ObjectDatabaseManager::instance();
 			dbManager->loadDatabases(truncateDatabases());
