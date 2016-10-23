@@ -2667,7 +2667,7 @@ bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
 		if (ghost == NULL && (targetFaction != getFaction()))
 			return true;
 		// this is the same thing, but ensures that if the target is a player, that they aren't on leave
-		else if (ghost != NULL && (targetFaction != getFaction()) && ghost->getFactionStatus() != FactionStatus::ONLEAVE)
+		else if (ghost != NULL && (targetFaction != getFaction()) && target->getFactionStatus() != FactionStatus::ONLEAVE)
 			return true;
 	}
 
@@ -3159,12 +3159,8 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 			return false;
 		}
 
-		if (object->isPlayerCreature()) {
-			PlayerObject* ghost = object->getPlayerObject();
-
-			if (targetFaction == 0 || (ghost != NULL && ghost->getFactionStatus() == FactionStatus::ONLEAVE)) {
+		if (object->isPlayerCreature() && (targetFaction == 0 || (object->getFactionStatus() == FactionStatus::ONLEAVE))) {
 				return false;
-			}
 		}
 	}
 

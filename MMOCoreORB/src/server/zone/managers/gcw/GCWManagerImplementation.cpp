@@ -913,14 +913,14 @@ bool GCWManagerImplementation::canUseTerminals(CreatureObject* creature, Buildin
 
 	// check for PvP base
 	if (building->getPvpStatusBitmask() & CreatureFlag::OVERT) {
-		if (ghost->getFactionStatus() != FactionStatus::OVERT) {
+		if (creature->getFactionStatus() != FactionStatus::OVERT) {
 			creature->sendSystemMessage("@hq:declared_only"); // Only Special Forces personnel may access this terminal!
 			return false;
 		}
 	}
 	// check for PvE base
 	else {
-		if (ghost->getFactionStatus() < FactionStatus::COVERT) {
+		if (creature->getFactionStatus() < FactionStatus::COVERT) {
 			creature->sendSystemMessage("You must be at least combatant");
 			return false;
 		}

@@ -450,8 +450,8 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("TEF", CreatureFlag::TEF);
 	luaEngine->setGlobalInt("PLAYER", CreatureFlag::PLAYER);
 	luaEngine->setGlobalInt("ENEMY", CreatureFlag::ENEMY);
-	luaEngine->setGlobalInt("CHANGEFACTIONSTATUS", CreatureFlag::CHANGEFACTIONSTATUS);
-	luaEngine->setGlobalInt("BLINK_GREEN", CreatureFlag::BLINK_GREEN);
+	luaEngine->setGlobalInt("WILLBEDECLARED", CreatureFlag::WILLBEDECLARED);
+	luaEngine->setGlobalInt("WASDECLARED", CreatureFlag::WASDECLARED);
 
 	luaEngine->setGlobalInt("CONVERSABLE", OptionBitmask::CONVERSE);
 	luaEngine->setGlobalInt("AIENABLED", OptionBitmask::AIENABLED);

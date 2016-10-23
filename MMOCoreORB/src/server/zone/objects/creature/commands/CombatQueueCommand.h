@@ -166,7 +166,7 @@ public:
 
 				ManagedReference<TangibleObject*> targetTano = targetObject.castTo<TangibleObject*>();
 
-				if (targetTano != NULL && creature->getFaction() != 0 && targetTano->getFaction() != 0 && targetTano->getFaction() != creature->getFaction() && ghost->getFactionStatus() != FactionStatus::OVERT) {
+				if (targetTano != NULL && creature->getFaction() != 0 && targetTano->getFaction() != 0 && targetTano->getFaction() != creature->getFaction() && creature->getFactionStatus() != FactionStatus::OVERT) {
 					if (targetTano->isCreatureObject()) {
 						ManagedReference<CreatureObject*> targetCreature = targetObject.castTo<CreatureObject*>();
 
@@ -175,7 +175,7 @@ public:
 								if (!CombatManager::instance()->areInDuel(creature, targetCreature)) {
 									PlayerObject* targetGhost = targetCreature->getPlayerObject();
 
-									if (targetGhost != NULL && targetGhost->getFactionStatus() == FactionStatus::OVERT) {
+									if (targetGhost != NULL && targetCreature->getFactionStatus() == FactionStatus::OVERT) {
 										ghost->doFieldFactionChange(FactionStatus::OVERT);
 									}
 								}
@@ -185,17 +185,17 @@ public:
 								if (targetOwner != NULL && !CombatManager::instance()->areInDuel(creature, targetOwner)) {
 									PlayerObject* targetGhost = targetOwner->getPlayerObject();
 
-									if (targetGhost != NULL && targetGhost->getFactionStatus() == FactionStatus::OVERT) {
+									if (targetGhost != NULL && targetOwner->getFactionStatus() == FactionStatus::OVERT) {
 										ghost->doFieldFactionChange(FactionStatus::OVERT);
 									}
 								}
 							} else {
-								if (ghost->getFactionStatus() == FactionStatus::ONLEAVE)
+								if (creature->getFactionStatus() == FactionStatus::ONLEAVE)
 									ghost->doFieldFactionChange(FactionStatus::COVERT);
 							}
 						}
 					} else {
-						if (ghost->getFactionStatus() == FactionStatus::ONLEAVE && !(targetTano->getPvpStatusBitmask() & CreatureFlag::OVERT))
+						if (creature->getFactionStatus() == FactionStatus::ONLEAVE && !(targetTano->getPvpStatusBitmask() & CreatureFlag::OVERT))
 							ghost->doFieldFactionChange(FactionStatus::COVERT);
 						else if ((targetTano->getPvpStatusBitmask() & CreatureFlag::OVERT))
 							ghost->doFieldFactionChange(FactionStatus::OVERT);
