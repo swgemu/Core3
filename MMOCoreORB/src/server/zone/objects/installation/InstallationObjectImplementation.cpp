@@ -742,20 +742,13 @@ bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object) {
 
 		return isAttackableBy(owner);
 
-	} else if (object->isPlayerCreature()) {
-		ManagedReference<PlayerObject*> ghost = object->getPlayerObject();
-		if (ghost == NULL) {
+	} else if (object->isPlayerCreature() && thisFaction != 0) {
+		if (object->getFactionStatus() == 0) {
 			return false;
 		}
 
-		if (thisFaction != 0) {
-			if (ghost->getFactionStatus() == 0) {
-				return false;
-			}
-
-			if ((getPvpStatusBitmask() & CreatureFlag::OVERT) && ghost->getFactionStatus() != FactionStatus::OVERT) {
-				return false;
-			}
+		if ((getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFactionStatus() != FactionStatus::OVERT) {
+			return false;
 		}
 	}
 

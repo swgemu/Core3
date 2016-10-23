@@ -4,13 +4,8 @@ deathWatchLutinNightstalkerConvoHandler = conv_handler:new {}
 
 function deathWatchLutinNightstalkerConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
-	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
-	if (pGhost == nil) then
-		return convoTemplate:getScreen("intro")
-	end
-
-	if (PlayerObject(pGhost):isOnLeave() or not CreatureObject(pPlayer):isRebel()) then
+	if (CreatureObject(pPlayer):isOnLeave() or not CreatureObject(pPlayer):isRebel()) then
 		return convoTemplate:getScreen("wrong_faction")
 	elseif (CreatureObject(pPlayer):hasScreenPlayState(4, "death_watch_bunker_rebel_sidequest")) then
 		return convoTemplate:getScreen("quest_already_completed")

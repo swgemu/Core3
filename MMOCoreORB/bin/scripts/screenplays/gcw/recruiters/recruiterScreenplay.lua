@@ -595,36 +595,18 @@ function recruiterScreenplay:getSmugglerDiscount(pPlayer)
 end
 
 function recruiterScreenplay:handleGoOnLeave(pPlayer)
-	local pGhost = CreatureObject(pPlayer):getPlayerObject()
-
-	if (pGhost == nil) then
-		return
-	end
-
 	deleteData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus")
-	PlayerObject(pGhost):setFactionStatus(0)
+	CreatureObject(pPlayer):setFactionStatus(0)
 end
 
 function recruiterScreenplay:handleGoCovert(pPlayer)
-	local pGhost = CreatureObject(pPlayer):getPlayerObject()
-
-	if (pGhost == nil) then
-		return
-	end
-
 	deleteData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus")
-	PlayerObject(pGhost):setFactionStatus(1)
+	CreatureObject(pPlayer):setFactionStatus(1)
 end
 
 function recruiterScreenplay:handleGoOvert(pPlayer)
-	local pGhost = CreatureObject(pPlayer):getPlayerObject()
-
-	if (pGhost == nil) then
-		return
-	end
-
 	deleteData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus")
-	PlayerObject(pGhost):setFactionStatus(2)
+	CreatureObject(pPlayer):setFactionStatus(2)
 end
 
 function recruiterScreenplay:handleResign(pPlayer)
@@ -639,6 +621,6 @@ function recruiterScreenplay:handleResign(pPlayer)
 	local oldFactionName = self:getFactionFromHashCode(oldFaction)
 	CreatureObject(pPlayer):setFactionRank(0)
 	CreatureObject(pPlayer):setFaction(0)
-	PlayerObject(pGhost):setFactionStatus(0)
+	CreatureObject(pPlayer):setFactionStatus(0)
 	PlayerObject(pGhost):decreaseFactionStanding(oldFactionName, 0)
 end

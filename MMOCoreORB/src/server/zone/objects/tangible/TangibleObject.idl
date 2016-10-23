@@ -35,6 +35,9 @@ class TangibleObject extends SceneObject {
 	protected int volume;
 	
 	protected unsigned int faction;
+	
+	protected int factionStatus;
+	protected int futureFactionStatus;
 
 	protected boolean invisible;
 
@@ -103,6 +106,9 @@ class TangibleObject extends SceneObject {
 	
 	public void initializeMembers() {
 		faction = 0;
+		factionStatus = 0;
+		futureFactionStatus = 0;
+		
 		level = 1;
 		useCount = 1;
 		
@@ -599,7 +605,21 @@ class TangibleObject extends SceneObject {
 
 	@read
 	public native boolean isNeutral();
+	
+	@read
+	public int getFactionStatus() {
+		return factionStatus;
+	}
 
+	public native void setFactionStatus(int status);
+	
+	@read
+	public int getFutureFactionStatus() {
+		return futureFactionStatus;
+	}
+
+	public native void setFutureFactionStatus(int status);
+	
 	@dirty
 	@local
 	@nativeStub

@@ -37,6 +37,8 @@
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/tangible/tool/antidecay/AntiDecayKit.h"
+#include "server/zone/objects/player/events/StoreSpawnedChildrenTask.h"
+#include "server/zone/managers/gcw/GCWManager.h"
 #include "templates/faction/Factions.h"
 #include "engine/engine.h"
 
@@ -121,6 +123,89 @@ void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
 		sendPvpStatusTo(player->asCreatureObject());
 }
 
+void TangibleObjectImplementation::setFactionStatus(int status) {
+	factionStatus = status;
+	futureFactionStatus = 0;
+
+	if (isPlayerCreature()) {
+		CreatureObject* creature = asCreatureObject();
+
+		if (creature == NULL)
+			return;
+
+		PlayerObject* ghost = creature->getPlayerObject();
+
+		if (ghost == NULL)
+			return;
+
+		uint32 pvpStatusBitmask = creature->getPvpStatusBitmask();
+
+		if (factionStatus == FactionStatus::COVERT) {
+			creature->sendSystemMessage("@faction_recruiter:covert_complete");
+
+			if (pvpStatusBitmask & CreatureFlag::OVERT)
+				pvpStatusBitmask -= CreatureFlag::OVERT;
+		} else if (factionStatus == FactionStatus::OVERT) {
+			if(!(pvpStatusBitmask & CreatureFlag::OVERT)) {
+				int cooldown = 300;
+
+				Zone* creoZone = creature->getZone();
+
+				if (creoZone != NULL) {
+					GCWManager* gcwMan = creoZone->getGCWManager();
+
+					if (gcwMan != NULL)
+						cooldown = gcwMan->getOvertCooldown();
+				}
+
+				creature->addCooldown("declare_overt_cooldown", cooldown * 1000);
+				pvpStatusBitmask |= CreatureFlag::OVERT;
+
+				creature->sendSystemMessage("@faction_recruiter:overt_complete");
+			}
+		} else if (factionStatus == FactionStatus::ONLEAVE) {
+			if (pvpStatusBitmask & CreatureFlag::OVERT)
+				pvpStatusBitmask -= CreatureFlag::OVERT;
+
+			if (creature->getFaction() != 0)
+				creature->sendSystemMessage("@faction_recruiter:on_leave_complete");
+		}
+
+		creature->setPvpStatusBitmask(pvpStatusBitmask);
+
+		Vector<ManagedReference<CreatureObject*> > petsToStore;
+
+		for (int i = 0; i < ghost->getActivePetsSize(); i++) {
+			Reference<AiAgent*> pet = ghost->getActivePet(i);
+
+			if (pet == NULL)
+				continue;
+
+			CreatureTemplate* creatureTemplate = pet->getCreatureTemplate();
+
+			if (creatureTemplate != NULL) {
+				String templateFaction = creatureTemplate->getFaction();
+
+				if (!templateFaction.isEmpty() && factionStatus == FactionStatus::ONLEAVE) {
+					petsToStore.add(pet.castTo<CreatureObject*>());
+					creature->sendSystemMessage("You're no longer the right faction status for one of your pets, storing...");
+					continue;
+				}
+			}
+
+			if (pvpStatusBitmask & CreatureFlag::PLAYER)
+				pvpStatusBitmask &= ~CreatureFlag::PLAYER;
+
+			pet->setPvpStatusBitmask(pvpStatusBitmask);
+		}
+
+		StoreSpawnedChildrenTask* task = new StoreSpawnedChildrenTask(creature, petsToStore);
+		task->execute();
+
+		ghost->updateInRangeBuildingPermissions();
+	}
+}
+
 void TangibleObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 	uint32 newPvpStatusBitmask = pvpStatusBitmask;
 
@@ -140,6 +225,12 @@ void TangibleObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 		if (player != asTangibleObject())
 			newPvpStatusBitmask -= CreatureFlag::TEF;
 	}
+
+	if (getFutureFactionStatus() == FactionStatus::OVERT)
+		newPvpStatusBitmask |= CreatureFlag::WILLBEDECLARED;
+
+	if (getFactionStatus() == FactionStatus::OVERT && getFutureFactionStatus() == FactionStatus::COVERT)
+		newPvpStatusBitmask |= CreatureFlag::WASDECLARED;
 
 	BaseMessage* pvp = new UpdatePVPStatusMessage(asTangibleObject(), newPvpStatusBitmask);
 	player->sendMessage(pvp);
@@ -172,6 +263,12 @@ void TangibleObjectImplementation::broadcastPvpStatusBitmask() {
 			}
 		}
 	}
+}
+
+void TangibleObjectImplementation::setFutureFactionStatus(int status) {
+	futureFactionStatus = status;
+
+	broadcastPvpStatusBitmask();
 }
 
 void TangibleObjectImplementation::setPvpStatusBitmask(uint32 bitmask, bool notifyClient) {
@@ -933,12 +1030,12 @@ bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
 		return false;
 	} else if (isRebel() && !(object->isImperial())) {
 		return false;
-	} else if (object->isPlayerCreature() && object->getPlayerObject()) {
-		if (isImperial() && (object->getPlayerObject())->getFactionStatus() == 0) {
+	} else if (object->isPlayerCreature()) {
+		if (isImperial() && getFactionStatus() == 0) {
 			return false;
 		}
 
-		if (isRebel() && (object->getPlayerObject())->getFactionStatus() == 0) {
+		if (isRebel() && getFactionStatus() == 0) {
 			return false;
 		}
 

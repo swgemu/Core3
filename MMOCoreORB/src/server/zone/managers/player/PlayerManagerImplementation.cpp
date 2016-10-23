@@ -952,8 +952,8 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 		player->addShockWounds(100, true);
 	}
 
-	if (ghost->getFactionStatus() != FactionStatus::ONLEAVE && cbot->getFaction() == 0)
-		ghost->setFactionStatus(FactionStatus::ONLEAVE);
+	if (player->getFactionStatus() != FactionStatus::ONLEAVE && cbot->getFaction() == 0)
+		player->setFactionStatus(FactionStatus::ONLEAVE);
 
 	if (ghost->hasPvpTef())
 		ghost->schedulePvpTefRemovalTask(true);

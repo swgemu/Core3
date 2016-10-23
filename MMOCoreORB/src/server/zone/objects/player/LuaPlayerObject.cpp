@@ -20,10 +20,6 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "_setObject", &LuaPlayerObject::_setObject },
 		{ "_getObject", &LuaSceneObject::_getObject },
 		{ "getFactionStanding", &LuaPlayerObject::getFactionStanding },
-		{ "setFactionStatus", &LuaPlayerObject::setFactionStatus },
-		{ "isOnLeave", &LuaPlayerObject::isOnLeave },
-		{ "isOvert", &LuaPlayerObject::isOvert },
-		{ "isCovert", &LuaPlayerObject::isCovert },
 		{ "increaseFactionStanding", &LuaPlayerObject::increaseFactionStanding },
 		{ "decreaseFactionStanding", &LuaPlayerObject::decreaseFactionStanding },
 		{ "setFactionStanding", &LuaPlayerObject::setFactionStanding },
@@ -116,32 +112,6 @@ int LuaPlayerObject::getFactionStanding(lua_State* L) {
 	lua_pushnumber(L, standing);
 
 	return 1;
-}
-
-int LuaPlayerObject::isOnLeave(lua_State* L) {
-	lua_pushboolean(L, realObject->getFactionStatus() == FactionStatus::ONLEAVE);
-
-	return 1;
-}
-
-int LuaPlayerObject::isOvert(lua_State* L) {
-	lua_pushboolean(L, realObject->getFactionStatus() == FactionStatus::OVERT);
-
-	return 1;
-}
-
-int LuaPlayerObject::isCovert(lua_State* L) {
-	lua_pushboolean(L, realObject->getFactionStatus() == FactionStatus::COVERT);
-
-	return 1;
-}
-
-int LuaPlayerObject::setFactionStatus(lua_State* L) {
-	int status = lua_tointeger(L, -1);
-
-	realObject->setFactionStatus(status);
-
-	return 0;
 }
 
 int LuaPlayerObject::increaseFactionStanding(lua_State* L) {

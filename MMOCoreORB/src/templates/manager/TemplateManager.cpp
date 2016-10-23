@@ -623,8 +623,8 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("TEF", CreatureFlag::TEF);
 	luaTemplatesInstance->setGlobalInt("PLAYER", CreatureFlag::PLAYER);
 	luaTemplatesInstance->setGlobalInt("ENEMY", CreatureFlag::ENEMY);
-	luaTemplatesInstance->setGlobalInt("CHANGEFACTIONSTATUS", CreatureFlag::CHANGEFACTIONSTATUS);
-	luaTemplatesInstance->setGlobalInt("BLINK_GREEN", CreatureFlag::BLINK_GREEN);
+	luaTemplatesInstance->setGlobalInt("WILLBEDECLARED", CreatureFlag::WILLBEDECLARED);
+	luaTemplatesInstance->setGlobalInt("WASDECLARED", CreatureFlag::WASDECLARED);
 
 	luaTemplatesInstance->setGlobalInt("CONVERSABLE", OptionBitmask::CONVERSE);
 	luaTemplatesInstance->setGlobalInt("AIENABLED", OptionBitmask::AIENABLED);

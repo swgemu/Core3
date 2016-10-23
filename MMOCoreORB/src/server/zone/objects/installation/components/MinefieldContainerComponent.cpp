@@ -22,12 +22,8 @@ bool MinefieldContainerComponent::checkContainerPermission(SceneObject* sceneObj
 	if (creature->getFaction() == 0 || minefield->getFaction() == 0)
 		return false;
 
-	PlayerObject* ghost = creature->getPlayerObject();
-	if (ghost == NULL)
-		return false;
-
 	if (permission == ContainerPermissions::OPEN || permission == ContainerPermissions::MOVEIN) {
-		if (minefield->getFaction() == creature->getFaction() && ghost->getFactionStatus() != FactionStatus::ONLEAVE)
+		if (minefield->getFaction() == creature->getFaction() && creature->getFactionStatus() != FactionStatus::ONLEAVE)
 			return true;
 		else
 			return false;
