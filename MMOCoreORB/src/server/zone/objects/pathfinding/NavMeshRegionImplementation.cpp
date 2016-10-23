@@ -9,7 +9,12 @@ void NavMeshRegionImplementation::initializeTransientMembers() {
 }
 
 AABB NavMeshRegionImplementation::getBoundingBox() {
-    return meshBounds;
+	float f = radius;
+	float x = getPositionX();
+	float y = getPositionY();
+	Vector3 center(x, 0, y);
+	Vector3 radius(f, f, f);
+	return AABB(center-radius, center+radius);
 }
 
 

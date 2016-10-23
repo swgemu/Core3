@@ -479,8 +479,11 @@ RecastNavMeshBuilder::initialize(Vector<Reference<MeshData*> >& meshData, const 
 
 	info("Building region terrain for: " + name, true);
 
+	float boundsRadius = bounds.extents()[bounds.longestAxis()] * 2.0f;
+	assert(boundsRadius != 0.f);
+
 	Vector3 center = bounds.center();
-	info(center.toString() + " Radius: " + String::valueOf(bounds.extents()[bounds.longestAxis()] * 2.0f), true);
+	info(center.toString() + " Radius: " + String::valueOf(boundsRadius), true);
 	meshData.add(getTerrainMesh(center, bounds.extents()[bounds.longestAxis()] * 2.0f, terrainManager, 32,
 								distanceBetweenHeights));
 

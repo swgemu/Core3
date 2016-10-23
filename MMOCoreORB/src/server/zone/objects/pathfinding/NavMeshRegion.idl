@@ -54,7 +54,7 @@ class NavMeshRegion extends Region {
 
 	@local
 	@dirty
-	public native final AABB getMeshBounds() {
+	public final AABB getMeshBounds() {
 		return meshBounds;
 	}
 
