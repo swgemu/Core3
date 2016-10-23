@@ -1,0 +1,233 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_13d16ecd",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/utils/quest_spawner.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-23T01:07:35Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 7
+      },
+      "revId": "cb99706437cef8ef441094da44105b0792b47572",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_d3da06e9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/utils/quest_spawner.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-23T01:07:35Z",
+      "side": 1,
+      "message": "Use spawn[4] not totalWeight",
+      "range": {
+        "startLine": 168,
+        "startChar": 13,
+        "endLine": 168,
+        "endChar": 24
+      },
+      "revId": "cb99706437cef8ef441094da44105b0792b47572",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_33d6f2c6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/utils/quest_spawner.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-23T01:07:35Z",
+      "side": 1,
+      "message": "don\u0027t use i again",
+      "range": {
+        "startLine": 168,
+        "startChar": 6,
+        "endLine": 168,
+        "endChar": 7
+      },
+      "revId": "cb99706437cef8ef441094da44105b0792b47572",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_335fd274",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_jedi_manager_township.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-23T01:07:35Z",
+      "side": 1,
+      "message": "You need to destroy before you increment the phaseID",
+      "range": {
+        "startLine": 88,
+        "startChar": 28,
+        "endLine": 88,
+        "endChar": 54
+      },
+      "revId": "cb99706437cef8ef441094da44105b0792b47572",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_934d5ec7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_jedi_manager_township.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-23T01:07:35Z",
+      "side": 1,
+      "message": "Don\u0027t you need to call VillageRaids:doPhaseInit() here as well?",
+      "revId": "cb99706437cef8ef441094da44105b0792b47572",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_d353e66a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_jedi_manager_township.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-23T01:07:35Z",
+      "side": 1,
+      "message": "delete the quest status as well",
+      "revId": "cb99706437cef8ef441094da44105b0792b47572",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f3506a60",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_raids.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-23T01:07:35Z",
+      "side": 1,
+      "message": "delete data",
+      "revId": "cb99706437cef8ef441094da44105b0792b47572",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_b34ae2aa",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_raids.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-23T01:07:35Z",
+      "side": 1,
+      "message": "It seems kinda odd to always use the same spawn locs in the same order (and only use some for the larger raids). I think the raids would feel a bit more dynamic if we randomized which loc is used for each iteration. Or is there a reason you\u0027re doing it this way?",
+      "range": {
+        "startLine": 243,
+        "startChar": 60,
+        "endLine": 243,
+        "endChar": 61
+      },
+      "revId": "cb99706437cef8ef441094da44105b0792b47572",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_73cc7a36",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_raids.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-23T01:07:35Z",
+      "side": 1,
+      "message": "This whole loop seems redundant. You\u0027re null checking in cpp before pushing to Lua. I would just return #nearbyObjects",
+      "range": {
+        "startLine": 261,
+        "startChar": 1,
+        "endLine": 261,
+        "endChar": 4
+      },
+      "revId": "cb99706437cef8ef441094da44105b0792b47572",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_53c7f612",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_raids.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-23T01:07:35Z",
+      "side": 1,
+      "message": "You get the master object in doEnemySpawnPulse() before calling this. I would just pass it as an arg.",
+      "range": {
+        "startLine": 271,
+        "startChar": 7,
+        "endLine": 271,
+        "endChar": 14
+      },
+      "revId": "cb99706437cef8ef441094da44105b0792b47572",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_135ace83",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/LuaSceneObject.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-23T01:07:35Z",
+      "side": 1,
+      "message": "tabs",
+      "revId": "cb99706437cef8ef441094da44105b0792b47572",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
