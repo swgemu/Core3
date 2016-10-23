@@ -51,10 +51,10 @@ void NavMeshRegionImplementation::updateNavMesh(const AABB& bounds) {
     }
 }
 
-void NavMeshRegionImplementation::initializeNavRegion(Vector3& position, float radius, Zone* zone, String& name, bool buildMesh) {
+void NavMeshRegionImplementation::initializeNavRegion(Vector3& position, float radius, Zone* zone, String& name, bool buildMesh, bool forceRebuild) {
 
     meshName = zone->getZoneName()+"_"+name+".navmesh";
-    navMesh = new RecastNavMesh("navmeshes/"+meshName);
+    navMesh = new RecastNavMesh("navmeshes/"+meshName, forceRebuild);
     initializePosition(position[0], position[1], position[2]);
     setRadius(radius);
     setZone(zone);
@@ -101,9 +101,6 @@ void NavMeshRegionImplementation::notifyEnter(SceneObject* object) {
 void NavMeshRegionImplementation::notifyExit(SceneObject* object) {
     if(disableUpdates)
         return;
-
-    info("NotifyExit: " + object->getObjectTemplate()->getTemplateFileName(), true);
-    info("ContainedObjects.size(): " + String::valueOf(containedObjects.size()), true);
 
     ReadLocker rlocker(&containedLock);
 

@@ -103,6 +103,8 @@ void ZoneServerImplementation::initializeTransientMembers() {
 
 	objectManager = NULL;
 
+	deleteNavRegions = false;
+
 	ManagedObjectImplementation::initializeTransientMembers();
 }
 

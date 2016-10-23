@@ -445,10 +445,20 @@ bool CityRegionImplementation::hasZoningRights(uint64 objectid) {
 }
 
 void CityRegionImplementation::createNavRegion() {
-    createNavRegion(NavMeshManager::TileQueue);
+    createNavRegion(NavMeshManager::TileQueue, false);
 }
 
-void CityRegionImplementation::createNavRegion(const String& queue) {
+void CityRegionImplementation::destroyNavRegion() {
+	if (navmeshRegion != NULL) {
+		navmeshRegion->destroyObjectFromWorld(true);
+		navmeshRegion = NULL;
+	}
+}
+
+void CityRegionImplementation::createNavRegion(const String& queue, bool forceRebuild) {
+
+	if (forceRebuild)
+		destroyNavRegion();
 
 	bool clientRegion = isClientRegion();
 
@@ -520,10 +530,10 @@ void CityRegionImplementation::createNavRegion(const String& queue) {
 		AABB box(Vector3(minx, miny, minz), Vector3(maxx, maxy, maxz));
 		Vector3 position = Vector3(box.center()[0], 0, box.center()[1]);
 		navmeshRegion->disableMeshUpdates(true);
-		navmeshRegion->initializeNavRegion(position, box.extents()[box.longestAxis()], zone, name);
+		navmeshRegion->initializeNavRegion(position, box.extents()[box.longestAxis()], zone, name, forceRebuild);
 	} else {
 		Vector3 position = Vector3(getPositionX(), 0, getPositionY());
-		navmeshRegion->initializeNavRegion(position, 480.0f, zone, name);
+		navmeshRegion->initializeNavRegion(position, 480.0f, zone, name, forceRebuild);
 	}
 
 	zone->transferObject(navmeshRegion, -1, false);

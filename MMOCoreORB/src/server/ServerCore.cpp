@@ -154,6 +154,10 @@ void ServerCore::initialize() {
 				exit(1);
 			}
 
+			if (arguments.contains("deleteNavRegions") && zoneServer != NULL) {
+				zoneServer->setShouldDeleteNavRegions(true);
+			}
+
 			zoneServer->start(zonePort, zoneAllowedConnections);
 		}
 

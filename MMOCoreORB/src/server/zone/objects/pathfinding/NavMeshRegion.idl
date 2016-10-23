@@ -41,7 +41,7 @@ class NavMeshRegion extends Region {
 
 	@local
 	@preLocked
-	public native void initializeNavRegion(@dereferenced Vector3 position, float radius, Zone zone, string name, boolean buildMesh = true);
+	public native void initializeNavRegion(@dereferenced Vector3 position, float radius, Zone zone, string name, boolean buildMesh = true, boolean forceRebuild = false);
 
 	public native void initializeTransientMembers();
 
