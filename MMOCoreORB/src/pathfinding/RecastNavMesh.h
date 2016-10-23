@@ -21,7 +21,7 @@ class RecastNavMesh : public Object, Logger {
 	String filename;
 	ReadWriteLock rwLock;
 public:
-	RecastNavMesh(const String& filename);
+	RecastNavMesh(const String& filename, bool forceRebuild=false);
 	RecastNavMesh() {
 		navMesh = NULL;
 	}

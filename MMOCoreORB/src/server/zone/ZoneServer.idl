@@ -80,6 +80,8 @@ class ZoneServer extends ManagedService implements Logger {
 	private GuildManager guildManager;
 	private PetManager petManager;
 
+	private transient boolean deleteNavRegions;
+
 	private transient StringIdManager stringIdManager;
 
 	private transient CreatureTemplateManager creatureTemplateManager;
@@ -400,6 +402,15 @@ class ZoneServer extends ManagedService implements Logger {
 
 	public void setServerState(int state) {
 		serverState = state;
+	}
+
+	public void setShouldDeleteNavRegions(boolean b) {
+		deleteNavRegions = b;
+	}
+
+	@dirty
+	public boolean shouldDeleteNavRegions() {
+		return deleteNavRegions;
 	}
 
 	public native void setServerStateLocked();
