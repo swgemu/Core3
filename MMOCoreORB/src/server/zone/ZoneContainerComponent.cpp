@@ -11,9 +11,11 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/staticobject/StaticObject.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "terrain/manager/TerrainManager.h"
 #include "templates/building/SharedBuildingObjectTemplate.h"
+#include "server/zone/objects/pathfinding/NavMeshRegion.h"
 
 bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeArea) const {
 	if (newZone == NULL)
@@ -191,6 +193,24 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 		TangibleObject* tano = cast<TangibleObject*>(object);
 
 		zone->updateActiveAreas(tano);
+	} else if (object->isStaticObjectClass()) {
+
+		// hack to get around notifyEnter/Exit only working with tangible objects
+		Vector3 worldPos = object->getWorldPosition();
+		SortedVector<ManagedReference<NavMeshRegion*> > objects;
+		zone->getInRangeNavMeshes(object->getPositionX(), object->getPositionY(), 1, &objects, false);
+
+		for(auto& area : objects) {
+			if(area->isNavRegion()) {
+				NavMeshRegion *mesh = area->asNavRegion();
+
+				if(mesh->containsPoint(worldPos.getX(), worldPos.getY())) {
+					mesh->updateNavMesh(object, false);
+				} else if (mesh->objectInMesh(object)) {
+					mesh->updateNavMesh(object, true);
+				}
+			}
+		}
 	}
 
 	SharedBuildingObjectTemplate* objtemplate = dynamic_cast<SharedBuildingObjectTemplate*>(object->getObjectTemplate());

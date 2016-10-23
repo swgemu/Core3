@@ -11,6 +11,7 @@ import engine.core.ManagedReference;
 import engine.util.Facade;
 import system.lang.ref.Reference;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.waypoint.WaypointObject;
 include server.zone.objects.creature.CreatureObject;
 include server.zone.objects.scene.SessionFacadeType;
 include server.zone.objects.player.sui.listbox.SuiListBox;
@@ -51,7 +52,7 @@ class FindSession extends Facade {
 	@local
 	public native void initalizeFindMenu();
 
-	public native void addWaypoint(float x, float y, final string name);
+	public native WaypointObject addWaypoint(float x, float y, final string name);
 
 	@local
 	public native void findPlanetaryObject(string maplocationtype);

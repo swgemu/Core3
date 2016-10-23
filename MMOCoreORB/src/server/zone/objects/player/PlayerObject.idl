@@ -263,6 +263,9 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	protected SortedVector<unsigned long> currentEventPerks;
 
+	@weakReference
+	protected transient SceneObject currentClientPathWaypoint;
+
 	/**
 	 * the key is the quest.hashCode()
 	 */
@@ -371,6 +374,10 @@ class PlayerObject extends IntangibleObject {
 
 	public void finalize() {
 
+	}
+
+	public void setClientPathWaypoint(SceneObject obj) {
+		currentClientPathWaypoint = obj;
 	}
 	
 	public native void initializeAccount();
