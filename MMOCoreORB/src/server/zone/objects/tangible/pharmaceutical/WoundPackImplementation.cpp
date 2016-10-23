@@ -32,9 +32,8 @@ uint32 WoundPackImplementation::calculatePower(CreatureObject* healer, CreatureO
 	if (building != NULL && factionPerk > 0 && building->isPlayerRegisteredWithin(healer->getObjectID())) {
 		unsigned int buildingFaction = building->getFaction();
 		unsigned int healerFaction = healer->getFaction();
-		PlayerObject* ghost = healer->getPlayerObject();
 
-		if (ghost != NULL && healerFaction != 0 && healerFaction == buildingFaction && ghost->getFactionStatus() == FactionStatus::OVERT) {
+		if (healerFaction != 0 && healerFaction == buildingFaction && healer->getFactionStatus() == FactionStatus::OVERT) {
 			mod += factionPerk;
 		}
 	}

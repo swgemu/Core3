@@ -47,8 +47,8 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 	lua->setGlobalInt("TEF", CreatureFlag::TEF);
 	lua->setGlobalInt("PLAYER", CreatureFlag::PLAYER);
 	lua->setGlobalInt("ENEMY", CreatureFlag::ENEMY);
-	lua->setGlobalInt("CHANGEFACTIONSTATUS", CreatureFlag::CHANGEFACTIONSTATUS);
-	lua->setGlobalInt("BLINK_GREEN", CreatureFlag::BLINK_GREEN);
+	lua->setGlobalInt("WILLBEDECLARED", CreatureFlag::WILLBEDECLARED);
+	lua->setGlobalInt("WASDECLARED", CreatureFlag::WASDECLARED);
 
 	lua->setGlobalInt("CONVERSABLE", OptionBitmask::CONVERSE);
 	lua->setGlobalInt("AIENABLED", OptionBitmask::AIENABLED);

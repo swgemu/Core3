@@ -79,9 +79,8 @@ void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 	if (building != NULL && factionPerkSkill > 0 && building->isPlayerRegisteredWithin(creo->getObjectID())) {
 		unsigned int buildingFaction = building->getFaction();
 		unsigned int healerFaction = creo->getFaction();
-		PlayerObject* ghost = creo->getPlayerObject();
 
-		if (ghost != NULL && healerFaction != 0 && healerFaction == buildingFaction && ghost->getFactionStatus() == FactionStatus::OVERT) {
+		if (healerFaction != 0 && healerFaction == buildingFaction && creo->getFactionStatus() == FactionStatus::OVERT) {
 			woundHealingSkill += factionPerkSkill;
 			playerShockHealingSkill += factionPerkSkill;
 		}
@@ -662,9 +661,8 @@ void EntertainingSessionImplementation::addEntertainerBuffStrength(CreatureObjec
 	if (building != NULL && factionPerkStrength > 0 && building->isPlayerRegisteredWithin(entertainer->getObjectID())) {
 		unsigned int buildingFaction = building->getFaction();
 		unsigned int entFaction = entertainer->getFaction();
-		PlayerObject* ghost = entertainer->getPlayerObject();
 
-		if (ghost != NULL && entFaction != 0 && entFaction == buildingFaction && ghost->getFactionStatus() == FactionStatus::OVERT) {
+		if (entFaction != 0 && entFaction == buildingFaction && entertainer->getFactionStatus() == FactionStatus::OVERT) {
 			maxBuffStrength += factionPerkStrength;
 		}
 	}

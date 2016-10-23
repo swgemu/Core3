@@ -17,8 +17,8 @@ public:
 		TEF                 = 0x08,
 		PLAYER              = 0x10,
 		ENEMY               = 0x20,
-		CHANGEFACTIONSTATUS = 0x40,
-		BLINK_GREEN         = 0x80,
+		WILLBEDECLARED		= 0x40,
+		WASDECLARED         = 0x80,
 
 		PACK                = 0x01,
 		HERD                = 0x02,

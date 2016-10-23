@@ -32,27 +32,25 @@ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 
 	elseif (screenID == "accept_join") then
 		CreatureObject(pPlayer):setFaction(recruiterScreenplay:getRecruiterFactionHashCode(pNpc))
-		PlayerObject(pGhost):setFactionStatus(1)
+		CreatureObject(pPlayer):setFactionStatus(1)
 
 	elseif (screenID == "accepted_go_overt") then
-		CreatureObject(pPlayer):setPvpStatusBit(CHANGEFACTIONSTATUS)
+		CreatureObject(pPlayer):setFutureFactionStatus(2)
 		writeData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus", 1)
 		createEvent(30000, "recruiterScreenplay", "handleGoOvert", pPlayer, "")
-
 	elseif (screenID == "accepted_go_covert") then
 		if (CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_03")) then
 			return
 		end
-		CreatureObject(pPlayer):setPvpStatusBit(CHANGEFACTIONSTATUS)
+		
+		CreatureObject(pPlayer):setFutureFactionStatus(1)
 		writeData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus", 1)
 		createEvent(300000, "recruiterScreenplay", "handleGoCovert", pPlayer, "")
-
 	elseif (screenID == "accepted_go_on_leave") then
-
 		if (CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_03")) then
 			return
 		end
-		CreatureObject(pPlayer):setPvpStatusBit(CHANGEFACTIONSTATUS)
+		CreatureObject(pPlayer):setFutureFactionStatus(0)
 		writeData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus", 1)
 		createEvent(300000, "recruiterScreenplay", "handleGoOnLeave", pPlayer, "")
 
@@ -61,8 +59,8 @@ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 			return
 		end
 
-		if (PlayerObject(pGhost):isOvert()) then
-			CreatureObject(pPlayer):setPvpStatusBit(CHANGEFACTIONSTATUS)
+		if (CreatureObject(pPlayer):isOvert()) then
+			CreatureObject(pPlayer):setFutureFactionStatus(0)
 			writeData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus", 1)
 			createEvent(300000, "recruiterScreenplay", "handleResign", pPlayer, "")
 			return pConvScreen
@@ -70,7 +68,7 @@ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 		recruiterScreenplay:handleResign(pPlayer)
 
 	elseif (screenID == "accepted_resume_duties") then
-		CreatureObject(pPlayer):setPvpStatusBit(CHANGEFACTIONSTATUS)
+		CreatureObject(pPlayer):setFutureFactionStatus(1)
 		createEvent(30000, "recruiterScreenplay", "handleGoCovert", pPlayer, "")
 		writeData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus", 1)
 
@@ -147,9 +145,9 @@ function RecruiterConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	elseif (CreatureObject(pPlayer):isChangingFactionStatus()) then
 		return convoTemplate:getScreen("greet_changing_status")
 	elseif (faction == recruiterScreenplay:getRecruiterFactionHashCode(pNpc)) then
-		if (PlayerObject(pGhost):isOnLeave()) then
+		if (CreatureObject(pPlayer):isOnLeave()) then
 			return convoTemplate:getScreen("greet_onleave_start")
-		elseif (PlayerObject(pGhost):isCovert()) then
+		elseif (CreatureObject(pPlayer):isCovert()) then
 			return convoTemplate:getScreen("greet_member_start_covert")
 		else
 			return convoTemplate:getScreen("greet_member_start_overt")

@@ -52,7 +52,7 @@ bool GCWBaseContainerComponent::checkPVPPermission(BuildingObject* building, Cre
 		return false;
 	}
 
-	if (player->getFactionStatus() != FactionStatus::OVERT) {
+	if (creature->getFactionStatus() != FactionStatus::OVERT) {
 		if (sendMessage)
 			creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:youre_covert_excluded"); // You must be a member of the Special Forces to enter this structure.
 
@@ -97,7 +97,7 @@ bool GCWBaseContainerComponent::checkPVEPermission(BuildingObject* building, Cre
 		return false;
 	}
 
-	if ((player->getFactionStatus() != FactionStatus::COVERT && player->getFactionStatus() != FactionStatus::OVERT)) {
+	if ((creature->getFactionStatus() != FactionStatus::COVERT && creature->getFactionStatus() != FactionStatus::OVERT)) {
 		if (sendMessage)
 			creature->sendSystemMessage("You must be at least a combatant to enter");
 
