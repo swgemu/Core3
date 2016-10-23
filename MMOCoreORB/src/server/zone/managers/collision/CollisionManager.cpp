@@ -108,7 +108,9 @@ bool CollisionManager::checkSphereCollision(const Vector3& origin, float radius,
 				if(portalLayout->getAppearanceTemplate(0)->testCollide(sphere))
 					return true;
 			} else {
-				if(scno->getObjectTemplate()->getAppearanceTemplate()->testCollide(sphere))
+				auto appearanceTemplate = templateObject->getAppearanceTemplate();
+
+				if(appearanceTemplate && appearanceTemplate->testCollide(sphere))
 					return true;
 			}
 
