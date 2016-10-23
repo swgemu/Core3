@@ -82,11 +82,18 @@ void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 void TangibleObjectImplementation::notifyLoadFromDatabase() {
 	SceneObjectImplementation::notifyLoadFromDatabase();
 
-	for (int i = 0; i < activeAreas.size(); ++i) {
-		activeAreas.get(i)->notifyExit(asTangibleObject());
-	}
 
-	activeAreas.removeAll();
+
+	if (activeAreas.size() > 0) {
+		TangibleObject *tano = asTangibleObject();
+		for (int i = activeAreas.size() - 1; i >= 0; i--) {
+			auto& area = activeAreas.get(i);
+			if (!area->isNavRegion()) {
+				area->notifyExit(tano);
+				activeAreas.remove(i);
+			}
+		}
+	}
 
 	if (hasAntiDecayKit()) {
 		AntiDecayKit* adk = antiDecayKitObject.castTo<AntiDecayKit*>();

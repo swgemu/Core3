@@ -1,3 +1,4 @@
+#include <cstdint>
 #include "server/zone/objects/pathfinding/NavMeshRegion.h"
 #include "templates/tangible/SharedStructureObjectTemplate.h"
 #include "server/zone/managers/collision/NavMeshManager.h"
@@ -6,6 +7,11 @@
 
 void NavMeshRegionImplementation::initializeTransientMembers() {
 
+}
+
+void NavMeshRegionImplementation::notifyLoadFromDatabase() {
+	RegionImplementation::notifyLoadFromDatabase();
+	navMesh = new RecastNavMesh("navmeshes/"+meshName, false);
 }
 
 AABB NavMeshRegionImplementation::getBoundingBox() {
@@ -51,10 +57,10 @@ void NavMeshRegionImplementation::updateNavMesh(const AABB& bounds) {
     }
 }
 
-void NavMeshRegionImplementation::initializeNavRegion(Vector3& position, float radius, Zone* zone, String& name, bool buildMesh) {
+void NavMeshRegionImplementation::initializeNavRegion(Vector3& position, float radius, Zone* zone, String& name, bool buildMesh, bool forceRebuild) {
 
     meshName = zone->getZoneName()+"_"+name+".navmesh";
-    navMesh = new RecastNavMesh("navmeshes/"+meshName);
+    navMesh = new RecastNavMesh("navmeshes/"+meshName, forceRebuild);
     initializePosition(position[0], position[1], position[2]);
     setRadius(radius);
     setZone(zone);
@@ -91,6 +97,12 @@ void NavMeshRegionImplementation::notifyEnter(SceneObject* object) {
 
     ReadLocker rlocker(&containedLock);
 
+    info("Looking for: " + String::hexvalueOf((int64)object->getObjectID()), true);
+    auto iter = containedObjects.iterator();
+    while(iter.hasNext()) {
+        info("Contains : " + String::hexvalueOf((int64)iter.next()), true);
+    }
+
     if(!containedObjects.contains(object->getObjectID()) &&  !object->getObjectTemplate()->getTemplateFileName().contains("construction_")) {
     	rlocker.release();
 
@@ -101,9 +113,6 @@ void NavMeshRegionImplementation::notifyEnter(SceneObject* object) {
 void NavMeshRegionImplementation::notifyExit(SceneObject* object) {
     if(disableUpdates)
         return;
-
-    info("NotifyExit: " + object->getObjectTemplate()->getTemplateFileName(), true);
-    info("ContainedObjects.size(): " + String::valueOf(containedObjects.size()), true);
 
     ReadLocker rlocker(&containedLock);
 
@@ -134,9 +143,16 @@ void NavMeshRegionImplementation::updateNavMesh(SceneObject *object, bool remove
         Locker containerLock(&containedLock);
 
         if (remove) {
+            info("Removed " + String::hexvalueOf((int64)object->getObjectID()), true);
             containedObjects.remove(object->getObjectID());
         } else {
+            info("Added " + String::hexvalueOf((int64)object->getObjectID()), true);
             containedObjects.add(object->getObjectID());
+        }
+
+        auto iter = containedObjects.iterator();
+        while(iter.hasNext()) {
+            info("Contains : " + String::hexvalueOf((int64)iter.next()), true);
         }
     }
 }

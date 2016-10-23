@@ -199,15 +199,17 @@ void PlanetManagerImplementation::loadLuaConfig() {
 	if ((starportLandingTime = lua->getGlobalInt("starportLandingTime")) <= 0)
 	  starportLandingTime = 120;
 
+	bool destroyNavRegions = zone->getZoneServer()->shouldDeleteNavRegions();
+
 	ReadLocker rLock(&regionMap);
 	int numRegions = regionMap.getTotalRegions();
 	for(int i=0; i<numRegions; i++) {
 		CityRegion* city = regionMap.getRegion(i);
 
 		Reference<RecastNavMesh*> mesh = city->getNavMesh();
-		if(mesh == NULL || !mesh->isLoaded()) {
+		if(mesh == NULL || !mesh->isLoaded() || destroyNavRegions) {
 			Locker locker(city);
-			city->createNavRegion(NavMeshManager::MeshQueue);
+			city->createNavRegion(NavMeshManager::MeshQueue, destroyNavRegions);
 		}
 	}
 
