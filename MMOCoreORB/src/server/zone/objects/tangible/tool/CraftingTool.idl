@@ -43,7 +43,7 @@ class CraftingTool extends ToolTangibleObject {
 	public CraftingTool() {
 		Logger.setLoggingName("CraftingTool");
 		status = "@crafting:tool_status_ready";
-		effectiveness = -15;
+		effectiveness = 0;
 		forceCriticalAssembly = 0;
 		forceCriticalExperiment = 0;
 		
@@ -173,7 +173,7 @@ class CraftingTool extends ToolTangibleObject {
 	
 	@dirty
 	public int getForceCriticalExperiment() {
-		return forceCriticalAssembly;
+		return forceCriticalExperiment;
 	}
 	
 	public void setForceCriticalAssembly(int amount) {

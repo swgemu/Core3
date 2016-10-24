@@ -36,8 +36,6 @@ void CraftingToolImplementation::loadTemplateData(SharedObjectTemplate* template
 
 	for (int i = 0; i < craftingToolData->getTabs().size(); ++i)
 		enabledTabs.add(craftingToolData->getTabs().get(i));
-
-	effectiveness = -14;
 }
 
 void CraftingToolImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
