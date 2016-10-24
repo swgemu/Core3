@@ -13,8 +13,12 @@ const String NavMeshManager::MeshQueue = "NavMeshBuilder";
 
 NavMeshManager::NavMeshManager() {
     maxConcurrentJobs = 4;
-    Core::getTaskManager()->initializeCustomQueue(TileQueue.toCharArray(), maxConcurrentJobs);
-    Core::getTaskManager()->initializeCustomQueue(MeshQueue.toCharArray(), maxConcurrentJobs*2);
+}
+
+void NavMeshManager::initialize(int numThreads) {
+    maxConcurrentJobs = numThreads;
+    Core::getTaskManager()->initializeCustomQueue(TileQueue.toCharArray(), maxConcurrentJobs/2);
+    Core::getTaskManager()->initializeCustomQueue(MeshQueue.toCharArray(), maxConcurrentJobs);
 }
 
 void NavMeshManager::enqueueJob(Zone* zone, NavMeshRegion* region, AABB areaToBuild, const RecastSettings& recastConfig, const String& queue) {
@@ -163,8 +167,10 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
         navmesh->setDetourNavMesh(builder->getNavMesh());
         navmesh->setDetourNavMeshHeader(builder->getNavMeshHeader());
 
-        Locker locker(region);
-        region->setNavMesh(navmesh);
+        Core::getTaskManager()->executeTask([=]{
+            Locker locker(region);
+            region->setNavMesh(navmesh);
+        }, "setNavMesh");
     }
 
     Locker locker(&jobQueueMutex);

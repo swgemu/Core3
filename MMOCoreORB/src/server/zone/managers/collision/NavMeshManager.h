@@ -29,8 +29,8 @@ protected:
     void checkJobs();
 public:
 	NavMeshManager();
-
 	~NavMeshManager() { }
+	void initialize(int numThreads);
 
 	void enqueueJob(Zone* zone, NavMeshRegion* region, AABB areaToBuild, const RecastSettings& recastConfig, const String& queue);
 
