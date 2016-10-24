@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_3317d253",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3021,
+      "author": {
+        "id": 2675
+      },
+      "writtenOn": "2016-10-24T04:52:59Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be targetCreo-\u003egetFactionStatus();\n?",
+      "range": {
+        "startLine": 3021,
+        "startChar": 30,
+        "endLine": 3021,
+        "endChar": 46
+      },
+      "revId": "bec3765ce872cde1ed947fd2de7f943df2f3437b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
