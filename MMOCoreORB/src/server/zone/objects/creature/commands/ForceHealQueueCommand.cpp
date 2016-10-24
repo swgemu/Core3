@@ -410,7 +410,7 @@ int ForceHealQueueCommand::calculateForceCost(CreatureObject* creature, Creature
 void ForceHealQueueCommand::sendHealMessage(CreatureObject* creature, CreatureObject* target, int attribute, const int amount, const bool wound) const {
 	if (creature == NULL || target == NULL || amount <= 0) return;
 
-	// store if we are healing ourselfs or not
+	// store if we are healing ourself or not
 	const bool isSame = creature == target;
 
 	StringIdChatParameter message("jedi_spam", (isSame)?"heal_self": "heal_other_self");
@@ -426,7 +426,7 @@ void ForceHealQueueCommand::sendHealMessage(CreatureObject* creature, CreatureOb
 	}
 
 	if (!isSame)
-		message.setTT(target->getFirstName());
+		message.setTT(target->getDisplayedName());
 
 	message.setDI(amount);
 	creature->sendSystemMessage(message);

@@ -565,11 +565,22 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 			} else if (templatePath == "language") {
 				bluefrog->giveLanguages(player);
 
-			} else if (templatePath == "apply_dots") {
-				ManagedReference<SceneObject*> scob = cbSui->getUsingObject();
+			} else if (templatePath == "apply_all_dots") {
 				player->addDotState(player, CreatureState::POISONED, scob->getObjectID(), 100, CreatureAttribute::UNKNOWN, 60, -1, 0);
 				player->addDotState(player, CreatureState::BLEEDING, scob->getObjectID(), 100, CreatureAttribute::UNKNOWN, 60, -1, 0);
 				player->addDotState(player, CreatureState::DISEASED, scob->getObjectID(), 100, CreatureAttribute::UNKNOWN, 60, -1, 0);
+				player->addDotState(player, CreatureState::ONFIRE, scob->getObjectID(), 100, CreatureAttribute::UNKNOWN, 60, -1, 0, 20);
+
+			} else if (templatePath == "apply_poison_dot") {
+				player->addDotState(player, CreatureState::POISONED, scob->getObjectID(), 100, CreatureAttribute::UNKNOWN, 60, -1, 0);
+
+			} else if (templatePath == "apply_bleed_dot") {
+				player->addDotState(player, CreatureState::BLEEDING, scob->getObjectID(), 100, CreatureAttribute::UNKNOWN, 60, -1, 0);
+
+			} else if (templatePath == "apply_disease_dot") {
+				player->addDotState(player, CreatureState::DISEASED, scob->getObjectID(), 100, CreatureAttribute::UNKNOWN, 60, -1, 0);
+
+			} else if (templatePath == "apply_fire_dot") {
 				player->addDotState(player, CreatureState::ONFIRE, scob->getObjectID(), 100, CreatureAttribute::UNKNOWN, 60, -1, 0, 20);
 
 			} else if (templatePath == "clear_dots") {
