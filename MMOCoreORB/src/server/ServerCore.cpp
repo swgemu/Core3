@@ -19,7 +19,7 @@
 #include "templates/manager/TemplateManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/director/DirectorManager.h"
-
+#include "server/zone/managers/collision/NavMeshManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
 #include "engine/util/u3d/QuadTree.h"
@@ -118,6 +118,8 @@ void ServerCore::initialize() {
 		if (configManager->getMakeWeb()) {
 			webServer = WebServer::instance();
 		}
+
+		NavMeshManager::instance()->initialize(configManager->getMaxNavMeshJobs());
 
 		ZoneServer* zoneServer = zoneServerRef.get();
 

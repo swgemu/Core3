@@ -26,6 +26,7 @@
 #include "ChunkyTriMesh.h"
 #include "terrain/layer/boundaries/BoundaryRectangle.h"
 #include "terrain/layer/boundaries/BoundaryPolygon.h"
+#include "conf/ConfigManager.h"
 
 inline unsigned int nextPow2(unsigned int v) {
 	v--;
@@ -56,7 +57,7 @@ inline unsigned int ilog2(unsigned int v) {
 	return r;
 }
 
-RecastNavMeshBuilder::RecastNavMeshBuilder(Zone* zone, const String& name) :
+RecastNavMeshBuilder::RecastNavMeshBuilder(Zone* zone, const String& name, const AtomicBoolean* jobStatus) :
 		Logger(name),
 		m_keepInterResults(false),
 		m_buildAll(true),
@@ -71,7 +72,8 @@ RecastNavMeshBuilder::RecastNavMeshBuilder(Zone* zone, const String& name) :
 		m_maxPolysPerTile(0),
 		bounds(Vector3(0, 0, 0), Vector3(0, 0, 0)),
 		lastTileBounds(Vector3(0, 0, 0), Vector3(0, 0, 0)),
-		m_tileTriCount(0) {
+		m_tileTriCount(0),
+		running(jobStatus) {
 	ProceduralTerrainAppearance* pta = zone->getPlanetManager()->getTerrainManager()->getProceduralTerrainAppearance();
 	if (pta->getUseGlobalWaterTable())
 		waterTableHeight = pta->getGlobalWaterTableHeight();
@@ -339,8 +341,10 @@ void RecastNavMeshBuilder::buildAllTiles(RecastNavMesh* recastNavMesh, const AAB
 		if (zTileStart < area.getZMin() || zTileStart > area.getZMax())
 			continue;
 
-		for (int x = floor(xStart); x < tw; ++x) {
+		if (!running->get())
+			return;
 
+		for (int x = floor(xStart); x < tw; ++x) {
 
 			float xTileStart = bmin[0] + ((x + 1) * tcs);
 			//info("xStart: " + String::valueOf(xTileStart), true);
@@ -441,6 +445,10 @@ void RecastNavMeshBuilder::buildAllTiles() {
 	builder.setWater(water);
 
 	for (int y = 0; y < th; ++y) {
+
+		if (!running->get())
+			return;
+
 		for (int x = 0; x < tw; ++x) {
 
 			float minx = bmin[0] + x * tcs;
@@ -492,8 +500,11 @@ RecastNavMeshBuilder::initialize(Vector<Reference<MeshData*> >& meshData, const 
 	Vector <Reference<MeshData*>> test;
 	test.add(flattened);
 	meshData.removeAll();
-	String objName = name + ".obj";
-	dumpOBJ(objName, test);
+
+	if (ConfigManager::instance()->getDumpObjFiles()) {
+		String objName = name + ".obj";
+		dumpOBJ(objName, test);
+	}
 
 	changeMesh(flattened);
 
