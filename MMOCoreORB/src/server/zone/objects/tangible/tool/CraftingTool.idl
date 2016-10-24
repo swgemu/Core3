@@ -173,7 +173,7 @@ class CraftingTool extends ToolTangibleObject {
 	
 	@dirty
 	public int getForceCriticalExperiment() {
-		return forceCriticalAssembly;
+		return forceCriticalExperiment;
 	}
 	
 	public void setForceCriticalAssembly(int amount) {
