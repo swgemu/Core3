@@ -546,7 +546,7 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 			// hack to get around notifyEnter/Exit only working with tangible objects
 			Vector3 worldPos = sceneObject->getWorldPosition();
 			SortedVector<ActiveArea* > objects;
-			zone->getInRangeActiveAreas(worldPos.getX(), worldPos.getY(), 5, &objects, false);
+			rootZone->getInRangeActiveAreas(worldPos.getX(), worldPos.getY(), 5, &objects, false);
 
 			for(auto& area : objects) {
 				if(area->isNavRegion()) {
