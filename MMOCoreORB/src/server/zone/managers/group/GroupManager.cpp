@@ -45,7 +45,12 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* target)
 	Locker clocker(target, leader);
 
 	if (target == leader) {
-		leader->sendSystemMessage("@group:invite_no_target_self");
+		leader->sendSystemMessage("@group:invite_no_target_self"); // You must supply a target to invite.
+		return;
+	}
+
+	if (!target->isInRange(leader, 90)) {
+		leader->sendSystemMessage("@error_message:error_invite_range"); // "You invite target is beyond the maximum group invite range."
 		return;
 	}
 
@@ -53,25 +58,26 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* target)
 		ManagedReference<GroupObject*> group = leader->getGroup();
 
 		if (playerIsInvitingOwnPet(leader, target)) {
-			if (!target->isInRange(leader, 120)) {
+			if (!target->isInRange(leader, 90)) {
+				leader->sendSystemMessage("@error_message:error_invite_range"); // "You invite target is beyond the maximum group invite range."
 				return;
 			}
 		}
 		else if (group->getLeader() != leader) {
-			leader->sendSystemMessage("@group:must_be_leader");
+			leader->sendSystemMessage("@group:must_be_leader"); // You must be the group leader perform this action.
 			return;
 		}
 
 		// can't invite if the group is full
 		if (group->getGroupSize() >= 20) {
-			leader->sendSystemMessage("@group:full");
+			leader->sendSystemMessage("@group:full"); //You may not invite someone while your group is full.
 			return;
 		}
 	}
 
 	if (target->isGrouped()) {
 		StringIdChatParameter stringId;
-		stringId.setStringId("group", "already_grouped");
+		stringId.setStringId("group", "already_grouped"); //%TT is already in a group.
 		stringId.setTT(target->getObjectID());
 		leader->sendSystemMessage(stringId);
 		//leader->sendSystemMessage("group", "already_grouped", player->getObjectID());
@@ -81,7 +87,7 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* target)
 
 	if (target->getGroupInviterID() == leader->getObjectID()) {
 		StringIdChatParameter stringId;
-		stringId.setStringId("group", "considering_your_group");
+		stringId.setStringId("group", "considering_your_group"); //%TT has already been invited to join your group.
 		stringId.setTT(target->getObjectID());
 		leader->sendSystemMessage(stringId);
 		//leader->sendSystemMessage("group", "considering_your_group", player->getObjectID());
@@ -99,12 +105,12 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* target)
 	target->updateGroupInviterID(leader->getObjectID());
 
 	StringIdChatParameter stringId;
-	stringId.setStringId("group", "invite_leader");
+	stringId.setStringId("group", "invite_leader"); // You invite %TT to join your group.
 	stringId.setTT(target->getDisplayedName());
 	leader->sendSystemMessage(stringId);
 
 	if (target->isPlayerCreature()) {
-		stringId.setStringId("group", "invite_target");
+		stringId.setStringId("group", "invite_target"); // %TT invites you to join a group. Type /join to accept
 		stringId.setTT(leader->getDisplayedName());
 		target->sendSystemMessage(stringId);
 
@@ -112,7 +118,7 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* target)
 		unsigned long long ownerId = target->getCreatureLinkID();
 		ManagedReference<CreatureObject*> owner = target->getZoneServer()->getObject(ownerId).castTo<CreatureObject*>();
 
-		if (owner != NULL && owner != leader)
+		if (owner != NULL)
 			owner->sendSystemMessage("@pet/pet_menu:pet_invited"); // Your pet has been invited to join your group.
 
 		joinGroup(target);
@@ -176,12 +182,18 @@ void GroupManager::joinGroup(CreatureObject* player) {
 	player->updateGroup(group);
 	group->addMember(player);
 
+	if (player->isPet() && player->isWalkerSpecies()) {
+		StringIdChatParameter param("group", "other_joined_prose"); // %TU has joined the group.
+		param.setTU(player->getDisplayedName());
+		group->sendSystemMessage(param);
+	}
+
 	if (player->isPlayerCreature()) {
-		player->sendSystemMessage("@group:joined_self");
+		player->sendSystemMessage("@group:joined_self"); // "You have joined the group."
 
 		//Inform new member who the Master Looter is.
 		if (group->getLootRule() == MASTERLOOTER) {
-			StringIdChatParameter masterLooter("group","set_new_master_looter");
+			StringIdChatParameter masterLooter("group","set_new_master_looter"); //The Group Leader has set %TT as the master looter.
 			masterLooter.setTT(group->getMasterLooterID());
 			player->sendSystemMessage(masterLooter);
 		}
@@ -243,7 +255,7 @@ GroupObject* GroupManager::createGroup(CreatureObject* leader) {
 	group->sendTo(leader, true);
 
 	leader->updateGroup(group);
-	leader->sendSystemMessage("@group:formed_self");
+	leader->sendSystemMessage("@group:formed_self"); //You have formed the group.
 
 	// clear inviter's LFG setting once a group is created
 	Reference<PlayerObject*> ghost = leader->getSlottedObject("ghost").castTo<PlayerObject*>();
@@ -334,9 +346,14 @@ void GroupManager::leaveGroup(ManagedReference<GroupObject*> group, CreatureObje
 
 		player->updateGroup(NULL);
 
+		if (player->isPet() && player->isWalkerSpecies()) {
+			StringIdChatParameter param("group", "other_left_prose"); // %TU has left the group.
+			param.setTU(player->getDisplayedName());
+			group->sendSystemMessage(param);
+		}
 		//if (player != NULL && player->isOnline() && !player->isLoggingOut())
 		if (player->isPlayerCreature())
-			player->sendSystemMessage("@group:removed");
+			player->sendSystemMessage("@group:removed"); //You have been removed from the group.
 
 		player->unlock();
 
@@ -377,7 +394,7 @@ void GroupManager::disbandGroup(ManagedReference<GroupObject*> group, CreatureOb
 		//if he's not the leader. Remove?
 		//After Fix 13 feb 2009 - Bankler
 		if (group->getLeader() != player) {
-			player->sendSystemMessage("@group:must_be_leader");
+			player->sendSystemMessage("@group:must_be_leader"); //"You must be the group leader perform this action."
 			player->wlock();
 			return;
 		}
@@ -428,7 +445,7 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 		Reference<CreatureObject*> leader = group->getLeader();
 
 		if (player != leader) {
-			player->sendSystemMessage("@group:must_be_leader");
+			player->sendSystemMessage("@group:must_be_leader"); //You must be the group leader perform this action.
 			player->wlock();
 			return;
 		}
@@ -437,7 +454,7 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 			for (int i = 0; i < group->getGroupSize(); i++) {
 				Reference<CreatureObject*> play = group->getGroupMember(i);
 
-				play->sendSystemMessage("@group:disbanded");
+				play->sendSystemMessage("@group:disbanded"); //The group has been disbanded.
 			}
 			group->disband();
 			disbanded = true;
@@ -445,7 +462,7 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 			group->removeMember(memberToKick);
 
 			if (memberToKick->isPlayerCreature())
-				memberToKick->sendSystemMessage("@group:removed");
+				memberToKick->sendSystemMessage("@group:removed"); //You have been removed from the group.
 
 			memberToKick->info("kicking from group");
 		}
@@ -496,7 +513,7 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 		group->wlock();
 
 		if (group->getLeader() != player) {
-			player->sendSystemMessage("@group:must_be_leader");
+			player->sendSystemMessage("@group:must_be_leader"); //You must be the group leader perform this action.
 			group->unlock();
 			player->wlock();
 			return;
