@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_762b0883",
+        "filename": "MMOCoreORB/bin/scripts/object/tangible/wearables/armor/nightsister/armor_nightsister_bicep_r_s01.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-25T00:07:31Z",
+      "side": 1,
+      "message": "These are already set to this value in the client. You don\u0027t need to add these.",
+      "revId": "b549258d93ed7ca67d4d7099c8ea6f1400c02d7e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_16207c9a",
+        "filename": "MMOCoreORB/src/server/zone/managers/sui/SuiManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-25T00:07:31Z",
+      "side": 1,
+      "message": "This is already declared before this. No need to get it again. Remove this declaration from each of these (and the existing apply_all_dots)",
+      "range": {
+        "startLine": 576,
+        "startChar": 35,
+        "endLine": 576,
+        "endChar": 39
+      },
+      "revId": "b549258d93ed7ca67d4d7099c8ea6f1400c02d7e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
