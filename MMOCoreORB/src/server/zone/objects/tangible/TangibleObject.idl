@@ -779,7 +779,7 @@ class TangibleObject extends SceneObject {
 			for (int i = 0; i < activeAreas.size(); i++) {
 				ActiveArea region = activeAreas.get(i);
 
-				if (region.isRegion()) {
+				if (region.isRegion() && !region.isNavRegion()) {
 					return region;
 				}
 			}
