@@ -27,6 +27,7 @@ protected:
 	Vector<AABB> areas;
 	RecastSettings settings;
 	const String& queue;
+	AtomicBoolean running;
 	//Vector<LambdaFunction<std::function<void(NavmeshRegion*, const Vector<AABB>*)> > > functions;
 	Mutex mutex;
 public:
@@ -46,7 +47,7 @@ public:
 	RecastSettings& getRecastConfig() {
 		return settings;
 	}
-	NavMeshJob(NavMeshRegion *region, Zone* zone, const RecastSettings& config, const String& targetQueue) : queue(targetQueue)  {
+	NavMeshJob(NavMeshRegion *region, Zone* zone, const RecastSettings& config, const String& targetQueue) : queue(targetQueue), running(true)  {
 		this->zone = zone;
 		this->region = region;
 		settings = config;
@@ -58,6 +59,14 @@ public:
 
 	const String& getQueue() {
 	    return queue;
+	}
+
+	void cancel() {
+		running.set(false);
+	}
+
+	const AtomicBoolean* getJobStatus() {
+		return &running;
 	}
 
 	void addArea(const AABB& area);

@@ -93,6 +93,7 @@ class NavMeshRegion extends Region {
         return true;
     }
 
+	@dirty
     public native NavMeshRegion asNavRegion();
 
     @dirty

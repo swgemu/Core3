@@ -14,6 +14,7 @@ namespace conf {
 		bool makePing;
 		bool makeStatus;
 		bool makeWeb;
+		bool dumpObjFiles;
 
 		String orbNamingDirectoryAddress;
 		uint16 orbNamingDirectoryPort;
@@ -106,6 +107,10 @@ namespace conf {
 
 		inline bool getMakeWeb() {
 			return makeWeb;
+		}
+
+		inline bool getDumpObjFiles() {
+			return dumpObjFiles;
 		}
 
 		inline String& getORBNamingDirectoryAddress() {

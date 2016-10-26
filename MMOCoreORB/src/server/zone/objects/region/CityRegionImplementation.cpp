@@ -461,6 +461,7 @@ void CityRegionImplementation::createNavRegion() {
 
 void CityRegionImplementation::destroyNavRegion() {
 	if (navmeshRegion != NULL) {
+		NavMeshManager::instance()->cancelJobs(navmeshRegion);
 		Locker locker(navmeshRegion);
 		navmeshRegion->destroyObjectFromWorld(true);
 		navmeshRegion = NULL;

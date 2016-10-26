@@ -10,6 +10,7 @@ ConfigManager::ConfigManager() {
 	makePing = true;
 	makeStatus = true;
 	makeWeb = true;
+	dumpObjFiles = true;
 
 	orbNamingDirectoryAddress = "";
 	orbNamingDirectoryPort = 44419;
@@ -72,6 +73,7 @@ bool ConfigManager::loadConfigData() {
 	makePing = getGlobalByte("MakePing");
 	makeStatus = getGlobalByte("MakeStatus");
 	makeWeb = getGlobalByte("MakeWeb");
+	dumpObjFiles = getGlobalByte("DumpObjFiles");
 
 	orbNamingDirectoryAddress = getGlobalString("ORB");
 	orbNamingDirectoryPort = getGlobalShort("ORBPort");

@@ -65,6 +65,7 @@ protected:
 	AABB lastTileBounds;
 	int m_tileTriCount;
 	String name;
+	const AtomicBoolean* running;
 
 	unsigned char* buildTileMesh(const int tx, const int ty, int& dataSize);
 
@@ -88,7 +89,7 @@ public:
 
 	void saveAll(const String& file);
 
-	RecastNavMeshBuilder(Zone* zone, const String& name);
+	RecastNavMeshBuilder(Zone* zone, const String& name, const AtomicBoolean* jobStatus);
 
 	virtual ~RecastNavMeshBuilder();
 
