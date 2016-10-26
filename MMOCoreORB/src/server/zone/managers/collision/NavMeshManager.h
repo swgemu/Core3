@@ -23,6 +23,7 @@ protected:
 	VectorMap<String, Reference<NavMeshJob*> > jobs;
 	VectorMap<String, Reference<NavMeshJob*> > runningJobs;
 	Mutex jobQueueMutex;
+	bool stopped;
 
 
 	void startJob(Reference<NavMeshJob*> job);
@@ -35,6 +36,8 @@ public:
 	void enqueueJob(Zone* zone, NavMeshRegion* region, AABB areaToBuild, const RecastSettings& recastConfig, const String& queue);
 
 	void cancelJobs(NavMeshRegion* region);
+	void cancelAllJobs();
+	void stop();
 
     static bool AABBEncompasessAABB(const AABB& lhs, const AABB& rhs);
 

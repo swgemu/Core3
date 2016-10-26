@@ -14,6 +14,18 @@ void NavMeshRegionImplementation::notifyLoadFromDatabase() {
 	navMesh = new RecastNavMesh("navmeshes/"+meshName, false);
 }
 
+void NavMeshRegionImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	RegionImplementation::destroyObjectFromDatabase(destroyContainedObjects);
+
+	navMesh->deleteFile();
+}
+
+void NavMeshRegionImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
+	disableUpdates = true;
+
+	RegionImplementation::destroyObjectFromWorld(sendSelfDestroy);
+}
+
 AABB NavMeshRegionImplementation::getBoundingBox() {
 	float f = radius;
 	float x = getPositionX();

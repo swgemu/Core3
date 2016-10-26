@@ -492,7 +492,7 @@ RecastNavMeshBuilder::initialize(Vector<Reference<MeshData*> >& meshData, const 
 
 	Vector3 center = bounds.center();
 	info(center.toString() + " Radius: " + String::valueOf(boundsRadius), true);
-	meshData.add(getTerrainMesh(center, bounds.extents()[bounds.longestAxis()] * 2.0f, terrainManager, 32,
+	meshData.add(getTerrainMesh(center, boundsRadius, terrainManager, 32,
 								distanceBetweenHeights));
 
 	Reference < MeshData * > flattened = flattenMeshData(meshData);
