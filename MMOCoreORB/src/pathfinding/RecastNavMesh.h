@@ -20,14 +20,18 @@ class RecastNavMesh : public Object, Logger {
 	NavMeshSetHeader header;
 	String filename;
 	ReadWriteLock rwLock;
+
 public:
 	RecastNavMesh(const String& filename, bool forceRebuild=false);
 	RecastNavMesh() {
 		navMesh = NULL;
 	}
+
 	void reloadNavmesh() {
 		loadAll(filename);
 	}
+
+	void deleteFile();
 
 	bool isLoaded() {
 		return navMesh != NULL;

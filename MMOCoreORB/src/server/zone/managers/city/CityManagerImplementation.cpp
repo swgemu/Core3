@@ -1359,6 +1359,8 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 
 	unregisterCity(city, NULL);
 
+	city->destroyNavRegion();
+
 	for (int i = CityManager::METROPOLIS; i > 0; i--) {
 		city->destroyAllStructuresForRank(uint8(i), false);
 	}

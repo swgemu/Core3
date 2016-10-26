@@ -56,6 +56,7 @@ void RecastNavMesh::loadAll(const String& filename) {
 		file.close();
 		return;
 	}
+
 	dtStatus status = mesh->init(&header.params);
 	if (dtStatusFailed(status)) {
 		error("Invalid Detour status for RecastNavMesh " + filename);
@@ -102,4 +103,28 @@ void RecastNavMesh::loadAll(const String& filename) {
 	rwLock.wlock();
 	navMesh = mesh;
 	rwLock.unlock();
+}
+
+void RecastNavMesh::deleteFile() {
+	File file(filename);
+	file.setWriteable();
+
+	if (!file.exists()) {
+		info("File does not exist " + filename, true);
+		return;
+	}
+
+	file.deleteFile();
+	file.close();
+
+	File objFile(filename + ".obj");
+	objFile.setWriteable();
+
+	if (!objFile.exists()) {
+		info("File does not exist " + filename + ".obj", true);
+		return;
+	}
+
+	objFile.deleteFile();
+	objFile.close();
 }

@@ -11,8 +11,9 @@ const String NavMeshManager::TileQueue = "NavMeshWorker";
 // Higher thread count, used for building large static cities during initialization
 const String NavMeshManager::MeshQueue = "NavMeshBuilder";
 
-NavMeshManager::NavMeshManager() {
+NavMeshManager::NavMeshManager() : Logger("NavMeshManager") {
     maxConcurrentJobs = 4;
+    stopped = false;
 }
 
 void NavMeshManager::initialize(int numThreads) {
@@ -22,6 +23,9 @@ void NavMeshManager::initialize(int numThreads) {
 }
 
 void NavMeshManager::enqueueJob(Zone* zone, NavMeshRegion* region, AABB areaToBuild, const RecastSettings& recastConfig, const String& queue) {
+	if (stopped)
+		return;
+
     Locker locker(&jobQueueMutex);
 
     const String& name = region->getMeshName();
@@ -50,6 +54,8 @@ void NavMeshManager::enqueueJob(Zone* zone, NavMeshRegion* region, AABB areaToBu
 }
 
 void NavMeshManager::checkJobs() {
+	if (stopped)
+		return;
 
     Locker locker(&jobQueueMutex);
 
@@ -81,7 +87,7 @@ void NavMeshManager::checkJobs() {
 
 void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
 
-    if(job == NULL) {
+    if (stopped || job == NULL) {
         return;
     }
 
@@ -166,7 +172,7 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
         if(navmesh == NULL)
             navmesh = new RecastNavMesh();
 
-        navmesh->setFileName(filename);
+        navmesh->setFileName("navmeshes/" + filename);
         navmesh->setDetourNavMesh(builder->getNavMesh());
         navmesh->setDetourNavMeshHeader(builder->getNavMeshHeader());
 
@@ -216,6 +222,25 @@ void NavMeshManager::cancelJobs(NavMeshRegion* region) {
             }
         }
     }
+}
+
+void NavMeshManager::cancelAllJobs() {
+	Locker locker(&jobQueueMutex);
+
+	if (runningJobs.size() > 0) {
+		for (int i = runningJobs.size()-1; i >= 0; i--) {
+			auto& job = runningJobs.get(i);
+			job->cancel();
+			runningJobs.remove(i);
+		}
+	}
+
+	jobs.removeAll();
+}
+
+void NavMeshManager::stop() {
+	stopped = true;
+	cancelAllJobs();
 }
 
 bool NavMeshManager::AABBEncompasessAABB(const AABB& lhs, const AABB& rhs) {

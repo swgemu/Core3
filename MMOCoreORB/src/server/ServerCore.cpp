@@ -282,6 +282,8 @@ void ServerCore::shutdown() {
 
 	objectManager->cancelUpdateModifiedObjectsTask();
 
+	NavMeshManager::instance()->stop();
+
 	if (zoneServer != NULL) {
 		zoneServer->clearZones();
 	}
