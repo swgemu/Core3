@@ -14,7 +14,6 @@ include pathfinding.RecastNavMesh;
 class NavMeshRegion extends Region {
 
 	protected string meshName;
-	protected SceneObject owner;
 	protected RecastNavMesh navMesh;
 
 	// Disables notifyEnter/Exit updates for static city regions
@@ -35,7 +34,6 @@ class NavMeshRegion extends Region {
 		super();
 		disableUpdates = false;
 		navMesh = null;
-		owner = null;
 		meshName = "navmesh";
 	}
 

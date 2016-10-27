@@ -35,6 +35,7 @@ import server.zone.objects.pathfinding.NavMeshRegion;
 @lua
 class CityRegion extends ManagedObject implements Logger {
 
+	@weakReference
 	protected transient NavMeshRegion navmeshRegion;
 
 	protected byte cityRank;
@@ -254,12 +255,13 @@ class CityRegion extends ManagedObject implements Logger {
 	@local
 	@dirty
 	public RecastNavMesh getNavMesh() {
-        if(navmeshRegion == null)
-        	return null;
+		NavMeshRegion navRegion = navmeshRegion;
 
-		return navmeshRegion.getNavMesh();
+		if (navRegion == null)
+			return null;
+
+		return navRegion.getNavMesh();
 	}
-
 
 	@preLocked
 	public void setAssessmentPending(boolean pend) {

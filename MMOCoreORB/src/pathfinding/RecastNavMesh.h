@@ -27,6 +27,10 @@ public:
 		navMesh = NULL;
 	}
 
+	~RecastNavMesh() {
+		dtFreeNavMesh(navMesh);
+	}
+
 	void reloadNavmesh() {
 		loadAll(filename);
 	}

@@ -112,11 +112,12 @@ void CityRegionImplementation::initialize() {
 }
 
 void CityRegionImplementation::updateNavmesh(const AABB& bounds, const String& queue) {
+	ManagedReference<NavMeshRegion*> navRegion = navmeshRegion.get();
 
-	if(navmeshRegion == NULL)
+	if (navRegion == NULL)
 		return;
 
-	RecastNavMesh *navmesh = navmeshRegion->getNavMesh();
+	RecastNavMesh *navmesh = navRegion->getNavMesh();
 
 	RecastSettings settings;
 
@@ -128,9 +129,9 @@ void CityRegionImplementation::updateNavmesh(const AABB& bounds, const String& q
 	}
 
 	if (navmesh == NULL || !navmesh->isLoaded()) {
-		NavMeshManager::instance()->enqueueJob(zone, navmeshRegion, navmeshRegion->getBoundingBox(), settings, queue);
+		NavMeshManager::instance()->enqueueJob(zone, navRegion, navRegion->getBoundingBox(), settings, queue);
 	} else {
-		NavMeshManager::instance()->enqueueJob(zone, navmeshRegion, bounds, settings, queue);
+		NavMeshManager::instance()->enqueueJob(zone, navRegion, bounds, settings, queue);
 	}
 
 
@@ -460,13 +461,15 @@ void CityRegionImplementation::createNavRegion() {
 }
 
 void CityRegionImplementation::destroyNavRegion() {
-	if (navmeshRegion != NULL) {
-		NavMeshManager::instance()->cancelJobs(navmeshRegion);
-		Locker locker(navmeshRegion);
-		navmeshRegion->destroyObjectFromWorld(true);
+	ManagedReference<NavMeshRegion*> navRegion = navmeshRegion.get();
 
-		if (navmeshRegion->isPersistent())
-			navmeshRegion->destroyObjectFromDatabase(true);
+	if (navRegion != NULL) {
+		NavMeshManager::instance()->cancelJobs(navRegion);
+		Locker locker(navRegion);
+		navRegion->destroyObjectFromWorld(true);
+
+		if (navRegion->isPersistent())
+			navRegion->destroyObjectFromDatabase(true);
 
 		navmeshRegion = NULL;
 	}
@@ -479,29 +482,32 @@ void CityRegionImplementation::createNavRegion(const String& queue, bool forceRe
 
 	bool clientRegion = isClientRegion();
 
-    if(navmeshRegion != NULL) {
-        RecastNavMesh* mesh = getNavMesh();
-        if(mesh == NULL || !mesh->isLoaded()) {
-            Core::getTaskManager()->executeTask([=] {
-                updateNavmesh(navmeshRegion->getBoundingBox(), queue);
-            }, "cityregion_navmesh_update");
-            return;
-        }
-    }
-    navmeshRegion = zone->getZoneServer()->createObject(STRING_HASHCODE("object/region_navmesh.iff"),
+	ManagedReference<NavMeshRegion*> navRegion = navmeshRegion.get();
+
+	if (navRegion != NULL) {
+		RecastNavMesh* mesh = getNavMesh();
+		if (mesh == NULL || !mesh->isLoaded()) {
+			Core::getTaskManager()->executeTask([=] {
+				updateNavmesh(navRegion->getBoundingBox(), queue);
+			}, "cityregion_navmesh_update");
+			return;
+		}
+	}
+
+	navRegion = zone->getZoneServer()->createObject(STRING_HASHCODE("object/region_navmesh.iff"),
 															!clientRegion).castTo<NavMeshRegion *>();
 
-    if (navmeshRegion == NULL || !navmeshRegion->isRegion()) {
-        error("Failed to create navmesh region");
-        return;
-    }
+	if (navRegion == NULL || !navRegion->isRegion()) {
+		error("Failed to create navmesh region");
+		return;
+	}
 
-	Locker clocker(navmeshRegion, _this.getReferenceUnsafeStaticCast());
+	Locker clocker(navRegion, _this.getReferenceUnsafeStaticCast());
 
 	String name = getNavMeshName();
 	name = name.subString(name.lastIndexOf(':')+1);
 
-	if(isClientRegion()) {
+	if (isClientRegion()) {
 		Vector3 center;
 
 		float minx = 30000;
@@ -546,14 +552,16 @@ void CityRegionImplementation::createNavRegion(const String& queue, bool forceRe
 
 		AABB box(Vector3(minx, miny, minz), Vector3(maxx, maxy, maxz));
 		Vector3 position = Vector3(box.center()[0], 0, box.center()[1]);
-		navmeshRegion->disableMeshUpdates(true);
-		navmeshRegion->initializeNavRegion(position, box.extents()[box.longestAxis()], zone, name, true, forceRebuild);
+		navRegion->disableMeshUpdates(true);
+		navRegion->initializeNavRegion(position, box.extents()[box.longestAxis()], zone, name, true, forceRebuild);
 	} else {
 		Vector3 position = Vector3(getPositionX(), 0, getPositionY());
-		navmeshRegion->initializeNavRegion(position, 480.0f, zone, name, true, forceRebuild);
+		navRegion->initializeNavRegion(position, 480.0f, zone, name, true, forceRebuild);
 	}
 
-	zone->transferObject(navmeshRegion, -1, false);
+	zone->transferObject(navRegion, -1, false);
+
+	navmeshRegion = navRegion;
 }
 
 void CityRegionImplementation::setZone(Zone* zne) {

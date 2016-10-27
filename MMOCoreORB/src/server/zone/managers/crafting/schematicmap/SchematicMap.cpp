@@ -18,7 +18,7 @@
 //ZoneServer* SchematicMap::zoneServer = NULL;
 
 SchematicMap::SchematicMap() : objectManager(NULL) {
-
+	setLoggingName("SchematicMap");
 	info("Loading schematics...");
 
 	Lua::init();

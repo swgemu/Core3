@@ -26,8 +26,8 @@ namespace server {
    class ActiveAreaEvent : public Task {
 	   uint32 eventType;
 
-	   ManagedReference<ActiveArea*> area;
-	   ManagedReference<SceneObject*> object;
+	   ManagedWeakReference<ActiveArea*> activeArea;
+	   ManagedWeakReference<SceneObject*> sceneObject;
 
    public:
 	   const static int ENTEREVENT = 1;
@@ -35,12 +35,18 @@ namespace server {
 
    public:
 	   ActiveAreaEvent(ActiveArea* ar, SceneObject* obj, uint32 eventt) {
-		   area = ar;
+		   activeArea = ar;
 		   eventType = eventt;
-		   object = obj;
+		   sceneObject = obj;
 	   }
 
 	   void run() {
+		   ManagedReference<ActiveArea*> area = activeArea.get();
+		   ManagedReference<SceneObject*> object = sceneObject.get();
+
+		   if (area == NULL || object == NULL)
+			   return;
+
 		   Locker clocker(object);
 
 		   Locker locker(area, object);

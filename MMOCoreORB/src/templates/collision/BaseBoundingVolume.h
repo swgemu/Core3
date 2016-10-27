@@ -15,6 +15,7 @@ protected:
 	Sphere bsphere; // All volumes have an enclosing sphere
 public:
 	BaseBoundingVolume() : bsphere(Vector3(0, 0, 0), 0) { }
+	virtual ~BaseBoundingVolume() { }
 	virtual const AABB& getBoundingBox() const = 0;
 	virtual const Sphere& getBoundingSphere() {
 		return bsphere;
