@@ -31,13 +31,13 @@ class GCWManager extends ManagedService implements Logger {
 	public static final int STATICFACTIONBASE = 2;
 
 	private Zone zone;
-	
-	@dereferenced 
+
+	@dereferenced
 	protected transient SortedVector<BuildingObject > gcwBaseList;
-	
+
 	@dereferenced
 	protected transient VectorMap<unsigned long, Reference<Task> > gcwStartTasks;
-	
+
 	@dereferenced
 	protected transient VectorMap<unsigned long, Reference<Task> > gcwEndTasks;
 
@@ -46,10 +46,10 @@ class GCWManager extends ManagedService implements Logger {
 
 	@dereferenced
 	protected transient Vector<string> dnaPairs;
-	
+
 	@dereferenced
 	protected transient VectorMap<unsigned long, Reference<Task> > gcwDestroyTasks;
-	
+
 	@dereferenced
 	protected transient Mutex baseMutex;
 
@@ -64,11 +64,11 @@ class GCWManager extends ManagedService implements Logger {
 	private transient int imperialBases;
 	private transient int imperialScore;
 	private transient int winningFaction;
-	
+
 	public transient int gcwCheckTimer;
-	public transient int vulnerabilityDuration; 
-	public transient int vulnerabilityFrequency; 
-	public transient int resetTimer; 
+	public transient int vulnerabilityDuration;
+	public transient int vulnerabilityFrequency;
+	public transient int resetTimer;
 	public transient int sliceCooldown;
 	public transient int totalDNASamples;
 	public transient int powerSwitchCount;
@@ -84,7 +84,7 @@ class GCWManager extends ManagedService implements Logger {
 	public transient int loserBonus;
 	public transient boolean spawnDefenses;
 	public transient int initialVulnerabilityDelay;
-	
+
 	public transient boolean racialPenaltyEnabled;
 
 	@dereferenced
@@ -97,7 +97,7 @@ class GCWManager extends ManagedService implements Logger {
 		imperialScore = 0;
 		rebelBases = 0;
 		rebelScore = 0;
-		winningFaction = Factions.FACTIONNEUTRAL;
+		winningFaction = Factions.FACTIONIMPERIAL;
 
 		gcwCheckTimer = 3600;
 		vulnerabilityDuration = 7200;
@@ -420,7 +420,7 @@ class GCWManager extends ManagedService implements Logger {
 	public boolean isRacialPenaltyEnabled() {
 		return racialPenaltyEnabled;
 	}
- 
+
 	@local
 	@read
 	public boolean shouldSpawnDefenses() {
