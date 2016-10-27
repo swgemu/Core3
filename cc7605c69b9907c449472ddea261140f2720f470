@@ -22,6 +22,30 @@
       "revId": "cc7605c69b9907c449472ddea261140f2720f470",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_b69bb071",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/GCWManager.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-27T22:30:16Z",
+      "side": 0,
+      "message": "Yeah, I think I\u0027d rather if we leave this part alone. It makes more sense to me for the previous winner to remain in control until the balance has actually shifted to the other side. It goes along with the previous winner\u0027s npcs not going away immediately when the winner changes. The previous winner isn\u0027t driven out immediately.",
+      "parentUuid": "bada0100_d6cd1488",
+      "range": {
+        "startLine": 377,
+        "startChar": 9,
+        "endLine": 377,
+        "endChar": 52
+      },
+      "revId": "cc7605c69b9907c449472ddea261140f2720f470",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }

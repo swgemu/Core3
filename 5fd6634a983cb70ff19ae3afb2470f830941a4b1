@@ -22,6 +22,30 @@
       "revId": "5fd6634a983cb70ff19ae3afb2470f830941a4b1",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_969eac62",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/GCWManager.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-27T22:30:16Z",
+      "side": 1,
+      "message": "I agree",
+      "parentUuid": "bada0100_36b900ea",
+      "range": {
+        "startLine": 100,
+        "startChar": 28,
+        "endLine": 100,
+        "endChar": 43
+      },
+      "revId": "5fd6634a983cb70ff19ae3afb2470f830941a4b1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
