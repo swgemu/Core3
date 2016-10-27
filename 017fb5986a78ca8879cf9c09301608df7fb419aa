@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_d64af426",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/recruiters/recruiterScreenplay.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-27T03:26:18Z",
+      "side": 1,
+      "message": "pPlayer",
+      "range": {
+        "startLine": 624,
+        "startChar": 16,
+        "endLine": 624,
+        "endChar": 22
+      },
+      "revId": "017fb5986a78ca8879cf9c09301608df7fb419aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f647f81b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 2033,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-27T03:26:18Z",
+      "side": 1,
+      "message": "pConversingPlayer",
+      "range": {
+        "startLine": 2033,
+        "startChar": 95,
+        "endLine": 2033,
+        "endChar": 109
+      },
+      "revId": "017fb5986a78ca8879cf9c09301608df7fb419aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_96546ccb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 2036,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-27T03:26:18Z",
+      "side": 1,
+      "message": "pConversingPlayer",
+      "range": {
+        "startLine": 2036,
+        "startChar": 20,
+        "endLine": 2036,
+        "endChar": 34
+      },
+      "revId": "017fb5986a78ca8879cf9c09301608df7fb419aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_b65170da",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 2038,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-27T03:26:18Z",
+      "side": 1,
+      "message": "pConversingPlayer",
+      "range": {
+        "startLine": 2038,
+        "startChar": 24,
+        "endLine": 2038,
+        "endChar": 31
+      },
+      "revId": "017fb5986a78ca8879cf9c09301608df7fb419aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_16415c0b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CombatQueueCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-27T03:26:18Z",
+      "side": 1,
+      "message": "You can remove targetGhost",
+      "range": {
+        "startLine": 176,
+        "startChar": 23,
+        "endLine": 176,
+        "endChar": 34
+      },
+      "revId": "017fb5986a78ca8879cf9c09301608df7fb419aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_3646e024",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CombatQueueCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-27T03:26:18Z",
+      "side": 1,
+      "message": "and this one",
+      "range": {
+        "startLine": 186,
+        "startChar": 23,
+        "endLine": 186,
+        "endChar": 34
+      },
+      "revId": "017fb5986a78ca8879cf9c09301608df7fb419aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_763c6894",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SquadLeaderCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-27T03:26:18Z",
+      "side": 1,
+      "message": "targetCreo",
+      "range": {
+        "startLine": 99,
+        "startChar": 63,
+        "endLine": 99,
+        "endChar": 69
+      },
+      "revId": "017fb5986a78ca8879cf9c09301608df7fb419aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_96bd4c05",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-27T03:26:18Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "017fb5986a78ca8879cf9c09301608df7fb419aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_5637e4b0",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/TangibleObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-27T03:26:18Z",
+      "side": 1,
+      "message": "null check this",
+      "range": {
+        "startLine": 129,
+        "startChar": 16,
+        "endLine": 129,
+        "endChar": 21
+      },
+      "revId": "017fb5986a78ca8879cf9c09301608df7fb419aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_b6bad008",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/TangibleObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-27T03:26:18Z",
+      "side": 1,
+      "message": "you can remove this",
+      "range": {
+        "startLine": 1023,
+        "startChar": 42,
+        "endLine": 1023,
+        "endChar": 67
+      },
+      "revId": "017fb5986a78ca8879cf9c09301608df7fb419aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
