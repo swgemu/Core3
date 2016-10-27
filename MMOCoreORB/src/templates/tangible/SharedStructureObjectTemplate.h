@@ -110,7 +110,7 @@ public:
 		return constructionMarkerTemplate;
 	}
 
-	inline virtual bool isPublicStructure() {
+	inline virtual bool isPublicStructure() const {
 		return false;
 	}
 
