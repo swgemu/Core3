@@ -216,7 +216,6 @@ void FindSessionImplementation::findPlanetaryObject(String& maplocationtype) {
 			for (int i = 0; i < path->size(); i++) {
 				const WorldCoordinates& point = path->get(i);
 				msg->addCoordinate(point.getX(), point.getZ(), point.getY());
-				info("Adding coordinate: " + point.getWorldPosition().toString(), true);
 			}
 
 			if (wpt != NULL) {

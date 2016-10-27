@@ -43,6 +43,9 @@ class CityRegion extends ManagedObject implements Logger {
 	protected StringId regionName;
 
 	@dereferenced
+	protected string navMeshName;
+
+	@dereferenced
 	protected VectorMap<unsigned long, int> candidates;
 
 	@dereferenced
@@ -335,6 +338,13 @@ class CityRegion extends ManagedObject implements Logger {
 	@dirty
 	public Zone getZone() {
 		return zone.get();
+	}
+
+	@dirty
+	public native string getNavMeshName();
+
+	public void setNavMeshName(string name) {
+		navMeshName = name;
 	}
 
 	@dirty
