@@ -44,7 +44,7 @@ void CellPortal::readObject(IffStream* iff) {
 }
 
 CellProperty::CellProperty() : Object(), Logger("CellProperty"), numberOfPortals(0),
-	floorMesh(NULL), appearanceTemplate(NULL), cellID(0) {
+	floorMesh(NULL), appearanceTemplate(NULL), cellID(0), boundingVolume(NULL) {
 
 }
 

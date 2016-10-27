@@ -61,6 +61,7 @@ void RecastNavMesh::loadAll(const String& filename) {
 	if (dtStatusFailed(status)) {
 		error("Invalid Detour status for RecastNavMesh " + filename);
 		file.close();
+		dtFreeNavMesh(mesh);
 		return;
 	}
 
@@ -72,12 +73,14 @@ void RecastNavMesh::loadAll(const String& filename) {
 		if (stream.read((byte * ) & tileHeader, headerSize) != headerSize) {
 			error("Failed to read tileHeader for tile :" + String::valueOf(i) + " in RecastNavMesh " + filename);
 			file.close();
+			dtFreeNavMesh(mesh);
 			return;
 		}
 
 		if (!tileHeader.tileRef || !tileHeader.dataSize) {
 			error("Invalid tileHeader tileRef or dataSize in " + filename);
 			file.close();
+			dtFreeNavMesh(mesh);
 			return;
 		}
 
@@ -85,6 +88,7 @@ void RecastNavMesh::loadAll(const String& filename) {
 		if (!data) {
 			error("Failed to buffer for tile in RecastNavMesh " + filename);
 			file.close();
+			dtFreeNavMesh(mesh);
 			return;
 		}
 
@@ -92,6 +96,8 @@ void RecastNavMesh::loadAll(const String& filename) {
 		if (stream.read(data, tileHeader.dataSize) != tileHeader.dataSize) {
 			error("Failed to read tileData:" + String::valueOf(i) + " in RecastNavMesh " + filename);
 			file.close();
+			dtFreeNavMesh(mesh);
+			dtFree(data);
 			return;
 		}
 

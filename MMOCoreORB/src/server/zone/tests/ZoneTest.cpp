@@ -100,6 +100,53 @@ TEST_F(ZoneTest, TreLoad) {
 	}
 }
 
+TEST_F(ZoneTest, ActiveAreaTest) {
+	Reference<ActiveArea*> activeArea = createActiveArea();
+
+	Locker alocker(activeArea);
+
+	activeArea->setRadius(128);
+	activeArea->initializePosition(0, 0, 0);
+
+	zone->transferObject(activeArea, -1);
+
+	alocker.release();
+
+	Reference<TangibleObject*> tano = createTangibleObject();
+
+	Locker slocker(tano);
+
+	tano->initializePosition(0, 0, 0);
+
+	ASSERT_EQ(tano->getActiveAreasSize(), 0);
+
+	zone->transferObject(tano, -1);
+
+	ASSERT_EQ(tano->getActiveAreasSize(), 1);
+
+	tano->teleport(200, 0, 0);
+
+	ASSERT_EQ(tano->getActiveAreasSize(), 0);
+
+	tano->teleport(120, 0, 0);
+
+	ASSERT_EQ(tano->getActiveAreasSize(), 1);
+
+	slocker.release();
+
+	Locker blocker(activeArea);
+
+	activeArea->destroyObjectFromWorld(false);
+
+	blocker.release();
+
+	Locker s2locker(tano);
+
+	ASSERT_EQ(tano->getActiveAreasSize(), 0);
+
+	tano->destroyObjectFromWorld(false);
+}
+
 TEST_F(ZoneTest, InRangeTest) {
 	Reference<SceneObject*> scene = createSceneObject();
 
@@ -158,51 +205,4 @@ TEST_F(ZoneTest, InRangeTest) {
 	zone->getInRangeObjects(1000, 1000, 128, &objects, true);
 
 	ASSERT_EQ(objects.size(), 0);
-}
-
-TEST_F(ZoneTest, ActiveAreaTest) {
-	Reference<ActiveArea*> activeArea = createActiveArea();
-
-	Locker alocker(activeArea);
-
-	activeArea->setRadius(128);
-	activeArea->initializePosition(0, 0, 0);
-
-	zone->transferObject(activeArea, -1);
-
-	alocker.release();
-
-	Reference<TangibleObject*> tano = createTangibleObject();
-
-	Locker slocker(tano);
-
-	tano->initializePosition(0, 0, 0);
-
-	ASSERT_EQ(tano->getActiveAreasSize(), 0);
-
-	zone->transferObject(tano, -1);
-
-	ASSERT_EQ(tano->getActiveAreasSize(), 1);
-
-	tano->teleport(200, 0, 0);
-
-	ASSERT_EQ(tano->getActiveAreasSize(), 0);
-
-	tano->teleport(120, 0, 0);
-
-	ASSERT_EQ(tano->getActiveAreasSize(), 1);
-
-	slocker.release();
-
-	Locker blocker(activeArea);
-
-	activeArea->destroyObjectFromWorld(false);
-
-	blocker.release();
-
-	Locker s2locker(tano);
-
-	ASSERT_EQ(tano->getActiveAreasSize(), 0);
-
-	tano->destroyObjectFromWorld(false);
 }

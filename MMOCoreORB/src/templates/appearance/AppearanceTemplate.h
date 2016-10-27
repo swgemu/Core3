@@ -92,7 +92,8 @@ public:
 	}
 
 	virtual ~AppearanceTemplate() {
-
+		delete volume;
+		delete collisionVolume;
 	}
 
 	virtual AppearanceTemplate* getFirstMesh() {
