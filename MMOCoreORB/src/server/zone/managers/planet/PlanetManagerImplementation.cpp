@@ -627,20 +627,24 @@ void PlanetManagerImplementation::loadClientRegions() {
 		row->getValue(2, y);
 		row->getValue(3, radius);
 
-		if(regionName.contains("an_outpost")) {
-			regionName = regionName + String::valueOf(i);
-		}
+		bool isAnOutpost = regionName.contains("an_outpost");
 
 		ManagedReference<CityRegion*> cityRegion = regionMap.getRegion(regionName);
 
-		if (cityRegion == NULL) {
+		if (cityRegion == NULL || isAnOutpost) {
 			cityRegion = new CityRegion();
 
 			Locker locker(cityRegion);
-
 			cityRegion->deploy();
 			cityRegion->setRegionName(regionName);
 			cityRegion->setZone(zone);
+
+			if (isAnOutpost) {
+				String tmp = regionName + String::valueOf(i);
+				cityRegion->setNavMeshName(tmp);
+			} else
+				cityRegion->setNavMeshName(regionName);
+
 			regionMap.addRegion(cityRegion);
 		}
 
