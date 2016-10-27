@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_7631c8a1",
+        "filename": "MMOCoreORB/src/server/zone/managers/planet/PlanetManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-27T08:29:23Z",
+      "side": 1,
+      "message": "Is that supposed to be a + ?",
+      "range": {
+        "startLine": 643,
+        "startChar": 28,
+        "endLine": 643,
+        "endChar": 29
+      },
+      "revId": "f448412227bc0ee161a90693c7f24c030ddff2df",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
