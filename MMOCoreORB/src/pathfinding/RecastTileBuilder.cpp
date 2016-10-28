@@ -199,23 +199,6 @@ unsigned char* RecastTileBuilder::buildTileMesh(const int tx, const int ty, int&
 
 	cleanup();
 
-	const Vector <Vector3>* vertArray = m_geom->getVerts();
-	const Vector <MeshTriangle>* triArray = m_geom->getTriangles();
-
-	const int nverts = vertArray->size();
-	float* verts = new float[nverts * 3];//m_geom->getMesh()->getVerts();
-
-	for (int i = 0; i < nverts; i++) {
-		const Vector3& vert = vertArray->get(i);
-		verts[i * 3 + 0] = vert.getX();
-		verts[i * 3 + 1] = vert.getY();
-		verts[i * 3 + 2] = vert.getZ();
-	}
-
-
-	const int ntris = triArray->size();
-	//const rcChunkyTriMesh* chunkyMesh = m_geom->getChunkyMesh();
-
 	// Expand the heighfield bounding box by border size to find the extents of geometry we need to build this tile.
 	//
 	// This is done in order to make sure that the navmesh tiles connect correctly at the borders,
@@ -260,6 +243,7 @@ unsigned char* RecastTileBuilder::buildTileMesh(const int tx, const int ty, int&
 		error("buildNavigation: Out of memory 'solid'.");
 		return 0;
 	}
+
 	if (!rcCreateHeightfield(m_ctx, *m_solid, m_cfg.width, m_cfg.height, m_cfg.bmin, m_cfg.bmax, m_cfg.cs, m_cfg.ch)) {
 		error("buildNavigation: Could not create solid heightfield.");
 		return 0;
@@ -281,8 +265,22 @@ unsigned char* RecastTileBuilder::buildTileMesh(const int tx, const int ty, int&
 	tbmax[1] = m_cfg.bmax[2];
 	int cid[512];// TODO: Make grow when returning too many items.
 	const int ncid = rcGetChunksOverlappingRect(chunkyMesh, tbmin, tbmax, cid, 512);
-	if (!ncid)
+
+	if (!ncid) {
 		return 0;
+	}
+
+	const Vector <Vector3>* vertArray = m_geom->getVerts();
+
+	const int nverts = vertArray->size();
+	float* verts = new float[nverts * 3];//m_geom->getMesh()->getVerts();
+
+	for (int i = 0; i < nverts; i++) {
+		const Vector3& vert = vertArray->get(i);
+		verts[i * 3 + 0] = vert.getX();
+		verts[i * 3 + 1] = vert.getY();
+		verts[i * 3 + 2] = vert.getZ();
+	}
 
 	m_tileTriCount = 0;
 
@@ -297,9 +295,13 @@ unsigned char* RecastTileBuilder::buildTileMesh(const int tx, const int ty, int&
 		rcMarkWalkableTriangles(m_ctx, m_cfg.walkableSlopeAngle,
 								verts, nverts, ctris, nctris, m_triareas);
 
-		if (!rcRasterizeTriangles(m_ctx, verts, nverts, ctris, m_triareas, nctris, *m_solid, m_cfg.walkableClimb))
+		if (!rcRasterizeTriangles(m_ctx, verts, nverts, ctris, m_triareas, nctris, *m_solid, m_cfg.walkableClimb)) {
+			delete[] verts;
 			return 0;
+		}
 	}
+
+	delete[] verts;
 
 	if (!m_keepInterResults) {
 		delete[] m_triareas;
@@ -321,6 +323,7 @@ unsigned char* RecastTileBuilder::buildTileMesh(const int tx, const int ty, int&
 		error("buildNavigation: Out of memory 'chf'.");
 		return 0;
 	}
+
 	if (!rcBuildCompactHeightfield(m_ctx, m_cfg.walkableHeight, m_cfg.walkableClimb, *m_solid, *m_chf)) {
 		error("buildNavigation: Could not build compact data.");
 		return 0;
@@ -335,8 +338,6 @@ unsigned char* RecastTileBuilder::buildTileMesh(const int tx, const int ty, int&
 		error("buildNavigation: Could not erode.");
 		return 0;
 	}
-
-
 
 	// (Optional) Mark areas.
 	for (int i = 0; i < water.size(); ++i) {
@@ -418,6 +419,7 @@ unsigned char* RecastTileBuilder::buildTileMesh(const int tx, const int ty, int&
 		error("buildNavigation: Out of memory 'cset'.");
 		return 0;
 	}
+
 	if (!rcBuildContours(m_ctx, *m_chf, m_cfg.maxSimplificationError, m_cfg.maxEdgeLen, *m_cset)) {
 		error("buildNavigation: Could not create contours.");
 		return 0;
@@ -433,6 +435,7 @@ unsigned char* RecastTileBuilder::buildTileMesh(const int tx, const int ty, int&
 		error("buildNavigation: Out of memory 'pmesh'.");
 		return 0;
 	}
+
 	if (!rcBuildPolyMesh(m_ctx, *m_cset, m_cfg.maxVertsPerPoly, *m_pmesh)) {
 		error("buildNavigation: Could not triangulate contours.");
 		return 0;
@@ -531,7 +534,6 @@ unsigned char* RecastTileBuilder::buildTileMesh(const int tx, const int ty, int&
 	//m_ctx->log(RC_LOG_PROGRESS, ">> Polymesh: %d vertices  %d polygons", m_pmesh->nverts, m_pmesh->npolys);
 
 	//m_tileBuildTime = m_ctx->getAccumulatedTime(RC_TIMER_TOTAL)/1000.0f;
-	delete[] verts;
 
 	dataSize = navDataSize;
 	return navData;
