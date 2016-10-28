@@ -12,6 +12,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.area.areashapes.AreaShape;
 import server.zone.objects.pathfinding.NavMeshRegion;
 
+@mock
 class ActiveArea extends SceneObject {
 	protected boolean noBuildArea;
 
@@ -57,7 +58,10 @@ class ActiveArea extends SceneObject {
 		
 	}
 
+	@mock
 	public native abstract void enqueueEnterEvent(SceneObject obj);
+
+	@mock
 	public native abstract void enqueueExitEvent(SceneObject obj);
 
 	public native abstract void notifyEnter(SceneObject object);
