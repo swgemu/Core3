@@ -64,7 +64,7 @@ function TatooineStaticSpawnsNorthScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "dune_stalker_scavenger", 300, -4464.7, 33.0, 5784.5, 45, 0)
 	spawnMobile("tatooine", "dune_stalker_scavenger", 300, -4469.9, 33.0, 5786.4, -75, 0)
 
-	--alkhara camp (-1261,5463)
+	--Alkhara camp (-1261,5463)
 	spawnMobile("tatooine", "alkhara_lieutenant", 300, -1258.4, 10.7, 5464.9, 65, 0)
 	spawnMobile("tatooine", "alkhara_bandit", 300, -1265.6, 10.0, 5464.7, 115, 0)
 	spawnMobile("tatooine", "alkhara_bandit", 300, -1264.2, 9.8, 5459.1, 15, 0)
@@ -106,7 +106,7 @@ function TatooineStaticSpawnsNorthScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "krayt_dragon_adolescent", 1800, -6789.0, 127.7, 3661.2, -104, 0)
 	--Rock Pillar with Flag on top (-6449,2614)
 	spawnMobile("tatooine", "volatile_scyk", 600, -6440.7, 252.2, 2610.2, -43, 0)
-	--Hunter Camp
+	--Hunter Camp (-6890,1507)
 	spawnMobile("tatooine", "hunter", 300, -6893.4, 68.7, 1509.4, -86, 0)
 
 	--Comms Dish (-5467,2138)
