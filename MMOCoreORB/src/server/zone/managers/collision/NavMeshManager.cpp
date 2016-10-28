@@ -63,9 +63,17 @@ void NavMeshManager::checkJobs() {
 
         info("Popping job - CurrentSize: " + String::valueOf(jobs.size()), true);
         Reference<NavMeshJob*> job = jobs.get(0);
-        const String& name = job->getRegion()->getMeshName();
+        ManagedReference<NavMeshRegion*> region = job->getRegion();
+
+        if (region == NULL) {
+        	jobs.drop(jobs.elementAt(0).getKey());
+        	continue;
+        }
+
+        const String& name = region->getMeshName();
         jobs.drop(name);
-        if(runningJobs.contains(name)) {
+
+        if (runningJobs.contains(name)) {
             jobs.put(name, job); // push it to the back;
             return;
         }
@@ -91,10 +99,17 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
         return;
     }
 
+    ManagedReference<NavMeshRegion*> region = job->getRegion();
+
+    if (region == NULL) {
+    	return;
+    }
+
     Reference<Zone*> zone = job->getZone();
+
     if (!zone) {
         Locker locker(&jobQueueMutex);
-        jobs.put(job->getRegion()->getMeshName(), job);
+        jobs.put(region->getMeshName(), job);
         return;
     }
 
@@ -103,8 +118,6 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
     Vector <AABB> dirtyZones = Vector<AABB>(job->getAreas());
     job->getAreas().removeAll();
     areaLocker.release();
-
-    NavMeshRegion *region = job->getRegion();
 
     const AABB& bBox = region->getBoundingBox();
 
@@ -207,7 +220,7 @@ void NavMeshManager::cancelJobs(NavMeshRegion* region) {
     if (runningJobs.size() > 0) {
         for (int i = runningJobs.size()-1; i >= 0; i--) {
             auto& job = runningJobs.get(i);
-            if (job->getRegion () == region) {
+            if (job->getRegion() == region) {
                 job->cancel();
                 runningJobs.remove(i);
             }
@@ -217,7 +230,7 @@ void NavMeshManager::cancelJobs(NavMeshRegion* region) {
     if (jobs.size() > 0) {
         for (int i = jobs.size()-1; i >= 0; i--) {
             auto& job = jobs.get(i);
-            if (job->getRegion () == region) {
+            if (job->getRegion() == region) {
                 jobs.remove(i);
             }
         }

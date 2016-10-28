@@ -90,7 +90,6 @@ protected:
 	rcPolyMesh* m_pmesh;
 	rcPolyMeshDetail* m_dmesh;
 	rcConfig m_cfg;
-	dtNavMesh* m_navMesh;
 
 	int m_maxTiles;
 	int m_maxPolysPerTile;

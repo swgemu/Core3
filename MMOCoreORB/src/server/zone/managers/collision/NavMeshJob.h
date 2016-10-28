@@ -18,11 +18,7 @@
 
 class NavMeshJob : public Object {
 protected:
-	NavMeshJob(const NavMeshJob& rhs) : Object(rhs), queue(rhs.queue) {
-		zone = rhs.zone;
-		region = rhs.region;
-	}
-	Reference<NavMeshRegion*> region;
+	ManagedWeakReference<NavMeshRegion*> region;
 	WeakReference<Zone*> zone;
 	Vector<AABB> areas;
 	RecastSettings settings;
@@ -30,6 +26,7 @@ protected:
 	AtomicBoolean running;
 	//Vector<LambdaFunction<std::function<void(NavmeshRegion*, const Vector<AABB>*)> > > functions;
 	Mutex mutex;
+
 public:
 
 	Vector<AABB>& getAreas() {
@@ -41,12 +38,13 @@ public:
 	}
 
 	NavMeshRegion* getRegion() {
-		return region;
+		return region.get();
 	}
 
 	RecastSettings& getRecastConfig() {
 		return settings;
 	}
+
 	NavMeshJob(NavMeshRegion *region, Zone* zone, const RecastSettings& config, const String& targetQueue) : queue(targetQueue), running(true)  {
 		this->zone = zone;
 		this->region = region;

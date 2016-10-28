@@ -32,15 +32,23 @@ public:
 	RecastPolygon(int numVerts) {
 		verts = new float[numVerts*3];
 		this->numVerts = numVerts;
+		hmin = 0;
+		hmax = 0;
+		type = SAMPLE_POLYAREA_GROUND;
 	}
+
 	~RecastPolygon() {
 		delete[] verts;
 	}
+
 	RecastPolygon(const RecastPolygon& rhs) : Object(rhs) {
 		*this = rhs;
 	}
 
 	RecastPolygon& operator=(const RecastPolygon& rhs) {
+		if (this == &rhs)
+			return *this;
+
 		verts = new float[rhs.numVerts*3];
 		memcpy(verts, rhs.verts, sizeof(float)*rhs.numVerts);
 		type = rhs.type;
