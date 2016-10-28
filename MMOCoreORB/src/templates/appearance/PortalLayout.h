@@ -48,7 +48,8 @@ public:
 		return pathGraph;
 	}
 
-	void readPortalGeometry(IffStream *iff, int numPortals);
+	void readPortalGeometry_0003(IffStream *iff, int numPortals);
+	void readPortalGeometry_0004(IffStream *iff, int numPortals);
 
 	void readObject(IffStream* templateData) {
 		parse(templateData);
