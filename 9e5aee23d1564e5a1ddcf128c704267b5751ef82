@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_5604c47d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/naboo_theed.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-10-28T14:37:03Z",
+      "side": 1,
+      "message": "fix",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 2
+      },
+      "revId": "9e5aee23d1564e5a1ddcf128c704267b5751ef82",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_7609c894",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/tatooine_mos_taike.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-10-28T14:37:03Z",
+      "side": 1,
+      "message": "fix",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 2
+      },
+      "revId": "9e5aee23d1564e5a1ddcf128c704267b5751ef82",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
