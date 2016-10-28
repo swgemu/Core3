@@ -24,13 +24,13 @@ function Yavin4StaticSpawnsScreenPlay:spawnMobiles()
 	spawnMobile("yavin4", "dark_jedi_sentinel", 300, 5074.2, 78.8, 313.9, 90, 0)
 	spawnMobile("yavin4", "dark_jedi_sentinel", 300, 5074.3, 79.2, 306.4, 90, 0)
 
-	-- Yavin4 Ruins (-6299 -1502)
+	-- Yavin4 Ruins (-6299, -1502)
 	spawnMobile("yavin4", "crazed_geonosian_guard",300,-6299.1,24.7,-1502,0,0)
 	spawnMobile("yavin4", "crazed_geonosian_guard",300,-6299.1,25.6,-1506.4,179,0)
 	spawnMobile("yavin4", "crazed_geonosian_guard",300,-6302.1,24.9,-1504.2,-90,0)
 	spawnMobile("yavin4", "crazed_geonosian_guard",300,-6296.0,25.3,-1504.2,90,0)
 
-	-- Captain Eso & Yith Seenath's base of operations
+	-- Captain Eso & Yith Seenath's base of operations (1591, 1536)
 	spawnMobile("yavin4", "rebel_commando", 120, 1595.0, 102.5, 1531.9, -40, 0)
 	spawnMobile("yavin4", "rebel_commando", 120, 1595.0, 102.5, 1530.4, -30, 0)
 	spawnMobile("yavin4", "rebel_commando", 120, 1597.8, 102.9, 1530.3, -37, 0)
