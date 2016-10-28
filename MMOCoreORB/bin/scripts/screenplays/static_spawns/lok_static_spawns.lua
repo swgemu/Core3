@@ -29,7 +29,7 @@ function LokStaticSpawnsScreenPlay:spawnMobiles()
 
 	--Imperial lookout (-2568 -862) Imperial Contact Story part 3 needs to be populated
 
-	--Torches andarches 720 -3389
+	--Torches and arches 720 -3389
 	spawnMobile("lok", "gurk",900,731.6,11.9,-3382,142,0)
 	spawnMobile("lok", "gurk",900,708,12,-3397,131,0)
 	spawnMobile("lok", "gurk",900,699,12,-3384,-97,0)
@@ -50,6 +50,7 @@ function LokStaticSpawnsScreenPlay:spawnMobiles()
 
 	--Abandoned Settlers Camp (-130, -350)
 	spawnMobile("lok", "aged_kimogila", 4200, -252.0, 11.1, -455.0, -6, 0)
+
 	--Abandoned Settlers Camp Ruins (5000, -4100)
 	spawnMobile("lok", "aged_kimogila", 4200, 5086.8, 12.1, -4114.6, 139, 0)
 	spawnMobile("lok", "kimogila_dwarf", 4200, 5097.4, 11.9, -4113.3, 124, 0)
