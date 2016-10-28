@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_76e228d7",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1776,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-10-28T14:30:23Z",
+      "side": 1,
+      "message": "The failed condition above is also set when the attack misses the target. The target might not be immune so this message seems a bit misleading in that case.",
+      "range": {
+        "startLine": 1776,
+        "startChar": 4,
+        "endLine": 1776,
+        "endChar": 112
+      },
+      "revId": "81b85c510619925ca7af08394c2f775571955b9b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_16e71ce6",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1780,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-10-28T14:30:23Z",
+      "side": 1,
+      "message": "Same thing here, a miss will tell the attacker that the target is immune even though it might not be.",
+      "range": {
+        "startLine": 1779,
+        "startChar": 4,
+        "endLine": 1780,
+        "endChar": 112
+      },
+      "revId": "81b85c510619925ca7af08394c2f775571955b9b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_36eca0c7",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1783,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-10-28T14:30:23Z",
+      "side": 1,
+      "message": "This case statement is missing a sendSystemMessage. Is there a suitable one?",
+      "revId": "81b85c510619925ca7af08394c2f775571955b9b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_96da2c16",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 1818,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-10-28T14:30:23Z",
+      "side": 1,
+      "message": "This method seems a to detailed in this class, which to me is an indication of that it should probably be placed in another place, perhaps move this code to the combat manager instead.\n\nThe combat manager could have a method, isImmuneToIntimidation, that does the checks below.",
+      "range": {
+        "startLine": 1818,
+        "startChar": 16,
+        "endLine": 1818,
+        "endChar": 32
+      },
+      "revId": "81b85c510619925ca7af08394c2f775571955b9b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_56dda413",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 1820,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-10-28T14:30:23Z",
+      "side": 1,
+      "message": "These magic numbers should probably get a constant instead to make the code a bit simpler to read, like getClientObjectCRC() \u003d\u003d DARK_TROOPER || etc.",
+      "range": {
+        "startLine": 1820,
+        "startChar": 33,
+        "endLine": 1820,
+        "endChar": 43
+      },
+      "revId": "81b85c510619925ca7af08394c2f775571955b9b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f6cdb85e",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3353,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-10-28T14:30:23Z",
+      "side": 1,
+      "message": "Can you keep the order of these function calls? They are in alphabetical order below.",
+      "range": {
+        "startLine": 3353,
+        "startChar": 6,
+        "endLine": 3353,
+        "endChar": 65
+      },
+      "revId": "81b85c510619925ca7af08394c2f775571955b9b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_d6d0b4f9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3359,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-10-28T14:30:23Z",
+      "side": 1,
+      "message": "Move these cases down, and merge blind and dizzy back together with stun and warcry.",
+      "range": {
+        "startLine": 3352,
+        "startChar": 1,
+        "endLine": 3359,
+        "endChar": 8
+      },
+      "revId": "81b85c510619925ca7af08394c2f775571955b9b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
