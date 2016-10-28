@@ -15,6 +15,12 @@
 #include "conf/ConfigManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
+using ::testing::_;
+using ::testing::Return;
+using ::testing::AnyNumber;
+using ::testing::TypedEq;
+using ::testing::An;
+
 class ZoneTest : public ::testing::Test {
 protected:
 	Reference<ZoneServer*> zoneServer;
@@ -53,8 +59,14 @@ public:
 		return object;
 	}
 
-	Reference<ActiveArea*> createActiveArea() {
-		Reference<ActiveArea*> activeArea = new ActiveArea();
+	Reference<ActiveArea*> createActiveArea(bool mock = false) {
+		Reference<ActiveArea*> activeArea;
+
+		if (mock) {
+			activeArea = new MockActiveArea();
+		} else {
+			activeArea = new ActiveArea();
+		}
 		setDefaultComponents(activeArea);
 		activeArea->_setObjectID(nextObjectId.increment());
 
@@ -101,7 +113,9 @@ TEST_F(ZoneTest, TreLoad) {
 }
 
 TEST_F(ZoneTest, ActiveAreaTest) {
-	Reference<ActiveArea*> activeArea = createActiveArea();
+	Reference<MockActiveArea*> activeArea = createActiveArea(true).castTo<MockActiveArea*>();
+	EXPECT_CALL(*activeArea, enqueueEnterEvent(_)).Times(AnyNumber());
+	EXPECT_CALL(*activeArea, enqueueExitEvent(_)).Times(AnyNumber());
 
 	Locker alocker(activeArea);
 
