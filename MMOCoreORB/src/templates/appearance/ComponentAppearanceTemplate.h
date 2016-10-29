@@ -57,12 +57,6 @@ public:
 		parse(templateData);
 	}
 
-	// TODO: This needs to be deprecated IMMEDIATELY it is only here to allow the server to continue compiling
-	// This functionality is 100% broken
-	AppearanceTemplate* getFirstMesh() {
-		return const_cast<AppearanceTemplate*>(meshes.get(0)->getMeshTemplate());
-	}
-
 	void parse(IffStream* iffStream) {
 		iffStream->openForm('CMPA');
 

@@ -94,15 +94,6 @@ void CellProperty::loadVersion5(IffStream* iffStream) {
 		} else {
 			info("Error reading mesh " + meshFile, true);
 		}
-		DetailAppearanceTemplate* mesh = dynamic_cast<DetailAppearanceTemplate*>(app);
-		MeshAppearanceTemplate* meshAppearance = dynamic_cast<MeshAppearanceTemplate*>(app);
-		if (mesh != NULL) {
-			meshAppearance = (MeshAppearanceTemplate*) mesh->getFirstMesh();
-			if (meshAppearance == NULL)
-				error("ClientProperty loaded appearance other than MeshAppearanceTemplate " + meshFile);
-		} else if (meshAppearance == NULL) {
-			error("CellProperty not a detailappearancetemplate " + meshFile);
-		}
 	}
 
 	bool flag = (bool) iffStream->getByte();

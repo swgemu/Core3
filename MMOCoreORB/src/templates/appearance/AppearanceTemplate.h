@@ -96,10 +96,6 @@ public:
 		delete collisionVolume;
 	}
 
-	virtual AppearanceTemplate* getFirstMesh() {
-		return NULL;
-	}
-
 	virtual Vector <Reference<MeshData*>> getTransformedMeshData(const Matrix4& parentTransform) const = 0;
 };
 

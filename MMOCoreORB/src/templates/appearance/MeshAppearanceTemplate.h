@@ -49,10 +49,6 @@ public:
 
 	bool testCollide(float x, float z, float y, float radius) const;
 
-	AppearanceTemplate* getFirstMesh() {
-		return this;
-	}
-
 	inline void getTriangles(Vector<Triangle*>& triangles) {
 		if (aabbTree != NULL)
 			aabbTree->getTriangles(triangles);

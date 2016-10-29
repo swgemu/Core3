@@ -206,7 +206,7 @@ int ZoneImplementation::getInRangeSolidObjects(float x, float y, float range, So
 		for (int i = objects->size()-1; i >= 0; i--) {
 			SceneObject* sceno = cast<SceneObject*>(objects->get(i).get());
 
-			if (sceno->getParentID() != 0) {
+			if (sceno == NULL || sceno->getParentID() != 0) {
 				objects->remove(i);
 				continue;
 			}
