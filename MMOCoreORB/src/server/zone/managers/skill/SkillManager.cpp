@@ -204,7 +204,7 @@ void SkillManager::addAbilities(PlayerObject* ghost, Vector<String>& abilityName
 	Vector<Ability*> abilities;
 
 	for (int i = 0; i < abilityNames.size(); ++i) {
-		String abilityName = abilityNames.get(i);
+		const String& abilityName = abilityNames.get(i);
 
 		Ability* ability = abilityMap.get(abilityName);
 
@@ -219,7 +219,7 @@ void SkillManager::removeAbilities(PlayerObject* ghost, Vector<String>& abilityN
 	Vector<Ability*> abilities;
 
 	for (int i = 0; i < abilityNames.size(); ++i) {
-		String abilityName = abilityNames.get(i);
+		const String& abilityName = abilityNames.get(i);
 
 		Ability* ability = abilityMap.get(abilityName);
 
@@ -245,7 +245,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 	//Check for required skills.
 	Vector<String>* requiredSkills = skill->getSkillsRequired();
 	for (int i = 0; i < requiredSkills->size(); ++i) {
-		String requiredSkillName = requiredSkills->get(i);
+		const String& requiredSkillName = requiredSkills->get(i);
 		Skill* requiredSkill = skillMap.get(requiredSkillName.hashCode());
 
 		if (requiredSkill == NULL)
@@ -293,7 +293,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 		addAbilities(ghost, *abilityNames, notifyClient);
 		if (skill->isGodOnly()) {
 			for (int i = 0; i < abilityNames->size(); ++i) {
-				String ability = abilityNames->get(i);
+				const String& ability = abilityNames->get(i);
 				StringIdChatParameter params;
 				params.setTU(ability);
 				params.setStringId("ui", "skill_command_acquired_prose");
@@ -671,7 +671,7 @@ bool SkillManager::fulfillsSkillPrerequisites(const String& skillName, CreatureO
 	//Check for required skills.
 	Vector<String>* requiredSkills = skill->getSkillsRequired();
 	for (int i = 0; i < requiredSkills->size(); ++i) {
-		String requiredSkillName = requiredSkills->get(i);
+		const String& requiredSkillName = requiredSkills->get(i);
 		Skill* requiredSkill = skillMap.get(requiredSkillName.hashCode());
 
 		if (requiredSkill == NULL) {
@@ -703,7 +703,7 @@ int SkillManager::getForceSensitiveSkillCount(CreatureObject* creature, bool inc
 	int forceSensitiveSkillCount = 0;
 
 	for (int i = 0; i < skills->size(); ++i) {
-		String skillName = skills->get(i)->getSkillName();
+		const String& skillName = skills->get(i)->getSkillName();
 		if (skillName.contains("force_sensitive") && (includeNoviceMasterBoxes || skillName.indexOf("0") != -1)) {
 			forceSensitiveSkillCount++;
 		}

@@ -95,9 +95,9 @@ void FactionManager::awardFactionStanding(CreatureObject* player, const String& 
 	if (!factionMap.contains(factionName))
 		return;
 
-	Faction faction = factionMap.get(factionName);
-	SortedVector<String>* enemies = faction.getEnemies();
-	SortedVector<String>* allies = faction.getAllies();
+	const Faction& faction = factionMap.get(factionName);
+	const SortedVector<String>* enemies = faction.getEnemies();
+	const SortedVector<String>* allies = faction.getAllies();
 
 	if (!faction.isPlayerAllowed())
 		return;
@@ -109,7 +109,7 @@ void FactionManager::awardFactionStanding(CreatureObject* player, const String& 
 
 	//Lose faction standing to allies of the creature.
 	for (int i = 0; i < allies->size(); ++i) {
-		String ally = allies->get(i);
+		const String& ally = allies->get(i);
 
 		if ((ally == "rebel" || ally == "imperial")) {
 			continue;
@@ -118,7 +118,7 @@ void FactionManager::awardFactionStanding(CreatureObject* player, const String& 
 		if (!factionMap.contains(ally))
 			continue;
 
-		Faction allyFaction = factionMap.get(ally);
+		const Faction& allyFaction = factionMap.get(ally);
 
 		if (!allyFaction.isPlayerAllowed())
 			continue;
@@ -133,7 +133,7 @@ void FactionManager::awardFactionStanding(CreatureObject* player, const String& 
 
 	//Gain faction standing to enemies of the creature.
 	for (int i = 0; i < enemies->size(); ++i) {
-		String enemy = enemies->get(i);
+		const String& enemy = enemies->get(i);
 
 		if ((enemy == "rebel" || enemy == "imperial") && !gcw) {
 			continue;
@@ -142,7 +142,7 @@ void FactionManager::awardFactionStanding(CreatureObject* player, const String& 
 		if (!factionMap.contains(enemy))
 			continue;
 
-		Faction enemyFaction = factionMap.get(enemy);
+		const Faction& enemyFaction = factionMap.get(enemy);
 
 		if (!enemyFaction.isPlayerAllowed())
 			continue;

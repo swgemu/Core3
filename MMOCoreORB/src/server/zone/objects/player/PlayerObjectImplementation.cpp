@@ -1232,7 +1232,7 @@ void PlayerObjectImplementation::notifyOnline() {
 	}
 
 	for (int i = 0; i < friendList.size(); ++i) {
-		String name = friendList.get(i);
+		const String& name = friendList.get(i);
 		ManagedReference<CreatureObject*> player = chatManager->getPlayer(name);
 
 		if (player != NULL) {

@@ -1343,7 +1343,7 @@ void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject
 		return;
 	}
 
-	String serverTemplate = templatesNames.get(0);
+	const String& serverTemplate = templatesNames.get(0);
 
 	SharedObjectTemplate* sharedTemplate = TemplateManager::instance()->getTemplate(serverTemplate.hashCode());
 

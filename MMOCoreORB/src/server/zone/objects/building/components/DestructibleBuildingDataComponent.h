@@ -267,11 +267,11 @@ public:
 		dnaStrand.removeAll();
 	}
 
-	void setDnaStrand(Vector<String> strand) {
+	void setDnaStrand(const Vector<String>& strand) {
 		dnaStrand = strand;
 	}
 
-	Vector<String> getDnaStrand() {
+	const Vector<String>& getDnaStrand() {
 		return dnaStrand;
 	}
 
@@ -283,11 +283,11 @@ public:
 		dnaLocks = locks;
 	}
 
-	Vector<int> getDnaLocks() {
+	const Vector<int>& getDnaLocks() {
 		return dnaLocks;
 	}
 
-	String getCurrentDnaChain() {
+	const String& getCurrentDnaChain() {
 		return currentDnaChain;
 	}
 
@@ -295,7 +295,7 @@ public:
 		currentDnaChain = chain;
 	}
 
-	Vector<int> getPowerSwitchRules() {
+	const Vector<int>& getPowerSwitchRules() {
 		return powerSwitchRules;
 	}
 
@@ -303,7 +303,7 @@ public:
 		powerSwitchRules = rules;
 	}
 
-	Vector<bool> getPowerSwitchStates() {
+	const Vector<bool>& getPowerSwitchStates() {
 		return powerSwitchStates;
 	}
 

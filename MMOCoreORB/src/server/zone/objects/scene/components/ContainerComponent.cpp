@@ -125,7 +125,7 @@ bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, Crea
 	uint16 allowPermissions = 0, denyPermissions = 0;
 
 	for (int i = 0; i < groups->size(); ++i) {
-		String group = groups->get(i);
+		const String& group = groups->get(i);
 
 		uint16 allow = permissions->getAllowPermissions(group);
 
