@@ -1,0 +1,243 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_56ee048d",
+        "filename": "MMOCoreORB/bin/scripts/mobile/tatooine/mos_eisley_police_lieutenant_rebel.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-29T02:23:33Z",
+      "side": 1,
+      "message": "use tabs instead of spaces",
+      "revId": "5ce79bc33c7aa608e86bfa77881cb1b92df910fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_76f30874",
+        "filename": "MMOCoreORB/bin/scripts/mobile/tatooine/mos_eisley_police_officer_rebel.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-29T02:23:33Z",
+      "side": 1,
+      "message": "tabs",
+      "revId": "5ce79bc33c7aa608e86bfa77881cb1b92df910fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_16e87c7b",
+        "filename": "MMOCoreORB/bin/scripts/mobile/tatooine/mos_eisley_police_sergeant_rebel.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-29T02:23:33Z",
+      "side": 1,
+      "message": "tabs",
+      "revId": "5ce79bc33c7aa608e86bfa77881cb1b92df910fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_36ed808c",
+        "filename": "MMOCoreORB/bin/scripts/mobile/tatooine/mos_entha_police_officer.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-29T02:23:33Z",
+      "side": 1,
+      "message": "tabs",
+      "revId": "5ce79bc33c7aa608e86bfa77881cb1b92df910fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_d601943a",
+        "filename": "MMOCoreORB/bin/scripts/mobile/tatooine/mos_entha_police_officer_rebel.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-29T02:23:33Z",
+      "side": 1,
+      "message": "tabs",
+      "revId": "5ce79bc33c7aa608e86bfa77881cb1b92df910fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f6fe1838",
+        "filename": "MMOCoreORB/bin/scripts/mobile/tatooine/mos_espa_police_officer_rebel.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-29T02:23:33Z",
+      "side": 1,
+      "message": "tabs",
+      "revId": "5ce79bc33c7aa608e86bfa77881cb1b92df910fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_96fb0c47",
+        "filename": "MMOCoreORB/bin/scripts/mobile/tatooine/mos_taike_cantina_owner.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-29T02:23:33Z",
+      "side": 1,
+      "message": "tabs",
+      "revId": "5ce79bc33c7aa608e86bfa77881cb1b92df910fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_b6f8904a",
+        "filename": "MMOCoreORB/bin/scripts/mobile/tatooine/mos_taike_cantina_owner_rebel.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-29T02:23:33Z",
+      "side": 1,
+      "message": "tabs",
+      "revId": "5ce79bc33c7aa608e86bfa77881cb1b92df910fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_5695a4e2",
+        "filename": "MMOCoreORB/bin/scripts/mobile/tatooine/mos_taike_veteran_guard.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-29T02:23:33Z",
+      "side": 1,
+      "message": "tabs",
+      "revId": "5ce79bc33c7aa608e86bfa77881cb1b92df910fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_769a2816",
+        "filename": "MMOCoreORB/bin/scripts/mobile/tatooine/mos_taike_veteran_guard_rebel.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-29T02:23:33Z",
+      "side": 1,
+      "message": "tabs",
+      "revId": "5ce79bc33c7aa608e86bfa77881cb1b92df910fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_b6e1709c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/corellia_coronet.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-29T02:23:33Z",
+      "side": 1,
+      "message": "This is part of the rogue corsec faction",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 27
+      },
+      "revId": "5ce79bc33c7aa608e86bfa77881cb1b92df910fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_169f1c05",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/corellia_kor_vella.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-29T02:23:33Z",
+      "side": 1,
+      "message": "rogue corsec faction",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 18
+      },
+      "revId": "5ce79bc33c7aa608e86bfa77881cb1b92df910fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_36a4a056",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/corellia_tyrena.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-29T02:23:33Z",
+      "side": 1,
+      "message": "rogue corsec faction",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 19
+      },
+      "revId": "5ce79bc33c7aa608e86bfa77881cb1b92df910fb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
