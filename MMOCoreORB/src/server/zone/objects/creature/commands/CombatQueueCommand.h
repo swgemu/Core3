@@ -323,7 +323,7 @@ public:
 		return range;
 	}
 
-	inline String getAccuracySkillMod() const {
+	inline const String& getAccuracySkillMod() const {
 		return accuracySkillMod;
 	}
 
@@ -439,7 +439,7 @@ public:
 		return animType;
 	}
 
-	String getAnimationString() const {
+	const String& getAnimationString() const {
 		return animation;
 	}
 
@@ -546,11 +546,11 @@ public:
 		return generateAnimation(hitLocation, ((uint32)weapon->getMaxDamage()) >> 2, damage);
 	}
 
-	inline String getEffectString() const {
+	inline const String& getEffectString() const {
 		return effectString;
 	}
 
-	inline String getCombatSpam() const {
+	inline const String& getCombatSpam() const {
 		return combatSpam;
 	}
 
@@ -586,11 +586,11 @@ public:
 		stateEffects.put(stateEffect.getEffectType(), stateEffect);
 	}
 
-	StateEffect getStateEffect(uint8 type) const {
+	const StateEffect& getStateEffect(uint8 type) const {
 		return const_cast<CombatQueueCommand*>(this)->stateEffects.get(type);
 	}
 
-	void setDotEffects(Vector<DotEffect> dotEffects) {
+	void setDotEffects(const Vector<DotEffect>& dotEffects) {
 		this->dotEffects = dotEffects;
 	}
 
@@ -618,7 +618,7 @@ public:
 		this->damageType = dm;
 	}
 
-	void addDotEffect(DotEffect dotEffect) {
+	void addDotEffect(const DotEffect& dotEffect) {
 		dotEffects.add(dotEffect);
 	}
 
@@ -630,7 +630,7 @@ public:
 		this->range = i;
 	}
 
-	void setAccuracySkillMod(String acc) {
+	void setAccuracySkillMod(const String& acc) {
 		this->accuracySkillMod = acc;
 	}
 

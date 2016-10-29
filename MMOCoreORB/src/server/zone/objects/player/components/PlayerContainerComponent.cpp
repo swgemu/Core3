@@ -67,13 +67,13 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 
 		if (object->isWearableObject()) {
 			if (tanoData != NULL) {
-				Vector<String> skillsRequired = tanoData->getCertificationsRequired();
+				const Vector<String>& skillsRequired = tanoData->getCertificationsRequired();
 
 				if (skillsRequired.size() > 0) {
 					bool hasSkill = false;
 
 					for (int i = 0; i < skillsRequired.size(); i++) {
-						String skill = skillsRequired.get(i);
+						const String& skill = skillsRequired.get(i);
 
 						if (!skill.isEmpty() && creo->hasSkill(skill)) {
 							hasSkill = true;

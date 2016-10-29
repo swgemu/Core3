@@ -100,7 +100,7 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 
 		for (int i = 0; i < amountToSpawn; i++) {
 			int num = System::random(mobiles->size() - 1);
-			String mob = mobiles->get(num);
+			const String& mob = mobiles->get(num);
 
 			if (objectsToSpawn.contains(mob)) {
 				int value = objectsToSpawn.get(mob);
