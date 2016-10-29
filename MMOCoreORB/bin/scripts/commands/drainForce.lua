@@ -43,18 +43,21 @@
 
 DrainForceCommand = {
     name = "drainforce",
-	
+
 	animation = "force_drain_1",
+	damageMultiplier = 1,
+	accuracyBonus = 25,
 
 	combatSpam = "forcedrain_hit",
-	
-	poolsToDamage = NO_ATTRIBUTE,
+
+	poolsToDamage = MIND_ATTRIBUTE,
 
 	minDamage = 100, --Force drained
+	damageType = LIGHTSABER_DAMAGE,
+	forceAttack = true,
 
 	range = 32
-	
+
 }
 
 AddCommand(DrainForceCommand)
-

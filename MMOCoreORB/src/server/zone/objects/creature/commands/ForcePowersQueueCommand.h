@@ -18,6 +18,7 @@
 #include "server/zone/objects/creature/commands/effect/StateEffect.h"
 #include "server/zone/objects/creature/commands/effect/DotEffect.h"
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
+#include "server/zone/objects/creature/buffs/ForceWeakenDebuff.h"
 #include "CombatQueueCommand.h"
 #include "server/zone/managers/visibility/VisibilityManager.h"
 

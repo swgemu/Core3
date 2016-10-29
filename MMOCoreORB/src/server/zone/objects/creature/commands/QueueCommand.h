@@ -291,8 +291,12 @@ public:
 		return false;
 	}
 
+	virtual bool isForcePowersCommand() {
+		return false;
+	}
+
 	bool isJediCommand() {
-		return (isForceHealCommand() || isJediQueueCommand() || isJediCombatCommand());
+		return (isForceHealCommand() || isJediQueueCommand() || isJediCombatCommand() || isForcePowersCommand());
 	}
 
 	inline int getSkillModSize() const {
@@ -311,7 +315,7 @@ public:
 	void addSkillMod(const String& skillMod, const int value) {
 		skillMods.put(skillMod, value);
 	}
-	
+
 	bool isWearingArmor(CreatureObject* creo) const {
 		for (int i = 0; i < creo->getSlottedObjectsSize(); ++i) {
 			SceneObject* item = creo->getSlottedObject(i);

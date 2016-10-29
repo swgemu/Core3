@@ -196,6 +196,9 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 		}
 	}
 
+	if (data.isForceAttack() && damage == 0)
+		return -3;
+
 	if (damage > 0) {
 		attacker->updateLastSuccessfulCombatAction();
 
@@ -261,8 +264,6 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 
 	}
 
-
-
 	if (damage > 0 && tano->isAiAgent()) {
 		AiAgent* aiAgent = cast<AiAgent*>(tano);
 		bool help = false;
@@ -312,8 +313,6 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		data.getCommand()->sendAttackCombatSpam(attacker, defender, hitVal, damage, data);
 	}
 
-
-
 	switch (hitVal) {
 	case MISS:
 		doMiss(attacker, weapon, defender, damage);
@@ -342,10 +341,11 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		break;
 	}
 
+	if (data.isForceAttack() && damageMultiplier == 0) {
+		return -3;
+	}
 	// Apply states first
 	applyStates(attacker, defender, data);
-
-
 
 	//if it's a state only attack (intimidate, warcry, wookiee roar) don't apply dots or break combat delays
 	if (!data.isStateOnlyAttack()) {
@@ -453,6 +453,10 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 
 		if (damageMultiplier != 0 && damage != 0)
 			damage = applyDamage(attacker, weapon, defenderObject, damage, damageMultiplier, poolsToDamage, hitLocation, data);
+
+		if (data.isForceAttack() && (hitVal == DODGE || hitVal == COUNTER)) {
+			return -3;
+		}
 	} else {
 		damage = 0;
 	}
@@ -1490,6 +1494,9 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 	//info("Final hit chance is " + String::valueOf(accTotal), true);
 
 	if (System::random(100) > accTotal) // miss, just return MISS
+		return MISS;
+
+	if (weapon->getAttackType() == SharedWeaponObjectTemplate::FORCEATTACK && damage == 0)
 		return MISS;
 
 	//info("Attack hit successfully", true);
