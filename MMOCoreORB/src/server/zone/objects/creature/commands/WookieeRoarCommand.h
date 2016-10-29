@@ -58,16 +58,19 @@ public:
 			return GENERALERROR;
 		}
 
-		player->sendSystemMessage("@innate:roar_active"); // You let out a mighty roar.
-		player->addCooldown("innate_roar", 300 * 1000); // 5min reuse time.
-
 		int res = doCombatAction(creature, target);
 
-		if (res == TOOFAR)
+		player->sendSystemMessage("@innate:roar_active"); // You let out a mighty roar.
+
+		if (res == TOOFAR) {
 			CombatManager::instance()->broadcastCombatSpam(creature, targetObject, NULL, 0, "cbt_spam", "wookiee_roar_out_of_range", 0);
+			return TOOFAR;
+		}
 
 		if (res == GENERALERROR)
 			creature->sendSystemMessage("@combat_effects:wookiee_roar_miss");
+
+		player->addCooldown("innate_roar", 300 * 1000); // 5min reuse time.
 
 		return res;
 

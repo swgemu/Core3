@@ -291,8 +291,12 @@ public:
 		return false;
 	}
 
+	virtual bool isForcePowersCommand() {
+		return false;
+	}
+
 	bool isJediCommand() {
-		return (isForceHealCommand() || isJediQueueCommand() || isJediCombatCommand());
+		return (isForceHealCommand() || isJediQueueCommand() || isJediCombatCommand() || isForcePowersCommand());
 	}
 
 	inline int getSkillModSize() const {

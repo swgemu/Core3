@@ -57,6 +57,7 @@
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/objects/creature/events/DizzyFallDownEvent.h"
+#include "server/zone/objects/creature/events/ForceWeakenTask.h"
 #include "server/zone/packets/ui/ExecuteConsoleCommand.h"
 #include "server/zone/objects/creature/buffs/StateBuff.h"
 #include "server/zone/objects/creature/buffs/PrivateBuff.h"

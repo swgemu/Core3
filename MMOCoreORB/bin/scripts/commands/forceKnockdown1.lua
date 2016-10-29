@@ -44,11 +44,14 @@
 ForceKnockdown1Command = {
 	name = "forceknockdown1",
 
-	damageMultiplier = 0,
+	damageMultiplier = 1,
+	minDamage = 10,
+	maxDamage = 15,
 	speed = 4.0,
 	forceCost = 75,
 	visMod = 25,
 	accuracySkillMod = "forceknockdown_accuracy",
+	accuracyBonus = 5,
 
 	stateEffects = {
 	  StateEffect(
@@ -66,7 +69,8 @@ ForceKnockdown1Command = {
 
 	combatSpam = "forceknockdown1",
 
-	poolsToDamage = NO_ATTRIBUTE,
+	poolsToDamage = ACTION_ATTRIBUTE,
+	damageType = LIGHTSABER_DAMAGE,
 
 	forceAttack = true,
 
