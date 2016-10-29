@@ -12,7 +12,7 @@
 #include "pathfinding/recast/DetourNavMeshBuilder.h"
 
 
-RecastNavMesh::RecastNavMesh(const String& filename, bool forceRebuild) : Logger("RecastNavMesh") {
+RecastNavMesh::RecastNavMesh(const String& filename, bool forceRebuild) : Logger("RecastNavMesh"), header() {
 	navMesh = NULL;
 
 	if (!forceRebuild)

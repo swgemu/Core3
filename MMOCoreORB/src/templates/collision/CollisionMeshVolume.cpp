@@ -29,7 +29,7 @@ void CollisionMeshVolume::read(IffStream *iff) {
 		iff->closeForm('0000');
 		iff->closeForm('IDTL');
 		iff->closeForm('0000');
-	} catch (Exception e) {
+	} catch (Exception& e) {
 		e.getMessage();
 	}
 

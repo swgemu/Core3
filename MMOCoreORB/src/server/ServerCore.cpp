@@ -130,8 +130,6 @@ void ServerCore::initialize() {
 
 			if (arguments.contains("deleteNavRegions") && zoneServer != NULL) {
 				zoneServer->setShouldDeleteNavRegions(true);
-			} else {
-				zoneServer->setShouldDeleteNavRegions(false);
 			}
 
 			ObjectDatabaseManager* dbManager =

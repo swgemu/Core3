@@ -65,13 +65,13 @@ public:
 			banReason << reason << " ";
 		}
 
-		if(banReason.toString().isEmpty()) {
+		if (banReason.toString().isEmpty()) {
 			creature->sendSystemMessage("You must provide a reason for unbanning");
 			return GENERALERROR;
 		}
 
 		ManagedReference<Account*> account = ghost->getAccount();
-		if(account == NULL) {
+		if (account == NULL) {
 			creature->sendSystemMessage("Account is NULL");
 			return GENERALERROR;
 		}
@@ -79,6 +79,11 @@ public:
 		Locker alocker(account);
 
 		CharacterListEntry* entry = account->getCharacterBan(server->getZoneServer()->getGalaxyID(), targetCreature->getFirstName());
+
+		if (entry == NULL) {
+			creature->sendSystemMessage("Error getting CharacterListEntry");
+			return GENERALERROR;
+		}
 
 		StringBuffer reason;
 		reason << entry->getBanAdmin() << "=" << entry->getBanReason() << "|" << banReason.toString();

@@ -77,3 +77,15 @@ void StimPackImplementation::fillAttributeList(AttributeListMessage* msg, Creatu
 		msg->insertAttribute("examine_repair_energy", Math::getPrecision(effectiveness, 0));
 	}
 }
+
+Vector<uint8> StimPackImplementation::getAttributes() {
+	if (templateObject->isStimPackTemplate()) {
+		StimPackTemplate* stimPackTemplate = templateObject.castTo<StimPackTemplate*>();
+
+		return stimPackTemplate->getAttributes();
+	}
+
+	Vector<uint8> vec;
+
+	return vec;
+}

@@ -321,13 +321,13 @@ uint32 PortalLayout::loadCRC(IffStream* iffStream) {
 		iffStream->openForm(type);
 
 		Chunk *chunk = iffStream->openChunk();
-		while(chunk != NULL && chunk->getChunkID() != 'CRC ') // Yes the space is intentional
+		while (chunk != NULL && chunk->getChunkID() != 'CRC ') // Yes the space is intentional
 		{
 			iffStream->closeChunk();
 			chunk = iffStream->openChunk();
 		}
 
-		if(chunk->getChunkID() == 'CRC ')
+		if (chunk != NULL && chunk->getChunkID() == 'CRC ')
 			crc = iffStream->getUnsignedInt();
 
 		iffStream->closeChunk('CRC ');

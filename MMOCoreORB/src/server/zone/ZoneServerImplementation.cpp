@@ -94,6 +94,7 @@ ZoneServerImplementation::ZoneServerImplementation(ConfigManager* config) :
 	totalDeletedPlayers = 0;
 
 	serverState = OFFLINE;
+	deleteNavRegions = false;
 
 	setLogging(true);
 }

@@ -43,6 +43,9 @@
 void FactoryObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	InstallationObjectImplementation::loadTemplateData(templateData);
 
+	if (!templateData->isFactoryObjectTemplate())
+		return;
+
 	FactoryObjectTemplate* factory = dynamic_cast<FactoryObjectTemplate*>(templateData);
 
 	craftingTabsSupported = factory->getCraftingTabsSupported();

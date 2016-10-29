@@ -1288,11 +1288,11 @@ int DirectorManager::spatialMoodChat(lua_State* L) {
 	if (lua_isuserdata(L, -3)) {
 		StringIdChatParameter* message = (StringIdChatParameter*)lua_touserdata(L, -3);
 
-		chatManager->broadcastChatMessage(creature, *message, 0, moodType, chatType);
+		chatManager->broadcastChatMessage(creature, *message, 0, chatType, moodType);
 	} else {
 		String message = lua_tostring(L, -3);
 
-		chatManager->broadcastChatMessage(creature, message, 0, moodType, chatType);
+		chatManager->broadcastChatMessage(creature, message, 0, chatType, moodType);
 	}
 
 	return 0;

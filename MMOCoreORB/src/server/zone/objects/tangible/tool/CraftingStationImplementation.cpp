@@ -20,6 +20,9 @@
 void CraftingStationImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
 
+	if (!templateData->isCraftingStationTemplate())
+		return;
+
 	CraftingStationTemplate* craftingStationData = dynamic_cast<CraftingStationTemplate*>(templateData);
 
 	type = craftingStationData->getStationType();

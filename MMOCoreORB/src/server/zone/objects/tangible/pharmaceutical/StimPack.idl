@@ -169,9 +169,5 @@ class StimPack extends PharmaceuticalObject {
 	@dirty
 	@dereferenced
 	@local
-	public Vector<byte> getAttributes() {
-		StimPackTemplate stimPackTemplate = (StimPackTemplate) getObjectTemplate();
-
-		return stimPackTemplate.getAttributes();
-	}
+	public native Vector<byte> getAttributes();
 }

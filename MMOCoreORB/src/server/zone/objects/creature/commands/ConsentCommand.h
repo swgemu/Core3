@@ -42,7 +42,10 @@ public:
 
 		PlayerObject* ghost = creature->getPlayerObject();
 
-		if (ghost != NULL && ghost->getConsentListSize() >= 20) {
+		if (ghost == NULL)
+			return GENERALERROR;
+
+		if (ghost->getConsentListSize() >= 20) {
 			creature->sendSystemMessage("You have too many players on your consent list.");
 			return GENERALERROR;
 		}
