@@ -1174,7 +1174,7 @@ void GCWManagerImplementation::sendDNASampleMenu(CreatureObject* creature, Build
 		dnaStrand = baseData->getDnaStrand();
 	}
 
-	Vector<int> dnaLocks = baseData->getDnaLocks();
+	const Vector<int>& dnaLocks = baseData->getDnaLocks();
 
 	ManagedReference<SuiListBox*> status = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
 	status->setPromptTitle("DNA SEQUENCING");
@@ -1186,14 +1186,14 @@ void GCWManagerImplementation::sendDNASampleMenu(CreatureObject* creature, Build
 	Vector<String> dnaEntries;
 
 	for (int i = 0; i < dnaStrand.size(); i++) {
-		String dna = dnaStrand.get(i);
+		const String& dna = dnaStrand.get(i);
 
 		if (dnaLocks.get(i) == 0) {
 			dnaEntries.add(dna);
 		} else {
 			numLocks++;
 			for (int j = 0; j < dnaPairs.size(); j++) {
-				String pair = dnaPairs.get(j);
+				const String& pair = dnaPairs.get(j);
 
 				if (pair.beginsWith(dna)) {
 					dnaEntries.add("\\#00FF00" + pair + " \\#.");

@@ -269,7 +269,7 @@ void StructurePermissionList::migrateLists(ZoneServer* zoneServer, uint64 ownerO
 		SortedVector<String>* list = &permissionLists.get(i);
 
 		for (int j = 0; j < list->size(); j++) {
-			String name = list->get(j);
+			const String& name = list->get(j);
 
 			if (name.beginsWith("guild:")) {
 				String abbrev = name.replaceAll("guild:","");

@@ -189,7 +189,7 @@ public:
 		this->trails = trails;
 	}
 
-	String getCombatSpam() const {
+	const String& getCombatSpam() const {
 		return combatSpam;
 	}
 

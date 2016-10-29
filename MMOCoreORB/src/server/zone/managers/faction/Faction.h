@@ -75,7 +75,7 @@ public:
 		}
 	}
 
-	String getFactionName() const {
+	const String& getFactionName() const {
 		return factionName;
 	}
 
@@ -87,11 +87,11 @@ public:
 		adjustFactor = factor;
 	}
 
-	SortedVector<String>* getEnemies() {
+	const SortedVector<String>* getEnemies() const {
 		return &enemies;
 	}
 
-	SortedVector<String>* getAllies() {
+	const SortedVector<String>* getAllies() const {
 		return &allies;
 	}
 

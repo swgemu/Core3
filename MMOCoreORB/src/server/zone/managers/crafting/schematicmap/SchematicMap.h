@@ -38,8 +38,8 @@ public:
 
 	void loadDraftSchematicDatabase();
 
-	bool addSchematics(PlayerObject* playerObject, Vector<String> schematicgroups, bool updateClient);
-	void removeSchematics(PlayerObject* playerObject, Vector<String> schematicgroups, bool updateClient);
+	bool addSchematics(PlayerObject* playerObject, const Vector<String>& schematicgroups, bool updateClient);
+	void removeSchematics(PlayerObject* playerObject, const Vector<String>& schematicgroups, bool updateClient);
 //	bool addSchematic(PlayerObject* playerObject, DraftSchematic* schematic, bool updateClient);
 //	void removeSchematic(PlayerObject* playerObject, DraftSchematic* schematic, bool updateClient);
 
