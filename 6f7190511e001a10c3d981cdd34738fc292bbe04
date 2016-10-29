@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_d6daf4e8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/static_spawns/endor_static_spawns.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-10-29T02:07:14Z",
+      "side": 1,
+      "message": "Use tabs instead of spaces",
+      "revId": "6f7190511e001a10c3d981cdd34738fc292bbe04",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
