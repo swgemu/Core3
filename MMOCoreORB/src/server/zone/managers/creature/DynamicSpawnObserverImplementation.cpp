@@ -71,7 +71,7 @@ void DynamicSpawnObserverImplementation::spawnInitialMobiles(SceneObject* buildi
 
 	for (int i = 0; i < totalNumberToSpawn; i++) {
 		int num = System::random(mobiles->size() - 1);
-		String mob = mobiles->get(num);
+		const String& mob = mobiles->get(num);
 
 		if (objectsToSpawn.contains(mob)) {
 			int value = objectsToSpawn.get(mob);

@@ -2658,7 +2658,7 @@ void PlayerManagerImplementation::updatePermissionLevel(CreatureObject* targetPl
 		Vector<String>* skillsToBeRemoved = permissionLevelList->getPermissionSkills(currentPermissionLevel);
 		if (skillsToBeRemoved != NULL) {
 			for (int i = 0; i < skillsToBeRemoved->size(); i++) {
-				String skill = skillsToBeRemoved->get(i);
+				const String& skill = skillsToBeRemoved->get(i);
 				targetPlayer->sendSystemMessage("Staff skill revoked: " + skill);
 				skillManager->surrenderSkill(skill, targetPlayer, true);
 			}
@@ -2671,7 +2671,7 @@ void PlayerManagerImplementation::updatePermissionLevel(CreatureObject* targetPl
 		Vector<String>* skillsToBeAdded = permissionLevelList->getPermissionSkills(permissionLevel);
 		if (skillsToBeAdded != NULL) {
 			for (int i = 0; i < skillsToBeAdded->size(); ++i) {
-				String skill = skillsToBeAdded->get(i);
+				const String& skill = skillsToBeAdded->get(i);
 				targetPlayer->sendSystemMessage("Staff skill granted: " + skill);
 				skillManager->awardSkill(skill, targetPlayer, false, true, true);
 			}
@@ -3695,7 +3695,7 @@ bool PlayerManagerImplementation::promptTeachableSkills(CreatureObject* teacher,
 	listbox->setCancelButton(true, "@cancel");
 
 	for (int i = 0; i < skills.size(); ++i) {
-		String skill = skills.get(i);
+		const String& skill = skills.get(i);
 		listbox->addMenuItem("@skl_n:" + skill, skill.hashCode());
 	}
 

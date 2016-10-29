@@ -671,7 +671,7 @@ bool WeaponObjectImplementation::isCertifiedFor(CreatureObject* object) {
 	Vector<String>* certificationsRequired = weaponTemplate->getCertificationsRequired();
 
 	for (int i = 0; i < certificationsRequired->size(); ++i) {
-		String cert = certificationsRequired->get(i);
+		const String& cert = certificationsRequired->get(i);
 
 		if (!ghost->hasAbility(cert) && !object->hasSkill(cert)) {
 			return false;

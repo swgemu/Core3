@@ -194,8 +194,8 @@ void LootManagerImplementation::setInitialObjectStats(LootItemTemplate* template
 		Vector<short>* prec = tanoTemplate->getExperimentalPrecision();
 
 		for (int i = 0; i < props->size(); ++i) {
-			String title = titles->get(i);
-			String property = props->get(i);
+			const String& title = titles->get(i);
+			const String& property = props->get(i);
 
 			if (craftingValues->hasProperty(property))
 				continue;
@@ -210,7 +210,7 @@ void LootManagerImplementation::setInitialObjectStats(LootItemTemplate* template
 	Vector<Vector<int> >* customizationValues = templateObject->getCustomizationValues();
 
 	for (int i = 0; i < customizationData->size(); ++i) {
-		String customizationString = customizationData->get(i);
+		const String& customizationString = customizationData->get(i);
 		Vector<int>* values = &customizationValues->get(i);
 
 		if (values->size() > 0) {
@@ -252,7 +252,7 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 	if(level > 300)
 		level = 300;
 
-	String directTemplateObject = templateObject->getDirectObjectTemplate();
+	const String& directTemplateObject = templateObject->getDirectObjectTemplate();
 
 	ManagedReference<TangibleObject*> prototype = zoneServer->createObject(directTemplateObject.hashCode(), 2).castTo<TangibleObject*>();
 
@@ -769,8 +769,8 @@ void LootManagerImplementation::addStaticDots(TangibleObject* object, LootItemTe
 
 			for (int i = 0; i < size; i++) {
 
-				String property = dotValues->elementAt(i).getKey();
-				SortedVector<int> theseValues = dotValues->elementAt(i).getValue();
+				const String& property = dotValues->elementAt(i).getKey();
+				const SortedVector<int>& theseValues = dotValues->elementAt(i).getValue();
 				int min = theseValues.elementAt(0);
 				int max = theseValues.elementAt(1);
 				float value = 0;

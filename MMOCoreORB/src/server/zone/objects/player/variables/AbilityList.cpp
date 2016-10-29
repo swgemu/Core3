@@ -81,7 +81,7 @@ void AbilityList::loadFromNames(Vector<String>& abilities) {
 	SkillManager* skillManager = server->getSkillManager();
 
 	for (int i = 0; i < abilities.size(); ++i) {
-		String name = abilities.get(i);
+		const String& name = abilities.get(i);
 
 		Ability* ability = skillManager->getAbility(name);
 

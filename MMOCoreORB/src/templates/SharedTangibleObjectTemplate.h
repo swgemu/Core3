@@ -99,7 +99,7 @@ public:
 		this->pvpStatusBitmask = pvpStatusBitmask;
 	}
 
-	inline Vector<String> getCertificationsRequired() const {
+	inline const Vector<String>& getCertificationsRequired() const {
 		return certificationsRequired;
 	}
 
