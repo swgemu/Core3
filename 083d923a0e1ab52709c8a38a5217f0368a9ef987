@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_367260e6",
+        "filename": "MMOCoreORB/bin/scripts/managers/planet_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-10-29T06:55:04Z",
+      "side": 1,
+      "message": "extra brace",
+      "range": {
+        "startLine": 87,
+        "startChar": 16,
+        "endLine": 87,
+        "endChar": 17
+      },
+      "revId": "083d923a0e1ab52709c8a38a5217f0368a9ef987",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f67378e5",
+        "filename": "MMOCoreORB/bin/scripts/managers/planet_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-10-29T06:55:04Z",
+      "side": 1,
+      "message": "we should probably avoid using \"special\" characters besides underscore as these names will be used as names for files on the filesystem.\n\nThe user will never see these names.",
+      "range": {
+        "startLine": 310,
+        "startChar": 4,
+        "endLine": 310,
+        "endChar": 19
+      },
+      "revId": "083d923a0e1ab52709c8a38a5217f0368a9ef987",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
