@@ -1,9 +1,9 @@
-mos_eisley_police_sergeant = Creature:new {
+mos_eisley_police_sergeant_rebel = Creature:new {
 	objectName = "@mob/creature_names:mos_eisley_police_sergeant",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
-	socialGroup = "imperial",
-	faction = "imperial",
+	socialGroup = "rebel",
+	faction = "rebel",
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,
@@ -40,10 +40,10 @@ mos_eisley_police_sergeant = Creature:new {
 			}
 		}
 	},
-	weapons = {"imperial_weapons_light"},
+	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(brawlermid,marksmanmid)
 }
 
-CreatureTemplates:addCreatureTemplate(mos_eisley_police_sergeant, "mos_eisley_police_sergeant")
+CreatureTemplates:addCreatureTemplate(mos_eisley_police_sergeant_rebel, "mos_eisley_police_sergeant_rebel")

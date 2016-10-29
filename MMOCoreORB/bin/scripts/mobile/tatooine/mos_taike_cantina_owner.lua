@@ -1,18 +1,18 @@
-mos_eisley_police_sergeant = Creature:new {
-	objectName = "@mob/creature_names:mos_eisley_police_sergeant",
+mos_taike_cantina_owner = Creature:new {
+	objectName = "@mob/creature_names:mos_taike_cantina_owner",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 14,
-	chanceHit = 0.3,
-	damageMin = 150,
-	damageMax = 160,
-	baseXp = 714,
-	baseHAM = 2000,
-	baseHAMmax = 2400,
+	level = 21,
+	chanceHit = 0.33,
+	damageMin = 190,
+	damageMax = 200,
+	baseXp = 2006,
+	baseHAM = 5900,
+	baseHAMmax = 7200,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {20,20,-1,0,0,-1,0,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -23,11 +23,11 @@ mos_eisley_police_sergeant = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + STALKER,
+	creatureBitmask = PACK,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_mos_eisley_police_sergeant.iff"},
+	templates = {"object/mobile/mos_taike_cantina_owner.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -40,10 +40,11 @@ mos_eisley_police_sergeant = Creature:new {
 			}
 		}
 	},
-	weapons = {"imperial_weapons_light"},
+	weapons = {},
+	outfit = "mos_taike_guard_outfit",
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/townperson",
-	attacks = merge(brawlermid,marksmanmid)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(mos_eisley_police_sergeant, "mos_eisley_police_sergeant")
+CreatureTemplates:addCreatureTemplate(mos_taike_cantina_owner, "mos_taike_cantina_owner")

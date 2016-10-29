@@ -1,9 +1,9 @@
-mos_entha_police_officer = Creature:new {
+mos_entha_police_officer_rebel = Creature:new {
 	objectName = "@mob/creature_names:mos_entha_police_officer",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
-	socialGroup = "imperial",
-	faction = "imperial",
+	socialGroup = "rebel",
+	faction = "rebel",
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 140,
@@ -54,10 +54,10 @@ mos_entha_police_officer = Creature:new {
 			}
 		}
 	},
-	weapons = {"imperial_weapons_light"},
+	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(brawlermid,marksmanmid)
 }
 
-CreatureTemplates:addCreatureTemplate(mos_entha_police_officer, "mos_entha_police_officer")
+CreatureTemplates:addCreatureTemplate(mos_entha_police_officer_rebel, "mos_entha_police_officer_rebel")

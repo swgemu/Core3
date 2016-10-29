@@ -27,6 +27,16 @@ TatooineMosEisleyScreenPlay = CityScreenPlay:new {
 		{"stormtrooper", "rebel_commando", 3242.3,5,-4532.3,151,0, "npc_imperial", "neutral"},
 		{"stormtrooper_rifleman", "rebel_warrant_officer_ii", 3756.71,5,-4845.03,78.2181,0, "", ""},
 		{"imperial_colonel", "rebel_colonel", 3490.5,5,-4733.94,305,0, "npc_imperial", "conversation"},
+		{"mos_eisley_police_lieutenant", "mos_eisley_police_lieutenant_rebel", 3407,0,-4505,255,0, "npc_imperial", "calm"},
+		{"mos_eisley_police_sergeant", "mos_eisley_police_sergeant_rebel", 3405.2,0,-4505.5,75,0, "npc_accusing", "calm"},
+		{"mos_eisley_police_officer", "mos_eisley_police_officer_rebel", 3298.17,4.72998,-4655.93,335.574,0, "", ""},
+		{"mos_eisley_police_officer", "mos_eisley_police_officer_rebel", 3286.4,5,-4870.7,-1,0, "", ""},
+		{"mos_eisley_police_officer", "mos_eisley_police_officer_rebel", 3371.8,5,-4731.5,161,0, "", ""},
+		{"mos_eisley_police_officer", "mos_eisley_police_officer_rebel", 3318.3,5,-4613,229.675,0, "", ""},
+		{"mos_eisley_police_officer", "mos_eisley_police_officer_rebel", 3287.5,5,-4682.63,144.337,0, "", ""},
+		{"mos_eisley_police_officer", "mos_eisley_police_officer_rebel", 3426.18,5,-4963.54,310,0, "", ""},
+		{"mos_eisley_police_sergeant", "mos_eisley_police_sergeant_rebel", 3536.3,5,-4799.3,226,0, "npc_accusing", "calm"},
+		{"mos_eisley_police_lieutenant", "mos_eisley_police_lieutenant_rebel", 3243.7,5,-4533.1,137,0, "npc_imperial", "calm"},
 
 	},
 }
@@ -509,18 +519,6 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	--{"junk_dealer",0,3699.2,5,-4822,92,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 	--{"kahfr_oladi",60,3473.4,5,-4974.8,104,0, "npc_sitting_chair", ""},
 	--{"mos_eisley_police_officer",300,3385.18,4.68287,-4792.87,298.466,0, "calm", "Lt Ogo (a Planet record keeper)"},
-	--{"mos_eisley_police_officer",300,3243.7,5,-4533.1,137,0, "calm", ""},
-	pNpc = spawnMobile(self.planet, "mos_eisley_police_officer",300,3407,0,-4505,255,0)
-	self:setMoodString(pNpc, "npc_accusing")
-	pNpc = spawnMobile(self.planet, "mos_eisley_police_officer",300,3405.2,0,-4505.5,75,0)
-	self:setMoodString(pNpc, "angry")
-	spawnMobile(self.planet, "mos_eisley_police_officer",300,3298.17,4.72998,-4655.93,335.574,0)
-	spawnMobile(self.planet, "mos_eisley_police_officer",300,3286.4,5,-4870.7,-1,0)
-	spawnMobile(self.planet, "mos_eisley_police_officer",300,3371.8,5,-4731.5,161,0)
-	spawnMobile(self.planet, "mos_eisley_police_officer",300,3318.3,5,-4613,229.675,0)
-	spawnMobile(self.planet, "mos_eisley_police_officer",300,3287.5,5,-4682.63,144.337,0)
-	spawnMobile(self.planet, "mos_eisley_police_officer",300,3426.18,5,-4963.54,310,0)
-	spawnMobile(self.planet, "mos_eisley_police_officer",300,3536.3,5,-4799.3,226,0)
 	pNpc = spawnMobile(self.planet, "noble",60,3247.46,4.9251,-4842.99,45.064,0)
 	self:setMoodString(pNpc, "conversation")
 	spawnMobile(self.planet, "noble",60,3542.38,5,-4826.12,295.121,0)
