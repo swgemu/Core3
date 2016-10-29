@@ -76,7 +76,7 @@ function TalusStaticSpawnsSouthScreenPlay:spawnMobiles()
 	spawnMobile("talus", "selonian_warrior", 300, 158.2, 30.4, -5585.9, 90, 0)
 	spawnMobile("talus", "selonian_assassin", 300, 157.5, 30.6, -5576.4, -90, 0)
 
-	--Rebel Instalation (2378,-4984)
+	--Rebel Installation (2378,-4984)
 	spawnMobile("talus", "rebel_army_captain", 360, -4.4, 0.1, -3.5, 90, 9645417)
 	spawnMobile("talus", "rebel_medic", 360, 3.7, 0.1, -3.7, -90, 9645416)
 	spawnMobile("talus", "rebel_trooper", 360, 0.0, 0.1, -4.8, 0, 9645414)
@@ -112,7 +112,7 @@ function TalusStaticSpawnsSouthScreenPlay:spawnMobiles()
 	spawnMobile("talus", "fynock", 360, -5639.3, 86.0, -2364.4, -127, 0)
 	spawnMobile("talus", "fynock", 360, -5647.3, 76.2, -2365.1, -166, 0)
 
-	--Wind Generatos (-4557,-2906)
+	--Wind Generators (-4557,-2906)
 	pNpc = spawnMobile("talus", "lost_aqualish_infiltrator", 360, -4558.0, 139.1, -2905.7, -20, 0)
 	self:setMoodString(pNpc, "npc_use_terminal_high")
 

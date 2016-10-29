@@ -95,7 +95,7 @@ function DathomirStaticSpawnsNwScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "singing_mountain_clan_sentry", 360, -854.8, 121.9, 4159.3, -90, 0)
 	spawnMobile("dathomir", "singing_mountain_clan_sentry", 360, -854.8, 121.0, 4178.2, -90, 0)
 
-	--spell weavers trees (-850,2195)
+	--spell weavers trees (-850,2795)
 	spawnMobile("dathomir", "nightsister_spell_weaver", 720, -860.8, 146.4, 2792.5, -170, 0)
 	spawnMobile("dathomir", "nightsister_spell_weaver", 720, -840.5, 146.6, 2788.0, 17, 0)
 
