@@ -269,10 +269,11 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 			int num = System::random(mobiles->size() - 1);
 			const String& mob = mobiles->get(num);
 
-			if (objectsToSpawn.contains(mob)) {
-				int value = objectsToSpawn.get(mob);
-				objectsToSpawn.drop(mob);
-				objectsToSpawn.put(mob, value + 1);
+			int find = objectsToSpawn.find(mob);
+
+			if (find != -1) {
+				int& value = objectsToSpawn.elementAt(find).getValue();
+				++value;
 			} else {
 				objectsToSpawn.put(mob, 1);
 			}
@@ -282,12 +283,11 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 	uint32 lairTemplateCRC = getLairTemplateName().hashCode();
 
 	for(int i = 0; i < objectsToSpawn.size(); ++i) {
-
 		if (spawnNumber != 4 && spawnedCreatures.size() >= lairTemplate->getSpawnLimit())
 			return true;
 
-		String templateToSpawn = objectsToSpawn.elementAt(i).getKey();
-		int numberToSpawn = objectsToSpawn.get(templateToSpawn);
+		const String& templateToSpawn = objectsToSpawn.elementAt(i).getKey();
+		int numberToSpawn = objectsToSpawn.elementAt(i).getValue();
 
 		CreatureTemplate* creatureTemplate = CreatureTemplateManager::instance()->getTemplate(templateToSpawn);
 

@@ -935,6 +935,8 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 		mission->setMissionTitle(stfFile + diffString, "m" + String::valueOf(randTexts) + "t");
 		mission->setMissionDescription(stfFile + diffString, "m" + String::valueOf(randTexts) + "d");
 	} else {
+		Locker listLocker(&playerBountyListMutex);
+
 		BountyTargetListElement* target = getRandomPlayerBounty(player);
 
 		if (target != NULL) {
@@ -1933,6 +1935,7 @@ void MissionManagerImplementation::completePlayerBounty(uint64 targetId, uint64 
 		}
 
 		playerBountyList.remove(playerBountyList.find(targetId));
+		delete target;
 	}
 }
 

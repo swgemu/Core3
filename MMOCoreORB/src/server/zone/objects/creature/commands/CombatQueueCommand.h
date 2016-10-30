@@ -419,7 +419,7 @@ public:
 		this->areaRange = i;
 	}
 
-	void setEffectString(String s) {
+	void setEffectString(const String& s) {
 		this->effectString = s;
 	}
 
@@ -566,11 +566,11 @@ public:
 		return &(const_cast<CombatQueueCommand*>(this)->dotEffects);
 	}
 
-	void setAnimationString(String anim) {
+	void setAnimationString(const String& anim) {
 		this->animation = anim;
 	}
 
-	void setCombatSpam(String combatSpam) {
+	void setCombatSpam(const String& combatSpam) {
 		this->combatSpam = combatSpam;
 	}
 

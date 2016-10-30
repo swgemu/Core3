@@ -193,7 +193,7 @@ public:
 		return combatSpam;
 	}
 
-	void setCombatSpam(String spam) {
+	void setCombatSpam(const String& spam) {
 		this->combatSpam = spam;
 	}
 

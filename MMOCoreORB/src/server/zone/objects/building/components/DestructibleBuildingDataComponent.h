@@ -85,23 +85,23 @@ public:
 		return intCurrentState;
 	}
 
-	Time getLastVulnerableTime() {
+	const Time& getLastVulnerableTime() const {
 		return lastVulnerableTime;
 	}
 
-	Time getNextVulnerableTime() {
+	const Time& getNextVulnerableTime() const {
 		return nextVulnerableTime;
 	}
 
-	Time getVulnerabilityEndTime() {
+	const Time& getVulnerabilityEndTime() const {
 		return vulnerabilityEndTime;
 	}
 
-	Time getPlacmenetTime() {
+	const Time& getPlacmenetTime() const {
 		return placementTime;
 	}
 
-	Time getLastResetTime() {
+	const Time& getLastResetTime() const {
 		return lastResetTime;
 	}
 
@@ -279,7 +279,7 @@ public:
 		dnaLocks.removeAll();
 	}
 
-	void setDnaLocks(Vector<int> locks) {
+	void setDnaLocks(const Vector<int>& locks) {
 		dnaLocks = locks;
 	}
 
@@ -291,7 +291,7 @@ public:
 		return currentDnaChain;
 	}
 
-	void setCurrentDnaChain(String chain) {
+	void setCurrentDnaChain(const String& chain) {
 		currentDnaChain = chain;
 	}
 
@@ -299,7 +299,7 @@ public:
 		return powerSwitchRules;
 	}
 
-	void setPowerSwitchRules(Vector<int> rules) {
+	void setPowerSwitchRules(const Vector<int>& rules) {
 		powerSwitchRules = rules;
 	}
 
@@ -307,7 +307,7 @@ public:
 		return powerSwitchStates;
 	}
 
-	void setPowerSwitchStates(Vector<bool> states) {
+	void setPowerSwitchStates(const Vector<bool>& states) {
 		powerSwitchStates = states;
 	}
 
