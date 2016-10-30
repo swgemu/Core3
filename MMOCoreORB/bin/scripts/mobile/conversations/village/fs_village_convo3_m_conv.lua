@@ -10,7 +10,7 @@ intro = ConvoScreen:new {
 	leftDialog = "@conversation/fs_village_convo3_m:s_a6600b37", -- Hello. What brings you to our village?
 	stopConversation = "false",
 	options = {
-		{ "@conversation/fs_village_convo3_m:s_f7ae6df2", "on_a_pilgrimage" }, -- Looking for information about the Force.
+		{ "@conversation/fs_village_convo3_m:s_ce4f7c2b", "on_a_pilgrimage" }, -- Looking for information about the Force.
 		{ "@conversation/fs_village_convo3_m:s_351f9414", "work_the_land" }, -- What do you folks do way out here in the middle of nowhere?
 		{ "@conversation/fs_village_convo3_m:s_29e5bb06", "later_friend" }, -- Nothing really. As a matter of fact I was on the way out.
 	}
