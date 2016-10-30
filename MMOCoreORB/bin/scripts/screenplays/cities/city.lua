@@ -27,24 +27,27 @@ function CityScreenPlay:spawnMob(num, controllingFaction)
 
 	local mobTable = mobsTable[num]
 	local pNpc = nil
+	local npcTemplate = ""
+	local npcMood = ""
 
 	if controllingFaction == FACTIONIMPERIAL then
-		pNpc = spawnMobile(self.planet, mobTable[1], 0, mobTable[3], mobTable[4], mobTable[5], mobTable[6], mobTable[7])
-
-		if pNpc ~= nil and mobTable[8] ~= "" then
-			self:setMoodString(pNpc, mobTable[8])
-		end
+		npcTemplate = mobTable[1]
+		npcMood = mobTable[8]
 	elseif controllingFaction == FACTIONREBEL then
-		pNpc = spawnMobile(self.planet, mobTable[2], 0, mobTable[3], mobTable[4], mobTable[5], mobTable[6], mobTable[7])
+		npcTemplate = mobTable[2]
+		npcMood = mobTable[9]
+	end
 
-		if pNpc ~= nil and mobTable[9] ~= "" then
-			self:setMoodString(pNpc, mobTable[9])
-		end
+	pNpc = spawnMobile(self.planet, npcTemplate, 0, mobTable[3], mobTable[4], mobTable[5], mobTable[6], mobTable[7])
+
+	if pNpc ~= nil and npcMood ~= "" then
+		self:setMoodString(pNpc, npcMood)
 	end
 
 	if pNpc ~= nil then
 		createObserver(CREATUREDESPAWNED, self.screenplayName, "onDespawn", pNpc)
 		writeData(SceneObject(pNpc):getObjectID(), num)
+		writeData(self.planet .. self.screenplayName .. num, SceneObject(pNpc):getObjectID())
 	end
 end
 
@@ -74,7 +77,6 @@ function CityScreenPlay:respawn(pAiAgent, args)
 	if comma ~= nil then
 		mobNumber = tonumber(string.sub(args, 1, comma - 1))
 		controllingFaction = tonumber(string.sub(args, comma + 1))
+		self:spawnMob(mobNumber, controllingFaction)
 	end
-
-	self:spawnMob(mobNumber, controllingFaction)
 end
