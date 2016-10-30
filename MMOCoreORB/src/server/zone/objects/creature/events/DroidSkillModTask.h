@@ -41,7 +41,9 @@ public:
 			ManagedReference<SceneObject*> parent = strongDroidRef->getParent();
 			if( parent == NULL || !parent.get()->isCellObject() ){ // Not indoors either
 				return;
-			}
+			} else if (parent.get()->isStaticObject() && parent->getClientObjectCRC() == 4015930050) {
+				return;
+			} // ^And evidence states droid-module bonus shouldn't apply while in a STATIC city Cantina^
 		}
 
 		Locker crossLocker(strongOwnerRef, strongDroidRef);
