@@ -188,7 +188,6 @@ function QuestSpawner:createSpawn(pSpawner)
 			if (pNpc ~= nil) then
 				writeData(SceneObject(pNpc):getObjectID() .. ":spawnerID", spawnerID)
 				createObserver(OBJECTDESTRUCTION, "QuestSpawner", "notifyMobileKilled", pNpc)
-				createEvent(getRandomNumber(110, 130) * 1000, "QuestSpawner", "destroySpawnerMobile", pNpc, "")
 				curPop = curPop + 1
 				
 				local setupFunc = sPlay[dataTable.aiHandlerFunc]
@@ -221,16 +220,6 @@ function QuestSpawner:notifyMobileKilled(pVictim, pAttacker)
 	deleteData(mobileID .. ":spawnerID")
 
 	return 1
-end
-
-function QuestSpawner:destroySpawnerMobile(pMobile)
-	if (pMobile == nil) then
-		return
-	end
-
-	deleteData(SceneObject(pMobile):getObjectID() .. ":spawnerID")
-
-	SceneObject(pMobile):destroyObjectFromWorld()
 end
 
 function QuestSpawner:destroyQuestSpawner(pSpawner)
