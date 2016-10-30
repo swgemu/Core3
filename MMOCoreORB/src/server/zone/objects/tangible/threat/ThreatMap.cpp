@@ -55,7 +55,7 @@ void ThreatMap::registerObserver(CreatureObject* target) {
 		threatMapObserver->deploy();
 	}
 
-	target->registerObserver(ObserverEventType::HEALINGPERFORMED, threatMapObserver);
+	target->registerObserver(ObserverEventType::HEALINGRECEIVED, threatMapObserver);
 }
 
 void ThreatMap::removeObservers() {
@@ -121,7 +121,7 @@ void ThreatMap::removeAll(bool forceRemoveAll) {
 			remove(i);
 
 			if (threatMapObserver != NULL)
-				key->dropObserver(ObserverEventType::HEALINGPERFORMED, threatMapObserver);
+				key->dropObserver(ObserverEventType::HEALINGRECEIVED, threatMapObserver);
 		} else {
 			value->setNonAggroDamage(value->getTotalDamage());
 			value->addHeal(-value->getHeal()); // don't need to store healing
@@ -141,7 +141,7 @@ void ThreatMap::dropDamage(CreatureObject* target) {
 		drop(target);
 
 		if (threatMapObserver != NULL)
-			target->dropObserver(ObserverEventType::HEALINGPERFORMED, threatMapObserver);
+			target->dropObserver(ObserverEventType::HEALINGRECEIVED, threatMapObserver);
 	} else {
 		ThreatMapEntry *entry = &get(target);
 		entry->setNonAggroDamage(entry->getTotalDamage());
