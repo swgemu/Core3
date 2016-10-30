@@ -60,22 +60,14 @@ function CityScreenPlay:onDespawn(pAiAgent)
 	local mobNumber = readData(oid)
 	deleteData(oid)
 
-	local controllingFaction = getControllingFaction(self.planet)
-
-	local args = mobNumber .. "," .. controllingFaction
-	createEvent(300000, self.screenplayName, "respawn", nil, args)
+	createEvent(300000, self.screenplayName, "respawn", nil, tostring(mobnumber))
 
 	return 1
 end
 
 function CityScreenPlay:respawn(pAiAgent, args)
-	local mobNumber = 0
-	local controllingFaction = 0
-	local comma = string.find(args, ",")
+	local mobNumber = tonumber(args)
+	local controllingFaction = getControllingFaction(self.planet)
 
-	if comma ~= nil then
-		mobNumber = tonumber(string.sub(args, 1, comma - 1))
-		controllingFaction = tonumber(string.sub(args, comma + 1))
-		self:spawnMob(mobNumber, controllingFaction)
-	end
+	self:spawnMob(mobNumber, controllingFaction)
 end
