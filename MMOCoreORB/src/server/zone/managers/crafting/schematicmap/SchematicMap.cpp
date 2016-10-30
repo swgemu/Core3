@@ -162,7 +162,7 @@ void SchematicMap::buildSchematicGroups() {
 
 	while(iffGroupMap.size() > 0) {
 		VectorMapEntry<uint32, String> entry = iffGroupMap.remove(0);
-		String groupName = entry.getValue();
+		const String& groupName = entry.getValue();
 
 		DraftSchematic* schematic = schematicCrcMap.get(entry.getKey());
 

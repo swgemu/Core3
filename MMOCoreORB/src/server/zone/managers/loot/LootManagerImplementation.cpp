@@ -222,7 +222,7 @@ void LootManagerImplementation::setInitialObjectStats(LootItemTemplate* template
 }
 
 void LootManagerImplementation::setCustomObjectName(TangibleObject* object, LootItemTemplate* templateObject) {
-	String customName = templateObject->getCustomObjectName();
+	const String& customName = templateObject->getCustomObjectName();
 
 	if (!customName.isEmpty()) {
 		if (customName.charAt(0) == '@') {
@@ -695,40 +695,39 @@ bool LootManagerImplementation::createLoot(SceneObject* container, const String&
 bool LootManagerImplementation::createLootSet(SceneObject* container, const String& lootGroup, int level, bool maxCondition, int setSize) {
 	Reference<LootGroupTemplate*> group = lootGroupMap->getLootGroupTemplate(lootGroup);
 
-		if (group == NULL) {
-			warning("Loot group template requested does not exist: " + lootGroup);
+	if (group == NULL) {
+		warning("Loot group template requested does not exist: " + lootGroup);
+		return false;
+	}
+	//Roll for the item out of the group.
+	int roll = System::random(10000000);
+
+	int lootGroupEntryIndex = group->getLootGroupIntEntryForRoll(roll);
+
+	for(int q = 0; q < setSize; q++) {
+		String selection = group->getLootGroupEntryAt(lootGroupEntryIndex+q);
+		Reference<LootItemTemplate*> itemTemplate = lootGroupMap->getLootItemTemplate(selection);
+
+		if (itemTemplate == NULL) {
+			warning("Loot item template requested does not exist: " + group->getLootGroupEntryForRoll(roll) + " for templateName: " + group->getTemplateName());
 			return false;
 		}
-		//Roll for the item out of the group.
-		int roll = System::random(10000000);
 
+		TangibleObject* obj = createLootObject(itemTemplate, level, maxCondition);
 
-		int lootGroupEntryIndex = group->getLootGroupIntEntryForRoll(roll);
+		if (obj == NULL)
+			return false;
 
-
-		for(int q = 0; q< setSize; q++) {
-			String selection = group->getLootGroupEntryAt(lootGroupEntryIndex+q);
-			Reference<LootItemTemplate*> itemTemplate = lootGroupMap->getLootItemTemplate(selection);
-
-			if (itemTemplate == NULL) {
-				warning("Loot item template requested does not exist: " + group->getLootGroupEntryForRoll(roll) + " for templateName: " + group->getTemplateName());
-				return false;
-			}
-
-			TangibleObject* obj = createLootObject(itemTemplate, level, maxCondition);
-
-			if (obj == NULL)
-				return false;
-
-			if (container->transferObject(obj, -1, false, true)) {
-				container->broadcastObject(obj, true);
-			} else {
-				obj->destroyObjectFromDatabase(true);
-				return false;
-			}
-
+		if (container->transferObject(obj, -1, false, true)) {
+			container->broadcastObject(obj, true);
+		} else {
+			obj->destroyObjectFromDatabase(true);
+			return false;
 		}
-		return true;
+
+	}
+
+	return true;
 }
 
 void LootManagerImplementation::addStaticDots(TangibleObject* object, LootItemTemplate* templateObject, int level) {
