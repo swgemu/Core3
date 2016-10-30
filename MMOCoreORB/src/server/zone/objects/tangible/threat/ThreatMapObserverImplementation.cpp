@@ -12,42 +12,42 @@
 #include "templates/params/ObserverEventType.h"
 
 int ThreatMapObserverImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	if (eventType != ObserverEventType::HEALINGPERFORMED) {
-		return 0;
-	}
-
 	ManagedReference<TangibleObject*> strongRef = self.get();
 
-	if (strongRef == NULL) {
-		return 1;
-	}
-
-	CreatureObject* originator = cast<CreatureObject*>(observable);
-
-	if (originator == NULL )
+	if (strongRef == NULL)
 		return 1;
 
-	Locker crossLocker(strongRef, originator);
+	if (eventType != ObserverEventType::HEALINGRECEIVED)
+		return 0;
+
+	CreatureObject* healTarget = cast<CreatureObject*>(observable);
+
+	if (healTarget == NULL)
+		return 0;
+
+	CreatureObject* healer = cast<CreatureObject*>(arg1);
+
+	if (healer == NULL)
+		return 0;
 
 	ThreatMap* threatMap = strongRef->getThreatMap();
 
 	if (threatMap != NULL) {
-		int findIndex = threatMap->find(originator);
+		int targetIndex = threatMap->find(healTarget);
+		int healerIndex = threatMap->find(healer);
 
-		if (findIndex >= 0) {
-			ThreatMapEntry& entry = threatMap->get(findIndex);
+		if (targetIndex >= 0) {
+			ThreatMapEntry& entry = threatMap->get(targetIndex);
 
-			if (entry.getTotalDamage() == entry.getNonAggroDamage())
-				return 1;
-
-		} else {
-			return 1;
+			if (entry.getAggroMod() == 0) {
+				return 0;
+			}
+		} else if (healerIndex < 0) {
+			return 0;
 		}
 
-		CreatureObject* target = cast<CreatureObject*>(arg1);
-		if (target != NULL)
-			threatMap->addHeal(target, arg2);
+		threatMap->addHeal(healer, arg2);
 	}
 
-	return 1;
+	return 0;
 }

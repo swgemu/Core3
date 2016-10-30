@@ -29,8 +29,8 @@ VillageRaids = ScreenPlay:new {
 	enemyData = {
 		minSpawnPulse = 5000 * 1000,
 		maxSpawnPulse = 7000 * 1000,
-		minDistance = 150, -- Min distance from center of spawn loc
-		maxDistance = 250 -- Max distance from center of spawn loc
+		minDistance = 25, -- Min distance from center of spawn loc
+		maxDistance = 50 -- Max distance from center of spawn loc
 	},
 
 	-- Locations to spawn enemy spawners
@@ -92,7 +92,7 @@ VillageRaids = ScreenPlay:new {
 		maxSpawn = 100, -- Max waves of mobiles to spawn over the entire lifetime of the spawner
 		maxPopulation = 5, -- Max mobs to have up at any one time
 		expireTime = 2500 * 1000, -- Time until spawner should expire
-		aiHandlerFunc = "" -- Name of function that should setup a defender after it's spawned
+		aiHandlerFunc = "setupSpawnedRaider" -- Name of function that should setup a defender after it's spawned
 	},
 
 	enemySmall = { "enemySmallData", "enemySmallList" },
@@ -109,7 +109,7 @@ VillageRaids = ScreenPlay:new {
 		maxSpawn = 100, -- Max waves of mobiles to spawn over the entire lifetime of the spawner
 		maxPopulation = 10, -- Max mobs to have up at any one time
 		expireTime = 2500 * 1000, -- Time until spawner should expire
-		aiHandlerFunc = "" -- Name of function that should setup a defender after it's spawned
+		aiHandlerFunc = "setupSpawnedRaider" -- Name of function that should setup a defender after it's spawned
 	},
 
 	enemyMedium = { "enemyMediumData", "enemyMediumList" },
@@ -127,7 +127,7 @@ VillageRaids = ScreenPlay:new {
 		maxSpawn = 100, -- Max waves of mobiles to spawn over the entire lifetime of the spawner
 		maxPopulation = 10, -- Max mobs to have up at any one time
 		expireTime = 2500 * 1000, -- Time until spawner should expire
-		aiHandlerFunc = "" -- Name of function that should setup a defender after it's spawned
+		aiHandlerFunc = "setupSpawnedRaider" -- Name of function that should setup a defender after it's spawned
 	},
 
 	uberEnemyMedium = { "uberEnemyMediumData", "uberEnemyMediumList" },
@@ -144,7 +144,7 @@ VillageRaids = ScreenPlay:new {
 		maxSpawn = 100, -- Max waves of mobiles to spawn over the entire lifetime of the spawner
 		maxPopulation = 10, -- Max mobs to have up at any one time
 		expireTime = 2500 * 1000, -- Time until spawner should expire
-		aiHandlerFunc = "" -- Name of function that should setup a defender after it's spawned
+		aiHandlerFunc = "setupSpawnedRaider" -- Name of function that should setup a defender after it's spawned
 	},
 
 	enemyLarge = { "enemyLargeData", "enemyLargeList" },
@@ -162,7 +162,7 @@ VillageRaids = ScreenPlay:new {
 		maxSpawn = 100, -- Max waves of mobiles to spawn over the entire lifetime of the spawner
 		maxPopulation = 10, -- Max mobs to have up at any one time
 		expireTime = 2500 * 1000, -- Time until spawner should expire
-		aiHandlerFunc = "" -- Name of function that should setup a defender after it's spawned
+		aiHandlerFunc = "setupSpawnedRaider" -- Name of function that should setup a defender after it's spawned
 	},
 
 	uberEnemyLarge = { "uberEnemyLargeData", "uberEnemyLargeList" },
@@ -193,6 +193,14 @@ function VillageRaids:spawnTurrets()
 			writeData("Village:Turret:" .. phaseID .. ":" .. i, SceneObject(pTurret):getObjectID())
 		end
 	end
+end
+
+function VillageRaids:setupSpawnedRaider(pMobile, pSpawner)
+	if (pMobile == nil or pSpawner == nil) then
+		return
+	end
+	
+	createObserver(OBJECTDESTRUCTION, "FsVillageDefense", "notifyKilledRaider", pMobile)
 end
 
 function VillageRaids:despawnTurrets()

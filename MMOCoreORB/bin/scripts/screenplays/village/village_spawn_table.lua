@@ -99,7 +99,8 @@ villageMobileSpawns = {
 	},
 	[4] = {
 		{ "fs_villager_engineer", 5388.8, 78.5, -4122.7, 86, "", "villageChiefEngineerPhase4ConvoTemplate" },
-		{ "sivarra_mechaux", 5159.1, 78.58, -4113.01, 116, "", "" },
+		{ "sivarra_mechaux", 5159.1, 78.58, -4113.01, 116, "", "villageSivarraPhase4ConvoTemplate" },
+		{ "captain_sarguillo", 5313.9, 78.5, -4161.5, -72, "", "villageSarguilloPhase4ConvoTemplate" },
 		{ "fs_surgical_droid_21b", 5155.7, 78.6, -4116.25, 26, "", "" },
 		{ "whip", 5283.66, 78.5, -4226.31, -143, "", "" },
 		{ "rohak_village_elder", 5298.78, 78.5, -4173.89, 24, "", "villageElderPhase4ConvoTemplate" },

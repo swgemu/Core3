@@ -1077,7 +1077,7 @@ int CreatureObjectImplementation::healDamage(TangibleObject* healer,
 	setHAM(damageType, newValue, notifyClient);
 
 	if(healer != NULL && notifyObservers) {
-		asCreatureObject()->notifyObservers(ObserverEventType::HEALINGPERFORMED, healer, returnValue);
+		asCreatureObject()->notifyObservers(ObserverEventType::HEALINGRECEIVED, healer, returnValue);
 	}
 
 	return returnValue;
@@ -1104,7 +1104,7 @@ int CreatureObjectImplementation::healWound(TangibleObject* healer,
 	setWounds(damageType, newValue, notifyClient);
 
 	if (healer != NULL && notifyObservers) {
-		asCreatureObject()->notifyObservers(ObserverEventType::WOUNDHEALINGPERFORMED, healer, returnValue);
+		asCreatureObject()->notifyObservers(ObserverEventType::WOUNDHEALINGRECEIVED, healer, returnValue);
 	}
 
 	return returnValue;
@@ -2982,7 +2982,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 		return true;
 	}
 
-	if (isInBountyMission(object, asCreatureObject())) {
+	if (object->hasBountyMissionFor(asCreatureObject())) {
 		return true;
 	}
 
@@ -3033,29 +3033,24 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
 	return true;
 }
 
-bool CreatureObjectImplementation::isInBountyMission(CreatureObject* bountyHunter, CreatureObject* target) {
-	if (bountyHunter == NULL) {
+bool CreatureObjectImplementation::hasBountyMissionFor(CreatureObject* target) {
+	if (target == NULL)
 		return false;
-	}
 
-	ZoneServer* zoneServer = bountyHunter->getZoneServer();
+	ZoneServer* zoneServer = asCreatureObject()->getZoneServer();
 
-	if (zoneServer == NULL) {
+	if (zoneServer == NULL)
 		return false;
-	}
 
 	MissionManager* missionManager = zoneServer->getMissionManager();
 
-	if (missionManager == NULL) {
+	if (missionManager == NULL)
 		return false;
-	}
 
+	ManagedReference<MissionObject*> mission = missionManager->getBountyHunterMission(asCreatureObject());
 
-	ManagedReference<MissionObject*> mission = missionManager->getBountyHunterMission(bountyHunter);
-
-	if (mission == NULL || target == NULL) {
+	if (mission == NULL)
 		return false;
-	}
 
 	return mission->getTargetObjectId() == target->getObjectID();
 }
