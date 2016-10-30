@@ -66,14 +66,15 @@ function VillageJediManager:onPlayerLoggedIn(pCreatureObject)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_01)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_02)
 	end
-	
+
 	if (not VillageCommunityCrafting:isOnActiveCrafterList(pCreatureObject)) then
 		VillageCommunityCrafting:removeSchematics(pCreatureObject, 2)
 		VillageCommunityCrafting:removeSchematics(pCreatureObject, 3)
 	end
 
 	-- Any quests below are run from township because they are not a standard task
-	if (VillageJediManagerTownship:getCurrentPhase() ~= 1) then
+	local currentPhase = VillageJediManagerTownship:getCurrentPhase()
+	if (currentPhase ~= 1) then
 		if (QuestManager.hasActiveQuest(pCreatureObject, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_01) or
 			QuestManager.hasActiveQuest(pCreatureObject, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_02) or
 			QuestManager.hasActiveQuest(pCreatureObject, QuestManager.quests.FS_MEDIC_PUZZLE_QUEST_03)) then
@@ -83,10 +84,14 @@ function VillageJediManager:onPlayerLoggedIn(pCreatureObject)
 			QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.FS_CRAFT_PUZZLE_QUEST_00)) then
 			FsCrafting1:doPhaseChangeFail(pCreatureObject)
 		end
-	elseif (VillageJediManagerTownship:getCurrentPhase() ~= 2) then
+	end
+	if (currentPhase ~= 2) then
 		if (QuestManager.hasActiveQuest(pCreatureObject, QuestManager.quests.FS_QUESTS_SAD_TASKS)) then
 			FsSad:doPhaseChangeFail(pCreatureObject)
 		end
+	end
+	if (currentPhase ~= 4) then
+		FsVillageDefense:doPhaseChangeFail(pCreatureObject)
 	end
 end
 
@@ -136,10 +141,10 @@ function VillageJediManager:onFSTreeCompleted(pCreatureObject, branch)
 	if (pCreatureObject == nil) then
 		return
 	end
-	
+
 	-- Remove the "_04" from the end of the skill...
 	local branchSub = string.sub(branch, 0, (string.len(branch) - 3))
-	
+
 	-- Set the screenplaystate...
 	CreatureObject(pCreatureObject):setScreenPlayState(4, "VillageUnlockScreenPlay:" .. branchSub)
 

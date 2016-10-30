@@ -287,6 +287,8 @@ function VillageJediManagerTownship:doOnlinePhaseChangeFails(pCreature, currentP
 	elseif (currentPhase == 2) then
 		FsReflex2:doPhaseChangeFail(pCreature)
 		FsSad:doPhaseChangeFail(pCreature)
+	elseif (currentPhase == 4) then
+		FsVillageDefense:doPhaseChangeFail(pCreature)
 	end
 end
 
