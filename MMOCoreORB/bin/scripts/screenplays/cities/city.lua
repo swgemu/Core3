@@ -47,7 +47,6 @@ function CityScreenPlay:spawnMob(num, controllingFaction)
 	if pNpc ~= nil then
 		createObserver(CREATUREDESPAWNED, self.screenplayName, "onDespawn", pNpc)
 		writeData(SceneObject(pNpc):getObjectID(), num)
-		writeData(self.planet .. self.screenplayName .. num, SceneObject(pNpc):getObjectID())
 	end
 end
 
