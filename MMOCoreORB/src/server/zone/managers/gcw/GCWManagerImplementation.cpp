@@ -1167,13 +1167,11 @@ void GCWManagerImplementation::sendDNASampleMenu(CreatureObject* creature, Build
 	if (ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TERMINAL))
 		ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
 
-	Vector<String> dnaStrand = baseData->getDnaStrand();
-
-	if (dnaStrand.size() == 0) {
+	if (baseData->getDnaStrand().size() == 0) {
 		constructDNAStrand(building);
-		dnaStrand = baseData->getDnaStrand();
 	}
 
+	const Vector<String>& dnaStrand = baseData->getDnaStrand();
 	const Vector<int>& dnaLocks = baseData->getDnaLocks();
 
 	ManagedReference<SuiListBox*> status = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
@@ -1258,12 +1256,12 @@ void GCWManagerImplementation::processDNASample(CreatureObject* creature, Tangib
 
 	Locker clocker(building, creature);
 
-	Vector<String> dnaStrand = baseData->getDnaStrand();
-	Vector<int> dnaLocks = baseData->getDnaLocks();
+	const Vector<String>& dnaStrand = baseData->getDnaStrand();
+	Vector<int>& dnaLocks = baseData->getDnaLocks();
 	int newLocks = 0;
 
 	if (index > -1) {
-		String chain = baseData->getCurrentDnaChain();
+		const String& chain = baseData->getCurrentDnaChain();
 
 		for (int i = 0; i < chain.length(); i++) {
 			int idx = index + i;
@@ -1279,7 +1277,7 @@ void GCWManagerImplementation::processDNASample(CreatureObject* creature, Tangib
 			}
 		}
 
-		baseData->setDnaLocks(dnaLocks);
+		//baseData->setDnaLocks(dnaLocks); dnaLocks is a ref
 	}
 
 	int totalLocks = 0;
@@ -1346,9 +1344,7 @@ void GCWManagerImplementation::sendPowerRegulatorControls(CreatureObject* creatu
 	if (ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TERMINAL))
 		ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
 
-	Vector<bool> switchStates = baseData->getPowerSwitchStates();
-
-	if (switchStates.size() == 0)
+	if (baseData->getPowerSwitchStates().size() == 0)
 		randomizePowerRegulatorSwitches(building);
 
 	ManagedReference<SuiListBox*> status = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
@@ -1464,7 +1460,7 @@ void GCWManagerImplementation::flipPowerSwitch(BuildingObject* building, Vector<
 	if (baseData == NULL)
 		return;
 
-	Vector<int> rules = baseData->getPowerSwitchRules();
+	const Vector<int>& rules = baseData->getPowerSwitchRules();
 
 	switchStates.get(flipSwitch) = !switchStates.get(flipSwitch);
 

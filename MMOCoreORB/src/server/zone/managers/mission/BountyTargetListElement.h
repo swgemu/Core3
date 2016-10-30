@@ -13,7 +13,7 @@
 /**
  * Class containing a player bounty.
  */
-class BountyTargetListElement : public DistributedObject {
+class BountyTargetListElement : public Object {
 	/**
 	 * Object id of the bounty target.
 	 */

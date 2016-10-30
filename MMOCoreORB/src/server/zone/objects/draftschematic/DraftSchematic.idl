@@ -88,7 +88,7 @@ class DraftSchematic extends IntangibleObject {
 	public native SceneObject createManufactureSchematic(SceneObject craftingTool = null);
 
 	@preLocked
-	public void setGroupName(string name) {
+	public void setGroupName(final string name) {
 		groupName = name;
 	}
 
