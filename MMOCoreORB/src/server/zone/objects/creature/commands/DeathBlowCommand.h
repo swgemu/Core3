@@ -42,12 +42,12 @@ public:
 			Locker clocker(player, creature);
 
 			if (!CollisionManager::checkLineOfSight(creature, player)) {
-				creature->sendSystemMessage("@container_error_message:container18");
+				creature->sendSystemMessage("@combat_effects:cansee_fail");// You cannot see your target.
 				return GENERALERROR;
 			}
 
 			if (!player->isIncapacitated() || player->isFeigningDeath()){
-				creature->sendSystemMessage("@error_message:target_not_incapacitated");
+				creature->sendSystemMessage("@error_message:target_not_incapacitated"); //You cannot perform the death blow. Your target is not incapacitated.
 				return GENERALERROR;
 			}
 
@@ -62,12 +62,12 @@ public:
 			Locker clocker(pet, creature);
 
 			if (!CollisionManager::checkLineOfSight(creature, pet)) {
-				creature->sendSystemMessage("@container_error_message:container18");
+				creature->sendSystemMessage("@combat_effects:cansee_fail");// You cannot see your target.
 				return GENERALERROR;
 			}
 
 			if (!pet->isIncapacitated()){
-				creature->sendSystemMessage("@error_message:target_not_incapacitated");
+				creature->sendSystemMessage("@error_message:target_not_incapacitated"); //You cannot perform the death blow. Your target is not incapacitated.
 				return GENERALERROR;
 			}
 
