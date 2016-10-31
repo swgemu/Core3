@@ -11,14 +11,15 @@ CityScreenPlay = ScreenPlay:new {
 function CityScreenPlay:spawnGcwMobiles()
 	if (isZoneEnabled(self.planet)) then
 		local controllingFaction = getControllingFaction(self.planet)
+		local difficulty = getWinningFactionDifficultyScaling(self.planet)
 
 		for i = 1, #self.gcwMobs do
-			self:spawnMob(i, controllingFaction)
+			self:spawnMob(i, controllingFaction, difficulty)
 		end
 	end
 end
 
-function CityScreenPlay:spawnMob(num, controllingFaction)
+function CityScreenPlay:spawnMob(num, controllingFaction, difficulty)
 	local mobsTable = self.gcwMobs
 
 	if num <= 0 or num > #mobsTable then
@@ -38,7 +39,12 @@ function CityScreenPlay:spawnMob(num, controllingFaction)
 		npcMood = mobTable[9]
 	end
 
-	pNpc = spawnMobile(self.planet, npcTemplate, 0, mobTable[3], mobTable[4], mobTable[5], mobTable[6], mobTable[7])
+	local scaling = ""
+	if difficulty > 1 and creatureTemplateExists(npcTemplate .. "_hard") then
+		scaling = "_hard"
+	end
+
+	pNpc = spawnMobile(self.planet, npcTemplate .. scaling, 0, mobTable[3], mobTable[4], mobTable[5], mobTable[6], mobTable[7])
 
 	if pNpc ~= nil and npcMood ~= "" then
 		self:setMoodString(pNpc, npcMood)
@@ -68,6 +74,7 @@ end
 function CityScreenPlay:respawn(pAiAgent, args)
 	local mobNumber = tonumber(args)
 	local controllingFaction = getControllingFaction(self.planet)
+	local difficulty = getWinningFactionDifficultyScaling(self.planet)
 
-	self:spawnMob(mobNumber, controllingFaction)
+	self:spawnMob(mobNumber, controllingFaction, difficulty)
 end
