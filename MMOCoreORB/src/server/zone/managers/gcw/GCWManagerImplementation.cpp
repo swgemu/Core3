@@ -162,6 +162,14 @@ void GCWManagerImplementation::loadLuaConfig() {
 
 	strongholdsObject.pop();
 
+	LuaObject difficulties = lua->getGlobalObject("difficutlyScalingThresholds");
+	if (difficulties.isValidTable()) {
+		for (int i = 1; i <= difficulties.getTableSize(); ++i) {
+			difficultyScalingThresholds.add(difficulties.getIntAt(i));
+		}
+	}
+	difficulties.pop();
+
 	info("Loaded " + String::valueOf(imperialStrongholds.size()) + " imperial strongholds and " + String::valueOf(rebelStrongholds.size()) + " rebel strongholds.");
 
 	delete lua;
@@ -289,6 +297,25 @@ int GCWManagerImplementation::getBaseCount(CreatureObject* creature) {
 	}
 
 	return baseCount;
+}
+
+void GCWManagerImplementation::updateWinningFaction()  {
+	int score = 0;
+
+	if (getRebelScore() > getImperialScore()) {
+		winningFaction = Factions::FACTIONREBEL;
+		score = getRebelScore() - getImperialScore();
+	} else if (getImperialScore() > getRebelScore()) {
+		winningFaction = Factions::FACTIONIMPERIAL;
+		score = getImperialScore() - getRebelScore();
+	}
+
+	winnerDifficultyScaling = 0;
+	for (int i = 0; i < difficultyScalingThresholds.size(); i++) {
+		if (score >= difficultyScalingThresholds.get(i)) {
+			winnerDifficultyScaling++;
+		}
+	}
 }
 
 bool GCWManagerImplementation::hasTooManyBasesNearby(int x, int y) {

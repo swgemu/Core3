@@ -345,6 +345,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getControllingFaction", getControllingFaction);
 	lua_register(luaEngine->getLuaState(), "getImperialScore", getImperialScore);
 	lua_register(luaEngine->getLuaState(), "getRebelScore", getRebelScore);
+	lua_register(luaEngine->getLuaState(), "getWinningFactionDifficultyScaling", getWinningFactionDifficultyScaling);
 	lua_register(luaEngine->getLuaState(), "playClientEffectLoc", playClientEffectLoc);
 	lua_register(luaEngine->getLuaState(), "getQuestVectorMap", getQuestVectorMap);
 	lua_register(luaEngine->getLuaState(), "createQuestVectorMap", createQuestVectorMap);
@@ -3030,6 +3031,31 @@ int DirectorManager::getRebelScore(lua_State* L) {
 		lua_pushinteger(L, 0);
 	} else {
 		lua_pushinteger(L, gcwMan->getRebelScore());
+	}
+
+	return 1;
+}
+
+int DirectorManager::getWinningFactionDifficultyScaling(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getWinningFactionDifficultyScaling");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String zoneName = lua_tostring(L, -1);
+
+	Zone* zone = ServerCore::getZoneServer()->getZone(zoneName);
+	if (zone == NULL) {
+		lua_pushinteger(L, 0);
+		return 1;
+	}
+
+	GCWManager* gcwMan = zone->getGCWManager();
+	if (gcwMan == NULL) {
+		lua_pushinteger(L, 0);
+	} else {
+		lua_pushinteger(L, gcwMan->getWinningFactionDifficultyScaling());
 	}
 
 	return 1;

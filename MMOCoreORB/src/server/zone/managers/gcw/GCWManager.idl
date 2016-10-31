@@ -57,6 +57,9 @@ class GCWManager extends ManagedService implements Logger {
 	protected transient VectorMap<string, int> baseValue;
 
 	@dereferenced
+	protected transient Vector<int> difficultyScalingThresholds;
+
+	@dereferenced
 	protected transient HashTable<int, float> racialPenaltyMap;
 
 	private transient int rebelBases;
@@ -64,6 +67,7 @@ class GCWManager extends ManagedService implements Logger {
 	private transient int imperialBases;
 	private transient int imperialScore;
 	private transient int winningFaction;
+	private transient int winnerDifficultyScaling;
 
 	public transient int gcwCheckTimer;
 	public transient int vulnerabilityDuration;
@@ -98,6 +102,7 @@ class GCWManager extends ManagedService implements Logger {
 		rebelBases = 0;
 		rebelScore = 0;
 		winningFaction = Factions.FACTIONIMPERIAL;
+		winnerDifficultyScaling = 1;
 
 		gcwCheckTimer = 3600;
 		vulnerabilityDuration = 7200;
@@ -371,18 +376,18 @@ class GCWManager extends ManagedService implements Logger {
 	}
 
 	@local
-	private void updateWinningFaction() {
-		if (getRebelScore() > getImperialScore()) {
-			winningFaction = Factions.FACTIONREBEL;
-		} else if (getImperialScore() > getRebelScore()) {
-			winningFaction = Factions.FACTIONIMPERIAL;
-		}
-	}
+	private native void updateWinningFaction();
 
 	@local
 	@read
 	public unsigned int getWinningFaction() {
 		return winningFaction;
+	}
+
+	@local
+	@read
+	public int getWinningFactionDifficultyScaling() {
+		return winnerDifficultyScaling;
 	}
 
 	@local
