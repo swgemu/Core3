@@ -178,12 +178,6 @@ void GCWManagerImplementation::stop() {
 void GCWManagerImplementation::performGCWTasks() {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	if (gcwBaseList.size() == 0) {
-		setRebelBaseCount(0);
-		setImperialBaseCount(0);
-		return;
-	}
-
 	int totalBase = gcwBaseList.size();
 
 	info("Checking " + String::valueOf(totalBase) + " bases", true);
