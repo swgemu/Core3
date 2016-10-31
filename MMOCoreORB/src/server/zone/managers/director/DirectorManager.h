@@ -189,6 +189,7 @@ namespace server {
 		static int removeQuestVectorMap(lua_State* L);
 		static int createQuestVectorMap(lua_State* L);
 		static int createNavMesh(lua_State* L);
+		static int creatureTemplateExists(lua_State* L);
 
 	private:
 		void setupLuaPackagePath(Lua* luaEngine);
