@@ -350,6 +350,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getQuestVectorMap", getQuestVectorMap);
 	lua_register(luaEngine->getLuaState(), "createQuestVectorMap", createQuestVectorMap);
 	lua_register(luaEngine->getLuaState(), "removeQuestVectorMap", removeQuestVectorMap);
+	lua_register(luaEngine->getLuaState(), "creatureTemplateExists", creatureTemplateExists);
 
 	//Navigation Mesh Management
 	lua_register(luaEngine->getLuaState(), "createNavMesh", createNavMesh);
@@ -3252,4 +3253,22 @@ int DirectorManager::createNavMesh(lua_State *L) {
     }, "create_lua_navmesh", 1000);
     lua_pushlightuserdata(L, navmeshRegion);
     return 1;
+}
+
+
+
+int DirectorManager::creatureTemplateExists(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::creatureTemplateExists");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String templateName = lua_tostring(L, -1);
+
+	bool result = CreatureTemplateManager::instance()->getTemplate(templateName) != NULL;
+
+	lua_pushboolean(L, result);
+
+	return 1;
 }
