@@ -13,6 +13,7 @@ import system.lang.Time;
 
 include server.zone.ZoneProcessServer;
 import server.zone.objects.creature.buffs.PowerBoostBuffDurationEvent;
+import server.zone.objects.creature.buffs.ForceWeakenDebuffDurationEvent;
 import server.zone.objects.creature.buffs.Buff;
 include server.zone.objects.creature.buffs.PerformanceBuffType;
 include server.zone.objects.creature.buffs.BuffType;
@@ -20,11 +21,10 @@ include server.zone.objects.creature.buffs.BuffCRC;
 include server.chat.StringIdChatParameter;
 
 class PerformanceBuff extends Buff {
-	
+
 	protected float strength;
 	protected int type;
-	
-	
+
 	public PerformanceBuff(CreatureObject creo, unsigned int buffCRC, float value, int duration, int typeOfBuff) {
 		super(creo, buffCRC, duration, BuffType.PERFORMANCE);
 		strength = value;
@@ -32,12 +32,11 @@ class PerformanceBuff extends Buff {
 	}
 
 	public native void activate(boolean applyModifiers);
-	
+
 	public native float getBuffStrength() {
 		return strength;
 	}
-	
-	public native void deactivate(boolean removeModifiers);
 
+	public native void deactivate(boolean removeModifiers);
 
 }
