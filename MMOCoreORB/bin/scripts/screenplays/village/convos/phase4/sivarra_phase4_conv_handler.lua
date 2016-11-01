@@ -44,7 +44,7 @@ function villageSivarraPhase4ConvoHandler:runScreenHandlers(pConvTemplate, pPlay
 		if healCount == 0 then
 			stringTO = getStringId("@quest/force_sensitive/fs_medic:combat_healing_just_started")
 		else
-			stringTO = getStringId("@quest/force_sensitive/fs_medic:combat_healing_count_part1") + " " + healCount + " " + getStringId("@quest/force_sensitive/fs_medic:combat_healing_count_part2")
+			stringTO = getStringId("@quest/force_sensitive/fs_medic:combat_healing_count_part1") .. " " .. healCount .. " " .. getStringId("@quest/force_sensitive/fs_medic:combat_healing_count_part2")
 		end
 		clonedConversation:setDialogTextTO(stringTO)
 	elseif (screenID == "intro_give_second_set_reward") then
