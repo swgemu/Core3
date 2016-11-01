@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_3987b311",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/city.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-01T02:23:02Z",
+      "side": 1,
+      "message": "Looking at the .stf, not every crackdown_ mob had a _hard version of it (ex. crackdown_at_st). We need to be able to support that case and just spawn the regular crackdown_ version if there is no _hard version.\n\nWe could add a method to DirectorManager to check if a template exists. It could call CreatureTemplateManager::getTemplate() and return the boolean result of a NULL check on it\u0027s return.",
+      "revId": "022834f041f6c8dab3ca105d0115d4720e5842f8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
