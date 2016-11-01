@@ -45,6 +45,7 @@
 #include "server/zone/objects/tangible/LairObject.h"
 #include "server/zone/objects/building/PoiBuilding.h"
 #include "server/zone/objects/intangible/TheaterObject.h"
+#include "server/zone/objects/creature/buffs/ForceWeakenDebuff.h"
 
 Mutex CreatureManagerImplementation::loadMutex;
 
@@ -483,6 +484,81 @@ CreatureObject* CreatureManagerImplementation::createCreature(uint32 templateCRC
 	}
 
 	return creature;
+}
+
+void CreatureManagerImplementation::fixHAMFromDebuff(CreatureObject* creatureTarget) {
+
+	if (creatureTarget == NULL)
+		return;
+
+	Locker locker(creatureTarget);
+
+	try {
+		BuffList* buffs = creatureTarget->getBuffList();
+
+		VectorMap<byte, int> attributeValues;
+		attributeValues.setNullValue(0);
+		attributeValues.setAllowOverwriteInsertPlan();
+
+		ManagedReference<Buff*> forceWeaken;
+
+		//check buffs
+		for (int i = 0; i < buffs->getBuffListSize(); ++i) {
+			ManagedReference<Buff*> buff = buffs->getBuffByIndex(i);
+
+			ForceWeakenDebuff* weaken = dynamic_cast<ForceWeakenDebuff*>(buff.get());
+
+			if (weaken != NULL) {
+				forceWeaken = weaken;
+				continue;
+			}
+
+			VectorMap<byte, int>* attributeModifiers = buff->getAttributeModifiers();
+
+			for (int j = 0; j < attributeModifiers->size(); ++j) {
+				byte modifier = attributeModifiers->elementAt(j).getKey();
+				int val = attributeModifiers->elementAt(j).getValue();
+
+				attributeValues.put(modifier, attributeValues.get(modifier) + val);
+			}
+		}
+
+		if (forceWeaken != NULL) {
+			Locker debuffLocker(forceWeaken);
+
+			creatureTarget->removeBuff(forceWeaken);
+		}
+
+		if (creatureTarget->getEncumbrances() == NULL)
+			return;
+
+		int encumbranceType = -1;
+
+		for (int i = 0; i < 9; ++i) {
+			int maxModifier = attributeValues.get((byte)i);
+			int baseHam = creatureTarget->getBaseHAM(i);
+			int max = creatureTarget->getMaxHAM(i);
+
+			int calculated = baseHam + maxModifier;
+
+			if (i % 3 == 0) {
+				++encumbranceType;
+			} else {
+				calculated -= creatureTarget->getEncumbrance(encumbranceType);
+			}
+
+			//info("attribute: " + CreatureAttribute::getName(i, true) + " max = " + String::valueOf(max) + " calculatedMax = " + String::valueOf(calculated), true);
+
+			if (calculated != max && calculated > 1) {
+				if (creatureTarget->getHAM(i) > calculated)
+					creatureTarget->setHAM(i, calculated, false);
+
+				creatureTarget->setMaxHAM(i, calculated, false);
+			}
+		}
+	} catch (Exception& e) {
+		error(e.getMessage());
+	}
 }
 
 void CreatureManagerImplementation::placeCreature(CreatureObject* creature, float x, float z, float y, uint64 parentID) {

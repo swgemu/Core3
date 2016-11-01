@@ -44,11 +44,14 @@
 ForceKnockdown2Command = {
 	name = "forceknockdown2",
 
-    damageMultiplier = 0,
+	damageMultiplier = 1,
+	minDamage = 10,
+	maxDamage = 15,
 	speed = 4.0,
 	forceCost = 100,
 	visMod = 25,
 	accuracySkillMod = "forceknockdown_accuracy",
+	accuracyBonus = 10,
 	coneAngle = 40,
 	coneAction = true,
 
@@ -68,7 +71,8 @@ ForceKnockdown2Command = {
 
 	combatSpam = "forceknockdown2",
 
-	poolsToDamage = NO_ATTRIBUTE,
+	poolsToDamage = ACTION_ATTRIBUTE,
+	damageType = LIGHTSABER_DAMAGE,
 
 	forceAttack = true,
 

@@ -38,8 +38,6 @@ public:
 
 		int res = doCombatAction(creature, target);
 
-		CombatManager* combatManager = CombatManager::instance();
-
 		if (res == SUCCESS) {
 			Locker clocker(targetCreature, creature);
 
