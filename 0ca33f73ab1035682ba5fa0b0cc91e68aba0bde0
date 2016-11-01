@@ -1,0 +1,301 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_592cf74a",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village_jedi_manager.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-01T01:58:01Z",
+      "side": 1,
+      "message": "These shouldn\u0027t be in an esleif chain. As it is, you\u0027ll only get to this point if the current phase is 1.",
+      "revId": "0ca33f73ab1035682ba5fa0b0cc91e68aba0bde0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_7931bba1",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village_jedi_manager.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-01T01:58:01Z",
+      "side": 1,
+      "message": "and it\u0027ll never get here.",
+      "revId": "0ca33f73ab1035682ba5fa0b0cc91e68aba0bde0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_99f01fcb",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/village/phase4/sarguillo_phase4_conv.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-01T01:58:01Z",
+      "side": 1,
+      "message": "Looks like you removed this screen.",
+      "range": {
+        "startLine": 92,
+        "startChar": 51,
+        "endLine": 92,
+        "endChar": 74
+      },
+      "revId": "0ca33f73ab1035682ba5fa0b0cc91e68aba0bde0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_b9ede3f1",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/village/phase4/sarguillo_phase4_conv.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-01T01:58:01Z",
+      "side": 1,
+      "message": "You also point to it here.",
+      "range": {
+        "startLine": 103,
+        "startChar": 51,
+        "endLine": 103,
+        "endChar": 74
+      },
+      "revId": "0ca33f73ab1035682ba5fa0b0cc91e68aba0bde0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_d9946746",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase4/sivarra_phase4_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-01T01:58:01Z",
+      "side": 1,
+      "message": "This isn\u0027t the right check. You should be checking if they have healing 2 active.",
+      "range": {
+        "startLine": 19,
+        "startChar": 87,
+        "endLine": 19,
+        "endChar": 88
+      },
+      "revId": "0ca33f73ab1035682ba5fa0b0cc91e68aba0bde0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_b99ba371",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase4/sivarra_phase4_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-01T01:58:01Z",
+      "side": 1,
+      "message": "And here you should be checking if they have healing 1 active.",
+      "revId": "0ca33f73ab1035682ba5fa0b0cc91e68aba0bde0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_999edf62",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase4/sivarra_phase4_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-01T01:58:01Z",
+      "side": 1,
+      "message": "I would put this check before the intro_start_second_set check so that they can\u0027t start it if they\u0027ve dropped novice medic.",
+      "revId": "0ca33f73ab1035682ba5fa0b0cc91e68aba0bde0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_d9cd4788",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase4/fs_village_defense.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-01T01:58:01Z",
+      "side": 1,
+      "message": "This will give you a range of 0 - 2, which I don\u0027t think is what you were trying for. To get a range of 0 - 1 you could do the following:\n\nreturn (outlawCount + pirateCount) / (outlawReq + pirateReq)",
+      "revId": "0ca33f73ab1035682ba5fa0b0cc91e68aba0bde0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f9ca8b6d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase4/fs_village_defense.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-01T01:58:01Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "0ca33f73ab1035682ba5fa0b0cc91e68aba0bde0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_39b9f3e9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase4/fs_village_defense.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-01T01:58:01Z",
+      "side": 1,
+      "message": "No reset for sarguillo\u0027s quests?",
+      "revId": "0ca33f73ab1035682ba5fa0b0cc91e68aba0bde0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_d9f8e7c6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3049,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-01T01:58:01Z",
+      "side": 1,
+      "message": "I would move this check to the start of the method.",
+      "range": {
+        "startLine": 3049,
+        "startChar": 24,
+        "endLine": 3049,
+        "endChar": 38
+      },
+      "revId": "0ca33f73ab1035682ba5fa0b0cc91e68aba0bde0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f9f5abcb",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/LuaCreatureObject.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 997,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-01T01:58:01Z",
+      "side": 1,
+      "message": "use the copy",
+      "range": {
+        "startLine": 997,
+        "startChar": 21,
+        "endLine": 997,
+        "endChar": 30
+      },
+      "revId": "0ca33f73ab1035682ba5fa0b0cc91e68aba0bde0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_99025fb3",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/LuaCreatureObject.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1019,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-01T01:58:01Z",
+      "side": 1,
+      "message": "use the copy",
+      "range": {
+        "startLine": 1019,
+        "startChar": 21,
+        "endLine": 1019,
+        "endChar": 30
+      },
+      "revId": "0ca33f73ab1035682ba5fa0b0cc91e68aba0bde0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_19266f69",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/threat/ThreatMapObserverImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-01T01:58:01Z",
+      "side": 1,
+      "message": "I think this would make more sense if we just check entry.getAggroMod() \u003d\u003d 0\n\nThat\u0027s a better indication of if the target is something the mob thinks is a threat or not. That way healing anyone with a positive aggro mod would cause increased aggro to the healer instead of only when healing those who have done damage.\n\nIt could be possible, for example, for a player to taunt a mob therefore adding aggro, but then not do any damage to it. With the current method, anyone healing them would not gain any aggro even though the mob sees them as a threat.\n\nOr, of course, to heal someone that has only done healing. Right now that won\u0027t generate aggro but if they are already considered a threat, healing them should make you also considered a threat.",
+      "revId": "0ca33f73ab1035682ba5fa0b0cc91e68aba0bde0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_391493f4",
+        "filename": "MMOCoreORB/src/templates/params/ObserverEventType.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-01T01:58:01Z",
+      "side": 1,
+      "message": "The new name for the event type was warranted but this comment was accurate as it was.",
+      "range": {
+        "startLine": 43,
+        "startChar": 52,
+        "endLine": 43,
+        "endChar": 64
+      },
+      "revId": "0ca33f73ab1035682ba5fa0b0cc91e68aba0bde0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
