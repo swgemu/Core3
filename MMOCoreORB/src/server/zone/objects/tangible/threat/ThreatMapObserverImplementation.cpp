@@ -20,34 +20,38 @@ int ThreatMapObserverImplementation::notifyObserverEvent(uint32 eventType, Obser
 	if (eventType != ObserverEventType::HEALINGRECEIVED)
 		return 0;
 
-	CreatureObject* healTarget = cast<CreatureObject*>(observable);
+	Reference<CreatureObject*> healTarget = cast<CreatureObject*>(observable);
 
 	if (healTarget == NULL)
 		return 0;
 
-	CreatureObject* healer = cast<CreatureObject*>(arg1);
+	Reference<CreatureObject*> healer = cast<CreatureObject*>(arg1);
 
 	if (healer == NULL)
 		return 0;
 
-	ThreatMap* threatMap = strongRef->getThreatMap();
+	Core::getTaskManager()->executeTask([=]{
+		Locker locker(strongRef);
 
-	if (threatMap != NULL) {
-		int targetIndex = threatMap->find(healTarget);
-		int healerIndex = threatMap->find(healer);
+		ThreatMap* threatMap = strongRef->getThreatMap();
 
-		if (targetIndex >= 0) {
-			ThreatMapEntry& entry = threatMap->get(targetIndex);
+		if (threatMap != NULL) {
+			int targetIndex = threatMap->find(healTarget);
+			int healerIndex = threatMap->find(healer);
 
-			if (entry.getAggroMod() == 0) {
-				return 0;
+			if (targetIndex >= 0) {
+				ThreatMapEntry& entry = threatMap->get(targetIndex);
+
+				if (entry.getAggroMod() == 0) {
+					return;
+				}
+			} else if (healerIndex < 0) {
+				return;
 			}
-		} else if (healerIndex < 0) {
-			return 0;
-		}
 
-		threatMap->addHeal(healer, arg2);
-	}
+			threatMap->addHeal(healer, arg2);
+		}
+	}, "updateThreatMapHeal");
 
 	return 0;
 }
