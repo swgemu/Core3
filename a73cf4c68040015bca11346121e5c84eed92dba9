@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_f99feb4e",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidSkillModTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 2208
+      },
+      "writtenOn": "2016-11-01T03:36:11Z",
+      "side": 1,
+      "message": "There is no guarantee parent is non-null at this point. If the above check fails it\u0027s parent \u003d\u003d NULL check it will hit your case and crash.\n\nUsing a CRC for this will probably not work too well. You\u0027re going to want to look at EntertainingSessionImplementation::isInEntertainingBuilding and combine that with a call to isStaticObject",
+      "range": {
+        "startLine": 44,
+        "startChar": 12,
+        "endLine": 44,
+        "endChar": 93
+      },
+      "revId": "a73cf4c68040015bca11346121e5c84eed92dba9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
