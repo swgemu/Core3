@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bada0100_592b97eb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/city.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-11-01T14:48:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_d9f7878b",
+      "range": {
+        "startLine": 43,
+        "startChar": 23,
+        "endLine": 43,
+        "endChar": 61
+      },
+      "revId": "871878fc4c9aab12ab5ace58913b284d6bc463dc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_99f1ff97",
         "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bada0100_19350f46",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3262,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-11-01T14:48:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_99f1ff97",
+      "range": {
+        "startLine": 3262,
+        "startChar": 78,
+        "endLine": 3262,
+        "endChar": 91
+      },
+      "revId": "871878fc4c9aab12ab5ace58913b284d6bc463dc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_f9f4cb88",
         "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.h",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2016-11-01T11:26:08Z",
       "side": 1,
       "message": "Add an s to the end so it\u0027s name is creatureTemplateExists",
+      "range": {
+        "startLine": 192,
+        "startChar": 13,
+        "endLine": 192,
+        "endChar": 34
+      },
+      "revId": "871878fc4c9aab12ab5ace58913b284d6bc463dc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_7930db56",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-11-01T14:48:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_f9f4cb88",
       "range": {
         "startLine": 192,
         "startChar": 13,
