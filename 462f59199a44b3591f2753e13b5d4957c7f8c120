@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_59bab7e2",
+        "filename": "MMOCoreORB/bin/scripts/managers/gcw_manager.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-11-01T00:57:01Z",
+      "side": 1,
+      "message": "The logic in the GCWManager can handle any number of thresholds here.\n\nThe stfs however does only seem to talk about crackdown_* and crackdown_*_hard so maybe it only was two difficulties?",
+      "range": {
+        "startLine": 50,
+        "startChar": 30,
+        "endLine": 50,
+        "endChar": 40
+      },
+      "revId": "462f59199a44b3591f2753e13b5d4957c7f8c120",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
