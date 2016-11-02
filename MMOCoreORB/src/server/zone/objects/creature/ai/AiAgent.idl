@@ -500,7 +500,7 @@ class AiAgent extends CreatureObject {
 	@preLocked
 	public void destroyObjectFromWorld(boolean sendSelfDestroy) {
 		super.destroyObjectFromWorld(sendSelfDestroy);
-		
+
 		numberOfPlayersInRange.set(0);
 
 		if (moveEvent != null) {
@@ -1146,7 +1146,7 @@ class AiAgent extends CreatureObject {
 	}
 
 	/**
-	 * Pull an AI template from AiMap and set up the tree using the rules from the template. Then 
+	 * Pull an AI template from AiMap and set up the tree using the rules from the template. Then
 	 * store the root behavior in the trees Map.
 	 *
 	 * TODO: Should we store the active (instead of root) node in the trees map? I like that idea -- dannuic
@@ -1278,6 +1278,11 @@ class AiAgent extends CreatureObject {
 	public void setCreatureBitmask(int mask) {
 		creatureBitmask = mask;
 	}
+
+	@preLocked
+	public native void setCreatureBit(unsigned int option);
+	@preLocked
+	public native void clearCreatureBit(unsigned int option);
 
 	@local
 	@dirty
