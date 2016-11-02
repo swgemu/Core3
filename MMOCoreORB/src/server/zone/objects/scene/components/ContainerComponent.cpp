@@ -116,7 +116,7 @@ bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, Crea
 
 	if (permission != ContainerPermissions::MOVECONTAINER && permissions->hasInheritPermissionsFromParent() && parent != NULL && parent != sceneObject) {
 		return parent->checkContainerPermission(creature, permission);
-	} else if (permission == ContainerPermissions::MOVECONTAINER && sceneObject->isStaticObject()) {
+	} else if (permission == ContainerPermissions::MOVECONTAINER && sceneObject->isClientObject()) {
 		return false;
 	}
 

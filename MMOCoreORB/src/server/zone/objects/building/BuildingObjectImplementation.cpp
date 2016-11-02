@@ -767,7 +767,7 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 	notifyObservers(ObserverEventType::ENTEREDBUILDING, player, i);
 
 	//If they are inside, and aren't allowed to be, then kick them out!
-	if (!isStaticObject() && (!isAllowedEntry(player) || isCondemned())) {
+	if (!isClientObject() && (!isAllowedEntry(player) || isCondemned())) {
 		i = 1;
 		ejectObject(player);
 

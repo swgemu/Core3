@@ -30,7 +30,7 @@ bool StructureContainerComponent::checkContainerPermission(SceneObject* sceneObj
 		if (building->isOwnerOf(creature) || building->isOnAdminList(creature))
 			return true;
 
-		if ((permission == ContainerPermissions::OPEN)  && building->isStaticObject())
+		if ((permission == ContainerPermissions::OPEN)  && building->isClientObject())
 			return true;
 
 		if (building->isBuildingObject()) {
