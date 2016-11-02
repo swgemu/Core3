@@ -93,7 +93,8 @@ function VillageJediManagerTownship:switchToNextPhase()
 	VillageJediManagerTownship:createVillageMasterObject()
 
 	if (currentPhase == 3 or currentPhase == 4) then
-		VillageRaids:doPhaseInit()
+		local pMaster = VillageJediManagerTownship:getMasterObject()
+		createEvent(60 * 1000, "VillageRaids", "doPhaseInit", pMaster, "")
 	end
 
 	Logger:log("Switching village phase to " .. currentPhase, LT_INFO)
@@ -109,14 +110,18 @@ end
 function VillageJediManagerTownship:start()
 	if (isZoneEnabled("dathomir")) then
 		Logger:log("Starting the Village Township Screenplay.", LT_INFO)
+
 		local currentPhase = VillageJediManagerTownship.getCurrentPhase()
 		VillageJediManagerTownship.setCurrentPhaseInit()
 		VillageJediManagerTownship:spawnMobiles(currentPhase, true)
 		VillageJediManagerTownship:spawnSceneObjects(currentPhase, true)
 		VillageJediManagerTownship:createVillageMasterObject()
+		
+		createNavMesh("dathomir", 5292, -4119, 210, true, "village_township")
 
 		if (currentPhase == 3 or currentPhase == 4) then
-			VillageRaids:doPhaseInit()
+			local pMaster = VillageJediManagerTownship:getMasterObject()
+			createEvent(60 * 1000, "VillageRaids", "doPhaseInit", pMaster, "")
 		end
 	end
 end
@@ -141,7 +146,7 @@ function VillageJediManagerTownship:destroyVillageMasterObject()
 	end
 
 	SceneObject(pMaster):destroyObjectFromWorld()
-	
+
 	local phaseID = VillageJediManagerTownship.getCurrentPhaseID()
 	deleteData("Village:masterID:" .. phaseID)
 end

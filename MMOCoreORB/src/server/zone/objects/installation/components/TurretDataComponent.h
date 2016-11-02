@@ -23,6 +23,7 @@ protected:
 	SharedInstallationObjectTemplate* templateData;
 	ManagedWeakReference<CreatureObject*> controller;
 	ManagedWeakReference<CreatureObject*> manualTarget;
+	ManagedWeakReference<CreatureObject*> lastAutoTarget;
 	Reference<Task*> turretFireTask;
 	AtomicInteger numberOfPlayersInRange;
 

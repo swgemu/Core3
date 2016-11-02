@@ -66,12 +66,26 @@ Vector<CreatureObject*> TurretDataComponent::getAvailableTargets(bool aggroOnly)
 }
 
 CreatureObject* TurretDataComponent::selectTarget() {
-	Vector<CreatureObject*> targets = getAvailableTargets(true);
+	ManagedReference<SceneObject*> turret = getParent();
 
-	if (targets.size() == 0)
+	if (turret == NULL)
 		return NULL;
 
-	return targets.get(System::random(targets.size() - 1));
+	ManagedReference<CreatureObject*> lastTarget = lastAutoTarget.get();
+
+	bool isVillageTurret = turret->getObjectTemplate()->getFullTemplateString().contains("turret_fs_village");
+
+	if (!isVillageTurret || (lastTarget == NULL || lastTarget->isDead() || lastTarget->isIncapacitated())) {
+		Vector<CreatureObject*> targets = getAvailableTargets(true);
+
+		if (targets.size() == 0)
+			return NULL;
+
+		lastTarget = targets.get(System::random(targets.size() - 1));
+		lastAutoTarget = lastTarget;
+	}
+
+	return lastTarget;
 }
 
 bool TurretDataComponent::checkTarget(CreatureObject* creature, TangibleObject* turret, bool aggroOnly) {
