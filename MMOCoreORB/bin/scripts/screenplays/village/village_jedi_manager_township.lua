@@ -109,6 +109,9 @@ end
 function VillageJediManagerTownship:start()
 	if (isZoneEnabled("dathomir")) then
 		Logger:log("Starting the Village Township Screenplay.", LT_INFO)
+
+		createNavMesh("dathomir", 5292, -4119, 180, true, "village_township")
+
 		local currentPhase = VillageJediManagerTownship.getCurrentPhase()
 		VillageJediManagerTownship.setCurrentPhaseInit()
 		VillageJediManagerTownship:spawnMobiles(currentPhase, true)
@@ -141,7 +144,7 @@ function VillageJediManagerTownship:destroyVillageMasterObject()
 	end
 
 	SceneObject(pMaster):destroyObjectFromWorld()
-	
+
 	local phaseID = VillageJediManagerTownship.getCurrentPhaseID()
 	deleteData("Village:masterID:" .. phaseID)
 end

@@ -60,6 +60,7 @@ VillageRaids = ScreenPlay:new {
 		spawnerPulse = 180 * 1000, -- Time between spawn pulses
 		maxSpawn = 100, -- Max waves of mobiles to spawn over the entire lifetime of the spawner
 		maxPopulation = 2, -- Max mobs to have up at any one time
+		enemyLifespan = 20 * 60 * 1000, -- Time until spawned mobs should be destroyed
 		expireTime = 2500 * 1000, -- Time until spawner should expire
 		aiHandlerFunc = "" -- Name of function that should setup a defender after it's spawned
 	},
@@ -91,6 +92,7 @@ VillageRaids = ScreenPlay:new {
 		spawnerPulse = 20 * 1000, -- Time between spawn pulses
 		maxSpawn = 100, -- Max waves of mobiles to spawn over the entire lifetime of the spawner
 		maxPopulation = 5, -- Max mobs to have up at any one time
+		enemyLifespan = 20 * 60 * 1000, -- Time until spawned mobs should be destroyed
 		expireTime = 2500 * 1000, -- Time until spawner should expire
 		aiHandlerFunc = "setupSpawnedRaider" -- Name of function that should setup a defender after it's spawned
 	},
@@ -108,6 +110,7 @@ VillageRaids = ScreenPlay:new {
 		spawnerPulse = 20 * 1000, -- Time between spawn pulses
 		maxSpawn = 100, -- Max waves of mobiles to spawn over the entire lifetime of the spawner
 		maxPopulation = 10, -- Max mobs to have up at any one time
+		enemyLifespan = 20 * 60 * 1000, -- Time until spawned mobs should be destroyed
 		expireTime = 2500 * 1000, -- Time until spawner should expire
 		aiHandlerFunc = "setupSpawnedRaider" -- Name of function that should setup a defender after it's spawned
 	},
@@ -126,6 +129,7 @@ VillageRaids = ScreenPlay:new {
 		spawnerPulse = 20 * 1000, -- Time between spawn pulses
 		maxSpawn = 100, -- Max waves of mobiles to spawn over the entire lifetime of the spawner
 		maxPopulation = 10, -- Max mobs to have up at any one time
+		enemyLifespan = 20 * 60 * 1000, -- Time until spawned mobs should be destroyed
 		expireTime = 2500 * 1000, -- Time until spawner should expire
 		aiHandlerFunc = "setupSpawnedRaider" -- Name of function that should setup a defender after it's spawned
 	},
@@ -143,6 +147,7 @@ VillageRaids = ScreenPlay:new {
 		spawnerPulse = 20 * 1000, -- Time between spawn pulses
 		maxSpawn = 100, -- Max waves of mobiles to spawn over the entire lifetime of the spawner
 		maxPopulation = 10, -- Max mobs to have up at any one time
+		enemyLifespan = 20 * 60 * 1000, -- Time until spawned mobs should be destroyed
 		expireTime = 2500 * 1000, -- Time until spawner should expire
 		aiHandlerFunc = "setupSpawnedRaider" -- Name of function that should setup a defender after it's spawned
 	},
@@ -161,6 +166,7 @@ VillageRaids = ScreenPlay:new {
 		spawnerPulse = 20 * 1000, -- Time between spawn pulses
 		maxSpawn = 100, -- Max waves of mobiles to spawn over the entire lifetime of the spawner
 		maxPopulation = 10, -- Max mobs to have up at any one time
+		enemyLifespan = 20 * 60 * 1000, -- Time until spawned mobs should be destroyed
 		expireTime = 2500 * 1000, -- Time until spawner should expire
 		aiHandlerFunc = "setupSpawnedRaider" -- Name of function that should setup a defender after it's spawned
 	},
@@ -199,8 +205,89 @@ function VillageRaids:setupSpawnedRaider(pMobile, pSpawner)
 	if (pMobile == nil or pSpawner == nil) then
 		return
 	end
-	
+
+	AiAgent(pMobile):setAiTemplate("manualescort")
+	AiAgent(pMobile):setFollowState(4)
+
 	createObserver(OBJECTDESTRUCTION, "FsVillageDefense", "notifyKilledRaider", pMobile)
+
+	VillageRaids:startAttackerPatrolPath(pMobile)
+	VillageRaids:doAttackerCombatTick(pMobile)
+end
+
+function VillageRaids:doAttackerCombatTick(pMobile)
+	if (pMobile == nil) then
+		return
+	end
+
+	if (not AiAgent(pMobile):isInCombat()) then
+		local pTarget = self:getValidAttackerTarget(pMobile)
+
+		if (pTarget ~= nil) then
+			CreatureObject(pMobile):engageCombat(pTarget)
+		end
+	end
+
+	createEvent(10 * 1000, "VillageRaids", "doAttackerCombatTick", pMobile, "")
+end
+
+function VillageRaids:getValidAttackerTarget(pMobile)
+	if (pMobile == nil) then
+		return nil
+	end
+
+	local targetTable = { }
+
+	local creatureTable = SceneObject(pMobile):getCreaturesInRange(32)
+
+	if (creatureTable == nil) then
+		return nil
+	end
+
+	for i = 1, #creatureTable, 1 do
+		local pTarget = creatureTable[i]
+		if (pTarget ~= nil and CreatureObject(pTarget):isAttackableBy(pMobile)) then
+			return pTarget
+		end
+	end
+
+	return nil
+end
+
+function VillageRaids:startAttackerPatrolPath(pMobile)
+	if (pMobile == nil) then
+		return
+	end
+
+	if (AiAgent(pMobile):isInCombat()) then
+		createEvent(30 * 1000, "VillageRaids", "startAttackerPatrolPath", pMobile "")
+		return
+	end
+
+	local closestVictimLoc = -1
+	local closestVictimDist = -1
+
+	for i = 1, #self.victimSpawnLocs, 1 do
+		local loc = self.victimSpawnLocs[i]
+		local dist = SceneObject(pMobile):getDistanceToPosition(loc[1], loc[2], loc[3])
+
+		if (closestVictimDist == -1 or closestVictimDist > dist) then
+			closestVictimLoc = i
+			closestVictimDist = dist
+		end
+	end
+
+	if (closestVictimLoc == -1) then
+		printf("Error in VillageRaids:startPatrolPath, unable to get closest victim loc.\n")
+		return
+	end
+
+	local locInfo = self.victimSpawnLocs[closestVictimLoc]
+	AiAgent(pMobile):stopWaiting()
+	AiAgent(pMobile):setWait(0)
+	AiAgent(pMobile):setNextPosition(locInfo[1], locInfo[2], locInfo[3], 0)
+	AiAgent(pMobile):setHomeLocation(locInfo[1], locInfo[2], locInfo[3], 0)
+	AiAgent(pMobile):executeBehavior()
 end
 
 function VillageRaids:despawnTurrets()
@@ -248,18 +335,18 @@ function VillageRaids:doEnemySpawnPulse()
 	end
 
 	local usedLocs = { }
-	
+
 	for i = 1,  #self.enemySpawnLocs, 1 do
 		table.insert(usedLocs, false)
 	end
-	
+
 	for i = 1, #spawnWaveData, 1 do
 		local randomLoc = getRandomNumber(1, #self.enemySpawnLocs)
-		
+
 		while usedLocs[randomLoc] == true do
 			randomLoc = getRandomNumber(1, #self.enemySpawnLocs)
 		end
-		
+
 		usedLocs[randomLoc] = true
 		local waveInfo = self[spawnWaveData[i]]
 		local loc = getSpawnPoint("dathomir", self.enemySpawnLocs[randomLoc][1], self.enemySpawnLocs[randomLoc][2], self.enemyData.minDistance, self.enemyData.maxDistance, true)
@@ -277,9 +364,21 @@ function VillageRaids:getPlayersInVillage(pMaster)
 		return
 	end
 
-	local playerTable = SceneObject(pMaster):getPlayersInRange(192)
-	
-	return #playerTable
+	local creatureTable = SceneObject(pMaster):getCreaturesInRange(192)
+
+	if (creatureTable == nil) then
+		return 0
+	end
+
+	local playerCount = 0
+
+	for i = 1, #creatureTable, 1 do
+		if (creatureTable[i] ~= nil and SceneObject(creatureTable[i]):isPlayerCreature()) then
+			playerCount = playerCount + 1
+		end
+	end
+
+	return playerCount
 end
 
 function VillageRaids:spawnVictims(pMaster)
