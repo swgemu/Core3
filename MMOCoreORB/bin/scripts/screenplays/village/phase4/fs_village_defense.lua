@@ -205,8 +205,6 @@ function FsVillageDefense:notifyKilledRaider(pVictim, pKiller)
 		return 1
 	end
 
-	self:checkHealerList(pVictim)
-
 	local attackerList = CreatureObject(pVictim):getDamageDealerList()
 
 	if attackerList == nil or #attackerList == 0 then
@@ -225,6 +223,8 @@ function FsVillageDefense:notifyKilledRaider(pVictim, pKiller)
 	if (mobType == nil) then
 		return 1
 	end
+	
+	self:checkHealerList(pVictim)
 
 	for i = 1, #attackerList, 1 do
 		local pAttacker = attackerList[i]

@@ -25,7 +25,7 @@ function Interrupt:doAwarenessCheck(pAgent, pObject)
 end
 
 function Interrupt:startAwarenessInterrupt(pAgent, pObject)
-	--print("Shouldn't be here either...")
+--print("Shouldn't be here either...")
 end
 
 
@@ -44,93 +44,26 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 	return AiAgent(pAgent):runAwarenessLogicCheck(pObject)
 end
 
-function DefaultInterrupt:checkForReactionChat(pAgent, pObject)
-	local sceneObject = SceneObject1(pObject)
-
-	if not sceneObject:isPlayerCreature() then return end
-
-	local creoObject = CreatureObject1(pObject)
-
-	if not (creoObject:getCurrentSpeed() > 0.5*creoObject:getWalkSpeed()) then return end
-
-	local aiAgent = AiAgent1(pAgent)
-
-	if not aiAgent:hasReactionChatMessages() then return end
-
-	local sceneAgent = SceneObject2(pAgent)
-
-	if sceneObject:getParentID() ~= sceneAgent:getParentID() then return end
-
-	local dist = sceneObject:getDistanceTo(pAgent)
-
-	if dist > 35 or dist < 30 then return end
-
-	local creoAgent = CreatureObject2(pAgent)
-
-	if not creoAgent:checkCooldownRecovery("reaction_chat") then return end
-
-	if not aiAgent:checkLineOfSight(pObject) then return end
-
-	local factionString = aiAgent:getFactionString()
-	local aiFaction = creoAgent:getFaction()
-	local targetFaction = creoObject:getFaction()
-	local state = 0
-
-	if aiFaction ~= 0 then
-		if targetFaction == aiFaction then
-			state = REACTION_NICE
-		elseif targetFaction == 0 then
-			state = REACTION_MID
-		else
-			state = REACTION_MEAN
-		end
-
-	elseif factionString ~= "" then
-		local pGhost = creoObject:getPlayerObject()
-
-		if pGhost ~= nil then
-			local standing = PlayerObject(pGhost):getFactionStanding(factionString)
-			if standing >= 3000 then
-				state = REACTION_NICE
-			elseif standing <= -3000 then
-				state = REACTION_MEAN
-			else
-				state = REACTION_MID
-			end
-		end
-	else
-		state = REACTION_MID
-	end
-
-	sceneAgent:faceObject(pObject, true)
-
-	if sceneObject:isFacingObject(pAgent) then
-		aiAgent:sendReactionChat(REACTION_HI, state)
-	else
-		aiAgent:sendReactionChat(REACTION_BYE, state)
-	end
-end
-
 -- put this in a different function so that the generic checks are re-usable
 function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 	if (pAgent == pObject) then return end
 	if (pAgent == nil or pObject == nil) then return end
-	
+
 	local sceneObject = SceneObject1(pObject)
 
 	if not sceneObject:isCreatureObject() then return false end -- don't aggro TANOs (lairs, turrets, etc)
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("a") end
-	
+
 	local creoAgent = CreatureObject1(pAgent)
 
 	if creoAgent:isDead() or creoAgent:isIncapacitated() then return end
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("b") end
-	
+
 	local creoObject = CreatureObject2(pObject)
-	
+
 	if creoObject:isDead() or creoObject:isIncapacitated() then return end
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("c") end
-	
+
 	local aiAgent = AiAgent1(pAgent)
 
 	if aiAgent:isInCombat() then return end
@@ -186,12 +119,12 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 		--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("5") end
 		-- TODO (dannuic): Not sure about this stuff, needs testing
 		local sceneFollow = SceneObject2(pFollow)
-		
+
 		if sceneFollow:isCreatureObject() then
 			local creoLevel = CreatureObject(pFollow):getLevel()
 			local isBackwardsAggressive = sceneFollow:isAiAgent() and AiAgent(pFollow):isAggressiveTo(pAgent)
- 
- 			-- TODO (dannuic): Add in run away logic for nearby combat
+
+			-- TODO (dannuic): Add in run away logic for nearby combat
 			if aiAgent:isCreature() and creoAgent:getLevel()*mod < creoLevel and (isBackwardsAggressive or sceneFollow:isPlayerCreature()) and creoObject:getCurrentSpeed() > 2*creoObject:getWalkSpeed() and sceneObject:isFacingObject(pAgent) then
 				--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("run!") end
 				if aiAgent:checkLineOfSight(pObject) then
@@ -294,4 +227,66 @@ function FactionPetInterrupt:startCombatInterrupt(pAgent, pObject)
 	agent:setBehaviorStatus(BEHAVIOR_SUSPEND)
 	agent:resetBehaviorList()
 	agent:executeBehavior()
+end
+
+
+VillageRaiderInterrupt = createClass(DefaultInterrupt)
+function VillageRaiderInterrupt:startAwarenessInterrupt(pAgent, pObject)
+	if (pAgent == pObject) then return end
+	if (pAgent == nil or pObject == nil) then return end
+
+	local sceneObject = SceneObject1(pObject)
+
+	if not sceneObject:isCreatureObject() then return false end -- don't aggro TANOs (lairs, turrets, etc)
+
+	local creoAgent = CreatureObject1(pAgent)
+
+	if creoAgent:isDead() or creoAgent:isIncapacitated() then return end
+
+	local creoObject = CreatureObject2(pObject)
+
+	if creoObject:isDead() or creoObject:isIncapacitated() then return end
+
+	local aiAgent = AiAgent1(pAgent)
+
+	if aiAgent:isInCombat() then return end
+
+	local inRange = sceneObject:isInRangeWithObject(pAgent, 32)
+
+	if inRange and aiAgent:checkLineOfSight(pObject) then aiAgent:addDefender(pObject) end
+
+	aiAgent:stopWaiting();
+	aiAgent:executeBehavior();
+end
+
+function VillageRaiderInterrupt:doAwarenessCheck(pAgent, pObject)
+	if (pAgent == pObject) then return false end
+	if (pAgent == nil or pObject == nil) then return false end
+
+	local tanoAgent = TangibleObject1(pAgent)
+	local creoAgent = CreatureObject1(pAgent)
+
+	if tanoAgent:getPvpStatusBitmask() == NONE or creoAgent:isDead() or creoAgent:isIncapacitated() then return false end
+
+	local aiAgent = AiAgent1(pAgent)
+
+	if aiAgent:isRetreating() or aiAgent:isInCombat() then return false end
+
+	local sceneObject = SceneObject1(pObject)
+
+	if not sceneObject:isCreatureObject() then return false end
+
+	local creoObject = CreatureObject2(pObject)
+
+	if creoObject:isInvisible() then return false end
+
+	if not sceneObject:isInRangeWithObject(pAgent, 32) then return false end
+
+	local tanoObject = TangibleObject2(pObject)
+
+	if tanoObject:getPvpStatusBitmask() == NONE or creoObject:isDead() or creoObject:isIncapacitated() then return false end
+
+	if not aiAgent:isAttackableBy(pObject) or not creoObject:isAttackableBy(pAgent) then return false end
+
+	return true
 end
