@@ -134,6 +134,8 @@ namespace ai {
 		int setNoAiAggro(lua_State* L);
 		int doDespawn(lua_State* L);
 		int getCreatureTemplateName(lua_State* L);
+		int getCreatureBitmask(lua_State* L);
+		int setCreatureBitmask(lua_State* L);
 	private:
 		AiAgent* realObject;
 	};

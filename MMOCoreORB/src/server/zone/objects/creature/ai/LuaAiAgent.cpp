@@ -140,6 +140,8 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "setNoAiAggro", &LuaAiAgent::setNoAiAggro },
 		{ "doDespawn", &LuaAiAgent::doDespawn },
 		{ "getCreatureTemplateName", &LuaAiAgent::getCreatureTemplateName },
+		{ "getCreatureBitmask", &LuaAiAgent::getCreatureBitmask },
+		{ "setCreatureBitmask", &LuaAiAgent::setCreatureBitmask },
 		{ 0, 0 }
 };
 
@@ -927,7 +929,7 @@ int LuaAiAgent::setLastCommandTarget(lua_State* L) {
 	ManagedReference<PetControlDevice*> controlDevice = realObject->getControlDevice().castTo<PetControlDevice*>();
 	if (controlDevice == NULL)
 		return 0;
-  
+
   	Locker locker(controlDevice);
 
 	controlDevice->setLastCommandTarget(obj);
@@ -1049,4 +1051,14 @@ int LuaAiAgent::getCreatureTemplateName(lua_State* L) {
 
 	lua_pushstring(L, creoTemplName.toCharArray());
 	return 1;
+}
+
+int LuaAiAgent::getCreatureBitmask(lua_State* L) {
+	lua_pushinteger(L, realObject->getCreatureBitmask());
+	return 1;
+}
+
+int LuaAiAgent::setCreatureBitmask(lua_State* L) {
+	realObject->setCreatureBitmask(lua_tointeger(L, -1));
+	return 0;
 }
