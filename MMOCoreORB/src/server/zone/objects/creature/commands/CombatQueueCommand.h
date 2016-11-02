@@ -113,7 +113,6 @@ public:
 		animation = "";
 		animType = GENERATE_NONE;
 
-
 		forceAttack = false;
 		trails = CombatManager::DEFAULTTRAIL;
 
@@ -661,6 +660,7 @@ public:
 			defender->setDizziedState(duration);
 			break;
 		case CommandEffect::INTIMIDATE:
+		case CommandEffect::FORCEINTIM:
 			defender->setIntimidatedState(duration);
 			break;
 		case CommandEffect::STUN:
