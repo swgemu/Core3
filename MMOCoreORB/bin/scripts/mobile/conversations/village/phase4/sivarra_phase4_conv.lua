@@ -103,7 +103,7 @@ villageSivarraPhase4ConvoTemplate:addScreen(choose_certain);
 
 choose_uncertain = ConvoScreen:new {
   id = "choose_uncertain",
-  leftDialog = "@conversation/fs_combat_healing_quest:s_1a9b1371", -- "I see, I see... I was hoping you would be made of sterner stuff, but I guess not."
+  leftDialog = "@conversation/fs_combat_healing_quest:s_8c663fab", -- "I see, I see... I was hoping you would be made of sterner stuff, but I guess not."
   stopConversation = "true",
   options = {}
 }

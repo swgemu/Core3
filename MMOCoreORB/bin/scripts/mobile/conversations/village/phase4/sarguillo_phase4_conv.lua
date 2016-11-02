@@ -15,7 +15,7 @@ villageSarguilloPhase4ConvoTemplate:addScreen(intro_has_otherquest);
 
 quest_in_progress = ConvoScreen:new {
 	id = "quest_in_progress",
-	leftDialog = "@conversation/defend_the_village:s_212d92b3", -- "I know you've been working on that problem of ours...you know, with the mercs and the pirates? But I'm going to need you to work a little harder. Now get back out there soldier!"
+	leftDialog = "@conversation/defend_the_village:s_c9be571d", -- "I know you've been working on that problem of ours...you know, with the mercs and the pirates? But I'm going to need you to work a little harder. Now get back out there soldier!"
 	stopConversation = "true",
 	options = {}
 }
