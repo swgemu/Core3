@@ -13,6 +13,7 @@ import server.zone.objects.building.BuildingObject;
 import server.zone.objects.installation.InstallationObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.PlayerObject;
+import server.zone.objects.creature.ai.AiAgent;
 import system.thread.Mutex;
 import server.zone.objects.tangible.deed.structure.StructureDeed;
 import server.zone.objects.tangible.deed.Deed;
@@ -244,6 +245,8 @@ class GCWManager extends ManagedService implements Logger {
 	private native void generateTurretControlBoxTo(CreatureObject creature, TangibleObject turret, SceneObject terminal);
 
 	public native float getGCWDiscount(CreatureObject creature);
+
+	public native void runCrackdownScan(AiAgent scanner, CreatureObject player);
 
 	@dirty
 	public native int isStrongholdCity(string city);

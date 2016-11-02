@@ -23,7 +23,7 @@ crackdown_comm_operator = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK,
+	creatureBitmask = PACK + SCANNING_FOR_CONTRABAND,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 

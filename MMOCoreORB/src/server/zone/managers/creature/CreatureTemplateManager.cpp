@@ -64,6 +64,13 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 	lua->setGlobalInt("BABY", CreatureFlag::BABY);
 	lua->setGlobalInt("LAIR", CreatureFlag::LAIR);
 	lua->setGlobalInt("HEALER", CreatureFlag::HEALER);
+	lua->setGlobalInt("STATIC", CreatureFlag::STATIC);
+	lua->setGlobalInt("PET", CreatureFlag::PET);
+	lua->setGlobalInt("DROID_PET", CreatureFlag::DROID_PET);
+	lua->setGlobalInt("FACTION_PET", CreatureFlag::FACTION_PET);
+	lua->setGlobalInt("WANDER", CreatureFlag::WANDER);
+	lua->setGlobalInt("NOAIAGGRO", CreatureFlag::NOAIAGGRO);
+	lua->setGlobalInt("SCANNING_FOR_CONTRABAND", CreatureFlag::SCANNING_FOR_CONTRABAND);
 
 	lua->setGlobalInt("CARNIVORE", CreatureFlag::CARNIVORE);
 	lua->setGlobalInt("HERBIVORE", CreatureFlag::HERBIVORE);
