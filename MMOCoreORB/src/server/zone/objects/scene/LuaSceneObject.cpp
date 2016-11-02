@@ -85,7 +85,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getChildObject", &LuaSceneObject::getChildObject },
 		{ "getContainerOwnerID", &LuaSceneObject::getContainerOwnerID },
 		{ "info", &LuaSceneObject::info },
-		{ "getPlayersInRange", &LuaSceneObject::getPlayersInRange },
+		{ "getCreaturesInRange", &LuaSceneObject::getCreaturesInRange },
 		{ 0, 0 }
 
 };
@@ -784,7 +784,7 @@ int LuaSceneObject::info(lua_State* L) {
 	return 0;
 }
 
-int LuaSceneObject::getPlayersInRange(lua_State *L) {
+int LuaSceneObject::getCreaturesInRange(lua_State *L) {
 	int range = lua_tonumber(L, -1);
 
 	Zone* thisZone = realObject->getZone();
@@ -798,17 +798,17 @@ int LuaSceneObject::getPlayersInRange(lua_State *L) {
 
 	Reference<SortedVector<ManagedReference<QuadTreeEntry*> >*> closeObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
 	thisZone->getInRangeObjects(realObject->getWorldPositionX(), realObject->getWorldPositionY(), range, closeObjects, true);
-	int numPlayers = 0;
+	int numCreatures = 0;
 
 	for (int i = 0; i < closeObjects->size(); ++i) {
 		SceneObject* object = cast<SceneObject*>(closeObjects->get(i).get());
 
-		if (object == NULL ||!object->isPlayerCreature())
+		if (object == NULL ||!object->isCreatureObject())
 			continue;
 
-		numPlayers++;
+		numCreatures++;
 		lua_pushlightuserdata(L, object);
-		lua_rawseti(L, -2, numPlayers);
+		lua_rawseti(L, -2, numCreatures);
 	}
 
 	return 1;

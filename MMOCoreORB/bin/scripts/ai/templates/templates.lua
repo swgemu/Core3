@@ -13,6 +13,7 @@ includeAiFile("templates/combatmovesimple.lua")
 includeAiFile("templates/gettargetpet.lua")
 includeAiFile("templates/selectattackpet.lua")
 includeAiFile("templates/combatmovepet.lua")
+includeAiFile("templates/villageraider.lua")
 
 getTarget = {
 	{CREATURE_PET, "gettargetpetc"},
@@ -99,3 +100,11 @@ addAiBehavior("CombatMoveFactionPet")
 addAiBehavior("GetTargetFactionPet")
 addAiBehavior("SelectAttackFactionPet")
 addAiBehavior("SelectWeaponFactionPet")
+
+addAiBehavior("CompositeVillageRaider")
+addAiBehavior("WaitVillageRaider")
+addAiBehavior("MoveVillageRaider")
+addAiBehavior("CombatMoveVillageRaider")
+addAiBehavior("GetTargetVillageRaider")
+addAiBehavior("SelectAttackVillageRaider")
+addAiBehavior("SelectWeaponVillageRaider")
