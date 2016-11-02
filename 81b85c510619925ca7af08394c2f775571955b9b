@@ -88,6 +88,30 @@
     },
     {
       "key": {
+        "uuid": "bada0100_79653b44",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 1818,
+      "author": {
+        "id": 1809
+      },
+      "writtenOn": "2016-11-02T10:36:34Z",
+      "side": 1,
+      "message": "Ivojedi: if/when you read this, Loshult \u0026 I were wondering if moving all of this stuff into CombatManager.cpp  would be the best way to go or if it\u0027s fine the way i\u0027ve done it here?  Talk to Loshult and/or me in IRC if u want (whenever) .",
+      "parentUuid": "bada0100_96da2c16",
+      "range": {
+        "startLine": 1818,
+        "startChar": 16,
+        "endLine": 1818,
+        "endChar": 32
+      },
+      "revId": "81b85c510619925ca7af08394c2f775571955b9b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_56dda413",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
         "patchSetId": 2
@@ -99,6 +123,30 @@
       "writtenOn": "2016-10-28T14:30:23Z",
       "side": 1,
       "message": "These magic numbers should probably get a constant instead to make the code a bit simpler to read, like getClientObjectCRC() \u003d\u003d DARK_TROOPER || etc.",
+      "range": {
+        "startLine": 1820,
+        "startChar": 33,
+        "endLine": 1820,
+        "endChar": 43
+      },
+      "revId": "81b85c510619925ca7af08394c2f775571955b9b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_195aef83",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 1820,
+      "author": {
+        "id": 1809
+      },
+      "writtenOn": "2016-11-02T10:36:34Z",
+      "side": 1,
+      "message": "Loshult: i\u0027m not sure i know exactly how to go about doing that here properly, but i guess it also depends upon what Ivo says in my above comment anyway.",
+      "parentUuid": "bada0100_56dda413",
       "range": {
         "startLine": 1820,
         "startChar": 33,
