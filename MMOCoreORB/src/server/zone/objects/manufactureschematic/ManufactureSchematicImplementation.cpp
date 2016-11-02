@@ -51,7 +51,7 @@ void ManufactureSchematicImplementation::fillAttributeList(AttributeListMessage*
 }
 
 void ManufactureSchematicImplementation::sendTo(SceneObject* player, bool doClose) {
-	if (isStaticObject())
+	if (isClientObject())
 		return;
 
 

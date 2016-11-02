@@ -1802,15 +1802,13 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dirty
 	public abstract native unsigned int getPlanetCRC();
 
-
-	// TODO: Change this to isClientObject
 	@read
-	public boolean isStaticObject() {
+	public boolean isClientObject() {
 		return staticObject;
 	}
 
 	@dirty
-	public abstract boolean isStaticObjectClass() {
+	public abstract boolean isStaticObjectClass() { // TODO: Change this to only be isStaticObject
 	    return false;
 	}
 

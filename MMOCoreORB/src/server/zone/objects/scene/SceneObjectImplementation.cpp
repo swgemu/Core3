@@ -300,7 +300,7 @@ void SceneObjectImplementation::sendWithoutParentTo(SceneObject* player) {
 }
 
 void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
-	if (isStaticObject() || !sendToClient || player->getClient() == NULL)
+	if (isClientObject() || !sendToClient || player->getClient() == NULL)
 		return;
 
 	/*StringBuffer msgInfo;
@@ -332,7 +332,7 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 }
 
 void SceneObjectImplementation::sendWithoutContainerObjectsTo(SceneObject* player) {
-	if (isStaticObject() || !sendToClient)
+	if (isClientObject() || !sendToClient)
 		return;
 
 	BaseMessage* msg = new SceneObjectCreateMessage(asSceneObject());
@@ -1209,7 +1209,7 @@ void SceneObjectImplementation::createChildObjects() {
 		return;
 
 	ZoneServer* zoneServer = getZone()->getZoneServer();
-	bool client = isStaticObject();
+	bool client = isClientObject();
 
 	for (int i = 0; i < templateObject->getChildObjectsSize(); ++i) {
 		ChildObject* child = templateObject->getChildObject(i);

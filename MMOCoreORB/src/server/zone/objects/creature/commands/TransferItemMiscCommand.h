@@ -56,7 +56,7 @@ public:
 			return GENERALERROR;
 		}
 
-		if (objectToTransfer->isStaticObject() || (!objectToTransfer->isTangibleObject())){
+		if (objectToTransfer->isClientObject() || (!objectToTransfer->isTangibleObject())){
 			if (!objectToTransfer->isManufactureSchematic()){
 				return GENERALERROR;
 			}
