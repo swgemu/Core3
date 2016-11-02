@@ -261,8 +261,6 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 
 	}
 
-
-
 	if (damage > 0 && tano->isAiAgent()) {
 		AiAgent* aiAgent = cast<AiAgent*>(tano);
 		bool help = false;
@@ -312,8 +310,6 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		data.getCommand()->sendAttackCombatSpam(attacker, defender, hitVal, damage, data);
 	}
 
-
-
 	switch (hitVal) {
 	case MISS:
 		doMiss(attacker, weapon, defender, damage);
@@ -344,8 +340,6 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 
 	// Apply states first
 	applyStates(attacker, defender, data);
-
-
 
 	//if it's a state only attack (intimidate, warcry, wookiee roar) don't apply dots or break combat delays
 	if (!data.isStateOnlyAttack()) {
@@ -1693,6 +1687,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 	for (int i = 0; i < stateEffects->size(); i++) {
 		const StateEffect& effect = stateEffects->get(i);
 		bool failed = false;
+		bool immune = false;
 		uint8 effectType = effect.getEffectType();
 
 		float accuracyMod = effect.getStateChance() + stateAccuracyBonus;
@@ -1700,14 +1695,17 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 			accuracyMod += creature->getSkillMod(data.getCommand()->getAccuracySkillMod());
 
 		//Check for state immunity.
-		if (targetCreature->hasEffectImmunity(effectType))
+		if (targetCreature->hasEffectImmunity(effectType)) {
 			failed = true;
+			immune = true;
+		}
 
 		if(!failed) {
 			const Vector<String>& exclusionTimers = effect.getDefenderExclusionTimers();
 			// loop through any exclusion timers
 			for (int j = 0; j < exclusionTimers.size(); j++)
-				if (!targetCreature->checkCooldownRecovery(exclusionTimers.get(j))) failed = true;
+				if (!targetCreature->checkCooldownRecovery(exclusionTimers.get(j)))
+					failed = true;
 		}
 
 		float targetDefense = 0.f;
@@ -1744,7 +1742,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 
 		if (!failed) {
 			if (effectType == CommandEffect::NEXTATTACKDELAY) {
-				StringIdChatParameter stringId("combat_effects", "delay_applied_other");
+				StringIdChatParameter stringId("combat_effects", "delay_applied_other"); // You delay %TT for %DI seconds.
 				stringId.setTT(targetCreature->getObjectID());
 				stringId.setDI(effect.getStateLength());
 				creature->sendSystemMessage(stringId);
@@ -1759,23 +1757,32 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 			case CommandEffect::KNOCKDOWN:
 				if (!targetCreature->checkKnockdownRecovery() && targetCreature->getPosture() != CreaturePosture::UPRIGHT)
 					targetCreature->setPosture(CreaturePosture::UPRIGHT);
-				creature->sendSystemMessage("@cbt_spam:knockdown_fail");
+				creature->sendSystemMessage("@cbt_spam:knockdown_fail"); // "Your attack failed to knock down your target."
 				break;
 			case CommandEffect::POSTUREDOWN:
 				if (!targetCreature->checkPostureDownRecovery() && targetCreature->getPosture() != CreaturePosture::UPRIGHT)
 					targetCreature->setPosture(CreaturePosture::UPRIGHT);
-				creature->sendSystemMessage("@cbt_spam:posture_change_fail");
+				creature->sendSystemMessage("@cbt_spam:posture_change_fail"); // "Your attack failed to change your target's posture."
 				break;
 			case CommandEffect::POSTUREUP:
 				if (!targetCreature->checkPostureUpRecovery() && targetCreature->getPosture() != CreaturePosture::UPRIGHT)
 					targetCreature->setPosture(CreaturePosture::UPRIGHT);
-				creature->sendSystemMessage("@cbt_spam:posture_change_fail");
+				creature->sendSystemMessage("@cbt_spam:posture_change_fail"); // "Your attack failed to change your target's posture."
 				break;
 			case CommandEffect::NEXTATTACKDELAY:
-				targetCreature->showFlyText("combat_effects", "warcry_miss", 0xFF, 0, 0 );
+				targetCreature->showFlyText("combat_effects", "warcry_miss", 0xFF, 0, 0 ); // *Warcry Failed*
+				if (immune)
+					creature->sendSystemMessage("@combat_effects:immune_to_effect");// "The Target is immune to such an effect."
 				break;
 			case CommandEffect::INTIMIDATE:
-				targetCreature->showFlyText("combat_effects", "intimidated_miss", 0xFF, 0, 0 );
+				targetCreature->showFlyText("combat_effects", "intimidated_miss", 0xFF, 0, 0 ); // *Intimidate Failed*
+				if (immune)
+					creature->sendSystemMessage("@combat_effects:immune_to_effect");// "The Target is immune to such an effect."
+				break;
+			case CommandEffect::FORCEINTIM:
+				targetCreature->showFlyText("combat_effects", "intimidated_miss", 0xFF, 0, 0 ); // *Intimidate Failed*
+				if (immune)
+					creature->sendSystemMessage("@combat_effects:immune_to_effect");// "The Target is immune to such an effect."
 				break;
 			default:
 				break;
