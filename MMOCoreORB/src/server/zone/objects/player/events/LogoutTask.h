@@ -25,13 +25,10 @@ public:
 		creature = cr;
 		timeLeft = 30; // 30 seconds with messages in 5 second intervals
 
-		// TODO: Do we need to do player->setLoggingOut() here or just before the actual logout?
-		// TODO: Doesn't seem to be a way to clearLoggingOut so seems to be a very final act on the object!
-
 		StringIdChatParameter stringId("logout", "time_left");
 		stringId.setDI(30);
 
-		creature->sendSystemMessage(stringId); // You have %DI seconds left until you may log out safely.
+		creature->sendSystemMessage(stringId); // "You have %DI seconds left until you may log out safely."
 	}
 
 	void cancelLogout() {
@@ -41,7 +38,7 @@ public:
 			cancel();
 
 		StringIdChatParameter abortMsg("logout", "aborted");
-		creature->sendSystemMessage(abortMsg); // Your attempt to log out safely has been aborted.
+		creature->sendSystemMessage(abortMsg); // "Your attempt to log out safely has been aborted."
 	}
 
 	void run() {
@@ -50,8 +47,7 @@ public:
 		PlayerObject* player = creature->getPlayerObject();
 
 		try {
-			// TODO: Research do things like bleeding, poison etc stop a /logout ??
-			if (creature->isBleeding() || creature->isPoisoned() || creature->isDiseased()) {
+			if (creature->isBleeding() || creature->isPoisoned() || creature->isDiseased() || creature->isOnFire()) {
 				cancelLogout();
 				return;
 			}
@@ -64,23 +60,22 @@ public:
 				player->setLoggingOut();
 
 				StringIdChatParameter safeMsg("logout", "safe_to_log_out");
-				creature->sendSystemMessage(safeMsg); // You may now log out safely.
+				creature->sendSystemMessage(safeMsg); // "You may now log out safely."
 
 				creature->removePendingTask("logout");
 
 				// Send the client the Logout Packet
 				creature->sendMessage(new LogoutMessage());
 
-				player->info(creature->getFirstName() + " Loggedout");
+				player->info(creature->getFirstName() + " Logged out");
 
 				return;
 			}
-
 			// Let them know how much time they have left before they log out...
 			StringIdChatParameter timeLeftMsg("logout", "time_left");
 			timeLeftMsg.setDI(timeLeft);
 
-			creature->sendSystemMessage(timeLeftMsg); // You have %DI seconds left until you may log out safely.
+			creature->sendSystemMessage(timeLeftMsg); // "You have %DI seconds left until you may log out safely."
 
 			// run() again in 5 seconds
 			reschedule(5000);

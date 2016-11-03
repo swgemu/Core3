@@ -1247,8 +1247,6 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 	threatMap->removeAll();
 }
 
-
-
 bool PlayerManagerImplementation::checkEncumbrancies(CreatureObject* player, ArmorObject* armor) {
 	int strength = player->getHAM(CreatureAttribute::STRENGTH);
 	int constitution = player->getHAM(CreatureAttribute::CONSTITUTION);
@@ -1322,7 +1320,6 @@ bool PlayerManagerImplementation::checkEncumbrancies(CreatureObject* player, Arm
 	else
 		return true;
 }
-
 
 void PlayerManagerImplementation::applyEncumbrancies(CreatureObject* player, ArmorObject* armor) {
 	int healthEncumb = MAX(0, armor->getHealthEncumbrance());
@@ -3903,8 +3900,10 @@ void PlayerManagerImplementation::proposeUnity( CreatureObject* askingPlayer, Cr
 		return;
 	}
 
-	// TODO: Check facing
-	// askingPlayer->sendSystemMessage("@unity:bad_facing");// "You must be facing your target to properly propose!"
+	if (!askingPlayer->isFacingObject(respondingPlayer)) {
+		askingPlayer->sendSystemMessage("@unity:bad_facing"); // "You must be facing your target to properly propose!"
+		return;
+	}
 
 	// Check if asking player has a proposal outstanding
 	if( askingPlayer->getActiveSession(SessionFacadeType::PROPOSEUNITY) != NULL ){
@@ -5010,6 +5009,7 @@ void PlayerManagerImplementation::sendAdminJediList(CreatureObject* player) {
 	player->getPlayerObject()->addSuiBox(listBox);
 	player->sendMessage(listBox->generateMessage());
 }
+
 
 // FRS List
 void PlayerManagerImplementation::sendAdminFRSList(CreatureObject* player) {

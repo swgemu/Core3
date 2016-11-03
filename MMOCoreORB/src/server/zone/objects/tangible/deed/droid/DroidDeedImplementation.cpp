@@ -74,7 +74,6 @@ void DroidDeedImplementation::onCloneObject(SceneObject* objectToClone) {
 void DroidDeedImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	DeedImplementation::fillAttributeList(alm, object);
 
-	// @TODO Add attributes
 	// Deed needs to show a few important bits
 	// 1.) HAM
 	int maxHam = DroidMechanics::determineHam(overallQuality,species);
@@ -222,7 +221,7 @@ void DroidDeedImplementation::updateCraftingValues(CraftingValues* values, bool 
 						for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {
 							ManagedReference<SceneObject*> sceno = satchel->getContainerObject(i);
 							if (sceno != NULL) {
-								// now we have the componet used in this socket item
+								// now we have the component used in this socket item
 								ManagedReference<DroidComponent*> sub = cast<DroidComponent*>( sceno.get());
 								if (sub != NULL) {
 									DataObjectComponentReference* data = sub->getDataObjectComponent();
@@ -355,7 +354,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 			}
 		}
 		
-		// this will change to use stacked modules. we wont care about non droid modules as they arent needed.
+		// this will change to use stacked modules. we wont care about non droid modules as they aren't needed.
 		ManagedReference<SceneObject*> craftingComponentsSatchel = droid->getCraftedComponentsSatchel();
 		
 		String key;
@@ -413,7 +412,6 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		}
 
 		datapad->broadcastObject(controlDevice, true);
-
 		controlDevice->callObject(player);
 
 		//Remove the deed from its container.

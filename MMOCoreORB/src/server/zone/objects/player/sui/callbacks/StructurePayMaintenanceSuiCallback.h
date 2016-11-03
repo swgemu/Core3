@@ -2,7 +2,7 @@
  * StructurePayMaintenanceSuiCallback.h
  *
  *  Created on: Aug 16, 2011
- *      Author: crush
+ *      Author: cRush
  */
 
 #ifndef STRUCTUREPAYMAINTENANCESUICALLBACK_H_
@@ -12,7 +12,6 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/managers/structure/StructureManager.h"
-
 
 class StructurePayMaintenanceSuiCallback : public SuiCallback {
 public:
@@ -32,8 +31,10 @@ public:
 
 		ManagedReference<SceneObject*> obj = sui->getUsingObject();
 
-		if (obj == NULL || !obj->isStructureObject())
-			return; //TODO: What message should be shown here?
+		if (obj == NULL || !obj->isStructureObject()) {
+			creature->sendSystemMessage("@player_structure:changed_target"); // "Your current target is not the same as your original target. Aborting..."
+			return;
+		}
 
 		//Deposit/Withdraw the maintenance
 		StructureObject* structure = cast<StructureObject*>(obj.get());

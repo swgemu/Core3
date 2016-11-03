@@ -393,8 +393,8 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 	if (serverTemplate == NULL) {
 		info("server template is null");
 		return NULL;
-
 	}
+
 	float z = zone->getHeight(x, y);
 
 	float floraRadius = serverTemplate->getClearFloraRadius();
@@ -491,61 +491,7 @@ int StructureManager::destroyStructure(StructureObject* structureObject) {
 	task->execute();
 
 	return 0;
-	/*ManagedReference<Zone*> zone = structureObject->getZone();
 
-	if (zone == NULL)
-		return 0;
-
-	float x = structureObject->getPositionX();
-	float y = structureObject->getPositionY();
-	float z = zone->getHeight(x, y);
-
-	if (structureObject->isBuildingObject()) {
-		ManagedReference<BuildingObject*> buildingObject =
-				cast<BuildingObject*>(structureObject);
-
-		for (uint32 i = 1; i <= buildingObject->getTotalCellNumber(); ++i) {
-			ManagedReference<CellObject*> cellObject = buildingObject->getCell(
-					i);
-
-			int childObjects = cellObject->getContainerObjectsSize();
-
-			if (cellObject == NULL || childObjects <= 0)
-				continue;
-
-			//Traverse the vector backwards since the size will change as objects are removed.
-			for (int j = childObjects - 1; j >= 0; --j) {
-				ManagedReference<SceneObject*> obj =
-						cellObject->getContainerObject(j);
-
-				if (obj->isPlayerCreature()) {
-					CreatureObject* playerCreature =
-							cast<CreatureObject*>(obj.get());
-
-					playerCreature->teleport(x, z, y, 0);
-				}
-			}
-		}
-
-	}
-
-	//Get the owner of the structure, and remove the structure from their possession.
-	ManagedReference<SceneObject*> owner = zone->getZoneServer()->getObject(
-			structureObject->getOwnerObjectID());
-
-	if (owner != NULL) {
-		ManagedReference<SceneObject*> ghost = owner->getSlottedObject("ghost");
-
-		if (ghost != NULL && ghost->isPlayerObject()) {
-			PlayerObject* playerObject = cast<PlayerObject*>(ghost.get());
-			playerObject->removeOwnedStructure(structureObject);
-		}
-	}
-
-	structureObject->destroyObjectFromWorld(true);
-	structureObject->destroyObjectFromDatabase(true);
-	structureObject->notifyObservers(ObserverEventType::OBJECTDESTRUCTION, structureObject, 0);
-	return 0;*/
 }
 
 String StructureManager::getTimeString(uint32 timestamp) {
@@ -1079,13 +1025,13 @@ void StructureManager::promptPayUncondemnMaintenance(CreatureObject* creature,
 		sui = new SuiMessageBox(creature,
 				SuiWindowType::STRUCTURE_UNCONDEMN_CONFIRM);
 		if (sui == NULL) {
-			//TODO: what message should be shown here?
+			creature->sendSystemMessage("@player_structure:invalid_target"); // "Your original structure target is no longer valid. Aborting..."
 			return;
 		}
 
 		//TODO: investigate sui packets to see if it is possible to send StringIdChatParameter directly.
 		String textStringId =
-				"@player_structure:structure_condemned_owner_has_credits";
+				"@player_structure:structure_condemned_owner_has_credits"; // "	This structure has been condemned by the order of the Empire. You are not permitted to enter unless you pay %DI in maintenance costs. This will be automatically deducted from your bank account. Click Okay to confirm this transfer and regain access to this structure."
 		text =
 				StringIdManager::instance()->getStringId(
 						textStringId.hashCode()).toString();
@@ -1098,13 +1044,13 @@ void StructureManager::promptPayUncondemnMaintenance(CreatureObject* creature,
 		//Owner cannot un-condemn the structure.
 		sui = new SuiMessageBox(creature, SuiWindowType::NONE);
 		if (sui == NULL) {
-			//TODO: what message should be shown here?
+			creature->sendSystemMessage("@player_structure:invalid_target"); // "Your original structure target is no longer valid. Aborting..."
 			return;
 		}
 
 		//TODO: investigate sui packets to see if it is possible to send StringIdChatParameter directly.
 		String textStringId =
-				"@player_structure:structure_condemned_owner_no_credits";
+				"@player_structure:structure_condemned_owner_no_credits"; // "This structure has been condemned by the order of the Empire. It currently requires %DI credits to uncondemn this structure. You do not have sufficient funds in your bank account. Add sufficient funds to your account and return to regain access to this structure."
 		text =
 				StringIdManager::instance()->getStringId(
 						textStringId.hashCode()).toString();
@@ -1115,7 +1061,7 @@ void StructureManager::promptPayUncondemnMaintenance(CreatureObject* creature,
 
 	sui->setPromptText(text);
 	sui->setOkButton(true, "@ok");
-	sui->setPromptTitle("@player_structure:fix_condemned_title");
+	sui->setPromptTitle("@player_structure:fix_condemned_title"); // *******CONDEMNED STRUCTURE*******
 	sui->setUsingObject(structure);
 
 	ghost->addSuiBox(sui);
@@ -1274,7 +1220,6 @@ void StructureManager::setSign(StructureObject* structure, CreatureObject* playe
 			return;
 		}
 	}
-
 }
 
 void StructureManager::payMaintenance(StructureObject* structure,
@@ -1315,7 +1260,7 @@ void StructureManager::payMaintenance(StructureObject* structure,
 
 	if (ghost->hasAbility("maintenance_fees_1")){
 		structure->setMaintenanceReduced(true);
-	}else{
+	} else {
 		structure->setMaintenanceReduced(false);
 	}
 }
@@ -1375,3 +1320,4 @@ bool StructureManager::isInStructureFootprint(StructureObject* structure, float 
 	return structureFootprint.containsPoint(positionX, positionY);
 
 }
+
