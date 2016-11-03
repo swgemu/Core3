@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_59bcf76c",
+        "filename": "MMOCoreORB/bin/scripts/mobile/faction/imperial/crackdown_comm_operator.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-11-03T23:44:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_99fb3f47",
+      "revId": "ba38acc3269abf41716a827e8adc73f352945be8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_f9fe0b38",
         "filename": "MMOCoreORB/src/server/zone/managers/gcw/GCWManagerImplementation.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-11-03T03:52:22Z",
       "side": 1,
       "message": "I think that you should also add a range check, and probably a line of sight check as well",
+      "revId": "ba38acc3269abf41716a827e8adc73f352945be8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_79c1bbe3",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/GCWManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2527,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-11-03T23:44:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_f9fe0b38",
       "revId": "ba38acc3269abf41716a827e8adc73f352945be8",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
