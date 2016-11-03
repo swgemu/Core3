@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_99fb3f47",
+        "filename": "MMOCoreORB/bin/scripts/mobile/faction/imperial/crackdown_comm_operator.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-03T03:52:22Z",
+      "side": 1,
+      "message": "I\u0027m not sure we want to set this bit on the template. We could set it when we spawn the mob in the city.\n\nI\u0027m just trying to think ahead. When we spawn the crackdown squads in the wilderness, do we want this bit set on all of them? Or will we just set it on the squad\u0027s leader and he\u0027ll be the one to perform the scan?\n\nHow about the cantina crackdowns? I think their behavior will end up being more scripted and we probably don\u0027t want them performing the regular contraband scans as part of their awareness while trying to follow their crackdown script.",
+      "revId": "ba38acc3269abf41716a827e8adc73f352945be8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f9fe0b38",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/GCWManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2527,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-03T03:52:22Z",
+      "side": 1,
+      "message": "I think that you should also add a range check, and probably a line of sight check as well",
+      "revId": "ba38acc3269abf41716a827e8adc73f352945be8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
