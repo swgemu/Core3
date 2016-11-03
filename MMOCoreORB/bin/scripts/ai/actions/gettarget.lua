@@ -244,3 +244,44 @@ function GetTargetFactionPet:terminate(pAgent)
 	end
 	return 0
 end
+
+
+function GetTargetVillageRaider:doAction(pAgent)
+	if (pAgent ~= nil) then
+		local agent = AiAgent(pAgent)
+		local creature = CreatureObject(pAgent)
+
+		local pTarget = agent:getTargetFromMap()
+
+		if pTarget ~= nil and pTarget ~= agent:getFollowObject() then
+			if agent:validateTarget(pTarget) then
+				agent:setFollowObject(pTarget)
+				agent:setDefender(pTarget)
+				return BEHAVIOR_SUCCESS
+			end
+		elseif pTarget ~= nil and agent:validateFollow() then
+			agent:setDefender(pTarget)
+			return BEHAVIOR_SUCCESS
+		end
+
+		pTarget = agent:getTargetFromDefenders()
+
+		if pTarget ~= nil and pTarget ~= agent:getFollowObject() then
+			if agent:validateTarget(pTarget) then
+				agent:setFollowObject(pTarget)
+				agent:setDefender(pTarget)
+				return BEHAVIOR_SUCCESS
+			end
+		elseif pTarget ~= nil and agent:validateFollow() then
+			agent:setDefender(pTarget)
+			return BEHAVIOR_SUCCESS
+		end
+		
+		if (agent:isInCombat()) then
+			agent:clearCombatState(true)
+			agent:setOblivious()
+		end
+	end
+
+	return BEHAVIOR_FAILURE
+end

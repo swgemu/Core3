@@ -199,7 +199,9 @@ function VillageRaids:setupSpawnedRaider(pMobile, pSpawner)
 	if (pMobile == nil or pSpawner == nil) then
 		return
 	end
-	
+
+	AiAgent(pMobile):setAiTemplate("villageraider")
+
 	createObserver(OBJECTDESTRUCTION, "FsVillageDefense", "notifyKilledRaider", pMobile)
 end
 
