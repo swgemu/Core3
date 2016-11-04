@@ -49,37 +49,8 @@ void ContainerImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 
 	locked = containerTemplate->getLocked();
 
-
 }
 
-/*void ContainerImplementation::sendContainerObjectsTo(SceneObject* player) {
-	if (!locked)
-		SceneObjectImplementation::sendContainerObjectsTo(player);
-}*/
-/*
-uint8 ContainerImplementation::checkPermission(CreatureObject* player) {
-	if (!isASubChildOf(player)) {
-		if (parent == NULL || !getParent().get()->isCellObject())
-			return 0;
-		else {
-
-			BuildingObject* building = cast<BuildingObject*>( parent->getParent().get());
-
-			// TODO: Do this properly!
-			if (building->isPublicStructure())
-				return 1;
-
-			if (!building->isOnAdminList(player->getFirstName()))
-				return 0;
-		}
-	}
-
-	if (locked)
-		return 0;
-
-	return 2;
-}
- */
 void ContainerImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 

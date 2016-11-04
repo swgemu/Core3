@@ -2,7 +2,7 @@
  * JunkDealerSellListSuiCallback.h
  *
  *  Created on: Mar 24, 2011 -a
- *      Author: crush
+ *      Author: cRush
  */
 
 #ifndef JUNKDEALERSELLLISTSUICALLBACK_H_
@@ -30,6 +30,7 @@ public:
 			return;
 
 		bool otherPressed = Bool::valueOf(args->get(0).toString());
+
 		int index = Integer::valueOf(args->get(1).toString());
 
 		SuiListBox* listBox = cast<SuiListBox*>(suiBox);
@@ -118,105 +119,7 @@ public:
 				player->sendMessage(new StopNpcConversation(player, suiBox->getUsingObject().get()->getObjectID()));
 			}
 		}
-
-		/*try {
-				player->wlock();
-
-				SuiListBox* listbox = cast<SuiListBox*>( player->getSuiBox(boxid));
-
-				if (listbox == NULL) {
-							player->unlock();
-							return;
-				}
-
-				if (cancel != 1 && index != -1) {
-							Zone* zone = player->getZone();
-
-							if (zone == NULL || zone->getZoneServer() == NULL) {
-										player->removeSuiBox(boxid);
-										listbox->finalize();
-										player->unlock();
-										return;
-							}
-
-							ZoneServer* zoneserver = zone->getZoneServer();
-
-							ItemManager* itemmanager = zoneserver->getItemManager();
-
-							if (itemmanager == NULL) {
-										player->removeSuiBox(boxid);
-										listbox->finalize();
-										player->unlock();
-										return;
-							}
-
-							ManagedReference<SceneObject*> dealerobj = suiBox->getUsingObject();
-
-							if (dealerobj == NULL)
-										return;
-
-							//TODO: Check if the dealerobj is a junkdealer creature and cast.
-
-							if (junkdealer == NULL) {
-										player->sendSystemMessage("An error has occurred, preventing you from selling your junk to the junk dealer.");
-										player->removeSuiBox(boxid);
-										listbox->finalize();
-										player->unlock();
-										return;
-							}
-
-							uint64 itemid = listbox->getMenuObjectID(index);
-							TangibleObject* item = cast<TangibleObject*>( player->getInventoryItem(itemid));
-
-							if (item == NULL) {
-										player->sendSystemMessage("An error has occurred, preventing you from selling your junk to the junk dealer.");
-										player->removeSuiBox(boxid);
-										listbox->finalize();
-										player->unlock();
-										return;
-							}
-
-							int lootvalue = item->getLootValue();
-
-							if (lootvalue <= 0) {
-										StfParameter* params = new StfParameter();
-										params->addTU(junkdealerid);
-										params->addTT(itemid);
-										player->sendSystemMessage("junk_dealer", "prose_no_buy", params); //%TU shows no interest in purchasing %TT.
-										delete params;
-
-										player->removeSuiBox(boxid);
-										listbox->finalize();
-										player->unlock();
-										return;
-							}
-
-							player->removeInventoryItem(itemid);
-							item->sendDestroyTo(player);
-							itemmanager->deletePlayerItem(player, item, false);
-							item->finalize();
-
-							player->addCashCredits(lootvalue);
-
-							StfParameter* params = new StfParameter();
-							params->addTT(itemid);
-							params->addDI(lootvalue);
-							player->sendSystemMessage("junk_dealer", "prose_sold_junk", params);
-							delete params;
-
-							//Send the list again.
-							junkdealer->sendSellJunkListTo(player);
-				}
-
-				player->removeSuiBox(boxid);
-				listbox->finalize();
-				player->unlock();
-	} catch (...) {
-				error("Unreported exception caught in SuiManager::handleSellJunkLootSelection");
-				player->unlock();
-	}*/
 	}
 };
-
 
 #endif /* JUNKDEALERSELLLISTSUICALLBACK_H_ */

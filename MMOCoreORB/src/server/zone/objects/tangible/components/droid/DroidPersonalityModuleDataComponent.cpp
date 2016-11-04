@@ -106,7 +106,6 @@ void DroidPersonalityModuleDataComponent::onStore() {
 	Locker dlock(droid);
 
 	droid->dropObserver(ObserverEventType::DEFENDERADDED, observer);
-
 	droid->sendReactionChat(ReactionManager::BYE, ReactionManager::NICE, true);
 }
 
@@ -146,7 +145,7 @@ void DroidPersonalityModuleDataComponent::notifyEvent(unsigned int eventType, Ma
 					quip("alert", droid);
 			}
 
-			// we are going todo something
+			// we are going to do something
 			// END
 			droid->getCooldownTimerMap()->updateToCurrentAndAddMili("Droid_Quip", 1800000); // 30 minute cooldown
 		}
