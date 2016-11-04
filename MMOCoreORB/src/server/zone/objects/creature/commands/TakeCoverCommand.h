@@ -36,10 +36,9 @@ public:
 		}
 
 		if (creature->isInCombat()) {
-			
-			//TODO: chance = 10 + creature->getSkillMod("cover");
-			//Correct system message
-			int chance = 75;
+
+			float chance = 10 + creature->getSkillMod("cover");
+
 			if (System::random(100)  > chance) {
 
 				if (creature->isPlayerCreature())
