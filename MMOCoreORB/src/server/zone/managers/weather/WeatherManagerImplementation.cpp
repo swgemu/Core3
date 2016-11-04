@@ -16,6 +16,8 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "weathermaps/WeatherMap.h"
 #include "server/zone/packets/scene/ServerWeatherMessage.h"
+#include "server/zone/objects/area/CampSiteActiveArea.h"
+#include "server/zone/objects/structure/StructureObject.h"
 
 
 void WeatherManagerImplementation::initialize() {
@@ -89,7 +91,6 @@ bool WeatherManagerImplementation::loadLuaConfig() {
 	lua = NULL;
 	return true;
 }
-
 
 void WeatherManagerImplementation::loadDefaultValues() {
 	Locker weatherManagerLocker(_this.getReferenceUnsafeStaticCast());
@@ -183,7 +184,7 @@ void WeatherManagerImplementation::applySandstormDamage(CreatureObject* player) 
 		return;
 
 	//Check if player is in a shelter.
-	if ((!player->isRidingMount() && player->getParentID() != 0) || player->getCurrentCamp() != NULL) //TODO: Add camp protection.
+	if ((!player->isRidingMount() && player->getParentID() != 0) || player->getCurrentCamp() != NULL)
 		return;
 
 	//Blind player
@@ -212,7 +213,6 @@ void WeatherManagerImplementation::applySandstormDamage(CreatureObject* player) 
 		player->setPosture(CreaturePosture::KNOCKEDDOWN, true);
 	}
 }
-
 
 int WeatherManagerImplementation::calculateSandstormProtection(CreatureObject* player) {
 	if (player == NULL)
@@ -287,9 +287,21 @@ int WeatherManagerImplementation::calculateSandstormProtection(CreatureObject* p
 			protection += 1;
 	}
 
+	//Check for RANGER camps.
+	if (player->getCurrentCamp() != NULL) {
+		ManagedReference<CampSiteActiveArea*> campsite = player->getCurrentCamp();
+		ManagedReference<StructureObject*> campObj = campsite->getCamp();
+		crc = campObj->getClientObjectCRC();
+		if (crc == 3484724123) // Novice Ranger 'High Quality Camp'
+			protection += 1;
+		else if (crc == 3731836900) // Ranger x2xx 'Field Base'
+			protection += 2;
+		else if (crc == 1082864410) // Ranger x4xx 'High Tech Field Base'
+			protection += 3;
+	}
+
 	return protection;
 }
-
 
 void WeatherManagerImplementation::enableWeather(CreatureObject* player) {
 
@@ -298,7 +310,6 @@ void WeatherManagerImplementation::enableWeather(CreatureObject* player) {
 	if (player != NULL)
 		player->sendSystemMessage("The weather on this planet will now change automatically.");
 }
-
 
 void WeatherManagerImplementation::disableWeather(CreatureObject* player) {
 
@@ -319,7 +330,6 @@ void WeatherManagerImplementation::disableWeather(CreatureObject* player) {
 
 	player->sendSystemMessage("The weather on this planet will no longer change automatically.");
 }
-
 
 void WeatherManagerImplementation::changeWeather(CreatureObject* player, int newWeather) {
 
