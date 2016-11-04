@@ -7,6 +7,7 @@
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
+#include "server/chat/ChatManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
@@ -26,6 +27,7 @@
 #include "server/zone/managers/gcw/tasks/SecurityRepairTask.h"
 #include "server/zone/managers/gcw/tasks/BaseShutdownTask.h"
 #include "server/zone/managers/gcw/tasks/BaseRebootTask.h"
+#include "server/zone/managers/gcw/tasks/ContrabandScanTask.h"
 #include "server/zone/managers/gcw/GCWBaseShutdownObserver.h"
 
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
@@ -44,8 +46,6 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
-
-#include "server/chat/ChatManager.h"
 
 void GCWManagerImplementation::initialize() {
 	loadLuaConfig();
@@ -2524,15 +2524,15 @@ int GCWManagerImplementation::isStrongholdCity(String& city) {
 }
 
 void GCWManagerImplementation::runCrackdownScan(AiAgent* scanner, CreatureObject* player) {
+
 	// This code will be moved to a task that will handle timing and state of the scan.
 	if (!player->isPlayerCreature() || !scanner->isInRange(player, 16) || !CollisionManager::checkLineOfSight(scanner, player)) {
 		return;
 	}
 
 	if (scanner->checkCooldownRecovery("crackdown_scan") && player->checkCooldownRecovery("crackdown_scan")) {
-		StringIdChatParameter chat;
-		chat.setStringId("@imperial_presence/contraband_search:scan_greeting_imperial");
-		zone->getZoneServer()->getChatManager()->broadcastChatMessage(scanner, chat, player->getObjectID(), 0, 0);
+		Reference<Task*> contrabandScanTask = new ContrabandScanTask(scanner, player);
+		contrabandScanTask->schedule(1000);
 		scanner->updateCooldownTimer("crackdown_scan", 10 * 1000);
 		player->updateCooldownTimer("crackdown_scan", 30 * 1000);
 	}
