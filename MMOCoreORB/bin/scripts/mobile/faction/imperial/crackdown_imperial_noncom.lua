@@ -4,11 +4,11 @@ crackdown_imperial_noncom = Creature:new {
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 1,
+	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,
 	damageMax = 160,
-	baseXp = 40,
+	baseXp = 740,
 	baseHAM = 2000,
 	baseHAMmax = 2400,
 	armor = 0,
@@ -27,7 +27,9 @@ crackdown_imperial_noncom = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_medic3_human_male_01.iff"},
+	templates = {"object/mobile/dressed_imperial_medic3_human_male_01.iff",
+			"object/mobile/dressed_imperial_medic1_human_male_01.iff"
+		},
 	lootGroups = {
 		{
 			groups = {
@@ -45,7 +47,9 @@ crackdown_imperial_noncom = Creature:new {
 	},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",
+	attacks = merge(marksmanmaster,pistoleernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_imperial_noncom, "crackdown_imperial_noncom")

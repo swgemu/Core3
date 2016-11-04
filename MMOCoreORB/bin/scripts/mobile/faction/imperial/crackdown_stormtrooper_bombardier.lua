@@ -4,11 +4,11 @@ crackdown_stormtrooper_bombardier = Creature:new {
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 1,
+	level = 25,
 	chanceHit = 0.36,
 	damageMin = 270,
 	damageMax = 280,
-	baseXp = 45,
+	baseXp = 2645,
 	baseHAM = 5900,
 	baseHAMmax = 7200,
 	armor = 0,
@@ -47,7 +47,9 @@ crackdown_stormtrooper_bombardier = Creature:new {
 	},
 	weapons = {"st_bombardier_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	reactionStf = "@npc_reaction/stormtrooper",
+	personalityStf = "@hireling/hireling_stormtrooper",
+	attacks = merge(brawlermaster,marksmanmaster,commandomid)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_stormtrooper_bombardier, "crackdown_stormtrooper_bombardier")

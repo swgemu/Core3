@@ -4,11 +4,11 @@ crackdown_imperial_army_captain = Creature:new {
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 1,
+	level = 21,
 	chanceHit = 0.34,
 	damageMin = 200,
 	damageMax = 210,
-	baseXp = 45,
+	baseXp = 2006,
 	baseHAM = 5400,
 	baseHAMmax = 6600,
 	armor = 0,
@@ -24,7 +24,7 @@ crackdown_imperial_army_captain = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_stormtrooper_captain_white_white.iff",
@@ -47,8 +47,10 @@ crackdown_imperial_army_captain = Creature:new {
 		}
 	},
 	weapons = {"imperial_weapons_heavy"},
-	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	conversationTemplate = "imperialRecruiterConvoTemplate",
+	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",
+	attacks = merge(riflemanmid,carbineermaster,pikemanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_imperial_army_captain, "crackdown_imperial_army_captain")

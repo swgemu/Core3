@@ -4,11 +4,11 @@ crackdown_stormtrooper_rifleman = Creature:new {
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 1,
+	level = 25,
 	chanceHit = 0.36,
 	damageMin = 240,
 	damageMax = 250,
-	baseXp = 45,
+	baseXp = 2645,
 	baseHAM = 7200,
 	baseHAMmax = 8800,
 	armor = 0,
@@ -36,8 +36,8 @@ crackdown_stormtrooper_rifleman = Creature:new {
 				{group = "junk", chance = 7550000},
 				{group = "rifles", chance = 550000},
 				{group = "pistols", chance = 550000},
-                {group = "melee_weapons", chance = 550000},
-                {group = "carbines", chance = 550000},
+				{group = "melee_weapons", chance = 550000},
+				{group = "carbines", chance = 550000},
 				{group = "clothing_attachments", chance = 25000},
 				{group = "armor_attachments", chance = 25000},
 				{group = "stormtrooper_common", chance = 100000}
@@ -47,7 +47,9 @@ crackdown_stormtrooper_rifleman = Creature:new {
 	},
 	weapons = {"st_rifleman_weapons"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	reactionStf = "@npc_reaction/stormtrooper",
+	personalityStf = "@hireling/hireling_stormtrooper",
+	attacks = merge(riflemanmid,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_stormtrooper_rifleman, "crackdown_stormtrooper_rifleman")

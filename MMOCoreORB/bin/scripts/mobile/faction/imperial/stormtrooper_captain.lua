@@ -24,7 +24,7 @@ stormtrooper_captain = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 	scale = 1.05,
 
@@ -47,7 +47,7 @@ stormtrooper_captain = Creature:new {
 		}
 	},
 	weapons = {"stormtrooper_weapons"},
-	conversationTemplate = "",
+	conversationTemplate = "imperialRecruiterConvoTemplate",
 	reactionStf = "@npc_reaction/stormtrooper",
 	personalityStf = "@hireling/hireling_stormtrooper",		
 	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)

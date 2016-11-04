@@ -4,11 +4,11 @@ crackdown_specialist_noncom = Creature:new {
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 1,
-	chanceHit = 0.300000,
+	level = 13,
+	chanceHit = 0.3,
 	damageMin = 140,
 	damageMax = 150,
-	baseXp = 40,
+	baseXp = 640,
 	baseHAM = 1500,
 	baseHAMmax = 1900,
 	armor = 0,
@@ -20,10 +20,11 @@ crackdown_specialist_noncom = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_medic3_human_male_01.iff",
@@ -45,7 +46,9 @@ crackdown_specialist_noncom = Creature:new {
 		}
 	},
 	weapons = {"imperial_weapons_light"},
-	attacks = merge(riflemanmaster,carbineermaster)
+	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",
+	attacks = merge(marksmanmaster,pistoleermid)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_specialist_noncom, "crackdown_specialist_noncom")

@@ -4,15 +4,15 @@ crackdown_imperial_sergeant = Creature:new {
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 1,
+	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,
 	damageMax = 180,
-	baseXp = 40,
+	baseXp = 940,
 	baseHAM = 2900,
 	baseHAMmax = 3500,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,-1,-1},
+	resists = {5,5,5,5,5,5,5,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -24,10 +24,17 @@ crackdown_imperial_sergeant = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_medic3_human_male_01.iff"},
+	templates = {"object/mobile/dressed_imperial_officer_f.iff",
+			"object/mobile/dressed_imperial_officer_m.iff",
+			"object/mobile/dressed_imperial_officer_m_2.iff",
+			"object/mobile/dressed_imperial_officer_m_3.iff",
+			"object/mobile/dressed_imperial_officer_m_4.iff",
+			"object/mobile/dressed_imperial_officer_m_5.iff",
+			"object/mobile/dressed_imperial_officer_m_6.iff"
+		},
 	lootGroups = {
 		{
 			groups = {
@@ -44,8 +51,10 @@ crackdown_imperial_sergeant = Creature:new {
 		}
 	},
 	weapons = {"imperial_weapons_medium"},
-	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	conversationTemplate = "imperialRecruiterConvoTemplate",
+	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",
+	attacks = merge(riflemanmid,carbineermid)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_imperial_sergeant, "crackdown_imperial_sergeant")

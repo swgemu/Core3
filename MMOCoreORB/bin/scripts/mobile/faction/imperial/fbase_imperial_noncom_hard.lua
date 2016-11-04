@@ -24,6 +24,7 @@ fbase_imperial_noncom_hard = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + STALKER,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {

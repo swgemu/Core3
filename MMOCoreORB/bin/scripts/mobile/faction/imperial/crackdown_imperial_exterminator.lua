@@ -4,15 +4,15 @@ crackdown_imperial_exterminator = Creature:new {
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 1,
+	level = 19,
 	chanceHit = 0.37,
 	damageMin = 290,
 	damageMax = 300,
-	baseXp = 45,
+	baseXp = 450,
 	baseHAM = 7700,
 	baseHAMmax = 9400,
 	armor = 0,
-	resists = {15,15,15,-1,30,-1,30,-1,-1},
+	resists = {5,5,5,-1,30,-1,30,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -27,11 +27,25 @@ crackdown_imperial_exterminator = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_officer_m_5.iff"},
-	lootGroups = {},
+	templates = {"object/mobile/dressed_imperial_exterminator.iff"},
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 200000},
+				{group = "junk", chance = 6000000},
+				{group = "weapons_all", chance = 1250000},
+				{group = "armor_all", chance = 1250000},
+				{group = "clothing_attachments", chance = 150000},
+				{group = "armor_attachments", chance = 150000},
+				{group = "wearables_all", chance = 1000000}
+			}
+		}
+	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",
+	attacks = merge(brawlermaster,marksmanmid,pikemanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_imperial_exterminator, "crackdown_imperial_exterminator")

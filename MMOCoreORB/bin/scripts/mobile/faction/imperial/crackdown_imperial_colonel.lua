@@ -4,15 +4,15 @@ crackdown_imperial_colonel = Creature:new {
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 1,
+	level = 23,
 	chanceHit = 0.35,
 	damageMin = 220,
 	damageMax = 230,
-	baseXp = 45,
+	baseXp = 2445,
 	baseHAM = 6300,
 	baseHAMmax = 7700,
 	armor = 0,
-	resists = {15,15,15,0,15,0,0,-1,-1},
+	resists = {15,15,10,10,10,-1,10,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -46,7 +46,9 @@ crackdown_imperial_colonel = Creature:new {
 	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "imperialRecruiterConvoTemplate",
-	attacks = merge(riflemanmaster,carbineermaster)
+	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",
+	attacks = merge(riflemanmid,carbineermaster,pikemanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_imperial_colonel, "crackdown_imperial_colonel")

@@ -11,8 +11,8 @@ crackdown_sand_trooper_hard = Creature:new {
 	baseXp = 4302,
 	baseHAM = 100000,
 	baseHAMmax = 130000,
-	armor = 0,
-	resists = {0,0,40,100,-1,-1,-1,-1,-1},
+	armor = 1,
+	resists = {0,0,140,200,-1,-1,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -47,7 +47,9 @@ crackdown_sand_trooper_hard = Creature:new {
 	},
 	weapons = {"sandtrooper_weapons"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster)
+	reactionStf = "@npc_reaction/stormtrooper",
+	personalityStf = "@hireling/hireling_stormtrooper",
+	attacks = merge(riflemanmaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_sand_trooper_hard, "crackdown_sand_trooper_hard")

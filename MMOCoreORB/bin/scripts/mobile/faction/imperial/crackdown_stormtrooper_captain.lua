@@ -4,11 +4,11 @@ crackdown_stormtrooper_captain = Creature:new {
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 1,
-	chanceHit = 0.38,
+	level = 29,
+	chanceHit = 3.03,
 	damageMin = 280,
 	damageMax = 290,
-	baseXp = 45,
+	baseXp = 3045,
 	baseHAM = 8300,
 	baseHAMmax = 10100,
 	armor = 0,
@@ -38,8 +38,8 @@ crackdown_stormtrooper_captain = Creature:new {
 				{group = "junk", chance = 7100000},
 				{group = "rifles", chance = 550000},
 				{group = "pistols", chance = 550000},
-                {group = "melee_weapons", chance = 550000},
-                {group = "carbines", chance = 550000},
+				{group = "melee_weapons", chance = 550000},
+				{group = "carbines", chance = 550000},
 				{group = "clothing_attachments", chance = 25000},
 				{group = "armor_attachments", chance = 25000},
 				{group = "imperial_officer_common", chance = 450000},
@@ -50,7 +50,9 @@ crackdown_stormtrooper_captain = Creature:new {
 	},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "imperialRecruiterConvoTemplate",
-	attacks = merge(riflemanmaster,carbineermaster)
+	reactionStf = "@npc_reaction/stormtrooper",
+	personalityStf = "@hireling/hireling_stormtrooper",	
+	attacks = merge(riflemanmid,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_stormtrooper_captain, "crackdown_stormtrooper_captain")
