@@ -25,9 +25,6 @@ public:
 		creature = cr;
 		timeLeft = 30; // 30 seconds with messages in 5 second intervals
 
-		// TODO: Do we need to do player->setLoggingOut() here or just before the actual logout?
-		// TODO: Doesn't seem to be a way to clearLoggingOut so seems to be a very final act on the object!
-
 		StringIdChatParameter stringId("logout", "time_left");
 		stringId.setDI(30);
 
@@ -51,7 +48,7 @@ public:
 
 		try {
 			// TODO: Research do things like bleeding, poison etc stop a /logout ??
-			if (creature->isBleeding() || creature->isPoisoned() || creature->isDiseased()) {
+			if (creature->isBleeding() || creature->isPoisoned() || creature->isDiseased() || creature->isOnFire()) {
 				cancelLogout();
 				return;
 			}
@@ -71,7 +68,7 @@ public:
 				// Send the client the Logout Packet
 				creature->sendMessage(new LogoutMessage());
 
-				player->info(creature->getFirstName() + " Loggedout");
+				player->info(creature->getFirstName() + " Logged out");
 
 				return;
 			}

@@ -39,6 +39,11 @@ public:
 			return INVALIDSTATE;
 		}
 
+		if (!creature->getSkillMod("private_safe_logout")) {
+			creature->sendSystemMessage("@loading/tips:camping_safely"); // You cannot exit the game swiftly in dangerous areas. To exit swiftly in the wild, you need to be in a camp and to use the /logout command. If you use /quit, your character will remain in the world for a few minutes.
+			return GENERALERROR;
+		}
+
 		Reference<Task*> logoutTask = creature->getPendingTask("logout");
 
 		if (logoutTask != NULL) {
@@ -46,6 +51,8 @@ public:
 			return GENERALERROR;
 		}
 
+		// looks like the CLIENT  auto-posturechanges the player into /sit before countdown begins
+		creature->sendSystemMessage("@logout:must_be_sitting"); // You must be sitting in order to log out safely.
 		// Initiate new LogoutTask
 		creature->addPendingTask("logout", new LogoutTask(creature), 5000);
 
