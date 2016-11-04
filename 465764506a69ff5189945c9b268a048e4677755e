@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_f9084b2f",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/city.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-04T10:47:20Z",
+      "side": 1,
+      "message": "You don\u0027t have any kind of check for if the bit is already set and simple addition would not have the expected result if it was.\n\nInstead of exposing setCreatureBitmask() to Lua and using it here, I would rather you add setCreatureBit() and clearCreatureBit() methods to AiAgent that use bitwise operators similar to tano\u0027s setOptionBit() and clearOptionBit(). Then expose those to Lua and use the setCreatureBit() here.",
+      "revId": "465764506a69ff5189945c9b268a048e4677755e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
