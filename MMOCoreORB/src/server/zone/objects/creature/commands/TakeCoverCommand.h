@@ -29,17 +29,16 @@ public:
 		if (creature->getHAM(CreatureAttribute::ACTION)  < actionCost) {
 
 			if (creature->isPlayerCreature())
-				(creature)->sendSystemMessage("@cbt_spam:cover_fail_single"); // You fail to take cover.
+				(creature)->sendSystemMessage("You are too tired to execute that action.");
 
 			creature->sendStateCombatSpam("cbt_spam", "cover_fail", 0);
 			return GENERALERROR;
 		}
 
 		if (creature->isInCombat()) {
-			
-			//TODO: chance = 10 + creature->getSkillMod("cover");
-			//Correct system message
-			int chance = 75;
+
+			float chance = 10 + creature->getSkillMod("cover");
+
 			if (System::random(100)  > chance) {
 
 				if (creature->isPlayerCreature())
