@@ -4,15 +4,15 @@ crackdown_elite_sand_trooper = Creature:new {
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 1,
-	chanceHit = 0.38,
-	damageMin = 280,
-	damageMax = 290,
-	baseXp = 45,
-	baseHAM = 8300,
-	baseHAMmax = 10100,
-	armor = 0,
-	resists = {0,0,0,30,-1,30,-1,-1,-1},
+	level = 45,
+	chanceHit = 0.48,
+	damageMin = 380,
+	damageMax = 490,
+	baseXp = 4570,
+	baseHAM = 9700,
+	baseHAMmax = 11900,
+	armor = 1,
+	resists = {5,5,40,100,-1,-1,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,6 +26,7 @@ crackdown_elite_sand_trooper = Creature:new {
 	creatureBitmask = PACK + KILLER + STALKER,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
+	scale = 1.05,
 
 	templates = {"object/mobile/dressed_stormtrooper_sand_trooper_m.iff"},
 	lootGroups = {
@@ -45,6 +46,8 @@ crackdown_elite_sand_trooper = Creature:new {
 	},
 	weapons = {"sandtrooper_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/stormtrooper",
+	personalityStf = "@hireling/hireling_stormtrooper",
 	attacks = merge(riflemanmaster,carbineermaster)
 }
 

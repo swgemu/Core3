@@ -25,7 +25,9 @@ imperial_sharpshooter = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_gunner_m.iff"},
+	templates = {"object/mobile/dressed_imperial_gunner_m.iff",
+			"object/mobile/dressed_stormtrooper_sniper_m.iff"
+		},
 	lootGroups = {
 		{
 			groups = {

@@ -4,11 +4,11 @@ crackdown_command_security_guard = Creature:new {
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 1,
+	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,
 	damageMax = 170,
-	baseXp = 40,
+	baseXp = 831,
 	baseHAM = 2400,
 	baseHAMmax = 3000,
 	armor = 0,
@@ -52,7 +52,9 @@ crackdown_command_security_guard = Creature:new {
 	},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",
+	attacks = merge(marksmanmaster,pistoleernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_command_security_guard, "crackdown_command_security_guard")

@@ -4,11 +4,11 @@ crackdown_imperial_first_lieutenant = Creature:new {
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 1,
+	level = 21,
 	chanceHit = 0.33,
 	damageMin = 190,
 	damageMax = 200,
-	baseXp = 45,
+	baseXp = 1845,
 	baseHAM = 5000,
 	baseHAMmax = 6100,
 	armor = 0,
@@ -49,7 +49,9 @@ crackdown_imperial_first_lieutenant = Creature:new {
 	},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",
+	attacks = merge(riflemanmid,carbineermid)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_imperial_first_lieutenant, "crackdown_imperial_first_lieutenant")

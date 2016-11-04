@@ -24,6 +24,7 @@ imperial_noncom = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + STALKER,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {

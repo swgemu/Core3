@@ -4,11 +4,11 @@ crackdown_comm_operator = Creature:new {
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 1,
+	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,
 	damageMax = 160,
-	baseXp = 40,
+	baseXp = 714,
 	baseHAM = 2000,
 	baseHAMmax = 2400,
 	armor = 0,
@@ -27,7 +27,15 @@ crackdown_comm_operator = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_officer_m.iff"},
+	templates = {
+		"object/mobile/dressed_imperial_officer_f.iff",
+		"object/mobile/dressed_imperial_officer_m.iff",
+		"object/mobile/dressed_imperial_officer_m_2.iff",
+		"object/mobile/dressed_imperial_officer_m_3.iff",
+		"object/mobile/dressed_imperial_officer_m_4.iff",
+		"object/mobile/dressed_imperial_officer_m_5.iff",
+		"object/mobile/dressed_imperial_officer_m_6.iff"
+		},
 	lootGroups = {
 		{
 			groups = {
@@ -45,7 +53,9 @@ crackdown_comm_operator = Creature:new {
 	},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",
+	attacks = merge(pistoleernovice,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_comm_operator, "crackdown_comm_operator")

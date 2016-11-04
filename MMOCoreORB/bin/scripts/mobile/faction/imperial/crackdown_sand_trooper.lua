@@ -4,11 +4,11 @@ crackdown_sand_trooper = Creature:new {
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 1,
+	level = 25,
 	chanceHit = 0.36,
 	damageMin = 240,
 	damageMax = 250,
-	baseXp = 45,
+	baseXp = 2645,
 	baseHAM = 7200,
 	baseHAMmax = 8800,
 	armor = 0,
@@ -47,7 +47,9 @@ crackdown_sand_trooper = Creature:new {
 	},
 	weapons = {"sandtrooper_weapons"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	reactionStf = "@npc_reaction/stormtrooper",
+	personalityStf = "@hireling/hireling_stormtrooper",
+	attacks = merge(riflemanmid,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_sand_trooper, "crackdown_sand_trooper")

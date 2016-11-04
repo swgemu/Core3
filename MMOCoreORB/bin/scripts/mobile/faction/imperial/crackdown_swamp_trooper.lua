@@ -4,11 +4,11 @@ crackdown_swamp_trooper = Creature:new {
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 1,
+	level = 25,
 	chanceHit = 0.36,
 	damageMin = 240,
 	damageMax = 250,
-	baseXp = 45,
+	baseXp = 2645,
 	baseHAM = 7200,
 	baseHAMmax = 8800,
 	armor = 0,
@@ -29,10 +29,21 @@ crackdown_swamp_trooper = Creature:new {
 	scale = 1.05,
 
 	templates = {"object/mobile/dressed_swamp_trooper.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 2000000},
+				{group = "tailor_components", chance = 2000000},
+				{group = "loot_kit_parts", chance = 2000000},
+				{group = "wearables_common", chance = 2000000},
+				{group = "wearables_uncommon", chance = 2000000},
+			}
+		}
+	},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	reactionStf = "@npc_reaction/stormtrooper",
+	attacks = merge(carbineernovice,marksmanmaster,riflemannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_swamp_trooper, "crackdown_swamp_trooper")

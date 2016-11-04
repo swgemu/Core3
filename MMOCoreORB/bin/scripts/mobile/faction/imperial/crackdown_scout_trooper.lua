@@ -4,11 +4,11 @@ crackdown_scout_trooper = Creature:new {
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 1,
+	level = 23,
 	chanceHit = 0.35,
 	damageMin = 220,
 	damageMax = 230,
-	baseXp = 30,
+	baseXp = 2030,
 	baseHAM = 6300,
 	baseHAMmax = 7700,
 	armor = 0,
@@ -36,8 +36,8 @@ crackdown_scout_trooper = Creature:new {
 				{group = "junk", chance = 7550000},
 				{group = "rifles", chance = 550000},
 				{group = "pistols", chance = 550000},
-                {group = "melee_weapons", chance = 550000},
-                {group = "carbines", chance = 550000},
+				{group = "melee_weapons", chance = 550000},
+				{group = "carbines", chance = 550000},
 				{group = "clothing_attachments", chance = 25000},
 				{group = "armor_attachments", chance = 25000},
 				{group = "stormtrooper_common", chance = 100000}
@@ -47,7 +47,9 @@ crackdown_scout_trooper = Creature:new {
 	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	reactionStf = "@npc_reaction/stormtrooper",
+	personalityStf = "@hireling/hireling_stormtrooper",
+	attacks = merge(riflemanmaster,carbineermid)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_scout_trooper, "crackdown_scout_trooper")

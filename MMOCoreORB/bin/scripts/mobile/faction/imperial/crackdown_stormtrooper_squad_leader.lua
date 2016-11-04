@@ -4,11 +4,11 @@ crackdown_stormtrooper_squad_leader = Creature:new {
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 1,
+	level = 27,
 	chanceHit = 0.37,
 	damageMin = 260,
 	damageMax = 270,
-	baseXp = 45,
+	baseXp = 2845,
 	baseHAM = 8100,
 	baseHAMmax = 9900,
 	armor = 0,
@@ -38,18 +38,20 @@ crackdown_stormtrooper_squad_leader = Creature:new {
 				{group = "junk", chance = 7550000},
 				{group = "rifles", chance = 550000},
 				{group = "pistols", chance = 550000},
-                {group = "melee_weapons", chance = 550000},
-                {group = "carbines", chance = 550000},
+				{group = "melee_weapons", chance = 550000},
+				{group = "carbines", chance = 550000},
 				{group = "clothing_attachments", chance = 25000},
 				{group = "armor_attachments", chance = 25000},
 				{group = "stormtrooper_common", chance = 100000}
 			},
 			lootChance = 2800000
-		}						
+		}
 	},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	reactionStf = "@npc_reaction/stormtrooper",
+	personalityStf = "@hireling/hireling_stormtrooper",
+	attacks = merge(riflemannovice,carbineermid)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_stormtrooper_squad_leader, "crackdown_stormtrooper_squad_leader")

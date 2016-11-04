@@ -23,7 +23,7 @@ imperial_medic = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK,
+	creatureBitmask = PACK + HEALER,
 	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 

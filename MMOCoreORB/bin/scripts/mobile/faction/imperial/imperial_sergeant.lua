@@ -24,7 +24,7 @@ imperial_sergeant = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {
@@ -51,7 +51,7 @@ imperial_sergeant = Creature:new {
 		}
 	},
 	weapons = {"imperial_weapons_medium"},
-	conversationTemplate = "",
+	conversationTemplate = "imperialRecruiterConvoTemplate",
 	reactionStf = "@npc_reaction/military",
 	personalityStf = "@hireling/hireling_military",
 	attacks = merge(brawlermaster,marksmanmaster)

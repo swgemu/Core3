@@ -4,11 +4,11 @@ crackdown_imperial_warrant_officer_ii = Creature:new {
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 1,
+	level = 18,
 	chanceHit = 0.32,
 	damageMin = 170,
 	damageMax = 180,
-	baseXp = 45,
+	baseXp = 1445,
 	baseHAM = 4100,
 	baseHAMmax = 5000,
 	armor = 0,
@@ -45,7 +45,8 @@ crackdown_imperial_warrant_officer_ii = Creature:new {
 	},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "imperialRecruiterConvoTemplate",
-	attacks = merge(riflemanmaster,carbineermaster)
+	reactionStf = "@npc_reaction/military",
+	attacks = merge(riflemanmid,carbineermid)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_imperial_warrant_officer_ii, "crackdown_imperial_warrant_officer_ii")

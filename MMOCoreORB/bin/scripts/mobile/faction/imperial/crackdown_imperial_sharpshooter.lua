@@ -4,11 +4,11 @@ crackdown_imperial_sharpshooter = Creature:new {
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 1,
+	level = 17,
 	chanceHit = 0.32,
 	damageMin = 160,
 	damageMax = 170,
-	baseXp = 40,
+	baseXp = 1140,
 	baseHAM = 3500,
 	baseHAMmax = 4300,
 	armor = 0,
@@ -27,7 +27,9 @@ crackdown_imperial_sharpshooter = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_stormtrooper_sniper_m.iff"},
+	templates = {"object/mobile/dressed_stormtrooper_sniper_m.iff",
+			"object/mobile/dressed_imperial_gunner_m.iff"
+		},
 	lootGroups = {
 		{
 			groups = {
@@ -45,7 +47,9 @@ crackdown_imperial_sharpshooter = Creature:new {
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",	
+	attacks = merge(riflemanmaster,carbineermid,pistoleermid,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_imperial_sharpshooter, "crackdown_imperial_sharpshooter")

@@ -24,6 +24,7 @@ fbase_specialist_noncom_hard = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_officer_f.iff",

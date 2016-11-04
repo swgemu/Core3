@@ -4,11 +4,11 @@ crackdown_imperial_master_sergeant = Creature:new {
 	randomNameTag = true,
 	socialGroup = "imperial",
 	faction = "imperial",
-	level = 1,
+	level = 18,
 	chanceHit = 0.32,
 	damageMin = 170,
 	damageMax = 180,
-	baseXp = 45,
+	baseXp = 1445,
 	baseHAM = 4100,
 	baseHAMmax = 5000,
 	armor = 0,
@@ -23,11 +23,14 @@ crackdown_imperial_master_sergeant = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = STALKER,
+	creatureBitmask = PACK + KILLER + STALKER,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_lieutenant_m.iff"},
+	templates = {"object/mobile/dressed_imperial_lieutenant_m.iff",
+			"object/mobile/dressed_imperial_major_m.iff",
+			"object/mobile/dressed_imperial_medic3_human_male_01.iff"
+		},
 	lootGroups = {
 		{
 			groups = {
@@ -45,7 +48,9 @@ crackdown_imperial_master_sergeant = Creature:new {
 	},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",
+	attacks = merge(riflemanmid,carbineermid)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_imperial_master_sergeant, "crackdown_imperial_master_sergeant")
