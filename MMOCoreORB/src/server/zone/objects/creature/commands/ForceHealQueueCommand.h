@@ -58,28 +58,26 @@ protected:
 	int speed;
 	unsigned int allowedTarget;
 	//int forceCost; // the inherited forceCost attribute describes the "maximum" force Cost.. this is to not attempt healing without the proper amount of force
-	float forceCostDivisor; // reduces force cost.. FIXME: rename to forceCostDivisor
-			       // if negtive all healed values (ham, wounds, bf) will be added up and used as FC
-			       // if zero forceCost will be substracted
+	float forceCostDivisor; // reduces force cost..
+			       // if negative all healed values (ham, wounds, bf) will be added up and used as FC
+			       // if zero forceCost will be subtracted
 			       // if >0 the healed values will be summed up and divided by this value
 
 	unsigned int healStates; // bitmask of states to heal (STUN | DIZZY | BLINDED | INITIMDATED )
-	
+
 	unsigned int healDisease; // > 0 heals given amount of dot damage
 	unsigned int healPoison; // > 0 heals given amount of poison
 	unsigned int healBleeding; // > 0 heals given amount of bleeds
 	unsigned int healFire; // > 0 heals given amount of fire dot
 
 	int healAttributes; // bitmask of which attributes to heal, HEALTH etc..
-	int healWoundAttributes; // bistmask of which attributes to heal, HEALTH etc..
+	int healWoundAttributes; // bitmask of which attributes to heal, HEALTH etc..
 				// does implicitly include 2ndaries
-	
-
 
 	unsigned int healBattleFatigue; // amount of BF to heal
 	unsigned int healAmount; // amount to heal (HAM pools)
 	unsigned int healWoundAmount; // amount of wounds to heal
-	
+
 	int range; // range to heal up to, if <= 0 it heals the user
 
 	// to keep track of what we did heal at each invocation we will pass a struct per ref
@@ -103,7 +101,7 @@ protected:
 		int healedBF;
 
 		int healedDots;
-	
+
 		int healedStates;
 
 		inline int sumWounds() const {
@@ -128,15 +126,14 @@ public:
 	ForceHealQueueCommand(const String& name, ZoneProcessServer* server);
 	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget, healedAttributes_t& attributes) const;
 
-	int doHealBF(CreatureObject* creature, CreatureObject* target, healedAttributes_t& attrs) const; 
-
+	int doHealBF(CreatureObject* creature, CreatureObject* target, healedAttributes_t& attrs) const;
 
 	int checkWoundAttributes(CreatureObject* creature, CreatureObject* targetCreature) const;
 
 	int doHealWounds(CreatureObject* creature, CreatureObject* targetCreature, int healableWounds, healedAttributes_t& attrs) const;
 
 	int checkHAMAttributes(CreatureObject* creature, CreatureObject* targetCreature) const;
-	int doHealHAM(CreatureObject* creature, CreatureObject* target, int healableHAM, healedAttributes_t& attrs) const; 
+	int doHealHAM(CreatureObject* creature, CreatureObject* target, int healableHAM, healedAttributes_t& attrs) const;
 
 	int checkStates(CreatureObject* creature, CreatureObject* target) const;
 
@@ -144,11 +141,11 @@ public:
 
 	int doHealDots(CreatureObject* creature, CreatureObject* target, int healableDots, healedAttributes_t& attrs) const;
 
-	int checkDots(CreatureObject* creature, CreatureObject* target) const; 
+	int checkDots(CreatureObject* creature, CreatureObject* target) const;
 
 	int doForceCheck(CreatureObject* creature) const;
 
-	int calculateForceCost(CreatureObject* creature, CreatureObject* targetCreature, healedAttributes_t& attrs) const; 
+	int calculateForceCost(CreatureObject* creature, CreatureObject* targetCreature, healedAttributes_t& attrs) const;
 	void applyForceCost(CreatureObject* creature, int calculatedForceCost) const;
 
 	/**
@@ -165,13 +162,12 @@ public:
 	 */
 	static inline void sendHealDotMessage(CreatureObject* creature, CreatureObject* target, const char* stopped, const char* staunch, uint64 attribute) {
 		if (creature == NULL || creature == target) return;
-		
+
 		const int dotRemaining = creature->getDamageOverTimeList()->getStrength(0xFF, attribute);
 		StringIdChatParameter message("jedi_spam", (dotRemaining > 0) ? staunch : stopped);
 		message.setTT(target->getFirstName());
 		creature->sendSystemMessage(message);
 	}
-
 
 	/**
 	 * sets the TO attribute of the given StringIdChatParameter according to the type passed into it
@@ -184,7 +180,7 @@ public:
 
 		switch (type) {
 			case HEALTH:
-				if (!wounds) 
+				if (!wounds)
 					message.setTO("@jedi_spam:health_damage");
 				else
 					message.setTO("@jedi_spam:health_wounds");
@@ -242,12 +238,10 @@ public:
 		return true;
 	}
 
-
 	/**
 	 * sends the damage & wound heal messages to a target and the healer
 	 */
-	void sendHealMessage(CreatureObject* creature, CreatureObject* target, int attribute, const int amount, const bool wound = false) const; 
-
+	void sendHealMessage(CreatureObject* creature, CreatureObject* target, int attribute, const int amount, const bool wound = false) const;
 
 	/**
 	 * sends wound heal messages
@@ -283,8 +277,7 @@ public:
 		if (creature != target) {
 			healedStatesMessage.setTT(target->getFirstName());
 		} else {
-			//TODO: whats the message for self healing?
-			healedStatesMessage.setTT("you"); // You cure all negative states on >you<.
+			healedStatesMessage.setTT("yourself"); // You cure all negative states on >yourself<.
 		}
 		creature->sendSystemMessage(healedStatesMessage);
 	}
@@ -304,7 +297,7 @@ public:
 			sendHealDotMessage(creature, target, attrs.healedFire,
 					"stop_fire_other", "staunch_fire_other", CreatureState::ONFIRE);
 		*/
-		
+
 		if (attrs.healedDots & DISEASED)
 			sendHealDotMessage(creature, target, "stop_disease_other", "staunch_disease_other", CreatureState::DISEASED);
 	}
@@ -315,11 +308,11 @@ public:
 	 */
 	void sendDefaultSystemMessage(CreatureObject* creature, CreatureObject* target, healedAttributes_t& attrs) const;
 
-	int runCommandWithTarget(CreatureObject* creature, CreatureObject* targetCreature) const; 
+	int runCommandWithTarget(CreatureObject* creature, CreatureObject* targetCreature) const;
 
 	int runCommand(CreatureObject* creature, CreatureObject* targetCreature) const;
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const; 
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const;
 
 	bool isForceHealCommand() {
 		return true;
@@ -358,7 +351,7 @@ public:
 	}
 
 	void setHealBattleFatigue(unsigned int amount) {
-		healBattleFatigue = amount;	
+		healBattleFatigue = amount;
 	}
 
 	void setHealAmount(unsigned int amount ) {
@@ -385,6 +378,5 @@ public:
 		return defaultTime * 3.0;
 	}
 };
-
 
 #endif /* FORCEHEALQUEUECOMMAND_H_ */

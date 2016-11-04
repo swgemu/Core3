@@ -45,27 +45,26 @@ void DroidDeedImplementation::onCloneObject(SceneObject* objectToClone) {
 		error("Invalid object type used in DroidDeedImplementation::onCloneObject");
 		return;
 	}
-	
+
 	//clear old modules
 	modules.removeAll();
-	 	
+
 	// Insert our stacked droid modules into the droid's crafted components container
 	String key;
 	ManagedReference<DroidComponent*> comp = NULL;
-	
+
 	auto modulesTable = deed->getModules();
-	
+
 	if (modulesTable != NULL) {
 		HashTableIterator<String, ManagedReference<DroidComponent*> > iterator = modulesTable->iterator();
-		
+
 		while (iterator.hasNext()) {
 			iterator.getNextKeyAndValue(key, comp);
-			
+
 			if (comp != NULL) {
 				ManagedReference<DroidComponent*> cloneComponent = cast<DroidComponent*>(ObjectManager::instance()->cloneObject(comp));
 				cloneComponent->setParent(NULL);
 				modules.put(key, cloneComponent);
-				
 			}
 		}
 	}
@@ -74,7 +73,6 @@ void DroidDeedImplementation::onCloneObject(SceneObject* objectToClone) {
 void DroidDeedImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	DeedImplementation::fillAttributeList(alm, object);
 
-	// @TODO Add attributes
 	// Deed needs to show a few important bits
 	// 1.) HAM
 	int maxHam = DroidMechanics::determineHam(overallQuality,species);
@@ -169,9 +167,9 @@ void DroidDeedImplementation::destroyObjectFromDatabase(bool destroyContainedObj
 		if (comp != NULL)
 			comp->destroyObjectFromDatabase(true);
 	}
-	
+
 	modules.removeAll();
-	
+
 	DeedImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 }
 
@@ -200,7 +198,6 @@ void DroidDeedImplementation::updateCraftingValues(CraftingValues* values, bool 
 	if (combatRating < 0)
 		combatRating = 0;
 	// @TODO Add crafting values, this should adjust toHit and Speed based on droid ham, also
-
 	// we need to stack modules if they are stackable.
 	// walk all components and ensure we have all modules that are stackable there.
 
@@ -222,7 +219,7 @@ void DroidDeedImplementation::updateCraftingValues(CraftingValues* values, bool 
 						for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {
 							ManagedReference<SceneObject*> sceno = satchel->getContainerObject(i);
 							if (sceno != NULL) {
-								// now we have the componet used in this socket item
+								// now we have the component used in this socket item
 								ManagedReference<DroidComponent*> sub = cast<DroidComponent*>( sceno.get());
 								if (sub != NULL) {
 									DataObjectComponentReference* data = sub->getDataObjectComponent();
@@ -354,27 +351,27 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 				droid->setMaxHAM(i, maxHam / 10, false);
 			}
 		}
-		
-		// this will change to use stacked modules. we wont care about non droid modules as they arent needed.
+
+		// this will change to use stacked modules. we wont care about non droid modules as they aren't needed.
 		ManagedReference<SceneObject*> craftingComponentsSatchel = droid->getCraftedComponentsSatchel();
-		
+
 		String key;
 		ManagedReference<DroidComponent*> comp = NULL;
 		HashTableIterator<String, ManagedReference<DroidComponent*> > iterator = modules.iterator();
-		
+
 		for (int i = 0; i < modules.size(); ++i) {
 			iterator.getNextKeyAndValue(key, comp);
 			if (comp != NULL) {
 				if (!craftingComponentsSatchel->transferObject(comp, -1, false)) {
 					error("Error transferring droid module from Deed to Object");
 				}
-				
+
 				BaseDroidModuleComponent* data = cast<BaseDroidModuleComponent*>(comp->getDataObjectComponent()->get());
 				if (data != NULL)
 					data->initialize(droid);
 			}
 		}
-		
+
 		modules.removeAll();
 
 		// Create our transient modules based on the stored physical components
