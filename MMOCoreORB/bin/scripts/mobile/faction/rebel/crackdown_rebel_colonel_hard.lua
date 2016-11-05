@@ -1,18 +1,18 @@
-crackdown_rebel_guard_captain = Creature:new {
-	objectName = "@mob/creature_names:crackdown_rebel_guard_captain",
+crackdown_rebel_colonel_hard = Creature:new {
+	objectName = "@mob/creature_names:crackdown_rebel_colonel_hard",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	socialGroup = "rebel",
 	faction = "rebel",
-	level = 41,
-	chanceHit = 0.46,
-	damageMin = 340,
-	damageMax = 450,
-	baseXp = 4500,
-	baseHAM = 9200,
-	baseHAMmax = 12800,
-	armor = 0,
-	resists = {0,0,40,0,0,0,0,-1,-1},
+	level = 64,
+	chanceHit = 0.65,
+	damageMin = 430,
+	damageMax = 640,
+	baseXp = 6543,
+	baseHAM = 12800,
+	baseHAMmax = 17300,
+	armor = 1,
+	resists = {115,115,10,10,10,-1,10,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -28,9 +28,12 @@ crackdown_rebel_guard_captain = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-		"object/mobile/dressed_rebel_specforce_captain_moncal_female_01.iff",
-		"object/mobile/dressed_rebel_specforce_captain_rodian_female_01.iff"
-	},
+		"object/mobile/dressed_rebel_colonel_bothan_male.iff",
+		"object/mobile/dressed_rebel_colonel_fat_zabrak_male.iff",
+		"object/mobile/dressed_rebel_colonel_moncal_female.iff",
+		"object/mobile/dressed_rebel_colonel_old_human_female.iff",
+		"object/mobile/dressed_rebel_colonel_sullustan_male_01.iff",
+		"object/mobile/dressed_rebel_colonel_twk_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -44,15 +47,14 @@ crackdown_rebel_guard_captain = Creature:new {
 				{group = "armor_attachments", chance = 100000},
 				{group = "rebel_officer_common", chance = 450000},
 				{group = "wearables_common", chance = 1000000}
-			},
-			lootChance = 3000000
+			}
 		}
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "rebelRecruiterConvoTemplate",
 	reactionStf = "@npc_reaction/military",
 	personalityStf = "@hireling/hireling_military",
-	attacks = merge(commandomid,pistoleermaster,carbineermaster,brawlermid)
+	attacks = merge(commandonovice,marksmanmaster,carbineermaster,pistoleermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(crackdown_rebel_guard_captain, "crackdown_rebel_guard_captain")
+CreatureTemplates:addCreatureTemplate(crackdown_rebel_colonel_hard, "crackdown_rebel_colonel_hard")

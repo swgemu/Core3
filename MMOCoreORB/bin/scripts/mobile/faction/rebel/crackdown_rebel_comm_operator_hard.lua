@@ -1,16 +1,16 @@
-crackdown_rebel_guardsman = Creature:new {
-	objectName = "@mob/creature_names:crackdown_rebel_guardsman",
+crackdown_rebel_comm_operator_hard = Creature:new {
+	objectName = "@mob/creature_names:crackdown_rebel_comm_operator_hard",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	socialGroup = "rebel",
 	faction = "rebel",
-	level = 35,
-	chanceHit = 0.36,
+	level = 41,
+	chanceHit = 0.46,
 	damageMin = 340,
-	damageMax = 350,
-	baseXp = 3545,
-	baseHAM = 8200,
-	baseHAMmax = 10800,
+	damageMax = 450,
+	baseXp = 4045,
+	baseHAM = 10200,
+	baseHAMmax = 12800,
 	armor = 0,
 	resists = {0,0,40,0,0,0,0,-1,-1},
 	meatType = "",
@@ -27,10 +27,7 @@ crackdown_rebel_guardsman = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {
-		"object/mobile/dressed_rebel_trooper_twk_male_01.iff",
-		"object/mobile/dressed_rebel_trooper_sullustan_male_01.iff"
-	},
+	templates = {"object/mobile/dressed_rebel_scout_human_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -51,7 +48,7 @@ crackdown_rebel_guardsman = Creature:new {
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
 	personalityStf = "@hireling/hireling_military",
-	attacks = merge(commandonovice,pistoleermid,carbineermaster,brawlermid)
+	attacks = merge(commandonovice,pistoleermid,carbineernovice)
 }
 
-CreatureTemplates:addCreatureTemplate(crackdown_rebel_guardsman, "crackdown_rebel_guardsman")
+CreatureTemplates:addCreatureTemplate(crackdown_rebel_comm_operator_hard, "crackdown_rebel_comm_operator_hard")

@@ -1,18 +1,18 @@
-rebel_sergeant = Creature:new {
-	objectName = "@mob/creature_names:rebel_sergeant",
+crackdown_rebel_sergeant_hard = Creature:new {
+	objectName = "@mob/creature_names:crackdown_rebel_sergeant_hard",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	socialGroup = "rebel",
 	faction = "rebel",
-	level = 16,
-	chanceHit = 0.31,
-	damageMin = 170,
-	damageMax = 180,
-	baseXp = 960,
-	baseHAM = 2900,
-	baseHAMmax = 3500,
-	armor = 0,
-	resists = {5,5,5,5,5,5,5,-1,-1},
+	level = 56,
+	chanceHit = 0.51,
+	damageMin = 470,
+	damageMax = 580,
+	baseXp = 5600,
+	baseHAM = 10000,
+	baseHAMmax = 13500,
+	armor = 1,
+	resists = {105,5,5,5,5,5,5,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -53,7 +53,7 @@ rebel_sergeant = Creature:new {
 	conversationTemplate = "rebelRecruiterConvoTemplate",
 	reactionStf = "@npc_reaction/military",
 	personalityStf = "@hireling/hireling_military",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmaster,riflemannovice,carbineermaster,pistoleermid)
 }
 
-CreatureTemplates:addCreatureTemplate(rebel_sergeant, "rebel_sergeant")
+CreatureTemplates:addCreatureTemplate(crackdown_rebel_sergeant_hard, "crackdown_rebel_sergeant_hard")

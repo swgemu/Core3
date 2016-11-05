@@ -1,5 +1,5 @@
-rebel_sergeant = Creature:new {
-	objectName = "@mob/creature_names:rebel_sergeant",
+crackdown_rebel_warrant_officer_ii = Creature:new {
+	objectName = "@mob/creature_names:crackdown_rebel_warrant_officer_ii",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	socialGroup = "rebel",
@@ -12,7 +12,7 @@ rebel_sergeant = Creature:new {
 	baseHAM = 2900,
 	baseHAMmax = 3500,
 	armor = 0,
-	resists = {5,5,5,5,5,5,5,-1,-1},
+	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -28,12 +28,12 @@ rebel_sergeant = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-		"object/mobile/dressed_rebel_sergeant_fat_zabrak_male_01.iff",
-		"object/mobile/dressed_rebel_sergeant_human_male_01.iff",
-		"object/mobile/dressed_rebel_sergeant_moncal_male_01.iff",
-		"object/mobile/dressed_rebel_sergeant_rodian_female_01.iff",
-		"object/mobile/dressed_rebel_sergeant_rodian_male_01.iff",
-		"object/mobile/dressed_rebel_sergeant_twilek_female_old_01.iff"},
+		"object/mobile/dressed_rebel_second_lieutenant_human_female_01.iff",
+		"object/mobile/dressed_rebel_second_lieutenant_rodian_male_01.iff",
+		"object/mobile/dressed_rebel_second_lieutenant_trandoshan_male_01.iff",
+		"object/mobile/dressed_rebel_second_lieutenant_twk_female_01.iff",
+		"object/mobile/dressed_rebel_second_lieutenant_twk_male_01.iff",
+		"object/mobile/dressed_rebel_second_lieutenant_zabrak_female_01.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -53,7 +53,7 @@ rebel_sergeant = Creature:new {
 	conversationTemplate = "rebelRecruiterConvoTemplate",
 	reactionStf = "@npc_reaction/military",
 	personalityStf = "@hireling/hireling_military",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlernovice,marksmanmaster,riflemanmid,carbineermid,pistoleermid)
 }
 
-CreatureTemplates:addCreatureTemplate(rebel_sergeant, "rebel_sergeant")
+CreatureTemplates:addCreatureTemplate(crackdown_rebel_warrant_officer_ii, "crackdown_rebel_warrant_officer_ii")

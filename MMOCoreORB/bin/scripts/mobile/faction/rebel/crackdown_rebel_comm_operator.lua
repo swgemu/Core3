@@ -4,11 +4,11 @@ crackdown_rebel_comm_operator = Creature:new {
 	randomNameTag = true,
 	socialGroup = "rebel",
 	faction = "rebel",
-	level = 1,
+	level = 21,
 	chanceHit = 0.36,
 	damageMin = 240,
 	damageMax = 250,
-	baseXp = 45,
+	baseXp = 2045,
 	baseHAM = 7200,
 	baseHAMmax = 8800,
 	armor = 0,
@@ -46,7 +46,9 @@ crackdown_rebel_comm_operator = Creature:new {
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",
+	attacks = merge(commandonovice,pistoleernovice,carbineernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_rebel_comm_operator, "crackdown_rebel_comm_operator")

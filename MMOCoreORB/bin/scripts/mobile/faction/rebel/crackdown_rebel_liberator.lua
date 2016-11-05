@@ -4,13 +4,13 @@ crackdown_rebel_liberator = Creature:new {
 	randomNameTag = true,
 	socialGroup = "rebel",
 	faction = "rebel",
-	level = 1,
-	chanceHit = 0.36,
-	damageMin = 240,
-	damageMax = 250,
-	baseXp = 45,
-	baseHAM = 7200,
-	baseHAMmax = 8800,
+	level = 41,
+	chanceHit = 0.46,
+	damageMin = 340,
+	damageMax = 450,
+	baseXp = 4145,
+	baseHAM = 9200,
+	baseHAMmax = 11800,
 	armor = 0,
 	resists = {0,0,40,0,0,0,0,-1,-1},
 	meatType = "",
@@ -28,8 +28,13 @@ crackdown_rebel_liberator = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-		"object/mobile/dressed_rebel_trooper_twk_female_01.iff"
-	},
+			"object/mobile/dressed_rebel_trooper_twk_male_01.iff",
+			"object/mobile/dressed_rebel_trooper_twk_female_01.iff",
+			"object/mobile/dressed_rebel_trooper_bith_m_01.iff",
+			"object/mobile/dressed_rebel_trooper_human_female_01.iff",
+			"object/mobile/dressed_rebel_trooper_human_male_01.iff",
+			"object/mobile/dressed_rebel_trooper_sullustan_male_01.iff"
+		},
 	lootGroups = {
 		{
 			groups = {
@@ -48,7 +53,9 @@ crackdown_rebel_liberator = Creature:new {
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",
+	attacks = merge(commandonovice,pistoleermaster,carbineermid)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_rebel_liberator, "crackdown_rebel_liberator")

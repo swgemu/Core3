@@ -4,13 +4,13 @@ crackdown_rebel_elite_sand_rat = Creature:new {
 	randomNameTag = true,
 	socialGroup = "rebel",
 	faction = "rebel",
-	level = 1,
-	chanceHit = 0.36,
-	damageMin = 240,
-	damageMax = 250,
-	baseXp = 45,
-	baseHAM = 7200,
-	baseHAMmax = 8800,
+	level = 71,
+	chanceHit = 0.76,
+	damageMin = 440,
+	damageMax = 750,
+	baseXp = 7045,
+	baseHAM = 13200,
+	baseHAMmax = 18800,
 	armor = 0,
 	resists = {0,0,40,0,0,0,0,-1,-1},
 	meatType = "",
@@ -46,7 +46,9 @@ crackdown_rebel_elite_sand_rat = Creature:new {
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",
+	attacks = merge(commandomid,pistoleermid,carbineermid,brawlermid)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_rebel_elite_sand_rat, "crackdown_rebel_elite_sand_rat")

@@ -1,18 +1,18 @@
-crackdown_rebel_guardsman = Creature:new {
-	objectName = "@mob/creature_names:crackdown_rebel_guardsman",
+crackdown_rebel_guardsman_hard = Creature:new {
+	objectName = "@mob/creature_names:crackdown_rebel_guardsman_hard",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	socialGroup = "rebel",
 	faction = "rebel",
-	level = 35,
-	chanceHit = 0.36,
-	damageMin = 340,
-	damageMax = 350,
-	baseXp = 3545,
-	baseHAM = 8200,
-	baseHAMmax = 10800,
-	armor = 0,
-	resists = {0,0,40,0,0,0,0,-1,-1},
+	level = 75,
+	chanceHit = 0.76,
+	damageMin = 440,
+	damageMax = 750,
+	baseXp = 7045,
+	baseHAM = 13200,
+	baseHAMmax = 18800,
+	armor = 1,
+	resists = {0,0,140,0,0,0,0,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -51,7 +51,7 @@ crackdown_rebel_guardsman = Creature:new {
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
 	personalityStf = "@hireling/hireling_military",
-	attacks = merge(commandonovice,pistoleermid,carbineermaster,brawlermid)
+	attacks = merge(commandonovice,pistoleermaster,carbineermaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(crackdown_rebel_guardsman, "crackdown_rebel_guardsman")
+CreatureTemplates:addCreatureTemplate(crackdown_rebel_guardsman_hard, "crackdown_rebel_guardsman_hard")

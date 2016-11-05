@@ -4,11 +4,11 @@ crackdown_rebel_commando = Creature:new {
 	randomNameTag = true,
 	socialGroup = "rebel",
 	faction = "rebel",
-	level = 1,
+	level = 25,
 	chanceHit = 0.36,
 	damageMin = 240,
 	damageMax = 250,
-	baseXp = 45,
+	baseXp = 2645,
 	baseHAM = 7200,
 	baseHAMmax = 8800,
 	armor = 0,
@@ -27,7 +27,14 @@ crackdown_rebel_commando = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_commando_human_female_01.iff"},
+	templates = {
+			"object/mobile/dressed_rebel_commando_human_female_01.iff",
+			"object/mobile/dressed_rebel_commando_human_male_01.iff",
+			"object/mobile/dressed_rebel_commando_moncal_male_01.iff",
+			"object/mobile/dressed_rebel_commando_rodian_male_01.iff",
+			"object/mobile/dressed_rebel_commando_twilek_female_01.iff",
+			"object/mobile/dressed_rebel_commando_zabrak_female_01.iff"
+		},
 	lootGroups = {
 		{
 			groups = {
@@ -46,7 +53,9 @@ crackdown_rebel_commando = Creature:new {
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",
+	attacks = merge(commandomid,pistoleernovice,carbineermid,brawlermid)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_rebel_commando, "crackdown_rebel_commando")

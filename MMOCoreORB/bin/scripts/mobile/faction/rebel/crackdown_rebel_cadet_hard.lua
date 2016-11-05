@@ -1,18 +1,18 @@
-crackdown_rebel_guardsman = Creature:new {
-	objectName = "@mob/creature_names:crackdown_rebel_guardsman",
+crackdown_rebel_cadet_hard = Creature:new {
+	objectName = "@mob/creature_names:crackdown_rebel_cadet_hard",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	socialGroup = "rebel",
 	faction = "rebel",
-	level = 35,
-	chanceHit = 0.36,
-	damageMin = 340,
-	damageMax = 350,
-	baseXp = 3545,
-	baseHAM = 8200,
-	baseHAMmax = 10800,
-	armor = 0,
-	resists = {0,0,40,0,0,0,0,-1,-1},
+	level = 63,
+	chanceHit = 0.66,
+	damageMin = 440,
+	damageMax = 650,
+	baseXp = 6345,
+	baseHAM = 12200,
+	baseHAMmax = 18800,
+	armor = 1,
+	resists = {0,0,140,0,0,0,0,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -27,10 +27,7 @@ crackdown_rebel_guardsman = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {
-		"object/mobile/dressed_rebel_trooper_twk_male_01.iff",
-		"object/mobile/dressed_rebel_trooper_sullustan_male_01.iff"
-	},
+	templates = {"object/mobile/dressed_mercenary_weak_hum_f.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -51,7 +48,7 @@ crackdown_rebel_guardsman = Creature:new {
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
 	personalityStf = "@hireling/hireling_military",
-	attacks = merge(commandonovice,pistoleermid,carbineermaster,brawlermid)
+	attacks = merge(commandomid,pistoleermid,carbineernovice,brawlernovice)
 }
 
-CreatureTemplates:addCreatureTemplate(crackdown_rebel_guardsman, "crackdown_rebel_guardsman")
+CreatureTemplates:addCreatureTemplate(crackdown_rebel_cadet_hard, "crackdown_rebel_cadet_hard")
