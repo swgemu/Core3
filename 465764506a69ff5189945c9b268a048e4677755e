@@ -34,6 +34,24 @@
       "revId": "465764506a69ff5189945c9b268a048e4677755e",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_2420ea9a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/city.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-11-05T16:57:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_0410464d",
+      "revId": "465764506a69ff5189945c9b268a048e4677755e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
