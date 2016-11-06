@@ -176,6 +176,7 @@ includeFile("village/convos/phase2/qtqc_phase2_conv_handler.lua")
 includeFile("village/convos/phase3/dageerin_phase3_conv_handler.lua")
 includeFile("village/convos/phase4/fs_gadget_specialist_phase4_conv_handler.lua")
 includeFile("village/convos/phase4/chief_engineer_phase4_conv_handler.lua")
+includeFile("village/convos/phase4/med_droid_phase4_conv_handler.lua")
 includeFile("village/convos/phase4/sarguillo_phase4_conv_handler.lua")
 includeFile("village/convos/phase4/sivarra_phase4_conv_handler.lua")
 
