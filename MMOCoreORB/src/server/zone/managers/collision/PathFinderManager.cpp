@@ -118,7 +118,7 @@ void PathFinderManager::getNavMeshCollisions(SortedVector<Reference<NavCollision
 
 		const Vector3& bPos = bounds->center();
 		Vector3 sPos(bPos.getX(), bPos.getZ(), 0);
-		const float radius = bounds->extents()[bounds->longestAxis()] * 0.8;
+		const float radius = bounds->extents()[bounds->longestAxis()] * .975f;
 		float radiusSq = radius*radius;
 
 		//http://www.scratchapixel.com/code.php?id=10&origin=/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes
