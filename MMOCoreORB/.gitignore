@@ -45,4 +45,7 @@ bin/conf/*
 .*.swp
 .ycm_extra_conf.py*
 sql/insert_strings.sql
+build.out
+build.out.prev
+bin/screenlog*
 
