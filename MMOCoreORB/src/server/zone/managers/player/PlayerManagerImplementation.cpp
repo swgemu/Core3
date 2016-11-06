@@ -1323,7 +1323,6 @@ bool PlayerManagerImplementation::checkEncumbrancies(CreatureObject* player, Arm
 		return true;
 }
 
-
 void PlayerManagerImplementation::applyEncumbrancies(CreatureObject* player, ArmorObject* armor) {
 	int healthEncumb = MAX(0, armor->getHealthEncumbrance());
 	int actionEncumb = MAX(0, armor->getActionEncumbrance());
@@ -3288,11 +3287,11 @@ String PlayerManagerImplementation::unbanAccount(PlayerObject* admin, Account* a
 	} catch(Exception& e) {
 		return "Exception unbanning account: " + e.getMessage();
 	}
-	
+
 	Locker locker(account);
 	account->setBanExpires(System::getMiliTime());
 	account->setBanReason(reason);
-	
+
 	return "Account Successfully Unbanned";
 }
 
@@ -3315,26 +3314,26 @@ String PlayerManagerImplementation::banFromGalaxy(PlayerObject* admin, Account* 
 	} catch(Exception& e) {
 		return "Exception banning from galaxy: " + e.getMessage();
 	}
-	
+
 	Locker locker(account);
-	
+
 	Time current;
 	Time expires;
-	
+
 	expires.addMiliTime(seconds*10000);
-	
+
 	Reference<GalaxyBanEntry*> ban = new GalaxyBanEntry();
-	
+
 	ban->setAccountID(account->getAccountID());
 	ban->setBanAdmin(admin->getAccountID());
 	ban->setGalaxyID(galaxy);
-	
+
 	ban->setCreationDate(current);
-	
+
 	ban->setBanExpiration(expires);
-	
+
 	ban->setBanReason(reason);
-	
+
 	account->addGalaxyBan(ban, galaxy);
 
 	try {
@@ -3393,7 +3392,7 @@ String PlayerManagerImplementation::unbanFromGalaxy(PlayerObject* admin, Account
 
 	Locker locker(account);
 	account->removeGalaxyBan(galaxy);
-	
+
 	return "Successfully Unbanned from Galaxy";
 }
 
@@ -3411,7 +3410,6 @@ String PlayerManagerImplementation::banCharacter(PlayerObject* admin, Account* a
 	String escapedName = name;
 	Database::escapeString(escapedName);
 
-	
 	try {
 		StringBuffer query;
 		query << "INSERT INTO character_bans values (NULL, " << account->getAccountID() << ", " << admin->getAccountID() << ", " << galaxyID << ", '" << escapedName << "', " <<  "now(), UNIX_TIMESTAMP() + " << seconds << ", '" << escapedReason << "');";
@@ -3420,24 +3418,24 @@ String PlayerManagerImplementation::banCharacter(PlayerObject* admin, Account* a
 	} catch(Exception& e) {
 		return "Exception banning character: " + e.getMessage();
 	}
-	
+
 	Locker locker(account);
-	
+
 	Reference<CharacterList*> characters = account->getCharacterList();
-	
+
 	for (int i=0; i<characters->size(); i++) {
 		CharacterListEntry& entry = characters->get(i);
-		
+
 		if (entry.getFirstName() == name && entry.getGalaxyID() == galaxyID) {
 			Time expires;
 			expires.addMiliTime(seconds*1000);
-			
+
 			entry.setBanReason(reason);
 			entry.setBanAdmin(admin->getAccountID());
 			entry.setBanExpiration(expires);
 		}
 	}
-	
+
 	locker.release();
 
 	try {
@@ -3490,13 +3488,13 @@ String PlayerManagerImplementation::unbanCharacter(PlayerObject* admin, Account*
 
 	Locker locker(account);
 	CharacterListEntry *entry = account->getCharacterBan(galaxyID, name);
-	
+
 	if (entry != NULL) {
 		Time now;
 		entry->setBanExpiration(now);
 		entry->setBanReason(reason);
 	}
-	
+
 	return "Character Successfully Unbanned";
 }
 
@@ -3903,8 +3901,10 @@ void PlayerManagerImplementation::proposeUnity( CreatureObject* askingPlayer, Cr
 		return;
 	}
 
-	// TODO: Check facing
-	// askingPlayer->sendSystemMessage("@unity:bad_facing");// "You must be facing your target to properly propose!"
+	if (!askingPlayer->isFacingObject(respondingPlayer)) {
+		askingPlayer->sendSystemMessage("@unity:bad_facing"); // "You must be facing your target to properly propose!"
+		return;
+	}
 
 	// Check if asking player has a proposal outstanding
 	if( askingPlayer->getActiveSession(SessionFacadeType::PROPOSEUNITY) != NULL ){
