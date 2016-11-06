@@ -1001,6 +1001,15 @@ tatooine_world = {
 			size = 25
 		},
 		{
+			lairTemplateName = "tatooine_cu_pa_wasteland_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 19,
+			maxDifficulty = 23,
+			numberToSpawn = 0,
+			weighting = 6,
+			size = 25
+		},
+		{
 			lairTemplateName = "tatooine_tusken_raider_patrol_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 19,

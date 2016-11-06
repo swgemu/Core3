@@ -641,6 +641,15 @@ rori_world = {
 			size = 20
 		},
 		{
+			lairTemplateName = "rori_bearded_jax_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 11,
+			maxDifficulty = 15,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 20
+		},
+		{
 			lairTemplateName = "rori_wood_mite_lair_neutral_small_04",
 			spawnLimit = -1,
 			minDifficulty = 14,
