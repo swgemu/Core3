@@ -66,7 +66,7 @@ function CityScreenPlay:onDespawn(pAiAgent)
 	local mobNumber = readData(oid)
 	deleteData(oid)
 
-	createEvent(300000, self.screenplayName, "respawn", nil, tostring(mobnumber))
+	createEvent(300000, self.screenplayName, "respawn", nil, tostring(mobNumber))
 
 	return 1
 end
