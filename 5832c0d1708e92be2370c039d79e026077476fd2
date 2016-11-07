@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_84a0b6f5",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/ai/AiAgent.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 1282,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-07T00:43:44Z",
+      "side": 1,
+      "message": "@preLocked",
+      "revId": "5832c0d1708e92be2370c039d79e026077476fd2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_24a54a04",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/ai/AiAgent.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-07T00:43:44Z",
+      "side": 1,
+      "message": "@preLocked",
+      "revId": "5832c0d1708e92be2370c039d79e026077476fd2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_44aaced5",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/ai/LuaAiAgent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-07T00:43:44Z",
+      "side": 1,
+      "message": "Lock realObject first",
+      "revId": "5832c0d1708e92be2370c039d79e026077476fd2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_e4ae62e7",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/ai/LuaAiAgent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-07T00:43:44Z",
+      "side": 1,
+      "message": "Lock realObject first",
+      "revId": "5832c0d1708e92be2370c039d79e026077476fd2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
