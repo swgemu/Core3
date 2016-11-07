@@ -16,6 +16,24 @@
       "revId": "9d62e78e6428553574f56c0a9c9e331c688b0bbc",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_04c12680",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/TakeCoverCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1809
+      },
+      "writtenOn": "2016-11-07T01:46:41Z",
+      "side": 1,
+      "message": "No, but if you look at the previous \u0027ToDo\u0027 message below from the prior code, it said \"//Correct system message\" .  I\u0027m not sure who wrote that ToDo, or when, but i interpreted that as a need to make the msg customized (since the cover doesn\u0027t really \"fail\" persay, it\u0027s just that players don\u0027t have enough ACTION to execute it.  Unfortunately there isn\u0027t a similar existing SOE string msg, although i did consider using: string/en/performance.stf\t49\teffect_too_tired\tYou are too tired to execute this special effect. )",
+      "parentUuid": "bada0100_a4e61a43",
+      "revId": "9d62e78e6428553574f56c0a9c9e331c688b0bbc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
