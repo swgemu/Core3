@@ -344,7 +344,7 @@ int LuaAiAgent::setLevel(lua_State* L) {
 
 int LuaAiAgent::setWait(lua_State* L) {
 	float seconds = lua_tonumber(L, -1);
-
+	Locker locker(realObject);
 	realObject->setWait((int)(seconds*1000));
 
 	return 0;
@@ -367,6 +367,7 @@ int LuaAiAgent::isWaiting(lua_State* L) {
 }
 
 int LuaAiAgent::stopWaiting(lua_State* L) {
+	Locker locker(realObject);
 	realObject->stopWaiting();
 
 	return 0;
@@ -375,6 +376,7 @@ int LuaAiAgent::stopWaiting(lua_State* L) {
 int LuaAiAgent::setCurrentSpeed(lua_State* L) {
 	float currentSpeed = lua_tonumber(L, -1);
 
+	Locker locker(realObject);
 	realObject->setCurrentSpeed(currentSpeed);
 
 	return 0;
@@ -772,6 +774,7 @@ int LuaAiAgent::activateAwareness(lua_State* L) {
 int LuaAiAgent::setBehaviorStatus(lua_State* L) {
 	uint8 status = (uint8) lua_tointeger(L, -1);
 
+	Locker locker(realObject);
 	realObject->setBehaviorStatus(status);
 
 	return 0;
