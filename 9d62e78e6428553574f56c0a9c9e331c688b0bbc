@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_a4e61a43",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/TakeCoverCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-07T01:27:21Z",
+      "side": 1,
+      "message": "Do you have evidence for not using a client string?",
+      "revId": "9d62e78e6428553574f56c0a9c9e331c688b0bbc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
