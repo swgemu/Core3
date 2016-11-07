@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_a48ffa74",
+        "filename": "MMOCoreORB/src/server/zone/managers/structure/StructureManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-07T01:18:14Z",
+      "side": 1,
+      "message": "This message makes no sense here.",
+      "revId": "ebd3f4db2ae6eaacfb0b6dc8ef9ac8035e82520e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_64e9121a",
+        "filename": "MMOCoreORB/src/server/zone/managers/structure/StructureManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1047,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-07T01:18:14Z",
+      "side": 1,
+      "message": "Ditto with here",
+      "revId": "ebd3f4db2ae6eaacfb0b6dc8ef9ac8035e82520e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_e4dc2277",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/StructurePayMaintenanceSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-07T01:18:14Z",
+      "side": 1,
+      "message": "invalid_target would make more sense here.",
+      "revId": "ebd3f4db2ae6eaacfb0b6dc8ef9ac8035e82520e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_44f88ee5",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/StructurePayUncondemnMaintenanceSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-07T01:18:14Z",
+      "side": 1,
+      "message": "invalid_target would make more sense here.",
+      "revId": "ebd3f4db2ae6eaacfb0b6dc8ef9ac8035e82520e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
