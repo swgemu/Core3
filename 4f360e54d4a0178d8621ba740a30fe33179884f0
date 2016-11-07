@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_a4b85a2b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_jedi_manager_township.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-07T01:06:46Z",
+      "side": 1,
+      "message": "I would move this to the end after all the sceneobjects, etc. have been spawned.",
+      "revId": "4f360e54d4a0178d8621ba740a30fe33179884f0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_c4b55e32",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_raids.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-07T01:06:46Z",
+      "side": 1,
+      "message": "I would just call this lifespan. These victims aren\u0027t enemies so calling it enemyLifespan isn\u0027t exactly accurate.",
+      "revId": "4f360e54d4a0178d8621ba740a30fe33179884f0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_64827254",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/LuaSceneObject.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-07T01:06:46Z",
+      "side": 1,
+      "message": "Since you eliminated the need for these changes, I would revert them",
+      "revId": "4f360e54d4a0178d8621ba740a30fe33179884f0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
