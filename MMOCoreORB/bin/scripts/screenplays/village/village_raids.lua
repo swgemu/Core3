@@ -207,6 +207,10 @@ function VillageRaids:setupSpawnedRaider(pMobile, pSpawner)
 		return
 	end
 
+	createEvent(10, "VillageRaids", "setupSpawnedRaiderAi", pMobile, "")
+end
+
+function VillageRaids:setupSpawnedRaiderAi(pMobile)
 	AiAgent(pMobile):setAiTemplate("villageraider")
 	AiAgent(pMobile):setFollowState(4)
 
@@ -221,7 +225,7 @@ function VillageRaids:startAttackerPatrolPath(pMobile)
 	end
 
 	if (AiAgent(pMobile):isInCombat()) then
-		createEvent(30 * 1000, "VillageRaids", "startAttackerPatrolPath", pMobile "")
+		createEvent(30 * 1000, "VillageRaids", "startAttackerPatrolPath", pMobile, "")
 		return
 	end
 
