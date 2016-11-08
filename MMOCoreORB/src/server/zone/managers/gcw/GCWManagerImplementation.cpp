@@ -52,13 +52,7 @@ void GCWManagerImplementation::initialize() {
 }
 
 void GCWManagerImplementation::start() {
-	// randomize a bit so every zone doesn't run it's check at the same time
-	uint64 timer = (uint64)(System::random(gcwCheckTimer / 4) + gcwCheckTimer) * 1000;
-
-	CheckGCWTask* task = new CheckGCWTask(_this.getReferenceUnsafeStaticCast());
-	task->schedule(timer);
-
-	updateWinningFaction();
+	performGCWTasks(true);
 }
 
 void GCWManagerImplementation::loadLuaConfig() {
@@ -186,7 +180,7 @@ void GCWManagerImplementation::stop() {
 	gcwDestroyTasks.removeAll();
 }
 
-void GCWManagerImplementation::performGCWTasks() {
+void GCWManagerImplementation::performGCWTasks(bool initial) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	int totalBase = gcwBaseList.size();
@@ -194,8 +188,8 @@ void GCWManagerImplementation::performGCWTasks() {
 	info("Checking " + String::valueOf(totalBase) + " bases", true);
 
 	uint64 thisOid;
-	int rebelCheck = 0;
-	int imperialCheck = 0;
+	int rebelCheck = 0, rebelsScore = 0;
+	int imperialCheck = 0, imperialsScore = 0;
 
 	for (int i = 0; i < gcwBaseList.size(); i++) {
 		thisOid = getBase(i)->getObjectID();
@@ -205,21 +199,40 @@ void GCWManagerImplementation::performGCWTasks() {
 		if (building == NULL)
 			continue;
 
-		if (building->getFaction() == Factions::FACTIONREBEL)
+		String templateString = building->getObjectTemplate()->getFullTemplateString();
+		int pointsValue = getPointValue(templateString);
+
+		if (building->getFaction() == Factions::FACTIONREBEL) {
 			rebelCheck++;
-		else if (building->getFaction() == Factions::FACTIONIMPERIAL)
+
+			if (pointsValue > -1)
+				rebelsScore += pointsValue;
+		} else if (building->getFaction() == Factions::FACTIONIMPERIAL) {
 			imperialCheck++;
+
+			if (pointsValue > -1)
+				imperialsScore += pointsValue;
+		}
 
 		verifyTurrets(building);
 	}
 
 	setRebelBaseCount(rebelCheck);
 	setImperialBaseCount(imperialCheck);
+	setRebelScore(rebelsScore);
+	setImperialScore(imperialsScore);
 
 	updateWinningFaction();
 
+	uint64 timer = gcwCheckTimer * 1000;
+
+	if (initial) {
+		// randomize a bit so every zone doesn't run it's check at the same time
+		timer = (uint64)(System::random(gcwCheckTimer / 4) + gcwCheckTimer) * 1000;
+	}
+
 	CheckGCWTask* task = new CheckGCWTask(_this.getReferenceUnsafeStaticCast());
-	task->schedule(gcwCheckTimer * 1000);
+	task->schedule(timer);
 }
 
 void GCWManagerImplementation::verifyTurrets(BuildingObject* building) {
@@ -296,7 +309,7 @@ int GCWManagerImplementation::getBaseCount(CreatureObject* creature) {
 	return baseCount;
 }
 
-void GCWManagerImplementation::updateWinningFaction()  {
+void GCWManagerImplementation::updateWinningFaction() {
 	int score = 0;
 	int rebelScore = getRebelScore();
 	int imperialScore = getImperialScore();
@@ -388,19 +401,6 @@ void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool in
 			addBase(building);
 			checkVulnerabilityData(building);
 		}
-
-		String templateString = building->getObjectTemplate()->getFullTemplateString();
-
-		int pointsValue = getPointValue(templateString);
-
-		if (pointsValue > -1) {
-			if (building->getFaction() == Factions::FACTIONREBEL)
-				setRebelScore(getRebelScore() + pointsValue);
-			else if (building->getFaction() == Factions::FACTIONIMPERIAL)
-				setImperialScore(getImperialScore() + pointsValue);
-		} else {
-			info("ERROR looking up value for GCW Base: " + templateString, true);
-		}
 	} else {
 		error("Building already in gcwBaseList");
 	}
@@ -416,19 +416,6 @@ void GCWManagerImplementation::unregisterGCWBase(BuildingObject* building) {
 
 		else if (building->getFaction() == Factions::FACTIONREBEL)
 			rebelBases--;
-
-		String templateString = building->getObjectTemplate()->getFullTemplateString();
-
-		int pointsValue = getPointValue(templateString);
-
-		if (pointsValue > -1) {
-			if (building->getFaction() == Factions::FACTIONREBEL)
-				setRebelScore(getRebelScore() - pointsValue);
-			else if (building->getFaction() == Factions::FACTIONIMPERIAL)
-				setImperialScore(getImperialScore() - pointsValue);
-
-		} else
-			info("ERROR looking up value for GCW Base: " + templateString, true);
 	}
 
 	Reference<Task*> oldStartTask = getStartTask(building->getObjectID());
