@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_44b96ee8",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/ContrabandScanTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2016-11-08T02:29:32Z",
+      "side": 1,
+      "message": "Locker locker(player);\nLocker crossLocker(scanner, player);",
+      "revId": "44fef51146467c98e3975895276511528bec202b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_e4cd0288",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/ContrabandScanTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2016-11-08T02:29:32Z",
+      "side": 1,
+      "message": "zone could be null if the AI for some reason despaired",
+      "revId": "44fef51146467c98e3975895276511528bec202b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
