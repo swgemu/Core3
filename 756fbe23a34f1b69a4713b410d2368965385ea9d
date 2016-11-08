@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_449e4e58",
+        "filename": "MMOCoreORB/src/server/zone/managers/weather/WeatherManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-08T13:07:04Z",
+      "side": 1,
+      "message": "Don\u0027t add this as it will never be true (It\u0027s checked for in applySandstormDamage() before calling calculateSandstormProtection())",
+      "revId": "756fbe23a34f1b69a4713b410d2368965385ea9d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
