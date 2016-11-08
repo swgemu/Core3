@@ -31,6 +31,9 @@ class GCWManager extends ManagedService implements Logger {
 	public static final int PLAYERFACTIONBASE = 1;
 	public static final int STATICFACTIONBASE = 2;
 
+	private static final int CONTRABANDSCANSCHEDULETIME = 1000;
+	private static final int CONTRABANDSCANCOOLDOWN = 10000;
+
 	private Zone zone;
 
 	@dereferenced
