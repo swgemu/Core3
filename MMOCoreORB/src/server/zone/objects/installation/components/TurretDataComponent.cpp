@@ -66,7 +66,7 @@ Vector<CreatureObject*> TurretDataComponent::getAvailableTargets(bool aggroOnly)
 }
 
 CreatureObject* TurretDataComponent::selectTarget() {
-	ManagedReference<SceneObject*> turret = getParent();
+	ManagedReference<TangibleObject*> turret = cast<TangibleObject*>(getParent());
 
 	if (turret == NULL)
 		return NULL;
@@ -75,7 +75,9 @@ CreatureObject* TurretDataComponent::selectTarget() {
 
 	bool isVillageTurret = turret->getObjectTemplate()->getFullTemplateString().contains("turret_fs_village");
 
-	if (!isVillageTurret || (lastTarget == NULL || lastTarget->isDead() || lastTarget->isIncapacitated())) {
+	if (!isVillageTurret || (lastTarget == NULL || !checkTarget(lastTarget, turret, true))) {
+		lastAutoTarget = NULL;
+
 		Vector<CreatureObject*> targets = getAvailableTargets(true);
 
 		if (targets.size() == 0)
@@ -92,17 +94,14 @@ bool TurretDataComponent::checkTarget(CreatureObject* creature, TangibleObject* 
 	if (creature == NULL || turret == NULL)
 		return false;
 
-	if (!creature->isAttackableBy(turret) || !turret->isInRange(creature, maxRange)) {
+	if (!creature->isAttackableBy(turret) || !turret->isInRange(creature, maxRange))
 		return false;
-	}
 
-	if (aggroOnly && !turret->hasDefender(creature) && !turret->isAggressiveTo(creature)) {
+	if (aggroOnly && !turret->hasDefender(creature) && !turret->isAggressiveTo(creature))
 		return false;
-	}
 
-	if (!CollisionManager::checkLineOfSight(creature, turret)) {
+	if (!CollisionManager::checkLineOfSight(creature, turret))
 		return false;
-	}
 
 	return true;
 }
