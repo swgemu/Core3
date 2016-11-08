@@ -2519,8 +2519,8 @@ void GCWManagerImplementation::runCrackdownScan(AiAgent* scanner, CreatureObject
 
 	if (scanner->checkCooldownRecovery("crackdown_scan") && player->checkCooldownRecovery("crackdown_scan")) {
 		Reference<Task*> contrabandScanTask = new ContrabandScanTask(scanner, player);
-		contrabandScanTask->schedule(1000);
-		scanner->updateCooldownTimer("crackdown_scan", 10 * 1000);
-		player->updateCooldownTimer("crackdown_scan", 30 * 1000);
+		contrabandScanTask->schedule(CONTRABANDSCANSCHEDULETIME);
+		scanner->updateCooldownTimer("crackdown_scan", CONTRABANDSCANCOOLDOWN);
+		player->updateCooldownTimer("crackdown_scan", CONTRABANDSCANCOOLDOWN);
 	}
 }
