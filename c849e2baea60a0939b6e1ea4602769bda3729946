@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_a4485acd",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/ContrabandScanTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-11-09T02:06:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_443ace37",
+      "revId": "c849e2baea60a0939b6e1ea4602769bda3729946",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_e43e6229",
         "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/ContrabandScanTask.h",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2016-11-09T01:39:32Z",
       "side": 1,
       "message": "isDead?",
+      "revId": "c849e2baea60a0939b6e1ea4602769bda3729946",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_c4455eb4",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/ContrabandScanTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-11-09T02:06:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_e43e6229",
       "revId": "c849e2baea60a0939b6e1ea4602769bda3729946",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
