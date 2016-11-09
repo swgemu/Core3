@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_a41ffab6",
+        "filename": "MMOCoreORB/src/server/zone/managers/structure/StructureManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1809
+      },
+      "writtenOn": "2016-11-09T05:58:06Z",
+      "side": 1,
+      "message": "Any suggestions?  That was the best i could find.  Although i suppose we could add a \u0027custom\u0027 msg ?",
+      "parentUuid": "bada0100_a48ffa74",
+      "revId": "ebd3f4db2ae6eaacfb0b6dc8ef9ac8035e82520e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_64e9121a",
         "filename": "MMOCoreORB/src/server/zone/managers/structure/StructureManager.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-11-07T01:18:14Z",
       "side": 1,
       "message": "Ditto with here",
+      "revId": "ebd3f4db2ae6eaacfb0b6dc8ef9ac8035e82520e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_c41c7ec4",
+        "filename": "MMOCoreORB/src/server/zone/managers/structure/StructureManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1047,
+      "author": {
+        "id": 1809
+      },
+      "writtenOn": "2016-11-09T05:58:06Z",
+      "side": 1,
+      "message": "See above comment/query ^",
+      "parentUuid": "bada0100_64e9121a",
       "revId": "ebd3f4db2ae6eaacfb0b6dc8ef9ac8035e82520e",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
