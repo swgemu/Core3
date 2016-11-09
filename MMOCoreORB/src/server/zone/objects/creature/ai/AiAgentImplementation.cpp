@@ -1229,7 +1229,11 @@ void AiAgentImplementation::clearCombatState(bool clearDefenders) {
 		threatMap->removeAll();
 
 	notifyObservers(ObserverEventType::PEACE);
-	sendReactionChat(ReactionManager::CALM);
+
+	if (isDead())
+		sendReactionChat(ReactionManager::NONE);
+	else
+		sendReactionChat(ReactionManager::CALM);
 }
 
 void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
@@ -3216,7 +3220,7 @@ String AiAgentImplementation::getPersonalityStf() {
 }
 
 void AiAgentImplementation::sendReactionChat(int type, int state, bool force) {
-	if (!getCooldownTimerMap()->isPast("reaction_chat") || getZone() == NULL) {
+	if (!getCooldownTimerMap()->isPast("reaction_chat") || getZone() == NULL || isDead()) {
 		return;
 	}
 

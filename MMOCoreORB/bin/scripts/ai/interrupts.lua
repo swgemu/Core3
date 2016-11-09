@@ -152,7 +152,12 @@ function PackInterrupt:startCombatInterrupt(pAgent, pObject)
 				end
 			end
 
-			-- if the source is not an AiAgent (like a lair) then don't check social group
+			--If the source is not an AiAgent (like a lair) or is already dead (see below) then don't check social group
+
+			local creoAgent = CreatureObject1(pAgent)
+			if creoAgent:isDead() then
+				return
+			end
 			-- TODO (dannuic): change the range to calculate based on level difference and ferocity
 			agent = AiAgent(pAgent)
 
