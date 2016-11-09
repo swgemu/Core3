@@ -163,7 +163,8 @@ void StructureMaintenanceTask::sendMailDecay(CreatureObject* owner, StructureObj
 		emailBody.setTO("(" + String::valueOf((int)structure->getPositionX()) + ", " + String::valueOf((int)structure->getPositionY()) + " on " + zoneName + ")");
 		emailBody.setDI(structure->getDecayPercentage());
 
-		chatManager->sendMail("@player_structure:your_structure_prefix", subject, emailBody, owner->getFirstName());
+		if (structure->getZone() != NULL)
+			chatManager->sendMail("@player_structure:your_structure_prefix", subject, emailBody, owner->getFirstName());
 	}
 }
 
@@ -184,7 +185,9 @@ void StructureMaintenanceTask::sendMailCondemned(CreatureObject* owner, Structur
 		emailBody.setTT(structure->getObjectName());
 		emailBody.setTO("(" + String::valueOf((int)structure->getPositionX()) + ", " + String::valueOf((int)structure->getPositionY()) + " on " + zoneName + ")");
 		emailBody.setDI(-structure->getSurplusMaintenance());
-		chatManager->sendMail("@player_structure:your_structure_prefix", subject, emailBody, owner->getFirstName());
+
+		if (structure->getZone() != NULL)
+			chatManager->sendMail("@player_structure:your_structure_prefix", subject, emailBody, owner->getFirstName());
 	}
 }
 
