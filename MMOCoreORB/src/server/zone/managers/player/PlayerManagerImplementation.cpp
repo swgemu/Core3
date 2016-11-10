@@ -4033,7 +4033,7 @@ void PlayerManagerImplementation::acceptUnity( CreatureObject* respondingPlayer 
 	bool hasRing = false;
 	for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 		ManagedReference<WearableObject*> wearable = cast<WearableObject*>(inventory->getContainerObject(i).get());
-		if( wearable != NULL && wearable->getGameObjectType() == SceneObjectType::RING && !wearable->isEquipped() ){
+		if( wearable != NULL && wearable->getGameObjectType() == SceneObjectType::RING ){
 			hasRing = true;
 		}
 	}
@@ -4056,7 +4056,7 @@ void PlayerManagerImplementation::acceptUnity( CreatureObject* respondingPlayer 
 
 	for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 		ManagedReference<WearableObject*> wearable = cast<WearableObject*>(inventory->getContainerObject(i).get());
-		if( wearable != NULL && wearable->getGameObjectType() == SceneObjectType::RING && !wearable->isEquipped() && !wearable->isNoTrade() ){
+		if( wearable != NULL && wearable->getGameObjectType() == SceneObjectType::RING && !wearable->isNoTrade() ){
 			String itemName = wearable->getDisplayedName();
 			box->addMenuItem(itemName, wearable->getObjectID());
 		}
@@ -4114,7 +4114,7 @@ void PlayerManagerImplementation::completeUnity( CreatureObject* respondingPlaye
 	ManagedReference<WearableObject*> respondingRing = NULL;
 	for (int i = 0; i < respondingPlayerInventory->getContainerObjectsSize(); i++) {
 		wearable = cast<WearableObject*>(respondingPlayerInventory->getContainerObject(i).get());
-		if( wearable != NULL && wearable->getObjectID() == respondingPlayerRingId && !wearable->isEquipped() ){
+		if( wearable != NULL && wearable->getObjectID() == respondingPlayerRingId ){
 			respondingRing = wearable;
 			break;
 		}
@@ -4125,12 +4125,11 @@ void PlayerManagerImplementation::completeUnity( CreatureObject* respondingPlaye
 	ManagedReference<WearableObject*> askingRing = NULL;
 	for (int i = 0; i < askingPlayerInventory->getContainerObjectsSize(); i++) {
 		wearable = cast<WearableObject*>(askingPlayerInventory->getContainerObject(i).get());
-		if( wearable != NULL && wearable->getObjectID() == proposeUnitySession->getAskingPlayerRing() && !wearable->isEquipped() ){
+		if( wearable != NULL && wearable->getObjectID() == proposeUnitySession->getAskingPlayerRing() ){
 			askingRing = wearable;
 			break;
 		}
 	}
-
 
 	// Rings not found
 	if( respondingRing == NULL || askingRing == NULL ){

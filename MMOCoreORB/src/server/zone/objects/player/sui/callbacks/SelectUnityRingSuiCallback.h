@@ -39,11 +39,10 @@ public:
 		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 		uint64 itemId = listBox->getMenuObjectID(index);
 
-		// Finialize unity proposal
+		// Finalize unity proposal
 		playerManager->completeUnity( player, itemId );
 
 	}
 };
-
 
 #endif /* SELECTUNITYRINGSUICALLBACK_H_ */
