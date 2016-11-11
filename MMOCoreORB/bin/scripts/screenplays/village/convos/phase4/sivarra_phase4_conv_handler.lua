@@ -65,6 +65,7 @@ function villageSivarraPhase4ConvoHandler:runScreenHandlers(pConvTemplate, pPlay
 		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_COMBAT_HEALING_1)
 		VillageJediManagerCommon.unlockBranch(pPlayer, "force_sensitive_heightened_senses_healing")
 	elseif (screenID == "choose_certain") then
+		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
 		FsVillageDefense:acceptHealingQuest(pPlayer)
 	end
 

@@ -203,8 +203,8 @@ function SuiRadiationSensor:setLocation(pCreature, x, y, planet)
 
 	local sensorID = SceneObject(pSensor):getObjectID()
 
-	writeData(sensorID .. ":locX", x)
-	writeData(sensorID .. ":locY", y)
+	writeData(sensorID .. ":locX", math.floor(x))
+	writeData(sensorID .. ":locY", math.floor(y))
 	writeStringSharedMemory(sensorID .. ":locPlanet", planet)
 end
 

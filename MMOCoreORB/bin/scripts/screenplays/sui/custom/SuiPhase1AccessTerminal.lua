@@ -25,10 +25,9 @@ function SuiPhase1AccessTerminal:openAccessTerminal(pPlayer, pTerminal)
 
 		if (tempVal == "") then
 			writeScreenPlayData(pPlayer, "FsCrafting1", "accessTerminalStatus" .. i, "-1")
-			tempVal = "-1"
+		else
+			status[i] = tonumber(tempVal)
 		end
-
-		status[i] = tonumber(tempVal)
 	end
 
 	local completed = true
@@ -112,6 +111,8 @@ function SuiPhase1AccessTerminal:accessTerminalCallback(pPlayer, pSui, eventInde
 
 	local terminalID = suiPageData:getTargetNetworkId()
 	local pTerminal = getSceneObject(terminalID)
+	
+	rowIndex = math.floor(rowIndex)
 
 	if (rowIndex == -1) then
 		self:openAccessTerminal(pPlayer, pTerminal)

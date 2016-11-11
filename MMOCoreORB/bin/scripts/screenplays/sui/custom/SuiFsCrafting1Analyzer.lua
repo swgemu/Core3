@@ -224,7 +224,7 @@ function SuiFsCrafting1Analyzer:doAccessSchematic(pPlayer, pAnalyzer)
 	if (totalAnalyzed == 0) then
 		local sui = SuiMessageBox.new("SuiFsCrafting1Analyzer", "noCallback")
 		sui.setTitle("@quest/force_sensitive/fs_crafting:sui_analyzer_title")
-		sui.setPrompt("@quest/force_sensitive/fs_crafting:fs_crafting:sui_analyzer_no_schematic")
+		sui.setPrompt("@quest/force_sensitive/fs_crafting:sui_analyzer_no_schematic")
 		sui.setTargetNetworkId(SceneObject(pAnalyzer):getObjectID())
 		sui.setForceCloseDistance(10)
 		sui.sendTo(pPlayer)

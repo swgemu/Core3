@@ -26,8 +26,10 @@ function villageSarguilloPhase4ConvoHandler:runScreenHandlers(pConvTemplate, pPl
 	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	if (screenID == "fantastic_accept_ranged" or screenID == "accept_quest_ranged") then
+		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
 		FsVillageDefense:acceptRangedQuest(pPlayer)
 	elseif (screenID == "fantastic_accept_melee" or screenID == "accept_quest_melee") then
+		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
 		FsVillageDefense:acceptMeleeQuest(pPlayer)
 	end
 
