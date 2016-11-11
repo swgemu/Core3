@@ -188,8 +188,15 @@ void VehicleControlDeviceImplementation::storeObject(CreatureObject* player, boo
 	if (controlledObject == NULL)
 		return;
 
-	/*if (!controlledObject->isInQuadTree())
-		return;*/
+	if (!force && player->isInCombat()) {
+		player->sendSystemMessage("You cannot STORE that vehicle while you are still in combat!");
+		return;
+	}
+
+	if (!force && (player->isDead() || player->isIncapacitated() || player->isFeigningDeath())) {
+		player->sendSystemMessage("You cannot STORE that vehicle while in your current condition.");
+		return;
+	}
 
 	if (player->isRidingMount() && player->getParent() == controlledObject) {
 
