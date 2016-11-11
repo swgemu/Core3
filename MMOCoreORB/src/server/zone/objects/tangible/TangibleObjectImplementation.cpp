@@ -492,22 +492,25 @@ void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 	alm->insertAttribute("volume", volume);
 
 	if (!craftersName.isEmpty()) {
-
 		alm->insertAttribute("crafter", craftersName);
 	}
-	if (!objectSerial.isEmpty()) {
 
+	if (!objectSerial.isEmpty()) {
 		alm->insertAttribute("serial_number", objectSerial);
 	}
 
-	if(useCount > 1)
-		alm->insertAttribute("quantity", useCount);
+	if (useCount > 1) {
+		if (gameObjectType == SceneObjectType::CRAFTINGTOOL)
+			alm->insertAttribute("craft_tool_time", useCount);
+		else
+			alm->insertAttribute("quantity", useCount);
+	}
 
 	if (gameObjectType == SceneObjectType::PLAYERLOOTCRATE) {
-		if( isSliceable() ){
+		if (isSliceable()) {
 			alm->insertAttribute( "lock_mechanism", "@obj_attr_n:slicable" );
 		}
-		else{
+		else {
 			alm->insertAttribute( "lock_mechanism", "@obj_attr_n:broken" );
 		}
 	}
