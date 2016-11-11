@@ -427,8 +427,15 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 
 	assert(pet->isLockedByCurrentThread());
 
-	if (!force && (pet->isInCombat() || player->isInCombat()))
+	if (!force && (pet->isInCombat() || player->isInCombat())) {
+		player->sendSystemMessage("You cannot STORE while you or your pet is still in combat!");
 		return;
+	}
+
+	if (!force && (player->isDead() || player->isIncapacitated() || player->isFeigningDeath())) {
+		player->sendSystemMessage("You cannot STORE while in your current condition.");
+		return;
+	}
 
 	if (player->isRidingMount() && player->getParent() == pet) {
 
@@ -441,11 +448,11 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 			return;
 	}
 
-	if( player->getCooldownTimerMap() == NULL )
+	if (player->getCooldownTimerMap() == NULL)
 		return;
 
 	// Check cooldown
-	if( !player->getCooldownTimerMap()->isPast("petCallOrStoreCooldown") && !force ){
+	if (!player->getCooldownTimerMap()->isPast("petCallOrStoreCooldown") && !force) {
 		player->sendSystemMessage("@pet/pet_menu:cant_store_1sec"); //"You cannot STORE for 1 second."
 		return;
 	}
@@ -459,15 +466,15 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 	Reference<StorePetTask*> task = new StorePetTask(player, pet);
 
 	// Store non-faction pets immediately.  Store faction pets after 60sec delay.
-	if( petType != PetManager::FACTIONPET || force || player->getPlayerObject()->isPrivileged()){
+	if (petType != PetManager::FACTIONPET || force || player->getPlayerObject()->isPrivileged()) {
 		task->execute();
 	}
-	else{
-		if(pet->getPendingTask("store_pet") == NULL) {
+	else {
+		if (pet->getPendingTask("store_pet") == NULL) {
 			player->sendSystemMessage( "Storing pet in 60 seconds");
 			pet->addPendingTask("store_pet", task, 60 * 1000);
 		}
-		else{
+		else {
 			Time nextExecution;
 			Core::getTaskManager()->getNextExecutionTime(pet->getPendingTask("store_pet"), nextExecution);
 			int timeLeft = (nextExecution.getMiliTime() / 1000) - System::getTime();

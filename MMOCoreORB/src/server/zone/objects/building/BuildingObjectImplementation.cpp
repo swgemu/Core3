@@ -730,7 +730,7 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 
 	addTemplateSkillMods(player);
 
-	Locker acessLock(&paidAccessListMutex);
+	Locker accessLock(&paidAccessListMutex);
 
 	if (isGCWBase() && factionBaseType != GCWManager::STATICFACTIONBASE) {
 		if (!checkContainerPermission(player, ContainerPermissions::WALKIN)) {
@@ -1086,7 +1086,7 @@ void BuildingObjectImplementation::promptPayAccessFee(CreatureObject* player) {
 }
 
 void BuildingObjectImplementation::payAccessFee(CreatureObject* player) {
-	Locker acessLock(&paidAccessListMutex);
+	Locker accessLock(&paidAccessListMutex);
 
 	if (paidAccessList.contains(player->getObjectID())) {
 		uint32 expireTime = paidAccessList.get(player->getObjectID());
@@ -1117,7 +1117,7 @@ void BuildingObjectImplementation::payAccessFee(CreatureObject* player) {
 
 	paidAccessList.put(player->getObjectID(), time(0) + (accessDuration * 60));
 
-	acessLock.release();
+	accessLock.release();
 
 	if (owner != NULL && owner->isPlayerCreature()) {
 		Locker clocker(owner, player);
@@ -1134,7 +1134,7 @@ void BuildingObjectImplementation::payAccessFee(CreatureObject* player) {
 }
 
 void BuildingObjectImplementation::setAccessFee(int fee, int duration) {
-	Locker acessLock(&paidAccessListMutex);
+	Locker accessLock(&paidAccessListMutex);
 
 	accessFee = fee;
 	accessDuration = duration;
@@ -1155,7 +1155,7 @@ void BuildingObjectImplementation::updatePaidAccessList() {
 	Vector<uint64> ejectList;
 	uint32 nextExpirationTime = 0;
 
-	Locker acessLock(&paidAccessListMutex);
+	Locker accessLock(&paidAccessListMutex);
 
 	for (int i = 0; i < paidAccessList.size(); ++i) {
 		uint32 expirationTime = paidAccessList.elementAt(i).getValue();

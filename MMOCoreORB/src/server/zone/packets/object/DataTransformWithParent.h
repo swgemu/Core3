@@ -191,6 +191,7 @@ public:
 
 			ObjectController* objectController = zoneServer->getObjectController();
 			objectController->activateCommand(object, STRING_HASHCODE("dismount"), 0, 0, "");
+			object->sendSystemMessage("@base_player:no_entry_while_mounted"); // "You cannot enter a structure while on your mount."
 			return; // don't allow a dismount and parent update in the same frame, this looks better than bouncing their position
 		}
 

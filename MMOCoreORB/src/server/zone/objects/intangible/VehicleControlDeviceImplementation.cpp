@@ -129,10 +129,10 @@ void VehicleControlDeviceImplementation::spawnObject(CreatureObject* player) {
 
 	controlledObject->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 	ManagedReference<CreatureObject*> vehicle = NULL;
-	
+
 	if (controlledObject->isCreatureObject())
 	{
-	
+
 		vehicle = cast<CreatureObject*>(controlledObject.get());
 		vehicle->setCreatureLink(player);
 		vehicle->setControlDevice(_this.getReferenceUnsafeStaticCast());
@@ -147,9 +147,9 @@ void VehicleControlDeviceImplementation::spawnObject(CreatureObject* player) {
 		}
 
 	}
-	
+
 	Zone* zone = player->getZone();
-	
+
 	if (zone == NULL)
 		return;
 
@@ -190,6 +190,16 @@ void VehicleControlDeviceImplementation::storeObject(CreatureObject* player, boo
 
 	/*if (!controlledObject->isInQuadTree())
 		return;*/
+
+	if (!force && player->isInCombat()) {
+		player->sendSystemMessage("You cannot STORE that vehicle while you are still in combat!");
+		return;
+	}
+
+	if (!force && (player->isDead() || player->isIncapacitated() || player->isFeigningDeath())) {
+		player->sendSystemMessage("You cannot STORE that vehicle while in your current condition.");
+		return;
+	}
 
 	if (player->isRidingMount() && player->getParent() == controlledObject) {
 
