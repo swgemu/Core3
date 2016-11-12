@@ -1061,7 +1061,7 @@ int DirectorManager::createServerEvent(lua_State* L) {
 	String eventName = lua_tostring(L, -1);
 	String key = lua_tostring(L, -2);
 	String play = lua_tostring(L, -3);
-	uint32 mili = lua_tonumber(L, -4);
+	uint64 mili = lua_tonumber(L, -4);
 
 	Reference<PersistentEvent*> pEvent = getServerEvent(eventName);
 
