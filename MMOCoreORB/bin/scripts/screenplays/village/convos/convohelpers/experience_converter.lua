@@ -160,8 +160,7 @@ function ExperienceConverter:getMasteredBranches(pCreatureObject)
 	local returnValue = 0 -- None.
 
 	foreach(unlockableFSBranches, function(theTable)
-		local checkTrees = CreatureObject(pCreatureObject):getScreenPlayState("VillageUnlockScreenPlay:" .. string.sub(theTable.topBox, 0, (string.len(theTable.topBox) - 3)))
-		if (checkTrees == 4) then
+		if CreatureObject(pCreatureObject):hasScreenPlayState(4, "VillageUnlockScreenPlay:" .. string.sub(theTable.topBox, 0, (string.len(theTable.topBox) - 3))) then
 			returnValue = returnValue + 1
 		end
 	end)
