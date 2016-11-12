@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_a4fb7a46",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/ContrabandScanTask.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-12T05:01:44Z",
+      "side": 1,
+      "message": "I know the string name has dismount in it, but reading their text I think that maybe they should be sent regardless of whether they are mounted or not. Maybe we have a screenshot or some other evidence one way or the other.\n\nThe one below, of course, should just be sent if they are being dismounted.",
+      "revId": "75ff1e00e217dcef9e25aed956f8c11785bd99c6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_04ffe635",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/ContrabandScanTask.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-12T05:01:44Z",
+      "side": 1,
+      "message": "There\u0027s a rebel version of this string as well. You should call getFactionStringId here to send the appropriate one.",
+      "revId": "75ff1e00e217dcef9e25aed956f8c11785bd99c6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
