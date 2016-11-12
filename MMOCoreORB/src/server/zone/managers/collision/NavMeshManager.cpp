@@ -11,6 +11,8 @@ const String NavMeshManager::TileQueue = "NavMeshWorker";
 // Higher thread count, used for building large static cities during initialization
 const String NavMeshManager::MeshQueue = "NavMeshBuilder";
 
+//#define NAVMESH_DEBUG
+
 NavMeshManager::NavMeshManager() : Logger("NavMeshManager") {
     maxConcurrentJobs = 4;
     stopped = false;
@@ -32,16 +34,22 @@ void NavMeshManager::enqueueJob(Zone* zone, NavMeshRegion* region, AABB areaToBu
     Reference<NavMeshJob*> job = runningJobs.get(name);
     if (job) {
         job->addArea(areaToBuild);
+#ifdef NAVMESH_DEBUG
         info("Adding area to running job " + name);
+#endif
         return;
     }
 
     job = jobs.get(name);
     if (job == NULL) {
         job = new NavMeshJob(region, zone, recastConfig, queue);
+#ifdef NAVMESH_DEBUG
         info("Creating new job for " + name);
+#endif
     } else {
+#ifdef NAVMESH_DEBUG
         info("Adding area to existing job " + name);
+#endif
     }
 
     job->addArea(areaToBuild);
@@ -60,8 +68,9 @@ void NavMeshManager::checkJobs() {
     Locker locker(&jobQueueMutex);
 
     while (jobs.size() > 0) {
-
+#ifdef NAVMESH_DEBUG
         info("Popping job - CurrentSize: " + String::valueOf(jobs.size()), true);
+#endif
         Reference<NavMeshJob*> job = jobs.get(0);
         ManagedReference<NavMeshRegion*> region = job->getRegion();
 
@@ -80,7 +89,9 @@ void NavMeshManager::checkJobs() {
         runningJobs.put(name, job);
 
         Core::getTaskManager()->executeTask([=]{
+#ifdef NAVMESH_DEBUG
             info("Starting job task for: " + name, true);
+#endif
             startJob(job);
 
 
@@ -166,17 +177,23 @@ void NavMeshManager::startJob(Reference<NavMeshJob*> job) {
     Reference<RecastNavMesh*> navmesh = region->getNavMesh();
     bool initialBuild = (navmesh == NULL || !navmesh->isLoaded());
     if (initialBuild) {
+#ifdef NAVMESH_DEBUG
         info("Rebuilding Base Mesh", true);
+#endif
         builder->build();
     } else if (dirtyZones.size() > 0) {
+#ifdef NAVMESH_DEBUG
         info("Rebuilding area", true);
+#endif
         for (int i = dirtyZones.size() - 1; i >= 0; i--) {
             const AABB &area = dirtyZones.get(i);
             builder->rebuildArea(area, navmesh);
         }
     }
 
+#ifdef NAVMESH_DEBUG
     info("Region->name: " + filename);
+#endif
 
     if(running->get())
         builder->saveAll(filename);
