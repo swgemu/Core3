@@ -5,6 +5,8 @@
 #include "server/zone/Zone.h"
 #include "server/zone/objects/scene/SceneObjectType.h"
 
+//#define NAVMESH_DEBUG
+
 void NavMeshRegionImplementation::initializeTransientMembers() {
 
 }
@@ -122,7 +124,9 @@ void NavMeshRegionImplementation::notifyExit(SceneObject* object) {
     ReadLocker rlocker(&containedLock);
 
     if(containedObjects.contains(object->getObjectID())) {
+#ifdef NAVMESH_DEBUG
         info(object->getObjectTemplate()->getTemplateFileName() + " caused navmesh rebuild with: collisionmaterialflags " + String::valueOf(object->getObjectTemplate()->getCollisionMaterialFlags()) + "\ncollisionmaterialblockflags " + String::valueOf(object->getObjectTemplate()->getCollisionMaterialBlockFlags())+ "\ncollisionmaterialpassflags " + String::valueOf(object->getObjectTemplate()->getCollisionMaterialPassFlags()) + "\ncollisionmaterialactionflags " + String::valueOf(object->getObjectTemplate()->getCollisionActionFlags())+ "\ncollisionmaterialactionpassflags " + String::valueOf(object->getObjectTemplate()->getCollisionActionPassFlags()) + "\ncollisionmaterialactionBlockflags " + String::valueOf(object->getObjectTemplate()->getCollisionActionBlockFlags()), true);
+#endif
 
         rlocker.release();
         updateNavMesh(object, true);
@@ -142,7 +146,9 @@ void NavMeshRegionImplementation::updateNavMesh(SceneObject *object, bool remove
         len = (len / 32.0f) * 32;
         Vector3 extents(len, len, len);
         bbox = AABB(position-extents, position+extents);
+#ifdef NAVMESH_DEBUG
         info("Rebuilding from structure extents :\n" + bbox.getMinBound()->toString() + ", " + bbox.getMaxBound()->toString(), true);
+#endif
         updateNavMesh(bbox);
 
         Locker containerLock(&containedLock);
