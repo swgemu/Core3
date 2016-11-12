@@ -28,6 +28,8 @@
 #include "terrain/layer/boundaries/BoundaryPolygon.h"
 #include "conf/ConfigManager.h"
 
+//#define NAVMESH_DEBUG
+
 inline unsigned int nextPow2(unsigned int v) {
 	v--;
 	v |= v>>1;
@@ -79,7 +81,9 @@ RecastNavMeshBuilder::RecastNavMeshBuilder(Zone* zone, const String& name, const
 	if (pta->getUseGlobalWaterTable())
 		waterTableHeight = pta->getGlobalWaterTableHeight();
 	else {
+#ifdef NAVMESH_DEBUG
 		info("Disabling water table for " + zone->getZoneName(), true);
+#endif
 		waterTableHeight = -1000.0f;
 	}
 	this->name = name;
@@ -362,8 +366,9 @@ void RecastNavMeshBuilder::buildAllTiles(RecastNavMesh* recastNavMesh, const AAB
 			float maxz = bmin[2] + (y + 1) * tcs;
 			lastTileBounds = AABB(Vector3(minx, miny, minz), Vector3(maxx, maxy, maxz));
 
-			info("BuiltTile : " + lastTileBounds.getMinBound()->toString() + " | " + lastTileBounds.getMaxBound()->toString() + "\n",
-				 false);
+#ifdef NAVMESH_DEBUG
+			info("BuiltTile : " + lastTileBounds.getMinBound()->toString() + " | " + lastTileBounds.getMaxBound()->toString() + "\n", false);
+#endif
 			int dataSize = 0;
 
 			ReadLocker rLocker(rwLock);
@@ -384,7 +389,9 @@ void RecastNavMeshBuilder::buildAllTiles(RecastNavMesh* recastNavMesh, const AAB
 			}
 		}
 		progress.add(tw);
+#ifdef NAVMESH_DEBUG
 		info("Generating tiles: " + String::valueOf(progress.get() * 100 / (th * tw)) + "% complete", true);
+#endif
 
 	}
 }
@@ -478,7 +485,9 @@ void RecastNavMeshBuilder::buildAllTiles() {
 			}
 		}
 		progress.add(tw);
+#ifdef NAVMESH_DEBUG
 		info("Generating tiles: " + String::valueOf(progress.get() * 100 / (th * tw)) + "% complete", true);
+#endif
 	}
 }
 
@@ -486,13 +495,17 @@ void
 RecastNavMeshBuilder::initialize(Vector<Reference<MeshData*> >& meshData, const AABB& bounds, float distanceBetweenHeights) {
 	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
 
+#ifdef NAVMESH_DEBUG
 	info("Building region terrain for: " + name, true);
+#endif
 
 	float boundsRadius = bounds.extents()[bounds.longestAxis()] * 2.0f;
 	assert(boundsRadius != 0.f);
 
 	Vector3 center = bounds.center();
+#ifdef NAVMESH_DEBUG
 	info(center.toString() + " Radius: " + String::valueOf(boundsRadius), true);
+#endif
 	meshData.add(getTerrainMesh(center, boundsRadius, terrainManager, 32,
 								distanceBetweenHeights));
 
@@ -509,8 +522,9 @@ RecastNavMeshBuilder::initialize(Vector<Reference<MeshData*> >& meshData, const 
 
 	changeMesh(flattened);
 
-
+#ifdef NAVMESH_DEBUG
 	info("Building region navmesh for: " + name, true);
+#endif
 	Vector<const Boundary*> water;
 	terrainManager->getProceduralTerrainAppearance()->getWaterBoundariesInAABB(bounds, &water);
 	// Render water as polygons
