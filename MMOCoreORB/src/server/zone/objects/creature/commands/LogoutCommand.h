@@ -29,8 +29,6 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		// TODO: Check if eligible for logout here??
-
 		return SUCCESS;
 	}
 };
