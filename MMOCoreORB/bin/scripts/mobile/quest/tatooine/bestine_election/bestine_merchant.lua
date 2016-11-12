@@ -22,15 +22,33 @@ bestine_merchant = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_bestine_rumor08.iff"},
+	templates = {
+	   "object/mobile/dressed_commoner_artisan_trandoshan_male_01.iff",
+	   "object/mobile/dressed_commoner_artisan_sullustan_male_01.iff",
+	   "object/mobile/dressed_commoner_artisan_bith_male_01.iff",
+	   "object/mobile/dressed_combatmedic_trainer_rodian_male_01.iff",
+	   "object/mobile/dressed_mercenary_medic_rodian_female_01.iff",
+	   "object/mobile/dressed_noble_twilek_female_01.iff",
+	   "object/mobile/dressed_noble_human_male_03.iff",
+	   "object/mobile/dressed_noble_fat_human_male_01.iff",
+	   "object/mobile/dressed_commoner_naboo_moncal_female_02.iff",
+	   "object/mobile/dressed_commoner_naboo_zabrak_male_02.iff",
+	   "object/mobile/dressed_commoner_tatooine_sullustan_male_03.iff",
+	   "object/mobile/dressed_commoner_tatooine_nikto_male_04.iff",
+	   "object/mobile/dressed_commoner_tatooine_bith_male_03.iff",
+	   "object/mobile/dressed_commoner_tatooine_aqualish_male_06.iff",
+	   "object/mobile/dressed_commoner_tatooine_aqualish_female_05.iff",
+	   "object/mobile/dressed_commoner_old_twilek_male_01.iff",
+	   "object/mobile/dressed_commoner_naboo_human_male_05.iff",
+	   "object/mobile/dressed_commoner_fat_zabrak_male_01.iff"
+	   },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(bestine_merchant, "bestine_merchant")

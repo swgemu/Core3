@@ -1,6 +1,5 @@
 TatooineBestineScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
-
 	screenplayName = "TatooineBestineScreenPlay"
 }
 
@@ -14,7 +13,6 @@ function TatooineBestineScreenPlay:start()
 end
 
 function TatooineBestineScreenPlay:spawnSceneObjects()
-
 	--outside starport
 	spawnSceneObject("tatooine", "object/tangible/crafting/station/public_space_station.iff", -1306.04, 12, -3616.23, 0, math.rad(130) )
 	--east Tavern
@@ -25,14 +23,10 @@ end
 
 function TatooineBestineScreenPlay:spawnMobiles()
 
-	--Anything dashed out will need to be added here and removed from spawn manager once the spawnMobiles command is extended.
-
 	--Cantina
-	local pNpc = spawnMobile("tatooine", "quajjifek_coge",60,32.2473,0.105,-7.74246,15.5057,1028646)
-	self:setMoodString(pNpc, "neutral")
 	spawnMobile("tatooine", "bartender",60,-11.1901,-0.894992,1.50145,33.4278,1028647)
 	--starport interior
-	pNpc = spawnMobile("tatooine", "trainer_shipwright",60,-3.2,0.6,67.9,144,1026828)
+	local pNpc = spawnMobile("tatooine", "trainer_shipwright",60,-3.2,0.6,67.9,144,1026828)
 	self:setMoodString(pNpc, "neutral")
 	pNpc = spawnMobile("tatooine", "chassis_dealer",60,5.2,0.6,79.0,-70,1026825)
 	self:setMoodString(pNpc, "neutral")
@@ -59,10 +53,9 @@ function TatooineBestineScreenPlay:spawnMobiles()
 
 	--Guild Hall -1187 -3515
 	spawnMobile("tatooine", "contractor",60,-3.69,1.13306,-6,11.0003,1028558)
-	pNpc = spawnMobile("tatooine", "oka_alewame",60,3.72152,1.13306,-4.85162,52.801,1028558)
-	self:setMoodString(pNpc, "neutral")
 	spawnMobile("tatooine", "trainer_artisan",0,-0.0507306,1.13306,-13.747,0,1028562)
 	spawnMobile("tatooine", "mercenary",60,3.29,1.13306,-9.58,249.007,1028562)
+
 	pNpc = spawnMobile("tatooine", "coa3_information_imperial",60,14.0299,1.13306,-8.82756,97.6176,1028561)
 	self:setMoodString(pNpc, "npc_imperial")
 
@@ -75,10 +68,8 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_imperial")
 	pNpc = spawnMobile("tatooine", "imperial_first_lieutenant",400,3.0,0.1,0.5,164,1279922)
 	self:setMoodString(pNpc, "npc_imperial")
-	spawnMobile("tatooine", "imperial_recruiter",0,-1138,98,-3897,0,0)
-
-	--Inside a House -1346 -3891
-	--{"farious_gletch",60,1.7,-0.4,-5.5,315,1278989, "calm", "Farious Gletch"},
+	pNpc = spawnMobile("tatooine", "imperial_recruiter",0,-1138,98,-3897,0,0)
+	self:setMoodString(pNpc, "npc_imperial")
 
 	--east Tavern -1074 -3640
 	pNpc = spawnMobile("tatooine", "commoner_technician",60,4.6,1.0,7.5,90,1528396)
@@ -111,8 +102,7 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "threaten")
 	pNpc = spawnMobile("tatooine", "mercenary",60,-11.2,-9.5,1.8,135,1528404)
 	self:setMoodString(pNpc, "threaten")
-	pNpc = spawnMobile("tatooine", "r3",60,-3.4,-4.0,-4.8,128,1528401)
-	self:setMoodString(pNpc, "worried")
+	spawnMobile("tatooine", "r3",60,-3.4,-4.0,-4.8,128,1528401)
 	spawnMobile("tatooine", "seeker",240,-1.0,-9.5,1.8,-123,1528404)
 	pNpc = spawnMobile("tatooine", "twilek_slave",60,-1.9,-9.5,-2.4,130,1528407)
 	self:setMoodString(pNpc, "nervous")
@@ -141,8 +131,7 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("tatooine", "freelance_pilot",60,1.36242,0.999987,4.17823,16.6163,1223849)
 	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile("tatooine", "r2",60,-15.8302,1.0008,1.57165,93.4669,1223851)
-	self:setMoodString(pNpc, "calm")
+	spawnMobile("tatooine", "r2",60,-15.8302,1.0008,1.57165,93.4669,1223851)
 	pNpc = spawnMobile("tatooine", "commoner_tatooine",60,-14.8302,1.00067,0.571647,270.007,1223851)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("tatooine", "commoner_tatooine",60,-16.8302,1.00087,0.571647,90.0019,1223851)
@@ -157,30 +146,9 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	pNpc = spawnMobile("tatooine", "ty_vila",60,15.3218,1.28309,9.00139,113.449,1223850)
 	self:setMoodString(pNpc, "neutral")
 
-	--Guild Hall -1093 -3660
-	pNpc = spawnMobile("tatooine", "businessman",60,0.697709,0.50772,-2.44977,360.011,1028169)
-	self:setMoodString(pNpc, "sad")
-	pNpc = spawnMobile("tatooine", "bounty_hunter",300,0.697709,0.50772,-1.14977,180.009,1028169)
-	self:setMoodString(pNpc, "npc_accusing")
-	--{"lilas_dinhint",60,22.6945,0.198179,-0.151074,187.601,1028172, "neutral", "Lilas Dinhint (museum curator)"},
-
 	--Capitol
-	pNpc = spawnMobile("tatooine", "ekoarili_eichreemo",60,-2.83709,3.18179,19.5635,187.088,926474)
-	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile("tatooine", "indigo_siyan",60,24.6402,3.22324,-30.7135,341.212,926483)
-	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile("tatooine", "sean_trenwell",60,19.4653,3.22324,-35.9776,345,926483)
-	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile("tatooine", "victor_visalis",60,-26.4873,3.22324,20.2943,140.257,926480)
-	self:setMoodString(pNpc, "neutral")
 	pNpc = spawnMobile("tatooine", "oberhaur",60,-21.8614,3.22324,26.9177,183.918,926480)
 	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("tatooine", "keanna_likyna",60,-18.8886,3.22324,20.608,214.006,926480)
-	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile("tatooine", "tour_aryon",60,-37.3031,1.29422,0.713583,123.566,926479)
-	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile("tatooine", "egach_iromn",60,2.2628,7.90008,-37.3821,304.411,926476)
-	self:setMoodString(pNpc, "neutral")
 	pNpc = spawnMobile("tatooine", "rancher",60,-2.63337,0.3,2.46637,180.004,926475)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("tatooine", "arosp_eslykewa",60,-22.8506,1.29946,6.24726,180.009,926475)
@@ -189,22 +157,14 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("tatooine", "comm_operator",60,7.4,0.3,-0.7,-81,926475)
 	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("tatooine", "kiosait_eetwaka",60,-3.78237,2.27819,-25.8455,324.158,926475)
-	self:setMoodString(pNpc, "neutral")
 	pNpc = spawnMobile("tatooine", "medic",60,-2.63337,0.3,1.46637,0,926475)
 	self:setMoodString(pNpc, "conversation")
-	pNpc = spawnMobile("tatooine", "nassa_ei",60,-23.2909,1.29891,-10.3943,67.506,926475)
-	self:setMoodString(pNpc, "neutral")
 	pNpc = spawnMobile("tatooine", "noble",60,18.4,1.3,5.2,80,926475)
 	self:setMoodString(pNpc, "npc_accusing")
 	pNpc = spawnMobile("tatooine", "businessman",60,19.5,1.3,5.2,236,926475)
 	self:setMoodString(pNpc, "angry")
-	pNpc = spawnMobile("tatooine", "tl_017",400,6.1,0.3,-0.49,96.7754,926475)
-	self:setMoodString(pNpc, "npc_imperial")
 
 	--Outside
-	pNpc = spawnMobile("tatooine", "afroh_orah",60,-1211.37,12,-3637.48,26.5441,0)
-	self:setMoodString(pNpc, "neutral")
 	spawnMobile("tatooine", "businessman",60,-1268.02,12,-3531.37,119.711,0)
 	spawnMobile("tatooine", "businessman",60,-987.119,12,-3729.33,40.7756,0)
 	spawnMobile("tatooine", "cll8_binary_load_lifter",60,-1402.49,9.99327,-3756.82,140.109,0)
@@ -224,11 +184,7 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "commoner_naboo",60,-1080.55,12,-3696.41,132.802,0)
 	spawnMobile("tatooine", "commoner_old",60,-1157.39,12,-3666.66,339.829,0)
 	spawnMobile("tatooine", "commoner_old",60,-1283.53,12,-3559.37,341.069,0)
-	spawnMobile("tatooine", "commoner_old",60,-1095.68,12,-3640.98,39.1732,0)
 	spawnMobile("tatooine", "commoner_old",60,-1077.51,12,-3513.92,10.0573,0)
-	spawnMobile("tatooine", "commoner_tatooine",60,-1106.31,12,-3697.59,58.4608,0)
-	spawnMobile("tatooine", "commoner_tatooine",60,-1145.53,12,-3656.31,48.131,0)
-	spawnMobile("tatooine", "commoner_tatooine",60,-1174.92,12,-3635.8,200.868,0)
 	spawnMobile("tatooine", "commoner_tatooine",60,-1200.16,12,-3631.89,28.4494,0)
 	spawnMobile("tatooine", "commoner_tatooine",60,-1216.2,12,-3549.61,41.2597,0)
 	spawnMobile("tatooine", "commoner_tatooine",60,-1347.58,12,-3695.99,31.1935,0)
@@ -238,56 +194,43 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "commoner_tatooine",60,-1320.46,12,-3633.41,186.254,0)
 	spawnMobile("tatooine", "commoner_tatooine",60,-1226.87,12,-3628.59,257.373,0)
 	spawnMobile("tatooine", "commoner_tatooine",60,-1047.35,12,-3665.81,279.108,0)
-	spawnMobile("tatooine", "commoner_tatooine",60,-1085.53,12,-3647.54,201.255,0)
 	spawnMobile("tatooine", "commoner_tatooine",60,-1039.09,12,-3723.55,303.987,0)
 	spawnMobile("tatooine", "commoner_tatooine",60,-1041.87,12,-3711.58,273.462,0)
 	spawnMobile("tatooine", "commoner_tatooine",60,-1033.88,12,-3644.68,209.933,0)
 	spawnMobile("tatooine", "commoner_tatooine",60,-1010.28,12,-3728.59,85.9413,0)
 	spawnMobile("tatooine", "criminal",300,-1257.34,12,-3539.31,207.196,0)
 	spawnMobile("tatooine", "criminal",300,-983.47,10,-3538.5,142.826,0)
-	pNpc = spawnMobile("tatooine", "gerak_vurtimis",60,-1252.5,12,-3617.35,278.1,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile("tatooine", "gert_talnin",60,-1287.3,12,-3587.16,169.676,0)
-	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile("tatooine", "ihatha_hawit",60,-1291.36,12,-3634.94,301.333,0)
-	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile("tatooine", "gunham",60,-1125.07,12.1959,-3622.83,83.2544,0)
-	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("tatooine", "imi_eficoaw",60,-1013.14,12,-3695.87,233.295,0)
-	self:setMoodString(pNpc, "neutral")
 	spawnMobile("tatooine", "informant_npc_lvl_1",0,-1449,12,-3558,270,0)
 	spawnMobile("tatooine", "informant_npc_lvl_1",0,-1450,12,-3566,270,0)
 	spawnMobile("tatooine", "informant_npc_lvl_1",0,-1332,12,-3700,0,0)
 	spawnMobile("tatooine", "informant_npc_lvl_1",0,-1053,12,-3726,90,0)
 	spawnMobile("tatooine", "informant_npc_lvl_1",0,-1023,12,-3677,225,0)
 	spawnMobile("tatooine", "informant_npc_lvl_1",0,-1220,12,-3560,45,0)
-	pNpc = spawnMobile("tatooine", "issirx",60,-1074.37,12,-3676.69,21.1437,0)
-	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile("tatooine", "isuss",60,-1294.3,12,-3500.88,45.8365,0)
-	self:setMoodString(pNpc, "neutral")
+
 	--{"junk_dealer",0,-1392,185,-3847.9,8,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 	spawnMobile("tatooine", "noble",60,-1250.18,12,-3545.35,279.206,0)
 	spawnMobile("tatooine", "noble",60,-1023.25,12,-3746.26,261.847,0)
-	pNpc = spawnMobile("tatooine", "oohiani",60,-1120.21,12,-3639.71,204.893,0)
-	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile("tatooine", "owaitacyg_amafie",60,-1205.68,12,-3539.64,80.1199,0)
-	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile("tatooine", "r4",60,-1065.54,12,-3599.21,310.993,0)
-	self:setMoodString(pNpc, "calm")
+	spawnMobile("tatooine", "gerak_vurtimis",60,-1252.5,12,-3617.35,278.1,0)
+	spawnMobile("tatooine", "gert_talnin",60,-1287.3,12,-3587.16,169.676,0)
+	spawnMobile("tatooine", "gunham",60,-1125.07,12.1959,-3622.83,83.2544,0)
+	--by imp recruiter near city hall
+	spawnMobile("tatooine", "r4",60,-1068.6,12,-3600.3,-145,0)
+
+
+	--behind guild hall by shuttle
+	spawnMobile("tatooine", "commoner_tatooine",60,-1093.32,12,-3509.11, 63,0)
+	spawnMobile("tatooine", "commoner_tatooine",60,-1099.89,12,-3506.87,-175,0)
+
+
 	spawnMobile("tatooine", "scientist",60,-1271.82,12,-3601.08,5.92405,0)
 	spawnMobile("tatooine", "scientist",60,-1012.31,12,-3748.5,10.8572,0)
-	pNpc = spawnMobile("tatooine", "siarafont_cakrod",60,-1104.12,12,-3705.29,199.904,0)
-	self:setMoodString(pNpc, "neutral")
-	pNpc = spawnMobile("tatooine", "sol_windtide",60,-1203.12,12,-3612.74,236.494,0)
-	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile("tatooine", "tegou_howy",60,-1005.68,12,-3716.81,181.862,0)
-	self:setMoodString(pNpc, "neutral")
+	spawnMobile("tatooine", "sol_windtide",60,-1203.12,12,-3612.74,236.494,0)
 	spawnMobile("tatooine", "trainer_architect",0,-1255,12,-3567,-47,0)
 	spawnMobile("tatooine", "trainer_artisan",0,-1266,12,-3559,227,0)
 	spawnMobile("tatooine", "trainer_bioengineer",0,-1444.06,10,-3749.08,90,0)
 	spawnMobile("tatooine", "trainer_brawler",0,-1278.75,12,-3540.47,79,0)
 	spawnMobile("tatooine", "trainer_chef",0,-1216,12,-3601,153,0)
-	spawnMobile("tatooine", "trainer_entertainer",0,-1266,12,-3626,22,0)
+	spawnMobile("tatooine", "trainer_entertainer",0,-1273.4,12,-3629.5,-42,0)
 	spawnMobile("tatooine", "trainer_marksman",0,-1272,12,-3538,180,0)
 	spawnMobile("tatooine", "trainer_politician",0,-1125,12.2,-3616,130,0)
 	spawnMobile("tatooine", "trainer_scout",0,-1295.83,12,-3563.27,51,0)
@@ -304,7 +247,9 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	--Imperial Npc's Outside
 	--{"commander_dkrn",60,-1157.74,12,-3525.5,200.331,0, "npc_imperial", "Commander D`krn"},
 	spawnMobile("tatooine", "command_security_guard",400,-1278.5,12.5279,-3643.1,165.005,0)
+
 	spawnMobile("tatooine", "command_security_guard",400,-1243.9,12,-3550.55,301.01,0)
+	spawnMobile("tatooine", "command_security_guard",400,-1277.1,  12, -3533.8,301.01,0)
 	spawnMobile("tatooine", "command_security_guard",400,-1150.5,12,-3547.1,26,0)
 	spawnMobile("tatooine", "command_security_guard",400,-1097,12,-3525.3,121.004,0)
 	pNpc = spawnMobile("tatooine", "dark_trooper",400,-1430.36,12,-3728.58,141.26,0)
@@ -313,6 +258,7 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_imperial")
 	pNpc = spawnMobile("tatooine", "dark_trooper",400,-1428.52,12,-3730.88,141.264,0)
 	self:setMoodString(pNpc, "npc_imperial")
+
 	spawnMobile("tatooine", "dark_trooper",400,-1453,12,-3646.95,42.076,0)
 	spawnMobile("tatooine", "dark_trooper",400,-1133.2,12.1958,-3614.6,125.004,0)
 	spawnMobile("tatooine", "dark_trooper",400,-1130.9,12.1964,-3611.6,125.004,0)
@@ -331,37 +277,48 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_imperial")
 	pNpc = spawnMobile("tatooine", "elite_sand_trooper",400,-984.262,12,-3742.5,126.391,0)
 	self:setMoodString(pNpc, "npc_imperial")
+
 	spawnMobile("tatooine", "elite_sand_trooper",400,-1454.87,12,-3651.05,45.2754,0)
 	spawnMobile("tatooine", "elite_sand_trooper",400,-1455.96,12,-3650.25,42.1254,0)
 	pNpc = spawnMobile("tatooine", "elite_sand_trooper",400,-1058.39,12,-3671.09,222.747,0)
 	self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("tatooine", "elite_sand_trooper",400,-1093.52,12,-3647.32,308.036,0)
-	self:setMoodString(pNpc, "npc_imperial")
 	pNpc = spawnMobile("tatooine", "elite_sand_trooper",400,-1049.04,12,-3660.19,249.5,0)
 	self:setMoodString(pNpc, "npc_imperial")
-	spawnMobile("tatooine", "sand_trooper",400,-983.8,12,-3746.5,116.003,0)
-	spawnMobile("tatooine", "sand_trooper",400,-980.4,12,-3742.8,119,0)
-	spawnMobile("tatooine", "sand_trooper",400,-1169.8,12,-3692.1,235.007,0)
-	spawnMobile("tatooine", "sand_trooper",400,-1283.8,12,-3480.4,306.486,0)
+	pNpc = spawnMobile("tatooine", "sand_trooper",400,-983.8,12,-3746.5,116.003,0)
+	pNpc = spawnMobile("tatooine", "sand_trooper",400,-980.4,12,-3742.8,119,0)
+	pNpc = spawnMobile("tatooine", "sand_trooper",400,-1169.8,12,-3692.1,235.007,0)
+	pNpc = spawnMobile("tatooine", "sand_trooper",400,-1283.8,12,-3480.4,306.486,0)
+
 	spawnMobile("tatooine", "sand_trooper",400,-1275.6,12,-3479.9,0,0)
 	spawnMobile("tatooine", "sand_trooper",400,-1016.9,12,-3741.2,97.0029,0)
 	spawnMobile("tatooine", "sand_trooper",400,-1018.3,12,-3736.2,272.008,0)
 	spawnMobile("tatooine", "sand_trooper",400,-1089.8,12,-3704.2,116.003,0)
 	spawnMobile("tatooine", "sand_trooper",400,-1154.1,12,-3650,-111,0)
+
+	--guard near city hall and shuttleport entryway
 	spawnMobile("tatooine", "sand_trooper",400,-1083.6,12,-3594.2,169.005,0)
+	spawnMobile("tatooine", "sand_trooper",400,-1092.1,12,-3595.4,169.005,0)
+
+
+	--guard by guildhall exits
 	spawnMobile("tatooine", "sand_trooper",400,-1181.3,12,-3537.9,198.006,0)
+	spawnMobile("tatooine", "sand_trooper",400,-1181.3,12,-3542.5,198.006,0)
+
+
 	spawnMobile("tatooine", "storm_commando",400,-1231.81,12,-3605.85,127.312,0)
 	spawnMobile("tatooine", "storm_commando",400,-1292.8,12,-3585.5,133.004,0)
-	spawnMobile("tatooine", "storm_commando",400,-1115.14,12,-3639.18,263.058,0)
+
 	spawnMobile("tatooine", "stormtrooper_sniper",400,-1093.7,14,-3660.2,41.0012,0)
 	--{"imperial_army_captain",400,-1307.46,12,-3662.44,218.566,0, "npc_imperial", ""},
 	spawnMobile("tatooine", "imperial_recruiter",60,-1072.7,12,-3594,220,0)
 	spawnMobile("tatooine", "imperial_recruiter",60,-1275.75,12,-3594.28,-73,0)
-	--pNpc = spawnMobile("tatooine", "lt_sabol",60,-1291.67,12,-3539,118,0)
-	--self:setMoodString(pNpc, "npc_imperial")
-	pNpc = spawnMobile("tatooine", "tk_471",400,-1048.04,12,-3699.53,275.497,0)
-	self:setMoodString(pNpc, "npc_imperial")
 
+	--in front of city hall
+	pNpc = spawnMobile("tatooine", "elite_sand_trooper",400,-1093.52,12,-3647.32,308.036,0)
+	self:setMoodString(pNpc, "npc_imperial")
+	--black stormtrooper by hutt informant
+	pNpc = spawnMobile("tatooine", "storm_commando",0,-1115.14,12,-3639.18,263.058,0)
+	self:setMoodString(pNpc, "npc_imperial")
 	--Creatures
 	spawnMobile("tatooine", "lesser_desert_womp_rat",300,-1062.1,23.7,-3451.8,-110,0)
 	spawnMobile("tatooine", "lesser_desert_womp_rat",300,-1068.2,23.2,-3452.5,98,0)

@@ -1,12 +1,7 @@
 local ObjectManager = require("managers.object.object_manager")
 
 BestineArtistConvoHandler = conv_handler:new {
-	themePark = nil
 }
-
-function BestineArtistConvoHandler:setThemePark(themeParkNew)
-	self.themePark = themeParkNew
-end
 
 function BestineArtistConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	local screen = LuaConversationScreen(pConvScreen)
@@ -15,6 +10,7 @@ function BestineArtistConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	local screenID = screen:getScreenID()
+
 	local npcName = SceneObject(pNpc):getObjectName()
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local talkedPrev = readData(playerID .. ":bestine_election_" .. npcName)

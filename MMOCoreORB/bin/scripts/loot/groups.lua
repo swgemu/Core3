@@ -45,6 +45,14 @@ includeFile("groups/armor/padded_armor.lua")
 includeFile("groups/armor/tantel_armor.lua")
 includeFile("groups/armor/ubese_armor.lua")
 
+-- bestine election sub-folder
+includeFile("groups/bestine_election/bestine_history_quest_reward.lua")
+includeFile("groups/bestine_election/bestine_election_sean_trenwell_rewards.lua")
+includeFile("groups/bestine_election/bestine_election_tusken_head.lua")
+includeFile("groups/bestine_election/bestine_election_tusken_loot.lua")
+includeFile("groups/bestine_election/bestine_election_tusken_quest.lua")
+includeFile("groups/bestine_election/bestine_election_victor_visalis_rewards.lua")
+
 -- creature sub-folder
 includeFile("groups/creature/brackaset_common.lua")
 includeFile("groups/creature/fambaa_common.lua")

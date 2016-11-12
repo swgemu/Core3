@@ -1,5 +1,7 @@
 sean_contact_quest = Creature:new {
-	objectName = "@npc_name:bith_base_male",
+	objectName = "",
+	randomNameType = NAME_GENERIC,
+	randomNameTag = false,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -22,15 +24,14 @@ sean_contact_quest = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_sean_contact_quest.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "seanContactConvoTemplate",
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(sean_contact_quest, "sean_contact_quest")
