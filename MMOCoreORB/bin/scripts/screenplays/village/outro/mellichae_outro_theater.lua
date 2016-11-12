@@ -89,6 +89,7 @@ function MellichaeOutroTheater:onLoot(pLootedCreature, pLooter, nothing)
 		VillageJediManagerCommon.setJediProgressionScreenPlayState(pLooter, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE) -- Killed him.
 		deleteData(SceneObject(pLooter):getObjectID() .. ":totalNum:Shrines:Red")
 		deleteData(SceneObject(pLooter):getObjectID() .. ":totalNum:Shrines:Green")
+		FsOutro:setCurrentStep(pLooter, 4)
 	end
 
 	return 1
@@ -136,7 +137,6 @@ function MellichaeOutroTheater:onEnteredActiveArea(pCreatureObject, spawnedSithS
 	end)
 
 	createObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pCreatureObject)
-	QuestManager.completeQuest(pCreatureObject, QuestManager.quests.FS_THEATER_CAMP)
 	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.FS_THEATER_FINAL)
 end
 
@@ -148,7 +148,7 @@ function MellichaeOutroTheater:onSuccessfulSpawn(pCreatureObject, spawnedSithSha
 
 	VillageJediManagerCommon.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE)
 
-	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.FS_THEATER_CAMP)
+	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.FS_THEATER_FINAL)
 	createObserver(LOOTCREATURE, self.taskName, "onLoot", spawnedSithShadowsList[1])
 	createObserver(DAMAGERECEIVED, self.taskName, "onDamageReceived", spawnedSithShadowsList[1])
 	createObserver(DAMAGERECEIVED, self.taskName, "onDamageReceived", spawnedSithShadowsList[2])
@@ -174,11 +174,12 @@ function MellichaeOutroTheater:onPlayerKilled(pCreatureObject, pKiller, nothing)
 
 	Logger:log("Player was killed.", LT_INFO)
 	CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/exit:final_fail") -- You have failed the Mellichae encounter, you will be given the oppertunity to attempt it again in the near future.
-	OldManOutroEncounter:start(pCreatureObject)
-	QuestManager.resetQuest(pCreatureObject, QuestManager.quests.FS_THEATER_CAMP)
+	FsOutro:startOldMan(pCreatureObject)
 	QuestManager.resetQuest(pCreatureObject, QuestManager.quests.FS_THEATER_FINAL)
 	deleteData(SceneObject(pCreatureObject):getObjectID() .. ":totalNum:Shrines:Red")
 	deleteData(SceneObject(pCreatureObject):getObjectID() .. ":totalNum:Shrines:Green")
+	
+	self:finish()
 	return 1
 end
 

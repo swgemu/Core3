@@ -202,16 +202,6 @@ function Glowing:onPlayerLoggedIn(pCreatureObject)
 	if not self:isGlowing(pCreatureObject) then
 		self:registerObservers(pCreatureObject)
 	end
-
-	if VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE)
-		and not VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE) then
-		if VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE) then
-			MellichaeOutroTheater:finish(pCreatureObject)
-			MellichaeOutroTheater:start(pCreatureObject)
-		else
-			OldManOutroEncounter:start(pCreatureObject)
-		end
-	end
 end
 
 -- Get the jedi progression status for the player

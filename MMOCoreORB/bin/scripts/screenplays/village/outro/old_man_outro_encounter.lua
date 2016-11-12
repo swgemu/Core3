@@ -8,10 +8,6 @@ OldManOutroEncounter = Encounter:new {
 	-- Task properties
 	taskName = "OldManOutroEncounter",
 	-- Encounter properties
-	--minimumTimeUntilEncounter = 12 * 60 * 60 * 1000, -- 12 hours
-	--maximumTimeUntilEncounter = 24 * 60 * 60 * 1000, -- 24 hours
-	minimumTimeUntilEncounter = 5 * 60 * 1000, -- 12 hours
-	maximumTimeUntilEncounter = 10 * 60 * 1000, -- 24 hours
 	encounterDespawnTime = 5 * 60 * 1000, -- 5 minutes
 	despawnMessage = "@quest/force_sensitive/intro:leave",
 	spawnObjectList = {
@@ -23,30 +19,6 @@ OldManOutroEncounter = Encounter:new {
 	inRangeValue = 16,
 }
 
--- Get the first name of the player.
--- @param pCreatureObject pointer to the creature object of the player.
--- @return the first name of the player.
-function OldManOutroEncounter:getPlayerFirstName(pCreatureObject)
-	local firstName = CreatureObject(pCreatureObject):getFirstName()
-
-	if firstName == nil then
-		return ""
-	end
-
-	return firstName
-end
-
--- Send the greeting string to the player.
--- @param pOldMan pointer to the old man.
--- @param pCreatureObject pointer to the creature object of the player.
-function OldManOutroEncounter:sendGreetingString(pOldMan, pCreatureObject)
-	Logger:log("Sending greeting string.", LT_INFO)
-	local greetingString = LuaStringIdChatParameter(OLD_MAN_GREETING_STRING_EXIT)
-	local firstName = self:getPlayerFirstName(pCreatureObject)
-	greetingString:setTT(firstName)
-	spatialChat(pOldMan, greetingString:_getObject())
-end
-
 -- Handling of the encounter in range event.
 -- Send the greeting string from the old man and activate the old man quest.
 -- @param pCreatureObject pointer to the creature object of the player.
@@ -56,8 +28,11 @@ function OldManOutroEncounter:onEncounterInRange(pCreatureObject, oldManPointerL
 		return
 	end
 
-	self:sendGreetingString(oldManPointerList[1], pCreatureObject)
+	local greetingString = LuaStringIdChatParameter(OLD_MAN_GREETING_STRING_EXIT)
+	greetingString:setTT(CreatureObject(pCreatureObject):getFirstName())
+	spatialChat(oldManPointerList[1], greetingString:_getObject())
 
+	FsOutro:setCurrentStep(pCreatureObject, 2)
 	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FINAL)
 end
 
@@ -93,11 +68,7 @@ function OldManOutroEncounter:doesOldManBelongToThePlayer(pConversingPlayer, pCo
 
 	local playerOldMan = SpawnMobiles.getSpawnedMobiles(pConversingPlayer, OldManOutroEncounter.taskName)
 
-	if playerOldMan ~= nil and playerOldMan[1] ~= nil and #playerOldMan == 1 then
-		return SceneObject(pConversingOldMan):getObjectID() == SceneObject(playerOldMan[1]):getObjectID()
-	else
-		return false
-	end
+	return playerOldMan ~= nil and playerOldMan[1] ~= nil and #playerOldMan == 1 and SceneObject(pConversingOldMan):getObjectID() == SceneObject(playerOldMan[1]):getObjectID()
 end
 
 -- Check if the old man encounter is finished or not.
@@ -118,8 +89,6 @@ function OldManOutroEncounter:taskFinish(pCreatureObject)
 		return true
 	end
 
-	-- TODO
-	
 	return true
 end
 

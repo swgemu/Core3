@@ -360,14 +360,6 @@ ConversationScreen* TrainerTrainSkillScreenHandler::handleScreen(CreatureObject*
 			nextScreenId = TrainerScreenHandlers::TRAINEDMASTERSCREENHANDLERID;
 			conversationScreen = NULL;
 		}
-
-		// Set the screen play state if they mastered a fourth-tier box.
-		if (skill->getSkillName().contains("force_sensitive")) {
-			if (skill->getSkillName().contains("_04")) {
-				JediManager::instance()->onFSTreeCompleted(conversingPlayer, skill->getSkillName());
-			}
-		}
-
 	} else {
 		//Return screen depending on what failed.
 		if (!enoughCredits) {
