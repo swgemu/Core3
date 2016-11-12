@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_249f8a05",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4036,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-12T05:29:40Z",
+      "side": 0,
+      "message": "Equipped items are not in a player\u0027s inventory so these isEquipped checks are pointless. Removing them is good, but it won\u0027t make one able to propose unity with an equipped ring like you state the intention of this patch is. These loops through inventory\u0027s container objects won\u0027t find what is not in them.",
+      "revId": "81fdc424255811b5ea6293905049d1c26ef1842c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
