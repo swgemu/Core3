@@ -125,6 +125,8 @@ void ZoneImplementation::clearZone() {
 	HashTable<uint64, ManagedReference<SceneObject*> > tbl;
 	tbl.copyFrom(objectMap->getMap());
 
+	zonelocker.release();
+
 	HashTableIterator<uint64, ManagedReference<SceneObject*> > iterator = tbl.iterator();
 
 	while (iterator.hasNext()) {
@@ -135,6 +137,8 @@ void ZoneImplementation::clearZone() {
 			sceno->destroyObjectFromWorld(false);
 		}
 	}
+
+	Locker zonelocker2(_this.getReferenceUnsafeStaticCast());
 
 	zoneCleared = true;
 
