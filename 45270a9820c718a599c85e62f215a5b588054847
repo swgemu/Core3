@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_7f043b15",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village_jedi_manager.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-12T11:35:41Z",
+      "side": 1,
+      "message": "I figured you would call FsOutro:onLoggedIn() here. You aren\u0027t calling it anywhere that I can see.",
+      "revId": "45270a9820c718a599c85e62f215a5b588054847",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
