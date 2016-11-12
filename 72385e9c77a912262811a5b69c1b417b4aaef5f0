@@ -16,6 +16,24 @@
       "revId": "72385e9c77a912262811a5b69c1b417b4aaef5f0",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_bf47034b",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/ContrabandScanTask.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-11-12T14:10:18Z",
+      "side": 1,
+      "message": "You are right, I\u0027ve looked through the other screenshots as well, and it seems like this message is only sent by the probe droids. The other ones seems to send both dismount messages even though the player isn\u0027t on a mount...\n\nWe do not have enough screenshots with the log (with timing) so we will have to come up with something or find more screenshots.\n\nCan I implement it like this for now?\nAlways send the dismount_xxx message, only send the dismount if on mount and skip the greeting system message.\n\nI\u0027ll push a patch set with that implementation.",
+      "parentUuid": "bada0100_3f0eb335",
+      "revId": "72385e9c77a912262811a5b69c1b417b4aaef5f0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
