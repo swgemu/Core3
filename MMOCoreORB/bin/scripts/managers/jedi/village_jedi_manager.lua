@@ -55,6 +55,10 @@ function VillageJediManager:onPlayerLoggedIn(pCreatureObject)
 
 	Glowing:onPlayerLoggedIn(pCreatureObject)
 
+	if (FsIntro:isOnIntro(pCreatureObject)) then
+		FsIntro:onLoggedIn(pCreatureObject)
+	end
+
 	if (QuestManager.hasActiveQuest(pCreatureObject, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_MAIN) and not QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_MAIN) and not VillageCommunityCrafting:isOnActiveCrafterList(pCreatureObject)) then
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_MAIN)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_01)
@@ -92,6 +96,16 @@ function VillageJediManager:onPlayerLoggedIn(pCreatureObject)
 	end
 	if (currentPhase ~= 4) then
 		FsVillageDefense:doPhaseChangeFail(pCreatureObject)
+	end
+end
+
+function VillageJediManager:onPlayerLoggedOut(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
+
+	if (FsIntro:isOnIntro(pCreatureObject)) then
+		FsIntro:onLoggedOut(pCreatureObject)
 	end
 end
 
