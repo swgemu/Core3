@@ -50,4 +50,12 @@ function VillageGmCommands:cmdChangeCurrentPhase(pPlayer)
 	VillageJediManagerTownship:switchToNextPhase()
 end
 
+function VillageGmCommands:cmdUnlockBranch(pPlayer, branch)
+	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
+		return
+	end
+
+	VillageJediManagerCommon.unlockBranch(pPlayer, branch)
+end
+
 return VillageGmCommands

@@ -26,9 +26,11 @@ function oldManIntroConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc,
 		OldManIntroEncounter:giveForceCrystalToPlayer(pPlayer)
 		CreatureObject(pNpc):clearOptionBit(CONVERSABLE)
 	elseif screenID == "where_camp" then
+		OldManOutroEncounter:scheduleDespawnOfOldMan(pPlayer)
 		QuestManager.completeQuest(pPlayer, QuestManager.quests.OLD_MAN_FINAL)
 		MellichaeOutroTheater:start(pPlayer)
 		CreatureObject(pNpc):clearOptionBit(CONVERSABLE)
+		FsOutro:setCurrentStep(pPlayer, 3)
 	end
 
 	return pConvScreen
