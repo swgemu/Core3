@@ -33,9 +33,13 @@ public:
 		StringTokenizer args(arguments.toString());
 
 		String argFunction = "";
+		String secondArg = "";
 
 		if (args.hasMoreTokens())
 			args.getStringToken(argFunction);
+
+		if (args.hasMoreTokens())
+			args.getStringToken(secondArg);
 
 		argFunction = argFunction.toLowerCase();
 
@@ -47,6 +51,8 @@ public:
 			functionName = "cmdGetCurrentPhaseDuration";
 		else if (argFunction == "changecurrentphase")
 			functionName = "cmdChangeCurrentPhase";
+		else if (argFunction == "unlockbranch")
+			functionName = "cmdUnlockBranch";
 		else if (argFunction == "test")
 			functionName = "cmdTestFunction";
 
@@ -56,6 +62,7 @@ public:
 			creature->sendSystemMessage("   getCurrentPhaseID  -- returns the currently active Village phase id.");
 			creature->sendSystemMessage("   getCurrentPhaseDuration  -- returns the time left in the currently active phase.");
 			creature->sendSystemMessage("   changeCurrentPhase  -- triggers the village phase change.");
+			creature->sendSystemMessage("   unlockBranch  -- unlocks a force branch on your character.");
 			return SUCCESS;
 		} else if (argFunction == "" || functionName == "") {
 			creature->sendSystemMessage("Syntax: /gmFsVillage <command>    /gmFsVillage ? for help");
@@ -68,6 +75,7 @@ public:
 
 		Reference<LuaFunction*> luaVillageGmCmd = lua->createFunction("VillageGmCommands", functionName, 0);
 		*luaVillageGmCmd << creature;
+		*luaVillageGmCmd << secondArg;
 
 		luaVillageGmCmd->callFunction();
 
