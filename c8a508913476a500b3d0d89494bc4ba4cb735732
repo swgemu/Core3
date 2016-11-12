@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_8468b6f6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/LogoutServerCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-12T08:31:14Z",
+      "side": 1,
+      "message": "Don\u0027t add this. logout is already setup to only remove them immediately if they are in a safe place. If they are not, it acts just like a disconnect and leaves them in the world for 3 minutes.",
+      "revId": "c8a508913476a500b3d0d89494bc4ba4cb735732",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_6463521b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/LogoutServerCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-12T08:31:14Z",
+      "side": 1,
+      "message": "I highly doubt sony used loading screen tips as in-game system messages.",
+      "revId": "c8a508913476a500b3d0d89494bc4ba4cb735732",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_246d4a05",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/LogoutServerCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-12T08:31:14Z",
+      "side": 1,
+      "message": "I bet this message was removed when they changed it to make you sit automatically. It makes no sense to send it now.",
+      "revId": "c8a508913476a500b3d0d89494bc4ba4cb735732",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
