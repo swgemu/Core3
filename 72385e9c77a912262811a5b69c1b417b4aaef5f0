@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_3f0eb335",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/ContrabandScanTask.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-12T11:50:26Z",
+      "side": 1,
+      "message": "Looking at the screen you linked, this still seems off. I think it should be the scan_greeting_ strings that are broadcast here within this else {} (we see it in the non-mounted screen but not the mounted one).\n\nI think these contraband_scan_ strings should only be sent when the player is mounted. The non-mounted screen doesn\u0027t include them and the mounted one includes probe_scan which is very similar to these two.",
+      "revId": "72385e9c77a912262811a5b69c1b417b4aaef5f0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
