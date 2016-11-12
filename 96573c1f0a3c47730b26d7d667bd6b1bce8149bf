@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_a4929af4",
+        "filename": "MMOCoreORB/src/server/zone/objects/structure/events/StructureMaintenanceTask.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-12T06:16:25Z",
+      "side": 1,
+      "message": "Rather than add band-aids, we should figure out what is actually happening here. Looking at the mantis, the mail received showed that the structure still had corellia as it\u0027s zone. Why does the structure still have a zone set if it\u0027s not in the world? The maintenance task should be cancelled when a structure is destroyed from the world. Why is the maintenance task still running if the structure was redeeded?\n\nWe need to find and fix the underlying issue(s) instead of applying band-aids to the symptoms.",
+      "revId": "96573c1f0a3c47730b26d7d667bd6b1bce8149bf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
