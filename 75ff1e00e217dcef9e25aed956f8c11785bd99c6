@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_64183285",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/ContrabandScanTask.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-11-12T11:22:36Z",
+      "side": 1,
+      "message": "The screenshots we have only shows this text being sent when the player is on a mount. But I see now when I look at them again that the other text that is sent below is not sent in the case the player is mounted. We only got a few images so not that much to go on.\n\nHere is one without mount:\nhttps://drive.google.com/open?id\u003d0B03LcsiTCEGqR0JmN2thVlFCeXM\n\nHere is one with mount:\nhttps://drive.google.com/open?id\u003d0B03LcsiTCEGqd2VZV0pGOG80V1E",
+      "parentUuid": "bada0100_a4fb7a46",
+      "revId": "75ff1e00e217dcef9e25aed956f8c11785bd99c6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_04ffe635",
         "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/ContrabandScanTask.h",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2016-11-12T05:01:44Z",
       "side": 1,
       "message": "There\u0027s a rebel version of this string as well. You should call getFactionStringId here to send the appropriate one.",
+      "revId": "75ff1e00e217dcef9e25aed956f8c11785bd99c6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_841d1676",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/ContrabandScanTask.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-11-12T11:22:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_04ffe635",
       "revId": "75ff1e00e217dcef9e25aed956f8c11785bd99c6",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
