@@ -82,6 +82,21 @@ function FsIntro:doDelayedStep(pPlayer)
 	local curStep = self:getCurrentStep(pPlayer)
 
 	if (not OldManIntroEncounter:hasForceCrystal(pPlayer)) then
+		if (self:hasFirstDatapad(pPlayer)) then
+			QuestManager.resetQuest(pPlayer, QuestManager.quests.TWO_MILITARY)
+			QuestManager.resetQuest(pPlayer, QuestManager.quests.LOOT_DATAPAD_1)
+			QuestManager.resetQuest(pPlayer, QuestManager.quests.GOT_DATAPAD)
+			self:removeFirstDatapad(pPlayer)
+		end
+
+		if (self:hasSecondDatapad(pPlayer)) then
+			QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_THEATER_CAMP)
+			QuestManager.resetQuest(pPlayer, QuestManager.quests.LOOT_DATAPAD_2)
+			QuestManager.resetQuest(pPlayer, QuestManager.quests.GOT_DATAPAD_2)
+			self:removeSecondDatapad(pPlayer)
+		end
+
+
 		self:setCurrentStep(pPlayer, self.OLDMANWAIT)
 		curStep = self.OLDMANWAIT
 	end
@@ -107,6 +122,33 @@ function FsIntro:onLoggedIn(pPlayer)
 	end
 
 	local curStep = self:getCurrentStep(pPlayer)
+
+	if (curStep ~= self.OLDMANWAIT and curStep ~= self.OLDMANMEET and not OldManIntroEncounter:hasForceCrystal(pPlayer)) then
+		if (SithShadowIntroTheater:hasTaskStarted(pPlayer)) then
+			SithShadowIntroTheater:finish(pPlayer)
+		end
+
+		if (self:hasFirstDatapad(pPlayer)) then
+			QuestManager.resetQuest(pPlayer, QuestManager.quests.TWO_MILITARY)
+			QuestManager.resetQuest(pPlayer, QuestManager.quests.LOOT_DATAPAD_1)
+			QuestManager.resetQuest(pPlayer, QuestManager.quests.GOT_DATAPAD)
+			self:removeFirstDatapad(pPlayer)
+		end
+
+		if (self:hasSecondDatapad(pPlayer)) then
+			QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_THEATER_CAMP)
+			QuestManager.resetQuest(pPlayer, QuestManager.quests.LOOT_DATAPAD_2)
+			QuestManager.resetQuest(pPlayer, QuestManager.quests.GOT_DATAPAD_2)
+			self:removeSecondDatapad(pPlayer)
+		end
+
+		if (self:hasDelayPassed(pPlayer)) then
+			createEvent(getRandomNumber(300, 900) * 1000, "FsIntro", "startOldMan", pPlayer, "")
+		end
+
+		self:setCurrentStep(pPlayer, self.OLDMANWAIT)
+		return
+	end
 
 	if (curStep == self.OLDMANWAIT) then
 		if (self:hasDelayPassed(pPlayer)) then
@@ -185,6 +227,36 @@ function FsIntro:hasSecondDatapad(pPlayer)
 	end
 
 	return getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/force_sensitive/theater_datapad.iff", true) ~= nil
+end
+
+function FsIntro:removeFirstDatapad(pPlayer)
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+
+	if (pInventory == nil) then
+		return
+	end
+
+	local pDatapad = getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/force_sensitive/waypoint_datapad.iff", true)
+
+	if (pDatapad ~= nil) then
+		SceneObject(pDatapad):destroyObjectFromWorld()
+		SceneObject(pDatapad):destroyObjectFromDatabase()
+	end
+end
+
+function FsIntro:removeSecondDatapad(pPlayer)
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+
+	if (pInventory == nil) then
+		return
+	end
+
+	local pDatapad = getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/force_sensitive/theater_datapad.iff", true)
+
+	if (pDatapad ~= nil) then
+		SceneObject(pDatapad):destroyObjectFromWorld()
+		SceneObject(pDatapad):destroyObjectFromDatabase()
+	end
 end
 
 function FsIntro:startOldMan(pPlayer)
