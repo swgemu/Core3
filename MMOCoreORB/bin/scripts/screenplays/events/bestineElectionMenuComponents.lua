@@ -46,13 +46,13 @@ function BestineElectionTerminalMenuComponent:handleObjectMenuSelect(pSceneObjec
 		return 0
 	end
 
-	if (tblQuest[2] == "questn" and BestineElectionScreenPlay:isOnNegativeQuest(pPlayer, "Victor")) then
+	if (tblQuest[2] == "questn" and BestineElectionScreenPlay:isOnNegativeQuest(pPlayer, "victor")) then
 		local pDisk = giveItem(pInventory, "object/tangible/loot/quest/sean_questn_tdisk.iff", -1) -- Business Terminal in Sean's office
 		if (pDisk ~= nil) then
 			CreatureObject(pPlayer):sendSystemMessage("@city/bestine/terminal_items:download_complete") -- Download Complete
 			writeScreenPlayData(pPlayer, "BestineElection", "questn_term_searched", 1)
 		end
-	elseif tblQuest[2] == "questp" and BestineElectionScreenPlay:joinedCampaign(pPlayer, "Victor") then
+	elseif tblQuest[2] == "questp" and BestineElectionScreenPlay:joinedCampaign(pPlayer, "victor") then
 		local pDisk = giveItem(pInventory, "object/tangible/loot/quest/victor_questp_jregistry.iff", -1) -- Business Terminal in Victor's office
 		if (pDisk ~= nil) then
 			CreatureObject(pPlayer):sendSystemMessage("@city/bestine/terminal_items:download_complete") -- Download Complete
@@ -105,13 +105,13 @@ function BestineElectionDeskMenuComponent:handleObjectMenuSelect(pSceneObject, p
 		return 0
 	end
 
-	if (tblQuest[1] == "sean" and BestineElectionScreenPlay:isOnNegativeQuest(pPlayer, "Sean")) then
+	if (tblQuest[1] == "sean" and BestineElectionScreenPlay:isOnNegativeQuest(pPlayer, "sean")) then
 		local pItem = giveItem(pInventory, "object/tangible/loot/quest/victor_questn_journal.iff", -1) -- Desk in Victor's office
 		if (pItem ~= nil) then
 			CreatureObject(pPlayer):sendSystemMessage("@city/bestine/terminal_items:receivemsg") -- You find a handheld viewscreen in the jumble of papers. It looks like it would contain valuable information.
 			writeScreenPlayData(pPlayer, "BestineElection", "questn_desk_searched", 1)
 		end
-	elseif (tblQuest[1] == "victor" and BestineElectionScreenPlay:isOnNegativeQuest(pPlayer, "Victor")) then
+	elseif (tblQuest[1] == "victor" and BestineElectionScreenPlay:isOnNegativeQuest(pPlayer, "victor")) then
 		local pItem = giveItem(pInventory, "object/tangible/loot/quest/sean_questn_alog.iff", -1) -- Desk in Sean's office
 		if (pItem ~= nil) then
 			CreatureObject(pPlayer):sendSystemMessage("@city/bestine/terminal_items:receive1") -- The desk is neat. It's easy to find the accountant's log book. You take the item.
