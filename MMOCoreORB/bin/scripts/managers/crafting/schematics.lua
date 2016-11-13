@@ -42,6 +42,13 @@
 
 
 schematics = {
+	{path="object/draft_schematic/community_crafting/component/connections.iff"},
+	{path="object/draft_schematic/community_crafting/component/endrost.iff"},
+	{path="object/draft_schematic/community_crafting/component/power_supply.iff"},
+	{path="object/draft_schematic/community_crafting/component/primary_computer.iff"},
+	{path="object/draft_schematic/community_crafting/component/regulator.iff"},
+	{path="object/draft_schematic/community_crafting/component/shield_housing.iff"},
+	{path="object/draft_schematic/community_crafting/component/unit_computer.iff"},
 	{path="object/draft_schematic/community_crafting/component/refined_ardanium_ii.iff"},
 	{path="object/draft_schematic/community_crafting/component/refined_rudic.iff"},
 	{path="object/draft_schematic/community_crafting/component/refined_endrine.iff"},

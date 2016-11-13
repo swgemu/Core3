@@ -242,10 +242,16 @@ int LuaPlayerObject::addRewardedSchematic(lua_State* L){
 
 	DraftSchematic* schematic = SchematicMap::instance()->get(templateString.hashCode());
 
-	if (schematic != NULL)
-		realObject->addRewardedSchematic(schematic, type, quantity, notifyClient);
+	if (schematic == NULL) {
+		lua_pushboolean(L, false);
+		return 1;
+	}
 
-	return 0;
+	bool result = realObject->addRewardedSchematic(schematic, type, quantity, notifyClient);
+
+	lua_pushboolean(L, result);
+
+	return 1;
 }
 
 int LuaPlayerObject::hasSchematic(lua_State* L) {

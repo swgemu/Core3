@@ -85,7 +85,7 @@ function VillageJediManagerTownship:switchToNextPhase()
 	VillageJediManagerTownship:spawnMobiles(currentPhase, false)
 	VillageJediManagerTownship:spawnSceneObjects(currentPhase, false)
 
-	if (currentPhase == 2) then
+	if (currentPhase == 2 or currentPhase == 3) then
 		VillageCommunityCrafting:createAttributeValueTables()
 		VillageCommunityCrafting:createProjectStatsTables()
 	end
@@ -453,7 +453,7 @@ function VillageJediManagerTownship:getObjOwner(pObj)
 	return nil
 end
 
-function VillageJediManagerTownship.initQtQcPhase2(pNpc)
+function VillageJediManagerTownship.initQtQcComponent(pNpc)
 	SceneObject(pNpc):setContainerComponent("QtQcContainerComponent")
 end
 

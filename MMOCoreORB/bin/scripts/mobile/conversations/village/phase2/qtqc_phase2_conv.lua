@@ -77,14 +77,6 @@ needs_no_items = ConvoScreen:new {
 }
 villageQtQcPhase2ConvoTemplate:addScreen(needs_no_items);
 
-issue_giving_schematics = ConvoScreen:new {
-	id = "issue_giving_schematics",
-	leftDialog = "@conversation/qtqc_phase_2:s_31b4836a", -- I'm sorry, something went wrong; you could not be given the project schematics.
-	stopConversation = "true",
-	options = {}
-}
-villageQtQcPhase2ConvoTemplate:addScreen(issue_giving_schematics);
-
 what_you_want_to_know = ConvoScreen:new {
 	id = "what_you_want_to_know",
 	leftDialog = "@conversation/qtqc_phase_2:s_261bbc0d", -- What would you like to know about?
