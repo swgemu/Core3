@@ -1,6 +1,6 @@
 local ObjectManager = require("managers.object.object_manager")
 
-BESTINE_ELECTION_ENABLED = 0
+BESTINE_ELECTION_ENABLED = 1
 
 BestineElectionScreenPlay = ScreenPlay:new {
 		CAMPAIGN_TIME = 24 * 60 * 60 * 1000,
@@ -592,8 +592,8 @@ function TourContainerComponent:transferObject(pContainer, pObj, slot)
 	return 0
 end
 
---victor_visalis_conv_handler = victorVisalisConvoHandler:new {}
---sean_trenwell_conv_handler = seanTrenwellConvoHandler:new {}
+victor_visalis_conv_handler = victorVisalisConvoHandler:new {}
+sean_trenwell_conv_handler = seanTrenwellConvoHandler:new {}
 tour_aryon_conv_handler = tourAryonConvoHandler:new {}
 hutt_informant_conv_handler = huttInformantConvoHandler:new {}
 seans_historian_conv_handler = seansHistorianConvoHandler:new {}
