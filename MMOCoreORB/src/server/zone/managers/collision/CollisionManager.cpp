@@ -467,6 +467,9 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 				scno = static_cast<SceneObject*>(closeObjectsNonReference->get(i));
 			}
 
+			if (scno == object2)
+				continue;
+
 			try {
 				app = getCollisionAppearance(scno, 255);
 

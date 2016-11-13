@@ -70,6 +70,11 @@ function VillageJediManagerTownship:switchToNextPhase()
 	VillageCommunityCrafting:doEndOfPhasePrizes()
 	VillageJediManagerTownship:destroyVillageMasterObject()
 
+	-- Despawn camps going into phase 4
+	if (currentPhase == 3) then
+		FsCounterStrike:despawnAllCamps()
+	end
+
 	if (currentPhase == 3 or currentPhase == 4) then
 		VillageRaids:despawnTurrets()
 	end
@@ -84,6 +89,11 @@ function VillageJediManagerTownship:switchToNextPhase()
 	VillageJediManagerTownship.setCurrentPhaseID(phaseID + 1)
 	VillageJediManagerTownship:spawnMobiles(currentPhase, false)
 	VillageJediManagerTownship:spawnSceneObjects(currentPhase, false)
+
+	-- Spawn camps going into phase 3
+	if (currentPhase == 3) then
+		FsCounterStrike:pickPhaseCamps()
+	end
 
 	if (currentPhase == 2 or currentPhase == 3) then
 		VillageCommunityCrafting:createAttributeValueTables()
@@ -116,12 +126,22 @@ function VillageJediManagerTownship:start()
 		VillageJediManagerTownship:spawnMobiles(currentPhase, true)
 		VillageJediManagerTownship:spawnSceneObjects(currentPhase, true)
 		VillageJediManagerTownship:createVillageMasterObject()
-		
+
 		createNavMesh("dathomir", 5292, -4119, 210, true, "village_township")
 
 		if (currentPhase == 3 or currentPhase == 4) then
 			local pMaster = VillageJediManagerTownship:getMasterObject()
 			createEvent(60 * 1000, "VillageRaids", "doPhaseInit", pMaster, "")
+
+			if (currentPhase == 3) then
+				local campList = FsCounterStrike:getPhaseCampList()
+
+				if (campList == nil) then
+					FsCounterStrike:pickPhaseCamps()
+				else
+					FsCounterStrike:spawnCamps()
+				end
+			end
 		end
 	end
 end
@@ -292,6 +312,8 @@ function VillageJediManagerTownship:doOnlinePhaseChangeFails(pCreature, currentP
 	elseif (currentPhase == 2) then
 		FsReflex2:doPhaseChangeFail(pCreature)
 		FsSad:doPhaseChangeFail(pCreature)
+	elseif (currentPhase == 3) then
+		FsCounterStrike:doPhaseChangeFail(pCreature)
 	elseif (currentPhase == 4) then
 		FsVillageDefense:doPhaseChangeFail(pCreature)
 	end

@@ -145,6 +145,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Container>(SceneObjectType::STATICLOOTCONTAINER);
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::PLAYERLOOTCRATE);
 	objectFactory.registerObject<PlantObject>(SceneObjectType::GROWABLEPLANT);
+	objectFactory.registerObject<FsCsObject>(SceneObjectType::FSCSOBJECT);
 
 	objectFactory.registerObject<SlicingTool>(SceneObjectType::SLICINGTOOL);
 	objectFactory.registerObject<SlicingTool>(SceneObjectType::FLOWANALYZER);
@@ -191,7 +192,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<HarvesterObject>(SceneObjectType::HARVESTER);
 	objectFactory.registerObject<FactoryObject>(SceneObjectType::FACTORY);
 	objectFactory.registerObject<GeneratorObject>(SceneObjectType::GENERATOR);
-	objectFactory.registerObject<InstallationObject>(SceneObjectType::TURRET);
+	objectFactory.registerObject<InstallationObject>(SceneObjectType::DESTRUCTIBLE);
 	objectFactory.registerObject<InstallationObject>(SceneObjectType::MINEFIELD);
 
 	objectFactory.registerObject<WeaponObject>(SceneObjectType::WEAPON);
