@@ -48,7 +48,7 @@ includeFile("conversations/events/bestine_election/keanna_likyna_conv.lua")
 includeFile("conversations/events/bestine_election/sean_questn_university_conv.lua")
 includeFile("conversations/events/bestine_election/sean_questp_house_conv.lua")
 includeFile("conversations/events/bestine_election/sean_questp_market_conv.lua")
---includeFile("conversations/events/bestine_election/sean_trenwell_conv.lua")
+includeFile("conversations/events/bestine_election/sean_trenwell_conv.lua")
 includeFile("conversations/events/bestine_election/seans_historian_conv.lua")
 includeFile("conversations/events/bestine_election/sean_contact_quest_conv.lua")
 includeFile("conversations/events/bestine_election/tour_aryon_conv.lua")
@@ -56,7 +56,7 @@ includeFile("conversations/events/bestine_election/victor_questn_cantina_conv.lu
 includeFile("conversations/events/bestine_election/victor_questn_capitol_conv.lua")
 includeFile("conversations/events/bestine_election/victor_questp_hospital_conv.lua")
 includeFile("conversations/events/bestine_election/victor_questp_slums_conv.lua")
---includeFile("conversations/events/bestine_election/victor_visalis_conv.lua")
+includeFile("conversations/events/bestine_election/victor_visalis_conv.lua")
 
 -- Bestine Museum
 includeFile("conversations/events/bestine_museum/bestine_artist01_conv.lua")
