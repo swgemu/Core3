@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_9f8f9f75",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/intro/fs_intro.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-13T10:54:00Z",
+      "side": 1,
+      "message": "don\u0027t return a value",
+      "revId": "e6f4f4d6ae3c40b844c6c959fc165eaa8cd256ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_7fee7b24",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/intro/fs_intro.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-13T10:54:00Z",
+      "side": 1,
+      "message": "don\u0027t return a value",
+      "revId": "e6f4f4d6ae3c40b844c6c959fc165eaa8cd256ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
