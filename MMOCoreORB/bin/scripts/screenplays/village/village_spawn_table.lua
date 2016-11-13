@@ -50,7 +50,7 @@ villageMobileSpawns = {
 		{ "rohak_village_elder", 5306, 78, -4145, 0, "", "villageElderPhase2ConvoTemplate" },
 		{ "whip", 5283.66, 78.5, -4226.31, -143, "", "villageWhipPhase2ConvoTemplate" },
 		{ "quharek", 5373.7, 78.5, -4181.4, -69, "", "villageQuharekPhase2ConvoTemplate" },
-		{ "fs_cll8_binary_load_lifter", 5193.25, 78.5, -4195.6, -34, "initQtQcPhase2", "villageQtQcPhase2ConvoTemplate" },
+		{ "fs_cll8_binary_load_lifter", 5193.25, 78.5, -4195.6, -34, "initQtQcComponent", "villageQtQcPhase2ConvoTemplate" },
 
 		{ "fs_villager_male", 5346.7, 78.5, -4062.15, -46, "", "fsVillageConvo6MaleTemplate" },
 		{ "fs_villager_female", 5199.3, 78.5, -4128.55, -142, "", "fsVillageConvo5FemaleTemplate" },
@@ -76,7 +76,8 @@ villageMobileSpawns = {
 	},
 	[3] = {
 		{ "dageerin", 5238.25, 78.5, -4189.05, 97, "", "villageDageerinPhase3ConvoTemplate" },
-		{ "fs_cll8_binary_load_lifter", 5193.25, 78.5, -4195.6, -34, "", "" },
+		{ "quharek", 5373.7, 78.5, -4181.4, -69, "", "villageQuharekPhase3ConvoTemplate" },
+		{ "fs_cll8_binary_load_lifter", 5193.25, 78.5, -4195.6, -34, "initQtQcComponent", "villageQtQcPhase3ConvoTemplate" },
 		{ "captain_sarguillo", 5313.9, 78.5, -4161.5, -72, "", "" },
 		{ "rohak_village_elder", 5306, 78, -4145, 0, "", "villageElderPhase3ConvoTemplate" },
 
