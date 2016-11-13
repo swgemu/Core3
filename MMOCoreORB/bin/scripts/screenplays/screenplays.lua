@@ -188,11 +188,11 @@ includeFile("events/conversations/bestine_election/bestine_election_questn_conv_
 includeFile("events/conversations/bestine_election/bestine_election_questp_conv_handler.lua")
 includeFile("events/conversations/bestine_election/stone_merchant_conv_handler.lua")
 includeFile("events/conversations/bestine_election/hutt_informant_conv_handler.lua")
---includeFile("events/conversations/bestine_election/sean_trenwell_conv_handler.lua")
+includeFile("events/conversations/bestine_election/sean_trenwell_conv_handler.lua")
 includeFile("events/conversations/bestine_election/sean_contact_conv_handler.lua")
 includeFile("events/conversations/bestine_election/seans_historian_conv_handler.lua")
 includeFile("events/conversations/bestine_election/tour_aryon_conv_handler.lua")
---includeFile("events/conversations/bestine_election/victor_visalis_conv_handler.lua")
+includeFile("events/conversations/bestine_election/victor_visalis_conv_handler.lua")
 
 -- Events
 includeFile("events/conversations/bestine_artist_conv_handler.lua")
