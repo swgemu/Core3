@@ -62,9 +62,8 @@ void InstallationObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	player->sendMessage(buio6);
 
 
-	if((this->isTurret() || isMinefield()) && player->isCreatureObject()){
+	if ((getObjectTemplate()->getGameObjectType() == SceneObjectType::MINEFIELD || getObjectTemplate()->getGameObjectType() == SceneObjectType::DESTRUCTIBLE) && player->isCreatureObject())
 			sendPvpStatusTo(cast<CreatureObject*>(player));
-	}
 
 }
 

@@ -73,6 +73,7 @@
 #include "server/zone/managers/player/BadgeList.h"
 #include "server/zone/managers/player/LuaQuestInfo.h"
 #include "server/zone/objects/tangible/misc/FsPuzzlePack.h"
+#include "server/zone/objects/tangible/misc/FsCsObject.h"
 #include "server/zone/objects/tangible/misc/CustomIngredient.h"
 #include "server/zone/objects/tangible/misc/FsCraftingComponentObject.h"
 #include "server/zone/objects/player/sui/LuaSuiPageData.h"
@@ -82,7 +83,6 @@
 #include "server/zone/objects/tangible/component/Component.h"
 #include "server/zone/objects/pathfinding/NavMeshRegion.h"
 #include "server/zone/managers/collision/NavMeshManager.h"
-
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -521,6 +521,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaTicketObject>::Register(luaEngine->getLuaState());
 	Luna<LuaQuestInfo>::Register(luaEngine->getLuaState());
 	Luna<LuaFsPuzzlePack>::Register(luaEngine->getLuaState());
+	Luna<LuaFsCsObject>::Register(luaEngine->getLuaState());
 	Luna<LuaResourceSpawn>::Register(luaEngine->getLuaState());
 	Luna<LuaCustomIngredient>::Register(luaEngine->getLuaState());
 	Luna<LuaFsCraftingComponentObject>::Register(luaEngine->getLuaState());

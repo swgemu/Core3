@@ -430,7 +430,7 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 	bool bIsFactionBuilding = (serverTemplate->getGameObjectType()
 			== SceneObjectType::FACTIONBUILDING);
 
-	if (bIsFactionBuilding || serverTemplate->getGameObjectType() == SceneObjectType::TURRET) {
+	if (bIsFactionBuilding || serverTemplate->getGameObjectType() == SceneObjectType::DESTRUCTIBLE) {
 		strDatabase = "playerstructures";
 	}
 

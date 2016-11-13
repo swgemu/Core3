@@ -92,7 +92,7 @@ public:
 	const static int FACTORY = 0x1001;
 	const static int GENERATOR = 0x1002;
 	const static int HARVESTER = 0x1003;
-	const static int TURRET = 0x1004;
+	const static int DESTRUCTIBLE = 0x1004;
 	const static int MINEFIELD = 0x1005;
 
 	/// Not in client **********
@@ -159,6 +159,7 @@ public:
 	const static int FSPUZZLEPACK = 0x2036;
 	const static int GROWABLEPLANT = 0x2037;
 	const static int FSCRAFTINGCOMPONENT = 0x2038;
+	const static int FSCSOBJECT = 0x2039;
 	/// End Not in client **************
 
 	const static int TERMINAL = 0x4000;
