@@ -103,7 +103,6 @@ function SithShadowEncounter:onEncounterSpawned(pCreatureObject, spawnedObjects)
 
 	Logger:log("Register Sith Shadow Encounter observers.", LT_INFO)
 	createObserver(LOOTCREATURE, self.taskName, "onLoot", spawnedObjects[1])
-	createObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pCreatureObject)
 	FsIntro:setCurrentStep(pCreatureObject, 4)
 	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.TWO_MILITARY)
 end
