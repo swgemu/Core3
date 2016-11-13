@@ -75,8 +75,84 @@ VillageCommunityCrafting = ScreenPlay:new {
 		[3] = {
 			schematic = "object/draft_schematic/community_crafting/village_shields.iff",
 			keyName = "village_shields",
-			ingredients = {},
+			ingredients = {
+				-- Schematic slots
+				[1] = {
+					stringName = "endrost",
+					template = "object/tangible/component/chemistry/endrost.iff",
+					schematic = "object/draft_schematic/community_crafting/component/endrost.iff",
+					attributes = { "res_quality", "res_toughness" },
+					prize = {
+						quantity = "object/tangible/crafting/station/jedi_tool_crit_experiment_5.iff",
+						quality = "object/tangible/crafting/station/jedi_tool_crit_experiment_5.iff"
+					}
+				},
+				[2] = {
+					stringName = "shield_housing",
+					template = "object/tangible/component/structure/shield_housing.iff",
+					schematic = "object/draft_schematic/community_crafting/component/shield_housing.iff",
+					attributes = { "system_redundancy" },
+					prize = {
+						quantity = "object/tangible/crafting/station/jedi_tool_crit_experiment_5.iff",
+						quality = "object/tangible/crafting/station/jedi_tool_crit_experiment_5.iff"
+					}
+				},
+				[3] = {
+					stringName = "power_supply",
+					template = "object/tangible/component/structure/power_supply.iff",
+					schematic = "object/draft_schematic/community_crafting/component/power_supply.iff",
+					attributes = { "energy_resistance" },
+					prize = {
+						quantity = "object/tangible/crafting/station/jedi_tool_crit_experiment_5.iff",
+						quality = "object/tangible/crafting/station/jedi_tool_crit_experiment_5.iff"
+					}
+				},
+				[4] = {
+					stringName = "unit_computer",
+					template = "object/tangible/component/structure/unit_computer.iff",
+					schematic = "object/draft_schematic/community_crafting/component/unit_computer.iff",
+					attributes = { "armor_effectiveness" },
+					prize = {
+						quantity = "object/tangible/crafting/station/jedi_tool_crit_experiment_5.iff",
+						quality = "object/tangible/crafting/station/jedi_tool_crit_experiment_5.iff"
+					}
+				},
+				[5] = {
+					stringName = "regulator",
+					template = "object/tangible/component/structure/regulator.iff",
+					schematic = "object/draft_schematic/community_crafting/component/regulator.iff",
+					attributes = { "power_efficiency" },
+					prize = {
+						quantity = "object/tangible/crafting/station/jedi_tool_crit_experiment_5.iff",
+						quality = "object/tangible/crafting/station/jedi_tool_crit_experiment_5.iff"
+					}
+				},
+				[6] = {
+					stringName = "connections",
+					template = "object/tangible/component/structure/connections.iff",
+					schematic = "object/draft_schematic/community_crafting/component/connections.iff",
+					attributes = { "grid_stability" },
+					prize = {
+						quantity = "object/tangible/crafting/station/jedi_tool_crit_experiment_5.iff",
+						quality = "object/tangible/crafting/station/jedi_tool_crit_experiment_5.iff"
+					}
+				},
+				[7] = {
+					stringName = "primary_computer",
+					template = "object/tangible/component/structure/primary_computer.iff",
+					schematic = "object/draft_schematic/community_crafting/component/primary_computer.iff",
+					attributes = { "system_response" },
+					prize = {
+						quantity = "object/tangible/crafting/station/jedi_tool_crit_experiment_5.iff",
+						quality = "object/tangible/crafting/station/jedi_tool_crit_experiment_5.iff"
+					}
+				},
+			},
 			secondarySchematics = {},
+			overallPrize = {
+				quantity = "object/tangible/crafting/station/jedi_tool_crit_experiment_20.iff",
+				quality = "object/tangible/crafting/station/jedi_tool_crit_experiment_20.iff"
+			},
 			minIngredients = 20,
 			ingredientMinValue = 0,
 			ingredientMaxValue = 1000
@@ -721,13 +797,13 @@ end
 
 function VillageCommunityCrafting:giveSchematics(pPlayer)
 	if (not VillageCommunityCrafting:isOnActiveCrafterList(pPlayer)) then
-		return
+		return false
 	end
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
-		return
+		return false
 	end
 
 	local currentPhase = VillageJediManagerTownship.getCurrentPhase()
@@ -739,9 +815,16 @@ function VillageCommunityCrafting:giveSchematics(pPlayer)
 
 	local secondaryList = self.phaseInfo[currentPhase].secondarySchematics
 
+	local addSuccess = true
 	for i = 1, #secondaryList, 1 do
-		PlayerObject(pGhost):addRewardedSchematic(secondaryList[i], 2, -1, true)
+		local tempSuccess = PlayerObject(pGhost):addRewardedSchematic(secondaryList[i], 2, -1, true)
+		
+		if (not tempSuccess) then
+			addSuccess = false
+		end
 	end
+	
+	return addSuccess
 end
 
 function VillageCommunityCrafting:removeSchematics(pPlayer, phase)
@@ -809,10 +892,11 @@ function VillageCommunityCrafting:doEndOfPhasePrizes()
 	local phaseID = VillageJediManagerTownship:getCurrentPhaseID()
 	local currentPhase = VillageJediManagerTownship.getCurrentPhase()
 
-	-- TODO: Add phase 3 to this check once data is added
-	if (currentPhase ~= 2) then
+	if (currentPhase ~= 2 and currentPhase ~= 3) then
 		return
 	end
+
+	local minIngredients = self:getMinimumIngredients()
 
 	local ingredientList = self.phaseInfo[currentPhase].ingredients
 
@@ -869,7 +953,8 @@ function VillageCommunityCrafting:doEndOfPhasePrizes()
 			local playerQuality = tonumber(qualityMap:getMapRow(playerID))
 			local playerQuantity = tonumber(quantityMap:getMapRow(playerID))
 
-			if (playerQuantity ~= nil and playerQuantity > 0) then
+			-- Only add player data to reward list if they completed the quest
+			if (playerQuantity ~= nil and playerQuantity >= minIngredients) then
 				local dataTable = { playerID, playerQuality, playerQuantity }
 				table.insert(statTable, dataTable)
 
@@ -920,34 +1005,37 @@ function VillageCommunityCrafting:doEndOfPhasePrizes()
 	end
 
 
-	table.sort(overallQuality, self.prizeSort)
+	if (#overallQuality > 0) then
+		table.sort(overallQuality, self.prizeSort)
 
-	local overallQualityWinner = overallQuality[1][1]
+		local overallQualityWinner = overallQuality[1][1]
 
-	local pQualityWinner = getCreatureObject(overallQualityWinner)
+		local pQualityWinner = getCreatureObject(overallQualityWinner)
 
-	if (pQualityWinner ~= nil) then
-		local pInventory = CreatureObject(pQualityWinner):getSlottedObject("inventory")
+		if (pQualityWinner ~= nil) then
+			local pInventory = CreatureObject(pQualityWinner):getSlottedObject("inventory")
 
-		if pInventory ~= nil then
-			local pItem = giveItem(pInventory, self.phaseInfo[currentPhase].overallPrize.quality, -1)
+			if pInventory ~= nil then
+				local pItem = giveItem(pInventory, self.phaseInfo[currentPhase].overallPrize.quality, -1)
+			end
 		end
 	end
 
-	table.sort(overallQuantity, self.prizeSort)
+	if (#overallQuantity > 0) then
+		table.sort(overallQuantity, self.prizeSort)
 
-	local overallQuantityWinner = overallQuantity[1][1]
+		local overallQuantityWinner = overallQuantity[1][1]
 
-	local pQuantityWinner = getCreatureObject(overallQuantityWinner)
+		local pQuantityWinner = getCreatureObject(overallQuantityWinner)
 
-	if (pQuantityWinner ~= nil) then
-		local pInventory = CreatureObject(pQuantityWinner):getSlottedObject("inventory")
+		if (pQuantityWinner ~= nil) then
+			local pInventory = CreatureObject(pQuantityWinner):getSlottedObject("inventory")
 
-		if pInventory ~= nil then
-			local pItem = giveItem(pInventory, self.phaseInfo[currentPhase].overallPrize.quantity, -1)
+			if pInventory ~= nil then
+				local pItem = giveItem(pInventory, self.phaseInfo[currentPhase].overallPrize.quantity, -1)
+			end
 		end
 	end
-
 end
 
 function VillageCommunityCrafting.prizeSort(a,b)

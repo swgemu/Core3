@@ -43,9 +43,17 @@ function villageQtQcPhase2ConvoHandler:runScreenHandlers(pConvTemplate, pPlayer,
 	elseif (screenID == "needs_multiple_items") then
 		clonedConversation:setDialogTextDI(VillageCommunityCrafting:getIngredientsNeededByPlayer(pPlayer))
 	elseif (screenID == "schematics_given") then
-		VillageCommunityCrafting:giveSchematics(pPlayer)
-		QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_01)
-		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_02)
+		local result = VillageCommunityCrafting:giveSchematics(pPlayer)
+
+		if (result) then
+			QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_01)
+			QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_02)
+		else
+			VillageCommunityCrafting:removeSchematics(pPlayer, VillageJediManagerTownship:getCurrentPhase())
+			clonedConversation:setDialogTextStringId("@conversation/qtqc_phase_2:s_31b4836a")
+			clonedConversation:removeAllOptions()
+			clonedConversation:setStopConversation(true)
+		end
 	elseif (screenID == "see_attributes") then
 		VillageCommunityCrafting:sendPlayerProjectAttributes(pPlayer, pNpc)
 	elseif (string.match(screenID, "_slot_")) then
