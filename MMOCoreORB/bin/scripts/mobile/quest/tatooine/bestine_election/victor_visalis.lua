@@ -1,5 +1,5 @@
 victor_visalis = Creature:new {
-	objectName = "@npc_name:human_base_male",
+	objectName = "",
 	customName = "Victor Visalis",
 	socialGroup = "townsperson",
 	faction = "townsperson",
@@ -23,15 +23,14 @@ victor_visalis = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_victor_visalis.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "victorVisalisConvoTemplate",
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(victor_visalis, "victor_visalis")
