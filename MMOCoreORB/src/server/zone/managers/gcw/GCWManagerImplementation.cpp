@@ -1982,7 +1982,7 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 
 				if (generatedTemplate != NULL &&
 						(generatedTemplate->getGameObjectType() == SceneObjectType::MINEFIELD ||
-								generatedTemplate->getGameObjectType() == SceneObjectType::TURRET)) {
+								generatedTemplate->getGameObjectType() == SceneObjectType::DESTRUCTIBLE)) {
 
 					donate->addMenuItem(inventoryObject->getDisplayedName(), inventoryObject->getObjectID());
 				}
@@ -2053,7 +2053,7 @@ void GCWManagerImplementation::performDefenseDonation(BuildingObject* building, 
 			if (generatedTemplate->getGameObjectType() == SceneObjectType::MINEFIELD) {
 				performDonateMinefield(building, creature, deed);
 				return;
-			} else if (generatedTemplate->getGameObjectType() == SceneObjectType::TURRET) {
+			} else if (generatedTemplate->getGameObjectType() == SceneObjectType::DESTRUCTIBLE) {
 				performDonateTurret(building, creature, deed);
 				return;
 			}
@@ -2185,7 +2185,7 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 		if (child != NULL) {
 
 			turretTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
-			if (turretTemplate->getGameObjectType() == SceneObjectType::TURRET) {
+			if (turretTemplate->getGameObjectType() == SceneObjectType::DESTRUCTIBLE) {
 				if (currentTurretIndex == nextAvailableTurret) {
 					break;
 				} else {
@@ -2195,7 +2195,7 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 		}
 	}
 
-	if (child == NULL || turretTemplate == NULL || turretTemplate->getGameObjectType() != SceneObjectType::TURRET)
+	if (child == NULL || turretTemplate == NULL || turretTemplate->getGameObjectType() != SceneObjectType::DESTRUCTIBLE)
 		return;
 
 	uint64 turretID = addChildInstallationFromDeed(building, child, creature, turretDeed);

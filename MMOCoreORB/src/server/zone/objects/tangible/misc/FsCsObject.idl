@@ -1,0 +1,84 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.fscsobject;
+
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.Zone;
+import engine.lua.LuaObject;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.ZoneServer;
+import system.lang.String;
+import system.lang.Time;
+
+@lua
+class FsCsObject extends TangibleObject {
+	@dereferenced
+	protected Time createdTime;
+
+	protected int phaseDuration;
+
+	public FsCsObject() {
+		setLoggingName("FsCsObject");
+		createdTime.updateToCurrentTime();
+
+		phaseDuration = 1814400000; // 3 week default
+	}
+
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	@dirty
+	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
+		int decay = getDecayPercent();
+
+		string decayStr = String.valueOf(decay) + "%";
+
+		msg.insertAttribute("fs_p3_item_decay_rate", decayStr);
+
+		int itemAge = System.getMiliTime() - createdTime.getMiliTime();
+		int timeLeft = phaseDuration - itemAge;
+
+		int days = (timeLeft / 1000 / 60 / 60 / 24);
+		int hours = ((timeLeft / 1000 / 60 / 60) % 24);
+		int minutes = ((timeLeft / 1000 / 60) % 60);
+
+		string timeLeftStr;
+
+		if (timeLeft <= 0)
+			timeLeftStr = "Already Decayed";
+		else
+			timeLeftStr = String.valueOf(days) + " days, " + String.valueOf(hours) + " hours, " + String.valueOf(minutes) + " minutes";
+
+		msg.insertAttribute("fs_p3_item_decay_in", timeLeftStr);
+	}
+
+	@dirty
+	public int getDecayPercent() {
+		int itemAge = System.getMiliTime() - createdTime.getMiliTime();
+		int decay = (int)(((float)itemAge / (float)phaseDuration) * 100);
+
+		if (decay > 100)
+			decay = 100;
+
+		return decay;
+	}
+
+	@dirty
+	public int getPhaseDuration() {
+		return phaseDuration;
+	}
+
+	public void setPhaseDuration(int dur) {
+		phaseDuration = dur;
+	}
+}

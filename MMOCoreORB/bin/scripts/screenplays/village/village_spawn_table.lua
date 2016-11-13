@@ -78,7 +78,7 @@ villageMobileSpawns = {
 		{ "dageerin", 5238.25, 78.5, -4189.05, 97, "", "villageDageerinPhase3ConvoTemplate" },
 		{ "quharek", 5373.7, 78.5, -4181.4, -69, "", "villageQuharekPhase3ConvoTemplate" },
 		{ "fs_cll8_binary_load_lifter", 5193.25, 78.5, -4195.6, -34, "initQtQcComponent", "villageQtQcPhase3ConvoTemplate" },
-		{ "captain_sarguillo", 5313.9, 78.5, -4161.5, -72, "", "" },
+		{ "captain_sarguillo", 5313.9, 78.5, -4161.5, -72, "", "villageSarguilloPhase3ConvoTemplate" },
 		{ "rohak_village_elder", 5306, 78, -4145, 0, "", "villageElderPhase3ConvoTemplate" },
 
 		{ "fs_villager_male", 5346.7, 78.5, -4062.15, -46, "", "fsVillageConvo6MaleTemplate" },
