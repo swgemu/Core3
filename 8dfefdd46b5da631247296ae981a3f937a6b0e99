@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_7fbf5bd1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase3/sarguillo_phase3_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T04:33:48Z",
+      "side": 1,
+      "message": "inherit conv_handler",
+      "revId": "8dfefdd46b5da631247296ae981a3f937a6b0e99",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_5fba97e2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase3/sarguillo_phase3_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T04:33:48Z",
+      "side": 1,
+      "message": "You should update your arg names here and in runScreenHandlers",
+      "revId": "8dfefdd46b5da631247296ae981a3f937a6b0e99",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_bfedc3f1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase3/sarguillo_phase3_conv_handler.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T04:33:48Z",
+      "side": 1,
+      "message": "You should be able to remove this.",
+      "revId": "8dfefdd46b5da631247296ae981a3f937a6b0e99",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_1fb40ff1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T04:33:48Z",
+      "side": 1,
+      "message": "I think it would be more efficient to build a table with 1 through #self.campSpawns in it. Then get a random element, insert it into chosenCamps and remove it from the table you built. That would save you from having to loop through chosenCamps after every selection to see if randCamp is already there.",
+      "revId": "8dfefdd46b5da631247296ae981a3f937a6b0e99",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_3fb9d3e9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T04:33:48Z",
+      "side": 1,
+      "message": "You aren\u0027t writing this anymore when the original droids are spawned. You removed it.",
+      "revId": "8dfefdd46b5da631247296ae981a3f937a6b0e99",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_dfcd2788",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T04:33:48Z",
+      "side": 1,
+      "message": "deleteData(droidID .. \":theaterID\")",
+      "revId": "8dfefdd46b5da631247296ae981a3f937a6b0e99",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_ffca6b6d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T04:33:48Z",
+      "side": 1,
+      "message": "deleteData(theaterID .. \":shieldID\")",
+      "revId": "8dfefdd46b5da631247296ae981a3f937a6b0e99",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_9fc79f64",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T04:33:48Z",
+      "side": 1,
+      "message": "This doesn\u0027t appear to be used. For future use?",
+      "revId": "8dfefdd46b5da631247296ae981a3f937a6b0e99",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_bfc4e35f",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T04:33:48Z",
+      "side": 1,
+      "message": "I thought we were deprecating these calls.",
+      "revId": "8dfefdd46b5da631247296ae981a3f937a6b0e99",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_5fa137a8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_jedi_manager_township.lua",
+        "patchSetId": 10
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T04:33:48Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we call spawnCamps() directly so that we use the same camps that were picked when the phase changed to 3? Otherwise some remotes obtained before a server restart, but during the same phase may become unusable.\n\nWell, I guess there could be an issue if the village is in phase 3 when the server is restarted to apply this patch. We can get the quest status that holds the camp table and call pickPhaseCamps() if it\u0027s not populated and spawnCamps() if it is.",
+      "revId": "8dfefdd46b5da631247296ae981a3f937a6b0e99",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
