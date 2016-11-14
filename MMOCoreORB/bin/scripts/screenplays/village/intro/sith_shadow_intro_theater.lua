@@ -127,7 +127,6 @@ function SithShadowIntroTheater:onSuccessfulSpawn(pCreatureObject, spawnedSithSh
 
 	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.FS_THEATER_CAMP)
 	createObserver(LOOTCREATURE, self.taskName, "onLoot", spawnedSithShadowsList[1])
-	createObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pCreatureObject)
 end
 
 -- Handling of the activation of the theater waypoint datapad.
