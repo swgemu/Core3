@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_ff910b53",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase3/sarguillo_phase3_conv_handler.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T05:55:16Z",
+      "side": 1,
+      "message": "pConvScreen",
+      "range": {
+        "startLine": 43,
+        "startChar": 38,
+        "endLine": 43,
+        "endChar": 56
+      },
+      "revId": "235983faddbe57d08d6a3dcb29c48f5705e7c89a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_9f9ebf62",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_jedi_manager_township.lua",
+        "patchSetId": 11
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T05:55:16Z",
+      "side": 1,
+      "message": "getQuestStatus pushes nil to Lua if it\u0027s an empty string so this check isn\u0027t necessary.",
+      "range": {
+        "startLine": 139,
+        "startChar": 27,
+        "endLine": 139,
+        "endChar": 41
+      },
+      "revId": "235983faddbe57d08d6a3dcb29c48f5705e7c89a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
