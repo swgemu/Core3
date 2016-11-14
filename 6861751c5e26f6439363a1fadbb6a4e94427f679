@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_df71a778",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_community_crafting.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T00:57:38Z",
+      "side": 1,
+      "message": "return false",
+      "revId": "6861751c5e26f6439363a1fadbb6a4e94427f679",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_ff6eeb95",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_community_crafting.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T00:57:38Z",
+      "side": 1,
+      "message": "return false",
+      "revId": "6861751c5e26f6439363a1fadbb6a4e94427f679",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_9f6b1f85",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T00:57:38Z",
+      "side": 1,
+      "message": "You need to return or have an else after this",
+      "revId": "6861751c5e26f6439363a1fadbb6a4e94427f679",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
