@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_768d2e31",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/task_loot/eng_prototype_quest_jusani.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T01:40:56Z",
+      "side": 1,
+      "message": "There is no way that this is the object used since the quest would have pre-dated JTL.",
+      "revId": "073a7781d370a0cb9e8ebf8a116cc773fedd225a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_1f264f69",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/talus/exec_quest_jusani.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T01:40:56Z",
+      "side": 1,
+      "message": "The one guide says you gain thug faction when you kill him, so this should probably be townsperson.",
+      "revId": "073a7781d370a0cb9e8ebf8a116cc773fedd225a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_5f2cd74a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/talus/jusani_zhord.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T01:40:56Z",
+      "side": 1,
+      "message": "There are several quest givers with 5 or 6 options, but it\u0027s obvious by reading them that they are not used consistently in the same manner. We may need to break up the mission giver conv template into a couple different ones in order to accommodate the differences in usage. Either way, it\u0027s beyond the scope of this patch so you can remove this.",
+      "revId": "073a7781d370a0cb9e8ebf8a116cc773fedd225a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_7f319ba1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/talus/jusani_zhord.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T01:40:56Z",
+      "side": 1,
+      "message": "Again, this is beyond the scope of this patch and will need to be addressed separately.",
+      "revId": "073a7781d370a0cb9e8ebf8a116cc773fedd225a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_ff1cab15",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/talus/jusani_zhord.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T01:40:56Z",
+      "side": 1,
+      "message": "A townsperson shouldn\u0027t have thug guards. None of the guides mention secondary spawns, nor do the strings. I would remove these.",
+      "revId": "073a7781d370a0cb9e8ebf8a116cc773fedd225a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_9f19df24",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/talus/jusani_zhord.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T01:40:56Z",
+      "side": 1,
+      "message": "One of your links in the mantis said this reward was 50 credits.",
+      "revId": "073a7781d370a0cb9e8ebf8a116cc773fedd225a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_5fd37738",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/talus/jusani_zhord.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T01:40:56Z",
+      "side": 1,
+      "message": "Just make it a confiscate quest.",
+      "revId": "073a7781d370a0cb9e8ebf8a116cc773fedd225a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_7fd8bb53",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/talus/jusani_zhord.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T01:40:56Z",
+      "side": 1,
+      "message": "I would make this 100 credits since the first is 50",
+      "revId": "073a7781d370a0cb9e8ebf8a116cc773fedd225a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
