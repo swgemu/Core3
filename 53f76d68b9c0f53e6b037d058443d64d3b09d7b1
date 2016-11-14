@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_bf5143da",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/village/phase3/qtqc_phase3_conv.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-14T00:17:05Z",
+      "side": 1,
+      "message": "I don\u0027t see you using this...\n\nYou could have giveSchematics return a true/false and swap the dialog to this one in the screen handler if it returned false. You\u0027d also need to clear the option and change stopConversation to true. Since you\u0027d be setting these on the cloned screen, you wouldn\u0027t need to have this screen in the template.",
+      "revId": "53f76d68b9c0f53e6b037d058443d64d3b09d7b1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
