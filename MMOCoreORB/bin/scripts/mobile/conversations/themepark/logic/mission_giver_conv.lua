@@ -113,7 +113,9 @@ function createMissionGiverConvoTemplate(templateName, convoHandler)
 		options = {
 			{ ":player_1_1", "accept" },
 			{ ":player_2_1", "npc_3_n" },
-			{ ":player_3_1", "npc_4_n" }
+			{ ":player_3_1", "npc_4_n" },
+			{ ":player_4_1", "npc_5_n" },
+			{ ":player_5_1", "npc_6_n" }
 		}
 	}
 
@@ -165,11 +167,41 @@ function createMissionGiverConvoTemplate(templateName, convoHandler)
 		stopConversation = "false",
 		options = {
 			{ ":player_1_1", "accept" },
-			{ ":player_2_1", "npc_3_n" }
+			{ ":player_2_1", "npc_3_n" },
+			{ ":player_4_1", "npc_5_n" },
+			{ ":player_5_1", "npc_6_n" }
 		}
 	}
 
 	mission_giver_convotemplate:addScreen(mission_giver_npc_4_n);
+
+	mission_giver_npc_5_n = ConvoScreen:new {
+		id = "npc_5_n",
+		leftDialog = ":npc_5_1",
+		stopConversation = "false",
+		options = {
+			{ ":player_1_1", "accept" },
+			{ ":player_2_1", "npc_3_n" },
+			{ ":player_3_1", "npc_4_n" },
+			{ ":player_5_1", "npc_6_n" }
+		}
+	}
+
+	mission_giver_convotemplate:addScreen(mission_giver_npc_5_n);
+
+	mission_giver_npc_6_n = ConvoScreen:new {
+		id = "npc_6_n",
+		leftDialog = ":npc_6_1",
+		stopConversation = "false",
+		options = {
+			{ ":player_1_1", "accept" },
+			{ ":player_2_1", "npc_3_n" },
+			{ ":player_3_1", "npc_4_n" },
+			{ ":player_4_1", "npc_5_n" }
+		}
+	}
+
+	mission_giver_convotemplate:addScreen(mission_giver_npc_6_n);
 
 	mission_giver_status = ConvoScreen:new {
 		id = "status",
