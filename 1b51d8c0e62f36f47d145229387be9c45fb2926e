@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_df3e8729",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1827
+      },
+      "writtenOn": "2016-11-15T20:21:36Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure this needs to be \"\u0026\" not \"\u003d\u003d\". \u003d\u003d will evaluate to false if any flags, in addition to INVULNERABLE, are set, i.e HASSERIAL or YELLOW.",
+      "revId": "1b51d8c0e62f36f47d145229387be9c45fb2926e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
