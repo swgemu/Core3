@@ -23,15 +23,14 @@ jusani_zhord = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_jusani_zhord.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "jusani_zhord_mission_giver_convotemplate",
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(jusani_zhord, "jusani_zhord")

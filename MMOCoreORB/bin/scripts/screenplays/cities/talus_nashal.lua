@@ -80,8 +80,6 @@ function TalusNashalScreenPlay:spawnMobiles()
 	spawnMobile("talus", "informant_npc_lvl_3",0,4529,2,5371,260,0)
 	--spawnMobile("talus", "junk_dealer",0,4541.9,2,5278.5,-64,0)
 	spawnMobile("talus", "rebel_recruiter",1,4072,2,5289,135,0)
-	--quest
-	spawnMobile("talus", "jusani_zhord",60,20,1.3,-1,270,4265423)
 	--trainers
 	spawnMobile("talus", "trainer_2hsword",1,11,1.1,-11.4,0,4265405)
 	spawnMobile("talus", "trainer_architect",1,11,1,-14,0,4265415)
