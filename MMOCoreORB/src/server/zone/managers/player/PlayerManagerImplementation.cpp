@@ -977,15 +977,21 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 				Locker clocker(obj, player);
 
-				if (obj->getOptionsBitmask() & OptionBitmask::INSURED) {
-					//1% Decay for insured items
-					obj->inflictDamage(obj, 0, 0.01 * obj->getMaxCondition(), true, true);
-					//Set uninsured
-					uint32 bitmask = obj->getOptionsBitmask() - OptionBitmask::INSURED;
-					obj->setOptionsBitmask(bitmask);
+				uint64 objbit = obj->getOptionsBitmask();
+				if (objbit == OptionBitmask::INVULNERABLE) {
+					obj->inflictDamage(obj, 0, 0.00 * obj->getMaxCondition(), true, true);
 				} else {
-					//5% Decay for uninsured items
-					obj->inflictDamage(obj, 0, 0.05 * obj->getMaxCondition(), true, true);
+
+					if (obj->getOptionsBitmask() & OptionBitmask::INSURED) {
+						//1% Decay for insured items
+						obj->inflictDamage(obj, 0, 0.01 * obj->getMaxCondition(), true, true);
+						//Set uninsured
+						uint32 bitmask = obj->getOptionsBitmask() - OptionBitmask::INSURED;
+						obj->setOptionsBitmask(bitmask);
+					} else {
+						//5% Decay for uninsured items
+						obj->inflictDamage(obj, 0, 0.05 * obj->getMaxCondition(), true, true);
+					}
 				}
 
 				// Calculate condition percentage for decay report
@@ -3856,47 +3862,47 @@ void PlayerManagerImplementation::decreaseOnlineCharCount(ZoneClientSession* cli
 	}
 }
 
-void PlayerManagerImplementation::proposeUnity( CreatureObject* askingPlayer, CreatureObject* respondingPlayer, SceneObject* askingPlayerRing ){
+void PlayerManagerImplementation::proposeUnity(CreatureObject* askingPlayer, CreatureObject* respondingPlayer, SceneObject* askingPlayerRing) {
 
-	if( !askingPlayer->isPlayerCreature() ){
+	if (!askingPlayer->isPlayerCreature()) {
 		return;
 	}
 
 	// Check if target is self
-	if( askingPlayer == respondingPlayer ){
+	if (askingPlayer == respondingPlayer) {
 		askingPlayer->sendSystemMessage("@unity:bad_target"); // "You must have a valid player target to Propose Unity."
 		return;
 	}
 
 	// Check if target is a player
-	if( !respondingPlayer->isPlayerCreature() ){
+	if (!respondingPlayer->isPlayerCreature()) {
 		askingPlayer->sendSystemMessage("@unity:bad_target"); // "You must have a valid player target to Propose Unity."
 		return;
 	}
 
 	Reference<PlayerObject*> askingGhost = askingPlayer->getPlayerObject();
 	Reference<PlayerObject*> respondingGhost = respondingPlayer->getPlayerObject();
-	if( askingGhost == NULL || respondingGhost == NULL ){
+	if (askingGhost == NULL || respondingGhost == NULL) {
 		return;
 	}
 
 	// Check if askingPlayer is married
-	if( askingGhost->isMarried() ){
+	if (askingGhost->isMarried()) {
 		StringIdChatParameter errAskerMarried;
 		errAskerMarried.setStringId("unity", "prose_already_married"); // "You cannot propose unity. You are already united with %TO."
-		errAskerMarried.setTO( askingGhost->getSpouseName() );
+		errAskerMarried.setTO(askingGhost->getSpouseName());
 		askingPlayer->sendSystemMessage( errAskerMarried );
 		return;
 	}
 
 	// Check if respondingPlayer is married
-	if( respondingGhost->isMarried() ){
+	if (respondingGhost->isMarried()) {
 		askingPlayer->sendSystemMessage("@unity:target_married"); // "You cannot propose unity to someone who is already united."
 		return;
 	}
 
 	// Check distance
-	if( !respondingPlayer->isInRange( askingPlayer, 15.0 ) ){
+	if (!respondingPlayer->isInRange(askingPlayer, 15.0)) {
 		askingPlayer->sendSystemMessage("@unity:out_of_range"); // "Your target is too far away to properly propose!"
 		return;
 	}
@@ -3907,13 +3913,13 @@ void PlayerManagerImplementation::proposeUnity( CreatureObject* askingPlayer, Cr
 	}
 
 	// Check if asking player has a proposal outstanding
-	if( askingPlayer->getActiveSession(SessionFacadeType::PROPOSEUNITY) != NULL ){
+	if (askingPlayer->getActiveSession(SessionFacadeType::PROPOSEUNITY) != NULL) {
 		askingPlayer->sendSystemMessage("But you already have an outstanding unity proposal");
 		return;
 	}
 
 	// Check if responding player has a proposal outstanding
-	if( respondingPlayer->getActiveSession(SessionFacadeType::PROPOSEUNITY) != NULL ){
+	if (respondingPlayer->getActiveSession(SessionFacadeType::PROPOSEUNITY) != NULL) {
 		askingPlayer->sendSystemMessage("@unity:target_proposed"); // "Your proposal target is already engaged in a unity proposal."
 		return;
 	}
@@ -3922,30 +3928,30 @@ void PlayerManagerImplementation::proposeUnity( CreatureObject* askingPlayer, Cr
 	// All checks passed
 	//
 
-	Locker rlocker( askingPlayer, respondingPlayer );
+	Locker rlocker(askingPlayer, respondingPlayer);
 
 	// Initialize session
 	ManagedReference<ProposeUnitySession*> askerUnitySession =
-			new ProposeUnitySession( askingPlayer->getObjectID(), respondingPlayer->getObjectID(), askingPlayerRing->getObjectID() );
+			new ProposeUnitySession(askingPlayer->getObjectID(), respondingPlayer->getObjectID(), askingPlayerRing->getObjectID());
 	askingPlayer->addActiveSession(SessionFacadeType::PROPOSEUNITY, askerUnitySession);
 
 	ManagedReference<ProposeUnitySession*> responderUnitySession =
-			new ProposeUnitySession( askingPlayer->getObjectID(), respondingPlayer->getObjectID(), askingPlayerRing->getObjectID() );
+			new ProposeUnitySession(askingPlayer->getObjectID(), respondingPlayer->getObjectID(), askingPlayerRing->getObjectID());
 	respondingPlayer->addActiveSession(SessionFacadeType::PROPOSEUNITY, responderUnitySession);
 
 	// Submit timeout task
-	Reference<Task*> askerExpiredTask = new ProposeUnityExpiredTask( askingPlayer );
+	Reference<Task*> askerExpiredTask = new ProposeUnityExpiredTask(askingPlayer);
 	askingPlayer->addPendingTask("propose_unity", askerExpiredTask, 60000); // 1 min
 
-	Reference<Task*> responderExpiredTask = new ProposeUnityExpiredTask( respondingPlayer );
+	Reference<Task*> responderExpiredTask = new ProposeUnityExpiredTask(respondingPlayer);
 	respondingPlayer->addPendingTask("propose_unity", responderExpiredTask, 60000); // 1 min
 
 	// Build and send proposal window
 	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(respondingPlayer, SuiWindowType::PROPOSE_UNITY);
 	suiBox->setCallback(new ProposeUnitySuiCallback(server));
 	suiBox->setPromptTitle("@unity:accept_title"); // "Accept Unity Proposal?"
-	suiBox->setPromptText( askingPlayer->getCreatureName().toString() + " is proposing unity to you. Do you wish to accept?" );
-	suiBox->setUsingObject( askingPlayer );
+	suiBox->setPromptText(askingPlayer->getCreatureName().toString() + " is proposing unity to you. Do you wish to accept?");
+	suiBox->setUsingObject(askingPlayer);
 	suiBox->setCancelButton(true, "@no");
 	suiBox->setOkButton(true, "@yes");
 
@@ -3955,19 +3961,19 @@ void PlayerManagerImplementation::proposeUnity( CreatureObject* askingPlayer, Cr
 	// Send message to asking player
 	StringIdChatParameter proposalSent;
 	proposalSent.setStringId("unity", "prose_propose"); // "You propose unity to %TO."
-	proposalSent.setTO( respondingPlayer->getFirstName() );
-	askingPlayer->sendSystemMessage( proposalSent );
+	proposalSent.setTO(respondingPlayer->getFirstName());
+	askingPlayer->sendSystemMessage(proposalSent);
 
 }
 
-void PlayerManagerImplementation::denyUnity( CreatureObject* respondingPlayer ){
+void PlayerManagerImplementation::denyUnity(CreatureObject* respondingPlayer) {
 
-	if( respondingPlayer == NULL )
+	if (respondingPlayer == NULL)
 		return;
 
 	// Check session
 	ManagedReference<ProposeUnitySession*> proposeUnitySession = respondingPlayer->getActiveSession(SessionFacadeType::PROPOSEUNITY).castTo<ProposeUnitySession*>();
-	if( proposeUnitySession == NULL ){
+	if (proposeUnitySession == NULL) {
 		respondingPlayer->sendSystemMessage("@unity:expire_target"); // "The unity proposal extended to you has expired."
 		return;
 	}
@@ -3975,13 +3981,13 @@ void PlayerManagerImplementation::denyUnity( CreatureObject* respondingPlayer ){
 	// Pull asking player
 	uint64 targID = proposeUnitySession->getAskingPlayer();
 	ManagedReference<SceneObject*> obj = server->getObject(targID);
-	if( obj == NULL || !obj->isPlayerCreature() ){
+	if (obj == NULL || !obj->isPlayerCreature()) {
 		respondingPlayer->sendSystemMessage("@unity:wed_error"); // "An error has occurred during the unity process."
 		return;
 	}
 
-	CreatureObject* askingPlayer = cast<CreatureObject*>( obj.get());
-	Locker alocker( askingPlayer, respondingPlayer );
+	CreatureObject* askingPlayer = cast<CreatureObject*>(obj.get());
+	Locker alocker(askingPlayer, respondingPlayer);
 	askingPlayer->sendSystemMessage("@unity:declined"); // "Your unity proposal has been declined.")
 	respondingPlayer->sendSystemMessage("@unity:decline"); // "You decline the unity proposal.")
 
@@ -3990,14 +3996,14 @@ void PlayerManagerImplementation::denyUnity( CreatureObject* respondingPlayer ){
 
 }
 
-void PlayerManagerImplementation::acceptUnity( CreatureObject* respondingPlayer ){
+void PlayerManagerImplementation::acceptUnity(CreatureObject* respondingPlayer) {
 
-	if( respondingPlayer == NULL )
+	if (respondingPlayer == NULL)
 		return;
 
 	// Check session
 	ManagedReference<ProposeUnitySession*> proposeUnitySession = respondingPlayer->getActiveSession(SessionFacadeType::PROPOSEUNITY).castTo<ProposeUnitySession*>();
-	if( proposeUnitySession == NULL ){
+	if (proposeUnitySession == NULL) {
 		respondingPlayer->sendSystemMessage("@unity:expire_target"); // "The unity proposal extended to you has expired."
 		return;
 	}
@@ -4005,16 +4011,16 @@ void PlayerManagerImplementation::acceptUnity( CreatureObject* respondingPlayer 
 	// Pull asking player
 	uint64 targID = proposeUnitySession->getAskingPlayer();
 	ManagedReference<SceneObject*> obj = server->getObject(targID);
-	if( obj == NULL || !obj->isPlayerCreature() ){
+	if (obj == NULL || !obj->isPlayerCreature()) {
 		respondingPlayer->sendSystemMessage("@unity:wed_error"); // "An error has occurred during the unity process."
 		return;
 	}
 
 	CreatureObject* askingPlayer = cast<CreatureObject*>( obj.get());
-	Locker alocker( askingPlayer, respondingPlayer );
+	Locker alocker(askingPlayer, respondingPlayer);
 
 	// Check distance
-	if( !respondingPlayer->isInRange( askingPlayer, 15.0 ) ){
+	if (!respondingPlayer->isInRange(askingPlayer, 15.0)) {
 		askingPlayer->sendSystemMessage("@unity:wed_oor"); // "You must remain within 15 meters during the unity process for it to complete."
 		respondingPlayer->sendSystemMessage("@unity:wed_oor"); // "You must remain within 15 meters during the unity process for it to complete."
 		cancelProposeUnitySession(respondingPlayer, askingPlayer);
@@ -4023,7 +4029,7 @@ void PlayerManagerImplementation::acceptUnity( CreatureObject* respondingPlayer 
 
 	// Check for a ring in player's inventory
 	ManagedReference<SceneObject*> inventory = respondingPlayer->getSlottedObject("inventory");
-	if( inventory == NULL ){
+	if (inventory == NULL) {
 		respondingPlayer->sendSystemMessage("@unity:wed_error"); // "An error has occurred during the unity process."
 		askingPlayer->sendSystemMessage("@unity:wed_error"); // "An error has occurred during the unity process."
 		cancelProposeUnitySession(respondingPlayer, askingPlayer);
@@ -4033,13 +4039,13 @@ void PlayerManagerImplementation::acceptUnity( CreatureObject* respondingPlayer 
 	bool hasRing = false;
 	for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 		ManagedReference<WearableObject*> wearable = cast<WearableObject*>(inventory->getContainerObject(i).get());
-		if( wearable != NULL && wearable->getGameObjectType() == SceneObjectType::RING && !wearable->isEquipped() ){
+		if (wearable != NULL && wearable->getGameObjectType() == SceneObjectType::RING) {
 			hasRing = true;
 		}
 	}
 
 	// No ring found
-	if( !hasRing ){
+	if (!hasRing) {
 		askingPlayer->sendSystemMessage("@unity:accept_fail"); // "Your proposal target has no ring to offer in return."
 		respondingPlayer->sendSystemMessage("@unity:no_ring"); // "You cannot accept a unity proposal without a ring to offer."
 		cancelProposeUnitySession(respondingPlayer, askingPlayer);
@@ -4056,7 +4062,7 @@ void PlayerManagerImplementation::acceptUnity( CreatureObject* respondingPlayer 
 
 	for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 		ManagedReference<WearableObject*> wearable = cast<WearableObject*>(inventory->getContainerObject(i).get());
-		if( wearable != NULL && wearable->getGameObjectType() == SceneObjectType::RING && !wearable->isEquipped() && !wearable->isNoTrade() ){
+		if (wearable != NULL && wearable->getGameObjectType() == SceneObjectType::RING && !wearable->isNoTrade()) {
 			String itemName = wearable->getDisplayedName();
 			box->addMenuItem(itemName, wearable->getObjectID());
 		}
@@ -4068,14 +4074,14 @@ void PlayerManagerImplementation::acceptUnity( CreatureObject* respondingPlayer 
 
 }
 
-void PlayerManagerImplementation::completeUnity( CreatureObject* respondingPlayer, unsigned long long respondingPlayerRingId ){
+void PlayerManagerImplementation::completeUnity(CreatureObject* respondingPlayer, unsigned long long respondingPlayerRingId) {
 
-	if( respondingPlayer == NULL )
+	if (respondingPlayer == NULL)
 		return;
 
 	// Check session
 	ManagedReference<ProposeUnitySession*> proposeUnitySession = respondingPlayer->getActiveSession(SessionFacadeType::PROPOSEUNITY).castTo<ProposeUnitySession*>();
-	if( proposeUnitySession == NULL ){
+	if (proposeUnitySession == NULL) {
 		respondingPlayer->sendSystemMessage("@unity:expire_target"); // "The unity proposal extended to you has expired."
 		return;
 	}
@@ -4083,16 +4089,16 @@ void PlayerManagerImplementation::completeUnity( CreatureObject* respondingPlaye
 	// Pull asking player
 	uint64 targID = proposeUnitySession->getAskingPlayer();
 	ManagedReference<SceneObject*> obj = server->getObject(targID);
-	if( obj == NULL || !obj->isPlayerCreature() ){
+	if (obj == NULL || !obj->isPlayerCreature()) {
 		respondingPlayer->sendSystemMessage("@unity:wed_error"); // "An error has occurred during the unity process."
 		return;
 	}
 
-	CreatureObject* askingPlayer = cast<CreatureObject*>( obj.get());
-	Locker alocker( askingPlayer, respondingPlayer );
+	CreatureObject* askingPlayer = cast<CreatureObject*>(obj.get());
+	Locker alocker(askingPlayer, respondingPlayer);
 
 	// Check distance
-	if( !respondingPlayer->isInRange( askingPlayer, 15.0 ) ){
+	if (!respondingPlayer->isInRange(askingPlayer, 15.0)) {
 		askingPlayer->sendSystemMessage("@unity:wed_oor"); // "You must remain within 15 meters during the unity process for it to complete."
 		respondingPlayer->sendSystemMessage("@unity:wed_oor"); // "You must remain within 15 meters during the unity process for it to complete."
 		cancelProposeUnitySession(respondingPlayer, askingPlayer);
@@ -4102,7 +4108,7 @@ void PlayerManagerImplementation::completeUnity( CreatureObject* respondingPlaye
 	// Find selected ring
 	ManagedReference<SceneObject*> respondingPlayerInventory = respondingPlayer->getSlottedObject("inventory");
 	ManagedReference<SceneObject*> askingPlayerInventory = askingPlayer->getSlottedObject("inventory");
-	if( respondingPlayerInventory == NULL || askingPlayerInventory == NULL ){
+	if (respondingPlayerInventory == NULL || askingPlayerInventory == NULL) {
 		respondingPlayer->sendSystemMessage("@unity:wed_error"); // "An error has occurred during the unity process."
 		askingPlayer->sendSystemMessage("@unity:wed_error"); // "An error has occurred during the unity process."
 		cancelProposeUnitySession(respondingPlayer, askingPlayer);
@@ -4114,7 +4120,7 @@ void PlayerManagerImplementation::completeUnity( CreatureObject* respondingPlaye
 	ManagedReference<WearableObject*> respondingRing = NULL;
 	for (int i = 0; i < respondingPlayerInventory->getContainerObjectsSize(); i++) {
 		wearable = cast<WearableObject*>(respondingPlayerInventory->getContainerObject(i).get());
-		if( wearable != NULL && wearable->getObjectID() == respondingPlayerRingId && !wearable->isEquipped() ){
+		if (wearable != NULL && wearable->getObjectID() == respondingPlayerRingId) {
 			respondingRing = wearable;
 			break;
 		}
@@ -4125,49 +4131,58 @@ void PlayerManagerImplementation::completeUnity( CreatureObject* respondingPlaye
 	ManagedReference<WearableObject*> askingRing = NULL;
 	for (int i = 0; i < askingPlayerInventory->getContainerObjectsSize(); i++) {
 		wearable = cast<WearableObject*>(askingPlayerInventory->getContainerObject(i).get());
-		if( wearable != NULL && wearable->getObjectID() == proposeUnitySession->getAskingPlayerRing() && !wearable->isEquipped() ){
+		if (wearable != NULL && wearable->getObjectID() == proposeUnitySession->getAskingPlayerRing()) {
 			askingRing = wearable;
 			break;
 		}
 	}
 
-
 	// Rings not found
-	if( respondingRing == NULL || askingRing == NULL ){
+	if (respondingRing == NULL || askingRing == NULL) {
 		askingPlayer->sendSystemMessage("@unity:accept_fail"); // "Your proposal target has no ring to offer in return."
 		respondingPlayer->sendSystemMessage("@unity:no_ring"); // "You cannot accept a unity proposal without a ring to offer."
 		cancelProposeUnitySession(respondingPlayer, askingPlayer);
 		return;
 	}
 
-	// Exchange rings
+	// Exchange rings and nullify 'decay' on the wedding rings
 	ManagedReference<ObjectController*> objectController = server->getObjectController();
-	if (objectController->transferObject(askingRing, respondingPlayerInventory, -1, true, true)){ // Allow overflow
+	if (objectController->transferObject(askingRing, respondingPlayerInventory, -1, true, true)) { // Allow overflow
 		askingRing->sendDestroyTo(askingPlayer);
 		respondingPlayerInventory->broadcastObject(askingRing, true);
+		SceneObject* obj = askingRing.get();
+		TangibleObject* askingRingToo = cast<TangibleObject*>(obj);
+		Locker locker(askingRingToo, respondingPlayer);
+		askingRingToo->setOptionsBitmask(OptionBitmask::INVULNERABLE, true);
+		askingRingToo->setNoTradeUnique(true);
 	}
 
-	if (objectController->transferObject(respondingRing, askingPlayerInventory, -1, true, true)){ // Allow overflow
+	if (objectController->transferObject(respondingRing, askingPlayerInventory, -1, true, true)) { // Allow overflow
 		respondingRing->sendDestroyTo(respondingPlayer);
 		askingPlayerInventory->broadcastObject(respondingRing, true);
+		SceneObject* obj = respondingRing.get();
+		TangibleObject* respondingRingToo = cast<TangibleObject*>(obj);
+		Locker locker(respondingRingToo, askingPlayer);
+		respondingRingToo->setOptionsBitmask(OptionBitmask::INVULNERABLE, true);
+		respondingRingToo->setNoTradeUnique(true);
 	}
 
 	// Set married
 	String respondingPlayerName = respondingPlayer->getFirstName();
 	String askingPlayerName = askingPlayer->getFirstName();
-	askingPlayer->getPlayerObject()->setSpouseName( respondingPlayerName );
-	respondingPlayer->getPlayerObject()->setSpouseName( askingPlayerName );
+	askingPlayer->getPlayerObject()->setSpouseName(respondingPlayerName);
+	respondingPlayer->getPlayerObject()->setSpouseName(askingPlayerName);
 
 	// Send obligatory congratulations
 	StringIdChatParameter congratsAsker;
 	congratsAsker.setStringId("unity", "prose_wed_complete"); //  "Your union with %TT is complete."
-	congratsAsker.setTT( respondingPlayer->getFirstName() );
-	askingPlayer->sendSystemMessage( congratsAsker );
+	congratsAsker.setTT(respondingPlayer->getFirstName());
+	askingPlayer->sendSystemMessage(congratsAsker);
 
 	StringIdChatParameter congratsResponder;
 	congratsResponder.setStringId("unity", "prose_wed_complete"); //  "Your union with %TT is complete."
-	congratsResponder.setTT( askingPlayer->getFirstName() );
-	respondingPlayer->sendSystemMessage( congratsResponder );
+	congratsResponder.setTT(askingPlayer->getFirstName());
+	respondingPlayer->sendSystemMessage(congratsResponder);
 
 	// Remove session
 	cancelProposeUnitySession(respondingPlayer, askingPlayer);
@@ -4177,8 +4192,8 @@ void PlayerManagerImplementation::completeUnity( CreatureObject* respondingPlaye
 void PlayerManagerImplementation::cancelProposeUnitySession(CreatureObject* respondingPlayer, CreatureObject* askingPlayer){
 	askingPlayer->dropActiveSession(SessionFacadeType::PROPOSEUNITY);
 	respondingPlayer->dropActiveSession(SessionFacadeType::PROPOSEUNITY);
-	askingPlayer->removePendingTask( "propose_unity" );
-	respondingPlayer->removePendingTask( "propose_unity" );
+	askingPlayer->removePendingTask("propose_unity");
+	respondingPlayer->removePendingTask("propose_unity");
 }
 
 void PlayerManagerImplementation::promptDivorce(CreatureObject* player) {
@@ -4252,32 +4267,32 @@ void PlayerManagerImplementation::grantDivorce(CreatureObject* player) {
 
 void PlayerManagerImplementation::claimVeteranRewards(CreatureObject* player){
 
-	if( player == NULL || !player->isPlayerCreature() )
+	if (player == NULL || !player->isPlayerCreature())
 		return;
 
 	PlayerObject* playerGhost = player->getPlayerObject();
 
 	// Get account
 	ManagedReference<Account*> account = playerGhost->getAccount();
-	if( account == NULL )
+	if (account == NULL)
 		return;
 
 	// Send message with current account age
 	StringIdChatParameter timeActiveMsg;
 	timeActiveMsg.setStringId("veteran", "self_time_active"); // You have %DI days logged for veteran rewards.
-	timeActiveMsg.setDI( account->getAgeInDays() );
-	player->sendSystemMessage( timeActiveMsg );
+	timeActiveMsg.setDI(account->getAgeInDays());
+	player->sendSystemMessage(timeActiveMsg);
 
 	// Verify player is eligible for a reward
-	int milestone = getEligibleMilestone( playerGhost, account );
-	if( milestone < 0){
-		player->sendSystemMessage( "@veteran:not_eligible"); // You are not currently eligible for a veteran reward.
+	int milestone = getEligibleMilestone(playerGhost, account);
+	if (milestone < 0) {
+		player->sendSystemMessage("@veteran:not_eligible"); // You are not currently eligible for a veteran reward.
 		return;
 	}
 
 	// Verify player is not already choosing a reward
-	if( player->getActiveSession(SessionFacadeType::VETERANREWARD) != NULL ){
-		player->sendSystemMessage( "You are already attempting to claim a veteran reward." );
+	if (player->getActiveSession(SessionFacadeType::VETERANREWARD) != NULL) {
+		player->sendSystemMessage("You are already attempting to claim a veteran reward.");
 		return;
 	}
 
@@ -4297,20 +4312,20 @@ void PlayerManagerImplementation::claimVeteranRewards(CreatureObject* player){
 
 		// Any rewards at or below current milestone are eligible
 		VeteranReward reward = veteranRewards.get(i);
-		if( reward.getMilestone() <= milestone ){
+		if (reward.getMilestone() <= milestone) {
 
 			// Filter out one-time rewards already claimed
-			if( reward.isOneTime() && playerGhost->hasChosenVeteranReward( reward.getTemplateFile() ) ){
+			if (reward.isOneTime() && playerGhost->hasChosenVeteranReward( reward.getTemplateFile())) {
 				continue;
 			}
 
 			SharedObjectTemplate* rewardTemplate = TemplateManager::instance()->getTemplate( reward.getTemplateFile().hashCode() );
-			if( rewardTemplate != NULL ){
-				if( reward.getDescription().isEmpty() ){
-					box->addMenuItem( rewardTemplate->getDetailedDescription(), i);
+			if (rewardTemplate != NULL) {
+				if (reward.getDescription().isEmpty()) {
+					box->addMenuItem(rewardTemplate->getDetailedDescription(), i);
 				}
-				else{
-					box->addMenuItem( reward.getDescription(), i);
+				else {
+					box->addMenuItem(reward.getDescription(), i);
 				}
 			}
 		}
@@ -4328,11 +4343,11 @@ void PlayerManagerImplementation::cancelVeteranRewardSession(CreatureObject* pla
 
 void PlayerManagerImplementation::confirmVeteranReward(CreatureObject* player, int itemIndex ){
 
-	if( player == NULL || !player->isPlayerCreature() ){
+	if (player == NULL || !player->isPlayerCreature()) {
 		return;
 	}
 
-	if( itemIndex < 0 || itemIndex >= veteranRewards.size() ){
+	if (itemIndex < 0 || itemIndex >= veteranRewards.size()) {
 		player->sendSystemMessage( "@veteran:reward_error"); //	The reward could not be granted.
 		cancelVeteranRewardSession( player );
 		return;
@@ -4341,16 +4356,16 @@ void PlayerManagerImplementation::confirmVeteranReward(CreatureObject* player, i
 	// Get account
 	PlayerObject* playerGhost = player->getPlayerObject();
 	ManagedReference<Account*> account = playerGhost->getAccount();
-	if( account == NULL ){
-		player->sendSystemMessage( "@veteran:reward_error"); //	The reward could not be granted.
-		cancelVeteranRewardSession( player );
+	if (account == NULL) {
+		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
+		cancelVeteranRewardSession(player);
 		return;
 	}
 
 	// Check session
 	ManagedReference<VeteranRewardSession*> rewardSession = player->getActiveSession(SessionFacadeType::VETERANREWARD).castTo<VeteranRewardSession*>();
-	if( rewardSession == NULL ){
-		player->sendSystemMessage( "@veteran:reward_error"); //	The reward could not be granted.
+	if (rewardSession == NULL) {
+		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
 		return;
 	}
 
@@ -4358,7 +4373,7 @@ void PlayerManagerImplementation::confirmVeteranReward(CreatureObject* player, i
 	rewardSession->setSelectedRewardIndex(itemIndex);
 
 	// Generate confirmation dialog if item is one-time.  Otherwise, just generate it.
-	if( reward.isOneTime() ){
+	if (reward.isOneTime()) {
 
 		ManagedReference<SuiMessageBox*> suibox = new SuiMessageBox(player, SuiWindowType::CONFIRM_VETERAN_REWARD);
 		suibox->setPromptTitle("@veteran_new:unique_are_you_sure_box_title"); // Reward
@@ -4371,22 +4386,22 @@ void PlayerManagerImplementation::confirmVeteranReward(CreatureObject* player, i
 		player->sendMessage(suibox->generateMessage());
 
 	}
-	else{
-		generateVeteranReward( player );
+	else {
+		generateVeteranReward(player);
 	}
 
 }
 
 void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player ){
 
-	if( player == NULL || !player->isPlayerCreature() ){
+	if (player == NULL || !player->isPlayerCreature()) {
 		return;
 	}
 
 	// Get account
 	PlayerObject* playerGhost = player->getPlayerObject();
 	ManagedReference<Account*> account = playerGhost->getAccount();
-	if( account == NULL ){
+	if (account == NULL) {
 		player->sendSystemMessage( "@veteran:reward_error"); //	The reward could not be granted.
 		cancelVeteranRewardSession( player );
 		return;
@@ -4394,7 +4409,7 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player )
 
 	// Check session
 	ManagedReference<VeteranRewardSession*> rewardSession = player->getActiveSession(SessionFacadeType::VETERANREWARD).castTo<VeteranRewardSession*>();
-	if( rewardSession == NULL ){
+	if (rewardSession == NULL) {
 		player->sendSystemMessage( "@veteran:reward_error"); //	The reward could not be granted.
 		return;
 	}
@@ -4404,41 +4419,41 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player )
 
 
 	bool milestoneClaimed = false;
-	if(!playerGhost->getChosenVeteranReward( rewardSession->getMilestone() ).isEmpty() )
+	if (!playerGhost->getChosenVeteranReward( rewardSession->getMilestone() ).isEmpty())
 		milestoneClaimed = true;
 
-	if( milestoneClaimed ){
-		player->sendSystemMessage( "@veteran:reward_error"); //	The reward could not be granted.
-		cancelVeteranRewardSession( player );
+	if (milestoneClaimed) {
+		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
+		cancelVeteranRewardSession(player);
 		return;
 	}
 
 	// Generate item
 	SceneObject* inventory = player->getSlottedObject("inventory");
-	if( inventory == NULL ){
-		player->sendSystemMessage( "@veteran:reward_error"); //	The reward could not be granted.
-		cancelVeteranRewardSession( player );
+	if (inventory == NULL) {
+		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
+		cancelVeteranRewardSession(player);
 		return;
 	}
 
 	VeteranReward reward = veteranRewards.get(rewardSession->getSelectedRewardIndex());
 	Reference<SceneObject*> rewardSceno = server->createObject(reward.getTemplateFile().hashCode(), 1);
-	if( rewardSceno == NULL ){
-		player->sendSystemMessage( "@veteran:reward_error"); //	The reward could not be granted.
-		cancelVeteranRewardSession( player );
+	if (rewardSceno == NULL) {
+		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
+		cancelVeteranRewardSession(player);
 		return;
 	}
 
 	// Transfer to player
-	if( !inventory->transferObject(rewardSceno, -1, false, true) ){ // Allow overflow
-		player->sendSystemMessage( "@veteran:reward_error"); //	The reward could not be granted.
+	if (!inventory->transferObject(rewardSceno, -1, false, true)) { // Allow overflow
+		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
 		rewardSceno->destroyObjectFromDatabase(true);
-		cancelVeteranRewardSession( player );
+		cancelVeteranRewardSession(player);
 		return;
 	}
 
 	inventory->broadcastObject(rewardSceno, true);
-	player->sendSystemMessage( "@veteran:reward_given");  // Your reward has been placed in your inventory.
+	player->sendSystemMessage("@veteran:reward_given");  // Your reward has been placed in your inventory.
 
 	// Record reward in all characters registered to the account
 	playerGhost->addChosenVeteranReward(rewardSession->getMilestone(), reward.getTemplateFile());
@@ -4447,14 +4462,14 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player )
 	cancelVeteranRewardSession( player );
 
 	// If player is eligible for another reward, kick off selection
-	if( getEligibleMilestone( playerGhost, account ) >= 0 ){
+	if (getEligibleMilestone(playerGhost, account) >= 0) {
 		player->enqueueCommand(STRING_HASHCODE("claimveteranreward"), 0, 0, "");
 	}
 }
 
-int PlayerManagerImplementation::getEligibleMilestone( PlayerObject *playerGhost, Account* account ) {
+int PlayerManagerImplementation::getEligibleMilestone(PlayerObject *playerGhost, Account* account) {
 
-	if( account == NULL || playerGhost == NULL )
+	if (account == NULL || playerGhost == NULL)
 		return -1;
 
 	int accountAge = account->getAgeInDays();
@@ -4466,9 +4481,9 @@ int PlayerManagerImplementation::getEligibleMilestone( PlayerObject *playerGhost
 	}
 
 	// Return the first milestone for which the player is eligible and has not already claimed
-	for( int i=0; i < veteranRewardMilestones.size(); i++) {
+	for (int i=0; i < veteranRewardMilestones.size(); i++) {
 		milestone = veteranRewardMilestones.get(i);
-		if( accountAge >= milestone && playerGhost->getChosenVeteranReward(milestone).isEmpty() ) {
+		if (accountAge >= milestone && playerGhost->getChosenVeteranReward(milestone).isEmpty()) {
 			return milestone;
 		}
 	}
@@ -4488,18 +4503,18 @@ int PlayerManagerImplementation::getEligibleMilestone( PlayerObject *playerGhost
 	return -1;
 }
 
-int PlayerManagerImplementation::getFirstIneligibleMilestone( PlayerObject *playerGhost, Account* account ){
+int PlayerManagerImplementation::getFirstIneligibleMilestone(PlayerObject *playerGhost, Account* account) {
 
-	if( account == NULL || playerGhost == NULL )
+	if (account == NULL || playerGhost == NULL)
 		return -1;
 
 	int accountAge = account->getAgeInDays();
 	int milestone = -1;
 
 	// Return the first milestone the player has not already claimed
-	for( int i=0; i < veteranRewardMilestones.size(); i++){
+	for (int i=0; i < veteranRewardMilestones.size(); i++) {
 		milestone = veteranRewardMilestones.get(i);
-		if( accountAge < milestone ) {
+		if (accountAge < milestone) {
 			return milestone;
 		}
 	}

@@ -22,14 +22,14 @@ public:
 		bool cancelPressed = (eventIndex == 1);
 
 		PlayerManager* playerManager = creature->getZoneServer()->getPlayerManager();
-		if( playerManager == NULL )
+		if(playerManager == NULL)
 			return;
 
-		if( cancelPressed ){
-			playerManager->denyUnity( creature );
+		if(cancelPressed) {
+			playerManager->denyUnity(creature);
 		}
-		else{
-			playerManager->acceptUnity( creature );
+		else {
+			playerManager->acceptUnity(creature);
 		}
 
 	}

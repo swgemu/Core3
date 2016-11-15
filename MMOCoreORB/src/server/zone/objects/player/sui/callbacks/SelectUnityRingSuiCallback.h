@@ -39,7 +39,7 @@ public:
 		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 		uint64 itemId = listBox->getMenuObjectID(index);
 
-		// Finialize unity proposal
+		// Finilize unity proposal
 		playerManager->completeUnity( player, itemId );
 
 	}
