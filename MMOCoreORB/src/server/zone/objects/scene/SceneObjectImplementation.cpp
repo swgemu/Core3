@@ -128,6 +128,8 @@ void SceneObjectImplementation::initializePrivateData() {
 	setGlobalLogging(true);
 	setLogging(false);
 
+	noTradeUnique = false;
+
 	setLoggingName("SceneObject");
 
 	childObjects.setNoDuplicateInsertPlan();

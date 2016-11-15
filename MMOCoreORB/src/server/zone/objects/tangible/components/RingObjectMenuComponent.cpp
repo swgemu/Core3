@@ -26,16 +26,14 @@ void RingObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, O
 	if (server == NULL || ghost == NULL)
 		return;
 
-	if (!wearable->isEquipped() && !wearable->isNoTrade()) {
-		if (ghost->isMarried()) {
-			menuResponse->addRadialMenuItem(234, 3, "@unity:mnu_divorce"); // Divorce
-		} else {
+	if (ghost->isMarried()) {
+		menuResponse->addRadialMenuItem(234, 3, "@unity:mnu_divorce"); // Divorce
+	} else if (!wearable->isNoTrade() && !ghost->isMarried()) {
 			uint64 targetID = player->getTargetID();
 			ManagedReference<CreatureObject*> target = server->getObject(targetID, true).castTo<CreatureObject*>();
 
 			if (target != NULL && target->isPlayerCreature())
 				menuResponse->addRadialMenuItem(22, 3, "@unity:mnu_propose"); // Propose Unity
-		}
 	}
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
@@ -51,9 +49,18 @@ int RingObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cr
 
 		if (target != NULL && target->isPlayerCreature()) {
 			PlayerManager* playerManager = player->getZoneServer()->getPlayerManager();
+			WearableObject* wearable = cast<WearableObject*>(sceneObject);
+			if (wearable != NULL && wearable->isEquipped()) {
+				player->sendSystemMessage("You must first un-equip the unity ring before it can be properly initialized.");
+				return 0;
+			}
 
 			if (playerManager != NULL)
 				playerManager->proposeUnity(player, cast<CreatureObject*>(target.get()), sceneObject);
+
+				if (!player->isKneeling() && target->getObjectID() != player->getObjectID()) {
+					player->setPosture(CreaturePosture::CROUCHED, true);
+				}
 
 			return 0;
 		} else {
@@ -69,6 +76,10 @@ int RingObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cr
 
 		if (playerManager != NULL)
 			playerManager->promptDivorce(player);
+
+			TangibleObject* ring = cast<TangibleObject*>(sceneObject);
+			Locker locker(ring, player);
+			ring->setOptionsBitmask(OptionBitmask::INSURED, true);
 
 		return 0;
 	}
