@@ -16,6 +16,24 @@
       "revId": "1b51d8c0e62f36f47d145229387be9c45fb2926e",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_9f48ffcd",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1809
+      },
+      "writtenOn": "2016-11-15T21:56:36Z",
+      "side": 1,
+      "message": "Yep you might be right but when i originally had it with a single \u0027\u0026\u0027 , it ended up setting EVERY single crafted item to \u0027invulnerable\u0027 lol .  So i changed it and bingo it worked correctly in-game during testing.  However, you may very well be correct. (It\u0027s possible i had something else written wrong though, which caused that blanket bug) .  I\u0027ll wait til our Lead-Dev reviews it first and see what he says about it all before i start messing with it again.",
+      "parentUuid": "bada0100_df3e8729",
+      "revId": "1b51d8c0e62f36f47d145229387be9c45fb2926e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
