@@ -160,7 +160,15 @@ public:
 
 		creature->updateToDatabase();
 
+		// Force Sensitive SkillMod: Control
+		float turnBonus = creature->getTurnScale() + (float)creature->getSkillMod("force_vehicle_control");
+
+		// Force Sensitive SkillMod: Speed
+		float accelBonus = creature->getAccelerationMultiplierMod() + (float)creature->getSkillMod("force_vehicle_speed");
+
 		creature->setRunSpeed(newSpeed);
+		creature->setTurnScale(turnBonus, true);
+		creature->setAccelerationMultiplierMod(accelBonus, true);
 		creature->addMountedCombatSlow();
 
 		return SUCCESS;
