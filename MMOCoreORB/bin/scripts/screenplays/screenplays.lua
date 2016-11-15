@@ -198,6 +198,19 @@ includeFile("events/conversations/bestine_election/seans_historian_conv_handler.
 includeFile("events/conversations/bestine_election/tour_aryon_conv_handler.lua")
 --includeFile("events/conversations/bestine_election/victor_visalis_conv_handler.lua")
 
+-- Jedi Menu Components
+includeFile("jedi/shrine/ForceShrineMenuComponent.lua")
+
+-- Jedi Padawan Trials
+includeFile("jedi/padawan/jedi_padawan_trial.lua")
+includeFile("jedi/padawan/trials/trial_architect.lua")
+includeFile("jedi/padawan/trials/trial_artist.lua")
+
+includeFile("jedi/padawan/convos/trials_padawan_architect_01.lua")
+includeFile("jedi/padawan/convos/trials_padawan_architect_02.lua")
+includeFile("jedi/padawan/convos/trials_padawan_artist_01.lua")
+includeFile("jedi/padawan/convos/trials_padawan_artist_02.lua")
+
 -- Events
 includeFile("events/conversations/bestine_artist_conv_handler.lua")
 includeFile("events/conversations/imperial_commander_conv_handler.lua")
