@@ -34,7 +34,6 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	--Med Center
 	spawnMobile("tatooine", "trainer_medic",0,-8.7,0.2,0.1,91,4005383)
 
-
 	--Guild Hall -1239 -3580
 	pNpc = spawnMobile("tatooine", "coa3_tactical_imperial",60,9.74537,1.13306,0.300803,93.0077,1028549)
 	self:setMoodString(pNpc, "npc_imperial")
@@ -62,6 +61,12 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	--Guild Hall -1130 -3540
 	pNpc = spawnMobile("tatooine", "akal_colzet",60,0.436469,1.75,-14.4381,0,1212359)
 	self:setMoodString(pNpc, "npc_imperial")
+
+	--Guild Hall -1093 -3660
+	pNpc = spawnMobile("tatooine", "businessman",60,-10.4,1.0,9.2,174,1028169)
+	self:setMoodString(pNpc, "sad")
+	pNpc = spawnMobile("tatooine", "bounty_hunter",300,-10.2,1.0,7.1,-7,1028169)
+	self:setMoodString(pNpc, "npc_accusing")
 
 	--Imperial Mini Base -1136 -3901
 	pNpc = spawnMobile("tatooine", "imperial_sergeant",400,-2.3,0,-3.9,13,1279924)
