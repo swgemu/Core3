@@ -16,6 +16,24 @@
       "revId": "96573c1f0a3c47730b26d7d667bd6b1bce8149bf",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_9f80ff8c",
+        "filename": "MMOCoreORB/src/server/zone/objects/structure/events/StructureMaintenanceTask.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1809
+      },
+      "writtenOn": "2016-11-16T08:18:31Z",
+      "side": 1,
+      "message": "Understood.\n\nAnd yes, those are all very valid (and important) questions you ask.  Unfortunately i don\u0027t have the answer to them yet. I\u0027ve been looking at StructureMaintenanceTask::run()  and all \u0027checks\u0027 seem to be sufficient.  I\u0027ve also been looking at StructureObjectImplementation::destroyObjectFromWorld  and all seems sufficient there too.\n\nI\u0027ll try to dig deeper.",
+      "parentUuid": "bada0100_a4929af4",
+      "revId": "96573c1f0a3c47730b26d7d667bd6b1bce8149bf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
