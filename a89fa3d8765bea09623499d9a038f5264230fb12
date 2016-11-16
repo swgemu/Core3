@@ -1,0 +1,749 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_9f76bf05",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_architect_01.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "remove these",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 81
+      },
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_df6c4739",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_architect_01.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "All of these need to be converted to use the new conv_handler object. See http://review.swgemu.com/#/c/5089/.\n\nYou can remove the getNextConversationScreen function, and update the other functions to match when it comes to variable naming.",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_1f5acf83",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_architect_01.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "You don\u0027t want to use getScreenPlayState here, because it won\u0027t return the value you\u0027re looking for if the player has multiple states set. For example, setting a player\u0027s state to 2 doesn\u0027t remove a previous 1 state, it sets the new overall state to 3.\n\nInstead, use hasScreenPlayState in the if blocks below to check for the specific state values.",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_bf738314",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_architect_01.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "Fix formatting",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_5f605735",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_architect_02.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "Remove these",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 81
+      },
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_7f651b44",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_architect_02.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "Same as other conv handler, update to conv_handler object.",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_3f5f9374",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_architect_02.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "Use hasScreenPlayState here instead of getScreenPlayState",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_df53e76a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_artist_01.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 75
+      },
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_ff502b60",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_artist_01.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "Update to conv_handler",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_9f4d5fc7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_artist_01.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "Use hasScreenPlayState here",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_bf4aa3aa",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_artist_01.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "Formatting",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_7fcc3b36",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_artist_02.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 75
+      },
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_5fc7f712",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_artist_02.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "conv_handler",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_1fd16fcd",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_artist_02.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "hasScreenPlayState",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_3fd6b3c6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "numberOfActs isnt used anymore, you can remove it.",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_ffd7cbbd",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "Fix screenPlayName naming, it isn\u0027t a pointer.",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_dfda07e9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "Use proper naming (pGhost), and nil check it.",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_9fe47fad",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "Store SceneObject(pCreatureObject):getObjectID() in a variable rather than calling it multiple times",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_bfe1439c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "nil check pCreatureObject",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_5fee178d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "nil check pPlayer",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_7ff3db73",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "nil check pPlayer",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_3fed538c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 79
+      },
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_1fe88f7b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "Move all of these inside JediPadawanTrial:new {}, otherwise they are being declared globally across all screenplays.",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_df01a73a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 18
+      },
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_fffeeb37",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "nil check pCreature",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_9ffb1f47",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "nil check pCreature",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_bff8634a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "nil check pCreature",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_5f95b7e2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "nil check pPlayer",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_1f9f2f05",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_artist.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 79
+      },
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_7f9afb15",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_artist.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "Move all of these inside JediPadawanTrial:new {}",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_3fa47356",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_artist.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_df88c7c8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_artist.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "nil check pCreature",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_ff858bad",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_artist.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "nil check pPlayer",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_bf8f03cc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "move this inside ForceShrineMenuComponent and call self.jediPadawanRobe",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_9f923ff5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be needed, you can just use #self.PadawanTrialQuests",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_5fbcd76c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "getRandomNumber() will always return greater than 1 if you don\u0027t use two parameters, no need to + 1 here.",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_7fc19be3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "use hasScreenPlayState in these if blocks",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_1fb64f8b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "Semantics, but just use not isPadawanTrialsStarted rather than checking against true/false",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_3fbb1374",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "nil check pPlayer",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_dfaf672a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "It\u0027ll never reach this block, because anything that passes this block would also pass the block above.",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_ffacab37",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-11-16T04:52:15Z",
+      "side": 1,
+      "message": "As this function is used specifically for this screenplay, give it a better name that explains what it does.",
+      "revId": "a89fa3d8765bea09623499d9a038f5264230fb12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
