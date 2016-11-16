@@ -351,6 +351,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "createQuestVectorMap", createQuestVectorMap);
 	lua_register(luaEngine->getLuaState(), "removeQuestVectorMap", removeQuestVectorMap);
 	lua_register(luaEngine->getLuaState(), "creatureTemplateExists", creatureTemplateExists);
+	lua_register(luaEngine->getLuaState(), "findJediTrainer", findJediTrainer);
 
 	//Navigation Mesh Management
 	lua_register(luaEngine->getLuaState(), "createNavMesh", createNavMesh);
@@ -3273,4 +3274,96 @@ int DirectorManager::creatureTemplateExists(lua_State* L) {
 	lua_pushboolean(L, result);
 
 	return 1;
+}
+
+int DirectorManager::findJediTrainer(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::findJediTrainer");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -1);
+
+	if(creature == NULL)
+		return 0;
+
+	Reference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	if(ghost == NULL)
+		return 0;
+
+
+	// Trainer number. Pick a random trainer, there are at least 600 in the galaxy.
+	ZoneServer* zserv = creature->getZoneServer();
+	Vector<String> trainerTypes;
+
+	// Map categories defined here.
+	trainerTypes.add("trainer_brawler");
+	trainerTypes.add("trainer_artisan");
+	trainerTypes.add("trainer_scout");
+	trainerTypes.add("trainer_marksman");
+	trainerTypes.add("trainer_entertainer");
+	trainerTypes.add("trainer_medic");
+
+	bool found = false;
+	Vector3 coords;
+	String zoneName = "";
+
+	// This specifies the number of attempts at a retry. The first is min, second int is max amount of attempts.
+	int counter = 0;
+	int retriesCounter = 40;
+
+	while (!found && counter < retriesCounter) {
+		// Increment counter to prevent infinite loop.
+		++counter;
+
+		Zone* zone = zserv->getZone(System::random(zserv->getZoneCount() - 1));
+
+		if (zone == NULL || zone->getZoneName() == "tutorial") {
+			continue;
+		}
+
+
+		SortedVector<ManagedReference<SceneObject*> > trainers = zone->getPlanetaryObjectList(trainerTypes.get(System::random(trainerTypes.size() - 1)));
+
+		int size = trainers.size();
+
+		if (size <= 0) {
+			continue;
+		}
+
+		ManagedReference<SceneObject*> trainer = trainers.get(System::random(size - 1));
+
+		if (trainer == NULL) {
+			continue;
+		}
+
+		ManagedReference<CreatureObject*> trainerCreo = trainer.castTo<CreatureObject*>();
+
+		if (trainerCreo == NULL) {
+			continue;
+		}
+
+		if (!(trainerCreo->getOptionsBitmask() & OptionBitmask::CONVERSE)) {
+			continue;
+		}
+
+		ManagedReference<CityRegion*> city = trainerCreo->getCityRegion();
+
+		// Make sure it's not a player-city trainer.
+		if (city != NULL && !city->isClientRegion()){
+			continue;
+		}
+
+		zoneName = trainerCreo.get()->getZone()->getZoneName();
+		coords = trainerCreo.get()->getWorldPosition();
+		found = true;
+
+	}
+
+	ghost->setTrainerCoordinates(coords);
+	ghost->setTrainerZoneName(zoneName); // For the waypoint.
+
+	return 0;
 }
