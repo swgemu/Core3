@@ -107,8 +107,17 @@ includeFile("conversations/themepark/logic/mission_target_conv.lua")
 -- ** DUNGEONS **
 
 -- Corellian Corvette
-includeFile("conversations/dungeon/corellian_corvette/bronell_conv.lua")
+includeFile("conversations/dungeon/corellian_corvette/corvette_bronell_neutral_assassin_conv.lua")
+includeFile("conversations/dungeon/corellian_corvette/corvette_bruce_neutral_destroy_conv.lua")
+includeFile("conversations/dungeon/corellian_corvette/corvette_colonel_imperial_rescue_conv.lua")
+includeFile("conversations/dungeon/corellian_corvette/corvette_crowley_rebel_destroy_conv.lua")
+includeFile("conversations/dungeon/corellian_corvette/corvette_pashna_rebel_assassin_conv.lua")
+includeFile("conversations/dungeon/corellian_corvette/corvette_sabol_imperial_assassin_conv.lua")
+includeFile("conversations/dungeon/corellian_corvette/corvette_tallon_rebel_rescue_conv.lua")
+includeFile("conversations/dungeon/corellian_corvette/corvette_velso_imperial_destroy_conv.lua")
+includeFile("conversations/dungeon/corellian_corvette/corvette_yondalla_neutral_rescue_conv.lua")
 includeFile("conversations/dungeon/corellian_corvette/ds_297_conv.lua")
+includeFile("conversations/dungeon/corellian_corvette/h6p0_conv.lua")
 includeFile("conversations/dungeon/corellian_corvette/klaatu_conv.lua")
 includeFile("conversations/dungeon/corellian_corvette/lt_lance_conv.lua")
 
