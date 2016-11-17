@@ -34,11 +34,22 @@ function CorvetteTicketTakerLogic:spawnNpc()
 end
 
 function CorvetteTicketTakerLogic:checkFaction(pPlayer)
-	if self.faction == 0 then
+	if (self.faction == FACTIONNEUTRAL) then
 		return true
 	end
-	--TODO: add group faction checks
-	return false
+
+	if (CreatureObject(pPlayer):isGrouped()) then
+		local groupSize = CreatureObject(pPlayer):getGroupSize()
+		for i = 0, groupSize - 1, 1 do
+			local pMember = CreatureObject(pPlayer):getGroupMember(i)
+			if pMember ~= nil then
+				if (not ThemeParkLogic:isInFaction(self.ticketTaker.faction,pMember) or ThemeParkLogic:isOnLeave(pMember) ) then
+					return false
+				end
+			end
+		end
+	end
+	return true
 end
 
 function CorvetteTicketTakerLogic:validateTicket(pPlayer)
@@ -82,19 +93,19 @@ function CorvetteTicketTakerLogic:finishValidateTicket(pPlayer)
 	local ret = CorellianCorvetteScreenPlay:activate(pPlayer, self:getFactionString(), activeQuestType)
 
 	--if ret == 1 then --TODO destroy ticket
-		--ticket:destroyObjectFromWorld()
-		--ticket:destroyObjectFromDatabase()
+	--ticket:destroyObjectFromWorld()
+	--ticket:destroyObjectFromDatabase()
 	--end
 end
 
 function CorvetteTicketTakerLogic:getFactionString()
-	if self.faction == 0 then
-		return "neutral"
-	elseif self.faction == FACTIONIMPERIAL then
+	--if self.faction == FACTIONNEUTRAL then
+	--	return "neutral"
+	if self.faction == FACTIONIMPERIAL then
 		return "imperial"
 	elseif self.faction == FACTIONREBEL then
 		return "rebel"
+	else
+		return "neutral"
 	end
-
-	return "neutral"
 end

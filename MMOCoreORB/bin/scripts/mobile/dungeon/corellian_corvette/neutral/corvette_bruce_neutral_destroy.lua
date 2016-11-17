@@ -1,6 +1,6 @@
-bronell = Creature:new {
+corvette_bruce_neutral_destroy = Creature:new {
 	objectName = "",
-	customName = "Bronell",
+	customName = "Bruce Mcbrain",
 	socialGroup = "jabba",
 	faction = "jabba",
 	level = 100,
@@ -23,14 +23,15 @@ bronell = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + CONVERSABLE,
+	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_neutral_bronell.iff"},
+	templates = {"object/mobile/dressed_corvette_neutral_bruce.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "corvetteBronellConvoTemplate",
-	attacks = {}
+	conversationTemplate = "corvetteBruceConvoTemplate",
+	attacks = {
+	}
 }
 
-CreatureTemplates:addCreatureTemplate(bronell, "bronell")
+CreatureTemplates:addCreatureTemplate(corvette_bruce_neutral_destroy, "corvette_bruce_neutral_destroy")
