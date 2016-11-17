@@ -10,18 +10,23 @@ void CustomIngredientImplementation::loadTemplateData(SharedObjectTemplate* temp
 	int average = 500;
 
 	if (getServerObjectCRC() == 0x7D098ED) { // object/tangible/loot/quest/ardanium_ii.iff
+		isBaseIngredient = true;
 		addAttribute("res_potential_energy", getResourceValue(average));
 		addAttribute("res_quality", getResourceValue(average));
 	} else if (getServerObjectCRC() == 0x2C436272) { // object/tangible/loot/quest/wind_crystal.iff
+		isBaseIngredient = true;
 		addAttribute("res_potential_energy", getResourceValue(average));
 	} else if (getServerObjectCRC() == 0x90B15BBB) { // object/tangible/loot/quest/ostrine.iff
+		isBaseIngredient = true;
 		addAttribute("res_malleability", getResourceValue(average));
 		addAttribute("res_quality", getResourceValue(average));
 	} else if (getServerObjectCRC() == 0x1F9CB9C1) { // object/tangible/loot/quest/endrine.iff
+		isBaseIngredient = true;
 		addAttribute("res_malleability", getResourceValue(average));
 		addAttribute("res_quality", getResourceValue(average));
 		addAttribute("res_toughness", getResourceValue(average));
 	} else if (getServerObjectCRC() == 0x37EF3820) { // object/tangible/loot/quest/rudic.iff
+		isBaseIngredient = true;
 		addAttribute("res_conductivity", getResourceValue(average));
 		addAttribute("res_decay_resist", getResourceValue(average));
 		addAttribute("res_quality", getResourceValue(average));
@@ -113,6 +118,9 @@ void CustomIngredientImplementation::fillAttributeList(AttributeListMessage* alm
 }
 
 void CustomIngredientImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+	if (isBaseIngredient)
+		return;
+
 	String attribute;
 	float value;
 	bool hidden;

@@ -16,10 +16,13 @@ import server.zone.ZoneServer;
 class CustomIngredient extends TangibleObject {
 	@dereferenced
 	protected VectorMap<string, int> objectAttributes;
+	boolean isBaseIngredient;
 
 	public CustomIngredient() {
 		objectAttributes.setAllowOverwriteInsertPlan();
 		setLoggingName("CustomIngredient");
+		
+		isBaseIngredient = false;
 	}
 
 	/**
