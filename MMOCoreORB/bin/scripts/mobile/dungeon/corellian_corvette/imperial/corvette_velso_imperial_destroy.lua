@@ -1,6 +1,6 @@
-darkstone = Creature:new {
+corvette_velso_imperial_destroy = Creature:new {
 	objectName = "",
-	customName = "Colonel Darkstone",
+	customName = "Lt. Velso",
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 100,
@@ -23,15 +23,15 @@ darkstone = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_imperial_darkstone.iff"},
+	templates = {"object/mobile/dressed_corvette_imperial_velso.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "corvetteVelsoConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(darkstone, "darkstone")
+CreatureTemplates:addCreatureTemplate(corvette_velso_imperial_destroy, "corvette_velso_imperial_destroy")

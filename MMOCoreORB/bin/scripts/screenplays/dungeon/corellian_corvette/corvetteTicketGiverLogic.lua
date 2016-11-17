@@ -204,18 +204,17 @@ function CorvetteTicketGiverLogic:removeIntel(pPlayer, intelNumber)
 end
 
 function CorvetteTicketGiverLogic:giveCompensation(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
 	for i = 1, # self.compensation do
 		local comp = self.compensation[i]
 		if comp.compType == "credits" then
 			local amount = (comp.amount / 2) + getRandomNumber(comp.amount)
-			CreatureObject(pPlayer):addCashCredits(amount, true)
+			ThemeParkLogic:giveCredits(pPlayer, amount)
 			CreatureObject(pPlayer):sendSystemMessageWithDI("@new_player:credits_reward", amount)
 		elseif comp.compType == "faction" then
-			local pGhost = CreatureObject(pPlayer):getObjectID()
-
-			if (pGhost ~= nil) then
-				PlayerObject(pGhost):increaseFactionStanding(comp.faction, comp.amount)
-			end
+			ThemeParkLogic:giveFaction(pPlayer, comp.faction, comp.amount)
 		end
 	end
 end
@@ -238,6 +237,33 @@ function CorvetteTicketGiverLogic:giveTicket(pPlayer)
 		setQuestStatus(player:getObjectID() .. ":activeCorvetteQuestType", self.ticketInfo.missionType)
 	end
 end
+
+function CorvetteTicketGiverLogic:hasTicket(pPlayer)
+	local player = CreatureObject(pPlayer)
+	local activeQuest = getQuestStatus(player:getObjectID() .. ":activeCorvetteQuest")
+	local pInventory = player:getSlottedObject("inventory")
+	if pInventory == nil then
+		return false
+	end
+	local pItem = getContainerObjectByTemplate(pInventory, ticketTemplate, true)
+	local ticket = LuaTicketObject(pItem)
+	if (pItem ~= nil and activeQuest == self.giverName) then
+		return true
+	end
+	return false
+end
+
+function CorvetteTicketGiverLogic:hasDocuments(pPlayer)
+	local player = CreatureObject(pPlayer)
+	local pInventory = player:getSlottedObject("inventory")
+	if pInventory == nil then
+		return false
+	end
+	local templates = self.intelMap.itemTemplates
+
+	return getContainerObjectByTemplate(pInventory, templates[1], true) or getContainerObjectByTemplate(pInventory, templates[2], true) or getContainerObjectByTemplate(pInventory, templates[3], true)
+end
+
 
 function CorvetteTicketGiverLogic:giveReward(pPlayer)
 	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")

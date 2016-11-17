@@ -1,8 +1,8 @@
-yondalla = Creature:new {
+corvette_yondalla_neutral_rescue = Creature:new {
 	objectName = "",
 	customName = "Yondalla",
-	socialGroup = "townsperson",
-	faction = "townsperson",
+	socialGroup = "jabba",
+	faction = "jabba",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -23,15 +23,15 @@ yondalla = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corvette_neutral_yondalla.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "corvetteYondallaConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(yondalla, "yondalla")
+CreatureTemplates:addCreatureTemplate(corvette_yondalla_neutral_rescue, "corvette_yondalla_neutral_rescue")
