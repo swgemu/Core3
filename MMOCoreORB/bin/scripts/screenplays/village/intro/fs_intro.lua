@@ -82,6 +82,9 @@ function FsIntro:doDelayedStep(pPlayer)
 	local curStep = self:getCurrentStep(pPlayer)
 
 	if (not OldManIntroEncounter:hasForceCrystal(pPlayer)) then
+		QuestManager.resetQuest(pPlayer, QuestManager.quests.OLD_MAN_INITIAL)
+		QuestManager.resetQuest(pPlayer, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)
+
 		if (self:hasFirstDatapad(pPlayer)) then
 			QuestManager.resetQuest(pPlayer, QuestManager.quests.TWO_MILITARY)
 			QuestManager.resetQuest(pPlayer, QuestManager.quests.LOOT_DATAPAD_1)
@@ -127,6 +130,9 @@ function FsIntro:onLoggedIn(pPlayer)
 		if (SithShadowIntroTheater:hasTaskStarted(pPlayer)) then
 			SithShadowIntroTheater:finish(pPlayer)
 		end
+
+		QuestManager.resetQuest(pPlayer, QuestManager.quests.OLD_MAN_INITIAL)
+		QuestManager.resetQuest(pPlayer, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)
 
 		if (self:hasFirstDatapad(pPlayer)) then
 			QuestManager.resetQuest(pPlayer, QuestManager.quests.TWO_MILITARY)
