@@ -64,7 +64,7 @@ villageQuharekPhase3ConvoTemplate:addScreen(max_crafters);
 
 need_people_to_help = ConvoScreen:new {
 	id = "need_people_to_help",
-	leftDialog = "@conversation/quharek_phase_3:s_cf89ace1", -- Yes, we need people to help create energy shields for the village. You'll need to contribute at least %DI ingredients to the project. If you do, it will help you gain insight into how the Force can be used to improve your crafting experimentation. We're also giving awards to whoever brings the most or best ingredients. Are you interested?
+	leftDialog = "@conversation/quharek_phase_3:s_6c81c99f", -- Yes, we need people to help create energy shields for the village. You'll need to contribute at least %DI ingredients to the project. If you do, it will help you gain insight into how the Force can be used to improve your crafting experimentation. We're also giving awards to whoever brings the most or best ingredients. Are you interested?
 	stopConversation = "false",
 	options = {
 		{"@conversation/quharek_phase_3:s_99347a8f", "you_should_know"}, -- Yes, I'd like to help out.
