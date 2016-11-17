@@ -46,16 +46,6 @@ function createMissionGiverConvoTemplate(templateName, convoHandler)
 
 	mission_giver_convotemplate:addScreen(mission_giver_cant_work);
 
-	mission_giver_cantwork = ConvoScreen:new {
-		id = "cantwork",
-		leftDialog = ":cantwork",
-		stopConversation = "true",
-		options = {
-		}
-	}
-
-	mission_giver_convotemplate:addScreen(mission_giver_cantwork);
-
 	mission_giver_invfull = ConvoScreen:new {
 		id = "inv_full",
 		leftDialog = "",
@@ -274,6 +264,36 @@ function createMissionGiverConvoTemplate(templateName, convoHandler)
 	}
 
 	mission_giver_convotemplate:addScreen(mission_giver_npc_reward_n);
+
+	mission_giver_quit_quest = ConvoScreen:new {
+		id = "quit_quest",
+		leftDialog = "@static_npc/default_dialog:quit_quest", -- I can see that you're busy working for someone else at the moment. Would you like to continue to do so, or would you like to work for me instead?
+		stopConversation = "false",
+		options = {
+			{ "@static_npc/default_dialog:player_quit", "npc_quit" }, -- I think I'd like to work for you.
+			{ "@static_npc/default_dialog:player_continue", "npc_continue" } -- No, I think I'll keep my current job, thanks.
+		}
+	}
+
+	mission_giver_convotemplate:addScreen(mission_giver_quit_quest);
+
+	mission_giver_npc_quit = ConvoScreen:new {
+		id = "npc_quit",
+		leftDialog = "@static_npc/default_dialog:npc_quit", -- Fine. You are now free of your prior obligation, and you can freely work for me.
+		stopConversation = "true",
+		options = {}
+	}
+
+	mission_giver_convotemplate:addScreen(mission_giver_npc_quit);
+
+	mission_giver_npc_continue = ConvoScreen:new {
+		id = "npc_continue",
+		leftDialog = "@static_npc/default_dialog:npc_continue", -- Fine then. Don't bother with me until you're ready to work for me.
+		stopConversation = "true",
+		options = {}
+	}
+
+	mission_giver_convotemplate:addScreen(mission_giver_npc_continue);
 
 	addConversationTemplate(templateName, mission_giver_convotemplate);
 end
