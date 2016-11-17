@@ -67,6 +67,8 @@ function mission_target_conv_handler:getInitialScreen(pPlayer, pNpc, pConvTempla
 		else
 			nextScreenID = "dontknowyou_n"
 		end
+	elseif correctNpc == true then
+		nextScreenID = "npc_breech_n"
 	end
 
 	return conversationTemplate:getScreen(nextScreenID)
@@ -117,6 +119,8 @@ function mission_target_conv_handler:runScreenHandlers(pConvTemplate, pPlayer, p
 		pConvScreen = self:handleScreenOtherEscort(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "dontknowyou_n" then
 		pConvScreen = self:handleScreenDontKnowYou(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	elseif screenID == "npc_breech_n" then
+		pConvScreen = self:handleScreenBreech(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "npc_smuggle_n" then
 		pConvScreen = self:handleScreenSmuggle(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "npc_more_1_n" then
@@ -159,6 +163,29 @@ function mission_target_conv_handler:handleScreenNotIt(pConvTemplate, pPlayer, p
 		clonedScreen:setDialogTextStringId(stfFile .. ":notit")
 	else
 		clonedScreen:setDialogTextStringId(stfFile .. ":not_it")
+	end
+
+	return pConvScreen
+end
+
+function mission_target_conv_handler:handleScreenBreech(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
+	pConvScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConvScreen)
+
+	if (pNpc == nil) then
+		return nil
+	end
+
+	local npcNumber = self.themePark:getActiveNpcNumber(pPlayer)
+	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pPlayer)
+	local stfFile = self.themePark:getStfFile(npcNumber)
+
+	clonedScreen:setDialogTextStringId(stfFile .. ":npc_breech_" .. missionNumber)
+
+	if self.themePark:isValidConvoString(stfFile, ":player_more_1_" .. missionNumber) then
+		clonedScreen:addOption(stfFile .. ":player_more_1_" .. missionNumber, "npc_more_1_n")
+		clonedScreen:setStopConversation(false)
 	end
 
 	return pConvScreen
@@ -250,6 +277,9 @@ function mission_target_conv_handler:handleScreenNpcMoreOne(pConvTemplate, pPlay
 		self.themePark:createEscortReturnArea(pNpc, pPlayer)
 		self.themePark:followPlayer(pNpc, pPlayer)
 		self.themePark:updateWaypoint(pPlayer, returnLoc[1], returnLoc[2], returnLoc[3], "return")
+	elseif mission.missionType == "confiscate" or mission.missionType == "assassinate" then
+		writeData(playerID .. ":breechTriggered", 1)
+		self.themePark:setNpcDefender(pPlayer, true)
 	end
 
 	return pConvScreen
@@ -298,6 +328,9 @@ function mission_target_conv_handler:handleScreenNpcMoreTwo(pConvTemplate, pPlay
 		self.themePark:createEscortReturnArea(pNpc, pPlayer)
 		self.themePark:followPlayer(pNpc, pPlayer)
 		self.themePark:updateWaypoint(pPlayer, returnLoc[1], returnLoc[2], returnLoc[3], "return")
+	elseif mission.missionType == "confiscate" or mission.missionType == "assassinate" then
+		writeData(playerID .. ":breechTriggered", 1)
+		self.themePark:setNpcDefender(pPlayer, true)
 	end
 
 	return pConvScreen
@@ -340,6 +373,9 @@ function mission_target_conv_handler:handleScreenNpcMoreThree(pConvTemplate, pPl
 		self.themePark:createEscortReturnArea(pNpc, pPlayer)
 		self.themePark:followPlayer(pNpc, pPlayer)
 		self.themePark:updateWaypoint(pPlayer, returnLoc[1], returnLoc[2], returnLoc[3], "return")
+	elseif mission.missionType == "confiscate" or mission.missionType == "assassinate" then
+		writeData(playerID .. ":breechTriggered", 1)
+		self.themePark:setNpcDefender(pPlayer, true)
 	end
 
 	return pConvScreen

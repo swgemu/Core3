@@ -22,7 +22,7 @@ exec_quest_jusani = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {	"object/mobile/dressed_commoner_fat_zabrak_male_01.iff",
@@ -55,7 +55,7 @@ exec_quest_jusani = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	reactionStf = "@npc_reaction/slang",
-	conversationTemplate = "",
+	conversationTemplate = "jusani_zhord_mission_target_convotemplate",
 	attacks = merge(brawlermaster, marksmanmaster)
 }
 

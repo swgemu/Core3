@@ -53,6 +53,7 @@ namespace tangible {
 		int deleteLuaStringData(lua_State *L);
 		int setOptionBit(lua_State* L);
 		int clearOptionBit(lua_State* L);
+		int hasOptionBit(lua_State* L);
 		int getCraftersName(lua_State* L);
 
 	protected:

@@ -22,7 +22,7 @@ cie_vos = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = KILLER,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {
@@ -40,7 +40,7 @@ cie_vos = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_light"},
-	conversationTemplate = "",
+	conversationTemplate = "theme_park_valarian_mission_target_convotemplate",
 	attacks = merge(marksmanmid,brawlermid)
 }
 

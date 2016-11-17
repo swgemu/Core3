@@ -20,8 +20,9 @@ xalox_smuggler2 = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = KILLER,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_slicer_human_male_01.iff"},
@@ -34,6 +35,7 @@ xalox_smuggler2 = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_medium"},
+	conversationTemplate = "xalox_guul_mission_target_convotemplate",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

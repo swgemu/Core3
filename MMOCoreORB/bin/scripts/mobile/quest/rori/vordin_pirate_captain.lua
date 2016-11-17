@@ -21,9 +21,9 @@ vordin_pirate_captain = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {
@@ -39,7 +39,7 @@ vordin_pirate_captain = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},
-	conversationTemplate = "",
+	conversationTemplate = "vordin_sildor_mission_target_convotemplate",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

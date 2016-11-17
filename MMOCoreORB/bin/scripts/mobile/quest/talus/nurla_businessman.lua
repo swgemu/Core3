@@ -22,9 +22,9 @@ nurla_businessman = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {	"object/mobile/dressed_commoner_fat_zabrak_male_01.iff",
@@ -67,7 +67,7 @@ nurla_businessman = Creature:new {
 		}
 	},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "nurla_slinthiss_mission_target_convotemplate",
 	attacks = brawlermaster
 }
 
