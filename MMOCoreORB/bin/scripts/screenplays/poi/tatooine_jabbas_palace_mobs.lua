@@ -56,7 +56,6 @@ end
 
 function TatooineJabbasPalaceMobsScreenPlay:spawnStatics()
 	spawnMobile("tatooine", "beissa", 60, 8.11982, 2, 34.2394, 295, 1177487)
-	spawnMobile("tatooine", "bruce_mcbrain", 60, 7.71724, 0.2, 130.294, 292, 1177466)
 	spawnMobile("tatooine", "ev_9d9", 60, 24.47, 0.2, 87.86, 312, 1177479)
 	spawnMobile("tatooine", "boba_fett",60,-1,3,31,322.95,1177487)
 	spawnMobile("tatooine", "salacious_crumb",60,-16.29,2.81087,42.54,86.0692,1177487)

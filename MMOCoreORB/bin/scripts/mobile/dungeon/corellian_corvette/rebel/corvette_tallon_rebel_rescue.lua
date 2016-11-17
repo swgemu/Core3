@@ -1,6 +1,6 @@
-crowley = Creature:new {
-	objectName = "@npc_name:twilek_base_female",
-	customName = "Master Sergeant Crowley",
+corvette_tallon_rebel_rescue = Creature:new {
+	objectName = "@npc_name:human_base_male",
+	customName = "Adar Tallon",
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 100,
@@ -23,15 +23,15 @@ crowley = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE + INTERESTING + INVULNERABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corvette_rebel_crowley.iff"},
+	templates = {"object/mobile/dressed_corvette_rebel_adar.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "corvetteTallonConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(crowley, "crowley")
+CreatureTemplates:addCreatureTemplate(corvette_tallon_rebel_rescue, "corvette_tallon_rebel_rescue")
