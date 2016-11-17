@@ -19,6 +19,9 @@ class ContrabandScanTask : public Task {
 	const unsigned int SCANTIME = 5; // 5 iterations = 5 s
 	const unsigned int TIMETORETURNFORSCAN = 10; // 10 iterations = 10 s
 	const float RANAWAYFACTIONFINE = 100;
+	const unsigned int RECOGNIZEDFACTIONRANK = 7;
+	const unsigned int BASEFACTIONDETECTIONCHANCE = 10; // 10 percent chance to detect opposite faction.
+	const unsigned int RANKDETECTIONCHANCEMODIFIER = 1; // Each faction rank increases the chance to detect opposite faction by this amount.
 
 	ManagedWeakReference<AiAgent*> weakScanner;
 	ManagedWeakReference<CreatureObject*> weakPlayer;
@@ -27,6 +30,7 @@ class ContrabandScanTask : public Task {
 		SCANCHANCE,
 		INITIATESCAN,
 		AVOIDINGSCAN,
+		FACTIONRANKCHECK,
 		SCANDELAY,
 		FINISHED
 	};
@@ -119,8 +123,26 @@ class ContrabandScanTask : public Task {
 
 		sendScannerChatMessage(zone, scanner, player, "scan_greeting_imperial", "scan_greeting_rebel");
 
-		scanState = SCANDELAY;
+		scanState = FACTIONRANKCHECK;
 		timeLeft = SCANTIME;
+	}
+
+	void checkPlayerFactionRank(Zone* zone, AiAgent* scanner, CreatureObject* player) {
+		scanState = SCANDELAY;
+		if (scanner->getFaction() == player->getFaction()) {
+			if (player->getFactionRank() > RECOGNIZEDFACTIONRANK) {
+				sendScannerChatMessage(zone, scanner, player, "business_imperial", "business_rebel");
+				scanState = FINISHED;
+			}
+		} else if (player->getFaction() != Factions::FACTIONNEUTRAL) {
+			unsigned int detectionChance = BASEFACTIONDETECTIONCHANCE + RANKDETECTIONCHANCEMODIFIER * player->getFactionRank();
+			if (System::random(100) < detectionChance) {
+				sendScannerChatMessage(zone, scanner, player, "discovered_chat_imperial", "discovered_chat_rebel");
+				sendSystemMessage(scanner, player, "discovered_imperial", "discovered_rebel");
+				player->setFactionStatus(FactionStatus::COVERT);
+				scanState = FINISHED;
+			}
+		}
 	}
 
 public:
@@ -162,6 +184,9 @@ public:
 			break;
 		case INITIATESCAN:
 			initiateScan(zone, scanner, player);
+			break;
+		case FACTIONRANKCHECK:
+			checkPlayerFactionRank(zone, scanner, player);
 			break;
 		case SCANDELAY:
 			performScan(zone, scanner, player);
