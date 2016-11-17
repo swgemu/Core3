@@ -1065,11 +1065,11 @@ function QtQcContainerComponent:transferObject(pContainer, pObj, slot)
 	if (ingredientsNeeded == 0) then
 		CreatureObject(pPlayer):sendSystemMessage("@crafting:cc_thank_you_done")
 
-		if (currentPhase == 2) then
+		if (currentPhase == 2 and not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_MAIN)) then
 			QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_02)
 			QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_PHASE_2_CRAFT_DEFENSES_MAIN)
 			VillageJediManagerCommon.unlockBranch(pPlayer, "force_sensitive_crafting_mastery_technique")
-		elseif (currentPhase == 3) then
+		elseif (currentPhase == 3 and not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_MAIN)) then
 			QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_02)
 			QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_MAIN)
 			VillageJediManagerCommon.unlockBranch(pPlayer, "force_sensitive_crafting_mastery_experimentation")
