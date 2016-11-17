@@ -161,8 +161,10 @@ function mission_target_conv_handler:handleScreenNotIt(pConvTemplate, pPlayer, p
 		clonedScreen:setDialogTextStringId(stfFile .. ":notit_" .. missionNumber)
 	elseif self.themePark:isValidConvoString(stfFile, ":notit") then
 		clonedScreen:setDialogTextStringId(stfFile .. ":notit")
-	else
+	elseif self.themePark:isValidConvoString(stfFile, ":not_it") then
 		clonedScreen:setDialogTextStringId(stfFile .. ":not_it")
+	else
+		clonedScreen:setDialogTextStringId("@npc_mission/static_quest:not_it") -- No, sorry, that's not the item I was looking for...
 	end
 
 	return pConvScreen
