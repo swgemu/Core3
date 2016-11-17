@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_bf02a309",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/tatooine_bestine.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-17T06:25:27Z",
+      "side": 1,
+      "message": "These weren\u0027t accidentally removed. This exact location is where one of the Bestine rumor npcs is spawning.",
+      "revId": "1dd7d7523a49e29d1a6a65391baf0f1ee0bd5a94",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
