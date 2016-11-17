@@ -67,6 +67,8 @@ function villageSivarraPhase4ConvoHandler:runScreenHandlers(pConvTemplate, pPlay
 	elseif (screenID == "choose_certain") then
 		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
 		FsVillageDefense:acceptHealingQuest(pPlayer)
+	elseif (screenID == "choose_continue") then
+		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_COMBAT_HEALING_2)
 	end
 
 	return pConvScreen
