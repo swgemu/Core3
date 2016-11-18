@@ -1,6 +1,6 @@
-lob_dizz = Creature:new {
+brass_marshoo = Creature:new {
 	objectName = "",
-	customName = "Lob Dizz",
+	customName = "Brass Marshoo",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -23,15 +23,14 @@ lob_dizz = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gungan_male.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "brass_marshoo_mission_giver_convotemplate",
+	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(lob_dizz, "lob_dizz")
+CreatureTemplates:addCreatureTemplate(brass_marshoo, "brass_marshoo")

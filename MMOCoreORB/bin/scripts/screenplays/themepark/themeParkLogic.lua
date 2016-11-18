@@ -437,6 +437,10 @@ function ThemeParkLogic:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 	local npcName = npcData.spawnData.npcTemplate
 	local numberOfMissionsTotal = #npcData.missions
 
+	if numberOfMissionsTotal == 0 then
+		return 0
+	end
+
 	local missionsCompleted = 0
 	local stateToCheck = 1
 	for i = 1, numberOfMissionsTotal, 1 do

@@ -1,6 +1,6 @@
-bab_esrus = Creature:new {
+lob_dizz = Creature:new {
 	objectName = "",
-	customName = "Bab Esrus",
+	customName = "Lob Dizz",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -23,15 +23,14 @@ bab_esrus = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_commoner_naboo_human_female_08.iff"},
+	templates = {"object/mobile/gungan_male.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "lob_dizz_mission_giver_convotemplate",
+	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(bab_esrus, "bab_esrus")
+CreatureTemplates:addCreatureTemplate(lob_dizz, "lob_dizz")

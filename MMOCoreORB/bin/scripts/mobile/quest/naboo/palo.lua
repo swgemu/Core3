@@ -1,6 +1,6 @@
-arrek_von_sarko = Creature:new {
+palo = Creature:new {
 	objectName = "",
-	customName = "Arrek Von Sarko",
+	customName = "Palo",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -23,15 +23,14 @@ arrek_von_sarko = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/human_male.iff"},
+	templates = {"object/mobile/dressed_noble_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "palo_mission_giver_convotemplate",
+	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(arrek_von_sarko, "arrek_von_sarko")
+CreatureTemplates:addCreatureTemplate(palo, "palo")

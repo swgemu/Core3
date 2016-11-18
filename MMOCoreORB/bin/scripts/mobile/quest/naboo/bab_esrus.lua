@@ -1,6 +1,6 @@
-brass_marshoo = Creature:new {
+bab_esrus = Creature:new {
 	objectName = "",
-	customName = "Brass Marshoo",
+	customName = "Bab Esrus",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -23,15 +23,14 @@ brass_marshoo = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/gungan_male.iff"},
+	templates = {"object/mobile/dressed_commoner_naboo_human_female_08.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "bab_esrus_mission_giver_convotemplate",
+	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(brass_marshoo, "brass_marshoo")
+CreatureTemplates:addCreatureTemplate(bab_esrus, "bab_esrus")
