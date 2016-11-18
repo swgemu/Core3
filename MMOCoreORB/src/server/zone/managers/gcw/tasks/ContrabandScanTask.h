@@ -45,6 +45,8 @@ class ContrabandScanTask : public Task {
 	int timeLeft;
 	int previousTimeLeft;
 
+	bool alreadyTriedToAvoidScan;
+
 	String getFactionStringId(AiAgent* scanner, const String& imperial, const String& rebel) {
 		const String stringId = "@imperial_presence/contraband_search:";
 		if (scanner->getFaction() == Factions::FACTIONIMPERIAL || rebel == "") {
@@ -72,14 +74,20 @@ class ContrabandScanTask : public Task {
 	}
 
 	bool playerTriesToAvoidScan(AiAgent* scanner, CreatureObject* player) {
-		return scanState != AVOIDINGSCAN && (!scanner->isInRange(player, 16) || !CollisionManager::checkLineOfSight(scanner, player));
+		return (scanState != AVOIDINGSCAN && scanState != SCANCHANCE && scanState != INITIATESCAN) && (!scanner->isInRange(player, 16) || !CollisionManager::checkLineOfSight(scanner, player));
 	}
 
 	void scannerRequestsPlayerToReturn(Zone* zone, AiAgent* scanner, CreatureObject* player) {
 		previousScanState = scanState;
 		scanState = AVOIDINGSCAN;
-		previousTimeLeft = timeLeft;
-		timeLeft = TIMETORETURNFORSCAN;
+		if (!alreadyTriedToAvoidScan) {
+			previousTimeLeft = timeLeft;
+			timeLeft = TIMETORETURNFORSCAN;
+			alreadyTriedToAvoidScan = true;
+		} else {
+			previousTimeLeft = timeLeft;
+			timeLeft = 0;
+		}
 
 		sendScannerChatMessage(zone, scanner, player, "return_request_imperial", "return_request_rebel");
 	}
@@ -238,6 +246,7 @@ public:
 		scanState = SCANCHANCE;
 		previousTimeLeft = 0;
 		timeLeft = 0;
+		alreadyTriedToAvoidScan = false;
 	}
 
 	void run() {
