@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_6ae9db19",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/misc/CustomIngredient.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-18T03:18:29Z",
+      "side": 1,
+      "message": "initialize this in the ctor instead of in loadTemplateData",
+      "revId": "eb9e3c9d59b38c1c850c6a3ab1abb04066a85185",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
