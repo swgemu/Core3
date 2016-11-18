@@ -1,3 +1,14 @@
+spiceDen =
+	{
+		type = "destructible",
+		buildingTemplate = "object/building/military/pirate_warehouse.iff",
+		terminal = { template = "object/tangible/terminal/terminal_destructible_building.iff", vectorCellID = 3, x = 0, z = 0.3, y = -6.0 },
+		childNpcs =
+		{
+			{ npcTemplate = "black_sun_minion", npcName = "Shift Commander", vectorCellID = 3, x = 0, z = 0.3, y = -3.0 }
+		}
+	}
+
 denell_kel_vannon_missions =
 	{
 		{
@@ -33,16 +44,35 @@ denell_kel_vannon_missions =
 				{ rewardType = "credits", amount = 400 }
 			}
 		},
-		-- Quest 3 disabled as no information on quest is available (quest 2 was bugged on live)
-		--[[ 
 		{
-			missionType = "assassinate",
-			primarySpawns = {},
-			secondarySpawns =	{},
-			itemSpawns = {},
-			rewards = {}
-		}]]
+		missionType = "destroy",
+		buildingSpawn = spiceDen,
+		primarySpawns =
+		{
+			{ npcTemplate = "black_sun_initiate", npcName = "" }
+		},
+		secondarySpawns =
+		{
+			{ npcTemplate = "black_sun_smuggler", npcName = "" },
+			{ npcTemplate = "black_sun_smuggler", npcName = "" },
+			{ npcTemplate = "thug", npcName = "Spice Addict" }
+		},
+		staticObjects =
+			{
+				{ objectTemplate = "object/tangible/furniture/decorative/foodcart.iff", objectName = "Spice Selector" },
+				{ objectTemplate = "object/static/structure/corellia/corl_power_transformer_s01.iff", objectName = "" },
+				{ objectTemplate = "object/static/structure/general/streetlamp_small_style_02_on.iff", objectName = "" }
+			},
+		itemSpawns =
+		{
+
+		},
+		rewards =
+		{
+			{ rewardType = "credits", amount = 500 }
+		}
 	}
+}
 
 npcMapDenellKelVannon =
 	{
@@ -60,7 +90,7 @@ DenellKelVannon = ThemeParkLogic:new {
 	className = "DenellKelVannon",
 	screenPlayState = "denell_kel_vannon_quest",
 	planetName = "corellia",
-	distance = 800
+	distance = 1200
 }
 
 registerScreenPlay("DenellKelVannon", true)
