@@ -64,7 +64,7 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 
 	loadSocialTypes();
 	loadSpatialChatTypes();
-
+	loadMoodTypes();
 }
 
 void ChatManagerImplementation::stop() {
@@ -227,6 +227,39 @@ void ChatManagerImplementation::loadSpatialChatTypes() {
 	iffStream->closeForm('SPCT');
 
 	delete iffStream;
+}
+
+void ChatManagerImplementation::loadMoodTypes() {
+	IffStream* iffStream = TemplateManager::instance()->openIffFile("chat/mood_types.iff");
+
+	if (iffStream == NULL) {
+		error("Could not open chat/mood_types.iff");
+		return;
+	}
+
+	iffStream->openForm('MOOD');
+
+	Chunk* version = iffStream->openForm('0000');
+
+	Chunk* data = iffStream->openChunk('TYPS');
+	int i = 0;
+
+	while (data->hasData()) {
+		String key;
+		data->readString(key);
+		i++;
+
+		moodTypes.put(key, i);
+	}
+
+	iffStream->closeChunk('TYPS');
+
+	iffStream->closeForm('0000');
+	iffStream->closeForm('MOOD');
+
+	delete iffStream;
+
+	info("Loaded " + String::valueOf(moodTypes.size()) + " mood types.", true);
 }
 
 void ChatManagerImplementation::initiateRooms() {
@@ -2588,4 +2621,22 @@ void ChatManagerImplementation::handleChatUnbanPlayer(CreatureObject* unbanner, 
 void ChatManagerImplementation::sendChatOnUnbanResult(CreatureObject* unbanner, const String& unbaneeName, const String& roomPath, int error, int requestID) {
 	ChatOnUnbanFromRoom* notification = new ChatOnUnbanFromRoom(unbanner, unbaneeName, roomPath, error, requestID);
 	unbanner->sendMessage(notification);
+}
+
+unsigned int ChatManagerImplementation::getSpatialChatType(const String& spatialChatType) {
+	if (spatialChatTypes.contains(spatialChatType)) {
+		return spatialChatTypes.get(spatialChatType);
+	} else {
+		warning("Spatial chat type '" + spatialChatType + "' not found.");
+		return 0;
+	}
+}
+
+unsigned int ChatManagerImplementation::getMoodType(const String& moodType) {
+	if (moodTypes.contains(moodType)) {
+		return moodTypes.get(moodType);
+	} else {
+		warning("Mood type '" + moodType + "' not found.");
+		return 0;
+	}
 }
