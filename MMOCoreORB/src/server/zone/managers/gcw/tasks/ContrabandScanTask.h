@@ -22,6 +22,7 @@ class ContrabandScanTask : public Task {
 	const unsigned int RECOGNIZEDFACTIONRANK = 7;
 	const unsigned int BASEFACTIONDETECTIONCHANCE = 10; // 10 percent chance to detect opposite faction.
 	const unsigned int RANKDETECTIONCHANCEMODIFIER = 1; // Each faction rank increases the chance to detect opposite faction by this amount.
+	const unsigned int JEDIMINDTRICKSUCCESSCHANCEBASE = 80; // 80 percent chance to mind trick.
 
 	ManagedWeakReference<AiAgent*> weakScanner;
 	ManagedWeakReference<CreatureObject*> weakPlayer;
@@ -31,6 +32,9 @@ class ContrabandScanTask : public Task {
 		INITIATESCAN,
 		AVOIDINGSCAN,
 		FACTIONRANKCHECK,
+		JEDIMINDTRICKPLAYERCHAT,
+		JEDIMINDTRICKSCANNERTHINK,
+		JEDIMINDTRICKSCANNERCHAT,
 		SCANDELAY,
 		FINISHED
 	};
@@ -128,10 +132,11 @@ class ContrabandScanTask : public Task {
 	}
 
 	void checkPlayerFactionRank(Zone* zone, AiAgent* scanner, CreatureObject* player) {
-		scanState = SCANDELAY;
+		scanState = JEDIMINDTRICKPLAYERCHAT;
 		if (scanner->getFaction() == player->getFaction()) {
 			if (player->getFactionRank() > RECOGNIZEDFACTIONRANK) {
 				sendScannerChatMessage(zone, scanner, player, "business_imperial", "business_rebel");
+				sendSystemMessage(scanner, player, "probe_scan_done");
 				scanState = FINISHED;
 			}
 		} else if (player->getFaction() != Factions::FACTIONNEUTRAL) {
@@ -143,6 +148,73 @@ class ContrabandScanTask : public Task {
 				scanState = FINISHED;
 			}
 		}
+	}
+
+	String dependingOnJediSkills(CreatureObject* player, const String& novice, const String& lightSide, const String& darkSide) {
+		if (player->hasSkill("jedi_light_side_journeyman_novice")) {
+			return lightSide;
+		} else if (player->hasSkill("jedi_dark_side_journeyman_novice")) {
+			return darkSide;
+		} else {
+			return novice;
+		}
+	}
+
+	void performJediMindTrick(Zone* zone, AiAgent* scanner, CreatureObject* player) {
+		if (player->hasSkill("jedi_padawan_novice")) {
+			ChatManager* chatManager = zone->getZoneServer()->getChatManager();
+			String stringId = "@imperial_presence/contraband_search:";
+			String mood = dependingOnJediSkills(player, "firm", "confident", "angry");
+
+			stringId += dependingOnJediSkills(player, "jedi_mind_trick_novice", "jedi_mind_trick", "jedi_mind_trick_dark");
+
+			StringIdChatParameter chatMessage;
+			chatMessage.setStringId(stringId);
+			chatManager->broadcastChatMessage(player, chatMessage, scanner->getObjectID(), 0, chatManager->getMoodType(mood));
+
+			scanState = JEDIMINDTRICKSCANNERTHINK;
+		} else {
+			scanState = SCANDELAY;
+		}
+	}
+
+	void reactOnJediMindTrick(Zone* zone, AiAgent* scanner, CreatureObject* player) {
+		ChatManager* chatManager = zone->getZoneServer()->getChatManager();
+		String stringId = "@imperial_presence/contraband_search:";
+
+		stringId += dependingOnJediSkills(player, "not_search_you_novice", "not_search_you", "not_search_you_dark");
+
+		StringIdChatParameter chatMessage;
+		chatMessage.setStringId(stringId);
+		chatManager->broadcastChatMessage(scanner, chatMessage, 0, chatManager->getSpatialChatType("think"), chatManager->getMoodType("ambivalent"));
+
+		scanState = JEDIMINDTRICKSCANNERCHAT;
+	}
+
+	void jediMindTrickResult(Zone* zone, AiAgent* scanner, CreatureObject* player) {
+		ChatManager* chatManager = zone->getZoneServer()->getChatManager();
+		String stringId = "@imperial_presence/contraband_search:";
+		String mood;
+
+		unsigned int rankedJediIncreasedChance = 0;
+		if (player->hasSkill("jedi_light_side_journeyman_novice") || player->hasSkill("jedi_light_side_journeyman_novice")) {
+			rankedJediIncreasedChance = 10;
+		}
+
+		if (System::random(100) < (JEDIMINDTRICKSUCCESSCHANCEBASE + rankedJediIncreasedChance)) {
+			stringId += "jedi_fail";
+			mood = "suspicious";
+			scanState = SCANDELAY;
+		} else {
+			stringId += dependingOnJediSkills(player, "dont_search_you_novice", "dont_search_you", "dont_search_you_dark");
+			mood = dependingOnJediSkills(player, "confused", "confident", "scared");
+			sendSystemMessage(scanner, player, "probe_scan_done");
+			scanState = FINISHED;
+		}
+
+		StringIdChatParameter chatMessage;
+		chatMessage.setStringId(stringId);
+		chatManager->broadcastChatMessage(scanner, chatMessage, player->getObjectID(), 0, chatManager->getMoodType(mood));
 	}
 
 public:
@@ -187,6 +259,15 @@ public:
 			break;
 		case FACTIONRANKCHECK:
 			checkPlayerFactionRank(zone, scanner, player);
+			break;
+		case JEDIMINDTRICKPLAYERCHAT:
+			performJediMindTrick(zone, scanner, player);
+			break;
+		case JEDIMINDTRICKSCANNERTHINK:
+			reactOnJediMindTrick(zone, scanner, player);
+			break;
+		case JEDIMINDTRICKSCANNERCHAT:
+			jediMindTrickResult(zone, scanner, player);
 			break;
 		case SCANDELAY:
 			performScan(zone, scanner, player);
