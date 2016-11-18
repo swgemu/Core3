@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_6ad0fb53",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/SlicingSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-18T03:26:27Z",
+      "side": 1,
+      "message": "Instead of adding this same block of code to two different methods, put it in it\u0027s own method and call it from both places.",
+      "revId": "cb31d500bf6528fca5e1705a3ee63fe9d08f6cb8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
