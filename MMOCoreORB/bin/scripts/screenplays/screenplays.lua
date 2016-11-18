@@ -27,6 +27,7 @@ require("sui.custom.SuiReceiverPuzzle")
 
 includeFile("helperfuncs.lua")
 
+
 -- Theme parks
 includeFile("themepark/conversations/goru_conv_handler.lua")
 includeFile("themepark/conversations/mission_giver_conv_handler.lua")
@@ -255,6 +256,7 @@ includeFile("tasks/corellia/grondorn_muse.lua")
 includeFile("tasks/corellia/hal_horn.lua")
 includeFile("tasks/corellia/ignar_ominaz.lua")
 includeFile("tasks/corellia/jadam_questrel.lua")
+includeFile("tasks/corellia/joz_jodhul.lua")
 includeFile("tasks/corellia/kirkin_liawoon.lua")
 includeFile("tasks/corellia/lady_hutt.lua")
 includeFile("tasks/corellia/luthin_dlunar.lua")
@@ -547,3 +549,4 @@ includeFile("record_keepers/record_keepers.lua")
 
 --Tests
 includeFile("tests/tests.lua")
+

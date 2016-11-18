@@ -126,7 +126,6 @@ includeFile("corellia/hidden_daggers_lieutenant.lua")
 includeFile("corellia/howling_plumed_rasp.lua")
 includeFile("corellia/humbaba.lua")
 includeFile("corellia/jom_irimore.lua")
-includeFile("corellia/joz_jodhul.lua")
 includeFile("corellia/krahbu.lua")
 includeFile("corellia/lerat_zom.lua")
 includeFile("corellia/lord_nyax.lua")
@@ -213,3 +212,5 @@ includeFile("corellia/wooded_paralope.lua")
 includeFile("corellia/wrix.lua")
 includeFile("corellia/zealot_of_lord_nyax.lua")
 includeFile("corellia/zo_ssa.lua")
+
+
