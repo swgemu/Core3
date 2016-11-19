@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_4ab097f4",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/ContrabandScanTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-19T00:50:54Z",
+      "side": 1,
+      "message": "These are pre-publish 9 jedi skills. You probably want to use force_rank_dark_novice and force_rank_light_novice",
+      "range": {
+        "startLine": 154,
+        "startChar": 24,
+        "endLine": 154,
+        "endChar": 57
+      },
+      "revId": "3bc228000d4a1751242f8d6811d2f307b533b111",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_2aabd38a",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/ContrabandScanTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-19T00:50:54Z",
+      "side": 1,
+      "message": "This is one of the pre-publish 9 jedi skills. You probably want to use either force_title_jedi_rank_01 (Jedi Initiate) or force_title_jedi_rank_02 (Jedi Padawan).",
+      "range": {
+        "startLine": 164,
+        "startChar": 24,
+        "endLine": 164,
+        "endChar": 43
+      },
+      "revId": "3bc228000d4a1751242f8d6811d2f307b533b111",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_ea94eb45",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/ContrabandScanTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-19T00:50:54Z",
+      "side": 1,
+      "message": "See above for correct skills",
+      "revId": "3bc228000d4a1751242f8d6811d2f307b533b111",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_0a928f57",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/ContrabandScanTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-19T00:50:54Z",
+      "side": 1,
+      "message": "Did you mean for this to be \u003e ?",
+      "revId": "3bc228000d4a1751242f8d6811d2f307b533b111",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
