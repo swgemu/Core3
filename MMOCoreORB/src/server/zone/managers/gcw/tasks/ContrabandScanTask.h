@@ -182,7 +182,7 @@ class ContrabandScanTask : public Task {
 
 			StringIdChatParameter chatMessage;
 			chatMessage.setStringId(stringId);
-			chatManager->broadcastChatMessage(player, chatMessage, scanner->getObjectID(), 0, chatManager->getMoodType(mood));
+			chatManager->broadcastChatMessage(player, chatMessage, scanner->getObjectID(), 0, chatManager->getMoodID(mood));
 
 			scanState = JEDIMINDTRICKSCANNERTHINK;
 		} else {
@@ -198,7 +198,7 @@ class ContrabandScanTask : public Task {
 
 		StringIdChatParameter chatMessage;
 		chatMessage.setStringId(stringId);
-		chatManager->broadcastChatMessage(scanner, chatMessage, 0, chatManager->getSpatialChatType("think"), chatManager->getMoodType("ambivalent"));
+		chatManager->broadcastChatMessage(scanner, chatMessage, 0, chatManager->getSpatialChatType("think"), chatManager->getMoodID("ambivalent"));
 
 		scanState = JEDIMINDTRICKSCANNERCHAT;
 	}
@@ -235,7 +235,7 @@ class ContrabandScanTask : public Task {
 
 		StringIdChatParameter chatMessage;
 		chatMessage.setStringId(stringId);
-		chatManager->broadcastChatMessage(scanner, chatMessage, player->getObjectID(), 0, chatManager->getMoodType(mood));
+		chatManager->broadcastChatMessage(scanner, chatMessage, player->getObjectID(), 0, chatManager->getMoodID(mood));
 	}
 
 public:

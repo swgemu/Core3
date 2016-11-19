@@ -88,7 +88,7 @@ public:
 
 							UnicodeString message("@player_structure:wear_noway");
 							ChatManager* chatMan = server->getChatManager();
-							chatMan->broadcastChatMessage(vendor, message, object->getObjectID(), vendor->getMoodID(), 0);
+							chatMan->broadcastChatMessage(vendor, message, object->getObjectID(), 0, vendor->getMoodID());
 							return GENERALERROR;
 						}
 

@@ -12,7 +12,6 @@
 #include "server/zone/packets/charcreation/ClientCreateCharacterCallback.h"
 #include "server/zone/packets/charcreation/ClientCreateCharacterSuccess.h"
 #include "server/zone/packets/charcreation/ClientCreateCharacterFailed.h"
-#include "server/zone/objects/player/Races.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/managers/name/NameManager.h"
@@ -123,7 +122,6 @@
 
 #include "server/zone/objects/creature/events/BurstRunNotifyAvailableEvent.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"
-#include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/tangible/components/droid/DroidPlaybackModuleDataComponent.h"
 
 #include "server/zone/objects/player/badges/Badge.h"
@@ -2451,7 +2449,7 @@ void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 e
 					creature->sendSystemMessage(stringID);
 
 					creature->setListenToID(entid, true);
-					String str = Races::getMoodStr("entertained");
+					String str = server->getChatManager()->getMoodAnimation("entertained");
 					creature->setMoodString(str, true);
 					creature->setListenToID(droid->getObjectID());
 					module->addListener(creature->getObjectID());

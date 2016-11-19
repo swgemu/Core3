@@ -104,7 +104,7 @@ public:
 
 		if (!ghost->getCommandMessageString(STRING_HASHCODE("retreat")).isEmpty() && creature->checkCooldownRecovery("command_message")) {
 			UnicodeString shout(ghost->getCommandMessageString(STRING_HASHCODE("retreat")));
- 	 	 	server->getChatManager()->broadcastChatMessage(player, shout, 0, 0, 80, ghost->getLanguageID());
+ 	 	 	server->getChatManager()->broadcastChatMessage(player, shout, 0, 80, player->getMoodID(), 0, ghost->getLanguageID());
  	 	 	creature->updateCooldownTimer("command_message", 30 * 1000);
 		}
 

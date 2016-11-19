@@ -41,13 +41,13 @@
 #include "server/zone/objects/creature/events/CommandQueueActionEvent.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
+#include "server/chat/ChatManager.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 #include "server/zone/objects/creature/variables/CommandQueueAction.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
-#include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/mission/MissionObject.h"
@@ -1580,7 +1580,10 @@ void CreatureObjectImplementation::updateGroup(GroupObject* grp,
 
 void CreatureObjectImplementation::setMood(byte mood, bool notifyClient) {
 	moodID = mood;
-	moodString = Races::getMoodStr(Races::getMood(moodID));
+
+	ChatManager* chatManager = server->getChatManager();
+
+	moodString = chatManager->getMoodAnimation(chatManager->getMoodType(moodID));
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(

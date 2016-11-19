@@ -1098,7 +1098,7 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 
 	ChatManager* chatManager = player->getZoneServer()->getChatManager();
 
-	chatManager->broadcastChatMessage(player, "@hireling/hireling:taming_" + String::valueOf(System::random(4) + 1), 0, 0, 0, ghost->getLanguageID());
+	chatManager->broadcastChatMessage(player, "@hireling/hireling:taming_" + String::valueOf(System::random(4) + 1), 0, 0, player->getMoodID(), 0, ghost->getLanguageID());
 
 	Locker clocker(creature);
 
@@ -1196,7 +1196,7 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 			else
 				message = "@player_structure:wear_no";
 
-			chatMan->broadcastChatMessage(creature, message, clothing->getObjectID(), creature->getMoodID(), 0);
+			chatMan->broadcastChatMessage(creature, message, clothing->getObjectID(), 0, creature->getMoodID());
 
 			return false;
 		}
@@ -1231,7 +1231,7 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 	else
 		message = "@player_structure:wear_yes";
 
-	chatMan->broadcastChatMessage(creature, message, clothing->getObjectID(), creature->getMoodID(), 0);
+	chatMan->broadcastChatMessage(creature, message, clothing->getObjectID(), 0, creature->getMoodID());
 
 	return true;
 }

@@ -366,16 +366,17 @@ void VendorDataComponent::performVendorBark(SceneObject* target) {
 
 			SpatialChat* chatMessage = NULL;
 			String barkMessage = data->getAdPhrase();
+			ChatManager* chatManager = vendor_p->getZoneServer()->getChatManager();
 
 			if (barkMessage.beginsWith("@")) {
 				StringIdChatParameter message;
 				message.setStringId(barkMessage);
 				message.setTT(player_p->getObjectID());
-				chatMessage = new SpatialChat(vendor_p->getObjectID(), player_p->getObjectID(), player_p->getObjectID(), message, 50, 0, Races::getMoodID(data->getAdMood()), 0, 0);
+				chatMessage = new SpatialChat(vendor_p->getObjectID(), player_p->getObjectID(), player_p->getObjectID(), message, 50, 0, chatManager->getMoodID(data->getAdMood()), 0, 0);
 
 			} else {
 				UnicodeString uniMessage(barkMessage);
-				chatMessage = new SpatialChat(vendor_p->getObjectID(), player_p->getObjectID(), player_p->getObjectID(), uniMessage, 50, 0, Races::getMoodID(data->getAdMood()), 0, 0);
+				chatMessage = new SpatialChat(vendor_p->getObjectID(), player_p->getObjectID(), player_p->getObjectID(), uniMessage, 50, 0, chatManager->getMoodID(data->getAdMood()), 0, 0);
 			}
 
 			vendor_p->broadcastMessage(chatMessage, true);

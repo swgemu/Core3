@@ -12,7 +12,6 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/player/events/EntertainingSessionTask.h"
 #include "server/zone/objects/player/EntertainingObserver.h"
 #include "templates/params/creature/CreatureAttribute.h"
@@ -26,6 +25,7 @@
 #include "server/zone/objects/creature/buffs/PerformanceBuffType.h"
 #include "server/zone/objects/mission/MissionTypes.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/chat/ChatManager.h"
 
 void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 	ManagedReference<CreatureObject*> creo = entertainer.get();
@@ -843,10 +843,9 @@ void EntertainingSessionImplementation::sendEntertainmentUpdate(CreatureObject* 
 	/*if (updateEntValue)
 		creature->setTerrainNegotiation(0.8025000095f, true);*/
 
-	String str = Races::getMoodStr(mood);
+	String str = entertainer->getZoneServer()->getChatManager()->getMoodAnimation(mood);
 	creature->setMoodString(str, true);
 }
-
 
 void EntertainingSessionImplementation::sendEntertainingUpdate(CreatureObject* creature, float entval, const String& performance, uint32 perfcntr, int instrid) {
 	//creature->setTerrainNegotiation(entval, true);

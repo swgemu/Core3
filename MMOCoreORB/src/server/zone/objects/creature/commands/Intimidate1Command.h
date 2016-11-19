@@ -43,7 +43,7 @@ public:
 
 			if (ghost != NULL && !ghost->getCommandMessageString(STRING_HASHCODE("intimidate1")).isEmpty() && creature->checkCooldownRecovery("command_message")) {
 				UnicodeString shout(ghost->getCommandMessageString(STRING_HASHCODE("intimidate1")));
-				server->getChatManager()->broadcastChatMessage(creature, shout, 0, 0, 80, ghost->getLanguageID());
+				server->getChatManager()->broadcastChatMessage(creature, shout, 0, 80, creature->getMoodID(), 0, ghost->getLanguageID());
 				creature->updateCooldownTimer("command_message", 30 * 1000);
 			}
 		}

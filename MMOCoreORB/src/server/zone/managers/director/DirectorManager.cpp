@@ -1247,7 +1247,7 @@ int DirectorManager::spatialChat(lua_State* L) {
 			EXECUTE_TASK_3(creature, chatManager, taskMessage, {
 					Locker locker(creature_p);
 
-					chatManager_p->broadcastChatMessage(creature_p, taskMessage_p, 0, 0, 0);
+					chatManager_p->broadcastChatMessage(creature_p, taskMessage_p, 0, 0, creature_p->getMoodID());
 			});
 		}
 	} else {
@@ -1257,7 +1257,7 @@ int DirectorManager::spatialChat(lua_State* L) {
 			EXECUTE_TASK_3(creature, chatManager, message, {
 					Locker locker(creature_p);
 
-					chatManager_p->broadcastChatMessage(creature_p, message_p, 0, 0, 0);
+					chatManager_p->broadcastChatMessage(creature_p, message_p, 0, 0, creature_p->getMoodID());
 			});
 		}
 	}

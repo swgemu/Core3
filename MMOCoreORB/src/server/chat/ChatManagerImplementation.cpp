@@ -50,6 +50,7 @@
 #include "server/chat/room/ChatRoomMap.h"
 #include "server/chat/SendMailTask.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "templates/string/StringFile.h"
 
 ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int initsize) : ManagedServiceImplementation() {
 	server = serv;
@@ -258,6 +259,46 @@ void ChatManagerImplementation::loadMoodTypes() {
 	iffStream->closeForm('MOOD');
 
 	delete iffStream;
+
+	moodTypes.put("meditating", i + 1);
+	moodTypes.put("entertained", i + 2);
+
+	ObjectInputStream* stream = TemplateManager::instance()->openTreFile("string/en/mood_types.stf");
+
+	if (stream != NULL) {
+
+		if (stream->size() > 4) {
+
+			StringFile stringFile;
+
+			if (stringFile.load(stream)) {
+
+				HashTable<String, UnicodeString>* hashTable = stringFile.getStringMap();
+
+				HashTableIterator<String, UnicodeString> iterator = hashTable->iterator();
+
+				while (iterator.hasNext()) {
+					UnicodeString value = iterator.getNextValue();
+
+					String mood, anim;
+					UnicodeTokenizer token(value);
+					token.setDelimeter("\n");
+
+					token.getStringToken(mood);
+					token.getStringToken(anim);
+
+					if (!anim.beginsWith("~")) {
+						moodAnimations.put(mood, anim);
+					}
+				}
+			}
+		}
+
+		delete stream;
+	}
+
+	moodAnimations.put("meditating", "meditating");
+	moodAnimations.put("entertained", "entertained");
 
 	info("Loaded " + String::valueOf(moodTypes.size()) + " mood types.", true);
 }
@@ -2632,11 +2673,29 @@ unsigned int ChatManagerImplementation::getSpatialChatType(const String& spatial
 	}
 }
 
-unsigned int ChatManagerImplementation::getMoodType(const String& moodType) {
+unsigned int ChatManagerImplementation::getMoodID(const String& moodType) {
 	if (moodTypes.contains(moodType)) {
 		return moodTypes.get(moodType);
 	} else {
 		warning("Mood type '" + moodType + "' not found.");
 		return 0;
 	}
+}
+
+const String ChatManagerImplementation::getMoodType(unsigned int id) {
+	for (int i = 0; i < moodTypes.size(); i++) {
+		if (id == moodTypes.get(i)) {
+			return moodTypes.elementAt(i).getKey();
+		}
+	}
+
+	return "";
+}
+
+const String ChatManagerImplementation::getMoodAnimation(const String& moodType) {
+	if (moodAnimations.contains(moodType)) {
+		return moodAnimations.get(moodType);
+	}
+
+	return "neutral";
 }

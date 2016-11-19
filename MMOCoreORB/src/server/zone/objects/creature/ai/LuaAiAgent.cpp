@@ -814,13 +814,13 @@ int LuaAiAgent::spatialChat(lua_State* L) {
 		StringIdChatParameter* message = (StringIdChatParameter*)lua_touserdata(L, -1);
 
 		if (realObject != NULL && message != NULL) {
-			chatManager->broadcastChatMessage(realObject, *message, 0, 0, 0);
+			chatManager->broadcastChatMessage(realObject, *message, 0, 0, realObject->getMoodID());
 		}
 	} else {
 		String message = lua_tostring(L, -1);
 
 		if (realObject != NULL) {
-			chatManager->broadcastChatMessage(realObject, message, 0, 0, 0);
+			chatManager->broadcastChatMessage(realObject, message, 0, 0, realObject->getMoodID());
 		}
 	}
 

@@ -100,7 +100,7 @@ bool FactionRecruiterContainerComponent::transferObject(SceneObject* sceneObject
 	}
 
 	Locker locker(recruiter);
-	chatManager->broadcastChatMessage(recruiter,response.toString(), 0, 0, 0);
+	chatManager->broadcastChatMessage(recruiter, response.toString(), 0, 0, recruiter->getMoodID());
 
 	object->destroyObjectFromWorld(true);
 	object->destroyObjectFromDatabase();
