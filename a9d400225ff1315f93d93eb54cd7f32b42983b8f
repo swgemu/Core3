@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_aac7c363",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/corellia/gilker_budz.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-19T00:28:40Z",
+      "side": 1,
+      "message": "Remove this. You\u0027re attacking their base not catching them on one of their hunts.",
+      "revId": "a9d400225ff1315f93d93eb54cd7f32b42983b8f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_4ab977e8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/corellia/gilker_budz.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-19T00:28:40Z",
+      "side": 1,
+      "message": "Don\u0027t change the probot template just so you can use it here. Remove this and revert the change to the template.",
+      "revId": "a9d400225ff1315f93d93eb54cd7f32b42983b8f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_2ab433f1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/corellia/gilker_budz.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-19T00:28:40Z",
+      "side": 1,
+      "message": "Instead of adding a new template just to make it aggressive, why not use an aggressive template that already exists like the grassland_slice_hound?",
+      "revId": "a9d400225ff1315f93d93eb54cd7f32b42983b8f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_0acb6f73",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/corellia/gilker_budz.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-19T00:28:40Z",
+      "side": 1,
+      "message": "Don\u0027t add these commoners.",
+      "revId": "a9d400225ff1315f93d93eb54cd7f32b42983b8f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
