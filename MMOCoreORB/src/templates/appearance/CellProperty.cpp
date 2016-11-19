@@ -13,8 +13,13 @@ void CellPortal::readObject(IffStream* iff) {
 	Chunk* chunk = iff->openChunk();
 
 	uint32 formType = chunk->getChunkID();
+	
+	if (formType == '0004' || formType == '0005') {
 
-	if (formType == '0004') {
+		if (formType == '0005') {
+			iff->getByte(); // Unknown flag
+		}
+
 		solid = (bool) iff->getByte();
 		geometryIndex = iff->getInt();
 		winding = (bool) iff->getByte();
