@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_8a175fa3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/phase3/sarguillo_phase3_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-19T11:56:44Z",
+      "side": 1,
+      "message": "You haven\u0027t added a startQuest to FsCounterStrike yet.",
+      "revId": "ddf7ff20ab053a293a2fde4020f5b04aacfc1e7e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_2a0c3394",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase1/fs_phase1.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-19T11:56:44Z",
+      "side": 1,
+      "message": "You added an onLoggedOut here and in FsPhase2 but I don\u0027t see either of them being called anywhere.",
+      "revId": "ddf7ff20ab053a293a2fde4020f5b04aacfc1e7e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_4a1177ab",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase2/fs_phase2.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-19T11:56:44Z",
+      "side": 1,
+      "message": "Do you want to be calling recreaate when this function is called by onLoggedOut?",
+      "revId": "ddf7ff20ab053a293a2fde4020f5b04aacfc1e7e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_ea25cb0a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase2/fs_reflex2.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-19T11:56:44Z",
+      "side": 1,
+      "message": "2 not 1",
+      "revId": "ddf7ff20ab053a293a2fde4020f5b04aacfc1e7e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_6a123bb6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_jedi_manager_township.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-19T11:56:44Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "ddf7ff20ab053a293a2fde4020f5b04aacfc1e7e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
