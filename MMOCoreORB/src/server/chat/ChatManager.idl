@@ -372,6 +372,7 @@ class ChatManager extends ManagedService implements Logger {
 	public native unsigned int getMoodID(final string moodType);
 	public native final string getMoodType(unsigned int id);
 	public native final string getMoodAnimation(final string moodType);
+	public native unsigned int getRandomMoodID();
 
 	//////////////////////////////////////////////////////
 

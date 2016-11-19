@@ -5,6 +5,7 @@
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/objects/creature/ai/Creature.h"
+#include "server/chat/ChatManager.h"
 
 int DynamicSpawnObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 
@@ -129,8 +130,12 @@ void DynamicSpawnObserverImplementation::spawnInitialMobiles(SceneObject* buildi
 				ai->setHomeObject(building);
 				ai->setLairTemplateCRC(lairTemplateCRC);
 
-				spawnedCreatures.add(creo);
+				if (ai->isNonPlayerCreatureObject() && System::random(3) == 0) {
+					unsigned int id = ai->getZoneServer()->getChatManager()->getRandomMoodID();
+					ai->setMood(id);
+				}
 
+				spawnedCreatures.add(creo);
 			}
 		}
 	}

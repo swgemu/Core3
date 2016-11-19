@@ -2699,3 +2699,7 @@ const String ChatManagerImplementation::getMoodAnimation(const String& moodType)
 
 	return "neutral";
 }
+
+unsigned int ChatManagerImplementation::getRandomMoodID() {
+	return moodTypes.get(System::random(moodTypes.size() - 3));
+}
