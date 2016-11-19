@@ -174,7 +174,7 @@ villageSarguilloPhase1ConvoTemplate:addScreen(if_change_mind);
 
 heres_the_drill = ConvoScreen:new {
 	id = "heres_the_drill",
-	leftDialog = "@conversation/fs_patrol_quest_start:s_199a175c", -- All right, but here's the drill.  Once you start working for me, I can't have you taking jobs from anyone else.  I demand complete focus from all my soldiers. One other thing.  If you finish this, I'll let Noldan know you will be ready for some ranged accuracy training.
+	leftDialog = "@conversation/fs_patrol_quest_start:s_2248d7ad", -- All right, but here's the drill.  Once you start working for me, I can't have you taking jobs from anyone else.  I demand complete focus from all my soldiers. One other thing.  If you finish this, I'll let Noldan know you will be ready for some ranged accuracy training.
 	stopConversation = "false",
 	options = {
 		{"@conversation/fs_patrol_quest_start:s_199a175c", "all_eight_points"}, -- Yes, let's get started.

@@ -61,7 +61,7 @@ function villageSarguilloPhase3ConvoHandler:runScreenHandlers(pConvTemplate, pPl
 		end
 	elseif (screenID == "excellent") then
 		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
-		QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_CS_INTRO)
+		FsCounterStrike:startQuest(pPlayer)
 	elseif (screenID == "here_is_remote") then
 		FsCounterStrike:giveCampRemote(pPlayer)
 	elseif (screenID == "simple_encryption") then
