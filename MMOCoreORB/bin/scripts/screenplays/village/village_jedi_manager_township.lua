@@ -305,13 +305,9 @@ end
 
 function VillageJediManagerTownship:doOnlinePhaseChangeFails(pCreature, currentPhase)
 	if (currentPhase == 1) then
-		FsReflex1:doPhaseChangeFail(pCreature)
-		FsPatrol:doPhaseChangeFail(pCreature)
-		FsMedicPuzzle:doPhaseChange(pCreature)
-		FsCrafting1:doPhaseChangeFail(pCreature)
+		FsPhase1:doPhaseChangeFails(pCreature)
 	elseif (currentPhase == 2) then
-		FsReflex2:doPhaseChangeFail(pCreature)
-		FsSad:doPhaseChangeFail(pCreature)
+		FsPhase2:doPhaseChangeFails(pCreature)
 	elseif (currentPhase == 3) then
 		FsCounterStrike:doPhaseChangeFail(pCreature)
 	elseif (currentPhase == 4) then

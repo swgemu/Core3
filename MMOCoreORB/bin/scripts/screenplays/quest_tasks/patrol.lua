@@ -128,6 +128,8 @@ end
 function Patrol:taskStart(pCreature)
 	self:setupPatrolPoints(pCreature)
 	createObserver(OBJECTDESTRUCTION, self.taskName, "playerKilled", pCreature)
+	
+	return true
 end
 
 function Patrol:playerKilled(pCreature, pKiller, nothing)
