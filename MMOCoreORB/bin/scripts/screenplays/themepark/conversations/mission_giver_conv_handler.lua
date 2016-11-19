@@ -88,7 +88,7 @@ function mission_giver_conv_handler:handleScreenInit(pConvTemplate, pPlayer, pNp
 		if (self.themePark:missionStatus(pPlayer) == -1) then
 			nextScreenName = "failure"
 
-		elseif currentMissionNumber == 0 then
+		elseif currentMissionNumber == 0 and not self.themePark.genericGiver then
 			nextScreenName = "notyet"
 
 		elseif missionFaction ~= 0 and self.themePark:isInFaction(missionFaction, pPlayer) ~= true then
