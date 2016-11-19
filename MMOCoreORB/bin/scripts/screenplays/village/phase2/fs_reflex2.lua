@@ -36,6 +36,26 @@ function FsReflex2:resetFetchStatus(pCreature)
 	QuestManager.resetQuest(pCreature, QuestManager.quests.FS_REFLEX_FETCH_QUEST_03)
 end
 
+function FsReflex2:resetTasks(pCreature)
+	if (FsReflex2Goto:hasTaskStarted(pCreature)) then
+		FsReflex2Goto:finish(pCreature)
+	end
+	if (FsReflex2Theater:hasTaskStarted(pCreature)) then
+		FsReflex2Theater:finish(pCreature)
+	end
+	if (FsReflex2GoBack:hasTaskStarted(pCreature)) then
+		FsReflex2GoBack:finish(pCreature)
+	end
+end
+
+function FsReflex2:hasActiveFetch(pCreature)
+	return QuestManager.hasActiveQuest(pCreature, QuestManager.quests.FS_REFLEX_FETCH_QUEST_00) or
+		QuestManager.hasActiveQuest(pCreature, QuestManager.quests.FS_REFLEX_FETCH_QUEST_01) or
+		QuestManager.hasActiveQuest(pCreature, QuestManager.quests.FS_REFLEX_FETCH_QUEST_02) or
+		QuestManager.hasActiveQuest(pCreature, QuestManager.quests.FS_REFLEX_FETCH_QUEST_03) or
+		QuestManager.hasActiveQuest(pCreature, QuestManager.quests.FS_REFLEX_FETCH_QUEST_04)
+end
+
 function FsReflex2:completeSupplyFetch(pCreature)
 	if (pCreature == nil) then
 		return
@@ -99,9 +119,7 @@ function FsReflex2:doPhaseChangeFail(pCreature)
 		QuestManager.resetQuest(pCreature, questID)
 	end
 
-	FsReflex2Goto:finish(pCreature)
-	FsReflex2GoBack:finish(pCreature)
-	FsReflex2Theater:finish(pCreature)
+	FsReflex2:resetTasks(pCreature)
 	deleteData(SceneObject(pCreature):getObjectID() .. ":failedWhipPhase1")
 end
 

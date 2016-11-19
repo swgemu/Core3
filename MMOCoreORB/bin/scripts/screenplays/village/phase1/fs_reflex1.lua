@@ -20,6 +20,27 @@ function FsReflex1:restartQuest(pCreature)
 	FsReflex1Goto:start(pCreature)
 end
 
+function FsReflex1:resetTasks(pCreature)
+	if (FsReflex1Goto:hasTaskStarted(pCreature)) then
+		FsReflex1Goto:finish(pCreature)
+	end
+	if (FsReflex1Escort:hasTaskStarted(pCreature)) then
+		FsReflex1Escort:finish(pCreature)
+	end
+	if (FsReflex1Theater:hasTaskStarted(pCreature)) then
+		FsReflex1Theater:finish(pCreature)
+	end
+end
+
+function FsReflex1:hasActiveRescue(pCreature)
+	return QuestManager.hasActiveQuest(pCreature, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_00) or
+		QuestManager.hasActiveQuest(pCreature, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_01) or
+		QuestManager.hasActiveQuest(pCreature, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_02) or
+		QuestManager.hasActiveQuest(pCreature, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_03) or
+		QuestManager.hasActiveQuest(pCreature, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_04) or
+		QuestManager.hasActiveQuest(pCreature, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_05)
+end
+
 function FsReflex1:failQuest(pCreature)
 	writeData(SceneObject(pCreature):getObjectID() .. ":failedWhipPhase1", 1)
 	QuestManager.resetQuest(pCreature, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_00)
@@ -38,7 +59,7 @@ function FsReflex1:resetEscortStatus(pCreature)
 end
 
 function FsReflex1:doPhaseChangeFail(pCreature)
-	if (QuestManager.hasCompletedQuest(pCreature, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_00)) then
+	if (QuestManager.hasCompletedQuest(pCreature, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_00) or not QuestManager.hasActiveQuest(pCreature, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_00)) then
 		return
 	end
 
@@ -53,8 +74,7 @@ function FsReflex1:doPhaseChangeFail(pCreature)
 		end
 	end
 
-	FsReflex1Goto:finish(pCreature)
-	FsReflex1Theater:finish(pCreature)
+	FsReflex1:resetTasks(pCreature)
 	deleteData(SceneObject(pCreature):getObjectID() .. ":failedWhipPhase1")
 end
 
