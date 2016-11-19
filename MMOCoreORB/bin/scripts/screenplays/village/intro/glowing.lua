@@ -179,8 +179,8 @@ function Glowing:badgeAwardedEventHandler(pCreatureObject, pCreatureObject2, bad
 	if (pCreatureObject == nil) then
 		return 0
 	end
-
-	if self:countBadges(pCreatureObject) >= TOTALNUMBEROFBADGESREQUIRED then
+	
+	if self:countBadges(pCreatureObject) >= TOTALNUMBEROFBADGESREQUIRED and not CreatureObject(pCreatureObject):hasSkill("force_title_jedi_novice") then
 		VillageJediManagerCommon.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_GLOWING)
 		FsIntro:startPlayerOnIntro(pCreatureObject)
 		return 1

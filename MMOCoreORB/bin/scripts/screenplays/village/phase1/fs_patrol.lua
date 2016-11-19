@@ -150,21 +150,6 @@ function FsPatrol:completeFsPatrol(pCreature)
 	self:finish(pCreature)
 end
 
-function FsPatrol:onLoggedIn(pCreatureObject)
-	if (not self:hasTaskStarted(pCreatureObject)) then
-		return 1
-	end
-
-	if (VillageJediManagerTownship:getCurrentPhase() ~= 1) then
-		self:doPhaseChangeFail(pCreatureObject)
-	else
-		CreatureObject(pCreatureObject):sendSystemMessage("@fs_quest_village:combat_quest_failed_timeout");
-		self:failPatrol(pCreatureObject)
-	end
-
-	return 1
-end
-
 function FsPatrol:doPhaseChangeFail(pCreatureObject)
 	if (not self:hasTaskStarted(pCreatureObject)) then
 		return

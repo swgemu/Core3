@@ -77,22 +77,4 @@ function FsReflex2Theater:onPlayerKilled(pCreatureObject, pKiller, nothing)
 	return 1
 end
 
-function FsReflex2Theater:onLoggedIn(pCreatureObject)
-	if (not self:hasTaskStarted(pCreatureObject)) then
-		return 1
-	end
-	
-	if (VillageJediManagerTownship:getCurrentPhase() ~= 2) then
-		FsReflex2:doPhaseChangeFail(pCreatureObject)
-	else
-		if (not QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.FS_REFLEX_FETCH_QUEST_04)) then
-			CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_02_quest_fail_phase_done"); -- No logged out error message in string files, using phase change error instead
-			FsReflex2:failQuest(pCreatureObject)
-		end
-		self:finish(pCreatureObject)
-	end
-
-	return 1
-end
-
 return FsReflex2Theater
