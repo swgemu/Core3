@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_2ab0b3dc",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/ContrabandScanTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-19T06:18:23Z",
+      "side": 1,
+      "message": "Besides initializing here in the ctor, I don\u0027t see you ever setting a value to this so it will always be false.",
+      "range": {
+        "startLine": 248,
+        "startChar": 2,
+        "endLine": 248,
+        "endChar": 25
+      },
+      "revId": "e149d7b6f9fc91e7c22ca4b9d4afc8ed3cc93faf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
