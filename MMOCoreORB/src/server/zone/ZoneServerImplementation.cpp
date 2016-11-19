@@ -656,23 +656,6 @@ void ZoneServerImplementation::printInfo() {
 #ifndef WITH_STM
 	msg << ObjectManager::instance()->getInfo() << endl;
 
-	int totalCreatures = 0;
-
-	for (int i = 0; i < zones->size(); ++i) {
-		ManagedReference<Zone*> zone = zones->get(i);
-
-		if (zone != NULL) {
-			CreatureManager* manager = zone->getCreatureManager();
-
-			if (manager != NULL) {
-				totalCreatures += manager->getSpawnedRandomCreatures();
-				//creatureEvents += manager->creatureEventsSize();
-			}
-		}
-	}
-
-//	msg << dec << totalCreatures << " random creatures spawned" << endl;
-
 	if (playerManager != NULL)
 		msg << dec << playerManager->getOnlineZoneClientMap()->getDistinctIps() << " total distinct ips connected";
 #endif
@@ -705,23 +688,6 @@ String ZoneServerImplementation::getInfo() {
 
 #ifndef WITH_STM
 	msg << ObjectManager::instance()->getInfo() << endl;
-
-	int totalCreatures = 0;
-
-	for (int i = 0; i < zones->size(); ++i) {
-		ManagedReference<Zone*> zone = zones->get(i);
-
-		if (zone != NULL) {
-			CreatureManager* manager = zone->getCreatureManager();
-
-			if (manager != NULL) {
-				totalCreatures += manager->getSpawnedRandomCreatures();
-				//creatureEvents += manager->creatureEventsSize();
-			}
-		}
-	}
-
-	msg << dec << totalCreatures << " random creatures spawned" << endl;
 #endif
 
 	unlock();

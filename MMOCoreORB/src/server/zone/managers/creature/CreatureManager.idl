@@ -8,12 +8,10 @@ import server.zone.objects.creature.ai.NonPlayerCreatureObject;
 import server.zone.objects.creature.ai.AiAgent;
 import server.zone.objects.creature.ai.Creature;
 import server.zone.managers.ZoneManager;
-import server.zone.objects.creature.CreatureObject;
 import server.zone.managers.creature.CreatureTemplateManager;
 import server.zone.managers.creature.DnaManager;
 import server.zone.objects.area.SpawnArea;
 import system.util.Vector;
-include server.zone.managers.creature.CreatureMap;
 include server.zone.managers.creature.SpawnAreaMap;
 include server.zone.managers.creature.AiMap;
 include server.zone.managers.creature.AiSpeciesData;
@@ -22,22 +20,14 @@ import system.thread.Mutex;
 
 class CreatureManager extends ZoneManager {
 	protected Zone zone;
-	
-	/*@dereferenced
-	protected CreatureMap creatureMap;*/
-	
-	@dereferenced
-	protected SpawnAreaMap spawnAreaMap;
-	
-	protected transient CreatureTemplateManager creatureTemplateManager;
-	
-	// DNA manager
-	protected transient DnaManager dnaManager;
 
 	@dereferenced
-	protected SortedVector<AiAgent> reservePool;
-	
-	protected int spawnedRandomCreatures;
+	protected SpawnAreaMap spawnAreaMap;
+
+	protected transient CreatureTemplateManager creatureTemplateManager;
+
+	// DNA manager
+	protected transient DnaManager dnaManager;
 
 	@dereferenced
 	protected static transient Mutex loadMutex;
@@ -51,14 +41,12 @@ class CreatureManager extends ZoneManager {
 
 	public CreatureManager(Zone planet) {
 		super("CreatureManager " + planet.getZoneName());
-		
+
 		zone = planet;
-		
+
 		setCreatureTemplateManager();
-		spawnedRandomCreatures = 0;
-		//reservePool.setAllowDuplicateInsertPlan();
 	}
-	
+
 	public void initialize() {
 		loadSpawnAreas();
 	}
@@ -91,7 +79,7 @@ class CreatureManager extends ZoneManager {
 	public native CreatureObject spawnCreature(unsigned int templateCRC, unsigned int objectCRC, float x, float z, float y, unsigned long parentID = 0, boolean persistent = false);
 	public native CreatureObject createCreature(unsigned int templateCRC, boolean persistent = false, unsigned int mobileTemplate = 0);
 	public native void placeCreature(CreatureObject creature, float x, float z, float y, unsigned long parentID);
-	
+
 	@dereferenced
 	public native string getTemplateToSpawn(unsigned int templateCRC);
 
@@ -111,45 +99,20 @@ class CreatureManager extends ZoneManager {
 	public native void unloadSpawnAreas();
 
 	private native boolean createCreatureChildrenObjects(CreatureObject creature, unsigned int templateCRC, boolean persistent = false, unsigned int mobileTemplateCRC = 0);
-	
-	public native void spawnRandomCreaturesAround(SceneObject creature);
-	public native void spawnRandomCreature(int number, float x, float z, float y, unsigned long parentID = 0);
-	
-	/*public synchronized void addCreatureToMap(CreatureObject creature) {
-		creatureMap.put(creature.getObjectID(), creature);
-	}
-	
-	public synchronized void removeCreatureFromMap(unsigned long oid) {
-		creatureMap.remove(oid);
-	}*/
-	
+
 	private native void setCreatureTemplateManager();
-	
+
 	public native void harvest(Creature creature, CreatureObject player, int selectedID);
-	
+
 	public native void droidHarvest(Creature creature, CreatureObject droid, int selectedID, int bonus);
-	
+
 	public native void tame(Creature creature, CreatureObject player, boolean force = false, boolean adult = false);
 
 	public native void milk(Creature creature, CreatureObject player);
-	
+
 	/** Gather a DNA sample from the given creature*/
 	public native void sample(Creature creature, CreatureObject player);
 
-	public synchronized void addToReservePool(AiAgent agent) {
-		if (spawnedRandomCreatures > 0) {
-			spawnedRandomCreatures = spawnedRandomCreatures - 1;
-		} else {
-			
-		}
-		
-		reservePool.put(agent);
-	}
-	
-	public int getSpawnedRandomCreatures() {
-		return spawnedRandomCreatures;
-	}
-	
 	@local
 	public Vector<SpawnArea> getWorldSpawnAreas() {
 		return spawnAreaMap.getWorldSpawnAreas();
@@ -161,8 +124,7 @@ class CreatureManager extends ZoneManager {
 	}
 
 	public native SpawnArea getSpawnArea(final string areaname);
-	
-	public native boolean addWearableItem(CreatureObject creature, TangibleObject clothing);
 
+	public native boolean addWearableItem(CreatureObject creature, TangibleObject clothing);
 }
 

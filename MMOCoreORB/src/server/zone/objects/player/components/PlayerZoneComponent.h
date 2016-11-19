@@ -39,8 +39,6 @@ public:
 	 */
 	void updateZoneWithParent(SceneObject* sceneObject, SceneObject* newParent, bool lightUpdate, bool sendPackets = true) const;
 
-	void notifySelfPositionUpdate(SceneObject* sceneObject) const;
-
 };
 
 
