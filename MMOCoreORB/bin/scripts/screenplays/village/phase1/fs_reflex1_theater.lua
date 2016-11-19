@@ -69,20 +69,4 @@ function FsReflex1Theater:onPlayerKilled(pCreatureObject, pKiller, nothing)
 	return 1
 end
 
-function FsReflex1Theater:onLoggedIn(pCreatureObject)
-	if (not self:hasTaskStarted(pCreatureObject)) then
-		return 1
-	end
-
-	if (VillageJediManagerTownship:getCurrentPhase() ~= 1) then
-		FsReflex1:doPhaseChangeFail(pCreatureObject)
-	else
-		CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_01_quest_fail_logout");
-		self:finish(pCreatureObject)
-		FsReflex1:failQuest(pCreatureObject)
-	end
-
-	return 1
-end
-
 return FsReflex1Theater
