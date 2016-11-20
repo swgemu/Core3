@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_caf8074c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ConcealCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T09:07:40Z",
+      "side": 1,
+      "message": "Only 1 of these is a posture. The other two are states.\n\nAlert state (applied by meditating) and swimming state both prevent conceal from being used. That happens in the checkStateMask call above so these two checks would never be true.\n\nProne would be included in the locomotion check above except that the data in the client command table says that prone is an acceptable locomotion to be in. Therefore it\u0027s possible that your isProne check could be true, but adding it contradicts the client. What evidence do you have for adding it? I didn\u0027t see any in the mantis.",
+      "revId": "0e213a65afe20cb748f5d313dbca8f353dac1966",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_aafb4346",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ConcealCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T09:07:40Z",
+      "side": 1,
+      "message": "I think it more likely that this message would have used \"conceal\" as the TO",
+      "revId": "0e213a65afe20cb748f5d313dbca8f353dac1966",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_0affef35",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ConcealCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T09:07:40Z",
+      "side": 1,
+      "message": "Remove these checks. They are wrong. You\u0027re checking for the box that a ranger gains the schematic to craft a camo kit. That does not correlate to when a ranger can use the kit.\n\nFrom http://www.swgemu.com/archive/scrapbookv51/data/20070127194539/index.html\n\n\"While you can\u0027t craft all of the kits until you reach Master Ranger, anyone who has the /conceal ability can apply any kit to themselves or others.\"",
+      "revId": "0e213a65afe20cb748f5d313dbca8f353dac1966",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_aa9263f4",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/CamoTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T09:07:40Z",
+      "side": 1,
+      "message": "Yeah, you need to understand what\u0027s going on before you can hope to fix it.",
+      "revId": "0e213a65afe20cb748f5d313dbca8f353dac1966",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_0a860fba",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/CamoTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T09:07:40Z",
+      "side": 1,
+      "message": "Don\u0027t move these or you can cause a deadlock",
+      "revId": "0e213a65afe20cb748f5d313dbca8f353dac1966",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
