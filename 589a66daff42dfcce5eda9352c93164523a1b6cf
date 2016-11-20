@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_ca732714",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_jedi_manager_township.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T03:24:10Z",
+      "side": 1,
+      "message": "Remove this or it\u0027ll be called twice (it\u0027s also called from within FsPhase2:doPhaseChangeFails)",
+      "range": {
+        "startLine": 311,
+        "startChar": 2,
+        "endLine": 311,
+        "endChar": 25
+      },
+      "revId": "589a66daff42dfcce5eda9352c93164523a1b6cf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
