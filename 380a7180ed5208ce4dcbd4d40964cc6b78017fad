@@ -1,0 +1,231 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_0aadaf31",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T11:41:37Z",
+      "side": 1,
+      "message": "I don\u0027t see you using this.",
+      "revId": "380a7180ed5208ce4dcbd4d40964cc6b78017fad",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_5f7937fb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T11:41:37Z",
+      "side": 1,
+      "message": "For the antenna and doors, drop their destruction observer before destroying",
+      "revId": "380a7180ed5208ce4dcbd4d40964cc6b78017fad",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_bf1ce3c2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T11:41:37Z",
+      "side": 1,
+      "message": "delete :campDoor1Index, :campDoor2Index, :antennaIndex, :tentIndex",
+      "revId": "380a7180ed5208ce4dcbd4d40964cc6b78017fad",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_9f1f9fb7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T11:41:37Z",
+      "side": 1,
+      "message": "Should that be -5000 ?",
+      "revId": "380a7180ed5208ce4dcbd4d40964cc6b78017fad",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_bfa62352",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T11:41:37Z",
+      "side": 1,
+      "message": "I don\u0027t think you should drop the observer if they aren\u0027t on one of those quests. You add the observer when they are on the intro. If they are still on the intro part when they die, they won\u0027t have the observer when they do advance to the latter parts.",
+      "revId": "380a7180ed5208ce4dcbd4d40964cc6b78017fad",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_6abc7b6d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T11:41:37Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "380a7180ed5208ce4dcbd4d40964cc6b78017fad",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_aaa90326",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T11:41:37Z",
+      "side": 1,
+      "message": "Should you delete (commanderID .. \":deathSequence\") after calling killCommander so that the old commander doesn\u0027t play it\u0027s death sequence as a new one spawns?\n\nHmm, actually, I guess you\u0027d still want it to run so it cleans stuff up. I guess you could write it to 4 so it skips all the spatial chats and goes right to the destruction and cleanup, though I guess it\u0027s possible that someone might still be underway on the escort when the camp resets and another player brings the shield down in which case you\u0027d want the spatial chat to play.\n\nActually #2, you\u0027re giving the commander a 1 hour despawn and there\u0027s a 2 hour reset on the camp after the shield comes down. Maybe it would be better to kill the commander in resetCamp? This would give players 2 hours total to get the commander spawned and escorted after bringing the shield down (instead of 2 hours to get him spawned and start the escort and then 1 hour or until someone else brings the shield down or to finish the escort).",
+      "revId": "380a7180ed5208ce4dcbd4d40964cc6b78017fad",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_eaaf0b2a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T11:41:37Z",
+      "side": 1,
+      "message": "I don\u0027t see this written anywhere. Did you mean to read (theaterID .. \":attackerID\") ?",
+      "revId": "380a7180ed5208ce4dcbd4d40964cc6b78017fad",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_4abbb772",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T11:41:37Z",
+      "side": 1,
+      "message": "I don\u0027t see that this mobile template exists",
+      "range": {
+        "startLine": 891,
+        "startChar": 39,
+        "endLine": 891,
+        "endChar": 65
+      },
+      "revId": "380a7180ed5208ce4dcbd4d40964cc6b78017fad",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_caa6c753",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T11:41:37Z",
+      "side": 1,
+      "message": "delete (commanderID .. \":escorterID\") ?",
+      "revId": "380a7180ed5208ce4dcbd4d40964cc6b78017fad",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_6a631b1b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T11:41:37Z",
+      "side": 1,
+      "message": "You aren\u0027t writing this anywhere, nor are you deleting it. Is that going to be written when a player starts the escort? Regardless, you can add the delete now.",
+      "revId": "380a7180ed5208ce4dcbd4d40964cc6b78017fad",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_2ab6738b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T11:41:37Z",
+      "side": 1,
+      "message": "I would delete :shouldStopSpawn before returning.",
+      "revId": "380a7180ed5208ce4dcbd4d40964cc6b78017fad",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_8ac19fe6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T11:41:37Z",
+      "side": 1,
+      "message": "This loop really isn\u0027t needed. The objects are null and type checked before being pushed to Lua. I would just initialize nearbyPlayers to #nearbyObjects and call it good.",
+      "revId": "380a7180ed5208ce4dcbd4d40964cc6b78017fad",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
