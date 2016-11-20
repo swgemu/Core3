@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "bada0100_6574ac9c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/MountCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T17:04:44Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you get vehicle\u0027s turnScale and Accel and add the mods to them?",
+      "revId": "d83db65cfcc61045149612116814ead63a914358",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_a54a9453",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/MountCommand.h",
         "patchSetId": 2
