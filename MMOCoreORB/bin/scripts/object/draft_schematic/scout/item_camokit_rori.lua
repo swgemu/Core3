@@ -54,8 +54,8 @@ object_draft_schematic_scout_item_camokit_rori = object_draft_schematic_scout_sh
    xpType = "scout", 
    xp = 200, 
 
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
+   assemblySkill = "camouflage", 
+   experimentingSkill = "camouflage", 
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},

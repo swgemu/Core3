@@ -54,8 +54,8 @@ object_draft_schematic_scout_item_camokit_dathomir = object_draft_schematic_scou
    xpType = "scout", 
    xp = 280, 
 
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
+   assemblySkill = "camouflage", 
+   experimentingSkill = "camouflage", 
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
