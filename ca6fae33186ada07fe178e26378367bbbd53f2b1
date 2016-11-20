@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_256ea4ca",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DelegateFactionPointsCommand.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T17:24:00Z",
+      "side": 1,
+      "message": "This first check should be moved to right after the currentFactionPoints \u003c 200 check and thus before !tokenizer.hasMoreTokens() check. There\u0027s no point in sending the sui if the target is at their cap.",
+      "revId": "ca6fae33186ada07fe178e26378367bbbd53f2b1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_4573a8b1",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DelegateFactionPointsCommand.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T17:24:00Z",
+      "side": 1,
+      "message": "This check should be moved into doDelegate otherwise it\u0027s only being checked if the player includes the amount in the command\u0027s arguments. If they don\u0027t and instead use the sui to select the amount, this won\u0027t be checked. Put it right after the check for if the delegator has enough faction.",
+      "revId": "ca6fae33186ada07fe178e26378367bbbd53f2b1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
