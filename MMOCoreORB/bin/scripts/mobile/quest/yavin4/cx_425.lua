@@ -23,15 +23,14 @@ cx_425 = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_cx_425.iff"},
 	lootGroups = {},
-	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	weapons = {"imperial_weapons_medium"},
+	conversationTemplate = "cx_425_trooper_mission_giver_convotemplate",
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(cx_425, "cx_425")
