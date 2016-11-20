@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_a54a9453",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/MountCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T17:01:29Z",
+      "side": 1,
+      "message": "Shouldn\u0027t vehicle control only apply when driving a vehicle? You aren\u0027t checking if it\u0027s a vehicle or creature mount that is being mounted.",
+      "revId": "d83db65cfcc61045149612116814ead63a914358",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
