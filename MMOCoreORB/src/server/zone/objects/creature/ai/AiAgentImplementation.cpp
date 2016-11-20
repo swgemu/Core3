@@ -176,46 +176,44 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		allowedWeapon = petDeed->getRanged();
 	}
 
-	Vector<WeaponObject*> weapons;
+	Vector<String> weapons;
 
 	if (allowedWeapon) {
-		Vector<String> wepgroups = npcTemplate->getWeapons();
+		Vector<String>& wepgroups = npcTemplate->getWeapons();
 
 		for (int i = 0; i < wepgroups.size(); ++i) {
 			const Vector<String>& weptemps = CreatureTemplateManager::instance()->getWeapons(wepgroups.get(i));
 
-			for (int i = 0; i < weptemps.size(); ++i) {
-				uint32 crc = weptemps.get(i).hashCode();
-
-				ManagedReference<WeaponObject*> weao = (server->getZoneServer()->createObject(crc, getPersistenceLevel())).castTo<WeaponObject*>();
-
-				if (weao != NULL) {
-					float mod = 1 - 0.1*weao->getArmorPiercing();
-					weao->setMinDamage(minDmg * mod);
-					weao->setMaxDamage(maxDmg * mod);
-
-					SharedWeaponObjectTemplate* weaoTemp = cast<SharedWeaponObjectTemplate*>(weao->getObjectTemplate());
-					if (weaoTemp != NULL && weaoTemp->getPlayerRaces()->size() > 0) {
-						weao->setAttackSpeed(speed);
-					} else if (petDeed != NULL) {
-						weao->setAttackSpeed(petDeed->getAttackSpeed());
-					}
-
-					weapons.add(weao);
-
-					if (i == 0)
-						transferObject(weao, 4, false);
-				} else {
-					error("could not create weapon " + weptemps.get(i));
-				}
-			}
+			weapons.addAll(weptemps);
 		}
 	}
 
-	if (weapons.size() > 0)
-		readyWeapon =  weapons.get(System::random(weapons.size() - 1));
-	else
+	if (weapons.size() > 0) {
+		String& weaponToUse = weapons.get(System::random(weapons.size() - 1));
+		uint32 crc = weaponToUse.hashCode();
+
+		ManagedReference<WeaponObject*> weao = (server->getZoneServer()->createObject(crc, getPersistenceLevel())).castTo<WeaponObject*>();
+
+		if (weao != NULL) {
+			float mod = 1 - 0.1*weao->getArmorPiercing();
+			weao->setMinDamage(minDmg * mod);
+			weao->setMaxDamage(maxDmg * mod);
+
+			SharedWeaponObjectTemplate* weaoTemp = cast<SharedWeaponObjectTemplate*>(weao->getObjectTemplate());
+			if (weaoTemp != NULL && weaoTemp->getPlayerRaces()->size() > 0) {
+				weao->setAttackSpeed(speed);
+			} else if (petDeed != NULL) {
+				weao->setAttackSpeed(petDeed->getAttackSpeed());
+			}
+
+			readyWeapon = weao;
+		} else {
+			readyWeapon = NULL;
+			error("could not create weapon " + weaponToUse);
+		}
+	} else {
 		readyWeapon = NULL;
+	}
 
 	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
 	if (defaultWeapon != NULL) {
