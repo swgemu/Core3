@@ -1,0 +1,872 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_8a367f02",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_architect_01.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "You need to reverse the order of these checks. screenPlayStates are a bitmask so even after you set 2, 1 is still set and this will return true. Did you test this? It will always return the intro screen if the player has started this trial.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_6a31db0a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_architect_01.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "You need a default option for some that converses and isn\u0027t on the trial. The not_yet_done screen looks like the right one for it.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_2a3bd3ec",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_architect_01.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "That third arg is supposed to be the screenplay name though you could get rid of needing that arg by calling this function with JediPadawanTrialArchitectScreenPlay instead of with it\u0027s parent screenplay and then using self.SCREEN_PLAY_NAME inside it.",
+      "range": {
+        "startLine": 24,
+        "startChar": 51,
+        "endLine": 24,
+        "endChar": 52
+      },
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_852bd081",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_architect_01.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "put this inside the startPart2 function after the mob is spawned and waypoint set so that if for some reason the target doesn\u0027t spawn properly the player can just speak again and try again.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_0537e0e4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_architect_02.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "You aren\u0027t using this",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_a53374f5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_architect_02.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "The scrrenID makes it sound like the gungan should attack. Is this not the case? If not, I would rename that screen to be clearer.\n\nActually, I looked at the architects convo again and when returning, the response the player gives after this choice is made indicates that they slew the gungan. So you\u0027ll need to set the gungan to attackable and have it aggro at this point.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_c530f8ea",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_architect_02.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "Should it fail at this point? I would think it would fail after the player reports back to the architect. You should be writing some data indicating which choice the player made and then when they go back to the architect only display the option corresponding to the choice they made.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_8552f011",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_artist_01.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "hasScreenPlayState pushes a boolean to Lua so you should use true and false or just get rid of the \u003d\u003d part and let it evaluate the return directly.\n\nAlso, as with the architect handler, you need to change your checks around. if (8) elseif (4) elseif (2) elseif (1) else",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_25578404",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_artist_02.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "you aren\u0027t using this, remove it.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_455c0826",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_artist_02.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "You need a default return",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_6526ecbc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "use pPlayer instead of pCreature. Let\u0027s keep our arg naming consistent.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_aa058315",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "Is it really supposed to spawn the mob when a player starts the trial? What about if two players do the same trial at the same time? It\u0027ll spawn two of the mob in the same place?\n\nSince these mobs have static locations, would it not be better to spawn them at server startup and just leave them there like other quest givers? Then this will just need to give the player a waypoint to them. They\u0027ll have a generic response for players speaking to them who are not on the trial.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_a51cd46b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "use pPlayer for consistency",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_0510404d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "use pPlayer for consistency",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_65ffcc02",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "You should use scrrenPlayData for this.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_85043016",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "remove requires a second arg (the state to remove)",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_c519d87a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "pPlayer",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_e512dc57",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "use pPlayer instead of pCreatureObject. Consistency is a good thing",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_450e4836",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "I think you mean removeQuestStatus(SceneObject(pPlayer):getObjectID() .. \":padawan:trial\")",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_2509c42c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "I think you\u0027re getting the wrong thing here. The trial number should be in getQuestStatus(SceneObject(pPlayer):getObjectID() .. \":padawan:trial\") (which I said elsewhere you should move to screenPlayData on the ghost).",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_ea0b8b29",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "remove requires a second arg (the state to remove).",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_0a092f31",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "You also need to remove the states for all of the trials that they have completed.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_654d8c72",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "This isn\u0027t used and has the same value as SCREEN_PLAY_NAME anyway. Remove it.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_ea24ebc7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "This function can be put in JediPadawanTrial since the other trial screenplays inherit it. Just give it default (empty) members that you overload in each trial\u0027s screenplay (FIRST_MESSAGE, SCREEN_PLAY_NAME, etc.)",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_ca02470b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "You are also setting this in initializeTrial, which is the better place to set it since it\u0027s after the player has pressed ok on the sui and therefore agreed to start it. Remove this.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_0a228fb9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "this function can also be generic in the parent screenplay",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_4a173752",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "I don\u0027t see you doing any cleanup. What cleanup needs to be done?",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_aa2ee3a3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "screenPlayStates are a bitmask so setting 1 won\u0027t remove the other bits.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_2a12f362",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "This can also be in the parent screenplay. As long as the sui has the name of this screenplay passed to it\u0027s new function you\u0027ll be fine. Then you don\u0027t need to have a separate initializeTrial function. It can be consolidated with the callback.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_8a1d1f76",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "This can also be in the parent screenplay.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_6a18fb84",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "1 is the cancelButton. You should call this cancelPressed. Especially because the text of the OK button is \"Close\". Try to avoid confusion with how you name things.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_2520e49a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "This can also be a generic function in the parent screenplay",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_e5409c37",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "Do we want to remove the waypoint to the architect when we add this one (and then remove this one and add a new one back to the architect when finished with the gungan)?",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_4525e8a9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "This can also be a generic function in the parent screenplay",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_ca2b2793",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "This can also be a generic function in the parent screenplay",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_e5397cd9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_artist.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "Pretty much everything I said in the architect screenplay",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_4a72d7e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "Move this return to the end of the function. This function must always return a value and it\u0027s not doing so right now if the player is crouched.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_ea762bd8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "You can use self instead of ForceShrineMenuComponent",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_0a74cfcd",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "I\u0027d rather you store this as screenPlayData on the ghost instead.",
+      "range": {
+        "startLine": 63,
+        "startChar": 29,
+        "endLine": 63,
+        "endChar": 43
+      },
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_2a443373",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "I know it\u0027s commented out, but you should put it in the appropriate spot (not nested within the not isJediPadawan check). Also, the isJediPadawan check is redundant since you know it will be true if this is an elseif that comes after the not isJediPadawan check.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_ea5dcb49",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "one space is sufficient",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_0a5b6f55",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "one space is enough",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_aa57c325",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "In the start callback you\u0027re not guaranteeing that it\u0027s not selected as the first trial. It would be better to exclude it from the PadawanTrialQuests table. Then simple keep a tally (via screenPlayData) of how many trials have been completed. If that tally is 8, start the craft trial, otherwise pick a random trial from the table that they haven\u0027t completed.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_ca548723",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "Speaking of, I\u0027m sure you didn\u0027t notice because you only have 2 trials added, but the for loop we are within will cause the player to start every trial that they have not completed, not just 1 of them.\n\nThere\u0027s a better approach. First get the tally of completed trials. If it\u0027s 8, start the craft trial and return. If it\u0027s not 8, loop through the PadawanTrialQuests table and check each trial for completion. Add any that are not completed to a different table. Then, pick a random one from the table of uncompleted trials and start it.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_aa80238c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "call this pGhost so that it\u0027s obvious that it\u0027s a pointer",
+      "range": {
+        "startLine": 149,
+        "startChar": 7,
+        "endLine": 149,
+        "endChar": 12
+      },
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_6a4a3b85",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "Should you do something in the case of a full inventory? Alternately you could pass true as a 4th arg and it will add it anyway and overload inventory.\n\nAlthough, the cpp shrine component has a check before creating the robe @jedi_spam:inventory_full_jedi_robe. Since there\u0027s a message for full inventory, you should use it and not overload.\n\nYou will then need to also add a way for the player to get a robe if their inventory was full, or just put the inventory check before everything else. Though if I recall correctly there was a way to use a shrine to get a new robe in case a jedi lost/destroyed theirs somehow so you probably need to add that anyway (or was that just something we did in the emu?).",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_ca7d67b3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary. It\u0027s already done inside giveItem",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_4a49778a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 18
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "Rename this. You\u0027re not returning a string.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_2a6d1305",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 3279,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "I think you should move this to LuaPlayerObject instead",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_8a4f5f92",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 3317,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-20T16:38:57Z",
+      "side": 1,
+      "message": "I know this is just a copy of the existing functionality, but I don\u0027t really like it and think you should change it. Mostly, I don\u0027t like that it has a chance to fail to find a trainer.\n\nInstead of this loop that gets a random zone (which could be unlucky and get a space zone or one of the test zone 40 times, etc.) and then a random trainer type, I think we should build a list of all potential trainers across the galaxy and then randomly choose one from that list.\n\nSo you\u0027ll want a trainers vector and two nested for loops. The outer loop is to go through the zones and the inner to loop through trainerTypes. Inside the inner one you\u0027ll have your call to getPlanetaryObjectList() where you simply addAll() it\u0027s return to your trainers vector.\n\nAfter you have your trainers vector, add a while loop that gets a random one and repeats if it fails the checks (it\u0027s a player city trainer, etc.) and ends once it has a good one.\n\nIf you want, you could even pre-build a list of zones that have the trainers instead of looping through all of them, but it\u0027s probably not a big deal either way.",
+      "revId": "45d1f3220e291d871e9a4de916cb9d2ac44900f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
