@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_c5c0f82c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_phase3.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-21T09:52:02Z",
+      "side": 1,
+      "message": "3, right?",
+      "range": {
+        "startLine": 9,
+        "startChar": 21,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "dd2054ab288cbab5cc23d552da7620732cc2c448",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_a5c37437",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase4/fs_phase4.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-21T09:52:02Z",
+      "side": 1,
+      "message": "Should be if it\u0027s not phase 4, right?\n\nAlso, the hasActiveQuestThisPhase check doesn\u0027t make sense here.",
+      "revId": "dd2054ab288cbab5cc23d552da7620732cc2c448",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
