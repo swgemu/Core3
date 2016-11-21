@@ -90,6 +90,7 @@ class ContrabandScanTask : public Task {
 		}
 
 		sendScannerChatMessage(zone, scanner, player, "return_request_imperial", "return_request_rebel");
+		scanner->doAnimation("hail");
 	}
 
 	void checkIfPlayerHasReturned(Zone* zone, AiAgent* scanner, CreatureObject* player) {
@@ -98,6 +99,7 @@ class ContrabandScanTask : public Task {
 			timeLeft = previousTimeLeft;
 
 			sendScannerChatMessage(zone, scanner, player, "return_thank_imperial", "return_thank_rebel");
+			scanner->doAnimation("nod_head_once");
 		} else if (timeLeft < 0) {
 			sendScannerChatMessage(zone, scanner, player, "return_false_imperial", "return_false_rebel");
 			sendSystemMessage(scanner, player, "ran_away_imperial", "ran_away_rebel");
@@ -111,6 +113,7 @@ class ContrabandScanTask : public Task {
 		if (timeLeft < 0) {
 			sendScannerChatMessage(zone, scanner, player, "clean_target_imperial", "clean_target_rebel");
 			sendSystemMessage(scanner, player, "probe_scan_done");
+			scanner->doAnimation("wave_on_directing");
 
 			scanState = FINISHED;
 		}
@@ -134,6 +137,7 @@ class ContrabandScanTask : public Task {
 		}
 
 		sendScannerChatMessage(zone, scanner, player, "scan_greeting_imperial", "scan_greeting_rebel");
+		scanner->doAnimation("stop");
 
 		scanState = FACTIONRANKCHECK;
 		timeLeft = SCANTIME;
@@ -145,6 +149,7 @@ class ContrabandScanTask : public Task {
 			if (player->getFactionRank() > RECOGNIZEDFACTIONRANK) {
 				sendScannerChatMessage(zone, scanner, player, "business_imperial", "business_rebel");
 				sendSystemMessage(scanner, player, "probe_scan_done");
+				scanner->doAnimation("wave_on_directing");
 				scanState = FINISHED;
 			}
 		} else if (player->getFaction() != Factions::FACTIONNEUTRAL) {
@@ -152,6 +157,7 @@ class ContrabandScanTask : public Task {
 			if (System::random(100) < detectionChance) {
 				sendScannerChatMessage(zone, scanner, player, "discovered_chat_imperial", "discovered_chat_rebel");
 				sendSystemMessage(scanner, player, "discovered_imperial", "discovered_rebel");
+				scanner->doAnimation("point_accusingly");
 				player->setFactionStatus(FactionStatus::COVERT);
 				scanState = FINISHED;
 			}
@@ -183,6 +189,7 @@ class ContrabandScanTask : public Task {
 			StringIdChatParameter chatMessage;
 			chatMessage.setStringId(stringId);
 			chatManager->broadcastChatMessage(player, chatMessage, scanner->getObjectID(), 0, chatManager->getMoodID(mood));
+			player->doAnimation("force_persuasion");
 
 			scanState = JEDIMINDTRICKSCANNERTHINK;
 		} else {
@@ -226,10 +233,12 @@ class ContrabandScanTask : public Task {
 			stringId += "jedi_fail";
 			mood = "suspicious";
 			scanState = SCANDELAY;
+			scanner->doAnimation("wave_finger_warning");
 		} else {
 			stringId += dependingOnJediSkills(player, "dont_search_you_novice", "dont_search_you", "dont_search_you_dark");
 			mood = dependingOnJediSkills(player, "confused", "confident", "scared");
 			sendSystemMessage(scanner, player, "probe_scan_done");
+			scanner->doAnimation("wave_on_directing");
 			scanState = FINISHED;
 		}
 
