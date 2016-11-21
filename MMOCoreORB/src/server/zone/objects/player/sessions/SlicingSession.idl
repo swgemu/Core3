@@ -21,7 +21,7 @@ include server.zone.objects.tangible.RelockLootContainerEvent;
 class SlicingSession extends Facade {
 	@weakReference
 	protected CreatureObject player;
-	
+
 	@weakReference
 	protected transient TangibleObject tangibleObject;
 
@@ -38,25 +38,25 @@ class SlicingSession extends Facade {
 	protected boolean usedClamp;
 
 	protected boolean baseSlice;
-		
+
 	public SlicingSession(CreatureObject parent) {
 		Logger.setLoggingName("SlicingSession");
 		Logger.setLogging(true);
-		
+
 		initializeSession();
 
 	}
 
 	@local
 	public native void initalizeSlicingMenu(CreatureObject pl, TangibleObject obj);
-	
+
 	@local
 	public native void handleMenuSelect(CreatureObject pl, byte menuID, SuiListBox suiBox);
 
 	public native int initializeSession();
-	
+
 	public native int cancelSession();
-	
+
 	public int clearSession() {
 		player = null;
 		tangibleObject = null;
@@ -67,7 +67,7 @@ class SlicingSession extends Facade {
 	public native void endSlicing();
 
 	private native void generateSliceMenu(SuiListBox suiBox);
-	
+
 	private string getPrefix(TangibleObject obj) {
 		if (obj.isMissionTerminal())
 			return "terminal_";
@@ -101,10 +101,12 @@ class SlicingSession extends Facade {
 	public native boolean hasPrecisionLaserKnife(boolean removeItem = true);
 
 	public native boolean hasWeaponUpgradeKit();
-	
+
 	public native boolean hasArmorUpgradeKit();
 
 	public native void useClampFromInventory(SlicingTool clamp);
+
+	public native void detachPowerUp(CreatureObject player, TangibleObject weapon);
 
 	private native void handleUseClamp();
 
@@ -125,7 +127,5 @@ class SlicingSession extends Facade {
 	private native void handleSliceEffectiveness(byte percent);
 
 	private native void handleContainerSlice();
-
-
 
 }
