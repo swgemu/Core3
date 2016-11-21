@@ -15,7 +15,7 @@ class MountCommand : public QueueCommand {
 public:
 
 	MountCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+: QueueCommand(name, server) {
 		gallopCRC = STRING_HASHCODE("gallop");
 
 		restrictedBuffCRCs.add(STRING_HASHCODE("burstrun"));
@@ -118,15 +118,15 @@ public:
 		if(vehicle->hasBuff(gallopCRC)) {
 			EXECUTE_TASK_1(vehicle, {
 
-				uint32 gallopCRC = STRING_HASHCODE("gallop");
-				Locker lock(vehicle_p);
+					uint32 gallopCRC = STRING_HASHCODE("gallop");
+					Locker lock(vehicle_p);
 
-				ManagedReference<Buff*> gallop = vehicle_p->getBuff(gallopCRC);
-				Locker blocker(gallop, vehicle_p);
+					ManagedReference<Buff*> gallop = vehicle_p->getBuff(gallopCRC);
+					Locker blocker(gallop, vehicle_p);
 
-				if(gallop != NULL) {
-					gallop->applyAllModifiers();
-				}
+					if(gallop != NULL) {
+						gallop->applyAllModifiers();
+					}
 			});
 		}
 
@@ -159,6 +159,16 @@ public:
 		changeBuffer->add(SpeedModChange(newSpeed / creature->getRunSpeed()));
 
 		creature->updateToDatabase();
+
+		// Force Sensitive SkillMods
+		if (!vehicle->isMount()) {
+			float turnBonus = vehicle->getTurnScale() + (float)creature->getSkillMod("force_vehicle_control");
+			float accelBonus = vehicle->getAccelerationMultiplierMod() + (float)creature->getSkillMod("force_vehicle_speed");
+
+
+			creature->setTurnScale(turnBonus, true);
+			creature->setAccelerationMultiplierMod(accelBonus, true);
+		}
 
 		creature->setRunSpeed(newSpeed);
 		creature->addMountedCombatSlow();

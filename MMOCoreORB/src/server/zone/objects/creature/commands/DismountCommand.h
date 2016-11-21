@@ -131,6 +131,7 @@ public:
 		if (playerTemplate != NULL) {
 			Vector<FloatParam> speedTempl = playerTemplate->getSpeed();
 			creature->setRunSpeed(speedTempl.get(0));
+			creature->updateSpeedAndAccelerationMods(); // Reset Force Sensitive control mods to default.
 		}
 
 		creature->updateCooldownTimer("mount_dismount", 2000);
