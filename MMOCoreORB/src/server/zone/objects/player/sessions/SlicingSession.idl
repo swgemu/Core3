@@ -103,6 +103,8 @@ class SlicingSession extends Facade {
 	public native boolean hasWeaponUpgradeKit();
 	
 	public native boolean hasArmorUpgradeKit();
+	
+	public native boolean detachPowerUp();
 
 	public native void useClampFromInventory(SlicingTool clamp);
 
@@ -125,7 +127,5 @@ class SlicingSession extends Facade {
 	private native void handleSliceEffectiveness(byte percent);
 
 	private native void handleContainerSlice();
-
-
 
 }
