@@ -65,27 +65,12 @@ function VillageJediManager:onPlayerLoggedIn(pPlayer)
 
 	FsPhase1:onLoggedIn(pPlayer)
 	FsPhase2:onLoggedIn(pPlayer)
-
-	if (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_MAIN) and not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_MAIN) and not VillageCommunityCrafting:isOnActiveCrafterList(pPlayer)) then
-		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_MAIN)
-		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_01)
-		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_02)
-	end
+	FsPhase3:onLoggedIn(pPlayer)
+	FsPhase4:onLoggedIn(pPlayer)
 
 	if (not VillageCommunityCrafting:isOnActiveCrafterList(pPlayer)) then
 		VillageCommunityCrafting:removeSchematics(pPlayer, 2)
 		VillageCommunityCrafting:removeSchematics(pPlayer, 3)
-	end
-
-	-- Any quests below are run from township because they are not a standard task
-	local currentPhase = VillageJediManagerTownship:getCurrentPhase()
-	if (currentPhase ~= 3) then
-		if (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_QUESTS_SAD2_TASKS)) then
-			FsSad2:doPhaseChangeFail(pPlayer)
-		end
-	end
-	if (currentPhase ~= 4) then
-		FsVillageDefense:doPhaseChangeFail(pPlayer)
 	end
 end
 
@@ -104,6 +89,7 @@ function VillageJediManager:onPlayerLoggedOut(pPlayer)
 
 	FsPhase1:onLoggedOut(pPlayer)
 	FsPhase2:onLoggedOut(pPlayer)
+	FsPhase3:onLoggedOut(pPlayer)
 end
 
 --Check for force skill prerequisites
