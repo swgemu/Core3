@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_85e2f0d3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/yavin4/vraker_orde.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-21T10:12:47Z",
+      "side": 1,
+      "message": "Reading the string file I would say this should be another assassinate mission.\n\n\"I think it would be a good idea for you to find the leader of this base and obliterate him.\"\n\n\"The question is not whether there is a Rebel leader; the question is whether you are going to destroy him.\"\n\n\"Find that Colonel and destroy him.\"\n\nNot to mention that they call the base a \"mobile command center\" so it\u0027s not going to be a building. It\u0027s going to be something they can pick up and move in a hurry.",
+      "revId": "9f8cc0d30d0e7fc643c3a9a8d4ecd27fef18fead",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
