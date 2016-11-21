@@ -51,7 +51,6 @@
 #include "server/zone/objects/tangible/components/HolocronMenuComponent.h"
 #include "server/zone/objects/tangible/components/WaypointDatapadMenuComponent.h"
 #include "server/zone/objects/tangible/components/ForceCrystalMenuComponent.h"
-#include "server/zone/objects/tangible/components/ForceShrineMenuComponent.h"
 #include "server/zone/objects/tangible/components/RobeObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/generic/ArtCrateMenuComponent.h"
 #include "server/zone/objects/tangible/components/WeaponObjectMenuComponent.h"
@@ -268,7 +267,6 @@ ComponentManager::ComponentManager() {
 	components.put("LightsaberObjectMenuComponent", new LightsaberObjectMenuComponent());
 	components.put("RobeObjectMenuComponent", new RobeObjectMenuComponent());
 	components.put("ForceCrystalMenuComponent", new ForceCrystalMenuComponent());
-	components.put("ForceShrineMenuComponent", new ForceShrineMenuComponent());
 	components.put("SaberInventoryContainerComponent", new SaberInventoryContainerComponent());
 
 	components.put("VehicleCustomKitObjectMenuComponent", new VehicleCustomKitObjectMenuComponent());
