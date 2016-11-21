@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_85bbd0c3",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/SlicingSessionImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-21T08:32:33Z",
+      "side": 1,
+      "message": "Just pass weap and player to this method as arguments instead of getting them all over again.\n\nAlso, you aren\u0027t evaluating the return of this method so whay have one? I\u0027d just give it a void return instead of bool.",
+      "revId": "fe3f58fca212e05bc7b247618553270439835993",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
