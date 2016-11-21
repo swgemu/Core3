@@ -120,9 +120,9 @@ end
 
 function FsMedicPuzzle:cureSymptoms(pPlayer, pNpc, pPack)
 	local puzzlePack = LuaFsPuzzlePack(pPack)
-	local cureSymptomOne = puzzlePack:getCureSymptomOne()
-	local cureSymptomTwo = puzzlePack:getCureSymptomTwo()
-	local giveSymptomOne = puzzlePack:getGiveSymptomOne()
+	local cureSymptomOne = math.floor(puzzlePack:getCureSymptomOne())
+	local cureSymptomTwo = math.floor(puzzlePack:getCureSymptomTwo())
+	local giveSymptomOne = math.floor(puzzlePack:getGiveSymptomOne())
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local npcID = SceneObject(pNpc):getObjectID()
 
