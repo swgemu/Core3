@@ -13,6 +13,7 @@ import system.lang.ref.Reference;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.TangibleObject;
+include server.zone.objects.tangible.weapon.WeaponObject;
 include server.zone.objects.scene.SessionFacadeType;
 include server.zone.objects.player.sui.listbox.SuiListBox;
 include server.zone.objects.tangible.tool.smuggler.SlicingTool;
@@ -21,7 +22,7 @@ include server.zone.objects.tangible.RelockLootContainerEvent;
 class SlicingSession extends Facade {
 	@weakReference
 	protected CreatureObject player;
-	
+
 	@weakReference
 	protected transient TangibleObject tangibleObject;
 
@@ -38,25 +39,25 @@ class SlicingSession extends Facade {
 	protected boolean usedClamp;
 
 	protected boolean baseSlice;
-		
+
 	public SlicingSession(CreatureObject parent) {
 		Logger.setLoggingName("SlicingSession");
 		Logger.setLogging(true);
-		
+
 		initializeSession();
 
 	}
 
 	@local
 	public native void initalizeSlicingMenu(CreatureObject pl, TangibleObject obj);
-	
+
 	@local
 	public native void handleMenuSelect(CreatureObject pl, byte menuID, SuiListBox suiBox);
 
 	public native int initializeSession();
-	
+
 	public native int cancelSession();
-	
+
 	public int clearSession() {
 		player = null;
 		tangibleObject = null;
@@ -67,7 +68,7 @@ class SlicingSession extends Facade {
 	public native void endSlicing();
 
 	private native void generateSliceMenu(SuiListBox suiBox);
-	
+
 	private string getPrefix(TangibleObject obj) {
 		if (obj.isMissionTerminal())
 			return "terminal_";
@@ -101,10 +102,12 @@ class SlicingSession extends Facade {
 	public native boolean hasPrecisionLaserKnife(boolean removeItem = true);
 
 	public native boolean hasWeaponUpgradeKit();
-	
+
 	public native boolean hasArmorUpgradeKit();
 
 	public native void useClampFromInventory(SlicingTool clamp);
+
+	private native void detachPowerUp(CreatureObject player, WeaponObject weap);
 
 	private native void handleUseClamp();
 
@@ -125,7 +128,5 @@ class SlicingSession extends Facade {
 	private native void handleSliceEffectiveness(byte percent);
 
 	private native void handleContainerSlice();
-
-
 
 }
