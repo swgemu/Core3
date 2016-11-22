@@ -1,0 +1,750 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_a580548c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_architect_01.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "delete the KilledGungan data",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_e5017c3a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_architect_01.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "This convo handler has no member named SCREEN_PLAY_NAME. What I meant was for you to eliminate the third argument. Then, inside the passCurrentTrial function use self.SCREEN_PLAY_NAME.",
+      "range": {
+        "startLine": 37,
+        "startChar": 75,
+        "endLine": 37,
+        "endChar": 91
+      },
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_e5765cd8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_artist_01.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "duplicate check, remove",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_c57d58b3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_artist_01.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "fix the args",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_0574c0cd",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_artist_02.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "remove the \u003d\u003d 1",
+      "range": {
+        "startLine": 6,
+        "startChar": 87,
+        "endLine": 6,
+        "endChar": 91
+      },
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_05ffe035",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "Don\u0027t spawn the targets at server startup, just the trial givers.",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_859af012",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "Since you are setting the screenplay state and giving the waypoint when you send the sui instead of in the callback I would recommend hiding the cancel button.",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_a59294f4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "You aren\u0027t using this anymore",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_65bcac6d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "You need to delete the CurrentTrial data and remove the screenplay states for the current trial",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_259f8405",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "or failAmount \u003d\u003d \"\"",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_45a40857",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "write not read",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_e5889cc8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "write not read",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_85c190e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "You should add a resetAllTrials function that clears the screenplay state for all trials.\n\nThen you can also call it from jediPadawanTrialsAbortCallback()",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_058600ba",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "hide the cancel button",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_654a6c85",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "pPlayer for consistency",
+      "range": {
+        "startLine": 153,
+        "startChar": 51,
+        "endLine": 153,
+        "endChar": 60
+      },
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_05ada031",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "Since we\u0027re spawning the trial givers at startup, don\u0027t destroy them here anymore. That means you don\u0027t need the pNpc arg in this function anymore.",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_e5af3c2a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "just calling start again won\u0027t reset their screenplay states.",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_25b6a48b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "delete the StartedTrials data too",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_45bba872",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "Call the new function I said to make above. In it, you need to make sure you remove all the bits that are set. So first get their current state and then remove it. If they have 1 + 2 set their current state will be 3. calling remove with 3 as the second arg will flip both of those bits back to 0.",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_65634c1b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "use pPlayer as the arg name",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_a5a93426",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "You removed the TARGET_X members. Bring them back.\n\nAlso, since this mob might end up becoming attackable, make it attackable in it\u0027s template then set it non-attackable right after you spawn it. That will make it have a closeObjectsVector when it spawns.",
+      "range": {
+        "startLine": 17,
+        "startChar": 47,
+        "endLine": 17,
+        "endChar": 60
+      },
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_c5a6b853",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "This can be in the parent screenplay.\n\nAlso, use pPlayer as the arg name.",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_8568b0f6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_artist.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "pPlayer for the arg name",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_256d4405",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_artist.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "bring the TARGET_ members back",
+      "range": {
+        "startLine": 13,
+        "startChar": 47,
+        "endLine": 13,
+        "endChar": 60
+      },
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_4572c8e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_artist.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "put in parent screenplay",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_45d648c7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "check for \"\" instead",
+      "range": {
+        "startLine": 71,
+        "startChar": 23,
+        "endLine": 71,
+        "endChar": 26
+      },
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_05d840ee",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "one space is enough",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_a5e4d4ac",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "In the start callback you\u0027re not guaranteeing that it\u0027s not selected as the first trial. It would be better to exclude it from the PadawanTrialQuests table. Then simple keep a tally (via screenPlayData) of how many trials have been completed. If that tally is 8, start the craft trial, otherwise pick a random trial from the table that they haven\u0027t completed.",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_c5e1d89b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "Speaking of, I\u0027m sure you didn\u0027t notice because you only have 2 trials added, but the for loop we are within will cause the player to start every trial that they have not completed, not just 1 of them.\n\nThere\u0027s a better approach. First get the tally of completed trials. If it\u0027s 8, start the craft trial and return. If it\u0027s not 8, loop through the PadawanTrialQuests table and check each trial for completion. Add any that are not completed to a different table. Then, pick a random one from the table of uncompleted trials and start it.",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_65eeec8d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "call this pGhost so that it\u0027s obvious that it\u0027s a pointer",
+      "range": {
+        "startLine": 144,
+        "startChar": 7,
+        "endLine": 144,
+        "endChar": 12
+      },
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_45ede88a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "I think you garbled this",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_85f3d072",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "Should you do something in the case of a full inventory? Alternately you could pass true as a 4th arg and it will add it anyway and overload inventory.\n\nAlthough, the cpp shrine component has a check before creating the robe @jedi_spam:inventory_full_jedi_robe. Since there\u0027s a message for full inventory, you should use it and not overload.\n\nYou will then need to also add a way for the player to get a robe if their inventory was full, or just put the inventory check before everything else. Though if I recall correctly there was a way to use a shrine to get a new robe in case a jedi lost/destroyed theirs somehow so you probably need to add that anyway (or was that just something we did in the emu?).",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_25e8e47b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary. It\u0027s already done inside giveItem",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_65602c36",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "You can remove this. No need to ref count.\n\nAlso, just make this a regular Vector. Using addAll() the elements won\u0027t be sorted.",
+      "range": {
+        "startLine": 633,
+        "startChar": 14,
+        "endLine": 633,
+        "endChar": 30
+      },
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_c5731814",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "j",
+      "range": {
+        "startLine": 647,
+        "startChar": 16,
+        "endLine": 647,
+        "endChar": 17
+      },
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_85651047",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "Since you aren\u0027t modifying the vector in the while loop, just get size before it instead of with every iteration.",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_e553bc6a",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "Also put this before the while loop and have it return with an error if true.",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_05512062",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "No need to ref count",
+      "range": {
+        "startLine": 665,
+        "startChar": 2,
+        "endLine": 665,
+        "endChar": 18
+      },
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_a54db4c6",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_65c7cc13",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:42:37Z",
+      "side": 1,
+      "message": "getCityRegion().get()",
+      "range": {
+        "startLine": 681,
+        "startChar": 52,
+        "endLine": 681,
+        "endChar": 67
+      },
+      "revId": "7721e8ce1a6284bcf26df69679c22ca0ea3c4b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
