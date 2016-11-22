@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bada0100_e56c1c39",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/MountCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 2675
+      },
+      "writtenOn": "2016-11-22T01:29:37Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "bada0100_857e70e3",
+      "range": {
+        "startLine": 164,
+        "startChar": 6,
+        "endLine": 164,
+        "endChar": 25
+      },
+      "revId": "743123cc39cd5957cd7fae4d34a1d04527bc7961",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_258304ce",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/MountCommand.h",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2016-11-22T01:26:10Z",
       "side": 1,
       "message": "I\u0027m thinking that we should be setting accel and turn always. Declare and initialize them before the VehicleObject check and set them after it. Just add the fs skills within it.",
+      "revId": "743123cc39cd5957cd7fae4d34a1d04527bc7961",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_056a801a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/MountCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 2675
+      },
+      "writtenOn": "2016-11-22T01:29:37Z",
+      "side": 1,
+      "message": "Yeah, I wasn\u0027t sure if it should only be applied when the FS skill mods are appropriate or not, but I agree.",
+      "parentUuid": "bada0100_258304ce",
       "revId": "743123cc39cd5957cd7fae4d34a1d04527bc7961",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
