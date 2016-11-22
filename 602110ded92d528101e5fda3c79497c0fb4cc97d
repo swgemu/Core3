@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_b733a7f5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 32
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1848
+      },
+      "writtenOn": "2016-11-22T22:07:16Z",
+      "side": 1,
+      "message": "OK - i did that and it works and i\u0027ll push it like that but im a little confused because once they turn in the head initially, they are set to screeplaystate 2, and no matter whats in the inventory, it will not offer that option until next election when they can get a new quest.  but if you want the option to show up regardless, then that\u0027ll work.",
+      "parentUuid": "bada0100_3720179b",
+      "revId": "602110ded92d528101e5fda3c79497c0fb4cc97d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_57259ba9",
         "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
         "patchSetId": 32
