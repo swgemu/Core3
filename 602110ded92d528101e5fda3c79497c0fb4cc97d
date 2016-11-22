@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_77269fbc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 32
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T10:59:34Z",
+      "side": 1,
+      "message": "This call is redundant as it\u0027s removed in removeTuskenQuest()",
+      "revId": "602110ded92d528101e5fda3c79497c0fb4cc97d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_972b0382",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 32
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T10:59:34Z",
+      "side": 1,
+      "message": "I think you should have left this linking to \"changed_mind\"",
+      "revId": "602110ded92d528101e5fda3c79497c0fb4cc97d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_3720179b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 32
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T10:59:34Z",
+      "side": 1,
+      "message": "I still think you should utilize the \"tusken_reward_given\" screen here as well. It\u0027s possible that a player can loot more than one head while on the quest. Let them turn the first one in and give a reward. Then if they speak again and still have a head yet aren\u0027t on the quest, give the \"I have destroyed the intended target.\" option still but link it to \"tusken_reward_given\".",
+      "revId": "602110ded92d528101e5fda3c79497c0fb4cc97d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_57259ba9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 32
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T10:59:34Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "602110ded92d528101e5fda3c79497c0fb4cc97d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f7392fd9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 32
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T10:59:34Z",
+      "side": 1,
+      "message": "elseif",
+      "revId": "602110ded92d528101e5fda3c79497c0fb4cc97d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
