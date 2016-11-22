@@ -52,7 +52,10 @@ function villageDageerinPhase3ConvoHandler:runScreenHandlers(pConvTemplate, pPla
 	if (screenID == "good_luck" or screenID == "intro_need_new_sensor") then
 		SuiRadiationSensor:giveSensor(pPlayer)
 
-		if (screenID == "good_luck") then
+		if (screenID == "intro_need_new_sensor") then
+			FsSad2:despawnCamp(pPlayer)
+			FsSad2:recreateCampIfDespawned(pPlayer)
+		elseif (screenID == "good_luck") then
 			FsSad2:acceptNextTask(pPlayer)
 		end
 	elseif (screenID == "come_back_when_eliminated" or screenID == "intro_reward") then
