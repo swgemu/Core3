@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_a557f425",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/MountCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:52:34Z",
+      "side": 1,
+      "message": "This is unnecessary. Why call the getter twice just to avoid adding zero? Remove it.",
+      "revId": "94cdfe684f8d2918a6b082e87b95658eb3e6c254",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_c5547823",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/MountCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:52:34Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "94cdfe684f8d2918a6b082e87b95658eb3e6c254",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
