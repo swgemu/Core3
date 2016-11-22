@@ -16,6 +16,24 @@
       "revId": "6fda6d5e8ca1b3779f32ea3cd0aad7558ca01115",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_45408856",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/SlicingSession.idl",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1809
+      },
+      "writtenOn": "2016-11-22T04:27:23Z",
+      "side": 1,
+      "message": "I thought it was necessary to avoid a potential memory-leak, but i was probably over-thinking it.  Anyway, i removed it.  My bad.",
+      "parentUuid": "bada0100_e55dfc49",
+      "revId": "6fda6d5e8ca1b3779f32ea3cd0aad7558ca01115",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
