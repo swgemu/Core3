@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_e55dfc49",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/SlicingSession.idl",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T03:49:00Z",
+      "side": 1,
+      "message": "Why are you adding this?",
+      "revId": "6fda6d5e8ca1b3779f32ea3cd0aad7558ca01115",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
