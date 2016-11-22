@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_570efb35",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 22
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 2675
+      },
+      "writtenOn": "2016-11-22T07:02:27Z",
+      "side": 1,
+      "message": "Unsure if we should set the screenplaystate for unlocking, or just unlock them directly at this point if there isn\u0027t any more trials to do.",
+      "revId": "55263e6b738104bf0391c2a44ca8fad9b835943b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
