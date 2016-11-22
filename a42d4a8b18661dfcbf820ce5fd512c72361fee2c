@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_a51ff4b6",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/SlicingSession.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T01:10:32Z",
+      "side": 1,
+      "message": "make this private\n\nAlso, make the second arg a WeaponObject instead",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 7
+      },
+      "revId": "a42d4a8b18661dfcbf820ce5fd512c72361fee2c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_c51c78c4",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/SlicingSessionImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-22T01:10:32Z",
+      "side": 1,
+      "message": "You don\u0027t need the null checks since you know they are not null coming into the method.",
+      "revId": "a42d4a8b18661dfcbf820ce5fd512c72361fee2c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
