@@ -48,7 +48,7 @@ function FortTuskenScreenPlay:notifyDefeatedTusken(pVictim, pAttacker)
 			return 0
 	end
 
-	if CreatureObject(pAttacker):hasScreenPlayState(1, "victorTuskenQuest") then
+	if victorVisalisConvoHandler:onTuskenQuest(pAttacker) then
 		if (SceneObject(pVictim):getObjectName() == "tusken_executioner") then
 			local pInventory = CreatureObject(pVictim):getSlottedObject("inventory")
 			if (pInventory ~= nil) then

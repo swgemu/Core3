@@ -3,60 +3,60 @@ local ObjectManager = require("managers.object.object_manager")
 BESTINE_ELECTION_ENABLED = 0
 
 BestineElectionScreenPlay = ScreenPlay:new {
-		CAMPAIGN_TIME = 24 * 60 * 60 * 1000,
-		TUNE_TIME = 24 * 60 * 60 * 1000, -- 24 hours (TUNE = Time Until Next Election) Phase 2
+	CAMPAIGN_TIME = 24 * 60 * 60 * 1000,
+	TUNE_TIME = 24 * 60  * 60 * 1000, -- 24 hours (TUNE = Time Until Next Election) Phase 2
 
-		seanEvidence = {"object/tangible/loot/quest/sean_questp_ctestimony.iff", "object/tangible/loot/quest/sean_questp_mdisk.iff", "object/tangible/loot/quest/sean_questp_htestimony.iff"},
-		victorEvidence = {"object/tangible/loot/quest/victor_questp_testimony.iff", "object/tangible/loot/quest/victor_questp_jregistry.iff", "object/tangible/loot/quest/victor_questp_receipt.iff"},
+	seanEvidence = {"object/tangible/loot/quest/sean_questp_ctestimony.iff", "object/tangible/loot/quest/sean_questp_mdisk.iff", "object/tangible/loot/quest/sean_questp_htestimony.iff"},
+	victorEvidence = {"object/tangible/loot/quest/victor_questp_testimony.iff", "object/tangible/loot/quest/victor_questp_jregistry.iff", "object/tangible/loot/quest/victor_questp_receipt.iff"},
 
-		candidates = {"victor", "sean"},
+	candidates = {"victor", "sean"},
 
-		electionMobiles = {
-			{ template = "sean_trenwell", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=926483, moodString = "neutral", breech = 0},
-			{ template = "victor_visalis", x = -26.48, z = 3.23, y = 20.29, direction = 146, cellID = 926480, moodString = "neutral", breech = 0},
-			{ template = "tour_aryon", x = -37.31, z = 1.29, y = 0.71, direction = -125, cellID = 926479, moodString = "neutral", breech = 10},
+	electionMobiles = {
+		{ template = "sean_trenwell", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=926483, moodString = "neutral", breech = 0},
+		{ template = "victor_visalis", x = -26.48, z = 3.23, y = 20.29, direction = 146, cellID = 926480, moodString = "neutral", breech = 0},
+		{ template = "tour_aryon", x = -37.31, z = 1.29, y = 0.71, direction = -125, cellID = 926479, moodString = "neutral", breech = 10},
 
-			{ template = "indigo_siyan", x = 24.64, z = 3.22, y = -30.71, direction = 341.212, cellID = 926483, moodString = "neutral", breech = 0},
-			{ template = "keanna_likyna", x = -18.88, z = 3.22, y = 20.6, direction = 214.006, cellID = 926480, moodString = "neutral", breech = 0},
+		{ template = "indigo_siyan", x = 24.64, z = 3.22, y = -30.71, direction = 341.212, cellID = 926483, moodString = "neutral", breech = 0},
+		{ template = "keanna_likyna", x = -18.88, z = 3.22, y = 20.6, direction = 214.006, cellID = 926480, moodString = "neutral", breech = 0},
 
-			{ template = "victor_questn_capitol", x = 6.1, z = 0.3, y = -0.49,direction = 96.7754, cellID = 926475, moodString = "npc_imperial", breech = 4},
-			{ template = "victor_questn_cantina", x = 3.1, z = -0.9, y = 22.6, direction = 179, cellID = 1028651, moodString = "npc_sitting_chair", breech = 0},
-			{ template = "victor_questp_slums", x= -1357, z=26, y=-3871, direction = -108, cellID=0, moodString = "neutral", breech = 4},
+		{ template = "victor_questn_capitol", x = 6.1, z = 0.3, y = -0.49,direction = 96.7754, cellID = 926475, moodString = "npc_imperial", breech = 4},
+		{ template = "victor_questn_cantina", x = 3.1, z = -0.9, y = 22.6, direction = 179, cellID = 1028651, moodString = "npc_sitting_chair", breech = 0},
+		{ template = "victor_questp_slums", x= -1357, z=26, y=-3871, direction = -108, cellID=0, moodString = "neutral", breech = 4},
 
-			{ template = "sean_questp_house", x = 3.0, z = .4, y = -0.2, direction = -111, cellID = 1528397, moodString = "neutral", breech = 4},
-			{ template = "victor_questp_hospital", x = -1294, z = 12, y = -3500, direction = 45, cellID = 0, moodString = "neutral", breech = 4},
-			{ template = "sean_questp_market", x = -1104, z = 12, y = -3705, direction = 20, cellID = 0, moodString = "neutral", breech = 4},
-			{ template = "sean_questn_university", x = 3.6, z = 1.1, y = -4.6, direction = 0, cellID = 1028578, moodString = "neutral", breech = 8},
+		{ template = "sean_questp_house", x = 3.0, z = .4, y = -0.2, direction = -111, cellID = 1528397, moodString = "neutral", breech = 4},
+		{ template = "victor_questp_hospital", x = -1294, z = 12, y = -3500, direction = 45, cellID = 0, moodString = "neutral", breech = 4},
+		{ template = "sean_questp_market", x = -1104, z = 12, y = -3705, direction = 20, cellID = 0, moodString = "neutral", breech = 4},
+		{ template = "sean_questn_university", x = 3.6, z = 1.1, y = -4.6, direction = 0, cellID = 1028578, moodString = "neutral", breech = 8},
 
-			{ template = "sean_contact_quest", x = -1448, z = 10, y = -3765, direction = 0, cellID = 0, moodString = "neutral", breech = 4},
-			{ template = "seans_historian", x = -758, z = 10.5, y = -3907, direction = 0, cellID = 0, moodString = "neutral", breech = 4},
-			--Rumor Mobiles
-			{ template = "bestine_rumor01", x = -1095.68, z = 12, y = -3640.98, direction = 281, cellID=0, moodString = "neutral", breech = 6},
-			{ template = "bestine_rumor02", x = -1205, z = 12, y = -3539, direction = 80, cellID=0, moodString = "neutral", breech = 6},
-			{ template = "bestine_rumor03", x = -1211, z = 12, y = -3637.48, direction = 26, cellID=0, moodString = "neutral", breech = 4},
-			{ template = "bestine_rumor04", x = -1145.53, z = 12, y = -3656.31, direction = 21, cellID=0, moodString = "neutral", breech = 6},
-			{ template = "bestine_rumor05", x = -1013, z = 12, y = -3695, direction = 233, cellID=0, moodString = "neutral", breech = 6},
-			{ template = "bestine_rumor06", x = -1088, z = 12, y = -3656, direction = 201, cellID=0, moodString = "neutral", breech = 4},
-			{ template = "bestine_rumor07", x = -1048, z = 12, y = -3699, direction = 53, cellID=0, moodString = "neutral", breech = 4},
-			{ template = "bestine_rumor08", x = -1174, z = 12, y = -3635.8, direction = 221, cellID=0, moodString = "neutral", breech = 4},
-			{ template = "bestine_rumor09", x = 0.69, z = 0.5, y = -2.4 , direction = -107, cellID=1028169, moodString = "neutral", breech = 4},
-			{ template = "bestine_rumor10", x = -1106.31, z = 14, y = -3697.59, direction = -177, cellID=0, moodString = "neutral", breech = 4},
-			{ template = "bestine_rumor11", x = -1221, z = 12, y = -3650, direction = -49, cellID=0, moodString = "neutral", breech = 4},
-			{ template = "bestine_rumor12", x = -1291, z = 12, y = -3634, direction = 301, cellID=0, moodString = "neutral", breech = 6},
-			--Capitol Building NPCs
-			{ template = "bestine_capitol01", x = -0.7, z = 3.22, y = 21.1, direction = 187, cellID=926474, moodString = "neutral", breech = 4},
-			{ template = "bestine_capitol02", x = -23.29, z = 1.3, y = -10.39, direction = 234, cellID=926475, moodString = "neutral", breech = 4},
-			{ template = "bestine_capitol03", x = -3.78, z = 2.27, y = -25.85, direction = 158, cellID=926475, moodString = "neutral", breech = 4},
-			{ template = "bestine_capitol04", x = 2.26, z = 7.9, y = -37.38, direction = 304, cellID=926476, moodString = "neutral", breech = 4},
-		},
+		{ template = "sean_contact_quest", x = -1448, z = 10, y = -3765, direction = 0, cellID = 0, moodString = "neutral", breech = 4},
+		{ template = "seans_historian", x = -758, z = 10.5, y = -3907, direction = 0, cellID = 0, moodString = "neutral", breech = 4},
+		--Rumor Mobiles
+		{ template = "bestine_rumor01", x = -1095.68, z = 12, y = -3640.98, direction = 281, cellID=0, moodString = "neutral", breech = 6},
+		{ template = "bestine_rumor02", x = -1205, z = 12, y = -3539, direction = 80, cellID=0, moodString = "neutral", breech = 6},
+		{ template = "bestine_rumor03", x = -1211, z = 12, y = -3637.48, direction = 26, cellID=0, moodString = "neutral", breech = 4},
+		{ template = "bestine_rumor04", x = -1145.53, z = 12, y = -3656.31, direction = 21, cellID=0, moodString = "neutral", breech = 6},
+		{ template = "bestine_rumor05", x = -1013, z = 12, y = -3695, direction = 233, cellID=0, moodString = "neutral", breech = 6},
+		{ template = "bestine_rumor06", x = -1088, z = 12, y = -3656, direction = 201, cellID=0, moodString = "neutral", breech = 4},
+		{ template = "bestine_rumor07", x = -1048, z = 12, y = -3699, direction = 53, cellID=0, moodString = "neutral", breech = 4},
+		{ template = "bestine_rumor08", x = -1174, z = 12, y = -3635.8, direction = 221, cellID=0, moodString = "neutral", breech = 4},
+		{ template = "bestine_rumor09", x = 0.69, z = 0.5, y = -2.4 , direction = -107, cellID=1028169, moodString = "neutral", breech = 4},
+		{ template = "bestine_rumor10", x = -1106.31, z = 14, y = -3697.59, direction = -177, cellID=0, moodString = "neutral", breech = 4},
+		{ template = "bestine_rumor11", x = -1221, z = 12, y = -3650, direction = -49, cellID=0, moodString = "neutral", breech = 4},
+		{ template = "bestine_rumor12", x = -1291, z = 12, y = -3634, direction = 301, cellID=0, moodString = "neutral", breech = 6},
+		--Capitol Building NPCs
+		{ template = "bestine_capitol01", x = -0.7, z = 3.22, y = 21.1, direction = 187, cellID=926474, moodString = "neutral", breech = 4},
+		{ template = "bestine_capitol02", x = -23.29, z = 1.3, y = -10.39, direction = 234, cellID=926475, moodString = "neutral", breech = 4},
+		{ template = "bestine_capitol03", x = -3.78, z = 2.27, y = -25.85, direction = 158, cellID=926475, moodString = "neutral", breech = 4},
+		{ template = "bestine_capitol04", x = 2.26, z = 7.9, y = -37.38, direction = 304, cellID=926476, moodString = "neutral", breech = 4},
+	},
 
-		seanMerchants = {
-			{template = "bestine_merchant", x = -1135.28, z = 12, y = -3688.03, direction = 61},
-			{template = "bestine_merchant", x = -1136.64, z =  12, y =  -3667.40, direction = -175},
-			{template = "bestine_merchant", x = -1115.29, z =  12, y =  -3709.47, direction = 7},
-			{template = "bestine_merchant", x = -1133.53, z =  12, y =  -3693.98, direction = 90},
-			{template = "bestine_stone_merchant", x = -1127, z =  12, y =  -3674, direction = -110},
-		}
+	seanMerchants = {
+		{template = "bestine_merchant", x = -1135.28, z = 12, y = -3688.03, direction = 61},
+		{template = "bestine_merchant", x = -1136.64, z =  12, y =  -3667.40, direction = -175},
+		{template = "bestine_merchant", x = -1115.29, z =  12, y =  -3709.47, direction = 7},
+		{template = "bestine_merchant", x = -1133.53, z =  12, y =  -3693.98, direction = 90},
+		{template = "bestine_stone_merchant", x = -1127, z =  12, y =  -3674, direction = -110},
+	}
 }
 
 registerScreenPlay("BestineElectionScreenPlay", true)
@@ -391,14 +391,14 @@ function BestineElectionScreenPlay:joinedCampaign(pPlayer, who)
 
 		if (playerCampaign ~= nil) then
 			local electionNum = self:getElectionNumber()
-			return (playerCampaign == electionNum)
+			return (playerCampaign >= electionNum)
 		end
 	end
 
 	return false
 end
 
-function BestineElectionScreenPlay:votedFor(pPlayer, who)
+function BestineElectionScreenPlay:votedCurrentElection(pPlayer, who)
 	if (pPlayer ~= nil)  then
 		local playerCampaign = tonumber(readScreenPlayData(pPlayer, "BestineElection", "voted" .. who))
 
@@ -407,7 +407,23 @@ function BestineElectionScreenPlay:votedFor(pPlayer, who)
 			return (playerCampaign == electionNum)
 		end
 	end
+	return false
+end
 
+
+function BestineElectionScreenPlay:votingrewardCheck(pPlayer,who)
+	if (pPlayer ~= nil) then
+		local electionNum =  self:getElectionNumber()
+		if (self:getCurrentPhase() == 1) then
+			electionNum = electionNum - 1
+		end
+		local playerCampaign = tonumber(readScreenPlayData(pPlayer, "BestineElection", "voted" .. who))
+		if (playerCampaign ~= nil) then
+			if (playerCampaign == electionNum) then
+				return true
+			end
+		end
+	end
 	return false
 end
 
@@ -416,7 +432,7 @@ function BestineElectionScreenPlay:hasVoted(pPlayer)
 		return false
 	end
 
-	if self:votedFor(pPlayer, "sean") or self:votedFor(pPlayer, "victor") then
+	if self:votedCurrentElection(pPlayer, "sean") or self:votedCurrentElection(pPlayer, "victor") then
 		return true
 	end
 
@@ -540,7 +556,7 @@ end
 
 function BestineElectionScreenPlay:isOnNegativeQuest(pPlayer, who)
 	if (pPlayer ~= nil) then
-		if self:votedFor(pPlayer, who) then
+		if self:votedCurrentElection(pPlayer, who) then
 			return false
 		end
 
@@ -563,20 +579,11 @@ function BestineElectionScreenPlay:canSearch(pSceneObject, pPlayer)
 	local strTerminalName = readStringData(SceneObject(pSceneObject):getObjectID() .. ":name")
 	local tblQuest = self:parseString(strTerminalName,"_")
 
-	if (tblQuest[1] == "victor") then
-		if (tblQuest[2] == "questn" and self:isOnNegativeQuest(pPlayer, "victor")) then
-			return true
-		elseif (tblQuest[2] == "questp" and self:joinedCampaign(pPlayer, "victor")) then
-			return true
-		end
-	elseif (tblQuest[1] == "sean") then
-		if (tblQuest[2] == "questn" and self:isOnNegativeQuest(pPlayer, "sean")) then
-			return true
-		elseif (tblQuest[2] == "questp" and self:joinedCampaign(pPlayer, "sean")) then
-			return true
-		end
+	if (tblQuest[2] == "questn" and self:isOnNegativeQuest(pPlayer, tblQuest[1])) then
+		return true
+	elseif (tblQuest[2] == "questp" and self:joinedCampaign(pPlayer,tblQuest[1])) then
+		return true
 	end
-
 	return false
 end
 
@@ -592,7 +599,7 @@ function TourContainerComponent:transferObject(pContainer, pObj, slot)
 	return 0
 end
 
---victor_visalis_conv_handler = victorVisalisConvoHandler:new {}
+victor_visalis_conv_handler = victorVisalisConvoHandler:new {}
 --sean_trenwell_conv_handler = seanTrenwellConvoHandler:new {}
 tour_aryon_conv_handler = tourAryonConvoHandler:new {}
 hutt_informant_conv_handler = huttInformantConvoHandler:new {}
