@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_575cbb25",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 33
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T02:03:19Z",
+      "side": 1,
+      "message": "You moved the declaration of electionNum to after this",
+      "revId": "55bc01927b8b3cd9a755dfe869557d8e7639ae22",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f7404f37",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/conversations/bestine_election/victor_visalis_conv_handler.lua",
+        "patchSetId": 33
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T02:03:19Z",
+      "side": 1,
+      "message": "You renamed this screen so now this is linking to a non-existent screen.",
+      "range": {
+        "startLine": 228,
+        "startChar": 75,
+        "endLine": 228,
+        "endChar": 94
+      },
+      "revId": "55bc01927b8b3cd9a755dfe869557d8e7639ae22",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
