@@ -13,6 +13,8 @@
 #include "server/zone/objects/tangible/eventperk/Jukebox.h"
 #include "server/zone/objects/tangible/eventperk/ShuttleBeacon.h"
 #include "server/zone/managers/skill/SkillManager.h"
+#include "server/zone/Zone.h"
+#include "server/zone/objects/region/CityRegion.h"
 
 const char LuaPlayerObject::className[] = "LuaPlayerObject";
 
@@ -69,6 +71,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "getSuiBox", &LuaPlayerObject::getSuiBox },
 		{ "addSuiBox", &LuaPlayerObject::addSuiBox },
 		{ "removeSuiBox", &LuaPlayerObject::removeSuiBox },
+		{ "findJediTrainer", &LuaPlayerObject::findJediTrainer },
 		{ 0, 0 }
 };
 
@@ -617,4 +620,78 @@ int LuaPlayerObject::removeSuiBox(lua_State* L) {
 	realObject->removeSuiBox(pageId, true);
 
 	return 1;
+}
+
+int LuaPlayerObject::findJediTrainer(lua_State* L) {
+
+	ZoneServer* zServ = realObject->getZoneServer();
+
+	if (zServ == NULL) {
+		return 0;
+	}
+
+	Vector<ManagedReference<SceneObject*> > trainers;
+	Vector<String> trainerTypes;
+
+	// Map categories defined here.
+	trainerTypes.add("trainer_brawler");
+	trainerTypes.add("trainer_artisan");
+	trainerTypes.add("trainer_scout");
+	trainerTypes.add("trainer_marksman");
+	trainerTypes.add("trainer_entertainer");
+	trainerTypes.add("trainer_medic");
+
+	// Trainer number. Pick a random trainer, there are at least 600 in the galaxy.
+	for (int i=0; i < zServ->getZoneCount(); ++i) {
+		Zone* zone = zServ->getZone(i);
+		for (int j=0; j < trainerTypes.size(); ++j) {
+			SortedVector<ManagedReference<SceneObject*> > objectList = zone->getPlanetaryObjectList(trainerTypes.get(j));
+			trainers.addAll(objectList);
+		}
+	}
+
+	bool found = false;
+	Vector3 coords;
+	String zoneName = "";
+	int size = trainers.size();
+
+	if (size <= 0) {
+		realObject->error("Size of trainers was less than or equal to zero in LuaPlayerObject::findJediTrainer()");
+		return 0;
+	}
+
+	while (!found) {
+		SceneObject* trainer = trainers.get(System::random(size - 1));
+
+		if (trainer == NULL) {
+			continue;
+		}
+
+		CreatureObject* trainerCreo = trainer->asCreatureObject();
+
+		if (trainerCreo == NULL) {
+			continue;
+		}
+
+		if (!(trainerCreo->getOptionsBitmask() & OptionBitmask::CONVERSE)) {
+			continue;
+		}
+
+		ManagedReference<CityRegion*> city = trainerCreo->getCityRegion().get();
+
+		// Make sure it's not a player-city trainer.
+		if (city != NULL && !city->isClientRegion()){
+			continue;
+		}
+
+		zoneName = trainerCreo->getZone()->getZoneName();
+		coords = trainerCreo->getWorldPosition();
+		found = true;
+
+	}
+
+	realObject->setTrainerCoordinates(coords);
+	realObject->setTrainerZoneName(zoneName); // For the waypoint.
+
+	return 0;
 }
