@@ -201,7 +201,7 @@ includeFile("events/conversations/bestine_election/hutt_informant_conv_handler.l
 includeFile("events/conversations/bestine_election/sean_contact_conv_handler.lua")
 includeFile("events/conversations/bestine_election/seans_historian_conv_handler.lua")
 includeFile("events/conversations/bestine_election/tour_aryon_conv_handler.lua")
---includeFile("events/conversations/bestine_election/victor_visalis_conv_handler.lua")
+includeFile("events/conversations/bestine_election/victor_visalis_conv_handler.lua")
 
 -- Events
 includeFile("events/conversations/bestine_artist_conv_handler.lua")
