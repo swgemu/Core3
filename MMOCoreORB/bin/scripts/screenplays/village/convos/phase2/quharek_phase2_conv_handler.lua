@@ -49,7 +49,7 @@ function villageQuharekPhase2ConvoHandler:runScreenHandlers(pConvTemplate, pPlay
 		local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 		if (pGhost ~= nil) then
-			PlayerObject(pGhost):addWaypoint("dathomir", "@npc_name:qtqc", "", 5193, -4195, WAYPOINTYELLOW, true, true, 0)
+			PlayerObject(pGhost):addWaypoint("dathomir", "@npc_name:qtqc", "", 5193, -4195, WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
 		end
 	elseif (screenID == "see_attributes") then
 		VillageCommunityCrafting:sendPlayerProjectAttributes(pPlayer, pNpc)
