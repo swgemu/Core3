@@ -11,7 +11,7 @@ heraldScreenPlay = ScreenPlay:new {
 
 			{ planet = "dantooine", template = "herald_imperial_colonel", x = -588.77, z = 3, y = 2499, angle = 264.6, cell = 0, destX = -152, destY = -444, stringFile = "herald_dantooine_kunga_stronghold" },
 			{ planet = "dantooine", template = "herald_commoner", x = -643, z = 3, y = 2449, angle = 341, cell = 0, destX = 7043, destY = -4104, stringFile = "herald_dantooine_janta_stronghold" },
-			{ planet = "dantooine", template = "herald_commoner", x = 1544, z = 4, y = -6415, angle = 344, cell = 0, destX = 0, destY = 0, stringFile = "herald_dantooine_force_crytsal_hunters_cave" },
+			{ planet = "dantooine", template = "herald_commoner", x = 1544, z = 4, y = -6415, angle = 344, cell = 0, destX = -6222, destY = 7381, stringFile = "herald_dantooine_force_crytsal_hunters_cave" },
 			{ planet = "dantooine", template = "daiv_dekven", x = 1603.42, z = 4, y = -6434.54, angle = 102.9, cell = 0, destX = -6223, destY = 7363, stringFile = "herald_dantooine_mokk_stronghold" },
 
 			{ planet = "dathomir", template = "herald_commoner", x = 611.09, z = 6, y = 3084, angle = 359.8, cell = 0, destX = 5689, destY = 1955, stringFile = "herald_dathomir_crashed_civilian_transport" },
@@ -56,7 +56,7 @@ heraldScreenPlay = ScreenPlay:new {
 			{ planet = "tatooine", template = "herald_commoner", x = -9.5, z = 0.408, y = 0.574, angle = 94, cell = 1213345, destX = 6551, destY = -1323, stringFile = "herald_tatooine_beetle_cave" },
 			{ planet = "tatooine", template = "herald_commoner", x = 3371.3, z = 5.0, y = -4520.8, angle = 118, cell = 0, destX = 5148, destY = 613, stringFile = "herald_tatooine_hutt_hideout" },
 			{ planet = "tatooine", template = "herald_lorne_prestar", x = 3376.1, z = 5, y = -4786, angle = 117, cell = 0, destX = -3976, destY = 6317, stringFile = "herald_tatooine_fort_tusken" },
-			{ planet = "tatooine", template = "herald_imperial_colonel", x = -1300, z = 12, y = -3507.2, angle = 100, cell = 0, destX = 0, destY = 0, stringFile = "herald_tatooine_tusken_bunker" },
+			{ planet = "tatooine", template = "herald_imperial_colonel", x = -1300, z = 12, y = -3507.2, angle = 100, cell = 0, destX = -1490, destY = -210, stringFile = "herald_tatooine_tusken_bunker" },
 			{ planet = "tatooine", template = "herald_imperial_army_captain", x = -1307.46, z = 12, y = -3662.44, angle = 218.6, cell = 0, destX = -784, destY = -4451, stringFile = "herald_tatooine_rebel_military_base" },
 
 			{ planet = "yavin4", template = "herald_commoner", x = -6982.5, z = 73, y = -5659.5, angle = 175, cell = 0, destX = -921, destY = -2042, stringFile = "herald_yavin_temple_of_the_blueleaf_cluster" },
@@ -74,6 +74,8 @@ heraldScreenPlay = ScreenPlay:new {
 		multiDestHeraldList = {
 			{ planet = "lok", template = "herald_lok_talia", x = 371.717, z = 11.8618, y = 5179.1, angle = 286.408, cell = 0, dest1X = -68, dest1Y = 2650, dest1String = ":s_95bfd0f3", dest2X = -3792, dest2Y = -3904, dest2String = ":s_434a59e6", stringFile = "heraldlok" },
 			{ planet = "lok", template = "herald_lok_andria", x = 221.864, z = 17.0919, y = 5154.99, angle = 342.34, cell = 0, dest1X = 3364, dest1Y = -4923, dest1String = ":s_4db27a02", dest2X = 3703, dest2Y = 2274, dest2String = ":s_7884d24e", stringFile = "heraldlok2" },
+			{ planet = "tatooine", template = "herald_tatooine_viconya", x = -1001.04, z = 10, y = -3550.02, angle = 271.672, cell = 0, dest1X = -3980, dest1Y = 6311, dest1String = ":s_dca89f7e", dest2X = -5315, dest2Y = -4440, dest2String = ":s_8ac3feb5", stringFile = "heraldtatooine1" },
+			{ planet = "tatooine", template = "herald_tatooine_errik", x = 3380.6, z = 5, y = -4498, angle = 160, cell = 0, dest1X = 5003, dest1Y = 581, dest1String = ":s_7f115744", dest1Cost = 60, dest2X = -780, dest2Y = -4444, dest2String = ":s_8d322c6b", dest2Cost = 50, dest3X = -860, dest3Y = -4780, dest3String = ":s_8d322c6b", dest3Cost = 30, dest4X = -1490, dest4Y = -210, dest4String = ":s_d1f219dd", dest4Cost = 30, stringFile = "heraldtatooine2" },
 		}
 }
 
@@ -193,26 +195,42 @@ function heraldScreenPlay:giveMultiDestWaypoint(pPlayer, heraldNum, locNum)
 
 	local heraldData = self.multiDestHeraldList[heraldNum]
 	local stfFile = "@conversation/" .. heraldData.stringFile
-	local x, y, destString
+	local x, y, destString, destCost
 
 	if locNum == 1 then
 		x = heraldData.dest1X
 		y = heraldData.dest1Y
 		destString = heraldData.dest1String
+		destCost = heraldData.dest1Cost
 	elseif locNum == 2 then
 		x = heraldData.dest2X
 		y = heraldData.dest2Y
 		destString = heraldData.dest2String
+		destCost = heraldData.dest2Cost
+	elseif locNum == 3 then
+		x = heraldData.dest3X
+		y = heraldData.dest3Y
+		destString = heraldData.dest3String
+		destCost = heraldData.dest3Cost
+	elseif locNum == 4 then
+		x = heraldData.dest4X
+		y = heraldData.dest4Y
+		destString = heraldData.dest4String
+		destCost = heraldData.dest4Cost
 	end
 
-	local pWaypoint = playerObject:getWaypointAt(x, y, heraldData.planet)
+	if destCost ~= nil and destCost > 0 then
+		CreatureObject(pPlayer):subtractCashCredits(destCost)
+	end
+
+	local pWaypoint = PlayerObject(pGhost):getWaypointAt(x, y, heraldData.planet)
 
 	if pWaypoint ~= nil then
 		local waypoint = LuaWaypointObject(pWaypoint)
 
 		if not waypoint:isActive() then
 			waypoint:setActive(1)
-			PlayerObject(pGhost):updateWaypoint(waypoint:getObjectID())
+			PlayerObject(pGhost):updateWaypoint(SceneObject(pWaypoint):getObjectID())
 		end
 	else
 		PlayerObject(pGhost):addWaypoint(heraldData.planet, stfFile .. destString, "", x, y, WAYPOINTBLUE, true, true, 0)
@@ -377,12 +395,14 @@ function MultiDestHeraldConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, p
 	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
 
-	local pConvScreen = screen:cloneScreen()
-
 	if screenID == "loc1" then
 		self:handleScreenLoc(pPlayer, pNpc, 1)
 	elseif screenID == "loc2" then
 		self:handleScreenLoc(pPlayer, pNpc, 2)
+	elseif screenID == "loc3" then
+		self:handleScreenLoc(pPlayer, pNpc, 3)
+	elseif screenID == "loc4" then
+		self:handleScreenLoc(pPlayer, pNpc, 4)
 	end
 
 	return pConvScreen

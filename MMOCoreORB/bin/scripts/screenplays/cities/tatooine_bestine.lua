@@ -244,8 +244,6 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "valarian_swooper_leader",300,-1158.7,12,-3661.7,270,0)
 	spawnMobile("tatooine", "valarian_swooper_leader",300,-1161,12,-3662,90,0)
 	spawnMobile("tatooine", "valarian_swooper_leader",300,-1161.6,12,-3647.1,-61,0)
-	pNpc = spawnMobile("tatooine", "herald_tatooine_viconya",60,-1001.04,10,-3550.02,271.672,0)
-	self:setMoodString(pNpc, "calm")
 	pNpc = spawnMobile("tatooine", "wlinc_tchrr",60,-1288.15,12,-3588.42,276.296,0)
 	self:setMoodString(pNpc, "neutral")
 
