@@ -2,6 +2,69 @@
   "comments": [
     {
       "key": {
+        "uuid": "bada0100_5714bbf4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T10:40:57Z",
+      "side": 1,
+      "message": "Capital C",
+      "range": {
+        "startLine": 128,
+        "startChar": 51,
+        "endLine": 128,
+        "endChar": 52
+      },
+      "revId": "5c15ff3461caaaa0e451576ae562926bedfd17cb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f7f84fc6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T10:40:57Z",
+      "side": 1,
+      "message": "numOfTrialsCompleted",
+      "range": {
+        "startLine": 222,
+        "startChar": 52,
+        "endLine": 222,
+        "endChar": 63
+      },
+      "revId": "5c15ff3461caaaa0e451576ae562926bedfd17cb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_370fb7e3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T10:40:57Z",
+      "side": 1,
+      "message": "Of the 3 options I mentioned in my comment on the last patch set, I think the one you are currently using is the least likely to be correct. I highly doubt people had to meditate at the shrine twice after completing their last trial to get their unlock.\n\nIf you can\u0027t find info one way or the other, at least change it to one of the other methods: unlock when the last trial completes OR unlock the first time meditating at the shrine after completing the last trial (which would mean either setting the progression screenplay state when the last trial is completed or moving the unlock call to right here so it happens the same time the state is set).",
+      "revId": "5c15ff3461caaaa0e451576ae562926bedfd17cb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_37f3370c",
         "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
         "patchSetId": 23
@@ -13,6 +76,30 @@
       "writtenOn": "2016-11-23T05:52:48Z",
       "side": 1,
       "message": "Unsure if this would be the correct way of doing it, I saw you mention in the prior patch set that rand was declared in another function first, but doesn\u0027t the current trial need to be set? I know there\u0027s an offset, so don\u0027t know how to proceed.",
+      "range": {
+        "startLine": 148,
+        "startChar": 68,
+        "endLine": 148,
+        "endChar": 90
+      },
+      "revId": "5c15ff3461caaaa0e451576ae562926bedfd17cb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_970a23d1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T10:40:57Z",
+      "side": 1,
+      "message": "I think you misunderstood me. You do need to set the CurrentTrial data. However, you need to set it as it\u0027s index in PadawanTrialQuests. rand in this scope is the current quest\u0027s index in uncompletedTrials which is a different table with indexes that won\u0027t necessarily match the indexes in PadawanTrialQuests. You need to find what the index of the quest is in PadawanTrialQuests and set the CurrentTrial data to that.",
+      "parentUuid": "bada0100_37f3370c",
       "range": {
         "startLine": 148,
         "startChar": 68,
