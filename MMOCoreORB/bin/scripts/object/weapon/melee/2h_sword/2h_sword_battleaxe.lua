@@ -72,7 +72,7 @@ object_weapon_melee_2h_sword_2h_sword_battleaxe = object_weapon_melee_2h_sword_s
 	damageType = KINETIC,
 
 	-- NONE, LIGHT, MEDIUM, HEAVY
-	armorPiercing = NONE,
+	armorPiercing = MEDIUM,
 
 	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
 	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
@@ -97,7 +97,6 @@ object_weapon_melee_2h_sword_2h_sword_battleaxe = object_weapon_melee_2h_sword_s
 
 	-- Leave blank for now
 	damageModifiers = { },
-
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
 	healthAttackCost = 42,
