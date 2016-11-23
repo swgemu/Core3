@@ -158,6 +158,8 @@ includeFile("conversations/recruiter/imperial_recruiter_conv.lua")
 includeFile("conversations/tasks/heralds/herald_conv.lua")
 includeFile("conversations/tasks/heralds/herald_lok1_conv.lua")
 includeFile("conversations/tasks/heralds/herald_lok2_conv.lua")
+includeFile("conversations/tasks/heralds/herald_naboo1_conv.lua")
+includeFile("conversations/tasks/heralds/herald_naboo2_conv.lua")
 includeFile("conversations/tasks/heralds/herald_tatooine1_conv.lua")
 includeFile("conversations/tasks/heralds/herald_tatooine2_conv.lua")
 

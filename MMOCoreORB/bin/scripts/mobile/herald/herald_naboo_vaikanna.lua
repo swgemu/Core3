@@ -22,15 +22,14 @@ herald_naboo_vaikanna = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_herald_naboo_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "heraldNaboo1ConvoTemplate",
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(herald_naboo_vaikanna, "herald_naboo_vaikanna")

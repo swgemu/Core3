@@ -74,6 +74,8 @@ heraldScreenPlay = ScreenPlay:new {
 		multiDestHeraldList = {
 			{ planet = "lok", template = "herald_lok_talia", x = 371.717, z = 11.8618, y = 5179.1, angle = 286.408, cell = 0, dest1X = -68, dest1Y = 2650, dest1String = ":s_95bfd0f3", dest2X = -3792, dest2Y = -3904, dest2String = ":s_434a59e6", stringFile = "heraldlok" },
 			{ planet = "lok", template = "herald_lok_andria", x = 221.864, z = 17.0919, y = 5154.99, angle = 342.34, cell = 0, dest1X = 3364, dest1Y = -4923, dest1String = ":s_4db27a02", dest2X = 3703, dest2Y = 2274, dest2String = ":s_7884d24e", stringFile = "heraldlok2" },
+			{ planet = "naboo", template = "herald_naboo_vaikanna", x = -5484, z = 10, y = 4424, angle = -29, cell = 0, dest1X = -6570, dest1Y = -3240, dest1String = ":s_7431a8fb", dest2X = 2850, dest2Y = 1084, dest2String = ":s_b7659e9e", dest3X = 4771, dest3Y = -3868, dest3String = ":s_7ad7fe8f", stringFile = "heraldnaboo" },
+			{ planet = "naboo", template = "herald_naboo_ronin", x = 4810, z = 6.3, y = -4977, angle = -21, cell = 0, dest1X = -263, dest1Y = 2859, dest1String = "Gungan Stronghold", dest2X = 5741, dest2Y = -1546, dest2String = "Veermok Cave", stringFile = "heraldnaboo2" },
 			{ planet = "tatooine", template = "herald_tatooine_viconya", x = -1001.04, z = 10, y = -3550.02, angle = 271.672, cell = 0, dest1X = -3980, dest1Y = 6311, dest1String = ":s_dca89f7e", dest2X = -5315, dest2Y = -4440, dest2String = ":s_8ac3feb5", stringFile = "heraldtatooine1" },
 			{ planet = "tatooine", template = "herald_tatooine_errik", x = 3380.6, z = 5, y = -4498, angle = 160, cell = 0, dest1X = 5003, dest1Y = 581, dest1String = ":s_7f115744", dest1Cost = 60, dest2X = -780, dest2Y = -4444, dest2String = ":s_8d322c6b", dest2Cost = 50, dest3X = -860, dest3Y = -4780, dest3String = ":s_8d322c6b", dest3Cost = 30, dest4X = -1490, dest4Y = -210, dest4String = ":s_d1f219dd", dest4Cost = 30, stringFile = "heraldtatooine2" },
 		}
@@ -233,7 +235,14 @@ function heraldScreenPlay:giveMultiDestWaypoint(pPlayer, heraldNum, locNum)
 			PlayerObject(pGhost):updateWaypoint(SceneObject(pWaypoint):getObjectID())
 		end
 	else
-		PlayerObject(pGhost):addWaypoint(heraldData.planet, stfFile .. destString, "", x, y, WAYPOINTBLUE, true, true, 0)
+		local wpName
+		if string.find(destString, ":") ~= nil then
+			wpName = stfFile .. destString
+		else
+			wpName = destString
+		end
+
+		PlayerObject(pGhost):addWaypoint(heraldData.planet, wpName, "", x, y, WAYPOINTBLUE, true, true, 0)
 	end
 end
 
@@ -395,7 +404,7 @@ function MultiDestHeraldConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, p
 	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
 
-	if screenID == "loc1" then
+	if screenID == "loc1" or screenID == "loc1a" then
 		self:handleScreenLoc(pPlayer, pNpc, 1)
 	elseif screenID == "loc2" then
 		self:handleScreenLoc(pPlayer, pNpc, 2)

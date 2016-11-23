@@ -22,15 +22,14 @@ herald_naboo_ronin = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_herald_naboo_02.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "heraldNaboo2ConvoTemplate",
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(herald_naboo_ronin, "herald_naboo_ronin")
