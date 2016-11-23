@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_37f3370c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 23
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 2675
+      },
+      "writtenOn": "2016-11-23T05:52:48Z",
+      "side": 1,
+      "message": "Unsure if this would be the correct way of doing it, I saw you mention in the prior patch set that rand was declared in another function first, but doesn\u0027t the current trial need to be set? I know there\u0027s an offset, so don\u0027t know how to proceed.",
+      "range": {
+        "startLine": 148,
+        "startChar": 68,
+        "endLine": 148,
+        "endChar": 90
+      },
+      "revId": "5c15ff3461caaaa0e451576ae562926bedfd17cb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_97eea321",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 2675
+      },
+      "writtenOn": "2016-11-23T05:52:48Z",
+      "side": 1,
+      "message": "This has to be a managed reference, or else I can not use .addAll to the object list vector since it won\u0027t compile.",
+      "range": {
+        "startLine": 633,
+        "startChar": 7,
+        "endLine": 633,
+        "endChar": 38
+      },
+      "revId": "5c15ff3461caaaa0e451576ae562926bedfd17cb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
