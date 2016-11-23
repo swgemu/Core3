@@ -9,7 +9,6 @@ corellia_static_spawns = {
 	{"death_watch_herald_rebel",1,-213.642,28,-4445.46,28.5501,0, "", "", "stationary"},
 	{"farmer",60,3145.1,289.991,4994.55,359.489,0, "conversation", "", "stationary"},
 	{"gambler",60,0.68378,0.639421,61.0666,268.449,4255423, "calm", "", "stationary"},
-	{"herald_biogenic_03",60,21.3645,1.28309,9.48413,142.744,1935823, "calm", "Teraeza Furloti", "stationary"},
 	{"info_broker",60,-3557.49,86,3158.11,180.005,0, "conversation", "", "stationary"},
 	{"jom_irimore",60,-5520,21.3,-2630.99,0,0, "calm", "Jom Irimore", "stationary"},
 	{"junk_dealer",0,6840,315,-5630,-32,0, "", "", "stationary",JUNKCLOTHESANDJEWELLERY+JUNKARMOUR,JUNKCONVFINARY},

@@ -1,8 +1,8 @@
-herald_biogenic_teraeza = Creature:new {
+herald_biogenic_harmon = Creature:new {
 	objectName = "",
-	customName = "Teraeza Furloti",
-	socialGroup = "rebel",
-	faction = "rebel",
+	customName = "Lt. Harmon Vintollo",
+	socialGroup = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -23,15 +23,14 @@ herald_biogenic_teraeza = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_herald_biogenic_03.iff"},
+	templates = {"object/mobile/dressed_herald_biogenic_02.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "biogenicHerald2ConvoTemplate",
+	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(herald_biogenic_teraeza, "herald_biogenic_teraeza")
+CreatureTemplates:addCreatureTemplate(herald_biogenic_harmon, "herald_biogenic_harmon")

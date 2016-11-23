@@ -160,7 +160,6 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 
 	--Hotel
-	--{"herald_biogenic_03",60,21.3645,1.28309,9.48413,142.744,1935823, "calm", "Teraeza Furloti"},
 	pNpc = spawnMobile(self.planet, "comm_operator",300,15.7701,1.28309,-8.57401,180.007,1935823)
 	self:setMoodString(pNpc, "npc_imperial")
 	pNpc = spawnMobile(self.planet, "noble",60,15.7701,1.28309,-9.57401,360.011,1935823)
@@ -176,7 +175,6 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "angry")
 	pNpc = spawnMobile(self.planet, "sullustan_male",60,-23.3263,1.6,4.96228,180.004,1935824)
 	self:setMoodString(pNpc, "calm")
-	--{"commoner",60,-24,1.6,-4,337.557,1935828, "calm", "Pex (an elite storyteller vendor)"},
 
 	--Cantina
 	pNpc = spawnMobile(self.planet, "comm_operator",400,48.13,0.105,2.47,248.001,2625353)
