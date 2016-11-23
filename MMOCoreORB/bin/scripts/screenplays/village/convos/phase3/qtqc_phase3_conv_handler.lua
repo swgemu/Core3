@@ -46,6 +46,11 @@ function villageQtQcPhase3ConvoHandler:runScreenHandlers(pConvTemplate, pPlayer,
 		local result = VillageCommunityCrafting:giveSchematics(pPlayer)
 
 		if (result) then
+			local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+			if (pGhost ~= nil) then
+				PlayerObject(pGhost):removeWaypointBySpecialType(WAYPOINTQUESTTASK)
+			end
 			QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_01)
 			QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_PHASE_3_CRAFT_SHIELDS_02)
 		else

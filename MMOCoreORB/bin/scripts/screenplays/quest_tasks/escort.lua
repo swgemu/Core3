@@ -83,10 +83,9 @@ function Escort:taskStart(pCreatureObject, pEscort)
 
 	local pActiveArea = self:setupActiveArea(pCreatureObject, self.returnPoint, self.returnPlanet, self.areaRadius)
 	if pActiveArea ~= nil then
-		local waypointId = PlayerObject(pGhost):addWaypoint(self.returnPlanet, self.waypointDescription, "", self.returnPoint.x, self.returnPoint.y, WAYPOINTORANGE, true, true, 0)
+		local waypointId = PlayerObject(pGhost):addWaypoint(self.returnPlanet, self.waypointDescription, "", self.returnPoint.x, self.returnPoint.y, WAYPOINTORANGE, true, true, WAYPOINTQUESTTASK)
 
 		if waypointId ~= nil then
-			writeData(playerID .. self.taskName .. "waypointID", waypointId)
 			writeData(playerID .. ":escortInProgress", 1)
 
 			self:setEscortFollow(pCreatureObject, pEscort)
@@ -121,9 +120,8 @@ function Escort:taskFinish(pCreatureObject)
 	end
 
 	local playerID = SceneObject(pCreatureObject):getObjectID()
-	local waypointId = readData(playerID .. self.taskName .. "waypointID")
 
-	PlayerObject(pGhost):removeWaypoint(waypointId, true)
+	PlayerObject(pGhost):removeWaypointBySpecialType(WAYPOINTQUESTTASK)
 
 	local areaID = readData(playerID .. self.taskName .. "areaID")
 	local pArea = getSceneObject(areaID)

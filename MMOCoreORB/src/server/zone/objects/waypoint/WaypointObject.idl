@@ -42,6 +42,7 @@ class WaypointObject extends IntangibleObject {
 	public static final int SPECIALTYPE_RACETRACK = 8;
 	public static final int SPECIALTYPE_NEARESTMISSIONFORGROUP = 9;
 	public static final int SPECIALTYPE_TREASUREMAP = 10;
+	public static final int SPECIALTYPE_QUESTTASK = 11;
 
 	public WaypointObject() {
 		Logger.setLoggingName("WaypointObject");

@@ -122,13 +122,13 @@ function villageChiefEngineerPhase4ConvoHandler:runScreenHandlers(pConvTemplate,
 	elseif (screenID == "excellent_continue") then
 		VillageJediManagerCommon.setActiveQuestThisPhase(pPlayer)
 	elseif (screenID == "waypoint_keren") then
-		PlayerObject(pGhost):addWaypoint("naboo", "Keren - Gadget Specialist", "", 1215, 2740, WAYPOINTYELLOW, true, true, 0)
+		PlayerObject(pGhost):addWaypoint("naboo", "Keren - Gadget Specialist", "", 1215, 2740, WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
 		FsCrafting4:activateQuest(pPlayer)
 	elseif (screenID == "waypoint_coronet") then
-		PlayerObject(pGhost):addWaypoint("corellia", "Coronet - Gadget Specialist", "", 19, -4775, WAYPOINTYELLOW, true, true, 0)
+		PlayerObject(pGhost):addWaypoint("corellia", "Coronet - Gadget Specialist", "", 19, -4775, WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
 		FsCrafting4:activateQuest(pPlayer)
 	elseif (screenID == "waypoint_mos_entha") then
-		PlayerObject(pGhost):addWaypoint("tatooine", "Mos Entha - Gadget Specialist", "", 1209, 2923, WAYPOINTYELLOW, true, true, 0)
+		PlayerObject(pGhost):addWaypoint("tatooine", "Mos Entha - Gadget Specialist", "", 1209, 2923, WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
 		FsCrafting4:activateQuest(pPlayer)
 	elseif (screenID == "return_to_me") then
 		FsCrafting4:activateQuest(pPlayer)
