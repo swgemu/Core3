@@ -2,6 +2,188 @@
   "comments": [
     {
       "key": {
+        "uuid": "bada0100_9779c395",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/trials/padawan/trials_artist_contact.lua",
+        "patchSetId": 22
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T03:01:57Z",
+      "side": 1,
+      "message": "It was supposed to be the gungan captain template that you made attackable, not this one.",
+      "revId": "55263e6b738104bf0391c2a44ca8fad9b835943b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_b7b8872b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 22
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T03:01:57Z",
+      "side": 1,
+      "message": "You need to set the CurrentTrial data to 0 and remove the screenPlay state for the current trial here.",
+      "revId": "55263e6b738104bf0391c2a44ca8fad9b835943b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_97878361",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 22
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T03:01:57Z",
+      "side": 1,
+      "message": "I don\u0027t think this is doing what you think it\u0027s doing. Add a function to the component to return the PadawanTrialQuests table.",
+      "revId": "55263e6b738104bf0391c2a44ca8fad9b835943b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f7ae0fe7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 22
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T03:01:57Z",
+      "side": 1,
+      "message": "You need to remove what they have set, not 8",
+      "revId": "55263e6b738104bf0391c2a44ca8fad9b835943b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_d7b50b32",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 22
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T03:01:57Z",
+      "side": 1,
+      "message": "I think you should move all three of these data deletions into resetAllTrials since you need to delete them in both places it\u0027s called from.",
+      "revId": "55263e6b738104bf0391c2a44ca8fad9b835943b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_17acf3ec",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 22
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T03:01:57Z",
+      "side": 1,
+      "message": "I think it would be better if you just got the table from the menu component and iterated through it instead of resetting each trial individually.\n\nAlso, delete the numOfTrialsCompleted data in this function.",
+      "revId": "55263e6b738104bf0391c2a44ca8fad9b835943b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_77745f9c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_artist.lua",
+        "patchSetId": 22
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T03:01:57Z",
+      "side": 1,
+      "message": "pPlayer for the arg name",
+      "revId": "55263e6b738104bf0391c2a44ca8fad9b835943b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_b76167d5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 22
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T03:01:57Z",
+      "side": 1,
+      "message": "The function declaration named it just recoverRobe",
+      "range": {
+        "startLine": 56,
+        "startChar": 7,
+        "endLine": 56,
+        "endChar": 20
+      },
+      "revId": "55263e6b738104bf0391c2a44ca8fad9b835943b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_77821f54",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 22
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T03:01:57Z",
+      "side": 1,
+      "message": "I think you should comment this out until all of the trials are implemented. Have it send a generic message if they\u0027ve completed all the currently implemented ones until they are all in then we can uncomment this.",
+      "revId": "55263e6b738104bf0391c2a44ca8fad9b835943b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_d75e6b12",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 22
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T03:01:57Z",
+      "side": 1,
+      "message": "You can remove this. It won\u0027t be nil.",
+      "range": {
+        "startLine": 140,
+        "startChar": 6,
+        "endLine": 140,
+        "endChar": 30
+      },
+      "revId": "55263e6b738104bf0391c2a44ca8fad9b835943b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_570efb35",
         "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
         "patchSetId": 22
@@ -13,6 +195,132 @@
       "writtenOn": "2016-11-22T07:02:27Z",
       "side": 1,
       "message": "Unsure if we should set the screenplaystate for unlocking, or just unlock them directly at this point if there isn\u0027t any more trials to do.",
+      "revId": "55263e6b738104bf0391c2a44ca8fad9b835943b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_57aa7bd5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 22
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T03:01:57Z",
+      "side": 1,
+      "message": "The real question is how it worked on live. Did the padawan unlock happen when the last trial was completed?\n\nDid the player have to return to a shrine after completion, meditate, and then the unlock happened?\n\nOr was it as you have it now, complete the last trial, return to shrine and meditate - nothing seems to happen (you just set the state), them meditate again and get the unlock?",
+      "parentUuid": "bada0100_570efb35",
+      "revId": "55263e6b738104bf0391c2a44ca8fad9b835943b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_97a0e3f5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 22
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T03:01:57Z",
+      "side": 1,
+      "message": "just else is sufficient",
+      "revId": "55263e6b738104bf0391c2a44ca8fad9b835943b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_37a57704",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 22
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T03:01:57Z",
+      "side": 1,
+      "message": "rand is the position in the uncompletedTrials table whereas when you set it in the start callback it\u0027s the position in the PadawanTrialQuests table. This will cause it to get the wrong trial in the restart function.",
+      "revId": "55263e6b738104bf0391c2a44ca8fad9b835943b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_376ed7ca",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T03:01:57Z",
+      "side": 1,
+      "message": "Just use addAll() like you had before.",
+      "revId": "55263e6b738104bf0391c2a44ca8fad9b835943b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_1765d3e0",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T03:01:57Z",
+      "side": 1,
+      "message": "No need to check this on every iteration as it won\u0027t change. Check it once before the while loop and, if true, output an error message and return.",
+      "revId": "55263e6b738104bf0391c2a44ca8fad9b835943b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_57735bb1",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T03:01:57Z",
+      "side": 1,
+      "message": "use trainer-\u003easCreatureObject() instead",
+      "range": {
+        "startLine": 673,
+        "startChar": 32,
+        "endLine": 673,
+        "endChar": 62
+      },
+      "revId": "55263e6b738104bf0391c2a44ca8fad9b835943b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f767efe8",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-23T03:01:57Z",
+      "side": 1,
+      "message": "ManagedReference",
       "revId": "55263e6b738104bf0391c2a44ca8fad9b835943b",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
