@@ -141,6 +141,8 @@ public:
 
 		// get vehicle speed
 		float newSpeed = vehicle->getRunSpeed();
+		float newAccel = vehicle->getAccelerationMultiplierMod();
+		float newTurn = vehicle->getTurnScale();
 
 		// get animal mount speeds
 		if (vehicle->isMount()) {
@@ -159,10 +161,22 @@ public:
 		changeBuffer->add(SpeedModChange(newSpeed / creature->getRunSpeed()));
 
 		creature->updateToDatabase();
+		
+		// Force Sensitive SkillMods
+		if (vehicle->isVehicleObject()) {
+			if (creature->getSkillMod("force_vehicle_speed") > 0) {
+				newAccel += creature->getSkillMod("force_vehicle_speed");
+			}
+			if (creature->getSkillMod("force_vehicle_control") > 0) {
+				newTurn += creature->getSkillMod("force_vehicle_control");
+			}
+		}
 
 		creature->setRunSpeed(newSpeed);
 		creature->addMountedCombatSlow();
-
+		creature->setTurnScale(newTurn, true);
+		creature->setAccelerationMultiplierMod(newAccel, true);
+		
 		return SUCCESS;
 	}
 
