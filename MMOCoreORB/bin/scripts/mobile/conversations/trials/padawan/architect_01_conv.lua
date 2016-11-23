@@ -45,8 +45,8 @@ done_with_task = ConvoScreen:new {
 	leftDialog = "@conversation/padawan_architect_01:s_91e6aa00", -- Is the area cleared?
 	stopConversation = "false",
 	options = {
-		{"@conversation/padawan_architect_01:s_f0d9878f", "yes_kill_fail"}, -- Yes, it is. I'm proud to say that the gungan claiming to own the land is dead.
-		{"@conversation/padawan_architect_01:s_88ac3394", "back_chose_success"} -- That land already has an owner. You have no right to take it from them.
+		--{"@conversation/padawan_architect_01:s_f0d9878f", "yes_kill_fail"}, -- Yes, it is. I'm proud to say that the gungan claiming to own the land is dead.
+		--{"@conversation/padawan_architect_01:s_88ac3394", "back_chose_success"} -- That land already has an owner. You have no right to take it from them.
 	}
 }
 trialsPadawanArchitect01ConvoTemplate:addScreen(done_with_task);
