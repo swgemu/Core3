@@ -152,6 +152,16 @@ function OldManIntroEncounter:taskFinish(pCreatureObject)
 	if (pCreatureObject == nil) then
 		return true
 	end
+	
+	local oldManVisits = readScreenPlayData(pCreatureObject, "VillageJediProgression", "FsIntroOldManVisits")
+	
+	if (oldManVisits == "") then
+		oldManVisits = 1
+	else
+		oldManVisits = tonumber(oldManVisits) + 1
+	end
+	
+	writeScreenPlayData(pCreatureObject, "VillageJediProgression", "FsIntroOldManVisits", oldManVisits)
 
 	if (self:isEncounterFinished(pCreatureObject)) then
 		FsIntro:startStepDelay(pCreatureObject, 3)
