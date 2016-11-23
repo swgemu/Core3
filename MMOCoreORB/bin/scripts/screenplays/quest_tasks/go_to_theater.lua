@@ -18,7 +18,6 @@ local ACTIVE_AREA_IFF = "object/active_area.iff"
 local READ_DISK_ERROR_STRING = "@quest/force_sensitive/intro:read_disk_error"
 local THEATER_SUM_STRING = "@quest/force_sensitive/intro:theater_sum"
 
-local WAYPOINT_ID_STRING = "waypointId"
 local ACTIVE_AREA_ID_STRING = "activeAreaId"
 local THEATER_ID_STRING = "theaterId"
 
@@ -138,15 +137,11 @@ function GoToTheater:taskStart(pCreatureObject)
 						local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
 						
 						if (pGhost ~= nil) then
-							waypointId = PlayerObject(pGhost):addWaypoint(zoneName, self.waypointDescription, "", spawnPoint[1], spawnPoint[3], WAYPOINTYELLOW, true, true, 0)
+							waypointId = PlayerObject(pGhost):addWaypoint(zoneName, self.waypointDescription, "", spawnPoint[1], spawnPoint[3], WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
 						end
 					end
 
 					if waypointId ~= nil or not self.createWaypoint then
-						if (waypointId ~= nil) then
-							writeData(playerID .. self.taskName .. WAYPOINT_ID_STRING, waypointId)
-						end
-
 						createEvent(self.despawnTime, self.taskName, "handleDespawnTheater", pCreatureObject, "")
 						self:callFunctionIfNotNil(self.onSuccessfulSpawn, nil, pCreatureObject, spawnedMobilesList)
 						return true
@@ -225,10 +220,7 @@ function GoToTheater:removeTheaterWaypoint(pCreatureObject)
 		return
 	end
 	
-	local playerID = SceneObject(pCreatureObject):getObjectID()
-	local waypointId = readData(playerID .. self.taskName .. WAYPOINT_ID_STRING)
-
-	PlayerObject(pGhost):removeWaypoint(waypointId, true)
+	PlayerObject(pGhost):removeWaypointBySpecialType(WAYPOINTQUESTTASK)
 end
 
 return GoToTheater

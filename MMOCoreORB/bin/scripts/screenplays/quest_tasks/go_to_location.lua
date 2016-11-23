@@ -9,7 +9,6 @@ local Logger = require("utils.logger")
 local ACTIVE_AREA_IFF = "object/active_area.iff"
 
 local ACTIVE_AREA_ID_STRING = "activeAreaId"
-local WAYPOINT_ID_STRING = "waypointId"
 
 GoToLocation = Task:new {
 	-- Task properties
@@ -102,10 +101,9 @@ function GoToLocation:taskStart(pCreatureObject)
 
 	local pActiveArea = self:setupActiveArea(pCreatureObject, point, spawnPlanet, self.spawnRadius)
 	if pActiveArea ~= nil then
-		local waypointId = PlayerObject(pGhost):addWaypoint(spawnPlanet, self.waypointDescription, "", point.x, point.y, WAYPOINTORANGE, true, true, 0)
+		local waypointId = PlayerObject(pGhost):addWaypoint(spawnPlanet, self.waypointDescription, "", point.x, point.y, WAYPOINTORANGE, true, true, WAYPOINTQUESTTASK)
 
 		if waypointId ~= nil then
-			writeData(SceneObject(pCreatureObject):getObjectID() .. self.taskName .. WAYPOINT_ID_STRING, waypointId)
 			self:onSuccessfulSpawn(pCreatureObject, pActiveArea)
 			return true
 		end
@@ -129,9 +127,8 @@ function GoToLocation:taskFinish(pCreatureObject)
 
 	Logger:log("Despawning " .. self.taskName .. " location.", LT_INFO)
 	local playerID = SceneObject(pCreatureObject):getObjectID()
-	local waypointId = readData(playerID .. self.taskName .. WAYPOINT_ID_STRING)
 
-	PlayerObject(pGhost):removeWaypoint(waypointId, true)
+	PlayerObject(pGhost):removeWaypointBySpecialType(WAYPOINTQUESTTASK)
 
 	local areaID = readData(playerID .. self.taskName .. ACTIVE_AREA_ID_STRING)
 	local pArea = getSceneObject(areaID)
