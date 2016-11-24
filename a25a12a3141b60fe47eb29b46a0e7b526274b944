@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_57ecbbc7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 1109,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-24T03:13:10Z",
+      "side": 1,
+      "message": "#",
+      "revId": "a25a12a3141b60fe47eb29b46a0e7b526274b944",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f7d04ff9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 1115,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-24T03:13:10Z",
+      "side": 1,
+      "message": "#",
+      "revId": "a25a12a3141b60fe47eb29b46a0e7b526274b944",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_17ce335b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-24T03:13:10Z",
+      "side": 1,
+      "message": "#",
+      "revId": "a25a12a3141b60fe47eb29b46a0e7b526274b944",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
