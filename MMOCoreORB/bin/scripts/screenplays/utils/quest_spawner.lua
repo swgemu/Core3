@@ -194,7 +194,7 @@ function QuestSpawner:createSpawn(pSpawner)
 				local setupFunc = sPlay[dataTable.aiHandlerFunc]
 				
 				if (setupFunc ~= nil) then
-					setupFunc(nil, pNpc, pSpawner)
+					createEvent(10, screenplayName, dataTable.aiHandlerFunc, pNpc, "")
 				end
 			end
 		end

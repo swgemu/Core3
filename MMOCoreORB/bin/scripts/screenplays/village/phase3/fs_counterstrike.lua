@@ -761,7 +761,7 @@ function FsCounterStrike:giveCampWaypoint(pPlayer)
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost ~= nil) then
-		PlayerObject(pGhost):addWaypoint("dathomir", "Aurilian Enemy", "", randCamp[2], randCamp[4], WAYPOINTYELLOW, true, true, 0)
+		PlayerObject(pGhost):addWaypoint("dathomir", "Aurilian Enemy", "", campData[2], campData[4], WAYPOINTYELLOW, true, true, 0)
 	end
 end
 
@@ -1240,8 +1240,16 @@ function FsCounterStrike:resetCamp(pTheater, attackerID)
 	end
 end
 
-function FsCounterStrike:setupSpawnedDefender(pMobile, pSpawner)
-	if (pMobile == nil or pSpawner == nil) then
+function FsCounterStrike:setupSpawnedDefender(pMobile)
+	if (pMobile == nil) then
+		return
+	end
+
+	local spawnerID = readData(SceneObject(pMobile):getObjectID() .. ":spawnerID")
+
+	local pSpawner = getSceneObject(spawnerID)
+
+	if pSpawner == nil then
 		return
 	end
 
