@@ -229,6 +229,7 @@ includeFile("conversations/village/phase4/elder_phase4_conv.lua")
 includeFile("conversations/village/phase4/fs_gadget_specialist_phase4_conv.lua")
 includeFile("conversations/village/phase4/chief_engineer_phase4_conv.lua")
 includeFile("conversations/village/phase4/med_droid_phase4_conv.lua")
+includeFile("conversations/village/phase4/quharek_phase4_conv.lua")
 includeFile("conversations/village/phase4/sivarra_phase4_conv.lua")
 includeFile("conversations/village/phase4/sarguillo_phase4_conv.lua")
 
