@@ -60,7 +60,7 @@ function FsIntro:startStepDelay(pPlayer, step)
 	local stepDelay = getRandomNumber(stepData[1], stepData[2]) * 1000
 	
 	if (step == 1) then
-		local oldManVisits = readScreenPlayData(pPlayer, "VillageJediProgression", "FsIntroOldManVisits")
+		local oldManVisits = tonumber(readScreenPlayData(pPlayer, "VillageJediProgression", "FsIntroOldManVisits"))
 
 		if (oldManVisits == 2) then
 			stepDelay = stepDelay + (2 * 24 * 60 * 60 * 1000)
