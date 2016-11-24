@@ -202,15 +202,11 @@ function VillageRaids:spawnTurrets()
 	end
 end
 
-function VillageRaids:setupSpawnedRaider(pMobile, pSpawner)
-	if (pMobile == nil or pSpawner == nil) then
+function VillageRaids:setupSpawnedRaider(pMobile)
+	if (pMobile == nil) then
 		return
 	end
 
-	createEvent(10, "VillageRaids", "setupSpawnedRaiderAi", pMobile, "")
-end
-
-function VillageRaids:setupSpawnedRaiderAi(pMobile)
 	AiAgent(pMobile):setAiTemplate("villageraider")
 	AiAgent(pMobile):setFollowState(4)
 

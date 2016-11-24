@@ -190,11 +190,11 @@ function QuestSpawner:createSpawn(pSpawner)
 				createObserver(OBJECTDESTRUCTION, "QuestSpawner", "notifyMobileKilled", pNpc)
 				createEvent(dataTable.mobileLifespan, "QuestSpawner", "destroySpawnerMobile", pNpc, "")
 				curPop = curPop + 1
-				
+
 				local setupFunc = sPlay[dataTable.aiHandlerFunc]
-				
+
 				if (setupFunc ~= nil) then
-					setupFunc(nil, pNpc, pSpawner)
+					createEvent(10, screenplayName, dataTable.aiHandlerFunc, pNpc, "")
 				end
 			end
 		end
