@@ -27,7 +27,7 @@ class Consumable extends TangibleObject {
 
 	@dereferenced
 	protected Vector<int> eventTypes;
-	
+
 	protected int fillingMin;
 	protected int fillingMax;
 	protected int flavorMin;
@@ -42,12 +42,12 @@ class Consumable extends TangibleObject {
 	protected string buffName;
 	//protected string modifierString;
 	protected unsigned int  buffCRC;
-	
+
 	protected int consumableType;
 	protected int foragedFood;
 
 	protected string speciesRestriction;
-	
+
 	public static final int EFFECT_INSTANT = 0x00;
 	public static final int EFFECT_ATTRIBUTE = 0x01;
 	public static final int EFFECT_DURATION = 0x02;
@@ -55,13 +55,13 @@ class Consumable extends TangibleObject {
 	public static final int EFFECT_SKILL = 0x04;
 	public static final int EFFECT_SPICE = 0x05;
 	public static final int EFFECT_HEALING = 0x06;
-	
+
 	public static final int FOOD = 0x01;
 	public static final int DRINK = 0x10;
-	
+
 	public Consumable() {
 		setLoggingName("PharmaceuticalObject");
-		
+
 		consumableType = 0;
 		foragedFood = 0;
 
@@ -80,10 +80,10 @@ class Consumable extends TangibleObject {
 
 		modifiers.setNoDuplicateInsertPlan();
 		modifiers.setNullValue(0);
-		
+
 		buffCRC = 0;
 	}
-	
+
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
@@ -93,7 +93,7 @@ class Consumable extends TangibleObject {
 	 * @returns 0 if successfull
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
+
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 
@@ -105,7 +105,7 @@ class Consumable extends TangibleObject {
 	 */
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -119,17 +119,17 @@ class Consumable extends TangibleObject {
 
 	@arg1preLocked
 	public native void setModifiers(Buff buff, boolean skillModifiers = false);
-	
+
 	@read
 	public boolean isSpiceEffect() {
 		return (effectType == EFFECT_SPICE);
 	}
-	
+
 	@read
 	public boolean isAttributeEffect() {
 		return (effectType == EFFECT_ATTRIBUTE);
 	}
-	
+
 	@dirty
 	public boolean isDrink() {
 		return (consumableType == DRINK);
@@ -149,15 +149,20 @@ class Consumable extends TangibleObject {
 	public boolean isSpice() {
 		return (isSpiceEffect() && isFood());
 	}
-	
+
+	@dirty
+	public boolean isConsumable() {
+		return true;
+	}
+
 	@dirty
 	public int getDuration(){
 		return duration;
 	}
-	
+
 	@dirty
 	public string getSpeciesRestriction(){
 		return speciesRestriction;
 	}
-	
+
 }

@@ -11,6 +11,8 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/objects/tangible/consumable/Consumable.h"
+#include "server/zone/objects/factorycrate/FactoryCrate.h"
 
 class ContrabandScanTask : public Task {
 	const unsigned int SCANINITIATECHANCE = 8; // 1/8 chance to initiate scan - 12.5 % chance.
@@ -109,11 +111,74 @@ class ContrabandScanTask : public Task {
 		}
 	}
 
+	bool isContraband(ManagedReference<SceneObject*> item) {
+		if (item->isTangibleObject()) {
+			ManagedReference<TangibleObject*> tangibleItem = item.castTo<TangibleObject*>();
+			if (tangibleItem->isSliced()) {
+				return true;
+			} else if (tangibleItem->isConsumable()) {
+				ManagedReference<Consumable*> consumable = tangibleItem.castTo<Consumable*>();
+				if (consumable->isSpice()) {
+					return true;
+				}
+			} else if (tangibleItem->isFactoryCrate()) {
+				ManagedReference<FactoryCrate*> crate = tangibleItem.castTo<FactoryCrate*>();
+				ManagedReference<TangibleObject*> prototype = crate->getPrototype();
+				return isContraband(prototype.castTo<SceneObject*>());
+			}
+		}
+		return false;
+	}
+
+	int countContrabandItemsInContainer(ManagedReference<SceneObject*> container) {
+		int numberOfContrabandItems = 0;
+		int containerSize = container->getContainerObjectsSize();
+		if (containerSize > 1) {
+			for (int i = 0; i < containerSize; i++) {
+				numberOfContrabandItems += countContrabandItemsInContainer(container->getContainerObject(i));
+			}
+		}
+		if (isContraband(container)) {
+			numberOfContrabandItems++;
+		}
+		return numberOfContrabandItems;
+	}
+
+	int countContrabandItems(CreatureObject* player) {
+		VectorMap<String, ManagedReference<SceneObject*>> slots;
+
+		Locker containerLock(player->getContainerLock());
+
+		player->getSlottedObjects(slots);
+		int numberOfSlots = slots.size();
+		int numberOfContrabandItems = 0;
+
+		for (int i = 0; i < numberOfSlots; i++) {
+			VectorMapEntry<String, ManagedReference<SceneObject*>> container = slots.elementAt(i);
+			if (container.getKey() != "bank" && container.getKey() != "datapad") {
+				numberOfContrabandItems += countContrabandItemsInContainer(container.getValue());
+			}
+		}
+
+		return numberOfContrabandItems;
+	}
+
 	void performScan(Zone* zone, AiAgent* scanner, CreatureObject* player) {
 		if (timeLeft < 0) {
-			sendScannerChatMessage(zone, scanner, player, "clean_target_imperial", "clean_target_rebel");
-			sendSystemMessage(scanner, player, "probe_scan_done");
-			scanner->doAnimation("wave_on_directing");
+			int numberOfContrabandItems = countContrabandItems(player);
+			if (numberOfContrabandItems > 0) {
+				if (player->getFaction() == scanner->getFaction()) {
+					sendScannerChatMessage(zone, scanner, player, "pay_fine_imperial", "pay_fine_rebel");
+				} else {
+					sendScannerChatMessage(zone, scanner, player, "fined_imperial", "fined_rebel");
+				}
+				sendSystemMessage(scanner, player, "probe_scan_positive");
+				scanner->doAnimation("wave_finger_warning");
+			} else {
+				sendScannerChatMessage(zone, scanner, player, "clean_target_imperial", "clean_target_rebel");
+				sendSystemMessage(scanner, player, "probe_scan_negative");
+				scanner->doAnimation("wave_on_directing");
+			}
 
 			scanState = FINISHED;
 		}
