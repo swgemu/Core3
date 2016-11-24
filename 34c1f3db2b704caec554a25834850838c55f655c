@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_370c9794",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/VehicleObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-24T13:39:41Z",
+      "side": 1,
+      "message": "should this be isDisabled?",
+      "range": {
+        "startLine": 31,
+        "startChar": 76,
+        "endLine": 31,
+        "endChar": 87
+      },
+      "revId": "34c1f3db2b704caec554a25834850838c55f655c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_57111bab",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/VehicleObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-24T13:39:41Z",
+      "side": 1,
+      "message": "isDisabled?",
+      "range": {
+        "startLine": 183,
+        "startChar": 6,
+        "endLine": 183,
+        "endChar": 17
+      },
+      "revId": "34c1f3db2b704caec554a25834850838c55f655c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f725af0a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/sui/RepairVehicleSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-24T13:39:41Z",
+      "side": 1,
+      "message": "I noticed that we are missing a check for disabled vehicles in this callback. We should be returning from here if the vehicle is already disabled and the player isn\u0027t privileged.",
+      "revId": "34c1f3db2b704caec554a25834850838c55f655c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
