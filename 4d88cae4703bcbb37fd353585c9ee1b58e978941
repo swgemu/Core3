@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_77dd3f14",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_architect_02.lua",
+        "patchSetId": 27
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-24T01:47:46Z",
+      "side": 1,
+      "message": "add a waypoint back to the trial giver",
+      "revId": "4d88cae4703bcbb37fd353585c9ee1b58e978941",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_97e223d4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_architect_02.lua",
+        "patchSetId": 27
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-24T01:47:46Z",
+      "side": 1,
+      "message": "add a waypoint back to the trial giver",
+      "revId": "4d88cae4703bcbb37fd353585c9ee1b58e978941",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_d7c0ab2c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/convos/trials_padawan_artist_02.lua",
+        "patchSetId": 27
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-24T01:47:46Z",
+      "side": 1,
+      "message": "add a waypoint back to the trial giver",
+      "revId": "4d88cae4703bcbb37fd353585c9ee1b58e978941",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_f7c92f5b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 27
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-24T01:47:46Z",
+      "side": 1,
+      "message": "you should add waypoint removal to this function as well",
+      "revId": "4d88cae4703bcbb37fd353585c9ee1b58e978941",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_17c71347",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 27
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-24T01:47:46Z",
+      "side": 1,
+      "message": "add waypoint removal here as well",
+      "revId": "4d88cae4703bcbb37fd353585c9ee1b58e978941",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_57b59bcb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 27
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-24T01:47:46Z",
+      "side": 1,
+      "message": "You should rename this so it won\u0027t be confused with the start in JediPadawanTrial. Same for the artist screenplay.",
+      "range": {
+        "startLine": 16,
+        "startChar": 26,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "4d88cae4703bcbb37fd353585c9ee1b58e978941",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_d7a98b7c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_architect.lua",
+        "patchSetId": 27
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-24T01:47:46Z",
+      "side": 1,
+      "message": "use the special type",
+      "revId": "4d88cae4703bcbb37fd353585c9ee1b58e978941",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_77b69fde",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/trials/trial_artist.lua",
+        "patchSetId": 27
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-24T01:47:46Z",
+      "side": 1,
+      "message": "use the special type",
+      "revId": "4d88cae4703bcbb37fd353585c9ee1b58e978941",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
