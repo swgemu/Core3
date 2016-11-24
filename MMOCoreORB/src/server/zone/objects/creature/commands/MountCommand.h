@@ -70,7 +70,7 @@ public:
 		if (creature->getParent() != NULL || vehicle->getParent() != NULL)
 			return GENERALERROR;
 
-		if (vehicle->isDestroyed()) {
+		if (vehicle->isDisabled()) {
 			creature->sendSystemMessage("@pet/pet_menu:cant_mount_veh_disabled");
 			return GENERALERROR;
 		}
