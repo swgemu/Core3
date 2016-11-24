@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_77121fb6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 30
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-24T13:23:18Z",
+      "side": 1,
+      "message": "Update your commit message to not be a wip. Then include the screenplays and serverobjects file for the mobile additions and I think we\u0027re ready to merge this.",
+      "revId": "75da0ca3d85eee225b711205d2772aea9d39a5bb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
