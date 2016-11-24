@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_b79e4762",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/padawan/jedi_padawan_trial.lua",
+        "patchSetId": 25
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-24T00:28:23Z",
+      "side": 1,
+      "message": "We should be removing waypoints as new ones are give. You should probably give the waypoints a special type. It removes a lot of the hassle of managing them as when you add a new one of that type the old one is automatically deleted.",
+      "revId": "cad235eaf053a45fc15fade0920c4b9b626ee7b4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_1792b357",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 25
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-24T00:28:23Z",
+      "side": 1,
+      "message": "Comment this as well. We don\u0027t want to be setting that state until the player has completed all of the trials. Your temporary message should go right here.",
+      "revId": "cad235eaf053a45fc15fade0920c4b9b626ee7b4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
