@@ -23,6 +23,12 @@ SuiMessageBox.new = function (defaultCallback, defaultFunction)
 	self.setOkButtonText = function (text)
 		self.setProperty("btnOk", "Text", text)
 	end
+	
+	self.setOtherButtonText = function (text)
+		self.setProperty("btnRevert", "Text", text)
+		self.setProperty("btnRevert", "Enabled", "true")
+		self.setProperty("btnRevert", "Visible", "true")
+	end
 
 	self.hideCancelButton = function (text)
 		self.setProperty("btnCancel", "Enabled", "false")
