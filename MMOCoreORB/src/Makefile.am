@@ -106,7 +106,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/pathfinding/NavMeshRegion.cpp \
+core3_IDLS =	autogen/server/zone/objects/tangible/misc/FsCsObject.cpp \
+				autogen/server/zone/objects/pathfinding/NavMeshRegion.cpp \
 				autogen/server/zone/objects/creature/buffs/ConcealBuff.cpp \
 				autogen/server/zone/objects/tangible/eventperk/ScavengerDroid.cpp \
 				autogen/server/zone/managers/gcw/GCWBaseShutdownObserver.cpp \
@@ -489,7 +490,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/HolocronMenuComponent.cpp \
 		server/zone/objects/tangible/components/WaypointDatapadMenuComponent.cpp \
 		server/zone/objects/tangible/components/ForceCrystalMenuComponent.cpp \
-		server/zone/objects/tangible/components/ForceShrineMenuComponent.cpp \
 		server/zone/objects/tangible/components/CloningTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/components/generic/ArtCrateMenuComponent.cpp \
 		server/zone/objects/tangible/components/ContainerObjectComponent.cpp \
