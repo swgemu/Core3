@@ -28,7 +28,7 @@ void VehicleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 	menuResponse->addRadialMenuItem(205, 1, "@pet/pet_menu:menu_enter_exit");
 	menuResponse->addRadialMenuItem(61, 3, "");
 
-	if (player->getPlayerObject()->isPrivileged() || (checkInRangeGarage() && !isDestroyed()))
+	if (player->getPlayerObject()->isPrivileged() || (checkInRangeGarage() && !isDisabled()))
 		menuResponse->addRadialMenuItem(62, 3, "@pet/pet_menu:menu_repair_vehicle"); //Repair Vehicle
 }
 
@@ -180,7 +180,7 @@ void VehicleObjectImplementation::repairVehicle(CreatureObject* player) {
 			return;
 		}
 
-		if (isDestroyed()) {
+		if (isDisabled()) {
 			player->sendSystemMessage("@pet/pet_menu:cannot_repair_disabled"); //You may not repair a disabled vehicle.
 			return;
 		}
@@ -244,15 +244,8 @@ int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject
 	ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
 
 	if (linkedCreature != NULL) {
-		linkedCreature->sendSystemMessage("@pet/pet_menu:veh_disabled");
-
-		ManagedReference<VehicleObject*> vehicle = _this.getReferenceUnsafeStaticCast();
-		String vehicleName = vehicle->getDisplayedName();
-		if (!vehicleName.beginsWith("(disabled)"))
-		{
-			UnicodeString disabledName = "(disabled) " + vehicleName;
-			vehicle->setCustomObjectName(disabledName, true);
-		}
+		if (!isDisabled())
+			linkedCreature->sendSystemMessage("@pet/pet_menu:veh_disabled");
 
 		try {
 			if (attacker != _this.getReferenceUnsafeStaticCast()) {

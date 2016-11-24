@@ -43,6 +43,9 @@ public:
 			return;
 		}
 
+		if (vehicle->isDisabled() && !player->getPlayerObject()->isPrivileged())
+			return;
+
 		int repairCost = vehicle->calculateRepairCost(player);
 		int totalFunds = player->getBankCredits();
 		int tax = 0;
@@ -68,8 +71,8 @@ public:
 
 		String vehicleName = vehicle->getDisplayedName();
 
-		if (vehicleName.beginsWith("(disabled)"))
-			vehicle->setCustomObjectName(vehicleName.subString(11), true);
+		if (vehicle->isDisabled())
+			vehicle->setDisabled(false);
 
 		if( city != NULL && tax > 0){
 

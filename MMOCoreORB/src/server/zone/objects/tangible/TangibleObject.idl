@@ -870,5 +870,8 @@ class TangibleObject extends SceneObject {
 	public string getLuaStringData(final string key) {
 		return luaStringData.get(key);
 	}
+	
+	public native void setDisabled(boolean disabled);
+	public native boolean isDisabled();
 }
 
