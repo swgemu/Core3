@@ -2859,12 +2859,25 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			--	"Dark Jedi Holocron (gift)", "object/tangible/jedi/no_drop_jedi_holocron_dark.iff",
 			--	"Light Jedi Holocron (gift)", "object/tangible/jedi/no_drop_jedi_holocron_light.iff"
 			--}
-			"DWB Testing (Temporary)",
+			"Village Testing (Temporary)",
 			{
-				"Bounty Hunter Helmet", "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_helmet.iff",
-				"Jet Pack Base", "object/tangible/loot/dungeon/death_watch_bunker/jetpack_base.iff",
-				"Protective Liquid Coating", "object/tangible/loot/dungeon/death_watch_bunker/emulsion_protection.iff",
-				"Binary Liquid", "object/tangible/loot/dungeon/death_watch_bunker/binary_liquid.iff"
+				"Resources",
+				{
+					"Ardanium II", "object/tangible/loot/quest/ardanium_ii.iff",
+					"Endrine", "object/tangible/loot/quest/endrine.iff",
+					"Ostrine", "object/tangible/loot/quest/ostrine.iff",
+					"Rudic", "object/tangible/loot/quest/rudic.iff",
+					"Wind Crystal", "object/tangible/loot/quest/wind_crystal.iff",
+				},
+				"Loot Kit Parts",
+				{
+					"Tracking Device Assembly Bracket - First Segment", "object/tangible/loot/collectible/collectible_parts/fs_tracking_device_assembly_bracket_01.iff",
+					"Tracking Device Assembly Bracket - Second Segment", "object/tangible/loot/collectible/collectible_parts/fs_tracking_device_assembly_bracket_02.iff",
+					"Tracking Device Assembly Bracket - Third Segment", "object/tangible/loot/collectible/collectible_parts/fs_tracking_device_assembly_bracket_03.iff",
+					"Tracking Device Case - First Section", "object/tangible/loot/collectible/collectible_parts/fs_tracking_device_case_01.iff",
+					"Tracking Device Case - Second Section", "object/tangible/loot/collectible/collectible_parts/fs_tracking_device_case_02.iff",
+					"Tracking Device Case - Third Section", "object/tangible/loot/collectible/collectible_parts/fs_tracking_device_case_03.iff",
+				},
 			}
 		}
 	}
