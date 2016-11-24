@@ -73,4 +73,12 @@ continued_final = ConvoScreen:new {
 }
 trialsPadawanArtist02ConvoTemplate:addScreen(continued_final);
 
+no_quest = ConvoScreen:new {
+	id = "no_quest",
+	leftDialog = "@conversation/padawan_artist_02:s_cb5a9d1b", --	Right.. can you just please get back to the delivery?
+	stopConversation = "true",
+	options = {}
+}
+trialsPadawanArtist02ConvoTemplate:addScreen(no_quest);
+
 addConversationTemplate("trialsPadawanArtist02ConvoTemplate", trialsPadawanArtist02ConvoTemplate);

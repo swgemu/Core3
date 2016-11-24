@@ -826,6 +826,12 @@ includeFile("quest/tatooine/wizzel.lua")
 includeFile("quest/tatooine/woff_btar.lua")
 includeFile("quest/tatooine/ysho.lua")
 
+-- Misc: Jedi Trials (Padawan)
+includeFile("quest/trials/padawan/kant_graf.lua")
+includeFile("quest/trials/padawan/sathme_forr.lua")
+includeFile("quest/trials/padawan/trials_artist_contact.lua")
+includeFile("quest/trials/padawan/trials_gungan_captain.lua")
+
 -- Yavin 4
 includeFile("quest/yavin4/captain_eso.lua")
 includeFile("quest/yavin4/cx_425.lua")
