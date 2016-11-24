@@ -85,6 +85,7 @@ function OldManIntroEncounter:giveForceCrystalToPlayer(pCreatureObject)
 		QuestManager.completeQuest(pCreatureObject, QuestManager.quests.OLD_MAN_INITIAL)
 		QuestManager.completeQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)
 		CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/intro:crystal_message")
+		writeScreenPlayData(pCreatureObject, "VillageJediProgression", "FsIntroOldManVisits", 0)
 	end
 end
 
