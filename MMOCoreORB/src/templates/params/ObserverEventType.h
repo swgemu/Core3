@@ -15,6 +15,7 @@ public:
 		CLOSECONTAINER,				// ManagedObject arg1 = player that closes the container, long arg2 = 0
 		POSTURECHANGED,				// ManagedObject arg1 = NULL, long arg2 = new posture
 		OBJECTDESTRUCTION,			// ManagedObject arg1 = attacker, long arg2 = condition used when a certain object is destroyed
+		OBJECTDISABLED,				// ManagedObject arg1 = attacker, long arg2 = 0
 		SAMPLE,						// ManagedObject arg1 = ResourceSpawn, long arg2 = density
 		CONVERSE,					// ManagedObject arg1 = converser, long arg2 = 0
 		KILLEDCREATURE,				// ManagedObject arg1 = destructedObject, long arg2 = 0 used when a player kills any creature

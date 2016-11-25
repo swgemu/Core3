@@ -358,6 +358,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
 	luaEngine->setGlobalInt("OBJECTDESTRUCTION", ObserverEventType::OBJECTDESTRUCTION);
+	luaEngine->setGlobalInt("OBJECTDISABLED", ObserverEventType::OBJECTDISABLED);
 	luaEngine->setGlobalInt("SAMPLE", ObserverEventType::SAMPLE);
 	luaEngine->setGlobalInt("CONVERSE", ObserverEventType::CONVERSE);
 	luaEngine->setGlobalInt("KILLEDCREATURE", ObserverEventType::KILLEDCREATURE);
