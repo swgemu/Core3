@@ -46,6 +46,11 @@ Luna<LuaTangibleObject>::RegType LuaTangibleObject::Register[] = {
 		{ "clearOptionBit", &LuaTangibleObject::clearOptionBit},
 		{ "hasOptionBit", &LuaTangibleObject::hasOptionBit},
 		{ "getCraftersName", &LuaTangibleObject::getCraftersName},
+		{ "getJunkDealerNeeded", &LuaTangibleObject::getJunkDealerNeeded},
+		{ "getJunkValue", &LuaTangibleObject::getJunkValue},
+		{ "isBroken", &LuaTangibleObject::isBroken},
+		{ "isSliced", &LuaTangibleObject::isSliced},
+		{ "isNoTrade", &LuaTangibleObject::isNoTrade},
 		{ 0, 0 }
 };
 
@@ -219,7 +224,6 @@ int LuaTangibleObject::getFaction(lua_State* L){
 	lua_pushinteger(L, faction);
 
 	return 1;
-
 }
 
 int LuaTangibleObject::isImperial(lua_State* L){
@@ -329,3 +333,42 @@ int LuaTangibleObject::setFactionStatus(lua_State* L) {
 	return 0;
 }
 
+int LuaTangibleObject::getJunkDealerNeeded(lua_State* L){
+	int dealer = realObject->getJunkDealerNeeded();
+
+	lua_pushinteger(L, dealer);
+
+	return 1;
+}
+
+int LuaTangibleObject::getJunkValue(lua_State* L){
+	int value = realObject->getJunkValue();
+
+	lua_pushinteger(L, value);
+
+	return 1;
+}
+
+int LuaTangibleObject::isBroken(lua_State* L){
+	bool broken = realObject->isBroken();
+
+	lua_pushboolean(L, broken);
+
+	return 1;
+}
+
+int LuaTangibleObject::isSliced(lua_State* L){
+	bool sliced = realObject->isSliced();
+
+	lua_pushboolean(L, sliced);
+
+	return 1;
+}
+
+int LuaTangibleObject::isNoTrade(lua_State* L){
+	bool noTrade = realObject->isNoTrade();
+
+	lua_pushboolean(L, noTrade);
+
+	return 1;
+}

@@ -8,7 +8,10 @@ geo_relic_spice_container = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	junkDealerTypeNeeded = JUNKGEO,
+	junkMinValue = 50,
+	junkMaxValue = 100
 }
 
 addLootItemTemplate("geo_relic_spice_container", geo_relic_spice_container)

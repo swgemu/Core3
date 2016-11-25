@@ -9,7 +9,7 @@ boots_s14 = {
     customizationStringNames = {},
     customizationValues = {
     },
-    junkDealerTypeNeeded = JUNKCLOTHESANDJEWELLERY,
+    junkDealerTypeNeeded = JUNKFINERY,
     junkMinValue = 35,
     junkMaxValue = 70
 }

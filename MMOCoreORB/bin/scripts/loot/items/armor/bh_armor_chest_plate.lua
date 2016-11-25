@@ -17,7 +17,7 @@ bh_armor_chest_plate = {
 	customizationStringNames = {},
 	customizationValues = {},
 
-	junkDealerTypeNeeded = JUNKARMOUR,
+	junkDealerTypeNeeded = JUNKGENERIC,
 	junkMinValue = 55,
 	junkMaxValue = 110
 }

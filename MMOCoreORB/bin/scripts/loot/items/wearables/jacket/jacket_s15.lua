@@ -9,7 +9,7 @@ jacket_s15 = {
     customizationStringNames = {},
     customizationValues = {
     },
-    junkDealerTypeNeeded = JUNKCLOTHESANDJEWELLERY,
+    junkDealerTypeNeeded = JUNKFINERY,
     junkMinValue = 25,
     junkMaxValue = 50
 }

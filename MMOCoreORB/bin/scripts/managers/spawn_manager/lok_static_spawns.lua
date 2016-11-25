@@ -10,7 +10,7 @@ lok_static_spawns = {
 	{"nym_kusak_guardian",60,-3.62,3.27819,-25.44,39.0011,6595511, "calm", "Scourge", "stationary"},
 	{"nym_kusak_guardian",60,3.62,3.27819,-25.44,325.01,6595511, "bored", "Razor", "stationary"},
 	{"junk_dealer",60,367,12,5202.8,-178,0,"","","stationary",JUNKGENERIC,JUNKCONVGENERIC},
-	{"junk_reggi",60,443.925,12,4879.41,69.9891,0,"","Reggi Tirver","stationary",JUNKWEAPONS,JUNKCONVREGGINYM},
+	{"junk_reggi",60,443.925,12,4879.41,69.9891,0,"","Reggi Tirver","stationary",JUNKARMS,JUNKCONVREGGINYM},
 	{"rifea_eicik",60,-23.1848,1.58812,1.95072,180.005,8145358, "conversation", "Rifea Eicik", "stationary"},
 	{"rorha_wahe",60,7.54821,-0.894991,-8.57564,0,8145378, "conversation", "Rorha Wahe", "stationary"},
 	{"vixur_webb",60,-13.2,-0.9,-20.2,22,8145383, "npc_sitting_chair", "Vixur Webb (a musician)", "stationary"},

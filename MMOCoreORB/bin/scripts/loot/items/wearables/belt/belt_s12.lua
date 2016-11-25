@@ -9,7 +9,7 @@ belt_s12 = {
     customizationStringNames = {},
     customizationValues = {
     },
-    junkDealerTypeNeeded = JUNKCLOTHESANDJEWELLERY,
+    junkDealerTypeNeeded = JUNKFINERY,
     junkMinValue = 40,
     junkMaxValue = 80
 }

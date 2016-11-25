@@ -37,7 +37,8 @@ function ChassisDealer.getValidBlueprints(pCreatureObject)
 		if (pObject ~= nil) then
 			local string = SceneObject(pObject):getCustomObjectName()
 			if (string ~= nil and string ~= "") then
-				table.insert(returnBluePrints, string)
+				local option = {string, 0}
+				table.insert(returnBluePrints, option)
 			end
 		end
 	end)

@@ -138,7 +138,8 @@ function ExperienceConverter:getNextUnlockableBranches(pCreatureObject)
 	foreach(unlockableFSBranches, function(theTable)
 		local checkTrees = CreatureObject(pCreatureObject):getScreenPlayState("VillageFreeUnlockScreenPlay:" .. string.sub(theTable.topBox, 0, (string.len(theTable.topBox) - 3)))
 		if (checkTrees == 1) then
-			table.insert(trees, theTable.unlockString)
+			local option = {theTable.unlockString, 0}
+			table.insert(trees, option)
 		end
 	end)
 
@@ -213,7 +214,8 @@ function ExperienceConverter:getExperienceForConversion(pCreature, theType)
 
 	for i = 1, #expList do
 		if (self:containsKey(inputTable, expList[i])) then
-			table.insert(returnTable, "@exp_n:" .. expList[i])
+			local option = {"@exp_n:" .. expList[i], 0}
+			table.insert(returnTable, option)
 		end
 	end
 

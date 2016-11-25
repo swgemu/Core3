@@ -9,7 +9,7 @@ hat_s12 = {
     customizationStringNames = {},
     customizationValues = {
     },
-    junkDealerTypeNeeded = JUNKCLOTHESANDJEWELLERY,
+    junkDealerTypeNeeded = JUNKFINERY,
     junkMinValue = 45,
     junkMaxValue = 90
 }
