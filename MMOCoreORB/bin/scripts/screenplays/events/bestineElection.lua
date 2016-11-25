@@ -1,15 +1,13 @@
 local ObjectManager = require("managers.object.object_manager")
 
-BESTINE_ELECTION_ENABLED = 0
+BESTINE_ELECTION_ENABLED = 1
 
 BestineElectionScreenPlay = ScreenPlay:new {
 	CAMPAIGN_TIME = 24 * 60 * 60 * 1000,
-	TUNE_TIME = 24 * 60  * 60 * 1000, -- 24 hours (TUNE = Time Until Next Election) Phase 2
+	TUNE_TIME = 24 * 60 * 60 * 1000, -- 24 hours (TUNE = Time Until Next Election) Phase 2
 
 	seanEvidence = {"object/tangible/loot/quest/sean_questp_ctestimony.iff", "object/tangible/loot/quest/sean_questp_mdisk.iff", "object/tangible/loot/quest/sean_questp_htestimony.iff"},
 	victorEvidence = {"object/tangible/loot/quest/victor_questp_testimony.iff", "object/tangible/loot/quest/victor_questp_jregistry.iff", "object/tangible/loot/quest/victor_questp_receipt.iff"},
-
-	candidates = {"victor", "sean"},
 
 	electionMobiles = {
 		{ template = "sean_trenwell", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=926483, moodString = "neutral", breech = 0},
@@ -114,13 +112,13 @@ function BestineElectionScreenPlay:spawnMobiles()
 			self:setMoodString(pNpc, npcData.moodString)
 
 			if (self:isElectionEnabled()) then
-				if npcData.template == "tour_aryon" then
+				if (npcData.template == "tour_aryon") then
 					SceneObject(pNpc):setContainerComponent("TourContainerComponent")
 				end
 
-				if npcData.breech > 0 then
+				if (npcData.breech > 0) then
 					local pActiveArea = spawnActiveArea("tatooine", "object/active_area.iff", SceneObject(pNpc):getWorldPositionX(), SceneObject(pNpc):getWorldPositionZ(), SceneObject(pNpc):getWorldPositionY(), npcData.breech, 0)
-					if pActiveArea ~= nil then
+					if (pActiveArea ~= nil) then
 						local areaID = SceneObject(pActiveArea):getObjectID()
 						writeData(areaID .. ":OwnerID", SceneObject(pNpc):getObjectID())
 						createObserver(ENTEREDAREA, "BestineElectionScreenPlay", "spawnApproach", pActiveArea)
@@ -135,13 +133,13 @@ function BestineElectionScreenPlay:spawnMobiles()
 	if (pNpc ~= nil and self:isElectionEnabled()) then
 		writeData("bestine_election:hutt_informant", SceneObject(pNpc):getObjectID())
 		local pActiveArea = spawnActiveArea("tatooine", "object/active_area.iff", -1120, 12, -3639, 15,0)
-		if pActiveArea ~= nil then
+		if (pActiveArea ~= nil) then
 			createObserver(ENTEREDAREA, "BestineElectionScreenPlay", "informantApproach", pActiveArea)
 		end
 	end
 
 	local electionWinner = getQuestStatus("bestine_election:electionWinner")
-	if electionWinner == "sean" then
+	if (electionWinner == "sean") then
 		self:spawnMerchants()
 	end
 end
@@ -391,10 +389,9 @@ function BestineElectionScreenPlay:joinedCampaign(pPlayer, who)
 
 		if (playerCampaign ~= nil) then
 			local electionNum = self:getElectionNumber()
-			return (playerCampaign >= electionNum)
+			return (playerCampaign == electionNum)
 		end
 	end
-
 	return false
 end
 
@@ -447,23 +444,22 @@ function BestineElectionScreenPlay:canVote(pPlayer, who)
 	local templates = {}
 
 	if self:joinedCampaign(pPlayer, who) then
-		if who == "sean" then
+		if (who == "sean") then
 			templates = self.seanEvidence
-		elseif who == "victor" then
+		elseif (who == "victor") then
 			templates = self.victorEvidence
 		end
 
 		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
-		if pInventory ~= nil then
+		if(pInventory ~= nil) then
 			for i = 1, # templates do
 				local pInvItem = getContainerObjectByTemplate(pInventory, templates[i], true)
-				if pInvItem ~= nil then
+				if (pInvItem ~= nil) then
 					return true
 				end
 			end
 		end
 	end
-
 	return false
 end
 
@@ -478,9 +474,9 @@ function BestineElectionScreenPlay:castVote(pPlayer, who)
 		setQuestStatus("bestine_election:votesFor" .. who, votes)
 
 		local electionNum = self:getElectionNumber()
-		if who == "sean" then
+		if (who == "sean") then
 			writeScreenPlayData(pPlayer, "BestineElection", "votedsean", electionNum)
-		elseif who == "victor" then
+		elseif(who == "victor") then
 			writeScreenPlayData(pPlayer, "BestineElection", "votedvictor", electionNum)
 		end
 
@@ -492,9 +488,9 @@ end
 function BestineElectionScreenPlay:removeEvidence(pPlayer, who)
 	if (pPlayer ~= nil) then
 		local templates = { }
-		if who == "sean" then
+		if (who == "sean") then
 			templates = self.seanEvidence
-		elseif who == "victor" then
+		elseif (who == "victor") then
 			templates = self.victorEvidence
 		end
 
@@ -502,7 +498,7 @@ function BestineElectionScreenPlay:removeEvidence(pPlayer, who)
 		if pInventory ~= nil then
 			for i = 1, # templates do
 				local pInvItem = getContainerObjectByTemplate(pInventory, templates[i], true)
-				if pInvItem ~= nil then
+				if (pInvItem ~= nil) then
 					SceneObject(pInvItem):destroyObjectFromWorld()
 					SceneObject(pInvItem):destroyObjectFromDatabase()
 				end
@@ -600,7 +596,7 @@ function TourContainerComponent:transferObject(pContainer, pObj, slot)
 end
 
 victor_visalis_conv_handler = victorVisalisConvoHandler:new {}
---sean_trenwell_conv_handler = seanTrenwellConvoHandler:new {}
+sean_trenwell_conv_handler = seanTrenwellConvoHandler:new {}
 tour_aryon_conv_handler = tourAryonConvoHandler:new {}
 hutt_informant_conv_handler = huttInformantConvoHandler:new {}
 seans_historian_conv_handler = seansHistorianConvoHandler:new {}
