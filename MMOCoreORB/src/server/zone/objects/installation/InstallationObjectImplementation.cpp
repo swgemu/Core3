@@ -707,11 +707,33 @@ bool InstallationObjectImplementation::isAggressiveTo(CreatureObject* target) {
 	if (instTemplate != NULL) {
 		String factionString = instTemplate->getFactionString();
 
-		if (!factionString.isEmpty() && target->isAiAgent()) {
-			AiAgent* targetAi = target->asAiAgent();
+		if (!factionString.isEmpty()) {
+			if (target->isAiAgent()) {
+				AiAgent* targetAi = target->asAiAgent();
 
-			if (FactionManager::instance()->isEnemy(factionString, targetAi->getFactionString()))
-				return true;
+				if (FactionManager::instance()->isEnemy(factionString, targetAi->getFactionString()))
+					return true;
+			} else if (target->isPlayerCreature()) {
+				PlayerObject* ghost = target->getPlayerObject();
+
+				if (ghost == NULL)
+					return false;
+
+				if (ghost->getFactionStanding(factionString) <= -3000)
+					return true;
+
+				FactionMap* fMap = FactionManager::instance()->getFactionMap();
+
+				const Faction& faction = fMap->get(factionString);
+				const SortedVector<String>* enemies = faction.getEnemies();
+
+				for (int i = 0; i < enemies->size(); ++i) {
+					const String& enemy = enemies->get(i);
+
+					if (ghost->getFactionStanding(enemy) >= 3000)
+						return true;
+				}
+			}
 		}
 	}
 
@@ -756,9 +778,7 @@ bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (instTemplate != NULL) {
 		String factionString = instTemplate->getFactionString();
 
-		if (!factionString.isEmpty()) {
-
-			if (!object->isAiAgent() || !FactionManager::instance()->isEnemy(factionString, object->asAiAgent()->getFactionString()))
+		if (!factionString.isEmpty() && object->isAiAgent() && !FactionManager::instance()->isEnemy(factionString, object->asAiAgent()->getFactionString())) {
 				return false;
 		}
 	}

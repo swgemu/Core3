@@ -66,6 +66,8 @@ function QuestSpawner:createQuestSpawner(screenplayName, dataTableName, spawnLis
 	end
 
 	createEvent(5 * 1000, "QuestSpawner", "doQuestSpawnerPulse", pSpawner, "")
+
+	return pSpawner
 end
 
 function QuestSpawner:doQuestSpawnerPulse(pSpawner)
@@ -225,6 +227,11 @@ end
 
 function QuestSpawner:destroySpawnerMobile(pMobile)
 	if (pMobile == nil) then
+		return
+	end
+	
+	if (AiAgent(pMobile):isInCombat()) then
+		createEvent(10 * 1000, "QuestSpawner", "destroySpawnerMobile", pMobile, "")
 		return
 	end
 
