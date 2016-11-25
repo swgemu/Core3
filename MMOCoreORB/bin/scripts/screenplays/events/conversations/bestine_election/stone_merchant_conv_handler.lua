@@ -85,7 +85,7 @@ function StoneMerchantConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 	local clonedConversation = LuaConversationScreen(pConvScreen)
 
 	if (screenID == "intro_start") then
-		if StoneMerchantConvoHandler:SearchForStones(pPlayer, CARVED) or StoneMerchantConvoHandler:SearchforStones(pPlayer, SMOOTH) then
+		if StoneMerchantConvoHandler:SearchForStones(pPlayer, CARVED) or StoneMerchantConvoHandler:SearchForStones(pPlayer, SMOOTH) then
 			clonedConversation:addOption("@conversation/bestine_stone_merchant:s_98e55c89","may_have_stones")--I may have the stones you are looking for. s_98e55c89
 		end
 		clonedConversation:addOption("@conversation/bestine_stone_merchant:s_2b5e768f","look_for_some")--I guess so. I'll look for some. s_2b5e768f
@@ -128,6 +128,5 @@ function StoneMerchantConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate
 	if self:returnCustomer(pPlayer) then
 		return convoTemplate:getScreen("returned_have_stones")
 	end
-
 	return convoTemplate:getScreen("intro_start")
 end
