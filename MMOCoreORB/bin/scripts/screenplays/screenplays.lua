@@ -564,6 +564,9 @@ includeFile("static_spawns/tatooine_static_spawns_south.lua")
 --Yavin4
 includeFile("static_spawns/yavin4_static_spawns.lua")
 
+--Magic Eight Ball
+includeFile("tools/MagicEightBallMenuComponent.lua")
+
 --Treasure Maps
 includeFile("treasure_map/EncodedDiskMenuComponent.lua")
 includeFile("treasure_map/TreasureMapMenuComponent.lua")
