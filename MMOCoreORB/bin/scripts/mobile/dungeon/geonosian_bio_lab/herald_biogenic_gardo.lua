@@ -23,15 +23,14 @@ herald_biogenic_gardo = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_herald_biogenic_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "biogenicHeraldDealerConvoTemplate",
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(herald_biogenic_gardo, "herald_biogenic_gardo")
