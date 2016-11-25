@@ -24,12 +24,12 @@ bestine_rumor11 = Creature:new {
 	ferocity = 3,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
+	optionsBitmask = INVULNERABLE,
 	diet = CARNIVORE,
 	templates = {"object/mobile/dressed_bestine_rumor11.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "bestineRumor11ConvoTemplate",
+	conversationTemplate = "",
 	attacks = {}
 }
 

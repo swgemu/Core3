@@ -65,7 +65,7 @@ function tourAryonConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 	elseif (screenID == "thanks_for_vote_sean") then
 		BestineElectionScreenPlay:castVote(pPlayer, "sean")
 	elseif (screenID == "election_ended") then
-		local winner = getQuestStatus("bestine_election:electionWinner")
+		local winner = getQuestStatus("bestine:election:electionWinner")
 		if (winner == "sean") then
 			clonedConversation:addOption("@conversation/tour_aryon:s_5d2e1112", "sean_won") -- Who was the winning candidate?
 		elseif (winner == "victor") then
@@ -100,10 +100,6 @@ end
 
 function tourAryonConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
-
-	if (not BestineElectionScreenPlay:isElectionEnabled()) then
-		return convoTemplate:getScreen("hello_no_election")
-	end
 
 	local phase = BestineElectionScreenPlay:getCurrentPhase()
 	if (phase == 1) then

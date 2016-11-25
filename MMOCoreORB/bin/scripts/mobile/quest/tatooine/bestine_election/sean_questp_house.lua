@@ -23,13 +23,13 @@ sean_questp_house = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
+	optionsBitmask = INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_sean_questp_house.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "seanQuestpHouseConvoTemplate",
+	conversationTemplate = "",
 	attacks = {}
 }
 

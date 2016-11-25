@@ -151,9 +151,7 @@ function BestineElectionQuestpConvoHandler:getInitialScreen(pPlayer, pNpc, pConv
 	local objectName = SceneObject(pNpc):getTemplateObjectPath()
 	local questID = self:getQuestID(objectName)
 
-	if (not BestineElectionScreenPlay:isElectionEnabled()) then
-		return convoTemplate:getScreen("no_business")
-	elseif BestineElectionScreenPlay:getCurrentPhase() == 2 then
+	if BestineElectionScreenPlay:getCurrentPhase() == 2 then
 		return convoTemplate:getScreen("no_election")
 	elseif self:alreadyHasEvidence(pPlayer, questID) then
 		return convoTemplate:getScreen("already_has_evidence")
@@ -164,6 +162,5 @@ function BestineElectionQuestpConvoHandler:getInitialScreen(pPlayer, pNpc, pConv
 	elseif ((string.find(objectName, "sean") ~= nil) and (BestineElectionScreenPlay:joinedCampaign(pPlayer, "sean"))) then
 		return convoTemplate:getScreen("convo_start")
 	end
-
 	return convoTemplate:getScreen("no_business")
 end

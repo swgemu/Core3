@@ -1,7 +1,6 @@
 local ObjectManager = require("managers.object.object_manager")
 
-BestineElectionQuestnConvoHandler = conv_handler:new {
-}
+BestineElectionQuestnConvoHandler = conv_handler:new { }
 
 local CANTINA = "object/tangible/loot/quest/victor_questn_dseal.iff"
 local CAPITOL = "object/tangible/loot/quest/victor_questn_hlist.iff"
@@ -32,7 +31,6 @@ function BestineElectionQuestnConvoHandler:alreadyHasEvidence(pPlayer, quest)
 			return getContainerObjectByTemplate(pInventory, UNIVERSITY , true) ~= nil
 		end
 	end
-
 	return false
 end
 
@@ -146,10 +144,6 @@ function BestineElectionQuestnConvoHandler:getInitialScreen(pPlayer, pNpc, pConv
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	local objectName = SceneObject(pNpc):getTemplateObjectPath()
 	local questID = self:getQuestID(objectName)
-
-	if (not BestineElectionScreenPlay:isElectionEnabled()) then
-		return convoTemplate:getScreen("no_business")
-	end
 
 	if BestineElectionScreenPlay:getCurrentPhase() == 2 then
 		return convoTemplate:getScreen("no_election")

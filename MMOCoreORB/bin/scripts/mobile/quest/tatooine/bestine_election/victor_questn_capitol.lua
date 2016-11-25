@@ -23,13 +23,13 @@ victor_questn_capitol = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
+	optionsBitmask = INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_victor_questn_capitol.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "victorQuestnCapitolConvoTemplate",
+	conversationTemplate = "",
 	attacks = {}
 }
 

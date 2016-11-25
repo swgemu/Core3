@@ -1,7 +1,7 @@
 bestineCapitol04ConvoTemplate = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "bestine_election_conv_handler",
+	luaClassHandler = "bestineElectionConvoHandler",
 	screens = {}
 }
 

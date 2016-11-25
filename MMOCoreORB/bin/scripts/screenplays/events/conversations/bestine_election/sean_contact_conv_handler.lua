@@ -54,11 +54,7 @@ function seanContactConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
-	if (not BestineElectionScreenPlay:isElectionEnabled()) then
-		return convoTemplate:getScreen("sean_notinOffice")
-	end
-
-	if getQuestStatus("bestine_election:electionWinner") == "sean" then
+	if getQuestStatus("bestine:election:electionWinner") == "sean" then
 		if self:hasHistoryDisk(pPlayer) then
 			return convoTemplate:getScreen("sean_inOffice_hasItem")
 		else

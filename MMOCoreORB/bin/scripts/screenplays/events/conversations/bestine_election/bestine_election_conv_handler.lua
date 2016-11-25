@@ -1,16 +1,11 @@
 local ObjectManager = require("managers.object.object_manager")
 
-bestineElectionConvoHandler = conv_handler:new {
-}
+bestineElectionConvoHandler = conv_handler:new {}
 
 function bestineElectionConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 	local npcID = SceneObject(pNpc):getTemplateObjectPath()
-
-	if (not BestineElectionScreenPlay:isElectionEnabled()) then
-		return convoTemplate:getScreen("default_greeting")
-	end
 
 	if BestineElectionScreenPlay:getCurrentPhase() == 1 then
 		if (string.find(npcID, "likyna", 1) ~= nil and BestineElectionScreenPlay:isOnNegativeQuest(pPlayer, "victor")) or
@@ -28,10 +23,8 @@ function bestineElectionConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTempla
 			return convoTemplate:getScreen("next_election")
 		end
 	end
-
 	return convoTemplate:getScreen("default_greeting")
 end
-
 
 function bestineElectionConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	return pConvScreen
