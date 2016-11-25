@@ -1,3 +1,5 @@
+local JunkDealer = require("screenplays.junk_dealer.junk_dealer")
+
 BiogenicHeraldDealerConvoHandler = conv_handler:new {}
 
 function BiogenicHeraldDealerConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
@@ -12,10 +14,6 @@ end
 
 function BiogenicHeraldDealerConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	local screen = LuaConversationScreen(pConvScreen)
-
-	local pConvScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(pConvScreen)
-
 	local screenID = screen:getScreenID()
 
 	if screenID == "here_is_loc" or screenID == "dont_believe" then
@@ -38,7 +36,7 @@ function BiogenicHeraldDealerConvoHandler:runScreenHandlers(pConvTemplate, pPlay
 			CreatureObject(pPlayer):setScreenPlayState(1, "BiogenicHeraldDealer")
 		end
 	elseif screenID == "what_you_have" then
-		--TODO: send relic purchase sui
+		JunkDealer:sendSellJunkSelection(pPlayer, pNpc, "geo")
 	end
 
 	return pConvScreen

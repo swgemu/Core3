@@ -9,7 +9,7 @@ ith_bodysuit_s04 = {
     customizationStringNames = {},
     customizationValues = {
     },
-    junkDealerTypeNeeded = JUNKCLOTHESANDJEWELLERY,
+    junkDealerTypeNeeded = JUNKFINERY,
     junkMinValue = 45,
     junkMaxValue = 90
 }

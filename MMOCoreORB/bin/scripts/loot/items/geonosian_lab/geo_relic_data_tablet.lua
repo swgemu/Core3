@@ -8,7 +8,10 @@ geo_relic_data_tablet = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	junkDealerTypeNeeded = JUNKGEO,
+	junkMinValue = 50,
+	junkMaxValue = 100
 }
 
 addLootItemTemplate("geo_relic_data_tablet", geo_relic_data_tablet)

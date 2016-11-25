@@ -54,10 +54,11 @@ function eventPromoterScreenplay:sendSaleSui(pNpc, pPlayer, screenID)
 
 	local options = { }
 	for i = 1, #perkData, 1 do
-		table.insert(options, getStringId(perkData[i].displayName) .. " (Cost: " .. perkData[i].cost .. ")")
+		local perk = {getStringId(perkData[i].displayName) .. " (Cost: " .. perkData[i].cost .. ")", 0}
+		table.insert(options, perk)
 	end
 
-	suiManager:sendListBox(pNpc, pPlayer, "@event_perk:pro_show_list_title", "@event_perk:pro_show_list_desc", 2, "@cancel", "", "@ok", "eventPromoterScreenplay", "handleSuiPurchase", options)
+	suiManager:sendListBox(pNpc, pPlayer, "@event_perk:pro_show_list_title", "@event_perk:pro_show_list_desc", 2, "@cancel", "", "@ok", "eventPromoterScreenplay", "handleSuiPurchase", 32, options)
 end
 
 function eventPromoterScreenplay:getPerkTable(category)

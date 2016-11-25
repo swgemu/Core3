@@ -384,12 +384,13 @@ function HeroOfTatooineScreenPlay:sendImplicateSui(pPlayer, pNpc)
 		local pLiar = getSceneObject(liarId)
 
 		if (pLiar ~= nil) then
-			table.insert(liarTable, self:getIntellectLiarName(i))
+			local option = {self:getIntellectLiarName(i), 0}
+			table.insert(liarTable, option)
 		end
 	end
 
 	local suiManager = LuaSuiManager()
-	suiManager:sendListBox(pNpc, pPlayer, "@quest/hero_of_tatooine/intellect_liar:sui_title", "@quest/hero_of_tatooine/intellect_liar:sui_prompt", 2, "@quest/hero_of_tatooine/intellect_liar:sui_btn_cancel", "", "@quest/hero_of_tatooine/intellect_liar:sui_btn_ok", "HeroOfTatooineScreenPlay", "handleSuiImplication", liarTable)
+	suiManager:sendListBox(pNpc, pPlayer, "@quest/hero_of_tatooine/intellect_liar:sui_title", "@quest/hero_of_tatooine/intellect_liar:sui_prompt", 2, "@quest/hero_of_tatooine/intellect_liar:sui_btn_cancel", "", "@quest/hero_of_tatooine/intellect_liar:sui_btn_ok", "HeroOfTatooineScreenPlay", "handleSuiImplication", 32, liarTable)
 end
 
 function HeroOfTatooineScreenPlay:handleSuiImplication(pPlayer, pSui, eventIndex, arg0)

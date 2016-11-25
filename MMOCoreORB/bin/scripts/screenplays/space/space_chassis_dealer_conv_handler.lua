@@ -19,7 +19,7 @@ function chassis_dealer_conv_handler:runScreenHandlers(pConvTemplate, pPlayer, p
 			clonedConversation:setDialogTextTO("@chassis_npc:no_deeds")
 			return pConvScreen
 		end
-		suiManager:sendListBox(pPlayer, pPlayer, "@chassis_npc:buy_ship_title", "@chassis_npc:buy_ship_prompt", 2, "@cancel", "", "@ok", "chassis_dealer_conv_handler", "purchaseChassisConfirmation", options)
+		suiManager:sendListBox(pPlayer, pPlayer, "@chassis_npc:buy_ship_title", "@chassis_npc:buy_ship_prompt", 2, "@cancel", "", "@ok", "chassis_dealer_conv_handler", "purchaseChassisConfirmation", 32, options)
 	elseif (screenID == "chassis_dealer_sell_components") then
 		-- TODO: Get looted components...
 		pConvScreen = screen:cloneScreen()

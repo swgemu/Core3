@@ -11,7 +11,7 @@ ind_republic_blaster = {
 	},
 
 	randomDotChance = 800,
-	junkDealerTypeNeeded = JUNKWEAPONS,
+	junkDealerTypeNeeded = JUNKARMS,
 	junkMinValue = 30,
 	junkMaxValue = 55
 }
