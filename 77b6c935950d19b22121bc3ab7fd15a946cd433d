@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_b7572726",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/dathomir/fs_village/sith_shadow_mercenary.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-25T13:42:14Z",
+      "side": 1,
+      "message": "You don\u0027t have your tables set up properly. There should be one more } before this. If you need an example of it done right, look at axkva_min\n\nIt looks like several of the mobiles in this patch have the same problem",
+      "revId": "77b6c935950d19b22121bc3ab7fd15a946cd433d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_d7542b23",
+        "filename": "MMOCoreORB/src/server/zone/objects/installation/InstallationObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-25T13:42:14Z",
+      "side": 1,
+      "message": "making this change will make the village turrets attackable by players",
+      "revId": "77b6c935950d19b22121bc3ab7fd15a946cd433d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
