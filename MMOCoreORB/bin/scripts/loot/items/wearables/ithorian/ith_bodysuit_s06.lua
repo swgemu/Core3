@@ -11,7 +11,7 @@ ith_bodysuit_s06 = {
         {0,1},
         {0,1,2,3,4,5,6}
     },
-    junkDealerTypeNeeded = JUNKCLOTHESANDJEWELLERY,
+    junkDealerTypeNeeded = JUNKFINERY,
     junkMinValue = 55,
     junkMaxValue = 110
 }

@@ -25,7 +25,7 @@ axe_vibroaxe = {
 
 	-- randomDotChance: The chance of this weapon object dropping with a random dot on it. Higher number means less chance. Set to 0 to always have a random dot.
 	randomDotChance = 600,
-	junkDealerTypeNeeded = JUNKWEAPONS,
+	junkDealerTypeNeeded = JUNKARMS,
 	junkMinValue = 25,
 	junkMaxValue = 45
 

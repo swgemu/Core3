@@ -17,7 +17,7 @@ bh_armor_bicep_l = {
 	customizationStringNames = {},
 	customizationValues = {},
 
-	junkDealerTypeNeeded = JUNKARMOUR,
+	junkDealerTypeNeeded = JUNKGENERIC,
 	junkMinValue = 55,
 	junkMaxValue = 110
 }

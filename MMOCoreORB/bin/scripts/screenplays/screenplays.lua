@@ -84,6 +84,9 @@ includeFile("tutorial/conversations/tutorialQuartermasterConvoHandler.lua")
 includeFile("tutorial/conversations/tutorialScaredSoldierConvoHandler.lua")
 includeFile("tutorial/conversations/tutorialTrainingRoomOfficerConvoHandler.lua")
 
+-- Junk Dealer
+includeFile("junk_dealer/junk_dealer.lua")
+
 -- Dungeons
 includeFile("dungeon/death_watch_bunker/deathWatchBunker.lua")
 includeFile("dungeon/death_watch_bunker/deathWatchContainerComponents.lua")

@@ -9,7 +9,7 @@ wke_hat_s01 = {
     customizationStringNames = {},
     customizationValues = {
     },
-    junkDealerTypeNeeded = JUNKCLOTHESANDJEWELLERY,
+    junkDealerTypeNeeded = JUNKFINERY,
     junkMinValue = 30,
     junkMaxValue = 60
 }

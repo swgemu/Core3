@@ -193,7 +193,8 @@ function recruiterScreenplay:getUniformsOptions(faction, gcwDiscount, smugglerDi
 	local factionRewardData = self:getFactionDataTable(faction)
 	for k,v in pairs(factionRewardData.uniformList) do
 		if ( factionRewardData.uniforms[v] ~= nil and factionRewardData.uniforms[v].display ~= nil and factionRewardData.uniforms[v].cost ~= nil ) then
-			table.insert(optionsTable, self:generateSuiString(factionRewardData.uniforms[v].display, math.ceil(factionRewardData.uniforms[v].cost * gcwDiscount * smugglerDiscount)))
+			local option = {self:generateSuiString(factionRewardData.uniforms[v].display, math.ceil(factionRewardData.uniforms[v].cost * gcwDiscount * smugglerDiscount)), 0}
+			table.insert(optionsTable, option)
 		end
 	end
 	return optionsTable
@@ -308,7 +309,7 @@ function recruiterScreenplay:sendPurchaseSui(pNpc, pPlayer, screenID)
 		options = self:getHirelingsOptions(faction, gcwDiscount, smugglerDiscount)
 	end
 
-	suiManager:sendListBox(pNpc, pPlayer, "@faction_recruiter:faction_purchase", "@faction_recruiter:select_item_purchase", 2, "@cancel", "", "@ok", "recruiterScreenplay", "handleSuiPurchase", options)
+	suiManager:sendListBox(pNpc, pPlayer, "@faction_recruiter:faction_purchase", "@faction_recruiter:select_item_purchase", 2, "@cancel", "", "@ok", "recruiterScreenplay", "handleSuiPurchase", 32, options)
 end
 
 function recruiterScreenplay:handleSuiPurchase(pCreature, pSui, eventIndex, arg0)

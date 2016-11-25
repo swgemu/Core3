@@ -21,7 +21,7 @@ chitin_armor_bracer_r = {
 			{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 	},
 
-	junkDealerTypeNeeded = JUNKARMOUR,
+	junkDealerTypeNeeded = JUNKGENERIC,
 	junkMinValue = 35,
 	junkMaxValue = 70
 }
