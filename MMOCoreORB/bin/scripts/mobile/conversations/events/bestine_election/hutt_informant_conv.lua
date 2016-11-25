@@ -1,7 +1,7 @@
 huttInformantConvoTemplate = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "hutt_informant_conv_handler",
+	luaClassHandler = "huttInformantConvoHandler",
 	screens = {}
 }
 

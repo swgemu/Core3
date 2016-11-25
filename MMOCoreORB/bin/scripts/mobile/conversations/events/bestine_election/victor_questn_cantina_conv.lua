@@ -1,7 +1,7 @@
 victorQuestnCantinaConvoTemplate = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "bestine_election_questn_conv_handler",
+	luaClassHandler = "BestineElectionQuestnConvoHandler",
 	screens = {}
 }
 

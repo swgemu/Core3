@@ -1,12 +1,12 @@
 local ObjectManager = require("managers.object.object_manager")
 
-victorVisalisConvoHandler = conv_handler:new {
+victorVisalisPhase1ConvoHandler = conv_handler:new {
 	}
 
 local negativeEvidence = {"object/tangible/loot/quest/sean_questn_gpapers.iff","object/tangible/loot/quest/sean_questn_tdisk.iff","object/tangible/loot/quest/sean_questn_alog.iff"}
 local tuskenHead = "object/tangible/loot/quest/tusken_head.iff"
 
-function victorVisalisConvoHandler:hasNegativeEvidence(pPlayer)
+function victorVisalisPhase1ConvoHandler:hasNegativeEvidence(pPlayer)
 	if (pPlayer ~= nil) then
 		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 		if (pInventory ~= nil) then
@@ -21,7 +21,7 @@ function victorVisalisConvoHandler:hasNegativeEvidence(pPlayer)
 	return false
 end
 
-function victorVisalisConvoHandler:hasTuskenHead(pPlayer)
+function victorVisalisPhase1ConvoHandler:hasTuskenHead(pPlayer)
 	if (pPlayer ~= nil) then
 		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 		if (pInventory ~= nil) then
@@ -31,7 +31,7 @@ function victorVisalisConvoHandler:hasTuskenHead(pPlayer)
 	return false
 end
 
-function victorVisalisConvoHandler:giveTuskenReward(pPlayer)
+function victorVisalisPhase1ConvoHandler:giveTuskenReward(pPlayer)
 	if (pPlayer ~= nil) then
 		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 		if (pInventory ~= nil) then
@@ -52,7 +52,7 @@ function victorVisalisConvoHandler:giveTuskenReward(pPlayer)
 	end
 end
 
-function victorVisalisConvoHandler:tuskenWaypoint(pPlayer)
+function victorVisalisPhase1ConvoHandler:tuskenWaypoint(pPlayer)
 	if (pPlayer ~= nil) then
 
 		local playerID = SceneObject(pPlayer):getObjectID()
@@ -67,7 +67,7 @@ function victorVisalisConvoHandler:tuskenWaypoint(pPlayer)
 	end
 end
 
-function victorVisalisConvoHandler:giveTuskenQuest(pPlayer)
+function victorVisalisPhase1ConvoHandler:giveTuskenQuest(pPlayer)
 	if (pPlayer ~= nil) then
 		self:tuskenWaypoint(pPlayer)
 		local electionNum = BestineElectionScreenPlay:getElectionNumber()
@@ -78,7 +78,7 @@ function victorVisalisConvoHandler:giveTuskenQuest(pPlayer)
 	end
 end
 
-function victorVisalisConvoHandler:removeTuskenQuest(pPlayer)
+function victorVisalisPhase1ConvoHandler:removeTuskenQuest(pPlayer)
 	if (pPlayer ~= nil) then
 		local playerID = SceneObject(pPlayer):getObjectID()
 		local waypointID = readData(playerID.. ":bestine_election:tuskenWaypointID")
@@ -97,7 +97,7 @@ function victorVisalisConvoHandler:removeTuskenQuest(pPlayer)
 end
 
 
-function victorVisalisConvoHandler:giveElectionReward(pPlayer)
+function victorVisalisPhase1ConvoHandler:giveElectionReward(pPlayer)
 	if (pPlayer ~= nil) then
 		local electionNum = BestineElectionScreenPlay:getElectionNumber()
 		if (BestineElectionScreenPlay:getCurrentPhase() == 1) then
@@ -111,7 +111,7 @@ function victorVisalisConvoHandler:giveElectionReward(pPlayer)
 	end
 end
 
-function victorVisalisConvoHandler:giveDiskandJoinCampaign(pPlayer)
+function victorVisalisPhase1ConvoHandler:giveDiskandJoinCampaign(pPlayer)
 	if (pPlayer ~= nil) then
 
 		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
@@ -141,7 +141,7 @@ function victorVisalisConvoHandler:giveDiskandJoinCampaign(pPlayer)
 	end
 end
 
-function victorVisalisConvoHandler:receivedElectionReward(pPlayer)
+function victorVisalisPhase1ConvoHandler:receivedElectionReward(pPlayer)
 	if (pPlayer ~= nil) then
 		local electionNum = BestineElectionScreenPlay:getElectionNumber()
 		if (BestineElectionScreenPlay:getCurrentPhase() == 1) then
@@ -155,7 +155,7 @@ function victorVisalisConvoHandler:receivedElectionReward(pPlayer)
 	return false
 end
 
-function victorVisalisConvoHandler:onTuskenQuest(pPlayer)
+function victorVisalisPhase1ConvoHandler:onTuskenQuest(pPlayer)
 	if (pPlayer ~= nil) then
 		local electionNum = BestineElectionScreenPlay:getElectionNumber()
 		if (BestineElectionScreenPlay:getCurrentPhase() == 1) then
@@ -168,7 +168,7 @@ function victorVisalisConvoHandler:onTuskenQuest(pPlayer)
 	return false
 end
 
-function victorVisalisConvoHandler:completedTuskenQuest(pPlayer)
+function victorVisalisPhase1ConvoHandler:completedTuskenQuest(pPlayer)
 	if (pPlayer ~= nil) then
 		local electionNum = BestineElectionScreenPlay:getElectionNumber()
 		if (BestineElectionScreenPlay:getCurrentPhase() == 1) then
@@ -182,7 +182,7 @@ function victorVisalisConvoHandler:completedTuskenQuest(pPlayer)
 end
 
 
-function victorVisalisConvoHandler:checkForStones(pPlayer)
+function victorVisalisPhase1ConvoHandler:checkForStones(pPlayer)
 	if (pPlayer == nil) then
 		return false
 	end
@@ -193,14 +193,14 @@ function victorVisalisConvoHandler:checkForStones(pPlayer)
 	return false
 end
 
-function victorVisalisConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+function victorVisalisPhase1ConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	local screen = LuaConversationScreen(pConvScreen)
 	local screenID = screen:getScreenID()
 	local pConvScreen = screen:cloneScreen()
 	local electionNum = BestineElectionScreenPlay:getElectionNumber()
 	local clonedConversation = LuaConversationScreen(pConvScreen)
 	local electionWinner = getQuestStatus("bestine_election:electionWinner")
-	local phase = tonumber(getQuestStatus("bestine_election:currentPhase"))
+	--local phase = tonumber(getQuestStatus("bestine_election:currentPhase"))
 
 	if (screenID == "returned_noroom") then
 		if BestineElectionScreenPlay:hasFullInventory(pPlayer) then
@@ -276,7 +276,7 @@ function victorVisalisConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 				clonedConversation:addOption("@conversation/victor_visalis:s_82af0027","give_election_reward")--Hey wait! What about my reward for voting for you?
 			end
 		end
-		if (phase == 1) then
+		--if (phase == 1) then
 			if BestineElectionScreenPlay:votedCurrentElection(pPlayer, "victor") then
 				clonedConversation:addOption("@conversation/victor_visalis:s_de1eacb3","inOffice_votedvictor") --Now that another election has begun, are you planning to get re-elected?
 			elseif BestineElectionScreenPlay:votedCurrentElection(pPlayer, "sean") then
@@ -284,7 +284,7 @@ function victorVisalisConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 			else
 				clonedConversation:addOption("@conversation/victor_visalis:s_de1eacb3","inOffice_newElection") --Now that another election has begun, are you planning to get re-elected?
 			end
-		end
+		--end
 	elseif (screenID == "inOffice_newElection") then
 		if BestineElectionScreenPlay:votingrewardCheck(pPlayer,"victor") then
 			if self:receivedElectionReward(pPlayer) then
@@ -327,7 +327,7 @@ function victorVisalisConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 	return pConvScreen
 end
 
-function victorVisalisConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+function victorVisalisPhase1ConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	if (not BestineElectionScreenPlay:isElectionEnabled()) then
@@ -337,37 +337,29 @@ function victorVisalisConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate
 	local electionWinner = getQuestStatus("bestine_election:electionWinner")
 	local phase = tonumber(getQuestStatus("bestine_election:currentPhase"))
 
-	if (phase == 1) then
-		if BestineElectionScreenPlay:noroomReturned(pPlayer, "victor") then
-			return convoTemplate:getScreen("returned_noroom")
-		end
-		if BestineElectionScreenPlay:isOnNegativeQuest(pPlayer, "victor") then
-			return convoTemplate:getScreen("nquest_return")
-		end
-		if BestineElectionScreenPlay:joinedCampaign(pPlayer, "sean") then
-			return convoTemplate:getScreen("rival_player")
-		end
+	if BestineElectionScreenPlay:noroomReturned(pPlayer, "victor") then
+		return convoTemplate:getScreen("returned_noroom")
+	end
+	if BestineElectionScreenPlay:isOnNegativeQuest(pPlayer, "victor") then
+		return convoTemplate:getScreen("nquest_return")
+	end
+	if BestineElectionScreenPlay:joinedCampaign(pPlayer, "sean") then
+		return convoTemplate:getScreen("rival_player")
+	end
 
-		if (electionWinner == "victor") then
-			if BestineElectionScreenPlay:joinedCampaign(pPlayer, "victor") then
-				return convoTemplate:getScreen("ask_voted")
-			else
-				return convoTemplate:getScreen("victor_inOffice")
-			end
-		elseif (electionWinner == "sean") then
-			if BestineElectionScreenPlay:joinedCampaign(pPlayer, "victor") then
-				return convoTemplate:getScreen("ask_voted")
-			elseif BestineElectionScreenPlay:votedCurrentElection(pPlayer, "victor") then
-				return convoTemplate:getScreen("voted_victor_this_election")
-			elseif BestineElectionScreenPlay:votedCurrentElection(pPlayer, "sean") then
-				return convoTemplate:getScreen("voted_sean_this_election")
-			end
-		end
-	elseif (phase == 2) then
-		if (electionWinner == "sean") then
-			return convoTemplate:getScreen("notInOffice_noElection")
-		elseif (electionWinner == "victor") then
+	if (electionWinner == "victor") then
+		if BestineElectionScreenPlay:joinedCampaign(pPlayer, "victor") then
+			return convoTemplate:getScreen("ask_voted")
+		else
 			return convoTemplate:getScreen("victor_inOffice")
+		end
+	elseif (electionWinner == "sean") then
+		if BestineElectionScreenPlay:joinedCampaign(pPlayer, "victor") then
+			return convoTemplate:getScreen("ask_voted")
+		elseif BestineElectionScreenPlay:votedCurrentElection(pPlayer, "victor") then
+			return convoTemplate:getScreen("voted_victor_this_election")
+		elseif BestineElectionScreenPlay:votedCurrentElection(pPlayer, "sean") then
+			return convoTemplate:getScreen("voted_sean_this_election")
 		end
 	end
 

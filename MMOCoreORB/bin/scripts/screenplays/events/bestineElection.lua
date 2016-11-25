@@ -1,63 +1,15 @@
 local ObjectManager = require("managers.object.object_manager")
 
-BESTINE_ELECTION_ENABLED = 0
+BESTINE_ELECTION_ENABLED = 1
 
 BestineElectionScreenPlay = ScreenPlay:new {
-	CAMPAIGN_TIME = 24 * 60 * 60 * 1000,
-	TUNE_TIME = 24 * 60  * 60 * 1000, -- 24 hours (TUNE = Time Until Next Election) Phase 2
+	CAMPAIGN_TIME = 3 * 60 * 1000,
+	TUNE_TIME = 3 * 60 * 1000, -- 24 hours (TUNE = Time Until Next Election) Phase 2
 
 	seanEvidence = {"object/tangible/loot/quest/sean_questp_ctestimony.iff", "object/tangible/loot/quest/sean_questp_mdisk.iff", "object/tangible/loot/quest/sean_questp_htestimony.iff"},
 	victorEvidence = {"object/tangible/loot/quest/victor_questp_testimony.iff", "object/tangible/loot/quest/victor_questp_jregistry.iff", "object/tangible/loot/quest/victor_questp_receipt.iff"},
-
-	candidates = {"victor", "sean"},
-
-	electionMobiles = {
-		{ template = "sean_trenwell", x = 19.46, z = 3.22, y = -35.97, direction = 10, cellID=926483, moodString = "neutral", breech = 0},
-		{ template = "victor_visalis", x = -26.48, z = 3.23, y = 20.29, direction = 146, cellID = 926480, moodString = "neutral", breech = 0},
-		{ template = "tour_aryon", x = -37.31, z = 1.29, y = 0.71, direction = -125, cellID = 926479, moodString = "neutral", breech = 10},
-
-		{ template = "indigo_siyan", x = 24.64, z = 3.22, y = -30.71, direction = 341.212, cellID = 926483, moodString = "neutral", breech = 0},
-		{ template = "keanna_likyna", x = -18.88, z = 3.22, y = 20.6, direction = 214.006, cellID = 926480, moodString = "neutral", breech = 0},
-
-		{ template = "victor_questn_capitol", x = 6.1, z = 0.3, y = -0.49,direction = 96.7754, cellID = 926475, moodString = "npc_imperial", breech = 4},
-		{ template = "victor_questn_cantina", x = 3.1, z = -0.9, y = 22.6, direction = 179, cellID = 1028651, moodString = "npc_sitting_chair", breech = 0},
-		{ template = "victor_questp_slums", x= -1357, z=26, y=-3871, direction = -108, cellID=0, moodString = "neutral", breech = 4},
-
-		{ template = "sean_questp_house", x = 3.0, z = .4, y = -0.2, direction = -111, cellID = 1528397, moodString = "neutral", breech = 4},
-		{ template = "victor_questp_hospital", x = -1294, z = 12, y = -3500, direction = 45, cellID = 0, moodString = "neutral", breech = 4},
-		{ template = "sean_questp_market", x = -1104, z = 12, y = -3705, direction = 20, cellID = 0, moodString = "neutral", breech = 4},
-		{ template = "sean_questn_university", x = 3.6, z = 1.1, y = -4.6, direction = 0, cellID = 1028578, moodString = "neutral", breech = 8},
-
-		{ template = "sean_contact_quest", x = -1448, z = 10, y = -3765, direction = 0, cellID = 0, moodString = "neutral", breech = 4},
-		{ template = "seans_historian", x = -758, z = 10.5, y = -3907, direction = 0, cellID = 0, moodString = "neutral", breech = 4},
-		--Rumor Mobiles
-		{ template = "bestine_rumor01", x = -1095.68, z = 12, y = -3640.98, direction = 281, cellID=0, moodString = "neutral", breech = 6},
-		{ template = "bestine_rumor02", x = -1205, z = 12, y = -3539, direction = 80, cellID=0, moodString = "neutral", breech = 6},
-		{ template = "bestine_rumor03", x = -1211, z = 12, y = -3637.48, direction = 26, cellID=0, moodString = "neutral", breech = 4},
-		{ template = "bestine_rumor04", x = -1145.53, z = 12, y = -3656.31, direction = 21, cellID=0, moodString = "neutral", breech = 6},
-		{ template = "bestine_rumor05", x = -1013, z = 12, y = -3695, direction = 233, cellID=0, moodString = "neutral", breech = 6},
-		{ template = "bestine_rumor06", x = -1088, z = 12, y = -3656, direction = 201, cellID=0, moodString = "neutral", breech = 4},
-		{ template = "bestine_rumor07", x = -1048, z = 12, y = -3699, direction = 53, cellID=0, moodString = "neutral", breech = 4},
-		{ template = "bestine_rumor08", x = -1174, z = 12, y = -3635.8, direction = 221, cellID=0, moodString = "neutral", breech = 4},
-		{ template = "bestine_rumor09", x = 0.69, z = 0.5, y = -2.4 , direction = -107, cellID=1028169, moodString = "neutral", breech = 4},
-		{ template = "bestine_rumor10", x = -1106.31, z = 14, y = -3697.59, direction = -177, cellID=0, moodString = "neutral", breech = 4},
-		{ template = "bestine_rumor11", x = -1221, z = 12, y = -3650, direction = -49, cellID=0, moodString = "neutral", breech = 4},
-		{ template = "bestine_rumor12", x = -1291, z = 12, y = -3634, direction = 301, cellID=0, moodString = "neutral", breech = 6},
-		--Capitol Building NPCs
-		{ template = "bestine_capitol01", x = -0.7, z = 3.22, y = 21.1, direction = 187, cellID=926474, moodString = "neutral", breech = 4},
-		{ template = "bestine_capitol02", x = -23.29, z = 1.3, y = -10.39, direction = 234, cellID=926475, moodString = "neutral", breech = 4},
-		{ template = "bestine_capitol03", x = -3.78, z = 2.27, y = -25.85, direction = 158, cellID=926475, moodString = "neutral", breech = 4},
-		{ template = "bestine_capitol04", x = 2.26, z = 7.9, y = -37.38, direction = 304, cellID=926476, moodString = "neutral", breech = 4},
-	},
-
-	seanMerchants = {
-		{template = "bestine_merchant", x = -1135.28, z = 12, y = -3688.03, direction = 61},
-		{template = "bestine_merchant", x = -1136.64, z =  12, y =  -3667.40, direction = -175},
-		{template = "bestine_merchant", x = -1115.29, z =  12, y =  -3709.47, direction = 7},
-		{template = "bestine_merchant", x = -1133.53, z =  12, y =  -3693.98, direction = 90},
-		{template = "bestine_stone_merchant", x = -1127, z =  12, y =  -3674, direction = -110},
-	}
 }
+
 
 registerScreenPlay("BestineElectionScreenPlay", true)
 
@@ -87,7 +39,6 @@ function BestineElectionScreenPlay:parseString(str, pat)
 		cap = str:sub(last_end)
 		table.insert(t, cap)
 	end
-
 	return t
 end
 
@@ -100,51 +51,106 @@ end
 
 function BestineElectionScreenPlay:start()
 	if (isZoneEnabled("tatooine")) then
-		self:spawnMobiles()
+		self:spawnMobiles(1,true)
 		self:setupTerminals()
 		self:doPhaseInit()
 	end
 end
 
-function BestineElectionScreenPlay:spawnMobiles()
-	for i = 1, #self.electionMobiles do
-		local npcData = self.electionMobiles[i]
-		local pNpc = spawnMobile("tatooine", npcData.template, 60, npcData.x, npcData.z, npcData.y, npcData.direction, npcData.cellID)
-		if (pNpc ~= nil) then
-			self:setMoodString(pNpc, npcData.moodString)
+function BestineElectionScreenPlay:spawnMobiles(currentPhase,spawnStaticMobs)
+	if (spawnStaticMobs == true) then
+		local mobileTable = electionMobiles[0]
 
-			if (self:isElectionEnabled()) then
-				if npcData.template == "tour_aryon" then
-					SceneObject(pNpc):setContainerComponent("TourContainerComponent")
+		for i = 1, #mobileTable, 1 do
+			local mobile = mobileTable[i]
+			--pNpc =        spawnMobile("lok", "mercenary",60,-24.251,-0.894991,22.5325,360.011,8145387)
+			--{"bestine_rumor01",-1095.68,12,-3640.98,281, 0,"neutral",6,"bestineRumor01ConvoTemplate"},
+			local pMobile = spawnMobile("tatooine", mobile[1], 0, mobile[2], mobile[3], mobile[4], mobile[5], mobile[6])
+			if (pMobile ~= nil) then
+				CreatureObject(pMobile):setPvpStatusBitmask(0)
+				if (mobile[7] ~= "") then
+					self:setMoodString(pMobile, mobile[7])
 				end
-
-				if npcData.breech > 0 then
-					local pActiveArea = spawnActiveArea("tatooine", "object/active_area.iff", SceneObject(pNpc):getWorldPositionX(), SceneObject(pNpc):getWorldPositionZ(), SceneObject(pNpc):getWorldPositionY(), npcData.breech, 0)
-					if pActiveArea ~= nil then
+				if (mobile[8] > 0) then
+					local pActiveArea = spawnActiveArea("tatooine", "object/active_area.iff", SceneObject(pMobile):getWorldPositionX(), SceneObject(pMobile):getWorldPositionZ(), SceneObject(pMobile):getWorldPositionY(), mobile[8], 0)
+					if (pActiveArea ~= nil) then
 						local areaID = SceneObject(pActiveArea):getObjectID()
-						writeData(areaID .. ":OwnerID", SceneObject(pNpc):getObjectID())
+						writeData(areaID .. ":OwnerID", SceneObject(pMobile):getObjectID())
 						createObserver(ENTEREDAREA, "BestineElectionScreenPlay", "spawnApproach", pActiveArea)
 					end
+				end
+				if (mobile[9] ~= "") then
+					CreatureObject(pMobile):setOptionsBitmask(136)
+					AiAgent(pMobile):setConvoTemplate(mobile[9])
 				end
 			end
 		end
 	end
 
-	--Hutt informant quest for Sean
-	local pNpc = spawnMobile("tatooine", "hutt_informant_quest", 1, -1120, 12,-3639, 160, 0)
-	if (pNpc ~= nil and self:isElectionEnabled()) then
-		writeData("bestine_election:hutt_informant", SceneObject(pNpc):getObjectID())
-		local pActiveArea = spawnActiveArea("tatooine", "object/active_area.iff", -1120, 12, -3639, 15,0)
-		if pActiveArea ~= nil then
-			createObserver(ENTEREDAREA, "BestineElectionScreenPlay", "informantApproach", pActiveArea)
+	local mobileTable = electionMobiles[currentPhase]
+	for i = 1, #mobileTable, 1 do
+		local mobile = mobileTable[i]
+		local pMobile = spawnMobile("tatooine", mobile[1], 0, mobile[2], mobile[3], mobile[4], mobile[5], mobile[6])
+		if (pMobile ~= nil) then
+			CreatureObject(pMobile):setPvpStatusBitmask(0)
+			if (mobile[7] ~= "") then
+				self:setMoodString(pMobile, mobile[7])
+			end
+			if (self:isElectionEnabled()) then
+				if (mobile[1] == "tour_aryon") then
+					SceneObject(pMobile):setContainerComponent("TourContainerComponent")
+				end
+				if (mobile[1] == "hutt_informant") then
+					writeData("bestine_election:hutt_informant", SceneObject(pMobile):getObjectID())
+					local pActiveArea = spawnActiveArea("tatooine", "object/active_area.iff", -1120, 12, -3639, 15,0)
+					if (pActiveArea ~= nil) then
+						createObserver(ENTEREDAREA, "BestineElectionScreenPlay", "informantApproach", pActiveArea)
+					end
+				end
+				if (mobile[8] > 0) then
+					local pActiveArea = spawnActiveArea("tatooine", "object/active_area.iff", SceneObject(pMobile):getWorldPositionX(), SceneObject(pMobile):getWorldPositionZ(), SceneObject(pMobile):getWorldPositionY(), mobile[8], 0)
+					if (pActiveArea ~= nil) then
+						local areaID = SceneObject(pActiveArea):getObjectID()
+						writeData(areaID .. ":OwnerID", SceneObject(pMobile):getObjectID())
+						createObserver(ENTEREDAREA, "BestineElectionScreenPlay", "spawnApproach", pActiveArea)
+					end
+				end
+				if (mobile[9] ~= nil and mobile[9] ~= "") then
+					CreatureObject(pMobile):setOptionsBitmask(136)
+					AiAgent(pMobile):setConvoTemplate(mobile[9])
+				end
+			end
+
+			local mobileID = SceneObject(pMobile):getObjectID()
+			writeData("bestine:npc:object:" .. i, mobileID)
 		end
 	end
+end
 
-	local electionWinner = getQuestStatus("bestine_election:electionWinner")
-	if electionWinner == "sean" then
-		self:spawnMerchants()
+--local electionWinner = getQuestStatus("bestine_election:electionWinner")
+--if (electionWinner == "sean") then
+--self:spawnMerchants()
+--end
+
+
+
+
+-- Despawn and cleanup current phase mobiles.
+function BestineElectionScreenPlay:despawnMobiles(currentPhase)
+	local mobileTable = electionMobiles[currentPhase]
+	for i = 1, #mobileTable, 1 do
+		local objectID = readData("bestine:npc:object:" .. i)
+		local pMobile = getSceneObject(objectID)
+
+		if (pMobile ~= nil) then
+			SceneObject(pMobile):destroyObjectFromWorld()
+			deleteData("bestine:npc:object:" .. i)
+		end
 	end
 end
+
+
+
 
 function BestineElectionScreenPlay:spawnApproach(pActiveArea, pMovingObject)
 	if (pMovingObject == nil or pActiveArea == nil or not SceneObject(pMovingObject):isPlayerCreature()) then
@@ -178,8 +184,8 @@ function BestineElectionScreenPlay:informantApproach(pActiveArea, pMovingObject)
 end
 
 function BestineElectionScreenPlay:spawnMerchants()
-	for i = 1, #self.seanMerchants do
-		local npcData = self.seanMerchants[i]
+	for i = 1, #seanMerchants do
+		local npcData = seanMerchants[i]
 		local pNpc = spawnMobile("tatooine", npcData.template, 0, npcData.x, npcData.z, npcData.y, npcData.direction, 0)
 		if (pNpc ~= nil) then
 			local mobileID = SceneObject(pNpc):getObjectID()
@@ -195,7 +201,7 @@ function BestineElectionScreenPlay:spawnMerchants()
 end
 
 function BestineElectionScreenPlay:despawnMerchants()
-	for i = 1, #self.seanMerchants do
+	for i = 1, #seanMerchants do
 		local objectID = readData("bestine_election:merchants:" .. i)
 		local pMobile = getSceneObject(objectID)
 		if (pMobile ~= nil) then
@@ -301,15 +307,19 @@ function BestineElectionScreenPlay:doPhaseChange()
 
 	local electionNum = self:getElectionNumber()
 	local currentPhase = self:getCurrentPhase()
-
+	local mobileTable = electionMobiles[currentPhase]
 	if (currentPhase == 1) then
+		--self:despawnMobiles(currentPhase)
 		setQuestStatus("bestine_election:currentPhase", 2)
 		self:determineWinner()
+		--self:spawnMobiles(2,false)
 		if (not hasServerEvent("ElectionPhaseChange")) then
 			self:createEvent(self.TUNE_TIME)
 		end
 	else
+		--self:despawnMobiles(currentPhase)
 		setQuestStatus("bestine_election:currentPhase", 1)
+		--self:spawnMobiles(1,false)
 		if (not hasServerEvent("ElectionPhaseChange")) then
 			self:createEvent(self.CAMPAIGN_TIME)
 			electionNum = electionNum + 1
@@ -318,6 +328,18 @@ function BestineElectionScreenPlay:doPhaseChange()
 			removeQuestStatus("bestine_election:votesForVictor")
 			setQuestStatus("bestine_election:votesForsean", 0)
 			setQuestStatus("bestine_election:votesForvictor", 0)
+		end
+	end
+	
+	for i = 1, #mobileTable, 1 do
+	  local mobile = mobileTable[i]
+		local objectID = readData("bestine:npc:object:" .. i)
+		local pMobile = getSceneObject(objectID)
+		if (pMobile ~= nil) then
+			if (mobile[9] ~= "") then
+				CreatureObject(pMobile):setOptionsBitmask(136)
+				AiAgent(pMobile):setConvoTemplate(mobile[9])
+			end
 		end
 	end
 	printf("[BestineElection] Initiating phase change: Phase " .. getQuestStatus("bestine_election:currentPhase") .. ", Election Number: " .. getQuestStatus("bestine_election:election_num") .. "\n")
@@ -391,10 +413,9 @@ function BestineElectionScreenPlay:joinedCampaign(pPlayer, who)
 
 		if (playerCampaign ~= nil) then
 			local electionNum = self:getElectionNumber()
-			return (playerCampaign >= electionNum)
+			return (playerCampaign == electionNum)
 		end
 	end
-
 	return false
 end
 
@@ -447,23 +468,22 @@ function BestineElectionScreenPlay:canVote(pPlayer, who)
 	local templates = {}
 
 	if self:joinedCampaign(pPlayer, who) then
-		if who == "sean" then
+		if (who == "sean") then
 			templates = self.seanEvidence
-		elseif who == "victor" then
+		elseif (who == "victor") then
 			templates = self.victorEvidence
 		end
 
 		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
-		if pInventory ~= nil then
+		if(pInventory ~= nil) then
 			for i = 1, # templates do
 				local pInvItem = getContainerObjectByTemplate(pInventory, templates[i], true)
-				if pInvItem ~= nil then
+				if (pInvItem ~= nil) then
 					return true
 				end
 			end
 		end
 	end
-
 	return false
 end
 
@@ -478,9 +498,9 @@ function BestineElectionScreenPlay:castVote(pPlayer, who)
 		setQuestStatus("bestine_election:votesFor" .. who, votes)
 
 		local electionNum = self:getElectionNumber()
-		if who == "sean" then
+		if (who == "sean") then
 			writeScreenPlayData(pPlayer, "BestineElection", "votedsean", electionNum)
-		elseif who == "victor" then
+		elseif(who == "victor") then
 			writeScreenPlayData(pPlayer, "BestineElection", "votedvictor", electionNum)
 		end
 
@@ -492,9 +512,9 @@ end
 function BestineElectionScreenPlay:removeEvidence(pPlayer, who)
 	if (pPlayer ~= nil) then
 		local templates = { }
-		if who == "sean" then
+		if (who == "sean") then
 			templates = self.seanEvidence
-		elseif who == "victor" then
+		elseif (who == "victor") then
 			templates = self.victorEvidence
 		end
 
@@ -502,7 +522,7 @@ function BestineElectionScreenPlay:removeEvidence(pPlayer, who)
 		if pInventory ~= nil then
 			for i = 1, # templates do
 				local pInvItem = getContainerObjectByTemplate(pInventory, templates[i], true)
-				if pInvItem ~= nil then
+				if (pInvItem ~= nil) then
 					SceneObject(pInvItem):destroyObjectFromWorld()
 					SceneObject(pInvItem):destroyObjectFromDatabase()
 				end
@@ -598,14 +618,3 @@ function TourContainerComponent:transferObject(pContainer, pObj, slot)
 
 	return 0
 end
-
-victor_visalis_conv_handler = victorVisalisConvoHandler:new {}
---sean_trenwell_conv_handler = seanTrenwellConvoHandler:new {}
-tour_aryon_conv_handler = tourAryonConvoHandler:new {}
-hutt_informant_conv_handler = huttInformantConvoHandler:new {}
-seans_historian_conv_handler = seansHistorianConvoHandler:new {}
-sean_contact_conv_handler = seanContactConvoHandler:new {}
-bestine_election_questn_conv_handler = BestineElectionQuestnConvoHandler:new {}
-bestine_election_questp_conv_handler = BestineElectionQuestpConvoHandler:new {}
-bestine_election_conv_handler = bestineElectionConvoHandler:new {}
-stone_merchant_conv_handler = StoneMerchantConvoHandler:new {}

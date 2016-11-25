@@ -23,13 +23,13 @@ victor_questp_slums = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
+	optionsBitmask = INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_victor_questp_slums.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "victorQuestpSlumsConvoTemplate",
+	conversationTemplate = "",
 	attacks = {}
 }
 

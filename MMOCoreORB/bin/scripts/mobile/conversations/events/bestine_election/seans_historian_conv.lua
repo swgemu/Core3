@@ -1,7 +1,7 @@
 seansHistorianConvoTemplate = ConvoTemplate:new {
   initialScreen = "",
   templateType = "Lua",
-  luaClassHandler = "seans_historian_conv_handler",
+  luaClassHandler = "seansHistorianConvoHandler",
   screens = {}
 }
 

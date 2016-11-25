@@ -1,7 +1,7 @@
-victorVisalisConvoTemplate = ConvoTemplate:new {
+victorVisalisPhase1ConvoTemplate = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "victorVisalisConvoHandler",
+	luaClassHandler = "victorVisalisPhase1ConvoHandler",
 	screens = {}
 }
 
@@ -16,7 +16,7 @@ convo_start = ConvoScreen:new {
 		{"@conversation/victor_visalis:s_87b97dc","endconvo_verywell"}, --I need to go. I'm sorry.
 	}
 }
-victorVisalisConvoTemplate:addScreen(convo_start);
+victorVisalisPhase1ConvoTemplate:addScreen(convo_start);
 
 proposed_changes = ConvoScreen:new {
 	id = "proposed_changes",
@@ -26,7 +26,7 @@ proposed_changes = ConvoScreen:new {
 		{"@conversation/victor_visalis:s_540ac7e9","proposed_changes2"}, --Continue.
 	}
 }
-victorVisalisConvoTemplate:addScreen(proposed_changes);
+victorVisalisPhase1ConvoTemplate:addScreen(proposed_changes);
 
 proposed_changes2 = ConvoScreen:new {
 	id = "proposed_changes2",
@@ -38,7 +38,7 @@ proposed_changes2 = ConvoScreen:new {
 		{"@conversation/victor_visalis:s_87b97dc","endconvo_verywell"}, --I should go.
 	}
 }
-victorVisalisConvoTemplate:addScreen(proposed_changes2);
+victorVisalisPhase1ConvoTemplate:addScreen(proposed_changes2);
 
 here_to_vote = ConvoScreen:new {
 	id = "here_to_vote",
@@ -48,7 +48,7 @@ here_to_vote = ConvoScreen:new {
 		{"@conversation/victor_visalis:s_540ac7e9","here_to_vote2"}, --Continue.
 	}
 }
-victorVisalisConvoTemplate:addScreen(here_to_vote);
+victorVisalisPhase1ConvoTemplate:addScreen(here_to_vote);
 
 here_to_vote2 = ConvoScreen:new {
 	id = "here_to_vote2",
@@ -58,7 +58,7 @@ here_to_vote2 = ConvoScreen:new {
 		{"@conversation/victor_visalis:s_540ac7e9","here_to_vote3"}, --Continue.
 	}
 }
-victorVisalisConvoTemplate:addScreen(here_to_vote2);
+victorVisalisPhase1ConvoTemplate:addScreen(here_to_vote2);
 
 here_to_vote3 = ConvoScreen:new {
 	id = "here_to_vote3",
@@ -66,7 +66,7 @@ here_to_vote3 = ConvoScreen:new {
 	stopConversation = "false",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(here_to_vote3);
+victorVisalisPhase1ConvoTemplate:addScreen(here_to_vote3);
 
 about_tuskens = ConvoScreen:new {
 	id = "about_tuskens",
@@ -76,7 +76,7 @@ about_tuskens = ConvoScreen:new {
 		{"@conversation/victor_visalis:s_540ac7e9","about_tuskens2"}, --Continue.
 	}
 }
-victorVisalisConvoTemplate:addScreen(about_tuskens);
+victorVisalisPhase1ConvoTemplate:addScreen(about_tuskens);
 
 about_tuskens2 = ConvoScreen:new {
 	id = "about_tuskens2",
@@ -87,7 +87,7 @@ about_tuskens2 = ConvoScreen:new {
 		{"@conversation/victor_visalis:s_6cf7afee","endconvo_verywell"}, --I should go.
 	}
 }
-victorVisalisConvoTemplate:addScreen(about_tuskens2);
+victorVisalisPhase1ConvoTemplate:addScreen(about_tuskens2);
 
 notInOffice_noElection = ConvoScreen:new {
 	id = "notInOffice_noElection",
@@ -95,7 +95,7 @@ notInOffice_noElection = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(notInOffice_noElection);
+victorVisalisPhase1ConvoTemplate:addScreen(notInOffice_noElection);
 
 rival_player = ConvoScreen:new {
 	id = "rival_player",
@@ -106,7 +106,7 @@ rival_player = ConvoScreen:new {
 		{"@conversation/victor_visalis:s_67dbab18","endconvo_verywell"}, --Sorry, I have to go.
 	}
 }
-victorVisalisConvoTemplate:addScreen(rival_player);
+victorVisalisPhase1ConvoTemplate:addScreen(rival_player);
 
 voted_victor_this_election = ConvoScreen:new {
 	id = "voted_victor_this_election",
@@ -114,7 +114,7 @@ voted_victor_this_election = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(voted_victor_this_election);
+victorVisalisPhase1ConvoTemplate:addScreen(voted_victor_this_election);
 
 voted_sean_this_election = ConvoScreen:new {
 	id = "voted_sean_this_election",
@@ -122,7 +122,7 @@ voted_sean_this_election = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(voted_sean_this_election);
+victorVisalisPhase1ConvoTemplate:addScreen(voted_sean_this_election);
 
 nquest_joincampaign = ConvoScreen:new {
 	id = "nquest_joincampaign",
@@ -130,7 +130,7 @@ nquest_joincampaign = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(nquest_joincampaign);
+victorVisalisPhase1ConvoTemplate:addScreen(nquest_joincampaign);
 
 joincampaign_noroom = ConvoScreen:new {
 	id = "joincampaign_noroom",
@@ -138,7 +138,7 @@ joincampaign_noroom = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(joincampaign_noroom);
+victorVisalisPhase1ConvoTemplate:addScreen(joincampaign_noroom);
 
 returned_noroom = ConvoScreen:new {
 	id = "returned_noroom",
@@ -146,7 +146,7 @@ returned_noroom = ConvoScreen:new {
 	stopConversation = "false",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(returned_noroom);
+victorVisalisPhase1ConvoTemplate:addScreen(returned_noroom);
 
 noroom_returned_noroom = ConvoScreen:new {
 	id = "noroom_returned_noroom",
@@ -154,7 +154,7 @@ noroom_returned_noroom = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(noroom_returned_noroom);
+victorVisalisPhase1ConvoTemplate:addScreen(noroom_returned_noroom);
 
 noroom_returned_joincampaign = ConvoScreen:new {
 	id = "noroom_returned_joincampaign",
@@ -162,7 +162,7 @@ noroom_returned_joincampaign = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(noroom_returned_joincampaign);
+victorVisalisPhase1ConvoTemplate:addScreen(noroom_returned_joincampaign);
 
 cant_find_evidence = ConvoScreen:new {
 	id = "cant_find_evidence",
@@ -170,7 +170,7 @@ cant_find_evidence = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(cant_find_evidence);
+victorVisalisPhase1ConvoTemplate:addScreen(cant_find_evidence);
 
 decided_no_vote = ConvoScreen:new {
 	id = "decided_no_vote",
@@ -178,7 +178,7 @@ decided_no_vote = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(decided_no_vote);
+victorVisalisPhase1ConvoTemplate:addScreen(decided_no_vote);
 
 endconvo_friendly = ConvoScreen:new {
 	id = "endconvo_friendly",
@@ -186,7 +186,7 @@ endconvo_friendly = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(endconvo_friendly);
+victorVisalisPhase1ConvoTemplate:addScreen(endconvo_friendly);
 
 changed_mind = ConvoScreen:new {
 	id = "changed_mind",
@@ -194,7 +194,7 @@ changed_mind = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(changed_mind);
+victorVisalisPhase1ConvoTemplate:addScreen(changed_mind);
 
 action_nquest = ConvoScreen:new {
 	id = "action_nquest",
@@ -202,7 +202,7 @@ action_nquest = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(action_nquest);
+victorVisalisPhase1ConvoTemplate:addScreen(action_nquest);
 
 joinCampaign_giveDisk = ConvoScreen:new {
 	id = "joinCampaign_giveDisk",
@@ -210,7 +210,7 @@ joinCampaign_giveDisk = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(joinCampaign_giveDisk);
+victorVisalisPhase1ConvoTemplate:addScreen(joinCampaign_giveDisk);
 
 nquest_return = ConvoScreen:new {
 	id = "nquest_return",
@@ -218,7 +218,7 @@ nquest_return = ConvoScreen:new {
 	stopConversation = "false",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(nquest_return);
+victorVisalisPhase1ConvoTemplate:addScreen(nquest_return);
 
 nquest_found = ConvoScreen:new {
 	id = "nquest_found",
@@ -226,7 +226,7 @@ nquest_found = ConvoScreen:new {
 	stopConversation = "false",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(nquest_found);
+victorVisalisPhase1ConvoTemplate:addScreen(nquest_found);
 
 nquest_notfound = ConvoScreen:new {
 	id = "nquest_notfound",
@@ -234,7 +234,7 @@ nquest_notfound = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(nquest_notfound);
+victorVisalisPhase1ConvoTemplate:addScreen(nquest_notfound);
 
 nquest_nojoin = ConvoScreen:new {
 	id = "nquest_nojoin",
@@ -242,7 +242,7 @@ nquest_nojoin = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(nquest_nojoin);
+victorVisalisPhase1ConvoTemplate:addScreen(nquest_nojoin);
 
 ask_voted = ConvoScreen:new {
 	id = "ask_voted",
@@ -250,7 +250,7 @@ ask_voted = ConvoScreen:new {
 	stopConversation = "false",
 	options = {	}
 }
-victorVisalisConvoTemplate:addScreen(ask_voted);
+victorVisalisPhase1ConvoTemplate:addScreen(ask_voted);
 
 checkForVote_true = ConvoScreen:new {
 	id = "checkForVote_true",
@@ -258,7 +258,7 @@ checkForVote_true = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(checkForVote_true);
+victorVisalisPhase1ConvoTemplate:addScreen(checkForVote_true);
 
 checkForVote_false = ConvoScreen:new {
 	id = "checkForVote_false",
@@ -266,7 +266,7 @@ checkForVote_false = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(checkForVote_false);
+victorVisalisPhase1ConvoTemplate:addScreen(checkForVote_false);
 
 victor_inOffice = ConvoScreen:new {
 	id = "victor_inOffice",
@@ -274,7 +274,7 @@ victor_inOffice = ConvoScreen:new {
 	stopConversation = "false",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(victor_inOffice);
+victorVisalisPhase1ConvoTemplate:addScreen(victor_inOffice);
 
 inOffice_votedvictor = ConvoScreen:new {
 	id = "inOffice_votedvictor",
@@ -282,7 +282,7 @@ inOffice_votedvictor = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(inOffice_votedvictor);
+victorVisalisPhase1ConvoTemplate:addScreen(inOffice_votedvictor);
 
 inOffice_votedsean = ConvoScreen:new {
 	id = "inOffice_votedsean",
@@ -290,7 +290,7 @@ inOffice_votedsean = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(inOffice_votedsean);
+victorVisalisPhase1ConvoTemplate:addScreen(inOffice_votedsean);
 
 inOffice_newElection = ConvoScreen:new {
 	id = "inOffice_newElection",
@@ -298,7 +298,7 @@ inOffice_newElection = ConvoScreen:new {
 	stopConversation = "false",
 	options = {	}
 }
-victorVisalisConvoTemplate:addScreen(inOffice_newElection);
+victorVisalisPhase1ConvoTemplate:addScreen(inOffice_newElection);
 
 endconvo_verywell = ConvoScreen:new {
 	id = "endconvo_verywell",
@@ -306,7 +306,7 @@ endconvo_verywell = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(endconvo_verywell);
+victorVisalisPhase1ConvoTemplate:addScreen(endconvo_verywell);
 
 tuskenquest_complete = ConvoScreen:new {
 	id = "tuskenquest_complete",
@@ -314,7 +314,7 @@ tuskenquest_complete = ConvoScreen:new {
 	stopConversation = "false",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(tuskenquest_complete);
+victorVisalisPhase1ConvoTemplate:addScreen(tuskenquest_complete);
 
 tuskenquest_foundstones = ConvoScreen:new {
 	id = "tuskenquest_foundstones",
@@ -322,7 +322,7 @@ tuskenquest_foundstones = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(tuskenquest_foundstones);
+victorVisalisPhase1ConvoTemplate:addScreen(tuskenquest_foundstones);
 
 inOffice_onTuskenQuest = ConvoScreen:new {
 	id = "inOffice_onTuskenQuest",
@@ -330,7 +330,7 @@ inOffice_onTuskenQuest = ConvoScreen:new {
 	stopConversation = "true",
 	options = { }
 }
-victorVisalisConvoTemplate:addScreen(inOffice_onTuskenQuest);
+victorVisalisPhase1ConvoTemplate:addScreen(inOffice_onTuskenQuest);
 
 destroyed_target = ConvoScreen:new {
 	id = "destroyed_target",
@@ -338,7 +338,7 @@ destroyed_target = ConvoScreen:new {
 	stopConversation = "true",
 	options = { }
 }
-victorVisalisConvoTemplate:addScreen(destroyed_target);
+victorVisalisPhase1ConvoTemplate:addScreen(destroyed_target);
 
 tusken_reward_given = ConvoScreen:new {
 	id = "tusken_reward_given",
@@ -346,7 +346,7 @@ tusken_reward_given = ConvoScreen:new {
 	stopConversation = "true",
 	options = { }
 }
-victorVisalisConvoTemplate:addScreen(tusken_reward_given);
+victorVisalisPhase1ConvoTemplate:addScreen(tusken_reward_given);
 
 retell_tusken_quest = ConvoScreen:new {
 	id = "retell_tusken_quest",
@@ -354,7 +354,7 @@ retell_tusken_quest = ConvoScreen:new {
 	stopConversation = "true",
 	options = { }
 }
-victorVisalisConvoTemplate:addScreen(retell_tusken_quest);
+victorVisalisPhase1ConvoTemplate:addScreen(retell_tusken_quest);
 
 still_looking = ConvoScreen:new {
 	id = "still_looking",
@@ -362,7 +362,7 @@ still_looking = ConvoScreen:new {
 	stopConversation = "true",
 	options = { }
 }
-victorVisalisConvoTemplate:addScreen(still_looking);
+victorVisalisPhase1ConvoTemplate:addScreen(still_looking);
 
 quit_tusken_quest = ConvoScreen:new {
 	id = "quit_tusken_quest",
@@ -370,7 +370,7 @@ quit_tusken_quest = ConvoScreen:new {
 	stopConversation = "true",
 	options = { }
 }
-victorVisalisConvoTemplate:addScreen(quit_tusken_quest);
+victorVisalisPhase1ConvoTemplate:addScreen(quit_tusken_quest);
 
 found_stones = ConvoScreen:new {
 	id = "found_stones",
@@ -378,7 +378,7 @@ found_stones = ConvoScreen:new {
 	stopConversation = "true",
 	options = { }
 }
-victorVisalisConvoTemplate:addScreen(found_stones);
+victorVisalisPhase1ConvoTemplate:addScreen(found_stones);
 
 already_received_election_reward = ConvoScreen:new {
 	id = "already_received_election_reward",
@@ -386,7 +386,7 @@ already_received_election_reward = ConvoScreen:new {
 	stopConversation = "true",
 	options = { }
 }
-victorVisalisConvoTemplate:addScreen(already_received_election_reward);
+victorVisalisPhase1ConvoTemplate:addScreen(already_received_election_reward);
 
 give_election_reward = ConvoScreen:new {
 	id = "give_election_reward",
@@ -394,7 +394,7 @@ give_election_reward = ConvoScreen:new {
 	stopConversation = "true",
 	options = { }
 }
-victorVisalisConvoTemplate:addScreen(give_election_reward);
+victorVisalisPhase1ConvoTemplate:addScreen(give_election_reward);
 
 election_reward_noroom = ConvoScreen:new {
 	id = "election_reward_noroom",
@@ -402,7 +402,7 @@ election_reward_noroom = ConvoScreen:new {
 	stopConversation = "true",
 	options = { }
 }
-victorVisalisConvoTemplate:addScreen(election_reward_noroom);
+victorVisalisPhase1ConvoTemplate:addScreen(election_reward_noroom);
 
 tuskenquest_intro = ConvoScreen:new {
 	id = "tuskenquest_intro",
@@ -413,7 +413,7 @@ tuskenquest_intro = ConvoScreen:new {
 		{"@conversation/victor_visalis:s_e9a49e3","tuskenquest_toughdeal"}, --Sounds like a tough deal.
 	}
 }
-victorVisalisConvoTemplate:addScreen(tuskenquest_intro);
+victorVisalisPhase1ConvoTemplate:addScreen(tuskenquest_intro);
 
 tuskenquest_letmehelp = ConvoScreen:new {
 	id = "tuskenquest_letmehelp",
@@ -424,7 +424,7 @@ tuskenquest_letmehelp = ConvoScreen:new {
 		{"@conversation/victor_visalis:s_177e9cb7","tuskenquest_accept"}, --Yes! I will help you!
 	}
 }
-victorVisalisConvoTemplate:addScreen(tuskenquest_letmehelp);
+victorVisalisPhase1ConvoTemplate:addScreen(tuskenquest_letmehelp);
 
 tuskenquest_decline = ConvoScreen:new {
 	id = "tuskenquest_decline",
@@ -432,7 +432,7 @@ tuskenquest_decline = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(tuskenquest_decline);
+victorVisalisPhase1ConvoTemplate:addScreen(tuskenquest_decline);
 
 tuskenquest_accept = ConvoScreen:new {
 	id = "tuskenquest_accept",
@@ -440,7 +440,7 @@ tuskenquest_accept = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(tuskenquest_accept);
+victorVisalisPhase1ConvoTemplate:addScreen(tuskenquest_accept);
 
 tuskenquest_toughdeal = ConvoScreen:new {
 	id = "tuskenquest_toughdeal",
@@ -448,6 +448,6 @@ tuskenquest_toughdeal = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-victorVisalisConvoTemplate:addScreen(tuskenquest_toughdeal);
+victorVisalisPhase1ConvoTemplate:addScreen(tuskenquest_toughdeal);
 
-addConversationTemplate("victorVisalisConvoTemplate", victorVisalisConvoTemplate);
+addConversationTemplate("victorVisalisPhase1ConvoTemplate", victorVisalisPhase1ConvoTemplate);
