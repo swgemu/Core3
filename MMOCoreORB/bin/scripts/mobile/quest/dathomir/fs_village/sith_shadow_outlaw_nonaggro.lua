@@ -53,7 +53,23 @@ sith_shadow_outlaw_nonaggro = Creature:new {
 		"object/mobile/dressed_sith_shadow_zab_m_02.iff",
 		"object/mobile/dressed_sith_shadow_zab_m_03.iff"},
 	lootGroups = {
-		{}
+		{
+			groups = {
+				{group = "junk", chance = 4000000},
+				{group = "tailor_components", chance = 1500000},
+				{group = "loot_kit_parts", chance = 1500000},
+				{group = "printer_parts", chance = 1000000},
+				{group = "wearables_common", chance = 1000000},
+				{group = "clothing_attachments", chance = 500000},
+				{group = "armor_attachments", chance = 500000},
+			},
+		},
+		{
+			groups = {
+				{group = "village_resources", chance =  10000000}
+			},
+			lootChance = 1000000
+		},
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

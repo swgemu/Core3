@@ -126,7 +126,7 @@ function SpawnMobiles.spawnMobileObjects(pSceneObject, mobileList, spawnPoints)
 			spawnPoints[spawnNumber][1],
 			spawnPoints[spawnNumber][2],
 			spawnPoints[spawnNumber][3],
-			0,
+			getRandomNumber(360) - 180,
 			SceneObject(pSceneObject):getParentID())
 		AiAgent(spawnedObject):setNoAiAggro()
 		table.insert(spawnedObjects, spawnedObject)
