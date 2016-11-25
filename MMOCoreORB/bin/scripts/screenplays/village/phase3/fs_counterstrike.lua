@@ -91,16 +91,27 @@ FsCounterStrike = {
 		{ "object/installation/turret/turret_fs_cs.iff", -12.5269, 0, 25.66261, 0 },
 	},
 
-	lootMobGroupList = {
-		{ template = "sith_shadow_thug_cs_nonaggro", minimumDistance = 5, maximumDistance = 16, referencePoint = 0 },
-		{ template = "sith_shadow_pirate_cs_nonaggro", minimumDistance = 4, maximumDistance = 14, referencePoint = 0 },
-		{ template = "sith_shadow_pirate_cs_nonaggro", minimumDistance = 4, maximumDistance = 14, referencePoint = 0 },
-		{ template = "sith_shadow_outlaw_cs_nonaggro", minimumDistance = 6, maximumDistance = 12, referencePoint = 0 },
-		{ template = "sith_shadow_outlaw_cs_nonaggro", minimumDistance = 6, maximumDistance = 12, referencePoint = 0 }
+	-- Defense wave data
+	lootMobDataTable = {
+		spawnerPulse = 120 * 1000, -- Time between spawn pulses
+		maxSpawn = 5, -- Max waves of mobiles to spawn over the entire lifetime of the spawner
+		maxPopulation = 5, -- Max mobs to have up at any one time
+		mobileLifespan = 1200 * 1000, -- Time until spawned mobs should be destroyed
+		expireTime = 1200 * 1000, -- Time until spawner should expire
+		aiHandlerFunc = "setupLootMob" -- Name of function that should setup a defender after it's spawned
 	},
+
+	lootMobSpawnList = {
+		-- { "template", minToSpawn, maxToSpawn, weight }
+		{ "sith_shadow_thug_nonaggro", 1, 1, 1 },
+		{ "sith_shadow_pirate_nonaggro", 2, 3, 2 },
+		{ "sith_shadow_outlaw_nonaggro", 2, 3, 2 },
+	},
+
 	maxLootMobGroups = 2, -- Max loot mob groups to have spawned at one time
 	lootMobGroupMinDist = 200, -- Min distance to spawn from camp
 	lootMobGroupMaxDist = 300, -- Max distance to spawn from camp
+	lootMobSpawnerInterval = 1200 * 1000, -- Time until a new set of spawners are created
 
 	droidTemplate = "fs_mouse_droid",
 	maxDroids = 5,
@@ -112,6 +123,7 @@ FsCounterStrike = {
 		spawnerPulse = 10 * 1000, -- Time between spawn pulses
 		maxSpawn = 10, -- Max waves of mobiles to spawn over the entire lifetime of the spawner
 		maxPopulation = 10, -- Max mobs to have up at any one time
+		mobileLifespan = 30 * 1000, -- Time until spawned mobs should be destroyed
 		expireTime = 30 * 1000, -- Time until spawner should expire
 		aiHandlerFunc = "setupSpawnedDefender" -- Name of function that should setup a defender after it's spawned
 	},
@@ -127,6 +139,7 @@ FsCounterStrike = {
 		spawnerPulse = 10 * 1000, -- Time between spawn pulses
 		maxSpawn = 15, -- Max waves of mobiles to spawn over the entire lifetime of the spawner
 		maxPopulation = 15, -- Max mobs to have up at any one time
+		mobileLifespan = 30 * 1000, -- Time until spawned mobs should be destroyed
 		expireTime = 30 * 1000, -- Time until spawner should expire
 		aiHandlerFunc = "setupSpawnedDefender" -- Name of function that should setup a defender after it's spawned
 	},
@@ -283,19 +296,30 @@ function FsCounterStrike:notifyKilledDroid(pVictim, pAttacker)
 	return 1
 end
 
-function FsCounterStrike:notifyDestructibleKilled(pVictim, pAttacker)
+function FsCounterStrike:notifyDestructibleDisabled(pVictim, pAttacker)
 	if (pVictim == nil) then
 		return 1
 	end
 
-	playClientEffectLoc(SceneObject(pVictim):getObjectID(), "clienteffect/combat_explosion_lair_large.cef", "dathomir", SceneObject(pVictim):getPositionX(), SceneObject(pVictim):getPositionZ(), SceneObject(pVictim):getPositionY(), 0)
+	if (pAttacker ~= nil) then
+		playClientEffectLoc(SceneObject(pAttacker):getObjectID(), "clienteffect/combat_explosion_lair_large.cef", "dathomir", SceneObject(pVictim):getPositionX(), SceneObject(pVictim):getPositionZ(), SceneObject(pVictim):getPositionY(), 0)
+	end
 
-	SceneObject(pVictim):destroyObjectFromWorld()
+	createEvent(2000, "FsCounterStrike", "destroyDestructible", pVictim, "")
 
 	return 1
 end
 
-function FsCounterStrike:spawnLootMobGroup(pTheater, id)
+function FsCounterStrike:destroyDestructible(pDestructible)
+	if (pDestructible == nil) then
+		return
+	end
+
+	SceneObject(pDestructible):destroyObjectFromWorld()
+end
+
+
+function FsCounterStrike:spawnLootMobGroup(pTheater)
 	if (pTheater == nil) then
 		return
 	end
@@ -305,84 +329,20 @@ function FsCounterStrike:spawnLootMobGroup(pTheater, id)
 	local theaterY = SceneObject(pTheater):getWorldPositionY()
 
 	local spawnPoint = getSpawnPoint("dathomir", theaterX, theaterY, self.lootMobGroupMinDist, self.lootMobGroupMaxDist, true)
-	local pSpawnLoc = spawnSceneObject("dathomir", "object/static/structure/nobuild/nobuild_32.iff", spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, 0)
-
-	if (pSpawnLoc == nil) then
-		return
-	end
-
-	local spawnLocID = SceneObject(pSpawnLoc):getObjectID()
-	writeData(theaterID .. ":lootSpawnGroup" .. id, spawnLocID)
-	writeData(spawnLocID .. ":theaterID", theaterID)
-	writeData(spawnLocID .. ":spawnGroupNum", id)
-
-	local spawnedMobileList = SpawnMobiles.spawnMobiles(pSpawnLoc, "FsCounterStrike", self.lootMobGroupList, true)
-	writeData(theaterID .. ":lootSpawnGroup" .. id .. ":killableCount", #spawnedMobileList)
-
-	for i = 1, #spawnedMobileList, 1 do
-		if (spawnedMobileList[i] ~= nil) then
-			writeData(SceneObject(spawnedMobileList[i]):getObjectID() .. ":spawnGroupID", spawnLocID)
-			createObserver(OBJECTDESTRUCTION, "FsCounterStrike", "notifyKilledLootMobile", spawnedMobileList[i])
-		end
-	end
+	QuestSpawner:createQuestSpawner("FsCounterStrike", "lootMobDataTable", "lootMobSpawnList", spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, "dathomir", pTheater)
 end
 
-function FsCounterStrike:destroyLootMobGroup(pTheater, id)
-	if (pTheater == nil) then
+function FsCounterStrike:setupLootMob(pMobile)
+	if (pMobile == nil) then
 		return
 	end
 
-	local theaterID = SceneObject(pTheater):getObjectID()
-	local spawnGroupID = readData(theaterID .. ":lootSpawnGroup" .. id)
-
-	local pSpawnGroup = getSceneObject(spawnGroupID)
-
-	if (pSpawnGroup == nil) then
-		return
-	end
-
-	local mobileList = SpawnMobiles.getSpawnedMobiles(pSpawnGroup, "FsCounterStrike")
-
-	for i = 1, #mobileList, 1 do
-		if (mobileList[i] ~= nil and not CreatureObject(mobileList[i]):isDead()) then
-			deleteData(SceneObject(mobileList[i]):getObjectID() .. ":spawnGroupID")
-			dropObserver(OBJECTDESTRUCTION, mobileList[i])
-			SceneObject(mobileList[i]):destroyObjectFromWorld()
-		end
-	end
-
-	SceneObject(pSpawnGroup):destroyObjectFromWorld()
-
-	deleteData(theaterID .. ":lootSpawnGroup" .. id)
-	deleteData(spawnGroupID .. ":theaterID")
-	deleteData(spawnGroupID .. ":spawnGroupNum")
-	deleteData(theaterID .. ":lootSpawnGroup" .. id .. ":killableCount")
+	createObserver(OBJECTDESTRUCTION, "FsCounterStrike", "notifyKilledLootMobile", pMobile)
 end
 
 function FsCounterStrike:notifyKilledLootMobile(pVictim, pAttacker)
-	if (pVictim == nil) then
+	if (pVictim == nil or getRandomNumber(1,100) < 80) then
 		return 1
-	end
-
-	local spawnGroupID = readData(SceneObject(pVictim):getObjectID() .. ":spawnGroupID")
-	local spawnGroupNum = readData(spawnGroupID .. ":spawnGroupNum")
-	local theaterID = readData(spawnGroupID .. ":theaterID")
-
-	local pTheater = getSceneObject(theaterID)
-
-	if (pTheater == nil) then
-		return 1
-	end
-
-	local numEnemies = readData(theaterID .. ":lootSpawnGroup" .. spawnGroupNum .. ":killableCount")
-	numEnemies = numEnemies - 1
-	writeData(theaterID .. ":lootSpawnGroup" .. spawnGroupNum .. ":killableCount", numEnemies)
-
-	deleteData(SceneObject(pVictim):getObjectID() .. ":spawnGroupID")
-
-	if (numEnemies <= 0) then
-		self:destroyLootMobGroup(pTheater, spawnGroupNum)
-		self:spawnLootMobGroup(pTheater, spawnGroupNum)
 	end
 
 	local pInventory = CreatureObject(pVictim):getSlottedObject("inventory")
@@ -391,10 +351,12 @@ function FsCounterStrike:notifyKilledLootMobile(pVictim, pAttacker)
 		return 1
 	end
 
-	for i = 1, SceneObject(pInventory):getContainerObjectsSize(), 1 do
+	createLoot(pInventory, "cs_datapad", 0, true)
+
+	for i = 0, SceneObject(pInventory):getContainerObjectsSize() - 1, 1 do
 		local pItem = SceneObject(pInventory):getContainerObject(i)
 
-		if pItem ~= nil then
+		if pItem ~= nil and SceneObject(pItem):getTemplateObjectPath() == "object/tangible/loot/quest/force_sensitive/camp_frequency_datapad.iff" or SceneObject(pItem):getTemplateObjectPath() == "object/tangible/loot/quest/force_sensitive/camp_waypoint_datapad.iff" then
 			local csItem = LuaFsCsObject(pItem)
 			csItem:setPhaseDuration(VillageJediManagerTownship.getVillagePhaseChangeTime())
 		end
@@ -403,14 +365,17 @@ function FsCounterStrike:notifyKilledLootMobile(pVictim, pAttacker)
 	return 1
 end
 
+
 function FsCounterStrike:spawnLootMobGroups(pTheater)
 	if (pTheater == nil) then
 		return
 	end
 
 	for i = 1, self.maxLootMobGroups, 1 do
-		self:spawnLootMobGroup(pTheater, i)
+		self:spawnLootMobGroup(pTheater)
 	end
+
+	createEvent(self.lootMobSpawnerInterval, "FsCounterStrike", "spawnLootMobGroups", pTheater, "")
 end
 
 function FsCounterStrike:spawnCamps()
@@ -457,7 +422,7 @@ function FsCounterStrike:spawnCamps()
 						writeData(theaterID .. ":campDoor1Index", i)
 						spawnedFirstDoor = true
 					end
-					createObserver(OBJECTDESTRUCTION, "FsCounterStrike", "notifyDestructibleKilled", pObject)
+					createObserver(OBJECTDISABLED, "FsCounterStrike", "notifyDestructibleDisabled", pObject)
 					TangibleObject(pObject):setOptionBit(INVULNERABLE)
 				elseif (objectTemplate == "object/installation/turret/turret_fs_cs.iff") then
 					if (spawnedFirstTurret and spawnedSecondTurret) then
@@ -474,7 +439,7 @@ function FsCounterStrike:spawnCamps()
 					end
 				elseif (objectTemplate == "object/installation/battlefield/destructible/antenna_tatt_style_1.iff") then
 					writeData(theaterID .. "antenna", SceneObject(pObject):getObjectID())
-					createObserver(OBJECTDESTRUCTION, "FsCounterStrike", "notifyDestructibleKilled", pObject)
+					createObserver(OBJECTDISABLED, "FsCounterStrike", "notifyDestructibleDisabled", pObject)
 					TangibleObject(pObject):setOptionBit(INVULNERABLE)
 				elseif (objectTemplate == "object/static/structure/corellia/corl_tent_hut_s01.iff") then
 					writeData(theaterID .. ":tentIndex", i)
@@ -534,10 +499,6 @@ function FsCounterStrike:despawnCamp(campNum)
 	local pTheater = getSceneObject(theaterID)
 
 	if (pTheater ~= nil) then
-		for i = 1, self.maxLootMobGroups, 1 do
-			self:destroyLootMobGroup(pTheater, i)
-		end
-
 		SceneObject(pTheater):destroyObjectFromWorld()
 	end
 
@@ -560,7 +521,7 @@ function FsCounterStrike:despawnCamp(campNum)
 		local pObject = getSceneObject(objID)
 
 		if (pObject ~= nil) then
-			dropObserver(OBJECTDESTRUCTION, pObject)
+			dropObserver(OBJECTDISABLED, pObject)
 			SceneObject(pObject):destroyObjectFromWorld()
 		end
 
@@ -1090,8 +1051,9 @@ function FsCounterStrike:spawnDefenseWaves(pTheater)
 		return
 	end
 
+	local theaterID = SceneObject(pTheater):getObjectID()
 	-- This is set when the player begins the escort portion
-	local shouldStopSpawn = readData(SceneObject(pTheater):getObjectID() .. ":shouldStopSpawn")
+	local shouldStopSpawn = readData(theaterID .. ":shouldStopSpawn")
 
 	if (shouldStopSpawn == 1) then
 		deleteData(theaterID .. ":shouldStopSpawn")
@@ -1278,7 +1240,7 @@ function FsCounterStrike:setupSpawnedDefender(pMobile)
 
 	local door1X = theaterX + door1Data[2]
 	local door1Z = theaterZ + door1Data[3]
-	local door1Y = theaterY + door1Data[4]
+	local door1Y = theaterY + door1Data[4] + 4 -- Adjust to be slightly outside gate
 
 	local distToDoor1 = SceneObject(pMobile):getDistanceToPosition(door1X, door1Z, door1Y)
 
@@ -1287,14 +1249,22 @@ function FsCounterStrike:setupSpawnedDefender(pMobile)
 
 	local door2X = theaterX + door2Data[2]
 	local door2Z = theaterZ + door2Data[3]
-	local door2Y = theaterY + door2Data[4]
+	local door2Y = theaterY + door2Data[4] - 4 -- Adjust to be slightly outside gate
 
 	local distToDoor2 = SceneObject(pMobile):getDistanceToPosition(door2X, door2Z, door2Y)
+
+	local door1ID = readData(theaterID .. "campDoor1")
+	local pDoor1 = getSceneObject(door1ID)
+	local door1Destroyed = false
+
+	if (pDoor1 == nil) then
+		door1Destroyed = true
+	end
 
 	AiAgent(pMobile):stopWaiting()
 	AiAgent(pMobile):setWait(0)
 
-	if (distToDoor1 < distToDoor2) then
+	if (distToDoor1 < distToDoor2 or not door1Destroyed) then
 		AiAgent(pMobile):setNextPosition(door1X, door1Z, door1Y, 0)
 		AiAgent(pMobile):setHomeLocation(door1X, door1Z, door1Y, 0)
 	else

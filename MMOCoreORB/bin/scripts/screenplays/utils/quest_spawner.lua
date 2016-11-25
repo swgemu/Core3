@@ -227,6 +227,11 @@ function QuestSpawner:destroySpawnerMobile(pMobile)
 	if (pMobile == nil) then
 		return
 	end
+	
+	if (AiAgent(pMobile):isInCombat()) then
+		createEvent(10 * 1000, "QuestSpawner", "destroySpawnerMobile", pMobile, "")
+		return
+	end
 
 	deleteData(SceneObject(pMobile):getObjectID() .. ":spawnerID")
 

@@ -45,9 +45,10 @@ object_installation_turret_turret_fs_cs = object_installation_turret_shared_turr
 	pvpStatusBitmask = ATTACKABLE,
 	optionsBitmask = 0,
 	maxCondition = 75000,
+	maxRange = 60,
 	zoneComponent = "TurretZoneComponent",
 	dataObjectComponent = "TurretDataComponent",
-	factionString = "sith_shadow",
+	factionString = "sith_shadow_nonaggro",
 	-- Damagetypes in WeaponObject
 	vulnerability = BLAST + LIGHTSABER,
 	-- LIGHT, MEDIUM, HEAVY
@@ -63,7 +64,7 @@ object_installation_turret_turret_fs_cs = object_installation_turret_shared_turr
 	acid = 80,
 	lightSaber = -1,
 	chanceHit = 4,
-	weapon = "object/weapon/ranged/turret/turret_block_large.iff",
+	weapon = "object/weapon/ranged/turret/turret_block_small.iff",
 }
 
 ObjectTemplates:addTemplate(object_installation_turret_turret_fs_cs, "object/installation/turret/turret_fs_cs.iff")
