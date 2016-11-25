@@ -1,6 +1,6 @@
 local ObjectManager = require("managers.object.object_manager")
-seansHistorianConvoHandler = conv_handler:new {
-}
+
+seansHistorianConvoHandler = conv_handler:new { }
 
 function seansHistorianConvoHandler:hasHistoryDisk(pPlayer)
 	if (pPlayer ~= nil) then
@@ -55,9 +55,8 @@ end
 function seansHistorianConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
-	if (not BestineElectionScreenPlay:isElectionEnabled()) then
-		return convoTemplate:getScreen("sean_notinOffice")
-	elseif (getQuestStatus("bestine_election:electionWinner") == "sean") then
+	
+	if (getQuestStatus("bestine:election:electionWinner") == "sean") then
 		if (CreatureObject(pPlayer):hasScreenPlayState(1, "bestine_history_quest")) then
 			return convoTemplate:getScreen("has_historyQuest")
 		elseif CreatureObject(pPlayer):hasScreenPlayState(2, "bestine_history_quest") or CreatureObject(pPlayer):hasScreenPlayState(4, "bestine_history_quest") then
