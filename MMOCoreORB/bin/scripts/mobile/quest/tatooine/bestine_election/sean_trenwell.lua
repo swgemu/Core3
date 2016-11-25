@@ -23,15 +23,14 @@ sean_trenwell = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_sean_trenwell.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "seanTrenwellConvoTemplate",
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(sean_trenwell, "sean_trenwell")
