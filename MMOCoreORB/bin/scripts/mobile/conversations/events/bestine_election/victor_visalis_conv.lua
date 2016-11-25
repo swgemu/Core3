@@ -1,7 +1,7 @@
 victorVisalisConvoTemplate = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "victor_visalis_conv_handler",
+	luaClassHandler = "victorVisalisConvoHandler",
 	screens = {}
 }
 

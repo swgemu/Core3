@@ -23,13 +23,13 @@ keanna_likyna = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
+	optionsBitmask = INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_keanna_likyna.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "keannaLikynaConvoTemplate",
+	conversationTemplate = "",
 	attacks = {}
 }
 

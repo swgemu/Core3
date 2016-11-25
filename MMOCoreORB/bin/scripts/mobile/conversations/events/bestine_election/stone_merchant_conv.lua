@@ -1,7 +1,7 @@
 StoneMerchantConvoTemplate = ConvoTemplate:new {
   initialScreen = "",
   templateType = "Lua",
-  luaClassHandler = "stone_merchant_conv_handler",
+  luaClassHandler = "StoneMerchantConvoHandler",
   screens = {}
 }
 

@@ -1,7 +1,7 @@
 seanContactConvoTemplate = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "sean_contact_conv_handler",
+	luaClassHandler = "seanContactConvoHandler",
 	screens = {}
 }
 

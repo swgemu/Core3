@@ -23,13 +23,13 @@ sean_questp_market = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
+	optionsBitmask = INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_sean_questp_market.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "seanQuestpMarketConvoTemplate",
+	conversationTemplate = "",
 	attacks = {}
 }
 

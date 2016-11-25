@@ -1,7 +1,7 @@
 tourAryonConvoTemplate = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "tour_aryon_conv_handler",
+	luaClassHandler = "tourAryonConvoHandler",
 	screens = {}
 }
 
