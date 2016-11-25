@@ -42,7 +42,7 @@
 
 
 object_tangible_magic_eight_ball_magic_eight_ball = object_tangible_magic_eight_ball_shared_magic_eight_ball:new {
-
+	objectMenuComponent = "MagicEightBallMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_magic_eight_ball_magic_eight_ball, "object/tangible/magic_eight_ball/magic_eight_ball.iff")
