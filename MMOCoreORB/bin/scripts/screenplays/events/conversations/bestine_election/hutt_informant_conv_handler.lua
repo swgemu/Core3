@@ -12,7 +12,7 @@ function huttInformantConvoHandler:destroyDisk(pPlayer)
 				local electionNum = BestineElectionScreenPlay:getElectionNumber()
 				SceneObject(hDisk):destroyObjectFromWorld()
 				SceneObject(hDisk):destroyObjectFromDatabase()
-				writeScreenPlayData(pPlayer, "BestineElection", "hutt", electionNum)
+				writeScreenPlayData(pPlayer, "BestineElection", "gaveDisktoHutt", electionNum)
 				seanTrenwellConvoHandler:removeHistoryQuest(pPlayer)
 			end
 
