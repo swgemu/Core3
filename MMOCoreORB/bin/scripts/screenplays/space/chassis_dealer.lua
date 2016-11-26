@@ -12,20 +12,20 @@ ships = {
 
 ChassisDealer = Object:new {}
 
-function ChassisDealer.playerHasValidBlueprints(pCreatureObject)
-	if (ChassisDealer.getValidBlueprints(pCreatureObject) ~= "") then
+function ChassisDealer:playerHasValidBlueprints(pPlayer)
+	if (#self:getValidBlueprints(pPlayer) > 0) then
 		return true
-	elseif (ChassisDealer.getValidBlueprints(pCreatureObject) == "") then
-		return false
 	end
+
+	return false
 end
 
-function ChassisDealer.getValidBlueprints(pCreatureObject)
-	if (pCreatureObject == nil) then
+function ChassisDealer:getValidBlueprints(pPlayer)
+	if (pPlayer == nil) then
 		return {}
 	end
 
-	local pInventory = SceneObject(pCreatureObject):getSlottedObject("inventory")
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 	local returnBluePrints = {}
 
 	if (pInventory == nil) then
@@ -46,7 +46,7 @@ function ChassisDealer.getValidBlueprints(pCreatureObject)
 	return returnBluePrints
 end
 
-function ChassisDealer.getPathByName(objectName)
+function ChassisDealer:getPathByName(objectName)
 	local returnString = nil
 
 	foreach(ships, function(theShip)
@@ -58,7 +58,7 @@ function ChassisDealer.getPathByName(objectName)
 	return returnString
 end
 
-function ChassisDealer.getChassisFromBlueprint(objectPath)
+function ChassisDealer:getChassisFromBlueprint(objectPath)
 	local returnString = nil
 
 	foreach(ships, function(theShip)

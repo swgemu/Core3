@@ -18,9 +18,9 @@ function fs_experience_converter_conv_handler:runScreenHandlers(pConvTemplate, p
 		local clonedConversation = LuaConversationScreen(pConvScreen)
 
 		if (nextUnlockableBranches ~= nil) then
-			local insertionStringFormatted = nextUnlockableBranches[1]
+			local insertionStringFormatted = nextUnlockableBranches[1][1]
 			for i = 2, #nextUnlockableBranches, 1 do
-				insertionStringFormatted = insertionStringFormatted .. " , " .. nextUnlockableBranches[i]
+				insertionStringFormatted = insertionStringFormatted .. " , " .. nextUnlockableBranches[i][1]
 			end
 			clonedConversation:setDialogTextTO(insertionStringFormatted)
 		elseif (nextUnlockableBranches == nil) then
@@ -64,9 +64,9 @@ function fs_experience_converter_conv_handler:notifyBranchUnlocked(pPlayer, pSui
 	end
 	local options = ExperienceConverter:getNextUnlockableBranches(pPlayer)
 	local tier4Selection = options[tonumber(arg0) + 1]
-	local branchTier4 = ExperienceConverter:getHighestBoxForTrainer(tier4Selection)
+	local branchTier4 = ExperienceConverter:getHighestBoxForTrainer(tier4Selection[1])
 
-	CreatureObject(pPlayer):sendSystemMessageWithTO("@quest/force_sensitive/utils:branch_selected_unlock", tier4Selection)
+	CreatureObject(pPlayer):sendSystemMessageWithTO("@quest/force_sensitive/utils:branch_selected_unlock", tier4Selection[1])
 
 	-- Set it as trained.
 	CreatureObject(pPlayer):setScreenPlayState(2, "VillageUnlockScreenPlay:" .. branchTier4)
@@ -127,7 +127,7 @@ function fs_experience_converter_conv_handler:notifyTransfer(pPlayer, pSui, even
 
 	local optionsName = ExperienceConverter:getExperienceForConversion(pPlayer, expTransferType)
 
-	local optionsNameFrom = optionsName[arg0 + 1]
+	local optionsNameFrom = optionsName[arg0 + 1][1]
 	local optionsNameFromUnformatted = string.sub(optionsNameFrom, 8, string.len(optionsNameFrom))
 
 	local experienceTypeFS = nil
@@ -197,7 +197,7 @@ function fs_experience_converter_conv_handler:transferExperiencePoints(pPlayer, 
 	if (experienceTypeFS ~= nil) then
 		local optionsName = ExperienceConverter:getExperienceForConversion(pPlayer, ExperienceConverter:getSuiTransferExperienceType(objId))
 		local optionsChoice = tonumber(ExperienceConverter:getSuiTransferExperienceSelection(CreatureObject(pPlayer):getObjectID()))
-		local optionsNameFrom = tostring(optionsName[optionsChoice])
+		local optionsNameFrom = tostring(optionsName[optionsChoice][1])
 		local optionsNameFromUnformatted = string.sub(optionsNameFrom, 8, string.len(optionsNameFrom))
 
 		ExperienceConverter:deleteSuiTransferExperienceSelection(objId)
