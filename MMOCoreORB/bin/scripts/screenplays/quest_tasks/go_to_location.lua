@@ -30,15 +30,15 @@ GoToLocation = Task:new {
 
 
 -- Setup the active area around.
--- @param pCreatureObject pointer to the creature object for whom the area is created for.
+-- @param pPlayer pointer to the creature object for whom the area is created for.
 -- @param spawnPointCoordinates where to spawn the active area.
 -- @param spawnPointPlanet planet to spawn it on.
 -- @return true if setup was successful, false otherwise.
-function GoToLocation:setupActiveArea(pCreatureObject, spawnPoint, spawnPlanet, spawnRadius)
+function GoToLocation:setupActiveArea(pPlayer, spawnPoint, spawnPlanet, spawnRadius)
 	local pActiveArea = spawnActiveArea(spawnPlanet, ACTIVE_AREA_IFF, spawnPoint.x, 0, spawnPoint.y, spawnRadius, 0)
 
 	if (pActiveArea ~= nil) then
-		writeData(SceneObject(pCreatureObject):getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING, SceneObject(pActiveArea):getObjectID())
+		writeData(SceneObject(pPlayer):getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING, SceneObject(pActiveArea):getObjectID())
 		createObserver(ENTEREDAREA, self.taskName, "handleEnteredAreaEvent", pActiveArea)
 	end
 
@@ -47,17 +47,17 @@ end
 
 -- Handle the entered active area event.
 -- @param pActiveArea pointer to the active area that is entered.
--- @param pCreatureObject pointer to the creature who is entering the active area.
+-- @param pPlayer pointer to the creature who is entering the active area.
 -- @param nothing not used.
-function GoToLocation:handleEnteredAreaEvent(pActiveArea, pCreatureObject, nothing)
-	if not SceneObject(pCreatureObject):isCreatureObject() then
+function GoToLocation:handleEnteredAreaEvent(pActiveArea, pPlayer, nothing)
+	if not SceneObject(pPlayer):isCreatureObject() then
 		return 0
 	end
 
-	local storedActiveAreaId = readData(SceneObject(pCreatureObject):getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING)
+	local storedActiveAreaId = readData(SceneObject(pPlayer):getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING)
 
 	if storedActiveAreaId == SceneObject(pActiveArea):getObjectID() then
-		self:onEnteredActiveArea(pCreatureObject)
+		self:onEnteredActiveArea(pPlayer)
 		return 1
 	end
 
@@ -65,9 +65,9 @@ function GoToLocation:handleEnteredAreaEvent(pActiveArea, pCreatureObject, nothi
 end
 
 -- Start the GoToLocation.
--- @param pCreatureObject pointer to the creature object of the player.
-function GoToLocation:taskStart(pCreatureObject)
-	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+-- @param pPlayer pointer to the creature object of the player.
+function GoToLocation:taskStart(pPlayer)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
 		Logger:log("Failed to spawn " .. self.taskName .. " location.", LT_ERROR)
@@ -79,7 +79,7 @@ function GoToLocation:taskStart(pCreatureObject)
 	local spawnPlanet = self.spawnPlanet
 
 	if (spawnPlanet == "") then
-		spawnPlanet = SceneObject(pCreatureObject):getZoneName()
+		spawnPlanet = SceneObject(pPlayer):getZoneName()
 	end
 
 	local point = self.spawnPoint
@@ -87,8 +87,8 @@ function GoToLocation:taskStart(pCreatureObject)
 	if (self.randomLocation) then
 		local tempX, tempY
 		if next(point) == nil then
-			tempX = SceneObject(pCreatureObject):getWorldPositionX()
-			tempY = SceneObject(pCreatureObject):getWorldPositionY()
+			tempX = SceneObject(pPlayer):getWorldPositionX()
+			tempY = SceneObject(pPlayer):getWorldPositionY()
 		else
 			tempX = point.x
 			tempY = point.y
@@ -99,34 +99,34 @@ function GoToLocation:taskStart(pCreatureObject)
 		point.y = tempPoint[3]
 	end
 
-	local pActiveArea = self:setupActiveArea(pCreatureObject, point, spawnPlanet, self.spawnRadius)
+	local pActiveArea = self:setupActiveArea(pPlayer, point, spawnPlanet, self.spawnRadius)
 	if pActiveArea ~= nil then
 		local waypointId = PlayerObject(pGhost):addWaypoint(spawnPlanet, self.waypointDescription, "", point.x, point.y, WAYPOINTORANGE, true, true, WAYPOINTQUESTTASK)
 
 		if waypointId ~= nil then
-			self:onSuccessfulSpawn(pCreatureObject, pActiveArea)
+			self:onSuccessfulSpawn(pPlayer, pActiveArea)
 			return true
 		end
 	end
 
 	-- Something failed above, clean up and end the task.
 	Logger:log("Failed to spawn " .. self.taskName .. " location.", LT_ERROR)
-	self:finish(pCreatureObject)
+	self:finish(pPlayer)
 
 	return false
 end
 
 -- Handle the task finish event.
--- @param pCreatureObject pointer to the creature object of the player that the event was triggered for.
-function GoToLocation:taskFinish(pCreatureObject)
-	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+-- @param pPlayer pointer to the creature object of the player that the event was triggered for.
+function GoToLocation:taskFinish(pPlayer)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
 		return false
 	end
 
 	Logger:log("Despawning " .. self.taskName .. " location.", LT_INFO)
-	local playerID = SceneObject(pCreatureObject):getObjectID()
+	local playerID = SceneObject(pPlayer):getObjectID()
 
 	PlayerObject(pGhost):removeWaypointBySpecialType(WAYPOINTQUESTTASK)
 

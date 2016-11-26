@@ -40,44 +40,44 @@ function fs_experience_converter_conv_handler:runScreenHandlers(pConvTemplate, p
 	return pConvScreen
 end
 
-function fs_experience_converter_conv_handler:chooseBranchToUnlock(pCreature)
-	if (pCreature == nil) then
+function fs_experience_converter_conv_handler:chooseBranchToUnlock(pPlayer)
+	if (pPlayer == nil) then
 		return
 	end
 
 	local suiManager = LuaSuiManager()
-	local options = ExperienceConverter:getNextUnlockableBranches(pCreature)
+	local options = ExperienceConverter:getNextUnlockableBranches(pPlayer)
 
 	if (options == nil) then
-		CreatureObject(pCreature):sendSystemMessage("@quest/force_sensitive/utils:no_available_branches")
+		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/utils:no_available_branches")
 		return
 	end
 
-	suiManager:sendListBox(pCreature, pCreature, "@quest/force_sensitive/utils:branch_select_title", "@quest/force_sensitive/utils:select_branch", 2, "@cancel", "", "@ok", "fs_experience_converter_conv_handler", "notifyBranchUnlocked", 32, options)
+	suiManager:sendListBox(pPlayer, pPlayer, "@quest/force_sensitive/utils:branch_select_title", "@quest/force_sensitive/utils:select_branch", 2, "@cancel", "", "@ok", "fs_experience_converter_conv_handler", "notifyBranchUnlocked", options)
 end
 
-function fs_experience_converter_conv_handler:notifyBranchUnlocked(pCreature, pSui, eventIndex, arg0)
+function fs_experience_converter_conv_handler:notifyBranchUnlocked(pPlayer, pSui, eventIndex, arg0)
 	local cancelPressed = (eventIndex == 1)
 
-	if (pCreature == nil or cancelPressed) then
+	if (pPlayer == nil or cancelPressed) then
 		return
 	end
-	local options = ExperienceConverter:getNextUnlockableBranches(pCreature)
+	local options = ExperienceConverter:getNextUnlockableBranches(pPlayer)
 	local tier4Selection = options[tonumber(arg0) + 1]
 	local branchTier4 = ExperienceConverter:getHighestBoxForTrainer(tier4Selection)
 
-	CreatureObject(pCreature):sendSystemMessageWithTO("@quest/force_sensitive/utils:branch_selected_unlock", tier4Selection)
+	CreatureObject(pPlayer):sendSystemMessageWithTO("@quest/force_sensitive/utils:branch_selected_unlock", tier4Selection)
 
 	-- Set it as trained.
-	CreatureObject(pCreature):setScreenPlayState(2, "VillageUnlockScreenPlay:" .. branchTier4)
+	CreatureObject(pPlayer):setScreenPlayState(2, "VillageUnlockScreenPlay:" .. branchTier4)
 end
 
-function fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pCreature, experienceType)
-	if (pCreature == nil) then
+function fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pPlayer, experienceType)
+	if (pPlayer == nil) then
 		return
 	end
 
-	local options = ExperienceConverter:getExperienceForConversion(pCreature, experienceType)
+	local options = ExperienceConverter:getExperienceForConversion(pPlayer, experienceType)
 
 	local experienceTypeFS = nil
 	if (experienceType == 0) then
@@ -91,33 +91,33 @@ function fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pCrea
 	end
 
 	if (#options <= 0) then
-		CreatureObject(pCreature):sendSystemMessage("@quest/force_sensitive/utils:convert_not_enough_for_conversion")
+		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/utils:convert_not_enough_for_conversion")
 		return
 	end
 
 	-- Save the option.
-	ExperienceConverter:setSuiTransferExperienceType(experienceType, CreatureObject(pCreature):getObjectID())
+	ExperienceConverter:setSuiTransferExperienceType(experienceType, CreatureObject(pPlayer):getObjectID())
 
 	if (experienceTypeFS ~= nil) then
 		local suiManager = LuaSuiManager()
-		suiManager:sendListBox(pCreature, pCreature, "@quest/force_sensitive/utils:xp_transfer_prompt", "Select the Experience you wish to convert to: " .. experienceTypeFS, 2, "@cancel", "", "@ok", "fs_experience_converter_conv_handler", "notifyTransfer", 32, options)
+		suiManager:sendListBox(pPlayer, pPlayer, "@quest/force_sensitive/utils:xp_transfer_prompt", "Select the Experience you wish to convert to: " .. experienceTypeFS, 2, "@cancel", "", "@ok", "fs_experience_converter_conv_handler", "notifyTransfer", options)
 	end
 end
 
-function fs_experience_converter_conv_handler:notifyTransfer(pCreature, pSui, eventIndex, arg0)
+function fs_experience_converter_conv_handler:notifyTransfer(pPlayer, pSui, eventIndex, arg0)
 	local cancelPressed = (eventIndex == 1)
 
-	if (pCreature == nil or cancelPressed or arg0 == -1) then
+	if (pPlayer == nil or cancelPressed or arg0 == -1) then
 		return
 	end
 
-	local pGhost = CreatureObject(pCreature):getPlayerObject()
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
 		return
 	end
 
-	local objId = CreatureObject(pCreature):getObjectID()
+	local objId = CreatureObject(pPlayer):getObjectID()
 
 	if (objId == nil) then
 		return
@@ -125,7 +125,7 @@ function fs_experience_converter_conv_handler:notifyTransfer(pCreature, pSui, ev
 
 	local expTransferType = ExperienceConverter:getSuiTransferExperienceType(objId)
 
-	local optionsName = ExperienceConverter:getExperienceForConversion(pCreature, expTransferType)
+	local optionsName = ExperienceConverter:getExperienceForConversion(pPlayer, expTransferType)
 
 	local optionsNameFrom = optionsName[arg0 + 1]
 	local optionsNameFromUnformatted = string.sub(optionsNameFrom, 8, string.len(optionsNameFrom))
@@ -153,24 +153,24 @@ function fs_experience_converter_conv_handler:notifyTransfer(pCreature, pSui, ev
 		local optionsFrom = {optionsNameFrom, PlayerObject(pGhost):getExperience(optionsNameFromUnformatted), ratio}
 		local optionsTo = {experienceTypeFS, 0, 1}
 		local suiManager = LuaSuiManager()
-		suiManager:sendTransferBox(pCreature, pCreature, "@quest/force_sensitive/utils:xp_transfer_prompt", "How much of that Experience do you wish to convert to: " .. experienceTypeFS, "@ok", "fs_experience_converter_conv_handler", "transferExperiencePoints", optionsTo, optionsFrom)
+		suiManager:sendTransferBox(pPlayer, pPlayer, "@quest/force_sensitive/utils:xp_transfer_prompt", "How much of that Experience do you wish to convert to: " .. experienceTypeFS, "@ok", "fs_experience_converter_conv_handler", "transferExperiencePoints", optionsTo, optionsFrom)
 	end
 end
 
-function fs_experience_converter_conv_handler:transferExperiencePoints(pCreature, pSui, eventIndex, arg0, arg1)
+function fs_experience_converter_conv_handler:transferExperiencePoints(pPlayer, pSui, eventIndex, arg0, arg1)
 	local cancelPressed = (eventIndex == 1)
 
-	if (pCreature == nil or cancelPressed) then
+	if (pPlayer == nil or cancelPressed) then
 		return
 	end
 
-	local pGhost = CreatureObject(pCreature):getPlayerObject()
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
 		return
 	end
 
-	local objId = CreatureObject(pCreature):getObjectID()
+	local objId = CreatureObject(pPlayer):getObjectID()
 
 	if (objId == nil) then
 		return
@@ -190,13 +190,13 @@ function fs_experience_converter_conv_handler:transferExperiencePoints(pCreature
 	end
 
 	if (arg1 == "0") then
-		CreatureObject(pCreature):sendSystemMessage("@quest/force_sensitive/utils:convert_allocate_more_xp")
+		CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/utils:convert_allocate_more_xp")
 		return
 	end
 
 	if (experienceTypeFS ~= nil) then
-		local optionsName = ExperienceConverter:getExperienceForConversion(pCreature, ExperienceConverter:getSuiTransferExperienceType(objId))
-		local optionsChoice = tonumber(ExperienceConverter:getSuiTransferExperienceSelection(CreatureObject(pCreature):getObjectID()))
+		local optionsName = ExperienceConverter:getExperienceForConversion(pPlayer, ExperienceConverter:getSuiTransferExperienceType(objId))
+		local optionsChoice = tonumber(ExperienceConverter:getSuiTransferExperienceSelection(CreatureObject(pPlayer):getObjectID()))
 		local optionsNameFrom = tostring(optionsName[optionsChoice])
 		local optionsNameFromUnformatted = string.sub(optionsNameFrom, 8, string.len(optionsNameFrom))
 
@@ -211,10 +211,10 @@ function fs_experience_converter_conv_handler:transferExperiencePoints(pCreature
 
 		-- If they are capped (or will be), don't let them transfer any more xp. The cap for any FS exp type seems to be 5100000.
 		if (expFsCurrent >= PlayerObject(pGhost):getExperienceCap(expFsUnformatted) or (expFsCurrent + tonumber(arg1) > PlayerObject(pGhost):getExperienceCap(expFsUnformatted))) then
-			CreatureObject(pCreature):sendSystemMessage("@quest/force_sensitive/utils:convert_at_fs_skill_cap")
+			CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/utils:convert_at_fs_skill_cap")
 			return
 		elseif (expNormal + xpToLose < 0) then -- check for negative.
-			CreatureObject(pCreature):sendSystemMessage("@quest/force_sensitive/utils:convert_not_enough_xp")
+			CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/utils:convert_not_enough_xp")
 			return
 		end
 
@@ -224,11 +224,11 @@ function fs_experience_converter_conv_handler:transferExperiencePoints(pCreature
 		messageString2:setTO(experienceTypeFS)
 		messageString2:setDI(tonumber(arg1))
 		messageString:setDI(xpToLose * -1)
-		CreatureObject(pCreature):awardExperience(optionsNameFromUnformatted, xpToLose, false)
-		CreatureObject(pCreature):awardExperience(expFsUnformatted, tonumber(arg1), false)
+		CreatureObject(pPlayer):awardExperience(optionsNameFromUnformatted, xpToLose, false)
+		CreatureObject(pPlayer):awardExperience(expFsUnformatted, tonumber(arg1), false)
 
-		CreatureObject(pCreature):sendSystemMessage(messageString:_getObject())
-		CreatureObject(pCreature):sendSystemMessage(messageString2:_getObject())
+		CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject())
+		CreatureObject(pPlayer):sendSystemMessage(messageString2:_getObject())
 	end
 end
 

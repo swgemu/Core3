@@ -112,11 +112,11 @@ function ExperienceConverter:deleteSuiTransferExperienceType(oid)
 end
 
 -- See if the player qualifies for the conversion.
--- @param pPlayerObject pointer to the player object of the player.
+-- @param pPlayer pointer to the creature object of the player.
 -- @return a boolean.
-function ExperienceConverter.qualifiesForConversation(pCreatureObject)
+function ExperienceConverter.qualifiesForConversation(pPlayer)
 	-- TODO: Research why Paemos wouldn't converse with player.
-	if (pCreatureObject == nil) then
+	if (pPlayer == nil) then
 		return false
 	end
 
@@ -124,10 +124,10 @@ function ExperienceConverter.qualifiesForConversation(pCreatureObject)
 end
 
 -- Get the next unlockable branches that the player qualifies for.
--- @param pCreatureObject pointer to the creature object of the player.
+-- @param pPlayer pointer to the creature object of the player.
 -- @return table of strings of the branches ready to unlock.
-function ExperienceConverter:getNextUnlockableBranches(pCreatureObject)
-	if (pCreatureObject == nil) then
+function ExperienceConverter:getNextUnlockableBranches(pPlayer)
+	if (pPlayer == nil) then
 		return nil
 	end
 
@@ -136,7 +136,7 @@ function ExperienceConverter:getNextUnlockableBranches(pCreatureObject)
 
 
 	foreach(unlockableFSBranches, function(theTable)
-		local checkTrees = CreatureObject(pCreatureObject):getScreenPlayState("VillageFreeUnlockScreenPlay:" .. string.sub(theTable.topBox, 0, (string.len(theTable.topBox) - 3)))
+		local checkTrees = CreatureObject(pPlayer):getScreenPlayState("VillageFreeUnlockScreenPlay:" .. string.sub(theTable.topBox, 0, (string.len(theTable.topBox) - 3)))
 		if (checkTrees == 1) then
 			local option = {theTable.unlockString, 0}
 			table.insert(trees, option)
@@ -151,17 +151,17 @@ function ExperienceConverter:getNextUnlockableBranches(pCreatureObject)
 end
 
 -- Get the fully mastered and trained trees.
--- @param pCreatureObject pointer to the creature object of the player.
+-- @param pPlayer pointer to the creature object of the player.
 -- @return number of trees mastered.
-function ExperienceConverter:getMasteredBranches(pCreatureObject)
-	if (pCreatureObject == nil) then
+function ExperienceConverter:getMasteredBranches(pPlayer)
+	if (pPlayer == nil) then
 		return 0
 	end
 
 	local returnValue = 0 -- None.
 
 	foreach(unlockableFSBranches, function(theTable)
-		if CreatureObject(pCreatureObject):hasScreenPlayState(4, "VillageUnlockScreenPlay:" .. string.sub(theTable.topBox, 0, (string.len(theTable.topBox) - 3))) then
+		if CreatureObject(pPlayer):hasScreenPlayState(4, "VillageUnlockScreenPlay:" .. string.sub(theTable.topBox, 0, (string.len(theTable.topBox) - 3))) then
 			returnValue = returnValue + 1
 		end
 	end)
@@ -183,12 +183,12 @@ function ExperienceConverter:getHighestBoxForTrainer(selection)
 	return boxName
 end
 
-function ExperienceConverter:getExperienceForConversion(pCreature, theType)
-	if (pCreature == nil) then
+function ExperienceConverter:getExperienceForConversion(pPlayer, theType)
+	if (pPlayer == nil) then
 		return nil
 	end
 
-	local pGhost = CreatureObject(pCreature):getPlayerObject()
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
 		return nil

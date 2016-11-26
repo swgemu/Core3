@@ -51,10 +51,10 @@ SithShadowIntroTheater = GoToTheater:new {
 
 -- Check if the sith shadow is the first one spawned for the player.
 -- @param pSithShadow pointer to the sith shadow.
--- @param pCreatureObject pointer to the creature object of the player.
+-- @param pPlayer pointer to the creature object of the player.
 -- @return true if the sith shadow is the first one spawned for the player.
-function SithShadowIntroTheater:isTheFirstSithShadowOfThePlayer(pSithShadow, pCreatureObject)
-	local spawnedSithShadows = self:getSpawnedMobileList(pCreatureObject)
+function SithShadowIntroTheater:isTheFirstSithShadowOfThePlayer(pSithShadow, pPlayer)
+	local spawnedSithShadows = self:getSpawnedMobileList(pPlayer)
 
 	if spawnedSithShadows ~= nil and spawnedSithShadows[1] ~= nil then
 		return CreatureObject(spawnedSithShadows[1]):getObjectID() == CreatureObject(pSithShadow):getObjectID()
@@ -101,50 +101,50 @@ end
 
 -- Event handler for the enter active area event.
 -- The event will cause all spawned Sith Shadows to attack the player.
--- @param pCreatureObject pointer to the creature object of the player.
+-- @param pPlayer pointer to the creature object of the player.
 -- @param spawnedSithShadowsList list with pointers to the spawned sith shadows.
-function SithShadowIntroTheater:onEnteredActiveArea(pCreatureObject, spawnedSithShadowsList)
-	if (pCreatureObject == nil or spawnedSithShadowsList == nil) then
+function SithShadowIntroTheater:onEnteredActiveArea(pPlayer, spawnedSithShadowsList)
+	if (pPlayer == nil or spawnedSithShadowsList == nil) then
 		return
 	end
 
 	foreach(spawnedSithShadowsList, function(pMobile)
 		if (pMobile ~= nil) then
-			AiAgent(pMobile):setDefender(pCreatureObject)
+			AiAgent(pMobile):setDefender(pPlayer)
 		end
 	end)
-	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_2)
+	QuestManager.activateQuest(pPlayer, QuestManager.quests.LOOT_DATAPAD_2)
 end
 
 -- Event handler for the successful spawn event.
 -- The event will activate the FS_THEATER_CAMP quest for the player.
--- @param pCreatureObject pointer to the creature object of the player.
+-- @param pPlayer pointer to the creature object of the player.
 -- @param spawnedSithShadowsList list with pointers to the spawned sith shadows.
-function SithShadowIntroTheater:onSuccessfulSpawn(pCreatureObject, spawnedSithShadowsList)
-	if (pCreatureObject == nil or spawnedSithShadowsList == nil or spawnedSithShadowsList[1] == nil) then
+function SithShadowIntroTheater:onSuccessfulSpawn(pPlayer, spawnedSithShadowsList)
+	if (pPlayer == nil or spawnedSithShadowsList == nil or spawnedSithShadowsList[1] == nil) then
 		return
 	end
 
-	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.FS_THEATER_CAMP)
+	QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_THEATER_CAMP)
 	createObserver(LOOTCREATURE, self.taskName, "onLoot", spawnedSithShadowsList[1])
 end
 
 -- Handling of the activation of the theater waypoint datapad.
 -- @param pSceneObject pointer to the datapad object.
--- @param pCreatureObject pointer to the creature object who activated the datapad.
-function SithShadowIntroTheater:useTheaterDatapad(pSceneObject, pCreatureObject)
+-- @param pPlayer pointer to the creature object who activated the datapad.
+function SithShadowIntroTheater:useTheaterDatapad(pSceneObject, pPlayer)
 	Logger:log("Player used the looted theater datapad.", LT_INFO)
-	if QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD_2) then
-		CreatureObject(pCreatureObject):sendSystemMessage(READ_DISK_2_STRING)
+	if QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.GOT_DATAPAD_2) then
+		CreatureObject(pPlayer):sendSystemMessage(READ_DISK_2_STRING)
 
 		SceneObject(pSceneObject):destroyObjectFromWorld()
 		SceneObject(pSceneObject):destroyObjectFromDatabase()
 
-		QuestManager.completeQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_2)
-		FsIntro:setCurrentStep(pCreatureObject, 8)
-		GoToDathomir:start(pCreatureObject)
+		QuestManager.completeQuest(pPlayer, QuestManager.quests.LOOT_DATAPAD_2)
+		FsIntro:setCurrentStep(pPlayer, 8)
+		GoToDathomir:start(pPlayer)
 	else
-		CreatureObject(pCreatureObject):sendSystemMessage(READ_DISK_ERROR_STRING)
+		CreatureObject(pPlayer):sendSystemMessage(READ_DISK_ERROR_STRING)
 	end
 end
 

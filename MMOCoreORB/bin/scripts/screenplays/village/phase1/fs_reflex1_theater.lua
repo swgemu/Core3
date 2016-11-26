@@ -29,42 +29,42 @@ FsReflex1Theater = GoToTheater:new {
 	onEnteredActiveArea = nil
 }
 
-function FsReflex1Theater:onEnteredActiveArea(pCreatureObject, mobileList)
-	if (pCreatureObject == nil) then
+function FsReflex1Theater:onEnteredActiveArea(pPlayer, mobileList)
+	if (pPlayer == nil) then
 		return
 	end
 
-	self:removeTheaterWaypoint(pCreatureObject)
-	QuestManager.completeQuest(pCreatureObject, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_01)
-	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_02)
+	self:removeTheaterWaypoint(pPlayer)
+	QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_01)
+	QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_02)
 end
 
-function FsReflex1Theater:onSuccessfulSpawn(pCreatureObject, mobileList)
-	if (pCreatureObject == nil) then
+function FsReflex1Theater:onSuccessfulSpawn(pPlayer, mobileList)
+	if (pPlayer == nil) then
 		return
 	end
 
 	if (mobileList[1] ~= nil) then
-		writeData(SceneObject(mobileList[1]):getObjectID() .. ":ownerID", SceneObject(pCreatureObject):getObjectID())
+		writeData(SceneObject(mobileList[1]):getObjectID() .. ":ownerID", SceneObject(pPlayer):getObjectID())
 		CreatureObject(mobileList[1]):setPvpStatusBitmask(0)
 	end
 
-	createObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pCreatureObject)
+	createObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pPlayer)
 end
 
-function FsReflex1Theater:onPlayerKilled(pCreatureObject, pKiller, nothing)
-	if (pCreatureObject == nil or pKiller == nil) then
+function FsReflex1Theater:onPlayerKilled(pPlayer, pKiller, nothing)
+	if (pPlayer == nil or pKiller == nil) then
 		return 0
 	end
 
-	if (QuestManager.hasActiveQuest(pCreatureObject, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_05)) then
+	if (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_REFLEX_RESCUE_QUEST_05)) then
 		return 1
 	end
 
-	CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_01_quest_fail_incap");
+	CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_01_quest_fail_incap");
 	Logger:log("Player was killed.", LT_INFO)
-	self:finish(pCreatureObject)
-	FsReflex1:failQuest(pCreatureObject)
+	self:finish(pPlayer)
+	FsReflex1:failQuest(pPlayer)
 
 	return 1
 end
