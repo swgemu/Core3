@@ -1,5 +1,6 @@
 ciwi_mosregri = Creature:new {
 	objectName = "@npc_name:twilek_base_female",
+	customName = "Ciwi Mo-sregri",
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 6,

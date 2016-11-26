@@ -1,6 +1,6 @@
 vixur_webb = Creature:new {
 	objectName = "@npc_name:human_base_male",
-	customName = "Vixur Webb",
+	customName = "Vixur Webb (a musician)",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 6,

@@ -40,5 +40,4 @@ function EndorSmugglerOutpostScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_imperial")
 	pNpc = spawnMobile("endor", "r3",60,-950.705,73,1542.69,331.775,0)
 	self:setMoodString(pNpc, "neutral")
-
 end

@@ -1,5 +1,6 @@
 bapibac = Creature:new {
 	objectName = "@npc_name:human_base_male",
+	customName = "Bapibac One-Oesp",
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 6,

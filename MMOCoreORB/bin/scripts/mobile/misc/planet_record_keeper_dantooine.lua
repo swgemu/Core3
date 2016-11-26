@@ -1,4 +1,4 @@
-record_keeper_planet_dantooine = Creature:new {
+planet_record_keeper_dantooine = Creature:new {
 	objectName = "",
 	customName = "Lt. Nilsson (Planetary Record Keeper)",
 	socialGroup = "imperial",
@@ -29,8 +29,7 @@ record_keeper_planet_dantooine = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "planet_record_keeper_dantooine_convConversationTemplate",
-	attacks = {
-	}
+	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(record_keeper_planet_dantooine, "record_keeper_planet_dantooine")
+CreatureTemplates:addCreatureTemplate(planet_record_keeper_dantooine, "planet_record_keeper_dantooine")

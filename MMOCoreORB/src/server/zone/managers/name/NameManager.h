@@ -64,6 +64,11 @@ public:
 	static const int TAG = 0; // a mobile
 	static const int GENERIC = 1; // Name Generator
 
+	static const int R2 = 2; // R2-A1
+	static const int R3 = 3; // R3-A1
+	static const int R4 = 4; // R4-A1
+	static const int R5 = 5; // R5-A1
+
 	static const int STORMTROOPER = 11; // XX-123
 	static const int SCOUTTROOPER = 12; // XX-123
 	static const int DARKTROOPER = 13; // XX-123
@@ -141,6 +146,7 @@ private:
 	int getFragmentType(const String& frag, NameData* data);
 
 	String makeImperialTrooperName(int type);
+	String makeAstromechName(int type);
 
 public:
 	NameManager();

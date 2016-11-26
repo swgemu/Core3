@@ -17,7 +17,6 @@ function LokNymStrongholdScreenPlay:spawnSceneObjects()
 
 	--outside starport in tent when evidence is found to confirm
 	--spawnSceneObject("lok", "object/tangible/crafting/station/public_space_station.iff", 456.6, 3.0, 5451.8, 0, math.rad(145) )
-
 end
 
 function LokNymStrongholdScreenPlay:spawnMobiles()
@@ -102,7 +101,8 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "artisan",60,-23.8096,1.6,-5.16968,180.005,8145362)
 	self:setMoodString(pNpc, "conversation")
-	--{"bapibac",60,14.5598,0.26,3.77176,360.011,2745866, "conversation", "Bapibac One-Oesp"},
+	pNpc = spawnMobile("lok", "bapibac", 60, 14.5598, 0.26, 3.77176, 360.011, 2745866)
+	self:setMoodString(pNpc, "conversation")
 	spawnMobile("lok", "bartender",60,-11.2794,-0.894992,1.36624,33.4279,8145378)
 	spawnMobile("lok", "bounty_hunter",300,15.64,14.26,-0.951844,303.334,2745876)
 	pNpc = spawnMobile("lok", "mercenary",300,3.95102,7.26,9.58572,179.998,2745872)
@@ -144,7 +144,8 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "businessman",60,19.8783,1.28309,8.0449,360.011,8145357)
 	self:setMoodString(pNpc, "conversation")
-	--{"ciwi_mosregri",60,31.1714,7.25,12.3841,180.018,2745874, "conversation", "Ciwi Mo-sregri"},
+	pNpc = spawnMobile("lok", "ciwi_mosregri", 60, 31.1714, 7.25, 12.3841, 180.018, 2745874)
+	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "comm_operator",60,432.639,12,5219.48,180.005,0)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "commoner",60,31.1714,7.25,11.2841,0,2745874)
@@ -193,7 +194,8 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "entertainer",60,6.78896,1.00001,9.69957,180.005,8145356)
 	self:setMoodString(pNpc, "happy")
-	--{"evathm",60,4.84117,-0.894992,20.6966,45.0006,8145382, "conversation", "Evathm Av'Tvo"},
+	pNpc = spawnMobile("lok", "evathm", 60, 4.84117, -0.894992, 20.6966, 45.0006, 8145382)
+	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "commoner_naboo",60,-24.5603,0.26,-1.63238,0,2745870)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "sullustan_male",60,23.1893,-0.894994,8.7231,0,8145378)
@@ -221,8 +223,10 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "corellia_times_reporter",60,-10.445,1.00009,-2.89877,180.006,8145358)
 	self:setMoodString(pNpc, "conversation")
-	--{"idhak_ipath",60,28.4658,13.25,10.7188,135.001,2745876, "conversation", "Idhak Ipath"},
-	--{"ifoja_lico",60,552.494,11.89,5111.84,180.005,0, "conversation", "Ifoja Lico"},
+	pNpc = spawnMobile("lok", "idhak_ipath", 60, 28.4658, 13.25, 10.7188, 135.001, 2745876)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("lok", "ifoja_lico", 60, 552.494, 11.89, 5111.84, 180.005, 0)
+	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "info_broker",60,-15.7521,1.00122,8.60857,134.998,8145358)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "corellia_times_investigator",60,32.2166,14.26,-7.96455,180.055,2745876)
@@ -239,7 +243,8 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "medic",60,-10.445,1,-3.99877,360.011,8145358)
 	self:setMoodString(pNpc, "conversation")
-	--{"melo",60,32.2502,7.25,-2.56477,360.011,2745874, "conversation", "Melo"},
+	pNpc = spawnMobile("lok", "melo", 60, 32.2502, 7.25, -2.56477, 360.011, 2745874)
+	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "mercenary",60,25.7848,-0.894993,-8.75091,180.009,8145378)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "mercenary",60,24.6848,-0.894992,-8.75091,135.009,8145378)
@@ -262,23 +267,28 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "noble",60,-14.6521,1.00101,8.60857,180.005,8145358)
 	self:setMoodString(pNpc, "conversation")
-	--{"nym",60,0,3.27819,-22.9,0,6595511, "npc_sitting_chair", ""},
-	--{"nym_kusak_guardian",60,-3.62,3.27819,-25.44,39.0011,6595511, "calm", "Scourge"},
-	--{"nym_kusak_guardian",60,3.62,3.27819,-25.44,325.01,6595511, "bored", "Razor"},
+	pNpc = spawnMobile("lok", "nym_kusak_guardian", 60, -3.62, 3.27819, -25.44, 39.0011, 6595511)
+	self:setMoodString(pNpc, "calm")
+	self:setCustomName(pNpc, "Scourge")
+	pNpc = spawnMobile("lok", "nym_kusak_guardian", 60, 3.62, 3.27819, -25.44, 325.01, 6595511)
+	self:setMoodString(pNpc, "bored")
+	self:setCustomName(pNpc, "Razor")
 	pNpc = spawnMobile("lok", "pilot",60,31.1166,14.26,-9.06455,44.9979,2745876)
 	self:setMoodString(pNpc, "happy")
 	pNpc = spawnMobile("lok", "pilot",60,18.2791,-0.894996,-14.4794,0,8145379)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "pilot",60,-23.8096,1.6,-6.26968,0,8145362)
 	self:setMoodString(pNpc, "conversation")
-	spawnMobile("lok", "junk_dealer", 0, 367, 12, 5202.8, -178, 0)
-	pNpc = spawnMobile("lok", "junk_reggi", 0, 443.925, 12, 4879.41, 70, 0)
+	spawnMobile("lok", "junk_dealer", 0, 366, 12, 5202.8, -178, 0)
+	pNpc = spawnMobile("lok", "junk_dealer", 0, 345.73, 12, 5139.45, -177, 0)
 	if pNpc ~= nil then
-		--AiAgent(pNpc):setConvoTemplate("junkDealerReggiConvoTemplate")
+		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
 	end
-
-	--{"rifea_eicik",60,-23.1848,1.58812,1.95072,180.005,8145358, "conversation", "Rifea Eicik"},
-	--{"rorha_wahe",60,7.54821,-0.894991,-8.57564,0,8145378, "conversation", "Rorha Wahe"},
+	spawnMobile("lok", "junk_reggi", 0, 443.925, 12, 4879.41, 70, 0)
+	pNpc = spawnMobile("lok", "rifea_eicik", 60, -23.1848, 1.58812, 1.95072, 180.005, 8145358)
+	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile("lok", "rorha_wahe", 60, 7.54821, -0.894991, -8.57564, 0, 8145378)
+	self:setMoodString(pNpc, "conversation")
 	spawnMobile("lok", "scientist",60,363.384,11.8774,5104.73,315.983,0)
 	pNpc = spawnMobile("lok", "scientist",60,-13.3486,0.26,5.66362,360.011,2745870)
 	self:setMoodString(pNpc, "conversation")
@@ -316,5 +326,6 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "nervous")
 	pNpc = spawnMobile("lok", "vendor",60,32.2502,7.25,-1.46477,179.999,2745874)
 	self:setMoodString(pNpc, "conversation")
-	--{"vixur_webb",60,-13.2,-0.9,-20.2,22,8145383, "npc_sitting_chair", "Vixur Webb (a musician)"},
+	pNpc = spawnMobile("lok", "vixur_webb", 60, -13.2, -0.9, -20.2, 22, 8145383)
+	self:setMoodString(pNpc, "npc_sitting_chair")
 end

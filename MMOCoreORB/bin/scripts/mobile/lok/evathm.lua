@@ -1,5 +1,6 @@
 evathm = Creature:new {
 	objectName = "@npc_name:bothan_base_male",
+	customName = "Evathm Av'Tvo",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 6,

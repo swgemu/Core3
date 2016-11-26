@@ -1,5 +1,6 @@
 r4 = Creature:new {
 	objectName = "@mob/creature_names:r4",
+	randomNameType = NAME_R4,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 4,
@@ -31,8 +32,7 @@ r4 = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(r4, "r4")

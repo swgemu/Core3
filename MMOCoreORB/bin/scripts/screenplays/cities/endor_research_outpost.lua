@@ -1,6 +1,6 @@
 EndorResearchOutpostScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
-	
+
 	screenplayName = "EndorResearchOutpostScreenPlay"
 }
 
@@ -45,5 +45,4 @@ function EndorResearchOutpostScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "calm")
 	pNpc = spawnMobile("endor", "r5",60,3249.85,24,-3464.83,180.771,0)
 	self:setMoodString(pNpc, "calm")
-
 end

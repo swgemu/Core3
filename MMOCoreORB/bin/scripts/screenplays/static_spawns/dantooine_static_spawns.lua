@@ -33,6 +33,8 @@ function DantooineStaticSpawnsScreenPlay:spawnMobiles()
 	spawnMobile("dantooine", "vexed_voritor_lizard", 300, -5502, 15, -1790, getRandomNumber(360), 0)
 	spawnMobile("dantooine", "vexed_voritor_lizard", 300, -5483, 15, -1777, getRandomNumber(360), 0)
 
-	--Need to add the rest of static spawns (Incomplete).
 
+	spawnMobile("dantooine", "dark_jedi_master", 3600, -738.2, 1.7, 2103.9, 55, 0)
+
+	--Need to add the rest of static spawns (Incomplete).
 end

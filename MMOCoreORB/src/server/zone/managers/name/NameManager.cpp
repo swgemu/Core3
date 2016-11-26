@@ -530,6 +530,8 @@ const String NameManager::makeCreatureName(int type, int species) {
 	// Covers all Imperial Trooper types
 	if (type >= NameManagerType::STORMTROOPER && type <= NameManagerType::SWAMPTROOPER) {
 		name = makeImperialTrooperName(type);
+	} else if (type >= NameManagerType::R2 && type <= NameManagerType::R5) {
+		name = makeAstromechName(type);
 	} else {
 		name = generateRandomName(data);
 	}
@@ -551,6 +553,16 @@ String NameManager::makeImperialTrooperName(int type) {
 
 	name += "-";
 	name += String::valueOf(1 + System::random(898));
+
+	return name;
+}
+
+String NameManager::makeAstromechName(int type) {
+	char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+	String name = "R" + String::valueOf(type) + "-";
+	name += alphabet[System::random(25)];
+	name += String::valueOf(System::random(9));
 
 	return name;
 }

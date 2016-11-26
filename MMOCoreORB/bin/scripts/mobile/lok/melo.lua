@@ -1,5 +1,6 @@
 melo = Creature:new {
 	objectName = "@npc_name:rodian_base_female",
+	customName = "Melo",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 6,

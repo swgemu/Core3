@@ -1,6 +1,6 @@
 DantooineAgroOutpostScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
-	
+
 	screenplayName = "DantooineAgroOutpostScreenPlay"
 }
 
@@ -46,17 +46,11 @@ function DantooineAgroOutpostScreenPlay:spawnMobiles()
 	spawnMobile("dantooine", "pirate", 300, 1539, 4, -6407, 34, 0)
 	spawnMobile("dantooine", "pirate", 300, 1556, 4, -6411, 188, 0)
 	spawnMobile("dantooine", "scientist", 60, 1583, 4, -6439, 7, 0)
-
-	---Left these in dantooine.lua because of the custom name etc
-	--{"r2",60,1583.12,4,-6407.59,69.2539,0, "calm", "R2-Y8"},
-	--{"r3",60,1592.98,4,-6400.58,80.56,0, "calm", "R3-M0"}
-	--{"ytzosh",60,1636.98,4,-6402.56,321.838,0, "calm", "Ytzosh"}
+	spawnMobile("dantooine", "r2", 60, 1583.12, 4, -6407.59, 69, 0)
+	spawnMobile("dantooine", "r3", 60, 1592.98, 4, -6400.58, 80, 0)
+	spawnMobile("dantooine", "ytzosh", 60, 1636.98, 4, -6402.56, 322, 0)
+	spawnMobile("dantooine", "ussox", 60, 1635.07, 4, -6402.37, 322, 0)
 	pNpc = spawnMobile("dantooine", "yras_shen_jen",60,1572.26,4,-6417.06,75.0582,0)
 	self:setMoodString(pNpc, "neutral")
-	--{"ussox",60,1635.07,4,-6402.37,321.844,0, "calm", "Ussox"},
-	--{"daiv_dekven",60,1603.42,4,-6434.54,102.877,0, "calm", "Daiv Dekven"},
-	pNpc = spawnMobile("dantooine", "junk_quich", 0, 1579.04, 4, -6374.52, 48, 0)
-	if pNpc ~= nil then
-		--AiAgent(pNpc):setConvoTemplate("junkDealerQuichConvoTemplate")
-	end
+	spawnMobile("dantooine", "junk_quich", 0, 1579.04, 4, -6374.52, 48, 0)
 end

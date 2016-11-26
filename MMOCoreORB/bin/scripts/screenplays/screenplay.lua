@@ -72,16 +72,19 @@ function ScreenPlay:spawnContainerLoot(pContainer)
 end
 
 function ScreenPlay:setMoodString(pNpc, mood)
-
-	if pNpc == nil then
-		return
-	end
-
-	if not SceneObject(pNpc):isCreatureObject() then
+	if pNpc == nil or not SceneObject(pNpc):isCreatureObject() then
 		return
 	end
 
 	CreatureObject(pNpc):setMoodString(mood)
+end
+
+function ScreenPlay:setCustomName(pObj, name)
+	if pObj == nil then
+		return
+	end
+
+	SceneObject(pObj):setCustomObjectName(name)
 end
 
 Act = Object:new {

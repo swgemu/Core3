@@ -1,5 +1,6 @@
 rifea_eicik = Creature:new {
 	objectName = "@npc_name:human_base_female",
+	customName = "Rifea Eicik",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 6,

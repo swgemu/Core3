@@ -26,5 +26,4 @@ function Yavin4LaborOutpostScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "sad")
 	pNpc = spawnMobile("yavin4", "commoner_technician",60,-6.1,0.6,-4.8,-10,3035374)
 	self:setMoodString(pNpc, "npc_consoling")
-
 end

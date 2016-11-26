@@ -1,5 +1,6 @@
 ifoja_lico = Creature:new {
 	objectName = "@npc_name:human_base_male",
+	customName = "Ifoja Lico",
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 6,

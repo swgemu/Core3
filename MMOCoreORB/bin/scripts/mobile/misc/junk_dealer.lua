@@ -1,7 +1,5 @@
 junk_dealer = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
-	randomNameType = NAME_GENERIC,
-	randomNameTag = true,
 	planetMapCategory = "junkshop",
 	socialGroup = "townsperson",
 	faction = "townsperson",
@@ -25,7 +23,7 @@ junk_dealer = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + INVULNERABLE + CONVERSABLE,
+	optionsBitmask = INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {

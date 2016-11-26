@@ -1,5 +1,6 @@
 rorha_wahe = Creature:new {
 	objectName = "@npc_name:human_base_female",
+	customName = "Rorha Wahe",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 6,

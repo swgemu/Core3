@@ -20,6 +20,7 @@ function DathomirTradeOutpostScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "noble", 60, 3.00888, 0.125266, -2.92449, -90, 1392894)
 	spawnMobile("dathomir", "businessman", 60, 6.94935, 0.624998, 2.6394, 198.079, 6955367)
 	spawnMobile("dathomir", "businessman", 60, -8.09806, 0.625, 4.31086, 153.675, 6955368)
+	spawnMobile("dathomir", "nirame_sakute", 60, -2.1912, 0.624999, -6.92293, 24.0649, 6955369)
 
 	--Outside
 	spawnMobile("dathomir", "businessman", 60, 590.176, 6, 3058.45, 264.528, 0)
@@ -40,11 +41,7 @@ function DathomirTradeOutpostScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "scientist", 60, 623.05, 6, 3037.98, 54.874, 0)
 	spawnMobile("dathomir", "informant_npc_lvl_3", 0,590,6,3091,-31,0)
 	spawnMobile("dathomir", "informant_npc_lvl_3", 0,598,6,3025,180,0)
-
-		--Left these in dathomir.lua 
-	--{"r4",60,620.654,6,3085.98,191.123,0, "calm", "R4-W3"},
-	--{"r4",60,619.822,6,3097.36,339.758,0, "calm", "R4-L1"},
-	--{"r5",60,627.744,6,3086.77,278.522,0, "calm", "R5-O6"},
-	--{"nirame_sakute",60,-2.1912,0.624999,-6.92293,24.0649,6955369, "neutral", ""},
-
+	spawnMobile("dathomir", "r4", 60, 620.654, 6, 3085.98, 191.123, 0)
+	spawnMobile("dathomir", "r4", 60, 619.822, 6, 3097.36, 339.758, 0)
+	spawnMobile("dathomir", "r5", 60, 627.744, 6, 3086.77, 278.522, 0)
 end

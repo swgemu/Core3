@@ -1,5 +1,6 @@
 idhak_ipath = Creature:new {
 	objectName = "@npc_name:twilek_base_female",
+	customName = "Idhak Ipath",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 6,
