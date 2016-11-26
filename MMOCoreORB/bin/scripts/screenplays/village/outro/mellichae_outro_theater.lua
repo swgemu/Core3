@@ -174,10 +174,10 @@ function MellichaeOutroTheater:onPlayerKilled(pPlayer, pKiller, nothing)
 
 	Logger:log("Player was killed.", LT_INFO)
 	CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/exit:final_fail") -- You have failed the Mellichae encounter, you will be given the oppertunity to attempt it again in the near future.
-	FsOutro:startOldMan(pPlayer)
 	QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_THEATER_FINAL)
 	deleteData(SceneObject(pPlayer):getObjectID() .. ":totalNum:Shrines:Red")
 	deleteData(SceneObject(pPlayer):getObjectID() .. ":totalNum:Shrines:Green")
+	FsOutro:startOldMan(pPlayer)
 	
 	self:finish()
 	return 1
