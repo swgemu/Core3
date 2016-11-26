@@ -148,8 +148,9 @@ function recruiterScreenplay:getWeaponsArmorOptions(faction, gcwDiscount, smuggl
 	local optionsTable = { }
 	local factionRewardData = self:getFactionDataTable(faction)
 	for k,v in pairs(factionRewardData.weaponsArmorList) do
-		if ( factionRewardData.weaponsArmor[v] ~= nil and 	factionRewardData.weaponsArmor[v].display ~= nil and factionRewardData.weaponsArmor[v].cost ~= nil ) then
-			table.insert(optionsTable, self:generateSuiString(factionRewardData.weaponsArmor[v].display, math.ceil(factionRewardData.weaponsArmor[v].cost * gcwDiscount * smugglerDiscount)))
+		if ( factionRewardData.weaponsArmor[v] ~= nil and factionRewardData.weaponsArmor[v].display ~= nil and factionRewardData.weaponsArmor[v].cost ~= nil ) then
+			local option = {self:generateSuiString(factionRewardData.weaponsArmor[v].display, math.ceil(factionRewardData.weaponsArmor[v].cost * gcwDiscount * smugglerDiscount)), 0}
+			table.insert(optionsTable, option)
 		end
 	end
 	return optionsTable
@@ -160,7 +161,8 @@ function recruiterScreenplay:getFurnitureOptions(faction, gcwDiscount, smugglerD
 	local factionRewardData = self:getFactionDataTable(faction)
 	for k,v in pairs(factionRewardData.furnitureList) do
 		if ( factionRewardData.furniture[v] ~= nil and factionRewardData.furniture[v].display ~= nil and factionRewardData.furniture[v].cost ~= nil ) then
-			table.insert(optionsTable, self:generateSuiString(factionRewardData.furniture[v].display, math.ceil(factionRewardData.furniture[v].cost * gcwDiscount * smugglerDiscount)))
+			local option = {self:generateSuiString(factionRewardData.furniture[v].display, math.ceil(factionRewardData.furniture[v].cost * gcwDiscount * smugglerDiscount)), 0}
+			table.insert(optionsTable, option)
 		end
 	end
 	return optionsTable
@@ -171,7 +173,8 @@ function recruiterScreenplay:getInstallationsOptions(faction, gcwDiscount, smugg
 	local factionRewardData = self:getFactionDataTable(faction)
 	for k,v in pairs(factionRewardData.installationsList) do
 		if ( factionRewardData.installations[v] ~= nil and factionRewardData.installations[v].display ~= nil and factionRewardData.installations[v].cost ~= nil ) then
-			table.insert(optionsTable, self:generateSuiString(factionRewardData.installations[v].display, math.ceil(factionRewardData.installations[v].cost * gcwDiscount * smugglerDiscount)))
+			local option = {self:generateSuiString(factionRewardData.installations[v].display, math.ceil(factionRewardData.installations[v].cost * gcwDiscount * smugglerDiscount)), 0}
+			table.insert(optionsTable, option)
 		end
 	end
 	return optionsTable
@@ -182,7 +185,8 @@ function recruiterScreenplay:getHirelingsOptions(faction, gcwDiscount, smugglerD
 	local factionRewardData = self:getFactionDataTable(faction)
 	for k,v in pairs(factionRewardData.hirelingList) do
 		if ( factionRewardData.hirelings[v] ~= nil and factionRewardData.hirelings[v].display ~= nil and factionRewardData.hirelings[v].cost ~= nil ) then
-			table.insert(optionsTable, self:generateSuiString(factionRewardData.hirelings[v].display, math.ceil(factionRewardData.hirelings[v].cost * gcwDiscount * smugglerDiscount)))
+			local option = {self:generateSuiString(factionRewardData.hirelings[v].display, math.ceil(factionRewardData.hirelings[v].cost * gcwDiscount * smugglerDiscount)), 0}
+			table.insert(optionsTable, option)
 		end
 	end
 	return optionsTable
