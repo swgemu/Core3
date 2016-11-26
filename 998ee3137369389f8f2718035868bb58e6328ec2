@@ -94,6 +94,52 @@
       "revId": "998ee3137369389f8f2718035868bb58e6328ec2",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_1a65fae0",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/magic_eight_ball/MagicEightBallMenuComponent.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-26T12:23:13Z",
+      "side": 1,
+      "message": "remove the extra tab",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 3
+      },
+      "revId": "998ee3137369389f8f2718035868bb58e6328ec2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_ba614ed5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/magic_eight_ball/MagicEightBallMenuComponent.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-26T12:23:13Z",
+      "side": 1,
+      "message": "remove this return",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 8
+      },
+      "revId": "998ee3137369389f8f2718035868bb58e6328ec2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
