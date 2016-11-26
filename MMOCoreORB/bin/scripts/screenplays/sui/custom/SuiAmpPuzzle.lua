@@ -1,9 +1,9 @@
 local ObjectManager = require("managers.object.object_manager")
 
 SuiAmpPuzzle = {}
-function SuiAmpPuzzle:openPuzzle(pCreatureObject, pPuzzle, pCalibrator)
+function SuiAmpPuzzle:openPuzzle(pPlayer, pPuzzle, pCalibrator)
 	local sui = SuiCalibrationGame2.new("SuiAmpPuzzle", "defaultCallback")
-	local playerID = SceneObject(pCreatureObject):getObjectID()
+	local playerID = SceneObject(pPlayer):getObjectID()
 	writeData(playerID .. ":calibratorComponentID", SceneObject(pPuzzle):getObjectID())
 
 	sui.setTargetNetworkId(SceneObject(pCalibrator):getObjectID())
@@ -32,7 +32,7 @@ function SuiAmpPuzzle:openPuzzle(pCreatureObject, pPuzzle, pCalibrator)
 		end
 	end
 
-	local playerID = SceneObject(pCreatureObject):getObjectID()
+	local playerID = SceneObject(pPlayer):getObjectID()
 
 	writeData(playerID .. ":ampPuzzle:bar1", bar1)
 	writeData(playerID .. ":ampPuzzle:bar2", bar2)
@@ -113,7 +113,7 @@ function SuiAmpPuzzle:openPuzzle(pCreatureObject, pPuzzle, pCalibrator)
 	sui.subscribeToPropertyForEvent(SuiEventType.SET_onButton, "top.sliders.2.slider", "Value")
 	sui.subscribeToPropertyForEvent(SuiEventType.SET_onButton, "top.sliders.3.slider", "Value")
 
-	local pageId = sui.sendTo(pCreatureObject)
+	local pageId = sui.sendTo(pPlayer)
 	writeData(playerID .. ":ampPuzzle:Pid", pageId)
 end
 

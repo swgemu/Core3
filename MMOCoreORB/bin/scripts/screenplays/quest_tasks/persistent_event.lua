@@ -20,7 +20,7 @@ PersistentEvent = Task:new {
 }
 
 -- Default handler for the event. Generates error if triggered.
-function PersistentEvent:handleEvent(pCreatureObject)
+function PersistentEvent:handleEvent(pPlayer)
 	error("No event handler for the persistent event " .. self.taskName .. " has been specified.")
 end
 
@@ -36,11 +36,11 @@ function PersistentEvent:getTime()
 end
 
 -- Start the event.
--- @param pCreatureObject pointer to the creature object of the player.
-function PersistentEvent:taskStart(pCreatureObject)
+-- @param pPlayer pointer to the creature object of the player.
+function PersistentEvent:taskStart(pPlayer)
 	local time = self:getTime()
 	Logger:log("Creating event with scheduled execution time in " .. time .. " for task " .. self.taskName, LT_INFO)
-	createEvent(true, time, self.handlerName, self.handlerFunction, pCreatureObject, "")
+	createEvent(true, time, self.handlerName, self.handlerFunction, pPlayer, "")
 	return true
 end
 

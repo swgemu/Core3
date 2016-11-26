@@ -1,7 +1,7 @@
 local ObjectManager = require("managers.object.object_manager")
 
 SuiRadiationSensor = {}
-function SuiRadiationSensor:openSensor(pCreatureObject, pSensor)
+function SuiRadiationSensor:openSensor(pPlayer, pSensor)
 	local sui = SuiQuestPopup.new()
 
 	-- Default callback for ok and cancel, must always be called before subscribing to any other events
@@ -11,7 +11,7 @@ function SuiRadiationSensor:openSensor(pCreatureObject, pSensor)
 	if (pSensor == nil) then
 		sui.setTargetNetworkId(0)
 	else
-		sui.setTargetNetworkId(SceneObject(pCreatureObject):getObjectID())
+		sui.setTargetNetworkId(SceneObject(pPlayer):getObjectID())
 	end
 
 	sui.setForceCloseDistance(0)
@@ -23,28 +23,28 @@ function SuiRadiationSensor:openSensor(pCreatureObject, pSensor)
 	sui.setPrompt("\n\nEnemy Threat Level:  Detecting...")
 	sui.setViewerObjectId(SceneObject(pSensor):getObjectID())
 
-	local pageId = sui.sendTo(pCreatureObject)
-	writeData(SceneObject(pCreatureObject):getObjectID() .. ":radiationSensorPid", pageId)
+	local pageId = sui.sendTo(pPlayer)
+	writeData(SceneObject(pPlayer):getObjectID() .. ":radiationSensorPid", pageId)
 
-	createEvent(3 * 1000, "SuiRadiationSensor", "updateSensor", pCreatureObject, "")
+	createEvent(3 * 1000, "SuiRadiationSensor", "updateSensor", pPlayer, "")
 end
 
 function SuiRadiationSensor:defaultCallback(pPlayer, pSui, eventIndex, args)
 	deleteData(SceneObject(pPlayer):getObjectID() .. ":radiationSensorPid")
 end
 
-function SuiRadiationSensor:updateSensor(pCreature)
-	if (pCreature == nil) then
+function SuiRadiationSensor:updateSensor(pPlayer)
+	if (pPlayer == nil) then
 		return
 	end
 
-	local pGhost = CreatureObject(pCreature):getPlayerObject()
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
 		return
 	end
 
-	local playerID = SceneObject(pCreature):getObjectID()
+	local playerID = SceneObject(pPlayer):getObjectID()
 	local sensorPid = readData(playerID .. ":radiationSensorPid")
 
 	if (sensorPid == 0) then
@@ -67,22 +67,22 @@ function SuiRadiationSensor:updateSensor(pCreature)
 
 	local suiPageData = LuaSuiPageData(pPageData)
 
-	local targetLoc = self:getLocation(pCreature)
+	local targetLoc = self:getLocation(pPlayer)
 
 	if (targetLoc[1] == 0 and targetLoc[2] == 0) then
 		suiPageData:setProperty("comp.info.text", "Text", "\n\nEnemy Threat Level: \n\\#ff0000 -No tracking device detected-")
-		suiPageData:sendUpdateTo(pCreature)
+		suiPageData:sendUpdateTo(pPlayer)
 		return
 	end
 
-	if (SceneObject(pCreature):getZoneName() ~= targetLoc[3]) then
+	if (SceneObject(pPlayer):getZoneName() ~= targetLoc[3]) then
 		suiPageData:setProperty("comp.info.text", "Text", "\\#ff0000 \n\nNo Signal")
-		suiPageData:sendUpdateTo(pCreature)
+		suiPageData:sendUpdateTo(pPlayer)
 		return
 	end
 
-	local curX = SceneObject(pCreature):getWorldPositionX()
-	local curY = SceneObject(pCreature):getWorldPositionY()
+	local curX = SceneObject(pPlayer):getWorldPositionX()
+	local curY = SceneObject(pPlayer):getWorldPositionY()
 
 	local distance = math.sqrt(((curX - targetLoc[1]) ^ 2) + ((curY - targetLoc[2]) ^ 2))
 	local variance = getRandomNumber(500, 1000)
@@ -98,7 +98,7 @@ function SuiRadiationSensor:updateSensor(pCreature)
 			lastDistance = 0
 		end
 
-		local newDistance = self:calculateSensorResult(pCreature)
+		local newDistance = self:calculateSensorResult(pPlayer)
 
 		lastDistance = self:round(lastDistance, 8)
 		newDistance = self:round(newDistance, 8)
@@ -125,19 +125,19 @@ function SuiRadiationSensor:updateSensor(pCreature)
 		writeStringSharedMemory(playerID .. ":radiationSensor:lastDistance", newDistance)
 	end
 
-	suiPageData:sendUpdateTo(pCreature)
-	createEvent(3 * 1000, "SuiRadiationSensor", "updateSensor", pCreature, "")
+	suiPageData:sendUpdateTo(pPlayer)
+	createEvent(3 * 1000, "SuiRadiationSensor", "updateSensor", pPlayer, "")
 
 end
 
-function SuiRadiationSensor:hasSensor(pCreature)
-	local pSensor = self:getSensor(pCreature)
+function SuiRadiationSensor:hasSensor(pPlayer)
+	local pSensor = self:getSensor(pPlayer)
 
 	return pSensor ~= nil
 end
 
-function SuiRadiationSensor:getSensor(pCreature)
-	local pDatapad = SceneObject(pCreature):getSlottedObject("datapad")
+function SuiRadiationSensor:getSensor(pPlayer)
+	local pDatapad = SceneObject(pPlayer):getSlottedObject("datapad")
 
 	if (pDatapad == nil) then
 		return nil
@@ -148,12 +148,12 @@ function SuiRadiationSensor:getSensor(pCreature)
 	return pSensor
 end
 
-function SuiRadiationSensor:giveSensor(pCreature)
-	if (pCreature == nil or self:hasSensor(pCreature)) then
+function SuiRadiationSensor:giveSensor(pPlayer)
+	if (pPlayer == nil or self:hasSensor(pPlayer)) then
 		return
 	end
 
-	local pDatapad = SceneObject(pCreature):getSlottedObject("datapad")
+	local pDatapad = SceneObject(pPlayer):getSlottedObject("datapad")
 
 	if (pDatapad == nil) then
 		return
@@ -162,19 +162,19 @@ function SuiRadiationSensor:giveSensor(pCreature)
 	local pSensor = giveItem(pDatapad, "object/intangible/data_item/data_geiger_counter.iff", -1)
 
 	if (pSensor ~= nil) then
-		writeData(SceneObject(pCreature):getObjectID() .. ":radiationSensorFactor", getRandomNumber(3,7))
-		CreatureObject(pCreature):sendSystemMessage("@system_msg:new_datapad_device")
+		writeData(SceneObject(pPlayer):getObjectID() .. ":radiationSensorFactor", getRandomNumber(3,7))
+		CreatureObject(pPlayer):sendSystemMessage("@system_msg:new_datapad_device")
 
 		SceneObject(pSensor):setContainerInheritPermissionsFromParent(false)
 		SceneObject(pSensor):clearContainerDefaultDenyPermission(MOVECONTAINER)
 		SceneObject(pSensor):setContainerDefaultAllowPermission(MOVECONTAINER)
 	else
-		CreatureObject(pCreature):sendSystemMessage("Error: Unable to create radiation sensor. Please bug report.")
+		CreatureObject(pPlayer):sendSystemMessage("Error: Unable to create radiation sensor. Please bug report.")
 	end
 end
 
-function SuiRadiationSensor:removeSensor(pCreature)
-	local pSensor = self:getSensor(pCreature)
+function SuiRadiationSensor:removeSensor(pPlayer)
+	local pSensor = self:getSensor(pPlayer)
 
 	if (pSensor ~= nil) then
 		local sensorID = SceneObject(pSensor):getObjectID()
@@ -187,15 +187,15 @@ function SuiRadiationSensor:removeSensor(pCreature)
 		SceneObject(pSensor):destroyObjectFromDatabase()
 	end
 
-	local playerID = SceneObject(pCreature):getObjectID()
+	local playerID = SceneObject(pPlayer):getObjectID()
 
 	deleteData(playerID .. ":radiationSensorFactor")
 	deleteStringSharedMemory(playerID .. ":radiationSensor:lastDistance")
 	deleteData(playerID .. ":radiationSensorPid")
 end
 
-function SuiRadiationSensor:setLocation(pCreature, x, y, planet)
-	local pSensor = self:getSensor(pCreature)
+function SuiRadiationSensor:setLocation(pPlayer, x, y, planet)
+	local pSensor = self:getSensor(pPlayer)
 
 	if (pSensor == nil) then
 		return
@@ -208,8 +208,8 @@ function SuiRadiationSensor:setLocation(pCreature, x, y, planet)
 	writeStringSharedMemory(sensorID .. ":locPlanet", planet)
 end
 
-function SuiRadiationSensor:getLocation(pCreature)
-	local pSensor = self:getSensor(pCreature)
+function SuiRadiationSensor:getLocation(pPlayer)
+	local pSensor = self:getSensor(pPlayer)
 
 	if (pSensor == nil) then
 		return { 0, 0, "" }
@@ -220,17 +220,17 @@ function SuiRadiationSensor:getLocation(pCreature)
 	return { readData(sensorID .. ":locX"), readData(sensorID .. ":locY"), readStringSharedMemory(sensorID .. ":locPlanet") }
 end
 
-function SuiRadiationSensor:calculateSensorResult(pCreature)
-	local curX = SceneObject(pCreature):getWorldPositionX()
-	local curY = SceneObject(pCreature):getWorldPositionY()
+function SuiRadiationSensor:calculateSensorResult(pPlayer)
+	local curX = SceneObject(pPlayer):getWorldPositionX()
+	local curY = SceneObject(pPlayer):getWorldPositionY()
 
-	local targetLoc = self:getLocation(pCreature)
+	local targetLoc = self:getLocation(pPlayer)
 
-	local sensorFactor = readData(SceneObject(pCreature):getObjectID() .. ":radiationSensorFactor")
+	local sensorFactor = readData(SceneObject(pPlayer):getObjectID() .. ":radiationSensorFactor")
 
 	if (sensorFactor == 0) then
 		sensorFactor = getRandomNumber(3,7)
-		writeData(SceneObject(pCreature):getObjectID() .. ":radiationSensorFactor", sensorFactor)
+		writeData(SceneObject(pPlayer):getObjectID() .. ":radiationSensorFactor", sensorFactor)
 	end
 
 	local distance = math.sqrt(((curX - targetLoc[1]) ^ 2) + ((curY - targetLoc[2]) ^ 2))
@@ -251,7 +251,7 @@ function SuiRadiationSensor:round(num, idp)
 	return math.floor(num * mult + 0.5) / mult
 end
 
-function SuiRadiationSensor:instructionsCallback(pCreature)
+function SuiRadiationSensor:instructionsCallback(pPlayer)
 end
 
 radiationSensorMenuComponent = { }

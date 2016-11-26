@@ -8,9 +8,9 @@ SuiProcessorPuzzle = {
 		"top.triangles.server.left.2", "top.triangles.server.left.3", "top.triangles.server.left.1"}
 }
 
-function SuiProcessorPuzzle:openPuzzle(pCreatureObject, pPuzzle, pCalibrator)
+function SuiProcessorPuzzle:openPuzzle(pPlayer, pPuzzle, pCalibrator)
 	local sui = SuiCalibrationGame4.new("SuiProcessorPuzzle", "defaultCallback")
-	local playerID = SceneObject(pCreatureObject):getObjectID()
+	local playerID = SceneObject(pPlayer):getObjectID()
 	writeData(playerID .. ":calibratorComponentID", SceneObject(pPuzzle):getObjectID())
 
 	sui.setTargetNetworkId(SceneObject(pCalibrator):getObjectID())
@@ -71,7 +71,7 @@ function SuiProcessorPuzzle:openPuzzle(pCreatureObject, pPuzzle, pCalibrator)
 	sui.setDescription("@quest/force_sensitive/fs_crafting:sui_config_description")
 	sui.setAttemptsDesc("@quest/force_sensitive/fs_crafting:sui_attempts_remaining" .. " 100%")
 
-	local pageId = sui.sendTo(pCreatureObject)
+	local pageId = sui.sendTo(pPlayer)
 	writeData(playerID .. ":processorPuzzle:Pid", pageId)
 end
 

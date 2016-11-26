@@ -13,25 +13,25 @@ Task = ScreenPlay:new {
 local TASK_STARTED = 0xABCD
 
 -- Check if the task has been started for the player.
--- @param pCreatureObject pointer to the creature object of the player.
-function Task:hasTaskStarted(pCreatureObject)
-	if (pCreatureObject == nil) then
+-- @param pPlayer pointer to the creature object of the player.
+function Task:hasTaskStarted(pPlayer)
+	if (pPlayer == nil) then
 		return false
 	end
 
-	return CreatureObject(pCreatureObject):getScreenPlayState(self.taskName) == TASK_STARTED
+	return CreatureObject(pPlayer):getScreenPlayState(self.taskName) == TASK_STARTED
 end
 
 -- Set the task started screen play state for the player.
--- @param pCreatureObject pointer to the creature object of the player.
-function Task:setTaskStarted(pCreatureObject)
-	CreatureObject(pCreatureObject):setScreenPlayState(TASK_STARTED, self.taskName)
+-- @param pPlayer pointer to the creature object of the player.
+function Task:setTaskStarted(pPlayer)
+	CreatureObject(pPlayer):setScreenPlayState(TASK_STARTED, self.taskName)
 end
 
 -- Set the task finished screen play state for the player.
--- @param pCreatureObject pointer to the creature object of the player.
-function Task:setTaskFinished(pCreatureObject)
-	CreatureObject(pCreatureObject):removeScreenPlayState(TASK_STARTED, self.taskName)
+-- @param pPlayer pointer to the creature object of the player.
+function Task:setTaskFinished(pPlayer)
+	CreatureObject(pPlayer):removeScreenPlayState(TASK_STARTED, self.taskName)
 end
 
 -- Call the supplied function with the argument if the function is not nil.
@@ -48,24 +48,24 @@ function Task:callFunctionIfNotNil(theFunction, returnIfNil, ...)
 end
 
 -- Start the task.
--- @param pCreatureObject pointer to the creature object of the player who should get the task started.
-function Task:start(pCreatureObject, ...)
-	if (pCreatureObject == nil) then
+-- @param pPlayer pointer to the creature object of the player who should get the task started.
+function Task:start(pPlayer, ...)
+	if (pPlayer == nil) then
 		return
 	end
 
-	if not self:hasTaskStarted(pCreatureObject) then
+	if not self:hasTaskStarted(pPlayer) then
 		Logger:log("Starting task " .. self.taskName, LT_INFO)
-		if self:callFunctionIfNotNil(self.taskStart, true, pCreatureObject, table.unpack({...})) then
+		if self:callFunctionIfNotNil(self.taskStart, true, pPlayer, table.unpack({...})) then
 			Logger:log(self.taskName .. " started.", LT_INFO)
-			self:setTaskStarted(pCreatureObject)
+			self:setTaskStarted(pPlayer)
 		end
 
 		if self.onLoggedIn ~= nil then
-			createObserver(LOGGEDIN, self.taskName, "onLoggedIn", pCreatureObject, 1)
+			createObserver(LOGGEDIN, self.taskName, "onLoggedIn", pPlayer, 1)
 		end
 		if self.onLoggedOut ~= nil then
-			createObserver(LOGGEDOUT, self.taskName, "onLoggedOut", pCreatureObject, 1)
+			createObserver(LOGGEDOUT, self.taskName, "onLoggedOut", pPlayer, 1)
 		end
 	else
 		Logger:log("Task " .. self.taskName .. " is already started.", LT_INFO)
@@ -73,20 +73,20 @@ function Task:start(pCreatureObject, ...)
 end
 
 -- Finish the task.
--- @param pCreatureObject pointer to the creature object of the player who should get the task finished.
-function Task:finish(pCreatureObject)
-	if (pCreatureObject == nil) then
+-- @param pPlayer pointer to the creature object of the player who should get the task finished.
+function Task:finish(pPlayer)
+	if (pPlayer == nil) then
 		return
 	end
 
-	if self:hasTaskStarted(pCreatureObject) then
+	if self:hasTaskStarted(pPlayer) then
 		Logger:log("Finishing task " .. self.taskName, LT_INFO)
-		if self:callFunctionIfNotNil(self.taskFinish, true, pCreatureObject) then
+		if self:callFunctionIfNotNil(self.taskFinish, true, pPlayer) then
 			Logger:log(self.taskName .. " finished.", LT_INFO)
-			self:setTaskFinished(pCreatureObject)
+			self:setTaskFinished(pPlayer)
 
-			dropObserver(LOGGEDIN, self.taskName, "onLoggedIn", pCreatureObject)
-			dropObserver(LOGGEDIN, self.taskName, "onLoggedOut", pCreatureObject)
+			dropObserver(LOGGEDIN, self.taskName, "onLoggedIn", pPlayer)
+			dropObserver(LOGGEDIN, self.taskName, "onLoggedOut", pPlayer)
 		end
 	else
 		Logger:log("Task " .. self.taskName .. " is not started.", LT_INFO)

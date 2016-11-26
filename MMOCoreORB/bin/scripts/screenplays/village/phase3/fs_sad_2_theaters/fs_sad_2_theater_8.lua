@@ -28,12 +28,12 @@ FsSad2Theater8 = GoToTheater:new {
 	activeAreaRadius = 16,
 }
 
-function FsSad2Theater8:onSuccessfulSpawn(pCreatureObject, spawnedMobileList)
-	if (pCreatureObject == nil) then
+function FsSad2Theater8:onSuccessfulSpawn(pPlayer, spawnedMobileList)
+	if (pPlayer == nil) then
 		return
 	end
 
-	local playerID = SceneObject(pCreatureObject):getObjectID()
+	local playerID = SceneObject(pPlayer):getObjectID()
 	writeData(playerID .. self.taskName .. ":killableCount", #spawnedMobileList)
 
 	for i = 1, #spawnedMobileList, 1 do
@@ -47,7 +47,7 @@ function FsSad2Theater8:onSuccessfulSpawn(pCreatureObject, spawnedMobileList)
 	local pTheater = getSceneObject(theaterId)
 
 	if (pTheater ~= nil) then
-		SuiRadiationSensor:setLocation(pCreatureObject, SceneObject(pTheater):getWorldPositionX(), SceneObject(pTheater):getWorldPositionY(), SceneObject(pTheater):getZoneName())
+		SuiRadiationSensor:setLocation(pPlayer, SceneObject(pTheater):getWorldPositionX(), SceneObject(pTheater):getWorldPositionY(), SceneObject(pTheater):getZoneName())
 	end
 end
 

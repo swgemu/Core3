@@ -17,23 +17,23 @@ Escort = Task:new {
 	onEnteredActiveArea = nil
 }
 
-function Escort:setupActiveArea(pCreatureObject, spawnPoint, spawnPlanet, spawnRadius)
+function Escort:setupActiveArea(pPlayer, spawnPoint, spawnPlanet, spawnRadius)
 	local pActiveArea = spawnActiveArea(spawnPlanet, "object/active_area.iff", spawnPoint.x, 0, spawnPoint.y, spawnRadius, 0)
 
 	if (pActiveArea ~= nil) then
-		writeData(SceneObject(pCreatureObject):getObjectID() .. self.taskName .. "areaID", SceneObject(pActiveArea):getObjectID())
+		writeData(SceneObject(pPlayer):getObjectID() .. self.taskName .. "areaID", SceneObject(pActiveArea):getObjectID())
 		createObserver(ENTEREDAREA, self.taskName, "handleEnteredAreaEvent", pActiveArea)
 	end
 
 	return pActiveArea
 end
 
-function Escort:handleEnteredAreaEvent(pActiveArea, pCreatureObject)
-	if not SceneObject(pCreatureObject):isCreatureObject() then
+function Escort:handleEnteredAreaEvent(pActiveArea, pCreature)
+	if not SceneObject(pCreature):isCreatureObject() then
 		return 0
 	end
 
-	local creatureID = SceneObject(pCreatureObject):getObjectID()
+	local creatureID = SceneObject(pCreature):getObjectID()
 	local escortID = readData(SceneObject(pActiveArea):getObjectID() .. self.taskName .. "escortID")
 
 	if escortID == creatureID then
@@ -70,56 +70,56 @@ function Escort:handleEscortDespawn(pEscort)
 	SceneObject(pEscort):destroyObjectFromWorld()
 end
 
-function Escort:taskStart(pCreatureObject, pEscort)
-	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+function Escort:taskStart(pPlayer, pEscort)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
 		Logger:log("Failed to start " .. self.taskName .. " escort.", LT_ERROR)
 		return false
 	end
 
-	local playerID = SceneObject(pCreatureObject):getObjectID()
+	local playerID = SceneObject(pPlayer):getObjectID()
 	local escortID = SceneObject(pEscort):getObjectID()
 
-	local pActiveArea = self:setupActiveArea(pCreatureObject, self.returnPoint, self.returnPlanet, self.areaRadius)
+	local pActiveArea = self:setupActiveArea(pPlayer, self.returnPoint, self.returnPlanet, self.areaRadius)
 	if pActiveArea ~= nil then
 		local waypointId = PlayerObject(pGhost):addWaypoint(self.returnPlanet, self.waypointDescription, "", self.returnPoint.x, self.returnPoint.y, WAYPOINTORANGE, true, true, WAYPOINTQUESTTASK)
 
 		if waypointId ~= nil then
 			writeData(playerID .. ":escortInProgress", 1)
 
-			self:setEscortFollow(pCreatureObject, pEscort)
+			self:setEscortFollow(pPlayer, pEscort)
 			writeData(SceneObject(pActiveArea):getObjectID() .. self.taskName .. "escortID", escortID)
-			self:callFunctionIfNotNil(self.onSuccessfulSpawn, nil, pCreatureObject, pEscort)
+			self:callFunctionIfNotNil(self.onSuccessfulSpawn, nil, pPlayer, pEscort)
 			return true
 		end
 	end
 
 	Logger:log("Failed to start " .. self.taskName .. " escort.", LT_ERROR)
-	self:finish(pCreatureObject)
+	self:finish(pPlayer)
 
 	return false
 end
 
-function Escort:setEscortFollow(pCreatureObject, pEscort)
-	local playerID = SceneObject(pCreatureObject):getObjectID()
+function Escort:setEscortFollow(pPlayer, pEscort)
+	local playerID = SceneObject(pPlayer):getObjectID()
 	local escortID = SceneObject(pEscort):getObjectID()
 
 	AiAgent(pEscort):setAiTemplate("follow")
-	AiAgent(pEscort):setFollowObject(pCreatureObject)
+	AiAgent(pEscort):setFollowObject(pPlayer)
 
 	writeData(playerID .. self.taskName .. "escortID", escortID)
 	writeData(escortID .. self.taskName .. "ownerID", playerID)
 end
 
-function Escort:taskFinish(pCreatureObject)
-	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+function Escort:taskFinish(pPlayer)
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
 		return false
 	end
 
-	local playerID = SceneObject(pCreatureObject):getObjectID()
+	local playerID = SceneObject(pPlayer):getObjectID()
 
 	PlayerObject(pGhost):removeWaypointBySpecialType(WAYPOINTQUESTTASK)
 
@@ -139,7 +139,7 @@ function Escort:taskFinish(pCreatureObject)
 	end
 
 	deleteData(playerID .. ":escortInProgress")
-	self:callFunctionIfNotNil(self.onFinish, nil, pCreatureObject)
+	self:callFunctionIfNotNil(self.onFinish, nil, pPlayer)
 
 	return true
 end

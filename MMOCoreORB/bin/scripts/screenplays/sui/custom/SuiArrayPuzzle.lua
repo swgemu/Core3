@@ -1,9 +1,9 @@
 local ObjectManager = require("managers.object.object_manager")
 
 SuiArrayPuzzle = {}
-function SuiArrayPuzzle:openPuzzle(pCreatureObject, pPuzzle, pCalibrator)
+function SuiArrayPuzzle:openPuzzle(pPlayer, pPuzzle, pCalibrator)
 	local sui = SuiCalibrationGame1.new("SuiArrayPuzzle", "defaultCallback")
-	local playerID = SceneObject(pCreatureObject):getObjectID()
+	local playerID = SceneObject(pPlayer):getObjectID()
 	writeData(playerID .. ":calibratorComponentID", SceneObject(pPuzzle):getObjectID())
 
 	sui.setTargetNetworkId(SceneObject(pCalibrator):getObjectID())
@@ -58,9 +58,9 @@ function SuiArrayPuzzle:openPuzzle(pCreatureObject, pPuzzle, pCalibrator)
 		sui.setProperty("comp.bars.bar" .. i .. ".right", "RunScript", "")
 	end
 
-	local pageId = sui.sendTo(pCreatureObject)
+	local pageId = sui.sendTo(pPlayer)
 
-	local playerID = SceneObject(pCreatureObject):getObjectID()
+	local playerID = SceneObject(pPlayer):getObjectID()
 
 	writeData(playerID .. ":arrayPuzzle:Pid", pageId)
 	writeData(playerID .. ":arrayPuzzle:tries", tries)

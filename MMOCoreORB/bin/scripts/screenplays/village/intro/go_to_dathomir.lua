@@ -17,38 +17,38 @@ GoToDathomir = GoToLocation:new {
 
 -- Event handler for the enter active area event.
 -- The event will complete the task.
--- @param pCreatureObject pointer to the creature object of the player.
-function GoToDathomir:onEnteredActiveArea(pCreatureObject)
-	if (pCreatureObject == nil) then
+-- @param pPlayer pointer to the creature object of the player.
+function GoToDathomir:onEnteredActiveArea(pPlayer)
+	if (pPlayer == nil) then
 		return
 	end
 
-	QuestManager.completeQuest(pCreatureObject, QuestManager.quests.FS_VILLAGE_ELDER)
-	self:finish(pCreatureObject)
+	QuestManager.completeQuest(pPlayer, QuestManager.quests.FS_VILLAGE_ELDER)
+	self:finish(pPlayer)
 end
 
 -- Event handler for the onSuccessfulSpawn.
 -- The event will activate the quest.
--- @param pCreatureObject pointer to the creature object of the player.
-function GoToDathomir:onSuccessfulSpawn(pCreatureObject)
-	if (pCreatureObject == nil) then
+-- @param pPlayer pointer to the creature object of the player.
+function GoToDathomir:onSuccessfulSpawn(pPlayer)
+	if (pPlayer == nil) then
 		return
 	end
 
-	local pGhost = CreatureObject(pCreatureObject):getPlayerObject()
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
 		return
 	end
 
-	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.FS_VILLAGE_ELDER)
-	CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/intro:force_sensitive")
+	QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_VILLAGE_ELDER)
+	CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/intro:force_sensitive")
 
 	if (not PlayerObject(pGhost):isJedi()) then
 		PlayerObject(pGhost):setJediState(1)
 	end
 
-	awardSkill(pCreatureObject, "force_title_jedi_novice")
+	awardSkill(pPlayer, "force_title_jedi_novice")
 end
 
 return GoToDathomir
