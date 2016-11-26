@@ -70,6 +70,30 @@
       "revId": "998ee3137369389f8f2718035868bb58e6328ec2",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_fa403637",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/magic_eight_ball/MagicEightBallMenuComponent.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1848
+      },
+      "writtenOn": "2016-11-26T04:50:10Z",
+      "side": 1,
+      "message": "sorry just noticed your disregard -- yeah that is a much neater sui, and in NGE it was even better, with a text input for a question to be asked.",
+      "parentUuid": "bada0100_7a4d2672",
+      "range": {
+        "startLine": 24,
+        "startChar": 15,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "998ee3137369389f8f2718035868bb58e6328ec2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
