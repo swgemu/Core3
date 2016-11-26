@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_3aa55e04",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/quest_tasks/escort.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-26T13:20:14Z",
+      "side": 1,
+      "message": "pCreature",
+      "range": {
+        "startLine": 32,
+        "startChar": 20,
+        "endLine": 32,
+        "endChar": 27
+      },
+      "revId": "ae5dca428e474f6652c4d5aaf93f3050c2c6339a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_5aaaa2d5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/custom/SuiRadiationSensor.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-26T13:20:14Z",
+      "side": 1,
+      "message": "Why not rename this one too?",
+      "range": {
+        "startLine": 36,
+        "startChar": 41,
+        "endLine": 36,
+        "endChar": 50
+      },
+      "revId": "ae5dca428e474f6652c4d5aaf93f3050c2c6339a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_faaef6e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/custom/SuiRadiationSensor.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-26T13:20:14Z",
+      "side": 1,
+      "message": "and this one?",
+      "range": {
+        "startLine": 133,
+        "startChar": 38,
+        "endLine": 133,
+        "endChar": 47
+      },
+      "revId": "ae5dca428e474f6652c4d5aaf93f3050c2c6339a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_1aac1aed",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/custom/SuiRadiationSensor.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-26T13:20:14Z",
+      "side": 1,
+      "message": "and this?",
+      "range": {
+        "startLine": 139,
+        "startChar": 38,
+        "endLine": 139,
+        "endChar": 47
+      },
+      "revId": "ae5dca428e474f6652c4d5aaf93f3050c2c6339a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_bab86e2b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/custom/SuiRadiationSensor.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-26T13:20:14Z",
+      "side": 1,
+      "message": "and this?",
+      "range": {
+        "startLine": 151,
+        "startChar": 39,
+        "endLine": 151,
+        "endChar": 48
+      },
+      "revId": "ae5dca428e474f6652c4d5aaf93f3050c2c6339a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_dab53232",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/custom/SuiRadiationSensor.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-26T13:20:14Z",
+      "side": 1,
+      "message": "here too",
+      "range": {
+        "startLine": 176,
+        "startChar": 41,
+        "endLine": 176,
+        "endChar": 50
+      },
+      "revId": "ae5dca428e474f6652c4d5aaf93f3050c2c6339a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_7a820654",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/custom/SuiRadiationSensor.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-26T13:20:14Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 197,
+        "startChar": 40,
+        "endLine": 197,
+        "endChar": 49
+      },
+      "revId": "ae5dca428e474f6652c4d5aaf93f3050c2c6339a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_9a87aa61",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/custom/SuiRadiationSensor.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-26T13:20:14Z",
+      "side": 1,
+      "message": "also here",
+      "range": {
+        "startLine": 211,
+        "startChar": 40,
+        "endLine": 211,
+        "endChar": 49
+      },
+      "revId": "ae5dca428e474f6652c4d5aaf93f3050c2c6339a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_3a7c7e72",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/sui/custom/SuiRadiationSensor.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-26T13:20:14Z",
+      "side": 1,
+      "message": "what about here?",
+      "range": {
+        "startLine": 223,
+        "startChar": 50,
+        "endLine": 223,
+        "endChar": 59
+      },
+      "revId": "ae5dca428e474f6652c4d5aaf93f3050c2c6339a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_5a814249",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/convohelpers/experience_converter.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-26T13:20:14Z",
+      "side": 1,
+      "message": "Is this correct?",
+      "revId": "ae5dca428e474f6652c4d5aaf93f3050c2c6339a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_fa959688",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/convohelpers/experience_converter.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-26T13:20:14Z",
+      "side": 1,
+      "message": "rename this too",
+      "range": {
+        "startLine": 185,
+        "startChar": 56,
+        "endLine": 185,
+        "endChar": 65
+      },
+      "revId": "ae5dca428e474f6652c4d5aaf93f3050c2c6339a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_1a93baa4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/intro/old_man_intro_encounter.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-26T13:20:14Z",
+      "side": 1,
+      "message": "how about renaming this as well?",
+      "range": {
+        "startLine": 125,
+        "startChar": 58,
+        "endLine": 125,
+        "endChar": 75
+      },
+      "revId": "ae5dca428e474f6652c4d5aaf93f3050c2c6339a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
