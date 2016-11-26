@@ -17,7 +17,6 @@ TatooineWayfarScreenPlay = CityScreenPlay:new {
 		{"stormtrooper_medic", "rebel_medic", -5248.3,75.0,-6529.9,0,0, "", ""},
 		{"stormtrooper_groupleader", "rebel_high_general", -5287.5,75.0,-6594.4,-145,0, "", ""},
 		{"sand_trooper", "rebel_trooper", -5295.0,75.0,-6590.2,-145,0, "", ""},
-
 	},
 }
 
@@ -38,8 +37,6 @@ function TatooineWayfarScreenPlay:spawnSceneObjects()
 end
 
 function TatooineWayfarScreenPlay:spawnMobiles()
-
-	--Anything dashed out will need to be added here and removed from spawn manager once the spawnMobiles command is extended.
 
 	--Tavern -5106 -6615
 	local pNpc = spawnMobile(self.planet, "info_broker",60,4.7,1.0,4.6,-148,1499418)
@@ -158,7 +155,6 @@ function TatooineWayfarScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "jawa_warlord",360,-5066.64,75,-6600.84,318.437,0)
 	spawnMobile(self.planet, "jawa_warlord",360,-5054.39,75,-6602.99,341.563,0)
 	--{"jowir_arlensa",60,-5252.74,75,-6553.42,46.6563,0, "calm", "Jowir Ar'Lensa"},
-	--{"junk_dealer",0,-5131.9,75,-6585,96,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 	spawnMobile(self.planet, "noble",60,-5161.6,75,-6532.3,24,0)
 	--{"palu",60,-5049.46,75,-6585.53,60,0, "calm", "Palu"},
 	pNpc = spawnMobile(self.planet, "r3",60,-5129.45,75,-6483.77,250.023,0)
@@ -176,5 +172,5 @@ function TatooineWayfarScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "trainer_scout",0,-5051.46,75,-6629.48,7,0)
 	pNpc = spawnMobile(self.planet, "trainer_unarmed",0,-5055,75,-6633,310,0)
 	self:setMoodString(pNpc, "npc_sitting_ground")
-
+	spawnMobile(self.planet, "junk_dealer", 1, -5131.9, 75, -6585, 96, 0)
 end

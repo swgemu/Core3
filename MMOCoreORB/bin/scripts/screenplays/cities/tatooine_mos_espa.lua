@@ -36,7 +36,6 @@ TatooineMosEspaScreenPlay = CityScreenPlay:new {
 		{"mos_espa_police_officer", "mos_espa_police_officer_rebel", -2977.32,5,2010.1,171.012,0, "", ""},
 		{"mos_espa_police_officer", "mos_espa_police_officer_rebel", -3022.7,5.1,2619.6,-171,0, "", ""},
 		{"mos_espa_police_officer", "mos_espa_police_officer_rebel", -2976.54,5,2011.63,171.014,0, "", ""},		
-
 	},
 }
 
@@ -88,6 +87,7 @@ function TatooineMosEspaScreenPlay:spawnSceneObjects()
 	spawnSceneObject(self.planet, "object/mobile/jawa_male.iff", -1.1, 1.0, 9.5, 1261583, 0, 0, 0, 0)
 	spawnSceneObject(self.planet, "object/tangible/furniture/all/frn_all_professor_desk.iff", -7.0, -4.0, -6.5, 1261586, math.rad(90) )
 	spawnSceneObject(self.planet, "object/tangible/furniture/all/bestine_quest_statue.iff", 0.2, -4.0, -10.4, 1261586, math.rad(-50) )
+
 	--west Tavern
 	spawnSceneObject(self.planet, "object/static/structure/general/banner_tatooine_style_01.iff", -11.0, 0.4, -1.5, 1261569, math.rad(90) )
 	spawnSceneObject(self.planet, "object/tangible/furniture/all/frn_all_tiki_torch_s1.iff", -10.6, -1.4, -10.2, 1261572, math.rad(43) )
@@ -99,12 +99,9 @@ function TatooineMosEspaScreenPlay:spawnSceneObjects()
 	spawnSceneObject(self.planet, "object/tangible/item/quest/force_sensitive/bacta_tank.iff", 9.7, -9.5, -10.0, 1261579, math.rad(-45) )
 	spawnSceneObject(self.planet, "object/mobile/mouse_droid.iff", 8.3, -9.5, -7.3, 1261579, math.rad(135) )
 	spawnSceneObject(self.planet, "object/tangible/furniture/technical/armoire_s01.iff", 5.5, -9.5, -11.0, 1261579, math.rad(0) )
-
 end
 
 function TatooineMosEspaScreenPlay:spawnMobiles()
-
-	--Anything dashed out will need to be added here and removed from spawn manager once the spawnMobiles command is extended.
 
 	--Starport
 	local pNpc = spawnMobile(self.planet, "chassis_dealer",60,2.29774,0.639422,67.5349,157.943,1261655)
@@ -169,6 +166,7 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "worried")
 	pNpc = spawnMobile(self.planet, "commoner_technician",60,-6.3,-4.0,-5.9,-112,1261586)
 	self:setMoodString(pNpc, "sad")
+
 	--west Tavern
 	spawnMobile(self.planet, "commoner_naboo",60,-3.6,1.0,9.3,0,1261570)
 	spawnMobile(self.planet, "commoner_tatooine",60,6.9,0.4,-9.1,180,1261569)
@@ -215,8 +213,10 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "trainer_droidengineer",0,-11.5362,1.13306,-12.6351,1,1256023)
 	spawnMobile(self.planet, "trainer_weaponsmith",0,-2.95975,1.13306,-8.77207,109,1256022)
 	spawnMobile(self.planet, "trainer_merchant",0,12,1.13306,6,180,1256019)
+
 	--Med Center
 	spawnMobile(self.planet, "trainer_combatmedic",0,7.93319,0.184067,5.54261,86,4005424)
+
 	--Hotel
 	pNpc = spawnMobile(self.planet, "commoner_technician",60,20.2715,1.28309,-1.14578,360.011,1261018)
 	self:setMoodString(pNpc, "conversation")
@@ -231,7 +231,11 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 
 	--Junk Shop
-	--{"junk_nado",60,4.4,-0.5,1.3,-133,1255997, "", "Nado",JUNKGENERIC,JUNKCONVNADOWATTOS},
+	pNpc = spawnMobile(self.planet, "junk_nado", 0, 4.4, -0.5, 1.3, -133, 1255997)
+	if pNpc ~= nil then
+		--AiAgent(pNpc):setConvoTemplate("junkDealerNadoConvoTemplate")
+	end
+
 	--Guild Hall -2997 2426
 	spawnMobile(self.planet, "trainer_brawler",0,-11,1.1,-14,0,1255994)
 	spawnMobile(self.planet, "trainer_marksman",0,0,1.13306,-13,0,1255993)
@@ -361,7 +365,7 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "jawa_thief",300,-2736.1,5,2188.86,69.1613,0)
 
 	--More misc outside
-	--{"junk_dealer",0,-2750.9,5,2057,132,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
+	spawnMobile(sel.planet, "junk_dealer", 0, -2750.9, 5, 2057, 132, 0)
 	--{"klepa_laeel",60,-2769.5,5,2111.1,104,0, "npc_sitting_chair", ""},
 	pNpc = spawnMobile(self.planet, "miner",60,-2918.94,5,2170.6,180.005,0)
 	self:setMoodString(pNpc, "conversation")

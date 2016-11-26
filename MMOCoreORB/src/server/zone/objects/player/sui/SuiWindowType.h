@@ -166,9 +166,6 @@ public:
 		//Fishing 271 - 280
 		FISHING                            = 271,
 
-		//Junk Dealer 281 - 290
-		JUNK_DEALER_SELL_LIST              = 281,
-
 		//Medic 291 - 300
 		MEDIC_CONSENT                      = 291,
 		MEDIC_DIAGNOSE                     = 292,

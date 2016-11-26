@@ -168,6 +168,11 @@ function TatooineJabbasPalaceMobsScreenPlay:spawnStatics()
 
 	pNpc = spawnMobile("tatooine", "wastrel", 300, 5.1, 2.0, 45.5, 180, 1177487)
 	createEvent(5000, "TatooineJabbasPalaceMobsScreenPlay", "palaceConverse", pNpc, "")
+
+	local pNpc = spawnMobile("tatooine", "junk_ollobo", 0, -6.35875, 0.2, 134.272, 9.7, 1177466)
+	if pNpc ~= nil then
+		--AiAgent(pNpc):setConvoTemplate("junkDealerOlloboConvoTemplate")
+	end
 end
 
 

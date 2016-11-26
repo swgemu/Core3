@@ -1,6 +1,7 @@
 junk_nado = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Nado",
+	planetMapCategory = "junkshop",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -30,8 +31,7 @@ junk_nado = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(junk_nado, "junk_nado")

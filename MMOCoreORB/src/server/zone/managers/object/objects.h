@@ -29,7 +29,6 @@
 #include "server/zone/objects/tangible/consumable/Drink.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/creature/junkdealer/JunkdealerCreature.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/staticobject/StaticObject.h"
 #include "server/zone/objects/group/GroupObject.h"

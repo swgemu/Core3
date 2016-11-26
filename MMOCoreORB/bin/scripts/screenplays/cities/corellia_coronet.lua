@@ -114,8 +114,6 @@ end
 
 function CorelliaCoronetScreenPlay:spawnMobiles()
 
-	--Anything dashed out will need to be added here and removed from spawn manager once the spawnMobiles command is extended.
-
 	--Starport
 	local pNpc = spawnMobile(self.planet, "info_broker",60,8.5,0.6,74.4,-77,1855672)
 	self:setMoodString(pNpc, "conversation")
@@ -170,7 +168,6 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile(self.planet, "entertainer",300,24.3471,1.28309,8.93357,360.011,1855549)
 	self:setMoodString(pNpc, "conversation")
-	--{"commoner",60,-24,1.6,-4,160,1855554, "calm", "Pex (an elite storyteller vendor)"},
 
 	--Cantina
 	spawnMobile(self.planet, "bartender",60,7.60649,-0.894992,1.42464,324.005,8105496)
@@ -197,7 +194,10 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "trainer_brawler",0,-11,1.13306,-14,0,1855508)
 	spawnMobile(self.planet, "trainer_marksman",0,0,1.13306,-14,0,1855507)
 	spawnMobile(self.planet, "trainer_scout",0,-12,1.13306,5.5,180,1855505)
-	--{"junk_dealer",0,-14.5,1.1,2.5,88,1855505, "", "",JUNKWEAPONS,JUNKCONVARMS},
+	pNpc = spawnMobile(self.planet, "junk_dealer", 0, -14.5, 1.1, 2.5, 88, 1855505)
+	if pNpc ~= nil then
+		AiAgent(pNpc):setConvoTemplate("junkDealerArmsConvoTemplate")
+	end
 
 	--Guild Hall -177 -4390
 	spawnMobile(self.planet, "trainer_artisan",0,0,1.13306,-14,0,1855517)
@@ -208,6 +208,7 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "trainer_doctor",0,-25.2731,0.26,-5,13,1855535)
 	spawnMobile(self.planet, "trainer_medic",0,-17.7359,0.26,-0.58142,137,1855535)
 	spawnMobile(self.planet, "trainer_medic",0,14.2688,0.26,4.66124,159,1855531)
+
 	--3rd floor
 	pNpc = spawnMobile(self.planet, "corellia_times_investigator",60,21.5803,14.26,-8.84205,360.011,1855541)
 	self:setMoodString(pNpc, "conversation")
@@ -228,8 +229,6 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile(self.planet, "corellia_times_reporter",60,5.43518,2.27819,-27.0615,344.925,1855463)
 	self:setMoodString(pNpc, "conversation")
-	--{"brantlee_spondoon",60,-24.7,1.3,-0.5,124,1855463, "calm", ""}, Task dont add this
-	--{"daclif_gallamby",60,-35.6875,1.29422,-1.70805,88.4786,1855467, "calm", ""}, Task dont add this
 	pNpc = spawnMobile(self.planet, "brawler",60,16.2045,2.25,19.3968,135.003,1855477)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile(self.planet, "brawler",60,-1.72746,7.9,-32.175,0,1855463)
@@ -364,7 +363,7 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,-293,28,-4251,315,0)
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,-184,28,-4342,90,0)
 	spawnMobile(self.planet, "io_tsomcren",60,-140.701,28,-4719.16,44.0418,0)
-	--{"junk_dealer",0,-118.2,28,-4792.9,-144,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
+	spawnMobile(self.planet, "junk_dealer", 0, -118.2, 28, -4792.9, -144, 0)
 
 	--Meatlump's outside
 	spawnMobile(self.planet, "meatlump_buffoon",300,-145,28.9,-4959.8,63,0)

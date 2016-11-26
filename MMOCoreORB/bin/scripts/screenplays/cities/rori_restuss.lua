@@ -17,7 +17,6 @@ function RoriRestussScreenPlay:spawnSceneObjects()
 
 	--outside starport
 	spawnSceneObject("rori", "object/tangible/crafting/station/public_space_station.iff", 5376.78, 80, 5666.8, 0, math.rad(179) )
-
 end
 
 function RoriRestussScreenPlay:spawnMobiles()
@@ -232,8 +231,8 @@ function RoriRestussScreenPlay:spawnMobiles()
 	spawnMobile("rori", "imperial_recruiter", 1, 5349, 80, 5617.6, 0, 0)
 	spawnMobile("rori", "informant_npc_lvl_1", 1, 5401, 80, 5857, 45, 0)
 	spawnMobile("rori", "informant_npc_lvl_3", 1, 5102, 79.98, 5652, 30, 0)
-	--spawnMobile("rori", "junk_dealer", 1, 5353.8, 80, 5665.9, 180, 0)
-	--spawnMobile("rori", "junk_dealer", 1, 5350.2, 81.3, 5484.8, -50, 0)
+	spawnMobile("rori", "junk_dealer", 1, 5353.8, 80, 5665.9, 180, 0)
+	spawnMobile("rori", "junk_dealer", 1, 5350.2, 81.3, 5484.8, -50, 0)
 
 	--Hotel
 	spawnMobile("rori", "businessman", 1, 2.3, 1.0, 23.2, -75, 4635641)

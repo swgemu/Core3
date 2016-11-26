@@ -1,4 +1,3 @@
-require("scripts.managers.spawn_manager.static_spawns")
 
 dathomir_static_spawns = {
 	{"r3",60,-78.3142,18,-1629.93,144.919,0, "calm", "R3-O0", "stationary"},

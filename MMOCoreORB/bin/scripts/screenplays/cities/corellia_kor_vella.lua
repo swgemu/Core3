@@ -155,8 +155,9 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3401, 86, 3034, 270, 0)
 	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3124, 31, 2808, 180, 0)
 	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3128, 31, 3008, 180, 0)
-	--spawnMobile(self.planet, "junk_dealer", 10,-3133.8,31,2975.5,7,0)
 	spawnMobile(self.planet, "medic", 60, -3591.74, 86, 3179.01, 0, 0)
+	spawnMobile(self.planet, "junk_dealer", 10, -3133.8, 31, 2975.5, 7, 0)
+
 		--Left these in corellia.lua because of the custom name
 	--{"r2",60,-3697.43,87.5185,3141.62,327.074,0, "calm", "R2-Z1"},
 	--{"r3",60,-3423.05,80.6846,3333.75,253.023,0, "calm", "R3-U1"},
@@ -250,6 +251,7 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "slicer", 60, -3384.54, 86, 3007.15, 0, 0)
 	spawnMobile(self.planet, "slicer", 60, -3152.32, 31, 2972.71, 180, 0)
 	spawnMobile(self.planet, "mercenary", 60, -3088.9, 31, 2903.18, 180, 0)
+
 	--thugs
 	spawnMobile(self.planet, "ragtag_kook", 300, -3816.4, 86, 3114.2, 103, 0)
 	spawnMobile(self.planet, "ragtag_kook", 300, -3814.6, 86, 3109.6, 58, 0)
@@ -409,6 +411,7 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "trainer_polearm", 1, -3412, 86, 3084, 0, 0)
 	spawnMobile(self.planet, "trainer_scout", 1, -3164.42, 31, 2802.08, 78, 0)
 	spawnMobile(self.planet, "trainer_unarmed", 1, -3570, 86, 3146, 233, 0)
+
 	--named npc's
 	spawnMobile(self.planet, "crowley", 60, -3404.73, 86, 3092.64, 323.239, 0)
 	spawnMobile(self.planet, "dac_axfow", 60, -3143.7, 31, 2803.73, 233.156, 0)
@@ -431,8 +434,7 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "commoner", 1, 20.5, 1.28, 10, 135, 3005671)
 	spawnMobile(self.planet, "entertainer", 60, 21.6, 1.28, 8.94, 0, 3005671)
 	spawnMobile(self.planet, "farmer_rancher", 60, 21.6, 1.28, 10.04, 180, 3005671)
-		--left in corellia.lua because of custom name
-	--spawnMobile(self.planet, "commoner", 1,-24,1.6,-4,124.701,3005676, "calm", "An Event Promoter"},
+
 		--Cantina
 	spawnMobile(self.planet, "comm_operator", 400, 48.13, 0.1, 2.47, 292, 3005397)
 	spawnMobile(self.planet, "artisan", 60, 34.4, 0.1, -8.04, 0, 3005398)
@@ -458,11 +460,15 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "mercenary", 60, 3.29, 1.1, -9.58, 249, 2955416)
 	spawnMobile(self.planet, "trainer_artisan", 0, 0, 1.1, -14, 0, 2955416)
 	spawnMobile(self.planet, "trainer_chef", 0, -11, 1.1, -14, 0, 2955417)
+
 		--Guild Hall (-3412,3364)
-	--spawnMobile(self.planet, "junk_dealer", 0, -14.5, 1.1, 2.5, 88, 2955424)
 	spawnMobile(self.planet, "trainer_scout", 0, -12, 1.13, 5.5, 180, 2955424)
 	spawnMobile(self.planet, "trainer_marksman", 0, 0, 1.13, -14, 0, 2955426)
 	spawnMobile(self.planet, "trainer_brawler", 0, -11, 1.13, -14, 0, 2955427)
+	pNpc = spawnMobile(self.planet, "junk_dealer", 0, -14.5, 1.1, 2.5, 88, 2955424)
+	if pNpc ~= nil then
+		AiAgent(pNpc):setConvoTemplate("junkDealerArmsConvoTemplate")
+	end
 
 		--Cloning Facility
 	spawnMobile(self.planet, "info_broker", 60, 4.47, -0.05, 2.9, 135, 3005428)

@@ -1,6 +1,7 @@
 junk_ollobo = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Ollobo",
+	planetMapCategory = "junkshop",
 	socialGroup = "jabba",
 	faction = "jabba",
 	level = 100,
@@ -30,8 +31,7 @@ junk_ollobo = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(junk_ollobo, "junk_ollobo")

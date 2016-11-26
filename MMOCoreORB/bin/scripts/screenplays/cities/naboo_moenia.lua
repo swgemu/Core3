@@ -18,12 +18,9 @@ function NabooMoeniaScreenPlay:spawnSceneObjects()
 	--outside starport
 	spawnSceneObject("naboo", "object/tangible/crafting/station/public_space_station.iff", 4805.93, 4.17, -4685.56, 0, math.rad(125) )
 	spawnSceneObject("naboo", "object/tangible/crafting/station/public_space_station.iff", 4789.74, 4.17, -4709.03, 0, math.rad(125) )
-
 end
 
 function NabooMoeniaScreenPlay:spawnMobiles()
-
-	--Anything dashed out will need to be added here and removed from spawn manager once the spawnMobiles command is extended.
 
 	--starport interior
 	local pNpc = spawnMobile("naboo", "pilot",60,-5.7,0.6,67.4,0,4215410)
@@ -34,7 +31,6 @@ function NabooMoeniaScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "sad")
 	pNpc = spawnMobile("naboo", "medic",60,54.4,-0.5,42.7,-120,4215413)
 	self:setMoodString(pNpc, "npc_consoling")
-	--relocated sw trainer from originally bugged exterior placement
 	pNpc = spawnMobile("naboo", "trainer_shipwright",60,-0.4,0.6,67.1,-177,4215410)
 	self:setMoodString(pNpc, "neutral")
 
@@ -78,6 +74,10 @@ function NabooMoeniaScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "trainer_scout",0,4836.08,4.17,-4703.96,94,0)
 	spawnMobile("naboo", "trainer_squadleader",0,4701,3.75,-4939,0,0)
 	spawnMobile("naboo", "trainer_tailor",0,4858,3.8,-4799,180,0)
+	pNpc = spawnMobile("naboo", "junk_lila", 0, 4809.5, 4.2, -4663, 112, 0)
+	if pNpc ~= nil then
+		--AiAgent(pNpc):setConvoTemplate("junkDealerLilaConvoTemplate")
+	end
 
 	--rebel 'stronghold' spawns
 	spawnMobile("naboo", "specforce_marine",300,4794.6,4.2,-4700,50,0)
@@ -99,6 +99,7 @@ function NabooMoeniaScreenPlay:spawnMobiles()
 	--Cantina
 	spawnMobile("naboo", "rebel_recruiter",0,-29,-0.89,-1.2,74,119)
 	spawnMobile("naboo", "informant_npc_lvl_2",0,-2.2226,-0.894992,5.90785,90,111)
+
 	--hotel
 	pNpc = spawnMobile("naboo", "bartender",60,20.2,1.6,12.3,-180,1717470)
 	self:setMoodString(pNpc, "conversation")
@@ -147,5 +148,4 @@ function NabooMoeniaScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "mummer_thug", 300, getRandomNumber(10) + 4681, 4.0, getRandomNumber(10) + -4730, getRandomNumber(360), 0)
 	spawnMobile("naboo", "mummer_thug", 300, getRandomNumber(10) + 4681, 4.0, getRandomNumber(10) + -4730, getRandomNumber(360), 0)
 	spawnMobile("naboo", "mummer_thug", 300, getRandomNumber(10) + 4681, 4.0, getRandomNumber(10) + -4730, getRandomNumber(360), 0)
-
 end

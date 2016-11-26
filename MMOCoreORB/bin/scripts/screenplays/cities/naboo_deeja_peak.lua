@@ -36,10 +36,10 @@ function NabooDeejaPeakScreenPlay:spawnSceneObjects()
 	spawnSceneObject("naboo", "object/static/structure/general/skeleton_ithorian_headandbody.iff", -4.3, -4.9, 0.1, 1714787, math.rad(110) )
 	spawnSceneObject("naboo", "object/tangible/item/quest/force_sensitive/bacta_tank.iff", -3.8, -4.9, -10.7, 1714787, math.rad(-58) )
 	spawnSceneObject("naboo", "object/tangible/furniture/all/frn_all_tiki_torch_s1.iff", -7.6, -4.9, -2.1, 1714787, math.rad(-103) )
+
 	--random house b
 	spawnSceneObject("naboo", "object/tangible/furniture/jedi/frn_all_banner_light.iff", -4.2, 1.1, 1.0, 1685121, math.rad(90) )
 	spawnSceneObject("naboo", "object/static/structure/general/droid_r3_powerdown.iff", -3.8, 1.1, 2.4, 1685121, math.rad(104) )
-
 end
 
 function NabooDeejaPeakScreenPlay:spawnMobiles()
@@ -109,9 +109,11 @@ function NabooDeejaPeakScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_accusing")
 	pNpc = spawnMobile("naboo", "surgical_droid_21b",60,-3.5,-4.9,-7.6,-95,1714787)
 	self:setMoodString(pNpc, "neutral")
+
 	--random house b
 	pNpc = spawnMobile("naboo", "mouse_droid",60,10.1,1.1,-4.8,-36,1685120)
 	self:setMoodString(pNpc, "neutral")
+
 	--random guild hall
 	pNpc = spawnMobile("naboo", "commoner_fat",60,-11.5,1.7,-7.9,-86,8845426)
 	self:setMoodString(pNpc, "npc_standing_drinking")
@@ -175,6 +177,7 @@ function NabooDeejaPeakScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "trainer_artisan", 0,4715,330,-1393,77,0)
 	spawnMobile("naboo", "trainer_politician", 0,4702,330,-1368,84,0)
 	spawnMobile("naboo", "trainer_marksman", 0,4980,360,-1425,-100,0)
+
 	--imperial 'stronghold' spawns
 	spawnMobile("naboo", "stormtrooper",300,5177.5,326.0,-1553.6,-75,0)
 	spawnMobile("naboo", "stormtrooper",300,5179.1,326.3,-1547.4,-75,0)
@@ -198,5 +201,4 @@ function NabooDeejaPeakScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "dark_trooper",300,4709.0,330.0,-1387.9,65,0)
 	spawnMobile("naboo", "stormtrooper_sniper",300,4733.7,329.8,-1426.3,172,0)
 	spawnMobile("naboo", "stormtrooper_sniper",300,4742.9,329.8,-1424.7,-177,0)
-
 end

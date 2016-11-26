@@ -17,7 +17,6 @@ function TalusNashalScreenPlay:spawnSceneObjects()
 
 	--outside starport
 	spawnSceneObject("talus", "object/tangible/crafting/station/public_space_station.iff", 4433.46, 2, 5300.02, 0, math.rad(-125) )
-
 end
 
 function TalusNashalScreenPlay:spawnMobiles()
@@ -27,6 +26,7 @@ function TalusNashalScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_consoling")
 	pNpc = spawnMobile("talus", "devaronian_male",60,-25.9,1.6,50.9,-87,4265364)
 	self:setMoodString(pNpc, "npc_sitting_table_eating")
+
 	--thugs
 	spawnMobile("talus", "chunker_mooch", 300, 4096, 2, 5299, 54, 0)
 	spawnMobile("talus", "chunker_mooch", 300, 4099, 2, 5288, 4, 0)
@@ -67,6 +67,7 @@ function TalusNashalScreenPlay:spawnMobiles()
 	spawnMobile("talus", "sleemo_hoodlum", 300, 4508, 2, 5079, 301, 0)
 	spawnMobile("talus", "sleemo_hoodlum", 300, 4507, 2, 5084, 300, 0)
 	spawnMobile("talus", "sleemo_hoodlum", 300, 4516, 2, 5076, 135, 0)
+
 	--misc
 	spawnMobile("talus", "informant_npc_lvl_1",0,4214,2,5140,0,0)
 	spawnMobile("talus", "informant_npc_lvl_1",0,4224,2,5117,70,0)
@@ -78,8 +79,9 @@ function TalusNashalScreenPlay:spawnMobiles()
 	spawnMobile("talus", "informant_npc_lvl_1",0,4530,2,5094,250,0)
 	spawnMobile("talus", "informant_npc_lvl_2",0,4542,2,5329,20,0)
 	spawnMobile("talus", "informant_npc_lvl_3",0,4529,2,5371,260,0)
-	--spawnMobile("talus", "junk_dealer",0,4541.9,2,5278.5,-64,0)
 	spawnMobile("talus", "rebel_recruiter",1,4072,2,5289,135,0)
+	spawnMobile("talus", "junk_dealer",0,4541.9,2,5278.5,-64,0)
+
 	--trainers
 	spawnMobile("talus", "trainer_2hsword",1,11,1.1,-11.4,0,4265405)
 	spawnMobile("talus", "trainer_architect",1,11,1,-14,0,4265415)
@@ -117,8 +119,6 @@ function TalusNashalScreenPlay:spawnMobiles()
 	spawnMobile("talus", "trainer_tailor",1,-12,1,6,180,4265414)
 	spawnMobile("talus", "trainer_tailor",1,11,1,-14,0,4265395)
 	spawnMobile("talus", "trainer_weaponsmith",1,0,1,-14,0,4265416)
-
-	--Anything dashed out will need to be added here and removed from spawn manager once the spawnMobiles command is extended.
 
 	--Misc Outside
 	pNpc = spawnMobile("talus", "agriculturalist",60,4119.69,2,5300.03,180.005,0)
@@ -193,7 +193,6 @@ function TalusNashalScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("talus", "pilot",60,4547.7,2,5094.7,86,0)
 	self:setMoodString(pNpc, "conversation")
-	--{"protocol_droid_3po",60,4199,2,5286,112.01,0, "calm", "Race Coordinator"},
 	--{"r4",60,4267.23,2,5151.46,66.4568,0, "calm", "R4-M7"},
 	--{"r4",60,4531.97,2,5111.71,209.78,0, "calm", "R4-T7"},
 	pNpc = spawnMobile("talus", "rancher",60,4107.57,2,5310.03,180.005,0)
@@ -312,10 +311,13 @@ function TalusNashalScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("talus", "scientist",60,1.6,-5.5,-4.8,0,4265616)
 	self:setMoodString(pNpc, "conversation")
+
 	--Med Center
 	spawnMobile("talus", "surgical_droid_21b",60,-1.19,0.184067,-1.89,27.0574,4265477)
+
 	--Guild Hall 4291 5395
 	spawnMobile("talus", "chiss_male",300,-14.01,1.13306,-8.53,120.004,4265407)
+
 	--Hotel
 	pNpc = spawnMobile("talus", "farmer",60,-1.7,1,-2.5,37,4265422)
 	self:setMoodString(pNpc, "npc_sitting_chair")
@@ -391,5 +393,4 @@ function TalusNashalScreenPlay:spawnMobiles()
 	spawnMobile("talus", "song_rasp", 300, getRandomNumber(10) + 4237.4, 28.6, getRandomNumber(10) + 5389.7, getRandomNumber(360), 0)
 	spawnMobile("talus", "song_rasp", 300, getRandomNumber(10) + 4237.4, 28.6, getRandomNumber(10) + 5389.7, getRandomNumber(360), 0)
 	spawnMobile("talus", "song_rasp", 300, getRandomNumber(10) + 4237.4, 28.6, getRandomNumber(10) + 5389.7, getRandomNumber(360), 0)
-
 end

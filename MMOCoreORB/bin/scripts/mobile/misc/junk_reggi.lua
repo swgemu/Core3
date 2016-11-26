@@ -1,6 +1,7 @@
 junk_reggi = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
-	customName = "Reggi",
+	customName = "Reggi Tirver",
+	planetMapCategory = "junkshop",
 	socialGroup = "nym",
 	faction = "nym",
 	level = 100,
@@ -30,8 +31,7 @@ junk_reggi = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(junk_reggi, "junk_reggi")

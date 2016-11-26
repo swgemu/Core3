@@ -208,7 +208,6 @@ core3_IDLS =	autogen/server/zone/objects/tangible/misc/FsCsObject.cpp \
 				autogen/server/zone/objects/tangible/consumable/DelayedBuffObserver.cpp \
 				autogen/server/zone/objects/tangible/loot/LootkitObject.cpp \
 				autogen/server/zone/objects/creature/CreatureObject.cpp \
-				autogen/server/zone/objects/creature/junkdealer/JunkdealerCreature.cpp \
 				autogen/server/zone/objects/creature/VehicleObject.cpp \
 				autogen/server/zone/objects/creature/ai/NonPlayerCreatureObject.cpp \
 				autogen/server/zone/objects/creature/ai/Creature.cpp \
@@ -724,7 +723,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/droid/DroidDataStorageModuleDataComponent.cpp \
 		server/zone/objects/tangible/components/droid/DroidDatapadContainerComponent.cpp \
 		server/zone/objects/installation/components/TurretDataComponent.cpp \
-		server/zone/objects/creature/junkdealer/JunkdealerCreatureImplementation.cpp \
 		server/zone/objects/creature/variables/CommandQueueAction.cpp \
 		server/zone/objects/creature/commands/QueueCommand.cpp \
 		server/zone/objects/creature/commands/ForceHealQueueCommand.cpp \

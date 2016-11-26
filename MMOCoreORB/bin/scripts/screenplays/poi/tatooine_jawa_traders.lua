@@ -109,17 +109,28 @@ function JawaTradersScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "jawa", 300, -6166.120, 8.800, 1882.970, 5.940, 0)
 	spawnMobile("tatooine", "jawa", 300, -6163.290, 9.208, 1887.390, -129.183, 0)
 
- 	-- Placeholder for Clothing & Apparel Junk Dealer
-	--(now spawned in statics) spawnMobile("tatooine", "jawa", 300, -6228.01, 23.63, 1868.02, 120, 0)
+ 	-- Clothing & Apparel Junk Dealer
+	local pNpc = spawnMobile("tatooine", "junk_jawa", 0, -6228.01, 23.63, 1868.02, 120, 0)
+	if pNpc ~= nil then
+		--AiAgent(pNpc):setConvoTemplate("junkDealerJawaConvoTemplate")
+	end
 	
-	-- Placeholder for Misc Items Junk Dealer
-	--(now spawned in statics) spawnMobile("tatooine", "jawa", 300, -6223.90, 23.70, 1887.03, -85, 0)
+	-- Misc Items Junk Dealer
+	pNpc = spawnMobile("tatooine", "junk_jawa", 0, -6223.90, 23.70, 1887.03, -85, 0)
+	if pNpc ~= nil then
+		--AiAgent(pNpc):setConvoTemplate("junkDealerJawaConvoTemplate")
+	end
 	
-	-- Placeholder for Weapons Junk Dealer
-	--(now spawned in statics) spawnMobile("tatooine", "jawa", 300, -6204.08, 23.63, 1846.91, -85, 0)
+	-- Weapons Junk Dealer
+	pNpc = spawnMobile("tatooine", "junk_jawa", 0, -6204.08, 23.63, 1846.91, -85, 0)
+	if pNpc ~= nil then
+		--AiAgent(pNpc):setConvoTemplate("junkDealerJawaConvoTemplate")
+	end
 	
-	-- Placeholder for Tusken Equipment Junk Dealer
-	--(now spawned in statics) spawnMobile("tatooine", "jawa", 300, -6113.37, 23.97, 1870.82, -140, 0)
-	
+	-- Tusken Equipment Junk Dealer
+	pNpc = spawnMobile("tatooine", "junk_jawa", 0, -6113.37, 23.97, 1870.82, -140, 0)
+	if pNpc ~= nil then
+		--AiAgent(pNpc):setConvoTemplate("junkDealerJawaConvoTemplate")
+	end
 end
 

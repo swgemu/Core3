@@ -37,7 +37,6 @@ TatooineMosEisleyScreenPlay = CityScreenPlay:new {
 		{"mos_eisley_police_officer", "mos_eisley_police_officer_rebel", 3426.18,5,-4963.54,310,0, "", ""},
 		{"mos_eisley_police_sergeant", "mos_eisley_police_sergeant_rebel", 3536.3,5,-4799.3,226,0, "npc_accusing", "calm"},
 		{"mos_eisley_police_lieutenant", "mos_eisley_police_lieutenant_rebel", 3243.7,5,-4533.1,137,0, "npc_imperial", "calm"},
-
 	},
 }
 
@@ -54,6 +53,7 @@ end
 function TatooineMosEisleyScreenPlay:spawnSceneObjects()
 	--just outside starport
 	spawnSceneObject(self.planet, "object/tangible/crafting/station/public_space_station.iff", 3520.67, 5, -4822.73, 0, math.rad(40) )
+
 	--Lower Floor
 	spawnSceneObject(self.planet, "object/tangible/terminal/terminal_elevator_down.iff", -3.5, 9, -21.4, 1076970, 1, 0, 0, 0) --Middle
 	spawnSceneObject(self.planet, "object/tangible/terminal/terminal_elevator_up.iff", -3.5, 0, -21.4, 1076970, 1, 0, 0, 0)
@@ -61,20 +61,19 @@ function TatooineMosEisleyScreenPlay:spawnSceneObjects()
 	spawnSceneObject(self.planet, "object/tangible/terminal/terminal_elevator_up.iff", .5, 0, -21.4, 1076971, 1, 0, 0, 0)
 	spawnSceneObject(self.planet, "object/tangible/terminal/terminal_elevator_down.iff", -7.5, 9, -21.4, 1076969, 1, 0, 0, 0) --Right side
 	spawnSceneObject(self.planet, "object/tangible/terminal/terminal_elevator_up.iff", -7.5, 0, -21.4, 1076969, 1, 0, 0, 0)
+
 	--Upper Floor
 	spawnSceneObject(self.planet, "object/tangible/terminal/terminal_elevator_up.iff", 13.5, 7, -17.95, 1076972, 1, 0, 0, 0)
 	spawnSceneObject(self.planet, "object/tangible/terminal/terminal_elevator_down.iff", 13.5, 15, -17.95, 1076972, 1, 0, 0, 0)
 
 	--western Tavern A
 	spawnSceneObject(self.planet, "object/static/structure/general/droid_lemedical_powerdown.iff", -10.1, 0.4, 1.7, 1188034, math.rad(123) )
+
 	--large house west A
 	spawnSceneObject(self.planet, "object/static/structure/general/droid_21bmedical_powerdown.iff", -24.2, 1.0, -9.2, 1188001, math.rad(70) )
-
 end
 
 function TatooineMosEisleyScreenPlay:spawnMobiles()
-
-	--Anything dashed out will need to be added here and removed from spawn manager once the spawnMobiles command is extended.
 
 	--Starport
 	local pNpc = spawnMobile(self.planet, "chassis_dealer",60,2.32807,0.639422,67.8972,165.339,1106372)
@@ -206,6 +205,7 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_sitting_table_eating")
 	pNpc = spawnMobile(self.planet, "contractor",60,-9.3,1.0,5.0,58,1188035)
 	self:setMoodString(pNpc, "npc_sitting_table_eating")
+
 	--western Tavern B
 	pNpc = spawnMobile(self.planet, "sullustan_male",60,0.7,1.0,6.9,-42,1188048)
 	self:setMoodString(pNpc, "npc_sitting_chair")
@@ -221,6 +221,7 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_sitting_chair")
 	pNpc = spawnMobile(self.planet, "entertainer",60,-6.9,0.4,-6.3,-90,1188047)
 	self:setMoodString(pNpc, "calm")
+
 	--western Tavern C
 	pNpc = spawnMobile(self.planet, "chiss_female",60,0.4,1.0,6.8,-42,1187987)
 	self:setMoodString(pNpc, "npc_sitting_chair")
@@ -228,6 +229,7 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "sad")
 	pNpc = spawnMobile(self.planet, "jawa",360,-5.4,0.4,-7.4,0,1187986)
 	self:setMoodString(pNpc, "nervous")
+
 	--western Tavern D
 	pNpc = spawnMobile(self.planet, "r4",60,4.7,1.0,4.5,50,1187918)
 	self:setMoodString(pNpc, "happy")
@@ -253,6 +255,7 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "bored")
 	pNpc = spawnMobile(self.planet, "noble",60,-7.4,0.4,-7.4,33,1187919)
 	self:setMoodString(pNpc, "npc_standing_drinking")
+
 	--western Tavern E
 	pNpc = spawnMobile(self.planet, "businessman",60,5.2,1.0,4.2,7,1187892)
 	self:setMoodString(pNpc, "happy")
@@ -300,6 +303,7 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_sitting_ground")
 	pNpc = spawnMobile(self.planet, "commoner_technician",60,-22.4,1.0,-9.0,-106,1188001)
 	self:setMoodString(pNpc, "sad")
+
 	--large house west B
 	pNpc = spawnMobile(self.planet, "chiss_male",60,-2.3,1.0,6.7,90,1187871)
 	self:setMoodString(pNpc, "npc_sitting_chair")
@@ -350,10 +354,14 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_imperial")
 
 	--Lucky Despot Cantina 3332 -4604
-	--{"junk_sneg",60,-1.63376,7.01,7.35289,203.569,1076943, "calm", "Sneg the Hand",JUNKWEAPONS,JUNKCONVSNEGVALARIAN},
 	spawnMobile(self.planet, "bounty_hunter",300,5.61884,7.01001,14.3502,118.356,1076949)
 	spawnMobile(self.planet, "bounty_hunter",300,6.01244,7.01,-14.2554,63.6677,1076948)
 	spawnMobile(self.planet, "informant_npc_lvl_3",0,3.8,7,-12.5,84,1076948)
+	pNpc = spawnMobile(self.planet, "junk_sneg", 0, -1.63376, 7.01, 7.35289, 203.569, 1076943)
+	if pNpc ~= nil then
+		--AiAgent(pNpc):setConvoTemplate("junkDealerSnegConvoTemplate")
+	end
+
 	--Lower Floor
 	pNpc = spawnMobile(self.planet, "vendor",60,30.8955,-0.255725,2.05785,180.009,1076968)
 	self:setMoodString(pNpc, "conversation")
@@ -514,7 +522,8 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "scared")
 	pNpc = spawnMobile(self.planet, "jawa_warlord",300,3665,5,-4856.8,300,0)
 	self:setMoodString(pNpc, "worried")
-	--{"junk_dealer",0,3699.2,5,-4822,92,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
+	spawnMobile(self.planet, "junk_dealer", 0, 3699.2, 5, -4822, 92, 0)
+
 	--{"kahfr_oladi",60,3473.4,5,-4974.8,104,0, "npc_sitting_chair", ""},
 	--{"mos_eisley_police_officer",300,3385.18,4.68287,-4792.87,298.466,0, "calm", "Lt Ogo (a Planet record keeper)"},
 	pNpc = spawnMobile(self.planet, "noble",60,3247.46,4.9251,-4842.99,45.064,0)

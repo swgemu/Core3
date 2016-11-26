@@ -42,10 +42,7 @@
 
 
 object_mobile_junk_ollobo = object_mobile_shared_junk_ollobo:new {
-	gameObjectType = 1036,
-	planetMapCategory = "junkshop",
-	lookAtText = "Ollobo",
-	objectName = "Ollobo"
+
 }
 
 ObjectTemplates:addTemplate(object_mobile_junk_ollobo, "object/mobile/junk_ollobo.iff")

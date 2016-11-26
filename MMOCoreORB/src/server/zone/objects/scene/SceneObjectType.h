@@ -67,7 +67,6 @@ public:
 	/// Not in client **********
 	const static int PLAYERCREATURE = 0x409; // CREATURE
 	const static int TRAINERCREATURE = 0x40A;
-	const static int JUNKDEALERCREATURE = 0x40C;
 	const static int INFORMANTCREATURE = 0x40D;
 	const static int VENDORCREATURE = 0x40E;
 	/// End not in client ************

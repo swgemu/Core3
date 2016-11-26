@@ -18,7 +18,6 @@ function RoriNarmleScreenPlay:spawnSceneObjects()
 	--outside starport
 	spawnSceneObject("rori", "object/tangible/crafting/station/public_space_station.iff", -5304.54, 80.1132, -2213.02, 0, math.rad(135) )
 	spawnSceneObject("rori", "object/tangible/crafting/station/public_space_station.iff", -5320.03, 80.1015, -2228.33, 0, math.rad(135) )
-
 end
 
 function RoriNarmleScreenPlay:spawnMobiles()
@@ -213,6 +212,10 @@ function RoriNarmleScreenPlay:spawnMobiles()
 	spawnMobile("rori", "informant_npc_lvl_1", 1, -5120, 80, -2269, 0, 0)
 	spawnMobile("rori", "informant_npc_lvl_1", 1, -5127, 80, -2266, 45, 0)
 	spawnMobile("rori", "informant_npc_lvl_1", 1, -5331, 80, -2233, 180, 0)
+	pNpc = spawnMobile("rori", "junk_dender", 0, -5428.2, 80, -2244.2, 10, 0)
+	if pNpc ~= nil then
+		--AiAgent(pNpc):setConvoTemplate("junkDealerDenderConvoTemplate")
+	end
 
 	--trainers
 	spawnMobile("rori", "trainer_1hsword", 1, -5219, 80.6094, -2164, 0, 0)

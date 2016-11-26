@@ -77,18 +77,17 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	spawnMobile("lok", "farmer_rancher",300,-2.13049,-0.894991,6.9956,360.011,8145378)
 	spawnMobile("lok", "informant_npc_lvl_3",60,369,11.89,5087,90,0)
 	spawnMobile("lok", "informant_npc_lvl_3",60,540,11.92,5072,180,0)
+
 	--quest
 	spawnMobile("lok", "nym_fuel_tech",0,374.599,11.9876,4986.77,31.5798,0)
 	spawnMobile("lok", "ramna",60,19.5548,-0.894995,-20.1381,20.176,8145379)
 	spawnMobile("lok", "warvog_arkon",60,-12.1246,1.6,-16.3553,291.827,8145361)
 	spawnMobile("lok", "viopa",60,-2.2483,4.0782,-10.4691,138.087,6595511)
+
 	--trainer
 	spawnMobile("lok", "trainer_combatmedic",60,-17.1,0.26,9.2,-100,2745870)
 	spawnMobile("lok", "trainer_doctor",60,22.1279,0.26,-6.11676,91,2745866)
 	spawnMobile("lok", "trainer_medic",60,-16.0068,0.26,-2.42861,117,2745870)
-
-	--Moving from spawn manager lok.lua
-	--Anything dashed out will need to be added here and removed from spawn manager once the spawnMobiles command is extended.
 
 	spawnMobile("lok", "agriculturalist",60,16.74,14.26,-2.05184,56.8997,2745876)
 	pNpc = spawnMobile("lok", "agriculturalist",60,7.54821,-0.894991,-7.47564,180.006,8145378)
@@ -158,7 +157,6 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	pNpc = spawnMobile("lok", "commoner",60,-11.545,1.00022,-2.89877,134.998,8145358)
 	self:setMoodString(pNpc, "conversation")
 	spawnMobile("lok", "commoner_fat",60,562.914,11.8302,5171.75,43.747,0)
-	--{"commoner_fat",60,11.63,-0.894992,-16.56,277.008,8145381, "neutral", "Choster (Retired Engineer)"},
 	pNpc = spawnMobile("lok", "commoner_fat",60,6.44821,-0.894991,-8.57564,45.0004,8145378)
 	self:setMoodString(pNpc, "conversation")
 	spawnMobile("lok", "commoner_naboo",60,360.315,11.9448,4966.58,287.085,0)
@@ -167,7 +165,6 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	spawnMobile("lok", "commoner_naboo",60,449.967,12,5141.31,112.766,0)
 	spawnMobile("lok", "commoner_old",60,535.709,11.9925,5135.86,230.158,0)
 	spawnMobile("lok", "commoner_old",60,522.568,11.8075,4964.65,304.378,0)
-	--{"commoner_old",60,-36.21,0.10501,-13.93,87.0026,8145389, "neutral", "Sergeant Moore (Retired)"},
 	pNpc = spawnMobile("lok", "commoner_old",60,43.6331,0.104999,1.36432,180.09,8145376)
 	self:setMoodString(pNpc, "conversation")
 	spawnMobile("lok", "commoner_tatooine",60,280.329,11.9265,5027.91,218.008,0)
@@ -177,7 +174,6 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	spawnMobile("lok", "commoner_tatooine",60,342.313,11.9993,5024.26,97.0775,0)
 	spawnMobile("lok", "commoner_tatooine",60,462.534,11.8294,5148.35,23.6115,0)
 	spawnMobile("lok", "commoner_tatooine",60,462.685,11.9861,5192.39,127.19,0)
-	--{"commoner_tatooine",60,14.3,-0.9,23.3,181,8145380, "npc_sitting_chair", "Berema"},
 	pNpc = spawnMobile("lok", "commoner_tatooine",60,-2.27845,0.999959,6.45641,0,8145356)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "commoner_technician",60,0.856204,7.26,-13.2226,0,2745872)
@@ -275,8 +271,12 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "pilot",60,-23.8096,1.6,-6.26968,0,8145362)
 	self:setMoodString(pNpc, "conversation")
-	--{"junk_dealer",60,367,12,5202.8,-178,0,"","",JUNKGENERIC,JUNKCONVGENERIC},
-	--{"junk_reggi",60,443.925,12,4879.41,69.9891,0,"","Reggi Tirver",JUNKWEAPONS,JUNKCONVREGGINYM},
+	spawnMobile("lok", "junk_dealer", 0, 367, 12, 5202.8, -178, 0)
+	pNpc = spawnMobile("lok", "junk_reggi", 0, 443.925, 12, 4879.41, 70, 0)
+	if pNpc ~= nil then
+		--AiAgent(pNpc):setConvoTemplate("junkDealerReggiConvoTemplate")
+	end
+
 	--{"rifea_eicik",60,-23.1848,1.58812,1.95072,180.005,8145358, "conversation", "Rifea Eicik"},
 	--{"rorha_wahe",60,7.54821,-0.894991,-8.57564,0,8145378, "conversation", "Rorha Wahe"},
 	spawnMobile("lok", "scientist",60,363.384,11.8774,5104.73,315.983,0)

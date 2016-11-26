@@ -1,6 +1,7 @@
 junk_dender = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Dender",
+	planetMapCategory = "junkshop",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -31,8 +32,7 @@ junk_dender = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	outfit = "junk_dender_outfit",
-	attacks = {
-	}
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(junk_dender, "junk_dender")

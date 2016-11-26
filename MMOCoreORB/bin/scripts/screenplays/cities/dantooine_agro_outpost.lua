@@ -55,6 +55,8 @@ function DantooineAgroOutpostScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "neutral")
 	--{"ussox",60,1635.07,4,-6402.37,321.844,0, "calm", "Ussox"},
 	--{"daiv_dekven",60,1603.42,4,-6434.54,102.877,0, "calm", "Daiv Dekven"},
-	--{"quich_marae",60,1579.04,4,-6374.52,48.4898,0, "calm", "Quich Marae",JUNKJEDI,JUNKCONVQUICHDANTOOINE},
-
+	pNpc = spawnMobile("dantooine", "junk_quich", 0, 1579.04, 4, -6374.52, 48, 0)
+	if pNpc ~= nil then
+		--AiAgent(pNpc):setConvoTemplate("junkDealerQuichConvoTemplate")
+	end
 end

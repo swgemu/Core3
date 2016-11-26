@@ -146,6 +146,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 	ManagedReference<SceneObject*> objParent = object->getParent();
 	ManagedReference<Zone*> objZone = object->getLocalZone();
+	ManagedReference<Zone*> oldRootZone = object->getZone();
 
 	if (object->containsActiveSession(SessionFacadeType::SLICING)) {
 		ManagedReference<Facade*> facade = object->getActiveSession(SessionFacadeType::SLICING);
@@ -220,6 +221,11 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		object->setParent(sceneObject);
 		object->setContainmentType(containmentType);
 
+		ManagedReference<Zone*> newRootZone = object->getZone();
+
+		if (newRootZone != NULL && newRootZone != oldRootZone) {
+			newRootZone->registerObjectWithPlanetaryMap(object);
+		}
 	} else {
 		sceneObject->error("unknown containment type " + String::valueOf(containmentType));
 		StackTrace::printStackTrace();

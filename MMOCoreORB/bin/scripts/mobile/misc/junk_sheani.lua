@@ -1,6 +1,7 @@
 junk_sheani = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Sheani",
+	planetMapCategory = "junkshop",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -30,8 +31,7 @@ junk_sheani = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(junk_sheani, "junk_sheani")

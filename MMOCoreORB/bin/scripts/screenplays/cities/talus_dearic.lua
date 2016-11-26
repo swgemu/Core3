@@ -17,7 +17,6 @@ function TalusDearicScreenPlay:spawnSceneObjects()
 
 	--outside starport
 	spawnSceneObject("talus", "object/tangible/crafting/station/public_space_station.iff", 318.301, 6, -2896.49, 0, math.rad(95) )
-
 end
 
 function TalusDearicScreenPlay:spawnMobiles()
@@ -90,6 +89,7 @@ function TalusDearicScreenPlay:spawnMobiles()
 	spawnMobile("talus", "fed_dub_patrolman", 300, 635, 6, -3182, 85, 0)
 	spawnMobile("talus", "fed_dub_patrolman", 300, 715, 6, -2844, 180, 0)
 	spawnMobile("talus", "fed_dub_patrolman", 300, 716, 6, -2866, 318, 0)
+
 	--misc
 	spawnMobile("talus", "informant_npc_lvl_1",0,286,6,-3101,180,0)
 	spawnMobile("talus", "informant_npc_lvl_1",0,342,6,-2896,270,0)
@@ -106,9 +106,10 @@ function TalusDearicScreenPlay:spawnMobiles()
 	spawnMobile("talus", "informant_npc_lvl_3",0,255,6,-3024,270,0)
 	spawnMobile("talus", "informant_npc_lvl_3",0,265,6,-2974,315,0)
 	spawnMobile("talus", "informant_npc_lvl_3",0,682,13,-3219,180,0)
-	--spawnMobile("talus", "junk_dealer",0,183.6,6,-3065.1,87,0)
 	spawnMobile("talus", "rebel_recruiter",60,-26,0,0,90,3175399)
 	spawnMobile("talus", "rebel_recruiter",60,17,3,-36,0,6255475)
+	spawnMobile("talus", "junk_dealer",0,183.6,6,-3065.1,87,0)
+
 	--trainers
 	spawnMobile("talus", "trainer_1hsword",1,549,6,-2865,180,0)
 	spawnMobile("talus", "trainer_2hsword",1,552,6,-2865,180,0)
@@ -145,7 +146,6 @@ function TalusDearicScreenPlay:spawnMobiles()
 	spawnMobile("talus", "trainer_weaponsmith",1,0,1,-14,0,3175562)
 	spawnMobile("talus", "trainer_weaponsmith",1,519,6,-2913.5,180,0)
 
-	--Anything dashed out will need to be added here and removed from spawn manager once the spawnMobiles command is extended.
 	--More Outside Misc
 	spawnMobile("talus", "businessman",60,168.921,6,-2923.67,107.531,0)
 	spawnMobile("talus", "businessman",60,212.446,6,-2833.26,295.679,0)
@@ -353,5 +353,4 @@ function TalusDearicScreenPlay:spawnMobiles()
 	spawnMobile("talus", "docile_kahmurra", 300, getRandomNumber(10) + 225.8, 6.0, getRandomNumber(10) + -3157, getRandomNumber(360), 0)
 	spawnMobile("talus", "docile_kahmurra", 300, getRandomNumber(10) + 225.8, 6.0, getRandomNumber(10) + -3157, getRandomNumber(360), 0)
 	spawnMobile("talus", "docile_kahmurra", 300, getRandomNumber(10) + 225.8, 6.0, getRandomNumber(10) + -3157, getRandomNumber(360), 0)
-
 end

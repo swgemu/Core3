@@ -17,21 +17,18 @@ function TatooineAnchorheadScreenPlay:spawnSceneObjects()
 
 	--Tavern
 	spawnSceneObject("tatooine", "object/mobile/le_repair_droid.iff", -0.3, -4.0, -3.7, 1213349, math.rad(90) )
-
 end
 
 function TatooineAnchorheadScreenPlay:spawnMobiles()
-
-	--Atnything dashed out will need to be added here and removed from spawn manager once the spawnMobiles command is extended.
 
 	--Tavern
 	local pNpc = spawnMobile("tatooine", "borra_setas",60,9.51111,0.408271,-0.736723,320.12,1213345)
 	self:setMoodString(pNpc, "worried")
 	pNpc = spawnMobile("tatooine", "commoner_tatooine",60,-9.4,0.4,2.0,161,1213345)
 	self:setMoodString(pNpc, "npc_standing_drinking")
-	--{"nitra_vendallan",60,-2.95305,0.40827,-9.30713,12.2342,1213345, "calm", "Nitra Vendallan"},
 	spawnMobile("tatooine", "trainer_doctor",0,1.53792,1.00421,6.82596,265,1213346)
 	spawnMobile("tatooine", "rebel_recruiter",60,-6.22005,-3.96617,-6.58904,194.653,1213349)
+
 	--Tavern west
 	pNpc = spawnMobile("tatooine", "bounty_hunter",60,7.7,-4.0,-4.0,138,3355393)
 	self:setMoodString(pNpc, "angry")
@@ -56,7 +53,6 @@ function TatooineAnchorheadScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "commoner_tatooine",60,114.69,52,-5404.19,89.678,0)
 	pNpc = spawnMobile("tatooine", "commoner_technician",60,-108.399,65,-5298.05,0,0)
 	self:setMoodString(pNpc, "conversation")
-	--{"aaph_koden",60,130.071,52,-5399.6,282.412,0, "", "Aaph Koden"},
 	pNpc = spawnMobile("tatooine", "bounty_hunter",300,-162.748,65,-5312.84,0,0)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("tatooine", "scavenger",300,-108.399,65,-5297.05,180.005,0)
@@ -69,7 +65,8 @@ function TatooineAnchorheadScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "calm")
 	pNpc = spawnMobile("tatooine", "r4",60,75.9409,52,-5355.36,178.447,0)
 	self:setMoodString(pNpc, "calm")
-	--{"junk_dealer",0,129.9,52,-5400.9,-87,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
+	spawnMobile("tatooine", "junk_dealer", 0, 129.9, 52, -5400.9, -87, 0)
+
 	spawnMobile("tatooine", "bantha",300,216.9,11.7,-5425.4,-121,0)
 	spawnMobile("tatooine", "specforce_technician",400,65.685,52,-5349.49,-4,0)
 	spawnMobile("tatooine", "specforce_technician",400,49.2,52,-5351,350,0)

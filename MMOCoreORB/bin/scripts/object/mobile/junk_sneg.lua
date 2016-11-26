@@ -42,10 +42,7 @@
 
 
 object_mobile_junk_sneg = object_mobile_shared_junk_sneg:new {
-	gameObjectType = 1036,
-	planetMapCategory = "junkshop",
-	lookAtText = "@mob/creature_names:junk_dealer",
-	objectName = "@mob/creature_names:junk_dealer"
+
 }
 
 ObjectTemplates:addTemplate(object_mobile_junk_sneg, "object/mobile/junk_sneg.iff")

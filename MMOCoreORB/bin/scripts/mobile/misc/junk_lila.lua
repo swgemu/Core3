@@ -1,6 +1,7 @@
 junk_lila = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Lila",
+	planetMapCategory = "junkshop",
 	socialGroup = "borvo",
 	faction = "borvo",
 	level = 100,
@@ -30,8 +31,7 @@ junk_lila = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(junk_lila, "junk_lila")

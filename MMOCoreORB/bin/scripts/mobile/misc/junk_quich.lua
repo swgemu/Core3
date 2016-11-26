@@ -1,6 +1,7 @@
 junk_quich = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
-	customName = "Quich",
+	customName = "Quich Marae",
+	planetMapCategory = "junkshop",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -30,8 +31,7 @@ junk_quich = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(junk_quich, "junk_quich")

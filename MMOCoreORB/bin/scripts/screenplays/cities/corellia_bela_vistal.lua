@@ -31,11 +31,13 @@ function BelaVistalScreenPlay:spawnMobiles()
 	--Cantina
 	spawnMobile("corellia", "noble", 60, 5.80982, -0.894992, -5.41349, 248.205, 3375355)
 	spawnMobile("corellia", "businessman", 60, -10.2935, -0.895782, 7.13264, 339.313, 3375355)
+
 	--Guild Hall 6857 -5783
 	spawnMobile("corellia", "businessman", 60, 3.32, 1.13306, -8.49, 228.007, 2365769)
 	spawnMobile("corellia", "brawler", 300, -14.01, 1.13306, -8.53, 120.004, 2365770)
 	spawnMobile("corellia", "trainer_brawler", 0, -11, 1.13306, -14,0, 2365770)
 	spawnMobile("corellia", "trainer_marksman", 0, 0, 1.13306, -14, 0, 2365769)
+
 	--Guild Hall regular
 	pNpc = spawnMobile("corellia", "artisan",60,4.7,2.3,10.4,-4,2365923)
 	self:setMoodString(pNpc, "npc_use_terminal_high")
@@ -121,6 +123,10 @@ function BelaVistalScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "trainer_merchant", 0, 12, 1.13306, 6, 180, 2365798)
 	spawnMobile("corellia", "trainer_scout", 0, -12, 1.13306, 5.5, 180, 2365767)
 	spawnMobile("corellia", "trainer_weaponsmith", 0, -2.5, 1.13306, -8.4, 91, 2365801)
+	pNpc = spawnMobile("corellia", "junk_dealer", 0, -14.5, 1.1, 1.9, 89, 2365767)
+	if pNpc ~= nil then
+		AiAgent(pNpc):setConvoTemplate("junkDealerArmsConvoTemplate")
+	end
 
 	--Outside Trainers
 	spawnMobile("corellia", "trainer_artisan", 0, 6755.99, 314.994, -5655.01, 269, 0)
@@ -129,7 +135,6 @@ function BelaVistalScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "trainer_scout", 0, 6737.85, 315, -5491.3, 31, 0)
 	spawnMobile("corellia", "trainer_scout",  0, 6724, 315, -5682, 0, 0)
 
-	--removed from corellia.lua
 	pNpc = spawnMobile("corellia", "bartender",60,8.54,-0.894992,0.14,87.0026,3375355)
 	self:setMoodString(pNpc, "neutral")
 	pNpc = spawnMobile("corellia", "businessman",60,-6.56842,-0.894996,21.9012,135.001,3375361)
@@ -188,7 +193,13 @@ function BelaVistalScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "calm")
 	pNpc = spawnMobile("corellia", "r2",60,6857.06,315,-5702.8,0,0)
 	self:setMoodString(pNpc, "calm")
-	--{"junk_malik",0,6756.1,315,-5778,88,0, "", "Malik Pendron",JUNKCORSEC,JUNKCONVMALIKVISTAL},
-	--{"junk_dealer",0,6970,330,-5588,92,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
-	--{"junk_dealer",0,6840,315,-5630,-32,0, "", "",JUNKCLOTHESANDJEWELLERY+JUNKARMOUR,JUNKCONVFINARY},
+	spawnMobile("corellia", "junk_dealer", 0, 6970, 330, -5588, 92, 0)
+	pNpc = spawnMobile("corellia", "junk_dealer", 0, 6840, 315, -5630, -32, 0)
+	if pNpc ~= nil then
+		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
+	end
+	pNpc = spawnMobile("corellia", "junk_malik", 0, 6756.1, 315, -5778, 88, 0)
+	if pNpc ~= nil then
+		--AiAgent(pNpc):setConvoTemplate("junkDealerMalikConvoTemplate")
+	end
 end

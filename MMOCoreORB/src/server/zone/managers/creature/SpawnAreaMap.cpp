@@ -10,7 +10,6 @@
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
-#include "server/zone/objects/creature/junkdealer/JunkdealerCreature.h"
 #include "conf/ConfigManager.h"
 #include "server/zone/objects/area/areashapes/CircularAreaShape.h"
 #include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
@@ -110,8 +109,7 @@ void SpawnAreaMap::loadStaticSpawns() {
 			String moodString;
 			UnicodeString customName;
 			String aiString;
-			int junkDealerBuyingType =0;
-			int junkDealerConversationType =0;
+
 			if (obj.getTableSize() > 7)
 				moodString = obj.getStringAt(8);
 
@@ -120,12 +118,6 @@ void SpawnAreaMap::loadStaticSpawns() {
 
 			if (obj.getTableSize() > 9)
 				aiString = obj.getStringAt(10);
-
-			if (obj.getTableSize() > 10)
-				junkDealerBuyingType = obj.getIntAt(11);
-
-			if (obj.getTableSize() > 11)
-				junkDealerConversationType = obj.getIntAt(12);
 
 			if (parentID == 0)
 				z = zone->getHeight(x, y);
@@ -136,12 +128,6 @@ void SpawnAreaMap::loadStaticSpawns() {
 				Locker objLocker(creatureObject);
 
 				creatureObject->setDirection(Math::deg2rad(heading));
-
-				if (creatureObject->isJunkDealer()) {
-					JunkdealerCreature* jdc = creatureObject.castTo<JunkdealerCreature*>();
-					jdc->setJunkDealerConversationType(junkDealerConversationType);
-					jdc->setJunkDealerBuyerType(junkDealerBuyingType);
-				}
 
 				if (!moodString.isEmpty()) {
 					creatureObject->setMoodString(moodString);

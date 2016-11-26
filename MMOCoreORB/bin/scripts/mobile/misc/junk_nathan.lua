@@ -1,6 +1,7 @@
 junk_nathan = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Nathan Blyskipper (a Junk Dealer)",
+	planetMapCategory = "junkshop",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
@@ -30,8 +31,7 @@ junk_nathan = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(junk_nathan, "junk_nathan")

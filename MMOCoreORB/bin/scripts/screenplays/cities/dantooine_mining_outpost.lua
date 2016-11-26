@@ -50,7 +50,6 @@ function DantooineMiningOutpostScreenPlay:spawnMobiles()
 	--Left these in dantooine.lua because of the custom name etc
 	pNpc = spawnMobile("dantooine", "adwan_turoldine",60,-9.37871,0.625,2.98841,82.9313,6205565)
 	self:setMoodString(pNpc, "neutral")
-	--{"quich_marae",60,1579.04,4,-6374.52,48.4898,0, "calm", "Quich Marae",JUNKJEDI,JUNKCONVQUICHDANTOOINE},
 	pNpc = spawnMobile("dantooine", "kess_yarrow",60,-623.484,3,2481.77,149.192,0)
 	self:setMoodString(pNpc, "neutral")
 	pNpc = spawnMobile("dantooine", "rane_yarrow",60,-625.457,3,2479.41,86.8842,0)
