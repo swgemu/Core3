@@ -66,7 +66,7 @@ SuiTemplate.new = function (templateName)
 		suiPageData:subscribeToPropertyForEvent(eventType, widget, property)
 	end
 
-	self.sendTo = function (pCreatureObject)
+	self.sendTo = function (pPlayer)
 		if (luaCallback.play == nil or luaCallback.callback == nil) then
 			printf("Error in SuiTemplate:sendTo, nil callback data.\n")
 		end
@@ -78,7 +78,7 @@ SuiTemplate.new = function (templateName)
 		end
 
 		local suiManager = LuaSuiManager()
-		return suiManager:sendSuiPage(pCreatureObject, pPageData, luaCallback.play, luaCallback.callback)
+		return suiManager:sendSuiPage(pPlayer, pPageData, luaCallback.play, luaCallback.callback)
 	end
 
 	return self

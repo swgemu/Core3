@@ -1,5 +1,5 @@
 SuiSample = {}
-function SuiSample:openSample(pCreatureObject, pUsingObject)
+function SuiSample:openSample(pPlayer, pUsingObject)
 	local sui = SuiListBox.new("SuiSample", "defaultCallback")
 
 	-- Using object ID, stored in PageData
@@ -20,7 +20,7 @@ function SuiSample:openSample(pCreatureObject, pUsingObject)
 	sui.add("List Item 1", "Value1")
 	sui.add("List Item 2", "Value2")
 
-	sui.sendTo(pCreatureObject)
+	sui.sendTo(pPlayer)
 end
 
 function SuiSample:eventCallback(pPlayer, pSui, eventIndex, args)

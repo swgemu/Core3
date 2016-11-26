@@ -17,10 +17,10 @@ Patrol = Task:new {
 	onEnteredActiveArea = nil
 }
 
-function Patrol:setupPatrolPoints(pCreature)
-	local playerID = SceneObject(pCreature):getObjectID()
+function Patrol:setupPatrolPoints(pPlayer)
+	local playerID = SceneObject(pPlayer):getObjectID()
 	local radius = 1024 -- Default radius
-	local curQuest = QuestManager.getCurrentQuestID(pCreature)
+	local curQuest = QuestManager.getCurrentQuestID(pPlayer)
 	local pQuest = getQuestInfo(curQuest)
 
 	if (pQuest ~= nil) then
@@ -39,7 +39,7 @@ function Patrol:setupPatrolPoints(pCreature)
 		local x = (self.originX + offsetX) + (radius * math.cos(theta))
 		local y = (self.originY + offsetY) + (radius * math.sin(theta))
 
-		local planetName = SceneObject(pCreature):getZoneName()
+		local planetName = SceneObject(pPlayer):getZoneName()
 		local spawnPoint = getSpawnPoint(planetName, x, y, 0, 200, self.forceSpawn)
 
 		local pActiveArea = spawnActiveArea(planetName, "object/active_area.iff", spawnPoint[1], spawnPoint[2], spawnPoint[3], self.areaSize, 0)
@@ -55,7 +55,7 @@ function Patrol:setupPatrolPoints(pCreature)
 		writeData(playerID .. self.taskName .. "waypointNum" .. i, areaID)
 		createObserver(ENTEREDAREA, self.taskName, "handleEnteredAreaEvent", pActiveArea)
 		
-		local pGhost = CreatureObject(pCreature):getPlayerObject()
+		local pGhost = CreatureObject(pPlayer):getPlayerObject()
 		
 		if (pGhost ~= nil) then
 			local waypointID = PlayerObject(pGhost):addWaypoint(planetName, self.waypointName, "", spawnPoint[1], spawnPoint[3], WAYPOINTYELLOW, true, true, 0, 0)
@@ -64,20 +64,20 @@ function Patrol:setupPatrolPoints(pCreature)
 	end
 end
 
-function Patrol:handleEnteredAreaEvent(pActiveArea, pCreature)
-	if pActiveArea == nil or not SceneObject(pCreature):isPlayerCreature() then
+function Patrol:handleEnteredAreaEvent(pActiveArea, pPlayer)
+	if pActiveArea == nil or not SceneObject(pPlayer):isPlayerCreature() then
 		return 0
 	end
 
 	local areaID = SceneObject(pActiveArea):getObjectID()
 	local ownerID = readData(areaID .. self.taskName .. "ownerID")
-	if ownerID == SceneObject(pCreature):getObjectID() then
+	if ownerID == SceneObject(pPlayer):getObjectID() then
 		local wpNum = readData(areaID .. self.taskName .. "waypointNum")
-		self:destroyWaypoint(pCreature, wpNum)
+		self:destroyWaypoint(pPlayer, wpNum)
 		local wpDone = readData(ownerID .. ":patrolWaypointsReached") + 1
 
 		writeData(ownerID .. ":patrolWaypointsReached", wpDone)
-		self:onEnteredActiveArea(pCreature, pActiveArea)
+		self:onEnteredActiveArea(pPlayer, pActiveArea)
 		SceneObject(pActiveArea):destroyObjectFromWorld()
 		return 1
 	end
@@ -85,14 +85,14 @@ function Patrol:handleEnteredAreaEvent(pActiveArea, pCreature)
 	return 0
 end
 
-function Patrol:destroyWaypoint(pCreature, num)
-	local playerID = SceneObject(pCreature):getObjectID()
+function Patrol:destroyWaypoint(pPlayer, num)
+	local playerID = SceneObject(pPlayer):getObjectID()
 	local areaID = readData(playerID .. self.taskName .. "waypointNum" .. num)
 
 	local waypointNum = readData(areaID .. self.taskName .. "waypointNum")
 	local waypointID = readData(areaID .. self.taskName .. "waypointID")
 
-	local pGhost = CreatureObject(pCreature):getPlayerObject()
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 	
 	if (pGhost ~= nil) then
 		PlayerObject(pGhost):removeWaypoint(waypointID, true)
@@ -110,44 +110,44 @@ function Patrol:destroyWaypoint(pCreature, num)
 	deleteData(areaID .. self.taskName .. "ownerID")
 end
 
-function Patrol:waypointCleanup(pCreature)
+function Patrol:waypointCleanup(pPlayer)
 	for i = 1, self.numPoints, 1 do
-		self:destroyWaypoint(pCreature, i)
+		self:destroyWaypoint(pPlayer, i)
 	end
 end
 
-function Patrol:failPatrol(pCreature)
-	self:waypointCleanup(pCreature)
-	local playerID = SceneObject(pCreature):getObjectID()
+function Patrol:failPatrol(pPlayer)
+	self:waypointCleanup(pPlayer)
+	local playerID = SceneObject(pPlayer):getObjectID()
 	
 	deleteData(playerID .. ":patrolWaypointsReached")
 	writeData(playerID .. ":failedPatrol", 1)
 	return true
 end
 
-function Patrol:taskStart(pCreature)
-	self:setupPatrolPoints(pCreature)
-	createObserver(OBJECTDESTRUCTION, self.taskName, "playerKilled", pCreature)
+function Patrol:taskStart(pPlayer)
+	self:setupPatrolPoints(pPlayer)
+	createObserver(OBJECTDESTRUCTION, self.taskName, "playerKilled", pPlayer)
 	
 	return true
 end
 
-function Patrol:playerKilled(pCreature, pKiller, nothing)
-	if (pCreature == nil) then
+function Patrol:playerKilled(pPlayer, pKiller, nothing)
+	if (pPlayer == nil) then
 		return 0
 	end
 
-	self:callFunctionIfNotNil(self.onPlayerKilled, false, pCreature)
+	self:callFunctionIfNotNil(self.onPlayerKilled, false, pPlayer)
 
 	return 0
 end
 
-function Patrol:taskFinish(pCreature)
-	local playerID = SceneObject(pCreature):getObjectID()
+function Patrol:taskFinish(pPlayer)
+	local playerID = SceneObject(pPlayer):getObjectID()
 	deleteData(playerID .. ":patrolWaypointsReached")
 	deleteData(playerID .. ":failedPatrol")
-	dropObserver(OBJECTDESTRUCTION, self.taskName, "playerKilled", pCreature)
-	self:waypointCleanup(pCreature)
+	dropObserver(OBJECTDESTRUCTION, self.taskName, "playerKilled", pPlayer)
+	self:waypointCleanup(pPlayer)
 	return true
 end
 

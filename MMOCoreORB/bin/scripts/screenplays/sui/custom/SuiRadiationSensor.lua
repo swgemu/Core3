@@ -1,7 +1,7 @@
 local ObjectManager = require("managers.object.object_manager")
 
 SuiRadiationSensor = {}
-function SuiRadiationSensor:openSensor(pCreatureObject, pSensor)
+function SuiRadiationSensor:openSensor(pPlayer, pSensor)
 	local sui = SuiQuestPopup.new()
 
 	-- Default callback for ok and cancel, must always be called before subscribing to any other events
@@ -11,7 +11,7 @@ function SuiRadiationSensor:openSensor(pCreatureObject, pSensor)
 	if (pSensor == nil) then
 		sui.setTargetNetworkId(0)
 	else
-		sui.setTargetNetworkId(SceneObject(pCreatureObject):getObjectID())
+		sui.setTargetNetworkId(SceneObject(pPlayer):getObjectID())
 	end
 
 	sui.setForceCloseDistance(0)
@@ -23,10 +23,10 @@ function SuiRadiationSensor:openSensor(pCreatureObject, pSensor)
 	sui.setPrompt("\n\nEnemy Threat Level:  Detecting...")
 	sui.setViewerObjectId(SceneObject(pSensor):getObjectID())
 
-	local pageId = sui.sendTo(pCreatureObject)
-	writeData(SceneObject(pCreatureObject):getObjectID() .. ":radiationSensorPid", pageId)
+	local pageId = sui.sendTo(pPlayer)
+	writeData(SceneObject(pPlayer):getObjectID() .. ":radiationSensorPid", pageId)
 
-	createEvent(3 * 1000, "SuiRadiationSensor", "updateSensor", pCreatureObject, "")
+	createEvent(3 * 1000, "SuiRadiationSensor", "updateSensor", pPlayer, "")
 end
 
 function SuiRadiationSensor:defaultCallback(pPlayer, pSui, eventIndex, args)

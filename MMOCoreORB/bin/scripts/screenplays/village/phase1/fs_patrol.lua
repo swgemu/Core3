@@ -134,29 +134,29 @@ function FsPatrol:onEnteredActiveArea(pPlayer, pActiveArea)
 	return 1
 end
 
-function FsPatrol:resetFsPatrol(pCreature)
-	local playerID = SceneObject(pCreature):getObjectID()
+function FsPatrol:resetFsPatrol(pPlayer)
+	local playerID = SceneObject(pPlayer):getObjectID()
 	deleteData(playerID .. ":patrolWaypointsReached")
 	deleteData(playerID .. ":failedPatrol")
 	deleteData(playerID .. "completedCurrentPoint")
-	self:waypointCleanup(pCreature)
-	self:setupPatrolPoints(pCreature)
+	self:waypointCleanup(pPlayer)
+	self:setupPatrolPoints(pPlayer)
 end
 
-function FsPatrol:completeFsPatrol(pCreature)
-	local playerID = SceneObject(pCreature):getObjectID()
+function FsPatrol:completeFsPatrol(pPlayer)
+	local playerID = SceneObject(pPlayer):getObjectID()
 	deleteData(playerID .. "completedCurrentPoint")
 	deleteData(playerID .. ":patrolWaypointsReached")
-	self:finish(pCreature)
+	self:finish(pPlayer)
 end
 
-function FsPatrol:doPhaseChangeFail(pCreatureObject)
-	if (not self:hasTaskStarted(pCreatureObject)) then
+function FsPatrol:doPhaseChangeFail(pPlayer)
+	if (not self:hasTaskStarted(pPlayer)) then
 		return
 	end
 
-	CreatureObject(pCreatureObject):sendSystemMessage("@fs_quest_village:combat_quest_failed_timeout");
-	self:finish(pCreatureObject)
+	CreatureObject(pPlayer):sendSystemMessage("@fs_quest_village:combat_quest_failed_timeout");
+	self:finish(pPlayer)
 end
 
 return FsPatrol
