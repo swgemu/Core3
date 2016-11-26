@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_f70b6f29",
+        "filename": "MMOCoreORB/src/server/zone/objects/installation/InstallationObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-26T01:02:11Z",
+      "side": 1,
+      "message": "\u0026\u0026",
+      "range": {
+        "startLine": 784,
+        "startChar": 39,
+        "endLine": 784,
+        "endChar": 42
+      },
+      "revId": "e4a37f364521c897b2a1cc6be21c50ec9079bc6d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
