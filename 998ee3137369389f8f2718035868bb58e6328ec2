@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_ba338ef5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/magic_eight_ball/MagicEightBallMenuComponent.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 2675
+      },
+      "writtenOn": "2016-11-26T04:14:25Z",
+      "side": 1,
+      "message": "Didn\u0027t the Eyes of Mesra\u0027s Sui have a different Sui page type?\n\nCheck this out:\nhttps://app.assembla.com/wiki/show/swgemu/SUI_Script-Eightball",
+      "range": {
+        "startLine": 24,
+        "startChar": 15,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "998ee3137369389f8f2718035868bb58e6328ec2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
