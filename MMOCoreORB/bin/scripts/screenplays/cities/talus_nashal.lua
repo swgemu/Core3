@@ -21,7 +21,7 @@ end
 
 function TalusNashalScreenPlay:spawnMobiles()
 
-	--starport interior added
+	--starport interior
 	local pNpc = spawnMobile("talus", "pilot",60,-54.5,2.6,44.7,69,4265367)
 	self:setMoodString(pNpc, "npc_consoling")
 	pNpc = spawnMobile("talus", "devaronian_male",60,-25.9,1.6,50.9,-87,4265364)
@@ -80,7 +80,13 @@ function TalusNashalScreenPlay:spawnMobiles()
 	spawnMobile("talus", "informant_npc_lvl_2",0,4542,2,5329,20,0)
 	spawnMobile("talus", "informant_npc_lvl_3",0,4529,2,5371,260,0)
 	spawnMobile("talus", "rebel_recruiter",1,4072,2,5289,135,0)
-	spawnMobile("talus", "junk_dealer",0,4541.9,2,5278.5,-64,0)
+	spawnMobile("talus", "junk_dealer", 0, 4541.9, 2, 5278.5, -64, 0)
+	spawnMobile("talus", "junk_dealer", 0, -14.6, 1.1, 2.6, 115, 4265404)
+	spawnMobile("talus", "junk_dealer", 0, 4142.2, 2, 5313.48, -144, 0)
+	pNpc = spawnMobile("talus", "junk_dealer", 0, 4262.49, 2, 5146.93, 0, 0)
+	if pNpc ~= nil then
+		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
+	end
 
 	--trainers
 	spawnMobile("talus", "trainer_2hsword",1,11,1.1,-11.4,0,4265405)
@@ -193,8 +199,6 @@ function TalusNashalScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("talus", "pilot",60,4547.7,2,5094.7,86,0)
 	self:setMoodString(pNpc, "conversation")
-	--{"r4",60,4267.23,2,5151.46,66.4568,0, "calm", "R4-M7"},
-	--{"r4",60,4531.97,2,5111.71,209.78,0, "calm", "R4-T7"},
 	pNpc = spawnMobile("talus", "rancher",60,4107.57,2,5310.03,180.005,0)
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("talus", "farmer_rancher",60,4332.89,2,5052.68,180.005,0)
@@ -305,6 +309,8 @@ function TalusNashalScreenPlay:spawnMobiles()
 	spawnMobile("talus", "eg6_power_droid",60,4453.98,2,5284.27,173.875,0)
 	spawnMobile("talus", "eg6_power_droid",60,4533.97,2,5111.71,341.356,0)
 	spawnMobile("talus", "eg6_power_droid",60,4465.98,2,5278.48,300.387,0)
+	spawnMobile("talus", "r4", 60, 4267.23, 2, 5151.46, 66.4568, 0)
+	spawnMobile("talus", "r4", 60, 4531.97, 2, 5111.71, 209.78, 0)
 
 	--Cloner
 	pNpc = spawnMobile("talus", "medic",60,1.8,-4.8,0,180,4265616)

@@ -42,10 +42,7 @@
 
 
 object_mobile_jawa = object_mobile_shared_jawa:new {
-	gameObjectType = 1036,
-	planetMapCategory = "junkshop",
-	lookAtText = "@mob/creature_names:junk_dealer",
-	objectName = "@mob/creature_names:junk_dealer"
+
 }
 
 ObjectTemplates:addTemplate(object_mobile_jawa, "object/mobile/jawa.iff")

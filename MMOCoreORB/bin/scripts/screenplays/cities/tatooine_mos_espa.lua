@@ -365,7 +365,7 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "jawa_thief",300,-2736.1,5,2188.86,69.1613,0)
 
 	--More misc outside
-	spawnMobile(sel.planet, "junk_dealer", 0, -2750.9, 5, 2057, 132, 0)
+	spawnMobile(self.planet, "junk_dealer", 0, -2750.9, 5, 2057, 132, 0)
 	--{"klepa_laeel",60,-2769.5,5,2111.1,104,0, "npc_sitting_chair", ""},
 	pNpc = spawnMobile(self.planet, "miner",60,-2918.94,5,2170.6,180.005,0)
 	self:setMoodString(pNpc, "conversation")

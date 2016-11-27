@@ -212,10 +212,18 @@ function RoriNarmleScreenPlay:spawnMobiles()
 	spawnMobile("rori", "informant_npc_lvl_1", 1, -5120, 80, -2269, 0, 0)
 	spawnMobile("rori", "informant_npc_lvl_1", 1, -5127, 80, -2266, 45, 0)
 	spawnMobile("rori", "informant_npc_lvl_1", 1, -5331, 80, -2233, 180, 0)
-	pNpc = spawnMobile("rori", "junk_dender", 0, -5428.2, 80, -2244.2, 10, 0)
+	spawnMobile("rori", "junk_dender", 0, -5258, 80, -2213.58, -6, 0)
+	pNpc = spawnMobile("rori", "junk_dealer", 0, -5187.95, 80, -2224.44, 176, 0)
 	if pNpc ~= nil then
-		--AiAgent(pNpc):setConvoTemplate("junkDealerDenderConvoTemplate")
+		AiAgent(pNpc):setConvoTemplate("junkDealerArmsConvoTemplate")
 	end
+	spawnMobile("rori", "junk_dealer", 0, -14.1, 1.1, 2.8, 127, 4615372)
+	spawnMobile("rori", "junk_dealer", 0, -4981.81, 80, -2318.97, -176, 0)
+	pNpc = spawnMobile("rori", "junk_dealer", 0, -4980.14, 80, -2284.88, -90, 0)
+	if pNpc ~= nil then
+		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
+	end
+
 
 	--trainers
 	spawnMobile("rori", "trainer_1hsword", 1, -5219, 80.6094, -2164, 0, 0)

@@ -24,14 +24,13 @@ junk_dender = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/junk_reggi.iff"},
+	templates = {"object/creature/npc/base/whiphid_base_male.iff"}, -- object/mobile/junk_dender.iff has a typo in it's appearanceFilename
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	outfit = "junk_dender_outfit",
+	conversationTemplate = "junkDealerDenderConvoTemplate",
 	attacks = {}
 }
 

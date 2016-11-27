@@ -108,7 +108,13 @@ function TalusDearicScreenPlay:spawnMobiles()
 	spawnMobile("talus", "informant_npc_lvl_3",0,682,13,-3219,180,0)
 	spawnMobile("talus", "rebel_recruiter",60,-26,0,0,90,3175399)
 	spawnMobile("talus", "rebel_recruiter",60,17,3,-36,0,6255475)
-	spawnMobile("talus", "junk_dealer",0,183.6,6,-3065.1,87,0)
+	spawnMobile("talus", "junk_dealer", 0, 183.6, 6, -3065.1, 87, 0)
+	spawnMobile("talus", "junk_dealer", 0, 146.55, 6, -2852.41, 87, 0)
+	spawnMobile("talus", "junk_dealer", 0, -14.4, 1.1, 2.9, 133, 3175374)
+	pNpc = spawnMobile("talus", "junk_dealer", 0, 598.26, 6, -2949.30, -72, 0)
+	if pNpc ~= nil then
+		AiAgent(pNpc):setConvoTemplate("junkDealerArmsConvoTemplate")
+	end
 
 	--trainers
 	spawnMobile("talus", "trainer_1hsword",1,549,6,-2865,180,0)
@@ -236,13 +242,13 @@ function TalusDearicScreenPlay:spawnMobiles()
 	spawnMobile("talus", "noble",60,624.779,6,-2923.53,258.421,0)
 	spawnMobile("talus", "scientist",60,426.774,6,-2863.5,106.169,0)
 	spawnMobile("talus", "scientist",60,629.722,6,-3048.65,343.583,0)
-	--{"r2",60,207.078,6,-2800.53,272.222,0, "calm", "R2-R2"},
-	--{"r2",60,504.449,6,-3026.94,180.006,0, "calm", "R2-Y2"},
-	--{"r3",60,459.915,6,-3089.68,182.021,0, "calm", "R3-U6"},
-	--{"r3",60,457.915,6,-3090.68,270.018,0, "calm", "R3-W1"},
-	--{"r3",60,664.839,6,-3061.96,180.006,0, "calm", "R3-T0"},
-	--{"r5",60,411.254,6,-2862.25,208.889,0, "calm", "R5-D8"},
-	--{"r5",60,407.095,6,-3036.31,310.529,0, "calm", "R5-R2"},
+	spawnMobile("talus", "r2", 60, 207.078, 6, -2800.53, 272.222, 0)
+	spawnMobile("talus", "r2", 60, 504.449, 6, -3026.94, 180.006, 0)
+	spawnMobile("talus", "r3", 60, 459.915, 6, -3089.68, 182.021, 0)
+	spawnMobile("talus", "r3", 60, 457.915, 6, -3090.68, 270.018, 0)
+	spawnMobile("talus", "r3", 60, 664.839, 6, -3061.96, 180.006, 0)
+	spawnMobile("talus", "r5", 60, 411.254, 6, -2862.25, 208.889, 0)
+	spawnMobile("talus", "r5", 60, 407.095, 6, -3036.31, 310.529, 0)
 
 	--Starport
 	pNpc = spawnMobile("talus", "commoner",60,0.904988,0.639421,56.083,180.007,3175356)

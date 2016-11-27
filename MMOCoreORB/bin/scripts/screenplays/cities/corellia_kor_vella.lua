@@ -95,7 +95,6 @@ CorelliaKorVellaScreenPlay = CityScreenPlay:new {
 		{"corsec_trooper", "corsec_trooper", -3103.98, 31, 2988.38, 266.9, 0, "", ""},
 		{"corsec_trooper", "corsec_trooper", -3102.95, 31, 2989.56, 266.9, 0, "", ""},
 		{"corsec_major", "corsec_major", -3150.16, 31.1, 2773.0, 282, 0, "", ""},
-
 	},
 }
 
@@ -113,7 +112,6 @@ function CorelliaKorVellaScreenPlay:spawnSceneObjects()
 
 	--outside starport
 	spawnSceneObject(self.planet, "object/tangible/crafting/station/public_space_station.iff", -3118.55, 31, 2783.4, 0, math.rad(90) )
-
 end
 
 function CorelliaKorVellaScreenPlay:spawnMobiles()
@@ -156,20 +154,27 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3124, 31, 2808, 180, 0)
 	spawnMobile(self.planet, "informant_npc_lvl_1", 10, -3128, 31, 3008, 180, 0)
 	spawnMobile(self.planet, "medic", 60, -3591.74, 86, 3179.01, 0, 0)
-	spawnMobile(self.planet, "junk_dealer", 10, -3133.8, 31, 2975.5, 7, 0)
+	spawnMobile(self.planet, "junk_dealer", 10, -3130.41, 31, 2973.96, 0, 0)
 
-		--Left these in corellia.lua because of the custom name
-	--{"r2",60,-3697.43,87.5185,3141.62,327.074,0, "calm", "R2-Z1"},
-	--{"r3",60,-3423.05,80.6846,3333.75,253.023,0, "calm", "R3-U1"},
-	--{"r3",60,-3327.95,86,3233.64,315.946,0, "calm", "R3-N0"},
-	--{"r3",60,-3151.77,31,2800,265.951,0, "calm", "R3-L8"},
-	--{"r5",60,-3094.48,31,2972.63,268.321,0, "calm", "R5-W1"},
-	--{"r5",60,-3134.32,31,2801.71,82.3858,0, "calm", "R5-U7"},
+	pNpc = spawnMobile(self.planet, "r2", 60, -3697.43, 87.5185, 3141.62, 327.074, 0)
+	self:setMoodString(pNpc, "calm")
+	pNpc = spawnMobile(self.planet, "r3", 60, -3423.05, 80.6846, 3333.75, 253.023, 0)
+	self:setMoodString(pNpc, "calm")
+	pNpc = spawnMobile(self.planet, "r3", 60, -3327.95, 86, 3233.64, 315.946, 0)
+	self:setMoodString(pNpc, "calm")
+	pNpc = spawnMobile(self.planet, "r3", 60, -3151.77, 31, 2800, 265.951, 0)
+	self:setMoodString(pNpc, "calm")
+	pNpc = spawnMobile(self.planet, "r5", 60, -3094.48, 31, 2972.63, 268.321, 0)
+	self:setMoodString(pNpc, "calm")
+	pNpc = spawnMobile(self.planet, "r5", 60, -3134.32, 31, 2801.71, 82.3858, 0)
+	self:setMoodString(pNpc, "calm")
 
 	--commoners
 	spawnMobile(self.planet, "bodyguard", 300, -3587.81, 86, 3134.7, 0, 0)
 	spawnMobile(self.planet, "bodyguard", 300, -3162.17, 31, 2902.28, 0, 0)
 	spawnMobile(self.planet, "info_broker", 60, -3088.9, 31, 2902.08, 0, 0)
+	pNpc = spawnMobile(self.planet, "info_broker", 60, -3557.49, 86, 3158.11, 180.005, 0)
+	self:setMoodString(pNpc, "conversation")
 	spawnMobile(self.planet, "brawler", 60, -3459.55, 78, 3226.02, 180, 0)
 	spawnMobile(self.planet, "businessman", 60, -3591.74, 86, 3180.01, 180, 0)
 	spawnMobile(self.planet, "businessman", 60, -3159.35, 31, 2813.02, 0, 0)
@@ -427,6 +432,8 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "medic", 60, -62.23, 2.64, 40.83, 180, 4255431)
 	spawnMobile(self.planet, "corellia_times_reporter", 300, -62.23, 2.64, 39.73, 0.19, 4255431)
 	spawnMobile(self.planet, "chassis_dealer", 60, -56.71, 0.97, 8.33, 12.61, 4255433)
+	pNpc = spawnMobile(self.planet, "gambler", 60, 0.68378, 0.639421, 61.0666, 268.449, 4255423)
+	self:setMoodString(pNpc, "calm")
 
 		--Hotel
 	spawnMobile(self.planet, "zhanks", 60, 1.25, 1.0, 6.9, 340, 3005670)
@@ -466,9 +473,6 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "trainer_marksman", 0, 0, 1.13, -14, 0, 2955426)
 	spawnMobile(self.planet, "trainer_brawler", 0, -11, 1.13, -14, 0, 2955427)
 	pNpc = spawnMobile(self.planet, "junk_dealer", 0, -14.5, 1.1, 2.5, 88, 2955424)
-	if pNpc ~= nil then
-		AiAgent(pNpc):setConvoTemplate("junkDealerArmsConvoTemplate")
-	end
 
 		--Cloning Facility
 	spawnMobile(self.planet, "info_broker", 60, 4.47, -0.05, 2.9, 135, 3005428)
@@ -498,5 +502,6 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "chiss_female", 60, 0.28, 0.18, 8.39, 180, 3375392)
 	spawnMobile(self.planet, "commoner_old", 400, -11.7, 0.18, -13.7, 90, 3375393)
 	spawnMobile(self.planet, "ithorian_male", 400, -9.9, 0.18, -13.1, 168, 3375393)
-
+	pNpc = spawnMobile(self.planet, "r2", 60, -1.84202, 0.184067, 2.59886, 22.229, 3375392)
+	self:setMoodString(pNpc, "calm")
 end

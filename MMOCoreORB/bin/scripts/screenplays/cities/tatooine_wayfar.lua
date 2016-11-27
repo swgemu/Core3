@@ -154,9 +154,7 @@ function TatooineWayfarScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "jawa_warlord",360,-5248.59,75,-6514.38,140.997,0)
 	spawnMobile(self.planet, "jawa_warlord",360,-5066.64,75,-6600.84,318.437,0)
 	spawnMobile(self.planet, "jawa_warlord",360,-5054.39,75,-6602.99,341.563,0)
-	--{"jowir_arlensa",60,-5252.74,75,-6553.42,46.6563,0, "calm", "Jowir Ar'Lensa"},
 	spawnMobile(self.planet, "noble",60,-5161.6,75,-6532.3,24,0)
-	--{"palu",60,-5049.46,75,-6585.53,60,0, "calm", "Palu"},
 	pNpc = spawnMobile(self.planet, "r3",60,-5129.45,75,-6483.77,250.023,0)
 	self:setMoodString(pNpc, "calm")
 	pNpc = spawnMobile(self.planet, "r5",60,-5105.84,75,-6486.52,161.488,0)

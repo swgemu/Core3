@@ -1,7 +1,6 @@
 
 tatooine_static_spawns = {
 	{"businessman",60,-143.907,65,-5335.05,0,0, "conversation", "","stationary"},
-	{"death_watch_herald_imperial",60,-1157.74,12,-3525.5,200.331,0, "npc_imperial", "Commander D`krn","stationary"},
 	{"dim_u_preacher",300,7.19977,-0.255725,-7.74042,180.007,1153516, "conversation", "","stationary"},
 	{"giko",60,7.19977,-0.255725,-8.84042,0,1153516, "conversation", "Giko","stationary"},
 	{"record_keeper_planet_tatooine",300,3385.18,4.68287,-4792.87,298.466,0, "calm", "Lt Ogo (a Planet record keeper)","stationary"},

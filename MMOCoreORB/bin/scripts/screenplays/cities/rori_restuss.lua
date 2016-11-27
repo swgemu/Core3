@@ -233,6 +233,7 @@ function RoriRestussScreenPlay:spawnMobiles()
 	spawnMobile("rori", "informant_npc_lvl_3", 1, 5102, 79.98, 5652, 30, 0)
 	spawnMobile("rori", "junk_dealer", 1, 5353.8, 80, 5665.9, 180, 0)
 	spawnMobile("rori", "junk_dealer", 1, 5350.2, 81.3, 5484.8, -50, 0)
+	spawnMobile("rori", "junk_dealer", 0, -14.1, 1.1, 2.8, 127, 4635688)
 
 	--Hotel
 	spawnMobile("rori", "businessman", 1, 2.3, 1.0, 23.2, -75, 4635641)

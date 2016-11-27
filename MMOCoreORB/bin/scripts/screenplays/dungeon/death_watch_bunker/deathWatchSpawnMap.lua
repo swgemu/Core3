@@ -1,9 +1,11 @@
 deathWatchQuestNpcs = {
-	{"mand_bunker_foreman", 1, 27.6, -61.5, -297.6, -112, 5996355},
-	{"death_watch_workshop_droid", 1, -113.3, -20, -101.3, 35, 5996328},
-	{"mand_bunker_technician", 1, -23.9, -52, -163.8, 45, 5996378},
-	{"death_watch_medical_droid", 1, -80.3, -20, -121, -34, 5996329},
-	{"death_watch_rescue_scientist", 1, 113.9,-68,-187,1,5996351},
+	{"mand_bunker_foreman", 1, 27.6, -61.5, -297.6, -112, 5996355, "endor"},
+	{"death_watch_workshop_droid", 1, -113.3, -20, -101.3, 35, 5996328, "endor"},
+	{"mand_bunker_technician", 1, -23.9, -52, -163.8, 45, 5996378, "endor"},
+	{"death_watch_medical_droid", 1, -80.3, -20, -121, -34, 5996329, "endor"},
+	{"death_watch_rescue_scientist", 1, 113.9,-68,-187, 1, 5996351, "endor"},
+	{"death_watch_herald_rebel", 1, -213.642, 28, -4445.46, 28.5501, 0, "corellia"},
+	{"death_watch_herald_imperial", 1, -1157.74, 12, -3525.5, 200.331, 0, "tatooine"},
 }
 
 deathWatchSpecialSpawns = {

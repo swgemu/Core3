@@ -30,8 +30,7 @@ death_watch_herald_rebel = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "lutinNightstalkerConvoTemplate",
-	attacks = {
-	}
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(death_watch_herald_rebel, "death_watch_herald_rebel")
