@@ -1,4 +1,4 @@
-record_keeper_planet_tatooine = Creature:new {
+planet_record_keeper_tatooine = Creature:new {
 	objectName = "",
 	customName = "Lt. Ogo (Planetary Record Keeper)",
 	socialGroup = "imperial",
@@ -29,8 +29,7 @@ record_keeper_planet_tatooine = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "planet_record_keeper_tatooine_convConversationTemplate",
-	attacks = {
-	}
+	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(record_keeper_planet_tatooine, "record_keeper_planet_tatooine")
+CreatureTemplates:addCreatureTemplate(planet_record_keeper_tatooine, "planet_record_keeper_tatooine")

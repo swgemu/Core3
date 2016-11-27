@@ -80,9 +80,6 @@ function TatooineMosTaikeScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "informant_npc_lvl_3", 1, -1.97807, -9.54192, 9.62469, -45, 1154131)
 	spawnMobile(self.planet, "junk_dealer", 1, 3905.3, 33, 2362.9, -90, 0)
 	pNpc = spawnMobile(self.planet, "junk_nathan", 1, 3817.7, 16.2, 2340.5, 0, 0)
-	if pNpc ~= nil then
-		--AiAgent(pNpc):setConvoTemplate("junkDealerNathanConvoTemplate")
-	end
 
 		--commoners
 	spawnMobile(self.planet, "commoner_tatooine", 1, 3860.7, 28.0, 2361.1, 180, 0)

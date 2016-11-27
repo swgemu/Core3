@@ -7,10 +7,6 @@
 
 #include "SpawnAreaMap.h"
 #include "server/zone/Zone.h"
-#include "server/zone/managers/creature/CreatureManager.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/ai/AiAgent.h"
-#include "conf/ConfigManager.h"
 #include "server/zone/objects/area/areashapes/CircularAreaShape.h"
 #include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
 #include "server/zone/objects/area/areashapes/RingAreaShape.h"
@@ -25,7 +21,6 @@ void SpawnAreaMap::loadMap(Zone* z) {
 
 	try {
 		loadRegions();
-		loadStaticSpawns();
 	} catch (Exception& e) {
 		error(e.getMessage());
 	}
@@ -75,101 +70,6 @@ void SpawnAreaMap::loadRegions() {
 			}
 		}
 	}
-}
-
-void SpawnAreaMap::loadStaticSpawns() {
-	String planetName = zone->getZoneName();
-
-	lua->runFile("scripts/managers/spawn_manager/" + planetName + "_static_spawns.lua");
-
-	LuaObject obj = lua->getGlobalObject(planetName + "_static_spawns");
-
-	if (!obj.isValidTable()) {
-		obj.pop();
-		return;
-	}
-
-	int count = 0;
-	int max = obj.getTableSize();
-
-	for (int i = 1; i <= obj.getTableSize(); ++i) {
-		lua_rawgeti(obj.getLuaState(), -1, i);
-		LuaObject spawn(obj.getLuaState());
-
-		if (spawn.isValidTable()) {
-			CreatureManager* creatureManager = zone->getCreatureManager();
-
-			String name = obj.getStringAt(1);
-			uint32 respawn = obj.getIntAt(2);
-			float x = obj.getFloatAt(3);
-			float z = obj.getFloatAt(4);
-			float y = obj.getFloatAt(5);
-			float heading = obj.getFloatAt(6);
-			uint64 parentID = obj.getLongAt(7);
-			String moodString;
-			UnicodeString customName;
-			String aiString;
-
-			if (obj.getTableSize() > 7)
-				moodString = obj.getStringAt(8);
-
-			if (obj.getTableSize() > 8)
-				customName = obj.getStringAt(9);
-
-			if (obj.getTableSize() > 9)
-				aiString = obj.getStringAt(10);
-
-			if (parentID == 0)
-				z = zone->getHeight(x, y);
-
-			ManagedReference<CreatureObject*> creatureObject = creatureManager->spawnCreature(name.hashCode(), 0, x, z, y, parentID);
-
-			if (creatureObject != NULL) {
-				Locker objLocker(creatureObject);
-
-				creatureObject->setDirection(Math::deg2rad(heading));
-
-				if (!moodString.isEmpty()) {
-					creatureObject->setMoodString(moodString);
-
-					//TODO: remove after fixing commoners
-					if (moodString == "conversation" || moodString == "calm") {
-						creatureObject->setPvpStatusBitmask(0);
-						creatureObject->setCloseObjects(NULL);
-					}
-				}
-
-				if (!customName.isEmpty())
-					creatureObject->setCustomObjectName(customName, true);
-
-				if (creatureObject->isAiAgent()) {
-					AiAgent* ai = cast<AiAgent*>( creatureObject.get());
-					ai->setRespawnTimer(respawn);
-					if (!aiString.isEmpty()) {
-						ai->activateLoad(aiString);
-					}
-				}
-			} else {
-				StringBuffer msg;
-				msg << "could not spawn mobile: " + name;
-				error(msg.toString());
-			}
-		}
-
-		spawn.pop();
-
-		if (ConfigManager::instance()->isProgressMonitorActivated())
-			printf("\r\tLoading static spawns: [%d] / [%d]\t", ++count, max);
-	}
-
-	obj.pop();
-
-
-	//--{"mobile", x, z, y, degrees heading, parentID}
-
-
-
-	//spawnCreature(uint32 templateCRC, uint32 objectCRC, float x, float z, float y, uint64 parentID)
 }
 
 void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
