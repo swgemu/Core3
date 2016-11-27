@@ -53,7 +53,7 @@ function fs_experience_converter_conv_handler:chooseBranchToUnlock(pPlayer)
 		return
 	end
 
-	suiManager:sendListBox(pPlayer, pPlayer, "@quest/force_sensitive/utils:branch_select_title", "@quest/force_sensitive/utils:select_branch", 2, "@cancel", "", "@ok", "fs_experience_converter_conv_handler", "notifyBranchUnlocked", options)
+	suiManager:sendListBox(pPlayer, pPlayer, "@quest/force_sensitive/utils:branch_select_title", "@quest/force_sensitive/utils:select_branch", 2, "@cancel", "", "@ok", "fs_experience_converter_conv_handler", "notifyBranchUnlocked", 32, options)
 end
 
 function fs_experience_converter_conv_handler:notifyBranchUnlocked(pPlayer, pSui, eventIndex, arg0)
@@ -100,7 +100,7 @@ function fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pPlay
 
 	if (experienceTypeFS ~= nil) then
 		local suiManager = LuaSuiManager()
-		suiManager:sendListBox(pPlayer, pPlayer, "@quest/force_sensitive/utils:xp_transfer_prompt", "Select the Experience you wish to convert to: " .. experienceTypeFS, 2, "@cancel", "", "@ok", "fs_experience_converter_conv_handler", "notifyTransfer", options)
+		suiManager:sendListBox(pPlayer, pPlayer, "@quest/force_sensitive/utils:xp_transfer_prompt", "Select the Experience you wish to convert to: " .. experienceTypeFS, 2, "@cancel", "", "@ok", "fs_experience_converter_conv_handler", "notifyTransfer", 32, options)
 	end
 end
 
