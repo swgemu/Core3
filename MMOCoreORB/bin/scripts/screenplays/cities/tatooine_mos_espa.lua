@@ -231,10 +231,7 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 
 	--Junk Shop
-	pNpc = spawnMobile(self.planet, "junk_nado", 0, 4.4, -0.5, 1.3, -133, 1255997)
-	if pNpc ~= nil then
-		--AiAgent(pNpc):setConvoTemplate("junkDealerNadoConvoTemplate")
-	end
+	spawnMobile(self.planet, "junk_nado", 0, 4.4, -0.5, 1.3, -133, 1255997)
 
 	--Guild Hall -2997 2426
 	spawnMobile(self.planet, "trainer_brawler",0,-11,1.1,-14,0,1255994)
@@ -309,7 +306,6 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "eg6_power_droid",300,-2833.22,5,1899.71,245.01,0)
 	spawnMobile(self.planet, "eg6_power_droid",300,-2928.04,5,1977.68,330.633,0)
 	spawnMobile(self.planet, "eg6_power_droid",300,-2945.98,5,2470.9,186.376,0)
-	--{"giaal_itotr",60,-3102.7,5,2185,118,0, "npc_sitting_chair", ""},
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,-2804,5,2237,315,0)
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,-2836,5,2275,45,0)
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,-2935,5,2393,90,0)
@@ -366,7 +362,6 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 
 	--More misc outside
 	spawnMobile(self.planet, "junk_dealer", 0, -2750.9, 5, 2057, 132, 0)
-	--{"klepa_laeel",60,-2769.5,5,2111.1,104,0, "npc_sitting_chair", ""},
 	pNpc = spawnMobile(self.planet, "miner",60,-2918.94,5,2170.6,180.005,0)
 	self:setMoodString(pNpc, "conversation")
 	spawnMobile(self.planet, "noble",60,-2924.82,5,2143.27,127.261,0)
@@ -427,7 +422,6 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "trainer_scout",0,-2912.86,5,2106.67,174,0)
 	spawnMobile(self.planet, "trainer_unarmed",0,-2812,5,1973,180,0)
 	spawnMobile(self.planet, "trainer_weaponsmith",0,-2869,5,2146,8,0)
-	--{"watto_leg_syndil",60,-2866.54,5,1856.86,242.669,0, "calm", "Syndil"},
 
 	--Creatures
 	spawnMobile(self.planet, "dwarf_eopie",300,-3217.87,6.7851,2010.86,329.47,0)

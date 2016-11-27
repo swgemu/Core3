@@ -25,7 +25,6 @@ protected:
 
 	void readAreaObject(LuaObject& areaObj);
 	void loadRegions();
-	void loadStaticSpawns();
 
 public:
 

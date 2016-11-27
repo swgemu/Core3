@@ -1,8 +1,7 @@
 NabooDeejaPeakScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
-	
-	screenplayName = "NabooDeejaPeakScreenPlay",
 
+	screenplayName = "NabooDeejaPeakScreenPlay",
 }
 
 registerScreenPlay("NabooDeejaPeakScreenPlay", true)

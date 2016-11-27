@@ -357,10 +357,7 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "bounty_hunter",300,5.61884,7.01001,14.3502,118.356,1076949)
 	spawnMobile(self.planet, "bounty_hunter",300,6.01244,7.01,-14.2554,63.6677,1076948)
 	spawnMobile(self.planet, "informant_npc_lvl_3",0,3.8,7,-12.5,84,1076948)
-	pNpc = spawnMobile(self.planet, "junk_sneg", 0, -1.63376, 7.01, 7.35289, 203.569, 1076943)
-	if pNpc ~= nil then
-		--AiAgent(pNpc):setConvoTemplate("junkDealerSnegConvoTemplate")
-	end
+	spawnMobile(self.planet, "junk_sneg", 0, -1.63376, 7.01, 7.35289, 203.569, 1076943)
 
 	--Lower Floor
 	pNpc = spawnMobile(self.planet, "vendor",60,30.8955,-0.255725,2.05785,180.009,1076968)
@@ -397,6 +394,8 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "npc_imperial")
 	pNpc = spawnMobile(self.planet, "commoner_technician",300,-3.43834,2.6,12.9623,180.01,1105851)
 	self:setMoodString(pNpc, "conversation")
+	pNpc = spawnMobile(self.planet, "rodian_clan_captain", 300, 5.07127, 2.6, 6.65958, 0, 1105851)
+	self:setMoodString(pNpc, "conversation")
 	spawnMobile(self.planet, "noble",60,28.93,2.12878,58.19,222.007,1105852)
 	spawnMobile(self.planet, "noble",60,19.26,2.12847,56.13,266.008,1105853)
 	pNpc = spawnMobile(self.planet, "brawler",60,17.0318,2.12878,75.3601,0,1105853)
@@ -409,6 +408,7 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	spawnMobile(self.planet, "theater_manager",60,21.99,2.12804,64.05,4.00007,1105853)
 	spawnMobile(self.planet, "trainer_dancer",0,17.9873,2.12874,53.6448,1,1105853)
+	spawnMobile(self.planet, "trainer_imagedesigner", 0, -20.9956, 2.12878, 73.874, 90, 1105854)
 
 	--Outside
 	pNpc = spawnMobile(self.planet, "agriculturalist",60,3247.43,4.00222,-4850.96,0.276961,0)
@@ -524,8 +524,8 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "worried")
 	spawnMobile(self.planet, "junk_dealer", 0, 3699.2, 5, -4822, 92, 0)
 
-	--{"kahfr_oladi",60,3473.4,5,-4974.8,104,0, "npc_sitting_chair", ""},
-	--{"mos_eisley_police_officer",300,3385.18,4.68287,-4792.87,298.466,0, "calm", "Lt Ogo (a Planet record keeper)"},
+	pNpc = spawnMobile(self.planet, "planet_record_keeper_tatooine", 300, 3385.18, 4.68287, -4792.87, 298.466, 0)
+	self:setMoodString(pNpc, "calm")
 	pNpc = spawnMobile(self.planet, "noble",60,3247.46,4.9251,-4842.99,45.064,0)
 	self:setMoodString(pNpc, "conversation")
 	spawnMobile(self.planet, "noble",60,3542.38,5,-4826.12,295.121,0)
@@ -553,7 +553,6 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile(self.planet, "smuggler",300,3358.7,5,-4779.7,256,0)
 	self:setMoodString(pNpc, "npc_sitting_table")
-	--{"vanvi_hotne",60,3312.29,5,-4655.46,228.889,0, "neutral", ""},
 
 	--Creatures
 	spawnMobile(self.planet, "minor_worrt",300,3863.8,5,-4809.5,170,0)

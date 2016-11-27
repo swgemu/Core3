@@ -62,9 +62,8 @@ function NabooKerenScreenPlay:spawnSceneObjects()
 end
 
 function NabooKerenScreenPlay:spawnMobiles()
-
 	spawnMobile(self.planet, "gadget_specialist", 60, 1215.5, 13, 2741.1, 11, 0)
-	
+
 	--starport interior
 	local pNpc = spawnMobile(self.planet, "chiss_female",60,55.2,-0.5,31.6,0,2125385)
 	self:setMoodString(pNpc, "npc_sitting_table_eating")
