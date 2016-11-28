@@ -1,6 +1,6 @@
 junk_lila = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
-	customName = "Lila",
+	customName = "Lila Rawlkiss",
 	planetMapCategory = "junkshop",
 	socialGroup = "borvo",
 	faction = "borvo",
@@ -24,13 +24,13 @@ junk_lila = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/junk_lila.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "junkDealerLilaConvoTemplate",
 	attacks = {}
 }
 

@@ -1,6 +1,11 @@
 local JunkDealer = require("screenplays.junk_dealer.junk_dealer")
 
-JunkDealerConvoHandler = conv_handler:new {}
+JunkDealerConvoHandler = conv_handler:new {
+	junkType = "",
+	noLootText = "",
+	startSaleText = "",
+	inventorText = ""
+}
 
 function JunkDealerConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	local screen = LuaConversationScreen(pConvScreen)
@@ -8,9 +13,20 @@ function JunkDealerConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, 
 	local pConvScreen = screen:cloneScreen()
 	local clonedScreen = LuaConversationScreen(pConvScreen)
 
-	if string.find(screenID, "start_sale") ~= nil then
-		local dealerType = string.gsub(screenID, "start_sale_", "")
-		JunkDealer:sendSellJunkSelection(pPlayer, pNpc, dealerType)
+	if screenID == "ask_for_loot" then
+		local junkList = JunkDealer:getEligibleJunk(pPlayer, self.junkType)
+
+		if #junkList > 0 then
+			clonedScreen:addOption(self.startSaleText, "start_sale")
+		end
+
+		clonedScreen:addOption(self.noLootText, "no_loot")
+
+		if self.inventorText ~= "" then
+			clonedScreen:addOption(self.inventorText, "inventor")
+		end
+	elseif screenID == "start_sale" then
+		JunkDealer:sendSellJunkSelection(pPlayer, pNpc, self.junkType)
 	elseif string.find(screenID, "give_") ~= nil then
 		local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 
@@ -41,3 +57,58 @@ function JunkDealerConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, 
 
 	return pConvScreen
 end
+
+JunkDealerGenericConvoHandler = JunkDealerConvoHandler:new {
+	junkType = "generic",
+	noLootText = "@conversation/junk_dealer_generic:s_cd7a3f41",
+	startSaleText = "@conversation/junk_dealer_generic:s_54fab04f",
+	inventorText = "@conversation/junk_dealer_generic:s_3aa18b2d"
+}
+
+JunkDealerArmsConvoHandler = JunkDealerConvoHandler:new {
+	junkType = "arms",
+	noLootText = "@conversation/junk_dealer_arms:s_370a03c",
+	startSaleText = "@conversation/junk_dealer_arms:s_c86eba88"
+}
+
+JunkDealerFineryConvoHandler = JunkDealerConvoHandler:new {
+	junkType = "finery",
+	noLootText = "@conversation/junk_dealer_finery:s_370a03c",
+	startSaleText = "@conversation/junk_dealer_finery:s_c86eba88"
+}
+
+JunkDealerDenderConvoHandler = JunkDealerConvoHandler:new {
+	junkType = "gungan",
+	noLootText = "@conversation/junk_dender_rori:s_a753e4d6",
+	startSaleText = "@conversation/junk_dender_rori:s_673b632f"
+}
+
+JunkDealerLilaConvoHandler = JunkDealerConvoHandler:new {
+	junkType = "arms",
+	noLootText = "@conversation/junk_lila_borvo:s_e8b03c7c",
+	startSaleText = "@conversation/junk_lila_borvo:s_1875d09c"
+}
+
+JunkDealerMalikConvoHandler = JunkDealerConvoHandler:new {
+	junkType = "corsec",
+	noLootText = "@conversation/junk_malik_vistal:s_d36db42d",
+	startSaleText = "@conversation/junk_malik_vistal:s_fc51be40"
+}
+
+JunkDealerQuichConvoHandler = JunkDealerConvoHandler:new {
+	junkType = "jedi",
+	noLootText = "@conversation/junk_quich_dantooine:s_6e11f342",
+	startSaleText = "@conversation/junk_quich_dantooine:s_463bc6c4"
+}
+
+JunkDealerReggiConvoHandler = JunkDealerConvoHandler:new {
+	junkType = "arms",
+	noLootText = "@conversation/junk_reggi_nym:s_2e005077",
+	startSaleText = "@conversation/junk_reggi_nym:s_b8e27f3c"
+}
+
+JunkDealerSheaniConvoHandler = JunkDealerConvoHandler:new {
+	junkType = "finery",
+	noLootText = "@conversation/junk_sheani_lake:s_d264cf44",
+	startSaleText = "@conversation/junk_sheani_lake:s_370197a6"
+}

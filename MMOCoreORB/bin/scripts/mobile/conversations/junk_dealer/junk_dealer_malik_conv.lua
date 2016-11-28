@@ -1,7 +1,7 @@
 junkDealerMalikConvoTemplate = ConvoTemplate:new {
 	initialScreen = "init",
 	templateType = "Lua",
-	luaClassHandler = "JunkDealerConvoHandler",
+	luaClassHandler = "JunkDealerMalikConvoHandler",
 	screens = {}
 }
 
@@ -29,7 +29,7 @@ like_to_hear = ConvoScreen:new {
 	leftDialog = "@conversation/junk_malik_vistal:s_9251cdb4", -- That is what I like to hear. Well the problem is pretty simple. My associates and myself are honest hard working citizens that are being harassed to no end by Corsecs. Why they are after us is completely beyond my comprehension.
 	stopConversation = "false",
 	options = {
-		{"@conversation/junk_malik_vistal:s_b44309e2", "buy_proof"}, -- Let me guess. You want me to take care of the Corsecs?
+		{"@conversation/junk_malik_vistal:s_b44309e2", "ask_for_loot"}, -- Let me guess. You want me to take care of the Corsecs?
 		{"@conversation/junk_malik_vistal:s_91196436", "figured"}, -- I don't need the Corsecs looking into me for getting involved.
 	}
 }
@@ -43,31 +43,31 @@ figured = ConvoScreen:new {
 }
 junkDealerMalikConvoTemplate:addScreen(figured);
 
-buy_proof = ConvoScreen:new {
-	id = "buy_proof",
+ask_for_loot = ConvoScreen:new {
+	id = "ask_for_loot",
 	leftDialog = "@conversation/junk_malik_vistal:s_18123132", -- Hey, I didn't say anything about taking care of no Corsecs. But if accidents did happen to befall them who is to say that I wouldn't buy some sort of proof that they are no more...purely as a collectors piece of course.
 	stopConversation = "false",
 	options = {
-		{"@conversation/junk_malik_vistal:s_fc51be40", "start_sale_corsec"}, -- I think that I have just what you are looking for on me.
-		{"@conversation/junk_malik_vistal:s_d36db42d", "right_sort"}, -- I don't have anything you want but I will keep an eye out.
+		--{"@conversation/junk_malik_vistal:s_fc51be40", "start_sale"}, -- I think that I have just what you are looking for on me.
+		--{"@conversation/junk_malik_vistal:s_d36db42d", "no_loot"}, -- I don't have anything you want but I will keep an eye out.
 	}
 }
-junkDealerMalikConvoTemplate:addScreen(buy_proof);
+junkDealerMalikConvoTemplate:addScreen(ask_for_loot);
 
-right_sort = ConvoScreen:new {
-	id = "right_sort",
+no_loot = ConvoScreen:new {
+	id = "no_loot",
 	leftDialog = "@conversation/junk_malik_vistal:s_9c1435e4", -- I knew that you were the right sort from the moment I saw you.
 	stopConversation = "true",
 	options = {}
 }
-junkDealerMalikConvoTemplate:addScreen(right_sort);
+junkDealerMalikConvoTemplate:addScreen(no_loot);
 
-start_sale_corsec = ConvoScreen:new {
-	id = "start_sale_corsec",
+start_sale = ConvoScreen:new {
+	id = "start_sale",
 	leftDialog = "@conversation/junk_malik_vistal:s_9334c0a0", -- Let me take a look. I probably will be inclined to pay for anything Corsec that I locate on your person. Of course, this transaction has nothing to do with the unfortunate circumstances of which you came into possession of these items.
 	stopConversation = "true",
 	options = {}
 }
-junkDealerMalikConvoTemplate:addScreen(start_sale_corsec);
+junkDealerMalikConvoTemplate:addScreen(start_sale);
 
 addConversationTemplate("junkDealerMalikConvoTemplate", junkDealerMalikConvoTemplate);

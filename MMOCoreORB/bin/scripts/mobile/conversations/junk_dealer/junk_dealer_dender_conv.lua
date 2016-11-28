@@ -1,7 +1,7 @@
 junkDealerDenderConvoTemplate = ConvoTemplate:new {
 	initialScreen = "init",
 	templateType = "Lua",
-	luaClassHandler = "JunkDealerConvoHandler",
+	luaClassHandler = "JunkDealerDenderConvoHandler",
 	screens = {}
 }
 
@@ -48,7 +48,7 @@ interested = ConvoScreen:new {
 	leftDialog = "@conversation/junk_dender_rori:s_42c6dbd2", -- I knew you interested. I have buyers, big league Imperial types, who trying to get their hands on gungan stuffs. I don't think they want the souvenirs so much as they want less gungans in world.
 	stopConversation = "false",
 	options = {
-		{"@conversation/junk_dender_rori:s_6925372f", "whole_lot"}, -- Keep going, I am still listening.
+		{"@conversation/junk_dender_rori:s_6925372f", "ask_for_loot"}, -- Keep going, I am still listening.
 		{"@conversation/junk_dender_rori:s_e2f6a3b8", "neighborly"}, -- This just sounds like a bad idea.
 	}
 }
@@ -62,31 +62,31 @@ neighborly = ConvoScreen:new {
 }
 junkDealerDenderConvoTemplate:addScreen(neighborly);
 
-whole_lot = ConvoScreen:new {
-	id = "whole_lot",
+ask_for_loot = ConvoScreen:new {
+	id = "ask_for_loot",
 	leftDialog = "@conversation/junk_dender_rori:s_7d842aa5", -- If you come across any of those gungan signets that they wear or one of their lances, you come back and see me. I buy whole lot from you, no questions.
 	stopConversation = "false",
 	options = {
-		{"@conversation/junk_dender_rori:s_673b632f", "start_sale_gungan"}, -- It is your lucky day. I have what you are looking for.
-		{"@conversation/junk_dender_rori:s_a753e4d6", "looking_dumb"}, -- I don't appear to have anything you would want to buy.
+		--{"@conversation/junk_dender_rori:s_673b632f", "start_sale"}, -- It is your lucky day. I have what you are looking for.
+		--{"@conversation/junk_dender_rori:s_a753e4d6", "no_loot"}, -- I don't appear to have anything you would want to buy.
 	}
 }
-junkDealerDenderConvoTemplate:addScreen(whole_lot);
+junkDealerDenderConvoTemplate:addScreen(ask_for_loot);
 
-looking_dumb = ConvoScreen:new {
-	id = "looking_dumb",
+no_loot = ConvoScreen:new {
+	id = "no_loot",
 	leftDialog = "@conversation/junk_dender_rori:s_b0d63c3a", -- Bah...don't stand thur lookin' dumb. Come back if you have anything me buy.
 	stopConversation = "true",
 	options = {}
 }
-junkDealerDenderConvoTemplate:addScreen(looking_dumb);
+junkDealerDenderConvoTemplate:addScreen(no_loot);
 
-start_sale_gungan = ConvoScreen:new {
-	id = "start_sale_gungan",
+start_sale = ConvoScreen:new {
+	id = "start_sale",
 	leftDialog = "@conversation/junk_dender_rori:s_9aa94773", -- I right about you, eh thur killer? Lets see what you gots. Hmmm...not to bad, you have some things I make offer on.
 	stopConversation = "true",
 	options = {}
 }
-junkDealerDenderConvoTemplate:addScreen(start_sale_gungan);
+junkDealerDenderConvoTemplate:addScreen(start_sale);
 
 addConversationTemplate("junkDealerDenderConvoTemplate", junkDealerDenderConvoTemplate);

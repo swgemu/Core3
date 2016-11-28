@@ -1,37 +1,37 @@
 junkDealerGenericConvoTemplate = ConvoTemplate:new {
-	initialScreen = "init",
+	initialScreen = "ask_for_loot",
 	templateType = "Lua",
-	luaClassHandler = "JunkDealerConvoHandler",
+	luaClassHandler = "JunkDealerGenericConvoHandler",
 	screens = {}
 }
 
-init = ConvoScreen:new {
-	id = "init",
+ask_for_loot = ConvoScreen:new {
+	id = "ask_for_loot",
 	leftDialog = "@conversation/junk_dealer_generic:s_bef51e38", -- Welcome traveler. I am a buyer of goods that most would deem as junk. If you are interested I will look through what you have to offer and set a price for anything that I wish to buy. I also have come across some other items of interest that I am looking to get rid of.
 	stopConversation = "false",
 	options = {
-		{"@conversation/junk_dealer_generic:s_54fab04f", "start_sale_generic"}, -- I have some things that you might be interested in.
-		{"@conversation/junk_dealer_generic:s_cd7a3f41", "too_bad"}, -- I am sorry but I don't think I have anything you would want.
-		{"@conversation/junk_dealer_generic:s_3aa18b2d", "inventor"}, -- What sort of items do you have that you are looking to get rid of?
+		--{"@conversation/junk_dealer_generic:s_54fab04f", "start_sale"}, -- I have some things that you might be interested in.
+		--{"@conversation/junk_dealer_generic:s_cd7a3f41", "no_loot"}, -- I am sorry but I don't think I have anything you would want.
+		--{"@conversation/junk_dealer_generic:s_3aa18b2d", "inventor"}, -- What sort of items do you have that you are looking to get rid of?
 	}
 }
-junkDealerGenericConvoTemplate:addScreen(init);
+junkDealerGenericConvoTemplate:addScreen(ask_for_loot);
 
-start_sale_generic = ConvoScreen:new {
-	id = "start_sale_generic",
+start_sale = ConvoScreen:new {
+	id = "start_sale",
 	leftDialog = "@conversation/junk_dealer_generic:s_84a67771", -- Alright, let me see what you are offering.
 	stopConversation = "true",
 	options = {}
 }
-junkDealerGenericConvoTemplate:addScreen(start_sale_generic);
+junkDealerGenericConvoTemplate:addScreen(start_sale);
 
-too_bad = ConvoScreen:new {
-	id = "too_bad",
+no_loot = ConvoScreen:new {
+	id = "no_loot",
 	leftDialog = "@conversation/junk_dealer_generic:s_4bd9d15e", -- That is to bad. Remember to come visit me in the future if you happen to come across anything I would be interested in.
 	stopConversation = "true",
 	options = {}
 }
-junkDealerGenericConvoTemplate:addScreen(too_bad);
+junkDealerGenericConvoTemplate:addScreen(no_loot);
 
 inventor = ConvoScreen:new {
 	id = "inventor",

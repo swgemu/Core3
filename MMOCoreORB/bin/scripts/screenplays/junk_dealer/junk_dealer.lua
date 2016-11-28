@@ -17,19 +17,7 @@ function JunkDealer:sendSellJunkSelection(pPlayer, pNpc, dealerType)
 		return
 	end
 
-	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
-
-	if pInventory == nil then
-		return
-	end
-
-	local dealerNum = self:getDealerNum(dealerType)
-
-	if dealerNum == 0 then
-		return
-	end
-
-	local junkList = self:getEligibleJunk(pInventory, dealerNum)
+	local junkList = self:getEligibleJunk(pPlayer, dealerType)
 
 	if #junkList == 0 then
 		CreatureObject(pPlayer):sendSystemMessage("@loot_dealer:no_items") -- You have no items that the junk dealer wishes to buy.
@@ -52,8 +40,20 @@ function JunkDealer:getDealerNum(dealerType)
 	return dealerNum
 end
 
-function JunkDealer:getEligibleJunk(pInventory, dealerNum)
+function JunkDealer:getEligibleJunk(pPlayer, dealerType)
 	local junkList = {}
+
+	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+
+	if pInventory == nil then
+		return junkList
+	end
+
+	local dealerNum = self:getDealerNum(dealerType)
+
+	if dealerNum == 0 then
+		return junkList
+	end
 
 	for i = 0, SceneObject(pInventory):getContainerObjectsSize() - 1, 1 do
 		local pItem = SceneObject(pInventory):getContainerObject(i)

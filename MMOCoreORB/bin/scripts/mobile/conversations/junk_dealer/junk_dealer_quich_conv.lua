@@ -1,7 +1,7 @@
 junkDealerQuichConvoTemplate = ConvoTemplate:new {
 	initialScreen = "init",
 	templateType = "Lua",
-	luaClassHandler = "JunkDealerConvoHandler",
+	luaClassHandler = "JunkDealerQuichConvoHandler",
 	screens = {}
 }
 
@@ -29,7 +29,7 @@ artifacts = ConvoScreen:new {
 	leftDialog = "@conversation/junk_quich_dantooine:s_86df00aa", -- I have ye curious now. I be looking for rare artifacts of the mysterious nature. Artifacts that this planet have in abundance. Artifacts of jedi.
 	stopConversation = "false",
 	options = {
-		{"@conversation/junk_quich_dantooine:s_f2e88b32", "pay_well"}, -- Jedi eh? And I suppose you will pay for these artifacts?
+		{"@conversation/junk_quich_dantooine:s_f2e88b32", "ask_for_loot"}, -- Jedi eh? And I suppose you will pay for these artifacts?
 		{"@conversation/junk_quich_dantooine:s_fbe44b83", "wise"}, -- Jedi! I want nothing to do with anything Jedi.
 	}
 }
@@ -43,31 +43,31 @@ wise = ConvoScreen:new {
 }
 junkDealerQuichConvoTemplate:addScreen(wise);
 
-pay_well = ConvoScreen:new {
-	id = "pay_well",
+ask_for_loot = ConvoScreen:new {
+	id = "ask_for_loot",
 	leftDialog = "@conversation/junk_quich_dantooine:s_5bc0c939", -- Pay and pay well. I be working for a collector who has credits to spend. Ye get me artifacts and I get ye credits.
 	stopConversation = "false",
 	options = {
-		{"@conversation/junk_quich_dantooine:s_463bc6c4", "start_sale_jedi"}, -- I just might have some things you would be interested in.
-		{"@conversation/junk_quich_dantooine:s_6e11f342", "find_any"}, -- I don't have anything you would be interested in.
+		--{"@conversation/junk_quich_dantooine:s_463bc6c4", "start_sale"}, -- I just might have some things you would be interested in.
+		--{"@conversation/junk_quich_dantooine:s_6e11f342", "no_loot"}, -- I don't have anything you would be interested in.
 	}
 }
-junkDealerQuichConvoTemplate:addScreen(pay_well);
+junkDealerQuichConvoTemplate:addScreen(ask_for_loot);
 
-find_any = ConvoScreen:new {
-	id = "find_any",
+no_loot = ConvoScreen:new {
+	id = "no_loot",
 	leftDialog = "@conversation/junk_quich_dantooine:s_413bfd08", -- Well if ye find any Jedi artifacts ye know where I be.
 	stopConversation = "true",
 	options = {}
 }
-junkDealerQuichConvoTemplate:addScreen(find_any);
+junkDealerQuichConvoTemplate:addScreen(no_loot);
 
-start_sale_jedi = ConvoScreen:new {
-	id = "start_sale_jedi",
+start_sale = ConvoScreen:new {
+	id = "start_sale",
 	leftDialog = "@conversation/junk_quich_dantooine:s_ba5cc7c", -- Excellent. Let me look at what ye got for me. How nice...how nice indeed. I will make an offer on these. Ye should take me up on my offer because no one else will pay for what ye got.
 	stopConversation = "true",
 	options = {}
 }
-junkDealerQuichConvoTemplate:addScreen(start_sale_jedi);
+junkDealerQuichConvoTemplate:addScreen(start_sale);
 
 addConversationTemplate("junkDealerQuichConvoTemplate", junkDealerQuichConvoTemplate);
