@@ -365,6 +365,7 @@ core3_IDLS =	autogen/server/zone/objects/tangible/misc/FsCsObject.cpp \
 				autogen/server/zone/objects/tangible/ticket/TicketObject.cpp \
 				autogen/server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp \
 				autogen/server/zone/managers/gcw/GCWManager.cpp \
+				autogen/server/zone/managers/gcw/sessions/ContrabandScanSession.cpp \
 				autogen/server/zone/objects/tangible/threat/ThreatMapObserver.cpp \
 				autogen/server/zone/objects/creature/conversation/ConversationObserver.cpp \
 				autogen/server/zone/objects/creature/conversation/TrainerConversationObserver.cpp \
@@ -561,6 +562,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/faction/FactionManager.cpp \
 		server/zone/managers/faction/FactionMap.cpp \
 		server/zone/managers/gcw/GCWManagerImplementation.cpp \
+		server/zone/managers/gcw/sessions/ContrabandScanSessionImplementation.cpp \
 		server/zone/managers/gcw/GCWBaseShutdownObserverImplementation.cpp \
 		server/zone/managers/components/ComponentManager.cpp \
 		server/zone/managers/planet/HeightMap.cpp \
