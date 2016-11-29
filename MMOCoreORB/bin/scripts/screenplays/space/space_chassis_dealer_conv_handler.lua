@@ -85,7 +85,7 @@ function chassis_dealer_conv_handler:purchaseChassis(pPlayer, pSui, eventIndex, 
 		local pChassis = giveItem(pInventory, chassis, -1)
 
 		if (pChassis ~= nil) then
-			SceneObject(pChassis):sendTo(pCreature)
+			SceneObject(pChassis):sendTo(pPlayer)
 			CreatureObject(pPlayer):sendSystemMessage("@chassis_npc:bought_chassis")
 		end
 

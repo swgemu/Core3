@@ -300,7 +300,7 @@ void SceneObjectImplementation::sendWithoutParentTo(SceneObject* player) {
 }
 
 void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
-	if (isClientObject() || !sendToClient || player->getClient() == NULL)
+	if (isClientObject() || !sendToClient || player == NULL || player->getClient() == NULL)
 		return;
 
 	/*StringBuffer msgInfo;
