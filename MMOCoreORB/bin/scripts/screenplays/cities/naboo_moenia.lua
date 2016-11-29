@@ -75,6 +75,8 @@ function NabooMoeniaScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "trainer_squadleader",0,4701,3.75,-4939,0,0)
 	spawnMobile("naboo", "trainer_tailor",0,4858,3.8,-4799,180,0)
 	spawnMobile("naboo", "junk_lila", 0, 26, -0.9, 11.4, -128, 111)
+	spawnMobile("naboo", "junk_dealer", 0, -14.4, 1.1, 3.2, 122, 1717532)
+	spawnMobile("naboo", "junk_dealer", 0, 4810.44, 4.17, -4663.38, 112, 0)
 
 	--rebel 'stronghold' spawns
 	spawnMobile("naboo", "specforce_marine",300,4794.6,4.2,-4700,50,0)

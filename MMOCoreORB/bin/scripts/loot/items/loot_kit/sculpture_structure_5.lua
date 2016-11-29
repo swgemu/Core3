@@ -8,10 +8,7 @@ sculpture_structure_5 = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {},
-	junkDealerTypeNeeded = JUNKGENERIC,
-	junkMinValue = 100,
-	junkMaxValue = 100
+	customizationValues = {}
 }
 
 addLootItemTemplate("sculpture_structure_5", sculpture_structure_5)

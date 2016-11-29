@@ -43,6 +43,9 @@ SharedTangibleObjectTemplate::SharedTangibleObjectTemplate() {
 
 	faction = 0;
 
+	junkDealerNeeded = 0;
+	junkValue = 0;
+
 	resourceWeights = new Vector<Reference<ResourceWeight* > >();
 
 	skillMods.setNoDuplicateInsertPlan();
@@ -126,6 +129,10 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 	} else if (varName == "faction") {
 		String factionString = Lua::getStringParameter(state);
 		faction = factionString.toLowerCase().hashCode();
+	} else if (varName == "junkDealerNeeded") {
+		junkDealerNeeded = Lua::getIntParameter(state);
+	} else if (varName == "junkValue") {
+		junkValue = Lua::getIntParameter(state);
 	} else if (varName == "invisible") {
 		invisible = (bool) Lua::getByteParameter(state);
 	} else if (varName == "playerRaces") {

@@ -8,10 +8,7 @@ orange_rug_thread_5 = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {},
-	junkDealerTypeNeeded = JUNKGENERIC,
-	junkMinValue = 100,
-	junkMaxValue = 100
+	customizationValues = {}
 }
 
 addLootItemTemplate("orange_rug_thread_5", orange_rug_thread_5)

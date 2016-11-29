@@ -196,8 +196,14 @@ function NabooTheedScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile(self.planet, "official",300,-5886.59,6,4368.23,0,0)
 	self:setMoodString(pNpc, "conversation")
-	spawnMobile(self.planet, "junk_dealer", 0, -5222.4, 6, 4217.4, -137, 0)
-	spawnMobile(self.planet, "junk_dealer", 0, -5885.3, 6, 4214.7, 83, 0)
+	spawnMobile(self.planet, "junk_dealer", 0, -5884.3, 6, 4214.3, 83, 0)
+	pNpc = spawnMobile(self.planet, "junk_dealer", 0, -5762.59, 6.6, 4234.66, 87, 0)
+	if pNpc ~= nil then
+		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
+	end
+	spawnMobile(self.planet, "junk_dealer", 0, -5222.78, 6, 4217.68, -130, 0)
+	spawnMobile(self.planet, "junk_dealer", 0, -5086.83, 6, 4142.32, 37, 0)
+	spawnMobile(self.planet, "junk_dealer", 0, -4999.46, 6, 4120.26, 113, 0)
 
 	spawnMobile(self.planet, "trainer_1hsword",0,-5565,6,4304,84,0)
 	spawnMobile(self.planet, "trainer_2hsword",0,-5382,6,4327,180,0)
@@ -336,7 +342,8 @@ function NabooTheedScreenPlay:spawnMobiles()
 	--Guild Hall -5457 4122
 	spawnMobile(self.planet, "trainer_brawler",0,-11,1,-13,0,1692075)
 	spawnMobile(self.planet, "trainer_marksman",0,0,1.13306,-13,0,1692074)
-	spawnMobile(self.planet, "trainer_scout",0,-14.0781,1.13306,3.79797,142,1692072)
+	spawnMobile(self.planet, "trainer_scout", 0, -11.9, 1.13306, 5.1, 179, 1692072)
+	spawnMobile(self.planet, "junk_dealer", 0, -14.3, 1.1, 3, 107, 1692072)
 
 	--Guild Hall -5368 4138
 	spawnMobile(self.planet, "trainer_artisan",0,0.0417929,1.13306,-13.5584,2,1692084)
@@ -347,6 +354,12 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "trainer_droidengineer",0,-11,1.13306,-13,0,1692095)
 	spawnMobile(self.planet, "trainer_merchant",0,12,1.13306,6,180,1692091)
 	spawnMobile(self.planet, "trainer_weaponsmith",0,-3.1,1.1,-8.2,91,1692094)
+
+	--Cantina
+	pNpc = spawnMobile(self.planet, "junk_dealer", 0, -5.8, -0.9, -20.9, -52, 96)
+	if pNpc ~= nil then
+		AiAgent(pNpc):setConvoTemplate("junkDealerArmsConvoTemplate")
+	end
 
 	--Hotel
 	pNpc = spawnMobile(self.planet, "businessman",60,15.5641,1.28309,-2.37071,135.005,1677395)

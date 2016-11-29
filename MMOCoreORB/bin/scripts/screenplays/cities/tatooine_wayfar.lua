@@ -170,5 +170,6 @@ function TatooineWayfarScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "trainer_scout",0,-5051.46,75,-6629.48,7,0)
 	pNpc = spawnMobile(self.planet, "trainer_unarmed",0,-5055,75,-6633,310,0)
 	self:setMoodString(pNpc, "npc_sitting_ground")
-	spawnMobile(self.planet, "junk_dealer", 1, -5131.9, 75, -6585, 96, 0)
+	spawnMobile(self.planet, "junk_dealer", 1, -5242.27, 75, -6495.05, 138, 0)
+	spawnMobile(self.planet, "junk_dealer", 1, -5132.78, 75, -6585.28, 72, 0)
 end

@@ -95,6 +95,24 @@ JunkDealerMalikConvoHandler = JunkDealerConvoHandler:new {
 	startSaleText = "@conversation/junk_malik_vistal:s_fc51be40"
 }
 
+JunkDealerNadoConvoHandler = JunkDealerConvoHandler:new {
+	junkType = "generic",
+	noLootText = "@conversation/junk_nado_wattos:s_90b63763",
+	startSaleText = "@conversation/junk_nado_wattos:s_a5d02a3c"
+}
+
+JunkDealerNathanConvoHandler = JunkDealerConvoHandler:new {
+	junkType = "jawa",
+	noLootText = "@conversation/junk_nathan_taike:s_69567be7",
+	startSaleText = "@conversation/junk_nathan_taike:s_ecf19442"
+}
+
+JunkDealerOlloboConvoHandler = JunkDealerConvoHandler:new {
+	junkType = "arms",
+	noLootText = "@conversation/junk_ollobo_jabbas:s_b85badf5",
+	startSaleText = "@conversation/junk_ollobo_jabbas:s_e2ee167d"
+}
+
 JunkDealerQuichConvoHandler = JunkDealerConvoHandler:new {
 	junkType = "jedi",
 	noLootText = "@conversation/junk_quich_dantooine:s_6e11f342",
@@ -111,4 +129,10 @@ JunkDealerSheaniConvoHandler = JunkDealerConvoHandler:new {
 	junkType = "finery",
 	noLootText = "@conversation/junk_sheani_lake:s_d264cf44",
 	startSaleText = "@conversation/junk_sheani_lake:s_370197a6"
+}
+
+JunkDealerSnegConvoHandler = JunkDealerConvoHandler:new {
+	junkType = "arms",
+	noLootText = "@conversation/junk_sneg_valarian:s_b4cc3fb7",
+	startSaleText = "@conversation/junk_sneg_valarian:s_94fa366f"
 }

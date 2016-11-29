@@ -69,7 +69,7 @@ function TatooineAnchorheadScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("tatooine", "pilot", 60, -143.907, 65, -5334.05, 180.005, 0)
 	self:setMoodString(pNpc, "conversation")
-	spawnMobile("tatooine", "junk_dealer", 0, 129.9, 52, -5400.9, -87, 0)
+	spawnMobile("tatooine", "junk_dealer", 0, 110.87, 52, -5428.19, 53, 0)
 
 	spawnMobile("tatooine", "bantha",300,216.9,11.7,-5425.4,-121,0)
 	spawnMobile("tatooine", "specforce_technician",400,65.685,52,-5349.49,-4,0)

@@ -150,7 +150,17 @@ function NabooKerenScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "trainer_smuggler",0,1846,12,2772,31,0)
 	spawnMobile(self.planet, "trainer_weaponsmith",0,1905,12,2767,180,0)
 	spawnMobile(self.planet, "trainer_bountyhunter",0,2087,30,2575,180,0)
-	spawnMobile(self.planet, "junk_dealer", 0, 1371.6, 13, 2705.3, 177, 0)
+	spawnMobile(self.planet, "junk_dealer", 0, -14.5, 1.1, 2.9, 119, 0)
+	spawnMobile(self.planet, "junk_dealer", 0, 1274.18, 13, 2787.07, -96, 0)
+	pNpc = spawnMobile(self.planet, "junk_dealer", 0, 1242.11, 13, 2732.43, 48, 0)
+	if pNpc ~= nil then
+		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
+	end
+	pNpc = spawnMobile(self.planet, "junk_dealer", 0, 1286.34, 13, 2676.88, -166, 0)
+	if pNpc ~= nil then
+		AiAgent(pNpc):setConvoTemplate("junkDealerArmsConvoTemplate")
+	end
+	spawnMobile(self.planet, "junk_dealer", 0, 1372.26, 13, 2705.58, -173, 0)
 
 	--newb grind starter spawns
 	spawnMobile(self.planet, "gungan_hermit", 300, getRandomNumber(10) + 1360, 13.3, getRandomNumber(10) + 2941, getRandomNumber(360), 0)

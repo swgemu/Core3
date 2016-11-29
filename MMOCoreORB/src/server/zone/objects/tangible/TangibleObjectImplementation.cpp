@@ -78,6 +78,9 @@ void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 	faction = tanoData->getFaction();
 
+	junkDealerNeeded = tanoData->getJunkDealerNeeded();
+	junkValue = tanoData->getJunkValue();
+
 	threatMap = NULL;
 }
 

@@ -78,8 +78,8 @@ function TatooineMosTaikeScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "informant_npc_lvl_1", 1, 3775, 8.7, 2371, 180, 0)
 	spawnMobile(self.planet, "informant_npc_lvl_2", 1, 0.93374, 1.00421, 9.03511, 180, 1154123)
 	spawnMobile(self.planet, "informant_npc_lvl_3", 1, -1.97807, -9.54192, 9.62469, -45, 1154131)
-	spawnMobile(self.planet, "junk_dealer", 1, 3905.3, 33, 2362.9, -90, 0)
-	spawnMobile(self.planet, "junk_nathan", 1, 3817.7, 16.2, 2340.5, 0, 0)
+	spawnMobile(self.planet, "junk_dealer", 1, 3902.19, 33, 2362.52, -97, 0)
+	spawnMobile(self.planet, "junk_nathan", 1, 3821.75, 17.51, 2343.11, 0, 0)
 
 		--commoners
 	spawnMobile(self.planet, "commoner_tatooine", 1, 3860.7, 28.0, 2361.1, 180, 0)

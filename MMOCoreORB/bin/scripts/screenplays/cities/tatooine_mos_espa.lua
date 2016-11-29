@@ -231,12 +231,13 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 
 	--Junk Shop
-	spawnMobile(self.planet, "junk_nado", 0, 4.4, -0.5, 1.3, -133, 1255997)
+	spawnMobile(self.planet, "junk_nado", 0, 1.2, -0.5, 5.5, -144, 1255997)
 
 	--Guild Hall -2997 2426
 	spawnMobile(self.planet, "trainer_brawler",0,-11,1.1,-14,0,1255994)
 	spawnMobile(self.planet, "trainer_marksman",0,0,1.13306,-13,0,1255993)
 	spawnMobile(self.planet, "trainer_scout",0,-13,1.1,4.8,180,1255991)
+	spawnMobile(self.planet, "junk_dealer", 0, -14.3, 1.1, 2.9, 105, 1255991)
 
 	--Outside
 	pNpc = spawnMobile(self.planet, "anim_kahn",60,-2907.07,5,2130.14,71.993,0)
@@ -362,6 +363,7 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 
 	--More misc outside
 	spawnMobile(self.planet, "junk_dealer", 0, -2750.9, 5, 2057, 132, 0)
+	spawnMobile(self.planet, "junk_dealer", 0, -2904.51, 5, 2446.5, -87, 0)
 	pNpc = spawnMobile(self.planet, "miner",60,-2918.94,5,2170.6,180.005,0)
 	self:setMoodString(pNpc, "conversation")
 	spawnMobile(self.planet, "noble",60,-2924.82,5,2143.27,127.261,0)

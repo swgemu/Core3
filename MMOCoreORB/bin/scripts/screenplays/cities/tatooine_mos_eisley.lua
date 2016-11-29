@@ -187,6 +187,10 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "neutral")
 	pNpc = spawnMobile(self.planet, "talon_karrde",60,-18.7,-0.9,24.9,-31.0,1082886)
 	self:setMoodString(pNpc, "npc_sitting_chair")
+	pNpc = spawnMobile(self.planet, "junk_dealer", 0, -31.1, -0.5, 7.1, 31, 1082887)
+	if pNpc ~= nil then
+		AiAgent(pNpc):setConvoTemplate("junkDealerArmsConvoTemplate")
+	end
 
 	--western Tavern A
 	pNpc = spawnMobile(self.planet, "protocol_droid_3po",60,5.3,1.0,4.2,0,1188033)
@@ -324,7 +328,8 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "trainer_brawler",0,-11,1.1,-14,0,1189639)
 	spawnMobile(self.planet, "trainer_marksman",0,0,1.13306,-13,0,1189638)
 	spawnMobile(self.planet, "trainer_rifleman",0,12,1.1,2,180,1189635)
-	spawnMobile(self.planet, "trainer_scout",0,-13,1.1,4.8,180,1189636)
+	spawnMobile(self.planet, "trainer_scout", 0, -11.5, 1.1, 4.9, -177, 1189636)
+	spawnMobile(self.planet, "junk_dealer", 0, -14.7, 1.1, 2.9, 109, 1189636)
 
 	--Guild Hall 3355 -4713
 	spawnMobile(self.planet, "trainer_droidengineer",0,-10.9183,1.13306,-14.2845,5,1189580)
@@ -522,6 +527,11 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "scared")
 	pNpc = spawnMobile(self.planet, "jawa_warlord",300,3665,5,-4856.8,300,0)
 	self:setMoodString(pNpc, "worried")
+	pNpc = spawnMobile(self.planet, "junk_dealer", 0, 3271.49, 5, -4797.09, 52, 0)
+	if pNpc ~= nil then
+		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
+	end
+	spawnMobile(self.planet, "junk_dealer", 0, 3355.75, 5, -4823.58, 122, 0)
 	spawnMobile(self.planet, "junk_dealer", 0, 3699.2, 5, -4822, 92, 0)
 
 	pNpc = spawnMobile(self.planet, "planet_record_keeper_tatooine", 300, 3385.18, 4.68287, -4792.87, 298.466, 0)

@@ -275,6 +275,7 @@ function TatooineMosEnthaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "trainer_scout",0,-13,1.1,4.8,180,1153563)
 	spawnMobile(self.planet, "brawler",300,-14.01,1.13306,-8.53,120.004,1153566)
 	spawnMobile(self.planet, "businessman",60,3.32,1.13306,-8.49,228.007,1153565)
+	spawnMobile(self.planet, "junk_dealer", 0, -14.3, 1.1, 2.9, 108, 1153563)
 
 	--House 1447 2982
 	spawnMobile(self.planet, "jabba_scout",300,3.6,0.3,5.2,21,1156906)
@@ -493,7 +494,11 @@ function TatooineMosEnthaScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "valarian_thug",300,1618.4,11,3283.9,150,0)
 	spawnMobile(self.planet, "valarian_thug",300,1618.1,11,3278.5,32,0)
 	spawnMobile(self.planet, "valarian_thug",300,1620.8,11,3282,-99,0)
-	spawnMobile(self.planet, "junk_dealer", 0, 1308.1, 7, 3085.2, 1, 0)
+	pNpc = spawnMobile(self.planet, "junk_dealer", 0, 1471.19, 7.6, 3325.8, 0, 0)
+	if pNpc ~= nil then
+		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
+	end
+	spawnMobile(self.planet, "junk_dealer", 0, 1464.43, 7, 3127.7, -25, 0)
 
 	--Jawa's
 	pNpc = spawnMobile(self.planet, "jawa",300,1461.87,7,3223.41,270.008,0)

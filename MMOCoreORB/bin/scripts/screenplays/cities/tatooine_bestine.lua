@@ -38,11 +38,12 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	--Guild Hall -1239 -3580
 	pNpc = spawnMobile("tatooine", "coa3_tactical_imperial",60,9.74537,1.13306,0.300803,93.0077,1028549)
 	self:setMoodString(pNpc, "npc_imperial")
-	spawnMobile("tatooine", "trainer_scout",0,-13,1.1,4.8,180,1028550)
+	spawnMobile("tatooine", "trainer_scout", 0, -11.6, 1.1, 4.6, 174, 1028550)
 	spawnMobile("tatooine", "brawler",300,-14.01,1.13306,-8.53,120.004,1028553)
 	spawnMobile("tatooine", "trainer_brawler",0,-11,1.1,-14,0,1028553)
 	spawnMobile("tatooine", "trainer_marksman",0,0,1.13306,-13,0,1028552)
 	spawnMobile("tatooine", "businessman",60,3.32,1.13306,-8.49,228.007,1028552)
+	spawnMobile("tatooine", "junk_dealer", 0, -14.5, 1.1, 2.8, 111, 1028550)
 
 	--Guild Hall -1241 -3524
 	spawnMobile("tatooine", "trainer_architect",0,11,1.133,-14.5,0,1028581)
@@ -212,7 +213,16 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "informant_npc_lvl_1",0,-1053,12,-3726,90,0)
 	spawnMobile("tatooine", "informant_npc_lvl_1",0,-1023,12,-3677,225,0)
 	spawnMobile("tatooine", "informant_npc_lvl_1",0,-1220,12,-3560,45,0)
-	spawnMobile("tatooine", "junk_dealer", 0, -1392, 185, -3847.9, 8, 0)
+	spawnMobile("tatooine", "junk_dealer", 0, -1026.22, 10, -3559.1, 8, 0)
+	pNpc = spawnMobile("tatooine", "junk_dealer", 0, -1136.25, 12, -3683.56, 40, 0)
+	if pNpc ~= nil then
+		AiAgent(pNpc):setConvoTemplate("junkDealerArmsConvoTemplate")
+	end
+	pNpc = spawnMobile("tatooine", "junk_dealer", 0, -1117.39, 12, -3686.64, -144, 0)
+	if pNpc ~= nil then
+		AiAgent(pNpc):setConvoTemplate("junkDealerFineryConvoTemplate")
+	end
+	spawnMobile("tatooine", "junk_dealer", 0, -1392, 18, -3847.9, 8, 0)
 
 	spawnMobile("tatooine", "noble",60,-1250.18,12,-3545.35,279.206,0)
 	spawnMobile("tatooine", "noble",60,-1023.25,12,-3746.26,261.847,0)

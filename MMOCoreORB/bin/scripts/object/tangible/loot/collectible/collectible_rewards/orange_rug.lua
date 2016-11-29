@@ -42,7 +42,8 @@
 
 
 object_tangible_loot_collectible_collectible_rewards_orange_rug = object_tangible_loot_collectible_collectible_rewards_shared_orange_rug:new {
-
+	junkDealerNeeded = 1,
+	junkValue = 1000
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_rewards_orange_rug, "object/tangible/loot/collectible/collectible_rewards/orange_rug.iff")
