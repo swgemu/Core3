@@ -1,0 +1,94 @@
+package server.zone.managers.gcw.sessions;
+
+import engine.util.Facade;
+import server.zone.Zone;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.ai.AiAgent;
+include templates.faction.Factions;
+
+class ContrabandScanSession extends Facade {
+
+	private static final int CONTRABANDSCANCOOLDOWN = 10000;
+	private static final int SCANINITIATECHANCE = 8; // 1/8 chance to initiate scan - 12.5 % chance.
+	private static final int TASKDELAY = 1000; // 1 s delay.
+	private static final int PLAYERSCANCOOLDOWN = 30000; // 30 s cooldown
+	private static final int SCANTIME = 5; // 5 iterations = 5 s
+	private static final int TIMETORETURNFORSCAN = 10; // 10 iterations = 10 s
+	private static final int RANAWAYFACTIONFINE = 100;
+	private static final int RECOGNIZEDFACTIONRANK = 7;
+	private static final int BASEFACTIONDETECTIONCHANCE = 10; // 10 percent chance to detect opposite faction.
+	private static final int RANKDETECTIONCHANCEMODIFIER = 1; // Each faction rank increases the chance to detect opposite faction by this amount.
+	private static final int JEDIMINDTRICKSUCCESSCHANCEBASE = 80; // 80 percent chance to mind trick.
+
+	// Contraband Scan Session States
+	private static final int SCANCHANCE = 0;
+	private static final int INITIATESCAN = 1;
+	private static final int AVOIDINGSCAN = 2;
+	private static final int FACTIONRANKCHECK = 3;
+	private static final int JEDIMINDTRICKPLAYERCHAT = 4;
+	private static final int JEDIMINDTRICKSCANNERTHINK = 5;
+	private static final int JEDIMINDTRICKSCANNERCHAT = 6;
+	private static final int SCANDELAY = 7;
+	private static final int FINISHED = 8;
+
+	private int scanState;
+	private int previousScanState;
+
+	private int timeLeft;
+	private int previousTimeLeft;
+
+	private boolean alreadyTriedToAvoidScan;
+
+	@weakReference
+	protected transient CreatureObject weakPlayer;
+
+	@weakReference
+	protected transient AiAgent weakScanner;
+
+	protected transient Task contrabandScanTask;
+
+	public ContrabandScanSession(AiAgent scanner, CreatureObject player) {
+		Logger.setLoggingName("ContrabandScanSession");
+		Logger.setLogging(true);
+
+		weakScanner = scanner;
+		weakPlayer = player;
+
+		previousScanState = SCANCHANCE;
+		scanState = SCANCHANCE;
+		previousTimeLeft = 0;
+		timeLeft = 0;
+		alreadyTriedToAvoidScan = false;
+	}
+
+	public native int initializeSession();
+
+	public native int cancelSession();
+
+	public native int clearSession();
+
+	public native void runContrabandScan();
+
+	private native string getFactionStringId(AiAgent scanner, final string imperial, final string rebel);
+	private native void sendScannerChatMessage(Zone zone, AiAgent scanner, CreatureObject player, final string imperial, final string rebel);
+	private native void sendSystemMessage(AiAgent scanner, CreatureObject player, final string imperial, final string rebel);
+	private native string dependingOnJediSkills(CreatureObject player, final string novice, final string lightSide, final string darkSide);
+
+	public native boolean scanPrerequisitesMet(AiAgent scanner, CreatureObject player);
+
+	private native boolean playerTriesToAvoidScan(AiAgent scanner, CreatureObject player);
+	private native void scannerRequestsPlayerToReturn(Zone zone, AiAgent scanner, CreatureObject player);
+	private native void checkIfPlayerShouldBeScanned(CreatureObject player);
+	private native void initiateScan(Zone zone, AiAgent scanner, CreatureObject player);
+	private native void checkPlayerFactionRank(Zone zone, AiAgent scanner, CreatureObject player);
+	private native void performJediMindTrick(Zone zone, AiAgent scanner, CreatureObject player);
+	private native void reactOnJediMindTrick(Zone zone, AiAgent scanner, CreatureObject player);
+	private native void jediMindTrickResult(Zone zone, AiAgent scanner, CreatureObject player);
+	private native void performScan(Zone zone, AiAgent scanner, CreatureObject player);
+	private native void checkIfPlayerHasReturned(Zone zone, AiAgent scanner, CreatureObject player);
+	private native boolean isContraband(SceneObject item);
+	private native int countContrabandItemsInContainer(SceneObject container);
+	private native int countContrabandItems(CreatureObject player);
+	private native unsigned int jediMindTrickSuccessChance(CreatureObject player);
+}

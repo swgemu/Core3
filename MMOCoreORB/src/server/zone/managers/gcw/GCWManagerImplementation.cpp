@@ -2511,16 +2511,12 @@ int GCWManagerImplementation::isStrongholdCity(String& city) {
 }
 
 void GCWManagerImplementation::runCrackdownScan(AiAgent* scanner, CreatureObject* player) {
-
-	// This code will be moved to a task that will handle timing and state of the scan.
 	if (!player->isPlayerCreature() || !scanner->isInRange(player, 16) || !CollisionManager::checkLineOfSight(scanner, player)) {
 		return;
 	}
 
 	if (scanner->checkCooldownRecovery("crackdown_scan") && player->checkCooldownRecovery("crackdown_scan")) {
-		Reference<Task*> contrabandScanTask = new ContrabandScanTask(scanner, player);
-		contrabandScanTask->schedule(CONTRABANDSCANSCHEDULETIME);
-		scanner->updateCooldownTimer("crackdown_scan", CONTRABANDSCANCOOLDOWN);
-		player->updateCooldownTimer("crackdown_scan", CONTRABANDSCANCOOLDOWN);
+		ContrabandScanSession* contrabandScanSession = new ContrabandScanSession(scanner, player);
+		contrabandScanSession->initializeSession();
 	}
 }
