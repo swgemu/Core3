@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bada0100_9ae24ad4",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/sessions/ContrabandScanSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-11-29T14:54:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_daa9b27c",
+      "revId": "d3656a2dab52e73315dcae727155e0dab8a343fd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_baacee8d",
         "filename": "MMOCoreORB/src/server/zone/managers/gcw/sessions/ContrabandScanSessionImplementation.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-11-29T07:45:32Z",
       "side": 1,
       "message": "Since the task is transient, you should null check it before calling cancel.",
+      "revId": "d3656a2dab52e73315dcae727155e0dab8a343fd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_3ae79ee6",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/sessions/ContrabandScanSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-11-29T14:54:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_baacee8d",
       "revId": "d3656a2dab52e73315dcae727155e0dab8a343fd",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
