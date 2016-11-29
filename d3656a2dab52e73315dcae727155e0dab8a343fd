@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_daa9b27c",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/sessions/ContrabandScanSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-29T07:45:32Z",
+      "side": 1,
+      "message": "Before adding the session you should check if the player has an existing session of that type. If so, cancel it.\n\nSince the active sessions are serialized on the player it\u0027s conceivable that a player might have an unfinished session if, for example, a db backup happens in the middle of a scan and then the server crashes before the next backup.",
+      "revId": "d3656a2dab52e73315dcae727155e0dab8a343fd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_baacee8d",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/sessions/ContrabandScanSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-11-29T07:45:32Z",
+      "side": 1,
+      "message": "Since the task is transient, you should null check it before calling cancel.",
+      "revId": "d3656a2dab52e73315dcae727155e0dab8a343fd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
