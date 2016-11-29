@@ -28,9 +28,8 @@ charal = Creature:new {
 	templates = {"object/mobile/charal.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_marauder_mission_giver_convotemplate",
-	attacks = {
-	}
+	conversationTemplate = "theme_park_marauder_charal_mission_giver_convotemplate",
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(charal, "charal")

@@ -52,6 +52,8 @@ function mission_giver_conv_handler:runScreenHandlers(pConvTemplate, pPlayer, pN
 		pConvScreen = self:handleScreenNext(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "notyet" then
 		pConvScreen = self:handleScreenNotYet(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	elseif screenID == "notyet_2" then
+		pConvScreen = self:handleScreenNotYet2(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "cant_work" then
 		pConvScreen = self:handleScreenCantWork(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	elseif screenID == "no_faction" then
@@ -89,7 +91,11 @@ function mission_giver_conv_handler:handleScreenInit(pConvTemplate, pPlayer, pNp
 			nextScreenName = "failure"
 
 		elseif currentMissionNumber == 0 and not self.themePark.genericGiver then
-			nextScreenName = "notyet"
+			if self.themePark:isValidConvoString(stfFile, ":notyet") then
+				nextScreenName = "notyet"
+			else
+				nextScreenName = "notyet_2"
+			end
 
 		elseif missionFaction ~= 0 and self.themePark:isInFaction(missionFaction, pPlayer) ~= true then
 			if self.themePark:isValidConvoString(stfFile, ":notyet") then
@@ -149,7 +155,11 @@ function mission_giver_conv_handler:handleScreenInit(pConvTemplate, pPlayer, pNp
 					elseif missionPreReq.type == "state" and CreatureObject(pPlayer):hasScreenPlayState(missionPreReq.state, missionPreReq.screenPlayState) then
 						nextScreenName = "npc_1_n"
 					else
-						nextScreenName = "notyet"
+						if self.themePark:isValidConvoString(stfFile, ":notyet") then
+							nextScreenName = "notyet"
+						else
+							nextScreenName = "notyet_2"
+						end
 					end
 				else
 					nextScreenName = "npc_1_n"
@@ -158,7 +168,11 @@ function mission_giver_conv_handler:handleScreenInit(pConvTemplate, pPlayer, pNp
 		elseif npcCompare < 0 then
 			nextScreenName = "next"
 		else
-			nextScreenName = "notyet"
+			if self.themePark:isValidConvoString(stfFile, ":notyet") then
+				nextScreenName = "notyet"
+			else
+				nextScreenName = "notyet_2"
+			end
 		end
 	else
 		if self.useQuitQuest then
@@ -524,6 +538,16 @@ function mission_giver_conv_handler:handleScreenNotYet(pConvTemplate, pPlayer, p
 	local stfFile = self.themePark:getStfFile(npcNumber)
 
 	clonedScreen:setDialogTextStringId(stfFile .. ":notyet")
+
+	return pConvScreen
+end
+
+function mission_giver_conv_handler:handleScreenNotYet2(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+	local screen = LuaConversationScreen(pConvScreen)
+	pConvScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConvScreen)
+
+	clonedScreen:setCustomDialogText("Your progress is not yet sufficient.  Return only after completing tasks set by another before me.")
 
 	return pConvScreen
 end

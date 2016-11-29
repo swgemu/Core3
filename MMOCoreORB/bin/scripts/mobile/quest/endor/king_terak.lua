@@ -29,8 +29,10 @@ king_terak = Creature:new {
 	templates = {"object/mobile/king_terak.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_marauder_mission_giver_convotemplate",
+	conversationTemplate = "theme_park_marauder_szingo_terak_mission_giver_convotemplate",
 	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(king_terak, "king_terak")
+
+

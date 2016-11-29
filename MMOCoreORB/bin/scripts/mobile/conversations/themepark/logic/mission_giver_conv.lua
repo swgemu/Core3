@@ -86,6 +86,17 @@ function createMissionGiverConvoTemplate(templateName, convoHandler)
 
 	mission_giver_convotemplate:addScreen(mission_giver_notyet);
 
+	mission_giver_notyet_2 = ConvoScreen:new {
+		id = "notyet_2",
+		leftDialog = "",
+		customDialogText = "Your progress is not yet sufficient.  Return only after completing tasks set by another before me.",
+		stopConversation = "true",
+		options = {
+		}
+	}
+
+	mission_giver_convotemplate:addScreen(mission_giver_notyet_2);
+
 	mission_giver_notit_n = ConvoScreen:new {
 		id = "notit_n",
 		leftDialog = ":notit_1",
@@ -301,7 +312,9 @@ end
 -- Themeparks
 createMissionGiverConvoTemplate("theme_park_imperial_mission_giver_convotemplate", "theme_park_imperial_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("theme_park_jabba_mission_giver_convotemplate", "theme_park_jabba_mission_giver_conv_handler")
-createMissionGiverConvoTemplate("theme_park_marauder_mission_giver_convotemplate", "theme_park_marauder_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("theme_park_marauder_charal_mission_giver_convotemplate", "theme_park_marauder_charal_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("theme_park_marauder_raglith_jorak_mission_giver_convotemplate", "theme_park_marauder_raglith_jorak_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("theme_park_marauder_szingo_terak_mission_giver_convotemplate", "theme_park_marauder_szingo_terak_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("theme_park_rebel_mission_giver_convotemplate", "theme_park_rebel_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("theme_park_valarian_mission_giver_convotemplate", "theme_park_valarian_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("theme_park_nightsister_mission_giver_convotemplate", "theme_park_nightsister_mission_giver_conv_handler")
