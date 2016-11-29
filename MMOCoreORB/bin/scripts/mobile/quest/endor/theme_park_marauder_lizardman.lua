@@ -34,7 +34,7 @@ theme_park_marauder_lizardman = Creature:new {
 			},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_marauder_mission_target_convotemplate",
+	conversationTemplate = "theme_park_marauder_charal_mission_target_convotemplate",
 	attacks = brawlernovice
 }
 

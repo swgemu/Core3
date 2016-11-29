@@ -32,7 +32,7 @@ theme_park_marauder_ewok_juicy = Creature:new {
 		"object/mobile/ewok_male.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
-	conversationTemplate = "theme_park_marauder_mission_target_convotemplate",
+	conversationTemplate = "theme_park_marauder_charal_mission_target_convotemplate",
 	attacks = merge(riflemanmaster,brawlermaster)
 }
 CreatureTemplates:addCreatureTemplate(theme_park_marauder_ewok_juicy, "theme_park_marauder_ewok_juicy")
