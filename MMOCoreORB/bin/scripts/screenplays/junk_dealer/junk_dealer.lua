@@ -21,6 +21,7 @@ function JunkDealer:sendSellJunkSelection(pPlayer, pNpc, dealerType)
 
 	if #junkList == 0 then
 		CreatureObject(pPlayer):sendSystemMessage("@loot_dealer:no_items") -- You have no items that the junk dealer wishes to buy.
+		deleteStringData(SceneObject(pPlayer):getObjectID() .. ":junkDealerType")
 		return
 	end
 
@@ -74,13 +75,10 @@ function JunkDealer:getEligibleJunk(pPlayer, dealerType)
 end
 
 function JunkDealer:sellListSuiCallback(pPlayer, pSui, eventIndex, otherPressed, rowIndex)
-	if (eventIndex == 1) then
-		return
-	end
-
 	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 
-	if pInventory == nil then
+	if pInventory == nil or eventIndex == 1 then
+		deleteStringData(SceneObject(pPlayer):getObjectID() .. ":junkDealerType")
 		return
 	end
 
@@ -90,6 +88,7 @@ function JunkDealer:sellListSuiCallback(pPlayer, pSui, eventIndex, otherPressed,
 		rowIndex = tonumber(rowIndex)
 
 		if (rowIndex == -1) then
+			deleteStringData(SceneObject(pPlayer):getObjectID() .. ":junkDealerType")
 			return
 		end
 
@@ -98,6 +97,7 @@ function JunkDealer:sellListSuiCallback(pPlayer, pSui, eventIndex, otherPressed,
 end
 
 function JunkDealer:sellAllItems(pPlayer, pSui, pInventory)
+	deleteStringData(SceneObject(pPlayer):getObjectID() .. ":junkDealerType")
 	local listBox = LuaSuiListBox(pSui)
 	local pNpc = listBox:getUsingObject()
 
@@ -133,10 +133,12 @@ end
 
 function JunkDealer:sellItem(pPlayer, pSui, rowIndex, pInventory)
 	local listBox = LuaSuiListBox(pSui)
+	local pNpc = listBox:getUsingObject()
 	local oid = listBox:getMenuObjectID(rowIndex)
 	local pItem = SceneObject(pInventory):getContainerObjectById(oid)
 
-	if pItem == nil then
+	if pItem == nil or pNpc == nil then
+		deleteStringData(SceneObject(pPlayer):getObjectID() .. ":junkDealerType")
 		return
 	end
 
@@ -153,6 +155,9 @@ function JunkDealer:sellItem(pPlayer, pSui, rowIndex, pInventory)
 	messageString:setTT(name)
 	messageString:setDI(value)
 	CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject())
+
+	local dealerType = readStringData(SceneObject(pPlayer):getObjectID() .. ":junkDealerType")
+	self:sendSellJunkSelection(pPlayer, pNpc, dealerType)
 end
 
 return JunkDealer
