@@ -223,6 +223,9 @@ public:
 		GROUP_LOOT_PICK_LOOTER             = 513,
 		GROUP_LOOT_LOTTERY                 = 514,
 
+		//Contraband Scan 521-530
+		CONTRABAND_SCAN_FINE               = 521,
+
 		//Miscellaneous 1000+
 		OBJECT_NAME                        = 1000,
 		FINDSESSION                        = 1001,
@@ -238,7 +241,7 @@ public:
 		VENDOR_CUSTOM_PHRASE               = 1011,
 		VENDOR_ANIMATION                   = 1012,
 		COLOR_GOGGLES                      = 1013,
-		COLOR_ARMOR                        = 1014,	
+		COLOR_ARMOR                        = 1014,
 		CUSTOMIZE_KIT                      = 1015, // listbox to select FRAME or TRIM
 		MOUNT_GROWTH_ARREST                = 1016,
 		HOLO_EMOTE_HELP                    = 1017,
