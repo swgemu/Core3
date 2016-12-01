@@ -79,17 +79,17 @@ class FsPuzzlePack extends TangibleObject {
 	}
 
 	@dirty
-	public float getCureSymptomOne() {
+	public int getCureSymptomOne() {
 		return cureSymptomOne;
 	}
 
 	@dirty
-	public float getCureSymptomTwo() {
+	public int getCureSymptomTwo() {
 		return cureSymptomTwo;
 	}
 
 	@dirty
-	public float getGiveSymptomOne() {
+	public int getGiveSymptomOne() {
 		return giveSymptomOne;
 	}
 
