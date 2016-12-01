@@ -70,6 +70,12 @@ function FsSad1Theater5:notifyKilledMobile(pVictim, pAttacker)
 		QuestManager.completeQuest(pOwner, QuestManager.quests.FS_QUESTS_SAD_TASK5)
 		QuestManager.activateQuest(pOwner, QuestManager.quests.FS_QUESTS_SAD_RETURN5)
 		deleteData(ownerID .. self.taskName .. ":killableCount", numEnemies)
+
+		local pGhost = CreatureObject(pOwner):getPlayerObject()
+
+		if (pGhost ~= nil) then
+			PlayerObject(pGhost):addWaypoint("dathomir", "@quest/quest_journal/fs_quests_sad:return5", "", 5238, -4189, WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
+		end
 	end
 
 	deleteData(mobileID .. self.taskName .. "ownerID")

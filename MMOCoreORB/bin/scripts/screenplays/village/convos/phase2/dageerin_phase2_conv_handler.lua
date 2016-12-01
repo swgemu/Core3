@@ -6,6 +6,14 @@ villageDageerinPhase2ConvoHandler = conv_handler:new {}
 function villageDageerinPhase2ConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
+	if (FsSad:hasActiveReturnTask(pPlayer)) then
+		local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+		if (pGhost ~= nil) then
+			PlayerObject(pGhost):removeWaypointBySpecialType(WAYPOINTQUESTTASK)
+		end
+	end
+
 	if (VillageJediManagerTownship:getCurrentPhase() ~= 2) then
 		return convoTemplate:getScreen("intro_not_eligible")
 	elseif (QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_QUESTS_SAD_FINISH)) then
