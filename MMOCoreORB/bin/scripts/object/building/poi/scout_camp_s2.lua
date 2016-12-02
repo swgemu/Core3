@@ -64,48 +64,11 @@ object_building_poi_scout_camp_s2 = object_building_poi_shared_scout_camp_s2:new
 	skillRequired = 30,
 
 	childObjects = {
-		{templateFile = "object/tangible/camp/camp_control_panel.iff",
-			x = -1, z = 0, y = 3.73,
-			ox = 0, oy = 1, oz = 0, ow = 0,
-			cellid = -1,
-			containmentType = -1},
-
-		{templateFile = "object/tangible/camp/campfire_logs_ash.iff",
-			x = .50611, z = 0, y = -.596347,
-			ox = 0, oy = 0, oz = 0, ow = 0,
-			cellid = -1,
-			containmentType = -1},
-
-		{templateFile = "object/static/particle/particle_campfire_style_1.iff",
-			x = .50611, z = 0, y = -.596347,
-			ox = 0, oy = 0, oz = 0, ow = 0,
-			cellid = -1,
-			containmentType = -1},
-
-
-		{templateFile = "object/tangible/camp/camp_chair_s2.iff",
-			x = -2.2, z = 0, y = -.41,
-			ox = 0, oy = .66, oz = .0, ow = .75,
-			cellid = -1,
-			containmentType = -1},
-
-		{templateFile = "object/tangible/camp/camp_chair_s2.iff",
-			x = 2.59, z = 0, y = -1.3,
-			ox = 0, oy = .575, oz = 0, ow = -.82,
-			cellid = -1,
-			containmentType = -1},
-
-		{templateFile = "object/tangible/camp/camp_chair_s2.iff",
-			x = 1.91, z = 0, y = -2.43,
-			ox = 0, oy = -.38, oz = 0, ow = .92,
-			cellid = -1,
-			containmentType = -1},
-
-		{templateFile = "object/tangible/camp/camp_chair_s2.iff",
-			x = .66, z = 0, y = -2.9,
-			ox = 0, oy = -.13, oz = 0, ow = .99,
-			cellid = -1,
-			containmentType = -1},
+		{templateFile = "object/tangible/camp/camp_control_panel.iff", x = 1.35, z = 0, y = 3.33, ox = 0, oy = -0.992, oz = 0, ow = 0.126, cellid = -1, containmentType = -1},
+		{templateFile = "object/tangible/camp/camp_chair_s2.iff", x = 1.9, z = 0, y = -2.43, ox = 0, oy = -0.376, oz = 0, ow = 0.927, cellid = -1, containmentType = -1},
+		{templateFile = "object/tangible/camp/camp_chair_s2.iff", x = -2.2, z = 0, y = -.42, ox = 0, oy = 0.661, oz = .0, ow = 0.751, cellid = -1, containmentType = -1},
+		{templateFile = "object/tangible/camp/camp_chair_s2.iff", x = 0.66, z = 0, y = -2.91, ox = 0, oy = -0.130, oz = 0, ow = 0.992, cellid = -1, containmentType = -1},
+		{templateFile = "object/tangible/camp/camp_chair_s2.iff", x = 2.58, z = 0, y = -1.3, ox = 0, oy = -0.581, oz = 0, ow = 0.814, cellid = -1, containmentType = -1},
 	}
 }
 

@@ -5,6 +5,7 @@
  *      Author: Kyle
  */
 
+#include "server/zone/objects/staticobject/StaticObject.h"
 #include "server/zone/objects/area/CampSiteActiveArea.h"
 #include "server/zone/objects/area/CampSiteObserver.h"
 #include "server/zone/objects/structure/StructureObject.h"
@@ -19,6 +20,8 @@
 
 void CampSiteActiveAreaImplementation::initializeTransientMembers() {
 	startTasks();
+
+	setAbandoned(abandoned);
 }
 
 void CampSiteActiveAreaImplementation::init(CampStructureTemplate* campData) {
@@ -155,8 +158,41 @@ int CampSiteActiveAreaImplementation::notifyCombatEvent() {
 	return 1;
 }
 
+void CampSiteActiveAreaImplementation::setAbandoned(bool isAbandoned) {
+	abandoned = isAbandoned;
+
+	if (campFire != NULL)
+		campFire->destroyObjectFromWorld(true);
+
+	ZoneServer* zServ = getZoneServer();
+	Zone* thisZone = getZone();
+
+	if (zServ == NULL || thisZone == NULL)
+		return;
+
+	String fireTemplate = "object/static/structure/general/campfire_fresh.iff";
+
+	if (isAbandoned)
+		fireTemplate = "object/static/structure/general/campfire_smoldering.iff";
+
+	ManagedReference<StaticObject*> fire = (zServ->createObject(fireTemplate.hashCode(), 0)).castTo< StaticObject*>();
+
+	if (fire == NULL)
+		return;
+
+	float posX = getPositionX();
+	float posY = getPositionY();
+	float posZ = thisZone->getHeight(posX, posY);
+
+	fire->initializePosition(posX, posZ, posY);
+
+	thisZone->transferObject(fire, -1, true);
+
+	campFire = fire;
+}
+
 void CampSiteActiveAreaImplementation::abandonCamp() {
-	abandoned = true;
+	setAbandoned(true);
 
 	currentXp = 0;
 
@@ -233,6 +269,9 @@ bool CampSiteActiveAreaImplementation::despawnCamp() {
 		StructureManager::instance()->destroyStructure(camp);
 	}
 
+	if (campFire != NULL)
+		campFire->destroyObjectFromWorld(true);
+
 	destroyObjectFromWorld(true);
 	destroyObjectFromDatabase(true);
 
@@ -277,7 +316,7 @@ void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
 
 	setOwner(player);
 
-	abandoned = false;
+	setAbandoned(false);
 	currentXp = 0;
 	visitors.removeAll();
 
