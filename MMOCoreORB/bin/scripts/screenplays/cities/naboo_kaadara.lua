@@ -254,7 +254,7 @@ function NabooKaadaraScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "informant_npc_lvl_3", 1, 6.37977, -0.894992, 6.05897, 225, 64)
 	spawnMobile(self.planet, "informant_npc_lvl_3", 1, 5009, -192, 6652, 315, 0)
 	spawnMobile(self.planet, "informant_npc_lvl_3", 1, 5277, -192, 6560, 0, 0)
-	spawnMobile(self.planet, "junk_dealer", 0, -14.5, 1.1, 3.0, 116, 0)
+	spawnMobile(self.planet, "junk_dealer", 0, -14.5, 1.1, 3.0, 116, 1741459)
 	spawnMobile(self.planet, "junk_dealer", 0, 5143.9, -192, 6818, 47, 0)
 	pNpc = spawnMobile(self.planet, "junk_dealer", 0, 5149.79, -192, 6745.73, -72, 0)
 	if pNpc ~= nil then

@@ -99,6 +99,7 @@ function NabooKerenScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "trainer_brawler",0,-11,1.13306,-12.5,0,1650535)
 	spawnMobile(self.planet, "trainer_marksman",0,0,0,-13,0,1650534)
 	spawnMobile(self.planet, "trainer_scout",0,-12.0327,1.13306,4.62955,179,1650532)
+	spawnMobile(self.planet, "junk_dealer", 0, -14.5, 1.1, 2.9, 119, 1650532)
 
 	--Med Center
 	spawnMobile(self.planet, "trainer_combatmedic",0,27.2188,0.26,5.37779,76,1661366)
@@ -150,7 +151,6 @@ function NabooKerenScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "trainer_smuggler",0,1846,12,2772,31,0)
 	spawnMobile(self.planet, "trainer_weaponsmith",0,1905,12,2767,180,0)
 	spawnMobile(self.planet, "trainer_bountyhunter",0,2087,30,2575,180,0)
-	spawnMobile(self.planet, "junk_dealer", 0, -14.5, 1.1, 2.9, 119, 0)
 	spawnMobile(self.planet, "junk_dealer", 0, 1274.18, 13, 2787.07, -96, 0)
 	pNpc = spawnMobile(self.planet, "junk_dealer", 0, 1242.11, 13, 2732.43, 48, 0)
 	if pNpc ~= nil then
