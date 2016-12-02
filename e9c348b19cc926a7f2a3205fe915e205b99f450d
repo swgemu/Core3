@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_ba762e05",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/sessions/ContrabandScanSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-12-02T10:09:08Z",
+      "side": 1,
+      "message": "This should be another string.",
+      "range": {
+        "startLine": 273,
+        "startChar": 3,
+        "endLine": 273,
+        "endChar": 88
+      },
+      "revId": "e9c348b19cc926a7f2a3205fe915e205b99f450d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_da73f213",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/sessions/sui/ContrabandFineSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-12-02T10:09:08Z",
+      "side": 1,
+      "message": "I\u0027ll fix this. Search and replace didn\u0027t get it due to it being misspelled.",
+      "range": {
+        "startLine": 32,
+        "startChar": 10,
+        "endLine": 32,
+        "endChar": 38
+      },
+      "revId": "e9c348b19cc926a7f2a3205fe915e205b99f450d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
