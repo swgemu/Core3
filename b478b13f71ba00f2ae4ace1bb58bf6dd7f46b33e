@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_cf39fdd9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/conversations/mission_giver_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1809
+      },
+      "writtenOn": "2016-12-03T06:15:12Z",
+      "side": 1,
+      "message": "gotcha, will do",
+      "parentUuid": "9adffdf1_6f2b3183",
+      "revId": "b478b13f71ba00f2ae4ace1bb58bf6dd7f46b33e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_0f20659a",
         "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/conversations/mission_giver_conv_handler.lua",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2016-12-03T06:12:17Z",
       "side": 1,
       "message": "Don\u0027t use hard coded text. Find an appropriately generic string and use it like we did for the cantWork screen.",
+      "revId": "b478b13f71ba00f2ae4ace1bb58bf6dd7f46b33e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_ef3641e7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/conversations/mission_giver_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1809
+      },
+      "writtenOn": "2016-12-03T06:15:12Z",
+      "side": 1,
+      "message": "ah ok, i\u0027ll work on that now",
+      "parentUuid": "9adffdf1_0f20659a",
       "revId": "b478b13f71ba00f2ae4ace1bb58bf6dd7f46b33e",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
