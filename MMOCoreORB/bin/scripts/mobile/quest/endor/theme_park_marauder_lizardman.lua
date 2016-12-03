@@ -26,15 +26,13 @@ theme_park_marauder_lizardman = Creature:new {
 	optionsBitmask = INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates =
-			{
-			"object/mobile/trandoshan_male.iff",
-			"object/mobile/dressed_cobral_runner_trandoshan_male_01.iff",
-			"object/mobile/dressed_commoner_tatooine_trandoshan_male_01.iff"
-			},
+	templates = {
+		"object/mobile/trandoshan_male.iff",
+		"object/mobile/dressed_cobral_runner_trandoshan_male_01.iff",
+		"object/mobile/dressed_commoner_tatooine_trandoshan_male_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_marauder_mission_target_convotemplate",
+	conversationTemplate = "theme_park_marauder_charal_mission_target_convotemplate",
 	attacks = brawlernovice
 }
 
