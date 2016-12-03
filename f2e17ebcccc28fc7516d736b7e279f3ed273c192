@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_8f1c556c",
+        "filename": "MMOCoreORB/src/server/zone/objects/area/CampSiteActiveAreaImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-03T05:52:49Z",
+      "side": 1,
+      "message": "Instantiate a pointer to each of these and null check that (then use them later in the method). It\u0027s possible that getZone() could return a non-null pointer here but return a null pointer later in the method.",
+      "revId": "f2e17ebcccc28fc7516d736b7e279f3ed273c192",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_ef0f212d",
+        "filename": "MMOCoreORB/src/server/zone/objects/area/CampSiteActiveAreaImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-03T05:52:49Z",
+      "side": 1,
+      "message": "pass 0 for the second arg so it\u0027s not persistent",
+      "revId": "f2e17ebcccc28fc7516d736b7e279f3ed273c192",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_af19197b",
+        "filename": "MMOCoreORB/src/server/zone/objects/area/CampSiteActiveAreaImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-03T05:52:49Z",
+      "side": 1,
+      "message": "if (campFire !\u003d NULL)",
+      "revId": "f2e17ebcccc28fc7516d736b7e279f3ed273c192",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
