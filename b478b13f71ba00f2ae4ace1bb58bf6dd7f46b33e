@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_6f2b3183",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/conversations/mission_giver_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-03T06:12:17Z",
+      "side": 1,
+      "message": "Don\u0027t add a new screen. Instead, put the isValidConvoScreen() check in handleScreenNotYet just like many of the other screens do to determine which string to actually use.",
+      "revId": "b478b13f71ba00f2ae4ace1bb58bf6dd7f46b33e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_0f20659a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/conversations/mission_giver_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-03T06:12:17Z",
+      "side": 1,
+      "message": "Don\u0027t use hard coded text. Find an appropriately generic string and use it like we did for the cantWork screen.",
+      "revId": "b478b13f71ba00f2ae4ace1bb58bf6dd7f46b33e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
