@@ -523,7 +523,11 @@ function mission_giver_conv_handler:handleScreenNotYet(pConvTemplate, pPlayer, p
 	local npcNumber = self.themePark:getNpcNumber(pNpc)
 	local stfFile = self.themePark:getStfFile(npcNumber)
 
-	clonedScreen:setDialogTextStringId(stfFile .. ":notyet")
+	if (self.themePark:isValidConvoString(stfFile, ":notyet")) then
+		clonedScreen:setDialogTextStringId(stfFile .. ":notyet")
+	else
+		clonedScreen:setDialogTextStringId("@static_npc/dathomir/diax:notyet") -- "You may have potential, but I do not know if you are ready to serve. Come back after you have helped us more."
+	end
 
 	return pConvScreen
 end

@@ -29,7 +29,7 @@ raglith = Creature:new {
 	templates = {"object/mobile/dressed_raglith.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_marauder_mission_giver_convotemplate",
+	conversationTemplate = "theme_park_marauder_raglith_jorak_mission_giver_convotemplate",
 	attacks = {
 	}
 }
