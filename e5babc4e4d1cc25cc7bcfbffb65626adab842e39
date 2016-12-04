@@ -16,6 +16,24 @@
       "revId": "e5babc4e4d1cc25cc7bcfbffb65626adab842e39",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_cfaedde7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/conversations/mission_giver_conv_handler.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1809
+      },
+      "writtenOn": "2016-12-04T07:57:32Z",
+      "side": 1,
+      "message": "I felt like the examples you gave were a bit TOO generic, so i went with what seemed like, imo, a more appropriate (and more informative) message.  Obviously, i was wrong. I\u0027ll fix it ASAP.",
+      "parentUuid": "9adffdf1_2f73e9b2",
+      "revId": "e5babc4e4d1cc25cc7bcfbffb65626adab842e39",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
