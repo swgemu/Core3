@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_6f79f192",
+        "filename": "MMOCoreORB/src/server/zone/objects/area/CampSiteActiveAreaImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-04T05:55:16Z",
+      "side": 1,
+      "message": "null check first",
+      "revId": "397060e628128862864a2c6991e3e2c49039920b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
