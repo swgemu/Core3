@@ -77,9 +77,9 @@ function FsReflex2:completeSupplyFetch(pPlayer)
 		local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 
 		if (pInventory ~= nil) then
-			local pSculpture = giveItem(pInventory, "object/tangible/item/quest/force_sensitive/fs_buff_item.iff", -1, true)
+			local pBuffItem = giveItem(pInventory, "object/tangible/item/quest/force_sensitive/fs_buff_item.iff", -1, true)
 
-			if (pSculpture == nil) then
+			if (pBuffItem == nil) then
 				CreatureObject(pPlayer):sendSystemMessage("Error: Unable to generate item.")
 			end
 		end

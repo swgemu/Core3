@@ -12,6 +12,7 @@ include server.zone.packets.object.ObjectMenuResponse;
 include server.zone.objects.creature.CreatureObject;
 include templates.tangible.LightsaberCrystalObjectTemplate;
 
+@lua
 class LightsaberCrystalComponent extends Component {
 	protected string postTuneName;
 	
