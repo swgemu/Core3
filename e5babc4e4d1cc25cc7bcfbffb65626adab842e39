@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_2f73e9b2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/conversations/mission_giver_conv_handler.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-04T06:03:04Z",
+      "side": 1,
+      "message": "I said to find something that would work generically and even pm\u0027d you a couple of examples. This does not fit the bill.",
+      "revId": "e5babc4e4d1cc25cc7bcfbffb65626adab842e39",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
