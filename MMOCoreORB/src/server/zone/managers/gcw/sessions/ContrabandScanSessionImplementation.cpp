@@ -16,6 +16,8 @@
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
 #include "server/zone/Zone.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/managers/gcw/sessions/sui/ContrabandFineSuiCallback.h"
 
 int ContrabandScanSessionImplementation::initializeSession() {
 	ManagedReference<AiAgent*> scanner = weakScanner.get();
@@ -105,6 +107,9 @@ void ContrabandScanSessionImplementation::runContrabandScan() {
 		break;
 	case SCANDELAY:
 		performScan(zone, scanner, player);
+		break;
+	case WAITFORPAYFINEANSWER:
+		waitForPayFineAnswer(zone, scanner, player);
 		break;
 	case AVOIDINGSCAN:
 		checkIfPlayerHasReturned(zone, scanner, player);
@@ -234,24 +239,49 @@ int ContrabandScanSessionImplementation::countContrabandItems(CreatureObject* pl
 	return numberOfContrabandItems;
 }
 
+void ContrabandScanSessionImplementation::sendContrabandFineSuiWindow(Zone* zone, AiAgent* scanner, CreatureObject* player, int numberOfContrabandItems) {
+	fineToPay = numberOfContrabandItems * CONTRABANDFINEPERITEM;
+
+	if (player->getPlayerObject()->hasSuiBoxWindowType(SuiWindowType::CONTRABAND_SCAN_FINE)) {
+		player->getPlayerObject()->removeSuiBoxType(SuiWindowType::CONTRABAND_SCAN_FINE);
+	}
+
+	ManagedReference<SuiMessageBox*> suiContrabandFine = new SuiMessageBox(player, SuiWindowType::CONTRABAND_SCAN_FINE);
+
+	suiContrabandFine->setPromptTitle("@imperial_presence/contraband_search:imp_fine_title");
+	String text = "@imperial_presence/contraband_search:imp_fine_text " +  String::valueOf(fineToPay);
+	if (scanner->getFaction() == Factions::FACTIONIMPERIAL) {
+		text += " @imperial_presence/contraband_search:imp_fine_text2_imperial";
+	} else {
+		text += " @imperial_presence/contraband_search:imp_fine_text2_rebel";
+	}
+	suiContrabandFine->setPromptText(text);
+
+	suiContrabandFine->setCancelButton(true, "@ui:no");
+	suiContrabandFine->setOkButton(true, "@ui:yes");
+
+	suiContrabandFine->setCallback(new ContrabandFineSuiCallback(zone->getZoneServer()));
+
+	player->getPlayerObject()->addSuiBox(suiContrabandFine);
+	player->sendMessage(suiContrabandFine->generateMessage());
+}
+
 void ContrabandScanSessionImplementation::performScan(Zone* zone, AiAgent* scanner, CreatureObject* player) {
 	if (timeLeft < 0) {
 		int numberOfContrabandItems = countContrabandItems(player);
 		if (numberOfContrabandItems > 0) {
-			if (player->getFaction() == scanner->getFaction()) {
-				sendScannerChatMessage(zone, scanner, player, "pay_fine_imperial", "pay_fine_rebel");
-			} else {
-				sendScannerChatMessage(zone, scanner, player, "fined_imperial", "fined_rebel");
-			}
+			sendScannerChatMessage(zone, scanner, player, "fined_imperial", "fined_rebel");
 			sendSystemMessage(scanner, player, "probe_scan_positive");
 			scanner->doAnimation("wave_finger_warning");
+			sendContrabandFineSuiWindow(zone, scanner, player, numberOfContrabandItems);
+			scanState = WAITFORPAYFINEANSWER;
+			timeLeft = WAITFORPAYFINEANSWERTIMEOUT;
 		} else {
 			sendScannerChatMessage(zone, scanner, player, "clean_target_imperial", "clean_target_rebel");
 			sendSystemMessage(scanner, player, "probe_scan_negative");
 			scanner->doAnimation("wave_on_directing");
+			scanState = FINISHED;
 		}
-
-		scanState = FINISHED;
 	}
 }
 
@@ -381,4 +411,34 @@ void ContrabandScanSessionImplementation::jediMindTrickResult(Zone* zone, AiAgen
 	StringIdChatParameter chatMessage;
 	chatMessage.setStringId(stringId);
 	chatManager->broadcastChatMessage(scanner, chatMessage, player->getObjectID(), 0, chatManager->getMoodID(mood));
+}
+
+void ContrabandScanSessionImplementation::waitForPayFineAnswer(Zone* zone, AiAgent* scanner, CreatureObject* player) {
+	if (timeLeft < 0) {
+		sendSystemMessage(scanner, player, "ran_away_imperial", "ran_away_rebel");
+		player->getPlayerObject()->decreaseFactionStanding(scanner->getFactionString(), RANAWAYFACTIONFINE);
+		scanState = FINISHED;
+	} else if (fineAnswerGiven) {
+		if (acceptedFine) {
+			if (player->getCashCredits() + player->getBankCredits() >= fineToPay) {
+				sendScannerChatMessage(zone, scanner, player, "warning_imperial", "warning_rebel");
+				scanner->doAnimation("wave_on_directing");
+				if (fineToPay <= player->getCashCredits()) {
+					player->subtractCashCredits(fineToPay);
+				} else {
+					fineToPay -= player->getCashCredits();
+					player->subtractCashCredits(player->getCashCredits());
+					player->subtractBankCredits(fineToPay);
+				}
+			} else {
+				sendScannerChatMessage(zone, scanner, player, "failure_to_pay_imperial", "failure_to_pay_rebel");
+				scanner->doAnimation("wave_finger_warning");
+			}
+		} else {
+			sendScannerChatMessage(zone, scanner, player, "punish_imperial", "punish_rebel");
+			scanner->doAnimation("wave_finger_warning");
+			player->getPlayerObject()->decreaseFactionStanding(scanner->getFactionString(), RANAWAYFACTIONFINE);
+		}
+		scanState = FINISHED;
+	}
 }
