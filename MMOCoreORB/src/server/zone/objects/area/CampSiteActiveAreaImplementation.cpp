@@ -161,8 +161,10 @@ int CampSiteActiveAreaImplementation::notifyCombatEvent() {
 void CampSiteActiveAreaImplementation::setAbandoned(bool isAbandoned) {
 	abandoned = isAbandoned;
 
-	if (campFire != NULL)
+	if (campFire != NULL) {
+		Locker clocker(campFire, _this.getReferenceUnsafeStaticCast());
 		campFire->destroyObjectFromWorld(true);
+	}
 
 	ZoneServer* zServ = getZoneServer();
 	Zone* thisZone = getZone();
@@ -271,8 +273,10 @@ bool CampSiteActiveAreaImplementation::despawnCamp() {
 		StructureManager::instance()->destroyStructure(camp);
 	}
 
-	if (campFire != NULL)
+	if (campFire != NULL) {
+		Locker clocker(campFire, _this.getReferenceUnsafeStaticCast());
 		campFire->destroyObjectFromWorld(true);
+	}
 
 	destroyObjectFromWorld(true);
 	destroyObjectFromDatabase(true);
