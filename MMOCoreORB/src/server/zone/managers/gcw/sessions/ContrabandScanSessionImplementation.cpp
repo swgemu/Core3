@@ -401,7 +401,7 @@ void ContrabandScanSessionImplementation::jediMindTrickResult(Zone* zone, AiAgen
 		scanState = SCANDELAY;
 		scanner->doAnimation("wave_finger_warning");
 	} else {
-		stringId += dependingOnJediSkills(player, "dont_search_you_novice", "dont_search_you", "dont_search_you_dark");
+		stringId += dependingOnJediSkills(player, "dont_search_novice", "dont_search", "dont_search_dark");
 		mood = dependingOnJediSkills(player, "confused", "confident", "scared");
 		sendSystemMessage(scanner, player, "probe_scan_done");
 		scanner->doAnimation("wave_on_directing");
