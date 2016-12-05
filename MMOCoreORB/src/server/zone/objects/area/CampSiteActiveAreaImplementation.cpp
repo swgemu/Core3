@@ -184,6 +184,8 @@ void CampSiteActiveAreaImplementation::setAbandoned(bool isAbandoned) {
 	float posY = getPositionY();
 	float posZ = thisZone->getHeight(posX, posY);
 
+	Locker locker(fire);
+
 	fire->initializePosition(posX, posZ, posY);
 
 	thisZone->transferObject(fire, -1, true);
