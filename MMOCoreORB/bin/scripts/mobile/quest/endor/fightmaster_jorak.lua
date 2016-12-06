@@ -29,7 +29,7 @@ fightmaster_jorak = Creature:new {
 	templates = {"object/mobile/dressed_fightmaster_jorak.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_marauder_mission_giver_convotemplate",
+	conversationTemplate = "theme_park_marauder_raglith_jorak_mission_giver_convotemplate",
 	attacks = {
 	}
 }
