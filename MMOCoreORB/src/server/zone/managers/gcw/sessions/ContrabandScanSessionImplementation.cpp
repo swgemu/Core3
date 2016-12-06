@@ -242,9 +242,7 @@ int ContrabandScanSessionImplementation::countContrabandItems(CreatureObject* pl
 void ContrabandScanSessionImplementation::sendContrabandFineSuiWindow(Zone* zone, AiAgent* scanner, CreatureObject* player, int numberOfContrabandItems) {
 	fineToPay = numberOfContrabandItems * CONTRABANDFINEPERITEM;
 
-	if (player->getPlayerObject()->hasSuiBoxWindowType(SuiWindowType::CONTRABAND_SCAN_FINE)) {
-		player->getPlayerObject()->removeSuiBoxType(SuiWindowType::CONTRABAND_SCAN_FINE);
-	}
+	removeFineSuiWindow(player);
 
 	ManagedReference<SuiMessageBox*> suiContrabandFine = new SuiMessageBox(player, SuiWindowType::CONTRABAND_SCAN_FINE);
 
@@ -415,6 +413,7 @@ void ContrabandScanSessionImplementation::jediMindTrickResult(Zone* zone, AiAgen
 
 void ContrabandScanSessionImplementation::waitForPayFineAnswer(Zone* zone, AiAgent* scanner, CreatureObject* player) {
 	if (timeLeft < 0) {
+		removeFineSuiWindow(player);
 		sendSystemMessage(scanner, player, "ran_away_imperial", "ran_away_rebel");
 		player->getPlayerObject()->decreaseFactionStanding(scanner->getFactionString(), RANAWAYFACTIONFINE);
 		scanState = FINISHED;
@@ -440,5 +439,11 @@ void ContrabandScanSessionImplementation::waitForPayFineAnswer(Zone* zone, AiAge
 			player->getPlayerObject()->decreaseFactionStanding(scanner->getFactionString(), RANAWAYFACTIONFINE);
 		}
 		scanState = FINISHED;
+	}
+}
+
+void ContrabandScanSessionImplementation::removeFineSuiWindow(CreatureObject* player) {
+	if (player->getPlayerObject()->hasSuiBoxWindowType(SuiWindowType::CONTRABAND_SCAN_FINE)) {
+		player->getPlayerObject()->removeSuiBoxType(SuiWindowType::CONTRABAND_SCAN_FINE);
 	}
 }
