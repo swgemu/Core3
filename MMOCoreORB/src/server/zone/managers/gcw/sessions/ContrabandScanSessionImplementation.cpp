@@ -27,6 +27,8 @@ int ContrabandScanSessionImplementation::initializeSession() {
 		return false;
 	}
 
+	checkIfPlayerIsSmuggler(player);
+
 	if (contrabandScanTask == NULL) {
 		contrabandScanTask = new ContrabandScanTask(player);
 	}
@@ -267,7 +269,7 @@ void ContrabandScanSessionImplementation::sendContrabandFineSuiWindow(Zone* zone
 void ContrabandScanSessionImplementation::performScan(Zone* zone, AiAgent* scanner, CreatureObject* player) {
 	if (timeLeft < 0) {
 		int numberOfContrabandItems = countContrabandItems(player);
-		if (numberOfContrabandItems > 0) {
+		if (numberOfContrabandItems > 0 && !smugglerAvoidedScan) {
 			sendScannerChatMessage(zone, scanner, player, "fined_imperial", "fined_rebel");
 			sendSystemMessage(scanner, player, "probe_scan_positive");
 			scanner->doAnimation("wave_finger_warning");
@@ -318,7 +320,7 @@ void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiA
 		}
 	} else if (player->getFaction() != Factions::FACTIONNEUTRAL) {
 		unsigned int detectionChance = BASEFACTIONDETECTIONCHANCE + RANKDETECTIONCHANCEMODIFIER * player->getFactionRank();
-		if (System::random(100) < detectionChance) {
+		if (System::random(100) < detectionChance && !smugglerAvoidedScan) {
 			sendScannerChatMessage(zone, scanner, player, "discovered_chat_imperial", "discovered_chat_rebel");
 			sendSystemMessage(scanner, player, "discovered_imperial", "discovered_rebel");
 			scanner->doAnimation("point_accusingly");
@@ -343,7 +345,7 @@ String ContrabandScanSessionImplementation::dependingOnJediSkills(CreatureObject
 }
 
 void ContrabandScanSessionImplementation::performJediMindTrick(Zone* zone, AiAgent* scanner, CreatureObject* player) {
-	if (player->hasSkill("force_title_jedi_rank_02")) { // Jedi Padawan
+	if (player->hasSkill("force_title_jedi_rank_02") && !smugglerAvoidedScan) { // Jedi Padawan
 		ChatManager* chatManager = zone->getZoneServer()->getChatManager();
 		String stringId = "@imperial_presence/contraband_search:";
 		String mood = dependingOnJediSkills(player, "firm", "confident", "angry");
@@ -445,5 +447,11 @@ void ContrabandScanSessionImplementation::waitForPayFineAnswer(Zone* zone, AiAge
 void ContrabandScanSessionImplementation::removeFineSuiWindow(CreatureObject* player) {
 	if (player->getPlayerObject()->hasSuiBoxWindowType(SuiWindowType::CONTRABAND_SCAN_FINE)) {
 		player->getPlayerObject()->removeSuiBoxType(SuiWindowType::CONTRABAND_SCAN_FINE);
+	}
+}
+
+void ContrabandScanSessionImplementation::checkIfPlayerIsSmuggler(CreatureObject* player) {
+	if (player->hasSkill("combat_smuggler_novice") && (System::random(100) > SMUGGLERAVOIDSCANCHANCE)) {
+		smugglerAvoidedScan = true;
 	}
 }

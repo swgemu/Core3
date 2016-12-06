@@ -22,6 +22,7 @@ class ContrabandScanSession extends Facade {
 	private static final int JEDIMINDTRICKSUCCESSCHANCEBASE = 80; // 80 percent chance to mind trick.
 	private static final int CONTRABANDFINEPERITEM = 10000;
 	private static final int WAITFORPAYFINEANSWERTIMEOUT = 60; // 60 iterations = 60 s timeout.
+	private static final int SMUGGLERAVOIDSCANCHANCE = 80; // 80 percent chance for smugglers to completly avoid all scan related detections.
 
 	// Contraband Scan Session States
 	private static final int SCANCHANCE = 0;
@@ -48,6 +49,8 @@ class ContrabandScanSession extends Facade {
 
 	private int fineToPay;
 
+	private boolean smugglerAvoidedScan;
+
 	@weakReference
 	protected transient CreatureObject weakPlayer;
 
@@ -71,6 +74,7 @@ class ContrabandScanSession extends Facade {
 		acceptedFine = false;
 		fineAnswerGiven = false;
 		fineToPay = 0;
+		smugglerAvoidedScan = false;
 	}
 
 	public native int initializeSession();
@@ -109,4 +113,5 @@ class ContrabandScanSession extends Facade {
 	private native void sendContrabandFineSuiWindow(Zone zone, AiAgent scanner, CreatureObject player, int numberOfContrabandItems);
 	private native void waitForPayFineAnswer(Zone zone, AiAgent scanner, CreatureObject player);
 	private native void removeFineSuiWindow(CreatureObject player);
+	private native void checkIfPlayerIsSmuggler(CreatureObject player);
 }
