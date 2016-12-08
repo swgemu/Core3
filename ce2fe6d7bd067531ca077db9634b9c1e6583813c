@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_ef1c0116",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/LambdaShuttleWithReinforcementsTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-12-08T21:55:21Z",
+      "side": 1,
+      "message": "I will modify this task later to support both imperial and rebel reinforcements. This modification will probably include adding a more varied set of troops with increasing difficulty as well.",
+      "range": {
+        "startLine": 37,
+        "startChar": 55,
+        "endLine": 37,
+        "endChar": 78
+      },
+      "revId": "ce2fe6d7bd067531ca077db9634b9c1e6583813c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_8f19b524",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/LambdaShuttleWithReinforcementsTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-12-08T21:55:21Z",
+      "side": 1,
+      "message": "I\u0027ll modify this part later to find suitable landing zones where the shuttle do not fly through the ground, buildings or other stuff.",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 108
+      },
+      "revId": "ce2fe6d7bd067531ca077db9634b9c1e6583813c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_af16f9ef",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/LambdaShuttleWithReinforcementsTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2016-12-08T21:55:21Z",
+      "side": 1,
+      "message": "Short time for now, should be set to something larger later.",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 19
+      },
+      "revId": "ce2fe6d7bd067531ca077db9634b9c1e6583813c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
