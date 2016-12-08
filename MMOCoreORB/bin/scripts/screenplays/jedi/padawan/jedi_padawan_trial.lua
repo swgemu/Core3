@@ -14,8 +14,8 @@ local ObjectManager = require("managers.object.object_manager")
 -- Init
 JediPadawanTrial = ScreenPlay:new {
 	QuestNpcs = {
-		{ "naboo", "kant_graf", -5632, 78, 4642, 240}, -- Architect 1
-		{ "naboo", "sathme_forr", 4983, 78, 6634, 240} -- Artist 1
+		{ "naboo", "kant_graf", -5632, 6, 4642, 240}, -- Architect
+		{ "naboo", "sathme_forr", 4983, -192, 6634, 240} -- Artist
 	},
 	FIRST_MESSAGE = "",
 	SECOND_MESSAGE = "",
