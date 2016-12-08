@@ -3,7 +3,7 @@
 
 #include "engine/engine.h"
 
-#include "scene/SceneObject.h"
+#include "client/zone/objects/scene/SceneObject.h"
 
 class ObjectMap : public HashTable<uint64, Reference<SceneObject*> > {
 	int maxConnections;

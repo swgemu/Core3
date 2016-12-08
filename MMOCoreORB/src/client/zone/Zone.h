@@ -9,8 +9,8 @@
 
 #include "ZoneClient.h"
 
-#include "objects/player/PlayerCreature.h"
-#include "objects/ObjectMap.h"
+#include "client/zone/objects/player/PlayerCreature.h"
+#include "client/zone/objects/ObjectMap.h"
 
 class LoginSession;
 class ZoneClientThread;

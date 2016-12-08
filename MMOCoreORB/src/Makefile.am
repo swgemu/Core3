@@ -40,7 +40,7 @@
 # this exception also makes it possible to release a modified version 
 # which carries forward this exception.
 
-DEFAULT_FLAGS= $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11 -march=native
+DEFAULT_FLAGS = $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations -Werror -std=c++11 -march=native
 AM_CXXFLAGS = $(DEFAULT_FLAGS) -O0
 
 ENGINE3_PATH=../../../../MMOEngine
@@ -77,7 +77,7 @@ LIBS =	$(SYSTEM_LIBS)  \
 #AM_LDFLAGS = -pagezero_size 10000 -image_base 100000000
 #AM_LDFLAGS = --enable-stdcall-fixup
 
-bin_PROGRAMS = core3  #odb3
+bin_PROGRAMS = core3 core3client #odb3
 
 libcore3pathfinding_a_CXXFLAGS = $(DEFAULT_FLAGS) -Ofast
 noinst_LIBRARIES = libcore3templates.a libcore3terrain.a libcore3pathfinding.a
@@ -85,7 +85,7 @@ noinst_LIBRARIES = libcore3templates.a libcore3terrain.a libcore3pathfinding.a
 core3_LDADD = libcore3templates.a libcore3terrain.a libcore3pathfinding.a
 
 core3client_LDADD = libcore3templates.a libcore3terrain.a libcore3pathfinding.a
-core3client_LDFLAGS = -losg -losgUtil -losgTerrain -losgViewer -lOpenThreads -losgGA -ljemalloc
+#core3client_LDFLAGS = -losg -losgUtil -losgTerrain -losgViewer -lOpenThreads -losgGA -ljemalloc
 
 #engine/engine.h.gch:
 #	$(CXX) $(INCLUDES) $(ENGINE3_PATH)/src/engine/engine.h
@@ -947,7 +947,6 @@ core3client_SOURCES = \
 	client/login/LoginClient.cpp \
 	client/login/LoginSession.cpp \
 	client/login/LoginPacketHandler.cpp \
-	client/renderer/ClientRenderer.cpp \
 	client/zone/Zone.cpp \
 	client/zone/ZoneClient.cpp \
 	client/zone/ZonePacketHandler.cpp \
@@ -961,10 +960,6 @@ core3client_SOURCES = \
 	client/zone/objects/intangible/IntangibleObject.cpp \
 	client/zone/objects/player/PlayerObject.cpp \
 	client/zone/objects/player/PlayerCreature.cpp \
-	client/zone/objects/appearance/ClientMeshAppearance.cpp \
-	client/zone/objects/building/ClientCell.cpp \
-	client/zone/objects/building/ClientBuilding.cpp \
-	client/zone/managers/appearance/AppearanceManager.cpp \
 	conf/ConfigManager.cpp \
 	tre3/TreeFile.cpp
 

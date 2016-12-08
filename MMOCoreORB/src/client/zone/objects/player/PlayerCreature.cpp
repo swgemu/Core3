@@ -1,6 +1,6 @@
 #include "engine/engine.h"
 
-#include "zone/Zone.h"
+#include "client/zone/Zone.h"
 
 #include "PlayerCreature.h"
 #include "../../../../server/zone/packets/object/ObjectControllerMessage.h"

@@ -6,15 +6,15 @@
  */
 
 #include "ObjectManager.h"
-#include "zone/objects/scene/SceneObject.h"
-#include "zone/objects/scene/variables/StringId.h"
+#include "client/zone/objects/scene/SceneObject.h"
+#include "client/zone/objects/scene/variables/StringId.h"
 
-#include "zone/objects/player/PlayerCreature.h"
-#include "zone/objects/player/PlayerObject.h"
-#include "zone/objects/creature/CreatureObject.h"
-#include "zone/objects/ObjectMap.h"
+#include "client/zone/objects/player/PlayerCreature.h"
+#include "client/zone/objects/player/PlayerObject.h"
+#include "client/zone/objects/creature/CreatureObject.h"
+#include "client/zone/objects/ObjectMap.h"
 
-#include "zone/Zone.h"
+#include "client/zone/Zone.h"
 
 ObjectFactory<SceneObject* (LuaObject*), uint32> ObjectManager::objectFactory;
 Lua* ObjectManager::luaInstance = NULL;

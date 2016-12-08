@@ -11,8 +11,8 @@
 #include "../../server/zone/packets/zone/ClientIDMessage.h"
 #include "../../server/zone/packets/zone/SelectCharacter.h"
 #include "../../server/zone/packets/charcreation/ClientCreateCharacter.h"
-#include "managers/objectcontroller/ObjectController.h"
-#include "managers/object/ObjectManager.h"
+#include "client/zone/managers/objectcontroller/ObjectController.h"
+#include "client/zone/managers/object/ObjectManager.h"
 
 int Zone::createdChar = 0;
 

@@ -4,7 +4,6 @@
 
 #include "engine/service/proto/packets/SessionIDRequestMessage.h"
 
-//#include "objects/player/Player.h"
 #include "LoginMessageProcessorTask.h"
 
 #include "LoginSession.h"
