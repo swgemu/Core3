@@ -6,7 +6,7 @@
 #define ZONECLIENT_H_
 
 #include "engine/engine.h"
-#include "objects/player/PlayerCreature.h"
+#include "client/zone/objects/player/PlayerCreature.h"
 
 class Zone;
 class ZonePacketHandler;

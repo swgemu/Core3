@@ -1,18 +1,13 @@
-//#include "..\login\LoginSession.h"
 
 #include "Zone.h"
-
-/*#include "packets/zone/SelectCharacterMessage.h"
-#include "packets/zone/ClientCreateCharacter.h"
-#include "packets/zone/ClientIDMessage.h"*/
 #include "ZoneClientThread.h"
 
 #include "engine/service/proto/packets/SessionIDRequestMessage.h"
-#include "../../server/zone/packets/zone/ClientIDMessage.h"
-#include "../../server/zone/packets/zone/SelectCharacter.h"
-#include "../../server/zone/packets/charcreation/ClientCreateCharacter.h"
-#include "managers/objectcontroller/ObjectController.h"
-#include "managers/object/ObjectManager.h"
+#include "server/zone/packets/zone/ClientIDMessage.h"
+#include "server/zone/packets/zone/SelectCharacter.h"
+#include "server/zone/packets/charcreation/ClientCreateCharacter.h"
+#include "client/zone/managers/objectcontroller/ObjectController.h"
+#include "client/zone/managers/object/ObjectManager.h"
 
 int Zone::createdChar = 0;
 

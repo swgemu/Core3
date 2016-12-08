@@ -8,7 +8,7 @@
 #include "LoginClient.h"
 #include "LoginClientThread.h"
 
-#include "../../server/login/packets/AccountVersionMessage.h"
+#include "server/login/packets/AccountVersionMessage.h"
 
 #include "LoginSession.h"
 

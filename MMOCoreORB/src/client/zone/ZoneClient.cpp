@@ -9,7 +9,7 @@
 
 #include "ZoneMessageProcessorTask.h"
 #include "engine/service/proto/packets/SessionIDRequestMessage.h"
-#include "../../server/zone/packets/zone/ClientIDMessage.h"
+#include "server/zone/packets/zone/ClientIDMessage.h"
 
 
 ZoneClient::ZoneClient(int port) {
