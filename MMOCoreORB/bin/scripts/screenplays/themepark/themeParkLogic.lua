@@ -525,6 +525,7 @@ function ThemeParkLogic:handleMissionAccept(npcNumber, missionNumber, pConversin
 	end
 
 	writeData(SceneObject(pQuestArea):getObjectID() .. ":ownerID", SceneObject(pConversingPlayer):getObjectID())
+	writeData(SceneObject(pConversingPlayer):getObjectID() .. ":questAreaID", SceneObject(pQuestArea):getObjectID())
 	self:writeData(pConversingPlayer, ":activeMission", 1)
 
 	return true
@@ -550,6 +551,10 @@ function ThemeParkLogic:notifyEnteredQuestArea(pActiveArea, pPlayer)
 
 	local mission = self:getMission(npcNumber, missionNumber)
 
+	if mission == nil then
+		return 0
+	end
+
 	local spawnSuccess = false
 	if mission.missionType == "deliver" then
 		spawnSuccess = self:handleDeliverMissionSpawn(mission, pPlayer, missionNumber, pActiveArea)
@@ -566,6 +571,9 @@ function ThemeParkLogic:notifyEnteredQuestArea(pActiveArea, pPlayer)
 	end
 
 	if (spawnSuccess) then
+		SceneObject(pActiveArea):destroyObjectFromWorld()
+		deleteData(SceneObject(pActiveArea):getObjectID() .. ":ownerID")
+		deleteData(SceneObject(pPlayer):getObjectID() .. ":questAreaID")
 		return 1
 	else
 		return 0
@@ -1979,8 +1987,10 @@ function ThemeParkLogic:cleanUpMission(pConversingPlayer)
 		local pObj = getSceneObject(objectID)
 		if pObj ~= nil then
 			SceneObject(pObj):destroyObjectFromWorld()
+			deleteData(playerID .. ":missionStaticObject:no" .. i)
 		end
 	end
+	deleteData(playerID .. ":missionStaticObjects")
 
 	local numberOfSpawns = readData(playerID .. ":missionSpawns")
 	for i = 1, numberOfSpawns, 1 do
@@ -1988,7 +1998,17 @@ function ThemeParkLogic:cleanUpMission(pConversingPlayer)
 		local pNpc = getSceneObject(objectID)
 		if pNpc ~= nil then
 			SceneObject(pNpc):destroyObjectFromWorld()
+			deleteData(playerID .. ":missionSpawn:no" .. i)
 		end
+	end
+	deleteData(playerID .. ":missionSpawns")
+
+	local questAreaID = readData(playerID .. ":questAreaID")
+	local pQuestArea = getSceneObject(questAreaID)
+	if pQuestArea ~= nil then
+		SceneObject(pQuestArea):destroyObjectFromWorld()
+		deleteData(SceneObject(pQuestArea):getObjectID() .. ":ownerID")
+		deleteData(playerID .. ":questAreaID")
 	end
 end
 

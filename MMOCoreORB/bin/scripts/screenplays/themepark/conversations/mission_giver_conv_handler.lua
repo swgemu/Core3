@@ -88,6 +88,9 @@ function mission_giver_conv_handler:handleScreenInit(pConvTemplate, pPlayer, pNp
 		if (self.themePark:missionStatus(pPlayer) == -1) then
 			nextScreenName = "failure"
 
+		elseif npcCompare < 0 then
+			nextScreenName = "next"
+
 		elseif currentMissionNumber == 0 and not self.themePark.genericGiver then
 			nextScreenName = "notyet"
 
@@ -155,8 +158,6 @@ function mission_giver_conv_handler:handleScreenInit(pConvTemplate, pPlayer, pNp
 					nextScreenName = "npc_1_n"
 				end
 			end
-		elseif npcCompare < 0 then
-			nextScreenName = "next"
 		else
 			nextScreenName = "notyet"
 		end
