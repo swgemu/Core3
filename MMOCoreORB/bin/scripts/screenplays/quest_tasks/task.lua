@@ -51,7 +51,7 @@ end
 -- @param pPlayer pointer to the creature object of the player who should get the task started.
 function Task:start(pPlayer, ...)
 	if (pPlayer == nil) then
-		return
+		return false
 	end
 
 	if not self:hasTaskStarted(pPlayer) then
@@ -59,16 +59,19 @@ function Task:start(pPlayer, ...)
 		if self:callFunctionIfNotNil(self.taskStart, true, pPlayer, table.unpack({...})) then
 			Logger:log(self.taskName .. " started.", LT_INFO)
 			self:setTaskStarted(pPlayer)
-		end
 
-		if self.onLoggedIn ~= nil then
-			createObserver(LOGGEDIN, self.taskName, "onLoggedIn", pPlayer, 1)
-		end
-		if self.onLoggedOut ~= nil then
-			createObserver(LOGGEDOUT, self.taskName, "onLoggedOut", pPlayer, 1)
+			if self.onLoggedIn ~= nil then
+				createObserver(LOGGEDIN, self.taskName, "onLoggedIn", pPlayer, 1)
+			end
+			if self.onLoggedOut ~= nil then
+				createObserver(LOGGEDOUT, self.taskName, "onLoggedOut", pPlayer, 1)
+			end
+			
+			return true
 		end
 	else
 		Logger:log("Task " .. self.taskName .. " is already started.", LT_INFO)
+		return false
 	end
 end
 
