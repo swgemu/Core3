@@ -44,12 +44,17 @@ Encounter = Task:new {
 function Encounter:taskStart(pPlayer)
 	if not self:callFunctionIfNotNil(self.isEncounterFinished, true, pPlayer) then
 		if self:isPlayerInPositionForEncounter(pPlayer) and not CreatureObject(pPlayer):isDead() then
-			self:createEncounter(pPlayer)
-			createEvent(self.encounterDespawnTime, self.taskName, "handleDespawnEvent", pPlayer, "")
+			local result = self:createEncounter(pPlayer)
+			
+			if (result) then
+				createEvent(self.encounterDespawnTime, self.taskName, "handleDespawnEvent", pPlayer, "")
+			end
+			
+			return result
 		end
 	end
 
-	return true
+	return false
 end
 
 -- Check if the player is online.
@@ -152,7 +157,10 @@ function Encounter:createEncounter(pPlayer)
 		self:setSpawnedObjectsToFollow(spawnedObjects, pPlayer)
 		self:createEncounterEvents(pPlayer, spawnedObjects)
 		self:callFunctionIfNotNil(self.onEncounterSpawned, nil, pPlayer, spawnedObjects)
+		return true
 	end
+	
+	return false
 end
 
 -- Despawn encounter
