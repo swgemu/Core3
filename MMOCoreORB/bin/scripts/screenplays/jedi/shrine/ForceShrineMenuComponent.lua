@@ -106,7 +106,7 @@ function ForceShrineMenuComponent:jediPadawanTrialsStartCallback(pPlayer, pSui, 
 	end
 
 	local rand = getRandomNumber(1,  #self.PadawanTrialQuests) -- 16 Jedi Padawan Trials
-	local TrialScreenPlay = self.PadawanTrialQuests[rand][2]
+	local TrialScreenPlay = self:getScreenPlayFromTable(rand)
 
 	TrialScreenPlay:startTrial(pPlayer)
 	writeScreenPlayData(pPlayer, "JediPadawanTrial", "CurrentTrial", rand)
@@ -187,7 +187,7 @@ function ForceShrineMenuComponent:unlockJediPadawan(pPlayer)
 	end
 
 	-- Find Trainer.
-	PlayerObject(pGhost):findJediTrainer(pPlayer)
+	PlayerObject(pGhost):findJediTrainer()
 end
 
 function ForceShrineMenuComponent:recoverRobe(pPlayer)
