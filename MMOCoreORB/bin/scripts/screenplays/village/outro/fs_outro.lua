@@ -62,7 +62,7 @@ function FsOutro:onLoggedIn(pPlayer)
 		end
 
 		QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_THEATER_CAMP)
-		MellichaeOutroTheater:start(pPlayer)
+		local result = MellichaeOutroTheater:start(pPlayer)
 	end
 end
 
@@ -110,5 +110,10 @@ function FsOutro:doOldManSpawn(pPlayer)
 		return
 	end
 
-	OldManOutroEncounter:start(pPlayer)
+	local result = OldManOutroEncounter:start(pPlayer)
+
+	if (not result) then
+		createEvent(getRandomNumber(300, 900) * 1000, "FsOutro", "doOldManSpawn", pPlayer, "")
+		return
+	end
 end

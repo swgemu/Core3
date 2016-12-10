@@ -141,7 +141,7 @@ end
 -- @return true if the encounter is finished. I.e. the player has the crystal.
 function OldManIntroEncounter:isEncounterFinished(pPlayer)
 	if (pPlayer == nil) then
-		return
+		return true
 	end
 
 	return QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)

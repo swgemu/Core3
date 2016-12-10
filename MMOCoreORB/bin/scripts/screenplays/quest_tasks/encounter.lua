@@ -43,10 +43,17 @@ Encounter = Task:new {
 -- @param pPlayer pointer to the creature object of the player.
 function Encounter:taskStart(pPlayer)
 	if not self:callFunctionIfNotNil(self.isEncounterFinished, true, pPlayer) then
-		if self:isPlayerInPositionForEncounter(pPlayer) and not CreatureObject(pPlayer):isDead() then
-			self:createEncounter(pPlayer)
+		if not self:isPlayerInPositionForEncounter(pPlayer) or CreatureObject(pPlayer):isDead() then
+			return false
+		end
+
+		local result = self:createEncounter(pPlayer)
+
+		if (result) then
 			createEvent(self.encounterDespawnTime, self.taskName, "handleDespawnEvent", pPlayer, "")
 		end
+
+		return result
 	end
 
 	return true
@@ -152,7 +159,10 @@ function Encounter:createEncounter(pPlayer)
 		self:setSpawnedObjectsToFollow(spawnedObjects, pPlayer)
 		self:createEncounterEvents(pPlayer, spawnedObjects)
 		self:callFunctionIfNotNil(self.onEncounterSpawned, nil, pPlayer, spawnedObjects)
+		return true
 	end
+
+	return false
 end
 
 -- Despawn encounter

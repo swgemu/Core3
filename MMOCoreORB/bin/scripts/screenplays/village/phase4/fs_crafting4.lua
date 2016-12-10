@@ -547,6 +547,10 @@ function FsCrafting4ComputerCoreMenuComponent:attemptConfigure(pCore, pPlayer)
 
 		if (integrity <= 0) then
 			CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/fs_crafting:crafting4_core_ruined")
+			QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_03)
+			QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_04)
+			QuestManager.resetQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_05)
+			QuestManager.activateQuest(pPlayer, QuestManager.quests.FS_CRAFTING4_QUEST_03)
 			SceneObject(pCore):destroyObjectFromWorld()
 			SceneObject(pCore):destroyObjectFromDatabase()
 		else
