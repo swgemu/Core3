@@ -46,10 +46,11 @@ function Encounter:taskStart(pPlayer)
 		if self:isPlayerInPositionForEncounter(pPlayer) and not CreatureObject(pPlayer):isDead() then
 			self:createEncounter(pPlayer)
 			createEvent(self.encounterDespawnTime, self.taskName, "handleDespawnEvent", pPlayer, "")
+			return true
 		end
 	end
 
-	return true
+	return false
 end
 
 -- Check if the player is online.

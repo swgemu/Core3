@@ -58,7 +58,7 @@ function FsIntro:startStepDelay(pPlayer, step)
 
 	self:setCurrentStep(pPlayer, step)
 	local stepDelay = getRandomNumber(stepData[1], stepData[2]) * 1000
-	
+
 	if (step == 1) then
 		local oldManVisits = tonumber(readScreenPlayData(pPlayer, "VillageJediProgression", "FsIntroOldManVisits"))
 
@@ -122,10 +122,16 @@ function FsIntro:doDelayedStep(pPlayer)
 		curStep = self.OLDMANWAIT
 	end
 
+	local encounterResult = true
 	if (curStep == self.OLDMANWAIT) then
-		OldManIntroEncounter:start(pPlayer)
+		encounterResult = OldManIntroEncounter:start(pPlayer)
 	elseif (curStep == self.SITHWAIT) then
-		SithShadowEncounter:start(pPlayer)
+		encounterResult = SithShadowEncounter:start(pPlayer)
+	end
+
+	if (not encounterResult) then
+		local rescheduleDelay = getRandomNumber(15, 30) * 60 * 1000
+		createEvent(rescheduleDelay, "FsIntro", "doDelayedStep", pPlayer, "")
 	end
 end
 
@@ -294,7 +300,12 @@ function FsIntro:startOldMan(pPlayer)
 		return
 	end
 
-	OldManIntroEncounter:start(pPlayer)
+	local result = OldManIntroEncounter:start(pPlayer)
+
+	if (not result) then
+		createEvent(getRandomNumber(300, 900) * 1000, "FsIntro", "startOldMan", pPlayer, "")
+		return
+	end
 end
 
 function FsIntro:startSithAttack(pPlayer)
@@ -308,5 +319,10 @@ function FsIntro:startSithAttack(pPlayer)
 		return
 	end
 
-	SithShadowEncounter:start(pPlayer)
+	local result = SithShadowEncounter:start(pPlayer)
+
+	if (not result) then
+		createEvent(getRandomNumber(300, 900) * 1000, "FsIntro", "startSithAttack", pPlayer, "")
+		return
+	end
 end
