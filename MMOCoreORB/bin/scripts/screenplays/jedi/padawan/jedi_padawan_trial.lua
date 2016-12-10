@@ -70,10 +70,6 @@ function JediPadawanTrial:sendSuiNotification(pPlayer, mobileName)
 end
 
 function JediPadawanTrial:showInfo(pPlayer, pObject)
-	local msgPrefix = self.FIRST_MESSAGE .. "@jedi_trials:" .. self.ZONE_NAME
-	local msgPostfix = self.SECOND_MESSAGE .. self.ZONE_REGION
-	local msgFinal = msgPrefix .. " " .. msgPostfix
-
 	local sui = SuiMessageBox.new(self.SCREEN_PLAY_NAME, "handleShowInfoChoice")
 	sui.setTitle("@jedi_trials:force_shrine_title")
 	sui.setTargetNetworkId(SceneObject(pObject):getObjectID())
@@ -83,7 +79,7 @@ function JediPadawanTrial:showInfo(pPlayer, pObject)
 	-- Other Button setup subscribe
 	sui.setProperty("btnRevert", "OnPress", "RevertWasPressed=1\r\nparent.btnOk.press=t")
 	sui.subscribeToPropertyForEvent(SuiEventType.SET_onClosedOk, "btnRevert", "RevertWasPressed")
-	sui.setPrompt(msgFinal)
+	sui.setPrompt(self.WAYPOINT_DESCRIPTION)
 
 	sui.sendTo(pPlayer)
 end
