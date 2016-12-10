@@ -11,7 +11,7 @@ JediPadawanTrialArtistScreenPlay = JediPadawanTrial:new {
 	TARGET_COORDINATES = {x = 5996, y = 5885},
 }
 
-registerScreenPlay(JediPadawanTrialArtistScreenPlay.SCREEN_PLAY_NAME, false)
+registerScreenPlay("JediPadawanTrialArtistScreenPlay", false)
 
 function JediPadawanTrialArtistScreenPlay:startTrial(pPlayer)
 	self:sendSuiNotification(pPlayer, "sathme_forr")

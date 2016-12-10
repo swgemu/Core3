@@ -91,6 +91,8 @@ function ForceShrineMenuComponent:startJediPadawanTrials(pObject, pPlayer)
 	sui.setTargetNetworkId(SceneObject(pObject):getObjectID())
 	sui.setTitle("@jedi_trials:force_shrine_title")
 	sui.setPrompt("@jedi_trials:padawan_trials_start_query")
+	sui.setOkButtonText("@jedi_trials:button_yes") -- Yes
+	sui.setCancelButtonText("@jedi_trials:button_no") -- No
 	sui.sendTo(pPlayer)
 end
 
@@ -105,18 +107,18 @@ function ForceShrineMenuComponent:jediPadawanTrialsStartCallback(pPlayer, pSui, 
 		return
 	end
 
-	local rand = getRandomNumber(1,  #self.PadawanTrialQuests) -- 16 Jedi Padawan Trials
-	local TrialScreenPlay = self.PadawanTrialQuests[rand][2]
+	local rand = getRandomNumber(1, self:getTableSize(self.PadawanTrialQuests)) -- 16 Jedi Padawan Trials
+	local pScreenPlay = self:getScreenPlayFromTable(rand)
 
-	TrialScreenPlay:startTrial(pPlayer)
+	pScreenPlay:startTrial(pPlayer)
 	writeScreenPlayData(pPlayer, "JediPadawanTrial", "CurrentTrial", rand)
 	writeScreenPlayData(pPlayer, "JediPadawanTrial", "StartedTrials", 1)
 	writeScreenPlayData(pPlayer, "JediPadawanTrial", "numOfTrialsCompleted", 0)
 end
 
 function ForceShrineMenuComponent:showCurrentPadawanTrial(pObject, pPlayer)
-	local trialQuest = getQuestStatus(SceneObject(pPlayer):getObjectID() .. ":padawan:trial")
-	local pScreenPlay = self:getScreenplayFromGlobalTable(self.PadawanTrialQuests, trialQuest)
+	local trialQuest = readScreenPlayData(pPlayer, "JediPadawanTrial", "CurrentTrial")
+	local pScreenPlay = self:getScreenPlayFromTable(tonumber(trialQuest))
 	pScreenPlay:showInfo(pPlayer, pObject)
 end
 
@@ -132,7 +134,7 @@ function ForceShrineMenuComponent:startNextJediPadawanTrial(pObject, pPlayer)
 	-- JediPadawanTrialCraftLightsaberScreenPlay:startTrial(pPlayer)
 	else
 		local uncompletedTrials = {}
-		for i=1, #self.PadawanTrialQuests, 1 do
+		for i=1, self:getTableSize(self.PadawanTrialQuests), 1 do
 			if not (CreatureObject(pPlayer):hasScreenPlayState(8, self.PadawanTrialQuests[i][1])) then
 				table.insert(uncompletedTrials, self.PadawanTrialQuests[i][1])
 			end
@@ -230,9 +232,17 @@ end
 
 -- Get which number the trial is in the table.
 function ForceShrineMenuComponent:getCorrespondingTrialNumber(screenPlayState)
-	for i = 1, #self.PadawanTrialQuests do
+	for i = 1, self:getTableSize(self.PadawanTrialQuests) do
 		if (string.find(screenPlayState, self.PadawanTrialQuests[i][1]) ~= nil) then
 			return i
 		end
 	end
+end
+
+-- Gets how many trials are in the global table.
+-- NOTE: Needed due to inconsistancy with pound operator for type of table.
+function ForceShrineMenuComponent:getTableSize(table)
+  local count = 0
+  for _ in pairs(table) do count = count + 1 end
+  return count
 end

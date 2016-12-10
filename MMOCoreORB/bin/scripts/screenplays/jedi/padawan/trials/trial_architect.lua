@@ -11,7 +11,7 @@ JediPadawanTrialArchitectScreenPlay = JediPadawanTrial:new {
 	TARGET_COORDINATES = {x = -7152, y = 4549}
 }
 
-registerScreenPlay(JediPadawanTrialArchitectScreenPlay.SCREEN_PLAY_NAME, false)
+registerScreenPlay("JediPadawanTrialArchitectScreenPlay", false)
 
 function JediPadawanTrialArchitectScreenPlay:startTrial(pPlayer)
 	self:sendSuiNotification(pPlayer, "kant_graf")
