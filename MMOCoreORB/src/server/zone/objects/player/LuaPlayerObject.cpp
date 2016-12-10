@@ -72,6 +72,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "addSuiBox", &LuaPlayerObject::addSuiBox },
 		{ "removeSuiBox", &LuaPlayerObject::removeSuiBox },
 		{ "findJediTrainer", &LuaPlayerObject::findJediTrainer },
+		{ "findNearestForceShrine", &LuaPlayerObject::findNearestForceShrine },
 		{ 0, 0 }
 };
 
@@ -692,6 +693,53 @@ int LuaPlayerObject::findJediTrainer(lua_State* L) {
 
 	realObject->setTrainerCoordinates(coords);
 	realObject->setTrainerZoneName(zoneName); // For the waypoint.
+
+	return 0;
+}
+
+int LuaPlayerObject::findNearestForceShrine(lua_State* L) {
+	bool sendWaypoint = lua_toboolean(L, -1);
+
+	Zone* zone = realObject->getZone();
+
+	if (zone == NULL) {
+		return 0;
+	}
+
+	float range = zone->getMaxX() * 2;
+
+	SortedVector<ManagedReference<QuadTreeEntry*> > objects(512, 512);
+	zone->getInRangeObjects(realObject->getWorldPositionX(), realObject->getWorldPositionY(), range, &objects, true);
+	Vector3 shrineCoordinates;
+
+	for (int i = 0; i < objects.size(); ++i) {
+		ManagedReference<SceneObject*> object = cast<SceneObject*>(objects.get(i).get());
+
+		if (object == NULL)
+				continue;
+
+		if (object->getDisplayedName() != "@jedi_trials:force_shrine_n")
+				continue;
+
+		// Get the first one.
+		shrineCoordinates = object->getWorldPosition();
+		break;
+	}
+
+	// Create the waypoint.
+	if (sendWaypoint) {
+		ManagedReference<WaypointObject*> waypoint = realObject->getZoneServer()->createObject(0xc456e788).castTo<WaypointObject*>();
+
+		Locker locker(waypoint);
+
+		String zoneName = zone->getZoneName();
+
+		waypoint->setPlanetCRC(zoneName.hashCode());
+		waypoint->setPosition(shrineCoordinates.getX(), 0, shrineCoordinates.getY());
+		waypoint->setCustomObjectName(zoneName + " Force Shrine", false);
+
+		realObject->addWaypoint(waypoint, false, true);
+	}
 
 	return 0;
 }

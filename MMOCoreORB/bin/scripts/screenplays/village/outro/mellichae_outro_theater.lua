@@ -85,7 +85,7 @@ function MellichaeOutroTheater:onLoot(pLootedCreature, pLooter, nothing)
 	if (looterID == ownerID) and (ownedSpawn == true) then
 		createLoot(pInventory, "mellichae_outro", 0, true)
 		QuestManager.completeQuest(pLooter, QuestManager.quests.FS_THEATER_FINAL)
-		CreatureObject(pLooter):sendSystemMessage("@quest/force_sensitive/exit:final_complete") --	Congratulations, you have completed the Force sensitive quests! You are now qualified to begin the Jedi Padawan Trials.
+		self:sendCompletionSui(pLooter)
 		VillageJediManagerCommon.setJediProgressionScreenPlayState(pLooter, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE) -- Killed him.
 		deleteData(SceneObject(pLooter):getObjectID() .. ":totalNum:Shrines:Red")
 		deleteData(SceneObject(pLooter):getObjectID() .. ":totalNum:Shrines:Green")
@@ -178,7 +178,7 @@ function MellichaeOutroTheater:onPlayerKilled(pPlayer, pKiller, nothing)
 	deleteData(SceneObject(pPlayer):getObjectID() .. ":totalNum:Shrines:Red")
 	deleteData(SceneObject(pPlayer):getObjectID() .. ":totalNum:Shrines:Green")
 	FsOutro:startOldMan(pPlayer)
-	
+
 	self:finish()
 	return 1
 end
@@ -342,6 +342,35 @@ function MellichaeOutroTheater:spawnScenePowerShrines(pPlayer, pMellichae, color
 		writeData(SceneObject(pPlayer):getObjectID() .. ":powershrine:".. color .. ":" .. tostring(i), SceneObject(pShrine):getObjectID())
 	end
 
+end
+
+-- Handle sending of messages when mission completed.
+function MellichaeOutroTheater:sendCompletionSui(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	CreatureObject(pPlayer):sendSystemMessage("@quest/force_sensitive/exit:final_complete") --	Congratulations, you have completed the Force sensitive quests! You are now qualified to begin the Jedi Padawan Trials.
+
+	local sui = SuiMessageBox.new("MellichaeOutroTheater", "updateForceShrineCallback")
+	sui.setTitle("@jedi_trials:padawan_trials_title")
+	sui.setPrompt("@jedi_trials:padawan_trials_intro_msg")
+	sui.hideCancelButton()
+	sui.sendTo(pPlayer)
+end
+
+-- Update waypoint to closest Force Shrine.
+function MellichaeOutroTheater:updateForceShrineCallback(pPlayer, pSui, eventIndex, args)
+	if (pPlayer == nil) then
+		return
+	end
+
+	-- Should send the waypoint regardless of cancel.
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost ~= nil) then
+		PlayerObject(pGhost):findNearestForceShrine(true)
+	end
 end
 
 return MellichaeOutroTheater

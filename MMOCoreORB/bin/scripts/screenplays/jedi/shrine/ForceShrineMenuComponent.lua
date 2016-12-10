@@ -187,7 +187,7 @@ function ForceShrineMenuComponent:unlockJediPadawan(pPlayer)
 	end
 
 	-- Find Trainer.
-	PlayerObject(pGhost):findJediTrainer(pPlayer)
+	PlayerObject(pGhost):findJediTrainer()
 end
 
 function ForceShrineMenuComponent:recoverRobe(pPlayer)
