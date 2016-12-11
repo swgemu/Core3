@@ -21,6 +21,19 @@ ForceShrineMenuComponent = {
 	]]
 	},
 
+	ForceShrineOids = { -- Object ID's of the various force shrines.
+		corellia = {7345554, 7345568, 7345533, 7345540, 7345561},
+		dantooine = {6045480, 6045501, 6045522, 6045494, 6045508},
+		dathomir = {7325403, 7325410, 7325417, 7325424, 7325438},
+		endor = {7255422, 7255429, 7255436, 7255443, 7255457},
+		lok = {6625591, 6625598, 6625605, 6625619, 6625626},
+		naboo = {7525395, 7525400, 7525447, 7525454},
+		rori = {6885431, 6885438, 6885445, 6885452, 6885459},
+		talus = {6535834, 6535841, 6535869, 6535891},
+		tatooine = {5996497, 5996504, 5996539, 5996546, 5996560},
+		yavin4 = {6845418, 6845425, 7665623, 7665630}
+	},
+
 	jediPadawanRobe = "object/tangible/wearables/robe/robe_jedi_padawan.iff"
 }
 
@@ -187,7 +200,7 @@ function ForceShrineMenuComponent:unlockJediPadawan(pPlayer)
 	end
 
 	-- Find Trainer.
-	PlayerObject(pGhost):findJediTrainer(pPlayer)
+	PlayerObject(pGhost):findJediTrainer()
 end
 
 function ForceShrineMenuComponent:recoverRobe(pPlayer)
@@ -235,4 +248,31 @@ function ForceShrineMenuComponent:getCorrespondingTrialNumber(screenPlayState)
 			return i
 		end
 	end
+end
+
+-- Gets the cloest Force Shrine to the player. Should return an objectID.
+function ForceShrineMenuComponent:findNearestForceShrine(pPlayer)
+	if (pPlayer == nil) then
+		return nil
+	end
+
+	local planet = SceneObject(pPlayer):getZoneName()
+	local shrineIndex = 0
+	local lastDist = -1
+
+	for i=1, #self.ForceShrineOids.planet, 1 do
+		local pSceneObject = getSceneObject(self.ForceShrineOids.planet[i])
+
+		if (pSceneObject ~= nil) then
+			local curDist = SceneObject(pPlayer):getDistanceTo(pSceneObject)
+			if (lastDist == -1 or currDistance > lastDist) then
+				lastDist = curDist
+				shrineIndex = self.ForceShrineOids.planet[i]
+			end
+		else
+			return nil
+		end
+	end
+
+	return shrineIndex
 end
