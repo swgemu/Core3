@@ -33,6 +33,24 @@
       "revId": "6fa36a15d099e525c04f8e9d9dc479105526ff2c",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_0f35c545",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 2675
+      },
+      "writtenOn": "2016-12-11T18:11:53Z",
+      "side": 1,
+      "message": "Ok, I have made a table of the oid\u0027s from the world snapshot for each planet.\n\nHowever, what should I do to determine which one is closest, after getting the scene object and the distance from the player and the shrine object?",
+      "parentUuid": "9adffdf1_6f09f194",
+      "revId": "6fa36a15d099e525c04f8e9d9dc479105526ff2c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
