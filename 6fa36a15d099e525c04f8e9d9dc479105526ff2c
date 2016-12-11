@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_4f042d7e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-11T13:14:38Z",
+      "side": 1,
+      "message": "It doesn\u0027t make sense to give the waypoint in the callback of an sui when the message in the sui says it\u0027s already been uploaded to their datapad. You should give the waypoint when you send the sui and just have a dummy callback that does nothing.",
+      "revId": "6fa36a15d099e525c04f8e9d9dc479105526ff2c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_6f09f194",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-11T13:14:38Z",
+      "side": 1,
+      "message": "I really don\u0027t like iterating through all objects in the zone. It\u0027s incredibly wasteful.\n\nSince the shrines are static and loaded from the snapshot, just get their oids and make a table of them in ForceShrineMenuComponent. Then when you need to give a waypoint to the closest you just need to iterate that table to determine which one is closest.",
+      "revId": "6fa36a15d099e525c04f8e9d9dc479105526ff2c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
