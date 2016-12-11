@@ -25,6 +25,46 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_eff40189",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/LambdaShuttleWithReinforcementsTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-11T13:29:52Z",
+      "side": 1,
+      "message": "just using the shuttle\u0027s z could cause some of the troopers to spawn slightly under or above ground if the terrain is not level.",
+      "range": {
+        "startLine": 37,
+        "startChar": 125,
+        "endLine": 37,
+        "endChar": 154
+      },
+      "revId": "ce2fe6d7bd067531ca077db9634b9c1e6583813c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_2f03e974",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/LambdaShuttleWithReinforcementsTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-11T13:29:52Z",
+      "side": 1,
+      "message": "you aren\u0027t using the zoneServer arg",
+      "revId": "ce2fe6d7bd067531ca077db9634b9c1e6583813c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_8f19b524",
         "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/LambdaShuttleWithReinforcementsTask.h",
         "patchSetId": 1
@@ -64,6 +104,46 @@
         "startChar": 2,
         "endLine": 82,
         "endChar": 19
+      },
+      "revId": "ce2fe6d7bd067531ca077db9634b9c1e6583813c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_8ff1b597",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/LambdaShuttleWithReinforcementsTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-11T13:29:52Z",
+      "side": 1,
+      "message": "You may want to check if any of the troopers are in combat and reschedule if they are.",
+      "revId": "ce2fe6d7bd067531ca077db9634b9c1e6583813c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_cff7bd8b",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/tasks/LambdaShuttleWithReinforcementsTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-11T13:29:52Z",
+      "side": 1,
+      "message": "Where is zoneServer declared?",
+      "range": {
+        "startLine": 105,
+        "startChar": 22,
+        "endLine": 105,
+        "endChar": 32
       },
       "revId": "ce2fe6d7bd067531ca077db9634b9c1e6583813c",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
