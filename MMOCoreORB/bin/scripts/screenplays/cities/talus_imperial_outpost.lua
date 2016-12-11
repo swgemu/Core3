@@ -12,7 +12,7 @@ function TalusImperialOutpostScreenPlay:start()
 end
 
 function TalusImperialOutpostScreenPlay:spawnMobiles()
-	spawnMobile("talus", "imperial_recruiter", 1, -2192, 0, 2269, -50, 0)
+	spawnMobile("talus", "imperial_recruiter", 1, -2192, 20.0, 2269, -50, 0)
 	spawnMobile("talus", "at_st", 300, -2167.8, 20.0, 2411.1, -8, 0)
 	spawnMobile("talus", "stormtrooper", 300, -2194.6, 20.0, 2344.9, 179, 0)
 	spawnMobile("talus", "stormtrooper", 300, -2187.9, 20.0, 2344.9, 179, 0)

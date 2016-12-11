@@ -158,7 +158,7 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 
 	pNpc = spawnMobile(self.planet, "r2", 60, -3697.43, 87.5185, 3141.62, 327.074, 0)
 	self:setMoodString(pNpc, "calm")
-	pNpc = spawnMobile(self.planet, "r3", 60, -3423.05, 80.6846, 3333.75, 253.023, 0)
+	pNpc = spawnMobile(self.planet, "r3", 60, -3423.05, 78.15, 3333.75, 253.023, 0)
 	self:setMoodString(pNpc, "calm")
 	pNpc = spawnMobile(self.planet, "r3", 60, -3327.95, 86, 3233.64, 315.946, 0)
 	self:setMoodString(pNpc, "calm")

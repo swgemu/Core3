@@ -60,7 +60,7 @@ function DantooineImperialOutpostScreenPlay:spawnMobiles()
 	spawnMobile("dantooine", "commoner", 60, -4186.81, 3, -2388.66, 141.892, 0)
 	spawnMobile("dantooine", "juntah_herm", 60, -4222, 3, -2386.5, 300, 0)
 	spawnMobile("dantooine", "noble", 60, -4261, 3, -2384, 200, 0)
-	spawnMobile("dantooine", "imperial_recruiter", 0,-4197,3,-2411,270,0)
+	spawnMobile("dantooine", "imperial_recruiter", 0, -4197, 3, -2411, 270, 0)
 	spawnMobile("dantooine", "r4", 60, -4227.33, 3, -2366.11, 269.389, 0)
 	spawnMobile("dantooine", "r5", 60, -4228.33, 3, -2367.11, 48.8478, 0)
 
