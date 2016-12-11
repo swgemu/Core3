@@ -16,6 +16,24 @@
       "revId": "1e62349e7f46e0b177815682fe7ba3ed75ae2781",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_4f2bcdeb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 2675
+      },
+      "writtenOn": "2016-12-11T16:29:34Z",
+      "side": 1,
+      "message": "I was debugging as to the \u0027nothing was happening issue\u0027, and came across this: http://stackoverflow.com/questions/23590885/why-does-luas-length-operator-return-unexpected-values\n\nI can change it back to how it was, since I wasn\u0027t 100% sure that issue would affect this, since it\u0027s not in C after I think about it.",
+      "parentUuid": "9adffdf1_8fda1516",
+      "revId": "1e62349e7f46e0b177815682fe7ba3ed75ae2781",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
