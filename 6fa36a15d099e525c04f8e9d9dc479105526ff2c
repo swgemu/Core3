@@ -51,6 +51,24 @@
       "revId": "6fa36a15d099e525c04f8e9d9dc479105526ff2c",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_cf3edd29",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-12-12T01:10:43Z",
+      "side": 1,
+      "message": "local shrineIndex \u003d 0\nlocal lastDist \u003d -1\n\nfor i \u003d 1, #table, 1 do\n local pShrine \u003d getSceneObject(table[i]\n \n if (pShrine ~\u003d nil) then\n  local curDist \u003d SceneObject(pPlayer):getDistanceTo(pShrine)\n  if (lastDist \u003d\u003d -1 or lastDist \u003e curDist) then\n    lastDist \u003d curDist\n    shrineIndex \u003d i\n  end\n end\nend\n\n\nNot tested, but that should end with shrineIndex being the closest.",
+      "parentUuid": "9adffdf1_0f35c545",
+      "revId": "6fa36a15d099e525c04f8e9d9dc479105526ff2c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
