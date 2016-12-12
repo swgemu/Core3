@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_6f7ed1e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-12-12T01:46:06Z",
+      "side": 1,
+      "message": "Why would you return nil here? Even if one shrine in your oid table doesnt exist, you still want to check the rest.",
+      "range": {
+        "startLine": 273,
+        "startChar": 3,
+        "endLine": 273,
+        "endChar": 13
+      },
+      "revId": "94aaf2409bab09edbe3d9ed70ea123432eb87c25",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
