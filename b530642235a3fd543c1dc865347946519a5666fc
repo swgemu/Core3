@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_2f11a9ac",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-12-12T01:43:24Z",
+      "side": 1,
+      "message": "Multiple typos, and the way you wrote the second part will make this function return the shrine that\u0027s farthest away.",
+      "range": {
+        "startLine": 268,
+        "startChar": 3,
+        "endLine": 268,
+        "endChar": 55
+      },
+      "revId": "b530642235a3fd543c1dc865347946519a5666fc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_ef22c100",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2016-12-12T01:43:24Z",
+      "side": 1,
+      "message": "This function returns an index, not an oid. And it will never be nil, because the return variable is defaulted to 0.",
+      "range": {
+        "startLine": 368,
+        "startChar": 23,
+        "endLine": 368,
+        "endChar": 79
+      },
+      "revId": "b530642235a3fd543c1dc865347946519a5666fc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
