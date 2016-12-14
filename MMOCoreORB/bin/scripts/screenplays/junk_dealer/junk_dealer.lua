@@ -62,7 +62,7 @@ function JunkDealer:getEligibleJunk(pPlayer, dealerType)
 		if pItem ~= nil then
 			local tano = TangibleObject(pItem)
 			local sceno = SceneObject(pItem)
-			if tano:getJunkDealerNeeded() & dealerNum > 0 and tano:getCraftersName() == "" and not tano:isBroken() and not tano:isSliced() and not tano:isNoTrade() and sceno:getContainerObjectsSize() == 0 then
+			if tano:getJunkDealerNeeded() and dealerNum > 0 and tano:getCraftersName() == "" and not tano:isBroken() and not tano:isSliced() and not tano:isNoTrade() and sceno:getContainerObjectsSize() == 0 then
 				local name = sceno:getDisplayedName()
 				local value = tano:getJunkValue()
 				local textTable = {"[" .. value .. "] " .. name, sceno:getObjectID()}
