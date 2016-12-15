@@ -168,6 +168,13 @@ function FsSad2:doPhaseChangeFail(pPlayer)
 		if QuestManager.hasCompletedQuest(pPlayer, questID) or QuestManager.hasActiveQuest(pPlayer, questID) then
 			QuestManager.resetQuest(pPlayer, questID)
 		end
+
+		questName = "fs_quests_sad2_return" .. i
+		questID = getPlayerQuestID(questName)
+
+		if QuestManager.hasCompletedQuest(pPlayer, questID) or QuestManager.hasActiveQuest(pPlayer, questID) then
+			QuestManager.resetQuest(pPlayer, questID)
+		end
 	end
 
 	SuiRadiationSensor:removeSensor(pPlayer)
