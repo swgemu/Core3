@@ -57,13 +57,21 @@ SuiTemplate.new = function (templateName)
 		luaCallback.callback = callback
 		suiPageData:setDefaultCallback(play .. ":" .. callback)
 	end
-	
+
 	self.setTargetNetworkId = function (id)
 		suiPageData:setTargetNetworkId(id)
 	end
 
 	self.subscribeToPropertyForEvent = function (eventType, widget, property)
 		suiPageData:subscribeToPropertyForEvent(eventType, widget, property)
+	end
+
+	self.setStoredData = function (key, value)
+		suiPageData:setStoredData(key, value)
+	end
+
+	self.deleteStoredData = function (key)
+		suiPageData:deleteStoredData(key)
 	end
 
 	self.sendTo = function (pPlayer)

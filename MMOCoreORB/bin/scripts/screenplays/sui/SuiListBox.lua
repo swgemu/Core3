@@ -51,6 +51,11 @@ SuiListBox.new = function (defaultCallback, defaultFunction)
 	self.add = function (text, value)
 		self.addDataItem("List.dataList", "Name", tostring(#data))
 		self.setProperty("List.dataList." .. tostring(#data), "Text", text)
+		
+		if (value ~= "") then
+			self.setStoredData(tostring(#data), value)
+		end
+		
 		table.insert(data, {['text'] = text, ['value'] = value})
 	end
 

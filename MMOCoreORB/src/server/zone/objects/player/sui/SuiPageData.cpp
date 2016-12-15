@@ -22,6 +22,19 @@ void SuiPageData::setProperty(const String& widget, const String& property, cons
 	commands.add(command);
 }
 
+UnicodeString SuiPageData::getPropertyValue(const String& widget, const String& property) {
+	UnicodeString value = "";
+
+	for (int i = 0; i < commands.size(); i++) {
+		SuiCommand* cmd = commands.get(i);
+
+		if (cmd != NULL && cmd->getCommandType() == SuiCommand::SCT_setProperty && cmd->getNarrowParameter(0) == widget && cmd->getNarrowParameter(1) == property)
+			value = cmd->getWideParameter(0);
+	}
+
+	return value;
+}
+
 void SuiPageData::addDataItem(const String& widget, const String& property, const UnicodeString& value) {
 	SuiCommand* command = new SuiCommand(SuiCommand::SCT_addDataItem);
 	command->addWideParameter(value);
