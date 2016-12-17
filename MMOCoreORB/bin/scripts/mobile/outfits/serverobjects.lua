@@ -27,3 +27,8 @@ includeFile("outfits/tekil_barje_outfit.lua")
 includeFile("outfits/testoutfit.lua")
 includeFile("outfits/thracken_sal_solo_outfit.lua")
 includeFile("outfits/vardias_tyne_outfit.lua")
+
+--Hoth custom
+includeFile("outfits/snow_soldier_armored_outfit.lua")
+includeFile("outfits/snow_bh_armored_outfit.lua")
+includeFile("outfits/snow_protected_outfit.lua")

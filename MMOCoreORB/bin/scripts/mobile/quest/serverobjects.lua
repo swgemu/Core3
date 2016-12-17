@@ -862,3 +862,11 @@ includeFile("quest/yavin4/theme_park_rebel_big_creature_cage.lua")
 includeFile("quest/yavin4/theme_park_rebel_supervisor.lua")
 includeFile("quest/yavin4/vraker_orde.lua")
 includeFile("quest/yavin4/yith_seenath.lua")
+
+--Hoth test
+includeFile("quest/hoth/takhomasak.lua")
+includeFile("quest/hoth/bothan_bh_tak.lua")
+includeFile("quest/hoth/bothan_bh_tak2chiss.lua")
+includeFile("quest/hoth/chiss_imp_snow_agent.lua")
+includeFile("quest/hoth/dev_snow_merc.lua")
+includeFile("quest/hoth/tak_quest_samanda.lua")

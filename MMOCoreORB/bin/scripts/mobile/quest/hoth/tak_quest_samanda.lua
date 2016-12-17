@@ -1,0 +1,38 @@
+tak_quest_samanda = Creature:new {
+	objectName = "@mob/creature_names:patron_human_female_01",
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
+	socialGroup = "townsperson",
+	faction = "townsperson",
+	level = 13,
+	chanceHit = 1.250000,
+	damageMin = 50,
+	damageMax = 55,
+	baseXp = 187,
+	baseHAM = 180,
+	baseHAMmax = 220,
+	armor = 1,
+	resists = {9,9,9,21,200,9,9,9,23},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0.000000,
+	ferocity = 0,
+	pvpBitmask = NONE,
+	creatureBitmask = HERD,
+	optionsBitmask = AIENABLED + CONVERSABLE,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/human_female.iff"},
+	outfit = "snow_protected_outfit",
+	conversationTemplate = "takhomasak_mission_target_convotemplate",
+	lootGroups = {},
+	weapons = {},
+	attacks = {}
+}
+
+CreatureTemplates:addCreatureTemplate(tak_quest_samanda, "tak_quest_samanda")

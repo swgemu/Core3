@@ -583,3 +583,5 @@ includeFile("record_keepers/record_keepers.lua")
 --Tests
 includeFile("tests/tests.lua")
 
+--Hoth test
+includeFile("tasks/hoth/takhomasak.lua")

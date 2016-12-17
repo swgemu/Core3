@@ -268,4 +268,5 @@ createMissionTargetConvoTemplate("ruwan_tokai_mission_target_convotemplate","ruw
 createMissionTargetConvoTemplate("vraker_orde_mission_target_convotemplate","vraker_orde_mission_target_conv_handler")
 createMissionTargetConvoTemplate("yith_seenath_mission_target_convotemplate","yith_seenath_mission_target_conv_handler")
 
-
+--Hoth test
+createMissionTargetConvoTemplate("takhomasak_mission_target_convotemplate","takhomasak_mission_target_conv_handler")

@@ -472,3 +472,6 @@ createMissionGiverConvoTemplate("megan_drlar_mission_giver_convotemplate","megan
 createMissionGiverConvoTemplate("ruwan_tokai_mission_giver_convotemplate","ruwan_tokai_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("vraker_orde_mission_giver_convotemplate","vraker_orde_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("yith_seenath_mission_giver_convotemplate","yith_seenath_mission_giver_conv_handler")
+
+--Hoth test
+createMissionGiverConvoTemplate("takhomasak_mission_giver_convotemplate", "takhomasak_mission_giver_conv_handler")
