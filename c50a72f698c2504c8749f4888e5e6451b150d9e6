@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_8f80d58c",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/LuaSuiPageData.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-18T22:31:39Z",
+      "side": 1,
+      "message": "Where is getPropertyValue?",
+      "revId": "c50a72f698c2504c8749f4888e5e6451b150d9e6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
