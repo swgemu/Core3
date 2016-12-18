@@ -29,6 +29,10 @@ Luna<LuaSuiPageData>::RegType LuaSuiPageData::Register[] = {
 		{ "addChildWidget", &LuaSuiPageData::addChildWidget },
 		{ "subscribeToEvent", &LuaSuiPageData::subscribeToEvent },
 		{ "subscribeToPropertyForEvent", &LuaSuiPageData::subscribeToPropertyForEvent },
+		{ "setStoredData", &LuaSuiPageData::setStoredData },
+		{ "getStoredData", &LuaSuiPageData::getStoredData },
+		{ "deleteStoredData", &LuaSuiPageData::deleteStoredData },
+		{ "getPropertyValue", &LuaSuiPageData::getPropertyValue },
 		{ 0, 0 }
 };
 
@@ -191,4 +195,38 @@ int LuaSuiPageData::getTargetNetworkId(lua_State* L) {
 	lua_pushinteger(L, realObject->getTargetNetworkId());
 
 	return 1;
+}
+
+int LuaSuiPageData::getPropertyValue(lua_State* L) {
+	String widget = lua_tostring(L, -2);
+	String property = lua_tostring(L, -1);
+
+	lua_pushstring(L, realObject->getPropertyValue(widget, property).toString().toCharArray());
+
+	return 1;
+}
+
+int LuaSuiPageData::setStoredData(lua_State* L) {
+	String key = lua_tostring(L, -2);
+	String value = lua_tostring(L, -1);
+
+	realObject->setStoredData(key, value);
+
+	return 0;
+}
+
+int LuaSuiPageData::getStoredData(lua_State* L) {
+	String key = lua_tostring(L, -1);
+
+	lua_pushstring(L, realObject->getStoredData(key).toCharArray());
+
+	return 1;
+}
+
+int LuaSuiPageData::deleteStoredData(lua_State* L) {
+	String key = lua_tostring(L, -1);
+
+	realObject->deleteStoredData(key);
+
+	return 0;
 }
