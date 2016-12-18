@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9adffdf1_cf76ddd8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-18T22:25:17Z",
+      "side": 1,
+      "message": "just initialize it to something large so you only need to check \u003e instead of also checking \u003d\u003d -1 in the loop.",
+      "range": {
+        "startLine": 261,
+        "startChar": 18,
+        "endLine": 261,
+        "endChar": 20
+      },
+      "revId": "edbc6f81fc173494a623faaff9c744ba29af2c4e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_4f63cd1a",
         "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
         "patchSetId": 7
@@ -13,6 +36,29 @@
       "writtenOn": "2016-12-18T22:21:48Z",
       "side": 1,
       "message": "I would get the oid and store it in a local var. Then, instead of storing and returning the index of the closest shrine, do the same with the oid.",
+      "revId": "edbc6f81fc173494a623faaff9c744ba29af2c4e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_2f7209e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-18T22:25:17Z",
+      "side": 1,
+      "message": "I don\u0027t see this declared",
+      "range": {
+        "startLine": 268,
+        "startChar": 36,
+        "endLine": 268,
+        "endChar": 48
+      },
       "revId": "edbc6f81fc173494a623faaff9c744ba29af2c4e",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
