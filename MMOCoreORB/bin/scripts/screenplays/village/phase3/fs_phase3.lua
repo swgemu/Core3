@@ -8,6 +8,12 @@ function FsPhase3:onLoggedIn(pPlayer)
 
 	if (currentPhase == 3 and VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer)) then
 		self:failActiveTasks(pPlayer, true)
+
+		if (FsCounterStrike:isOnQuest(pPlayer)) then
+			-- Recreate observers in case server had restarted since player took quest
+			dropObserver(OBJECTDESTRUCTION, "FsCounterStrike", "onPlayerKilled", pPlayer)
+			createObserver(OBJECTDESTRUCTION, "FsCounterStrike", "onPlayerKilled", pPlayer)
+		end
 	else
 		self:doPhaseChangeFails(pPlayer)
 	end
@@ -27,10 +33,15 @@ function FsPhase3:failActiveTasks(pPlayer, loggingIn)
 			FsSad2:recreateCampIfDespawned(pPlayer)
 		end
 	end
+
+	if (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_CS_ESCORT_COMMANDER_PRI)) then
+		FsCounterStrike:handleCommanderAbandoned(pPlayer)
+	end
 end
 
 function FsPhase3:doPhaseChangeFails(pPlayer)
 	FsSad2:doPhaseChangeFail(pPlayer)
+	FsCounterStrike:doPhaseChangeFail(pPlayer)
 end
 
 function FsPhase3:onLoggedOut(pPlayer)
