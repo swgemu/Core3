@@ -34,6 +34,24 @@
       "revId": "1e62349e7f46e0b177815682fe7ba3ed75ae2781",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_efac0138",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-18T21:59:46Z",
+      "side": 1,
+      "message": "Yeah, that doesn\u0027t apply here because your table are all sequences. Change it back to use #",
+      "parentUuid": "9adffdf1_4f2bcdeb",
+      "revId": "1e62349e7f46e0b177815682fe7ba3ed75ae2781",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
