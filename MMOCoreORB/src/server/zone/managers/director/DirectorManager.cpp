@@ -84,6 +84,7 @@
 #include "server/zone/objects/pathfinding/NavMeshRegion.h"
 #include "server/zone/managers/collision/NavMeshManager.h"
 #include "server/zone/objects/player/sui/listbox/LuaSuiListBox.h"
+#include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -536,6 +537,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaWaypointObject>::Register(luaEngine->getLuaState());
 	Luna<LuaComponent>::Register(luaEngine->getLuaState());
 	Luna<LuaSuiListBox>::Register(luaEngine->getLuaState());
+	Luna<LuaLightsaberCrystalComponent>::Register(luaEngine->getLuaState());
 }
 
 int DirectorManager::loadScreenPlays(Lua* luaEngine) {
