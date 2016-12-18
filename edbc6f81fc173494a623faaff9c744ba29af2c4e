@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_4f63cd1a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-18T22:21:48Z",
+      "side": 1,
+      "message": "I would get the oid and store it in a local var. Then, instead of storing and returning the index of the closest shrine, do the same with the oid.",
+      "revId": "edbc6f81fc173494a623faaff9c744ba29af2c4e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_afa6f951",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-18T22:21:48Z",
+      "side": 1,
+      "message": "You pass pPlayer to this but only use it to get it\u0027s zoneName. Since you already have zoneName here, just pass zoneName to this function instead of pPlayer.",
+      "revId": "edbc6f81fc173494a623faaff9c744ba29af2c4e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_6f6811f6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-18T22:21:48Z",
+      "side": 1,
+      "message": "Do you have evidence of the waypoint name? If not, I think it more likely that they just named it \"@jedi_trials:force_shrine_n\"",
+      "range": {
+        "startLine": 373,
+        "startChar": 45,
+        "endLine": 373,
+        "endChar": 72
+      },
+      "revId": "edbc6f81fc173494a623faaff9c744ba29af2c4e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
