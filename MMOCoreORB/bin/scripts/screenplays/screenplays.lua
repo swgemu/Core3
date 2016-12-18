@@ -197,9 +197,6 @@ includeFile("village/convos/phase4/med_droid_phase4_conv_handler.lua")
 includeFile("village/convos/phase4/sarguillo_phase4_conv_handler.lua")
 includeFile("village/convos/phase4/sivarra_phase4_conv_handler.lua")
 
--- Jedi
-includeFile("jedi/shrine/ForceShrineMenuComponent.lua")
-
 -- Jedi Trials (Padawan)
 includeFile("jedi/padawan/jedi_padawan_trial.lua")
 includeFile("jedi/padawan/convos/trials_padawan_architect_01.lua")
@@ -208,6 +205,9 @@ includeFile("jedi/padawan/convos/trials_padawan_artist_01.lua")
 includeFile("jedi/padawan/convos/trials_padawan_artist_02.lua")
 includeFile("jedi/padawan/trials/trial_architect.lua")
 includeFile("jedi/padawan/trials/trial_artist.lua")
+
+-- Jedi Objects
+includeFile("jedi/shrine/ForceShrineMenuComponent.lua")
 
 -- Events - Bestine Election
 includeFile("events/conversations/bestine_election/bestine_election_conv_handler.lua")
