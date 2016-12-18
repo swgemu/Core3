@@ -1,0 +1,266 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_6ff33174",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike/fs_counterstrike.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-18T21:46:45Z",
+      "side": 1,
+      "message": "Are you intentionally leaving this in for testing on Nova?",
+      "range": {
+        "startLine": 6,
+        "startChar": 12,
+        "endLine": 6,
+        "endChar": 16
+      },
+      "revId": "2b09116e5e4e6ecd039d6d8556bce73fb9246e46",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_2fed298c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike/fs_cs_base_control.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-18T21:46:45Z",
+      "side": 1,
+      "message": "I missed it the first time around, but you need to also check for the turret template here.",
+      "revId": "2b09116e5e4e6ecd039d6d8556bce73fb9246e46",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_cf01fd3a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike/fs_cs_commander.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-18T21:46:45Z",
+      "side": 1,
+      "message": "you\u0027re changing this to 5 minute despawn?",
+      "range": {
+        "startLine": 12,
+        "startChar": 24,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "2b09116e5e4e6ecd039d6d8556bce73fb9246e46",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_effe4138",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike/fs_cs_commander.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-18T21:46:45Z",
+      "side": 1,
+      "message": "FsCsCommander",
+      "range": {
+        "startLine": 139,
+        "startChar": 19,
+        "endLine": 139,
+        "endChar": 34
+      },
+      "revId": "2b09116e5e4e6ecd039d6d8556bce73fb9246e46",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_4f950de3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike/fs_cs_commander.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-18T21:46:45Z",
+      "side": 1,
+      "message": "You only use x and y for the waypoint. No need to write the z",
+      "revId": "2b09116e5e4e6ecd039d6d8556bce73fb9246e46",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_8ffbf546",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike/fs_cs_commander.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-18T21:46:45Z",
+      "side": 1,
+      "message": "shouldn\u0027t there be a sith_ at the front of that name?",
+      "revId": "2b09116e5e4e6ecd039d6d8556bce73fb9246e46",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_aff8394a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike/fs_cs_commander.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-18T21:46:45Z",
+      "side": 1,
+      "message": "deleteData(commanderID .. \":escorterID\")\ndeleteData(commanderID .. \":shieldKillerID\")\ndeleteData(commanderID .. \":theaterID\")\ndeleteData(theaterID .. \":commanderTurnin:X\")\ndeleteData(theaterID .. \":commanderTurnin:Y\")\ndeleteData(theaterID .. \":turninAreaID\")\ndeleteData(theaterID .. \":commanderID\")\ndeleteData(areaID .. \":theaterID\")\ndeleteData(commanderID .. \":capturedBy\")\ndeleteData(commanderID .. \":shieldKillerCantCapture\")\ndeleteData(commanderID .. \":rescueSpawnPending\")",
+      "revId": "2b09116e5e4e6ecd039d6d8556bce73fb9246e46",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_2fa44956",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike/fs_cs_commander.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-18T21:46:45Z",
+      "side": 1,
+      "message": "This only happens if a player logs off? What about if they leave the planet? or completely ditch the commander so that it\u0027s out of closeObjects range?",
+      "revId": "2b09116e5e4e6ecd039d6d8556bce73fb9246e46",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_cf881dc9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike/fs_cs_commander.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-18T21:46:45Z",
+      "side": 1,
+      "message": "deleteData(playerID .. \":fsCounterStrike:commanderID\")",
+      "revId": "2b09116e5e4e6ecd039d6d8556bce73fb9246e46",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_8f9215f5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike/fs_cs_commander.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-18T21:46:45Z",
+      "side": 1,
+      "message": "deleteData(playerID .. \":fsCounterStrike:commanderID\")",
+      "revId": "2b09116e5e4e6ecd039d6d8556bce73fb9246e46",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_6f9a5116",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike/fs_cs_commander.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-18T21:46:45Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "2b09116e5e4e6ecd039d6d8556bce73fb9246e46",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_0f9f0505",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike/fs_cs_commander.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-18T21:46:45Z",
+      "side": 1,
+      "message": "deleteData(commanderID .. \":currentlyFree\")\ndeleteData(commanderID .. \":capturedBy\")\ndeleteData(commanderID .. \":rescueSpawnPending\")",
+      "revId": "2b09116e5e4e6ecd039d6d8556bce73fb9246e46",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_af8fd9cb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike/fs_cs_commander.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-18T21:46:45Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you check rescueSpawnPending and return if it\u0027s not 1?",
+      "revId": "2b09116e5e4e6ecd039d6d8556bce73fb9246e46",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_0fe8657b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/phase3/fs_counterstrike/fs_cs_menu_components.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-18T21:46:45Z",
+      "side": 1,
+      "message": "That should be and, correct? Otherwise it\u0027ll let someone not grouped with the shield killer capture.",
+      "range": {
+        "startLine": 100,
+        "startChar": 95,
+        "endLine": 100,
+        "endChar": 97
+      },
+      "revId": "2b09116e5e4e6ecd039d6d8556bce73fb9246e46",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
