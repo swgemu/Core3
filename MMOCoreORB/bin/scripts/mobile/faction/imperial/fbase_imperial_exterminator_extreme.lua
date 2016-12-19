@@ -44,7 +44,7 @@ fbase_imperial_exterminator_extreme = Creature:new {
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	attacks = merge(brawlermaster,marksmanmaster,riflemanmaster,teraskasimaster)
+	attacks = merge(brawlermaster,marksmanmaster,riflemanmaster,tkamaster)
 }
 
 CreatureTemplates:addCreatureTemplate(fbase_imperial_exterminator_extreme, "fbase_imperial_exterminator_extreme")

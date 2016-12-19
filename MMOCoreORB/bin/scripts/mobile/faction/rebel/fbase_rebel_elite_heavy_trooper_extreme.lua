@@ -50,7 +50,7 @@ fbase_rebel_elite_heavy_trooper_extreme = Creature:new {
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	attacks = merge(brawlermaster,marksmanmaster,riflemanmaster,teraskasimaster)
+	attacks = merge(brawlermaster,marksmanmaster,riflemanmaster,tkamaster)
 }
 
 CreatureTemplates:addCreatureTemplate(fbase_rebel_elite_heavy_trooper_extreme, "fbase_rebel_elite_heavy_trooper_extreme")
