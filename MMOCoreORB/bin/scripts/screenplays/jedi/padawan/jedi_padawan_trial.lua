@@ -133,10 +133,10 @@ function JediPadawanTrial:failCurrentTrial(pPlayer)
 	local currentState = CreatureObject(pPlayer):getScreenPlayState(self.SCREEN_PLAY_NAME)
 	CreatureObject(pPlayer):removeScreenPlayState(self.SCREEN_PLAY_NAME, currentState)
 
-	local failAmount = readScreenPlayData(pPlayer, "JediPadawanTrial", "FailureAmount")
+	local failAmount = tonumber(readScreenPlayData(pPlayer, "JediPadawanTrial", "FailureAmount"))
 	local failAmountMsg = nil
 
-	if (failAmount == 0 or failAmount == "") then
+	if (failAmount == nil or failAmount == 0) then
 		writeScreenPlayData(pPlayer, "JediPadawanTrial", "FailureAmount", 1)
 		failAmountMsg = "@jedi_trials:padawan_trials_trial_failed_first"
 	elseif (failAmount == 1) then
@@ -172,7 +172,7 @@ function JediPadawanTrial:passCurrentTrial(pPlayer)
 		return
 	end
 
-	local trialsCompleted = readScreenPlayData(pPlayer, "JediPadawanTrial", "numOfTrialsCompleted")
+	local trialsCompleted = tonumber(readScreenPlayData(pPlayer, "JediPadawanTrial", "numOfTrialsCompleted"))
 
 	CreatureObject(pPlayer):sendSystemMessage("@jedi_trials:padawan_trials_next_trial") -- You have done well and successfully completed the trial you faced. To undertake your next trial, simply meditate at any Force shrine.
 	CreatureObject(pPlayer):setScreenPlayState(8, self.SCREEN_PLAY_NAME) -- Complete Trial.
@@ -181,7 +181,6 @@ function JediPadawanTrial:passCurrentTrial(pPlayer)
 	PlayerObject(pGhost):removeWaypointBySpecialType(WAYPOINTQUESTTASK)
 
 end
-
 
 function JediPadawanTrial:jediPadawanTrialsRestartCallback(pPlayer, pSui, eventIndex, args)
 	if (pPlayer == nil) then
@@ -196,7 +195,7 @@ function JediPadawanTrial:jediPadawanTrialsRestartCallback(pPlayer, pSui, eventI
 
 	CreatureObject(pPlayer):sendSystemMessage("@jedi_trials:padawan_trials_trial_restarted")
 	local trialNumber = readScreenPlayData(pPlayer, "JediPadawanTrial", "CurrentTrial")
-	local pScreenPlay = ForceShrineMenuComponent:getScreenPlayFromTable(trialNumber)
+	local pScreenPlay = ForceShrineMenuComponent:getScreenPlayFromTable(tonumber(trialNumber))
 	-- Reset the screenplaystate.
 	local state = CreatureObject(pPlayer):getScreenPlayState(self.SCREEN_PLAY_NAME)
 	CreatureObject(pPlayer):removeScreenPlayState(self.SCREEN_PLAY_NAME, state)

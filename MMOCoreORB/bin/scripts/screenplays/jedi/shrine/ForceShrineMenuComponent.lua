@@ -65,7 +65,7 @@ function ForceShrineMenuComponent:doMeditate(pObject, pPlayer)
 	local genericMessage = "@jedi_trials:force_shrine_wisdom_" .. rand
 	local isJediPadawan = CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_02")
 	local isJediKnight = CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_03")
-	local currentTrial = readScreenPlayData(pPlayer, "JediPadawanTrial", "CurrentTrial")
+	local currentTrial = tonumber(readScreenPlayData(pPlayer, "JediPadawanTrial", "CurrentTrial"))
 	local knightAvailable = CreatureObject(pPlayer):villageKnightPrereqsMet("")
 
 	if (not isJediPadawan) then
@@ -73,11 +73,11 @@ function ForceShrineMenuComponent:doMeditate(pObject, pPlayer)
 		if (CreatureObject(pPlayer):hasScreenPlayState(64, "VillageJediProgression")) then
 		-- TODO: Change to generic message after padawan trials complete if not qualified for Knight trials.
 		elseif (CreatureObject(pPlayer):hasScreenPlayState(32, "VillageJediProgression")) then
-			if (currentTrial == "") then
+			if (currentTrial == nil) then
 				self:startJediPadawanTrials(pObject, pPlayer)
 			elseif (currentTrial == 0) then
 				self:startNextJediPadawanTrial(pObject, pPlayer)
-			elseif (currentTrial ~= 0 and currentTrial ~= "") then
+			else
 				self:showCurrentPadawanTrial(pObject, pPlayer, currentTrial)
 			end
 		else
@@ -116,9 +116,8 @@ function ForceShrineMenuComponent:jediPadawanTrialsStartCallback(pPlayer, pSui, 
 	writeScreenPlayData(pPlayer, "JediPadawanTrial", "numOfTrialsCompleted", 0)
 end
 
-function ForceShrineMenuComponent:showCurrentPadawanTrial(pObject, pPlayer)
-	local trialQuest = readScreenPlayData(pPlayer, "JediPadawanTrial", "CurrentTrial")
-	local pScreenPlay = self:getScreenPlayFromTable(tonumber(trialQuest))
+function ForceShrineMenuComponent:showCurrentPadawanTrial(pObject, pPlayer, currentTrial)
+	local pScreenPlay = self:getScreenPlayFromTable(currentTrial)
 	pScreenPlay:showInfo(pPlayer, pObject)
 end
 
@@ -127,7 +126,7 @@ function ForceShrineMenuComponent:startNextJediPadawanTrial(pObject, pPlayer)
 		return
 	end
 
-	local trialsCompleted = readScreenPlayData(pPlayer, "JediPadawanTrial", "numOfTrialsCompleted")
+	local trialsCompleted = tonumber(readScreenPlayData(pPlayer, "JediPadawanTrial", "numOfTrialsCompleted"))
 
 	if (trialsCompleted == 8) then
 	-- TODO: Crafting Trial, after implemented uncomment below lines.
