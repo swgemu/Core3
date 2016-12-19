@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_722b1683",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 2675
+      },
+      "writtenOn": "2016-12-19T01:03:56Z",
+      "side": 1,
+      "message": "Would it be better to return as nil here incase of an error, or just getSceneObject on the table entry, then set the objectID where the return line is right now and return objectID?",
+      "range": {
+        "startLine": 276,
+        "startChar": 8,
+        "endLine": 276,
+        "endChar": 11
+      },
+      "revId": "8c50a146cddd123565c46d877b0655b910e36b88",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
