@@ -82,6 +82,24 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_0f12a562",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 2675
+      },
+      "writtenOn": "2016-12-19T00:02:33Z",
+      "side": 1,
+      "message": "Will fix.",
+      "parentUuid": "9adffdf1_afa6f951",
+      "revId": "edbc6f81fc173494a623faaff9c744ba29af2c4e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_6f6811f6",
         "filename": "MMOCoreORB/bin/scripts/screenplays/village/outro/mellichae_outro_theater.lua",
         "patchSetId": 7
@@ -93,6 +111,30 @@
       "writtenOn": "2016-12-18T22:21:48Z",
       "side": 1,
       "message": "Do you have evidence of the waypoint name? If not, I think it more likely that they just named it \"@jedi_trials:force_shrine_n\"",
+      "range": {
+        "startLine": 373,
+        "startChar": 45,
+        "endLine": 373,
+        "endChar": 72
+      },
+      "revId": "edbc6f81fc173494a623faaff9c744ba29af2c4e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_6f1d7173",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 2675
+      },
+      "writtenOn": "2016-12-19T00:02:33Z",
+      "side": 1,
+      "message": "https://drive.google.com/file/d/0B03LcsiTCEGqZFplZVA4WDdESzg/view\n\nNot 100% sure if the latest waypoint in this SS is from the message or not, but it is named (planet) Force Shrine.",
+      "parentUuid": "9adffdf1_6f6811f6",
       "range": {
         "startLine": 373,
         "startChar": 45,
