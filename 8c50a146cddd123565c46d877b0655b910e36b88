@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "9adffdf1_32734eb3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-19T01:33:23Z",
+      "side": 1,
+      "message": "store in a new local var, not in objectID.",
+      "revId": "8c50a146cddd123565c46d877b0655b910e36b88",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_d26762e9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-19T01:33:23Z",
+      "side": 1,
+      "message": "set objectID here. Don\u0027t return here or it\u0027ll always return on the first iteration since the first shrine will allways be closer than 128000m.",
+      "revId": "8c50a146cddd123565c46d877b0655b910e36b88",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_722b1683",
         "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
         "patchSetId": 9
@@ -19,6 +53,40 @@
         "endLine": 276,
         "endChar": 11
       },
+      "revId": "8c50a146cddd123565c46d877b0655b910e36b88",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_f264e6e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/jedi/shrine/ForceShrineMenuComponent.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-19T01:33:23Z",
+      "side": 1,
+      "message": "return objectID here",
+      "revId": "8c50a146cddd123565c46d877b0655b910e36b88",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_b2473e4b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/outro/mellichae_outro_theater.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-19T01:33:23Z",
+      "side": 1,
+      "message": "You should have put this comment in gerrit, not in the code.",
       "revId": "8c50a146cddd123565c46d877b0655b910e36b88",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
