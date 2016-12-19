@@ -412,6 +412,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("PARENTCHANGED", ObserverEventType::PARENTCHANGED);
 	luaEngine->setGlobalInt("LOGGEDIN", ObserverEventType::LOGGEDIN);
 	luaEngine->setGlobalInt("LOGGEDOUT", ObserverEventType::LOGGEDOUT);
+	luaEngine->setGlobalInt("ZONESWITCHED", ObserverEventType::ZONESWITCHED);
 
 	luaEngine->setGlobalInt("UPRIGHT", CreaturePosture::UPRIGHT);
 	luaEngine->setGlobalInt("PRONE", CreaturePosture::PRONE);
@@ -2867,7 +2868,7 @@ int DirectorManager::awardSkill(lua_State* L) {
 	if(creature == NULL)
 		return 0;
 
-	SkillManager::instance()->awardSkill(skillName, creature, true, false, true);
+	SkillManager::instance()->awardSkill(skillName, creature, true, true, true);
 
 	return 0;
 }

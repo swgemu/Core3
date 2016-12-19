@@ -54,7 +54,7 @@ function OldManOutroEncounter:scheduleDespawnOfOldMan(pPlayer)
 	end
 
 	Logger:log("Scheduling despawn of old man.", LT_INFO)
-	createEvent(OLD_MAN_DESPAWN_TIME, "OldManOutroEncounter", "handleScheduledDespawn", pPlayer, "")
+	createEvent(10 * 1000, "OldManOutroEncounter", "handleScheduledDespawn", pPlayer, "")
 end
 
 -- Check if the player is conversing with the old man that is spawned for the player

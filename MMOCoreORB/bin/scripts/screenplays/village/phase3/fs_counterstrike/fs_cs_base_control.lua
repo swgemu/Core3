@@ -273,9 +273,17 @@ function FsCsBaseControl:erectShield(pTheater)
 	pActiveArea = spawnActiveArea("dathomir", "object/active_area.iff", SceneObject(pTheater):getWorldPositionX(), SceneObject(pTheater):getWorldPositionZ(), SceneObject(pTheater):getWorldPositionY(), self.shieldRadius, 0)
 
 	if pActiveArea ~= nil then
-		createObserver(ENTEREDAREA, "FsCsBaseControl", "notifyEnteredCampShieldArea", pActiveArea)
 		writeData(theaterID .. ":shieldID", SceneObject(pActiveArea):getObjectID())
+		createEvent(10000, "FsCsBaseControl", "createShieldObserver", pActiveArea, "")
 	end
+end
+
+function FsCsBaseControl:createShieldObserver(pActiveArea)
+	if (pActiveArea == nil) then
+		return
+	end
+
+	createObserver(ENTEREDAREA, "FsCsBaseControl", "notifyEnteredCampShieldArea", pActiveArea)
 end
 
 function FsCsBaseControl:attemptPowerDownShield(pPlayer, campName)
