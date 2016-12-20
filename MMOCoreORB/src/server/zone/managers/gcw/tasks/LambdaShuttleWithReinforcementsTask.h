@@ -20,7 +20,39 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	int spawnNumber;
 
 	const String LAMBDATEMPLATE = "object/creature/npc/theme_park/lambda_shuttle.iff";
-	const String TROOPTEMPLATE = "stormtrooper";
+
+	struct LambdaTroop {
+		const String troopTemplate;
+		bool singleSpawn;
+	};
+
+	LambdaTroop IMPERIALTROOPS[11] = {
+			{"stormtrooper_squad_leader", true},
+			{"stormtrooper", false},
+			{"stormtrooper", false},
+			{"stormtrooper_sniper", false},
+			{"stormtrooper", false},
+			{"stormtrooper_rifleman", false},
+			{"stormtrooper_medic", false},
+			{"stormtrooper_sniper", false},
+			{"stormtrooper_rifleman", false},
+			{"stormtrooper", false},
+			{"stormtrooper_bombardier", false}
+	};
+
+	LambdaTroop REBELTROOPS[11] = {
+			{"rebel_sergeant", true},
+			{"rebel_sergeant", false},
+			{"rebel_sergeant", false},
+			{"rebel_sergeant", false},
+			{"rebel_sergeant", false},
+			{"rebel_sergeant", false},
+			{"rebel_sergeant", false},
+			{"rebel_sergeant", false},
+			{"rebel_sergeant", false},
+			{"rebel_sergeant", false},
+			{"rebel_sergeant", false}
+	};
 
 	enum LamdaShuttleState {
 		SPAWN,
@@ -33,20 +65,26 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 
 	LamdaShuttleState state;
 
-	void spawnSingleTroop(SceneObject* lambdaShuttle, float xOffset, float yOffset) {
+	LambdaTroop* troops;
+
+	void spawnSingleTroop(SceneObject* lambdaShuttle, const String& creatureTemplate, float xOffset, float yOffset) {
 		Zone* zone = lambdaShuttle->getZone();
 		float x = lambdaShuttle->getPositionX() + xOffset;
 		float y = lambdaShuttle->getPositionY() + yOffset;
 		float z = zone->getHeight(x, y);
-		CreatureObject* npc = zone->getCreatureManager()->spawnCreature(TROOPTEMPLATE.hashCode(), 0, x, z, y, 0, false);
+		CreatureObject* npc = zone->getCreatureManager()->spawnCreature(creatureTemplate.hashCode(), 0, x, z, y, 0, false);
 		if (npc != NULL) {
 			containmentTeam.add(npc);
 		}
 	}
 
 	void spawnOneSetOfTroops(SceneObject* lambdaShuttle) {
-		spawnSingleTroop(lambdaShuttle, 0.5f, spawnNumber * 1.0f);
-		spawnSingleTroop(lambdaShuttle, -0.5f, spawnNumber * 1.0f);
+		if (troops[spawnNumber].singleSpawn) {
+			spawnSingleTroop(lambdaShuttle, troops[spawnNumber].troopTemplate, 0.0f, 0.0f);
+		} else {
+			spawnSingleTroop(lambdaShuttle, troops[spawnNumber].troopTemplate, 0.5f, spawnNumber * 1.0f);
+			spawnSingleTroop(lambdaShuttle, troops[spawnNumber].troopTemplate, -0.5f, spawnNumber * 1.0f);
+		}
 		spawnNumber++;
 	}
 
@@ -129,10 +167,21 @@ class LambdaShuttleWithReinforcementsTask : public Task {
 	}
 
 public:
-	LambdaShuttleWithReinforcementsTask(CreatureObject* player, int difficulty) {
+	LambdaShuttleWithReinforcementsTask(CreatureObject* player, unsigned int faction, unsigned int difficulty) {
 		weakPlayer = player;
 		state = SPAWN;
-		this->difficulty = difficulty;
+		if (difficulty > 10) {
+			this->difficulty = 10;
+		} else if (difficulty < 3) {
+			this->difficulty = 3;
+		} else {
+			this->difficulty = difficulty;
+		}
+		if (faction == Factions::FACTIONIMPERIAL) {
+			troops = IMPERIALTROOPS;
+		} else {
+			troops = REBELTROOPS;
+		}
 		spawnNumber = 0;
 	}
 
