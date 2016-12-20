@@ -325,6 +325,10 @@ void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiA
 			sendSystemMessage(scanner, player, "discovered_imperial", "discovered_rebel");
 			scanner->doAnimation("point_accusingly");
 			player->setFactionStatus(FactionStatus::COVERT);
+
+			Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scanner->getFaction(), player->getFactionRank());
+			lambdaTask->schedule(TASKDELAY);
+
 			scanState = FINISHED;
 		}
 	}
