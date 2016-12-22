@@ -51,7 +51,7 @@ fbase_rebel_army_captain_extreme = Creature:new {
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "rebelRecruiterConvoTemplate",
 	reactionStf = "@npc_reaction/military",
-	attacks = merge(brawlermaster,marksmanmaster,carbineermaster,teraskasimaster)
+	attacks = merge(brawlermaster,marksmanmaster,carbineermaster,tkamaster)
 }
 
 CreatureTemplates:addCreatureTemplate(fbase_rebel_army_captain_extreme, "fbase_rebel_army_captain_extreme")

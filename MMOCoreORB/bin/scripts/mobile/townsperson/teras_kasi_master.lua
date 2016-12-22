@@ -43,7 +43,7 @@ teras_kasi_master = Creature:new {
 	weapons = {"unarmed_weapons"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/townperson",
-	attacks = merge(brawlermaster,teraskasimaster)
+	attacks = merge(brawlermaster,tkamaster)
 }
 
 CreatureTemplates:addCreatureTemplate(teras_kasi_master, "teras_kasi_master")
