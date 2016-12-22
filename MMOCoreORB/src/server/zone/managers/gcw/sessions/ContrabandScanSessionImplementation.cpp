@@ -7,6 +7,7 @@
 
 #include "server/zone/managers/gcw/sessions/ContrabandScanSession.h"
 #include "server/zone/managers/gcw/tasks/ContrabandScanTask.h"
+#include "server/zone/managers/gcw/tasks/LambdaShuttleWithReinforcementsTask.h"
 #include "engine/engine.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
@@ -325,6 +326,10 @@ void ContrabandScanSessionImplementation::checkPlayerFactionRank(Zone* zone, AiA
 			sendSystemMessage(scanner, player, "discovered_imperial", "discovered_rebel");
 			scanner->doAnimation("point_accusingly");
 			player->setFactionStatus(FactionStatus::COVERT);
+
+			Reference<Task*> lambdaTask = new LambdaShuttleWithReinforcementsTask(player, scanner->getFaction(), player->getFactionRank());
+			lambdaTask->schedule(TASKDELAY);
+
 			scanState = FINISHED;
 		}
 	}
