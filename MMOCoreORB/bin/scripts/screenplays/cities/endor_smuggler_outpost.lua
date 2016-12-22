@@ -18,6 +18,10 @@ function EndorSmugglerOutpostScreenPlay:spawnMobiles()
 	local pNpc = spawnMobile("endor", "commoner_technician",60,3.5,0.1,3.9,0,3605972)
 	self:setMoodString(pNpc, "sad")
 
+	--tavern
+	local pNpc = spawnMobile("endor", "commoner_old",60,1.0,0.7,-4.4,0,6645605)
+	self:setMoodString(pNpc, "npc_sitting_chair")
+
 	--outside
 	spawnMobile("endor", "businessman", 60, -899.977, 78, 1548.09, 107.809, 0)
 	spawnMobile("endor", "commoner", 60, -828.009, 76, 1573.28, 320.402, 0)
@@ -36,8 +40,6 @@ function EndorSmugglerOutpostScreenPlay:spawnMobiles()
 	spawnMobile("endor", "smuggler", 300, -890.91, 76, 1591.38, 253.162, 0)
 	spawnMobile("endor", "smuggler", 300, -889.732, 76, 1592.45, 319.914, 0)
 	spawnMobile("endor", "noble", 60, -829.243, 76, 1567.61, 95.886, 0)
-	pNpc = spawnMobile("endor", "kilnstrider",60,-3.44448,0.624999,-6.82681,331.362,9925367)
-	self:setMoodString(pNpc, "npc_imperial")
 	pNpc = spawnMobile("endor", "r3",60,-950.705,73,1542.69,331.775,0)
 	self:setMoodString(pNpc, "neutral")
 end

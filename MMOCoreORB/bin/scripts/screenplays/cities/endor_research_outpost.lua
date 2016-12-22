@@ -14,9 +14,9 @@ end
 
 function EndorResearchOutpostScreenPlay:spawnMobiles()
 
-	--tavern
-	local pNpc = spawnMobile("endor", "commoner_old",60,1.0,0.7,-4.4,0,6645605)
-	self:setMoodString(pNpc, "npc_sitting_chair")
+	--tavern building
+	pNpc = spawnMobile("endor", "kilnstrider",60,-3.44448,0.624999,-6.82681,331.362,9925367)
+	self:setMoodString(pNpc, "npc_imperial")
 
 	--outside
 	spawnMobile("endor", "businessman", 60, 3175.37, 24, -3490.78, 156.98, 0)
