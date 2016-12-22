@@ -505,9 +505,17 @@ function ThemeParkLogic:handleMissionAccept(npcNumber, missionNumber, pConversin
 		areaSpawnPoint[3] = mission.staticLoc[1].y
 		areaSpawnPoint[2] = getTerrainHeight(pConversingPlayer, areaSpawnPoint[1], areaSpawnPoint[3])
 	else
-		areaSpawnPoint = getSpawnPoint(zoneName, SceneObject(pConversingPlayer):getWorldPositionX(), SceneObject(pConversingPlayer):getWorldPositionY(), spawnDistance, (spawnDistance/2)*3)
+		areaSpawnPoint = getSpawnPoint(zoneName, SceneObject(pConversingPlayer):getWorldPositionX(), SceneObject(pConversingPlayer):getWorldPositionY(), spawnDistance, (spawnDistance / 2) * 3)
+		
+		if (areaSpawnPoint == nil) then
+			areaSpawnPoint = getSpawnPoint(zoneName, SceneObject(pConversingPlayer):getWorldPositionX(), SceneObject(pConversingPlayer):getWorldPositionY(), spawnDistance * 0.75, spawnDistance * 2, true)
+		end
 	end
 
+	if (areaSpawnPoint == nil) then
+		return false
+	end
+	
 	local pQuestArea = spawnActiveArea(zoneName, "object/active_area.iff", areaSpawnPoint[1], areaSpawnPoint[2], areaSpawnPoint[3], 100, 0)
 
 	if pQuestArea == nil then

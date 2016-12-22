@@ -11,7 +11,7 @@ Situations to test:
 FsCsCommander = {
 	commanderDespawnTime = 60 * 60 * 1000, -- Time after spawning before commander automatically despawns
 
-	rescueSpawnTimer = { 30, 60 }, -- Min/max time until a wave of npcs attempts to save the commander
+	rescueSpawnTimer = { 180, 300 }, -- Min/max time until a wave of npcs attempts to save the commander
 	rescueAmount = { 1, 2 }, -- Number of rescuers to spawn
 	runAwayTime = 180 * 1000, -- Time commander can run until he cant be recovered
 

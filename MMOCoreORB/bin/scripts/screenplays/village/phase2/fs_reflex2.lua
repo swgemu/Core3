@@ -49,11 +49,11 @@ function FsReflex2:resetTasks(pPlayer)
 end
 
 function FsReflex2:hasActiveFetch(pPlayer)
-	return QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_00) or
-		QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_01) or
+	return (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_01) or
 		QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_02) or
 		QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_03) or
-		QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_04)
+		QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_04)) and not
+		QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_REFLEX_FETCH_QUEST_04)
 end
 
 function FsReflex2:completeSupplyFetch(pPlayer)
