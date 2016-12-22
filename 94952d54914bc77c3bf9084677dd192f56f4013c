@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_322b4e32",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2016-12-22T21:00:18Z",
+      "side": 1,
+      "message": "I would simplify this and just make it spawnDistance * 2 instead of 3 calcs to do the equivalent of * 1.875",
+      "range": {
+        "startLine": 511,
+        "startChar": 186,
+        "endLine": 511,
+        "endChar": 202
+      },
+      "revId": "94952d54914bc77c3bf9084677dd192f56f4013c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
