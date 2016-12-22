@@ -146,8 +146,6 @@ function FsCounterStrike:spawnCamps()
 		writeData("VillageCounterStrikeCampID:" .. campName, theaterID)
 		writeData(theaterID .. ":campNum", campNum)
 
-		FsCsBaseControl:erectShield(pTheater)
-
 		local spawnedFirstDoor = false
 		local spawnedFirstTurret = false
 		local spawnedSecondTurret = false
@@ -196,6 +194,7 @@ function FsCounterStrike:spawnCamps()
 		end
 
 		createNavMesh("dathomir", campLoc[2], campLoc[4], 60, true, "fs_counterstrike_" .. campLoc[1])
+		FsCsBaseControl:erectShield(pTheater)
 
 		FsCsBaseControl:spawnLootMobGroups(pTheater)
 		FsCsBaseControl:spawnSurveillanceDroids(pTheater)
@@ -279,6 +278,10 @@ function FsCounterStrike:despawnCamp(campNum)
 end
 
 function FsCounterStrike:doPhaseChangeFail(pPlayer)
+	if (not self:isOnQuest(pPlayer)) then
+		return
+	end
+	
 	CreatureObject(pPlayer):sendSystemMessage("@fs_quest_village:combat_quest_failed_timeout")
 	self:resetPlayer(pPlayer)
 end
