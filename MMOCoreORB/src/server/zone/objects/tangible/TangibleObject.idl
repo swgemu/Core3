@@ -107,7 +107,7 @@ class TangibleObject extends SceneObject {
 	public void initializeMembers() {
 		faction = 0;
 		factionStatus = 0;
-		futureFactionStatus = 0;
+		futureFactionStatus = -1;
 
 		level = 1;
 		useCount = 1;

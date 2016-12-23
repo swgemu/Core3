@@ -163,7 +163,7 @@ int LuaTangibleObject::getPvpStatusBitmask(lua_State* L) {
 }
 
 int LuaTangibleObject::isChangingFactionStatus(lua_State* L) {
-	lua_pushboolean(L, realObject->getFutureFactionStatus() != 0);
+	lua_pushboolean(L, realObject->getFutureFactionStatus() >= 0);
 
 	return 1;
 }

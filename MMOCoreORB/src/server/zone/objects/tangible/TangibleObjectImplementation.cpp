@@ -128,7 +128,7 @@ void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 void TangibleObjectImplementation::setFactionStatus(int status) {
 	factionStatus = status;
-	futureFactionStatus = 0;
+	futureFactionStatus = -1;
 
 	if (isPlayerCreature()) {
 		CreatureObject* creature = asCreatureObject();
