@@ -5,8 +5,6 @@
 #ifndef SETMAXIMUMSPAWNTIMECOMMAND_H_
 #define SETMAXIMUMSPAWNTIMECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class SetMaximumSpawnTimeCommand : public QueueCommand {
 public:
 

@@ -5,10 +5,8 @@
  *      Author: root
  */
 
-#include "server/zone/objects/scene/components/ZoneComponent.h"
 #include "TurretZoneComponent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "TurretDataComponent.h"
 #include "server/zone/Zone.h"

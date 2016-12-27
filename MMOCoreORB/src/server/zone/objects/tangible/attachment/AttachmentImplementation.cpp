@@ -7,6 +7,7 @@
 
 #include "server/zone/objects/tangible/attachment/Attachment.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/loot/LootManager.h"

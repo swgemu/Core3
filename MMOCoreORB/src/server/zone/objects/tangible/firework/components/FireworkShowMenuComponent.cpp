@@ -3,7 +3,6 @@
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "FireworkShowMenuComponent.h"
-#include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/tangible/firework/components/FireworkShowDataComponent.h"
 
@@ -11,11 +10,7 @@
 #include "server/zone/objects/player/sui/callbacks/FireworkShowRemoveEventSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/FireworkShowModifyEventSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/FireworkShowReorderShowSuiCallback.h"
-#include "server/zone/objects/player/sui/callbacks/FireworkShowDelaySelectionSuiCallback.h"
-
-#include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-
 
 void FireworkShowMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		ObjectMenuResponse* menuResponse, CreatureObject* player) const {

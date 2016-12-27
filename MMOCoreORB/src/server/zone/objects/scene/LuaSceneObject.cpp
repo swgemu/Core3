@@ -8,10 +8,7 @@
 #include "server/zone/objects/scene/LuaSceneObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/Zone.h"
-#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/managers/director/ScreenPlayTask.h"
 
 const char LuaSceneObject::className[] = "LuaSceneObject";

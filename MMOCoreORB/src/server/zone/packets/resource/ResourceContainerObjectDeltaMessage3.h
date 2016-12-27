@@ -6,7 +6,7 @@
 #define RESOURCECONTAINEROBJECTDELTAMESSAGE3_H_
 
 #include "server/zone/objects/resource/ResourceContainer.h"
-#include "../DeltaMessage.h"
+#include "server/zone/packets/DeltaMessage.h"
 
 class ResourceContainerObjectDeltaMessage3 : public DeltaMessage {
 private:

@@ -8,7 +8,6 @@
 #ifndef HOLOCRONMANAGER_H_
 #define HOLOCRONMANAGER_H_
 
-#include "engine/engine.h"
 #include "BugCategory.h"
 
 namespace server {

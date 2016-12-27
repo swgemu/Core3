@@ -9,6 +9,8 @@
 #define UNKZONE_H_
 //test
 
+#include "engine/service/proto/BaseMessage.h"
+
 class unkZone : public BaseMessage {
 public:
 	unkZone() : BaseMessage() {

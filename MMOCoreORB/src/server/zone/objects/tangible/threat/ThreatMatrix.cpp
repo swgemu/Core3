@@ -7,6 +7,7 @@
 
 #include "ThreatMatrix.h"
 #include "ThreatMap.h"
+#include "ThreatStates.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
 ThreatMatrix::ThreatMatrix() : damageMap(1, 0), aggroMap(1, 0), healMap(1, 0) {

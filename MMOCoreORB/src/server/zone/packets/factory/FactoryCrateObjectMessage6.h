@@ -5,8 +5,7 @@
 #ifndef FACTORYCRATEOBJECTMESSAGE6_H_
 #define FACTORYCRATEOBJECTMESSAGE6_H_
 
-#include "../BaseLineMessage.h"
-
+#include "server/zone/packets/BaseLineMessage.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 class FactoryCrateObjectMessage6 : public BaseLineMessage {

@@ -6,9 +6,11 @@
  */
 
 #include "StringIdManager.h"
+#include "server/ServerCore.h"
 #include "templates/string/StringFile.h"
 #include "templates/manager/TemplateManager.h"
 #include "templates/manager/DataArchiveStore.h"
+#include "tre3/TreeArchive.h"
 
 void StringIdManager::populateDatabase() {
 	int count = 0;

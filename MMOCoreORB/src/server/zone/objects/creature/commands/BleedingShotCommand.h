@@ -5,7 +5,6 @@
 #ifndef BLEEDINGSHOTCOMMAND_H_
 #define BLEEDINGSHOTCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class BleedingShotCommand : public CombatQueueCommand {

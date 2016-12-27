@@ -5,9 +5,8 @@
 package server.zone.objects.tangible.powerup;
 
 import server.zone.objects.tangible.TangibleObject;
-import engine.lua.LuaObject;
 include server.zone.objects.tangible.powerup.PowerupStatVector;
-import server.zone.Zone;
+import server.zone.objects.tangible.weapon.WeaponObject;
 
 @lua
 class PowerupObject extends TangibleObject {

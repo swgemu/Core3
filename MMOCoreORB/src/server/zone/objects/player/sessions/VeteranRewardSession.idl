@@ -4,7 +4,7 @@
 */
 
 package server.zone.objects.player.sessions;
-import engine.core.ManagedObject;
+
 import engine.util.Facade;
 
 class VeteranRewardSession extends Facade {

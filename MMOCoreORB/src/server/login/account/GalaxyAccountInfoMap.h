@@ -8,7 +8,6 @@
 #ifndef GALAXYACCOUNTINFOMAP_H_
 #define GALAXYACCOUNTINFOMAP_H_
 
-#include "engine/engine.h"
 #include "server/login/account/GalaxyAccountInfo.h"
 
 class GalaxyAccountInfoMap : public VectorMap<String, Reference<GalaxyAccountInfo*> > {

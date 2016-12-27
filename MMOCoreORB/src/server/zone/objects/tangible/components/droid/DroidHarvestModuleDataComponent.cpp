@@ -7,10 +7,10 @@
 #include "server/zone/objects/tangible/component/droid/DroidComponent.h"
 #include "server/zone/objects/creature/events/DroidHarvestTask.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/intangible/tasks/EnqueuePetCommand.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/creature/sui/SelectHarvestTypeSuiCallback.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/managers/creature/PetManager.h"
 
 DroidHarvestModuleDataComponent::DroidHarvestModuleDataComponent() {
 	harvestBonus = 0;

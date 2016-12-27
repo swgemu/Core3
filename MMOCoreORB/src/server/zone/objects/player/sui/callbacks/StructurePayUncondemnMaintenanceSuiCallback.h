@@ -6,7 +6,6 @@
 #define STRUCTUREPAYUNCONDEMNMAINTENANCESUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
-#include "server/zone/objects/player/PlayerObject.h"
 
 class StructurePayUncondemnMaintenanceSuiCallback : public SuiCallback {
 public:

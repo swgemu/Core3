@@ -8,8 +8,6 @@
 #ifndef STATEEFFECT_H_
 #define STATEEFFECT_H_
 
-#include "templates/params/creature/CreatureState.h"
-
 #include "engine/engine.h"
 
 class StateEffect : public Object {

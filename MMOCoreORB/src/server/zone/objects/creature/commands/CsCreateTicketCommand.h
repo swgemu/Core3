@@ -5,8 +5,6 @@
 #ifndef CSCREATETICKETCOMMAND_H_
 #define CSCREATETICKETCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class CsCreateTicketCommand : public QueueCommand {
 public:
 

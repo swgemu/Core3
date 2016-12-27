@@ -8,7 +8,6 @@
 #ifndef SHUTTLEDEPARTURETASK_H_
 #define SHUTTLEDEPARTURETASK_H_
 
-#include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "engine/engine.h"
 

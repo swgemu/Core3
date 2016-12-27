@@ -7,9 +7,8 @@
 
 #ifndef REMOVEDEFENSESUICALLBACK_H_
 #define REMOVEDEFENSESUICALLBACK_H_
+
 #include "server/zone/objects/player/sui/SuiCallback.h"
-#include "server/zone/objects/scene/SceneObjectType.h"
-#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 
 class RemoveDefenseSuiCallback : public SuiCallback {

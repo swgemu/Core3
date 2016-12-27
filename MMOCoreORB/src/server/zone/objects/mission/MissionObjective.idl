@@ -4,11 +4,9 @@
 
 package server.zone.objects.mission;
 
-import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.objects.mission.MissionObject;
 import server.zone.objects.mission.MissionObserver;
-import server.zone.objects.scene.SceneObject;
 import system.util.SortedVector;
 import server.zone.objects.creature.CreatureObject;
 import engine.log.Logger;

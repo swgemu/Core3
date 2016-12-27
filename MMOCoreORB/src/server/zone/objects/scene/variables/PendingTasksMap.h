@@ -10,8 +10,6 @@
 
 #include "engine/engine.h"
 
-#include "system/util/SynchronizedVectorMap.h"
-
 namespace server {
 namespace zone {
 namespace objects {

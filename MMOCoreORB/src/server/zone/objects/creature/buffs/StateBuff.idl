@@ -4,21 +4,17 @@
 */
 
 package server.zone.objects.creature.buffs;
-import engine.core.ManagedObject;
+
 import server.zone.objects.creature.buffs.Buff;
 import system.lang.Long;
 include server.zone.objects.creature.buffs.BuffType;
 import server.zone.objects.creature.CreatureObject;
-import system.lang.String;
-import engine.log.Logger;
 
 class StateBuff extends Buff {
 	protected unsigned long stateApplied;
 
 	public StateBuff(CreatureObject creo, unsigned long buffState, int duration, unsigned long secondaryCRC = 0) {
 		super(creo, Long.hashCode(buffState), duration, BuffType.STATE, secondaryCRC);
-
-		//Logger.info("creating state buff with duration " + String.valueOf(duration), true);
 
 		stateApplied = buffState;
 	}
@@ -27,16 +23,12 @@ class StateBuff extends Buff {
 	public void activate(boolean applyModifiers) {
 		super.activate(applyModifiers);
 
-		//Logger.info("activating state buff", true);
-
 		super.creature.setState(stateApplied);
 	}
 
 	@preLocked
 	public void deactivate(boolean removeModifiers) {
 		super.deactivate(removeModifiers);
-
-	//	Logger.info("deatctivating state buff", true);
 
 		super.creature.clearState(stateApplied);
 	}

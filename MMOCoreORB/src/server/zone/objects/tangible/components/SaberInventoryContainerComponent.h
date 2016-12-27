@@ -10,26 +10,6 @@
 
 #include "server/zone/objects/scene/components/ContainerComponent.h"
 
-namespace server {
- namespace zone {
-  namespace objects {
-   namespace scene {
-    class SceneObject;
-   }
-
-   namespace creature {
-    class CreatureObject;
-   }
-  }
-
-  class Zone;
- }
-}
-
-using namespace server::zone::objects::scene;
-using namespace server::zone::objects::creature;
-
-
 class SaberInventoryContainerComponent : public ContainerComponent {
 public:
 

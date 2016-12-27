@@ -8,7 +8,7 @@
 #ifndef ACCEPTAUCTIONRESPONSEMESSAGE_H_
 #define ACCEPTAUCTIONRESPONSEMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class AcceptAuctionResponseMessage : public BaseMessage {
 public:
@@ -20,6 +20,5 @@ public:
 		insertInt(errorCode);
 	}
 };
-
 
 #endif /* ACCEPTAUCTIONRESPONSEMESSAGE_H_ */

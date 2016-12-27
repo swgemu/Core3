@@ -13,11 +13,6 @@
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/combat/CreatureAttackData.h"
 #include "server/zone/managers/collision/CollisionManager.h"
-#include "templates/params/creature/CreatureAttribute.h"
-#include "templates/params/creature/CreatureState.h"
-#include "server/zone/objects/creature/commands/effect/StateEffect.h"
-#include "server/zone/objects/creature/commands/effect/DotEffect.h"
-#include "server/zone/objects/creature/commands/effect/CommandEffect.h"
 #include "CombatQueueCommand.h"
 
 class HeavyWeaponQueueCommand : public CombatQueueCommand {

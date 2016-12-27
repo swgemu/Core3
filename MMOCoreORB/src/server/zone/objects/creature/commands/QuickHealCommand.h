@@ -8,11 +8,6 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/objects/creature/events/InjuryTreatmentTask.h"
-#include "server/zone/objects/creature/buffs/Buff.h"
-#include "server/zone/objects/creature/buffs/DelayedBuff.h"
-#include "server/zone/packets/object/CombatAction.h"
-#include "server/zone/objects/player/FactionStatus.h"
 
 class QuickHealCommand : public QueueCommand {
 	int mindCost;

@@ -5,8 +5,6 @@
 #ifndef CSGETTICKETSCOMMAND_H_
 #define CSGETTICKETSCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class CsGetTicketsCommand : public QueueCommand {
 public:
 

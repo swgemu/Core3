@@ -5,8 +5,6 @@
 #ifndef COMBATSPAMCOMMAND_H_
 #define COMBATSPAMCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class CombatSpamCommand : public QueueCommand {
 public:
 

@@ -5,17 +5,14 @@
  *      Author: Kyle
  */
 
-#include "engine/engine.h"
-
 #include "server/zone/managers/loot/LootManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
+#include "server/zone/objects/tangible/weapon//WeaponObject.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 #include "templates/LootItemTemplate.h"
 #include "templates/LootGroupTemplate.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/managers/stringid/StringIdManager.h"
 #include "LootGroupMap.h"
 
 void LootManagerImplementation::initialize() {

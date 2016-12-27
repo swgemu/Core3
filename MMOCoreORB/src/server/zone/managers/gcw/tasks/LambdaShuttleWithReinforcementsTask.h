@@ -8,9 +8,9 @@
 #ifndef LAMBDASHUTTLEWITHREINFORCEMENTSTASK_H_
 #define LAMBDASHUTTLEWITHREINFORCEMENTSTASK_H_
 
-#include "engine/engine.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "templates/faction/Factions.h"
 
 class LambdaShuttleWithReinforcementsTask : public Task {
 	WeakReference<CreatureObject*> weakPlayer;

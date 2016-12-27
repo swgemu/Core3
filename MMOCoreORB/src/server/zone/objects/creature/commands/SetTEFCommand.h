@@ -5,8 +5,6 @@
 #ifndef SETTEFCOMMAND_H_
 #define SETTEFCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class SetTEFCommand : public QueueCommand {
 public:
 

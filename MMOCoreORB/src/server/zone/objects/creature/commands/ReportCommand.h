@@ -5,8 +5,6 @@
 #ifndef REPORTCOMMAND_H_
 #define REPORTCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class ReportCommand : public QueueCommand {
 public:
 

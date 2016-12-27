@@ -8,7 +8,6 @@
 #ifndef COMPONENTVOLUME_H_
 #define COMPONENTVOLUME_H_
 
-#include "engine/engine.h"
 #include "CompositeVolume.h"
 
 class ComponentVolume : public CompositeVolume {

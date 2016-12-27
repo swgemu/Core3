@@ -7,8 +7,8 @@
 
 #include "TangibleObjectMenuComponent.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
-#include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 void TangibleObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	ObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);

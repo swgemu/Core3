@@ -9,12 +9,10 @@
 #define SHIPUPDATETRANSFORMCALLBACK_H_
 
 #include "server/zone/packets/MessageCallback.h"
-#include "engine/engine.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "ShipUpdateTransformCollisionMessage.h"
 #include "ShipUpdateTransformMessage.h"
-#include "server/zone/packets/object/DataTransform.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
 

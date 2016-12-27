@@ -9,8 +9,6 @@
 #define DESTROYVENDORSUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
-#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
-#include "server/zone/objects/player/sessions/vendor/CreateVendorSession.h"
 #include "server/zone/managers/vendor/VendorManager.h"
 
 class DestroyVendorSuiCallback : public SuiCallback {

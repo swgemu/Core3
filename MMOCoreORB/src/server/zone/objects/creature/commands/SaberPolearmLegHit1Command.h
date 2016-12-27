@@ -5,7 +5,6 @@
 #ifndef SABERPOLEARMLEGHIT1COMMAND_H_
 #define SABERPOLEARMLEGHIT1COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "JediCombatQueueCommand.h"
 
 class SaberPolearmLegHit1Command : public JediCombatQueueCommand {

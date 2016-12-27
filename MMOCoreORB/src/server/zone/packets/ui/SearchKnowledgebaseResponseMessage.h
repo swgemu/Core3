@@ -5,6 +5,8 @@
 #ifndef SEARCHKNOWLEDGEBASERESPONSEMESSAGE_H_
 #define SEARCHKNOWLEDGEBASERESPONSEMESSAGE_H_
 
+#include "engine/service/proto/BaseMessage.h"
+
 class SearchKnowledgebaseResponseMessage : public BaseMessage {
 	int articleCount;
 public:

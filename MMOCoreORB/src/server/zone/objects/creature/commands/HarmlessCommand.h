@@ -5,8 +5,6 @@
 #ifndef HARMLESSCOMMAND_H_
 #define HARMLESSCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class HarmlessCommand : public QueueCommand {
 public:
 

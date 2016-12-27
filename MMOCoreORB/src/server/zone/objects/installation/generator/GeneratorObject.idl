@@ -1,7 +1,7 @@
 package server.zone.objects.installation;
 
 import server.zone.objects.installation.InstallationObject;
-import server.zone.objects.area.ActiveArea;
+import server.zone.packets.object.ObjectMenuResponse;
 
 class GeneratorObject extends InstallationObject {
 	public GeneratorObject() {		

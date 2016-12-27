@@ -5,8 +5,7 @@
 #ifndef PLAYERMONEYRESPONSEMESSAGE_H_
 #define PLAYERMONEYRESPONSEMESSAGE_H_
 
-#include "engine/engine.h"
-
+#include "engine/service/proto/BaseMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
 class PlayerMoneyResponseMessage : public BaseMessage {

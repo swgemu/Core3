@@ -5,8 +5,6 @@
 #ifndef GCCOMMAND_H_
 #define GCCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class GcCommand : public QueueCommand {
 public:
 

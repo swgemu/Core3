@@ -2,16 +2,9 @@
 package server.zone.objects.tangible.tool.antidecay;
 
 import engine.log.Logger;
-import engine.core.ManagedReference;
-import system.lang.ref.Reference;
-import server.zone.objects.tangible.tool.ToolTangibleObject;
-import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.tangible.Container;
 import server.zone.objects.creature.CreatureObject;
-import engine.lua.LuaObject;
 import server.zone.packets.object.ObjectMenuResponse;
-import server.zone.Zone;
-
 
 class AntiDecayKit extends Container {
 

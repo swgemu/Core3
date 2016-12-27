@@ -1,7 +1,6 @@
 #ifndef SECURITYREPAIRTASK_H_
 #define SECURITYREPAIRTASK_H_
 
-#include "engine/engine.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 
 class SecurityRepairTask : public Task {
@@ -75,8 +74,5 @@ public:
 		}
 	}
 };
-
-
-
 
 #endif /* SECURITYREPAIRTASK_H_ */

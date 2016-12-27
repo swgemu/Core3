@@ -6,7 +6,6 @@
 #define DROIDPERSONALITYMODULEDATACOMPONENT_H_
 
 #include "BaseDroidModuleComponent.h"
-#include "engine/core/ManagedReference.h"
 #include "server/zone/objects/tangible/components/droid/DroidPersonalityObserver.h"
 
 namespace server {

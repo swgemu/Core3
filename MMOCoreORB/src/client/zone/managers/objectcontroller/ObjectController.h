@@ -8,7 +8,8 @@
 #ifndef OBJECTCONTROLLER_H_
 #define OBJECTCONTROLLER_H_
 
-#include "engine/engine.h"
+#include "system/lang.h"
+#include "engine/service/Message.h"
 
 class Zone;
 class SceneObject;
@@ -31,6 +32,5 @@ public:
 		zone = zon;
 	}
 };
-
 
 #endif /* OBJECTCONTROLLER_H_ */

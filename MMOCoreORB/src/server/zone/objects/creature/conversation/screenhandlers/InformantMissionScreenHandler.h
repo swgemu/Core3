@@ -7,7 +7,6 @@
 
 #include "ScreenHandler.h"
 #include "server/zone/objects/mission/MissionObject.h"
-#include "server/zone/objects/mission/BountyMissionObjective.h"
 #include "engine/log/Logger.h"
 
 namespace server {

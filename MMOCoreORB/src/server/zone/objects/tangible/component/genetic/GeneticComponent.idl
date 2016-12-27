@@ -5,10 +5,6 @@
 package server.zone.objects.tangible.component.genetic;
 
 import server.zone.objects.tangible.component.Component;
-import engine.lua.LuaObject;
-import server.zone.objects.scene.SceneObject;
-import server.zone.Zone;
-import server.zone.objects.creature.ai.CreatureTemplate;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
  
 class GeneticComponent extends Component {

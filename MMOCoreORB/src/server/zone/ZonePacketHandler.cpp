@@ -8,7 +8,6 @@
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/ZoneProcessServer.h"
 
-#include "packets/zone/ClientIDMessage.h"
 #include "packets/zone/ClientIDMessageCallback.h"
 #include "packets/zone/SelectCharacterCallback.h"
 #include "packets/zone/CmdSceneReadyCallback.h"

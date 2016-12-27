@@ -5,12 +5,10 @@
 package server.zone.objects.tangible.terminal.mission;
 
 import server.zone.objects.tangible.terminal.Terminal;
-import server.zone.objects.scene.SceneObject;
-import engine.lua.LuaObject;
 import server.zone.objects.creature.CreatureObject;
 include templates.tangible.MissionTerminalTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
-import server.zone.Zone;
+include system.util.Vector;
 
 class MissionTerminal extends Terminal {
 	protected string terminalType;

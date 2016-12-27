@@ -8,7 +8,6 @@
 #include "engine/engine.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/NpcConversationMessage.h"
 #include "server/zone/packets/object/StopNpcConversation.h"
 #include "server/zone/packets/object/StringList.h"

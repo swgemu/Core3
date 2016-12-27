@@ -8,9 +8,8 @@
 #ifndef CLIENTRANDOMNAMEREQUEST_H_
 #define CLIENTRANDOMNAMEREQUEST_H_
 
-#include "../MessageCallback.h"
+#include "server/zone/packets/MessageCallback.h"
 #include "ClientRandomNameResponse.h"
-
 #include "server/zone/managers/name/NameManager.h"
 
 class ClientRandomNameRequest : public MessageCallback {

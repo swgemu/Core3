@@ -5,9 +5,7 @@
 #ifndef DIVESHOTCOMMAND_H_
 #define DIVESHOTCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
-#include "server/zone/packets/creature/CreatureObjectDeltaMessage3.h"
 
 class DiveShotCommand : public CombatQueueCommand {
 public:

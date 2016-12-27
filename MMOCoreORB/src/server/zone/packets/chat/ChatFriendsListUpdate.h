@@ -5,7 +5,7 @@
 #ifndef CHATFRIENDSLISTUPDATE_H_
 #define CHATFRIENDSLISTUPDATE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class ChatFriendsListUpdate : public BaseMessage {
 public:

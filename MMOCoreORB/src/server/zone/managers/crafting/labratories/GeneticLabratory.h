@@ -9,7 +9,6 @@
 #define GENETICLABRATORY_H_
 
 #include "SharedLabratory.h"
-#include "engine/engine.h"
 
 namespace server {
 namespace zone {
@@ -55,4 +54,5 @@ protected:
 }
 
 using namespace server::zone::managers::crafting::labratories;
+
 #endif /* GENETICLABRATORY_H_ */

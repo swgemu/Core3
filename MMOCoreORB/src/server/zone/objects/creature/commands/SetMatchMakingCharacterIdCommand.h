@@ -5,8 +5,6 @@
 #ifndef SETMATCHMAKINGCHARACTERIDCOMMAND_H_
 #define SETMATCHMAKINGCHARACTERIDCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class SetMatchMakingCharacterIdCommand : public QueueCommand {
 public:
 

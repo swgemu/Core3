@@ -7,11 +7,10 @@
 
 #ifndef DESTRUCTIBLEBUILDINGDATACOMPONENT_H_
 #define DESTRUCTIBLEBUILDINGDATACOMPONENT_H_
+
 #include "engine/engine.h"
 #include "server/zone/objects/building/components/BuildingDataComponent.h"
 #include "system/util/Vector.h"
-#include "system/util/VectorMap.h"
-#include "system/util/HashTable.h"
 
 class DestructibleBuildingDataComponent : public BuildingDataComponent, public Logger {
 

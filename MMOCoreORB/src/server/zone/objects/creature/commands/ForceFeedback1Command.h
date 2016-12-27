@@ -5,9 +5,6 @@
 #ifndef FORCEFEEDBACK1COMMAND_H_
 #define FORCEFEEDBACK1COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/buffs/SingleUseBuff.h"
-
 class ForceFeedback1Command : public JediQueueCommand {
 public:
 

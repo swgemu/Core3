@@ -6,19 +6,11 @@
  */
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
-#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
 #include "server/zone/managers/objectcontroller/command/CommandList.h"
-
 #include "server/zone/managers/skill/SkillModManager.h"
-
-#include "server/zone/objects/creature/LuaCreatureObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-
-#include "server/db/ServerDatabase.h"
-
-#include "server/zone/Zone.h"
 
 void ObjectControllerImplementation::loadCommands() {
 	configManager = new CommandConfigManager(server);

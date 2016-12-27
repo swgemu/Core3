@@ -8,19 +8,14 @@
 #ifndef CHATPERSISTENTMESSAGETOSERVERCALLBACK_H_
 #define CHATPERSISTENTMESSAGETOSERVERCALLBACK_H_
 
-
 #include "server/zone/packets/MessageCallback.h"
 #include "server/chat/ChatManager.h"
-#include "server/zone/managers/city/CityManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/guild/GuildObject.h"
-
 #include "server/chat/StringIdChatParameterVector.h"
 #include "server/chat/WaypointChatParameterVector.h"
-
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/region/CitizenList.h"
-
 #include "server/zone/packets/chat/ChatOnSendPersistentMessage.h"
 
 class ChatPersistentMessageToServerCallback : public MessageCallback {
@@ -253,6 +248,5 @@ public:
 	}
 
 };
-
 
 #endif /* CHATPERSISTENTMESSAGETOSERVERCALLBACK_H_ */

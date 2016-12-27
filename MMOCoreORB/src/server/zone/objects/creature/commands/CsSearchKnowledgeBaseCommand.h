@@ -5,8 +5,6 @@
 #ifndef CSSEARCHKNOWLEDGEBASECOMMAND_H_
 #define CSSEARCHKNOWLEDGEBASECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class CsSearchKnowledgeBaseCommand : public QueueCommand {
 public:
 

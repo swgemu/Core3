@@ -5,8 +5,6 @@
 #ifndef REQUESTDRAFTSLOTSCOMMAND_H_
 #define REQUESTDRAFTSLOTSCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class RequestDraftSlotsCommand : public QueueCommand {
 public:
 

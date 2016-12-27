@@ -8,7 +8,7 @@
 #ifndef PATHEDGE_H_
 #define PATHEDGE_H_
 
-#include "engine/engine.h"
+#include "engine/util/iffstream/IffStream.h"
 
 class PathEdge : public Object  {
 	int from, to;

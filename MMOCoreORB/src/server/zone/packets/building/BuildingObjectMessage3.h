@@ -5,9 +5,8 @@
 #ifndef BUILDINGOBJECTMESSAGE3_H_
 #define BUILDINGOBJECTMESSAGE3_H_
 /*
-#include "../BaseLineMessage.h"
-#include "../../objects/building/BuildingObject.h"
-#include "../../objects/tangible/campkit/campsite/CampSite.h"
+#include "server/zone/packets/BaseLineMessage.h"
+#include "server/zone/objects/building/BuildingObject.h"
 
 class BuildingObjectMessage3 : public BaseLineMessage {
 public:

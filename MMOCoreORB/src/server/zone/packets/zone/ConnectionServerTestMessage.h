@@ -4,8 +4,11 @@
  *  Created on: Nov 25, 2008
  *      Author: swgemu
  */
+
 #ifndef CONNECTIONSERVERTESTMESSAGE_H_
 #define CONNECTIONSERVERTESTMESSAGE_H_
+
+#include "engine/service/proto/BaseMessage.h"
 
 class ConnectionServerTestMessage : public BaseMessage {
 public:
@@ -14,8 +17,6 @@ public:
 	   		insertInt(0x0E20D7E9);
 
 	   		insertAscii("ConnectionServer:1348");
-
-
    }
 
 };

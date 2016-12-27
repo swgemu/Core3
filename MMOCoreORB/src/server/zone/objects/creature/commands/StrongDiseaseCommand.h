@@ -8,7 +8,6 @@
 #ifndef STRONGDISEASECOMMAND_H_
 #define STRONGDISEASECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class StrongDiseaseCommand : public CombatQueueCommand {

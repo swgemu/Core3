@@ -5,8 +5,6 @@
 package server.zone.objects.building;
 
 import server.zone.objects.structure.StructureObject;
-import engine.lua.LuaObject;
-import engine.util.u3d.QuadTree;
 import engine.util.u3d.QuadTreeEntry;
 import system.util.SortedVector;
 import system.util.SynchronizedSortedVector;
@@ -14,10 +12,8 @@ import system.util.Vector;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.sign.SignObject;
-import server.zone.ZoneServer;
 import server.zone.Zone;
 include templates.SharedObjectTemplate;
-include templates.ChildObject;
 include templates.building.SignTemplate;
 import engine.util.u3d.Vector3;
 import system.lang.StackTrace;
@@ -27,6 +23,7 @@ import system.thread.Mutex;
 import engine.util.u3d.Matrix4;
 include templates.appearance.MeshData;
 include templates.collision.BaseBoundingVolume;
+include system.lang.ref.Reference;
 
 
 class BuildingObject extends StructureObject {

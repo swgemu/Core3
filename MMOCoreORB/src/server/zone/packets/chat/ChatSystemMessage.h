@@ -5,7 +5,7 @@
 #ifndef CHATSYSTEMMESSAGE_H_
 #define CHATSYSTEMMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 #include "server/chat/StringIdChatParameter.h"
 
 class ChatSystemMessage : public BaseMessage {

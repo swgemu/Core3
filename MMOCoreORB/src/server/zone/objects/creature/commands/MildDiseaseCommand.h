@@ -8,7 +8,6 @@
 #ifndef MILDDISEASECOMMAND_H_
 #define MILDDISEASECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class MildDiseaseCommand : public CombatQueueCommand {

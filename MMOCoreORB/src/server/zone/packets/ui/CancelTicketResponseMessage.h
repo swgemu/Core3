@@ -5,6 +5,8 @@
 #ifndef CANCELTICKETRESPONSEMESSAGE_H_
 #define CANCELTICKETRESPONSEMESSAGE_H_
 
+#include "engine/service/proto/BaseMessage.h"
+
 class CancelTicketResponseMessage : public BaseMessage {
 public:
    CancelTicketResponseMessage(uint32 ticketid, bool success) : BaseMessage() {
@@ -17,9 +19,6 @@ public:
 			insertInt(1);
 
 		insertInt(ticketid); //ticketid.
-
-
-
    }
 
 };

@@ -13,7 +13,6 @@
 #include "server/zone/objects/player/sui/callbacks/DestroyStructureRequestSuiCallback.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/Zone.h"
 
 #include "server/zone/managers/gcw/GCWManager.h"

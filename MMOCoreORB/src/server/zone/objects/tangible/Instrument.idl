@@ -6,15 +6,10 @@ package server.zone.objects.tangible;
 
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
-import server.zone.Zone;
-import engine.lua.LuaObject;
 include templates.SharedObjectTemplate;
 include templates.tangible.InstrumentObjectTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.managers.object.ObjectManager;
-include templates.params.ObserverEventType;
-import server.zone.objects.tangible.InstrumentObserver;
 
 class Instrument extends TangibleObject {
 	protected int instrumentType;

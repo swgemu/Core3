@@ -8,9 +8,7 @@
 #ifndef AIAWARENESSEVENT_H_
 #define AIAWARENESSEVENT_H_
 
-#include "engine/util/u3d/Coordinate.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
-#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/creature/AiMap.h"
 
 namespace server {

@@ -5,8 +5,6 @@
 #ifndef PAUSEMUSICCOMMAND_H_
 #define PAUSEMUSICCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class PauseMusicCommand : public QueueCommand {
 public:
 

@@ -8,9 +8,6 @@
 #ifndef MANTISDATABASE_H_
 #define MANTISDATABASE_H_
 
-
-#include "engine/engine.h"
-
 #include "../conf/ConfigManager.h"
 
 class MantisDatabase {

@@ -6,14 +6,9 @@ package server.zone.objects.creature;
 
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.packets.scene.AttributeListMessage;
-import server.zone.objects.intangible.VehicleControlDevice;
-import engine.core.ManagedObject;
-import engine.lua.LuaObject;
-import system.util.Vector;
 import server.zone.Zone;
 include server.zone.objects.scene.SceneObjectType;
 include templates.SharedObjectTemplate;

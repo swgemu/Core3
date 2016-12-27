@@ -8,7 +8,6 @@
 #ifndef COMPOSITEVOLUME_H_
 #define COMPOSITEVOLUME_H_
 
-#include "engine/engine.h"
 #include "BaseBoundingVolume.h"
 
 class CompositeVolume : public BaseBoundingVolume {

@@ -4,7 +4,6 @@
 
 #include "InformantMissionScreenHandler.h"
 #include "server/zone/objects/mission/BountyMissionObjective.h"
-#include "server/zone/managers/mission/spawnmaps/NpcSpawnPoint.h"
 
 const String InformantMissionScreenHandler::STARTSCREENHANDLERID = "convoscreenstart";
 

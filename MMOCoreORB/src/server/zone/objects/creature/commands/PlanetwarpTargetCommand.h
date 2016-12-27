@@ -5,8 +5,6 @@
 #ifndef PLANETWARPTARGETCOMMAND_H_
 #define PLANETWARPTARGETCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class PlanetwarpTargetCommand : public QueueCommand {
 public:
 

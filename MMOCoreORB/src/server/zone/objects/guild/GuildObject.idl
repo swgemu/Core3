@@ -6,7 +6,6 @@ package server.zone.objects.guild;
 
 import engine.service.proto.BaseMessage;
 import server.chat.room.ChatRoom;
-import server.zone.objects.tangible.terminal.guild.GuildTerminal;
 include system.lang.Time;
 include server.zone.objects.guild.GuildMemberList;
 include server.zone.objects.guild.GuildMemberInfo;
@@ -16,6 +15,7 @@ import server.zone.objects.scene.SceneObject;
 import system.lang.String;
 import system.util.SortedVector;
 include system.thread.ReadWriteLock;
+include system.lang.System;
 
 class GuildObject extends SceneObject {
 	protected ChatRoom chatRoom;

@@ -5,8 +5,7 @@
 #ifndef SELECTCHARACTER_H_
 #define SELECTCHARACTER_H_
 
-#include "engine/engine.h"
-
+#include "engine/service/proto/BaseMessage.h"
 
 class SelectCharacter : public BaseMessage {
 public:
@@ -22,7 +21,5 @@ public:
 	}
 
 };
-
-
 
 #endif /*SELECTCHARACTER_H_*/

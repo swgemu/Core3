@@ -5,7 +5,6 @@
 #ifndef DEFAULTATTACKCOMMAND_H_
 #define DEFAULTATTACKCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class DefaultAttackCommand : public CombatQueueCommand {

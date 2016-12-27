@@ -3,7 +3,6 @@
 #define TAMECREATURETASK_H_
 
 #include "server/zone/managers/combat/CombatManager.h"
-#include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"

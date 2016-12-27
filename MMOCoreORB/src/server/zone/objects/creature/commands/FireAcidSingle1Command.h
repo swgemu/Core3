@@ -5,7 +5,6 @@
 #ifndef FIREACIDSINGLE1COMMAND_H_
 #define FIREACIDSINGLE1COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class FireAcidSingle1Command : public CombatQueueCommand {

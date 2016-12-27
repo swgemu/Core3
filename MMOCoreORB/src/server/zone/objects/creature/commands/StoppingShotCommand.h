@@ -5,7 +5,6 @@
 #ifndef STOPPINGSHOTCOMMAND_H_
 #define STOPPINGSHOTCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class StoppingShotCommand : public CombatQueueCommand {

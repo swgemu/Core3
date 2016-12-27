@@ -9,7 +9,7 @@
  */
 
 #include "ManualPool.h"
-#include "../ResourceSpawner.h"
+#include "server/zone/managers/resource/resourcespawner/ResourceSpawner.h"
 
 ManualPool::ManualPool(ResourceSpawner* spawner) : ResourcePool(spawner) {
 	setLoggingName("ManualPool");

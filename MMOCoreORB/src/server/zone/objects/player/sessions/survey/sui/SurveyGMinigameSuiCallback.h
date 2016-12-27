@@ -8,8 +8,6 @@
 #ifndef SURVEYGMINIGAMESUICALLBACK_H_
 #define SURVEYGMINIGAMESUICALLBACK_H_
 
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/sessions/survey/SurveySession.h"
 

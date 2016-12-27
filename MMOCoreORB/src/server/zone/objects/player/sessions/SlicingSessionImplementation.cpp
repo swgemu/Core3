@@ -9,7 +9,7 @@
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/tangible/tool/smuggler/SlicingTool.h"
-
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/loot/LootManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"

@@ -4,22 +4,16 @@
 
 package server.zone.objects.intangible;
 
-import engine.lua.LuaObject;
-import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.intangible.ControlDevice;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.ai.AiAgent;
-import server.zone.objects.player.PlayerObject;
-import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.packets.scene.AttributeListMessage;
-import server.zone.Zone;
-import system.lang.System;
 import system.util.VectorMap;
-include server.zone.managers.radial.RadialOptions;
 include server.zone.objects.creature.ai.PatrolPointsVector;
 include server.zone.objects.creature.ai.PatrolPoint;
 import server.zone.objects.intangible.PetControlObserver;
+include system.util.Vector;
 
 class PetControlDevice extends ControlDevice {
 

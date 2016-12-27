@@ -10,11 +10,6 @@
 
 #include "ObjectControllerMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "ObjectControllerMessageCallback.h"
-#include "server/zone/objects/area/ActiveArea.h"
-#include "server/zone/objects/region/Region.h"
-#include "server/zone/objects/intangible/ShipControlDevice.h"
-#include "server/zone/objects/ship/ShipObject.h"
 
 //TODO: This is very unsafe still...
 class JtlShipListResponse : public ObjectControllerMessage {

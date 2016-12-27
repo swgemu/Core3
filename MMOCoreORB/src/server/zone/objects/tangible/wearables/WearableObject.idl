@@ -6,10 +6,8 @@ package server.zone.objects.tangible.wearables;
 
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.packets.scene.AttributeListMessage;
-import engine.lua.LuaObject;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.objects.tangible.attachment.Attachment;
-import server.zone.Zone;
 import server.zone.objects.creature.CreatureObject;
 
 class WearableObject extends TangibleObject {	

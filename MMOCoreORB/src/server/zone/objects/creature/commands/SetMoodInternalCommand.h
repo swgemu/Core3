@@ -5,8 +5,6 @@
 #ifndef SETMOODINTERNALCOMMAND_H_
 #define SETMOODINTERNALCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class SetMoodInternalCommand : public QueueCommand {
 public:
 

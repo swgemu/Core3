@@ -12,9 +12,8 @@
 
 #include "templates/IffTemplate.h"
 #include "templates/collision/BaseBoundingVolume.h"
-
-class AppearanceTemplate;
-class FloorMesh;
+#include "templates/appearance/FloorMesh.h"
+#include "templates/appearance/AppearanceTemplate.h"
 
 class CellPortal : public Object {
 	bool solid;
@@ -108,6 +107,5 @@ public:
 	void loadVersion4(IffStream* iffStream);
 	void loadVersion5(IffStream* iffStream);
 };
-
 
 #endif /* CELLPROPERTY_H_ */

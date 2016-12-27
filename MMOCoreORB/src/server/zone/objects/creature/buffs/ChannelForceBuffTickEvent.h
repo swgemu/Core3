@@ -6,7 +6,6 @@
 #define CHANNELFORCEBUFFTICKEVENT_H_
 
 #include "server/zone/objects/creature/buffs/ChannelForceBuff.h"
-#include "server/zone/objects/creature/buffs/Buff.h"
 
 namespace server {
 namespace zone {

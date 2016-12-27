@@ -7,6 +7,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/guild/GuildManager.h"
+#include "server/zone/objects/guild/GuildObject.h"
 
 class GuildremoveCommand : public QueueCommand {
 public:

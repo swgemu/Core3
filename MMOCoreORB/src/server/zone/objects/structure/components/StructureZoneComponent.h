@@ -32,8 +32,6 @@ using namespace server::zone::objects::scene;
 using namespace server::zone::objects::structure;
 using namespace server::zone;
 
-#include "engine/util/u3d/QuadTreeEntry.h"
-
 class StructureZoneComponent : public ZoneComponent {
 
 public:

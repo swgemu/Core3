@@ -4,14 +4,11 @@
 #include "templates/params/creature/CreatureFlag.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/tangible/components/FlagGameMenuComponent.h"
 #include "server/zone/objects/tangible/components/FlagGameDataComponent.h"
 #include "server/zone/objects/tangible/tasks/FlagGamePulseTask.h"
-#include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 
 void FlagGameImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
-
 }
 
 void FlagGameImplementation::notifyInsertToZone(Zone* zone) {

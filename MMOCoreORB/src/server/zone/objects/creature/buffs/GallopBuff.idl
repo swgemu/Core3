@@ -4,11 +4,9 @@
 
 package server.zone.objects.creature.buffs;
 
-import engine.core.ManagedObject;
 import server.zone.objects.creature.buffs.PlayerVehicleBuff;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.creature.buffs.BuffType;
-
 
 class GallopBuff extends PlayerVehicleBuff {
 	public GallopBuff(CreatureObject creo, unsigned int buffcrc, float duration) {
@@ -38,5 +36,4 @@ class GallopBuff extends PlayerVehicleBuff {
 		if(creo != null)
 			creo.addMountedCombatSlow();
 	}
-
 }

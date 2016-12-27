@@ -4,10 +4,6 @@
 
 package server.zone.managers.crafting;
 
-import system.util.VectorMap;
-
-import engine.lua.Lua;
-
 import server.zone.objects.player.PlayerObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
@@ -18,6 +14,8 @@ import server.zone.managers.crafting.labratories.SharedLabratory;
 import server.zone.objects.tangible.TangibleObject;
 include server.zone.managers.crafting.schematicmap.SchematicMap;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include system.util.HashTable;
+include system.lang.ref.Reference;
 
 class CraftingManager extends ZoneManager {
 	private transient SchematicMap schematicMap;

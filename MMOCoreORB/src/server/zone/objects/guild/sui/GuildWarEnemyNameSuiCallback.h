@@ -10,7 +10,6 @@
 
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/objects/player/sui/SuiCallback.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
 class GuildWarEnemyNameSuiCallback : public SuiCallback {
 	ManagedWeakReference<GuildObject*> guildObject;

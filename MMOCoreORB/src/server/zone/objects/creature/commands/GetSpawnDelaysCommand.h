@@ -5,8 +5,6 @@
 #ifndef GETSPAWNDELAYSCOMMAND_H_
 #define GETSPAWNDELAYSCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class GetSpawnDelaysCommand : public QueueCommand {
 public:
 

@@ -5,7 +5,6 @@
 #ifndef AREATRACKCOMMAND_H_
 #define AREATRACKCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/sui/callbacks/AreaTrackSuiCallback.h"
 
 class AreatrackCommand : public QueueCommand {

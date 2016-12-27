@@ -5,8 +5,6 @@
 #ifndef SETHUECOMMAND_H_
 #define SETHUECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class SetHueCommand : public QueueCommand {
 public:
 

@@ -5,8 +5,6 @@
 #ifndef FORCESPEED2COMMAND_H_
 #define FORCESPEED2COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class ForceSpeed2Command : public JediQueueCommand {
 public:
 

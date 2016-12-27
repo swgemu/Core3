@@ -6,11 +6,7 @@
  */
 
 #include "server/zone/objects/installation/shuttle/ShuttleInstallation.h"
-#include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/Zone.h"
-#include "server/zone/ZoneServer.h"
 
 bool ShuttleInstallationImplementation::checkRequisitesForPlacement(CreatureObject* player) {
 	/*

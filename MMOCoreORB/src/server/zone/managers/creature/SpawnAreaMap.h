@@ -8,10 +8,8 @@
 #ifndef SPAWNAREAMAP_H_
 #define SPAWNAREAMAP_H_
 
-#include "engine/engine.h"
 #include "server/zone/objects/area/SpawnArea.h"
 #include "server/zone/Zone.h"
-#include "server/zone/managers/object/ObjectManager.h"
 
 class SpawnAreaMap : public VectorMap<uint32, ManagedReference<SpawnArea*> > , public Logger {
 	Lua* lua;

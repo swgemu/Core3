@@ -4,22 +4,14 @@
 
 package server.zone.objects.player.sessions;
 
-include engine.core.ManagedObject;
-
 import engine.log.Logger;
-import engine.core.ManagedReference;
 import engine.util.Facade;
-import system.lang.ref.Reference;
-import engine.core.Task;
 import system.util.SortedVector;
-include server.zone.objects.player.EntertainingData;
 include server.zone.objects.player.EntertainingDataMap;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.tangible.Instrument;
 import server.zone.objects.player.events.EntertainingSessionTask;
 import server.zone.objects.player.EntertainingObserver;
-import server.zone.objects.tangible.Instrument;
 
 class EntertainingSession extends Facade {
 	@weakReference

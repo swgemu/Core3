@@ -5,9 +5,7 @@
 #ifndef WARCRY2COMMAND_H_
 #define WARCRY2COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
-#include "server/chat/ChatMessage.h"
 #include "CombatQueueCommand.h"
 
 class Warcry2Command : public CombatQueueCommand {

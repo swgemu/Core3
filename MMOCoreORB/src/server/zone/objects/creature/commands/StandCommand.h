@@ -5,9 +5,7 @@
 #ifndef STANDCOMMAND_H_
 #define STANDCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/packets/chat/ChatSystemMessage.h"
 
 class StandCommand : public QueueCommand {
 public:

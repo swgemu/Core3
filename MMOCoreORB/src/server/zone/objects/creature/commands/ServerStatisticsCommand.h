@@ -9,7 +9,6 @@
 #define SERVERSTATISTICSCOMMAND_H_
 
 #include "engine/engine.h"
-#include "server/zone/ZoneServer.h"
 #include "server/zone/managers/statistics/StatisticsManager.h"
 
 class ServerStatisticsCommand {

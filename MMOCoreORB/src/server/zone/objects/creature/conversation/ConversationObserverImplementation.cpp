@@ -4,8 +4,6 @@
 
 #include <limits>
 #include "server/zone/objects/creature/conversation/ConversationObserver.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/managers/conversation/ConversationManager.h"
 #include "server/zone/objects/player/sessions/ConversationSession.h"
 #include "server/zone/packets/object/StopNpcConversation.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"

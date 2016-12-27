@@ -1,6 +1,5 @@
 #include "Zone.h"
 #include "ZonePacketHandler.h"
-#include "ZoneClient.h"
 #include "server/zone/packets/zone/SelectCharacter.h"
 #include "server/zone/packets/zone/CmdSceneReady.h"
 #include "client/zone/managers/object/ObjectManager.h"

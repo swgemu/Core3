@@ -5,8 +5,6 @@
 package server.zone.objects.tangible.wearables;
 
 import server.zone.objects.tangible.wearables.ArmorObject;
-import engine.lua.LuaObject;
-import server.zone.Zone;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 class PsgArmorObject extends ArmorObject {

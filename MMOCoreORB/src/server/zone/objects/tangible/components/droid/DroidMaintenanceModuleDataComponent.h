@@ -6,8 +6,6 @@
 #define DROIDMAINTENANCEMODULEDATACOMPONENT_H_
 
 #include "BaseDroidModuleComponent.h"
-#include "engine/core/ManagedReference.h"
-#include "system/util/Vector.h"
 
 namespace server {
 namespace zone {
@@ -15,7 +13,6 @@ namespace objects {
 namespace tangible {
 namespace components {
 namespace droid {
-
 
 class DroidMaintenanceModuleDataComponent : public BaseDroidModuleComponent {
 
@@ -56,7 +53,6 @@ private:
 	bool readObjectMember(ObjectInputStream* stream, const String& name);
 };
 
-
 } // droid
 } // components
 } // tangible
@@ -64,4 +60,5 @@ private:
 } // zone
 } // server
 using namespace server::zone::objects::tangible::components::droid;
+
 #endif /* DROIDMAINTENANCEMODULEDATACOMPONENT_H_ */

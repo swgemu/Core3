@@ -5,8 +5,6 @@
 #ifndef CREATESPAWNINGELEMENTWITHDIFFICULTYCOMMAND_H_
 #define CREATESPAWNINGELEMENTWITHDIFFICULTYCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class CreateSpawningElementWithDifficultyCommand : public QueueCommand {
 public:
 

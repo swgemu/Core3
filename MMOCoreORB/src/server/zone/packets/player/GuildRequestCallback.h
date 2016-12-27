@@ -8,7 +8,7 @@
 #ifndef GUILDREQUESTCALLBACK_H_
 #define GUILDREQUESTCALLBACK_H_
 
-#include "../MessageCallback.h"
+#include "server/zone/packets/MessageCallback.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "GuildResponseMessage.h"
 

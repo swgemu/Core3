@@ -6,16 +6,13 @@ package server.zone.objects.creature.buffs;
 
 import engine.core.ManagedObject;
 import system.util.VectorMap;
-import system.lang.ref.Reference;
-import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.CreatureObject;
 import system.lang.Time;
 import engine.log.Logger;
-include server.zone.ZoneProcessServer;
 import server.zone.objects.creature.buffs.BuffDurationEvent;
 include server.zone.objects.creature.buffs.BuffType;
 include server.chat.StringIdChatParameter;
-import system.lang.Time;
+include system.util.Vector;
 
 class Buff extends ManagedObject implements Logger {
 	@weakReference

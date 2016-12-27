@@ -5,8 +5,6 @@
 #ifndef LISTACTIVEQUESTSCOMMAND_H_
 #define LISTACTIVEQUESTSCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class ListActiveQuestsCommand : public QueueCommand {
 public:
 

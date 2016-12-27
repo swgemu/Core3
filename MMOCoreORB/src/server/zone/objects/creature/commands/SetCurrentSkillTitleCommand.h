@@ -5,8 +5,6 @@
 #ifndef SETCURRENTSKILLTITLECOMMAND_H_
 #define SETCURRENTSKILLTITLECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class SetCurrentSkillTitleCommand : public QueueCommand {
 public:
 

@@ -2,10 +2,7 @@
 #include "Zone.h"
 #include "ZoneClientThread.h"
 
-#include "engine/service/proto/packets/SessionIDRequestMessage.h"
 #include "server/zone/packets/zone/ClientIDMessage.h"
-#include "server/zone/packets/zone/SelectCharacter.h"
-#include "server/zone/packets/charcreation/ClientCreateCharacter.h"
 #include "client/zone/managers/objectcontroller/ObjectController.h"
 #include "client/zone/managers/object/ObjectManager.h"
 

@@ -8,7 +8,6 @@
 #ifndef MEDIUMPOISONCOMMAND_H_
 #define MEDIUMPOISONCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class MediumPoisonCommand : public CombatQueueCommand {

@@ -5,7 +5,6 @@
 #ifndef INVULNERABLECOMMAND_H_
 #define INVULNERABLECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/events/InvisibleDelayEvent.h"
 
 class InvulnerableCommand : public QueueCommand {

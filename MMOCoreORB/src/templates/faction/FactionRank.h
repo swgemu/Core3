@@ -8,8 +8,6 @@
 #ifndef FACTIONRANK_H_
 #define FACTIONRANK_H_
 
-#include "engine/engine.h"
-
 #include "templates/datatables/DataTableRow.h"
 
 class FactionRank : public Object {

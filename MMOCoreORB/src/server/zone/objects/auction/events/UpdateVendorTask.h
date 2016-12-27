@@ -6,7 +6,7 @@
 #define UPDATEVENDORTASK_H_
 
 #include "engine/engine.h"
-#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 
 namespace server {

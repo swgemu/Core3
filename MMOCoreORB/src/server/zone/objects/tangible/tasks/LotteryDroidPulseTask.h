@@ -2,7 +2,6 @@
 #ifndef LOTTERYDROIDPULSETASK_H_
 #define LOTTERYDROIDPULSETASK_H_
 
-#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/eventperk/LotteryDroid.h"
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/objects/tangible/components/EventPerkDataComponent.h"

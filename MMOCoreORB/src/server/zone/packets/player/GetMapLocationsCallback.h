@@ -8,13 +8,8 @@
 #ifndef GETMAPLOCATIONSCALLBACK_H_
 #define GETMAPLOCATIONSCALLBACK_H_
 
-
 #include "server/zone/packets/MessageCallback.h"
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/Zone.h"
-#include "GetMapLocationsResponseMessage.h"
 
 class GetMapLocationsCallback : public MessageCallback {
 	String zoneName;

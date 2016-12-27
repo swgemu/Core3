@@ -9,7 +9,6 @@
 #define GUILDSPONSORVERIFYSUICALLBACK_H_
 
 #include "server/zone/managers/guild/GuildManager.h"
-#include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
 #include "server/zone/objects/player/sui/SuiCallback.h"
 
 class GuildSponsorVerifySuiCallback : public SuiCallback {

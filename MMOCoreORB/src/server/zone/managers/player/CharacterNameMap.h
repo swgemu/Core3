@@ -8,7 +8,6 @@
 #ifndef CHARACTERNAMEMAP_H_
 #define CHARACTERNAMEMAP_H_
 
-#include "engine/engine.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
 class CharacterNameMap : public Object {

@@ -5,15 +5,9 @@
 package server.zone.objects.tangible.threat;
 
 include engine.core.ManagedObject;
-
-import engine.log.Logger;
-import engine.core.ManagedReference;
-import system.lang.ref.Reference;
-import engine.core.Task;
 import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.objects.tangible.TangibleObject;
-include templates.params.ObserverEventType;
 
 class ThreatMapObserver extends Observer {
 	

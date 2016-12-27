@@ -8,11 +8,8 @@
 #ifndef AUCTIONEVENTSMAP_H_
 #define AUCTIONEVENTSMAP_H_
 
-#include "engine/engine.h"
-
 class AuctionEventsMap : public VectorMap<uint64, Reference<Task*> >, public Mutex {
 
 };
-
 
 #endif /* AUCTIONEVENTSMAP_H_ */

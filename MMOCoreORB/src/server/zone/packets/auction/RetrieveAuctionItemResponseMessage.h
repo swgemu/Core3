@@ -5,7 +5,7 @@
 #ifndef RETRIEVEAUCTIONITEMRESPONSEMESSAGE_H_
 #define RETRIEVEAUCTIONITEMRESPONSEMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 // Status:
 //  0 - Success
@@ -29,4 +29,5 @@ public:
 	}
 	
 };
+
 #endif /*RETRIEVEAUCTIONITEMRESPONSEMESSAGE_H_*/

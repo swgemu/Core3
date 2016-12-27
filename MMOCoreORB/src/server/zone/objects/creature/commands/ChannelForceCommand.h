@@ -5,7 +5,6 @@
 #ifndef CHANNELFORCECOMMAND_H_
 #define CHANNELFORCECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/buffs/ChannelForceBuff.h"
 #include "templates/params/creature/CreatureAttribute.h"
 

@@ -5,7 +5,7 @@
 #ifndef CLIENTPERMISSIONSMESSAGE_H_
 #define CLIENTPERMISSIONSMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class ClientPermissionsMessage : public BaseMessage {
 public:

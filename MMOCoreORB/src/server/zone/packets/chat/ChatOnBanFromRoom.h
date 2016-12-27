@@ -8,7 +8,7 @@
 #ifndef CHATONBANFROMROOM_H_
 #define CHATONBANFROMROOM_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class ChatOnBanFromRoom : public BaseMessage {
 public:

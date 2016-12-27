@@ -8,7 +8,6 @@
 #ifndef TREEFILERECORD_H_
 #define TREEFILERECORD_H_
 
-#include "engine/engine.h"
 #include "TreeDataBlock.h"
 
 class TreeFileRecord : public Object, public Logger {
@@ -174,6 +173,5 @@ public:
 		treeFilePath = path;
 	}
 };
-
 
 #endif /* TREEFILERECORD_H_ */

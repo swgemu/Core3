@@ -7,7 +7,6 @@
 
 #include "CityManagementMenuComponent.h"
 #include "server/zone/objects/region/CityRegion.h"
-#include "server/zone/Zone.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/city/CityManager.h"

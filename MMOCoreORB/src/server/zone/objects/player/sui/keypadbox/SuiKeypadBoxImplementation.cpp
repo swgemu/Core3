@@ -7,7 +7,6 @@
  */
 
 #include "server/zone/objects/player/sui/keypadbox/SuiKeypadBox.h"
-#include "server/zone/objects/scene/SceneObject.h"
 
 BaseMessage* SuiKeypadBoxImplementation::generateMessage() {
 	//Yes, I hardcoded this for now. Get off me.

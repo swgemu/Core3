@@ -8,10 +8,8 @@
 #include "engine/engine.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/area/SarlaccArea.h"
-#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
+#include "templates/params/creature/CreatureAttribute.h"
 
 class SarlaccEruptTask: public Task {
 	ManagedReference<SarlaccArea*> sarlaccArea;

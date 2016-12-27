@@ -6,21 +6,15 @@
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/object/StartNpcConversation.h"
-#include "server/zone/packets/object/StopNpcConversation.h"
-#include "server/zone/objects/creature/conversation/ConversationScreen.h"
-#include "server/zone/managers/components/ComponentManager.h"
 #include "templates/customization/AssetCustomizationManagerTemplate.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
 #include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidCraftingModuleDataComponent.h"
-#include "server/zone/objects/tangible/components/droid/DroidArmorModuleDataComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidPersonalityModuleDataComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidMaintenanceModuleDataComponent.h"
-#include "server/zone/objects/tangible/components/droid/DroidPersonalityModuleDataComponent.h"
-#include "server/zone/managers/crafting/labratories/DroidMechanics.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/creature/conversation/ConversationObserver.h"
-
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 void DroidObjectImplementation::initializeTransientMembers() {
 	AiAgentImplementation::initializeTransientMembers();

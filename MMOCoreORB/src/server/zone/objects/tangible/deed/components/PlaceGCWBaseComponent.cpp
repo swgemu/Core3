@@ -4,10 +4,10 @@
  *  Created on: Dec 2, 2012
  *      Author: root
  */
+
 #include "server/zone/Zone.h"
 #include "PlaceGCWBaseComponent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/tangible/deed/Deed.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/building/BuildingObject.h"

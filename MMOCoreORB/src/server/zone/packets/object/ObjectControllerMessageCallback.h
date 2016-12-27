@@ -9,10 +9,7 @@
 #define OBJECTCONTROLLERMESSAGECALLBACK_H_
 
 #include "server/zone/MessageCallbackFactory.h"
-
-#include "../MessageCallback.h"
-
-#include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/packets/MessageCallback.h"
 
 class ObjectControllerMessageCallback : public MessageCallback {
 	uint32 priority;

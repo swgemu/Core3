@@ -6,14 +6,11 @@ package server.zone.managers.auction;
 
 import engine.log.Logger;
 import server.zone.ZoneServer;
-import server.zone.managers.object.ObjectManager;
 import engine.core.ManagedService;
-import engine.core.Task;
 import server.zone.ZoneServer;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.managers.auction.AuctionsMap;
 import server.zone.objects.auction.AuctionItem;
-import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
 import system.util.VectorMap;
 include server.zone.packets.auction.AuctionQueryHeadersResponseMessage;
@@ -22,31 +19,29 @@ include server.zone.managers.auction.AuctionEventsMap;
 
 class AuctionManager extends ManagedService implements Logger {
 	protected AuctionsMap auctionMap;
-	
+
 	protected ZoneServer zoneServer;
-	
-	/*@dereferenced
-	protected VectorMap<unsigned long, Task> auctionEvents;*/
+
 	@dereferenced
 	protected AuctionEventsMap auctionEvents;
-	
+
 	@dereferenced
 	protected VectorMap<SceneObject, string> pendingUIDUpdates;
-	
+
 	@dereferenced
 	protected VectorMap<SceneObject, string> pendingOldUIDUpdates;
-	
+
 	public final static int MAXBAZAARPRICE = 20000;
 	public final static int MAXSALES = 25; // this only apply to bazaars
 	public final static int SALESFEE = 20;
 	public final static int CHECKEVERY = 60; // Minutes
-	
+
 	public final static int MAXVENDORPRICE = 99999999;
 	public final static int ITEMSPERPAGE = 100;
 
 	public final static int VENDOREXPIREPERIOD = 2592000; // Seconds
 	public final static int COMMODITYEXPIREPERIOD = 604800; 
-	
+
 	private boolean marketEnabled;
 
 	public AuctionManager(ZoneServer server) {

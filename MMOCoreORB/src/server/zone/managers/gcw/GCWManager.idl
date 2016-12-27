@@ -4,7 +4,6 @@ import engine.core.ManagedService;
 import engine.core.Task;
 import server.zone.Zone;
 import engine.log.Logger;
-import engine.core.ManagedObject;
 import system.util.SortedVector;
 
 import server.zone.objects.tangible.TangibleObject;
@@ -12,10 +11,8 @@ import server.zone.objects.structure.StructureObject;
 import server.zone.objects.building.BuildingObject;
 import server.zone.objects.installation.InstallationObject;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.player.PlayerObject;
 import server.zone.objects.creature.ai.AiAgent;
 import system.thread.Mutex;
-import server.zone.objects.tangible.deed.structure.StructureDeed;
 import server.zone.objects.tangible.deed.Deed;
 
 include server.zone.objects.building.components.DestructibleBuildingDataComponent;
@@ -23,8 +20,11 @@ include server.zone.objects.installation.components.TurretDataComponent;
 include server.zone.objects.tangible.terminal.components.TurretControlTerminalDataComponent;
 include templates.ChildObject;
 include server.chat.StringIdChatParameter;
-include server.zone.managers.faction.FactionManager;
 include templates.faction.Factions;
+include system.util.Vector;
+include system.util.HashTable;
+include system.lang.ref.Reference;
+
 class GCWManager extends ManagedService implements Logger {
 
 	public static final int NOTAFACTIONBASE = 0;

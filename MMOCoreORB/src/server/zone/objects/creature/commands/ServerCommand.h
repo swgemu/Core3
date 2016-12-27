@@ -5,8 +5,6 @@
 #ifndef SERVERCOMMAND_H_
 #define SERVERCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 #include "WeatherCommand.h"
 #include "VendorInfoCommand.h"
 #include "RevisionInfoCommand.h"

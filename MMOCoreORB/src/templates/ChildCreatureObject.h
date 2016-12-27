@@ -8,8 +8,6 @@
 #ifndef CHILDCREATUREOBJECT_H_
 #define CHILDCREATUREOBJECT_H_
 
-#include "engine/engine.h"
-
 class ChildCreatureObject : public Object {
 
 	Vector3 position;

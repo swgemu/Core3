@@ -8,7 +8,8 @@
 #ifndef DATATABLECELL_H_
 #define DATATABLECELL_H_
 
-#include "engine/engine.h"
+#include "system/lang.h"
+#include "engine/util/iffstream/chunks/Chunk.h"
 
 class DataTableCell {
 public:

@@ -5,7 +5,6 @@
 #ifndef SUPPRESSIONFIRE2COMMAND_H_
 #define SUPPRESSIONFIRE2COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class SuppressionFire2Command : public CombatQueueCommand {

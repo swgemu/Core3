@@ -8,7 +8,6 @@
 #ifndef SPAWNGROUP_H_
 #define SPAWNGROUP_H_
 
-#include "engine/engine.h"
 #include "LairSpawn.h"
 
 namespace server {

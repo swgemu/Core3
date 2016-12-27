@@ -8,8 +8,6 @@
 #ifndef AITEMPLATE_H_
 #define AITEMPLATE_H_
 
-#include "engine/engine.h"
-
 class LuaAiTemplate : public Object {
 public:
 	uint32 id;

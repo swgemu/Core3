@@ -4,10 +4,7 @@
 
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
-#include "templates/params/ObserverEventType.h"
-#include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/objects/tangible/components/droid/DroidHarvestModuleDataComponent.h"
-#include "server/zone/objects/intangible/tasks/EnqueuePetCommand.h"
 
 class PetHarvestCommand : public QueueCommand {
 public:

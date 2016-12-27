@@ -8,11 +8,11 @@
 #ifndef INTERPLANETARYSURVERYTASK_H_
 #define INTERPLANETARYSURVERYTASK_H_
 
-#include "engine/engine.h"
 #include "server/ServerCore.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
+
 class InterplanetarySurveyTask : public Task {
 	ManagedReference<InterplanetarySurvey*> surveyData;
 

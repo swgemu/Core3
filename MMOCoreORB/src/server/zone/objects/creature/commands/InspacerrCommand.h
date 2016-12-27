@@ -5,8 +5,6 @@
 #ifndef INSPACERR_H_
 #define INSPACERR_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/combat/CombatManager.h"
 #include "CombatQueueCommand.h"
 
 class InspacerrCommand : public CombatQueueCommand {

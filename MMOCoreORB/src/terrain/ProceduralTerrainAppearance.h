@@ -10,12 +10,11 @@
 
 #include "TemplateVariable.h"
 #include "TerrainAppearance.h"
+#include "engine/util/u3d/AABB.h"
 
 class TerrainGenerator;
 class Boundary;
 class TerrainMaps;
-
-class Boundary;
 
 class Layer;
 
@@ -125,6 +124,5 @@ public:
 	TerrainGenerator* removeTerrainModification(uint64 objectid);
 
 };
-
 
 #endif /* PROCEDURALTERRAINAPPEARANCE_H_ */

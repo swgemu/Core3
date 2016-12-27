@@ -4,21 +4,14 @@
 
 package server.zone.objects.player.sessions.vendor;
 
-include engine.core.ManagedObject;
-
 import engine.log.Logger;
-import engine.core.ManagedReference;
 import engine.util.Facade;
-import system.lang.ref.Reference;
-import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.tangible.TangibleObject;
 include server.zone.objects.scene.SessionFacadeType;
 include server.zone.objects.player.sui.listbox.SuiListBox;
 include server.zone.objects.player.sui.inputbox.SuiInputBox;
 include server.zone.managers.vendor.VendorSelectionNode;
 include templates.creature.VendorCreatureTemplate;
-
 
 class CreateVendorSession extends Facade {
 	@weakReference

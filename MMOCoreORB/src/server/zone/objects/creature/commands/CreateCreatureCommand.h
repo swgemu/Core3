@@ -5,12 +5,10 @@
 #ifndef CREATECREATURECOMMAND_H_
 #define CREATECREATURECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/AiMap.h"
-
 
 class CreateCreatureCommand : public QueueCommand {
 public:

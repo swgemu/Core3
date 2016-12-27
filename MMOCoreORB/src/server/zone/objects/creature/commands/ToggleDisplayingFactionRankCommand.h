@@ -5,7 +5,6 @@
 #ifndef TOGGLEDISPLAYINGFACTIONRANKCOMMAND_H_
 #define TOGGLEDISPLAYINGFACTIONRANKCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
 class ToggleDisplayingFactionRankCommand : public QueueCommand {

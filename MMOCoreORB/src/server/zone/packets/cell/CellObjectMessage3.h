@@ -5,7 +5,7 @@
 #ifndef CELLOBJECTMESSAGE3_H_
 #define CELLOBJECTMESSAGE3_H_
 
-#include "../BaseLineMessage.h"
+#include "server/zone/packets/BaseLineMessage.h"
 
 class CellObjectMessage3 : public BaseLineMessage {
 public:
@@ -49,4 +49,5 @@ public:
 
 	}
 };
+
 #endif /*CELLOBJECTMESSAGE3_H_*/

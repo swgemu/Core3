@@ -8,7 +8,6 @@
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
 #include "MockBehavior.h"
-#include "server/zone/managers/creature/AiMap.h"
 
 using ::testing::_;
 using ::testing::AtLeast;

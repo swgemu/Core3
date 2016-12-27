@@ -5,7 +5,7 @@
 #ifndef UPDATEPVPSTATUSMESSAGE_H_
 #define UPDATEPVPSTATUSMESSAGE_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 

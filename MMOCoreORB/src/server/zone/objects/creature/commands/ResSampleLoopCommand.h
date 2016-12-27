@@ -5,8 +5,6 @@
 #ifndef RESSAMPLELOOPCOMMAND_H_
 #define RESSAMPLELOOPCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class ResSampleLoopCommand : public QueueCommand {
 public:
 

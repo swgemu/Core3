@@ -6,7 +6,6 @@
 #define FORAGINGEVENT_H_
 
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/Zone.h"
 #include "server/zone/managers/minigames/ForageManager.h"
 
 namespace server {

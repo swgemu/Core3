@@ -17,7 +17,6 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
-#include "server/zone/objects/tangible/sign/SignObject.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sessions/PlaceStructureSession.h"

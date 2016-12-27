@@ -8,7 +8,6 @@
 #ifndef LOOTITEMTEMPLATE_H_
 #define LOOTITEMTEMPLATE_H_
 
-#include "engine/engine.h"
 #include "templates/LuaTemplate.h"
 #include "templates/crafting/ValuesMap.h"
 

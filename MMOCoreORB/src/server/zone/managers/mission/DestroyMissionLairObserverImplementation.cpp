@@ -1,12 +1,11 @@
 
 #include "server/zone/managers/mission/DestroyMissionLairObserver.h"
 #include "templates/mobile/LairTemplate.h"
-#include "server/zone/managers/creature/HealLairObserverEvent.h"
 #include "server/zone/objects/creature/ai/CreatureTemplate.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
-#include "server/zone/objects/creature/ai/Creature.h"
 #include "server/zone/managers/creature/LairAggroTask.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 
 void DestroyMissionLairObserverImplementation::checkForHeal(TangibleObject* lair, TangibleObject* attacker, bool forceNewUpdate) {
 	if (getMobType() == LairTemplate::NPC)

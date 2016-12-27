@@ -8,6 +8,8 @@
 #ifndef DEBUGTRANSFORMMESSAGE_H_
 #define DEBUGTRANSFORMMESSAGE_H_
 
+#include "engine/service/proto/BaseMessage.h"
+
 class DebugTransformMessage : public BaseMessage {
 public:
 	DebugTransformMessage() : BaseMessage() {
@@ -22,9 +24,6 @@ public:
 		insertInt(0);
 		insertInt(0);
 		insertLong(0);
-
-
-
    }
 
 };

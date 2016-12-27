@@ -4,11 +4,10 @@
 */
 
 package server.zone.managers.creature;
+
 import engine.core.ManagedObject;
-import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.managers.creature.SpawnObserver;
-import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.managers.creature.HealLairObserverEvent;
 include system.thread.atomic.AtomicInteger;

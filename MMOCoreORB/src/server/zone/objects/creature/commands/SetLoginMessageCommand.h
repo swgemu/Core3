@@ -5,8 +5,6 @@
 #ifndef SETLOGINMESSAGECOMMAND_H_
 #define SETLOGINMESSAGECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class SetLoginMessageCommand : public QueueCommand {
 public:
 

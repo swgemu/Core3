@@ -4,11 +4,7 @@
 
 package server.zone.objects.area;
 
-include engine.util.u3d.QuadTreeEntry;
-
-import server.zone.Zone;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.area.areashapes.AreaShape;
 import server.zone.objects.pathfinding.NavMeshRegion;
 
@@ -87,11 +83,11 @@ class ActiveArea extends SceneObject {
 		return false;
 	}
 
-    @dirty
-    @local
-    public abstract NavMeshRegion asNavRegion() {
-        return null;
-    }
+	@dirty
+	@local
+	public abstract NavMeshRegion asNavRegion() {
+		return null;
+	}
 
 	@read
 	public boolean isNoBuildArea() {

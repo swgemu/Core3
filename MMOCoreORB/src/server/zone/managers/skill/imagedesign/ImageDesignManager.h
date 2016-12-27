@@ -8,12 +8,9 @@
 #ifndef IMAGEDESIGNMANAGER_H_
 #define IMAGEDESIGNMANAGER_H_
 
-#include "engine/engine.h"
-#include "system/lang/ref/Reference.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "templates/customization/CustomizationData.h"
-#include "templates/customization/CustomizationDataMap.h"
 #include "templates/params/PaletteColorCustomizationVariable.h"
 
 class ImageDesignManager : public Singleton<ImageDesignManager>, public Object, public Logger {

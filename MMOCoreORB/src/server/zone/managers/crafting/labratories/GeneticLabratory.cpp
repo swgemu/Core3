@@ -9,6 +9,9 @@
 #include "server/zone/objects/tangible/component/genetic/GeneticComponent.h"
 #include "server/zone/objects/tangible/component/dna/DnaComponent.h"
 #include "Genetics.h"
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+#include "server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h"
+#include "server/zone/managers/crafting/CraftingManager.h"
 
 GeneticLabratory::GeneticLabratory() {
 }

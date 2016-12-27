@@ -8,8 +8,6 @@
 #ifndef PLAYERLIST_H_
 #define PLAYERLIST_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 template <int DeltaUpdate>
 class PlayerList : public DeltaVector<String> {
 

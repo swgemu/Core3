@@ -9,7 +9,7 @@
  */
 
 #include "RandomPool.h"
-#include "../ResourceSpawner.h"
+#include "server/zone/managers/resource/resourcespawner/ResourceSpawner.h"
 
 RandomPool::RandomPool(ResourceSpawner* spawner) : ResourcePool(spawner) {
 	setLoggingName("RandomPool");

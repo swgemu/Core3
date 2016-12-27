@@ -10,9 +10,8 @@
 
 #include "engine/engine.h"
 #include "server/zone/managers/collision/CollisionManager.h"
-#include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/zone/objects/creature/commands/CombatQueueCommand.h"
 #include "server/zone/managers/combat/CombatManager.h"
-#include "server/zone/objects/creature/commands/TurretFireCommand.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/terminal/components/TurretControlTerminalDataComponent.h"

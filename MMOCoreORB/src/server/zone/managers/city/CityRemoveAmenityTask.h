@@ -2,7 +2,6 @@
 #ifndef CITYREMOVEAMENITYTASK_H_
 #define CITYREMOVEAMENITYTASK_H_
 
-#include "engine/engine.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/scene/SceneObject.h"
 

@@ -1,8 +1,6 @@
 #ifndef NAMERULES_H_
 #define NAMERULES_H_
 
-#include "engine/engine.h"
-
 class NameRules: public Object {
 	int nameChance;
 	int minSyllables, maxSyllables;

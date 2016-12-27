@@ -5,8 +5,6 @@
  *      Author: Anakis
  */
 
-#include "engine/engine.h"
-
 #include "server/zone/managers/weather/WeatherManager.h"
 #include "server/zone/Zone.h"
 #include "events/WeatherChangeEvent.h"
@@ -16,7 +14,6 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "weathermaps/WeatherMap.h"
 #include "server/zone/packets/scene/ServerWeatherMessage.h"
-
 
 void WeatherManagerImplementation::initialize() {
 	//Customize the Manager's name.

@@ -6,7 +6,7 @@
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/objects/player/sessions/TrainerConversationSession.h"
 #include "server/zone/Zone.h"
-#include "server/zone/managers/jedi/JediManager.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 const String TrainerScreenHandlers::STARTSCREENHANDLERID = "convoscreenstart";
 const String TrainerScreenHandlers::INFOSCREENHANDLERID = "convoscreentrainerinfo";

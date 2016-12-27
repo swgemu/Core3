@@ -9,7 +9,6 @@
 #define CITYDECORATIONMENUCOMPONENT_H_
 
 #include "TangibleObjectMenuComponent.h"
-#include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 
 class CityDecorationMenuComponent : public TangibleObjectMenuComponent {
 public:

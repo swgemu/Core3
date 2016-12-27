@@ -5,7 +5,7 @@
 #ifndef CMDSCENEREADY_H_
 #define CMDSCENEREADY_H_
 
-#include "engine/engine.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class CmdSceneReady : public BaseMessage {
 public:

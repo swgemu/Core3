@@ -5,7 +5,6 @@
 #ifndef POINTBLANKAREA1COMMAND_H_
 #define POINTBLANKAREA1COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class PointBlankArea1Command : public CombatQueueCommand {

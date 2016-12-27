@@ -5,8 +5,6 @@
 #ifndef EXECUTEKNOWLEDGEBASEMESSAGECOMMAND_H_
 #define EXECUTEKNOWLEDGEBASEMESSAGECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class ExecuteKnowledgeBaseMessageCommand : public QueueCommand {
 public:
 

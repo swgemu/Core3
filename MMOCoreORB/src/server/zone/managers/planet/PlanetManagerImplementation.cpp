@@ -7,45 +7,33 @@
 
 #include "server/zone/managers/planet/PlanetManager.h"
 
-#include "server/db/ServerDatabase.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/managers/weather/WeatherManager.h"
-#include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
+#include "server/zone/managers/object/ObjectManager.h"
 
 #include "engine/util/iffstream/IffStream.h"
 #include "templates/snapshot/WorldSnapshotIff.h"
 #include "templates/datatables/DataTableIff.h"
 #include "templates/datatables/DataTableRow.h"
-#include "templates/datatables/DataTableCell.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 
-#include "server/zone/managers/planet/MapLocationType.h"
-
-#include "server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.h"
-#include "server/zone/objects/tangible/terminal/travel/TravelTerminal.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/packets/player/PlanetTravelPointListResponse.h"
 #include "server/zone/objects/area/BadgeActiveArea.h"
-
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 
 #include "server/zone/objects/area/areashapes/CircularAreaShape.h"
-
 #include "conf/ConfigManager.h"
-
 #include "PlanetTravelPoint.h"
-#include "templates/tangible/SharedStructureObjectTemplate.h"
 #include "server/zone/managers/structure/StructureManager.h"
-#include "terrain/layer/boundaries/BoundaryRectangle.h"
-
 #include "server/zone/managers/collision/NavMeshManager.h"
 
 ClientPoiDataTable PlanetManagerImplementation::clientPoiDataTable;

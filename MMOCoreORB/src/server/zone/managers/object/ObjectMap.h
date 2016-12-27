@@ -5,8 +5,6 @@
 #ifndef OBJECTMAP_H_
 #define OBJECTMAP_H_
 
-#include "system/lang.h"
-
 #include "server/zone/objects/scene/SceneObject.h"
 
 class ObjectMap : public Object {

@@ -8,7 +8,6 @@
 #ifndef SCREENPLAYTASK_H_
 #define SCREENPLAYTASK_H_
 
-#include "engine/engine.h"
 #include "DirectorManager.h"
 #include "server/zone/managers/director/PersistentEvent.h"
 #include "server/ServerCore.h"

@@ -4,9 +4,7 @@
 
 package server.zone.objects.tangible.deed;
 
-import engine.lua.LuaObject;
 import server.zone.objects.tangible.TangibleObject;
-import server.zone.Zone;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 include templates.SharedObjectTemplate;

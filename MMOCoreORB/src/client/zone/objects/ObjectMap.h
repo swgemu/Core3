@@ -1,8 +1,6 @@
 #ifndef OBJECTMAP_H_
 #define OBJECTMAP_H_
 
-#include "engine/engine.h"
-
 #include "client/zone/objects/scene/SceneObject.h"
 
 class ObjectMap : public HashTable<uint64, Reference<SceneObject*> > {

@@ -1,15 +1,10 @@
 #ifndef SAMPLEDEEDTASK_H_
 #define SAMPLEDEEDTASK_H_
 
-#include "server/zone/managers/resource/ResourceManager.h"
-#include "server/zone/managers/combat/CombatManager.h"
-#include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/DnaManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/deed/pet/PetDeed.h"
 #include "templates/params/creature/CreatureAttribute.h"
-#include "server/zone/objects/creature/ai/CreatureTemplate.h"
-#include "server/zone/objects/tangible/component/genetic/GeneticComponent.h"
 #include "engine/engine.h"
 
 class SampleDeedTask : public Task {

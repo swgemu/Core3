@@ -8,8 +8,6 @@
 #ifndef CHECKAUCTIONSTASK_H_
 #define CHECKAUCTIONSTASK_H_
 
-#include "engine/engine.h"
-
 #include "server/zone/managers/auction/AuctionManager.h"
 
 class CheckAuctionsTask : public Task {

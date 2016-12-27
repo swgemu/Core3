@@ -5,9 +5,7 @@
 package server.zone.objects.tangible.component.lightsaber;
 
 import server.zone.objects.tangible.component.Component;
-import engine.lua.LuaObject;
 import server.zone.packets.scene.AttributeListMessage;
-import server.zone.Zone;
 include server.zone.packets.object.ObjectMenuResponse;
 include server.zone.objects.creature.CreatureObject;
 include templates.tangible.LightsaberCrystalObjectTemplate;

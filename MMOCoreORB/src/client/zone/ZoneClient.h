@@ -5,7 +5,6 @@
 #ifndef ZONECLIENT_H_
 #define ZONECLIENT_H_
 
-#include "engine/engine.h"
 #include "client/zone/objects/player/PlayerCreature.h"
 
 class Zone;

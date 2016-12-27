@@ -5,8 +5,6 @@
 #ifndef REQUESTSETSTATMIGRATIONDATACOMMAND_H_
 #define REQUESTSETSTATMIGRATIONDATACOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/sessions/MigrateStatsSession.h"
 #include "server/zone/managers/player/creation/PlayerCreationManager.h"

@@ -5,7 +5,7 @@
 #ifndef VEHICLEDECAYTASK_H_
 #define VEHICLEDECAYTASK_H_
 
-#include "server/zone/objects/creature/VehicleObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "templates/creature/VehicleObjectTemplate.h"
 
 class VehicleDecayTask : public Task {

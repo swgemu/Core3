@@ -5,16 +5,11 @@
 #include "engine/engine.h"
 
 #include "server/zone/objects/tangible/tool/CraftingStation.h"
-#include "server/zone/Zone.h"
-#include "server/zone/ZoneServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "templates/tangible/tool/CraftingStationTemplate.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-#include "server/zone/objects/area/ActiveArea.h"
-#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
 void CraftingStationImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

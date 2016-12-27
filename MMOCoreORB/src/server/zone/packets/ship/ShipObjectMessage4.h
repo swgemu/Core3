@@ -5,7 +5,7 @@
 #ifndef SHIPOBJECTMESSAGE4_H_
 #define SHIPOBJECTMESSAGE4_H_
 
-#include "../../packets/BaseLineMessage.h"
+#include "server/zone/packets/BaseLineMessage.h"
 #include "server/zone/objects/ship/ShipObject.h"
 
 

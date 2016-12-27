@@ -4,13 +4,9 @@
 
 
 #include "server/zone/objects/resource/ResourceContainer.h"
-#include "server/zone/objects/resource/ResourceSpawn.h"
 #include "server/zone/packets/resource/ResourceContainerObjectDeltaMessage3.h"
 #include "server/zone/packets/resource/ResourceContainerObjectMessage3.h"
 #include "server/zone/packets/resource/ResourceContainerObjectMessage6.h"
-#include "server/zone/ZoneClientSession.h"
-#include "server/zone/ZoneServer.h"
-#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
 void ResourceContainerImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {

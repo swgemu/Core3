@@ -5,8 +5,6 @@
 #ifndef MANUFACTURECOMMAND_H_
 #define MANUFACTURECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class ManufactureCommand : public QueueCommand {
 public:
 

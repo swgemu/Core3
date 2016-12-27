@@ -8,9 +8,9 @@
 #ifndef BOUNDINGVOLUMEFACTORY_H_
 #define BOUNDINGVOLUMEFACTORY_H_
 
-#include "engine/engine.h"
+#include "engine/util/iffstream/IffStream.h"
 
-class BaseBoundingVolume;
+#include "BaseBoundingVolume.h"
 
 class BoundingVolumeFactory {
 public:

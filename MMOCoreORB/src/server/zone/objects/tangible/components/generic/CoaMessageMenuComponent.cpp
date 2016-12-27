@@ -4,7 +4,6 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
-#include "server/zone/objects/player/sui/callbacks/CoaMessageFragmentSuiCallback.h"
 #include "server/zone/objects/tangible/components/generic/CoaMessageDataComponent.h"
 
 void CoaMessageMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {

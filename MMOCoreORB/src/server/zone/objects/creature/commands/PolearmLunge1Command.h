@@ -5,7 +5,6 @@
 #ifndef POLEARMLUNGE1COMMAND_H_
 #define POLEARMLUNGE1COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class PolearmLunge1Command : public CombatQueueCommand {

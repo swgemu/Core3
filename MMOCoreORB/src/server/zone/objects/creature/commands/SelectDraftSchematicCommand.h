@@ -5,7 +5,6 @@
 #ifndef SELECTDRAFTSCHEMATICCOMMAND_H_
 #define SELECTDRAFTSCHEMATICCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/player/sessions/TradeSession.h"
 

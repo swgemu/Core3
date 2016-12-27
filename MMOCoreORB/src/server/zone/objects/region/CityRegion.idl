@@ -14,23 +14,18 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.structure.StructureObject;
 import server.zone.Zone;
-import server.zone.managers.city.CityManager;
-include server.zone.managers.planet.PlanetTravelPoint;
-include server.chat.StringIdChatParameter;
 include server.zone.ZoneReference;
 include server.zone.objects.scene.variables.StringId;
 include system.lang.Time;
 include server.zone.objects.region.CitizenList;
 include server.zone.objects.region.events.CityUpdateEvent;
 include server.zone.objects.region.events.CitizenAssessmentEvent;
-include server.zone.objects.region.CityStructureInventory;
 include system.thread.atomic.AtomicInteger;
 include pathfinding.RecastNavMesh;
 import system.thread.Mutex;
 import engine.util.u3d.AABB;
-import system.thread.Mutex;
-include system.util.SynchronizedVector;
 import server.zone.objects.pathfinding.NavMeshRegion;
+include system.util.Vector;
 
 @lua
 class CityRegion extends ManagedObject implements Logger {

@@ -5,8 +5,6 @@
 #ifndef ADDMAPLOCATIONCOMMAND_H_
 #define ADDMAPLOCATIONCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class AddMapLocationCommand : public QueueCommand {
 public:
 

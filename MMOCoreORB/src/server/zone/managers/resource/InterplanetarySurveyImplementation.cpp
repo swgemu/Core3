@@ -5,7 +5,6 @@
 
 #include "server/zone/managers/resource/InterplanetarySurvey.h"
 #include "server/zone/managers/resource/InterplanetarySurveyTask.h"
-#include "engine/engine.h"
 
 void InterplanetarySurveyImplementation::notifyLoadFromDatabase() {
 	if (executed)

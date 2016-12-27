@@ -12,9 +12,7 @@
 #define INVISIBLEDELAYEVENT_H_
 
 #include "engine/engine.h"
-#include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 #include "templates/creature/PlayerCreatureTemplate.h"
 
 class InvisibleDelayEvent: public Task {

@@ -5,8 +5,6 @@
 #ifndef RESENDLOGINMESSAGETOALLCOMMAND_H_
 #define RESENDLOGINMESSAGETOALLCOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 class ResendLoginMessageToAllCommand : public QueueCommand {
 public:
 

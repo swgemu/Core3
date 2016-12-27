@@ -5,7 +5,6 @@
  *      Author: victor
  */
 
-#include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/mission/MissionObjective.h"
 #include "server/zone/objects/mission/MissionObserver.h"
@@ -21,7 +20,6 @@
 #include "server/zone/packets/player/PlayMusicMessage.h"
 #include "server/zone/objects/mission/events/FailMissionAfterCertainTimeTask.h"
 #include "events/CompleteMissionObjectiveTask.h"
-#include "server/zone/objects/group/GroupObject.h"
 
 void MissionObjectiveImplementation::destroyObjectFromDatabase() {
 	for (int i = 0; i < observers.size(); ++i) {

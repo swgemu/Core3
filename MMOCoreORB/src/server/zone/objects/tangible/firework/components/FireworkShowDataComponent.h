@@ -1,9 +1,9 @@
 #ifndef FIREWORKSHOWDATACOMPONENT_H_
 #define FIREWORKSHOWDATACOMPONENT_H_
+
 #include "server/zone/objects/scene/components/DataObjectComponent.h"
 #include "server/zone/objects/tangible/firework/FireworkObject.h"
 #include "engine/engine.h"
-#include "system/util/Vector.h"
 #include "system/util/VectorMap.h"
 
 class FireworkShowDataComponent : public DataObjectComponent {

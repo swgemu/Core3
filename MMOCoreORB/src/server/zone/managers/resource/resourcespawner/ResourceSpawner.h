@@ -11,8 +11,6 @@
 #ifndef RESOURCESPAWNER_H_
 #define RESOURCESPAWNER_H_
 
-#include "engine/db/ObjectDatabase.h"
-
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/managers/name/NameManager.h"

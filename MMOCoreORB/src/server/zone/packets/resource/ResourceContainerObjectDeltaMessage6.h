@@ -5,8 +5,7 @@
 #ifndef RESOURCECONTAINEROBJECTDELTAMESSAGE6_H_
 #define RESOURCECONTAINEROBJECTDELTAMESSAGE6_H_
 
-#include "../DeltaMessage.h"
-
+#include "server/zone/packets/DeltaMessage.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
 
 class ResourceContainerObjectDeltaMessage6 : public DeltaMessage {
